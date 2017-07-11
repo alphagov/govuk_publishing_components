@@ -1,8 +1,8 @@
 module GovukPublishingComponents
   class ApplicationController < ActionController::Base
-    protect_from_forgery with: :exception
+    include Slimmer::GovukComponents
     include Slimmer::Headers
-
+    protect_from_forgery with: :exception
     before_action :set_custom_slimmer_headers
 
   private

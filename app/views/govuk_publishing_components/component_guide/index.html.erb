@@ -1,3 +1,14 @@
-<h1 class="govuk-component-guide-title">
-  Component Guide
-</h1>
+<%= render 'govuk_component/title', title: 'Component guide' %>
+
+<ul class="component-list">
+  <% @component_docs.each do |component_doc| %>
+    <li>
+      <h2>
+        <%= link_to component_doc.name, component_doc_path(component_doc.id) %>
+      </h2>
+      <p>
+        <%= component_doc.description %>
+      </p>
+    </li>
+  <% end %>
+</ul>

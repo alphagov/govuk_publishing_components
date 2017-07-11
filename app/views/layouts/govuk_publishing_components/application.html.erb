@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Govuk publishing components</title>
+  <title>GOV.UK Component Guide</title>
   <%= stylesheet_link_tag    "govuk_publishing_components/application", media: "all" %>
+  <%# Include application styles: TODO: Make configurable %>
+  <%= stylesheet_link_tag "application" %>
+
   <%= javascript_include_tag "govuk_publishing_components/application" %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<div id="wrapper">
-  <%= yield %>
-</div>
-
+  <main id="wrapper" class="govuk-component-guide-wrapper">
+    <%= render 'govuk_component/breadcrumbs', breadcrumbs: @guide_breadcrumbs  %>
+    <%= yield %>
+  </main>
 </body>
 </html>

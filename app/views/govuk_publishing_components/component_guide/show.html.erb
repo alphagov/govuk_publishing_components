@@ -1,0 +1,31 @@
+<%= render 'govuk_component/title', title: @component_doc.name, context: 'Component' %>
+
+<p class="component-description">
+  <%= @component_doc.description %>
+</p>
+
+<div class="component-show">
+  <div class="component-doc">
+    <h3>How to call this component</h3>
+    <%= render partial: "govuk_publishing_components/component_guide/component_doc/call", locals: { component_doc: @component_doc, fixture: @component_doc.fixture } %>
+
+    <h3>How it looks</h3>
+  </div>
+
+  <%= render partial: "govuk_publishing_components/component_guide/component_doc/preview", locals: { component_doc: @component_doc, fixture: @component_doc.fixture } %>
+
+  <% if @component_doc.other_fixtures.any? %>
+    <div class="fixtures">
+      <h2 class="fixtures-title">Other examples</h2>
+      <% @component_doc.other_fixtures.each do |fixture| %>
+        <div class="component-fixture">
+          <h3 class="fixture-title">
+            <a href="<%= component_fixture_path(@component_doc.id, fixture.id) %>"><%= fixture.name %></a>
+          </h3>
+          <%= render partial: "govuk_publishing_components/component_guide/component_doc/call", locals: { component_doc: @component_doc, fixture: fixture } %>
+          <%= render partial: "govuk_publishing_components/component_guide/component_doc/preview", locals: { component_doc: @component_doc, fixture: fixture } %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
