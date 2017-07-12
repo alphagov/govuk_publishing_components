@@ -11,6 +11,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="header-proposition">
+    <div class="content">
+      <nav id="proposition-menu" role="navigation">
+        <%= link_to GovukPublishingComponents::Config.component_guide_title, component_guide_path, id: 'proposition-name' %>
+      </nav>
+    </div>
+  </div>
+
   <main id="wrapper" class="govuk-component-guide-wrapper">
     <%= render 'govuk_component/breadcrumbs', breadcrumbs: @guide_breadcrumbs  %>
     <%= yield %>
