@@ -12,6 +12,18 @@ describe 'Component guide' do
     expect(page).to have_selector('a[href="/component-guide/test-component"]', text: 'Test component')
   end
 
+  it 'includes component guide styles and scripts' do
+    visit '/component-guide'
+    expect(page).to have_selector('link[href*="/assets/govuk_publishing_components/application"]', visible: false)
+    expect(page).to have_selector('script[src*="/assets/govuk_publishing_components/application"]', visible: false)
+  end
+
+  it 'includes the application’s styles and scripts' do
+    visit '/component-guide'
+    expect(page).to have_selector('link[href*="/assets/application"]', visible: false)
+    expect(page).to have_selector('script[src*="/assets/application"]', visible: false)
+  end
+
   it 'creates a page for the component' do
     visit '/component-guide/test-component'
     expect(body).to include('A test component for the dummy app')
