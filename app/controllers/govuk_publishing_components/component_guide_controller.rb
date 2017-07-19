@@ -4,14 +4,13 @@ module GovukPublishingComponents
 
     def index
       @component_docs = ComponentDoc.all
-      @guide_breadcrumbs = [{ title: 'Component Guide' }]
     end
 
     def show
       @component_doc = ComponentDoc.get(params[:component])
       @guide_breadcrumbs = [
                              {
-                               title: 'Component Guide',
+                               title: GovukPublishingComponents::Config.component_guide_title,
                                url: component_guide_path
                              },
                              {
@@ -25,7 +24,7 @@ module GovukPublishingComponents
       @component_fixture = @component_doc.fixtures.find { |f| f.id == params[:fixture] }
       @guide_breadcrumbs = [
                              {
-                               title: 'Component Guide',
+                               title: GovukPublishingComponents::Config.component_guide_title,
                                url: component_guide_path
                              },
                              {
