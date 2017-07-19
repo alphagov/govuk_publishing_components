@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  mount GovukPublishingComponents::Engine => "/govuk_publishing_components"
+  mount GovukPublishingComponents::Engine, at: "/component-guide"
 end
