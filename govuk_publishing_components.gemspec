@@ -23,4 +23,8 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency "rspec", "~> 3.6"
   s.add_development_dependency "capybara", "~> 2.14.4"
+
+  # Needed to load slimmer test helpers
+  # https://github.com/alphagov/slimmer/issues/201
+  s.add_development_dependency "webmock", "~> 1.18.0"
 end
