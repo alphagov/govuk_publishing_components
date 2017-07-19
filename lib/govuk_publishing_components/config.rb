@@ -6,6 +6,6 @@ module GovukPublishingComponents
   module Config
     # Name of your component guide
     mattr_accessor :component_guide_title
-    @@component_guide_title = "GOV.UK Component Guide"
+    @component_guide_title = "GOV.UK Component Guide"
   end
 end

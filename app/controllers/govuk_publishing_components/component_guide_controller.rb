@@ -4,7 +4,7 @@ module GovukPublishingComponents
 
     def index
       @component_docs = ComponentDoc.all
-      @guide_breadcrumbs = [ { title: 'Component Guide'} ]
+      @guide_breadcrumbs = [{ title: 'Component Guide' }]
     end
 
     def show
