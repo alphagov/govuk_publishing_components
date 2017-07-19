@@ -33,4 +33,22 @@ describe 'Component guide' do
       expect(page).to have_selector('h1.something-inside-test-component', text: 'Test component heading')
     end
   end
+
+  it 'lists fixtures in a human readable way' do
+    visit '/component-guide/test-component-with-params'
+    expect(page).to have_selector('h2', text: 'Other examples')
+    expect(page).to have_selector('h3', text: 'Another fixture')
+  end
+
+  it 'passes params in fixtures to component example' do
+    visit '/component-guide/test-component-with-params'
+    expect(body).to include('A test component that takes a required parameter')
+    expect(body).to include('render \'components/test-component-with-params\'')
+
+    expect(body).to include('test_component_parameter: &quot;Some value&quot;')
+    expect(page).to have_selector('.component-guide-preview .test-component-with-params', text: 'Some value')
+
+    expect(body).to include('test_component_parameter: &quot;A different value&quot;')
+    expect(page).to have_selector('.component-guide-preview .test-component-with-params', text: 'A different value')
+  end
 end
