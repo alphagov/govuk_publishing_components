@@ -22,4 +22,5 @@ Gem::Specification.new do |s|
   s.add_dependency "govuk_frontend_toolkit", "5.1.0"
 
   s.add_development_dependency "rspec", "~> 3.6"
+  s.add_development_dependency "capybara", "~> 2.14.4"
 end

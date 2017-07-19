@@ -47,8 +47,17 @@ GEM
       i18n (~> 0.7)
       minitest (~> 5.1)
       tzinfo (~> 1.1)
+    addressable (2.5.1)
+      public_suffix (~> 2.0, >= 2.0.2)
     arel (7.1.4)
     builder (3.2.3)
+    capybara (2.14.4)
+      addressable
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      xpath (~> 2.0)
     concurrent-ruby (1.0.5)
     diff-lcs (1.3)
     domain_name (0.5.20170404)
@@ -79,6 +88,7 @@ GEM
       mini_portile2 (~> 2.1.0)
     null_logger (0.0.1)
     plek (2.0.0)
+    public_suffix (2.0.5)
     rack (2.0.3)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -156,11 +166,14 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
+    xpath (2.1.0)
+      nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  capybara (~> 2.14.4)
   govuk_publishing_components!
   rspec (~> 3.6)
 
