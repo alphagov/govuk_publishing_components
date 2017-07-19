@@ -49,7 +49,7 @@ describe 'Component guide' do
   it 'lists fixtures in a human readable way' do
     visit '/component-guide/test-component-with-params'
     expect(page).to have_selector('h2', text: 'Other examples')
-    expect(page).to have_selector('h3', text: 'Another fixture')
+    expect(page).to have_selector('h3 a[href="/component-guide/test-component-with-params/another_fixture"]', text: 'Another fixture')
   end
 
   it 'passes params in fixtures to component example' do
@@ -59,6 +59,15 @@ describe 'Component guide' do
 
     expect(body).to include('test_component_parameter: &quot;Some value&quot;')
     expect(page).to have_selector('.component-guide-preview .test-component-with-params', text: 'Some value')
+
+    expect(body).to include('test_component_parameter: &quot;A different value&quot;')
+    expect(page).to have_selector('.component-guide-preview .test-component-with-params', text: 'A different value')
+  end
+
+  it 'creates a page for each fixture' do
+    visit '/component-guide/test-component-with-params/another_fixture'
+    expect(body).to include('How to call this example')
+    expect(body).to include('How it looks')
 
     expect(body).to include('test_component_parameter: &quot;A different value&quot;')
     expect(page).to have_selector('.component-guide-preview .test-component-with-params', text: 'A different value')
