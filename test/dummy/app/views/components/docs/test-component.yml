@@ -1,0 +1,4 @@
+name: Test component
+description: A test component for the dummy app
+fixtures:
+  default: {}
