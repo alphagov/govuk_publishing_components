@@ -20,5 +20,16 @@ Rake::TestTask.new(:test) do |t|
   t.verbose = false
 end
 
+namespace :assets do
+  desc "Test precompiling assets through dummy application"
+
+  task :precompile do |t|
+    Rake::Task['app:assets:precompile'].invoke
+  end
+
+  task :clean do |t|
+    Rake::Task['app:assets:clean'].invoke
+  end
+end
 
 task default: :spec
