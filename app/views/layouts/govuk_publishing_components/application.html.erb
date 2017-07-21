@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Govuk publishing components</title>
-  <%= stylesheet_link_tag    "govuk_publishing_components/application", media: "all" %>
+  <title>
+    <%= yield :title %><% if content_for(:title) %> - <% end %><%= GovukPublishingComponents::Config.component_guide_title %>
+  </title>
+  <%= stylesheet_link_tag "govuk_publishing_components/application", media: "all" %>
+  <%= stylesheet_link_tag "#{GovukPublishingComponents::Config.application_stylesheet}" %>
+
   <%= javascript_include_tag "govuk_publishing_components/application" %>
+  <%= javascript_include_tag "#{GovukPublishingComponents::Config.application_javascript}" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="header-proposition">
+    <div class="content">
+      <nav id="proposition-menu" role="navigation">
+        <%= link_to GovukPublishingComponents::Config.component_guide_title, component_guide_path, id: 'proposition-name' %>
+      </nav>
+    </div>
+  </div>
 
-<%= yield %>
-
+  <main id="wrapper" class="govuk-component-guide-wrapper">
+    <%= render 'govuk_component/breadcrumbs', breadcrumbs: @guide_breadcrumbs  %>
+    <%= yield %>
+  </main>
 </body>
 </html>

@@ -1,0 +1,119 @@
+$prism-background: #f5f2f0;
+$border-color: #ccc;
+
+.govuk-component-guide-wrapper {
+  padding-bottom: $gutter * 2;
+}
+
+.component-list {
+  li {
+    @include core-19;
+    margin-bottom: $gutter-half;
+  }
+}
+
+.component-description {
+  @include core-24;
+  max-width: 30em;
+}
+
+.component-doc {
+  @include core-16;
+
+  p {
+    margin: $gutter-half 0;
+  }
+
+  ol,
+  ul {
+    margin: 0 0 0 $gutter;
+  }
+
+  h3 {
+    margin: $gutter 0 $gutter-half;
+    @include bold-19;
+  }
+}
+
+.component-guide-preview {
+  padding: 30px 0;
+
+  .preview-title {
+    margin-bottom: 1em;
+    @include bold-16;
+
+    a {
+      color: $black;
+    }
+  }
+}
+
+.code-block {
+  margin: 30px 0;
+  padding: $gutter;
+  @extend %outdent-to-full-width;
+  overflow: scroll;
+  max-height: 300px;
+
+  // Match Prism styles to avoid a flash as it renders
+  background: $prism-background;
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+
+  &[contenteditable]:hover {
+    cursor: text;
+  }
+
+  code {
+    display: block;
+  }
+}
+
+.component-guide-preview {
+  padding: ($gutter * 1.5) $gutter $gutter;
+  border: 1px solid $border-colour;
+  position: relative;
+
+  &:before {
+    @include core-14;
+    content: "EXAMPLE";
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.21053em 0.78947em;
+    background: $border-colour;
+    color: $white;
+  }
+
+  div[class^="govuk-"] {
+    &:hover {
+      outline: 1px solid $border-color;
+      box-shadow: 0 0 10px $border-color;
+    }
+  }
+}
+
+.fixtures {
+  margin-top: $gutter * 2;
+
+  .fixtures-title {
+    @include bold-27;
+    margin: $gutter 0;
+
+    small {
+      @include bold-16;
+    }
+  }
+
+  .component-fixture {
+    margin: 0 0 $gutter * 2;
+
+    .fixture-title {
+      @include bold-24;
+      margin: $gutter-half 0;
+
+      small {
+        @include bold-16;
+      }
+    }
+  }
+}

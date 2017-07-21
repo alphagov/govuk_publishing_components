@@ -1,0 +1,12 @@
+<% content_for :title, "#{@component_fixture.name} example - #{@component_doc.name} component" %>
+<%= render 'govuk_component/title', title: @component_fixture.name, context: "#{@component_doc.name} example" %>
+
+<div class="component-show">
+  <div class="component-doc">
+    <h3>How to call this example</h3>
+    <%= render partial: "govuk_publishing_components/component_guide/component_doc/call", locals: { component_doc: @component_doc, fixture: @component_fixture } %>
+
+    <h3>How it looks</h3>
+    <%= render partial: "govuk_publishing_components/component_guide/component_doc/preview", locals: { component_doc: @component_doc, fixture: @component_fixture } %>
+  </div>
+</div>

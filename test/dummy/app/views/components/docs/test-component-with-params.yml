@@ -1,0 +1,7 @@
+name: Test component with parameters
+description: A test component that takes a required parameter
+fixtures:
+  default:
+    test_component_parameter: 'Some value'
+  another_fixture:
+    test_component_parameter: 'A different value'

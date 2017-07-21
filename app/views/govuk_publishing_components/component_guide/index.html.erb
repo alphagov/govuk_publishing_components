@@ -1,0 +1,14 @@
+<%= render 'govuk_component/title', title: GovukPublishingComponents::Config.component_guide_title %>
+
+<ul class="component-list">
+  <% @component_docs.each do |component_doc| %>
+    <li>
+      <h2>
+        <%= link_to component_doc.name, component_doc_path(component_doc.id) %>
+      </h2>
+      <p>
+        <%= component_doc.description %>
+      </p>
+    </li>
+  <% end %>
+</ul>
