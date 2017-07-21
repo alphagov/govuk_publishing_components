@@ -5,7 +5,7 @@ module GovukPublishingComponents
     end
 
     def self.all
-      fetch_component_doc.map { |component| build(component) }
+      fetch_component_docs.map { |component| build(component) }
     end
 
     def self.build(component)
@@ -24,7 +24,7 @@ module GovukPublishingComponents
       fixtures.slice(1..-1)
     end
 
-    def self.fetch_component_doc
+    def self.fetch_component_docs
       doc_files = Rails.root.join("app", "views", "components", "docs", "*.yml")
       Dir[doc_files].sort.map do |file|
         { id: File.basename(file, ".yml") }.merge(YAML::load_file(file)).with_indifferent_access
