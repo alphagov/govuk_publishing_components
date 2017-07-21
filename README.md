@@ -22,7 +22,7 @@ Mount the component guide in your application:
 ```ruby
 # config/routes.rb
 unless Rails.env.production?
-  mount GovukPublishingComponents::Engine, at: "/component-guide"
+  mount GovukPublishingComponents::Engine, at: "/component-guide" if defined?(GovukPublishingComponents)
 end
 ```
 
@@ -76,11 +76,13 @@ Configure the gem with a config block in an initializer:
 
 ```ruby
 # config/initializers/govuk_publishing_components.rb
-GovukPublishingComponents.configure do |c|
-  c.component_guide_title = "My component guide"
+if defined?(GovukPublishingComponents)
+  GovukPublishingComponents.configure do |c|
+    c.component_guide_title = "My component guide"
 
-  c.application_stylesheet = "custom_stylesheet" # defaults to "application"
-  c.application_javascript = "custom_javascript" # default to "application"
+    c.application_stylesheet = "custom_stylesheet" # defaults to "application"
+    c.application_javascript = "custom_javascript" # default to "application"
+  end
 end
 ```
 
