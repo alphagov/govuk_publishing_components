@@ -2,7 +2,7 @@ $prism-background: #f5f2f0;
 $border-color: #ccc;
 
 .govuk-component-guide-wrapper {
-  padding-bottom: $gutter * 2;
+  padding-bottom: $gutter * 1.5;
 }
 
 .component-list {
@@ -15,10 +15,19 @@ $border-color: #ccc;
 .component-description {
   @include core-24;
   max-width: 30em;
+  margin-bottom: $gutter * 1.5;
+}
+
+.component-body {
+  margin-bottom: $gutter * 1.5;
 }
 
 .component-doc {
   @include core-16;
+
+  .component-doc-h2:first-child {
+    margin-top: 0;
+  }
 
   p {
     margin: $gutter-half 0;
@@ -28,11 +37,16 @@ $border-color: #ccc;
   ul {
     margin: 0 0 0 $gutter;
   }
+}
 
-  h3 {
-    margin: $gutter 0 $gutter-half;
-    @include bold-19;
-  }
+.component-doc-h2 {
+  @include bold-27;
+  margin: ($gutter * 1.5) 0 $gutter;
+}
+
+.component-doc-h3 {
+  margin: $gutter 0 $gutter-half;
+  @include bold-19;
 }
 
 .component-guide-preview {
@@ -93,19 +107,8 @@ $border-color: #ccc;
 }
 
 .fixtures {
-  margin-top: $gutter * 2;
-
-  .fixtures-title {
-    @include bold-27;
-    margin: $gutter 0;
-
-    small {
-      @include bold-16;
-    }
-  }
-
   .component-fixture {
-    margin: 0 0 $gutter * 2;
+    margin: 0 0 $gutter * 1.5;
 
     .fixture-title {
       @include bold-24;

@@ -1,5 +1,5 @@
 module GovukPublishingComponents
-  ComponentDoc = Struct.new(:id, :name, :description, :body, :fixtures) do
+  ComponentDoc = Struct.new(:id, :name, :description, :body, :accessibility_criteria, :fixtures) do
     def self.get(id)
       component = fetch_component_doc(id)
       self.build(component)
@@ -14,7 +14,12 @@ module GovukPublishingComponents
         GovukPublishingComponents::ComponentFixture.new(id.to_s, data)
       }
 
-      self.new(component[:id], component[:name], component[:description], component[:body], fixtures)
+      self.new(component[:id],
+               component[:name],
+               component[:description],
+               component[:body],
+               component[:accessibility_criteria],
+               fixtures)
     end
 
     def fixture
@@ -38,6 +43,19 @@ module GovukPublishingComponents
     def self.parse_documentation(file)
       { id: File.basename(file, ".yml") }.merge(YAML::load_file(file)).with_indifferent_access
     end
+
+    def html_body
+      govspeak_to_html(body) if body.present?
+    end
+
+    def html_accessibility_criteria
+      govspeak_to_html(accessibility_criteria) if accessibility_criteria.present?
+    end
+
+  private
+
+    def govspeak_to_html(govspeak)
+      Govspeak::Document.new(govspeak).to_html
     end
   end
 end

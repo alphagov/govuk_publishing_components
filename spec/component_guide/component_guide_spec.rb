@@ -87,4 +87,28 @@ describe 'Component guide' do
     expect(body).to include('A test component that uses a helper in the host application')
     expect(page).to have_selector('.component-guide-preview .test-component-with-helper', text: 'This thing has been modified by a helper')
   end
+
+  it 'displays the body of a component as html using static’s govspeak component' do
+    visit '/component-guide/test-component'
+    within ".component-body" do
+      within(shared_component_selector("govspeak")) do
+        content = JSON.parse(page.text).fetch("content").squish
+        expect(content).to include('An example body with <a href="/component-guide">markdown in it</a>')
+        expect(content).to include('<p>This is a list:</p>')
+        expect(content).to include('<li>list item one</li>')
+      end
+    end
+  end
+
+  it 'displays the accessibility acceptance criteria of a component as html using static’s govspeak component' do
+    visit '/component-guide/test-component'
+    within ".component-accessibility-criteria" do
+      expect(page).to have_selector('h2', text: 'Accessibility acceptance criteria')
+
+      within(shared_component_selector("govspeak")) do
+        content = JSON.parse(page.text).fetch("content").squish
+        expect(content).to include('<li>This is some criteria in a list</li>')
+      end
+    end
+  end
 end
