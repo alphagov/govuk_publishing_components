@@ -1,5 +1,6 @@
 module GovukPublishingComponents
   class ApplicationController < ActionController::Base
+    helper ::Rails.application.helpers
     include Slimmer::GovukComponents
     include Slimmer::Headers
     protect_from_forgery with: :exception
