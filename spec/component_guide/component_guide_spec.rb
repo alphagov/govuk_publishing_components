@@ -72,4 +72,10 @@ describe 'Component guide' do
     expect(body).to include('test_component_parameter: &quot;A different value&quot;')
     expect(page).to have_selector('.component-guide-preview .test-component-with-params', text: 'A different value')
   end
+
+  it 'handles components that use application helpers' do
+    visit '/component-guide/test-component-with-helper'
+    expect(body).to include('A test component that uses a helper in the host application')
+    expect(page).to have_selector('.component-guide-preview .test-component-with-helper', text: 'This thing has been modified by a helper')
+  end
 end
