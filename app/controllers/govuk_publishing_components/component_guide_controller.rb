@@ -1,5 +1,5 @@
 module GovukPublishingComponents
-  class ComponentGuideController < ApplicationController
+  class ComponentGuideController < GovukPublishingComponents::ApplicationController
     append_view_path File.join(Rails.root, "app", "views", "components")
 
     def index

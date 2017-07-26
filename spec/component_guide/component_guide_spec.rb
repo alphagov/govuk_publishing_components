@@ -1,6 +1,15 @@
 require "spec_helper"
 
 describe 'Component guide' do
+  # Load ordering test can only fail if run as the first test in suite
+  # https://github.com/rails/rails/issues/12168
+  it 'renders using gem layout not app layout after viewing a page on the application' do
+    visit '/'
+    expect(page).to have_title 'Dummy'
+    visit '/component-guide'
+    expect(page).to have_title 'GOV.UK Component Guide'
+  end
+
   it 'loads a component guide' do
     visit '/component-guide'
     expect(page).to have_title 'GOV.UK Component Guide'
