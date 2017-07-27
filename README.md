@@ -62,12 +62,15 @@ The `.yml` file must have:
 #### Example documentation
 
 ```yaml
-name: Withdrawal notice
-description: A banner that displays when content is withdrawn
+name: Name of component
+description: Short description of component
+body: |
+  Optional markdown providing further detail about the component
+acceptance_criteria: |
+  Markdown listing what this component must do to be accessible
 fixtures:
   default:
-    title: 'This consultation was withdrawn on 20 April 2017'
-    explanation_html: '<p>A supporting paragraph</p>'
+    some_parameter: 'The parameter value'
 ```
 
 ### Configuration

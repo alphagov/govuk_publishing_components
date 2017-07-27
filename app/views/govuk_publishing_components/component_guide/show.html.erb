@@ -1,30 +1,48 @@
 <% content_for :title, "#{@component_doc.name} component" %>
 <%= render 'govuk_component/title', title: @component_doc.name, context: 'Component' %>
 
-<p class="component-description">
-  <%= @component_doc.description %>
-</p>
-
 <div class="component-show">
-  <div class="component-doc">
-    <h3>How to call this component</h3>
-    <%= render partial: "govuk_publishing_components/component_guide/component_doc/call", locals: { component_doc: @component_doc, fixture: @component_doc.fixture } %>
-
-    <h3>How it looks</h3>
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <p class="component-description">
+        <%= @component_doc.description %>
+      </p>
+      <% if @component_doc.body.present? %>
+        <div class="component-body">
+          <%= render 'govuk_component/govspeak', content: @component_doc.html_body %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
-  <%= render partial: "govuk_publishing_components/component_guide/component_doc/preview", locals: { component_doc: @component_doc, fixture: @component_doc.fixture } %>
+  <div class="component-doc">
+    <h2 class="component-doc-h2">How to call this component</h2>
+    <%= render "govuk_publishing_components/component_guide/component_doc/call", component_doc: @component_doc, fixture: @component_doc.fixture %>
+
+    <h2 class="component-doc-h2">How it looks</h2>
+  </div>
+
+  <%= render "govuk_publishing_components/component_guide/component_doc/preview", component_doc: @component_doc, fixture: @component_doc.fixture %>
+
+  <% if @component_doc.accessibility_criteria.present? %>
+    <div class="grid-row component-accessibility-criteria">
+      <div class="column-two-thirds">
+        <h2 class="component-doc-h2">Accessibility acceptance criteria</h2>
+        <%= render 'govuk_component/govspeak', content: @component_doc.html_accessibility_criteria %>
+      </div>
+    </div>
+  <% end %>
 
   <% if @component_doc.other_fixtures.any? %>
     <div class="fixtures">
-      <h2 class="fixtures-title">Other examples</h2>
+      <h2 class="component-doc-h2">Other examples</h2>
       <% @component_doc.other_fixtures.each do |fixture| %>
         <div class="component-fixture">
           <h3 class="fixture-title">
             <a href="<%= component_fixture_path(@component_doc.id, fixture.id) %>"><%= fixture.name %></a>
           </h3>
-          <%= render partial: "govuk_publishing_components/component_guide/component_doc/call", locals: { component_doc: @component_doc, fixture: fixture } %>
-          <%= render partial: "govuk_publishing_components/component_guide/component_doc/preview", locals: { component_doc: @component_doc, fixture: fixture } %>
+          <%= render "govuk_publishing_components/component_guide/component_doc/call", component_doc: @component_doc, fixture: fixture %>
+          <%= render "govuk_publishing_components/component_guide/component_doc/preview", component_doc: @component_doc, fixture: fixture %>
         </div>
       <% end %>
     </div>
