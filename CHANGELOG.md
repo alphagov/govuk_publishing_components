@@ -1,3 +1,7 @@
+# 0.3.1
+
+* Remove ApplicationRecord files from gem PR #8
+
 # 0.3.0
 
 * Include body and accessibility acceptance criteria on component pages PR #6
