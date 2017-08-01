@@ -64,17 +64,24 @@ $border-color: #ccc;
 
 .code-block {
   margin: 30px 0;
-  padding: $gutter;
   @extend %outdent-to-full-width;
-  overflow: scroll;
   max-height: 300px;
 
   // Match Prism styles to avoid a flash as it renders
   background: $prism-background;
   font-family: Consolas, Monaco, 'Andale Mono', monospace;
+  font-size: 16px;
+  line-height: 1.5;
 
   &[contenteditable]:hover {
     cursor: text;
+  }
+  &[contenteditable]:focus {
+    outline: 3px solid $focus-colour;
+  }
+
+  pre[class*=language-] {
+    padding: $gutter;
   }
 
   code {
