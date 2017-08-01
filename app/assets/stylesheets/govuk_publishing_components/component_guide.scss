@@ -76,6 +76,7 @@ $border-color: #ccc;
   &[contenteditable]:hover {
     cursor: text;
   }
+
   &[contenteditable]:focus {
     outline: 3px solid $focus-colour;
   }
@@ -86,6 +87,10 @@ $border-color: #ccc;
 
   code {
     display: block;
+  }
+
+  .token.operator {
+    background: none;
   }
 }
 
