@@ -1,6 +1,6 @@
 # Component Conventions
 
-All components must use the `.app-` or `.pub-` namespace with the `c` prefix. For example, `.app-c-banner`.
+All components must use the `.app-` or `.pub-` namespace with the `c` prefix. The `c` is for component. For example, `.app-c-banner`.
 
 Do not use the `.govuk-c` namespace.
 
@@ -36,6 +36,24 @@ The `.yml` file must have:
 | body | Optional | A govspeak markdown block giving guidance for the component |
 | accessibility_criteria | Required | A govspeak markdown block listing the accessibility acceptance criteria this component must meet to be accessible |
 | fixtures | Required | Each block represents an example with a set of inputs. Each example is listed in the component guide. Examples must cover all expected use cases. |
+
+### Example yaml file
+
+```yaml
+name: Name of component
+description: Short description of component
+body: |
+  Optional markdown providing further detail about the component
+acceptance_criteria: |
+  Markdown listing what this component must do to be accessible. For example:
+
+  The link must:
+
+  * be keyboard focusable
+fixtures:
+  default:
+    some_parameter: 'The parameter value'
+```
 
 ## Styles
 

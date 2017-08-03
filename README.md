@@ -36,46 +36,17 @@ Components are partials included by your application:
 <%= render 'components/description', { description: "A description is one or two leading sentences." } %>
 ```
 
-`govuk_publishing_components` expects the following component structure:
+Components must:
+* [meet the component principles](docs/component_principles.md)
+* [follow component conventions](docs/component_conventions.md)
 
-* a partial view in `app/views/components` - The template logic and markup, also defines the arguments expected. Filename must begin with an underscore.
-* a documentation file in `app/views/components/docs` - a `.yml` per component, describing the component and containing fixture data.
-* a SCSS module in `app/assets/stylesheets/components` - The styling of the component
-* [a Javascript module](https://github.com/alphagov/govuk_frontend_toolkit/blob/master/docs/javascript.md#modules) in `app/assets/javascripts/components` - JS behaviour of the component
-* a unit test in `test/components` - testing the component renders correctly based on parameters passed in
+The component guide will include your application’s styles and scripts.
 
-For a "print link" component you would have:
-* app/views/components/_print-link.html.erb
-* app/views/components/docs/print-link.yml
-* app/assets/stylesheets/components/_print-link.scss
-* test/components/print_link_test.rb
+It will include `application.scss` and `application.js` by default but this is [configurable](#configuration).
 
-The component guide will include your application’s styles and scripts. It will include `application.scss` and `application.js` by default but this is [configurable](#configuration).
+### Configure the gem
 
-### Write documentation
-
-The `.yml` file must have:
-* a name
-* a description
-* a default fixture (this can be `{}` if the component takes no parameters)
-
-#### Example documentation
-
-```yaml
-name: Name of component
-description: Short description of component
-body: |
-  Optional markdown providing further detail about the component
-acceptance_criteria: |
-  Markdown listing what this component must do to be accessible
-fixtures:
-  default:
-    some_parameter: 'The parameter value'
-```
-
-### Configuration
-
-Configure the gem with a config block in an initializer:
+Use a config block in an initializer:
 
 ```ruby
 # config/initializers/govuk_publishing_components.rb
