@@ -2,6 +2,8 @@
 
 A gem to document components in GOV.UK frontend applications.
 
+![Screenshot of component guide](docs/screenshot.png)
+
 ## Write components in your application
 
 Components are packages of template, style, behaviour and documentation that live in your application.
