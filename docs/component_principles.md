@@ -8,7 +8,7 @@ A component is a package comprised of template, style, behaviour and documentati
 
 * is accessible
 * is documented
-* [follows convention](convention.md)
+* [follows convention](component_conventions.md)
 * is isolated
 * is tested
 * can be translated
@@ -33,7 +33,8 @@ A component is a package comprised of template, style, behaviour and documentati
 
 ### A component is isolated when:
 
-* its styles have no effect on the page or other components
+* its styles and scripts have no effect on the page or other components
+* it does not rely on external selectors to style its children
 
 ### A component is tested when it has:
 
