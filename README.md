@@ -2,7 +2,30 @@
 
 A gem to document components in GOV.UK frontend applications.
 
-## Usage
+## Write components in your application
+
+Components are packages of template, style, behaviour and documentation that live in your application.
+
+A component must:
+* [meet the component principles](docs/component_principles.md)
+* [follow component conventions](docs/component_conventions.md)
+
+A lead paragraph component would be included in a template like this:
+
+```erb
+<%= render 'components/lead-paragraph', text: "A description is one or two leading sentences" %>
+```
+
+## Set up a component guide
+
+This gem creates a component guide for all your application’s components.
+
+An example guide this gem created for government-frontend:
+https://government-frontend.herokuapp.com/component-guide
+
+The guide includes your application’s `application.scss` and `application.js` files by default. This is [configurable](#configuration).
+
+### Install gem
 
 Add this line to your application's Gemfile in the [development and test groups](http://bundler.io/v1.12/groups.html#grouping-your-dependencies):
 
@@ -28,21 +51,6 @@ end
 
 If your application was government-frontend the component guide would be at:
 http://government-frontend.dev.gov.uk/component-guide
-
-### Write components in your application
-
-Components are partials included by your application:
-```erb
-<%= render 'components/description', { description: "A description is one or two leading sentences." } %>
-```
-
-Components must:
-* [meet the component principles](docs/component_principles.md)
-* [follow component conventions](docs/component_conventions.md)
-
-The component guide will include your application’s styles and scripts.
-
-It will include `application.scss` and `application.js` by default but this is [configurable](#configuration).
 
 ### Configure the gem
 
