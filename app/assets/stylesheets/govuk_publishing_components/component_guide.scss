@@ -65,7 +65,6 @@ $border-color: #ccc;
 .code-block {
   margin: 30px 0;
   @extend %outdent-to-full-width;
-  max-height: 300px;
 
   // Match Prism styles to avoid a flash as it renders
   background: $prism-background;
@@ -83,6 +82,7 @@ $border-color: #ccc;
 
   pre[class*=language-] {
     padding: $gutter;
+    max-height: 300px;
   }
 
   code {
