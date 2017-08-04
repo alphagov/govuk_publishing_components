@@ -1,3 +1,7 @@
+# 0.4.1
+
+* Fix overlap issue with code snippets (PR #15)
+
 # 0.4.0
 
 * Add syntax highlighting to code block showing how to call a component (PR #10)
