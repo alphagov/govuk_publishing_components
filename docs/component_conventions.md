@@ -61,6 +61,11 @@ With the exception of namespaces, follow the [GOV.UK Frontend CSS conventions](h
 
 All stylesheets must be linted according to [the style rules](https://github.com/alphagov/govuk-lint/blob/master/configs/scss_lint/gds-sass-styleguide.yml) in [govuk-lint](https://github.com/alphagov/govuk-lint).
 
+```
+# Lint Sass in your application components using govuk-lint
+bundle exec govuk-lint-sass app/assets/stylesheets/components
+```
+
 ## Javascript
 
 Follow the [GOV.UK Frontend JS conventions](https://github.com/alphagov/govuk-frontend/blob/master/docs/coding-standards/js.md).
