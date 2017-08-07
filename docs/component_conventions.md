@@ -1,5 +1,7 @@
 # Component Conventions
 
+## Namespacing
+
 All components must use the `.app-` or `.pub-` namespace with the `c` prefix. The `c` is for component. For example, `.app-c-banner`.
 
 Do not use the `.govuk-c` namespace.
