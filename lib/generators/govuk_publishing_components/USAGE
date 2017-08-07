@@ -1,0 +1,5 @@
+Description:
+    Generates a new component
+
+Example:
+    rails generate govuk_publishing_components:component [component_name]
