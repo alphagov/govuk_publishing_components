@@ -48,6 +48,6 @@ A component is a package comprised of template, style, behaviour and documentati
 * defines a convention for components to follow
 * lints components for consistent coding style
 * makes it easy to build, move or delete components
-* makes it easy to arrange or compose components without glue code
+* makes it easy to arrange or compose components without further code to ‘glue’ them together
 * makes components discoverable
 * hides the internal implementation of a component from applications
