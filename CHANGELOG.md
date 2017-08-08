@@ -1,3 +1,7 @@
+# 0.4.2
+
+* Relax slimmer version (PR #20)
+
 # 0.4.1
 
 * Fix overlap issue with code snippets (PR #15)
