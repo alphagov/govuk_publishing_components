@@ -1,3 +1,7 @@
+# 0.5.0
+
+* Allow print styles to be shown in guide (PR #19)
+
 # 0.4.2
 
 * Relax slimmer version (PR #20)
