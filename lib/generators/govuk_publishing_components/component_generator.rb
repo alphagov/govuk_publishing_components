@@ -16,12 +16,10 @@ module GovukPublishingComponents
 
       create_directory_if_not_exists(template_dir)
       create_directory_if_not_exists(docs_dir)
-      create_directory_if_not_exists(test_dir)
       create_directory_if_not_exists(scss_dir)
 
       template '_component.html.erb', "#{template_dir}_#{@public_name}.html.erb"
       template 'component.yml.erb', "#{docs_dir}#{@public_name}.yml"
-      template 'component_test.rb.erb', "#{test_dir}#{file_name}_test.rb"
       template '_component.scss', "#{scss_dir}_#{@public_name}.scss"
     end
 
