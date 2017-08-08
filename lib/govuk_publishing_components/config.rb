@@ -10,6 +10,9 @@ module GovukPublishingComponents
     mattr_accessor :application_stylesheet
     self.application_stylesheet = "application"
 
+    mattr_accessor :application_print_stylesheet
+    self.application_print_stylesheet = nil
+
     mattr_accessor :application_javascript
     self.application_javascript = "application"
   end

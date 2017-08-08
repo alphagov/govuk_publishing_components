@@ -6,6 +6,9 @@
   </title>
   <%= stylesheet_link_tag "govuk_publishing_components/application", media: "all" %>
   <%= stylesheet_link_tag "#{GovukPublishingComponents::Config.application_stylesheet}" %>
+  <% if GovukPublishingComponents::Config.application_print_stylesheet %>
+    <%= stylesheet_link_tag "#{GovukPublishingComponents::Config.application_print_stylesheet}", media: "print" %>
+  <% end %>
 
   <%= javascript_include_tag "govuk_publishing_components/application" %>
   <%= javascript_include_tag "#{GovukPublishingComponents::Config.application_javascript}" %>
