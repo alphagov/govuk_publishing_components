@@ -1,3 +1,7 @@
+# 0.6.0
+
+* Add component generator (PR #24)
+
 # 0.5.0
 
 * Allow print styles to be shown in guide (PR #19)
