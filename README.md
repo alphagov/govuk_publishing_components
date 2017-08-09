@@ -71,6 +71,16 @@ if defined?(GovukPublishingComponents)
 end
 ```
 
+## Component generator
+
+The gem includes a component generator to stub the minimal files required for a component.
+
+```ruby
+rails generate govuk_publishing_components:component [component_name]
+```
+
+This will create a template, scss file and yml documentation file for a new component. It will not create a test file as this cannot be reliably done automatically across applications, but a test file will be necessary.
+
 ## Licence
 
 [MIT Licence](LICENCE.md)
