@@ -2,6 +2,12 @@
 <html>
 <head>
   <title>
+    <% if @action == 'preview' %>
+      <%= @component_doc.name %><% if @component_fixture.length <= 1 %>:
+        <%= @component_fixture.first.name %>
+      <% end %>
+      preview -
+    <% end %>
     <%= yield :title %><% if content_for(:title) %> - <% end %><%= GovukPublishingComponents::Config.component_guide_title %>
   </title>
   <%= stylesheet_link_tag "govuk_publishing_components/application", media: "all" %>
@@ -14,19 +20,25 @@
   <%= javascript_include_tag "#{GovukPublishingComponents::Config.application_javascript}" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-  <div class="header-proposition">
-    <div class="content">
-      <nav id="proposition-menu" role="navigation">
-        <%= link_to GovukPublishingComponents::Config.component_guide_title, component_guide_path, id: 'proposition-name' %>
-      </nav>
+<body class="<%= 'hide-header-and-footer' unless params[:preview] == 'page' || @action != 'preview' %>">
+  <% if @action != 'preview' %>
+    <div class="header-proposition">
+      <div class="content">
+        <nav id="proposition-menu" role="navigation">
+          <%= link_to GovukPublishingComponents::Config.component_guide_title, component_guide_path, id: 'proposition-name' %>
+        </nav>
+      </div>
     </div>
-  </div>
 
-  <main id="wrapper" class="govuk-component-guide-wrapper">
+    <main id="wrapper" class="govuk-component-guide-wrapper">
     <%= render 'govuk_component/breadcrumbs', breadcrumbs: @guide_breadcrumbs  %>
-    <%= yield %>
-  </main>
+  <% else %>
+    <main id="wrapper">
+  <% end %>
+
+      <%= yield %>
+    </main>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/prism.min.js" integrity="sha256-Zb9yKJ/cfs+jG/zIOFL0QEuXr2CDKF7FR5YBJY3No+c=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/components/prism-ruby.min.js" integrity="sha256-e0SYaLys07GcwuYiWJ0aewa3AOR3hHFY1mNTppYPb34=" crossorigin="anonymous"></script>

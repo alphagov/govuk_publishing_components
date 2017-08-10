@@ -3,15 +3,18 @@ module GovukPublishingComponents
     append_view_path File.join(Rails.root, "app", "views", "components")
 
     def index
+      @action = params[:action]
       @component_docs = ComponentDoc.all
     end
 
     def show
+      @action = params[:action]
       @component_doc = ComponentDoc.get(params[:component])
       @guide_breadcrumbs = [index_breadcrumb, component_breadcrumb(@component_doc)]
     end
 
     def fixture
+      @action = params[:action]
       @component_doc = ComponentDoc.get(params[:component])
       @component_fixture = @component_doc.fixtures.find { |f| f.id == params[:fixture] }
       @guide_breadcrumbs = [
@@ -26,14 +29,13 @@ module GovukPublishingComponents
     def preview
       @component_fixture = []
       @component_doc = ComponentDoc.get(params[:component])
+      @action = params[:action]
 
       if params[:fixture].present?
         @component_fixture.push(@component_doc.fixtures.find { |f| f.id == params[:fixture] })
       else
         @component_fixture = @component_doc.fixtures
       end
-
-      render layout: "govuk_publishing_components/preview"
     end
 
   private
