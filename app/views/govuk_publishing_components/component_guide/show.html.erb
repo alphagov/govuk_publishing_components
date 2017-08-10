@@ -35,11 +35,12 @@
 
   <% if @component_doc.other_fixtures.any? %>
     <div class="fixtures">
-      <h2 class="component-doc-h2">Other examples</h2>
+      <h2 class="component-doc-h2">Other examples <small>(<a href="<%= component_preview_all_path(@component_doc.id) %>">preview all</a>)</small></h2>
       <% @component_doc.other_fixtures.each do |fixture| %>
         <div class="component-fixture">
           <h3 class="fixture-title">
             <a href="<%= component_fixture_path(@component_doc.id, fixture.id) %>"><%= fixture.name %></a>
+            <small>(<a href="<%= component_preview_path(@component_doc.id, fixture.id) %>">preview</a>)</small>
           </h3>
           <%= render "govuk_publishing_components/component_guide/component_doc/call", component_doc: @component_doc, fixture: fixture %>
           <%= render "govuk_publishing_components/component_guide/component_doc/preview", component_doc: @component_doc, fixture: fixture %>

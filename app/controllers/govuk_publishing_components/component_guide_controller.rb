@@ -23,6 +23,19 @@ module GovukPublishingComponents
                            ]
     end
 
+    def preview
+      @component_fixture = []
+      @component_doc = ComponentDoc.get(params[:component])
+
+      if params[:fixture].present?
+        @component_fixture.push(@component_doc.fixtures.find { |f| f.id == params[:fixture] })
+      else
+        @component_fixture = @component_doc.fixtures
+      end
+
+      render :layout => "govuk_publishing_components/preview"
+    end
+
   private
 
     def index_breadcrumb
