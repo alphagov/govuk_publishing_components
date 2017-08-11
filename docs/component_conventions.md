@@ -59,8 +59,27 @@ fixtures:
 
 ## Styles
 
-With the exception of namespaces, follow the [GOV.UK Frontend CSS conventions](https://github.com/alphagov/govuk-frontend/blob/master/docs/coding-standards/css.md).
+With the exception of namespaces, follow the [GOV.UK Frontend CSS conventions](https://github.com/alphagov/govuk-frontend/blob/master/docs/coding-standards/css.md), which describes in more detail our approach to namespaces, linting and BEM (block, element, modifier) CSS naming methodology.
 
+### BEM
+`.block {}`
+
+`.block__element {}`
+
+`.block--modifier {}`
+
+`.block__element--modifier {}`
+
+All CSS selectors should follow the BEM naming convention shown above, explained in [more detail here](https://github.com/alphagov/govuk-frontend/blob/master/docs/coding-standards/css.md#bem).
+
+Using BEM means we have confidence in our styles only being applied within the component context, and never interfering with other global styles. It also makes it clearer how HTML elements relate to each other.
+
+Visit the links below for more information:
+
+* [Official BEM Documentation](https://en.bem.info/methodology/naming-convention/#css-selector-naming-convention)
+* [Guide on BEM naming conventions](https://webdesign.tutsplus.com/articles/an-introduction-to-the-bem-methodology--cms-19403)
+
+### Linting
 All stylesheets must be linted according to [the style rules](https://github.com/alphagov/govuk-lint/blob/master/configs/scss_lint/gds-sass-styleguide.yml) in [govuk-lint](https://github.com/alphagov/govuk-lint).
 
 ```
