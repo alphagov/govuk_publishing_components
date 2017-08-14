@@ -2,9 +2,9 @@
 <html>
 <head>
   <title>
-    <% if @action == 'preview' %>
-      <%= @component_doc.name %><% if @component_fixture.length <= 1 %>:
-        <%= @component_fixture.first.name %>
+    <% if @preview %>
+      <%= @component_doc.name %><% if @component_fixtures.length <= 1 %>:
+        <%= @component_fixtures.first.name %>
       <% end %>
       preview -
     <% end %>
@@ -20,8 +20,8 @@
   <%= javascript_include_tag "#{GovukPublishingComponents::Config.application_javascript}" %>
   <%= csrf_meta_tags %>
 </head>
-<body class="<%= 'hide-header-and-footer' unless params[:preview] == 'page' || @action != 'preview' %>">
-  <% if @action != 'preview' %>
+<body class="<%= 'hide-header-and-footer' if @preview %>">
+  <% unless @preview %>
     <div class="header-proposition">
       <div class="content">
         <nav id="proposition-menu" role="navigation">
