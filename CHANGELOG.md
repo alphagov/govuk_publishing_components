@@ -1,3 +1,7 @@
+# 0.7.0
+
+* Relax required version of dependencies to allow gem to work with a Rails 5.1 project (PR #29)
+
 # 0.6.0
 
 * Add component generator (PR #24)
