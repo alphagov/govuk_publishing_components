@@ -1,6 +1,6 @@
 <% @component_fixtures.each do |fixture| %>
   <div class="component-guide-preview-page">
-    <% unless @component_fixtures.length <= 1 %>
+    <% if @component_fixtures.length > 1 %>
       <h2 class="preview-title"><a href="<%= component_fixture_path(@component_doc.id, fixture.id) %>"><%= fixture.name %></a></h2>
     <% end %>
     <%= render "components/#{@component_doc[:id]}", fixture.data %>

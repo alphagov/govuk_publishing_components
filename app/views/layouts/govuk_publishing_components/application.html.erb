@@ -3,7 +3,7 @@
 <head>
   <title>
     <% if @preview %>
-      <%= @component_doc.name %><% if @component_fixtures.length <= 1 %>:
+      <%= @component_doc.name %><% if @component_fixtures.length == 1 %>:
         <%= @component_fixtures.first.name %>
       <% end %>
       preview -
