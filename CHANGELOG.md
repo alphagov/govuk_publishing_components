@@ -1,3 +1,7 @@
+# 0.8.0
+* Add preview pages to component guide, to allow components to be viewed in isolation (PR #27)
+* Includes addition of 'preview all' and 'preview' pages
+
 # 0.7.0
 
 * Relax required version of dependencies to allow gem to work with a Rails 5.1 project (PR #29)
