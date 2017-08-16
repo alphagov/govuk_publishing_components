@@ -1,5 +1,13 @@
 module GovukPublishingComponents
-  ComponentFixture = Struct.new(:id, :data) do
+  class ComponentFixture
+    attr_reader :id,
+                :data
+
+    def initialize(id, data)
+      @id = id
+      @data = data
+    end
+
     def name
       id.humanize
     end
