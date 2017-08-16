@@ -111,4 +111,26 @@ describe 'Component guide' do
       end
     end
   end
+
+  it 'loads a preview all page for a component' do
+    visit '/component-guide/test-component-with-params/preview'
+    expect(page).to have_selector('.hide-header-and-footer')
+    expect(page).not_to have_selector('#global-header')
+    expect(page).not_to have_selector('#footer')
+
+    expect(page).to have_selector('.component-guide-preview-page .preview-title', text: 'Default')
+    expect(page).to have_selector('.component-guide-preview-page .test-component-with-params', text: 'Some value')
+    expect(page).to have_selector('.component-guide-preview-page .preview-title', text: 'Another fixture')
+    expect(page).to have_selector('.component-guide-preview-page .test-component-with-params', text: 'A different value')
+  end
+
+  it 'loads a preview page for a specific fixture' do
+    visit '/component-guide/test-component-with-params/another_fixture/preview'
+    expect(page).to have_selector('.hide-header-and-footer')
+    expect(page).not_to have_selector('#global-header')
+    expect(page).not_to have_selector('#footer')
+
+    expect(page).to have_no_selector('.component-guide-preview-page .preview-title')
+    expect(page).to have_selector('.component-guide-preview-page .test-component-with-params', text: 'A different value')
+  end
 end

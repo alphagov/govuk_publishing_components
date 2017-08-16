@@ -42,6 +42,10 @@ $border-color: #ccc;
 .component-doc-h2 {
   @include bold-27;
   margin: ($gutter * 1.5) 0 $gutter;
+
+  small {
+    @include bold-16;
+  }
 }
 
 .component-doc-h3 {
@@ -132,3 +136,34 @@ $border-color: #ccc;
     }
   }
 }
+
+// Preview Page Styling
+html {
+  background: $white;
+}
+
+.hide-header-and-footer {
+  // scss-lint:disable IdSelector
+  #global-header,
+  #global-header-bar,
+  #global-breadcrumb,
+  #footer {
+    display: none;
+  }
+  // scss-lint:enable IdSelector
+}
+
+.component-guide-preview-page {
+  padding: ($gutter * 1.5) 0;
+  position: relative;
+
+  .preview-title {
+    margin-bottom: 1em;
+    @include bold-16;
+
+    a {
+      color: $black;
+    }
+  }
+}
+
