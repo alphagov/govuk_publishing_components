@@ -32,6 +32,10 @@ module GovukPublishingComponents
       govspeak_to_html(accessibility_criteria) if accessibility_criteria.present?
     end
 
+    def partial_path
+      "components/#{id}"
+    end
+
   private
 
     def govspeak_to_html(govspeak)
