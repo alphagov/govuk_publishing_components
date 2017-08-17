@@ -84,3 +84,6 @@ This will create a template, scss file and yml documentation file for a new comp
 ## Licence
 
 [MIT Licence](LICENCE.md)
+
+## Development
+For documentation on how to update and develop this gem see [DEVELOPMENT.md](./DEVELOPMENT.md)

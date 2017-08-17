@@ -110,6 +110,11 @@ describe 'Component guide' do
     end
   end
 
+  it 'has accessibility testing hooks' do
+    visit '/component-guide/test-component'
+    expect(page).to have_selector('.component-guide-preview[data-module="test-a11y"]')
+  end
+
   it 'displays the accessibility acceptance criteria of a component as html using static’s govspeak component' do
     visit '/component-guide/test-component'
     within ".component-accessibility-criteria" do
@@ -132,6 +137,7 @@ describe 'Component guide' do
     expect(page).to have_selector('.component-guide-preview-page .test-component-with-params', text: 'Some value')
     expect(page).to have_selector('.component-guide-preview-page .preview-title', text: 'Another fixture')
     expect(page).to have_selector('.component-guide-preview-page .test-component-with-params', text: 'A different value')
+    expect(page).to have_selector('.component-guide-preview-page [data-module="test-a11y"]')
   end
 
   it 'loads a preview page for a specific fixture' do
@@ -142,5 +148,6 @@ describe 'Component guide' do
 
     expect(page).to have_no_selector('.component-guide-preview-page .preview-title')
     expect(page).to have_selector('.component-guide-preview-page .test-component-with-params', text: 'A different value')
+    expect(page).to have_selector('.component-guide-preview-page [data-module="test-a11y"]')
   end
 end
