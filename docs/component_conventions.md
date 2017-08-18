@@ -72,6 +72,18 @@ With the exception of namespaces, follow the [GOV.UK Frontend CSS conventions](h
 
 All CSS selectors should follow the BEM naming convention shown above, explained in [more detail here](https://github.com/alphagov/govuk-frontend/blob/master/docs/coding-standards/css.md#bem).
 
+Note: to avoid long and complicated class names, we follow the [BEM guidance](http://getbem.com/faq/#css-nested-elements) that classes do not have to reflect the nested nature of the DOM.
+
+```scss
+  // Avoid this:
+  .block__elem1__elem2__elem3
+
+  // Instead use:
+  .block__elem1
+  .block__elem2
+  .block__elem3
+```
+
 Using BEM means we have confidence in our styles only being applied within the component context, and never interfering with other global styles. It also makes it clearer how HTML elements relate to each other.
 
 Visit the links below for more information:
