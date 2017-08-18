@@ -73,6 +73,16 @@ describe 'Component guide' do
     expect(page).to have_selector('.component-guide-preview .test-component-with-params', text: 'A different value')
   end
 
+  it 'marks strings in fixtures as html_safe' do
+    visit '/component-guide/test-component-with-html-params'
+    within ".test-component-with-html-params" do
+      7.times do |i|
+        count = i + 1
+        expect(page).to have_selector(".param-#{count}", text: count)
+      end
+    end
+  end
+
   it 'creates a page for each fixture' do
     visit '/component-guide/test-component-with-params/another_fixture'
     expect(body).to include('How to call this example')
