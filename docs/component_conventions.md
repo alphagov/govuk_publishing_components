@@ -37,7 +37,7 @@ The `.yml` file must have:
 | description | Required | One or two sentences summarising the component
 | body | Optional | A govspeak markdown block giving guidance for the component |
 | accessibility_criteria | Required | A govspeak markdown block listing the accessibility acceptance criteria this component must meet to be accessible |
-| examples | Required | Each block represents an example with a set of inputs. Each example is listed in the component guide. Examples must cover all expected use cases. |
+| examples | Required | Each block represents an example and each example is listed in the component guide. Examples must cover all expected use cases. |
 
 ### Example yaml file
 
@@ -54,7 +54,33 @@ acceptance_criteria: |
   * be keyboard focusable
 examples:
   default:
-    some_parameter: 'The parameter value'
+    data:
+      some_parameter: 'The parameter value'
+  another_example:
+    data:
+      some_parameter: 'A different parameter value'
+```
+
+#### Right to left examples
+
+A context block can be passed to examples. The only supported context is `right_to_left`:
+
+```yaml
+examples:
+  right_to_left_example:
+    data:
+      some_parameter: 'عربى'
+    context:
+      right_to_left: true
+```
+
+The component guide will wrap the example with a `direction-rtl` class. It is expected that the host application will set the text direction using the class in a parent element using the following CSS:
+
+```css
+.direction-rtl {
+  direction: rtl;
+  text-align: start;
+}
 ```
 
 ## Styles

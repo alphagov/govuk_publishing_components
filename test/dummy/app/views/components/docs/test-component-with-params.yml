@@ -12,3 +12,8 @@ examples:
     data:
   example_with_empty_data_property:
     data: {}
+  right_to_left_example:
+    data:
+      test_component_parameter: 'A different value'
+    context:
+      right_to_left: true

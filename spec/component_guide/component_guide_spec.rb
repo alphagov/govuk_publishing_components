@@ -98,6 +98,11 @@ describe 'Component guide' do
     expect(page).to have_selector('.component-guide-preview .test-component-with-params', text: 'A different value')
   end
 
+  it 'includes the direction-rtl helper class for right to left example' do
+    visit '/component-guide/test-component-with-params/right_to_left_example'
+    expect(page).to have_selector('.component-guide-preview.direction-rtl')
+  end
+
   it 'handles components that use application helpers' do
     visit '/component-guide/test-component-with-helper'
     expect(body).to include('A test component that uses a helper in the host application')
