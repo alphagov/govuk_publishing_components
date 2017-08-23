@@ -7,3 +7,8 @@ examples:
   another_example:
     data:
       test_component_parameter: 'A different value'
+  example_with_no_data_property:
+  example_with_nil_data_property:
+    data:
+  example_with_empty_data_property:
+    data: {}

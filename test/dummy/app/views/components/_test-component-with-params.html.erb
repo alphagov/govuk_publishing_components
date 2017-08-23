@@ -1,3 +1,6 @@
+<% test_component_parameter ||= false %>
 <div class="test-component-with-params">
-  <%= test_component_parameter %>
+  <% if test_component_parameter %>
+    <%= test_component_parameter %>
+  <% end %>
 </div>

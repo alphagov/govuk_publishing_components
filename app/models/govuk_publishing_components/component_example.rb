@@ -5,7 +5,7 @@ module GovukPublishingComponents
 
     def initialize(id, data)
       @id = id
-      @data = data
+      @data = data || {}
     end
 
     def name
