@@ -1,0 +1,14 @@
+<div class="test-component-with-html-params">
+  <%= first %>
+  <%= nested[:second] %>
+  <%= nested[:deeper][:third] %>
+  <% list.each do |item| %>
+    <% if item.is_a?(Array) %>
+      <% item.each do |nested_item| %>
+        <%= nested_item %>
+      <% end %>
+    <% else %>
+      <%= item %>
+    <% end %>
+  <% end %>
+</div>
