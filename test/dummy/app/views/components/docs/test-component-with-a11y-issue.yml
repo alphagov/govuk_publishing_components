@@ -1,4 +1,5 @@
 name: Test component with accessibility issue
 description: A test component that has accessibility issues
 examples:
-  default: {}
+  default:
+    data: {}

@@ -1,6 +1,7 @@
 # Development
 
 * Rename fixtures to examples (breaking change – all documentation will need updating when upgrading)
+* Nest example data within a named block to give examples more features
 
 # 0.9.0
 

@@ -10,4 +10,5 @@ body: |
 accessibility_criteria: |
   * This is some criteria in a list
 examples:
-  default: {}
+  default:
+    data: {}

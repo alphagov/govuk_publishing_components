@@ -2,6 +2,8 @@ name: Test component with parameters
 description: A test component that takes a required parameter
 examples:
   default:
-    test_component_parameter: 'Some value'
+    data:
+      test_component_parameter: 'Some value'
   another_example:
-    test_component_parameter: 'A different value'
+    data:
+      test_component_parameter: 'A different value'
