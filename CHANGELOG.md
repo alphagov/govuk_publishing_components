@@ -1,3 +1,7 @@
+# Development
+
+* Rename fixtures to examples (breaking change – all documentation will need updating when upgrading)
+
 # 0.9.0
 
 * Add aXe accessibility testing javascript to component guide pages (PR #33)

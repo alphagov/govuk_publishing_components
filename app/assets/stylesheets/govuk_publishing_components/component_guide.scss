@@ -122,11 +122,11 @@ $border-color: #ccc;
   }
 }
 
-.fixtures {
-  .component-fixture {
+.examples {
+  .component-example {
     margin: 0 0 $gutter * 1.5;
 
-    .fixture-title {
+    .example-title {
       @include bold-24;
       margin: $gutter-half 0;
 

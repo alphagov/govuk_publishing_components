@@ -9,5 +9,5 @@ body: |
   * list item two
 accessibility_criteria: |
   * This is some criteria in a list
-fixtures:
+examples:
   default: {}

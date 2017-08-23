@@ -37,7 +37,7 @@ The `.yml` file must have:
 | description | Required | One or two sentences summarising the component
 | body | Optional | A govspeak markdown block giving guidance for the component |
 | accessibility_criteria | Required | A govspeak markdown block listing the accessibility acceptance criteria this component must meet to be accessible |
-| fixtures | Required | Each block represents an example with a set of inputs. Each example is listed in the component guide. Examples must cover all expected use cases. |
+| examples | Required | Each block represents an example with a set of inputs. Each example is listed in the component guide. Examples must cover all expected use cases. |
 
 ### Example yaml file
 
@@ -52,7 +52,7 @@ acceptance_criteria: |
   The link must:
 
   * be keyboard focusable
-fixtures:
+examples:
   default:
     some_parameter: 'The parameter value'
 ```

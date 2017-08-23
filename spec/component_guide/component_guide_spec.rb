@@ -55,13 +55,13 @@ describe 'Component guide' do
     end
   end
 
-  it 'lists fixtures in a human readable way' do
+  it 'lists examples in a human readable way' do
     visit '/component-guide/test-component-with-params'
     expect(page).to have_selector('h2', text: 'Other examples')
-    expect(page).to have_selector('h3 a[href="/component-guide/test-component-with-params/another_fixture"]', text: 'Another fixture')
+    expect(page).to have_selector('h3 a[href="/component-guide/test-component-with-params/another_example"]', text: 'Another example')
   end
 
-  it 'passes params in fixtures to component example' do
+  it 'passes params in examples to component example' do
     visit '/component-guide/test-component-with-params'
     expect(body).to include('A test component that takes a required parameter')
     expect(body).to include('render <span class="token string">\'components/test-component-with-params\'</span>')
@@ -74,7 +74,7 @@ describe 'Component guide' do
     expect(page).to have_selector('.component-guide-preview .test-component-with-params', text: 'A different value')
   end
 
-  it 'marks strings in fixtures as html_safe' do
+  it 'marks strings in examples as html_safe' do
     visit '/component-guide/test-component-with-html-params'
     within ".test-component-with-html-params" do
       7.times do |i|
@@ -89,8 +89,8 @@ describe 'Component guide' do
       .to raise_error(Capybara::Poltergeist::JavascriptError)
   end
 
-  it 'creates a page for each fixture' do
-    visit '/component-guide/test-component-with-params/another_fixture'
+  it 'creates a page for each example' do
+    visit '/component-guide/test-component-with-params/another_example'
     expect(body).to include('How to call this example')
     expect(body).to include('How it looks')
 
@@ -141,13 +141,13 @@ describe 'Component guide' do
 
     expect(page).to have_selector('.component-guide-preview-page .preview-title', text: 'Default')
     expect(page).to have_selector('.component-guide-preview-page .test-component-with-params', text: 'Some value')
-    expect(page).to have_selector('.component-guide-preview-page .preview-title', text: 'Another fixture')
+    expect(page).to have_selector('.component-guide-preview-page .preview-title', text: 'Another example')
     expect(page).to have_selector('.component-guide-preview-page .test-component-with-params', text: 'A different value')
     expect(page).to have_selector('.component-guide-preview-page [data-module="test-a11y"]')
   end
 
-  it 'loads a preview page for a specific fixture' do
-    visit '/component-guide/test-component-with-params/another_fixture/preview'
+  it 'loads a preview page for a specific example' do
+    visit '/component-guide/test-component-with-params/another_example/preview'
     expect(page).to have_selector('.hide-header-and-footer')
     expect(page).not_to have_selector('#global-header')
     expect(page).not_to have_selector('#footer')

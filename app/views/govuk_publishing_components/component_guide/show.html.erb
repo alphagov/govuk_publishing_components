@@ -17,12 +17,12 @@
 
   <div class="component-doc">
     <h2 class="component-doc-h2">How to call this component</h2>
-    <%= render "govuk_publishing_components/component_guide/component_doc/call", component_doc: @component_doc, fixture: @component_doc.fixture %>
+    <%= render "govuk_publishing_components/component_guide/component_doc/call", component_doc: @component_doc, example: @component_doc.example %>
 
     <h2 class="component-doc-h2">How it looks</h2>
   </div>
 
-  <%= render "govuk_publishing_components/component_guide/component_doc/preview", component_doc: @component_doc, fixture: @component_doc.fixture %>
+  <%= render "govuk_publishing_components/component_guide/component_doc/preview", component_doc: @component_doc, example: @component_doc.example %>
 
   <% if @component_doc.accessibility_criteria.present? %>
     <div class="grid-row component-accessibility-criteria">
@@ -33,19 +33,19 @@
     </div>
   <% end %>
 
-  <% if @component_doc.other_fixtures.any? %>
-    <div class="fixtures">
+  <% if @component_doc.other_examples.any? %>
+    <div class="examples">
       <h2 class="component-doc-h2">Other examples
         <small>(<a href="<%= component_preview_all_path(@component_doc.id) %>">preview all</a>)</small>
       </h2>
-      <% @component_doc.other_fixtures.each do |fixture| %>
-        <div class="component-fixture">
-          <h3 class="fixture-title">
-            <a href="<%= component_fixture_path(@component_doc.id, fixture.id) %>"><%= fixture.name %></a>
-            <small>(<a href="<%= component_preview_path(@component_doc.id, fixture.id) %>">preview</a>)</small>
+      <% @component_doc.other_examples.each do |example| %>
+        <div class="component-example">
+          <h3 class="example-title">
+            <a href="<%= component_example_path(@component_doc.id, example.id) %>"><%= example.name %></a>
+            <small>(<a href="<%= component_preview_path(@component_doc.id, example.id) %>">preview</a>)</small>
           </h3>
-          <%= render "govuk_publishing_components/component_guide/component_doc/call", component_doc: @component_doc, fixture: fixture %>
-          <%= render "govuk_publishing_components/component_guide/component_doc/preview", component_doc: @component_doc, fixture: fixture %>
+          <%= render "govuk_publishing_components/component_guide/component_doc/call", component_doc: @component_doc, example: example %>
+          <%= render "govuk_publishing_components/component_guide/component_doc/preview", component_doc: @component_doc, example: example %>
         </div>
       <% end %>
     </div>

@@ -1,5 +1,5 @@
 name: Test component with helper
 description: A test component that uses a helper in the host application
-fixtures:
+examples:
   default:
     string: 'This thing'

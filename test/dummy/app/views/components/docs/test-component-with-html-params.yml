@@ -1,6 +1,6 @@
 name: Test component with HTML parameters
 description: A test component that takes parameters containing HTML
-fixtures:
+examples:
   default:
     first: '<span class="param-1">1</span>'
     nested:

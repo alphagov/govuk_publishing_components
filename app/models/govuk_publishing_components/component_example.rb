@@ -1,5 +1,5 @@
 module GovukPublishingComponents
-  class ComponentFixture
+  class ComponentExample
     attr_reader :id,
                 :data
 
