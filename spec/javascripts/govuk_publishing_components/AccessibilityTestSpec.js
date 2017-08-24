@@ -73,7 +73,7 @@ describe('AccessibilityTest', function () {
         problem: 'Elements must have sufficient color contrast',
         html: '<a href="#" style="">Low contrast</a>',
         selector: TEST_SELECTOR + ' > a',
-        helpUrl: 'https://dequeuniversity.com/rules/axe/3.0.0-alpha/color-contrast?application=axeAPI'
+        helpUrl: 'https://dequeuniversity.com/rules/axe/2.3/color-contrast?application=axeAPI'
       })
 
       expect(result).toBe(errorMessage)
@@ -94,7 +94,7 @@ describe('AccessibilityTest', function () {
         problem: 'Images must have alternate text',
         html: '<img src="">',
         selector: TEST_SELECTOR + ' > img',
-        helpUrl: 'https://dequeuniversity.com/rules/axe/3.0.0-alpha/image-alt?application=axeAPI'
+        helpUrl: 'https://dequeuniversity.com/rules/axe/2.3/image-alt?application=axeAPI'
       })
 
       expect(result).toBe(errorMessage)
@@ -116,7 +116,7 @@ describe('AccessibilityTest', function () {
           problem: 'Elements must have sufficient color contrast',
           html: '<a href="#" style="">Low contrast</a>',
           selector: TEST_SELECTOR + ' > a',
-          helpUrl: 'https://dequeuniversity.com/rules/axe/3.0.0-alpha/color-contrast?application=axeAPI'
+          helpUrl: 'https://dequeuniversity.com/rules/axe/2.3/color-contrast?application=axeAPI'
         }) +
         '\n\n- - -\n\n' +
         renderErrorMessage({
@@ -124,7 +124,7 @@ describe('AccessibilityTest', function () {
           problem: 'Images must have alternate text',
           html: '<img src="">',
           selector: TEST_SELECTOR + ' > img',
-          helpUrl: 'https://dequeuniversity.com/rules/axe/3.0.0-alpha/image-alt?application=axeAPI'
+          helpUrl: 'https://dequeuniversity.com/rules/axe/2.3/image-alt?application=axeAPI'
         })
       )
 
