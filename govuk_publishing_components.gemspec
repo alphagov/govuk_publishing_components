@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "govuk-lint", "~> 2.1.0"
   s.add_development_dependency "rspec", "~> 3.6"
   s.add_development_dependency "capybara", "~> 2.14.4"
+  s.add_development_dependency "poltergeist", "~> 1.16.0"
   s.add_development_dependency "jasmine", "~> 2.4.0"
 
   # Needed to load slimmer test helpers
