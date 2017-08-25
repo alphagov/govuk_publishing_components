@@ -23,14 +23,14 @@
       var violations = (typeof results === 'undefined') ? [] : results.violations
       var incompleteWarnings = (typeof results === 'undefined') ? [] : results.incomplete
 
-      /*if (violations.length === 0) {
+      if (violations.length === 0 && incompleteWarnings.length === 0) {
         return callback('No accessibility issues found')
-      }*/
+      }
 
       var incompleteWarningsObj = (
         incompleteWarnings.map(function (incomplete) {
           var help = incomplete.help
-          var helpUrl = incomplete.helpUrl
+          var helpUrl = _formatHelpUrl(incomplete.helpUrl)
           var cssSelector = incomplete.nodes.map(function (node) {
             return node.target
           })
@@ -43,6 +43,7 @@
         })
       )
 
+      if (violations.length !== 0) {
       var errorText = (
         '\n' + 'Accessibility issues at ' +
         results.url + '\n\n' +
@@ -58,6 +59,11 @@
           ].join('\n\n\n')
         }).join('\n\n- - -\n\n')
       )
+    }
+    else {
+      console.info("aXe: No accessibility errors found")
+    }
+
       callback(undefined, errorText, incompleteWarningsObj)
     })
   }
@@ -121,7 +127,7 @@
           return
         }
         _renderIncompleteWarnings(incompleteWarnings)
-        _throwUncaughtError(violations)
+        if (violations) _throwUncaughtError(violations)
       })
     })
   }
