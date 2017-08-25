@@ -42,7 +42,7 @@ describe 'Component guide' do
     visit '/component-guide/test-component'
 
     expect(body).to include('How to call this component')
-    expect(body).to include('render \'components/test-component\'')
+    expect(body).to include('render <span class="token string">\'components/test-component\'</span>')
   end
 
   it 'includes the component partial' do
@@ -64,12 +64,13 @@ describe 'Component guide' do
   it 'passes params in fixtures to component example' do
     visit '/component-guide/test-component-with-params'
     expect(body).to include('A test component that takes a required parameter')
-    expect(body).to include('render \'components/test-component-with-params\'')
+    expect(body).to include('render <span class="token string">\'components/test-component-with-params\'</span>')
 
-    expect(body).to include('test_component_parameter: &quot;Some value&quot;')
+
+    expect(body).to include('test_component_parameter<span class="token punctuation">:</span> <span class="token string">"Some value"</span>')
     expect(page).to have_selector('.component-guide-preview .test-component-with-params', text: 'Some value')
 
-    expect(body).to include('test_component_parameter: &quot;A different value&quot;')
+    expect(body).to include('test_component_parameter<span class="token punctuation">:</span> <span class="token string">"A different value"</span>')
     expect(page).to have_selector('.component-guide-preview .test-component-with-params', text: 'A different value')
   end
 
@@ -83,12 +84,17 @@ describe 'Component guide' do
     end
   end
 
+  it 'guide throws errors if component has an accessibility issue' do
+    expect { visit '/component-guide/test-component-with-a11y-issue' }
+      .to raise_error(Capybara::Poltergeist::JavascriptError)
+  end
+
   it 'creates a page for each fixture' do
     visit '/component-guide/test-component-with-params/another_fixture'
     expect(body).to include('How to call this example')
     expect(body).to include('How it looks')
 
-    expect(body).to include('test_component_parameter: &quot;A different value&quot;')
+    expect(body).to include('test_component_parameter<span class="token punctuation">:</span> <span class="token string">"A different value"</span>')
     expect(page).to have_selector('.component-guide-preview .test-component-with-params', text: 'A different value')
   end
 
@@ -108,6 +114,11 @@ describe 'Component guide' do
         expect(content).to include('<li>list item one</li>')
       end
     end
+  end
+
+  it 'has accessibility testing hooks' do
+    visit '/component-guide/test-component'
+    expect(page).to have_selector('.component-guide-preview[data-module="test-a11y"]')
   end
 
   it 'displays the accessibility acceptance criteria of a component as html using static’s govspeak component' do
@@ -132,6 +143,7 @@ describe 'Component guide' do
     expect(page).to have_selector('.component-guide-preview-page .test-component-with-params', text: 'Some value')
     expect(page).to have_selector('.component-guide-preview-page .preview-title', text: 'Another fixture')
     expect(page).to have_selector('.component-guide-preview-page .test-component-with-params', text: 'A different value')
+    expect(page).to have_selector('.component-guide-preview-page [data-module="test-a11y"]')
   end
 
   it 'loads a preview page for a specific fixture' do
@@ -142,5 +154,6 @@ describe 'Component guide' do
 
     expect(page).to have_no_selector('.component-guide-preview-page .preview-title')
     expect(page).to have_selector('.component-guide-preview-page .test-component-with-params', text: 'A different value')
+    expect(page).to have_selector('.component-guide-preview-page [data-module="test-a11y"]')
   end
 end

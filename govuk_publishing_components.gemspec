@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.homepage    = "https://github.com/alphagov/govuk_publishing_components"
   s.license     = "MIT"
 
-  s.files = Dir["{app,config,db,lib}/**/*", "LICENCE.md", "Rakefile", "README.md"]
+  s.files = Dir["{app,config,db,lib}/**/*", "DEVELOPMENT.md", "LICENCE.md", "Rakefile", "README.md"]
 
   s.add_dependency "rails", ">= 5.0.0.1"
   s.add_dependency "slimmer"
@@ -25,8 +25,10 @@ Gem::Specification.new do |s|
   s.add_development_dependency "govuk-lint", "~> 2.1.0"
   s.add_development_dependency "rspec", "~> 3.6"
   s.add_development_dependency "capybara", "~> 2.14.4"
+  s.add_development_dependency "poltergeist", "~> 1.16.0"
+  s.add_development_dependency "jasmine", "~> 2.4.0"
 
   # Needed to load slimmer test helpers
   # https://github.com/alphagov/slimmer/issues/201
-  s.add_development_dependency "webmock", "~> 1.18.0"
+  s.add_development_dependency "webmock", "~> 3.0.1"
 end

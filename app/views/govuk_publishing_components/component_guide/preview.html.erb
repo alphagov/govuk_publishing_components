@@ -3,6 +3,8 @@
     <% if @component_fixtures.length > 1 %>
       <h2 class="preview-title"><a href="<%= component_fixture_path(@component_doc.id, fixture.id) %>"><%= fixture.name %></a></h2>
     <% end %>
-    <%= render @component_doc.partial_path, fixture.html_safe_data %>
+    <div data-module="test-a11y">
+      <%= render @component_doc.partial_path, fixture.html_safe_data %>
+    </div>
   </div>
 <% end %>
