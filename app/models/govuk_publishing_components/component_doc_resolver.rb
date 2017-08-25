@@ -12,8 +12,9 @@ module GovukPublishingComponents
   private
 
     def build(component)
-      fixtures = component[:fixtures].map { |id, data|
-        ComponentFixture.new(id.to_s, data)
+      examples = component[:examples].map { |id, example|
+        example = example || {}
+        ComponentExample.new(id.to_s, example["data"], example["context"])
       }
 
       ComponentDoc.new(component[:id],
@@ -21,7 +22,7 @@ module GovukPublishingComponents
                        component[:description],
                        component[:body],
                        component[:accessibility_criteria],
-                       fixtures)
+                       examples)
     end
 
     def fetch_component_docs

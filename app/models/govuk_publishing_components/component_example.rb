@@ -1,11 +1,13 @@
 module GovukPublishingComponents
-  class ComponentFixture
+  class ComponentExample
     attr_reader :id,
-                :data
+                :data,
+                :context
 
-    def initialize(id, data)
+    def initialize(id, data, context)
       @id = id
-      @data = data
+      @data = data || {}
+      @context = context || {}
     end
 
     def name
@@ -41,6 +43,10 @@ module GovukPublishingComponents
       else
         obj
       end
+    end
+
+    def right_to_left?
+      !!context['right_to_left']
     end
   end
 end

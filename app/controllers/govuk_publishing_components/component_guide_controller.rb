@@ -11,27 +11,27 @@ module GovukPublishingComponents
       @guide_breadcrumbs = [index_breadcrumb, component_breadcrumb(@component_doc)]
     end
 
-    def fixture
+    def example
       @component_doc = component_documentation_resolver.get(params[:component])
-      @component_fixture = @component_doc.fixtures.find { |f| f.id == params[:fixture] }
+      @component_example = @component_doc.examples.find { |f| f.id == params[:example] }
       @guide_breadcrumbs = [
                              index_breadcrumb,
-                             component_breadcrumb(@component_doc, @component_fixture),
+                             component_breadcrumb(@component_doc, @component_example),
                              {
-                               title: @component_fixture.name
+                               title: @component_example.name
                              }
                            ]
     end
 
     def preview
-      @component_fixtures = []
+      @component_examples = []
       @component_doc = component_documentation_resolver.get(params[:component])
       @preview = true
 
-      if params[:fixture].present?
-        @component_fixtures.push(@component_doc.fixtures.find { |f| f.id == params[:fixture] })
+      if params[:example].present?
+        @component_examples.push(@component_doc.examples.find { |f| f.id == params[:example] })
       else
-        @component_fixtures = @component_doc.fixtures
+        @component_examples = @component_doc.examples
       end
     end
 
@@ -48,10 +48,10 @@ module GovukPublishingComponents
       }
     end
 
-    def component_breadcrumb(component_doc, component_fixture = nil)
+    def component_breadcrumb(component_doc, component_example = nil)
       Hash.new.tap do |h|
         h[:title] = component_doc.name
-        h[:url] = component_doc_path(component_doc.id) if component_fixture
+        h[:url] = component_doc_path(component_doc.id) if component_example
       end
     end
   end

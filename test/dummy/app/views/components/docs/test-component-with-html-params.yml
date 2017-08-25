@@ -1,15 +1,16 @@
 name: Test component with HTML parameters
 description: A test component that takes parameters containing HTML
-fixtures:
+examples:
   default:
-    first: '<span class="param-1">1</span>'
-    nested:
-      second: '<span class="param-2">2</span>'
-      deeper:
-        third: '<span class="param-3">3</span>'
-    list:
-      - '<span class="param-4">4</span>'
-      - '<span class="param-5">5</span>'
-      -
-        - '<span class="param-6">6</span>'
-        - '<span class="param-7">7</span>'
+    data:
+      first: '<span class="param-1">1</span>'
+      nested:
+        second: '<span class="param-2">2</span>'
+        deeper:
+          third: '<span class="param-3">3</span>'
+      list:
+        - '<span class="param-4">4</span>'
+        - '<span class="param-5">5</span>'
+        -
+          - '<span class="param-6">6</span>'
+          - '<span class="param-7">7</span>'

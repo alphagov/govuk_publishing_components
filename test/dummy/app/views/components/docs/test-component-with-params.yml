@@ -1,7 +1,19 @@
 name: Test component with parameters
 description: A test component that takes a required parameter
-fixtures:
+examples:
   default:
-    test_component_parameter: 'Some value'
-  another_fixture:
-    test_component_parameter: 'A different value'
+    data:
+      test_component_parameter: 'Some value'
+  another_example:
+    data:
+      test_component_parameter: 'A different value'
+  example_with_no_data_property:
+  example_with_nil_data_property:
+    data:
+  example_with_empty_data_property:
+    data: {}
+  right_to_left_example:
+    data:
+      test_component_parameter: 'A different value'
+    context:
+      right_to_left: true

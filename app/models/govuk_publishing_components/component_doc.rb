@@ -5,23 +5,23 @@ module GovukPublishingComponents
                 :description,
                 :body,
                 :accessibility_criteria,
-                :fixtures
+                :examples
 
-    def initialize(id, name, description, body, accessibility_criteria, fixtures)
+    def initialize(id, name, description, body, accessibility_criteria, examples)
       @id = id
       @name = name
       @description = description
       @body = body
       @accessibility_criteria = accessibility_criteria
-      @fixtures = fixtures
+      @examples = examples
     end
 
-    def fixture
-      fixtures.first
+    def example
+      examples.first
     end
 
-    def other_fixtures
-      fixtures.slice(1..-1)
+    def other_examples
+      examples.slice(1..-1)
     end
 
     def html_body

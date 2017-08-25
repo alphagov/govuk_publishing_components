@@ -99,6 +99,11 @@ $border-color: #ccc;
 }
 
 .component-guide-preview {
+  &.direction-rtl {
+    direction: rtl;
+    text-align: start;
+  }
+
   padding: ($gutter * 1.5) $gutter $gutter;
   border: 1px solid $border-colour;
   position: relative;
@@ -122,11 +127,11 @@ $border-color: #ccc;
   }
 }
 
-.fixtures {
-  .component-fixture {
+.examples {
+  .component-example {
     margin: 0 0 $gutter * 1.5;
 
-    .fixture-title {
+    .example-title {
       @include bold-24;
       margin: $gutter-half 0;
 
