@@ -1,4 +1,11 @@
+# 0.9.0
+
+* Add aXe accessibility testing javascript to component guide pages (PR #33)
+* Mark strings in YAML fixtures as HTML safe (PR #36)
+* Refactor internal structs to use classes (PR #34)
+
 # 0.8.0
+
 * Add preview pages to component guide, to allow components to be viewed in isolation (PR #27)
 * Includes addition of 'preview all' and 'preview' pages
 
