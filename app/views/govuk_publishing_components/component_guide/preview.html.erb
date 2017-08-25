@@ -1,7 +1,7 @@
 <% @component_examples.each do |example| %>
   <div class="component-guide-preview-page">
     <% if @component_examples.length > 1 %>
-      <h2 class="preview-title"><a href="<%= component_example_path(@component_doc.id, example.id) %>"><%= example.name %></a></h2>
+      <h2 class="preview-title" data-content="EXAMPLE"><a href="<%= component_example_path(@component_doc.id, example.id) %>"><%= example.name %></a></h2>
     <% end %>
     <%= render "govuk_publishing_components/component_guide/component_doc/preview", component_doc: @component_doc, example: example %>
   </div>
