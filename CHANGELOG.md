@@ -1,7 +1,27 @@
-# Development
+# 1.0.0
 
-* Rename fixtures to examples (breaking change – all documentation will need updating when upgrading)
+All documentation will need updating when upgrading (see PR #37):
+* Rename fixtures to examples in YAML documentation
 * Nest example data within a named block to give examples more features
+
+Steps to upgrade:
+* Rename fixtures in YAML files to "examples"
+* Nest data for each example in a `data:` block
+
+```yaml
+fixtures:
+  some_name:
+    some_param: some_value
+```
+
+becomes:
+
+```yaml
+examples:
+  some_name:
+    data:
+      some_param: some_value
+```
 
 # 0.9.0
 
