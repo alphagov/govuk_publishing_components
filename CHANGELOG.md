@@ -1,3 +1,9 @@
+# 1.0.1
+
+Fixes issue around page scrolling unexpectedly.
+
+* Add context param to aXe so that options are passed correctly
+
 # 1.0.0
 
 All documentation will need updating when upgrading (see PR #37):
