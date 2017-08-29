@@ -54,8 +54,9 @@ describe('AccessibilityTest', function () {
   })
 
   it('should error if no selector is found', function (done) {
-    AccessibilityTest(TEST_SELECTOR, function (err, result) {
-      expect(result).toBe(undefined)
+    AccessibilityTest(TEST_SELECTOR, function (err, violations, incompleteWarnings) {
+      expect(violations).toBe(undefined)
+      expect(incompleteWarnings).toBe(undefined)
       expect(err).toBe('No selector "' + TEST_SELECTOR + '" found')
       done()
     })
@@ -80,7 +81,7 @@ describe('AccessibilityTest', function () {
   it('should throw if there\'s a contrast issue', function (done) {
     addToDom('<a href="#">Low contrast</a>', 'a { background: white; color: #ddd }')
 
-    AccessibilityTest(TEST_SELECTOR, function (err, result) {
+    AccessibilityTest(TEST_SELECTOR, function (err, violations, incompleteWarnings) {
       if (err) {
         throw err
       }
@@ -92,7 +93,7 @@ describe('AccessibilityTest', function () {
         helpUrl: 'https://dequeuniversity.com/rules/axe/2.3/color-contrast?application=axeAPI'
       })
 
-      expect(result).toBe(errorMessage)
+      expect(violations).toBe(errorMessage)
 
       done()
     })
@@ -101,7 +102,7 @@ describe('AccessibilityTest', function () {
   it('should throw if there\'s a alt tag issue', function (done) {
     addToDom('<img src="">')
 
-    AccessibilityTest(TEST_SELECTOR, function (err, result) {
+    AccessibilityTest(TEST_SELECTOR, function (err, violations, incompleteWarnings) {
       if (err) {
         throw err
       }
@@ -113,8 +114,25 @@ describe('AccessibilityTest', function () {
         helpUrl: 'https://dequeuniversity.com/rules/axe/2.3/image-alt?application=axeAPI'
       })
 
-      expect(result).toBe(errorMessage)
+      expect(violations).toBe(errorMessage)
 
+      done()
+    })
+  })
+
+  it('process incomplete warnings into object for rendering in guide', function (done) {
+    addToDom('<a href="#">Link</a>', 'a { background-image: url("/"); }')
+
+    AccessibilityTest(TEST_SELECTOR, function (err, violations, incompleteWarnings) {
+      if (err) {
+        throw err
+      }
+
+      console.log(incompleteWarnings)
+
+      expect(incompleteWarnings[0].summary).toBe("Elements must have sufficient color contrast")
+      expect(incompleteWarnings[0].url).toBe("https://dequeuniversity.com/rules/axe/2.3/color-contrast?application=axeAPI")
+      expect(incompleteWarnings[0].selectors[0][0]).toBe('.js-test-a11y > a')
       done()
     })
   })
@@ -122,7 +140,7 @@ describe('AccessibilityTest', function () {
   it('should throw on multiple issues', function (done) {
     addToDom('<img src=""><a href="#">Low contrast</a>', 'a { background: white; color: #ddd }')
 
-    AccessibilityTest(TEST_SELECTOR, function (err, result) {
+    AccessibilityTest(TEST_SELECTOR, function (err, violations, incompleteWarnings) {
       if (err) {
         throw err
       }
@@ -144,7 +162,7 @@ describe('AccessibilityTest', function () {
         })
       )
 
-      expect(result).toBe(errorMessage)
+      expect(violations).toBe(errorMessage)
 
       done()
     })
