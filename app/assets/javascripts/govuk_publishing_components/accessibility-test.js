@@ -27,26 +27,21 @@
         return callback('No accessibility issues found')
       }
 
-      var incompleteWarningsObj = (
-        incompleteWarnings.map(function (incomplete) {
-          var help = incomplete.help
-          var helpUrl = _formatHelpUrl(incomplete.helpUrl)
-          var cssSelector = incomplete.nodes.map(function (node) {
-            return node.target
-          })
+      // We don't want to display incomplete warnings on preview pages
+      if (!document.querySelector(selector).parentNode.className.includes('preview')) {
+        var incompleteWarningsObj = _processIncompleteWarnings(incompleteWarnings)
+      }
+      var errorText = _processViolations(violations, results.url)
 
-          return {
-            'summary': help,
-            'selectors': cssSelector,
-            'url': helpUrl
-          }
-        })
-      )
+      callback(undefined, errorText, incompleteWarningsObj)
+    })
+  }
 
-      if (violations.length !== 0) {
-      var errorText = (
+  var _processViolations = function(violations, url) {
+    if (violations.length !== 0) {
+      return (
         '\n' + 'Accessibility issues at ' +
-        results.url + '\n\n' +
+        url + '\n\n' +
         violations.map(function (violation) {
           var help = 'Problem: ' + violation.help
           var helpUrl = 'Try fixing it with this help: ' + _formatHelpUrl(violation.helpUrl)
@@ -63,9 +58,24 @@
     else {
       console.info("aXe: No accessibility errors found")
     }
+  }
 
-      callback(undefined, errorText, incompleteWarningsObj)
-    })
+  var _processIncompleteWarnings = function(incompleteWarnings) {
+    return (
+      incompleteWarnings.map(function (incomplete) {
+        var help = incomplete.help
+        var helpUrl = _formatHelpUrl(incomplete.helpUrl)
+        var cssSelector = incomplete.nodes.map(function (node) {
+          return node.target
+        })
+
+        return {
+          'summary': help,
+          'selectors': cssSelector,
+          'url': helpUrl
+        }
+      })
+    )
   }
 
   var _formatHelpUrl = function (helpUrl) {
@@ -99,7 +109,7 @@
         }
 
         // Add warning to warnings box
-        warningsHTML = '<h3>' + warning.summary + ' <a href="' + warning.url + '">(see guidance)</a></h3>' +
+        var warningsHTML = '<h3>' + warning.summary + ' <a href="' + warning.url + '">(see guidance)</a></h3>' +
                         '<p>Element can be found using the following CSS selector: <span class="axe-incomplete-selector">' +
                           selector +
                         '</span></p>'
@@ -126,7 +136,7 @@
         if (err) {
           return
         }
-        _renderIncompleteWarnings(incompleteWarnings)
+        if (incompleteWarnings) _renderIncompleteWarnings(incompleteWarnings)
         if (violations) _throwUncaughtError(violations)
       })
     })
