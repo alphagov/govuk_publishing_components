@@ -15,7 +15,7 @@
       include: [selector]
     }
 
-    axe.run(axeOptions, function (err, results) {
+    axe.run(selector, axeOptions, function (err, results) {
       if (err) {
         callback('aXe Error: ' + err)
       }
