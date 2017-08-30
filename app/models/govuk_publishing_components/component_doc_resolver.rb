@@ -26,17 +26,21 @@ module GovukPublishingComponents
     end
 
     def fetch_component_docs
-      doc_files = Rails.root.join("app", "views", "components", "docs", "*.yml")
+      doc_files = Rails.root.join(documentation_directory, "*.yml")
       Dir[doc_files].sort.map { |file| parse_documentation(file) }
     end
 
     def fetch_component_doc(id)
-      file = Rails.root.join("app", "views", "components", "docs", "#{id}.yml")
+      file = Rails.root.join(documentation_directory, "#{id}.yml")
       parse_documentation(file)
     end
 
     def parse_documentation(file)
       { id: File.basename(file, ".yml") }.merge(YAML::load_file(file)).with_indifferent_access
+    end
+
+    def documentation_directory
+      Rails.root.join("app", "views", GovukPublishingComponents::Config.component_directory_name, "docs")
     end
   end
 end

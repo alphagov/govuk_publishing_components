@@ -1,6 +1,5 @@
-require "govuk_publishing_components/engine"
 require "govuk_publishing_components/config"
+require "govuk_publishing_components/engine"
 
 module GovukPublishingComponents
-  # Your code goes here...
 end
