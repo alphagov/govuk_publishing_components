@@ -1,3 +1,7 @@
+# 1.1.0
+
+* Allow gem to be used with static (PR #43)
+
 # 1.0.1
 
 Fixes issue around page scrolling unexpectedly.
