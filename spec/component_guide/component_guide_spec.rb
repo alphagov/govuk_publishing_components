@@ -161,4 +161,17 @@ describe 'Component guide' do
     expect(page).to have_selector('.component-guide-preview-page .test-component-with-params', text: 'A different value')
     expect(page).to have_selector('.component-guide-preview-page [data-module="test-a11y"]')
   end
+
+  it 'loads a static component with correct component directory when configured' do
+    GovukPublishingComponents.configure do |config|
+      config.static = true
+    end
+
+    visit '/component-guide/test-static-component'
+
+    expect(body).to include('render <span class="token string">\'govuk_component/test-static-component\'</span>')
+    within '.component-guide-preview' do
+      expect(page).to have_selector('.a-test-static-component')
+    end
+  end
 end

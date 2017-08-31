@@ -33,7 +33,7 @@ module GovukPublishingComponents
     end
 
     def partial_path
-      "components/#{id}"
+      "#{GovukPublishingComponents::Config.component_directory_name}/#{id}"
     end
 
   private
