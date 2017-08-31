@@ -6,18 +6,28 @@ module GovukPublishingComponents
     source_root File.expand_path('../templates', __FILE__)
 
     def copy_component_files
-      @public_name = file_name.dasherize
+      static = GovukPublishingComponents::Config.static
 
-      template_dir = "app/views/components/"
-      docs_dir = "app/views/components/docs/"
-      scss_dir = "app/assets/stylesheets/components/"
+      @public_name = file_name.dasherize
+      @component_prefix = static ? 'pub-c-' : 'app-c-'
+      component_directory_name = GovukPublishingComponents::Config.component_directory_name
+
+      template_dir = "app/views/#{component_directory_name}/"
+      docs_dir = "app/views/#{component_directory_name}/docs/"
+      scss_dir = "app/assets/stylesheets/#{component_directory_name.dasherize}/"
 
       create_directory_if_not_exists(template_dir)
       create_directory_if_not_exists(docs_dir)
       create_directory_if_not_exists(scss_dir)
 
-      template '_component.html.erb', "#{template_dir}_#{@public_name}.html.erb"
-      template 'component.yml.erb', "#{docs_dir}#{@public_name}.yml"
+      if static
+        template '_component.html.erb', "#{template_dir}#{@public_name.underscore}.raw.html.erb"
+        template 'component.yml.erb', "#{docs_dir}#{@public_name.underscore}.yml"
+      else
+        template '_component.html.erb', "#{template_dir}_#{@public_name}.html.erb"
+        template 'component.yml.erb', "#{docs_dir}#{@public_name}.yml"
+      end
+
       template '_component.scss', "#{scss_dir}_#{@public_name}.scss"
     end
 
