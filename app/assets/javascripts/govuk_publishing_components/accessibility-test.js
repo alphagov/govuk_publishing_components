@@ -28,7 +28,7 @@
       }
 
       // We don't want to display incomplete warnings on preview pages
-      if (!document.querySelector(selector).parentNode.className.includes('preview')) {
+      if ($(selector).closest('[data-type="preview"]').data('type') !== 'preview') {
         var incompleteWarningsObj = _processIncompleteWarnings(incompleteWarnings)
       }
       var errorText = _processViolations(violations, results.url)
@@ -66,7 +66,12 @@
         var help = incomplete.help
         var helpUrl = _formatHelpUrl(incomplete.helpUrl)
         var cssSelector = incomplete.nodes.map(function (node) {
-          return node.target
+          return {
+            'selector': node.target,
+            'reason': node.any.map(function(item) {
+              return item.message
+            })
+          }
         })
 
         return {
@@ -96,24 +101,18 @@
   }
 
   var _renderIncompleteWarnings = function (incompleteWarnings) {
-    var warningsWrapper = '<div class="component-guide-preview axe-incomplete" data-content="Accessibility Issues: Need Manual Check"></div>'
-
     incompleteWarnings.forEach(function (warning) {
-      warning.selectors.forEach(function (selector) {
-        var applicableFixtureSelector = selector[0].split('.component-guide-preview', 1) + '.component-guide-preview'
-        var applicableFixture = document.querySelector(applicableFixtureSelector)
-
-        // Add incomplete warnings box to fixture, if not already added
-        if (document.querySelector(applicableFixtureSelector + ' + .axe-incomplete') == null) {
-          applicableFixture.insertAdjacentHTML('afterend', warningsWrapper)
-        }
+      warning.selectors.forEach(function (selectorObj) {
+        var warningWrapper = window.$(selectorObj.selector.toString()).closest('[data-module="test-a11y"]').next('[data-module="test-a11y-warning"]')[0]
 
         // Add warning to warnings box
         var warningsHTML = '<h3>' + warning.summary + ' <a href="' + warning.url + '">(see guidance)</a></h3>' +
-                        '<p>Element can be found using the following CSS selector: <span class="axe-incomplete-selector">' +
-                          selector +
+                        '<p>Reason: ' + selectorObj.reason + '</p>' +
+                        '<p>Element can be found using the following CSS selector: <span class="selector">' +
+                        selectorObj.selector +
                         '</span></p>'
-        document.querySelector(applicableFixtureSelector + ' + .axe-incomplete').insertAdjacentHTML('beforeend', warningsHTML)
+
+        warningWrapper.insertAdjacentHTML('beforeend', warningsHTML)
       })
     })
   }

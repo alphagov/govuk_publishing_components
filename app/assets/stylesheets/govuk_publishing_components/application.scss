@@ -134,6 +134,31 @@ $border-color: #ccc;
   }
 }
 
+.component-guide-preview--warning {
+  margin-top: $gutter-half;
+  border-color: $yellow;
+
+  &:empty {
+    display: none;
+  }
+
+  &:before {
+    background-color: $yellow;
+  }
+
+  h3 {
+    @include bold-16;
+  }
+
+  h3:not(:first-child) {
+    margin-top: $gutter;
+  }
+
+  .selector {
+    font-style: italic;
+  }
+}
+
 .examples {
   .component-example {
     margin: 0 0 $gutter * 1.5;
@@ -176,27 +201,5 @@ html {
     a {
       color: $black;
     }
-  }
-}
-
-// aXe Accessibility Testing Styling
-.axe-incomplete {
-  margin-top: $gutter-half;
-  border-color: $yellow;
-
-  &:before {
-    background-color: $yellow;
-  }
-
-  h3 {
-    @include bold-16;
-  }
-
-  &-selector {
-    font-style: italic;
-  }
-
-  p:not(:last-child) {
-    margin-bottom: $gutter;
   }
 }

@@ -128,11 +128,9 @@ describe('AccessibilityTest', function () {
         throw err
       }
 
-      console.log(incompleteWarnings)
-
       expect(incompleteWarnings[0].summary).toBe("Elements must have sufficient color contrast")
       expect(incompleteWarnings[0].url).toBe("https://dequeuniversity.com/rules/axe/2.3/color-contrast?application=axeAPI")
-      expect(incompleteWarnings[0].selectors[0][0]).toBe('.js-test-a11y > a')
+      expect(incompleteWarnings[0].selectors[0].selector[0]).toBe('.js-test-a11y > a')
       done()
     })
   })

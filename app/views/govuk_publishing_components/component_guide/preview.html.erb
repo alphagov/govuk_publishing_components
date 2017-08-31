@@ -1,5 +1,5 @@
 <% @component_examples.each do |example| %>
-  <div class="component-guide-preview-page">
+  <div class="component-guide-preview-page" data-type="preview">
     <% if @component_examples.length > 1 %>
       <h2 class="preview-title" data-content="EXAMPLE"><a href="<%= component_example_path(@component_doc.id, example.id) %>"><%= example.name %></a></h2>
     <% end %>
