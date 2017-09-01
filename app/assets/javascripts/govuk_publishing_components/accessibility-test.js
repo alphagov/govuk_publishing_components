@@ -27,10 +27,7 @@
         return callback('No accessibility issues found')
       }
 
-      // We don't want to display incomplete warnings on preview pages
-      if ($(selector).closest('[data-type="preview"]').data('type') !== 'preview') {
-        var incompleteWarningsObj = _processIncompleteWarnings(incompleteWarnings)
-      }
+      var incompleteWarningsObj = _processIncompleteWarnings(incompleteWarnings)
       var errorText = _processViolations(violations, results.url)
 
       callback(undefined, errorText, incompleteWarningsObj)
@@ -100,19 +97,32 @@
     )
   }
 
+  var _findParent = function (element, selector) {
+    while (element.tagName !== 'HTML') {
+      if (element.matches(selector)) {
+        return element
+      }
+      element = element.parentNode
+    }
+  }
+
   var _renderIncompleteWarnings = function (incompleteWarnings) {
     incompleteWarnings.forEach(function (warning) {
       warning.selectors.forEach(function (selectorObj) {
-        var warningWrapper = window.$(selectorObj.selector.toString()).closest('[data-module="test-a11y"]').next('[data-module="test-a11y-warning"]')[0]
+        var activeEl = document.querySelector(selectorObj.selector)
+        var activeElParent = _findParent(activeEl, '[data-module="test-a11y"]')
+        var warningWrapper = activeElParent.querySelector('.component-guide-preview--warning')
 
-        // Add warning to warnings box
-        var warningsHTML = '<h3>' + warning.summary + ' <a href="' + warning.url + '">(see guidance)</a></h3>' +
-                        '<p>Reason: ' + selectorObj.reason + '</p>' +
-                        '<p>Element can be found using the following CSS selector: <span class="selector">' +
-                        selectorObj.selector +
-                        '</span></p>'
+        if (warningWrapper) {
+          // Add warning to warnings box
+          var warningsHTML = '<h3>' + warning.summary + ' <a href="' + warning.url + '">(see guidance)</a></h3>' +
+          '<p>Reason: ' + selectorObj.reason + '</p>' +
+          '<p>Element can be found using the following CSS selector: <span class="selector">' +
+          selectorObj.selector +
+          '</span></p>'
 
-        warningWrapper.insertAdjacentHTML('beforeend', warningsHTML)
+          warningWrapper.insertAdjacentHTML('beforeend', warningsHTML)
+        }
       })
     })
   }
