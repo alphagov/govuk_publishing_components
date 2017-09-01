@@ -111,7 +111,7 @@
       warning.selectors.forEach(function (selectorObj) {
         var activeEl = document.querySelector(selectorObj.selector)
         var activeElParent = _findParent(activeEl, '[data-module="test-a11y"]')
-        var warningWrapper = activeElParent.querySelector('.component-guide-preview--warning')
+        var warningWrapper = activeElParent.querySelector('[data-module="test-a11y-warning"]')
 
         if (warningWrapper) {
           // Add warning to warnings box

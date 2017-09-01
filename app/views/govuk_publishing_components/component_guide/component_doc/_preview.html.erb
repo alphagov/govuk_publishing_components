@@ -1,4 +1,4 @@
-<div data-module="test-a11y" class="component-guide-preview <% if example.right_to_left? %>direction-rtl<% end %>" data-content="EXAMPLE">
-  <%= render component_doc.partial_path, example.html_safe_data %>
+<div data-module="test-a11y">
+  <%= render "govuk_publishing_components/component_guide/component_doc/component", component_doc: @component_doc, example: example, preview_page: false %>
+  <div class="component-guide-preview component-guide-preview--warning" data-module="test-a11y-warning" data-content="Potential Accessibility Issues: Need Manual Check"></div>
 </div>
-<div class="component-guide-preview component-guide-preview--warning" data-module="test-a11y-warning" data-content="Potential Accessibility Issues: Need Manual Check"></div>

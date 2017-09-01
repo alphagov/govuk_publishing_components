@@ -134,6 +134,15 @@ $border-color: #ccc;
   }
 }
 
+.component-guide-preview--simple {
+  border: 0;
+  padding: 0;
+
+  &:before {
+    display: none;
+  }
+}
+
 .component-guide-preview--warning {
   margin-top: $gutter-half;
   border-color: $yellow;
