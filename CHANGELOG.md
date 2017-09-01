@@ -1,3 +1,7 @@
+# 1.2.0
+
+* Exposes incomplete warnings from aXe in component guide pages (PR #40)
+
 # 1.1.0
 
 * Allow gem to be used with static (PR #43)
