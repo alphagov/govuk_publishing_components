@@ -116,13 +116,14 @@ $border-color: #ccc;
 
   &:before {
     @include core-14;
-    content: "EXAMPLE";
+    content: attr(data-content);
     position: absolute;
     top: 0;
     left: 0;
     padding: 0.21053em 0.78947em;
     background: $border-colour;
-    color: $white;
+    color: $black;
+    font-weight: bold;
   }
 
   div[class^="govuk-"] {
@@ -130,6 +131,40 @@ $border-color: #ccc;
       outline: 1px solid $border-color;
       box-shadow: 0 0 10px $border-color;
     }
+  }
+}
+
+.component-guide-preview--simple {
+  border: 0;
+  padding: 0;
+
+  &:before {
+    display: none;
+  }
+}
+
+.component-guide-preview--warning {
+  margin-top: $gutter-half;
+  border-color: $yellow;
+
+  &:empty {
+    display: none;
+  }
+
+  &:before {
+    background-color: $yellow;
+  }
+
+  h3 {
+    @include bold-16;
+  }
+
+  h3:not(:first-child) {
+    margin-top: $gutter;
+  }
+
+  .selector {
+    font-style: italic;
   }
 }
 

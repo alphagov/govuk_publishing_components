@@ -123,7 +123,7 @@ describe 'Component guide' do
 
   it 'has accessibility testing hooks' do
     visit '/component-guide/test-component'
-    expect(page).to have_selector('.component-guide-preview[data-module="test-a11y"]')
+    expect(page).to have_selector('[data-module="test-a11y"]')
   end
 
   it 'displays the accessibility acceptance criteria of a component as html using static’s govspeak component' do
