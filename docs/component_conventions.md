@@ -56,10 +56,18 @@ examples:
   default:
     data:
       some_parameter: 'The parameter value'
+    description: |
+      This component is used in the following contexts:
+
+      - [the GOV.UK homepage](https://www.gov.uk)
   another_example:
     data:
       some_parameter: 'A different parameter value'
 ```
+
+#### Description
+
+An example can have an optional description. This is a govspeak markdown block.
 
 #### Right to left examples
 

@@ -1,0 +1,11 @@
+name: Test component with example description
+description: A test component that contains examples with descriptions
+examples:
+  default:
+    data: {}
+  another_example:
+    description: |
+      This is the description of this example. It has a list in it, containing:
+
+      - the first item
+      - the second item

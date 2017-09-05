@@ -2,12 +2,14 @@ module GovukPublishingComponents
   class ComponentExample
     attr_reader :id,
                 :data,
-                :context
+                :context,
+                :description
 
-    def initialize(id, data, context)
+    def initialize(id, data, context, description)
       @id = id
       @data = data || {}
       @context = context || {}
+      @description = description || false
     end
 
     def name
@@ -47,6 +49,16 @@ module GovukPublishingComponents
 
     def right_to_left?
       !!context['right_to_left']
+    end
+
+    def html_description
+      govspeak_to_html(description) if description.present?
+    end
+
+  private
+
+    def govspeak_to_html(govspeak)
+      Govspeak::Document.new(govspeak).to_html
     end
   end
 end
