@@ -1,3 +1,7 @@
+# 1.3.0
+
+* Add optional descriptions to examples (PR #47)
+
 # 1.2.0
 
 * Exposes incomplete warnings from aXe in component guide pages (PR #40)
