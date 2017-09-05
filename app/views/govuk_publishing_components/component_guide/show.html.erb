@@ -44,6 +44,7 @@
             <a href="<%= component_example_path(@component_doc.id, example.id) %>"><%= example.name %></a>
             <small>(<a href="<%= component_preview_path(@component_doc.id, example.id) %>">preview</a>)</small>
           </h3>
+          <%= render "govuk_component/govspeak", content: example.html_description %>
           <%= render "govuk_publishing_components/component_guide/component_doc/call", component_doc: @component_doc, example: example %>
           <%= render "govuk_publishing_components/component_guide/component_doc/preview", component_doc: @component_doc, example: example %>
         </div>

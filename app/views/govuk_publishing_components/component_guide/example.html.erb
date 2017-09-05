@@ -3,6 +3,7 @@
 
 <div class="component-show">
   <div class="component-doc">
+    <%= render "govuk_component/govspeak", content: @component_example.html_description %>
     <h2 class="component-doc-h2">How to call this example</h2>
     <%= render partial: "govuk_publishing_components/component_guide/component_doc/call", locals: { component_doc: @component_doc, example: @component_example } %>
 

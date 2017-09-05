@@ -162,6 +162,17 @@ describe 'Component guide' do
     expect(page).to have_selector('.component-guide-preview-page [data-module="test-a11y"]')
   end
 
+  it 'shows an example description if one is present' do
+    visit '/component-guide/test-component-with-example-description'
+
+    within ".component-example" do
+      within(shared_component_selector("govspeak")) do
+        content = JSON.parse(page.text).fetch("content").squish
+        expect(content).to include('<p>This is the description of this example. It has a list in it, containing:</p>')
+      end
+    end
+  end
+
   it 'loads a static component with correct component directory when configured' do
     GovukPublishingComponents.configure do |config|
       config.static = true
