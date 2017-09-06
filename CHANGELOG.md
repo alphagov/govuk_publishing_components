@@ -1,3 +1,7 @@
+# 1.4.0
+
+* Add dark_background context to examples (PR #49)
+
 # 1.3.0
 
 * Add optional descriptions to examples (PR #47)
