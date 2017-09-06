@@ -110,6 +110,10 @@ $border-color: #ccc;
     text-align: start;
   }
 
+  &.dark-background {
+    background-color: $govuk-blue;
+  }
+
   padding: ($gutter * 1.5) $gutter $gutter;
   border: 1px solid $border-colour;
   position: relative;
