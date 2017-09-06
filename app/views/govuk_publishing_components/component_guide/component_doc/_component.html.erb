@@ -1,5 +1,6 @@
 <div class="component-guide-preview
             <% if example.right_to_left? %>direction-rtl<% end %>
+            <% if example.dark_background? %>dark-background<% end %>
             <% if preview_page %>component-guide-preview--simple<% end %>" data-content="EXAMPLE">
   <%= render component_doc.partial_path, example.html_safe_data %>
 </div>

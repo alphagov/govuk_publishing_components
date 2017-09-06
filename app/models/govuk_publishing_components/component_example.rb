@@ -51,6 +51,10 @@ module GovukPublishingComponents
       !!context['right_to_left']
     end
 
+    def dark_background?
+      !!context['dark_background']
+    end
+
     def html_description
       govspeak_to_html(description) if description.present?
     end
