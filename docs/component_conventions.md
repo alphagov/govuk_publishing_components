@@ -69,9 +69,9 @@ examples:
 
 An example can have an optional description. This is a govspeak markdown block.
 
-#### Right to left examples
+#### Providing context to examples
 
-A context block can be passed to examples. The only supported context is `right_to_left`:
+A context block can be passed to examples. The guide currently supports `right_to_left` and `dark_background` contexts. For example:
 
 ```yaml
 examples:
@@ -90,6 +90,8 @@ The component guide will wrap the example with a `direction-rtl` class. It is ex
   text-align: start;
 }
 ```
+
+The component guide will wrap a `dark_background` context example with a `dark-background` class that sets the parent element background color to govuk-blue. The component should either already work on a dark background or contain a param that, when set to `true`, allows it to work against darker colours.
 
 ## Styles
 
