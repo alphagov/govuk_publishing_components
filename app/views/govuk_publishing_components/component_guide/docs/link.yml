@@ -1,6 +1,6 @@
 name: Link
 accessibility_criteria: |
-  The link must:
+  Links in the component must:
 
   - accept focus
   - be focusable with a keyboard
