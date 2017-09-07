@@ -5,14 +5,16 @@ module GovukPublishingComponents
                 :description,
                 :body,
                 :accessibility_criteria,
+                :universal_accessibility_criteria,
                 :examples
 
-    def initialize(id, name, description, body, accessibility_criteria, examples)
+    def initialize(id, name, description, body, accessibility_criteria, universal_accessibility_criteria, examples)
       @id = id
       @name = name
       @description = description
       @body = body
       @accessibility_criteria = accessibility_criteria
+      @universal_accessibility_criteria = universal_accessibility_criteria
       @examples = examples
     end
 
@@ -30,6 +32,11 @@ module GovukPublishingComponents
 
     def html_accessibility_criteria
       govspeak_to_html(accessibility_criteria) if accessibility_criteria.present?
+    end
+
+    def html_universal_accessibility_criteria
+      #govspeak_to_html(universal_accessibility_criteria) if universal_accessibility_criteria.present?
+      "universal"
     end
 
     def partial_path
