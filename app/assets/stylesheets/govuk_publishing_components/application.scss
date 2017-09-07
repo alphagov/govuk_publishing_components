@@ -12,6 +12,8 @@ $border-color: #ccc;
 }
 
 .component-list {
+  margin-left: 20px;
+
   li {
     @include core-19;
     margin-bottom: $gutter-half;
