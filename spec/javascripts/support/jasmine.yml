@@ -13,6 +13,7 @@
 src_files:
   - app/assets/javascripts/govuk_publishing_components/vendor/*.js
   - app/assets/javascripts/govuk_publishing_components/accessibility-test.js
+  - app/assets/javascripts/govuk_publishing_components/visual-regression.js
   - app/assets/javascripts/govuk_publishing_components/application.js
 
 # stylesheets
