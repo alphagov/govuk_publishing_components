@@ -10,6 +10,11 @@ describe 'Component guide' do
     expect(page).to have_title 'GOV.UK Component Guide'
   end
 
+  it 'sets X-Frame-Options to allow inclusion in iFrames' do
+    visit '/component-guide'
+    expect(page.response_headers["X-Frame-Options"]).to eq('ALLOWALL')
+  end
+
   it 'loads a component guide' do
     visit '/component-guide'
     expect(page).to have_title 'GOV.UK Component Guide'
