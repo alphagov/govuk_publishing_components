@@ -81,6 +81,29 @@ rails generate govuk_publishing_components:component [component_name]
 
 This will create a template, scss file and yml documentation file for a new component. It will not create a test file as this cannot be reliably done automatically across applications, but a test file will be necessary.
 
+## Integration with Heroku
+To make the best use of the component guide we use Heroku to serve the current `master` build and whenever a [pull request is added](https://devcenter.heroku.com/articles/github-integration-review-apps)
+
+When an app is deployed to Heroku it will be in `production` mode, so only gems that are in the main group will be installed and made available.
+To ensure that we only load the guide on Heroku and not when deployed to _production_ we need to have the gem included in the main bundle group in the Gemfile.
+For this use case we need `require: false` so that it's not loaded in _production_ but then we can manually `require` the gem in our `application.rb` based on the more complex environmental logic that we've specified.
+
+First move the gem outside of the `development`, `test` groups and set require to false. ([example](https://github.com/alphagov/government-frontend/blob/5110d3d33f7a6b63f218b889a5afec90e6df810f/Gemfile#L11)):
+
+```ruby
+# Gemfile
+gem 'govuk_publishing_components', require: false
+```
+
+Now we can manually require the gem ([example](https://github.com/alphagov/government-frontend/blob/5110d3d33f7a6b63f218b889a5afec90e6df810f/config/application.rb#L14)):
+
+```ruby
+# config/application.rb
+if !Rails.env.production? || ENV['HEROKU_APP_NAME'].present?
+  require 'govuk_publishing_components'
+end
+```
+
 ## Licence
 
 [MIT Licence](LICENCE.md)
