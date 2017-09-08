@@ -1,3 +1,7 @@
+# 1.5.0
+
+* Add links to component guide homepage linking to conventions and principles (PR #52)
+
 # 1.4.0
 
 * Add dark_background context to examples (PR #49)
