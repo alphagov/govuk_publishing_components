@@ -1,0 +1,8 @@
+name: Test component with only universal accessibility criteria
+description: A test component with only universal accessibility criteria
+universal_accessibility_criteria:
+  - link
+  - notvalid
+examples:
+  default:
+    data: {}
