@@ -22,6 +22,7 @@ module GovukPublishingComponents
                        component[:description],
                        component[:body],
                        component[:accessibility_criteria],
+                       component[:universal_accessibility_criteria],
                        examples)
     end
 

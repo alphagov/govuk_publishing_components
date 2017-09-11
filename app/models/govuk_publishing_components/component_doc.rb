@@ -5,14 +5,16 @@ module GovukPublishingComponents
                 :description,
                 :body,
                 :accessibility_criteria,
+                :universal_accessibility_criteria,
                 :examples
 
-    def initialize(id, name, description, body, accessibility_criteria, examples)
+    def initialize(id, name, description, body, accessibility_criteria, universal_accessibility_criteria, examples)
       @id = id
       @name = name
       @description = description
       @body = body
-      @accessibility_criteria = accessibility_criteria
+      @universal_accessibility_criteria = universal_accessibility_criteria
+      @accessibility_criteria = "#{accessibility_criteria}\n#{check_for_universal_accessibility_criteria}"
       @examples = examples
     end
 
@@ -40,6 +42,27 @@ module GovukPublishingComponents
 
     def govspeak_to_html(govspeak)
       Govspeak::Document.new(govspeak).to_html
+    end
+
+    def check_for_universal_accessibility_criteria
+      fetch_component_docs.map { |criteria| match_universal_accessibility_criteria(criteria) }.join("\n") if universal_accessibility_criteria.present?
+    end
+
+    def match_universal_accessibility_criteria(criteria)
+      criteria["accessibility_criteria"] if universal_accessibility_criteria.include? criteria["id"]
+    end
+
+    def fetch_component_docs
+      doc_files = Rails.root.join(documentation_directory, "*.yml")
+      Dir[doc_files].sort.map { |file| parse_documentation(file) }
+    end
+
+    def parse_documentation(file)
+      { id: File.basename(file, ".yml") }.merge(YAML::load_file(file)).with_indifferent_access
+    end
+
+    def documentation_directory
+      File.join(File.dirname(File.expand_path(__FILE__)), '../../views/govuk_publishing_components/component_guide/docs')
     end
   end
 end

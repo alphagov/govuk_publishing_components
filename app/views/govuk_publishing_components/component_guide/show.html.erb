@@ -33,6 +33,11 @@
     </div>
   <% end %>
 
+  <% if @component_doc.universal_accessibility_criteria.present? %>
+    <p>Universal</p>
+    <%= render 'govuk_component/govspeak', content: @component_doc.html_universal_accessibility_criteria %>
+  <% end %>
+
   <% if @component_doc.other_examples.any? %>
     <div class="examples">
       <h2 class="component-doc-h2">Other examples
