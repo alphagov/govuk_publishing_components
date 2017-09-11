@@ -1,5 +1,17 @@
 <%= render 'govuk_component/title', title: GovukPublishingComponents::Config.component_guide_title %>
 
+<div class="govuk-govspeak">
+  <p>Components are packages of template, style, behaviour and documentation that live in your application.</p>
+  <p>A component must:</p>
+  <ul>
+    <li><a href="https://github.com/alphagov/govuk_publishing_components/blob/master/docs/component_principles.md">meet the component principles</a></li>
+    <li><a href="https://github.com/alphagov/govuk_publishing_components/blob/master/docs/component_conventions.md">follow component conventions</a></li>
+  </ul>
+  <p>See the <a href="https://github.com/alphagov/govuk_publishing_components">govuk_publishing_components gem</a> for further details, or <a href="https://docs.publishing.service.gov.uk/manual/components.html#component-guides">a list of all component guides</a>.</p>
+</div>
+
+<h2 class="component-doc-h2">Components</h2>
+
 <ul class="component-list">
   <% @component_docs.each do |component_doc| %>
     <li>
