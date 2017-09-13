@@ -46,12 +46,15 @@ name: Name of component
 description: Short description of component
 body: |
   Optional markdown providing further detail about the component
-acceptance_criteria: |
+accessibility_criteria: |
   Markdown listing what this component must do to be accessible. For example:
 
-  The link must:
+  The banner must:
 
-  * be keyboard focusable
+  - be visually distinct from other content on the page
+  - have an accessible name that describes the banner as a notice
+shared_accessibility_criteria:
+  - link
 examples:
   default:
     data:
@@ -64,6 +67,14 @@ examples:
     data:
       some_parameter: 'A different parameter value'
 ```
+
+#### Accessibility Criteria
+
+Markdown listing what this component must do to be accessible.
+
+[Shared accessibility criteria](https://github.com/alphagov/govuk_publishing_components/blob/master/app/models/govuk_publishing_components/shared_accessibility_criteria.rb) can be included in a list as shown. They are pre-written accessibility criteria that can apply to more than one component, created to avoid duplication. For example, links within components should all accept focus, be focusable with a keyboard, etc.
+
+A component can have accessibility criteria, shared accessibility criteria, or both.
 
 #### Description
 

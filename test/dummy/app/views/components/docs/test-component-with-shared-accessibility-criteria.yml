@@ -1,0 +1,10 @@
+name: Test component with shared accessibility criteria
+description: A test component with shared accessibility criteria
+accessibility_criteria: |
+  * This is some criteria in a list
+shared_accessibility_criteria:
+  - link
+  - notvalid
+examples:
+  default:
+    data: {}

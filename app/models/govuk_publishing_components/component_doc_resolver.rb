@@ -21,8 +21,19 @@ module GovukPublishingComponents
                        component[:name],
                        component[:description],
                        component[:body],
-                       component[:accessibility_criteria],
+                       combined_accessibility_criteria(component),
                        examples)
+    end
+
+    def combined_accessibility_criteria(component)
+      shared_accessibility_criteria = []
+
+      if component[:shared_accessibility_criteria].present?
+        component[:shared_accessibility_criteria].each do |criteria|
+          shared_accessibility_criteria << SharedAccessibilityCriteria.send(criteria) if SharedAccessibilityCriteria.respond_to? criteria
+        end
+      end
+      "#{component[:accessibility_criteria]}\n#{shared_accessibility_criteria.join("\n")}"
     end
 
     def fetch_component_docs
