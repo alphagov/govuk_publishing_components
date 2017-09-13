@@ -1,3 +1,8 @@
+# 1.6.0
+
+* Set X-Frame-Options header to allowall, to allow inclusion of component guide in iFrames (PR #53)
+* Add shared accessibility criteria in component guide pages(PR #58)
+
 # 1.5.0
 
 * Add links to component guide homepage linking to conventions and principles (PR #52)
