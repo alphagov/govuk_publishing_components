@@ -21,6 +21,16 @@ describe 'Component guide' do
     expect(page.response_headers["X-Frame-Options"]).to eq('ALLOWALL')
   end
 
+  it 'sets cookie to hide survey banner' do
+    visit '/component-guide'
+    expect(page.response_headers["Set-Cookie"]).to include('govuk_takenUserSatisfactionSurvey=yes')
+  end
+
+  it 'sets cookie to hide cookies banner' do
+    visit '/component-guide'
+    expect(page.response_headers["Set-Cookie"]).to include('seen_cookie_message=yes')
+  end
+
   it 'loads a component guide' do
     visit '/component-guide'
     expect(page).to have_title 'GOV.UK Component Guide'
