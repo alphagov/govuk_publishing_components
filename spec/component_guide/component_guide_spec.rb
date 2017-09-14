@@ -203,7 +203,7 @@ describe 'Component guide' do
     within '.component-accessibility-criteria' do
       within(shared_component_selector("govspeak")) do
         content = JSON.parse(page.text).fetch("content").squish
-        expect(content).to eq('<ul> <li>This is some criteria in a list</li> </ul> <p>Links in the component must:</p> <ul> <li>accept focus</li> <li>be focusable with a keyboard</li> <li>be usable with a keyboard</li> <li>indicate when it has focus</li> <li>change in appearance when touched (in the touch-down state)</li> <li>change in appearance when hovered</li> <li>be usable with touch</li> <li>be usable with <a rel="external" href="https://www.w3.org/WAI/perspectives/voice.html">voice commands</a> </li> <li>have visible text</li> </ul>')
+        expect(content).to eq('<ul> <li>This is some criteria in a list</li> </ul> <p>Links in the component must:</p> <ul> <li>accept focus</li> <li>be focusable with a keyboard</li> <li>be usable with a keyboard</li> <li>indicate when they have focus</li> <li>change in appearance when touched (in the touch-down state)</li> <li>change in appearance when hovered</li> <li>be usable with touch</li> <li>be usable with <a rel="external" href="https://www.w3.org/WAI/perspectives/voice.html">voice commands</a> </li> <li>have visible text</li> </ul>')
       end
     end
   end
@@ -214,7 +214,7 @@ describe 'Component guide' do
     within '.component-accessibility-criteria' do
       within(shared_component_selector("govspeak")) do
         content = JSON.parse(page.text).fetch("content").squish
-        expect(content).to eq('<p>Links in the component must:</p> <ul> <li>accept focus</li> <li>be focusable with a keyboard</li> <li>be usable with a keyboard</li> <li>indicate when it has focus</li> <li>change in appearance when touched (in the touch-down state)</li> <li>change in appearance when hovered</li> <li>be usable with touch</li> <li>be usable with <a rel="external" href="https://www.w3.org/WAI/perspectives/voice.html">voice commands</a> </li> <li>have visible text</li> </ul>')
+        expect(content).to eq('<p>Links in the component must:</p> <ul> <li>accept focus</li> <li>be focusable with a keyboard</li> <li>be usable with a keyboard</li> <li>indicate when they have focus</li> <li>change in appearance when touched (in the touch-down state)</li> <li>change in appearance when hovered</li> <li>be usable with touch</li> <li>be usable with <a rel="external" href="https://www.w3.org/WAI/perspectives/voice.html">voice commands</a> </li> <li>have visible text</li> </ul>')
       end
     end
   end

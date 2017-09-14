@@ -7,7 +7,7 @@ Links in the component must:
 - accept focus
 - be focusable with a keyboard
 - be usable with a keyboard
-- indicate when it has focus
+- indicate when they have focus
 - change in appearance when touched (in the touch-down state)
 - change in appearance when hovered
 - be usable with touch
