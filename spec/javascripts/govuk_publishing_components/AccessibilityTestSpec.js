@@ -47,6 +47,7 @@ function renderErrorMessage (option) {
 describe('AccessibilityTest', function () {
   afterEach(function () {
     removeFromDom(TEST_SELECTOR)
+    document.body.className = '';
   })
 
   it('should do nothing if no callback is specified', function () {
@@ -58,6 +59,24 @@ describe('AccessibilityTest', function () {
       expect(violations).toBe(undefined)
       expect(incompleteWarnings).toBe(undefined)
       expect(err).toBe('No selector "' + TEST_SELECTOR + '" found')
+      done()
+    })
+  })
+
+  it('should add a class to the body when it finishes', function (done) {
+    addToDom('<div>text</div>')
+
+    AccessibilityTest(TEST_SELECTOR, function (err, violations, incompleteWarnings) {
+      expect(document.body.classList.contains('test-a11y-finished')).toBe(true)
+      done()
+    })
+  })
+
+  it('should add a class to the body when it finds no violations', function (done) {
+    addToDom('<div>text</div>')
+
+    AccessibilityTest(TEST_SELECTOR, function (err, violations, incompleteWarnings) {
+      expect(document.body.classList.contains('test-a11y-success')).toBe(true)
       done()
     })
   })
@@ -94,7 +113,8 @@ describe('AccessibilityTest', function () {
       })
 
       expect(violations).toBe(errorMessage)
-
+      expect(document.body.classList.contains('test-a11y-finished')).toBe(true)
+      expect(document.body.classList.contains('test-a11y-failed')).toBe(true)
       done()
     })
   })
