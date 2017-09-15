@@ -33,9 +33,9 @@
       var errorText = _processViolations(results.violations, results.url)
       var incompleteWarningsObj = _processIncompleteWarnings(results.incomplete)
 
-      var bodyClass = results.violations.length === 0 ? "test-a11y-success" : "test-a11y-failed"
+      var bodyClass = results.violations.length === 0 ? "js-test-a11y-success" : "js-test-a11y-failed"
       document.body.classList.add(bodyClass);
-      document.body.classList.add("test-a11y-finished");
+      document.body.classList.add("js-test-a11y-finished");
 
       callback(undefined, errorText, incompleteWarningsObj)
     })

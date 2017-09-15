@@ -90,7 +90,7 @@ describe('AccessibilityTest', function () {
     addToDom('<div>text</div>')
 
     AccessibilityTest(TEST_SELECTOR, function (err, violations, incompleteWarnings) {
-      expect(document.body.classList.contains('test-a11y-finished')).toBe(true)
+      expect(document.body.classList.contains('js-test-a11y-finished')).toBe(true)
       done()
     })
   })
@@ -99,7 +99,7 @@ describe('AccessibilityTest', function () {
     addToDom('<div>text</div>')
 
     AccessibilityTest(TEST_SELECTOR, function (err, violations, incompleteWarnings) {
-      expect(document.body.classList.contains('test-a11y-success')).toBe(true)
+      expect(document.body.classList.contains('js-test-a11y-success')).toBe(true)
       done()
     })
   })
@@ -136,8 +136,8 @@ describe('AccessibilityTest', function () {
       })
 
       expect(violations).toBe(errorMessage)
-      expect(document.body.classList.contains('test-a11y-finished')).toBe(true)
-      expect(document.body.classList.contains('test-a11y-failed')).toBe(true)
+      expect(document.body.classList.contains('js-test-a11y-finished')).toBe(true)
+      expect(document.body.classList.contains('js-test-a11y-failed')).toBe(true)
       done()
     })
   })
