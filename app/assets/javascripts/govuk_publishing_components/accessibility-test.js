@@ -7,7 +7,7 @@
     }
 
     if (!document.querySelector(selector)) {
-      return callback('No selector "' + selector + '" found')
+      return callback()
     }
 
     var axeOptions = {
@@ -15,20 +15,27 @@
       include: [selector]
     }
 
+    // TODO: Remove when aXe core patched
+    // https://github.com/dequelabs/axe-core/issues/525
+    if (document.querySelector('svg') && !(document.querySelector('svg').children instanceof HTMLCollection)) {
+      delete axeOptions['restoreScroll']
+    }
+
     axe.run(selector, axeOptions, function (err, results) {
       if (err) {
-        callback('aXe Error: ' + err)
+        return callback('aXe Error: ' + err)
       }
 
-      var violations = (typeof results === 'undefined') ? [] : results.violations
-      var incompleteWarnings = (typeof results === 'undefined') ? [] : results.incomplete
-
-      if (violations.length === 0 && incompleteWarnings.length === 0) {
-        return callback('No accessibility issues found')
+      if (typeof results === "undefined") {
+        return callback('aXe Error: Expected results but none returned')
       }
 
-      var incompleteWarningsObj = _processIncompleteWarnings(incompleteWarnings)
-      var errorText = _processViolations(violations, results.url)
+      var errorText = _processViolations(results.violations, results.url)
+      var incompleteWarningsObj = _processIncompleteWarnings(results.incomplete)
+
+      var bodyClass = results.violations.length === 0 ? "js-test-a11y-success" : "js-test-a11y-failed"
+      document.body.classList.add(bodyClass);
+      document.body.classList.add("js-test-a11y-finished");
 
       callback(undefined, errorText, incompleteWarningsObj)
     })
@@ -51,33 +58,36 @@
           ].join('\n\n\n')
         }).join('\n\n- - -\n\n')
       )
-    }
-    else {
-      console.info("aXe: No accessibility errors found")
+    } else {
+      return false
     }
   }
 
   var _processIncompleteWarnings = function(incompleteWarnings) {
-    return (
-      incompleteWarnings.map(function (incomplete) {
-        var help = incomplete.help
-        var helpUrl = _formatHelpUrl(incomplete.helpUrl)
-        var cssSelector = incomplete.nodes.map(function (node) {
+    if (incompleteWarnings.length !== 0) {
+      return (
+        incompleteWarnings.map(function (incomplete) {
+          var help = incomplete.help
+          var helpUrl = _formatHelpUrl(incomplete.helpUrl)
+          var cssSelector = incomplete.nodes.map(function (node) {
+            return {
+              'selector': node.target,
+              'reason': node.any.map(function(item) {
+                return item.message
+              })
+            }
+          })
+
           return {
-            'selector': node.target,
-            'reason': node.any.map(function(item) {
-              return item.message
-            })
+            'summary': help,
+            'selectors': cssSelector,
+            'url': helpUrl
           }
         })
-
-        return {
-          'summary': help,
-          'selectors': cssSelector,
-          'url': helpUrl
-        }
-      })
-    )
+      )
+    } else {
+      return false
+    }
   }
 
   var _formatHelpUrl = function (helpUrl) {
@@ -143,7 +153,7 @@
     document.addEventListener('DOMContentLoaded', function () {
       AccessibilityTest('[data-module="test-a11y"]', function (err, violations, incompleteWarnings) {
         if (err) {
-          return
+          _throwUncaughtError(err)
         }
         if (incompleteWarnings) _renderIncompleteWarnings(incompleteWarnings)
         if (violations) _throwUncaughtError(violations)

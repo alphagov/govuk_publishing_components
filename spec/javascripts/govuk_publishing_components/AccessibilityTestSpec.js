@@ -47,17 +47,59 @@ function renderErrorMessage (option) {
 describe('AccessibilityTest', function () {
   afterEach(function () {
     removeFromDom(TEST_SELECTOR)
+    document.body.className = '';
   })
 
   it('should do nothing if no callback is specified', function () {
     AccessibilityTest(TEST_SELECTOR)
   })
 
-  it('should error if no selector is found', function (done) {
+  it('should not run axe if no selector is found', function (done) {
+    spyOn(window.axe, 'run').and.callThrough()
+
     AccessibilityTest(TEST_SELECTOR, function (err, violations, incompleteWarnings) {
+      expect(window.axe.run).not.toHaveBeenCalled()
+      expect(err).toBe(undefined)
       expect(violations).toBe(undefined)
       expect(incompleteWarnings).toBe(undefined)
-      expect(err).toBe('No selector "' + TEST_SELECTOR + '" found')
+      done()
+    })
+  })
+
+  // TODO: Remove when aXe core patched
+  // https://github.com/dequelabs/axe-core/issues/525
+  it('should prevent aXe from erroring when SVG is present by disabling restoreScroll', function (done) {
+    spyOn(window.axe, 'run').and.callThrough()
+    addToDom('<div style="height: 1000px; width: 100px;"></div><svg class="svg" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">\
+                <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>\
+              </svg>')
+
+    AccessibilityTest(TEST_SELECTOR, function (err, violations, incompleteWarnings) {
+      expect(err).toBe(undefined)
+
+      // Protect against test failing if PhantomJS updated
+      if (!(document.querySelector('svg').children instanceof HTMLCollection)) {
+        axeOptions = window.axe.run.calls.argsFor(0)
+        expect(axeOptions['restoreScroll']).toBe(undefined)
+      }
+      done()
+    })
+  })
+
+  it('should add a class to the body when it finishes', function (done) {
+    addToDom('<div>text</div>')
+
+    AccessibilityTest(TEST_SELECTOR, function (err, violations, incompleteWarnings) {
+      expect(document.body.classList.contains('js-test-a11y-finished')).toBe(true)
+      done()
+    })
+  })
+
+  it('should add a class to the body when it finds no violations', function (done) {
+    addToDom('<div>text</div>')
+
+    AccessibilityTest(TEST_SELECTOR, function (err, violations, incompleteWarnings) {
+      expect(document.body.classList.contains('js-test-a11y-success')).toBe(true)
       done()
     })
   })
@@ -94,7 +136,8 @@ describe('AccessibilityTest', function () {
       })
 
       expect(violations).toBe(errorMessage)
-
+      expect(document.body.classList.contains('js-test-a11y-finished')).toBe(true)
+      expect(document.body.classList.contains('js-test-a11y-failed')).toBe(true)
       done()
     })
   })
