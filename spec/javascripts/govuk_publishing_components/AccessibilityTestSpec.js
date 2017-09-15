@@ -54,11 +54,14 @@ describe('AccessibilityTest', function () {
     AccessibilityTest(TEST_SELECTOR)
   })
 
-  it('should error if no selector is found', function (done) {
+  it('should not run axe if no selector is found', function (done) {
+    spyOn(window.axe, 'run').and.callThrough()
+
     AccessibilityTest(TEST_SELECTOR, function (err, violations, incompleteWarnings) {
+      expect(window.axe.run).not.toHaveBeenCalled()
+      expect(err).toBe(undefined)
       expect(violations).toBe(undefined)
       expect(incompleteWarnings).toBe(undefined)
-      expect(err).toBe('No selector "' + TEST_SELECTOR + '" found')
       done()
     })
   })
@@ -66,7 +69,7 @@ describe('AccessibilityTest', function () {
   // TODO: Remove when aXe core patched
   // https://github.com/dequelabs/axe-core/issues/525
   it('should prevent aXe from erroring when SVG is present by disabling restoreScroll', function (done) {
-    spyOn(window.axe, 'run').and.callThrough();
+    spyOn(window.axe, 'run').and.callThrough()
     addToDom('<div style="height: 1000px; width: 100px;"></div><svg class="svg" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">\
                 <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>\
               </svg>')

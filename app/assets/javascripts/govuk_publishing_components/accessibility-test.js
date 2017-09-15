@@ -7,7 +7,7 @@
     }
 
     if (!document.querySelector(selector)) {
-      return callback('No selector "' + selector + '" found')
+      return callback()
     }
 
     var axeOptions = {
