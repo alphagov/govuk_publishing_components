@@ -17,16 +17,17 @@
 
     axe.run(selector, axeOptions, function (err, results) {
       if (err) {
-        callback('aXe Error: ' + err)
+        return callback('aXe Error: ' + err)
       }
 
-      var violations = (typeof results === 'undefined') ? [] : results.violations
-      var errorText = _processViolations(violations, results.url)
+      if (typeof results === "undefined") {
+        return callback('aXe Error: Expected results but none returned')
+      }
 
-      var incompleteWarnings = (typeof results === 'undefined') ? [] : results.incomplete
-      var incompleteWarningsObj = _processIncompleteWarnings(incompleteWarnings)
+      var errorText = _processViolations(results.violations, results.url)
+      var incompleteWarningsObj = _processIncompleteWarnings(results.incomplete)
 
-      var bodyClass = violations.length === 0 ? "test-a11y-success" : "test-a11y-failed"
+      var bodyClass = results.violations.length === 0 ? "test-a11y-success" : "test-a11y-failed"
       document.body.classList.add(bodyClass);
       document.body.classList.add("test-a11y-finished");
 
