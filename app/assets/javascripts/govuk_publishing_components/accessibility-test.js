@@ -153,7 +153,7 @@
     document.addEventListener('DOMContentLoaded', function () {
       AccessibilityTest('[data-module="test-a11y"]', function (err, violations, incompleteWarnings) {
         if (err) {
-          return
+          _throwUncaughtError(err)
         }
         if (incompleteWarnings) _renderIncompleteWarnings(incompleteWarnings)
         if (violations) _throwUncaughtError(violations)
