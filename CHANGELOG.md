@@ -1,3 +1,8 @@
+# 1.7.0
+
+* Remove cookie and survey banners from the component guide to allow visual diff tool comparison (PR #65)
+* Make it clear when aXe has failed, succeeded or found errors (PR #64)
+
 # 1.6.0
 
 * Set X-Frame-Options header to allowall, to allow inclusion of component guide in iFrames (PR #53)
