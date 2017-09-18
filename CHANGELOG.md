@@ -1,3 +1,7 @@
+# 1.8.0
+
+* Add integration tests for apps to use when testing their component guide (PR #68)
+
 # 1.7.0
 
 * Remove cookie and survey banners from the component guide to allow visual diff tool comparison (PR #65)
