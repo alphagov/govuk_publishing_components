@@ -27,6 +27,23 @@ https://government-frontend.herokuapp.com/component-guide
 
 The guide includes your application’s `application.scss` and `application.js` files by default. This is [configurable](#configuration).
 
+## Test the component guide
+
+The gem [includes integration tests](lib/govuk_publishing_components/minitest/component_guide_test.rb) to check that your component guide and examples are error free and that they meet basic accessibility needs.
+
+Automated accessibility tests use [aXe](https://github.com/dequelabs/axe-core). Using our `AccessibilityTest` wrapper the gem runs the aXe suite against each example and throws JavaScript errors for any violations. These JavaScript errors can be used to fail a build in CI.
+
+### Minitest
+
+```ruby
+# component_guide_test.rb
+require 'govuk_publishing_components/minitest/component_guide_test'
+
+class ComponentGuideTest < ActionDispatch::IntegrationTest
+  include GovukPublishingComponents::Minitest::ComponentGuideTest
+end
+```
+
 ### Install gem
 
 Add this line to your application's Gemfile in the [development and test groups](http://bundler.io/v1.12/groups.html#grouping-your-dependencies):
