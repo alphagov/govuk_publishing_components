@@ -63,7 +63,7 @@ describe 'Component guide' do
     visit '/component-guide/test-component'
 
     expect(body).to include('How to call this component')
-    expect(body).to include('render <span class="token string">\'components/test-component\'</span>')
+    expect(body).to include('<span class="n">render</span> <span class="s2">"components/test-component"</span>')
   end
 
   it 'includes the component partial' do
@@ -85,13 +85,13 @@ describe 'Component guide' do
   it 'passes params in examples to component example' do
     visit '/component-guide/test-component-with-params'
     expect(body).to include('A test component that takes a required parameter')
-    expect(body).to include('render <span class="token string">\'components/test-component-with-params\'</span>')
+    expect(body).to include('<span class="n">render</span> <span class="s2">"components/test-component-with-params"</span>')
 
 
-    expect(body).to include('test_component_parameter<span class="token punctuation">:</span> <span class="token string">"Some value"</span>')
+    expect(body).to include('<span class="ss">test_component_parameter: </span><span class="s2">"Some value"</span>')
     expect(page).to have_selector('.component-guide-preview .test-component-with-params', text: 'Some value')
 
-    expect(body).to include('test_component_parameter<span class="token punctuation">:</span> <span class="token string">"A different value"</span>')
+    expect(body).to include('<span class="ss">test_component_parameter: </span><span class="s2">"A different value"</span>')
     expect(page).to have_selector('.component-guide-preview .test-component-with-params', text: 'A different value')
   end
 
@@ -115,7 +115,7 @@ describe 'Component guide' do
     expect(body).to include('How to call this example')
     expect(body).to include('How it looks')
 
-    expect(body).to include('test_component_parameter<span class="token punctuation">:</span> <span class="token string">"A different value"</span>')
+    expect(body).to include('<span class="ss">test_component_parameter: </span><span class="s2">"A different value"</span>')
     expect(page).to have_selector('.component-guide-preview .test-component-with-params', text: 'A different value')
   end
 
@@ -201,7 +201,7 @@ describe 'Component guide' do
 
     visit '/component-guide/test-static-component'
 
-    expect(body).to include('render <span class="token string">\'govuk_component/test-static-component\'</span>')
+    expect(body).to include('<span class="n">render</span> <span class="s2">"govuk_component/test-static-component"</span>')
     within '.component-guide-preview' do
       expect(page).to have_selector('.a-test-static-component')
     end

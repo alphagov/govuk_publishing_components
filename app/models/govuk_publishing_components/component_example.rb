@@ -1,3 +1,5 @@
+require 'rouge'
+
 module GovukPublishingComponents
   class ComponentExample
     attr_reader :id,
@@ -14,6 +16,12 @@ module GovukPublishingComponents
 
     def name
       id.humanize
+    end
+
+    def highlight_code(string_to_format = '')
+      formatter = Rouge::Formatters::HTML.new
+      lexer = Rouge::Lexers::ERB.new
+      formatter.format(lexer.lex(string_to_format)).html_safe
     end
 
     def pretty_data
