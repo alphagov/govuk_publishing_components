@@ -19,9 +19,9 @@
         'position': 'absolute',
         'top': '0',
         'pointer-events': 'none',
-        'border': '0',
-        'z-index': '999 !important'
+        'border': '0'
       });
+      iframe.style.setProperty('z-index', '999','important');
 
       // For browsers that support it, do mix-blend-mode diff
       if ('mix-blend-mode' in document.body.style) {
