@@ -219,7 +219,7 @@ html {
 // scss-lint:disable IdSelector
 #user-satisfaction-survey-container,
 #global-cookie-message {
-  display: none;
+  display: none !important;
 }
 // scss-lint:enable IdSelector
 
