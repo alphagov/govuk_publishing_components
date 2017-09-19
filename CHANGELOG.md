@@ -1,3 +1,7 @@
+# 1.8.2
+
+* Force cookie and survey banner styling on (PR #76)
+
 # 1.8.1
 
 * Remove cookie and survey banner using CSS instead of setting cookies (PR #71)
