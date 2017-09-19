@@ -215,6 +215,14 @@ html {
   }
 }
 
+// Hide survey and cookie banners
+// scss-lint:disable IdSelector
+#user-satisfaction-survey-container,
+#global-cookie-message {
+  display: none;
+}
+// scss-lint:enable IdSelector
+
 // Rouge syntax highlighting
 // Based on https://github.com/alphagov/tech-docs-template/blob/master/template/source/stylesheets/palette/_syntax-highlighting.scss
 
