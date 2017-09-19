@@ -4,8 +4,6 @@
 @import "typography";
 @import "colours";
 
-@import "component-highlight";
-
 $border-color: #ccc;
 
 .govuk-component-guide-wrapper {
@@ -214,5 +212,237 @@ html {
     a {
       color: $black;
     }
+  }
+}
+
+// Rouge syntax highlighting
+// Based on https://github.com/alphagov/tech-docs-template/blob/master/template/source/stylesheets/palette/_syntax-highlighting.scss
+
+$code-00: scale-color($highlight-colour, $lightness:50%); // Default Background
+$code-01: #f5f5f5; // Lighter Background (Unused)
+$code-02: #bfc1c3; // Selection Background
+$code-03: darken($secondary-text-colour, 2%); // Comments, Invisibles, Line Highlighting
+$code-04: #e8e8e8; // Dark Foreground (Unused)
+$code-05: $text-colour; // Default Foreground, Caret, Delimiters, Operators
+$code-06: #ffffff; // Light Foreground (Unused)
+$code-07: #ffffff; // Light Background (Unused)
+
+$code-08: #ae5f3d; // Variables, XML Tags, Markup Link Text, Markup Lists
+$code-09: #0E7754; // Integers, Boolean, Constants, XML Attributes, Markup Link Url
+$code-0a: #4C4077; // Classes, Markup Bold, Search Text Background
+$code-0b: $govuk-blue; // Strings, Inherited Class, Markup Code
+$code-0c: $govuk-blue; // Support, Regular Expressions, Escape Characters, Markup Quotes
+$code-0d: #4C4077; // Functions, Methods, Attribute IDs, Headings
+$code-0e: #a71d5d; // Keywords, Storage, Selector, Markup Italic
+$code-0f: #C92424; // Deprecated, Opening/Closing Embedded Language Tags e.g. <?php ?> (Unused)
+
+$code-insert-bg: #DEF8CA;
+$code-delete-bg: #FADDDD;
+
+.component-highlight {
+
+  // Map Rouge / Pygments Tokens to work with 'Base 16' themes
+
+  background: $code-00;
+  color: $code-05;
+
+  //
+  // Comments
+  //
+
+  .c,       // Comment
+  .cm,      // Comment.Multiline
+  .cp,      // Comment.Preproc
+  .c1,      // Comment.Single
+  .cs {     // Comment.Special
+    color: $code-03;
+  }
+
+  //
+  // Keywords
+  //
+
+  .k,       // Keyword
+  .kc,      // Keyword.Constant
+  .kd,      // Keyword.Declaration
+  .kp,      // Keyword.Pseudo
+  .kr {     // Keyword.Reserved
+    color: $code-0e;
+  }
+
+  .kn {     // Keyword.Namespace
+    color: $code-0c;
+  }
+
+  .kt {     // Keyword.Type
+    color: $code-0a;
+  }
+
+  //
+  // Operators
+  //
+
+  .o,       // Operator
+  .ow {     // Operator.Word
+    color: $code-0c;
+  }
+
+  //
+  // Names
+  //
+
+  .n,       // Name
+  .nb,      // Name.Builtin
+  .bp,      // Name.Builtin.Pseudo
+  .ni,      // Name.Entity
+  .nl,      // Name.Label
+  .py {     // Name.Property
+    // Default styling
+  }
+
+  .nc,      // Name.Class
+  .nn {     // Name.Namespace
+    color: $code-0a;
+  }
+
+  .na,      // Name.Attribute
+  .nf {     // Name.Function
+    color: $code-0d;
+  }
+
+  .nv,      // Name.Variable
+  .no,      // Name.Constant
+  .vc,      // Name.Variable.Class
+  .vg,      // Name.Variable.Global
+  .vi {     // Name.Variable.Instance
+    color: $code-08;
+  }
+
+  .nd {     // Name.Decorator
+    color: $code-0c;
+  }
+
+  .nt,      // Name.Tag
+  .nx {     // Name.Other
+    color: $code-09;
+  }
+
+  .ne {     // Name.Exception
+    color: $code-0f;
+  }
+
+  //
+  // Literals
+  //
+
+  .l  {     // Literal
+    color: $code-09;
+  }
+
+  .ld {     // Literal.Date
+    color: $code-0b;
+  }
+
+  .m,       // Literal.Number
+  .mf,      // Literal.Number.Float
+  .mh,      // Literal.Number.Hex
+  .mi,      // Literal.Number.Integer
+  .il,      // Literal.Number.Integer.Long
+  .mo {     // Literal.Number.Oct
+    color: $code-09;
+  }
+
+  .s,       // Literal.String
+  .sb,      // Literal.String.Backtick
+  .s2,      // Literal.String.Double
+  .sh {     // Literal.String.Heredoc
+    color: $code-0b;
+  }
+
+  .sx,      // Literal.String.Other
+  .sr,      // Literal.String.Regex
+  .s1,      // Literal.String.Single
+  .ss {     // Literal.String.Symbol
+    color: $code-0b;
+  }
+
+  .se,      // Literal.String.Escape
+  .si {     // Literal.String.Interpol
+    color: $code-09;
+  }
+
+  .sd {     // Literal.String.Doc
+    color: $code-03;
+  }
+
+  .sc {     // Literal.String.Char
+    // Default styling
+  }
+
+  //
+  // Diffs
+  //
+
+  .gi {     // Generic.Inserted
+    background-color: $code-insert-bg;
+  }
+
+  .gd {     // Generic.Deleted
+    background-color: $code-delete-bg;
+  }
+
+  //
+  // Misc
+  //
+
+  .p {      // Punctuation
+    // Default styling
+  }
+
+  .w {      // Text.Whitespace
+    // Default styling
+  }
+
+  .hll {    // Highlight
+    background-color: $code-02;
+  }
+
+  .err,     // Error
+  .gr,      // Generic.Error
+  .gt {     // Generic.Traceback
+    color: $code-0f;
+  }
+
+  .gs {     // Generic.Strong
+    font-weight: bold;
+  }
+
+  .ge {     // Generic.Emph
+    font-style: italic;
+  }
+
+  .gh {     // Generic.Heading
+    font-weight: bold;
+  }
+
+  .gu {     // Generic.Subheading
+    color: $code-0a;
+    font-weight: bold;
+  }
+
+  .gp {     // Generic.Prompt
+    color: $code-03;
+    font-weight: bold;
+  }
+}
+
+// Specific for this Gem, optimized for erb render statements
+.component-highlight {
+  .s2 {
+    color: $code-08;
+  }
+
+  .n + .s2 {
+    color: $code-09;
   }
 }
