@@ -1,7 +1,11 @@
 module GovukPublishingComponents
   class ApplicationController < ActionController::Base
     helper ::Rails.application.helpers
-    include Slimmer::GovukComponents
+    if Config.static
+      include Slimmer::LocalGovukComponents
+    else
+      include Slimmer::GovukComponents
+    end
     include Slimmer::Headers
     protect_from_forgery with: :exception
     before_action :set_custom_slimmer_headers
