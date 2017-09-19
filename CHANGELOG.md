@@ -1,3 +1,8 @@
+# 1.8.1
+
+* Remove cookie and survey banner using CSS instead of setting cookies (PR #71)
+* Fix syntax highlighting styles (PR #70 and #73)
+
 # 1.8.0
 
 * Add integration tests for apps to use when testing their component guide (PR #68)
