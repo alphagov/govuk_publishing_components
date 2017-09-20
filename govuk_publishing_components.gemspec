@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "DEVELOPMENT.md", "LICENCE.md", "Rakefile", "README.md"]
 
   s.add_dependency "rails", ">= 5.0.0.1"
-  s.add_dependency "slimmer"
+  s.add_dependency "slimmer", ">= 11.1.0"
   s.add_dependency "sass-rails", ">= 5.0.4"
   s.add_dependency "govuk_frontend_toolkit"
   s.add_dependency "govspeak", ">= 5.0.3"
