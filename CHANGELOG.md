@@ -1,3 +1,7 @@
+# 1.10.0
+
+* Add visual diff tool (PR #61)
+
 # 1.9.0
 
 * Use local govuk_components for static's component guide (PR #74)
