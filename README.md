@@ -121,6 +121,17 @@ if !Rails.env.production? || ENV['HEROKU_APP_NAME'].present?
 end
 ```
 
+## Automated Testing
+### Visual Diff Tool
+The component guide includes a visual diff tool that should make it easier to spot when you are introducing visual regressions in your components.
+
+It can be run on a locally running version of the component guide, to compare it to the heroku master deploy. For example: [government-frontend.dev.gov.uk/component-guide](government-frontend.dev.gov.uk/component-guide) will be compared to [government-frontend.herokuapp.com/component-guide](government-frontend.herokuapp.com/component-guide).
+
+The tool can be run via the console using the following command:
+```js
+  window.GOVUK.VisualDiffTool()`
+```
+
 ## Licence
 
 [MIT Licence](LICENCE.md)
