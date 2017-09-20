@@ -1,0 +1,4 @@
+name: Test invalid component with duplicate IDs
+examples:
+  default:
+    data: {}

@@ -12,7 +12,12 @@
 
     var axeOptions = {
       restoreScroll: true,
-      include: [selector]
+      include: [selector],
+      rules: {
+        "duplicate-id": {
+          enabled: false
+        }
+      }
     }
 
     // TODO: Remove when aXe core patched
