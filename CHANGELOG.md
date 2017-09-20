@@ -1,3 +1,7 @@
+# 1.9.0
+
+* Use local govuk_components for static's component guide (PR #74)
+
 # 1.8.2
 
 * Force cookie and survey banner styling on (PR #76)
