@@ -121,22 +121,22 @@
     }
   }
 
-  var _renderIncompleteWarnings = function (incompleteWarnings) {
-    incompleteWarnings.forEach(function (warning) {
-      warning.selectors.forEach(function (selectorObj) {
+  var _renderAxeResultsInGuide = function (resultsGroup, resultContainerSelector) {
+    resultsGroup.forEach(function (result) {
+      result.selectors.forEach(function (selectorObj) {
         var activeEl = document.querySelector(selectorObj.selector)
         var activeElParent = _findParent(activeEl, '[data-module="test-a11y"]')
-        var warningWrapper = activeElParent.querySelector('[data-module="test-a11y-warning"]')
+        var wrapper = activeElParent.querySelector(resultContainerSelector)
 
-        if (warningWrapper) {
+        if (wrapper) {
           // Add warning to warnings box
-          var warningsHTML = '<h3>' + warning.summary + ' <a href="' + warning.url + '">(see guidance)</a></h3>' +
+          var resultHTML = '<h3>' + result.summary + ' <a href="' + result.url + '">(see guidance)</a></h3>' +
           '<p>Reason: ' + selectorObj.reason + '</p>' +
           '<p>Element can be found using the following CSS selector: <span class="selector">' +
           selectorObj.selector +
           '</span></p>'
 
-          warningWrapper.insertAdjacentHTML('beforeend', warningsHTML)
+          wrapper.insertAdjacentHTML('beforeend', resultHTML)
         }
       })
     })
@@ -160,7 +160,7 @@
         if (err) {
           _throwUncaughtError(err)
         }
-        if (incompleteWarnings) _renderIncompleteWarnings(incompleteWarnings)
+        if (incompleteWarnings) _renderAxeResultsInGuide(incompleteWarnings, '[data-module="test-a11y-warning"]')
         if (violations) _throwUncaughtError(violations)
       })
     })
