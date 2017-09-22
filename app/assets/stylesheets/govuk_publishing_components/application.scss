@@ -127,13 +127,6 @@ $border-color: #ccc;
     color: $black;
     font-weight: bold;
   }
-
-  div[class^="govuk-"] {
-    &:hover {
-      outline: 1px solid $border-color;
-      box-shadow: 0 0 10px $border-color;
-    }
-  }
 }
 
 .component-guide-preview--simple {

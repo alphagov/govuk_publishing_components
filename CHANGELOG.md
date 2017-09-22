@@ -1,6 +1,7 @@
 # 1.10.0
 
 * Add visual diff tool (PR #61)
+* Disable duplicate ID aXe rule (PR #80)
 
 # 1.9.0
 
