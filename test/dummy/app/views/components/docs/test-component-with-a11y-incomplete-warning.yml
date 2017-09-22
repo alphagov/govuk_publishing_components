@@ -1,0 +1,5 @@
+name: Test component with an incomplete accessibility warning
+description: Component link has a background image (a black pixel) meaning aXe can’t determine the colour contrast
+examples:
+  default:
+    data: {}
