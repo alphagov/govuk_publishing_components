@@ -15,7 +15,7 @@ A component is a package comprised of template, style, behaviour and documentati
 
 ### A component is accessible when:
 
-* it meets a set of defined accessibility acceptance criteria
+* it meets [a set of defined accessibility acceptance criteria](accessibility_acceptance_criteria.md)
 * it passes [WCAG AA compliance](https://www.w3.org/WAI/WCAG20/quickref/)
 * it has automated accessibility testing with good coverage to protect against regressions
 * it is responsive
