@@ -35,18 +35,16 @@
         return callback('aXe Error: Expected results but none returned')
       }
 
-      var errorText = _processViolations(results.violations, results.url)
-      var incompleteWarningsObj = _processIncompleteWarnings(results.incomplete)
-
+      var consoleErrorText = _consoleErrorText(results.violations, results.url)
       var bodyClass = results.violations.length === 0 ? "js-test-a11y-success" : "js-test-a11y-failed"
       document.body.classList.add(bodyClass);
       document.body.classList.add("js-test-a11y-finished");
 
-      callback(undefined, errorText, incompleteWarningsObj)
+      callback(undefined, consoleErrorText, _processAxeResultsForPage(results))
     })
   }
 
-  var _processViolations = function(violations, url) {
+  var _consoleErrorText = function(violations, url) {
     if (violations.length !== 0) {
       return (
         '\n' + 'Accessibility issues at ' +
@@ -68,31 +66,29 @@
     }
   }
 
-  var _processIncompleteWarnings = function(incompleteWarnings) {
-    if (incompleteWarnings.length !== 0) {
-      return (
-        incompleteWarnings.map(function (incomplete) {
-          var help = incomplete.help
-          var helpUrl = _formatHelpUrl(incomplete.helpUrl)
-          var cssSelector = incomplete.nodes.map(function (node) {
-            return {
-              'selector': node.target,
-              'reason': node.any.map(function(item) {
-                return item.message
-              })
-            }
-          })
-
-          return {
-            'summary': help,
-            'selectors': cssSelector,
-            'url': helpUrl
-          }
-        })
-      )
-    } else {
-      return false
+  var _processAxeResultsForPage = function(results) {
+    return {
+      violations: _mapSummaryAndCause(results.violations),
+      incompleteWarnings: _mapSummaryAndCause(results.incomplete)
     }
+  }
+
+  var _mapSummaryAndCause = function(resultsArray) {
+    return resultsArray.map(function (result) {
+      var cssSelector = result.nodes.map(function (node) {
+                          return {
+                            'selector': node.target,
+                            'reasons': node.any.map(function(item) {
+                              return item.message
+                            })
+                          }
+                        })
+      return {
+        'summary': result.help,
+        'selectors': cssSelector,
+        'url': _formatHelpUrl(result.helpUrl)
+      }
+    })
   }
 
   var _formatHelpUrl = function (helpUrl) {
@@ -129,10 +125,9 @@
         var wrapper = activeElParent.querySelector(resultContainerSelector)
 
         if (wrapper) {
-          // Add warning to warnings box
           var resultHTML = '<h3>' + result.summary + ' <a href="' + result.url + '">(see guidance)</a></h3>' +
-          '<p>Reason: ' + selectorObj.reason + '</p>' +
-          '<p>Element can be found using the following CSS selector: <span class="selector">' +
+          '<p>' + selectorObj.reasons.join('<br />') + '</p>' +
+          '<p>Element can be found using the selector:<br /><span class="selector">' +
           selectorObj.selector +
           '</span></p>'
 
@@ -156,12 +151,19 @@
   // http://responsivenews.co.uk/post/18948466399/cutting-the-mustard
   if (document.addEventListener) {
     document.addEventListener('DOMContentLoaded', function () {
-      AccessibilityTest('[data-module="test-a11y"]', function (err, violations, incompleteWarnings) {
-        if (err) {
-          _throwUncaughtError(err)
+      AccessibilityTest('[data-module="test-a11y"]', function (axeError, consoleErrorText, pageResults) {
+        if (axeError) {
+          _throwUncaughtError(axeError)
         }
-        if (incompleteWarnings) _renderAxeResultsInGuide(incompleteWarnings, '[data-module="test-a11y-warning"]')
-        if (violations) _throwUncaughtError(violations)
+
+        if (pageResults) {
+          _renderAxeResultsInGuide(pageResults.incompleteWarnings, '[data-module="test-a11y-warning"]')
+          _renderAxeResultsInGuide(pageResults.violations, '[data-module="test-a11y-violation"]')
+        }
+
+        if (consoleErrorText) {
+          _throwUncaughtError(consoleErrorText)
+        }
       })
     })
   }

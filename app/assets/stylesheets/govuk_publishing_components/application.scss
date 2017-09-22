@@ -145,20 +145,22 @@ $border-color: #ccc;
   }
 }
 
+.component-guide-preview--violation,
 .component-guide-preview--warning {
   margin-top: $gutter-half;
-  border-color: $yellow;
+  @include core-19;
 
   &:empty {
     display: none;
   }
 
-  &:before {
-    background-color: $yellow;
+  h3 {
+    @include bold-19;
   }
 
+  p,
   h3 {
-    @include bold-16;
+    margin-bottom: $gutter / 2;
   }
 
   h3:not(:first-child) {
@@ -167,6 +169,23 @@ $border-color: #ccc;
 
   .selector {
     font-style: italic;
+  }
+}
+
+.component-guide-preview--warning {
+  border-color: $yellow;
+
+  &:before {
+    background-color: $yellow;
+  }
+}
+
+.component-guide-preview--violation {
+  border-color: $red;
+
+  &:before {
+    background-color: $red;
+    color: $white;
   }
 }
 
