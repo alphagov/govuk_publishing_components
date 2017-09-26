@@ -5,7 +5,7 @@ describe 'Component example' do
     visit '/component-guide/test-component'
 
     expect(body).to include('How to call this component')
-    expect(body).to include('<span class="n">render</span> <span class="s2">"components/test-component"</span>')
+    expect(page).to have_content('<%= render "components/test-component", { } %>')
   end
 
   it 'includes the component partial' do
@@ -27,13 +27,11 @@ describe 'Component example' do
   it 'passes params in examples to component example' do
     visit '/component-guide/test-component-with-params'
     expect(body).to include('A test component that takes a required parameter')
-    expect(body).to include('<span class="n">render</span> <span class="s2">"components/test-component-with-params"</span>')
 
-
-    expect(body).to include('<span class="ss">test_component_parameter: </span><span class="s2">"Some value"</span>')
+    expect(page).to have_content('<%= render "components/test-component-with-params", { test_component_parameter: "Some value" } %>')
     expect(page).to have_selector('.component-guide-preview .test-component-with-params', text: 'Some value')
 
-    expect(body).to include('<span class="ss">test_component_parameter: </span><span class="s2">"A different value"</span>')
+    expect(page).to have_content('<%= render "components/test-component-with-params", { test_component_parameter: "A different value" } %>')
     expect(page).to have_selector('.component-guide-preview .test-component-with-params', text: 'A different value')
   end
 
@@ -52,7 +50,7 @@ describe 'Component example' do
     expect(body).to include('How to call this example')
     expect(body).to include('How it looks')
 
-    expect(body).to include('<span class="ss">test_component_parameter: </span><span class="s2">"A different value"</span>')
+    expect(page).to have_content('<%= render "components/test-component-with-params", { test_component_parameter: "A different value" } %>')
     expect(page).to have_selector('.component-guide-preview .test-component-with-params', text: 'A different value')
   end
 
