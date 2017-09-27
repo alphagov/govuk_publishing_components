@@ -36,7 +36,7 @@ The `.yml` file must have:
 | name | Required | Friendly name for component |
 | description | Required | One or two sentences summarising the component
 | body | Optional | A govspeak markdown block giving guidance for the component |
-| accessibility_criteria | Required | A govspeak markdown block listing the accessibility acceptance criteria this component must meet to be accessible |
+| accessibility_criteria | Required | A govspeak markdown block listing the [accessibility acceptance criteria](accessibility_acceptance_criteria.md) this component must meet to be accessible |
 | examples | Required | Each block represents an example and each example is listed in the component guide. Examples must cover all expected use cases. |
 
 ### Example yaml file
@@ -68,7 +68,7 @@ examples:
       some_parameter: 'A different parameter value'
 ```
 
-#### Accessibility Criteria
+#### [Accessibility Acceptance Criteria](accessibility_acceptance_criteria.md)
 
 Markdown listing what this component must do to be accessible.
 
