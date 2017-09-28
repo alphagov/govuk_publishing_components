@@ -1,3 +1,9 @@
+# 1.11.0
+
+* Add task to check for components existing without corresponding docs (PR #86)
+* Render aXe violations in component guide (PR #82)
+* Remove component guide hover styles (PR #81)
+
 # 1.10.0
 
 * Add visual diff tool (PR #61)
