@@ -1,0 +1,5 @@
+name: Test component with no accessibility criteria
+description: A test component with no accessibility criteria
+examples:
+  default:
+    data: {}

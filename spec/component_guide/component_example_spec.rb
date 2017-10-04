@@ -79,12 +79,17 @@ describe 'Component example' do
 
   it 'shows an example description if one is present' do
     visit '/component-guide/test-component-with-example-description'
-
     within ".component-example" do
       within(shared_component_selector("govspeak")) do
         content = JSON.parse(page.text).fetch("content").squish
         expect(content).to include('<p>This is the description of this example. It has a list in it, containing:</p>')
       end
     end
+  end
+
+  it 'shows a violation warning if no accessibility criteria are defined' do
+    visit '/component-guide/test-component-with-no-accessibility-criteria'
+    expect(page).to have_selector('.component-violation')
+    expect(body).to include('This component is not valid')
   end
 end
