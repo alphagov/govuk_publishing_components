@@ -46,6 +46,23 @@ $border-color: #ccc;
   }
 }
 
+.component-violation {
+  border: 3px solid $error-colour;
+  margin: 0 0 $gutter;
+  padding: $gutter $gutter;
+
+  .component-violation--title {
+    @include bold-24;
+  }
+
+  .component-violation--link {
+    display: block;
+    @include bold-19;
+    color: $error-colour;
+    margin: $gutter * 0.5 0;
+  }
+}
+
 .component-doc-h2 {
   @include bold-27;
   margin: ($gutter * 1.5) 0 $gutter;
