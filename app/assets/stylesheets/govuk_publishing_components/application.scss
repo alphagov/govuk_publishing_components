@@ -51,15 +51,15 @@ $border-color: #ccc;
   margin: 0 0 $gutter;
   padding: $gutter $gutter;
 
-  .component-violation--title {
+  .component-violation__title {
     @include bold-24;
   }
 
-  .component-violation--link {
+  .component-violation__link {
     display: block;
     @include bold-19;
     color: $error-colour;
-    margin: $gutter * 0.5 0;
+    margin: $gutter-half 0;
   }
 }
 
