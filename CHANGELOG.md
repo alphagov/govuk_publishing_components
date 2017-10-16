@@ -1,3 +1,7 @@
+# 1.12.0
+
+* Add warnings and fail tests when no accessibility criteria are defined for a component (PR #90)
+
 # 1.11.0
 
 * Add task to check for components existing without corresponding docs (PR #86)
