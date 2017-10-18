@@ -1,3 +1,7 @@
+# 1.12.1
+
+* Use lead paragraph component (PR #95)
+
 # 1.12.0
 
 * Add warnings and fail tests when no accessibility criteria are defined for a component (PR #90)
