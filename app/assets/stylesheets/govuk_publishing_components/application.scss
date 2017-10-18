@@ -19,12 +19,6 @@ $border-color: #ccc;
   }
 }
 
-.component-description {
-  @include core-24;
-  max-width: 30em;
-  margin-bottom: $gutter * 1.5;
-}
-
 .component-body {
   margin-bottom: $gutter * 1.5;
 }
