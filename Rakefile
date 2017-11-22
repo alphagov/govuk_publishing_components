@@ -18,13 +18,18 @@ end
 
 namespace :assets do
   desc "Test precompiling assets through dummy application"
-
   task :precompile do
     Rake::Task['app:assets:precompile'].invoke
   end
 
+  desc "Test cleaning assets through dummy application"
   task :clean do
     Rake::Task['app:assets:clean'].invoke
+  end
+
+  desc "Test clobbering assets through dummy application"
+  task :clobber do
+    Rake::Task['app:assets:clobber'].invoke
   end
 end
 
