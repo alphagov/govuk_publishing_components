@@ -112,6 +112,15 @@ class ComponentGuideTest < ActionDispatch::IntegrationTest
 end
 ```
 
+### Exclude accessibility rules
+
+Sometimes you will have a component that will throw an error due to it being in isolation, for example radio buttons not being in a fieldset.
+
+For this case you can add `accessibility_excluded_rules` to your components' documentation yml file with the rules you want to exclude. These rules can be found in brackets in the error messages displayed.
+
+For an example of this check [test/.../docs/test-component-with-duplicate-ids.yml](test/dummy/app/views/components/docs/test-component-with-duplicate-ids.yml)
+
+
 ## Component generator
 
 The gem includes a component generator to stub the minimal files required for a component.
