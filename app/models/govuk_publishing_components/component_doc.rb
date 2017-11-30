@@ -5,14 +5,24 @@ module GovukPublishingComponents
                 :description,
                 :body,
                 :accessibility_criteria,
+                :accessibility_excluded_rules,
                 :examples
 
-    def initialize(id, name, description, body, accessibility_criteria, examples)
+    def initialize(
+      id,
+      name,
+      description,
+      body,
+      accessibility_criteria,
+      accessibility_excluded_rules,
+      examples
+    )
       @id = id
       @name = name
       @description = description
       @body = body
       @accessibility_criteria = accessibility_criteria
+      @accessibility_excluded_rules = accessibility_excluded_rules
       @examples = examples
     end
 

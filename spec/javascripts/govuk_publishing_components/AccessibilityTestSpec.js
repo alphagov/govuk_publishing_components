@@ -30,7 +30,7 @@ function renderErrorMessage (option) {
     message += '\nAccessibility issues at ' + url + '\n\n'
   }
   message += (
-    'Problem: ' + option.problem + '\n' +
+    'Problem: ' + option.problem + ' (' + option.id + ')' + '\n' +
     '\n' +
     '\n' +
     ' Check the HTML:\n' +
@@ -129,6 +129,7 @@ describe('AccessibilityTest', function () {
       }
 
       var errorMessage = renderErrorMessage({
+        id: 'color-contrast',
         problem: 'Elements must have sufficient color contrast',
         html: '<a href="#" style="">Low contrast</a>',
         selector: TEST_SELECTOR + ' > a',
@@ -151,6 +152,7 @@ describe('AccessibilityTest', function () {
       }
 
       var errorMessage = renderErrorMessage({
+        id: 'image-alt',
         problem: 'Images must have alternate text',
         html: '<img src="">',
         selector: TEST_SELECTOR + ' > img',
@@ -197,6 +199,7 @@ describe('AccessibilityTest', function () {
 
       var errorMessage = (
         renderErrorMessage({
+          id: 'color-contrast',
           problem: 'Elements must have sufficient color contrast',
           html: '<a href="#" style="">Low contrast</a>',
           selector: TEST_SELECTOR + ' > a',
@@ -204,6 +207,7 @@ describe('AccessibilityTest', function () {
         }) +
         '\n\n- - -\n\n' +
         renderErrorMessage({
+          id: 'image-alt',
           skipHeader: true,
           problem: 'Images must have alternate text',
           html: '<img src="">',

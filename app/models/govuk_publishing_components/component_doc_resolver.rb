@@ -17,12 +17,15 @@ module GovukPublishingComponents
         ComponentExample.new(id.to_s, example["data"], example["context"], example["description"])
       }
 
-      ComponentDoc.new(component[:id],
-                       component[:name],
-                       component[:description],
-                       component[:body],
-                       combined_accessibility_criteria(component),
-                       examples)
+      ComponentDoc.new(
+        component[:id],
+        component[:name],
+        component[:description],
+        component[:body],
+        combined_accessibility_criteria(component),
+        component[:accessibility_excluded_rules],
+        examples
+      )
     end
 
     def combined_accessibility_criteria(component)

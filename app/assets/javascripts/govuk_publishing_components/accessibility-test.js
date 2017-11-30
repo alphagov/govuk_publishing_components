@@ -6,18 +6,25 @@
       return
     }
 
-    if (!document.querySelector(selector)) {
+    var element = document.querySelector(selector)
+
+    if (!element) {
       return callback()
     }
+
+    var dataDisabledRules = element.getAttribute('data-excluded-rules')
+    var disabledRules = dataDisabledRules ? JSON.parse(dataDisabledRules) : []
+
+    var axeRules = {}
+
+    disabledRules.forEach(function (rule) {
+      axeRules[rule] = { enabled: false }
+    })
 
     var axeOptions = {
       restoreScroll: true,
       include: [selector],
-      rules: {
-        "duplicate-id": {
-          enabled: false
-        }
-      }
+      rules: axeRules
     }
 
     // TODO: Remove when aXe core patched
@@ -50,7 +57,7 @@
         '\n' + 'Accessibility issues at ' +
         url + '\n\n' +
         violations.map(function (violation) {
-          var help = 'Problem: ' + violation.help
+          var help = 'Problem: ' + violation.help + ' (' + violation.id + ')'
           var helpUrl = 'Try fixing it with this help: ' + _formatHelpUrl(violation.helpUrl)
           var htmlAndTarget = violation.nodes.map(_renderNode).join('\n\n')
 
@@ -84,6 +91,7 @@
                           }
                         })
       return {
+        'id': result.id,
         'summary': result.help,
         'selectors': cssSelector,
         'url': _formatHelpUrl(result.helpUrl)
@@ -125,7 +133,7 @@
         var wrapper = activeElParent.querySelector(resultContainerSelector)
 
         if (wrapper) {
-          var resultHTML = '<h3>' + result.summary + ' <a href="' + result.url + '">(see guidance)</a></h3>' +
+          var resultHTML = '<h3>(' + result.id + ') ' + result.summary + ' <a href="' + result.url + '">(see guidance)</a></h3>' +
           '<p>' + selectorObj.reasons.join('<br />') + '</p>' +
           '<p>Element can be found using the selector:<br /><span class="selector">' +
           selectorObj.selector +
