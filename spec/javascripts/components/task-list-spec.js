@@ -78,7 +78,7 @@ describe('A tasklist module', function () {
   var expectedTasklistLinkCount = 0;
 
   beforeEach(function () {
-    tasklist = new GOVUK.Modules.Tasklist();
+    tasklist = new GOVUK.Modules.Gemtasklist();
     $element = $(html);
     tasklist.start($element);
     expectedTasklistStepCount = $element.find('.gem-c-task-list__step').length;
@@ -363,7 +363,7 @@ describe('A tasklist module', function () {
 
   describe('When tracking a big task list', function () {
     beforeEach(function () {
-      tasklist = new GOVUK.Modules.Tasklist();
+      tasklist = new GOVUK.Modules.Gemtasklist();
       $element = $(html);
       $element.addClass('gem-c-task-list--large');
       tasklist.start($element);
@@ -583,7 +583,7 @@ describe('A tasklist module', function () {
 
   describe('In a double dot situation', function () {
     beforeEach(function () {
-      tasklist = new GOVUK.Modules.Tasklist();
+      tasklist = new GOVUK.Modules.Gemtasklist();
       $element = $(html);
       tasklist.start($element);
     });
@@ -625,7 +625,7 @@ describe('A tasklist module', function () {
     beforeEach(function () {
       $element = $(html);
       $element.find('.gem-c-task-list__group').removeClass('gem-c-task-list__group--active');
-      tasklist = new GOVUK.Modules.Tasklist();
+      tasklist = new GOVUK.Modules.Gemtasklist();
       tasklist.start($element);
     });
 

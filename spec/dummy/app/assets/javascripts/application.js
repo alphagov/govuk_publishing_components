@@ -10,6 +10,8 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require history-support
+//= require current-location
 //= require govuk/modules
-//= require_tree .
 //= require components/task-list
+//= require_tree .
