@@ -10,5 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require govuk/modules
+//= require ../components/task-list
 //= require_tree ./vendor
 //= require_tree .

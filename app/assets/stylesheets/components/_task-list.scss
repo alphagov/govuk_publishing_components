@@ -1,0 +1,449 @@
+$stroke-width: 2px;
+$stroke-width-large: 3px;
+$number-circle-size: 26px;
+$number-circle-size-large: 35px;
+$dot-size: 16px;
+$top-border: solid 2px $grey-3;
+
+@mixin task-list-vertical-line ($line-style: solid) {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  width: 0;
+  height: 100%;
+  border-left: $line-style $stroke-width $grey-2;
+  background: $white;
+}
+
+@mixin task-list-line-position {
+  left: -($gutter + $gutter-half);
+  margin-left: ($number-circle-size / 2) - ($stroke-width / 2);
+}
+
+@mixin task-list-line-position-large {
+  left: -($gutter * 2);
+  margin-left: ($number-circle-size-large / 2) - ($stroke-width-large / 2);
+  border-width: $stroke-width-large;
+}
+
+.gem-c-task-list {
+  margin-bottom: $gutter-half;
+  overflow: hidden;
+}
+
+.gem-c-task-list__controls {
+  padding: 3px 3px 0 0;
+  text-align: right;
+}
+
+.gem-c-task-list__button {
+  color: $link-colour;
+  cursor: pointer;
+  background: none;
+  border: 0;
+}
+
+// removes extra dotted outline from buttons in Firefox
+// on focus (standard yellow outline unaffected)
+.gem-c-task-list__button::-moz-focus-inner {
+  border: 0;
+}
+
+.gem-c-task-list__button--title {
+  @include _core-font-generator(19px, 19px, 19px, 1.4, 1.4, false, bold);
+  display: inline-block;
+  padding: 0;
+  text-align: left;
+  color: $black;
+
+  .gem-c-task-list--large & {
+    @include _core-font-generator(24px, 19px, 24px, 1.4, 1.4, false, bold);
+  }
+}
+
+.gem-c-task-list__button--controls {
+  @include _core-font-generator(14px, 14px, 14px, 1, 1, false);
+  position: relative;
+  z-index: 1; // this and relative position stops focus outline underlap with border of accordion
+  padding: 0.5em 0;
+
+  .gem-c-task-list--large & {
+    @include _core-font-generator(16px, 14px, 16px, 1, 1, false);
+  }
+}
+
+.gem-c-task-list__groups {
+  padding: 0;
+  margin: 0;
+}
+
+.gem-c-task-list__group {
+  position: relative;
+  padding-left: $gutter + $gutter-half;
+  list-style: none;
+
+  .gem-c-task-list--large & {
+    @include media(tablet) {
+      padding-left: $gutter * 2;
+    }
+  }
+}
+
+.gem-c-task-list__group:last-child {
+  // little dash at the bottom of the line
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: 6;
+    bottom: 0;
+    left: 0;
+    margin-left: $number-circle-size / 4;
+    width: $number-circle-size / 2;
+    height: 0;
+    border-bottom: solid $stroke-width $grey-2;
+  }
+
+  .gem-c-task-list__step:last-child {
+    &:after {
+      height: calc(100% - #{$gutter-half});
+    }
+
+    .gem-c-task-list__help:after {
+      height: 100%;
+    }
+  }
+
+  .gem-c-task-list--large & {
+    @include media(tablet) {
+      &:before {
+        margin-left: $number-circle-size-large / 4;
+        width: $number-circle-size-large / 2;
+        border-width: $stroke-width-large;
+      }
+
+      .gem-c-task-list__step:last-child {
+        &:after {
+          height: calc(100% - #{$gutter});
+        }
+      }
+    }
+  }
+}
+
+.gem-c-task-list__group--active {
+  &:last-child:before,
+  .gem-c-task-list__circle--number,
+  .gem-c-task-list__step:after,
+  .gem-c-task-list__substep:after,
+  .gem-c-task-list__help:after {
+    border-color: $black;
+  }
+}
+
+.gem-c-task-list__step {
+  position: relative;
+
+  // line down the side of a step
+  &:after {
+    @include task-list-vertical-line;
+    @include task-list-line-position;
+    top: $gutter-half;
+  }
+
+  .gem-c-task-list--large & {
+    @include media(tablet) {
+      &:after {
+        @include task-list-line-position-large;
+        top: $gutter;
+      }
+    }
+  }
+}
+
+.gem-c-task-list__step--optional {
+  // broken line down the side of a step
+  &:after {
+    border-left-style: dotted;
+  }
+
+  .gem-c-task-list--large & {
+    @include media(tablet) {
+      &:after {
+        border-width: $stroke-width-large;
+      }
+    }
+  }
+}
+
+.gem-c-task-list__circle {
+  @include box-sizing(border-box);
+  position: absolute;
+  z-index: 5;
+  top: $gutter-half;
+  width: $number-circle-size;
+  height: $number-circle-size;
+  color: $black;
+  background: $white;
+  border-radius: 100px;
+  text-align: center;
+
+  .gem-c-task-list--large & {
+    @include media(tablet) {
+      top: $gutter;
+      width: $number-circle-size-large;
+      height: $number-circle-size-large;
+    }
+  }
+}
+
+.gem-c-task-list__circle--number {
+  @include _core-font-generator(16px, 16px, 16px, 23px, 23px, false, bold);
+  left: 0;
+  border: solid $stroke-width $grey-2;
+
+  .gem-c-task-list--large & {
+    @include _core-font-generator(19px, 16px, 19px, 30px, 23px, false, bold);
+
+    @include media(tablet) {
+      border-width: $stroke-width-large;
+    }
+  }
+}
+
+.gem-c-task-list__circle--logic {
+  @include _core-font-generator(16px, 16px, 16px, 28px, 28px, false, bold);
+  left: -($gutter + $gutter-half);
+
+  .gem-c-task-list--large & {
+    @include _core-font-generator(19px, 16px, 19px, 34px, 28px, false, bold);
+
+    @include media(tablet) {
+      left: -$gutter * 2;
+    }
+  }
+}
+
+// to make the numbers readable for users zooming the text only in Firefox
+.gem-c-task-list__circle-inner {
+  float: right;
+  min-width: 100%;
+}
+
+.gem-c-task-list__circle-background {
+  background: $white;
+  border-radius: 100px;
+}
+
+.gem-c-task-list__header {
+  padding: $gutter-half 0;
+  border-top: $top-border;
+
+  .gem-c-task-list--active & {
+    cursor: pointer;
+  }
+
+  &:hover {
+    .gem-c-task-list__button {
+      color: $link-colour;
+    }
+
+    .gem-c-task-list__toggle-link {
+      text-decoration: underline;
+    }
+  }
+
+  .gem-c-task-list--large & {
+    @include media(tablet) {
+      padding: $gutter 0;
+    }
+  }
+}
+
+.gem-c-task-list__title {
+  @include _core-font-generator(19px, 19px, 19px, 1.4, 1.4, false, bold);
+
+  .gem-c-task-list--large & {
+    @include _core-font-generator(24px, 19px, 24px, 1.4, 1.4, false, bold);
+  }
+}
+
+.gem-c-task-list__toggle-link {
+  @include _core-font-generator(14px, 14px, 14px, 1.2, 1.2, false);
+  display: block;
+  color: $link-colour;
+
+  .gem-c-task-list--large & {
+    @include _core-font-generator(16px, 14px, 16px, 1.2, 1.2, false);
+  }
+}
+
+.gem-c-task-list__panel {
+  @include _core-font-generator(16px, 16px, 16px);
+
+  .gem-c-task-list--large & {
+    @include _core-font-generator(19px, 16px, 19px);
+  }
+}
+
+// contents of the task list, such as paragraphs and links
+
+.gem-c-task-list__paragraph {
+  padding-bottom: $gutter-half;
+
+  + .gem-c-task-list__links {
+    margin-top: -5px;
+
+    .gem-c-task-list--large & {
+      @include media(tablet) {
+        margin-top: -$gutter-half;
+      }
+    }
+  }
+
+  .gem-c-task-list--large & {
+    @include media(tablet) {
+      padding-bottom: $gutter;
+    }
+  }
+}
+
+.gem-c-task-list__links {
+  padding-bottom: 10px;
+
+  .gem-c-task-list--large & {
+    @include media(tablet) {
+      padding-bottom: 20px;
+    }
+  }
+}
+
+.gem-c-task-list__links--required {
+  .gem-c-task-list__link-item {
+    font-weight: bold;
+  }
+}
+
+.gem-c-task-list__links--choice {
+  margin-left: 20px;
+  list-style: disc;
+}
+
+.gem-c-task-list__link {
+  margin-bottom: 10px;
+}
+
+.gem-c-task-list__link-item {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.gem-c-task-list__link-item--active {
+  position: relative;
+  color: $black;
+
+  &:visited,
+  &:active {
+    color: $black;
+  }
+
+  &:before {
+    @include box-sizing(border-box);
+    content: "";
+    position: absolute;
+    z-index: 5;
+    top: 0.6em; // position the dot to align with the first row of text in the link
+    left: -($gutter + $gutter-half);
+    margin-left: ($number-circle-size / 2) - ($dot-size / 2);
+    width: $dot-size;
+    height: $dot-size;
+    margin-top: -($dot-size / 2);
+    background: $black;
+    border: solid 2px $white;
+    border-radius: 100px;
+  }
+
+  .gem-c-task-list--large & {
+    @include media(tablet) {
+      &:before {
+        left: -($gutter * 2);
+        margin-left: ($number-circle-size-large / 2) - ($dot-size / 2);
+      }
+    }
+  }
+}
+
+.gem-c-task-list__context {
+  font-weight: normal;
+  color: $grey-1;
+
+  &:before {
+    content: " \2013  ";
+  }
+}
+
+.gem-c-task-list__help {
+  position: relative;
+  padding: $gutter-half 0;
+  border-top: $top-border;
+
+  &:after {
+    @include task-list-vertical-line(dotted);
+    @include task-list-line-position;
+    z-index: 3;
+    top: 0;
+    height: calc(100% + #{$gutter});
+  }
+
+  .gem-c-task-list__step--optional & {
+    &:after {
+      display: none;
+    }
+  }
+
+  .gem-c-task-list--large & {
+    @include media(tablet) {
+      &:after {
+        @include task-list-line-position-large;
+        height: calc(100% + #{$gutter} + #{$gutter-half});
+      }
+    }
+  }
+}
+
+.gem-c-task-list__help-link {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.gem-c-task-list__substep {
+  position: relative;
+  padding-top: $gutter-half;
+  border-top: $top-border;
+
+  &:after {
+    @include task-list-vertical-line;
+    @include task-list-line-position;
+    z-index: 3;
+    top: 0;
+  }
+
+  .gem-c-task-list--large & {
+    @include media(tablet) {
+      padding-top: $gutter;
+
+      &:after {
+        @include task-list-line-position-large;
+      }
+    }
+  }
+}
+
+.gem-c-task-list__substep--optional:after {
+  border-left-style: dotted;
+}
