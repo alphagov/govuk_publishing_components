@@ -2,6 +2,6 @@
 log/*.log
 pkg/
 /Gemfile.lock
-test/dummy/log/*.log
-test/dummy/tmp/
-test/dummy/public/assets/
+spec/dummy/log/*.log
+spec/dummy/tmp/
+spec/dummy/public/assets/

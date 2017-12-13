@@ -5,7 +5,7 @@ Breaking release, should be easy to migrate.
 Previously with aXe we excluded all warnings relating to duplicate ids, this release allows you to exclude any rules you'd like to but removes this default.
 Any components that relied on this default will need this rule adding to their documentation file.
 
-See [test/.../docs/test-component-with-duplicate-ids.yml](test/dummy/app/views/components/docs/test-component-with-duplicate-ids.yml) for an example of how this looks. (PR #101)
+See [test/.../docs/test-component-with-duplicate-ids.yml](spec/dummy/app/views/components/docs/test-component-with-duplicate-ids.yml) for an example of how this looks. (PR #101)
 
 # 1.12.1
 
