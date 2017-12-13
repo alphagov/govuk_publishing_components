@@ -4,6 +4,7 @@ module GovukPublishingComponents
 
     def index
       @component_docs = component_documentation_resolver.all
+      @gem_component_docs = gem_component_documentation_resolver.all
     end
 
     def show
@@ -39,6 +40,10 @@ module GovukPublishingComponents
 
     def component_documentation_resolver
       @component_documentation_resolver ||= ComponentDocResolver.new
+    end
+
+    def gem_component_documentation_resolver
+      @gem_component_documentation_resolver ||= ComponentDocResolver.new(gem_components: true)
     end
 
     def index_breadcrumb
