@@ -1,0 +1,33 @@
+name: Task list header
+description: Shows that a content page is part of a task list.
+body: |
+  The component indicates to the user that the current page is part of a [task list](/component-guide/task_list), and can provide a link to that task list.
+accessibility_criteria: |
+  The component is designed to go into the top of an existing content page and should not interfere with the heading structure of the page, so therefore should not contain a heading tag.
+
+  The component must:
+
+  - provide a skip link to the task list on the page, if that task list is present
+shared_accessibility_criteria:
+  - link
+examples:
+  default:
+    data:
+      title: 'Learn to drive a car: step by step'
+  with_a_link:
+    data:
+      title: 'Having children: step by step'
+      path: /childcare-parenting/pregnancy-and-birth
+  with_a_skip_link:
+    description: This option allows the insertion of a skip link to a task list elsewhere on the page. This aids navigation when using a keyboard or screen reader. The skip link is visually hidden until it receives focus.
+    data:
+      title: 'Separating from a spouse or civil partner: step by step'
+      path: /divorce
+      skip_link: '#task-list-wrapper'
+  with_a_skip_link_with_custom_text:
+    description: It's hard to think of good text to put in a skip link, so this option lets you customise it.
+    data:
+      title: 'Buying and renting a property: step by step'
+      path: /buy-sell-your-home
+      skip_link: '#task-list-steps'
+      skip_link_text: Skip to steps

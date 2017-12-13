@@ -1,0 +1,15 @@
+// scss-lint:disable SelectorFormat
+
+.gem-c-task-list-header__part-of {
+  display: block;
+}
+
+.gem-c-task-list-header__title {
+  @include bold-24;
+}
+
+.gem-c-task-list-header__skip-link {
+  display: none;
+}
+
+// scss-lint:enable SelectorFormat
