@@ -4,7 +4,7 @@
   "use strict";
   window.GOVUK = window.GOVUK || {};
 
-  Modules.Gemtasklist = function () {
+  Modules.Tasklist = function () {
 
     var actions = {
       showLinkText: "Show",
