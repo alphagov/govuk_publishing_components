@@ -1,0 +1,54 @@
+name: Task list related links
+description: Links to task lists that a page is part of
+body: |
+  The component is designed to go on a content page to accompany a small task list in a sidebar. It provides links to the main task list page.
+
+  The component has two uses:
+
+  - above the task list, it provides a link to the main task list page
+  - below the task list, it shows and links to any other task lists that this page belongs to
+
+  In the first use case, only one link should be present and the entire text of the component should be contained in a heading. In the second use case, if more than one link is provided, the links should be shown in a list, separate from the heading.
+accessibility_criteria: |
+  The component must:
+
+  - display a single link as part of a heading
+  - display multiple links outside of a heading in a separate list
+shared_accessibility_criteria:
+  - link
+examples:
+  default:
+    data:
+      links: [
+        {
+          href: '/learn-to-drive-a-car',
+          text: 'Learn to drive a car: step by step'
+        }
+      ]
+  with_more_than_one_link:
+    description: If more than one link is passed to the component it should output them as a list outside of the heading.
+    data:
+      links: [
+        {
+          href: '/learn-to-drive-a-car',
+          text: 'Learn to drive a car: step by step'
+        },
+        {
+          href: '/learn-to-drive-a-motorbike',
+          text: 'Learn to drive a motorbike: step by step'
+        }
+      ]
+  with_a_different_title:
+    description: The default title 'Part of' can be replaced if required.
+    data:
+      pretitle: 'Also part of'
+      links: [
+        {
+          href: '/learn-to-drive-a-car',
+          text: 'Learn to drive a car: step by step'
+        },
+        {
+          href: '/learn-to-drive-a-motorbike',
+          text: 'Learn to drive a motorbike: step by step'
+        }
+      ]
