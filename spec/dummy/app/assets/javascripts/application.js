@@ -14,4 +14,3 @@
 //= require current-location
 //= require govuk/modules
 //= require components/task-list
-//= require_tree .
