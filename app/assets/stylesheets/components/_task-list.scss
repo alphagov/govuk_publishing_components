@@ -261,6 +261,7 @@ $top-border: solid 2px $grey-3;
 
 .gem-c-task-list__title {
   @include _core-font-generator(19px, 19px, 19px, 1.4, 1.4, false, bold);
+  margin: 0;
 
   .gem-c-task-list--large & {
     @include _core-font-generator(24px, 19px, 24px, 1.4, 1.4, false, bold);
@@ -289,6 +290,8 @@ $top-border: solid 2px $grey-3;
 
 .gem-c-task-list__paragraph {
   padding-bottom: $gutter-half;
+  margin: 0;
+  font-size: inherit;
 
   + .gem-c-task-list__links {
     margin-top: -5px;
@@ -308,6 +311,7 @@ $top-border: solid 2px $grey-3;
 }
 
 .gem-c-task-list__links {
+  padding: 0;
   padding-bottom: 10px;
 
   .gem-c-task-list--large & {
@@ -345,7 +349,8 @@ $top-border: solid 2px $grey-3;
   color: $black;
 
   &:visited,
-  &:active {
+  &:active,
+  &:link {
     color: $black;
   }
 
