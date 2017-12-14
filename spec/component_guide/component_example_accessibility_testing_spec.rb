@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe 'Component example with automated testing' do
+describe 'Component example with automated testing', js: true do
   it 'has accessibility testing hooks' do
     visit '/component-guide/test-component'
     expect(page).to have_selector('[data-module="test-a11y"]')

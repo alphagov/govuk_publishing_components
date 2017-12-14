@@ -24,7 +24,7 @@ Gem::Specification.new do |s|
   s.add_dependency "rouge"
 
   s.add_development_dependency "govuk-lint", "~> 3.3"
-  s.add_development_dependency "rspec", "~> 3.6"
+  s.add_development_dependency "rspec-rails", "~> 3.6"
   s.add_development_dependency "capybara", "~> 2.14.4"
   s.add_development_dependency "poltergeist", "~> 1.16.0"
   s.add_development_dependency "jasmine", "~> 2.4.0"
