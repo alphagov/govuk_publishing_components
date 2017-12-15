@@ -1,3 +1,12 @@
+# 3.0.0
+
+* Allow the gem to host components (PR #105)
+* Added task_list, task_list_header and task_list_related components which were
+  in Static.  It's not a breaking change to this gem to include them, but they
+  are not backwardly compatible with previous versions of the components. (PR #105)
+* Work to tidy up the dummy application to more closely represent GOVUK rails
+  apps (PR #104)
+
 # 2.0.0
 
 Breaking release, should be easy to migrate.
