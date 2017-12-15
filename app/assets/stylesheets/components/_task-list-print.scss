@@ -1,0 +1,35 @@
+// scss-lint:disable SelectorFormat
+
+.gem-c-task-list__controls,
+.gem-c-task-list__toggle-link,
+.gem-c-task-list__help {
+  display: none;
+}
+
+.gem-c-task-list__title {
+  margin: 0;
+  padding: 0;
+}
+
+.gem-c-task-list__button--title {
+  @include bold-19;
+
+  padding: 0;
+  border: 0;
+  background: none;
+}
+
+.gem-c-task-list__panel-link--active {
+  font-weight: bold;
+}
+
+.gem-c-task-list__links {
+  padding-left: 0;
+  list-style: none;
+}
+
+.gem-c-task-list__links--choice {
+  list-style: disc;
+}
+
+// scss-lint:enable SelectorFormat

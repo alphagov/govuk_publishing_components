@@ -11,10 +11,10 @@
 #   - dist/**/*.js
 #
 src_files:
-  - app/assets/javascripts/govuk_publishing_components/vendor/*.js
-  - app/assets/javascripts/govuk_publishing_components/accessibility-test.js
-  - app/assets/javascripts/govuk_publishing_components/visual-regression.js
-  - app/assets/javascripts/govuk_publishing_components/application.js
+  - spec/javascripts/helpers/jquery-1.12.4.js
+  - spec/javascripts/helpers/jasmine-jquery-2.0.5.js
+  - spec/javascripts/helpers/SpecHelper.js
+  - assets/govuk_publishing_components/application.js
 
 # stylesheets
 #
@@ -28,7 +28,7 @@ src_files:
 #   - stylesheets/*.css
 #
 stylesheets:
-  - app/assets/stylessheets/govuk_publishing_components/application.css
+  - app/assets/stylesheets/govuk_publishing_components/application.css
 
 # helpers
 #

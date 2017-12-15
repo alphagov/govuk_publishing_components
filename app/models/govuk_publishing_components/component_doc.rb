@@ -6,7 +6,8 @@ module GovukPublishingComponents
                 :body,
                 :accessibility_criteria,
                 :accessibility_excluded_rules,
-                :examples
+                :examples,
+                :source
 
     def initialize(
       id,
@@ -15,7 +16,8 @@ module GovukPublishingComponents
       body,
       accessibility_criteria,
       accessibility_excluded_rules,
-      examples
+      examples,
+      source
     )
       @id = id
       @name = name
@@ -24,6 +26,7 @@ module GovukPublishingComponents
       @accessibility_criteria = accessibility_criteria
       @accessibility_excluded_rules = accessibility_excluded_rules
       @examples = examples
+      @source = source
     end
 
     def example
@@ -43,7 +46,11 @@ module GovukPublishingComponents
     end
 
     def partial_path
-      "#{GovukPublishingComponents::Config.component_directory_name}/#{id}"
+      if source == 'gem'
+        "components/#{id}"
+      else
+        "#{GovukPublishingComponents::Config.component_directory_name}/#{id}"
+      end
     end
 
   private

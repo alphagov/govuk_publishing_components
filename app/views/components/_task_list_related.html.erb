@@ -1,0 +1,39 @@
+<%
+  links ||= false
+  pretitle ||= t("govuk_component.task_list_related.part_of", default: "Part of")
+%>
+<% if links %>
+  <div class="pub-c-task-list-related" data-module="track-click">
+    <h2 class="pub-c-task-list-related__heading">
+      <span class="pub-c-task-list-related__pretitle"><%= pretitle %></span>
+      <% if links.length == 1 %>
+          <a href="<%= links[0][:href] %>"
+            class="pub-c-task-list-related__link"
+            data-track-category="tasklistPartOfClicked"
+            data-track-action="<%= pretitle %>"
+            data-track-label="<%= links[0][:href] %>"
+            data-track-dimension="<%= links[0][:text] %>"
+            data-track-dimension-index="29">
+            <%= links[0][:text] %>
+          </a>
+        </h2>
+      <% else %>
+        </h2>
+        <ul class="pub-c-task-list-related__links">
+          <% links.each do |link| %>
+            <li class="pub-c-task-list-related__link-item">
+              <a href="<%= link[:href] %>"
+                class="pub-c-task-list-related__link"
+                data-track-category="tasklistPartOfClicked"
+                data-track-action="<%= pretitle %>"
+                data-track-label="<%= link[:href] %>"
+                data-track-dimension="<%= link[:text] %>"
+                data-track-dimension-index="29">
+                <%= link[:text] %>
+              </a>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+  </div>
+<% end %>

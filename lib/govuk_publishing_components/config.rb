@@ -14,7 +14,7 @@ module GovukPublishingComponents
     self.application_stylesheet = "application"
 
     mattr_accessor :application_print_stylesheet
-    self.application_print_stylesheet = nil
+    self.application_print_stylesheet = "print"
 
     mattr_accessor :application_javascript
     self.application_javascript = "application"
@@ -24,6 +24,10 @@ module GovukPublishingComponents
 
     def self.component_directory_name
       static ? STATIC_COMPONENT_DIRECTORY : APP_COMPONENT_DIRECTORY
+    end
+
+    def self.gem_directory
+      Gem::Specification.find_by_name("govuk_publishing_components").gem_dir
     end
   end
 end

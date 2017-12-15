@@ -1,0 +1,1032 @@
+name: Task list
+description: Numbered groups containing expanding/collapsing steps
+body: |
+  Task lists are designed to show a sequence of steps towards a specific goal, such as 'learning to drive'. Each group of a task list can contain one or more steps. Each step can contain one or more links to pages. User research suggested that each step should be collapsed by default so that users are not overwhelmed with information.
+
+  If JavaScript is disabled the task list expands fully. All of the task list functionality (including the icons and aria attributes) are added using JavaScript.
+
+  The task list is based on the accordion component in collections, but has been altered. This is for two reasons.
+
+  - task lists are needed throughout GOV.UK and extending the accordion to be the task list would require promoting it to static, which would break integration testing
+  - creating a new component allows further iteration without impacting the accordion
+accessibility_criteria: |
+  The task list must:
+
+  - indicate to users that each step can be expanded and collapsed
+  - inform the user when a step has been expanded or collapsed
+  - be usable with a keyboard
+  - allow users to show or hide all steps at once
+  - inform the user which step a link belongs to
+  - inform the user which step the current page is in, particularly where there are multiple steps in one group
+  - be readable when only the text of the page is zoomed - achieved for the numbers and logic elements by their text being wrapped in several elements that give them a white background and ensure the text when zoomed expands to the left, not to the right, where it would obscure the step titles
+
+  The show/hide all button only needs to list the first panel id in the aria-controls attribute, rather than all of them.
+
+  Step headings must use a button element:
+
+  - so that steps can be toggled with the space and enter keys
+  - so that steps can't be opened in a new tab or window
+
+  When JavaScript is unavailable the task list must:
+
+  - be fully expanded
+  - not be marked as expandable
+shared_accessibility_criteria:
+  - link
+examples:
+  default:
+    data:
+      groups: [
+        [
+          {
+            title: "Do a thing",
+            contents: [
+              {
+                type: 'paragraph',
+                text: 'This is a paragraph of text.'
+              },
+              {
+                type: 'paragraph',
+                text: 'This is also a paragraph of text that intentionally contains lots of words in order to fill the width of the page successfully to check layout and so forth.'
+              }
+            ]
+          },
+          {
+            title: "Do another thing",
+            contents: [
+              {
+                type: 'paragraph',
+                text: 'Groups can contain multiple steps, like this.'
+              },
+            ]
+          }
+        ],
+        [
+          {
+            title: "Do something else",
+            contents: [
+              {
+                type: 'paragraph',
+                text: 'This is yet another paragraph.'
+              }
+            ]
+          }
+        ]
+      ]
+  with_a_different_heading_level:
+    description: Steps have a H2 by default, but this can be changed. The heading level does not change any styling.
+    data:
+      heading_level: 3
+      groups: [
+        [
+          {
+            title: 'This is a heading 3',
+            contents: [
+              {
+                type: 'paragraph',
+                text: 'This is yet another paragraph.'
+              }
+            ]
+          }
+        ],
+        [
+          {
+            title: 'This is also a heading 3',
+            contents: [
+              {
+                type: 'paragraph',
+                text: 'This is yet another paragraph.'
+              }
+            ]
+          }
+        ]
+      ]
+  open_a_step_by_default:
+    description: Pass the index of the step to open by default. This is the nth step, regardless of group number.
+    data:
+      show_step: 3
+      groups: [
+        [
+          {
+            title: 'Closed by default',
+            contents: [
+              {
+                type: 'paragraph',
+                text: 'Well, open now, obviously.'
+              }
+            ]
+          }
+        ],
+        [
+          {
+            title: 'Also closed by default',
+            contents: [
+              {
+                type: 'paragraph',
+                text: 'Hello.'
+              }
+            ]
+          },
+          {
+            title: 'Open by default',
+            contents: [
+              {
+                type: 'paragraph',
+                text: 'Hello!'
+              }
+            ]
+          }
+        ]
+      ]
+  remember_last_opened_step:
+    description: |
+      If a step is opened its ID is appended to the end of the URL, so that if the URL is shared or the 'back' button is used, that step will be opened on page load. This was historically part of the behaviour of the accordion. By default this is turned off and cannot be used together with the option to open a step by default.
+
+      This behaviour is used with the 'links to more information' option.
+    data:
+      remember_last_step: true
+      groups: [
+        [
+          {
+            title: 'Remember this',
+            contents: [
+              {
+                type: 'paragraph',
+                text: 'Hello!'
+              }
+            ]
+          }
+        ],
+        [
+          {
+            title: 'Or this',
+            contents: [
+              {
+                type: 'paragraph',
+                text: 'Hello!'
+              }
+            ]
+          }
+        ]
+      ]
+  with_links:
+    description: |
+      Links can have the following attributes:
+
+      - style, an attribute on the parent list that controls its appearance, either required (bold), optional (not bold) or choice (not bold, with bullets on the list). The default is optional.
+      - context, an optional text field to show some extra information after the link, usually a monetary value
+      - active, whether to make the link highlighted (to indicate the current page)
+      - highlight_group, a general option to highlight a specific group of steps. Usually the active link would be in the active group, but in some circumstances there might be an active group but no highlighted link.
+    data:
+      highlight_group: 2
+      show_step: 2
+      groups: [
+        [
+          {
+            title: 'Links and paragraphs',
+            contents: [
+              {
+                type: 'paragraph',
+                text: 'These links represent tasks that are required.'
+              },
+              {
+                type: 'paragraph',
+                text: 'Spacing between a paragraph and a list of links should be smaller than the spacing between two paragraphs, in order to visually connect the two.'
+              },
+              {
+                type: 'list',
+                style: 'required',
+                contents: [
+                  {
+                    href: '/component-guide/task_list/with_links/preview',
+                    text: 'Obtain a driving licence prior to driving a car',
+                    active: true
+                  },
+                  {
+                    href: '/component-guide/task_list/with_links/preview',
+                    text: 'Acquire food before attempting to cook',
+                    context: '1p to &pound;20',
+                    active: true
+                  },
+                  {
+                    href: '/component-guide/task_list/with_links/preview',
+                    text: 'Maintain contact with the ground at all times',
+                    active: true
+                  }
+                ]
+              },
+              {
+                type: 'paragraph',
+                text: 'These links represent tasks that are optional.'
+              },
+              {
+                type: 'list',
+                contents: [
+                  {
+                    href: '/component-guide/task_list/with_links/preview',
+                    text: 'Learn to play the saxophone',
+                    active: true
+                  },
+                  {
+                    href: '/component-guide/task_list/with_links/preview',
+                    text: 'Develop a new method of extracting juice from oranges',
+                    context: '&pound;0 to &pound;300',
+                    active: true
+                  },
+                  {
+                    href: '/component-guide/task_list/with_links/preview',
+                    text: 'Buy a race car',
+                    active: true
+                  }
+                ]
+              },
+              {
+                type: 'paragraph',
+                text: 'These links represent a choice:'
+              },
+              {
+                type: 'list',
+                style: 'choice',
+                contents: [
+                  {
+                    href: '/component-guide/task_list/',
+                    text: 'Leave school at sixteen'
+                  },
+                  {
+                    href: '/component-guide/task_list/',
+                    text: 'Continue into higher education',
+                    context: '&pound;9,500'
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        [
+          {
+            title: 'Active group and links',
+            contents: [
+              {
+                type: 'list',
+                style: 'required',
+                contents: [
+                  {
+                    href: '/component-guide/task_list/',
+                    text: 'Check the reasons'
+                  },
+                  {
+                    href: '/component-guide/task_list/with_links/preview',
+                    text: 'Make the decisions based on available data and the reasonable assumptions that are possible at the time',
+                    context: '1p to &pound;20',
+                    active: true
+                  },
+                  {
+                    href: '/component-guide/task_list/with_links/preview',
+                    text: 'Do the things',
+                    active: true
+                  }
+                ]
+              },
+            ]
+          }
+        ]
+      ]
+  or_then:
+    description: Some of the more complex things in a task list require an option for laying out links in a clear structure. If a link in a list is not given a href, only the text is displayed, allowing for structures like the one shown below.
+    data:
+      show_step: 1
+      groups: [
+        [
+          {
+            title: "Get a court to decide your child arrangements",
+            contents: [
+              {
+                type: 'paragraph',
+                text: "You can only apply for a court to make a decision if you've tried mediation or your family are at risk, for example domestic abuse."
+              },
+              {
+                type: 'list',
+                style: 'required',
+                contents: [
+                  {
+                    href: 'http://solicitors.lawsociety.org.uk/',
+                    text: 'Hire a lawyer to represent you',
+                    context: '&pound;110 to &pound;410 per hour'
+                  },
+                  {
+                    text: 'or',
+                  },
+                  {
+                    href: 'http://localhost:3000/represent-yourself-in-court',
+                    text: 'Represent yourself in court'
+                  }
+                ]
+              },
+              {
+                type: 'paragraph',
+                text: 'then'
+              },
+              {
+                type: 'list',
+                style: 'required',
+                contents: [
+                  {
+                    href: '/looking-after-children-divorce/apply-for-court-order',
+                    text: 'Apply for a court order',
+                    context: '&pound;215'
+                  },
+                  {
+                    href: 'https://courttribunalfinder.service.gov.uk/search/',
+                    text: 'Find the right court to send your application'
+                  },
+                  {
+                    href: '/get-help-with-court-fees',
+                    text: 'Get help with court fees'
+                  }
+                ]
+              },
+              {
+                type: 'paragraph',
+                text: "The court will send you a date for your first hearing 4 to 6 weeks after your application. You'll be told when and where your hearing will take place."
+              }
+            ]
+          }
+        ]
+      ]
+  solve_the_double_dot_problem:
+    description: |
+      If a page is in a task list more than once and a user is viewing that URL, both links to it will be highlighted as the site has no way to know which entry in the task list the user is currently viewing (highlighted links should only occur when the task list is in the sidebar).
+
+      JavaScript is included in the component to solve this. It uses sessionStorage to capture the data-position attribute of non-external links in the task list when clicked, and then uses this value to decide which link to highlight when the new page loads. This session storage data is immediately deleted after it is read on page load, mainly to prevent problems with highlighting if the user were to move between different task lists.
+
+      If a user has not clicked a link (i.e. has visited the page without first clicking on a task list) the first active link in the first active group will be highlighted. If there is no active group, the first active link will be highlighted (but there should always be an active group).
+
+      The current page in the task list is an anchor link to the top of the page. If there are more than one of these and the user clicks one that is not currently highlighted, that one will be highlighted.
+
+      The example below will show all links highlighted if JS is disabled, in the real world no more than two or three links are likely to be highlighted at once.
+    data:
+      highlight_group: 2
+      show_step: 2
+      groups: [
+        [
+          {
+            title: "Not the active step",
+            contents: [
+              {
+                type: 'list',
+                style: 'required',
+                contents: [
+                  {
+                    href: 'http://google.com',
+                    text: 'External link not set to active'
+                  },
+                  {
+                    href: '/component-guide/task_list/with_links/preview',
+                    text: 'Internal link set to active',
+                    active: true
+                  },
+                  {
+                    href: '/component-guide/task_list/with_links/preview',
+                    text: 'Internal link set to active',
+                    active: true
+                  },
+                  {
+                    href: 'http://google.com',
+                    text: 'External link not set to active'
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        [
+          {
+            title: "The active step",
+            contents: [
+              {
+                type: 'list',
+                style: 'required',
+                contents: [
+                  {
+                    href: '/component-guide/task_list/with_links/preview',
+                    text: 'Internal link set to active - in the active group, should be set by default until another link is clicked',
+                    active: true
+                  },
+                  {
+                    href: '/component-guide/task_list/with_links/preview',
+                    text: 'Internal link set to active',
+                    active: true
+                  },
+                  {
+                    href: 'http://google.com',
+                    text: 'External link not set to active'
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      ]
+  with_optional_steps:
+    description: |
+      Steps can be optional. This is controlled by two parameters for maximum flexibility, 'optional' (which causes the step to have a dotted line down the side) and 'logic', which defaults to showing the word 'and' alongside the step title, but also accepts 'or'.
+
+      If a step is optional this should be conveyed by the text within that step.
+    data:
+      groups: [
+        [
+          {
+            title: "Drive to work",
+            contents: [
+              {
+                type: paragraph,
+                text: 'If you do not have a car, you will need to choose an alternative.'
+              }
+            ]
+          },
+          {
+            title: "Walk to work",
+            optional: true,
+            logic: 'or',
+            contents: [
+              {
+                type: 'paragraph',
+                text: 'Walking is healthy but may not be practical where large distances are concerned.'
+              }
+            ]
+          },
+          {
+            title: "Get public transport to work",
+            optional: true,
+            logic: 'or',
+            contents: [
+              {
+                type: 'paragraph',
+                text: 'Public transport includes buses, trains and boats.'
+              }
+            ]
+          }
+        ],
+        [
+          {
+            title: "Do work",
+            contents: [
+              {
+                type: 'paragraph',
+                text: 'Once you have reached your destination you should be able to start work.'
+              }
+            ]
+          },
+          {
+            title: "Get paid",
+            contents: [
+              {
+                type: 'paragraph',
+                text: 'Your employer should pay you for hours worked.'
+              }
+            ]
+          }
+        ]
+      ]
+  with_sub_steps:
+    description: Steps can also contain sub steps, which act either as a way to break up content or to indicate that some tasks are optional. Whenever a step or sub step is optional this should be made clear in the written content. Optional steps are styled differently but this should support the meaning, not convey it.
+    data:
+      highlight_group: 2
+      show_step: 2
+      groups: [
+        [
+          {
+            title: "A required step",
+            contents: [
+              {
+                type: 'paragraph',
+                text: 'This step ends with an optional sub step.'
+              },
+              {
+                type: 'substep',
+                optional: true
+              },
+              {
+                type: 'paragraph',
+                text: 'This paragraph is inside the sub step.'
+              },
+              {
+                type: 'list',
+                contents: [
+                  {
+                    href: '/test6',
+                    text: 'This link is also inside the sub step'
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        [
+          {
+            title: "An optional step",
+            optional: true,
+            contents: [
+              {
+                type: 'paragraph',
+                text: 'This optional step contains multiple sub steps.'
+              },
+              {
+                type: 'substep',
+                optional: false
+              },
+              {
+                type: 'paragraph',
+                text: 'This paragraph is inside a required sub step.'
+              },
+              {
+                type: 'substep',
+                optional: true
+              },
+              {
+                type: 'paragraph',
+                text: 'This paragraph is inside an optional sub step.'
+              },
+              {
+                type: 'list',
+                contents: [
+                  {
+                    href: '/test7',
+                    text: 'This link is inside an optional sub step as well',
+                    active: true
+                  }
+                ]
+              },
+              {
+                type: 'substep',
+                optional: false
+              },
+              {
+                type: 'paragraph',
+                text: 'This paragraph is inside a required sub step.'
+              }
+            ]
+          }
+        ],
+        [
+          {
+            title: "Another required step",
+            contents: [
+              {
+                type: 'paragraph',
+                text: 'Um. Hello.'
+              }
+            ]
+          }
+        ]
+      ]
+  with_links_to_more_information:
+    description: |
+      Where task lists are long, content can be substituted with a link back to the main task list page. This link will open the main task list page with that step shown. The link text defaults to "Get help completing this step" but can be overridden.
+
+      Note that this option does not remove any content - it is left to developers to simply pass less content to the component in this situation.
+    data:
+      task_list_url: "/learn-to-do-something"
+      task_list_url_link_text: "Get more information"
+      show_step: 1
+      groups: [
+        [
+          {
+            title: "A link back to the main task list",
+            contents: [
+              {
+                type: 'list',
+                contents: [
+                  {
+                    href: '/test7',
+                    text: 'This is a link'
+                  },
+                  {
+                    href: '/test7',
+                    text: 'This is another link'
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        [
+          {
+            title: "Another link back to the main task list",
+            contents: [
+              {
+                type: 'list',
+                contents: [
+                  {
+                    href: '/test7',
+                    text: 'This is yet another link'
+                  },
+                  {
+                    href: '/test7',
+                    text: 'This is a further link'
+                  },
+                ]
+              }
+            ]
+          }
+        ]
+      ]
+  test_all_the_things:
+    description: This component is very complicated so here is an example containing as many of the options available as possible.
+    data:
+      task_list_url: "/learn-to-setup-standup"
+      highlight_group: 2
+      groups: [
+        [
+          {
+            title: 'Get the TV ready',
+            contents: [
+              {
+                type: 'paragraph',
+                text: 'Configure the television so it is ready for the standup. You will also need a laptop.'
+              },
+              {
+                type: 'list',
+                style: 'required',
+                contents: [
+                  {
+                    href: 'https://en.wikipedia.org/wiki/HDMI',
+                    text: 'Remove the Chromebit from HDMI 1 on the TV',
+                    active: true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            title: 'Plug everything in',
+            contents: [
+              {
+                type: 'paragraph',
+                text: 'Connect the relevant cables between the various devices.'
+              },
+              {
+                type: 'list',
+                style: 'required',
+                contents: [
+                  {
+                    href: 'https://www.google.co.uk/',
+                    text: 'Run the HDMI - MINI DVI cable from the TV to the facilitators laptop'
+                  },
+                  {
+                    href: 'https://www.jabra.co.uk/',
+                    text: 'Plug the Jabra into the facilitators laptop'
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        [
+          {
+            title: 'Configure the catchbox',
+            contents: [
+              {
+                type: 'paragraph',
+                text: 'These steps are required.'
+              },
+              {
+                type: 'list',
+                style: 'required',
+                contents: [
+                  {
+                    href: '',
+                    text: 'Ensure the catchbox transmitter is plugged in at the mains wall',
+                    active: true
+                  },
+                  {
+                    href: '',
+                    text: 'Turn on the transmitter and wait for the switch to blink green'
+                  },
+                  {
+                    href: '',
+                    text: 'Plug the transmitter USB cable into the facilitators laptop'
+                  },
+                  {
+                    href: '',
+                    text: 'Twist and pull the black piece of foam out of the catchbox'
+                  },
+                  {
+                    href: '',
+                    text: 'Turn on the catchbox and wait for the LED to turn green'
+                  },
+                  {
+                    href: '',
+                    text: 'Wait for the transmitter light to turn solid green'
+                  }
+                ]
+              },
+              {
+                type: 'substep',
+                optional: true
+              },
+              {
+                type: 'paragraph',
+                text: 'These steps are not required.'
+              },
+              {
+                type: 'list',
+                style: 'choice',
+                contents: [
+                  {
+                    href: 'https://www.google.co.uk/',
+                    text: "Get annoyed when it doesn't work"
+                  },
+                  {
+                    href: '',
+                    text: 'Try to find someone else who knows how to do it',
+                    context: '1 to 10 minutes'
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        [
+          {
+            title: 'Join and configure the standup',
+            contents: [
+              {
+                type: 'paragraph',
+                text: 'Join the hangout and present to those on it.'
+              },
+              {
+                type: 'list',
+                style: 'required',
+                contents: [
+                  {
+                    href: '',
+                    text: 'Connect to standup hangout via the calendar invite',
+                    active: true
+                  },
+                  {
+                    text: 'or'
+                  },
+                  {
+                    href: '',
+                    text: 'Connect to standup hangout via the link in the team slack',
+                    active: true
+                  }
+                ]
+              },
+              {
+                type: 'paragraph',
+                text: 'then'
+              },
+              {
+                type: 'list',
+                style: 'required',
+                contents: [
+                  {
+                    href: '',
+                    text: 'Click the three dots in the bottom hand corner to open settings'
+                  },
+                  {
+                    href: '',
+                    text: 'Set speaker to "Jabra"'
+                  },
+                  {
+                    href: '',
+                    text: 'Set microphone to "C Media USB"'
+                  },
+                  {
+                    href: '',
+                    text: 'Click "present to meeting"'
+                  },
+                ]
+              }
+            ]
+          }
+        ],
+        [
+          {
+            title: 'Clear up',
+            contents: [
+              {
+                type: 'paragraph',
+                text: 'Disconnect from the hangout and disconnect any cables.'
+              },
+              {
+                type: 'paragraph',
+                text: 'Most importantly, remember to switch off the catchbox to save the battery.'
+              }
+            ]
+          },
+          {
+            title: 'Get someone else to clear up',
+            logic: 'or',
+            optional: true,
+            contents: [
+              {
+                type: 'paragraph',
+                text: 'Schedule another meeting for right after the standup and force someone else to sort everything out.'
+              }
+            ]
+          }
+        ]
+      ]
+  small:
+    description: Designed to fit in the sidebar of a page. Note that the small version of the task list should not become smaller on mobile, and the large version on mobile should be the same size as the small version. This example is a copy of the one above for comparison.
+    data:
+      small: true
+      task_list_url: "/learn-to-setup-standup"
+      highlight_group: 2
+      groups: [
+        [
+          {
+            title: 'Get the TV ready.',
+            contents: [
+              {
+                type: 'paragraph',
+                text: 'Configure the television so it is ready for the standup. You will also need a laptop.'
+              },
+              {
+                type: 'list',
+                style: 'required',
+                contents: [
+                  {
+                    href: 'https://en.wikipedia.org/wiki/HDMI',
+                    text: 'Remove the Chromebit from HDMI 1 on the TV',
+                    active: true
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            title: 'Plug everything in.',
+            contents: [
+              {
+                type: 'paragraph',
+                text: 'Connect the relevant cables between the various devices.'
+              },
+              {
+                type: 'list',
+                style: 'required',
+                contents: [
+                  {
+                    href: 'https://www.google.co.uk/',
+                    text: 'Run the HDMI - MINI DVI cable from the TV to the facilitators laptop'
+                  },
+                  {
+                    href: 'https://www.jabra.co.uk/',
+                    text: 'Plug the Jabra into the facilitators laptop'
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        [
+          {
+            title: 'Configure the catchbox.',
+            contents: [
+              {
+                type: 'paragraph',
+                text: 'These steps are required.'
+              },
+              {
+                type: 'list',
+                style: 'required',
+                contents: [
+                  {
+                    href: '',
+                    text: 'Ensure the catchbox transmitter is plugged in at the mains wall',
+                    active: true
+                  },
+                  {
+                    href: '',
+                    text: 'Turn on the transmitter and wait for the switch to blink green'
+                  },
+                  {
+                    href: '',
+                    text: 'Plug the transmitter USB cable into the facilitators laptop'
+                  },
+                  {
+                    href: '',
+                    text: 'Twist and pull the black piece of foam out of the catchbox'
+                  },
+                  {
+                    href: '',
+                    text: 'Turn on the catchbox and wait for the LED to turn green'
+                  },
+                  {
+                    href: '',
+                    text: 'Wait for the transmitter light to turn solid green'
+                  }
+                ]
+              },
+              {
+                type: 'substep',
+                optional: true
+              },
+              {
+                type: 'paragraph',
+                text: 'These steps are not required.'
+              },
+              {
+                type: 'list',
+                style: 'choice',
+                contents: [
+                  {
+                    href: 'https://www.google.co.uk/',
+                    text: "Get annoyed when it doesn't work"
+                  },
+                  {
+                    href: '',
+                    text: 'Try to find someone else who knows how to do it',
+                    context: '1 to 10 minutes'
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        [
+          {
+            title: 'Join and configure the standup.',
+            contents: [
+              {
+                type: 'paragraph',
+                text: 'Join the hangout and present to those on it.'
+              },
+              {
+                type: 'list',
+                style: 'required',
+                contents: [
+                  {
+                    href: '',
+                    text: 'Connect to standup hangout via the calendar invite',
+                    active: true
+                  },
+                  {
+                    text: 'or'
+                  },
+                  {
+                    href: '',
+                    text: 'Connect to standup hangout via the link in the team slack',
+                    active: true
+                  }
+                ]
+              },
+              {
+                type: 'paragraph',
+                text: 'then'
+              },
+              {
+                type: 'list',
+                style: 'required',
+                contents: [
+                  {
+                    href: '',
+                    text: 'Click the three dots in the bottom hand corner to open settings'
+                  },
+                  {
+                    href: '',
+                    text: 'Set speaker to "Jabra"'
+                  },
+                  {
+                    href: '',
+                    text: 'Set microphone to "C Media USB"'
+                  },
+                  {
+                    href: '',
+                    text: 'Click "present to meeting"'
+                  },
+                ]
+              }
+            ]
+          }
+        ],
+        [
+          {
+            title: 'Clear up.',
+            contents: [
+              {
+                type: 'paragraph',
+                text: 'Disconnect from the hangout and disconnect any cables.'
+              },
+              {
+                type: 'paragraph',
+                text: 'Most importantly, remember to switch off the catchbox to save the battery.'
+              }
+            ]
+          },
+          {
+            title: 'Get someone else to clear up.',
+            logic: 'or',
+            optional: true,
+            contents: [
+              {
+                type: 'paragraph',
+                text: 'Schedule another meeting for right after the standup and force someone else to sort everything out.'
+              }
+            ]
+          }
+        ]
+      ]

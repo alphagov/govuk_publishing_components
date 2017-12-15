@@ -3,6 +3,9 @@
 @import "grid_layout";
 @import "typography";
 @import "colours";
+@import "../components/task-list";
+@import "../components/task-list-header";
+@import "../components/task-list-related";
 
 $border-color: #ccc;
 

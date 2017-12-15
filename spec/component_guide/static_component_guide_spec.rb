@@ -15,7 +15,7 @@ describe 'Static’s component guide' do
     visit '/component-guide/test-static-component'
 
     expect(body).to include('<span class="n">render</span> <span class="s2">"govuk_component/test-static-component"</span>')
-    within '.component-guide-preview' do
+    within '.component-guide-preview', match: :first do
       expect(page).to have_selector('.a-test-static-component')
     end
   end

@@ -12,7 +12,7 @@ describe 'Component example' do
     visit '/component-guide/test-component'
 
     expect(body).to include('How it looks')
-    within '.component-guide-preview' do
+    within '.component-guide-preview', match: :first do
       expect(page).to have_selector('.some-test-component')
       expect(page).to have_selector('h1.something-inside-test-component', text: 'Test component heading')
     end

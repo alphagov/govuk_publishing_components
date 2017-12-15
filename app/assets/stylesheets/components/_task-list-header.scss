@@ -1,0 +1,36 @@
+.gem-c-task-list-header {
+  position: relative;
+  padding: 10px;
+  background: $grey-4;
+  border-top: solid 1px $grey-2;
+  border-bottom: solid 1px $grey-2;
+
+  @include media(tablet) {
+    padding: $gutter-half;
+  }
+}
+
+// scss-lint:disable SelectorFormat
+
+.gem-c-task-list-header__part-of {
+  @include bold-16;
+
+  display: block;
+  padding-bottom: 0.2em;
+}
+
+.gem-c-task-list-header__title {
+  @include bold-24;
+}
+
+.gem-c-task-list-header__skip-link {
+  position: absolute;
+  top: 0;
+  right: 9999em;
+
+  &:focus {
+    right: 0;
+  }
+}
+
+// scss-lint:enable SelectorFormat

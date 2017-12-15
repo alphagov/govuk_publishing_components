@@ -15,9 +15,20 @@
 <ul class="component-list">
   <% @component_docs.each do |component_doc| %>
     <li>
-      <h2>
-        <%= link_to component_doc.name, component_doc_path(component_doc.id) %>
-      </h2>
+      <%= link_to component_doc.name, component_doc_path(component_doc.id) %>
+      <p>
+        <%= component_doc.description %>
+      </p>
+    </li>
+  <% end %>
+</ul>
+
+<h2 class="component-doc-h2">Components in the gem</h2>
+
+<ul class="component-list">
+  <% @gem_component_docs.each do |component_doc| %>
+    <li>
+      <%= link_to component_doc.name, component_doc_path(component_doc.id) %>
       <p>
         <%= component_doc.description %>
       </p>

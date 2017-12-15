@@ -24,11 +24,12 @@ Gem::Specification.new do |s|
   s.add_dependency "rouge"
 
   s.add_development_dependency "govuk-lint", "~> 3.3"
-  s.add_development_dependency "rspec", "~> 3.6"
+  s.add_development_dependency "rspec-rails", "~> 3.6"
   s.add_development_dependency "capybara", "~> 2.14.4"
   s.add_development_dependency "poltergeist", "~> 1.16.0"
   s.add_development_dependency "jasmine", "~> 2.4.0"
   s.add_development_dependency "uglifier", ">= 1.3.0"
+  s.add_development_dependency "govuk-content-schema-test-helpers", "~> 1.5"
 
   # Needed to load slimmer test helpers
   # https://github.com/alphagov/slimmer/issues/201
