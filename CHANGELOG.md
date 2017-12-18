@@ -1,3 +1,7 @@
+# 3.0.1
+
+* Fix indent bug and number white background bug on newer iphones, overflow issue causing problem when text zoomed, fallback for older iphones, and improve print styles (PR #108)
+
 # 3.0.0
 
 * Allow the gem to host components (PR #105)
