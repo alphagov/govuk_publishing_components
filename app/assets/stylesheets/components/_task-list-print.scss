@@ -1,9 +1,15 @@
 // scss-lint:disable SelectorFormat
 
+.gem-c-task-list__circle,
 .gem-c-task-list__controls,
 .gem-c-task-list__toggle-link,
 .gem-c-task-list__help {
   display: none;
+}
+
+.gem-c-task-list__step,
+.gem-c-task-list__paragraph {
+  padding-bottom: 1em;
 }
 
 .gem-c-task-list__title {
@@ -24,8 +30,7 @@
 }
 
 .gem-c-task-list__links {
-  padding-left: 0;
-  list-style: none;
+  list-style: disc;
 }
 
 .gem-c-task-list__links--choice {
