@@ -1,3 +1,7 @@
+# 3.0.2
+
+* Add styles for active link where active link is in a choice list, and fix focus states on same in Firefox (PR #110)
+
 # 3.0.1
 
 * Fix indent bug and number white background bug on newer iphones, overflow issue causing problem when text zoomed, fallback for older iphones, and improve print styles (PR #108)
