@@ -377,6 +377,10 @@ $top-border: solid 2px $grey-3;
     color: $black;
   }
 
+  &:focus {
+    outline: 0;
+  }
+
   &:before {
     @include box-sizing(border-box);
     content: "";
