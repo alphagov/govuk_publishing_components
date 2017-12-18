@@ -337,8 +337,22 @@ $top-border: solid 2px $grey-3;
 }
 
 .gem-c-task-list__links--choice {
-  margin-left: 20px;
+  $links-margin: 20px;
+
+  margin-left: $links-margin;
   list-style: disc;
+
+  .gem-c-task-list__link-item--active:before {
+    left: -($gutter + $gutter-half) - $links-margin;
+  }
+
+  .gem-c-task-list--large & {
+    @include media(tablet) {
+      .gem-c-task-list__link-item--active:before {
+        left: -($gutter * 2) - $links-margin;
+      }
+    }
+  }
 }
 
 .gem-c-task-list__link {

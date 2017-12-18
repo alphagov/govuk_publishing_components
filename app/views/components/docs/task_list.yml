@@ -250,12 +250,14 @@ examples:
                 contents: [
                   {
                     href: '/component-guide/task_list/',
-                    text: 'Leave school at sixteen'
+                    text: 'Leave school at sixteen',
+                    active: true
                   },
                   {
                     href: '/component-guide/task_list/',
                     text: 'Continue into higher education',
-                    context: '&pound;9,500'
+                    context: '&pound;9,500',
+                    active: true
                   }
                 ]
               }
