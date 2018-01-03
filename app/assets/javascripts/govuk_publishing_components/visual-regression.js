@@ -2,7 +2,7 @@
   window.GOVUK = window.GOVUK || {}
 
   window.GOVUK.VisualDiffTool = function (currentWindowLocation) {
-    const visualDiffSelector = 'visual-diff';
+    var visualDiffSelector = 'visual-diff';
     var existingIframe = document.getElementById(visualDiffSelector);
     var windowLocation = currentWindowLocation || window.location;
 
