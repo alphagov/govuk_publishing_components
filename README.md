@@ -40,6 +40,27 @@ And then execute:
 $ bundle
 ```
 
+### Running as a standalone app
+
+If you want to work on this gem directly, without having to add it to another
+application, you can run it in the development vm:
+
+```
+$ cd /var/govuk/govuk-puppet/development-vm
+$ bowl publishing-components
+```
+
+Then visit [publishing-components.dev.gov.uk/component-guide](http://publishing-components.dev.gov.uk/component-guide).
+
+If you don't want to run it in the development vm, you can start the app with:
+
+```
+$ gem install foreman
+$ PLEK_SERVICE_STATIC_URI=assets.publishing.service.gov.uk foreman start
+```
+
+Then visit [localhost:5000/component-guide](http://localhost:5000/component-guide).
+
 #### Integration with Heroku
 
 To make the best use of the component guide we use Heroku to serve the current `master` build and whenever a [pull request is added](https://devcenter.heroku.com/articles/github-integration-review-apps)
