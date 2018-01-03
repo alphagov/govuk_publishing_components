@@ -316,8 +316,21 @@ examples:
                 text: 'Get help completing this step'
               },
               {
-                type: 'paragraph',
-                text: 'More help is available on the GOV.UK website.'
+                type: 'list',
+                contents: [
+                  {
+                    href: '#',
+                    text: 'Apply online'
+                  },
+                  {
+                    href: '#',
+                    text: 'Talk to one of our advisers'
+                  },
+                  {
+                    href: '#',
+                    text: 'Search our website'
+                  }
+                ]
               }
             ]
           }
@@ -761,6 +774,10 @@ examples:
                 optional: true
               },
               {
+                type: 'heading',
+                text: 'Optional steps'
+              },
+              {
                 type: 'paragraph',
                 text: 'These steps are not required.'
               },
@@ -785,6 +802,7 @@ examples:
         [
           {
             title: 'Join and configure the standup',
+            show_help_link: true,
             contents: [
               {
                 type: 'paragraph',
@@ -961,6 +979,10 @@ examples:
                 optional: true
               },
               {
+                type: 'heading',
+                text: 'Optional steps'
+              },
+              {
                 type: 'paragraph',
                 text: 'These steps are not required.'
               },
@@ -985,6 +1007,7 @@ examples:
         [
           {
             title: 'Join and configure the standup.',
+            show_help_link: true,
             contents: [
               {
                 type: 'paragraph',
