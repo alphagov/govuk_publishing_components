@@ -1,0 +1,18 @@
+@import "helpers/variables";
+
+.gem-c-label {
+  display: block;
+  color: $gem-text-colour;
+  @include core-19;
+}
+
+.gem-c-label--bold {
+  font-weight: 700;
+}
+
+// Hint text sits inside a label, to be read by AT
+.gem-c-label__hint {
+  display: block;
+  color: $gem-secondary-text-colour;
+  font-weight: 400;
+}
