@@ -69,6 +69,29 @@ examples:
       some_parameter: 'A different parameter value'
 ```
 
+#### Yaml configuration for a component which accepts a block
+
+Some components can accept a block as an argument.
+eg.
+
+```ruby
+<%= render "my-accepts-block-component", { param: value }, do %>
+  <span>Some text</span>
+<% end %>
+```
+
+To configure the block in the component yaml file you should specify
+a `block` key in the example data:
+
+```yaml
+examples:
+  default:
+    data:
+      some_parameter: 'The parameter value'
+      block: |
+        <span>Some text</span>
+```
+
 #### [Accessibility Acceptance Criteria](accessibility_acceptance_criteria.md)
 
 Markdown listing what this component must do to be accessible.
