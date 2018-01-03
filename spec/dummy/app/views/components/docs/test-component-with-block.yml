@@ -1,0 +1,7 @@
+name: Test component with block
+description: A test component that takes a block
+examples:
+  default:
+    data:
+      block: |
+        <div class="test-block">Here's a block</div>
