@@ -10,6 +10,7 @@ describe "Task List", type: :view do
       [
         {
           title: 'Group 1 step 1',
+          show_help_link: true,
           optional: true,
           contents: [
             {
@@ -206,7 +207,7 @@ describe "Task List", type: :view do
     render_component(groups: tasklist, task_list_url: "/learn-to-drive", task_list_url_link_text: "Get help")
 
     assert_select group1step1 + " .gem-c-task-list__help-link[href='/learn-to-drive#group-1-step-1']", text: "Get help"
-    assert_select group2step1 + " .gem-c-task-list__help-link[href='/learn-to-drive#group-2-step-1']", text: "Get help"
+    assert_select group2step1 + " .gem-c-task-list__help-link[href='/learn-to-drive#group-2-step-1']", false
   end
 
   it "displays group numbering and step logic correctly" do

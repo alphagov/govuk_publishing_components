@@ -612,9 +612,11 @@ examples:
           }
         ]
       ]
-  with_links_to_more_information:
+  get_help_links:
     description: |
       Where task lists are long, content can be substituted with a link back to the main task list page. This link will open the main task list page with that step shown. The link text defaults to "Get help completing this step" but can be overridden.
+
+      Get help links will only appear if the task_list_url global parameter is set and the step itself has the optional show_help_link parameter set to true.
 
       Note that this option does not remove any content - it is left to developers to simply pass less content to the component in this situation.
     data:
@@ -625,6 +627,7 @@ examples:
         [
           {
             title: "A link back to the main task list",
+            show_help_link: true,
             contents: [
               {
                 type: 'list',
@@ -644,7 +647,7 @@ examples:
         ],
         [
           {
-            title: "Another link back to the main task list",
+            title: "No help link here",
             contents: [
               {
                 type: 'list',

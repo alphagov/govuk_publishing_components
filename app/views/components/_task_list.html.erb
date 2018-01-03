@@ -130,7 +130,7 @@
                   </div>
                 <% end %>
 
-                <% if task_list_url %>
+                <% if task_list_url && step[:show_help_link] %>
                   <div class="gem-c-task-list__help">
                     <a href="<%= task_list_url %>#<%= id %>" class="gem-c-task-list__help-link js-link" data-position="get-help"><%= task_list_url_link_text %></a>
                   </div>
