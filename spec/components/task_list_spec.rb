@@ -108,6 +108,10 @@ describe "Task List", type: :view do
                   text: 'Link 6'
                 }
               ]
+            },
+            {
+              type: 'heading',
+              text: 'This is a heading'
             }
           ]
         }
@@ -140,11 +144,23 @@ describe "Task List", type: :view do
     assert_select group2step1 + " .gem-c-task-list__paragraph", text: "Group 2 step 1 paragraph"
   end
 
+  it "renders headings" do
+    render_component(groups: tasklist)
+
+    assert_select group2step2 + " h3.gem-c-task-list__heading", text: "This is a heading"
+  end
+
   it "renders a tasklist with different heading levels" do
     render_component(groups: tasklist, heading_level: 4)
 
     assert_select group1step1 + " h4.gem-c-task-list__title", text: "Group 1 step 1"
     assert_select group2step1 + " h4.gem-c-task-list__title", text: "Group 2 step 1"
+  end
+
+  it "renders headings correctly if the heading level is changed" do
+    render_component(groups: tasklist, heading_level: 4)
+
+    assert_select group2step2 + " h5.gem-c-task-list__heading", text: "This is a heading"
   end
 
   it "opens a step by default" do

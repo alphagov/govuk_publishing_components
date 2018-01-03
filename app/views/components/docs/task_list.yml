@@ -293,6 +293,36 @@ examples:
           }
         ]
       ]
+  with_headings:
+    description: Headings can be included to break up complex content within steps. Headings are intended to be used to highlight 'Get help completing this step' information, but can be used in other contexts. The heading level is automatically determined based on the heading level of the step titles.
+    data:
+      show_step: 1
+      heading_level: 3
+      groups: [
+        [
+          {
+            title: "Do something complicated",
+            contents: [
+              {
+                type: 'paragraph',
+                text: 'This is an example of a step containing a heading. A section has been used with the heading to demonstrate the intended appearance of a Get Help section.'
+              },
+              {
+                type: 'substep',
+                optional: true
+              },
+              {
+                type: 'heading',
+                text: 'Get help completing this step'
+              },
+              {
+                type: 'paragraph',
+                text: 'More help is available on the GOV.UK website.'
+              }
+            ]
+          }
+        ]
+      ]
   or_then:
     description: Some of the more complex things in a task list require an option for laying out links in a clear structure. If a link in a list is not given a href, only the text is displayed, allowing for structures like the one shown below.
     data:

@@ -69,6 +69,9 @@
                   <% if element[:type] == 'paragraph' %>
                     <p class="gem-c-task-list__paragraph"><%= element[:text] %></p>
 
+                  <% elsif element[:type] == 'heading' %>
+                    <%= content_tag("h#{heading_level + 1}", element[:text], class: 'gem-c-task-list__heading') %>
+
                   <% elsif element[:type] == 'list' %>
                     <%
                       list_style = ''
