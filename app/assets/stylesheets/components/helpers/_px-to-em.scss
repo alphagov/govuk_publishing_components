@@ -1,0 +1,10 @@
+// Convert pixels to em
+@function em($value, $gem-context-font-size) {
+  @if (unitless($value)) {
+    $value: $value * 1px;
+  }
+  @if (unitless($gem-context-font-size)) {
+    $gem-context-font-size: $gem-context-font-size * 1px;
+  }
+  @return $value / $gem-context-font-size * 1em;
+}

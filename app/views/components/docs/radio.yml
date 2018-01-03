@@ -1,0 +1,119 @@
+name: Radio button
+description: A radio button is a GOV.UK element that allows users to answer a question by selecting an option. If you have a question with more than one option you should stack radio buttons.
+body: |
+  Forked from the upcoming [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend), when GOV.UK Frontend release we can replace these source files.
+
+  You can also use 'or' as an item to [break up radios](https://www.gov.uk/service-manual/design/writing-for-user-interfaces#ask-questions-that-users-can-understand)
+accessibility_criteria: |
+  Radio buttons should
+
+  - accept focus
+  - be focusable with a keyboard
+  - be usable with a keyboard
+  - indicate when they have focus
+  - change in appearance when touched (in the touch-down state)
+  - be usable with touch
+  - have label with a touch area similar to the input
+  - be usable with [voice commands](https://www.w3.org/WAI/perspectives/voice.html)
+  - have visible text
+  - have a meaningful accessible name
+  - be usable when interacting with the label
+  - additional information in hint text should be read out found when focusing inputs
+  - should always be used nested in a fieldset so that it has proper context, useful for users of assistive technologies.
+
+  [Keyboard interaction](https://www.w3.org/TR/wai-aria-practices-1.1/#radiobutton)
+
+  - when a radio group receives focus:
+    - if a radio button is checked, focus is set on the checked button.
+    - if none of the radio buttons are checked, focus is set on the first radio button in the group.
+  - Space: checks the focused radio button if it is not already checked.
+  - Right Arrow and Down Arrow: move focus to the next radio button in the group, uncheck the previously focused button, and check the newly focused button. If focus is on the last button, focus moves to the first button.
+  - Left Arrow and Up Arrow: move focus to the previous radio button in the group, uncheck the previously focused button, and check the newly focused button. If focus is on the first button, focus moves to the last button.
+
+accessibility_excluded_rules:
+- radiogroup # Since this is in isolation we don't want to wrap a fieldset here.
+examples:
+  default:
+    data:
+      name: "radio-group"
+      items:
+      - value: "government-gateway"
+        text: "Use Government Gateway"
+      - value: "govuk-verify"
+        text: "Use GOV.UK Verify"
+  with_bold:
+    description: 'Used to provide better contrast between long labels and hint text, Note that the `:or` option [is documented as a string due to a bug](https://github.com/alphagov/govuk_publishing_components/issues/102)'
+    data:
+      name: "radio-group-bold"
+      items:
+      - value: "government-gateway"
+        text: "Use Government Gateway"
+        hint_text: "You'll have a user ID if you've signed up to do things like sign up Self Assessment tax return online."
+        bold: true
+      - value: "govuk-verify"
+        text: "Use GOV.UK Verify"
+        hint_text: "You'll have an account if you've already proved your identity with a certified company, such as the Post Office."
+        bold: true
+  with_hint_text:
+    data:
+      name: "radio-group-hint-text"
+      items:
+      - value: "government-gateway"
+        hint_text: "You'll have a user ID if you've signed up to do things like sign up Self Assessment tax return online."
+        text: "Use Government Gateway"
+      - value: "govuk-verify"
+        hint_text: "You'll have an account if you've already proved your identity with a certified company, such as the Post Office."
+        text: "Use GOV.UK Verify"
+  with_checked_option:
+    data:
+      name: "radio-group-checked"
+      items:
+      - value: "government-gateway"
+        text: "Use Government Gateway"
+      - value: "govuk-verify"
+        text: "Use GOV.UK Verify"
+        checked: true
+  with_custom_id_prefix:
+    data:
+      id_prefix: 'custom'
+      name: "radio-custom-id-prefix"
+      items:
+      - value: "government-gateway"
+        text: "Use Government Gateway"
+      - value: "govuk-verify"
+        text: "Use GOV.UK Verify"
+  with_or_divider:
+    description: "See [related service manual gudiance for this pattern](https://www.gov.uk/service-manual/design/writing-for-user-interfaces#ask-questions-that-users-can-understand)"
+    data:
+      name: "radio-group-or-divider"
+      items:
+      - value: "government-gateway"
+        text: "Use Government Gateway"
+      - value: "govuk-verify"
+        text: "Use GOV.UK Verify"
+      - :or
+      - value: "create-an-account"
+        text: "Create an account"
+  extreme:
+    description: 'Note that the `:or` option [is documented as a string due to a bug](https://github.com/alphagov/govuk_publishing_components/issues/102)'
+    data:
+      id_prefix: 'extreme'
+      name: "radio-custom-extreme"
+      items:
+      - value: "extreme-value-1"
+        hint_text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien justo, lobortis elementum tortor in, luctus interdum turpis. Nam sit amet nulla nec arcu condimentum dapibus quis varius metus. Suspendisse cursus tristique diam et vestibulum. Proin nec lacinia tortor. Morbi at nisi id lorem aliquam ullamcorper. Pellentesque laoreet sit amet leo sodales ultricies. Suspendisse maximus efficitur odio in tristique."
+        text: "Quisque tincidunt venenatis bibendum. Morbi volutpat magna euismod ipsum consequat cursus. Etiam bibendum interdum ultricies."
+        bold: true
+      - value: "extreme-value-2"
+        hint_text: "Cras mi neque, porttitor mattis ultricies id, fringilla non ipsum. Etiam non elit ac magna tincidunt ultrices. Morbi eu quam sed justo scelerisque efficitur sed ut risus. Integer commodo, lectus et venenatis maximus, augue erat egestas nulla, eget fermentum augue lacus tempor nulla. Aenean ultricies suscipit erat, vitae hendrerit neque varius nec. Etiam ac euismod massa. Ut at erat id sapien mollis posuere."
+        text: "Aliquam rutrum lobortis blandit. Praesent sit amet lacinia libero. Morbi nulla tellus, euismod et ipsum id, porta volutpat enim. Ut mauris libero"
+        bold: true
+      - :or
+      - value: "extreme-value-3"
+        hint_text: "Nullam congue neque et tempor tincidunt. In ornare lacus ac arcu maximus ultricies. Quisque et ultrices nulla. Suspendisse potenti. Nunc imperdiet ornare leo ut ultrices. Praesent in quam in tellus dictum lacinia vitae vitae lacus. Nulla hendrerit feugiat urna eu gravida. Nam a molestie nisi, at semper neque. Quisque tincidunt venenatis bibendum. Morbi volutpat magna euismod ipsum consequat cursus. Etiam bibendum interdum ultricies."
+        text: "Duis tempus est metus, in varius enim lobortis non. Nunc laoreet nisi vel lectus consequat, sed venenatis tellus dictum. Nunc ut nibh blandit ipsum bibendum dictum."
+        bold: true
+      - value: "extreme-value-4"
+        hint_text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien justo, lobortis elementum tortor in, luctus interdum turpis. Nam sit amet nulla nec arcu condimentum dapibus quis varius metus. Suspendisse cursus tristique diam et vestibulum. Proin nec lacinia tortor. Morbi at nisi id lorem aliquam ullamcorper. Pellentesque laoreet sit amet leo sodales ultricies. Suspendisse maximus efficitur odio in tristique."
+        text: "Quisque tincidunt venenatis bibendum. Morbi volutpat magna euismod ipsum consequat cursus. Etiam bibendum interdum ultricies."
+        bold: true
