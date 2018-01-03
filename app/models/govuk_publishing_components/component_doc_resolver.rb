@@ -10,7 +10,7 @@ module GovukPublishingComponents
     end
 
     def all
-      fetch_component_docs.map { |component| build(component) }
+      fetch_component_docs.map { |component| build(component) }.sort_by(&:name)
     end
 
   private
