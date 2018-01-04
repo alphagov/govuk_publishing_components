@@ -1,0 +1,25 @@
+name: Form label
+description: Use labels for all form fields.
+body: |
+  For use with other form inputs e.g. [Radio buttons](/component-guide/radio)
+
+  Forked from the upcoming [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend), when GOV.UK Frontend release we can replace these source files.
+accessibility_criteria: |
+  - have a text contrast ratio higher than 4.5:1 against the background colour to meet [WCAG AA](https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast)
+  - have visible text
+  - `hint_id` is matched with an `aria-describedby` property on the input your label is associated with.
+examples:
+  default:
+    data:
+      text: "National Insurance number"
+  with_hint:
+    data:
+      text: "National Insurance number"
+      hint_id: "should-match-aria-describedby-input"
+      hint_text: "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+  bold_with_hint:
+    data:
+      bold: true
+      text: "National Insurance number"
+      hint_id: "should-match-aria-describedby-input-bold"
+      hint_text: "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."

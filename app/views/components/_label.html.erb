@@ -1,0 +1,40 @@
+<%
+  classes ||= ''
+  text_classes ||= ''
+  hint_text_classes ||= ''
+  html_for ||= ''
+  hint_text ||= ''
+  bold ||= false
+%>
+
+
+<div
+  class="
+    gem-c-label
+    <%= "gem-c-label--bold" if bold %>
+    <%= classes if classes %>
+  "
+>
+  <label
+    class="
+      gem-c-label__text
+      <%= text_classes if text_classes %>
+    "
+    <% if html_for %>
+      for="<%= html_for %>"
+    <% end %>
+  >
+    <%= text %>
+  </label>
+  <% if hint_text.present? %>
+    <span
+      class="
+        gem-c-label__hint
+        <%= hint_text_classes if hint_text_classes %>
+      "
+      id="<%= hint_id %>"
+    >
+      <%= hint_text %>
+    </span>
+  <% end %>
+</div>

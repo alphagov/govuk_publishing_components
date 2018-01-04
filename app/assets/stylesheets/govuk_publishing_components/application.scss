@@ -3,6 +3,10 @@
 @import "grid_layout";
 @import "typography";
 @import "colours";
+
+@import "../components/fieldset";
+@import "../components/label";
+@import "../components/radio";
 @import "../components/task-list";
 @import "../components/task-list-header";
 @import "../components/task-list-related";

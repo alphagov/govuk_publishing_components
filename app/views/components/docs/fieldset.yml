@@ -1,0 +1,34 @@
+name: Form fieldset
+description: The fieldset element is used to group several controls within a web form. The legend element represents a caption for the content of its parent fieldset.
+body: |
+  [Using the fieldset and legend elements](https://accessibility.blog.gov.uk/2016/07/22/using-the-fieldset-and-legend-elements/)
+
+  You can use the 'text' property or pass 'text' as a block.
+accessibility_criteria: |
+  - must give inputs within the fieldset context with legend text
+examples:
+  default:
+    data:
+      legend_text: 'Do you have a passport?'
+      text: |
+        <!-- Use the radio component, this is hardcoded only for this example -->
+        <input type="radio" id="default-yes" name="default"t>
+        <label for="default-yes">Yes</label>
+
+        <input type="radio" id="default-no" name="default"t>
+        <label for="default-no">No</label>
+  with_html_legend:
+    description: 'If you only have one fieldset on the page you might want to include the title of the page as the legend text. Used with a [captured](http://api.rubyonrails.org/classes/ActionView/Helpers/CaptureHelper.html#method-i-capture) [title](http://govuk-static.herokuapp.com/component-guide/title)'
+    data:
+      legend_text: |
+        <!-- Use the title component, this is hardcoded only for this example -->
+        <h1 style="font-size: 48px; line-height: 1.0416666667; font-weight: bold; margin-bottom: 30px;">
+          Do you have a passport?
+        </h1>
+      text: |
+        <!-- Use the radio component, this is hardcoded only for this example -->
+        <input type="radio" id="html-legend-yes" name="html-legend">
+        <label for="html-legend-yes">Yes</label>
+
+        <input type="radio" id="html-legend-no" name="html-legend">
+        <label for="html-legend-no">No</label>
