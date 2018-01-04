@@ -135,11 +135,11 @@ This will create a template, scss file and yml documentation file for a new comp
 ### Visual Diff Tool
 The component guide includes a visual diff tool that should make it easier to spot when you are introducing visual regressions in your components.
 
-It can be run on a locally running version of the component guide, to compare it to the heroku master deploy. For example: [government-frontend.dev.gov.uk/component-guide](government-frontend.dev.gov.uk/component-guide) will be compared to [government-frontend.herokuapp.com/component-guide](government-frontend.herokuapp.com/component-guide).
+It can be run on a locally running version of the component guide, to compare it to the heroku master deploy. For example: [government-frontend.dev.gov.uk/component-guide](http://government-frontend.dev.gov.uk/component-guide) will be compared to [government-frontend.herokuapp.com/component-guide](https://government-frontend.herokuapp.com/component-guide).
 
 The tool can be run via the console using the following command:
 ```js
-  window.GOVUK.VisualDiffTool()`
+  window.GOVUK.VisualDiffTool()
 ```
 
 ## Licence
