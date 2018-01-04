@@ -1,3 +1,7 @@
+# Unreleased
+
+* Add heading element into task list component and change get help link behaviour (PR #113)
+
 # 3.1.0
 
 * Add support for components which accept a block (PR #117)
