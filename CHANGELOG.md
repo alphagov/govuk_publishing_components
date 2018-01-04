@@ -1,3 +1,9 @@
+# 3.0.3
+
+* Sort components by name in the component list (PR #114)
+* Remove ES6 syntax (replace const with var) to fix uglifier errors when compiling assets (PR #114)
+* Add procfile to allow running the dummy app (PR #115)
+
 # 3.0.2
 
 * Add styles for active link where active link is in a choice list, and fix focus states on same in Firefox (PR #110)
