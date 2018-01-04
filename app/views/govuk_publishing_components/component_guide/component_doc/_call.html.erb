@@ -1,3 +1,12 @@
 <div class="component-call component-highlight" contenteditable>
-  <pre><code><%= example.highlight_code("\<%= render \"#{@component_doc.partial_path}\", #{example.pretty_data} %\>") %></code></pre>
+  <% if example.has_block? %>
+    <%
+      code = "<%= render \"#{@component_doc.partial_path}\", #{example.pretty_data} do %\>\n"
+      code += "  #{example.block.html_safe}"
+      code += "<% end %\>"
+    -%>
+    <pre><code><%= example.highlight_code(code) %></code></pre>
+  <% else %>
+    <pre><code><%= example.highlight_code("\<%= render \"#{@component_doc.partial_path}\", #{example.pretty_data} %\>") %></code></pre>
+<% end %>
 </div>

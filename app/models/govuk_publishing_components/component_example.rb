@@ -5,13 +5,15 @@ module GovukPublishingComponents
     attr_reader :id,
                 :data,
                 :context,
-                :description
+                :description,
+                :block
 
     def initialize(id, data, context, description)
       @id = id
       @data = data || {}
       @context = context || {}
       @description = description || false
+      @block = @data.delete(:block) || false
     end
 
     def name
@@ -65,6 +67,10 @@ module GovukPublishingComponents
 
     def html_description
       govspeak_to_html(description) if description.present?
+    end
+
+    def has_block?
+      !!block
     end
 
   private

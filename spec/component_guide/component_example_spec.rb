@@ -35,6 +35,14 @@ describe 'Component example' do
     expect(page).to have_selector('.component-guide-preview .test-component-with-params', text: 'A different value')
   end
 
+  it 'yields a block in component examples' do
+    visit '/component-guide/test-component-with-block'
+
+    expect(page).to have_selector('.component-guide-preview .test-component-with-block', text: 'Here\'s a block')
+
+    expect(page).to have_content(%(<%= render "components/test-component-with-block", {\n} do %>\n<div class="test-block">Here's a block</div>\n<% end %>))
+  end
+
   it 'marks strings in examples as html_safe' do
     visit '/component-guide/test-component-with-html-params'
     within ".test-component-with-html-params" do
