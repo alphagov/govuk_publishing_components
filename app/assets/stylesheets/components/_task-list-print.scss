@@ -1,28 +1,99 @@
 // scss-lint:disable SelectorFormat
 
-.gem-c-task-list__circle,
+$grey-2: #bfc1c3;
+$white: #ffffff;
+$number-circle-size: 35px;
+$stroke-width: 3px;
+
+.gem-c-task-list:not(.gem-c-task-list--large),
 .gem-c-task-list__controls,
 .gem-c-task-list__toggle-link,
 .gem-c-task-list__help {
   display: none;
 }
 
+.gem-c-task-list {
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: $number-circle-size / 2;
+    width: 3px;
+    height: 100%;
+    margin-left: -1.5px;
+    border-left: solid $stroke-width $grey-2;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    z-index: 6;
+    bottom: 0;
+    left: 0;
+    margin-left: $number-circle-size / 4;
+    width: $number-circle-size / 2;
+    height: 0;
+    border-bottom: solid $stroke-width $grey-2;
+  }
+}
+
+.gem-c-task-list__group {
+  position: relative;
+}
+
+.gem-c-task-list__groups {
+  padding: 0;
+  list-style: none;
+}
+
+.gem-c-task-list__circle {
+  @include _core-font-generator(19px, 16px, 19px, 30px, 23px, false, bold);
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: $number-circle-size;
+  height: $number-circle-size;
+  background: $white;
+  border-radius: 100px;
+  text-align: center;
+}
+
+.gem-c-task-list__circle--number {
+  border: solid 3px $grey-2;
+}
+
 .gem-c-task-list__step,
-.gem-c-task-list__paragraph {
+.gem-c-task-list__paragraph,
+.gem-c-task-list__links {
+  @include core-16;
   padding-bottom: 1em;
 }
 
+.gem-c-task-list__step {
+  position: relative;
+  padding-left: 60px;
+}
+
 .gem-c-task-list__title {
-  margin: 0;
+  @include bold-19;
+  margin: 0 0 0.5em 0;
   padding: 0;
 }
 
 .gem-c-task-list__button--title {
   @include bold-19;
-
   padding: 0;
   border: 0;
   background: none;
+}
+
+.gem-c-task-list__context {
+  &:before {
+    content: " \2013  ";
+  }
 }
 
 .gem-c-task-list__panel-link--active {
@@ -30,11 +101,17 @@
 }
 
 .gem-c-task-list__links {
-  list-style: disc;
+  padding-left: 0;
+  list-style: none;
 }
 
 .gem-c-task-list__links--choice {
+  padding-left: 30px;
   list-style: disc;
+}
+
+.gem-c-task-list__link {
+  margin-bottom: 0.3em;
 }
 
 // scss-lint:enable SelectorFormat
