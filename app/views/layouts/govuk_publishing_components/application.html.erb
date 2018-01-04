@@ -10,7 +10,7 @@
     <% end %>
     <%= yield :title %><% if content_for(:title) %> - <% end %><%= GovukPublishingComponents::Config.component_guide_title %>
   </title>
-  <%= stylesheet_link_tag "govuk_publishing_components/application", media: "all" %>
+  <%= stylesheet_link_tag "govuk_publishing_components/application", media: "screen" %>
   <%= stylesheet_link_tag "govuk_publishing_components/print", media: "print" %>
   <%= stylesheet_link_tag "#{GovukPublishingComponents::Config.application_stylesheet}" %>
   <%= javascript_include_tag "govuk_publishing_components/application" %>
