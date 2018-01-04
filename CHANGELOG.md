@@ -1,3 +1,7 @@
+# 3.1.0
+
+* Add support for components which accept a block (PR #117)
+
 # 3.0.3
 
 * Sort components by name in the component list (PR #114)
