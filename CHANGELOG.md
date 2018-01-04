@@ -2,6 +2,7 @@
 
 * Remove unneeded CSS from component guide (PR #126)
 * Add heading element into task list component and change get help link behaviour (PR #113)
+* Improve task list print styles (PR #125)
 
 # 3.1.0
 
