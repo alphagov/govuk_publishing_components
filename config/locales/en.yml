@@ -23,3 +23,5 @@ en:
   components:
     radio:
       or: 'or'
+    back_link:
+      back: 'Back'

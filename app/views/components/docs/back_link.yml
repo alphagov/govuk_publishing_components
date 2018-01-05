@@ -1,0 +1,10 @@
+name: Back link
+description: A link used to help users get back, useful when not using other navigation such as breadcrumbs
+accessibility_criteria: |
+  - has a touch area easy for users to touch
+shared_accessibility_criteria:
+- link
+examples:
+  default:
+    data:
+      href: '#'

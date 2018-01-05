@@ -2,3 +2,5 @@ cy:
   components:
     radio:
       or: 'neu'
+    back_link:
+      back: "Yn ôl"

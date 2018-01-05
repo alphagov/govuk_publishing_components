@@ -1,0 +1,33 @@
+@import "helpers/variables";
+
+.gem-c-back-link {
+  position: relative;
+  display: inline-block;
+  margin-top: $gem-spacing-scale-3;
+  margin-bottom: $gem-spacing-scale-3;
+  font-size: 16px;
+  line-height: 1.25;
+
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+
+  &:link,
+  &:link:focus,
+  &:visited,
+  &:active {
+    color: currentColor;
+  }
+
+  &:hover {
+    color: $link-colour;
+  }
+
+  &::before {
+    content: "";
+    display: inline-block;
+    margin-right: .3em;
+    border-top: 0.3125em solid transparent;
+    border-right: 0.375em solid currentColor;
+    border-bottom: 0.3125em solid transparent;
+  }
+}
