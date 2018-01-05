@@ -5,10 +5,6 @@ describe "Radio", type: :view do
     render file: "components/_radio", locals: locals
   end
 
-  before(:each) do
-    I18n.default_locale = :en
-  end
-
   it "does not render anything if no data is passed" do
     assert_empty render_component({})
   end
@@ -170,22 +166,23 @@ describe "Radio", type: :view do
   end
 
   it "renders radio-group with welsh translated 'or'" do
-    I18n.default_locale = :cy
+    I18n.with_locale(:cy) do
+      render_component(
+        name: "radio-welsh-or",
+        items: [
+          {
+            value: "government-gateway",
+            text: "Use Government Gateway"
+          },
+          :or,
+          {
+            value: "govuk-verify",
+            text: "Use GOV.UK Verify"
+          }
+        ]
+      )
+    end
 
-    render_component(
-      name: "radio-welsh-or",
-      items: [
-        {
-          value: "government-gateway",
-          text: "Use Government Gateway"
-        },
-        :or,
-        {
-          value: "govuk-verify",
-          text: "Use GOV.UK Verify"
-        }
-      ]
-    )
     assert_select ".gem-c-radio__block-text", text: "neu"
   end
 end
