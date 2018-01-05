@@ -1,6 +1,6 @@
-# Unreleased
+# 3.2.1
 
-* Fix radio component not including welsh translation (Patch)
+* Fix radio component not including welsh translation (PR #128)
 
 # 3.2.0
 
