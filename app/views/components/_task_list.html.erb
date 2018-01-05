@@ -69,6 +69,9 @@
                   <% if element[:type] == 'paragraph' %>
                     <p class="gem-c-task-list__paragraph"><%= element[:text] %></p>
 
+                  <% elsif element[:type] == 'heading' %>
+                    <%= content_tag("h#{heading_level + 1}", element[:text], class: 'gem-c-task-list__heading') %>
+
                   <% elsif element[:type] == 'list' %>
                     <%
                       list_style = ''
@@ -127,7 +130,7 @@
                   </div>
                 <% end %>
 
-                <% if task_list_url %>
+                <% if task_list_url && step[:show_help_link] %>
                   <div class="gem-c-task-list__help">
                     <a href="<%= task_list_url %>#<%= id %>" class="gem-c-task-list__help-link js-link" data-position="get-help"><%= task_list_url_link_text %></a>
                   </div>

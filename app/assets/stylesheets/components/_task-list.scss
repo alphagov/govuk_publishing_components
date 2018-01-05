@@ -297,7 +297,8 @@ $top-border: solid 2px $grey-3;
 
 // contents of the task list, such as paragraphs and links
 
-.gem-c-task-list__paragraph {
+.gem-c-task-list__paragraph,
+.gem-c-task-list__heading {
   padding-bottom: $gutter-half;
   margin: 0;
   font-size: inherit;
@@ -317,6 +318,10 @@ $top-border: solid 2px $grey-3;
       padding-bottom: $gutter;
     }
   }
+}
+
+.gem-c-task-list__heading {
+  font-weight: bold;
 }
 
 .gem-c-task-list__links {
@@ -447,6 +452,7 @@ $top-border: solid 2px $grey-3;
 
 .gem-c-task-list__help-link {
   text-decoration: none;
+  font-weight: bold;
 
   &:hover {
     text-decoration: underline;

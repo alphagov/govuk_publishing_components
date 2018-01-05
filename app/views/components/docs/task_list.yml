@@ -293,6 +293,49 @@ examples:
           }
         ]
       ]
+  with_headings:
+    description: Headings can be included to break up complex content within steps. Headings are intended to be used to highlight 'Get help completing this step' information, but can be used in other contexts. The heading level is automatically determined based on the heading level of the step titles.
+    data:
+      show_step: 1
+      heading_level: 3
+      groups: [
+        [
+          {
+            title: "Do something complicated",
+            contents: [
+              {
+                type: 'paragraph',
+                text: 'This is an example of a step containing a heading. A section has been used with the heading to demonstrate the intended appearance of a Get Help section.'
+              },
+              {
+                type: 'substep',
+                optional: true
+              },
+              {
+                type: 'heading',
+                text: 'Get help completing this step'
+              },
+              {
+                type: 'list',
+                contents: [
+                  {
+                    href: '#',
+                    text: 'Apply online'
+                  },
+                  {
+                    href: '#',
+                    text: 'Talk to one of our advisers'
+                  },
+                  {
+                    href: '#',
+                    text: 'Search our website'
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      ]
   or_then:
     description: Some of the more complex things in a task list require an option for laying out links in a clear structure. If a link in a list is not given a href, only the text is displayed, allowing for structures like the one shown below.
     data:
@@ -582,9 +625,11 @@ examples:
           }
         ]
       ]
-  with_links_to_more_information:
+  get_help_links:
     description: |
       Where task lists are long, content can be substituted with a link back to the main task list page. This link will open the main task list page with that step shown. The link text defaults to "Get help completing this step" but can be overridden.
+
+      Get help links will only appear if the task_list_url global parameter is set and the step itself has the optional show_help_link parameter set to true.
 
       Note that this option does not remove any content - it is left to developers to simply pass less content to the component in this situation.
     data:
@@ -595,6 +640,7 @@ examples:
         [
           {
             title: "A link back to the main task list",
+            show_help_link: true,
             contents: [
               {
                 type: 'list',
@@ -614,7 +660,7 @@ examples:
         ],
         [
           {
-            title: "Another link back to the main task list",
+            title: "No help link here",
             contents: [
               {
                 type: 'list',
@@ -728,6 +774,10 @@ examples:
                 optional: true
               },
               {
+                type: 'heading',
+                text: 'Optional steps'
+              },
+              {
                 type: 'paragraph',
                 text: 'These steps are not required.'
               },
@@ -752,6 +802,7 @@ examples:
         [
           {
             title: 'Join and configure the standup',
+            show_help_link: true,
             contents: [
               {
                 type: 'paragraph',
@@ -928,6 +979,10 @@ examples:
                 optional: true
               },
               {
+                type: 'heading',
+                text: 'Optional steps'
+              },
+              {
                 type: 'paragraph',
                 text: 'These steps are not required.'
               },
@@ -952,6 +1007,7 @@ examples:
         [
           {
             title: 'Join and configure the standup.',
+            show_help_link: true,
             contents: [
               {
                 type: 'paragraph',
