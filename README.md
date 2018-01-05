@@ -169,3 +169,6 @@ The tool can be run via the console using the following command:
 
 ## Development
 For documentation on how to update and develop this gem see [DEVELOPMENT.md](./DEVELOPMENT.md)
+
+### Moving components upstream into this gem
+See [the documentation on how to move components into this gem](docs/moving-components-upstream-into-this-gem.md)
