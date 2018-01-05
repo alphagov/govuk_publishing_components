@@ -887,12 +887,13 @@ examples:
     description: Designed to fit in the sidebar of a page. Note that the small version of the task list should not become smaller on mobile, and the large version on mobile should be the same size as the small version. This example is a copy of the one above for comparison.
     data:
       small: true
+      remember_last_step: true
       task_list_url: "/learn-to-setup-standup"
       highlight_group: 2
       groups: [
         [
           {
-            title: 'Get the TV ready.',
+            title: 'Get the TV ready (small)',
             contents: [
               {
                 type: 'paragraph',
@@ -912,7 +913,7 @@ examples:
             ]
           },
           {
-            title: 'Plug everything in.',
+            title: 'Plug everything in (small)',
             contents: [
               {
                 type: 'paragraph',
@@ -937,7 +938,7 @@ examples:
         ],
         [
           {
-            title: 'Configure the catchbox.',
+            title: 'Configure the catchbox (small)',
             contents: [
               {
                 type: 'paragraph',
@@ -1006,7 +1007,7 @@ examples:
         ],
         [
           {
-            title: 'Join and configure the standup.',
+            title: 'Join and configure the standup (small)',
             show_help_link: true,
             contents: [
               {
@@ -1063,7 +1064,7 @@ examples:
         ],
         [
           {
-            title: 'Clear up.',
+            title: 'Clear up (small)',
             contents: [
               {
                 type: 'paragraph',
@@ -1076,7 +1077,7 @@ examples:
             ]
           },
           {
-            title: 'Get someone else to clear up.',
+            title: 'Get someone else to clear up (small)',
             logic: 'or',
             optional: true,
             contents: [

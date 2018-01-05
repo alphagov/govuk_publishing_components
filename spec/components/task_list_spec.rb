@@ -115,6 +115,15 @@ describe "Task List", type: :view do
               text: 'This is a heading'
             }
           ]
+        },
+        {
+          title: 'Group 2 step 3?"`_!',
+          contents: [
+            {
+              type: 'paragraph',
+              text: 'test'
+            }
+          ]
         }
       ]
     ]
@@ -174,6 +183,13 @@ describe "Task List", type: :view do
     render_component(groups: tasklist, remember_last_step: true)
 
     assert_select ".gem-c-task-list[data-remember]"
+  end
+
+  it "generates IDs for steps correctly" do
+    render_component(groups: tasklist)
+
+    assert_select group2step2 + " #group-2-step-2.gem-c-task-list__panel"
+    assert_select group2 + " .gem-c-task-list__step:nth-of-type(3) #group-2-step-3.gem-c-task-list__panel"
   end
 
   it "renders links" do

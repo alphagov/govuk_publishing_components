@@ -33,7 +33,7 @@
           <% group.each_with_index do |step, step_index| %>
             <%
               step_count += 1
-              id = step[:id] || step[:title].downcase.tr(" ","-")
+              id = generate_id(step[:title])
 
               logic = "and"
               logic = step[:logic] if ["and", "or"].include? step[:logic]
@@ -67,7 +67,7 @@
                 %>
                 <% step[:contents].each do |element| %>
                   <% if element[:type] == 'paragraph' %>
-                    <p class="gem-c-task-list__paragraph"><%= element[:text] %></p>
+                    <%= content_tag("p", element[:text], class: 'gem-c-task-list__paragraph') %>
 
                   <% elsif element[:type] == 'heading' %>
                     <%= content_tag("h#{heading_level + 1}", element[:text], class: 'gem-c-task-list__heading') %>
