@@ -1,0 +1,4 @@
+cy:
+  components:
+    radio:
+      or: 'neu'
