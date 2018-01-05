@@ -1,3 +1,7 @@
+# Unreleased
+
+* Fix radio component not including welsh translation (Patch)
+
 # 3.2.0
 
 * Remove unneeded CSS from component guide (PR #126)
