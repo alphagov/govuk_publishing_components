@@ -8,5 +8,5 @@
     <pre><code><%= example.highlight_code(code) %></code></pre>
   <% else %>
     <pre><code><%= example.highlight_code("\<%= render \"#{@component_doc.partial_path}\", #{example.pretty_data} %\>") %></code></pre>
-<% end %>
+  <% end %>
 </div>
