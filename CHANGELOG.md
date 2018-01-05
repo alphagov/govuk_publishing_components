@@ -1,8 +1,9 @@
-# Unreleased
+# 3.2.0
 
 * Remove unneeded CSS from component guide (PR #126)
 * Add heading element into task list component and change get help link behaviour (PR #113)
 * Improve task list print styles (PR #125)
+* Move form components into gem (PR #116)
 
 # 3.1.0
 
