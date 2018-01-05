@@ -1,3 +1,7 @@
+# 3.3.0
+
+* Move back link component in gem (PR #131)
+
 # 3.2.1
 
 * Fix radio component not including welsh translation (PR #128)
