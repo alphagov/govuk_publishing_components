@@ -36,15 +36,6 @@ $border-color: #ccc;
   .component-doc-h2:first-child {
     margin-top: 0;
   }
-
-  p {
-    margin: $gutter-half 0;
-  }
-
-  ol,
-  ul {
-    margin: 0 0 0 $gutter;
-  }
 }
 
 .component-violation {
