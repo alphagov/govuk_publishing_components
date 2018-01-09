@@ -46,6 +46,9 @@ If you want to work on this gem directly, without having to add it to another
 application, you can run it in the development vm:
 
 ```
+$ cd /var/govuk/govuk_publishing_components
+$ bundle
+
 $ cd /var/govuk/govuk-puppet/development-vm
 $ bowl publishing-components
 ```
@@ -55,8 +58,10 @@ Then visit [publishing-components.dev.gov.uk/component-guide](http://publishing-
 If you don't want to run it in the development vm, you can start the app with:
 
 ```
-$ gem install foreman
-$ PLEK_SERVICE_STATIC_URI=assets.publishing.service.gov.uk foreman start
+$ cd /var/govuk/govuk_publishing_components
+$ bundle
+
+$ PLEK_SERVICE_STATIC_URI=assets.publishing.service.gov.uk bundle exec foreman start
 ```
 
 Then visit [localhost:5000/component-guide](http://localhost:5000/component-guide).
