@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "Back Link", type: :view do
   def render_component(locals)
-    render file: "components/_back_link", locals: locals
+    render file: "govuk_publishing_components/components/_back_link", locals: locals
   end
 
   it "fails to render a back link when no href is given" do

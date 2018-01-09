@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "Fieldset", type: :view do
   def render_component(locals)
-    render file: "components/_fieldset", locals: locals
+    render file: "govuk_publishing_components/components/_fieldset", locals: locals
   end
 
   it "fails to render when no data is given" do

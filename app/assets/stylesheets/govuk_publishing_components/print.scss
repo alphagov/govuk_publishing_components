@@ -1,4 +1,3 @@
 @import "typography";
-
-@import "../components/task-list-print";
-@import "../components/task-list-header-print";
+@import "components/print/task-list";
+@import "components/print/task-list-header";

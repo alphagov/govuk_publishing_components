@@ -13,6 +13,6 @@
 //= require govuk/modules
 //= require ../history-support
 //= require ../current-location
-//= require ../components/task-list
+//= require_tree ./components
 //= require_tree ./vendor
 //= require_tree .
