@@ -4,13 +4,13 @@
 @import "typography";
 @import "colours";
 
-@import "../components/back-link";
-@import "../components/fieldset";
-@import "../components/label";
-@import "../components/radio";
-@import "../components/task-list";
-@import "../components/task-list-header";
-@import "../components/task-list-related";
+@import "components/back-link";
+@import "components/fieldset";
+@import "components/label";
+@import "components/radio";
+@import "components/task-list";
+@import "components/task-list-header";
+@import "components/task-list-related";
 
 $border-color: #ccc;
 

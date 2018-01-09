@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "Task List Related", type: :view do
   def render_component(locals)
-    render file: "components/_task_list_related", locals: locals
+    render file: "govuk_publishing_components/components/_task_list_related", locals: locals
   end
 
   def one_link

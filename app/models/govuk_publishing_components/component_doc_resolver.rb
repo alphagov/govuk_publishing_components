@@ -68,7 +68,7 @@ module GovukPublishingComponents
     end
 
     def gem_documentation_directory
-      Pathname.new(GovukPublishingComponents::Config.gem_directory).join("app", "views", "components", "docs")
+      Pathname.new(GovukPublishingComponents::Config.gem_directory).join("app", "views", "govuk_publishing_components", "components", "docs")
     end
   end
 end

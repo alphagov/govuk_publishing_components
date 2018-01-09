@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Radio", type: :view do
   def render_component(locals)
-    render file: "components/_radio", locals: locals
+    render file: "govuk_publishing_components/components/_radio", locals: locals
   end
 
   it "does not render anything if no data is passed" do

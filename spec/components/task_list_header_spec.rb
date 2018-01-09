@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Task List Header", type: :view do
   def render_component(locals)
-    render file: "components/_task_list_header", locals: locals
+    render file: "govuk_publishing_components/components/_task_list_header", locals: locals
   end
 
   it "renders nothing without passed content" do
