@@ -1,8 +1,8 @@
-# Unreleased
+# 4.0.0
 
-* Namespace hosted components with `govuk_publishing_components` (Major) (PR #136)
-
-All references to gem hosted components will need to point to `govuk_publishing_components/components` rather than `/components`. This includes stylesheets, partials and javascripts.
+* Namespace hosted components with `govuk_publishing_components` (PR #136)
+  * References to components hosted in gem need to point to `govuk_publishing_components/components` rather than `/components`. This includes stylesheets, partials and javascripts.
+  * References to task list print styles must be updated to point at the new /print subdirectory
 
 # 3.3.0
 
