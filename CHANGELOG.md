@@ -1,3 +1,9 @@
+# Unreleased
+
+* Namespace hosted components with `govuk_publishing_components` (Major) (PR #136)
+
+All references to gem hosted components will need to point to `govuk_publishing_components/components` rather than `/components`. This includes stylesheets, partials and javascripts.
+
 # 3.3.0
 
 * Move back link component in gem (PR #131)
