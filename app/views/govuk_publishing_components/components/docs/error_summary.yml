@@ -1,0 +1,26 @@
+name: Form error summary
+description: Used at the top of the page, to summarise validation errors.
+accessibility_criteria: |
+  - should be focused on page load, to ensure this error is noticed by assistive tech
+  - list of errors should be clickable and focus the inputs with errors
+shared_accessibility_criteria:
+  - link
+examples:
+  default:
+    data:
+      title: Message to alert the user to a problem goes here
+      description: Optional description of the errors and how to correct them
+      items:
+      - text: Descriptive link to the question with an error
+        href: '#example-error-1'
+  with_many_errors:
+    data:
+      title: Message to alert the user to a problem goes here
+      description: Optional description of the errors and how to correct them
+      items:
+      - text: Descriptive link to the question with an error 1
+        href: '#example-error-1'
+      - text: Descriptive link to the question with an error 2
+        href: '#example-error-2'
+      - text: Descriptive link to the question with an error 3
+        href: '#example-error-3'
