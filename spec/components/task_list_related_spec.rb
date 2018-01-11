@@ -34,9 +34,9 @@ describe "Task List Related", type: :view do
   it "displays one link inside a heading" do
     render_component(links: one_link)
 
-    this_link = ".pub-c-task-list-related .pub-c-task-list-related__heading .pub-c-task-list-related__link"
+    this_link = ".gem-c-task-list-related .gem-c-task-list-related__heading .gem-c-task-list-related__link"
 
-    assert_select ".pub-c-task-list-related .pub-c-task-list-related__heading .pub-c-task-list-related__pretitle", text: 'Part of'
+    assert_select ".gem-c-task-list-related .gem-c-task-list-related__heading .gem-c-task-list-related__pretitle", text: 'Part of'
     assert_select this_link + "[href='/link1']", text: 'Link 1'
     assert_select this_link + "[data-track-category='tasklistPartOfClicked']"
     assert_select this_link + "[data-track-action='Part of']"
@@ -48,10 +48,10 @@ describe "Task List Related", type: :view do
   it "displays more than one link in a list" do
     render_component(links: two_links)
 
-    this_link = ".pub-c-task-list-related .pub-c-task-list-related__links .pub-c-task-list-related__link[href='/link2']"
+    this_link = ".gem-c-task-list-related .gem-c-task-list-related__links .gem-c-task-list-related__link[href='/link2']"
 
-    assert_select ".pub-c-task-list-related .pub-c-task-list-related__heading .pub-c-task-list-related__pretitle", text: 'Part of'
-    assert_select ".pub-c-task-list-related .pub-c-task-list-related__links .pub-c-task-list-related__link[href='/link1']", text: 'Link 1'
+    assert_select ".gem-c-task-list-related .gem-c-task-list-related__heading .gem-c-task-list-related__pretitle", text: 'Part of'
+    assert_select ".gem-c-task-list-related .gem-c-task-list-related__links .gem-c-task-list-related__link[href='/link1']", text: 'Link 1'
     assert_select this_link, text: 'Link 2'
     assert_select this_link + "[data-track-category='tasklistPartOfClicked']"
     assert_select this_link + "[data-track-action='Part of']"
@@ -63,7 +63,7 @@ describe "Task List Related", type: :view do
   it "shows alternative heading text" do
     render_component(links: one_link, pretitle: 'Moo')
 
-    assert_select ".pub-c-task-list-related__pretitle", text: 'Moo'
-    assert_select ".pub-c-task-list-related__link[data-track-action='Moo']"
+    assert_select ".gem-c-task-list-related__pretitle", text: 'Moo'
+    assert_select ".gem-c-task-list-related__link[data-track-action='Moo']"
   end
 end
