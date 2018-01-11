@@ -1,3 +1,7 @@
+# 4.1.0
+
+* Move error summary component into gem (PR #138)
+
 # 4.0.0
 
 * Namespace hosted components with `govuk_publishing_components` (PR #136)
