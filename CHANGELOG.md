@@ -1,3 +1,7 @@
+# Unreleased
+
+* Fix task list related namespace (PR #141)
+
 # 4.1.0
 
 * Move error summary component into gem (PR #138)
