@@ -699,8 +699,7 @@ examples:
                 contents: [
                   {
                     href: 'https://en.wikipedia.org/wiki/HDMI',
-                    text: 'Remove the Chromebit from HDMI 1 on the TV',
-                    active: true
+                    text: 'Remove the Chromebit from HDMI 1 on the TV'
                   }
                 ]
               }
@@ -743,28 +742,28 @@ examples:
                 style: 'required',
                 contents: [
                   {
-                    href: '',
-                    text: 'Ensure the catchbox transmitter is plugged in at the mains wall',
-                    active: true
+                    href: 'http://www.google.com',
+                    text: 'Ensure the catchbox transmitter is plugged in at the mains wall'
                   },
                   {
-                    href: '',
+                    href: 'http://www.google.com',
                     text: 'Turn on the transmitter and wait for the switch to blink green'
                   },
                   {
-                    href: '',
-                    text: 'Plug the transmitter USB cable into the facilitators laptop'
+                    href: 'http://www.google.com',
+                    text: 'Plug the transmitter USB cable into the facilitators laptop',
+                    active: true
                   },
                   {
-                    href: '',
+                    href: 'http://www.google.com',
                     text: 'Twist and pull the black piece of foam out of the catchbox'
                   },
                   {
-                    href: '',
+                    href: 'http://www.google.com',
                     text: 'Turn on the catchbox and wait for the LED to turn green'
                   },
                   {
-                    href: '',
+                    href: 'http://www.google.com',
                     text: 'Wait for the transmitter light to turn solid green'
                   }
                 ]
@@ -790,7 +789,7 @@ examples:
                     text: "Get annoyed when it doesn't work"
                   },
                   {
-                    href: '',
+                    href: 'http://www.google.com',
                     text: 'Try to find someone else who knows how to do it',
                     context: '1 to 10 minutes'
                   }
@@ -813,17 +812,15 @@ examples:
                 style: 'required',
                 contents: [
                   {
-                    href: '',
-                    text: 'Connect to standup hangout via the calendar invite',
-                    active: true
+                    href: 'http://www.google.com',
+                    text: 'Connect to standup hangout via the calendar invite'
                   },
                   {
                     text: 'or'
                   },
                   {
-                    href: '',
-                    text: 'Connect to standup hangout via the link in the team slack',
-                    active: true
+                    href: 'http://www.google.com',
+                    text: 'Connect to standup hangout via the link in the team slack'
                   }
                 ]
               },
@@ -836,19 +833,19 @@ examples:
                 style: 'required',
                 contents: [
                   {
-                    href: '',
+                    href: 'http://www.google.com',
                     text: 'Click the three dots in the bottom hand corner to open settings'
                   },
                   {
-                    href: '',
+                    href: 'http://www.google.com',
                     text: 'Set speaker to "Jabra"'
                   },
                   {
-                    href: '',
+                    href: 'http://www.google.com',
                     text: 'Set microphone to "C Media USB"'
                   },
                   {
-                    href: '',
+                    href: 'http://www.google.com',
                     text: 'Click "present to meeting"'
                   },
                 ]
@@ -887,12 +884,13 @@ examples:
     description: Designed to fit in the sidebar of a page. Note that the small version of the task list should not become smaller on mobile, and the large version on mobile should be the same size as the small version. This example is a copy of the one above for comparison.
     data:
       small: true
+      remember_last_step: true
       task_list_url: "/learn-to-setup-standup"
       highlight_group: 2
       groups: [
         [
           {
-            title: 'Get the TV ready.',
+            title: 'Get the TV ready (small)',
             contents: [
               {
                 type: 'paragraph',
@@ -904,15 +902,14 @@ examples:
                 contents: [
                   {
                     href: 'https://en.wikipedia.org/wiki/HDMI',
-                    text: 'Remove the Chromebit from HDMI 1 on the TV',
-                    active: true
+                    text: 'Remove the Chromebit from HDMI 1 on the TV'
                   }
                 ]
               }
             ]
           },
           {
-            title: 'Plug everything in.',
+            title: 'Plug everything in (small)',
             contents: [
               {
                 type: 'paragraph',
@@ -937,7 +934,7 @@ examples:
         ],
         [
           {
-            title: 'Configure the catchbox.',
+            title: 'Configure the catchbox (small)',
             contents: [
               {
                 type: 'paragraph',
@@ -948,28 +945,28 @@ examples:
                 style: 'required',
                 contents: [
                   {
-                    href: '',
-                    text: 'Ensure the catchbox transmitter is plugged in at the mains wall',
-                    active: true
+                    href: 'http://www.google.com',
+                    text: 'Ensure the catchbox transmitter is plugged in at the mains wall'
                   },
                   {
-                    href: '',
+                    href: 'http://www.google.com',
                     text: 'Turn on the transmitter and wait for the switch to blink green'
                   },
                   {
-                    href: '',
-                    text: 'Plug the transmitter USB cable into the facilitators laptop'
+                    href: 'http://www.google.com',
+                    text: 'Plug the transmitter USB cable into the facilitators laptop',
+                    active: true
                   },
                   {
-                    href: '',
+                    href: 'http://www.google.com',
                     text: 'Twist and pull the black piece of foam out of the catchbox'
                   },
                   {
-                    href: '',
+                    href: 'http://www.google.com',
                     text: 'Turn on the catchbox and wait for the LED to turn green'
                   },
                   {
-                    href: '',
+                    href: 'http://www.google.com',
                     text: 'Wait for the transmitter light to turn solid green'
                   }
                 ]
@@ -995,7 +992,7 @@ examples:
                     text: "Get annoyed when it doesn't work"
                   },
                   {
-                    href: '',
+                    href: 'http://www.google.com',
                     text: 'Try to find someone else who knows how to do it',
                     context: '1 to 10 minutes'
                   }
@@ -1006,7 +1003,7 @@ examples:
         ],
         [
           {
-            title: 'Join and configure the standup.',
+            title: 'Join and configure the standup (small)',
             show_help_link: true,
             contents: [
               {
@@ -1018,17 +1015,15 @@ examples:
                 style: 'required',
                 contents: [
                   {
-                    href: '',
-                    text: 'Connect to standup hangout via the calendar invite',
-                    active: true
+                    href: 'http://www.google.com',
+                    text: 'Connect to standup hangout via the calendar invite'
                   },
                   {
                     text: 'or'
                   },
                   {
-                    href: '',
-                    text: 'Connect to standup hangout via the link in the team slack',
-                    active: true
+                    href: 'http://www.google.com',
+                    text: 'Connect to standup hangout via the link in the team slack'
                   }
                 ]
               },
@@ -1041,19 +1036,19 @@ examples:
                 style: 'required',
                 contents: [
                   {
-                    href: '',
+                    href: 'http://www.google.com',
                     text: 'Click the three dots in the bottom hand corner to open settings'
                   },
                   {
-                    href: '',
+                    href: 'http://www.google.com',
                     text: 'Set speaker to "Jabra"'
                   },
                   {
-                    href: '',
+                    href: 'http://www.google.com',
                     text: 'Set microphone to "C Media USB"'
                   },
                   {
-                    href: '',
+                    href: 'http://www.google.com',
                     text: 'Click "present to meeting"'
                   },
                 ]
@@ -1063,7 +1058,7 @@ examples:
         ],
         [
           {
-            title: 'Clear up.',
+            title: 'Clear up (small)',
             contents: [
               {
                 type: 'paragraph',
@@ -1076,7 +1071,7 @@ examples:
             ]
           },
           {
-            title: 'Get someone else to clear up.',
+            title: 'Get someone else to clear up (small)',
             logic: 'or',
             optional: true,
             contents: [
