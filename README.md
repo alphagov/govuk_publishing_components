@@ -1,21 +1,35 @@
 # GOV.UK Publishing Components
 
-A gem to document components in GOV.UK frontend applications.
+A gem to document components in GOV.UK frontend applications and provide shared components to applications. Components should be added to this gem if they are required in more than one application, otherwise they should be added to that application.
 
 ![Screenshot of component guide](docs/screenshot.png)
 
 ## Write components in your application
 
-Components are packages of template, style, behaviour and documentation that live in your application.
+Components are packages of template, style, behaviour and documentation.
 
 A component must:
 * [meet the component principles](docs/component_principles.md)
 * [follow component conventions](docs/component_conventions.md)
 
-A lead paragraph component would be included in a template like this:
+Components are included in templates in slightly different ways depending on whether the component is in the application itself, in static, or in the gem.
+
+A component from the application would be included in a template like this:
 
 ```erb
-<%= render 'components/lead-paragraph', text: "A description is one or two leading sentences" %>
+<%= render "components/back-to-top", href: "#contents" %>
+```
+
+A component from static would be included like this:
+
+```erb
+<%= render "govuk_component/lead_paragraph", text: "A description is one or two leading sentences." %>
+```
+
+A component from the gem would be included like this:
+
+```erb
+<%= render "govuk_publishing_components/components/back_link", href: "#" %>
 ```
 
 ## Set up a component guide
@@ -154,6 +168,10 @@ class ComponentGuideTest < ActionDispatch::IntegrationTest
 end
 ```
 
+#### Test files
+
+All test files for components in the gem can be run with the command `bundle exec rake`.
+
 ### Exclude accessibility rules
 
 Sometimes you will have a component that will throw an error due to it being in isolation, for example radio buttons not being in a fieldset.
@@ -165,13 +183,27 @@ For an example of this check [test/.../docs/test-component-with-duplicate-ids.ym
 
 ## Component generator
 
-The gem includes a component generator to stub the minimal files required for a component.
+The gem includes a component generator to stub the minimal files required for a component. The following command will create a component in the application it is run in - it will not create a component if run within the gem.
 
 ```ruby
 rails generate govuk_publishing_components:component [component_name]
 ```
 
 This will create a template, scss file and yml documentation file for a new component. It will not create a test file as this cannot be reliably done automatically across applications, but a test file will be necessary.
+
+### Creating components in the gem
+
+Currently components in the gem must be manually created. File naming conventions should follow those in the [component conventions](docs/component_conventions.md), but a slightly different directory structure is required to avoid conflicts with components in applications.
+
+* Stylesheets go in `app/assets/stylesheets/govuk_publishing_components/components`
+* Print stylesheets go in `app/assets/stylesheets/govuk_publishing_components/components/print`
+* Scripts go in `app/assets/javascripts/govuk_publishing_components/components`
+* Templates go in `app/views/govuk_publishing_components/components`
+* Documentation goes in `app/views/govuk_publishing_components/components/docs`
+* Test files go in `spec/components`
+* Script test files go in `spec/javascripts/components`
+
+In addition, components in the gem can have helper files. Helper files go in `lib/govuk_publishing_components/components` and need to be required in `lib/govuk_publishing_components.rb`. Helper files should be structured as a class.
 
 ## Automated Testing
 ### Visual Diff Tool

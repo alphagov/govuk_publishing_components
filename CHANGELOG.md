@@ -1,5 +1,6 @@
 # Unreleased
 
+* Refactor task list component code (PR #143)
 * Fix task list related namespace (PR #141)
 
 # 4.1.0
