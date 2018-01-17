@@ -94,8 +94,9 @@
           if (headerIsOpen($(this))) {
             linkText = actions.hideLinkText;
           }
-
-          $(this).append('<span class="gem-c-task-list__toggle-link js-toggle-link">' + linkText + '</span>');
+          if (!$(this).find('.js-toggle-link').length) {
+            $(this).append('<span class="gem-c-task-list__toggle-link js-toggle-link">' + linkText + '</span>');
+          }
         });
       }
 
@@ -171,9 +172,6 @@
 
           var toggleClick = new StepToggleClick(event, stepView, $steps, tasklistTracker, $groups);
           toggleClick.track();
-
-          var toggleLink = $(this).find('.js-toggle-link');
-          toggleLink.text(toggleLink.text() == actions.showLinkText ? actions.hideLinkText : actions.showLinkText);
 
           setShowHideAllText();
         });
@@ -339,6 +337,7 @@
         $stepElement.toggleClass('step-is-shown', isShown);
         $stepContent.toggleClass('js-hidden', !isShown);
         $titleLink.attr("aria-expanded", isShown);
+        $stepElement.find('.js-toggle-link').text(isShown ? actions.hideLinkText : actions.showLinkText);
 
         if (shouldUpdateHash) {
           updateHash($stepElement);

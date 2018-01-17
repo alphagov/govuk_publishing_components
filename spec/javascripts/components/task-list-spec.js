@@ -14,7 +14,7 @@ describe('A tasklist module', function () {
             <div class="gem-c-task-list__header js-toggle-panel" data-position="1.1">\
               <h2 class="gem-c-task-list__title js-step-title">Topic Step One</h2>\
             </div>\
-            <div class="gem-c-task-list__panel js-panel" id="step-panel-10-0">\
+            <div class="gem-c-task-list__panel js-panel" id="step-panel-topic-step-one-1">\
               <ol class="gem-c-task-list__links" data-length="1">\
                 <li class="gem-c-task-list__link js-list-item">\
                   <a href="/link1" class="gem-c-task-list__link-item js-link" data-position="1.1.1">Link 1</a>\
@@ -26,7 +26,7 @@ describe('A tasklist module', function () {
             <div class="gem-c-task-list__header js-toggle-panel" data-position="1.2">\
               <h2 class="gem-c-task-list__title js-step-title">Topic Step Two</h2>\
             </div>\
-            <div class="gem-c-task-list__panel js-panel" id="step-panel-11-1">\
+            <div class="gem-c-task-list__panel js-panel" id="step-panel-topic-step-two-1">\
               <ol class="gem-c-task-list__links" data-length="2">\
                 <li class="gem-c-task-list__link gem-c-task-list__link--active js-list-item">\
                   <a href="/link2" class="gem-c-task-list__link-item js-link" data-position="1.2.1">Link 2</a>\
@@ -45,11 +45,11 @@ describe('A tasklist module', function () {
           <span class="gem-c-task-list__number">\
             <span class="visuallyhidden">Step </span>2\
           </span>\
-          <div class="gem-c-task-list__step js-step" id="topic-step-one" data-track-count="tasklistStep">\
+          <div class="gem-c-task-list__step js-step" id="topic-step-three" data-track-count="tasklistStep">\
             <div class="gem-c-task-list__header js-toggle-panel" data-position="2.1">\
               <h2 class="gem-c-task-list__title js-step-title">Topic Step Three</h2>\
             </div>\
-            <div class="gem-c-task-list__panel js-panel" id="step-panel-12-0">\
+            <div class="gem-c-task-list__panel js-panel" id="step-panel-topic-step-three-1">\
               <ol class="gem-c-task-list__links" data-length="5">\
                 <li class="gem-c-task-list__link gem-c-task-list__link--active js-list-item">\
                   <a href="/link4" class="gem-c-task-list__link-item js-link" data-position="2.1.1">Link 4</a>\
@@ -107,7 +107,7 @@ describe('A tasklist module', function () {
     // It has an aria-expanded false attribute as all steps are hidden
     expect($showHideAllButton).toHaveAttr("aria-expanded", "false");
     // It has an aria-controls attribute that includes all the step_content IDs
-    expect($showHideAllButton).toHaveAttr('aria-controls', 'step-panel-10-0');
+    expect($showHideAllButton).toHaveAttr('aria-controls', 'step-panel-topic-step-one-1');
   });
 
   it("has no steps which have an shown state", function () {
@@ -120,8 +120,8 @@ describe('A tasklist module', function () {
 
     expect($titleButton).toHaveClass('gem-c-task-list__button--title');
     expect($titleButton).toHaveAttr('aria-expanded', 'false');
-    expect($titleButton[0]).toHaveAttr('aria-controls', 'step-panel-10-0');
-    expect($titleButton[1]).toHaveAttr('aria-controls', 'step-panel-11-1');
+    expect($titleButton[0]).toHaveAttr('aria-controls', 'step-panel-topic-step-one-1');
+    expect($titleButton[1]).toHaveAttr('aria-controls', 'step-panel-topic-step-two-1');
   });
 
   it("ensures all step content is hidden", function () {
@@ -339,7 +339,7 @@ describe('A tasklist module', function () {
     });
   });
 
-  describe('When linking to a topic step', function () {
+  describe('when linking to a topic step', function () {
     beforeEach(function () {
       spyOn(GOVUK, 'getCurrentLocation').and.returnValue({
         hash: '#topic-step-one'
@@ -353,11 +353,17 @@ describe('A tasklist module', function () {
     it("opens the linked to topic step", function () {
       var $step = $element.find('#topic-step-one');
       expect($step).toHaveClass('step-is-shown');
+      expect($step.find('.js-panel')).not.toHaveClass('js-hidden');
     });
 
     it("leaves other steps hidden", function () {
       var $step = $element.find('#topic-step-two');
       expect($step).not.toHaveClass('step-is-shown');
+    });
+
+    it("sets the show/hide link text to 'hide'", function () {
+      var $step = $element.find('#topic-step-one');
+      expect($step.find('.js-toggle-link')).toHaveText("Hide");
     });
   });
 
