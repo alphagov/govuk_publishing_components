@@ -69,8 +69,7 @@ module GovukPublishingComponents
             class=\"gem-c-task-list__link-item js-link\"
             #{link_position}
             #{link_rel}>
-            #{link_text(link[:active], link[:text])}
-          </a>
+            #{link_text(link[:active], link[:text])}</a>
           #{create_context(link[:context])}".html_safe
         else
           link[:text]
