@@ -27,7 +27,7 @@
     var rememberShownStep = false;
     var taskListSize;
     var sessionStoreLink = 'govuk-task-list-active-link';
-    var activeLinkClass = 'gem-c-task-list__link-item--active';
+    var activeLinkClass = 'gem-c-task-list__link--active';
     var activeLinkHref = '#content';
 
     this.start = function ($element) {
@@ -210,11 +210,11 @@
 
       function setOnlyThisLinkActive(clicked) {
         $element.find('.' + activeLinkClass).removeClass(activeLinkClass);
-        clicked.addClass(activeLinkClass);
+        clicked.parent().addClass(activeLinkClass);
       }
 
       function ensureOnlyOneActiveLink() {
-        var $activeLinks = $element.find('.js-link.' + activeLinkClass);
+        var $activeLinks = $element.find('.js-list-item.' + activeLinkClass);
 
         if ($activeLinks.length <= 1) {
           return;
@@ -239,7 +239,7 @@
 
       function removeActiveStateFromAllButCurrent($links, current) {
         $links.each(function() {
-          if ($(this).data('position') !== current) {
+          if ($(this).find('.js-link').data('position') !== current) {
             $(this).removeClass(activeLinkClass);
           }
         });

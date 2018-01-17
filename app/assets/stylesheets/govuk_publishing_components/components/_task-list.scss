@@ -350,13 +350,13 @@ $top-border: solid 2px $grey-3;
   margin-left: $links-margin;
   list-style: disc;
 
-  .gem-c-task-list__link-item--active:before {
+  .gem-c-task-list__link--active:before {
     left: -($gutter + $gutter-half) - $links-margin;
   }
 
   .gem-c-task-list--large & {
     @include media(tablet) {
-      .gem-c-task-list__link-item--active:before {
+      .gem-c-task-list__link--active:before {
         left: -($gutter * 2) - $links-margin;
       }
     }
@@ -367,27 +367,8 @@ $top-border: solid 2px $grey-3;
   margin-bottom: 10px;
 }
 
-.gem-c-task-list__link-item {
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-.gem-c-task-list__link-item--active {
+.gem-c-task-list__link--active {
   position: relative;
-  color: $black;
-
-  &:visited,
-  &:active,
-  &:link {
-    color: $black;
-  }
-
-  &:focus {
-    outline: 0;
-  }
 
   &:before {
     @include box-sizing(border-box);
@@ -413,6 +394,24 @@ $top-border: solid 2px $grey-3;
       }
     }
   }
+
+  .gem-c-task-list__link-item {
+    color: $black;
+
+    &:visited,
+    &:active,
+    &:link {
+      color: $black;
+    }
+  }
+}
+
+.gem-c-task-list__link-item {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .gem-c-task-list__context {
@@ -420,7 +419,7 @@ $top-border: solid 2px $grey-3;
   color: $grey-1;
 
   &:before {
-    content: " \2013  ";
+    content: " \2013\00a0"; // dash followed by &nbsp;
   }
 }
 

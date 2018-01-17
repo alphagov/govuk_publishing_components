@@ -50,7 +50,7 @@ module GovukPublishingComponents
             concat(
               content_tag(
                 'li',
-                class: 'gem-c-task-list__link'
+                class: "gem-c-task-list__link js-list-item #{link_active(contents[:active])}"
               ) do
                 concat(create_list_item_content(contents))
               end
@@ -66,7 +66,7 @@ module GovukPublishingComponents
           href = link_href(link[:active], link[:href])
           link_rel = href.start_with?('http') ? 'rel=external' : ''
           "<a href=\"#{href}\"
-            class=\"gem-c-task-list__link-item js-link #{link_active(link[:active])}\"
+            class=\"gem-c-task-list__link-item js-link\"
             #{link_position}
             #{link_rel}>
             #{link_text(link[:active], link[:text])}
@@ -102,7 +102,7 @@ module GovukPublishingComponents
       end
 
       def link_active(active)
-        'gem-c-task-list__link-item--active' if active
+        'gem-c-task-list__link--active' if active
       end
     end
   end

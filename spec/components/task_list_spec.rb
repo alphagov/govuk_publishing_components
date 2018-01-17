@@ -274,7 +274,7 @@ describe "Task List", type: :view do
     render_component(groups: tasklist, highlight_group: 1)
 
     assert_select group1 + ".gem-c-task-list__group--active"
-    assert_select group2step1 + " .gem-c-task-list__link-item.gem-c-task-list__link-item--active[href='#content']", text: "You are currently viewing: Link 2.1.2"
+    assert_select group2step1 + " .gem-c-task-list__link.gem-c-task-list__link--active .gem-c-task-list__link-item[href='#content']", text: "You are currently viewing: Link 2.1.2"
   end
 
   it "renders a small tasklist" do
