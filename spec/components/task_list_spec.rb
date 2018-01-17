@@ -218,8 +218,8 @@ describe "Task List", type: :view do
 
     assert_select group1step1 + " .gem-c-task-list__link-item[href='/link1'][data-position='1.1.1']", text: "Link 1.1.1"
     assert_select group1step1 + " .gem-c-task-list__link-item[href='/link1'][rel='external']", false
-    assert_select group1step1 + " .gem-c-task-list__link-item[href='http://www.gov.uk'][rel='external'][data-position='1.1.2']", text: "Link 1.1.2"
-    assert_select group1step1 + " .gem-c-task-list__context", text: "£0 to £300"
+    assert_select group1step1 + " .gem-c-task-list__link-item[href='http://www.gov.uk'][rel='external'][data-position='1.1.2']", text: "Link 1.1.2 £0 to £300"
+    assert_select group1step1 + " .gem-c-task-list__link-item[href='http://www.gov.uk'] .gem-c-task-list__context", text: "£0 to £300"
     assert_select group1step1 + " .gem-c-task-list__link-item[href='/link3'][data-position='1.1.3']", text: "Link 1.1.3"
     assert_select group1step1 + " .gem-c-task-list__link-item[href='/link4'][data-position='1.1.4']", text: "Link 1.1.4"
     assert_select group2step2 + " .gem-c-task-list__link-item[href='/link8'][data-position='2.2.2']", text: "Link 2.2.2"

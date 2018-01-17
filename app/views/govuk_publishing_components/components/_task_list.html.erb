@@ -35,7 +35,7 @@
           <% group.each_with_index do |step, step_index| %>
             <%
               step_count += 1
-              id = generate_task_list_id(step[:title])
+              id = TaskListHelper.new.generate_task_list_id(step[:title])
 
               logic = "and"
               logic = step[:logic] if ["and", "or"].include? step[:logic]
@@ -68,7 +68,7 @@
                   options[:link_index] = 0
                 %>
                 <% step[:contents].each do |element| %>
-                  <%= render_task_list_element(element, options) %>
+                  <%= TaskListHelper.new.render_task_list_element(element, options) %>
                   <%
                     if element[:type] == 'list'
                       options[:link_index] += element[:contents].length
