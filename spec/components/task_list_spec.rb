@@ -23,12 +23,12 @@ describe "Task List", type: :view do
               contents: [
                 {
                   href: '/link1',
-                  text: 'Link 1',
+                  text: 'Link 1.1.1',
                 },
                 {
                   href: 'http://www.gov.uk',
-                  text: 'Link 2',
-                  context: '&pound;0 to &pound;300'
+                  text: 'Link 1.1.2',
+                  context: '£0 to £300'
                 },
               ]
             },
@@ -39,6 +39,20 @@ describe "Task List", type: :view do
             {
               type: 'paragraph',
               text: 'This paragraph is inside a required substep'
+            },
+            {
+              type: 'list',
+              style: 'required',
+              contents: [
+                {
+                  href: '/link3',
+                  text: 'Link 1.1.3',
+                },
+                {
+                  href: '/link4',
+                  text: 'Link 1.1.4'
+                }
+              ]
             },
           ]
         },
@@ -66,13 +80,13 @@ describe "Task List", type: :view do
               style: 'choice',
               contents: [
                 {
-                  href: '/link3',
-                  text: 'Link 3',
+                  href: '/link5',
+                  text: 'Link 2.1.1',
                 },
                 {
-                  href: '/link4',
+                  href: '/link6',
                   active: true,
-                  text: 'Link 4',
+                  text: 'Link 2.1.2',
                 },
               ]
             },
@@ -98,21 +112,30 @@ describe "Task List", type: :view do
               type: 'list',
               contents: [
                 {
-                  href: '/link5',
-                  text: 'Link 5'
+                  href: '/link7',
+                  text: 'Link 2.2.1'
                 },
                 {
                   text: 'or'
                 },
                 {
-                  href: '/link6',
-                  text: 'Link 6'
+                  href: '/link8',
+                  text: 'Link 2.2.2'
                 }
               ]
             },
             {
               type: 'heading',
               text: 'This is a heading'
+            }
+          ]
+        },
+        {
+          title: 'Group 2 step 3?"`_!',
+          contents: [
+            {
+              type: 'paragraph',
+              text: 'test'
             }
           ]
         }
@@ -176,23 +199,38 @@ describe "Task List", type: :view do
     assert_select ".gem-c-task-list[data-remember]"
   end
 
-  it "renders links" do
+  it "generates IDs for steps correctly" do
     render_component(groups: tasklist)
 
-    assert_select group1step1 + " .gem-c-task-list__link-item[href='/link1'][data-position='1.1.1']", text: "Link 1"
-    assert_select group1step1 + " .gem-c-task-list__link-item[href='/link1'][rel='external']", false
-    assert_select group1step1 + " .gem-c-task-list__link-item[href='http://www.gov.uk'][rel='external'][data-position='1.1.2']", text: "Link 2"
-    assert_select group1step1 + " .gem-c-task-list__context", text: "&pound;0 to &pound;300"
+    assert_select group2step2 + " #step-panel-group-2-step-2-2.gem-c-task-list__panel"
+    assert_select group2 + " .gem-c-task-list__step:nth-of-type(3) #step-panel-group-2-step-3-3.gem-c-task-list__panel"
+  end
 
-    assert_select group2step1 + " .gem-c-task-list__link-item[href='/link3'][data-position='2.1.1']", text: "Link 3"
+  it "renders correct list elements and includes length of lists" do
+    render_component(groups: tasklist)
+
+    assert_select group2step1 + " ul.gem-c-task-list__links--choice[data-length='2']"
+    assert_select group2step2 + " ol.gem-c-task-list__links[data-length='3']"
+  end
+
+  it "renders links and link attributes correctly" do
+    render_component(groups: tasklist)
+
+    assert_select group1step1 + " .gem-c-task-list__link-item[href='/link1'][data-position='1.1.1']", text: "Link 1.1.1"
+    assert_select group1step1 + " .gem-c-task-list__link-item[href='/link1'][rel='external']", false
+    assert_select group1step1 + " .gem-c-task-list__link-item[href='http://www.gov.uk'][rel='external'][data-position='1.1.2']", text: "Link 1.1.2 £0 to £300"
+    assert_select group1step1 + " .gem-c-task-list__link-item[href='http://www.gov.uk'] .gem-c-task-list__context", text: "£0 to £300"
+    assert_select group1step1 + " .gem-c-task-list__link-item[href='/link3'][data-position='1.1.3']", text: "Link 1.1.3"
+    assert_select group1step1 + " .gem-c-task-list__link-item[href='/link4'][data-position='1.1.4']", text: "Link 1.1.4"
+    assert_select group2step2 + " .gem-c-task-list__link-item[href='/link8'][data-position='2.2.2']", text: "Link 2.2.2"
   end
 
   it "renders links without hrefs" do
     render_component(groups: tasklist)
 
-    assert_select group2step2 + " .gem-c-task-list__link .gem-c-task-list__link-item[href='/link5'][data-position='2.2.1']", text: "Link 5"
+    assert_select group2step2 + " .gem-c-task-list__link .gem-c-task-list__link-item[href='/link7'][data-position='2.2.1']", text: "Link 2.2.1"
     assert_select group2step2 + " .gem-c-task-list__link", text: "or"
-    assert_select group2step2 + " .gem-c-task-list__link .gem-c-task-list__link-item[href='/link6'][data-position='2.2.2']", text: "Link 6"
+    assert_select group2step2 + " .gem-c-task-list__link .gem-c-task-list__link-item[href='/link8'][data-position='2.2.2']", text: "Link 2.2.2"
   end
 
   it "renders optional steps, sub steps and optional sub steps" do
@@ -236,7 +274,7 @@ describe "Task List", type: :view do
     render_component(groups: tasklist, highlight_group: 1)
 
     assert_select group1 + ".gem-c-task-list__group--active"
-    assert_select group2step1 + " .gem-c-task-list__link-item.gem-c-task-list__link-item--active[href='#content']", text: "You are currently viewing: Link 4"
+    assert_select group2step1 + " .gem-c-task-list__link.gem-c-task-list__link--active .gem-c-task-list__link-item[href='#content']", text: "You are currently viewing: Link 2.1.2"
   end
 
   it "renders a small tasklist" do

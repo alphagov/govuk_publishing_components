@@ -27,7 +27,7 @@
     var rememberShownStep = false;
     var taskListSize;
     var sessionStoreLink = 'govuk-task-list-active-link';
-    var activeLinkClass = 'gem-c-task-list__link-item--active';
+    var activeLinkClass = 'gem-c-task-list__link--active';
     var activeLinkHref = '#content';
 
     this.start = function ($element) {
@@ -94,8 +94,9 @@
           if (headerIsOpen($(this))) {
             linkText = actions.hideLinkText;
           }
-
-          $(this).append('<span class="gem-c-task-list__toggle-link js-toggle-link">' + linkText + '</span>');
+          if (!$(this).find('.js-toggle-link').length) {
+            $(this).append('<span class="gem-c-task-list__toggle-link js-toggle-link">' + linkText + '</span>');
+          }
         });
       }
 
@@ -172,9 +173,6 @@
           var toggleClick = new StepToggleClick(event, stepView, $steps, tasklistTracker, $groups);
           toggleClick.track();
 
-          var toggleLink = $(this).find('.js-toggle-link');
-          toggleLink.text(toggleLink.text() == actions.showLinkText ? actions.hideLinkText : actions.showLinkText);
-
           setShowHideAllText();
         });
       }
@@ -210,11 +208,11 @@
 
       function setOnlyThisLinkActive(clicked) {
         $element.find('.' + activeLinkClass).removeClass(activeLinkClass);
-        clicked.addClass(activeLinkClass);
+        clicked.parent().addClass(activeLinkClass);
       }
 
       function ensureOnlyOneActiveLink() {
-        var $activeLinks = $element.find('.js-link.' + activeLinkClass);
+        var $activeLinks = $element.find('.js-list-item.' + activeLinkClass);
 
         if ($activeLinks.length <= 1) {
           return;
@@ -239,7 +237,7 @@
 
       function removeActiveStateFromAllButCurrent($links, current) {
         $links.each(function() {
-          if ($(this).data('position') !== current) {
+          if ($(this).find('.js-link').data('position') !== current) {
             $(this).removeClass(activeLinkClass);
           }
         });
@@ -339,6 +337,7 @@
         $stepElement.toggleClass('step-is-shown', isShown);
         $stepContent.toggleClass('js-hidden', !isShown);
         $titleLink.attr("aria-expanded", isShown);
+        $stepElement.find('.js-toggle-link').text(isShown ? actions.hideLinkText : actions.showLinkText);
 
         if (shouldUpdateHash) {
           updateHash($stepElement);
