@@ -1,7 +1,14 @@
 {
   "name": "govuk_publishing_components",
   "scripts": {},
-  "env": {},
+  "env": {
+    "GOVUK_APP_DOMAIN": {
+      "value": "www.gov.uk"
+    },
+    "PLEK_SERVICE_STATIC_URI": {
+      "value": "assets.digital.cabinet-office.gov.uk"
+    }
+  },
   "formation": {},
   "addons": [],
   "buildpacks": []
