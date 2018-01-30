@@ -1,5 +1,7 @@
-require 'rspec/core/rake_task'
-RSpec::Core::RakeTask.new(:spec)
+if defined?(RSpec)
+  require 'rspec/core/rake_task'
+  RSpec::Core::RakeTask.new(:spec)
+end
 
 APP_RAKEFILE = File.expand_path("../spec/dummy/Rakefile", __FILE__)
 

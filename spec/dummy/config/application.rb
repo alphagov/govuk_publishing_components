@@ -6,7 +6,12 @@ require 'action_mailer/railtie'
 require 'rails/test_unit/railtie'
 require 'sprockets/railtie'
 # Require jasmine at runtime allow the app:jasmine:ci task to build correctly
-require 'jasmine'
+
+begin
+  require 'jasmine'
+rescue LoadError
+  puts "Running in production mode"
+end
 
 Bundler.require(*Rails.groups)
 require "govuk_publishing_components"

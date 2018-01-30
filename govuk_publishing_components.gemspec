@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency "govuk_frontend_toolkit"
   s.add_dependency "govspeak", ">= 5.0.3"
   s.add_dependency "rouge"
+  s.add_dependency "rake"
 
   s.add_development_dependency "govuk-lint", "~> 3.3"
   s.add_development_dependency "rspec-rails", "~> 3.6"
