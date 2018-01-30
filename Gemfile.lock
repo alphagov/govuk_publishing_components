@@ -5,6 +5,7 @@ PATH
       govspeak (>= 5.0.3)
       govuk_frontend_toolkit
       rails (>= 5.0.0.1)
+      rake
       rouge
       sass-rails (>= 5.0.4)
       slimmer (>= 11.1.0)
