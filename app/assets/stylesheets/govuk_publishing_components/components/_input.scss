@@ -1,25 +1,3 @@
-// Forked from GOV.UK Frontend, namespace changed to ensure no conflicts.
-
-$app-spacing-scale-0: 0;
-$app-spacing-scale-1: 5px;
-$app-spacing-scale-2: 10px;
-$app-spacing-scale-3: 15px;
-$app-spacing-scale-4: 20px;
-$app-spacing-scale-5: 30px;
-$app-spacing-scale-6: 40px;
-$app-spacing-scale-7: 50px;
-$app-spacing-scale-8: 60px;
-
-// Border widths
-$app-border-width-form-element: 2px;
-
-// Focus
-$app-focus-width: 3px;
-$app-focus-colour: $focus-colour;
-
-$app-error-colour: $red;
-$app-border-width-error: 4px;
-
 .gem-c-input {
   @include core-19;
 
@@ -29,10 +7,10 @@ $app-border-width-error: 4px;
   margin-top: 0;
   margin-bottom: 20px;
 
-  padding: $app-spacing-scale-1;
+  padding: $gem-spacing-scale-1;
   // setting any background-color makes text invisible when changing colours to dark backgrounds in Firefox (https://bugzilla.mozilla.org/show_bug.cgi?id=1335476)
   // as background-color and color need to always be set together, color should not be set either
-  border: $app-border-width-form-element solid;
+  border: $gem-border-width-form-element solid;
   border-radius: 0;
 
   // Disable inner shadow and remove rounded corners
@@ -46,16 +24,16 @@ $app-border-width-error: 4px;
 }
 
 .gem-c-input:focus {
-  outline: $app-focus-width solid $app-focus-colour;
+  outline: $gem-focus-width solid $gem-focus-colour;
 }
 
 .gem-c-input--error {
-  border: $app-border-width-error solid $app-error-colour;
+  border: $gem-border-width-error solid $gem-error-colour;
 }
 
 // Replace this with the error message component.
 .gem-c-input__label-error {
   font-weight: bold;
-  color: $app-error-colour;
+  color: $gem-error-colour;
   padding-top: 4px;
 }
