@@ -42,7 +42,6 @@
 
       rememberShownStep = !!$element.filter('[data-remember]').length;
       taskListSize = $element.hasClass('gem-c-task-list--large') ? 'Big' : 'Small';
-      var $groups = $element.find('.gem-c-task-list__group');
       var $steps = $element.find('.js-step');
       var $stepHeaders = $element.find('.js-toggle-panel');
       var totalSteps = $element.find('.js-panel').length;
@@ -170,7 +169,7 @@
           var stepView = new StepView($(this).closest('.js-step'));
           stepView.toggle();
 
-          var toggleClick = new StepToggleClick(event, stepView, $steps, tasklistTracker, $groups);
+          var toggleClick = new StepToggleClick(event, stepView, $steps, tasklistTracker);
           toggleClick.track();
 
           setShowHideAllText();
@@ -224,11 +223,11 @@
           removeActiveStateFromAllButCurrent($activeLinks, lastClicked);
           removeFromSessionStorage(sessionStoreLink);
         } else {
-          var activeLinkInActiveGroup = $element.find('.gem-c-task-list__group--active').find('.' + activeLinkClass).first();
+          var activeLinkInActiveStep = $element.find('.gem-c-task-list__step--active').find('.' + activeLinkClass).first();
 
-          if (activeLinkInActiveGroup.length) {
+          if (activeLinkInActiveStep.length) {
             $activeLinks.removeClass(activeLinkClass);
-            activeLinkInActiveGroup.addClass(activeLinkClass);
+            activeLinkInActiveStep.addClass(activeLinkClass);
           } else {
             $activeLinks.slice(1).removeClass(activeLinkClass);
           }
@@ -237,7 +236,7 @@
 
       function removeActiveStateFromAllButCurrent($links, current) {
         $links.each(function() {
-          if ($(this).find('.js-link').data('position') !== current) {
+          if ($(this).find('.js-link').data('position').toString() !== current.toString()) {
             $(this).removeClass(activeLinkClass);
           }
         });
@@ -377,11 +376,9 @@
       history.replaceState({}, '', newLocation);
     }
 
-    function StepToggleClick(event, stepView, $steps, tasklistTracker, $groups) {
+    function StepToggleClick(event, stepView, $steps, tasklistTracker) {
       this.track = trackClick;
       var $target = $(event.target);
-      var $thisGroup = stepView.element.closest('.gem-c-task-list__group');
-      var $thisGroupSteps = $thisGroup.find('.gem-c-task-list__step');
 
       function trackClick() {
         var tracking_options = {label: trackingLabel(), dimension28: stepView.numberOfContentItems().toString()}
@@ -404,7 +401,7 @@
         return $target.closest('.js-toggle-panel').attr('data-position') + ' - ' + stepView.title + ' - ' + locateClickElement() + ": " + taskListSize;
       }
 
-      // returns index of the clicked step in the overall number of accordion steps, regardless of how many per group
+      // returns index of the clicked step in the overall number of steps
       function stepIndex() {
         return $steps.index(stepView.element) + 1;
       }

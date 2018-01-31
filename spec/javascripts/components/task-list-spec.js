@@ -5,69 +5,65 @@ describe('A tasklist module', function () {
   var tasklist;
   var html = '\
     <div data-module="gemtasklist" class="gem-c-task-list js-hidden">\
-      <ol class="gem-c-task-list__groups">\
-        <li class="gem-c-task-list__group">\
+      <ol class="gem-c-task-list__steps">\
+        <li class="gem-c-task-list__step js-step" id="topic-step-one" data-track-count="tasklistStep">\
           <span class="gem-c-task-list__number">\
             <span class="visuallyhidden">Step </span>1\
           </span>\
-          <div class="gem-c-task-list__step js-step" id="topic-step-one" data-track-count="tasklistStep">\
-            <div class="gem-c-task-list__header js-toggle-panel" data-position="1.1">\
-              <h2 class="gem-c-task-list__title js-step-title">Topic Step One</h2>\
-            </div>\
-            <div class="gem-c-task-list__panel js-panel" id="step-panel-topic-step-one-1">\
-              <ol class="gem-c-task-list__links" data-length="1">\
-                <li class="gem-c-task-list__link js-list-item">\
-                  <a href="/link1" class="gem-c-task-list__link-item js-link" data-position="1.1.1">Link 1</a>\
-                </li>\
-              </ol>\
-            </div>\
+          <div class="gem-c-task-list__header js-toggle-panel" data-position="1">\
+            <h2 class="gem-c-task-list__title js-step-title">Topic Step One</h2>\
           </div>\
-          <div class="gem-c-task-list__step js-step" id="topic-step-two" data-track-count="tasklistStep">\
-            <div class="gem-c-task-list__header js-toggle-panel" data-position="1.2">\
-              <h2 class="gem-c-task-list__title js-step-title">Topic Step Two</h2>\
-            </div>\
-            <div class="gem-c-task-list__panel js-panel" id="step-panel-topic-step-two-1">\
-              <ol class="gem-c-task-list__links" data-length="2">\
-                <li class="gem-c-task-list__link gem-c-task-list__link--active js-list-item">\
-                  <a href="/link2" class="gem-c-task-list__link-item js-link" data-position="1.2.1">Link 2</a>\
-                </li>\
-                <li class="gem-c-task-list__link js-list-item">\
-                  <a href="/link3" class="gem-c-task-list__link-item js-link" data-position="1.2.2">Link 3</a>\
-                </li>\
-              </ol>\
-              <div class="gem-c-task-list__help">\
-                <a href="/learn#step-one" class="gem-c-task-list__help-link js-link" data-position="get-help">Get help</a>\
-              </div>\
+          <div class="gem-c-task-list__panel js-panel" id="step-panel-topic-step-one-1">\
+            <ol class="gem-c-task-list__links" data-length="1">\
+              <li class="gem-c-task-list__link js-list-item">\
+                <a href="/link1" class="gem-c-task-list__link-item js-link" data-position="1.1">Link 1</a>\
+              </li>\
+            </ol>\
+          </div>\
+        </li>\
+        <li class="gem-c-task-list__step js-step" id="topic-step-two" data-track-count="tasklistStep">\
+          <div class="gem-c-task-list__header js-toggle-panel" data-position="2">\
+            <h2 class="gem-c-task-list__title js-step-title">Topic Step Two</h2>\
+          </div>\
+          <div class="gem-c-task-list__panel js-panel" id="step-panel-topic-step-two-1">\
+            <ol class="gem-c-task-list__links" data-length="2">\
+              <li class="gem-c-task-list__link gem-c-task-list__link--active js-list-item">\
+                <a href="/link2" class="gem-c-task-list__link-item js-link" data-position="2.1">Link 2</a>\
+              </li>\
+              <li class="gem-c-task-list__link js-list-item">\
+                <a href="/link3" class="gem-c-task-list__link-item js-link" data-position="2.2">Link 3</a>\
+              </li>\
+            </ol>\
+            <div class="gem-c-task-list__help">\
+              <a href="/learn#step-one" class="gem-c-task-list__help-link js-link" data-position="get-help">Get help</a>\
             </div>\
           </div>\
         </li>\
-        <li class="gem-c-task-list__group gem-c-task-list__group--active">\
+        <li class="gem-c-task-list__step gem-c-task-list__step--active js-step" id="topic-step-three" data-track-count="tasklistStep">\
           <span class="gem-c-task-list__number">\
             <span class="visuallyhidden">Step </span>2\
           </span>\
-          <div class="gem-c-task-list__step js-step" id="topic-step-three" data-track-count="tasklistStep">\
-            <div class="gem-c-task-list__header js-toggle-panel" data-position="2.1">\
-              <h2 class="gem-c-task-list__title js-step-title">Topic Step Three</h2>\
-            </div>\
-            <div class="gem-c-task-list__panel js-panel" id="step-panel-topic-step-three-1">\
-              <ol class="gem-c-task-list__links" data-length="5">\
-                <li class="gem-c-task-list__link gem-c-task-list__link--active js-list-item">\
-                  <a href="/link4" class="gem-c-task-list__link-item js-link" data-position="2.1.1">Link 4</a>\
-                </li>\
-                <li class="gem-c-task-list__link gem-c-task-list__link--active js-list-item">\
-                  <a href="/link5" class="gem-c-task-list__link-item js-link" data-position="2.1.2">Link 5</a>\
-                </li>\
-                <li class="gem-c-task-list__link js-list-item">\
-                  <a href="http://www.gov.uk" class="gem-c-task-list__link-item js-link" data-position="2.1.3" rel="external">Link 6</a>\
-                </li>\
-                <li class="gem-c-task-list__link gem-c-task-list__link--active js-list-item">\
-                  <a href="#content" class="gem-c-task-list__link-item js-link" data-position="2.1.4">Link 7</a>\
-                </li>\
-                <li class="gem-c-task-list__link gem-c-task-list__link--active js-list-item">\
-                  <a href="#content" class="gem-c-task-list__link-item js-link" data-position="2.1.5">Link 8</a>\
-                </li>\
-              </ol>\
-            </div>\
+          <div class="gem-c-task-list__header js-toggle-panel" data-position="3">\
+            <h2 class="gem-c-task-list__title js-step-title">Topic Step Three</h2>\
+          </div>\
+          <div class="gem-c-task-list__panel js-panel" id="step-panel-topic-step-three-1">\
+            <ol class="gem-c-task-list__links" data-length="5">\
+              <li class="gem-c-task-list__link gem-c-task-list__link--active js-list-item">\
+                <a href="/link4" class="gem-c-task-list__link-item js-link" data-position="3.1">Link 4</a>\
+              </li>\
+              <li class="gem-c-task-list__link gem-c-task-list__link--active js-list-item">\
+                <a href="/link5" class="gem-c-task-list__link-item js-link" data-position="3.2">Link 5</a>\
+              </li>\
+              <li class="gem-c-task-list__link js-list-item">\
+                <a href="http://www.gov.uk" class="gem-c-task-list__link-item js-link" data-position="3.3" rel="external">Link 6</a>\
+              </li>\
+              <li class="gem-c-task-list__link gem-c-task-list__link--active js-list-item">\
+                <a href="#content" class="gem-c-task-list__link-item js-link" data-position="3.4">Link 7</a>\
+              </li>\
+              <li class="gem-c-task-list__link gem-c-task-list__link--active js-list-item">\
+                <a href="#content" class="gem-c-task-list__link-item js-link" data-position="3.5">Link 8</a>\
+              </li>\
+            </ol>\
           </div>\
         </li>\
       </ol>\
@@ -215,7 +211,7 @@ describe('A tasklist module', function () {
       $stepLink.click();
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'tasklistShown', {
-        label: '1.1 - Topic Step One - Heading click: Small',
+        label: '1 - Topic Step One - Heading click: Small',
         dimension26: expectedTasklistStepCount.toString(),
         dimension27: expectedTasklistLinkCount.toString(),
         dimension28: expectedTasklistContentCount.toString()
@@ -233,7 +229,7 @@ describe('A tasklist module', function () {
       $stepIcon.click();
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'tasklistShown', {
-        label: '1.1 - Topic Step One - Plus click: Small',
+        label: '1 - Topic Step One - Plus click: Small',
         dimension26: expectedTasklistStepCount.toString(),
         dimension27: expectedTasklistLinkCount.toString(),
         dimension28: expectedTasklistContentCount.toString()
@@ -251,7 +247,7 @@ describe('A tasklist module', function () {
       $stepHeader.click();
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'tasklistShown', {
-        label: '1.1 - Topic Step One - Elsewhere click: Small',
+        label: '1 - Topic Step One - Elsewhere click: Small',
         dimension26: expectedTasklistStepCount.toString(),
         dimension27: expectedTasklistLinkCount.toString(),
         dimension28: expectedTasklistContentCount.toString()
@@ -292,7 +288,7 @@ describe('A tasklist module', function () {
       $stepLink.click();
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'tasklistHidden', {
-        label: '1.1 - Topic Step One - Heading click: Small',
+        label: '1 - Topic Step One - Heading click: Small',
         dimension26: expectedTasklistStepCount.toString(),
         dimension27: expectedTasklistLinkCount.toString(),
         dimension28: expectedTasklistContentCount.toString()
@@ -311,7 +307,7 @@ describe('A tasklist module', function () {
       $stepIcon.click();
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'tasklistHidden', {
-        label: '1.1 - Topic Step One - Minus click: Small',
+        label: '1 - Topic Step One - Minus click: Small',
         dimension26: expectedTasklistStepCount.toString(),
         dimension27: expectedTasklistLinkCount.toString(),
         dimension28: expectedTasklistContentCount.toString()
@@ -331,7 +327,7 @@ describe('A tasklist module', function () {
       $stepHeader.click();
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'tasklistHidden', {
-        label: '1.1 - Topic Step One - Elsewhere click: Small',
+        label: '1 - Topic Step One - Elsewhere click: Small',
         dimension26: expectedTasklistStepCount.toString(),
         dimension27: expectedTasklistLinkCount.toString(),
         dimension28: expectedTasklistContentCount.toString()
@@ -386,7 +382,7 @@ describe('A tasklist module', function () {
       $stepLink.click();
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'tasklistShown', {
-        label: '1.1 - Topic Step One - Heading click: Big',
+        label: '1 - Topic Step One - Heading click: Big',
         dimension26: expectedTasklistStepCount.toString(),
         dimension27: expectedTasklistLinkCount.toString(),
         dimension28: expectedTasklistContentCount.toString()
@@ -404,7 +400,7 @@ describe('A tasklist module', function () {
       $stepIcon.click();
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'tasklistShown', {
-        label: '1.1 - Topic Step One - Plus click: Big',
+        label: '1 - Topic Step One - Plus click: Big',
         dimension26: expectedTasklistStepCount.toString(),
         dimension27: expectedTasklistLinkCount.toString(),
         dimension28: expectedTasklistContentCount.toString()
@@ -422,7 +418,7 @@ describe('A tasklist module', function () {
       $stepHeader.click();
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'tasklistShown', {
-        label: '1.1 - Topic Step One - Elsewhere click: Big',
+        label: '1 - Topic Step One - Elsewhere click: Big',
         dimension26: expectedTasklistStepCount.toString(),
         dimension27: expectedTasklistLinkCount.toString(),
         dimension28: expectedTasklistContentCount.toString()
@@ -441,7 +437,7 @@ describe('A tasklist module', function () {
       $stepLink.click();
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'tasklistHidden', {
-        label: '1.1 - Topic Step One - Heading click: Big',
+        label: '1 - Topic Step One - Heading click: Big',
         dimension26: expectedTasklistStepCount.toString(),
         dimension27: expectedTasklistLinkCount.toString(),
         dimension28: expectedTasklistContentCount.toString()
@@ -460,7 +456,7 @@ describe('A tasklist module', function () {
       $stepIcon.click();
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'tasklistHidden', {
-        label: '1.1 - Topic Step One - Minus click: Big',
+        label: '1 - Topic Step One - Minus click: Big',
         dimension26: expectedTasklistStepCount.toString(),
         dimension27: expectedTasklistLinkCount.toString(),
         dimension28: expectedTasklistContentCount.toString()
@@ -480,7 +476,7 @@ describe('A tasklist module', function () {
       $stepHeader.click();
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'tasklistHidden', {
-        label: '1.1 - Topic Step One - Elsewhere click: Big',
+        label: '1 - Topic Step One - Elsewhere click: Big',
         dimension26: expectedTasklistStepCount.toString(),
         dimension27: expectedTasklistLinkCount.toString(),
         dimension28: expectedTasklistContentCount.toString()
@@ -526,7 +522,7 @@ describe('A tasklist module', function () {
       spyOn(GOVUK.analytics, 'trackEvent');
       $element.find('.js-link').first().click();
 
-      expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('taskAccordionLinkClicked', '1.1.1', {
+      expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('taskAccordionLinkClicked', '1.1', {
         label: '/link1 : Big',
         dimension26: expectedTasklistStepCount.toString(),
         dimension27: expectedTasklistLinkCount.toString(),
@@ -562,7 +558,7 @@ describe('A tasklist module', function () {
     var $panelLink = $element.find('.js-link').first();
     $panelLink.click();
 
-    expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('taskAccordionLinkClicked', '1.1.1', {
+    expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('taskAccordionLinkClicked', '1.1', {
       label: '/link1 : Small',
       dimension26: expectedTasklistStepCount.toString(),
       dimension27: expectedTasklistLinkCount.toString(),
@@ -595,33 +591,33 @@ describe('A tasklist module', function () {
     });
 
     it("puts a clicked link in session storage", function () {
-      $element.find('.js-link[data-position="2.1.2"]').click();
-      expect(sessionStorage.getItem('govuk-task-list-active-link')).toBe('2.1.2');
+      $element.find('.js-link[data-position="3.1"]').click();
+      expect(sessionStorage.getItem('govuk-task-list-active-link')).toBe('3.1');
     });
 
     it("does not put an external clicked link in session storage", function () {
-      $element.find('.js-link[data-position="2.1.3"]').click();
+      $element.find('.js-link[data-position="3.3"]').click();
       expect(sessionStorage.getItem('govuk-task-list-active-link')).toBe(null);
     });
 
-    it("highlights the first active link in the first active group if no sessionStorage value is set", function () {
+    it("highlights the first active link in the first active step if no sessionStorage value is set", function () {
       expect(sessionStorage.getItem('govuk-task-list-active-link')).toBe(null);
-      expect($element.find('.js-link[data-position="2.1.1"]').closest('.js-list-item')).toHaveClass('gem-c-task-list__link--active');
+      expect($element.find('.js-link[data-position="3.1"]').closest('.js-list-item')).toHaveClass('gem-c-task-list__link--active');
       expect($element.find(('.gem-c-task-list__link--active')).length).toBe(1);
     });
 
     it("highlights a clicked #content link and removes other highlights", function () {
       expect($element.find(('.gem-c-task-list__link--active')).length).toBe(1);
 
-      var $firstLink = $element.find('.js-link[data-position="2.1.4"]');
+      var $firstLink = $element.find('.js-link[data-position="3.4"]');
       $firstLink.click();
-      expect(sessionStorage.getItem('govuk-task-list-active-link')).toBe('2.1.4');
+      expect(sessionStorage.getItem('govuk-task-list-active-link')).toBe('3.4');
       expect($firstLink.closest('.js-list-item')).toHaveClass('gem-c-task-list__link--active');
       expect($element.find(('.gem-c-task-list__link--active')).length).toBe(1);
 
-      var $secondLink = $element.find('.js-link[data-position="2.1.5"]');
+      var $secondLink = $element.find('.js-link[data-position="3.5"]');
       $secondLink.click();
-      expect(sessionStorage.getItem('govuk-task-list-active-link')).toBe('2.1.5');
+      expect(sessionStorage.getItem('govuk-task-list-active-link')).toBe('3.5');
       expect($secondLink.closest('.js-list-item')).toHaveClass('gem-c-task-list__link--active');
       expect($element.find(('.gem-c-task-list__link--active')).length).toBe(1);
     });
@@ -643,7 +639,7 @@ describe('A tasklist module', function () {
 
       tasklist = new GOVUK.Modules.Gemtasklist();
       $element = $(html);
-      sessionStorage.setItem('govuk-task-list-active-link', '2.1.5');
+      sessionStorage.setItem('govuk-task-list-active-link', '3.5');
       tasklist.start($element);
     });
 
@@ -652,22 +648,22 @@ describe('A tasklist module', function () {
     });
 
     it("highlights only one link", function () {
-      expect(sessionStorage.getItem('govuk-task-list-active-link')).toBe('2.1.5');
+      expect(sessionStorage.getItem('govuk-task-list-active-link')).toBe('3.5');
       expect($element.find(('.gem-c-task-list__link--active')).length).toBe(1);
     });
   });
 
-  describe('in a double dot situation where there is no active group', function () {
+  describe('in a double dot situation where there is no active step', function () {
     beforeEach(function () {
       $element = $(html);
-      $element.find('.gem-c-task-list__group').removeClass('gem-c-task-list__group--active');
+      $element.find('.gem-c-task-list__step').removeClass('gem-c-task-list__step--active');
       tasklist = new GOVUK.Modules.Gemtasklist();
       tasklist.start($element);
     });
 
     it("highlights the first active link if no sessionStorage value is set", function () {
       expect(sessionStorage.getItem('govuk-task-list-active-link')).toBe(null);
-      expect($element.find('.js-link[data-position="1.2.1"]').closest('.js-list-item')).toHaveClass('gem-c-task-list__link--active');
+      expect($element.find('.js-link[data-position="2.1"]').closest('.js-list-item')).toHaveClass('gem-c-task-list__link--active');
       expect($element.find(('.gem-c-task-list__link--active')).length).toBe(1);
     });
   });

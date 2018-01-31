@@ -7,278 +7,274 @@ describe "Task List", type: :view do
 
   def tasklist
     [
-      [
-        {
-          title: 'Group 1 step 1',
-          show_help_link: true,
-          optional: true,
-          contents: [
-            {
-              type: 'paragraph',
-              text: 'Group 1 step 1 paragraph'
-            },
-            {
-              type: 'list',
-              style: 'required',
-              contents: [
-                {
-                  href: '/link1',
-                  text: 'Link 1.1.1',
-                },
-                {
-                  href: 'http://www.gov.uk',
-                  text: 'Link 1.1.2',
-                  context: '£0 to £300'
-                },
-              ]
-            },
-            {
-              type: 'substep',
-              optional: false
-            },
-            {
-              type: 'paragraph',
-              text: 'This paragraph is inside a required substep'
-            },
-            {
-              type: 'list',
-              style: 'required',
-              contents: [
-                {
-                  href: '/link3',
-                  text: 'Link 1.1.3',
-                },
-                {
-                  href: '/link4',
-                  text: 'Link 1.1.4'
-                }
-              ]
-            },
-          ]
-        },
-        {
-          title: 'Group 1 step 2',
-          optional: false,
-          contents: [
-            {
-              type: 'paragraph',
-              text: 'test'
-            }
-          ]
-        }
-      ],
-      [
-        {
-          title: 'Group 2 step 1',
-          contents: [
-            {
-              type: 'paragraph',
-              text: 'Group 2 step 1 paragraph'
-            },
-            {
-              type: 'list',
-              style: 'choice',
-              contents: [
-                {
-                  href: '/link5',
-                  text: 'Link 2.1.1',
-                },
-                {
-                  href: '/link6',
-                  active: true,
-                  text: 'Link 2.1.2',
-                },
-              ]
-            },
-            {
-              type: 'substep',
-              optional: true
-            },
-            {
-              type: 'paragraph',
-              text: 'This paragraph is inside an optional substep'
-            },
-          ]
-        },
-        {
-          title: 'Group 2 step 2',
-          logic: 'or',
-          contents: [
-            {
-              type: 'paragraph',
-              text: 'test'
-            },
-            {
-              type: 'list',
-              contents: [
-                {
-                  href: '/link7',
-                  text: 'Link 2.2.1'
-                },
-                {
-                  text: 'or'
-                },
-                {
-                  href: '/link8',
-                  text: 'Link 2.2.2'
-                }
-              ]
-            },
-            {
-              type: 'heading',
-              text: 'This is a heading'
-            }
-          ]
-        },
-        {
-          title: 'Group 2 step 3?"`_!',
-          contents: [
-            {
-              type: 'paragraph',
-              text: 'test'
-            }
-          ]
-        }
-      ]
+      {
+        title: 'Step 1',
+        show_help_link: true,
+        optional: true,
+        contents: [
+          {
+            type: 'paragraph',
+            text: 'Step 1 paragraph'
+          },
+          {
+            type: 'list',
+            style: 'required',
+            contents: [
+              {
+                href: '/link1',
+                text: 'Link 1.1.1',
+              },
+              {
+                href: 'http://www.gov.uk',
+                text: 'Link 1.1.2',
+                context: '£0 to £300'
+              },
+            ]
+          },
+          {
+            type: 'substep',
+            optional: false
+          },
+          {
+            type: 'paragraph',
+            text: 'This paragraph is inside a required substep'
+          },
+          {
+            type: 'list',
+            style: 'choice',
+            contents: [
+              {
+                href: '/link3',
+                text: 'Link 1.1.3',
+              },
+              {
+                href: '/link4',
+                text: 'Link 1.1.4'
+              }
+            ]
+          },
+        ]
+      },
+      {
+        title: 'Step 1 and',
+        optional: false,
+        logic: "and",
+        contents: [
+          {
+            type: 'paragraph',
+            text: 'Step 1 and paragraph'
+          }
+        ]
+      },
+      {
+        title: 'Step 2',
+        contents: [
+          {
+            type: 'paragraph',
+            text: 'Step 2 paragraph'
+          },
+          {
+            type: 'list',
+            style: 'choice',
+            contents: [
+              {
+                href: '/link5',
+                text: 'Link 2.1.1',
+              },
+              {
+                href: '/link6',
+                active: true,
+                text: 'Link 2.1.2',
+              },
+            ]
+          },
+          {
+            type: 'substep',
+            optional: true
+          },
+          {
+            type: 'paragraph',
+            text: 'This paragraph is inside an optional substep'
+          },
+        ]
+      },
+      {
+        title: 'Step 2 or',
+        logic: 'or',
+        contents: [
+          {
+            type: 'paragraph',
+            text: 'test'
+          },
+          {
+            type: 'list',
+            contents: [
+              {
+                href: '/link7',
+                text: 'Link 2.2.1'
+              },
+              {
+                text: 'or'
+              },
+              {
+                href: '/link8',
+                text: 'Link 2.2.2'
+              }
+            ]
+          },
+          {
+            type: 'heading',
+            text: 'This is a heading'
+          }
+        ]
+      },
+      {
+        title: 'Step 3?"`_!',
+        contents: [
+          {
+            type: 'paragraph',
+            text: 'test'
+          }
+        ]
+      }
     ]
   end
 
-  group1 = ".gem-c-task-list__group:nth-child(1)"
-  group1step1 = group1 + " .gem-c-task-list__step:nth-of-type(1)"
-  group1step2 = group1 + " .gem-c-task-list__step:nth-of-type(2)"
-
-  group2 = ".gem-c-task-list__group:nth-child(2)"
-  group2step1 = group2 + " .gem-c-task-list__step:nth-of-type(1)"
-  group2step2 = group2 + " .gem-c-task-list__step:nth-of-type(2)"
+  step1 = ".gem-c-task-list__step:nth-of-type(1)"
+  step1and = ".gem-c-task-list__step:nth-of-type(2)"
+  step2 = ".gem-c-task-list__step:nth-of-type(3)"
+  step2or = ".gem-c-task-list__step:nth-of-type(4)"
+  step3 = ".gem-c-task-list__step:nth-of-type(5)"
 
   it "renders nothing without passed content" do
     assert_empty render_component({})
   end
 
   it "renders paragraphs" do
-    render_component(groups: tasklist)
+    render_component(steps: tasklist)
     assert_select ".gem-c-task-list"
 
-    assert_select group1 + " .gem-c-task-list__step#group-1-step-1:nth-of-type(1)"
-    assert_select group1step1 + " .gem-c-task-list__title", text: "Group 1 step 1"
-    assert_select group1step1 + " .gem-c-task-list__paragraph", text: "Group 1 step 1 paragraph"
+    assert_select ".gem-c-task-list__step#step-1"
+    assert_select step1 + " .gem-c-task-list__title", text: "Step 1"
+    assert_select step1 + " .gem-c-task-list__paragraph", text: "Step 1 paragraph"
 
-    assert_select group2 + " .gem-c-task-list__step#group-2-step-2:nth-of-type(1)"
-    assert_select group2step1 + " .gem-c-task-list__title", text: "Group 2 step 1"
-    assert_select group2step1 + " .gem-c-task-list__paragraph", text: "Group 2 step 1 paragraph"
+    assert_select ".gem-c-task-list__step#step-2"
+    assert_select step2 + " .gem-c-task-list__title", text: "Step 2"
+    assert_select step2 + " .gem-c-task-list__paragraph", text: "Step 2 paragraph"
   end
 
   it "renders headings" do
-    render_component(groups: tasklist)
+    render_component(steps: tasklist)
 
-    assert_select group2step2 + " h3.gem-c-task-list__heading", text: "This is a heading"
+    assert_select step2or + " h3.gem-c-task-list__heading", text: "This is a heading"
   end
 
   it "renders a tasklist with different heading levels" do
-    render_component(groups: tasklist, heading_level: 4)
+    render_component(steps: tasklist, heading_level: 4)
 
-    assert_select group1step1 + " h4.gem-c-task-list__title", text: "Group 1 step 1"
-    assert_select group2step1 + " h4.gem-c-task-list__title", text: "Group 2 step 1"
+    assert_select step1 + " h4.gem-c-task-list__title", text: "Step 1"
+    assert_select step2 + " h4.gem-c-task-list__title", text: "Step 2"
   end
 
   it "renders headings correctly if the heading level is changed" do
-    render_component(groups: tasklist, heading_level: 4)
+    render_component(steps: tasklist, heading_level: 4)
 
-    assert_select group2step2 + " h5.gem-c-task-list__heading", text: "This is a heading"
+    assert_select step2or + " h5.gem-c-task-list__heading", text: "This is a heading"
   end
 
   it "opens a step by default" do
-    render_component(groups: tasklist, show_step: 2)
+    render_component(steps: tasklist, show_step: 2)
 
-    assert_select group1 + " .gem-c-task-list__step#group-1-step-2[data-show]"
+    assert_select ".gem-c-task-list__step#step-1-and[data-show]"
   end
 
   it "remembers last opened step" do
-    render_component(groups: tasklist, remember_last_step: true)
+    render_component(steps: tasklist, remember_last_step: true)
 
     assert_select ".gem-c-task-list[data-remember]"
   end
 
   it "generates IDs for steps correctly" do
-    render_component(groups: tasklist)
+    render_component(steps: tasklist)
 
-    assert_select group2step2 + " #step-panel-group-2-step-2-2.gem-c-task-list__panel"
-    assert_select group2 + " .gem-c-task-list__step:nth-of-type(3) #step-panel-group-2-step-3-3.gem-c-task-list__panel"
+    assert_select step1 + " #step-panel-step-1-1.gem-c-task-list__panel"
+    assert_select step1and + " #step-panel-step-1-and-2.gem-c-task-list__panel"
+    assert_select step3 + "#step-3"
   end
 
   it "renders correct list elements and includes length of lists" do
-    render_component(groups: tasklist)
+    render_component(steps: tasklist)
 
-    assert_select group2step1 + " ul.gem-c-task-list__links--choice[data-length='2']"
-    assert_select group2step2 + " ol.gem-c-task-list__links[data-length='3']"
+    assert_select step1 + " ul.gem-c-task-list__links--choice[data-length='2']"
+    assert_select step2or + " ol.gem-c-task-list__links[data-length='3']"
   end
 
   it "renders links and link attributes correctly" do
-    render_component(groups: tasklist)
+    render_component(steps: tasklist)
 
-    assert_select group1step1 + " .gem-c-task-list__link-item[href='/link1'][data-position='1.1.1']", text: "Link 1.1.1"
-    assert_select group1step1 + " .gem-c-task-list__link-item[href='/link1'][rel='external']", false
-    assert_select group1step1 + " .gem-c-task-list__link-item[href='http://www.gov.uk'][rel='external'][data-position='1.1.2']", text: "Link 1.1.2 £0 to £300"
-    assert_select group1step1 + " .gem-c-task-list__link-item[href='http://www.gov.uk'] .gem-c-task-list__context", text: "£0 to £300"
-    assert_select group1step1 + " .gem-c-task-list__link-item[href='/link3'][data-position='1.1.3']", text: "Link 1.1.3"
-    assert_select group1step1 + " .gem-c-task-list__link-item[href='/link4'][data-position='1.1.4']", text: "Link 1.1.4"
-    assert_select group2step2 + " .gem-c-task-list__link-item[href='/link8'][data-position='2.2.2']", text: "Link 2.2.2"
+    assert_select step1 + " .gem-c-task-list__link-item[href='/link1'][data-position='1.1']", text: "Link 1.1.1"
+    assert_select step1 + " .gem-c-task-list__link-item[href='/link1'][rel='external']", false
+    assert_select step1 + " .gem-c-task-list__link-item[href='http://www.gov.uk'][rel='external'][data-position='1.2']", text: "Link 1.1.2 £0 to £300"
+    assert_select step1 + " .gem-c-task-list__link-item[href='http://www.gov.uk'] .gem-c-task-list__context", text: "£0 to £300"
+    assert_select step1 + " .gem-c-task-list__link-item[href='/link3'][data-position='1.3']", text: "Link 1.1.3"
+    assert_select step1 + " .gem-c-task-list__link-item[href='/link4'][data-position='1.4']", text: "Link 1.1.4"
+    assert_select step2or + " .gem-c-task-list__link-item[href='/link8'][data-position='4.2']", text: "Link 2.2.2"
   end
 
   it "renders links without hrefs" do
-    render_component(groups: tasklist)
+    render_component(steps: tasklist)
 
-    assert_select group2step2 + " .gem-c-task-list__link .gem-c-task-list__link-item[href='/link7'][data-position='2.2.1']", text: "Link 2.2.1"
-    assert_select group2step2 + " .gem-c-task-list__link", text: "or"
-    assert_select group2step2 + " .gem-c-task-list__link .gem-c-task-list__link-item[href='/link8'][data-position='2.2.2']", text: "Link 2.2.2"
+    assert_select step2or + " .gem-c-task-list__link .gem-c-task-list__link-item[href='/link7'][data-position='4.1']", text: "Link 2.2.1"
+    assert_select step2or + " .gem-c-task-list__link", text: "or"
+    assert_select step2or + " .gem-c-task-list__link .gem-c-task-list__link-item[href='/link8'][data-position='4.2']", text: "Link 2.2.2"
   end
 
   it "renders optional steps, sub steps and optional sub steps" do
-    render_component(groups: tasklist)
+    render_component(steps: tasklist)
 
-    assert_select group1 + " .gem-c-task-list__step.gem-c-task-list__step--optional:nth-of-type(1)"
-    assert_select group1step1 + " .gem-c-task-list__substep .gem-c-task-list__paragraph", text: "This paragraph is inside a required substep"
-    assert_select group2step1 + " .gem-c-task-list__substep.gem-c-task-list__substep--optional .gem-c-task-list__paragraph", text: "This paragraph is inside an optional substep"
+    assert_select ".gem-c-task-list__step#step-1.gem-c-task-list__step--optional"
+    assert_select step1 + " .gem-c-task-list__substep .gem-c-task-list__paragraph", text: "This paragraph is inside a required substep"
+    assert_select step2 + " .gem-c-task-list__substep.gem-c-task-list__substep--optional .gem-c-task-list__paragraph", text: "This paragraph is inside an optional substep"
   end
 
   it "renders get help links back to the main task list" do
-    render_component(groups: tasklist, task_list_url: "/learn-to-drive", task_list_url_link_text: "Get help")
+    render_component(steps: tasklist, task_list_url: "/learn-to-drive", task_list_url_link_text: "Get help")
 
-    assert_select group1step1 + " .gem-c-task-list__help-link[href='/learn-to-drive#group-1-step-1']", text: "Get help"
-    assert_select group2step1 + " .gem-c-task-list__help-link[href='/learn-to-drive#group-2-step-1']", false
+    assert_select step1 + " .gem-c-task-list__help-link[href='/learn-to-drive#step-1']", text: "Get help"
+    assert_select step2 + " .gem-c-task-list__help-link[href='/learn-to-drive#step-2']", false
   end
 
-  it "displays group numbering and step logic correctly" do
-    render_component(groups: tasklist)
+  it "displays step numbering and step logic correctly" do
+    render_component(steps: tasklist)
 
-    assert_select group1 + " .gem-c-task-list__circle--number .gem-c-task-list__circle-inner .gem-c-task-list__circle-background", text: "Step 1"
-    assert_select group1step2 + " .gem-c-task-list__circle--logic .gem-c-task-list__circle-inner .gem-c-task-list__circle-background", text: "and"
-    assert_select group2 + " .gem-c-task-list__circle--number .gem-c-task-list__circle-inner .gem-c-task-list__circle-background", text: "Step 2"
-    assert_select group2step2 + " .gem-c-task-list__circle--logic .gem-c-task-list__circle-inner .gem-c-task-list__circle-background", text: "or"
+    assert_select step1 + " .gem-c-task-list__circle--number .gem-c-task-list__circle-inner .gem-c-task-list__circle-background", text: "Step 1"
+    assert_select step1and + " .gem-c-task-list__circle--logic .gem-c-task-list__circle-inner .gem-c-task-list__circle-background", text: "and"
+    assert_select step2 + " .gem-c-task-list__circle--number .gem-c-task-list__circle-inner .gem-c-task-list__circle-background", text: "Step 2"
+    assert_select step2or + " .gem-c-task-list__circle--logic .gem-c-task-list__circle-inner .gem-c-task-list__circle-background", text: "or"
   end
 
   it "applies the correct required and choice styles correctly to lists" do
-    render_component(groups: tasklist)
+    render_component(steps: tasklist)
 
-    assert_select group1step1 + " .gem-c-task-list__links.gem-c-task-list__links--required"
-    assert_select group2step1 + " .gem-c-task-list__links.gem-c-task-list__links--choice"
+    assert_select step1 + " .gem-c-task-list__links.gem-c-task-list__links--required"
+    assert_select step2 + " .gem-c-task-list__links.gem-c-task-list__links--choice"
   end
 
   it "allows steps to be open on page load" do
-    render_component(groups: tasklist, show_step: 3)
+    render_component(steps: tasklist, show_step: 3)
 
-    assert_select group2 + " .gem-c-task-list__step[data-show]:nth-of-type(1)"
+    assert_select ".gem-c-task-list__step#step-2[data-show]"
   end
 
-  it "can set active states on groups and links" do
-    render_component(groups: tasklist, highlight_group: 1)
+  it "can set active states on steps and links" do
+    render_component(steps: tasklist, highlight_step: 1)
 
-    assert_select group1 + ".gem-c-task-list__group--active"
-    assert_select group2step1 + " .gem-c-task-list__link.gem-c-task-list__link--active .gem-c-task-list__link-item[href='#content']", text: "You are currently viewing: Link 2.1.2"
+    assert_select ".gem-c-task-list__step--active#step-1"
+    assert_select step2 + " .gem-c-task-list__link.gem-c-task-list__link--active .gem-c-task-list__link-item[href='#content']", text: "You are currently viewing: Link 2.1.2"
   end
 
   it "renders a small tasklist" do
-    render_component(groups: tasklist, small: true)
+    render_component(steps: tasklist, small: true)
 
     assert_select ".gem-c-task-list"
     assert_select ".gem-c-task-list.gem-c-task-list--large", false
