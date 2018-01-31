@@ -1,6 +1,8 @@
-if defined?(RSpec)
+begin
   require 'rspec/core/rake_task'
   RSpec::Core::RakeTask.new(:spec)
+rescue LoadError
+  puts "Running in production mode"
 end
 
 APP_RAKEFILE = File.expand_path("../spec/dummy/Rakefile", __FILE__)
