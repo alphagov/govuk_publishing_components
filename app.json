@@ -5,6 +5,9 @@
     "GOVUK_APP_DOMAIN": {
       "value": "www.gov.uk"
     },
+    "BUNDLE_WITHOUT": {
+      "value": "test"
+    },
     "PLEK_SERVICE_STATIC_URI": {
       "value": "assets.digital.cabinet-office.gov.uk"
     }
