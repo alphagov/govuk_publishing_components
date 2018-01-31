@@ -1,0 +1,18 @@
+// This is the file that the application needs to include in order to use
+// the components.
+
+// `govuk_frontend_toolkit`
+@import "measurements";
+@import "grid_layout";
+@import "typography";
+@import "colours";
+
+@import "components/back-link";
+@import "components/error-summary";
+@import "components/fieldset";
+@import "components/input";
+@import "components/label";
+@import "components/radio";
+@import "components/task-list";
+@import "components/task-list-header";
+@import "components/task-list-related";

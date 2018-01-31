@@ -1,5 +1,19 @@
 # Unreleased
 
+* To include the CSS for all components in the gem, you can now do:
+
+```css
+# application.scss
+@import "govuk_publishing_components/all_components";
+```
+
+And for print styles
+
+```css
+# print.scss
+@import "govuk_publishing_components/all_components_print";
+```
+
 * Refactor task list component code (PR #143)
 * Fix task list related namespace (PR #141)
 
