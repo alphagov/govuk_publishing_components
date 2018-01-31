@@ -1,0 +1,22 @@
+name: Form input
+description: A single-line text field.
+body: |
+  [Forked from GOV.UK Frontend](https://govuk-frontend-review.herokuapp.com/components/input)
+accessibility_criteria: |
+  Markdown listing what this component must do to be accessible. For example:
+
+  The link must:
+
+  * be keyboard focusable
+examples:
+  default:
+    data:
+      label:
+        text: "What is your email address?"
+      name: "address"
+  with_error:
+    data:
+      label:
+        text: "What is your email address?"
+      name: "address"
+      error_message: "Email address not recognised"

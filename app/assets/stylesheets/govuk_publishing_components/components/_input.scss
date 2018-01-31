@@ -1,0 +1,39 @@
+.gem-c-input {
+  @include core-19;
+
+  box-sizing: border-box;
+  width: 100%;
+  height: 2.10526em;
+  margin-top: 0;
+  margin-bottom: 20px;
+
+  padding: $gem-spacing-scale-1;
+  // setting any background-color makes text invisible when changing colours to dark backgrounds in Firefox (https://bugzilla.mozilla.org/show_bug.cgi?id=1335476)
+  // as background-color and color need to always be set together, color should not be set either
+  border: $gem-border-width-form-element solid;
+  border-radius: 0;
+
+  // Disable inner shadow and remove rounded corners
+  appearance: none;
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-c-input {
+    margin-bottom: 30px;
+  }
+}
+
+.gem-c-input:focus {
+  outline: $gem-focus-width solid $gem-focus-colour;
+}
+
+.gem-c-input--error {
+  border: $gem-border-width-error solid $gem-error-colour;
+}
+
+// Replace this with the error message component.
+.gem-c-input__label-error {
+  font-weight: bold;
+  color: $gem-error-colour;
+  padding-top: 4px;
+}
