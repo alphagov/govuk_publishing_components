@@ -136,6 +136,7 @@ $top-border: solid 2px $grey-3;
   &:after {
     // scss-lint:disable DuplicateProperty
     height: -webkit-calc(100% - #{$gutter-half}); // fallback for iphone 4
+    height: -webkit-calc(100% - #{$gutter-half}); // fallback
     height: calc(100% - #{$gutter-half});
     // scss-lint:enable DuplicateProperty
   }
