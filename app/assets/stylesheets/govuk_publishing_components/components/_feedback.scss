@@ -1,0 +1,154 @@
+// govuk_frontend_toolkit
+@import 'grid_layout';
+
+// fixme add print styles to hide everything
+
+//fixme make some explicit class names for the grid
+.grid-row {
+  @extend %grid-row;
+}
+
+.column-two-thirds {
+  @include grid-column( 2/3 );
+}
+
+// scss-lint:disable SelectorFormat
+.gem-c-feedback {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.gem-c-feedback__prompt {
+  @extend %contain-floats;
+  background-color: $govuk-blue;
+  color: $white;
+  padding: 10px $gutter-half 0;
+  outline: 0;
+}
+
+.gem-c-feedback__prompt-question {
+  @include bold-16;
+  display: inline;
+}
+
+.gem-c-feedback__prompt-link:link,
+.gem-c-feedback__prompt-link:visited {
+  color: $white;
+  display: inline-block;
+}
+
+.gem-c-feedback__prompt-link--useful {
+  margin-right: 0.2em;
+}
+
+.gem-c-feedback__prompt-link--wrong {
+  float: right;
+}
+
+.gem-c-feedback__error-summary,
+.gem-c-feedback__success {
+  margin-bottom: $gutter-half;
+  padding: $gutter-half;
+
+  &:focus {
+    outline: solid 3px $yellow;
+  }
+
+  // this comes from the backend so we can't put a class on it
+  h2 {
+    @include bold-24;
+    margin: 0;
+  }
+
+  p {
+    margin: 10px 0;
+  }
+}
+
+.gem-c-feedback__error-summary {
+  border: solid 4px $red;
+
+  @include media(tablet) {
+    border-width: 5px;
+  }
+}
+
+.gem-c-feedback__error-message {
+  @include bold-19;
+  display: block;
+  padding: 4px 0 0;
+  color: $red;
+}
+
+.gem-c-feedback__error-heading {
+  @include bold-24;
+}
+
+.gem-c-feedback__error-text {
+  padding: 0;
+  margin: 0;
+}
+
+.gem-c-feedback__form {
+  margin-top: $gutter-half;
+  padding: $gutter-half 0;
+  border-top: 10px solid $govuk-blue;
+
+  @include media(tablet) {
+    padding: $gutter 0;
+  }
+}
+
+.gem-c-feedback__form-heading {
+  @include bold-19;
+  margin-bottom: $gutter-half;
+}
+
+.gem-c-feedback__form-paragraph {
+  @include core-16;
+  margin-bottom: $gutter;
+}
+
+.gem-c-feedback__form-group {
+  padding-bottom: $gutter-half;
+
+  @include media(tablet) {
+    padding-bottom: $gutter;
+  }
+}
+
+.gem-c-feedback__form-label {
+  @include core-16;
+  display: block;
+  padding-bottom: $gutter-half;
+}
+
+// nesting this in order to override other page styles for form fields
+.gem-c-feedback {
+  .gem-c-feedback__form-field {
+    @include core-19;
+    @include box-sizing(border-box);
+    padding: 5px;
+    margin: 0;
+    width: 100%;
+    border: solid 2px $black;
+  }
+}
+
+.gem-c-feedback__close {
+  @include core-16;
+  text-align: right;
+  display: block;
+  margin-bottom: 10px;
+
+  @include media(tablet) {
+    display: inherit;
+    float: right;
+    padding-top: 0;
+  }
+}
+
+.gem-c-feedback__submit {
+  // @extend %gem-c-button; TODO - this button thing is needed?
+}
+// scss-lint:enable SelectorFormat

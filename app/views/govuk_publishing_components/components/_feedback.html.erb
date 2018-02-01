@@ -1,0 +1,105 @@
+<%
+  contact_govuk_path = "/contact/govuk" #defined in a helper in service manual
+%>
+
+<div class="gem-c-feedback" data-module="feedback">
+  <div class="gem-c-feedback__prompt js-prompt" tabindex="-1">
+    <h3 class="gem-c-feedback__prompt-question">Is this page useful?</h3>
+
+    <%= link_to contact_govuk_path, {
+          class: 'gem-c-feedback__prompt-link gem-c-feedback__prompt-link--useful js-page-is-useful',
+          data: {
+            'track-category' => 'manualFeedbackForm',
+            'track-action' => 'ffYesClick'
+          },
+        } do %>
+      Yes <span class="visually-hidden">this page is useful</span>
+    <% end %>
+
+    <%= link_to contact_govuk_path, {
+          class: 'gem-c-feedback__prompt-link js-toggle-form js-page-is-not-useful',
+          data: {
+            'track-category' => 'manualFeedbackForm',
+            'track-action' => 'ffNoClick'
+          },
+          'aria-controls': 'page-is-not-useful',
+          'aria-expanded': false
+        } do %>
+      No <span class="visually-hidden">this page is not useful</span>
+    <% end %>
+
+    <%= link_to contact_govuk_path, {
+          class: 'gem-c-feedback__prompt-link gem-c-feedback__prompt-link--wrong js-toggle-form js-something-is-wrong',
+          data: {
+            'track-category' => 'manualFeedbackForm',
+            'track-action' => 'ffWrongClick'
+          },
+          'aria-controls': 'something-is-wrong',
+          'aria-expanded': false
+        } do %>
+      Is there anything wrong with this page?
+    <% end %>
+  </div>
+
+  <div class="gem-c-feedback__success js-success" tabindex="-1"></div>
+
+  <form action="/contact/govuk/problem_reports" id="something-is-wrong" class="gem-c-feedback__form js-feedback-form js-hidden" data-track-category="manualFeedbackForm" data-track-action="ffFormSubmit">
+    <a href="#" class="gem-c-feedback__close js-close-form" aria-controls="something-is-wrong" aria-expanded="true">Close</a>
+
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <div class="gem-c-feedback__error-summary js-hidden js-errors" tabindex="-1"></div>
+
+          <input type="hidden" name="url" value="<%= request.original_url -%>">
+          <input type="hidden" name="user_agent" value="<%= request.user_agent -%>">
+
+          <h2 class="gem-c-feedback__form-heading">Help us improve GOV.UK</h2>
+          <p class="gem-c-feedback__form-paragraph">Don't include personal or financial information like your National Insurance number or credit card details.</p>
+
+          <div class="gem-c-feedback__form-group js-form-group">
+            <label class="gem-c-feedback__form-label" for="what_doing">
+              What were you doing on this page?
+            </label>
+            <textarea id="what_doing" class="gem-c-feedback__form-field" name="what_doing" rows="4" aria-required="true"></textarea>
+          </div>
+
+          <div class="gem-c-feedback__form-group js-form-group">
+            <label class="gem-c-feedback__form-label" for="what_wrong">
+              What is wrong with this page?
+            </label>
+            <textarea id="what_wrong" class="gem-c-feedback__form-field" name="what_wrong" rows="4" aria-required="true"></textarea>
+          </div>
+
+          <input class="gem-c-feedback__submit" type="submit" value="Submit">
+      </div>
+    </div>
+  </form>
+
+  <form action="/contact/govuk/email-survey-signup" id="page-is-not-useful" class="gem-c-feedback__form js-feedback-form js-hidden" data-track-category="FIXME" data-track-action="FIXME">
+    <a href="#" class="gem-c-feedback__close js-close-form" aria-controls="page-is-not-useful" aria-expanded="true">Close</a>
+
+    <div class="grid-row">
+      <div class="column-two-thirds">
+        <div class="gem-c-feedback__error-summary js-hidden js-errors" tabindex="-1"></div>
+
+          <input type="hidden" name="url" value="<%= request.original_url -%>">
+          <input type="hidden" name="user_agent" value="<%= request.user_agent -%>">
+
+          <input name="email_survey_signup[survey_id]" type="hidden" value="user_satisfaction_survey">
+          <input name="email_survey_signup[survey_source]" type="hidden" value="<%= request.original_url -%>">
+          <input name="email_survey_signup[ga_client_id]" type="hidden" value="1627485790.1515403243">
+
+          <h2 class="gem-c-feedback__form-heading">Help us improve GOV.UK</h2>
+          <p class="gem-c-feedback__form-paragraph">To help us improve GOV.UK, we'd like to know more about your visit today. We'll send you a link to a feedback form. It will take only 2 minutes to fill in. Don't worry we won't send you spam or share your email address with anyone.</p>
+
+          <div class="gem-c-feedback__form-group js-form-group">
+            <label class="gem-c-feedback__form-label" for="email-field">Email address</label>
+            <input id="email-field" class="gem-c-feedback__form-field" type="text" name="email_survey_signup[email_address]">
+          </div>
+
+          <input class="gem-c-feedback__submit" type="submit" value="Send me the survey">
+          <a href="https://www.smartsurvey.co.uk/s/govukbanner/?c=<%= request.fullpath -%>&amp;gcl=1627485790.1515403243" id="take-survey" target="_blank" rel="noopener noreferrer">Don’t have an email address?</a>
+      </div>
+    </div>
+  </form>
+</div>
