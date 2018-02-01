@@ -36,7 +36,7 @@ describe 'Component guide index' do
 
   it 'includes component guide styles and scripts' do
     visit '/component-guide'
-    expect(page).to have_selector('link[href*="/assets/govuk_publishing_components/application"]', visible: false)
+    expect(page).to have_selector('link[href*="/assets/govuk_publishing_components/component_guide"]', visible: false)
     expect(page).to have_selector('script[src*="/assets/govuk_publishing_components/application"]', visible: false)
   end
 
