@@ -117,12 +117,6 @@
   }
 }
 
-.gem-c-feedback__form-label {
-  @include core-16;
-  display: block;
-  padding-bottom: $gutter-half;
-}
-
 // nesting this in order to override other page styles for form fields
 .gem-c-feedback {
   .gem-c-feedback__form-field {

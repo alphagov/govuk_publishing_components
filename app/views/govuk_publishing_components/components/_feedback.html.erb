@@ -57,17 +57,21 @@
           <p class="gem-c-feedback__form-paragraph">Don't include personal or financial information like your National Insurance number or credit card details.</p>
 
           <div class="gem-c-feedback__form-group js-form-group">
-            <label class="gem-c-feedback__form-label" for="what_doing">
-              What were you doing on this page?
-            </label>
-            <textarea id="what_doing" class="gem-c-feedback__form-field" name="what_doing" rows="4" aria-required="true"></textarea>
+            <%= render "govuk_publishing_components/components/input", {
+              label: {
+                text: "What were you doing on this page?"
+              },
+              name: "what_doing"
+            } %>
           </div>
 
           <div class="gem-c-feedback__form-group js-form-group">
-            <label class="gem-c-feedback__form-label" for="what_wrong">
-              What is wrong with this page?
-            </label>
-            <textarea id="what_wrong" class="gem-c-feedback__form-field" name="what_wrong" rows="4" aria-required="true"></textarea>
+            <%= render "govuk_publishing_components/components/input", {
+              label: {
+                text: "What is wrong with this page?"
+              },
+              name: "what_wrong"
+            } %>
           </div>
 
           <%= render "govuk_component/button", text: "Submit"  %>
@@ -93,8 +97,12 @@
           <p class="gem-c-feedback__form-paragraph">To help us improve GOV.UK, we'd like to know more about your visit today. We'll send you a link to a feedback form. It will take only 2 minutes to fill in. Don't worry we won't send you spam or share your email address with anyone.</p>
 
           <div class="gem-c-feedback__form-group js-form-group">
-            <label class="gem-c-feedback__form-label" for="email-field">Email address</label>
-            <input id="email-field" class="gem-c-feedback__form-field" type="text" name="email_survey_signup[email_address]">
+            <%= render "govuk_publishing_components/components/input", {
+              label: {
+                text: "Email address"
+              },
+              name: "email_survey_signup[email_address]"
+            } %>
           </div>
 
           <%= render "govuk_component/button", text: "Send me the survey"  %>
