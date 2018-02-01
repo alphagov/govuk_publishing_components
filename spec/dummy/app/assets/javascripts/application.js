@@ -13,4 +13,4 @@
 //= require history-support
 //= require current-location
 //= require govuk/modules
-//= require govuk_publishing_components/components/task-list
+//= require govuk_publishing_components/components/step-by-step-nav

@@ -1,6 +1,6 @@
 require "govuk_publishing_components/config"
 require "govuk_publishing_components/engine"
-require "govuk_publishing_components/components/task_list_helper"
+require "govuk_publishing_components/components/step_by_step_nav_helper"
 
 module GovukPublishingComponents
 end

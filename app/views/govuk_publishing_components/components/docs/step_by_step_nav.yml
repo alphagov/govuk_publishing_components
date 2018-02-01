@@ -1,16 +1,16 @@
-name: Task list
+name: Step by step navigation
 description: A series of expanding/collapsing steps designed to navigate a user through a process
 body: |
-  Task lists are designed to show a sequence of steps towards a specific goal, such as 'learning to drive'. Each step can contain one or more links to pages. User research suggested that each step should be collapsed by default so that users are not overwhelmed with information.
+  Step by step navigations show a sequence of steps towards a specific goal, such as 'learning to drive'. Each step can contain one or more links to pages. User research suggested that each step should be collapsed by default so that users are not overwhelmed with information.
 
-  If JavaScript is disabled the task list expands fully. All of the task list functionality (including the icons and aria attributes) are added using JavaScript.
+  If JavaScript is disabled the step by step navigation expands fully. All of the functionality (including the icons and aria attributes) are added using JavaScript.
 
-  The task list is based on the accordion component in collections, but has been altered. This is for two reasons.
+  This component is based on the accordion component in collections, but has been altered. This is for two reasons.
 
-  - task lists are needed throughout GOV.UK and extending the accordion to be the task list would require promoting it to static, which would break integration testing
+  - step by step navigations are needed throughout GOV.UK and extending the accordion to be this component would require it to be moved out of that application, which would break integration testing
   - creating a new component allows further iteration without impacting the accordion
 accessibility_criteria: |
-  The task list must:
+  The step by step navigation must:
 
   - indicate to users that each step can be expanded and collapsed
   - inform the user when a step has been expanded or collapsed
@@ -27,7 +27,7 @@ accessibility_criteria: |
   - so that steps can be toggled with the space and enter keys
   - so that steps can't be opened in a new tab or window
 
-  When JavaScript is unavailable the task list must:
+  When JavaScript is unavailable the component must:
 
   - be fully expanded
   - not be marked as expandable
@@ -192,18 +192,18 @@ examples:
               style: 'required',
               contents: [
                 {
-                  href: '/component-guide/task_list/with_links/preview',
+                  href: '/component-guide/step_by_step_navigation/with_links/preview',
                   text: 'Obtain a driving licence prior to driving a car',
                   active: true
                 },
                 {
-                  href: '/component-guide/task_list/with_links/preview',
+                  href: '/component-guide/step_by_step_navigation/with_links/preview',
                   text: 'Acquire food before attempting to cook',
                   context: '1p to &pound;20',
                   active: true
                 },
                 {
-                  href: '/component-guide/task_list/with_links/preview',
+                  href: '/component-guide/step_by_step_navigation/with_links/preview',
                   text: 'Maintain contact with the ground at all times',
                   active: true
                 }
@@ -217,18 +217,18 @@ examples:
               type: 'list',
               contents: [
                 {
-                  href: '/component-guide/task_list/with_links/preview',
+                  href: '/component-guide/step_by_step_navigation/with_links/preview',
                   text: 'Learn to play the saxophone',
                   active: true
                 },
                 {
-                  href: '/component-guide/task_list/with_links/preview',
+                  href: '/component-guide/step_by_step_navigation/with_links/preview',
                   text: 'Develop a new method of extracting juice from oranges',
                   context: '&pound;0 to &pound;300',
                   active: true
                 },
                 {
-                  href: '/component-guide/task_list/with_links/preview',
+                  href: '/component-guide/step_by_step_navigation/with_links/preview',
                   text: 'Buy a race car',
                   active: true
                 }
@@ -243,12 +243,12 @@ examples:
               style: 'choice',
               contents: [
                 {
-                  href: '/component-guide/task_list/',
+                  href: '/component-guide/step_by_step_navigation/',
                   text: 'Leave school at sixteen',
                   active: true
                 },
                 {
-                  href: '/component-guide/task_list/',
+                  href: '/component-guide/step_by_step_navigation/',
                   text: 'Continue into higher education',
                   context: '&pound;9,500',
                   active: true
@@ -265,17 +265,17 @@ examples:
               style: 'required',
               contents: [
                 {
-                  href: '/component-guide/task_list/',
+                  href: '/component-guide/step_by_step_navigation/',
                   text: 'Check the reasons'
                 },
                 {
-                  href: '/component-guide/task_list/with_links/preview',
+                  href: '/component-guide/step_by_step_navigation/with_links/preview',
                   text: 'Make the decisions based on available data and the reasonable assumptions that are possible at the time',
                   context: '1p to &pound;20',
                   active: true
                 },
                 {
-                  href: '/component-guide/task_list/with_links/preview',
+                  href: '/component-guide/step_by_step_navigation/with_links/preview',
                   text: 'Do the things',
                   active: true
                 }
@@ -326,7 +326,7 @@ examples:
         }
       ]
   or_then:
-    description: Some of the more complex things in a task list require an option for laying out links in a clear structure. If a link in a list is not given a href, only the text is displayed, allowing for structures like the one shown below.
+    description: Some of the more complex things in a step by step navigation require an option for laying out links in a clear structure. If a link in a list is not given a href, only the text is displayed, allowing for structures like the one shown below.
     data:
       show_step: 1
       steps: [
@@ -387,13 +387,13 @@ examples:
       ]
   solve_the_double_dot_problem:
     description: |
-      If a page is in a task list more than once and a user is viewing that URL, both links to it will be highlighted as the site has no way to know which entry in the task list the user is currently viewing (highlighted links should only occur when the task list is in the sidebar).
+      If a page is in a step by step navigation more than once and a user is viewing that URL, both links to it will be highlighted as the site has no way to know which link the user is currently viewing (highlighted links should only occur when the step by step navigation is in the sidebar).
 
-      JavaScript is included in the component to solve this. It uses sessionStorage to capture the data-position attribute of non-external links in the task list when clicked, and then uses this value to decide which link to highlight when the new page loads. This session storage data is immediately deleted after it is read on page load, mainly to prevent problems with highlighting if the user were to move between different task lists.
+      JavaScript is included in the component to solve this. It uses sessionStorage to capture the data-position attribute of non-external links when clicked, and then uses this value to decide which link to highlight when the new page loads. This session storage data is immediately deleted after it is read on page load, mainly to prevent problems with highlighting if the user were to move between different step by step navigations.
 
-      If a user has not clicked a link (i.e. has visited the page without first clicking on a task list) the first active link in the first active step will be highlighted. If there is no active step, the first active link will be highlighted (but there should always be an active step).
+      If a user has not clicked a link (i.e. has visited the page without first clicking on a step by step navigation) the first active link in the first active step will be highlighted. If there is no active step, the first active link will be highlighted (but there should always be an active step).
 
-      The current page in the task list is an anchor link to the top of the page. If there are more than one of these and the user clicks one that is not currently highlighted, that one will be highlighted.
+      The current page in the step by step navigation is an anchor link to the top of the page. If there are more than one of these and the user clicks one that is not currently highlighted, that one will be highlighted.
 
       The example below will show all links highlighted if JS is disabled, in the real world no more than two or three links are likely to be highlighted at once.
     data:
@@ -412,12 +412,12 @@ examples:
                   text: 'External link not set to active'
                 },
                 {
-                  href: '/component-guide/task_list/with_links/preview',
+                  href: '/component-guide/step_by_step_navigation/with_links/preview',
                   text: 'Internal link set to active',
                   active: true
                 },
                 {
-                  href: '/component-guide/task_list/with_links/preview',
+                  href: '/component-guide/step_by_step_navigation/with_links/preview',
                   text: 'Internal link set to active',
                   active: true
                 },
@@ -437,12 +437,12 @@ examples:
               style: 'required',
               contents: [
                 {
-                  href: '/component-guide/task_list/with_links/preview',
+                  href: '/component-guide/step_by_step_navigation/with_links/preview',
                   text: 'Internal link set to active - in the active step, should be set by default until another link is clicked',
                   active: true
                 },
                 {
-                  href: '/component-guide/task_list/with_links/preview',
+                  href: '/component-guide/step_by_step_navigation/with_links/preview',
                   text: 'Internal link set to active',
                   active: true
                 },
@@ -601,18 +601,18 @@ examples:
       ]
   get_help_links:
     description: |
-      Where task lists are long, content can be substituted with a link back to the main task list page. This link will open the main task list page with that step shown. The link text defaults to "Get help completing this step" but can be overridden.
+      Where step by step navigations are long, content can be substituted with a link back to the main step by step navigation page. This link will open that page with that step shown. The link text defaults to "Get help completing this step" but can be overridden.
 
-      Get help links will only appear if the task_list_url global parameter is set and the step itself has the optional show_help_link parameter set to true.
+      Get help links will only appear if the step_nav_url global parameter is set and the step itself has the optional show_help_link parameter set to true.
 
       Note that this option does not remove any content - it is left to developers to simply pass less content to the component in this situation.
     data:
-      task_list_url: "/learn-to-do-something"
-      task_list_url_link_text: "Get more information"
+      step_nav_url: "/learn-to-do-something"
+      step_nav_url_link_text: "Get more information"
       show_step: 1
       steps: [
         {
-          title: "A link back to the main task list",
+          title: "A link back to the main step by step navigation",
           show_help_link: true,
           contents: [
             {
@@ -652,7 +652,7 @@ examples:
   test_all_the_things:
     description: This component is very complicated so here is an example containing as many of the options available as possible.
     data:
-      task_list_url: "/learn-to-setup-standup"
+      step_nav_url: "/learn-to-setup-standup"
       highlight_step: 3
       steps: [
         {
@@ -844,11 +844,11 @@ examples:
         }
       ]
   small:
-    description: Designed to fit in the sidebar of a page. Note that the small version of the task list should not become smaller on mobile, and the large version on mobile should be the same size as the small version. This example is a copy of the one above for comparison.
+    description: Designed to fit in the sidebar of a page. Note that the small version of the component should not become smaller on mobile, and the large version on mobile should be the same size as the small version. This example is a copy of the one above for comparison.
     data:
       small: true
       remember_last_step: true
-      task_list_url: "/learn-to-setup-standup"
+      step_nav_url: "/learn-to-setup-standup"
       highlight_step: 3
       steps: [
         {

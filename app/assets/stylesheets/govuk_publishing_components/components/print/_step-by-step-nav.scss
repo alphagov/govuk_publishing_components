@@ -5,14 +5,14 @@ $white: #ffffff;
 $number-circle-size: 35px;
 $stroke-width: 3px;
 
-.gem-c-task-list:not(.gem-c-task-list--large),
-.gem-c-task-list__controls,
-.gem-c-task-list__toggle-link,
-.gem-c-task-list__help {
+.gem-c-step-nav:not(.gem-c-step-nav--large),
+.gem-c-step-nav__controls,
+.gem-c-step-nav__toggle-link,
+.gem-c-step-nav__help {
   display: none;
 }
 
-.gem-c-task-list {
+.gem-c-step-nav {
   position: relative;
 
   &:before {
@@ -39,16 +39,16 @@ $stroke-width: 3px;
   }
 }
 
-.gem-c-task-list__group {
+.gem-c-step-nav__group {
   position: relative;
 }
 
-.gem-c-task-list__groups {
+.gem-c-step-nav__groups {
   padding: 0;
   list-style: none;
 }
 
-.gem-c-task-list__circle {
+.gem-c-step-nav__circle {
   @include _core-font-generator(19px, 16px, 19px, 30px, 23px, false, bold);
   box-sizing: border-box;
   position: absolute;
@@ -61,56 +61,56 @@ $stroke-width: 3px;
   text-align: center;
 }
 
-.gem-c-task-list__circle--number {
+.gem-c-step-nav__circle--number {
   border: solid 3px $grey-2;
 }
 
-.gem-c-task-list__step,
-.gem-c-task-list__paragraph,
-.gem-c-task-list__links {
+.gem-c-step-nav__step,
+.gem-c-step-nav__paragraph,
+.gem-c-step-nav__links {
   @include core-16;
   padding-bottom: 1em;
 }
 
-.gem-c-task-list__step {
+.gem-c-step-nav__step {
   position: relative;
   padding-left: 60px;
 }
 
-.gem-c-task-list__title {
+.gem-c-step-nav__title {
   @include bold-19;
   margin: 0 0 0.5em 0;
   padding: 0;
 }
 
-.gem-c-task-list__button--title {
+.gem-c-step-nav__button--title {
   @include bold-19;
   padding: 0;
   border: 0;
   background: none;
 }
 
-.gem-c-task-list__context {
+.gem-c-step-nav__context {
   &:before {
     content: " \2013  ";
   }
 }
 
-.gem-c-task-list__panel-link--active {
+.gem-c-step-nav__panel-link--active {
   font-weight: bold;
 }
 
-.gem-c-task-list__links {
+.gem-c-step-nav__links {
   padding-left: 0;
   list-style: none;
 }
 
-.gem-c-task-list__links--choice {
+.gem-c-step-nav__links--choice {
   padding-left: 30px;
   list-style: disc;
 }
 
-.gem-c-task-list__link {
+.gem-c-step-nav__link {
   margin-bottom: 0.3em;
 }
 

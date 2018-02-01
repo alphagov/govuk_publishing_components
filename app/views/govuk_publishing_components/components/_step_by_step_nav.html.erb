@@ -6,8 +6,8 @@
   small ||= false
   show_step ||= false
   remember_last_step ||= false
-  task_list_url ||= false
-  task_list_url_link_text ||= "Get help completing this step"
+  step_nav_url ||= false
+  step_nav_link_text ||= "Get help completing this step"
   highlight_step ||= false
 
   step_count = 0
@@ -15,33 +15,33 @@
 %>
 <% if steps %>
   <div
-    data-module="gemtasklist"
-    class="gem-c-task-list js-hidden <% unless small %>gem-c-task-list--large<% end %>"
+    data-module="gemstepnav"
+    class="gem-c-step-nav js-hidden <% unless small %>gem-c-step-nav--large<% end %>"
     <% if remember_last_step %>data-remember<% end %>
   >
-    <ol class="gem-c-task-list__steps">
+    <ol class="gem-c-step-nav__steps">
       <% steps.each_with_index do |step, step_index| %>
         <%
           step_is_active = step_index + 1 == highlight_step
           step_count += 1
-          id = TaskListHelper.new.generate_task_list_id(step[:title])
+          id = StepNavHelper.new.generate_step_nav_id(step[:title])
 
           logic = false
           logic = step[:logic] if ["and", "or"].include? step[:logic]
-          circle_class = "gem-c-task-list__circle--number"
-          circle_class = "gem-c-task-list__circle--logic" if logic
+          circle_class = "gem-c-step-nav__circle--number"
+          circle_class = "gem-c-step-nav__circle--logic" if logic
         %>
-        <li class="gem-c-task-list__step js-step
-          <%= "gem-c-task-list__step--optional" if step[:optional] %>
-          <%= "gem-c-task-list__step--active" if step_is_active %>"
+        <li class="gem-c-step-nav__step js-step
+          <%= "gem-c-step-nav__step--optional" if step[:optional] %>
+          <%= "gem-c-step-nav__step--active" if step_is_active %>"
           <% if step_is_active %>aria-current="step"<% end %>
           <%= "data-show" if step_count == show_step %>
           id="<%= id %>"
-          data-track-count="tasklistSection"
+          data-track-count="stepNavSection"
         >
-          <div class="gem-c-task-list__circle <%= circle_class %>">
-            <span class="gem-c-task-list__circle-inner">
-              <span class="gem-c-task-list__circle-background">
+          <div class="gem-c-step-nav__circle <%= circle_class %>">
+            <span class="gem-c-step-nav__circle-inner">
+              <span class="gem-c-step-nav__circle-background">
                 <% if logic %>
                   <%= logic %>
                 <% else %>
@@ -54,18 +54,18 @@
             </span>
           </div>
 
-          <div class="gem-c-task-list__header js-toggle-panel" data-position="<%= "#{step_index + 1}" %>">
-            <%= content_tag("h#{heading_level}", step[:title], class: 'gem-c-task-list__title js-step-title') %>
+          <div class="gem-c-step-nav__header js-toggle-panel" data-position="<%= "#{step_index + 1}" %>">
+            <%= content_tag("h#{heading_level}", step[:title], class: 'gem-c-step-nav__title js-step-title') %>
           </div>
 
-          <div class="gem-c-task-list__panel js-panel" id="step-panel-<%= id %>-<%= step_index + 1 %>">
+          <div class="gem-c-step-nav__panel js-panel" id="step-panel-<%= id %>-<%= step_index + 1 %>">
             <%
               in_substep = false
               options[:step_index] = step_index
               options[:link_index] = 0
             %>
             <% step[:contents].each do |element| %>
-              <%= TaskListHelper.new.render_task_list_element(element, options) %>
+              <%= StepNavHelper.new.render_step_nav_element(element, options) %>
               <%
                 if element[:type] == 'list'
                   options[:link_index] += element[:contents].length
@@ -77,7 +77,7 @@
                   </div>
                   <% in_substep = false %>
                 <% end %>
-                <div class="gem-c-task-list__substep <% if element[:optional] %>gem-c-task-list__substep--optional<% end %>">
+                <div class="gem-c-step-nav__substep <% if element[:optional] %>gem-c-step-nav__substep--optional<% end %>">
                 <% in_substep = true %>
               <% end %>
             <% end %>
@@ -86,9 +86,9 @@
               </div>
             <% end %>
 
-            <% if task_list_url && step[:show_help_link] %>
-              <div class="gem-c-task-list__help">
-                <a href="<%= task_list_url %>#<%= id %>" class="gem-c-task-list__help-link js-link" data-position="get-help"><%= task_list_url_link_text %></a>
+            <% if step_nav_url && step[:show_help_link] %>
+              <div class="gem-c-step-nav__help">
+                <a href="<%= step_nav_url %>#<%= id %>" class="gem-c-step-nav__help-link js-link" data-position="get-help"><%= step_nav_link_text %></a>
               </div>
             <% end %>
           </div>
