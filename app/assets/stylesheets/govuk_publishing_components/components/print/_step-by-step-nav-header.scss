@@ -1,14 +1,14 @@
 // scss-lint:disable SelectorFormat
 
-.gem-c-task-list-header__part-of {
+.gem-c-step-nav-header__part-of {
   display: block;
 }
 
-.gem-c-task-list-header__title {
+.gem-c-step-nav-header__title {
   @include bold-24;
 }
 
-.gem-c-task-list-header__skip-link {
+.gem-c-step-nav-header__skip-link {
   display: none;
 }
 

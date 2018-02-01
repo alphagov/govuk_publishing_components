@@ -5,12 +5,12 @@
   skip_link_text ||= "Skip content"
 %>
 <% if title %>
-  <div class="gem-c-task-list-header" data-module="track-click">
-    <span class="gem-c-task-list-header__part-of">Part of</span>
+  <div class="gem-c-step-nav-header" data-module="track-click">
+    <span class="gem-c-step-nav-header__part-of">Part of</span>
     <% if path %>
       <a href="<%= path %>"
-        class="gem-c-task-list-header__title"
-        data-track-category="tasklistHeaderClicked"
+        class="gem-c-step-nav-header__title"
+        data-track-category="stepNavHeaderClicked"
         data-track-action="top"
         data-track-label="<%= path %>"
         data-track-dimension="<%= title %>"
@@ -18,15 +18,15 @@
         <%= title %>
       </a>
     <% else %>
-      <span class="gem-c-task-list-header__title">
+      <span class="gem-c-step-nav-header__title">
         <%= title %>
       </span>
     <% end %>
 
     <% if skip_link %>
       <a href="<%= skip_link %>"
-        class="gem-c-task-list-header__skip-link"
-        data-track-category="tasklistHeaderClicked"
+        class="gem-c-step-nav-header__skip-link"
+        data-track-category="stepNavHeaderClicked"
         data-track-action="top"
         data-track-label="<%= skip_link %>"
         data-track-dimension="<%= skip_link_text %>"

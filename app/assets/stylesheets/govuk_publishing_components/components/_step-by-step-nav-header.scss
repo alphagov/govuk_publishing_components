@@ -1,4 +1,4 @@
-.gem-c-task-list-header {
+.gem-c-step-nav-header {
   position: relative;
   padding: 10px;
   background: $grey-4;
@@ -12,18 +12,18 @@
 
 // scss-lint:disable SelectorFormat
 
-.gem-c-task-list-header__part-of {
+.gem-c-step-nav-header__part-of {
   @include bold-16;
 
   display: block;
   padding-bottom: 0.2em;
 }
 
-.gem-c-task-list-header__title {
+.gem-c-step-nav-header__title {
   @include bold-24;
 }
 
-.gem-c-task-list-header__skip-link {
+.gem-c-step-nav-header__skip-link {
   position: absolute;
   top: 0;
   right: 9999em;
