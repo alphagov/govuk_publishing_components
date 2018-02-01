@@ -70,7 +70,7 @@
             <textarea id="what_wrong" class="gem-c-feedback__form-field" name="what_wrong" rows="4" aria-required="true"></textarea>
           </div>
 
-          <input class="gem-c-feedback__submit" type="submit" value="Submit">
+          <%= render "govuk_component/button", text: "Submit"  %>
       </div>
     </div>
   </form>
@@ -97,7 +97,7 @@
             <input id="email-field" class="gem-c-feedback__form-field" type="text" name="email_survey_signup[email_address]">
           </div>
 
-          <input class="gem-c-feedback__submit" type="submit" value="Send me the survey">
+          <%= render "govuk_component/button", text: "Send me the survey"  %>
           <a href="https://www.smartsurvey.co.uk/s/govukbanner/?c=<%= request.fullpath -%>&amp;gcl=1627485790.1515403243" id="take-survey" target="_blank" rel="noopener noreferrer">Don’t have an email address?</a>
       </div>
     </div>
