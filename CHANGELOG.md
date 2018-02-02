@@ -14,6 +14,11 @@ And for print styles
 @import "govuk_publishing_components/all_components_print";
 ```
 
+# 4.1.1
+
+* Fix Heroku review apps (PR #149)
+* Remove doubly included stylesheets (PR #148)
+* Update installation instructions (PR #147)
 * Refactor task list component code (PR #143)
 * Fix task list related namespace (PR #141)
 
