@@ -1,5 +1,7 @@
 # Unreleased
 
+# 5.0.0
+
 * Rename task list components (PR #156), breaking change
 * Remove task list groups (PR #154), breaking change
 
