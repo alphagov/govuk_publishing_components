@@ -25,3 +25,5 @@ en:
       or: 'or'
     back_link:
       back: 'Back'
+    step_by_step_nav_related:
+      part_of: "Part of"

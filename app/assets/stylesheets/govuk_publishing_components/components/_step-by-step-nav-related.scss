@@ -1,15 +1,15 @@
-.gem-c-task-list-related {
+.gem-c-step-nav-related {
   margin-bottom: $gutter-half;
 }
 
-.gem-c-task-list-related__heading,
-.gem-c-task-list-related__links {
+.gem-c-step-nav-related__heading,
+.gem-c-step-nav-related__links {
   @include bold-19;
   margin: 0;
   padding: 0;
 }
 
-.gem-c-task-list-related__pretitle {
+.gem-c-step-nav-related__pretitle {
   display: block;
   margin-bottom: $gutter-half;
 
@@ -18,11 +18,11 @@
   }
 }
 
-.gem-c-task-list-related__links {
+.gem-c-step-nav-related__links {
   list-style: none;
 }
 
-.gem-c-task-list-related__link-item {
+.gem-c-step-nav-related__link-item {
   margin-top: $gutter-half;
 
   @include media(tablet) {
@@ -30,7 +30,7 @@
   }
 }
 
-.gem-c-task-list-related__link {
+.gem-c-step-nav-related__link {
   text-decoration: none;
 
   &:hover {

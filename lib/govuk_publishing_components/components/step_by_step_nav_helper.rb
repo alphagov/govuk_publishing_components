@@ -1,8 +1,8 @@
-class TaskListHelper
+class StepNavHelper
   include ActionView::Helpers
   include ActionView::Context
 
-  def render_task_list_element(element, options)
+  def render_step_nav_element(element, options)
     @options = options
     @link_index = options[:link_index]
 
@@ -17,7 +17,7 @@ class TaskListHelper
   end
 
   # id should be lowercase, contain only numbers and letters and replace spaces with dashes
-  def generate_task_list_id(step_title)
+  def generate_step_nav_id(step_title)
     step_title.downcase.tr(" ", "-").gsub(/[^a-z0-9\-\s]/i, '')
   end
 
@@ -27,7 +27,7 @@ private
     content_tag(
       :p,
       text,
-      class: "gem-c-task-list__paragraph"
+      class: "gem-c-step-nav__paragraph"
     )
   end
 
@@ -35,14 +35,14 @@ private
     content_tag(
       "h#{@options[:heading_level] + 1}",
       text,
-      class: "gem-c-task-list__heading"
+      class: "gem-c-step-nav__heading"
     )
   end
 
   def list(element)
     content_tag(
       get_list_element(element[:style]),
-      class: "gem-c-task-list__links #{get_list_style(element[:style])}",
+      class: "gem-c-step-nav__links #{get_list_style(element[:style])}",
       data: {
         length: element[:contents].length
       }
@@ -51,7 +51,7 @@ private
         concat(
           content_tag(
             :li,
-            class: "gem-c-task-list__link js-list-item #{link_active(contents[:active])}"
+            class: "gem-c-step-nav__link js-list-item #{link_active(contents[:active])}"
           ) do
             create_list_item_content(contents)
           end
@@ -72,7 +72,7 @@ private
         data: {
           position: "#{@options[:step_index] + 1}.#{@link_index}"
         },
-        class: "gem-c-task-list__link-item js-link"
+        class: "gem-c-step-nav__link-item js-link"
       ) do
         text
       end
@@ -82,14 +82,14 @@ private
   end
 
   def create_context(context)
-    content_tag(:span, context, class: "gem-c-task-list__context") if context
+    content_tag(:span, context, class: "gem-c-step-nav__context") if context
   end
 
   def get_list_style(style)
     if style == "required"
-      "gem-c-task-list__links--required"
+      "gem-c-step-nav__links--required"
     elsif style == "choice"
-      "gem-c-task-list__links--choice"
+      "gem-c-step-nav__links--choice"
     end
   end
 
@@ -106,6 +106,6 @@ private
   end
 
   def link_active(active)
-    "gem-c-task-list__link--active" if active
+    "gem-c-step-nav__link--active" if active
   end
 end

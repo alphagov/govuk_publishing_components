@@ -4,7 +4,7 @@
   "use strict";
   window.GOVUK = window.GOVUK || {};
 
-  Modules.Gemtasklist = function () {
+  Modules.Gemstepnav = function () {
 
     var actions = {
       showLinkText: "Show",
@@ -25,9 +25,9 @@
     };
 
     var rememberShownStep = false;
-    var taskListSize;
-    var sessionStoreLink = 'govuk-task-list-active-link';
-    var activeLinkClass = 'gem-c-task-list__link--active';
+    var stepNavSize;
+    var sessionStoreLink = 'govuk-step-nav-active-link';
+    var activeLinkClass = 'gem-c-step-nav__link--active';
     var activeLinkHref = '#content';
 
     this.start = function ($element) {
@@ -35,21 +35,21 @@
       $(window).unload(storeScrollPosition);
 
       // Indicate that js has worked
-      $element.addClass('gem-c-task-list--active');
+      $element.addClass('gem-c-step-nav--active');
 
       // Prevent FOUC, remove class hiding content
       $element.removeClass('js-hidden');
 
       rememberShownStep = !!$element.filter('[data-remember]').length;
-      taskListSize = $element.hasClass('gem-c-task-list--large') ? 'Big' : 'Small';
+      stepNavSize = $element.hasClass('gem-c-step-nav--large') ? 'Big' : 'Small';
       var $steps = $element.find('.js-step');
       var $stepHeaders = $element.find('.js-toggle-panel');
       var totalSteps = $element.find('.js-panel').length;
-      var totalLinks = $element.find('.gem-c-task-list__link-item').length;
+      var totalLinks = $element.find('.gem-c-step-nav__link-item').length;
 
       var $showOrHideAllButton;
 
-      var tasklistTracker = new TasklistTracker(totalSteps, totalLinks);
+      var stepNavTracker = new StepNavTracker(totalSteps, totalLinks);
 
       addButtonstoSteps();
       addShowHideAllButton();
@@ -60,11 +60,11 @@
       showLinkedStep();
       ensureOnlyOneActiveLink();
 
-      bindToggleForSteps(tasklistTracker);
-      bindToggleShowHideAllButton(tasklistTracker);
-      bindComponentLinkClicks(tasklistTracker);
+      bindToggleForSteps(stepNavTracker);
+      bindToggleShowHideAllButton(stepNavTracker);
+      bindComponentLinkClicks(stepNavTracker);
 
-      // When navigating back in browser history to the tasklist, the browser will try to be "clever" and return
+      // When navigating back in browser history to the step nav, the browser will try to be "clever" and return
       // the user to their previous scroll position. However, since we collapse all but the currently-anchored
       // step, the content length changes and the user is returned to the wrong position (often the footer).
       // In order to correct this behaviour, as the user leaves the page, we anticipate the correct height we wish the
@@ -83,7 +83,7 @@
       }
 
       function addShowHideAllButton() {
-        $element.prepend('<div class="gem-c-task-list__controls"><button aria-expanded="false" class="gem-c-task-list__button gem-c-task-list__button--controls js-step-controls-button">' + bulkActions.showAll.buttonText + '</button></div>');
+        $element.prepend('<div class="gem-c-step-nav__controls"><button aria-expanded="false" class="gem-c-step-nav__button gem-c-step-nav__button--controls js-step-controls-button">' + bulkActions.showAll.buttonText + '</button></div>');
       }
 
       function addShowHideToggle() {
@@ -94,7 +94,7 @@
             linkText = actions.hideLinkText;
           }
           if (!$(this).find('.js-toggle-link').length) {
-            $(this).append('<span class="gem-c-task-list__toggle-link js-toggle-link">' + linkText + '</span>');
+            $(this).append('<span class="gem-c-step-nav__toggle-link js-toggle-link">' + linkText + '</span>');
           }
         });
       }
@@ -156,20 +156,20 @@
 
           $title.wrapInner(
             '<button ' +
-            'class="gem-c-task-list__button gem-c-task-list__button--title js-step-title-button" ' +
+            'class="gem-c-step-nav__button gem-c-step-nav__button--title js-step-title-button" ' +
             'aria-expanded="false" aria-controls="' + contentId + '">' +
             '</button>' );
         });
       }
 
-      function bindToggleForSteps(tasklistTracker) {
+      function bindToggleForSteps(stepNavTracker) {
         $element.find('.js-toggle-panel').click(function (event) {
           preventLinkFollowingForCurrentTab(event);
 
           var stepView = new StepView($(this).closest('.js-step'));
           stepView.toggle();
 
-          var toggleClick = new StepToggleClick(event, stepView, $steps, tasklistTracker);
+          var toggleClick = new StepToggleClick(event, stepView, $steps, stepNavTracker);
           toggleClick.track();
 
           setShowHideAllText();
@@ -177,9 +177,9 @@
       }
 
       // tracking click events on links in step content
-      function bindComponentLinkClicks(tasklistTracker) {
+      function bindComponentLinkClicks(stepNavTracker) {
         $element.find('.js-link').click(function (event) {
-          var linkClick = new componentLinkClick(event, tasklistTracker, $(this).attr('data-position'));
+          var linkClick = new componentLinkClick(event, stepNavTracker, $(this).attr('data-position'));
           linkClick.track();
           var thisLinkHref = $(this).attr('href');
 
@@ -223,7 +223,7 @@
           removeActiveStateFromAllButCurrent($activeLinks, lastClicked);
           removeFromSessionStorage(sessionStoreLink);
         } else {
-          var activeLinkInActiveStep = $element.find('.gem-c-task-list__step--active').find('.' + activeLinkClass).first();
+          var activeLinkInActiveStep = $element.find('.gem-c-step-nav__step--active').find('.' + activeLinkClass).first();
 
           if (activeLinkInActiveStep.length) {
             $activeLinks.removeClass(activeLinkClass);
@@ -252,7 +252,7 @@
         event.preventDefault();
       }
 
-      function bindToggleShowHideAllButton(tasklistTracker) {
+      function bindToggleShowHideAllButton(stepNavTracker) {
         $showOrHideAllButton = $element.find('.js-step-controls-button');
         $showOrHideAllButton.on('click', function () {
           var shouldshowAll;
@@ -262,16 +262,16 @@
             $element.find('.js-toggle-link').text(actions.hideLinkText)
             shouldshowAll = true;
 
-            tasklistTracker.track('pageElementInteraction', 'tasklistAllShown', {
-              label: bulkActions.showAll.eventLabel + ": " + taskListSize
+            stepNavTracker.track('pageElementInteraction', 'stepNavAllShown', {
+              label: bulkActions.showAll.eventLabel + ": " + stepNavSize
             });
           } else {
             $showOrHideAllButton.text(bulkActions.showAll.buttonText);
             $element.find('.js-toggle-link').text(actions.showLinkText);
             shouldshowAll = false;
 
-            tasklistTracker.track('pageElementInteraction', 'tasklistAllHidden', {
-              label: bulkActions.hideAll.eventLabel + ": " + taskListSize
+            stepNavTracker.track('pageElementInteraction', 'stepNavAllHidden', {
+              label: bulkActions.hideAll.eventLabel + ": " + stepNavSize
             });
           }
 
@@ -376,17 +376,17 @@
       history.replaceState({}, '', newLocation);
     }
 
-    function StepToggleClick(event, stepView, $steps, tasklistTracker) {
+    function StepToggleClick(event, stepView, $steps, stepNavTracker) {
       this.track = trackClick;
       var $target = $(event.target);
 
       function trackClick() {
         var tracking_options = {label: trackingLabel(), dimension28: stepView.numberOfContentItems().toString()}
-        tasklistTracker.track('pageElementInteraction', trackingAction(), tracking_options);
+        stepNavTracker.track('pageElementInteraction', trackingAction(), tracking_options);
 
         if (!stepView.isHidden()) {
-          tasklistTracker.track(
-            'tasklistLinkClicked',
+          stepNavTracker.track(
+            'stepNavLinkClicked',
             String(stepIndex()),
             {
               label: stepView.href,
@@ -398,7 +398,7 @@
       }
 
       function trackingLabel() {
-        return $target.closest('.js-toggle-panel').attr('data-position') + ' - ' + stepView.title + ' - ' + locateClickElement() + ": " + taskListSize;
+        return $target.closest('.js-toggle-panel').attr('data-position') + ' - ' + stepView.title + ' - ' + locateClickElement() + ": " + stepNavSize;
       }
 
       // returns index of the clicked step in the overall number of steps
@@ -407,7 +407,7 @@
       }
 
       function trackingAction() {
-        return (stepView.isHidden() ? 'tasklistHidden' : 'tasklistShown');
+        return (stepView.isHidden() ? 'stepNavHidden' : 'stepNavShown');
       }
 
       function locateClickElement() {
@@ -433,27 +433,27 @@
       }
     }
 
-    function componentLinkClick(event, tasklistTracker, linkPosition) {
+    function componentLinkClick(event, stepNavTracker, linkPosition) {
       this.track = trackClick;
 
       function trackClick() {
-        var tracking_options = {label: $(event.target).attr('href') + " : " + taskListSize};
-        var dimension28 = $(event.target).closest('.gem-c-task-list__links').attr('data-length');
+        var tracking_options = {label: $(event.target).attr('href') + " : " + stepNavSize};
+        var dimension28 = $(event.target).closest('.gem-c-step-nav__links').attr('data-length');
 
         if (dimension28) {
           tracking_options['dimension28'] = dimension28;
         }
 
-        tasklistTracker.track('taskAccordionLinkClicked', linkPosition, tracking_options);
+        stepNavTracker.track('stepNavLinkClicked', linkPosition, tracking_options);
       }
     }
 
     // A helper that sends a custom event request to Google Analytics if
     // the GOVUK module is setup
-    function TasklistTracker(totalSteps, totalLinks) {
+    function StepNavTracker(totalSteps, totalLinks) {
       this.track = function(category, action, options) {
-        // dimension26 records the total number of expand/collapse steps in this tasklist
-        // dimension27 records the total number of links in this tasklist
+        // dimension26 records the total number of expand/collapse steps in this step nav
+        // dimension27 records the total number of links in this step nav
         // dimension28 records the number of links in the step that was shown/hidden (handled in click event)
         if (GOVUK.analytics && GOVUK.analytics.trackEvent) {
           options = options || {};

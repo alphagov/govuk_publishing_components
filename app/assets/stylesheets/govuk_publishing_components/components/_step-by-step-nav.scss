@@ -8,7 +8,7 @@ $number-circle-size-large: 35px;
 $dot-size: 16px;
 $top-border: solid 2px $grey-3;
 
-@mixin task-list-vertical-line ($line-style: solid) {
+@mixin step-nav-vertical-line ($line-style: solid) {
   content: "";
   position: absolute;
   z-index: 2;
@@ -18,27 +18,27 @@ $top-border: solid 2px $grey-3;
   background: $white;
 }
 
-@mixin task-list-line-position {
+@mixin step-nav-line-position {
   left: 0;
   margin-left: ($number-circle-size / 2) - ($stroke-width / 2);
 }
 
-@mixin task-list-line-position-large {
+@mixin step-nav-line-position-large {
   left: 0;
   margin-left: ($number-circle-size-large / 2) - ($stroke-width-large / 2);
   border-width: $stroke-width-large;
 }
 
-.gem-c-task-list {
+.gem-c-step-nav {
   margin-bottom: $gutter-half;
 }
 
-.gem-c-task-list__controls {
+.gem-c-step-nav__controls {
   padding: 3px 3px 0 0;
   text-align: right;
 }
 
-.gem-c-task-list__button {
+.gem-c-step-nav__button {
   color: $link-colour;
   cursor: pointer;
   background: none;
@@ -48,69 +48,69 @@ $top-border: solid 2px $grey-3;
 
 // removes extra dotted outline from buttons in Firefox
 // on focus (standard yellow outline unaffected)
-.gem-c-task-list__button::-moz-focus-inner {
+.gem-c-step-nav__button::-moz-focus-inner {
   border: 0;
 }
 
-.gem-c-task-list__button--title {
+.gem-c-step-nav__button--title {
   @include _core-font-generator(19px, 19px, 19px, 1.4, 1.4, false, bold);
   display: inline-block;
   padding: 0;
   text-align: left;
   color: $black;
 
-  .gem-c-task-list--large & {
+  .gem-c-step-nav--large & {
     @include _core-font-generator(24px, 19px, 24px, 1.4, 1.4, false, bold);
   }
 }
 
-.gem-c-task-list__button--controls {
+.gem-c-step-nav__button--controls {
   @include _core-font-generator(14px, 14px, 14px, 1, 1, false);
   position: relative;
   z-index: 1; // this and relative position stops focus outline underlap with border of accordion
   padding: 0.5em 0;
 
-  .gem-c-task-list--large & {
+  .gem-c-step-nav--large & {
     @include _core-font-generator(16px, 14px, 16px, 1, 1, false);
   }
 }
 
-.gem-c-task-list__steps {
+.gem-c-step-nav__steps {
   padding: 0;
   margin: 0;
 }
 
-.gem-c-task-list__step {
+.gem-c-step-nav__step {
   position: relative;
   padding-left: $gutter + $gutter-half;
   list-style: none;
 
   // line down the side of a step
   &:after {
-    @include task-list-vertical-line;
-    @include task-list-line-position;
+    @include step-nav-vertical-line;
+    @include step-nav-line-position;
     top: $gutter-half;
   }
 
-  .gem-c-task-list--large & {
+  .gem-c-step-nav--large & {
     @include media(tablet) {
       padding-left: $gutter * 2;
 
       &:after {
-        @include task-list-line-position-large;
+        @include step-nav-line-position-large;
         top: $gutter;
       }
     }
   }
 }
 
-.gem-c-task-list__step--optional {
+.gem-c-step-nav__step--optional {
   // broken line down the side of a step
   &:after {
     border-left-style: dotted;
   }
 
-  .gem-c-task-list--large & {
+  .gem-c-step-nav--large & {
     @include media(tablet) {
       &:after {
         border-width: $stroke-width-large;
@@ -119,7 +119,7 @@ $top-border: solid 2px $grey-3;
   }
 }
 
-.gem-c-task-list__step:last-child {
+.gem-c-step-nav__step:last-child {
   // little dash at the bottom of the line
   &:before {
     content: "";
@@ -140,11 +140,11 @@ $top-border: solid 2px $grey-3;
     // scss-lint:enable DuplicateProperty
   }
 
-  .gem-c-task-list__help:after {
+  .gem-c-step-nav__help:after {
     height: 100%;
   }
 
-  .gem-c-task-list--large & {
+  .gem-c-step-nav--large & {
     @include media(tablet) {
       &:before {
         margin-left: $number-circle-size-large / 4;
@@ -159,17 +159,17 @@ $top-border: solid 2px $grey-3;
   }
 }
 
-.gem-c-task-list__step--active {
+.gem-c-step-nav__step--active {
   &:last-child:before,
-  .gem-c-task-list__circle--number,
+  .gem-c-step-nav__circle--number,
   &:after,
-  .gem-c-task-list__substep:after,
-  .gem-c-task-list__help:after {
+  .gem-c-step-nav__substep:after,
+  .gem-c-step-nav__help:after {
     border-color: $black;
   }
 }
 
-.gem-c-task-list__circle {
+.gem-c-step-nav__circle {
   @include box-sizing(border-box);
   position: absolute;
   z-index: 5;
@@ -182,7 +182,7 @@ $top-border: solid 2px $grey-3;
   border-radius: 100px;
   text-align: center;
 
-  .gem-c-task-list--large & {
+  .gem-c-step-nav--large & {
     @include media(tablet) {
       top: $gutter;
       width: $number-circle-size-large;
@@ -191,11 +191,11 @@ $top-border: solid 2px $grey-3;
   }
 }
 
-.gem-c-task-list__circle--number {
+.gem-c-step-nav__circle--number {
   @include _core-font-generator(16px, 16px, 16px, 23px, 23px, false, bold);
   border: solid $stroke-width $grey-2;
 
-  .gem-c-task-list--large & {
+  .gem-c-step-nav--large & {
     @include _core-font-generator(19px, 16px, 19px, 30px, 23px, false, bold);
 
     @include media(tablet) {
@@ -204,21 +204,21 @@ $top-border: solid 2px $grey-3;
   }
 }
 
-.gem-c-task-list__circle--logic {
+.gem-c-step-nav__circle--logic {
   @include _core-font-generator(16px, 16px, 16px, 28px, 28px, false, bold);
 
-  .gem-c-task-list--large & {
+  .gem-c-step-nav--large & {
     @include _core-font-generator(19px, 16px, 19px, 34px, 28px, false, bold);
   }
 }
 
 // makes sure logic text expands to the left if text size is zoomed, preventing overlap
-.gem-c-task-list__circle-inner {
+.gem-c-step-nav__circle-inner {
   float: right;
   min-width: 100%;
 }
 
-.gem-c-task-list__circle-background {
+.gem-c-step-nav__circle-background {
   $shadow-offset: 0.1em;
   $shadow-colour: $white;
 
@@ -229,128 +229,128 @@ $top-border: solid 2px $grey-3;
               -#{$shadow-offset} 0 0 $shadow-colour;
 }
 
-.gem-c-task-list__header {
+.gem-c-step-nav__header {
   padding: $gutter-half 0;
   border-top: $top-border;
 
-  .gem-c-task-list--active & {
+  .gem-c-step-nav--active & {
     cursor: pointer;
   }
 
   &:hover {
-    .gem-c-task-list__button {
+    .gem-c-step-nav__button {
       color: $link-colour;
     }
 
-    .gem-c-task-list__toggle-link {
+    .gem-c-step-nav__toggle-link {
       text-decoration: underline;
     }
   }
 
-  .gem-c-task-list--large & {
+  .gem-c-step-nav--large & {
     @include media(tablet) {
       padding: $gutter 0;
     }
   }
 }
 
-.gem-c-task-list__title {
+.gem-c-step-nav__title {
   @include _core-font-generator(19px, 19px, 19px, 1.4, 1.4, false, bold);
   margin: 0;
 
-  .gem-c-task-list--large & {
+  .gem-c-step-nav--large & {
     @include _core-font-generator(24px, 19px, 24px, 1.4, 1.4, false, bold);
   }
 }
 
-.gem-c-task-list__toggle-link {
+.gem-c-step-nav__toggle-link {
   @include _core-font-generator(14px, 14px, 14px, 1.2, 1.2, false);
   display: block;
   color: $link-colour;
 
-  .gem-c-task-list--large & {
+  .gem-c-step-nav--large & {
     @include _core-font-generator(16px, 14px, 16px, 1.2, 1.2, false);
   }
 }
 
-.gem-c-task-list__panel {
+.gem-c-step-nav__panel {
   @include _core-font-generator(16px, 16px, 16px);
 
-  .gem-c-task-list--large & {
+  .gem-c-step-nav--large & {
     @include _core-font-generator(19px, 16px, 19px);
   }
 }
 
-// contents of the task list, such as paragraphs and links
+// contents of the steps, such as paragraphs and links
 
-.gem-c-task-list__paragraph,
-.gem-c-task-list__heading {
+.gem-c-step-nav__paragraph,
+.gem-c-step-nav__heading {
   padding-bottom: $gutter-half;
   margin: 0;
   font-size: inherit;
 
-  + .gem-c-task-list__links {
+  + .gem-c-step-nav__links {
     margin-top: -5px;
 
-    .gem-c-task-list--large & {
+    .gem-c-step-nav--large & {
       @include media(tablet) {
         margin-top: -$gutter-half;
       }
     }
   }
 
-  .gem-c-task-list--large & {
+  .gem-c-step-nav--large & {
     @include media(tablet) {
       padding-bottom: $gutter;
     }
   }
 }
 
-.gem-c-task-list__heading {
+.gem-c-step-nav__heading {
   font-weight: bold;
 }
 
-.gem-c-task-list__links {
+.gem-c-step-nav__links {
   padding: 0;
   padding-bottom: 10px;
 
-  .gem-c-task-list--large & {
+  .gem-c-step-nav--large & {
     @include media(tablet) {
       padding-bottom: 20px;
     }
   }
 }
 
-.gem-c-task-list__links--required {
-  .gem-c-task-list__link-item {
+.gem-c-step-nav__links--required {
+  .gem-c-step-nav__link-item {
     font-weight: bold;
   }
 }
 
-.gem-c-task-list__links--choice {
+.gem-c-step-nav__links--choice {
   $links-margin: 20px;
 
   margin-left: $links-margin;
   list-style: disc;
 
-  .gem-c-task-list__link--active:before {
+  .gem-c-step-nav__link--active:before {
     left: -($gutter + $gutter-half) - $links-margin;
   }
 
-  .gem-c-task-list--large & {
+  .gem-c-step-nav--large & {
     @include media(tablet) {
-      .gem-c-task-list__link--active:before {
+      .gem-c-step-nav__link--active:before {
         left: -($gutter * 2) - $links-margin;
       }
     }
   }
 }
 
-.gem-c-task-list__link {
+.gem-c-step-nav__link {
   margin-bottom: 10px;
 }
 
-.gem-c-task-list__link--active {
+.gem-c-step-nav__link--active {
   position: relative;
 
   &:before {
@@ -369,7 +369,7 @@ $top-border: solid 2px $grey-3;
     border-radius: 100px;
   }
 
-  .gem-c-task-list--large & {
+  .gem-c-step-nav--large & {
     @include media(tablet) {
       &:before {
         left: -($gutter * 2);
@@ -378,7 +378,7 @@ $top-border: solid 2px $grey-3;
     }
   }
 
-  .gem-c-task-list__link-item {
+  .gem-c-step-nav__link-item {
     color: $black;
 
     &:visited,
@@ -389,7 +389,7 @@ $top-border: solid 2px $grey-3;
   }
 }
 
-.gem-c-task-list__link-item {
+.gem-c-step-nav__link-item {
   text-decoration: none;
 
   &:hover {
@@ -397,7 +397,7 @@ $top-border: solid 2px $grey-3;
   }
 }
 
-.gem-c-task-list__context {
+.gem-c-step-nav__context {
   display: inline-block;
   font-weight: normal;
   color: $grey-1;
@@ -407,30 +407,30 @@ $top-border: solid 2px $grey-3;
   }
 }
 
-.gem-c-task-list__help {
+.gem-c-step-nav__help {
   position: relative;
   padding: $gutter-half 0;
   border-top: $top-border;
 
   &:after {
-    @include task-list-vertical-line(dotted);
-    @include task-list-line-position;
+    @include step-nav-vertical-line(dotted);
+    @include step-nav-line-position;
     z-index: 3;
     top: 0;
     left: -($gutter + $gutter-half);
     height: calc(100% + #{$gutter});
   }
 
-  .gem-c-task-list__step--optional & {
+  .gem-c-step-nav__step--optional & {
     &:after {
       display: none;
     }
   }
 
-  .gem-c-task-list--large & {
+  .gem-c-step-nav--large & {
     @include media(tablet) {
       &:after {
-        @include task-list-line-position-large;
+        @include step-nav-line-position-large;
         left: -($gutter * 2);
         height: calc(100% + #{$gutter} + #{$gutter-half});
       }
@@ -438,7 +438,7 @@ $top-border: solid 2px $grey-3;
   }
 }
 
-.gem-c-task-list__help-link {
+.gem-c-step-nav__help-link {
   text-decoration: none;
   font-weight: bold;
 
@@ -447,31 +447,31 @@ $top-border: solid 2px $grey-3;
   }
 }
 
-.gem-c-task-list__substep {
+.gem-c-step-nav__substep {
   position: relative;
   padding-top: $gutter-half;
   border-top: $top-border;
 
   &:after {
-    @include task-list-vertical-line;
-    @include task-list-line-position;
+    @include step-nav-vertical-line;
+    @include step-nav-line-position;
     z-index: 3;
     top: 0;
     left: -($gutter + $gutter-half);
   }
 
-  .gem-c-task-list--large & {
+  .gem-c-step-nav--large & {
     @include media(tablet) {
       padding-top: $gutter;
 
       &:after {
-        @include task-list-line-position-large;
+        @include step-nav-line-position-large;
         left: -($gutter * 2);
       }
     }
   }
 }
 
-.gem-c-task-list__substep--optional:after {
+.gem-c-step-nav__substep--optional:after {
   border-left-style: dotted;
 }

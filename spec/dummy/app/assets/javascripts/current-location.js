@@ -1,4 +1,4 @@
-// used by the tasklist component
+// used by the step by step navigation component
 
 (function(root) {
   "use strict";

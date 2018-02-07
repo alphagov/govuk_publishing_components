@@ -1,5 +1,6 @@
 # Unreleased
 
+* Rename task list components (PR #156), breaking change
 * Remove task list groups (PR #154), breaking change
 
 * To include the CSS for all components in the gem, you can now do:

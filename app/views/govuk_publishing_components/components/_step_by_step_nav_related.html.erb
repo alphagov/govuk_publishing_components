@@ -1,15 +1,15 @@
 <%
   links ||= false
-  pretitle ||= t("govuk_component.task_list_related.part_of", default: "Part of")
+  pretitle ||= t("govuk_component.step_by_step_nav_related.part_of", default: "Part of")
 %>
 <% if links %>
-  <div class="gem-c-task-list-related" data-module="track-click">
-    <h2 class="gem-c-task-list-related__heading">
-      <span class="gem-c-task-list-related__pretitle"><%= pretitle %></span>
+  <div class="gem-c-step-nav-related" data-module="track-click">
+    <h2 class="gem-c-step-nav-related__heading">
+      <span class="gem-c-step-nav-related__pretitle"><%= pretitle %></span>
       <% if links.length == 1 %>
           <a href="<%= links[0][:href] %>"
-            class="gem-c-task-list-related__link"
-            data-track-category="tasklistPartOfClicked"
+            class="gem-c-step-nav-related__link"
+            data-track-category="stepNavPartOfClicked"
             data-track-action="<%= pretitle %>"
             data-track-label="<%= links[0][:href] %>"
             data-track-dimension="<%= links[0][:text] %>"
@@ -19,12 +19,12 @@
         </h2>
       <% else %>
         </h2>
-        <ul class="gem-c-task-list-related__links">
+        <ul class="gem-c-step-nav-related__links">
           <% links.each do |link| %>
-            <li class="gem-c-task-list-related__link-item">
+            <li class="gem-c-step-nav-related__link-item">
               <a href="<%= link[:href] %>"
-                class="gem-c-task-list-related__link"
-                data-track-category="tasklistPartOfClicked"
+                class="gem-c-step-nav-related__link"
+                data-track-category="stepNavPartOfClicked"
                 data-track-action="<%= pretitle %>"
                 data-track-label="<%= link[:href] %>"
                 data-track-dimension="<%= link[:text] %>"

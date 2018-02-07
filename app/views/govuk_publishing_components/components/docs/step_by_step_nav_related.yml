@@ -1,12 +1,12 @@
-name: Task list related links
-description: Links to task lists that a page is part of
+name: Step by step navigation related links
+description: Links to step by step navigations that a page is part of
 body: |
-  The component is designed to go on a content page to accompany a small task list in a sidebar. It provides links to the main task list page.
+  The component is designed to go on a content page to accompany a small step by step navigation in a sidebar. It provides links to one or more step by step navigation pages.
 
   The component has two uses:
 
-  - above the task list, it provides a link to the main task list page
-  - below the task list, it shows and links to any other task lists that this page belongs to
+  - above the step by step navigation sidebar, it provides a link to the main step by step navigation
+  - below the step by step navigation sidebar, it shows and links to any other step by step navigations that this page belongs to
 
   In the first use case, only one link should be present and the entire text of the component should be contained in a heading. In the second use case, if more than one link is provided, the links should be shown in a list, separate from the heading.
 accessibility_criteria: |

@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-describe "Task List Related", type: :view do
+describe "Step by step navigation related", type: :view do
   def render_component(locals)
-    render file: "govuk_publishing_components/components/_task_list_related", locals: locals
+    render file: "govuk_publishing_components/components/_step_by_step_nav_related", locals: locals
   end
 
   def one_link
@@ -34,11 +34,11 @@ describe "Task List Related", type: :view do
   it "displays one link inside a heading" do
     render_component(links: one_link)
 
-    this_link = ".gem-c-task-list-related .gem-c-task-list-related__heading .gem-c-task-list-related__link"
+    this_link = ".gem-c-step-nav-related .gem-c-step-nav-related__heading .gem-c-step-nav-related__link"
 
-    assert_select ".gem-c-task-list-related .gem-c-task-list-related__heading .gem-c-task-list-related__pretitle", text: 'Part of'
+    assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__heading .gem-c-step-nav-related__pretitle", text: 'Part of'
     assert_select this_link + "[href='/link1']", text: 'Link 1'
-    assert_select this_link + "[data-track-category='tasklistPartOfClicked']"
+    assert_select this_link + "[data-track-category='stepNavPartOfClicked']"
     assert_select this_link + "[data-track-action='Part of']"
     assert_select this_link + "[data-track-label='/link1']"
     assert_select this_link + "[data-track-dimension='Link 1']"
@@ -48,12 +48,12 @@ describe "Task List Related", type: :view do
   it "displays more than one link in a list" do
     render_component(links: two_links)
 
-    this_link = ".gem-c-task-list-related .gem-c-task-list-related__links .gem-c-task-list-related__link[href='/link2']"
+    this_link = ".gem-c-step-nav-related .gem-c-step-nav-related__links .gem-c-step-nav-related__link[href='/link2']"
 
-    assert_select ".gem-c-task-list-related .gem-c-task-list-related__heading .gem-c-task-list-related__pretitle", text: 'Part of'
-    assert_select ".gem-c-task-list-related .gem-c-task-list-related__links .gem-c-task-list-related__link[href='/link1']", text: 'Link 1'
+    assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__heading .gem-c-step-nav-related__pretitle", text: 'Part of'
+    assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__links .gem-c-step-nav-related__link[href='/link1']", text: 'Link 1'
     assert_select this_link, text: 'Link 2'
-    assert_select this_link + "[data-track-category='tasklistPartOfClicked']"
+    assert_select this_link + "[data-track-category='stepNavPartOfClicked']"
     assert_select this_link + "[data-track-action='Part of']"
     assert_select this_link + "[data-track-label='/link2']"
     assert_select this_link + "[data-track-dimension='Link 2']"
@@ -63,7 +63,7 @@ describe "Task List Related", type: :view do
   it "shows alternative heading text" do
     render_component(links: one_link, pretitle: 'Moo')
 
-    assert_select ".gem-c-task-list-related__pretitle", text: 'Moo'
-    assert_select ".gem-c-task-list-related__link[data-track-action='Moo']"
+    assert_select ".gem-c-step-nav-related__pretitle", text: 'Moo'
+    assert_select ".gem-c-step-nav-related__link[data-track-action='Moo']"
   end
 end
