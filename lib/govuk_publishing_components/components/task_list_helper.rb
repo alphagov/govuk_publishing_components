@@ -70,7 +70,7 @@ private
         href,
         rel: ("external" if href.start_with?('http')),
         data: {
-          position: "#{@options[:group_index] + 1}.#{@options[:step_index] + 1}.#{@link_index}"
+          position: "#{@options[:step_index] + 1}.#{@link_index}"
         },
         class: "gem-c-task-list__link-item js-link"
       ) do

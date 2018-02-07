@@ -2,102 +2,97 @@
   options = {}
   options[:heading_level] = heading_level ||= 2
 
-  groups ||= false
+  steps ||= false
   small ||= false
   show_step ||= false
   remember_last_step ||= false
   task_list_url ||= false
   task_list_url_link_text ||= "Get help completing this step"
-  highlight_group ||= false
+  highlight_step ||= false
 
   step_count = 0
+  step_number = 0
 %>
-<% if groups %>
+<% if steps %>
   <div
     data-module="gemtasklist"
     class="gem-c-task-list js-hidden <% unless small %>gem-c-task-list--large<% end %>"
     <% if remember_last_step %>data-remember<% end %>
-    >
-    <ol class="gem-c-task-list__groups">
-      <% groups.each_with_index do |group, group_index| %>
+  >
+    <ol class="gem-c-task-list__steps">
+      <% steps.each_with_index do |step, step_index| %>
         <%
-          group_is_active = group_index + 1 == highlight_group
+          step_is_active = step_index + 1 == highlight_step
+          step_count += 1
+          id = TaskListHelper.new.generate_task_list_id(step[:title])
+
+          logic = false
+          logic = step[:logic] if ["and", "or"].include? step[:logic]
+          circle_class = "gem-c-task-list__circle--number"
+          circle_class = "gem-c-task-list__circle--logic" if logic
         %>
-        <li class="gem-c-task-list__group <%= 'gem-c-task-list__group--active' if group_is_active %>" <% if group_is_active %>aria-current="step"<% end %>>
-          <span class="gem-c-task-list__circle gem-c-task-list__circle--number">
+        <li class="gem-c-task-list__step js-step
+          <%= "gem-c-task-list__step--optional" if step[:optional] %>
+          <%= "gem-c-task-list__step--active" if step_is_active %>"
+          <% if step_is_active %>aria-current="step"<% end %>
+          <%= "data-show" if step_count == show_step %>
+          id="<%= id %>"
+          data-track-count="tasklistSection"
+        >
+          <div class="gem-c-task-list__circle <%= circle_class %>">
             <span class="gem-c-task-list__circle-inner">
               <span class="gem-c-task-list__circle-background">
-                <span class="visuallyhidden">Step</span> <%= group_index + 1 %>
+                <% if logic %>
+                  <%= logic %>
+                <% else %>
+                  <%
+                    step_number += 1
+                  %>
+                  <span class="visuallyhidden">Step</span> <%= step_number %>
+                <% end %>
               </span>
             </span>
-          </span>
+          </div>
 
-          <% group.each_with_index do |step, step_index| %>
+          <div class="gem-c-task-list__header js-toggle-panel" data-position="<%= "#{step_index + 1}" %>">
+            <%= content_tag("h#{heading_level}", step[:title], class: 'gem-c-task-list__title js-step-title') %>
+          </div>
+
+          <div class="gem-c-task-list__panel js-panel" id="step-panel-<%= id %>-<%= step_index + 1 %>">
             <%
-              step_count += 1
-              id = TaskListHelper.new.generate_task_list_id(step[:title])
-
-              logic = "and"
-              logic = step[:logic] if ["and", "or"].include? step[:logic]
+              in_substep = false
+              options[:step_index] = step_index
+              options[:link_index] = 0
             %>
-            <div
-              class="gem-c-task-list__step js-step <%= "gem-c-task-list__step--optional" if step[:optional] %>"
-              id="<%= id %>"
-              data-track-count="tasklistSection"
-              <%= "data-show" if step_count == show_step %>
-              >
-              <% if step_index > 0 %>
-                <div class="gem-c-task-list__circle gem-c-task-list__circle--logic">
-                  <span class="gem-c-task-list__circle-inner">
-                    <span class="gem-c-task-list__circle-background">
-                      <%= logic %>
-                    </span>
-                  </span>
-                </div>
-              <% end %>
+            <% step[:contents].each do |element| %>
+              <%= TaskListHelper.new.render_task_list_element(element, options) %>
+              <%
+                if element[:type] == 'list'
+                  options[:link_index] += element[:contents].length
+                end
+              %>
 
-              <div class="gem-c-task-list__header js-toggle-panel" data-position="<%= "#{group_index + 1}.#{step_index + 1}" %>">
-                <%= content_tag("h#{heading_level}", step[:title], class: 'gem-c-task-list__title js-step-title') %>
-              </div>
-
-              <div class="gem-c-task-list__panel js-panel" id="step-panel-<%= id %>-<%= step_index + 1 %>">
-                <%
-                  in_substep = false
-                  options[:group_index] = group_index
-                  options[:step_index] = step_index
-                  options[:link_index] = 0
-                %>
-                <% step[:contents].each do |element| %>
-                  <%= TaskListHelper.new.render_task_list_element(element, options) %>
-                  <%
-                    if element[:type] == 'list'
-                      options[:link_index] += element[:contents].length
-                    end
-                  %>
-
-                  <% if element[:type] == 'substep' %>
-                    <% if in_substep %>
-                      </div>
-                      <% in_substep = false %>
-                    <% end %>
-                    <div class="gem-c-task-list__substep <% if element[:optional] %>gem-c-task-list__substep--optional<% end %>">
-                    <% in_substep = true %>
-                  <% end %>
-                <% end %>
-
+              <% if element[:type] == 'substep' %>
                 <% if in_substep %>
                   </div>
+                  <% in_substep = false %>
                 <% end %>
+                <div class="gem-c-task-list__substep <% if element[:optional] %>gem-c-task-list__substep--optional<% end %>">
+                <% in_substep = true %>
+              <% end %>
+            <% end %>
 
-                <% if task_list_url && step[:show_help_link] %>
-                  <div class="gem-c-task-list__help">
-                    <a href="<%= task_list_url %>#<%= id %>" class="gem-c-task-list__help-link js-link" data-position="get-help"><%= task_list_url_link_text %></a>
-                  </div>
-                <% end %>
+            <% if in_substep %>
               </div>
+            <% end %>
 
-            </div>
-          <% end %>
+            <% if task_list_url && step[:show_help_link] %>
+              <div class="gem-c-task-list__help">
+                <a href="<%= task_list_url %>#<%= id %>" class="gem-c-task-list__help-link js-link" data-position="get-help"><%= task_list_url_link_text %></a>
+              </div>
+            <% end %>
+          </div>
+
         </li>
       <% end %>
     </ol>

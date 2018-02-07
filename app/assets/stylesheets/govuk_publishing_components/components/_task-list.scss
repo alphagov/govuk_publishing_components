@@ -19,12 +19,12 @@ $top-border: solid 2px $grey-3;
 }
 
 @mixin task-list-line-position {
-  left: -($gutter + $gutter-half);
+  left: 0;
   margin-left: ($number-circle-size / 2) - ($stroke-width / 2);
 }
 
 @mixin task-list-line-position-large {
-  left: -($gutter * 2);
+  left: 0;
   margin-left: ($number-circle-size-large / 2) - ($stroke-width-large / 2);
   border-width: $stroke-width-large;
 }
@@ -75,79 +75,15 @@ $top-border: solid 2px $grey-3;
   }
 }
 
-.gem-c-task-list__groups {
+.gem-c-task-list__steps {
   padding: 0;
   margin: 0;
 }
 
-.gem-c-task-list__group {
+.gem-c-task-list__step {
   position: relative;
   padding-left: $gutter + $gutter-half;
   list-style: none;
-
-  .gem-c-task-list--large & {
-    @include media(tablet) {
-      padding-left: $gutter * 2;
-    }
-  }
-}
-
-.gem-c-task-list__group:last-child {
-  // little dash at the bottom of the line
-  &:before {
-    content: "";
-    position: absolute;
-    z-index: 6;
-    bottom: 0;
-    left: 0;
-    margin-left: $number-circle-size / 4;
-    width: $number-circle-size / 2;
-    height: 0;
-    border-bottom: solid $stroke-width $grey-2;
-  }
-
-  .gem-c-task-list__step:last-child {
-    &:after {
-      // scss-lint:disable DuplicateProperty
-      height: -webkit-calc(100% - #{$gutter-half}); // fallback
-      height: calc(100% - #{$gutter-half});
-      // scss-lint:enable DuplicateProperty
-    }
-
-    .gem-c-task-list__help:after {
-      height: 100%;
-    }
-  }
-
-  .gem-c-task-list--large & {
-    @include media(tablet) {
-      &:before {
-        margin-left: $number-circle-size-large / 4;
-        width: $number-circle-size-large / 2;
-        border-width: $stroke-width-large;
-      }
-
-      .gem-c-task-list__step:last-child {
-        &:after {
-          height: calc(100% - #{$gutter});
-        }
-      }
-    }
-  }
-}
-
-.gem-c-task-list__group--active {
-  &:last-child:before,
-  .gem-c-task-list__circle--number,
-  .gem-c-task-list__step:after,
-  .gem-c-task-list__substep:after,
-  .gem-c-task-list__help:after {
-    border-color: $black;
-  }
-}
-
-.gem-c-task-list__step {
-  position: relative;
 
   // line down the side of a step
   &:after {
@@ -158,6 +94,8 @@ $top-border: solid 2px $grey-3;
 
   .gem-c-task-list--large & {
     @include media(tablet) {
+      padding-left: $gutter * 2;
+
       &:after {
         @include task-list-line-position-large;
         top: $gutter;
@@ -181,11 +119,62 @@ $top-border: solid 2px $grey-3;
   }
 }
 
+.gem-c-task-list__step:last-child {
+  // little dash at the bottom of the line
+  &:before {
+    content: "";
+    position: absolute;
+    z-index: 6;
+    bottom: 0;
+    left: 0;
+    margin-left: $number-circle-size / 4;
+    width: $number-circle-size / 2;
+    height: 0;
+    border-bottom: solid $stroke-width $grey-2;
+  }
+
+  &:after {
+    // scss-lint:disable DuplicateProperty
+    height: -webkit-calc(100% - #{$gutter-half}); // fallback for iphone 4
+    height: calc(100% - #{$gutter-half});
+    // scss-lint:enable DuplicateProperty
+  }
+
+  .gem-c-task-list__help:after {
+    height: 100%;
+  }
+
+  .gem-c-task-list--large & {
+    @include media(tablet) {
+      &:before {
+        margin-left: $number-circle-size-large / 4;
+        width: $number-circle-size-large / 2;
+        border-width: $stroke-width-large;
+      }
+
+      &:after {
+        height: calc(100% - #{$gutter});
+      }
+    }
+  }
+}
+
+.gem-c-task-list__step--active {
+  &:last-child:before,
+  .gem-c-task-list__circle--number,
+  &:after,
+  .gem-c-task-list__substep:after,
+  .gem-c-task-list__help:after {
+    border-color: $black;
+  }
+}
+
 .gem-c-task-list__circle {
   @include box-sizing(border-box);
   position: absolute;
   z-index: 5;
   top: $gutter-half;
+  left: 0;
   width: $number-circle-size;
   height: $number-circle-size;
   color: $black;
@@ -204,7 +193,6 @@ $top-border: solid 2px $grey-3;
 
 .gem-c-task-list__circle--number {
   @include _core-font-generator(16px, 16px, 16px, 23px, 23px, false, bold);
-  left: 0;
   border: solid $stroke-width $grey-2;
 
   .gem-c-task-list--large & {
@@ -218,14 +206,9 @@ $top-border: solid 2px $grey-3;
 
 .gem-c-task-list__circle--logic {
   @include _core-font-generator(16px, 16px, 16px, 28px, 28px, false, bold);
-  left: -($gutter + $gutter-half);
 
   .gem-c-task-list--large & {
     @include _core-font-generator(19px, 16px, 19px, 34px, 28px, false, bold);
-
-    @include media(tablet) {
-      left: -$gutter * 2;
-    }
   }
 }
 
@@ -434,6 +417,7 @@ $top-border: solid 2px $grey-3;
     @include task-list-line-position;
     z-index: 3;
     top: 0;
+    left: -($gutter + $gutter-half);
     height: calc(100% + #{$gutter});
   }
 
@@ -447,6 +431,7 @@ $top-border: solid 2px $grey-3;
     @include media(tablet) {
       &:after {
         @include task-list-line-position-large;
+        left: -($gutter * 2);
         height: calc(100% + #{$gutter} + #{$gutter-half});
       }
     }
@@ -472,6 +457,7 @@ $top-border: solid 2px $grey-3;
     @include task-list-line-position;
     z-index: 3;
     top: 0;
+    left: -($gutter + $gutter-half);
   }
 
   .gem-c-task-list--large & {
@@ -480,6 +466,7 @@ $top-border: solid 2px $grey-3;
 
       &:after {
         @include task-list-line-position-large;
+        left: -($gutter * 2);
       }
     }
   }
