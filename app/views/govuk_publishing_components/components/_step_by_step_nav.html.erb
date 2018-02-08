@@ -41,23 +41,27 @@
           id="<%= id %>"
           data-track-count="stepNavSection"
         >
-          <div class="gem-c-step-nav__circle <%= circle_class %>">
-            <span class="gem-c-step-nav__circle-inner">
-              <span class="gem-c-step-nav__circle-background">
-                <% if logic %>
-                  <%= logic %>
-                <% else %>
-                  <%
-                    step_number += 1
-                  %>
-                  <span class="visuallyhidden">Step</span> <%= step_number %>
-                <% end %>
-              </span>
-            </span>
-          </div>
-
           <div class="gem-c-step-nav__header js-toggle-panel" data-position="<%= "#{step_index + 1}" %>">
-            <%= content_tag("h#{heading_level}", step[:title], class: 'gem-c-step-nav__title js-step-title') %>
+            <%= content_tag("h#{heading_level}", class: 'gem-c-step-nav__title') do %>
+              <div class="gem-c-step-nav__circle <%= circle_class %>">
+                <span class="gem-c-step-nav__circle-inner">
+                  <span class="gem-c-step-nav__circle-background">
+                    <% if logic %>
+                      <%= logic %>
+                    <% else %>
+                      <%
+                        step_number += 1
+                      %>
+                      <span class="visuallyhidden">Step</span> <%= step_number %>
+                    <% end %>
+                  </span>
+                </span>
+              </div>
+
+              <span class="js-step-title">
+                <%= step[:title] %>
+              </span>
+            <% end %>
           </div>
 
           <div class="gem-c-step-nav__panel js-panel" id="step-panel-<%= id %>-<%= step_index + 1 %>">

@@ -155,11 +155,11 @@ describe "step nav", type: :view do
     assert_select ".gem-c-step-nav"
 
     assert_select ".gem-c-step-nav__step#step-1"
-    assert_select step1 + " .gem-c-step-nav__title", text: "Step 1"
+    assert_select step1 + " .gem-c-step-nav__title .js-step-title", text: "Step 1"
     assert_select step1 + " .gem-c-step-nav__paragraph", text: "Step 1 paragraph"
 
     assert_select ".gem-c-step-nav__step#step-2"
-    assert_select step2 + " .gem-c-step-nav__title", text: "Step 2"
+    assert_select step2 + " .gem-c-step-nav__title .js-step-title", text: "Step 2"
     assert_select step2 + " .gem-c-step-nav__paragraph", text: "Step 2 paragraph"
   end
 
@@ -172,8 +172,8 @@ describe "step nav", type: :view do
   it "renders a stepnav with different heading levels" do
     render_component(steps: stepnav, heading_level: 4)
 
-    assert_select step1 + " h4.gem-c-step-nav__title", text: "Step 1"
-    assert_select step2 + " h4.gem-c-step-nav__title", text: "Step 2"
+    assert_select step1 + " h4.gem-c-step-nav__title .js-step-title", text: "Step 1"
+    assert_select step2 + " h4.gem-c-step-nav__title .js-step-title", text: "Step 2"
   end
 
   it "renders headings correctly if the heading level is changed" do
