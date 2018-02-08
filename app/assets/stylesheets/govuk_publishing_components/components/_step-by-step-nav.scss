@@ -69,6 +69,11 @@ $top-border: solid 2px $grey-3;
   position: relative;
   z-index: 1; // this and relative position stops focus outline underlap with border of accordion
   padding: 0.5em 0;
+  text-decoration: underline;
+
+  &:hover {
+    color: $link-hover-colour;
+  }
 
   .gem-c-step-nav--large & {
     @include _core-font-generator(16px, 14px, 16px, 1, 1, false);
