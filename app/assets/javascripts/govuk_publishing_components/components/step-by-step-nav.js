@@ -95,7 +95,7 @@
             linkText = actions.hideLinkText;
           }
           if (!$(this).find('.js-toggle-link').length) {
-            $(this).append('<span class="gem-c-step-nav__toggle-link js-toggle-link">' + linkText + '</span>');
+            $(this).append('<span class="gem-c-step-nav__toggle-link js-toggle-link" aria-hidden="true">' + linkText + '</span>');
           }
         });
       }
