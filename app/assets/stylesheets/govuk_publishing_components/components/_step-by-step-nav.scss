@@ -30,7 +30,13 @@ $top-border: solid 2px $grey-3;
 }
 
 .gem-c-step-nav {
-  margin-bottom: $gutter-half;
+  margin-bottom: $gutter;
+
+  &.gem-c-step-nav--large {
+    @include media(tablet) {
+      margin-bottom: $gutter * 2;
+    }
+  }
 }
 
 .gem-c-step-nav__controls {
