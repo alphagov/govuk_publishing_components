@@ -95,7 +95,7 @@
             linkText = actions.hideLinkText;
           }
           if (!$(this).find('.js-toggle-link').length) {
-            $(this).append('<span class="gem-c-step-nav__toggle-link js-toggle-link" aria-hidden="true">' + linkText + '</span>');
+            $(this).find('.js-step-title-button').append('<span class="gem-c-step-nav__toggle-link js-toggle-link" aria-hidden="true">' + linkText + '</span>');
           }
         });
       }
@@ -154,6 +154,10 @@
           var $step = $(this);
           var $title = $step.find('.js-step-title');
           var contentId = $step.find('.js-panel').first().attr('id');
+
+          $title.wrapInner(
+            '<span class="js-step-title-text"></span>'
+            );
 
           $title.wrapInner(
             '<button ' +
@@ -308,8 +312,7 @@
       var $stepContent = $stepElement.find('.js-panel');
       var shouldUpdateHash = rememberShownStep;
 
-      this.title = $stepElement.find('.js-step-title').text();
-      this.href = $titleLink.attr('href');
+      this.title = $stepElement.find('.js-step-title-text').text().trim();
       this.element = $stepElement;
 
       this.show = show;
@@ -426,7 +429,7 @@
       }
 
       function clickedOnHeading() {
-        return $target.hasClass('js-step-title-button');
+        return $target.hasClass('js-step-title-text');
       }
 
       function iconType() {
