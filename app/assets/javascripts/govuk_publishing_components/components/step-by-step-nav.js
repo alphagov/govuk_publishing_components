@@ -387,18 +387,6 @@
       function trackClick() {
         var tracking_options = {label: trackingLabel(), dimension28: stepView.numberOfContentItems().toString()}
         stepNavTracker.track('pageElementInteraction', trackingAction(), tracking_options);
-
-        if (!stepView.isHidden()) {
-          stepNavTracker.track(
-            'stepNavLinkClicked',
-            String(stepIndex()),
-            {
-              label: stepView.href,
-              dimension28: String(stepView.numberOfContentItems()),
-              dimension29: stepView.title
-            }
-          )
-        }
       }
 
       function trackingLabel() {
