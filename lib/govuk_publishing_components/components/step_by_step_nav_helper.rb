@@ -86,11 +86,7 @@ private
   end
 
   def get_list_style(style)
-    if style == "required"
-      "gem-c-step-nav__links--required"
-    elsif style == "choice"
-      "gem-c-step-nav__links--choice"
-    end
+    "gem-c-step-nav__links--choice" if style == "choice"
   end
 
   def get_list_element(style)

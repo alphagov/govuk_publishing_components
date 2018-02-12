@@ -332,12 +332,6 @@ $top-border: solid 2px $grey-3;
   }
 }
 
-.gem-c-step-nav__links--required {
-  .gem-c-step-nav__link-item {
-    font-weight: bold;
-  }
-}
-
 .gem-c-step-nav__links--choice {
   $links-margin: 20px;
 
@@ -391,20 +385,13 @@ $top-border: solid 2px $grey-3;
 
   .gem-c-step-nav__link-item {
     color: $black;
+    text-decoration: none;
 
     &:visited,
     &:active,
     &:link {
       color: $black;
     }
-  }
-}
-
-.gem-c-step-nav__link-item {
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
   }
 }
 

@@ -18,7 +18,6 @@ describe "step nav", type: :view do
           },
           {
             type: 'list',
-            style: 'required',
             contents: [
               {
                 href: '/link1',
@@ -253,10 +252,9 @@ describe "step nav", type: :view do
     assert_select step2or + " .gem-c-step-nav__circle--logic .gem-c-step-nav__circle-inner .gem-c-step-nav__circle-background", text: "or"
   end
 
-  it "applies the correct required and choice styles correctly to lists" do
+  it "applies the correct styles to lists" do
     render_component(steps: stepnav)
 
-    assert_select step1 + " .gem-c-step-nav__links.gem-c-step-nav__links--required"
     assert_select step2 + " .gem-c-step-nav__links.gem-c-step-nav__links--choice"
   end
 

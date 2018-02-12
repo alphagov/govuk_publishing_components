@@ -191,7 +191,7 @@ examples:
     description: |
       Links can have the following attributes:
 
-      - style, an attribute on the parent list that controls its appearance, either required (bold), optional (not bold) or choice (not bold, with bullets on the list). The default is optional.
+      - style, an attribute on the parent list that controls its appearance. Defaults to optional but can be set to 'choice' (adds indent and bullets to the list)
       - context, an optional text field to show some extra information after the link, usually a monetary value
       - active, whether to make the link highlighted (to indicate the current page)
       - highlight_step, a general option to highlight the step. Usually the active link would be in the active step, but in some circumstances there might be an active step but no highlighted link.
@@ -212,7 +212,6 @@ examples:
             },
             {
               type: 'list',
-              style: 'required',
               contents: [
                 {
                   href: '/component-guide/step_by_step_navigation/with_links/preview',
@@ -228,31 +227,6 @@ examples:
                 {
                   href: '/component-guide/step_by_step_navigation/with_links/preview',
                   text: 'Maintain contact with the ground at all times',
-                  active: true
-                }
-              ]
-            },
-            {
-              type: 'paragraph',
-              text: 'These links represent tasks that are optional.'
-            },
-            {
-              type: 'list',
-              contents: [
-                {
-                  href: '/component-guide/step_by_step_navigation/with_links/preview',
-                  text: 'Learn to play the saxophone',
-                  active: true
-                },
-                {
-                  href: '/component-guide/step_by_step_navigation/with_links/preview',
-                  text: 'Develop a new method of extracting juice from oranges',
-                  context: '&pound;0 to &pound;300',
-                  active: true
-                },
-                {
-                  href: '/component-guide/step_by_step_navigation/with_links/preview',
-                  text: 'Buy a race car',
                   active: true
                 }
               ]
@@ -285,7 +259,6 @@ examples:
           contents: [
             {
               type: 'list',
-              style: 'required',
               contents: [
                 {
                   href: '/component-guide/step_by_step_navigation/',
@@ -362,7 +335,6 @@ examples:
             },
             {
               type: 'list',
-              style: 'required',
               contents: [
                 {
                   href: 'http://solicitors.lawsociety.org.uk/',
@@ -384,7 +356,6 @@ examples:
             },
             {
               type: 'list',
-              style: 'required',
               contents: [
                 {
                   href: '/looking-after-children-divorce/apply-for-court-order',
@@ -428,7 +399,6 @@ examples:
           contents: [
             {
               type: 'list',
-              style: 'required',
               contents: [
                 {
                   href: 'http://google.com',
@@ -457,7 +427,6 @@ examples:
           contents: [
             {
               type: 'list',
-              style: 'required',
               contents: [
                 {
                   href: '/component-guide/step_by_step_navigation/with_links/preview',
@@ -687,7 +656,6 @@ examples:
             },
             {
               type: 'list',
-              style: 'required',
               contents: [
                 {
                   href: 'https://en.wikipedia.org/wiki/HDMI',
@@ -707,7 +675,6 @@ examples:
             },
             {
               type: 'list',
-              style: 'required',
               contents: [
                 {
                   href: 'https://www.google.co.uk/',
@@ -730,7 +697,6 @@ examples:
             },
             {
               type: 'list',
-              style: 'required',
               contents: [
                 {
                   href: 'http://www.google.com',
@@ -798,7 +764,6 @@ examples:
             },
             {
               type: 'list',
-              style: 'required',
               contents: [
                 {
                   href: 'http://www.google.com',
@@ -819,7 +784,6 @@ examples:
             },
             {
               type: 'list',
-              style: 'required',
               contents: [
                 {
                   href: 'http://www.google.com',
@@ -883,7 +847,6 @@ examples:
             },
             {
               type: 'list',
-              style: 'required',
               contents: [
                 {
                   href: 'https://en.wikipedia.org/wiki/HDMI',
@@ -903,7 +866,6 @@ examples:
             },
             {
               type: 'list',
-              style: 'required',
               contents: [
                 {
                   href: 'https://www.google.co.uk/',
@@ -926,7 +888,6 @@ examples:
             },
             {
               type: 'list',
-              style: 'required',
               contents: [
                 {
                   href: 'http://www.google.com',
@@ -994,7 +955,6 @@ examples:
             },
             {
               type: 'list',
-              style: 'required',
               contents: [
                 {
                   href: 'http://www.google.com',
@@ -1015,7 +975,6 @@ examples:
             },
             {
               type: 'list',
-              style: 'required',
               contents: [
                 {
                   href: 'http://www.google.com',
