@@ -23,14 +23,4 @@
   @include bold-24;
 }
 
-.gem-c-step-nav-header__skip-link {
-  position: absolute;
-  top: 0;
-  right: 9999em;
-
-  &:focus {
-    right: 0;
-  }
-}
-
 // scss-lint:enable SelectorFormat

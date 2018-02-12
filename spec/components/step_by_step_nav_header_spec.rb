@@ -33,23 +33,4 @@ describe "Step by step navigation header", type: :view do
 
     assert_select ".gem-c-step-nav-header .gem-c-step-nav-header__title[data-track-options='{\"dimension96\" : \"brian\" }']"
   end
-
-  it "renders with a skip link" do
-    render_component(title: "This is my title", skip_link: "#skiplink")
-
-    link = ".gem-c-step-nav-header .gem-c-step-nav-header__skip-link"
-
-    assert_select link + "[href='#skiplink']", text: "Skip content"
-    assert_select link + "[data-track-category='stepNavHeaderClicked']"
-    assert_select link + "[data-track-action='top']"
-    assert_select link + "[data-track-label='#skiplink']"
-    assert_select link + "[data-track-dimension='Skip content']"
-    assert_select link + "[data-track-dimension-index='29']"
-  end
-
-  it "renders with a skip link with custom text" do
-    render_component(title: "This is my title", skip_link: "#skiplink", skip_link_text: "It's hard to think of a good value")
-
-    assert_select ".gem-c-step-nav-header .gem-c-step-nav-header__skip-link[href='#skiplink']", text: "It's hard to think of a good value"
-  end
 end
