@@ -231,7 +231,7 @@ describe "step nav", type: :view do
   it "renders optional steps, sub steps and optional sub steps" do
     render_component(steps: stepnav)
 
-    assert_select ".gem-c-step-nav__step#step-1.gem-c-step-nav__step--optional"
+    assert_select ".gem-c-step-nav__step#step-1.gem-c-step-nav__step[data-optional]"
     assert_select step1 + " .gem-c-step-nav__substep .gem-c-step-nav__paragraph", text: "This paragraph is inside a required substep"
     assert_select step2 + " .gem-c-step-nav__substep.gem-c-step-nav__substep--optional .gem-c-step-nav__paragraph", text: "This paragraph is inside an optional substep"
   end

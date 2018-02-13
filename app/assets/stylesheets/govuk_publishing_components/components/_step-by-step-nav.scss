@@ -115,21 +115,6 @@ $top-border: solid 2px $grey-3;
   }
 }
 
-.gem-c-step-nav__step--optional {
-  // broken line down the side of a step
-  &:after {
-    border-left-style: dotted;
-  }
-
-  .gem-c-step-nav--large & {
-    @include media(tablet) {
-      &:after {
-        border-width: $stroke-width-large;
-      }
-    }
-  }
-}
-
 .gem-c-step-nav__step:last-child {
   // little dash at the bottom of the line
   &:before {
@@ -418,12 +403,6 @@ $top-border: solid 2px $grey-3;
     top: 0;
     left: -($gutter + $gutter-half);
     height: calc(100% + #{$gutter});
-  }
-
-  .gem-c-step-nav__step--optional & {
-    &:after {
-      display: none;
-    }
   }
 
   .gem-c-step-nav--large & {

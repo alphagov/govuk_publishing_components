@@ -170,11 +170,13 @@
       function bindToggleForSteps(stepNavTracker) {
         $element.find('.js-toggle-panel').click(function (event) {
           preventLinkFollowingForCurrentTab(event);
+          var $step = $(this).closest('.js-step');
 
-          var stepView = new StepView($(this).closest('.js-step'));
+          var stepView = new StepView($step);
           stepView.toggle();
 
-          var toggleClick = new StepToggleClick(event, stepView, $steps, stepNavTracker);
+          var stepIsOptional = typeof $step.data('optional') !== 'undefined' ? true : false;
+          var toggleClick = new StepToggleClick(event, stepView, $steps, stepNavTracker, stepIsOptional);
           toggleClick.track();
 
           setShowHideAllText();
@@ -380,7 +382,7 @@
       history.replaceState({}, '', newLocation);
     }
 
-    function StepToggleClick(event, stepView, $steps, stepNavTracker) {
+    function StepToggleClick(event, stepView, $steps, stepNavTracker, stepIsOptional) {
       this.track = trackClick;
       var $target = $(event.target);
 
@@ -390,7 +392,7 @@
       }
 
       function trackingLabel() {
-        return $target.closest('.js-toggle-panel').attr('data-position') + ' - ' + stepView.title + ' - ' + locateClickElement() + ": " + stepNavSize;
+        return $target.closest('.js-toggle-panel').attr('data-position') + ' - ' + stepView.title + ' - ' + locateClickElement() + ": " + stepNavSize + isOptional();
       }
 
       // returns index of the clicked step in the overall number of steps
@@ -422,6 +424,10 @@
 
       function iconType() {
         return (stepView.isHidden() ? 'Minus' : 'Plus');
+      }
+
+      function isOptional() {
+        return (stepIsOptional ? ' ; optional' : '');
       }
     }
 

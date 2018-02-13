@@ -33,7 +33,7 @@ describe('A stepnav module', function () {
               <div class="gem-c-step-nav__circle">\
                 <span class="gem-c-step-nav__circle-inner">\
                   <span class="gem-c-step-nav__circle-background">\
-                    <span class="visuallyhidden">Step</span> 1\
+                    <span class="visuallyhidden">Step</span> 2\
                   </span>\
                 </span>\
               </div>\
@@ -54,13 +54,13 @@ describe('A stepnav module', function () {
             </div>\
           </div>\
         </li>\
-        <li class="gem-c-step-nav__step gem-c-step-nav__step--active js-step" id="topic-step-three" data-track-count="stepnavStep">\
+        <li class="gem-c-step-nav__step gem-c-step-nav__step--active js-step" id="topic-step-three" data-track-count="stepnavStep" data-optional>\
           <div class="gem-c-step-nav__header js-toggle-panel" data-position="3">\
             <h2 class="gem-c-step-nav__title">\
               <div class="gem-c-step-nav__circle">\
                 <span class="gem-c-step-nav__circle-inner">\
                   <span class="gem-c-step-nav__circle-background">\
-                    <span class="visuallyhidden">Step</span> 1\
+                    <span class="visuallyhidden">Step</span> 3\
                   </span>\
                 </span>\
               </div>\
@@ -617,6 +617,24 @@ describe('A stepnav module', function () {
       dimension26: expectedstepnavStepCount.toString(),
       dimension27: expectedstepnavLinkCount.toString(),
       dimension96: "unique-id"
+    });
+  });
+
+  it("triggers a google analytics event when clicking to show an optional step", function () {
+    GOVUK.analytics = {
+      trackEvent: function () {
+      }
+    };
+    spyOn(GOVUK.analytics, 'trackEvent');
+
+    var $stepHeader = $element.find('.js-step:nth-child(3) .gem-c-step-nav__header');
+    $stepHeader.click();
+
+    expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavShown', {
+      label: '3 - Topic Step Three - Elsewhere click: Small ; optional',
+      dimension26: '3',
+      dimension27: '8',
+      dimension28: '5'
     });
   });
 

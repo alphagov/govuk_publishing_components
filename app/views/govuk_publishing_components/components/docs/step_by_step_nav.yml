@@ -449,7 +449,10 @@ examples:
       ]
   with_optional_steps:
     description: |
-      Steps can be optional. This is controlled by two parameters for maximum flexibility, 'optional' (which causes the step to have a dotted line down the side) and 'logic', which defaults to showing the word 'and' alongside the step title, but also accepts 'or'.
+      Steps can be optional. This is controlled by two parameters, 'optional' and 'logic'.
+
+      - Optional steps used to have a dotted line down the side but this was removed as it confused users. In some cases we may still need to record if a step is optional, so if this parameter is applied, GA tracking events will have 'optional' appended to the end of the eventLabel.
+      - Logic will change the number next to a step to the word 'and' or the word 'or'.
 
       If a step is optional this should be conveyed by the text within that step.
     data:

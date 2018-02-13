@@ -34,12 +34,12 @@
           circle_class = "gem-c-step-nav__circle--logic" if logic
         %>
         <li class="gem-c-step-nav__step js-step
-          <%= "gem-c-step-nav__step--optional" if step[:optional] %>
           <%= "gem-c-step-nav__step--active" if step_is_active %>"
           <% if step_is_active %>aria-current="step"<% end %>
           <%= "data-show" if step_count == show_step %>
           id="<%= id %>"
           data-track-count="stepNavSection"
+          <%= "data-optional" if step[:optional] %>
         >
           <div class="gem-c-step-nav__header js-toggle-panel" data-position="<%= "#{step_index + 1}" %>">
             <%= content_tag("h#{heading_level}", class: 'gem-c-step-nav__title') do %>
