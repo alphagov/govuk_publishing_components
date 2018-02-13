@@ -4,7 +4,7 @@ describe('A stepnav module', function () {
   var $element;
   var stepnav;
   var html = '\
-    <div data-module="gemstepnav" class="gem-c-step-nav js-hidden">\
+    <div data-module="gemstepnav" class="gem-c-step-nav js-hidden" data-id="unique-id">\
       <ol class="gem-c-step-nav__steps">\
         <li class="gem-c-step-nav__step js-step" id="topic-step-one" data-track-count="stepnavStep">\
           <span class="gem-c-step-nav__number">\
@@ -159,7 +159,8 @@ describe('A stepnav module', function () {
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavAllShown', {
         label: 'Show All: Small',
         dimension26: expectedstepnavStepCount.toString(),
-        dimension27: expectedstepnavLinkCount.toString()
+        dimension27: expectedstepnavLinkCount.toString(),
+        dimension96: "unique-id"
       });
     });
   });
@@ -178,13 +179,13 @@ describe('A stepnav module', function () {
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavAllHidden', {
         label: 'Hide All: Small',
         dimension26: expectedstepnavStepCount.toString(),
-        dimension27: expectedstepnavLinkCount.toString()
+        dimension27: expectedstepnavLinkCount.toString(),
+        dimension96: "unique-id"
       });
     });
   });
 
   describe('Opening a step', function () {
-
     // When a step is open (testing: toggleStep, openStep)
     it("has a class of step-is-shown", function () {
       var $stepLink = $element.find('.gem-c-step-nav__header .gem-c-step-nav__button--title');
@@ -214,7 +215,8 @@ describe('A stepnav module', function () {
         label: '1 - Topic Step One - Heading click: Small',
         dimension26: expectedstepnavStepCount.toString(),
         dimension27: expectedstepnavLinkCount.toString(),
-        dimension28: expectedstepnavContentCount.toString()
+        dimension28: expectedstepnavContentCount.toString(),
+        dimension96: "unique-id"
       });
     });
 
@@ -232,7 +234,8 @@ describe('A stepnav module', function () {
         label: '1 - Topic Step One - Plus click: Small',
         dimension26: expectedstepnavStepCount.toString(),
         dimension27: expectedstepnavLinkCount.toString(),
-        dimension28: expectedstepnavContentCount.toString()
+        dimension28: expectedstepnavContentCount.toString(),
+        dimension96: "unique-id"
       });
     });
 
@@ -250,13 +253,13 @@ describe('A stepnav module', function () {
         label: '1 - Topic Step One - Elsewhere click: Small',
         dimension26: expectedstepnavStepCount.toString(),
         dimension27: expectedstepnavLinkCount.toString(),
-        dimension28: expectedstepnavContentCount.toString()
+        dimension28: expectedstepnavContentCount.toString(),
+        dimension96: "unique-id"
       });
     });
   });
 
   describe('Hiding a step', function () {
-
     // When a step is hidden (testing: toggleStep, hideStep)
     it("removes the step-is-shown class", function () {
       var $stepLink = $element.find('.gem-c-step-nav__header .gem-c-step-nav__button--title');
@@ -291,7 +294,8 @@ describe('A stepnav module', function () {
         label: '1 - Topic Step One - Heading click: Small',
         dimension26: expectedstepnavStepCount.toString(),
         dimension27: expectedstepnavLinkCount.toString(),
-        dimension28: expectedstepnavContentCount.toString()
+        dimension28: expectedstepnavContentCount.toString(),
+        dimension96: "unique-id"
       });
     });
 
@@ -310,7 +314,8 @@ describe('A stepnav module', function () {
         label: '1 - Topic Step One - Minus click: Small',
         dimension26: expectedstepnavStepCount.toString(),
         dimension27: expectedstepnavLinkCount.toString(),
-        dimension28: expectedstepnavContentCount.toString()
+        dimension28: expectedstepnavContentCount.toString(),
+        dimension96: "unique-id"
       });
     });
 
@@ -321,7 +326,6 @@ describe('A stepnav module', function () {
       };
       spyOn(GOVUK.analytics, 'trackEvent');
 
-      stepnav.start($element);
       var $stepHeader = $element.find('.gem-c-step-nav__header');
       $stepHeader.click();
       $stepHeader.click();
@@ -330,7 +334,8 @@ describe('A stepnav module', function () {
         label: '1 - Topic Step One - Elsewhere click: Small',
         dimension26: expectedstepnavStepCount.toString(),
         dimension27: expectedstepnavLinkCount.toString(),
-        dimension28: expectedstepnavContentCount.toString()
+        dimension28: expectedstepnavContentCount.toString(),
+        dimension96: "unique-id"
       });
     });
   });
@@ -385,7 +390,8 @@ describe('A stepnav module', function () {
         label: '1 - Topic Step One - Heading click: Big',
         dimension26: expectedstepnavStepCount.toString(),
         dimension27: expectedstepnavLinkCount.toString(),
-        dimension28: expectedstepnavContentCount.toString()
+        dimension28: expectedstepnavContentCount.toString(),
+        dimension96: "unique-id"
       });
     });
 
@@ -403,7 +409,8 @@ describe('A stepnav module', function () {
         label: '1 - Topic Step One - Plus click: Big',
         dimension26: expectedstepnavStepCount.toString(),
         dimension27: expectedstepnavLinkCount.toString(),
-        dimension28: expectedstepnavContentCount.toString()
+        dimension28: expectedstepnavContentCount.toString(),
+        dimension96: "unique-id"
       });
     });
 
@@ -421,7 +428,8 @@ describe('A stepnav module', function () {
         label: '1 - Topic Step One - Elsewhere click: Big',
         dimension26: expectedstepnavStepCount.toString(),
         dimension27: expectedstepnavLinkCount.toString(),
-        dimension28: expectedstepnavContentCount.toString()
+        dimension28: expectedstepnavContentCount.toString(),
+        dimension96: "unique-id"
       });
     });
 
@@ -440,7 +448,8 @@ describe('A stepnav module', function () {
         label: '1 - Topic Step One - Heading click: Big',
         dimension26: expectedstepnavStepCount.toString(),
         dimension27: expectedstepnavLinkCount.toString(),
-        dimension28: expectedstepnavContentCount.toString()
+        dimension28: expectedstepnavContentCount.toString(),
+        dimension96: "unique-id"
       });
     });
 
@@ -459,7 +468,8 @@ describe('A stepnav module', function () {
         label: '1 - Topic Step One - Minus click: Big',
         dimension26: expectedstepnavStepCount.toString(),
         dimension27: expectedstepnavLinkCount.toString(),
-        dimension28: expectedstepnavContentCount.toString()
+        dimension28: expectedstepnavContentCount.toString(),
+        dimension96: "unique-id"
       });
     });
 
@@ -479,7 +489,8 @@ describe('A stepnav module', function () {
         label: '1 - Topic Step One - Elsewhere click: Big',
         dimension26: expectedstepnavStepCount.toString(),
         dimension27: expectedstepnavLinkCount.toString(),
-        dimension28: expectedstepnavContentCount.toString()
+        dimension28: expectedstepnavContentCount.toString(),
+        dimension96: "unique-id"
       });
     });
 
@@ -494,7 +505,8 @@ describe('A stepnav module', function () {
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavAllShown', {
         label: 'Show All: Big',
         dimension26: expectedstepnavStepCount.toString(),
-        dimension27: expectedstepnavLinkCount.toString()
+        dimension27: expectedstepnavLinkCount.toString(),
+        dimension96: "unique-id"
       });
     });
 
@@ -510,7 +522,8 @@ describe('A stepnav module', function () {
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavAllHidden', {
         label: 'Hide All: Big',
         dimension26: expectedstepnavStepCount.toString(),
-        dimension27: expectedstepnavLinkCount.toString()
+        dimension27: expectedstepnavLinkCount.toString(),
+        dimension96: "unique-id"
       });
     });
 
@@ -526,7 +539,8 @@ describe('A stepnav module', function () {
         label: '/link1 : Big',
         dimension26: expectedstepnavStepCount.toString(),
         dimension27: expectedstepnavLinkCount.toString(),
-        dimension28: expectedstepnavContentCount.toString()
+        dimension28: expectedstepnavContentCount.toString(),
+        dimension96: "unique-id"
       });
     });
 
@@ -543,7 +557,8 @@ describe('A stepnav module', function () {
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('stepNavLinkClicked', 'get-help', {
         label: '/learn#step-one : Big',
         dimension26: expectedstepnavStepCount.toString(),
-        dimension27: expectedstepnavLinkCount.toString()
+        dimension27: expectedstepnavLinkCount.toString(),
+        dimension96: "unique-id"
       });
     });
   });
@@ -562,7 +577,8 @@ describe('A stepnav module', function () {
       label: '/link1 : Small',
       dimension26: expectedstepnavStepCount.toString(),
       dimension27: expectedstepnavLinkCount.toString(),
-      dimension28: expectedstepnavContentCount.toString()
+      dimension28: expectedstepnavContentCount.toString(),
+      dimension96: "unique-id"
     });
   });
 
@@ -579,7 +595,8 @@ describe('A stepnav module', function () {
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('stepNavLinkClicked', 'get-help', {
       label: '/learn#step-one : Small',
       dimension26: expectedstepnavStepCount.toString(),
-      dimension27: expectedstepnavLinkCount.toString()
+      dimension27: expectedstepnavLinkCount.toString(),
+      dimension96: "unique-id"
     });
   });
 
@@ -665,6 +682,154 @@ describe('A stepnav module', function () {
       expect(sessionStorage.getItem('govuk-step-nav-active-link')).toBe(null);
       expect($element.find('.js-link[data-position="2.1"]').closest('.js-list-item')).toHaveClass('gem-c-step-nav__link--active');
       expect($element.find(('.gem-c-step-nav__link--active')).length).toBe(1);
+    });
+  });
+
+  describe('if no unique id is set', function () {
+    beforeEach(function () {
+      stepnav = new GOVUK.Modules.Gemstepnav();
+      $element = $(html);
+      $element.removeAttr('data-id');
+      stepnav.start($element);
+      GOVUK.analytics = {
+        trackEvent: function () {
+        }
+      };
+      spyOn(GOVUK.analytics, 'trackEvent');
+    });
+
+    it("triggers a google analytics custom event on show all", function () {
+      clickShowHideAll();
+
+      expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavAllShown', {
+        label: 'Show All: Small',
+        dimension26: expectedstepnavStepCount.toString(),
+        dimension27: expectedstepnavLinkCount.toString(),
+        dimension96: false
+      });
+    });
+
+    it("triggers a google analytics custom event on hide all", function () {
+      GOVUK.analytics = {
+        trackEvent: function () {
+        }
+      };
+      spyOn(GOVUK.analytics, 'trackEvent');
+
+      clickShowHideAll();
+      clickShowHideAll();
+
+      expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavAllHidden', {
+        label: 'Hide All: Small',
+        dimension26: expectedstepnavStepCount.toString(),
+        dimension27: expectedstepnavLinkCount.toString(),
+        dimension96: false
+      });
+    });
+
+    it("triggers a google analytics custom event on step show when clicking on the title", function () {
+      var $stepLink = $element.find('.gem-c-step-nav__header .gem-c-step-nav__button--title');
+      $stepLink.click();
+
+      expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavShown', {
+        label: '1 - Topic Step One - Heading click: Small',
+        dimension26: expectedstepnavStepCount.toString(),
+        dimension27: expectedstepnavLinkCount.toString(),
+        dimension28: expectedstepnavContentCount.toString(),
+        dimension96: false
+      });
+    });
+
+    it("triggers a google analytics custom event on step show when clicking on the icon", function () {
+      var $stepIcon = $element.find('.js-toggle-link');
+      $stepIcon.click();
+
+      expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavShown', {
+        label: '1 - Topic Step One - Plus click: Small',
+        dimension26: expectedstepnavStepCount.toString(),
+        dimension27: expectedstepnavLinkCount.toString(),
+        dimension28: expectedstepnavContentCount.toString(),
+        dimension96: false
+      });
+    });
+
+    it("triggers a google analytics custom event on step show when clicking on space in the header", function () {
+      var $stepHeader = $element.find('.gem-c-step-nav__header');
+      $stepHeader.click();
+
+      expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavShown', {
+        label: '1 - Topic Step One - Elsewhere click: Small',
+        dimension26: expectedstepnavStepCount.toString(),
+        dimension27: expectedstepnavLinkCount.toString(),
+        dimension28: expectedstepnavContentCount.toString(),
+        dimension96: false
+      });
+    });
+
+    it("triggers a google analytics custom event on step hide when clicking on the title", function () {
+      var $stepLink = $element.find('.gem-c-step-nav__header .gem-c-step-nav__button--title');
+      $stepLink.click();
+      $stepLink.click();
+
+      expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavHidden', {
+        label: '1 - Topic Step One - Heading click: Small',
+        dimension26: expectedstepnavStepCount.toString(),
+        dimension27: expectedstepnavLinkCount.toString(),
+        dimension28: expectedstepnavContentCount.toString(),
+        dimension96: false
+      });
+    });
+
+    it("triggers a google analytics custom event on step hide when clicking on the icon", function () {
+      var $stepIcon = $element.find('.js-toggle-link');
+      $stepIcon.click();
+      $stepIcon.click();
+
+      expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavHidden', {
+        label: '1 - Topic Step One - Minus click: Small',
+        dimension26: expectedstepnavStepCount.toString(),
+        dimension27: expectedstepnavLinkCount.toString(),
+        dimension28: expectedstepnavContentCount.toString(),
+        dimension96: false
+      });
+    });
+
+    it("triggers a google analytics custom event on step hide when clicking on space in the header", function () {
+      var $stepHeader = $element.find('.gem-c-step-nav__header');
+      $stepHeader.click();
+      $stepHeader.click();
+
+      expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavHidden', {
+        label: '1 - Topic Step One - Elsewhere click: Small',
+        dimension26: expectedstepnavStepCount.toString(),
+        dimension27: expectedstepnavLinkCount.toString(),
+        dimension28: expectedstepnavContentCount.toString(),
+        dimension96: false
+      });
+    });
+
+    it("triggers a google analytics custom event when clicking on a panel link", function () {
+      $element.find('.js-link').first().click();
+
+      expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('stepNavLinkClicked', '1.1', {
+        label: '/link1 : Small',
+        dimension26: expectedstepnavStepCount.toString(),
+        dimension27: expectedstepnavLinkCount.toString(),
+        dimension28: expectedstepnavContentCount.toString(),
+        dimension96: false
+      });
+    });
+
+    it("triggers a google analytics custom event when clicking on a get help link", function () {
+      var $link = $element.find('.gem-c-step-nav__help-link.js-link');
+      $link.click();
+
+      expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('stepNavLinkClicked', 'get-help', {
+        label: '/learn#step-one : Small',
+        dimension26: expectedstepnavStepCount.toString(),
+        dimension27: expectedstepnavLinkCount.toString(),
+        dimension96: false
+      });
     });
   });
 

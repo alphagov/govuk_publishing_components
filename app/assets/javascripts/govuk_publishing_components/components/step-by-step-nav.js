@@ -49,7 +49,8 @@
 
       var $showOrHideAllButton;
 
-      var stepNavTracker = new StepNavTracker(totalSteps, totalLinks);
+      var uniqueId = $element.data('id') || false;
+      var stepNavTracker = new StepNavTracker(totalSteps, totalLinks, uniqueId);
 
       addButtonstoSteps();
       addShowHideAllButton();
@@ -450,7 +451,7 @@
 
     // A helper that sends a custom event request to Google Analytics if
     // the GOVUK module is setup
-    function StepNavTracker(totalSteps, totalLinks) {
+    function StepNavTracker(totalSteps, totalLinks, uniqueId) {
       this.track = function(category, action, options) {
         // dimension26 records the total number of expand/collapse steps in this step nav
         // dimension27 records the total number of links in this step nav
@@ -459,6 +460,7 @@
           options = options || {};
           options["dimension26"] = options["dimension26"] || totalSteps.toString();
           options["dimension27"] = options["dimension27"] || totalLinks.toString();
+          options["dimension96"] = options["dimension96"] || uniqueId;
           GOVUK.analytics.trackEvent(category, action, options);
         }
       }

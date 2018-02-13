@@ -9,6 +9,7 @@
   step_nav_url ||= false
   step_nav_link_text ||= "Get help completing this step"
   highlight_step ||= false
+  tracking_id ||= false
 
   step_count = 0
   step_number = 0
@@ -17,7 +18,8 @@
   <div
     data-module="gemstepnav"
     class="gem-c-step-nav js-hidden <% unless small %>gem-c-step-nav--large<% end %>"
-    <% if remember_last_step %>data-remember<% end %>
+    <%= "data-remember" if remember_last_step %>
+    <%= "data-id=#{tracking_id}" if tracking_id %>
   >
     <ol class="gem-c-step-nav__steps">
       <% steps.each_with_index do |step, step_index| %>
