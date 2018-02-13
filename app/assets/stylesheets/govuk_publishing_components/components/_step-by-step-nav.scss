@@ -249,7 +249,8 @@ $top-border: solid 2px $grey-3;
   }
 
   &:hover {
-    .gem-c-step-nav__button {
+    .gem-c-step-nav__button,
+    .gem-c-step-nav__circle {
       color: $link-colour;
     }
 
