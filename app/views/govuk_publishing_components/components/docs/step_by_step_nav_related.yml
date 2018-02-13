@@ -52,3 +52,13 @@ examples:
           text: 'Learn to drive a motorbike: step by step'
         }
       ]
+  with_unique_tracking:
+    description: We need to uniquely identify each step by step navigation in Google Analytics. If this parameter is added to the component, its value is included in any tracking events, specifically in dimension96.
+    data:
+      tracking_id: 'this-is-the-tracking-id'
+      links: [
+        {
+          href: '#',
+          text: 'With a tracking id'
+        }
+      ]

@@ -66,4 +66,17 @@ describe "Step by step navigation related", type: :view do
     assert_select ".gem-c-step-nav-related__pretitle", text: 'Moo'
     assert_select ".gem-c-step-nav-related__link[data-track-action='Moo']"
   end
+
+  it "adds a tracking id to one link" do
+    render_component(links: one_link, tracking_id: "peter")
+
+    assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__link[data-track-options='{\"dimension96\" : \"peter\" }']"
+  end
+
+  it "adds a tracking id to every link when there are more than one" do
+    render_component(links: two_links, tracking_id: "peter")
+
+    assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__link-item:nth-child(1) .gem-c-step-nav-related__link[data-track-options='{\"dimension96\" : \"peter\" }']"
+    assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__link-item:nth-child(2) .gem-c-step-nav-related__link[data-track-options='{\"dimension96\" : \"peter\" }']"
+  end
 end
