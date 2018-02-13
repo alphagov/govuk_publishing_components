@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe "Feedback", type: :view do
-  def render_component(locals)
-    render file: "govuk_publishing_components/components/_feedback", locals: locals
+  def component_name
+    "feedback"
   end
 
   it "asks the user if the page is useful without javascript enabled" do

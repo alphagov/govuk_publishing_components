@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe "Step by step navigation related", type: :view do
-  def render_component(locals)
-    render file: "govuk_publishing_components/components/_step_by_step_nav_related", locals: locals
+  def component_name
+    "step_by_step_nav_related"
   end
 
   def one_link
