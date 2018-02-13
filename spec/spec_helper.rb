@@ -4,6 +4,7 @@ require 'webmock/rspec'
 require 'slimmer/rspec'
 require 'capybara/rails'
 require 'capybara/poltergeist'
+require 'govuk_schemas'
 
 WebMock.disable_net_connect!(allow_localhost: true)
 
