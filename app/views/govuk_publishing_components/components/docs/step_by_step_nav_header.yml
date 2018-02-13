@@ -18,6 +18,12 @@ examples:
     data:
       title: 'Having children: step by step'
       path: /childcare-parenting/pregnancy-and-birth
+  with_unique_tracking:
+    description: We need to uniquely identify each step by step navigation in Google Analytics. If this parameter is added to the component, its value is included in any tracking events, specifically in dimension96.
+    data:
+      title: 'With a tracking id'
+      path: '#'
+      tracking_id: 'this-is-the-tracking-id'
   with_a_skip_link:
     description: This option allows the insertion of a skip link to a step by step navigation elsewhere on the page. This aids navigation when using a keyboard or screen reader. The skip link is visually hidden until it receives focus.
     data:

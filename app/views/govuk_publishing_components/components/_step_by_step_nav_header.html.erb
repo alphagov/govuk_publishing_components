@@ -3,6 +3,7 @@
   path ||= false
   skip_link ||= false
   skip_link_text ||= "Skip content"
+  tracking_id ||= false
 %>
 <% if title %>
   <div class="gem-c-step-nav-header" data-module="track-click">
@@ -14,7 +15,8 @@
         data-track-action="top"
         data-track-label="<%= path %>"
         data-track-dimension="<%= title %>"
-        data-track-dimension-index="29">
+        data-track-dimension-index="29"
+        data-track-options='{"dimension96" : "<%= tracking_id %>" }'>
         <%= title %>
       </a>
     <% else %>
