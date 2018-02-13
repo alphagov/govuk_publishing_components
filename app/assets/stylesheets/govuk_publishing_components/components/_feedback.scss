@@ -1,0 +1,136 @@
+// govuk_frontend_toolkit
+@import 'grid_layout';
+@import 'design-patterns/buttons';
+
+.gem-c-feedback {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+// hide without js
+// show with js, unless also has the js-hidden class
+.gem-c-feedback__js-show {
+  display: none;
+
+  .js-enabled & {
+    display: block;
+
+    &.js-hidden {
+      display: none;
+    }
+  }
+}
+
+.gem-c-feedback__grid-row {
+  @extend %grid-row;
+}
+
+.gem-c-feedback__column-two-thirds {
+  @include grid-column( 2 / 3 );
+}
+
+.gem-c-feedback__prompt {
+  @extend %contain-floats;
+  background-color: $govuk-blue;
+  color: $white;
+  padding: $gutter-one-third $gutter-half 0;
+  outline: 0;
+}
+
+.gem-c-feedback__prompt-question,
+.gem-c-feedback__prompt-success {
+  @include bold-16;
+  display: inline;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.gem-c-feedback__prompt-link:link,
+.gem-c-feedback__prompt-link:visited {
+  color: $white;
+  display: inline-block;
+}
+
+.gem-c-feedback__prompt-link--useful {
+  margin-right: 0.2em;
+}
+
+.gem-c-feedback__prompt-link--wrong {
+  float: right;
+}
+
+.gem-c-feedback__error-summary {
+  margin-bottom: $gutter-half;
+  padding: $gutter-half;
+  border: solid 4px $error-colour;
+
+  &:focus {
+    outline: solid 3px $focus-colour;
+  }
+
+  @include media(tablet) {
+    border-width: 5px;
+  }
+
+  // this comes from the backend so we can't put a class on it
+  h2,
+  .gem-c-feedback__heading {
+    @include bold-19;
+    margin: 0;
+  }
+
+  p {
+    @include core-16;
+    margin: $gutter-one-third 0;
+  }
+}
+
+.gem-c-feedback__error-message {
+  @include bold-19;
+  display: block;
+  padding: 4px 0 0;
+  color: $error-colour;
+}
+
+.gem-c-feedback__form {
+  margin-top: $gutter-half;
+  padding: $gutter-half 0;
+  border-top: $gutter-one-third solid $govuk-blue;
+
+  @include media(tablet) {
+    padding: $gutter 0;
+  }
+}
+
+.gem-c-feedback__form-heading {
+  @include bold-19;
+  margin-bottom: $gutter-half;
+}
+
+.gem-c-feedback__form-paragraph {
+  @include core-16;
+  margin-bottom: $gutter;
+}
+
+.gem-c-feedback__form-label {
+  @include core-16;
+  display: block;
+  padding-bottom: $gutter-half;
+}
+
+.gem-c-feedback__close {
+  @include core-16;
+  text-align: right;
+  margin-bottom: $gutter-one-third;
+
+  @include media(tablet) {
+    float: right;
+    padding-top: 0;
+  }
+}
+
+.gem-c-feedback__submit {
+  @include button;
+}

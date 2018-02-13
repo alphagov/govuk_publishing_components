@@ -2,6 +2,7 @@
 
 * Support other a customisable type attribute for input component (PR #165)
 * Add unique tracking to all GA events on step nav components (PR #162)
+* Add feedback component (PR #163)
 
 # 5.0.0
 

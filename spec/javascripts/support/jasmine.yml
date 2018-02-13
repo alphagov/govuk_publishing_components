@@ -14,6 +14,7 @@ src_files:
   - spec/javascripts/helpers/jquery-1.12.4.js
   - spec/javascripts/helpers/jasmine-jquery-2.0.5.js
   - spec/javascripts/helpers/SpecHelper.js
+  - spec/javascripts/vendor/mock-ajax.js
   - assets/govuk_publishing_components/application.js
 
 # stylesheets
