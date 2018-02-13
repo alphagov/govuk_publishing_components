@@ -1,5 +1,6 @@
-<% related_content = build_related_content(local_assigns) %>
-<% if related_content.map(&:values).flatten.any? || other.flatten.any? %>
+<% related_nav_helper = RelatedNavigationHelper.new %>
+<% related_content = related_nav_helper.build_related_content(local_assigns) %>
+<% if related_content.map(&:values).flatten.any? || related_nav_helper.other.flatten.any? %>
   <aside class="app-c-related-navigation" role="complementary">
     <h2 id="related-nav-related_items"
         class="app-c-related-navigation__main-heading"
@@ -14,8 +15,8 @@
           <% unless section_title === "related_items" %>
             <h3 id="related-nav-<%= section_title %>"
               data-track-count="sidebarRelatedItemSection"
-              class="<%= section_css_class("app-c-related-navigation__sub-heading", section_title) %>">
-              <%= construct_section_heading(section_title) %>
+              class="<%= related_nav_helper.section_css_class("app-c-related-navigation__sub-heading", section_title) %>">
+              <%= related_nav_helper.construct_section_heading(section_title) %>
             </h3>
           <% end %>
           <nav role="navigation"
@@ -24,17 +25,17 @@
                data-module="toggle">
             <ul class="app-c-related-navigation_link-list" data-module="track-click">
               <% constructed_link_array = [] %>
-              <% section_link_limit = calculate_section_link_limit(links) %>
+              <% section_link_limit = related_nav_helper.calculate_section_link_limit(links) %>
               <% links.each.with_index(1) do |link, index| %>
                 <%
                   link_element = link_to(
                     link[:text],
                     link[:path],
-                    class: section_css_class("app-c-related-navigation__section-link", section_title, link),
+                    class: related_nav_helper.section_css_class("app-c-related-navigation__section-link", section_title, link),
                     rel: link[:rel],
                     data: {
                       track_category: 'relatedLinkClicked',
-                      track_action: "#{section_index}.#{index} #{construct_section_heading(section_title) || t('components.related_navigation.related_content')}",
+                      track_action: "#{section_index}.#{index} #{related_nav_helper.construct_section_heading(section_title) || t('components.related_navigation.related_content')}",
                       track_label: link[:path],
                       track_options: {
                         dimension28: links.length.to_s,
@@ -56,8 +57,8 @@
                     data-expanded="false"
                     data-toggled-text="<%= t("govuk_component.metadata.toggle_less", default: "Show fewer") %>">
                     <%= t("govuk_component.metadata.toggle_more",
-                          number: remaining_link_count(links),
-                          default: "+ #{remaining_link_count(links)} more") %>
+                          number: related_nav_helper.remaining_link_count(links),
+                          default: "+ #{related_nav_helper.remaining_link_count(links)} more") %>
                   </a>
                 </li>
                 <li class="app-c-related-navigation__link">
