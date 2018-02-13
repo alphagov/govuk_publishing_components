@@ -1,5 +1,7 @@
 # Unreleased
 
+* Add unique tracking to all GA events on step nav components (PR #162)
+
 # 5.0.0
 
 * Rename task list components (PR #156), breaking change
