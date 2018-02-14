@@ -23,6 +23,16 @@ describe "Input", type: :view do
     assert_select ".gem-c-label", text: "What is your email address?"
   end
 
+  it "renders inputs with a configurable type" do
+    render_component(
+      name: "email-address",
+      type: "email",
+    )
+
+    assert_select ".gem-c-input[type='email']"
+    assert_select ".gem-c-input[name='email-address']"
+  end
+
   it "sets the 'for' on the label to the input id" do
     render_component(name: "email-address")
 
