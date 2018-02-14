@@ -40,7 +40,7 @@ class RelatedNavigationHelper
 
   def construct_section_heading(section_title)
     unless section_title === "related_items"
-      t('components.related_navigation.' + section_title, default: section_title.tr('_', ' '))
+      I18n.t('components.related_navigation.' + section_title, default: section_title.tr('_', ' '))
     end
   end
 
