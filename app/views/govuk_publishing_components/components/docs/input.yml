@@ -12,11 +12,17 @@ examples:
   default:
     data:
       label:
-        text: "What is your email address?"
-      name: "address"
-  with_error:
+        text: "What is your name?"
+      name: "name"
+  email_type:
     data:
       label:
         text: "What is your email address?"
       name: "address"
-      error_message: "Email address not recognised"
+      type: "email"
+  with_error:
+    data:
+      label:
+        text: "What is your name?"
+      name: "name"
+      error_message: "Please could you provide your name"

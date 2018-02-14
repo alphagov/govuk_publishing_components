@@ -4,6 +4,7 @@
   value ||= false
   error_message ||= false
   label ||= {}
+  type ||= "text"
 %>
 
 <%= render "govuk_publishing_components/components/label", {
@@ -19,7 +20,7 @@
   class="gem-c-input <%= "gem-c-input--error" if error_message %>"
   id="<%= id %>"
   name="<%= name %>"
-  type="text"
+  type="<%= type %>"
 
   <% if error_message %>
     aria-describedby="<%= hint_id %>"
