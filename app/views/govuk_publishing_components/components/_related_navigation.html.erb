@@ -1,9 +1,9 @@
 <% related_nav_helper = RelatedNavigationHelper.new %>
 <% related_content = related_nav_helper.build_related_content(local_assigns) %>
 <% if related_content.map(&:values).flatten.any? || related_nav_helper.other.flatten.any? %>
-  <aside class="app-c-related-navigation" role="complementary">
+  <aside class="gem-c-related-navigation" role="complementary">
     <h2 id="related-nav-related_items"
-        class="app-c-related-navigation__main-heading"
+        class="gem-c-related-navigation__main-heading"
         data-track-count="sidebarRelatedItemSection" >
       <%= t('components.related_navigation.related_content') %>
     </h2>
@@ -15,15 +15,15 @@
           <% unless section_title === "related_items" %>
             <h3 id="related-nav-<%= section_title %>"
               data-track-count="sidebarRelatedItemSection"
-              class="<%= related_nav_helper.section_css_class("app-c-related-navigation__sub-heading", section_title) %>">
+              class="<%= related_nav_helper.section_css_class("gem-c-related-navigation__sub-heading", section_title) %>">
               <%= related_nav_helper.construct_section_heading(section_title) %>
             </h3>
           <% end %>
           <nav role="navigation"
-               class="app-c-related-navigation__nav-section"
+               class="gem-c-related-navigation__nav-section"
                aria-labelledby="related-nav-<%= section_title %>"
                data-module="toggle">
-            <ul class="app-c-related-navigation_link-list" data-module="track-click">
+            <ul class="gem-c-related-navigation_link-list" data-module="track-click">
               <% constructed_link_array = [] %>
               <% section_link_limit = related_nav_helper.calculate_section_link_limit(links) %>
               <% links.each.with_index(1) do |link, index| %>
@@ -31,7 +31,7 @@
                   link_element = link_to(
                     link[:text],
                     link[:path],
-                    class: related_nav_helper.section_css_class("app-c-related-navigation__section-link", section_title, link),
+                    class: related_nav_helper.section_css_class("gem-c-related-navigation__section-link", section_title, link),
                     rel: link[:rel],
                     data: {
                       track_category: 'relatedLinkClicked',
@@ -45,13 +45,13 @@
                   )
                 %>
                 <% if index <= section_link_limit %>
-                  <li class="app-c-related-navigation__link"><%= link_element %></li>
+                  <li class="gem-c-related-navigation__link"><%= link_element %></li>
                 <% else %>
                   <% constructed_link_array.push(link_element) %>
                 <% end %>
               <% end %>
               <% if links.length > section_link_limit %>
-                <li class="app-c-related-navigation__link toggle-wrap">
+                <li class="gem-c-related-navigation__link toggle-wrap">
                   <a href="#"
                     data-controls="toggle_<%= section_title %>"
                     data-expanded="false"
@@ -61,7 +61,7 @@
                           default: "+ #{related_nav_helper.remaining_link_count(links)} more") %>
                   </a>
                 </li>
-                <li class="app-c-related-navigation__link">
+                <li class="gem-c-related-navigation__link">
                   <span id="toggle_<%= section_title %>" class="js-hidden">
                     <%= constructed_link_array.to_sentence.html_safe %>
                   </span>
