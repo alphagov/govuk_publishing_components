@@ -70,6 +70,29 @@ examples:
           ]
         }
       ]
+  with_unique_tracking:
+    description: |
+      We need to uniquely identify each step by step navigation in Google Analytics. If this parameter is added to the component, its value is included in any tracking events, specifically in dimension96.
+
+      This includes show/hide all, show/hide step and any link clicks.
+    data:
+      tracking_id: 'this-is-the-tracking-id'
+      steps: [
+        {
+          title: 'Unique tracking id',
+          contents: [
+            {
+              type: 'list',
+              contents: [
+                {
+                  href: '#',
+                  text: 'This is a link'
+                }
+              ]
+            }
+          ]
+        }
+      ]
   with_a_different_heading_level:
     description: Steps have a H2 by default, but this can be changed. The heading level does not change any styling.
     data:

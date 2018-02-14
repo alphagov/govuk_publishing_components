@@ -279,4 +279,10 @@ describe "step nav", type: :view do
     assert_select ".gem-c-step-nav"
     assert_select ".gem-c-step-nav.gem-c-step-nav--large", false
   end
+
+  it "adds a tracking id" do
+    render_component(steps: stepnav, tracking_id: "harold")
+
+    assert_select ".gem-c-step-nav[data-id='harold']"
+  end
 end

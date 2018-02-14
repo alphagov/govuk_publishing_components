@@ -28,6 +28,12 @@ describe "Step by step navigation header", type: :view do
     assert_select link + "[data-track-dimension-index='29']"
   end
 
+  it "adds a tracking id" do
+    render_component(title: "This is my title", path: "/notalink", tracking_id: "brian")
+
+    assert_select ".gem-c-step-nav-header .gem-c-step-nav-header__title[data-track-options='{\"dimension96\" : \"brian\" }']"
+  end
+
   it "renders with a skip link" do
     render_component(title: "This is my title", skip_link: "#skiplink")
 
