@@ -22,7 +22,7 @@
   <div class="component-doc">
     <h2 class="component-doc-h2">How to call this component</h2>
     <%= render "govuk_publishing_components/component_guide/component_doc/call", component_doc: @component_doc, example: @component_doc.example %>
-
+    <%= link_to "Search for usage on GitHub", @component_doc.github_search_url %>
     <h2 class="component-doc-h2">How it looks</h2>
   </div>
 

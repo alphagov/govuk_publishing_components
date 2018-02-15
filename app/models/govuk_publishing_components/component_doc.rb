@@ -53,6 +53,11 @@ module GovukPublishingComponents
       end
     end
 
+    def github_search_url
+      params = { q: "org:alphagov #{partial_path}", type: "Code" }
+      "https://github.com/search?#{params.to_query}"
+    end
+
   private
 
     def govspeak_to_html(govspeak)
