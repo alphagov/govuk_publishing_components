@@ -14,7 +14,7 @@ module GovukPublishingComponents
   private
 
     def set_custom_slimmer_headers
-      set_slimmer_headers(report_a_problem: 'false', remove_search: true)
+      set_slimmer_headers(remove_search: true)
     end
 
     def set_x_frame_options_header

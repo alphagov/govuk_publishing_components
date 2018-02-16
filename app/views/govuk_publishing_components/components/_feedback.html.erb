@@ -1,0 +1,115 @@
+<%
+  contact_govuk_path = "/contact/govuk"
+%>
+
+<div class="gem-c-feedback" data-module="feedback">
+  <div class="gem-c-feedback__prompt gem-c-feedback__js-show js-prompt" tabindex="-1">
+    <div class="js-prompt-questions">
+      <h3 class="gem-c-feedback__prompt-question">Is this page useful?</h3>
+
+      <%= link_to contact_govuk_path, {
+        class: 'gem-c-feedback__prompt-link gem-c-feedback__prompt-link--useful js-page-is-useful',
+        data: {
+          'track-category' => 'yesNoFeedbackForm',
+          'track-action' => 'ffYesClick'
+          },
+        } do %>
+          Yes <span class="visually-hidden">this page is useful</span>
+      <% end %>
+
+      <%= link_to contact_govuk_path, {
+        class: 'gem-c-feedback__prompt-link js-toggle-form js-page-is-not-useful',
+        data: {
+          'track-category' => 'yesNoFeedbackForm',
+          'track-action' => 'ffNoClick'
+          },
+          'aria-controls': 'page-is-not-useful',
+          'aria-expanded': false
+        } do %>
+          No <span class="visually-hidden">this page is not useful</span>
+      <% end %>
+
+      <%= link_to contact_govuk_path, {
+        class: 'gem-c-feedback__prompt-link gem-c-feedback__prompt-link--wrong js-toggle-form js-something-is-wrong',
+        data: {
+          'track-category' => 'yesNoFeedbackForm',
+          'track-action' => 'ffWrongClick'
+          },
+          'aria-controls': 'something-is-wrong',
+          'aria-expanded': false
+        } do %>
+          Is there anything wrong with this page?
+      <% end %>
+    </div>
+
+    <div class="gem-c-feedback__prompt-success js-prompt-success js-hidden" tabindex="-1">
+      Thank you for your feedback
+    </div>
+  </div>
+
+  <form action="/contact/govuk/problem_reports" id="something-is-wrong" class="gem-c-feedback__form js-feedback-form js-hidden" data-track-category="yesNoFeedbackForm" data-track-action="ffFormSubmit">
+    <a href="#" class="gem-c-feedback__close gem-c-feedback__js-show js-close-form" aria-controls="something-is-wrong" aria-expanded="true" role="button">Close</a>
+
+    <div class="gem-c-feedback__grid-row">
+      <div class="gem-c-feedback__column-two-thirds">
+        <div class="gem-c-feedback__error-summary gem-c-feedback__js-show js-hidden js-errors" tabindex="-1"></div>
+
+        <input type="hidden" name="url" value="<%= request.original_url -%>">
+        <input type="hidden" name="user_agent" value="<%= request.user_agent -%>">
+
+        <h2 class="gem-c-feedback__form-heading">Help us improve GOV.UK</h2>
+        <p id="feedback_explanation" class="gem-c-feedback__form-paragraph">Don’t include personal or financial information like your National Insurance number or credit card details.</p>
+
+        <%= render "govuk_publishing_components/components/input", {
+          label: {
+            text: "What were you doing?"
+          },
+          name: "what_doing"
+        } %>
+
+        <%= render "govuk_publishing_components/components/input", {
+          label: {
+            text: "What went wrong?"
+          },
+          name: "what_wrong"
+        } %>
+
+        <%# TODO: use button component once available in gem %>
+        <input class="gem-c-feedback__submit" type="submit" value="Send">
+      </div>
+    </div>
+  </form>
+
+  <form action="/contact/govuk/email-survey-signup" id="page-is-not-useful" class="gem-c-feedback__form gem-c-feedback__form--email gem-c-feedback__js-show js-feedback-form js-hidden" data-track-category="user_satisfaction_survey" data-track-action="banner_taken">
+    <a href="#" class="gem-c-feedback__close js-close-form" aria-controls="page-is-not-useful" aria-expanded="true" role="button">Close</a>
+
+    <div class="gem-c-feedback__grid-row">
+      <div class="gem-c-feedback__column-two-thirds">
+        <div class="gem-c-feedback__error-summary js-hidden js-errors" tabindex="-1"></div>
+
+        <input type="hidden" name="url" value="<%= request.original_url -%>">
+        <input type="hidden" name="user_agent" value="<%= request.user_agent -%>">
+
+        <input name="email_survey_signup[survey_id]" type="hidden" value="user_satisfaction_survey">
+        <input name="email_survey_signup[survey_source]" type="hidden" value="<%= request.original_url -%>">
+        <input name="email_survey_signup[ga_client_id]" type="hidden" value="1627485790.1515403243">
+
+        <h2 class="gem-c-feedback__form-heading">Help us improve GOV.UK</h2>
+        <p id="survey_explanation" class="gem-c-feedback__form-paragraph">To help us improve GOV.UK, we’d like to know more about your visit today. We’ll send you a link to a feedback form. It will take only 2 minutes to fill in. Don’t worry we won’t send you spam or share your email address with anyone.</p>
+
+        <%= render "govuk_publishing_components/components/input", {
+          label: {
+            text: "Email address"
+          },
+          name: "email_survey_signup[email_address]",
+          type: "email"
+        } %>
+
+        <%# TODO: use button component once available in gem %>
+        <input class="gem-c-feedback__submit" type="submit" value="Send me the survey">
+        <a href="https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=<%= request.fullpath -%>&amp;gcl=1627485790.1515403243" id="take-survey" target="_blank" rel="noopener noreferrer">Don’t have an email address?</a>
+      </div>
+    </div>
+  </form>
+
+</div>
