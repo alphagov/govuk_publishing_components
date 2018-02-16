@@ -1,7 +1,12 @@
 <% text = text || yield %>
-<fieldset class="gem-c-fieldset">
-  <legend class="gem-c-fieldset__legend">
-    <%= legend_text %>
-  </legend>
-  <%= text %>
-</fieldset>
+<% legend_text = legend_text || nil %>
+<% if text.present? || legend_text.present? %>
+  <fieldset class="gem-c-fieldset">
+    <% if legend_text %>
+      <legend class="gem-c-fieldset__legend">
+        <%= legend_text %>
+      </legend>
+    <% end %>
+    <%= text %>
+  </fieldset>
+<% end %>
