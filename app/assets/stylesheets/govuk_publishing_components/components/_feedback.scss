@@ -77,12 +77,12 @@
   // this comes from the backend so we can't put a class on it
   h2,
   .gem-c-feedback__heading {
-    @include bold-19;
+    @include bold-24;
     margin: 0;
   }
 
   p {
-    @include core-16;
+    @include core-19;
     margin: $gutter-one-third 0;
   }
 }
@@ -105,12 +105,12 @@
 }
 
 .gem-c-feedback__form-heading {
-  @include bold-19;
+  @include bold-24;
   margin-bottom: $gutter-half;
 }
 
 .gem-c-feedback__form-paragraph {
-  @include core-16;
+  @include core-19;
   margin-bottom: $gutter;
 }
 
@@ -121,7 +121,7 @@
 }
 
 .gem-c-feedback__close {
-  @include core-16;
+  @include core-19;
   text-align: right;
   margin-bottom: $gutter-one-third;
 
