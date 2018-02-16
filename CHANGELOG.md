@@ -1,4 +1,4 @@
-# Unreleased
+# 5.1.0
 
 * Support other a customisable type attribute for input component (PR #165)
 * Add unique tracking to all GA events on step nav components (PR #162)
