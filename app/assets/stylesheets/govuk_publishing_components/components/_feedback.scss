@@ -65,6 +65,7 @@
   margin-bottom: $gutter-half;
   padding: $gutter-half;
   border: solid 4px $error-colour;
+  clear: both;
 
   &:focus {
     outline: solid 3px $focus-colour;
@@ -122,12 +123,22 @@
 
 .gem-c-feedback__close {
   @include core-19;
-  text-align: right;
+  float: right;
   margin-bottom: $gutter-one-third;
 
   @include media(tablet) {
-    float: right;
     padding-top: 0;
+  }
+}
+
+.gem-c-feedback__email-link {
+  display: block;
+  margin-top: $gutter-half;
+
+  @include media(tablet) {
+    display: inline-block;
+    margin-top: 0;
+    margin-left: $gutter-half;
   }
 }
 
