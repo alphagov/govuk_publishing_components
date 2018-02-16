@@ -1,6 +1,5 @@
-<% links = RelatedNavigationSidebarHelper.new(local_assigns).related_navigation_sidebar %>
-<% related_nav_helper = RelatedNavigationHelper.new %>
-<% related_content = related_nav_helper.build_related_content(links) %>
+<% related_nav_helper = RelatedNavigationHelper.new(local_assigns) %>
+<% related_content = related_nav_helper.related_navigation %>
 <% if related_content.map(&:values).flatten.any? || related_nav_helper.other.flatten.any? %>
   <aside class="gem-c-related-navigation" role="complementary">
     <h2 id="related-nav-related_items"

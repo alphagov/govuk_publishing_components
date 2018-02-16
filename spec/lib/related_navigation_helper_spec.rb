@@ -1,10 +1,10 @@
 require "spec_helper"
 
-RSpec.describe RelatedNavigationSidebarHelper do
+RSpec.describe RelatedNavigationHelper do
   def payload_for(schema, content_item)
     generator = GovukSchemas::RandomExample.for_schema(schema, schema_type: "frontend")
     fully_valid_content_item = generator.merge_and_validate(content_item)
-    RelatedNavigationSidebarHelper.new(fully_valid_content_item).related_navigation_sidebar
+    RelatedNavigationHelper.new(fully_valid_content_item).related_navigation
   end
 
   describe "#related-navigation-sidebar" do
@@ -22,20 +22,19 @@ RSpec.describe RelatedNavigationSidebarHelper do
         "links" => {
         })
 
-      expected = {
-        related_items: [],
-        collections: [],
-        statistical_data_sets: [],
-        topics: [],
-        topical_events: [],
-        policies: [],
-        publishers: [],
-        world_locations: [],
-        worldwide_organisations: [],
-        other: [[], []]
-      }
+      expected = [
+        { "related_items" => [] },
+        { "related_guides" => [] },
+        { "collections" => [] },
+        { "topics" => [] },
+        { "policies" => [] },
+        { "topical_events" => [] },
+        { "world_locations" => [] },
+        { "statistical_data_sets" => [] },
+        { "worldwide_organisations" => [] },
+      ]
 
-      expect(nothing).to eql(expected)
+      expect(nothing).to eq(expected)
     end
 
     it "extracts and returns the appropriate related links" do
@@ -131,18 +130,17 @@ RSpec.describe RelatedNavigationSidebarHelper do
           ],
         })
 
-      expected = {
-        related_items: [{ path: "/related-item", text: "related item" }],
-        collections: [{ path: "/related-collection", text: "related collection" }],
-        topics: [{ path: "/related-topic", text: "related topic" }, { path: "/mainstream-topic", text: "mainstream topic" }],
-        topical_events: [{ path: "/related-topical-event", text: "related topical event" }],
-        policies: [{ path: "/related-policy", text: "related policy" }],
-        publishers: [{ path: "/related-organisation", text: "related organisation" }],
-        world_locations: [{ path: "/world/world-location/news", text: "World, ~ (@Location)" }],
-        worldwide_organisations: [],
-        statistical_data_sets: [],
-        other: [[], []]
-      }
+      expected = [
+        { "related_items" => [{ path: "/related-item", text: "related item" }] },
+        { "related_guides" => [] },
+        { "collections" => [{ path: "/related-collection", text: "related collection" }] },
+        { "topics" => [{ path: "/related-topic", text: "related topic" }, { path: "/mainstream-topic", text: "mainstream topic" }] },
+        { "policies" => [{ path: "/related-policy", text: "related policy" }] },
+        { "topical_events" => [{ path: "/related-topical-event", text: "related topical event" }] },
+        { "world_locations" => [{ path: "/world/world-location/news", text: "World, ~ (@Location)" }] },
+        { "statistical_data_sets" => [] },
+        { "worldwide_organisations" => [] },
+      ]
 
       expect(payload).to eql(expected)
     end
@@ -170,18 +168,17 @@ RSpec.describe RelatedNavigationSidebarHelper do
             }
           ],
         })
-      expected = {
-        related_items: [],
-        collections: [],
-        statistical_data_sets: [],
-        topics: [],
-        topical_events: [],
-        policies: [],
-        publishers: [],
-        world_locations: [],
-        worldwide_organisations: [{ path: "/related-worldwide-organisation", text: "related worldwide organisation" }],
-        other: [[], []]
-      }
+      expected = [
+        { "related_items" => [] },
+        { "related_guides" => [] },
+        { "collections" => [] },
+        { "topics" => [] },
+        { "policies" => [] },
+        { "topical_events" => [] },
+        { "world_locations" => [] },
+        { "statistical_data_sets" => [] },
+        { "worldwide_organisations" => [{ path: "/related-worldwide-organisation", text: "related worldwide organisation" }] },
+      ]
       expect(payload).to eql(expected)
     end
 
@@ -209,47 +206,18 @@ RSpec.describe RelatedNavigationSidebarHelper do
             }
           ],
         })
-      expected = {
-        related_items: [],
-        collections: [],
-        statistical_data_sets: [{ path: "/related-statistical-data-set", text: "related statistical data set" }],
-        topics: [],
-        topical_events: [],
-        policies: [],
-        publishers: [],
-        world_locations: [],
-        worldwide_organisations: [],
-        other: [[], []]
-      }
-      expect(payload).to eql(expected)
-    end
-
-    it "returns an Elsewhere on the web section for external related links" do
-      payload = payload_for("placeholder",
-        "details" => {
-          "external_related_links" => [
-            {
-              "title" => "external-link",
-              "url" => "https://external"
-            }
-          ]
-        },)
-
       expected = [
-        [
-          {
-            title: "Elsewhere on the web",
-            links: [{
-                text: "external-link",
-                path: "https://external",
-                rel: "external"
-              }]
-          }
-        ],
-        []
+        { "related_items" => [] },
+        { "related_guides" => [] },
+        { "collections" => [] },
+        { "topics" => [] },
+        { "policies" => [] },
+        { "topical_events" => [] },
+        { "world_locations" => [] },
+        { "statistical_data_sets" => [{ path: "/related-statistical-data-set", text: "related statistical data set" }] },
+        { "worldwide_organisations" => [] },
       ]
-
-      expect(payload[:other]).to eql(expected)
+      expect(payload).to eql(expected)
     end
 
     it "deduplicates topics for mainstream content" do
@@ -287,20 +255,52 @@ RSpec.describe RelatedNavigationSidebarHelper do
             }
           ],
         })
-      expected = {
-        related_items: [{ text: "Self Assessment tax returns", path: "/self-assessment-tax-returns" }],
-        collections: [],
-        statistical_data_sets: [],
-        topics: [{ text: "Self Assessment", path: "/browse/tax/self-assessment" }],
-        topical_events: [],
-        policies: [],
-        publishers: [],
-        world_locations: [],
-        worldwide_organisations: [],
-        other: [[], []]
-      }
+      expected = [
+        { "related_items" => [{ path: "/self-assessment-tax-returns", text: "Self Assessment tax returns" }] },
+        { "related_guides" => [] },
+        { "collections" => [] },
+        { "topics" => [{ text: "Self Assessment", path: "/browse/tax/self-assessment" }] },
+        { "policies" => [] },
+        { "topical_events" => [] },
+        { "world_locations" => [] },
+        { "statistical_data_sets" => [] },
+        { "worldwide_organisations" => [] },
+      ]
 
       expect(payload).to eql(expected)
+    end
+
+    it "returns an Elsewhere on the web section for external related links" do
+      payload = payload_for("placeholder",
+        "details" => {
+          "external_related_links" => [
+            {
+              "title" => "external-link",
+              "url" => "https://external"
+            }
+          ]
+        },)
+
+      expected = {
+        "Elsewhere_on_the_web" => [
+          {
+            path: "https://external",
+            text: "external-link",
+            rel: "external",
+          }
+        ]
+      }
+
+      expect(payload).to include(expected)
+    end
+  end
+
+  describe "#other" do
+    it "returns an empty array when there are no external_related_links" do
+      content_item = GovukSchemas::RandomExample.for_schema("placeholder", schema_type: "frontend")
+      nav_helper = RelatedNavigationHelper.new(content_item)
+
+      expect(nav_helper.other).to be_empty
     end
   end
 end
