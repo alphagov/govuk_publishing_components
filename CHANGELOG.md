@@ -1,3 +1,7 @@
+# 5.1.1
+
+* Improvements for the feedback component on mobile (PR #168 and #169)
+
 # 5.1.0
 
 * Support other a customisable type attribute for input component (PR #165)
