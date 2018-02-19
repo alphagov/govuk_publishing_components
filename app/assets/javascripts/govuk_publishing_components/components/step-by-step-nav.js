@@ -157,13 +157,14 @@
 
           $title.wrapInner(
             '<span class="js-step-title-text"></span>'
-            );
+          );
 
           $title.wrapInner(
             '<button ' +
             'class="gem-c-step-nav__button gem-c-step-nav__button--title js-step-title-button" ' +
             'aria-expanded="false" aria-controls="' + contentId + '">' +
-            '</button>' );
+            '</button>'
+          );
         });
       }
 

@@ -43,7 +43,7 @@
         >
           <div class="gem-c-step-nav__header js-toggle-panel" data-position="<%= "#{step_index + 1}" %>">
             <%= content_tag("h#{heading_level}", class: 'gem-c-step-nav__title') do %>
-              <div class="gem-c-step-nav__circle <%= circle_class %>">
+              <span class="gem-c-step-nav__circle <%= circle_class %>">
                 <span class="gem-c-step-nav__circle-inner">
                   <span class="gem-c-step-nav__circle-background">
                     <% if logic %>
@@ -56,7 +56,7 @@
                     <% end %>
                   </span>
                 </span>
-              </div>
+              </span>
 
               <span class="js-step-title">
                 <%= step[:title] %>
