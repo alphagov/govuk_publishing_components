@@ -36,6 +36,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         e.preventDefault();
         toggleForm($(e.target).attr('aria-controls'));
         setInitialAriaAttributes();
+        revealInitialPrompt();
       });
 
       this.$pageIsUsefulButton.on('click', function(e) {
@@ -113,10 +114,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         }
       }
 
-      function clearMessages () {
-        $element.find('.js-errors').html('').addClass(jshiddenClass);
-      }
-
       function showError (error) {
         var error = [
           '<h2 class="gem-c-feedback__heading">',
@@ -131,10 +128,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         }
         var $errors = that.$activeForm.find('.js-errors');
         $errors.html(error).removeClass(jshiddenClass).focus();
-      }
-
-      function clearAllInputs () {
-        that.$fields.val('');
       }
 
       function showFormSuccess () {
