@@ -1,25 +1,41 @@
 name: Form input
-description: A single-line text field.
+description: A form input field and an associated label.
 body: |
   [Forked from GOV.UK Frontend](https://govuk-frontend-review.herokuapp.com/components/input)
 accessibility_criteria: |
-  Markdown listing what this component must do to be accessible. For example:
+  Inputs in the component must:
 
-  The link must:
-
-  * be keyboard focusable
+  * accept focus
+  * be focusable with a keyboard
+  * be usable with a keyboard
+  * be usable with touch
+  * indicate when they have focus
+  * be recognisable as form input elements
+  * have correctly associated labels
+  * be of the appropriate type for their use, e.g. password inputs should be of type 'password'
 examples:
   default:
     data:
       label:
         text: "What is your name?"
       name: "name"
-  email_type:
+  specific_input_type:
+    description: By default the input will be type="text". This parameter accepts an alternative, e.g. "search" or "email". No validation is done on this input.
     data:
       label:
         text: "What is your email address?"
       name: "address"
       type: "email"
+  aria_described_by:
+    description: |
+      Allows the addition of an aria-describedby attribute. Note that this will be overridden in the event of an error, where the error will be used for the describedby attribute value.
+
+      The example below uses the ID of the skiplink container for demonstration purposes, in real use this would be passed the ID of an element that correctly described the input.
+    data:
+      label:
+        text: "This might not work"
+      name: "labelledby"
+      labelledby: "skiplink-container"
   with_error:
     data:
       label:
