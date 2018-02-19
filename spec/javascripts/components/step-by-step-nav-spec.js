@@ -634,7 +634,8 @@ describe('A stepnav module', function () {
       label: '3 - Topic Step Three - Elsewhere click: Small ; optional',
       dimension26: '3',
       dimension27: '8',
-      dimension28: '5'
+      dimension28: '5',
+      dimension96: 'unique-id'
     });
   });
 
@@ -766,7 +767,7 @@ describe('A stepnav module', function () {
     });
 
     it("triggers a google analytics custom event on step show when clicking on the title", function () {
-      var $stepLink = $element.find('.gem-c-step-nav__header .gem-c-step-nav__button--title');
+      var $stepLink = $element.find('.gem-c-step-nav__header .js-step-title-text');
       $stepLink.click();
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavShown', {
@@ -805,7 +806,7 @@ describe('A stepnav module', function () {
     });
 
     it("triggers a google analytics custom event on step hide when clicking on the title", function () {
-      var $stepLink = $element.find('.gem-c-step-nav__header .gem-c-step-nav__button--title');
+      var $stepLink = $element.find('.gem-c-step-nav__header .js-step-title-text');
       $stepLink.click();
       $stepLink.click();
 
