@@ -2,16 +2,15 @@ require "spec_helper"
 
 RSpec.describe RelatedNavigationHelper do
   def payload_for(schema, content_item)
-    generator = GovukSchemas::RandomExample.for_schema(schema, schema_type: "frontend")
-    fully_valid_content_item = generator.merge_and_validate(content_item)
-    RelatedNavigationHelper.new(fully_valid_content_item).related_navigation
+    example = GovukSchemas::RandomExample.for_schema(frontend_schema: schema) do |payload|
+      payload.merge(content_item)
+    end
+    RelatedNavigationHelper.new(example).related_navigation
   end
 
   describe "#related-navigation-sidebar" do
     it "can handle randomly generated content" do
-      generator = GovukSchemas::RandomExample.for_schema("placeholder", schema_type: "frontend")
-
-      expect { payload_for("placeholder", generator.payload) }.to_not raise_error
+      expect { payload_for("placeholder", {}) }.to_not raise_error
     end
 
     it "returns empty arrays if there are no related navigation sidebar links" do
@@ -297,7 +296,7 @@ RSpec.describe RelatedNavigationHelper do
 
   describe "#other" do
     it "returns an empty array when there are no external_related_links" do
-      content_item = GovukSchemas::RandomExample.for_schema("placeholder", schema_type: "frontend")
+      content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "placeholder")
       nav_helper = RelatedNavigationHelper.new(content_item)
 
       expect(nav_helper.other).to be_empty
