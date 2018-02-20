@@ -1,3 +1,8 @@
+# 5.1.2
+
+* Fix feedback component when JS disabled (PR #175)
+* Step nav accessibility changes (PR #160)
+
 # 5.1.1
 
 * Improvements for the feedback component on mobile (PR #168 and #169)
@@ -7,8 +12,6 @@
 * Support other a customisable type attribute for input component (PR #165)
 * Add unique tracking to all GA events on step nav components (PR #162)
 * Add feedback component (PR #163)
-
-* Step nav accessibility changes (PR #160)
 
 # 5.0.0
 
