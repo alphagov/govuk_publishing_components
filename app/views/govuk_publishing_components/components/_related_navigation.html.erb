@@ -2,7 +2,7 @@
 <% related_content = related_nav_helper.related_navigation %>
 <% if related_content.map(&:values).flatten.any? || related_nav_helper.other.flatten.any? %>
 <% random = SecureRandom.hex(4) %>
-  <aside class="gem-c-related-navigation" role="complementary">
+  <div class="gem-c-related-navigation">
     <h2 id="related-nav-related_items-<%= random %>"
         class="gem-c-related-navigation__main-heading"
         data-track-count="sidebarRelatedItemSection" >
@@ -13,17 +13,17 @@
       <% section.each do |section_title, links| %>
         <% if links.any? %>
           <% section_index += 1 %>
-          <% unless section_title === "related_items" %>
-            <h3 id="related-nav-<%= section_title %>-<%= random %>"
-              data-track-count="sidebarRelatedItemSection"
-              class="<%= related_nav_helper.section_css_class("gem-c-related-navigation__sub-heading", section_title) %>">
-              <%= related_nav_helper.construct_section_heading(section_title) %>
-            </h3>
-          <% end %>
           <nav role="navigation"
                class="gem-c-related-navigation__nav-section"
                aria-labelledby="related-nav-<%= section_title %>-<%= random %>"
                data-module="toggle">
+            <% unless section_title === "related_items" %>
+              <h3 id="related-nav-<%= section_title %>-<%= random %>"
+                data-track-count="sidebarRelatedItemSection"
+                class="<%= related_nav_helper.section_css_class("gem-c-related-navigation__sub-heading", section_title) %>">
+                <%= related_nav_helper.construct_section_heading(section_title) %>
+              </h3>
+            <% end %>
             <ul class="gem-c-related-navigation_link-list" data-module="track-click">
               <% constructed_link_array = [] %>
               <% section_link_limit = related_nav_helper.calculate_section_link_limit(links) %>
@@ -73,5 +73,5 @@
         <% end %>
       <% end %>
     <% end %>
-  </aside>
+  </div>
 <% end %>
