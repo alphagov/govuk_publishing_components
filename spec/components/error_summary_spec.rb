@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe "Error summary", type: :view do
-  def render_component(locals)
-    render file: "govuk_publishing_components/components/_error_summary", locals: locals
+  def component_name
+    "error_summary"
   end
 
   it "fails to render when no data is given" do

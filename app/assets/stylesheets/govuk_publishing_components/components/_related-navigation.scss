@@ -1,0 +1,49 @@
+.gem-c-related-navigation {
+  border-top: 2px solid $govuk-blue;
+}
+
+.gem-c-related-navigation__main-heading {
+  margin-top: $gutter-half;
+  margin-bottom: $gutter-one-third;
+  @include bold-19;
+}
+
+.gem-c-related-navigation__sub-heading {
+  border-top: 1px solid $border-colour;
+  padding-top: $gutter-half;
+}
+
+.gem-c-related-navigation__main-heading  + .gem-c-related-navigation__sub-heading {
+  border-top: none;
+  padding-top: 0;
+}
+
+.gem-c-related-navigation__sub-heading--other {
+  @include bold-19;
+}
+
+.gem-c-related-navigation__nav-section {
+  margin-bottom: $gutter;
+}
+
+.gem-c-related-navigation__link {
+  list-style-type: none;
+  margin-bottom: $gutter-one-third;
+}
+
+.gem-c-related-navigation__section-link {
+  text-decoration: none;
+  @include bold-19;
+}
+
+.gem-c-related-navigation__section-link--other {
+  text-decoration: none;
+}
+
+// reset the default browser styles
+.gem-c-related-navigation__link-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  margin-bottom: 1.25em;
+}

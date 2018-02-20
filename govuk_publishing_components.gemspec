@@ -32,6 +32,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "uglifier", ">= 1.3.0"
   s.add_development_dependency "govuk-content-schema-test-helpers", "~> 1.5"
   s.add_development_dependency "foreman", "~> 0.64"
+  s.add_development_dependency "govuk_schemas", "~> 1.0"
 
   # Needed to load slimmer test helpers
   # https://github.com/alphagov/slimmer/issues/201

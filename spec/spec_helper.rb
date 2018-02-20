@@ -4,6 +4,8 @@ require 'webmock/rspec'
 require 'slimmer/rspec'
 require 'capybara/rails'
 require 'capybara/poltergeist'
+require 'govuk_schemas'
+require_relative 'support/components_helper.rb'
 
 WebMock.disable_net_connect!(allow_localhost: true)
 
@@ -35,8 +37,10 @@ end
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+
 RSpec.configure do |config|
   config.include Capybara::DSL
+  config.include Helpers::Components, type: :view
 
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest

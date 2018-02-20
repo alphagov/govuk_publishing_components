@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe "Input", type: :view do
-  def render_component(locals)
-    render file: "govuk_publishing_components/components/_input", locals: locals
+  def component_name
+    "input"
   end
 
   it "fails to render when no data is given" do

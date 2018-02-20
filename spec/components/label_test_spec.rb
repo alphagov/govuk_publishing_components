@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe "Label", type: :view do
-  def render_component(locals)
-    render file: "govuk_publishing_components/components/_label", locals: locals
+  def component_name
+    "label"
   end
 
   it "does not render label when no data is given" do

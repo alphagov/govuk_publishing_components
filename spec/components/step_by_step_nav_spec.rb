@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe "step nav", type: :view do
-  def render_component(locals)
-    render file: "govuk_publishing_components/components/_step_by_step_nav", locals: locals
+  def component_name
+    "step_by_step_nav"
   end
 
   def stepnav

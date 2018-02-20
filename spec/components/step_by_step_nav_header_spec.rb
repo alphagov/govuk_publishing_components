@@ -1,8 +1,8 @@
-require 'spec_helper'
+require "rails_helper"
 
 describe "Step by step navigation header", type: :view do
-  def render_component(locals)
-    render file: "govuk_publishing_components/components/_step_by_step_nav_header", locals: locals
+  def component_name
+    "step_by_step_nav_header"
   end
 
   it "renders nothing without passed content" do
