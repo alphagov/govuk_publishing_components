@@ -5,9 +5,7 @@ body: |
 accessibility_criteria: |
   The component is designed to go into the top of an existing content page and should not interfere with the heading structure of the page, so therefore should not contain a heading tag.
 
-  The component must:
-
-  - provide a skip link to the step by step navigation on the page, if one is present
+  An early version of the component contained a hidden skip link for keyboard and screen reader users, that jumped to the step by step navigation component in the sidebar (similiar to the 'skip to content' link at the top of all GOV.UK pages). User testing suggested that rather than helping users it confused them, so this has been removed.
 shared_accessibility_criteria:
   - link
 examples:
@@ -24,16 +22,3 @@ examples:
       title: 'With a tracking id'
       path: '#'
       tracking_id: 'this-is-the-tracking-id'
-  with_a_skip_link:
-    description: This option allows the insertion of a skip link to a step by step navigation elsewhere on the page. This aids navigation when using a keyboard or screen reader. The skip link is visually hidden until it receives focus.
-    data:
-      title: 'Separating from a spouse or civil partner: step by step'
-      path: /divorce
-      skip_link: '#step-nav-wrapper'
-  with_a_skip_link_with_custom_text:
-    description: It's hard to think of good text to put in a skip link, so this option lets you customise it.
-    data:
-      title: 'Buying and renting a property: step by step'
-      path: /buy-sell-your-home
-      skip_link: '#step-nav-steps'
-      skip_link_text: Skip to steps

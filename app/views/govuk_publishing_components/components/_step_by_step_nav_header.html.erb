@@ -1,8 +1,6 @@
 <%
   title ||= false
   path ||= false
-  skip_link ||= false
-  skip_link_text ||= "Skip content"
   tracking_id ||= false
 %>
 <% if title %>
@@ -23,18 +21,6 @@
       <span class="gem-c-step-nav-header__title">
         <%= title %>
       </span>
-    <% end %>
-
-    <% if skip_link %>
-      <a href="<%= skip_link %>"
-        class="gem-c-step-nav-header__skip-link"
-        data-track-category="stepNavHeaderClicked"
-        data-track-action="top"
-        data-track-label="<%= skip_link %>"
-        data-track-dimension="<%= skip_link_text %>"
-        data-track-dimension-index="29">
-        <%= skip_link_text %>
-      </a>
     <% end %>
   </div>
 <% end %>

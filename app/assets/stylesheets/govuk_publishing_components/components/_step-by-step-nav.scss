@@ -30,7 +30,13 @@ $top-border: solid 2px $grey-3;
 }
 
 .gem-c-step-nav {
-  margin-bottom: $gutter-half;
+  margin-bottom: $gutter;
+
+  &.gem-c-step-nav--large {
+    @include media(tablet) {
+      margin-bottom: $gutter * 2;
+    }
+  }
 }
 
 .gem-c-step-nav__controls {
@@ -69,6 +75,11 @@ $top-border: solid 2px $grey-3;
   position: relative;
   z-index: 1; // this and relative position stops focus outline underlap with border of accordion
   padding: 0.5em 0;
+  text-decoration: underline;
+
+  &:hover {
+    color: $link-hover-colour;
+  }
 
   .gem-c-step-nav--large & {
     @include _core-font-generator(16px, 14px, 16px, 1, 1, false);
@@ -99,21 +110,6 @@ $top-border: solid 2px $grey-3;
       &:after {
         @include step-nav-line-position-large;
         top: $gutter;
-      }
-    }
-  }
-}
-
-.gem-c-step-nav__step--optional {
-  // broken line down the side of a step
-  &:after {
-    border-left-style: dotted;
-  }
-
-  .gem-c-step-nav--large & {
-    @include media(tablet) {
-      &:after {
-        border-width: $stroke-width-large;
       }
     }
   }
@@ -238,7 +234,8 @@ $top-border: solid 2px $grey-3;
   }
 
   &:hover {
-    .gem-c-step-nav__button {
+    .gem-c-step-nav__button,
+    .gem-c-step-nav__circle {
       color: $link-colour;
     }
 
@@ -321,12 +318,6 @@ $top-border: solid 2px $grey-3;
   }
 }
 
-.gem-c-step-nav__links--required {
-  .gem-c-step-nav__link-item {
-    font-weight: bold;
-  }
-}
-
 .gem-c-step-nav__links--choice {
   $links-margin: 20px;
 
@@ -380,20 +371,13 @@ $top-border: solid 2px $grey-3;
 
   .gem-c-step-nav__link-item {
     color: $black;
+    text-decoration: none;
 
     &:visited,
     &:active,
     &:link {
       color: $black;
     }
-  }
-}
-
-.gem-c-step-nav__link-item {
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
   }
 }
 
@@ -419,12 +403,6 @@ $top-border: solid 2px $grey-3;
     top: 0;
     left: -($gutter + $gutter-half);
     height: calc(100% + #{$gutter});
-  }
-
-  .gem-c-step-nav__step--optional & {
-    &:after {
-      display: none;
-    }
   }
 
   .gem-c-step-nav--large & {

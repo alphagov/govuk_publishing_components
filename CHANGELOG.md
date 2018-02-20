@@ -8,6 +8,8 @@
 * Add unique tracking to all GA events on step nav components (PR #162)
 * Add feedback component (PR #163)
 
+* Step nav accessibility changes (PR #160)
+
 # 5.0.0
 
 * Rename task list components (PR #156), breaking change

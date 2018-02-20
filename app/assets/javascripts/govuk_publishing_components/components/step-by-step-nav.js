@@ -95,7 +95,7 @@
             linkText = actions.hideLinkText;
           }
           if (!$(this).find('.js-toggle-link').length) {
-            $(this).append('<span class="gem-c-step-nav__toggle-link js-toggle-link">' + linkText + '</span>');
+            $(this).find('.js-step-title-button').append('<span class="gem-c-step-nav__toggle-link js-toggle-link" aria-hidden="true">' + linkText + '</span>');
           }
         });
       }
@@ -156,21 +156,28 @@
           var contentId = $step.find('.js-panel').first().attr('id');
 
           $title.wrapInner(
+            '<span class="js-step-title-text"></span>'
+          );
+
+          $title.wrapInner(
             '<button ' +
             'class="gem-c-step-nav__button gem-c-step-nav__button--title js-step-title-button" ' +
             'aria-expanded="false" aria-controls="' + contentId + '">' +
-            '</button>' );
+            '</button>'
+          );
         });
       }
 
       function bindToggleForSteps(stepNavTracker) {
         $element.find('.js-toggle-panel').click(function (event) {
           preventLinkFollowingForCurrentTab(event);
+          var $step = $(this).closest('.js-step');
 
-          var stepView = new StepView($(this).closest('.js-step'));
+          var stepView = new StepView($step);
           stepView.toggle();
 
-          var toggleClick = new StepToggleClick(event, stepView, $steps, stepNavTracker);
+          var stepIsOptional = typeof $step.data('optional') !== 'undefined' ? true : false;
+          var toggleClick = new StepToggleClick(event, stepView, $steps, stepNavTracker, stepIsOptional);
           toggleClick.track();
 
           setShowHideAllText();
@@ -308,8 +315,7 @@
       var $stepContent = $stepElement.find('.js-panel');
       var shouldUpdateHash = rememberShownStep;
 
-      this.title = $stepElement.find('.js-step-title').text();
-      this.href = $titleLink.attr('href');
+      this.title = $stepElement.find('.js-step-title-text').text().trim();
       this.element = $stepElement;
 
       this.show = show;
@@ -377,29 +383,17 @@
       history.replaceState({}, '', newLocation);
     }
 
-    function StepToggleClick(event, stepView, $steps, stepNavTracker) {
+    function StepToggleClick(event, stepView, $steps, stepNavTracker, stepIsOptional) {
       this.track = trackClick;
       var $target = $(event.target);
 
       function trackClick() {
         var tracking_options = {label: trackingLabel(), dimension28: stepView.numberOfContentItems().toString()}
         stepNavTracker.track('pageElementInteraction', trackingAction(), tracking_options);
-
-        if (!stepView.isHidden()) {
-          stepNavTracker.track(
-            'stepNavLinkClicked',
-            String(stepIndex()),
-            {
-              label: stepView.href,
-              dimension28: String(stepView.numberOfContentItems()),
-              dimension29: stepView.title
-            }
-          )
-        }
       }
 
       function trackingLabel() {
-        return $target.closest('.js-toggle-panel').attr('data-position') + ' - ' + stepView.title + ' - ' + locateClickElement() + ": " + stepNavSize;
+        return $target.closest('.js-toggle-panel').attr('data-position') + ' - ' + stepView.title + ' - ' + locateClickElement() + ": " + stepNavSize + isOptional();
       }
 
       // returns index of the clicked step in the overall number of steps
@@ -426,11 +420,15 @@
       }
 
       function clickedOnHeading() {
-        return $target.hasClass('js-step-title-button');
+        return $target.hasClass('js-step-title-text');
       }
 
       function iconType() {
         return (stepView.isHidden() ? 'Minus' : 'Plus');
+      }
+
+      function isOptional() {
+        return (stepIsOptional ? ' ; optional' : '');
       }
     }
 

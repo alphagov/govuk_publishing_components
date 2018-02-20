@@ -18,7 +18,6 @@ describe "step nav", type: :view do
           },
           {
             type: 'list',
-            style: 'required',
             contents: [
               {
                 href: '/link1',
@@ -155,11 +154,11 @@ describe "step nav", type: :view do
     assert_select ".gem-c-step-nav"
 
     assert_select ".gem-c-step-nav__step#step-1"
-    assert_select step1 + " .gem-c-step-nav__title", text: "Step 1"
+    assert_select step1 + " .gem-c-step-nav__title .js-step-title", text: "Step 1"
     assert_select step1 + " .gem-c-step-nav__paragraph", text: "Step 1 paragraph"
 
     assert_select ".gem-c-step-nav__step#step-2"
-    assert_select step2 + " .gem-c-step-nav__title", text: "Step 2"
+    assert_select step2 + " .gem-c-step-nav__title .js-step-title", text: "Step 2"
     assert_select step2 + " .gem-c-step-nav__paragraph", text: "Step 2 paragraph"
   end
 
@@ -172,8 +171,8 @@ describe "step nav", type: :view do
   it "renders a stepnav with different heading levels" do
     render_component(steps: stepnav, heading_level: 4)
 
-    assert_select step1 + " h4.gem-c-step-nav__title", text: "Step 1"
-    assert_select step2 + " h4.gem-c-step-nav__title", text: "Step 2"
+    assert_select step1 + " h4.gem-c-step-nav__title .js-step-title", text: "Step 1"
+    assert_select step2 + " h4.gem-c-step-nav__title .js-step-title", text: "Step 2"
   end
 
   it "renders headings correctly if the heading level is changed" do
@@ -232,7 +231,7 @@ describe "step nav", type: :view do
   it "renders optional steps, sub steps and optional sub steps" do
     render_component(steps: stepnav)
 
-    assert_select ".gem-c-step-nav__step#step-1.gem-c-step-nav__step--optional"
+    assert_select ".gem-c-step-nav__step#step-1.gem-c-step-nav__step[data-optional]"
     assert_select step1 + " .gem-c-step-nav__substep .gem-c-step-nav__paragraph", text: "This paragraph is inside a required substep"
     assert_select step2 + " .gem-c-step-nav__substep.gem-c-step-nav__substep--optional .gem-c-step-nav__paragraph", text: "This paragraph is inside an optional substep"
   end
@@ -253,10 +252,9 @@ describe "step nav", type: :view do
     assert_select step2or + " .gem-c-step-nav__circle--logic .gem-c-step-nav__circle-inner .gem-c-step-nav__circle-background", text: "or"
   end
 
-  it "applies the correct required and choice styles correctly to lists" do
+  it "applies the correct styles to lists" do
     render_component(steps: stepnav)
 
-    assert_select step1 + " .gem-c-step-nav__links.gem-c-step-nav__links--required"
     assert_select step2 + " .gem-c-step-nav__links.gem-c-step-nav__links--choice"
   end
 

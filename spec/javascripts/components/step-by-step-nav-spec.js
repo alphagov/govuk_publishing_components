@@ -7,11 +7,17 @@ describe('A stepnav module', function () {
     <div data-module="gemstepnav" class="gem-c-step-nav js-hidden" data-id="unique-id">\
       <ol class="gem-c-step-nav__steps">\
         <li class="gem-c-step-nav__step js-step" id="topic-step-one" data-track-count="stepnavStep">\
-          <span class="gem-c-step-nav__number">\
-            <span class="visuallyhidden">Step </span>1\
-          </span>\
           <div class="gem-c-step-nav__header js-toggle-panel" data-position="1">\
-            <h2 class="gem-c-step-nav__title js-step-title">Topic Step One</h2>\
+            <h2 class="gem-c-step-nav__title">\
+              <div class="gem-c-step-nav__circle">\
+                <span class="gem-c-step-nav__circle-inner">\
+                  <span class="gem-c-step-nav__circle-background">\
+                    <span class="visuallyhidden">Step</span> 1\
+                  </span>\
+                </span>\
+              </div>\
+              <span class="js-step-title">Topic Step One</span>\
+            </h2>\
           </div>\
           <div class="gem-c-step-nav__panel js-panel" id="step-panel-topic-step-one-1">\
             <ol class="gem-c-step-nav__links" data-length="1">\
@@ -23,7 +29,16 @@ describe('A stepnav module', function () {
         </li>\
         <li class="gem-c-step-nav__step js-step" id="topic-step-two" data-track-count="stepnavStep">\
           <div class="gem-c-step-nav__header js-toggle-panel" data-position="2">\
-            <h2 class="gem-c-step-nav__title js-step-title">Topic Step Two</h2>\
+            <h2 class="gem-c-step-nav__title">\
+              <div class="gem-c-step-nav__circle">\
+                <span class="gem-c-step-nav__circle-inner">\
+                  <span class="gem-c-step-nav__circle-background">\
+                    <span class="visuallyhidden">Step</span> 2\
+                  </span>\
+                </span>\
+              </div>\
+              <span class="js-step-title">Topic Step Two</span>\
+            </h2>\
           </div>\
           <div class="gem-c-step-nav__panel js-panel" id="step-panel-topic-step-two-1">\
             <ol class="gem-c-step-nav__links" data-length="2">\
@@ -39,12 +54,18 @@ describe('A stepnav module', function () {
             </div>\
           </div>\
         </li>\
-        <li class="gem-c-step-nav__step gem-c-step-nav__step--active js-step" id="topic-step-three" data-track-count="stepnavStep">\
-          <span class="gem-c-step-nav__number">\
-            <span class="visuallyhidden">Step </span>2\
-          </span>\
+        <li class="gem-c-step-nav__step gem-c-step-nav__step--active js-step" id="topic-step-three" data-track-count="stepnavStep" data-optional>\
           <div class="gem-c-step-nav__header js-toggle-panel" data-position="3">\
-            <h2 class="gem-c-step-nav__title js-step-title">Topic Step Three</h2>\
+            <h2 class="gem-c-step-nav__title">\
+              <div class="gem-c-step-nav__circle">\
+                <span class="gem-c-step-nav__circle-inner">\
+                  <span class="gem-c-step-nav__circle-background">\
+                    <span class="visuallyhidden">Step</span> 3\
+                  </span>\
+                </span>\
+              </div>\
+              <span class="js-step-title">Topic Step Three</span>\
+            </h2>\
           </div>\
           <div class="gem-c-step-nav__panel js-panel" id="step-panel-topic-step-three-1">\
             <ol class="gem-c-step-nav__links" data-length="5">\
@@ -112,9 +133,9 @@ describe('A stepnav module', function () {
   });
 
   it("inserts a button into each step to show/hide content", function () {
-    var $titleButton = $element.find('.gem-c-step-nav__header .gem-c-step-nav__button--title');
+    var $titleButton = $element.find('.js-step-title-button');
 
-    expect($titleButton).toHaveClass('gem-c-step-nav__button--title');
+    //expect($titleButton).toHaveClass('gem-c-step-nav__button--title');
     expect($titleButton).toHaveAttr('aria-expanded', 'false');
     expect($titleButton[0]).toHaveAttr('aria-controls', 'step-panel-topic-step-one-1');
     expect($titleButton[1]).toHaveAttr('aria-controls', 'step-panel-topic-step-two-1');
@@ -208,7 +229,7 @@ describe('A stepnav module', function () {
       };
       spyOn(GOVUK.analytics, 'trackEvent');
 
-      var $stepLink = $element.find('.gem-c-step-nav__header .gem-c-step-nav__button--title');
+      var $stepLink = $element.find('.gem-c-step-nav__header .js-step-title-text');
       $stepLink.click();
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavShown', {
@@ -286,9 +307,9 @@ describe('A stepnav module', function () {
       };
       spyOn(GOVUK.analytics, 'trackEvent');
 
-      var $stepLink = $element.find('.gem-c-step-nav__header .gem-c-step-nav__button--title');
-      $stepLink.click();
-      $stepLink.click();
+      var $stepLink = $element.find('.gem-c-step-nav__header .js-step-title-text');
+      $stepLink.click(); // show
+      $stepLink.click(); // hide
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavHidden', {
         label: '1 - Topic Step One - Heading click: Small',
@@ -383,7 +404,7 @@ describe('A stepnav module', function () {
       };
       spyOn(GOVUK.analytics, 'trackEvent');
 
-      var $stepLink = $element.find('.gem-c-step-nav__header .gem-c-step-nav__button--title');
+      var $stepLink = $element.find('.gem-c-step-nav__header .js-step-title-text');
       $stepLink.click();
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavShown', {
@@ -421,7 +442,7 @@ describe('A stepnav module', function () {
       };
       spyOn(GOVUK.analytics, 'trackEvent');
 
-      var $stepHeader = $element.find('.gem-c-step-nav__header');
+      var $stepHeader = $element.find('.gem-c-step-nav__header').first();
       $stepHeader.click();
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavShown', {
@@ -440,7 +461,7 @@ describe('A stepnav module', function () {
       };
       spyOn(GOVUK.analytics, 'trackEvent');
 
-      var $stepLink = $element.find('.gem-c-step-nav__header .gem-c-step-nav__button--title');
+      var $stepLink = $element.find('.gem-c-step-nav__header .js-step-title-text');
       $stepLink.click();
       $stepLink.click();
 
@@ -480,7 +501,6 @@ describe('A stepnav module', function () {
       };
       spyOn(GOVUK.analytics, 'trackEvent');
 
-      stepnav.start($element);
       var $stepHeader = $element.find('.gem-c-step-nav__header');
       $stepHeader.click();
       $stepHeader.click();
@@ -597,6 +617,25 @@ describe('A stepnav module', function () {
       dimension26: expectedstepnavStepCount.toString(),
       dimension27: expectedstepnavLinkCount.toString(),
       dimension96: "unique-id"
+    });
+  });
+
+  it("triggers a google analytics event when clicking to show an optional step", function () {
+    GOVUK.analytics = {
+      trackEvent: function () {
+      }
+    };
+    spyOn(GOVUK.analytics, 'trackEvent');
+
+    var $stepHeader = $element.find('.js-step:nth-child(3) .gem-c-step-nav__header');
+    $stepHeader.click();
+
+    expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavShown', {
+      label: '3 - Topic Step Three - Elsewhere click: Small ; optional',
+      dimension26: '3',
+      dimension27: '8',
+      dimension28: '5',
+      dimension96: 'unique-id'
     });
   });
 
@@ -728,7 +767,7 @@ describe('A stepnav module', function () {
     });
 
     it("triggers a google analytics custom event on step show when clicking on the title", function () {
-      var $stepLink = $element.find('.gem-c-step-nav__header .gem-c-step-nav__button--title');
+      var $stepLink = $element.find('.gem-c-step-nav__header .js-step-title-text');
       $stepLink.click();
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavShown', {
@@ -767,7 +806,7 @@ describe('A stepnav module', function () {
     });
 
     it("triggers a google analytics custom event on step hide when clicking on the title", function () {
-      var $stepLink = $element.find('.gem-c-step-nav__header .gem-c-step-nav__button--title');
+      var $stepLink = $element.find('.gem-c-step-nav__header .js-step-title-text');
       $stepLink.click();
       $stepLink.click();
 
