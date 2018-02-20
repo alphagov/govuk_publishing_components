@@ -1,6 +1,12 @@
+# 5.2.0
+
+* Add related_navigation component from government-frontend, so that it can also
+be used by frontend. This is not a breaking change, but it is not backwards
+compatible with previous versions of the component. (PR #164)
+
 # 5.1.3
 
-# Accessibility fixes for the feedback component (PR #173)
+* Accessibility fixes for the feedback component (PR #173)
 
 # 5.1.2
 
@@ -16,9 +22,6 @@
 * Support other a customisable type attribute for input component (PR #165)
 * Add unique tracking to all GA events on step nav components (PR #162)
 * Add feedback component (PR #163)
-* Add related_navigation component from government-frontend, so that it can also
-be used by frontend. This is not a breaking change, but it is not backwards
-compatible with previous versions of the components (PR #164)
 
 # 5.0.0
 
