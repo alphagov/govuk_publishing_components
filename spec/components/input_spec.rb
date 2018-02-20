@@ -51,11 +51,22 @@ describe "Input", type: :view do
     assert_select ".gem-c-input[value='example@example.com']"
   end
 
+  it "renders inputs with an aria-describedby if provided" do
+    render_component(
+      label: { text: "What is your email address?" },
+      name: "email-address",
+      describedby: "some-other-element"
+    )
+
+    assert_select ".gem-c-input[aria-describedby='some-other-element']"
+  end
+
   context "when an error_message is provided" do
     before do
       render_component(
         name: "email-address",
         error_message: "Please enter a valid email address",
+        describedby: "some-other-element"
       )
     end
 
@@ -67,7 +78,7 @@ describe "Input", type: :view do
       assert_select ".gem-c-label--bold"
     end
 
-    it "sets the 'aria-describedby' on the input to the hint id" do
+    it "sets the 'aria-describedby' on the input to the hint id and overrides a describedby parameter" do
       hint = css_select(".gem-c-label__hint")
       hint_id = hint.attr("id").text
 

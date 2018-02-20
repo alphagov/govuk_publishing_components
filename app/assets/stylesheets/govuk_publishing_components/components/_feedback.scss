@@ -39,8 +39,8 @@
 
 .gem-c-feedback__prompt-question,
 .gem-c-feedback__prompt-success {
-  @include bold-16;
   display: inline;
+  font-weight: bold;
 
   &:focus {
     outline: 0;

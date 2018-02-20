@@ -64,7 +64,8 @@
           label: {
             text: "What were you doing?"
           },
-          name: "what_doing"
+          name: "what_doing",
+          describedby: "feedback_explanation"
         } %>
 
         <%= render "govuk_publishing_components/components/input", {
@@ -102,7 +103,8 @@
             text: "Email address"
           },
           name: "email_survey_signup[email_address]",
-          type: "email"
+          type: "email",
+          describedby: "survey_explanation"
         } %>
 
         <%# TODO: use button component once available in gem %>

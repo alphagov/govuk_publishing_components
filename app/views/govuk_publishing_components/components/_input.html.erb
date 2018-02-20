@@ -5,6 +5,7 @@
   error_message ||= false
   label ||= {}
   type ||= "text"
+  describedby ||= false
 %>
 
 <%= render "govuk_publishing_components/components/label", {
@@ -24,6 +25,8 @@
 
   <% if error_message %>
     aria-describedby="<%= hint_id %>"
+  <% elsif describedby %>
+    aria-describedby="<%= describedby %>"
   <% end %>
 
   <% if value %>
