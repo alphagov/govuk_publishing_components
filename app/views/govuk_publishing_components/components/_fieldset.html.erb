@@ -1,6 +1,14 @@
-<% text = text || yield %>
+<%
+text = text || yield
+legend_govspeak ||= nil
+govspeak_classes = legend_govspeak ? %w[govuk-govspeak] : []
+if legend_govspeak.respond_to?(:[])
+  govspeak_classes << "rich-govspeak" if legend_govspeak[:rich]
+  govspeak_classes << "direction-#{legend_govspeak[:direction]}" if legend_govspeak[:direction]
+end
+%>
 <fieldset class="gem-c-fieldset">
-  <legend class="gem-c-fieldset__legend">
+  <legend class="gem-c-fieldset__legend <%= govspeak_classes.join(" ") %>">
     <%= legend_text %>
   </legend>
   <%= text %>
