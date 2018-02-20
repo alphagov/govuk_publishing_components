@@ -32,3 +32,12 @@ examples:
 
         <input type="radio" id="html-legend-no" name="html-legend">
         <label for="html-legend-no">No</label>
+  without_legend:
+    data:
+      text: |
+        <!-- Use the radio component, this is hardcoded only for this example -->
+        <input type="radio" id="html-legend-yes" name="html-legend">
+        <label for="html-legend-yes">Yes</label>
+
+        <input type="radio" id="html-legend-no" name="html-legend">
+        <label for="html-legend-no">No</label>
