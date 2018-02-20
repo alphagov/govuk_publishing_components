@@ -1,3 +1,7 @@
+# 5.1.3
+
+# Accessibility fixes for the feedback component (PR #173)
+
 # 5.1.2
 
 * Fix feedback component when JS disabled (PR #175)
