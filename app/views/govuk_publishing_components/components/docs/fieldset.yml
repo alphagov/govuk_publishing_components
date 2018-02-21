@@ -32,3 +32,31 @@ examples:
 
         <input type="radio" id="html-legend-no" name="html-legend">
         <label for="html-legend-no">No</label>
+  with_govspeak_legend:
+    description: "If you want to use govspeak inside the legend you won\'t be able to use the [govspeak component](http://govuk-static.herokuapp.com/component-guide/govspeak) as it is wrapped in a div which is not allowed by HTML. You can instead pass a legend_govspeak option"
+    data:
+      legend_govspeak: true
+      legend_text: <h2>Do you have a passport?</h2>
+      text: |
+        <!-- Use the radio component, this is hardcoded only for this example -->
+        <input type="radio" id="govspeak-legend-yes" name="govspeak-legend">
+        <label for="govspeak-legend-yes">Yes</label>
+
+        <input type="radio" id="govspeak-legend-no" name="govspeak-legend">
+        <label for="govspeak-legend-no">No</label>
+  with_govspeak_options_legend:
+    description: "You may need additional options for govspeak"
+    data:
+      legend_govspeak:
+        direction: "rtl"
+        rich: true
+      legend_text: |
+        <h2>مع بدء هذا الشهر الفضيل أتمنى للمسلمين في أنحاء العالم - في آسيا وأفريقيا والشرق الأوسط وأوروبا وغيرها من مناطق العالم - شهر رمضان مبارك</h2>
+        <p>مع بدء هذا الشهر الفضيل أتمنى للمسلمين في أنحاء العالم - في آسيا وأفريقيا <strong>والشرق</strong> الأوسط وأوروبا وغيرها من مناطق العالم - شهر رمضان مبارك</p>
+      text: |
+        <!-- Use the radio component, this is hardcoded only for this example -->
+        <input type="radio" id="govspeak-options-legend-yes" name="govspeak-options-legend">
+        <label for="govspeak-options-legend-yes">Yes</label>
+
+        <input type="radio" id="govspeak-options-legend-no" name="govspeak-options-legend">
+        <label for="govspeak-options-legend-no">No</label>
