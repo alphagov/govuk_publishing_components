@@ -1,8 +1,8 @@
 name: Related Navigation
 description: Component showing related content, including topics, guidance, collections and policies (where applicable)
 accessibility_criteria: |
-  - Should have a role of 'complementary' as it complements the main page content
   - Should have a role of 'navigation' on any navigation elements inside the component
+  - Should be marked up as navigation and not as tangential content
 shared_accessibility_criteria:
   - link
 accessibility_excluded_rules:
