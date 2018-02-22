@@ -35,6 +35,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       this.$closeForms.on('click', function(e) {
         e.preventDefault();
         toggleForm($(e.target).attr('aria-controls'));
+        trackEvent(getTrackEventParams($(this)));
         setInitialAriaAttributes();
         revealInitialPrompt();
       });

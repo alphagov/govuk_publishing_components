@@ -15,7 +15,7 @@ describe("Feedback component", function () {
       '</div>' +
 
       '<form action="/contact/govuk/page_improvements" id="something-is-wrong" class="gem-c-feedback__form js-feedback-form js-hidden" data-track-category="Onsite Feedback" data-track-action="GOV.UK Send Form">' +
-        '<a href="#" class="gem-c-feedback__close js-close-form" aria-controls="something-is-wrong" aria-expanded="true">Close</a>' +
+        '<a href="#" class="gem-c-feedback__close js-close-form" aria-controls="something-is-wrong" aria-expanded="true" data-track-category="Onsite Feedback" data-track-action="GOV.UK Close Form">Close</a>' +
 
         '<div class="grid-row">' +
           '<div class="column-two-thirds">' +
@@ -47,7 +47,7 @@ describe("Feedback component", function () {
       '</form>' +
 
       '<form action="/contact/govuk/email-survey-signup" id="page-is-not-useful" class="gem-c-feedback__form js-feedback-form js-hidden" data-track-category="user_satisfaction_survey" data-track-action="banner_taken">' +
-        '<a href="#" class="gem-c-feedback__close js-close-form" aria-controls="page-is-not-useful" aria-expanded="true">Close</a>' +
+        '<a href="#" class="gem-c-feedback__close js-close-form" aria-controls="page-is-not-useful" aria-expanded="true" data-track-category="yesNoFeedbackForm" data-track-action="ffFormClose">Close</a>' +
 
         '<div class="grid-row">' +
           '<div class="column-two-thirds">' +
@@ -269,6 +269,19 @@ describe("Feedback component", function () {
       expect($('.js-page-is-not-useful').attr('aria-expanded')).toBe('false');
       expect($('.js-something-is-wrong').attr('aria-expanded')).toBe('false');
     });
+
+    it("triggers a Google Analytics event", function () {
+      GOVUK.analytics = {
+        trackEvent: function () {
+        }
+      };
+      spyOn(GOVUK.analytics, 'trackEvent');
+
+      $('#something-is-wrong a.js-close-form').click();
+
+      expect(GOVUK.analytics.trackEvent).
+        toHaveBeenCalledWith('Onsite Feedback', 'GOV.UK Close Form');
+    });
   })
 
   describe("Clicking the close link in the 'not useful' form", function () {
@@ -298,6 +311,19 @@ describe("Feedback component", function () {
 
       expect($('.js-page-is-not-useful').attr('aria-expanded')).toBe('false');
       expect($('.js-something-is-wrong').attr('aria-expanded')).toBe('false');
+    });
+
+    it("triggers a Google Analytics event", function () {
+      GOVUK.analytics = {
+        trackEvent: function () {
+        }
+      };
+      spyOn(GOVUK.analytics, 'trackEvent');
+
+      $('#page-is-not-useful a.js-close-form').click();
+
+      expect(GOVUK.analytics.trackEvent).
+        toHaveBeenCalledWith('yesNoFeedbackForm', 'ffFormClose');
     });
   })
 
