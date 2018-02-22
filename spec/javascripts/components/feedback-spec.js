@@ -14,7 +14,7 @@ describe("Feedback component", function () {
         '</div>' +
       '</div>' +
 
-      '<form action="/contact/govuk/page_improvements" id="something-is-wrong" class="gem-c-feedback__form js-feedback-form js-hidden" data-track-category="Onsite Feedback" data-track-action="ffFormSubmit">' +
+      '<form action="/contact/govuk/page_improvements" id="something-is-wrong" class="gem-c-feedback__form js-feedback-form js-hidden" data-track-category="Onsite Feedback" data-track-action="GOV.UK Send Form">' +
         '<a href="#" class="gem-c-feedback__close js-close-form" aria-controls="something-is-wrong" aria-expanded="true">Close</a>' +
 
         '<div class="grid-row">' +
@@ -327,7 +327,7 @@ describe("Feedback component", function () {
       });
 
       expect(GOVUK.analytics.trackEvent).
-        toHaveBeenCalledWith('Onsite Feedback', 'ffFormSubmit');
+        toHaveBeenCalledWith('Onsite Feedback', 'GOV.UK Send Form');
     });
 
     it("submits the feedback to the feedback frontend", function () {
