@@ -6,7 +6,7 @@ describe("Feedback component", function () {
           '<h3 class="gem-c-feedback__is-useful-question">Is this page useful?</h3>' +
           '<a href="/contact/govuk" class="gem-c-feedback__prompt-link gem-c-feedback__prompt-link--useful js-page-is-useful" data-track-category="Onsite Feedback" data-track-action="ffYesClick">Yes <span class="visually-hidden">this page is useful</span></a>' +
           '<a href="/contact/govuk" class="gem-c-feedback__prompt-link js-toggle-form js-page-is-not-useful" data-track-category="Onsite Feedback" data-track-action="ffNoClick" aria-controls="page-is-not-useful" aria-expanded="false">No <span class="visually-hidden">this page is not useful</span></a>' +
-          '<a href="/contact/govuk" class="gem-c-feedback__prompt-link gem-c-feedback__prompt-link--wrong js-toggle-form js-something-is-wrong" data-track-category="Onsite Feedback" data-track-action="ffWrongClick" aria-controls="something-is-wrong" aria-expanded="false">Is there anything wrong with this page?</a>' +
+          '<a href="/contact/govuk" class="gem-c-feedback__prompt-link gem-c-feedback__prompt-link--wrong js-toggle-form js-something-is-wrong" data-track-category="Onsite Feedback" data-track-action="GOV.UK Open Form" aria-controls="something-is-wrong" aria-expanded="false">Is there anything wrong with this page?</a>' +
         '</div>' +
 
         '<div class="gem-c-feedback__prompt-success js-prompt-success js-hidden" tabindex="-1">' +
@@ -237,7 +237,7 @@ describe("Feedback component", function () {
       $('a.js-something-is-wrong').click();
 
       expect(GOVUK.analytics.trackEvent).
-        toHaveBeenCalledWith('Onsite Feedback', 'ffWrongClick');
+        toHaveBeenCalledWith('Onsite Feedback', 'GOV.UK Open Form');
     });
   });
 
