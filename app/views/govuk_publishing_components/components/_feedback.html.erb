@@ -10,7 +10,7 @@
       <%= link_to contact_govuk_path, {
         class: 'gem-c-feedback__prompt-link gem-c-feedback__prompt-link--useful js-page-is-useful',
         data: {
-          'track-category' => 'yesNoFeedbackForm',
+          'track-category' => 'Onsite Feedback',
           'track-action' => 'ffYesClick'
           },
         } do %>
@@ -20,7 +20,7 @@
       <%= link_to contact_govuk_path, {
         class: 'gem-c-feedback__prompt-link js-toggle-form js-page-is-not-useful',
         data: {
-          'track-category' => 'yesNoFeedbackForm',
+          'track-category' => 'Onsite Feedback',
           'track-action' => 'ffNoClick'
           },
           'aria-controls': 'page-is-not-useful',
@@ -32,7 +32,7 @@
       <%= link_to contact_govuk_path, {
         class: 'gem-c-feedback__prompt-link gem-c-feedback__prompt-link--wrong js-toggle-form js-something-is-wrong',
         data: {
-          'track-category' => 'yesNoFeedbackForm',
+          'track-category' => 'Onsite Feedback',
           'track-action' => 'ffWrongClick'
           },
           'aria-controls': 'something-is-wrong',
@@ -47,7 +47,7 @@
     </div>
   </div>
 
-  <form action="/contact/govuk/problem_reports" id="something-is-wrong" class="gem-c-feedback__form js-feedback-form js-hidden" data-track-category="yesNoFeedbackForm" data-track-action="ffFormSubmit" method="post">
+  <form action="/contact/govuk/problem_reports" id="something-is-wrong" class="gem-c-feedback__form js-feedback-form js-hidden" data-track-category="Onsite Feedback" data-track-action="ffFormSubmit" method="post">
     <a href="#" class="gem-c-feedback__close gem-c-feedback__js-show js-close-form" aria-controls="something-is-wrong" aria-expanded="true" role="button">Close</a>
 
     <div class="gem-c-feedback__grid-row">

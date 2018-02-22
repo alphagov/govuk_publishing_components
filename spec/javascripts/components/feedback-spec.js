@@ -4,9 +4,9 @@ describe("Feedback component", function () {
       '<div class="gem-c-feedback__prompt js-prompt" tabindex="-1">' +
         '<div class="js-prompt-questions">' +
           '<h3 class="gem-c-feedback__is-useful-question">Is this page useful?</h3>' +
-          '<a href="/contact/govuk" class="gem-c-feedback__prompt-link gem-c-feedback__prompt-link--useful js-page-is-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffYesClick">Yes <span class="visually-hidden">this page is useful</span></a>' +
-          '<a href="/contact/govuk" class="gem-c-feedback__prompt-link js-toggle-form js-page-is-not-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffNoClick" aria-controls="page-is-not-useful" aria-expanded="false">No <span class="visually-hidden">this page is not useful</span></a>' +
-          '<a href="/contact/govuk" class="gem-c-feedback__prompt-link gem-c-feedback__prompt-link--wrong js-toggle-form js-something-is-wrong" data-track-category="yesNoFeedbackForm" data-track-action="ffWrongClick" aria-controls="something-is-wrong" aria-expanded="false">Is there anything wrong with this page?</a>' +
+          '<a href="/contact/govuk" class="gem-c-feedback__prompt-link gem-c-feedback__prompt-link--useful js-page-is-useful" data-track-category="Onsite Feedback" data-track-action="ffYesClick">Yes <span class="visually-hidden">this page is useful</span></a>' +
+          '<a href="/contact/govuk" class="gem-c-feedback__prompt-link js-toggle-form js-page-is-not-useful" data-track-category="Onsite Feedback" data-track-action="ffNoClick" aria-controls="page-is-not-useful" aria-expanded="false">No <span class="visually-hidden">this page is not useful</span></a>' +
+          '<a href="/contact/govuk" class="gem-c-feedback__prompt-link gem-c-feedback__prompt-link--wrong js-toggle-form js-something-is-wrong" data-track-category="Onsite Feedback" data-track-action="ffWrongClick" aria-controls="something-is-wrong" aria-expanded="false">Is there anything wrong with this page?</a>' +
         '</div>' +
 
         '<div class="gem-c-feedback__prompt-success js-prompt-success js-hidden" tabindex="-1">' +
@@ -14,7 +14,7 @@ describe("Feedback component", function () {
         '</div>' +
       '</div>' +
 
-      '<form action="/contact/govuk/page_improvements" id="something-is-wrong" class="gem-c-feedback__form js-feedback-form js-hidden" data-track-category="yesNoFeedbackForm" data-track-action="ffFormSubmit">' +
+      '<form action="/contact/govuk/page_improvements" id="something-is-wrong" class="gem-c-feedback__form js-feedback-form js-hidden" data-track-category="Onsite Feedback" data-track-action="ffFormSubmit">' +
         '<a href="#" class="gem-c-feedback__close js-close-form" aria-controls="something-is-wrong" aria-expanded="true">Close</a>' +
 
         '<div class="grid-row">' +
@@ -133,7 +133,7 @@ describe("Feedback component", function () {
       $('a.js-page-is-useful').click();
 
       expect(GOVUK.analytics.trackEvent).
-        toHaveBeenCalledWith('yesNoFeedbackForm', 'ffYesClick');
+        toHaveBeenCalledWith('Onsite Feedback', 'ffYesClick');
     });
   });
 
@@ -185,7 +185,7 @@ describe("Feedback component", function () {
       $('a.js-page-is-not-useful').click();
 
       expect(GOVUK.analytics.trackEvent).
-        toHaveBeenCalledWith('yesNoFeedbackForm', 'ffNoClick');
+        toHaveBeenCalledWith('Onsite Feedback', 'ffNoClick');
     });
   });
 
@@ -237,7 +237,7 @@ describe("Feedback component", function () {
       $('a.js-something-is-wrong').click();
 
       expect(GOVUK.analytics.trackEvent).
-        toHaveBeenCalledWith('yesNoFeedbackForm', 'ffWrongClick');
+        toHaveBeenCalledWith('Onsite Feedback', 'ffWrongClick');
     });
   });
 
@@ -327,7 +327,7 @@ describe("Feedback component", function () {
       });
 
       expect(GOVUK.analytics.trackEvent).
-        toHaveBeenCalledWith('yesNoFeedbackForm', 'ffFormSubmit');
+        toHaveBeenCalledWith('Onsite Feedback', 'ffFormSubmit');
     });
 
     it("submits the feedback to the feedback frontend", function () {
