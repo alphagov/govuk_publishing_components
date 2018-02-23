@@ -58,7 +58,9 @@
 }
 
 .gem-c-feedback__prompt-link--wrong {
-  float: right;
+  @include media(tablet) {
+    float: right;
+  }
 }
 
 .gem-c-feedback__error-summary {
