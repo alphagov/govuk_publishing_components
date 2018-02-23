@@ -4,8 +4,8 @@ describe("Feedback component", function () {
       '<div class="gem-c-feedback__prompt js-prompt" tabindex="-1">' +
         '<div class="js-prompt-questions">' +
           '<h3 class="gem-c-feedback__is-useful-question">Is this page useful?</h3>' +
-          '<a href="/contact/govuk" class="gem-c-feedback__prompt-link gem-c-feedback__prompt-link--useful js-page-is-useful" data-track-category="Onsite Feedback" data-track-action="ffYesClick">Yes <span class="visually-hidden">this page is useful</span></a>' +
-          '<a href="/contact/govuk" class="gem-c-feedback__prompt-link js-toggle-form js-page-is-not-useful" data-track-category="Onsite Feedback" data-track-action="ffNoClick" aria-controls="page-is-not-useful" aria-expanded="false">No <span class="visually-hidden">this page is not useful</span></a>' +
+          '<a href="/contact/govuk" class="gem-c-feedback__prompt-link gem-c-feedback__prompt-link--useful js-page-is-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffYesClick">Yes <span class="visually-hidden">this page is useful</span></a>' +
+          '<a href="/contact/govuk" class="gem-c-feedback__prompt-link js-toggle-form js-page-is-not-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffNoClick" aria-controls="page-is-not-useful" aria-expanded="false">No <span class="visually-hidden">this page is not useful</span></a>' +
           '<a href="/contact/govuk" class="gem-c-feedback__prompt-link gem-c-feedback__prompt-link--wrong js-toggle-form js-something-is-wrong" data-track-category="Onsite Feedback" data-track-action="GOV.UK Open Form" aria-controls="something-is-wrong" aria-expanded="false">Is there anything wrong with this page?</a>' +
         '</div>' +
 
@@ -46,7 +46,7 @@ describe("Feedback component", function () {
         '</div>' +
       '</form>' +
 
-      '<form action="/contact/govuk/email-survey-signup" id="page-is-not-useful" class="gem-c-feedback__form js-feedback-form js-hidden" data-track-category="user_satisfaction_survey" data-track-action="banner_taken">' +
+      '<form action="/contact/govuk/email-survey-signup" id="page-is-not-useful" class="gem-c-feedback__form js-feedback-form js-hidden" data-track-category="yesNoFeedbackForm" data-track-action="Send Form">' +
         '<a href="#" class="gem-c-feedback__close js-close-form" aria-controls="page-is-not-useful" aria-expanded="true" data-track-category="yesNoFeedbackForm" data-track-action="ffFormClose">Close</a>' +
 
         '<div class="grid-row">' +
@@ -133,7 +133,7 @@ describe("Feedback component", function () {
       $('a.js-page-is-useful').click();
 
       expect(GOVUK.analytics.trackEvent).
-        toHaveBeenCalledWith('Onsite Feedback', 'ffYesClick');
+        toHaveBeenCalledWith('yesNoFeedbackForm', 'ffYesClick');
     });
   });
 
@@ -185,7 +185,7 @@ describe("Feedback component", function () {
       $('a.js-page-is-not-useful').click();
 
       expect(GOVUK.analytics.trackEvent).
-        toHaveBeenCalledWith('Onsite Feedback', 'ffNoClick');
+        toHaveBeenCalledWith('yesNoFeedbackForm', 'ffNoClick');
     });
   });
 
@@ -453,7 +453,7 @@ describe("Feedback component", function () {
       });
 
       expect(GOVUK.analytics.trackEvent).
-        toHaveBeenCalledWith('user_satisfaction_survey', 'banner_taken');
+        toHaveBeenCalledWith('yesNoFeedbackForm', 'Send Form');
     });
 
     it("submits the feedback to the feedback frontend", function () {
