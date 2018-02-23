@@ -1,3 +1,8 @@
+# 5.2.1
+
+* Feedback: changes to the event tracking (PR #184)
+* Related Navigation: accessibility improvements (PR #182)
+
 # 5.2.0
 
 * Add related_navigation component from government-frontend, so that it can also
