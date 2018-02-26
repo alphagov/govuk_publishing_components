@@ -1,5 +1,6 @@
 # Unreleased
 
+* Feedback: add spacing above component (PR #191)
 * Feedback: set font sizes (PR #190)
 * Feedback: improve link spacing (PR #188)
 
