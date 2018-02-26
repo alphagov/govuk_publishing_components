@@ -39,19 +39,26 @@
 
 .gem-c-feedback__prompt-question,
 .gem-c-feedback__prompt-success {
-  display: inline;
-  font-weight: bold;
+  @include bold-19;
+  display: inline-block;
 
   &:focus {
     outline: 0;
   }
+
+  @include media(tablet) {
+    @include bold-16;
+    float: left;
+  }
 }
 
 .gem-c-feedback__prompt-link {
-  display: inline-block;
+  @include core-19;
   margin-left: $gutter-half;
 
   @include media(tablet) {
+    @include core-16;
+    float: left; // needed to ensure vertical alignment consistent with prompt-link--wrong
     margin-left: $gutter-one-third;
   }
 }
@@ -63,11 +70,13 @@
 
 .gem-c-feedback__prompt-link--wrong {
   display: block;
+  clear: both;
   margin-top: $gutter-half;
   margin-left: 0;
 
   @include media(tablet) {
     float: right;
+    clear: none;
     margin-top: 0;
     margin-left: $gutter-one-third;
   }
