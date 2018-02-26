@@ -1,3 +1,7 @@
+# Unreleased
+
+* Feedback: improve link spacing (PR #188)
+
 # 5.2.1
 
 * Feedback: changes to the event tracking (PR #184)

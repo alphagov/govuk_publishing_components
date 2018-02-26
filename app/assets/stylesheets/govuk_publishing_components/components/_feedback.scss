@@ -47,18 +47,30 @@
   }
 }
 
+.gem-c-feedback__prompt-link {
+  display: inline-block;
+  margin-left: $gutter-half;
+
+  @include media(tablet) {
+    margin-left: $gutter-one-third;
+  }
+}
+
 .gem-c-feedback__prompt-link:link,
 .gem-c-feedback__prompt-link:visited {
   color: $white;
-  display: inline-block;
-}
-
-.gem-c-feedback__prompt-link--useful {
-  margin-right: 0.2em;
 }
 
 .gem-c-feedback__prompt-link--wrong {
-  float: right;
+  display: block;
+  margin-top: $gutter-half;
+  margin-left: 0;
+
+  @include media(tablet) {
+    float: right;
+    margin-top: 0;
+    margin-left: $gutter-one-third;
+  }
 }
 
 .gem-c-feedback__error-summary {
