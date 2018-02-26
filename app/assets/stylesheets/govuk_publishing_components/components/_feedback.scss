@@ -5,6 +5,11 @@
 .gem-c-feedback {
   max-width: 960px;
   margin: 0 auto;
+  margin-top: $gutter;
+
+  @include media(tablet) {
+    margin-top: $gutter * 2;
+  }
 }
 
 // hide without js
