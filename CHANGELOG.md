@@ -1,5 +1,6 @@
 # Unreleased
 
+* Feedback: set font sizes (PR #190)
 * Feedback: improve link spacing (PR #188)
 
 # 5.2.1
