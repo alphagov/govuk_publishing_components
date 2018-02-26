@@ -1,4 +1,4 @@
-# Unreleased
+# 5.2.2
 
 * Feedback: add spacing above component (PR #191)
 * Feedback: set font sizes (PR #190)
