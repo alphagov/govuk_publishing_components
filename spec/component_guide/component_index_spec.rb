@@ -4,7 +4,7 @@ describe 'Component guide index' do
   # Load ordering test can only fail if run as the first test in suite
   # https://github.com/rails/rails/issues/12168
   it 'renders using gem layout not app layout after viewing a page on the application' do
-    visit '/'
+    visit '/test'
     expect(page).to have_title 'Dummy'
     visit '/component-guide'
     expect(page).to have_title 'GOV.UK Component Guide'
