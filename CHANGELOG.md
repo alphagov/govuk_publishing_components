@@ -1,6 +1,7 @@
-# Unreleased
+# 5.2.3
 
 * Feedback: add role button to links (PR #193)
+* Feedback: fix styling on older layouts (PR #194)
 
 # 5.2.2
 
