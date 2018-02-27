@@ -47,6 +47,9 @@
   @include bold-19;
   display: inline-block;
 
+  // There's a global h3 rule in some layouts that interferes with this component
+  margin-top: 0;
+
   &:focus {
     outline: 0;
   }
