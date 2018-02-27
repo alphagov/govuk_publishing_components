@@ -1,3 +1,7 @@
+# Unreleased
+
+* Feedback: add role button to links (PR #193)
+
 # 5.2.2
 
 * Feedback: add spacing above component (PR #191)
