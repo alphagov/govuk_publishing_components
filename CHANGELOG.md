@@ -1,4 +1,4 @@
-# Unreleased
+# 5.3.0
 
 * Add step by step navigation component helpers
 
