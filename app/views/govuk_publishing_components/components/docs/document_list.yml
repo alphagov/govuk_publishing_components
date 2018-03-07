@@ -1,0 +1,70 @@
+name: Document list
+description: An ordered list of links to documents including document type and when updated.
+body: |
+  Outputs a list of links to documents, based on an array of document data. This must include:
+
+  * link text
+  * link href
+  * last updated date object
+  * document type
+
+  Tracking can be added to the links by supplying optional data attributes for each.
+
+  Documents are presented in an ordered list as the component expects that the ordering of the documents is relevant.
+accessibility_criteria: |
+  The component must:
+
+  * inform the user how many items are in the list
+shared_accessibility_criteria:
+  - link
+examples:
+  default:
+    data:
+      items:
+      - link:
+          text: 'Alternative provision'
+          path: '/government/publications/alternative-provision'
+        metadata:
+          public_updated_at: 2016-06-27 10:29:44
+          document_type: 'Statutory guidance'
+      - link:
+          text: 'Behaviour and discipline in schools: guide for governing bodies'
+          path: '/government/publications/behaviour-and-discipline-in-schools-guidance-for-governing-bodies'
+        metadata:
+          public_updated_at: 2015-09-24 16:42:48
+          document_type: 'Statutory guidance'
+      - link:
+          text: 'Children missing education'
+          path: '/government/publications/children-missing-education'
+        metadata:
+          public_updated_at: 2016-09-05 16:48:27
+          document_type: 'Statutory guidance'
+  with_data_attributes_on_links:
+    data:
+      items:
+      - link:
+          text: 'School behaviour and attendance: parental responsibility measures'
+          path: '/government/publications/parental-responsibility-measures-for-behaviour-and-attendance'
+          data_attributes:
+            track_category: 'navDocumentCollectionLinkClicked'
+            track_action: 1.1
+            track_label: '/government/publications/parental-responsibility-measures-for-behaviour-and-attendance'
+            track_options:
+              dimension28: 2
+              dimension29: 'School behaviour and attendance: parental responsibility measures'
+        metadata:
+          public_updated_at: 2017-01-05 14:50:33
+          document_type: 'Statutory guidance'
+      - link:
+          text: 'School exclusion'
+          path: '/government/publications/school-exclusion'
+          data_attributes:
+            track_category: 'navDocumentCollectionLinkClicked'
+            track_action: 1.2
+            track_label: '/government/publications/school-exclusion'
+            track_options:
+              dimension28: 2
+              dimension29: 'School exclusion'
+        metadata:
+          public_updated_at: 2017-07-19 15:01:48
+          document_type: 'Statutory guidance'

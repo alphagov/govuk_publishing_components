@@ -1,0 +1,18 @@
+.gem-c-document-list__item {
+  overflow: hidden;
+  margin-bottom: $gutter-one-third;
+  padding-bottom: $gutter-one-third;
+  border-bottom: 1px solid $border-colour;
+  list-style: none;
+}
+
+.gem-c-document-list__item-title {
+  @include bold-19;
+}
+
+.gem-c-document-list__attribute {
+  @include core-14;
+  float: left;
+  list-style: none;
+  padding-right: $gutter-two-thirds;
+}
