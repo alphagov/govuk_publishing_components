@@ -30,7 +30,6 @@ RSpec.describe RelatedNavigationHelper do
         { "topical_events" => [] },
         { "world_locations" => [] },
         { "statistical_data_sets" => [] },
-        { "worldwide_organisations" => [] },
       ]
 
       expect(nothing).to eq(expected)
@@ -138,46 +137,8 @@ RSpec.describe RelatedNavigationHelper do
         { "topical_events" => [{ path: "/related-topical-event", text: "related topical event" }] },
         { "world_locations" => [{ path: "/world/world-location/news", text: "World, ~ (@Location)" }] },
         { "statistical_data_sets" => [] },
-        { "worldwide_organisations" => [] },
       ]
 
-      expect(payload).to eql(expected)
-    end
-
-    it "returns worldwide organisations" do
-      payload = payload_for("world_location_news_article",
-        "details" => {
-          "body" => "body",
-          "government" => {
-            "title" => "government",
-            "slug" => "government",
-            "current" => true
-          },
-          "political" => true,
-          "first_public_at" => "2016-01-01T19:00:00Z",
-        },
-        "links" => {
-          "worldwide_organisations" => [
-            {
-              "content_id" => "32c1b93d-2553-47c9-bc3c-fc5b513ecc32",
-              "title" => "related worldwide organisation",
-              "base_path" => "/related-worldwide-organisation",
-              "document_type" => "worldwide_organisation",
-              "locale" => "en"
-            }
-          ],
-        })
-      expected = [
-        { "related_items" => [] },
-        { "related_guides" => [] },
-        { "collections" => [] },
-        { "topics" => [] },
-        { "policies" => [] },
-        { "topical_events" => [] },
-        { "world_locations" => [] },
-        { "statistical_data_sets" => [] },
-        { "worldwide_organisations" => [{ path: "/related-worldwide-organisation", text: "related worldwide organisation" }] },
-      ]
       expect(payload).to eql(expected)
     end
 
@@ -214,7 +175,6 @@ RSpec.describe RelatedNavigationHelper do
         { "topical_events" => [] },
         { "world_locations" => [] },
         { "statistical_data_sets" => [{ path: "/related-statistical-data-set", text: "related statistical data set" }] },
-        { "worldwide_organisations" => [] },
       ]
       expect(payload).to eql(expected)
     end
@@ -263,7 +223,6 @@ RSpec.describe RelatedNavigationHelper do
         { "topical_events" => [] },
         { "world_locations" => [] },
         { "statistical_data_sets" => [] },
-        { "worldwide_organisations" => [] },
       ]
 
       expect(payload).to eql(expected)

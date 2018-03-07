@@ -24,7 +24,6 @@ class RelatedNavigationHelper
       { "topical_events" => related_topical_events },
       { "world_locations" => related_world_locations },
       { "statistical_data_sets" => related_statistical_data_sets },
-      { "worldwide_organisations" => related_worldwide_organisations },
     ]
 
     other = [related_external_links, related_contacts] || []
@@ -98,11 +97,6 @@ private
     locations = link_group("world_locations")
     locations.map! { |link| link.merge("base_path" => world_location_base_path(link["title"])) }
     build_links_for_sidebar(locations)
-  end
-
-  def related_worldwide_organisations
-    organisations = filter_link_type("worldwide_organisations", "worldwide_organisation")
-    build_links_for_sidebar(organisations)
   end
 
   def related_collections
