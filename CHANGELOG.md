@@ -1,4 +1,4 @@
-# Unreleased
+# 5.4.0
 
 * Add document_list component from government-frontend, so that it can be used by collections. This is not a breaking change, but it is not backwards compatible with previous versions of the component. (PR #199)
 
