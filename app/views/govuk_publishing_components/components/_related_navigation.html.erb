@@ -1,4 +1,4 @@
-<% related_nav_helper = RelatedNavigationHelper.new(local_assigns) %>
+<% related_nav_helper = GovukPublishingComponents::Components::RelatedNavigationHelper.new(local_assigns) %>
 <% related_content = related_nav_helper.related_navigation %>
 <% if related_content.map(&:values).flatten.any? || related_nav_helper.other.flatten.any? %>
 <% random = SecureRandom.hex(4) %>
