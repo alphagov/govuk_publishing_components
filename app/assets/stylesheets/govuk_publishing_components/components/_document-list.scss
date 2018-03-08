@@ -10,6 +10,10 @@
   @include bold-19;
 }
 
+.gem-c-document-list__item-description {
+  margin-bottom: 5px;
+}
+
 .gem-c-document-list__attribute {
   @include core-14;
   float: left;

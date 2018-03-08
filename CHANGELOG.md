@@ -1,3 +1,7 @@
+# Unreleased
+
+* Update design of document list component for topic pages
+
 # 5.5.1
 
 * Fix bug in `related_navigation` helper that did not gracefully handle ordered
