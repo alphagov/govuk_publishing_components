@@ -12,9 +12,12 @@ module GovukPublishingComponents
     end
 
     def show_sidebar?
+      show_header? && first_step_nav.steps.present?
+    end
+
+    def show_header?
       step_navs.count == 1
     end
-    alias_method :show_header?, :show_sidebar?
 
     def show_related_links?
       step_navs.any? && step_navs.count < 5

@@ -13,7 +13,11 @@ module GovukPublishingComponents
     end
 
     def content
-      @content ||= content_item.dig(:details, :step_by_step_nav)
+      content_item.dig(:details, :step_by_step_nav)
+    end
+
+    def steps
+      content_item.dig(:details, :step_by_step_nav, :steps)
     end
 
   private
