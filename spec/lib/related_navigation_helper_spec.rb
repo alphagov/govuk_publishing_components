@@ -228,6 +228,92 @@ RSpec.describe RelatedNavigationHelper do
       expect(payload).to eql(expected)
     end
 
+    it "returns parent and grandparent topics" do
+      payload = payload_for("answer",
+        "links" => {
+          "parent" => [
+            {
+              "base_path" => "/browse/working/tax-minimum-wage",
+              "content_id" => "a3e4b233-e2f3-4709-b531-8da7f21a3f6d",
+              "locale" => "en",
+              "title" => "Your pay, tax and the National Minimum Wage",
+              "links" => {
+                "parent" => [
+                  {
+                    "base_path" => "/browse/working",
+                    "content_id" => "a24f0662-bbfe-4b77-9ec0-e73240e88b9a",
+                    "locale" => "en",
+                    "title" => "Working, jobs and pensions",
+                  }
+                ]
+              },
+            }
+          ],
+          "ordered_related_items" => [
+            {
+              "base_path" => "/apprenticeships-guide",
+              "content_id" => "b95f3e83-a8d1-40fa-843c-cb712861707d",
+              "locale" => "en",
+              "title" => "Become an apprentice",
+              "links" => {
+                "mainstream_browse_pages" => [
+                  {
+                    "base_path" => "/browse/working/finding-job",
+                    "content_id" => "eceb3053-43d1-4a49-873d-85ff9ade7066",
+                    "locale" => "en",
+                    "title" => "Finding a job",
+                    "links" => {
+                      "parent" => [
+                        {
+                          "base_path" => "/browse/working",
+                          "content_id" => "a24f0662-bbfe-4b77-9ec0-e73240e88b9a",
+                          "locale" => "en",
+                          "title" => "Working, jobs and pensions",
+                        }
+                      ]
+                    },
+                  }
+                ]
+              },
+            },
+            {
+              "base_path" => "/national-insurance",
+              "content_id" => "c995522c-4020-4d54-ae5d-271d4b3a8777",
+              "locale" => "en",
+              "title" => "National Insurance",
+              "links" => {
+                "mainstream_browse_pages" => [
+                  {
+                    "base_path" => "/browse/working/tax-minimum-wage",
+                    "content_id" => "a3e4b233-e2f3-4709-b531-8da7f21a3f6d",
+                    "locale" => "en",
+                    "title" => "Your pay, tax and the National Minimum Wage",
+                    "links" => {
+                      "parent" => [
+                        {
+                          "base_path" => "/browse/working",
+                          "content_id" => "a24f0662-bbfe-4b77-9ec0-e73240e88b9a",
+                          "locale" => "en",
+                          "title" => "Working, jobs and pensions",
+                        }
+                      ]
+                    },
+                  }
+                ]
+              },
+            }
+          ]
+        })
+
+      expected = {
+        "topics" => [
+          { text: "Your pay, tax and the National Minimum Wage", path: "/browse/working/tax-minimum-wage" },
+          { text: "Working, jobs and pensions", path: "/browse/working" },
+        ]
+      }
+      expect(payload).to include(expected)
+    end
+
     it "returns an Elsewhere on the web section for external related links" do
       payload = payload_for("placeholder",
         "details" => {
