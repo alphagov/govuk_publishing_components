@@ -6,7 +6,14 @@ RSpec.describe GovukPublishingComponents::StepNavHelper do
       {
         "content_id" => "cccc-dddd",
         "title" => "Learn to spacewalk: small step by giant leap",
-        "base_path" => "/learn-to-spacewalk"
+        "base_path" => "/learn-to-spacewalk",
+        "details" => {
+          "step_by_step_nav" => {
+            "steps" => [
+              "title": "Step one"
+            ]
+          }
+        }
       }
     end
 

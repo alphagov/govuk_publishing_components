@@ -48,6 +48,34 @@ describe 'Specimen usage of step by step navigation helpers' do
     end
   end
 
+  context 'one related step by step navigation journey with no steps' do
+    before do
+      content_store_has_random_item(base_path: '/vomit-comet', schema: 'transaction', part_of_step_navs: [zero_steps_step_nav])
+
+      visit '/step-nav/vomit-comet'
+    end
+
+    it 'shows step nav related links' do
+      expect(page).to have_selector('.gem-c-step-nav-related')
+
+      within('.gem-c-step-nav-related') do
+        expect(page).to have_selector('.gem-c-step-nav-related__link', count: 1)
+        expect(page).to have_link('Learn to spacewalk: small step by giant leap', href: '/learn-to-spacewalk')
+      end
+    end
+
+    it 'does not show the full step nav sidebar' do
+      expect(page).to_not have_css('.gem-c-step-nav')
+    end
+
+    it 'shows the step nav header' do
+      within('.gem-c-step-nav-header') do
+        expect(page).to have_link('Learn to spacewalk: small step by giant leap', href: '/learn-to-spacewalk')
+      end
+    end
+  end
+
+
   context 'multiple related step by step navigation journeys' do
     before do
       content_store_has_random_item(base_path: '/vomit-comet', schema: 'transaction', part_of_step_navs: [
@@ -178,6 +206,27 @@ describe 'Specimen usage of step by step navigation helpers' do
               ]
             },
           ]
+        }
+      }
+    }
+  end
+
+  def zero_steps_step_nav
+    {
+      "content_id" => "8f5d4f2b-daf0-4460-88c1-fdd76c90f6f1",
+      "locale" => "en",
+      "title" => "Learn to spacewalk: small step by giant leap",
+      "base_path" => "/learn-to-spacewalk",
+      "details" => {
+        "step_by_step_nav": {
+          "title": "Learn to spacewalk: small step by giant leap",
+          "introduction": [
+            {
+              "content_type": "text/govspeak",
+              "content": "Check what you need to do to learn to spacewalk."
+            }
+          ],
+          "steps": []
         }
       }
     }
