@@ -6,5 +6,14 @@ require "govuk_publishing_components/components/related_navigation_helper"
 require "govuk_publishing_components/step_nav"
 require "govuk_publishing_components/step_nav_helper"
 
+require "govuk_publishing_components/app_helpers/breadcrumbs"
+require "govuk_publishing_components/app_helpers/curated_taxonomy_sidebar_links"
+require "govuk_publishing_components/app_helpers/navigation_helper"
+require "govuk_publishing_components/app_helpers/related_items"
+require "govuk_publishing_components/app_helpers/related_navigation_sidebar"
+require "govuk_publishing_components/app_helpers/rummager_taxonomy_sidebar_links"
+require "govuk_publishing_components/app_helpers/taxon_breadcrumbs"
+require "govuk_publishing_components/app_helpers/taxonomy_sidebar"
+
 module GovukPublishingComponents
 end
