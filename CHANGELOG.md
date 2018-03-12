@@ -1,3 +1,10 @@
+# 5.4.1
+
+* Remove worldwide organisation links from the payload used by the `related_navigation` component, as they're not required.
+* Fix bug where the correct number of mainstream browse pages weren't displaying
+in the `related_navigation` component in cases where a grandparent mainstream
+browse page is present.
+
 # 5.4.0
 
 * Add document_list component from government-frontend, so that it can be used by collections. This is not a breaking change, but it is not backwards compatible with previous versions of the component. (PR #199)
