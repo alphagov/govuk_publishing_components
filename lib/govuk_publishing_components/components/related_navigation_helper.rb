@@ -212,7 +212,7 @@ private
 
     @parents_tagged_to_same_mainstream_browse_page ||= related_links.select do |related_item|
       next if common_parent_content_ids.include?(related_item["content_id"])
-      mainstream_browse_pages = related_item.dig("links", "mainstream_browse_pages")
+      mainstream_browse_pages = related_item.dig("links", "mainstream_browse_pages") || []
       parents = mainstream_browse_pages.map { |page| page["links"]["parent"][0] }
       content_ids = parents.map { |parent| parent["content_id"] }
       content_ids.include?(grandparent["content_id"])

@@ -314,6 +314,17 @@ RSpec.describe RelatedNavigationHelper do
       expect(payload).to include(expected)
     end
 
+    it "handles ordered related items that aren't tagged to a mainstream browse page" do
+      example = GovukSchemas::Example.find("guide", example_name: "single-page-guide")
+      payload = RelatedNavigationHelper.new(example).related_navigation
+      expected = {
+        "topics" => [
+          { text: "Pets", path: "/topic/animal-welfare/pets" },
+          { text: "Arriving in the UK", path: "/browse/visas-immigration/arriving-in-the-uk" },
+        ]
+      }
+      expect(payload).to include(expected)
+    end
     it "returns an Elsewhere on the web section for external related links" do
       payload = payload_for("placeholder",
         "details" => {
