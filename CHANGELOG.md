@@ -1,6 +1,6 @@
-# unreleased
+# 5.5.0
 
-* Add new inverse header component.
+* Add new inverse header component (PR #203).
 
 # 5.4.1
 
