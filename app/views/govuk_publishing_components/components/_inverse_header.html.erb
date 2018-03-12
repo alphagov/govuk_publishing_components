@@ -1,6 +1,10 @@
+<%
+  full_width ||= false
+  header_class = full_width ? "gem-c-inverse-header--full-width" : ""
+%>
 <% block = yield %>
 <% unless block.empty? %>
-  <header class="gem-c-inverse-header">
+  <header class="gem-c-inverse-header <%= header_class %>">
     <%= block %>
   </header>
 <% end %>

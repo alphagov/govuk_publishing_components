@@ -30,4 +30,10 @@ describe "Inverse header", type: :view do
     assert_select ".gem-c-inverse-header div.pub-c-title"
     assert_select ".gem-c-inverse-header h1", text: "HTML publication page title"
   end
+
+  it "renders correct css class when header is to be full page width" do
+    render(component_path, full_width: true) { block }
+
+    assert_select ".gem-c-inverse-header--full-width"
+  end
 end
