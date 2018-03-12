@@ -24,7 +24,6 @@ class RelatedNavigationHelper
       { "topical_events" => related_topical_events },
       { "world_locations" => related_world_locations },
       { "statistical_data_sets" => related_statistical_data_sets },
-      { "worldwide_organisations" => related_worldwide_organisations },
     ]
 
     other = [related_external_links, related_contacts] || []
@@ -100,11 +99,6 @@ private
     build_links_for_sidebar(locations)
   end
 
-  def related_worldwide_organisations
-    organisations = filter_link_type("worldwide_organisations", "worldwide_organisation")
-    build_links_for_sidebar(organisations)
-  end
-
   def related_collections
     collections = filter_link_type("document_collections", "document_collection")
     build_links_for_sidebar(collections)
@@ -172,7 +166,7 @@ private
   end
 
   def grandparent
-    parent.dig("parent", 0)
+    parent.dig("links", "parent", 0)
   end
 
   # This method post-processes the topics collated by the helper.
@@ -214,12 +208,14 @@ private
 
   def parents_tagged_to_same_mainstream_browse_page
     return [] unless parent && grandparent
-
-    common_parent_content_ids = tagged_to_same_mainstream_browse_page.map(&:content_id)
+    common_parent_content_ids = tagged_to_same_mainstream_browse_page.map { |item| item["content_id"] }
 
     @parents_tagged_to_same_mainstream_browse_page ||= related_links.select do |related_item|
       next if common_parent_content_ids.include?(related_item["content_id"])
-      related_item.dig("links", "mainstream_browse_pages").map(&:parent).map(&:content_id).include?(grandparent["content_id"])
+      mainstream_browse_pages = related_item.dig("links", "mainstream_browse_pages")
+      parents = mainstream_browse_pages.map { |page| page["links"]["parent"][0] }
+      content_ids = parents.map { |parent| parent["content_id"] }
+      content_ids.include?(grandparent["content_id"])
     end
   end
 
