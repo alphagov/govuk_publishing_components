@@ -1,3 +1,7 @@
+# unreleased
+
+* Add new inverse header component.
+
 # 5.4.1
 
 * Remove worldwide organisation links from the payload used by the `related_navigation` component, as they're not required.
