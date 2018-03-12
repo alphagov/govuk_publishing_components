@@ -1,3 +1,8 @@
+# 5.5.1
+
+* Fix bug in `related_navigation` helper that did not gracefully handle ordered
+related items that aren't tagged to a mainstream browse page (PR #210).
+
 # 5.5.0
 
 * Add new inverse header component (PR #203).
@@ -7,7 +12,7 @@
 * Remove worldwide organisation links from the payload used by the `related_navigation` component, as they're not required.
 * Fix bug where the correct number of mainstream browse pages weren't displaying
 in the `related_navigation` component in cases where a grandparent mainstream
-browse page is present.
+browse page is present (PR #205).
 
 # 5.4.0
 
