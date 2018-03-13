@@ -1,11 +1,12 @@
 require "spec_helper"
 
-RSpec.describe RelatedNavigationHelper do
+RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
   def payload_for(schema, content_item)
     example = GovukSchemas::RandomExample.for_schema(frontend_schema: schema) do |payload|
       payload.merge(content_item)
     end
-    RelatedNavigationHelper.new(example).related_navigation
+
+    described_class.new(example).related_navigation
   end
 
   describe "#related-navigation-sidebar" do
@@ -316,7 +317,7 @@ RSpec.describe RelatedNavigationHelper do
 
     it "handles ordered related items that aren't tagged to a mainstream browse page" do
       example = GovukSchemas::Example.find("guide", example_name: "single-page-guide")
-      payload = RelatedNavigationHelper.new(example).related_navigation
+      payload = described_class.new(example).related_navigation
       expected = {
         "topics" => [
           { text: "Pets", path: "/topic/animal-welfare/pets" },
@@ -353,7 +354,7 @@ RSpec.describe RelatedNavigationHelper do
   describe "#other" do
     it "returns an empty array when there are no external_related_links" do
       content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "placeholder")
-      nav_helper = RelatedNavigationHelper.new(content_item)
+      nav_helper = described_class.new(content_item)
 
       expect(nav_helper.other).to be_empty
     end
