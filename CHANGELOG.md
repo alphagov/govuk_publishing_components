@@ -1,3 +1,7 @@
+# Unreleased
+
+Enforce white content in inverse component (PR #214).
+
 # 5.5.2
 
 * Add `full-width` flag to remove left and right padding when using a full width page header (PR #212).
