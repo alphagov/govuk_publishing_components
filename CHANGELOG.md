@@ -1,4 +1,4 @@
-# Unreleased
+# 5.5.3
 
 Enforce white content in inverse component (PR #214).
 
