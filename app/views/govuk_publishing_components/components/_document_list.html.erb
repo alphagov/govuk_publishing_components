@@ -14,16 +14,24 @@
             )
           %>
         </h3>
-        <ul>
-          <li class="gem-c-document-list__attribute">
-            <time datetime="<%= item[:metadata][:public_updated_at].iso8601 %>">
-              <%= l(item[:metadata][:public_updated_at], format: '%e %B %Y') %>
-            </time>
-          </li>
-          <li class="gem-c-document-list__attribute gem-c-document-list__attribute--document-type">
-            <%= item[:metadata][:document_type] %>
-          </li>
-        </ul>
+        <% if item[:link][:description] %>
+          <p class="gem-c-document-list__item-description" ><%= item[:link][:description] %></p>
+        <% end %>
+        <% if item[:metadata] %>
+          <ul>
+            <% item[:metadata].each do |item_metadata_key, item_metadata_value| %>
+              <li class="gem-c-document-list__attribute">
+                <% if item_metadata_key.to_s.eql?("public_updated_at") %>
+                  <time datetime="<%= item_metadata_value.iso8601 %>">
+                    <%= l(item_metadata_value, format: '%e %B %Y') %>
+                  </time>
+                <% else %>
+                  <%= item_metadata_value %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
       </li>
     <% end %>
   </ol>

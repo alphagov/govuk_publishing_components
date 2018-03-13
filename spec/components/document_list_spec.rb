@@ -19,7 +19,7 @@ describe "Document list", type: :view do
         {
           link: {
             text: "School behaviour and attendance: parental responsibility measures",
-            path: "/government/publications/parental-responsibility-measures-for-behaviour-and-attendance"
+            path: "/government/publications/parental-responsibility-measures-for-behaviour-and-attendance",
           },
           metadata: {
             public_updated_at: Time.zone.parse("2017-01-05 14:50:33 +0000"),
@@ -28,8 +28,9 @@ describe "Document list", type: :view do
         },
         {
           link: {
-            text: "School exclusion",
-            path: "/government/publications/school-exclusion"
+            text: "Become an apprentice",
+            path: "/become-an-apprentice",
+            description: 'Becoming an apprentice - what to expect'
           },
           metadata: {
             public_updated_at: Time.zone.parse("2017-07-19 15:01:48 +0000"),
@@ -44,9 +45,10 @@ describe "Document list", type: :view do
     assert_select "#{li} a[href='/government/publications/parental-responsibility-measures-for-behaviour-and-attendance']", text: "School behaviour and attendance: parental responsibility measures"
     assert_select "#{attribute} time", text: "5 January 2017"
     assert_select "#{attribute} time[datetime='2017-01-05T14:50:33Z']"
-    assert_select ".gem-c-document-list__attribute--document-type", text: "Statutory guidance"
+    assert_select ".gem-c-document-list__attribute", text: "Statutory guidance"
 
-    assert_select "#{li} a[href='/government/publications/school-exclusion']", text: "School exclusion"
+    assert_select "#{li} a[href='/become-an-apprentice']", text: "Become an apprentice"
+    assert_select ".gem-c-document-list__item-description", text: 'Becoming an apprentice - what to expect'
     assert_select "#{attribute} time", text: "19 July 2017"
     assert_select "#{attribute} time[datetime='2017-07-19T15:01:48Z']"
   end
