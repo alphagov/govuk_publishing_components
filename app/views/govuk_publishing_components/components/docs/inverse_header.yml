@@ -18,6 +18,16 @@ examples:
             Education, Training and Skills
           </h1>
         </div>
+  for_full_page_width:
+    description: "Used when the header covers the full width of the page, but it's content is in the grid layout. The left-right padding is removed to make the contents line up with the other items on the page."
+    data:
+      full_width: true
+      block: |
+        <div class="pub-c-title pub-c-title--inverse">
+          <h1 class="pub-c-title__text ">
+            Education, Training and Skills
+          </h1>
+        </div>
   with_breadcrumbs_and_paragraph:
     data:
       block: |
