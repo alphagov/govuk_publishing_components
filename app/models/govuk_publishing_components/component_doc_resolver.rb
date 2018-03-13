@@ -1,4 +1,5 @@
 module GovukPublishingComponents
+  # @private
   class ComponentDocResolver
     def initialize(gem_components: false)
       @documentation_directory = gem_components ? gem_documentation_directory : app_documentation_directory

@@ -13,6 +13,8 @@
 
   step_count = 0
   step_number = 0
+
+  step_nav_helper = GovukPublishingComponents::Presenters::StepByStepNavHelper.new
 %>
 <% if steps %>
   <div
@@ -26,7 +28,7 @@
         <%
           step_is_active = step_index + 1 == highlight_step
           step_count += 1
-          id = StepNavHelper.new.generate_step_nav_id(step[:title])
+          id = step_nav_helper.generate_step_nav_id(step[:title])
 
           logic = false
           logic = step[:logic] if ["and", "or"].include? step[:logic]
@@ -71,7 +73,7 @@
               options[:link_index] = 0
             %>
             <% step[:contents].each do |element| %>
-              <%= StepNavHelper.new.render_step_nav_element(element, options) %>
+              <%= step_nav_helper.render_step_nav_element(element, options) %>
               <%
                 if element[:type] == 'list'
                   options[:link_index] += element[:contents].length

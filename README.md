@@ -1,6 +1,10 @@
 # GOV.UK Publishing Components
 
-A gem to 1) document components in GOV.UK frontend applications and 2) provide shared components to applications.
+This gem:
+
+- Provides shared components for applications
+- Provides helpers to generate component payloads
+- Provides an application to preview components
 
 Components should be added to this gem if they are required in more than one application, otherwise they should be added to that application.
 
@@ -14,6 +18,27 @@ Components should be added to this gem if they are required in more than one app
 - [Develop a component](/docs/develop-component.md)
 - [Run the component guide](/docs/run-component-guide.md)
 - [Move a component from an application to the gem](/docs/moving-components-upstream-into-this-gem.md)
+
+## Architecture / structure
+
+![](https://docs.google.com/drawings/d/e/2PACX-1vRj6JM7cQvngDl3Gr_U9G4xga2gsU7Z-d2qHHQcsBdjsW4WaC9_eQdryBJIS69cLkrY7S0fK9BcrPSF/pub?w=960&amp;h=720)
+
+[Source](https://docs.google.com/drawings/d/1N8-kbyCN_xOvvshN6d2HnQz5i5Bqed2WIatI3Nj9gNQ/edit)
+
+There are 2 types of helper classes in this app:
+
+- [AppHelpers](lib/govuk_publishing_components/app_helpers). Are exposed to the applications using this gem. They should be documented using RDoc.
+- [Component Presenters](lib/govuk_publishing_components/presenters). Anything in these classes is only for use within the components. They should be marked `@private`.
+
+## Documentation
+
+[See the rubydoc.info documentation](http://www.rubydoc.info/gems/govuk_publishing_components)
+
+Run the documentation locally with:
+
+```
+bundle exec yard server --reload
+```
 
 ## Running tests
 
