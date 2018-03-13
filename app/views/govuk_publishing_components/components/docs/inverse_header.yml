@@ -31,21 +31,21 @@ examples:
   with_breadcrumbs_and_paragraph:
     data:
       block: |
-        <div class="govuk-breadcrumbs " data-module="track-click">
+        <div class="govuk-breadcrumbs " data-module="track-click" style="color:#fff">
           <ol>
-            <li class="">
-                <a data-track-category="breadcrumbClicked" data-track-action="1" data-track-label="/section" data-track-options="{&quot;dimension28&quot;:&quot;2&quot;,&quot;dimension29&quot;:&quot;Section&quot;}" class="govuk-breadcrumbs--inverse" aria-current="false" href="/section">Section</a>
+            <li>
+                <a style="color:#fff" data-track-category="breadcrumbClicked" data-track-action="1" data-track-label="/section" data-track-options="{&quot;dimension28&quot;:&quot;2&quot;,&quot;dimension29&quot;:&quot;Section&quot;}" class="govuk-breadcrumbs--inverse" aria-current="false" href="/section">Section</a>
             </li>
-            <li class="">
-                <a data-track-category="breadcrumbClicked" data-track-action="2" data-track-label="#content" data-track-options="{&quot;dimension28&quot;:&quot;2&quot;,&quot;dimension29&quot;:&quot;Education of disadvantaged children&quot;}" class="govuk-breadcrumbs--inverse breadcrumb-for-current-page " aria-current="page" href="#content">Education of disadvantaged children</a>
+            <li>
+                <a style="color:#fff"data-track-category="breadcrumbClicked" data-track-action="2" data-track-label="#content" data-track-options="{&quot;dimension28&quot;:&quot;2&quot;,&quot;dimension29&quot;:&quot;Education of disadvantaged children&quot;}" class="govuk-breadcrumbs--inverse breadcrumb-for-current-page " aria-current="page" href="#content">Education of disadvantaged children</a>
             </li>
           </ol>
         </div>
-        <div class="pub-c-title pub-c-title--inverse">
+        <div class="pub-c-title pub-c-title--inverse" style="color:#fff">
           <h1 class="pub-c-title__text ">
             Education, Training and Skills
           </h1>
         </div>
-        <p class="pub-c-lead-paragraph pub-c-lead-paragraph--inverse">
+        <p class="pub-c-lead-paragraph pub-c-lead-paragraph--inverse" style="color:#fff">
           Schools and academies, further and higher education, apprenticeships and other skills training, student funding, early&nbsp;years.
         </p>
