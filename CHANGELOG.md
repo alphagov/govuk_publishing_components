@@ -1,6 +1,7 @@
 # 5.5.2
 
 * Add `full-width` flag to remove left and right padding when using a full width page header (PR #212). 
+* Update design of document list component for topic pages
 
 # 5.5.1
 

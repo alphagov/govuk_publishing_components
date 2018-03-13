@@ -68,3 +68,11 @@ examples:
         metadata:
           public_updated_at: 2017-07-19 15:01:48
           document_type: 'Statutory guidance'
+  with_description:
+    description: Documents can be passed to the component with a description. This is for use on topic pages, to display lists of mainstream services.
+    data:
+      items:
+      - link:
+          text: 'Become an apprentice'
+          path: '/become-an-apprentice'
+          description: 'Becoming an apprentice - what to expect, apprenticeship levels, pay and training, making an application, complaining about an apprenticeship.'
