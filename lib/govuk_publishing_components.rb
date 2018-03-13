@@ -7,4 +7,6 @@ require "govuk_publishing_components/app_helpers/step_nav"
 require "govuk_publishing_components/app_helpers/step_nav_helper"
 
 module GovukPublishingComponents
+  StepNavHelper = GovukPublishingComponents::AppHelpers::StepNavHelper
+  StepNav = GovukPublishingComponents::AppHelpers::StepNav
 end
