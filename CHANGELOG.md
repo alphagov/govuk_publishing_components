@@ -1,3 +1,7 @@
+# 5.5.2
+
+* Add `full-width` flag to remove left and right padding when using a full width page header (PR #212). 
+
 # 5.5.1
 
 * Fix bug in `related_navigation` helper that did not gracefully handle ordered
