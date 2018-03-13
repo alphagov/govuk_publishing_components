@@ -1,8 +1,10 @@
 <%
   items ||= []
+  margin_top_class = " gem-c-document-list--top-margin" if local_assigns[:margin_top]
+  margin_bottom_class = " gem-c-document-list--bottom-margin" if local_assigns[:margin_bottom]
 %>
 <% if items.any? %>
-  <ol class="gem-c-document-list">
+  <ol class="gem-c-document-list<%= margin_bottom_class %><%= margin_top_class %>">
     <% items.each do |item| %>
       <li class="gem-c-document-list__item">
         <h3 class="gem-c-document-list__item-title">
