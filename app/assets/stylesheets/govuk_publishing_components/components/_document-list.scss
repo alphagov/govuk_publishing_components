@@ -20,3 +20,20 @@
   list-style: none;
   padding-right: $gutter-two-thirds;
 }
+
+.gem-c-document-list--bottom-margin {
+  margin-bottom: $gutter-half;
+
+  @include media(tablet) {
+    margin-bottom: $gutter * 1.5;
+  }
+}
+
+.gem-c-document-list--top-margin {
+  margin-top: $gutter-half;
+
+  @include media(tablet) {
+    margin-top: $gutter * 1.5;
+  }
+}
+

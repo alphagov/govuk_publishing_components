@@ -4,7 +4,8 @@ Make changes released in 5.5.3 backwards compatible.
 
 # 5.5.3
 
-Enforce white content in inverse component (PR #214).
+* Enforce white content in inverse component (PR #214).
+* Add optional flags for spacing around document list component
 
 # 5.5.2
 
