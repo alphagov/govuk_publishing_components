@@ -13,6 +13,5 @@
 //= require govuk/modules
 //= require ../history-support
 //= require ../current-location
-//= require_tree ./components
 //= require_tree ./vendor
 //= require_tree .
