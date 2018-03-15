@@ -1,8 +1,10 @@
 <%
   contact_govuk_path = "/contact/govuk"
+  margin_top ||= 1
+  margin_top_class = "gem-c-feedback--top-margin" if margin_top == 1
 %>
 
-<div class="gem-c-feedback" data-module="feedback">
+<div class="gem-c-feedback <%= margin_top_class %>" data-module="feedback">
   <div class="gem-c-feedback__prompt gem-c-feedback__js-show js-prompt" tabindex="-1">
     <div class="js-prompt-questions">
       <h3 class="gem-c-feedback__prompt-question">Is this page useful?</h3>
