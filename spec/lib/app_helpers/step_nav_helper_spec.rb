@@ -60,7 +60,8 @@ RSpec.describe GovukPublishingComponents::AppHelpers::StepNavHelper do
         expect(step_nav_links.show_header?).to be true
         expect(step_nav_links.header).to eq(
           path: "/learn-to-spacewalk",
-          title: "Learn to spacewalk: small step by giant leap"
+          title: "Learn to spacewalk: small step by giant leap",
+          tracking_id: "cccc-dddd"
         )
 
         expect(step_nav_links.show_related_links?).to be true
