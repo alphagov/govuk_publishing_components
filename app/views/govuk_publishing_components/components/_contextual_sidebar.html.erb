@@ -1,0 +1,19 @@
+<% sidebar = GovukPublishingComponents::Presenters::ContextualSidebar.new(content_item, request.path) %>
+
+<% if sidebar.step_nav_helper.show_related_links? %>
+  <nav class='column-third step-by-step-nav-sidebar'>
+    <%= render 'govuk_publishing_components/components/step_by_step_nav_related', links: sidebar.step_nav_helper.related_links %>
+
+    <% if sidebar.step_nav_helper.show_sidebar? %>
+      <%= render 'govuk_publishing_components/components/step_by_step_nav', sidebar.step_nav_helper.sidebar %>
+    <% end %>
+  </nav>
+<% else %>
+  <div class='column-third'>
+    <% if sidebar.should_present_taxonomy_navigation? %>
+      <%= render partial: 'govuk_component/taxonomy_sidebar', locals: sidebar.taxonomy_sidebar %>
+    <% else %>
+      <%= render 'govuk_publishing_components/components/related_navigation', content_item %>
+    <% end %>
+  </div>
+<% end %>
