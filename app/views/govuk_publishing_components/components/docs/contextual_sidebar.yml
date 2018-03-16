@@ -3,4 +3,5 @@ description: Sidebar that shows different things depending on the page
 examples:
   default:
     data:
-      { content_item: content_item }
+      content_item:
+        title: "A content item"

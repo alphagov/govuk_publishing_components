@@ -13,7 +13,7 @@
     <% if sidebar.should_present_taxonomy_navigation? %>
       <%= render partial: 'govuk_component/taxonomy_sidebar', locals: sidebar.taxonomy_sidebar %>
     <% else %>
-      <%= render 'govuk_publishing_components/components/related_navigation', content_item.parsed_content %>
+      <%= render 'govuk_publishing_components/components/related_navigation', content_item %>
     <% end %>
   </div>
 <% end %>

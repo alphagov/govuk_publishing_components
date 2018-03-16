@@ -36,6 +36,5 @@ Gem::Specification.new do |s|
   # Needed to load slimmer test helpers
   # https://github.com/alphagov/slimmer/issues/201
   s.add_development_dependency "webmock", "~> 3.0.1"
-  s.add_development_dependency "pry-byebug"
   s.add_development_dependency "yard"
 end
