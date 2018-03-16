@@ -1,3 +1,12 @@
+* You can now add require a single Javascript to include all components, just like CSS.
+
+Replace all individual includes with:
+
+```js
+# application.js
+//= require govuk_publishing_components/all_components
+```
+
 # 5.5.6
 
 * Add optional margin top flag for feedback component (PR #222)
@@ -8,7 +17,7 @@
 
 # 5.5.4
 
-Make changes released in 5.5.3 backwards compatible.
+* Make changes released in 5.5.3 backwards compatible.
 
 # 5.5.3
 

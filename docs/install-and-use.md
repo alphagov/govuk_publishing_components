@@ -62,3 +62,8 @@ And for print styles
 # print.scss
 @import "govuk_publishing_components/all_components_print";
 ```
+
+```js
+# application.js
+//= require govuk_publishing_components/all_components
+```
