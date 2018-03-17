@@ -28,7 +28,8 @@ module GovukPublishingComponents
         step_navs.map do |step_nav|
           {
             href: step_nav.base_path,
-            text: step_nav.title
+            text: step_nav.title,
+            tracking_id: step_nav.content_id
           }
         end
       end

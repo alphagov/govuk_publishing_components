@@ -1,7 +1,6 @@
 <%
   links ||= false
   pretitle ||= t("govuk_component.step_by_step_nav_related.part_of", default: "Part of")
-  tracking_id ||= false
 %>
 <% if links %>
   <div class="gem-c-step-nav-related" data-module="track-click">
@@ -15,7 +14,7 @@
             data-track-label="<%= links[0][:href] %>"
             data-track-dimension="<%= links[0][:text] %>"
             data-track-dimension-index="29"
-            data-track-options='{"dimension96" : "<%= tracking_id %>" }'>
+            data-track-options='{"dimension96" : "<%= links[0][:tracking_id] %>" }'>
             <%= links[0][:text] %>
           </a>
         </h2>
@@ -31,7 +30,7 @@
                 data-track-label="<%= link[:href] %>"
                 data-track-dimension="<%= link[:text] %>"
                 data-track-dimension-index="29"
-                data-track-options='{"dimension96" : "<%= tracking_id %>" }'>
+                data-track-options='{"dimension96" : "<%= link[:tracking_id] %>" }'>
                 <%= link[:text] %>
               </a>
             </li>

@@ -68,7 +68,8 @@ RSpec.describe GovukPublishingComponents::AppHelpers::StepNavHelper do
         expect(step_nav_links.related_links).to eq([
           {
             href: "/learn-to-spacewalk",
-            text: "Learn to spacewalk: small step by giant leap"
+            text: "Learn to spacewalk: small step by giant leap",
+            tracking_id: "cccc-dddd"
           }
         ])
 
@@ -104,11 +105,13 @@ RSpec.describe GovukPublishingComponents::AppHelpers::StepNavHelper do
         expect(step_nav_links.related_links).to eq([
           {
             href: "/learn-to-spacewalk",
-            text: "Learn to spacewalk: small step by giant leap"
+            text: "Learn to spacewalk: small step by giant leap",
+            tracking_id: "cccc-dddd"
           },
           {
             href: "/lose-your-lunch",
-            text: "Lose your lunch: lurch by lurch"
+            text: "Lose your lunch: lurch by lurch",
+            tracking_id: "aaaa-bbbb"
           }
         ])
 

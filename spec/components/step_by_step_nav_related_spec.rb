@@ -27,6 +27,31 @@ describe "Step by step navigation related", type: :view do
     ]
   end
 
+  def one_link_with_tracking
+    [
+      {
+        href: '/link1',
+        text: 'Link 1',
+        tracking_id: 'peter'
+      }
+    ]
+  end
+
+  def two_links_with_tracking
+    [
+      {
+        href: '/link1',
+        text: 'Link 1',
+        tracking_id: 'peter'
+      },
+      {
+        href: '/link2',
+        text: 'Link 2',
+        tracking_id: 'paul'
+      }
+    ]
+  end
+
   it "renders nothing without passed content" do
     assert_empty render_component({})
   end
@@ -68,15 +93,15 @@ describe "Step by step navigation related", type: :view do
   end
 
   it "adds a tracking id to one link" do
-    render_component(links: one_link, tracking_id: "peter")
+    render_component(links: one_link_with_tracking)
 
     assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__link[data-track-options='{\"dimension96\" : \"peter\" }']"
   end
 
   it "adds a tracking id to every link when there are more than one" do
-    render_component(links: two_links, tracking_id: "peter")
+    render_component(links: two_links_with_tracking)
 
     assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__link-item:nth-child(1) .gem-c-step-nav-related__link[data-track-options='{\"dimension96\" : \"peter\" }']"
-    assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__link-item:nth-child(2) .gem-c-step-nav-related__link[data-track-options='{\"dimension96\" : \"peter\" }']"
+    assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__link-item:nth-child(2) .gem-c-step-nav-related__link[data-track-options='{\"dimension96\" : \"paul\" }']"
   end
 end
