@@ -37,7 +37,7 @@ describe 'Specimen usage of step by step navigation helpers' do
     it 'shows the full step nav sidebar' do
       within('.gem-c-step-nav') do
         expect(page).to have_css('h3', count: 3)
-        expect(page).to have_css('.gem-c-step-nav__link--active', count: 1, text: 'Experience zero gravity in the atmosphere') # one active link
+        expect(page).to have_css('.gem-c-step-nav__list-item--active', count: 1, text: 'Experience zero gravity in the atmosphere') # one active link
       end
     end
 

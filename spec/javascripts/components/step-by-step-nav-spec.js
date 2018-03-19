@@ -20,9 +20,9 @@ describe('A stepnav module', function () {
             </h2>\
           </div>\
           <div class="gem-c-step-nav__panel js-panel" id="step-panel-topic-step-one-1">\
-            <ol class="gem-c-step-nav__links" data-length="1">\
-              <li class="gem-c-step-nav__link js-list-item">\
-                <a href="/link1" class="gem-c-step-nav__link-item js-link" data-position="1.1">Link 1</a>\
+            <ol class="gem-c-step-nav__list" data-length="1">\
+              <li class="gem-c-step-nav__list-item js-list-item">\
+                <a href="/link1" class="gem-c-step-nav__link js-link" data-position="1.1">Link 1</a>\
               </li>\
             </ol>\
           </div>\
@@ -41,12 +41,12 @@ describe('A stepnav module', function () {
             </h2>\
           </div>\
           <div class="gem-c-step-nav__panel js-panel" id="step-panel-topic-step-two-1">\
-            <ol class="gem-c-step-nav__links" data-length="2">\
-              <li class="gem-c-step-nav__link gem-c-step-nav__link--active js-list-item">\
-                <a href="/link2" class="gem-c-step-nav__link-item js-link" data-position="2.1">Link 2</a>\
+            <ol class="gem-c-step-nav__list" data-length="2">\
+              <li class="gem-c-step-nav__list-item gem-c-step-nav__list-item--active js-list-item">\
+                <a href="/link2" class="gem-c-step-nav__link js-link" data-position="2.1">Link 2</a>\
               </li>\
-              <li class="gem-c-step-nav__link js-list-item">\
-                <a href="/link3" class="gem-c-step-nav__link-item js-link" data-position="2.2">Link 3</a>\
+              <li class="gem-c-step-nav__list-item js-list-item">\
+                <a href="/link3" class="gem-c-step-nav__link js-link" data-position="2.2">Link 3</a>\
               </li>\
             </ol>\
             <div class="gem-c-step-nav__help">\
@@ -68,21 +68,21 @@ describe('A stepnav module', function () {
             </h2>\
           </div>\
           <div class="gem-c-step-nav__panel js-panel" id="step-panel-topic-step-three-1">\
-            <ol class="gem-c-step-nav__links" data-length="5">\
-              <li class="gem-c-step-nav__link gem-c-step-nav__link--active js-list-item">\
-                <a href="/link4" class="gem-c-step-nav__link-item js-link" data-position="3.1">Link 4</a>\
+            <ol class="gem-c-step-nav__list" data-length="5">\
+              <li class="gem-c-step-nav__list-item gem-c-step-nav__list-item--active js-list-item">\
+                <a href="/link4" class="gem-c-step-nav__link js-link" data-position="3.1">Link 4</a>\
               </li>\
-              <li class="gem-c-step-nav__link gem-c-step-nav__link--active js-list-item">\
-                <a href="/link5" class="gem-c-step-nav__link-item js-link" data-position="3.2">Link 5</a>\
+              <li class="gem-c-step-nav__list-item gem-c-step-nav__list-item--active js-list-item">\
+                <a href="/link5" class="gem-c-step-nav__link js-link" data-position="3.2">Link 5</a>\
               </li>\
-              <li class="gem-c-step-nav__link js-list-item">\
-                <a href="http://www.gov.uk" class="gem-c-step-nav__link-item js-link" data-position="3.3" rel="external">Link 6</a>\
+              <li class="gem-c-step-nav__list-item js-list-item">\
+                <a href="http://www.gov.uk" class="gem-c-step-nav__link js-link" data-position="3.3" rel="external">Link 6</a>\
               </li>\
-              <li class="gem-c-step-nav__link gem-c-step-nav__link--active js-list-item">\
-                <a href="#content" class="gem-c-step-nav__link-item js-link" data-position="3.4">Link 7</a>\
+              <li class="gem-c-step-nav__list-item gem-c-step-nav__list-item--active js-list-item">\
+                <a href="#content" class="gem-c-step-nav__link js-link" data-position="3.4">Link 7</a>\
               </li>\
-              <li class="gem-c-step-nav__link gem-c-step-nav__link--active js-list-item">\
-                <a href="#content" class="gem-c-step-nav__link-item js-link" data-position="3.5">Link 8</a>\
+              <li class="gem-c-step-nav__list-item gem-c-step-nav__list-item--active js-list-item">\
+                <a href="#content" class="gem-c-step-nav__link js-link" data-position="3.5">Link 8</a>\
               </li>\
             </ol>\
           </div>\
@@ -100,7 +100,7 @@ describe('A stepnav module', function () {
     stepnav.start($element);
     expectedstepnavStepCount = $element.find('.gem-c-step-nav__step').length;
     expectedstepnavContentCount = $element.find('.gem-c-step-nav__step').first().find('.js-link').length;
-    expectedstepnavLinkCount = $element.find('.gem-c-step-nav__link-item').length;
+    expectedstepnavLinkCount = $element.find('.gem-c-step-nav__list-item').length;
   });
 
   afterEach(function () {
@@ -658,24 +658,24 @@ describe('A stepnav module', function () {
 
     it("highlights the first active link in the first active step if no sessionStorage value is set", function () {
       expect(sessionStorage.getItem('govuk-step-nav-active-link')).toBe(null);
-      expect($element.find('.js-link[data-position="3.1"]').closest('.js-list-item')).toHaveClass('gem-c-step-nav__link--active');
-      expect($element.find(('.gem-c-step-nav__link--active')).length).toBe(1);
+      expect($element.find('.js-link[data-position="3.1"]').closest('.js-list-item')).toHaveClass('gem-c-step-nav__list-item--active');
+      expect($element.find(('.gem-c-step-nav__list-item--active')).length).toBe(1);
     });
 
     it("highlights a clicked #content link and removes other highlights", function () {
-      expect($element.find(('.gem-c-step-nav__link--active')).length).toBe(1);
+      expect($element.find(('.gem-c-step-nav__list-item--active')).length).toBe(1);
 
       var $firstLink = $element.find('.js-link[data-position="3.4"]');
       $firstLink.click();
       expect(sessionStorage.getItem('govuk-step-nav-active-link')).toBe('3.4');
-      expect($firstLink.closest('.js-list-item')).toHaveClass('gem-c-step-nav__link--active');
-      expect($element.find(('.gem-c-step-nav__link--active')).length).toBe(1);
+      expect($firstLink.closest('.js-list-item')).toHaveClass('gem-c-step-nav__list-item--active');
+      expect($element.find(('.gem-c-step-nav__list-item--active')).length).toBe(1);
 
       var $secondLink = $element.find('.js-link[data-position="3.5"]');
       $secondLink.click();
       expect(sessionStorage.getItem('govuk-step-nav-active-link')).toBe('3.5');
-      expect($secondLink.closest('.js-list-item')).toHaveClass('gem-c-step-nav__link--active');
-      expect($element.find(('.gem-c-step-nav__link--active')).length).toBe(1);
+      expect($secondLink.closest('.js-list-item')).toHaveClass('gem-c-step-nav__list-item--active');
+      expect($element.find(('.gem-c-step-nav__list-item--active')).length).toBe(1);
     });
   });
 
@@ -705,7 +705,7 @@ describe('A stepnav module', function () {
 
     it("highlights only one link", function () {
       expect(sessionStorage.getItem('govuk-step-nav-active-link')).toBe('3.5');
-      expect($element.find(('.gem-c-step-nav__link--active')).length).toBe(1);
+      expect($element.find(('.gem-c-step-nav__list-item--active')).length).toBe(1);
     });
   });
 
@@ -719,8 +719,8 @@ describe('A stepnav module', function () {
 
     it("highlights the first active link if no sessionStorage value is set", function () {
       expect(sessionStorage.getItem('govuk-step-nav-active-link')).toBe(null);
-      expect($element.find('.js-link[data-position="2.1"]').closest('.js-list-item')).toHaveClass('gem-c-step-nav__link--active');
-      expect($element.find(('.gem-c-step-nav__link--active')).length).toBe(1);
+      expect($element.find('.js-link[data-position="2.1"]').closest('.js-list-item')).toHaveClass('gem-c-step-nav__list-item--active');
+      expect($element.find(('.gem-c-step-nav__list-item--active')).length).toBe(1);
     });
   });
 

@@ -27,7 +27,7 @@
     var rememberShownStep = false;
     var stepNavSize;
     var sessionStoreLink = 'govuk-step-nav-active-link';
-    var activeLinkClass = 'gem-c-step-nav__link--active';
+    var activeLinkClass = 'gem-c-step-nav__list-item--active';
     var activeLinkHref = '#content';
 
     this.start = function ($element) {
@@ -45,7 +45,7 @@
       var $steps = $element.find('.js-step');
       var $stepHeaders = $element.find('.js-toggle-panel');
       var totalSteps = $element.find('.js-panel').length;
-      var totalLinks = $element.find('.gem-c-step-nav__link-item').length;
+      var totalLinks = $element.find('.gem-c-step-nav__link').length;
 
       var $showOrHideAllButton;
 
@@ -437,7 +437,7 @@
 
       function trackClick() {
         var tracking_options = {label: $(event.target).attr('href') + " : " + stepNavSize};
-        var dimension28 = $(event.target).closest('.gem-c-step-nav__links').attr('data-length');
+        var dimension28 = $(event.target).closest('.gem-c-step-nav__list').attr('data-length');
 
         if (dimension28) {
           tracking_options['dimension28'] = dimension28;
