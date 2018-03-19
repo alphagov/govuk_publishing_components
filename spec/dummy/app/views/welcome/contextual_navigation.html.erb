@@ -1,0 +1,41 @@
+<% if @content_item %>
+  <%= render 'govuk_publishing_components/components/contextual_breadcrumbs', content_item: @content_item.parsed_content %>
+<% end %>
+
+<div class="grid-row">
+  <div class="column-two-thirds">
+    <%= render 'govuk_component/title', title: @content_item ? "Contextual navigation for '#{@content_item["title"]}'" : 'Contextual navigation reference' %>
+  </div>
+</div>
+
+<div class="grid-row">
+  <div class="column-two-thirds">
+    <% content = capture do %>
+      <% if @content_item %>
+          <p>You're looking at the contextual navigation for the page <%= link_to @content_item["title"], "https://www.gov.uk#{@content_item["base_path"]}", target: '_blank' %></p>
+      <% end %>
+
+      <p>You can look at the contextual navigation for any page by replacing the part after /contextual-navigation in the URL (eg. /contextual-navigation<strong>/state-pension-calculator</strong>).</p>
+
+      <p>Note that this displays what the contextual navigation would look like if it were implemented. If the application hasn't been upgraded, it will show something else.</p>
+
+      <h3>Example pages</h3>
+
+      <ul>
+      <% @urls.each do |name, base_path| %>
+        <li>
+          <%= link_to name, "/contextual-navigation#{base_path}" %>
+        </li>
+      <% end %>
+      </ul>
+    <% end %>
+
+    <%= render 'govuk_component/govspeak', content: content, rich_govspeak: true %>
+  </div>
+
+  <div class="column-one-third">
+    <% if @content_item %>
+      <%= render 'govuk_publishing_components/components/contextual_sidebar', content_item: @content_item.parsed_content %>
+    <% end %>
+  </div>
+</div>

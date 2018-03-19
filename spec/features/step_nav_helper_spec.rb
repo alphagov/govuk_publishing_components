@@ -1,5 +1,4 @@
 require "rails_helper"
-require "gds_api/test_helpers/content_store"
 
 describe 'Specimen usage of step by step navigation helpers' do
   include GdsApi::TestHelpers::ContentStore
