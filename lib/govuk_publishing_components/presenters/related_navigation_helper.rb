@@ -141,8 +141,8 @@ module GovukPublishingComponents
         contacts = filter_link_type("related", "contact")
         return [] unless contacts.any?
         [
-          title: "Other contacts",
-          links: build_links_for_sidebar(contacts).map
+          "title" => "Other contacts",
+          "links" => build_links_for_sidebar(contacts)
         ]
       end
 

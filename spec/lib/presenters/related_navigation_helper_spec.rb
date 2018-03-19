@@ -349,6 +349,32 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
 
       expect(payload).to include(expected)
     end
+
+    it "returns an 'Other contacts' section" do
+      payload = payload_for("contact",
+        "links" => {
+          "related" => [
+            {
+              "content_id" => "d636b991-a239-497b-be51-1617b0299cf5",
+              "locale" => "en",
+              "base_path" => "/foo",
+              "document_type" => "contact",
+              "title" => "Foo"
+            }
+          ]
+        },)
+
+      expected = {
+        "Other_contacts" => [
+          {
+            path: "/foo",
+            text: "Foo",
+          }
+        ]
+      }
+
+      expect(payload).to include(expected)
+    end
   end
 
   describe "#other" do
