@@ -24,6 +24,9 @@ Gem::Specification.new do |s|
   s.add_dependency "rouge"
   s.add_dependency "rake"
 
+  # TODO: merge this govuk_navigation_helpers into this gem
+  s.add_dependency "govuk_navigation_helpers", "~> 9.2.1"
+
   s.add_development_dependency "govuk-lint", "~> 3.3"
   s.add_development_dependency "rspec-rails", "~> 3.6"
   s.add_development_dependency "capybara", "~> 2.14.4"
