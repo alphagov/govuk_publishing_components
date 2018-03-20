@@ -1,3 +1,5 @@
+* Create single breadrumb and sidebar contextual navigation components. Not a breaking change, but you can drop `govuk_navigation_helpers` as a dependency now.
+
 * You can now add require a single Javascript to include all components, just like CSS.
 
 Replace all individual includes with:
