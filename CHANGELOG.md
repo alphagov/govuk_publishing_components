@@ -9,6 +9,8 @@ Replace all individual includes with:
 //= require govuk_publishing_components/all_components
 ```
 
+* Update document list component with smaller margin spacing
+
 # 5.5.6
 
 * Add optional margin top flag for feedback component (PR #222)
