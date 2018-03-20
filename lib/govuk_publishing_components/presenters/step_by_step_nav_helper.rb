@@ -17,6 +17,8 @@ module GovukPublishingComponents
           heading(element[:text])
         when "list"
           list(element)
+        when "substep"
+          substep(element)
         end
       end
 
@@ -59,6 +61,20 @@ module GovukPublishingComponents
               ) do
                 create_list_item_content(contents)
               end
+            )
+          }
+        end
+      end
+
+      def substep(element)
+        optional = "gem-c-step-nav__substep--optional" if element[:optional] == true
+        content_tag(
+          :div,
+          class: "gem-c-step-nav__substep #{optional}"
+        ) do
+          element[:contents].collect { |contents|
+            concat(
+              render_step_nav_element(contents, @options)
             )
           }
         end

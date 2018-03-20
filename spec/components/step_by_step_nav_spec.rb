@@ -32,26 +32,28 @@ describe "step nav", type: :view do
           },
           {
             type: 'substep',
-            optional: false
-          },
-          {
-            type: 'paragraph',
-            text: 'This paragraph is inside a required substep'
-          },
-          {
-            type: 'list',
-            style: 'choice',
+            optional: false,
             contents: [
               {
-                href: '/link3',
-                text: 'Link 1.1.3',
+                type: 'paragraph',
+                text: 'This paragraph is inside a required substep'
               },
               {
-                href: '/link4',
-                text: 'Link 1.1.4'
+                type: 'list',
+                style: 'choice',
+                contents: [
+                  {
+                    href: '/link3',
+                    text: 'Link 1.1.3',
+                  },
+                  {
+                    href: '/link4',
+                    text: 'Link 1.1.4'
+                  }
+                ]
               }
             ]
-          },
+          }
         ]
       },
       {
@@ -89,12 +91,14 @@ describe "step nav", type: :view do
           },
           {
             type: 'substep',
-            optional: true
-          },
-          {
-            type: 'paragraph',
-            text: 'This paragraph is inside an optional substep'
-          },
+            optional: true,
+            contents: [
+              {
+                type: 'paragraph',
+                text: 'This paragraph is inside an optional substep'
+              }
+            ]
+          }
         ]
       },
       {
