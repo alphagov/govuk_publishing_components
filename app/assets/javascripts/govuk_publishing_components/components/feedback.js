@@ -19,11 +19,13 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       this.$somethingIsWrongButton = $element.find('.js-something-is-wrong');
       this.$promptQuestions = $element.find('.js-prompt-questions');
       this.$promptSuccessMessage = $element.find('.js-prompt-success');
+      this.$somethingIsWrongForm = $element.find('#something-is-wrong');
 
       var that = this;
       var jshiddenClass = 'js-hidden';
 
       setInitialAriaAttributes();
+      setHiddenValues();
 
       this.$toggleForms.on('click', function(e) {
         e.preventDefault();
@@ -81,6 +83,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         that.$forms.attr('aria-hidden', true);
         that.$pageIsNotUsefulButton.attr('aria-expanded', false);
         that.$somethingIsWrongButton.attr('aria-expanded', false);
+      }
+
+      function setHiddenValues () {
+        that.$somethingIsWrongForm.append('<input type="hidden" name="javascript_enabled" value="true"/>');
+        that.$somethingIsWrongForm.append($('<input type="hidden" name="referrer">').val(document.referrer || "unknown"));
       }
 
       function updateAriaAttributes (linkClicked) {

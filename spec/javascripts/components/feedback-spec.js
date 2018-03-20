@@ -104,6 +104,12 @@ describe("Feedback component", function () {
     expect($('.js-toggle-form[aria-controls="something-is-wrong"]').attr('aria-expanded')).toBe('false');
   });
 
+  it("should append a hidden 'referrer' field to the form", function() {
+    loadFeedbackComponent();
+
+    expect($('#something-is-wrong').find("[name=referrer]").val()).toBe("unknown");
+  });
+
   describe("clicking the 'page was useful' link", function () {
     it("displays a success message", function () {
       loadFeedbackComponent();
@@ -367,7 +373,9 @@ describe("Feedback component", function () {
         url: ["http://example.com/path/to/page"],
         what_doing: ["I was looking for some information about local government."],
         what_wrong: ["The background should be green."],
-        user_agent: ["Safari"]
+        user_agent: ["Safari"],
+        referrer: ["unknown"],
+        javascript_enabled: ["true"]
       });
     });
 
