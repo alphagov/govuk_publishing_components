@@ -87,7 +87,10 @@ describe "Contextual navigation" do
 
   def given_theres_a_page_with_just_legacy_taxonomy
     topic = random_item("topic", "title" => "A legacy topic")
-    content_store_has_random_item(links: { "topics" => [topic], parent: [random_item("guide", "title" => "A parent")] })
+    content_store_has_random_item(links: {
+      "topics" => [topic],
+      "parent" => [random_item("mainstream_browse_page", "title" => "A parent")]
+    })
   end
 
   def and_i_visit_that_page
@@ -135,7 +138,7 @@ describe "Contextual navigation" do
       JSON.parse(page.text)
     end
 
-    expect(payload.dig("breadcrumbs", 1, "title")).to eql("A live taxon")
+    expect(payload["breadcrumbs"].last["title"]).to eql("A live taxon")
   end
 
   def then_i_see_the_taxonomy_sidebar_and_collection
