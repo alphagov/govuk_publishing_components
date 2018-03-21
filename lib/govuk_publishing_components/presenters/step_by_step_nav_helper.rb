@@ -48,7 +48,7 @@ module GovukPublishingComponents
       def list(element)
         content_tag(
           get_list_element(element[:style]),
-          class: "gem-c-step-nav__links #{get_list_style(element[:style])}",
+          class: "gem-c-step-nav__list #{get_list_style(element[:style])}",
           data: {
             length: element[:contents].length
           }
@@ -57,7 +57,7 @@ module GovukPublishingComponents
             concat(
               content_tag(
                 :li,
-                class: "gem-c-step-nav__link js-list-item #{link_active(contents[:active])}"
+                class: "gem-c-step-nav__list-item js-list-item #{link_active(contents[:active])}"
               ) do
                 create_list_item_content(contents)
               end
@@ -92,7 +92,7 @@ module GovukPublishingComponents
             data: {
               position: "#{@options[:step_index] + 1}.#{@link_index}"
             },
-            class: "gem-c-step-nav__link-item js-link"
+            class: "gem-c-step-nav__link js-link"
           ) do
             text
           end
@@ -106,7 +106,7 @@ module GovukPublishingComponents
       end
 
       def get_list_style(style)
-        "gem-c-step-nav__links--choice" if style == "choice"
+        "gem-c-step-nav__list--choice" if style == "choice"
       end
 
       def get_list_element(style)
@@ -122,7 +122,7 @@ module GovukPublishingComponents
       end
 
       def link_active(active)
-        "gem-c-step-nav__link--active" if active
+        "gem-c-step-nav__list-item--active" if active
       end
     end
   end
