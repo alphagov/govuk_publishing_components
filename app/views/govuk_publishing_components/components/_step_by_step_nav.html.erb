@@ -74,24 +74,12 @@
             %>
             <% step[:contents].each do |element| %>
               <%= step_nav_helper.render_step_nav_element(element, options) %>
+
               <%
                 if element[:type] == 'list'
                   options[:link_index] += element[:contents].length
                 end
               %>
-
-              <% if element[:type] == 'substep' %>
-                <% if in_substep %>
-                  </div>
-                  <% in_substep = false %>
-                <% end %>
-                <div class="gem-c-step-nav__substep <% if element[:optional] %>gem-c-step-nav__substep--optional<% end %>">
-                <% in_substep = true %>
-              <% end %>
-            <% end %>
-
-            <% if in_substep %>
-              </div>
             <% end %>
 
             <% if step_nav_url && step[:show_help_link] %>

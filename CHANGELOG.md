@@ -1,3 +1,7 @@
+# Unreleased
+
+* Improve substep creation (PR #231)
+
 # 5.6.0
 
 * Restore 'referer' field to feedback component form submission (PR #232)

@@ -295,26 +295,28 @@ examples:
             },
             {
               type: 'substep',
-              optional: true
-            },
-            {
-              type: 'heading',
-              text: 'Get help completing this step'
-            },
-            {
-              type: 'list',
+              optional: true,
               contents: [
                 {
-                  href: '#',
-                  text: 'Apply online'
+                  type: 'heading',
+                  text: 'Get help completing this step'
                 },
                 {
-                  href: '#',
-                  text: 'Talk to one of our advisers'
-                },
-                {
-                  href: '#',
-                  text: 'Search our website'
+                  type: 'list',
+                  contents: [
+                    {
+                      href: '#',
+                      text: 'Apply online'
+                    },
+                    {
+                      href: '#',
+                      text: 'Talk to one of our advisers'
+                    },
+                    {
+                      href: '#',
+                      text: 'Search our website'
+                    }
+                  ]
                 }
               ]
             }
@@ -523,18 +525,20 @@ examples:
             },
             {
               type: 'substep',
-              optional: true
-            },
-            {
-              type: 'paragraph',
-              text: 'This paragraph is inside the sub step.'
-            },
-            {
-              type: 'list',
+              optional: true,
               contents: [
                 {
-                  href: '/test6',
-                  text: 'This link is also inside the sub step'
+                  type: 'paragraph',
+                  text: 'This paragraph is inside the sub step.'
+                },
+                {
+                  type: 'list',
+                  contents: [
+                    {
+                      href: '/test6',
+                      text: 'This link is also inside the sub step'
+                    }
+                  ]
                 }
               ]
             }
@@ -550,38 +554,44 @@ examples:
             },
             {
               type: 'substep',
-              optional: false
-            },
-            {
-              type: 'paragraph',
-              text: 'This paragraph is inside a required sub step.'
-            },
-            {
-              type: 'substep',
-              optional: true
-            },
-            {
-              type: 'paragraph',
-              text: 'This paragraph is inside an optional sub step.'
-            },
-            {
-              type: 'list',
+              optional: false,
               contents: [
                 {
-                  href: '/test7',
-                  text: 'This link is inside an optional sub step as well',
-                  active: true
+                  type: 'paragraph',
+                  text: 'This paragraph is inside a required sub step.'
                 }
               ]
             },
             {
               type: 'substep',
-              optional: false
+              optional: true,
+              contents: [
+                {
+                  type: 'paragraph',
+                  text: 'This paragraph is inside an optional sub step.'
+                },
+                {
+                  type: 'list',
+                  contents: [
+                    {
+                      href: '/test7',
+                      text: 'This link is inside an optional sub step as well',
+                      active: true
+                    }
+                  ]
+                },
+              ]
             },
             {
-              type: 'paragraph',
-              text: 'This paragraph is inside a required sub step.'
-            }
+              type: 'substep',
+              optional: false,
+              contents: [
+                {
+                  type: 'paragraph',
+                  text: 'This paragraph is inside a required sub step.'
+                }
+              ]
+            },
           ]
         },
         {
@@ -730,28 +740,30 @@ examples:
             },
             {
               type: 'substep',
-              optional: true
-            },
-            {
-              type: 'heading',
-              text: 'Optional steps'
-            },
-            {
-              type: 'paragraph',
-              text: 'These steps are not required.'
-            },
-            {
-              type: 'list',
-              style: 'choice',
+              optional: true,
               contents: [
                 {
-                  href: 'https://www.google.co.uk/',
-                  text: "Get annoyed when it doesn't work"
+                  type: 'heading',
+                  text: 'Optional steps'
                 },
                 {
-                  href: 'http://www.google.com',
-                  text: 'Try to find someone else who knows how to do it',
-                  context: '1 to 10 minutes'
+                  type: 'paragraph',
+                  text: 'These steps are not required.'
+                },
+                {
+                  type: 'list',
+                  style: 'choice',
+                  contents: [
+                    {
+                      href: 'https://www.google.co.uk/',
+                      text: "Get annoyed when it doesn't work"
+                    },
+                    {
+                      href: 'http://www.google.com',
+                      text: 'Try to find someone else who knows how to do it',
+                      context: '1 to 10 minutes'
+                    }
+                  ]
                 }
               ]
             }
@@ -921,28 +933,30 @@ examples:
             },
             {
               type: 'substep',
-              optional: true
-            },
-            {
-              type: 'heading',
-              text: 'Optional steps'
-            },
-            {
-              type: 'paragraph',
-              text: 'These steps are not required.'
-            },
-            {
-              type: 'list',
-              style: 'choice',
+              optional: true,
               contents: [
                 {
-                  href: 'https://www.google.co.uk/',
-                  text: "Get annoyed when it doesn't work"
+                  type: 'heading',
+                  text: 'Optional steps'
                 },
                 {
-                  href: 'http://www.google.com',
-                  text: 'Try to find someone else who knows how to do it',
-                  context: '1 to 10 minutes'
+                  type: 'paragraph',
+                  text: 'These steps are not required.'
+                },
+                {
+                  type: 'list',
+                  style: 'choice',
+                  contents: [
+                    {
+                      href: 'https://www.google.co.uk/',
+                      text: "Get annoyed when it doesn't work"
+                    },
+                    {
+                      href: 'http://www.google.com',
+                      text: 'Try to find someone else who knows how to do it',
+                      context: '1 to 10 minutes'
+                    }
+                  ]
                 }
               ]
             }
