@@ -170,7 +170,6 @@
 
       function bindToggleForSteps(stepNavTracker) {
         $element.find('.js-toggle-panel').click(function (event) {
-          preventLinkFollowingForCurrentTab(event);
           var $step = $(this).closest('.js-step');
 
           var stepView = new StepView($step);
@@ -248,16 +247,6 @@
             $(this).removeClass(activeLinkClass);
           }
         });
-      }
-
-      function preventLinkFollowingForCurrentTab(event) {
-        // If the user is holding the ⌘ or Ctrl key, they're trying
-        // to open the link in a new window, so let the click happen
-        if (event.metaKey || event.ctrlKey) {
-          return;
-        }
-
-        event.preventDefault();
       }
 
       function bindToggleShowHideAllButton(stepNavTracker) {
