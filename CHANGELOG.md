@@ -2,6 +2,7 @@
 
 * Restore underline to step nav related links links (PR #236)
 * Improve substep creation (PR #231)
+* Improve spacing of inverse header to allow it to replace publication header component in government-frontend (PR #238)
 
 # 5.6.0
 
