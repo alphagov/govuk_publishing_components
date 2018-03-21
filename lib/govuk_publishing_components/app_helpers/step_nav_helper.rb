@@ -28,7 +28,8 @@ module GovukPublishingComponents
         step_navs.map do |step_nav|
           {
             href: step_nav.base_path,
-            text: step_nav.title
+            text: step_nav.title,
+            tracking_id: step_nav.content_id
           }
         end
       end
@@ -37,7 +38,7 @@ module GovukPublishingComponents
         if show_sidebar?
           @sidebar ||= first_step_nav.content.tap do |sb|
             configure_for_sidebar(sb)
-            sb.merge!(small: true, heading_level: 3)
+            sb.merge!(small: true, heading_level: 3, tracking_id: first_step_nav.content_id)
           end
         end
       end
@@ -46,7 +47,8 @@ module GovukPublishingComponents
         if show_header?
           {
             title: first_step_nav.title,
-            path: first_step_nav.base_path
+            path: first_step_nav.base_path,
+            tracking_id: first_step_nav.content_id
           }
         else
           {}

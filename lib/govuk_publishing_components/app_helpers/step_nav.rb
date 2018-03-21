@@ -13,6 +13,10 @@ module GovukPublishingComponents
         content_item[:base_path]
       end
 
+      def content_id
+        content_item[:content_id]
+      end
+
       def content
         content_item.dig(:details, :step_by_step_nav)
       end

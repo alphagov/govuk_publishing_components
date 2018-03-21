@@ -72,7 +72,7 @@ examples:
       ]
   with_unique_tracking:
     description: |
-      We need to uniquely identify each step by step navigation in Google Analytics. If this parameter is added to the component, its value is included in any tracking events, specifically in dimension96.
+      In order to identify the step by step navigation the component is part of, we need to track a unique ID of the navigation in Google Analytics. This ID should be the same across all pages that are linked from and are part of that navigation. Its value is included in any tracking events, specifically in dimension96. It refers to the ID of the step nav page.
 
       This includes show/hide all, show/hide step and any link clicks.
     data:
