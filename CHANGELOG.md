@@ -1,5 +1,6 @@
 # Unreleased
 
+* Restore underline to step nav related links links (PR #236)
 * Improve substep creation (PR #231)
 
 # 5.6.0
