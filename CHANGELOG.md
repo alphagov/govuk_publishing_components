@@ -1,15 +1,15 @@
-# Unreleased
+# 5.7.0
 
 * Restore underline to step nav related links links (PR #236)
 * Improve substep creation (PR #231)
 * Improve spacing of inverse header to allow it to replace publication header component in government-frontend (PR #238)
+* Improve list and link classnames (PR #230)
+* Remove preventLinkFollowingForCurrentTab code (PR #229)
 
 # 5.6.0
 
 * Restore 'referer' field to feedback component form submission (PR #232)
-
 * Create single breadrumb and sidebar contextual navigation components. Not a breaking change, but you can drop `govuk_navigation_helpers` as a dependency now.
-
 * You can now add require a single Javascript to include all components, just like CSS.
 
 Replace all individual includes with:
