@@ -77,6 +77,10 @@
 .gem-c-feedback__prompt-link:link,
 .gem-c-feedback__prompt-link:visited {
   color: $white;
+
+  &:focus {
+    color: $link-colour;
+  }
 }
 
 .gem-c-feedback__prompt-link--wrong {
