@@ -28,6 +28,17 @@ examples:
             Education, Training and Skills
           </h1>
         </div>
+  html_publication_header:
+    description: "The inverse header component is used on HTMl publications. [See example on GOV.UK here](https://www.gov.uk/government/publications/ln5-0at-jackson-homes-scopwick-ltd-environmental-permit-application-advertisement/ln5-0at-jackson-homes-scopwick-ltd-environmental-permit-application)"
+    data:
+      block: |
+        <div class="pub-c-title pub-c-title--inverse pub-c-title--bottom-margin">
+          <p class="pub-c-title__context">Notice</p>
+          <h1 class="pub-c-title__text">
+            LN5 0AT, Jackson Homes (Scopwick) Ltd: environmental permit application
+          </h1>
+        </div>
+        <p class="publication-header__last-changed">Published 22 April 2016</p>
   with_breadcrumbs_and_paragraph:
     data:
       block: |
