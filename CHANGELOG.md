@@ -1,3 +1,7 @@
+# Unreleased
+
+* Fix visited link colour on focus for white feedback links (PR #239)
+
 # 5.7.0
 
 * Restore underline to step nav related links links (PR #236)
