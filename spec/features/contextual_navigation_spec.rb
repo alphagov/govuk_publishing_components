@@ -47,15 +47,15 @@ describe "Contextual navigation" do
   include Slimmer::TestHelpers::GovukComponents
 
   def given_theres_a_page_with_a_step_by_step
-    content_store_has_random_item(links: { part_of_step_navs: [random_item("step_by_step_nav")] })
+    content_store_has_random_item(links: { part_of_step_navs: [random_step_nav_item("step_by_step_nav")] })
   end
 
   def given_theres_are_two_step_by_step_lists
-    content_store_has_random_item(links: { part_of_step_navs: 2.times.map { random_item("step_by_step_nav") } })
+    content_store_has_random_item(links: { part_of_step_navs: 2.times.map { random_step_nav_item("step_by_step_nav") } })
   end
 
   def given_theres_are_six_step_by_step_lists
-    content_store_has_random_item(links: { part_of_step_navs: 6.times.map { random_item("step_by_step_nav") } })
+    content_store_has_random_item(links: { part_of_step_navs: 6.times.map { random_step_nav_item("step_by_step_nav") } })
   end
 
   def given_theres_a_page_with_browse_page
@@ -166,6 +166,10 @@ describe "Contextual navigation" do
         "links" => links)
 
     content_store_has_item(content_item["base_path"], content_item)
+  end
+
+  def random_step_nav_item(schema_name)
+    GovukSchemas::Example.find(schema_name, example_name: "step_by_step_nav")
   end
 
   def random_item(schema_name, merge_with = {})
