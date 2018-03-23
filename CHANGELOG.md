@@ -1,6 +1,7 @@
 # Unreleased
 
 * Fix visited link colour on focus for white feedback links (PR #239)
+* Fix input error colour
 
 # 5.7.0
 

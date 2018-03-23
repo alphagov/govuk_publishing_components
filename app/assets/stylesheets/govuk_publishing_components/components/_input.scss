@@ -22,20 +22,13 @@ input[type=text].gem-c-input {
 
   // Disable inner shadow and remove rounded corners
   appearance: none;
+
+  &.gem-c-input:focus {
+    outline: $gem-focus-width solid $gem-focus-colour;
+  }
+
+  &.gem-c-input--error {
+    border: $gem-border-width-error solid $gem-error-colour;
+  }
 }
 // scss-lint:enable QualifyingElement
-
-.gem-c-input:focus {
-  outline: $gem-focus-width solid $gem-focus-colour;
-}
-
-.gem-c-input--error {
-  border: $gem-border-width-error solid $gem-error-colour;
-}
-
-// Replace this with the error message component.
-.gem-c-input__label-error {
-  font-weight: bold;
-  color: $gem-error-colour;
-  padding-top: 4px;
-}
