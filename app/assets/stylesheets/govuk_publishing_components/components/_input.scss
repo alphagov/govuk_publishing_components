@@ -25,12 +25,6 @@ input[type=text].gem-c-input {
 }
 // scss-lint:enable QualifyingElement
 
-@media (min-width: 40.0625em) {
-  .govuk-c-input {
-    margin-bottom: 30px;
-  }
-}
-
 .gem-c-input:focus {
   outline: $gem-focus-width solid $gem-focus-colour;
 }
