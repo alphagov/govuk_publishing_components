@@ -142,9 +142,7 @@ RSpec.describe GovukNavigationHelpers::TaxonBreadcrumbs do
       random_item.merge(content_item)
     end
 
-    # Use the main class instead of GovukNavigationHelpers::Breadcrumbs, so that
-    # we're testing both at the same time.
-    GovukNavigationHelpers::NavigationHelper.new(fully_valid_content_item).taxon_breadcrumbs
+    GovukNavigationHelpers::TaxonBreadcrumbs.new(fully_valid_content_item).breadcrumbs
   end
 
   def taxon_with_parent_taxons(parents)

@@ -5,7 +5,7 @@ RSpec.describe GovukNavigationHelpers::RelatedItems do
     fully_valid_content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "placeholder") do |random_item|
       random_item.merge(content_item)
     end
-    GovukNavigationHelpers::NavigationHelper.new(fully_valid_content_item).related_items
+    GovukNavigationHelpers::RelatedItems.new(fully_valid_content_item).related_items
   end
 
   describe "#related_items" do
