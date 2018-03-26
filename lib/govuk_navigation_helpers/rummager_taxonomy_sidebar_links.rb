@@ -1,3 +1,5 @@
+require 'govuk_app_config'
+
 module GovukNavigationHelpers
   class RummagerTaxonomySidebarLinks
     def initialize(content_item)
@@ -30,7 +32,7 @@ module GovukNavigationHelpers
     # temporary method that uses search to achieve this. This behaviour is to be moved into
     # the content store
     def content_related_to(taxon, used_related_links)
-      statsd.time(:taxonomy_sidebar_search_time) do
+      GovukStatsd.time(:taxonomy_sidebar_search_time) do
         begin
           results = Services.rummager.search(
             similar_to: @content_item.base_path,
@@ -42,20 +44,16 @@ module GovukNavigationHelpers
             fields: %w[title link],
           )['results']
 
-          statsd.increment(:taxonomy_sidebar_searches)
+          GovukStatsd.increment(:taxonomy_sidebar_searches)
 
           results
             .map { |result| { title: result['title'], link: result['link'], } }
             .sort_by { |result| result[:title] }
         rescue StandardError => e
-          GovukNavigationHelpers.configuration.error_handler.notify(e)
+          GovukError.notify(e)
           []
         end
       end
-    end
-
-    def statsd
-      GovukNavigationHelpers.configuration.statsd
     end
   end
 end

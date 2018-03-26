@@ -42,7 +42,7 @@ RSpec.describe GovukNavigationHelpers::TaxonomySidebar do
       end
 
       it 'returns a sidebar hash containing a sorted list of parent taxons and related content' do
-        expect(GovukNavigationHelpers.configuration.statsd).to receive(
+        expect(GovukStatsd).to receive(
           :increment
         ).with(
           :taxonomy_sidebar_searches
@@ -78,7 +78,7 @@ RSpec.describe GovukNavigationHelpers::TaxonomySidebar do
       end
 
       it 'only shows related links for the first 2 taxons with related content' do
-        expect(GovukNavigationHelpers.configuration.statsd).to receive(
+        expect(GovukStatsd).to receive(
           :increment
         ).with(
           :taxonomy_sidebar_searches
@@ -157,7 +157,7 @@ RSpec.describe GovukNavigationHelpers::TaxonomySidebar do
       end
 
       it 'does not duplicate the related links across each taxon' do
-        expect(GovukNavigationHelpers.configuration.statsd).to receive(
+        expect(GovukStatsd).to receive(
           :increment
         ).with(
           :taxonomy_sidebar_searches
@@ -483,19 +483,11 @@ RSpec.describe GovukNavigationHelpers::TaxonomySidebar do
       end
     end
     context 'when Rummager raises an exception' do
-      error_handler = nil
-
       before(:each) do
         stub_any_rummager_search
             .to_return(status: 500)
 
-        error_handler = spy('error_handler')
-
-        GovukNavigationHelpers.configure do |config|
-          config.error_handler = error_handler
-        end
-
-        expect(GovukNavigationHelpers.configuration.statsd).to_not receive(
+        expect(GovukStatsd).to_not receive(
           :increment
         )
       end
@@ -507,10 +499,12 @@ RSpec.describe GovukNavigationHelpers::TaxonomySidebar do
       end
 
       it 'logs an error' do
+        allow(GovukError).to receive(:notify)
+
         content_item = content_item_tagged_to_taxon
         sidebar_for(content_item)
 
-        expect(error_handler).to have_received(:notify).at_least(1).times
+        expect(GovukError).to have_received(:notify).at_least(1).times
       end
     end
   end
