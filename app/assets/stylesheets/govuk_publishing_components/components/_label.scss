@@ -16,3 +16,10 @@
   color: $gem-secondary-text-colour;
   font-weight: 400;
 }
+
+// TODO: Replace this with the error message component.
+.gem-c-label__error {
+  font-weight: bold;
+  color: $gem-error-colour;
+  padding-top: 4px;
+}
