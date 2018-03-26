@@ -1,5 +1,4 @@
 require 'govuk_navigation_helpers/services'
-require 'govuk_navigation_helpers/configuration'
 
 module GovukNavigationHelpers
   class TaxonomySidebar
