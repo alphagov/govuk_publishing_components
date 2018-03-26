@@ -7,6 +7,7 @@ require "govuk_publishing_components/presenters/navigation_type"
 
 require "govuk_publishing_components/app_helpers/step_nav"
 require "govuk_publishing_components/app_helpers/step_nav_helper"
+require "govuk_publishing_components/app_helpers/taxon_breadcrumbs"
 
 module GovukPublishingComponents
   StepNavHelper = GovukPublishingComponents::AppHelpers::StepNavHelper
