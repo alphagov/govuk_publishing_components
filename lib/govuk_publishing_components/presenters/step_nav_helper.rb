@@ -1,5 +1,7 @@
 module GovukPublishingComponents
-  module AppHelpers
+  module Presenters
+    # @private
+    # Only used by the step by step component
     class StepNavHelper
       def initialize(content_store_response, current_path)
         @content_item = content_store_response.to_h

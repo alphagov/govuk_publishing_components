@@ -1,5 +1,7 @@
 module GovukPublishingComponents
-  module AppHelpers
+  module Presenters
+    # @private
+    # Only used by the step by step component
     class StepNav
       def initialize(content_item)
         @content_item = content_item.deep_symbolize_keys
