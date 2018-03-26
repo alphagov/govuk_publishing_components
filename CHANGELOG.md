@@ -2,6 +2,7 @@
 
 * Fix visited link colour on focus for white feedback links (PR #239)
 * Fix input error colour
+* Add helper for generating breadcrumbs on taxon and taxonomy-based finder pages
 
 # 5.7.0
 
