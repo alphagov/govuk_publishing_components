@@ -10,7 +10,7 @@ module GovukPublishingComponents
 
       def step_navs
         @step_navs ||= parsed_step_navs.map do |step_nav|
-          StepNav.new(step_nav)
+          StepByStepModel.new(step_nav)
         end
       end
 
@@ -90,6 +90,37 @@ module GovukPublishingComponents
         end
         step_nav_content
       end
+    end
+
+    # @private
+    class StepByStepModel
+      def initialize(content_item)
+        @content_item = content_item.deep_symbolize_keys
+      end
+
+      def title
+        content_item[:title]
+      end
+
+      def base_path
+        content_item[:base_path]
+      end
+
+      def content_id
+        content_item[:content_id]
+      end
+
+      def content
+        content_item.dig(:details, :step_by_step_nav)
+      end
+
+      def steps
+        content_item.dig(:details, :step_by_step_nav, :steps)
+      end
+
+    private
+
+      attr_reader :content_item
     end
   end
 end
