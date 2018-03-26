@@ -91,8 +91,6 @@ RSpec.describe GovukNavigationHelpers::Breadcrumbs do
       random_item.merge(content_item)
     end
 
-    # Use the main class instead of GovukNavigationHelpers::Breadcrumbs, so that
-    # we're testing both at the same time.
-    GovukNavigationHelpers::NavigationHelper.new(fully_valid_content_item).breadcrumbs
+    GovukNavigationHelpers::Breadcrumbs.new(fully_valid_content_item).breadcrumbs
   end
 end

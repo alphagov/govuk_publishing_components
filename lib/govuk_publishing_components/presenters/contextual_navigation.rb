@@ -14,11 +14,11 @@ module GovukPublishingComponents
       end
 
       def taxonomy_sidebar
-        nav_helper.taxonomy_sidebar
+        @taxonomy_sidebar ||= GovukNavigationHelpers::TaxonomySidebar.new(content_item).sidebar
       end
 
       def taxon_breadcrumbs
-        nav_helper.taxon_breadcrumbs
+        @taxon_breadcrumbs ||= GovukNavigationHelpers::TaxonBreadcrumbs.new(content_item).breadcrumbs
       end
 
       def breadcrumbs
@@ -37,7 +37,7 @@ module GovukPublishingComponents
             }
           ]
         else
-          nav_helper.breadcrumbs[:breadcrumbs]
+          GovukNavigationHelpers::Breadcrumbs.new(content_item).breadcrumbs[:breadcrumbs]
         end
       end
 
@@ -48,12 +48,6 @@ module GovukPublishingComponents
 
       def step_nav_helper
         @step_nav_helper ||= GovukPublishingComponents::Presenters::StepNavHelper.new(content_item, request_path)
-      end
-
-    private
-
-      def nav_helper
-        @nav_helper ||= GovukNavigationHelpers::NavigationHelper.new(content_item)
       end
     end
   end

@@ -516,7 +516,7 @@ RSpec.describe GovukNavigationHelpers::TaxonomySidebar do
   end
 
   def sidebar_for(content_item)
-    GovukNavigationHelpers::NavigationHelper.new(content_item).taxonomy_sidebar
+    GovukNavigationHelpers::TaxonomySidebar.new(content_item).sidebar
   end
 
   def content_item_tagged_to_taxon
