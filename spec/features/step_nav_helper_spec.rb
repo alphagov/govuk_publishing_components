@@ -5,7 +5,7 @@ describe 'Specimen usage of step by step navigation helpers' do
 
   context 'no related step by step navigation journeys' do
     before do
-      content_store_has_random_item(base_path: '/vomit-comet', schema: 'transaction', part_of_step_navs: nil)
+      content_store_has_random_item(base_path: '/step-nav/vomit-comet', schema: 'transaction', part_of_step_navs: nil)
 
       visit '/step-nav/vomit-comet'
     end
@@ -19,7 +19,7 @@ describe 'Specimen usage of step by step navigation helpers' do
 
   context 'one related step by step navigation journey' do
     before do
-      content_store_has_random_item(base_path: '/vomit-comet', schema: 'transaction', part_of_step_navs: [spacewalk_step_nav])
+      content_store_has_random_item(base_path: '/step-nav/vomit-comet', schema: 'transaction', part_of_step_navs: [spacewalk_step_nav])
 
       visit '/step-nav/vomit-comet'
     end
@@ -49,7 +49,7 @@ describe 'Specimen usage of step by step navigation helpers' do
 
   context 'one related step by step navigation journey with no steps' do
     before do
-      content_store_has_random_item(base_path: '/vomit-comet', schema: 'transaction', part_of_step_navs: [zero_steps_step_nav])
+      content_store_has_random_item(base_path: '/step-nav/vomit-comet', schema: 'transaction', part_of_step_navs: [zero_steps_step_nav])
 
       visit '/step-nav/vomit-comet'
     end
@@ -77,7 +77,7 @@ describe 'Specimen usage of step by step navigation helpers' do
 
   context 'multiple related step by step navigation journeys' do
     before do
-      content_store_has_random_item(base_path: '/vomit-comet', schema: 'transaction', part_of_step_navs: [
+      content_store_has_random_item(base_path: '/step-nav/vomit-comet', schema: 'transaction', part_of_step_navs: [
         {
           "content_id" => "8f5d4f2b-daf0-4460-88c1-fdd76c90f6f1",
           "locale" => "en",
@@ -181,7 +181,7 @@ describe 'Specimen usage of step by step navigation helpers' do
                   "style": "required",
                   "contents": [
                     {
-                      "href": "/vomit-comet",
+                      "href": "/step-nav/vomit-comet",
                       "text": "Experience zero gravity in the atmosphere"
                     }
                   ]

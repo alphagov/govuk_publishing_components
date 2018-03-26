@@ -1,17 +1,9 @@
 <header>
-<% if @step_nav_helper.show_header? %>
-  <%= render 'govuk_publishing_components/components/step_by_step_nav_header',
-    @step_nav_helper.header %>
-<% end %>
+  <%= render 'govuk_publishing_components/components/contextual_breadcrumbs',
+    content_item: @content_item %>
 </header>
 
 <aside>
-<% if @step_nav_helper.show_related_links? %>
-  <%= render 'govuk_publishing_components/components/step_by_step_nav_related',
-    links: @step_nav_helper.related_links %>
-<% end %>
-<% if @step_nav_helper.show_sidebar? %>
-  <%= render 'govuk_publishing_components/components/step_by_step_nav',
-    @step_nav_helper.sidebar %>
-<% end %>
+  <%= render 'govuk_publishing_components/components/contextual_sidebar',
+    content_item: @content_item %>
 </aside>
