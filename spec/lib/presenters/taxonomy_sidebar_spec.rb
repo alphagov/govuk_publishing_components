@@ -4,7 +4,7 @@ require 'gds_api/test_helpers/rummager'
 
 include GdsApi::TestHelpers::Rummager
 
-RSpec.describe GovukNavigationHelpers::TaxonomySidebar do
+RSpec.describe GovukPublishingComponents::Presenters::TaxonomySidebar do
   describe '#sidebar' do
     it 'can handle any valid content item' do
       stub_any_rummager_search_to_return_no_results
@@ -510,7 +510,7 @@ RSpec.describe GovukNavigationHelpers::TaxonomySidebar do
   end
 
   def sidebar_for(content_item)
-    GovukNavigationHelpers::TaxonomySidebar.new(content_item).sidebar
+    described_class.new(content_item).sidebar
   end
 
   def content_item_tagged_to_taxon

@@ -1,11 +1,11 @@
 require 'spec_helper'
 
-RSpec.describe GovukNavigationHelpers::Breadcrumbs do
+RSpec.describe GovukPublishingComponents::Presenters::Breadcrumbs do
   describe "#breadcrumbs" do
     it "can handle any valid content item" do
       payload = GovukSchemas::RandomExample.for_schema(frontend_schema: "placeholder")
 
-      expect { GovukNavigationHelpers::Breadcrumbs.new(payload).breadcrumbs }.to_not raise_error
+      expect { described_class.new(payload).breadcrumbs }.to_not raise_error
     end
 
     it "returns the root when parent is not specified" do
@@ -91,6 +91,6 @@ RSpec.describe GovukNavigationHelpers::Breadcrumbs do
       random_item.merge(content_item)
     end
 
-    GovukNavigationHelpers::Breadcrumbs.new(fully_valid_content_item).breadcrumbs
+    described_class.new(fully_valid_content_item).breadcrumbs
   end
 end

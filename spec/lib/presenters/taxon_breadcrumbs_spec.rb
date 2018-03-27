@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe GovukNavigationHelpers::TaxonBreadcrumbs do
+RSpec.describe GovukPublishingComponents::Presenters::TaxonBreadcrumbs do
   describe "Taxon breadcrumbs" do
     it "can handle any valid content item" do
       payload = GovukSchemas::RandomExample.for_schema(
@@ -8,7 +8,7 @@ RSpec.describe GovukNavigationHelpers::TaxonBreadcrumbs do
       )
 
       expect {
-        GovukNavigationHelpers::TaxonBreadcrumbs.new(
+        described_class.new(
           payload
         ).breadcrumbs
       }.to_not raise_error
@@ -142,7 +142,7 @@ RSpec.describe GovukNavigationHelpers::TaxonBreadcrumbs do
       random_item.merge(content_item)
     end
 
-    GovukNavigationHelpers::TaxonBreadcrumbs.new(fully_valid_content_item).breadcrumbs
+    described_class.new(fully_valid_content_item).breadcrumbs
   end
 
   def taxon_with_parent_taxons(parents)
