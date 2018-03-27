@@ -1,0 +1,102 @@
+name: "Taxonomy navigation"
+description: "Sidebar navigation for displaying on pages tagged to the GOV.UK taxonomy."
+body: |
+  Accepts an array of items. These items are typically the list of taxons the current
+  content page is tagged to.
+
+  Each item is a hash with a title, url, description, and list of related content
+  associated with that item.
+accessibility_criteria: |
+  - Should have a role of 'complementary' as it complements the main page content
+  - Should have a role of 'navigation' on any navigation elements inside the component
+shared_accessibility_criteria:
+  - link
+examples:
+  default:
+    data:
+      items:
+        - title: "School curriculum"
+          url: /education/school-curriculum
+          description: |
+            Early years, key stages 1 to 5, GCSE and AS and A level reforms, tests,
+            exams and assessments, PSHE and SMSC.
+          related_content:
+            - title: "The national curriculum"
+              link: /national-curriculum
+        - title: "Tests (key stage 1)"
+          url: /key-stage-1-tests
+          description: |
+            Key dates, sample and test materials, administration, moderation,
+            assessing and reporting, statistics, frameworks.
+          related_content:
+            - title: "Key stage 1 teacher assessment"
+              link: /government/collections/key-stage-1-teacher-assessment
+            - title: "Primary assessments: information and resources for 2017"
+              link: /government/publications/primary-assessments-information-and-resources-for-2017
+  long_example:
+    data:
+      items:
+        - title: "School curriculum for children ages 16 to 19, and 10 to 14"
+          url: /education/school-curriculum
+          description: |
+            Early years, key stages 1 to 5, GCSE and AS and A level reforms, tests,
+            exams and assessments, PSHE and SMSC. Widening participation, funding
+            for children in deprived areas. Improving attainment in schools for
+            looked-after children.
+          related_content:
+            - title: "Further education financial management and data collection"
+              link: /government/collections/key-stage-1-teacher-assessment
+            - title: "Primary assessments: information and resources for 2017"
+              link: /government/publications/primary-assessments-information-and-resources-for-2017
+            - title: "Slide pack from Phil Beach at the Skills &amp; Employability Summit"
+              link: /government/publications/primary-assessments-information-and-resources-for-2017
+            - title: "Transport to education and training for people aged 16 to 18"
+              link: /government/publications/primary-assessments-information-and-resources-for-2017
+        - title: "Tests (key stage 1, 2 and 3), plus further tests outside of school"
+          url: /key-stage-1-tests
+          description: |
+            Key dates, sample and test materials, administration, moderation,
+            assessing and reporting, statistics, frameworks. University and college
+            qualifications. Apprenticeships, traineeships and internships. Funding
+            for further education providers.
+          related_content:
+            - title: "Key stage 1 teacher assessment"
+              link: /government/collections/key-stage-1-teacher-assessment
+            - title: "Primary assessments: information and resources for 2017"
+              link: /government/publications/primary-assessments-information-and-resources-for-2017
+      collections:
+        - text: "Statistics: outcome based success measures"
+          path: "/government/collections/statistics-outcome-based-success-measures"
+      policies:
+        - text: "Teaching and school leadership"
+          path: "/government/policies/teaching-and-school-leadership"
+      world_locations:
+        - text: "Slovenia"
+          path: "/world/slovenia/news"
+  no_children:
+    description: |
+      The child links are usually pulled from rummager. If rummager doesn’t respond we fallback to a sidebar with a taxon link but without any child content links.
+    data:
+      items:
+        - title: "School curriculum"
+          url: /education/school-curriculum
+          description: |
+            Early years, key stages 1 to 5, GCSE and AS and A level reforms, tests,
+            exams and assessments, PSHE and SMSC.
+        - title: "Tests (key stage 1)"
+          url: /key-stage-1-tests
+          description: |
+            Key dates, sample and test materials, administration, moderation,
+            assessing and reporting, statistics, frameworks.
+  taxon_with_no_link:
+    data:
+      items:
+        - title: "Taxon without a link"
+          description: |
+            Early years, key stages 1 to 5, GCSE and AS and A level reforms, tests,
+            exams and assessments, PSHE and SMSC.
+          related_content:
+            - title: "Key stage 1 teacher assessment"
+              link: /government/collections/key-stage-1-teacher-assessment
+            - title: "Primary assessments: information and resources for 2017"
+              link: /government/publications/primary-assessments-information-and-resources-for-2017
