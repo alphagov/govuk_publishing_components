@@ -1,8 +1,11 @@
-# Unreleased
+# 6.0.0
 
 * Fix visited link colour on focus for white feedback links (PR #239)
-* Fix input error colour
-* Add helper for generating breadcrumbs on taxon and taxonomy-based finder pages
+* Fix input error colour (PR #241)
+* Add helper for generating breadcrumbs on taxon and taxonomy-based finder pages (PR #242)
+* Breaking: merge the [govuk_navigation_helpers][] gem into this project (#244). To upgrade, you will have to use the contextual navigation components ([sidebar](https://govuk-publishing-components.herokuapp.com/component-guide/contextual_sidebar) and [breadcrumbs](https://govuk-publishing-components.herokuapp.com/component-guide/contextual_breadcrumbs)) .
+
+[govuk_navigation_helpers]: https://github.com/alphagov/govuk_navigation_helpers
 
 # 5.7.0
 
