@@ -1,6 +1,6 @@
 require "spec_helper"
 
-RSpec.describe GovukNavigationHelpers::ContentItem do
+RSpec.describe GovukPublishingComponents::Presenters::ContentItem do
   describe "#parent_taxons" do
     context "for a content item with taxons links" do
       context "with a parent taxon with phase set to 'live'" do
