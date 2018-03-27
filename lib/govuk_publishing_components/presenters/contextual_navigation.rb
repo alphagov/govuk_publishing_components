@@ -16,7 +16,7 @@ module GovukPublishingComponents
       end
 
       def taxon_breadcrumbs
-        @taxon_breadcrumbs ||= TaxonBreadcrumbs.new(content_item).breadcrumbs
+        @taxon_breadcrumbs ||= ContentBreadcrumbsBasedOnTaxons.new(content_item).breadcrumbs
       end
 
       def breadcrumbs
@@ -35,7 +35,7 @@ module GovukPublishingComponents
             }
           ]
         else
-          Breadcrumbs.new(content_item).breadcrumbs[:breadcrumbs]
+          ContentBreadcrumbsBasedOnParent.new(content_item).breadcrumbs[:breadcrumbs]
         end
       end
 
@@ -45,7 +45,7 @@ module GovukPublishingComponents
       end
 
       def step_nav_helper
-        @step_nav_helper ||= StepNavHelper.new(content_item, request_path)
+        @step_nav_helper ||= PageWithStepByStepNavigation.new(content_item, request_path)
       end
     end
   end

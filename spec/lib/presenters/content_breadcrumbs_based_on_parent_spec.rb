@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe GovukPublishingComponents::Presenters::Breadcrumbs do
+RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnParent do
   describe "#breadcrumbs" do
     it "can handle any valid content item" do
       payload = GovukSchemas::RandomExample.for_schema(frontend_schema: "placeholder")

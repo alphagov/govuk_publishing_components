@@ -1,6 +1,6 @@
 require "spec_helper"
 
-RSpec.describe GovukPublishingComponents::Presenters::StepNavHelper do
+RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigation do
   context "rules for handling differing numbers of linked step navs" do
     let(:step_nav) do
       {
