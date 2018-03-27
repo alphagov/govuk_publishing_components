@@ -1,7 +1,7 @@
 module GovukPublishingComponents
   module Presenters
     # @private
-    class Breadcrumbs
+    class ContentBreadcrumbsBasedOnParent
       def initialize(content_item)
         @content_item = ContentItem.new(content_item)
       end

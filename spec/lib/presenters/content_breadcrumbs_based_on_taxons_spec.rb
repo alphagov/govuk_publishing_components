@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe GovukPublishingComponents::Presenters::TaxonBreadcrumbs do
+RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnTaxons do
   describe "Taxon breadcrumbs" do
     it "can handle any valid content item" do
       payload = GovukSchemas::RandomExample.for_schema(

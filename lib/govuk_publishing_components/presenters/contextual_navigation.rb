@@ -16,7 +16,7 @@ module GovukPublishingComponents
       end
 
       def taxon_breadcrumbs
-        @taxon_breadcrumbs ||= TaxonBreadcrumbs.new(content_item).breadcrumbs
+        @taxon_breadcrumbs ||= ContentBreadcrumbsBasedOnTaxons.new(content_item).breadcrumbs
       end
 
       def breadcrumbs
@@ -35,7 +35,7 @@ module GovukPublishingComponents
             }
           ]
         else
-          Breadcrumbs.new(content_item).breadcrumbs[:breadcrumbs]
+          ContentBreadcrumbsBasedOnParent.new(content_item).breadcrumbs[:breadcrumbs]
         end
       end
 
