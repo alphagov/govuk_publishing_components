@@ -1,0 +1,82 @@
+<% if local_assigns[:items] && !items.blank? %>
+
+  <aside class='gem-c-taxonomy-navigation' data-module='track-click' role='complementary'>
+    <h2 class='gem-c-taxonomy-navigation__heading'><%= t("govuk_component.taxonomy_sidebar.related_content") %></h2>
+    <% items.each_with_index do |item, item_index| %>
+      <div data-track-count="sidebarTaxonSection">
+        <h3 class='gem-c-taxonomy-navigation__heading'>
+          <%=
+            link_to_if(
+              item[:url],
+              item[:title],
+              item[:url],
+              class: 'gem-c-taxonomy-navigation__link',
+              data: {
+                track_category: 'relatedLinkClicked',
+                track_action: "#{item_index + 1}",
+                track_label: item[:url],
+                track_options: {
+                  dimension28: items.length.to_s,
+                  dimension29: item[:title],
+                },
+              },
+            )
+          %>
+        </h3>
+
+        <p class='gem-c-taxonomy-navigation__taxon-description'>
+          <%= item[:description] %>
+        </p>
+
+        <% item[:related_content] ||= [] %>
+        <% if item[:related_content].any? %>
+          <nav class='gem-c-taxonomy-navigation__navigation' role='navigation'>
+            <ul class='gem-c-taxonomy-navigation__list'>
+              <% item[:related_content].each_with_index do |related_item, related_content_index| %>
+                <li class='gem-c-taxonomy-navigation__item'>
+                  <%=
+                    link_to(
+                      related_item[:title],
+                      related_item[:link],
+                      data: {
+                          track_category: 'relatedLinkClicked',
+                          track_action: "#{item_index + 1}.#{related_content_index + 1}",
+                          track_label: related_item[:link],
+                          track_options: {
+                            dimension28: item[:related_content].length.to_s,
+                            dimension29: related_item[:title],
+                          }
+                      },
+                      class: 'related-link gem-c-taxonomy-navigation__link',
+                    )
+                  %>
+                </li>
+              <% end %>
+            </ul>
+          </nav>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% local_assigns.except(:items).each do |section_name, section| %>
+      <% if section && !section.blank? %>
+        <div>
+          <h3 class='gem-c-taxonomy-navigation__section-heading'><%= section_name.to_s.humanize %></h3>
+          <nav class='gem-c-taxonomy-navigation__navigation' role='navigation'>
+            <ul class='gem-c-taxonomy-navigation__list'>
+              <% section.each do |item| %>
+                <% if item[:text] && item[:path] %>
+                  <li>
+                    <%= link_to(item[:text],
+                                item[:path],
+                                class: "gem-c-taxonomy-navigation__section-link") %>
+                  </li>
+                <% end %>
+              <% end %>
+            </ul>
+          </nav>
+        </div>
+      <% end %>
+    <% end %>
+  </aside>
+<% end %>

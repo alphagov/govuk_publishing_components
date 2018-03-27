@@ -1,0 +1,76 @@
+.gem-c-taxonomy-navigation {
+  @include core-16;
+  border-top: 2px solid $govuk-blue;
+  padding-top: $gutter-half;
+
+  // FIXME: These styles can be removed once new
+  // taxonomy template code is populated across all
+  // application caches.
+  h2 {
+    margin-bottom: 0.5em;
+  }
+
+  .taxon-description {
+    margin-bottom: 0.75em;
+  }
+
+  ul {
+    // reset the default browser styles
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    margin-bottom: 1.25em;
+
+    li {
+      // reset the default browser styles
+      padding: 0;
+      margin-bottom: 0.75em;
+    }
+  }
+  // END FIXME
+}
+
+.gem-c-taxonomy-navigation__heading {
+  @include bold-19;
+  margin-bottom: $gutter-one-third;
+  margin-top: 0;
+}
+
+.gem-c-taxonomy-navigation__taxon-description {
+  margin-bottom: $gutter-one-third;
+  margin-top: 0;
+}
+
+.gem-c-taxonomy-navigation__navigation {
+  margin-bottom: $gutter;
+}
+
+.gem-c-taxonomy-navigation__list {
+  list-style: none;
+  margin: 0;
+  margin-bottom: 1.25em;
+  padding: 0;
+}
+
+.gem-c-taxonomy-navigation__item {
+  list-style-type: none;
+  margin-bottom: $gutter-one-third;
+  padding: 0;
+}
+
+.gem-c-taxonomy-navigation__link {
+  text-decoration: none;
+}
+
+
+.gem-c-taxonomy-navigation__section-heading {
+  border-top: 1px solid $border-colour;
+  margin-bottom: $gutter-half;
+  margin-top: $gutter;
+  padding-top: $gutter-half;
+}
+
+.gem-c-taxonomy-navigation__section-link {
+  @include bold-19;
+  text-decoration: none;
+}
