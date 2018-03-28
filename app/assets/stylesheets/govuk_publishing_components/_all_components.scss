@@ -2,21 +2,27 @@
 // the components.
 
 // `govuk_frontend_toolkit`
-@import "measurements";
-@import "grid_layout";
-@import "typography";
 @import "colours";
+@import "css3";
+@import "design-patterns/buttons";
+@import "grid_layout";
+@import "measurements";
+@import "typography";
+
+@import "components/helpers/clearfix";
+@import "components/helpers/px-to-em";
+@import "components/helpers/variables";
 
 @import "components/back-link";
 @import "components/document-list";
 @import "components/error-summary";
+@import "components/feedback";
 @import "components/fieldset";
 @import "components/input";
+@import "components/inverse-header";
 @import "components/label";
 @import "components/radio";
 @import "components/related-navigation";
 @import "components/step-by-step-nav";
 @import "components/step-by-step-nav-header";
 @import "components/step-by-step-nav-related";
-@import "components/feedback";
-@import "components/inverse-header";
