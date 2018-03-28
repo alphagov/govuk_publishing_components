@@ -22,7 +22,11 @@ RSpec.describe GovukPublishingComponents::Presenters::TaxonomySidebar do
 
         expect(sidebar_for(content_item)).to eq(
           items: [],
-          collections: []
+          collections: [],
+          policies: [],
+          statistical_data_sets: [],
+          topical_events: [],
+          world_locations: [],
         )
       end
     end
@@ -74,6 +78,10 @@ RSpec.describe GovukPublishingComponents::Presenters::TaxonomySidebar do
             },
           ],
           collections: [],
+          policies: [],
+          statistical_data_sets: [],
+          topical_events: [],
+          world_locations: [],
         )
       end
 
@@ -124,6 +132,10 @@ RSpec.describe GovukPublishingComponents::Presenters::TaxonomySidebar do
             },
           ],
           collections: [],
+          policies: [],
+          statistical_data_sets: [],
+          topical_events: [],
+          world_locations: [],
         )
       end
     end
@@ -186,6 +198,10 @@ RSpec.describe GovukPublishingComponents::Presenters::TaxonomySidebar do
             }
           ],
           collections: [],
+          policies: [],
+          statistical_data_sets: [],
+          topical_events: [],
+          world_locations: [],
         )
       end
     end
@@ -226,6 +242,10 @@ RSpec.describe GovukPublishingComponents::Presenters::TaxonomySidebar do
               }
             ],
             collections: [],
+            policies: [],
+            statistical_data_sets: [],
+            topical_events: [],
+            world_locations: [],
           )
         end
 
@@ -286,6 +306,10 @@ RSpec.describe GovukPublishingComponents::Presenters::TaxonomySidebar do
               }
             ],
             collections: [],
+            policies: [],
+            statistical_data_sets: [],
+            topical_events: [],
+            world_locations: [],
           )
         end
 
@@ -324,6 +348,10 @@ RSpec.describe GovukPublishingComponents::Presenters::TaxonomySidebar do
               }
             ],
             collections: [],
+            policies: [],
+            statistical_data_sets: [],
+            topical_events: [],
+            world_locations: [],
           )
         end
 
@@ -369,6 +397,10 @@ RSpec.describe GovukPublishingComponents::Presenters::TaxonomySidebar do
               },
             ],
             collections: [],
+            policies: [],
+            statistical_data_sets: [],
+            topical_events: [],
+            world_locations: [],
           )
         end
 
@@ -406,6 +438,10 @@ RSpec.describe GovukPublishingComponents::Presenters::TaxonomySidebar do
               },
             ],
             collections: [],
+            policies: [],
+            statistical_data_sets: [],
+            topical_events: [],
+            world_locations: [],
           )
         end
 
@@ -458,6 +494,10 @@ RSpec.describe GovukPublishingComponents::Presenters::TaxonomySidebar do
               },
             ],
             collections: [],
+            policies: [],
+            statistical_data_sets: [],
+            topical_events: [],
+            world_locations: [],
           )
         end
       end
@@ -465,9 +505,7 @@ RSpec.describe GovukPublishingComponents::Presenters::TaxonomySidebar do
 
     context 'given a content item with document collections' do
       it 'returns a sidebar hash containing document collections' do
-        content_item = content_item_with_document_collections
-
-        expect(sidebar_for(content_item)).to eq(
+        expect(sidebar_for(content_item_with_document_collections)).to eq(
           items: [],
           collections: [
             {
@@ -478,10 +516,73 @@ RSpec.describe GovukPublishingComponents::Presenters::TaxonomySidebar do
               path: "/collection-a",
               text: "Collection A",
             },
-            ]
+          ],
+          policies: [],
+          statistical_data_sets: [],
+          topical_events: [],
+          world_locations: [],
         )
       end
     end
+
+    context 'given a content item with policies' do
+      it 'returns a sidebar hash containing policies' do
+        expect(sidebar_for(content_item_with_policies)).to eq(
+          items: [],
+          collections: [],
+          policies: [
+            { path: "/policy-b", text: "Policy B" },
+            { path: "/policy-a", text: "Policy A" },
+          ],
+          statistical_data_sets: [],
+          topical_events: [],
+          world_locations: [],
+        )
+      end
+    end
+
+    context 'given a content item with statistical data sets' do
+      it 'returns a sidebar hash containing statistical data sets' do
+        expect(sidebar_for(content_item_with_statistical_data_sets)).to eq(
+          items: [],
+          collections: [],
+          policies: [],
+          statistical_data_sets: [
+            { path: "/statistical-data-set-b", text: "Statistical data set B" },
+            { path: "/statistical-data-set-a", text: "Statistical data set A" },
+          ],
+          topical_events: [],
+          world_locations: [],
+        )
+      end
+    end
+
+    context 'given a content item with topical events' do
+      it 'returns a sidebar hash containing topical events' do
+        expect(sidebar_for(content_item_with_topical_events)).to eq(
+          items: [],
+          collections: [],
+          policies: [],
+          statistical_data_sets: [],
+          topical_events: [{ path: "/topical-event-b", text: "Topical event B" }],
+          world_locations: [],
+        )
+      end
+    end
+
+    context 'given a content item with world locations' do
+      it 'returns a sidebar hash containing world locations' do
+        expect(sidebar_for(content_item_with_world_locations)).to eq(
+          items: [],
+          collections: [],
+          policies: [],
+          statistical_data_sets: [],
+          topical_events: [],
+          world_locations: [{ path: "/world/world-location-b/news", text: "World location B" }],
+        )
+      end
+    end
+
     context 'when Rummager raises an exception' do
       before(:each) do
         stub_any_rummager_search
@@ -539,25 +640,93 @@ RSpec.describe GovukPublishingComponents::Presenters::TaxonomySidebar do
   end
 
   def content_item_with_document_collections
+    content_item_with(
+      "document_collections" => [
+        {
+          "title" => "Collection B",
+          "base_path" => "/collection-b",
+          "content_id" => "collection-b",
+          "document_type" => "document_collection",
+        },
+        {
+          "title" => "Collection A",
+          "base_path" => "/collection-a",
+          "content_id" => "collection-a",
+          "document_type" => "document_collection",
+        },
+      ]
+    )
+  end
+
+  def content_item_with_policies
+    content_item_with(
+      "related_policies" => [
+        {
+          "title" => "Policy B",
+          "base_path" => "/policy-b",
+          "content_id" => "policy-b",
+          "document_type" => "policy",
+        },
+        {
+          "title" => "Policy A",
+          "base_path" => "/policy-a",
+          "content_id" => "policy-a",
+          "document_type" => "policy",
+        },
+      ]
+    )
+  end
+
+  def content_item_with_statistical_data_sets
+    content_item_with(
+      "related_statistical_data_sets" => [
+        {
+          "title" => "Statistical data set B",
+          "base_path" => "/statistical-data-set-b",
+          "content_id" => "statistical-data-set-b",
+          "document_type" => "statistical_data_set",
+        },
+        {
+          "title" => "Statistical data set A",
+          "base_path" => "/statistical-data-set-a",
+          "content_id" => "statistical-data-set-a",
+          "document_type" => "statistical_data_set",
+        },
+      ]
+    )
+  end
+
+  def content_item_with_topical_events
+    content_item_with(
+      "topical_events" => [
+        {
+          "title" => "Topical event B",
+          "base_path" => "/topical-event-b",
+          "content_id" => "topical-event-b",
+          "document_type" => "topical_event",
+        },
+      ]
+    )
+  end
+
+  def content_item_with_world_locations
+    content_item_with(
+      "world_locations" => [
+        {
+          "title" => "World location B",
+          "base_path" => "/world-location-b",
+          "content_id" => "world-location-b",
+          "document_type" => "world_location",
+        },
+      ]
+    )
+  end
+
+  def content_item_with(links)
     {
       "title" => "A piece of content",
       "base_path" => "/a-piece-of-content",
-      "links" => {
-        "document_collections" => [
-          {
-            "title" => "Collection B",
-            "base_path" => "/collection-b",
-            "content_id" => "collection-b",
-            "document_type" => "document_collection",
-          },
-          {
-            "title" => "Collection A",
-            "base_path" => "/collection-a",
-            "content_id" => "collection-a",
-            "document_type" => "document_collection",
-          },
-        ],
-      },
+      "links" => links
     }
   end
 end
