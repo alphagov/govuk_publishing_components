@@ -1,0 +1,18 @@
+.gem-c-success-alert {
+  color: $gem-text-colour;
+  padding: $gem-spacing-scale-3;
+  border: $gem-border-width-mobile solid $gem-success-colour;
+
+  @include media(tablet) {
+    padding: $gem-spacing-scale-4;
+    border-width: $gem-border-width-tablet;
+  }
+}
+
+.gem-c-success-alert__message {
+  @include bold-19;
+}
+
+.gem-c-success-alert:focus {
+  outline: $gem-focus-width solid $gem-focus-colour;
+}
