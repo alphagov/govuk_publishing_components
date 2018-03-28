@@ -1,11 +1,21 @@
 name: "Taxonomy navigation"
 description: "Sidebar navigation for displaying on pages tagged to the GOV.UK taxonomy."
 body: |
+  This component should not be used directly, the contextual-sidebar component uses
+  this component for content which should present taxonomy navigation.
+
   Accepts an array of items. These items are typically the list of taxons the current
   content page is tagged to.
 
   Each item is a hash with a title, url, description, and list of related content
   associated with that item.
+
+  Sections of links appear below the main taxonomy-driven navigation items. These are
+  Collections, Policies, Statistical data sets, Topical events and World locations.
+
+  This implementation is very similar to the related-navigation component in that the
+  same sections are appended. The two components should ultimately be merged to form
+  a consolidated sidebar navigation.
 accessibility_criteria: |
   - Should have a role of 'complementary' as it complements the main page content
   - Should have a role of 'navigation' on any navigation elements inside the component
