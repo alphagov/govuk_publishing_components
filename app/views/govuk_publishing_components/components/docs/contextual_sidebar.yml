@@ -25,3 +25,7 @@ examples:
     data:
       content_item:
         title: "A content item"
+        links:
+          ordered_related_items:
+            - title: "Find an apprenticeship"
+              base_path: "/apply-apprenticeship"
