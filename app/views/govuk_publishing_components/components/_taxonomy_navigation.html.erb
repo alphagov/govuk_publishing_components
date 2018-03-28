@@ -1,5 +1,4 @@
 <% if local_assigns[:items] && !items.blank? %>
-
   <aside class='gem-c-taxonomy-navigation' data-module='track-click' role='complementary'>
     <h2 class='gem-c-taxonomy-navigation__heading'><%= t("components.taxonomy_navigation.related_content") %></h2>
     <% items.each_with_index do |item, item_index| %>
@@ -64,16 +63,48 @@
           <h3 class='gem-c-taxonomy-navigation__section-heading'>
             <%= t("components.taxonomy_navigation.#{section_name}") %>
           </h3>
-          <nav class='gem-c-taxonomy-navigation__navigation' role='navigation'>
+          <nav class='gem-c-taxonomy-navigation__navigation' data-module='toggle' role='navigation'>
             <ul class='gem-c-taxonomy-navigation__list'>
-              <% section.each do |item| %>
+              <% sidx = 0; hidden_links = [] %>
+              <% section.each_with_index do |item, idx| %>
                 <% if item[:text] && item[:path] %>
-                  <li>
-                    <%= link_to(item[:text],
-                                item[:path],
-                                class: "gem-c-taxonomy-navigation__section-link") %>
-                  </li>
+                  <% link_element = link_to(
+                      item[:text], item[:path],
+                      class: "gem-c-taxonomy-navigation__section-link",
+                      rel: item[:rel],
+                      data: {
+                        track_category: 'relatedLinkClicked',
+                        track_action: "#{sidx += 1}.#{idx + 1} #{t('components.taxonomy_navigation.related_content')}",
+                        track_label: item[:path],
+                        track_options: {
+                          dimension28: section.length.to_s,
+                          dimension29: item[:text]
+                        }
+                      }
+                    ) %>
+                  <% if idx < 5 %>
+                    <li><%= link_element %></li>
+                  <% else %>
+                    <% hidden_links << link_element %>
+                  <% end %>
                 <% end %>
+              <% end %>
+              <% if hidden_links.any? %>
+                <li class="gem-c-taxonomy-navigation__link toggle-wrap">
+                  <a href="#"
+                    data-controls="toggle_<%= section_name %>"
+                    data-expanded="false"
+                    data-toggled-text="<%= t("govuk_component.metadata.toggle_less", default: "Show fewer") %>">
+                    <%= t("govuk_component.metadata.toggle_more",
+                          number: hidden_links.size,
+                          default: "+ #{hidden_links.size} more") %>
+                  </a>
+                </li>
+                <li class="gem-c-taxonomy-navigation__link">
+                  <span id="toggle_<%= section_name %>" class="js-hidden">
+                    <%= hidden_links.to_sentence.html_safe %>
+                  </span>
+                </li>
               <% end %>
             </ul>
           </nav>

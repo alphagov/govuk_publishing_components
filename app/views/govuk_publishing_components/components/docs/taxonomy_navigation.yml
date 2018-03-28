@@ -81,8 +81,18 @@ examples:
         - text: "Teaching and school leadership"
           path: "/government/policies/teaching-and-school-leadership"
       world_locations:
-        - text: "Slovenia"
-          path: "/world/slovenia/news"
+        - text: "Afghanistan"
+          path: "/world/afghanistan/news"
+        - text: "Albania"
+          path: "/world/albania/news"
+        - text: "Algeria"
+          path: "/world/algeria/news"
+        - text: "Angola"
+          path: "/world/angola/news"
+        - text: "Anguilla"
+          path: "/world/anguilla/news"
+        - text: "Argentina"
+          path: "/world/argentina/news"
   no_children:
     description: |
       The child links are usually pulled from rummager. If rummager doesn’t respond we fallback to a sidebar with a taxon link but without any child content links.
