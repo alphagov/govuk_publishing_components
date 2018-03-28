@@ -2,9 +2,13 @@
   full_width ||= false
   header_class = full_width ? "gem-c-inverse-header--full-width" : ""
 %>
+<%
+  no_padding_top ||= false
+  padding_top_class = no_padding_top ? "gem-c-inverse-header--no-padding-top" : ""
+%>
 <% block = yield %>
 <% unless block.empty? %>
-  <header class="gem-c-inverse-header <%= header_class %>">
+  <header class="gem-c-inverse-header <%= header_class %> <%= padding_top_class %>">
     <%= block %>
   </header>
 <% end %>
