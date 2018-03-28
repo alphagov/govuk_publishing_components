@@ -8,7 +8,7 @@ require "govuk_publishing_components/presenters/page_with_step_by_step_navigatio
 require "govuk_publishing_components/presenters/content_breadcrumbs_based_on_parent"
 require "govuk_publishing_components/presenters/content_breadcrumbs_based_on_taxons"
 require "govuk_publishing_components/presenters/services"
-require "govuk_publishing_components/presenters/taxonomy_sidebar"
+require "govuk_publishing_components/presenters/taxonomy_navigation"
 require "govuk_publishing_components/presenters/rummager_taxonomy_sidebar_links"
 require "govuk_publishing_components/presenters/curated_taxonomy_sidebar_links"
 require "govuk_publishing_components/presenters/content_item"

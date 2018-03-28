@@ -11,7 +11,7 @@
 <% else %>
   <% if navigation.should_present_taxonomy_navigation? %>
     <!-- rendering taxonomy sidebar -->
-    <%= render partial: 'govuk_component/taxonomy_sidebar', locals: navigation.taxonomy_sidebar %>
+    <%= render 'govuk_publishing_components/components/taxonomy_navigation', navigation.taxonomy_sidebar %>
   <% else %>
     <!-- rendering related navigation sidebar -->
     <%= render 'govuk_publishing_components/components/related_navigation', content_item %>

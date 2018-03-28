@@ -142,18 +142,9 @@ describe "Contextual navigation" do
   end
 
   def then_i_see_the_taxonomy_sidebar_and_collection
-    # The taxonomy sidebar is currently render via a shared slimmer component.
-    # It should move into this gem so that we can test the actual HTML instead
-    # of just the JSON payload.
-
-    payload = within(shared_component_selector('taxonomy_sidebar')) do
-      JSON.parse(page.text)
-    end
-
-    expect(payload.dig("items", 0, "title")).to eql("A live taxon")
-    expect(payload.dig("items", 0, "related_content", 0, "title")).to eql("A similar item")
-
-    expect(payload.dig("collections", 0, "text")).to eql("A cool document collection")
+    expect(page).to have_css(".gem-c-taxonomy-navigation__link", text: "A live taxon")
+    expect(page).to have_css(".related-link.gem-c-taxonomy-navigation__link", text: "A similar item")
+    expect(page).to have_css(".gem-c-taxonomy-navigation__section-link", text: "A cool document collection")
   end
 
   def then_i_see_the_related_navigation_sidebar

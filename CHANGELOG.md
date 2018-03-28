@@ -1,3 +1,7 @@
+# Unreleased
+
+* Add taxonomy navigation component, this will eventually supersede the static component.
+
 # 6.0.0
 
 * Fix visited link colour on focus for white feedback links (PR #239)
