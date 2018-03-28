@@ -36,4 +36,10 @@ describe "Inverse header", type: :view do
 
     assert_select ".gem-c-inverse-header--full-width"
   end
+
+  it "renders correct css class when padding_top flag is set to false" do
+    render(component_path, padding_top: false) { block }
+
+    assert_select ".gem-c-inverse-header--padding-top", false
+  end
 end

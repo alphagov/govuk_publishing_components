@@ -3,7 +3,7 @@
   background-color: $govuk-blue;
   color: $white;
   margin-bottom: $gutter;
-  padding: $gutter-half $gutter $gutter;
+  padding: 0 $gutter $gutter;
   box-sizing: border-box;
 }
 
@@ -15,4 +15,8 @@
   padding-left: 0;
   padding-right: 0;
   padding-bottom: $gutter-half;
+}
+
+.gem-c-inverse-header--padding-top {
+  padding-top: $gutter-half;
 }

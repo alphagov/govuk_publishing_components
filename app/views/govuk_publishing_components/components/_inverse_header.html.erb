@@ -1,10 +1,11 @@
 <%
-  full_width ||= false
-  header_class = full_width ? "gem-c-inverse-header--full-width" : ""
+  css_classes = []
+  css_classes << " gem-c-inverse-header--full-width" if local_assigns[:full_width]
+  css_classes << " gem-c-inverse-header--padding-top" unless local_assigns[:padding_top].eql?(false)
 %>
 <% block = yield %>
 <% unless block.empty? %>
-  <header class="gem-c-inverse-header <%= header_class %>">
+  <header class="gem-c-inverse-header <%= css_classes.join(' ') %> ">
     <%= block %>
   </header>
 <% end %>
