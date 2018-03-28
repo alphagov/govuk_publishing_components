@@ -12,7 +12,7 @@ module GovukPublishingComponents
       end
 
       def taxonomy_sidebar
-        @taxonomy_sidebar ||= TaxonomySidebar.new(content_item).sidebar
+        @taxonomy_sidebar ||= TaxonomyNavigation.new(content_item).sidebar
       end
 
       def taxon_breadcrumbs
