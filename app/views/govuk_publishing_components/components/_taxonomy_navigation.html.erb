@@ -1,7 +1,7 @@
 <% if local_assigns[:items] && !items.blank? %>
 
   <aside class='gem-c-taxonomy-navigation' data-module='track-click' role='complementary'>
-    <h2 class='gem-c-taxonomy-navigation__heading'><%= t("govuk_component.taxonomy_sidebar.related_content") %></h2>
+    <h2 class='gem-c-taxonomy-navigation__heading'><%= t("components.taxonomy_navigation.related_content") %></h2>
     <% items.each_with_index do |item, item_index| %>
       <div data-track-count="sidebarTaxonSection">
         <h3 class='gem-c-taxonomy-navigation__heading'>
@@ -61,7 +61,9 @@
     <% local_assigns.except(:items).each do |section_name, section| %>
       <% if section && !section.blank? %>
         <div>
-          <h3 class='gem-c-taxonomy-navigation__section-heading'><%= section_name.to_s.humanize %></h3>
+          <h3 class='gem-c-taxonomy-navigation__section-heading'>
+            <%= t("components.taxonomy_navigation.#{section_name}") %>
+          </h3>
           <nav class='gem-c-taxonomy-navigation__navigation' role='navigation'>
             <ul class='gem-c-taxonomy-navigation__list'>
               <% section.each do |item| %>
