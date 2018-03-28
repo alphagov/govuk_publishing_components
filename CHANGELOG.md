@@ -1,6 +1,8 @@
-# Unreleased
+# 6.1.0
 
 * Add taxonomy navigation component, this will eventually supersede the static component.
+  It may well be possible to merge with parts of the related navigation component as some
+  of the functionality is shared between the two.
 
 # 6.0.0
 
