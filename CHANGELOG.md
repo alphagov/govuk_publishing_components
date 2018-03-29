@@ -1,6 +1,6 @@
-# Unreleased
+# 6.2.0
 
-* Add padding-top flag to inverse header
+* Add padding-top flag to inverse header (PR #260)
 
 # 6.1.0
 
