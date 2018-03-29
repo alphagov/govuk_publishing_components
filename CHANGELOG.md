@@ -1,3 +1,7 @@
+# Unreleased
+
+* Add padding-top flag to inverse header
+
 # 6.1.0
 
 * Add taxonomy navigation component, this will eventually supersede the static component.

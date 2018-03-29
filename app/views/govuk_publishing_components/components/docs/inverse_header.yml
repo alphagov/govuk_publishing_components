@@ -41,6 +41,7 @@ examples:
         <p class="publication-header__last-changed">Published 22 April 2016</p>
   with_breadcrumbs_and_paragraph:
     data:
+      padding_top: false
       block: |
         <div class="govuk-breadcrumbs " data-module="track-click">
           <ol>
