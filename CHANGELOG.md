@@ -1,11 +1,13 @@
 # Unreleased
 
+* Add link to step nav research (PR #261)
 * Add search component (PR #267)
 
 # 6.3.0
 
 * Remove bottom border for last item in document lists (PR #266)
 * Create success alert component (PR #254)
+* Add padding-top flag to inverse header
 
 # 6.2.0
 
