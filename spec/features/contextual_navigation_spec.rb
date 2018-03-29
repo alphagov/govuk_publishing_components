@@ -29,6 +29,13 @@ describe "Contextual navigation" do
     and_the_parent_based_breadcrumbs
   end
 
+  scenario "It's a travel advice page" do
+    given_there_is_a_travel_advice_page
+    and_i_visit_that_page
+    then_i_see_the_related_links_sidebar
+    and_the_parent_based_breadcrumbs
+  end
+
   scenario "There's a taxon tagged" do
     given_theres_a_guide_with_a_live_taxon_and_collection_tagged_to_it
     and_i_visit_that_page
@@ -66,6 +73,21 @@ describe "Contextual navigation" do
         "ordered_related_items" => [random_item("guide", "title" => "A related link curated in Publisher")]
       }
     )
+  end
+
+  def given_there_is_a_travel_advice_page
+    content_item = random_item(
+      "travel_advice",
+      "base_path" => "/page-with-contextual-navigation",
+      "document_type" => "travel_advice",
+      "links" => {
+        "parent" => [random_item("mainstream_browse_page", "title" => "A parent")],
+        "taxons" => [random_item("taxon", "phase" => "live")],
+        "ordered_related_items" => [random_item("guide", "title" => "A related link curated in Publisher")]
+      }
+    )
+
+    content_store_has_item(content_item["base_path"], content_item)
   end
 
   def given_theres_a_guide_with_a_live_taxon_and_collection_tagged_to_it
