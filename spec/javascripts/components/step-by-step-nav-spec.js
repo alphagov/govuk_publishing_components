@@ -4,7 +4,7 @@ describe('A stepnav module', function () {
   var $element;
   var stepnav;
   var html = '\
-    <div data-module="gemstepnav" class="gem-c-step-nav js-hidden" data-id="unique-id">\
+    <div data-module="gemstepnav" class="gem-c-step-nav js-hidden" data-id="unique-id" data-show-text="Show" data-hide-text="Hide" data-show-all-text="Show all" data-hide-all-text="Hide all">\
       <ol class="gem-c-step-nav__steps">\
         <li class="gem-c-step-nav__step js-step" id="topic-step-one" data-track-count="stepnavStep">\
           <div class="gem-c-step-nav__header js-toggle-panel" data-position="1">\
@@ -178,7 +178,7 @@ describe('A stepnav module', function () {
 
     it("triggers a google analytics custom event", function () {
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavAllShown', {
-        label: 'Show All: Small',
+        label: 'Show all: Small',
         dimension26: expectedstepnavStepCount.toString(),
         dimension27: expectedstepnavLinkCount.toString(),
         dimension96: "unique-id"
@@ -198,7 +198,7 @@ describe('A stepnav module', function () {
       clickShowHideAll();
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavAllHidden', {
-        label: 'Hide All: Small',
+        label: 'Hide all: Small',
         dimension26: expectedstepnavStepCount.toString(),
         dimension27: expectedstepnavLinkCount.toString(),
         dimension96: "unique-id"
@@ -523,7 +523,7 @@ describe('A stepnav module', function () {
       clickShowHideAll();
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavAllShown', {
-        label: 'Show All: Big',
+        label: 'Show all: Big',
         dimension26: expectedstepnavStepCount.toString(),
         dimension27: expectedstepnavLinkCount.toString(),
         dimension96: "unique-id"
@@ -540,7 +540,7 @@ describe('A stepnav module', function () {
       clickShowHideAll();
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavAllHidden', {
-        label: 'Hide All: Big',
+        label: 'Hide all: Big',
         dimension26: expectedstepnavStepCount.toString(),
         dimension27: expectedstepnavLinkCount.toString(),
         dimension96: "unique-id"
@@ -741,7 +741,7 @@ describe('A stepnav module', function () {
       clickShowHideAll();
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavAllShown', {
-        label: 'Show All: Small',
+        label: 'Show all: Small',
         dimension26: expectedstepnavStepCount.toString(),
         dimension27: expectedstepnavLinkCount.toString(),
         dimension96: false
@@ -759,7 +759,7 @@ describe('A stepnav module', function () {
       clickShowHideAll();
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavAllHidden', {
-        label: 'Hide All: Small',
+        label: 'Hide all: Small',
         dimension26: expectedstepnavStepCount.toString(),
         dimension27: expectedstepnavLinkCount.toString(),
         dimension96: false
