@@ -1,6 +1,6 @@
-# Unreleased
+# 6.2.0
 
-* Add padding-top flag to inverse header
+* Always use the related links sidebar for travel advice (PR #264)
 
 # 6.1.0
 
