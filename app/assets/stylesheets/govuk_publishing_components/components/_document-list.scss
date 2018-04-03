@@ -4,6 +4,10 @@
   padding-bottom: $gutter-one-third;
   border-bottom: 1px solid $border-colour;
   list-style: none;
+
+  &:last-child {
+    border-bottom: none;
+  }
 }
 
 .gem-c-document-list__item-title {
@@ -28,4 +32,3 @@
 .gem-c-document-list--top-margin {
   margin-top: $gutter-two-thirds;
 }
-
