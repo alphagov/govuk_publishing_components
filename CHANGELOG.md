@@ -1,3 +1,7 @@
+# Unreleased
+
+* Remove bottom border for last item in document lists 
+
 # 6.2.0
 
 * Always use the related links sidebar for travel advice (PR #264)
