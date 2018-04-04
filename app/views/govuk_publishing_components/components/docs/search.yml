@@ -1,0 +1,40 @@
+name: "Search"
+description: "Search box"
+body: |
+  A search box with label and attached submit button. The component must be used within an HTML form.
+  The search input has a name="q" attribute and a customisable ID.
+
+  It can be used on white or on govuk-blue using the on_govuk_blue option.
+
+  Markup such as heading tags can be included in the label using the label_text option. Styling is not included in the component for heading tags in labels, however this is what the search results page does.
+accessibility_criteria: |
+  The search box should:
+
+  - be used inside a form with the role of 'search', to indicate it as a [search landmark](https://www.w3.org/TR/wai-aria-practices-1.1/#aria_lh_search)
+  - have a clear label to identify the search functionality, which is visible to all users
+
+examples:
+  default:
+    data: {}
+  apply_custom_styling_to_the_label_and_set_search_value:
+    data:
+      inline_label: false
+      label_text: "<h1>Search GOV.UK</h1>"
+      value: "driving licence"
+  stop_the_label_appearing_inline:
+    data:
+      inline_label: false
+  for_use_on_govuk_blue_background:
+    data:
+      on_govuk_blue: true
+    context:
+      dark_background: true
+  change_label_text:
+    data:
+      label_text: "Search"
+  set_id_for_search_input:
+    data:
+      id: "my_unique_id"
+  large_version:
+    data:
+      size: "large"
