@@ -1,7 +1,7 @@
-# Unreleased
+# 6.3.0
 
-* Remove bottom border for last item in document lists
-* Create success alert component
+* Remove bottom border for last item in document lists (PR #266)
+* Create success alert component (PR #254)
 
 # 6.2.0
 
