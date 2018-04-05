@@ -1,10 +1,12 @@
 # Unreleased
 
-* Remove bottom border for last item in document lists 
+* Remove bottom border for last item in document lists
+* Create success alert component
 
 # 6.2.0
 
 * Always use the related links sidebar for travel advice (PR #264)
+* Add padding-top flag to inverse header
 
 # 6.1.0
 
