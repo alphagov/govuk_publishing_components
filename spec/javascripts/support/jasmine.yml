@@ -15,7 +15,14 @@ src_files:
   - spec/javascripts/helpers/jasmine-jquery-2.0.5.js
   - spec/javascripts/helpers/SpecHelper.js
   - spec/javascripts/vendor/mock-ajax.js
-  - assets/govuk_publishing_components/application.js
+
+  # Include the components that we want to test (this is what apps do)
+  - assets/govuk_publishing_components/all_components.js
+
+  # Use some of the assets from the component guide for testing
+  - assets/component_guide/vendor/axe.min.js
+  - assets/component_guide/visual-regression.js
+  - assets/component_guide/accessibility-test.js
 
 # stylesheets
 #
@@ -29,7 +36,7 @@ src_files:
 #   - stylesheets/*.css
 #
 stylesheets:
-  - app/assets/stylesheets/govuk_publishing_components/application.css
+  - assets/component_guide/application.css
 
 # helpers
 #
