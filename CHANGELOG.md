@@ -1,3 +1,7 @@
+# Unreleased
+
+* Add search component (PR #267)
+
 # 6.3.0
 
 * Remove bottom border for last item in document lists (PR #266)
