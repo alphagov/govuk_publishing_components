@@ -1,4 +1,4 @@
-# Unreleased
+# 6.4.0
 
 * Add link to step nav research (PR #261)
 * Add search component (PR #267)
