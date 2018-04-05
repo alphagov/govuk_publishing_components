@@ -9,6 +9,8 @@ body: |
 
   - step by step navigations are needed throughout GOV.UK and extending the accordion to be this component would require it to be moved out of that application, which would break integration testing
   - creating a new component allows further iteration without impacting the accordion
+
+  Background information relating to the testing and research behind this component can be found on the [Modelling Services wiki](https://gov-uk.atlassian.net/wiki/spaces/MS/pages) in Q2 to Q4, 2017/18.
 accessibility_criteria: |
   The step by step navigation must:
 
