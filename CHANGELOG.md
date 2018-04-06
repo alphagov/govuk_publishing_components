@@ -1,5 +1,6 @@
 # 6.4.0
 
+* Move text for JS appended elements into step nav template (PR #263)
 * Add link to step nav research (PR #261)
 * Add search component (PR #267)
 

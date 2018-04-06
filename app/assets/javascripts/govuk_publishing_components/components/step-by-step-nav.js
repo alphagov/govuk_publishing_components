@@ -1,29 +1,10 @@
-// Most of this is originally from the service manual but has changed considerably since then
-
 (function (Modules) {
   "use strict";
   window.GOVUK = window.GOVUK || {};
 
   Modules.Gemstepnav = function () {
 
-    var actions = {
-      showLinkText: "Show",
-      hideLinkText: "Hide"
-    };
-
-    var bulkActions = {
-      showAll: {
-        buttonText: "Show all",
-        eventLabel: "Show All",
-        linkText: "Show"
-      },
-      hideAll: {
-        buttonText: "Hide all",
-        eventLabel: "Hide All",
-        linkText: "Hide"
-      }
-    };
-
+    var actions = {}; // stores text for JS appended elements 'show' and 'hide' on steps, and 'show/hide all' button
     var rememberShownStep = false;
     var stepNavSize;
     var sessionStoreLink = 'govuk-step-nav-active-link';
@@ -52,6 +33,7 @@
       var uniqueId = $element.data('id') || false;
       var stepNavTracker = new StepNavTracker(totalSteps, totalLinks, uniqueId);
 
+      getTextForInsertedElements();
       addButtonstoSteps();
       addShowHideAllButton();
       addShowHideToggle();
@@ -64,6 +46,13 @@
       bindToggleForSteps(stepNavTracker);
       bindToggleShowHideAllButton(stepNavTracker);
       bindComponentLinkClicks(stepNavTracker);
+
+      function getTextForInsertedElements() {
+        actions.showText = $element.attr('data-show-text');
+        actions.hideText = $element.attr('data-hide-text');
+        actions.showAllText = $element.attr('data-show-all-text');
+        actions.hideAllText = $element.attr('data-hide-all-text');
+      }
 
       // When navigating back in browser history to the step nav, the browser will try to be "clever" and return
       // the user to their previous scroll position. However, since we collapse all but the currently-anchored
@@ -84,15 +73,15 @@
       }
 
       function addShowHideAllButton() {
-        $element.prepend('<div class="gem-c-step-nav__controls"><button aria-expanded="false" class="gem-c-step-nav__button gem-c-step-nav__button--controls js-step-controls-button">' + bulkActions.showAll.buttonText + '</button></div>');
+        $element.prepend('<div class="gem-c-step-nav__controls"><button aria-expanded="false" class="gem-c-step-nav__button gem-c-step-nav__button--controls js-step-controls-button">' + actions.showAllText + '</button></div>');
       }
 
       function addShowHideToggle() {
         $stepHeaders.each(function() {
-          var linkText = actions.showLinkText;
+          var linkText = actions.showText;
 
           if (headerIsOpen($(this))) {
-            linkText = actions.hideLinkText;
+            linkText = actions.hideText;
           }
           if (!$(this).find('.js-toggle-link').length) {
             $(this).find('.js-step-title-button').append('<span class="gem-c-step-nav__toggle-link js-toggle-link" aria-hidden="true">' + linkText + '</span>');
@@ -254,21 +243,21 @@
         $showOrHideAllButton.on('click', function () {
           var shouldshowAll;
 
-          if ($showOrHideAllButton.text() == bulkActions.showAll.buttonText) {
-            $showOrHideAllButton.text(bulkActions.hideAll.buttonText);
-            $element.find('.js-toggle-link').text(actions.hideLinkText)
+          if ($showOrHideAllButton.text() == actions.showAllText) {
+            $showOrHideAllButton.text(actions.hideAllText);
+            $element.find('.js-toggle-link').text(actions.hideText)
             shouldshowAll = true;
 
             stepNavTracker.track('pageElementInteraction', 'stepNavAllShown', {
-              label: bulkActions.showAll.eventLabel + ": " + stepNavSize
+              label: actions.showAllText + ": " + stepNavSize
             });
           } else {
-            $showOrHideAllButton.text(bulkActions.showAll.buttonText);
-            $element.find('.js-toggle-link').text(actions.showLinkText);
+            $showOrHideAllButton.text(actions.showAllText);
+            $element.find('.js-toggle-link').text(actions.showText);
             shouldshowAll = false;
 
             stepNavTracker.track('pageElementInteraction', 'stepNavAllHidden', {
-              label: bulkActions.hideAll.eventLabel + ": " + stepNavSize
+              label: actions.hideAllText + ": " + stepNavSize
             });
           }
 
@@ -285,9 +274,9 @@
         var shownSteps = $element.find('.step-is-shown').length;
         // Find out if the number of is-opens == total number of steps
         if (shownSteps === totalSteps) {
-          $showOrHideAllButton.text(bulkActions.hideAll.buttonText);
+          $showOrHideAllButton.text(actions.hideAllText);
         } else {
-          $showOrHideAllButton.text(bulkActions.showAll.buttonText);
+          $showOrHideAllButton.text(actions.showAllText);
         }
       }
 
@@ -332,7 +321,7 @@
         $stepElement.toggleClass('step-is-shown', isShown);
         $stepContent.toggleClass('js-hidden', !isShown);
         $titleLink.attr("aria-expanded", isShown);
-        $stepElement.find('.js-toggle-link').text(isShown ? actions.hideLinkText : actions.showLinkText);
+        $stepElement.find('.js-toggle-link').text(isShown ? actions.hideText : actions.showText);
 
         if (shouldUpdateHash) {
           updateHash($stepElement);
