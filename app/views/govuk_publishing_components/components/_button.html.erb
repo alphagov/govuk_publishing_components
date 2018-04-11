@@ -1,0 +1,29 @@
+<%
+  start ||= false
+  href ||= false
+  info_text ||= false
+  rel ||= false
+  text ||= ""
+  margin_bottom ||= false
+  data_attributes ||= false
+  title ||= false
+  css_classes = %w(gem-c-button)
+  css_classes << "gem-c-button--start" if start
+  css_classes << "gem-c-button--bottom-margin" if margin_bottom
+  css_classes = css_classes.join(" ")
+  html_options = { class: css_classes }
+  html_options[:role] = "button" if href
+  html_options[:rel] = rel if rel
+  html_options[:data] = data_attributes if data_attributes
+  html_options[:title] = title if title
+%>
+<% if href %>
+  <%= link_to(text, href.try(:html_safe), html_options) %>
+<% else %>
+  <%= button_tag(text, html_options) %>
+<% end %>
+<% if info_text %>
+  <span class="gem-c-button__info-text">
+    <%= info_text.try(:html_safe) %>
+  </span>
+<% end %>
