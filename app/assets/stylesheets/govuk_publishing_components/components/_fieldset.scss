@@ -1,5 +1,5 @@
 @import "helpers/variables";
-@import "helpers/clearfix";
+@import "mixins/clearfix";
 
 .gem-c-fieldset {
   margin: 0 0 $gem-spacing-scale-4;

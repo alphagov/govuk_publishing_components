@@ -1,3 +1,7 @@
+# Unreleased
+
+* Add button component (PR #271)
+
 # 6.4.0
 
 * Move text for JS appended elements into step nav template (PR #263)

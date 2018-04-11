@@ -1,0 +1,73 @@
+name: Button
+description: Use buttons to move though a transaction, aim to use only one button per page.
+body: |
+  Button text should be short and describe the action the button performs.
+
+  [GOV.UK Elements has more information](https://govuk-elements.herokuapp.com/buttons/) on how buttons should be used.
+
+  Note: We do not consume GOV.UK Elements directly due to the naming conventions being leaky,
+  in time this component will be a wrapper for the [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend) project's button component.
+
+  This component is also [extended for use in govspeak](https://govuk-static.herokuapp.com/component-guide/govspeak/button).
+
+  These instances of buttons are added by Content Designers, ideally this duplication would not exist but we currently don't have shared markup
+  via our components within the generated [govspeak](https://github.com/alphagov/govspeak).
+  (This is a challenge to the reader)
+accessibility_criteria: |
+  The button must:
+
+  - accept focus
+  - be focusable with a keyboard
+  - indicate when it has focus
+  - activate when focused and space is pressed
+  - activate when focused and enter is pressed
+  - have a role of button
+  - have an accessible label
+examples:
+  default:
+    data:
+      text: "Submit"
+  link_button:
+    data:
+      text: "I'm really a link sssh"
+      href: "#"
+  start_now_button:
+    data:
+      text: "Start now"
+      href: "#"
+      start: true
+      rel: "external"
+  start_now_button_with_info_text:
+    data:
+      text: "Start now"
+      href: "#"
+      start: true
+      info_text: "Sometimes you want to explain where a user is going to."
+  with_margin_bottom:
+    description: "Sometimes it's useful to break up a page, for example if a button is at the bottom of a page."
+    data:
+      text: "Submit"
+      margin_bottom: true
+  extreme_text:
+    data:
+      text: "I'm a button with lots of text to test how the component scales at extremes."
+      href: "#"
+  extreme_text_start_now_button:
+    data:
+      text: "I'm a start now button with lots of text to test how the component scales at extremes."
+      start: true
+      href: "#"
+  with_data_attributes:
+    data:
+      text: "Track this!"
+      margin_bottom: true
+      data_attributes: {
+        "module": "cross-domain-tracking",
+        "tracking-code": "GA-123ABC",
+        "tracking-name": "transactionTracker"
+      }
+  with_title_attribute:
+    data:
+      text: "Click me"
+      margin_bottom: true
+      title: "A button to click"
