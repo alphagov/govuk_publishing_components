@@ -29,3 +29,16 @@ examples:
           ordered_related_items:
             - title: "Find an apprenticeship"
               base_path: "/apply-apprenticeship"
+  with_step_by_step:
+    data:
+      content_item:
+        title: "A content item"
+        links:
+          part_of_step_navs:
+            - title: "Choosing a micropig or micropug: step by step"
+              base_path: "/micropigs-vs-micropugs"
+            - title: "Walk your micropig: step by step"
+              base_path: "/porgs-step-by-step"
+          ordered_related_items:
+            - title: "Find an apprenticeship"
+              base_path: "/apply-apprenticeship"

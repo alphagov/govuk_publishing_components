@@ -1,8 +1,8 @@
 <%
-  links ||= false
+  links ||= []
   pretitle ||= t("govuk_component.step_by_step_nav_related.part_of", default: "Part of")
 %>
-<% if links %>
+<% if links.any? %>
   <div class="gem-c-step-nav-related" data-module="track-click">
     <h2 class="gem-c-step-nav-related__heading">
       <span class="gem-c-step-nav-related__pretitle"><%= pretitle %></span>
