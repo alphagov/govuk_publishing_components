@@ -117,10 +117,14 @@ module GovukPublishingComponents
       end
 
       def related_topics
-        topics = filter_link_type("topics", "topic")
-        links = build_links_for_sidebar(topics)
-        links << related_mainstream_topic << related_mainstream_parent_topic
-        deduplicate_topics_by_title(links.compact)
+        mainstream_browse_pages = filter_link_type("mainstream_browse_pages", "mainstream_browse_page")
+
+        topics_that_dont_duplicate_browse = filter_link_type("topics", "topic").select do |topic|
+          mainstream_browse_pages.none? { |browse_page| browse_page["title"] == topic["title"] }
+        end
+
+        links = build_links_for_sidebar(mainstream_browse_pages + topics_that_dont_duplicate_browse)
+        links.compact
       end
 
       def related_topical_events
@@ -138,40 +142,6 @@ module GovukPublishingComponents
         build_links_for_sidebar(external_links, "url", rel: "external")
       end
 
-      def related_mainstream_topic
-        return unless tagged_to_same_mainstream_browse_page.any?
-        { text: parent["title"], path: parent["base_path"] }
-      end
-
-      def related_mainstream_parent_topic
-        return unless parents_tagged_to_same_mainstream_browse_page.any?
-        { text: grandparent["title"], path: grandparent["base_path"] }
-      end
-
-      def parent
-        link_group("parent").first
-      end
-
-      def grandparent
-        parent.dig("links", "parent", 0)
-      end
-
-      # This method post-processes the topics collated by the helper.
-      # We add mainstream browse page links if they are present, however
-      # if these have the same title as an existing topic we should prefer
-      # the mainstream version and remove the existing topic.
-      # @see spec/related_navigation_helper_spec.rb for test coverage.
-      def deduplicate_topics_by_title(topics)
-        is_dupe = lambda { |a, b| a && a != b && a[:text] == b[:text] }
-
-        topics.delete_if do |t|
-          is_dupe.call(related_mainstream_topic, t) ||
-            is_dupe.call(related_mainstream_parent_topic, t)
-        end
-
-        topics
-      end
-
       def parameterise(str, sep = "-")
         parameterised_str = str.gsub(/[^\w\-]+/, sep)
         unless sep.nil? || sep.empty?
@@ -182,28 +152,6 @@ module GovukPublishingComponents
           parameterised_str.gsub!(/^#{re_sep}|#{re_sep}$/, '')
         end
         parameterised_str.downcase
-      end
-
-      def tagged_to_same_mainstream_browse_page
-        return [] unless parent
-        @tagged_to_same_mainstream_browse_page ||= related_links.select do |related_item|
-          links = related_item.dig("links", "mainstream_browse_pages") || []
-          content_ids = links.any? ? links.map { |page| page["content_id"] } : []
-          content_ids.include?(parent["content_id"])
-        end
-      end
-
-      def parents_tagged_to_same_mainstream_browse_page
-        return [] unless parent && grandparent
-        common_parent_content_ids = tagged_to_same_mainstream_browse_page.map { |item| item["content_id"] }
-
-        @parents_tagged_to_same_mainstream_browse_page ||= related_links.select do |related_item|
-          next if common_parent_content_ids.include?(related_item["content_id"])
-          mainstream_browse_pages = related_item.dig("links", "mainstream_browse_pages") || []
-          parents = mainstream_browse_pages.map { |page| page["links"]["parent"][0] }
-          content_ids = parents.map { |parent| parent["content_id"] }
-          content_ids.include?(grandparent["content_id"])
-        end
       end
 
       def related_links
