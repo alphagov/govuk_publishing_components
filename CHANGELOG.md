@@ -1,4 +1,4 @@
-# Unreleased
+# 6.5.0
 
 * Add button component (PR #271)
 
