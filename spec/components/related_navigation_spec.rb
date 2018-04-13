@@ -135,6 +135,20 @@ describe "Related navigation", type: :view do
     assert_select ".gem-c-related-navigation__section-link--other[href=\"https://www.thestudentroom.co.uk/content.php?r=5967-Repaying-your-student-loan\"][rel=\"external\"]", text: 'The Student Room repaying your student loan'
   end
 
+  it "renders 'Other contacts' section when passed contacts" do
+    content_item = {}
+    content_item["links"] = construct_links(
+      "related",
+      "/ye-olde-contact",
+      "A related contact",
+      "contact"
+    )
+    render_component(content_item)
+
+    assert_select ".gem-c-related-navigation__sub-heading--other", text: 'Other contacts'
+    assert_select ".gem-c-related-navigation__section-link--other[href=\"/ye-olde-contact\"]", text: 'A related contact'
+  end
+
   it "adds aria labelledby to navigation sections" do
     content_item = {}
     content_item["links"] = construct_links(

@@ -11,19 +11,17 @@
 
     <% section_index = 0 %>
 
-    <% related_nav_helper.related_navigation.each do |section| %>
-      <% section.each do |section_title, links| %>
-        <% next unless links.any? %>
+    <% related_nav_helper.related_navigation.each do |section_title, links| %>
+      <% next unless links.any? %>
 
-        <% section_index += 1 %>
+      <% section_index += 1 %>
 
-        <%= render 'govuk_publishing_components/components/related_navigation/section',
-          related_nav_helper: related_nav_helper,
-          section_title: section_title,
-          links: links,
-          section_index: section_index,
-          random: random %>
-      <% end %>
+      <%= render 'govuk_publishing_components/components/related_navigation/section',
+        related_nav_helper: related_nav_helper,
+        section_title: section_title,
+        links: links,
+        section_index: section_index,
+        random: random %>
     <% end %>
   </div>
 <% end %>

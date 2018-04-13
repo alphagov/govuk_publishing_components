@@ -24,9 +24,8 @@ module GovukPublishingComponents
 
       def related_navigation_links
         {}.tap do |hash|
-          @related_navigation.related_navigation.each do |section|
-            key = section.keys.first
-            hash[key.to_sym] = section[key] if RELATED_SECTIONS.include?(key)
+          @related_navigation.related_navigation.each do |key, items|
+            hash[key.to_sym] = items if RELATED_SECTIONS.include?(key)
           end
         end
       end

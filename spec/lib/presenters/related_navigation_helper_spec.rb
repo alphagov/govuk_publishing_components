@@ -22,16 +22,18 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
         "links" => {
         })
 
-      expected = [
-        { "related_items" => [] },
-        { "related_guides" => [] },
-        { "collections" => [] },
-        { "topics" => [] },
-        { "policies" => [] },
-        { "topical_events" => [] },
-        { "world_locations" => [] },
-        { "statistical_data_sets" => [] },
-      ]
+      expected = {
+        "related_items" => [],
+        "related_guides" => [],
+        "collections" => [],
+        "topics" => [],
+        "policies" => [],
+        "topical_events" => [],
+        "world_locations" => [],
+        "statistical_data_sets" => [],
+        "related_contacts" => [],
+        "related_external_links" => [],
+      }
 
       expect(nothing).to eq(expected)
     end
@@ -129,16 +131,18 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
           ],
         })
 
-      expected = [
-        { "related_items" => [{ path: "/related-item", text: "related item" }] },
-        { "related_guides" => [] },
-        { "collections" => [{ path: "/related-collection", text: "related collection" }] },
-        { "topics" => [{ path: "/related-topic", text: "related topic" }, { path: "/mainstream-topic", text: "mainstream topic" }] },
-        { "policies" => [{ path: "/related-policy", text: "related policy" }] },
-        { "topical_events" => [{ path: "/related-topical-event", text: "related topical event" }] },
-        { "world_locations" => [{ path: "/world/world-location/news", text: "World, ~ (@Location)" }] },
-        { "statistical_data_sets" => [] },
-      ]
+      expected = {
+        "related_items" => [{ path: "/related-item", text: "related item" }],
+        "related_guides" => [],
+        "collections" => [{ path: "/related-collection", text: "related collection" }],
+        "topics" => [{ path: "/related-topic", text: "related topic" }, { path: "/mainstream-topic", text: "mainstream topic" }],
+        "policies" => [{ path: "/related-policy", text: "related policy" }],
+        "related_contacts" => [],
+        "related_external_links" => [],
+        "topical_events" => [{ path: "/related-topical-event", text: "related topical event" }],
+        "world_locations" => [{ path: "/world/world-location/news", text: "World, ~ (@Location)" }],
+        "statistical_data_sets" => [],
+      }
 
       expect(payload).to eql(expected)
     end
@@ -167,17 +171,10 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
             }
           ],
         })
-      expected = [
-        { "related_items" => [] },
-        { "related_guides" => [] },
-        { "collections" => [] },
-        { "topics" => [] },
-        { "policies" => [] },
-        { "topical_events" => [] },
-        { "world_locations" => [] },
-        { "statistical_data_sets" => [{ path: "/related-statistical-data-set", text: "related statistical data set" }] },
-      ]
-      expect(payload).to eql(expected)
+
+      expect(payload["statistical_data_sets"]).to eql(
+        [{ path: "/related-statistical-data-set", text: "related statistical data set" }]
+      )
     end
 
     it "deduplicates topics for mainstream content" do
@@ -215,18 +212,10 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
             }
           ],
         })
-      expected = [
-        { "related_items" => [{ path: "/self-assessment-tax-returns", text: "Self Assessment tax returns" }] },
-        { "related_guides" => [] },
-        { "collections" => [] },
-        { "topics" => [{ text: "Self Assessment", path: "/browse/tax/self-assessment" }] },
-        { "policies" => [] },
-        { "topical_events" => [] },
-        { "world_locations" => [] },
-        { "statistical_data_sets" => [] },
-      ]
 
-      expect(payload).to eql(expected)
+      expect(payload["topics"]).to eql(
+        [{ text: "Self Assessment", path: "/browse/tax/self-assessment" }]
+      )
     end
 
     it "returns parent and grandparent topics" do
@@ -318,14 +307,13 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
     it "handles ordered related items that aren't tagged to a mainstream browse page" do
       example = GovukSchemas::Example.find("guide", example_name: "single-page-guide")
       payload = described_class.new(example).related_navigation
-      expected = {
-        "topics" => [
-          { text: "Pets", path: "/topic/animal-welfare/pets" },
-          { text: "Arriving in the UK", path: "/browse/visas-immigration/arriving-in-the-uk" },
-        ]
-      }
-      expect(payload).to include(expected)
+      expected = [
+        { text: "Pets", path: "/topic/animal-welfare/pets" },
+        { text: "Arriving in the UK", path: "/browse/visas-immigration/arriving-in-the-uk" },
+      ]
+      expect(payload["topics"]).to eql(expected)
     end
+
     it "returns an Elsewhere on the web section for external related links" do
       payload = payload_for("placeholder",
         "details" => {
@@ -337,17 +325,13 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
           ]
         },)
 
-      expected = {
-        "Elsewhere_on_the_web" => [
-          {
-            path: "https://external",
-            text: "external-link",
-            rel: "external",
-          }
-        ]
-      }
-
-      expect(payload).to include(expected)
+      expect(payload["related_external_links"]).to eql([
+        {
+          path: "https://external",
+          text: "external-link",
+          rel: "external",
+        }
+      ])
     end
 
     it "returns an 'Other contacts' section" do
@@ -364,25 +348,9 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
           ]
         },)
 
-      expected = {
-        "Other_contacts" => [
-          {
-            path: "/foo",
-            text: "Foo",
-          }
-        ]
-      }
-
-      expect(payload).to include(expected)
-    end
-  end
-
-  describe "#other" do
-    it "returns an empty array when there are no external_related_links" do
-      content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "placeholder")
-      nav_helper = described_class.new(content_item)
-
-      expect(nav_helper.other).to be_empty
+      expect(payload["related_contacts"]).to eql(
+        [{:path => "/foo", :text => "Foo"}]
+      )
     end
   end
 end
