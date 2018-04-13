@@ -6,3 +6,5 @@ spec/dummy/tmp/
 spec/dummy/public/assets/
 doc
 .yardoc
+
+tmp/failures.txt
