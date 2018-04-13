@@ -19,31 +19,18 @@ module GovukPublishingComponents
       end
 
       def related_navigation
-        @related_content ||= [
-          { "related_items" => related_items },
-          { "related_guides" => related_guides },
-          { "collections" => related_collections },
-          { "topics" => related_topics },
-          { "policies" => related_policies },
-          { "topical_events" => related_topical_events },
-          { "world_locations" => related_world_locations },
-          { "statistical_data_sets" => related_statistical_data_sets },
-        ]
-
-        other = [related_external_links, related_contacts] || []
-        other.each do |sections|
-          sections.each do |section|
-            @related_content.push(
-              section["title"].tr(' ', '_') => section["links"]
-            )
-          end
-        end
-
-        @related_content
-      end
-
-      def other
-        @other ||= []
+        {
+          "related_items" => related_items,
+          "related_guides" => related_guides,
+          "collections" => related_collections,
+          "topics" => related_topics,
+          "policies" => related_policies,
+          "topical_events" => related_topical_events,
+          "world_locations" => related_world_locations,
+          "statistical_data_sets" => related_statistical_data_sets,
+          "related_external_links" => related_external_links,
+          "related_contacts" => related_contacts,
+        }
       end
 
       def construct_section_heading(section_title)
@@ -65,6 +52,10 @@ module GovukPublishingComponents
 
       def remaining_link_count(links)
         links.length - MAX_SECTION_LENGTH
+      end
+
+      def anything_to_show?
+        related_navigation.flat_map(&:last).any?
       end
 
     private
@@ -139,20 +130,12 @@ module GovukPublishingComponents
 
       def related_contacts
         contacts = filter_link_type("related", "contact")
-        return [] unless contacts.any?
-        [
-          "title" => "Other contacts",
-          "links" => build_links_for_sidebar(contacts)
-        ]
+        build_links_for_sidebar(contacts)
       end
 
       def related_external_links
         external_links = @content_item.dig("details", "external_related_links").to_a
-        return [] unless external_links.any?
-        [
-          "title" => "Elsewhere on the web",
-          "links" => build_links_for_sidebar(external_links, "url", rel: 'external')
-        ]
+        build_links_for_sidebar(external_links, "url", rel: "external")
       end
 
       def related_mainstream_topic

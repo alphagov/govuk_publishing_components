@@ -1,77 +1,27 @@
 <% related_nav_helper = GovukPublishingComponents::Presenters::RelatedNavigationHelper.new(local_assigns) %>
-<% related_content = related_nav_helper.related_navigation %>
-<% if related_content.map(&:values).flatten.any? || related_nav_helper.other.flatten.any? %>
-<% random = SecureRandom.hex(4) %>
+
+<% if related_nav_helper.anything_to_show? %>
+  <% random = SecureRandom.hex(4) %>
   <div class="gem-c-related-navigation">
     <h2 id="related-nav-related_items-<%= random %>"
         class="gem-c-related-navigation__main-heading"
         data-track-count="sidebarRelatedItemSection" >
       <%= t('components.related_navigation.related_content') %>
     </h2>
+
     <% section_index = 0 %>
-    <% related_content.each do |section| %>
-      <% section.each do |section_title, links| %>
-        <% if links.any? %>
-          <% section_index += 1 %>
-          <nav role="navigation"
-               class="gem-c-related-navigation__nav-section"
-               aria-labelledby="related-nav-<%= section_title %>-<%= random %>"
-               data-module="toggle">
-            <% unless section_title === "related_items" %>
-              <h3 id="related-nav-<%= section_title %>-<%= random %>"
-                data-track-count="sidebarRelatedItemSection"
-                class="<%= related_nav_helper.section_css_class("gem-c-related-navigation__sub-heading", section_title) %>">
-                <%= related_nav_helper.construct_section_heading(section_title) %>
-              </h3>
-            <% end %>
-            <ul class="gem-c-related-navigation_link-list" data-module="track-click">
-              <% constructed_link_array = [] %>
-              <% section_link_limit = related_nav_helper.calculate_section_link_limit(links) %>
-              <% links.each.with_index(1) do |link, index| %>
-                <%
-                  link_element = link_to(
-                    link[:text],
-                    link[:path],
-                    class: related_nav_helper.section_css_class("gem-c-related-navigation__section-link", section_title, link),
-                    rel: link[:rel],
-                    data: {
-                      track_category: 'relatedLinkClicked',
-                      track_action: "#{section_index}.#{index} #{related_nav_helper.construct_section_heading(section_title) || t('components.related_navigation.related_content')}",
-                      track_label: link[:path],
-                      track_options: {
-                        dimension28: links.length.to_s,
-                        dimension29: link[:text]
-                      }
-                    }
-                  )
-                %>
-                <% if index <= section_link_limit %>
-                  <li class="gem-c-related-navigation__link"><%= link_element %></li>
-                <% else %>
-                  <% constructed_link_array.push(link_element) %>
-                <% end %>
-              <% end %>
-              <% if links.length > section_link_limit %>
-                <li class="gem-c-related-navigation__link toggle-wrap">
-                  <a href="#"
-                    data-controls="toggle_<%= section_title %>"
-                    data-expanded="false"
-                    data-toggled-text="<%= t("govuk_component.metadata.toggle_less", default: "Show fewer") %>">
-                    <%= t("govuk_component.metadata.toggle_more",
-                          number: related_nav_helper.remaining_link_count(links),
-                          default: "+ #{related_nav_helper.remaining_link_count(links)} more") %>
-                  </a>
-                </li>
-                <li class="gem-c-related-navigation__link">
-                  <span id="toggle_<%= section_title %>" class="js-hidden">
-                    <%= constructed_link_array.to_sentence.html_safe %>
-                  </span>
-                </li>
-              <% end %>
-            </ul>
-          </nav>
-        <% end %>
-      <% end %>
+
+    <% related_nav_helper.related_navigation.each do |section_title, links| %>
+      <% next unless links.any? %>
+
+      <% section_index += 1 %>
+
+      <%= render 'govuk_publishing_components/components/related_navigation/section',
+        related_nav_helper: related_nav_helper,
+        section_title: section_title,
+        links: links,
+        section_index: section_index,
+        random: random %>
     <% end %>
   </div>
 <% end %>
