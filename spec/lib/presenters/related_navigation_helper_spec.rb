@@ -349,7 +349,7 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
         },)
 
       expect(payload["related_contacts"]).to eql(
-        [{:path => "/foo", :text => "Foo"}]
+        [{ path: "/foo", text: "Foo" }]
       )
     end
   end
