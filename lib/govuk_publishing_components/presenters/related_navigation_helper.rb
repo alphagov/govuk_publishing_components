@@ -67,6 +67,10 @@ module GovukPublishingComponents
         links.length - MAX_SECTION_LENGTH
       end
 
+      def anything_to_show?
+        related_navigation.map(&:values).flatten.any? || other.flatten.any?
+      end
+
     private
 
       def build_links_for_sidebar(collection, path_key = "base_path", additional_attr = {})

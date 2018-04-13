@@ -1,6 +1,6 @@
 <% related_nav_helper = GovukPublishingComponents::Presenters::RelatedNavigationHelper.new(local_assigns) %>
-<% related_content = related_nav_helper.related_navigation %>
-<% if related_content.map(&:values).flatten.any? || related_nav_helper.other.flatten.any? %>
+
+<% if related_nav_helper.anything_to_show? %>
   <% random = SecureRandom.hex(4) %>
   <div class="gem-c-related-navigation">
     <h2 id="related-nav-related_items-<%= random %>"
@@ -11,7 +11,7 @@
 
     <% section_index = 0 %>
 
-    <% related_content.each do |section| %>
+    <% related_nav_helper.related_navigation.each do |section| %>
       <% section.each do |section_title, links| %>
         <% if links.any? %>
           <% section_index += 1 %>

@@ -18,7 +18,7 @@ describe "Related navigation", type: :view do
   end
 
   it "renders nothing when no parameters given" do
-    assert_empty render_component({})
+    assert_empty render_component({}).strip
   end
 
   it "renders related content section when passed related items" do
