@@ -41,7 +41,6 @@ module GovukPublishingComponents
               start: 0,
               count: 3,
               filter_taxons: [taxon.content_id],
-              filter_navigation_document_supertype: 'guidance',
               reject_link: used_related_links.to_a,
               fields: %w[title link],
             )['results']
