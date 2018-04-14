@@ -95,7 +95,7 @@ describe "Contextual navigation" do
     alpha_taxon = random_item("taxon", "title" => "An alpha taxon", "phase" => "alpha")
     live_taxon = random_item("taxon", "title" => "A live taxon", "phase" => "live")
 
-    stub_request(:get, "http://rummager.dev.gov.uk/search.json?count=3&fields%5B%5D=link&fields%5B%5D=title&filter_navigation_document_supertype=guidance&filter_taxons%5B%5D=#{live_taxon['content_id']}&similar_to=/page-with-contextual-navigation&start=0").
+    stub_request(:get, "http://rummager.dev.gov.uk/search.json?count=3&fields%5B%5D=link&fields%5B%5D=title&filter_taxons%5B%5D=#{live_taxon['content_id']}&similar_to=/page-with-contextual-navigation&start=0").
       to_return(body: { results: [{ title: 'A similar item' }] }.to_json)
 
     content_store_has_random_item(
