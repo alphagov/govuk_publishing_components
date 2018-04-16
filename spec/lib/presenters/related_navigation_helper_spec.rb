@@ -51,30 +51,12 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
           "delivered_on" => "2017-09-22T14:30:00+01:00"
         },
         "links" => {
-          "parent" => [
-            {
-              "content_id" => "32c1b93d-2553-47c9-bc3c-fc5b513ecc32",
-              "locale" => "en",
-              "base_path" => "/mainstream-topic",
-              "title" => "mainstream topic"
-            }
-          ],
           "ordered_related_items" => [
             {
               "content_id" => "32c1b93d-2553-47c9-bc3c-fc5b513ecc32",
               "locale" => "en",
               "base_path" => "/related-item",
               "title" => "related item",
-              "links" => {
-                "mainstream_browse_pages" => [
-                  {
-                    "content_id" => "32c1b93d-2553-47c9-bc3c-fc5b513ecc32",
-                    "locale" => "en",
-                    "base_path" => "/mainstream-topic",
-                    "title" => "mainstream topic"
-                  }
-                ]
-              }
             }
           ],
           "document_collections" => [
@@ -113,6 +95,15 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
               "document_type" => "organisation"
             }
           ],
+          "mainstream_browse_pages" => [
+            {
+              "content_id" => "06ddefca-c44b-4b7b-b0de-226d15129a29",
+              "locale" => "en",
+              "base_path" => "/browse/something",
+              "title" => "A mainstream browse page",
+              "document_type" => "mainstream_browse_page"
+            }
+          ],
           "related_policies" => [
             {
               "content_id" => "32c1b93d-2553-47c9-bc3c-fc5b513ecc32",
@@ -135,7 +126,7 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
         "related_items" => [{ path: "/related-item", text: "related item" }],
         "related_guides" => [],
         "collections" => [{ path: "/related-collection", text: "related collection" }],
-        "topics" => [{ path: "/related-topic", text: "related topic" }, { path: "/mainstream-topic", text: "mainstream topic" }],
+        "topics" => [{ path: "/browse/something", text: "A mainstream browse page" }, { path: "/related-topic", text: "related topic" }],
         "policies" => [{ path: "/related-policy", text: "related policy" }],
         "related_contacts" => [],
         "related_external_links" => [],
@@ -178,19 +169,20 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
     end
 
     it "deduplicates topics for mainstream content" do
-      mainstream_browse_link = {
-        "content_id" => "fecdc8c8-4006-4f8e-95d5-fe40ca49c7a8",
-        "locale" => "en",
-        "title" => "Self Assessment",
-        "base_path" => "/browse/tax/self-assessment",
-        "document_type" => "mainstream_browse_page",
-      }
       payload = payload_for("answer",
         "details" => {
           "external_related_links" => []
         },
         "links" => {
-          "mainstream_browse_pages" => [mainstream_browse_link],
+          "mainstream_browse_pages" => [
+            {
+              "content_id" => "fecdc8c8-4006-4f8e-95d5-fe40ca49c7a8",
+              "locale" => "en",
+              "title" => "Self Assessment",
+              "base_path" => "/browse/tax/self-assessment",
+              "document_type" => "mainstream_browse_page",
+            }
+          ],
           "ordered_related_items" => [
             {
               "content_id" => "f29ca4a8-8ed9-4b0f-bb6a-11e373095dee",
@@ -198,10 +190,8 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
               "title" => "Self Assessment tax returns",
               "base_path" => "/self-assessment-tax-returns",
               "document_type" => "guide",
-              "links" => { "mainstream_browse_pages" => [mainstream_browse_link] },
             }
           ],
-          "parent" => [mainstream_browse_link],
           "topics" => [
             {
               "content_id" => "7beb97b6-75c9-4aa7-86be-a733ab3a21aa",
@@ -218,98 +208,13 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
       )
     end
 
-    it "returns parent and grandparent topics" do
-      payload = payload_for("answer",
-        "links" => {
-          "parent" => [
-            {
-              "base_path" => "/browse/working/tax-minimum-wage",
-              "content_id" => "a3e4b233-e2f3-4709-b531-8da7f21a3f6d",
-              "locale" => "en",
-              "title" => "Your pay, tax and the National Minimum Wage",
-              "links" => {
-                "parent" => [
-                  {
-                    "base_path" => "/browse/working",
-                    "content_id" => "a24f0662-bbfe-4b77-9ec0-e73240e88b9a",
-                    "locale" => "en",
-                    "title" => "Working, jobs and pensions",
-                  }
-                ]
-              },
-            }
-          ],
-          "ordered_related_items" => [
-            {
-              "base_path" => "/apprenticeships-guide",
-              "content_id" => "b95f3e83-a8d1-40fa-843c-cb712861707d",
-              "locale" => "en",
-              "title" => "Become an apprentice",
-              "links" => {
-                "mainstream_browse_pages" => [
-                  {
-                    "base_path" => "/browse/working/finding-job",
-                    "content_id" => "eceb3053-43d1-4a49-873d-85ff9ade7066",
-                    "locale" => "en",
-                    "title" => "Finding a job",
-                    "links" => {
-                      "parent" => [
-                        {
-                          "base_path" => "/browse/working",
-                          "content_id" => "a24f0662-bbfe-4b77-9ec0-e73240e88b9a",
-                          "locale" => "en",
-                          "title" => "Working, jobs and pensions",
-                        }
-                      ]
-                    },
-                  }
-                ]
-              },
-            },
-            {
-              "base_path" => "/national-insurance",
-              "content_id" => "c995522c-4020-4d54-ae5d-271d4b3a8777",
-              "locale" => "en",
-              "title" => "National Insurance",
-              "links" => {
-                "mainstream_browse_pages" => [
-                  {
-                    "base_path" => "/browse/working/tax-minimum-wage",
-                    "content_id" => "a3e4b233-e2f3-4709-b531-8da7f21a3f6d",
-                    "locale" => "en",
-                    "title" => "Your pay, tax and the National Minimum Wage",
-                    "links" => {
-                      "parent" => [
-                        {
-                          "base_path" => "/browse/working",
-                          "content_id" => "a24f0662-bbfe-4b77-9ec0-e73240e88b9a",
-                          "locale" => "en",
-                          "title" => "Working, jobs and pensions",
-                        }
-                      ]
-                    },
-                  }
-                ]
-              },
-            }
-          ]
-        })
-
-      expected = {
-        "topics" => [
-          { text: "Your pay, tax and the National Minimum Wage", path: "/browse/working/tax-minimum-wage" },
-          { text: "Working, jobs and pensions", path: "/browse/working" },
-        ]
-      }
-      expect(payload).to include(expected)
-    end
-
     it "handles ordered related items that aren't tagged to a mainstream browse page" do
       example = GovukSchemas::Example.find("guide", example_name: "single-page-guide")
       payload = described_class.new(example).related_navigation
       expected = [
-        { text: "Pets", path: "/topic/animal-welfare/pets" },
+        { text: "Travel abroad", path: "/browse/abroad/travel-abroad" },
         { text: "Arriving in the UK", path: "/browse/visas-immigration/arriving-in-the-uk" },
+        { text: "Pets", path: "/topic/animal-welfare/pets" },
       ]
       expect(payload["topics"]).to eql(expected)
     end
