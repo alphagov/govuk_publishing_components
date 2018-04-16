@@ -7,8 +7,8 @@ module GovukPublishingComponents
       end
 
       def should_present_taxonomy_navigation?
-        @content_item.dig("document_type") != "travel_advice" &&
-          !content_is_tagged_to_browse_pages? &&
+        !content_has_curated_related_items? &&
+        !content_is_tagged_to_browse_pages? &&
           content_is_tagged_to_a_live_taxon?
       end
 
@@ -18,12 +18,12 @@ module GovukPublishingComponents
         @content_item.dig("links", "taxons").to_a.any? { |taxon| taxon["phase"] == "live" }
       end
 
-      def content_is_tagged_to_browse_pages?
-        @content_item.dig("links", "mainstream_browse_pages").present?
+      def content_has_curated_related_items?
+        @content_item.dig("links", "ordered_related_items").present?
       end
 
-      def content_schema_is_guidance?
-        GUIDANCE_SCHEMAS.include? @content_item["schema_name"]
+      def content_is_tagged_to_browse_pages?
+        @content_item.dig("links", "mainstream_browse_pages").present?
       end
     end
   end
