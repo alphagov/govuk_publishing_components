@@ -3,12 +3,13 @@
 }
 
 .gem-c-related-navigation__main-heading {
+  @include bold-19;
   margin-top: $gutter-half;
   margin-bottom: $gutter-one-third;
-  @include bold-19;
 }
 
 .gem-c-related-navigation__sub-heading {
+  @include core-19;
   border-top: 1px solid $border-colour;
   padding-top: $gutter-half;
 }
@@ -28,16 +29,20 @@
 
 .gem-c-related-navigation__link {
   list-style-type: none;
-  margin-bottom: $gutter-one-third;
+
+  margin-top: $gutter-half;
+
+  @include media(tablet) {
+    margin-top: 10px;
+  }
 }
 
 .gem-c-related-navigation__section-link {
-  text-decoration: none;
   @include bold-19;
 }
 
 .gem-c-related-navigation__section-link--other {
-  text-decoration: none;
+  @include core-19;
 }
 
 // reset the default browser styles
