@@ -10,7 +10,7 @@
 }
 
 .gem-c-step-nav-related__links {
-  @include bold-19;
+  @include bold-16;
   margin: 0;
   padding: 0;
 }
@@ -32,6 +32,6 @@
   margin-top: $gutter-half;
 
   @include media(tablet) {
-    margin-top: 10px;
+    margin-top: 5px;
   }
 }

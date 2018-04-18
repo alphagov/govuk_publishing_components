@@ -9,7 +9,7 @@
 }
 
 .gem-c-related-navigation__sub-heading {
-  @include core-19;
+  @include core-16;
   border-top: 1px solid $border-colour;
   padding-top: $gutter-half;
 }
@@ -29,20 +29,19 @@
 
 .gem-c-related-navigation__link {
   list-style-type: none;
-
   margin-top: $gutter-half;
 
   @include media(tablet) {
-    margin-top: 10px;
+    margin-top: 5px;
   }
 }
 
 .gem-c-related-navigation__section-link {
-  @include bold-19;
+  @include bold-16;
 }
 
 .gem-c-related-navigation__section-link--other {
-  @include core-19;
+  @include core-16;
 }
 
 // reset the default browser styles
