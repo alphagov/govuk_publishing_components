@@ -39,9 +39,21 @@ module GovukPublishingComponents
         end
       end
 
-      def should_present_taxonomy_navigation?
-        navigation = NavigationType.new(content_item)
-        navigation.should_present_taxonomy_navigation?
+      def content_tagged_to_mainstream_browse_pages?
+        content_item.dig("links", "mainstream_browse_pages").present?
+      end
+
+      def content_has_curated_related_items?
+        content_item.dig("links", "ordered_related_items").present?
+      end
+
+      def content_is_tagged_to_a_live_taxon?
+        content_item.dig("links", "taxons").to_a.any? { |taxon| taxon["phase"] == "live" }
+      end
+
+      def content_tagged_to_single_step_by_step?
+        # TODO: remove indirection here
+        step_nav_helper.show_header?
       end
 
       def step_nav_helper

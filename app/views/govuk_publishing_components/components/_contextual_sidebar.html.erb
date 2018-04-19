@@ -1,19 +1,25 @@
 <% navigation = GovukPublishingComponents::Presenters::ContextualNavigation.new(content_item, request.path) %>
 
 <% if navigation.step_nav_helper.show_related_links? %>
-  <!-- rendering step by step related items -->
+  <!-- Rendering step by step related items -->
   <%= render 'govuk_publishing_components/components/step_by_step_nav_related', links: navigation.step_nav_helper.related_links %>
 
   <% if navigation.step_nav_helper.show_sidebar? %>
-    <!-- rendering step by step sidebar -->
+    <!-- Rendering step by step sidebar because there's 1 step by step list -->
     <%= render 'govuk_publishing_components/components/step_by_step_nav', navigation.step_nav_helper.sidebar %>
   <% end %>
 <% else %>
-  <% if navigation.should_present_taxonomy_navigation? %>
-    <!-- rendering taxonomy sidebar -->
+  <% if navigation.content_tagged_to_mainstream_browse_pages? %>
+    <!-- Rendering related navigation sidebar because the page is tagged to mainstream browse -->
+    <%= render 'govuk_publishing_components/components/related_navigation', content_item %>
+  <% elsif navigation.content_has_curated_related_items? %>
+    <!-- Rendering related navigation sidebar because the page has curated related links -->
+    <%= render 'govuk_publishing_components/components/related_navigation', content_item %>
+  <% elsif navigation.content_is_tagged_to_a_live_taxon? %>
+    <!-- Rendering taxonomy sidebar because the page is tagged to live taxons -->
     <%= render 'govuk_publishing_components/components/taxonomy_navigation', navigation.taxonomy_sidebar %>
   <% else %>
-    <!-- rendering related navigation sidebar -->
+    <!-- Rendering related navigation sidebar because no browse, no related links, no live taxons -->
     <%= render 'govuk_publishing_components/components/related_navigation', content_item %>
   <% end %>
 <% end %>

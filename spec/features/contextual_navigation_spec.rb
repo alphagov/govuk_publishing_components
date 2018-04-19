@@ -25,6 +25,13 @@ describe "Contextual navigation" do
   scenario "There's a mainstream browse page tagged" do
     given_theres_a_page_with_browse_page
     and_i_visit_that_page
+    then_i_see_the_browse_page_in_the_sidebar
+    and_the_parent_based_breadcrumbs
+  end
+
+  scenario "The page has curated related items" do
+    given_theres_a_page_with_related_items
+    and_i_visit_that_page
     then_i_see_the_related_links_sidebar
     and_the_parent_based_breadcrumbs
   end
@@ -69,7 +76,15 @@ describe "Contextual navigation" do
     content_store_has_random_item(
       links: {
         "parent" => [random_item("mainstream_browse_page", "title" => "A parent")],
-        "mainstream_browse_pages" => [random_item("mainstream_browse_page")],
+        "mainstream_browse_pages" => [random_item("mainstream_browse_page", "title" => "A browse page")],
+      }
+    )
+  end
+
+  def given_theres_a_page_with_related_items
+    content_store_has_random_item(
+      links: {
+        "parent" => [random_item("mainstream_browse_page", "title" => "A parent")],
         "ordered_related_items" => [random_item("guide", "title" => "A related link curated in Publisher")]
       }
     )
@@ -140,6 +155,11 @@ describe "Contextual navigation" do
   def then_theres_no_step_by_step_at_all
     expect(page).not_to have_selector(".gem-c-step-nav-related")
     expect(page).not_to have_selector(".gem-c-step-nav__header")
+  end
+
+  def then_i_see_the_browse_page_in_the_sidebar
+    expect(page).to have_selector(".gem-c-related-navigation")
+    expect(page).to have_content("A browse page")
   end
 
   def then_i_see_the_related_links_sidebar
