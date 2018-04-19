@@ -56,6 +56,10 @@ module GovukPublishingComponents
         step_nav_helper.show_header?
       end
 
+      def content_tagged_to_a_reasonable_number_of_step_by_steps?
+        step_nav_helper.show_related_links?
+      end
+
       def step_nav_helper
         @step_nav_helper ||= PageWithStepByStepNavigation.new(content_item, request_path)
       end
