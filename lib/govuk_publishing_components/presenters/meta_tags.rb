@@ -75,11 +75,11 @@ module GovukPublishingComponents
         themes = root_taxon_slugs(content_item)
         meta_tags["govuk:themes"] = themes.to_a.sort.join(', ') unless themes.empty?
 
-        if content_item[:document_type] == 'taxon'
-          taxons = [content_item]
-        else
-          taxons = links[:taxons] || []
-        end
+        taxons = if content_item[:document_type] == 'taxon'
+                   [content_item]
+                 else
+                   links[:taxons] || []
+                 end
 
         taxons.sort_by! { |taxon| taxon[:title] }
         taxon_slugs_without_theme = taxons.map do |taxon|
@@ -133,10 +133,7 @@ module GovukPublishingComponents
         # document_type
         return local_assigns[:strip_postcode_pii] if local_assigns.key?(:strip_postcode_pii)
 
-        formats_that_might_include_postcodes = [
-          'smart_answer',
-          'search'
-        ]
+        formats_that_might_include_postcodes = %w[smart_answer search]
         formats_that_might_include_postcodes.include?(content_item[:document_type])
       end
     end
