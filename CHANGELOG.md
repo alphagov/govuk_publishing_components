@@ -1,3 +1,9 @@
+# 6.6.0
+
+* Show all mainstream browse pages in the sidebar (#273)
+* Show "normal" navigation in addition to step by step, make sidebars consistent (#275)
+* Simplify the internal logic of breadcrumbs and sidebar (#277)
+
 # 6.5.0
 
 * Add button component (PR #271)
