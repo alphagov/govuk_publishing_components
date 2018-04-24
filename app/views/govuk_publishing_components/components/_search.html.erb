@@ -8,7 +8,6 @@
   value ||= ""
   id ||= "search-main-" + SecureRandom.hex(4)
   label_text ||= "Search GOV.UK"
-  label_text = "#{label_text}".html_safe
 %>
 
 <div class="gem-c-search <%= class_name %>" data-module="gem-toggle-input-class-on-focus">

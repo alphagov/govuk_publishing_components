@@ -21,8 +21,8 @@ describe "Search", type: :view do
   end
 
   it "renders a search box with a custom label content" do
-    render_component(inline_label: false, label_text: "<h1>This is a heading 1</h1>")
-    assert_select ".gem-c-search .gem-c-search__label h1", text: "This is a heading 1"
+    render_component(inline_label: false, label_text: "This is a heading 1")
+    assert_select ".gem-c-search .gem-c-search__label", text: "This is a heading 1"
     assert_select ".gem-c-search.gem-c-search--separate-label"
   end
 

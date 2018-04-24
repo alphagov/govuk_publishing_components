@@ -1,3 +1,8 @@
+# 7.0.0
+
+* Breaks the search component (at the moment only used by finder-frontend, so if
+  won't be breaking for other apps).
+
 # 6.7.0
 
 * Feedback component: send users a different survey (#280)
