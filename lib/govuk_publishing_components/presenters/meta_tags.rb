@@ -1,7 +1,7 @@
 module GovukPublishingComponents
   module Presenters
     class MetaTags
-      attr_reader :content_item, :details, :local_assigns
+      attr_reader :content_item, :details, :links, :local_assigns
 
       def initialize(content_item, local_assigns)
         # We have to call deep_symbolize_keys because we're often dealing with a
@@ -9,11 +9,11 @@ module GovukPublishingComponents
         # components use symbol keys and we want consistency.
         @content_item = content_item.to_h.deep_symbolize_keys
         @details = @content_item[:details] || {}
+        @links = @content_item[:links] || {}
         @local_assigns = local_assigns
       end
 
       def meta_tags
-        links_hash = content_item[:links] || {}
         meta_tags = {}
 
         meta_tags["govuk:content-id"] = content_item[:content_id] if content_item[:content_id]
@@ -22,12 +22,12 @@ module GovukPublishingComponents
         meta_tags["govuk:withdrawn"] = "withdrawn" if content_item[:withdrawn_notice].present?
 
         organisations = []
-        organisations += links_hash[:organisations] || []
-        organisations += links_hash[:worldwide_organisations] || []
+        organisations += links[:organisations] || []
+        organisations += links[:worldwide_organisations] || []
         organisations_content = organisations.map { |link| "<#{link[:analytics_identifier]}>" }.uniq.join
         meta_tags["govuk:analytics:organisations"] = organisations_content if organisations.any?
 
-        world_locations = links_hash[:world_locations] || []
+        world_locations = links[:world_locations] || []
         world_locations_content = world_locations.map { |link| "<#{link[:analytics_identifier]}>" }.join
         meta_tags["govuk:analytics:world-locations"] = world_locations_content if world_locations.any?
 
@@ -53,7 +53,7 @@ module GovukPublishingComponents
         if content_item[:document_type] == 'taxon'
           taxons = [content_item]
         else
-          taxons = links_hash[:taxons] || []
+          taxons = links[:taxons] || []
         end
 
         taxons.sort_by! { |taxon| taxon[:title] }
@@ -75,7 +75,7 @@ module GovukPublishingComponents
 
         meta_tags["govuk:static-analytics:strip-postcodes"] = "true" if should_strip_postcode_pii?(content_item, local_assigns)
 
-        stepnavs = links_hash[:part_of_step_navs] || []
+        stepnavs = links[:part_of_step_navs] || []
         stepnavs_content = stepnavs.map { |stepnav| stepnav[:content_id] }.join(",")
         meta_tags["govuk:stepnavs"] = stepnavs_content if stepnavs_content.present?
 
