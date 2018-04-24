@@ -4,23 +4,23 @@ module GovukPublishingComponents
       attr_reader :content_item, :local_assigns
 
       def initialize(content_item, local_assigns)
-        @content_item = content_item
+        # We have to call deep_symbolize_keys because we're often dealing with a
+        # parsed JSON document which will have string keys by default, but our
+        # components use symbol keys and we want consistency.
+        @content_item = content_item.to_h.deep_symbolize_keys
+
         @local_assigns = local_assigns
       end
 
       def meta_tags
-        # We have to call deep_symbolize_keys because we're often dealing with a
-        # parsed JSON document which will have string keys by default, but our
-        # components use symbol keys and we want consistency.
-        content_item_hash = content_item.to_h.deep_symbolize_keys
-        links_hash = content_item_hash[:links] || {}
-        details_hash = content_item_hash[:details] || {}
+        links_hash = content_item[:links] || {}
+        details_hash = content_item[:details] || {}
         meta_tags = {}
 
-        meta_tags["govuk:content-id"] = content_item_hash[:content_id] if content_item_hash[:content_id]
-        meta_tags["govuk:format"] = content_item_hash[:document_type] if content_item_hash[:document_type]
-        meta_tags["govuk:schema-name"] = content_item_hash[:schema_name] if content_item_hash[:schema_name]
-        meta_tags["govuk:withdrawn"] = "withdrawn" if content_item_hash[:withdrawn_notice].present?
+        meta_tags["govuk:content-id"] = content_item[:content_id] if content_item[:content_id]
+        meta_tags["govuk:format"] = content_item[:document_type] if content_item[:document_type]
+        meta_tags["govuk:schema-name"] = content_item[:schema_name] if content_item[:schema_name]
+        meta_tags["govuk:withdrawn"] = "withdrawn" if content_item[:withdrawn_notice].present?
 
         organisations = []
         organisations += links_hash[:organisations] || []
@@ -42,17 +42,17 @@ module GovukPublishingComponents
           meta_tags["govuk:publishing-government"] = details_hash[:government][:slug]
         end
 
-        user_journey_stage = content_item_hash[:user_journey_document_supertype]
+        user_journey_stage = content_item[:user_journey_document_supertype]
         meta_tags["govuk:user-journey-stage"] = user_journey_stage if user_journey_stage
 
-        navigation_document_type = content_item_hash[:navigation_document_supertype]
+        navigation_document_type = content_item[:navigation_document_supertype]
         meta_tags["govuk:navigation-document-type"] = navigation_document_type if navigation_document_type
 
-        themes = root_taxon_slugs(content_item_hash)
+        themes = root_taxon_slugs(content_item)
         meta_tags["govuk:themes"] = themes.to_a.sort.join(', ') unless themes.empty?
 
-        if content_item_hash[:document_type] == 'taxon'
-          taxons = [content_item_hash]
+        if content_item[:document_type] == 'taxon'
+          taxons = [content_item]
         else
           taxons = links_hash[:taxons] || []
         end
@@ -72,9 +72,9 @@ module GovukPublishingComponents
         meta_tags["govuk:taxon-slug"] = taxon_slugs_without_theme.first unless taxon_slugs_without_theme.empty?
         meta_tags["govuk:taxon-slugs"] = taxon_slugs_without_theme.join(',') unless taxon_slugs_without_theme.empty?
 
-        meta_tags["govuk:content-has-history"] = "true" if has_content_history(content_item_hash)
+        meta_tags["govuk:content-has-history"] = "true" if has_content_history(content_item)
 
-        meta_tags["govuk:static-analytics:strip-postcodes"] = "true" if should_strip_postcode_pii?(content_item_hash, local_assigns)
+        meta_tags["govuk:static-analytics:strip-postcodes"] = "true" if should_strip_postcode_pii?(content_item, local_assigns)
 
         stepnavs = links_hash[:part_of_step_navs] || []
         stepnavs_content = stepnavs.map { |stepnav| stepnav[:content_id] }.join(",")
