@@ -22,17 +22,7 @@ module GovukPublishingComponents
         meta_tags["govuk:withdrawn"] = "withdrawn" if content_item[:withdrawn_notice].present?
 
         meta_tags = add_organisation_tags(meta_tags)
-
-        if details.key?(:political) && details.key?(:government)
-          political_status = "non-political"
-          if details[:political]
-            political_status = details[:government][:current] ? "political" : "historic"
-          end
-
-          meta_tags["govuk:political-status"] = political_status
-          meta_tags["govuk:publishing-government"] = details[:government][:slug]
-        end
-
+        meta_tags = add_political_tags(meta_tags)
         meta_tags = add_taxonomy_tags(meta_tags)
 
         meta_tags["govuk:content-has-history"] = "true" if has_content_history?
@@ -138,6 +128,20 @@ module GovukPublishingComponents
         world_locations = links[:world_locations] || []
         world_locations_content = world_locations.map { |link| "<#{link[:analytics_identifier]}>" }.join
         meta_tags["govuk:analytics:world-locations"] = world_locations_content if world_locations.any?
+
+        meta_tags
+      end
+
+      def add_political_tags(meta_tags)
+        if details.key?(:political) && details.key?(:government)
+          political_status = "non-political"
+          if details[:political]
+            political_status = details[:government][:current] ? "political" : "historic"
+          end
+
+          meta_tags["govuk:political-status"] = political_status
+          meta_tags["govuk:publishing-government"] = details[:government][:slug]
+        end
 
         meta_tags
       end
