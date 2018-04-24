@@ -47,37 +47,13 @@ module GovukPublishingComponents
         navigation_document_type = content_item[:navigation_document_supertype]
         meta_tags["govuk:navigation-document-type"] = navigation_document_type if navigation_document_type
 
-        themes = root_taxon_slugs(content_item)
-        meta_tags["govuk:themes"] = themes.to_a.sort.join(', ') unless themes.empty?
-
-        if content_item[:document_type] == 'taxon'
-          taxons = [content_item]
-        else
-          taxons = links[:taxons] || []
-        end
-
-        taxons.sort_by! { |taxon| taxon[:title] }
-        taxon_slugs_without_theme = taxons.map do |taxon|
-          base_path = taxon[:base_path] || ""
-          slug_without_theme = base_path[%r{/[^/]+/(.+)}, 1]
-          # Return the slug without the theme, or in the special case of a root taxon,
-          # just return the full slug (because it doesn't have a slug beneath the theme)
-          slug_without_theme || base_path.sub(%r(^/), '')
-        end
-        taxon_ids = taxons.map { |taxon| taxon[:content_id] }
-
-        meta_tags["govuk:taxon-id"] = taxon_ids.first unless taxon_ids.empty?
-        meta_tags["govuk:taxon-ids"] = taxon_ids.join(',') unless taxon_ids.empty?
-        meta_tags["govuk:taxon-slug"] = taxon_slugs_without_theme.first unless taxon_slugs_without_theme.empty?
-        meta_tags["govuk:taxon-slugs"] = taxon_slugs_without_theme.join(',') unless taxon_slugs_without_theme.empty?
+        meta_tags = add_taxonomy_tags(meta_tags)
 
         meta_tags["govuk:content-has-history"] = "true" if has_content_history?
 
         meta_tags["govuk:static-analytics:strip-postcodes"] = "true" if should_strip_postcode_pii?(content_item, local_assigns)
 
-        stepnavs = links[:part_of_step_navs] || []
-        stepnavs_content = stepnavs.map { |stepnav| stepnav[:content_id] }.join(",")
-        meta_tags["govuk:stepnavs"] = stepnavs_content if stepnavs_content.present?
+        meta_tags = add_step_by_step_tags(meta_tags)
 
         meta_tags
       end
@@ -117,6 +93,40 @@ module GovukPublishingComponents
           'search'
         ]
         formats_that_might_include_postcodes.include?(content_item[:document_type])
+      end
+
+      def add_taxonomy_tags(meta_tags)
+        themes = root_taxon_slugs(content_item)
+        meta_tags["govuk:themes"] = themes.to_a.sort.join(', ') unless themes.empty?
+
+        if content_item[:document_type] == 'taxon'
+          taxons = [content_item]
+        else
+          taxons = links[:taxons] || []
+        end
+
+        taxons.sort_by! { |taxon| taxon[:title] }
+        taxon_slugs_without_theme = taxons.map do |taxon|
+          base_path = taxon[:base_path] || ""
+          slug_without_theme = base_path[%r{/[^/]+/(.+)}, 1]
+          # Return the slug without the theme, or in the special case of a root taxon,
+          # just return the full slug (because it doesn't have a slug beneath the theme)
+          slug_without_theme || base_path.sub(%r(^/), '')
+        end
+        taxon_ids = taxons.map { |taxon| taxon[:content_id] }
+
+        meta_tags["govuk:taxon-id"] = taxon_ids.first unless taxon_ids.empty?
+        meta_tags["govuk:taxon-ids"] = taxon_ids.join(',') unless taxon_ids.empty?
+        meta_tags["govuk:taxon-slug"] = taxon_slugs_without_theme.first unless taxon_slugs_without_theme.empty?
+        meta_tags["govuk:taxon-slugs"] = taxon_slugs_without_theme.join(',') unless taxon_slugs_without_theme.empty?
+        meta_tags
+      end
+
+      def add_step_by_step_tags(meta_tags)
+        stepnavs = links[:part_of_step_navs] || []
+        stepnavs_content = stepnavs.map { |stepnav| stepnav[:content_id] }.join(",")
+        meta_tags["govuk:stepnavs"] = stepnavs_content if stepnavs_content.present?
+        meta_tags
       end
     end
   end
