@@ -1,3 +1,6 @@
+* Add the Meta tags component. This component should be used in place of the
+  "analytics meta tags" component in static. They have the same behaviour.
+
 # 6.6.0
 
 * Show all mainstream browse pages in the sidebar (#273)

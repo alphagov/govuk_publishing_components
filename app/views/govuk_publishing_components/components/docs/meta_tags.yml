@@ -1,0 +1,25 @@
+name: Meta Tags
+description: Meta tags to provide analytics information about the current page
+body: |
+  This takes a content-store links hash like object which it can then turn into
+  the correct analytics identifier metadata tags.
+
+  The code which reads the meta tags can be found <a href="https://github.com/alphagov/static/blob/master/app/assets/javascripts/analytics/static-analytics.js#L76-L96">in static-analytics.js</a>.
+accessibility_criteria: |
+  The analytics meta tags component should not be visible to any users.
+examples:
+  with_organisations:
+    data:
+      content_item:
+        links:
+          organisations:
+          - analytics_identifier: D1
+          - analytics_identifier: D3
+          worldwide_organisations:
+          - analytics_identifier: EO3
+  with_world_locations:
+    data:
+      content_item:
+        links:
+          world_locations:
+          - analytics_identifier: WL3
