@@ -1,5 +1,8 @@
+# 6.7.0
+
+* Feedback component: send users a different survey (#280)
 * Add the Meta tags component. This component should be used in place of the
-  "analytics meta tags" component in static. They have the same behaviour.
+  "analytics meta tags" component in static. They have the same behaviour. (#278)
 
 # 6.6.0
 
