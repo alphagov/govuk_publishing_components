@@ -18,7 +18,7 @@ describe "Meta tags", type: :view do
   end
 
   it "no meta tags are rendered when there's no trackable data" do
-    assert_empty render_component(content_item: {})
+    assert_empty render_component(content_item: {}).strip
   end
 
   it "renders format in a meta tag" do
@@ -67,8 +67,8 @@ describe "Meta tags", type: :view do
   end
 
   it "does not render publishing government or political status when political or government is missing" do
-    assert_empty render_component(content_item: { details: { government: { current: true, slug: 'government' } } })
-    assert_empty render_component(content_item: { details: { political: true } })
+    assert_empty render_component(content_item: { details: { government: { current: true, slug: 'government' } } }).strip
+    assert_empty render_component(content_item: { details: { political: true } }).strip
   end
 
   it "renders user journey stage when user journey supertype is included" do
