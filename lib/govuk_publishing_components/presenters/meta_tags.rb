@@ -21,15 +21,7 @@ module GovukPublishingComponents
         meta_tags["govuk:content-id"] = content_item[:content_id] if content_item[:content_id]
         meta_tags["govuk:withdrawn"] = "withdrawn" if content_item[:withdrawn_notice].present?
 
-        organisations = []
-        organisations += links[:organisations] || []
-        organisations += links[:worldwide_organisations] || []
-        organisations_content = organisations.map { |link| "<#{link[:analytics_identifier]}>" }.uniq.join
-        meta_tags["govuk:analytics:organisations"] = organisations_content if organisations.any?
-
-        world_locations = links[:world_locations] || []
-        world_locations_content = world_locations.map { |link| "<#{link[:analytics_identifier]}>" }.join
-        meta_tags["govuk:analytics:world-locations"] = world_locations_content if world_locations.any?
+        meta_tags = add_organisation_tags(meta_tags)
 
         if details.key?(:political) && details.key?(:government)
           political_status = "non-political"
@@ -132,6 +124,20 @@ module GovukPublishingComponents
 
         navigation_document_type = content_item[:navigation_document_supertype]
         meta_tags["govuk:navigation-document-type"] = navigation_document_type if navigation_document_type
+
+        meta_tags
+      end
+
+      def add_organisation_tags(meta_tags)
+        organisations = []
+        organisations += links[:organisations] || []
+        organisations += links[:worldwide_organisations] || []
+        organisations_content = organisations.map { |link| "<#{link[:analytics_identifier]}>" }.uniq.join
+        meta_tags["govuk:analytics:organisations"] = organisations_content if organisations.any?
+
+        world_locations = links[:world_locations] || []
+        world_locations_content = world_locations.map { |link| "<#{link[:analytics_identifier]}>" }.join
+        meta_tags["govuk:analytics:world-locations"] = world_locations_content if world_locations.any?
 
         meta_tags
       end
