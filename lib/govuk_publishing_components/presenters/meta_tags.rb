@@ -25,75 +25,6 @@ module GovukPublishingComponents
 
     private
 
-      def has_content_history?
-        (content_item[:public_updated_at] && details[:first_public_at] && content_item[:public_updated_at] != details[:first_public_at]) ||
-          (details[:change_history] && details[:change_history].size > 1)
-      end
-
-      def root_taxon_slugs(content_item)
-        root_taxon_set = Set.new
-
-        links = content_item[:links]
-        # Taxons will have :parent_taxons, but content items will have :taxons
-        parent_taxons = links[:parent_taxons] || links[:taxons] unless links.nil?
-
-        if parent_taxons.blank?
-          root_taxon_set << content_item[:base_path].sub(%r(^/), '') if content_item[:document_type] == 'taxon'
-        else
-          parent_taxons.each do |parent_taxon|
-            root_taxon_set += root_taxon_slugs(parent_taxon)
-          end
-        end
-
-        root_taxon_set
-      end
-
-      def should_strip_postcode_pii?(content_item, local_assigns)
-        # allow override if we explicitly want to strip pii (or not) regardless of
-        # document_type
-        return local_assigns[:strip_postcode_pii] if local_assigns.key?(:strip_postcode_pii)
-
-        formats_that_might_include_postcodes = [
-          'smart_answer',
-          'search'
-        ]
-        formats_that_might_include_postcodes.include?(content_item[:document_type])
-      end
-
-      def add_taxonomy_tags(meta_tags)
-        themes = root_taxon_slugs(content_item)
-        meta_tags["govuk:themes"] = themes.to_a.sort.join(', ') unless themes.empty?
-
-        if content_item[:document_type] == 'taxon'
-          taxons = [content_item]
-        else
-          taxons = links[:taxons] || []
-        end
-
-        taxons.sort_by! { |taxon| taxon[:title] }
-        taxon_slugs_without_theme = taxons.map do |taxon|
-          base_path = taxon[:base_path] || ""
-          slug_without_theme = base_path[%r{/[^/]+/(.+)}, 1]
-          # Return the slug without the theme, or in the special case of a root taxon,
-          # just return the full slug (because it doesn't have a slug beneath the theme)
-          slug_without_theme || base_path.sub(%r(^/), '')
-        end
-        taxon_ids = taxons.map { |taxon| taxon[:content_id] }
-
-        meta_tags["govuk:taxon-id"] = taxon_ids.first unless taxon_ids.empty?
-        meta_tags["govuk:taxon-ids"] = taxon_ids.join(',') unless taxon_ids.empty?
-        meta_tags["govuk:taxon-slug"] = taxon_slugs_without_theme.first unless taxon_slugs_without_theme.empty?
-        meta_tags["govuk:taxon-slugs"] = taxon_slugs_without_theme.join(',') unless taxon_slugs_without_theme.empty?
-        meta_tags
-      end
-
-      def add_step_by_step_tags(meta_tags)
-        stepnavs = links[:part_of_step_navs] || []
-        stepnavs_content = stepnavs.map { |stepnav| stepnav[:content_id] }.join(",")
-        meta_tags["govuk:stepnavs"] = stepnavs_content if stepnavs_content.present?
-        meta_tags
-      end
-
       def add_core_tags(meta_tags)
         meta_tags["govuk:format"] = content_item[:document_type] if content_item[:document_type]
         meta_tags["govuk:schema-name"] = content_item[:schema_name] if content_item[:schema_name]
@@ -138,6 +69,75 @@ module GovukPublishingComponents
         end
 
         meta_tags
+      end
+
+      def add_taxonomy_tags(meta_tags)
+        themes = root_taxon_slugs(content_item)
+        meta_tags["govuk:themes"] = themes.to_a.sort.join(', ') unless themes.empty?
+
+        if content_item[:document_type] == 'taxon'
+          taxons = [content_item]
+        else
+          taxons = links[:taxons] || []
+        end
+
+        taxons.sort_by! { |taxon| taxon[:title] }
+        taxon_slugs_without_theme = taxons.map do |taxon|
+          base_path = taxon[:base_path] || ""
+          slug_without_theme = base_path[%r{/[^/]+/(.+)}, 1]
+          # Return the slug without the theme, or in the special case of a root taxon,
+          # just return the full slug (because it doesn't have a slug beneath the theme)
+          slug_without_theme || base_path.sub(%r(^/), '')
+        end
+        taxon_ids = taxons.map { |taxon| taxon[:content_id] }
+
+        meta_tags["govuk:taxon-id"] = taxon_ids.first unless taxon_ids.empty?
+        meta_tags["govuk:taxon-ids"] = taxon_ids.join(',') unless taxon_ids.empty?
+        meta_tags["govuk:taxon-slug"] = taxon_slugs_without_theme.first unless taxon_slugs_without_theme.empty?
+        meta_tags["govuk:taxon-slugs"] = taxon_slugs_without_theme.join(',') unless taxon_slugs_without_theme.empty?
+        meta_tags
+      end
+
+      def add_step_by_step_tags(meta_tags)
+        stepnavs = links[:part_of_step_navs] || []
+        stepnavs_content = stepnavs.map { |stepnav| stepnav[:content_id] }.join(",")
+        meta_tags["govuk:stepnavs"] = stepnavs_content if stepnavs_content.present?
+        meta_tags
+      end
+
+      def has_content_history?
+        (content_item[:public_updated_at] && details[:first_public_at] && content_item[:public_updated_at] != details[:first_public_at]) ||
+          (details[:change_history] && details[:change_history].size > 1)
+      end
+
+      def root_taxon_slugs(content_item)
+        root_taxon_set = Set.new
+
+        links = content_item[:links]
+        # Taxons will have :parent_taxons, but content items will have :taxons
+        parent_taxons = links[:parent_taxons] || links[:taxons] unless links.nil?
+
+        if parent_taxons.blank?
+          root_taxon_set << content_item[:base_path].sub(%r(^/), '') if content_item[:document_type] == 'taxon'
+        else
+          parent_taxons.each do |parent_taxon|
+            root_taxon_set += root_taxon_slugs(parent_taxon)
+          end
+        end
+
+        root_taxon_set
+      end
+
+      def should_strip_postcode_pii?(content_item, local_assigns)
+        # allow override if we explicitly want to strip pii (or not) regardless of
+        # document_type
+        return local_assigns[:strip_postcode_pii] if local_assigns.key?(:strip_postcode_pii)
+
+        formats_that_might_include_postcodes = [
+          'smart_answer',
+          'search'
+        ]
+        formats_that_might_include_postcodes.include?(content_item[:document_type])
       end
     end
   end
