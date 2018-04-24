@@ -1,20 +1,19 @@
 module GovukPublishingComponents
   module Presenters
     class MetaTags
-      attr_reader :content_item, :local_assigns
+      attr_reader :content_item, :details, :local_assigns
 
       def initialize(content_item, local_assigns)
         # We have to call deep_symbolize_keys because we're often dealing with a
         # parsed JSON document which will have string keys by default, but our
         # components use symbol keys and we want consistency.
         @content_item = content_item.to_h.deep_symbolize_keys
-
+        @details = @content_item[:details] || {}
         @local_assigns = local_assigns
       end
 
       def meta_tags
         links_hash = content_item[:links] || {}
-        details_hash = content_item[:details] || {}
         meta_tags = {}
 
         meta_tags["govuk:content-id"] = content_item[:content_id] if content_item[:content_id]
@@ -32,14 +31,14 @@ module GovukPublishingComponents
         world_locations_content = world_locations.map { |link| "<#{link[:analytics_identifier]}>" }.join
         meta_tags["govuk:analytics:world-locations"] = world_locations_content if world_locations.any?
 
-        if details_hash.key?(:political) && details_hash.key?(:government)
+        if details.key?(:political) && details.key?(:government)
           political_status = "non-political"
-          if details_hash[:political]
-            political_status = details_hash[:government][:current] ? "political" : "historic"
+          if details[:political]
+            political_status = details[:government][:current] ? "political" : "historic"
           end
 
           meta_tags["govuk:political-status"] = political_status
-          meta_tags["govuk:publishing-government"] = details_hash[:government][:slug]
+          meta_tags["govuk:publishing-government"] = details[:government][:slug]
         end
 
         user_journey_stage = content_item[:user_journey_document_supertype]
@@ -72,7 +71,7 @@ module GovukPublishingComponents
         meta_tags["govuk:taxon-slug"] = taxon_slugs_without_theme.first unless taxon_slugs_without_theme.empty?
         meta_tags["govuk:taxon-slugs"] = taxon_slugs_without_theme.join(',') unless taxon_slugs_without_theme.empty?
 
-        meta_tags["govuk:content-has-history"] = "true" if has_content_history(content_item)
+        meta_tags["govuk:content-has-history"] = "true" if has_content_history?
 
         meta_tags["govuk:static-analytics:strip-postcodes"] = "true" if should_strip_postcode_pii?(content_item, local_assigns)
 
@@ -85,9 +84,7 @@ module GovukPublishingComponents
 
     private
 
-      def has_content_history(content_item)
-        details = content_item.fetch(:details, {})
-
+      def has_content_history?
         (content_item[:public_updated_at] && details[:first_public_at] && content_item[:public_updated_at] != details[:first_public_at]) ||
           (details[:change_history] && details[:change_history].size > 1)
       end
