@@ -38,6 +38,7 @@ module GovukPublishingComponents
         meta_tags["govuk:content-id"] = content_item[:content_id] if content_item[:content_id]
         meta_tags["govuk:withdrawn"] = "withdrawn" if content_item[:withdrawn_notice].present?
         meta_tags["govuk:content-has-history"] = "true" if has_content_history?
+        meta_tags["govuk:static-analytics:strip-dates"] = "true" if should_strip_dates_pii?(content_item, local_assigns)
         meta_tags["govuk:static-analytics:strip-postcodes"] = "true" if should_strip_postcode_pii?(content_item, local_assigns)
 
         meta_tags
@@ -126,6 +127,15 @@ module GovukPublishingComponents
         end
 
         root_taxon_set
+      end
+
+      def should_strip_dates_pii?(content_item, local_assigns)
+        # allow override if we explicitly want to strip pii (or not) regardless of
+        # document_type
+        return local_assigns[:strip_dates_pii] if local_assigns.key?(:strip_dates_pii)
+
+        formats_that_might_include_dates = %w[smart_answer]
+        formats_that_might_include_dates.include?(content_item[:document_type])
       end
 
       def should_strip_postcode_pii?(content_item, local_assigns)
