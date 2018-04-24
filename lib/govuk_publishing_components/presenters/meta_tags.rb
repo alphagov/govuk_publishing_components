@@ -15,22 +15,11 @@ module GovukPublishingComponents
 
       def meta_tags
         meta_tags = {}
-
-        meta_tags = add_document_type_tags(meta_tags)
-
-        meta_tags["govuk:content-id"] = content_item[:content_id] if content_item[:content_id]
-        meta_tags["govuk:withdrawn"] = "withdrawn" if content_item[:withdrawn_notice].present?
-
+        meta_tags = add_core_tags(meta_tags)
         meta_tags = add_organisation_tags(meta_tags)
         meta_tags = add_political_tags(meta_tags)
         meta_tags = add_taxonomy_tags(meta_tags)
-
-        meta_tags["govuk:content-has-history"] = "true" if has_content_history?
-
-        meta_tags["govuk:static-analytics:strip-postcodes"] = "true" if should_strip_postcode_pii?(content_item, local_assigns)
-
         meta_tags = add_step_by_step_tags(meta_tags)
-
         meta_tags
       end
 
@@ -105,7 +94,7 @@ module GovukPublishingComponents
         meta_tags
       end
 
-      def add_document_type_tags(meta_tags)
+      def add_core_tags(meta_tags)
         meta_tags["govuk:format"] = content_item[:document_type] if content_item[:document_type]
         meta_tags["govuk:schema-name"] = content_item[:schema_name] if content_item[:schema_name]
 
@@ -114,6 +103,11 @@ module GovukPublishingComponents
 
         navigation_document_type = content_item[:navigation_document_supertype]
         meta_tags["govuk:navigation-document-type"] = navigation_document_type if navigation_document_type
+
+        meta_tags["govuk:content-id"] = content_item[:content_id] if content_item[:content_id]
+        meta_tags["govuk:withdrawn"] = "withdrawn" if content_item[:withdrawn_notice].present?
+        meta_tags["govuk:content-has-history"] = "true" if has_content_history?
+        meta_tags["govuk:static-analytics:strip-postcodes"] = "true" if should_strip_postcode_pii?(content_item, local_assigns)
 
         meta_tags
       end
