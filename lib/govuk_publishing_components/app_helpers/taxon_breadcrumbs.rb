@@ -59,7 +59,6 @@ module GovukPublishingComponents
           @_parent_taxons ||= begin
             content_item.dig("links", "parent_taxons")
               .to_a
-              .select { |t| phase_is_live?(t) }
               .map { |taxon| ContentItem.new(taxon) }
           end
         end
