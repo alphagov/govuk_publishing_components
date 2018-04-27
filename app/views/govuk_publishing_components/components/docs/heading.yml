@@ -1,0 +1,32 @@
+name: Heading
+description: A text heading
+body: |
+  A heading tag with an optional id attribute, used predominantly to the left of content on consultations and publications.
+
+  Real world examples:
+
+  - [Publication](/government/publications/recognising-the-terrorist-threat)
+  - [Consultation](/government/consultations/proposal-for-the-future-of-rotherham-goldthorpe-jobcentre)
+accessibility_criteria: |
+  The heading must:
+
+  - be part of a correct heading structure for a page
+  - be semantically represented as a heading
+  - convey the heading level
+examples:
+  default:
+    data:
+      text: 'Download the full outcome'
+  right_to_left:
+    data:
+      text: 'مستندات'
+    context:
+      right_to_left: true
+  with_id_attribute:
+    data:
+      text: 'Detail of outcome'
+      id: 'detail_of_outcome'
+  specific_heading_level:
+    data:
+      text: 'Original consultation'
+      heading_level: 3

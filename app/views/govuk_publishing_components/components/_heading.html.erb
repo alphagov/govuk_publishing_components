@@ -1,0 +1,11 @@
+<%
+  id = "id=#{id}" if id
+  heading_level ||= 1
+  heading_level_tag = "h#{heading_level}" if [1,2,3,4,5,6].include? heading_level
+%>
+<<%= heading_level_tag %>
+  <%= id %>
+  class="gem-c-heading"
+>
+  <%= text %>
+</<%= heading_level_tag %>>
