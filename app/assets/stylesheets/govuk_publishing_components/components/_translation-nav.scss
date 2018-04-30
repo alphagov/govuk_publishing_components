@@ -1,0 +1,35 @@
+.gem-c-translation-nav {
+  @include responsive-top-margin;
+  @include core-16;
+  margin-bottom: $gutter;
+  border-bottom: 1px solid $border-colour;
+}
+
+.gem-c-translation-nav__list {
+  @extend %contain-floats;
+  list-style: none;
+  margin-left: -$gutter-one-third;
+  margin-right: -$gutter-one-third;
+}
+
+.gem-c-translation-nav__list-item {
+  float: left;
+  padding-left: $gutter-one-third;
+  padding-right: $gutter-one-third;
+  margin-bottom: $gutter-one-third;
+  border-right: 1px solid $border-colour;
+  height: 16px;
+
+  .direction-rtl & {
+    direction: rtl;
+    float: right;
+    text-align: start;
+    border-left: 1px solid $border-colour;
+    border-right: 0;
+  }
+}
+
+.gem-c-translation-nav__list-item:last-child {
+  border-right: 0;
+  border-left: 0;
+}

@@ -20,6 +20,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  common:
+    translations: "Translations"
   components:
     back_link:
       back: 'Back'
