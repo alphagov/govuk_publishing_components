@@ -1,3 +1,5 @@
+* Add an optional meta tag to signal dates should be stripped from data sent to Google Analytics. (#282)
+
 # 7.0.0
 
 * Breaks the search component (at the moment only used by finder-frontend, so if
