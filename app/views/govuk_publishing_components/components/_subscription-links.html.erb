@@ -1,0 +1,21 @@
+<%
+  email_signup_link ||= false
+  feed_link ||= false
+%>
+<% if email_signup_link || feed_link %>
+  <section class="gem-c-subscription-links">
+    <h2 class="visuallyhidden">Subscriptions</h2>
+    <ul class="gem-c-subscription-links__list">
+      <% if email_signup_link.present? %>
+        <li class="gem-c-subscription-links__list-item">
+          <%= link_to "Get email alerts", email_signup_link, class: "gem-c-subscription-links__link gem-c-subscription-links__link--email-alerts" %>
+        </li>
+      <% end %>
+      <% if feed_link.present? %>
+        <li class="gem-c-subscription-links__list-item">
+          <%= link_to "Subscribe to feed", feed_link, class: "gem-c-subscription-links__link gem-c-subscription-links__link--feed" %>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
