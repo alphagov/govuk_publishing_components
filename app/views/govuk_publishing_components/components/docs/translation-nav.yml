@@ -1,0 +1,61 @@
+name: Translation navigation
+description: A list of links to available translations
+body: The active property indicates the current language.
+accessibility_criteria: |
+  The component must:
+
+  - be [a landmark with a navigation role](https://accessibility.blog.gov.uk/2016/05/27/using-navigation-landmarks/)
+  - have an accessible name in the current language, eg "Translations"
+
+  The translation links must:
+
+  - [identify the language of the text](https://www.w3.org/TR/UNDERSTANDING-WCAG20/meaning-other-lang-id.html#meaning-other-lang-id-examples-head)
+
+    [Watch a screen reader pronounce text differently based on lang attribute](https://bit.ly/screenreaderpronunciation)
+shared_accessibility_criteria:
+  - link
+examples:
+  default:
+    data:
+      translations:
+      - locale: 'en'
+        base_path: '/en'
+        text: 'English'
+        active: true
+      - locale: 'hi'
+        base_path: '/hi'
+        text: 'हिंदी'
+  multiple_translations:
+    data:
+      translations:
+      - locale: 'en'
+        base_path: '/en'
+        text: 'English'
+        active: true
+      - locale: 'fr'
+        base_path: '/fr'
+        text: 'Français'
+      - locale: 'hi'
+        base_path: '/hi'
+        text: 'हिंदी'
+      - locale: 'ja'
+        base_path: '/ja'
+        text: '日本語'
+      - locale: 'ur'
+        base_path: '/ur'
+        text: 'اردو'
+      - locale: 'zh'
+        base_path: '/zh'
+        text: '中文'
+  right_to_left:
+    data:
+      translations:
+        - locale: 'en'
+          base_path: '/en'
+          text: 'English'
+        - locale: 'ar'
+          base_path: '/ar'
+          text: 'العربية'
+          active: true
+    context:
+      right_to_left: true

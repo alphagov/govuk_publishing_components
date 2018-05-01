@@ -1,6 +1,9 @@
 # Unreleased
 
 * Add subscription links component (PR #290)
+* Add translation nav component (PR #289)
+* Make components CSS available to static in the component guide (PR #286)
+* Add heading component (PR #288)
 
 # 7.0.0
 
