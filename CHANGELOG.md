@@ -1,3 +1,7 @@
+# Unreleased
+
+* Add subscription links component (PR #290)
+
 # 7.0.0
 
 * Add an optional meta tag to signal dates should be stripped from

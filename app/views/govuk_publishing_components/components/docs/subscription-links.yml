@@ -1,0 +1,17 @@
+name: Subscription links
+description: Links to ‘Get email alerts’ and ‘Subscribe to feed’
+accessibility_criteria: |
+  Icons in subscription links must be presentational and ignored by screen readers.
+shared_accessibility_criteria:
+  - link
+examples:
+  default:
+    data:
+      email_signup_link: '/foreign-travel-advice/singapore/email-signup'
+      feed_link: '/foreign-travel-advice/singapore.atom'
+  with_only_email_signup_link:
+    data:
+      email_signup_link: '/foreign-travel-advice/singapore/email-signup'
+  with_only_feed_link:
+    data:
+      feed_link: '/foreign-travel-advice/singapore.atom'
