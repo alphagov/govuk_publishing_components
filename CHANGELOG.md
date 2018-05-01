@@ -1,4 +1,4 @@
-# Unreleased
+# 7.1.0
 
 * Add subscription links component (PR #290)
 * Add translation nav component (PR #289)
