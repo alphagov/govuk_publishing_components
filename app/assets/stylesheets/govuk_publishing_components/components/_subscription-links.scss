@@ -27,6 +27,15 @@
 
   .gem-c-subscription-links__link--feed {
     background-image: image-url("govuk_publishing_components/feed-icon-black.png");
+
+    // if this is a toggle, only show if js is enabled
+    &[data-controls] {
+      display: none;
+
+      .js-enabled & {
+        display: block;
+      }
+    }
   }
 
   .gem-c-subscription-links__link--email-alerts {
@@ -37,4 +46,15 @@
       background-size: 20px 14px;
     }
   }
+
+  .gem-c-subscription-links__feed-box {
+    padding: $gutter-half;
+    margin-bottom: $gutter-half;
+    background: $grey-3;
+  }
+
+  .gem-c-subscription-links__feed-description {
+    font-weight: bold;
+  }
 }
+
