@@ -37,10 +37,16 @@ examples:
       label:
         text: "This might not work"
       name: "labelledby"
-      labelledby: "skiplink-container"
+      describedby: "skiplink-container"
   with_error:
     data:
       label:
         text: "What is your name?"
       name: "name"
       error_message: "Please could you provide your name"
+  with_value:
+    data:
+      label:
+        text: "Search for"
+      name: "name"
+      value: "moose"
