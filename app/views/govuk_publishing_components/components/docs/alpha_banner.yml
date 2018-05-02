@@ -1,0 +1,18 @@
+name: Alpha banner
+description: A banner that indicates content is in an alpha phase, with an optional
+  explanation
+body: |
+  There's also an <a href="/component-guide/beta_banner">beta banner</a>.
+accessibility_criteria: |
+  The alpha label must:
+
+  - have a text contrast ratio higher than 4.5:1 against the background colour to meet WCAG AA
+shared_accessibility_criteria:
+  - link
+examples:
+  default:
+    data: {}
+  with_message:
+    data:
+      message: This is an optional different message to explain what Alpha means in
+        this context which can take <a href='https://www.gov.uk'>HTML</a>
