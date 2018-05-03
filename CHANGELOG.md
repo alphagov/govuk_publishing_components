@@ -1,3 +1,7 @@
+# Unreleased
+
+* Add department colours to components (PR #296)
+
 # 7.1.0
 
 * Add subscription links component (PR #290)
