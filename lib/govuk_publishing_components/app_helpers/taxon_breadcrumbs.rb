@@ -52,15 +52,10 @@ module GovukPublishingComponents
         end
 
         def parent_taxon
-          parent_taxons.first
-        end
+          @_parent_taxon ||= begin
+            parent_content_item = content_item.dig("links", "parent_taxons", 0)
 
-        def parent_taxons
-          @_parent_taxons ||= begin
-            content_item.dig("links", "parent_taxons")
-              .to_a
-              .select { |t| phase_is_live?(t) }
-              .map { |taxon| ContentItem.new(taxon) }.sort_by(&:title)
+            ContentItem.new(parent_content_item) unless parent_content_item.nil?
           end
         end
 
