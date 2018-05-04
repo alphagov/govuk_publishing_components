@@ -2,6 +2,14 @@ name: Subscription links
 description: Links to ‘Get email alerts’ and ‘Subscribe to feed’
 accessibility_criteria: |
   Icons in subscription links must be presentational and ignored by screen readers.
+
+  Toggle elements in the component must:
+
+  - be usable with a keyboard
+  - be usable with touch
+  - be recognised by screen readers as a button
+  - announce to screen readers whether they are expanded or collapsed
+  - show hidden elements by default when Javascript is disabled
 shared_accessibility_criteria:
   - link
 examples:
@@ -15,3 +23,17 @@ examples:
   with_only_feed_link:
     data:
       feed_link: '/foreign-travel-advice/singapore.atom'
+  with_custom_text:
+    data:
+      email_signup_link: '/foreign-travel-advice/singapore/email-signup'
+      email_signup_link_text: 'Get notifications'
+      feed_link: '/foreign-travel-advice/singapore.atom'
+      feed_link_text: 'View feed'
+  with_copyable_feed_link:
+    description: |
+      This option changes the feed link to a toggle control, which opens a hidden element containing an input prepopulated with the value passed to the component, usually a URL to an atom feed. This uses the [form input](/component-guide/input) component.
+
+      Note that this option overrides the feed_link option, so if both are passed feed_link is ignored. Note that a value for email_signup_link can also be passed as normal.
+    data:
+      email_signup_link: '/foreign-travel-advice/singapore/email-signup'
+      feed_link_box_value: 'https://www.gov.uk/government/organisations/attorney-generals-office.atom'
