@@ -69,4 +69,10 @@ describe "Translation nav", type: :view do
     render_component(translations: multiple_translations)
     assert_select "nav[role='navigation'][aria-label='Translations']"
   end
+
+  it "adds branding correctly" do
+    render_component(translations: multiple_translations, brand: 'attorney-generals-office')
+    assert_select ".gem-c-translation-nav.brand--attorney-generals-office"
+    assert_select ".gem-c-translation-nav .brand__color"
+  end
 end

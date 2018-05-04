@@ -1,13 +1,25 @@
-<% translations ||= [] %>
+<%
+  translations ||= []
+  brand ||= false
+  brand_helper = GovukPublishingComponents::Presenters::BrandHelper.new(brand)
+%>
 <% if translations.length > 1 %>
-  <nav role="navigation" class="gem-c-translation-nav" aria-label="<%= t("common.translations") %>">
+  <nav role="navigation"
+    class="gem-c-translation-nav <%= brand_helper.get_brand %>"
+    aria-label="<%= t("common.translations") %>"
+  >
     <ul class="gem-c-translation-nav__list">
       <% translations.each.with_index do |translation, i| %>
         <li class="gem-c-translation-nav__list-item">
           <% if translation[:active] %>
             <span lang="<%= translation[:locale] %>"><%= translation[:text] %></span>
           <% else %>
-            <%= link_to translation[:text], translation[:base_path], hreflang: translation[:locale], lang: translation[:locale], rel: "alternate" %>
+            <%= link_to translation[:text], translation[:base_path],
+              hreflang: translation[:locale],
+              lang: translation[:locale],
+              rel: "alternate",
+              class: brand_helper.get_brand_element("color")
+            %>
           <% end %>
         </li>
       <% end %>
