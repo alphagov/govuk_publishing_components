@@ -1,0 +1,20 @@
+@import "colours/organisation";
+
+// this uses the colours from govuk_frontend_toolkit
+// https://github.com/alphagov/govuk_frontend_toolkit/blob/master/stylesheets/colours/_organisation.scss
+
+@mixin organisation-brand-colour() {
+  @each $organisation in $all-organisation-brand-colours {
+    .brand--#{nth($organisation, 1)} {
+      .brand__color {
+        color: nth($organisation, 3);
+      }
+
+      .brand__border-color {
+        border-color: nth($organisation, 2);
+      }
+    }
+  }
+}
+
+@include organisation-brand-colour;
