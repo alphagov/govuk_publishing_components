@@ -6,6 +6,9 @@
   feed_link_box_value ||= false
   feed_link_data = false
 
+  brand ||= false
+  brand_helper = GovukPublishingComponents::Presenters::BrandHelper.new(brand)
+
   if feed_link_box_value
     feed_link = "#"
     feed_link_data = {
@@ -15,19 +18,21 @@
   end
 %>
 <% if email_signup_link || feed_link || feed_link_box_value %>
-  <section class="gem-c-subscription-links" data-module="gem-toggle">
+  <section class="gem-c-subscription-links <%= brand_helper.get_brand %>" data-module="gem-toggle">
     <h2 class="visuallyhidden"><%= t("govuk_component.subscription_links.subscriptions", default: "Subscriptions") %></h2>
     <ul class="gem-c-subscription-links__list">
       <% if email_signup_link.present? %>
         <li class="gem-c-subscription-links__list-item">
-          <%= link_to email_signup_link_text, email_signup_link, class: "gem-c-subscription-links__link gem-c-subscription-links__link--email-alerts" %>
+          <%= link_to email_signup_link_text, email_signup_link,
+            class: "gem-c-subscription-links__link gem-c-subscription-links__link--email-alerts #{brand_helper.get_brand_element("color")}"
+          %>
         </li>
       <% end %>
 
       <% if feed_link_box_value || feed_link.present? %>
         <li class="gem-c-subscription-links__list-item">
           <%= link_to feed_link_text, feed_link,
-              class: "gem-c-subscription-links__link gem-c-subscription-links__link--feed",
+              class: "gem-c-subscription-links__link gem-c-subscription-links__link--feed #{brand_helper.get_brand_element("color")}",
               data: feed_link_data
           %>
         </li>

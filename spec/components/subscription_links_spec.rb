@@ -36,4 +36,11 @@ describe "subscription links", type: :view do
     assert_select ".gem-c-subscription-links__link--feed[href=\"singapore.atom\"]", false
     assert_select ".gem-c-subscription-links__feed-box input[name='feed-reader-box'][value='http://www.gov.uk']"
   end
+
+  it "adds branding correctly" do
+    render_component(email_signup_link: 'email-signup', feed_link: 'singapore.atom', brand: 'attorney-generals-office')
+    assert_select ".gem-c-subscription-links.brand--attorney-generals-office"
+    assert_select ".gem-c-subscription-links__link--email-alerts.brand__color"
+    assert_select ".gem-c-subscription-links__link--feed.brand__color"
+  end
 end
