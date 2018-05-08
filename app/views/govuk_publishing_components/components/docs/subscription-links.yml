@@ -46,7 +46,6 @@ examples:
   with_tracking:
     description: Data attributes can be passed for each link as shown.
     data:
-      brand: 'attorney-generals-office'
       email_signup_link: '/foreign-travel-advice/singapore/email-signup'
       email_signup_link_data_attributes: {
         track_category: 'email_link_category',
