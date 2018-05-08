@@ -43,4 +43,20 @@ describe "subscription links", type: :view do
     assert_select ".gem-c-subscription-links__link--email-alerts.brand__color"
     assert_select ".gem-c-subscription-links__link--feed.brand__color"
   end
+
+  it "adds tracking for email signup link" do
+    render_component(email_signup_link: 'email-signup', email_signup_link_data_attributes: { 'track_category': 'test' })
+    assert_select ".gem-c-subscription-links__list[data-module=\"track-click\"] .gem-c-subscription-links__link--email-alerts[data-track-category=\"test\"]"
+  end
+
+  it "adds tracking for feed link" do
+    render_component(feed_link: 'feed', feed_link_data_attributes: { 'track_category': 'test' })
+    assert_select ".gem-c-subscription-links__list[data-module=\"track-click\"] .gem-c-subscription-links__link--feed[data-track-category=\"test\"]"
+  end
+
+  it "adds tracking for feed link when it is a toggle" do
+    render_component(feed_link_box_value: 'feed', feed_link_data_attributes: { 'track_category': 'test' })
+    assert_select ".gem-c-subscription-links[data-module=\"gem-toggle\"]"
+    assert_select ".gem-c-subscription-links__list[data-module=\"track-click\"] .gem-c-subscription-links__link--feed[data-track-category=\"test\"]"
+  end
 end
