@@ -131,4 +131,25 @@ describe "Document list", type: :view do
     assert_select "#{li} a[data-track-label='/link2']", text: "Link 2"
     assert_select "#{li} a[data-track-options='{\"dimension28\":\"2\",\"dimension29\":\"Link 2\"}']", text: "Link 2"
   end
+
+  it "adds branding correctly" do
+    render_component(
+      brand: 'attorney-generals-office',
+      items: [
+        {
+          link: {
+            text: "School behaviour and attendance: parental responsibility measures",
+            path: "/government/publications/parental-responsibility-measures-for-behaviour-and-attendance",
+          },
+          metadata: {
+            public_updated_at: Time.zone.parse("2017-01-05 14:50:33 +0000"),
+            document_type: "Statutory guidance"
+          }
+        }
+      ]
+    )
+
+    assert_select '.gem-c-document-list.brand--attorney-generals-office'
+    assert_select '.gem-c-document-list .gem-c-document-list__item-title .brand__color'
+  end
 end
