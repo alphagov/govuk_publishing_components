@@ -5,12 +5,16 @@ module GovukPublishingComponents
         @brand = brand if brand
       end
 
-      def get_brand
+      def brand_class
         "brand--#{@brand}" if @brand
       end
 
-      def get_brand_element(attribute)
-        "brand__#{attribute}" if @brand
+      def border_color_class
+        "brand__border-color" if @brand
+      end
+
+      def color_class
+        "brand__color" if @brand
       end
     end
   end

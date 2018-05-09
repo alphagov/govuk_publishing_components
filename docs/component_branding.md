@@ -16,12 +16,12 @@ To add colours to a component, modify the component to follow the example below.
   brand_helper = GovukPublishingComponents::Presenters::BrandHelper.new(brand)
 %>
 
-<div class="gem-c-component <%= brand_helper.get_brand %>">
-  <div class="gem-c-component__title <%= brand_helper.get_brand_element("border-color") %>">
+<div class="gem-c-component <%= brand_helper.brand_class %>">
+  <div class="gem-c-component__title <%= brand_helper.brand_border_color %>">
     Example element that requires a coloured border
   </div>
 
-  <a href="#" class="<%= brand_helper.get_brand_element("color") %>">
+  <a href="#" class="<%= brand_helper.brand_color %>">
     Example element that requires coloured text
   </a>
 </div>
