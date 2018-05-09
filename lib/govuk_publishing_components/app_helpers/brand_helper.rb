@@ -1,9 +1,13 @@
 module GovukPublishingComponents
-  module Presenters
+  module AppHelpers
     class BrandHelper
       def initialize(brand)
         @brand = brand if brand
       end
+
+      # Apply government organisation branding to individual components, specifically
+      # link colour and border colour
+      # see https://github.com/alphagov/govuk_publishing_components/blob/master/docs/component_branding.md
 
       def brand_class
         "brand--#{@brand}" if @brand
