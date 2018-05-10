@@ -1,3 +1,7 @@
+# Unreleased
+
+* Add an optional `canonical` meta tag.
+
 # 7.2.0
 
 * Add department colours to components (PR #296)

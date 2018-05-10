@@ -20,6 +20,7 @@ module GovukPublishingComponents
         meta_tags = add_political_tags(meta_tags)
         meta_tags = add_taxonomy_tags(meta_tags)
         meta_tags = add_step_by_step_tags(meta_tags)
+        meta_tags = add_canonical_tag(meta_tags)
         meta_tags
       end
 
@@ -103,6 +104,20 @@ module GovukPublishingComponents
         stepnavs = links[:part_of_step_navs] || []
         stepnavs_content = stepnavs.map { |stepnav| stepnav[:content_id] }.join(",")
         meta_tags["govuk:stepnavs"] = stepnavs_content if stepnavs_content.present?
+        meta_tags
+      end
+
+      def add_canonical_tag(meta_tags)
+        if local_assigns.key?(:canonical_path)
+          canonical_path = if local_assigns[:canonical_path] == true
+                             content_item[:base_path]
+                           else
+                             local_assigns[:canonical_path]
+                           end
+
+          meta_tags["canonical"] = Plek.new.website_root + canonical_path
+        end
+
         meta_tags
       end
 
