@@ -1,11 +1,11 @@
 <%
   brand ||= false
-  brand_helper = GovukPublishingComponents::Presenters::BrandHelper.new(brand)
+  brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
   sl_helper = GovukPublishingComponents::Presenters::SubscriptionLinksHelper.new(local_assigns)
 %>
 <% if sl_helper.component_data_is_valid? %>
   <section
-    class="gem-c-subscription-links <%= brand_helper.get_brand %>"
+    class="gem-c-subscription-links <%= brand_helper.brand_class %>"
     <%= "data-module=gem-toggle" if sl_helper.feed_link_box_value %>
   >
     <h2 class="visuallyhidden"><%= t("govuk_component.subscription_links.subscriptions", default: "Subscriptions") %></h2>
@@ -16,7 +16,7 @@
       <% if sl_helper.email_signup_link.present? %>
         <li class="gem-c-subscription-links__list-item">
           <%= link_to sl_helper.email_signup_link_text, sl_helper.email_signup_link,
-            class: "gem-c-subscription-links__link gem-c-subscription-links__link--email-alerts #{brand_helper.get_brand_element("color")}",
+            class: "gem-c-subscription-links__link gem-c-subscription-links__link--email-alerts #{brand_helper.color_class}",
             data: sl_helper.email_signup_link_data_attributes
           %>
         </li>
@@ -25,7 +25,7 @@
       <% if sl_helper.feed_link_box_value || sl_helper.feed_link %>
         <li class="gem-c-subscription-links__list-item">
           <%= link_to sl_helper.feed_link_text, sl_helper.feed_link,
-            class: "gem-c-subscription-links__link gem-c-subscription-links__link--feed #{brand_helper.get_brand_element("color")}",
+            class: "gem-c-subscription-links__link gem-c-subscription-links__link--feed #{brand_helper.color_class}",
             data: sl_helper.feed_link_data_attributes
           %>
         </li>
