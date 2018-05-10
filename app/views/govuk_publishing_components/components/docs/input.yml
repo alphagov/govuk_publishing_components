@@ -32,12 +32,12 @@ examples:
     description: |
       Allows the addition of an aria-describedby attribute. Note that this will be overridden in the event of an error, where the error will be used for the describedby attribute value.
 
-      The example below uses the ID of the skiplink container for demonstration purposes, in real use this would be passed the ID of an element that correctly described the input.
+      The example below uses the ID of the main container for demonstration purposes as there aren't any useful elements with IDs in the component guide. In real use this would be passed the ID of an element that correctly described the input.
     data:
       label:
         text: "This might not work"
       name: "labelledby"
-      describedby: "skiplink-container"
+      describedby: "wrapper"
   with_error:
     data:
       label:

@@ -1,5 +1,6 @@
 # Unreleased
 
+* Fix automated a11y test error with input (PR #303)
 * Add an optional `canonical` meta tag (PR #302)
 * Iterate branding model (PR #300)
 
