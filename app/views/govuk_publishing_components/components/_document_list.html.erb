@@ -4,10 +4,10 @@
   margin_bottom_class = " gem-c-document-list--bottom-margin" if local_assigns[:margin_bottom]
 
   brand ||= false
-  brand_helper = GovukPublishingComponents::Presenters::BrandHelper.new(brand)
+  brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
 %>
 <% if items.any? %>
-  <ol class="gem-c-document-list<%= margin_bottom_class %><%= margin_top_class %> <%= brand_helper.get_brand %>">
+  <ol class="gem-c-document-list<%= margin_bottom_class %><%= margin_top_class %> <%= brand_helper.brand_class %>">
     <% items.each do |item| %>
       <li class="gem-c-document-list__item">
         <h3 class="gem-c-document-list__item-title">
@@ -16,7 +16,7 @@
               item[:link][:text],
               item[:link][:path],
               data: item[:link][:data_attributes],
-              class: brand_helper.get_brand_element("color")
+              class: brand_helper.color_class
             )
           %>
         </h3>

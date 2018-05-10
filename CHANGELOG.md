@@ -1,6 +1,7 @@
 # Unreleased
 
-* Add an optional `canonical` meta tag.
+* Add an optional `canonical` meta tag (PR #302)
+* Iterate branding model (PR #300)
 
 # 7.2.0
 
