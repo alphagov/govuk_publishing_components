@@ -17,16 +17,24 @@ examples:
   default:
     data:
       text: 'Download the full outcome'
+  specific_heading_level:
+    data:
+      text: 'Original consultation'
+      heading_level: 3
+  with_id_attribute:
+    data:
+      text: 'Detail of outcome'
+      id: 'detail_of_outcome'
   right_to_left:
     data:
       text: 'مستندات'
     context:
       right_to_left: true
-  with_id_attribute:
+  with_mobile_top_margin:
+    description: |
+      On publications and consultations the layout of the page requires that the heading component have spacing above it on mobile. Since this is a specific use case, this is now an option on the component rather than the default behaviour.
+
+      It is intended that this option will ultimately be deprecated once more of the frontend is componentised and a general component model of margins is implemented.
     data:
-      text: 'Detail of outcome'
-      id: 'detail_of_outcome'
-  specific_heading_level:
-    data:
-      text: 'Original consultation'
-      heading_level: 3
+      text: 'Consultation description'
+      mobile_top_margin: true

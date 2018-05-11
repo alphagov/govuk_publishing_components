@@ -25,4 +25,9 @@ describe "Heading", type: :view do
     render_component(text: 'Consultation description', id: 'custom-id')
     assert_select ".gem-c-heading[id='custom-id']", text: 'Consultation description'
   end
+
+  it "adds the correct class for publications and consultations page" do
+    render_component(text: 'Consistency is nice', mobile_top_margin: true)
+    assert_select ".gem-c-heading.gem-c-heading--mobile-top-margin"
+  end
 end

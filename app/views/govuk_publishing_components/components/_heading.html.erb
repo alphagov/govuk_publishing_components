@@ -2,9 +2,12 @@
   id ||= false
   heading_level ||= 1
   heading_level_tag = "h#{heading_level}" if [1,2,3,4,5,6].include? heading_level
+  mobile_top_margin ||= false
+
+  additional_classes = ""
+  additional_classes << "gem-c-heading--mobile-top-margin" if mobile_top_margin
 %>
 <%= content_tag(heading_level_tag, text,
-    class: "gem-c-heading",
+    class: "gem-c-heading #{additional_classes}",
     id: (id if id)
-  )
-%>
+) %>

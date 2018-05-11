@@ -1,5 +1,10 @@
 .gem-c-heading {
   @include bold-27;
+}
+
+// special case for publications and consultations pages
+// separated to allow normalisation of the component for wider use
+.gem-c-heading--mobile-top-margin {
   margin-top: $gutter;
   margin-bottom: $gutter-half;
 
