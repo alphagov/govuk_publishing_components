@@ -18,12 +18,12 @@
   html_options[:title] = title if title
 %>
 <% if href %>
-  <%= link_to(text, href.try(:html_safe), html_options) %>
+  <%= link_to(text, href, html_options) %>
 <% else %>
   <%= button_tag(text, html_options) %>
 <% end %>
 <% if info_text %>
   <span class="gem-c-button__info-text">
-    <%= info_text.try(:html_safe) %>
+    <%= info_text %>
   </span>
 <% end %>
