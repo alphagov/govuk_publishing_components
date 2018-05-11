@@ -84,7 +84,12 @@ module GovukPublishingComponents
         if link[:href]
           @link_index += 1
           href = link_href(link[:active], link[:href])
-          text = "#{link_text(link[:active], link[:text])} #{create_context(link[:context])}".html_safe
+
+          text = capture do
+            concat link_text(link[:active], link[:text])
+            concat " "
+            concat create_context(link[:context])
+          end
 
           link_to(
             href,

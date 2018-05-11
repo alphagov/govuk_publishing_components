@@ -1,5 +1,8 @@
 # Unreleased
 
+* The Button component no longer accepts unescaped HTML in the `info_text`,
+  you'll have to call `html_safe` on it yourself. Probably the only affected
+  application is `frontend` (#305)
 * Remove optional `canonical` meta tag (applications can add this tag explicitly if they need it)
 
 # 7.3.0
