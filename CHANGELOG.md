@@ -1,3 +1,7 @@
+# Unreleased
+
+* Remove optional `canonical` meta tag (applications can add this tag explicitly if they need it)
+
 # 7.3.0
 
 * Fix automated a11y test error with input (PR #303)
