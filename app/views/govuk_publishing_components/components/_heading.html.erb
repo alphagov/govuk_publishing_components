@@ -1,24 +1,9 @@
 <%
-  id ||= false
-  heading_level ||= 1
-  heading_level_tag = "h#{heading_level}" if [1,2,3,4,5,6].include? heading_level
-  mobile_top_margin ||= false
-  padding ||= false
-  margin_bottom ||= false
-  border_top ||= 0
-  font_size ||= false
-
   brand ||= false
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
-
-  additional_classes = ""
-  additional_classes << " gem-c-heading--font-size-#{font_size}" if [2,3].include? font_size
-  additional_classes << " gem-c-heading--mobile-top-margin" if mobile_top_margin
-  additional_classes << " gem-c-heading--padding" if padding
-  additional_classes << " gem-c-heading--margin-bottom-#{margin_bottom}" if [2,4].include? margin_bottom
-  additional_classes << " gem-c-heading--border-top-#{border_top}" if [1,2,5].include? border_top
+  heading_helper = GovukPublishingComponents::Presenters::HeadingHelper.new(local_assigns)
 %>
-<%= content_tag(heading_level_tag, text,
-    class: "gem-c-heading #{additional_classes} #{brand_helper.brand_class} #{brand_helper.border_color_class}",
-    id: (id if id)
+<%= content_tag(heading_helper.heading_tag, text,
+    class: "gem-c-heading #{heading_helper.classes} #{brand_helper.brand_class} #{brand_helper.border_color_class}",
+    id: heading_helper.id
 ) %>

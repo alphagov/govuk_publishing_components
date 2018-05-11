@@ -14,6 +14,7 @@ require "govuk_publishing_components/presenters/curated_taxonomy_sidebar_links"
 require "govuk_publishing_components/presenters/content_item"
 require "govuk_publishing_components/presenters/translation_nav_helper"
 require "govuk_publishing_components/presenters/subscription_links_helper"
+require "govuk_publishing_components/presenters/heading_helper"
 
 require "govuk_publishing_components/app_helpers/taxon_breadcrumbs"
 require "govuk_publishing_components/app_helpers/brand_helper"

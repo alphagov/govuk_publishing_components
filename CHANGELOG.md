@@ -7,6 +7,7 @@
 * Remove optional `canonical` meta tag (applications can add this tag explicitly if they need it)
 * Translation nav add brand and tracking (PR #298)
 * Subscription links add colour and tracking (PR #299)
+* Iterate heading component (PR #307)
 
 # 7.3.0
 
