@@ -45,4 +45,24 @@ describe "Heading", type: :view do
     render_component(text: 'Margin 4', margin_bottom: 4)
     assert_select ".gem-c-heading.gem-c-heading--margin-bottom-4"
   end
+
+  it "adds border 1" do
+    render_component(text: 'Border 1', border_top: 1)
+    assert_select ".gem-c-heading.gem-c-heading--border-top-1"
+  end
+
+  it "adds border 2" do
+    render_component(text: 'Border 2', border_top: 2)
+    assert_select ".gem-c-heading.gem-c-heading--border-top-2"
+  end
+
+  it "adds border 5" do
+    render_component(text: 'Border 5', border_top: 5)
+    assert_select ".gem-c-heading.gem-c-heading--border-top-5"
+  end
+
+  it "adds branding" do
+    render_component(text: 'Branded', brand: 'attorney-generals-office')
+    assert_select ".gem-c-heading.brand--attorney-generals-office.brand__border-color"
+  end
 end

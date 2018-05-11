@@ -5,13 +5,18 @@
   mobile_top_margin ||= false
   padding ||= false
   margin_bottom ||= false
+  border_top ||= 0
+
+  brand ||= false
+  brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
 
   additional_classes = ""
   additional_classes << " gem-c-heading--mobile-top-margin" if mobile_top_margin
   additional_classes << " gem-c-heading--padding" if padding
   additional_classes << " gem-c-heading--margin-bottom-#{margin_bottom}" if [2,4].include? margin_bottom
+  additional_classes << " gem-c-heading--border-top-#{border_top}" if [1,2,5].include? border_top
 %>
 <%= content_tag(heading_level_tag, text,
-    class: "gem-c-heading #{additional_classes}",
+    class: "gem-c-heading #{additional_classes} #{brand_helper.brand_class} #{brand_helper.border_color_class}",
     id: (id if id)
 ) %>

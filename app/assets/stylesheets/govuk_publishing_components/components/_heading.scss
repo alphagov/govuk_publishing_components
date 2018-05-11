@@ -32,3 +32,20 @@
 .gem-c-heading--margin-bottom-2 {
   margin-bottom: $gutter-half;
 }
+
+// border color will default to black
+// can be changed using the branding functionality
+.gem-c-heading--border-top-1 {
+  border-top-style: solid;
+  border-top-width: 1px;
+}
+
+.gem-c-heading--border-top-2 {
+  border-top-style: solid;
+  border-top-width: 2px;
+}
+
+.gem-c-heading--border-top-5 {
+  border-top-style: solid;
+  border-top-width: 5px;
+}
