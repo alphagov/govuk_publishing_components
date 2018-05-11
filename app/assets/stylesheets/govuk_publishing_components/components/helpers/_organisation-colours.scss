@@ -10,6 +10,9 @@
         color: nth($organisation, 3);
       }
 
+      // the & declaration allows border-color to also be applied to the parent
+      // element as required by the heading component, adds 2KB to the CSS
+      &.brand__border-color,
       .brand__border-color {
         border-color: nth($organisation, 2);
       }

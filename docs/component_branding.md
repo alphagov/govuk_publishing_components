@@ -13,7 +13,7 @@ To add colours to a component, modify the component to follow the example below.
 ```
 <%
   brand ||= false
-  brand_helper = GovukPublishingComponents::Presenters::BrandHelper.new(brand)
+  brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
 %>
 
 <div class="gem-c-component <%= brand_helper.brand_class %>">
@@ -29,9 +29,16 @@ To add colours to a component, modify the component to follow the example below.
 
 Note that the helper must be called for each element that needs a border or link colour applying. This allows for flexibility if one is required but not the other.
 
+The `brand_border_color` method/class can also be applied to the main element of a component if needed, for example where the component is only one element. This is currently not possible with `brand_color` as there is no requirement for this.
+
+```
+<h1 class="gem-c-component <%= brand_helper.brand_class %> <%= brand_helper.brand_border_color %>">Heading</h1>
+```
+
 For borders, the applied class only adds a `border-color` attribute. You will need to add the rest of the border style attributes to the component itself, for example:
 
 ```
+// this border will default to black unless the branding is applied
 .gem-c-component__title {
   border-style: solid;
   border-width: 5px;
