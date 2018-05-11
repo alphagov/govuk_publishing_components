@@ -31,30 +31,6 @@ describe "Meta tags", type: :view do
     assert_meta_tag('govuk:schema-name', 'publication')
   end
 
-  it "renders the canonical URL in a meta tag if requested" do
-    render_component(
-      content_item: { base_path: '/test' },
-      canonical_path: true,
-    )
-
-    assert_meta_tag('canonical', 'http://www.dev.gov.uk/test')
-  end
-
-  it "renders the canonical URL in a meta tag if overridden" do
-    render_component(
-      content_item: { base_path: '/test' },
-      canonical_path: '/test2',
-    )
-
-    assert_meta_tag('canonical', 'http://www.dev.gov.uk/test2')
-  end
-
-  it "doesn't renders the canonical URL in a meta tag if not requested" do
-    assert_empty render_component(content_item: {
-      base_path: '/test'
-    }).strip
-  end
-
   it "renders organisations in a meta tag with angle brackets" do
     content_item = {
       links: {

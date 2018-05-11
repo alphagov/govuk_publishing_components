@@ -23,13 +23,3 @@ examples:
         links:
           world_locations:
           - analytics_identifier: WL3
-  with_default_canonical_path:
-    data:
-      content_item:
-        base_path: /test
-      canonical_path: true
-  with_overridden_canonical_path:
-    data:
-      content_item:
-        base_path: /test
-      canonical_path: /this-is-a-test-path
