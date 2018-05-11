@@ -6,11 +6,13 @@
   padding ||= false
   margin_bottom ||= false
   border_top ||= 0
+  font_size ||= false
 
   brand ||= false
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
 
   additional_classes = ""
+  additional_classes << " gem-c-heading--font-size-#{font_size}" if [2,3].include? font_size
   additional_classes << " gem-c-heading--mobile-top-margin" if mobile_top_margin
   additional_classes << " gem-c-heading--padding" if padding
   additional_classes << " gem-c-heading--margin-bottom-#{margin_bottom}" if [2,4].include? margin_bottom

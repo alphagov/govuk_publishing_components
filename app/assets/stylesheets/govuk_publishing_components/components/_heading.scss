@@ -2,6 +2,14 @@
   @include bold-27;
 }
 
+.gem-c-heading--font-size-2 {
+  @include bold-24;
+}
+
+.gem-c-heading--font-size-3 {
+  @include bold-19;
+}
+
 // special case for publications and consultations pages
 // separated to allow normalisation of the component for wider use
 .gem-c-heading--mobile-top-margin {

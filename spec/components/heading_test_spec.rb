@@ -21,6 +21,16 @@ describe "Heading", type: :view do
     assert_select "h3.gem-c-heading", text: 'Original consultation'
   end
 
+  it "adds font size 2" do
+    render_component(text: 'font size 2', font_size: 2)
+    assert_select ".gem-c-heading.gem-c-heading--font-size-2"
+  end
+
+  it "adds font size 3" do
+    render_component(text: 'font size 3', font_size: 3)
+    assert_select ".gem-c-heading.gem-c-heading--font-size-3"
+  end
+
   it "has a specified id attribute" do
     render_component(text: 'Consultation description', id: 'custom-id')
     assert_select ".gem-c-heading[id='custom-id']", text: 'Consultation description'

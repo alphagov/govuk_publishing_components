@@ -1,7 +1,7 @@
 name: Heading
 description: A text heading
 body: |
-  A heading tag with an optional id attribute, used predominantly to the left of content on consultations and publications.
+  A versatile heading tag component, including options for different heading levels and font sizes.
 
   Real world examples:
 
@@ -21,6 +21,12 @@ examples:
     data:
       text: 'Original consultation'
       heading_level: 3
+  different_font_sizes:
+    description: Choose a font size appropriate to the chosen heading level. Valid options are 2 (24px) and 3 (19px), with the component defaulting to 27px, appropriate for a H1. This option is not tied to the heading_level option in order to give flexibility.
+    data:
+      text: 'Heading 3'
+      heading_level: 3
+      font_size: 3
   with_id_attribute:
     data:
       text: 'Detail of outcome'
