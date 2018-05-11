@@ -55,7 +55,7 @@
 
       <li class="gem-c-related-navigation__link">
         <span id="toggle_<%= section_title %>" class="js-hidden">
-          <%= constructed_link_array.to_sentence.html_safe %>
+          <%= to_sentence(constructed_link_array) %>
         </span>
       </li>
     <% end %>
