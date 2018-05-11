@@ -30,4 +30,19 @@ describe "Heading", type: :view do
     render_component(text: 'Consistency is nice', mobile_top_margin: true)
     assert_select ".gem-c-heading.gem-c-heading--mobile-top-margin"
   end
+
+  it "adds padding" do
+    render_component(text: 'Padddddding', padding: true)
+    assert_select ".gem-c-heading.gem-c-heading--padding"
+  end
+
+  it "adds margin 2" do
+    render_component(text: 'Margin 2', margin_bottom: 2)
+    assert_select ".gem-c-heading.gem-c-heading--margin-bottom-2"
+  end
+
+  it "adds margin 4" do
+    render_component(text: 'Margin 4', margin_bottom: 4)
+    assert_select ".gem-c-heading.gem-c-heading--margin-bottom-4"
+  end
 end
