@@ -1,5 +1,6 @@
 # Unreleased
 
+* Add share links component (PR #308)
 * The Button component no longer accepts unescaped HTML in the `info_text`,
   you'll have to call `html_safe` on it yourself. Probably the only affected
   application is `frontend` (#305)
