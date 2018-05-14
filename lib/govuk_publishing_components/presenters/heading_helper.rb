@@ -9,7 +9,7 @@ module GovukPublishingComponents
         @id = options[:id]
 
         @classes = ""
-        @classes << " gem-c-heading--font-size-#{options[:font_size]}" if [2, 3].include? options[:font_size]
+        @classes << " gem-c-heading--font-size-#{options[:font_size]}" if [24, 19].include? options[:font_size]
         @classes << " gem-c-heading--mobile-top-margin" if options[:mobile_top_margin]
         @classes << " gem-c-heading--padding" if options[:padding]
         @classes << " gem-c-heading--margin-bottom-#{options[:margin_bottom]}" if [2, 4].include? options[:margin_bottom]
