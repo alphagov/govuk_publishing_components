@@ -1,0 +1,38 @@
+name: Share links
+description: Links to share the current page on Facebook or Twitter
+body: |
+  Pass complete share URLs to the component. The component will not process a URL into a share link itself.
+
+  Use only with content that benefits from being shared, for example a consultation.
+
+  The component will track interactions with the share links to Google Analytics using [Social Interactions](https://developers.google.com/analytics/devguides/collection/analyticsjs/social-interactions)
+
+  Real world examples:
+
+    - [News article](/government/news/fast-tracking-uk-innovation-apply-for-business-funding)
+    - [Consultation](/government/consultations/soft-drinks-industry-levy)
+    - [Right to left](/government/news/uk-sets-out-long-term-support-for-stable-secure-and-prosperous-afghanistan-to-2020.ur)
+
+accessibility_criteria: |
+  The share link icons must be presentational and ignored by screen readers.
+shared_accessibility_criteria:
+  - link
+examples:
+  default:
+    data:
+      facebook_href: '/facebook-link'
+      twitter_href: '/twitter-link'
+  with_custom_text:
+    data:
+      title: 'Share this news article'
+      facebook_href: '/facebook-share-link'
+      twitter_href: '/twitter-share-link'
+  with_only_one_link_provided:
+    data:
+      facebook_href: '/only-facebook-link'
+  right_to_left:
+    data:
+      facebook_href: '/facebook-link'
+      twitter_href: '/twitter-link'
+    context:
+      right_to_left: true
