@@ -1,3 +1,7 @@
+# 8.0.1
+
+* Fix a bug in subscription links attributes (PR #314)
+
 # 8.0.0
 
 * Use new breadcrumbs component in contextual breadcrumbs (PR #313)
