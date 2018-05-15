@@ -168,19 +168,13 @@ describe "Contextual navigation" do
   end
 
   def and_the_parent_based_breadcrumbs
-    payload = within(shared_component_selector('breadcrumbs')) do
-      JSON.parse(page.text)
-    end
-
-    expect(payload.dig("breadcrumbs", 1, "title")).to eql("A parent")
+    expect(page).to have_selector(".gem-c-breadcrumbs")
+    expect(page).to have_content("Home A parent")
   end
 
   def and_the_taxonomy_breadcrumbs
-    payload = within(shared_component_selector('breadcrumbs')) do
-      JSON.parse(page.text)
-    end
-
-    expect(payload["breadcrumbs"].last["title"]).to eql("A live taxon")
+    expect(page).to have_selector(".gem-c-breadcrumbs")
+    expect(page).to have_content("Home A live taxon")
   end
 
   def then_i_see_the_taxonomy_sidebar_and_collection

@@ -6,18 +6,18 @@
     navigation.step_nav_helper.header %>
 <% elsif navigation.content_tagged_to_mainstream_browse_pages? %>
   <!-- Rendering parent-based breadcrumbs because the page is tagged to mainstream browse -->
-  <%= render 'govuk_component/breadcrumbs', breadcrumbs: navigation.breadcrumbs %>
+  <%= render 'govuk_publishing_components/components/breadcrumbs', breadcrumbs: navigation.breadcrumbs %>
 <% elsif navigation.content_has_curated_related_items? %>
   <!-- Rendering parent-based breadcrumbs because the page has curated related links -->
-  <%= render 'govuk_component/breadcrumbs', breadcrumbs: navigation.breadcrumbs %>
+  <%= render 'govuk_publishing_components/components/breadcrumbs', breadcrumbs: navigation.breadcrumbs %>
 <% elsif navigation.content_is_tagged_to_a_live_taxon? %>
   <!-- Rendering taxonomy breadcrumbs because the page is tagged to live taxons -->
-  <%= render 'govuk_component/breadcrumbs',
+  <%= render 'govuk_publishing_components/components/breadcrumbs',
     breadcrumbs: navigation.taxon_breadcrumbs[:breadcrumbs],
     collapse_on_mobile: true %>
 <% elsif navigation.breadcrumbs.any? %>
   <!-- Rendering parent-based breadcrumbs because no browse, no related links, no live taxons -->
-  <%= render 'govuk_component/breadcrumbs', breadcrumbs: navigation.breadcrumbs %>
+  <%= render 'govuk_publishing_components/components/breadcrumbs', breadcrumbs: navigation.breadcrumbs %>
 <% else %>
   <!-- Not rendering any breadcrumbs because there aren't any -->
 <% end %>
