@@ -6,6 +6,7 @@
   application is `frontend` (#305)
 * Remove optional `canonical` meta tag (applications can add this tag explicitly if they need it)
 * Translation nav add brand and tracking (PR #298)
+* Subscription links add colour and tracking (PR #299)
 
 # 7.3.0
 

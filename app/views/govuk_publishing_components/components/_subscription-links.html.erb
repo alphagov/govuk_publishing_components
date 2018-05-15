@@ -1,42 +1,40 @@
 <%
-  email_signup_link ||= false
-  email_signup_link_text ||= t("govuk_component.subscription_links.email_signup_link_text", default: "Get email alerts")
-  feed_link ||= false
-  feed_link_text ||= t("govuk_component.subscription_links.feed_link_text", default: "Subscribe to feed")
-  feed_link_box_value ||= false
-  feed_link_data = false
-
-  if feed_link_box_value
-    feed_link = "#"
-    feed_link_data = {
-      controls: "feed-reader",
-      expanded: "false"
-    }
-  end
+  brand ||= false
+  brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
+  sl_helper = GovukPublishingComponents::Presenters::SubscriptionLinksHelper.new(local_assigns)
 %>
-<% if email_signup_link || feed_link || feed_link_box_value %>
-  <section class="gem-c-subscription-links" data-module="gem-toggle">
+<% if sl_helper.component_data_is_valid? %>
+  <section
+    class="gem-c-subscription-links <%= brand_helper.brand_class %>"
+    <%= "data-module=gem-toggle" if sl_helper.feed_link_box_value %>
+  >
     <h2 class="visuallyhidden"><%= t("govuk_component.subscription_links.subscriptions", default: "Subscriptions") %></h2>
-    <ul class="gem-c-subscription-links__list">
-      <% if email_signup_link.present? %>
+    <ul
+      class="gem-c-subscription-links__list"
+      <%= "data-module=track-click" if sl_helper.tracking_is_present? %>
+    >
+      <% if sl_helper.email_signup_link.present? %>
         <li class="gem-c-subscription-links__list-item">
-          <%= link_to email_signup_link_text, email_signup_link, class: "gem-c-subscription-links__link gem-c-subscription-links__link--email-alerts" %>
+          <%= link_to sl_helper.email_signup_link_text, sl_helper.email_signup_link,
+            class: "gem-c-subscription-links__link gem-c-subscription-links__link--email-alerts #{brand_helper.color_class}",
+            data: sl_helper.email_signup_link_data_attributes
+          %>
         </li>
       <% end %>
 
-      <% if feed_link_box_value || feed_link.present? %>
+      <% if sl_helper.feed_link_box_value || sl_helper.feed_link %>
         <li class="gem-c-subscription-links__list-item">
-          <%= link_to feed_link_text, feed_link,
-              class: "gem-c-subscription-links__link gem-c-subscription-links__link--feed",
-              data: feed_link_data
+          <%= link_to sl_helper.feed_link_text, sl_helper.feed_link,
+            class: "gem-c-subscription-links__link gem-c-subscription-links__link--feed #{brand_helper.color_class}",
+            data: sl_helper.feed_link_data_attributes
           %>
         </li>
       <% end %>
     </ul>
 
-    <% if feed_link_box_value %>
-      <div class="gem-c-subscription-links__feed-box js-hidden" id="feed-reader">
-        <p class="gem-c-subscription-links__feed-description js-hidden"><%= feed_link_text %></p>
+    <% if sl_helper.feed_link_box_value %>
+      <div class="gem-c-subscription-links__feed-box js-hidden" id="<%= sl_helper.feed_box_id %>">
+        <p class="gem-c-subscription-links__feed-description js-hidden"><%= sl_helper.feed_link_text %></p>
         <%= render "govuk_publishing_components/components/input", {
           label: {
             text: "Copy and paste this URL into your feed reader"

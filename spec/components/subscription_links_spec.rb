@@ -21,6 +21,8 @@ describe "subscription links", type: :view do
 
   it "renders both email signup and feed links" do
     render_component(email_signup_link: 'email-signup', feed_link: 'singapore.atom')
+    assert_select ".gem-c-subscription-links[data-module='gem-toggle']", false
+    assert_select ".gem-c-subscription-links__list[data-module='track-click']", false
     assert_select ".gem-c-subscription-links__link--email-alerts[href=\"email-signup\"]", text: "Get email alerts"
     assert_select ".gem-c-subscription-links__link--feed[href=\"singapore.atom\"]", text: "Subscribe to feed"
   end
@@ -33,7 +35,31 @@ describe "subscription links", type: :view do
 
   it "renders with a feed link box" do
     render_component(feed_link_box_value: 'http://www.gov.uk', feed_link: 'singapore.atom')
+    assert_select ".gem-c-subscription-links[data-module=\"gem-toggle\"]"
     assert_select ".gem-c-subscription-links__link--feed[href=\"singapore.atom\"]", false
     assert_select ".gem-c-subscription-links__feed-box input[name='feed-reader-box'][value='http://www.gov.uk']"
+  end
+
+  it "adds branding correctly" do
+    render_component(email_signup_link: 'email-signup', feed_link: 'singapore.atom', brand: 'attorney-generals-office')
+    assert_select ".gem-c-subscription-links.brand--attorney-generals-office"
+    assert_select ".gem-c-subscription-links__link--email-alerts.brand__color"
+    assert_select ".gem-c-subscription-links__link--feed.brand__color"
+  end
+
+  it "adds tracking for email signup link" do
+    render_component(email_signup_link: 'email-signup', email_signup_link_data_attributes: { 'track_category': 'test' })
+    assert_select ".gem-c-subscription-links__list[data-module=\"track-click\"] .gem-c-subscription-links__link--email-alerts[data-track-category=\"test\"]"
+  end
+
+  it "adds tracking for feed link" do
+    render_component(feed_link: 'feed', feed_link_data_attributes: { 'track_category': 'test' })
+    assert_select ".gem-c-subscription-links__list[data-module=\"track-click\"] .gem-c-subscription-links__link--feed[data-track-category=\"test\"]"
+  end
+
+  it "adds tracking for feed link when it is a toggle" do
+    render_component(feed_link_box_value: 'feed', feed_link_data_attributes: { 'track_category': 'test' })
+    assert_select ".gem-c-subscription-links[data-module=\"gem-toggle\"]"
+    assert_select ".gem-c-subscription-links__list[data-module=\"track-click\"] .gem-c-subscription-links__link--feed[data-track-category=\"test\"]"
   end
 end
