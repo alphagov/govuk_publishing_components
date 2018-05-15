@@ -36,8 +36,8 @@ module GovukPublishingComponents
 
       def feed_link_data_attributes
         data = @local_assigns[:feed_link_data_attributes] || {}
-        data[:controls] = feed_box_id
-        data[:expanded] = "false"
+        data[:controls] = feed_box_id if feed_link_box_value
+        data[:expanded] = "false" if feed_link_box_value
         data
       end
     end

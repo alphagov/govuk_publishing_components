@@ -17,6 +17,7 @@ describe "subscription links", type: :view do
   it "renders a feed link" do
     render_component(feed_link: 'singapore.atom')
     assert_select ".gem-c-subscription-links__link--feed[href=\"singapore.atom\"]", text: "Subscribe to feed"
+    assert_select ".gem-c-subscription-links__link--feed[data-controls][data-expanded]", false
   end
 
   it "renders both email signup and feed links" do
