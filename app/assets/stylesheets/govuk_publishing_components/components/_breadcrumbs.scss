@@ -19,7 +19,7 @@
   }
 
   @include media-down(mobile) {
-    &.gem-c-breadcrumbs--collapse-on-mobile li {
+    &.gem-c-breadcrumbs--collapse-on-mobile .gem-c-breadcrumbs--item {
       display: none;
 
       &.gem-c-breadcrumbs--parent {
