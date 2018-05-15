@@ -5,6 +5,7 @@
   you'll have to call `html_safe` on it yourself. Probably the only affected
   application is `frontend` (#305)
 * Remove optional `canonical` meta tag (applications can add this tag explicitly if they need it)
+* Translation nav add brand and tracking (PR #298)
 
 # 7.3.0
 

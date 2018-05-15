@@ -69,4 +69,17 @@ describe "Translation nav", type: :view do
     render_component(translations: multiple_translations)
     assert_select "nav[role='navigation'][aria-label='Translations']"
   end
+
+  it "adds branding correctly" do
+    render_component(translations: multiple_translations, brand: 'attorney-generals-office')
+    assert_select ".gem-c-translation-nav.brand--attorney-generals-office"
+    assert_select ".gem-c-translation-nav .brand__color"
+  end
+
+  it "adds data tracking" do
+    translations_with_tracking = multiple_translations
+    translations_with_tracking[1][:data_attributes] = { track_category: 'category', track_label: 'label' }
+    render_component(translations: translations_with_tracking)
+    assert_select ".gem-c-translation-nav a[data-track-category='category'][data-track-label='label']", text: "हिंदी"
+  end
 end
