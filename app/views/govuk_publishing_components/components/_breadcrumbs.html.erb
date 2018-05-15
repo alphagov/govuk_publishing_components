@@ -4,7 +4,12 @@
   inverse ||= false
   collapse_class =  collapse_on_mobile && breadcrumbs.any? { |crumb| crumb[:is_page_parent] } ? "gem-c-breadcrumbs--collapse-on-mobile" : ""
   invert_class = inverse ? "gem-c-breadcrumbs--inverse" : ""
+  structured_data = GovukPublishingComponents::Presenters::Breadcrumbs.new(breadcrumbs, request.path).structured_data %>
 %>
+
+<script type="application/ld+json">
+  <%= raw structured_data.to_json %>
+</script>
 
 <div class="gem-c-breadcrumbs <%= collapse_class %>" data-module="track-click">
   <ol>
