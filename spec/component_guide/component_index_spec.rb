@@ -14,7 +14,6 @@ describe 'Component guide index' do
     visit '/component-guide'
 
     expect(GovukPublishingComponents::ApplicationController).to include(Slimmer::GovukComponents)
-    expect(page).to have_selector(shared_component_selector('breadcrumbs'))
     expect(page).to have_selector(shared_component_selector('title'))
   end
 

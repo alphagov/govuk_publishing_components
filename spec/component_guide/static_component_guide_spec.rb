@@ -23,7 +23,6 @@ describe 'Static’s component guide' do
   it 'loads shared components locally rather than through the network using Slimmer’s local component resolver' do
     visit '/component-guide'
 
-    expect(page).to have_selector('.stubbed-breadcrumbs-component')
     expect(page).to have_selector('.stubbed-title-component')
   end
 end
