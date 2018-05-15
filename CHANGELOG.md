@@ -1,5 +1,6 @@
-# Unreleased
+# 8.0.0
 
+* Use new breadcrumbs component in contextual breadcrumbs (PR #313)
 * Add share links component (PR #308)
 * The Button component no longer accepts unescaped HTML in the `info_text`,
   you'll have to call `html_safe` on it yourself. Probably the only affected
