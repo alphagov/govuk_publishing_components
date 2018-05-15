@@ -8,6 +8,7 @@
 * Translation nav add brand and tracking (PR #298)
 * Subscription links add colour and tracking (PR #299)
 * Iterate heading component (PR #307)
+* Add breadcrumbs component (PR #309)
 
 # 7.3.0
 
