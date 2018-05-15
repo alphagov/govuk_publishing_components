@@ -11,7 +11,7 @@ describe "Breadcrumbs", type: :view do
 
   it "no error if no parameters passed in" do
     render_component({})
-    assert_select ".govuk-breadcrumbs"
+    assert_select ".gem-c-breadcrumbs"
   end
 
   it "renders a single breadcrumb" do
@@ -28,7 +28,7 @@ describe "Breadcrumbs", type: :view do
       dimension29: "Section"
     }
 
-    assert_select '.govuk-breadcrumbs[data-module="track-click"]', 1
+    assert_select '.gem-c-breadcrumbs[data-module="track-click"]', 1
     assert_select 'ol li:first-child a[data-track-action="1"]', 1
     assert_select 'ol li:first-child a[data-track-label="/section"]', 1
     assert_select 'ol li:first-child a[data-track-category="breadcrumbClicked"]', 1
@@ -72,7 +72,7 @@ describe "Breadcrumbs", type: :view do
         { title: 'Section', url: '/section' },
       ], inverse: true)
 
-    assert_select ".govuk-breadcrumbs--inverse"
+    assert_select ".gem-c-breadcrumbs--inverse"
   end
 
   it "allows the last breadcrumb to be text only" do

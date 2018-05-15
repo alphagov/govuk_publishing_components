@@ -3,7 +3,7 @@
 @import "mixins/media-down";
 @import "mixins/touch-friendly-links";
 
-.govuk-breadcrumbs {
+.gem-c-breadcrumbs {
   // reset the default browser styles
   ol {
     padding: 0;
@@ -13,16 +13,16 @@
   @include breadcrumbs;
   @include touch-friendly-links();
 
-  .breadcrumb-for-current-page {
+  .gem-c-breadcrumbs--current {
     color: $secondary-text-colour;
     text-decoration: none;
   }
 
   @include media-down(mobile) {
-    &.collapse-on-mobile li {
+    &.gem-c-breadcrumbs--collapse-on-mobile li {
       display: none;
 
-      &.parent-breadcrumb {
+      &.gem-c-breadcrumbs--parent {
         background-image: none;
         display: block;
         margin-left: 0;
@@ -37,7 +37,7 @@
   }
 }
 
-.breadcrumb-for-current-page.govuk-breadcrumbs--inverse,
-.govuk-breadcrumbs .govuk-breadcrumbs--inverse {
+.gem-c-breadcrumbs--current.gem-c-breadcrumbs--inverse,
+.gem-c-breadcrumbs .gem-c-breadcrumbs--inverse {
   color: $white;
 }
