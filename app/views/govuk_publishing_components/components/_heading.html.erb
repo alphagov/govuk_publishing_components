@@ -1,11 +1,9 @@
 <%
-  id = "id=#{id}" if id
-  heading_level ||= 1
-  heading_level_tag = "h#{heading_level}" if [1,2,3,4,5,6].include? heading_level
+  brand ||= false
+  brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
+  heading_helper = GovukPublishingComponents::Presenters::HeadingHelper.new(local_assigns)
 %>
-<<%= heading_level_tag %>
-  <%= id %>
-  class="gem-c-heading"
->
-  <%= text %>
-</<%= heading_level_tag %>>
+<%= content_tag(heading_helper.heading_tag, text,
+    class: "gem-c-heading #{heading_helper.classes} #{brand_helper.brand_class} #{brand_helper.border_color_class}",
+    id: heading_helper.id
+) %>

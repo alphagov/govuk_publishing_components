@@ -1,5 +1,18 @@
 .gem-c-heading {
   @include bold-27;
+}
+
+.gem-c-heading--font-size-24 {
+  @include bold-24;
+}
+
+.gem-c-heading--font-size-19 {
+  @include bold-19;
+}
+
+// special case for publications and consultations pages
+// separated to allow normalisation of the component for wider use
+.gem-c-heading--mobile-top-margin {
   margin-top: $gutter;
   margin-bottom: $gutter-half;
 
@@ -7,4 +20,40 @@
     margin-top: 0;
     margin-bottom: $gutter;
   }
+}
+
+.gem-c-heading--padding {
+  padding: $gutter-half 0;
+}
+
+// margins would ideally be handled by a general model for all components
+// but we don't have one yet, so this is in anticipation of that
+// suggested scale is as follows, not fully implemented
+// $gutter = 4
+// $gutter-two-thirds = 3
+// $gutter-half = 2
+// $gutter-one-third = 1
+.gem-c-heading--margin-bottom-4 {
+  margin-bottom: $gutter;
+}
+
+.gem-c-heading--margin-bottom-2 {
+  margin-bottom: $gutter-half;
+}
+
+// border color will default to black
+// can be changed using the branding functionality
+.gem-c-heading--border-top-1 {
+  border-top-style: solid;
+  border-top-width: 1px;
+}
+
+.gem-c-heading--border-top-2 {
+  border-top-style: solid;
+  border-top-width: 2px;
+}
+
+.gem-c-heading--border-top-5 {
+  border-top-style: solid;
+  border-top-width: 5px;
 }
