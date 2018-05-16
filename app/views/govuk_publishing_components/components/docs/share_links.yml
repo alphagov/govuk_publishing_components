@@ -65,4 +65,14 @@ examples:
           icon: 'facebook'
         }
       ]
-
+  with_branding:
+    description: Organisation [colour branding](https://github.com/alphagov/govuk_publishing_components/blob/master/docs/component_branding.md) can be added to the component as shown.
+    data:
+      brand: 'attorney-generals-office'
+      links: [
+        {
+          href: 'share',
+          text: 'Follow the Attorney General on Twitter',
+          icon: 'twitter'
+        }
+      ]

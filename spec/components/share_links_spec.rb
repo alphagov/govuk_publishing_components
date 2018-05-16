@@ -49,4 +49,9 @@ describe "ShareLinks", type: :view do
     assert_select '.gem-c-share-links__link[data-track-category="social media"][data-track-action="facebook"]'
     assert_select '.gem-c-share-links__link[data-track-options=\'{"socialAction":"share","socialNetwork":"facebook","socialTarget":"/facebook"}\']'
   end
+
+  it "adds branding correctly" do
+    render_component(links: [links[0]], brand: 'attorney-generals-office')
+    assert_select ".gem-c-share-links.brand--attorney-generals-office .gem-c-share-links__link.brand__color"
+  end
 end
