@@ -20,19 +20,31 @@ shared_accessibility_criteria:
 examples:
   default:
     data:
-      facebook_href: '/facebook-link'
-      twitter_href: '/twitter-link'
-  with_custom_text:
-    data:
-      title: 'Share this news article'
-      facebook_href: '/facebook-share-link'
-      twitter_href: '/twitter-share-link'
-  with_only_one_link_provided:
-    data:
-      facebook_href: '/only-facebook-link'
+      links: [
+        {
+          href: '/facebook-share-link',
+          text: 'Facebook',
+          icon: 'facebook'
+        },
+        {
+          href: '/twitter-share-link',
+          text: 'Twitter',
+          icon: 'twitter'
+        },
+      ]
   right_to_left:
     data:
-      facebook_href: '/facebook-link'
-      twitter_href: '/twitter-link'
+      links: [
+        {
+          href: '/facebook-share-link',
+          text: 'Facebook',
+          icon: 'facebook'
+        },
+        {
+          href: '/twitter-share-link',
+          text: 'Twitter',
+          icon: 'twitter'
+        },
+      ]
     context:
       right_to_left: true

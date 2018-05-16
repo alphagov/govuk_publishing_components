@@ -5,28 +5,43 @@ describe "ShareLinks", type: :view do
     "share_links"
   end
 
+  def links
+    [
+      {
+        href: '/facebook',
+        text: 'Facebook',
+        icon: 'facebook'
+      },
+      {
+        href: '/twitter',
+        text: 'Twitter',
+        icon: 'twitter'
+      },
+    ]
+  end
+
   it "renders nothing when no share links provided" do
     assert_empty render_component({})
   end
 
   it "renders share links correctly" do
-    render_component(facebook_href: '/facebook', twitter_href: '/twitter')
+    render_component(links: links)
     assert_select ".gem-c-share-links .gem-c-share-links__link[href=\"/facebook\"]"
     assert_select ".gem-c-share-links .gem-c-share-links__link[href=\"/twitter\"]"
   end
 
   it "renders a default title if no custom title is provided" do
-    render_component(facebook_href: '/facebook', twitter_href: '/twitter')
+    render_component(links: links)
     assert_select ".gem-c-share-links__title", text: "Share this page"
   end
 
   it "renders a share link with custom link text correctly" do
-    render_component(facebook_href: '/facebook', twitter_href: '/twitter', title: 'Share this article')
+    render_component(links: links, title: 'Share this article')
     assert_select ".gem-c-share-links__title", text: "Share this article"
   end
 
   it "renders a share link if only one share link provided" do
-    render_component(facebook_href: '/facebook')
+    render_component(links: [links[0]])
     assert_select ".gem-c-share-links .gem-c-share-links__link[href=\"/facebook\"]"
     assert_select ".gem-c-share-links .gem-c-share-links__link[href=\"/twitter\"]",
       false, "A twitter share link has not been provided so should not have been rendered"
