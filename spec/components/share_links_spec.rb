@@ -48,4 +48,10 @@ describe "ShareLinks", type: :view do
     assert_select ".gem-c-share-links .gem-c-share-links__link__icon--twitter",
       false, "A twitter share link has not been provided so a twitter icon should not have been rendered"
   end
+
+  it "adds social interactions tracking" do
+    render_component(links: [links[0]], track_as_sharing: true)
+    assert_select '.gem-c-share-links__link[data-track-category="social media"][data-track-action="facebook"]'
+    assert_select '.gem-c-share-links__link[data-track-options=\'{"socialAction":"share","socialNetwork":"facebook","socialTarget":"/facebook"}\']'
+  end
 end
