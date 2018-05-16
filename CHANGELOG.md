@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 8.1.0
+
+* Add the "Machine readable metadata" component (PR #318)
+
 ## 8.0.1
 
 * Fix a bug in subscription links attributes (PR #314)
