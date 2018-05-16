@@ -1,0 +1,5 @@
+<% structured_data = GovukPublishingComponents::Presenters::SchemaOrg.new(local_assigns).structured_data %>
+
+<script type="application/ld+json">
+  <%= raw structured_data.to_json %>
+</script>
