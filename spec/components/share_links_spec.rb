@@ -30,14 +30,9 @@ describe "ShareLinks", type: :view do
     assert_select ".gem-c-share-links .gem-c-share-links__link[href=\"/twitter\"]"
   end
 
-  it "renders a default title if no custom title is provided" do
-    render_component(links: links)
+  it "renders a custom title" do
+    render_component(links: links, title: 'Share this page')
     assert_select ".gem-c-share-links__title", text: "Share this page"
-  end
-
-  it "renders a share link with custom link text correctly" do
-    render_component(links: links, title: 'Share this article')
-    assert_select ".gem-c-share-links__title", text: "Share this article"
   end
 
   it "renders a share link if only one share link provided" do

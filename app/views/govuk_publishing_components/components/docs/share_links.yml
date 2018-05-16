@@ -55,3 +55,14 @@ examples:
           icon: 'facebook'
         }
       ]
+  with_title:
+    data:
+      title: 'Share this page'
+      links: [
+        {
+          href: 'share',
+          text: 'Share on Facebook',
+          icon: 'facebook'
+        }
+      ]
+

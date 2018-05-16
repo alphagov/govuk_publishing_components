@@ -1,11 +1,13 @@
 <%
-  title ||= 'Share this page'
   links ||= []
+  title ||= false
   track_as_sharing ||= false
 %>
 <% if links.any? %>
   <div class="gem-c-share-links dont-print" data-module="track-click">
-    <h2 class="gem-c-share-links__title"><%= title %></h2>
+    <% if title %>
+      <h2 class="gem-c-share-links__title"><%= title %></h2>
+    <% end %>
 
     <ul class="gem-c-share-links__list">
       <% links.each do |link| %>
