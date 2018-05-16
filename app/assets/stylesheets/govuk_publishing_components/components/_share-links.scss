@@ -46,3 +46,9 @@ $share-button-height: 32px;
     }
   }
 }
+
+.gem-c-share-links--stacked {
+  .gem-c-share-links__list-item {
+    display: block;
+  }
+}

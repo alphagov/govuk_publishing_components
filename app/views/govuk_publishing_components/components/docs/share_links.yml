@@ -76,3 +76,18 @@ examples:
           icon: 'twitter'
         }
       ]
+  stack_vertically:
+    data:
+      stacked: true
+      links: [
+        {
+          href: '/facebook-share-link',
+          text: 'Facebook',
+          icon: 'facebook'
+        },
+        {
+          href: '/twitter-share-link',
+          text: 'Twitter',
+          icon: 'twitter'
+        },
+      ]

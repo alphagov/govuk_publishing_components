@@ -54,4 +54,9 @@ describe "ShareLinks", type: :view do
     render_component(links: [links[0]], brand: 'attorney-generals-office')
     assert_select ".gem-c-share-links.brand--attorney-generals-office .gem-c-share-links__link.brand__color"
   end
+
+  it "accepts the stacking option" do
+    render_component(links: links, stacked: true)
+    assert_select ".gem-c-share-links.gem-c-share-links--stacked"
+  end
 end
