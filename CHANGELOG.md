@@ -5,15 +5,16 @@
 
 ## 8.0.0
 
-* Use new breadcrumbs component in contextual breadcrumbs (PR #313)
-* Add share links component (PR #308)
-* The Button component no longer accepts unescaped HTML in the `info_text`,
+* BREAKING: The Button component no longer accepts unescaped HTML in the `info_text`,
   you'll have to call `html_safe` on it yourself. Probably the only affected
   application is `frontend` (#305)
-* Remove optional `canonical` meta tag (applications can add this tag explicitly if they need it)
+* BREAKING: Remove optional `canonical` meta tag (applications can add this tag explicitly if they need it)
+* BREAKING: Iterate heading component (PR #307)
+
+* Use new breadcrumbs component in contextual breadcrumbs (PR #313)
+* Add share links component (PR #308)
 * Translation nav add brand and tracking (PR #298)
 * Subscription links add colour and tracking (PR #299)
-* Iterate heading component (PR #307)
 * Add breadcrumbs component (PR #309) with schema data (PR #310)
 
 ## 7.3.0
@@ -36,11 +37,9 @@
 
 ## 7.0.0
 
+* BREAKING: Breaks the search component (at the moment only used by finder-frontend, so if won't be breaking for other apps).
 * Add an optional meta tag to signal dates should be stripped from
   data sent to Google Analytics. (#282)
-
-* Breaks the search component (at the moment only used by finder-frontend, so if
-  won't be breaking for other apps).
 
 ## 6.7.0
 
@@ -86,7 +85,7 @@
 * Fix visited link colour on focus for white feedback links (PR #239)
 * Fix input error colour (PR #241)
 * Add helper for generating breadcrumbs on taxon and taxonomy-based finder pages (PR #242)
-* Breaking: merge the [govuk_navigation_helpers][] gem into this project (#244). To upgrade, you will have to use the contextual navigation components ([sidebar](https://govuk-publishing-components.herokuapp.com/component-guide/contextual_sidebar) and [breadcrumbs](https://govuk-publishing-components.herokuapp.com/component-guide/contextual_breadcrumbs)) .
+* BREAKING: merge the [govuk_navigation_helpers][] gem into this project (#244). To upgrade, you will have to use the contextual navigation components ([sidebar](https://govuk-publishing-components.herokuapp.com/component-guide/contextual_sidebar) and [breadcrumbs](https://govuk-publishing-components.herokuapp.com/component-guide/contextual_breadcrumbs)) .
 
 [govuk_navigation_helpers]: https://github.com/alphagov/govuk_navigation_helpers
 
@@ -201,8 +200,8 @@ compatible with previous versions of the component. (PR #164)
 
 ## 5.0.0
 
-* Rename task list components (PR #156), breaking change
-* Remove task list groups (PR #154), breaking change
+* BREAKING: Rename task list components (PR #156), breaking change
+* BREAKING: Remove task list groups (PR #154), breaking change
 
 * To include the CSS for all components in the gem, you can now do:
 
@@ -232,7 +231,7 @@ And for print styles
 
 ## 4.0.0
 
-* Namespace hosted components with `govuk_publishing_components` (PR #136)
+* BREAKING: Namespace hosted components with `govuk_publishing_components` (PR #136)
   * References to components hosted in gem need to point to `govuk_publishing_components/components` rather than `/components`. This includes stylesheets, partials and javascripts.
   * References to task list print styles must be updated to point at the new /print subdirectory
 
@@ -275,12 +274,12 @@ And for print styles
 * Added task_list, task_list_header and task_list_related components which were
   in Static.  It's not a breaking change to this gem to include them, but they
   are not backwardly compatible with previous versions of the components. (PR #105)
-* Work to tidy up the dummy application to more closely represent GOVUK rails
+* Work to tidy up the dummy application to more closely represent GOV.UK rails
   apps (PR #104)
 
 ## 2.0.0
 
-Breaking release, should be easy to migrate.
+BREAKING: breaking release, should be easy to migrate.
 
 Previously with aXe we excluded all warnings relating to duplicate ids, this release allows you to exclude any rules you'd like to but removes this default.
 Any components that relied on this default will need this rule adding to their documentation file.
