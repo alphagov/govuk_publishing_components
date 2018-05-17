@@ -122,6 +122,10 @@ $border-color: #ccc;
     background-color: $govuk-blue;
   }
 
+  &.component-output {
+    padding: 0;
+  }
+
   padding: ($gutter * 1.5) $gutter $gutter;
   border: 1px solid $border-colour;
   position: relative;
