@@ -9,28 +9,32 @@
 <% if href %>
   <div class="gem-c-image-card">
     <% if image_src %>
-      <img src="<%= image_src %>"
-        class="gem-c-image-card__image"
-        alt="<%= image_alt %>"
-      />
+      <figure class="gem-c-image-card__image-wrapper">
+        <img src="<%= image_src %>"
+          class="gem-c-image-card__image"
+          alt="<%= image_alt %>"
+        />
+      </figure>
     <% end %>
 
-    <% if metadata %>
-      <p class="gem-c-image-card__metadata">
-        <%= metadata %>
-      </p>
-    <% end %>
+    <div class="gem-c-image-card__text-wrapper">
+      <% if metadata %>
+        <p class="gem-c-image-card__metadata">
+          <%= metadata %>
+        </p>
+      <% end %>
 
-    <% if heading_text %>
-      <h2 class="gem-c-image-card__title">
-        <%= link_to heading_text, href, class: "gem-c-image-card__title-link" %>
-      </h2>
-    <% end %>
+      <% if heading_text %>
+        <h2 class="gem-c-image-card__title">
+          <%= link_to heading_text, href, class: "gem-c-image-card__title-link" %>
+        </h2>
+      <% end %>
 
-    <% if description %>
-      <p class="gem-c-image-card__description">
-        <%= description %>
-      </p>
-    <% end %>
+      <% if description %>
+        <p>
+          <%= description %>
+        </p>
+      <% end %>
+    </div>
   </div>
 <% end %>
