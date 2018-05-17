@@ -15,6 +15,13 @@ examples:
       href: '/not-a-page'
       image_src: 'https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG'
       heading_text: 'News headline'
+  with_a_different_heading_level:
+    description: Use a different heading level for the main link title. Defaults to H2 if not passed.
+    data:
+      href: '/really-not-a-page'
+      image_src: 'https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG'
+      heading_text: 'I am a heading level 3'
+      heading_level: 3
   with_more_information:
     data:
       href: '/also-not-a-page'

@@ -19,6 +19,11 @@ describe "ImageCard", type: :view do
     assert_select ".gem-c-image-card .gem-c-image-card__title", text: 'This is some text'
   end
 
+  it "can render different heading levels" do
+    render_component(href: '#', heading_text: 'heading 1', heading_level: 1)
+    assert_select ".gem-c-image-card h1.gem-c-image-card__title", text: 'heading 1'
+  end
+
   it "shows metadata and description" do
     render_component(href: '#', metadata: 'some metadata', description: 'description')
     assert_select ".gem-c-image-card .gem-c-image-card__metadata", text: 'some metadata'
