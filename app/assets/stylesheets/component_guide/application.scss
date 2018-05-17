@@ -106,6 +106,12 @@ $border-color: #ccc;
   }
 }
 
+.component-output {
+  > pre {
+    max-height: 200px;
+  }
+}
+
 .component-guide-preview {
   &.direction-rtl {
     direction: rtl;

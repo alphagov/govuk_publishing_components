@@ -17,7 +17,8 @@ module GovukPublishingComponents
       accessibility_criteria,
       accessibility_excluded_rules,
       examples,
-      source
+      source,
+      display_html
     )
       @id = id
       @name = name
@@ -27,6 +28,7 @@ module GovukPublishingComponents
       @accessibility_excluded_rules = accessibility_excluded_rules
       @examples = examples
       @source = source
+      @display_html = display_html
     end
 
     def example
@@ -35,6 +37,10 @@ module GovukPublishingComponents
 
     def other_examples
       examples.slice(1..-1)
+    end
+
+    def display_html?
+      @display_html
     end
 
     def html_body

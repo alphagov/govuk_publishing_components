@@ -7,6 +7,7 @@ body: |
   The code which reads the meta tags can be found <a href="https://github.com/alphagov/static/blob/master/app/assets/javascripts/analytics/static-analytics.js#L76-L96">in static-analytics.js</a>.
 accessibility_criteria: |
   The analytics meta tags component should not be visible to any users.
+display_html: true
 examples:
   with_organisations:
     data:

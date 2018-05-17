@@ -2,12 +2,5 @@
             <% if example.right_to_left? %>direction-rtl<% end %>
             <% if example.dark_background? %>dark-background<% end %>
             <% if preview_page %>component-guide-preview--simple<% end %>" data-content="EXAMPLE">
-
-  <% if example.has_block? %>
-    <%= render component_doc.partial_path, example.html_safe_data do %>
-      <%= example.block.html_safe %>
-    <% end %>
-  <% else %>
-    <%= render component_doc.partial_path, example.html_safe_data %>
-  <% end %>
+  <%= render "govuk_publishing_components/component_guide/component_doc/component_output", example: example, component_doc: component_doc %>
 </div>
