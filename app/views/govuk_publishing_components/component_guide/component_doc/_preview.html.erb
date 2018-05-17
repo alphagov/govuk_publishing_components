@@ -3,3 +3,10 @@
   <div class="component-guide-preview component-guide-preview--violation" data-module="test-a11y-violation" data-content="Accessibility Issues"></div>
   <div class="component-guide-preview component-guide-preview--warning" data-module="test-a11y-warning" data-content="Potential accessibility issues: need manual check"></div>
 </div>
+
+<% if component_doc.display_html? %>
+  <div class="component-guide-preview component-call component-highlight component-output" data-content="HTML OUTPUT">
+    <% html_output = render "govuk_publishing_components/component_guide/component_doc/component_output", example: example, component_doc: component_doc %>
+    <pre><code><%= raw example.highlight_code(html_output.strip) %></code></pre>
+  </div>
+<% end %>

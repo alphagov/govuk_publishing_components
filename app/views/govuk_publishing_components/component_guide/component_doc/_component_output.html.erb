@@ -1,0 +1,7 @@
+<% if example.has_block? %>
+  <%= render component_doc.partial_path, example.html_safe_data do %>
+    <%= example.block.html_safe %>
+  <% end %>
+<% else %>
+  <%= render component_doc.partial_path, example.html_safe_data %>
+<% end %>

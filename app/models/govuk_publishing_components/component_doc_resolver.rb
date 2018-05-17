@@ -31,6 +31,7 @@ module GovukPublishingComponents
         component[:accessibility_excluded_rules],
         examples,
         component[:source],
+        component[:display_html],
       )
     end
 
