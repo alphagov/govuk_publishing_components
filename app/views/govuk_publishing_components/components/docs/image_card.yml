@@ -22,5 +22,11 @@ examples:
       metadata: '10 May 2018 - Press release'
       heading_text: 'Government does things'
       description: 'Following a thorough review of existing procedure, a government body has today announced that further work is necessary.'
-
-      #https://assets.publishing.service.gov.uk/frontend/homepage/leaving-the-eu-bc9992ee672a30d8e8a3e195c9afa750e618748130a4e073a593ba36dfc29af9.jpg
+  large_version:
+    data:
+      large: true
+      href: '/still-not-a-page'
+      image_src: 'https://assets.publishing.service.gov.uk/frontend/homepage/leaving-the-eu-bc9992ee672a30d8e8a3e195c9afa750e618748130a4e073a593ba36dfc29af9.jpg'
+      metadata: '14 Jun 2017 - Announcement'
+      heading_text: 'Something has happened nearby possibly'
+      description: 'Following a news report that something has happened, further details are emerging of the thing that has happened and what that means for you.'

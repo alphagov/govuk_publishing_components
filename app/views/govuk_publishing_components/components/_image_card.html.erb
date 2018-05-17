@@ -5,9 +5,10 @@
   heading_text ||= false
   metadata ||= false
   description ||= false
+  large ||= false
 %>
 <% if href %>
-  <div class="gem-c-image-card">
+  <div class="gem-c-image-card <%= "gem-c-image-card--large" if large %>">
     <% if image_src %>
       <figure class="gem-c-image-card__image-wrapper">
         <img src="<%= image_src %>"
@@ -31,7 +32,7 @@
       <% end %>
 
       <% if description %>
-        <p>
+        <p class="gem-c-image-card__description">
           <%= description %>
         </p>
       <% end %>

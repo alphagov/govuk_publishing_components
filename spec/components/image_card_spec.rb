@@ -24,4 +24,9 @@ describe "ImageCard", type: :view do
     assert_select ".gem-c-image-card .gem-c-image-card__metadata", text: 'some metadata'
     assert_select ".gem-c-image-card .gem-c-image-card__description", text: 'description'
   end
+
+  it "renders a large version" do
+    render_component(href: '#', large: true)
+    assert_select ".gem-c-image-card.gem-c-image-card--large"
+  end
 end
