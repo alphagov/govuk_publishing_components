@@ -1,0 +1,19 @@
+name: Image card
+description: Image and associated text with a link
+body: |
+  An image and an associated link, meant for use for news articles and similar.
+accessibility_criteria: |
+  The component must:
+
+  - include alt text for images when present
+  - not have duplicate links for the image and the text
+shared_accessibility_criteria:
+  - link
+examples:
+  default:
+    data:
+      href: '/not-a-page'
+      image_src: 'https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG'
+      heading_text: 'News headline'
+
+      #https://assets.publishing.service.gov.uk/frontend/homepage/leaving-the-eu-bc9992ee672a30d8e8a3e195c9afa750e618748130a4e073a593ba36dfc29af9.jpg

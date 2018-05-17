@@ -1,0 +1,22 @@
+<%
+  href ||= false
+  image_src ||= false
+  image_alt ||= ""
+  heading_text ||= false
+%>
+<% if href %>
+  <div class="gem-c-image-card">
+    <% if image_src %>
+      <img src="<%= image_src %>"
+        class="gem-c-image-card__image"
+        alt="<%= image_alt %>"
+      />
+    <% end %>
+
+    <% if heading_text %>
+      <h2 class="gem-c-image-card__title">
+        <%= link_to heading_text, href, class: "gem-c-image-card__title-link" %>
+      </h2>
+    <% end %>
+  </div>
+<% end %>

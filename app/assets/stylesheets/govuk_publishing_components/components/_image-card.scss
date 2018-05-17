@@ -1,0 +1,24 @@
+.gem-c-image-card {
+  position: relative;
+}
+
+.gem-c-image-card__image {
+  max-width: 100%;
+}
+
+.gem-c-image-card__title {
+  @include bold-19;
+  text-decoration: none;
+}
+
+.gem-c-image-card__title-link {
+  &:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+}
