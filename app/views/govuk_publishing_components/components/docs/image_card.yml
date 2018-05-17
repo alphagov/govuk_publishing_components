@@ -15,5 +15,12 @@ examples:
       href: '/not-a-page'
       image_src: 'https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG'
       heading_text: 'News headline'
+  with_more_information:
+    data:
+      href: '/also-not-a-page'
+      image_src: 'https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG'
+      metadata: '10 May 2018 - Press release'
+      heading_text: 'Government does things'
+      description: 'Following a thorough review of existing procedure, a government body has today announced that further work is necessary.'
 
       #https://assets.publishing.service.gov.uk/frontend/homepage/leaving-the-eu-bc9992ee672a30d8e8a3e195c9afa750e618748130a4e073a593ba36dfc29af9.jpg

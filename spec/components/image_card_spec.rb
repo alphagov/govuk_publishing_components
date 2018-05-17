@@ -18,4 +18,10 @@ describe "ImageCard", type: :view do
     render_component(href: '#', heading_text: 'This is some text')
     assert_select ".gem-c-image-card .gem-c-image-card__title", text: 'This is some text'
   end
+
+  it "shows metadata and description" do
+    render_component(href: '#', metadata: 'some metadata', description: 'description')
+    assert_select ".gem-c-image-card .gem-c-image-card__metadata", text: 'some metadata'
+    assert_select ".gem-c-image-card .gem-c-image-card__description", text: 'description'
+  end
 end

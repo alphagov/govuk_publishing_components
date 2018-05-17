@@ -1,13 +1,36 @@
 .gem-c-image-card {
   position: relative;
+  margin-bottom: $gutter-half;
+
+  @include media(tablet) {
+    margin-bottom: $gutter;
+  }
 }
 
 .gem-c-image-card__image {
+  display: block;
   max-width: 100%;
+  margin-bottom: $gutter-one-third;
+}
+
+.gem-c-image-card__metadata,
+.gem-c-image-card__description {
+  position: relative;
+  z-index: 2;
+}
+
+.gem-c-image-card__metadata {
+  @include core-14;
+  color: $grey-1;
+}
+
+.gem-c-image-card__description {
+
 }
 
 .gem-c-image-card__title {
   @include bold-19;
+  margin-bottom: $gutter-one-quarter;
   text-decoration: none;
 }
 
