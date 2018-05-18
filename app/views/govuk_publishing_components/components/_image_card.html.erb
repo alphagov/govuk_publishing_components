@@ -1,67 +1,32 @@
 <%
-  href ||= false
-  href_data_attributes ||= []
-  image_src ||= false
-  image_alt ||= ""
-  heading_text ||= false
-  context ||= false
-  description ||= false
-  large ||= false
-  heading_level ||= 2
-  heading_tag = "h#{heading_level}" if [1, 2, 3, 4, 5, 6].include? heading_level
-  extra_links ||= []
-  extra_links_no_indent ||= false
   brand ||= false
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
-
-  def is_tracking?(href_data_attributes, extra_links)
-    return true if href_data_attributes.any?
-    if extra_links.any?
-      extra_links.each do |link|
-        return true if link[:data_attributes]
-      end
-    end
-  end
+  card_helper = GovukPublishingComponents::Presenters::ImageCardHelper.new(local_assigns)
 %>
-<% if href %>
-  <div class="gem-c-image-card <%= "gem-c-image-card--large" if large %> <%= brand_helper.brand_class %>"
-    <%= "data-module=track-click" if is_tracking?(href_data_attributes, extra_links) %>
+<% if card_helper.href %>
+  <div class="gem-c-image-card <%= "gem-c-image-card--large" if card_helper.large %> <%= brand_helper.brand_class %>"
+    <%= "data-module=track-click" if card_helper.is_tracking? %>
   >
-    <% if image_src %>
-      <figure class="gem-c-image-card__image-wrapper">
-        <img src="<%= image_src %>"
-          class="gem-c-image-card__image"
-          alt="<%= image_alt %>"
-        />
-      </figure>
-    <% end %>
+    <%= card_helper.image %>
 
     <div class="gem-c-image-card__text-wrapper">
-      <% if context %>
-        <p class="gem-c-image-card__context">
-          <%= context %>
-        </p>
-      <% end %>
+      <%= card_helper.context %>
 
-      <% if heading_text %>
-        <%= content_tag(heading_tag,
+      <% if card_helper.heading_text %>
+        <%= content_tag(card_helper.heading_tag,
           class: "gem-c-image-card__title") do %>
-            <%= link_to heading_text, href,
+            <%= link_to card_helper.heading_text, card_helper.href,
               class: "gem-c-image-card__title-link #{brand_helper.color_class}",
-              data: href_data_attributes
+              data: card_helper.href_data_attributes
             %>
         <% end %>
       <% end %>
 
-      <% if description %>
-        <p class="gem-c-image-card__description">
-          <%= description %>
-        </p>
-      <% end %>
+      <%= card_helper.description %>
 
-      <% if extra_links.any? %>
-        <ul class="gem-c-image-card__list <%= "gem-c-image-card__list--indented" if not extra_links_no_indent %>">
-          <% extra_links.each do |link| %>
+      <% if card_helper.extra_links %>
+        <ul class="gem-c-image-card__list <%= "gem-c-image-card__list--indented" if not card_helper.extra_links_no_indent %>">
+          <% card_helper.extra_links.each do |link| %>
             <li class="gem-c-image-card__list-item">
               <%= link_to link[:text], link[:href],
                 class: brand_helper.color_class,

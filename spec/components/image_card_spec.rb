@@ -12,6 +12,7 @@ describe "ImageCard", type: :view do
   it "shows an image" do
     render_component(href: '#', image_src: '/moo.jpg', image_alt: 'some meaningful alt text')
     assert_select ".gem-c-image-card .gem-c-image-card__image[src='/moo.jpg'][alt='some meaningful alt text']"
+    assert_select ".gem-c-image-card[data-module='track-click']", false
   end
 
   it "shows heading text" do

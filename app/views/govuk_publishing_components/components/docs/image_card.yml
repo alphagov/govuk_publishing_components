@@ -16,6 +16,7 @@ examples:
     data:
       href: "/not-a-page"
       image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
+      image_alt: "some meaningful alt text please"
       heading_text: "News headline"
   with_a_different_heading_level:
     description: Use a different heading level for the main link title. Defaults to H2 if not passed.
