@@ -1,0 +1,46 @@
+.gem-c-title {
+  @include responsive-top-margin;
+}
+
+.gem-c-title--bottom-margin {
+  @include responsive-bottom-margin;
+}
+
+.gem-c-title--inverse {
+  color: $white;
+
+  .gem-c-title__context {
+    color: inherit;
+  }
+}
+
+.gem-c-title__context {
+  @include core-24;
+  color: $secondary-text-colour;
+}
+
+.gem-c-title__context-link {
+  text-decoration: none;
+
+  &:link,
+  &:visited {
+    color: inherit;
+
+    &:focus {
+      color: $black;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+.gem-c-title__text {
+  @include bold-48;
+}
+
+.gem-c-title__text--long {
+  @include bold-36;
+}

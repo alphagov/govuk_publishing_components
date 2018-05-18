@@ -14,7 +14,7 @@ describe 'Component guide index' do
     visit '/component-guide'
 
     expect(GovukPublishingComponents::ApplicationController).to include(Slimmer::GovukComponents)
-    expect(page).to have_selector(shared_component_selector('title'))
+    expect(page).to have_selector('h1')
   end
 
   it 'sets X-Frame-Options to allow inclusion in iFrames' do
