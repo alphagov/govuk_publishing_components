@@ -1,6 +1,8 @@
 <%
   text ||= ""
   inverse ||= false
+  # Replace the space between the last 2 words with a non-breaking space, so
+  # we'll never have a dangling word in a paragraph. 
   text = GovukPublishingComponents::Presenters::Sanitisation.sub_safely(text, /\s([\w\.\?\!\:]+)$/, '&nbsp;\1')
 %>
 
