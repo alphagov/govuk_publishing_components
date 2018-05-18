@@ -23,12 +23,14 @@ examples:
     data:
       href: "/really-not-a-page"
       image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
+      image_alt: "some meaningful alt text please"
       heading_text: "I am a heading level 3"
       heading_level: 3
   with_more_information:
     data:
       href: "/also-not-a-page"
       image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
+      image_alt: "some meaningful alt text please"
       context: "10 May 2018 - Press release"
       heading_text: "Government does things"
       description: "Following a thorough review of existing procedure, a government body has today announced that further work is necessary."
@@ -36,6 +38,7 @@ examples:
     data:
       href: "/a-page-no-just-kidding"
       image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
+      image_alt: "some meaningful alt text please"
       heading_text: "Some more links"
       description: "Greater transparency across government is at the heart of our commitment to let you hold politicians and public bodies to account."
       extra_links: [
@@ -57,6 +60,7 @@ examples:
     data:
       href: "/government/people/"
       image_src: "http://placekitten.com/215/140"
+      image_alt: "some meaningful alt text please"
       context: "The Rt Hon"
       heading_text: "John Whiskers MP"
       extra_links: [
@@ -74,6 +78,7 @@ examples:
     data:
       href: "/still-not-a-link"
       image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
+      image_alt: "some meaningful alt text please"
       description: Here are some links to more information about the thing you are reading about.
       extra_links: [
         {
@@ -89,12 +94,19 @@ examples:
           href: "/2"
         }
       ]
+  without_an_image:
+    description: Despite the name of the component, it is possible to have it display without an image.
+    data:
+      href: '/no-valid-links-here'
+      heading_text: 'John McJohnson'
+      description: 'Deputy director for Parks and Small Trees'
   with_branding:
     description: Organisation [colour branding](https://github.com/alphagov/govuk_publishing_components/blob/master/docs/component_branding.md) can be added to the component as shown.
     data:
       brand: "department-for-work-pensions"
       href: "/again-not-a-page"
       image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
+      image_alt: "some meaningful alt text please"
       heading_text: "Something relating to this"
       description: "Public reform committee consultation vote department interior minister referendum."
       extra_links: [
@@ -112,6 +124,7 @@ examples:
       large: true
       href: "/still-not-a-page"
       image_src: "https://assets.publishing.service.gov.uk/frontend/homepage/leaving-the-eu-bc9992ee672a30d8e8a3e195c9afa750e618748130a4e073a593ba36dfc29af9.jpg"
+      image_alt: "some meaningful alt text please"
       context: "14 Jun 2017 - Announcement"
       heading_text: "Something has happened nearby possibly"
       description: "Following a news report that something has happened, further details are emerging of the thing that has happened and what that means for you."
@@ -128,6 +141,7 @@ examples:
         }
       }
       image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
+      image_alt: "some meaningful alt text please"
       heading_text: "A link with tracking"
       extra_links: [
         {

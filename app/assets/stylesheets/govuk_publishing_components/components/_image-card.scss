@@ -4,8 +4,7 @@
   // if this extends grid-row a margin-bottom can't
   // be applied as the extend overrides it
   @extend %contain-floats;
-  margin: 0 (-$gutter-half);
-  margin-bottom: $gutter;
+  margin: 0 (-$gutter-half) $gutter (-$gutter-half);
   position: relative;
 }
 
@@ -84,7 +83,6 @@
       &:before {
         content: "-";
         position: absolute;
-        top: 0;
         left: -$gutter-half;
       }
     }
