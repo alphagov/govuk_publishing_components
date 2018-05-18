@@ -42,6 +42,13 @@ describe "ImageCard", type: :view do
     assert_select ".gem-c-image-card__list.gem-c-image-card__list--indented", false
   end
 
+  it "applies branding" do
+    render_component(href: '#', heading_text: 'test', extra_links: [{ href: '/1', text: 'link1' }], brand: 'attorney-generals-office')
+    assert_select ".gem-c-image-card.brand--attorney-generals-office"
+    assert_select ".gem-c-image-card__title-link.brand__color"
+    assert_select ".gem-c-image-card__list-item .brand__color"
+  end
+
   it "renders a large version" do
     render_component(href: '#', large: true)
     assert_select ".gem-c-image-card.gem-c-image-card--large"

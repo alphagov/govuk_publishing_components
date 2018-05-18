@@ -65,6 +65,24 @@ examples:
         }
       ]
       extra_links_no_indent: true
+  with_branding:
+    description: Organisation [colour branding](https://github.com/alphagov/govuk_publishing_components/blob/master/docs/component_branding.md) can be added to the component as shown.
+    data:
+      brand: 'attorney-generals-office'
+      href: "/again-not-a-page"
+      image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
+      heading_text: "Something relating to this"
+      description: "Public reform committee consultation vote department interior minister referendum."
+      extra_links: [
+        {
+          text: "Something",
+          href: "/1"
+        },
+        {
+          text: "Something else",
+          href: "/2"
+        }
+      ]
   large_version:
     data:
       large: true
