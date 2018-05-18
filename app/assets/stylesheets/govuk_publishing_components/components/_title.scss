@@ -1,0 +1,51 @@
+// scss-lint:disable SelectorFormat
+.pub-c-title {
+  @include responsive-top-margin;
+}
+
+// this will be moved and extended into a model for general component spacing
+// once this has been decided upon and other work completed, see:
+// https://trello.com/c/KEkNsxG3/142-3-implement-customisable-spacing-for-components
+.pub-c-title--bottom-margin {
+  @include responsive-bottom-margin;
+}
+
+.pub-c-title--inverse {
+  color: $white;
+
+  .pub-c-title__context {
+    color: inherit;
+  }
+}
+
+.pub-c-title__context {
+  @include core-24;
+  color: $secondary-text-colour;
+}
+
+.pub-c-title__context-link {
+  text-decoration: none;
+
+  &:link,
+  &:visited {
+    color: inherit;
+
+    &:focus {
+      color: $black;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+.pub-c-title__text {
+  @include bold-48;
+}
+
+.pub-c-title__text--long {
+  @include bold-36;
+}
+// scss-lint:enable SelectorFormat

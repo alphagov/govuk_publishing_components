@@ -1,0 +1,63 @@
+name: Page title
+description: A page title with optional context label
+body: |
+  This contains an optional parameter for average title length. The two valid
+  values for this parameter are 'medium' or 'long'. Medium titles are titles
+  where the average is around 30 characters or less. Long titles would have
+  an average length of nearer 50 characters or more.
+
+  On average the titles on government bits of content are 50 characters. The
+  average for bits of general guidance are nearer 27 characters long.
+accessibility_criteria: |
+  The page title must:
+
+  - be part of a correct heading structure for a page
+  - be semantically represented as a heading
+  - convey the heading level
+shared_accessibility_criteria:
+  - link
+examples:
+  default:
+    data:
+      title: My page title
+  with_context:
+    data:
+      context: Publication
+      title: My page title
+  with_context_link:
+    description: |
+      It’s unclear if links in the context of a title are useful and are being clicked by users. Data attributes are included to track this behaviour.
+
+      Context links are used on [topic pages](https://www.gov.uk/topic/business-tax/vat) where there is also a breadcrumb.
+    data:
+      context:
+        text: Publication
+        href: '/link'
+        data:
+          some_tracking_parameter: 'tracking-param'
+      title: My page title
+  long_title_with_context:
+    data:
+      context: Publication
+      title: My page title which is often really long and verbose and has lots of extra words it doesn't need
+      average_title_length: long
+  in_html_publication:
+    description: Page titles are used in HTML Publications ([see example](https://www.gov.uk/government/publications/fees-for-civil-and-family-courts/court-fees-for-the-high-court-county-court-and-family-court))
+    data:
+      context: Publication
+      title: HTML publication page title
+      inverse: true
+      margin_bottom: 0
+    context:
+      dark_background: true
+  in_html_publication_with_context_link:
+    description: Page titles are used in HTML Publications ([see example](https://www.gov.uk/government/publications/fees-for-civil-and-family-courts/court-fees-for-the-high-court-county-court-and-family-court))
+    data:
+      context:
+        text: Publication
+        href: '/link'
+      title: HTML publication page title
+      inverse: true
+      margin_bottom: 0
+    context:
+      dark_background: true

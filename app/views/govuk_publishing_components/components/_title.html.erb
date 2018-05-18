@@ -1,0 +1,23 @@
+<%
+  average_title_length ||= false
+  context ||= false
+  context_text = context.is_a?(Hash) ? context[:text] : context
+  context_href = context.is_a?(Hash) ? context[:href] : false
+  context_data = context.is_a?(Hash) ? context[:data] : false
+
+  inverse ||= false
+  margin_bottom ||= 1
+  margin_bottom_class = "pub-c-title--bottom-margin" if margin_bottom == 1
+%>
+<div class="pub-c-title
+  <% if inverse %>pub-c-title--inverse<% end %>
+  <%= margin_bottom_class %>">
+  <% if context %>
+    <p class="pub-c-title__context">
+      <%= context_href ? link_to(context_text, context_href, class: 'pub-c-title__context-link', data: context_data) : context_text %>
+    </p>
+  <% end %>
+  <h1 class="pub-c-title__text <% if average_title_length %>pub-c-title__text--<%= average_title_length %><% end %>">
+    <%= title %>
+  </h1>
+</div>
