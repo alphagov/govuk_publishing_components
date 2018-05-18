@@ -1,6 +1,8 @@
 // This is the file that the application needs to include in order to use
 // the components.
 
+$govuk-global-images: "";
+
 // `govuk_frontend_toolkit`
 @import "measurements";
 @import "grid_layout";
