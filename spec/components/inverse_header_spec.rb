@@ -5,11 +5,11 @@ def component_path
 end
 
 def block
-  "<div class=\"pub-c-title pub-c-title--inverse\">
-  <p class=\"pub-c-title__context\">
+  "<div class=\"gem-c-title gem-c-title--inverse\">
+  <p class=\"gem-c-title__context\">
     Publication
   </p>
-  <h1 class=\"pub-c-title__text \">
+  <h1 class=\"gem-c-title__text \">
     HTML publication page title
   </h1>
 </div>".html_safe
@@ -27,7 +27,7 @@ describe "Inverse header", type: :view do
   it "renders content within a wrapper when content is provided" do
     render(component_path, {}) { block }
 
-    assert_select ".gem-c-inverse-header div.pub-c-title"
+    assert_select ".gem-c-inverse-header div.gem-c-title"
     assert_select ".gem-c-inverse-header h1", text: "HTML publication page title"
   end
 
