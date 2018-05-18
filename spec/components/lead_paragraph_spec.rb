@@ -1,6 +1,6 @@
-require 'govuk_component_test_helper'
+require 'rails_helper'
 
-class LeadParagraphTest < ComponentTestCase
+describe "Lead paragraph", type: :view do
   NBSP = HTMLEntities.new.decode('&nbsp;')
 
   def component_name
@@ -12,11 +12,11 @@ class LeadParagraphTest < ComponentTestCase
     assert_select ".gem-c-lead-paragraph", text: expected_text
   end
 
-  test "renders nothing without a description" do
+  it "renders nothing without a description" do
     assert_empty render_component({})
   end
 
-  test "renders a lead paragraph" do
+  it "renders a lead paragraph" do
     render_component(text: 'UK Visas and Immigration is making changes to the Immigration Rules affecting various categories.')
     assert_select ".gem-c-lead-paragraph", text: "UK Visas and Immigration is making changes to the Immigration Rules affecting various#{NBSP}categories."
   end
@@ -32,7 +32,7 @@ class LeadParagraphTest < ComponentTestCase
     { text: "&lt;b&gt;this&lt;b&gt; &amp; that&nbsp;thing", expected: "<b>this<b> & that#{NBSP}thing", description: 'non breaking space output is not unsafe given special characters' },
     { text: "&lt;b&gt;this&lt;b&gt; &amp;&nbsp;that", expected: "<b>this<b> &#{NBSP}that", description: 'non breaking space output is not unsafe given concatenated special characters' }
   ].each do |test_params|
-    test test_params[:description] do
+    it test_params[:description] do
       assert_lead_paragraph_matches(test_params[:text], test_params[:expected])
     end
   end
