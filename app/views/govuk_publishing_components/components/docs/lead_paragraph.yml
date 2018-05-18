@@ -1,0 +1,22 @@
+name: Lead paragraph
+description: The opening paragraph of content. Typically a content item’s description field.
+accessibility_criteria: |
+  The lead paragraph must be visually distinct from other paragraphs.
+
+  The lead paragraph must have a text contrast ratio higher than 4.5:1 against the background colour to meet WCAG AA (this especially applies when [placed on a darker background](/component-guide/lead_paragraph/on_topic_page)).
+examples:
+  default:
+    data:
+      text: 'UK Visas and Immigration is making changes to the Immigration Rules affecting various categories.'
+  right_to_left:
+    data:
+      text: 'قرارات تحقيقات وزارة الدفاع في الانتهاكات المزعومة للمادة ٢ والمادة ٣ من المعاهدة الاوروبية لحقوق الانسان خلال العمليات العسكرية في العراق.'
+    context:
+      right_to_left: true
+  on_topic_page:
+    description: Lead paragraphs need to support being placed on a blue background to work with the new taxonomy topic page designs
+    data:
+      text: Schools and academies, further and higher education, apprenticeships and other skills training, student funding, early years.
+      inverse: true
+    context:
+      dark_background: true

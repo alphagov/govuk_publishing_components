@@ -1,0 +1,10 @@
+.gem-c-lead-paragraph {
+  @include core-24;
+  @include responsive-bottom-margin;
+  // Ensure the text has a line-length of around 60 characters
+  max-width: 30em;
+}
+
+.gem-c-lead-paragraph--inverse {
+  color: $white;
+}
