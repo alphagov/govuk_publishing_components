@@ -11,7 +11,7 @@ A component from the application would be included in a template like this:
 A component from static would be included like this:
 
 ```erb
-<%= render "govuk_component/lead_paragraph", text: "A description is one or two leading sentences." %>
+<%= render "govuk_publishing_components/components/lead_paragraph", text: "A description is one or two leading sentences." %>
 ```
 
 A component from the gem would be included like this:
