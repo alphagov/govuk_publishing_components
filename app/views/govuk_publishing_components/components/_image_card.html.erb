@@ -8,6 +8,8 @@
   large ||= false
   heading_level ||= 2
   heading_tag = "h#{heading_level}" if [1, 2, 3, 4, 5, 6].include? heading_level
+  extra_links ||= []
+  extra_links_no_indent ||= false
 %>
 <% if href %>
   <div class="gem-c-image-card <%= "gem-c-image-card--large" if large %>">
@@ -38,6 +40,16 @@
         <p class="gem-c-image-card__description">
           <%= description %>
         </p>
+      <% end %>
+
+      <% if extra_links.any? %>
+        <ul class="gem-c-image-card__list <%= "gem-c-image-card__list--indented" if not extra_links_no_indent %>">
+          <% extra_links.each do |link| %>
+            <li class="gem-c-image-card__list-item">
+              <%= link_to link[:text], link[:href] %>
+            </li>
+          <% end %>
+        </ul>
       <% end %>
     </div>
   </div>

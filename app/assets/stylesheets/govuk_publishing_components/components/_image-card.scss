@@ -38,10 +38,12 @@
   color: $grey-1;
 }
 
+.gem-c-image-card__description {
+  padding-top: $gutter-one-quarter;
+}
+
 .gem-c-image-card__title {
   @include bold-19;
-  margin-bottom: $gutter-one-quarter;
-  text-decoration: none;
 }
 
 .gem-c-image-card__title-link {
@@ -50,9 +52,9 @@
     position: absolute;
     z-index: 1;
     top: 0;
-    left: 0;
+    left: $gutter-half;
+    right: $gutter-half;
     height: 100%;
-    width: 100%;
   }
 }
 
@@ -81,10 +83,33 @@
 
   .gem-c-image-card__title {
     @include bold-24;
-    margin-bottom: $gutter-one-third;
+    padding-bottom: $gutter-one-third;
   }
 
   .gem-c-image-card__description {
     @include core-19;
+  }
+}
+
+.gem-c-image-card__list {
+  position: relative;
+  z-index: 2;
+  padding: $gutter-one-quarter 0 0 0;
+  margin: 0;
+  list-style: none;
+
+  &.gem-c-image-card__list--indented {
+    padding-left: $gutter-half;
+
+    .gem-c-image-card__list-item {
+      position: relative;
+
+      &:before {
+        content: "-";
+        position: absolute;
+        top: 0;
+        left: -$gutter-half;
+      }
+    }
   }
 }

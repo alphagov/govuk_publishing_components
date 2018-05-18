@@ -29,6 +29,40 @@ examples:
       metadata: '10 May 2018 - Press release'
       heading_text: 'Government does things'
       description: 'Following a thorough review of existing procedure, a government body has today announced that further work is necessary.'
+  with_extra_links:
+    data:
+      href: '/a-page-no-just-kidding'
+      image_src: 'https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG'
+      heading_text: 'Some more links'
+      description: 'Greater transparency across government is at the heart of our commitment to let you hold politicians and public bodies to account.'
+      extra_links: [
+        {
+          text: "Single departmental plans",
+          href: '/1'
+        },
+        {
+          text: "Prime Minister's and Cabinet Office ministers' transparency publications",
+          href: '/2'
+        },
+        {
+          text: "Government transparency data",
+          href: '/3'
+        },
+      ]
+  extra_links_without_indent:
+    description: Don't indent the extra links. Used for links to people pages.
+    data:
+      href: '/government/people/jeremy-wright'
+      image_src: 'https://assets.publishing.service.gov.uk/government/uploads/system/uploads/person/image/354/s216_TME_3860TME_3860_960_Jeremy_Wright.JPG'
+      metadata: 'The Rt Hon'
+      heading_text: 'Jeremy Wright QC MP'
+      extra_links: [
+        {
+          text: 'Attorney General',
+          href: '/government/ministers/attorney-general'
+        }
+      ]
+      extra_links_no_indent: true
   large_version:
     data:
       large: true
