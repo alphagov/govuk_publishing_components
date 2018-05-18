@@ -7,6 +7,20 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Move the Lead paragraph component from static (PR #325)
+
+### Upgrade instructions
+
+Replace the component by running the following:
+
+```
+find app/views -type f -print0 | xargs -0 sed -i '' 's/govuk_component\/lead_paragraph/govuk_publishing_components\/components\/lead_paragraph/g'
+```
+
+Your tests are likely to need updating as well.
+
 ## 8.1.0
 
 * Add the "Machine readable metadata" component (PR #318)
