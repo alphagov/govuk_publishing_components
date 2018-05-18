@@ -53,4 +53,16 @@ describe "ImageCard", type: :view do
     render_component(href: '#', large: true)
     assert_select ".gem-c-image-card.gem-c-image-card--large"
   end
+
+  it "applies tracking attributes" do
+    render_component(href: '#', href_data_attributes: { track_category: 'cat' }, heading_text: 'test')
+    assert_select ".gem-c-image-card[data-module='track-click']"
+    assert_select ".gem-c-image-card__title-link[data-track-category='cat']"
+  end
+
+  it "applies tracking attributes for extra links" do
+    render_component(href: '#', extra_links: [{ href: '/', text: '1', data_attributes: { track_category: 'cat' } }])
+    assert_select ".gem-c-image-card[data-module='track-click']"
+    assert_select ".gem-c-image-card__list-item a[data-track-category='cat']"
+  end
 end

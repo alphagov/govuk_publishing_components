@@ -114,3 +114,32 @@ examples:
       context: "14 Jun 2017 - Announcement"
       heading_text: "Something has happened nearby possibly"
       description: "Following a news report that something has happened, further details are emerging of the thing that has happened and what that means for you."
+  with_tracking:
+    data:
+      href: "/i-am-not-a-valid-link"
+      href_data_attributes: {
+        track_category: 'href_category',
+        track_action: 1.1,
+        track_label: 'href_label',
+        track_options: {
+          dimension28: 1,
+          dimension29: 'dimension29Href'
+        }
+      }
+      image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
+      heading_text: "A link with tracking"
+      extra_links: [
+        {
+          text: "Another link with tracking",
+          href: "/1",
+          data_attributes: {
+            track_category: 'extra_category',
+            track_action: 2.1,
+            track_label: 'extra_label',
+            track_options: {
+              dimension28: 1,
+              dimension29: 'dimension29Extra'
+            }
+          }
+        }
+      ]
