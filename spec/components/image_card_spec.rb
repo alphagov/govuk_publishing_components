@@ -31,13 +31,13 @@ describe "ImageCard", type: :view do
   end
 
   it "renders extra links" do
-    render_component(href: '#', extra_links: [{href: '/1', text: 'link1'}, {href: '/2', text: 'link2'}])
+    render_component(href: '#', extra_links: [{ href: '/1', text: 'link1' }, { href: '/2', text: 'link2' }])
     assert_select ".gem-c-image-card__list .gem-c-image-card__list-item a[href='/1']", text: 'link1'
     assert_select ".gem-c-image-card__list .gem-c-image-card__list-item a[href='/2']", text: 'link2'
   end
 
   it "renders extra links without indent" do
-    render_component(href: '#', extra_links: [{href: '/1', text: 'link1'}], extra_links_no_indent: true)
+    render_component(href: '#', extra_links: [{ href: '/1', text: 'link1' }], extra_links_no_indent: true)
     assert_select ".gem-c-image-card__list"
     assert_select ".gem-c-image-card__list.gem-c-image-card__list--indented", false
   end

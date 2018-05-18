@@ -1,7 +1,9 @@
 name: Image card
 description: Image and associated text with a link
 body: |
-  An image and an associated link, meant for use for news articles and similar.
+  An image and an associated link, meant for use for news articles and people. Includes optional paragraph and additional links.
+
+  Note that the component is generally to be used within a grid column but has no grid of its own, so the text and the images in the examples below may not always line up. This will normally look tidier, for example [on pages like this](https://www.gov.uk/government/organisations/attorney-generals-office).
 accessibility_criteria: |
   The component must:
 
@@ -12,62 +14,62 @@ shared_accessibility_criteria:
 examples:
   default:
     data:
-      href: '/not-a-page'
-      image_src: 'https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG'
-      heading_text: 'News headline'
+      href: "/not-a-page"
+      image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
+      heading_text: "News headline"
   with_a_different_heading_level:
     description: Use a different heading level for the main link title. Defaults to H2 if not passed.
     data:
-      href: '/really-not-a-page'
-      image_src: 'https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG'
-      heading_text: 'I am a heading level 3'
+      href: "/really-not-a-page"
+      image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
+      heading_text: "I am a heading level 3"
       heading_level: 3
   with_more_information:
     data:
-      href: '/also-not-a-page'
-      image_src: 'https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG'
-      metadata: '10 May 2018 - Press release'
-      heading_text: 'Government does things'
-      description: 'Following a thorough review of existing procedure, a government body has today announced that further work is necessary.'
+      href: "/also-not-a-page"
+      image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
+      metadata: "10 May 2018 - Press release"
+      heading_text: "Government does things"
+      description: "Following a thorough review of existing procedure, a government body has today announced that further work is necessary."
   with_extra_links:
     data:
-      href: '/a-page-no-just-kidding'
-      image_src: 'https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG'
-      heading_text: 'Some more links'
-      description: 'Greater transparency across government is at the heart of our commitment to let you hold politicians and public bodies to account.'
+      href: "/a-page-no-just-kidding"
+      image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
+      heading_text: "Some more links"
+      description: "Greater transparency across government is at the heart of our commitment to let you hold politicians and public bodies to account."
       extra_links: [
         {
           text: "Single departmental plans",
-          href: '/1'
+          href: "/1"
         },
         {
           text: "Prime Minister's and Cabinet Office ministers' transparency publications",
-          href: '/2'
+          href: "/2"
         },
         {
           text: "Government transparency data",
-          href: '/3'
+          href: "/3"
         },
       ]
   extra_links_without_indent:
     description: Don't indent the extra links. Used for links to people pages.
     data:
-      href: '/government/people/jeremy-wright'
-      image_src: 'https://assets.publishing.service.gov.uk/government/uploads/system/uploads/person/image/354/s216_TME_3860TME_3860_960_Jeremy_Wright.JPG'
-      metadata: 'The Rt Hon'
-      heading_text: 'Jeremy Wright QC MP'
+      href: "/government/people/jeremy-wright"
+      image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/person/image/354/s216_TME_3860TME_3860_960_Jeremy_Wright.JPG"
+      metadata: "The Rt Hon"
+      heading_text: "Jeremy Wright QC MP"
       extra_links: [
         {
-          text: 'Attorney General',
-          href: '/government/ministers/attorney-general'
+          text: "Attorney General",
+          href: "/government/ministers/attorney-general"
         }
       ]
       extra_links_no_indent: true
   large_version:
     data:
       large: true
-      href: '/still-not-a-page'
-      image_src: 'https://assets.publishing.service.gov.uk/frontend/homepage/leaving-the-eu-bc9992ee672a30d8e8a3e195c9afa750e618748130a4e073a593ba36dfc29af9.jpg'
-      metadata: '14 Jun 2017 - Announcement'
-      heading_text: 'Something has happened nearby possibly'
-      description: 'Following a news report that something has happened, further details are emerging of the thing that has happened and what that means for you.'
+      href: "/still-not-a-page"
+      image_src: "https://assets.publishing.service.gov.uk/frontend/homepage/leaving-the-eu-bc9992ee672a30d8e8a3e195c9afa750e618748130a4e073a593ba36dfc29af9.jpg"
+      metadata: "14 Jun 2017 - Announcement"
+      heading_text: "Something has happened nearby possibly"
+      description: "Following a news report that something has happened, further details are emerging of the thing that has happened and what that means for you."
