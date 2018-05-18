@@ -13,7 +13,7 @@ describe "Lead paragraph", type: :view do
   end
 
   it "renders nothing without a description" do
-    assert_empty render_component({})
+    assert_empty render_component({}).strip
   end
 
   it "renders a lead paragraph" do
