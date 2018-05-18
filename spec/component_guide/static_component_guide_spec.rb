@@ -19,10 +19,4 @@ describe 'Static’s component guide' do
       expect(page).to have_selector('.a-test-static-component')
     end
   end
-
-  it 'loads shared components locally rather than through the network using Slimmer’s local component resolver' do
-    visit '/component-guide'
-
-    expect(page).to have_selector('.stubbed-title-component')
-  end
 end
