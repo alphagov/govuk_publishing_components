@@ -3,7 +3,7 @@
   image_src ||= false
   image_alt ||= ""
   heading_text ||= false
-  metadata ||= false
+  context ||= false
   description ||= false
   large ||= false
   heading_level ||= 2
@@ -25,9 +25,9 @@
     <% end %>
 
     <div class="gem-c-image-card__text-wrapper">
-      <% if metadata %>
-        <p class="gem-c-image-card__metadata">
-          <%= metadata %>
+      <% if context %>
+        <p class="gem-c-image-card__context">
+          <%= context %>
         </p>
       <% end %>
 

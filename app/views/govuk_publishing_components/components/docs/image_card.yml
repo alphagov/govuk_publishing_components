@@ -28,7 +28,7 @@ examples:
     data:
       href: "/also-not-a-page"
       image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
-      metadata: "10 May 2018 - Press release"
+      context: "10 May 2018 - Press release"
       heading_text: "Government does things"
       description: "Following a thorough review of existing procedure, a government body has today announced that further work is necessary."
   with_extra_links:
@@ -54,21 +54,21 @@ examples:
   extra_links_without_indent:
     description: Don't indent the extra links. Used for links to people pages.
     data:
-      href: "/government/people/jeremy-wright"
-      image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/person/image/354/s216_TME_3860TME_3860_960_Jeremy_Wright.JPG"
-      metadata: "The Rt Hon"
-      heading_text: "Jeremy Wright QC MP"
+      href: "/government/people/"
+      image_src: "http://placekitten.com/215/140"
+      context: "The Rt Hon"
+      heading_text: "John Whiskers MP"
       extra_links: [
         {
-          text: "Attorney General",
-          href: "/government/ministers/attorney-general"
+          text: "Minister for Cats",
+          href: "/government/ministers/"
         }
       ]
       extra_links_no_indent: true
   with_branding:
     description: Organisation [colour branding](https://github.com/alphagov/govuk_publishing_components/blob/master/docs/component_branding.md) can be added to the component as shown.
     data:
-      brand: 'attorney-generals-office'
+      brand: 'department-for-work-pensions'
       href: "/again-not-a-page"
       image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
       heading_text: "Something relating to this"
@@ -88,6 +88,6 @@ examples:
       large: true
       href: "/still-not-a-page"
       image_src: "https://assets.publishing.service.gov.uk/frontend/homepage/leaving-the-eu-bc9992ee672a30d8e8a3e195c9afa750e618748130a4e073a593ba36dfc29af9.jpg"
-      metadata: "14 Jun 2017 - Announcement"
+      context: "14 Jun 2017 - Announcement"
       heading_text: "Something has happened nearby possibly"
       description: "Following a news report that something has happened, further details are emerging of the thing that has happened and what that means for you."

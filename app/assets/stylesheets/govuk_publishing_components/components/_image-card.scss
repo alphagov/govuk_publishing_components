@@ -53,13 +53,13 @@
   }
 }
 
-.gem-c-image-card__metadata,
+.gem-c-image-card__context,
 .gem-c-image-card__description {
   position: relative;
   z-index: 2;
 }
 
-.gem-c-image-card__metadata {
+.gem-c-image-card__context {
   @include core-14;
   color: $grey-1;
 }
