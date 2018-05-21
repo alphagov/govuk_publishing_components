@@ -1,4 +1,4 @@
-.pub-c-pagination {
+.gem-c-pagination {
   display: block;
   margin-top: $gutter;
   margin-bottom: $gutter;
@@ -7,7 +7,7 @@
 }
 
 // scss-lint:disable SelectorFormat
-.pub-c-pagination__list {
+.gem-c-pagination__list {
   margin: 0;
   padding: 0;
 
@@ -18,7 +18,7 @@
   }
 }
 
-.pub-c-pagination__item {
+.gem-c-pagination__item {
   @include core-16($line-height: (20 / 16));
   float: left;
   list-style: none;
@@ -28,7 +28,7 @@
   width: 50%;
 }
 
-.pub-c-pagination__link {
+.gem-c-pagination__link {
   display: block;
   padding: $gutter-half;
   text-decoration: none;
@@ -43,12 +43,12 @@
   }
 }
 
-.pub-c-pagination__link-title {
+.gem-c-pagination__link-title {
   @include core-27($line-height: (33.75 / 27));
   display: block;
 }
 
-.pub-c-pagination__item--previous {
+.gem-c-pagination__item--previous {
   @include media-down(mobile) {
     float: none;
     width: 100%;
@@ -58,7 +58,7 @@
   text-align: left;
 }
 
-.pub-c-pagination__item--next {
+.gem-c-pagination__item--next {
   @include media-down(mobile) {
     float: none;
     width: 100%;
@@ -68,14 +68,14 @@
   text-align: right;
 }
 
-.pub-c-pagination__link-icon {
+.gem-c-pagination__link-icon {
   display: inline-block;
   margin-bottom: 1px;
   height: .482em;
   width: .63em;
 }
 
-.pub-c-pagination__link-label {
+.gem-c-pagination__link-label {
   display: inline-block;
   margin-top: 0.1em;
   text-decoration: underline;

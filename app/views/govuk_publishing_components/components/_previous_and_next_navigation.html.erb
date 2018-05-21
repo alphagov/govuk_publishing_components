@@ -1,14 +1,14 @@
 <% if local_assigns.include?(:next_page) || local_assigns.include?(:previous_page) %>
 <nav
-  class="pub-c-pagination"
+  class="gem-c-pagination"
   role="navigation"
   aria-label="<%= t("govuk_component.previous_and_next_navigation.pagination", default: "Pagination") %>"
 >
-  <ul class="pub-c-pagination__list" data-module="track-click">
+  <ul class="gem-c-pagination__list" data-module="track-click">
     <% if local_assigns.include?(:previous_page) %>
-      <li class="pub-c-pagination__item pub-c-pagination__item--previous">
+      <li class="gem-c-pagination__item gem-c-pagination__item--previous">
         <a href="<%= previous_page[:url] %>"
-          class="pub-c-pagination__link"
+          class="gem-c-pagination__link"
           rel="prev"
           data-track-category="contentsClicked"
           data-track-action="previous"
@@ -16,23 +16,23 @@
           data-track-dimension="previous"
           data-track-dimension-index="29"
         >
-          <span class="pub-c-pagination__link-title">
-            <svg class="pub-c-pagination__link-icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">
+          <span class="gem-c-pagination__link-title">
+            <svg class="gem-c-pagination__link-icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">
               <path fill="currentColor" d="m6.5938-0.0078125-6.7266 6.7266 6.7441 6.4062 1.377-1.449-4.1856-3.9768h12.896v-2h-12.984l4.2931-4.293-1.414-1.414z"/>
             </svg>
             <%= previous_page[:title] %>
           </span>
           <% if previous_page[:label].present? %>
             <span class="visually-hidden">:</span>
-            <span class="pub-c-pagination__link-label"><%= previous_page[:label] %></span>
+            <span class="gem-c-pagination__link-label"><%= previous_page[:label] %></span>
           <% end %>
         </a>
       </li>
     <% end %>
     <% if local_assigns.include?(:next_page) %>
-      <li class="pub-c-pagination__item pub-c-pagination__item--next">
+      <li class="gem-c-pagination__item gem-c-pagination__item--next">
         <a href="<%= next_page[:url] %>"
-          class="pub-c-pagination__link"
+          class="gem-c-pagination__link"
           rel="next"
           data-track-category="contentsClicked"
           data-track-action="next"
@@ -40,15 +40,15 @@
           data-track-dimension="next"
           data-track-dimension-index="29"
         >
-          <span class="pub-c-pagination__link-title">
+          <span class="gem-c-pagination__link-title">
             <%= next_page[:title] %>
-            <svg class="pub-c-pagination__link-icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">
+            <svg class="gem-c-pagination__link-icon" xmlns="http://www.w3.org/2000/svg" height="13" width="17" viewBox="0 0 17 13">
               <path fill="currentColor" d="m10.107-0.0078125-1.4136 1.414 4.2926 4.293h-12.986v2h12.896l-4.1855 3.9766 1.377 1.4492 6.7441-6.4062-6.7246-6.7266z"/>
             </svg>
           </span>
           <% if next_page[:label].present? %>
             <span class="visually-hidden">:</span>
-            <span class="pub-c-pagination__link-label"><%= next_page[:label] %></span>
+            <span class="gem-c-pagination__link-label"><%= next_page[:label] %></span>
           <% end %>
         </a>
       </li>
