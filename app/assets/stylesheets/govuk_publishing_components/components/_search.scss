@@ -8,6 +8,7 @@ $large-input-size: 50px;
 
 .gem-c-search__label {
   display: block;
+  @include core-19;
 }
 
 .gem-c-search__input[type="search"] { // overly specific to prevent some overrides from outside
