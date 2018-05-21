@@ -4,25 +4,36 @@ module GovukPublishingComponents
                 :name,
                 :description,
                 :body,
-                :accessibility_criteria,
+                :component,
                 :accessibility_excluded_rules,
                 :examples,
                 :source
 
     def initialize(
       component,
-      accessibility_criteria,
       examples
     )
+      @component = component
       @id = component[:id]
       @name = component[:name]
       @description = component[:description]
       @body = component[:body]
-      @accessibility_criteria = accessibility_criteria
       @accessibility_excluded_rules = component[:accessibility_excluded_rules]
       @examples = examples
       @source = component[:source]
       @display_html = component[:display_html]
+    end
+
+    def accessibility_criteria
+      shared_accessibility_criteria = []
+
+      if component[:shared_accessibility_criteria].present?
+        component[:shared_accessibility_criteria].each do |criteria|
+          shared_accessibility_criteria << SharedAccessibilityCriteria.send(criteria) if SharedAccessibilityCriteria.respond_to? criteria
+        end
+      end
+
+      "#{component[:accessibility_criteria]}\n#{shared_accessibility_criteria.join("\n")}"
     end
 
     def example
