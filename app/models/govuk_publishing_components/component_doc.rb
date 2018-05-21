@@ -66,7 +66,7 @@ module GovukPublishingComponents
     def examples
       @examples ||= component[:examples].map do |id, example_data|
         example_data = example_data || {}
-        ComponentExample.new(id.to_s, example_data["data"], example_data["context"], example_data["description"])
+        ComponentExample.new(id.to_s, example_data)
       end
     end
 

@@ -8,11 +8,11 @@ module GovukPublishingComponents
                 :description,
                 :block
 
-    def initialize(id, data, context, description)
+    def initialize(id, example)
       @id = id
-      @data = data || {}
-      @context = context || {}
-      @description = description || false
+      @data = example["data"] || {}
+      @context = example["context"] || {}
+      @description = example["description"] || false
       @block = @data.delete(:block) || false
     end
 
