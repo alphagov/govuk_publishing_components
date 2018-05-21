@@ -6,20 +6,15 @@ module GovukPublishingComponents
                 :body,
                 :component,
                 :accessibility_excluded_rules,
-                :examples,
                 :source
 
-    def initialize(
-      component,
-      examples
-    )
+    def initialize(component)
       @component = component
       @id = component[:id]
       @name = component[:name]
       @description = component[:description]
       @body = component[:body]
       @accessibility_excluded_rules = component[:accessibility_excluded_rules]
-      @examples = examples
       @source = component[:source]
       @display_html = component[:display_html]
     end
@@ -67,6 +62,13 @@ module GovukPublishingComponents
     def github_search_url
       params = { q: "org:alphagov #{partial_path}", type: "Code" }
       "https://github.com/search?#{params.to_query}"
+    end
+
+    def examples
+      @examples ||= component[:examples].map do |id, example_data|
+        example_data = example_data || {}
+        ComponentExample.new(id.to_s, example_data["data"], example_data["context"], example_data["description"])
+      end
     end
 
   private

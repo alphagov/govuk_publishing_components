@@ -17,15 +17,7 @@ module GovukPublishingComponents
   private
 
     def build(component)
-      examples = component[:examples].map { |id, example|
-        example = example || {}
-        ComponentExample.new(id.to_s, example["data"], example["context"], example["description"])
-      }
-
-      ComponentDoc.new(
-        component,
-        examples,
-      )
+      ComponentDoc.new(component)
     end
 
     def fetch_component_docs
