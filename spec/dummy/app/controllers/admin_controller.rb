@@ -5,6 +5,5 @@ class AdminController < ApplicationController
     response.headers[Slimmer::Headers::SKIP_HEADER] = "true"
   end
 
-  def index
-  end
+  def index; end
 end
