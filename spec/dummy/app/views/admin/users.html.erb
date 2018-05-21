@@ -1,0 +1,28 @@
+<%= render "govuk_publishing_components/components/title", title: "Users" %>
+
+<%= render "govuk_publishing_components/components/topic_list", {
+  items: [
+    {
+      text: "Create user",
+      path: "#"
+    },
+    {
+      text: "Upload batch of users",
+      path: "#"
+    },
+    {
+      text: "Grant permissions to all users",
+      path: "#"
+    },
+  ]
+} %>
+
+<form method="get" action="/admin/taxons">
+  <%= render "govuk_publishing_components/components/search", {
+    label_text: "Search for users by name or email address",
+    inline_label: false,
+  } %>
+</form>
+
+<%= render "govuk_publishing_components/components/next_prev",
+  previous_page: { title: "Previous", url: '#' }, next_page: { title: "Next", url: '#' } %>

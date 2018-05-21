@@ -1,0 +1,107 @@
+<%= render "govuk_publishing_components/components/title", title: "Taxons" %>
+
+<%= render "govuk_publishing_components/components/lead_paragraph", {
+  text: "UK Visas and Immigration is making changes to the Immigration Rules affecting various categories."
+} %>
+
+<form method="get" action="/admin/taxons">
+  <%= render "govuk_publishing_components/components/search", {
+    label_text: "Search for taxons by title, base path or internal name...",
+    inline_label: false,
+  } %>
+</form>
+
+<%= render "govuk_publishing_components/components/document_list", {
+  items: [
+    {
+      link: {
+        text: "Alternative provision",
+        path: "/government/publications/alternative-provision"
+      },
+      metadata: {
+        public_updated_at: Date.parse("2016-06-27 11:29:44 +0100"),
+        document_type: "Statutory guidance"
+      }
+    },
+    {
+      link: {
+        text: "Behaviour and discipline in schools: guide for governing bodies",
+        path: "/government/publications/behaviour-and-discipline-in-schools-guidance-for-governing-bodies"
+      },
+      metadata: {
+        public_updated_at: Date.parse("2016-06-27 11:29:44 +0100"),
+        document_type: "Statutory guidance"
+      }
+    },
+    {
+      link: {
+        text: "Children missing education",
+        path: "/government/publications/children-missing-education"
+      },
+      metadata: {
+        public_updated_at: Date.parse("2016-06-27 11:29:44 +0100"),
+        document_type: "Statutory guidance"
+      }
+    },
+    {
+      link: {
+        text: "Alternative provision",
+        path: "/government/publications/alternative-provision"
+      },
+      metadata: {
+        public_updated_at: Date.parse("2016-06-27 11:29:44 +0100"),
+        document_type: "Statutory guidance"
+      }
+    },
+    {
+      link: {
+        text: "Behaviour and discipline in schools: guide for governing bodies",
+        path: "/government/publications/behaviour-and-discipline-in-schools-guidance-for-governing-bodies"
+      },
+      metadata: {
+        public_updated_at: Date.parse("2016-06-27 11:29:44 +0100"),
+        document_type: "Statutory guidance"
+      }
+    },
+    {
+      link: {
+        text: "Children missing education",
+        path: "/government/publications/children-missing-education"
+      },
+      metadata: {
+        public_updated_at: Date.parse("2016-06-27 11:29:44 +0100"),
+        document_type: "Statutory guidance"
+      }
+    },
+    {
+      link: {
+        text: "Alternative provision",
+        path: "/government/publications/alternative-provision"
+      },
+      metadata: {
+        public_updated_at: Date.parse("2016-06-27 11:29:44 +0100"),
+        document_type: "Statutory guidance"
+      }
+    },
+    {
+      link: {
+        text: "Behaviour and discipline in schools: guide for governing bodies",
+        path: "/government/publications/behaviour-and-discipline-in-schools-guidance-for-governing-bodies"
+      },
+      metadata: {
+        public_updated_at: Date.parse("2016-06-27 11:29:44 +0100"),
+        document_type: "Statutory guidance"
+      }
+    },
+    {
+      link: {
+        text: "Children missing education",
+        path: "/government/publications/children-missing-education"
+      },
+      metadata: {
+        public_updated_at: Date.parse("2016-06-27 11:29:44 +0100"),
+        document_type: "Statutory guidance"
+      }
+    },
+  ]
+} %>
