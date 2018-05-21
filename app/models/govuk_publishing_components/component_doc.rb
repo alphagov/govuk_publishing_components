@@ -16,7 +16,6 @@ module GovukPublishingComponents
       @body = component[:body]
       @accessibility_excluded_rules = component[:accessibility_excluded_rules]
       @source = component[:source]
-      @display_html = component[:display_html]
     end
 
     def accessibility_criteria
@@ -40,7 +39,7 @@ module GovukPublishingComponents
     end
 
     def display_html?
-      @display_html
+      component[:display_html]
     end
 
     def html_body
