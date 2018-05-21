@@ -10,25 +10,19 @@ module GovukPublishingComponents
                 :source
 
     def initialize(
-      id,
-      name,
-      description,
-      body,
+      component,
       accessibility_criteria,
-      accessibility_excluded_rules,
-      examples,
-      source,
-      display_html
+      examples
     )
-      @id = id
-      @name = name
-      @description = description
-      @body = body
+      @id = component[:id]
+      @name = component[:name]
+      @description = component[:description]
+      @body = component[:body]
       @accessibility_criteria = accessibility_criteria
-      @accessibility_excluded_rules = accessibility_excluded_rules
+      @accessibility_excluded_rules = component[:accessibility_excluded_rules]
       @examples = examples
-      @source = source
-      @display_html = display_html
+      @source = component[:source]
+      @display_html = component[:display_html]
     end
 
     def example

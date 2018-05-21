@@ -23,15 +23,9 @@ module GovukPublishingComponents
       }
 
       ComponentDoc.new(
-        component[:id],
-        component[:name],
-        component[:description],
-        component[:body],
+        component,
         combined_accessibility_criteria(component),
-        component[:accessibility_excluded_rules],
         examples,
-        component[:source],
-        component[:display_html],
       )
     end
 
