@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Move the Title component from static (PR #324)
 * Move the Lead paragraph component from static (PR #325)
 
 ### Upgrade instructions
@@ -16,6 +17,7 @@
 Replace the component by running the following:
 
 ```
+find app/views -type f -print0 | xargs -0 sed -i '' 's/govuk_component\/title/govuk_publishing_components\/components\/title/g'
 find app/views -type f -print0 | xargs -0 sed -i '' 's/govuk_component\/lead_paragraph/govuk_publishing_components\/components\/lead_paragraph/g'
 ```
 
