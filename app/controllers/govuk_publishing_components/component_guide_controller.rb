@@ -3,17 +3,17 @@ module GovukPublishingComponents
     append_view_path File.join(Rails.root, "app", "views", GovukPublishingComponents::Config.component_directory_name)
 
     def index
-      @component_docs = component_documentation_resolver.all
-      @gem_component_docs = gem_component_documentation_resolver.all
+      @component_docs = component_docs.all
+      @gem_component_docs = gem_component_docs.all
     end
 
     def show
-      @component_doc = component_documentation_resolver.get(params[:component])
+      @component_doc = component_docs.get(params[:component])
       @guide_breadcrumbs = [index_breadcrumb, component_breadcrumb(@component_doc)]
     end
 
     def example
-      @component_doc = component_documentation_resolver.get(params[:component])
+      @component_doc = component_docs.get(params[:component])
       @component_example = @component_doc.examples.find { |f| f.id == params[:example] }
       @guide_breadcrumbs = [
                              index_breadcrumb,
@@ -26,7 +26,7 @@ module GovukPublishingComponents
 
     def preview
       @component_examples = []
-      @component_doc = component_documentation_resolver.get(params[:component])
+      @component_doc = component_docs.get(params[:component])
       @preview = true
 
       if params[:example].present?
@@ -38,12 +38,12 @@ module GovukPublishingComponents
 
   private
 
-    def component_documentation_resolver
-      @component_documentation_resolver ||= ComponentDocResolver.new
+    def component_docs
+      @component_docs ||= ComponentDocs.new
     end
 
-    def gem_component_documentation_resolver
-      @gem_component_documentation_resolver ||= ComponentDocResolver.new(gem_components: true)
+    def gem_component_docs
+      @gem_component_docs ||= ComponentDocs.new(gem_components: true)
     end
 
     def index_breadcrumb

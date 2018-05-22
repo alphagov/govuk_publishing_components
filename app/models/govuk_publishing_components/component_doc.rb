@@ -4,31 +4,30 @@ module GovukPublishingComponents
                 :name,
                 :description,
                 :body,
-                :accessibility_criteria,
+                :component,
                 :accessibility_excluded_rules,
-                :examples,
                 :source
 
-    def initialize(
-      id,
-      name,
-      description,
-      body,
-      accessibility_criteria,
-      accessibility_excluded_rules,
-      examples,
-      source,
-      display_html
-    )
-      @id = id
-      @name = name
-      @description = description
-      @body = body
-      @accessibility_criteria = accessibility_criteria
-      @accessibility_excluded_rules = accessibility_excluded_rules
-      @examples = examples
-      @source = source
-      @display_html = display_html
+    def initialize(component)
+      @component = component
+      @id = component[:id]
+      @name = component[:name]
+      @description = component[:description]
+      @body = component[:body]
+      @accessibility_excluded_rules = component[:accessibility_excluded_rules]
+      @source = component[:source]
+    end
+
+    def accessibility_criteria
+      shared_accessibility_criteria = []
+
+      if component[:shared_accessibility_criteria].present?
+        component[:shared_accessibility_criteria].each do |criteria|
+          shared_accessibility_criteria << SharedAccessibilityCriteria.send(criteria) if SharedAccessibilityCriteria.respond_to? criteria
+        end
+      end
+
+      "#{component[:accessibility_criteria]}\n#{shared_accessibility_criteria.join("\n")}"
     end
 
     def example
@@ -40,7 +39,7 @@ module GovukPublishingComponents
     end
 
     def display_html?
-      @display_html
+      component[:display_html]
     end
 
     def html_body
@@ -62,6 +61,13 @@ module GovukPublishingComponents
     def github_search_url
       params = { q: "org:alphagov #{partial_path}", type: "Code" }
       "https://github.com/search?#{params.to_query}"
+    end
+
+    def examples
+      @examples ||= component[:examples].map do |id, example_data|
+        example_data = example_data || {}
+        ComponentExample.new(id.to_s, example_data)
+      end
     end
 
   private

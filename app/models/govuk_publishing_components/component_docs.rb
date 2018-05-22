@@ -1,6 +1,6 @@
 module GovukPublishingComponents
   # @private
-  class ComponentDocResolver
+  class ComponentDocs
     def initialize(gem_components: false)
       @documentation_directory = gem_components ? gem_documentation_directory : app_documentation_directory
     end
@@ -17,33 +17,7 @@ module GovukPublishingComponents
   private
 
     def build(component)
-      examples = component[:examples].map { |id, example|
-        example = example || {}
-        ComponentExample.new(id.to_s, example["data"], example["context"], example["description"])
-      }
-
-      ComponentDoc.new(
-        component[:id],
-        component[:name],
-        component[:description],
-        component[:body],
-        combined_accessibility_criteria(component),
-        component[:accessibility_excluded_rules],
-        examples,
-        component[:source],
-        component[:display_html],
-      )
-    end
-
-    def combined_accessibility_criteria(component)
-      shared_accessibility_criteria = []
-
-      if component[:shared_accessibility_criteria].present?
-        component[:shared_accessibility_criteria].each do |criteria|
-          shared_accessibility_criteria << SharedAccessibilityCriteria.send(criteria) if SharedAccessibilityCriteria.respond_to? criteria
-        end
-      end
-      "#{component[:accessibility_criteria]}\n#{shared_accessibility_criteria.join("\n")}"
+      ComponentDoc.new(component)
     end
 
     def fetch_component_docs
