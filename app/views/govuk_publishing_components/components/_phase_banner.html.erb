@@ -1,3 +1,11 @@
+<%
+phase ||= nil
+
+unless phase.in?(%w[alpha beta])
+  raise ArgumentError, "The phase banner component expects a `phase` (`beta` or `alpha`), #{phase.inspect} given"
+end
+%>
+
 <div class="gem-c-phase-banner">
   <p>
     <strong class="phase-tag"><%= phase %></strong>
