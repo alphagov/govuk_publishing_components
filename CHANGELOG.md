@@ -11,6 +11,7 @@
 
 * Move the Title component from static (PR #324)
 * Move the Lead paragraph component from static (PR #325)
+* Add a Phase banner component to replace the Alpha/Beta banners in Static (PR #333)
 
 ### Upgrade instructions
 

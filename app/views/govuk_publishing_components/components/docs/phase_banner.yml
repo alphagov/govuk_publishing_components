@@ -1,0 +1,21 @@
+name: Phase (alpha & beta) banner
+description: |
+  A banner that indicates content is in a alpha or beta phase, with an optional explanation
+accessibility_criteria: |
+  The label must:
+
+  - have a text contrast ratio higher than 4.5:1 against the background colour to meet WCAG AA
+shared_accessibility_criteria:
+  - link
+examples:
+  default:
+    data:
+      phase: alpha
+  beta_banner:
+    data:
+      phase: beta
+  with_message:
+    data:
+      phase: beta
+      message: This is an optional different message to explain what the state means in this
+        context which can take <a href='https://www.gov.uk'>HTML</a>
