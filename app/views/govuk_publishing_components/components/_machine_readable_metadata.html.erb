@@ -1,5 +1,25 @@
-<% structured_data = GovukPublishingComponents::Presenters::SchemaOrg.new(local_assigns).structured_data %>
+<% page = GovukPublishingComponents::Presenters::Page.new(local_assigns) %>
+<% structured_data = GovukPublishingComponents::Presenters::SchemaOrg.new(page).structured_data %>
 
 <script type="application/ld+json">
   <%= raw structured_data.to_json %>
 </script>
+
+<link rel="canonical" href="<%= page.canonical_url %>" />
+
+<meta property="og:site_name" content="GOV.UK" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="<%= page.canonical_url %>" />
+<meta property="og:title" content="<%= page.title %>" />
+<meta property="og:description" content="<%= strip_tags(page.description) %>" />
+
+<% if page.has_image? %>
+  <meta property="og:image" content="<%= page.image_url %>" />
+  <meta property="og:image:alt" content="<%= page.image_alt_text %>" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="<%= page.image_url %>" />
+  <meta name="twitter:image:alt" content="<%= page.image_alt_text %>" />
+<% else %>
+  <meta name="twitter:card" content="summary" />
+<% end %>
