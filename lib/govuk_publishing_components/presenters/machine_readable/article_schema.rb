@@ -19,7 +19,7 @@ module GovukPublishingComponents
           "headline" => page.title,
           "datePublished" => page.content_item["first_published_at"],
           "dateModified" => page.content_item["public_updated_at"],
-          "description" => page.content_item["description"],
+          "description" => page.description,
           "publisher" => {
             "@type" => "Organization",
             "name" => "GOV.UK",
@@ -43,11 +43,11 @@ module GovukPublishingComponents
       end
 
       def image_schema
-        return {} unless image
+        return {} unless page.has_image?
 
         {
           "image" => [
-            image["url"],
+            page.image_url
           ]
         }
       end
@@ -66,10 +66,6 @@ module GovukPublishingComponents
 
       def publishing_organisation
         page.content_item.dig("links", "primary_publishing_organisation").to_a.first
-      end
-
-      def image
-        page.content_item.dig("details", "image")
       end
     end
   end
