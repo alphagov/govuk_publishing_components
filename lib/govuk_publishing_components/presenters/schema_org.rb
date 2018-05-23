@@ -1,42 +1,68 @@
 module GovukPublishingComponents
   module Presenters
     class SchemaOrg
+      attr_reader :page
+
       def initialize(local_assigns)
-        @local_assigns = local_assigns
+        @page = Page.new(local_assigns)
       end
 
       def structured_data
-        if @local_assigns.fetch(:schema) == :article
-          ArticleSchema.new(@local_assigns).structured_data
-        elsif @local_assigns.fetch(:schema) == :news_article
-          NewsArticleSchema.new(@local_assigns).structured_data
+        if page.schema == :article
+          ArticleSchema.new(page).structured_data
+        elsif page.schema == :news_article
+          NewsArticleSchema.new(page).structured_data
         else
-          raise "#{@local_assigns.fetch(:schema)} is not supported"
+          raise "#{page.schema} is not supported"
         end
       end
 
-      class NewsArticleSchema
+      class Page
+        attr_reader :local_assigns
+
         def initialize(local_assigns)
           @local_assigns = local_assigns
         end
 
+        def schema
+          local_assigns.fetch(:schema)
+        end
+
+        def canonical_url
+          local_assigns[:canonical_url] || (Plek.current.website_root + content_item["base_path"])
+        end
+
+        def body
+          local_assigns[:body] || content_item["details"]["body"]
+        end
+
+        def title
+          local_assigns[:title] || content_item["title"]
+        end
+
+        def content_item
+          local_assigns[:content_item]
+        end
+      end
+
+      class NewsArticleSchema
+        def initialize(page)
+          @page = page
+        end
+
         def structured_data
           # http://schema.org/NewsArticle
-          data = ArticleSchema.new(@local_assigns).structured_data
+          data = ArticleSchema.new(@page).structured_data
           data["@type"] = "NewsArticle"
           data
         end
       end
 
       class ArticleSchema
-        attr_reader :content_item, :canonical_url, :local_assigns
+        attr_reader :page
 
-        def initialize(local_assigns)
-          @local_assigns = local_assigns
-
-          @content_item = local_assigns[:content_item]
-          @canonical_url = local_assigns[:canonical_url]
-          @custom_body = local_assigns[:body]
+        def initialize(page)
+          @page = page
         end
 
         def structured_data
@@ -46,12 +72,12 @@ module GovukPublishingComponents
             "@type" => "Article",
             "mainEntityOfPage" => {
               "@type" => "WebPage",
-              "@id" => canonical_url || page_url_from_content_item,
+              "@id" => page.canonical_url,
             },
-            "headline" => local_assigns[:title] || content_item["title"],
-            "datePublished" => content_item["first_published_at"],
-            "dateModified" => content_item["public_updated_at"],
-            "description" => content_item["description"],
+            "headline" => page.title,
+            "datePublished" => page.content_item["first_published_at"],
+            "dateModified" => page.content_item["public_updated_at"],
+            "description" => page.content_item["description"],
             "publisher" => {
               "@type" => "Organization",
               "name" => "GOV.UK",
@@ -67,10 +93,10 @@ module GovukPublishingComponents
         # Not all formats have a `body` - some have their content split over
         # multiple fields. In this case we'll skip the `articleBody` field
         def body
-          return {} unless @custom_body || content_item["details"]["body"]
+          return {} unless page.body
 
           {
-            "articleBody" => @custom_body || content_item["details"]["body"]
+            "articleBody" => page.body
           }
         end
 
@@ -97,15 +123,11 @@ module GovukPublishingComponents
         end
 
         def publishing_organisation
-          content_item.dig("links", "primary_publishing_organisation").to_a.first
-        end
-
-        def page_url_from_content_item
-          Plek.current.website_root + content_item["base_path"]
+          page.content_item.dig("links", "primary_publishing_organisation").to_a.first
         end
 
         def image
-          content_item.dig("details", "image")
+          page.content_item.dig("details", "image")
         end
       end
     end
