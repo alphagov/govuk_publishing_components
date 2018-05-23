@@ -12,7 +12,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         )
       end
 
-      structured_data = GovukPublishingComponents::Presenters::SchemaOrg.new(
+      structured_data = generate_structured_data(
         content_item: content_item,
         schema: :article,
       ).structured_data
@@ -25,7 +25,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
     it "generates schema.org NewsArticles" do
       content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "answer")
 
-      structured_data = GovukPublishingComponents::Presenters::SchemaOrg.new(
+      structured_data = generate_structured_data(
         content_item: content_item,
         schema: :news_article,
       ).structured_data
@@ -40,7 +40,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         )
       end
 
-      structured_data = GovukPublishingComponents::Presenters::SchemaOrg.new(
+      structured_data = generate_structured_data(
         content_item: content_item,
         schema: :article,
         canonical_url: "https://www.gov.uk/foo/bar"
@@ -59,7 +59,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         )
       end
 
-      structured_data = GovukPublishingComponents::Presenters::SchemaOrg.new(
+      structured_data = generate_structured_data(
         content_item: content_item,
         schema: :article,
         body: "Bar"
@@ -84,7 +84,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         )
       end
 
-      structured_data = GovukPublishingComponents::Presenters::SchemaOrg.new(
+      structured_data = generate_structured_data(
         content_item: content_item,
         schema: :article,
       ).structured_data
@@ -98,12 +98,16 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         random_item
       end
 
-      structured_data = GovukPublishingComponents::Presenters::SchemaOrg.new(
+      structured_data = generate_structured_data(
         content_item: content_item,
         schema: :article,
       ).structured_data
 
       expect(structured_data['image']).to eql(["/foo"])
+    end
+
+    def generate_structured_data(args)
+      GovukPublishingComponents::Presenters::SchemaOrg.new(GovukPublishingComponents::Presenters::Page.new(args))
     end
   end
 end

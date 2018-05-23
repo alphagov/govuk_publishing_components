@@ -7,8 +7,8 @@ module GovukPublishingComponents
     class SchemaOrg
       attr_reader :page
 
-      def initialize(local_assigns)
-        @page = Page.new(local_assigns)
+      def initialize(page)
+        @page = page
       end
 
       def structured_data
