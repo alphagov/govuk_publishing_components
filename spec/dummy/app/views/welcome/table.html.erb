@@ -1,0 +1,29 @@
+<%= render 'govuk_publishing_components/components/title', title: "A table" %>
+
+<%= govuk_table "Income tax rates" do |t| %>
+  <%= t.head do %>
+    <%= t.header "Band" %>
+    <%= t.header "Taxable income" %>
+    <%= t.header "Tax rate" %>
+  <% end %>
+
+  <%= t.body do %>
+    <%= t.row do %>
+      <%= t.header "Personal Allowance" %>
+      <%= t.cell "Up to £11,850" %>
+      <%= t.cell "0%" %>
+    <% end %>
+
+    <%= t.row do %>
+      <%= t.header "Basic rate" %>
+      <%= t.cell "£11,851 to £46,350" %>
+      <%= t.cell "20%" %>
+    <% end %>
+
+    <%= t.row do %>
+      <%= t.header "Higher rate" %>
+      <%= t.cell link_to("over £150,000", "#") %>
+      <%= t.cell "45%" %>
+    <% end %>
+  <% end %>
+<% end %>

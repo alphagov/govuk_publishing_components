@@ -1,0 +1,9 @@
+name: Table
+description: A table component to make information easier to compare and scan for users.
+accessibility_criteria:
+shared_accessibility_criteria:
+type: helper
+examples:
+  default:
+    data:
+      href: '#'
