@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   get 'step-nav/:slug', to: 'step_nav#show'
   get 'contextual-navigation', to: 'welcome#contextual_navigation'
   get 'contextual-navigation/*base_path', to: 'welcome#contextual_navigation'
+  get '/table', to: 'welcome#table'
 end

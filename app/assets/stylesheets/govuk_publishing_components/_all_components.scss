@@ -35,3 +35,5 @@ $govuk-global-images: "";
 @import "components/taxonomy-navigation";
 @import "components/title";
 @import "components/translation-nav";
+
+@import "../../../node_modules/@govuk-frontend/frontend/components/table/table";
