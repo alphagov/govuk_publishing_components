@@ -19,6 +19,7 @@
 * Move the Next and previous component from static (PR #329)
 * Move the Government navigation component from static (PR #334)
 * Add a Phase banner component to replace the Alpha/Beta banners in Static (PR #333)
+* BREAKING: Iterate share links component (PR #316)
 
 ### Upgrade instructions
 

@@ -91,3 +91,49 @@ examples:
           icon: 'twitter'
         },
       ]
+  with_all_icons:
+    data:
+      stacked: true
+      brand: 'hm-treasury'
+      links: [
+        {
+          href: '/facebook-share-link',
+          text: 'Facebook',
+          icon: 'facebook'
+        },
+        {
+          href: '/twitter-share-link',
+          text: 'Twitter',
+          icon: 'twitter'
+        },
+        {
+          href: '/email-share-link',
+          text: 'Email',
+          icon: 'email'
+        },
+        {
+          href: '/flickr-share-link',
+          text: 'Flickr',
+          icon: 'flickr'
+        },
+        {
+          href: '/instagram-share-link',
+          text: 'Instagram',
+          icon: 'instagram'
+        },
+        {
+          href: '/linkedin-share-link',
+          text: 'Linkedin',
+          icon: 'linkedin'
+        },
+        {
+          href: '/youtube-share-link',
+          text: 'YouTube',
+          icon: 'youtube'
+        },
+        {
+          href: '/other-share-link',
+          text: 'Anything else',
+          icon: 'other'
+        },
+      ]
