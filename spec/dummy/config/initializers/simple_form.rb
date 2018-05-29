@@ -45,13 +45,6 @@ module GovukFrontendInputs
 end
 
 SimpleForm.setup do |config|
-
-  # ,
-  #   hint_class: :field_with_hint,
-  #   error_class: :field_with_errors,
-  #   valid_class: :field_without_errors
-  #
-
   config.wrappers :default, class: 'govuk-form-group' do |b|
     # Determines whether to use HTML5 (:email, :url, ...)
     # and required attributes
