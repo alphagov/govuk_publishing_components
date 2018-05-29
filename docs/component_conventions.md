@@ -19,13 +19,13 @@ The namespace indicates where a component lives. A single page on GOV.UK could r
 
 | Type | Location | Example | Description |
 | -- | -- | -- | -- |
-| Template | `app/views/components` | `_lead-paragraph.html.erb` | The template logic and markup. The template defines the component’s API. Filename must begin with an underscore. |
-| Documentation | `app/views/components/docs` | `lead-paragraph.yml` | [Describes the component](#write-documentation) |
-| Styles | `app/assets/stylesheets/components` | `_lead-paragraph.scss` | [Component styles](#styles) |
-| Images | `app/assets/images/govuk_publishing_components` | `lead-paragraph.png` | [Images](#images) |
-| Scripts | `app/assets/javascripts/components` | `lead-paragraph.js` | [Javascript enhancements](#javascript) |
-| Tests | `test/components` | `lead_paragraph_test.rb` | Unit tests |
-| Helpers | `lib/govuk_publishing_components/presenters` | `lead_paragraph_helper.rb` | [Helpers](#helpers) |
+| Template | `app/views/components` | `_my-comp.html.erb` | The template logic and markup. The template defines the component’s API. Filename must begin with an underscore. |
+| Documentation | `app/views/components/docs` | `my-comp.yml` | [Describes the component](#write-documentation) |
+| Styles | `app/assets/stylesheets/components` | `_my-comp.scss` | [Component styles](#styles) |
+| Images | `app/assets/images/govuk_publishing_components` | `my-comp.png` | [Images](#images) |
+| Scripts | `app/assets/javascripts/components` | `my-comp.js` | [Javascript enhancements](#javascript) |
+| Tests | `test/components` | `my_comp_test.rb` | Unit tests |
+| Helpers | `lib/govuk_publishing_components/presenters` | `my_comp_helper.rb` | [Helpers](#helpers) |
 
 ## Write documentation
 
