@@ -1,0 +1,18 @@
+name: Government navigation
+description: Navigation placed in the header by Slimmer and used by pages which sit
+  under the /government path. This is a markup only component and is not available
+  for preview here. It can be passed a string to mark a link as being active.
+accessibility_criteria: |
+  The government navigation component must:
+
+  - Be identified as a [navigation landmark](https://www.w3.org/TR/wai-aria-practices-1.1/#aria_lh_navigation)
+shared_accessibility_criteria:
+  - link
+accessibility_excluded_rules:
+  - 'duplicate-id' # ids used in this component are for slimmer to use when moving this component into the header
+examples:
+  default:
+    data: {}
+  with_active_item:
+    data:
+      active: departments
