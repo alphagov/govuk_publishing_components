@@ -6,4 +6,6 @@ Rails.application.config.assets.precompile += %w(
   govuk_publishing_components/feed-icon-black.png
   govuk_publishing_components/mail-icon-x2.png
   govuk_publishing_components/mail-icon.png
+  govuk_publishing_components/icon-pointer.png
+  govuk_publishing_components/icon-pointer-2x.png
 )

@@ -9,6 +9,8 @@
 
 ## Unreleased
 
+* Import images for the button component from static (PR #338)
+
 ## 8.2.0
 
 * Add better meta tags for third parties to the "Machine readable metadata"
