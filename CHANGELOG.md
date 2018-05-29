@@ -15,6 +15,7 @@
 * Move the Title component from static (PR #324)
 * Move the Lead paragraph component from static (PR #325)
 * Add a Phase banner component to replace the Alpha/Beta banners in Static (PR #333)
+* Move the Government navigation component from static (PR #334)
 
 ### Upgrade instructions
 
@@ -23,6 +24,7 @@ Replace the component by running the following:
 ```
 find app/views -type f -print0 | xargs -0 sed -i '' 's/govuk_component\/title/govuk_publishing_components\/components\/title/g'
 find app/views -type f -print0 | xargs -0 sed -i '' 's/govuk_component\/lead_paragraph/govuk_publishing_components\/components\/lead_paragraph/g'
+find app/views -type f -print0 | xargs -0 sed -i '' 's/govuk_component\/government_navigation/govuk_publishing_components\/components\/government_navigation/g'
 ```
 
 Your tests are likely to need updating as well.
