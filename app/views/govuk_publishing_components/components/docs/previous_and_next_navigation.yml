@@ -1,0 +1,64 @@
+name: Previous and next navigation
+description: Navigational links that allow users to navigate within a series of pages
+  or elements.
+body: |
+  This component accepts 2 optional parameters, previous and next.
+
+  Each optional parameter accepts:
+
+  - an URL for the link
+  - a title for the URL
+  - a label that can add extra info (ie page number) that will be displayed under the title
+
+  If one of the 2 parameters is nil, no link will appear.
+accessibility_criteria: |
+  Icons in the component must not be announced by screen readers.
+
+  The component must:
+
+  - identify itself as pagination navigation
+  - provide a distinction between the navigation text and label text of the links both visually and for screenreaders
+
+shared_accessibility_criteria:
+  - link
+examples:
+  only_previous:
+    data:
+      previous_page:
+        url: previous-page
+        title: Previous page
+        label: 1 of 3
+  only_next:
+    data:
+      next_page:
+        url: next-page
+        title: Next page
+        label: Tax disc
+  both_previous_and_next:
+    data:
+      previous_page:
+        url: previous-page
+        title: Previous page
+        label: 1 of 3
+      next_page:
+        url: next-page
+        title: Next page
+        label: 3 of 3
+  both_previous_and_next_no_labels:
+    data:
+      previous_page:
+        url: previous-page
+        title: Previous page
+      next_page:
+        url: next-page
+        title: Next page
+  become_a_lorry_bus_driver_example:
+    data:
+      previous_page:
+        url: previous-page
+        title: Previous
+        label: Applying for a provisional lorry or bus licence
+      next_page:
+        url: next-page
+        title: Next
+        label: 'Driver CPC part 1 test: theory'
