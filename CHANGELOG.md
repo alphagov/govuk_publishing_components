@@ -9,18 +9,20 @@
 
 ## Unreleased
 
-* Add better meta tags for third parties to the Machine readable metadata
+## 8.2.0
+
+* Add better meta tags for third parties to the "Machine readable metadata"
   component. If you're using this component you should remove any canonical
-  tags, OpenGraph tags and Twitter cards (#335).
+  tags, OpenGraph tags and Twitter cards (#335)
 * Move the Title component from static (PR #324)
 * Move the Lead paragraph component from static (PR #325)
 * Move the Next and previous component from static (PR #329)
-* Add a Phase banner component to replace the Alpha/Beta banners in Static (PR #333)
 * Move the Government navigation component from static (PR #334)
+* Add a Phase banner component to replace the Alpha/Beta banners in Static (PR #333)
 
 ### Upgrade instructions
 
-Replace the component by running the following:
+Replace the Title and Lead paragraph by running the following:
 
 ```
 find app/views -type f -print0 | xargs -0 sed -i '' 's/govuk_component\/previous_and_next_navigation/govuk_publishing_components\/components\/previous_and_next_navigation/g'
