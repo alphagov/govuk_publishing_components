@@ -19,12 +19,10 @@
 
 .gem-c-pagination__item {
   @include core-16($line-height: (20 / 16));
-  float: left;
   list-style: none;
   text-align: right;
   margin: 0;
   padding: 0;
-  width: 50%;
 }
 
 .gem-c-pagination__link {
@@ -48,23 +46,21 @@
 }
 
 .gem-c-pagination__item--previous {
-  @include media-down(mobile) {
-    float: none;
-    width: 100%;
-  }
-
-  float: left;
   text-align: left;
+
+  @include media(tablet) {
+    float: left;
+    width: 50%;
+  }
 }
 
 .gem-c-pagination__item--next {
-  @include media-down(mobile) {
-    float: none;
-    width: 100%;
-  }
-
-  float: right;
   text-align: right;
+
+  @include media(tablet) {
+    float: right;
+    width: 50%;
+  }
 }
 
 .gem-c-pagination__link-icon {
