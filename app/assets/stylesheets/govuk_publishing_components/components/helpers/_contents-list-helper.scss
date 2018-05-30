@@ -1,0 +1,25 @@
+// Contents list helper is used in both print and screen stylesheets
+.gem-c-contents-list__list-item--numbered {
+  .gem-c-contents-list__link {
+    display: table;
+  }
+}
+
+.gem-c-contents-list__number,
+.gem-c-contents-list__numbered-text {
+  display: table-cell;
+}
+
+.gem-c-contents-list__number {
+  min-width: 1.5em;
+}
+
+.gem-c-contents-list__numbered-text {
+  $contents-text-padding: 0.3em;
+  padding-left: $contents-text-padding;
+
+  .direction-rtl & {
+    padding-left: 0;
+    padding-right: $contents-text-padding;
+  }
+}

@@ -18,6 +18,7 @@ require "govuk_publishing_components/presenters/sanitisation"
 require "govuk_publishing_components/presenters/subscription_links_helper"
 require "govuk_publishing_components/presenters/schema_org"
 require "govuk_publishing_components/presenters/heading_helper"
+require "govuk_publishing_components/presenters/contents_list_helper"
 
 require "govuk_publishing_components/app_helpers/taxon_breadcrumbs"
 require "govuk_publishing_components/app_helpers/brand_helper"
