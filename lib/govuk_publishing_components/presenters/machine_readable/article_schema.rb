@@ -24,6 +24,10 @@ module GovukPublishingComponents
             "@type" => "Organization",
             "name" => "GOV.UK",
             "url" => "https://www.gov.uk",
+            "logo" => {
+              "@type" => "ImageObject",
+              "url" => page.logo_url,
+            }
           }
         }.merge(image_schema).merge(author_schema).merge(body)
       end
