@@ -33,6 +33,17 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       expect(structured_data['@type']).to eql("NewsArticle")
     end
 
+    it "generates schema.org Person" do
+      content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "person")
+
+      structured_data = generate_structured_data(
+        content_item: content_item,
+        schema: :person,
+      ).structured_data
+
+      expect(structured_data['@type']).to eql("Person")
+    end
+
     it "allows override of the URL" do
       content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "answer") do |random_item|
         random_item.merge(

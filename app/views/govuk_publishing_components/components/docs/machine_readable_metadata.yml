@@ -22,7 +22,6 @@ examples:
         details: {}
       schema: :article
       canonical_url: "https://www.gov.uk/foreign-travel-advice/andorra/health"
-
   with_body:
     data:
       content_item:
@@ -31,3 +30,10 @@ examples:
         details: {}
       schema: :article
       body: "Some other body"
+  person_schema:
+    data:
+      content_item:
+        title: "A. Person"
+        base_path: "/foo"
+        details: {}
+      schema: :person
