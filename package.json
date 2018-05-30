@@ -1,0 +1,27 @@
+{
+  "name": "govuk_publishing_components",
+  "version": "1.0.0",
+  "description": "This gem:",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "lib": "lib"
+  },
+  "dependencies": {
+    "@govuk-frontend/frontend": "0.0.29-alpha"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alphagov/govuk_publishing_components.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alphagov/govuk_publishing_components/issues"
+  },
+  "homepage": "https://github.com/alphagov/govuk_publishing_components#readme"
+}

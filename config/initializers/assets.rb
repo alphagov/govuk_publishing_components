@@ -7,3 +7,5 @@ Rails.application.config.assets.precompile += %w(
   govuk_publishing_components/mail-icon-x2.png
   govuk_publishing_components/mail-icon.png
 )
+
+Rails.application.config.assets.paths << Rails.root.join("node_modules/@govuk-frontend/frontend/assets")
