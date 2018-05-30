@@ -1,0 +1,13 @@
+<%= render "govuk_publishing_components/components/title", title: "Hello GOV.UK" %>
+
+<%= simple_form_for @object do |f| %>
+  <%= f.input :name_with_existing_value, hint: "This field has been pre-filled" %>
+  <%= f.input :name_without_existing_value %>
+  <%= f.input :password %>
+  <%= f.input :some_yes_no_question, as: :boolean %>
+  <%= f.input :some_long_text, as: :text %>
+  <%= f.input :choose_a_number, collection: 18..60 %>
+  <%= f.input :choose_some_numbers, collection: 5..10, as: :check_boxes %>
+  <%= f.input :choose_another_number, collection: 5..10, as: :radio_buttons %>
+  <%= f.button :submit %>
+<% end %>
