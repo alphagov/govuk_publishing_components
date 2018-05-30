@@ -42,6 +42,10 @@ module GovukPublishingComponents
       def content_item
         local_assigns[:content_item]
       end
+
+      def logo_url
+        local_assigns[:logo_url]
+      end
     end
   end
 end

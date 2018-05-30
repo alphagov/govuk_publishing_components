@@ -1,3 +1,4 @@
+<% local_assigns[:logo_url] = image_url("govuk_publishing_components/govuk-logo.png") %>
 <% page = GovukPublishingComponents::Presenters::Page.new(local_assigns) %>
 <% structured_data = GovukPublishingComponents::Presenters::SchemaOrg.new(page).structured_data %>
 
