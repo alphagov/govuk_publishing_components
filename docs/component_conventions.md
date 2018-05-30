@@ -19,11 +19,13 @@ The namespace indicates where a component lives. A single page on GOV.UK could r
 
 | Type | Location | Example | Description |
 | -- | -- | -- | -- |
-| Template | `app/views/components` | `_lead-paragraph.html.erb` | The template logic and markup. The template defines the component’s API. Filename must begin with an underscore. |
-| Documentation | `app/views/components/docs` | `lead-paragraph.yml` | [Describes the component](#write-documentation) |
-| Styles | `app/assets/stylesheets/components` | `_lead-paragraph.scss` | [Component styles](#styles) |
-| Scripts | `app/assets/javascripts/components` | `lead-paragraph.js` | [Javascript enhancements](#javascript) |
-| Tests | `test/components` | `lead_paragraph_test.rb` | Unit tests |
+| Template | `app/views/components` | `_my-comp.html.erb` | The template logic and markup. The template defines the component’s API. Filename must begin with an underscore. |
+| Documentation | `app/views/components/docs` | `my-comp.yml` | [Describes the component](#write-documentation) |
+| Styles | `app/assets/stylesheets/components` | `_my-comp.scss` | [Component styles](#styles) |
+| Images | `app/assets/images/govuk_publishing_components` | `my-comp.png` | [Images](#images) |
+| Scripts | `app/assets/javascripts/components` | `my-comp.js` | [Javascript enhancements](#javascript) |
+| Tests | `test/components` | `my_comp_test.rb` | Unit tests |
+| Helpers | `lib/govuk_publishing_components/presenters` | `my_comp_helper.rb` | [Helpers](#helpers) |
 
 ## Write documentation
 
@@ -170,8 +172,32 @@ All stylesheets must be linted according to [the style rules](https://github.com
 bundle exec govuk-lint-sass app/assets/stylesheets/components
 ```
 
+## Images
+
+Images must be listed in `config/initializers/assets.rb` and can be referred to in Sass as follows.
+
+```
+background-image: image-url("govuk_publishing_components/search-button.png");
+```
+
+SVGs can also be used for images, ideally inline in templates and compressed.
+
 ## Javascript
 
 Follow the [GOV.UK Frontend JS conventions](https://github.com/alphagov/govuk-frontend/blob/master/docs/coding-standards/js.md).
 
 Scripts should use the [module pattern provided by govuk_frontend_toolkit](https://github.com/alphagov/govuk_frontend_toolkit/blob/master/docs/javascript.md#modules) and be linted using [StandardJS](https://standardjs.com/).
+
+## Helpers
+
+Any code needed by a component that is more complex than basic parameter initialisation should be included in a separate file rather than in the template. Any new presenter files must be included in `lib/govuk_publishing_components.rb` to work.
+
+Code can be called and referred to in the template as follows:
+
+```
+<%
+  card_helper = GovukPublishingComponents::Presenters::ImageCardHelper.new(local_assigns)
+%>
+
+<%= card_helper.heading_tag %>
+```
