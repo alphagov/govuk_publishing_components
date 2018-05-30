@@ -16,6 +16,7 @@ class AdminController < ApplicationController
       :some_long_text,
       :password,
       :choose_a_number,
+      :choose_some_numbers,
       :choose_another_number
 
     def name_with_existing_value

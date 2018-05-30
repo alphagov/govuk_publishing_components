@@ -13,3 +13,15 @@ $govuk-global-styles: true;
 // GOV.UK Frontend doesn't have a header component yet so this is stolen from the
 // Design System code: https://github.com/alphagov/govuk-design-system/blob/8b4019d6f184586aa0ab513b9bc704bf5bda42ad/src/stylesheets/components/_header.scss
 @import "govuk_publishing_components/components/admin_layout/header_hack";
+
+// We can't override SimpleForm's label class for the label
+// https://github.com/plataformatec/simple_form/blob/1e35f201b4e934e3e58491659581bbc94cd370f5/lib/simple_form/tags.rb#L51
+.collection_radio_buttons {
+  @extend .govuk-radios__label;
+}
+
+// We can't override SimpleForm's label class for the label
+// https://github.com/plataformatec/simple_form/blob/1e35f201b4e934e3e58491659581bbc94cd370f5/lib/simple_form/tags.rb#L65
+.collection_check_boxes {
+  @extend .govuk-checkboxes__label;
+}

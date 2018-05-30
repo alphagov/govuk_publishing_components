@@ -8,6 +8,17 @@ module GovukFrontendInputs
   end
 
   class BooleanInput < SimpleForm::Inputs::BooleanInput
+    def options
+      original_options = super
+
+      original_options[:wrapper_html] ||= {}
+      original_options[:wrapper_html][:class] = 'govuk-checkboxes__item'
+      original_options[:label_html] ||= {}
+      original_options[:label_html][:class] = 'govuk-checkboxes__label'
+
+      original_options
+    end
+
     def input_html_classes
       super.push('govuk-checkboxes__input')
     end
@@ -35,11 +46,31 @@ module GovukFrontendInputs
     def input_html_classes
       super.push('govuk-radios__input')
     end
+
+    def input_options
+      opts = super
+      opts[:item_wrapper_tag] = "div"
+      opts[:item_wrapper_class] = "govuk-radios__item"
+
+      opts[:collection_wrapper_tag] = "div"
+      opts[:collection_wrapper_class] = "govuk-radios"
+      opts
+    end
   end
 
   class CollectionCheckBoxesInput < SimpleForm::Inputs::CollectionCheckBoxesInput
     def input_html_classes
       super.push('govuk-checkboxes__input')
+    end
+
+    def input_options
+      opts = super
+      opts[:item_wrapper_tag] = "div"
+      opts[:item_wrapper_class] = "govuk-checkboxes__item"
+
+      opts[:collection_wrapper_tag] = "div"
+      opts[:collection_wrapper_class] = "govuk-checkboxes"
+      opts
     end
   end
 end
