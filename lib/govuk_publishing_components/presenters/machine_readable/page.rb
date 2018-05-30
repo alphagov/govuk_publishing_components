@@ -24,7 +24,7 @@ module GovukPublishingComponents
       end
 
       def description
-        content_item["description"]
+        local_assigns[:description] || content_item["description"]
       end
 
       def has_image?
