@@ -35,7 +35,7 @@
     padding-bottom: 0.15em;
   }
 
-  background-image: image-url("icon-pointer.png");
+  background-image: image-url("govuk_publishing_components/icon-pointer.png");
   background-position: 100% 50%;
   background-repeat: no-repeat;
 
@@ -44,7 +44,7 @@
   }
 
   @include device-pixel-ratio() {
-    background-image: image-url("icon-pointer-2x.png");
+    background-image: image-url("govuk_publishing_components/icon-pointer-2x.png");
     background-size: 30px 19px;
   }
 }
