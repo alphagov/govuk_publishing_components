@@ -1,7 +1,7 @@
 <%= render "govuk_publishing_components/components/title", title: "Hello GOV.UK" %>
 
 <%= simple_form_for @object do |f| %>
-  <%= f.input :name_with_existing_value %>
+  <%= f.input :name_with_existing_value, hint: "This field has been pre-filled" %>
   <%= f.input :name_without_existing_value %>
   <%= f.input :password %>
   <%= f.input :some_yes_no_question, as: :boolean %>

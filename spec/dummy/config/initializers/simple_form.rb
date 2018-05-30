@@ -107,9 +107,10 @@ SimpleForm.setup do |config|
     # Calculates readonly automatically from readonly attributes
     b.optional :readonly
 
-    b.use :label_input
+    b.use :label
     b.use :hint,  wrap_with: { tag: :span, class: 'govuk-hint' }
     b.use :error, wrap_with: { tag: :span, class: :error }
+    b.use :input
 
     ## full_messages_for
     # If you want to display the full error message for the attribute, you can
@@ -117,6 +118,22 @@ SimpleForm.setup do |config|
     #
     # b.use :full_error, wrap_with: { tag: :span, class: :error }
   end
+
+  config.wrappers :checks, class: 'govuk-form-group' do |b|
+      b.use :html5
+      b.use :placeholder
+      b.optional :maxlength
+      b.optional :pattern
+      b.optional :min_max
+      b.optional :readonly
+
+      ## Inputs
+      b.use :label_input
+      b.use :hint,  wrap_with: { tag: :span, class: :hint }
+      b.use :error, wrap_with: { tag: :span, class: :error }
+  end
+
+  config.wrapper_mappings = { boolean: :checks }
 
   # The default wrapper to be used by the FormBuilder.
   config.default_wrapper = :default
