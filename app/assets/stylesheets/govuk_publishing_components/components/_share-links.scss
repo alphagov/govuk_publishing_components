@@ -1,9 +1,17 @@
 $share-button-width: 32px;
 $share-button-height: 32px;
 
+.gem-c-share-links__list {
+  list-style: none;
+}
+
+.gem-c-share-links__list-item {
+  display: inline-block;
+  margin-bottom: $gutter-one-third;
+}
+
 .gem-c-share-links__link {
   margin-right: $gutter;
-  margin-bottom: $gutter-one-third;
   @include bold-16($line-height: $share-button-height, $line-height-640: $share-button-height);
   text-decoration: none;
 }
@@ -36,5 +44,11 @@ $share-button-height: 32px;
       margin-left: $gutter-one-third;
       vertical-align: middle;
     }
+  }
+}
+
+.gem-c-share-links--stacked {
+  .gem-c-share-links__list-item {
+    display: block;
   }
 }
