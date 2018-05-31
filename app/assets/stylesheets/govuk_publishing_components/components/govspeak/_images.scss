@@ -1,0 +1,32 @@
+// Govspeak images
+//
+// Support:
+// - alphagov/whitehall: ✔︎
+// - alphagov/govspeak: ✔︎
+
+.govuk-govspeak {
+  img {
+    width: auto;
+    height: auto;
+    max-width: $full-width;
+  }
+
+  figure {
+    width: $full-width;
+    clear: both;
+    overflow: hidden;
+    padding: $gutter-one-third 0 0;
+
+    img {
+      display: inline;
+      text-align: center;
+      width: auto;
+      height: auto;
+      max-width: $full-width;
+    }
+
+    figcaption {
+      @include core-14;
+    }
+  }
+}

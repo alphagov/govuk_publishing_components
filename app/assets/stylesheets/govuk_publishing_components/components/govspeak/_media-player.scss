@@ -1,0 +1,15 @@
+// Govspeak media player
+// https://govuk-static.herokuapp.com/component-guide/govspeak/with_youtube_embed
+//
+// Support:
+// - alphagov/whitehall: ✔︎
+// - alphagov/govspeak: ✔︎
+
+.govuk-govspeak {
+  // Video player styles from frontend toolkit
+  @import "design-patterns/media-player";
+
+  .media-player {
+    @include media-player;
+  }
+}

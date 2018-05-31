@@ -1,0 +1,25 @@
+// Govspeak example callout
+// https://govuk-static.herokuapp.com/component-guide/govspeak/example
+//
+// Support:
+// - alphagov/whitehall: ✔︎
+// - alphagov/govspeak: ✔︎
+
+.govuk-govspeak {
+  .example {
+    border-left: 1em solid $panel-colour;
+    padding: 1em 0 1em 1em;
+    margin: 2em 0;
+
+    // Remove margin from the last element
+    p:last-child,
+    ul:last-child,
+    ol:last-child {
+      margin-bottom: 0;
+    }
+
+    strong {
+      display: block;
+    }
+  }
+}

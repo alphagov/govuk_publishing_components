@@ -1,0 +1,41 @@
+// Govspeak warning callout
+// https://govuk-static.herokuapp.com/component-guide/govspeak/warning_callout
+//
+// Support:
+//
+// - alphagov/whitehall: ✔︎
+// - alphagov/govspeak: ✔︎
+
+.govuk-govspeak {
+  .help-notice {
+    $icon-size: 34px;
+    $line-height-mobile: 20px;
+    $line-height-tablet: 25px;
+
+    margin: 2em 0;
+
+    // Add '!' icon
+    background-image: image-url("icon-important.png");
+    background-size: $icon-size $icon-size;
+    background-repeat: no-repeat;
+
+    @include device-pixel-ratio() {
+      background-image: image-url("icon-important-2x.png");
+    }
+
+    min-height: $icon-size;
+    padding-left: $icon-size;
+
+    // Center the icon around the baseline
+    padding-top: ($icon-size - $line-height-mobile) / 2;
+
+    @include media(tablet) {
+      padding-top: ($icon-size - $line-height-tablet) / 2;
+    }
+
+    p {
+      @include bold-19;
+      margin-left: 1em;
+    }
+  }
+}

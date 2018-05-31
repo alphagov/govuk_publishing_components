@@ -1,0 +1,24 @@
+.govuk-govspeak .steps {
+  padding-left: 0;
+  margin-left: 0;
+  overflow: hidden;
+
+  > li {
+    background-position: 0 0.87em;
+    background-repeat: no-repeat;
+    list-style-type: decimal;
+    margin-left: 0;
+    padding: 0.75em 0 0.75em 2.2em;
+
+    @for $i from 1 through 14 {
+      &:nth-child(#{$i}) {
+        background-image: image-url("icon-steps/icon-step-#{$i}.png");
+
+        @include device-pixel-ratio() {
+          background-image: image-url("icon-steps/icon-step-#{$i}-2x.png");
+          background-size: 24px 24px;
+        }
+      }
+    }
+  }
+}

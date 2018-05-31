@@ -1,0 +1,38 @@
+// Govspeak tables
+// https://govuk-static.herokuapp.com/component-guide/govspeak/tables
+//
+// Support:
+// - alphagov/whitehall: ✔︎
+// - alphagov/govspeak: ✔︎
+
+.govuk-govspeak {
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: $gutter 0;
+    width: $full-width;
+    @include core-14;
+
+    caption {
+      text-align: left;
+      margin-bottom: 0.5em;
+    }
+
+    th,
+    td {
+      vertical-align: top;
+      padding: $gutter-one-third $gutter-one-third $gutter-one-third 0;
+      border-bottom: solid 1px $border-colour;
+    }
+
+    th {
+      text-align: left;
+      color: $black;
+      @include bold-14;
+    }
+
+    td small {
+      font-size: 1em;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+// Govspeak call to action
+// https://govuk-static.herokuapp.com/component-guide/govspeak/call_to_action
+//
+// Support:
+//
+// - alphagov/whitehall: ✔︎
+// - alphagov/govspeak: ✔︎
+
+.govuk-govspeak {
+  .call-to-action {
+    margin: 2em 0;
+    background-color: $panel-colour;
+    padding: 2em;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    p:last-child,
+    ul:last-child,
+    ol:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

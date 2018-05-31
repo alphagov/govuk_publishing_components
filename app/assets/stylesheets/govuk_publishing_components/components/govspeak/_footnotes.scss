@@ -1,0 +1,27 @@
+// Govspeak footnotes callout
+// https://govuk-static.herokuapp.com/component-guide/govspeak/footnotes
+//
+// Support:
+//
+// This appears to be built into kramdown, we're just applying styling to it.
+// https://kramdown.gettalong.org/syntax.html#footnotes
+//
+// - alphagov/whitehall: ✔︎
+// - alphagov/govspeak: ✔︎
+
+.govuk-govspeak {
+  .footnotes {
+    border-top: 1px solid $border-colour;
+    margin-top: $gutter;
+    padding-top: $gutter-one-third;
+
+    ol {
+      margin-top: 0;
+      padding-top: 0;
+
+      li p {
+        margin: 10px 0;
+      }
+    }
+  }
+}

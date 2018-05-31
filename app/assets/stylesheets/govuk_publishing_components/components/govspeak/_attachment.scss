@@ -1,0 +1,111 @@
+// Govspeak attachment
+// https://govuk-static.herokuapp.com/component-guide/govspeak/block_attachments
+//
+// Support:
+// - alphagov/whitehall: ✔︎
+// - alphagov/govspeak: ✔︎
+
+.govuk-govspeak {
+  // This block is duplicated from Whitehall as a transitional step, see the
+  // commit message for 2d893c10ee3f2cab27162b9aba38b12379a71d07 before making
+  // changes, original version:
+  // https://github.com/alphagov/whitehall/blob/master/app/assets/stylesheets/frontend/helpers/_attachment.scss
+  $thumbnail-width: 99px;
+
+  .attachment {
+    position: relative;
+    margin: $gutter 0;
+    padding: $gutter-half 0 0 ($thumbnail-width + $gutter);
+    @extend %contain-floats;
+
+    &:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+
+    .attachment-thumb {
+      $thumb-border-width: $gutter-one-third / 2;
+
+      position: relative;
+      float: left;
+      margin-top: $thumb-border-width;
+      margin-left: -($thumbnail-width + $gutter - $thumb-border-width);
+      padding-bottom: $gutter-half;
+
+      img {
+        display: block;
+        width: $thumbnail-width;
+        height: 140px;
+        background: $white;
+        outline: $thumb-border-width solid transparentize($black, 0.9);
+
+        @include ie-lte(8) {
+          // IE8 incorrectly asserts the "max-width: 100%" rule to be 0
+          // because of the collapsed width on its floating container
+          // Reset the max-width so that thumbnails render at the specified
+          // width above.
+          // http://www.456bereastreet.com/archive/201202/using_max-width_on_images_can_make_them_disappear_in_ie8/
+          max-width: none;
+          border: $thumb-border-width solid $grey-3;
+        }
+
+        @include box-shadow(0 2px 2px rgba($black, .4));
+      }
+    }
+
+    .attachment-details {
+      h2 {
+        @include core-27;
+        margin: 0;
+      }
+
+      p {
+        margin: $gutter-one-third 0;
+      }
+
+      .metadata {
+        @include core-14;
+      }
+
+      .changed,
+      .references,
+      .unnumbered-paper {
+        display: block;
+      }
+
+      .preview,
+      .download {
+        @include core-19;
+
+        strong {
+          font-weight: bold;
+        }
+      }
+
+      .preview {
+        padding-right: $gutter-half;
+      }
+
+      .opendocument-help {
+        @include core-14;
+      }
+
+      .accessibility-warning {
+        h2 {
+          @include core-14;
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  &.direction-rtl .attachment {
+    padding: $gutter-half ($thumbnail-width + $gutter) 0 0;
+
+    .attachment-thumb {
+      float: right;
+      margin-left: 0;
+      margin-right: (($thumbnail-width * -1) - $gutter-half);
+    }
+  }
+}

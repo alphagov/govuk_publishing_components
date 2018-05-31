@@ -1,0 +1,22 @@
+// Govspeak information callout
+// https://govuk-static.herokuapp.com/component-guide/govspeak/information_callout
+//
+// Support:
+//
+// - alphagov/whitehall: ✔︎
+// - alphagov/govspeak: ✔︎
+
+.govuk-govspeak {
+  .info-notice {
+    border-left: 1em solid $panel-colour;
+    padding: 1em 0 1em 1em;
+    margin: 2em 0;
+
+    // Remove margin from the last element
+    p:last-child,
+    ul:last-child,
+    ol:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

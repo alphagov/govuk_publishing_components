@@ -1,0 +1,26 @@
+// Govspeak legislative list
+// https://govuk-static.herokuapp.com/component-guide/govspeak/legislative_lists
+
+// Support:
+// - alphagov/whitehall: ✔︎
+// - alphagov/govspeak: ✔︎
+
+.govuk-govspeak {
+  .legislative-list {
+    list-style: none;
+    margin: 5px 0;
+
+    li {
+      margin: 5px 0;
+    }
+
+    p {
+      margin: 20px 0;
+    }
+
+    ol {
+      margin: 10px 0 10px $gutter;
+      list-style: none;
+    }
+  }
+}

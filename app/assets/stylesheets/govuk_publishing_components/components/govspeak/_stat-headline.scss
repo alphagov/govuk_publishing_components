@@ -1,0 +1,29 @@
+// Govspeak statistic headline
+// https://govuk-static.herokuapp.com/component-guide/govspeak/statistic_headlines
+//
+// Support:
+// - alphagov/whitehall: ✔︎
+// - alphagov/govspeak: ✔︎
+
+.govuk-govspeak {
+  .stat-headline {
+    margin-bottom: $gutter-half;
+    margin-top: $gutter-half;
+
+    @include media(tablet) {
+      margin-bottom: $gutter-two-thirds;
+      margin-top: $gutter-two-thirds;
+    }
+
+    p {
+      @include bold-19;
+      margin: 0;
+    }
+
+    em {
+      display: block;
+      @include bold-80;
+      margin: 3px 0 -5px;
+    }
+  }
+}

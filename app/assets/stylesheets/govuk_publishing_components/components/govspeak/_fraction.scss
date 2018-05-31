@@ -1,0 +1,22 @@
+// Govspeak fractions
+// https://govuk-static.herokuapp.com/component-guide/govspeak/image_fractions
+// https://govuk-static.herokuapp.com/component-guide/govspeak/text_fractions
+//
+// Support:
+// - alphagov/whitehall: ✔︎
+// - alphagov/govspeak: ✘
+
+.govuk-govspeak {
+  .fraction {
+    sup,
+    sub {
+      @include core-14;
+    }
+
+    img {
+      display: inline-block;
+      width: auto;
+      margin: 0 0 -5px;
+    }
+  }
+}
