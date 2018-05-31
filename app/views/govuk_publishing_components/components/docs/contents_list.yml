@@ -1,0 +1,191 @@
+name: Contents list
+description: Lists a page’s contents with links pointing to headings within the document
+body: |
+  Pass a list of contents each with an `href` and `text`. The `href` should point at the ID of a heading within the page.
+
+  Supports nesting contents one level deep, currently only used by specialist documents. When nesting the top level list items
+  display in bold.
+
+  `format_numbers` option will pull out numbers in the link text to render them as though they were the list style type. Applies to
+  numbers at the start of text, with or without a decimal. See the [format complex numbers fixture](/component-guide/contents-list/formats_complex_numbers) for details.
+accessibility_criteria: |
+  The component must be [a landmark with a navigation role](https://accessibility.blog.gov.uk/2016/05/27/using-navigation-landmarks/).
+
+  The contents list must:
+
+  - inform the user how many items are in the list
+  - convey the content structure
+  - indicate the current page when contents span different pages, and not link to itself
+
+  The contents list may:
+  - include an aria-label to contextualise the list if helpful
+
+  Links with formatted numbers must separate the number and text with a space for correct screen reader pronunciation. This changes pronunciation from "1 dot Item" to "1 Item".
+shared_accessibility_criteria:
+  - link
+examples:
+  default:
+    data:
+      contents:
+        - href: "#first-thing"
+          text: First thing
+        - href: "#second-thing"
+          text: Second thing
+        - href: "#third-thing"
+          text: Third thing
+  underline_links:
+    description: By default we do not underline links in this component even though this is the general approach on GOV.UK. This is because some of the examples below (particularly those with numbers) do not work well with underlined links. Instead, this option allows the links to be underlined where appropriate.
+    data:
+      underline_links: true
+      contents:
+        - href: "#first-thing"
+          text: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        - href: "#second-thing"
+          text: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        - href: "#third-thing"
+          text: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+  long_text:
+    data:
+      contents:
+        - href: "#first-thing"
+          text: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        - href: "#second-thing"
+          text: Another pretty long contents list entry, not as long as the first, but still a little.
+        - href: "#third-thing"
+          text: Third thing
+  active_content_link:
+    description: 'An active state allows for "you are here" items in a contents list that spans different pages to avoid linking back to the current page.'
+    data:
+      contents:
+        - href: "#first-thing"
+          text: First
+        - href: "#two"
+          text: Second
+          active: true
+        - href: "#third-thing"
+          text: Third thing
+  aria_label:
+    description: 'An aria-label string can be used to contextualise the navigation for assistive technology.'
+    data:
+      aria_label: "Pages in this guide"
+      contents:
+        - href: "#first-thing"
+          text: First
+        - href: "#two"
+          text: Second
+          active: true
+        - href: "#third-thing"
+          text: Third thing
+  nested_contents_lists:
+    data:
+      contents:
+        - href: "#first-thing"
+          text: First thing
+        - href: "#second-thing"
+          text: Second thing
+        - href: "#third-thing"
+          text: Third thing
+          items:
+            - href: "#sub-third-thing"
+              text: Sub third thing
+            - href: "#another-third-thing"
+              text: Another third thing
+        - href: "#fourth-thing"
+          text: Fourth thing
+  formats_numbers:
+    data:
+      format_numbers: true
+      contents:
+        - href: "#first-thing"
+          text: 1. First thing
+        - href: "#two"
+          active: true
+          text: 2. Second thing
+        - href: "#third-thing"
+          text: 3. Third thing
+  formats_complex_numbers:
+    data:
+      format_numbers: true
+      contents:
+        - href: "#"
+          text: 1. Item
+        - href: "#"
+          text: 1.1 Sub item
+        - href: "#"
+          text: 1.2 Sub item
+        - href: "#"
+          text: "1.02 longer decimals allowed"
+        - href: "#"
+          text: "1.021 even longer decimals ignored"
+        - href: "#"
+          text: 1 Number without period
+        - href: "#"
+          text: 10. Two digit numbers
+        - href: "#"
+          text: 99. Two digit numbers
+        - href: "#"
+          text: 100. Three digit numbers
+        - href: "#"
+          text: 2017 four digit numbers ignored
+        - href: "#"
+          text: "2001: A space odyssey"
+  nested_with_formatted_numbers:
+    data:
+      format_numbers: true
+      contents:
+        - href: "#first-thing"
+          text: 1. First thing
+          items:
+          - href: "#second-thing"
+            text: 2. Numbers not parsed
+          - href: "#third-thing"
+            text: 3. Numbers are just text
+        - href: "#first-thing"
+          text: 2. Next thing
+          items:
+          - href: "#second-thing"
+            text: No numbers here
+          - href: "#third-thing"
+            active: true
+            text: None here either
+  right_to_left:
+    data:
+      contents:
+        - href: "#section"
+          text: "هل يمكنك تقديم"
+        - href: "#section-1"
+          text: "أعد مستند"
+        - href: "#section-2"
+          text: "تقديم الطلب"
+    context:
+      right_to_left: true
+  right_to_left_with_formatted_numbers:
+    data:
+      format_numbers: true
+      contents:
+        - href: "#section"
+          text: "هل يمكنك تقديم"
+        - href: "#section-1"
+          text: "أعد مستند"
+        - href: "#section-2"
+          text: "تقديم الطلب"
+    context:
+      right_to_left: true
+  right_to_left_with_nested_contents_lists:
+    data:
+      contents:
+        - href: "#section"
+          text: "هل يمكنك تقديم"
+        - href: "#section-1"
+          text: "أعد مستند"
+        - href: "#section-2"
+          text: "تقديم الطلب"
+          items:
+            - href: "#section"
+              text: "هل يمكنك تقديم"
+            - href: "#section-1"
+              text: "أعد مستند"
+            - href: "#section-2"
+              text: "تقديم الطلب"
+    context:
+      right_to_left: true

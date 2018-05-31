@@ -1,0 +1,70 @@
+@import "helpers/contents-list-helper";
+
+.gem-c-contents-list {
+  // Always render the contents list above a
+  // back to contents link
+  position: relative;
+  margin-bottom: $gutter-two-thirds;
+  z-index: 1;
+  background: $white;
+  box-shadow: 0 20px 15px -10px $white;
+}
+
+.gem-c-contents-list--no-underline {
+  .gem-c-contents-list__link {
+    text-decoration: none;
+
+    &:hover,
+    &:focus,
+    &:active {
+      text-decoration: underline;
+    }
+  }
+}
+
+.gem-c-contents-list__link {
+  .gem-c-contents-list__list-item--parent > & {
+    font-weight: bold;
+  }
+}
+
+.gem-c-contents-list__list-item {
+  padding-top: $gutter-one-third;
+  line-height: 1.3;
+  list-style-type: none;
+
+  @include media(tablet) {
+    padding-top: $gutter-one-quarter;
+  }
+}
+
+.gem-c-contents-list__list-item--dashed {
+  $contents-spacing: $gutter-half + 10;
+  margin-left: $contents-spacing;
+  padding-right: $contents-spacing;
+
+  &:before {
+    content: "— ";
+    margin-left: -$contents-spacing;
+    padding-right: 5px;
+
+    .direction-rtl & {
+      margin-left: 0;
+      margin-right: -$contents-spacing;
+      padding-right: 0;
+      padding-left: 5px;
+    }
+  }
+
+  // Focus styles on IE8 and older include the
+  // left margin, creating an odd white box with
+  // orange border around the em dash.
+  // Use inline-block and vertical alignment to
+  // fix focus styles
+  //
+  // https://github.com/alphagov/government-frontend/pull/420#issuecomment-320632386
+  .lte-ie8 & .gem-c-contents-list__link {
+    display: inline-block;
+    vertical-align: top;
+  }
+}

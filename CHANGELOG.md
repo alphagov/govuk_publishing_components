@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Import images for the button component from static (PR #338)
+* Add contents list component (PR #342)
 
 ## 8.2.0
 

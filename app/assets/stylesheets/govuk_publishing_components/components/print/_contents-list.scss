@@ -1,0 +1,19 @@
+@import "../helpers/contents-list-helper";
+
+// Override default browser indentation
+.gem-c-contents-list__list,
+.gem-c-contents-list__nested-list {
+  padding-left: 0;
+  margin-left: 0;
+}
+
+// Put indentation back where we use list style types
+.gem-c-contents-list__list-item--dashed {
+  margin-left: $gutter / 2;
+  list-style-type: disc;
+}
+
+.gem-c-contents-list__list-item--numbered,
+.gem-c-contents-list__list-item--parent {
+  list-style-type: none;
+}
