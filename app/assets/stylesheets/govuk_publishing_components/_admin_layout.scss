@@ -1,0 +1,15 @@
+$govuk-global-styles: true;
+
+// GOV.UK Frontend doesn't have a reset so use the one from Static
+@import "govuk_publishing_components/components/admin_layout/reset";
+
+// Include all of the GOV.UK Frontend styles. This includes global styles, fonts,
+// and individual components.
+@import "../../../node_modules/@govuk-frontend/frontend/all";
+
+// Include our GOV.UK components
+@import "govuk_publishing_components/all_components";
+
+// GOV.UK Frontend doesn't have a header component yet so this is stolen from the
+// Design System code: https://github.com/alphagov/govuk-design-system/blob/8b4019d6f184586aa0ab513b9bc704bf5bda42ad/src/stylesheets/components/_header.scss
+@import "govuk_publishing_components/components/admin_layout/header_hack";

@@ -1,0 +1,16 @@
+<%= render "govuk_publishing_components/components/title", title: "Which page do you want to edit?" %>
+
+<%= render "govuk_publishing_components/components/input", {
+  label: {
+    text: "Enter the URL or path of a GOV.UK page to edit its tagging or related links"
+  },
+  name: "name",
+} %>
+
+<p>
+  For example: https://www.gov.uk/pay-vat or /bank-holidays
+</p>
+
+<%= render "govuk_publishing_components/components/button", {
+  text: "Edit page",
+} %>

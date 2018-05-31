@@ -1,0 +1,138 @@
+// Known issues:
+//
+// When the GOV.UK logotype is focussed in Firefox, the outline is drawn based
+// on a different box to the background, which leads to 'gaps' on the top and
+// bottom between the outline and the background.
+//
+// This seems to only happen when the link is displayed 'inline-block', but
+// removing this affects the positioning of the underline and causes other
+// issues with the display of the focus style in IE8-11.
+
+@include govuk-exports("header") {
+
+  .app-header {
+    padding: $govuk-spacing-scale-2 $govuk-spacing-scale-3;
+    border-bottom: 10px solid $govuk-blue;
+    color: $govuk-white;
+    background: $govuk-black;
+  }
+
+  .app-header__logotype {
+    margin-right: $govuk-spacing-scale-1;
+  }
+
+  .app-header__logotype-crown {
+    margin-right: 1px;
+    fill: currentColor;
+    vertical-align: middle;
+  }
+
+  .app-header__logotype-crown-fallback-image {
+    width: 36px;
+    height: 32px;
+    border: 0;
+    vertical-align: middle;
+  }
+
+  .app-header__title {
+    @include govuk-font-regular-24;
+  }
+
+  .app-header__link {
+    // Font size needs to be set on the link so that the box sizing is correct
+    // in Firefox
+    @include govuk-typography-common;
+    @include govuk-typography-weight-bold;
+    display: inline-block;
+
+    font-size: 30px; // We don't have a mixin that produces 30px font size\
+    line-height: 30px;
+
+    &:link,
+    &:visited {
+      margin-bottom: -1px; // Negate transparent bottom border
+      border-bottom: 1px solid transparent;
+      color: $govuk-white;
+      text-decoration: none;
+    }
+
+    &:hover,
+    &:active {
+      border-bottom-color: currentColor;
+    }
+
+    &:focus {
+      color: $govuk-black;
+    }
+  }
+
+  @include mq($media-type: print) {
+    .app-header {
+      border-bottom-width: 0;
+      color: $govuk-black;
+      background: transparent;
+    }
+
+    // Hide the inverted crown when printing in browsers that don't support SVG.
+    .app-header__logotype-crown-fallback-image {
+      display: none;
+    }
+
+    .app-header__link {
+      &:link,
+      &:visited {
+        color: $govuk-black;
+      }
+
+      // Do not append link href to GOV.UK link when printing (e.g. '(/)')
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  .app-header-mobile-nav-toggler-wrapper {
+    display: block;
+    text-align: right;
+  }
+
+  .app-header-mobile-nav-toggler {
+    width: 100px;
+    margin-top: $govuk-spacing-scale-2;
+    margin-bottom: $govuk-spacing-scale-2;
+    border: 1px solid $govuk-white;
+    background-color: $govuk-black;
+    box-shadow: 0 0 0 $govuk-black;
+
+    &:active,
+    &:focus,
+    &:hover {
+      background-color: $govuk-black; // Override the button default green
+      box-shadow: 0 0 0 $govuk-black; // Override the button default green
+    }
+
+    &--active.app-header-mobile-nav-toggler {
+      background-color: $govuk-blue;
+      box-shadow: 0 0 0 $govuk-blue;
+    }
+
+    @include mq($from: tablet) {
+      display: none;
+    }
+  }
+
+  // Begin adjustments for font baseline offset
+  // These should be removed when the font is updated with the correct baseline
+  .app-header__logotype-crown,
+  .app-header__logotype-crown-fallback-image {
+    position: relative;
+    top: -4px;
+  }
+
+  .app-header {
+    $offset: 3px;
+    padding-top: $govuk-spacing-scale-2 + $offset;
+    padding-bottom: $govuk-spacing-scale-2 - $offset;
+  }
+  // End adjustments
+}

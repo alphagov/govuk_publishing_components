@@ -1,0 +1,10 @@
+name: Admin layout
+description: Layout for admin apps. Includes its own styles.
+accessibility_criteria: |
+  - TBD
+shared_accessibility_criteria:
+- link
+examples:
+  default:
+    data:
+      test: '#'

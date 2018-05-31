@@ -1,4 +1,8 @@
 .gem-c-document-list__item {
+  // resets
+  margin: 0;
+  padding: 0;
+
   overflow: hidden;
   margin-bottom: $gutter-one-third;
   padding-bottom: $gutter-one-third;

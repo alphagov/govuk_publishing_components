@@ -1,0 +1,37 @@
+<%
+  items ||= []
+  see_more_link ||= false
+  small ||= false
+  component_size = "app-c-topic-list--small" if small
+
+  brand ||= false
+  brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
+%>
+<% if items.any? %>
+  <ol class="app-c-topic-list <%= component_size %> <%= brand_helper.brand_class %>">
+    <% items.each do |item| %>
+      <li class="app-c-topic-list__item">
+        <%=
+          link_to(
+            item[:text],
+            item[:path],
+            data: item[:data_attributes],
+            class: "app-c-topic-list__link app-c-topic-list__link--no-underline #{brand_helper.color_class}"
+          )
+        %>
+      </li>
+    <% end %>
+    <% if see_more_link %>
+      <li class="app-c-topic-list__item">
+        <%=
+          link_to(
+            see_more_link[:text],
+            see_more_link[:path],
+            data: see_more_link[:data_attributes],
+            class: "app-c-topic-list__link #{brand_helper.color_class}"
+          )
+        %>
+      </li>
+    <% end %>
+  </ol>
+<% end %>
