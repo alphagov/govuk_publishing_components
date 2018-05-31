@@ -1,0 +1,29 @@
+.gem-c-govspeak  .place {
+  margin: 1.5em 0;
+  border-bottom: solid 1px $border-colour;
+  padding-bottom: 1.5em;
+
+  .address {
+    margin: 0;
+    padding: 0;
+    width: auto;
+    display: block;
+  }
+
+  .url {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .additional-information {
+    @include core-16;
+
+    p {
+      margin: 0.25em 0;
+    }
+  }
+
+  @include media-down(mobile) {
+    margin: 0.75em 0;
+  }
+}

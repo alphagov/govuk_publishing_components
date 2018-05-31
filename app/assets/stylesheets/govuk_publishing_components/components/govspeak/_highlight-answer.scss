@@ -1,0 +1,42 @@
+$highlight-answer-bg-color: #28a197;
+$highlight-answer-color: #fff;
+
+.gem-c-govspeak .highlight-answer {
+  background-color: $highlight-answer-bg-color;
+  color: $highlight-answer-color;
+  text-align: center;
+  padding: 1.75em 0.75em 1.25em;
+  margin: 0 -1em 1em;
+
+  p {
+    @include bold-24;
+    color: $highlight-answer-color;
+
+    em {
+      @include bold-80;
+      display: block;
+      padding-top: 0.1em;
+      color: $highlight-answer-color;
+    }
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  @include media-down(mobile) {
+    margin: 0 0 1em;
+    @include core-48;
+
+    p {
+      font-size: 1em;
+      line-height: inherit;
+
+      em {
+        font-size: 1em;
+        padding-top: 0;
+        display: inline;
+      }
+    }
+  }
+}

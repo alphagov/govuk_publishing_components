@@ -73,25 +73,17 @@ describe 'Component example' do
     expect(page).to have_selector('.component-guide-preview .test-component-with-helper', text: 'This thing has been modified by a helper')
   end
 
-  it 'displays the body of a component as html using static’s govspeak component' do
+  it 'displays the body of a component as HTML' do
     visit '/component-guide/test-component'
     within ".component-body" do
-      within(shared_component_selector("govspeak")) do
-        content = JSON.parse(page.text).fetch("content").squish
-        expect(content).to include('An example body with <a href="/component-guide">markdown in it</a>')
-        expect(content).to include('<p>This is a list:</p>')
-        expect(content).to include('<li>list item one</li>')
-      end
+      expect(page).to have_content "An example body"
     end
   end
 
   it 'shows an example description if one is present' do
     visit '/component-guide/test-component-with-example-description'
     within ".component-example" do
-      within(shared_component_selector("govspeak")) do
-        content = JSON.parse(page.text).fetch("content").squish
-        expect(content).to include('<p>This is the description of this example. It has a list in it, containing:</p>')
-      end
+      expect(page).to have_content "This is the description of this example"
     end
   end
 

@@ -1,0 +1,11 @@
+@import "govuk_publishing_components/components/button";
+
+.gem-c-govspeak {
+  .button {
+    @extend %gem-c-button;
+  }
+
+  .button-start {
+    @extend %gem-c-button--start;
+  }
+}

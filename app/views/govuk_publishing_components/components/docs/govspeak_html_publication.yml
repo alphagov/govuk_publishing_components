@@ -1,0 +1,183 @@
+name: "Govspeak content (HTML Publications)"
+description: "To display long form text with numbered parts, which has been converted from Govspeak"
+body: |
+  This component calls the standard [Govspeak component](/components/govspeak), and layers a set of overriding styles on top. Styles for numbered parts are added, and heading sizes are increased.
+
+  Requires Slimmer >= 9.1.0 for nested component support.
+accessibility_criteria: |
+  - headings must be part of a correct heading structure for the page
+  - text should have a text contrast ratio higher than 4.5:1 against the background colour to meet WCAG AA
+shared_accessibility_criteria:
+  - link
+examples:
+  basic_content:
+    data:
+      content: |
+        <p>This is a Budget that puts security first. It ensures economic security for working people by putting the public finances in order and setting out a bold plan for a more productive, balanced economy.</p>
+  heading_level_2:
+    data:
+      content: |
+        <h2>
+          <span class="number">1. </span>Executive summary
+        </h2>
+        <p>This is a Budget that puts security first. It ensures economic security for working people by putting the public finances in order and setting out a bold plan for a more productive, balanced economy.</p>
+  heading_level_3:
+    data:
+      content: |
+        <h3>
+          <span class="number">1.1 </span>Fixing the public finances and running a surplus
+        </h3>
+        <p>The government’s long-term economic plan has laid the foundations for a stronger economy, and the UK’s recovery is now well established. The labour market remains strong, and in the 3 months to April 2015, employment was around record levels at 31.1 million.</p>
+  numbered_content:
+    data:
+      content: |
+        <h2 id="executive-summary">
+          <span class="number">1. </span>Executive summary
+        </h2>
+        <p>This is a Budget that puts security first. It ensures economic security for working people by putting the public finances in order and setting out a bold plan for a more productive, balanced economy.</p>
+        <h3 id="fixing-the-public-finances-and-running-a-surplus">
+          <span class="number">1.1 </span>Fixing the public finances and running a surplus
+        </h3>
+        <p>The government’s long-term economic plan has laid the foundations for a stronger economy, and the UK’s recovery is now well established. The labour market remains strong, and in the 3 months to April 2015, employment was around record levels at 31.1 million.</p>
+        <h3 id="economic-forecast">
+          <span class="number">1.2 </span>Economic forecast
+        </h3>
+        <p>The Office for Budget Responsibility (OBR) forecasts GDP growth of 2.4% in 2015, 2.3% in 2016, and 2.4% for the remainder of the forecast period.</p>
+        <h2 id="the-uk-economy-and-public-finances">
+          <span class="number">2. </span>The UK economy and public finances
+        </h2>
+        <h3 id="uk-economy">
+          <span class="number">2.1 </span>UK economy
+        </h3>
+        <p>The government’s long‑term economic plan has secured the recovery. The government’s fiscal responsibility has allowed monetary activism to support demand in the economy alongside repair of the financial sector. This has been supported by supply-side reform to deliver sustainable increases in standards of living.</p>
+  right_to_left:
+    data:
+      direction: 'rtl'
+      content: |
+        <h2>
+          <span class="number">1. </span>Executive summary
+        </h2>
+        <p>This is a Budget that puts security first. It ensures economic security for working people by putting the public finances in order and setting out a bold plan for a more productive, balanced economy.</p>
+        <h3>
+          <span class="number">1.1 </span>Fixing the public finances and running a surplus
+        </h3>
+        <p>The government’s long-term economic plan has laid the foundations for a stronger economy, and the UK’s recovery is now well established. The labour market remains strong, and in the 3 months to April 2015, employment was around record levels at 31.1 million.</p>
+        <h3>
+          <span class="number">1.2 </span>Economic forecast
+        </h3>
+        <p>The Office for Budget Responsibility (OBR) forecasts GDP growth of 2.4% in 2015, 2.3% in 2016, and 2.4% for the remainder of the forecast period.</p>
+        <h2>
+          <span class="number">2. </span>The UK economy and public finances
+        </h2>
+        <h3>
+          <span class="number">2.1 </span>UK economy
+        </h3>
+        <p>The government’s long‑term economic plan has secured the recovery. The government’s fiscal responsibility has allowed monetary activism to support demand in the economy alongside repair of the financial sector. This has been supported by supply-side reform to deliver sustainable increases in standards of living.</p>
+  financial_table:
+    data:
+      content: |
+        <table class="financial-data">
+          <caption>Table 1.6: Total Managed Expenditure (as produced by the <a href="https://alphagov.github.io/table-editor/financial-tables.html">financial table editor</a>)</caption>
+          <thead>
+            <tr>
+              <td></td>
+              <th class="numeric">2015-16</th>
+              <th class="numeric">2016-17</th>
+              <th class="numeric">2017-18</th>
+              <th class="numeric">2018-19</th>
+              <th class="numeric">2019-20</th>
+              <th class="numeric">2020-21</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="section-heading">
+              <th colspan="7">Current Expenditure</th>
+            </tr>
+            <tr>
+              <th>Resource AME</th>
+              <td class="numeric">345.3</td>
+              <td class="numeric">353.3</td>
+              <td class="numeric">365.9</td>
+              <td class="numeric">378.4</td>
+              <td class="numeric">391.8</td>
+              <td class="numeric">403.9</td>
+            </tr>
+            <tr>
+              <th>Resource DEL excluding depreciation</th>
+              <td class="numeric">315.1</td>
+              <td class="numeric">320.8</td>
+              <td class="numeric">322.9</td>
+              <td class="numeric">325.2</td>
+              <td class="numeric">328.3</td>
+              <td class="numeric">341.2</td>
+            </tr>
+            <tr>
+              <th>Ring-fenced depreciation</th>
+              <td class="numeric">21.9</td>
+              <td class="numeric">21.9</td>
+              <td class="numeric">21.9</td>
+              <td class="numeric">21.9</td>
+              <td class="numeric">21.9</td>
+              <td class="numeric">21.9</td>
+            </tr>
+            <tr class="subtotal">
+              <th>Public Sector Current Expenditure</th>
+              <td class="numeric">682.3</td>
+              <td class="numeric">696.0</td>
+              <td class="numeric">710.7</td>
+              <td class="numeric">725.5</td>
+              <td class="numeric">742.0</td>
+              <td class="numeric">767.0</td>
+            </tr>
+            <tr class="section-heading">
+              <th colspan="7">Capital Expenditure</th>
+            </tr>
+            <tr>
+              <th>Capital AME</th>
+              <td class="numeric">31.7</td>
+              <td class="numeric">33.4</td>
+              <td class="numeric">31.7</td>
+              <td class="numeric">30.7</td>
+              <td class="numeric">31.7</td>
+              <td class="numeric">34.5</td>
+            </tr>
+            <tr>
+              <th>Capital DEL</th>
+              <td class="numeric">41.7</td>
+              <td class="numeric">44.0</td>
+              <td class="numeric">45.0</td>
+              <td class="numeric">45.0</td>
+              <td class="numeric">47.3</td>
+              <td class="numeric">55.7</td>
+            </tr>
+            <tr class="subtotal">
+              <th>Public Sector Gross Investment</th>
+              <td class="numeric">73.4</td>
+              <td class="numeric">77.4</td>
+              <td class="numeric">76.7</td>
+              <td class="numeric">75.7</td>
+              <td class="numeric">79.0</td>
+              <td class="numeric">90.2</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr class="total">
+              <th>Total Managed Expenditure</th>
+              <td class="numeric">755.7</td>
+              <td class="numeric">773.3</td>
+              <td class="numeric">787.5</td>
+              <td class="numeric">801.2</td>
+              <td class="numeric">821.0</td>
+              <td class="numeric">857.2</td>
+            </tr>
+            <tr>
+              <th>Total Managed Expenditure (% GDP)</th>
+              <td class="numeric">39.7%</td>
+              <td class="numeric">39.1%</td>
+              <td class="numeric">38.1%</td>
+              <td class="numeric">37.2%</td>
+              <td class="numeric">36.5%</td>
+              <td class="numeric">36.4%</td>
+            </tr>
+          </tfoot>
+        </table>
