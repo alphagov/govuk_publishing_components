@@ -9,7 +9,7 @@ class GovspeakTestCase < ComponentTestCase
     render_component(
       content: '<h1>content</h1>'
     )
-    assert_select ".govuk-govspeak h1", text: 'content'
+    assert_select ".gem-c-govspeak h1", text: 'content'
   end
 
   test "renders right to left content correctly" do

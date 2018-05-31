@@ -1,5 +1,5 @@
 // Override govspeak styles with HTML publication specific ones
-.govuk-govspeak-html-publication {
+.gem-c-govspeak-html-publication {
   margin-bottom: $gutter * 1.5;
   z-index: 2;
 
@@ -12,7 +12,7 @@
     text-align: start;
   }
 
-  .govuk-govspeak {
+  .gem-c-govspeak {
     h2 {
       @include bold-36;
     }
