@@ -1,3 +1,8 @@
+@import "../../../node_modules/@govuk-frontend/frontend/settings/all";
+@import "../../../node_modules/@govuk-frontend/frontend/tools/all";
+@import "../../../node_modules/@govuk-frontend/frontend/helpers/all";
+
+@import "../../../node_modules/@govuk-frontend/frontend/overrides/spacing";
 @import "../../../node_modules/@govuk-frontend/frontend/components/button/button";
 
 @import "mixins/media-down";
