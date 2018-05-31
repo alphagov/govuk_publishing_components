@@ -1,0 +1,123 @@
+@import 'grid_layout';
+
+.gem-c-image-card {
+  // if this extends grid-row a margin-bottom can't
+  // be applied as the extend overrides it
+  @extend %contain-floats;
+  margin: 0 (-$gutter-half) $gutter (-$gutter-half);
+  position: relative;
+}
+
+.gem-c-image-card__image-wrapper {
+  @include grid-column( 1 / 3, mobile );
+
+  @include media(tablet) {
+    margin-bottom: $gutter-one-third;
+  }
+
+  + .gem-c-image-card__text-wrapper {
+    @include media(mobile) {
+      padding-left: 0;
+    }
+  }
+}
+
+.gem-c-image-card__image {
+  display: block;
+  max-width: 100%;
+}
+
+.gem-c-image-card__text-wrapper {
+  @include grid-column( 2 / 3, mobile );
+}
+
+.gem-c-image-card__title {
+  @include bold-19;
+}
+
+.gem-c-image-card__title-link {
+  // the after element extends the link to cover the image, removing the
+  // need for a duplicate link. Other elements apart from the image are given
+  // position relative and a higher z-index to put them above the after element
+  &:after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: $gutter-half;
+    right: $gutter-half;
+    height: 100%;
+    $ie-background: rgba(255, 255, 255, 0);
+    background: $ie-background; // because internet explorer
+  }
+}
+
+.gem-c-image-card__context,
+.gem-c-image-card__description {
+  position: relative;
+  z-index: 2;
+}
+
+.gem-c-image-card__context {
+  @include core-14;
+  color: $grey-1;
+}
+
+.gem-c-image-card__description {
+  padding-top: $gutter-one-quarter;
+}
+
+.gem-c-image-card__list {
+  position: relative;
+  z-index: 2;
+  padding: $gutter-one-quarter 0 0 0;
+  margin: 0;
+  list-style: none;
+
+  &.gem-c-image-card__list--indented {
+    padding-left: $gutter-half;
+
+    .gem-c-image-card__list-item {
+      position: relative;
+
+      &:before {
+        content: "-";
+        position: absolute;
+        left: -$gutter-half;
+      }
+    }
+  }
+}
+
+.gem-c-image-card--large {
+  .gem-c-image-card__image-wrapper {
+    @include grid-column( 2 / 3, tablet );
+  }
+
+  .gem-c-image-card__text-wrapper {
+    @include grid-column( 1 / 3, tablet );
+  }
+
+  .gem-c-image-card__image-wrapper {
+    @include media(mobile) {
+      margin-bottom: $gutter-one-third;
+    }
+  }
+
+  .gem-c-image-card__image-wrapper,
+  .gem-c-image-card__text-wrapper {
+    @include media(mobile) {
+      float: none;
+      width: auto;
+    }
+  }
+
+  .gem-c-image-card__title {
+    @include bold-24;
+    padding-bottom: $gutter-one-third;
+  }
+
+  .gem-c-image-card__description {
+    @include core-19;
+  }
+}

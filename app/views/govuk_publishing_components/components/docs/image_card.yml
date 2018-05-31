@@ -1,0 +1,160 @@
+name: Image card
+description: Image and associated text with a link
+body: |
+  An image and an associated link, meant for use for news articles and people. Includes optional paragraph and additional links.
+
+  The component is generally to be used within a grid column but has no grid of its own, so the text and the images in the examples below may not always line up. This will normally look tidier, for example [on pages like this](https://www.gov.uk/government/organisations/attorney-generals-office).
+accessibility_criteria: |
+  The component must:
+
+  - include alt text for images when present
+  - not have duplicate links for the image and the text
+shared_accessibility_criteria:
+  - link
+examples:
+  default:
+    data:
+      href: "/not-a-page"
+      image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
+      image_alt: "some meaningful alt text please"
+      heading_text: "News headline"
+  with_a_different_heading_level:
+    description: Use a different heading level for the main link title. Defaults to H2 if not passed.
+    data:
+      href: "/really-not-a-page"
+      image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
+      image_alt: "some meaningful alt text please"
+      heading_text: "I am a heading level 3"
+      heading_level: 3
+  with_more_information:
+    data:
+      href: "/also-not-a-page"
+      image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
+      image_alt: "some meaningful alt text please"
+      context: "10 May 2018 - Press release"
+      heading_text: "Government does things"
+      description: "Following a thorough review of existing procedure, a government body has today announced that further work is necessary."
+  with_extra_links:
+    data:
+      href: "/a-page-no-just-kidding"
+      image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
+      image_alt: "some meaningful alt text please"
+      heading_text: "Some more links"
+      description: "Greater transparency across government is at the heart of our commitment to let you hold politicians and public bodies to account."
+      extra_links: [
+        {
+          text: "Single departmental plans",
+          href: "/1"
+        },
+        {
+          text: "Prime Minister's and Cabinet Office ministers' transparency publications",
+          href: "/2"
+        },
+        {
+          text: "Government transparency data",
+          href: "/3"
+        },
+      ]
+  extra_links_without_indent:
+    description: Don't indent the extra links. Used for links to people pages.
+    data:
+      href: "/government/people/"
+      image_src: "http://placekitten.com/215/140"
+      image_alt: "some meaningful alt text please"
+      context: "The Rt Hon"
+      heading_text: "John Whiskers MP"
+      extra_links: [
+        {
+          text: "Minister for Cats",
+          href: "/government/ministers/"
+        }
+      ]
+      extra_links_no_indent: true
+  without_heading_text:
+    description: |
+      The only required parameter to the component is href but if no heading_text is supplied the link will not appear. This is to allow the component to use only extra links as shown.
+
+      In this situation the link could have been applied to the image but having a link on the image like this without text can be confusing.
+    data:
+      href: "/still-not-a-link"
+      image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
+      image_alt: "some meaningful alt text please"
+      description: Here are some links to more information about the thing you are reading about.
+      extra_links: [
+        {
+          text: "More information",
+          href: "/1"
+        },
+        {
+          text: "Even more information",
+          href: "/2"
+        },
+        {
+          text: "One final bit of information we forgot to mention",
+          href: "/2"
+        }
+      ]
+  without_an_image:
+    description: Despite the name of the component, it is possible to have it display without an image.
+    data:
+      href: '/no-valid-links-here'
+      heading_text: 'John McJohnson'
+      description: 'Deputy director for Parks and Small Trees'
+  with_branding:
+    description: Organisation [colour branding](https://github.com/alphagov/govuk_publishing_components/blob/master/docs/component_branding.md) can be added to the component as shown.
+    data:
+      brand: "department-for-work-pensions"
+      href: "/again-not-a-page"
+      image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
+      image_alt: "some meaningful alt text please"
+      heading_text: "Something relating to this"
+      description: "Public reform committee consultation vote department interior minister referendum."
+      extra_links: [
+        {
+          text: "Something",
+          href: "/1"
+        },
+        {
+          text: "Something else",
+          href: "/2"
+        }
+      ]
+  large_version:
+    data:
+      large: true
+      href: "/still-not-a-page"
+      image_src: "https://assets.publishing.service.gov.uk/frontend/homepage/leaving-the-eu-bc9992ee672a30d8e8a3e195c9afa750e618748130a4e073a593ba36dfc29af9.jpg"
+      image_alt: "some meaningful alt text please"
+      context: "14 Jun 2017 - Announcement"
+      heading_text: "Something has happened nearby possibly"
+      description: "Following a news report that something has happened, further details are emerging of the thing that has happened and what that means for you."
+  with_tracking:
+    data:
+      href: "/i-am-not-a-valid-link"
+      href_data_attributes: {
+        track_category: 'href_category',
+        track_action: 1.1,
+        track_label: 'href_label',
+        track_options: {
+          dimension28: 1,
+          dimension29: 'dimension29Href'
+        }
+      }
+      image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
+      image_alt: "some meaningful alt text please"
+      heading_text: "A link with tracking"
+      extra_links: [
+        {
+          text: "Another link with tracking",
+          href: "/1",
+          data_attributes: {
+            track_category: 'extra_category',
+            track_action: 2.1,
+            track_label: 'extra_label',
+            track_options: {
+              dimension28: 1,
+              dimension29: 'dimension29Extra'
+            }
+          }
+        }
+      ]
