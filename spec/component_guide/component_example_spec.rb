@@ -26,7 +26,7 @@ describe 'Component example' do
 
   it 'passes params in examples to component example' do
     visit '/component-guide/test-component-with-params'
-    expect(body).to include('A test component that takes a required&nbsp;parameter')
+    expect(body).to include('A test component that takes a required parameter')
 
     expect(page).to have_content('<%= render "components/test-component-with-params", { test_component_parameter: "Some value" } %>')
     expect(page).to have_selector('.component-guide-preview .test-component-with-params', text: 'Some value')
@@ -69,7 +69,7 @@ describe 'Component example' do
 
   it 'handles components that use application helpers' do
     visit '/component-guide/test-component-with-helper'
-    expect(body).to include('A test component that uses a helper in the host&nbsp;application')
+    expect(body).to include('A test component that uses a helper in the host application')
     expect(page).to have_selector('.component-guide-preview .test-component-with-helper', text: 'This thing has been modified by a helper')
   end
 

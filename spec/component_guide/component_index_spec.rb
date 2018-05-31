@@ -47,6 +47,6 @@ describe 'Component guide index' do
 
   it 'creates a page for the component' do
     visit '/component-guide/test-component'
-    expect(body).to include('A test component for the dummy&nbsp;app')
+    expect(body).to include('A test component for the dummy app')
   end
 end
