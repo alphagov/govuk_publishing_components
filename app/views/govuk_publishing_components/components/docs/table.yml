@@ -1,0 +1,9 @@
+name: Table
+description: A table
+accessibility_criteria:
+shared_accessibility_criteria:
+type: helper
+examples:
+  default:
+    data:
+      href: '#'
