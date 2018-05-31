@@ -39,7 +39,7 @@ module GovukPublishingComponents
       # Not all formats have a `body` - some have their content split over
       # multiple fields. In this case we'll skip the `articleBody` field
       def body
-        return {} unless page.body
+        return {} unless page.body.present?
 
         {
           "articleBody" => page.body
