@@ -1,0 +1,33 @@
+.gem-c-notice {
+  clear: both;
+  padding: $gutter-two-thirds;
+  border: 2px solid $govuk-blue;
+
+  @include media(mobile) {
+    padding: $gutter-half;
+  }
+
+  .govuk-govspeak {
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.gem-c-notice--bottom-margin {
+  @include responsive-bottom-margin;
+}
+
+.gem-c-notice__title {
+  @include bold-27;
+  margin-bottom: $gutter-one-third;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.gem-c-notice__description {
+  @include core-19;
+  margin-bottom: 0;
+}
