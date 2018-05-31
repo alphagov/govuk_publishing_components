@@ -14,6 +14,16 @@ examples:
         base_path: "/foo"
         details: {}
       schema: :article
+
+  with_description:
+    data:
+      content_item:
+        title: "A title"
+        base_path: "/foo"
+        details: {}
+      schema: :article
+      description: "Some manually set description of the page"
+
   with_canonical_url:
     data:
       content_item:
