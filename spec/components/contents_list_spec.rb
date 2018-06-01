@@ -127,4 +127,9 @@ describe "Contents list", type: :view do
     assert_select ".gem-c-contents-list__link", count: 6
     assert_select ".gem-c-contents-list__link.brand__color", count: 6
   end
+
+  it "hides the title" do
+    render_component(contents: nested_contents_list, hide_title: true)
+    assert_select ".gem-c-contents-list__title", false
+  end
 end

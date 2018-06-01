@@ -14,6 +14,7 @@
                               end
   brand ||= false
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
+  hide_title ||= false
 %>
 <% if contents.any? %>
   <nav
@@ -24,9 +25,10 @@
       aria-label="<%= aria_label %>"
     <% end %>
   >
-    <h2>
-      <%= t("components.contents_list.contents") %>
-    </h2>
+    <% unless hide_title %>
+      <h2 class="gem-c-contents-list__title"><%= t("components.contents_list.contents") %></h2>
+    <% end %>
+
     <ol class="gem-c-contents-list__list">
       <% contents.each.with_index(1) do |contents_item, position| %>
         <%

@@ -202,4 +202,16 @@ examples:
             text: 2. Numbers not parsed
           - href: "#third-thing"
             text: 3. Numbers are just text
+  without_a_title:
+    description: The component can be used to provide a list of links to other pages, in which case the 'Contents' title is inappropriate and can be removed.
+    data:
+      hide_title: true
+      contents:
+        - href: "#first-thing"
+          text: Community best practice
+          items:
+          - href: "#second-thing"
+            text: Guidance and regulation
+          - href: "#third-thing"
+            text: Consultations
 
