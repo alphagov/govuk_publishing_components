@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 9.0.0
 
 * Import images for the button component from static (PR #338)
 * Add contents list component (PR #342)
@@ -15,6 +15,17 @@
 * Add image card component (PR #322)
 * Add notice component (PR #346)
 * Iterate contents list component (PR #351)
+* Add "person" schema to the Machine readable metadata component (PR #343)
+
+### Upgrade instructions
+
+Replace the govspeak component by running the following:
+
+```
+find app/views -type f -print0 | xargs -0 sed -i '' 's/govuk_component\/govspeak/govuk_publishing_components\/components\/govspeak/
+```
+
+The share links component has changed fundamentally, the PR to update it in [government-frontend is here](https://github.com/alphagov/government-frontend/pull/906) and it isn't used in any other app yet.
 
 ## 8.2.0
 
