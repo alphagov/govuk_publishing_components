@@ -120,4 +120,16 @@ describe "Contents list", type: :view do
     render_component(contents: contents_list_with_active_item, aria_label: "All pages in this guide")
     assert_select ".gem-c-contents-list[aria-label=\"All pages in this guide\"]"
   end
+
+  it "applies branding correctly" do
+    render_component(contents: nested_contents_list, format_numbers: true, brand: 'attorney-generals-office')
+    assert_select ".gem-c-contents-list.brand--attorney-generals-office"
+    assert_select ".gem-c-contents-list__link", count: 6
+    assert_select ".gem-c-contents-list__link.brand__color", count: 6
+  end
+
+  it "hides the title" do
+    render_component(contents: nested_contents_list, hide_title: true)
+    assert_select ".gem-c-contents-list__title", false
+  end
 end

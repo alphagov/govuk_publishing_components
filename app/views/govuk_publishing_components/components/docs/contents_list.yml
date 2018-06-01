@@ -1,13 +1,14 @@
 name: Contents list
-description: Lists a page’s contents with links pointing to headings within the document
+description: Provides a list of links with options for dashes or numbering.
 body: |
-  Pass a list of contents each with an `href` and `text`. The `href` should point at the ID of a heading within the page.
+  Commonly used to lists a page’s contents with links pointing to headings within the document, but can also be used for a list of links to other pages.
+
+  Pass a list of contents each with an `href` and `text`. The `href` can point at the ID of a heading within the page.
 
   Supports nesting contents one level deep, currently only used by specialist documents. When nesting the top level list items
   display in bold.
 
-  `format_numbers` option will pull out numbers in the link text to render them as though they were the list style type. Applies to
-  numbers at the start of text, with or without a decimal. See the [format complex numbers fixture](/component-guide/contents-list/formats_complex_numbers) for details.
+  `format_numbers` option will pull out numbers in the link text to render them as though they were the list style type. Applies to numbers at the start of text, with or without a decimal. See the [format complex numbers fixture](/component-guide/contents-list/formats_complex_numbers) for details.
 accessibility_criteria: |
   The component must be [a landmark with a navigation role](https://accessibility.blog.gov.uk/2016/05/27/using-navigation-landmarks/).
 
@@ -189,3 +190,29 @@ examples:
               text: "تقديم الطلب"
     context:
       right_to_left: true
+  with_branding:
+    description: Where this component could be used on an organisation page (such as the [Attorney General's Office](https://www.gov.uk/government/organisations/attorney-generals-office)) branding can be applied for link colours and border colours. See the [branding documentation](https://github.com/alphagov/govuk_publishing_components/blob/master/docs/component_branding.md) for more details.
+    data:
+      brand: 'department-for-environment-food-rural-affairs'
+      format_numbers: true
+      contents:
+        - href: "#first-thing"
+          text: 1. First thing
+          items:
+          - href: "#second-thing"
+            text: 2. Numbers not parsed
+          - href: "#third-thing"
+            text: 3. Numbers are just text
+  without_a_title:
+    description: The component can be used to provide a list of links to other pages, in which case the 'Contents' title is inappropriate and can be removed.
+    data:
+      hide_title: true
+      contents:
+        - href: "#first-thing"
+          text: Community best practice
+          items:
+          - href: "#second-thing"
+            text: Guidance and regulation
+          - href: "#third-thing"
+            text: Consultations
+

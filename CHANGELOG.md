@@ -14,6 +14,7 @@
 * BREAKING: Iterate share links component (PR #316)
 * Add image card component (PR #322)
 * Add notice component (PR #346)
+* Iterate contents list component (PR #351)
 
 ## 8.2.0
 
