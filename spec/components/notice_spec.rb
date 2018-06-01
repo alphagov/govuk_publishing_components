@@ -46,4 +46,9 @@ describe "Notice", type: :view do
     assert_select "span.gem-c-notice__title", text: "Statistics release cancelled"
     assert_select ".gem-c-notice__description", false
   end
+
+  it "renders simple markup in the title" do
+    render_component(title: 'Advisory Committee on Novel Foods and Processes has a <a href="http://www.food.gov.uk/acnfp">separate website</a>')
+    assert_select ".gem-c-notice__title", text: 'Advisory Committee on Novel Foods and Processes has a <a href="http://www.food.gov.uk/acnfp">separate website</a>'
+  end
 end
