@@ -7,6 +7,13 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 9.0.1
+
+* The component guide is no longer using `Slimmer::GovukComponents`, so this
+  gem can now be used with [Slimmer 13.0.0][s13] (PR #353)
+
+[s13]: https://github.com/alphagov/slimmer/blob/master/CHANGELOG.md#1300
+
 ## 9.0.0
 
 * Import images for the button component from static (PR #338)
