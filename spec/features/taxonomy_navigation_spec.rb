@@ -7,7 +7,6 @@ describe "Taxonomy navigation" do
     then_i_see_the_taxonomy_sidebar_and_world_locations
   end
   include GdsApi::TestHelpers::ContentStore
-  include Slimmer::TestHelpers::GovukComponents
 
   def given_theres_a_guide_with_a_live_taxon_and_many_world_locations_tagged_to_it
     locations = []

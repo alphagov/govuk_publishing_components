@@ -10,13 +10,6 @@ describe 'Component guide index' do
     expect(page).to have_title 'GOV.UK Component Guide'
   end
 
-  it 'pulls static (shared) components over the network via Slimmer' do
-    visit '/component-guide'
-
-    expect(GovukPublishingComponents::ApplicationController).to include(Slimmer::GovukComponents)
-    expect(page).to have_selector('h1')
-  end
-
   it 'sets X-Frame-Options to allow inclusion in iFrames' do
     visit '/component-guide'
     expect(page.response_headers["X-Frame-Options"]).to eq('ALLOWALL')
