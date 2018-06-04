@@ -58,7 +58,6 @@ describe "Contextual navigation" do
   end
 
   include GdsApi::TestHelpers::ContentStore
-  include Slimmer::TestHelpers::GovukComponents
 
   def given_theres_a_page_with_a_step_by_step
     content_store_has_random_item(links: { part_of_step_navs: [random_step_nav_item("step_by_step_nav")] })
