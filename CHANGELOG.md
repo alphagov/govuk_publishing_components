@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Extend the document list component (PR #355)
+
 ## 9.0.1
 
 * The component guide is no longer using `Slimmer::GovukComponents`, so this
