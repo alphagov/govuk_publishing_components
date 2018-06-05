@@ -38,4 +38,12 @@ describe "Govspeak for HTML publications", type: :view do
 
     assert_select ".rich-govspeak strong", text: 'boldly go'
   end
+
+  it "accepts a block" do
+    render "govuk_publishing_components/components/#{component_name}" do
+      "content-via-block"
+    end
+
+    expect(rendered).to include("content-via-block")
+  end
 end
