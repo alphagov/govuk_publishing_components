@@ -11,7 +11,7 @@ body: |
   associated with that item.
 
   Sections of links appear below the main taxonomy-driven navigation items. These are
-  Collections, Policies, Statistical data sets, Topical events and World locations.
+  Collections, Statistical data sets, Topical events and World locations.
 
   This implementation is very similar to the related-navigation component in that the
   same sections are appended. The two components should ultimately be merged to form
@@ -77,9 +77,6 @@ examples:
       collections:
         - text: "Statistics: outcome based success measures"
           path: "/government/collections/statistics-outcome-based-success-measures"
-      policies:
-        - text: "Teaching and school leadership"
-          path: "/government/policies/teaching-and-school-leadership"
       world_locations:
         - text: "Afghanistan"
           path: "/world/afghanistan/news"
