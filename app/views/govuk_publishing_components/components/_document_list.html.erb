@@ -32,9 +32,14 @@
           %>
         <% end %>
 
+        <% if item[:link][:context] %>
+          <span class="gem-c-document-list__item-context"><%= item[:link][:context] %></span>
+        <% end %>
+
         <% if item[:link][:description] %>
           <p class="gem-c-document-list__item-description" ><%= item[:link][:description] %></p>
         <% end %>
+
         <% if item[:metadata] %>
           <ul>
             <% item[:metadata].each do |item_metadata_key, item_metadata_value| %>

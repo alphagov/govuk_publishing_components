@@ -168,4 +168,21 @@ describe "Document list", type: :view do
     assert_select '.gem-c-document-list__item h3', false, 'Element should not be wrapped in heading if it is not acting as a heading for any other content'
     assert_select '.gem-c-document-list__item a[href="/link/path"]', text: 'Link Title'
   end
+
+  it "renders the item title with context when provided" do
+    render_component(
+      items: [
+        {
+          link: {
+            text: "Link Title",
+            path: "/link/path",
+            context: "some context"
+          }
+        }
+      ]
+    )
+
+    assert_select '.gem-c-document-list__item a[href="/link/path"]', text: 'Link Title'
+    assert_select '.gem-c-document-list__item-context', text: 'some context'
+  end
 end

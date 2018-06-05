@@ -103,3 +103,16 @@ examples:
       - link:
           text: 'School exclusion'
           path: '/government/publications/school-exclusion'
+  with_context:
+    description: Context can be provided to render next to the item title. This will be used on /government/organisations to indicate if an organisation is hosted on a separate website or being moved to GOV.UK
+    data:
+      items:
+      - link:
+          text: 'Forestry Commission'
+          path: '/government/organisations/forestry-commission'
+          context: 'separate website'
+      - link:
+          text: 'Advisory Committee on the Microbiological Safety of Food'
+          path: '/government/organisations/advisory-committee-on-the-microbiological-safety-of-food'
+          context: 'moving to GOV.UK'
+          description: "Works with 4 agencies and public bodies"

@@ -12,6 +12,12 @@
 
 .gem-c-document-list__item-title {
   @include bold-19;
+  display: inline-block;
+}
+
+.gem-c-document-list__item-context {
+  color: $grey-1;
+  margin-left: $gutter-one-third;
 }
 
 .gem-c-document-list__item-description {
