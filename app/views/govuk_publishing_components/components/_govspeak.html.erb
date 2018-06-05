@@ -11,7 +11,11 @@
 
 <div class="gem-c-govspeak govuk-govspeak <%= classes.join(" ") %>">
   <% if local_assigns.include?(:content) %>
-    <%= raw content %>
+    <% if content.html_safe? %>
+      <%= content %>
+    <% else %>
+      <%= raw content %>
+    <% end %>
   <% elsif block_given? %>
     <%= yield %>
   <% end %>
