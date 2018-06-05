@@ -7,10 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 9.1.0
 
 * Extend the document list component (PR #355)
-* Remove policies from the taxonomy navigation sidebar
+* Remove policies from the taxonomy navigation sidebar (PR #357)
 
 ## 9.0.1
 
