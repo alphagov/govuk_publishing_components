@@ -7,6 +7,30 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* It is no longer allowed to pass in unsafe HTML into the Govspeak component. This
+  will result in a warning for now, but in a future version this will become an error.
+
+### How to upgrade
+
+Change instances like this:
+
+```erb
+<%= render 'govuk_publishing_components/components/govspeak', content:
+"<p>Foo #{bar}</p>" %>
+```
+
+into the following safe version:
+
+```erb
+<%= render 'govuk_publishing_components/components/govspeak' do %>
+  <p>Foo <%= bar %></p>
+<% end %>
+```
+
+This will prevent XSS vulnerabilities where `bar` is user input.
+
 ## 9.1.0
 
 * Extend the document list component (PR #355)
