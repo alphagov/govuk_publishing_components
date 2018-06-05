@@ -14,6 +14,21 @@
     <% if content.html_safe? %>
       <%= content %>
     <% else %>
+      <% puts "
+        You've passed in unsanitised HTML into the govspeak component as the
+        `content` param.
+
+        Passing in unsafe HTML is deprecated and will be removed in a future
+        version. You need to pass in a block instead or use the `capture` helper.
+
+        See the component guide for examples.
+
+        If you're 100% sure there's no unsanitised user input in the string you
+        could also call `.html_safe` on the string or use the `raw` helper before
+        passing it in.
+
+        Called from #{caller_locations.find { |l| l.to_s.include?('.erb') }}
+        " %>
       <%= raw content %>
     <% end %>
   <% elsif block_given? %>
