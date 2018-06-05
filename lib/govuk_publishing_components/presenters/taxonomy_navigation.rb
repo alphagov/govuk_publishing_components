@@ -2,7 +2,6 @@ module GovukPublishingComponents
   module Presenters
     class TaxonomyNavigation
       RELATED_SECTIONS = %w(
-        policies
         topical_events
         world_locations
         statistical_data_sets

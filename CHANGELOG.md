@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Extend the document list component (PR #355)
+* Remove policies from the taxonomy navigation sidebar
 
 ## 9.0.1
 

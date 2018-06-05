@@ -23,7 +23,6 @@ RSpec.describe GovukPublishingComponents::Presenters::TaxonomyNavigation do
         expect(sidebar_for(content_item)).to eq(
           items: [],
           collections: [],
-          policies: [],
           statistical_data_sets: [],
           topical_events: [],
           world_locations: [],
@@ -78,7 +77,6 @@ RSpec.describe GovukPublishingComponents::Presenters::TaxonomyNavigation do
             },
           ],
           collections: [],
-          policies: [],
           statistical_data_sets: [],
           topical_events: [],
           world_locations: [],
@@ -132,7 +130,6 @@ RSpec.describe GovukPublishingComponents::Presenters::TaxonomyNavigation do
             },
           ],
           collections: [],
-          policies: [],
           statistical_data_sets: [],
           topical_events: [],
           world_locations: [],
@@ -198,7 +195,6 @@ RSpec.describe GovukPublishingComponents::Presenters::TaxonomyNavigation do
             }
           ],
           collections: [],
-          policies: [],
           statistical_data_sets: [],
           topical_events: [],
           world_locations: [],
@@ -242,7 +238,6 @@ RSpec.describe GovukPublishingComponents::Presenters::TaxonomyNavigation do
               }
             ],
             collections: [],
-            policies: [],
             statistical_data_sets: [],
             topical_events: [],
             world_locations: [],
@@ -306,7 +301,6 @@ RSpec.describe GovukPublishingComponents::Presenters::TaxonomyNavigation do
               }
             ],
             collections: [],
-            policies: [],
             statistical_data_sets: [],
             topical_events: [],
             world_locations: [],
@@ -348,7 +342,6 @@ RSpec.describe GovukPublishingComponents::Presenters::TaxonomyNavigation do
               }
             ],
             collections: [],
-            policies: [],
             statistical_data_sets: [],
             topical_events: [],
             world_locations: [],
@@ -397,7 +390,6 @@ RSpec.describe GovukPublishingComponents::Presenters::TaxonomyNavigation do
               },
             ],
             collections: [],
-            policies: [],
             statistical_data_sets: [],
             topical_events: [],
             world_locations: [],
@@ -438,7 +430,6 @@ RSpec.describe GovukPublishingComponents::Presenters::TaxonomyNavigation do
               },
             ],
             collections: [],
-            policies: [],
             statistical_data_sets: [],
             topical_events: [],
             world_locations: [],
@@ -494,7 +485,6 @@ RSpec.describe GovukPublishingComponents::Presenters::TaxonomyNavigation do
               },
             ],
             collections: [],
-            policies: [],
             statistical_data_sets: [],
             topical_events: [],
             world_locations: [],
@@ -517,23 +507,6 @@ RSpec.describe GovukPublishingComponents::Presenters::TaxonomyNavigation do
               text: "Collection A",
             },
           ],
-          policies: [],
-          statistical_data_sets: [],
-          topical_events: [],
-          world_locations: [],
-        )
-      end
-    end
-
-    context 'given a content item with policies' do
-      it 'returns a sidebar hash containing policies' do
-        expect(sidebar_for(content_item_with_policies)).to eq(
-          items: [],
-          collections: [],
-          policies: [
-            { path: "/policy-b", text: "Policy B" },
-            { path: "/policy-a", text: "Policy A" },
-          ],
           statistical_data_sets: [],
           topical_events: [],
           world_locations: [],
@@ -546,7 +519,6 @@ RSpec.describe GovukPublishingComponents::Presenters::TaxonomyNavigation do
         expect(sidebar_for(content_item_with_statistical_data_sets)).to eq(
           items: [],
           collections: [],
-          policies: [],
           statistical_data_sets: [
             { path: "/statistical-data-set-b", text: "Statistical data set B" },
             { path: "/statistical-data-set-a", text: "Statistical data set A" },
@@ -562,7 +534,6 @@ RSpec.describe GovukPublishingComponents::Presenters::TaxonomyNavigation do
         expect(sidebar_for(content_item_with_topical_events)).to eq(
           items: [],
           collections: [],
-          policies: [],
           statistical_data_sets: [],
           topical_events: [{ path: "/topical-event-b", text: "Topical event B" }],
           world_locations: [],
@@ -575,7 +546,6 @@ RSpec.describe GovukPublishingComponents::Presenters::TaxonomyNavigation do
         expect(sidebar_for(content_item_with_world_locations)).to eq(
           items: [],
           collections: [],
-          policies: [],
           statistical_data_sets: [],
           topical_events: [],
           world_locations: [{ path: "/world/world-location-b/news", text: "World location B" }],
@@ -653,25 +623,6 @@ RSpec.describe GovukPublishingComponents::Presenters::TaxonomyNavigation do
           "base_path" => "/collection-a",
           "content_id" => "collection-a",
           "document_type" => "document_collection",
-        },
-      ]
-    )
-  end
-
-  def content_item_with_policies
-    content_item_with(
-      "related_policies" => [
-        {
-          "title" => "Policy B",
-          "base_path" => "/policy-b",
-          "content_id" => "policy-b",
-          "document_type" => "policy",
-        },
-        {
-          "title" => "Policy A",
-          "base_path" => "/policy-a",
-          "content_id" => "policy-a",
-          "document_type" => "policy",
         },
       ]
     )
