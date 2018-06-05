@@ -1,9 +1,17 @@
 require 'rails_helper'
 
 describe "All components" do
-  it "doesn't use `html_safe`" do
-    files_with_html_safe = `grep -rni "html_safe " app/views/govuk_publishing_components/components`.lines
+  Dir.glob("app/views/govuk_publishing_components/components/*.erb").each do |filename|
+    template = filename.split('/').last
 
-    expect(files_with_html_safe).to be_empty
+    describe template do
+      next if template.in?(%w[_govspeak.html.erb])
+
+      it "doesn't use `html_safe`" do
+        file = File.read(filename)
+
+        expect(file).not_to match 'html_safe'
+      end
+    end
   end
 end
