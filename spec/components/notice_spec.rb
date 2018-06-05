@@ -27,7 +27,7 @@ describe "Notice", type: :view do
   end
 
   it "renders a notice with a title and description govspeak" do
-    render_component(title: "Statistics release update", description_govspeak: "<p>The Oil &amp; Gas Authority launched a new website on 3 October 2016 to reflect its new status as a government company.</p><p>This formalises the transfer of the Secretary of State’s regulatory powers in respect of oil and gas to the OGA, and grants it new powers. This website will no longer be updated. Visitors should refer to <a rel=\"external\" href=\"https://www.ogauthority.co.uk/news-publications/announcements/2015/establishment-of-the-oil-and-gas-authority-1/\">www.ogauthority.co.uk</a></p>")
+    render_component(title: "Statistics release update", description_govspeak: "<p>The Oil &amp; Gas Authority launched a new website on 3 October 2016 to reflect its new status as a government company.</p><p>This formalises the transfer of the Secretary of State’s regulatory powers in respect of oil and gas to the OGA, and grants it new powers. This website will no longer be updated. Visitors should refer to <a rel=\"external\" href=\"https://www.ogauthority.co.uk/news-publications/announcements/2015/establishment-of-the-oil-and-gas-authority-1/\">www.ogauthority.co.uk</a></p>".html_safe)
 
     assert_select ".gem-c-notice__title", text: "Statistics release update"
     assert_select ".govuk-govspeak p", text: "The Oil & Gas Authority launched a new website on 3 October 2016 to reflect its new status as a government company."
