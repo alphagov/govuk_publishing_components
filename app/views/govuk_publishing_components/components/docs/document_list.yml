@@ -93,3 +93,13 @@ examples:
         metadata:
           public_updated_at: 2017-07-19 15:01:48
           document_type: 'Statutory guidance'
+  with_only_link:
+    description: When only link text and path is provided to the component (no description or metadata), this will render the link without wrapping it in a heading element.
+    data:
+      items:
+      - link:
+          text: 'School behaviour and attendance: parental responsibility measures'
+          path: '/government/publications/parental-responsibility-measures-for-behaviour-and-attendance'
+      - link:
+          text: 'School exclusion'
+          path: '/government/publications/school-exclusion'

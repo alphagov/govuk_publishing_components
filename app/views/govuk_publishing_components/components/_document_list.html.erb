@@ -10,16 +10,28 @@
   <ol class="gem-c-document-list<%= margin_bottom_class %><%= margin_top_class %> <%= brand_helper.brand_class %>">
     <% items.each do |item| %>
       <li class="gem-c-document-list__item">
-        <h3 class="gem-c-document-list__item-title">
+        <% if item[:link][:description] || item[:metadata] %>
+          <h3 class="gem-c-document-list__item-title">
+            <%=
+              link_to(
+                item[:link][:text],
+                item[:link][:path],
+                data: item[:link][:data_attributes],
+                class: brand_helper.color_class
+              )
+            %>
+          </h3>
+        <% else%>
           <%=
             link_to(
               item[:link][:text],
               item[:link][:path],
               data: item[:link][:data_attributes],
-              class: brand_helper.color_class
+              class: "gem-c-document-list__item-title #{brand_helper.color_class}"
             )
           %>
-        </h3>
+        <% end %>
+
         <% if item[:link][:description] %>
           <p class="gem-c-document-list__item-description" ><%= item[:link][:description] %></p>
         <% end %>

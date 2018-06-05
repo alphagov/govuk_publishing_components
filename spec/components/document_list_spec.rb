@@ -152,4 +152,20 @@ describe "Document list", type: :view do
     assert_select '.gem-c-document-list.brand--attorney-generals-office'
     assert_select '.gem-c-document-list .gem-c-document-list__item-title .brand__color'
   end
+
+  it "does not wrap link in heading element if no description or metadata provided" do
+    render_component(
+      items: [
+        {
+          link: {
+            text: "Link Title",
+            path: "/link/path",
+          }
+        }
+      ]
+    )
+
+    assert_select '.gem-c-document-list__item h3', false, 'Element should not be wrapped in heading if it is not acting as a heading for any other content'
+    assert_select '.gem-c-document-list__item a[href="/link/path"]', text: 'Link Title'
+  end
 end
