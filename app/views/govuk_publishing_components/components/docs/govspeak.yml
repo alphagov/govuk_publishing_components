@@ -21,12 +21,17 @@ shared_accessibility_criteria:
 examples:
   basic_content:
     data:
+      block: |
+        <h2>This is a title</h2>
+          <p>This is some body text with <a href=#>a link</a></p>
+  with_content:
+    data:
       content: |
         <h2>This is a title</h2>
         <p>This is some body text with <a href=#>a link</a></p>
   heading_levels:
     data:
-      content: |
+      block: |
         <h2>This is a h2 title</h2>
         <h3>This is a h3 title</h3>
         <h4>This is a h4 title</h4>
@@ -34,7 +39,7 @@ examples:
         <h6>This is a h6 title</h6>
   lists:
     data:
-      content: |
+      block: |
         <h2>ordered list:</h2>
         <ol>
           <li>one</li>
@@ -49,7 +54,7 @@ examples:
         </ul>
   nested_lists:
     data:
-      content: |
+      block: |
         <h2>ordered list:</h2>
         <ol>
           <li>
@@ -72,7 +77,7 @@ examples:
         </ul>
   legislative_lists:
     data:
-      content: |
+      block: |
         <h2>ordered list:</h2>
         <ol class="legislative-list">
           <li>one</li>
@@ -81,7 +86,7 @@ examples:
         </ol>
   image_fractions:
     data:
-      content: |
+      block: |
         <h3 id="number---fractions-1">Number - fractions</h3>
 
         <p>Pupils should be taught to:</p>
@@ -127,18 +132,18 @@ examples:
         </div>
   text_fractions:
     data:
-      content: |
+      block: |
         <p>If an image is not available for a particular fraction, then we'll fallback to text based fraction using <code>sup</code>/<code>sub</code>, like this <span class="fraction"><sup>1</sup>&frasl;<sub>100</sub></span> example.</p>
   blockquote:
     data:
-      content: |
+      block: |
         <blockquote>
           <p>My quote</p>
           <p class="last-child">about things</p>
         </blockquote>
   tables:
     data:
-      content: |
+      block: |
         <table>
           <caption>A table with data</caption>
           <thead>
@@ -157,7 +162,7 @@ examples:
         </table>
   charts:
     data:
-      content: |
+      block: |
         <table class='js-barchart-table mc-auto-outdent'>
           <caption>A table with numerical data</caption>
           <tbody>
@@ -171,7 +176,7 @@ examples:
         </table>
   address:
     data:
-      content: |
+      block: |
         <div class="address">
           <div class="adr org fn">
             <p>
@@ -187,7 +192,7 @@ examples:
         <p>Addresses are generated when using the `$A` markdown pattern.</p>
   contact:
     data:
-      content: |
+      block: |
         <div class="contact" id="contact_1017">
           <div class="content">
             <h3>Media enquiries</h3>
@@ -206,7 +211,7 @@ examples:
         </div>
   contact_with_surrounding_text:
     data:
-      content: |
+      block: |
         <h2>This is a title</h2>
         <div class="contact" id="contact_1018">
           <div class="content">
@@ -243,7 +248,7 @@ examples:
         </div>
   footnotes:
     data:
-      content: |
+      block: |
         <p>This is a text with a footnote<sup id="fnref:1a"><a href="#fn:1a" class="footnote">1</a></sup>.</p>
 
         <div class="footnotes">
@@ -253,10 +258,10 @@ examples:
             </li>
           </ol>
         </div>
-  rtl_content:
+  rtl_block:
     data:
       direction: rtl
-      content: |
+      block: |
         <p>قال وزير الخارجية، ويليام هيغ:</p>
         <blockquote>
           <p>مع بدء هذا الشهر الفضيل أتمنى للمسلمين في أنحاء العالم - في آسيا وأفريقيا والشرق الأوسط وأوروبا وغيرها من مناطق العالم - شهر رمضان مبارك.</p>
@@ -276,27 +281,27 @@ examples:
         </ul>
   with_bold_unstyled:
     data:
-      content: |
+      block: |
         <p>This content has <strong>text in strong tags</strong>, but they are not styled as bold</p>
   with_rich_govspeak:
     data:
       rich_govspeak: true
-      content: |
+      block: |
         <p>This content uses rich govspeak and has <strong>text in strong tags</strong> that are styled as bold</p>
   with_youtube_embed:
     data:
-      content: |
+      block: |
         <p>This content has a YouTube video link, converted to an accessible embedded player by component JavaScript.</p>
         <p><a href="https://www.youtube.com/watch?v=y6hbrS3DheU">Operations: a developer's guide, by Anna Shipman</a></p>
   with_youtube_embed_disabled:
     data:
       disable_youtube_expansions: true
-      content: |
+      block: |
         <p>This content has a YouTube video link, where the govspeak expansion has been disabled</p>
         <p><a href="https://www.youtube.com/watch?v=y6hbrS3DheU">Operations: a developer's guide, by Anna Shipman</a></p>
   statistic_headlines:
     data:
-      content: |
+      block: |
         <aside class="stat-headline">
           <p><em>£6bn</em>
           Total Departmental Expenditure Limit (<abbr title="Departmental Expenditure Limit">DEL</abbr>) in financial year 2015 to 2016</p>
@@ -309,7 +314,7 @@ examples:
         </aside>
   specialist_content:
     data:
-      content: |
+      block: |
         <h2 id="bisphosphonates">Bisphosphonates</h2>
         <p>Bisphosphonates are used to treat osteoporosis, Paget’s disease, and as part of some cancer regimens, particularly for metastatic bone cancer and multiple myeloma. Individual bisphosphonates have different indications (see individual Summaries of Product Characteristics<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>). The following bisphosphonates are available in the UK:</p>
 
@@ -381,14 +386,14 @@ examples:
         </div>
   inline_attachment:
     data:
-      content: |
+      block: |
         <p>testing my attachment <span class="inline-attachment" id="attachment_1399340">
           <a href="/government/uploads/system/uploads/attachment_data/file/498071/PHE_Payments_over__25k_Jun_15.csv">testing</a>
           (<span class="type"><abbr title="Comma-separated Values">CSV</abbr></span>, <span class="file-size">65.4KB</span>)</span> works in the middle of copy.
         </p>
   block_attachments:
     data:
-      content: |
+      block: |
         <section class="attachment embedded" id="attachment_1399345">
           <div class="attachment-thumb">
             <a aria-hidden="true" class="thumbnail" href="https://www.gov.uk/government/publications/minimum-wage-jobs-in-ashfield-local-authority-since-2009"><img alt="" src="https://assets.digital.cabinet-office.gov.uk/government/uploads/system/uploads/attachment_data/file/496127/thumbnail_LPC_FoI_09.12.15_NMW_jobs_Ashfield_LA.pdf.png"></a>
@@ -529,7 +534,7 @@ examples:
   block_attachment_rtl:
     data:
       direction: rtl
-      content: |
+      block: |
         <section class="attachment embedded" id="attachment_514218">
           <div class="attachment-thumb">
             <a aria-hidden="true" class="thumbnail" href="https://www.gov.uk/government/publications/future-of-food-and-farming.ar"><img alt="" src="https://assets-origin.integration.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/288236/thumbnail_11-924-future-of-food-and-farming-summary-arabic.pdf.png"></a>
@@ -554,7 +559,7 @@ examples:
         </section>
   example:
     data:
-      content: |
+      block: |
         <div class="example">
           <p>
             <strong>Example</strong>
@@ -567,13 +572,13 @@ examples:
         </div>
   call_to_action:
     data:
-      content: |
+      block: |
         <div class="call-to-action">
           <p>Call to action</p>
         </div>
   information_callout:
     data:
-      content: |
+      block: |
         <div class="application-notice info-notice">
           <p>
             If you drilled a tunnel straight through the Earth and jumped in, it would take
@@ -582,7 +587,7 @@ examples:
         </div>
   warning_callout:
     data:
-      content: |
+      block: |
         <div class="application-notice help-notice">
           <p>
             The water in the mouth of a blue whale weighs more than its body.
@@ -590,19 +595,19 @@ examples:
         </div>
   advisory:
     data:
-      content: |
+      block: |
         <h3 role="note" aria-label="Important" class="advisory">
           <span>This is a very important message or warning</span>
         </h3>
   form_download:
     data:
-      content: |
+      block: |
         <div class="form-download">
           <p><a href="http://example.com/" title="Example form" rel="external">An example form download link.</a></p>
         </div>
   steps:
     data:
-      content:
+      block:
         <ol class="steps">
           <li>
             <p>Add numbers.</p>
@@ -623,7 +628,7 @@ examples:
       * [https://gov.uk/individual-savings-accounts](https://gov.uk/individual-savings-accounts)
       * [https://gov.uk/corporation-tax-rates](https://gov.uk/corporation-tax-rates)
     data:
-      content: |
+      block: |
         <div class="highlight-answer">
           <p>The VAT rate is <em>20%</em></p>
         </div>
@@ -635,19 +640,19 @@ examples:
         </div>
   place:
     data:
-      content: |
+      block: |
         <div class="place">
           <p>This is a place</p>
         </div>
   summary:
     data:
-      content: |
+      block: |
         <div class="summary">
           <p>This is a summary</p>
         </div>
   button:
     data:
-      content: |
+      block: |
         <a href="#" class="button button-start" role="button">
           Start now
         </a>
