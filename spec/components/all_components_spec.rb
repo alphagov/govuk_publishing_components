@@ -27,7 +27,13 @@ describe "All components" do
         expect(File).to exist(rspec_file)
       end
 
-      it "doesn't use `html_safe`", skip: template.in?(%w[_govspeak.html.erb]) do
+      it "has a correctly named SCSS file", not_applicable: component_name.in?(%w[contextual_breadcrumbs contextual_sidebar government_navigation machine_readable_metadata meta_tags]) do
+        css_file = "#{__dir__}/../../app/assets/stylesheets/govuk_publishing_components/components/_#{component_name.gsub('_', '-')}.scss"
+
+        expect(File).to exist(css_file)
+      end
+
+      it "doesn't use `html_safe`", not_applicable: component_name.in?(%w[govspeak]) do
         file = File.read(filename)
 
         expect(file).not_to match 'html_safe'
