@@ -12,25 +12,29 @@ shared_accessibility_criteria:
 examples:
   basic_content:
     data:
+      block: |
+        <p>This is a Budget that puts security first. It ensures economic security for working people by putting the public finances in order and setting out a bold plan for a more productive, balanced economy.</p>
+  with_content:
+    data:
       content: |
         <p>This is a Budget that puts security first. It ensures economic security for working people by putting the public finances in order and setting out a bold plan for a more productive, balanced economy.</p>
   heading_level_2:
     data:
-      content: |
+      block: |
         <h2>
           <span class="number">1. </span>Executive summary
         </h2>
         <p>This is a Budget that puts security first. It ensures economic security for working people by putting the public finances in order and setting out a bold plan for a more productive, balanced economy.</p>
   heading_level_3:
     data:
-      content: |
+      block: |
         <h3>
           <span class="number">1.1 </span>Fixing the public finances and running a surplus
         </h3>
         <p>The government’s long-term economic plan has laid the foundations for a stronger economy, and the UK’s recovery is now well established. The labour market remains strong, and in the 3 months to April 2015, employment was around record levels at 31.1 million.</p>
   numbered_content:
     data:
-      content: |
+      block: |
         <h2 id="executive-summary">
           <span class="number">1. </span>Executive summary
         </h2>
@@ -53,7 +57,7 @@ examples:
   right_to_left:
     data:
       direction: 'rtl'
-      content: |
+      block: |
         <h2>
           <span class="number">1. </span>Executive summary
         </h2>
@@ -75,7 +79,7 @@ examples:
         <p>The government’s long‑term economic plan has secured the recovery. The government’s fiscal responsibility has allowed monetary activism to support demand in the economy alongside repair of the financial sector. This has been supported by supply-side reform to deliver sustainable increases in standards of living.</p>
   financial_table:
     data:
-      content: |
+      block: |
         <table class="financial-data">
           <caption>Table 1.6: Total Managed Expenditure (as produced by the <a href="https://alphagov.github.io/table-editor/financial-tables.html">financial table editor</a>)</caption>
           <thead>

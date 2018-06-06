@@ -13,7 +13,7 @@
       <%= render 'govuk_publishing_components/components/lead_paragraph', text: @component_doc.description %>
       <% if @component_doc.body.present? %>
         <div class="component-body">
-          <%= render 'govuk_publishing_components/components/govspeak', content: @component_doc.html_body %>
+          <%= render 'govuk_publishing_components/components/govspeak', content: raw(@component_doc.html_body) %>
         </div>
       <% end %>
     </div>
@@ -32,7 +32,7 @@
     <div class="grid-row component-accessibility-criteria">
       <div class="column-two-thirds">
         <h2 class="component-doc-h2">Accessibility acceptance criteria</h2>
-        <%= render 'govuk_publishing_components/components/govspeak', content: @component_doc.html_accessibility_criteria %>
+        <%= render 'govuk_publishing_components/components/govspeak', content: raw(@component_doc.html_accessibility_criteria) %>
       </div>
     </div>
   <% end %>
@@ -48,7 +48,7 @@
             <a href="<%= component_example_path(@component_doc.id, example.id) %>"><%= example.name %></a>
             <small>(<a href="<%= component_preview_path(@component_doc.id, example.id) %>">preview</a>)</small>
           </h3>
-          <%= render "govuk_publishing_components/components/govspeak", content: example.html_description %>
+          <%= render "govuk_publishing_components/components/govspeak", content: raw(example.html_description) %>
           <%= render "govuk_publishing_components/component_guide/component_doc/call", component_doc: @component_doc, example: example %>
           <%= render "govuk_publishing_components/component_guide/component_doc/preview", component_doc: @component_doc, example: example %>
         </div>
