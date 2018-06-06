@@ -9,4 +9,7 @@ Rails.application.config.assets.precompile += %w(
   govuk_publishing_components/icon-pointer.png
   govuk_publishing_components/icon-pointer-2x.png
   govuk_publishing_components/govuk-logo.png
+  govuk_publishing_components/govuk-schema-placeholder-1x1.png
+  govuk_publishing_components/govuk-schema-placeholder-4x3.png
+  govuk_publishing_components/govuk-schema-placeholder-16x9.png
 )

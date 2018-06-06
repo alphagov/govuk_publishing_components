@@ -39,6 +39,10 @@ module GovukPublishingComponents
         content_item.dig("details", "image", "alt_text")
       end
 
+      def image_placeholders
+        local_assigns[:image_placeholders]
+      end
+
       def content_item
         local_assigns[:content_item]
       end
