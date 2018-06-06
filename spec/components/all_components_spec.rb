@@ -21,6 +21,12 @@ describe "All components" do
         expect(yaml["accessibility_criteria"]).not_to be_nil
       end
 
+      it "has a correctly named spec file", skip: component_name.in?(%w[contextual_breadcrumbs contextual_sidebar success_alert taxonomy_navigation]) do
+        rspec_file = "#{__dir__}/../../spec/components/#{component_name.gsub('-', '_')}_spec.rb"
+
+        expect(File).to exist(rspec_file)
+      end
+
       it "doesn't use `html_safe`", skip: template.in?(%w[_govspeak.html.erb]) do
         file = File.read(filename)
 
