@@ -47,12 +47,8 @@ module GovukPublishingComponents
       end
 
       def image_schema
-        return {} unless page.has_image?
-
         {
-          "image" => [
-            page.image_url
-          ]
+          "image" => page.has_image? ? [page.image_url] : page.image_placeholders
         }
       end
 

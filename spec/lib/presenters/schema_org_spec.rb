@@ -117,6 +117,21 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       expect(structured_data['image']).to eql(["/foo"])
     end
 
+    it "adds placeholders if there's no image" do
+      content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "news_article") do |random_item|
+        random_item["details"].delete("image")
+        random_item
+      end
+
+      structured_data = generate_structured_data(
+        content_item: content_item,
+        schema: :article,
+        image_placeholders: [1, 2]
+      ).structured_data
+
+      expect(structured_data['image']).to eql([1, 2])
+    end
+
     def generate_structured_data(args)
       GovukPublishingComponents::Presenters::SchemaOrg.new(GovukPublishingComponents::Presenters::Page.new(args))
     end
