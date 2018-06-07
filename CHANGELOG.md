@@ -7,10 +7,12 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 9.1.1
 
-* It is no longer allowed to pass in unsafe HTML into the Govspeak component. This
-  will result in a warning for now, but in a future version this will become an error.
+* Add placeholders for pages that don't have an image (#359)
+* It is no longer allowed to pass in unsafe HTML into the Govspeak component (#356).
+  This will result in a warning for now, but in a future version this will become
+  an error.
 
 ### How to upgrade
 
