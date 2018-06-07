@@ -8,6 +8,8 @@
   of the commit log.
 
 ## Unreleased
+
+* Add organisation logo component from static (PR #365)
 * Tweaks document list spacing for context text on smaller screens (PR #363)
 
 ## 9.1.1
