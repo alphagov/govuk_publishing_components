@@ -1,0 +1,21 @@
+<%
+  logo_helper = GovukPublishingComponents::Presenters::OrganisationLogoHelper.new(local_assigns)
+  brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(organisation[:brand])
+  organisation ||= {}
+%>
+<div
+  class="gem-c-organisation-logo <%= brand_helper.brand_class %>"
+  <%= "data-module=track-click" if organisation[:data_attributes] %>
+>
+  <% if organisation[:url] %>
+    <%= link_to organisation[:url],
+      class: "#{logo_helper.logo_container_class} #{brand_helper.border_color_class}",
+      data: organisation[:data_attributes] do %>
+      <%= logo_helper.logo_content %>
+    <% end %>
+  <% else %>
+    <div class="<%= logo_helper.logo_container_class %> <%= brand_helper.border_color_class %>">
+      <%= logo_helper.logo_content %>
+    </div>
+  <% end %>
+</div>

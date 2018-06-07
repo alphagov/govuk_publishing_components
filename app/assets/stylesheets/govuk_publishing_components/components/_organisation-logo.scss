@@ -1,0 +1,141 @@
+// Default logo corresponds with the "medium stacked" Whitehall equivalent
+.gem-c-organisation-logo {
+  font-family: $helvetica-regular;
+  font-size: 13px;
+  line-height: (15 / 13);
+  font-weight: 400;
+
+  @include media(tablet) {
+    font-size: 18px;
+    line-height: 20px;
+  }
+}
+
+.gem-c-organisation-logo__container {
+  text-transform: none;
+  text-decoration: none;
+  display: block;
+  color: $black;
+  height: auto;
+  width: auto;
+
+  // Logo direction never changes, even for rtl content.
+  direction: ltr;
+}
+
+// Scale images on smaller viewports
+.gem-c-organisation-logo__image {
+  max-width: 100%;
+}
+
+.gem-c-organisation-logo__crest {
+  // Default brand colour
+  border-left: 2px solid $black;
+  padding-top: 20px;
+  padding-left: 6px;
+
+  @include media(tablet) {
+    padding-top: 25px;
+    padding-left: 7px;
+  }
+
+  .brand--executive-office & {
+    border-left-width: 0;
+    padding-left: 0;
+    background-position: 0 0;
+  }
+}
+
+.gem-c-organisation-logo__name {
+  position: relative;
+  top: 3px;
+}
+
+.gem-c-organisation-logo__link:link,
+.gem-c-organisation-logo__link:visited {
+  color: $black;
+}
+
+.gem-c-organisation-logo__link:hover,
+.gem-c-organisation-logo__link:focus {
+  text-decoration: underline;
+}
+
+// all crest images are currently in whitehall
+@mixin crest($crest) {
+  background: image-url('crests/#{$crest}_13px.png') no-repeat 5px 0;
+  background-size: auto 20px;
+
+  @include device-pixel-ratio() {
+    background-image: image-url('crests/#{$crest}_13px_x2.png');
+  }
+
+  @include media(tablet) {
+    background: image-url('crests/#{$crest}_18px.png') no-repeat 6px 0;
+    background-size: auto 26px;
+
+    @include device-pixel-ratio() {
+      background-image: image-url('crests/#{$crest}_18px_x2.png');
+    }
+  }
+}
+
+@mixin tall-crest {
+  padding-top: 25px;
+  background-size: auto 25px;
+
+  @include media(tablet) {
+    padding-top: 35px;
+    background-size: auto 34px;
+  }
+}
+
+.gem-c-organisation-logo__crest--dit {
+  @include crest('dit_crest');
+}
+
+.gem-c-organisation-logo__crest--bis {
+  @include crest('bis_crest');
+}
+
+.gem-c-organisation-logo__crest--hmrc {
+  @include crest('hmrc_crest');
+}
+
+.gem-c-organisation-logo__crest--ho {
+  @include crest('ho_crest');
+  @include tall-crest;
+}
+
+.gem-c-organisation-logo__crest--mod {
+  @include crest('mod_crest');
+  @include tall-crest;
+}
+
+.gem-c-organisation-logo__crest--single-identity,
+.gem-c-organisation-logo__crest--eo,
+.gem-c-organisation-logo__crest--org {
+  @include crest('org_crest');
+}
+
+.gem-c-organisation-logo__crest--portcullis {
+  @include crest('portcullis');
+}
+
+.gem-c-organisation-logo__crest--so {
+  @include crest('so_crest');
+}
+
+.gem-c-organisation-logo__crest--ukaea {
+  @include crest('ukaea_crest');
+}
+
+.gem-c-organisation-logo__crest--ukho {
+  @include crest('ukho');
+  @include tall-crest;
+}
+
+.gem-c-organisation-logo__crest--wales {
+  @include crest('wales_crest');
+  @include tall-crest;
+}
