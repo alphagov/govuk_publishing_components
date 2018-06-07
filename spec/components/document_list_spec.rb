@@ -182,7 +182,7 @@ describe "Document list", type: :view do
       ]
     )
 
-    assert_select '.gem-c-document-list__item a[href="/link/path"]', text: 'Link Title'
+    assert_select '.gem-c-document-list__item-title--context[href="/link/path"]', text: 'Link Title'
     assert_select '.gem-c-document-list__item-context', text: 'some context'
   end
 end

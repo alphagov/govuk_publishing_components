@@ -7,6 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+* Tweaks document list spacing for context text on smaller screens (PR #363)
+
 ## 9.1.1
 
 * Add placeholders for pages that don't have an image (#359)
