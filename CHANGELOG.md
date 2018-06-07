@@ -7,10 +7,11 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 9.2.0
 
 * Add organisation logo component from static (PR #365)
 * Tweaks document list spacing for context text on smaller screens (PR #363)
+* Makes heading component use h2 by default (PR #362)
 
 ## 9.1.1
 
