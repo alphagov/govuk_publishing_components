@@ -2,6 +2,7 @@
   items ||= []
   margin_top_class = " gem-c-document-list--top-margin" if local_assigns[:margin_top]
   margin_bottom_class = " gem-c-document-list--bottom-margin" if local_assigns[:margin_bottom]
+  title_with_context_class = " gem-c-document-list__item-title--context"
 
   brand ||= false
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
@@ -12,24 +13,17 @@
       <li class="gem-c-document-list__item">
         <% if item[:link][:description] || item[:metadata] %>
           <h3 class="gem-c-document-list__item-title">
-            <%=
-              link_to(
-                item[:link][:text],
-                item[:link][:path],
-                data: item[:link][:data_attributes],
-                class: brand_helper.color_class
-              )
-            %>
+        <% end %>
+        <%=
+          link_to(
+            item[:link][:text],
+            item[:link][:path],
+            data: item[:link][:data_attributes],
+            class: "gem-c-document-list__item-title #{brand_helper.color_class} #{title_with_context_class if item[:link][:context]}"
+          )
+        %>
+        <% if item[:link][:description] || item[:metadata] %>
           </h3>
-        <% else%>
-          <%=
-            link_to(
-              item[:link][:text],
-              item[:link][:path],
-              data: item[:link][:data_attributes],
-              class: "gem-c-document-list__item-title #{brand_helper.color_class}"
-            )
-          %>
         <% end %>
 
         <% if item[:link][:context] %>
