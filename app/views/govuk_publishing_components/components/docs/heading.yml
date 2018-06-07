@@ -3,6 +3,8 @@ description: A text heading
 body: |
   A versatile heading tag component, including options for different heading levels and font sizes.
 
+  This is a `h2` by default.
+
   Real world examples:
 
   - [Publication](/government/publications/recognising-the-terrorist-threat)

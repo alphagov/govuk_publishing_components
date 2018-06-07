@@ -13,7 +13,7 @@ describe "Heading", type: :view do
 
   it "renders a heading correctly" do
     render_component(text: 'Download documents')
-    assert_select "h1.gem-c-heading", text: 'Download documents'
+    assert_select "h2.gem-c-heading", text: 'Download documents'
   end
 
   it "renders a different heading level" do
