@@ -70,4 +70,11 @@ describe "Organisation logo", type: :view do
     render_component(organisation: { data_attributes: data_attributes })
     assert_select ".gem-c-organisation-logo a.gem-c-organisation-logo__container.gem-c-organisation-logo__link[data-track-category='someLinkClicked']", false
   end
+
+  it "doesn't let malicious tags into the organisation name even though we're using html_safe" do
+    component_name = "<script>alert('Hello!')</script>"
+    render_component(organisation: { name: component_name })
+
+    assert_select ".gem-c-organisation-logo", text: "alert('Hello!')"
+  end
 end
