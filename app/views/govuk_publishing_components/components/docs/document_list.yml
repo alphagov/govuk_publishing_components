@@ -104,7 +104,7 @@ examples:
           text: 'School exclusion'
           path: '/government/publications/school-exclusion'
   with_context:
-    description: Context can be provided to render next to the item title. This will be used on /government/organisations to indicate if an organisation is hosted on a separate website or being moved to GOV.UK
+    description: Context can be provided to render next to the item title.
     data:
       items:
       - link:
