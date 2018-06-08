@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add no margin top option to translation nav (PR #368)
+
 ## 9.2.0
 
 * Add organisation logo component from static (PR #365)
