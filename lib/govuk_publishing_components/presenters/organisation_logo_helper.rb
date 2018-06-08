@@ -7,10 +7,17 @@ module GovukPublishingComponents
       attr_reader :name, :url, :crest, :image, :logo_image_src, :logo_image_alt
 
       def initialize(local_assigns)
-        @name = local_assigns[:organisation][:name]
+        if local_assigns[:organisation][:name]
+          @name = local_assigns[:organisation][:name]
+          @name.gsub! "<script>", ""
+          @name.gsub! "</script>", ""
+          @name = @name.html_safe
+        end
+
         @url = local_assigns[:organisation][:url]
         @crest = local_assigns[:organisation][:crest]
         @image = local_assigns[:organisation][:image] || false
+
         if @image
           @logo_image_src = local_assigns[:organisation][:image][:url] || false
           @logo_image_alt = local_assigns[:organisation][:image][:alt_text] || false
