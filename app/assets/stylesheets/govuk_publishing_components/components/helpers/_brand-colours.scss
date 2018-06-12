@@ -21,3 +21,14 @@
 }
 
 @include organisation-brand-colour;
+
+.brand--prime-ministers-office-10-downing-street {
+  .brand__color {
+    color: $fuschia;
+  }
+
+  &.brand__border-color,
+  .brand__border-color {
+    border-color: $black;
+  }
+}
