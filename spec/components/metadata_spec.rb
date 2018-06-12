@@ -49,10 +49,10 @@ describe "Metadata", type: :view do
   end
 
   it "renders multiples as a single sentence (except history)" do
-    render_component(from: %w( one another ),
-      part_of: %w( this that ),
+    render_component(from: %w(one another),
+      part_of: %w(this that),
       other: {
-        "Related topics": %w( a b c )
+        "Related topics": %w(a b c)
       })
 
     assert_definition('From:', 'one and another')
