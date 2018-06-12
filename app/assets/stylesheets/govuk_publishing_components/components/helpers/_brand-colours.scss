@@ -8,6 +8,10 @@
     .brand--#{nth($organisation, 1)} {
       .brand__color {
         color: nth($organisation, 3);
+
+        &:hover {
+          color: darken( nth($organisation, 3), 10% );
+        }
       }
 
       // the & declaration allows border-color to also be applied to the parent
@@ -25,6 +29,10 @@
 .brand--prime-ministers-office-10-downing-street {
   .brand__color {
     color: $fuschia;
+
+    &:hover {
+      color: darken( $fuschia, 10% );
+    }
   }
 
   &.brand__border-color,
