@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 9.2.2
+
+* Add no10 to the branding model (PR #372)
+
 ## 9.2.1
 
 * Add no margin top option to translation nav (PR #368)
