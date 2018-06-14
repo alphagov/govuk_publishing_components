@@ -66,4 +66,9 @@ describe "ImageCard", type: :view do
     assert_select ".gem-c-image-card[data-module='track-click']"
     assert_select ".gem-c-image-card__list-item a[data-track-category='cat']"
   end
+
+  it "shows metadata" do
+    render_component(href: '#', metadata: "Unpaid")
+    assert_select ".gem-c-image-card__metadata", text: 'Unpaid'
+  end
 end
