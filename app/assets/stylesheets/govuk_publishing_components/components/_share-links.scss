@@ -25,7 +25,7 @@ $share-button-height: 32px;
   margin-bottom: $gutter-one-third;
 }
 
-.gem-c-share-links__link__icon {
+.gem-c-share-links__link-icon {
   position: absolute;
   top: 0;
   left: 0;
@@ -46,7 +46,7 @@ $share-button-height: 32px;
     padding-right: ($share-button-width + $gutter-one-third);
   }
 
-  .gem-c-share-links__link__icon {
+  .gem-c-share-links__link-icon {
     left: auto;
     right: 0;
   }

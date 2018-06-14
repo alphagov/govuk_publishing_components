@@ -40,7 +40,7 @@ describe "ShareLinks", type: :view do
     assert_select ".gem-c-share-links .gem-c-share-links__link[href=\"/facebook\"]"
     assert_select ".gem-c-share-links .gem-c-share-links__link[href=\"/twitter\"]",
       false, "A twitter share link has not been provided so should not have been rendered"
-    assert_select ".gem-c-share-links .gem-c-share-links__link__icon--twitter",
+    assert_select ".gem-c-share-links .gem-c-share-links__link-icon--twitter",
       false, "A twitter share link has not been provided so a twitter icon should not have been rendered"
   end
 
