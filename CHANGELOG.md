@@ -7,9 +7,11 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 9.2.3
 
 * Add metadata to image card component (PR #377)
+* Modify share links component (PR #376)
+* Remove underline on image card title link (PR #375)
 
 ## 9.2.2
 
