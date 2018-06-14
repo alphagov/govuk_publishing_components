@@ -64,7 +64,8 @@
   z-index: 2;
 }
 
-.gem-c-image-card__context {
+.gem-c-image-card__context,
+.gem-c-image-card__metadata {
   @include core-14;
   color: $grey-1;
 }

@@ -158,3 +158,20 @@ examples:
           }
         }
       ]
+  with_metadata:
+    description: Can be used for links to people pages to indicate payment type
+    data:
+      href: "/government/people/"
+      image_src: "http://placekitten.com/215/140"
+      image_alt: "some meaningful alt text please"
+      context: "The Rt Hon"
+      heading_text: "John Whiskers MP"
+      metadata: "Unpaid"
+      extra_links: [
+        {
+          text: "Minister for Cats",
+          href: "/government/ministers/"
+        }
+      ]
+      extra_links_no_indent: true
+

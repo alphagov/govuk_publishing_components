@@ -36,6 +36,10 @@
           <% end %>
         </ul>
       <% end %>
+
+      <% if card_helper.metadata %>
+        <p class="gem-c-image-card__metadata"><%= card_helper.metadata %></p>
+      <% end %>
     </div>
   </div>
 <% end %>
