@@ -127,13 +127,13 @@ examples:
           icon: 'linkedin'
         },
         {
+          href: '/other-share-link',
+          text: 'Anything else that might be included that could have quite a long name',
+          icon: 'other'
+        },
+        {
           href: '/youtube-share-link',
           text: 'YouTube',
           icon: 'youtube'
-        },
-        {
-          href: '/other-share-link',
-          text: 'Anything else',
-          icon: 'other'
-        },
+        }
       ]

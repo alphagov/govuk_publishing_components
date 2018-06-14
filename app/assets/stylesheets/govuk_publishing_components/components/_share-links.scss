@@ -6,13 +6,18 @@ $share-button-height: 32px;
 }
 
 .gem-c-share-links__list-item {
+  @include box-sizing(border-box);
+  position: relative;
   display: inline-block;
+  min-height: $share-button-height;
+  padding-top: $share-button-height / 8;
+  padding-left: ($share-button-width + $gutter-one-third);
   margin-bottom: $gutter-one-third;
 }
 
 .gem-c-share-links__link {
+  @include bold-16;
   margin-right: $gutter;
-  @include bold-16($line-height: $share-button-height, $line-height-640: $share-button-height);
   text-decoration: none;
 }
 
@@ -20,30 +25,30 @@ $share-button-height: 32px;
   margin-bottom: $gutter-one-third;
 }
 
-.gem-c-share-links__link__icon {
-  display: inline-block;
+.gem-c-share-links__link-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: $share-button-width;
   height: $share-button-height;
-  margin-right: $gutter-one-third;
   vertical-align: top;
 }
 
 .direction-rtl {
   .gem-c-share-links__link {
-    // By changing the link to inline-block the browser
-    // calculates the icon and the text as a single run of text
-    // rather than two. When they are considered to be two runs
-    // the browser splits the first link, putting the text before
-    // the second link, and the icon after the second link.
     display: inline-block;
     margin-right: 0;
     margin-left: $gutter;
+  }
 
-    .gem-c-share-links__link__icon {
-      margin-right: 0;
-      margin-left: $gutter-one-third;
-      vertical-align: middle;
-    }
+  .gem-c-share-links__list-item {
+    padding-left: 0;
+    padding-right: ($share-button-width + $gutter-one-third);
+  }
+
+  .gem-c-share-links__link-icon {
+    left: auto;
+    right: 0;
   }
 }
 
