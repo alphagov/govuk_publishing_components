@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add metadata to image card component (PR #377)
+
 ## 9.2.2
 
 * Add no10 to the branding model (PR #372)
