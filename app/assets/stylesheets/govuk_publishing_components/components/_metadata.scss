@@ -56,7 +56,7 @@
     float: right;
   }
 
-  .toggle-wrap {
+  .gem-c-metadata__toggle-wrap {
     display: none;
 
     a {
@@ -64,7 +64,7 @@
     }
   }
 
-  .js-enabled & .toggle-wrap {
+  .js-enabled & .gem-c-metadata__toggle-wrap {
     display: block;
   }
 }
