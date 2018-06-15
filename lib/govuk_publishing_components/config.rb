@@ -4,7 +4,6 @@ module GovukPublishingComponents
   end
 
   module Config
-    STATIC_COMPONENT_DIRECTORY = "govuk_component".freeze
     APP_COMPONENT_DIRECTORY = "components".freeze
 
     mattr_accessor :component_guide_title
@@ -19,11 +18,8 @@ module GovukPublishingComponents
     mattr_accessor :application_javascript
     self.application_javascript = "application"
 
-    mattr_accessor :static
-    self.static = false
-
     def self.component_directory_name
-      static ? STATIC_COMPONENT_DIRECTORY : APP_COMPONENT_DIRECTORY
+      APP_COMPONENT_DIRECTORY
     end
 
     def self.gem_directory

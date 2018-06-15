@@ -54,16 +54,5 @@ describe('VisualDiffTool', function () {
 
       expect(console.log.calls.mostRecent().args[0]).toContain("https://government-frontend.herokuapp.com");
     });
-
-    it('compares local static url to live static deploy', function() {
-      windowLocation = {
-        href: 'https://static.dev.gov.uk/component-guide/title',
-        host: 'static.dev.gov.uk'
-      };
-
-      VisualDiffTool(windowLocation);
-
-      expect(console.log.calls.mostRecent().args[0]).toContain("https://govuk-publishing-components.herokuapp.com/component-guide/title");
-    });
   });
 });
