@@ -8,7 +8,7 @@
     text-align: start;
   }
 
-  dt {
+  .gem-c-metadata__term {
     margin-top: 0.5em;
     line-height: normal;
 
@@ -23,7 +23,7 @@
     }
   }
 
-  &.direction-rtl dt {
+  &.direction-rtl .gem-c-metadata__term {
     float: right;
     clear: right;
 
@@ -33,7 +33,7 @@
     }
   }
 
-  dd {
+  .gem-c-metadata__definition {
     line-height: normal;
 
     @include media(tablet) {
@@ -52,7 +52,7 @@
     }
   }
 
-  &.direction-rtl dd {
+  &.direction-rtl .gem-c-metadata__definition {
     float: right;
   }
 

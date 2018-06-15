@@ -13,28 +13,28 @@
 <div class="gem-c-metadata<%= direction_class %>" data-module="toggle">
   <dl data-module="track-click">
     <% if from.any? %>
-      <dt><%= t("govuk_component.metadata.from", default: "From") %>:</dt>
-      <dd>
+      <dt class="gem-c-metadata__term"><%= t("govuk_component.metadata.from", default: "From") %>:</dt>
+      <dd class="gem-c-metadata__definition">
         <%= render 'govuk_publishing_components/components/metadata/sentence', items: from, toggle_id: "from" %>
       </dd>
     <% end %>
     <% if part_of.any? %>
-      <dt><%= t("govuk_component.metadata.part_of", default: "Part of") %>:</dt>
-      <dd>
+      <dt class="gem-c-metadata__term"><%= t("govuk_component.metadata.part_of", default: "Part of") %>:</dt>
+      <dd class="gem-c-metadata__definition">
         <%= render 'govuk_publishing_components/components/metadata/sentence', items: part_of, toggle_id: "part-of" %>
       </dd>
     <% end %>
     <% if local_assigns.include?(:history) %>
-      <dt><%= t("govuk_component.metadata.history", default: "History") %>:</dt>
-      <dd><%= history %></dd>
+      <dt class="gem-c-metadata__term"><%= t("govuk_component.metadata.history", default: "History") %>:</dt>
+      <dd class="gem-c-metadata__definition"><%= history %></dd>
     <% end %>
     <% if local_assigns.include?(:first_published) && first_published %>
-      <dt><%= t("govuk_component.metadata.published", default: "Published") %>:</dt>
-      <dd><%= first_published %></dd>
+      <dt class="gem-c-metadata__term"><%= t("govuk_component.metadata.published", default: "Published") %>:</dt>
+      <dd class="gem-c-metadata__definition"><%= first_published %></dd>
     <% end %>
     <% if local_assigns.include?(:last_updated) && last_updated %>
-      <dt><%= t("govuk_component.metadata.last_updated", default: "Last updated") %>:</dt>
-      <dd>
+      <dt class="gem-c-metadata__term"><%= t("govuk_component.metadata.last_updated", default: "Last updated") %>:</dt>
+      <dd class="gem-c-metadata__definition">
         <%= last_updated %><% if local_assigns.include?(:see_updates_link) %>,
           <a href="#history" data-track-category="content-history"
                              data-track-action="see-all-updates-link-clicked"
@@ -51,8 +51,8 @@
           definition = Array(definition)
         %>
         <% if definition.any? %>
-          <dt><%= title %>:</dt>
-          <dd>
+          <dt class="gem-c-metadata__term"><%= title %>:</dt>
+          <dd class="gem-c-metadata__definition">
             <%= render 'govuk_publishing_components/components/metadata/sentence', items: definition, toggle_id: index %>
           </dd>
         <% end %>
