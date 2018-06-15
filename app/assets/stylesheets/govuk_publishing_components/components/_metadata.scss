@@ -41,13 +41,13 @@
       width: 70%;
     }
 
-    a {
+    .gem-c-metadata__definition-link {
       text-decoration: none;
     }
 
-    a:focus,
-    a:active,
-    a:hover {
+    .gem-c-metadata__definition-link:focus,
+    .gem-c-metadata__definition-link:active,
+    .gem-c-metadata__definition-link:hover {
       text-decoration: underline;
     }
   }
