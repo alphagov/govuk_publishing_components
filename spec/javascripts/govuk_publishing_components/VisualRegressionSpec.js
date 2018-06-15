@@ -63,7 +63,7 @@ describe('VisualDiffTool', function () {
 
       VisualDiffTool(windowLocation);
 
-      expect(console.log.calls.mostRecent().args[0]).toContain("https://govuk-static.herokuapp.com/component-guide/title");
+      expect(console.log.calls.mostRecent().args[0]).toContain("https://govuk-publishing-components.herokuapp.com/component-guide/title");
     });
   });
 });
