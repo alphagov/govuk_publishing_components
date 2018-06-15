@@ -1,11 +1,11 @@
-require 'govuk_component_test_helper'
+require 'rails_helper'
 
-class MetadataTestCase < ComponentTestCase
+describe "Metadata", type: :view do
   def component_name
     "metadata"
   end
 
-  test "renders metadata in a definition list" do
+  it "renders metadata in a definition list" do
     render_component({})
     assert_select ".govuk-metadata dl"
 
@@ -13,27 +13,27 @@ class MetadataTestCase < ComponentTestCase
     assert_select "dt", false
   end
 
-  test "renders from metadata" do
+  it "renders from metadata" do
     render_component(from: "<a href='/link'>Department</a>")
 
     assert_definition('From:', 'Department')
     assert_link_with_text_in('dd', '/link', 'Department')
   end
 
-  test "renders part of metadata" do
+  it "renders part of metadata" do
     render_component(part_of: "<a href='/link'>Department</a>")
 
     assert_definition('Part of:', 'Department')
     assert_link_with_text_in('dd', '/link', 'Department')
   end
 
-  test "renders history metadata" do
+  it "renders history metadata" do
     render_component(history: "Updated 2 weeks ago")
 
     assert_definition('History:', 'Updated 2 weeks ago')
   end
 
-  test "renders custom metadata" do
+  it "renders custom metadata" do
     render_component(other: {
         "Related topics": [
           "<a href='/government/topics/arts-and-culture'>Arts and culture</a>",
@@ -48,7 +48,7 @@ class MetadataTestCase < ComponentTestCase
     assert_link_with_text_in('dd', '/government/topics/sports-and-leisure', 'Sports and leisure')
   end
 
-  test "renders multiples as a single sentence (except history)" do
+  it "renders multiples as a single sentence (except history)" do
     render_component(from: %w( one another ),
       part_of: %w( this that ),
       other: {
@@ -60,7 +60,7 @@ class MetadataTestCase < ComponentTestCase
     assert_definition('Related topics:', 'a, b, and c')
   end
 
-  test "long lists of metadata are truncated and the remainder hidden behind a toggle for from" do
+  it "long lists of metadata are truncated and the remainder hidden behind a toggle for from" do
     links = [
       "<a href=\"/government/organisations/ministry-of-defence\">Ministry of Defence</a>",
       "<a href=\"/government/organisations/cabinet-office\">Cabinet Office</a>",
@@ -76,7 +76,7 @@ class MetadataTestCase < ComponentTestCase
     assert_truncation(links.length, 5)
   end
 
-  test "short lists of metadata are not truncated for from" do
+  it "short lists of metadata are not truncated for from" do
     links = [
       "<a href=\"/government/organisations/ministry-of-defence\">Ministry of Defence</a>",
       "<a href=\"/government/organisations/cabinet-office\">Cabinet Office</a>",
@@ -91,7 +91,7 @@ class MetadataTestCase < ComponentTestCase
     assert_no_truncation(links.length)
   end
 
-  test "long lists of metadata are truncated and the remainder hidden behind a toggle for part of" do
+  it "long lists of metadata are truncated and the remainder hidden behind a toggle for part of" do
     links = [
       "<a href=\"/government/topics/energy\">Energy</a>",
       "<a href=\"/government/topics/environment\">Environment</a>",
@@ -107,7 +107,7 @@ class MetadataTestCase < ComponentTestCase
     assert_truncation(links.length, 5)
   end
 
-  test "short lists of metadata are not truncated for part of" do
+  it "short lists of metadata are not truncated for part of" do
     links = [
       "<a href=\"/government/topics/energy\">Energy</a>",
       "<a href=\"/government/topics/environment\">Environment</a>",
@@ -122,7 +122,7 @@ class MetadataTestCase < ComponentTestCase
     assert_no_truncation(links.length)
   end
 
-  test "long lists of metadata are truncated and the remainder hidden behind a toggle for other" do
+  it "long lists of metadata are truncated and the remainder hidden behind a toggle for other" do
     links = [
       "<a href=\"/business-finance-support?industries%5B%5D=agriculture-and-food\">Agriculture and food</a>",
       "<a href=\"/business-finance-support?industries%5B%5D=business-and-finance\">Business and finance</a>",
@@ -148,7 +148,7 @@ class MetadataTestCase < ComponentTestCase
     assert_truncation(links.length, 5)
   end
 
-  test "long lists of metadata are truncated and the remainder hidden behind a toggle for other in a foreign language" do
+  it "long lists of metadata are truncated and the remainder hidden behind a toggle for other in a foreign language" do
     links = [
       "<a href=\"/business-finance-support?industries%5B%5D=agriculture-and-food\">Agriculture and food</a>",
       "<a href=\"/business-finance-support?industries%5B%5D=business-and-finance\">Business and finance</a>",
@@ -167,7 +167,7 @@ class MetadataTestCase < ComponentTestCase
       "<a href=\"/business-finance-support?industries%5B%5D=utilities-providers\">Utilities providers</a>",
       "<a href=\"/business-finance-support?industries%5B%5D=wholesale-and-retail\">Wholesale and retail</a>"
     ]
-    I18n.with_locale('zh') do
+    I18n.with_locale('cy') do
       render_component(other: {
           "Industry": links
       })
@@ -176,7 +176,7 @@ class MetadataTestCase < ComponentTestCase
     assert_truncation(links.length, 5)
   end
 
-  test "short lists of metadata are not truncated for other" do
+  it "short lists of metadata are not truncated for other" do
     links = [
       "<a href=\"/business-finance-support?industries%5B%5D=agriculture-and-food\">Agriculture and food</a>",
       "<a href=\"/business-finance-support?industries%5B%5D=business-and-finance\">Business and finance</a>",
@@ -202,5 +202,14 @@ class MetadataTestCase < ComponentTestCase
   def assert_no_truncation(length)
     assert_select "dd > a", count: length
     assert_select "span", count: 0
+  end
+
+  def assert_definition(term, definition)
+    assert_select "dt", text: term
+    assert_select "dd", text: definition
+  end
+
+  def assert_link_with_text_in(selector, link, text)
+    assert_select "#{selector} a[href=\"#{link}\"]", text: text
   end
 end
