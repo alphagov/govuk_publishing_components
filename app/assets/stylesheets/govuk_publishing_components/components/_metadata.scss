@@ -13,10 +13,10 @@
     line-height: normal;
 
     @include media(tablet) {
+      @include box-sizing(border-box);
       float: left;
       clear: left;
       width: 30%;
-      box-sizing: border-box;
       max-width: 11em;
       padding-right: $gutter-one-third;
       margin-top: 0;
