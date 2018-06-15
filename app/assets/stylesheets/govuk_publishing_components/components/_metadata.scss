@@ -1,0 +1,66 @@
+.gem-c-metadata {
+  @include core-16;
+  @include responsive-bottom-margin;
+  @extend %contain-floats;
+}
+
+.gem-c-metadata.direction-rtl {
+  direction: rtl;
+  text-align: start;
+}
+
+.gem-c-metadata__term {
+  margin-top: 0.5em;
+  line-height: normal;
+
+  @include media(tablet) {
+    @include box-sizing(border-box);
+    float: left;
+    clear: left;
+    width: 30%;
+    max-width: 11em;
+    padding-right: $gutter-one-third;
+    margin-top: 0;
+  }
+}
+
+.gem-c-metadata.direction-rtl .gem-c-metadata__term {
+  float: right;
+  clear: right;
+
+  @include media(tablet) {
+    padding-left: $gutter-one-third;
+    padding-right: 0;
+  }
+}
+
+.gem-c-metadata__definition {
+  line-height: normal;
+
+  @include media(tablet) {
+    float: left;
+    width: 70%;
+  }
+}
+
+.gem-c-metadata__definition-link {
+  text-decoration: none;
+}
+
+.gem-c-metadata__definition-link:focus,
+.gem-c-metadata__definition-link:active,
+.gem-c-metadata__definition-link:hover {
+  text-decoration: underline;
+}
+
+.gem-c-metadata.direction-rtl .gem-c-metadata__definition {
+  float: right;
+}
+
+.gem-c-metadata__toggle-wrap {
+  display: none;
+}
+
+.js-enabled .gem-c-metadata__toggle-wrap {
+  display: block;
+}

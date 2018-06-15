@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add Metadata component from Static(PR #374)
+
 ## 9.2.3
 
 * Add metadata to image card component (PR #377)
