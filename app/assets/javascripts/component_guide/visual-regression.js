@@ -47,11 +47,6 @@
 
     if (href.includes('dev.gov.uk/component-guide')) {
       var appName = host.split('.')[0];
-
-      if (appName === 'static') {
-        appName = 'govuk-static';
-      }
-
       return _forceHTTPS(href.replace(host, appName + '.herokuapp.com'));
     } else if (href.includes('dev.gov.uk')) {
       return _forceHTTPS(href.replace(host, 'www.gov.uk'));
