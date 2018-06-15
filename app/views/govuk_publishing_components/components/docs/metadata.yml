@@ -1,0 +1,337 @@
+name: Metadata block
+description: To display relevant metadata about organisations and tags for a document
+accessibility_criteria: |
+  The metadata component must:
+
+  - indicate that any expandable content can be expanded or collapsed
+  - indicate the initial state of expandable content
+  - indicate where the state of expandable content has changed
+
+shared_accessibility_criteria:
+  - link
+examples:
+  from_only:
+    data:
+      from: <a href='/government/organisations/ministry-of-defence'>Ministry of Defence</a>
+  part_of_only:
+    data:
+      part_of: <a href='/government/topics/environment'>Environment</a>
+  history_only:
+    data:
+      history: Updated 2 weeks ago
+  published_and_updated:
+    data:
+      first_published: 14 June 2014
+      last_updated: 10 September 2015
+  updated_with_links_to_see_details:
+    data:
+      last_updated: 10 September 2015
+      see_updates_link: true
+  extensive:
+    data:
+      from:
+      - <a href='/government/organisations/ministry-of-defence'>Ministry of Defence</a>
+      - <a href='/government/organisations/cabinet-office'>Cabinet Office</a>
+      - <a href="/government/organisations/department-for-business-energy-and-industrial-strategy">Department for Business, Energy &amp; Industrial Strategy</a>
+      - <a href="/government/organisations/foreign-commonwealth-office">Foreign &amp; Commonwealth Office</a>
+      - <a href="/government/people/william-hague">The Rt Hon William Hague</a>
+      - <a href="/government/organisations/department-for-environment-food-rural-affairs">Department for Environment, Food &amp; Rural Affairs</a>
+      - <a href="/government/organisations/department-for-work-pensions">Department for work and pensions</a>
+      - <a href="/government/organisations/foreign-commonwealth-office">Foreign and Commonwealth Office</a>
+      history: Updated 2 weeks ago
+      part_of:
+      - <a href='/government/topics/energy'>Energy</a>
+      - <a href='/government/topics/environment'>Environment</a>
+      other:
+        Related topics:
+        - <a href='/government/topics/arts-and-culture'>Arts and culture</a>
+        - <a href='/government/topics/sports-and-leisure'>Sports and leisure</a>
+        Applies to: England
+  extensive_specialist_document:
+    data:
+      from:
+      - <a href="/government/organisations/department-for-business-energy-and-industrial-strategy">Department for Business, Energy &amp; Industrial Strategy</a>
+      published:
+      other:
+        "Type of support":
+        - <a href="/business-finance-support?types_of_support%5B%5D=finance">Finance</a>
+        - <a href="/business-finance-support?types_of_support%5B%5D=equity">Equity</a>
+        - <a href="/business-finance-support?types_of_support%5B%5D=grant">Grant</a>
+        - <a href="/business-finance-support?types_of_support%5B%5D=expertise-and-advice">Expertise and advice</a>
+        "Business stage":
+        - <a href="/business-finance-support?business_stages%5B%5D=not-yet-trading">Not yet trading</a>
+        - <a href="/business-finance-support?business_stages%5B%5D=start-up">Start-ups (1-2 years trading)</a>
+        - <a href="/business-finance-support?business_stages%5B%5D=established">Established</a>
+        "Industry":
+        - <a href="/business-finance-support?industries%5B%5D=agriculture-and-food">Agriculture and food</a>
+        - <a href="/business-finance-support?industries%5B%5D=business-and-finance">Business and finance</a>
+        - <a href="/business-finance-support?industries%5B%5D=construction">Construction</a>
+        - <a href="/business-finance-support?industries%5B%5D=education">Education</a>
+        - <a href="/business-finance-support?industries%5B%5D=health">Health</a>
+        - <a href="/business-finance-support?industries%5B%5D=hospitality-and-catering">Hospitality and catering</a>
+        - <a href="/business-finance-support?industries%5B%5D=information-technology-digital-and-creative">IT, digital and creative</a>
+        - <a href="/business-finance-support?industries%5B%5D=manufacturing">Manufacturing</a>
+        - <a href="/business-finance-support?industries%5B%5D=mining">Mining</a>
+        - <a href="/business-finance-support?industries%5B%5D=real-estate-and-property">Real estate and property</a>
+        - <a href="/business-finance-support?industries%5B%5D=science-and-technology">Science and technology</a>
+        - <a href="/business-finance-support?industries%5B%5D=service-industries">Service industries</a>
+        - <a href="/business-finance-support?industries%5B%5D=transport-and-distribution">Transport and distribution</a>
+        - <a href="/business-finance-support?industries%5B%5D=travel-and-leisure">Travel and leisure</a>
+        - <a href="/business-finance-support?industries%5B%5D=utilities-providers">Utilities providers</a>
+        - <a href="/business-finance-support?industries%5B%5D=wholesale-and-retail">Wholesale and retail</a>
+        "Number of employees":
+        - <a href="/business-finance-support?business_sizes%5B%5D=under-10">0 to 9 employees</a>
+        - <a href="/business-finance-support?business_sizes%5B%5D=between-10-and-249">10 to 249 employees</a>
+        - <a href="/business-finance-support?business_sizes%5B%5D=between-250-and-500">250 to 500 employees</a>
+        - <a href="/business-finance-support?business_sizes%5B%5D=over-500">More than 500 employees</a>
+  extensive_country_list:
+    data:
+      from:
+        - <a href="/government/organisations/foreign-commonwealth-office">Foreign &amp; Commonwealth Office</a>
+        - <a href="/government/people/william-hague">The Rt Hon William Hague</a>
+      part_of:
+        - <a href="/government/world/afghanistan">Afghanistan</a>
+        - <a href="/government/world/albania">Albania</a>
+        - <a href="/government/world/algeria">Algeria</a>
+        - <a href="/government/world/angola">Angola</a>
+        - <a href="/government/world/anguilla">Anguilla</a>
+        - <a href="/government/world/argentina">Argentina</a>
+        - <a href="/government/world/armenia">Armenia</a>
+        - <a href="/government/world/australia">Australia</a>
+        - <a href="/government/world/austria">Austria</a>
+        - <a href="/government/world/azerbaijan">Azerbaijan</a>
+        - <a href="/government/world/bahrain">Bahrain</a>
+        - <a href="/government/world/bangladesh">Bangladesh</a>
+        - <a href="/government/world/barbados">Barbados</a>
+        - <a href="/government/world/belarus">Belarus</a>
+        - <a href="/government/world/belgium">Belgium</a>
+        - <a href="/government/world/belize">Belize</a>
+        - <a href="/government/world/bolivia">Bolivia</a>
+        - <a href="/government/world/bosnia-and-herzegovina">Bosnia and Herzegovina</a>
+        - <a href="/government/world/botswana">Botswana</a>
+        - <a href="/government/world/brazil">Brazil</a>
+        - <a href="/government/world/british-antarctic-territory">British Antarctic Territory</a>
+        - <a href="/government/world/british-virgin-islands">British Virgin Islands</a>
+        - <a href="/government/world/brunei">Brunei</a>
+        - <a href="/government/world/bulgaria">Bulgaria</a>
+        - <a href="/government/world/burma">Burma</a>
+        - <a href="/government/world/cambodia">Cambodia</a>
+        - <a href="/government/world/cameroon">Cameroon</a>
+        - <a href="/government/world/canada">Canada</a>
+        - <a href="/government/world/cayman-islands">Cayman Islands</a>
+        - <a href="/government/world/chile">Chile</a>
+        - <a href="/government/world/china">China</a>
+        - <a href="/government/world/colombia">Colombia</a>
+        - <a href="/government/world/costa-rica">Costa Rica</a>
+        - <a href="/government/world/croatia">Croatia</a>
+        - <a href="/government/world/cuba">Cuba</a>
+        - <a href="/government/world/cyprus">Cyprus</a>
+        - <a href="/government/world/czech-republic">Czech Republic</a>
+        - <a href="/government/world/democratic-republic-of-congo">Democratic Republic of Congo</a>
+        - <a href="/government/world/denmark">Denmark</a>
+        - <a href="/government/world/dominican-republic">Dominican Republic</a>
+        - <a href="/government/world/ecuador">Ecuador</a>
+        - <a href="/government/world/egypt">Egypt</a>
+        - <a href="/government/world/eritrea">Eritrea</a>
+        - <a href="/government/world/estonia">Estonia</a>
+        - <a href="/government/world/ethiopia">Ethiopia</a>
+        - <a href="/government/world/fiji">Fiji</a>
+        - <a href="/government/world/finland">Finland</a>
+        - <a href="/government/world/france">France</a>
+        - <a href="/government/world/gambia">Gambia</a>
+        - <a href="/government/world/georgia">Georgia</a>
+        - <a href="/government/world/germany">Germany</a>
+        - <a href="/government/world/ghana">Ghana</a>
+        - <a href="/government/world/greece">Greece</a>
+        - <a href="/government/world/guatemala">Guatemala</a>
+        - <a href="/government/world/guyana">Guyana</a>
+        - <a href="/government/world/holy-see">Holy See</a>
+        - <a href="/government/world/honduras">Honduras</a>
+        - <a href="/government/world/hong-kong">Hong Kong</a>
+        - <a href="/government/world/hungary">Hungary</a>
+        - <a href="/government/world/iceland">Iceland</a>
+        - <a href="/government/world/india">India</a>
+        - <a href="/government/world/indonesia">Indonesia</a>
+        - <a href="/government/world/iran">Iran</a>
+        - <a href="/government/world/iraq">Iraq</a>
+        - <a href="/government/world/ireland">Ireland</a>
+        - <a href="/government/world/israel">Israel</a>
+        - <a href="/government/world/italy">Italy</a>
+        - <a href="/government/world/jamaica">Jamaica</a>
+        - <a href="/government/world/japan">Japan</a>
+        - <a href="/government/world/jordan">Jordan</a>
+        - <a href="/government/world/kazakhstan">Kazakhstan</a>
+        - <a href="/government/world/kenya">Kenya</a>
+        - <a href="/government/world/kosovo">Kosovo</a>
+        - <a href="/government/world/kuwait">Kuwait</a>
+        - <a href="/government/world/laos">Laos</a>
+        - <a href="/government/world/latvia">Latvia</a>
+        - <a href="/government/world/lebanon">Lebanon</a>
+        - <a href="/government/world/libya">Libya</a>
+        - <a href="/government/world/lithuania">Lithuania</a>
+        - <a href="/government/world/luxembourg">Luxembourg</a>
+        - <a href="/government/world/macedonia">Macedonia</a>
+        - <a href="/government/world/madagascar">Madagascar</a>
+        - <a href="/government/world/malawi">Malawi</a>
+        - <a href="/government/world/malaysia">Malaysia</a>
+        - <a href="/government/world/maldives">Maldives</a>
+        - <a href="/government/world/mali">Mali</a>
+        - <a href="/government/world/malta">Malta</a>
+        - <a href="/government/world/mauritius">Mauritius</a>
+        - <a href="/government/world/mexico">Mexico</a>
+        - <a href="/government/world/moldova">Moldova</a>
+        - <a href="/government/world/mongolia">Mongolia</a>
+        - <a href="/government/world/montenegro">Montenegro</a>
+        - <a href="/government/world/montserrat">Montserrat</a>
+        - <a href="/government/world/morocco">Morocco</a>
+        - <a href="/government/world/mozambique">Mozambique</a>
+        - <a href="/government/world/namibia">Namibia</a>
+        - <a href="/government/world/nepal">Nepal</a>
+        - <a href="/government/world/netherlands">Netherlands</a>
+        - <a href="/government/world/new-zealand">New Zealand</a>
+        - <a href="/government/world/nigeria">Nigeria</a>
+        - <a href="/government/world/north-korea">North Korea</a>
+        - <a href="/government/world/norway">Norway</a>
+        - <a href="/government/world/oman">Oman</a>
+        - <a href="/government/world/pakistan">Pakistan</a>
+        - <a href="/government/world/panama">Panama</a>
+        - <a href="/government/world/papua-new-guinea">Papua New Guinea</a>
+        - <a href="/government/world/peru">Peru</a>
+        - <a href="/government/world/philippines">Philippines</a>
+        - <a href="/government/world/poland">Poland</a>
+        - <a href="/government/world/portugal">Portugal</a>
+        - <a href="/government/world/qatar">Qatar</a>
+        - <a href="/government/world/romania">Romania</a>
+        - <a href="/government/world/russia">Russia</a>
+        - <a href="/government/world/rwanda">Rwanda</a>
+        - <a href="/government/world/saudi-arabia">Saudi Arabia</a>
+        - <a href="/government/world/senegal">Senegal</a>
+        - <a href="/government/world/serbia">Serbia</a>
+        - <a href="/government/world/seychelles">Seychelles</a>
+        - <a href="/government/world/sierra-leone">Sierra Leone</a>
+        - <a href="/government/world/singapore">Singapore</a>
+        - <a href="/government/world/slovakia">Slovakia</a>
+        - <a href="/government/world/slovenia">Slovenia</a>
+        - <a href="/government/world/solomon-islands">Solomon Islands</a>
+        - <a href="/government/world/somalia">Somalia</a>
+        - <a href="/government/world/south-africa">South Africa</a>
+        - <a href="/government/world/south-korea">South Korea</a>
+        - <a href="/government/world/south-sudan">South Sudan</a>
+        - <a href="/government/world/spain">Spain</a>
+        - <a href="/government/world/sri-lanka">Sri Lanka</a>
+        - <a href="/government/world/sudan">Sudan</a>
+        - <a href="/government/world/sweden">Sweden</a>
+        - <a href="/government/world/switzerland">Switzerland</a>
+        - <a href="/government/world/syria">Syria</a>
+        - <a href="/government/world/taiwan">Taiwan</a>
+        - <a href="/government/world/tajikistan">Tajikistan</a>
+        - <a href="/government/world/tanzania">Tanzania</a>
+        - <a href="/government/world/thailand">Thailand</a>
+        - <a href="/government/world/timor-leste">Timor Leste</a>
+        - <a href="/government/world/trinidad-and-tobago">Trinidad and Tobago</a>
+        - <a href="/government/world/tunisia">Tunisia</a>
+        - <a href="/government/world/turkey">Turkey</a>
+        - <a href="/government/world/turkmenistan">Turkmenistan</a>
+        - <a href="/government/world/turks-and-caicos-islands">Turks and Caicos Islands</a>
+        - <a href="/government/world/uganda">Uganda</a>
+        - <a href="/government/world/uk-delegation-to-council-of-europe">UK Delegation to Council of Europe</a>
+        - <a href="/government/world/uk-delegation-to-organization-for-security-and-co-operation-in-europe">UK Delegation to Organization for Security and Co-operation in Europe</a>
+        - <a href="/government/world/uk-joint-delegation-to-nato">UK Joint Delegation to NATO</a>
+        - <a href="/government/world/uk-mission-to-the-un-geneva">UK Mission to the UN Geneva</a>
+        - <a href="/government/world/uk-mission-to-the-united-nations">UK Mission to the United Nations</a>
+        - <a href="/government/world/uk-representation-to-the-eu">UK Representation to the EU</a>
+        - <a href="/government/world/ukraine">Ukraine</a>
+        - <a href="/government/world/united-arab-emirates">United Arab Emirates</a>
+        - <a href="/government/world/uruguay">Uruguay</a>
+        - <a href="/government/world/usa">USA</a>
+        - <a href="/government/world/uzbekistan">Uzbekistan</a>
+        - <a href="/government/world/venezuela">Venezuela</a>
+        - <a href="/government/world/zambia">Zambia</a>
+        - <a href="/government/world/zimbabwe">Zimbabwe</a>
+        - <a href="/government/world/andorra">Andorra</a>
+        - <a href="/government/world/antigua-and-barbuda">Antigua and Barbuda</a>
+        - <a href="/government/world/bahamas">Bahamas</a>
+        - <a href="/government/world/benin">Benin</a>
+        - <a href="/government/world/bhutan">Bhutan</a>
+        - <a href="/government/world/burkina-faso">Burkina Faso</a>
+        - <a href="/government/world/cape-verde">Cape Verde</a>
+        - <a href="/government/world/comoros">Comoros</a>
+        - <a href="/government/world/congo">Congo</a>
+        - <a href="/government/world/cote-d-ivoire">Cote d’Ivoire</a>
+        - <a href="/government/world/djibouti">Djibouti</a>
+        - <a href="/government/world/dominica">Dominica</a>
+        - <a href="/government/world/equatorial-guinea">Equatorial Guinea</a>
+        - <a href="/government/world/grenada">Grenada</a>
+        - <a href="/government/world/guinea-bissau">Guinea-Bissau</a>
+        - <a href="/government/world/haiti">Haiti</a>
+        - <a href="/government/world/kiribati">Kiribati</a>
+        - <a href="/government/world/lesotho">Lesotho</a>
+        - <a href="/government/world/liberia">Liberia</a>
+        - <a href="/government/world/liechtenstein">Liechtenstein</a>
+        - <a href="/government/world/macao">Macao</a>
+        - <a href="/government/world/marshall-islands">Marshall Islands</a>
+        - <a href="/government/world/micronesia">Micronesia</a>
+        - <a href="/government/world/nauru">Nauru</a>
+        - <a href="/government/world/nicaragua">Nicaragua</a>
+        - <a href="/government/world/niger">Niger</a>
+        - <a href="/government/world/the-occupied-palestinian-territories">The Occupied Palestinian Territories</a>
+        - <a href="/government/world/palau">Palau</a>
+        - <a href="/government/world/paraguay">Paraguay</a>
+        - <a href="/government/world/samoa">Samoa</a>
+        - <a href="/government/world/sao-tome-and-principe">São Tomé and Principe</a>
+        - <a href="/government/world/st-kitts-and-nevis">St Kitts and Nevis</a>
+        - <a href="/government/world/st-vincent-and-the-grenadines">St Vincent and The Grenadines</a>
+        - <a href="/government/world/suriname">Suriname</a>
+        - <a href="/government/world/swaziland">Swaziland</a>
+        - <a href="/government/world/togo">Togo</a>
+        - <a href="/government/world/tuvalu">Tuvalu</a>
+        - <a href="/government/world/vanuatu">Vanuatu</a>
+        - <a href="/government/world/united-kingdom">United Kingdom</a>
+        - <a href="/government/world/bermuda">Bermuda</a>
+        - <a href="/government/world/burundi">Burundi</a>
+        - <a href="/government/world/el-salvador">El Salvador</a>
+        - <a href="/government/world/falkland-islands">Falkland Islands</a>
+        - <a href="/government/world/guinea">Guinea</a>
+        - <a href="/government/world/uk-mission-to-the-united-nations-new-york">UK Mission to the United Nations, New York</a>
+        - <a href="/government/world/the-uk-permanent-delegation-to-the-oecd-organisation-for-economic-co-operation-and-development">The UK Permanent Delegation to the OECD (Organisation for Economic Co-operation and Development)</a>
+        - <a href="/government/world/st-helena-ascension-and-tristan-da-cunha">St Helena, Ascension and Tristan da Cunha</a>
+        - <a href="/government/world/st-lucia">St Lucia</a>
+        - <a href="/government/world/kyrgyzstan">Kyrgyzstan</a>
+        - <a href="/government/world/pitcairn-island">Pitcairn Island</a>
+        - <a href="/government/world/chad">Chad</a>
+        - <a href="/government/world/mauritania">Mauritania</a>
+        - <a href="/government/world/american-samoa">American Samoa</a>
+        - <a href="/government/world/aruba">Aruba</a>
+        - <a href="/government/world/bonaire-st-eustatius-saba">Bonaire/St Eustatius/Saba</a>
+        - <a href="/government/world/british-indian-ocean-territory">British Indian Ocean Territory</a>
+        - <a href="/government/world/central-african-republic">Central African Republic</a>
+        - <a href="/government/world/curacao">Curaçao</a>
+        - <a href="/government/world/french-guiana">French Guiana</a>
+        - <a href="/government/world/french-polynesia">French Polynesia</a>
+        - <a href="/government/world/gabon">Gabon</a>
+        - <a href="/government/world/gibraltar">Gibraltar</a>
+        - <a href="/government/world/guadeloupe">Guadeloupe</a>
+        - <a href="/government/world/martinique">Martinique</a>
+        - <a href="/government/world/mayotte">Mayotte</a>
+        - <a href="/government/world/monaco">Monaco</a>
+        - <a href="/government/world/new-caledonia">New Caledonia</a>
+        - <a href="/government/world/reunion">Réunion</a>
+        - <a href="/government/world/san-marino">San Marino</a>
+        - <a href="/government/world/south-georgia-and-south-sandwich-islands">South Georgia and the South Sandwich Islands</a>
+        - <a href="/government/world/st-maarten">St Maarten</a>
+        - <a href="/government/world/st-pierre-and-miquelon">St Pierre &amp; Miquelon</a>
+        - <a href="/government/world/tonga">Tonga</a>
+        - <a href="/government/world/wallis-and-futuna">Wallis and Futuna</a>
+      first_published: 5 December 2013
+  basic_rtl:
+    data:
+      direction: rtl
+      from: <a href='/government/organisations/cabinet-office'>Cabinet Office</a>
+      history: Updated 2 weeks ago
+      part_of: <a href='/government/topics/environment'>Environment</a>
+  external_link:
+    data:
+      from: <a href='/government/organisations/cabinet-office'>Cabinet Office</a>
+      first_published: 14 June 2014
+      other:
+        Applies to: England, Scotland, and Wales (see detailed guidance for <a href="http://www.dardni.gov.uk/news-dard-pa022-a-13-new-procedure-for" rel="external">Northern Ireland</a>)

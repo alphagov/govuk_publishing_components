@@ -1,0 +1,22 @@
+<%
+  list_limit = 5
+  remaining = []
+  if items.length > (list_limit + 2)
+    remaining = items[list_limit..items.length]
+    items = items[0...list_limit]
+  end
+%>
+<% if remaining.any? %>
+  <%= items.to_sentence(last_word_connector: ', ').html_safe %>
+  <div class="toggle-wrap">
+    <a href="#"
+       data-controls="toggle-<%= toggle_id %>"
+       data-expanded="false"
+       data-toggled-text="<%= t("govuk_component.metadata.toggle_less", default: "Show fewer") %>">
+        <%= t("govuk_component.metadata.toggle_more", number: remaining.length, default: "+ #{remaining.length} more") %>
+    </a>
+  </div>
+  <span id="toggle-<%= toggle_id %>" class="js-hidden"><%= remaining.to_sentence.html_safe %></span>
+<% else %>
+  <%= items.to_sentence.html_safe %>
+<% end %>

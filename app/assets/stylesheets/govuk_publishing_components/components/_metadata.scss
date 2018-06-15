@@ -1,0 +1,70 @@
+.govuk-metadata {
+  @include core-16;
+  @include responsive-bottom-margin;
+  @extend %contain-floats;
+
+  &.direction-rtl {
+    direction: rtl;
+    text-align: start;
+  }
+
+  dt {
+    margin-top: 0.5em;
+    line-height: normal;
+
+    @include media(tablet) {
+      float: left;
+      clear: left;
+      width: 30%;
+      box-sizing: border-box;
+      max-width: 11em;
+      padding-right: $gutter-one-third;
+      margin-top: 0;
+    }
+  }
+
+  &.direction-rtl dt {
+    float: right;
+    clear: right;
+
+    @include media(tablet) {
+      padding-left: $gutter-one-third;
+      padding-right: 0;
+    }
+  }
+
+  dd {
+    line-height: normal;
+
+    @include media(tablet) {
+      float: left;
+      width: 70%;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    a:focus,
+    a:active,
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &.direction-rtl dd {
+    float: right;
+  }
+
+  .toggle-wrap {
+    display: none;
+
+    a {
+      text-decoration: underline;
+    }
+  }
+
+  .js-enabled & .toggle-wrap {
+    display: block;
+  }
+}
