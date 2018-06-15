@@ -7,7 +7,7 @@ describe "Metadata", type: :view do
 
   it "renders metadata in a definition list" do
     render_component({})
-    assert_select ".govuk-metadata dl"
+    assert_select ".gem-c-metadata dl"
 
     assert_select "dd", false
     assert_select "dt", false
