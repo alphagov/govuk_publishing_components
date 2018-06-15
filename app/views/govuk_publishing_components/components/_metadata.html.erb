@@ -10,7 +10,7 @@
   direction_class = ""
   direction_class = " direction-#{direction}" if local_assigns.include?(:direction)
 %>
-<div class="gem-c-metadata<%= direction_class %>" data-module="toggle">
+<div class="gem-c-metadata<%= direction_class %>" data-module="gem-toggle">
   <dl data-module="track-click">
     <% if from.any? %>
       <dt class="gem-c-metadata__term"><%= t("govuk_component.metadata.from", default: "From") %>:</dt>
