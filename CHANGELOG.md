@@ -9,7 +9,10 @@
 
 ## Unreleased
 
-* Add Metadata component from Static(PR #374)
+## 9.3.0
+
+* Add Metadata component from Static (PR #374)
+* Remove the special casing to run this component in Static (#379)
 
 ## 9.2.3
 
