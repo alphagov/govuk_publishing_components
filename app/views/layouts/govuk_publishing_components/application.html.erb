@@ -13,11 +13,6 @@
   <%= stylesheet_link_tag "component_guide/application", media: "screen" %>
   <%= stylesheet_link_tag "#{GovukPublishingComponents::Config.application_stylesheet}" %>
 
-  <% if GovukPublishingComponents::Config.static %>
-    <%= stylesheet_link_tag "component_guide/all_components", media: "screen" %>
-    <%= stylesheet_link_tag "component_guide/all_components_print", media: "print" %>
-  <% end %>
-
   <% if GovukPublishingComponents::Config.application_print_stylesheet %>
     <%= stylesheet_link_tag "#{GovukPublishingComponents::Config.application_print_stylesheet}", media: "print" %>
   <% end %>

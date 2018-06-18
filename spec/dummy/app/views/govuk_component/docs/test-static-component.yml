@@ -1,5 +1,0 @@
-name: Test static component
-description: A test static component for the dummy app
-examples:
-  default:
-    data: {}

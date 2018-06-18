@@ -8,7 +8,7 @@ body: |
   Note: We do not consume GOV.UK Elements directly due to the naming conventions being leaky,
   in time this component will be a wrapper for the [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend) project's button component.
 
-  This component is also [extended for use in govspeak](https://govuk-static.herokuapp.com/component-guide/govspeak/button).
+  This component is also [extended for use in govspeak](https://govuk-publishing-components.herokuapp.com/component-guide/govspeak/button).
 
   These instances of buttons are added by Content Designers, ideally this duplication would not exist but we currently don't have shared markup
   via our components within the generated [govspeak](https://github.com/alphagov/govspeak).
