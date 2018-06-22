@@ -1,4 +1,6 @@
 cy:
+  common:
+    translations: "Cyfieithiadau"
   components:
     radio:
       or: 'neu'
