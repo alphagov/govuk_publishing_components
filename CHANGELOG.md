@@ -7,7 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 9.3.1
+
+* Allow image card component to not have main link (PR #382)
 
 ## 9.3.0
 
