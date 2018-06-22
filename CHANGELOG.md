@@ -12,6 +12,7 @@
 * Step by step component, Google snippet improvement (PR #461)
 * Add tabs component (PR #455)
 * Adds styling for singular related step by step navs (PR #458)
+* Add schema.org `isPartOf` links from articles to step by steps (PR #384)
 
 ## 9.8.0
 

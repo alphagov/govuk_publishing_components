@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    govuk_publishing_components (9.7.0)
+    govuk_publishing_components (9.8.0)
       govspeak (>= 5.0.3)
       govuk_app_config
       govuk_frontend_toolkit
@@ -71,7 +71,7 @@ GEM
       xpath (~> 2.0)
     cliver (0.3.2)
     coderay (1.1.2)
-    commander (4.4.5)
+    commander (4.4.6)
       highline (~> 1.7.2)
     concurrent-ruby (1.0.5)
     crack (0.4.3)

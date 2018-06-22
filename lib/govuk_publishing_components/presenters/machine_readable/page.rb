@@ -16,7 +16,7 @@ module GovukPublishingComponents
       end
 
       def body
-        local_assigns[:body] || content_item["details"]["body"]
+        local_assigns[:body] || content_item.dig("details", "body")
       end
 
       def title
