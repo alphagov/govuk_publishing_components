@@ -9,7 +9,7 @@ module GovukPublishingComponents
       def initialize(local_assigns)
         @href = local_assigns[:href]
         @href_data_attributes = local_assigns[:href_data_attributes]
-        @extra_links = local_assigns[:extra_links]
+        @extra_links = local_assigns[:extra_links] || []
         @image_src = local_assigns[:image_src]
         @image_alt = local_assigns[:image_alt] || ""
         @context = local_assigns[:context]

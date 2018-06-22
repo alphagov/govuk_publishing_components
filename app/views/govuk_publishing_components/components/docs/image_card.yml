@@ -1,7 +1,7 @@
 name: Image card
 description: Image and associated text with a link
 body: |
-  An image and an associated link, meant for use for news articles and people. Includes optional paragraph and additional links.
+  An image and links, meant for use for news articles and people. Includes optional paragraph and additional links.
 
   The component is generally to be used within a grid column but has no grid of its own, so the text and the images in the examples below may not always line up. This will normally look tidier, for example [on pages like this](https://www.gov.uk/government/organisations/attorney-generals-office).
 accessibility_criteria: |
@@ -70,6 +70,22 @@ examples:
         }
       ]
       extra_links_no_indent: true
+  extra_links_with_no_main_link:
+    description: If extra links are included, the main link is not needed. Note that in this configuration the image is not a link as no link has been supplied.
+    data:
+      image_src: "http://placekitten.com/215/140"
+      image_alt: "some meaningful alt text please"
+      heading_text: "John Whiskers MP"
+      extra_links: [
+        {
+          text: "Minister for Cats",
+          href: "/government/ministers/"
+        },
+        {
+          text: "Head of Tuna Operations",
+          href: "/government/ministers/"
+        }
+      ]
   without_heading_text:
     description: |
       The only required parameter to the component is href but if no heading_text is supplied the link will not appear. This is to allow the component to use only extra links as shown.
