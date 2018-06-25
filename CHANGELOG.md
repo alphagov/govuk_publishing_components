@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 9.3.3
+
+* Add explicit Civil Service branding (PR #387)
+
 ## 9.3.2
 
 * Fix heading structure in feedback component (PR #385)
