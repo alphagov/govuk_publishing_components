@@ -26,6 +26,9 @@
 
 @include organisation-brand-colour;
 
+// colours for the prime ministers office are not included in the toolkit
+// so are written out here for our use
+
 .brand--prime-ministers-office-10-downing-street {
   .brand__color {
     color: $fuschia;
@@ -35,6 +38,17 @@
     }
   }
 
+  &.brand__border-color,
+  .brand__border-color {
+    border-color: $black;
+  }
+}
+
+// in the toolkit, civil service has red for the text and borders
+// but the required border colour is black, ideally would fix this in
+// the toolkit but other things are using it
+
+.brand--civil-service {
   &.brand__border-color,
   .brand__border-color {
     border-color: $black;
