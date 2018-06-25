@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 9.3.2
+
+* Fix heading structure in feedback component (PR #385)
+
 ## 9.3.1
 
 * Allow image card component to not have main link (PR #382)
