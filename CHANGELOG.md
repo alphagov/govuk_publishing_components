@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 9.3.5
 
 * Extend image card to support html description (PR #392)
 
