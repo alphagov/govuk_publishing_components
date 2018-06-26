@@ -59,6 +59,7 @@
 }
 
 .gem-c-image-card__context,
+.gem-c-image-card__metadata,
 .gem-c-image-card__description {
   position: relative;
   z-index: 2;
@@ -67,11 +68,17 @@
 .gem-c-image-card__context,
 .gem-c-image-card__metadata {
   @include core-14;
+  margin-bottom: $gutter-one-quarter;
   color: $grey-1;
+
+  @include media(tablet) {
+    margin-bottom: 0;
+  }
 }
 
 .gem-c-image-card__description {
   padding-top: $gutter-one-quarter;
+  word-wrap: break-word;
 }
 
 .gem-c-image-card__list {
