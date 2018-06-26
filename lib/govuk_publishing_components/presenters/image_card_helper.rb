@@ -49,7 +49,7 @@ module GovukPublishingComponents
       end
 
       def description
-        content_tag(:p, @description, class: "gem-c-image-card__description") if @description
+        content_tag(:div, @description, class: "gem-c-image-card__description") if @description
       end
     end
   end
