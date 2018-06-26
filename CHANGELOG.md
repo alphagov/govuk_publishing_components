@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Extend image card to support html description (PR #392)
+
 ## 9.3.4
 
 * Adjust metadata spacing in image card (PR #390)
