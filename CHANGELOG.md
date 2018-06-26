@@ -7,6 +7,11 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 9.3.4
+
+* Adjust metadata spacing in image card (PR #390)
+* Fix focus states in branding model (PR #389)
+
 ## 9.3.3
 
 * Add explicit Civil Service branding (PR #387)
