@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 9.3.6
+
+* Make heading tag optional on image card (PR #394)
+
 ## 9.3.5
 
 * Extend image card to support html description (PR #392)
