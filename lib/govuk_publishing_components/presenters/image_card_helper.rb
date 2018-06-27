@@ -16,7 +16,7 @@ module GovukPublishingComponents
         @description = local_assigns[:description]
         @large = local_assigns[:large]
         @heading_text = local_assigns[:heading_text]
-        @heading_level = local_assigns[:heading_level]
+        @heading_level = local_assigns[:heading_level] || 2
         @extra_links_no_indent = local_assigns[:extra_links_no_indent]
         @metadata = local_assigns[:metadata]
       end
@@ -45,7 +45,7 @@ module GovukPublishingComponents
 
       def heading_tag
         return "h#{@heading_level}" if [1, 2, 3, 4, 5, 6].include? @heading_level
-        "h2"
+        return "span" if @heading_level.zero?
       end
 
       def description

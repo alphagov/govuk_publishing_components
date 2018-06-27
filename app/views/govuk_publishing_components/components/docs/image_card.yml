@@ -26,6 +26,14 @@ examples:
       image_alt: "some meaningful alt text please"
       heading_text: "I am a heading level 3"
       heading_level: 3
+  without_a_heading:
+    description: The heading tag can be removed if the heading_level parameter is passed as 0.
+    data:
+      href: "/really-not-a-page"
+      image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
+      image_alt: "some meaningful alt text please"
+      heading_text: "I am not a heading"
+      heading_level: 0
   with_more_information:
     data:
       href: "/also-not-a-page"
