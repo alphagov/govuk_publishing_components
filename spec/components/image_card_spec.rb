@@ -25,6 +25,12 @@ describe "ImageCard", type: :view do
     assert_select ".gem-c-image-card h1.gem-c-image-card__title", text: 'heading 1'
   end
 
+  it "can have no heading tag" do
+    render_component(href: '#', heading_text: 'no heading', heading_level: 0)
+    assert_select ".gem-c-image-card span.gem-c-image-card__title", text: 'no heading'
+    assert_select ".gem-c-image-card h2.gem-c-image-card__title", false
+  end
+
   it "shows context and description" do
     render_component(href: '#', context: 'some context', description: 'description')
     assert_select ".gem-c-image-card .gem-c-image-card__context", text: 'some context'
