@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add the [GOV.UK Frontend](https://design-system.service.gov.uk/) library to the gem (PR #398)
+* Allow linking to the Design System on component pages (PR #401)
 
 ## 9.3.6
 

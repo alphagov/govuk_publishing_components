@@ -62,6 +62,10 @@ module GovukPublishingComponents
       end
     end
 
+    def govuk_frontend_components
+      component[:govuk_frontend_components].to_a
+    end
+
     def github_search_url
       params = { q: "org:alphagov #{partial_path}", type: "Code" }
       "https://github.com/search?#{params.to_query}"
