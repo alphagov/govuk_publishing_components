@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add experimental Admin layout (PR #371)
 * Add the [GOV.UK Frontend](https://design-system.service.gov.uk/) library to the gem (PR #398)
 
 ## 9.3.6

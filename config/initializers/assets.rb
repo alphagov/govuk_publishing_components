@@ -1,4 +1,5 @@
 Rails.application.config.assets.precompile += %w(
+  govuk_publishing_components/admin_styles.css
   govuk_publishing_components/component_guide.css
   component_guide/all_components.css
   component_guide/all_components_print.css
@@ -12,4 +13,15 @@ Rails.application.config.assets.precompile += %w(
   govuk_publishing_components/govuk-schema-placeholder-1x1.png
   govuk_publishing_components/govuk-schema-placeholder-4x3.png
   govuk_publishing_components/govuk-schema-placeholder-16x9.png
+)
+
+# Add GOV.Frontend assets
+
+Rails.application.config.assets.precompile += %w(
+  govuk-logotype-crown.png
+)
+
+Rails.application.config.assets.paths += %W(
+  #{__dir__}/../../node_modules/govuk-frontend/assets/images
+  #{__dir__}/../../node_modules/govuk-frontend/assets/fonts
 )
