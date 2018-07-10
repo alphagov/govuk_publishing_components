@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add the [GOV.UK Frontend](https://design-system.service.gov.uk/) library to the gem (PR #398)
+
 ## 9.3.6
 
 * Make heading tag optional on image card (PR #394)

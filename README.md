@@ -30,6 +30,19 @@ There are 2 types of helper classes in this app:
 - [AppHelpers](lib/govuk_publishing_components/app_helpers). Are exposed to the applications using this gem. They should be documented using RDoc.
 - [Component Presenters](lib/govuk_publishing_components/presenters). Anything in these classes is only for use within the components. They should be marked `@private`.
 
+## GOV.UK Frontend
+
+This gem is the way GOV.UK consumes [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend), part of the GOV.UK Design System.
+
+We use NPM to pull in the GOV.UK Frontend styles and Javascript, but we don't commit
+the `node_modules` directory. To install GOV.UK Frontend on your machine, run:
+
+```
+npm install
+```
+
+You'll need to have installed Node and NPM for this.
+
 ## Documentation
 
 [See the rubydoc.info documentation](http://www.rubydoc.info/gems/govuk_publishing_components)

@@ -3,5 +3,9 @@
 library("govuk")
 
 node {
-  govuk.buildProject()
+  govuk.buildProject(
+    beforeTest: {
+      sh("npm install")
+    }
+  )
 }
