@@ -1,0 +1,66 @@
+.gem-c-highlight-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: $gutter-half;
+
+  @include media(tablet) {
+    margin-right: -25px;
+  }
+}
+
+.gem-c-highlight-boxes__item-wrapper {
+  @include core-19;
+  @include box-sizing(border-box);
+  list-style-type: none;
+  padding: ($gutter / 6) $gutter-one-third ($gutter-half + $gutter-one-third) 0;
+  width: 100%;
+
+  @include media(tablet) {
+    width: 50%;
+    padding: ($gutter / 6) ($gutter-half + $gutter-one-third) ($gutter-half + $gutter-one-third) 0;
+  }
+
+  @include media(desktop) {
+    width: (1 / 3) * 100%;
+    padding: ($gutter / 6) ($gutter-half + $gutter-one-third) ($gutter-half + $gutter-one-third) 0;
+  }
+}
+
+.gem-c-highlight-boxes__item {
+  @include box-sizing(border-box);
+  border: 1px solid $grey-2;
+  padding: $gutter-half * 1.5;
+  height: 100%;
+  box-shadow: 7px 7px 0 $white, 8px 8px 0 $grey-2;
+}
+
+.gem-c-highlight-boxes--inverse {
+  background-color: $govuk-blue;
+  border: 0;
+  color: $white;
+}
+
+.gem-c-highlight-boxes--inverse .gem-c-highlight-boxes__title {
+  color: $white;
+}
+
+.gem-c-highlight-boxes__title {
+  @include bold-19;
+  display: block;
+  text-decoration: underline;
+  margin-bottom: 5px;
+}
+
+.gem-c-highlight-boxes__title--featured {
+  @include bold-24;
+}
+
+.gem-c-highlight-boxes__description {
+  margin-bottom: $gutter-one-third;
+}
+
+.gem-c-highlight-boxes__metadata {
+  @include core-16;
+  display: inline-block;
+  margin-right: $gutter-half;
+}

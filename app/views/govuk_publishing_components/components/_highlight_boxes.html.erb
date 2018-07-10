@@ -1,0 +1,39 @@
+<%
+  items ||= []
+  inverse ||= false
+  inverse_class = "gem-c-highlight-boxes--inverse" if inverse
+  highlight_boxes_helper = GovukPublishingComponents::Presenters::HighlightBoxesHelper.new(local_assigns)
+%>
+<% if items.any? %>
+  <ol class="gem-c-highlight-boxes" <%= "data-module=track-click" if highlight_boxes_helper.data_tracking? %>>
+    <% items.each do |content_item| %>
+      <li class="gem-c-highlight-boxes__item-wrapper">
+        <div class="gem-c-highlight-boxes__item <%= inverse_class %>">
+          <%= link_to(
+            content_item[:link].fetch(:text),
+            content_item[:link].fetch(:path),
+            class: "gem-c-highlight-boxes__title #{"gem-c-highlight-boxes__title--featured" if content_item[:link][:featured]}",
+            data: content_item[:link][:data_attributes]
+            )
+          %>
+
+          <% if content_item[:link][:description] %>
+            <p class="gem-c-highlight-boxes__description"><%= content_item[:link][:description] %></p>
+          <% end %>
+
+          <% if content_item[:metadata] %>
+            <% content_item[:metadata].each do |metadata_key, metadata_value| %>
+              <% if metadata_key.to_s.eql?("public_updated_at") %>
+                <time class="gem-c-highlight-boxes__metadata" datetime="<%= metadata_value.iso8601 %>">
+                  <%= l(metadata_value, format: '%e %B %Y') %>
+                </time>
+              <% else %>
+                <p class="gem-c-highlight-boxes__metadata"><%= metadata_value %></p>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </li>
+    <% end %>
+  </ol>
+<% end %>
