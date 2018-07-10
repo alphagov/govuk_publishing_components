@@ -23,5 +23,12 @@
   },
   "formation": {},
   "addons": [],
-  "buildpacks": []
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    },
+    {
+      "url": "heroku/ruby"
+    }
+  ]
 }
