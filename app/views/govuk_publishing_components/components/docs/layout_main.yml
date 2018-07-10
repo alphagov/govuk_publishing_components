@@ -1,0 +1,24 @@
+name: Layout main section (experimental)
+description: The main section of the page. Includes support for flash messages.
+part_of_admin_layout: true
+govuk_frontend_components:
+  - panel
+  - error-summary
+examples:
+  default:
+    data:
+      block: |
+        The content.
+  with_an_error:
+    data:
+      flash:
+        error: "Something went wrong"
+      block: |
+        The content.
+  with_a_notice:
+    data:
+      flash:
+        notice: "How are you today?"
+      block: |
+        The content.
+accessibility_criteria: |

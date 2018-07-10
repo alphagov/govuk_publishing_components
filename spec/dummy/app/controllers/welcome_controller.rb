@@ -16,4 +16,9 @@ class WelcomeController < ApplicationController
       @content_item = Services.content_store.content_item("/" + params[:base_path])
     end
   end
+
+  def admin
+    response.headers[Slimmer::Headers::SKIP_HEADER] = "true"
+    render 'admin_example', layout: 'dummy_admin_layout'
+  end
 end

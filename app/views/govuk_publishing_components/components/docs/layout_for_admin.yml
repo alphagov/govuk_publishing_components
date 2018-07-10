@@ -1,0 +1,28 @@
+name: Admin layout (experimental)
+description: A layout to be used by admin applications
+body: |
+  This component uses [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend),
+  part of the GOV.UK Design System.
+
+  It also includes the styles for the other components in this gem, so that you can use
+  these components as well.
+
+  This component is experimental. Breaking changes are likely and we'll not release
+  major version of the gem for these changes.
+
+  Because it is an entire layout, this component can only be [previewed on a separate page](/admin).
+
+  Typically you'll use this together with the [layout_header](/component-guide/layout_header),
+  [layout_main](/component-guide/layout_main) and
+  [layout_footer](/component-guide/layout_footer).
+
+display_preview: false
+display_html: true
+accessibility_criteria: |
+  TBD
+examples:
+  default:
+    data:
+      browser_title: 'A page title'
+      block: |
+        <!-- You probably want to use the header, main & footer components here -->

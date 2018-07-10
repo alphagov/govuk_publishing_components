@@ -1,0 +1,18 @@
+<% navigation_links = [
+  {
+    name: 'An active item',
+    href: '#',
+  },
+  {
+    name: 'Another item',
+    href: '#',
+  }
+] %>
+
+<%= render 'govuk_publishing_components/components/layout_for_admin', browser_title: 'Example admin page' do %>
+  <%= render 'govuk_publishing_components/components/layout_header', environment: 'production', navigation_links: navigation_links %>
+  <%= render 'govuk_publishing_components/components/layout_main' do %>
+    <%= yield %>
+  <% end %>
+  <%= render 'govuk_publishing_components/components/layout_footer' %>
+<% end %>

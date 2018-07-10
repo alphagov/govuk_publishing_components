@@ -42,6 +42,14 @@ module GovukPublishingComponents
       component[:display_html]
     end
 
+    def part_of_admin_layout?
+      component[:part_of_admin_layout]
+    end
+
+    def display_preview?
+      component[:display_preview].nil? ? true : component[:display_preview]
+    end
+
     def html_body
       govspeak_to_html(body) if body.present?
     end
@@ -56,6 +64,10 @@ module GovukPublishingComponents
       else
         "#{GovukPublishingComponents::Config.component_directory_name}/#{id}"
       end
+    end
+
+    def govuk_frontend_components
+      component[:govuk_frontend_components].to_a
     end
 
     def github_search_url

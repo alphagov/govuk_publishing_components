@@ -1,0 +1,19 @@
+<div class="gem-c-admin-layout__main govuk-width-container">
+  <% if flash[:error] %>
+    <div class="govuk-error-summary govuk-!-mt-r7" role="alert" tabindex="-1">
+      <div class="govuk-error-summary__body">
+        <%= flash[:error] %>
+      </div>
+    </div>
+  <% end %>
+
+  <% if flash[:notice] %>
+    <div class="govuk-panel govuk-panel--confirmation govuk-!-mt-r7">
+      <div class="govuk-panel__body">
+        <%= flash[:notice] %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= yield %>
+</div>

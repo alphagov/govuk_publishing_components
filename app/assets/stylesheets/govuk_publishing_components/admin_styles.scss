@@ -1,0 +1,15 @@
+// Include all of the GOV.UK Frontend styles. This includes global styles, fonts,
+// and individual components.
+$govuk-global-styles: true;
+$govuk-image-url-function: 'image-url';
+$govuk-font-url-function: 'font-url';
+
+@import "../../../node_modules/govuk-frontend/all";
+
+// Include our GOV.UK components
+@import "govuk_publishing_components/all_components";
+
+// Components that are only available inside the admin layout
+@import "govuk_publishing_components/components/layout-header";
+@import "govuk_publishing_components/components/layout-footer";
+@import "govuk_publishing_components/components/layout-main";
