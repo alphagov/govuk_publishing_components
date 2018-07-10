@@ -28,6 +28,19 @@
 
   <%= render "govuk_publishing_components/component_guide/component_doc/preview", component_doc: @component_doc, example: @component_doc.example %>
 
+  <% if @component_doc.govuk_frontend_components.any? %>
+    <h2 class="component-doc-h2">GOV.UK Design System</h2>
+    <%= render 'govuk_publishing_components/components/govspeak' do %>
+      <p>This component incorporates components from the <%= link_to "GOV.UK Design System", "https://design-system.service.gov.uk" %>:</p>
+
+      <ul>
+      <% @component_doc.govuk_frontend_components.each do |component| %>
+        <li><%= link_to component.humanize, "https://design-system.service.gov.uk/components/#{component}" %></li>
+      <% end %>
+      </ul>
+    <% end %>
+  <% end %>
+
   <% if @component_doc.accessibility_criteria.present? %>
     <div class="grid-row component-accessibility-criteria">
       <div class="column-two-thirds">
