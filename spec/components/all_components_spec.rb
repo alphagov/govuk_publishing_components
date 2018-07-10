@@ -24,13 +24,13 @@ describe "All components" do
       it "has a correctly named spec file", skip: component_name.in?(%w[contextual_breadcrumbs contextual_sidebar success_alert taxonomy_navigation]) do
         rspec_file = "#{__dir__}/../../spec/components/#{component_name.tr('-', '_')}_spec.rb"
 
-        expect(File).to exist(rspec_file)
+        expect(File).to exist(rspec_file), rspec_file
       end
 
       it "has a correctly named SCSS file", not_applicable: component_name.in?(%w[contextual_breadcrumbs contextual_sidebar government_navigation machine_readable_metadata meta_tags]) do
         css_file = "#{__dir__}/../../app/assets/stylesheets/govuk_publishing_components/components/_#{component_name.tr('_', '-')}.scss"
 
-        expect(File).to exist(css_file)
+        expect(File).to exist(css_file), css_file
       end
 
       it "doesn't use `html_safe`", not_applicable: component_name.in?(%w[govspeak]) do

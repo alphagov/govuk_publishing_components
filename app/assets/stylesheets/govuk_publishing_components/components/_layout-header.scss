@@ -1,0 +1,19 @@
+// This component relies on styles from GOV.UK Frontend
+
+.govuk-header--production .govuk-header__container {
+  border-bottom: 10px solid govuk-colour("bright-red");
+}
+
+.govuk-header--integration .govuk-header__container,
+.govuk-header--staging .govuk-header__container {
+  border-bottom: 10px solid govuk-colour("yellow");
+}
+
+.govuk-header--development .govuk-header__container {
+  border-bottom: 10px solid govuk-colour("grey-1");
+}
+
+// Fix the logo
+.govuk-header__logo {
+  width: 33%;
+}
