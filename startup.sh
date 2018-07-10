@@ -1,5 +1,6 @@
 #!/bin/bash
 
+npm install
 bundle install
 
 if [[ $1 == "--live" ]] ; then

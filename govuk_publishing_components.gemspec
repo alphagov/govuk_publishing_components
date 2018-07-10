@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.homepage    = "https://github.com/alphagov/govuk_publishing_components"
   s.license     = "MIT"
 
-  s.files = Dir["{app,config,db,lib}/**/*", "DEVELOPMENT.md", "LICENCE.md", "Rakefile", "README.md"]
+  s.files = Dir["{node_modules,app,config,db,lib}/**/*", "DEVELOPMENT.md", "LICENCE.md", "Rakefile", "README.md"]
 
   s.add_dependency "govuk_app_config"
   s.add_dependency "rails", ">= 5.0.0.1"
