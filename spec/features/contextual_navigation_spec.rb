@@ -167,13 +167,17 @@ describe "Contextual navigation" do
   end
 
   def and_the_parent_based_breadcrumbs
-    expect(page).to have_selector(".gem-c-breadcrumbs")
-    expect(page).to have_content("Home A parent")
+    within '.gem-c-breadcrumbs' do
+      expect(page).to have_link("Home")
+      expect(page).to have_link("A parent")
+    end
   end
 
   def and_the_taxonomy_breadcrumbs
-    expect(page).to have_selector(".gem-c-breadcrumbs")
-    expect(page).to have_content("Home A live taxon")
+    within '.gem-c-breadcrumbs' do
+      expect(page).to have_link("Home")
+      expect(page).to have_link("A live taxon")
+    end
   end
 
   def then_i_see_the_taxonomy_sidebar_and_collection
