@@ -16,6 +16,11 @@
   <% if GovukPublishingComponents::Config.application_print_stylesheet %>
     <%= stylesheet_link_tag "#{GovukPublishingComponents::Config.application_print_stylesheet}", media: "print" %>
   <% end %>
+
+  <% if @component_doc && @component_doc.part_of_admin_layout? %>
+    <%= stylesheet_link_tag "govuk_publishing_components/admin_styles" %>
+  <% end %>
+
   <%= javascript_include_tag "component_guide/application" %>
   <%= javascript_include_tag "#{GovukPublishingComponents::Config.application_javascript}" %>
   <%= csrf_meta_tags %>

@@ -46,6 +46,10 @@ module GovukPublishingComponents
       component[:display_preview].nil? ? true : component[:display_preview]
     end
 
+    def part_of_admin_layout?
+      component[:part_of_admin_layout]
+    end
+
     def html_body
       govspeak_to_html(body) if body.present?
     end
