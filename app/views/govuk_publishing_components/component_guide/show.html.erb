@@ -2,12 +2,9 @@
 <%= render 'govuk_publishing_components/components/title', title: @component_doc.name, context: "Component" %>
 
 <% if @component_doc.part_of_admin_layout? %>
-<div class="component-warning">
-  <h2 class="component-warning__title">Admin layout only</h2>
-  <p>
-    This component uses the Design System, so only works inside the <%= link_to "admin layout", "/component-guide/layout_for_admin" %>
-  </p>
-</div>
+  <%= render "govuk_publishing_components/components/notice", title: "Admin layout only" do %>
+    <p>This component only works inside the <%= link_to "layout for admin component", "/component-guide/layout_for_admin" %>.</p>
+  <% end %>
 <% end %>
 
 <div class="component-show">

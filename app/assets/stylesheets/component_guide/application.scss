@@ -50,16 +50,6 @@ $border-color: #ccc;
   }
 }
 
-.component-warning {
-  border: 3px solid $orange;
-  margin: 0 0 $gutter;
-  padding: $gutter $gutter 0 $gutter;
-
-  .component-warning__title {
-    @include bold-24;
-  }
-}
-
 .component-doc-h2 {
   @include bold-27;
   margin: ($gutter * 1.5) 0 $gutter;
