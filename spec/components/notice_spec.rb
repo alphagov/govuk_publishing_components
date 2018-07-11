@@ -26,6 +26,15 @@ describe "Notice", type: :view do
     assert_select ".gem-c-notice__description", text: "Duplicate, added in error"
   end
 
+  it "renders a notice with a title and description text from a block" do
+    render_component(title: "Statistics release cancelled") do
+      "Duplicate, added in error"
+    end
+
+    assert_select ".gem-c-notice__title", text: "Statistics release cancelled"
+    assert_select ".govuk-govspeak", text: "Duplicate, added in error"
+  end
+
   it "renders a notice with a title and description govspeak" do
     render_component(title: "Statistics release update", description_govspeak: "<p>The Oil &amp; Gas Authority launched a new website on 3 October 2016 to reflect its new status as a government company.</p><p>This formalises the transfer of the Secretary of State’s regulatory powers in respect of oil and gas to the OGA, and grants it new powers. This website will no longer be updated. Visitors should refer to <a rel=\"external\" href=\"https://www.ogauthority.co.uk/news-publications/announcements/2015/establishment-of-the-oil-and-gas-authority-1/\">www.ogauthority.co.uk</a></p>".html_safe)
 
