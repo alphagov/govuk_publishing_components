@@ -46,6 +46,7 @@ module GovukPublishingComponents
 
       def add_organisation_tags(meta_tags)
         organisations = []
+        organisations += [content_item] if content_item[:document_type] == "organisation"
         organisations += links[:organisations] || []
         organisations += links[:worldwide_organisations] || []
         organisations_content = organisations.map { |link| "<#{link[:analytics_identifier]}>" }.uniq.join

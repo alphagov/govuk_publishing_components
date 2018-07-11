@@ -31,6 +31,11 @@ describe "Meta tags", type: :view do
     assert_meta_tag('govuk:schema-name', 'publication')
   end
 
+  it "renders organisation meta tag if current page is organisation" do
+    render_component(content_item: example_document_for('organisation', 'organisation'))
+    assert_meta_tag('govuk:analytics:organisations', '<D1197>')
+  end
+
   it "renders organisations in a meta tag with angle brackets" do
     content_item = {
       links: {
