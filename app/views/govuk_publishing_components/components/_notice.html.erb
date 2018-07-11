@@ -1,11 +1,11 @@
 <% if defined?(title) %>
   <%
     description_text ||= false
-    description_govspeak ||= false
+    description_govspeak ||= yield || false
     margin_bottom_class = " gem-c-notice--bottom-margin" unless local_assigns[:margin_bottom]
   %>
   <section class="gem-c-notice<%= margin_bottom_class %>" aria-label="Notice" role="region">
-    <% if description_text || description_govspeak %>
+    <% if description_text.present? || description_govspeak.present? %>
       <h2 class="gem-c-notice__title"><%= title %></h2>
     <% else %>
       <span class="gem-c-notice__title"><%= title %></span>

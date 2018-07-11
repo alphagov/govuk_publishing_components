@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* The Notice component now accepts blocks (PR #407)
+
 ## 9.4.0
 
 * Add experimental Admin layout (PR #371)
