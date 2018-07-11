@@ -164,9 +164,7 @@ examples:
       ]
   remember_last_opened_step:
     description: |
-      If a step is opened its ID is appended to the end of the URL, so that if the URL is shared or the 'back' button is used, that step will be opened on page load. This was historically part of the behaviour of the accordion. By default this is turned off and cannot be used together with the option to open a step by default.
-
-      This behaviour is used with the 'links to more information' option.
+      If steps are opened their IDs are added to an array in sessionStorage, so that if the user returns to this page in the same session, those steps will be opened on page load. This option can technically be used together with the option to open a step by default, but this is not recommended as it could confuse users.
     data:
       remember_last_step: true
       steps: [

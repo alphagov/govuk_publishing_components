@@ -105,7 +105,6 @@ describe('A stepnav module', function () {
 
   afterEach(function () {
     $(document).off();
-    location.hash = "#";
   });
 
   it("has a class of gem-c-step-nav--active to indicate the js has loaded", function () {
@@ -135,7 +134,7 @@ describe('A stepnav module', function () {
   it("inserts a button into each step to show/hide content", function () {
     var $titleButton = $element.find('.js-step-title-button');
 
-    //expect($titleButton).toHaveClass('gem-c-step-nav__button--title');
+    expect($titleButton).toHaveClass('gem-c-step-nav__button--title');
     expect($titleButton).toHaveAttr('aria-expanded', 'false');
     expect($titleButton[0]).toHaveAttr('aria-controls', 'step-panel-topic-step-one-1');
     expect($titleButton[1]).toHaveAttr('aria-controls', 'step-panel-topic-step-two-1');
@@ -361,31 +360,174 @@ describe('A stepnav module', function () {
     });
   });
 
-  describe('when linking to a topic step', function () {
+  describe('when the option to remember which steps are open is on', function () {
     beforeEach(function () {
-      spyOn(GOVUK, 'getCurrentLocation').and.returnValue({
-        hash: '#topic-step-one'
-      });
-
-      // Restart stepnav after setting up mock location provider
+      stepnav = new GOVUK.Modules.Gemstepnav();
+      $element = $(html);
       $element.attr('data-remember',true);
+      $element.addClass('gem-c-step-nav--large');
       stepnav.start($element);
     });
 
-    it("opens the linked to topic step", function () {
-      var $step = $element.find('#topic-step-one');
-      expect($step).toHaveClass('step-is-shown');
-      expect($step.find('.js-panel')).not.toHaveClass('js-hidden');
+    afterEach(function () {
+      sessionStorage.removeItem('unique-id');
     });
 
-    it("leaves other steps hidden", function () {
-      var $step = $element.find('#topic-step-two');
-      expect($step).not.toHaveClass('step-is-shown');
+    it("remembers individually opened steps", function () {
+      var $stepLink1 = $element.find('#topic-step-one .js-toggle-panel');
+      var $stepLink2 = $element.find('#topic-step-two .js-toggle-panel');
+
+      $stepLink1.click(); // open
+      expect(sessionStorage.getItem('unique-id')).toBe('["topic-step-one"]');
+
+      $stepLink2.click(); // open
+      expect(sessionStorage.getItem('unique-id')).toBe('["topic-step-one","topic-step-two"]');
+
+      $stepLink1.click(); // close
+      expect(sessionStorage.getItem('unique-id')).toBe('["topic-step-two"]');
+
+      $stepLink2.click(); // close
+      expect(sessionStorage.getItem('unique-id')).toBe('[]');
+    });
+
+    it("remembers opened and closed steps using show/hide all", function () {
+      var $showHideAllButton = $element.find('.js-step-controls-button');
+      var $stepLink2 = $element.find('#topic-step-two .js-toggle-panel');
+
+      $showHideAllButton.click(); // show all
+      expect(sessionStorage.getItem('unique-id')).toBe('["topic-step-one","topic-step-two","topic-step-three"]');
+
+      $stepLink2.click(); // close
+      expect(sessionStorage.getItem('unique-id')).toBe('["topic-step-one","topic-step-three"]');
+
+      $showHideAllButton.click(); // show all
+      expect(sessionStorage.getItem('unique-id')).toBe('["topic-step-one","topic-step-two","topic-step-three"]');
+
+      $showHideAllButton.click(); // hide all
+      expect(sessionStorage.getItem('unique-id')).toBe(null); // 'hide all' removes the session data entirely
+    });
+  });
+
+  describe('when open steps have been remembered', function () {
+    beforeEach(function () {
+      var store = {};
+
+      spyOn(sessionStorage, 'getItem').and.callFake(function (key) {
+        return store[key];
+      });
+      spyOn(sessionStorage, 'setItem').and.callFake(function (key, value) {
+        return store[key] = value + '';
+      });
+      spyOn(sessionStorage, 'removeItem').and.callFake(function () {
+        store = {};
+      });
+
+      stepnav = new GOVUK.Modules.Gemstepnav();
+      $element = $(html);
+      $element.attr('data-remember',true);
+      $element.addClass('gem-c-step-nav--large');
+      sessionStorage.setItem('unique-id', '["topic-step-one","topic-step-three"]');
+      stepnav.start($element);
+    });
+
+    afterEach(function () {
+      sessionStorage.removeItem('unique-id');
+    });
+
+    it("opens the steps it has remembered", function () {
+      var $step1 = $element.find('#topic-step-one');
+      expect($step1).toHaveClass('step-is-shown');
+      expect($step1.find('.js-panel')).not.toHaveClass('js-hidden');
+
+      var $step3 = $element.find('#topic-step-three');
+      expect($step3).toHaveClass('step-is-shown');
+      expect($step3.find('.js-panel')).not.toHaveClass('js-hidden');
+    });
+
+    it("leaves the other steps hidden", function () {
+      var $step2 = $element.find('#topic-step-two');
+      expect($step2).not.toHaveClass('step-is-shown');
     });
 
     it("sets the show/hide link text to 'hide'", function () {
-      var $step = $element.find('#topic-step-one');
-      expect($step.find('.js-toggle-link')).toHaveText("Hide");
+      var $step1 = $element.find('#topic-step-one');
+      expect($step1.find('.js-toggle-link')).toHaveText("Hide");
+    });
+
+    it("sets the show all/hide all button text correctly", function () {
+      var $showHideAllButton = $element.find('.js-step-controls-button');
+      expect($showHideAllButton).toHaveText("Show all");
+    });
+  });
+
+  describe('when all steps have been opened and remembered', function () {
+    beforeEach(function () {
+      var store = {};
+
+      spyOn(sessionStorage, 'getItem').and.callFake(function (key) {
+        return store[key];
+      });
+      spyOn(sessionStorage, 'setItem').and.callFake(function (key, value) {
+        return store[key] = value + '';
+      });
+      spyOn(sessionStorage, 'removeItem').and.callFake(function () {
+        store = {};
+      });
+
+      stepnav = new GOVUK.Modules.Gemstepnav();
+      $element = $(html);
+      $element.attr('data-remember',true);
+      $element.addClass('gem-c-step-nav--large');
+      sessionStorage.setItem('unique-id', '["topic-step-one","topic-step-two","topic-step-three"]');
+      stepnav.start($element);
+    });
+
+    afterEach(function () {
+      sessionStorage.removeItem('unique-id');
+    });
+
+    it("sets the show all/hide all button text correctly", function () {
+      var $showHideAllButton = $element.find('.js-step-controls-button');
+      expect($showHideAllButton).toHaveText("Hide all");
+    });
+  });
+
+  describe('when the remember open steps option is applied to a small step nav', function() {
+    beforeEach(function () {
+      var store = {};
+
+      spyOn(sessionStorage, 'getItem').and.callFake(function (key) {
+        return store[key];
+      });
+      spyOn(sessionStorage, 'setItem').and.callFake(function (key, value) {
+        return store[key] = value + '';
+      });
+      spyOn(sessionStorage, 'removeItem').and.callFake(function () {
+        store = {};
+      });
+
+      stepnav = new GOVUK.Modules.Gemstepnav();
+      $element = $(html);
+      $element.attr('data-remember',true);
+      sessionStorage.setItem('unique-id', '["topic-step-one","topic-step-two","topic-step-three"]');
+      stepnav.start($element);
+    });
+
+    afterEach(function () {
+      sessionStorage.removeItem('unique-id');
+    });
+
+    it("doesn't do anything", function () {
+      var $step1 = $element.find('#topic-step-one');
+      var $step2 = $element.find('#topic-step-two');
+      var $step3 = $element.find('#topic-step-three');
+
+      expect($step1).not.toHaveClass('step-is-shown');
+      expect($step2).not.toHaveClass('step-is-shown');
+      expect($step3).not.toHaveClass('step-is-shown');
+
+      $step1.click();
+      expect(sessionStorage.getItem('unique-id')).toBe('["topic-step-one","topic-step-two","topic-step-three"]'); // i.e. unchanged
     });
   });
 
