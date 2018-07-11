@@ -1,18 +1,26 @@
 .gem-c-step-nav-related {
   border-top: 2px solid $govuk-blue;
-  margin-bottom: $gutter * 1.5;
+  margin-bottom: $gutter-half;
 }
 
 .gem-c-step-nav-related__heading {
   margin-top: $gutter-half;
   margin-bottom: $gutter-one-third;
   @include bold-19;
+
+  @include media(mobile) {
+    @include bold-24;
+  }
 }
 
 .gem-c-step-nav-related__links {
   @include bold-16;
   margin: 0;
   padding: 0;
+
+  @include media(mobile) {
+    @include bold-24;
+  }
 }
 
 .gem-c-step-nav-related__pretitle {
