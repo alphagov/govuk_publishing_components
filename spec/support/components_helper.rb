@@ -5,7 +5,11 @@ module Helpers
     end
 
     def render_component(locals)
-      render partial: "govuk_publishing_components/components/#{component_name}", locals: locals
+      if block_given?
+        render("govuk_publishing_components/components/#{component_name}", locals) { yield }
+      else
+        render "govuk_publishing_components/components/#{component_name}", locals
+      end
     end
   end
 end
