@@ -1,0 +1,57 @@
+name: Layout header (experimental)
+description: The header provides the crown logo, product or service name and navigation
+body: |
+  Requires the specification of the environment (development, integration,
+  staging or production).
+part_of_admin_layout: true
+govuk_frontend_components:
+  - header
+examples:
+  default:
+    data:
+      environment: production
+  staging_environment:
+    data:
+      environment: staging
+  integration_environment:
+    data:
+      environment: integration
+  development_environment:
+    data:
+      environment: development
+  with_product_name:
+    data:
+      environment: production
+      product_name: Product
+  with_navigation:
+    data:
+      environment: production
+      navigation_items:
+      - text: Navigation item 1
+        href: "#1"
+        active: true
+      - text: Navigation item 2
+        href: "#2"
+
+accessibility_criteria: |
+  The component must:
+
+  - have a text contrast ratio higher than 4.5:1 against the background colour to meet [WCAG AA](https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast)
+
+  Links in the Header must:
+
+  - accept focus
+  - be focusable with a keyboard
+  - be usable with a keyboard
+  - indicate when they have focus
+  - change in appearance when touched (in the touch-down state)
+  - change in appearance when hovered
+  - have visible text
+
+  Images in the Header must:
+
+  - be presentational when linked to from accompanying text (crown icon).
+
+  Landmarks and Roles in the Header should:
+
+  - have a role of `banner` at the root of the component (<header>) ([ARIA 1.1](https://www.w3.org/TR/wai-aria-1.1/#banner))

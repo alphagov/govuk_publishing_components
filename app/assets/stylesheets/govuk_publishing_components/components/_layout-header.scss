@@ -1,0 +1,30 @@
+// This component relies on styles from GOV.UK Frontend
+
+.gem-c-header--integration .govuk-header__container,
+.gem-c-header--staging .govuk-header__container {
+  border-bottom-color: govuk-colour("yellow");
+}
+
+.gem-c-header--development .govuk-header__container {
+  border-bottom-color: govuk-colour("grey-1");
+}
+
+// Fix header component's reliance on markup whitespace
+// https://github.com/alphagov/govuk-frontend/pull/884/files
+//
+// Remove this fix after updating to GOV.UK Frontend 1.1.0
+.govuk-header__container {
+  @include govuk-clearfix;
+}
+
+.govuk-header__logo {
+  @include mq ($from: desktop) {
+    float: left;
+  }
+}
+
+.govuk-header__content {
+  @include mq ($from: desktop) {
+    float: left;
+  }
+}
