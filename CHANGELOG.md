@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 9.4.0
 
 * Add experimental Admin layout (PR #371)
 * Add the [GOV.UK Frontend](https://design-system.service.gov.uk/) library to the gem (PR #398)
