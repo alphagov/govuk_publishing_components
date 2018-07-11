@@ -43,5 +43,8 @@
 
       <%= yield %>
     </main>
+    <% if @component_doc && @component_doc.part_of_admin_layout? %>
+      <%= javascript_include_tag "govuk_publishing_components/admin_scripts" %>
+    <% end %>
 </body>
 </html>
