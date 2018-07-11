@@ -10,4 +10,10 @@ describe "Layout for admin", type: :view do
 
     assert_select "title", visible: false, text: "Hello, admin page"
   end
+
+  it "adds the robots metatag" do
+    render_component(browser_title: "Hello, admin page", environment: "production")
+
+    assert_select 'meta[name="robots"][content="noindex,nofollow,noimageindex"]', visible: false
+  end
 end
