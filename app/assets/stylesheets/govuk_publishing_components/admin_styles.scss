@@ -9,3 +9,5 @@ $govuk-font-url-function: 'font-url';
 // Include our GOV.UK components
 @import "govuk_publishing_components/all_components";
 
+// Components that are only available inside the admin layout
+@import "govuk_publishing_components/components/layout-footer";

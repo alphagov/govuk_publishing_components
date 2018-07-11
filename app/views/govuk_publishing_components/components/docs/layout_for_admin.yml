@@ -12,7 +12,9 @@ body: |
 
   Because it is an entire layout, this component can only be [previewed on a separate page](/admin).
 
-  Typically you'll use this together with a footer and header.
+  Typically you'll use this together with:
+
+  - the [layout footer component](/component-guide/layout_footer)
 
 display_preview: false
 display_html: true

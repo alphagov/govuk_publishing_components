@@ -1,0 +1,12 @@
+name: Layout footer (experimental)
+description: The footer provides copyright, licensing and other information
+part_of_admin_layout: true
+govuk_frontend_components:
+  - footer
+examples:
+  default:
+    data: {}
+accessibility_criteria: |
+  The component must:
+
+  * implement accessible links
