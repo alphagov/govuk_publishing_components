@@ -35,4 +35,20 @@ describe "Title", type: :view do
     render_component(title: "Hello World", inverse: true)
     assert_select ".gem-c-title--inverse", text: "Hello World"
   end
+
+  it "adds margin 0" do
+    render_component(title: 'Margin 0', margin_bottom: 0)
+    assert_select ".gem-c-title.gem-c-title--margin-bottom-4", false
+    assert_select ".gem-c-title.gem-c-title--margin-bottom-5", false
+  end
+
+  it "adds margin 4" do
+    render_component(title: 'Margin 4', margin_bottom: 4)
+    assert_select ".gem-c-title.gem-c-title--margin-bottom-4"
+  end
+
+  it "adds margin 5" do
+    render_component(title: 'Margin 5', margin_bottom: 5)
+    assert_select ".gem-c-title.gem-c-title--margin-bottom-5"
+  end
 end

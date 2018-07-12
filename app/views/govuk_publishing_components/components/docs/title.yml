@@ -41,6 +41,14 @@ examples:
       context: Publication
       title: My page title which is often really long and verbose and has lots of extra words it doesn't need
       average_title_length: long
+  with_margin:
+    description: |
+      Configurable bottom margin for the component. This has been built in anticipation of being compatible with a theoretical future model for component margins.
+
+      Accepted parameters for this option are 0 (no margin), 4 (gives a margin of gutter) and 5 ([responsive-margin](https://github.com/alphagov/govuk_publishing_components/blob/a325cbebf93def14a4f8d55e86426ea16b15f2ee/app/assets/stylesheets/govuk_publishing_components/components/mixins/_margins.scss#L1), which is also the default). See the Sass file for more detail.
+    data:
+      title: 'Margin bottom of 30px'
+      margin_bottom: 4
   in_html_publication:
     description: Page titles are used in HTML Publications ([see example](https://www.gov.uk/government/publications/fees-for-civil-and-family-courts/court-fees-for-the-high-court-county-court-and-family-court))
     data:
