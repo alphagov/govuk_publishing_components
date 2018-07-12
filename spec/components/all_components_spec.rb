@@ -21,6 +21,17 @@ describe "All components" do
         expect(yaml["accessibility_criteria"]).not_to be_nil
       end
 
+      it "has the correct class in the ERB template",
+        skip: component_name.in?(%w[step_by_step_nav_related step_by_step_nav_header step_by_step_nav previous_and_next_navigation]),
+        not_applicable: component_name.in?(%w[meta_tags machine_readable_metadata layout_for_admin]) do
+
+        erb = File.read(filename)
+
+        class_name = "gem-c-#{component_name.dasherize}"
+
+        expect(erb).to match(class_name), class_name
+      end
+
       it "has a correctly named spec file", skip: component_name.in?(%w[contextual_breadcrumbs contextual_sidebar success_alert taxonomy_navigation]) do
         rspec_file = "#{__dir__}/../../spec/components/#{component_name.tr('-', '_')}_spec.rb"
 
