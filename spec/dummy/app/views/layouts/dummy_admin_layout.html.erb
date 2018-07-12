@@ -1,3 +1,18 @@
 <%= render 'govuk_publishing_components/components/layout_for_admin', browser_title: 'Example admin page' do %>
-  <%= yield %>
+  <%= render "govuk_publishing_components/components/skip_link" %>
+  <%= render "govuk_publishing_components/components/layout_header", {
+    environment: "production",
+    product_name: "Admin",
+    navigation_items: [
+      {:text => "John Doe", :href => "#profile"},
+      {:text => "Log out", :href => "#logout"}
+    ]
+  }%>
+  <div class="govuk-width-container">
+    <!-- breadcrumbs, backlink, phasebanner goes here-->
+    <main class="govuk-main-wrapper " id="main-content" role="main">
+      <%= yield %>
+    </main>
+  </div>
+  <%= render "govuk_publishing_components/components/layout_footer" %>
 <% end %>
