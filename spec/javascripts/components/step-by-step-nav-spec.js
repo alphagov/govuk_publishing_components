@@ -531,6 +531,28 @@ describe('A stepnav module', function () {
     });
   });
 
+  describe('when a step is supposed to be shown by default', function() {
+    beforeEach(function () {
+      stepnav = new GOVUK.Modules.Gemstepnav();
+      $element = $(html);
+      $element.find('#topic-step-two').attr('data-show', '');
+      stepnav.start($element);
+    });
+
+    it("shows the step it's supposed to", function () {
+      var $openStep = $element.find('#topic-step-two');
+      expect($openStep).toHaveClass('step-is-shown');
+    });
+
+    it("leaves the other steps closed", function () {
+      var $closedStep1 = $element.find('#topic-step-one');
+      var $closedStep3 = $element.find('#topic-step-three');
+
+      expect($closedStep1).not.toHaveClass('step-is-shown');
+      expect($closedStep3).not.toHaveClass('step-is-shown');
+    });
+  });
+
   describe('When tracking a big step nav', function () {
     beforeEach(function () {
       stepnav = new GOVUK.Modules.Gemstepnav();
