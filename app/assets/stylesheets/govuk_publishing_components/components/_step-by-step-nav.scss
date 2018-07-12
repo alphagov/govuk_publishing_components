@@ -159,7 +159,6 @@ $top-border: solid 2px $grey-3;
   &:last-child:before,
   .gem-c-step-nav__circle--number,
   &:after,
-  .gem-c-step-nav__substep:after,
   .gem-c-step-nav__help:after {
     border-color: $black;
   }
@@ -418,33 +417,4 @@ $top-border: solid 2px $grey-3;
   &:hover {
     text-decoration: underline;
   }
-}
-
-.gem-c-step-nav__substep {
-  position: relative;
-  padding-top: $gutter-half;
-  border-top: $top-border;
-
-  &:after {
-    @include step-nav-vertical-line;
-    @include step-nav-line-position;
-    z-index: 3;
-    top: 0;
-    left: -($gutter + $gutter-half);
-  }
-
-  .gem-c-step-nav--large & {
-    @include media(tablet) {
-      padding-top: $gutter;
-
-      &:after {
-        @include step-nav-line-position-large;
-        left: -($gutter * 2);
-      }
-    }
-  }
-}
-
-.gem-c-step-nav__substep--optional:after {
-  border-left-style: dotted;
 }

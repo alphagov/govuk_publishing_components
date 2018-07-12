@@ -31,26 +31,16 @@ describe "step nav", type: :view do
             ]
           },
           {
-            type: 'substep',
-            optional: false,
+            type: 'list',
+            style: 'choice',
             contents: [
               {
-                type: 'paragraph',
-                text: 'This paragraph is inside a required substep'
+                href: '/link3',
+                text: 'Link 1.1.3',
               },
               {
-                type: 'list',
-                style: 'choice',
-                contents: [
-                  {
-                    href: '/link3',
-                    text: 'Link 1.1.3',
-                  },
-                  {
-                    href: '/link4',
-                    text: 'Link 1.1.4'
-                  }
-                ]
+                href: '/link4',
+                text: 'Link 1.1.4'
               }
             ]
           }
@@ -87,16 +77,6 @@ describe "step nav", type: :view do
                 active: true,
                 text: 'Link 2.1.2',
               },
-            ]
-          },
-          {
-            type: 'substep',
-            optional: true,
-            contents: [
-              {
-                type: 'paragraph',
-                text: 'This paragraph is inside an optional substep'
-              }
             ]
           }
         ]
@@ -216,12 +196,10 @@ describe "step nav", type: :view do
     assert_select step2or + " .gem-c-step-nav__list-item .gem-c-step-nav__link[href='/link8'][data-position='4.2']", text: "Link 2.2.2"
   end
 
-  it "renders optional steps, sub steps and optional sub steps" do
+  it "renders optional steps" do
     render_component(steps: stepnav)
 
     assert_select ".gem-c-step-nav__step#step-1.gem-c-step-nav__step[data-optional]"
-    assert_select step1 + " .gem-c-step-nav__substep .gem-c-step-nav__paragraph", text: "This paragraph is inside a required substep"
-    assert_select step2 + " .gem-c-step-nav__substep.gem-c-step-nav__substep--optional .gem-c-step-nav__paragraph", text: "This paragraph is inside an optional substep"
   end
 
   it "renders get help links back to the main step nav" do
