@@ -6,23 +6,9 @@
   margin-right: -$gutter-half;
 }
 
-.gem-c-pagination__list {
-  margin: 0;
-  padding: 0;
-
-  &:after {
-    content: "";
-    display: block;
-    clear: both;
-  }
-}
-
 .gem-c-pagination__item {
   @include core-16($line-height: (20 / 16));
   list-style: none;
-  text-align: right;
-  margin: 0;
-  padding: 0;
 }
 
 .gem-c-pagination__link {
@@ -30,6 +16,8 @@
   padding: $gutter-half;
   text-decoration: none;
 
+  &:hover,
+  &:active,
   &:visited {
     color: $link-colour;
   }
@@ -41,29 +29,16 @@
 }
 
 .gem-c-pagination__link-title {
-  @include core-27($line-height: (33.75 / 27));
   display: block;
 }
 
-.gem-c-pagination__item--previous {
-  text-align: left;
-
-  @include media(tablet) {
-    float: left;
-    width: 50%;
-  }
-}
-
-.gem-c-pagination__item--next {
-  text-align: right;
-
-  @include media(tablet) {
-    float: right;
-    width: 50%;
-  }
+.gem-c-pagination__link-text {
+  @include bold-19;
+  margin-left: $gutter / 3;
 }
 
 .gem-c-pagination__link-icon {
+  @include core-24($line-height: (33.75 / 27));
   display: inline-block;
   margin-bottom: 1px;
   height: .482em;
@@ -74,4 +49,9 @@
   display: inline-block;
   margin-top: 0.1em;
   text-decoration: underline;
+  margin-left: $gutter;
+
+  @include media(mobile) {
+    margin-left: $gutter-half + 9;
+  }
 }
