@@ -1,4 +1,5 @@
 Rails.application.config.assets.precompile += %w(
+  govuk_publishing_components/admin_scripts.js
   govuk_publishing_components/admin_styles.css
   govuk_publishing_components/component_guide.css
   component_guide/all_components.css
@@ -24,4 +25,5 @@ Rails.application.config.assets.precompile += %w(
 Rails.application.config.assets.paths += %W(
   #{__dir__}/../../node_modules/govuk-frontend/assets/images
   #{__dir__}/../../node_modules/govuk-frontend/assets/fonts
+  #{__dir__}/../../node_modules/govuk-frontend/
 )
