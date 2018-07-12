@@ -159,7 +159,6 @@ $top-border: solid 2px $grey-3;
   &:last-child:before,
   .gem-c-step-nav__circle--number,
   &:after,
-  .gem-c-step-nav__substep:after,
   .gem-c-step-nav__help:after {
     border-color: $black;
   }
@@ -280,8 +279,7 @@ $top-border: solid 2px $grey-3;
 
 // contents of the steps, such as paragraphs and links
 
-.gem-c-step-nav__paragraph,
-.gem-c-step-nav__heading {
+.gem-c-step-nav__paragraph {
   padding-bottom: $gutter-half;
   margin: 0;
   font-size: inherit;
@@ -301,10 +299,6 @@ $top-border: solid 2px $grey-3;
       padding-bottom: $gutter;
     }
   }
-}
-
-.gem-c-step-nav__heading {
-  font-weight: bold;
 }
 
 .gem-c-step-nav__list {
@@ -389,67 +383,4 @@ $top-border: solid 2px $grey-3;
   &:before {
     content: " \2013\00a0"; // dash followed by &nbsp;
   }
-}
-
-.gem-c-step-nav__help {
-  position: relative;
-  padding: $gutter-half 0;
-  border-top: $top-border;
-
-  &:after {
-    @include step-nav-vertical-line(dotted);
-    @include step-nav-line-position;
-    z-index: 3;
-    top: 0;
-    left: -($gutter + $gutter-half);
-    height: calc(100% + #{$gutter});
-  }
-
-  .gem-c-step-nav--large & {
-    @include media(tablet) {
-      &:after {
-        @include step-nav-line-position-large;
-        left: -($gutter * 2);
-        height: calc(100% + #{$gutter} + #{$gutter-half});
-      }
-    }
-  }
-}
-
-.gem-c-step-nav__help-link {
-  text-decoration: none;
-  font-weight: bold;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-.gem-c-step-nav__substep {
-  position: relative;
-  padding-top: $gutter-half;
-  border-top: $top-border;
-
-  &:after {
-    @include step-nav-vertical-line;
-    @include step-nav-line-position;
-    z-index: 3;
-    top: 0;
-    left: -($gutter + $gutter-half);
-  }
-
-  .gem-c-step-nav--large & {
-    @include media(tablet) {
-      padding-top: $gutter;
-
-      &:after {
-        @include step-nav-line-position-large;
-        left: -($gutter * 2);
-      }
-    }
-  }
-}
-
-.gem-c-step-nav__substep--optional:after {
-  border-left-style: dotted;
 }
