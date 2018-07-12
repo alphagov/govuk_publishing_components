@@ -9,13 +9,17 @@
 
 ## Unreleased
 
-* Add experimental layout-footer component based on GOV.UK Frontend (PR #404)
+## 9.5.0
+
 * Improve step nav 'remember open steps' code (PR #406)
 * The Notice component now accepts blocks (PR #407)
 * Add experimental layout-header component based on GOV.UK Frontend (PR #408)
+* Add robots nofollow meta tag to admin layout (PR #409)
+* Improve the accessibility of the previous/next arrows on mainstream guides (PR #410)
 * Import and initialise GOV.UK Frontend scripts in the admin layout (PR #415)
 * Remove unneeded options from step nav component (PR #416)
 * Add experimental skip link component based on GOV.UK Frontend (PR #417)
+* Add CSRF meta tag to admin layout (PR #418)
 
 ## 9.4.0
 
@@ -24,6 +28,7 @@
 * Allow linking to the Design System on component pages (PR #401)
 * Add govuk:analytics:organisations meta tag if the current page is an organisation (PR #397)
 * Move the highlight box component from Collections to the gem (PR #403)
+* Add experimental layout-footer component based on GOV.UK Frontend (PR #404)
 
 ## 9.3.6
 
