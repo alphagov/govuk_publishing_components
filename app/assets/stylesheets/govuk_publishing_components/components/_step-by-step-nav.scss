@@ -384,37 +384,3 @@ $top-border: solid 2px $grey-3;
     content: " \2013\00a0"; // dash followed by &nbsp;
   }
 }
-
-.gem-c-step-nav__help {
-  position: relative;
-  padding: $gutter-half 0;
-  border-top: $top-border;
-
-  &:after {
-    @include step-nav-vertical-line(dotted);
-    @include step-nav-line-position;
-    z-index: 3;
-    top: 0;
-    left: -($gutter + $gutter-half);
-    height: calc(100% + #{$gutter});
-  }
-
-  .gem-c-step-nav--large & {
-    @include media(tablet) {
-      &:after {
-        @include step-nav-line-position-large;
-        left: -($gutter * 2);
-        height: calc(100% + #{$gutter} + #{$gutter-half});
-      }
-    }
-  }
-}
-
-.gem-c-step-nav__help-link {
-  text-decoration: none;
-  font-weight: bold;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}

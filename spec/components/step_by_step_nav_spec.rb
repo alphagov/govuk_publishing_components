@@ -9,7 +9,6 @@ describe "step nav", type: :view do
     [
       {
         title: 'Step 1',
-        show_help_link: true,
         optional: true,
         contents: [
           {
@@ -200,13 +199,6 @@ describe "step nav", type: :view do
     render_component(steps: stepnav)
 
     assert_select ".gem-c-step-nav__step#step-1.gem-c-step-nav__step[data-optional]"
-  end
-
-  it "renders get help links back to the main step nav" do
-    render_component(steps: stepnav, step_nav_url: "/learn-to-drive", step_nav_link_text: "Get help")
-
-    assert_select step1 + " .gem-c-step-nav__help-link[href='/learn-to-drive#step-1']", text: "Get help"
-    assert_select step2 + " .gem-c-step-nav__help-link[href='/learn-to-drive#step-2']", false
   end
 
   it "displays step numbering and step logic correctly" do

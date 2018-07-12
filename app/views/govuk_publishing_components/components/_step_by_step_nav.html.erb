@@ -7,7 +7,6 @@
   show_step ||= false
   remember_last_step ||= false
   step_nav_url ||= false
-  step_nav_link_text ||= "Get help completing this step"
   highlight_step ||= false
   tracking_id ||= false
 
@@ -84,12 +83,6 @@
                   options[:link_index] += element[:contents].length
                 end
               %>
-            <% end %>
-
-            <% if step_nav_url && step[:show_help_link] %>
-              <div class="gem-c-step-nav__help">
-                <a href="<%= step_nav_url %>#<%= id %>" class="gem-c-step-nav__help-link js-link" data-position="get-help"><%= step_nav_link_text %></a>
-              </div>
             <% end %>
           </div>
 

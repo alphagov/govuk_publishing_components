@@ -49,9 +49,6 @@ describe('A stepnav module', function () {
                 <a href="/link3" class="gem-c-step-nav__link js-link" data-position="2.2">Link 3</a>\
               </li>\
             </ol>\
-            <div class="gem-c-step-nav__help">\
-              <a href="/learn#step-one" class="gem-c-step-nav__help-link js-link" data-position="get-help">Get help</a>\
-            </div>\
           </div>\
         </li>\
         <li class="gem-c-step-nav__step gem-c-step-nav__step--active js-step" id="topic-step-three" data-track-count="stepnavStep" data-optional>\
@@ -727,24 +724,6 @@ describe('A stepnav module', function () {
         dimension96: "unique-id"
       });
     });
-
-    it("triggers a google analytics event when clicking a get more help with this step link", function () {
-      GOVUK.analytics = {
-        trackEvent: function () {
-        }
-      };
-      spyOn(GOVUK.analytics, 'trackEvent');
-
-      var $link = $element.find('.gem-c-step-nav__help-link.js-link');
-      $link.click();
-
-      expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('stepNavLinkClicked', 'get-help', {
-        label: '/learn#step-one : Big',
-        dimension26: expectedstepnavStepCount.toString(),
-        dimension27: expectedstepnavLinkCount.toString(),
-        dimension96: "unique-id"
-      });
-    });
   });
 
   it("triggers a google analytics event when clicking a panel link", function () {
@@ -762,24 +741,6 @@ describe('A stepnav module', function () {
       dimension26: expectedstepnavStepCount.toString(),
       dimension27: expectedstepnavLinkCount.toString(),
       dimension28: expectedstepnavContentCount.toString(),
-      dimension96: "unique-id"
-    });
-  });
-
-  it("triggers a google analytics event when clicking a get more help with this step link", function () {
-    GOVUK.analytics = {
-      trackEvent: function () {
-      }
-    };
-    spyOn(GOVUK.analytics, 'trackEvent');
-
-    var $link = $element.find('.gem-c-step-nav__help-link.js-link');
-    $link.click();
-
-    expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('stepNavLinkClicked', 'get-help', {
-      label: '/learn#step-one : Small',
-      dimension26: expectedstepnavStepCount.toString(),
-      dimension27: expectedstepnavLinkCount.toString(),
       dimension96: "unique-id"
     });
   });
@@ -1019,18 +980,6 @@ describe('A stepnav module', function () {
         dimension26: expectedstepnavStepCount.toString(),
         dimension27: expectedstepnavLinkCount.toString(),
         dimension28: expectedstepnavContentCount.toString(),
-        dimension96: false
-      });
-    });
-
-    it("triggers a google analytics custom event when clicking on a get help link", function () {
-      var $link = $element.find('.gem-c-step-nav__help-link.js-link');
-      $link.click();
-
-      expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('stepNavLinkClicked', 'get-help', {
-        label: '/learn#step-one : Small',
-        dimension26: expectedstepnavStepCount.toString(),
-        dimension27: expectedstepnavLinkCount.toString(),
         dimension96: false
       });
     });

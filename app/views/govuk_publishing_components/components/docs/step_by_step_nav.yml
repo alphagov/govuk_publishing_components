@@ -467,56 +467,6 @@ examples:
           ]
         }
       ]
-  get_help_links:
-    description: |
-      Where step by step navigations are long, content can be substituted with a link back to the main step by step navigation page. This link will open that page with that step shown. The link text defaults to "Get help completing this step" but can be overridden.
-
-      Get help links will only appear if the step_nav_url global parameter is set and the step itself has the optional show_help_link parameter set to true.
-
-      Note that this option does not remove any content - it is left to developers to simply pass less content to the component in this situation.
-    data:
-      step_nav_url: "/learn-to-do-something"
-      step_nav_url_link_text: "Get more information"
-      show_step: 1
-      steps: [
-        {
-          title: "A link back to the main step by step navigation",
-          show_help_link: true,
-          contents: [
-            {
-              type: 'list',
-              contents: [
-                {
-                  href: '/test7',
-                  text: 'This is a link'
-                },
-                {
-                  href: '/test7',
-                  text: 'This is another link'
-                }
-              ]
-            }
-          ]
-        },
-        {
-          title: "No help link here",
-          contents: [
-            {
-              type: 'list',
-              contents: [
-                {
-                  href: '/test7',
-                  text: 'This is yet another link'
-                },
-                {
-                  href: '/test7',
-                  text: 'This is a further link'
-                },
-              ]
-            }
-          ]
-        }
-      ]
   test_all_the_things:
     description: This component is very complicated so here is an example containing as many of the options available as possible.
     data:
