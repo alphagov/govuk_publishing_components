@@ -14,7 +14,7 @@ describe "Layout header", type: :view do
   it "renders the header with environment modifier class" do
     render_component(environment: "staging")
 
-    assert_select ".govuk-header.gem-c-header--staging"
+    assert_select ".govuk-header.gem-c-layout-header--staging"
   end
 
   it "renders the product name" do

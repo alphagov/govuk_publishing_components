@@ -1,11 +1,11 @@
 // This component relies on styles from GOV.UK Frontend
 
-.gem-c-header--integration .govuk-header__container,
-.gem-c-header--staging .govuk-header__container {
+.gem-c-layout-header--integration .govuk-header__container,
+.gem-c-layout-header--staging .govuk-header__container {
   border-bottom-color: govuk-colour("yellow");
 }
 
-.gem-c-header--development .govuk-header__container {
+.gem-c-layout-header--development .govuk-header__container {
   border-bottom-color: govuk-colour("grey-1");
 }
 
