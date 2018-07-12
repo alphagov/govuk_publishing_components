@@ -1,0 +1,16 @@
+name: Layout main section (experimental)
+description: The main section of the page. Includes support for some flash messages.
+body: |
+  This is the main section of a page. It has a single column layout using the [Design System layout helpers](https://design-system.service.gov.uk/styles/layout).
+
+  You can see this component in action on the [admin layout example page](/admin)
+accessibility_criteria: |
+  None
+shared_accessibility_criteria:
+  - links
+part_of_admin_layout: true
+examples:
+  default:
+    data:
+      block: |
+        <p>This is the content.</p>
