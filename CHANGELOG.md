@@ -10,6 +10,7 @@
 ## Unreleased
 
 * The Notice component now accepts blocks (PR #407)
+* Improve step nav 'remember open steps' code (PR #406)
 
 ## 9.4.0
 
