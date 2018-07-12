@@ -14,6 +14,7 @@ body: |
 
   Typically you'll use this together with:
 
+  - the [layout header component](/component-guide/layout_header)
   - the [layout footer component](/component-guide/layout_footer)
 
 display_preview: false
