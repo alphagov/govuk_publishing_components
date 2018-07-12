@@ -11,4 +11,5 @@ $govuk-font-url-function: "font-url";
 
 // Components that are only available inside the admin layout
 @import "govuk_publishing_components/components/layout-footer";
+@import "govuk_publishing_components/components/layout-main";
 @import "govuk_publishing_components/components/layout-header";

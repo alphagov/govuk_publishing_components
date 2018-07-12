@@ -16,6 +16,7 @@ body: |
 
   - the [layout header component](/component-guide/layout_header)
   - the [layout footer component](/component-guide/layout_footer)
+  - the [layout main component](/component-guide/layout_main)
 
 display_preview: false
 display_html: true

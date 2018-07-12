@@ -10,6 +10,7 @@
 ## Unreleased
 
 * The Notice component now accepts blocks (PR #407)
+* Add "Layout main" component (PR #414)
 
 ## 9.4.0
 
