@@ -9,13 +9,17 @@
 
 ## Unreleased
 
-* The Notice component now accepts blocks (PR #407)
+* Add experimental layout-footer component based on GOV.UK Frontend (PR #404)
 * Improve step nav 'remember open steps' code (PR #406)
+* The Notice component now accepts blocks (PR #407)
+* Add experimental layout-header component based on GOV.UK Frontend (PR #408)
+* Import and initialise GOV.UK Frontend scripts in the admin layout (PR #415)
 * Remove unneeded options from step nav component (PR #416)
+* Add experimental skip link component based on GOV.UK Frontend (PR #417)
 
 ## 9.4.0
 
-* Add experimental Admin layout (PR #371)
+* Add experimental admin layout (PR #371)
 * Add the [GOV.UK Frontend](https://design-system.service.gov.uk/) library to the gem (PR #398)
 * Allow linking to the Design System on component pages (PR #401)
 * Add govuk:analytics:organisations meta tag if the current page is an organisation (PR #397)
