@@ -280,8 +280,7 @@ $top-border: solid 2px $grey-3;
 
 // contents of the steps, such as paragraphs and links
 
-.gem-c-step-nav__paragraph,
-.gem-c-step-nav__heading {
+.gem-c-step-nav__paragraph {
   padding-bottom: $gutter-half;
   margin: 0;
   font-size: inherit;
@@ -301,10 +300,6 @@ $top-border: solid 2px $grey-3;
       padding-bottom: $gutter;
     }
   }
-}
-
-.gem-c-step-nav__heading {
-  font-weight: bold;
 }
 
 .gem-c-step-nav__list {

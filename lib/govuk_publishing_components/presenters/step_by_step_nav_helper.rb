@@ -13,8 +13,6 @@ module GovukPublishingComponents
         case element[:type]
         when "paragraph"
           paragraph(element[:text])
-        when "heading"
-          heading(element[:text])
         when "list"
           list(element)
         when "substep"
@@ -34,14 +32,6 @@ module GovukPublishingComponents
           :p,
           text,
           class: "gem-c-step-nav__paragraph"
-        )
-      end
-
-      def heading(text)
-        content_tag(
-          "h#{@options[:heading_level] + 1}",
-          text,
-          class: "gem-c-step-nav__heading"
         )
       end
 

@@ -124,10 +124,6 @@ describe "step nav", type: :view do
                 text: 'Link 2.2.2'
               }
             ]
-          },
-          {
-            type: 'heading',
-            text: 'This is a heading'
           }
         ]
       },
@@ -166,23 +162,11 @@ describe "step nav", type: :view do
     assert_select step2 + " .gem-c-step-nav__paragraph", text: "Step 2 paragraph"
   end
 
-  it "renders headings" do
-    render_component(steps: stepnav)
-
-    assert_select step2or + " h3.gem-c-step-nav__heading", text: "This is a heading"
-  end
-
   it "renders a stepnav with different heading levels" do
     render_component(steps: stepnav, heading_level: 4)
 
     assert_select step1 + " h4.gem-c-step-nav__title .js-step-title", text: "Step 1"
     assert_select step2 + " h4.gem-c-step-nav__title .js-step-title", text: "Step 2"
-  end
-
-  it "renders headings correctly if the heading level is changed" do
-    render_component(steps: stepnav, heading_level: 4)
-
-    assert_select step2or + " h5.gem-c-step-nav__heading", text: "This is a heading"
   end
 
   it "opens a step by default" do
