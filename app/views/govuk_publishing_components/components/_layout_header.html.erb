@@ -1,18 +1,12 @@
 <%
-navigation_classes ||= ''
+  product_name ||= false
   navigation_items ||= []
-  css_classes ||= ''
-  container_classes ||= ''
-  homepage_url ||= '/'
-  product_name ||= nil
-  service_name ||= nil
-  service_url ||= nil
 %>
 <header class="gem-c-header govuk-header gem-c-header--<%= environment %>" role="banner" data-module="header">
-  <div class="govuk-header__container <%= container_classes.present? || 'govuk-width-container' %>">
+  <div class="govuk-header__container govuk-width-container">
 
     <div class="govuk-header__logo">
-      <a href="<%= homepage_url %>" class="govuk-header__link govuk-header__link--homepage">
+      <a href="/" class="govuk-header__link govuk-header__link--homepage">
         <span class="govuk-header__logotype">
           <svg role="presentation" focusable="false" class="govuk-header__logotype-crown" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 132 97" height="32" width="36">
             <path fill="currentColor" fill-rule="evenodd"
@@ -32,16 +26,10 @@ navigation_classes ||= ''
       </a>
     </div><div class="govuk-header__content">
 
-    <% if service_name %>
-    <a href="<%= service_url %>" class="govuk-header__link govuk-header__link--service-name">
-      <%= service_name %>
-    </a>
-    <% end %>
-
     <% if navigation_items.any? %>
     <button role="button" class="govuk-header__menu-button js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
     <nav>
-      <ul id="navigation" class="govuk-header__navigation <%= navigation_classes.present? || 'govuk-header__navigation--end' %>" aria-label="Top Level Navigation">
+      <ul id="navigation" class="govuk-header__navigation govuk-header__navigation--end" aria-label="Top Level Navigation">
         <% navigation_items.each_with_index do |item, index| %>
           <li class="govuk-header__navigation-item <%= "govuk-header__navigation-item--active" if item[:active] %>">
             <%= link_to(
