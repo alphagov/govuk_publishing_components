@@ -1,21 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="govuk-template">
   <head>
     <meta name="robots" content="noindex,nofollow,noimageindex">
     <title><%= browser_title %></title>
     <%= stylesheet_link_tag "govuk_publishing_components/admin_styles" %>
   </head>
   <body class="govuk-template__body">
-    <%= render "govuk_publishing_components/components/layout_header", {
-      environment: "production",
-      product_name: "Admin",
-      navigation_items: [
-        {:text => "John Doe", :href => "#profile"},
-        {:text => "Log out", :href => "#logout"}
-      ]
-    }%>
     <%= yield %>
-    <%= render "govuk_publishing_components/components/layout_footer" %>
     <%= javascript_include_tag "govuk_publishing_components/admin_scripts" %>
   </body>
 </html>
