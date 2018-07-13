@@ -2,6 +2,9 @@
   contact_govuk_path = "/contact/govuk"
   margin_top ||= 1
   margin_top_class = "gem-c-feedback--top-margin" if margin_top == 1
+  email_regex = /[^\s=\/?&]+(?:@|%40)[^\s=\/?&]+/
+  stripped_path = request.original_url.gsub(email_regex, '[email]')
+  stripped_url = request.fullpath.gsub(email_regex, '[email]')
 %>
 
 <div class="gem-c-feedback <%= margin_top_class %>" data-module="feedback">
@@ -69,7 +72,7 @@
       <div class="gem-c-feedback__column-two-thirds">
         <div class="gem-c-feedback__error-summary gem-c-feedback__js-show js-hidden js-errors" tabindex="-1"></div>
 
-        <input type="hidden" name="url" value="<%= request.original_url -%>">
+        <input type="hidden" name="url" value="<%= stripped_path -%>">
         <input type="hidden" name="user_agent" value="<%= request.user_agent -%>">
 
         <h3 class="gem-c-feedback__form-heading">Help us improve GOV.UK</h3>
@@ -114,11 +117,11 @@
       <div class="gem-c-feedback__column-two-thirds">
         <div class="gem-c-feedback__error-summary js-hidden js-errors" tabindex="-1"></div>
 
-        <input type="hidden" name="url" value="<%= request.original_url -%>">
+        <input type="hidden" name="url" value="<%= stripped_path -%>">
         <input type="hidden" name="user_agent" value="<%= request.user_agent -%>">
 
         <input name="email_survey_signup[survey_id]" type="hidden" value="footer_satisfaction_survey">
-        <input name="email_survey_signup[survey_source]" type="hidden" value="<%= request.original_url -%>">
+        <input name="email_survey_signup[survey_source]" type="hidden" value="<%= stripped_path -%>">
         <input name="email_survey_signup[ga_client_id]" type="hidden" value="1627485790.1515403243">
 
         <h3 class="gem-c-feedback__form-heading">Help us improve GOV.UK</h3>
@@ -135,7 +138,7 @@
 
         <%# TODO: use button component once available in gem %>
         <input class="gem-c-feedback__submit" type="submit" value="Send me the survey">
-        <a href="https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=<%= request.fullpath -%>&amp;gcl=1627485790.1515403243" class="gem-c-feedback__email-link" id="take-survey" target="_blank" rel="noopener noreferrer">Don’t have an email address?</a>
+        <a href="https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=<%= stripped_url -%>&amp;gcl=1627485790.1515403243" class="gem-c-feedback__email-link" id="take-survey" target="_blank" rel="noopener noreferrer">Don’t have an email address?</a>
       </div>
     </div>
   </form>
