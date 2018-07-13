@@ -2,7 +2,17 @@
   @include responsive-top-margin;
 }
 
-.gem-c-title--bottom-margin {
+// margins would ideally be handled by a general model for all components
+// but we don't have one yet, so this is in anticipation of that
+// suggested scale is as follows, not fully implemented
+// no margin = 0
+// $gutter = 4
+// responsive-bottom-margin = 5
+.gem-c-title--margin-bottom-4 {
+  margin-bottom: $gutter;
+}
+
+.gem-c-title--margin-bottom-5 {
   @include responsive-bottom-margin;
 }
 

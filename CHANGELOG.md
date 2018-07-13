@@ -8,6 +8,7 @@
   of the commit log.
 
 ## Unreleased
+* Extends the page title component to add in margin_bottom (PR #419)
 
 ## 9.5.0
 
