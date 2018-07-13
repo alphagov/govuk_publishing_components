@@ -9,6 +9,8 @@
 
 ## Unreleased
 
+* Add JavaScript detection, HTML5 shim and IE8 stylesheet to admin layout (PR #419)
+
 ## 9.5.1
 
 * Extends the page title component to add in margin_bottom (PR #419)
