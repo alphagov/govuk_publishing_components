@@ -4,7 +4,7 @@
 
 All components must use the `.app-` or `.pub-` namespace with the `c` prefix. The `c` is for component. For example, `.app-c-banner`.
 
-Do not use the `.govuk-c` namespace.
+Do not use the `.govuk-` namespace.
 
 The namespace indicates where a component lives. A single page on GOV.UK could render components from multiple places.
 
@@ -12,7 +12,7 @@ The namespace indicates where a component lives. A single page on GOV.UK could r
 | -- | -- |
 | `.app-c-` | Component lives within the frontend application |
 | `.pub-c-` | Component is shared between publishing frontends and lives in static |
-| `.govuk-c-` | Component originates from [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend) |
+| `.govuk-` | Component originates from [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend) |
 | `.gem-c-` | Component originates from the govuk_publishing_components_gem |
 
 ## Structure
@@ -132,7 +132,7 @@ The component guide will wrap a `dark_background` context example with a `dark-b
 
 ## Styles
 
-With the exception of namespaces, follow the [GOV.UK Frontend CSS conventions](https://github.com/alphagov/govuk-frontend/blob/master/docs/coding-standards/css.md), which describes in more detail our approach to namespaces, linting and BEM (block, element, modifier) CSS naming methodology.
+With the exception of namespaces, follow the [GOV.UK Frontend CSS conventions](https://github.com/alphagov/govuk-frontend/blob/master/docs/contributing/coding-standards/css.md), which describes in more detail our approach to namespaces, linting and BEM (block, element, modifier) CSS naming methodology.
 
 ### BEM
 `.block {}`
@@ -143,7 +143,7 @@ With the exception of namespaces, follow the [GOV.UK Frontend CSS conventions](h
 
 `.block__element--modifier {}`
 
-All CSS selectors should follow the BEM naming convention shown above, explained in [more detail here](https://github.com/alphagov/govuk-frontend/blob/master/docs/coding-standards/css.md#bem).
+All CSS selectors should follow the BEM naming convention shown above, explained in [more detail here](https://github.com/alphagov/govuk-frontend/blob/master/docs/contributing/coding-standards/css.md#block-element-modifier-bem).
 
 Note: to avoid long and complicated class names, we follow the [BEM guidance](http://getbem.com/faq/#css-nested-elements) that classes do not have to reflect the nested nature of the DOM.
 
@@ -184,7 +184,7 @@ SVGs can also be used for images, ideally inline in templates and compressed.
 
 ## Javascript
 
-Follow the [GOV.UK Frontend JS conventions](https://github.com/alphagov/govuk-frontend/blob/master/docs/coding-standards/js.md).
+Follow the [GOV.UK Frontend JS conventions](https://github.com/alphagov/govuk-frontend/blob/master/docs/contributing/coding-standards/js.md).
 
 Scripts should use the [module pattern provided by govuk_frontend_toolkit](https://github.com/alphagov/govuk_frontend_toolkit/blob/master/docs/javascript.md#modules) and be linted using [StandardJS](https://standardjs.com/).
 
