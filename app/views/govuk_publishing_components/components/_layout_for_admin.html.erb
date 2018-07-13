@@ -4,7 +4,12 @@
     <meta name="robots" content="noindex,nofollow,noimageindex">
     <%= csrf_meta_tags %>
     <title><%= browser_title %></title>
-    <%= stylesheet_link_tag "govuk_publishing_components/admin_styles" %>
+    <!--[if !IE 8]><!-->
+      <%= stylesheet_link_tag "govuk_publishing_components/admin_styles" %>
+    <!--<![endif]-->
+    <!--[if IE 8]>
+      <%= stylesheet_link_tag "govuk_publishing_components/admin_styles_ie8" %>
+    <![endif]-->
     <%= javascript_include_tag "govuk_publishing_components/vendor/modernizr" %>
   </head>
   <body class="govuk-template__body">

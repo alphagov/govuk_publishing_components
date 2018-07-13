@@ -18,7 +18,12 @@
   <% end %>
 
   <% if @component_doc && @component_doc.part_of_admin_layout? %>
+  <!--[if !IE 8]><!-->
     <%= stylesheet_link_tag "govuk_publishing_components/admin_styles" %>
+  <!--<![endif]-->
+  <!--[if IE 8]>
+    <%= stylesheet_link_tag "govuk_publishing_components/admin_styles_ie8" %>
+  <![endif]-->
     <%= javascript_include_tag "govuk_publishing_components/vendor/modernizr" %>
   <% end %>
 
