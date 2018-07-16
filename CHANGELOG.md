@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 9.5.2
 
 * Attempt to improve Google snippet display (PR #424)
 * Add JavaScript detection, HTML5 shim and IE8 stylesheet to admin layout (PR #419)
