@@ -263,6 +263,8 @@ $top-border: solid 2px $grey-3;
   @include _core-font-generator(14px, 14px, 14px, 1.2, 1.2, false);
   display: block;
   color: $link-colour;
+  // core-font-generator sets this to none, so we need to override
+  text-transform: capitalize !important;
 
   .gem-c-step-nav--large & {
     @include _core-font-generator(16px, 14px, 16px, 1.2, 1.2, false);

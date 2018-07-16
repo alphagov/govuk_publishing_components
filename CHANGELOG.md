@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Attempt to improve Google snippet display (PR #424)
 * Add JavaScript detection, HTML5 shim and IE8 stylesheet to admin layout (PR #419)
 
 ## 9.5.1

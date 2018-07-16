@@ -45,8 +45,11 @@
       bindComponentLinkClicks(stepNavTracker);
 
       function getTextForInsertedElements() {
-        actions.showText = $element.attr('data-show-text');
-        actions.hideText = $element.attr('data-hide-text');
+        var openBracket = '<span class="visuallyhidden">(</span>';
+        var closeBracket = '<span class="visuallyhidden">)</span>';
+
+        actions.showText = openBracket + $element.attr('data-show-text') + closeBracket;
+        actions.hideText = openBracket + $element.attr('data-hide-text') + closeBracket;
         actions.showAllText = $element.attr('data-show-all-text');
         actions.hideAllText = $element.attr('data-hide-all-text');
       }
@@ -64,7 +67,9 @@
           }
 
           if (!$(this).find('.js-toggle-link').length) {
-            $(this).find('.js-step-title-button').append('<span class="gem-c-step-nav__toggle-link js-toggle-link" aria-hidden="true">' + linkText + '</span>');
+            $(this).find('.js-step-title-button').append(
+              '<span class="gem-c-step-nav__toggle-link js-toggle-link" aria-hidden="true" hidden></span>'
+            );
           }
         });
       }
@@ -250,7 +255,7 @@
 
           if ($showOrHideAllButton.text() == actions.showAllText) {
             $showOrHideAllButton.text(actions.hideAllText);
-            $element.find('.js-toggle-link').text(actions.hideText);
+            $element.find('.js-toggle-link').html(actions.hideText);
             shouldshowAll = true;
 
             stepNavTracker.track('pageElementInteraction', 'stepNavAllShown', {
@@ -258,7 +263,7 @@
             });
           } else {
             $showOrHideAllButton.text(actions.showAllText);
-            $element.find('.js-toggle-link').text(actions.showText);
+            $element.find('.js-toggle-link').html(actions.showText);
             shouldshowAll = false;
 
             stepNavTracker.track('pageElementInteraction', 'stepNavAllHidden', {
@@ -316,7 +321,7 @@
         $stepElement.toggleClass('step-is-shown', isShown);
         $stepContent.toggleClass('js-hidden', !isShown);
         $titleLink.attr("aria-expanded", isShown);
-        $stepElement.find('.js-toggle-link').text(isShown ? actions.hideText : actions.showText);
+        $stepElement.find('.js-toggle-link').html(isShown ? actions.hideText : actions.showText);
       }
 
       function isShown() {
