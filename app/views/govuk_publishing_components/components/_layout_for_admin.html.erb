@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" class="govuk-template">
   <head>
-    <meta name="robots" content="noindex,nofollow,noimageindex">
-    <%= csrf_meta_tags %>
+    <meta charset="utf-8" />
     <title><%= browser_title %></title>
+    <meta name="robots" content="noindex,nofollow,noimageindex">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= favicon_link_tag "govuk_publishing_components/favicon-#{environment}.png" %>
     <!--[if !IE 8]><!-->
       <%= stylesheet_link_tag "govuk_publishing_components/admin_styles" %>
     <!--<![endif]-->
@@ -13,6 +16,9 @@
     <%= javascript_include_tag "govuk_publishing_components/vendor/modernizr" %>
   </head>
   <body class="govuk-template__body">
+    <script>
+      document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
+    </script>
     <%= yield %>
     <%= javascript_include_tag "govuk_publishing_components/admin_scripts" %>
   </body>
