@@ -7,9 +7,12 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 9.5.3
 
 * Improve metadata positioning in document list for rtl layouts (PR #429)
+* Add favicon to admin layout (PR #426)
+* Disable GOV.UK Frontend global styles (PR #427)
+* Replace the location URL sent to Google Analytics with one that masks email addresses (PR #428)
 
 ## 9.5.2
 
