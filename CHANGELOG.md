@@ -11,6 +11,7 @@
 
 * Change breadcrumb class name (PR #435)
 * Add admin component for select (PR #434)
+* Extend the double dot problem solution (PR #432)
 
 ## 9.5.3
 

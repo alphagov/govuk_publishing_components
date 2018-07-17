@@ -9,6 +9,7 @@
     var stepNavSize;
     var sessionStoreLink = 'govuk-step-nav-active-link';
     var activeLinkClass = 'gem-c-step-nav__list-item--active';
+    var activeStepClass = 'gem-c-step-nav__step--active';
     var activeLinkHref = '#content';
     var uniqueId;
 
@@ -29,6 +30,11 @@
       var $showOrHideAllButton;
 
       uniqueId = $element.data('id') || false;
+
+      if (uniqueId) {
+        sessionStoreLink = sessionStoreLink + "_" + uniqueId;
+      }
+
       var stepNavTracker = new StepNavTracker(totalSteps, totalLinks, uniqueId);
 
       getTextForInsertedElements();
@@ -37,8 +43,8 @@
       addShowHideToggle();
       addAriaControlsAttrForShowHideAllButton();
 
-      showPreviouslyOpenedSteps();
       ensureOnlyOneActiveLink();
+      showPreviouslyOpenedSteps();
 
       bindToggleForSteps(stepNavTracker);
       bindToggleShowHideAllButton(stepNavTracker);
@@ -190,11 +196,12 @@
           var thisLinkHref = $(this).attr('href');
 
           if ($(this).attr('rel') !== 'external') {
-            saveToSessionStorage(sessionStoreLink, $(this).data('position'));
+            saveToSessionStorage(sessionStoreLink, $(this).attr('data-position'));
           }
 
           if (thisLinkHref == activeLinkHref) {
             setOnlyThisLinkActive($(this));
+            setActiveStepClass();
           }
         });
       }
@@ -216,6 +223,11 @@
         clicked.parent().addClass(activeLinkClass);
       }
 
+      // if a link occurs more than once in a step nav, the backend doesn't know which one to highlight
+      // so it gives all those links the 'active' attribute and highlights the last step containing that link
+      // if the user clicked on one of those links previously, it will be in the session store
+      // this code ensures only that link and its corresponding step have the highlighting
+      // otherwise it accepts what the backend has already passed to the component
       function ensureOnlyOneActiveLink() {
         var $activeLinks = $element.find('.js-list-item.' + activeLinkClass);
 
@@ -226,10 +238,15 @@
         var lastClicked = loadFromSessionStorage(sessionStoreLink);
 
         if (lastClicked) {
+          // it's possible for the saved link position value to not match any of the currently duplicate highlighted links
+          // so check this otherwise it'll take the highlighting off all of them
+          if (!$element.find('.js-link[data-position="' + lastClicked + '"]').parent().hasClass(activeLinkClass)) {
+            lastClicked = $element.find('.' + activeLinkClass).first().find('.js-link').attr('data-position');
+          }
           removeActiveStateFromAllButCurrent($activeLinks, lastClicked);
-          removeFromSessionStorage(sessionStoreLink);
+          setActiveStepClass();
         } else {
-          var activeLinkInActiveStep = $element.find('.gem-c-step-nav__step--active').find('.' + activeLinkClass).first();
+          var activeLinkInActiveStep = $element.find('.' + activeStepClass).find('.' + activeLinkClass).first();
 
           if (activeLinkInActiveStep.length) {
             $activeLinks.removeClass(activeLinkClass);
@@ -240,12 +257,17 @@
         }
       }
 
-      function removeActiveStateFromAllButCurrent($links, current) {
-        $links.each(function() {
-          if ($(this).find('.js-link').data('position').toString() !== current.toString()) {
+      function removeActiveStateFromAllButCurrent($activeLinks, current) {
+        $activeLinks.each(function() {
+          if ($(this).find('.js-link').attr('data-position').toString() !== current.toString()) {
             $(this).removeClass(activeLinkClass);
           }
         });
+      }
+
+      function setActiveStepClass() {
+        $element.find('.' + activeStepClass).removeClass(activeStepClass).removeAttr('data-show');
+        $element.find('.' + activeLinkClass).closest('.gem-c-step-nav__step').addClass(activeStepClass).attr('data-show', "");
       }
 
       function bindToggleShowHideAllButton(stepNavTracker) {
