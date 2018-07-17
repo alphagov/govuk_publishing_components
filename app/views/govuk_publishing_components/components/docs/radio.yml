@@ -1,9 +1,9 @@
 name: Radio button
 description: A radio button is a GOV.UK element that allows users to answer a question by selecting an option. If you have a question with more than one option you should stack radio buttons.
 body: |
-  Forked from the upcoming [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend), when GOV.UK Frontend release we can replace these source files.
+  You can also use 'or' as an item to break up radios.
 
-  You can also use 'or' as an item to [break up radios](https://www.gov.uk/service-manual/design/writing-for-user-interfaces#ask-questions-that-users-can-understand)
+  If JavaScript is disabled a conditionally revealed content expands fully. All of the functionality (including aria attributes) are added using JavaScript.
 accessibility_criteria: |
   Radio buttons should
 
@@ -32,6 +32,7 @@ accessibility_criteria: |
 
 accessibility_excluded_rules:
 - radiogroup # Since this is in isolation we don't want to wrap a fieldset here.
+- aria-expanded # We use aria expanded to reflect the state of a conditionally revealed radio content even if this attribute is not officially supported on this element.
 examples:
   default:
     data:
@@ -117,3 +118,14 @@ examples:
         hint_text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien justo, lobortis elementum tortor in, luctus interdum turpis. Nam sit amet nulla nec arcu condimentum dapibus quis varius metus. Suspendisse cursus tristique diam et vestibulum. Proin nec lacinia tortor. Morbi at nisi id lorem aliquam ullamcorper. Pellentesque laoreet sit amet leo sodales ultricies. Suspendisse maximus efficitur odio in tristique."
         text: "Quisque tincidunt venenatis bibendum. Morbi volutpat magna euismod ipsum consequat cursus. Etiam bibendum interdum ultricies."
         bold: true
+  conditional:
+    data:
+      name: "radio-group-conditional"
+      id_prefix: "conditional"
+      items:
+      - value: "government-gateway"
+        text: "Use Government Gateway"
+        conditional: "You’ll need to prove your identity using Government Gateway"
+      - value: "govuk-verify"
+        text: "Use GOV.UK Verify"
+        conditional: "You’ll need to prove your identity using GOV.UK Verify"

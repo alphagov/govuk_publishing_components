@@ -1,9 +1,15 @@
 <%
   id_prefix ||= "radio-#{SecureRandom.hex(4)}"
   items ||= []
+
+  # check if any item is set as being conditional
+  has_conditional = items.any? { |item| item["conditional"] }
 %>
 <%= content_tag :div, class: "govuk-form-group" do %>
-  <%= content_tag :div, class: "govuk-radios" do %>
+  <%= content_tag :div, class: "govuk-radios",
+    data: {
+      module: ('radios' if has_conditional)
+    } do %>
     <% items.each_with_index do |item, index| %>
       <% if item === :or %>
         <div class="govuk-radios__divider">
@@ -14,6 +20,7 @@
           item_next = items[index + 1] unless index === items.size - 1
           label_id = item[:id] ? item[:id] : "#{id_prefix}-#{index}"
           label_hint_id = "label-hint-#{SecureRandom.hex(4)}" if item[:hint_text].present?
+          conditional_id = "conditional-#{SecureRandom.hex(4)}" if item[:conditional].present?
         %>
         <%= tag.div class: %w(
           gem-c-radio
@@ -28,6 +35,9 @@
               type: "radio",
               aria: {
                 describedby: label_hint_id
+              },
+              data: {
+                "aria-controls": conditional_id
               }
             }
           %>
@@ -42,6 +52,13 @@
             bold: item[:bold]
           } %>
         <% end %>
+
+        <% if item[:conditional] %>
+        <div class="govuk-radios__conditional" id="<%= conditional_id %>">
+          <%= item[:conditional] %>
+        </div>
+        <% end %>
+
       <% end %>
     <% end %>
   <% end %>
