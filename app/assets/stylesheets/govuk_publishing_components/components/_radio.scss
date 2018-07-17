@@ -1,1 +1,20 @@
-@import "../../../node_modules/govuk-frontend/components/radios/radios";
+// This component relies on styles from GOV.UK Frontend
+
+// Specify the functions used to resolve assets paths in SCSS
+$govuk-image-url-function: "image-url";
+$govuk-font-url-function: "font-url";
+
+@import "../../../../node_modules/govuk-frontend/components/radios/radios";
+
+// Radios divider support
+// https://github.com/alphagov/govuk-frontend/pull/849/files
+//
+// Remove this after updating to GOV.UK Frontend 1.2.0
+.govuk-radios__divider {
+  $govuk-radios-size: govuk-spacing(7);
+  $govuk-divider-size: $govuk-radios-size !default;
+  @include govuk-font($size: 19);
+  width: $govuk-divider-size;
+  margin-bottom: govuk-spacing(2);
+  text-align: center;
+}

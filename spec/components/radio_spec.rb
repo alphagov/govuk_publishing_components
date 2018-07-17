@@ -161,7 +161,7 @@ describe "Radio", type: :view do
 
     assert_select ".govuk-radios__input[name=radio-group-or-divider]"
     assert_select ".govuk-radios__item:first-child .gem-c-radio__label__text", text: "Use Government Gateway"
-    assert_select ".gem-c-radio__block-text", text: "or"
+    assert_select ".govuk-radios__divider", text: "or"
     assert_select ".govuk-radios__item:last-child .gem-c-radio__label__text", text: "Use GOV.UK Verify"
   end
 
@@ -183,7 +183,7 @@ describe "Radio", type: :view do
       )
     end
 
-    assert_select ".gem-c-radio__block-text", text: "neu"
+    assert_select ".govuk-radios__divider", text: "neu"
   end
 end
 

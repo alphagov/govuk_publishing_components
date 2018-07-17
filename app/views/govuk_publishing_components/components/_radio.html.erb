@@ -8,9 +8,9 @@
 <% end %>
 <% items.each_with_index do |item, index| %>
   <% if item === :or %>
-    <span class="gem-c-radio__block-text">
+    <div class="govuk-radios__divider">
       <%= t('components.radio.or') %>
-    </span>
+    </div>
   <% else %>
     <%
       item_next = items[index + 1] unless index === items.size - 1
