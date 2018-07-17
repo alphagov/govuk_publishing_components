@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add admin component for select (PR #434)
+
 ## 9.5.3
 
 * Improve metadata positioning in document list for rtl layouts (PR #429)
