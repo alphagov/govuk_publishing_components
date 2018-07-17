@@ -17,6 +17,11 @@
 
 .gem-c-document-list__item-title--context {
   margin-right: $gutter-one-third;
+
+  .direction-rtl & {
+    margin-right: 0;
+    margin-left: $gutter-one-third;
+  }
 }
 
 .gem-c-document-list__item-context {
@@ -29,9 +34,14 @@
 
 .gem-c-document-list__attribute {
   @include core-14;
-  float: left;
+  display: inline-block;
   list-style: none;
   padding-right: $gutter-two-thirds;
+
+  .direction-rtl & {
+    padding-right: 0;
+    padding-left: $gutter-two-thirds;
+  }
 }
 
 .gem-c-document-list--bottom-margin {
