@@ -116,3 +116,22 @@ examples:
           path: '/government/organisations/advisory-committee-on-the-microbiological-safety-of-food'
           context: 'moving to GOV.UK'
           description: "Works with 4 agencies and public bodies"
+  right_to_left:
+    data:
+      items:
+      - link:
+          text: 'School behaviour and attendance: parental responsibility measures'
+          path: '/government/publications/parental-responsibility-measures-for-behaviour-and-attendance'
+          description: "Statutory guidance for schools, local authorities and the police on dealing with poor attendance and behaviour in school"
+        metadata:
+          public_updated_at: 2017-01-05 14:50:33
+          document_type: 'Statutory guidance'
+      - link:
+          text: 'Forestry Commission'
+          path: '/government/organisations/forestry-commission'
+          context: 'separate website'
+        metadata:
+          public_updated_at: 2017-07-19 15:01:48
+          document_type: 'Organisation'
+    context:
+      right_to_left: true
