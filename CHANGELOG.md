@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Replace the location URL sent to Google Analytics with one that masks email addresses (PR #428)
 * Improve metadata positioning in document list for rtl layouts (PR #429)
 
 ## 9.5.2
