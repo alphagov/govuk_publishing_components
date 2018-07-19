@@ -1,13 +1,7 @@
 @import "helpers/contents-list-helper";
 
 .gem-c-contents-list {
-  // Always render the contents list above a
-  // back to contents link
-  position: relative;
   margin-bottom: $gutter-two-thirds;
-  z-index: 1;
-  background: $white;
-  box-shadow: 0 20px 15px -10px $white;
 }
 
 .gem-c-contents-list--no-underline {
