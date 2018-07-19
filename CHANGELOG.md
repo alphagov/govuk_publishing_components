@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Remove redundant styles from contents list (PR #436)
 * Add admin component for select (PR #434)
 
 ## 9.5.3
