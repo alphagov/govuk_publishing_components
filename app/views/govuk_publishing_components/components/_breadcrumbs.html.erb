@@ -21,7 +21,7 @@
       css_class = invert_class.concat(crumb[:is_current_page] ? ' gem-c-breadcrumbs--current ' : '')
     %>
 
-    <li class='gem-c-breadcrumbs--item <%= "gem-c-breadcrumbs--parent" if crumb[:is_page_parent] %>'>
+    <li class='gem-c-breadcrumbs__item <%= "gem-c-breadcrumbs--parent" if crumb[:is_page_parent] %>'>
       <% if is_link %>
         <%= link_to(
           crumb[:title],
