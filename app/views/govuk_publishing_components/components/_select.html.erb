@@ -1,0 +1,17 @@
+<%
+  options ||= []
+  id ||= false
+  label ||= false
+%>
+<% if options.any? && id && label %>
+  <div class="govuk-form-group gem-c-select">
+    <label class="govuk-label" for="<%= id %>">
+      <%= label %>
+    </label>
+    <select class="govuk-select" id="<%= id %>" name="<%= id %>">
+      <% options.each do |option| %>
+        <option value="<%= option[:value] %>" <% if option[:selected] %>selected<% end %>><%= option[:text] %></option>
+      <% end %>
+    </select>
+  </div>
+<% end %>
