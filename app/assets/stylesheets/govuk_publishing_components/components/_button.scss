@@ -8,6 +8,13 @@ $govuk-font-url-function: "font-url";
 
 @import "mixins/margins";
 
+// Because govuk-frontend adds a responsive bottom margin by default for each component
+// we reset it to zero so we can set it separately using `gem-c-button--bottom-margin`
+// If we decide to use responsive margins consistently across components we can remove this
+.gem-c-button {
+  margin-bottom: 0;
+}
+
 // this will be moved and extended into a model for general component spacing
 // once this has been decided upon and other work completed, see:
 // https://trello.com/c/KEkNsxG3/142-3-implement-customisable-spacing-for-components
@@ -17,6 +24,6 @@ $govuk-font-url-function: "font-url";
 
 .gem-c-button__info-text {
   display: block;
-  margin-top: .5em;
   max-width: 14em;
+  margin-top: .5em;
 }
