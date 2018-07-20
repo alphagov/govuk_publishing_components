@@ -83,7 +83,6 @@ module GovukPublishingComponents
                 link[:active] = true
                 step_nav_content[:show_step] = step_index + 1
                 step_nav_content[:highlight_step] = step_index + 1
-                return step_nav_content
               end
             end
           end

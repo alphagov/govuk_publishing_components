@@ -48,6 +48,9 @@ describe('A stepnav module', function () {
               <li class="gem-c-step-nav__list-item js-list-item">\
                 <a href="/link3" class="gem-c-step-nav__link js-link" data-position="2.2">Link 3</a>\
               </li>\
+              <li class="gem-c-step-nav__list-item gem-c-step-nav__list-item--active js-list-item">\
+                <a href="#content" class="gem-c-step-nav__link js-link" data-position="2.3">Link 4</a>\
+              </li>\
             </ol>\
           </div>\
         </li>\
@@ -67,19 +70,19 @@ describe('A stepnav module', function () {
           <div class="gem-c-step-nav__panel js-panel" id="step-panel-topic-step-three-1">\
             <ol class="gem-c-step-nav__list" data-length="5">\
               <li class="gem-c-step-nav__list-item gem-c-step-nav__list-item--active js-list-item">\
-                <a href="/link4" class="gem-c-step-nav__link js-link" data-position="3.1">Link 4</a>\
+                <a href="/link4" class="gem-c-step-nav__link js-link" data-position="3.1">Link 5</a>\
               </li>\
               <li class="gem-c-step-nav__list-item gem-c-step-nav__list-item--active js-list-item">\
-                <a href="/link5" class="gem-c-step-nav__link js-link" data-position="3.2">Link 5</a>\
+                <a href="/link5" class="gem-c-step-nav__link js-link" data-position="3.2">Link 6</a>\
               </li>\
               <li class="gem-c-step-nav__list-item js-list-item">\
-                <a href="http://www.gov.uk" class="gem-c-step-nav__link js-link" data-position="3.3" rel="external">Link 6</a>\
+                <a href="http://www.gov.uk" class="gem-c-step-nav__link js-link" data-position="3.3" rel="external">Link 7</a>\
               </li>\
               <li class="gem-c-step-nav__list-item gem-c-step-nav__list-item--active js-list-item">\
-                <a href="#content" class="gem-c-step-nav__link js-link" data-position="3.4">Link 7</a>\
+                <a href="#content" class="gem-c-step-nav__link js-link" data-position="3.4">Link 8</a>\
               </li>\
               <li class="gem-c-step-nav__list-item gem-c-step-nav__list-item--active js-list-item">\
-                <a href="#content" class="gem-c-step-nav__link js-link" data-position="3.5">Link 8</a>\
+                <a href="#content" class="gem-c-step-nav__link js-link" data-position="3.5">Link 9</a>\
               </li>\
             </ol>\
           </div>\
@@ -758,7 +761,7 @@ describe('A stepnav module', function () {
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavShown', {
       label: '3 - Topic Step Three - Elsewhere click: Small ; optional',
       dimension26: '3',
-      dimension27: '8',
+      dimension27: '9',
       dimension28: '5',
       dimension96: 'unique-id'
     });
@@ -771,36 +774,44 @@ describe('A stepnav module', function () {
       stepnav.start($element);
     });
 
+    afterEach(function () {
+      sessionStorage.removeItem('govuk-step-nav-active-link_unique-id');
+    });
+
     it("puts a clicked link in session storage", function () {
       $element.find('.js-link[data-position="3.1"]').click();
-      expect(sessionStorage.getItem('govuk-step-nav-active-link')).toBe('3.1');
+      expect(sessionStorage.getItem('govuk-step-nav-active-link_unique-id')).toBe('3.1');
     });
 
     it("does not put an external clicked link in session storage", function () {
       $element.find('.js-link[data-position="3.3"]').click();
-      expect(sessionStorage.getItem('govuk-step-nav-active-link')).toBe(null);
+      expect(sessionStorage.getItem('govuk-step-nav-active-link_unique-id')).toBe(null);
     });
 
     it("highlights the first active link in the first active step if no sessionStorage value is set", function () {
-      expect(sessionStorage.getItem('govuk-step-nav-active-link')).toBe(null);
+      expect(sessionStorage.getItem('govuk-step-nav-active-link_unique-id')).toBe(null);
       expect($element.find('.js-link[data-position="3.1"]').closest('.js-list-item')).toHaveClass('gem-c-step-nav__list-item--active');
       expect($element.find(('.gem-c-step-nav__list-item--active')).length).toBe(1);
     });
 
-    it("highlights a clicked #content link and removes other highlights", function () {
+    it("highlights a clicked #content link and its parent step, and removes other highlighting", function () {
       expect($element.find(('.gem-c-step-nav__list-item--active')).length).toBe(1);
 
       var $firstLink = $element.find('.js-link[data-position="3.4"]');
       $firstLink.click();
-      expect(sessionStorage.getItem('govuk-step-nav-active-link')).toBe('3.4');
+      expect(sessionStorage.getItem('govuk-step-nav-active-link_unique-id')).toBe('3.4');
       expect($firstLink.closest('.js-list-item')).toHaveClass('gem-c-step-nav__list-item--active');
+      expect($firstLink.closest('.js-step')).toHaveClass('gem-c-step-nav__step--active');
       expect($element.find(('.gem-c-step-nav__list-item--active')).length).toBe(1);
+      expect($element.find(('.gem-c-step-nav__step--active')).length).toBe(1);
 
       var $secondLink = $element.find('.js-link[data-position="3.5"]');
       $secondLink.click();
-      expect(sessionStorage.getItem('govuk-step-nav-active-link')).toBe('3.5');
+      expect(sessionStorage.getItem('govuk-step-nav-active-link_unique-id')).toBe('3.5');
       expect($secondLink.closest('.js-list-item')).toHaveClass('gem-c-step-nav__list-item--active');
+      expect($secondLink.closest('.js-step')).toHaveClass('gem-c-step-nav__step--active');
       expect($element.find(('.gem-c-step-nav__list-item--active')).length).toBe(1);
+      expect($element.find(('.gem-c-step-nav__step--active')).length).toBe(1);
     });
   });
 
@@ -820,17 +831,48 @@ describe('A stepnav module', function () {
 
       stepnav = new GOVUK.Modules.Gemstepnav();
       $element = $(html);
-      sessionStorage.setItem('govuk-step-nav-active-link', '3.5');
+      sessionStorage.setItem('govuk-step-nav-active-link_unique-id', '3.5');
       stepnav.start($element);
     });
 
     afterEach(function () {
-      sessionStorage.removeItem('govuk-step-nav-active-link');
+      sessionStorage.removeItem('govuk-step-nav-active-link_unique-id');
     });
 
     it("highlights only one link", function () {
-      expect(sessionStorage.getItem('govuk-step-nav-active-link')).toBe('3.5');
+      expect(sessionStorage.getItem('govuk-step-nav-active-link_unique-id')).toBe('3.5');
       expect($element.find(('.gem-c-step-nav__list-item--active')).length).toBe(1);
+      expect($element.find(('.gem-c-step-nav__step--active')).length).toBe(1);
+    });
+  });
+
+  describe('in a double dot situation where a clicked link that is not highlighted is already stored on page load', function() {
+    beforeEach(function () {
+      var store = {};
+
+      spyOn(sessionStorage, 'getItem').and.callFake(function (key) {
+        return store[key];
+      });
+      spyOn(sessionStorage, 'setItem').and.callFake(function (key, value) {
+        return store[key] = value + '';
+      });
+      spyOn(sessionStorage, 'clear').and.callFake(function () {
+        store = {};
+      });
+
+      stepnav = new GOVUK.Modules.Gemstepnav();
+      $element = $(html);
+      sessionStorage.setItem('govuk-step-nav-active-link_unique-id', 'definitelynotvalid');
+      stepnav.start($element);
+    });
+
+    afterEach(function () {
+      sessionStorage.removeItem('govuk-step-nav-active-link_unique-id');
+    });
+
+    it("highlights only one link", function () {
+      expect($element.find(('.gem-c-step-nav__list-item--active')).length).toBe(1);
+      expect($element.find(('.gem-c-step-nav__step--active')).length).toBe(1);
     });
   });
 
@@ -843,7 +885,7 @@ describe('A stepnav module', function () {
     });
 
     it("highlights the first active link if no sessionStorage value is set", function () {
-      expect(sessionStorage.getItem('govuk-step-nav-active-link')).toBe(null);
+      expect(sessionStorage.getItem('govuk-step-nav-active-link_unique-id')).toBe(null);
       expect($element.find('.js-link[data-position="2.1"]').closest('.js-list-item')).toHaveClass('gem-c-step-nav__list-item--active');
       expect($element.find(('.gem-c-step-nav__list-item--active')).length).toBe(1);
     });

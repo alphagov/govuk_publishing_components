@@ -340,18 +340,19 @@ examples:
       ]
   solve_the_double_dot_problem:
     description: |
-      If a page is in a step by step navigation more than once and a user is viewing that URL, both links to it will be highlighted as the site has no way to know which link the user is currently viewing (highlighted links should only occur when the step by step navigation is in the sidebar).
+      If a page is in a step by step navigation more than once and a user is viewing that URL, both links to it will be highlighted as the backend has no way to know which link the user is currently viewing (links should only be highlighted when the step by step navigation is in the sidebar).
 
-      JavaScript is included in the component to solve this. It uses sessionStorage to capture the data-position attribute of non-external links when clicked, and then uses this value to decide which link to highlight when the new page loads. This session storage data is immediately deleted after it is read on page load, mainly to prevent problems with highlighting if the user were to move between different step by step navigations.
+      JavaScript is included in the component to solve this. It uses sessionStorage to capture the data-position attribute of non-external links when clicked, and then uses this value to decide which link (and parent step) to highlight and expand when the new page loads. Note that it uses the tracking_id attribute to uniquely identify the current step nav. If tracking_id is not set this may result in other step navs having the wrong link highlighted.
 
       If a user has not clicked a link (i.e. has visited the page without first clicking on a step by step navigation) the first active link in the first active step will be highlighted. If there is no active step, the first active link will be highlighted (but there should always be an active step).
 
       The current page in the step by step navigation is an anchor link to the top of the page. If there are more than one of these and the user clicks one that is not currently highlighted, that one will be highlighted.
 
-      The example below will show all links highlighted if JS is disabled, in the real world no more than two or three links are likely to be highlighted at once.
+      The example below will show all non-external links highlighted if JS is disabled. In the real world no more than two or three links are likely to be highlighted at once.
     data:
       highlight_step: 2
       show_step: 2
+      tracking_id: "example-id"
       steps: [
         {
           title: "Not the active step",
