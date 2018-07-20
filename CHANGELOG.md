@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 9.5.4
 
 * Change breadcrumb class name (PR #435)
 * Add admin component for select (PR #434)
