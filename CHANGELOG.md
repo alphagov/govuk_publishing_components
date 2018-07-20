@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Change breadcrumb class name (PR #435)
 * Add admin component for select (PR #434)
 
 ## 9.5.3
