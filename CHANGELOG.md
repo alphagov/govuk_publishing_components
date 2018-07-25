@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update radio component to use GOV.UK Frontend styles (PR #433)
+
 ## 9.6.0
 
 * Change breadcrumb class name (PR #435)
