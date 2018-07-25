@@ -50,6 +50,6 @@ describe "Label", type: :view do
       ".gem-c-label__text[for='id-that-matches-input']",
       text: "National Insurance number"
     )
-    assert_select ".gem-c-label--bold"
+    assert_select ".gem-c-label__text--bold"
   end
 end

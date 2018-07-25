@@ -1,131 +1,20 @@
-@import "helpers/variables";
-@import "helpers/px-to-em";
+// This component relies on styles from GOV.UK Frontend
 
-.gem-c-radio {
-  display: block;
+// Specify the functions used to resolve assets paths in SCSS
+$govuk-image-url-function: "image-url";
+$govuk-font-url-function: "font-url";
 
-  position: relative;
+@import "../../../../node_modules/govuk-frontend/components/radios/radios";
 
-  margin-bottom: $gem-spacing-scale-2;
-  padding: 0 0 0 em(40px, 19px);
-
-  clear: left;
-
-  @include core-19;
-}
-
-.gem-c-radio:last-child,
-.gem-c-radio:last-of-type {
-  margin-bottom: 0;
-}
-
-.gem-c-radio--inline {
-  margin-right: $gem-spacing-scale-4;
-  float: left;
-  clear: none;
-}
-
-.gem-c-radio__input {
-  font-size: inherit;
-  position: absolute;
-
-  z-index: 1;
-  top: 0;
-  left: 0;
-
-  width: em(40px, 19px);
-  height: em(40px, 19px);
-
-  cursor: pointer;
-
-  // IE8 doesn’t support pseudoelements, so we don’t want to hide native elements there. Double colons get ommited by IE8.
-  @if ($is-ie == false) or ($ie-version == 9) {
-    margin: 0;
-    opacity: 0;
-  }
-}
-
-.gem-c-radio__label {
-  display: block;
-  border: 2px solid transparent;
-}
-
-.gem-c-radio__label__text {
-  cursor: pointer;
-  // remove 300ms pause on mobile
-  -ms-touch-action: manipulation;
-  touch-action: manipulation;
-
-  display: block;
-  padding-top: em(8px, 19px);
-  padding-bottom: em($gem-spacing-scale-1, 19px);
-}
-
-.gem-c-radio__label__text,
-.gem-c-radio__label__hint {
-  padding-left: em($gem-spacing-scale-3, 19px);
-  padding-right: em($gem-spacing-scale-3, 19px);
-}
-
-.gem-c-radio__input + .gem-c-radio__label::before {
-  content: "";
-  box-sizing: border-box;
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  width: em(40px, 19px);
-  height: em(40px, 19px);
-
-  border: $gem-border-width-form-element solid;
-  border-radius: 50%;
-  background: transparent;
-}
-
-.gem-c-radio__input + .gem-c-radio__label::after {
-  content: "";
-
-  position: absolute;
-  top: em($gem-spacing-scale-2, 19px);
-  left: em($gem-spacing-scale-2, 19px);
-
-  width: 0;
-  height: 0;
-
-  border: em($gem-spacing-scale-2, 19px) solid;
-  border-radius: 50%;
-  background: currentColor;
-  opacity: 0;
-}
-
-// Focused state
-.gem-c-radio__input:focus + .gem-c-radio__label::before {
-  box-shadow: 0 0 0 4px $gem-focus-colour;
-}
-
-// Selected state
-.gem-c-radio__input:checked + .gem-c-radio__label::after {
-  opacity: 1;
-}
-
-// Disabled state
-.gem-c-radio__input:disabled,
-.gem-c-radio__input:disabled + .gem-c-radio__label__text {
-  cursor: default;
-}
-
-.gem-c-radio__input:disabled + .gem-c-radio__label {
-  opacity: .5;
-}
-
-// TODO: Can be replaced by spacing + typography helpers from GOV.UK Frontend
-.gem-c-radio--margin-bottom-0 {
-  margin-bottom: $gem-spacing-scale-0 !important;
-}
-
-// TODO: Can be replaced by spacing + typography helpers from GOV.UK Frontend
-.gem-c-radio__block-text {
-  display: block;
-  @include core-19;
-  margin-bottom: $gem-spacing-scale-3;
+// Radios divider support
+// https://github.com/alphagov/govuk-frontend/pull/849/files
+//
+// Remove this after updating to GOV.UK Frontend 1.2.0
+.govuk-radios__divider {
+  $govuk-radios-size: govuk-spacing(7);
+  $govuk-divider-size: $govuk-radios-size !default;
+  @include govuk-font($size: 19);
+  width: $govuk-divider-size;
+  margin-bottom: govuk-spacing(2);
+  text-align: center;
 }

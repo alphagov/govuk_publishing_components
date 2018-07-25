@@ -6,7 +6,8 @@
   @include core-19;
 }
 
-.gem-c-label--bold {
+.gem-c-label--bold,
+.gem-c-label__text--bold {
   font-weight: 700;
 }
 

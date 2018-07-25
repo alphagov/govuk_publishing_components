@@ -5,10 +5,6 @@ describe "Radio", type: :view do
     "radio"
   end
 
-  it "does not render anything if no data is passed" do
-    assert_empty render_component({})
-  end
-
   it "throws an error if items are passed but no name is passed" do
     assert_raises do
       render_component(items: [
@@ -31,8 +27,8 @@ describe "Radio", type: :view do
       ]
     )
 
-    assert_select ".gem-c-radio__input[name=radio-group-one-item]"
-    assert_select ".gem-c-radio:first-child .gem-c-radio__label__text", text: "Use Government Gateway"
+    assert_select ".govuk-radios__input[name=radio-group-one-item]"
+    assert_select ".govuk-radios__item:first-child .gem-c-radio__label__text", text: "Use Government Gateway"
   end
 
   it "renders radio-group with multiple items" do
@@ -50,9 +46,9 @@ describe "Radio", type: :view do
       ]
     )
 
-    assert_select ".gem-c-radio__input[name=radio-group-multiple-items]"
-    assert_select ".gem-c-radio:first-child .gem-c-radio__label__text", text: "Use Government Gateway"
-    assert_select ".gem-c-radio:last-child .gem-c-radio__label__text", text: "Use GOV.UK Verify"
+    assert_select ".govuk-radios__input[name=radio-group-multiple-items]"
+    assert_select ".govuk-radios__item:first-child .gem-c-radio__label__text", text: "Use Government Gateway"
+    assert_select ".govuk-radios__item:last-child .gem-c-radio__label__text", text: "Use GOV.UK Verify"
   end
 
   it "renders radio-group with bold labels" do
@@ -72,8 +68,8 @@ describe "Radio", type: :view do
       ]
     )
 
-    assert_select ".gem-c-radio__input[name=radio-group-bold-labels]"
-    assert_select ".gem-c-radio .gem-c-label--bold"
+    assert_select ".govuk-radios__input[name=radio-group-bold-labels]"
+    assert_select ".govuk-radios__item .gem-c-label--bold"
   end
 
   it "renders radio-group with hint text" do
@@ -93,11 +89,11 @@ describe "Radio", type: :view do
       ]
     )
 
-    assert_select ".gem-c-radio__input[name=radio-group-hint-text]"
-    assert_select ".gem-c-radio:first-child .gem-c-radio__label__text", text: "Use Government Gateway"
-    assert_select ".gem-c-radio:first-child .gem-c-label__hint", text: "You'll have a user ID if you've signed up to do things like sign up Self Assessment tax return online."
-    assert_select ".gem-c-radio:last-child .gem-c-radio__label__text", text: "Use GOV.UK Verify"
-    assert_select ".gem-c-radio:last-child .gem-c-label__hint", text: "You'll have an account if you've already proved your identity with a certified company, such as the Post Office."
+    assert_select ".govuk-radios__input[name=radio-group-hint-text]"
+    assert_select ".govuk-radios__item:first-child .gem-c-radio__label__text", text: "Use Government Gateway"
+    assert_select ".govuk-radios__item:first-child .gem-c-label__hint", text: "You'll have a user ID if you've signed up to do things like sign up Self Assessment tax return online."
+    assert_select ".govuk-radios__item:last-child .gem-c-radio__label__text", text: "Use GOV.UK Verify"
+    assert_select ".govuk-radios__item:last-child .gem-c-label__hint", text: "You'll have an account if you've already proved your identity with a certified company, such as the Post Office."
   end
 
   it "renders radio-group with checked option" do
@@ -116,8 +112,8 @@ describe "Radio", type: :view do
       ]
     )
 
-    assert_select ".gem-c-radio__input[name=radio-group-checked-option]"
-    assert_select ".gem-c-radio__input[checked]", value: "govuk-verify"
+    assert_select ".govuk-radios__input[name=radio-group-checked-option]"
+    assert_select ".govuk-radios__input[checked]", value: "govuk-verify"
   end
 
   it "renders radio-group with custom id prefix" do
@@ -136,10 +132,10 @@ describe "Radio", type: :view do
       ]
     )
 
-    assert_select ".gem-c-radio__input[name=radio-group-custom-id-prefix]"
-    assert_select ".gem-c-radio__input[id=custom-0]", value: "government-gateway"
+    assert_select ".govuk-radios__input[name=radio-group-custom-id-prefix]"
+    assert_select ".govuk-radios__input[id=custom-0]", value: "government-gateway"
     assert_select ".gem-c-radio__label__text[for=custom-0]", text: "Use Government Gateway"
-    assert_select ".gem-c-radio__input[id=custom-1]", value: "govuk-verify"
+    assert_select ".govuk-radios__input[id=custom-1]", value: "govuk-verify"
     assert_select ".gem-c-radio__label__text[for=custom-1]", text: "Use GOV.UK Verify"
   end
 
@@ -159,10 +155,10 @@ describe "Radio", type: :view do
       ]
     )
 
-    assert_select ".gem-c-radio__input[name=radio-group-or-divider]"
-    assert_select ".gem-c-radio:first-child .gem-c-radio__label__text", text: "Use Government Gateway"
-    assert_select ".gem-c-radio__block-text", text: "or"
-    assert_select ".gem-c-radio:last-child .gem-c-radio__label__text", text: "Use GOV.UK Verify"
+    assert_select ".govuk-radios__input[name=radio-group-or-divider]"
+    assert_select ".govuk-radios__item:first-child .gem-c-radio__label__text", text: "Use Government Gateway"
+    assert_select ".govuk-radios__divider", text: "or"
+    assert_select ".govuk-radios__item:last-child .gem-c-radio__label__text", text: "Use GOV.UK Verify"
   end
 
   it "renders radio-group with welsh translated 'or'" do
@@ -183,7 +179,7 @@ describe "Radio", type: :view do
       )
     end
 
-    assert_select ".gem-c-radio__block-text", text: "neu"
+    assert_select ".govuk-radios__divider", text: "neu"
   end
 end
 
@@ -200,12 +196,12 @@ describe 'Radio (integration)' do
       assert_text 'Use GOV.UK Verify'
       assert_text 'Use Government Gateway'
 
-      expect(page).to_not have_selector("[@class='gem-c-radio__input'][@checked='checked']", visible: input_visible)
+      expect(page).to_not have_selector("[@class='govuk-radios__input'][@checked='checked']", visible: input_visible)
 
       page.choose(option: 'govuk-verify', allow_label_click: true)
 
-      expect(page).to_not have_selector("[@class='gem-c-radio__input'][@value='government-gateway'][@checked='checked']", visible: input_visible)
-      expect(page).to have_selector("[@class='gem-c-radio__input'][@value='govuk-verify'][@checked='checked']", visible: input_visible)
+      expect(page).to_not have_selector("[@class='govuk-radios__input'][@value='government-gateway'][@checked='checked']", visible: input_visible)
+      expect(page).to have_selector("[@class='govuk-radios__input'][@value='govuk-verify'][@checked='checked']", visible: input_visible)
     end
   end
 
@@ -216,13 +212,13 @@ describe 'Radio (integration)' do
       assert_text 'Use Government Gateway'
       assert_text 'Use GOV.UK Verify'
 
-      expect(page).to have_selector("[@class='gem-c-radio__input'][@value='govuk-verify'][@checked='checked']", visible: input_visible)
-      expect(page).to_not have_selector("[@class='gem-c-radio__input'][@value='government-gateway'][@checked='checked']", visible: input_visible)
+      expect(page).to have_selector("[@class='govuk-radios__input'][@value='govuk-verify'][@checked='checked']", visible: input_visible)
+      expect(page).to_not have_selector("[@class='govuk-radios__input'][@value='government-gateway'][@checked='checked']", visible: input_visible)
 
       page.choose(option: 'government-gateway', allow_label_click: true)
 
-      expect(page).to have_selector("[@class='gem-c-radio__input'][@value='government-gateway'][@checked='checked']", visible: input_visible)
-      expect(page).to_not have_selector("[@class='gem-c-radio__input'][@value='govuk-verify'][@checked='checked']", visible: input_visible)
+      expect(page).to have_selector("[@class='govuk-radios__input'][@value='government-gateway'][@checked='checked']", visible: input_visible)
+      expect(page).to_not have_selector("[@class='govuk-radios__input'][@value='govuk-verify'][@checked='checked']", visible: input_visible)
     end
   end
 end
