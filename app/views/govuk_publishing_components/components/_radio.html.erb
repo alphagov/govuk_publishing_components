@@ -2,53 +2,47 @@
   id_prefix ||= "radio-#{SecureRandom.hex(4)}"
   items ||= []
 %>
-<% if items.present? %>
-<div class="govuk-form-group">
-  <div class="govuk-radios">
-<% end %>
-<% items.each_with_index do |item, index| %>
-  <% if item === :or %>
-    <div class="govuk-radios__divider">
-      <%= t('components.radio.or') %>
-    </div>
-  <% else %>
-    <%
-      item_next = items[index + 1] unless index === items.size - 1
-      label_id = item[:id] ? item[:id] : "#{id_prefix}-#{index}"
-      label_hint_id = "label-hint-#{SecureRandom.hex(4)}" if item[:hint_text].present?
-    %>
-    <div
-      class="
-        gem-c-radio
-        govuk-radios__item
-        <%= 'gem-c-radio--margin-bottom-0' if item_next === :or && item[:hint_text].present? %>
-      "
-    >
-      <input
-        class="govuk-radios__input"
-        id="<%= label_id %>"
-        name="<%= name %>"
-        type="radio"
-        value="<%= item[:value] %>"
-        <%= "checked" if item[:checked] %>
-        <% if label_hint_id %>
-          aria-describedby="<%= label_hint_id %>"
+<%= content_tag :div, class: "govuk-form-group" do %>
+  <%= content_tag :div, class: "govuk-radios" do %>
+    <% items.each_with_index do |item, index| %>
+      <% if item === :or %>
+        <div class="govuk-radios__divider">
+          <%= t('components.radio.or') %>
+        </div>
+      <% else %>
+        <%
+          item_next = items[index + 1] unless index === items.size - 1
+          label_id = item[:id] ? item[:id] : "#{id_prefix}-#{index}"
+          label_hint_id = "label-hint-#{SecureRandom.hex(4)}" if item[:hint_text].present?
+        %>
+        <%= tag.div class: %w(
+          gem-c-radio
+          govuk-radios__item
+        ) do %>
+          <%= check_box_tag name,
+            item[:value],
+            item[:checked],
+            {
+              class: "govuk-radios__input",
+              id: label_id,
+              type: "radio",
+              aria: {
+                describedby: label_hint_id
+              }
+            }
+          %>
+          <%= render "govuk_publishing_components/components/label", {
+            hint_id: label_hint_id,
+            html_for: label_id,
+            classes: "govuk-label govuk-radios__label",
+            text_classes: "gem-c-radio__label__text",
+            hint_text_classes: "gem-c-radio__label__hint",
+            hint_text: item[:hint_text],
+            text: item[:text],
+            bold: item[:bold]
+          } %>
         <% end %>
-      >
-      <%= render "govuk_publishing_components/components/label", {
-        hint_id: label_hint_id,
-        html_for: label_id,
-        classes: 'govuk-label govuk-radios__label',
-        text_classes: 'gem-c-radio__label__text',
-        hint_text_classes: 'gem-c-radio__label__hint',
-        hint_text: item[:hint_text],
-        text: item[:text],
-        bold: item[:bold]
-      } %>
-    </div>
+      <% end %>
+    <% end %>
   <% end %>
-<% end %>
-<% if items.present? %>
-  </div>
-</div>
 <% end %>

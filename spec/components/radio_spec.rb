@@ -5,10 +5,6 @@ describe "Radio", type: :view do
     "radio"
   end
 
-  it "does not render anything if no data is passed" do
-    assert_empty render_component({})
-  end
-
   it "throws an error if items are passed but no name is passed" do
     assert_raises do
       render_component(items: [
