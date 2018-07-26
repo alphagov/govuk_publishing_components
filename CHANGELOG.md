@@ -11,6 +11,7 @@
 
 * Update radio component to use GOV.UK Frontend styles (PR #433)
 * Update button component to use GOV.UK Frontend styles (PR #439)
+* Update back-link component to use GOV.UK Frontend styles (PR #440)
 
 ## 9.6.0
 
