@@ -13,11 +13,11 @@ describe "Back Link", type: :view do
 
   it "renders a back link correctly" do
     render_component(href: '/back-me')
-    assert_select ".gem-c-back-link[href=\"/back-me\"]", text: "Back"
+    assert_select ".govuk-back-link[href=\"/back-me\"]", text: "Back"
   end
 
   it "can render in welsh" do
     I18n.with_locale(:cy) { render_component(href: '/back-me') }
-    assert_select ".gem-c-back-link[href=\"/back-me\"]", text: "Yn ôl"
+    assert_select ".govuk-back-link[href=\"/back-me\"]", text: "Yn ôl"
   end
 end

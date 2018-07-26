@@ -1,6 +1,7 @@
-<a
-  class="gem-c-back-link"
-  href="<%= href %>"
->
-  <%= t('components.back_link.back') %>
-</a>
+<%= link_to t('components.back_link.back'),
+  href,
+  class: %w(
+    gem-c-back-link
+    govuk-back-link
+  )
+ %>
