@@ -21,4 +21,9 @@ class WelcomeController < ApplicationController
     response.headers[Slimmer::Headers::SKIP_HEADER] = "true"
     render 'admin_example', layout: 'dummy_admin_layout'
   end
+
+  def tabsexample
+    response.headers[Slimmer::Headers::SKIP_HEADER] = "true"
+    render 'tabs_example', layout: 'dummy_admin_layout'
+  end
 end
