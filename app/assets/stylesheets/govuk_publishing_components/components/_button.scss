@@ -1,20 +1,18 @@
-@import "design-patterns/buttons";
-@import "mixins/media-down";
+// This component relies on styles from GOV.UK Frontend
+
+// Specify the functions used to resolve assets paths in SCSS
+$govuk-image-url-function: "image-url";
+$govuk-font-url-function: "font-url";
+
+@import "../../../../node_modules/govuk-frontend/components/button/button";
+
 @import "mixins/margins";
 
-%gem-c-button,
+// Because govuk-frontend adds a responsive bottom margin by default for each component
+// we reset it to zero so we can set it separately using `gem-c-button--bottom-margin`
+// If we decide to use responsive margins consistently across components we can remove this
 .gem-c-button {
-  @include button;
-
-  @media(max-width: 425px) {
-    box-sizing: border-box;
-    width: 100%;
-    text-align: center;
-  }
-
-  &:focus {
-    outline: 3px solid $focus-colour;
-  }
+  margin-bottom: 0;
 }
 
 // this will be moved and extended into a model for general component spacing
@@ -24,35 +22,8 @@
   @include responsive-bottom-margin;
 }
 
-%gem-c-button--start,
-.gem-c-button--start {
-  @include bold-24($line-height: (24 / 20));
-  display: inline-block;
-  padding: 0.6em 1.7em 0.45em 0.67em;
-
-  @include media(tablet) {
-    padding-top: 0.3em;
-    padding-bottom: 0.15em;
-  }
-
-  background-image: image-url("govuk_publishing_components/icon-pointer.png");
-  background-position: 100% 50%;
-  background-repeat: no-repeat;
-
-  @include media-down(mobile) {
-    background-position: center right -.35em;
-  }
-
-  @include device-pixel-ratio() {
-    background-image: image-url("govuk_publishing_components/icon-pointer-2x.png");
-    background-size: 30px 19px;
-  }
-}
-
-// scss-lint:disable SelectorFormat
 .gem-c-button__info-text {
   display: block;
-  margin-top: .5em;
   max-width: 14em;
+  margin-top: .5em;
 }
-// scss-lint:enable SelectorFormat

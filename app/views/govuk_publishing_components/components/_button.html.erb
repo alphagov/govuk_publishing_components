@@ -7,8 +7,8 @@
   margin_bottom ||= false
   data_attributes ||= false
   title ||= false
-  css_classes = %w(gem-c-button)
-  css_classes << "gem-c-button--start" if start
+  css_classes = %w(gem-c-button govuk-button)
+  css_classes << "govuk-button--start" if start
   css_classes << "gem-c-button--bottom-margin" if margin_bottom
   css_classes = css_classes.join(" ")
   html_options = { class: css_classes }

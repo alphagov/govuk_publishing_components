@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Update radio component to use GOV.UK Frontend styles (PR #433)
+* Update button component to use GOV.UK Frontend styles (PR #439)
 
 ## 9.6.0
 
