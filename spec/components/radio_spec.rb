@@ -161,6 +161,26 @@ describe "Radio", type: :view do
     assert_select ".govuk-radios__item:last-child .gem-c-radio__label__text", text: "Use GOV.UK Verify"
   end
 
+  it "renders radio-group with conditionally revealed content" do
+    render_component(
+      name: "radio-group-conditional",
+      items: [
+        {
+          value: "government-gateway",
+          text: "Use Government Gateway",
+          conditional: "You’ll need to prove your identity using Government Gateway"
+        },
+        {
+          value: "govuk-verify",
+          text: "Use GOV.UK Verify",
+          conditional: "You’ll need to prove your identity using GOV.UK Verify"
+        }
+      ]
+    )
+
+    assert_select ".govuk-radios__conditional", text: "You’ll need to prove your identity using Government Gateway"
+  end
+
   it "renders radio-group with welsh translated 'or'" do
     I18n.with_locale(:cy) do
       render_component(
