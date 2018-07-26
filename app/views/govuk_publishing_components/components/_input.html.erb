@@ -1,35 +1,41 @@
 <%
   id ||= "input-#{SecureRandom.hex(4)}"
   hint_id ||= "hint-#{SecureRandom.hex(4)}"
-  value ||= false
+  value ||= nil
   error_message ||= false
   label ||= {}
   type ||= "text"
   describedby ||= false
+  ariadescribedby ||= nil
+  css_classes = %w(gem-c-input govuk-input)
+  css_classes << "govuk-input--error" if error_message
+
+  if error_message
+    ariadescribedby = hint_id
+  elsif describedby
+    ariadescribedby = describedby
+  end
 %>
 
-<%= render "govuk_publishing_components/components/label", {
-  text: label[:text],
-  html_for: id,
-  hint_text: error_message,
-  hint_text_classes: "gem-c-label__error",
-  hint_id: hint_id,
-  bold: error_message ? true : false,
-} %>
+<%= content_tag :div, class: "govuk-form-group" do %>
+  <%= render "govuk_publishing_components/components/label", {
+    text: label[:text],
+    html_for: id,
+    hint_text: error_message,
+    hint_text_classes: "gem-c-label__error",
+    hint_id: hint_id,
+    bold: error_message ? true : false,
+  } %>
 
-<input
-  class="gem-c-input <%= "gem-c-input--error" if error_message %>"
-  id="<%= id %>"
-  name="<%= name %>"
-  type="<%= type %>"
-
-  <% if error_message %>
-    aria-describedby="<%= hint_id %>"
-  <% elsif describedby %>
-    aria-describedby="<%= describedby %>"
-  <% end %>
-
-  <% if value %>
-    value="<%= value %>"
-  <% end %>
->
+  <%= text_field_tag name,
+    value,
+    {
+      class: css_classes,
+      id: id,
+      type: type,
+      aria: {
+        describedby: ariadescribedby
+      }
+    }
+  %>
+<% end %>
