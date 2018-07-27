@@ -17,8 +17,8 @@ describe "Input", type: :view do
       name: "email-address",
     )
 
-    assert_select ".gem-c-input[type='text']"
-    assert_select ".gem-c-input[name='email-address']"
+    assert_select ".govuk-input[type='text']"
+    assert_select ".govuk-input[name='email-address']"
 
     assert_select ".gem-c-label", text: "What is your email address?"
   end
@@ -29,14 +29,14 @@ describe "Input", type: :view do
       type: "email",
     )
 
-    assert_select ".gem-c-input[type='email']"
-    assert_select ".gem-c-input[name='email-address']"
+    assert_select ".govuk-input[type='email']"
+    assert_select ".govuk-input[name='email-address']"
   end
 
   it "sets the 'for' on the label to the input id" do
     render_component(name: "email-address")
 
-    input = css_select(".gem-c-input")
+    input = css_select(".govuk-input")
     input_id = input.attr("id").text
 
     assert_select ".gem-c-label__text[for='#{input_id}']"
@@ -48,7 +48,7 @@ describe "Input", type: :view do
       value: "example@example.com",
     )
 
-    assert_select ".gem-c-input[value='example@example.com']"
+    assert_select ".govuk-input[value='example@example.com']"
   end
 
   it "renders inputs with an aria-describedby if provided" do
@@ -58,7 +58,7 @@ describe "Input", type: :view do
       describedby: "some-other-element"
     )
 
-    assert_select ".gem-c-input[aria-describedby='some-other-element']"
+    assert_select ".govuk-input[aria-describedby='some-other-element']"
   end
 
   context "when an error_message is provided" do
@@ -82,7 +82,7 @@ describe "Input", type: :view do
       hint = css_select(".gem-c-label__hint")
       hint_id = hint.attr("id").text
 
-      assert_select ".gem-c-input[aria-describedby='#{hint_id}']"
+      assert_select ".govuk-input[aria-describedby='#{hint_id}']"
     end
   end
 
@@ -98,7 +98,7 @@ describe "Input", type: :view do
     end
 
     it "does not set the 'aria-describedby' on the input" do
-      input = css_select(".gem-c-input")
+      input = css_select(".govuk-input")
       expect(input.attr("aria-describedby")).to be_nil
     end
   end

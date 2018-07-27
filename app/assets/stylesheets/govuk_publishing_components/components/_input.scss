@@ -1,34 +1,6 @@
-// scss-lint:disable QualifyingElement
-.gem-c-input,
+// This component relies on styles from GOV.UK Frontend
 
-// Explicitly set the input type so that we have higher specificity than
-// https://github.com/alphagov/static/blob/79d29b6a4221874ead27e67d007704a6be166a57/app/assets/stylesheets/helpers/_buttons.scss#L91-L122
-// This can be removed once everything is using `core_layout`.
-input[type=text].gem-c-input {
-  @include core-19;
+// Specify the functions used to resolve assets paths in SCSS
+$govuk-font-url-function: "font-url";
 
-  box-sizing: border-box;
-  width: 100%;
-  height: 2.10526em;
-
-  margin: 0; // Override unwanted global cascaded styles
-  margin-bottom: 20px;
-
-  padding: $gem-spacing-scale-1;
-  // setting any background-color makes text invisible when changing colours to dark backgrounds in Firefox (https://bugzilla.mozilla.org/show_bug.cgi?id=1335476)
-  // as background-color and color need to always be set together, color should not be set either
-  border: $gem-border-width-form-element solid;
-  border-radius: 0;
-
-  // Disable inner shadow and remove rounded corners
-  appearance: none;
-
-  &.gem-c-input:focus {
-    outline: $gem-focus-width solid $gem-focus-colour;
-  }
-
-  &.gem-c-input--error {
-    border: $gem-border-width-error solid $gem-error-colour;
-  }
-}
-// scss-lint:enable QualifyingElement
+@import "../../../../node_modules/govuk-frontend/components/input/input";
