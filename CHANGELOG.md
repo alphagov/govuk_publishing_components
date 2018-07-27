@@ -7,12 +7,14 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 9.7.0
 
 * Update radio component to use GOV.UK Frontend styles (PR #433)
 * Update button component to use GOV.UK Frontend styles (PR #439)
 * Update back-link component to use GOV.UK Frontend styles (PR #440)
 * Add conditional reveal support for radios using GOV.UK Frontend scripts (PR #441)
+* Update input component to use GOV.UK Frontend styles (PR #442)
+* Update label component to use GOV.UK Frontend styles (PR #443)
 * Upgrade to the latest version of the Design System (PR #444)
 
 ## 9.6.0
