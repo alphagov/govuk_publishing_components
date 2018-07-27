@@ -22,10 +22,7 @@
           label_hint_id = "label-hint-#{SecureRandom.hex(4)}" if item[:hint_text].present?
           conditional_id = "conditional-#{SecureRandom.hex(4)}" if item[:conditional].present?
         %>
-        <%= tag.div class: %w(
-          gem-c-radio
-          govuk-radios__item
-        ) do %>
+        <%= tag.div class: %w( gem-c-radio govuk-radios__item ) do %>
           <%= check_box_tag name,
             item[:value],
             item[:checked],
@@ -44,9 +41,8 @@
           <%= render "govuk_publishing_components/components/label", {
             hint_id: label_hint_id,
             html_for: label_id,
-            classes: "govuk-label govuk-radios__label",
-            text_classes: "gem-c-radio__label__text",
-            hint_text_classes: "gem-c-radio__label__hint",
+            classes: "govuk-radios__label",
+            hint_text_classes: "govuk-radios__hint",
             hint_text: item[:hint_text],
             text: item[:text],
             bold: item[:bold]

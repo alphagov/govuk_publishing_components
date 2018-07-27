@@ -28,7 +28,7 @@ describe "Radio", type: :view do
     )
 
     assert_select ".govuk-radios__input[name=radio-group-one-item]"
-    assert_select ".govuk-radios__item:first-child .gem-c-radio__label__text", text: "Use Government Gateway"
+    assert_select ".govuk-radios__item:first-child .govuk-radios__label", text: "Use Government Gateway"
   end
 
   it "renders radio-group with multiple items" do
@@ -47,8 +47,8 @@ describe "Radio", type: :view do
     )
 
     assert_select ".govuk-radios__input[name=radio-group-multiple-items]"
-    assert_select ".govuk-radios__item:first-child .gem-c-radio__label__text", text: "Use Government Gateway"
-    assert_select ".govuk-radios__item:last-child .gem-c-radio__label__text", text: "Use GOV.UK Verify"
+    assert_select ".govuk-radios__item:first-child .govuk-radios__label", text: "Use Government Gateway"
+    assert_select ".govuk-radios__item:last-child .govuk-radios__label", text: "Use GOV.UK Verify"
   end
 
   it "renders radio-group with bold labels" do
@@ -69,7 +69,7 @@ describe "Radio", type: :view do
     )
 
     assert_select ".govuk-radios__input[name=radio-group-bold-labels]"
-    assert_select ".govuk-radios__item .gem-c-label--bold"
+    assert_select ".govuk-radios__item .govuk-label--s"
   end
 
   it "renders radio-group with hint text" do
@@ -90,10 +90,10 @@ describe "Radio", type: :view do
     )
 
     assert_select ".govuk-radios__input[name=radio-group-hint-text]"
-    assert_select ".govuk-radios__item:first-child .gem-c-radio__label__text", text: "Use Government Gateway"
-    assert_select ".govuk-radios__item:first-child .gem-c-label__hint", text: "You'll have a user ID if you've signed up to do things like sign up Self Assessment tax return online."
-    assert_select ".govuk-radios__item:last-child .gem-c-radio__label__text", text: "Use GOV.UK Verify"
-    assert_select ".govuk-radios__item:last-child .gem-c-label__hint", text: "You'll have an account if you've already proved your identity with a certified company, such as the Post Office."
+    assert_select ".govuk-radios__item:first-child .govuk-radios__label", text: "Use Government Gateway"
+    assert_select ".govuk-radios__item:first-child .govuk-hint", text: "You'll have a user ID if you've signed up to do things like sign up Self Assessment tax return online."
+    assert_select ".govuk-radios__item:last-child .govuk-radios__label", text: "Use GOV.UK Verify"
+    assert_select ".govuk-radios__item:last-child .govuk-hint", text: "You'll have an account if you've already proved your identity with a certified company, such as the Post Office."
   end
 
   it "renders radio-group with checked option" do
@@ -134,9 +134,9 @@ describe "Radio", type: :view do
 
     assert_select ".govuk-radios__input[name=radio-group-custom-id-prefix]"
     assert_select ".govuk-radios__input[id=custom-0]", value: "government-gateway"
-    assert_select ".gem-c-radio__label__text[for=custom-0]", text: "Use Government Gateway"
+    assert_select ".govuk-radios__label[for=custom-0]", text: "Use Government Gateway"
     assert_select ".govuk-radios__input[id=custom-1]", value: "govuk-verify"
-    assert_select ".gem-c-radio__label__text[for=custom-1]", text: "Use GOV.UK Verify"
+    assert_select ".govuk-radios__label[for=custom-1]", text: "Use GOV.UK Verify"
   end
 
   it "renders radio-group with or divider" do
@@ -156,9 +156,9 @@ describe "Radio", type: :view do
     )
 
     assert_select ".govuk-radios__input[name=radio-group-or-divider]"
-    assert_select ".govuk-radios__item:first-child .gem-c-radio__label__text", text: "Use Government Gateway"
+    assert_select ".govuk-radios__item:first-child .govuk-radios__label", text: "Use Government Gateway"
     assert_select ".govuk-radios__divider", text: "or"
-    assert_select ".govuk-radios__item:last-child .gem-c-radio__label__text", text: "Use GOV.UK Verify"
+    assert_select ".govuk-radios__item:last-child .govuk-radios__label", text: "Use GOV.UK Verify"
   end
 
   it "renders radio-group with conditionally revealed content" do

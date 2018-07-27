@@ -18,3 +18,13 @@ $govuk-font-url-function: "font-url";
   margin-bottom: govuk-spacing(2);
   text-align: center;
 }
+
+// Hint for radios support
+// https://github.com/alphagov/govuk-frontend/pull/846/files
+//
+// Remove this after updating to GOV.UK Frontend 1.2.0
+.govuk-radios__hint {
+  display: block;
+  padding-right: 15px;
+  padding-left: 15px;
+}

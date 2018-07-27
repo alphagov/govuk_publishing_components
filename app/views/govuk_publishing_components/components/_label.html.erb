@@ -1,40 +1,21 @@
 <%
   classes ||= ''
-  text_classes ||= ''
-  hint_text_classes ||= ''
   hint_text ||= ''
+  hint_text_classes ||= ''
   bold ||= false
+  css_classes = %w( gem-c-label govuk-label )
+  css_classes << "govuk-label--s" if bold
+  css_classes << classes if classes
+  hint_text_css_classes = %w( govuk-hint )
+  hint_text_css_classes << hint_text_classes if hint_text_classes
 %>
 
+<%= tag.label for: html_for, class: css_classes do %>
+  <%= text %>
+<% end %>
 
-<div
-  class="
-    gem-c-label
-    <%= "gem-c-label--bold" if bold %>
-    <%= classes if classes %>
-  "
->
-  <label
-    class="
-      gem-c-label__text
-      <%= "gem-c-label__text--bold" if bold %>
-      <%= text_classes if text_classes %>
-    "
-    <% if html_for %>
-      for="<%= html_for %>"
-    <% end %>
-  >
-    <%= text %>
-  </label>
-  <% if hint_text.present? %>
-    <span
-      class="
-        gem-c-label__hint
-        <%= hint_text_classes if hint_text_classes %>
-      "
-      id="<%= hint_id %>"
-    >
-      <%= hint_text %>
-    </span>
+<% if hint_text.present? %>
+  <%= tag.span id: hint_id, class: hint_text_css_classes do %>
+    <%= hint_text %>
   <% end %>
-</div>
+<% end %>

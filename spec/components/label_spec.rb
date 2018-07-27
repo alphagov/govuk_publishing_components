@@ -18,7 +18,7 @@ describe "Label", type: :view do
     )
 
     assert_select(
-      ".gem-c-label__text[for='id-that-matches-input']",
+      ".govuk-label[for='id-that-matches-input']",
       text: "National Insurance number"
     )
   end
@@ -32,11 +32,11 @@ describe "Label", type: :view do
     )
 
     assert_select(
-      ".gem-c-label__text[for='id-that-matches-input']",
+      ".govuk-label[for='id-that-matches-input']",
       text: "National Insurance number"
     )
-    assert_select ".gem-c-label__hint", text: "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
-    assert_select ".gem-c-label__hint[id=should-match-aria-describedby-input]"
+    assert_select ".govuk-hint", text: "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+    assert_select ".govuk-hint[id=should-match-aria-describedby-input]"
   end
 
   it "renders label with bold text" do
@@ -47,9 +47,9 @@ describe "Label", type: :view do
     )
 
     assert_select(
-      ".gem-c-label__text[for='id-that-matches-input']",
+      ".govuk-label[for='id-that-matches-input']",
       text: "National Insurance number"
     )
-    assert_select ".gem-c-label__text--bold"
+    assert_select ".govuk-label--s"
   end
 end
