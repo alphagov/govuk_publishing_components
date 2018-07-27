@@ -10,14 +10,6 @@
   border-bottom-color: govuk-colour("grey-1");
 }
 
-// Fix header component's reliance on markup whitespace
-// https://github.com/alphagov/govuk-frontend/pull/884/files
-//
-// Remove this fix after updating to GOV.UK Frontend 1.1.0
-.govuk-header__container {
-  @include govuk-clearfix;
-}
-
 .govuk-header__logo {
   @include mq ($from: desktop) {
     float: left;

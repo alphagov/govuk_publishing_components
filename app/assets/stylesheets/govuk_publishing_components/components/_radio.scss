@@ -5,26 +5,3 @@ $govuk-image-url-function: "image-url";
 $govuk-font-url-function: "font-url";
 
 @import "../../../../node_modules/govuk-frontend/components/radios/radios";
-
-// Radios divider support
-// https://github.com/alphagov/govuk-frontend/pull/849/files
-//
-// Remove this after updating to GOV.UK Frontend 1.2.0
-.govuk-radios__divider {
-  $govuk-radios-size: govuk-spacing(7);
-  $govuk-divider-size: $govuk-radios-size !default;
-  @include govuk-font($size: 19);
-  width: $govuk-divider-size;
-  margin-bottom: govuk-spacing(2);
-  text-align: center;
-}
-
-// Hint for radios support
-// https://github.com/alphagov/govuk-frontend/pull/846/files
-//
-// Remove this after updating to GOV.UK Frontend 1.2.0
-.govuk-radios__hint {
-  display: block;
-  padding-right: 15px;
-  padding-left: 15px;
-}
