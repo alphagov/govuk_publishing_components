@@ -1,5 +1,5 @@
-name: Radio button
-description: A radio button is a GOV.UK element that allows users to answer a question by selecting an option. If you have a question with more than one option you should stack radio buttons.
+name: Form radio button
+description: A radio button is an element that allows users to answer a question by selecting an option. If you have a question with more than one option you should stack radio buttons.
 body: |
   You can also use 'or' as an item to break up radios.
 
@@ -33,6 +33,8 @@ accessibility_criteria: |
 accessibility_excluded_rules:
 - radiogroup # Since this is in isolation we don't want to wrap a fieldset here.
 - aria-expanded # We use aria expanded to reflect the state of a conditionally revealed radio content even if this attribute is not officially supported on this element.
+govuk_frontend_components:
+  - radios
 examples:
   default:
     data:
@@ -118,6 +120,26 @@ examples:
         hint_text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien justo, lobortis elementum tortor in, luctus interdum turpis. Nam sit amet nulla nec arcu condimentum dapibus quis varius metus. Suspendisse cursus tristique diam et vestibulum. Proin nec lacinia tortor. Morbi at nisi id lorem aliquam ullamcorper. Pellentesque laoreet sit amet leo sodales ultricies. Suspendisse maximus efficitur odio in tristique."
         text: "Quisque tincidunt venenatis bibendum. Morbi volutpat magna euismod ipsum consequat cursus. Etiam bibendum interdum ultricies."
         bold: true
+  with_hint_on_form_group:
+    data:
+      name: "radio-group-error"
+      id_prefix: "hint"
+      hint: "You’ll need to prove your identity using one of the following methods"
+      items:
+      - value: "government-gateway"
+        text: "Use Government Gateway"
+      - value: "govuk-verify"
+        text: "Use GOV.UK Verify"
+  with_error_on_form_group:
+    data:
+      name: "radio-group-error"
+      id_prefix: "error"
+      error_message: "Please select one option"
+      items:
+      - value: "government-gateway"
+        text: "Use Government Gateway"
+      - value: "govuk-verify"
+        text: "Use GOV.UK Verify"
   conditional:
     data:
       name: "radio-group-conditional"
