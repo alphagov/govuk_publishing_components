@@ -1,26 +1,6 @@
-@import "helpers/variables";
+// This component relies on styles from GOV.UK Frontend
 
-.gem-c-label {
-  display: block;
-  color: $gem-text-colour;
-  @include core-19;
-}
+// Specify the functions used to resolve assets paths in SCSS
+$govuk-font-url-function: "font-url";
 
-.gem-c-label--bold,
-.gem-c-label__text--bold {
-  font-weight: 700;
-}
-
-// Hint text sits inside a label, to be read by AT
-.gem-c-label__hint {
-  display: block;
-  color: $gem-secondary-text-colour;
-  font-weight: 400;
-}
-
-// TODO: Replace this with the error message component.
-.gem-c-label__error {
-  font-weight: bold;
-  color: $gem-error-colour;
-  padding-top: 4px;
-}
+@import "../../../../node_modules/govuk-frontend/components/label/label";
