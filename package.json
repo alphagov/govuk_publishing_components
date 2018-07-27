@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "govuk-frontend": "^1.0.0"
+    "govuk-frontend": "^1.2.0"
   }
 }
