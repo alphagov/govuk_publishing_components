@@ -9,6 +9,7 @@
   ariadescribedby ||= nil
   css_classes = %w(gem-c-input govuk-input)
   css_classes << "govuk-input--error" if error_message
+  hint_text_css_classes = "govuk-error-message" if error_message
 
   if error_message
     ariadescribedby = hint_id
@@ -22,7 +23,7 @@
     text: label[:text],
     html_for: id,
     hint_text: error_message,
-    hint_text_classes: "gem-c-label__error",
+    hint_text_classes: hint_text_css_classes,
     hint_id: hint_id,
     bold: error_message ? true : false,
   } %>

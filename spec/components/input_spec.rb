@@ -20,7 +20,7 @@ describe "Input", type: :view do
     assert_select ".govuk-input[type='text']"
     assert_select ".govuk-input[name='email-address']"
 
-    assert_select ".gem-c-label", text: "What is your email address?"
+    assert_select ".govuk-label", text: "What is your email address?"
   end
 
   it "renders inputs with a configurable type" do
@@ -39,7 +39,7 @@ describe "Input", type: :view do
     input = css_select(".govuk-input")
     input_id = input.attr("id").text
 
-    assert_select ".gem-c-label__text[for='#{input_id}']"
+    assert_select ".govuk-label[for='#{input_id}']"
   end
 
   it "sets the value when provided" do
@@ -71,15 +71,15 @@ describe "Input", type: :view do
     end
 
     it "renders the error message as the label's hint" do
-      assert_select ".gem-c-label__hint", text: "Please enter a valid email address"
+      assert_select ".govuk-hint", text: "Please enter a valid email address"
     end
 
     it "makes the label bold" do
-      assert_select ".gem-c-label--bold"
+      assert_select ".govuk-label--s"
     end
 
     it "sets the 'aria-describedby' on the input to the hint id and overrides a describedby parameter" do
-      hint = css_select(".gem-c-label__hint")
+      hint = css_select(".govuk-hint")
       hint_id = hint.attr("id").text
 
       assert_select ".govuk-input[aria-describedby='#{hint_id}']"
@@ -90,11 +90,11 @@ describe "Input", type: :view do
     before { render_component(name: "email-address") }
 
     it "does not render the label's hint" do
-      assert_select ".gem-c-label__hint", count: 0
+      assert_select ".govuk-hint", count: 0
     end
 
     it "does not make the label bold" do
-      assert_select ".gem-c-label--bold", count: 0
+      assert_select ".govuk-label--s", count: 0
     end
 
     it "does not set the 'aria-describedby' on the input" do
