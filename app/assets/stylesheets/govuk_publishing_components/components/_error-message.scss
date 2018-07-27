@@ -1,0 +1,6 @@
+// This component relies on styles from GOV.UK Frontend
+
+// Specify the functions used to resolve assets paths in SCSS
+$govuk-font-url-function: "font-url";
+
+@import "../../../../node_modules/govuk-frontend/components/error-message/error-message";
