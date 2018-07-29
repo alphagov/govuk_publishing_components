@@ -1,6 +1,5 @@
 // govuk_frontend_toolkit
-@import 'grid_layout';
-@import 'design-patterns/buttons';
+@import "grid_layout";
 
 .gem-c-feedback {
   max-width: 960px;
@@ -178,6 +177,11 @@
   }
 }
 
-.gem-c-feedback__submit {
-  @include button;
+// static.css on GOV.UK overwrites the component styles using input[type="text"]
+// so we need to apply  govuk-input styles using a stronger selector
+.gem-c-feedback input[type="text"] {
+  // scss-lint:disable PlaceholderInExtend
+  @extend .govuk-input;
+  // scss-lint:enable PlaceholderInExtend
+  margin: 0;
 }
