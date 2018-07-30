@@ -7,6 +7,13 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+# Unreleased
+
+* Add error message and hint components based on GOV.UK Frontend (PR #446)
+* Update feedback component to use GOV.UK Frontend styles (PR #447)
+* Remove brackets from show/hide links (PR #448)
+* Add experimental inset text component based on GOV.UK Frontend (PR #449)
+
 ## 9.7.0
 
 * Update radio component to use GOV.UK Frontend styles (PR #433)
