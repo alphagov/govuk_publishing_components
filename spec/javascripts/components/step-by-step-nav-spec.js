@@ -146,9 +146,12 @@ describe('A stepnav module', function () {
     });
   });
 
-  it("adds an show/hide to each step", function () {
+  it("adds a show/hide element to each step", function () {
     var $stepHeader = $element.find('.gem-c-step-nav__header');
     expect($stepHeader).toContainElement('.gem-c-step-nav__toggle-link');
+    $stepHeader.find('.gem-c-step-nav__toggle-link').each(function() {
+      expect($(this)).toHaveText('Show');
+    });
   });
 
   describe('Clicking the "Show all" button', function () {
