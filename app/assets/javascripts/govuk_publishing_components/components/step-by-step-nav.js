@@ -51,11 +51,8 @@
       bindComponentLinkClicks(stepNavTracker);
 
       function getTextForInsertedElements() {
-        var openBracket = '<span class="visuallyhidden">(</span>';
-        var closeBracket = '<span class="visuallyhidden">)</span>';
-
-        actions.showText = openBracket + $element.attr('data-show-text') + closeBracket;
-        actions.hideText = openBracket + $element.attr('data-hide-text') + closeBracket;
+        actions.showText = $element.attr('data-show-text');
+        actions.hideText = $element.attr('data-hide-text');
         actions.showAllText = $element.attr('data-show-all-text');
         actions.hideAllText = $element.attr('data-hide-all-text');
       }
