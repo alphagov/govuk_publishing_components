@@ -178,6 +178,12 @@ describe('A stepnav module', function () {
       expect($element.find('.js-step-controls-button')).toContainText("Hide all");
     });
 
+    it('changes all the "show" elements to say "hide"', function () {
+      $element.find('.gem-c-step-nav__toggle-link').each(function() {
+        expect($(this)).toHaveText('Hide');
+      });
+    });
+
     it("triggers a google analytics custom event", function () {
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavAllShown', {
         label: 'Show all: Small',
@@ -189,7 +195,7 @@ describe('A stepnav module', function () {
   });
 
   describe('Clicking the "Hide all" button', function () {
-    it("triggers a google analytics custom event", function () {
+    beforeEach(function () {
       GOVUK.analytics = {
         trackEvent: function () {
         }
@@ -198,7 +204,19 @@ describe('A stepnav module', function () {
 
       clickShowHideAll();
       clickShowHideAll();
+    });
 
+    it('changes the Show/Hide all button text to "Show all"', function () {
+      expect($element.find('.js-step-controls-button')).toContainText("Show all");
+    });
+
+    it('changes all the "hide" elements to say "show"', function () {
+      $element.find('.gem-c-step-nav__toggle-link').each(function() {
+        expect($(this)).toHaveText('Show');
+      });
+    });
+
+    it("triggers a google analytics custom event", function () {
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavAllHidden', {
         label: 'Hide all: Small',
         dimension26: expectedstepnavStepCount.toString(),
