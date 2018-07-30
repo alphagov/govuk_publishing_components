@@ -93,8 +93,9 @@
           name: "what_wrong"
         } %>
 
-        <%# TODO: use button component once available in gem %>
-        <input class="gem-c-feedback__submit" type="submit" value="Send">
+        <%= render "govuk_publishing_components/components/button", {
+          text: "Send"
+        } %>
       </div>
     </div>
   </form>
@@ -136,8 +137,9 @@
           describedby: "survey_explanation"
         } %>
 
-        <%# TODO: use button component once available in gem %>
-        <input class="gem-c-feedback__submit" type="submit" value="Send me the survey">
+        <%= render "govuk_publishing_components/components/button", {
+          text: "Send me the survey"
+        } %>
         <a href="https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=<%= stripped_url -%>&amp;gcl=1627485790.1515403243" class="gem-c-feedback__email-link" id="take-survey" target="_blank" rel="noopener noreferrer">Don’t have an email address?</a>
       </div>
     </div>
