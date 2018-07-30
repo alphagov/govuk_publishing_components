@@ -451,7 +451,7 @@ describe('A stepnav module', function () {
 
     it("sets the show/hide link text to 'hide'", function () {
       var $step1 = $element.find('#topic-step-one');
-      expect($step1.find('.js-toggle-link')).toHaveText("(Hide)");
+      expect($step1.find('.js-toggle-link')).toHaveText("Hide");
     });
 
     it("sets the show all/hide all button text correctly", function () {
