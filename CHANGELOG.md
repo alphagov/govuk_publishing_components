@@ -13,6 +13,7 @@
 * Update feedback component to use GOV.UK Frontend styles (PR #447)
 * Remove brackets from show/hide links (PR #448)
 * Add experimental inset text component based on GOV.UK Frontend (PR #449)
+* Add reset styles to document list component (PR #451)
 
 ## 9.7.0
 

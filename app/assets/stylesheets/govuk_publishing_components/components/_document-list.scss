@@ -1,3 +1,12 @@
+// `govuk_frontend_toolkit`
+@import "typography";
+
+.gem-c-document-list {
+  @include core-19;
+  margin: 0;
+  padding: 0;
+}
+
 .gem-c-document-list__item {
   overflow: hidden;
   margin-bottom: $gutter-one-third;
@@ -30,6 +39,10 @@
 
 .gem-c-document-list__item-description {
   margin-bottom: 5px;
+}
+
+.gem-c-document-list__item-metadata {
+  padding: 0;
 }
 
 .gem-c-document-list__attribute {
