@@ -1,0 +1,10 @@
+<%
+  id ||= "inset-text-#{SecureRandom.hex(4)}"
+  classes ||= ''
+  css_classes = %w( gem-c-inset-text govuk-inset-text )
+  css_classes << classes if classes
+%>
+
+<%= tag.div id: id, class: css_classes do %>
+  <%= text %>
+<% end %>
