@@ -1,0 +1,10 @@
+<%
+  id ||= "error-message-#{SecureRandom.hex(4)}"
+  classes ||= ''
+  css_classes = %w( gem-c-error-message govuk-error-message )
+  css_classes << classes if classes
+%>
+
+<%= tag.span id: id, class: css_classes do %>
+  <%= text %>
+<% end %>

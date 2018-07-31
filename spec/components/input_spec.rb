@@ -34,7 +34,10 @@ describe "Input", type: :view do
   end
 
   it "sets the 'for' on the label to the input id" do
-    render_component(name: "email-address")
+    render_component(
+      label: { text: "What is your email address?" },
+      name: "email-address"
+    )
 
     input = css_select(".govuk-input")
     input_id = input.attr("id").text
@@ -61,45 +64,41 @@ describe "Input", type: :view do
     assert_select ".govuk-input[aria-describedby='some-other-element']"
   end
 
-  context "when an error_message is provided" do
+  context "when a hint is provided" do
     before do
       render_component(
         name: "email-address",
-        error_message: "Please enter a valid email address",
-        describedby: "some-other-element"
+        hint: "Please enter a valid email address",
       )
     end
 
-    it "renders the error message as the label's hint" do
+    it "renders the hint" do
       assert_select ".govuk-hint", text: "Please enter a valid email address"
     end
 
-    it "makes the label bold" do
-      assert_select ".govuk-label--s"
-    end
-
-    it "sets the 'aria-describedby' on the input to the hint id and overrides a describedby parameter" do
-      hint = css_select(".govuk-hint")
-      hint_id = hint.attr("id").text
+    it "has 'aria-describedby' the hint id" do
+      hint_id = css_select(".govuk-hint").attr("id")
 
       assert_select ".govuk-input[aria-describedby='#{hint_id}']"
     end
   end
 
-  context "when an error_message is not provided" do
-    before { render_component(name: "email-address") }
-
-    it "does not render the label's hint" do
-      assert_select ".govuk-hint", count: 0
+  context "when an error_message is provided" do
+    before do
+      render_component(
+        name: "email-address",
+        error_message: "Please enter a valid email address",
+      )
     end
 
-    it "does not make the label bold" do
-      assert_select ".govuk-label--s", count: 0
+    it "renders the error message" do
+      assert_select ".govuk-error-message", text: "Please enter a valid email address"
     end
 
-    it "does not set the 'aria-describedby' on the input" do
-      input = css_select(".govuk-input")
-      expect(input.attr("aria-describedby")).to be_nil
+    it "has 'aria-describedby' the error message id" do
+      error_message_id = css_select(".govuk-error-message").attr("id")
+
+      assert_select ".govuk-input[aria-describedby='#{error_message_id}']"
     end
   end
 end

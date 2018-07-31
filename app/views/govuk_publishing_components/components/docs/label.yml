@@ -2,8 +2,6 @@ name: Form label
 description: Use labels for all form fields.
 body: |
   For use with other form inputs e.g. [Radio buttons](/component-guide/radio)
-
-  Forked from the upcoming [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend), when GOV.UK Frontend release we can replace these source files.
 accessibility_criteria: |
   All text must have a contrast ratio higher than 4.5:1 against the background colour to meet [WCAG AA](https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast)
 
@@ -16,6 +14,8 @@ accessibility_criteria: |
   - be associated with an input. The `hint_id` must match the `aria-describedby` property on the input your label is associated with.
 
   If hint text is within a label it will be announced in its entirity by screen readers. By putting the hint alongside labels and associating hints with inputs using `aria-describedby`, then screen readers will read the label, describe the type of input (eg radio) and then read additional text. It means users of screen readers can scan and skip options as easy as people making choices with sight. [A discussion of this approach](https://github.com/alphagov/govuk_elements/issues/574).
+govuk_frontend_components:
+  - label
 examples:
   default:
     data:

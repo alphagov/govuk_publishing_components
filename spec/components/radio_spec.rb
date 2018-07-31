@@ -72,7 +72,7 @@ describe "Radio", type: :view do
     assert_select ".govuk-radios__item .govuk-label--s"
   end
 
-  it "renders radio-group with hint text" do
+  it "renders radio items with hint text" do
     render_component(
       name: "radio-group-hint-text",
       items: [
@@ -179,6 +179,44 @@ describe "Radio", type: :view do
     )
 
     assert_select ".govuk-radios__conditional", text: "You’ll need to prove your identity using Government Gateway"
+  end
+
+  it "renders radio-group with hint text" do
+    render_component(
+      name: "radio-group-conditional",
+      hint: "You’ll need to prove your identity using one of the following methods",
+      items: [
+        {
+          value: "government-gateway",
+          text: "Use Government Gateway"
+        },
+        {
+          value: "govuk-verify",
+          text: "Use GOV.UK Verify"
+        }
+      ]
+    )
+
+    assert_select ".govuk-hint", text: "You’ll need to prove your identity using one of the following methods"
+  end
+
+  it "renders radio-group with error message" do
+    render_component(
+      name: "radio-group-conditional",
+      error_message: "Please select one option",
+      items: [
+        {
+          value: "government-gateway",
+          text: "Use Government Gateway"
+        },
+        {
+          value: "govuk-verify",
+          text: "Use GOV.UK Verify"
+        }
+      ]
+    )
+
+    assert_select ".govuk-error-message", text: "Please select one option"
   end
 
   it "renders radio-group with welsh translated 'or'" do

@@ -1,0 +1,16 @@
+name: Form error message
+description: Use error messages for any form fields.
+govuk_frontend_components:
+  - error-message
+accessibility_criteria: |
+  All text must have a contrast ratio higher than 4.5:1 against the background colour to meet [WCAG AA](https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast)
+
+  Error message must:
+
+  - be associated with an input. The `error_message_id` must match the `aria-describedby` property on the input your label is associated with.
+
+  If error message is within a label it will be announced in its entirety by screen readers. By associating error messages with inputs using `aria-describedby`, then screen readers will read the label, describe the type of input (eg radio) and then read additional text. It means users of screen readers can scan and skip options as easy as people making choices with sight.
+examples:
+  default:
+    data:
+      text: "Please enter your National Insurance Number"

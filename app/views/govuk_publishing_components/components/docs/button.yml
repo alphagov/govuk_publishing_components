@@ -3,11 +3,6 @@ description: Use buttons to move though a transaction, aim to use only one butto
 body: |
   Button text should be short and describe the action the button performs.
 
-  [GOV.UK Elements has more information](https://govuk-elements.herokuapp.com/buttons/) on how buttons should be used.
-
-  Note: We do not consume GOV.UK Elements directly due to the naming conventions being leaky,
-  in time this component will be a wrapper for the [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend) project's button component.
-
   This component is also [extended for use in govspeak](https://govuk-publishing-components.herokuapp.com/component-guide/govspeak/button).
 
   These instances of buttons are added by Content Designers, ideally this duplication would not exist but we currently don't have shared markup
@@ -23,6 +18,8 @@ accessibility_criteria: |
   - activate when focused and enter is pressed
   - have a role of button
   - have an accessible label
+govuk_frontend_components:
+  - button
 examples:
   default:
     data:

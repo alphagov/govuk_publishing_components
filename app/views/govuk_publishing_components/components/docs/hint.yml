@@ -1,0 +1,16 @@
+name: Form hint text
+description: Use hints for any form fields.
+govuk_frontend_components:
+  - hint
+accessibility_criteria: |
+  All text must have a contrast ratio higher than 4.5:1 against the background colour to meet [WCAG AA](https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast)
+
+  Hint text must:
+
+  - be associated with an input. The `hint_id` must match the `aria-describedby` property on the input your label is associated with.
+
+  If hint text is within a label it will be announced in its entirety by screen readers. By associating hints with inputs using `aria-describedby`, then screen readers will read the label, describe the type of input (eg radio) and then read additional text. It means users of screen readers can scan and skip options as easy as people making choices with sight.
+examples:
+  default:
+    data:
+      text: "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."

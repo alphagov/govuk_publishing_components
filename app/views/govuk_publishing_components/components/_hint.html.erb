@@ -1,0 +1,10 @@
+<%
+  id ||= "hint-#{SecureRandom.hex(4)}"
+  classes ||= ''
+  css_classes = %w( gem-c-hint govuk-hint )
+  css_classes << classes if classes
+%>
+
+<%= tag.span id: id, class: css_classes do %>
+  <%= text %>
+<% end %>

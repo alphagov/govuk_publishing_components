@@ -4,6 +4,8 @@ accessibility_criteria: |
   - has a touch area easy for users to touch
 shared_accessibility_criteria:
 - link
+govuk_frontend_components:
+  - back-link
 examples:
   default:
     data:
