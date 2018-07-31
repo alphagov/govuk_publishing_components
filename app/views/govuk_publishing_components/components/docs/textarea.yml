@@ -1,0 +1,48 @@
+name: Form textarea (experimental)
+description: A textarea field and an associated label
+part_of_admin_layout: true
+govuk_frontend_components:
+  - textarea
+accessibility_criteria: |
+  The component must:
+
+  - accept focus
+  - be focusable with a keyboard
+  - be usable with a keyboard
+  - be usable with touch
+  - indicate when they have focus
+  - be recognisable as form textarea elements
+  - have correctly associated labels
+
+  Labels use the [label component](/component-guide/label).
+examples:
+  default:
+    data:
+      label:
+        text: "Can you provide more detail?"
+      name: "more-detail"
+  specific_rows:
+    description: Textarea with 10 rows
+    data:
+      label:
+        text: "Can you provide more detail?"
+      name: "more-detail-rows"
+      rows: 10
+  with_hint:
+    data:
+      label:
+        text: "Can you provide more detail?"
+      name: "with-hint"
+      hint: "Please include as much information as possible."
+  with_error:
+    data:
+      label:
+        text: "Can you provide more detail?"
+      name: "more-detail-error"
+      error_message: "Please could you provide more detail"
+  with_value:
+    data:
+      label:
+        text: "Can you provide more detail?"
+      name: "more-detail-value"
+      value: "More detail"
