@@ -13,6 +13,7 @@
 * Update feedback component to use GOV.UK Frontend styles (PR #447)
 * Remove brackets from show/hide links (PR #448)
 * Add experimental inset text component based on GOV.UK Frontend (PR #449)
+* Add experimental textarea component based on GOV.UK Frontend (PR #450)
 * Add reset styles to document list component (PR #451)
 * Add tests for contextual breadcrumbs (PR #457)
 * Contextual breadcrumbs will show taxon based breadcrumbs if prioritise_taxon_breadcrumbs is true (defaults to false if not passed) (PR #457)
