@@ -1,0 +1,24 @@
+name: Details
+description: Make a page easier to scan by letting users reveal more detailed information only if they need it
+shared_accessibility_criteria:
+  - link
+accessibility_criteria: |
+  The component must:
+
+  * accept focus
+  * be focusable with a keyboard
+  * be usable with a keyboard
+  * be usable with touch
+  * indicate when it has focus
+  * toggle the visibility of the details element's content when interacted with
+  * indicate the expanded state when details' content is visible
+  * indicate the collapsed state when details' content is hidden
+part_of_admin_layout: true
+govuk_frontend_components:
+  - header
+examples:
+  default:
+    data:
+      title: Help with nationality
+      block: |
+        We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.
