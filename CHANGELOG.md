@@ -7,6 +7,11 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add tests for contextual breadcrumbs
+* Contextual breadcrumbs will show taxon based breadcrumbs if prioritise_taxon_breadcrumbs is true (defaults to false if not passed)
+
 ## 9.7.0
 
 * Update radio component to use GOV.UK Frontend styles (PR #433)
