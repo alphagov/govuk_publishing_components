@@ -201,3 +201,75 @@ Code can be called and referred to in the template as follows:
 
 <%= card_helper.heading_tag %>
 ```
+
+## Passing HTML to a component
+Avoid marking HTML as safe within components, this means avoiding use of `raw` or `html_safe` within a component's view.
+
+By doing this we can avoid the risk of a Cross Site Scripting (XSS) attack.
+
+Only sanitise HTML when the component is used in the application.
+
+There are a few methods to achieve this:
+
+### Yielding blocks with single slots for nested children
+
+Similar to HTML, there may be a clear slot where nested children should appear in a component.
+
+For a panel component, you may expect anything nested within it to appear
+at the bottom of the component.
+
+Do not:
+
+```erb
+<%= render 'panel', content: "Your reference number<br><strong>HDJ2123F</strong>" %>
+```
+
+Do:
+
+```erb
+<%= render 'panel' do %>
+  Your reference number
+  <br>
+  <strong>HDJ2123F</strong>
+<% end %>
+```
+
+### Parameters with HTML for multiple slots
+
+If you have multiple slots where HTML may go, you could consider passing them as parameters.
+
+Note: If you can avoid a requirement for HTML this may be better. In the following example you may consider
+`title: { level: 1, text: 'Application complete' }`.
+
+Do not:
+
+```erb
+<%= render 'panel', { title: '<h1>Application complete</h1>' } do %>
+  Your reference number
+  <br>
+  <strong>HDJ2123F</strong>
+<% end %>
+```
+
+Do:
+
+```erb
+<% panel_title = capture do %>
+  <h1>Application complete</h1>
+<% end %>
+<%= render 'panel', { title: panel_title } do %>
+  Your reference number
+  <br>
+  <strong>HDJ2123F</strong>
+<% end %>
+```
+
+or (if the data is passed from a presenter / controller)
+
+```erb
+<%= render 'panel', { title: presented_panel_title.html_safe } do %>
+  Your reference number
+  <br>
+  <strong>HDJ2123F</strong>
+<% end %>
+```
