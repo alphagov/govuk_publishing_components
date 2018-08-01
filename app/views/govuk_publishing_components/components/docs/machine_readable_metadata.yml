@@ -47,3 +47,10 @@ examples:
         base_path: "/foo"
         details: {}
       schema: :person
+  organisation_schema:
+    data:
+      content_item:
+        title: "Ministry of Organisation"
+        base_path: "/foo"
+        details: {}
+      schema: :organisation
