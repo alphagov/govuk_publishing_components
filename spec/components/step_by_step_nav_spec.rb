@@ -204,9 +204,9 @@ describe "step nav", type: :view do
   it "displays step numbering and step logic correctly" do
     render_component(steps: stepnav)
 
-    assert_select step1 + " .gem-c-step-nav__circle--number .gem-c-step-nav__circle-inner .gem-c-step-nav__circle-background", text: "Step 1"
+    assert_select step1 + " .gem-c-step-nav__circle--number .gem-c-step-nav__circle-inner .gem-c-step-nav__circle-background", text: "Step 1:"
     assert_select step1and + " .gem-c-step-nav__circle--logic .gem-c-step-nav__circle-inner .gem-c-step-nav__circle-background", text: "and"
-    assert_select step2 + " .gem-c-step-nav__circle--number .gem-c-step-nav__circle-inner .gem-c-step-nav__circle-background", text: "Step 2"
+    assert_select step2 + " .gem-c-step-nav__circle--number .gem-c-step-nav__circle-inner .gem-c-step-nav__circle-background", text: "Step 2:"
     assert_select step2or + " .gem-c-step-nav__circle--logic .gem-c-step-nav__circle-inner .gem-c-step-nav__circle-background", text: "or"
   end
 
