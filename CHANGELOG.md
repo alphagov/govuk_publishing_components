@@ -9,6 +9,8 @@
 
 ## Unreleased
 
+* Step by step component, Google snippet improvement (PR #461)
+
 ## 9.8.0
 
 * Add error message and hint components based on GOV.UK Frontend (PR #446)
