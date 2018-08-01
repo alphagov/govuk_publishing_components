@@ -10,6 +10,8 @@
 ## Unreleased
 
 * Step by step component, Google snippet improvement (PR #461)
+* Add tabs component (PR #455)
+
 
 ## 9.8.0
 
@@ -21,6 +23,8 @@
 * Add reset styles to document list component (PR #451)
 * Add tests for contextual breadcrumbs (PR #457)
 * Allow prioritising taxonomy breadcrumbs (PR #457)
+* Contextual breadcrumbs will show taxon based breadcrumbs if prioritise_taxon_breadcrumbs is true (defaults to false if not passed) (PR #457)
+
 
 ## 9.7.0
 

@@ -4,7 +4,6 @@ part_of_admin_layout: true
 govuk_frontend_components:
   - select
 accessibility_criteria: |
-The component must:
   - accept focus
   - be focusable with a keyboard
   - be usable with a keyboard

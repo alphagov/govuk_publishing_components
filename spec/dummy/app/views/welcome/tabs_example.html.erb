@@ -1,0 +1,22 @@
+<h1>A test page in the dummy app</h1>
+<p>This is for testing the tabs component</p>
+<% tab1content = capture do %>
+  <p>Fusce at dictum tellus, ac accumsan est. Nulla vitae turpis in nulla gravida tincidunt. Duis lectus felis, tempus id bibendum sit amet, posuere ut elit. Donec enim odio, eleifend in urna a, sagittis egestas est. Proin id ex ultricies, porta eros id, vehicula quam. Morbi non sagittis velit.</p>
+<% end %>
+<% tab2content = capture do %>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue elementum commodo. Vestibulum elit turpis, efficitur quis posuere vitae, commodo vitae augue. Donec ut pharetra ligula. Phasellus ac mauris eu felis bibendum dapibus rutrum sed quam. Pellentesque posuere ante id consequat pretium.</p>
+<% end %>
+  <%= render "govuk_publishing_components/components/tabs", {
+    tabs: [
+      {
+        id: "tab1",
+        title: "First section",
+        content: tab1content
+      },
+      {
+        id: "tab2",
+        title: "Second section",
+        content: tab2content
+      }
+    ]
+  } %>

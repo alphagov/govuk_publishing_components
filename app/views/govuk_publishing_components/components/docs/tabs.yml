@@ -1,0 +1,42 @@
+name: "Tabs (experimental)"
+description: "The tabs component lets users toggle between related sections of content."
+part_of_admin_layout: true
+body: |
+  This component is based on the [design system tabs component](https://design-system.service.gov.uk/components/tabs/)
+  and is currently experimental. If using this component, please feed back any research findings to the
+  design team.
+
+  The tabs component lets users navigate between related sections of content on a single page,
+  displaying one section at a time. Note that they are not intended to be used to navigate
+  between different pages.
+
+  The content block MUST be passed as a block to avoid the risk of unsanitised HTML.
+accessibility_criteria: |
+  - Tabs must:
+    * accept focus
+    * be usable with a keyboard
+    * indicate when they have focus
+    * be usable with touch
+    * be usable with voice commands
+    * have visible text
+
+examples:
+  default:
+    data:
+      tabs:
+        - id: "tab1"
+          title: "First section"
+          content: |
+            <p>Fusce at dictum tellus, ac accumsan est. Nulla vitae turpis in nulla gravida tincidunt. Duis lectus felis, tempus id bibendum sit amet, posuere ut elit. Donec enim odio, eleifend in urna a, sagittis egestas est. Proin id ex ultricies, porta eros id, vehicula quam. Morbi non sagittis velit.</p>
+        - id: "tab2"
+          title: "Second section"
+          content: |
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue elementum commodo. Vestibulum elit turpis, efficitur quis posuere vitae, commodo vitae augue. Donec ut pharetra ligula. Phasellus ac mauris eu felis bibendum dapibus rutrum sed quam. Pellentesque posuere ante id consequat pretium.</p>
+  single_item:
+    description: If only an individual item is supplied to the component (if the list is created dynamically, for example) it will be rendered without tabs.
+    data:
+      tabs:
+        - id: "singletab"
+          title: "Single piece of content"
+          content: |
+            Here is a single piece of content, there should be no tabs.
