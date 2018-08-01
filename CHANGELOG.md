@@ -7,7 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-# Unreleased
+## Unreleased
+
+## 9.8.0
 
 * Add error message and hint components based on GOV.UK Frontend (PR #446)
 * Update feedback component to use GOV.UK Frontend styles (PR #447)
@@ -16,7 +18,7 @@
 * Add experimental textarea component based on GOV.UK Frontend (PR #450)
 * Add reset styles to document list component (PR #451)
 * Add tests for contextual breadcrumbs (PR #457)
-* Contextual breadcrumbs will show taxon based breadcrumbs if prioritise_taxon_breadcrumbs is true (defaults to false if not passed) (PR #457)
+* Allow prioritising taxonomy breadcrumbs (PR #457)
 
 ## 9.7.0
 
