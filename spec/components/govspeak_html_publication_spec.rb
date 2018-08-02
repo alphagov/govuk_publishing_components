@@ -30,15 +30,6 @@ describe "Govspeak for HTML publications", type: :view do
     assert_select ".disable-youtube h2", text: "youtube"
   end
 
-  it "can enable rich govspeak" do
-    render_component(
-      rich_govspeak: true,
-      content: "<strong>boldly go</strong>".html_safe
-    )
-
-    assert_select ".rich-govspeak strong", text: 'boldly go'
-  end
-
   it "accepts a block" do
     render "govuk_publishing_components/components/#{component_name}" do
       "content-via-block"

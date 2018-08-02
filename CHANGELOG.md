@@ -17,6 +17,7 @@
 * Add tabs component (PR #455)
 * Adds styling for singular related step by step navs (PR #458)
 * Add schema.org `isPartOf` links from articles to step by steps (PR #384)
+* Enables bold styling in govspeak blocks, removes rich govspeak feature (PR #463)
 
 ## 9.8.0
 
