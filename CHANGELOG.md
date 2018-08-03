@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 9.9.0
 
 * Step by step component, Google snippet improvement (PR #461)
 * Add tabs component (PR #455)
