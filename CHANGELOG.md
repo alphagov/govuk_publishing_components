@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 9.9.1
 
 * Stop document list rendering titles as headings (PR #465)
 
