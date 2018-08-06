@@ -186,18 +186,6 @@
 
   // Text styles
 
-  strong {
-    font-weight: 400;
-  }
-
-  // rich-govspeak is a modifier for the govspeak component
-  // that allows bold text. Used by the highway code manual.
-  &.rich-govspeak {
-    strong {
-      font-weight: bold;
-    }
-  }
-
   em,
   i {
     font-style: normal;
