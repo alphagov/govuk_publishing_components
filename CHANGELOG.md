@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Stop document list rendering titles as headings (PR #465)
+
 ## 9.9.0
 
 * Step by step component, Google snippet improvement (PR #461)
