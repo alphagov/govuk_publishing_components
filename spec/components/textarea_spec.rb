@@ -33,6 +33,15 @@ describe "Textarea", type: :view do
     assert_select ".govuk-textarea[rows='10']"
   end
 
+  it "renders textarea with a data attributes" do
+    render_component(
+      data: { module: "contextual-guidance" },
+      name: "with-data-attributes"
+    )
+
+    assert_select ".govuk-textarea[data-module='contextual-guidance']"
+  end
+
   it "sets the 'for' on the label to the textarea id" do
     render_component(
       label: { text: "Can you provide more detail?" },
