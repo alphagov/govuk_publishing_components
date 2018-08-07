@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Adds publishing-app metatag (PR #470)
+
 ## 9.11.0
 
 * Add data attributes and spellcheck support for textarea component (PR #468)
