@@ -2,6 +2,8 @@
   id ||= "textarea-#{SecureRandom.hex(4)}"
   value ||= nil
   rows ||= 5
+  data ||= nil
+  spellcheck ||= "true"
 
   label ||= nil
   hint ||= nil
@@ -50,6 +52,8 @@
     class: css_classes,
     id: id,
     rows: rows,
+    data: data,
+    spellcheck: spellcheck,
     aria: {
       describedby: aria_described_by
     } do %><%= value %><% end %>
