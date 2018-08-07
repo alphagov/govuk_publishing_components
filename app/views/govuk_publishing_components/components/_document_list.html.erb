@@ -1,5 +1,7 @@
 <%
   items ||= []
+  within_multitype_list ||= false
+  within_multitype_list_class = " gem-c-document-list__multi-list" if within_multitype_list
   margin_top_class = " gem-c-document-list--top-margin" if local_assigns[:margin_top]
   margin_bottom_class = " gem-c-document-list--bottom-margin" if local_assigns[:margin_bottom]
   title_with_context_class = " gem-c-document-list__item-title--context"
@@ -8,9 +10,11 @@
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
 %>
 <% if items.any? %>
-  <ol class="gem-c-document-list<%= margin_bottom_class %><%= margin_top_class %> <%= brand_helper.brand_class %>">
+  <% unless within_multitype_list %>
+    <ol class="gem-c-document-list<%= margin_bottom_class %><%= margin_top_class %> <%= brand_helper.brand_class %>">
+  <% end %>
     <% items.each do |item| %>
-      <li class="gem-c-document-list__item">
+      <li class="gem-c-document-list__item<%= within_multitype_list_class %>">
         <%=
           link_to(
             item[:link][:text],
@@ -45,5 +49,7 @@
         <% end %>
       </li>
     <% end %>
-  </ol>
+  <% unless within_multitype_list %>
+    </ol>
+  <% end %>
 <% end %>

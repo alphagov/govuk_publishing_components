@@ -22,6 +22,7 @@ require "govuk_publishing_components/presenters/contents_list_helper"
 require "govuk_publishing_components/presenters/image_card_helper"
 require "govuk_publishing_components/presenters/organisation_logo_helper"
 require "govuk_publishing_components/presenters/highlight_boxes_helper"
+require "govuk_publishing_components/presenters/taxonomy_list_helper"
 
 require "govuk_publishing_components/app_helpers/taxon_breadcrumbs"
 require "govuk_publishing_components/app_helpers/brand_helper"
