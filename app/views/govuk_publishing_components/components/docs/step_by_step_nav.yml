@@ -215,19 +215,16 @@ examples:
               contents: [
                 {
                   href: '/component-guide/step_by_step_navigation/with_links/preview',
-                  text: 'Obtain a driving licence prior to driving a car',
-                  active: true
+                  text: 'Obtain a driving licence prior to driving a car'
                 },
                 {
                   href: '/component-guide/step_by_step_navigation/with_links/preview',
                   text: 'Acquire food before attempting to cook',
-                  context: '1p to &pound;20',
-                  active: true
+                  context: '1p to &pound;20'
                 },
                 {
                   href: '/component-guide/step_by_step_navigation/with_links/preview',
-                  text: 'Maintain contact with the ground at all times',
-                  active: true
+                  text: 'Maintain contact with the ground at all times'
                 }
               ]
             },
@@ -241,14 +238,12 @@ examples:
               contents: [
                 {
                   href: '/component-guide/step_by_step_navigation/',
-                  text: 'Leave school at sixteen',
-                  active: true
+                  text: 'Leave school at sixteen'
                 },
                 {
                   href: '/component-guide/step_by_step_navigation/',
                   text: 'Continue into higher education',
-                  context: '&pound;9,500',
-                  active: true
+                  context: '&pound;9,500'
                 }
               ]
             }
@@ -272,8 +267,7 @@ examples:
                 },
                 {
                   href: '/component-guide/step_by_step_navigation/with_links/preview',
-                  text: 'Do the things',
-                  active: true
+                  text: 'Do the things'
                 }
               ]
             },
@@ -340,22 +334,24 @@ examples:
       ]
   solve_the_double_dot_problem:
     description: |
-      If a page is in a step by step navigation more than once and a user is viewing that URL, both links to it will be highlighted as the backend has no way to know which link the user is currently viewing (links should only be highlighted when the step by step navigation is in the sidebar).
+      As shown, options can be passed to the component to highlight one step, expand one step by default, and highlight multiple links. These options should only be used when the component is in the sidebar. The step that is highlighted and expanded will be referred to as the active step (even though they are separate options, it is assumed that they will normally be applied to the same step).
 
-      JavaScript is included in the component to solve this. It uses sessionStorage to capture the data-position attribute of non-external links when clicked, and then uses this value to decide which link (and parent step) to highlight and expand when the new page loads. Note that it uses the tracking_id attribute to uniquely identify the current step nav. If tracking_id is not set this may result in other step navs having the wrong link highlighted.
+      If a link is in a step by step navigation more than once and the user is on that page, the backend doesn't know which link to highlight, so it highlights both of them.
 
-      If a user has not clicked a link (i.e. has visited the page without first clicking on a step by step navigation) the first active link in the first active step will be highlighted. If there is no active step, the first active link will be highlighted (but there should always be an active step).
+      JavaScript is included in the component to solve this. It uses sessionStorage to capture the data-position attribute of non-external links when clicked, and then uses this value to decide which link to highlight after the new page loads. It uses the value of the tracking_id option to uniquely identify the current step nav in the session (if this is not passed to the component this may result in other step navs having the wrong link highlighted).
 
-      The current page in the step by step navigation is an anchor link to the top of the page. If there are more than one of these and the user clicks one that is not currently highlighted, that one will be highlighted.
+      If a user has not clicked a link (i.e. has visited the page without first clicking on a step by step navigation) only the first duplicate link will be highlighted. If that link is not in the active step, the JS makes the highlighted link's parent the active step. If there is no active step, the first active link will be highlighted (but there should always be an active step).
 
       The example below will show all non-external links highlighted if JS is disabled. In the real world no more than two or three links are likely to be highlighted at once.
+
+      Changes to the active step and highlighted link are also applied on click, if the user clicks one of the other links that is to the same page (they are amended by the component to be jump links to the top of the page). Open this example using the 'preview' link and try clicking on the 'internal' links to see how it behaves.
     data:
       highlight_step: 2
       show_step: 2
       tracking_id: "example-id"
       steps: [
         {
-          title: "Not the active step",
+          title: "The active step",
           contents: [
             {
               type: 'list',
@@ -383,7 +379,7 @@ examples:
           ]
         },
         {
-          title: "The active step",
+          title: "Not the active step",
           contents: [
             {
               type: 'list',

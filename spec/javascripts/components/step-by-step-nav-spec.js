@@ -42,14 +42,14 @@ describe('A stepnav module', function () {
           </div>\
           <div class="gem-c-step-nav__panel js-panel" id="step-panel-topic-step-two-1">\
             <ol class="gem-c-step-nav__list" data-length="2">\
-              <li class="gem-c-step-nav__list-item gem-c-step-nav__list-item--active js-list-item">\
-                <a href="/link2" class="gem-c-step-nav__link js-link" data-position="2.1">Link 2</a>\
+              <li class="gem-c-step-nav__list-item js-will-be-an-active-link js-list-item">\
+                <a href="/link2" class="gem-c-step-nav__link js-link" data-position="2.1"><span class="visuallyhidden">You are currently viewing: </span>Link 2</a>\
               </li>\
               <li class="gem-c-step-nav__list-item js-list-item">\
                 <a href="/link3" class="gem-c-step-nav__link js-link" data-position="2.2">Link 3</a>\
               </li>\
-              <li class="gem-c-step-nav__list-item gem-c-step-nav__list-item--active js-list-item">\
-                <a href="#content" class="gem-c-step-nav__link js-link" data-position="2.3">Link 4</a>\
+              <li class="gem-c-step-nav__list-item js-will-be-an-active-link js-list-item">\
+                <a href="#content" class="gem-c-step-nav__link js-link" data-position="2.3"><span class="visuallyhidden">You are currently viewing: </span>Link 4</a>\
               </li>\
             </ol>\
           </div>\
@@ -69,20 +69,20 @@ describe('A stepnav module', function () {
           </div>\
           <div class="gem-c-step-nav__panel js-panel" id="step-panel-topic-step-three-1">\
             <ol class="gem-c-step-nav__list" data-length="5">\
-              <li class="gem-c-step-nav__list-item gem-c-step-nav__list-item--active js-list-item">\
-                <a href="/link4" class="gem-c-step-nav__link js-link" data-position="3.1">Link 5</a>\
+              <li class="gem-c-step-nav__list-item js-will-be-an-active-link js-list-item">\
+                <a href="/link4" class="gem-c-step-nav__link js-link" data-position="3.1"><span class="visuallyhidden">You are currently viewing: </span>Link 5</a>\
               </li>\
-              <li class="gem-c-step-nav__list-item gem-c-step-nav__list-item--active js-list-item">\
-                <a href="/link5" class="gem-c-step-nav__link js-link" data-position="3.2">Link 6</a>\
+              <li class="gem-c-step-nav__list-item js-will-be-an-active-link js-list-item">\
+                <a href="/link5" class="gem-c-step-nav__link js-link" data-position="3.2"><span class="visuallyhidden">You are currently viewing: </span>Link 6</a>\
               </li>\
               <li class="gem-c-step-nav__list-item js-list-item">\
                 <a href="http://www.gov.uk" class="gem-c-step-nav__link js-link" data-position="3.3" rel="external">Link 7</a>\
               </li>\
-              <li class="gem-c-step-nav__list-item gem-c-step-nav__list-item--active js-list-item">\
-                <a href="#content" class="gem-c-step-nav__link js-link" data-position="3.4">Link 8</a>\
+              <li class="gem-c-step-nav__list-item js-will-be-an-active-link js-list-item">\
+                <a href="#content" class="gem-c-step-nav__link js-link" data-position="3.4"><span class="visuallyhidden">You are currently viewing: </span>Link 8</a>\
               </li>\
-              <li class="gem-c-step-nav__list-item gem-c-step-nav__list-item--active js-list-item">\
-                <a href="#content" class="gem-c-step-nav__link js-link" data-position="3.5">Link 9</a>\
+              <li class="gem-c-step-nav__list-item js-will-be-an-active-link js-list-item">\
+                <a href="#content" class="gem-c-step-nav__link js-link" data-position="3.5"><span class="visuallyhidden">You are currently viewing: </span>Link 9</a>\
               </li>\
             </ol>\
           </div>\
@@ -792,10 +792,12 @@ describe('A stepnav module', function () {
     beforeEach(function () {
       stepnav = new GOVUK.Modules.Gemstepnav();
       $element = $(html);
+      $element.find('.js-will-be-an-active-link').addClass('gem-c-step-nav__list-item--active');
       stepnav.start($element);
     });
 
     afterEach(function () {
+      $element.find('.js-will-be-an-active-link').removeClass('gem-c-step-nav__list-item--active');
       sessionStorage.removeItem('govuk-step-nav-active-link_unique-id');
     });
 
@@ -809,10 +811,19 @@ describe('A stepnav module', function () {
       expect(sessionStorage.getItem('govuk-step-nav-active-link_unique-id')).toBe(null);
     });
 
-    it("highlights the first active link in the first active step if no sessionStorage value is set", function () {
+    it("highlights the first active link and its parent step if no sessionStorage value is set", function () {
       expect(sessionStorage.getItem('govuk-step-nav-active-link_unique-id')).toBe(null);
-      expect($element.find('.js-link[data-position="3.1"]').closest('.js-list-item')).toHaveClass('gem-c-step-nav__list-item--active');
-      expect($element.find(('.gem-c-step-nav__list-item--active')).length).toBe(1);
+      var $active = $element.find('.js-link[data-position="2.1"]');
+      expect($active.closest('.js-list-item')).toHaveClass('gem-c-step-nav__list-item--active');
+      expect($active.closest('.js-step')).toHaveClass('gem-c-step-nav__step--active');
+      expect($element.find('.gem-c-step-nav__list-item--active').length).toBe(1);
+      expect($element.find('.gem-c-step-nav__list-item--active').length).toBe(1);
+      expect($element.find('.step-is-shown').length).toBe(1);
+    });
+
+    it("ensures only the active link has a hidden span for screen readers to indicate which is the active link", function () {
+      var $spans = $element.find('.js-link .visuallyhidden');
+      expect($spans.length).toBe(1);
     });
 
     it("highlights a clicked #content link and its parent step, and removes other highlighting", function () {
@@ -852,11 +863,13 @@ describe('A stepnav module', function () {
 
       stepnav = new GOVUK.Modules.Gemstepnav();
       $element = $(html);
+      $element.find('.js-will-be-an-active-link').addClass('gem-c-step-nav__list-item--active');
       sessionStorage.setItem('govuk-step-nav-active-link_unique-id', '3.5');
       stepnav.start($element);
     });
 
     afterEach(function () {
+      $element.find('.js-will-be-an-active-link').removeClass('gem-c-step-nav__list-item--active');
       sessionStorage.removeItem('govuk-step-nav-active-link_unique-id');
     });
 
@@ -883,11 +896,13 @@ describe('A stepnav module', function () {
 
       stepnav = new GOVUK.Modules.Gemstepnav();
       $element = $(html);
+      $element.find('.js-will-be-an-active-link').addClass('gem-c-step-nav__list-item--active');
       sessionStorage.setItem('govuk-step-nav-active-link_unique-id', 'definitelynotvalid');
       stepnav.start($element);
     });
 
     afterEach(function () {
+      $element.find('.js-will-be-an-active-link').removeClass('gem-c-step-nav__list-item--active');
       sessionStorage.removeItem('govuk-step-nav-active-link_unique-id');
     });
 
@@ -900,9 +915,14 @@ describe('A stepnav module', function () {
   describe('in a double dot situation where there is no active step', function () {
     beforeEach(function () {
       $element = $(html);
+      $element.find('.js-will-be-an-active-link').addClass('gem-c-step-nav__list-item--active');
       $element.find('.gem-c-step-nav__step').removeClass('gem-c-step-nav__step--active');
       stepnav = new GOVUK.Modules.Gemstepnav();
       stepnav.start($element);
+    });
+
+    afterEach(function() {
+      $element.find('.js-will-be-an-active-link').removeClass('gem-c-step-nav__list-item--active');
     });
 
     it("highlights the first active link if no sessionStorage value is set", function () {
