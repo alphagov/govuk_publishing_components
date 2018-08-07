@@ -8,7 +8,11 @@ module GovukPublishingComponents
       # @param request_path `request.path`
       def initialize(content_item, request_path)
         @content_item = content_item
-        @request_path = request_path
+        @request_path = simple_smart_answer? ? content_item['base_path'] : request_path
+      end
+
+      def simple_smart_answer?
+        content_item['document_type'] === "simple_smart_answer"
       end
 
       def taxonomy_sidebar
