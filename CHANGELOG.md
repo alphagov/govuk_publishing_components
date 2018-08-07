@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+* Add data attributes and spellcheck support for textarea component (PR #468)
+* Add data attributes support for input component (PR #469)
+
 ## 9.10.0
 
 * Enables bold styling in govspeak blocks, removes rich govspeak feature (PR #463)

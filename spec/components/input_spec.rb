@@ -64,6 +64,15 @@ describe "Input", type: :view do
     assert_select ".govuk-input[aria-describedby='some-other-element']"
   end
 
+  it "renders input with a data attributes" do
+    render_component(
+      data: { module: "contextual-guidance" },
+      name: "with-data-attributes"
+    )
+
+    assert_select ".govuk-input[data-module='contextual-guidance']"
+  end
+
   context "when a hint is provided" do
     before do
       render_component(

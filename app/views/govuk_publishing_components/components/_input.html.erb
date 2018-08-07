@@ -3,6 +3,7 @@
   value ||= nil
   type ||= "text"
   describedby ||= false
+  data ||= nil
 
   label ||= nil
   hint ||= nil
@@ -54,6 +55,7 @@
       class: css_classes,
       id: id,
       type: type,
+      data: data,
       aria: {
         describedby: aria_described_by
       }
