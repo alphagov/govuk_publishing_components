@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 9.10.0
+
+* Enables bold styling in govspeak blocks, removes rich govspeak feature (PR #463)
+
 ## 9.9.1
 
 * Stop document list rendering titles as headings (PR #465)
@@ -17,7 +21,6 @@
 * Add tabs component (PR #455)
 * Adds styling for singular related step by step navs (PR #458)
 * Add schema.org `isPartOf` links from articles to step by steps (PR #384)
-* Enables bold styling in govspeak blocks, removes rich govspeak feature (PR #463)
 
 ## 9.8.0
 
