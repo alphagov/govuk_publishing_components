@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 9.12.0
 
 * Adds publishing-app metatag (PR #470)
 
