@@ -27,7 +27,7 @@ module GovukPublishingComponents
 
       def add_core_tags(meta_tags)
         meta_tags["govuk:format"] = content_item[:document_type] if content_item[:document_type]
-        meta_tags["govuk:publishing-app"] = content_item[:publishing_app] if content_item[:publishing_app]
+        meta_tags["govuk:publishing-application"] = content_item[:publishing_app] if content_item[:publishing_app]
         meta_tags["govuk:schema-name"] = content_item[:schema_name] if content_item[:schema_name]
 
         user_journey_stage = content_item[:user_journey_document_supertype]
