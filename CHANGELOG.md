@@ -15,6 +15,7 @@
 
 * Add data attributes and spellcheck support for textarea component (PR #468)
 * Add data attributes support for input component (PR #469)
+* Relevant step by step should now be open inside simple smart answers (PR #472)
 
 ## 9.10.0
 
