@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 9.12.1
 
 * Renames the publishing-app metatag to publishing-application, to be consistent with rendering-application (PR #475)
 
