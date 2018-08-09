@@ -11,10 +11,10 @@
 %>
 <% if items.any? %>
   <% unless within_multitype_list %>
-    <ol class="gem-c-document-list<%= margin_bottom_class %><%= margin_top_class %> <%= brand_helper.brand_class %>">
+    <ol class="gem-c-document-list<%= margin_bottom_class %><%= margin_top_class %>">
   <% end %>
     <% items.each do |item| %>
-      <li class="gem-c-document-list__item<%= within_multitype_list_class %>">
+      <li class="gem-c-document-list__item<%= within_multitype_list_class %> <%= brand_helper.brand_class %>">
         <%=
           link_to(
             item[:link][:text],

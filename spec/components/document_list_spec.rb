@@ -149,7 +149,7 @@ describe "Document list", type: :view do
       ]
     )
 
-    assert_select '.gem-c-document-list.brand--attorney-generals-office'
+    assert_select '.gem-c-document-list__item.brand--attorney-generals-office'
     assert_select '.gem-c-document-list .gem-c-document-list__item-title.brand__color'
   end
 
