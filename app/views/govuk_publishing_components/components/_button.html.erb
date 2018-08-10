@@ -3,7 +3,7 @@
 <% if button.link? %>
   <%= link_to button.text, button.href, button.html_options %>
 <% else %>
-  <%= button_tag button.text, button.html_options %>
+  <%= content_tag :button, button.text, button.html_options %>
 <% end %>
 
 <% if button.info_text %>
