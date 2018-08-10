@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 9.12.2
+
+* Remove fixed 'name=button' attribute for buttons, to avoid them becoming a form param (PR #479)
+
 ## 9.12.1
 
 * Renames the publishing-app metatag to publishing-application, to be consistent with rendering-application (PR #475)
