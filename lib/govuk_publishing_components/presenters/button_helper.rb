@@ -24,6 +24,7 @@ module GovukPublishingComponents
       def html_options
         options = { class: css_classes }
         options[:role] = "button" if link?
+        options[:type] = "submit" unless link?
         options[:rel] = rel if rel
         options[:data] = data_attributes if data_attributes
         options[:title] = title if title
