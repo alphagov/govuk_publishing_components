@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Allow custom tags in `<head>` for admin layout (PR #480)
+
 ## 9.12.2
 
 * Remove fixed 'name=button' attribute for buttons, to avoid them becoming a form param (PR #479)

@@ -14,6 +14,7 @@
       <%= stylesheet_link_tag "govuk_publishing_components/admin_styles_ie8" %>
     <![endif]-->
     <%= javascript_include_tag "govuk_publishing_components/vendor/modernizr" %>
+    <%= yield :head %>
   </head>
   <body class="govuk-template__body">
     <script>
