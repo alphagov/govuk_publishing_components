@@ -6,6 +6,10 @@
 - Don't include changes that are purely internal. The CHANGELOG should be a
   useful summary for people upgrading their application, not a replication
   of the commit log.
+  
+# Unreleased
+
+* Add the 'about' property for the schema.org schema for an Article with live taxons (PR #482)
 
 ## 9.13.0
 

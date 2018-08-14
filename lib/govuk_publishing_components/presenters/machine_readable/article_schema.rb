@@ -29,7 +29,7 @@ module GovukPublishingComponents
               "url" => page.logo_url,
             }
           }
-        }.merge(image_schema).merge(author_schema).merge(body).merge(is_part_of)
+        }.merge(image_schema).merge(author_schema).merge(body).merge(is_part_of).merge(about)
       end
 
     private
@@ -97,6 +97,29 @@ module GovukPublishingComponents
           logo_url: page.logo_url,
           image_placeholders: page.image_placeholders
         )
+      end
+
+      def about
+        return {} unless live_taxons.any?
+        {
+            "about" => linked_taxons
+        }
+      end
+
+      def live_taxons
+        taxons = page.content_item.dig("links", "taxons")
+        return [] unless taxons
+        taxons.select { |taxon| taxon["phase"] == "live" }
+      end
+
+      def linked_taxons
+        live_taxons.map do |taxon|
+          {
+              "@context" => "http://schema.org",
+              "@type" => "CreativeWork",
+              "sameAs" => taxon["web_url"]
+          }
+        end
       end
     end
   end
