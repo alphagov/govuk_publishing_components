@@ -1,11 +1,14 @@
 <%
   items ||= []
   inverse ||= false
+  within_multitype_list ||= false
   inverse_class = "gem-c-highlight-boxes--inverse" if inverse
   highlight_boxes_helper = GovukPublishingComponents::Presenters::HighlightBoxesHelper.new(local_assigns)
 %>
 <% if items.any? %>
-  <ol class="gem-c-highlight-boxes" <%= "data-module=track-click" if highlight_boxes_helper.data_tracking? %>>
+  <% unless within_multitype_list %>
+    <ol class="gem-c-highlight-boxes" <%= "data-module=track-click" if highlight_boxes_helper.data_tracking? %>>
+  <% end %>
     <% items.each do |content_item| %>
       <li class="gem-c-highlight-boxes__item-wrapper">
         <div class="gem-c-highlight-boxes__item <%= inverse_class %>">
@@ -35,5 +38,7 @@
         </div>
       </li>
     <% end %>
-  </ol>
+  <% unless within_multitype_list %>
+    </ol>
+  <% end %>
 <% end %>

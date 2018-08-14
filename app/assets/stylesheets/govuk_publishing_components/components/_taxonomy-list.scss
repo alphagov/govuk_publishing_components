@@ -1,0 +1,20 @@
+.gem-c-taxonomy-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: $gutter-half;
+
+  @include media(tablet) {
+    margin-right: -25px;
+  }
+}
+
+.gem-c-taxonomy-list__item {
+  list-style: none;
+
+  @include media(tablet) {
+    @include box-sizing(border-box);
+    width: 33%;
+    padding-right: $gutter-one-third;
+    vertical-align: top;
+  }
+}

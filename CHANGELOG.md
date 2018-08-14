@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Allow custom tags in `<head>` for admin layout (PR #480)
+* Adds taxonomy list component (PR #476)
 
 ## 9.12.2
 
