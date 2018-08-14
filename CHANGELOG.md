@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 9.13.0
 
 * Allow custom tags in `<head>` for admin layout (PR #480)
 * Adds taxonomy list component (PR #476)
