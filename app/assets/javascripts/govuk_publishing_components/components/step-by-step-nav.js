@@ -232,32 +232,22 @@
           return;
         }
 
-        var lastClicked = loadFromSessionStorage(sessionStoreLink);
+        var lastClicked = loadFromSessionStorage(sessionStoreLink) || $element.find('.' + activeLinkClass).first().attr('data-position');
 
-        if (lastClicked) {
-          // it's possible for the saved link position value to not match any of the currently duplicate highlighted links
-          // so check this otherwise it'll take the highlighting off all of them
-          if (!$element.find('.js-link[data-position="' + lastClicked + '"]').parent().hasClass(activeLinkClass)) {
-            lastClicked = $element.find('.' + activeLinkClass).first().find('.js-link').attr('data-position');
-          }
-          removeActiveStateFromAllButCurrent($activeLinks, lastClicked);
-          setActiveStepClass();
-        } else {
-          var activeLinkInActiveStep = $element.find('.' + activeStepClass).find('.' + activeLinkClass).first();
-
-          if (activeLinkInActiveStep.length) {
-            $activeLinks.removeClass(activeLinkClass);
-            activeLinkInActiveStep.addClass(activeLinkClass);
-          } else {
-            $activeLinks.slice(1).removeClass(activeLinkClass);
-          }
+        // it's possible for the saved link position value to not match any of the currently duplicate highlighted links
+        // so check this otherwise it'll take the highlighting off all of them
+        if (!$element.find('.js-link[data-position="' + lastClicked + '"]').parent().hasClass(activeLinkClass)) {
+          lastClicked = $element.find('.' + activeLinkClass).first().find('.js-link').attr('data-position');
         }
+        removeActiveStateFromAllButCurrent($activeLinks, lastClicked);
+        setActiveStepClass();
       }
 
       function removeActiveStateFromAllButCurrent($activeLinks, current) {
         $activeLinks.each(function() {
           if ($(this).find('.js-link').attr('data-position').toString() !== current.toString()) {
             $(this).removeClass(activeLinkClass);
+            $(this).find('.visuallyhidden').remove();
           }
         });
       }

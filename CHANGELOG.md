@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Improve step by step component double dot problem solving code (PR #473)
+
 ## 9.13.0
 
 * Allow custom tags in `<head>` for admin layout (PR #480)
