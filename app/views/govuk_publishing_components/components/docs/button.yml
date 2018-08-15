@@ -34,6 +34,18 @@ examples:
       href: "#"
       start: true
       rel: "external"
+  secondary_button:
+    data:
+      text: "Secondary button"
+      href: "#"
+      secondary: true
+      rel: "external"
+  secondary_quiet_button:
+    data:
+      text: "Secondary quiet button"
+      href: "#"
+      secondary_quiet: true
+      rel: "external"
   start_now_button_with_info_text:
     data:
       text: "Start now"

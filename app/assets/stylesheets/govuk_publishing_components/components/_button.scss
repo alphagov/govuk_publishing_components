@@ -4,6 +4,13 @@
 $govuk-image-url-function: "image-url";
 $govuk-font-url-function: "font-url";
 
+$gem-secondary-button-colour: #00823b;
+$gem-secondary-button-hover-colour: darken($gem-secondary-button-colour, 5%);
+$gem-secondary-button-background-colour: govuk-colour("white");
+$gem-secondary-button-hover-background-colour: govuk-colour("grey-4");
+$gem-quiet-button-colour: govuk-colour("grey-1");
+$gem-quiet-button-hover-colour: darken($gem-quiet-button-colour, 5%);
+
 @import "../../../../node_modules/govuk-frontend/components/button/button";
 
 @import "mixins/margins";
@@ -26,4 +33,78 @@ $govuk-font-url-function: "font-url";
   display: block;
   max-width: 14em;
   margin-top: .5em;
+}
+
+.gem-c-button--secondary {
+  padding: (govuk-spacing(2) - $govuk-border-width-form-element) govuk-spacing(2); // s1
+  border-color: $gem-secondary-button-colour;
+  color: $gem-secondary-button-colour;
+  background-color: $gem-secondary-button-background-colour;
+  box-shadow: none;
+
+  &:link,
+  &:visited,
+  &:active {
+    color: $gem-secondary-button-colour;
+    background-color: $gem-secondary-button-background-colour;
+    text-decoration: none;
+  }
+
+  &:link:focus {
+    color: $gem-secondary-button-colour;
+  }
+
+  &:hover {
+    border-color: $gem-secondary-button-hover-colour;
+    color: $gem-secondary-button-hover-colour;
+    background-color: $gem-secondary-button-hover-background-colour;
+    text-decoration: none;
+  }
+
+  &:before {
+    content: none;
+  }
+}
+
+.gem-c-button--secondary-quiet {
+  padding: (govuk-spacing(2) - $govuk-border-width-form-element) govuk-spacing(2); // s1
+  border-color: $gem-quiet-button-colour;
+  color: $gem-quiet-button-colour;
+  background-color: $gem-secondary-button-background-colour;
+  box-shadow: none;
+
+  &:link,
+  &:visited,
+  &:active {
+    color: $gem-quiet-button-colour;
+    background-color: $gem-secondary-button-background-colour;
+    text-decoration: none;
+  }
+
+  &:link:focus {
+    color: $gem-quiet-button-colour;
+  }
+
+  &:hover {
+    border-color: $gem-quiet-button-hover-colour;
+    color: $gem-quiet-button-hover-colour;
+    background-color: $gem-secondary-button-hover-background-colour;
+    text-decoration: none;
+  }
+
+  &:before {
+    content: none;
+  }
+}
+
+// Begin adjustments for font baseline offset
+// These should be removed when the font is updated with the correct baseline
+// For the 1px addition please see https://github.com/alphagov/govuk-frontend/pull/365#discussion_r154349428
+
+$offset: 2;
+
+.gem-c-button--secondary,
+.gem-c-button--secondary-quiet {
+  padding-top: (govuk-spacing(2) - $govuk-border-width-form-element + $offset); // s1
+  padding-bottom: (govuk-spacing(2) - $govuk-border-width-form-element - $offset + 1); // s1
 }
