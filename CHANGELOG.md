@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Updates the tabs component to make the heading inside the panel optional and to add a modifier for panel without border (PR #485)
+
 ## 9.14.0
 
 * Add the 'about' property for the schema.org schema for an Article with live taxons (PR #482)
