@@ -1,1 +1,9 @@
 // This component relies on styles from GOV.UK Frontend
+
+.js-enabled {
+  .gem-c-tabs__panel--no-border {
+    padding-right: 0;
+    padding-left: 0;
+    border: 0;
+  }
+}
