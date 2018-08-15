@@ -174,6 +174,102 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       expect(structured_data['image']).to eql([1, 2])
     end
 
+    it "adds about schema if there are live taxons" do
+      content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "answer") do |random_item|
+        random_item.merge(live_taxons_links)
+      end
+
+      structured_data = generate_structured_data(
+        content_item: content_item,
+        schema: :article
+      ).structured_data
+
+      expect(structured_data['about']).to eql([
+                                                 {
+                                                     "@context" => "http://schema.org",
+                                                     "@type" => "CreativeWork",
+                                                     "sameAs" => "https://www.gov.uk/education/becoming-an-apprentice"
+                                                 },
+                                                 {
+                                                     "@context" => "http://schema.org",
+                                                     "@type" => "CreativeWork",
+                                                     "sameAs" => "https://www.gov.uk/employment/finding-job"
+                                                 }
+                                             ])
+    end
+
+    it "adds about schema but not not include non live taxon" do
+      one_live_one_alpha_taxon = live_taxons_links
+      one_live_one_alpha_taxon["links"]["taxons"][1]["phase"] = "alpha"
+      content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "answer") do |random_item|
+        random_item.merge(one_live_one_alpha_taxon)
+      end
+
+      structured_data = generate_structured_data(
+        content_item: content_item,
+        schema: :article
+      ).structured_data
+
+      expect(structured_data['about']).to eql([
+                                                  {
+                                                      "@context" => "http://schema.org",
+                                                      "@type" => "CreativeWork",
+                                                      "sameAs" => "https://www.gov.uk/education/becoming-an-apprentice"
+                                                  }
+                                              ])
+    end
+
+    it "does not include about if no live taxons" do
+      no_live_taxons = live_taxons_links
+      no_live_taxons["links"]["taxons"][0]["phase"] = "alpha"
+      no_live_taxons["links"]["taxons"][1]["phase"] = "draft"
+      content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "answer") do |random_item|
+        random_item.merge(no_live_taxons)
+      end
+
+      structured_data = generate_structured_data(
+        content_item: content_item,
+        schema: :article
+      ).structured_data
+
+      expect(structured_data['about']).to eql(nil)
+    end
+
+    def live_taxons_links
+      {
+        "links" => {
+          "taxons" => [
+            {
+              "api_path" => "/api/content/education/becoming-an-apprentice",
+              "base_path" => "/education/becoming-an-apprentice",
+              "content_id" => "ff0e8e1f-4dea-42ff-b1d5-f1ae37807af2",
+              "document_type" => "taxon",
+              "locale" => "en",
+              "schema_name" => "taxon",
+              "title" => "Becoming an apprentice",
+              "withdrawn" => false,
+              "phase" => "live",
+              "api_url" => "https://www.gov.uk/api/content/education/becoming-an-apprentice",
+              "web_url" => "https://www.gov.uk/education/becoming-an-apprentice"
+            },
+            {
+              "api_path" => "/api/content/employment/finding-job",
+              "base_path" => "/employment/finding-job",
+              "content_id" => "21bfd8f6-3360-43f9-be42-b00002982d70",
+              "document_type" => "taxon",
+              "locale" => "en",
+              "schema_name" => "taxon",
+              "title" => "Finding a job",
+              "withdrawn" => false,
+              "phase" => "live",
+              "api_url" => "https://www.gov.uk/api/content/employment/finding-job",
+              "web_url" => "https://www.gov.uk/employment/finding-job"
+            }
+          ]
+        }
+      }
+    end
+
     def generate_structured_data(args)
       GovukPublishingComponents::Presenters::SchemaOrg.new(GovukPublishingComponents::Presenters::Page.new(args))
     end
