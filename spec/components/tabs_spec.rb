@@ -14,12 +14,12 @@ describe "Tabs", type: :view do
       tabs: [
           {
             id: "tab1",
-            title: "First section",
+            label: "First section",
             content: "<p>Fusce at dictum tellus, ac accumsan est. Nulla vitae turpis in nulla gravida tincidunt. Duis lectus felis, tempus id bibendum sit amet, posuere ut elit. Donec enim odio, eleifend in urna a, sagittis egestas est. Proin id ex ultricies, porta eros id, vehicula quam. Morbi non sagittis velit.</p>"
           },
           {
             id: "tab2",
-            title: "Second section",
+            label: "Second section",
             content: "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue elementum commodo. Vestibulum elit turpis, efficitur quis posuere vitae, commodo vitae augue. Donec ut pharetra ligula. Phasellus ac mauris eu felis bibendum dapibus rutrum sed quam. Pellentesque posuere ante id consequat pretium.</p>"
           }
         ]

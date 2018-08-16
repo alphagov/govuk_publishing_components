@@ -1,5 +1,9 @@
 <%
   tabs ||= []
+  panel_border ||= true unless panel_border == false
+  panel_css_classes = %w(govuk-tabs__panel)
+  panel_css_classes << "gem-c-tabs__panel--no-border" if panel_border == false
+  panel_css_classes = panel_css_classes.join(" ")
 %>
 <% if tabs.count > 1 %>
   <div class="govuk-tabs gem-c-tabs" data-module="tabs">
@@ -10,22 +14,26 @@
       <% tabs.each do |tab| %>
       <li class="govuk-tabs__list-item">
         <a class="govuk-tabs__tab" href="#<%= tab[:id] %>">
-            <%= tab[:title] %>
-          </a>
+          <%= tab[:label] %>
+        </a>
       </li>
       <% end %>
     </ul>
     <% tabs.each do |tab| %>
-      <section class="govuk-tabs__panel" id="<%= tab[:id] %>">
-        <h2 class="govuk-heading-l"><%= tab[:title] %></h2>
-          <%= tab[:content] %>
+      <section class="<%= panel_css_classes %>" id="<%= tab[:id] %>">
+        <% if tab[:title] %>
+          <h2 class="govuk-heading-l"><%= tab[:title] %></h2>
+        <% end %>
+        <%= tab[:content] %>
       </section>
-      <% end %>
+    <% end %>
   </div>
 <% end %>
 <% if tabs.count == 1 %>
     <section id="<%= tabs[0][:id] %>">
-      <h2 class="govuk-heading-l"><%= tabs[0][:title] %></h2>
+      <% if tabs[0][:title] %>
+        <h2 class="govuk-heading-l"><%= tabs[0][:title] %></h2>
+      <% end %>
       <%= tabs[0][:content] %>
     </section>
 <% end %>
