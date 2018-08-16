@@ -7,9 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 9.15.0
 
-* Updates the tabs component to make the heading inside the panel optional and to add a modifier for panel without border (PR #485)
+* Update tabs component to make the heading inside the panel optional and to add a modifier for panel without border (PR #485)
 * Add secondary and secondary quiet modifiers to button component (PR #484)
 
 ## 9.14.0
