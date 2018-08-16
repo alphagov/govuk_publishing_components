@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Updates the tabs component to make the heading inside the panel optional and to add a modifier for panel without border (PR #485)
+* Add secondary and secondary quiet modifiers to button component (PR #484)
 
 ## 9.14.0
 
