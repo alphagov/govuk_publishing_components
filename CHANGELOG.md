@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Enables italic styling in govspeak blocks (PR #487)
+
 ## 9.15.0
 
 * Update tabs component to make the heading inside the panel optional and to add a modifier for panel without border (PR #485)
