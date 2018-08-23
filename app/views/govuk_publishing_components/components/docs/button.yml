@@ -28,6 +28,11 @@ examples:
     data:
       text: "I'm really a link sssh"
       href: "#"
+  link_button_target_blank:
+    data:
+      text: "I'm really a link sssh"
+      href: "http://www.gov.uk"
+      target: "_blank"
   start_now_button:
     data:
       text: "Start now"

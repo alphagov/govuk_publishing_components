@@ -66,6 +66,12 @@ describe "Button", type: :view do
     assert_select ".govuk-button[rel='nofollow preload']", text: "Start now"
   end
 
+  it "renders target attribute correctly" do
+    render_component(text: "Start now", href: "#", target: "_blank")
+    assert_select "a.govuk-button[target='_blank']"
+    assert_select "button.govuk-button", false
+  end
+
   it "renders margin bottom class correctly" do
     render_component(text: "Submit")
     assert_select ".govuk-button", text: "Submit"

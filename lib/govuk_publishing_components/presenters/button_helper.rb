@@ -4,7 +4,7 @@ module GovukPublishingComponents
   module Presenters
     class ButtonHelper
       attr_reader :href, :text, :title, :info_text, :rel, :data_attributes,
-        :start, :secondary, :secondary_quiet, :margin_bottom
+        :start, :secondary, :secondary_quiet, :margin_bottom, :target
 
       def initialize(local_assigns)
         @href = local_assigns[:href]
@@ -17,6 +17,7 @@ module GovukPublishingComponents
         @secondary = local_assigns[:secondary]
         @secondary_quiet = local_assigns[:secondary_quiet]
         @margin_bottom = local_assigns[:margin_bottom]
+        @target = local_assigns[:target]
       end
 
       def link?
@@ -30,6 +31,7 @@ module GovukPublishingComponents
         options[:rel] = rel if rel
         options[:data] = data_attributes if data_attributes
         options[:title] = title if title
+        options[:target] = target if target
         options
       end
 

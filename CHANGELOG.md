@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Allow target attribute for links generated with the button component (PR #488)
+
 ## 9.15.0
 
 * Update tabs component to make the heading inside the panel optional and to add a modifier for panel without border (PR #485)
