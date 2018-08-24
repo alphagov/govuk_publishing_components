@@ -7,9 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 9.16.0
 
 * Allow target attribute for links generated with the button component (PR #488)
+* Add Google Tag Manager script as component (PR #489)
 
 ## 9.15.0
 
