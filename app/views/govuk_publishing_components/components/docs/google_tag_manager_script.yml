@@ -1,0 +1,13 @@
+name: Google Tag Manager script
+description: |
+  Google Tag Manager script for tracking user interaction:
+  - gtm_id is the ID for the Google Tag Manager account
+  - gtm_preview allows a tag to be previewed in the Google Tag Manager interface
+  - gtm_auth is the identifier of an environment for Google Tag Manager
+accessibility_criteria: |
+  The component should not be visible to any users.
+display_html: true
+examples:
+  default:
+    data:
+      gtm_id: GTM-XXXXXXX
