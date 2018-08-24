@@ -70,6 +70,7 @@
           <div class="gem-c-step-nav__panel js-panel" id="step-panel-<%= id %>-<%= step_index + 1 %>">
             <%
               in_substep = false
+              options[:content_id] = tracking_id
               options[:step_index] = step_index
               options[:link_index] = 0
             %>

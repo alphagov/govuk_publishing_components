@@ -57,7 +57,7 @@ module GovukPublishingComponents
       def create_list_item_content(link)
         if link[:href]
           @link_index += 1
-          href = link_href(link[:active], link[:href])
+          href = link_href(link[:active], link[:href], "step-by-step-nav=#{@options[:content_id]}")
 
           text = capture do
             concat link_text(link[:active], link[:text])
@@ -92,7 +92,12 @@ module GovukPublishingComponents
         style == "choice" ? "ul" : "ol"
       end
 
-      def link_href(active, href)
+      def link_href(active, href, query_string = false)
+        
+        if query_string
+          href += "?#{query_string}"
+        end
+        
         active ? "#content" : href
       end
 
