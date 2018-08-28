@@ -1,12 +1,15 @@
-<% navigation = GovukPublishingComponents::Presenters::ContextualNavigation.new(content_item, request.path) %>
+<%
+  active_step_nav_content_id = request.query_parameters['step-by-step-nav']
+  navigation = GovukPublishingComponents::Presenters::ContextualNavigation.new(content_item, request.path, active_step_nav_content_id) 
+%>
 
 <div class="gem-c-contextual-sidebar">
   <% if navigation.content_tagged_to_a_reasonable_number_of_step_by_steps? %>
     <!-- Rendering step by step related items because there are a few but not too many of them -->
     <%= render 'govuk_publishing_components/components/step_by_step_nav_related', links: navigation.step_nav_helper.related_links %>
   <% end %>
-
-  <% if navigation.content_tagged_to_single_step_by_step? %>
+  
+  <% if navigation.content_tagged_to_single_step_by_step? or active_step_nav_content_id %>
     <!-- Rendering step by step sidebar because there's 1 step by step list -->
     <%= render 'govuk_publishing_components/components/step_by_step_nav', navigation.step_nav_helper.sidebar %>
   <% elsif navigation.content_tagged_to_mainstream_browse_pages? %>

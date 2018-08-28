@@ -6,9 +6,10 @@ module GovukPublishingComponents
 
       # @param content_item A content item hash with strings as keys
       # @param request_path `request.path`
-      def initialize(content_item, request_path)
+      def initialize(content_item, request_path, active_step_nav_content_id = false)
         @content_item = content_item
         @request_path = simple_smart_answer? ? content_item['base_path'] : request_path
+        @active_step_nav_content_id = active_step_nav_content_id
       end
 
       def simple_smart_answer?
@@ -65,7 +66,7 @@ module GovukPublishingComponents
       end
 
       def step_nav_helper
-        @step_nav_helper ||= PageWithStepByStepNavigation.new(content_item, request_path)
+        @step_nav_helper ||= PageWithStepByStepNavigation.new(content_item, request_path, @active_step_nav_content_id)
       end
     end
   end

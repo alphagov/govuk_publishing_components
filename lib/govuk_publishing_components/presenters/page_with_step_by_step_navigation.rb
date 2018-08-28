@@ -3,9 +3,10 @@ module GovukPublishingComponents
     # @private
     # Only used by the step by step component
     class PageWithStepByStepNavigation
-      def initialize(content_store_response, current_path)
+      def initialize(content_store_response, current_path, active_step_nav_content_id = false)
         @content_item = content_store_response.to_h
         @current_path = current_path
+        @active_step_nav_content_id = active_step_nav_content_id
       end
 
       def step_navs
@@ -19,7 +20,7 @@ module GovukPublishingComponents
       end
 
       def show_header?
-        step_navs.count == 1
+        step_navs.count == 1 or @active_step_nav_content_id
       end
 
       def show_related_links?
@@ -62,6 +63,11 @@ module GovukPublishingComponents
       attr_reader :content_item, :current_path
 
       def first_step_nav
+        if @active_step_nav_content_id
+          active_step_nav = step_navs.select { |step_nav| step_nav.content_id == @active_step_nav_content_id }
+          return active_step_nav.first
+        end
+
         step_navs.first
       end
 
