@@ -20,7 +20,7 @@ module GovukPublishingComponents
       end
 
       def show_header?
-        step_navs.count == 1 or @active_step_nav_content_id
+        step_navs.count == 1 || get_active_step_nav
       end
 
       def show_related_links?
@@ -58,16 +58,22 @@ module GovukPublishingComponents
         end
       end
 
+      def get_active_step_nav
+        if @active_step_nav_content_id
+          active_step_nav = step_navs.select { |step_nav| step_nav.content_id == @active_step_nav_content_id }
+          active_step_nav.first
+        else
+          false
+        end
+      end
+
     private
 
       attr_reader :content_item, :current_path
 
       def first_step_nav
-        if @active_step_nav_content_id
-          active_step_nav = step_navs.select { |step_nav| step_nav.content_id == @active_step_nav_content_id }
-          return active_step_nav.first
-        end
-
+        active_step_nav = get_active_step_nav
+        return active_step_nav if active_step_nav
         step_navs.first
       end
 

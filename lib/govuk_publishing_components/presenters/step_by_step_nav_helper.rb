@@ -93,11 +93,7 @@ module GovukPublishingComponents
       end
 
       def link_href(active, href, query_string = false)
-        
-        if query_string
-          href += "?#{query_string}"
-        end
-        
+        href += "?#{query_string}" if query_string
         active ? "#content" : href
       end
 
