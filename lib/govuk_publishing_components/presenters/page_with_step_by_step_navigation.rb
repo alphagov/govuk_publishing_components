@@ -27,8 +27,12 @@ module GovukPublishingComponents
         step_navs.any? && step_navs.count < 5
       end
 
-      def related_links
-        step_navs.map do |step_nav|
+      def related_links(step_by_step_navs = false)
+        if step_by_step_navs == false
+          step_by_step_navs = step_navs
+        end
+
+        step_by_step_navs.map do |step_nav|
           {
             href: step_nav.base_path,
             text: step_nav.title,
