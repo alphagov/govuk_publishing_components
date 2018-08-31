@@ -102,7 +102,7 @@ module GovukPublishingComponents
       end
 
       def add_step_by_step_tags(meta_tags)
-        stepnavs = links[:part_of_step_navs] || []
+        stepnavs = links[:part_of_step_navs] || links[:relevant_to_step_navs] || []
         stepnavs_content = stepnavs.map { |stepnav| stepnav[:content_id] }.join(",")
         meta_tags["govuk:stepnavs"] = stepnavs_content if stepnavs_content.present?
         meta_tags
