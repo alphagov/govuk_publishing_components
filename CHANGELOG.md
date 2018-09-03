@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+# 9.16.1
+
+* Bugfix for Google Tag Manager component (PR #492)
+
 ## 9.16.0
 
 * Allow target attribute for links generated with the button component (PR #488)
