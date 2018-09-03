@@ -26,6 +26,7 @@ describe "Contextual navigation" do
     given_theres_are_two_step_by_step_lists
     and_i_visit_that_page_by_clicking_on_a_step_by_step_link
     then_i_see_the_step_by_step
+    and_the_step_by_step_header
   end
 
   scenario "There's a mainstream browse page tagged" do
