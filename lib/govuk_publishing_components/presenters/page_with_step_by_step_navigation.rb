@@ -41,6 +41,21 @@ module GovukPublishingComponents
         end
       end
 
+      def also_part_of_step_nav
+        active_step_nav = get_active_step_nav
+        if active_step_nav
+          step_navs.delete_if { |step_nav| step_nav.content_id == active_step_nav.content_id }
+        end
+
+        step_navs.map do |step_nav|
+          {
+            href: step_nav.base_path,
+            text: step_nav.title,
+            tracking_id: step_nav.content_id
+          }
+        end
+      end
+
       def sidebar
         if show_sidebar?
           @sidebar ||= first_or_active_step_nav.content.tap do |sb|
