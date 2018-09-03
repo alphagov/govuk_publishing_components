@@ -9,6 +9,6 @@ if (!doNotTrack) {
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl+'<%= "&gtm_auth="+gtm_auth if gtm_auth %><%= "&gtm_preview="+gtm_preview if gtm_preview %>&gtm_cookies_win=x';f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer',<%= gtm_id %>);
+})(window,document,'script','dataLayer','<%= gtm_id %>');
 }
 </script>
