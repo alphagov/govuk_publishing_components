@@ -1,0 +1,14 @@
+<div class="gem-c-copy-to-clipboard" data-module="copy-to-clipboard">
+  <%= render "govuk_publishing_components/components/input", {
+    label: {
+      text: label,
+    },
+    name: SecureRandom.hex,
+    value: copyable_content
+  } %>
+
+  <%= render "govuk_publishing_components/components/button", {
+    text: button_text,
+    secondary_quiet: true,
+  } %>
+</div>

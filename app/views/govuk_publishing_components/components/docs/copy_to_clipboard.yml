@@ -1,0 +1,10 @@
+name: Copy to clipboard
+description: Content that a user is intended to copy, like a URL
+examples:
+  default:
+    data:
+      label: Copy and send this link to someone and they’ll be able to preview your draft on GOV.UK.
+      copyable_content: http://www.example.org
+      button_text: Copy link
+accessibility_criteria: |
+  - should be usable with keyboard
