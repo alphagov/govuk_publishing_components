@@ -22,6 +22,13 @@ describe "Contextual navigation" do
     and_no_step_by_step_header
   end
 
+  scenario "I see the step by step I am currently interacting with" do
+    given_theres_are_two_step_by_step_lists
+    and_i_visit_that_page_by_clicking_on_a_step_by_step_link
+    then_i_see_the_step_by_step
+    and_the_step_by_step_header
+  end
+
   scenario "There's a mainstream browse page tagged" do
     given_theres_a_page_with_browse_page
     and_i_visit_that_page
@@ -131,6 +138,10 @@ describe "Contextual navigation" do
 
   def and_i_visit_that_page
     visit "/contextual-navigation/page-with-contextual-navigation"
+  end
+
+  def and_i_visit_that_page_by_clicking_on_a_step_by_step_link
+    visit "/contextual-navigation/page-with-contextual-navigation?step-by-step-nav=8ad782bd-8603-40eb-97c0-434cb22047cd"
   end
 
   def then_i_see_the_step_by_step

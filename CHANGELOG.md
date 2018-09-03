@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased changes
+
+* Show relevant step by step nav based on previous action (PR #491)
+
 ## 9.16.0
 
 * Allow target attribute for links generated with the button component (PR #488)

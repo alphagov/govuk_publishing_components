@@ -176,23 +176,23 @@ describe "step nav", type: :view do
   end
 
   it "renders links and link attributes correctly" do
-    render_component(steps: stepnav)
+    render_component(steps: stepnav, tracking_id: "this-is-the-step-by-step-content-id")
 
-    assert_select step1 + " .gem-c-step-nav__link[href='/link1'][data-position='1.1']", text: "Link 1.1.1"
-    assert_select step1 + " .gem-c-step-nav__link[href='/link1'][rel='external']", false
-    assert_select step1 + " .gem-c-step-nav__link[href='http://www.gov.uk'][rel='external'][data-position='1.2']", text: "Link 1.1.2 £0 to £300"
-    assert_select step1 + " .gem-c-step-nav__link[href='http://www.gov.uk'] .gem-c-step-nav__context", text: "£0 to £300"
-    assert_select step1 + " .gem-c-step-nav__link[href='/link3'][data-position='1.3']", text: "Link 1.1.3"
-    assert_select step1 + " .gem-c-step-nav__link[href='/link4'][data-position='1.4']", text: "Link 1.1.4"
-    assert_select step2or + " .gem-c-step-nav__link[href='/link8'][data-position='4.2']", text: "Link 2.2.2"
+    assert_select step1 + " .gem-c-step-nav__link[href='/link1?step-by-step-nav=this-is-the-step-by-step-content-id'][data-position='1.1']", text: "Link 1.1.1"
+    assert_select step1 + " .gem-c-step-nav__link[href='/link1?step-by-step-nav=this-is-the-step-by-step-content-id'][rel='external']", false
+    assert_select step1 + " .gem-c-step-nav__link[href='http://www.gov.uk?step-by-step-nav=this-is-the-step-by-step-content-id'][rel='external'][data-position='1.2']", text: "Link 1.1.2 £0 to £300"
+    assert_select step1 + " .gem-c-step-nav__link[href='http://www.gov.uk?step-by-step-nav=this-is-the-step-by-step-content-id'] .gem-c-step-nav__context", text: "£0 to £300"
+    assert_select step1 + " .gem-c-step-nav__link[href='/link3?step-by-step-nav=this-is-the-step-by-step-content-id'][data-position='1.3']", text: "Link 1.1.3"
+    assert_select step1 + " .gem-c-step-nav__link[href='/link4?step-by-step-nav=this-is-the-step-by-step-content-id'][data-position='1.4']", text: "Link 1.1.4"
+    assert_select step2or + " .gem-c-step-nav__link[href='/link8?step-by-step-nav=this-is-the-step-by-step-content-id'][data-position='4.2']", text: "Link 2.2.2"
   end
 
   it "renders links without hrefs" do
-    render_component(steps: stepnav)
+    render_component(steps: stepnav, tracking_id: "this-is-the-step-by-step-content-id")
 
-    assert_select step2or + " .gem-c-step-nav__list-item .gem-c-step-nav__link[href='/link7'][data-position='4.1']", text: "Link 2.2.1"
+    assert_select step2or + " .gem-c-step-nav__list-item .gem-c-step-nav__link[href='/link7?step-by-step-nav=this-is-the-step-by-step-content-id'][data-position='4.1']", text: "Link 2.2.1"
     assert_select step2or + " .gem-c-step-nav__list-item", text: "or"
-    assert_select step2or + " .gem-c-step-nav__list-item .gem-c-step-nav__link[href='/link8'][data-position='4.2']", text: "Link 2.2.2"
+    assert_select step2or + " .gem-c-step-nav__list-item .gem-c-step-nav__link[href='/link8?step-by-step-nav=this-is-the-step-by-step-content-id'][data-position='4.2']", text: "Link 2.2.2"
   end
 
   it "renders optional steps" do
