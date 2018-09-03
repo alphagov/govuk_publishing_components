@@ -3,7 +3,7 @@ module GovukPublishingComponents
     # @private
     # Only used by the step by step component
     class PageWithStepByStepNavigation
-      def initialize(content_store_response, current_path, active_step_nav_content_id = false)
+      def initialize(content_store_response, current_path, active_step_nav_content_id = nil)
         @content_item = content_store_response.to_h
         @current_path = current_path
         @active_step_nav_content_id = active_step_nav_content_id

@@ -1,7 +1,4 @@
-<%
-  active_step_nav_content_id = request.query_parameters['step-by-step-nav']
-  navigation = GovukPublishingComponents::Presenters::ContextualNavigation.new(content_item, request.path, active_step_nav_content_id) 
-%>
+<% navigation = GovukPublishingComponents::Presenters::ContextualNavigation.new(content_item, request) %>
 
 <div class="gem-c-contextual-sidebar">
   <% if navigation.content_tagged_to_a_reasonable_number_of_step_by_steps? %>

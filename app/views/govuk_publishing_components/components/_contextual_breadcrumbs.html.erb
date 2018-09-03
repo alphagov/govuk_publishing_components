@@ -1,7 +1,4 @@
-<%
-  active_step_nav_content_id = request.query_parameters['step-by-step-nav']
-  navigation = GovukPublishingComponents::Presenters::ContextualNavigation.new(content_item, request.path, active_step_nav_content_id)
-%>
+<% navigation = GovukPublishingComponents::Presenters::ContextualNavigation.new(content_item, request) %>
 <% prioritise_taxon_breadcrumbs ||= false %>
 
 <div class='gem-c-contextual-breadcrumbs'>
