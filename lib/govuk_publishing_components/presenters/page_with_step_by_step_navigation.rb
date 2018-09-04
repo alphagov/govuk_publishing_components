@@ -28,7 +28,8 @@ module GovukPublishingComponents
       end
 
       def related_links
-        step_navs.map do |step_nav|
+        step_by_step_navs = active_step_by_step? ? [active_step_by_step] : step_navs 
+        step_by_step_navs.map do |step_nav|
           {
             href: step_nav.base_path,
             text: step_nav.title,
