@@ -298,6 +298,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
     it "returns true if there is an active step by step" do
       step_nav_helper = described_class.new(content_item, "/driving-lessons-learning-to-drive", "step-by-step-nav" => "e01e924b-9c7c-4c71-8241-66a575c2f61f")
       expect(step_nav_helper.active_step_by_step?).to eq(true)
+      expect(step_nav_helper.show_related_links?).to be true
     end
 
     it "return false if there isn't an active step by step" do
