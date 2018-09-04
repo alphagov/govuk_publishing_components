@@ -27,8 +27,11 @@ module GovukPublishingComponents
         step_navs.any? && step_navs.count < 5
       end
 
-      def related_links(step_by_step_navs = false)
-        if step_by_step_navs == false
+      def related_links
+
+        if get_active_step_nav
+          step_by_step_navs = [get_active_step_nav]
+        else
           step_by_step_navs = step_navs
         end
 
