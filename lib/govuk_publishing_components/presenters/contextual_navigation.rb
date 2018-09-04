@@ -6,9 +6,9 @@ module GovukPublishingComponents
 
       # @param content_item A content item hash with strings as keys
       # @param request_path `request.path`
-      def initialize(content_item, request_path)
+      def initialize(content_item, request)
         @content_item = content_item
-        @request_path = simple_smart_answer? ? content_item['base_path'] : request_path
+        @request_path = simple_smart_answer? ? content_item['base_path'] : request.path
       end
 
       def simple_smart_answer?
