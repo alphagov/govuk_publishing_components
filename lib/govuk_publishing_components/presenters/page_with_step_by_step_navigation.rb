@@ -3,9 +3,10 @@ module GovukPublishingComponents
     # @private
     # Only used by the step by step component
     class PageWithStepByStepNavigation
-      def initialize(content_store_response, current_path)
+      def initialize(content_store_response, current_path, query_parameters = {})
         @content_item = content_store_response.to_h
         @current_path = current_path
+        @query_parameters = query_parameters
       end
 
       def step_navs
@@ -57,12 +58,25 @@ module GovukPublishingComponents
         end
       end
 
+      def active_step_by_step?
+        active_step_nav_content_id.present? && active_step_by_step.present?
+      end
+
+      def active_step_by_step
+        @active_step_navs ||= step_navs.select { |step_nav| step_nav.content_id == active_step_nav_content_id }
+        @active_step_navs.first
+      end
+
     private
 
       attr_reader :content_item, :current_path
 
       def first_step_nav
         step_navs.first
+      end
+
+      def active_step_nav_content_id
+        @active_step_nav_content_id ||= @query_parameters['step-by-step-nav'].present? ? @query_parameters['step-by-step-nav'] : nil
       end
 
       def steps

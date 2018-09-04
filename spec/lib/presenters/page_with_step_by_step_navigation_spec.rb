@@ -1,6 +1,123 @@
 require "spec_helper"
 
 RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigation do
+  let(:content_item) {
+    payload_for(
+      "guide",
+      "links" => {
+        "part_of_step_navs" => [
+          {
+            "api_path": "/api/content/learn-to-drive-a-car",
+            "base_path": "/learn-to-drive-a-car",
+            "content_id": "e01e924b-9c7c-4c71-8241-66a575c2f61f",
+            "description": "Learn to drive a car in the UK - get a provisional licence, take driving lessons, prepare for your theory test, book your practical test.",
+            "document_type": "step_by_step_nav",
+            "locale": "en",
+            "public_updated_at": "2018-02-20T12:37:16Z",
+            "schema_name": "step_by_step_nav",
+            "title": "Learn to drive a car: step by step",
+            "withdrawn": false,
+            "details": {
+              "step_by_step_nav": {
+                "title": "Learn to drive a car: step by step",
+                "introduction": [
+                  {
+                    "content_type": "text/govspeak",
+                    "content": "Check what you need to do to learn to drive."
+                  }
+                ],
+                "steps": [
+                  {
+                    "title": "Check you're allowed to drive",
+                    "contents": [
+                      {
+                        "type": "paragraph",
+                        "text": "Most people can start learning to drive when they’re 17."
+                      },
+                      {
+                        "type": "list",
+                        "style": "required",
+                        "contents": [
+                          {
+                            "href": "/vehicles-can-drive",
+                            "text": "Check what age you can drive"
+                          },
+                          {
+                            "href": "/legal-obligations-drivers-riders",
+                            "text": "Requirements for driving legally"
+                          },
+                          {
+                            "href": "/driving-eyesight-rules",
+                            "text": "Driving eyesight rules"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Driving lessons and practice",
+                    "contents": [
+                      {
+                        "type": "paragraph",
+                        "text": "You need a provisional driving licence to take lessons or practice."
+                      },
+                      {
+                        "type": "list",
+                        "style": "required",
+                        "contents": [
+                          {
+                            "href": "/guidance/the-highway-code",
+                            "text": "The Highway Code"
+                          },
+                          {
+                            "href": "/driving-lessons-learning-to-drive",
+                            "text": "Taking driving lessons"
+                          },
+                          {
+                            "href": "/find-driving-schools-and-lessons",
+                            "text": "Find driving schools, lessons and instructors"
+                          },
+                          {
+                            "href": "/government/publications/car-show-me-tell-me-vehicle-safety-questions",
+                            "text": "Practise vehicle safety questions"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "title": "Prepare for your theory test",
+                    "logic": "and",
+                    "contents": [
+                      {
+                        "type": "list",
+                        "style": "required",
+                        "contents": [
+                          {
+                            "href": "/theory-test/revision-and-practice",
+                            "text": "Theory test revision and practice"
+                          },
+                          {
+                            "href": "/take-practice-theory-test",
+                            "text": "Take a practice theory test"
+                          },
+                          {
+                            "href": "https://www.safedrivingforlife.info/shop/product/official-dvsa-theory-test-kit-app-app",
+                            "text": "Theory and hazard perception test app"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+    )
+  }
+
   context "rules for handling differing numbers of linked step navs" do
     let(:step_nav) do
       {
@@ -145,121 +262,6 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
   end
 
   context "configuring step by step content for a sidebar navigation element" do
-    let(:content_item) {
-      payload_for("guide",
-        "links" => {
-          "part_of_step_navs" => [
-            {
-              "api_path": "/api/content/learn-to-drive-a-car",
-              "base_path": "/learn-to-drive-a-car",
-              "content_id": "e01e924b-9c7c-4c71-8241-66a575c2f61f",
-              "description": "Learn to drive a car in the UK - get a provisional licence, take driving lessons, prepare for your theory test, book your practical test.",
-              "document_type": "step_by_step_nav",
-              "locale": "en",
-              "public_updated_at": "2018-02-20T12:37:16Z",
-              "schema_name": "step_by_step_nav",
-              "title": "Learn to drive a car: step by step",
-              "withdrawn": false,
-              "details": {
-                "step_by_step_nav": {
-                  "title": "Learn to drive a car: step by step",
-                  "introduction": [
-                    {
-                      "content_type": "text/govspeak",
-                      "content": "Check what you need to do to learn to drive."
-                    }
-                  ],
-                  "steps": [
-                    {
-                      "title": "Check you're allowed to drive",
-                      "contents": [
-                        {
-                          "type": "paragraph",
-                          "text": "Most people can start learning to drive when they’re 17."
-                        },
-                        {
-                          "type": "list",
-                          "style": "required",
-                          "contents": [
-                            {
-                              "href": "/vehicles-can-drive",
-                              "text": "Check what age you can drive"
-                            },
-                            {
-                              "href": "/legal-obligations-drivers-riders",
-                              "text": "Requirements for driving legally"
-                            },
-                            {
-                              "href": "/driving-eyesight-rules",
-                              "text": "Driving eyesight rules"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "title": "Driving lessons and practice",
-                      "contents": [
-                        {
-                          "type": "paragraph",
-                          "text": "You need a provisional driving licence to take lessons or practice."
-                        },
-                        {
-                          "type": "list",
-                          "style": "required",
-                          "contents": [
-                            {
-                              "href": "/guidance/the-highway-code",
-                              "text": "The Highway Code"
-                            },
-                            {
-                              "href": "/driving-lessons-learning-to-drive",
-                              "text": "Taking driving lessons"
-                            },
-                            {
-                              "href": "/find-driving-schools-and-lessons",
-                              "text": "Find driving schools, lessons and instructors"
-                            },
-                            {
-                              "href": "/government/publications/car-show-me-tell-me-vehicle-safety-questions",
-                              "text": "Practise vehicle safety questions"
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    {
-                      "title": "Prepare for your theory test",
-                      "logic": "and",
-                      "contents": [
-                        {
-                          "type": "list",
-                          "style": "required",
-                          "contents": [
-                            {
-                              "href": "/theory-test/revision-and-practice",
-                              "text": "Theory test revision and practice"
-                            },
-                            {
-                              "href": "/take-practice-theory-test",
-                              "text": "Take a practice theory test"
-                            },
-                            {
-                              "href": "https://www.safedrivingforlife.info/shop/product/official-dvsa-theory-test-kit-app-app",
-                              "text": "Theory and hazard perception test app"
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              }
-            }
-          ]
-        })
-    }
-
     it "sets up navigation appropriately" do
       step_nav_helper = described_class.new(content_item, "/random_url")
       expect(step_nav_helper.step_navs.count).to eq(1)
@@ -289,6 +291,23 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
 
       # sets the /driving-lessons-learning-to-drive link to active
       expect(sidebar[:steps][1][:contents][1][:contents][1][:active]).to be true
+    end
+  end
+
+  context("active step by step") do
+    it "returns true if there is an active step by step" do
+      step_nav_helper = described_class.new(content_item, "/driving-lessons-learning-to-drive", "step-by-step-nav" => "e01e924b-9c7c-4c71-8241-66a575c2f61f")
+      expect(step_nav_helper.active_step_by_step?).to eq(true)
+    end
+
+    it "return false if there isn't an active step by step" do
+      step_nav_helper = described_class.new(content_item, "/driving-lessons-learning-to-drive")
+      expect(step_nav_helper.active_step_by_step?).to eq(false)
+    end
+
+    it "return false if it's an invalid step by step" do
+      step_nav_helper = described_class.new(content_item, "/driving-lessons-learning-to-drive", "step-by-step-nav" => "i-dont-exist")
+      expect(step_nav_helper.active_step_by_step?).to eq(false)
     end
   end
 
