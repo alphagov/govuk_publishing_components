@@ -28,14 +28,13 @@ module GovukPublishingComponents
       end
 
       def related_links
-        step_by_step_navs = active_step_by_step? ? [active_step_by_step] : step_navs 
-        step_by_step_navs.map do |step_nav|
-          {
-            href: step_nav.base_path,
-            text: step_nav.title,
-            tracking_id: step_nav.content_id
-          }
-        end
+        step_by_step_navs = active_step_by_step? ? [active_step_by_step] : step_navs
+        format_related_links(step_by_step_navs)
+      end
+
+      def also_part_of_step_nav
+        step_by_step_navs = step_navs.delete_if { |step_nav| step_nav.content_id == active_step_by_step.content_id }
+        format_related_links(step_by_step_navs)
       end
 
       def sidebar
@@ -104,6 +103,16 @@ module GovukPublishingComponents
           end
         end
         step_nav_content
+      end
+
+      def format_related_links(step_by_step_navs)
+        step_by_step_navs.map do |step_nav|
+          {
+            href: step_nav.base_path,
+            text: step_nav.title,
+            tracking_id: step_nav.content_id
+          }
+        end
       end
     end
 

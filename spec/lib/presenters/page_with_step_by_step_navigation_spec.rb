@@ -317,6 +317,32 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
       step_nav_helper = described_class.new(content_item, "/driving-lessons-learning-to-drive", "step-by-step-nav" => "i-dont-exist")
       expect(step_nav_helper.active_step_by_step?).to eq(false)
     end
+
+    it "shows the titles of the other step navs the content item is part of" do
+      step_nav = {
+        "content_id" => "cccc-dddd",
+        "title" => "Learn to spacewalk: small step by giant leap",
+        "base_path" => "/learn-to-spacewalk"
+      }
+
+      another_step_nav = {
+        "content_id" => "aaaa-bbbb",
+        "title" => "Lose your lunch: lurch by lurch",
+        "base_path" => "/lose-your-lunch"
+      }
+
+      content_item_in_two_step_navs = {
+        "title" => "Book a session in the vomit comet",
+        "document_type" => "transaction",
+        "links" => {
+          "part_of_step_navs" => [step_nav, another_step_nav],
+        }
+      }
+
+      step_nav_helper = described_class.new(content_item_in_two_step_navs, "/driving-lessons-learning-to-drive", "step-by-step-nav" => "cccc-dddd")
+      expect(step_nav_helper.also_part_of_step_nav.count).to eq(1)
+      expect(step_nav_helper.also_part_of_step_nav.first[:tracking_id]).to eq('aaaa-bbbb')
+    end
   end
 
   def payload_for(schema, content_item)
