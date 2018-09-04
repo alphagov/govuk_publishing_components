@@ -2,13 +2,14 @@ module GovukPublishingComponents
   module Presenters
     # @private
     class ContextualNavigation
-      attr_reader :content_item, :request_path
+      attr_reader :content_item, :request_path, :query_parameters
 
       # @param content_item A content item hash with strings as keys
       # @param request_path `request.path`
       def initialize(content_item, request)
         @content_item = content_item
         @request_path = simple_smart_answer? ? content_item['base_path'] : request.path
+        @query_parameters = request.query_parameters
       end
 
       def simple_smart_answer?
@@ -55,7 +56,7 @@ module GovukPublishingComponents
         content_item.dig("links", "taxons").to_a.any? { |taxon| taxon["phase"] == "live" }
       end
 
-      def content_tagged_to_single_step_by_step?
+      def content_tagged_to_current_step_by_step?
         # TODO: remove indirection here
         step_nav_helper.show_header?
       end
@@ -65,7 +66,7 @@ module GovukPublishingComponents
       end
 
       def step_nav_helper
-        @step_nav_helper ||= PageWithStepByStepNavigation.new(content_item, request_path)
+        @step_nav_helper ||= PageWithStepByStepNavigation.new(content_item, request_path, query_parameters)
       end
     end
   end

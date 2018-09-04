@@ -2,7 +2,7 @@
 <% prioritise_taxon_breadcrumbs ||= false %>
 
 <div class='gem-c-contextual-breadcrumbs'>
-  <% if navigation.content_tagged_to_single_step_by_step? %>
+  <% if navigation.content_tagged_to_current_step_by_step? %>
     <!-- Rendering step by step nav breadcrumbs because there's 1 step by step -->
     <%= render 'govuk_publishing_components/components/step_by_step_nav_header',
       navigation.step_nav_helper.header %>

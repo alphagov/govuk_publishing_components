@@ -16,11 +16,11 @@ module GovukPublishingComponents
       end
 
       def show_sidebar?
-        show_header? && first_step_nav.steps.present?
+        show_header? && current_step_nav.steps.present?
       end
 
       def show_header?
-        step_navs.count == 1
+        step_navs.count == 1 || active_step_by_step?
       end
 
       def show_related_links?
@@ -39,9 +39,9 @@ module GovukPublishingComponents
 
       def sidebar
         if show_sidebar?
-          @sidebar ||= first_step_nav.content.tap do |sb|
+          @sidebar ||= current_step_nav.content.tap do |sb|
             configure_for_sidebar(sb)
-            sb.merge!(small: true, heading_level: 3, tracking_id: first_step_nav.content_id)
+            sb.merge!(small: true, heading_level: 3, tracking_id: current_step_nav.content_id)
           end
         end
       end
@@ -49,9 +49,9 @@ module GovukPublishingComponents
       def header
         if show_header?
           {
-            title: first_step_nav.title,
-            path: first_step_nav.base_path,
-            tracking_id: first_step_nav.content_id
+            title: current_step_nav.title,
+            path: current_step_nav.base_path,
+            tracking_id: current_step_nav.content_id
           }
         else
           {}
@@ -71,7 +71,8 @@ module GovukPublishingComponents
 
       attr_reader :content_item, :current_path
 
-      def first_step_nav
+      def current_step_nav
+        return active_step_by_step if active_step_by_step?
         step_navs.first
       end
 
