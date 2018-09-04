@@ -12,7 +12,7 @@
   form_group_css_classes << "govuk-form-group--error" if error_message
 
   # check if any item is set as being conditional
-  has_conditional = items.any? { |item| item["conditional"] }
+  has_conditional = items.any? { |item| item.is_a?(Hash) && item[:conditional] }
 %>
 <%= content_tag :div, class: form_group_css_classes do %>
 
