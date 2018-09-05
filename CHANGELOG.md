@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix bug in success alert component (PR #503)
+
 ## 9.17
 
 * Support a description for Success Alert component (PR #499)  
