@@ -9,6 +9,10 @@ examples:
   default:
     data:
       message: Message to alert the user to a successful action goes here
+  with_message_and_block:
+    data:
+      message: Message to alert the user to a successful action goes here
+      block: A further description
   long_example:
     data:
       message: |

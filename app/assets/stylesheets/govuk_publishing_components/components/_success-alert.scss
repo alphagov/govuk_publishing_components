@@ -13,6 +13,21 @@
   @include bold-19;
 }
 
+.gem-c-success-summary__title {
+  margin-top: 0;
+  margin-bottom: $gem-spacing-scale-3;
+
+  @include media(tablet) {
+    margin-bottom: $gem-spacing-scale-4;
+  }
+
+  @include bold-24;
+}
+
+.gem-c-success-summary__body {
+  @include core-19;
+}
+
 .gem-c-success-alert:focus {
   outline: $gem-focus-width solid $gem-focus-colour;
 }
