@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Support a description for Success Alert component (PR #499)  
 * Bugfix for Radios component (PR #496)
 * Fix for Google Tag Manager component (PR #497)
 
