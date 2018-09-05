@@ -70,7 +70,11 @@ module GovukPublishingComponents
       end
 
       def parsed_step_navs
-        content_item.dig("links", "part_of_step_navs").to_a
+        part_of = content_item.dig("links", "part_of_step_navs").to_a
+        relevant_to = content_item.dig("links", "relevant_to_step_navs").to_a
+
+        return part_of if part_of.any?
+        relevant_to
       end
 
       def configure_for_sidebar(step_nav_content)

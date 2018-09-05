@@ -78,7 +78,15 @@ module GovukPublishingComponents
       def linked_step_by_steps
         # We could include `related_to_step_navs` eventually too, but initially
         # link to those that we render in the "step_by_step_nav_related" component
-        @step_by_steps ||= page.content_item.dig("links", "part_of_step_navs").to_a
+        @step_by_steps ||= all_step_navs
+      end
+
+      def all_step_navs
+        part_of = page.content_item.dig("links", "part_of_step_navs").to_a
+        relevant_to = page.content_item.dig("links", "relevant_to_step_navs").to_a
+
+        return part_of if part_of.any?
+        relevant_to
       end
 
       def step_by_step_schemas
