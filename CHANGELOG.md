@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Bugfix for Radios component (PR #496)
+* Fix for Google Tag Manager component (PR #497)
 
 ## 9.16.1
 

@@ -1,6 +1,11 @@
 <%
   gtm_auth ||= nil
   gtm_preview ||= nil
+
+  gtm_attributes = %w(gtm_cookies_win=x)
+    gtm_attributes << "gtm_auth=" + gtm_auth if gtm_auth
+    gtm_attributes << "gtm_preview=" + gtm_preview if gtm_preview
+  gtm_attributes = gtm_attributes.join('&')
 %>
 <script>
 var doNotTrack = ( navigator.doNotTrack === '1' || navigator.doNotTrack === 'yes' || navigator.msDoNotTrack === '1' || window.doNotTrack === '1' )
@@ -8,7 +13,7 @@ if (!doNotTrack) {
   (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl+'<%= "&gtm_auth="+gtm_auth if gtm_auth %><%= "&gtm_preview="+gtm_preview if gtm_preview %>&gtm_cookies_win=x';f.parentNode.insertBefore(j,f);
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl+'&<%= raw gtm_attributes %>';f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','<%= gtm_id %>');
 }
 </script>
