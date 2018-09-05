@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 9.16.2
 
 * Support a description for Success Alert component (PR #499)  
 * Bugfix for Radios component (PR #496)
