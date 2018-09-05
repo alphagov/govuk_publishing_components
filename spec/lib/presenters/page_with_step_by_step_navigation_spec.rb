@@ -299,6 +299,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
       step_nav_helper = described_class.new(content_item, "/driving-lessons-learning-to-drive", "step-by-step-nav" => "e01e924b-9c7c-4c71-8241-66a575c2f61f")
       expect(step_nav_helper.active_step_by_step?).to eq(true)
       expect(step_nav_helper.show_related_links?).to be true
+      expect(step_nav_helper.show_also_part_of_step_nav?).to be false
     end
 
     it "returns the active step nav in the related links if there is an active step by step" do
@@ -342,6 +343,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
       step_nav_helper = described_class.new(content_item_in_two_step_navs, "/driving-lessons-learning-to-drive", "step-by-step-nav" => "cccc-dddd")
       expect(step_nav_helper.also_part_of_step_nav.count).to eq(1)
       expect(step_nav_helper.also_part_of_step_nav.first[:tracking_id]).to eq('aaaa-bbbb')
+      expect(step_nav_helper.show_also_part_of_step_nav?).to be true
     end
   end
 

@@ -27,6 +27,10 @@ module GovukPublishingComponents
         step_navs.any? && (step_navs.count < 5 || active_step_by_step?)
       end
 
+      def show_also_part_of_step_nav?
+        active_step_by_step? && also_part_of_step_nav.any?
+      end
+
       def related_links
         step_by_step_navs = active_step_by_step? ? [active_step_by_step] : step_navs
         format_related_links(step_by_step_navs)

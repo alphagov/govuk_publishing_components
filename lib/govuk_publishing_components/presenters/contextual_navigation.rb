@@ -65,6 +65,10 @@ module GovukPublishingComponents
         step_nav_helper.show_related_links?
       end
 
+      def content_tagged_to_other_step_by_steps?
+        step_nav_helper.show_also_part_of_step_nav?
+      end
+
       def step_nav_helper
         @step_nav_helper ||= PageWithStepByStepNavigation.new(content_item, request_path, query_parameters)
       end
