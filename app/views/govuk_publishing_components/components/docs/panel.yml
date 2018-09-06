@@ -1,0 +1,14 @@
+name: Panel
+description: Used on confirmation or results pages to highlight important content.
+part_of_admin_layout: true
+govuk_frontend_components:
+  - panel
+accessibility_criteria: |
+  - have a text colour contrast ratio of more than 4.5:1 with its background to be visually distinct
+examples:
+  default:
+    data:
+      title: Application complete
+      description: |
+        Your reference number<br>
+        <strong>HDJ2123F</strong>
