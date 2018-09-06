@@ -10,6 +10,7 @@
 ## Unreleased changes
 
 * Show relevant step by step nav based on user journey (PR #501)
+* Add Error alert component (PR #503)
 
 ## 9.17.1
 
