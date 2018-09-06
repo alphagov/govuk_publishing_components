@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased changes
+
+* Show relevant step by step nav based on user journey (PR #501)
+
 ## 9.17.1
 
 * Fix bug in success alert component (PR #503)
