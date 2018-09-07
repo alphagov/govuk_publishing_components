@@ -11,6 +11,21 @@ describe "Error summary", type: :view do
     end
   end
 
+  it "renders error items when no title is set" do
+    render_component(
+      items: [
+        {
+          text: 'Descriptive link to the question with an error',
+          href: '#example-error-1'
+        }
+      ]
+    )
+    assert_select(
+      "ul li a.gem-c-error-summary__link:first-of-type[href='#example-error-1']",
+      text: 'Descriptive link to the question with an error'
+    )
+  end
+
   it "renders an error summary with title and aria-labelledby set correctly" do
     render_component(
       title: 'Message to alert the user to a problem goes here'
