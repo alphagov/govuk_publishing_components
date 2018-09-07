@@ -7,6 +7,11 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+* Make 'title' optional on error_summary component (PR #510)
+* Make 'href' optional for items in the error_summary (PR #510)
+
+
 ## 9.18.0
 
 * Show relevant step by step nav based on user journey (PR #501)
