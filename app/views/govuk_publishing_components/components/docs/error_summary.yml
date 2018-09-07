@@ -22,5 +22,4 @@ examples:
         href: '#example-error-1'
       - text: Descriptive link to the question with an error 2
         href: '#example-error-2'
-      - text: Descriptive link to the question with an error 3
-        href: '#example-error-3'
+      - text: Description of error without link

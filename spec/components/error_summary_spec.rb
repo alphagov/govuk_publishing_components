@@ -76,6 +76,9 @@ describe "Error summary", type: :view do
         {
           text: 'Descriptive link to the question with an error 3',
           href: '#example-error-3'
+        },
+        {
+          text: 'Description for error 4 with no link'
         }
       ]
     )
@@ -94,6 +97,10 @@ describe "Error summary", type: :view do
     assert_select(
       "ul li a.gem-c-error-summary__link:last-of-type[href='#example-error-3']",
       text: 'Descriptive link to the question with an error 3'
+    )
+    assert_select(
+      "ul li:last-of-type",
+      text: 'Description for error 4 with no link'
     )
   end
 end

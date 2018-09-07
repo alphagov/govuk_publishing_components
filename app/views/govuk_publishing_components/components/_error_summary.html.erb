@@ -27,10 +27,14 @@
       <ul class="gem-c-error-summary__list">
         <% items.each_with_index do |item, index| %>
           <li class="gem-c-error-summary__list__item">
-            <a
-              class="js-error-summary__link gem-c-error-summary__link"
-              href="<%= item[:href] %>"
-            ><%= item[:text] %></a>
+            <% if item[:href] %>
+              <a
+                class="js-error-summary__link gem-c-error-summary__link"
+                href="<%= item[:href] %>"
+              ><%= item[:text] %></a>
+            <% else %>
+              <%= item[:text] %>
+            <% end %>
           </li>
         <% end %>
       </ul>
