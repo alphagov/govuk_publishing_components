@@ -9,6 +9,7 @@
   step_nav_url ||= false
   highlight_step ||= false
   tracking_id ||= false
+  step_nav_content_id ||= tracking_id
 
   step_count = 0
   step_number = 0
@@ -70,6 +71,7 @@
           <div class="gem-c-step-nav__panel js-panel" id="step-panel-<%= id %>-<%= step_index + 1 %>">
             <%
               in_substep = false
+              options[:step_nav_content_id] = step_nav_content_id
               options[:step_index] = step_index
               options[:link_index] = 0
             %>

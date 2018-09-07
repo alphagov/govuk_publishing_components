@@ -12,6 +12,7 @@
 * Show relevant step by step nav based on user journey (PR #501)
 * Add Error alert component (PR #503)
 * Add experimental panel component based on GOV.UK Frontend (PR #507)
+* Adds step by step content ID to links inside steps (PR #502)
 
 ## 9.17.1
 
