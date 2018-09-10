@@ -48,6 +48,8 @@
 }
 
 .gem-c-error-summary__list__item {
+  color: $gem-error-colour;
+  font-weight: bold;
   margin-bottom: $gem-spacing-scale-2;
 
   &:last-child {

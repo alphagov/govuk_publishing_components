@@ -1,7 +1,11 @@
 <%
+  title ||= false
   description ||= false
   items ||= []
   title_id ||= "error-summary-title-#{SecureRandom.hex(4)}"
+  if items.empty? && !title
+    raise ArgumentError, "The error_summary component needs at least one item or a title in order to render."
+  end
 %>
 <div
   class="gem-c-error-summary"
@@ -10,9 +14,11 @@
   role="alert"
   tabindex="-1"
 >
-  <h2 class="gem-c-error-summary__title" id="<%= title_id %>">
-    <%= title %>
-  </h2>
+  <% if title %>
+    <h2 class="gem-c-error-summary__title" id="<%= title_id %>">
+      <%= title %>
+    </h2>
+  <% end %>
   <div class="gem-c-error-summary__body">
     <% if description %>
       <p class="gem-c-error-summary__text"><%= description %></p>
@@ -21,10 +27,14 @@
       <ul class="gem-c-error-summary__list">
         <% items.each_with_index do |item, index| %>
           <li class="gem-c-error-summary__list__item">
-            <a
-              class="js-error-summary__link gem-c-error-summary__link"
-              href="<%= item[:href] %>"
-            ><%= item[:text] %></a>
+            <% if item[:href] %>
+              <a
+                class="js-error-summary__link gem-c-error-summary__link"
+                href="<%= item[:href] %>"
+              ><%= item[:text] %></a>
+            <% else %>
+              <%= item[:text] %>
+            <% end %>
           </li>
         <% end %>
       </ul>
