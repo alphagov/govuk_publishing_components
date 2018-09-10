@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 9.19.0
 * Make 'title' optional on error_summary component (PR #510)
 * Make 'href' optional for items in the error_summary (PR #510)
 
