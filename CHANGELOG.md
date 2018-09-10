@@ -7,10 +7,14 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 9.20.0
+
+* Pass label params through for input component (PR #512)
+
 ## 9.19.0
+
 * Make 'title' optional on error_summary component (PR #510)
 * Make 'href' optional for items in the error_summary (PR #510)
-
 
 ## 9.18.0
 
@@ -26,7 +30,7 @@
 
 ## 9.17
 
-* Support a description for Success Alert component (PR #499)  
+* Support a description for Success Alert component (PR #499)
 * Bugfix for Radios component (PR #496)
 * Fix for Google Tag Manager component (PR #497)
 * Add Copy to clipboard component (PR #494)
