@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add file upload component based on GOV.UK Frontend (PR #515)
+
 ## 9.20.0
 
 * Pass label params through for input component (PR #512)
