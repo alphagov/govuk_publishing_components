@@ -1,7 +1,9 @@
 <%
   items ||= []
   inverse ||= false
+  half_width ||= false
   within_multitype_list ||= false
+  half_width_class = "gem-c-highlight-boxes__item-wrapper--half-width" if half_width
   inverse_class = "gem-c-highlight-boxes--inverse" if inverse
   highlight_boxes_helper = GovukPublishingComponents::Presenters::HighlightBoxesHelper.new(local_assigns)
 %>
@@ -10,7 +12,7 @@
     <ol class="gem-c-highlight-boxes" <%= "data-module=track-click" if highlight_boxes_helper.data_tracking? %>>
   <% end %>
     <% items.each do |content_item| %>
-      <li class="gem-c-highlight-boxes__item-wrapper">
+      <li class="gem-c-highlight-boxes__item-wrapper <%= half_width_class %>">
         <div class="gem-c-highlight-boxes__item <%= inverse_class %>">
           <%= link_to(
             content_item[:link].fetch(:text),

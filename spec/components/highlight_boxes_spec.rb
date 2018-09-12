@@ -170,6 +170,28 @@ describe "Highlight Box", type: :view do
     )
 
     assert_select ".gem-c-highlight-boxes__title.gem-c-highlight-boxes__title--featured"
+    assert_select ".gem-c-highlight-boxes__item-wrapper--half-width", false
+  end
+
+  it "adds half width class when half_width flag passed" do
+    render_component(
+      half_width: true,
+      items: [
+        link: {
+          text: 'Become an apprentice',
+          path: '/become-an-apprentice',
+          description: "How to become an apprentice",
+          featured: true
+        },
+        metadata: {
+          public_updated_at: Time.zone.parse("2017-01-05 14:50:33 +0000"),
+          organisations: 'Department of Education',
+          document_type: 'Guide'
+        }
+      ]
+    )
+
+    assert_select ".gem-c-highlight-boxes__item-wrapper--half-width"
   end
 
   it "adds data tracking attributes when data_attributes provided" do

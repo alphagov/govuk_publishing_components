@@ -107,6 +107,35 @@ examples:
           document_type: Speech
           organisation: DfE and Ofqual
           public_updated_at: 2016-06-27 10:29:44
+  half_width:
+    description: The default component displays 3 highlight boxes in on row on desktop; 2 on tablet; and full-width on mobile. There are cases where we might want to show just two items per row even on desktop, for example two-third layouts.
+    data:
+      half_width: true
+      items:
+      - link:
+          text: Becoming an apprentice
+          path: /becoming-an-apprentice
+          description: Becoming an apprentice - what to expect, apprenticeship levels, pay and training, making an application, complaining about an apprenticeship
+        metadata:
+          document_type: Speech
+          organisation: DfE and Ofqual
+          public_updated_at: 2016-06-27 10:29:44
+      - link:
+          text: Becoming an apprentice
+          path: /becoming-an-apprentice
+          description: Becoming an apprentice - what to expect, apprenticeship levels, pay and training, making an application, complaining about an apprenticeship
+        metadata:
+          document_type: Speech
+          organisation: DfE and Ofqual
+          public_updated_at: 2016-06-27 10:29:44
+      - link:
+          text: Becoming an apprentice
+          path: /becoming-an-apprentice
+          description: Becoming an apprentice - what to expect, apprenticeship levels, pay and training, making an application, complaining about an apprenticeship
+        metadata:
+          document_type: Speech
+          organisation: DfE and Ofqual
+          public_updated_at: 2016-06-27 10:29:44
   with_data_tracking_attributes:
     data:
       items:
