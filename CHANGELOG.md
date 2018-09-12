@@ -7,6 +7,11 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+
+## Unreleased
+
+* Refactor header component to provide options for head or list (PR #516)
+
 ## 9.21.0
 
 * Add file upload component based on GOV.UK Frontend (PR #515)

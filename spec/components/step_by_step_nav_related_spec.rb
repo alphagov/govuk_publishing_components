@@ -104,4 +104,11 @@ describe "Step by step navigation related", type: :view do
     assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__link-item:nth-child(1) .gem-c-step-nav-related__link[data-track-options='{\"dimension96\" : \"peter\" }']"
     assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__link-item:nth-child(2) .gem-c-step-nav-related__link[data-track-options='{\"dimension96\" : \"paul\" }']"
   end
+
+  it "displays as a list when always_display_as_list is passed in" do
+    render_component(links: one_link, always_display_as_list: true)
+
+    assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__heading .gem-c-step-nav-related__pretitle", text: 'Part of'
+    assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__links .gem-c-step-nav-related__link[href='/link1']", text: 'Link 1'
+  end
 end
