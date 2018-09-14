@@ -7,9 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 9.21.0
 
 * Add file upload component based on GOV.UK Frontend (PR #515)
+* Use divs for the alert message bodies (PR #517)
 
 ## 9.20.0
 
