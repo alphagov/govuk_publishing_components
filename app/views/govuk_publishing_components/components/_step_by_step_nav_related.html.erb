@@ -1,6 +1,7 @@
 <%
   links ||= []
   pretitle ||= t("govuk_component.step_by_step_nav_related.part_of", default: "Part of")
+  always_display_as_list ||= false
 %>
 <% if links.any? %>
   <div 
@@ -8,7 +9,7 @@
     data-module="track-click">
     <h2 class="gem-c-step-nav-related__heading">
       <span class="gem-c-step-nav-related__pretitle"><%= pretitle %></span>
-      <% if links.length == 1 %>
+      <% if links.length == 1 && !always_display_as_list %>
           <a href="<%= links[0][:href] %>"
             class="gem-c-step-nav-related__link"
             data-track-category="stepNavPartOfClicked"

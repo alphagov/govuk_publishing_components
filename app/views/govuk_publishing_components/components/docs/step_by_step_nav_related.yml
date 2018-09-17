@@ -62,3 +62,17 @@ examples:
           tracking_id: 'this-is-the-tracking-id'
         }
       ]
+  always_display_as_a_list:
+    description: |
+      when this component is rendered alongside an expanded step by step, we want it to render as a heading. 
+      However, in some cases the component will not be followed by a step by step, for example [Book Driving Test](https://www.gov.uk/book-driving-test).
+      In these cases, the heading is not followed by any content, so it should be rendered as a list instead.
+    data:
+      pretitle: 'Also part of'
+      always_display_as_list: true
+      links: [
+        {
+          href: '/learn-to-drive-a-motorbike',
+          text: 'Learn to drive a motorbike: step by step'
+        }
+      ]
