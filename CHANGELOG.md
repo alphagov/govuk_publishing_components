@@ -8,7 +8,7 @@
   of the commit log.
 
 
-## Unreleased
+## 9.22.0
 
 * Refactor header component to provide options for head or list (PR #516)
 
