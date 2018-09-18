@@ -7,7 +7,7 @@ module GovukPublishingComponents
     APP_COMPONENT_DIRECTORY = "components".freeze
 
     mattr_accessor :component_guide_title
-    self.component_guide_title = "GOV.UK Component Guide"
+    self.component_guide_title = "Component Guide"
 
     mattr_accessor :application_stylesheet
     self.application_stylesheet = "application"
