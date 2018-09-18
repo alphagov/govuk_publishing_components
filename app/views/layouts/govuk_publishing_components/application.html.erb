@@ -27,8 +27,6 @@
     <%= javascript_include_tag "govuk_publishing_components/vendor/modernizr" %>
   <% end %>
 
-  <%= javascript_include_tag "component_guide/application" %>
-  <%= javascript_include_tag "#{GovukPublishingComponents::Config.application_javascript}" %>
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= 'hide-header-and-footer' if @preview %>">
@@ -52,5 +50,7 @@
     <% if @component_doc && @component_doc.part_of_admin_layout? %>
       <%= javascript_include_tag "govuk_publishing_components/admin_scripts" %>
     <% end %>
+    <%= javascript_include_tag "component_guide/application" %>
+    <%= javascript_include_tag "#{GovukPublishingComponents::Config.application_javascript}" %>
 </body>
 </html>
