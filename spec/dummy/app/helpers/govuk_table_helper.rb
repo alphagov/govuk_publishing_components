@@ -1,14 +1,22 @@
 module GovukTableHelper
-  def govuk_table(caption = nil)
+  def govuk_table(caption = nil, opt = {})
     builder = TableBuilder.new(tag)
 
-    tag.table class: "govuk-table" do
-      concat tag.caption caption, class: "govuk-table__caption"
+    classes = %w(govuk-table)
+    classes << "govuk-table--sortable" if opt[:sortable]
+
+    caption_classes = %w(govuk-table__caption)
+    caption_classes << opt[:caption_classes] if opt[:caption_classes]
+
+    tag.table class: classes do
+      concat tag.caption caption, class: caption_classes
       yield(builder)
     end
   end
 
   class TableBuilder
+    include ActionView::Helpers::UrlHelper
+
     attr_reader :tag
 
     def initialize(tag)
@@ -35,12 +43,22 @@ module GovukTableHelper
       end
     end
 
-    def header(str)
-      tag.th str, class: "govuk-table__header", scope: "col"
+    def header(str, opt = {})
+      classes = %w(govuk-table__header)
+      classes << "govuk-table__header--#{opt[:format]}" if opt[:format]
+      classes << "govuk-table__header--active" if opt[:sort_direction]
+      link_clases = %w(app-table__sort-link)
+      link_clases << "app-table__sort-link--#{opt[:sort_direction]}" if opt[:sort_direction]
+      str = link_to str, opt[:href], class: link_clases if opt[:href]
+      tag.th str, class: classes, scope: opt[:scope] ? opt[:scope] : "col"
     end
 
-    def cell(str)
-      tag.td str, class: "govuk-table__cell"
+    def cell(str, opt = {})
+      classes = %w(govuk-table__cell)
+      classes << "govuk-table__cell--" + opt[:format] if opt[:format]
+      classes << "govuk-table__cell--empty" unless str
+      str = "Not set" unless str
+      tag.td str, class: classes
     end
   end
 end
