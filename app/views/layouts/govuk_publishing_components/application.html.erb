@@ -29,17 +29,15 @@
 
   <%= csrf_meta_tags %>
 </head>
-<body class="<%= 'hide-header-and-footer' if @preview %>">
+<body class="govuk-template__body <%= 'hide-header-and-footer' if @preview %>">
   <% unless @preview %>
-    <div class="header-proposition">
-      <div class="content">
-        <nav id="proposition-menu" role="navigation">
-          <%= link_to GovukPublishingComponents::Config.component_guide_title, component_guide_path, id: 'proposition-name' %>
-        </nav>
-      </div>
-    </div>
+    <%= render "govuk_publishing_components/components/layout_header", {
+      environment: GovukPublishingComponents::AppHelpers::Environment.current_acceptance_environment,
+      product_name: GovukPublishingComponents::Config.component_guide_title,
+      href: component_guide_path
+    } %>
 
-    <main id="wrapper" class="govuk-component-guide-wrapper">
+    <main id="wrapper" class="govuk-width-container">
     <%= render 'govuk_publishing_components/components/breadcrumbs', breadcrumbs: @guide_breadcrumbs  %>
   <% else %>
     <main id="wrapper">
@@ -47,6 +45,11 @@
 
       <%= yield %>
     </main>
+
+    <% unless @preview %>
+      <%= render "govuk_publishing_components/components/layout_footer" %>
+    <% end %>
+
     <% if @component_doc && @component_doc.part_of_admin_layout? %>
       <%= javascript_include_tag "govuk_publishing_components/admin_scripts" %>
     <% end %>
