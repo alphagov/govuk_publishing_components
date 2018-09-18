@@ -1,0 +1,58 @@
+<%
+  caption ||= nil
+  head ||= []
+  rows ||= []
+  first_cell_is_header ||=false
+  caption_classes ||= "govuk-heading-m"
+  sortable ||=false
+%>
+
+<table class="govuk-table <%= "govuk-table--sortable" if sortable %>">
+
+  <% if caption %>
+    <caption class="govuk-table__caption <% if caption_classes %> <%= caption_classes %><% end %>"><%= caption %></caption>
+  <% end %>
+
+  <% if head.any? %>
+    <thead class="govuk-table__head">
+      <tr class="govuk-table__row">
+      <% head.each_with_index do |item, cellindex| %>
+        <th class="govuk-table__header
+        <% if item[:format] %> govuk-table__header--<%= item[:format] %><% end %>
+        <% if item[:sort_direction] %> govuk-table__header--active<% end %>"
+        <% if item[:colspan] %> colspan="<%= item[:colspan] %>"<% end %>
+        <% if item[:rowspan] %> rowspan="<%= item[:rowspan] %>"<% end %> scope="col">
+          <% if item[:href] %>
+            <a class="app-table__sort-link <% if item[:sort_direction] %>app-table__sort-link--<%= item[:sort_direction] %><% end %>" href="<%= item[:href] %>"><%= item[:text] %></a>
+          <% else %>
+            <%= item[:text] %>
+          <% end %>
+        </th>
+      <% end %>
+      </tr>
+    </thead>
+  <% end %>
+
+  <tbody class="govuk-table__body">
+  <% rows.each_with_index do |row, rowindex| %>
+    <tr class="govuk-table__row">
+    <% row.each_with_index do |cell, cellindex| %>
+      <% if cellindex == 0 && first_cell_is_header %>
+        <th class="govuk-table__header" scope="row"><%= cell[:text] %></th>
+      <% elsif cellindex == 0 %>
+        <td class="govuk-table__cell
+        <% if cell[:format] %> govuk-table__cell--<%= cell[:format] %><% end %>"
+        <% if cell[:colspan] %> colspan="<%= cell[:colspan] %>"<% end %>
+        <% if cell[:rowspan] %> rowspan="<%= cell[:rowspan] %>"<% end %>><%= cell[:text] %></td>
+      <% else %>
+        <td class="govuk-table__cell <% if cell[:format] %>govuk-table__cell--<%= cell[:format] %><% end %>
+          <% if !cell[:text] %>govuk-table__cell--empty<% end %>"
+        <% if cell[:colspan] %> colspan="<%= cell[:colspan] %>"<% end %>
+        <% if cell[:rowspan] %> rowspan="<%= cell[:rowspan] %>"<% end %>><%= cell[:text]? cell[:text] : "Not set" %></td>
+      <% end %>
+    <% end %>
+    </tr>
+  <% end %>
+  </tbody>
+
+</table>

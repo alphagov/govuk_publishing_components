@@ -1,9 +1,131 @@
 name: Table
 description: A table component to make information easier to compare and scan for users.
-accessibility_criteria:
+accessibility_criteria: |
+  Accessible tables need HTML markup that indicates header cells and data cells and defines their relationship. Assistive technologies use this information to provide context to users.
+  Header cells must be marked up with <th>, and data cells with <td> to make tables accessible.
+  For more complex tables, explicit associations is needed using scope attributes.
 shared_accessibility_criteria:
+  - link
 type: helper
 examples:
   default:
     data:
-      href: '#'
+     rows:
+       -
+         - text: January
+         - text: £85
+           format: numeric
+         - text: £95
+           format: numeric
+       -
+         - text: February
+         - text: £75
+           format: numeric
+         - text: £55
+           format: numeric
+       -
+         - text: March
+         - text: £165
+           format: numeric
+         - text: £125
+           format: numeric
+  with_head:
+    data:
+      head:
+        - text: Month you apply
+        - text: Rate for bicycles
+          format: numeric
+        - text: Rate for vehicles
+          format: numeric
+      rows:
+      -
+        - text: January
+        - text: £85
+          format: numeric
+        - text: £95
+          format: numeric
+      -
+        - text: February
+        - text: £75
+          format: numeric
+        - text: £55
+          format: numeric
+      -
+        - text: March
+        - text: £165
+          format: numeric
+        - text: £125
+          format: numeric
+  with_head_and_caption:
+    data:
+      caption: 'Caption 1: Months and rates'
+      caption_classes: govuk-heading-m
+      first_cell_is_header: true
+      head:
+        - text: Month you apply
+        - text: Rate for bicycles
+          format: numeric
+        - text: Rate for vehicles
+          format: numeric
+      rows:
+      -
+        - text: January
+        - text: £85
+          format: numeric
+        - text: £95
+          format: numeric
+      -
+        - text: February
+        - text: £75
+          format: numeric
+        - text: £55
+          format: numeric
+      -
+        - text: March
+        - text: £165
+          format: numeric
+        - text: £125
+          format: numeric
+  with_sortable_head:
+    data:
+      sortable: true
+      head:
+        - text: Month you apply
+        - text: Rate for bicycles
+          format: numeric
+          sort_direction: descending
+          href: /?sort_direction=desc
+        - text: Rate for vehicles
+          format: numeric
+          href: /?sort_direction=desc
+      rows:
+      -
+        - text: January
+        - text: 
+          format: numeric
+        - text: £95
+          format: numeric
+      -
+        - text: February
+        - text: £75
+          format: numeric
+        - text: £55
+          format: numeric
+      -
+        - text: March
+        - text: £125
+          format: numeric
+        - text: £60
+          format: numeric
+      -
+        - text: April
+        - text: £135
+          format: numeric
+        - text: £62
+          format: numeric
+      -
+        - text: May
+        - text: £150
+          format: numeric
+        - text: £80
+          format: numeric
