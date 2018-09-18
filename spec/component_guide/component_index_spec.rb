@@ -7,17 +7,17 @@ describe 'Component guide index' do
     visit '/test'
     expect(page).to have_title 'Dummy'
     visit '/component-guide'
-    expect(page).to have_title 'GOV.UK Component Guide'
+    expect(page).to have_title 'Component Guide'
   end
 
   it 'sets X-Frame-Options to allow inclusion in iFrames' do
     visit '/component-guide'
-    expect(page.response_headers["X-Frame-Options"]).to eq('ALLOWALL')
+    expect(page.response_headers["X-Frame-Options"]).to eq('SAMEORIGIN')
   end
 
   it 'loads a component guide' do
     visit '/component-guide'
-    expect(page).to have_title 'GOV.UK Component Guide'
+    expect(page).to have_title 'Component Guide'
   end
 
   it 'loads a component from the dummy app' do
