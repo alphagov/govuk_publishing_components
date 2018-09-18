@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add table component (PR #531)
+* Add destructive modifier to button component (PR #523)
 
 ## 9.25.0
 
