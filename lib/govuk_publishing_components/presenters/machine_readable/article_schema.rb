@@ -29,7 +29,7 @@ module GovukPublishingComponents
               "url" => page.logo_url,
             }
           }
-        }.merge(image_schema).merge(author_schema).merge(body).merge(is_part_of).merge(about)
+        }.merge(image_schema).merge(author_schema).merge(body).merge(is_part_of).merge(about).merge(has_part)
       end
 
     private
@@ -97,6 +97,21 @@ module GovukPublishingComponents
           logo_url: page.logo_url,
           image_placeholders: page.image_placeholders
         )
+      end
+
+      def has_part
+        return {} unless collection_pages.any?
+        {
+            "hasPart" => collection_pages.map { |document| HasPartSchema.new(document).structured_data }
+        }
+      end
+
+      def collection_pages
+        @pages ||= fetch_collection_pages
+      end
+
+      def fetch_collection_pages
+        page.content_item.dig("links", "documents").to_a.map { |document| document["web_url"] }
       end
 
       def about

@@ -235,6 +235,48 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       expect(structured_data['about']).to eql(nil)
     end
 
+    it "links to items that belongs to the content" do
+      content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "document_collection") do |random_item|
+        random_item.merge(
+          "first_published_at" => "2017-09-04T13:50:49.000+00:00",
+          "links" => {
+              "documents" => [
+                  {
+                      "api_path" => "/api/content/acetic-acid-properties-uses-and-incident-management",
+                      "base_path" => "/acetic-acid-properties-uses-and-incident-management",
+                      "content_id" => "47bcdf4c-9df9-48ff-b1ad-2381ca819464",
+                      "description" => "Guidance on acetic acid (also known as ethanoic acid) for use in responding to chemical incidents",
+                      "details" => {},
+                      "document_type" => "guidance",
+                      "locale" => "en",
+                      "public_updated_at" => "2018-06-22T12:12:38Z",
+                      "schema_name" => "publication",
+                      "title" => "Acetic acid: health effects and incident management",
+                      "api_url" => "/api/content/acetic-acid-properties-uses-and-incident-management",
+                      "web_url" => "https://www.gov.uk/acetic-acid-properties-uses-and-incident-management"
+                  }
+              ],
+              "primary_publishing_organisation" => [
+                  {
+                      "content_id" => "d944229b-a5ad-453d-8e16-cb5dcfcdb866",
+                      "title" => "Foo org",
+                      "locale" => "en",
+                      "base_path" => "/orgs/foo",
+                  }
+              ]
+          }
+        )
+      end
+
+      structured_data = generate_structured_data(
+        content_item: content_item,
+        schema: :article
+      ).structured_data
+
+      expect(structured_data['hasPart'][0]['@type']).to eq('CreativeWork')
+      expect(structured_data['hasPart'][0]['sameAs']).to eq('https://www.gov.uk/acetic-acid-properties-uses-and-incident-management')
+    end
+
     def live_taxons_links
       {
         "links" => {

@@ -1,6 +1,7 @@
 require 'govuk_publishing_components/presenters/machine_readable/page'
 require 'govuk_publishing_components/presenters/machine_readable/article_schema'
 require 'govuk_publishing_components/presenters/machine_readable/how_to_schema'
+require 'govuk_publishing_components/presenters/machine_readable/has_part_schema'
 require 'govuk_publishing_components/presenters/machine_readable/news_article_schema'
 require 'govuk_publishing_components/presenters/machine_readable/organisation_schema'
 require 'govuk_publishing_components/presenters/machine_readable/person_schema'
