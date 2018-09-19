@@ -26,6 +26,13 @@
   }
 }
 
+.gem-c-highlight-boxes__item-wrapper--half-width {
+  @include media(desktop) {
+    width: 50%;
+    padding: ($gutter / 6) ($gutter-half + $gutter-one-third) ($gutter-half + $gutter-one-third) 0;
+  }
+}
+
 .gem-c-highlight-boxes__item {
   @include box-sizing(border-box);
   border: 1px solid $grey-2;
