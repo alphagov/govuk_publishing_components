@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 9.24.0
 
 * Insert component guide script elements before closing body element (PR #525)
 
