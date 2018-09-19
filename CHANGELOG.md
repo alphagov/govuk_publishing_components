@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 9.23.0
 
 * Add half_width flag for higlight boxes (PR #520)
 
