@@ -9,6 +9,8 @@
 
 ## Unreleased
 
+* Remove 'Policies' link from government navbar (PR #529)
+
 ## 9.26.1
 
 * Add parentOrganization and subOrganization properties to org schemas (PR #533)
