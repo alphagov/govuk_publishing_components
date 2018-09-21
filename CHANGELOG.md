@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add table component (PR #531)
+
 ## 9.25.0
 
 * Add a hasPart schema to collection pages (PR #522)
