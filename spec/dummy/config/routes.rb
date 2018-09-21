@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   get 'contextual-navigation/*base_path', to: 'welcome#contextual_navigation'
   get 'admin', to: 'welcome#admin'
   get 'tabsexample', to: 'welcome#tabsexample'
+  get 'table', to: 'welcome#table'
 end
