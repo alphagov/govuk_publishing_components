@@ -8,8 +8,13 @@ $gem-secondary-button-colour: #00823b;
 $gem-secondary-button-hover-colour: darken($gem-secondary-button-colour, 5%);
 $gem-secondary-button-background-colour: govuk-colour("white");
 $gem-secondary-button-hover-background-colour: govuk-colour("grey-4");
+
 $gem-quiet-button-colour: govuk-colour("grey-1");
 $gem-quiet-button-hover-colour: darken($gem-quiet-button-colour, 5%);
+
+$gem-destructive-button-background-colour: govuk-colour("red");
+$gem-destructive-button-hover-background-colour: darken($gem-destructive-button-background-colour, 5%);
+$gem-destructive-button-border-colour: govuk-colour("black");
 
 @import "../../../../node_modules/govuk-frontend/components/button/button";
 
@@ -94,6 +99,21 @@ $gem-quiet-button-hover-colour: darken($gem-quiet-button-colour, 5%);
 
   &:before {
     content: none;
+  }
+}
+
+.gem-c-button--destructive {
+  background-color: $gem-destructive-button-background-colour;
+  box-shadow: 0 2px 0 $gem-destructive-button-border-colour;
+
+  &:link,
+  &:visited,
+  &:active {
+    background-color: $gem-destructive-button-background-colour;
+  }
+
+  &:hover {
+    background-color: $gem-destructive-button-hover-background-colour;
   }
 }
 
