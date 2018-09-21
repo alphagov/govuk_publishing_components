@@ -1,6 +1,7 @@
-<%= render 'govuk_publishing_components/components/title', title: "A table" %>
+<%= render 'govuk_publishing_components/components/title', title: "Table helper" %>
 
-<%= govuk_table "Income tax rates" do |t| %>
+<%= GovukPublishingComponents::AppHelpers::TableHelper.helper(self, "Income tax rates") do |t| %>
+
   <%= t.head do %>
     <%= t.header "Band" %>
     <%= t.header "Taxable income" %>
