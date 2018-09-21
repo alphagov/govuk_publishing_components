@@ -92,7 +92,7 @@ examples:
           path: "/world/argentina/news"
   no_children:
     description: |
-      The child links are usually pulled from rummager. If rummager doesn’t respond we fallback to a sidebar with a taxon link but without any child content links.
+      Shows a sidebar with a taxon link but without any child content links.
     data:
       items:
         - title: "School curriculum"
