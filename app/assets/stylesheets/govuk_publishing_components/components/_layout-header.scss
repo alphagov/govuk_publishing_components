@@ -10,14 +10,6 @@
   border-bottom-color: govuk-colour("grey-1");
 }
 
-.govuk-header__logo {
-  @include mq ($from: desktop) {
-    float: left;
-  }
-}
-
-.govuk-header__content {
-  @include mq ($from: desktop) {
-    float: left;
-  }
+.govuk-header__logo--no-navigation {
+  width: auto;
 }
