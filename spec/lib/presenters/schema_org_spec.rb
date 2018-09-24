@@ -45,12 +45,10 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
     end
 
     it "generates schema.org GovernmentOrganization" do
-      content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "organisation") do |org|
-        org.merge(
-          "base_path" => "/ministry-of-magic",
-          "title" => "Ministry of Magic"
-        )
-      end
+      content_item = generate_org(
+        "base_path" => "/ministry-of-magic",
+        "title" => "Ministry of Magic"
+      )
 
       structured_data = generate_structured_data(
         content_item: content_item,
@@ -60,6 +58,37 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       expect(structured_data["@type"]).to eq("GovernmentOrganization")
       expect(structured_data["name"]).to eq("Ministry of Magic")
       expect(structured_data["mainEntityOfPage"]["@id"]).to eq("http://www.dev.gov.uk/ministry-of-magic")
+    end
+
+    it "generates organisation structure" do
+      parent_content_item = generate_org(
+        "base_path" => "/ministry-of-magic",
+        "title" => "Ministry of Magic"
+      )
+
+      child_content_item = generate_org(
+        "base_path" => "/dodgy-wands-commission",
+        "title" => "Dodgy Wands Commission"
+      )
+
+      content_item = generate_org(
+        "base_path" => "/magical-artefacts-agency",
+        "title" => "Magical Artefacts Agency",
+        "links" => {
+          "ordered_parent_organisations" => [parent_content_item],
+          "ordered_child_organisations" => [child_content_item]
+        }
+      )
+
+      structured_data = generate_structured_data(
+        content_item: content_item,
+        schema: :organisation
+      ).structured_data
+
+      expect(structured_data["@type"]).to eq("GovernmentOrganization")
+      expect(structured_data["name"]).to eq("Magical Artefacts Agency")
+      expect(structured_data["parentOrganization"][0]["sameAs"]).to eq("http://www.dev.gov.uk/ministry-of-magic")
+      expect(structured_data["subOrganization"][0]["sameAs"]).to eq("http://www.dev.gov.uk/dodgy-wands-commission")
     end
 
     it "allows override of the URL" do
@@ -332,6 +361,12 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
 
     def generate_structured_data(args)
       GovukPublishingComponents::Presenters::SchemaOrg.new(GovukPublishingComponents::Presenters::Page.new(args))
+    end
+
+    def generate_org(details)
+      GovukSchemas::RandomExample.for_schema(frontend_schema: "organisation") do |org|
+        org.merge(details)
+      end
     end
   end
 end

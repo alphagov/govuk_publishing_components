@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add parentOrganization and subOrganization properties to org schemas.
+
 ## 9.26.0
 
 * Add table component (PR #531)

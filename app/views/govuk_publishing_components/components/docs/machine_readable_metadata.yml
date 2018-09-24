@@ -54,3 +54,17 @@ examples:
         base_path: "/foo"
         details: {}
       schema: :organisation
+  organisation_schema_with_related_orgs:
+    data:
+      content_item:
+        title: "Magical Artefacts Agency"
+        base_path: "/foo"
+        details: {}
+        links:
+          ordered_parent_organisations:
+            - title: "Ministry of Magic"
+              base_path: "/ministry-of-magic"
+          ordered_child_organisations:
+            - title: "Dodgy Wands Commission"
+              base_path: "/dodgy-wands-commission"
+      schema: :organisation
