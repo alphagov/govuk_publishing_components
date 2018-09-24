@@ -15,6 +15,12 @@ module GovukPublishingComponents
         end
       end
 
+      def related_to_step_navs
+        @related_to_step_navs ||= parsed_related_to_step_navs.map do |step_nav|
+          StepByStepModel.new(step_nav)
+        end
+      end
+
       def show_sidebar?
         show_header? && current_step_nav.steps.present?
       end
@@ -24,7 +30,8 @@ module GovukPublishingComponents
       end
 
       def show_related_links?
-        step_navs.any? && (step_navs.count < 5 || active_step_by_step?)
+        return true if active_step_by_step?
+        step_navs.any? && step_navs.count < 5
       end
 
       def show_also_part_of_step_nav?
@@ -37,7 +44,8 @@ module GovukPublishingComponents
       end
 
       def also_part_of_step_nav
-        step_by_step_navs = step_navs.delete_if { |step_nav| step_nav.content_id == active_step_by_step.content_id }
+        step_navs_list = step_navs_combined_list
+        step_by_step_navs = step_navs_list.delete_if { |step_nav| step_nav.content_id == active_step_by_step.content_id }
         format_related_links(step_by_step_navs)
       end
 
@@ -67,7 +75,8 @@ module GovukPublishingComponents
       end
 
       def active_step_by_step
-        @active_step_navs ||= step_navs.select { |step_nav| step_nav.content_id == active_step_nav_content_id }
+        step_navs_list = step_navs_combined_list
+        @active_step_navs ||= step_navs_list.select { |step_nav| step_nav.content_id == active_step_nav_content_id }
         @active_step_navs.first
       end
 
@@ -88,8 +97,19 @@ module GovukPublishingComponents
         @steps ||= step_nav[:steps]
       end
 
+      def step_navs_combined_list
+        step_nav_list = []
+        step_nav_list += step_navs if step_navs.any?
+        step_nav_list += related_to_step_navs if related_to_step_navs.any?
+        step_nav_list
+      end
+
       def parsed_step_navs
         content_item.dig("links", "part_of_step_navs").to_a
+      end
+
+      def parsed_related_to_step_navs
+        content_item.dig("links", "related_to_step_navs").to_a
       end
 
       def configure_for_sidebar(step_nav_content)
