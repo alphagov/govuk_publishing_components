@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 9.26.0
 
 * Add table component (PR #531)
 * Add destructive modifier to button component (PR #523)
