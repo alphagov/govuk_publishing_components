@@ -193,7 +193,6 @@ describe "Contextual navigation" do
 
   def then_i_see_the_taxonomy_sidebar_and_collection
     expect(page).to have_css(".gem-c-taxonomy-navigation__link", text: "A live taxon")
-    expect(page).to have_css(".related-link.gem-c-taxonomy-navigation__link", text: "A similar item")
     expect(page).to have_css(".gem-c-taxonomy-navigation__section-link", text: "A cool document collection")
   end
 

@@ -11,7 +11,6 @@ require "govuk_publishing_components/presenters/content_breadcrumbs_based_on_tax
 require "govuk_publishing_components/presenters/services"
 require "govuk_publishing_components/presenters/meta_tags"
 require "govuk_publishing_components/presenters/taxonomy_navigation"
-require "govuk_publishing_components/presenters/rummager_taxonomy_sidebar_links"
 require "govuk_publishing_components/presenters/curated_taxonomy_sidebar_links"
 require "govuk_publishing_components/presenters/content_item"
 require "govuk_publishing_components/presenters/translation_nav_helper"
