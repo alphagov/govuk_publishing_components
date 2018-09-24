@@ -9,8 +9,10 @@
 
 ## Unreleased
 
-* Add parentOrganization and subOrganization properties to org schemas.
-* Remove RummagerTaxonomySidebarLinks from contextual navigation
+## 9.26.1
+
+* Add parentOrganization and subOrganization properties to org schemas (PR #533)
+* Remove RummagerTaxonomySidebarLinks from contextual navigation (PR #530)
 
 ## 9.26.0
 
