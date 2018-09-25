@@ -345,6 +345,133 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
       expect(step_nav_helper.also_part_of_step_nav.first[:tracking_id]).to eq('aaaa-bbbb')
       expect(step_nav_helper.show_also_part_of_step_nav?).to be true
     end
+
+    it "shows related to step nav when a step by step is active" do
+      step_nav = {
+        "content_id" => "cccc-dddd",
+        "title" => "Learn to spacewalk: small step by giant leap",
+        "base_path" => "/learn-to-spacewalk"
+      }
+      content_item = {
+        "title" => "Book a session in the vomit comet",
+        "document_type" => "transaction",
+        "links" => {
+          "related_to_step_navs" => [step_nav],
+        }
+      }
+      step_nav_helper = described_class.new(content_item, "/driving-lessons-learning-to-drive", "step-by-step-nav" => "cccc-dddd")
+      expect(step_nav_helper.active_step_by_step?).to eq(true)
+      expect(step_nav_helper.also_part_of_step_nav.count).to eq(0)
+    end
+
+    it "does not shows related to step nav when a step by step is not active" do
+      step_nav = {
+        "content_id" => "cccc-dddd",
+        "title" => "Learn to spacewalk: small step by giant leap",
+        "base_path" => "/learn-to-spacewalk"
+      }
+      content_item = {
+        "title" => "Book a session in the vomit comet",
+        "document_type" => "transaction",
+        "links" => {
+          "related_to_step_navs" => [step_nav],
+        }
+      }
+      step_nav_helper = described_class.new(content_item, "/driving-lessons-learning-to-drive")
+      expect(step_nav_helper.active_step_by_step?).to eq(false)
+      expect(step_nav_helper.show_also_part_of_step_nav?).to be false
+    end
+
+    it "shows header for related to step nav when a step by step is active" do
+      step_nav = {
+        "content_id" => "cccc-dddd",
+        "title" => "Learn to spacewalk: small step by giant leap",
+        "base_path" => "/learn-to-spacewalk"
+      }
+      content_item = {
+        "title" => "Book a session in the vomit comet",
+        "document_type" => "transaction",
+        "links" => {
+          "related_to_step_navs" => [step_nav],
+        }
+      }
+      step_nav_helper = described_class.new(content_item, "/driving-lessons-learning-to-drive", "step-by-step-nav" => "cccc-dddd")
+      expect(step_nav_helper.active_step_by_step?).to eq(true)
+      expect(step_nav_helper.show_header?).to eq(true)
+    end
+
+    it "shows the titles of the other step navs the content item is part of" do
+      step_nav = {
+        "content_id" => "cccc-dddd",
+        "title" => "Learn to spacewalk: small step by giant leap",
+        "base_path" => "/learn-to-spacewalk"
+      }
+      another_step_nav = {
+        "content_id" => "aaaa-bbbb",
+        "title" => "Lose your lunch: lurch by lurch",
+        "base_path" => "/lose-your-lunch"
+      }
+      content_item_in_two_step_navs = {
+        "title" => "Book a session in the vomit comet",
+        "document_type" => "transaction",
+        "links" => {
+          "related_to_step_navs" => [step_nav, another_step_nav],
+        }
+      }
+      step_nav_helper = described_class.new(content_item_in_two_step_navs, "/driving-lessons-learning-to-drive", "step-by-step-nav" => "cccc-dddd")
+      expect(step_nav_helper.also_part_of_step_nav.count).to eq(1)
+      expect(step_nav_helper.also_part_of_step_nav.first[:tracking_id]).to eq('aaaa-bbbb')
+      expect(step_nav_helper.show_also_part_of_step_nav?).to be true
+    end
+
+    it "does not show part of step navs if more than 5" do
+      step_nav = {
+        "content_id" => "cccc-dddd",
+        "title" => "Learn to spacewalk: small step by giant leap",
+        "base_path" => "/learn-to-spacewalk"
+      }
+      another_step_nav = {
+        "content_id" => "aaaa-bbbb",
+        "title" => "Lose your lunch: lurch by lurch",
+        "base_path" => "/lose-your-lunch"
+      }
+      another_step_nav2 = {
+        "content_id" => "aaaa-bbbb",
+        "title" => "Lose your lunch: lurch by lurch 2",
+        "base_path" => "/lose-your-lunch-2"
+      }
+      another_step_nav3 = {
+        "content_id" => "aaaa-bbbb",
+        "title" => "Lose your lunch: lurch by lurch 3",
+        "base_path" => "/lose-your-lunch-3"
+      }
+      another_step_nav4 = {
+        "content_id" => "aaaa-bbbb",
+        "title" => "Lose your lunch: lurch by lurch 4",
+        "base_path" => "/lose-your-lunch-4"
+      }
+      another_step_nav5 = {
+        "content_id" => "aaaa-bbbb",
+        "title" => "Lose your lunch: lurch by lurch 5",
+        "base_path" => "/lose-your-lunch-5"
+      }
+      content_item_in_six_step_navs = {
+        "title" => "Book a session in the vomit comet",
+        "document_type" => "transaction",
+        "links" => {
+          "related_to_step_navs" => [
+            step_nav,
+            another_step_nav,
+            another_step_nav2,
+            another_step_nav3,
+            another_step_nav4,
+            another_step_nav5,
+          ],
+        }
+      }
+      step_nav_helper = described_class.new(content_item_in_six_step_navs, "/driving-lessons-learning-to-drive", "step-by-step-nav" => "cccc-dddd")
+      expect(step_nav_helper.show_also_part_of_step_nav?).to eq(false)
+    end
   end
 
   def payload_for(schema, content_item)

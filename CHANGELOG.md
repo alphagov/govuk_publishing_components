@@ -11,6 +11,8 @@
 
 * Remove 'Policies' link from government navbar (PR #529)
 
+* Show step by step when the navigation is disabled but a user is actively interacting with the step by step (PR #535)
+
 ## 9.26.1
 
 * Add parentOrganization and subOrganization properties to org schemas (PR #533)
