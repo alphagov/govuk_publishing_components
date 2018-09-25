@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 9.27.0
 
 * Remove 'Policies' link from government navbar (PR #529)
 
