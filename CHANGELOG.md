@@ -7,11 +7,13 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 9.28.0
+
+* Show step by step when the navigation is disabled but a user is actively interacting with the step by step (PR #535)
+
 ## 9.27.0
 
 * Remove 'Policies' link from government navbar (PR #529)
-
-* Show step by step when the navigation is disabled but a user is actively interacting with the step by step (PR #535)
 
 ## 9.26.1
 
