@@ -35,7 +35,7 @@ module GovukPublishingComponents
       end
 
       def show_also_part_of_step_nav?
-        active_step_by_step? && also_part_of_step_nav.any?
+        active_step_by_step? && also_part_of_step_nav.any? && step_navs_combined_list.count < 5
       end
 
       def related_links
