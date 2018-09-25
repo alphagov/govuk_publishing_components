@@ -73,7 +73,8 @@ module GovukPublishingComponents
       end
 
       def active_step_by_step
-        @active_step_navs ||= step_navs.select { |step_nav| step_nav.content_id == active_step_nav_content_id }
+        step_navs_list = step_navs_combined_list
+        @active_step_navs ||= step_navs_list.select { |step_nav| step_nav.content_id == active_step_nav_content_id }
         @active_step_navs.first
       end
 
@@ -92,6 +93,13 @@ module GovukPublishingComponents
 
       def steps
         @steps ||= step_nav[:steps]
+      end
+
+      def step_navs_combined_list
+        step_nav_list = []
+        step_nav_list += step_navs if step_navs.any?
+        step_nav_list += related_to_step_navs if related_to_step_navs.any?
+        step_nav_list
       end
 
       def parsed_step_navs
