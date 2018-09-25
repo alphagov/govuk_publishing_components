@@ -44,7 +44,8 @@ module GovukPublishingComponents
       end
 
       def also_part_of_step_nav
-        step_by_step_navs = step_navs.delete_if { |step_nav| step_nav.content_id == active_step_by_step.content_id }
+        step_navs_list = step_navs_combined_list
+        step_by_step_navs = step_navs_list.delete_if { |step_nav| step_nav.content_id == active_step_by_step.content_id }
         format_related_links(step_by_step_navs)
       end
 
