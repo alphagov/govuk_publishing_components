@@ -15,6 +15,12 @@ module GovukPublishingComponents
         end
       end
 
+      def related_to_step_navs
+        @related_to_step_navs ||= parsed_related_to_step_navs.map do |step_nav|
+          StepByStepModel.new(step_nav)
+        end
+      end
+
       def show_sidebar?
         show_header? && current_step_nav.steps.present?
       end
@@ -90,6 +96,10 @@ module GovukPublishingComponents
 
       def parsed_step_navs
         content_item.dig("links", "part_of_step_navs").to_a
+      end
+
+      def parsed_related_to_step_navs
+        content_item.dig("links", "related_to_step_navs").to_a
       end
 
       def configure_for_sidebar(step_nav_content)
