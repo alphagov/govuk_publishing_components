@@ -30,7 +30,8 @@ module GovukPublishingComponents
       end
 
       def show_related_links?
-        step_navs.any? && (step_navs.count < 5 || active_step_by_step?)
+        return true if active_step_by_step?
+        step_navs.any? && step_navs.count < 5
       end
 
       def show_also_part_of_step_nav?

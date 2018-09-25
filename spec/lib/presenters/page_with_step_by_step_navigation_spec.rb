@@ -381,6 +381,24 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
       expect(step_nav_helper.active_step_by_step?).to eq(false)
       expect(step_nav_helper.show_also_part_of_step_nav?).to be false
     end
+
+    it "shows header for related to step nav when a step by step is active" do
+      step_nav = {
+        "content_id" => "cccc-dddd",
+        "title" => "Learn to spacewalk: small step by giant leap",
+        "base_path" => "/learn-to-spacewalk"
+      }
+      content_item = {
+        "title" => "Book a session in the vomit comet",
+        "document_type" => "transaction",
+        "links" => {
+          "related_to_step_navs" => [step_nav],
+        }
+      }
+      step_nav_helper = described_class.new(content_item, "/driving-lessons-learning-to-drive", "step-by-step-nav" => "cccc-dddd")
+      expect(step_nav_helper.active_step_by_step?).to eq(true)
+      expect(step_nav_helper.show_header?).to eq(true)
+    end
   end
 
   def payload_for(schema, content_item)
