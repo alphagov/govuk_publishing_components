@@ -403,6 +403,87 @@ examples:
           ]
         }
       ]
+  tracking_the_user_journey_through_the_query_string:
+    description: |
+      When the step by step pattern was first introduced, one of the problems we noticed was that if a content page is in more than one step by step journey, it wasn't practical to expand all of the step by steps, as the sidebar became very long.
+
+      We solved this problem in a few ways:
+
+      1. Only show a list of titles for the step by steps that the content page is part of.
+      2. Only display this list if the content item is part of fewer than 5 step by step journeys
+      3. Allow content designers to optionally hide a step by step journey on content pages.
+
+      The consequence of this is that if users land on any of these pages, they lose sight of the journey they are on, and which step of the journey they have reached (the black dot).
+
+      The solution is to track the step by step journey the user is on.
+
+      This has been achieved by adding a query string to all of the internal links in the step by step that contains the content_id of the step by step.
+
+      For example, if the step by step contains a link to [/check-uk-visa](/check-uk-visa), the component will renders the link as [/check-uk-visa?step-by-step-nav=d8f3c2e0-d544-4664-9616-ab71323e4d18](/check-uk-visa?step-by-step-nav=d8f3c2e0-d544-4664-9616-ab71323e4d18)
+
+      As long as the user follows the links in the step by step (and not the inline links in the content), the component will know which step by step journey the user is on.
+
+      If the content item is part of multiple step by steps, the component fetches the content_id of the `active` step by step from the query string and expands that one. The other step by steps that the content item is part of are displayed as a list of titles under an "Also part of" heading.
+
+      Additionally, if content designers have chosen to "hide" a step by step on a content page, but we can see that the user is following a step by step journey (the content_id of the step by step is in the querystring), the step by step will still be displayed and expanded in the sidebar, and the other step by steps that the content item is part of, but content designers have chosen to hide will also be displayed as a list of titles under an "Also part of heading".
+
+      In both cases, we never show more than 5 step by steps in the list.
+
+      If the user lands on the content page "cold", i.e. from Google, and not from the step by step sidebar (or overview page), the original rules for the displaying the step by step sidebar will apply.
+
+      The rules are as follows:
+
+      1. Content item is part of one step by step
+
+          Expand the step by step in the sidebar
+
+      2. Content item is part of multiple step by steps
+
+          Show a list of step by steps under the "Part of" heading
+
+      3. Step by step is marked as "hidden" for the content page
+
+          Do not display the step by step
+
+      Changes to the rules when the user is on a step by step journey (the query string is in the url):
+
+      1. Content item is part of one step by step
+
+          No change, expand the step by step in the sidebar
+
+      2. Content item is part of multiple step by steps
+
+          Expand the step by step in the querystring
+
+          Show a list of the other step by steps under an "Also part of" heading, if the content item is part of less than 5 step by step journeys
+
+      3. Step by step is marked as "hidden" for the content page
+
+          Expand the step by step in the querystring
+
+          Show a list of the other step by steps (including other step by steps that have been marked as "hidden") under an "Also part of" heading, if the content item is part of less than 5 step by step journeys
+    data:
+      tracking_id: "this-is-the-content-id"
+      steps: [
+        {
+          title: "With query string",
+          contents: [
+            {
+              type: 'list',
+              contents: [
+                {
+                  href: '/component-guide/step_by_step_navigation/with_links/preview?step-by-step-nav=this-is-the-content-id',
+                  text: 'This is an internal link with a query string',
+                },
+                {
+                  href: 'http://google.com',
+                  text: 'This is an external link without a query string'
+                }
+              ]
+            }
+          ]
+        }
+      ]
   with_optional_steps:
     description: |
       Steps can be optional. This is controlled by two parameters, 'optional' and 'logic'.
