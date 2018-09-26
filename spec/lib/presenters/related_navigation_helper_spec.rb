@@ -27,7 +27,6 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
         "related_guides" => [],
         "collections" => [],
         "topics" => [],
-        "policies" => [],
         "topical_events" => [],
         "world_locations" => [],
         "statistical_data_sets" => [],
@@ -104,15 +103,6 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
               "document_type" => "mainstream_browse_page"
             }
           ],
-          "related_policies" => [
-            {
-              "content_id" => "32c1b93d-2553-47c9-bc3c-fc5b513ecc32",
-              "locale" => "en",
-              "base_path" => "/related-policy",
-              "title" => "related policy",
-              "document_type" => "policy"
-            }
-          ],
           "world_locations" => [
             {
               "content_id" => "32c1b93d-2553-47c9-bc3c-fc5b513ecc32",
@@ -127,7 +117,6 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
         "related_guides" => [],
         "collections" => [{ path: "/related-collection", text: "related collection" }],
         "topics" => [{ path: "/browse/something", text: "A mainstream browse page" }, { path: "/related-topic", text: "related topic" }],
-        "policies" => [{ path: "/related-policy", text: "related policy" }],
         "related_contacts" => [],
         "related_external_links" => [],
         "topical_events" => [{ path: "/related-topical-event", text: "related topical event" }],

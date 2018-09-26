@@ -1,5 +1,5 @@
 name: Related Navigation
-description: Component showing related content, including topics, guidance, collections and policies (where applicable)
+description: Component showing related content, including topics, guidance and collections
 accessibility_criteria: |
   - Should have a role of 'navigation' on any navigation elements inside the component
   - Should be marked up as navigation and not as tangential content
@@ -41,16 +41,6 @@ examples:
           - title: The future of jobs and skills
             base_path: /government/collections/the-future-of-jobs-and-skills
             document_type: document_collection
-  with_policies:
-    data:
-      links:
-        related_policies:
-          - title: Further education and training
-            base_path: /government/policies/further-education-and-training
-            document_type: policy
-          - title: Primary school education
-            base_path: /government/policies/primary-school-education
-            document_type: policy
   with_topical_events:
     data:
       links:
@@ -151,10 +141,6 @@ examples:
           - title: The future of jobs and skills
             base_path: /government/collections/the-future-of-jobs-and-skills
             document_type: document_collection
-        related_policies:
-          - title: Further education and training
-            base_path: /government/policies/further-education-and-training
-            document_type: policy
         world_locations:
           - title: South Sudan
             base_path: /world/south-sudan/news

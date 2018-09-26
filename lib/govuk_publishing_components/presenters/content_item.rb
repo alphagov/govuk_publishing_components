@@ -90,10 +90,6 @@ module GovukPublishingComponents
         filter_link_type(content_store_response.dig("links", "organisations").to_a, "organisation")
       end
 
-      def related_policies
-        filter_link_type(content_store_response.dig("links", "related_policies").to_a, "policy")
-      end
-
       def related_statistical_data_sets
         filter_link_type(content_store_response.dig("links", "related_statistical_data_sets").to_a, "statistical_data_set")
       end
