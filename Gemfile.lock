@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    govuk_publishing_components (10.0.0)
+    govuk_publishing_components (10.1.0)
       govspeak (>= 5.0.3)
       govuk_app_config
       govuk_frontend_toolkit
@@ -113,13 +113,13 @@ GEM
       rubocop (~> 0.52.0)
       rubocop-rspec (~> 1.19.0)
       scss_lint
-    govuk_app_config (1.9.2)
+    govuk_app_config (1.9.3)
       aws-xray-sdk (~> 0.10.0)
       logstasher (~> 1.2.2)
       sentry-raven (~> 2.7.1)
       statsd-ruby (~> 1.4.0)
       unicorn (~> 5.4.0)
-    govuk_frontend_toolkit (7.6.0)
+    govuk_frontend_toolkit (8.0.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
     govuk_schemas (3.2.0)
@@ -175,7 +175,7 @@ GEM
     nokogumbo (1.5.0)
       nokogiri
     null_logger (0.0.1)
-    oj (3.6.10)
+    oj (3.6.11)
     parallel (1.12.1)
     parser (2.5.1.2)
       ast (~> 2.4.0)
