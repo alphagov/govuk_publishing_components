@@ -16,7 +16,7 @@ $gem-destructive-button-background-colour: govuk-colour("red");
 $gem-destructive-button-hover-background-colour: darken($gem-destructive-button-background-colour, 5%);
 $gem-destructive-button-border-colour: govuk-colour("black");
 
-@import "../../../../node_modules/govuk-frontend/components/button/button";
+@import "govuk-frontend/components/button/button";
 
 @import "mixins/margins";
 

@@ -3,8 +3,8 @@
 // Specify the functions used to resolve assets paths in SCSS
 $govuk-font-url-function: "font-url";
 
-@import "../../../../node_modules/govuk-frontend/components/table/table";
-@import "../../../../node_modules/govuk-frontend/core/links";
+@import "govuk-frontend/components/table/table";
+@import "govuk-frontend/core/links";
 
 $table-border-width: 1px;
 $table-border-colour: govuk-colour("grey-2");

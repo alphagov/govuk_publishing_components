@@ -3,5 +3,5 @@
 // Specify the functions used to resolve assets paths in SCSS
 $govuk-font-url-function: "font-url";
 
-@import "../../../../node_modules/govuk-frontend/components/input/input";
-@import "../../../../node_modules/govuk-frontend/objects/form-group";
+@import "govuk-frontend/components/input/input";
+@import "govuk-frontend/objects/form-group";
