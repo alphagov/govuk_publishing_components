@@ -7,6 +7,12 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 10.0.0
+
+* BREAKING: Code related to `Policies` has been removed, including the
+`related_policies` method. This shouldn't be used anymore, as all `Policies`
+are being unpublished. Use the new single Topic Taxonomy instead. (#540)
+
 ## 9.28.0
 
 * Show step by step when the navigation is disabled but a user is actively interacting with the step by step (PR #535)
