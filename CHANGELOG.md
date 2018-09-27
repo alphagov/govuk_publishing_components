@@ -6,6 +6,10 @@
 - Don't include changes that are purely internal. The CHANGELOG should be a
   useful summary for people upgrading their application, not a replication
   of the commit log.
+  
+## Unreleased 
+
+* Add isPartOf schema to content with document collections (PR #542)
 
 ## 9.28.0
 
