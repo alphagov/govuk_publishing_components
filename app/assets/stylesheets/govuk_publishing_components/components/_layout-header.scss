@@ -1,4 +1,5 @@
-// This component relies on styles from GOV.UK Frontend
+@import "helpers/govuk-frontend-settings";
+@import "govuk-frontend/components/header/header";
 
 .gem-c-layout-header--integration .govuk-header__container,
 .gem-c-layout-header--staging .govuk-header__container {
@@ -8,16 +9,4 @@
 .gem-c-layout-header--development .govuk-header__container,
 .gem-c-layout-header--test .govuk-header__container {
   border-bottom-color: govuk-colour("grey-1");
-}
-
-.govuk-header__logo {
-  @include mq ($from: desktop) {
-    float: left;
-  }
-}
-
-.govuk-header__content {
-  @include mq ($from: desktop) {
-    float: left;
-  }
 }

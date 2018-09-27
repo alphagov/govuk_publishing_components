@@ -1,6 +1,2 @@
-// This component relies on styles from GOV.UK Frontend
-
-// Specify the functions used to resolve assets paths in SCSS
-$govuk-font-url-function: "font-url";
-
+@import "helpers/govuk-frontend-settings";
 @import "govuk-frontend/components/hint/hint";
