@@ -7,6 +7,12 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* BREAKING: Use time element in image card component, breaking change.
+This will require an update to usages of the image card component.
+The way in which context information is passed to the component has changed from `context: "some context"` to `context: {text: "some context", date: "2017-06-14"`}
+
 ## 10.2.0
 
 * Add data-tracking-url for radio inputs for the purposes of cross domain tracking (PR #539)
