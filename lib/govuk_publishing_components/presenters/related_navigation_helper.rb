@@ -8,7 +8,6 @@ module GovukPublishingComponents
         related_guides
         topics
         collections
-        policies
         topical_events
         world_locations
         statistical_data_sets
@@ -24,7 +23,6 @@ module GovukPublishingComponents
           "related_guides" => related_guides,
           "collections" => related_collections,
           "topics" => related_topics,
-          "policies" => related_policies,
           "topical_events" => related_topical_events,
           "world_locations" => related_world_locations,
           "statistical_data_sets" => related_statistical_data_sets,
@@ -104,11 +102,6 @@ module GovukPublishingComponents
         links.select do |link|
           link["document_type"] == type
         end
-      end
-
-      def related_policies
-        policies = filter_link_type("related_policies", "policy")
-        build_links_for_sidebar(policies)
       end
 
       def related_statistical_data_sets

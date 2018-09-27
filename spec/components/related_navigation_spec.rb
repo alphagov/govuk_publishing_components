@@ -91,20 +91,6 @@ describe "Related navigation", type: :view do
     assert_select ".gem-c-related-navigation__section-link[href=\"/government/collections/the-future-of-jobs-and-skills\"]", text: 'The future of jobs and skills'
   end
 
-  it "renders policy section when passed policy items" do
-    content_item = {}
-    content_item["links"] = construct_links(
-      "related_policies",
-      "/government/policies/further-education-and-training",
-      "Further education and training",
-      "policy"
-    )
-    render_component(content_item)
-
-    assert_select ".gem-c-related-navigation__sub-heading", text: 'Policy'
-    assert_select ".gem-c-related-navigation__section-link[href=\"/government/policies/further-education-and-training\"]", text: 'Further education and training'
-  end
-
   it "renders topical events section when passed topical event items" do
     content_item = {}
     content_item["links"] = construct_links(
@@ -191,20 +177,11 @@ describe "Related navigation", type: :view do
     ordered_related_items = construct_links(
       "ordered_related_items", "/apprenticeships", "Apprenticeships"
     )
-    related_policies = construct_links(
-      "related_policies",
-      "/government/policies/further-education-and-training",
-      "Further education and training",
-      "policy"
-    )
-    content_item["links"] = ordered_related_items.merge(related_policies)
+    content_item["links"] = ordered_related_items
     render_component(content_item)
 
     assert_select ".gem-c-related-navigation__main-heading", text: 'Related content'
     assert_select ".gem-c-related-navigation__section-link--other[href=\"/apprenticeships\"]", text: 'Apprenticeships'
-
-    assert_select ".gem-c-related-navigation__sub-heading", text: 'Policy'
-    assert_select ".gem-c-related-navigation__section-link[href=\"/government/policies/further-education-and-training\"]", text: 'Further education and training'
   end
 
   it "link tracking is enabled" do

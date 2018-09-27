@@ -9,7 +9,6 @@ class WelcomeController < ApplicationController
       "Travel advice Afghanistan" => "/foreign-travel-advice/afghanistan",
       "HMRC contact" => "/government/organisations/hm-revenue-customs/contact/agent-dedicated-line-self-assessment-or-paye-for-individuals",
       "AAIB report (specialist document)" => "/aaib-reports/aaib-investigation-to-airbus-helicopters-ec120b-colibri-g-swng",
-      "Guidance with a policy" => "/government/publications/helping-british-nationals-overseas-our-service-on-twitter-fcotravel--2",
     }
 
     if params[:base_path]
