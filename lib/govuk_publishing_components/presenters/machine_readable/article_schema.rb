@@ -5,6 +5,7 @@ module GovukPublishingComponents
 
       def initialize(page)
         @page = page
+        @pages = {}
       end
 
       def structured_data
@@ -69,20 +70,21 @@ module GovukPublishingComponents
       end
 
       def is_part_of
-        return {} unless linked_step_by_steps.any?
+        return {} unless step_by_step_schemas.any? || document_collections.any?
+
         {
-          "isPartOf" => step_by_step_schemas
+          "isPartOf" => document_collections + step_by_step_schemas
         }
       end
 
-      def linked_step_by_steps
+      def step_by_step_schemas
         # We could include `related_to_step_navs` eventually too, but initially
         # link to those that we render in the "step_by_step_nav_related" component
-        @step_by_steps ||= page.content_item.dig("links", "part_of_step_navs").to_a
+        @step_by_steps ||= fetch_step_by_step_schemas
       end
 
-      def step_by_step_schemas
-        linked_step_by_steps.map do |step_by_step|
+      def fetch_step_by_step_schemas
+        page.content_item.dig("links", "part_of_step_navs").to_a.map do |step_by_step|
           step_by_step_page = linked_page(step_by_step)
           structured_data = HowToSchema.new(step_by_step_page.canonical_url).structured_data
 
@@ -100,18 +102,23 @@ module GovukPublishingComponents
       end
 
       def has_part
-        return {} unless collection_pages.any?
+        return {} unless collection_pages("documents").any?
         {
-            "hasPart" => collection_pages.map { |document| HasPartSchema.new(document).structured_data }
+            "hasPart" => collection_pages("documents").map { |document| HasPartSchema.new(document).structured_data }
         }
       end
 
-      def collection_pages
-        @pages ||= fetch_collection_pages
+      def document_collections
+        @document_collections ||= collection_pages("document_collections")
+                                      .map { |document| IsPartOfSchema.new(document).structured_data }
       end
 
-      def fetch_collection_pages
-        page.content_item.dig("links", "documents").to_a.map { |document| document["web_url"] }
+      def collection_pages(linked_type)
+        @pages[linked_type] ||= fetch_collection_pages(linked_type)
+      end
+
+      def fetch_collection_pages(linked_type)
+        page.content_item.dig("links", linked_type).to_a.map { |document| document["web_url"] }
       end
 
       def about

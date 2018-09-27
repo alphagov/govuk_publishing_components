@@ -324,6 +324,49 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       expect(structured_data['hasPart'][0]['sameAs']).to eq('https://www.gov.uk/acetic-acid-properties-uses-and-incident-management')
     end
 
+    it "links to document collection items that is part of the content" do
+      content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "publication") do |random_item|
+        random_item.merge(
+          "first_published_at" => "2017-09-04T13:50:49.000+00:00",
+          "links" => {
+              "document_collections" => [
+                  {
+                    "api_path" => "/api/content/government/collections/chemical-hazards-compendium",
+                    "base_path" => "/government/collections/chemical-hazards-compendium",
+                    "content_id" => "4c01e09f-1657-4730-abd3-5015413ea196",
+                    "description" => "Resource for the public and those professionals responding to chemical incidents, including emergency services and public health professionals.",
+                    "document_type" => "document_collection",
+                    "locale" => "en",
+                    "public_updated_at" => "2017-11-23T13:45:30Z",
+                    "schema_name" => "document_collection",
+                    "title" => "Chemical hazards compendium",
+                    "withdrawn" => false,
+                    "links" => {},
+                    "api_url" => "https://www.gov.uk/api/content/government/collections/chemical-hazards-compendium",
+                    "web_url" => "https://www.gov.uk/government/collections/chemical-hazards-compendium"
+                  }
+              ],
+              "primary_publishing_organisation" => [
+                  {
+                      "content_id" => "1343f283-19e9-4fbb-86b1-58c7549d874b",
+                      "title" => "Public Health England",
+                      "locale" => "en",
+                      "base_path" => "/government/organisations/public-health-england",
+                  }
+              ]
+          }
+        )
+      end
+
+      structured_data = generate_structured_data(
+        content_item: content_item,
+        schema: :article
+      ).structured_data
+
+      expect(structured_data['isPartOf'][0]['@type']).to eq('CreativeWork')
+      expect(structured_data['isPartOf'][0]['sameAs']).to eq('https://www.gov.uk/government/collections/chemical-hazards-compendium')
+    end
+
     def live_taxons_links
       {
         "links" => {
