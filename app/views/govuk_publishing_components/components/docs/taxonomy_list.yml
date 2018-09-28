@@ -67,7 +67,8 @@ examples:
           image:
             url: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG
             alt: some meaningful alt text please
-            context: The Rt Hon
+            context:
+              text: The Rt Hon
         - link:
             path: /not-a-page
             text: News headline
@@ -75,7 +76,8 @@ examples:
           image:
             url: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG
             alt: some meaningful alt text please
-            context: The Rt Hon
+            context:
+              text: The Rt Hon
         - link:
             path: /not-a-page
             text: News headline
@@ -83,7 +85,8 @@ examples:
           image:
             url: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG
             alt: some meaningful alt text please
-            context: The Rt Hon
+            context:
+              text: The Rt Hon
         - link:
             path: /not-a-page
             text: News headline
@@ -91,7 +94,9 @@ examples:
           image:
             url: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG
             alt: some meaningful alt text please
-            context: The Rt Hon
+            context:
+              text: This is a document
+              date: 2016-06-27 10:29:44
       document_list:
         items:
         - link:
