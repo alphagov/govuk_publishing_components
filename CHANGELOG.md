@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* You can now use `GovukPublishingComponents::AppHelpers::Environment.current_acceptance_environment` to get the current environment, for use in the admin layout components (PR #548)
+
 ## 11.0.0
 
 * BREAKING: Use time element in image card component, breaking change.

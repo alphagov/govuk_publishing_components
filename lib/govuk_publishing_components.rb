@@ -26,6 +26,7 @@ require "govuk_publishing_components/presenters/taxonomy_list_helper"
 require "govuk_publishing_components/app_helpers/taxon_breadcrumbs"
 require "govuk_publishing_components/app_helpers/table_helper"
 require "govuk_publishing_components/app_helpers/brand_helper"
+require "govuk_publishing_components/app_helpers/environment"
 
 module GovukPublishingComponents
 end
