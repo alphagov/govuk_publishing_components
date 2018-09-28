@@ -6,14 +6,14 @@
 - Don't include changes that are purely internal. The CHANGELOG should be a
   useful summary for people upgrading their application, not a replication
   of the commit log.
-  
+
+## 10.2.0
+
+* Add data-tracking-url for radio inputs for the purposes of cross domain tracking (PR #539)
+
 ## 10.1.0
 
 * Add isPartOf schema to content with document collections (PR #542)
-
-## Unreleased
-
-* Add data-tracking-url for radio inputs for the purposes of cross domain tracking (PR #539)
 
 ## 10.0.0
 
