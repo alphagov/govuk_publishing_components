@@ -32,7 +32,7 @@ describe "All components" do
         expect(erb).to match(class_name), class_name
       end
 
-      it "has a correctly named spec file", skip: component_name.in?(%w[contextual_breadcrumbs contextual_sidebar taxonomy_navigation machine_readable_metadata google_tag_manager_script]) do
+      it "has a correctly named spec file" do
         rspec_file = "#{__dir__}/../../spec/components/#{component_name.tr('-', '_')}_spec.rb"
 
         expect(File).to exist(rspec_file)
