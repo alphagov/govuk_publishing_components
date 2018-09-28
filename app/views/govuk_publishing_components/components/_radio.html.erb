@@ -45,6 +45,9 @@
           label_id = item[:id] ? item[:id] : "#{id_prefix}-#{index}"
           label_hint_id = "label-hint-#{SecureRandom.hex(4)}" if item[:hint_text].present?
           conditional_id = "conditional-#{SecureRandom.hex(4)}" if item[:conditional].present?
+
+          data_attrs = { "aria-controls": conditional_id }
+          data_attrs["tracking-url"] =  item[:url] if item.key?(:url)
         %>
         <%= tag.div class: %w( gem-c-radio govuk-radios__item ) do %>
           <%= check_box_tag name,
@@ -57,9 +60,7 @@
               aria: {
                 describedby: label_hint_id
               },
-              data: {
-                "aria-controls": conditional_id
-              }
+              data: data_attrs,
             }
           %>
           <%= render "govuk_publishing_components/components/label", {

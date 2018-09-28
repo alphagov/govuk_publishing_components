@@ -240,6 +240,29 @@ describe "Radio", type: :view do
 
     assert_select ".govuk-radios__divider", text: "neu"
   end
+
+  it "renders a radio group with data-tracking-url attributes" do
+    gateway_url = "https://www.tax.service.gov.uk/gg/sign-in?continue=%2Fcheck-your-state-pension%2Faccount&origin=nisp-frontend&accountType=individual"
+    verify_url = "https://www.tax.service.gov.uk/check-your-state-pension/signin/verify?journey_hint=eidas_sign_in"
+    render_component(
+      name: "radio-group-tracking-urls",
+      items: [
+        {
+          value: "government-gateway",
+          text: "Use Government Gateway",
+          url: gateway_url,
+        },
+        {
+          value: "govuk-verify",
+          text: "Use GOV.UK Verify",
+          url: verify_url,
+        }
+      ]
+    )
+
+    assert_select ".govuk-radios input[data-tracking-url='#{gateway_url}']"
+    assert_select ".govuk-radios input[data-tracking-url='#{verify_url}']"
+  end
 end
 
 # This component can be interacted with, so use integration tests for these cases.

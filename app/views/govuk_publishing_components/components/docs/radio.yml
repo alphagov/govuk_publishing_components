@@ -151,3 +151,14 @@ examples:
       - value: "govuk-verify"
         text: "Use GOV.UK Verify"
         conditional: "You’ll need to prove your identity using GOV.UK Verify"
+  tracking-url:
+    data:
+      name: "radio-group-tracking-url"
+      id_prefix: "tracking-url"
+      items:
+      - value: "government-gateway"
+        text: "Use Government Gateway"
+        url: "https://www.tax.service.gov.uk/gg/sign-in?continue=%2Fcheck-your-state-pension"
+      - value: "govuk-verify"
+        text: "Use GOV.UK Verify"
+        url: "https://www.tax.service.gov.uk/check-your-state-pension/signin/verify?journey_hint=uk_idp_sign_in"
