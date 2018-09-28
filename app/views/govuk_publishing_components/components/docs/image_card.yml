@@ -39,7 +39,9 @@ examples:
       href: "/also-not-a-page"
       image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
       image_alt: "some meaningful alt text please"
-      context: "10 May 2018 - Press release"
+      context:
+        date: 2016-06-27 10:29:44
+        text: "Press release"
       heading_text: "Government does things"
       description: "Following a thorough review of existing procedure, a government body has today announced that further work is necessary."
   with_extra_links:
@@ -69,7 +71,8 @@ examples:
       href: "/government/people/"
       image_src: "http://placekitten.com/215/140"
       image_alt: "some meaningful alt text please"
-      context: "The Rt Hon"
+      context:
+        text: "The Rt Hon"
       heading_text: "John Whiskers MP"
       extra_links: [
         {
@@ -149,7 +152,9 @@ examples:
       href: "/still-not-a-page"
       image_src: "https://assets.publishing.service.gov.uk/frontend/homepage/leaving-the-eu-bc9992ee672a30d8e8a3e195c9afa750e618748130a4e073a593ba36dfc29af9.jpg"
       image_alt: "some meaningful alt text please"
-      context: "14 Jun 2017 - Announcement"
+      context:
+        date: 2017-06-14 11:30:00
+        text: "Announcement"
       heading_text: "Something has happened nearby possibly"
       description: "Following a news report that something has happened, further details are emerging of the thing that has happened and what that means for you."
   with_tracking:
@@ -188,7 +193,8 @@ examples:
       href: "/government/people/"
       image_src: "http://placekitten.com/215/140"
       image_alt: "some meaningful alt text please"
-      context: "The Rt Hon"
+      context:
+        text: "The Rt Hon"
       heading_text: "John Whiskers MP"
       metadata: "Unpaid"
       extra_links: [

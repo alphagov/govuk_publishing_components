@@ -40,7 +40,22 @@ module GovukPublishingComponents
       end
 
       def context
-        content_tag(:p, @context, class: "gem-c-image-card__context") if @context
+        return unless @context
+
+        content_tag(:p, class: 'gem-c-image-card__context') do
+          if @context[:date]
+            date = content_tag(:time, l(@context[:date], format: '%e %B %Y'), datetime: @context[:date].iso8601)
+            dash = content_tag(:span, ' — ', 'aria-hidden': true)
+
+            if @context[:text]
+              date.concat(dash).concat(@context[:text])
+            else
+              date
+            end
+          else
+            @context[:text]
+          end
+        end
       end
 
       def heading_tag

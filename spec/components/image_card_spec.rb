@@ -31,10 +31,26 @@ describe "ImageCard", type: :view do
     assert_select ".gem-c-image-card h2.gem-c-image-card__title", false
   end
 
-  it "shows context and description" do
-    render_component(href: '#', context: 'some context', description: 'description')
-    assert_select ".gem-c-image-card .gem-c-image-card__context", text: 'some context'
+  it "shows description" do
+    render_component(href: '#', description: 'description')
     assert_select ".gem-c-image-card .gem-c-image-card__description", text: 'description'
+  end
+
+  it "shows text context" do
+    render_component(href: '#', context: { text: "press release" })
+    assert_select ".gem-c-image-card .gem-c-image-card__context", text: 'press release'
+  end
+
+  it "shows date context" do
+    render_component(href: '#', context: { date: Time.zone.parse("2017-06-14 14:50:33 +0000") })
+    assert_select ".gem-c-image-card .gem-c-image-card__context time[datetime='2017-06-14T14:50:33Z']", text: "14 June 2017"
+  end
+
+  it "shows date and text context together" do
+    render_component(href: '#', context: { date: Time.zone.parse("2017-06-14 14:50:33 +0000"), text: "Press Release" })
+    assert_select ".gem-c-image-card .gem-c-image-card__context", text: '14 June 2017 — Press Release'
+    assert_select ".gem-c-image-card .gem-c-image-card__context time[datetime='2017-06-14T14:50:33Z']", text: "14 June 2017"
+    assert_select ".gem-c-image-card .gem-c-image-card__context span[aria-hidden=true]", text: "—"
   end
 
   it "renders extra links" do
