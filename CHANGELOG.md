@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 11.0.0
 
 * BREAKING: Use time element in image card component, breaking change.
 This will require an update to usages of the image card component.
