@@ -62,6 +62,14 @@
   text-decoration: none;
 }
 
+.gem-c-taxonomy-navigation__toggle {
+  display: none;
+
+  .js-enabled & {
+    display: block;
+   }
+}
+
 
 .gem-c-taxonomy-navigation__section-heading {
   border-top: 1px solid $border-colour;
