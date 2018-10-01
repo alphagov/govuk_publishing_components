@@ -1,8 +1,9 @@
 require 'spec_helper'
 require 'action_view'
-include ActionView::Helpers::SanitizeHelper
 
 RSpec.describe GovukPublishingComponents::Presenters::StepByStepNavHelper do
+  include ActionView::Helpers::SanitizeHelper
+
   describe "Step by step navigation helper" do
     step_helper = GovukPublishingComponents::Presenters::StepByStepNavHelper.new
 

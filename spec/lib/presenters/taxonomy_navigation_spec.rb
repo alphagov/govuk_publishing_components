@@ -2,9 +2,9 @@ require 'spec_helper'
 require 'webmock/rspec'
 require 'gds_api/test_helpers/rummager'
 
-include GdsApi::TestHelpers::Rummager
-
 RSpec.describe GovukPublishingComponents::Presenters::TaxonomyNavigation do
+  include GdsApi::TestHelpers::Rummager
+
   describe '#sidebar' do
     it 'can handle any valid content item' do
       stub_any_rummager_search_to_return_no_results
