@@ -27,7 +27,7 @@
 
 <%= content_tag :div, class: form_group_css_classes do %>
   <% if label %>
-    <%= render "govuk_publishing_components/components/label", { html_for: id }.merge(label) %>
+    <%= render "govuk_publishing_components/components/label", { html_for: id }.merge(label.symbolize_keys) %>
   <% end %>
 
   <% if hint %>
