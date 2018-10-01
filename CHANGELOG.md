@@ -7,13 +7,14 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 11.1.0
 
 * Add Admin analytics script (#555)
 * You can now use `GovukPublishingComponents::AppHelpers::Environment.current_acceptance_environment` to get the current environment, for use in the admin layout components (PR #548)
 * Update GOV.UK Frontend from 1.2.0 to 2.1.0 and manage breaking changes (PR #545)
 * Add navigation and meta links to footer component (PR #550)
 * Allow autofocus on input component (PR #552)
+* Fix label in component guide (PR #553)
 
 ## 11.0.0
 
