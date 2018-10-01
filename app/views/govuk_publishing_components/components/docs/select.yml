@@ -1,6 +1,5 @@
-name: Select (experimental)
+name: Select
 description: A dropdown select
-part_of_admin_layout: true
 govuk_frontend_components:
   - select
 accessibility_criteria: |

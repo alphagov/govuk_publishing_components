@@ -1,7 +1,3 @@
-// This component relies on styles from GOV.UK Frontend
-
-// Specify the functions used to resolve assets paths in SCSS
-$govuk-font-url-function: "font-url";
-
-@import "../../../../node_modules/govuk-frontend/components/file-upload/file-upload";
-@import "../../../../node_modules/govuk-frontend/objects/form-group";
+@import "helpers/govuk-frontend-settings";
+@import "govuk-frontend/components/file-upload/file-upload";
+@import "govuk-frontend/objects/form-group";

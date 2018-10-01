@@ -1,6 +1,5 @@
-name: Form textarea (experimental)
+name: Form textarea
 description: A textarea field and an associated label
-part_of_admin_layout: true
 govuk_frontend_components:
   - textarea
 accessibility_criteria: |

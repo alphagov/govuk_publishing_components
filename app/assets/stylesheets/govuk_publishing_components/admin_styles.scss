@@ -1,8 +1,6 @@
 // Include all of the GOV.UK Frontend styles. This includes fonts, and individual components.
-$govuk-image-url-function: "image-url";
-$govuk-font-url-function: "font-url";
-
-@import "../../../node_modules/govuk-frontend/all";
+@import "govuk_publishing_components/components/helpers/govuk-frontend-settings";
+@import "govuk-frontend/all";
 
 // Include our GOV.UK components
 @import "govuk_publishing_components/all_components";

@@ -1,6 +1,5 @@
-name: Inset text (experimental)
+name: Inset text
 description: Use the inset text component to differentiate a block of text from the content that surrounds it.
-part_of_admin_layout: true
 govuk_frontend_components:
   - inset-text
 accessibility_criteria: |

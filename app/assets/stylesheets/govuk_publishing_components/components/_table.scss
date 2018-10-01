@@ -1,10 +1,8 @@
-// This component relies on styles from GOV.UK Frontend
-
-// Specify the functions used to resolve assets paths in SCSS
-$govuk-font-url-function: "font-url";
-
-@import "../../../../node_modules/govuk-frontend/components/table/table";
-@import "../../../../node_modules/govuk-frontend/core/links";
+@import "helpers/govuk-frontend-settings";
+@import "govuk-frontend/components/table/table";
+@import "govuk-frontend/core/links";
+@import "govuk-frontend/helpers/shape-arrow";
+@import "govuk-frontend/helpers/focusable";
 
 $table-border-width: 1px;
 $table-border-colour: govuk-colour("grey-2");
@@ -38,7 +36,8 @@ $table-row-even-background-colour: govuk-colour("grey-4");
     }
 
     .app-table__sort-link {
-      @include govuk-link-common;
+      @include govuk-link-style-no-visited-state;
+      @include govuk-focusable-fill;
       position: relative;
       padding-right: $sort-link-arrow-size;
       color: $govuk-link-colour;
@@ -70,10 +69,16 @@ $table-row-even-background-colour: govuk-colour("grey-4");
 
     .app-table__sort-link {
       padding-right: govuk-spacing(4);
-      color: $sort-link-active-colour;
+
+      &:link,
+      &:visited,
+      &:hover,
+      &:active {
+        color: $sort-link-active-colour;
+      }
 
       &:focus {
-        color: $govuk-link-colour;
+        color: $govuk-focus-text-colour;
       }
     }
 

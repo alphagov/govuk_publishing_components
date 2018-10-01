@@ -1,5 +1,5 @@
 // This component relies on JavaScript from GOV.UK Frontend
-//= require components/radios/radios.js
+//= require govuk-frontend/components/radios/radios.js
 
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.FrontendModules = window.GOVUK.FrontendModules || {};

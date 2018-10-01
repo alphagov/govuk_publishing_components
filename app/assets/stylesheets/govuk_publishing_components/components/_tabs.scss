@@ -1,4 +1,5 @@
-// This component relies on styles from GOV.UK Frontend
+@import "helpers/govuk-frontend-settings";
+@import "govuk-frontend/components/tabs/tabs";
 
 .js-enabled {
   .gem-c-tabs__panel--no-border {

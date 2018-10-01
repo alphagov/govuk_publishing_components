@@ -13,9 +13,8 @@ accessibility_criteria: |
   * toggle the visibility of the details element's content when interacted with
   * indicate the expanded state when details' content is visible
   * indicate the collapsed state when details' content is hidden
-part_of_admin_layout: true
 govuk_frontend_components:
-  - header
+  - details
 examples:
   default:
     data:
