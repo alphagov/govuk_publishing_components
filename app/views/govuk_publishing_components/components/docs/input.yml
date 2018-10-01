@@ -56,3 +56,10 @@ examples:
         text: "Search for"
       name: "name"
       value: "moose"
+  autofocused:
+    data:
+      label:
+        text: "Username"
+      name: "username"
+      autofocus: true
+      tabindex: 0
