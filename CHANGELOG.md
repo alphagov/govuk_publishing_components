@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix toggle behaviour in related navigation and taxonomy navigation when JS disabled (PR #551)
+
 ## 11.1.0
 
 * Add Admin analytics script (#555)

@@ -36,6 +36,14 @@
   }
 }
 
+.gem-c-related-navigation__toggle {
+  display: none;
+
+  .js-enabled & {
+    display: block;
+   }
+}
+
 .gem-c-related-navigation__section-link {
   @include bold-16;
 }
