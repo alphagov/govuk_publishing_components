@@ -1,8 +1,50 @@
+<%
+  meta ||= []
+  navigation ||= []
+%>
 <footer class="gem-c-layout-footer govuk-footer" role="contentinfo">
   <div class="govuk-width-container ">
+    <% if navigation.any? %>
+      <div class="govuk-footer__navigation">
+        <% navigation.each do |item| %>
+          <div class="govuk-footer__section">
+            <h2 class="govuk-footer__heading govuk-heading-m"><%= item[:title] %></h2>
+            <% if item[:items] %>
+              <%
+                list_classes = %w( govuk-footer__list )
+                list_classes << "govuk-footer__list--columns-#{item[:columns]}" if item[:columns]
+              %>
+              <ul class="<%= list_classes.join(' ') %>">
+                <% item[:items].each do |item| %>
+                  <% if item[:href] && item[:text] %>
+                    <li class="govuk-footer__list-item">
+                      <a class="govuk-footer__link" href="<%= item[:href] %>">
+                        <%= item[:text] %>
+                      </a>
+                    </li>
+                  <% end %>
+                <% end %>
+              </ul>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <hr class="govuk-footer__section-break">
+    <% end %>
     <div class="govuk-footer__meta">
       <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
-
+        <% if meta.any? %>
+          <h2 class="govuk-visually-hidden">Support links</h2>
+          <ul class="govuk-footer__inline-list">
+            <% meta[:items].each do |item| %>
+              <li class="govuk-footer__inline-list-item">
+                <a class="govuk-footer__link" href="<%= item[:href] %>">
+                  <%= item[:text] %>
+                </a>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
         <svg role="presentation" focusable="false" class="govuk-footer__licence-logo" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 483.2 195.7" height="17" width="41">
           <path
             fill="currentColor"
