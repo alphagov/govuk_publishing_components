@@ -13,6 +13,8 @@ accessibility_criteria: |
   * be of the appropriate type for their use, e.g. password inputs should be of type 'password'
 
   Labels use the [label component](/component-guide/label).
+
+  Avoid using autofocus and tabindex unless you have user research to support this behaviour.
 govuk_frontend_components:
   - input
 examples:
