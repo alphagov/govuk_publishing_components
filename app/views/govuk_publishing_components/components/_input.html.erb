@@ -31,7 +31,7 @@
   <% if label %>
     <%= render "govuk_publishing_components/components/label", {
       html_for: id
-    }.merge(label) %>
+    }.merge(label.symbolize_keys) %>
   <% end %>
 
   <% if hint %>
