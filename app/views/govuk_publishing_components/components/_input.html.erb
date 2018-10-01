@@ -8,6 +8,8 @@
   label ||= nil
   hint ||= nil
   error_message ||= nil
+  autofocus ||= nil
+  tabindex ||= nil
   hint_id = "hint-#{SecureRandom.hex(4)}" if hint
   error_message_id = "error-message-#{SecureRandom.hex(4)}" if error_message
 
@@ -48,16 +50,16 @@
     } %>
   <% end %>
 
-  <%= text_field_tag name,
-    value,
-    {
+  <%= tag.input name: name,
+      value: value,
       class: css_classes,
       id: id,
       type: type,
       data: data,
+      tabindex: tabindex,
+      autofocus: autofocus,
       aria: {
         describedby: aria_described_by
       }
-    }
   %>
 <% end %>

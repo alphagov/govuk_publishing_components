@@ -73,6 +73,17 @@ describe "Input", type: :view do
     assert_select ".govuk-input[data-module='contextual-guidance']"
   end
 
+  it "renders autofocused input" do
+    render_component(
+      label: { text: "Username" },
+      name: "username",
+      autofocus: true,
+      tabindex: 0
+    )
+
+    assert_select ".govuk-input[autofocus][tabindex='0']"
+  end
+
   context "when a hint is provided" do
     before do
       render_component(
