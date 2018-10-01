@@ -1,8 +1,9 @@
 require 'spec_helper'
 require 'action_view'
-include ActionView::Helpers::SanitizeHelper
 
 RSpec.describe GovukPublishingComponents::Presenters::ContentsListHelper do
+  include ActionView::Helpers::SanitizeHelper
+
   describe "Contents list helper" do
     it "wraps a number and text in separate span elements" do
       assert_split_number_and_text('1. Thing', '1.', 'Thing')
