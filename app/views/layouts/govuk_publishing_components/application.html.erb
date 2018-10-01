@@ -19,9 +19,9 @@
 
   <% if @component_doc && @component_doc.part_of_admin_layout? %>
     <%= stylesheet_link_tag "govuk_publishing_components/admin_styles" %>
-    <%= javascript_include_tag "govuk_publishing_components/vendor/modernizr" %>
   <% end %>
 
+  <%= javascript_include_tag "govuk_publishing_components/vendor/modernizr" %>
   <%= csrf_meta_tags %>
 </head>
 <body class="govuk-template__body <%= 'hide-header-and-footer' if @preview %>">
