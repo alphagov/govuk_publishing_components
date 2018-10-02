@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add Admin analytics script (#555)
 * You can now use `GovukPublishingComponents::AppHelpers::Environment.current_acceptance_environment` to get the current environment, for use in the admin layout components (PR #548)
 * Update GOV.UK Frontend from 1.2.0 to 2.1.0 and manage breaking changes (PR #545)
 * Add navigation and meta links to footer component (PR #550)
