@@ -1,17 +1,15 @@
-@import "colours/organisation";
-
-// this uses the colours from govuk_frontend_toolkit
-// https://github.com/alphagov/govuk_frontend_toolkit/blob/master/stylesheets/colours/_organisation.scss
+@import "govuk-frontend/settings/colours-organisations";
+@import "govuk-frontend/helpers/colour";
 
 @mixin organisation-brand-colour() {
-  @each $organisation in $all-organisation-brand-colours {
-    .brand--#{nth($organisation, 1)} {
+  @each $organisation in map-keys($govuk-colours-organisations) {
+    .brand--#{$organisation} {
       .brand__color {
-        color: nth($organisation, 3);
+        color: govuk-organisation-colour($organisation);
 
         &:hover,
         &:focus {
-          color: darken( nth($organisation, 3), 10% );
+          color: darken( govuk-organisation-colour($organisation), 10% );
         }
       }
 
@@ -19,7 +17,7 @@
       // element as required by the heading component, adds 2KB to the CSS
       &.brand__border-color,
       .brand__border-color {
-        border-color: nth($organisation, 2);
+        border-color: govuk-organisation-colour($organisation, $websafe: false);
       }
     }
   }
@@ -32,17 +30,17 @@
 
 .brand--prime-ministers-office-10-downing-street {
   .brand__color {
-    color: $fuschia;
+    color: govuk-colour("bright-purple");
 
     &:hover,
     &:focus {
-      color: darken( $fuschia, 10% );
+      color: darken( govuk-colour("bright-purple"), 10% );
     }
   }
 
   &.brand__border-color,
   .brand__border-color {
-    border-color: $black;
+    border-color: govuk-colour("black");
   }
 }
 
@@ -53,6 +51,6 @@
 .brand--civil-service {
   &.brand__border-color,
   .brand__border-color {
-    border-color: $black;
+    border-color: govuk-colour("black");
   }
 }
