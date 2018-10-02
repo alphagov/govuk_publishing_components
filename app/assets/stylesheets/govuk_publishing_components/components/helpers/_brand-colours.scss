@@ -7,6 +7,12 @@
       .brand__color {
         color: govuk-organisation-colour($organisation);
 
+        &:link,
+        &:visited,
+        &:active {
+          color: govuk-organisation-colour($organisation);
+        }
+
         &:hover,
         &:focus {
           color: darken( govuk-organisation-colour($organisation), 10% );
@@ -31,6 +37,12 @@
 .brand--prime-ministers-office-10-downing-street {
   .brand__color {
     color: govuk-colour("bright-purple");
+
+    &:link,
+    &:visited,
+    &:active {
+      color: govuk-colour("bright-purple");
+    }
 
     &:hover,
     &:focus {
