@@ -15,7 +15,7 @@
 <ul class="component-list">
   <% @component_docs.each do |component_doc| %>
     <li>
-      <%= link_to component_doc.name, component_doc_path(component_doc.id) %>
+      <%= link_to component_doc.name, component_doc_path(component_doc.id), class: "govuk-link" %>
       <p>
         <%= component_doc.description %>
       </p>
@@ -28,7 +28,7 @@
 <ul class="component-list">
   <% @gem_component_docs.each do |component_doc| %>
     <li>
-      <%= link_to component_doc.name, component_doc_path(component_doc.id) %>
+      <%= link_to component_doc.name, component_doc_path(component_doc.id), class: "govuk-link" %>
       <p>
         <%= component_doc.description %>
       </p>

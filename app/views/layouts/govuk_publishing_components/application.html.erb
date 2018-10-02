@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="govuk-template">
+<html lang="en" class="<%= "govuk-template" unless @preview %>">
   <head>
     <meta charset="utf-8">
     <title>
@@ -30,7 +30,7 @@
       document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
     </script>
     <% if @preview %>
-      <main id="wrapper">
+      <main id="wrapper" class="govuk-width-container">
     <% else %>
       <%= render "govuk_publishing_components/components/layout_header", {
         environment: GovukPublishingComponents::AppHelpers::Environment.current_acceptance_environment,
@@ -38,7 +38,7 @@
         href: component_guide_path
       } %>
 
-      <main id="wrapper" class="govuk-width-container">
+      <main id="wrapper" class="govuk-width-container component-guide-wrapper">
       <%= render 'govuk_publishing_components/components/breadcrumbs', breadcrumbs: @guide_breadcrumbs  %>
     <% end %>
 
