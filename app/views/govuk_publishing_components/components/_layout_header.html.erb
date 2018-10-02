@@ -1,5 +1,4 @@
 <%
-  product_name ||= false
   navigation_items ||= []
 %>
 <header class="gem-c-layout-header govuk-header gem-c-layout-header--<%= environment %>" role="banner" data-module="header">
@@ -18,12 +17,12 @@
             GOV.UK
           </span>
         </span>
-        <% if product_name %>
+
         <span class="govuk-header__product-name">
-          <%= product_name %>
+          Publishing
         </span>
-        <% end %>
       </a>
+
     </div><div class="govuk-header__content">
 
     <% if navigation_items.any? %>
