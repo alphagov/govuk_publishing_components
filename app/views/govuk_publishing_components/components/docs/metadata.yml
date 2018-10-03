@@ -9,7 +9,6 @@ accessibility_criteria: |
 
 shared_accessibility_criteria:
   - link
-display_preview: false
 examples:
   from_only:
     data:
