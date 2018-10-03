@@ -44,6 +44,7 @@
     <% if links.length > section_link_limit %>
       <li class="gem-c-related-navigation__link toggle-wrap">
         <a href="#"
+          class="gem-c-related-navigation__toggle"
           data-controls="toggle_<%= section_title %>"
           data-expanded="false"
           data-toggled-text="<%= t("govuk_component.metadata.toggle_less", default: "Show fewer") %>">
