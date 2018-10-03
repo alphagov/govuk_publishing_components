@@ -9,6 +9,8 @@
 // - alphagov/govspeak: ✔︎
 
 .gem-c-govspeak {
+  @include govuk-text-colour;
+
   ol,
   ul,
   p {
@@ -83,7 +85,7 @@
   ul {
     list-style: decimal;
     list-style-position: outside;
-    margin: 0 0 0 $gutter-two-thirds;
+    margin-left: $gutter-two-thirds;
     padding: 0;
 
     ul,
