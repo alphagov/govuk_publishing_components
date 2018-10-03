@@ -1,6 +1,10 @@
 @import "helpers/govuk-frontend-settings";
 @import "govuk-frontend/components/header/header";
 
+.gem-c-layout-header--production .govuk-header__container {
+  border-bottom-color: govuk-colour("bright-red");
+}
+
 .gem-c-layout-header--integration .govuk-header__container,
 .gem-c-layout-header--staging .govuk-header__container {
   border-bottom-color: govuk-colour("yellow");
@@ -9,4 +13,37 @@
 .gem-c-layout-header--development .govuk-header__container,
 .gem-c-layout-header--test .govuk-header__container {
   border-bottom-color: govuk-colour("grey-1");
+}
+
+.govuk-header__logo {
+  white-space: nowrap;
+}
+
+.govuk-header__product-name {
+  display: none;
+
+  @include govuk-media-query($from: tablet) {
+    display: inline-block;
+  }
+}
+
+.gem-c-environment-tag {
+  padding: 2px 5px 0;
+  margin-left: 3px;
+  vertical-align: middle;
+  @include govuk-font($size: 14, $weight: "bold");
+}
+
+.gem-c-environment-tag--production {
+  background-color: govuk-colour("bright-red");
+}
+
+.gem-c-environment-tag--development {
+  background-color: govuk-colour("grey-1");
+}
+
+.gem-c-environment-tag--staging,
+.gem-c-environment-tag--integration {
+  background-color: govuk-colour("yellow");
+  color: govuk-colour("black");
 }
