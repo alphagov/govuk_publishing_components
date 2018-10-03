@@ -61,9 +61,8 @@
   }
 
   // Links
-
   a {
-    text-decoration: underline;
+    @extend %govuk-link;
   }
 
   // Lists
