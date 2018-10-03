@@ -1,7 +1,9 @@
 @import "mixins/margins";
 
 .gem-c-lead-paragraph {
+  @include govuk-text-colour;
   @include core-24;
+  margin-top: 0;
   @include responsive-bottom-margin;
   // Ensure the text has a line-length of around 60 characters
   max-width: 30em;
