@@ -109,7 +109,6 @@
 }
 
 .component-guide-preview {
-  @include govuk-text-colour;
   &.direction-rtl {
     direction: rtl;
     text-align: start;
@@ -151,6 +150,7 @@
 
 .component-guide-preview--violation,
 .component-guide-preview--warning {
+  @include govuk-text-colour;
   margin-top: $govuk-gutter-half;
 
   @include govuk-font($size: 19);
@@ -200,11 +200,11 @@
 }
 
 .examples {
-  @include govuk-text-colour;
   .component-example {
     margin: 0 0 $govuk-gutter * 1.5;
 
     .example-title {
+      @include govuk-text-colour;
       @include govuk-font($size: 24, $weight: bold);
       margin: $govuk-gutter-half 0;
 
