@@ -13,6 +13,10 @@
   @include breadcrumbs;
   @include touch-friendly-links();
 
+  .gem-c-breadcrumbs__item {
+    @include govuk-text-colour;
+  }
+
   .gem-c-breadcrumbs--current {
     color: $secondary-text-colour;
     text-decoration: none;

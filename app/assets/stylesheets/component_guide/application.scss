@@ -11,6 +11,7 @@
 }
 
 .component-list {
+  @include govuk-text-colour;
   @extend %govuk-list--bullet;
 
   li {
@@ -36,6 +37,7 @@
 }
 
 .component-violation {
+  @include govuk-text-colour;
   border: 3px solid $govuk-error-colour;
   margin: 0 0 $govuk-gutter;
   padding: $govuk-gutter $govuk-gutter;
@@ -54,6 +56,7 @@
 }
 
 .component-doc-h2 {
+  @include govuk-text-colour;
   @include govuk-font($size: 27, $weight: bold);
   margin: ($govuk-gutter * 1.5) 0 $govuk-gutter;
 
@@ -63,6 +66,7 @@
 }
 
 .component-doc-h3 {
+  @include govuk-text-colour;
   margin: $govuk-gutter 0 $govuk-gutter-half;
   @include govuk-font($size: 19, $weight: bold);
 }
@@ -105,6 +109,7 @@
 }
 
 .component-guide-preview {
+  @include govuk-text-colour;
   &.direction-rtl {
     direction: rtl;
     text-align: start;
@@ -195,6 +200,7 @@
 }
 
 .examples {
+  @include govuk-text-colour;
   .component-example {
     margin: 0 0 $govuk-gutter * 1.5;
 

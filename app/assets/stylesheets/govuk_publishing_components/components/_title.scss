@@ -49,6 +49,7 @@
 }
 
 .gem-c-title__text {
+  @include govuk-text-colour;
   @include bold-48;
   margin: 0;
 }
