@@ -6,6 +6,7 @@ body: |
 accessibility_criteria: |
   The HTML should not be visible.
 display_html: true
+display_preview: false
 examples:
   default:
     data:
