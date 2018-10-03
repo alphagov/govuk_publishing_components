@@ -24,33 +24,45 @@
 
   // Headings
 
+  // H1's are not allowed and thus are styled bare
+  h1 {
+    @include core-19;
+    margin: 0;
+    padding: 0;
+  }
+
   h2 {
     @include bold-27;
     margin-top: $gutter;
+    margin-bottom: 0;
 
     @include media(desktop) {
       margin-top: $gutter * 1.5;
+      margin-bottom: 0;
     }
   }
 
   h3 {
     @include bold-19;
     margin-top: $gutter + 5px;
-  }
-
-  h4 {
-    @include bold-19;
-    margin-top: $gutter + 5px;
+    margin-bottom: 0;
   }
 
   h4,
   h5,
   h6 {
     @include bold-19;
+    margin-top: $gutter + 5px;
+    margin-bottom: 0;
 
     + p {
       margin-top: 5px;
     }
+  }
+
+  h5,
+  h6 {
+    margin: 0;
   }
 
   h2:first-child,
