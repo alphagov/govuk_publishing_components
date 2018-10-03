@@ -2,6 +2,7 @@
 @import "typography";
 
 .gem-c-document-list {
+  @include govuk-text-colour;
   @include core-19;
   margin: 0;
   padding: 0;
@@ -20,6 +21,8 @@
 }
 
 .gem-c-document-list__item-title {
+  @include govuk-link-common;
+  @include govuk-link-style-default;
   @include bold-19;
   display: inline-block;
 }
@@ -38,7 +41,7 @@
 }
 
 .gem-c-document-list__item-description {
-  margin-bottom: 5px;
+  margin: 0 0 5px 0;
 }
 
 .gem-c-document-list__item-metadata {
