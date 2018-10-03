@@ -11,6 +11,7 @@
 
 .gem-c-error-alert__message {
   @include bold-19;
+  margin: 0;
 }
 
 .gem-c-error-summary__title {
@@ -26,6 +27,7 @@
 
 .gem-c-error-summary__body {
   @include core-19;
+  margin: 0;
 }
 
 .gem-c-error-alert:focus {
