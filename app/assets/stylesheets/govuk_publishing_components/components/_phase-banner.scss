@@ -1,7 +1,9 @@
-@import "mixins/touch-friendly-links";
 @import "design-patterns/alpha-beta";
 
 .gem-c-phase-banner {
   @include phase-banner;
-  @include touch-friendly-links;
+
+  a {
+    @extend %govuk-link;
+  }
 }
