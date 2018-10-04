@@ -27,11 +27,11 @@ examples:
         - id: "tab1"
           label: "First section"
           content: |
-            <p>Fusce at dictum tellus, ac accumsan est. Nulla vitae turpis in nulla gravida tincidunt. Duis lectus felis, tempus id bibendum sit amet, posuere ut elit. Donec enim odio, eleifend in urna a, sagittis egestas est. Proin id ex ultricies, porta eros id, vehicula quam. Morbi non sagittis velit.</p>
+            <p class="govuk-body-m">Fusce at dictum tellus, ac accumsan est. Nulla vitae turpis in nulla gravida tincidunt. Duis lectus felis, tempus id bibendum sit amet, posuere ut elit. Donec enim odio, eleifend in urna a, sagittis egestas est. Proin id ex ultricies, porta eros id, vehicula quam. Morbi non sagittis velit.</p>
         - id: "tab2"
           label: "Second section"
           content: |
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue elementum commodo. Vestibulum elit turpis, efficitur quis posuere vitae, commodo vitae augue. Donec ut pharetra ligula. Phasellus ac mauris eu felis bibendum dapibus rutrum sed quam. Pellentesque posuere ante id consequat pretium.</p>
+            <p class="govuk-body-m">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue elementum commodo. Vestibulum elit turpis, efficitur quis posuere vitae, commodo vitae augue. Donec ut pharetra ligula. Phasellus ac mauris eu felis bibendum dapibus rutrum sed quam. Pellentesque posuere ante id consequat pretium.</p>
   without_panel_border:
     data:
       panel_border: false
@@ -39,11 +39,11 @@ examples:
         - id: "tab-no-border-1"
           label: "First section"
           content: |
-            <p>Fusce at dictum tellus, ac accumsan est. Nulla vitae turpis in nulla gravida tincidunt. Duis lectus felis, tempus id bibendum sit amet, posuere ut elit. Donec enim odio, eleifend in urna a, sagittis egestas est. Proin id ex ultricies, porta eros id, vehicula quam. Morbi non sagittis velit.</p>
+            <p class="govuk-body-m">Fusce at dictum tellus, ac accumsan est. Nulla vitae turpis in nulla gravida tincidunt. Duis lectus felis, tempus id bibendum sit amet, posuere ut elit. Donec enim odio, eleifend in urna a, sagittis egestas est. Proin id ex ultricies, porta eros id, vehicula quam. Morbi non sagittis velit.</p>
         - id: "tab-no-border-2"
           label: "Second section"
           content: |
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue elementum commodo. Vestibulum elit turpis, efficitur quis posuere vitae, commodo vitae augue. Donec ut pharetra ligula. Phasellus ac mauris eu felis bibendum dapibus rutrum sed quam. Pellentesque posuere ante id consequat pretium.</p>
+            <p class="govuk-body-m">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue elementum commodo. Vestibulum elit turpis, efficitur quis posuere vitae, commodo vitae augue. Donec ut pharetra ligula. Phasellus ac mauris eu felis bibendum dapibus rutrum sed quam. Pellentesque posuere ante id consequat pretium.</p>
   with_title:
     data:
       tabs:
@@ -51,12 +51,12 @@ examples:
           label: "First section"
           title: "First section"
           content: |
-            <p>Fusce at dictum tellus, ac accumsan est. Nulla vitae turpis in nulla gravida tincidunt. Duis lectus felis, tempus id bibendum sit amet, posuere ut elit. Donec enim odio, eleifend in urna a, sagittis egestas est. Proin id ex ultricies, porta eros id, vehicula quam. Morbi non sagittis velit.</p>
+            <p class="govuk-body-m">Fusce at dictum tellus, ac accumsan est. Nulla vitae turpis in nulla gravida tincidunt. Duis lectus felis, tempus id bibendum sit amet, posuere ut elit. Donec enim odio, eleifend in urna a, sagittis egestas est. Proin id ex ultricies, porta eros id, vehicula quam. Morbi non sagittis velit.</p>
         - id: "tab-with-title-2"
           label: "Second section"
           title: "Second section"
           content: |
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue elementum commodo. Vestibulum elit turpis, efficitur quis posuere vitae, commodo vitae augue. Donec ut pharetra ligula. Phasellus ac mauris eu felis bibendum dapibus rutrum sed quam. Pellentesque posuere ante id consequat pretium.</p>
+            <p class="govuk-body-m">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam congue elementum commodo. Vestibulum elit turpis, efficitur quis posuere vitae, commodo vitae augue. Donec ut pharetra ligula. Phasellus ac mauris eu felis bibendum dapibus rutrum sed quam. Pellentesque posuere ante id consequat pretium.</p>
   single_item:
     description: If only an individual item is supplied to the component (if the list is created dynamically, for example) it will be rendered without tabs.
     data:
@@ -64,4 +64,4 @@ examples:
         - id: "singletab"
           label: "Single piece of content"
           content: |
-            Here is a single piece of content, there should be no tabs.
+            <p class="govuk-body-m">Here is a single piece of content, there should be no tabs.</p>
