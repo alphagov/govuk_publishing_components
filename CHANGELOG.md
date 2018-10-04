@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 11.2.0
 
 * Fix toggle behaviour in related navigation and taxonomy navigation when JS disabled (PR #551)
 * Make "GOV.UK Publishing" the default product name (PR #557 #561)
