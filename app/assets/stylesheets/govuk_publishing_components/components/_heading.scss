@@ -1,5 +1,7 @@
 .gem-c-heading {
+  @include govuk-text-colour;
   @include bold-27;
+  margin: 0;
 }
 
 .gem-c-heading--font-size-24 {
