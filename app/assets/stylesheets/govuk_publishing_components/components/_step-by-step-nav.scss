@@ -37,6 +37,10 @@ $top-border: solid 2px $grey-3;
       margin-bottom: $gutter * 2;
     }
   }
+
+  .js-enabled &.js-hidden {
+    display: none;
+  }
 }
 
 .gem-c-step-nav__controls {
@@ -224,12 +228,21 @@ $top-border: solid 2px $grey-3;
               -#{$shadow-offset} 0 0 $shadow-colour;
 }
 
+.gem-c-step-nav__circle-step-label,
+.gem-c-step-nav__circle-step-colon {
+  @include govuk-visually-hidden;
+}
+
 .gem-c-step-nav__header {
   padding: $gutter-half 0;
   border-top: $top-border;
 
   .gem-c-step-nav--active & {
     cursor: pointer;
+  }
+
+  .gem-c-step-nav__button {
+    @include govuk-focusable;
   }
 
   &:hover {
@@ -251,6 +264,7 @@ $top-border: solid 2px $grey-3;
 }
 
 .gem-c-step-nav__title {
+  @include govuk-text-colour;
   @include _core-font-generator(19px, 19px, 19px, 1.4, 1.4, false, bold);
   margin: 0;
 
@@ -272,10 +286,15 @@ $top-border: solid 2px $grey-3;
 }
 
 .gem-c-step-nav__panel {
+  @include govuk-text-colour;
   @include _core-font-generator(16px, 16px, 16px);
 
   .gem-c-step-nav--large & {
     @include _core-font-generator(19px, 16px, 19px);
+  }
+
+  .js-enabled &.js-hidden {
+    display: none;
   }
 }
 
@@ -306,6 +325,7 @@ $top-border: solid 2px $grey-3;
 .gem-c-step-nav__list {
   padding: 0;
   padding-bottom: 10px;
+  list-style: none;
 
   .gem-c-step-nav--large & {
     @include media(tablet) {
@@ -337,6 +357,15 @@ $top-border: solid 2px $grey-3;
   margin-bottom: 10px;
 }
 
+.gem-c-step-nav__link {
+  @include govuk-link-common;
+  @include govuk-link-style-default;
+}
+
+.gem-c-step-nav__link-active-context {
+  @include govuk-visually-hidden;
+}
+
 .gem-c-step-nav__list-item--active {
   position: relative;
 
@@ -366,14 +395,8 @@ $top-border: solid 2px $grey-3;
   }
 
   .gem-c-step-nav__link {
-    color: $black;
+    @include govuk-link-style-text;
     text-decoration: none;
-
-    &:visited,
-    &:active,
-    &:link {
-      color: $black;
-    }
   }
 }
 
