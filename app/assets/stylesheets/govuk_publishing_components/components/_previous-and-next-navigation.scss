@@ -6,19 +6,26 @@
   margin-right: -$gutter-half;
 }
 
+.gem-c-pagination__list {
+  margin: 0;
+  padding: 0;
+}
+
 .gem-c-pagination__item {
   @include core-16($line-height: (20 / 16));
   list-style: none;
 }
 
 .gem-c-pagination__link {
+  @extend %govuk-link;
   display: block;
   padding: $gutter-half;
   text-decoration: none;
 
   &:hover,
   &:active,
-  &:visited {
+  &:visited,
+  &:focus {
     color: $link-colour;
   }
 
@@ -30,6 +37,10 @@
 
 .gem-c-pagination__link-title {
   display: block;
+}
+
+.gem-c-pagination__link-divider {
+  @include govuk-visually-hidden;
 }
 
 .gem-c-pagination__link-text {
