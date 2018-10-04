@@ -19,6 +19,10 @@ examples:
   development_environment:
     data:
       environment: development
+  with_product_name:
+    data:
+      environment: production
+      product_name: Product
   with_navigation:
     data:
       environment: production

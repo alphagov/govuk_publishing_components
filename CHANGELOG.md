@@ -10,6 +10,9 @@
 ## Unreleased
 
 * Fix toggle behaviour in related navigation and taxonomy navigation when JS disabled (PR #551)
+* Make "GOV.UK Publishing" the default product name (PR #557 #561)
+* Change the colour of production to red (PR #557)
+* Add environment tag in the header for all environments (PR #557)
 
 ## 11.1.0
 

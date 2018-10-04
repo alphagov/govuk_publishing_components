@@ -1,4 +1,5 @@
 <%
+  product_name ||= "Publishing"
   navigation_items ||= []
 %>
 <header class="gem-c-layout-header govuk-header gem-c-layout-header--<%= environment %>" role="banner" data-module="header">
@@ -19,7 +20,7 @@
         </span>
 
         <span class="govuk-header__product-name">
-          Publishing
+          <%= product_name %>
         </span>
 
         <span class="gem-c-environment-tag govuk-tag gem-c-environment-tag--<%= environment %>">

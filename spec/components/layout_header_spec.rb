@@ -17,6 +17,12 @@ describe "Layout header", type: :view do
     assert_select ".govuk-header.gem-c-layout-header--staging"
   end
 
+  it "renders the product name" do
+    render_component(environment: "staging", product_name: "Product name")
+
+    assert_select ".govuk-header__product-name", text: "Product name"
+  end
+
   it "renders the header with navigation items" do
     navigation_items = [
       { text: "Foo", href: "/foo", active: true },
