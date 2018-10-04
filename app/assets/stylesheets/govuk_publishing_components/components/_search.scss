@@ -19,6 +19,7 @@ $large-input-size: 50px;
   @include box-sizing(border-box);
   @include core-19($line-height: (28 / 19), $line-height-640: (28 / 16));
   @include appearance(none);
+  @include govuk-focusable;
 
   padding: 6px;
   margin: 0.5em 0;
@@ -30,6 +31,7 @@ $large-input-size: 50px;
 }
 
 .gem-c-search__submit {
+  @include govuk-focusable;
   padding: 6px;
   border: 0;
   cursor: pointer;
