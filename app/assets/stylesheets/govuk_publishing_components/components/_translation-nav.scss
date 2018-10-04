@@ -2,6 +2,7 @@
 
 .gem-c-translation-nav {
   @include responsive-top-margin;
+  @include govuk-text-colour;
   @include core-16;
   margin-bottom: $gutter;
   border-bottom: 1px solid $border-colour;
@@ -10,8 +11,8 @@
 .gem-c-translation-nav__list {
   @extend %contain-floats;
   list-style: none;
-  margin-left: -$gutter-one-third;
-  margin-right: -$gutter-one-third;
+  margin: 0 (-$gutter-one-third);
+  padding: 0;
 }
 
 .gem-c-translation-nav__list-item {
@@ -29,6 +30,10 @@
     border-left: 1px solid $border-colour;
     border-right: 0;
   }
+}
+
+.gem-c-translation-nav__link {
+  @extend %govuk-link;
 }
 
 .gem-c-translation-nav__list-item:last-child {
