@@ -18,7 +18,7 @@
       is_link = crumb[:url].present? || crumb[:is_current_page]
       path = crumb[:is_current_page] ? '#content' : crumb[:url]
       aria_current = crumb[:is_current_page] ? 'page' : 'false'
-      css_class = invert_class.concat(crumb[:is_current_page] ? ' gem-c-breadcrumbs--current ' : '')
+      css_class = "gem-c-breadcrumbs__link " + invert_class.concat(crumb[:is_current_page] ? ' gem-c-breadcrumbs--current ' : '')
     %>
 
     <li class='gem-c-breadcrumbs__item <%= "gem-c-breadcrumbs--parent" if crumb[:is_page_parent] %>'>
