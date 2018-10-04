@@ -8,7 +8,7 @@
     class="gem-c-subscription-links <%= brand_helper.brand_class %>"
     <%= "data-module=gem-toggle" if sl_helper.feed_link_box_value %>
   >
-    <h2 class="visuallyhidden"><%= t("govuk_component.subscription_links.subscriptions", default: "Subscriptions") %></h2>
+    <h2 class="gem-c-subscription-links__hidden-header visuallyhidden"><%= t("govuk_component.subscription_links.subscriptions", default: "Subscriptions") %></h2>
     <ul
       class="gem-c-subscription-links__list"
       <%= "data-module=track-click" if sl_helper.tracking_is_present? %>
@@ -34,7 +34,7 @@
 
     <% if sl_helper.feed_link_box_value %>
       <div class="gem-c-subscription-links__feed-box js-hidden" id="<%= sl_helper.feed_box_id %>">
-        <p class="gem-c-subscription-links__feed-description js-hidden"><%= sl_helper.feed_link_text %></p>
+        <p class="gem-c-subscription-links__feed-hidden-description visuallyhidden"><%= sl_helper.feed_link_text %></p>
         <%= render "govuk_publishing_components/components/input", {
           label: {
             text: "Copy and paste this URL into your feed reader"
