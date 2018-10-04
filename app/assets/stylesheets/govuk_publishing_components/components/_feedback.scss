@@ -4,6 +4,10 @@
 .gem-c-feedback {
   max-width: 960px;
   margin: 0 auto;
+
+  .visually-hidden {
+    @include govuk-visually-hidden;
+  }
 }
 
 .gem-c-feedback--top-margin {
@@ -16,7 +20,11 @@
 
 // hide without js
 // show with js, unless also has the js-hidden class
-.gem-c-feedback__js-show {
+.gem-c-feedback__js-show,
+.gem-c-feedback__form,
+.gem-c-feedback__prompt-success,
+.gem-c-feedback__js-prompt-questions,
+.gem-c-feedback__error-summary {
   display: none;
 
   .js-enabled & {
@@ -50,7 +58,7 @@
   display: inline-block;
 
   // There's a global h3 rule in some layouts that interferes with this component
-  margin-top: 0;
+  margin: 0;
 
   &:focus {
     outline: 0;
@@ -63,6 +71,7 @@
 }
 
 .gem-c-feedback__prompt-link {
+  @include govuk-link-common;
   @include core-19;
   margin-left: $gutter-half;
 
@@ -113,13 +122,19 @@
   // this comes from the backend so we can't put a class on it
   h2,
   .gem-c-feedback__heading {
+    @include govuk-text-colour;
     @include bold-24;
     margin: 0;
   }
 
   p {
+    @include govuk-text-colour;
     @include core-19;
     margin: $gutter-one-third 0;
+  }
+
+  a {
+    @extend %govuk-link;
   }
 }
 
@@ -141,13 +156,15 @@
 }
 
 .gem-c-feedback__form-heading {
+  @include govuk-text-colour;
   @include bold-24;
-  margin-bottom: $gutter-half;
+  margin: 0 0 $gutter-half 0;
 }
 
 .gem-c-feedback__form-paragraph {
+  @include govuk-text-colour;
   @include core-19;
-  margin-bottom: $gutter;
+  margin: 0 0 $gutter 0;
 }
 
 .gem-c-feedback__form-label {
@@ -157,9 +174,11 @@
 }
 
 .gem-c-feedback__close {
+  @include govuk-link-common;
+  @include govuk-link-style-default;
   @include core-19;
   float: right;
-  margin-bottom: $gutter-one-third;
+  margin: 0 0 $gutter-one-third 0;
 
   @include media(tablet) {
     padding-top: 0;
