@@ -3,6 +3,8 @@ $share-button-height: 32px;
 
 .gem-c-share-links__list {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .gem-c-share-links__list-item {
@@ -10,19 +12,23 @@ $share-button-height: 32px;
   position: relative;
   display: inline-block;
   min-height: $share-button-height;
-  padding-top: $share-button-height / 8;
   padding-left: ($share-button-width + $gutter-one-third);
   margin-bottom: $gutter-one-third;
+  font-size: $share-button-height / 2;
+  line-height: $share-button-height;
 }
 
 .gem-c-share-links__link {
+  @extend %govuk-link;
   @include bold-16;
   margin-right: $gutter;
   text-decoration: none;
 }
 
 .gem-c-share-links__title {
-  margin-bottom: $gutter-one-third;
+  @include govuk-text-colour;
+  @include govuk-font($size: 16, $line-height: 1.5);
+  margin: 0 0 $gutter-one-third 0;
 }
 
 .gem-c-share-links__link-icon {
