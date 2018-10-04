@@ -39,7 +39,7 @@ module GovukPublishingComponents
 
       def section_css_class(css_class, section_title, link = {})
         unless DEFINED_SECTIONS.include?(section_title) || link.fetch(:finder, false)
-          css_class += "--other"
+          css_class += " #{css_class}--other"
         end
         css_class
       end
