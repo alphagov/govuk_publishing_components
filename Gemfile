@@ -1,3 +1,5 @@
+ruby File.read(".ruby-version").strip unless ENV["RBENV_VERSION"]
+
 source 'https://rubygems.org'
 
 # Declare your gem's dependencies in govuk_publishing_components.gemspec.
