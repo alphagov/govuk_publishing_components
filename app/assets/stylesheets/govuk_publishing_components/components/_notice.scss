@@ -1,4 +1,5 @@
 .gem-c-notice {
+  @include govuk-text-colour;
   clear: both;
   padding: $gutter-two-thirds;
   border: 2px solid $govuk-blue;
@@ -20,14 +21,18 @@
 
 .gem-c-notice__title {
   @include bold-27;
-  margin-bottom: $gutter-one-third;
+  margin: 0 0 $gutter-one-third 0;
 
   &:last-child {
     margin-bottom: 0;
+  }
+
+  a {
+    @extend %govuk-link;
   }
 }
 
 .gem-c-notice__description {
   @include core-19;
-  margin-bottom: 0;
+  margin: 0;
 }
