@@ -63,7 +63,7 @@
           <h3 class='gem-c-taxonomy-navigation__section-heading'>
             <%= t("components.taxonomy_navigation.#{section_name}") %>
           </h3>
-          <nav class='gem-c-taxonomy-navigation__navigation' data-module='toggle' role='navigation'>
+          <nav class='gem-c-taxonomy-navigation__navigation' data-module='gem-toggle' role='navigation'>
             <ul class='gem-c-taxonomy-navigation__list'>
               <% sidx = 0; hidden_links = [] %>
               <% section.each_with_index do |item, idx| %>
@@ -102,7 +102,7 @@
                   </a>
                 </li>
                 <li class="gem-c-taxonomy-navigation__link">
-                  <span id="toggle_<%= section_name %>" class="js-hidden">
+                  <span id="toggle_<%= section_name %>" class="gem-c-taxonomy-navigation__toggle-more js-hidden">
                     <%= to_sentence(hidden_links) %>
                   </span>
                 </li>

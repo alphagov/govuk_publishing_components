@@ -1,4 +1,5 @@
 .gem-c-taxonomy-navigation {
+  @include govuk-text-colour;
   @include core-16;
   border-top: 2px solid $govuk-blue;
   padding-top: $gutter-half;
@@ -59,10 +60,12 @@
 }
 
 .gem-c-taxonomy-navigation__link {
+  @extend %govuk-link;
   text-decoration: none;
 }
 
 .gem-c-taxonomy-navigation__toggle {
+  @extend %govuk-link;
   display: none;
 
   .js-enabled & {
@@ -70,8 +73,14 @@
    }
 }
 
+.gem-c-taxonomy-navigation__toggle-more.js-hidden {
+  .js-enabled & {
+    display: none;
+  }
+}
 
 .gem-c-taxonomy-navigation__section-heading {
+  @include core-16;
   border-top: 1px solid $border-colour;
   margin-bottom: $gutter-half;
   margin-top: $gutter;
@@ -79,6 +88,7 @@
 }
 
 .gem-c-taxonomy-navigation__section-link {
+  @extend %govuk-link;
   @include bold-19;
   text-decoration: none;
 }
