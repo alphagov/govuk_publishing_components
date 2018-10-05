@@ -1,6 +1,7 @@
-// This adds in javascript that should only be included if slimmer middleware
-// is not running
+// This adds in javascript that initialiases components and dependencies
+// that would normally be provided by slimmer
 //= require jquery/dist/jquery
+//= require govuk/modules
 
 $(document).ready(function () {
   'use strict'
