@@ -9,14 +9,16 @@
 
 ## Unreleased
 
-* BREAKING: Remove slimmer as a dependency, many minor changes to components
-This adds additional styling to most components so they can work without
-a dependency on static styles and scripts. There should not actually be any
-breaking changes, but with this amount of changes there probably is one or
-two. Do check your component usage when you upgrade.
-Any apps that have removed Slimmer from middleware to stop it running will
-have to remove this as the Slimmer::App constant will no longer be available.
 * Append the product name to the browser title (PR #563)
+* BREAKING: Remove Slimmer as a dependency
+This comprises many minor changes to components so they no longer rely on
+Static provided stylesheets.
+- If your app uses Slimmer, the component guide will no longer use it and you
+  can no longer rely on any resets/global rules provided
+- If your app removes the Slimmer middleware this will now break as Slimmer
+  will be an undefined constant
+- Apps which the admin layout no longer need to include jQuery as this comes
+  bundled in the admin scripts.
 
 ## 11.2.0
 
