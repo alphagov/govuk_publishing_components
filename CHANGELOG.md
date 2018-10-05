@@ -9,7 +9,14 @@
 
 ## Unreleased
 
-- Append the product name to the browser title (PR #563)
+* BREAKING: Remove slimmer as a dependency, many minor changes to components
+This adds additional styling to most components so they can work without
+a dependency on static styles and scripts. There should not actually be any
+breaking changes, but with this amount of changes there probably is one or
+two. Do check your component usage when you upgrade.
+Any apps that have removed Slimmer from middleware to stop it running will
+have to remove this as the Slimmer::App constant will no longer be available.
+* Append the product name to the browser title (PR #563)
 
 ## 11.2.0
 
