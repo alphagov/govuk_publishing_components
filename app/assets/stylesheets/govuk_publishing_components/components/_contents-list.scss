@@ -4,10 +4,30 @@
   // Always render the contents list above a
   // back to contents link
   position: relative;
-  margin-bottom: $gutter-two-thirds;
+  margin: 0 0 $gutter-two-thirds 0;
   z-index: 1;
   background: $white;
   box-shadow: 0 20px 15px -10px $white;
+}
+
+.gem-c-contents-list__title {
+  @include govuk-text-colour;
+  @include govuk-font($size: 16, $weight: regular, $line-height: 1.5);
+  margin: 0;
+}
+
+.gem-c-contents-list__list,
+.gem-c-contents-list__nested-list {
+  @include govuk-text-colour;
+  @include govuk-font($size: 16);
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.gem-c-contents-list__link {
+  @include govuk-link-common;
+  @include govuk-link-style-default;
 }
 
 .gem-c-contents-list--no-underline {

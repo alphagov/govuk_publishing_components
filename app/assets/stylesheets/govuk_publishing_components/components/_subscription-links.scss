@@ -1,10 +1,15 @@
 .gem-c-subscription-links {
+  @include govuk-text-colour;
   @include bold-19;
+
+  .gem-c-subscription-links__hidden-header {
+    @include govuk-visually-hidden;
+  }
 
   .gem-c-subscription-links__list {
     list-style: none;
-    margin-left: -$gutter-half / 2;
-    margin-right: -$gutter-half / 2;
+    margin: 0 (-$gutter-half / 2);
+    padding: 0;
   }
 
   .gem-c-subscription-links__list-item {
@@ -15,6 +20,7 @@
   }
 
   .gem-c-subscription-links__link {
+    @extend %govuk-link;
     text-decoration: none;
     padding-left: 28px;
     background-repeat: no-repeat;
@@ -51,10 +57,14 @@
     padding: $gutter-half;
     margin-bottom: $gutter-half;
     background: $grey-3;
+
+    .js-enabled &.js-hidden {
+      display: none;
+    }
   }
 
-  .gem-c-subscription-links__feed-description {
-    font-weight: bold;
+  .gem-c-subscription-links__feed-hidden-description {
+    @include govuk-visually-hidden;
   }
 }
 

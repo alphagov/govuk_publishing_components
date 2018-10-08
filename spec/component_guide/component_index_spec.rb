@@ -7,7 +7,7 @@ describe 'Component guide index' do
     visit '/test'
     expect(page).to have_title 'Dummy'
     visit '/component-guide'
-    expect(page).to have_title 'GOV.UK Component Guide'
+    expect(page).to have_title 'Component Guide'
   end
 
   it 'sets X-Frame-Options to allow inclusion in iFrames' do
@@ -15,9 +15,14 @@ describe 'Component guide index' do
     expect(page.response_headers["X-Frame-Options"]).to eq('ALLOWALL')
   end
 
+  it 'sets X-Slimmer-Skip to disable Slimmer in apps which use it' do
+    visit '/component-guide'
+    expect(page.response_headers["X-Slimmer-Skip"]).to eq('true')
+  end
+
   it 'loads a component guide' do
     visit '/component-guide'
-    expect(page).to have_title 'GOV.UK Component Guide'
+    expect(page).to have_title 'Component Guide'
   end
 
   it 'loads a component from the dummy app' do

@@ -1,4 +1,5 @@
 .gem-c-step-nav-related {
+  @include govuk-text-colour;
   border-top: 2px solid $govuk-blue;
   margin-bottom: $gutter;
 }
@@ -47,4 +48,8 @@
   @include media(tablet) {
     margin-top: 5px;
   }
+}
+
+.gem-c-step-nav-related__link {
+  @extend %govuk-link;
 }

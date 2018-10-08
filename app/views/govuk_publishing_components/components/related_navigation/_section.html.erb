@@ -1,7 +1,7 @@
 <nav role="navigation"
      class="gem-c-related-navigation__nav-section"
      aria-labelledby="related-nav-<%= section_title %>-<%= random %>"
-     data-module="toggle">
+     data-module="gem-toggle">
 
   <% unless section_title === "related_items" %>
     <h3 id="related-nav-<%= section_title %>-<%= random %>"
@@ -11,7 +11,7 @@
     </h3>
   <% end %>
 
-  <ul class="gem-c-related-navigation_link-list" data-module="track-click">
+  <ul class="gem-c-related-navigation__link-list" data-module="track-click">
     <% constructed_link_array = [] %>
 
     <% section_link_limit = related_nav_helper.calculate_section_link_limit(links) %>
@@ -55,7 +55,7 @@
       </li>
 
       <li class="gem-c-related-navigation__link">
-        <span id="toggle_<%= section_title %>" class="js-hidden">
+        <span id="toggle_<%= section_title %>" class="gem-c-related-navigation__toggle-more js-hidden">
           <%= to_sentence(constructed_link_array) %>
         </span>
       </li>

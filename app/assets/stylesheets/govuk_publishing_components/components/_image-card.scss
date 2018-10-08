@@ -6,10 +6,12 @@
   @extend %contain-floats;
   margin: 0 (-$gutter-half) $gutter (-$gutter-half);
   position: relative;
+  @include govuk-text-colour;
 }
 
 .gem-c-image-card__image-wrapper {
   @include grid-column( 1 / 3, mobile );
+  margin: 0;
 
   @include media(tablet) {
     margin-bottom: $gutter-one-third;
@@ -33,9 +35,11 @@
 
 .gem-c-image-card__title {
   @include bold-19;
+  margin: 0;
 }
 
 .gem-c-image-card__title-link {
+  @extend %govuk-link;
   text-decoration: none;
 
   &:hover {
@@ -68,7 +72,7 @@
 .gem-c-image-card__context,
 .gem-c-image-card__metadata {
   @include core-14;
-  margin-bottom: $gutter-one-quarter;
+  margin: 0 0 $gutter-one-quarter;
   color: $grey-1;
 
   @include media(tablet) {
@@ -77,16 +81,22 @@
 }
 
 .gem-c-image-card__description {
+  @include govuk-font($size: 16, $line-height: 1.5);
   padding-top: $gutter-one-quarter;
   word-wrap: break-word;
 }
 
 .gem-c-image-card__list {
+  @include govuk-font($size: 16, $line-height: 1.5);
   position: relative;
   z-index: 2;
   padding: $gutter-one-quarter 0 0 0;
   margin: 0;
   list-style: none;
+
+  .gem-c-image-card__list-item-link {
+    @extend %govuk-link;
+  }
 
   &.gem-c-image-card__list--indented {
     padding-left: $gutter-half;

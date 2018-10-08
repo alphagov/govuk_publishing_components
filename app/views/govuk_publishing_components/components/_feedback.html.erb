@@ -9,7 +9,7 @@
 
 <div class="gem-c-feedback <%= margin_top_class %>" data-module="feedback">
   <div class="gem-c-feedback__prompt gem-c-feedback__js-show js-prompt" tabindex="-1">
-    <div class="js-prompt-questions">
+    <div class="gem-c-feedback__js-prompt-questions js-prompt-questions">
       <h2 class="gem-c-feedback__prompt-question">Is this page useful?</h2>
 
       <%= link_to contact_govuk_path, {
@@ -140,7 +140,7 @@
         <%= render "govuk_publishing_components/components/button", {
           text: "Send me the survey"
         } %>
-        <a href="https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=<%= stripped_url -%>&amp;gcl=1627485790.1515403243" class="gem-c-feedback__email-link" id="take-survey" target="_blank" rel="noopener noreferrer">Don’t have an email address?</a>
+        <a href="https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=<%= stripped_url -%>&amp;gcl=1627485790.1515403243" class="gem-c-feedback__email-link govuk-link" id="take-survey" target="_blank" rel="noopener noreferrer">Don’t have an email address?</a>
       </div>
     </div>
   </form>

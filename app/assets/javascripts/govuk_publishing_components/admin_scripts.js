@@ -1,4 +1,2 @@
-//= require govuk-frontend/all.js
-
-// Initialise all GOVUKFrontend components
-window.GOVUKFrontend.initAll()
+//= require component_guide/no_slimmer
+//= require govuk_publishing_components/all_components

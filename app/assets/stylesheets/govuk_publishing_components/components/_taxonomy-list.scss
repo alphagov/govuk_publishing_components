@@ -1,7 +1,8 @@
 .gem-c-taxonomy-list {
   display: flex;
   flex-wrap: wrap;
-  margin-top: $gutter-half;
+  margin: $gutter-half 0 0 0;
+  padding: 0;
 
   @include media(tablet) {
     margin-right: -25px;

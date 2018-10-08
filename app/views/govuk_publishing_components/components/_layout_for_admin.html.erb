@@ -9,12 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= favicon_link_tag "govuk_publishing_components/favicon-#{environment}.png" %>
-    <!--[if !IE 8]><!-->
-      <%= stylesheet_link_tag "govuk_publishing_components/admin_styles" %>
-    <!--<![endif]-->
-    <!--[if IE 8]>
-      <%= stylesheet_link_tag "govuk_publishing_components/admin_styles_ie8" %>
-    <![endif]-->
+    <%= stylesheet_link_tag "govuk_publishing_components/admin_styles" %>
     <%= javascript_include_tag "govuk_publishing_components/vendor/modernizr" %>
     <%= yield :head %>
   </head>

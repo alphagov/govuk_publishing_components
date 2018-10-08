@@ -113,7 +113,7 @@ module GovukPublishingComponents
       end
 
       def link_text(active, text)
-        active ? content_tag(:span, "You are currently viewing: ", class: "visuallyhidden") + text : text
+        active ? content_tag(:span, "You are currently viewing: ", class: "gem-c-step-nav__link-active-context visuallyhidden") + text : text
       end
 
       def link_active(active)

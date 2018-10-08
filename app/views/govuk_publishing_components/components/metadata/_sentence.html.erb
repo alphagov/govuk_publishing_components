@@ -17,7 +17,7 @@
         <%= t("govuk_component.metadata.toggle_more", number: remaining.length, default: "+ #{remaining.length} more") %>
     </a>
   </div>
-  <span id="toggle-<%= toggle_id %>" class="js-hidden"><%= remaining.to_sentence.html_safe %></span>
+  <span id="toggle-<%= toggle_id %>" class="gem-c-metadata__toggle-items js-hidden"><%= remaining.to_sentence.html_safe %></span>
 <% else %>
   <%= items.to_sentence.html_safe %>
 <% end %>

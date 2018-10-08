@@ -1,4 +1,5 @@
 .gem-c-metadata {
+  @include govuk-text-colour;
   @include core-16;
   @include responsive-bottom-margin;
   @extend %contain-floats;
@@ -35,15 +36,21 @@
 }
 
 .gem-c-metadata__definition {
+  margin: 0;
   line-height: normal;
 
   @include media(tablet) {
     float: left;
     width: 70%;
   }
+
+  a {
+    @extend %govuk-link;
+  }
 }
 
 .gem-c-metadata__definition-link {
+  @extend %govuk-link;
   text-decoration: none;
 }
 
@@ -63,4 +70,8 @@
 
 .js-enabled .gem-c-metadata__toggle-wrap {
   display: block;
+}
+
+.js-enabled .gem-c-metadata__toggle-items.js-hidden {
+  display: none;
 }

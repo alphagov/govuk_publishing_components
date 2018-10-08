@@ -1,7 +1,6 @@
 @import "design-patterns/breadcrumbs";
 @import "mixins/back-arrow";
 @import "mixins/media-down";
-@import "mixins/touch-friendly-links";
 
 .gem-c-breadcrumbs {
   // reset the default browser styles
@@ -11,11 +10,28 @@
   }
 
   @include breadcrumbs;
-  @include touch-friendly-links();
+
+  .gem-c-breadcrumbs__item {
+    @include govuk-text-colour;
+  }
+
+  .gem-c-breadcrumbs__link {
+    @include govuk-link-common;
+    @include govuk-link-style-text;
+  }
 
   .gem-c-breadcrumbs--current {
-    color: $secondary-text-colour;
-    text-decoration: none;
+    &:link,
+    &:visited,
+    &:hover,
+    &:active {
+      color: $secondary-text-colour;
+      text-decoration: none;
+    }
+
+    &:focus {
+      text-decoration: none;
+    }
   }
 
   @include media-down(mobile) {
@@ -39,5 +55,10 @@
 
 .gem-c-breadcrumbs--current.gem-c-breadcrumbs--inverse,
 .gem-c-breadcrumbs .gem-c-breadcrumbs--inverse {
-  color: $white;
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    color: $white;
+  }
 }

@@ -58,6 +58,7 @@
 }
 
 .gem-c-error-summary__link {
+  @include govuk-link-common;
   &:link,
   &:link:focus,
   &:focus,

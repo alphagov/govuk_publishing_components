@@ -11,6 +11,18 @@
   color: $white;
 }
 
+
+.gem-c-inverse-header {
+  // This publication-header class is injected on publication pages, really
+  // it should be a component class or be a component in it's own right.
+  .gem-c-inverse-header__supplement,
+  .publication-header__last-changed {
+    @include govuk-font($size: 16, $line-height: 1.5);
+    color: $white;
+    margin: 0;
+  }
+}
+
 .gem-c-inverse-header--full-width {
   padding-left: 0;
   padding-right: 0;

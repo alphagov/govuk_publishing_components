@@ -1,4 +1,5 @@
 .gem-c-step-nav-header {
+  @include govuk-text-colour;
   position: relative;
   padding: 10px;
   background: $grey-4;
@@ -20,6 +21,7 @@
 }
 
 .gem-c-step-nav-header__title {
+  @extend %govuk-link;
   @include bold-24;
 }
 

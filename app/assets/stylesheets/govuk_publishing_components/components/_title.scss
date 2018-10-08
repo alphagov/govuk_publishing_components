@@ -19,6 +19,7 @@
 .gem-c-title--inverse {
   color: $white;
 
+  .gem-c-title__text,
   .gem-c-title__context {
     color: inherit;
   }
@@ -27,6 +28,7 @@
 .gem-c-title__context {
   @include core-24;
   color: $secondary-text-colour;
+  margin: 0;
 }
 
 .gem-c-title__context-link {
@@ -48,7 +50,9 @@
 }
 
 .gem-c-title__text {
+  @include govuk-text-colour;
   @include bold-48;
+  margin: 0;
 }
 
 .gem-c-title__text--long {

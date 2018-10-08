@@ -9,6 +9,8 @@
 // - alphagov/govspeak: ✔︎
 
 .gem-c-govspeak {
+  @include govuk-text-colour;
+
   ol,
   ul,
   p {
@@ -24,33 +26,45 @@
 
   // Headings
 
+  // H1's are not allowed and thus are styled bare
+  h1 {
+    @include core-19;
+    margin: 0;
+    padding: 0;
+  }
+
   h2 {
     @include bold-27;
     margin-top: $gutter;
+    margin-bottom: 0;
 
     @include media(desktop) {
       margin-top: $gutter * 1.5;
+      margin-bottom: 0;
     }
   }
 
   h3 {
     @include bold-19;
     margin-top: $gutter + 5px;
-  }
-
-  h4 {
-    @include bold-19;
-    margin-top: $gutter + 5px;
+    margin-bottom: 0;
   }
 
   h4,
   h5,
   h6 {
     @include bold-19;
+    margin-top: $gutter + 5px;
+    margin-bottom: 0;
 
     + p {
       margin-top: 5px;
     }
+  }
+
+  h5,
+  h6 {
+    margin: 0;
   }
 
   h2:first-child,
@@ -61,9 +75,8 @@
   }
 
   // Links
-
   a {
-    text-decoration: underline;
+    @extend %govuk-link;
   }
 
   // Lists
@@ -73,6 +86,7 @@
     list-style: decimal;
     list-style-position: outside;
     margin-left: $gutter-two-thirds;
+    padding: 0;
 
     ul,
     ol {
@@ -94,7 +108,8 @@
   }
 
   li {
-    margin-bottom: 5px;
+    margin: 0 0 5px 0;
+    padding: 0;
 
     p {
       margin: 0;
@@ -200,6 +215,7 @@
 
   abbr {
     cursor: help;
+    text-decoration: none;
   }
 
   // Horizontal Rule

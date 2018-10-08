@@ -1,32 +1,35 @@
 // This file contains the styles for the Component Guide.
 
-// `govuk_frontend_toolkit`
-@import "measurements";
-@import "grid_layout";
-@import "typography";
-@import "colours";
+@import "govuk_publishing_components/components/helpers/govuk-frontend-settings";
+@import "govuk-frontend/settings/all";
+@import "govuk-frontend/tools/all";
+@import "govuk-frontend/helpers/all";
+@import "govuk-frontend/core/all";
 
-$border-color: #ccc;
-
-.govuk-component-guide-wrapper {
-  padding-bottom: $gutter * 1.5;
+.component-guide-wrapper {
+  padding-bottom: $govuk-gutter * 1.5;
 }
 
 .component-list {
-  margin-left: 20px;
+  @include govuk-text-colour;
+  @extend %govuk-list--bullet;
 
   li {
-    @include core-19;
-    margin-bottom: $gutter-half;
+    @include govuk-font($size: 19);
+    margin-bottom: $govuk-gutter-half;
+  }
+
+  p {
+    margin: 0;
   }
 }
 
 .component-body {
-  margin-bottom: $gutter * 1.5;
+  margin-bottom: $govuk-gutter * 1.5;
 }
 
 .component-doc {
-  @include core-16;
+  @include govuk-font($size: 16);
 
   .component-doc-h2:first-child {
     margin-top: 0;
@@ -34,70 +37,63 @@ $border-color: #ccc;
 }
 
 .component-violation {
-  border: 3px solid $error-colour;
-  margin: 0 0 $gutter;
-  padding: $gutter $gutter;
+  @include govuk-text-colour;
+  border: 3px solid $govuk-error-colour;
+  margin: 0 0 $govuk-gutter;
+  padding: $govuk-gutter $govuk-gutter;
 
   .component-violation__title {
-    @include bold-24;
+    @include govuk-font($size: 24, $weight: bold);
+    margin: 0;
   }
 
   .component-violation__link {
     display: block;
-    @include bold-19;
-    color: $error-colour;
-    margin: $gutter-half 0;
+    @include govuk-font($size: 19, $weight: bold);
+    color: $govuk-error-colour;
+    margin: $govuk-gutter-half 0;
   }
 }
 
 .component-doc-h2 {
-  @include bold-27;
-  margin: ($gutter * 1.5) 0 $gutter;
+  @include govuk-text-colour;
+  @include govuk-font($size: 27, $weight: bold);
+  margin: ($govuk-gutter * 1.5) 0 $govuk-gutter;
 
   small {
-    @include bold-16;
+    @include govuk-font($size: 16, $weight: bold);
   }
 }
 
 .component-doc-h3 {
-  margin: $gutter 0 $gutter-half;
-  @include bold-19;
-}
-
-.component-guide-preview {
-  padding: 30px 0;
-
-  .preview-title {
-    margin-bottom: 1em;
-    @include bold-16;
-
-    a {
-      color: $black;
-    }
-  }
+  @include govuk-text-colour;
+  margin: $govuk-gutter 0 $govuk-gutter-half;
+  @include govuk-font($size: 19, $weight: bold);
 }
 
 .component-call {
-  margin-top: $gutter-half;
-  margin-bottom: $gutter-half;
+  margin-top: $govuk-gutter-half;
+  margin-bottom: $govuk-gutter-half;
 
   font-family: Consolas, Monaco, 'Andale Mono', monospace;
   font-size: 16px;
   line-height: 1.5;
-  border: 1px solid $border-colour;
+  border: 1px solid $govuk-border-colour;
 
   &[contenteditable]:hover {
     cursor: text;
   }
 
   &[contenteditable]:focus {
-    outline: 3px solid $focus-colour;
+    outline: 3px solid $govuk-focus-colour;
   }
 
   > pre {
-    padding: $gutter;
+    margin: 0;
+    padding: $govuk-gutter;
     max-height: 300px;
     overflow: auto;
+    font-family: inherit;
 
     > code {
       font-family: inherit;
@@ -119,26 +115,26 @@ $border-color: #ccc;
   }
 
   &.dark-background {
-    background-color: $govuk-blue;
+    background-color: govuk-colour("blue");
   }
 
   &.component-output {
     padding: 0;
   }
 
-  padding: ($gutter * 1.5) $gutter $gutter;
-  border: 1px solid $border-colour;
+  padding: ($govuk-gutter * 1.5) $govuk-gutter $govuk-gutter;
+  border: 1px solid $govuk-border-colour;
   position: relative;
 
   &:before {
-    @include core-14;
+    @include govuk-font($size: 14);
     content: attr(data-content);
     position: absolute;
     top: 0;
     left: 0;
     padding: 0.21053em 0.78947em;
-    background: $border-colour;
-    color: $black;
+    background: $govuk-border-colour;
+    color: govuk-colour("black");
     font-weight: bold;
   }
 }
@@ -154,24 +150,31 @@ $border-color: #ccc;
 
 .component-guide-preview--violation,
 .component-guide-preview--warning {
-  margin-top: $gutter-half;
-  @include core-19;
+  @include govuk-text-colour;
+  margin-top: $govuk-gutter-half;
+
+  @include govuk-font($size: 19);
 
   &:empty {
     display: none;
   }
 
   h3 {
-    @include bold-19;
+    @include govuk-font($size: 19, $weight: bold);
   }
 
   p,
   h3 {
-    margin-bottom: $gutter / 2;
+    margin-top: 0;
+    margin-bottom: $govuk-gutter / 2;
+  }
+
+  h3 a {
+    @extend %govuk-link;
   }
 
   h3:not(:first-child) {
-    margin-top: $gutter;
+    margin-top: $govuk-gutter;
   }
 
   .selector {
@@ -180,32 +183,33 @@ $border-color: #ccc;
 }
 
 .component-guide-preview--warning {
-  border-color: $yellow;
+  border-color: govuk-colour("yellow");
 
   &:before {
-    background-color: $yellow;
+    background-color: govuk-colour("yellow");
   }
 }
 
 .component-guide-preview--violation {
-  border-color: $red;
+  border-color: govuk-colour("red");
 
   &:before {
-    background-color: $red;
-    color: $white;
+    background-color: govuk-colour("red");
+    color: govuk-colour("white");
   }
 }
 
 .examples {
   .component-example {
-    margin: 0 0 $gutter * 1.5;
+    margin: 0 0 $govuk-gutter * 1.5;
 
     .example-title {
-      @include bold-24;
-      margin: $gutter-half 0;
+      @include govuk-text-colour;
+      @include govuk-font($size: 24, $weight: bold);
+      margin: $govuk-gutter-half 0;
 
       small {
-        @include bold-16;
+        @include govuk-font($size: 16, $weight: bold);
       }
     }
   }
@@ -213,7 +217,7 @@ $border-color: #ccc;
 
 // Preview Page Styling
 html {
-  background: $white;
+  background: govuk-colour("white");
 }
 
 .hide-header-and-footer {
@@ -228,15 +232,17 @@ html {
 }
 
 .component-guide-preview-page {
-  padding: ($gutter * 1.5) 0;
+  padding: ($govuk-gutter * 1.5) 0;
   position: relative;
 
   .preview-title {
+    margin-top: 0;
     margin-bottom: 1em;
-    @include bold-16;
+    @include govuk-font($size: 16, $weight: bold);
 
     a {
-      color: $black;
+      @include govuk-link-common;
+      @include govuk-link-style-text;
     }
   }
 }
@@ -252,20 +258,20 @@ html {
 // Rouge syntax highlighting
 // Based on https://github.com/alphagov/tech-docs-template/blob/master/template/source/stylesheets/palette/_syntax-highlighting.scss
 
-$code-00: scale-color($highlight-colour, $lightness:50%); // Default Background
+$code-00: scale-color(govuk-colour("grey-4"), $lightness:50%); // Default Background
 $code-01: #f5f5f5; // Lighter Background (Unused)
 $code-02: #bfc1c3; // Selection Background
-$code-03: darken($secondary-text-colour, 2%); // Comments, Invisibles, Line Highlighting
+$code-03: darken($govuk-secondary-text-colour, 2%); // Comments, Invisibles, Line Highlighting
 $code-04: #e8e8e8; // Dark Foreground (Unused)
-$code-05: $text-colour; // Default Foreground, Caret, Delimiters, Operators
+$code-05: $govuk-text-colour; // Default Foreground, Caret, Delimiters, Operators
 $code-06: #ffffff; // Light Foreground (Unused)
 $code-07: #ffffff; // Light Background (Unused)
 
 $code-08: #ae5f3d; // Variables, XML Tags, Markup Link Text, Markup Lists
 $code-09: #0E7754; // Integers, Boolean, Constants, XML Attributes, Markup Link Url
 $code-0a: #4C4077; // Classes, Markup Bold, Search Text Background
-$code-0b: $govuk-blue; // Strings, Inherited Class, Markup Code
-$code-0c: $govuk-blue; // Support, Regular Expressions, Escape Characters, Markup Quotes
+$code-0b: govuk-colour("blue"); // Strings, Inherited Class, Markup Code
+$code-0c: govuk-colour("blue"); // Support, Regular Expressions, Escape Characters, Markup Quotes
 $code-0d: #4C4077; // Functions, Methods, Attribute IDs, Headings
 $code-0e: #a71d5d; // Keywords, Storage, Selector, Markup Italic
 $code-0f: #C92424; // Deprecated, Opening/Closing Embedded Language Tags e.g. <?php ?> (Unused)

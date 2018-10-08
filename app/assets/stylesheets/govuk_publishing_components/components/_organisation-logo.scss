@@ -1,6 +1,5 @@
 // Default logo corresponds with the "medium stacked" Whitehall equivalent
 .gem-c-organisation-logo {
-  font-family: $helvetica-regular;
   font-size: 13px;
   line-height: (15 / 13);
   font-weight: 400;
@@ -49,16 +48,18 @@
 .gem-c-organisation-logo__name {
   position: relative;
   top: 3px;
+  font-family: $helvetica-regular;
 }
 
-.gem-c-organisation-logo__link:link,
-.gem-c-organisation-logo__link:visited {
-  color: $black;
-}
+.gem-c-organisation-logo__link {
+  @include govuk-link-common;
+  @include govuk-link-style-text;
+  font-family: $helvetica-regular;
 
-.gem-c-organisation-logo__link:hover,
-.gem-c-organisation-logo__link:focus {
-  text-decoration: underline;
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
 }
 
 // all crest images are currently in whitehall

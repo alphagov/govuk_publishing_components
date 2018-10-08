@@ -1,4 +1,5 @@
 .gem-c-related-navigation {
+  @include govuk-text-colour;
   border-top: 2px solid $govuk-blue;
 }
 
@@ -11,6 +12,7 @@
 .gem-c-related-navigation__sub-heading {
   @include core-16;
   border-top: 1px solid $border-colour;
+  margin: 0;
   padding-top: $gutter-half;
 }
 
@@ -21,6 +23,8 @@
 
 .gem-c-related-navigation__sub-heading--other {
   @include bold-19;
+  border-top: 0;
+  padding-top: 0;
 }
 
 .gem-c-related-navigation__nav-section {
@@ -30,6 +34,7 @@
 .gem-c-related-navigation__link {
   list-style-type: none;
   margin-top: $gutter-half;
+  @include govuk-font($size: 16, $weight: regular, $line-height: 1.5);
 
   @include media(tablet) {
     margin-top: 5px;
@@ -37,6 +42,8 @@
 }
 
 .gem-c-related-navigation__toggle {
+  @include govuk-link-common;
+  @include govuk-link-style-no-visited-state;
   display: none;
 
   .js-enabled & {
@@ -45,11 +52,12 @@
 }
 
 .gem-c-related-navigation__section-link {
-  @include bold-16;
+  @extend %govuk-link;
+  font-weight: bold;
 }
 
 .gem-c-related-navigation__section-link--other {
-  @include core-16;
+  font-weight: normal;
 }
 
 // reset the default browser styles
@@ -58,4 +66,10 @@
   margin: 0;
   list-style: none;
   margin-bottom: 1.25em;
+}
+
+.gem-c-related-navigation__toggle-more.js-hidden {
+  .js-enabled & {
+    display: none;
+  }
 }

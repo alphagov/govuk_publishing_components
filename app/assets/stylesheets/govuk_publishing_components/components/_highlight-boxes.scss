@@ -1,7 +1,9 @@
 .gem-c-highlight-boxes {
+  @include govuk-text-colour;
   display: flex;
   flex-wrap: wrap;
-  margin-top: $gutter-half;
+  margin: $gutter-half 0 0 0;
+  padding: 0;
 
   @include media(tablet) {
     margin-right: -25px;
@@ -47,15 +49,25 @@
   color: $white;
 }
 
-.gem-c-highlight-boxes--inverse .gem-c-highlight-boxes__title {
-  color: $white;
-}
-
 .gem-c-highlight-boxes__title {
+  @extend %govuk-link;
   @include bold-19;
   display: block;
   text-decoration: underline;
   margin-bottom: 5px;
+}
+
+.gem-c-highlight-boxes--inverse .gem-c-highlight-boxes__title {
+  &:link,
+  &:visited,
+  &:hover {
+    color: $white;
+  }
+
+  &:active,
+  &:focus {
+    color: $govuk-link-colour;
+  }
 }
 
 .gem-c-highlight-boxes__title--featured {
@@ -63,11 +75,11 @@
 }
 
 .gem-c-highlight-boxes__description {
-  margin-bottom: $gutter-one-third;
+  margin: 0 0 $gutter-one-third 0;
 }
 
 .gem-c-highlight-boxes__metadata {
+  margin: 0 $gutter-half 0 0;
   @include core-16;
   display: inline-block;
-  margin-right: $gutter-half;
 }
