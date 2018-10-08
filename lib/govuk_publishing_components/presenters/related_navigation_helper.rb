@@ -6,7 +6,6 @@ module GovukPublishingComponents
       MAX_SECTION_LENGTH = 5
       DEFINED_SECTIONS = %w(
         related_guides
-        topics
         collections
         topical_events
         world_locations
@@ -22,7 +21,6 @@ module GovukPublishingComponents
           "related_items" => related_items,
           "related_guides" => related_guides,
           "collections" => related_collections,
-          "topics" => related_topics,
           "topical_events" => related_topical_events,
           "world_locations" => related_world_locations,
           "statistical_data_sets" => related_statistical_data_sets,
@@ -107,17 +105,6 @@ module GovukPublishingComponents
       def related_statistical_data_sets
         statistical_data_sets = filter_link_type("related_statistical_data_sets", "statistical_data_set")
         build_links_for_sidebar(statistical_data_sets)
-      end
-
-      def related_topics
-        mainstream_browse_pages = filter_link_type("mainstream_browse_pages", "mainstream_browse_page")
-
-        topics_that_dont_duplicate_browse = filter_link_type("topics", "topic").select do |topic|
-          mainstream_browse_pages.none? { |browse_page| browse_page["title"] == topic["title"] }
-        end
-
-        links = build_links_for_sidebar(mainstream_browse_pages + topics_that_dont_duplicate_browse)
-        links.compact
       end
 
       def related_topical_events

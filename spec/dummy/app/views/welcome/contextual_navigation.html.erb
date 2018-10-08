@@ -31,6 +31,11 @@
     <% end %>
 
     <%= render 'govuk_publishing_components/components/govspeak', content: content %>
+
+    <% if @content_item %>
+      <%= render 'govuk_publishing_components/components/contextual_footer', content_item: @content_item
+          .parsed_content %>
+    <% end %>
   </div>
 
   <div class="column-one-third">

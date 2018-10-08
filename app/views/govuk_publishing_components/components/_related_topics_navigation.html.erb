@@ -1,0 +1,36 @@
+<% related_topics_navigation = GovukPublishingComponents::Presenters::RelatedTopicsNavigation::(local_assigns) %>
+
+<% if related_topics_navigation.any? %>
+  <div class="gem-c-related-topics-navigation">
+    <h2 id="related-topics-navigation"
+        class="gem-c-related-topics-navigation__heading"
+        data-track-count="FIXME">
+      <%= t('components.related_topics_navigation.topics') %>
+    </h2>
+
+    <nav role="navigation"
+         class="gem-c-related-topics-navigation__section"
+         aria-labelledby="related-topics-navigation">
+
+      <ul class="gem-c-related-topics-navigation__link-list" data-module="track-click">
+        <% related_topics_navigation.each.with_index(1) do |link, index| %>
+          <li class="gem-c-related-topics-navigation__link-list-item">
+            <%= link_to link[:text],
+                        link[:path],
+                        class: 'gem-c-related-topics-navigation__link',
+                        rel: link[:rel],
+                        data: {
+                            track_category: 'relatedLinkClicked',
+                            track_action: "#{index}",
+                            track_label: link[:path],
+                            track_options: {
+                                dimension28: related_topics_navigation.length.to_s,
+                                dimension29: link[:text]
+                            }
+                        } %>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+<% end %>

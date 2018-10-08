@@ -26,7 +26,6 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
         "related_items" => [],
         "related_guides" => [],
         "collections" => [],
-        "topics" => [],
         "topical_events" => [],
         "world_locations" => [],
         "statistical_data_sets" => [],
@@ -65,15 +64,6 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
               "base_path" => "/related-collection",
               "title" => "related collection",
               "document_type" => "document_collection"
-            }
-          ],
-          "topics" => [
-            {
-              "content_id" => "32c1b93d-2553-47c9-bc3c-fc5b513ecc32",
-              "locale" => "en",
-              "base_path" => "/related-topic",
-              "title" => "related topic",
-              "document_type" => "topic"
             }
           ],
           "topical_events" => [
@@ -116,7 +106,6 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
         "related_items" => [{ path: "/related-item", text: "related item" }],
         "related_guides" => [],
         "collections" => [{ path: "/related-collection", text: "related collection" }],
-        "topics" => [{ path: "/browse/something", text: "A mainstream browse page" }, { path: "/related-topic", text: "related topic" }],
         "related_contacts" => [],
         "related_external_links" => [],
         "topical_events" => [{ path: "/related-topical-event", text: "related topical event" }],
@@ -155,57 +144,6 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
       expect(payload["statistical_data_sets"]).to eql(
         [{ path: "/related-statistical-data-set", text: "related statistical data set" }]
       )
-    end
-
-    it "deduplicates topics for mainstream content" do
-      payload = payload_for("answer",
-        "details" => {
-          "external_related_links" => []
-        },
-        "links" => {
-          "mainstream_browse_pages" => [
-            {
-              "content_id" => "fecdc8c8-4006-4f8e-95d5-fe40ca49c7a8",
-              "locale" => "en",
-              "title" => "Self Assessment",
-              "base_path" => "/browse/tax/self-assessment",
-              "document_type" => "mainstream_browse_page",
-            }
-          ],
-          "ordered_related_items" => [
-            {
-              "content_id" => "f29ca4a8-8ed9-4b0f-bb6a-11e373095dee",
-              "locale" => "en",
-              "title" => "Self Assessment tax returns",
-              "base_path" => "/self-assessment-tax-returns",
-              "document_type" => "guide",
-            }
-          ],
-          "topics" => [
-            {
-              "content_id" => "7beb97b6-75c9-4aa7-86be-a733ab3a21aa",
-              "locale" => "en",
-              "base_path" => "/topic/personal-tax/self-assessment",
-              "title" => "Self Assessment",
-              "document_type" => "topic",
-            }
-          ],
-        })
-
-      expect(payload["topics"]).to eql(
-        [{ text: "Self Assessment", path: "/browse/tax/self-assessment" }]
-      )
-    end
-
-    it "handles ordered related items that aren't tagged to a mainstream browse page" do
-      example = GovukSchemas::Example.find("guide", example_name: "single-page-guide")
-      payload = described_class.new(example).related_navigation
-      expected = [
-        { text: "Travel abroad", path: "/browse/abroad/travel-abroad" },
-        { text: "Arriving in the UK", path: "/browse/visas-immigration/arriving-in-the-uk" },
-        { text: "Pets", path: "/topic/animal-welfare/pets" },
-      ]
-      expect(payload["topics"]).to eql(expected)
     end
 
     it "returns an Elsewhere on the web section for external related links" do

@@ -43,17 +43,6 @@ describe "Related navigation", type: :view do
     assert_select ".gem-c-related-navigation__section-link[href=\"/something-a-bit-like-this\"]", text: 'Some other guidance'
   end
 
-  it "renders topics section when passed topic items" do
-    content_item = {}
-    content_item["links"] = construct_links(
-      "topics", "/finding-a-job", "Finding a job", "topic"
-    )
-    render_component(content_item)
-
-    assert_select ".gem-c-related-navigation__sub-heading", text: 'Explore the topic'
-    assert_select ".gem-c-related-navigation__section-link[href=\"/finding-a-job\"]", text: 'Finding a job'
-  end
-
   it "renders statistical data set section when passed statistical data set items" do
     content_item = {}
     content_item["links"] = construct_links(
@@ -138,10 +127,10 @@ describe "Related navigation", type: :view do
   it "adds aria labelledby to navigation sections" do
     content_item = {}
     content_item["links"] = construct_links(
-      "topics",
-      "/apprenticeships",
-      "Apprenticeships",
-      "topic"
+      "related",
+      "/ye-olde-contact",
+      "A related contact",
+      "contact"
     )
     render_component(content_item)
 
@@ -186,14 +175,15 @@ describe "Related navigation", type: :view do
 
   it "link tracking is enabled" do
     content_item = {}
-    content_item["links"] = construct_links(
-      "topics", "/apprenticeships", "Apprenticeships", "topic"
+    ordered_related_items = construct_links(
+      "ordered_related_items", "/apprenticeships", "Apprenticeships"
     )
+    content_item["links"] = ordered_related_items
     render_component(content_item)
 
     assert_select ".gem-c-related-navigation__nav-section ul[data-module='track-click']"
     assert_select ".gem-c-related-navigation__section-link[data-track-category='relatedLinkClicked']"
-    assert_select ".gem-c-related-navigation__section-link[data-track-action='1.1 Explore the topic']"
+    assert_select ".gem-c-related-navigation__section-link[data-track-action='1.1 Related content']"
     assert_select ".gem-c-related-navigation__section-link[data-track-label='/apprenticeships']"
   end
 end

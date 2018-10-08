@@ -1,5 +1,5 @@
-name: Related Navigation
-description: Component showing related content, including topics, guidance and collections
+name: Related navigation
+description: Component showing related content, including guidance and collections
 accessibility_criteria: |
   - Should have a role of 'navigation' on any navigation elements inside the component
   - Should be marked up as navigation and not as tangential content
@@ -18,19 +18,6 @@ examples:
             base_path: /training-study-work-your-rights
           - title: Careers helpline for teenagers
             base_path: /careers-helpline-for-teenagers
-  with_curated_topics:
-    data:
-      links:
-        topics:
-          - title: Apprenticeships, 14 to 19 education and training for work
-            base_path: /browse/education/find-course
-            document_type: topic
-          - title: Finding a job
-            base_path: /browse/working/finding-job
-            document_type: topic
-          - title: Apprenticeships
-            base_path: /topic/further-education-skills/apprenticeships
-            document_type: topic
   with_collections:
     data:
       links:
@@ -124,16 +111,6 @@ examples:
             base_path: /training-study-work-your-rights
           - title: Careers helpline for teenagers
             base_path: /careers-helpline-for-teenagers
-        topics:
-          - title: Apprenticeships, 14 to 19 education and training for work
-            base_path: /browse/education/find-course
-            document_type: topic
-          - title: Finding a job
-            base_path: /browse/working/finding-job
-            document_type: topic
-          - title: Apprenticeships
-            base_path: /topic/further-education-skills/apprenticeships
-            document_type: topic
         document_collections:
           - title: Recruit an apprentice (formerly apprenticeship vacancies)
             base_path: /government/collections/apprenticeship-vacancies

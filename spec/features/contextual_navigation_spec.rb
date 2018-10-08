@@ -32,8 +32,8 @@ describe "Contextual navigation" do
   scenario "There's a mainstream browse page tagged" do
     given_theres_a_page_with_browse_page
     and_i_visit_that_page
-    then_i_see_the_browse_page_in_the_sidebar
-    and_the_parent_based_breadcrumbs
+    then_i_see_the_parent_based_breadcrumbs
+    and_the_related_topics_footer
   end
 
   scenario "The page has curated related items" do
@@ -53,15 +53,16 @@ describe "Contextual navigation" do
   scenario "There's a taxon tagged" do
     given_theres_a_guide_with_a_live_taxon_and_collection_tagged_to_it
     and_i_visit_that_page
-    then_i_see_the_taxonomy_sidebar_and_collection
+    then_i_see_the_related_links_sidebar
+    and_the_related_topics_footer
     and_the_taxonomy_breadcrumbs
   end
 
   scenario "There's legacy things tagged" do
     given_theres_a_page_with_just_legacy_taxonomy
     and_i_visit_that_page
-    then_i_see_the_related_navigation_sidebar
-    and_the_parent_based_breadcrumbs
+    then_i_see_the_parent_based_breadcrumbs
+    and_the_related_topics_footer
   end
 
   include GdsApi::TestHelpers::ContentStore
@@ -174,26 +175,28 @@ describe "Contextual navigation" do
 
   def then_i_see_the_related_links_sidebar
     expect(page).to have_selector(".gem-c-related-navigation")
-    expect(page).to have_content("A related link curated in Publisher")
   end
 
-  def and_the_parent_based_breadcrumbs
+  def then_i_see_the_related_topics_footer
+    expect(page).to have_selector(".gem-c-related-topics-navigation")
+  end
+
+  alias and_the_related_topics_footer then_i_see_the_related_topics_footer
+
+  def then_i_see_the_parent_based_breadcrumbs
     within '.gem-c-breadcrumbs' do
       expect(page).to have_link("Home")
       expect(page).to have_link("A parent")
     end
   end
 
+  alias and_the_parent_based_breadcrumbs then_i_see_the_parent_based_breadcrumbs
+
   def and_the_taxonomy_breadcrumbs
     within '.gem-c-breadcrumbs' do
       expect(page).to have_link("Home")
       expect(page).to have_link("A live taxon")
     end
-  end
-
-  def then_i_see_the_taxonomy_sidebar_and_collection
-    expect(page).to have_css(".gem-c-taxonomy-navigation__link", text: "A live taxon")
-    expect(page).to have_css(".gem-c-taxonomy-navigation__section-link", text: "A cool document collection")
   end
 
   def then_i_see_the_related_navigation_sidebar

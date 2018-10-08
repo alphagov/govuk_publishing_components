@@ -1,0 +1,80 @@
+name: Related topics navigation
+description: Component showing related topics from either the mainstream or sidewide taxonomies.
+accessibility_criteria: |
+  - Should have a role of 'navigation' on any navigation elements inside the component
+  - Should be marked up as navigation and not as tangential content
+shared_accessibility_criteria:
+- link
+accessibility_excluded_rules:
+- duplicate-id
+examples:
+  default:
+    data:
+      links:
+        mainstream_browse_pages:
+        - title: Driving licences
+          base_path: /browse/driving/driving-licences
+          document_type: mainstream_browse_page
+        - title: Driving tests and learning to drive or ride
+          base_path: /browse/driving/learning-to-drive
+          document_type: mainstream_browse_page
+  with_curated_topics:
+    data:
+      links:
+        topics:
+        - title: Cars
+          base_path: /topic/driving-tests-and-learning-to-drive/car
+          document_type: topic
+  with_mainstream_browse_pages:
+    data:
+      links:
+        mainstream_browse_pages:
+        - title: Driving licences
+          base_path: /browse/driving/driving-licences
+          document_type: mainstream_browse_page
+        - title: Driving tests and learning to drive or ride
+          base_path: /browse/driving/learning-to-drive
+          document_type: mainstream_browse_page
+  with_taxons:
+    data:
+      links:
+        taxons:
+        - title: Driving instruction and driving lessons
+          base_path: /transport/driving-instruction-and-driving-lessons
+          phase: live
+          document_type: taxon
+  with_curated_topics_and_mainstream_browse_pages:
+    description: Currated topics and mainstream browse pages are combined.
+    data:
+      links:
+        mainstream_browse_pages:
+        - title: Driving licences
+          base_path: /browse/driving/driving-licences
+          document_type: mainstream_browse_page
+        - title: Driving tests and learning to drive or ride
+          base_path: /browse/driving/learning-to-drive
+          document_type: mainstream_browse_page
+        topics:
+        - title: Cars
+          base_path: /topic/driving-tests-and-learning-to-drive/car
+          document_type: topic
+  with_curated_topics_and_mainstream_browse_pages_and_taxons:
+    description: Currated topics and mainstream browse pages take precedence over the sidewide topic taxonomy.
+    data:
+      links:
+        mainstream_browse_pages:
+        - title: Driving licences
+          base_path: /browse/driving/driving-licences
+          document_type: mainstream_browse_page
+        - title: Driving tests and learning to drive or ride
+          base_path: /browse/driving/learning-to-drive
+          document_type: mainstream_browse_page
+        taxons:
+        - title: Driving instruction and driving lessons
+          base_path: /transport/driving-instruction-and-driving-lessons
+          phase: live
+          document_type: taxon
+        topics:
+        - title: Cars
+          base_path: /topic/driving-tests-and-learning-to-drive/car
+          document_type: topic

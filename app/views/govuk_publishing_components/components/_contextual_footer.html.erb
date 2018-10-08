@@ -1,0 +1,8 @@
+<% navigation = GovukPublishingComponents::Presenters::ContextualNavigation.new(content_item, request) %>
+
+<div class="gem-c-contextual-footer">
+  <% if !navigation.content_tagged_to_current_step_by_step? %>
+    <!-- Rendering related topics navigation because no step by step list -->
+    <%= render 'govuk_publishing_components/components/related_topics_navigation', content_item %>
+  <% end %>
+</div>

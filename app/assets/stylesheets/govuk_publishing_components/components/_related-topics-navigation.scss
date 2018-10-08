@@ -1,0 +1,33 @@
+.gem-c-related-topics-navigation {
+  @include govuk-text-colour;
+  border-top: 2px solid $govuk-blue;
+}
+
+.gem-c-related-topics-navigation__heading {
+  @include bold-19;
+  margin-top: $gutter-half;
+  margin-bottom: $gutter-one-third;
+}
+
+.gem-c-related-topics-navigation__section {
+  margin-bottom: $gutter;
+}
+
+.gem-c-related-topics-navigation__link {
+  @extend %govuk-link;
+}
+
+.gem-c-related-topics-navigation__link-list {
+  padding: 0;
+  margin: 0 0 1.25em 0;
+  list-style: none;
+}
+
+.gem-c-related-topics-navigation__link-list-item {
+  @include govuk-font($size: 16, $weight: regular, $line-height: 1.5);
+  margin-top: $gutter-half;
+
+  @include media(tablet) {
+    margin-top: 5px;
+  }
+}
