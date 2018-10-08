@@ -1,10 +1,7 @@
 // This file contains the styles for the Component Guide.
 
 @import "govuk_publishing_components/components/helpers/govuk-frontend-settings";
-@import "govuk-frontend/settings/all";
-@import "govuk-frontend/tools/all";
-@import "govuk-frontend/helpers/all";
-@import "govuk-frontend/core/all";
+@import "govuk-frontend/all";
 
 .component-guide-wrapper {
   padding-bottom: $govuk-gutter * 1.5;
