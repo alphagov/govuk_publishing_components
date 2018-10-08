@@ -11,6 +11,7 @@ module GovukPublishingComponents
       #
       # Can be "production", "staging", "integration", or "development"
       def self.current_acceptance_environment
+        return "example" if ENV["HEROKU"]
         GOVUK_ENVIRONMENTS.fetch(ENV["ERRBIT_ENVIRONMENT_NAME"], "development")
       end
     end

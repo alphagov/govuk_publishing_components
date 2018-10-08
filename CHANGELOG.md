@@ -19,6 +19,8 @@ Static provided stylesheets.
   will be an undefined constant
 - Apps which the admin layout no longer need to include jQuery as this comes
   bundled in the admin scripts.
+* Use a purple environment colour on Heroku (#566). Make sure to add a `HEROKU` environment variable to Heroku instances.
+* Use a red favicon colour on production (#566)
 
 ## 11.2.0
 

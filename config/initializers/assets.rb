@@ -10,6 +10,7 @@ Rails.application.config.assets.precompile += %w(
   govuk_publishing_components/search-button.png
   govuk_publishing_components/favicon-development.png
   govuk_publishing_components/favicon-integration.png
+  govuk_publishing_components/favicon-example.png
   govuk_publishing_components/favicon-production.png
   govuk_publishing_components/favicon-staging.png
   govuk_publishing_components/favicon-test.png
