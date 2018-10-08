@@ -8,6 +8,12 @@
     "BUNDLE_WITHOUT": {
       "value": "test"
     },
+    "PLEK_SERVICE_CONTENT_STORE_URI": {
+      "value": "https://www.gov.uk/api"
+    },
+    "PLEK_SERVICE_RUMMAGER_URI": {
+      "value": "https://www.gov.uk/api"
+    },
     "GOVUK_WEBSITE_ROOT": {
       "value": "https://www.gov.uk"
     }
