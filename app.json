@@ -8,6 +8,9 @@
     "BUNDLE_WITHOUT": {
       "value": "test"
     },
+    "HEROKU": {
+      "value": "true"
+    },
     "PLEK_SERVICE_CONTENT_STORE_URI": {
       "value": "https://www.gov.uk/api"
     },

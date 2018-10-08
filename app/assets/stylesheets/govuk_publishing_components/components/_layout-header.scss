@@ -10,6 +10,10 @@
   border-bottom-color: govuk-colour("yellow");
 }
 
+.gem-c-layout-header--example .govuk-header__container {
+  border-bottom-color: govuk-colour("bright-purple");
+}
+
 .gem-c-layout-header--development .govuk-header__container,
 .gem-c-layout-header--test .govuk-header__container {
   border-bottom-color: govuk-colour("grey-1");
@@ -36,6 +40,10 @@
 
 .gem-c-environment-tag--production {
   background-color: govuk-colour("bright-red");
+}
+
+.gem-c-environment-tag--example {
+  background-color: govuk-colour("bright-purple");
 }
 
 .gem-c-environment-tag--development {
