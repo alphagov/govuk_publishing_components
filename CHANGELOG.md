@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix an issue that included govuk-frontend with the components (#569)
+
 ## 12.0.0
 
 * Append the product name to the browser title (PR #563)
