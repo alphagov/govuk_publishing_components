@@ -33,8 +33,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency "foreman", "~> 0.64"
   s.add_development_dependency "gds-api-adapters"
   s.add_development_dependency "govuk_schemas", "~> 3.2"
-  # Needed to load slimmer test helpers
-  # https://github.com/alphagov/slimmer/issues/201
   s.add_development_dependency "webmock", "~> 3.0.1"
   s.add_development_dependency "pry-byebug"
   s.add_development_dependency "yard"
