@@ -4,9 +4,6 @@ body: |
   This component uses [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend),
   part of the GOV.UK Design System.
 
-  It also includes the styles for the other components in this gem, so that you can use
-  these components as well.
-
   This component is experimental. Breaking changes are likely and we'll not release
   major version of the gem for these changes.
 
@@ -28,4 +25,17 @@ examples:
       product_name: Publishing
       browser_title: 'A page title'
       block: |
+
+        <!--
+          include your styles
+          <%= content_for :head do %>
+            <%= stylesheet_link_tag "application" %>
+          <% end %>
+        -->
+
         <!-- You probably want to use the header, main & footer components here -->
+
+        <!--
+          include your script e.g.
+          <%= javascript_link_tag "application" %>
+        -->

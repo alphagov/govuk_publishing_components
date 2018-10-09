@@ -1,9 +1,13 @@
 <% environment = %w[development production staging integration example].sample %>
 
+<% content_for :head do %>
+  <%= stylesheet_link_tag "application" %>
+<% end %>
 <%= render 'govuk_publishing_components/components/layout_for_admin', {
   environment: environment,
   browser_title: "Example admin page"
 } do %>
+
   <%= render "govuk_publishing_components/components/skip_link" %>
   <%= render "govuk_publishing_components/components/layout_header", {
     environment: environment,
@@ -12,6 +16,7 @@
       {text: "Log out", href: "#logout"}
     ]
   }%>
+
   <div class="govuk-width-container">
     <!-- breadcrumbs, backlink, phasebanner goes here-->
     <main class="govuk-main-wrapper " id="main-content" role="main">
@@ -19,4 +24,6 @@
     </main>
   </div>
   <%= render "govuk_publishing_components/components/layout_footer" %>
+
+  <%= javascript_include_tag "application" %>
 <% end %>

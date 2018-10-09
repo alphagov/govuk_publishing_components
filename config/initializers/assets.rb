@@ -6,7 +6,7 @@ Rails.application.config.assets.precompile += %w(
   govuk_publishing_components/component_guide.css
   component_guide/all_components.css
   component_guide/all_components_print.css
-  component_guide/no_slimmer.js
+  govuk_publishing_components/no_slimmer.js
   govuk_publishing_components/search-button.png
   govuk_publishing_components/favicon-development.png
   govuk_publishing_components/favicon-integration.png
