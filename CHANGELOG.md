@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add a bottom margin to the error-alert component (PR #578)
 * Update the way we include Javascript and Stylesheets in the admin layout
   component. Make sure to follow the [installation instructions](docs/install-and-use.md) (PR #571) if your using the admin layout component.
 
