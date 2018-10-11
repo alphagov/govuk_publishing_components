@@ -51,6 +51,8 @@ end
 
 To make use of the components, you'll have to include the JS and CSS in your application.
 
+### CSS
+
 ```css
 # application.scss
 @import "govuk_publishing_components/all_components";
@@ -62,6 +64,18 @@ And for print styles
 # print.scss
 @import "govuk_publishing_components/all_components_print";
 ```
+
+### Javascript
+
+If your application doesn't use Slimmer/Static (newer admin applications):
+
+```js
+# application.js
+//= require govuk_publishing_components/dependencies
+//= require govuk_publishing_components/all_components
+```
+
+If your application does use Slimmer/Static:
 
 ```js
 # application.js

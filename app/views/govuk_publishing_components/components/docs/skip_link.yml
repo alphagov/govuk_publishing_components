@@ -1,6 +1,5 @@
 name: Skip link (experimental)
 description: Skip link component helps keyboard-only users skip to the main content on a page
-part_of_admin_layout: true
 govuk_frontend_components:
   - skip-link
 accessibility_criteria: |

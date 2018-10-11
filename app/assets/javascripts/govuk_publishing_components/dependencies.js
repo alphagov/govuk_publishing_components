@@ -1,5 +1,5 @@
-// This adds in javascript that initialiases components and dependencies
-// that would normally be provided by slimmer
+// This adds in javascript that initialises components and dependencies
+// that are provided by Slimmer in public frontend applications.
 //= require jquery/dist/jquery
 //= require govuk/modules
 

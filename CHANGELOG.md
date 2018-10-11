@@ -7,9 +7,14 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update the way we include Javascript and Stylesheets in the admin layout
+  component. Make sure to follow the [installation instructions](docs/install-and-use.md) (PR #571) if your using the admin layout component.
+
 ## 12.0.1
 
-* Add a bottom margin to the success-alert component - should of been added by default (PR #573)
+* Add a bottom margin to the success-alert component (PR #573)
 
 ## 12.0.0
 
