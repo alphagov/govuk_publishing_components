@@ -1,6 +1,5 @@
 name: "Tabs (experimental)"
 description: "The tabs component lets users toggle between related sections of content."
-part_of_admin_layout: true
 body: |
   This component is based on the [design system tabs component](https://design-system.service.gov.uk/components/tabs/)
   and is currently experimental. If using this component, please feed back any research findings to the

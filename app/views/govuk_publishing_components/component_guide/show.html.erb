@@ -1,12 +1,6 @@
 <% content_for :title, "#{@component_doc.name} component" %>
 <%= render 'govuk_publishing_components/components/title', title: @component_doc.name, context: "Component" %>
 
-<% if @component_doc.part_of_admin_layout? %>
-  <%= render "govuk_publishing_components/components/notice", title: "Admin layout only" do %>
-    <p>This component only works inside the <%= link_to "layout for admin component", "/component-guide/layout_for_admin" %>.</p>
-  <% end %>
-<% end %>
-
 <div class="component-show">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
