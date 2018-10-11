@@ -1,5 +1,6 @@
 @import "helpers/govuk-frontend-settings";
 @import "govuk-frontend/components/header/header";
+@import "govuk-frontend/components/tag/tag";
 
 .gem-c-layout-header--production .govuk-header__container {
   border-bottom-color: govuk-colour("bright-red");
