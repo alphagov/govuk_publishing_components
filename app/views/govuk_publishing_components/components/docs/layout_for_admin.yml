@@ -1,12 +1,6 @@
 name: Admin layout (experimental)
 description: A layout to be used by admin applications
 body: |
-  This component uses [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend),
-  part of the GOV.UK Design System.
-
-  It also includes the styles for the other components in this gem, so that you can use
-  these components as well.
-
   This component is experimental. Breaking changes are likely and we'll not release
   major version of the gem for these changes.
 
