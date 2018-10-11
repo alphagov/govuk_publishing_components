@@ -6,4 +6,5 @@ accessibility_criteria: |
 display_html: true
 examples:
   default:
-    data: {}
+    data:
+      user_organisation: "HMRC"
