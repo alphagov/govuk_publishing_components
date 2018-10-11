@@ -3,10 +3,21 @@
 @import "govuk-frontend/objects/width-container";
 
 .gem-c-layout-for-admin {
+  // .govuk-main-wrapper
   @import "govuk-frontend/objects/main-wrapper";
+
+  // .govuk-link
   @import "govuk-frontend/core/links";
+
+  // .govuk-heading
   @import "govuk-frontend/core/typography";
+
+  // .govuk-grid-column-two-thirds
   @import "govuk-frontend/helpers/grid";
+
+  // .govuk-visually-hidden
   @import "govuk-frontend/utilities/visually-hidden";
+
+  // .govuk-!-margin-bottom-3, etc
   @import "govuk-frontend/overrides/spacing";
 }
