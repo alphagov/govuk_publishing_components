@@ -1,3 +1,4 @@
-//= require ./no_slimmer
+//= require govuk_publishing_components/dependencies
+//= require govuk_publishing_components/all_components
 //= require_tree ./vendor
 //= require_tree .

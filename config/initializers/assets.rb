@@ -1,6 +1,5 @@
 Rails.application.config.assets.precompile += %w(
   govuk_publishing_components/vendor/modernizr.js
-  govuk_publishing_components/admin_scripts.js
   govuk_publishing_components/component_guide.css
   component_guide/all_components.css
   component_guide/all_components_print.css
