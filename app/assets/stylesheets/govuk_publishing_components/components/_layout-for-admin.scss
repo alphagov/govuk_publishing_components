@@ -1,1 +1,10 @@
-// This component relies on styles from GOV.UK Frontend
+@import "helpers/govuk-frontend-settings";
+@import "govuk-frontend/core/template";
+@import "govuk-frontend/objects/width-container";
+
+.gem-c-layout-for-admin {
+  @import "govuk-frontend/objects/main-wrapper";
+  @import "govuk-frontend/core/links";
+  @import "govuk-frontend/core/typography";
+  @import "govuk-frontend/helpers/grid";
+}
