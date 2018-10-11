@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add a bottom margin to the success-alert component (should of been added by default)
+
 ## 12.0.0
 
 * Append the product name to the browser title (PR #563)
