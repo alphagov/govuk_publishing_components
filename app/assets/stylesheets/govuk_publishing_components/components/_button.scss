@@ -45,7 +45,8 @@ $gem-destructive-button-border-colour: govuk-colour("black");
 
   &:link,
   &:visited,
-  &:active {
+  &:active,
+  &:focus {
     color: $gem-secondary-button-colour;
     background-color: $gem-secondary-button-background-colour;
     text-decoration: none;
@@ -76,7 +77,8 @@ $gem-destructive-button-border-colour: govuk-colour("black");
 
   &:link,
   &:visited,
-  &:active {
+  &:active,
+  &:focus {
     color: $gem-quiet-button-colour;
     background-color: $gem-secondary-button-background-colour;
     text-decoration: none;
@@ -104,7 +106,8 @@ $gem-destructive-button-border-colour: govuk-colour("black");
 
   &:link,
   &:visited,
-  &:active {
+  &:active,
+  &:focus {
     background-color: $gem-destructive-button-background-colour;
   }
 
