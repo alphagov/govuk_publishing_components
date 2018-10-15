@@ -7,12 +7,13 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 12.1.0
 
 * Add option to send the `user_organisation` in admin analytics component (PR #577)
 * Add a bottom margin to the error-alert component (PR #578)
 * Update the way we include Javascript and Stylesheets in the admin layout
   component. Make sure to follow the [installation instructions](docs/install-and-use.md) (PR #571) if your using the admin layout component.
+* Fix background colour for focused buttons (PR #579)
 
 ## 12.0.1
 
