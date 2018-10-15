@@ -13,6 +13,8 @@ body: |
   - [Typography classes](https://design-system.service.gov.uk/styles/typography/) like `.govuk-link`, `.govuk-heading`
   - [Layout grid classes](https://design-system.service.gov.uk/styles/layout/) like `.govuk-grid-column-two-thirds`
   - [Spacing classes](https://design-system.service.gov.uk/styles/spacing/) like `.govuk-!-margin-bottom-3`
+  - [List classes](https://design-system.service.gov.uk/styles/typography/#lists) like `.govuk-list` and `.govuk-list--bullet`
+  - [Section break classes](https://design-system.service.gov.uk/styles/typography/#section-break) like `.govuk-section-break`
   - The `.govuk-visually-hidden` class to hide things
 
   Be *very* careful when using one of these classes, prefer to use a component
