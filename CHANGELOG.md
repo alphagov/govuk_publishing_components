@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix regression for buttons in govspeak section (PR #582)
+
 ## 12.1.0
 
 * Add option to send the `user_organisation` in admin analytics component (PR #577)
