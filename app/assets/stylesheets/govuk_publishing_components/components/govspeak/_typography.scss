@@ -76,7 +76,8 @@
 
   // Links
   a {
-    @extend %govuk-link;
+    @include govuk-link-style-default;
+    @include govuk-focusable-fill;
   }
 
   // Lists
