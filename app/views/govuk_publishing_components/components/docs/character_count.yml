@@ -1,0 +1,53 @@
+name: Form character count
+description: Help users enter text when there is a limit on the number of characters they can type
+govuk_frontend_components:
+  - character-count
+accessibility_criteria: |
+  The component must:
+
+  - accept focus
+  - be focusable with a keyboard
+  - be usable with a keyboard
+  - be usable with touch
+  - indicate when they have focus
+  - be recognisable as form textarea elements
+  - have correctly associated labels
+  - inform the user about the character limit
+  - inform the user as the number of left characters changes
+
+  Labels use the [label component](/component-guide/label).
+examples:
+  default:
+    data:
+      textarea:
+        label:
+          text: "Can you provide more detail?"
+        name: "more-detail"
+      maxlength: 10
+  with_hint:
+    data:
+      textarea:
+        label:
+          text: "Can you provide more detail?"
+        name: "with-hint"
+        hint: "Please include as much information as possible."
+      maxlength: 10
+  with_error:
+    data:
+      textarea:
+        label:
+          text: "Can you provide more detail?"
+        name: "more-detail-error"
+        error_message: "Detail must be 10 characters or less"
+        value: |
+          221B Baker Street
+          London
+          NW1 6XE
+      maxlength: 10
+  with_word_count:
+    data:
+      textarea:
+        label:
+          text: "Can you provide more detail?"
+        name: "more-detail-value"
+      maxwords: 10

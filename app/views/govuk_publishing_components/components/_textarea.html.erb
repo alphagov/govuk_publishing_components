@@ -8,10 +8,12 @@
   label ||= nil
   hint ||= nil
   error_message ||= nil
+  character_count ||= nil
   hint_id = "hint-#{SecureRandom.hex(4)}" if hint
   error_message_id = "error-message-#{SecureRandom.hex(4)}" if error_message
 
   css_classes = %w(gem-c-textarea govuk-textarea)
+  css_classes << "js-character-count" if character_count
   css_classes << "govuk-textarea--error" if error_message
   form_group_css_classes = %w(govuk-form-group)
   form_group_css_classes << "govuk-form-group--error" if error_message

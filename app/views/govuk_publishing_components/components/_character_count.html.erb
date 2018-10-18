@@ -1,0 +1,23 @@
+<%
+  id ||= "character-count-#{SecureRandom.hex(4)}"
+  maxlength ||= nil
+  maxwords ||= nil
+  threshold ||= nil
+  textarea ||= {}
+%>
+
+<%= content_tag :div,
+  class: "gem-c-character-count govuk-character-count",
+  data: {
+    module: "character-count",
+    maxlength: maxlength,
+    maxwords: maxwords,
+    threshold: threshold
+  } do %>
+
+  <%= render "govuk_publishing_components/components/textarea", { id: id, character_count: true }.merge(textarea.symbolize_keys) %>
+
+  <span id="<%= id %>-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
+    You can enter up to <%= maxlength || maxwords %> <%= maxwords ? 'words' : 'characters' %>
+  </span>
+<% end %>
