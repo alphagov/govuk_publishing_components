@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 12.2.0
 
 * Fix regression for buttons in govspeak section (PR #582)
 * Add character count component based on GOV.UK Frontend (PR #583)
