@@ -19,31 +19,35 @@ accessibility_criteria: |
 examples:
   default:
     data:
-      label:
-        text: "Can you provide more detail?"
-      name: "more-detail"
+      textarea:
+        label:
+          text: "Can you provide more detail?"
+        name: "more-detail"
       maxlength: 10
   with_hint:
     data:
-      label:
-        text: "Can you provide more detail?"
-      name: "with-hint"
-      hint: "Please include as much information as possible."
+      textarea:
+        label:
+          text: "Can you provide more detail?"
+        name: "with-hint"
+        hint: "Please include as much information as possible."
       maxlength: 10
   with_error:
     data:
-      label:
-        text: "Can you provide more detail?"
-      name: "more-detail-error"
-      error_message: "Detail must be 10 characters or less"
-      value: |
-        221B Baker Street
-        London
-        NW1 6XE
+      textarea:
+        label:
+          text: "Can you provide more detail?"
+        name: "more-detail-error"
+        error_message: "Detail must be 10 characters or less"
+        value: |
+          221B Baker Street
+          London
+          NW1 6XE
       maxlength: 10
   with_word_count:
     data:
-      label:
-        text: "Can you provide more detail?"
-      name: "more-detail-value"
+      textarea:
+        label:
+          text: "Can you provide more detail?"
+        name: "more-detail-value"
       maxwords: 10
