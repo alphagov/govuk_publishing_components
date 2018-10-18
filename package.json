@@ -1,6 +1,6 @@
 {
   "dependencies": {
     "jquery": "1.12.4",
-    "govuk-frontend": "^2.1.0"
+    "govuk-frontend": "^2.2.0"
   }
 }
