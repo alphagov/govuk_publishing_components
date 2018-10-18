@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Fix regression for buttons in govspeak section (PR #582)
+* Add character count component based on GOV.UK Frontend (PR #583)
 
 ## 12.1.0
 
