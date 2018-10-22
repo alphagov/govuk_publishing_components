@@ -56,17 +56,4 @@ describe('An error summary component', function () {
 
     expect(isFocused(element)).toBe(true)
   })
-
-  it('focuses inputs with no location change when clicking error links', function () {
-    var originalHref = window.location.href
-    var inputElement = $('<input type="text" id="example-error-1" name="example-error-1" />')
-    $(document.body).append(inputElement)
-
-    module.start(element)
-
-    element.find('.js-error-summary__link').trigger('click')
-
-    expect(isFocused(inputElement)).toBe(true)
-    expect(originalHref).toBe(window.location.href)
-  })
 })
