@@ -23,4 +23,8 @@ class WelcomeController < ApplicationController
   def tabsexample
     render 'tabs_example', layout: 'dummy_admin_layout'
   end
+
+  def errorsummary
+    render 'error_summary', layout: 'dummy_admin_layout'
+  end
 end
