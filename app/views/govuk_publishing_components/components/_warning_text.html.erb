@@ -1,0 +1,16 @@
+<%
+  id ||= "warning-text-#{SecureRandom.hex(4)}"
+  classes ||= ''
+  css_classes = %w(gem-c-warning-text govuk-warning-text)
+  css_classes << classes if classes
+  text_assistive ||= 'Warning'
+  text_icon ||= '!'
+%>
+
+<%= tag.div id: id, class: css_classes do %>
+  <%= tag.span text_icon, class: "govuk-warning-text__icon", "aria-hidden": "true" %>
+  <%= tag.strong class: "govuk-warning-text__text" do %>
+    <%= tag.span text_assistive, class: "govuk-warning-text__assistive" %>
+    <%= text %>
+  <% end %>
+<% end %>
