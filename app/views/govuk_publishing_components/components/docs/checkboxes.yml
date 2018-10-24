@@ -1,0 +1,82 @@
+name: Form checkboxes
+description: Help users enter text when there is a limit on the number of characters they can type
+govuk_frontend_components:
+  - checkboxes
+accessibility_criteria: |
+  The component must:
+
+  - accept focus
+  - be focusable with a keyboard
+  - be usable with a keyboard
+  - be usable with touch
+  - indicate when they have focus
+  - be recognisable as form textarea elements
+  - have correctly associated labels
+  - inform the user about the character limit
+  - inform the user as the number of left characters changes
+
+  Labels use the [label component](/component-guide/label).
+examples:
+  default:
+    data:
+      name: "favourite_colour"
+      heading: "What is your favourite colour?"
+      items:
+        - label: "Red"
+          value: "red"
+        - label: "Green"
+          value: "green"
+        - label: "Blue"
+          value: "blue"
+  custom_hint_text:
+    data:
+      name: "favourite_skittle"
+      heading: "What is your favourite skittle?"
+      hint_text: "Taste the rainbow"
+      items:
+        - label: "Red"
+          value: "red"
+        - label: "Green"
+          value: "green"
+        - label: "Blue"
+          value: "blue"
+  checkbox_items_with_hint:
+    data:
+      name: "nationality"
+      heading: "What is your nationality?"
+      hint_text: "If you have dual nationality, select all options that are relevant to you."
+      items:
+        - label: "British"
+          value: "british"
+          hint: "including English, Scottish, Welsh and Northern Irish"
+        - label: "Irish"
+          value: "irish"
+        - label: "Other"
+          value: "other"
+  checkbox_items_with_error:
+    data:
+      name: "nationality"
+      heading: "What is your nationality?"
+      error: "Select if you are British, Irish or a citizen of a different country"
+      hint_text: "If you have dual nationality, select all options that are relevant to you."
+      items:
+        - label: "British"
+          value: "british"
+          hint: "including English, Scottish, Welsh and Northern Irish"
+        - label: "Irish"
+          value: "irish"
+        - label: "Other"
+          value: "other"
+  checkbox_items_with_conditional_reveal:
+    data:
+      name: "nationality"
+      heading: "What is your nationality?"
+      hint_text: "If you have dual nationality, select all options that are relevant to you."
+      items:
+        - label: "British"
+          value: "british"
+          conditional: "including English, Scottish, Welsh and Northern Irish"
+        - label: "Irish"
+          value: "irish"
+        - label: "Other"
+          value: "other"
