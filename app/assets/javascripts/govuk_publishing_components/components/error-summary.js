@@ -1,12 +1,2 @@
-window.GOVUK = window.GOVUK || {}
-window.GOVUK.Modules = window.GOVUK.Modules || {};
-
-(function (global, GOVUK) {
-  'use strict'
-
-  GOVUK.Modules.ErrorSummary = function () {
-    this.start = function (element) {
-      element.focus()
-    }
-  }
-})(window, window.GOVUK)
+// This component relies on JavaScript from GOV.UK Frontend
+//= require govuk-frontend/components/error-summary/error-summary.js
