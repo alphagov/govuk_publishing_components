@@ -22,4 +22,23 @@ describe "Machine readable metadata", type: :view do
 
     assert JSON.parse(json_linked_data)
   end
+
+  it "uses images if available" do
+    example = GovukSchemas::RandomExample.for_schema(frontend_schema: "news_article") do |item|
+      item["details"].merge!(
+        "image" => {
+          "url" => "https://example.org/low-res.jpg",
+        }
+      )
+      item
+    end
+
+    render_component(content_item: example, schema: :article)
+
+    assert_meta_tag "twitter:image", "https://example.org/low-res.jpg"
+  end
+
+  def assert_meta_tag(name, content)
+    assert_select "meta[name='#{name}'][content='#{content}']"
+  end
 end
