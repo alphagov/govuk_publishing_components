@@ -122,6 +122,16 @@ examples:
             url: "https://www.gov.uk/money-laundering-regulations-introduction"
           - title: "Money Laundering Regulations: report suspicious activities"
             url: "https://www.gov.uk/money-laundering-regulations-report-suspicious-activities"
+  with_related_statistical_data_sets:
+    data:
+      links:
+        related_statistical_data_sets:
+        - title: International road fuel prices
+          base_path: /government/statistical-data-sets/comparisons-of-industrial-and-domestic-energy-prices-monthly-figures
+          document_type: statistical_data_set
+        - title: Weekly road fuel prices
+          base_path: /government/statistical-data-sets/oil-and-petroleum-products-weekly-statistics
+          document_type: statistical_data_set
   with_all_related-content:
     data:
       links:
@@ -146,6 +156,13 @@ examples:
           - title: UK-China High-Level People to People Dialogue 2017
             base_path: /government/topical-events/uk-china-high-level-people-to-people-dialogue-2017
             document_type: topical_event
+        related_statistical_data_sets:
+          - title: International road fuel prices
+            base_path: /government/statistical-data-sets/comparisons-of-industrial-and-domestic-energy-prices-monthly-figures
+            document_type: statistical_data_set
+          - title: Weekly road fuel prices
+            base_path: /government/statistical-data-sets/oil-and-petroleum-products-weekly-statistics
+            document_type: statistical_data_set
         document_collections:
           - title: Recruit an apprentice (formerly apprenticeship vacancies)
             base_path: /government/collections/apprenticeship-vacancies
