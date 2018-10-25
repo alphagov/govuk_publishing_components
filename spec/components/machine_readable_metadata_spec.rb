@@ -25,17 +25,29 @@ describe "Machine readable metadata", type: :view do
 
   it "uses images if available" do
     example = GovukSchemas::RandomExample.for_schema(frontend_schema: "news_article") do |item|
-      item["details"].merge!(
-        "image" => {
+      item["details"]["image"] = {
           "url" => "https://example.org/low-res.jpg",
         }
-      )
       item
     end
 
     render_component(content_item: example, schema: :article)
 
     assert_meta_tag "twitter:image", "https://example.org/low-res.jpg"
+  end
+
+  it "uses high resolution images if available" do
+    example = GovukSchemas::RandomExample.for_schema(frontend_schema: "news_article") do |item|
+      item["details"]["image"] = {
+          "url" => "https://example.org/low-res.jpg",
+          "high_resolution_url" => "https://example.org/high-res.jpg",
+        }
+      item
+    end
+
+    render_component(content_item: example, schema: :article)
+
+    assert_meta_tag "twitter:image", "https://example.org/high-res.jpg"
   end
 
   def assert_meta_tag(name, content)

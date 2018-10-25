@@ -32,7 +32,7 @@ module GovukPublishingComponents
       end
 
       def image_url
-        content_item.dig("details", "image", "url")
+        content_item.dig("details", "image", "high_resolution_url") || content_item.dig("details", "image", "url")
       end
 
       def image_alt_text
