@@ -114,6 +114,14 @@ examples:
             base_path: /world/united-kingdom/news
           - title: USA
             base_path: /world/usa/news
+  with_quick_links:
+    data:
+      details:
+        quick_links:
+          - title: "Money Laundering Regulations: introduction"
+            url: "https://www.gov.uk/money-laundering-regulations-introduction"
+          - title: "Money Laundering Regulations: report suspicious activities"
+            url: "https://www.gov.uk/money-laundering-regulations-report-suspicious-activities"
   with_all_related-content:
     data:
       links:
