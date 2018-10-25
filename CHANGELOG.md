@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add additional examples to related navigation documentation
 * Remove init from radios script as we auto-initialise all components from GOV.UK Frontend
 * Replace error summary script with the GOV.UK Frontend one and add example page to test error summary with inputs (PR #585)
 
