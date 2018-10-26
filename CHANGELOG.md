@@ -14,6 +14,7 @@
 * Replace error summary script with the GOV.UK Frontend one and add example page to test error summary with inputs (PR #585)
 * Expose a high resolution image in meta tags (PR #592)
 * Adds warning text from design systems (PR #588)
+* Add checkboxes from design systems (PR #590)
 
 ## 12.2.0
 
