@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Updates current breadcrumbs components to be based on GOV.UK Frontend (PR #593)
+
 ## 12.3.0
 
 * Expose a high resolution image in meta tags (PR #592)
