@@ -1,64 +1,19 @@
-@import "design-patterns/breadcrumbs";
-@import "mixins/back-arrow";
-@import "mixins/media-down";
+@import "helpers/govuk-frontend-settings";
+@import "govuk-frontend/components/breadcrumbs/breadcrumbs";
 
-.gem-c-breadcrumbs {
-  // reset the default browser styles
-  ol {
-    padding: 0;
-    margin: 0;
-  }
-
-  @include breadcrumbs;
-
-  .gem-c-breadcrumbs__item {
-    @include govuk-text-colour;
-  }
-
-  .gem-c-breadcrumbs__link {
-    @include govuk-link-common;
-    @include govuk-link-style-text;
-  }
-
-  .gem-c-breadcrumbs--current {
-    &:link,
-    &:visited,
-    &:hover,
-    &:active {
-      color: $secondary-text-colour;
-      text-decoration: none;
-    }
-
-    &:focus {
-      text-decoration: none;
-    }
-  }
-
-  @include media-down(mobile) {
-    &.gem-c-breadcrumbs--collapse-on-mobile .gem-c-breadcrumbs__item {
-      display: none;
-
-      &.gem-c-breadcrumbs--parent {
-        background-image: none;
-        display: block;
-        margin-left: 0;
-        padding-left: 14px;
-        position: relative;
-
-        &:before {
-          @include back-arrow;
-        }
-      }
-    }
-  }
-}
-
-.gem-c-breadcrumbs--current.gem-c-breadcrumbs--inverse,
-.gem-c-breadcrumbs .gem-c-breadcrumbs--inverse {
+.gem-c-breadcrumbs--inverse .govuk-breadcrumbs__list-item .govuk-breadcrumbs__link {
   &:link,
   &:visited,
   &:hover,
   &:active {
-    color: $white;
+    color: govuk-colour('white');
   }
+}
+
+.gem-c-breadcrumbs--inverse .govuk-breadcrumbs__list-item {
+  color: govuk-colour('white');
+}
+
+.gem-c-breadcrumbs--inverse .govuk-breadcrumbs__list-item:before {
+  border-color: govuk-colour('white');
 }
