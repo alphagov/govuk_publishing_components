@@ -17,7 +17,7 @@ describe "Breadcrumbs", type: :view do
   it "renders a single breadcrumb" do
     render_component(breadcrumbs: [{ title: 'Section', url: '/section' }])
 
-    assert_link_with_text_in('.gem-c-breadcrumbs__item:first-child', '/section', 'Section')
+    assert_link_with_text_in('.govuk-breadcrumbs__list-item:first-child', '/section', 'Section')
   end
 
   it "renders schema data" do
@@ -26,9 +26,7 @@ describe "Breadcrumbs", type: :view do
       { title: 'Section 2', url: '/section-2' },
       { title: 'Section 3', is_current_page: true },
     ]
-
     structured_data = GovukPublishingComponents::Presenters::Breadcrumbs.new(breadcrumbs, "/section-3").structured_data
-
     expect(structured_data["@type"]).to eq("BreadcrumbList")
     expect(structured_data["itemListElement"].first["@type"]).to eq("ListItem")
     expect(structured_data["itemListElement"].first["position"]).to eq(1)
@@ -49,10 +47,10 @@ describe "Breadcrumbs", type: :view do
     }
 
     assert_select '.gem-c-breadcrumbs[data-module="track-click"]', 1
-    assert_select '.gem-c-breadcrumbs__item:first-child a[data-track-action="1"]', 1
-    assert_select '.gem-c-breadcrumbs__item:first-child a[data-track-label="/section"]', 1
-    assert_select '.gem-c-breadcrumbs__item:first-child a[data-track-category="breadcrumbClicked"]', 1
-    assert_select ".gem-c-breadcrumbs__item:first-child a[data-track-options='#{expected_tracking_options.to_json}']", 1
+    assert_select '.govuk-breadcrumbs__list-item:first-child a[data-track-action="1"]', 1
+    assert_select '.govuk-breadcrumbs__list-item:first-child a[data-track-label="/section"]', 1
+    assert_select '.govuk-breadcrumbs__list-item:first-child a[data-track-category="breadcrumbClicked"]', 1
+    assert_select ".govuk-breadcrumbs__list-item:first-child a[data-track-options='#{expected_tracking_options.to_json}']", 1
   end
 
   it "tracks the total breadcrumb count on each breadcrumb" do
@@ -69,9 +67,9 @@ describe "Breadcrumbs", type: :view do
       { dimension28: "3", dimension29: "Section 3" },
     ]
 
-    assert_select ".gem-c-breadcrumbs__item:nth-child(1) a[data-track-options='#{expected_tracking_options[0].to_json}']", 1
-    assert_select ".gem-c-breadcrumbs__item:nth-child(2) a[data-track-options='#{expected_tracking_options[1].to_json}']", 1
-    assert_select ".gem-c-breadcrumbs__item:nth-child(3) a[data-track-options='#{expected_tracking_options[2].to_json}']", 1
+    assert_select ".govuk-breadcrumbs__list-item:nth-child(1) a[data-track-options='#{expected_tracking_options[0].to_json}']", 1
+    assert_select ".govuk-breadcrumbs__list-item:nth-child(2) a[data-track-options='#{expected_tracking_options[1].to_json}']", 1
+    assert_select ".govuk-breadcrumbs__list-item:nth-child(3) a[data-track-options='#{expected_tracking_options[2].to_json}']", 1
   end
 
   it "renders a list of breadcrumbs" do
@@ -81,9 +79,9 @@ describe "Breadcrumbs", type: :view do
         { title: 'Sub-section', url: '/sub-section' },
       ])
 
-    assert_link_with_text_in('.gem-c-breadcrumbs__item:first-child', '/', 'Home')
-    assert_link_with_text_in('.gem-c-breadcrumbs__item:first-child + li', '/section', 'Section')
-    assert_link_with_text_in('.gem-c-breadcrumbs__item:last-child', '/sub-section', 'Sub-section')
+    assert_link_with_text_in('.govuk-breadcrumbs__list-item:first-child', '/', 'Home')
+    assert_link_with_text_in('.govuk-breadcrumbs__list-item:first-child + li', '/section', 'Section')
+    assert_link_with_text_in('.govuk-breadcrumbs__list-item:last-child', '/sub-section', 'Sub-section')
   end
 
   it "renders inverted breadcrumbs when passed a flag" do
@@ -102,6 +100,6 @@ describe "Breadcrumbs", type: :view do
         { title: 'Current Page' },
       ]
     )
-    assert_select('.gem-c-breadcrumbs__item:last-child', 'Current Page')
+    assert_select('.govuk-breadcrumbs__list-item:last-child', 'Current Page')
   end
 end
