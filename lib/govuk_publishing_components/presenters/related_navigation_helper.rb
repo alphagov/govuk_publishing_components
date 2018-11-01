@@ -77,7 +77,21 @@ module GovukPublishingComponents
         content_item_links_for('related_statistical_data_sets', only: 'statistical_data_set')
       end
 
+      def related_taxons
+        content_item_links_for('taxons', only: 'taxon')
+      end
+
       def related_topics
+        if related_legacy_topics.any?
+          related_legacy_topics
+        elsif related_taxons.any?
+          related_taxons
+        else
+          []
+        end
+      end
+
+      def related_legacy_topics
         mainstream_browse_page_links = content_item_links_for('mainstream_browse_pages', only: 'mainstream_browse_page')
         topic_links = content_item_links_for('topics', only: 'topic')
 
@@ -127,6 +141,10 @@ module GovukPublishingComponents
 
       def content_item_links_for(key, only: nil)
         links = Array(@content_item.dig('links', key))
+
+        if key == 'taxons'
+          links = links.find_all { |link| link['phase'] == 'live' }
+        end
 
         if only.present?
           links = links.find_all { |link| link['document_type'] == only }

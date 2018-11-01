@@ -16,10 +16,6 @@ module GovukPublishingComponents
         content_item['document_type'] === "simple_smart_answer"
       end
 
-      def taxonomy_sidebar
-        @taxonomy_sidebar ||= TaxonomyNavigation.new(content_item).sidebar
-      end
-
       def taxon_breadcrumbs
         @taxon_breadcrumbs ||= ContentBreadcrumbsBasedOnTaxons.new(content_item).breadcrumbs
       end

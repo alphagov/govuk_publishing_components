@@ -31,6 +31,59 @@ examples:
           - title: Apprenticeships
             base_path: /topic/further-education-skills/apprenticeships
             document_type: topic
+  with_mainstream_browse_pages:
+    data:
+      links:
+        mainstream_browse_pages:
+        - title: Driving licences
+          base_path: /browse/driving/driving-licences
+          document_type: mainstream_browse_page
+        - title: Driving tests and learning to drive or ride
+          base_path: /browse/driving/learning-to-drive
+          document_type: mainstream_browse_page
+  with_taxons:
+    data:
+      links:
+        taxons:
+        - title: Driving instruction and driving lessons
+          base_path: /transport/driving-instruction-and-driving-lessons
+          phase: live
+          document_type: taxon
+  with_curated_topics_and_mainstream_browse_pages:
+    description: Currated topics and mainstream browse pages are combined.
+    data:
+      links:
+        mainstream_browse_pages:
+        - title: Driving licences
+          base_path: /browse/driving/driving-licences
+          document_type: mainstream_browse_page
+        - title: Driving tests and learning to drive or ride
+          base_path: /browse/driving/learning-to-drive
+          document_type: mainstream_browse_page
+        topics:
+        - title: Cars
+          base_path: /topic/driving-tests-and-learning-to-drive/car
+          document_type: topic
+  with_curated_topics_and_mainstream_browse_pages_and_taxons:
+    description: Currated topics and mainstream browse pages take precedence over the sidewide topic taxonomy.
+    data:
+      links:
+        mainstream_browse_pages:
+        - title: Driving licences
+          base_path: /browse/driving/driving-licences
+          document_type: mainstream_browse_page
+        - title: Driving tests and learning to drive or ride
+          base_path: /browse/driving/learning-to-drive
+          document_type: mainstream_browse_page
+        taxons:
+        - title: Driving instruction and driving lessons
+          base_path: /transport/driving-instruction-and-driving-lessons
+          phase: live
+          document_type: taxon
+        topics:
+        - title: Cars
+          base_path: /topic/driving-tests-and-learning-to-drive/car
+          document_type: topic
   with_collections:
     data:
       links:

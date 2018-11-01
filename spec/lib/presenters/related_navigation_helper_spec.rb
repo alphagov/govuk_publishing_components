@@ -246,5 +246,50 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
         [{ path: "/foo", text: "Foo" }]
       )
     end
+
+    it "returns live taxons" do
+      payload = payload_for("placeholder",
+                            "details" => {
+                              "external_related_links" => []
+                            },
+                            "links" => {
+                              "taxons" => [
+                                {
+                                  "title" => "Taxon B",
+                                  "base_path" => "/taxon-b",
+                                  "content_id" => "82a84770-ec89-4f75-8335-4ff78d84d97d",
+                                  "document_type" => "taxon",
+                                  "description" => "The B taxon.",
+                                  "phase" => "live",
+                                  "locale" => "en",
+                                },
+                                {
+                                  "title" => "Taxon A",
+                                  "base_path" => "/taxon-a",
+                                  "content_id" => "c8743ebd-ceb3-493b-b66a-e3bb4d30b7be",
+                                  "document_type" => "taxon",
+                                  "description" => "The A taxon.",
+                                  "phase" => "live",
+                                  "locale" => "en",
+                                },
+                                {
+                                  "title" => "Taxon C",
+                                  "base_path" => "/taxon-c",
+                                  "content_id" => "6271264a-72fa-4c12-aaa2-ab3071d3d133",
+                                  "document_type" => "taxon",
+                                  "description" => "The C taxon.",
+                                  "phase" => "draft",
+                                  "locale" => "en",
+                                },
+                              ],
+                            })
+
+      expect(payload["topics"]).to eql(
+        [
+          { path: "/taxon-b", text: "Taxon B" },
+          { path: "/taxon-a", text: "Taxon A" },
+        ]
+       )
+    end
   end
 end

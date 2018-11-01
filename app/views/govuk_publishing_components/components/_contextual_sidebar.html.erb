@@ -9,17 +9,8 @@
   <% if navigation.content_tagged_to_current_step_by_step? %>
     <%# Rendering step by step sidebar because there's 1 step by step list %>
     <%= render 'govuk_publishing_components/components/step_by_step_nav', navigation.step_nav_helper.sidebar %>
-  <% elsif navigation.content_tagged_to_mainstream_browse_pages? %>
-    <%# Rendering related navigation sidebar because the page is tagged to mainstream browse %>
-    <%= render 'govuk_publishing_components/components/related_navigation', content_item %>
-  <% elsif navigation.content_has_curated_related_items? %>
-    <%# Rendering related navigation sidebar because the page has curated related links %>
-    <%= render 'govuk_publishing_components/components/related_navigation', content_item %>
-  <% elsif navigation.content_is_tagged_to_a_live_taxon? %>
-    <%# Rendering taxonomy sidebar because the page is tagged to live taxons %>
-    <%= render 'govuk_publishing_components/components/taxonomy_navigation', navigation.taxonomy_sidebar %>
   <% else %>
-    <%# Rendering related navigation sidebar because no browse, no related links, no live taxons %>
+    <%# Rendering related navigation sidebar because no step by step list %>
     <%= render 'govuk_publishing_components/components/related_navigation', content_item %>
   <% end %>
 
