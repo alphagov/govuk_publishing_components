@@ -67,10 +67,6 @@ module GovukPublishingComponents
         end
       end
 
-      def world_location_base_path(title)
-        "/world/#{parameterise(title)}/news"
-      end
-
       def related_items
         links = build_links_for_sidebar(quick_links, "url")
         mainstream_links = related_mainstream_content
@@ -88,7 +84,7 @@ module GovukPublishingComponents
 
       def related_world_locations
         locations = link_group("world_locations")
-        locations.map! { |link| link.merge("base_path" => world_location_base_path(link["title"])) }
+        locations.map! { |link| link.merge("base_path" => "/world/#{link["title"].parameterize}/news") }
         build_links_for_sidebar(locations)
       end
 
@@ -133,18 +129,6 @@ module GovukPublishingComponents
       def related_external_links
         external_links = @content_item.dig("details", "external_related_links").to_a
         build_links_for_sidebar(external_links, "url", rel: "external")
-      end
-
-      def parameterise(str, sep = "-")
-        parameterised_str = str.gsub(/[^\w\-]+/, sep)
-        unless sep.nil? || sep.empty?
-          re_sep = Regexp.escape(sep)
-          # No more than one of the separator in a row.
-          parameterised_str.gsub!(/#{re_sep}{2,}/, sep)
-          # Remove leading/trailing separator.
-          parameterised_str.gsub!(/^#{re_sep}|#{re_sep}$/, '')
-        end
-        parameterised_str.downcase
       end
 
       def related_links
