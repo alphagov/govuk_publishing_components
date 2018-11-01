@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Updates current breadcrumbs components to be based on GOV.UK Frontend (PR #593)
+* Expands image card component to handle smaller images gracefully (PR #605)
 
 ## 12.3.0
 
