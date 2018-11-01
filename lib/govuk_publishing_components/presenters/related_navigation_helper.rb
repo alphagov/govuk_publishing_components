@@ -21,7 +21,7 @@ module GovukPublishingComponents
         {
           "related_items" => related_items,
           "related_guides" => related_guides,
-          "collections" => related_collections,
+          "collections" => related_document_collections,
           "topics" => related_topics,
           "topical_events" => related_topical_events,
           "world_locations" => related_world_locations,
@@ -52,105 +52,87 @@ module GovukPublishingComponents
         links.length - MAX_SECTION_LENGTH
       end
 
-      def anything_to_show?
+      def related_navigation?
         related_navigation.flat_map(&:last).any?
       end
 
     private
 
-      def build_links_for_sidebar(collection, path_key = "base_path", additional_attr = {})
-        collection.map do |link|
-          {
-            path: link[path_key],
-            text: link["title"]
-          }.merge(additional_attr)
-        end
-      end
-
       def related_items
-        links = build_links_for_sidebar(quick_links, "url")
-        mainstream_links = related_mainstream_content
-        related_ordered_items = link_group("ordered_related_items")
-        if links.any?
-          links + mainstream_links
-        else
-          build_links_for_sidebar(related_ordered_items) + mainstream_links
-        end
-      end
+        related_quick_links = content_item_details_for('quick_links')
 
-      def quick_links
-        @content_item.dig("details", "quick_links").to_a
+        if related_quick_links.any?
+          related_quick_links + related_mainstream_content
+        else
+          content_item_links_for('ordered_related_items') + related_mainstream_content
+        end
       end
 
       def related_world_locations
-        locations = link_group("world_locations")
-        locations.map! { |link| link.merge("base_path" => "/world/#{link["title"].parameterize}/news") }
-        build_links_for_sidebar(locations)
-      end
-
-      def related_collections
-        collections = filter_link_type("document_collections", "document_collection")
-        build_links_for_sidebar(collections)
-      end
-
-      def filter_link_type(group, type)
-        links = link_group(group)
-        links.select do |link|
-          link["document_type"] == type
-        end
+        content_item_links_for('world_locations')
+          .map { |link| link.merge(path: "/world/#{link[:text].parameterize}/news") }
       end
 
       def related_statistical_data_sets
-        statistical_data_sets = filter_link_type("related_statistical_data_sets", "statistical_data_set")
-        build_links_for_sidebar(statistical_data_sets)
+        content_item_links_for('related_statistical_data_sets', only: 'statistical_data_set')
       end
 
       def related_topics
-        mainstream_browse_pages = filter_link_type("mainstream_browse_pages", "mainstream_browse_page")
+        mainstream_browse_page_links = content_item_links_for('mainstream_browse_pages', only: 'mainstream_browse_page')
+        topic_links = content_item_links_for('topics', only: 'topic')
 
-        topics_that_dont_duplicate_browse = filter_link_type("topics", "topic").select do |topic|
-          mainstream_browse_pages.none? { |browse_page| browse_page["title"] == topic["title"] }
+        mainstream_browse_page_links + topic_links.find_all do |topic_link|
+          mainstream_browse_page_links.none? do |mainstream_browse_page_link|
+            mainstream_browse_page_link[:text] == topic_link[:text]
+          end
         end
-
-        links = build_links_for_sidebar(mainstream_browse_pages + topics_that_dont_duplicate_browse)
-        links.compact
       end
 
       def related_topical_events
-        topical_events = filter_link_type("topical_events", "topical_event")
-        build_links_for_sidebar(topical_events)
+        content_item_links_for('topical_events', only: 'topical_event')
       end
 
       def related_contacts
-        contacts = filter_link_type("related", "contact")
-        build_links_for_sidebar(contacts)
+        content_item_links_for('related', only: 'contact')
       end
 
       def related_external_links
-        external_links = @content_item.dig("details", "external_related_links").to_a
-        build_links_for_sidebar(external_links, "url", rel: "external")
-      end
-
-      def related_links
-        link_group("ordered_related_items")
+        content_item_details_for('external_related_links')
       end
 
       def related_mainstream_content
-        return [] unless @content_item["document_type"] == "detailed_guide"
+        return [] unless detailed_guide?
 
-        content = link_group("related_mainstream_content")
-        build_links_for_sidebar(content)
+        content_item_links_for('related_mainstream_content')
       end
 
       def related_guides
-        return [] unless @content_item["document_type"] == "detailed_guide"
+        return [] unless detailed_guide?
 
-        guides = link_group("related_guides")
-        build_links_for_sidebar(guides)
+        content_item_links_for('related_guides')
       end
 
-      def link_group(type)
-        @content_item.dig("links", type).to_a
+      def related_document_collections
+        content_item_links_for('document_collections', only: 'document_collection')
+      end
+
+      def detailed_guide?
+        @content_item['document_type'] == 'detailed_guide'
+      end
+
+      def content_item_details_for(key)
+        Array(@content_item.dig('details', key))
+          .map { |link| { path: link['url'], text: link['title'], rel: 'external' } }
+      end
+
+      def content_item_links_for(key, only: nil)
+        links = Array(@content_item.dig('links', key))
+
+        if only.present?
+          links = links.find_all { |link| link['document_type'] == only }
+        end
+
+        links.map { |link| { path: link['base_path'], text: link['title'] } }
       end
     end
   end
