@@ -7,7 +7,7 @@ body: |
   There are 2 variants of the component:
 
   - Step by step, which uses the [step by step nav][step-by-step]
-  - Related navigation, which uses the [related navigation component][related_navigation]
+  - Related navigation, which uses the [related navigation component][related_navigation] in the context of a sidebar
 
   It must always be used [with the contextual breadcrumbs component][contextual_breadcrumbs].
 
@@ -19,13 +19,25 @@ accessibility_criteria: |
   Components called by this component must be accessible
 examples:
   default:
+    description: Display collections, guides, quick links, ordered related items and related mainstream content.
     data:
       content_item:
         title: "A content item"
         links:
           ordered_related_items:
-            - title: "Find an apprenticeship"
-              base_path: "/apply-apprenticeship"
+          - title: Find an apprenticeship
+            base_path: /apply-apprenticeship
+          - title: Training and study at work
+            base_path: /training-study-work-your-rights
+          - title: Careers helpline for teenagers
+            base_path: /careers-helpline-for-teenagers
+          document_collections:
+          - title: Recruit an apprentice (formerly apprenticeship vacancies)
+            base_path: /government/collections/apprenticeship-vacancies
+            document_type: document_collection
+          - title: The future of jobs and skills
+            base_path: /government/collections/the-future-of-jobs-and-skills
+            document_type: document_collection
   with_step_by_step:
     data:
       content_item:

@@ -6,7 +6,8 @@
     <h2 id="related-nav-related_items-<%= random %>"
         class="gem-c-related-navigation__main-heading"
         data-track-count="sidebarRelatedItemSection" >
-      <%= t('components.related_navigation.related_content') %>
+      <%= t("components.related_#{local_assigns[:context]}_navigation.related_content",
+            default: t('components.related_navigation.related_content')) %>
     </h2>
 
     <% section_index = 0 %>

@@ -1,15 +1,15 @@
 require "spec_helper"
 
 RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
-  def payload_for(schema, content_item)
+  def payload_for(schema, content_item, context = nil)
     example = GovukSchemas::RandomExample.for_schema(frontend_schema: schema) do |payload|
       payload.merge(content_item)
     end
 
-    described_class.new(example).related_navigation
+    described_class.new(content_item: example, context: context).related_navigation
   end
 
-  describe "#related-navigation-sidebar" do
+  describe "#related_navigation" do
     it "can handle randomly generated content" do
       expect { payload_for("placeholder", {}) }.to_not raise_error
     end
@@ -199,7 +199,7 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
 
     it "handles ordered related items that aren't tagged to a mainstream browse page" do
       example = GovukSchemas::Example.find("guide", example_name: "single-page-guide")
-      payload = described_class.new(example).related_navigation
+      payload = described_class.new(content_item: example).related_navigation
       expected = [
         { text: "Travel abroad", path: "/browse/abroad/travel-abroad" },
         { text: "Arriving in the UK", path: "/browse/visas-immigration/arriving-in-the-uk" },
@@ -290,6 +290,48 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
           { path: "/taxon-a", text: "Taxon A" },
         ]
        )
+    end
+
+    context 'for a sidebar' do
+      subject(:payload) { payload_for('placeholder', {}, :sidebar) }
+
+      it 'only includes collections, guides and related items' do
+        expect(payload).to include(
+          'collections',
+          'related_guides',
+          'related_items',
+        )
+
+        expect(payload).to_not include(
+          'related_contacts',
+          'related_external_links',
+          'statistical_data_sets',
+          'topical_events',
+          'topics',
+          'world_locations',
+        )
+      end
+    end
+
+    context 'for a footer' do
+      subject(:payload) { payload_for('placeholder', {}, :footer) }
+
+      it 'only includes contacts external links, statistical datasets, topical events, topics and world locations' do
+        expect(payload).to include(
+          'related_contacts',
+          'related_external_links',
+          'statistical_data_sets',
+          'topical_events',
+          'topics',
+          'world_locations',
+        )
+
+        expect(payload).to_not include(
+          'collections',
+          'related_guides',
+          'related_items',
+        )
+      end
     end
   end
 end

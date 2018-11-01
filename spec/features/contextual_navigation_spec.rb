@@ -32,7 +32,7 @@ describe "Contextual navigation" do
   scenario "There's a mainstream browse page tagged" do
     given_theres_a_page_with_browse_page
     and_i_visit_that_page
-    then_i_see_the_browse_page_in_the_sidebar
+    then_i_see_the_browse_page_in_the_footer
     and_the_parent_based_breadcrumbs
   end
 
@@ -53,14 +53,14 @@ describe "Contextual navigation" do
   scenario "There's a taxon tagged" do
     given_theres_a_guide_with_a_live_taxon_tagged_to_it
     and_i_visit_that_page
-    then_i_see_the_taxon_in_the_related_navigation_sidebar
+    then_i_see_the_taxon_in_the_related_navigation_footer
     and_the_taxonomy_breadcrumbs
   end
 
   scenario "There's legacy things tagged" do
     given_theres_a_page_with_just_legacy_taxonomy
     and_i_visit_that_page
-    then_i_see_the_legacy_topic_in_the_related_navigation_sidebar
+    then_i_see_the_legacy_topic_in_the_related_navigation_footer
     and_the_parent_based_breadcrumbs
   end
 
@@ -162,14 +162,18 @@ describe "Contextual navigation" do
     expect(page).not_to have_selector(".gem-c-step-nav__header")
   end
 
-  def then_i_see_the_browse_page_in_the_sidebar
-    expect(page).to have_selector(".gem-c-related-navigation")
-    expect(page).to have_content("A browse page")
+  def then_i_see_the_browse_page_in_the_footer
+    within '.gem-c-contextual-footer' do
+      expect(page).to have_selector(".gem-c-related-navigation")
+      expect(page).to have_content("A browse page")
+    end
   end
 
   def then_i_see_the_related_links_sidebar
-    expect(page).to have_selector(".gem-c-related-navigation")
-    expect(page).to have_content("A related link curated in Publisher")
+    within '.gem-c-contextual-sidebar' do
+      expect(page).to have_selector(".gem-c-related-navigation")
+      expect(page).to have_content("A related link curated in Publisher")
+    end
   end
 
   def and_the_parent_based_breadcrumbs
@@ -186,12 +190,16 @@ describe "Contextual navigation" do
     end
   end
 
-  def then_i_see_the_taxon_in_the_related_navigation_sidebar
-    expect(page).to have_css(".gem-c-related-navigation__link", text: "A live taxon")
+  def then_i_see_the_taxon_in_the_related_navigation_footer
+    within '.gem-c-contextual-footer' do
+      expect(page).to have_css(".gem-c-related-navigation__link", text: "A live taxon")
+    end
   end
 
-  def then_i_see_the_legacy_topic_in_the_related_navigation_sidebar
-    expect(page).to have_css(".gem-c-related-navigation__link", text: "A legacy topic")
+  def then_i_see_the_legacy_topic_in_the_related_navigation_footer
+    within '.gem-c-contextual-footer' do
+      expect(page).to have_css(".gem-c-related-navigation__link", text: "A legacy topic")
+    end
   end
 
   def content_store_has_random_item(schema: "placeholder", links: {})

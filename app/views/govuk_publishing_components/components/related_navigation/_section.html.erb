@@ -5,7 +5,7 @@
 
   <% unless section_title === "related_items" %>
     <h3 id="related-nav-<%= section_title %>-<%= random %>"
-      data-track-count="sidebarRelatedItemSection"
+      data-track-count="<%= related_nav_helper.section_data_track_count(:related_item_section) %>"
       class="<%= related_nav_helper.section_css_class("gem-c-related-navigation__sub-heading", section_title) %>">
       <%= related_nav_helper.construct_section_heading(section_title) %>
     </h3>

@@ -13,22 +13,41 @@ module GovukPublishingComponents
         statistical_data_sets
       ).freeze
 
-      def initialize(content_item)
+      def initialize(content_item:, context: nil)
         @content_item = content_item
+        @context = context
       end
 
       def related_navigation
-        {
-          "related_items" => related_items,
-          "related_guides" => related_guides,
-          "collections" => related_document_collections,
-          "topics" => related_topics,
-          "topical_events" => related_topical_events,
-          "world_locations" => related_world_locations,
-          "statistical_data_sets" => related_statistical_data_sets,
-          "related_external_links" => related_external_links,
-          "related_contacts" => related_contacts,
-        }
+        case @context.try(:to_sym)
+        when :sidebar
+          {
+            "related_items" => related_items,
+            "related_guides" => related_guides,
+            "collections" => related_document_collections,
+          }
+        when :footer
+          {
+            "topics" => related_topics,
+            "topical_events" => related_topical_events,
+            "world_locations" => related_world_locations,
+            "statistical_data_sets" => related_statistical_data_sets,
+            "related_external_links" => related_external_links,
+            "related_contacts" => related_contacts,
+          }
+        else
+          {
+            "related_items" => related_items,
+            "related_guides" => related_guides,
+            "collections" => related_document_collections,
+            "topics" => related_topics,
+            "topical_events" => related_topical_events,
+            "world_locations" => related_world_locations,
+            "statistical_data_sets" => related_statistical_data_sets,
+            "related_external_links" => related_external_links,
+            "related_contacts" => related_contacts,
+          }
+        end
       end
 
       def construct_section_heading(section_title)
@@ -42,6 +61,10 @@ module GovukPublishingComponents
           css_class += " #{css_class}--other"
         end
         css_class
+      end
+
+      def section_data_track_count(section_title)
+        String(@context || 'sidebar') + String(section_title).camelcase
       end
 
       def calculate_section_link_limit(links)
