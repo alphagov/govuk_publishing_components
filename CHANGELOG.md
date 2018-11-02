@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 12.4.0
 
 * Updates current breadcrumbs components to be based on GOV.UK Frontend (PR #593)
 * Expands image card component to handle smaller images gracefully (PR #605)
