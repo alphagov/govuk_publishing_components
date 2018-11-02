@@ -1,0 +1,47 @@
+name: Tooltip
+description: |
+  Hi I'm a tool tip
+examples:
+  default:
+    data:
+      hidden: false
+      initiator: "#button1"
+      trigger: "click mouseover focus"
+      text: "You can be fined up to £5,000 if you don’t register."
+  mouseover:
+    data:
+      hidden: false
+      initiator: "#button2"
+      trigger: "mouseover"
+      text: "You can be fined up to £5,000 if you don’t register."
+  click:
+    data:
+      hidden: false
+      initiator: "#button3"
+      trigger: "click"
+      text: "You can be fined up to £5,000 if you don’t register."
+  focus:
+    data:
+      hidden: false
+      initiator: "#button4"
+      trigger: "focus"
+      text: "You can be fined up to £5,000 if you don’t register."
+  mouseover_click_or_focus:
+    data:
+      hidden: false
+      initiator: "#button5"
+      trigger: "hover click focus"
+      text: "You can be fined up to £5,000 if you don’t register."
+  hidden_by_default:
+    data:
+      hidden: true
+      initiator: "#button6"
+      trigger: "click"
+      text: "You can be fined up to £5,000 if you don’t register."
+  hide_close_button:
+    data:
+      hidden: false
+      initiator: "#button7"
+      trigger: "mouseover"
+      close_button: "hide"
+      text: "You can be fined up to £5,000 if you don’t register."

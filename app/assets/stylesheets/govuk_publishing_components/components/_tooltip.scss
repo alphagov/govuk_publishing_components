@@ -1,0 +1,85 @@
+$background-blur-color: rgba(0, 0, 0, 0.5);
+$tooltip-shadow-colour: rgba(0, 0, 0, 0.1);
+
+.gem-c-tooltip {
+  display: inline-block;
+  position: absolute;
+
+  &.gem-c-tooltip--hidden {
+    display: none;
+  }
+}
+
+.gem-c-tooltip-background-blur {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: $background-blur-color;
+}
+
+.gem-c-tooltip .tooltip-content {
+  display: inline-block;
+  position: relative;
+  font-family: "nta", sans-serif;
+  background: govuk-colour('black');
+  font-size: 16px;
+  line-height: 30px;
+  color: govuk-colour('white');
+  padding: 11px 55px 9px 15px;
+  box-shadow: 0 5px 0 $tooltip-shadow-colour;
+  z-index: 30;
+
+  &:after {
+    content: ".";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: govuk-colour('black');
+    color: transparent;
+    overflow: hidden;
+    top: -5px;
+    left: 20px;
+    transform: rotate(45deg);
+  }
+
+  &.right:after {
+    left: auto;
+    right: 20px;
+  }
+}
+
+.gem-c-tooltip .tooltip-content .tooltip-close--button {
+  position: absolute;
+  overflow: hidden;
+  width: 40px;
+  height: 30px;
+  padding: 9px 0;
+  top: 0;
+  right: 0;
+  color: govuk-colour('white');
+  font-size: 30px;
+  text-decoration: none;
+  text-align: center;
+  line-height: 30px;
+  z-index: 40;
+
+  &:hover {
+    background: govuk-colour('blue');
+  }
+
+  &:focus {
+    background: govuk-colour('yellow');
+    outline: none;
+  }
+
+  .tooltip-close--button-text {
+    position: absolute;
+    top: -100px;
+    left: -1000%;
+  }
+}
+
+

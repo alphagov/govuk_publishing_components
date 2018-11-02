@@ -1,0 +1,27 @@
+<%
+    initiator ||= '' # id or class
+    trigger ||= "click" # click | hover | focus
+    hidden ||= false
+    hide_close_button ||= false
+    hide_on_blur ||= false
+    blur_background ||= false
+    css_classes = "gem-c-tooltip"
+    css_classes << " gem-c-tooltip--hidden " if hidden
+%>
+
+<%= tag.div class: css_classes, 
+    "data-module": "tooltip",
+    "data-initiator": initiator,
+    "data-trigger": trigger,
+    "data-blur-background": blur_background,
+    "data-hide-on-blur": hide_on_blur do %>
+    <%= tag.div id: "tooltip-overlay" %>
+    <%= tag.div class: "tooltip-content" do %>
+        <%= text %>
+        <% if !hide_close_button %>
+            <%= tag.a class: "tooltip-close--button", href: "#" do %>
+                x <%= tag.span "Close", class: "tooltip-close--button-text" %>
+            <% end %>
+        <% end %>
+    <% end %>
+<% end %>
