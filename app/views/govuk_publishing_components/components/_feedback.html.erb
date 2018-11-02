@@ -13,6 +13,20 @@
       <h2 class="gem-c-feedback__prompt-question">Is this page useful?</h2>
 
       <%= link_to contact_govuk_path, {
+        class: 'gem-c-feedback__prompt-link',
+        data: {
+          'track-category' => 'yesNoFeedbackForm',
+          'track-action' => 'ffMaybeClick'
+        },
+        style: 'display: none;',
+        hidden: 'hidden',
+        'aria-hidden': 'true',
+        'aria-expanded': false,
+      } do %>
+        Maybe
+      <% end %>
+
+      <%= link_to contact_govuk_path, {
         class: 'gem-c-feedback__prompt-link gem-c-feedback__prompt-link--useful js-page-is-useful',
         data: {
           'track-category' => 'yesNoFeedbackForm',
