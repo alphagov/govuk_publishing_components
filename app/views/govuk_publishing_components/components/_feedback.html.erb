@@ -13,13 +13,30 @@
       <h2 class="gem-c-feedback__prompt-question">Is this page useful?</h2>
 
       <%= link_to contact_govuk_path, {
+        class: 'gem-c-feedback__prompt-link',
+        data: {
+          'track-category' => 'yesNoFeedbackForm',
+          'track-action' => 'ffMaybeClick'
+        },
+        'aria-expanded': false,
+        role: 'button',
+        style: 'display: none;',
+        hidden: 'hidden',
+        'aria-hidden': 'true',
+      } do %>
+        Maybe
+      <% end %>
+
+      <%= link_to contact_govuk_path, {
         class: 'gem-c-feedback__prompt-link gem-c-feedback__prompt-link--useful js-page-is-useful',
         data: {
           'track-category' => 'yesNoFeedbackForm',
           'track-action' => 'ffYesClick'
-          },
-        } do %>
-          Yes <span class="visually-hidden">this page is useful</span>
+        },
+        'aria-expanded': false,
+        role: 'button',
+      } do %>
+        Yes <span class="visually-hidden">this page is useful</span>
       <% end %>
 
       <%= link_to contact_govuk_path, {
@@ -27,12 +44,12 @@
         data: {
           'track-category' => 'yesNoFeedbackForm',
           'track-action' => 'ffNoClick'
-          },
-          'aria-controls': 'page-is-not-useful',
-          'aria-expanded': false,
-          'role': 'button'
-        } do %>
-          No <span class="visually-hidden">this page is not useful</span>
+        },
+        'aria-controls': 'page-is-not-useful',
+        'aria-expanded': false,
+        role: 'button',
+      } do %>
+        No <span class="visually-hidden">this page is not useful</span>
       <% end %>
 
       <%= link_to contact_govuk_path, {
@@ -40,12 +57,12 @@
         data: {
           'track-category' => 'Onsite Feedback',
           'track-action' => 'GOV.UK Open Form'
-          },
-          'aria-controls': 'something-is-wrong',
-          'aria-expanded': false,
-          'role': 'button'
-        } do %>
-          Is there anything wrong with this page?
+        },
+        'aria-controls': 'something-is-wrong',
+        'aria-expanded': false,
+        role: 'button',
+      } do %>
+        Is there anything wrong with this page?
       <% end %>
     </div>
 

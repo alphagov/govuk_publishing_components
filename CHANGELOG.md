@@ -7,6 +7,8 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+* Add a hidden 'Maybe' option to the feedback component. (PR #608)
+
 ## 12.4.0
 
 * Updates current breadcrumbs components to be based on GOV.UK Frontend (PR #593)
