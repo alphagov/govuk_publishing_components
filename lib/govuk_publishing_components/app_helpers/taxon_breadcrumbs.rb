@@ -15,7 +15,7 @@ module GovukPublishingComponents
           {
             title: parent.title,
             url: parent.base_path,
-            is_page_parent: index.zero?
+            is_page_parent: index.zero?,
           }
         end
 

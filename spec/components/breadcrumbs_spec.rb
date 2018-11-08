@@ -53,6 +53,27 @@ describe "Breadcrumbs", type: :view do
     assert_select ".govuk-breadcrumbs__list-item:first-child a[data-track-options='#{expected_tracking_options.to_json}']", 1
   end
 
+  it "a link to the homepage has separate tracking data" do
+    render_component(breadcrumbs: [{ title: 'Section', url: '/section' }, { title: 'Home', url: '/' }])
+
+    expected_tracking_options = {
+        dimension28: "2",
+        dimension29: "Section"
+    }
+
+    assert_select '.gem-c-breadcrumbs[data-module="track-click"]', 1
+
+    assert_select '.govuk-breadcrumbs__list-item:nth-child(1) a[data-track-action="1"]', 1
+    assert_select '.govuk-breadcrumbs__list-item:nth-child(1) a[data-track-label="/section"]', 1
+    assert_select '.govuk-breadcrumbs__list-item:nth-child(1) a[data-track-category="breadcrumbClicked"]', 1
+    assert_select ".govuk-breadcrumbs__list-item:nth-child(1) a[data-track-options='#{expected_tracking_options.to_json}']", 1
+
+    assert_select '.govuk-breadcrumbs__list-item:nth-child(2) a[data-track-action="homeBreadcrumb"]', 1
+    assert_select '.govuk-breadcrumbs__list-item:nth-child(2) a[data-track-label=""]', 1
+    assert_select '.govuk-breadcrumbs__list-item:nth-child(2) a[data-track-category="homeLinkClicked"]', 1
+    assert_select ".govuk-breadcrumbs__list-item:nth-child(2) a[data-track-options='{}']", 1
+  end
+
   it "tracks the total breadcrumb count on each breadcrumb" do
     breadcrumbs = [
       { title: 'Section 1', url: '/section-1' },

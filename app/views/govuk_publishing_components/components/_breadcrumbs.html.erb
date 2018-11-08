@@ -4,44 +4,33 @@
   inverse ||= false
   collapse_class =  collapse_on_mobile && breadcrumbs.any? { |crumb| crumb[:is_page_parent] } ? "gem-c-breadcrumbs--collapse-on-mobile" : ""
   invert_class = inverse ? "gem-c-breadcrumbs--inverse" : ""
-  structured_data = GovukPublishingComponents::Presenters::Breadcrumbs.new(breadcrumbs, request.path).structured_data
+  breadcrumb_presenter = GovukPublishingComponents::Presenters::Breadcrumbs.new(breadcrumbs, request.path)
 %>
 
 <script type="application/ld+json">
-  <%= raw structured_data.to_json %>
+  <%= raw breadcrumb_presenter.structured_data.to_json %>
 </script>
 
 <div class="gem-c-breadcrumbs govuk-breadcrumbs <%= invert_class %>" data-module="track-click">
   <ol class="govuk-breadcrumbs__list">
     <% breadcrumbs.each_with_index do |crumb, index| %>
-      <%
-        is_link = crumb[:url].present? || crumb[:is_current_page]
-        path = crumb[:is_current_page] ? '#content' : crumb[:url]
-        aria_current = crumb[:is_current_page] ? 'page' : 'false'
-      %>
-      <li class="govuk-breadcrumbs__list-item" aria-current="<%= aria_current %>">
-        <% if is_link %>
+      <% breadcrumb = GovukPublishingComponents::Presenters::Breadcrumb.new(crumb, index) %>
+      <li class="govuk-breadcrumbs__list-item" aria-current="<%= breadcrumb.aria_current %>">
+        <% if breadcrumb.is_link? %>
           <%= link_to(
-            crumb[:title],
-            path,
-            data: {
-              track_category: 'breadcrumbClicked',
-              track_action: index + 1,
-              track_label: path,
-              track_options: {
-                dimension28: breadcrumbs.length.to_s,
-                dimension29: crumb[:title]
-              }
-            },
+            breadcrumb[:title],
+            breadcrumb.path,
+            data: breadcrumb.tracking_data(breadcrumbs.length),
             class: "govuk-breadcrumbs__link",
             aria: {
-              current: aria_current,
+              current: breadcrumb.aria_current,
             }
           ) %>
         <% else %>
-          <%= crumb[:title] %>
+          <%= breadcrumb[:title] %>
         <% end %>
       </li>
     <% end %>
   </ol>
 </div>
+
