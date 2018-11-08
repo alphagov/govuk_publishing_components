@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+ * Adds separate tracking data for a link to the homepage on breadcrumbs (PR #610)
+
 ## 12.5.0
 
 * Add a hidden 'Maybe' option to the feedback component. (PR #608)
