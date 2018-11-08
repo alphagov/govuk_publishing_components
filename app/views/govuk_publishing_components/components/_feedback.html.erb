@@ -18,10 +18,11 @@
           'track-category' => 'yesNoFeedbackForm',
           'track-action' => 'ffMaybeClick'
         },
+        'aria-expanded': false,
+        role: 'button',
         style: 'display: none;',
         hidden: 'hidden',
         'aria-hidden': 'true',
-        'aria-expanded': false,
       } do %>
         Maybe
       <% end %>
@@ -31,9 +32,11 @@
         data: {
           'track-category' => 'yesNoFeedbackForm',
           'track-action' => 'ffYesClick'
-          },
-        } do %>
-          Yes <span class="visually-hidden">this page is useful</span>
+        },
+        'aria-expanded': false,
+        role: 'button',
+      } do %>
+        Yes <span class="visually-hidden">this page is useful</span>
       <% end %>
 
       <%= link_to contact_govuk_path, {
@@ -41,12 +44,12 @@
         data: {
           'track-category' => 'yesNoFeedbackForm',
           'track-action' => 'ffNoClick'
-          },
-          'aria-controls': 'page-is-not-useful',
-          'aria-expanded': false,
-          'role': 'button'
-        } do %>
-          No <span class="visually-hidden">this page is not useful</span>
+        },
+        'aria-controls': 'page-is-not-useful',
+        'aria-expanded': false,
+        role: 'button',
+      } do %>
+        No <span class="visually-hidden">this page is not useful</span>
       <% end %>
 
       <%= link_to contact_govuk_path, {
@@ -54,12 +57,12 @@
         data: {
           'track-category' => 'Onsite Feedback',
           'track-action' => 'GOV.UK Open Form'
-          },
-          'aria-controls': 'something-is-wrong',
-          'aria-expanded': false,
-          'role': 'button'
-        } do %>
-          Is there anything wrong with this page?
+        },
+        'aria-controls': 'something-is-wrong',
+        'aria-expanded': false,
+        role: 'button',
+      } do %>
+        Is there anything wrong with this page?
       <% end %>
     </div>
 
