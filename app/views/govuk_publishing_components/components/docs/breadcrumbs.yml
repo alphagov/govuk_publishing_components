@@ -2,6 +2,7 @@ name: "Breadcrumbs"
 description: "Navigational breadcrumbs, showing page hierarchy"
 body: |
   Accepts an array of breadcrumb objects. Each crumb must have a title and a URL.
+  Links have tracking data but links to the homepage (any link with a url of "/") will be tracked separately as `homeLinkClicked`
 shared_accessibility_criteria:
   - link
 accessibility_criteria:
