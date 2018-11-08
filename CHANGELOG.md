@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 12.6.0
 
  * Adds separate tracking data for a link to the homepage on breadcrumbs (PR #610)
 
