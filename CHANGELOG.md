@@ -7,9 +7,14 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased changes
+
+* Update phase banner component to use GOV.UK Frontend styles (PR #613)
+* Update phase banner component to support application name (PR #613)
+
 ## 12.6.0
 
- * Adds separate tracking data for a link to the homepage on breadcrumbs (PR #610)
+* Adds separate tracking data for a link to the homepage on breadcrumbs (PR #610)
 
 ## 12.5.0
 
