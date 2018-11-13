@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased changes
+## 12.7.0
 
 * Update phase banner component to use GOV.UK Frontend styles (PR #613)
 * Update phase banner component to support application name (PR #613)
