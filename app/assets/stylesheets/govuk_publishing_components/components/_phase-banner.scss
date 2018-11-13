@@ -1,9 +1,9 @@
-@import "design-patterns/alpha-beta";
+@import "helpers/govuk-frontend-settings";
+@import "govuk-frontend/components/phase-banner/phase-banner";
 
 .gem-c-phase-banner {
-  @include phase-banner;
-
-  a {
-    @extend %govuk-link;
+  .govuk-phase-banner__content__app-name {
+    display: inline-block;
+    margin-right: govuk-spacing(2);
   }
 }

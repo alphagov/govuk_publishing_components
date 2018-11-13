@@ -20,24 +20,31 @@ describe "Phase banner", type: :view do
   it "shows a custom message" do
     render_component(phase: "alpha", message: "custom message")
 
-    assert_select ".gem-c-phase-banner span", text: "custom message"
+    assert_select ".gem-c-phase-banner .govuk-phase-banner__text", text: "custom message"
   end
 
   it "allows custom message HTML" do
     render_component(phase: "beta", message: "custom <strong>message</strong>".html_safe)
 
-    assert_select ".gem-c-phase-banner strong", text: "message"
+    assert_select ".gem-c-phase-banner .govuk-phase-banner__text strong", text: "message"
   end
 
   it "shows the alpha phase" do
     render_component(phase: "alpha")
 
-    assert_select ".phase-tag", text: "alpha"
+    assert_select ".govuk-phase-banner__content__tag", text: "alpha"
   end
 
   it "shows the beta phase" do
     render_component(phase: "beta")
 
-    assert_select ".phase-tag", text: "beta"
+    assert_select ".govuk-phase-banner__content__tag", text: "beta"
+  end
+
+  it "shows the app name" do
+    render_component(app_name: "Skittles Maker", phase: "beta")
+
+    assert_select ".govuk-phase-banner__content__app-name", text: "Skittles Maker"
+    assert_select ".govuk-phase-banner__content__tag", text: "beta"
   end
 end
