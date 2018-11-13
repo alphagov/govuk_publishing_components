@@ -52,6 +52,14 @@ examples:
         text: "What is your name?"
       name: "name"
       error_message: "Please could you provide your name"
+  with_error_items:
+    data:
+      label:
+        text: "What is your name?"
+      name: "name"
+      error_items:
+      - text: Descriptive link to the question with an error 1
+        href: '#example-error-1'
   with_value:
     data:
       label:

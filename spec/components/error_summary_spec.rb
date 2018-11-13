@@ -13,6 +13,7 @@ describe "Error summary", type: :view do
 
   it "renders error items when no title is set" do
     render_component(
+      id: 'error-summary-id',
       items: [
         {
           text: 'Descriptive link to the question with an error',
@@ -20,6 +21,8 @@ describe "Error summary", type: :view do
         }
       ]
     )
+
+    assert_select ".gem-c-error-summary[id='error-summary-id']"
     assert_select(
       "ul li a.gem-c-error-summary__link:first-of-type[href='#example-error-1']",
       text: 'Descriptive link to the question with an error'
@@ -28,6 +31,7 @@ describe "Error summary", type: :view do
 
   it "renders an error summary with title and aria-labelledby set correctly" do
     render_component(
+      id: 'error-summary-id',
       title: 'Message to alert the user to a problem goes here'
     )
 
@@ -36,6 +40,7 @@ describe "Error summary", type: :view do
       aria_labelledby_id = element.css('.gem-c-error-summary').first.attributes["aria-labelledby"].value
     end
 
+    assert_select ".gem-c-error-summary[id='error-summary-id']"
     assert_select ".gem-c-error-summary__title[id='#{aria_labelledby_id}']", text: 'Message to alert the user to a problem goes here'
     assert_select ".gem-c-error-summary__text", count: 0
     assert_select ".gem-c-error-summary__list", count: 0
@@ -52,6 +57,7 @@ describe "Error summary", type: :view do
         }
       ]
     )
+
     assert_select ".gem-c-error-summary__title", text: 'Message to alert the user to a problem goes here'
     assert_select ".gem-c-error-summary__text", text: 'Optional description of the errors and how to correct them'
     assert_select(

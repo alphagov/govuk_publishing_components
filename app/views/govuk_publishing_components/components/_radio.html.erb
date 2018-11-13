@@ -5,11 +5,13 @@
   label ||= nil
   hint ||= nil
   error_message ||= nil
-  hint_id = "hint-#{SecureRandom.hex(4)}" if hint
-  error_message_id = "error-message-#{SecureRandom.hex(4)}" if error_message
+  error_items ||= nil
+  has_error = error_message || error_items&.any?
+  hint_id = "hint-#{SecureRandom.hex(4)}"
+  error_id = "error-#{SecureRandom.hex(4)}"
 
   form_group_css_classes = %w(govuk-form-group)
-  form_group_css_classes << "govuk-form-group--error" if error_message
+  form_group_css_classes << "govuk-form-group--error" if has_error
 
   # check if any item is set as being conditional
   has_conditional = items.any? { |item| item.is_a?(Hash) && item[:conditional] }
@@ -25,8 +27,13 @@
 
   <% if error_message %>
     <%= render "govuk_publishing_components/components/error_message", {
-      id: error_message_id,
+      id: error_id,
       text: error_message
+    } %>
+  <% elsif error_items %>
+    <%= render "govuk_publishing_components/components/error_summary", {
+      id: error_id,
+      items: error_items
     } %>
   <% end %>
 

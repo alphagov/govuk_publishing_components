@@ -140,6 +140,18 @@ examples:
         text: "Use Government Gateway"
       - value: "govuk-verify"
         text: "Use GOV.UK Verify"
+  with_error_items_on_form_group:
+    data:
+      name: "radio-group-error"
+      id_prefix: "error"
+      error_items:
+      - text: Descriptive link to the question with an error 1
+        href: '#example-error-1'
+      items:
+      - value: "government-gateway"
+        text: "Use Government Gateway"
+      - value: "govuk-verify"
+        text: "Use GOV.UK Verify"
   conditional:
     data:
       name: "radio-group-conditional"
