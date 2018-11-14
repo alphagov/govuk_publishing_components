@@ -1,0 +1,24 @@
+<%
+  id ||= "autocomplete-#{SecureRandom.hex(4)}"
+  label ||= nil
+  data_attributes ||= nil
+  options ||= []
+  selected_option ||= nil
+%>
+<% if label && options.any? %>
+  <%=
+    render "govuk_publishing_components/components/label", {
+      html_for: id
+    }.merge(label.symbolize_keys)
+  %>
+
+  <div class="gem-c-accessible-autocomplete" data-module="accessible-autocomplete">
+    <%=
+      select_tag(
+        id,
+        options_for_select(options, selected_option),
+        data: data_attributes
+      )
+    %>
+  </div>
+<% end %>

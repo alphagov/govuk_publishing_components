@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add accessible autocomplete component. (PR #621)
 * Add 'error_items' option for input, radio, textarea and file upload components (PR #615)
 * Update layout header to allow a full width option (PR #616)
 
