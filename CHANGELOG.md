@@ -11,7 +11,7 @@
 
 * Update layout header to allow a full width option (PR #616)
 
-## 12.7.0
+## 12.7.1
 
 * Update phase banner component to use GOV.UK Frontend styles (PR #613)
 * Update phase banner component to support application name (PR #613)
