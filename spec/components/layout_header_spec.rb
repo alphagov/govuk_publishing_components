@@ -23,6 +23,20 @@ describe "Layout header", type: :view do
     assert_select ".govuk-header__product-name", text: "Product name"
   end
 
+  it "renders at a constrained width by default" do
+    render_component(environment: "staging", product_name: "Product name")
+
+    assert_select ".govuk-width-container"
+  end
+
+  it "renders at full width when requested to" do
+    render_component(environment: "staging", product_name: "Product name", full_width: true)
+
+    assert_select ".govuk-header__container--full-width"
+  end
+
+
+
   it "renders the header with navigation items" do
     navigation_items = [
       { text: "Foo", href: "/foo", active: true },
