@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update layout header to allow a full width option (PR #616)
+
 ## 12.7.0
 
 * Update phase banner component to use GOV.UK Frontend styles (PR #613)
