@@ -32,6 +32,14 @@ examples:
         text: "Upload a file"
       name: "file-upload-with-error"
       error_message: "Please upload a file"
+  with_error_items:
+    data:
+      label:
+        text: "Upload a file"
+      name: "file-upload-with-error"
+      error_items:
+      - text: Descriptive link to the question with an error 1
+        href: '#example-error-1'
   with_file_accept:
     data:
       label:

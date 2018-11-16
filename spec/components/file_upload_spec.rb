@@ -94,9 +94,32 @@ describe "File upload", type: :view do
     end
 
     it "has 'aria-describedby' the error message id" do
-      error_message_id = css_select(".govuk-error-message").attr("id")
+      error_id = css_select(".govuk-error-message").attr("id")
 
-      assert_select ".govuk-file-upload[aria-describedby='#{error_message_id}']"
+      assert_select ".govuk-file-upload[aria-describedby='#{error_id}']"
+    end
+  end
+
+  context "when error_items are provided" do
+    before do
+      render_component(
+        name: "file-upload-hint-error-message",
+        error_items: [
+          {
+            text: "Error item 1"
+          }
+        ]
+      )
+    end
+
+    it "renders the error message" do
+      assert_select ".gem-c-error-summary li", text: "Error item 1"
+    end
+
+    it "has 'aria-describedby' the error message id" do
+      error_id = css_select(".gem-c-error-summary").attr("id")
+
+      assert_select ".govuk-file-upload[aria-describedby='#{error_id}']"
     end
   end
 end

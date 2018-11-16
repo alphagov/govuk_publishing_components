@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add 'error_items' option for input, radio, textarea and file upload components (PR #615)
 * Update layout header to allow a full width option (PR #616)
 
 ## 12.7.1

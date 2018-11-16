@@ -1,4 +1,5 @@
 <%
+  id ||= "error-summary-#{SecureRandom.hex(4)}"
   title ||= false
   description ||= false
   items ||= []
@@ -13,6 +14,7 @@
   aria-labelledby="<%= title_id %>"
   role="alert"
   tabindex="-1"
+  id="<%= id %>"
 >
   <% if title %>
     <h2 class="gem-c-error-summary__title" id="<%= title_id %>">

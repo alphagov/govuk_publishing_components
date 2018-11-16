@@ -220,6 +220,29 @@ describe "Radio", type: :view do
     assert_select ".govuk-error-message", text: "Please select one option"
   end
 
+  it "renders radio-group with error items" do
+    render_component(
+      name: "radio-group-conditional",
+      error_items: [
+        {
+          text: "Error item 1"
+        }
+      ],
+      items: [
+        {
+          value: "government-gateway",
+          text: "Use Government Gateway"
+        },
+        {
+          value: "govuk-verify",
+          text: "Use GOV.UK Verify"
+        }
+      ]
+    )
+
+    assert_select ".gem-c-error-summary li", text: "Error item 1"
+  end
+
   it "renders radio-group with welsh translated 'or'" do
     I18n.with_locale(:cy) do
       render_component(

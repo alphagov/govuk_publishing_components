@@ -8,6 +8,7 @@ shared_accessibility_criteria:
 examples:
   default:
     data:
+      id: error-summary
       title: Message to alert the user to a problem goes here
       description: Optional description of the errors and how to correct them
       items:
