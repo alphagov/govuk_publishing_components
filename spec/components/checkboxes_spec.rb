@@ -88,4 +88,20 @@ describe "Checkboxes", type: :view do
     assert_select ".govuk-checkboxes"
     assert_select("#nationality-conditional-0", text: "including English, Scottish, Welsh and Northern Irish")
   end
+
+  it "renders checkboxes with preselected items" do
+    render_component(
+      id: "nationality",
+      name: "nationality",
+      heading: "What is your nationality?",
+      hint_text: "If you have dual nationality, select all options that are relevant to you.",
+      items: [
+        { label: "British", value: "british", checked: true },
+        { label: "Irish", value: "irish" },
+        { label: "Other", value: "other" }
+      ]
+    )
+    assert_select ".govuk-checkboxes"
+    assert_select ".govuk-checkboxes__input[checked]", value: "british"
+  end
 end

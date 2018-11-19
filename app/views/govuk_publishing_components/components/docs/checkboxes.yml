@@ -80,3 +80,16 @@ examples:
           value: "irish"
         - label: "Other"
           value: "other"
+  checkbox_items_with_checked_items:
+    data:
+      name: "nationality"
+      heading: "What is your nationality?"
+      hint_text: "If you have dual nationality, select all options that are relevant to you."
+      items:
+        - label: "British"
+          value: "british"
+          checked: true
+        - label: "Irish"
+          value: "irish"
+        - label: "Other"
+          value: "other"
