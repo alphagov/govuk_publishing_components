@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Fix showing multiple error items in a form field (PR #625)
 * Add option to checkboxes to allow preselected items (PR #623)
 
 ## 12.8.0

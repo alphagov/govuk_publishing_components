@@ -117,17 +117,20 @@ describe "Textarea", type: :view do
         error_items: [
           {
             text: "Error item 1"
+          },
+          {
+            text: "Error item 2"
           }
         ]
       )
     end
 
     it "renders the error message" do
-      assert_select ".gem-c-error-summary li", text: "Error item 1"
+      assert_select ".govuk-error-message", text: "Error item 1Error item 2"
     end
 
     it "has 'aria-describedby' the error message id" do
-      error_id = css_select(".gem-c-error-summary").attr("id")
+      error_id = css_select(".govuk-error-message").attr("id")
 
       assert_select ".govuk-textarea[aria-describedby='#{error_id}']"
     end

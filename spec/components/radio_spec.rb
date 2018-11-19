@@ -226,6 +226,9 @@ describe "Radio", type: :view do
       error_items: [
         {
           text: "Error item 1"
+        },
+        {
+          text: "Error item 2"
         }
       ],
       items: [
@@ -240,7 +243,7 @@ describe "Radio", type: :view do
       ]
     )
 
-    assert_select ".gem-c-error-summary li", text: "Error item 1"
+    assert_select ".govuk-error-message", text: "Error item 1Error item 2"
   end
 
   it "renders radio-group with welsh translated 'or'" do
