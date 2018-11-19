@@ -35,6 +35,7 @@
             type: "checkbox",
             value: item[:value],
             class: "govuk-checkboxes__input",
+            checked: item[:checked].present? ? "checked" : nil,
             aria: {
               describedby: item[:hint].present? ? "#{id}-#{index}-item-hint" : nil,
               controls: item[:conditional].present? ? "#{id}-conditional-#{index}" : nil

@@ -9,6 +9,8 @@
 
 ## Unreleased
 
+* Add option to checkboxes to allow preselected items (PR #623)
+
 ## 12.8.0
 
 * Add 'error_items' option for input, radio, textarea and file upload components (PR #615)
