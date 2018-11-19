@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 12.9.0
 
 * Add option to checkboxes to allow preselected items (PR #623)
 
