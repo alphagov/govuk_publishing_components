@@ -1,2 +1,13 @@
 @import "helpers/govuk-frontend-settings";
 @import "govuk-frontend/components/checkboxes/checkboxes";
+
+.govuk-checkboxes--nested {
+  margin-left: (govuk-spacing(3) + 3px);
+  padding-left: govuk-spacing(4);
+  box-sizing: border-box;
+  border-left-style: solid;
+  border-left-width: 4px;
+  border-color: govuk-colour('grey-2');
+  padding: govuk-spacing(2) govuk-spacing(4);
+  margin-bottom: govuk-spacing(3);
+}
