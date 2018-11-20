@@ -74,6 +74,16 @@ describe "Input", type: :view do
     assert_select ".govuk-input[aria-describedby='some-other-element']"
   end
 
+  it "renders inputs with an aria-controls if provided" do
+    render_component(
+      label: { text: "What is your postcode?" },
+      name: "postcode",
+      controls: "another-element"
+    )
+
+    assert_select ".govuk-input[aria-controls='another-element']"
+  end
+
   it "renders input with a data attributes" do
     render_component(
       data: { module: "contextual-guidance" },

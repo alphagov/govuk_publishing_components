@@ -44,9 +44,16 @@ examples:
       The example below uses the ID of the main container for demonstration purposes as there aren't any useful elements with IDs in the component guide. In real use this would be passed the ID of an element that correctly described the input.
     data:
       label:
-        text: "This might not work"
+        text: "This is an example only and may not work with a screen reader"
       name: "labelledby"
       describedby: "wrapper"
+  aria_controls:
+    description: Allows the addition of an aria-controls attribute, for use in places like the finders where the page is updated dynamically after value changes to the input.
+    data:
+      label:
+        text: "This is an example only and will not work with a screen reader as intended"
+      name: "controls"
+      controls: "wrapper"
   with_hint:
     data:
       label:
