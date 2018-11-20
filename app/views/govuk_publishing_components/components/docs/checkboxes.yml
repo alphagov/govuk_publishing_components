@@ -1,5 +1,6 @@
 name: Form checkboxes
-description: Help users enter text when there is a limit on the number of characters they can type
+description: Let users select one or more options by using the checkboxes component.
+body: This component uses [Checkbox component](/component-guide/checkbox).
 govuk_frontend_components:
   - checkboxes
 accessibility_criteria: |
@@ -10,10 +11,7 @@ accessibility_criteria: |
   - be usable with a keyboard
   - be usable with touch
   - indicate when they have focus
-  - be recognisable as form textarea elements
   - have correctly associated labels
-  - inform the user about the character limit
-  - inform the user as the number of left characters changes
 
   Labels use the [label component](/component-guide/label).
 examples:
@@ -91,5 +89,26 @@ examples:
           checked: true
         - label: "Irish"
           value: "irish"
+        - label: "Other"
+          value: "other"
+  checkbox_items_with_checked_items:
+    data:
+      name: "favourite_colour"
+      heading: "What is your favourite colour?"
+      items:
+        - label: "Red"
+          value: "red"
+          items:
+            - label: "Light Red"
+              value: "light_red"
+            - label: "Dark Red"
+              value: "dark_red"
+        - label: "Blue"
+          value: "blue"
+          items:
+            - label: "Light blue"
+              value: "light_blue"
+            - label: "Dark blue"
+              value: "dark_blue"
         - label: "Other"
           value: "other"

@@ -5,18 +5,22 @@
   css_classes << classes if classes
   error ||= nil
   css_classes << "govuk-form-group--error" if error
+  heading ||= nil
   hint_text ||= "Select all that apply."
   items ||= []
 
   # check if any item is set as being conditional
   has_conditional = items.any? { |item| item.is_a?(Hash) && item[:conditional] }
+  has_nested = items.any? { |item| item.is_a?(Hash) && item[:items] }
 %>
 
-<%= tag.div id: id, class: css_classes do %>
+<%= tag.div id: id, class: css_classes, data: { module: "checkboxes" } do %>
   <%= tag.fieldset class: "govuk-fieldset", "aria-describedby": "#{id}-hint #{"#{id}-error" if error}" do %>
 
-    <%= tag.legend class: "govuk-fieldset__legend govuk-fieldset__legend--xl" do %>
-      <%= tag.h1 heading, class: "govuk-fieldset__heading" %>
+    <% if heading.present? %>
+      <%= tag.legend class: "govuk-fieldset__legend govuk-fieldset__legend--xl" do %>
+        <%= tag.h1 heading, class: "govuk-fieldset__heading" %>
+      <% end %>
     <% end %>
 
     <%= tag.span hint_text, id: "#{id}-hint", class: "govuk-hint" %>
@@ -26,28 +30,31 @@
     <% end %>
 
     <%= tag.div class: "govuk-checkboxes", data: {
-      module: ('checkboxes' if has_conditional)
+      module: ('checkboxes' if has_conditional),
+      nested: ('true' if has_nested),
     } do %>
       <% items.each_with_index do |item, index| %>
-        <%= tag.div class: "govuk-checkboxes__item" do %>
-          <%= tag.input id: "#{id}-#{index}",
-            name: name,
-            type: "checkbox",
-            value: item[:value],
-            class: "govuk-checkboxes__input",
-            checked: item[:checked].present? ? "checked" : nil,
-            aria: {
-              describedby: item[:hint].present? ? "#{id}-#{index}-item-hint" : nil,
-              controls: item[:conditional].present? ? "#{id}-conditional-#{index}" : nil
-            } do %>
-            <%= tag.label item[:label], class: "govuk-label govuk-checkboxes__label", for: "#{id}-#{index}" %>
-            <% if item[:hint].present? %>
-              <%= tag.span item[:hint], id: "#{id}-#{index}-item-hint", class: "govuk-hint govuk-checkboxes__hint" %>
-            <% end %>
-          <% end %>
-        <% end %>
+        <%= render 'govuk_publishing_components/components/checkbox', {
+          id: id,
+          name: name,
+          item: item,
+          index: index,
+        } %>
         <% if item[:conditional] %>
           <%= tag.div item[:conditional], id: "#{id}-conditional-#{index}", class: "govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" %>
+        <% end %>
+
+        <% if item[:items].present? %>
+          <%= tag.div id: "#{id}-nested-#{index}", class: "govuk-checkboxes govuk-checkboxes--nested", data: { parent: "#{id}-#{index}" } do %>
+            <% item[:items].each_with_index do |nested_item, nested_index| %>
+              <%= render 'govuk_publishing_components/components/checkbox', {
+                id: id,
+                name: name,
+                item: nested_item,
+                index: "#{index}-#{nested_index}",
+              } %>
+            <% end %>
+          <% end %>
         <% end %>
       <% end %>
     <% end %>

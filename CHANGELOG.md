@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased changes
+
+* Add support to checkboxes to allow nested checkboxes and add new checkbox component (PR #626)
+
 ## 12.9.1
 
 * Fix showing multiple error items in a form field (PR #625)

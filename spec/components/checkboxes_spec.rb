@@ -104,4 +104,27 @@ describe "Checkboxes", type: :view do
     assert_select ".govuk-checkboxes"
     assert_select ".govuk-checkboxes__input[checked]", value: "british"
   end
+
+  it "renders checkboxes with nested items" do
+    render_component(
+      id: "favourite_colour_nested",
+      name: "favourite_colour_nested",
+      heading: "What is your favourite colour?",
+      items: [
+        {
+          label: "Red",
+          value: "red",
+          items: [
+            { label: "Light Red", value: "light_red" },
+            { label: "Dark Red", value: "dark_red" }
+          ]
+        },
+        { label: "Blue", value: "blue" },
+        { label: "Other", value: "other" }
+      ]
+    )
+    assert_select ".govuk-checkboxes"
+    assert_select ".govuk-checkboxes.govuk-checkboxes--nested"
+    assert_select ".govuk-checkboxes.govuk-checkboxes--nested input[value=light_red]"
+  end
 end
