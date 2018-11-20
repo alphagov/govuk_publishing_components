@@ -1,10 +1,11 @@
 // This component relies on JavaScript from GOV.UK Frontend
 //= require govuk-frontend/components/checkboxes/checkboxes.js
-
-window.GOVUK = window.GOVUK || {}
+window.GOVUK = window.GOVUK || {};
 window.GOVUK.Modules = window.GOVUK.Modules || {};
- (function (Modules) {
-  'use strict'
+
+(function (Modules) {
+  'use strict';
+
    Modules.Checkboxes = function () {
     this.start = function (scope) {
       var _this = this;
@@ -40,5 +41,5 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         $('#' + parent_id).prop("checked", false);
       }
     };
-  }
+  };
 })(window.GOVUK.Modules);
