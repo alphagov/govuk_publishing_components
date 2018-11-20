@@ -51,9 +51,9 @@
       text: error_message
     } %>
   <% elsif error_items %>
-    <%= render "govuk_publishing_components/components/error_summary", {
+    <%= render "govuk_publishing_components/components/error_message", {
       id: error_id,
-      items: error_items
+      text: raw(error_items.map { |item| item[:text] }.join("<br/>"))
     } %>
   <% end %>
 

@@ -147,6 +147,8 @@ examples:
       error_items:
       - text: Descriptive link to the question with an error 1
         href: '#example-error-1'
+      - text: Descriptive link to the question with an error 2
+        href: '#example-error-2'
       items:
       - value: "government-gateway"
         text: "Use Government Gateway"
