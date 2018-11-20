@@ -54,8 +54,12 @@ describe("selecting a parent checkbox", function () {
     loadCheckboxesComponent();
   });
 
-  it('checks all child when a parent is selected', function () { });
-  it('unchecks all child when a parent is deselected', function () { });
+  it('checks all child when a parent is selected', function () {
+     // TODO - NEEDS TO BE WRITTEN
+   });
+  it('unchecks all child when a parent is deselected', function () {
+     // TODO - NEEDS TO BE WRITTEN
+   });
 });
 
 describe("selecting a child checkbox", function () {
@@ -64,6 +68,10 @@ describe("selecting a child checkbox", function () {
     loadCheckboxesComponent();
   });
 
-  it('checks parent when all children are selected', function () { });
-  it('unchecks parent when one or more children are deselected', function () { });
+  it('checks parent when all children are selected', function () {
+    // TODO - NEEDS TO BE WRITTEN
+  });
+  it('unchecks parent when one or more children are deselected', function () {
+    // TODO - NEEDS TO BE WRITTEN
+  });
 });

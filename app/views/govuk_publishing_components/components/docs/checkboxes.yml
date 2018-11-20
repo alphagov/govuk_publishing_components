@@ -1,5 +1,6 @@
 name: Form checkboxes
 description: Let users select one or more options by using the checkboxes component.
+body: This component uses [Checkbox component](/component-guide/checkbox).
 govuk_frontend_components:
   - checkboxes
 accessibility_criteria: |
@@ -10,10 +11,7 @@ accessibility_criteria: |
   - be usable with a keyboard
   - be usable with touch
   - indicate when they have focus
-  - be recognisable as form textarea elements
   - have correctly associated labels
-  - inform the user about the character limit
-  - inform the user as the number of left characters changes
 
   Labels use the [label component](/component-guide/label).
 examples:
