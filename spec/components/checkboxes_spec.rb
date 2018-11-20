@@ -20,6 +20,23 @@ describe "Checkboxes", type: :view do
     assert_select "label[for='favourite-colour-0']", text: "Red"
     assert_select "label[for='favourite-colour-1']", text: "Green"
     assert_select "label[for='favourite-colour-2']", text: "Blue"
+    assert_select "legend", text: "What is your favourite colour?"
+    assert_select "legend h1", false
+  end
+
+  it "renders checkboxes with the legend as the page heading" do
+    render_component(
+      name: "favourite-skittle",
+      heading: "What is your favourite skittle?",
+      is_page_heading: true,
+      items: [
+        { label: "Red", value: "red" },
+        { label: "Green", value: "green" },
+        { label: "Blue", value: "blue" }
+      ]
+    )
+    assert_select ".govuk-checkboxes"
+    assert_select "legend h1", "What is your favourite skittle?"
   end
 
   it "renders checkboxes with custom hint text" do
