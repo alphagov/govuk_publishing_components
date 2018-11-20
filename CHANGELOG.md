@@ -7,9 +7,12 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## 12.9.0
+## 12.9.1
 
 * Fix showing multiple error items in a form field (PR #625)
+
+## 12.9.0
+
 * Add option to checkboxes to allow preselected items (PR #623)
 
 ## 12.8.0
