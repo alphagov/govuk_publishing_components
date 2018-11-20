@@ -1,10 +1,10 @@
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
-(function (global, GOVUK) {
+(function (Modules) {
   'use strict'
 
-  GOVUK.Modules.CopyToClipboard = function () {
+  Modules.CopyToClipboard = function () {
     this.start = function (element) {
       var input = element[0].querySelector('.gem-c-input')
       var copyButton = element[0].querySelector('.gem-c-button')
@@ -20,4 +20,4 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       })
     }
   }
-})(window, window.GOVUK)
+})(window.GOVUK.Modules)

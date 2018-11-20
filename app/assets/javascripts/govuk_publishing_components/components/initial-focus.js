@@ -1,12 +1,12 @@
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
-(function (GOVUK) {
+(function (Modules) {
   'use strict'
 
-  GOVUK.Modules.InitialFocus = function () {
+  Modules.InitialFocus = function () {
     this.start = function (element) {
       element.focus()
     }
   }
-})(window.GOVUK)
+})(window.GOVUK.Modules)
