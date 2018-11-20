@@ -1,6 +1,7 @@
 <%
   id ||= "checkbox-#{SecureRandom.hex(4)}"
   index ||= rand(1..100)
+  name = item[:name].present? ? item[:name] : name
 %>
 
 <%= tag.div class: "gem-c-checkbox govuk-checkboxes__item" do %>
