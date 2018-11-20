@@ -3,91 +3,109 @@
   items ||= []
 
   label ||= nil
+  heading ||= nil
+  is_page_heading ||= false
   hint ||= nil
   error_message ||= nil
   error_items ||= nil
+
   has_error = error_message || error_items&.any?
-  hint_id = "hint-#{SecureRandom.hex(4)}"
+  hint_id = "hint-#{SecureRandom.hex(4)}" if hint
   error_id = "error-#{SecureRandom.hex(4)}"
 
   form_group_css_classes = %w(govuk-form-group)
   form_group_css_classes << "govuk-form-group--error" if has_error
 
+  aria = "#{hint_id} #{"#{error_id}" if has_error}".strip if hint or has_error
+
   # check if any item is set as being conditional
   has_conditional = items.any? { |item| item.is_a?(Hash) && item[:conditional] }
 %>
 <%= content_tag :div, class: form_group_css_classes do %>
+  <%= tag.fieldset class: "govuk-fieldset", "aria-describedby": aria do %>
 
-  <% if hint %>
-    <%= render "govuk_publishing_components/components/hint", {
-      id: hint_id,
-      text: hint
-    } %>
-  <% end %>
-
-  <% if error_message %>
-    <%= render "govuk_publishing_components/components/error_message", {
-      id: error_id,
-      text: error_message
-    } %>
-  <% elsif error_items %>
-    <%= render "govuk_publishing_components/components/error_message", {
-      id: error_id,
-      text: raw(error_items.map { |item| item[:text] }.join("<br/>"))
-    } %>
-  <% end %>
-
-  <%= content_tag :div, class: "govuk-radios",
-    data: {
-      module: ('radios' if has_conditional)
-    } do %>
-    <% items.each_with_index do |item, index| %>
-      <% if item === :or %>
-        <div class="gem-c-radios__divider govuk-radios__divider">
-          <%= t('components.radio.or') %>
-        </div>
+    <% if heading.present? %>
+      <% if is_page_heading %>
+        <%= tag.legend class: "govuk-fieldset__legend govuk-fieldset__legend--xl gem-c-title gem-c-title--margin-bottom-5" do %>
+          <%= tag.h1 heading, class: "gem-c-title__text" %>
+        <% end %>
       <% else %>
-        <%
-          item_next = items[index + 1] unless index === items.size - 1
-          label_id = item[:id] ? item[:id] : "#{id_prefix}-#{index}"
-          label_hint_id = "label-hint-#{SecureRandom.hex(4)}" if item[:hint_text].present?
-          conditional_id = "conditional-#{SecureRandom.hex(4)}" if item[:conditional].present?
-
-          data_attrs = { "aria-controls": conditional_id }
-          data_attrs["tracking-url"] =  item[:url] if item.key?(:url)
-        %>
-        <%= tag.div class: %w( gem-c-radio govuk-radios__item ) do %>
-          <%= check_box_tag name,
-            item[:value],
-            item[:checked],
-            {
-              class: "govuk-radios__input",
-              id: label_id,
-              type: "radio",
-              aria: {
-                describedby: label_hint_id
-              },
-              data: data_attrs,
-            }
-          %>
-          <%= render "govuk_publishing_components/components/label", {
-            hint_id: label_hint_id,
-            html_for: label_id,
-            classes: "govuk-radios__label",
-            hint_text_classes: "govuk-radios__hint",
-            hint_text: item[:hint_text],
-            text: item[:text],
-            bold: item[:bold]
-          } %>
-        <% end %>
-
-        <% if item[:conditional] %>
-        <div class="govuk-radios__conditional" id="<%= conditional_id %>">
-          <%= item[:conditional] %>
-        </div>
-        <% end %>
-
+        <%= tag.legend heading, class: "govuk-fieldset__legend govuk-fieldset__legend--m" %>
       <% end %>
     <% end %>
+
+    <% if hint %>
+      <%= render "govuk_publishing_components/components/hint", {
+        id: hint_id,
+        text: hint
+      } %>
+    <% end %>
+
+    <% if error_message %>
+      <%= render "govuk_publishing_components/components/error_message", {
+        id: error_id,
+        text: error_message
+      } %>
+    <% elsif error_items %>
+      <%= render "govuk_publishing_components/components/error_message", {
+        id: error_id,
+        text: raw(error_items.map { |item| item[:text] }.join("<br/>"))
+      } %>
+    <% end %>
+
+    <%= content_tag :div, class: "govuk-radios",
+      data: {
+        module: ('radios' if has_conditional)
+      } do %>
+      <% items.each_with_index do |item, index| %>
+        <% if item === :or %>
+          <div class="gem-c-radios__divider govuk-radios__divider">
+            <%= t('components.radio.or') %>
+          </div>
+        <% else %>
+          <%
+            item_next = items[index + 1] unless index === items.size - 1
+            label_id = item[:id] ? item[:id] : "#{id_prefix}-#{index}"
+            label_hint_id = "label-hint-#{SecureRandom.hex(4)}" if item[:hint_text].present?
+            conditional_id = "conditional-#{SecureRandom.hex(4)}" if item[:conditional].present?
+
+            data_attrs = { "aria-controls": conditional_id }
+            data_attrs["tracking-url"] =  item[:url] if item.key?(:url)
+          %>
+          <%= tag.div class: %w( gem-c-radio govuk-radios__item ) do %>
+            <%= check_box_tag name,
+              item[:value],
+              item[:checked],
+              {
+                class: "govuk-radios__input",
+                id: label_id,
+                type: "radio",
+                aria: {
+                  describedby: label_hint_id
+                },
+                data: data_attrs,
+              }
+            %>
+            <%= render "govuk_publishing_components/components/label", {
+              hint_id: label_hint_id,
+              html_for: label_id,
+              classes: "govuk-radios__label",
+              hint_text_classes: "govuk-radios__hint",
+              hint_text: item[:hint_text],
+              text: item[:text],
+              bold: item[:bold]
+            } %>
+          <% end %>
+
+          <% if item[:conditional] %>
+          <div class="govuk-radios__conditional" id="<%= conditional_id %>">
+            <%= item[:conditional] %>
+          </div>
+          <% end %>
+
+        <% end %>
+      <% end %>
+    <% end %>
+
   <% end %>
 <% end %>
