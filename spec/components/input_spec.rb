@@ -33,6 +33,16 @@ describe "Input", type: :view do
     assert_select ".govuk-input[name='email-address']"
   end
 
+  it "renders an input with a given id" do
+    render_component(
+      label: { text: "What is your email address?" },
+      name: "email-address",
+      id: "test"
+    )
+
+    assert_select ".govuk-input#test"
+  end
+
   it "sets the 'for' on the label to the input id" do
     render_component(
       label: { text: "What is your email address?" },

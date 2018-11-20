@@ -30,6 +30,13 @@ examples:
         text: "What is your email address?"
       name: "address"
       type: "email"
+  with_an_identifier:
+    description: Give the input a specific ID.
+    data:
+      label:
+        text: "Has an id"
+      name: "hasid"
+      id: "hasid"
   aria_described_by:
     description: |
       Allows the addition of an aria-describedby attribute. Note that this will be overridden in the event of an error, where the error will be used for the describedby attribute value.
