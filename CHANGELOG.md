@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased changes
+## 12.10.0
 
 * Add support to checkboxes to allow nested checkboxes and add new checkbox component (PR #626)
 
