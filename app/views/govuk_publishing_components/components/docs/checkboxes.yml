@@ -26,6 +26,18 @@ examples:
           value: "green"
         - label: "Blue"
           value: "blue"
+  with_legend_as_page_heading:
+    data:
+      name: "favourite_colour"
+      heading: "What is your favourite colour?"
+      is_page_heading: true
+      items:
+        - label: "Red"
+          value: "red"
+        - label: "Green"
+          value: "green"
+        - label: "Blue"
+          value: "blue"
   custom_hint_text:
     data:
       name: "favourite_skittle"

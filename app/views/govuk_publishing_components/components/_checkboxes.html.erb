@@ -8,6 +8,7 @@
   heading ||= nil
   hint_text ||= "Select all that apply."
   items ||= []
+  is_page_heading ||= false
 
   # check if any item is set as being conditional
   has_conditional = items.any? { |item| item.is_a?(Hash) && item[:conditional] }
@@ -18,8 +19,12 @@
   <%= tag.fieldset class: "govuk-fieldset", "aria-describedby": "#{id}-hint #{"#{id}-error" if error}" do %>
 
     <% if heading.present? %>
-      <%= tag.legend class: "govuk-fieldset__legend govuk-fieldset__legend--xl" do %>
-        <%= tag.h1 heading, class: "govuk-fieldset__heading" %>
+      <% if is_page_heading %>
+        <%= tag.legend class: "govuk-fieldset__legend govuk-fieldset__legend--xl gem-c-title gem-c-title--margin-bottom-5" do %>
+          <%= tag.h1 heading, class: "gem-c-title__text" %>
+        <% end %>
+      <% else %>
+        <%= tag.legend heading, class: "govuk-fieldset__legend govuk-fieldset__legend--m" %>
       <% end %>
     <% end %>
 
