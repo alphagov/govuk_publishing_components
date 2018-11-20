@@ -7,6 +7,11 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 12.10.0
+
+* Update back link component to allow injection of custom text (PR #628)
+* Update panel component to only render div if description is provided (PR #628)
+
 ## 12.9.1
 
 * Fix showing multiple error items in a form field (PR #625)
