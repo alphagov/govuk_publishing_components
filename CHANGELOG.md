@@ -10,6 +10,7 @@
 ## Unreleased
 
 - Add a readonly option to input component
+- Copy to clipboard is readonly and selects input on click
 
 ## 12.11.0
 
