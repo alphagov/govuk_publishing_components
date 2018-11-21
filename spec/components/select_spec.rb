@@ -10,23 +10,27 @@ describe "Select", type: :view do
   end
 
   it "does not render if items are passed but no id is passed" do
-    assert_empty render_component(label: 'My label',
-        options: [
+    assert_empty render_component(
+      label: 'My label',
+      options: [
         {
           value: "government-gateway",
           text: "Use Government Gateway"
         }
-      ])
+      ]
+    )
   end
 
   it "does not render if items are passed but no label is passed" do
-    assert_empty render_component(id: 'mydropdown',
-        options: [
+    assert_empty render_component(
+      id: 'mydropdown',
+      options: [
         {
           value: "government-gateway",
           text: "Use Government Gateway"
         }
-      ])
+      ]
+    )
   end
 
 
@@ -98,5 +102,28 @@ describe "Select", type: :view do
     )
 
     assert_select ".govuk-select option[value=medium][selected]"
+  end
+
+  it "renders a select with data attributes" do
+    render_component(
+      id: "mydropdown",
+      label: "attributes",
+      options: [
+        {
+          value: 1,
+          text: "One",
+          data_attributes: {
+            track_category: "category",
+            track_action: "action",
+            track_options: {
+              dimension28: 28,
+              dimension29: "twentynine"
+            }
+          }
+        }
+      ]
+    )
+
+    assert_select ".govuk-select option[value=1][data-track-category='category'][data-track-action='action'][data-track-options='{\"dimension28\":28,\"dimension29\":\"twentynine\"}']"
   end
 end

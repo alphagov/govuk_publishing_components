@@ -22,7 +22,7 @@ examples:
   with_preselect:
     data:
       id: 'dropdown2'
-      label: 'My Dropdown'
+      label: 'Option 2 preselected'
       options:
       - text: 'Option one'
         value: 'option1'
@@ -31,3 +31,25 @@ examples:
         selected: true
       - text: 'Option three'
         value: 'option3'
+  with_data_attributes:
+    description: Data attributes can be added to the option elements of the select. Note that the component will not do anything with them - Javascript will have to be added in the application that uses the component, for example to fire tracking events.
+    data:
+      id: 'dropdown3'
+      label: 'With data attributes'
+      options:
+      - text: 'Option one'
+        value: 'option1'
+        data_attributes:
+          track_category: "hello"
+          something_else: "moo"
+      - text: 'Option two'
+        value: 'option2'
+      - text: 'Option three'
+        value: 'option3'
+        data_attributes:
+          track_category: 'navDocumentCollectionLinkClicked'
+          track_action: 1.1
+          track_label: '/government/publications/parental-responsibility-measures-for-behaviour-and-attendance'
+          track_options:
+            dimension28: 2
+            dimension29: 'School behaviour and attendance: parental responsibility measures'

@@ -2,6 +2,8 @@
   options ||= []
   id ||= false
   label ||= false
+
+  select_helper = GovukPublishingComponents::Presenters::SelectHelper.new(options)
 %>
 <% if options.any? && id && label %>
   <div class="govuk-form-group gem-c-select">
@@ -9,9 +11,7 @@
       <%= label %>
     </label>
     <select class="govuk-select" id="<%= id %>" name="<%= id %>">
-      <% options.each do |option| %>
-        <option value="<%= option[:value] %>" <% if option[:selected] %>selected<% end %>><%= option[:text] %></option>
-      <% end %>
+      <%= options_for_select(select_helper.option_markup, select_helper.selected_option) %>
     </select>
   </div>
 <% end %>
