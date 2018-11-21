@@ -4,9 +4,11 @@
   id = "#{id}-#{index}" if index
   controls ||= item[:conditional].present? ? "#{id}-conditional-#{index || rand(1..100)}" : nil
   name = item[:name].present? ? item[:name] : name
+  margin_bottom ||= false
+  margin_bottom_class = "gem-c-checkbox--margin-bottom" if margin_bottom
 %>
 
-<%= tag.div class: "gem-c-checkbox govuk-checkboxes__item", data: { module: "checkbox", 'aria-controls': controls }  do %>
+<%= tag.div class: "gem-c-checkbox govuk-checkboxes__item #{margin_bottom_class}", data: { module: "checkbox", 'aria-controls': controls }  do %>
   <%= tag.input id: id,
     name: name,
     type: "checkbox",
@@ -23,5 +25,3 @@
     <%= tag.span item[:hint], id: "#{id}-item-hint", class: "govuk-hint govuk-checkboxes__hint" %>
   <% end %>
 <% end %>
-
-

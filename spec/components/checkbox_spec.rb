@@ -89,4 +89,14 @@ describe "Checkbox", type: :view do
     render_component(item: item, id: "myid", index: 10)
     assert_select ".govuk-checkboxes__input#myid-10"
   end
+
+  it "renders a checkbox with bottom margin" do
+    item = {
+      label: "With id",
+      value: "id",
+    }
+
+    render_component(item: item, margin_bottom: true)
+    assert_select ".gem-c-checkbox.gem-c-checkbox--margin-bottom"
+  end
 end

@@ -74,4 +74,13 @@ examples:
       item:
         label: "Are you happy?"
         value: "happy"
+  checkbox_with_bottom_margin:
+    description: By default the component has no bottom margin, this option adds it.
+    data:
+      name: "behold_my_bottom_margin"
+      margin_bottom: true
+      item:
+        label: "Do you like my bottom margin?"
+        value: "bottom_margin"
+
 
