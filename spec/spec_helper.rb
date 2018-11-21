@@ -1,5 +1,5 @@
 ENV["RAILS_ENV"] = "test"
-require File.expand_path("../../spec/dummy/config/environment.rb", __FILE__)
+require File.expand_path('../spec/dummy/config/environment.rb', __dir__)
 require 'webmock/rspec'
 require 'capybara/rails'
 require 'capybara/poltergeist'

@@ -1,4 +1,3 @@
-
 namespace :component do
   desc 'warns if component view files exist without corresponding documentation'
   task :validate_documentation_exists do

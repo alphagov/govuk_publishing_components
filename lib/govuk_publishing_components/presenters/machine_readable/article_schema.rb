@@ -80,7 +80,7 @@ module GovukPublishingComponents
       def step_by_step_schemas
         # We could include `related_to_step_navs` eventually too, but initially
         # link to those that we render in the "step_by_step_nav_related" component
-        @step_by_steps ||= fetch_step_by_step_schemas
+        @step_by_step_schemas ||= fetch_step_by_step_schemas
       end
 
       def fetch_step_by_step_schemas
@@ -103,6 +103,7 @@ module GovukPublishingComponents
 
       def has_part
         return {} unless collection_pages("documents").any?
+
         {
             "hasPart" => collection_pages("documents").map { |document| HasPartSchema.new(document).structured_data }
         }
@@ -123,6 +124,7 @@ module GovukPublishingComponents
 
       def about
         return {} unless live_taxons.any?
+
         {
             "about" => linked_taxons
         }
@@ -131,6 +133,7 @@ module GovukPublishingComponents
       def live_taxons
         taxons = page.content_item.dig("links", "taxons")
         return [] unless taxons
+
         taxons.select { |taxon| taxon["phase"] == "live" }
       end
 

@@ -59,7 +59,7 @@ module GovukPublishingComponents
       end
 
       def related_content_by_taxon
-        @related_items_by_taxon ||= begin
+        @related_content_by_taxon ||= begin
           curated_related_items = @content_item.curated_taxonomy_sidebar_links.to_set
 
           @content_item.parent_taxons.each_with_object({}) do |taxon, items_by_taxon|

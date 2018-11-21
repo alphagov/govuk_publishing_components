@@ -1,4 +1,4 @@
-$:.push File.expand_path("../lib", __FILE__)
+$:.push File.expand_path('lib', __dir__)
 
 # Maintain your gem's version:
 require "govuk_publishing_components/version"
@@ -16,26 +16,26 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{node_modules,app,config,db,lib}/**/*", "DEVELOPMENT.md", "LICENCE.md", "Rakefile", "README.md"]
 
-  s.add_dependency "govuk_app_config"
-  s.add_dependency "rails", ">= 5.0.0.1"
-  s.add_dependency "sass-rails", ">= 5.0.4"
-  s.add_dependency "govuk_frontend_toolkit"
   s.add_dependency "govspeak", ">= 5.0.3"
-  s.add_dependency "rouge"
+  s.add_dependency "govuk_app_config"
+  s.add_dependency "govuk_frontend_toolkit"
+  s.add_dependency "rails", ">= 5.0.0.1"
   s.add_dependency "rake"
+  s.add_dependency "rouge"
+  s.add_dependency "sass-rails", ">= 5.0.4"
 
-  s.add_development_dependency "govuk-lint", "~> 3.3"
-  s.add_development_dependency "rspec-rails", "~> 3.6"
   s.add_development_dependency "capybara", "~> 2.14.4"
-  s.add_development_dependency "poltergeist", "~> 1.16.0"
-  s.add_development_dependency "jasmine", "~> 2.4.0"
-  s.add_development_dependency "uglifier", ">= 1.3.0"
   s.add_development_dependency "foreman", "~> 0.64"
   s.add_development_dependency "gds-api-adapters"
+  s.add_development_dependency "govuk-lint", "~> 3.3"
   s.add_development_dependency "govuk_schemas", "~> 3.2"
+  s.add_development_dependency "jasmine", "~> 2.4.0"
+  s.add_development_dependency "poltergeist", "~> 1.16.0"
+  s.add_development_dependency "rspec-rails", "~> 3.6"
+  s.add_development_dependency "uglifier", ">= 1.3.0"
   # Needed to load slimmer test helpers
   # https://github.com/alphagov/slimmer/issues/201
-  s.add_development_dependency "webmock", "~> 3.0.1"
   s.add_development_dependency "pry-byebug"
+  s.add_development_dependency "webmock", "~> 3.0.1"
   s.add_development_dependency "yard"
 end

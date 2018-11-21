@@ -14,7 +14,7 @@ module GovukPublishingComponents
             image_src: image_card[:image][:url],
             image_alt: image_card[:image][:alt],
             heading_level: image_card[:link][:heading_level],
-            href_data_attributes: (image_card[:link][:data_attributes] if image_card[:link][:data_attributes])
+            href_data_attributes: image_card[:link][:data_attributes]
           }
         end
       end

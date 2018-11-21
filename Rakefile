@@ -5,7 +5,7 @@ rescue LoadError
   puts "Running in production mode"
 end
 
-APP_RAKEFILE = File.expand_path("../spec/dummy/Rakefile", __FILE__)
+APP_RAKEFILE = File.expand_path('spec/dummy/Rakefile', __dir__)
 
 load 'rails/tasks/engine.rake'
 load 'rails/tasks/statistics.rake'

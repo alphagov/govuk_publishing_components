@@ -153,12 +153,14 @@ module GovukPublishingComponents
 
       def related_mainstream_content
         return [] unless @content_item["document_type"] == "detailed_guide"
+
         content = link_group("related_mainstream_content")
         build_links_for_sidebar(content)
       end
 
       def related_guides
         return [] unless @content_item["document_type"] == "detailed_guide"
+
         guides = link_group("related_guides")
         build_links_for_sidebar(guides)
       end

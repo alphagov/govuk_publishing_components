@@ -15,17 +15,18 @@ module GovukPublishingComponents
       def parent
         parent_item = content_store_response.dig("links", "parent", 0)
         return unless parent_item
+
         ContentItem.new(parent_item)
       end
 
       def parent_taxon
         # TODO: Determine what to do when there are multiple taxons/parents. For
         # now just display the first of each.
-        parent_taxons.sort_by(&:title).first
+        parent_taxons.min_by(&:title)
       end
 
       def parent_taxons
-        @_parent_taxons ||= begin
+        @parent_taxons ||= begin
           taxon_links
             .select { |t| phase_is_live?(t) }
             .map { |taxon| ContentItem.new(taxon) }.sort_by(&:title)

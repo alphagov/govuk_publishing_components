@@ -13,11 +13,13 @@ module GovukPublishingComponents
 
       def email_signup_link_text
         return @local_assigns[:email_signup_link_text] if @local_assigns[:email_signup_link_text]
+
         I18n.t("govuk_component.subscription_links.email_signup_link_text", default: "Get email alerts")
       end
 
       def feed_link_text
         return @local_assigns[:feed_link_text] if @local_assigns[:feed_link_text]
+
         I18n.t("govuk_component.subscription_links.feed_link_text", default: "Subscribe to feed")
       end
 
@@ -31,6 +33,7 @@ module GovukPublishingComponents
 
       def feed_link
         return "#" if feed_link_box_value
+
         @local_assigns[:feed_link]
       end
 

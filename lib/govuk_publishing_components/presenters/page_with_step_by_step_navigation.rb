@@ -31,6 +31,7 @@ module GovukPublishingComponents
 
       def show_related_links?
         return true if active_step_by_step?
+
         step_navs.any? && step_navs.count < 5
       end
 
@@ -86,6 +87,7 @@ module GovukPublishingComponents
 
       def current_step_nav
         return active_step_by_step if active_step_by_step?
+
         step_navs.first
       end
 

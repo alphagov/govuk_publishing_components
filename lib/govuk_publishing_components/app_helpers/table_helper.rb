@@ -52,7 +52,7 @@ module GovukPublishingComponents
           link_clases = %w(app-table__sort-link)
           link_clases << "app-table__sort-link--#{opt[:sort_direction]}" if opt[:sort_direction]
           str = link_to str, opt[:href], class: link_clases if opt[:href]
-          tag.th str, class: classes, scope: opt[:scope] ? opt[:scope] : "col"
+          tag.th str, class: classes, scope: opt[:scope] || "col"
         end
 
         def cell(str, opt = {})

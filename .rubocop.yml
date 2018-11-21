@@ -2,3 +2,4 @@ Metrics/BlockLength:
   Exclude:
     - 'lib/tasks/*.rake'
     - 'spec/**/*.rb'
+    - '*.gemspec'

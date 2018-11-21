@@ -23,6 +23,7 @@ module GovukPublishingComponents
 
       def is_tracking?
         return true if @href_data_attributes
+
         if @extra_links
           @extra_links.each do |link|
             return true if link[:data_attributes]
