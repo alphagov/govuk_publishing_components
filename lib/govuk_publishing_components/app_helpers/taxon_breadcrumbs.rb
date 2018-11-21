@@ -52,7 +52,7 @@ module GovukPublishingComponents
         end
 
         def parent_taxon
-          @_parent_taxon ||= begin
+          @parent_taxon ||= begin
             parent_content_item = content_item.dig("links", "parent_taxons", 0)
 
             ContentItem.new(parent_content_item) unless parent_content_item.nil?

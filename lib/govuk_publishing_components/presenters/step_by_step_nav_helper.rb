@@ -95,6 +95,7 @@ module GovukPublishingComponents
       def link_href(active, href)
         return "#content" if active
         return href if external_url?(href)
+
         link_with_step_nav_query_parameter(href)
       end
 
@@ -105,6 +106,7 @@ module GovukPublishingComponents
       def link_with_step_nav_query_parameter(href)
         step_nav_content_id = @options[:step_nav_content_id]
         return href if step_nav_content_id.blank?
+
         uri = URI.parse(href)
         exisiting_query_params = uri.query.present? ? CGI.parse(uri.query) : {}
         new_query_params = exisiting_query_params.merge("step-by-step-nav" => step_nav_content_id)
