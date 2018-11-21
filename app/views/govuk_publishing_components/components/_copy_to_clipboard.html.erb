@@ -1,3 +1,6 @@
+<%
+  button_data_attributes ||= nil
+%>
 <div class="gem-c-copy-to-clipboard" data-module="copy-to-clipboard">
   <%= render "govuk_publishing_components/components/input", {
     label: {
@@ -10,6 +13,7 @@
 
   <%= render "govuk_publishing_components/components/button", {
     text: button_text,
+    data_attributes: button_data_attributes,
     secondary_quiet: true,
   } %>
 </div>

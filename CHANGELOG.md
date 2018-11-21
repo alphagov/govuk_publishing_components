@@ -11,6 +11,7 @@
 
 - Add a readonly option to input component
 - Copy to clipboard is readonly and selects input on click
+- Copy to clipboard supports data attributes for the button element
 
 ## 12.11.0
 
