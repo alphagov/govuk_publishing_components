@@ -10,3 +10,7 @@ examples:
   default:
     data:
       href: '#'
+  custom_text:
+    data:
+      text: 'Back to document list'
+      href: '#'
