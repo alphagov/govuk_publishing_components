@@ -2,6 +2,7 @@
   index ||= false
   id ||= "checkbox-#{SecureRandom.hex(4)}"
   id = "#{id}-#{index}" if index
+  controls ||= item[:conditional].present? ? "#{id}-conditional-#{index || rand(1..100)}" : nil
   name = item[:name].present? ? item[:name] : name
 %>
 
@@ -15,7 +16,7 @@
     data: item[:data_attributes],
     aria: {
       describedby: item[:hint].present? ? "#{id}-item-hint" : nil,
-      controls: item[:conditional].present? ? "#{id}-conditional-#{index}" : nil
+      controls: controls
     }
   %>
   <%= tag.label item[:label], class: "govuk-label govuk-checkboxes__label", for: id %>
