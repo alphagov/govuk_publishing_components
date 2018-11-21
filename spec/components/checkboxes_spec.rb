@@ -99,11 +99,12 @@ describe "Checkboxes", type: :view do
       items: [
         { label: "British", value: "british", conditional: "including English, Scottish, Welsh and Northern Irish" },
         { label: "Irish", value: "irish" },
-        { label: "Other", value: "other" }
+        { label: "Other", value: "other", conditional: "Sorry this is so vague" }
       ]
     )
     assert_select ".govuk-checkboxes"
-    assert_select("#nationality-conditional-0", text: "including English, Scottish, Welsh and Northern Irish")
+    assert_select("#nationality-0-conditional-0", text: "including English, Scottish, Welsh and Northern Irish")
+    assert_select("#nationality-2-conditional-2", text: "Sorry this is so vague")
   end
 
   it "renders checkboxes with preselected items" do

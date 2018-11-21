@@ -1,22 +1,27 @@
 <%
+  index ||= false
   id ||= "checkbox-#{SecureRandom.hex(4)}"
-  index ||= rand(1..100)
+  id = "#{id}-#{index}" if index
   name = item[:name].present? ? item[:name] : name
 %>
 
 <%= tag.div class: "gem-c-checkbox govuk-checkboxes__item" do %>
-  <%= tag.input id: "#{id}-#{index}",
+  <%= tag.input id: id,
     name: name,
     type: "checkbox",
     value: item[:value],
     class: "govuk-checkboxes__input",
     checked: item[:checked].present? ? "checked" : nil,
+    data: item[:data_attributes],
     aria: {
-      describedby: item[:hint].present? ? "#{id}-#{index}-item-hint" : nil,
+      describedby: item[:hint].present? ? "#{id}-item-hint" : nil,
       controls: item[:conditional].present? ? "#{id}-conditional-#{index}" : nil
-  } %>
-  <%= tag.label item[:label], class: "govuk-label govuk-checkboxes__label", for: "#{id}-#{index}" %>
+    }
+  %>
+  <%= tag.label item[:label], class: "govuk-label govuk-checkboxes__label", for: id %>
   <% if item[:hint].present? %>
-    <%= tag.span item[:hint], id: "#{id}-#{index}-item-hint", class: "govuk-hint govuk-checkboxes__hint" %>
+    <%= tag.span item[:hint], id: "#{id}-item-hint", class: "govuk-hint govuk-checkboxes__hint" %>
   <% end %>
 <% end %>
+
+
