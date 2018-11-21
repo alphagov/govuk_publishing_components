@@ -52,19 +52,30 @@ module GovukPublishingComponents
 
       def construct_section_heading(section_title)
         unless section_title === "related_items"
-          I18n.t('components.related_navigation.' + section_title, default: section_title.tr('_', ' '))
+          I18n.t("components.related_#{@context}_navigation." + section_title,
+                 default: [
+                   I18n.t('components.related_navigation.' + section_title),
+                   section_title.tr('_', ' '),
+                 ])
         end
       end
 
       def section_css_class(css_class, section_title, link = {})
+        css_classes = [css_class, "#{css_class}--#{@context}"]
+
         unless DEFINED_SECTIONS.include?(section_title) || link.fetch(:finder, false)
-          css_class += " #{css_class}--other"
+          css_classes << " #{css_class}--other"
         end
-        css_class
+
+        css_classes.join(' ')
       end
 
       def section_data_track_count(section_title)
         String(@context || 'sidebar') + String(section_title).camelcase
+      end
+
+      def section_heading_level
+        @context == :footer ? 'h2' : 'h3'
       end
 
       def calculate_section_link_limit(links)

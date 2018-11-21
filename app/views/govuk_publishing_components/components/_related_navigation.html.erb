@@ -3,12 +3,15 @@
 <% if related_nav_helper.related_navigation? %>
   <% random = SecureRandom.hex(4) %>
   <div class="gem-c-related-navigation">
-    <h2 id="related-nav-related_items-<%= random %>"
-        class="gem-c-related-navigation__main-heading"
-        data-track-count="sidebarRelatedItemSection" >
-      <%= t("components.related_#{local_assigns[:context]}_navigation.related_content",
-            default: t('components.related_navigation.related_content')) %>
-    </h2>
+
+    <% if local_assigns[:context] != :footer %>
+      <h2 id="related-nav-related_items-<%= random %>"
+          class="gem-c-related-navigation__main-heading"
+          data-track-count="sidebarRelatedItemSection">
+        <%= t("components.related_#{local_assigns[:context]}_navigation.related_content",
+              default: t('components.related_navigation.related_content')) %>
+      </h2>
+    <% end %>
 
     <% section_index = 0 %>
 

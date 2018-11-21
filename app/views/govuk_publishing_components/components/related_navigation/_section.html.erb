@@ -4,11 +4,16 @@
      data-module="gem-toggle">
 
   <% unless section_title === "related_items" %>
-    <h3 id="related-nav-<%= section_title %>-<%= random %>"
-      data-track-count="<%= related_nav_helper.section_data_track_count(:related_item_section) %>"
-      class="<%= related_nav_helper.section_css_class("gem-c-related-navigation__sub-heading", section_title) %>">
-      <%= related_nav_helper.construct_section_heading(section_title) %>
-    </h3>
+    <%=
+      heading_class = related_nav_helper.section_css_class("gem-c-related-navigation__sub-heading", section_title)
+      heading_data = { 'track-count' => related_nav_helper.section_data_track_count(:related_item_section) }
+      heading_id = "related-nav-#{section_title}-#{random}"
+      heading_level = related_nav_helper.section_heading_level
+
+      content_tag(heading_level, id: heading_id, class: heading_class, data: heading_data) do
+        related_nav_helper.construct_section_heading(section_title)
+      end
+    %>
   <% end %>
 
   <ul class="gem-c-related-navigation__link-list" data-module="track-click">
