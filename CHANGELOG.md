@@ -7,6 +7,12 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+- Add a readonly option to input component
+- Copy to clipboard is readonly and selects input on click
+- Copy to clipboard supports data attributes for the button element
+
 ## 12.11.0
 
 * Make the legend as page heading optional (PR #630)
