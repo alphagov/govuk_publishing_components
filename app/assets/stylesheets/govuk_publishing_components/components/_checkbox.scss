@@ -1,3 +1,6 @@
+@import "helpers/govuk-frontend-settings";
+@import "govuk-frontend/components/checkboxes/checkboxes";
+
 .gem-c-checkbox.gem-c-checkbox--margin-bottom:last-child,
 .gem-c-checkbox.gem-c-checkbox--margin-bottom:last-of-type {
   margin-bottom: $gutter-two-thirds;
