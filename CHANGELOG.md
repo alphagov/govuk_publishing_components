@@ -9,7 +9,8 @@
 
 ## Unreleased
 
-- Add heading options to radio component (PR #635)
+* Add heading options to radio component (PR #635)
+* Add tests for checkbox JS
 
 ## 12.12.1
 
