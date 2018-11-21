@@ -75,3 +75,10 @@ examples:
       name: "username"
       autofocus: true
       tabindex: 0
+  readonly:
+    data:
+      label:
+        text: "Readonly attribute"
+      name: "readonly"
+      value: "You can't change me"
+      readonly: true

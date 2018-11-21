@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+- Add a readonly option to input component
+
 ## 12.11.0
 
 * Make the legend as page heading optional (PR #630)
