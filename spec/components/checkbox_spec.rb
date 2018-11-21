@@ -16,6 +16,7 @@ describe "Checkbox", type: :view do
       }
     )
     assert_select ".govuk-checkboxes__item"
+    assert_select ".govuk-checkboxes__input[aria-controls]", false
     assert_select "label[for='favourite_colour_default-1']", text: "Red"
     assert_select "input[name='favourite_colour_default']", value: "red_colour"
   end
@@ -87,36 +88,5 @@ describe "Checkbox", type: :view do
 
     render_component(item: item, id: "myid", index: 10)
     assert_select ".govuk-checkboxes__input#myid-10"
-  end
-
-  it "renders a checkbox without aria-controls" do
-    item = {
-      label: "Without controls",
-      value: "controls"
-    }
-
-    render_component(item: item)
-    assert_select ".govuk-checkboxes__input[aria-controls]", false
-  end
-
-  it "renders a checkbox with aria-controls" do
-    item = {
-      label: "With controls",
-      value: "controls"
-    }
-
-    render_component(item: item, controls: "nothing")
-    assert_select ".govuk-checkboxes__input[aria-controls='nothing']"
-  end
-
-  it "renders a checkbox with a generated aria-controls" do
-    item = {
-      label: "With generated controls",
-      value: "controls",
-      conditional: "This is a thing"
-    }
-
-    render_component(item: item, id: "id", index: 2)
-    assert_select ".govuk-checkboxes__input[aria-controls='id-2-conditional-2']"
   end
 end

@@ -65,7 +65,7 @@ examples:
         }
   checkbox_with_aria_controls:
     description: |
-      A value for aria-controls can be passed to the checkbox.
+      A value for aria-controls can be passed to the checkbox. This is applied using Javascript.
 
       If a value is not passed, and a value for conditional has been passed, a value is generated based on the id of the checkbox and the passed index. This is used in the [form checkboxes component](/component-guide/checkboxes/checkbox_items_with_conditional_reveal).
     data:

@@ -1,7 +1,7 @@
 describe("Checkboxes component", function () {
   function loadCheckboxesComponent () {
-      var checkboxes = new GOVUK.Modules.Checkboxes();
-      checkboxes.start($('.gem-c-checkboxes'));
+    var checkboxes = new GOVUK.Modules.Checkboxes();
+    checkboxes.start($('.gem-c-checkboxes'));
   }
 
   var FIXTURE = '\

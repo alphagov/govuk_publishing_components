@@ -6,7 +6,7 @@
   name = item[:name].present? ? item[:name] : name
 %>
 
-<%= tag.div class: "gem-c-checkbox govuk-checkboxes__item" do %>
+<%= tag.div class: "gem-c-checkbox govuk-checkboxes__item", data: { module: "checkbox", 'aria-controls': controls }  do %>
   <%= tag.input id: id,
     name: name,
     type: "checkbox",
@@ -15,8 +15,7 @@
     checked: item[:checked].present? ? "checked" : nil,
     data: item[:data_attributes],
     aria: {
-      describedby: item[:hint].present? ? "#{id}-item-hint" : nil,
-      controls: controls
+      describedby: item[:hint].present? ? "#{id}-item-hint" : nil
     }
   %>
   <%= tag.label item[:label], class: "govuk-label govuk-checkboxes__label", for: id %>
