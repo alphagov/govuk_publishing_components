@@ -9,9 +9,11 @@
 
 ## Unreleased
 
-- Add a readonly option to input component
-- Copy to clipboard is readonly and selects input on click
-- Copy to clipboard supports data attributes for the button element
+* Add a readonly option to input component
+* Copy to clipboard is readonly and selects input on click
+* Copy to clipboard supports data attributes for the button element
+* Update back link component to allow injection of custom text (PR #628)
+* Update panel component to only render div if description is provided (PR #628)
 
 ## 12.11.0
 
