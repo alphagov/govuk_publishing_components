@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 12.11.0
+
+* Make the legend as page heading optional (PR #630)
+
 ## 12.10.0
 
 * Add support to checkboxes to allow nested checkboxes and add new checkbox component (PR #626)
