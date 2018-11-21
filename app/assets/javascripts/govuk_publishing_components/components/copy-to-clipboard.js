@@ -6,11 +6,15 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   GOVUK.Modules.CopyToClipboard = function () {
     this.start = function (element) {
+      var input = element[0].querySelector('.gem-c-input')
       var copyButton = element[0].querySelector('.gem-c-button')
+
+      input.addEventListener('click', function() {
+        input.select()
+      })
 
       copyButton.addEventListener('click', function (event) {
         event.preventDefault()
-        var input = element[0].querySelector('.gem-c-input')
         input.select()
         document.execCommand('copy')
       })
