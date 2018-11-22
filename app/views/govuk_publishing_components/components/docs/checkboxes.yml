@@ -103,7 +103,7 @@ examples:
           value: "irish"
         - label: "Other"
           value: "other"
-  checkbox_items_with_checked_items:
+  checkbox_items_with_nested_checkboxes:
     data:
       name: "favourite_colour"
       heading: "What is your favourite colour?"
