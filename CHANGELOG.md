@@ -7,10 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 12.13.0
 
 * Add heading options to radio component (PR #635)
-* Add tests for checkbox JS
+* Add tests for checkbox JS (PR# 636)
 
 ## 12.12.1
 
