@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased changes
+## 12.12.1
 
 * Corrects name for checkboxes documentation (PR #638)
 
