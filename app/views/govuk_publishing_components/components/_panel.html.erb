@@ -5,9 +5,9 @@
   <h2 class="govuk-panel__title">
     <%= title %>
   </h2>
-  <div class="govuk-panel__body">
-    <% if description %>
-      <%= description %>
-    <% end %>
-  </div>
+  <% if description %>
+    <div class="govuk-panel__body">
+      <%= description %> 
+    </div>
+  <% end %>
 </div>

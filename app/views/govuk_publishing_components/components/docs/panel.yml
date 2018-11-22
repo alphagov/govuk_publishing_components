@@ -11,3 +11,6 @@ examples:
       description: |
         Your reference number<br>
         <strong>HDJ2123F</strong>
+  no_description:
+    data:
+      title: Content has been published
