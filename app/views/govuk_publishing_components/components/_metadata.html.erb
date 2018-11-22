@@ -20,13 +20,13 @@
     <% if from.any? %>
       <dt class="gem-c-metadata__term"><%= t("govuk_component.metadata.from", default: "From") %>:</dt>
       <dd class="gem-c-metadata__definition">
-        <%= render 'govuk_publishing_components/components/metadata/sentence', items: from, toggle_id: "from" %>
+        <%= render 'govuk_publishing_components/components/metadata/sentence', items: from, toggle_id: "from-#{SecureRandom.hex(4)}" %>
       </dd>
     <% end %>
     <% if part_of.any? %>
       <dt class="gem-c-metadata__term"><%= t("govuk_component.metadata.part_of", default: "Part of") %>:</dt>
       <dd class="gem-c-metadata__definition">
-        <%= render 'govuk_publishing_components/components/metadata/sentence', items: part_of, toggle_id: "part-of" %>
+        <%= render 'govuk_publishing_components/components/metadata/sentence', items: part_of, toggle_id: "part-of-#{SecureRandom.hex(4)}" %>
       </dd>
     <% end %>
     <% if local_assigns.include?(:history) %>
@@ -59,7 +59,7 @@
         <% if definition.any? %>
           <dt class="gem-c-metadata__term"><%= title %>:</dt>
           <dd class="gem-c-metadata__definition">
-            <%= render 'govuk_publishing_components/components/metadata/sentence', items: definition, toggle_id: index %>
+            <%= render 'govuk_publishing_components/components/metadata/sentence', items: definition, toggle_id: "#{index}-#{SecureRandom.hex(4)}" %>
           </dd>
         <% end %>
       <% end %>
