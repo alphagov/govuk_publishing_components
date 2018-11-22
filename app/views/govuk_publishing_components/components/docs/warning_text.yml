@@ -17,3 +17,7 @@ examples:
     data:
       text_icon: "£"
       text: "You can be fined up to £5,000 if you don’t register."
+  without_icon:
+    data:
+      text_icon: ""
+      text: "You can be fined up to £320 if you don't register."

@@ -1,2 +1,7 @@
 @import "helpers/govuk-frontend-settings";
 @import "govuk-frontend/components/warning-text/warning-text";
+
+.gem-c-warning-text__text--no-indent {
+  padding-left: 0;
+  margin-left: 0;
+}
