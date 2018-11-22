@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 12.12.0
 
 * Add a readonly option to input component
 * Copy to clipboard is readonly and selects input on click
