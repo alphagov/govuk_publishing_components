@@ -3,11 +3,30 @@
   @include core-16;
   @include responsive-bottom-margin;
   @extend %contain-floats;
+
+  a {
+    @include govuk-link-common;
+    @include govuk-link-style-default;
+  }
 }
 
 .gem-c-metadata.direction-rtl {
   direction: rtl;
   text-align: start;
+}
+
+.gem-c-metadata--inverse {
+  color: govuk-colour('white');
+
+  a:link,
+  a:active,
+  a:visited {
+    color: govuk-colour('white');
+  }
+
+  a:focus {
+    color: govuk-colour('black');
+  }
 }
 
 .gem-c-metadata__term {
@@ -43,14 +62,9 @@
     float: left;
     width: 70%;
   }
-
-  a {
-    @extend %govuk-link;
-  }
 }
 
 .gem-c-metadata__definition-link {
-  @extend %govuk-link;
   text-decoration: none;
 }
 
