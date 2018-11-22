@@ -76,11 +76,11 @@ describe("Checkboxes component", function () {
   });
 
   it('unchecks parent when one or more children are deselected', function () {
-    $nestedChildren.each(function (idx, child) {
-      $(child).click();
-    });
-    $nestedChildren.eq(0).click();
+    $parentCheckbox.click();
+    expect($nestedChildren.length).toEqual($nestedChildren.filter(':checked').length);
+    expect($parentCheckbox.is(':checked')).toEqual(true);
 
+    $nestedChildren.eq(0).click();
     expect($parentCheckbox.is(':checked')).toEqual(false);
   });
 });
