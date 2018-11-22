@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased changes
+
+* Corrects name for checkboxes documentation (PR #638)
+
 ## 12.12.0
 
 * Add a readonly option to input component (PR #633)
