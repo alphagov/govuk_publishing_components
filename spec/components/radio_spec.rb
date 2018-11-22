@@ -29,6 +29,8 @@ describe "Radio", type: :view do
 
     assert_select ".govuk-radios__input[name=radio-group-one-item]"
     assert_select ".govuk-radios__item:first-child .govuk-radios__label", text: "Use Government Gateway"
+    assert_select "legend", false
+    assert_select "legend h1", false
   end
 
   it "renders radio-group with multiple items" do
@@ -49,6 +51,34 @@ describe "Radio", type: :view do
     assert_select ".govuk-radios__input[name=radio-group-multiple-items]"
     assert_select ".govuk-radios__item:first-child .govuk-radios__label", text: "Use Government Gateway"
     assert_select ".govuk-radios__item:last-child .govuk-radios__label", text: "Use GOV.UK Verify"
+  end
+
+  it "renders radio-group with a legend" do
+    render_component(
+      name: "favourite-smartie",
+      heading: "What is your favourite smartie?",
+      items: [
+        { label: "Red", value: "red" },
+        { label: "Blue", value: "blue" }
+      ]
+    )
+    assert_select ".govuk-radios"
+    assert_select "legend", "What is your favourite smartie?"
+    assert_select "legend h1", false
+  end
+
+  it "renders radio-group with the legend as the page heading" do
+    render_component(
+      name: "favourite-skittle",
+      heading: "What is your favourite skittle?",
+      is_page_heading: true,
+      items: [
+        { label: "Red", value: "red" },
+        { label: "Blue", value: "blue" }
+      ]
+    )
+    assert_select ".govuk-radios"
+    assert_select "legend h1", "What is your favourite skittle?"
   end
 
   it "renders radio-group with bold labels" do
@@ -199,6 +229,10 @@ describe "Radio", type: :view do
     )
 
     assert_select ".govuk-hint", text: "You’ll need to prove your identity using one of the following methods"
+
+    dom = Nokogiri::HTML(rendered)
+    hint_id = dom.xpath('//span')[0].attr('id')
+    assert_select ".govuk-fieldset[aria-describedby='#{hint_id}']"
   end
 
   it "renders radio-group with error message" do
@@ -218,6 +252,36 @@ describe "Radio", type: :view do
     )
 
     assert_select ".govuk-error-message", text: "Please select one option"
+
+    dom = Nokogiri::HTML(rendered)
+    error_id = dom.xpath('//span')[0].attr('id')
+    assert_select ".govuk-fieldset[aria-describedby='#{error_id}']"
+  end
+
+  it "renders radio-group with error message and hint text" do
+    render_component(
+      name: "radio-group-conditional",
+      hint: "You’ll need to prove your identity using one of the following methods",
+      error_message: "Please select one option",
+      items: [
+        {
+          value: "government-gateway",
+          text: "Use Government Gateway"
+        },
+        {
+          value: "govuk-verify",
+          text: "Use GOV.UK Verify"
+        }
+      ]
+    )
+
+    assert_select ".govuk-error-message", text: "Please select one option"
+
+    dom = Nokogiri::HTML(rendered)
+    hint_id = dom.xpath('//span')[0].attr('id')
+    error_id = dom.xpath('//span')[1].attr('id')
+    ids = hint_id + " " + error_id
+    assert_select ".govuk-fieldset[aria-describedby='#{ids}']"
   end
 
   it "renders radio-group with error items" do

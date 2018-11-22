@@ -57,7 +57,61 @@ examples:
         text: "Use GOV.UK Verify"
         hint_text: "You'll have an account if you've already proved your identity with a certified company, such as the Post Office."
         bold: true
-  with_hint_text:
+  with_hint_on_form_group:
+    data:
+      name: "radio-group-error"
+      id_prefix: "hint"
+      hint: "You’ll need to prove your identity using one of the following methods"
+      items:
+      - value: "government-gateway"
+        text: "Use Government Gateway"
+      - value: "govuk-verify"
+        text: "Use GOV.UK Verify"
+  with_heading:
+    description: This adds a legend element containing the text supplied.
+    data:
+      name: "radio-group-heading"
+      heading: "Are you hungry?"
+      items:
+      - value: "yes"
+        text: "Yes"
+      - value: "no"
+        text: "No"
+  with_heading_and_hint:
+    data:
+      name: "radio-group-heading"
+      heading: "What is your favourite colour?"
+      hint: "If your favourite is not below, pick the colour closest to it."
+      items:
+      - value: "red"
+        text: "Red"
+      - value: "green"
+        text: "Green"
+      - value: "blue"
+        text: "Blue"
+  with_page_heading:
+    description: This adds a H1 element containing the text supplied.
+    data:
+      name: "radio-group-heading"
+      heading: "Is it raining?"
+      is_page_heading: true
+      items:
+      - value: "yes"
+        text: "Yes"
+      - value: "no"
+        text: "No"
+  with_page_heading_and_hint:
+    data:
+      name: "radio-group-heading"
+      heading: "Is it snowing?"
+      is_page_heading: true
+      hint: "Sleet or hail doesn’t count."
+      items:
+      - value: "yes"
+        text: "Yes"
+      - value: "no"
+        text: "No"
+  with_hint_text_on_radios:
     data:
       name: "radio-group-hint-text"
       items:
@@ -120,21 +174,23 @@ examples:
         hint_text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien justo, lobortis elementum tortor in, luctus interdum turpis. Nam sit amet nulla nec arcu condimentum dapibus quis varius metus. Suspendisse cursus tristique diam et vestibulum. Proin nec lacinia tortor. Morbi at nisi id lorem aliquam ullamcorper. Pellentesque laoreet sit amet leo sodales ultricies. Suspendisse maximus efficitur odio in tristique."
         text: "Quisque tincidunt venenatis bibendum. Morbi volutpat magna euismod ipsum consequat cursus. Etiam bibendum interdum ultricies."
         bold: true
-  with_hint_on_form_group:
-    data:
-      name: "radio-group-error"
-      id_prefix: "hint"
-      hint: "You’ll need to prove your identity using one of the following methods"
-      items:
-      - value: "government-gateway"
-        text: "Use Government Gateway"
-      - value: "govuk-verify"
-        text: "Use GOV.UK Verify"
   with_error_on_form_group:
     data:
       name: "radio-group-error"
       id_prefix: "error"
       error_message: "Please select one option"
+      items:
+      - value: "government-gateway"
+        text: "Use Government Gateway"
+      - value: "govuk-verify"
+        text: "Use GOV.UK Verify"
+  with_error_and_hint_on_form_group:
+    description: ""
+    data:
+      name: "radio-group-error"
+      id_prefix: "error"
+      error_message: "Please select one option"
+      hint: "Choose the option that suits"
       items:
       - value: "government-gateway"
         text: "Use Government Gateway"

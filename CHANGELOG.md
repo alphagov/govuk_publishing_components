@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+- Add heading options to radio component (PR #635)
+
 ## 12.12.1
 
 * Corrects name for checkboxes documentation (PR #638)
