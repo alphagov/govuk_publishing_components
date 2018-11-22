@@ -7,11 +7,11 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 12.12.0
 
-* Add a readonly option to input component
-* Copy to clipboard is readonly and selects input on click
-* Copy to clipboard supports data attributes for the button element
+* Add a readonly option to input component (PR #633)
+* Copy to clipboard is readonly and selects input on click (PR #633)
+* Copy to clipboard supports data attributes for the button element (PR #633)
 * Update back link component to allow injection of custom text (PR #628)
 * Update panel component to only render div if description is provided (PR #628)
 
