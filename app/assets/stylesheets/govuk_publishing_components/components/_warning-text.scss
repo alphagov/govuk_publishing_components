@@ -5,3 +5,7 @@
   padding-left: 0;
   margin-left: 0;
 }
+
+.gem-c-warning-text__text--large {
+  @include govuk-font($size: 24, $weight: bold);
+}

@@ -21,3 +21,7 @@ examples:
     data:
       text_icon: ""
       text: "You can be fined up to £320 if you don't register."
+  with_larger_font:
+    data:
+      text: "This content was updated on the 24th of November 2018"
+      large_font: true

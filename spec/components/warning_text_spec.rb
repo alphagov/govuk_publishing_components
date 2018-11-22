@@ -27,4 +27,9 @@ describe "warning text", type: :view do
     assert_select(".govuk-warning-text__icon", false)
     assert_select(".gem-c-warning-text__text--no-indent", text: /You can be fined up to £5,000 if you don’t register/i)
   end
+
+  it "renders large warning text" do
+    render_component(large_font: true, text: "You can be fined up to £5,000 if you don’t register.")
+    assert_select(".govuk-warning-text__text.gem-c-warning-text__text--large", text: /You can be fined up to £5,000 if you don’t register/i)
+  end
 end
