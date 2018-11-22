@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 12.16.0
+
+* Update components for finders (PR #643)
+
 ## 12.15.0
 
 * Support embedding content inside textarea formgroup (PR #649)
