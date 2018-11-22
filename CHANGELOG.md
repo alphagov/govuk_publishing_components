@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Modify warning text component (PR #655)
+
 ## 12.17.0
 
 * Add data attributes to select component (PR #650)

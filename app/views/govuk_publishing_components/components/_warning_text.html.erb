@@ -4,6 +4,7 @@
   text_assistive ||= 'Warning'
   text_icon ||= '!'
   large_font ||= false
+  highlight_text ||= false
 
   css_classes = %w(gem-c-warning-text govuk-warning-text)
   css_classes << classes if classes
@@ -11,6 +12,7 @@
   text_classes = %w(govuk-warning-text__text)
   text_classes << "gem-c-warning-text__text--no-indent" if text_icon.empty?
   text_classes << "gem-c-warning-text__text--large" if large_font
+  text_classes << "gem-c-warning-text__text--highlight" if highlight_text
 %>
 
 <%= tag.div id: id, class: css_classes do %>

@@ -25,3 +25,7 @@ examples:
     data:
       text: "This content was updated on the 24th of November 2018"
       large_font: true
+  with_red_font:
+    data:
+      text: "This content has changed"
+      highlight_text: true

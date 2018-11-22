@@ -9,3 +9,7 @@
 .gem-c-warning-text__text--large {
   @include govuk-font($size: 24, $weight: bold);
 }
+
+.gem-c-warning-text__text--highlight {
+  color: $govuk-error-colour;
+}
