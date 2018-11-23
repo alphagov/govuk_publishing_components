@@ -26,6 +26,16 @@ examples:
           value: "green"
         - label: "Blue"
           value: "blue"
+  with_specific_identifier:
+    data:
+      name: "potatoes"
+      id: "potatoes"
+      heading: "What kind of potatoes do you like?"
+      items:
+        - label: "Red"
+          value: "red"
+        - label: "Green"
+          value: "green"
   with_legend_as_page_heading:
     data:
       name: "favourite_colour"

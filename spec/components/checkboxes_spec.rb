@@ -16,6 +16,7 @@ describe "Checkboxes", type: :view do
         { label: "Blue", value: "blue" }
       ]
     )
+    assert_select ".gem-c-checkboxes#favourite-colour"
     assert_select ".govuk-checkboxes"
     assert_select "label[for='favourite-colour-0']", text: "Red"
     assert_select "label[for='favourite-colour-1']", text: "Green"
