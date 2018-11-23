@@ -39,6 +39,17 @@ examples:
           value: "red"
         - label: "Green"
           value: "green"
+  with_aria_controls_attributes:
+    data:
+      name: "aria_controls"
+      heading: "What areas are you interested in?"
+      items:
+        - label: "Farming and the environment"
+          value: "farming"
+          controls: "js-live-results"
+        - label: "Water recycling"
+          value: "water"
+          controls: "js-live-results"
   with_legend_as_page_heading:
     data:
       name: "favourite_colour"

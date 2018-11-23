@@ -38,6 +38,7 @@
             name: name,
             item: item,
             index: index,
+            controls: item[:controls]
           } %>
           <% if item[:conditional] %>
             <%= tag.div item[:conditional], id: "#{id}-#{index}-conditional-#{index}", class: "govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" %>
