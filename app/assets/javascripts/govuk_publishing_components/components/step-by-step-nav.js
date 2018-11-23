@@ -1,9 +1,10 @@
+window.GOVUK = window.GOVUK || {};
+window.GOVUK.Modules = window.GOVUK.Modules || {};
+
 (function (Modules) {
   "use strict";
-  window.GOVUK = window.GOVUK || {};
 
   Modules.Gemstepnav = function () {
-
     var actions = {}; // stores text for JS appended elements 'show' and 'hide' on steps, and 'show/hide all' button
     var rememberShownStep = false;
     var stepNavSize;
@@ -14,7 +15,6 @@
     var uniqueId;
 
     this.start = function ($element) {
-
       // Indicate that js has worked
       $element.addClass('gem-c-step-nav--active');
 

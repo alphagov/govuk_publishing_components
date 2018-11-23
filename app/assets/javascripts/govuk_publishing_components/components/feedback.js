@@ -3,7 +3,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
   "use strict";
-  window.GOVUK = window.GOVUK || {};
 
   Modules.Feedback = function () {
 
@@ -113,7 +112,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         return {
           category: $node.data('track-category'),
           action: $node.data('track-action')
-        }
+        };
       }
 
       function trackEvent (trackEventParams) {
@@ -147,7 +146,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         that.$prompt.removeClass(jshiddenClass);
         that.$prompt.focus();
       }
-    }
-
+    };
   };
 })(window.GOVUK.Modules);
