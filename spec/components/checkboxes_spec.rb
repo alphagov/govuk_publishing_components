@@ -23,6 +23,7 @@ describe "Checkboxes", type: :view do
     assert_select "label[for='favourite-colour-2']", text: "Blue"
     assert_select "legend", text: "What is your favourite colour?"
     assert_select "legend h1", false
+    assert_select(".govuk-hint", text: "Select all that apply.")
   end
 
   it "renders checkboxes with the legend as the page heading" do
