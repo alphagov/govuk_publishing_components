@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+- BREAKING: Merge checkbox components (PR #659)
+
 ## 12.21.0
 
 * Retires the taxonomy navigation component (PR #606)
