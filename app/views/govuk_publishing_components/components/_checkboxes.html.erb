@@ -1,10 +1,5 @@
 <%
   id ||= "checkboxes-#{SecureRandom.hex(4)}"
-  classes ||= ''
-  css_classes = %w( gem-c-checkboxes govuk-form-group )
-  css_classes << classes if classes
-  error ||= nil
-  css_classes << "govuk-form-group--error" if error
   heading ||= nil
   hint_text ||= "Select all that apply."
   items ||= []
@@ -13,10 +8,12 @@
   # check if any item is set as being conditional
   has_conditional = items.any? { |item| item.is_a?(Hash) && item[:conditional] }
   has_nested = items.any? { |item| item.is_a?(Hash) && item[:items] }
+
+  cb_helper = GovukPublishingComponents::Presenters::CheckboxesHelper.new(local_assigns)
 %>
 
-<%= tag.div id: id, class: css_classes, data: { module: "checkboxes" } do %>
-  <%= tag.fieldset class: "govuk-fieldset", "aria-describedby": "#{id}-hint #{"#{id}-error" if error}" do %>
+<%= tag.div id: id, class: cb_helper.css_classes, data: { module: "checkboxes" } do %>
+  <%= tag.fieldset class: "govuk-fieldset", "aria-describedby": "#{id}-hint #{"#{id}-error" if cb_helper.error}" do %>
 
     <% if heading.present? %>
       <% if is_page_heading %>
@@ -30,7 +27,7 @@
 
     <%= tag.span hint_text, id: "#{id}-hint", class: "govuk-hint" %>
 
-    <% if error.present? %>
+    <% if cb_helper.error %>
       <%= tag.span error, id: "#{id}-error", class: "govuk-error-message" %>
     <% end %>
 
