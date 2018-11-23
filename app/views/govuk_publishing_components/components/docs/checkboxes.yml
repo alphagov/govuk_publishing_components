@@ -12,8 +12,11 @@ accessibility_criteria: |
   - be usable with touch
   - indicate when they have focus
   - have correctly associated labels
+  - have a legend (see below)
 
   Labels use the [label component](/component-guide/label).
+
+  Checkboxes in a fieldset require a legend. The text of the legend is passed using the 'heading' option. If no heading is passed, no legend is shown, which causes an accessibility error. You must pass a heading when using this component, or provide other measures to ensure accessibility.
 examples:
   default:
     data:
