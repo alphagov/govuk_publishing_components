@@ -4,48 +4,47 @@
 %>
 
 <%= tag.div id: id, class: cb_helper.css_classes, data: { module: "checkboxes" } do %>
-  <%= tag.fieldset class: "govuk-fieldset", "aria-describedby": "#{id}-hint #{"#{id}-error" if cb_helper.error}" do %>
-    <%= cb_helper.heading_markup %>
-    <%= tag.span cb_helper.hint_text, id: "#{id}-hint", class: "govuk-hint" %>
+  <% if cb_helper.items.length == 1 %>
+    <%= cb_helper.checkbox_markup(cb_helper.items[0], 0) %>
 
-    <% if cb_helper.error %>
-      <%= tag.span error, id: "#{id}-error", class: "govuk-error-message" %>
-    <% end %>
+  <% else %>
+    <%= tag.fieldset class: "govuk-fieldset", "aria-describedby": cb_helper.fieldset_describedby do %>
+      <%= cb_helper.heading_markup %>
 
-    <%= tag.ul class: "govuk-checkboxes gem-c-checkboxes__list", data: {
-      module: ('checkboxes' if cb_helper.has_conditional),
-      nested: ('true' if cb_helper.has_nested),
-    } do %>
-      <% cb_helper.items.each_with_index do |item, index| %>
-        <%= tag.li class: "gem-c-checkboxes__list-item" do %>
-          <%= render 'govuk_publishing_components/components/checkbox', {
-            id: id,
-            name: cb_helper.name,
-            item: item,
-            index: index,
-            controls: item[:controls]
-          } %>
-          <% if item[:conditional] %>
-            <%= tag.div item[:conditional], id: "#{id}-#{index}-conditional-#{index}", class: "govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" %>
-          <% end %>
+      <% if cb_helper.hint_text %>
+        <%= tag.span cb_helper.hint_text, id: "#{id}-hint", class: "govuk-hint" %>
+      <% end %>
 
-          <% if item[:items].present? %>
-            <%= tag.ul id: "#{id}-nested-#{index}", class: "govuk-checkboxes govuk-checkboxes--nested gem-c-checkboxes__list", data: { parent: "#{id}-#{index}" } do %>
-              <% item[:items].each_with_index do |nested_item, nested_index| %>
-                <%= tag.li class: "gem-c-checkboxes__list-item" do %>
-                  <%= render 'govuk_publishing_components/components/checkbox', {
-                    id: id,
-                    name: name,
-                    item: nested_item,
-                    index: "#{index}-#{nested_index}",
-                  } %>
+      <% if cb_helper.error %>
+        <%= tag.span error, id: "#{id}-error", class: "govuk-error-message" %>
+      <% end %>
+
+      <%= tag.ul class: "govuk-checkboxes gem-c-checkboxes__list", data: {
+        module: ('checkboxes' if cb_helper.has_conditional),
+        nested: ('true' if cb_helper.has_nested),
+      } do %>
+        <% cb_helper.items.each_with_index do |item, index| %>
+          <%= tag.li class: "gem-c-checkboxes__list-item" do %>
+            <%= cb_helper.checkbox_markup(item, index) %>
+
+            <% if item[:conditional] %>
+              <%= tag.div item[:conditional], id: "#{id}-#{index}-conditional-#{index}", class: "govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" %>
+            <% end %>
+
+            <% if item[:items].present? %>
+              <%= tag.ul id: "#{id}-nested-#{index}", class: "govuk-checkboxes govuk-checkboxes--nested", data: { parent: "#{id}-#{index}" } do %>
+                <% item[:items].each_with_index do |nested_item, nested_index| %>
+                  <%= tag.li class: "gem-c-checkboxes__list-item" do %>
+                    <%= cb_helper.checkbox_markup(nested_item, "#{index}-#{nested_index}") %>
+                  <% end %>
                 <% end %>
               <% end %>
             <% end %>
+
           <% end %>
         <% end %>
       <% end %>
-    <% end %>
 
+    <% end %>
   <% end %>
 <% end %>

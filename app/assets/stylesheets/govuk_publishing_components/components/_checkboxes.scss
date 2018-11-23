@@ -1,3 +1,15 @@
+@import "helpers/govuk-frontend-settings";
+@import "govuk-frontend/components/checkboxes/checkboxes";
+
+.gem-c-checkbox.gem-c-checkbox--margin-bottom:last-child,
+.gem-c-checkbox.gem-c-checkbox--margin-bottom:last-of-type {
+  margin-bottom: $gutter-two-thirds;
+
+  @include media(tablet) {
+    margin-bottom: $gutter;
+  }
+}
+
 .govuk-checkboxes--nested {
   margin-left: (govuk-spacing(3) + 3px);
   box-sizing: border-box;
@@ -15,6 +27,7 @@
 
 .gem-c-checkboxes__list {
   padding-left: govuk-spacing(0);
+  margin: 0;
 }
 
 .gem-c-checkboxes__list-item {
@@ -22,7 +35,17 @@
   margin-bottom: govuk-spacing(2);
 }
 
-.gem-c-checkboxes__list-item:last-child,
-.gem-c-checkboxes__list-item:last-of-type {
-  margin-bottom: govuk-spacing(0);
+.gem-c-checkboxes__list-item:last-child {
+  margin-bottom: 0;
+
+  .govuk-checkboxes--nested {
+    margin-bottom: 0;
+  }
+}
+
+// this is complex but needed to override the govuk-frontend styles in
+// https://github.com/alphagov/govuk-frontend/blob/b8058640b9602ecb6e1f66f887553190cbae7b46/src/components/hint/_hint.scss#L16
+// our elements are wrapped in list items that already provide a margin-bottom
+.govuk-label:not(.govuk-label--m):not(.govuk-label--l):not(.govuk-label--xl) + .govuk-hint {
+  margin-bottom: 0;
 }

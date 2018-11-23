@@ -1,6 +1,5 @@
 name: Form checkboxes
-description: Let users select one or more options by using the checkboxes component.
-body: This component uses [Checkbox component](/component-guide/checkbox).
+description: Let users select one or more options with checkboxes.
 govuk_frontend_components:
   - checkboxes
 accessibility_criteria: |
@@ -20,6 +19,13 @@ accessibility_criteria: |
 examples:
   default:
     data:
+      name: "favourite_colour_default"
+      items:
+        - label: "Red"
+          value: "red_colour"
+  with_multiple_checkboxes:
+    description: When more than one checkbox is shown they are wrapped in a fieldset element, which requires a legend. This must be supplied to the component using the heading option.
+    data:
       name: "favourite_colour"
       heading: "What is your favourite colour?"
       items:
@@ -29,7 +35,8 @@ examples:
           value: "green"
         - label: "Blue"
           value: "blue"
-  with_specific_identifier:
+  with_a_custom_id_attribute:
+    description: Note that if an id is not given one is generated automatically. In either case, the id is applied to the parent element of the checkboxes, and each checkbox is given the same id with an incremented number at the end, e.g. the checkboxes below have ids of potatoes-0 and potatoes-1.
     data:
       name: "potatoes"
       id: "potatoes"
@@ -39,30 +46,8 @@ examples:
           value: "red"
         - label: "Green"
           value: "green"
-  with_aria_controls_attributes:
-    data:
-      name: "aria_controls"
-      heading: "What areas are you interested in?"
-      items:
-        - label: "Farming and the environment"
-          value: "farming"
-          controls: "js-live-results"
-        - label: "Water recycling"
-          value: "water"
-          controls: "js-live-results"
-  with_legend_as_page_heading:
-    data:
-      name: "favourite_colour"
-      heading: "What is your favourite colour?"
-      is_page_heading: true
-      items:
-        - label: "Red"
-          value: "red"
-        - label: "Green"
-          value: "green"
-        - label: "Blue"
-          value: "blue"
-  custom_hint_text:
+  with_custom_hint_text:
+    description: Note that a hint (and a heading) is only displayed if there is more than one checkbox.
     data:
       name: "favourite_skittle"
       heading: "What is your favourite skittle?"
@@ -74,7 +59,48 @@ examples:
           value: "green"
         - label: "Blue"
           value: "blue"
-  checkbox_items_with_hint:
+  with_legend_as_page_heading:
+    description: Since the legend/heading is required, if the checkboxes are alone on a page it makes sense to use this element as the H1 on the page rather than duplicate text.
+    data:
+      name: "favourite_colour"
+      heading: "What is your favourite colour?"
+      is_page_heading: true
+      items:
+        - label: "Red"
+          value: "red"
+        - label: "Green"
+          value: "green"
+        - label: "Blue"
+          value: "blue"
+  checkboxes_with_data_attributes:
+    description: Data attributes such as tracking can be applied if required. Note that for a checkbox this will not fire tracking events automatically, so if you want your tracking to work you'll need to write some tracking Javascript in the app around the component to detect it.
+    data:
+      name: "With tracking"
+      items:
+        - label: "Tracked"
+          value: "tracked"
+          data_attributes: {
+            track_category: "checkboxClicked",
+            track_label: "/news-and-communications",
+            track_action: "news",
+            track_options: {
+              dimension28: 2,
+              dimension29: "Tracked"
+            }
+          }
+  with_aria_controls_attributes:
+    description: Aria controls attributes are applied to the checkboxes only if Javascript is enabled.
+    data:
+      name: "aria_controls"
+      heading: "What areas are you interested in?"
+      items:
+        - label: "Farming and the environment"
+          value: "farming"
+          controls: "js-live-results"
+        - label: "Water recycling"
+          value: "water"
+          controls: "js-live-results"
+  checkboxes_with_individual_hints:
     data:
       name: "nationality"
       heading: "What is your nationality?"
@@ -87,6 +113,7 @@ examples:
           value: "irish"
         - label: "Other"
           value: "other"
+          hint: "anything other than the above"
   checkbox_items_with_error:
     data:
       name: "nationality"
@@ -102,19 +129,25 @@ examples:
         - label: "Other"
           value: "other"
   checkbox_items_with_conditional_reveal:
+    description: |
+      Checkboxes can be configured to show additional elements when checked. This could include further components, such as text inputs as shown.
+
+      Note that if you do insert HTML, this may cause accessibility violations if the additional elements have different name attributes to the checkboxes. No styling will be applied to the inserted content by the component.
     data:
-      name: "nationality"
-      heading: "What is your nationality?"
-      hint_text: "If you have dual nationality, select all options that are relevant to you."
+      name: "contactingme"
+      id: "contactingme"
+      heading: "How would you like to be contacted?"
+      hint_text: "Please select all options that are relevant to you."
       items:
-        - label: "British"
-          value: "british"
-          conditional: "including English, Scottish, Welsh and Northern Irish"
-        - label: "Irish"
-          value: "irish"
+        - label: "Email"
+          value: "email"
+          conditional: <div class="govuk-form-group"><label class="govuk-label" for="contact-by-email">Email address</label><input class="govuk-input govuk-!-width-one-third" id="contact-by-email" name="contactingme" type="email"></div>
+        - label: "Phone"
+          value: "phone"
+          conditional: <div class="govuk-form-group"><label class="govuk-label" for="contact-by-phone">Phone number</label><input class="govuk-input govuk-!-width-one-third" id="contact-by-phone" name="contactingme" type="tel"></div>
         - label: "Other"
           value: "other"
-          conditional: "Sorry this isn't more specific"
+          conditional: "See no styling."
   checkbox_items_with_checked_items:
     data:
       name: "nationality"
@@ -149,3 +182,8 @@ examples:
               value: "dark_blue"
         - label: "Other"
           value: "other"
+          items:
+            - label: "Orange"
+              value: "orange"
+            - label: "Puce"
+              value: "puce"
