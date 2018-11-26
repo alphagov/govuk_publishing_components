@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "jquery": "1.12.4",
-    "govuk-frontend": "^2.2.0"
+    "accessible-autocomplete": "^1.6.2",
+    "govuk-frontend": "^2.2.0",
+    "jquery": "1.12.4"
   }
 }
