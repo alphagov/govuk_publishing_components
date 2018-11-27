@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add accessible autocomplete component. (PR #621)
+
 ## 12.13.0
 
 * Add heading options to radio component (PR #635)
@@ -42,7 +46,6 @@
 
 ## 12.8.0
 
-* Add accessible autocomplete component. (PR #621)
 * Add 'error_items' option for input, radio, textarea and file upload components (PR #615)
 * Update layout header to allow a full width option (PR #616)
 * Correctly import the govspeak-html-publication component (PR #618)
