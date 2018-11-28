@@ -62,4 +62,7 @@
     aria: {
       describedby: aria_described_by
     } do %><%= value %><% end %>
+  <% if block_given? %>
+    <%= yield %>
+  <% end %>
 <% end %>
