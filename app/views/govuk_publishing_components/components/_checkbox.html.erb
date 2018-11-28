@@ -14,10 +14,9 @@
     aria: {
       describedby: item[:hint].present? ? "#{id}-#{index}-item-hint" : nil,
       controls: item[:conditional].present? ? "#{id}-conditional-#{index}" : nil
-  } do %>
-    <%= tag.label item[:label], class: "govuk-label govuk-checkboxes__label", for: "#{id}-#{index}" %>
-    <% if item[:hint].present? %>
-      <%= tag.span item[:hint], id: "#{id}-#{index}-item-hint", class: "govuk-hint govuk-checkboxes__hint" %>
-    <% end %>
+  } %>
+  <%= tag.label item[:label], class: "govuk-label govuk-checkboxes__label", for: "#{id}-#{index}" %>
+  <% if item[:hint].present? %>
+    <%= tag.span item[:hint], id: "#{id}-#{index}-item-hint", class: "govuk-hint govuk-checkboxes__hint" %>
   <% end %>
 <% end %>
