@@ -1,3 +1,7 @@
 @import "helpers/govuk-frontend-settings";
 @import "govuk-frontend/components/textarea/textarea";
 @import "govuk-frontend/objects/form-group";
+
+.gem-c-textarea {
+  margin-bottom: govuk-spacing(1);
+}
