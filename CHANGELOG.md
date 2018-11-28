@@ -10,6 +10,7 @@
 ## 12.14.0
 
 * Add accessible autocomplete component. (PR #621)
+* Descope govuk-frontend styles in the admin layout (PR #646)
 
 ## 12.13.0
 
