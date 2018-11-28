@@ -62,3 +62,10 @@ examples:
       name: "more-elements"
       block: |
         <span class="govuk-hint">Here's a hint</span>
+  with_maxlength:
+    data:
+      label:
+        text: "A textarea that doesn't allow many characters"
+      name: "maxlength"
+      value: "You can't type more"
+      maxlength: 19
