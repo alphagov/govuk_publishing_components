@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 12.14.1
+
+* Edit ERB view to prevent invalid HTML generation. (PR #647)
+
 ## 12.14.0
 
 * Add accessible autocomplete component. (PR #621)
