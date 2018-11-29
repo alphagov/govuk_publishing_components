@@ -7,6 +7,11 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Support embedding content inside textarea formgroup (PR #649)
+* Accept a maxlength attribute for textarea (PR #649)
+
 ## 12.14.1
 
 * Edit ERB view to prevent invalid HTML generation. (PR #647)
