@@ -10,6 +10,7 @@
   error_message ||= nil
   error_items ||= nil
   character_count ||= nil
+  maxlength ||= nil
   hint_id = "hint-#{SecureRandom.hex(4)}"
   has_error ||= error_message || error_items&.any?
   error_id = "error-#{SecureRandom.hex(4)}"
@@ -54,13 +55,16 @@
   <% end %>
 
   <%= tag.textarea name: name,
-    value: value,
     class: css_classes,
     id: id,
     rows: rows,
+    maxlength: maxlength,
     data: data,
     spellcheck: spellcheck,
     aria: {
       describedby: aria_described_by
     } do %><%= value %><% end %>
+  <% if block_given? %>
+    <%= yield %>
+  <% end %>
 <% end %>
