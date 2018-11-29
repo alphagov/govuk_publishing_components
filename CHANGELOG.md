@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 12.15.0
 
 * Support embedding content inside textarea formgroup (PR #649)
 * Accept a maxlength attribute for textarea (PR #649)
