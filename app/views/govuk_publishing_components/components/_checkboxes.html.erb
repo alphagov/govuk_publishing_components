@@ -46,7 +46,7 @@
           index: index,
         } %>
         <% if item[:conditional] %>
-          <%= tag.div item[:conditional], id: "#{id}-conditional-#{index}", class: "govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" %>
+          <%= tag.div item[:conditional], id: "#{id}-#{index}-conditional-#{index}", class: "govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" %>
         <% end %>
 
         <% if item[:items].present? %>

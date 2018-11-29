@@ -90,6 +90,7 @@ examples:
           value: "irish"
         - label: "Other"
           value: "other"
+          conditional: "Sorry this isn't more specific"
   checkbox_items_with_checked_items:
     data:
       name: "nationality"

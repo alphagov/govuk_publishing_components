@@ -2,7 +2,8 @@
   id ||= "input-#{SecureRandom.hex(4)}"
   value ||= nil
   type ||= "text"
-  describedby ||= false
+  describedby ||= nil
+  controls ||= nil
   data ||= nil
 
   label ||= nil
@@ -29,7 +30,6 @@
     aria_described_by << describedby if describedby
     aria_described_by = aria_described_by.join(" ")
   end
-
 %>
 
 <%= content_tag :div, class: form_group_css_classes do %>
@@ -68,7 +68,8 @@
       autofocus: autofocus,
       readonly: readonly,
       aria: {
-        describedby: aria_described_by
+        describedby: aria_described_by,
+        controls: controls
       }
   %>
 <% end %>
