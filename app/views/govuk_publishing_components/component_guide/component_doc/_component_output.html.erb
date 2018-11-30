@@ -1,7 +1,15 @@
-<% if example.has_block? %>
-  <%= render component_doc.partial_path, example.html_safe_data do %>
-    <%= example.block.html_safe %>
+<% component = capture do %>
+  <% if example.has_block? %>
+    <%= render component_doc.partial_path, example.html_safe_data do %>
+      <%= example.block.html_safe %>
+    <% end %>
+  <% else %>
+    <%= render component_doc.partial_path, example.html_safe_data %>
   <% end %>
+<% end %>
+
+<% if example.has_embed? %>
+  <%= ERB.new(example.embed).result(binding).html_safe %>
 <% else %>
-  <%= render component_doc.partial_path, example.html_safe_data %>
+  <%= component %>
 <% end %>

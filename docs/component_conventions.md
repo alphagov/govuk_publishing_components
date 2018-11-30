@@ -127,6 +127,32 @@ examples:
         <span>Some text</span>
 ```
 
+#### Yaml configuration for components that need contextual HTML
+
+If a component is only visible, or behaves differently, in a certain context
+the examples for it can be embedded within HTML using the embed option.
+eg.
+
+```ruby
+<button class="trigger-for-component">Click me</button>
+<%= render "my-hidden-by-default-component", { param: value } %>
+```
+
+To configure a HTML embed in the component yaml file you can specify `embed` at
+the root or individual examples:
+
+```yaml
+embed: |
+  <button class="trigger-for-component">Click me<button>
+  <%= component %>
+examples:
+  default:
+  different_embed_example:
+    embed: |
+      <button class="different-trigger-for-component">Click me<button>
+      <%= component %>
+```
+
 #### [Accessibility Acceptance Criteria](accessibility_acceptance_criteria.md)
 
 Markdown listing what this component must do to be accessible.

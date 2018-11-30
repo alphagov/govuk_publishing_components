@@ -1,0 +1,14 @@
+name: Test component with embed
+description: |
+  A test component that shows the component code embedded next to a control it interacts with.
+embed: |
+  <input class="input-control-for-embedded-component">
+  <%= component %>
+examples:
+  default:
+  button_example:
+    description: This component also can be contolled by a button
+    embed: |
+      <button class="button-control-for-embedded-component">Action</button>
+      <%= component %>
+

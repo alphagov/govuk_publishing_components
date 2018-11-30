@@ -43,6 +43,34 @@ describe 'Component example' do
     expect(page).to have_content(%(<%= render "components/test-component-with-block", {\n} do %>\n<div class="test-block">Here's a block</div>\n<% end %>))
   end
 
+  it 'allows examples to embedded in HTML' do
+    visit '/component-guide/test-component-with-embed'
+
+    expect(page).to have_selector('.component-guide-preview .input-control-for-embedded-component')
+    expect(page).to have_selector('.component-guide-preview .test-component-with-embed')
+
+    example = <<~EXAMPLE
+      <input class="input-control-for-embedded-component">
+      <%= render "components/test-component-with-embed", {
+      } %>
+    EXAMPLE
+    expect(page).to have_content(example)
+  end
+
+  it 'allows specific examples to embed different HTML' do
+    visit '/component-guide/test-component-with-embed/button_example'
+
+    expect(page).to have_selector('.component-guide-preview .button-control-for-embedded-component')
+    expect(page).to have_selector('.component-guide-preview .test-component-with-embed')
+
+    example = <<~EXAMPLE
+      <button class="button-control-for-embedded-component">Action</button>
+      <%= render "components/test-component-with-embed", {
+      } %>
+    EXAMPLE
+    expect(page).to have_content(example)
+  end
+
   it 'marks strings in examples as html_safe' do
     visit '/component-guide/test-component-with-html-params'
     within ".test-component-with-html-params" do

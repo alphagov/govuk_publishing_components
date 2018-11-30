@@ -6,7 +6,8 @@ module GovukPublishingComponents
                 :data,
                 :context,
                 :description,
-                :block
+                :block,
+                :embed
 
     def initialize(id, example)
       @id = id
@@ -14,6 +15,7 @@ module GovukPublishingComponents
       @context = example["context"] || {}
       @description = example["description"] || false
       @block = @data.delete(:block) || false
+      @embed = example["embed"]
     end
 
     def name
@@ -71,6 +73,10 @@ module GovukPublishingComponents
 
     def has_block?
       !!block
+    end
+
+    def has_embed?
+      !!embed
     end
 
   private
