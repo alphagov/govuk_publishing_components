@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 12.17.0
+
+* Add data attributes to select component (PR #650)
+
 ## 12.16.0
 
 * Update components for finders (PR #643)
