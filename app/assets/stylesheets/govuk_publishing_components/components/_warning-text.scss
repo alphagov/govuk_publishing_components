@@ -1,2 +1,15 @@
 @import "helpers/govuk-frontend-settings";
 @import "govuk-frontend/components/warning-text/warning-text";
+
+.gem-c-warning-text__text--no-indent {
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.gem-c-warning-text__text--large {
+  @include govuk-font($size: 24, $weight: bold);
+}
+
+.gem-c-warning-text__text--highlight {
+  color: $govuk-error-colour;
+}
