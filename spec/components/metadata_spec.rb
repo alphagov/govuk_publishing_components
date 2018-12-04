@@ -192,6 +192,12 @@ describe "Metadata", type: :view do
     assert_no_truncation(links.length)
   end
 
+  it "renders the component on a dark background" do
+    render_component(from: "<a href='/link'>Department</a>", inverse: true)
+
+    assert_select ".gem-c-metadata.gem-c-metadata--inverse"
+  end
+
   def assert_truncation(length, limit)
     assert_select "span", count: 1
     assert_select "dd > a", count: limit

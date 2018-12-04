@@ -335,3 +335,23 @@ examples:
       first_published: 14 June 2014
       other:
         Applies to: England, Scotland, and Wales (see detailed guidance for <a href="http://www.dardni.gov.uk/news-dard-pa022-a-13-new-procedure-for" rel="external">Northern Ireland</a>)
+  on_a_dark_background:
+    data:
+      inverse: true
+      from: [
+        "<a href='/government/organisations/ministry-of-defence'>Ministry of Defence</a>",
+        "<a href='/government/organisations/cabinet-office'>Cabinet Office</a>",
+        "<a href=\"/government/organisations/department-for-business-energy-and-industrial-strategy\">Department for Business, Energy &amp; Industrial Strategy</a>",
+        "<a href=\"/government/organisations/foreign-commonwealth-office\">Foreign &amp; Commonwealth Office</a>",
+        "<a href=\"/government/people/william-hague\">The Rt Hon William Hague</a>",
+        "<a href=\"/government/organisations/department-for-environment-food-rural-affairs\">Department for Environment, Food &amp; Rural Affairs</a>",
+        "<a href=\"/government/organisations/department-for-work-pensions\">Department for work and pensions</a>",
+        "<a href=\"/government/organisations/foreign-commonwealth-office\">Foreign and Commonwealth Office</a>"
+      ]
+      first_published: 14 June 2014
+      last_updated: 10 September 2015
+      see_updates_link: true
+      other:
+        Applies to: England, Scotland, and Wales (see detailed guidance for <a href="http://www.dardni.gov.uk/news-dard-pa022-a-13-new-procedure-for" rel="external">Northern Ireland</a>)
+    context:
+      dark_background: true

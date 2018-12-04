@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add inverse option to metadata component (PR #657)
 * Modify warning text component (PR #655)
 
 ## 12.17.0
