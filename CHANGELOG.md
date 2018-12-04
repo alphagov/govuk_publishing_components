@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 12.18.0
 
 * Add inverse option to metadata component (PR #657)
 * Modify warning text component (PR #655)
