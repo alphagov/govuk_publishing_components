@@ -1,4 +1,5 @@
-<details class="gem-c-details govuk-details">
+<% data_attributes ||= nil %>
+<%= tag.details class: "gem-c-details govuk-details", data: data_attributes do %>
   <summary class="govuk-details__summary">
     <span class="govuk-details__summary-text">
       <%= title %>
@@ -7,4 +8,4 @@
   <div class="govuk-details__text">
     <%= yield %>
   </div>
-</details>
+<% end %>

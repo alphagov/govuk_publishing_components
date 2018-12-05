@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Details supports data attributes on root element (PR #660)
 * Copy to clipboard supports data attributes for the input element (PR #660)
 
 ## 12.18.0
