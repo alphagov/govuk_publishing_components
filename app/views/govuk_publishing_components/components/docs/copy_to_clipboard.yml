@@ -6,10 +6,12 @@ examples:
       label: Copy and send this link to someone and they’ll be able to preview your draft on GOV.UK.
       copyable_content: http://www.example.org
       button_text: Copy link
-  with_button_data_attributes:
+  with_data_attributes:
     data:
       label: Copy and send this link to someone and they’ll be able to preview your draft on GOV.UK.
       copyable_content: http://www.example.org
+      input_data_attributes:
+        "tracking-code": GA-123ABC
       button_text: Copy link
       button_data_attributes:
         "tracking-code": GA-123ABC

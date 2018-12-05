@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Copy to clipboard supports data attributes for the input element (PR #660)
+
 ## 12.18.0
 
 * Add inverse option to metadata component (PR #657)
