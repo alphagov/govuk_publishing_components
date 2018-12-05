@@ -34,30 +34,34 @@
       <%= tag.span error, id: "#{id}-error", class: "govuk-error-message" %>
     <% end %>
 
-    <%= tag.div class: "govuk-checkboxes", data: {
+    <%= tag.ul class: "govuk-checkboxes gem-c-checkboxes__list", data: {
       module: ('checkboxes' if has_conditional),
       nested: ('true' if has_nested),
     } do %>
       <% items.each_with_index do |item, index| %>
-        <%= render 'govuk_publishing_components/components/checkbox', {
-          id: id,
-          name: name,
-          item: item,
-          index: index,
-        } %>
-        <% if item[:conditional] %>
-          <%= tag.div item[:conditional], id: "#{id}-#{index}-conditional-#{index}", class: "govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" %>
-        <% end %>
+        <%= tag.li class: "gem-c-checkboxes__list-item" do %>
+          <%= render 'govuk_publishing_components/components/checkbox', {
+            id: id,
+            name: name,
+            item: item,
+            index: index,
+          } %>
+          <% if item[:conditional] %>
+            <%= tag.div item[:conditional], id: "#{id}-#{index}-conditional-#{index}", class: "govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" %>
+          <% end %>
 
-        <% if item[:items].present? %>
-          <%= tag.div id: "#{id}-nested-#{index}", class: "govuk-checkboxes govuk-checkboxes--nested", data: { parent: "#{id}-#{index}" } do %>
-            <% item[:items].each_with_index do |nested_item, nested_index| %>
-              <%= render 'govuk_publishing_components/components/checkbox', {
-                id: id,
-                name: name,
-                item: nested_item,
-                index: "#{index}-#{nested_index}",
-              } %>
+          <% if item[:items].present? %>
+            <%= tag.ul id: "#{id}-nested-#{index}", class: "govuk-checkboxes govuk-checkboxes--nested gem-c-checkboxes__list", data: { parent: "#{id}-#{index}" } do %>
+              <% item[:items].each_with_index do |nested_item, nested_index| %>
+                <%= tag.li class: "gem-c-checkboxes__list-item" do %>
+                  <%= render 'govuk_publishing_components/components/checkbox', {
+                    id: id,
+                    name: name,
+                    item: nested_item,
+                    index: "#{index}-#{nested_index}",
+                  } %>
+                <% end %>
+              <% end %>
             <% end %>
           <% end %>
         <% end %>
