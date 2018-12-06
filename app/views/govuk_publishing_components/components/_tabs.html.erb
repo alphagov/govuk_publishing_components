@@ -13,9 +13,10 @@
     <ul class="govuk-tabs__list">
       <% tabs.each do |tab| %>
       <li class="govuk-tabs__list-item">
-        <a class="govuk-tabs__tab" href="#<%= tab[:id] %>">
-          <%= tab[:label] %>
-        </a>
+        <%= link_to(tab[:label],
+                    "##{tab[:id]}",
+                    class: "govuk-tabs__tab",
+                    data: tab[:tab_data_attributes]) %>
       </li>
       <% end %>
     </ul>
