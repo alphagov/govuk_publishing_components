@@ -7,11 +7,12 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 12.19.0
 
 * Tabs supports data attributes on the tab element (PR #660)
 * Details supports data attributes on root element (PR #660)
 * Copy to clipboard supports data attributes for the input element (PR #660)
+* Put nested checkboxes into lists to add support for screen readers (PR 642)
 
 ## 12.18.0
 
