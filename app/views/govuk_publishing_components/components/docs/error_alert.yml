@@ -21,3 +21,9 @@ examples:
         orci. Proin semper porttitor ipsum, vel maximus justo rutrum vel.
         Morbi volutpat facilisis libero. Donec posuere eget odio non egestas.
         Nullam sed neque quis turpis.
+  with_data_attributes:
+    data:
+      message: Message to alert the user to a unsuccessful action goes here
+      description: A further description
+      data_attributes:
+        tracking: GTM-123AB

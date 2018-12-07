@@ -7,6 +7,11 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Error alert supports data attributes on root element (PR #662)
+* Error summary supports data attributes on root element (PR #662)
+
 ## 12.19.0
 
 * Tabs supports data attributes on the tab element (PR #660)
