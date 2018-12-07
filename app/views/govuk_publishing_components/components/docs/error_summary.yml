@@ -24,3 +24,11 @@ examples:
       - text: Descriptive link to the question with an error 2
         href: '#example-error-2'
       - text: Description of error without link
+  with_data_attributes:
+    data:
+      title: Message to alert the user to a problem goes here
+      description: Optional description of the errors and how to correct them
+      data_attributes:
+        tracking: GTM-123AB
+      items:
+      - text: Descriptive link to the question with an error 1
