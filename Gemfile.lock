@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    govuk_publishing_components (12.19.0)
+    govuk_publishing_components (12.20.0)
       govspeak (>= 5.0.3)
       govuk_app_config
       govuk_frontend_toolkit
@@ -171,7 +171,7 @@ GEM
     nokogumbo (1.5.0)
       nokogiri
     null_logger (0.0.1)
-    oj (3.7.1)
+    oj (3.7.4)
     parallel (1.12.1)
     parser (2.5.3.0)
       ast (~> 2.4.0)
