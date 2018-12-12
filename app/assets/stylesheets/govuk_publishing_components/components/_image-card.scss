@@ -81,13 +81,13 @@
 }
 
 .gem-c-image-card__description {
-  @include govuk-font($size: 16, $line-height: 1.5);
+  @include govuk-font($size: 16);
   padding-top: $gutter-one-quarter;
   word-wrap: break-word;
 }
 
 .gem-c-image-card__list {
-  @include govuk-font($size: 16, $line-height: 1.5);
+  @include govuk-font($size: 16);
   position: relative;
   z-index: 2;
   padding: $gutter-one-quarter 0 0 0;
