@@ -18,9 +18,15 @@
                 <% item[:items].each do |item| %>
                   <% if item[:href] && item[:text] %>
                     <li class="govuk-footer__list-item">
-                      <a class="govuk-footer__link" href="<%= item[:href] %>">
-                        <%= item[:text] %>
-                      </a>
+                      <% if item[:target].nil? %>
+                        <%= link_to item[:text], item[:href], target: '',
+                          class: "govuk-footer__link"
+                        %>
+                      <% else %>
+                        <%= link_to item[:text], item[:href], target: item[:target],
+                          class: "govuk-footer__link"
+                        %>
+                      <% end %>
                     </li>
                   <% end %>
                 <% end %>

@@ -123,3 +123,15 @@ examples:
             text: Rhestr o Wasanaethau Cymraeg
           - href: '/government/organisations/government-digital-service'
             text: Government Digital Service
+
+  with_new_windows:
+    data:
+      navigation:
+        - title: Test Links
+          columns: 1
+          items:
+            - href: 'https://www.gov.uk/government/collections/organisation'
+              text: Shows a page in a new window
+              target: '_blank'
+            - href: 'https://www.gov.uk/corporation-tax'
+              text: Shows page in the same window
