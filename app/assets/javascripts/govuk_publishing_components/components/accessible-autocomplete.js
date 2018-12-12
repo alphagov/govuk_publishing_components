@@ -16,11 +16,13 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         confirmOnBlur: false
       };
 
-      if ($selectElem.data('track-category') !== undefined && $selectElem.data('track-action') !== undefined) {
-        configOptions.onConfirm = function(val) {
-          track($selectElem.data('track-category'), $selectElem.data('track-action'), val, $selectElem.data('track-options'));
-        };
-      }
+      configOptions.onConfirm = function(label) {
+        if ($selectElem.data('track-category') !== undefined && $selectElem.data('track-action') !== undefined) {
+          track($selectElem.data('track-category'), $selectElem.data('track-action'), label, $selectElem.data('track-options'));
+        }
+        var value = $selectElem.children("option").filter(function () { return $(this).html() == label; }).val();
+        $element.trigger( "accessibleAutocompleteChanged", [$element, value, label] );
+      };
 
       new accessibleAutocomplete.enhanceSelectElement(configOptions);
     };
