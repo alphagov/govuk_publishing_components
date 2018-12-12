@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Accessible autocomplete triggers change if tracking data is supplied (PR #666) 
+
 ## 13.0.0
 
 * Encode feedback component to ensure UTF-8 characters are rendered (PR #673)
