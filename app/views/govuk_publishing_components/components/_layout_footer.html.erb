@@ -18,15 +18,11 @@
                 <% item[:items].each do |item| %>
                   <% if item[:href] && item[:text] %>
                     <li class="govuk-footer__list-item">
-                      <% if item[:target].nil? %>
-                        <%= link_to item[:text], item[:href], target: '',
-                          class: "govuk-footer__link"
-                        %>
-                      <% else %>
-                        <%= link_to item[:text], item[:href], target: item[:target],
-                          class: "govuk-footer__link"
-                        %>
-                      <% end %>
+                      <%
+                        attributes = { class: "govuk-footer__link" }.merge(item.fetch(:attributes, {}))
+                        attributes[:rel] = "noopener" if attributes[:target] == "_blank" && !attributes[:rel]
+                      %>
+                      <%= link_to item[:text], item[:href], attributes %>
                     </li>
                   <% end %>
                 <% end %>

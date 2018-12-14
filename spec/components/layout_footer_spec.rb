@@ -37,7 +37,7 @@ describe "Layout footer", type: :view do
     assert_select ".govuk-footer__navigation .govuk-footer__list--columns-2 .govuk-footer__link[href='/browse/benefits']", text: "Benefits"
   end
 
-  it "renders links that can either spawn a new window or use the same window" do
+  it "renders the footer with attributes" do
     render_component(
       navigation: [
         {
@@ -47,14 +47,20 @@ describe "Layout footer", type: :view do
             {
               href: "/browse/benefits",
               text: "Benefits",
-              target: "_blank"
+              attributes: { title: "A title" }
             }
           ]
         }
       ]
     )
-    assert_select ".govuk-footer__navigation .govuk-footer__list--columns-2 .govuk-footer__link[target='_blank']", text: "Benefits"
 
+    assert_select 'a' do |link|
+      expect(link.attr('class').to_s).to eq "govuk-footer__link"
+      expect(link.attr('title').to_s).to eq "A title"
+    end
+  end
+
+  it "renders the footer with attributes but will set the rel attribute if target is blank" do
     render_component(
       navigation: [
         {
@@ -63,12 +69,18 @@ describe "Layout footer", type: :view do
           items: [
             {
               href: "/browse/benefits",
-              text: "Benefits"
+              text: "Benefits",
+              attributes: { target: "_blank" }
             }
           ]
         }
       ]
     )
-    assert_select ".govuk-footer__navigation .govuk-footer__list--columns-2 .govuk-footer__link[target='']", text: "Benefits"
+
+    assert_select 'a' do |link|
+      expect(link.attr('class').to_s).to eq "govuk-footer__link"
+      expect(link.attr('target').to_s).to eq "_blank"
+      expect(link.attr('rel').to_s).to eq "noopener"
+    end
   end
 end
