@@ -8,10 +8,10 @@
   of the commit log.
 
 ## 12.21.0
-
 * Retires the taxonomy navigation component (PR #606)
 * Introduces a new contextual footer component (PR #606)
 * Use ERB comments not HTML comments in template markup (PR #667)
+* Layout footer component now accepts an attributes hash for each link element (PR #664)
 
 ## 12.20.0
 
