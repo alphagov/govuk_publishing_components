@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Use ERB comments not HTML comments in template markup (PR #667)
+
 ## 12.20.0
 
 * Error alert supports data attributes on root element (PR #662)
