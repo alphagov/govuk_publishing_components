@@ -123,3 +123,20 @@ examples:
             text: Rhestr o Wasanaethau Cymraeg
           - href: '/government/organisations/government-digital-service'
             text: Government Digital Service
+
+  with_attributes_links:
+    data:
+      navigation:
+        - title: Test Links
+          columns: 1
+          items:
+            - href: 'https://www.gov.uk/government/collections/organisation'
+              text: Shows a page in a new window
+              attributes:
+                target: _blank
+                rel: noopener
+            - href: 'https://www.gov.uk/corporation-tax'
+              text: Shows page in the same window
+              attributes:
+                data:
+                  tracking: GTM-123AB
