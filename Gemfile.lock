@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    govuk_publishing_components (12.20.0)
+    govuk_publishing_components (12.21.0)
       govspeak (>= 5.0.3)
       govuk_app_config
       govuk_frontend_toolkit
@@ -96,7 +96,7 @@ GEM
       rest-client (~> 2.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
-    govspeak (5.7.1)
+    govspeak (5.8.0)
       actionview (~> 5.0)
       addressable (>= 2.3.8, < 3)
       commander (~> 4.4)
