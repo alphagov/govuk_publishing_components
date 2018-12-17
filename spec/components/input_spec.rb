@@ -104,6 +104,15 @@ describe "Input", type: :view do
     assert_select ".govuk-input[autofocus][tabindex='0']"
   end
 
+  it "sets the maxlength when provided" do
+    render_component(
+      name: "email-address",
+      maxlength: 10
+    )
+
+    assert_select ".govuk-input[maxlength='10']"
+  end
+
   context "when a hint is provided" do
     before do
       render_component(

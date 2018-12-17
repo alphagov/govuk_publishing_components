@@ -96,3 +96,10 @@ examples:
       name: "readonly"
       value: "You can't change me"
       readonly: true
+  with_maxlength:
+    data:
+      label:
+        text: "An input that doesn't allow many characters"
+      name: "name"
+      value: "You can't type more"
+      maxlength: 10

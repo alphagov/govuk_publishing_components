@@ -13,6 +13,7 @@
   autofocus ||= nil
   tabindex ||= nil
   readonly ||= nil
+  maxlength ||= nil
   has_error = error_message || error_items&.any?
   hint_id = "hint-#{SecureRandom.hex(4)}"
   error_id = "error-#{SecureRandom.hex(4)}"
@@ -67,6 +68,7 @@
       tabindex: tabindex,
       autofocus: autofocus,
       readonly: readonly,
+      maxlength: maxlength,
       aria: {
         describedby: aria_described_by,
         controls: controls
