@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 12.21.0
 
 * Retires the taxonomy navigation component (PR #606)
 * Introduces a new contextual footer component (PR #606)
