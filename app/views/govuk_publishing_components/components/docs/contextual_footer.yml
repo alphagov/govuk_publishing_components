@@ -1,0 +1,71 @@
+name: Contextual footer
+description: Footer that shows different things depending on the page
+body: |
+  This is a component that calls other components. For more accurate
+  preview with real data, see the [contextual navigation preview][preview].
+
+  It will render the [related navigation component][related_navigation] in the context of a footer if the content item
+  is not part of a [step by step][step-by-step].
+
+  It must always be used [with the contextual breadcrumbs component][contextual_breadcrumbs].
+
+  [preview]: /contextual-navigation
+  [step-by-step]: /component-guide/step_by_step_nav
+  [related_navigation]: /component-guide/related_navigation
+  [contextual_breadcrumbs]: /component-guide/contextual_breadcrumbs
+accessibility_criteria: |
+  Components called by this component must be accessible
+examples:
+  default:
+    description: Displays contacts, external links, statistical datasets, topical events, topics and world locations.
+    data:
+      content_item:
+        title: "A content item"
+        links:
+          topics:
+          - title: Apprenticeships, 14 to 19 education and training for work
+            base_path: /browse/education/find-course
+            document_type: topic
+          - title: Finding a job
+            base_path: /browse/working/finding-job
+            document_type: topic
+          - title: Apprenticeships
+            base_path: /topic/further-education-skills/apprenticeships
+            document_type: topic
+          topical_events:
+          - title: UK-China High-Level People to People Dialogue 2017
+            base_path: /government/topical-events/uk-china-high-level-people-to-people-dialogue-2017
+            document_type: topical_event
+          related:
+          - title: Pest Control
+            base_path: /pest-control
+            document_type: contact
+          related_statistical_data_sets:
+          - title: International road fuel prices
+            base_path: /government/statistical-data-sets/comparisons-of-industrial-and-domestic-energy-prices-monthly-figures
+            document_type: statistical_data_set
+          - title: Weekly road fuel prices
+            base_path: /government/statistical-data-sets/oil-and-petroleum-products-weekly-statistics
+            document_type: statistical_data_set
+          world_locations:
+          - title: South Sudan
+            base_path: /world/south-sudan/news
+          - title: USA
+            base_path: /world/usa/news
+        details:
+          external_related_links:
+          - url: "http://media.slc.co.uk/sfe/1718/ft/sfe_terms_and_conditions_guide_1718_d.pdf"
+            title: "Student loans: terms and conditions 2017 to 2018 (PDF, 136KB)"
+          - title: The Student Room repaying your student loan
+            url: https://www.thestudentroom.co.uk/content.php?r=5967-Repaying-your-student-loan
+  with_step_by_step:
+    data:
+      content_item:
+        title: "A content item"
+        links:
+          part_of_step_navs:
+            - title: "Choosing a micropig or micropug: step by step"
+              base_path: "/micropigs-vs-micropugs"
+          ordered_related_items:
+            - title: "Find an apprenticeship"
+              base_path: "/apply-apprenticeship"

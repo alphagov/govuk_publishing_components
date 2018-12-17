@@ -1,34 +1,43 @@
 name: Contextual sidebar
 description: Sidebar that shows different things depending on the page
 body: |
-  This is a complex component that calls other components. For more accurate
+  This is a component that calls other components. For more accurate
   preview with real data, see the [contextual navigation preview][preview].
 
-  There are 4 main variants of the component:
+  There are 2 variants of the component:
 
   - Step by step, which uses the [step by step nav][step-by-step]
-  - Taxonomy, which uses the new taxonomy in the [taxonomy-sidebar component][taxonomy-sidebar]
-  - Mainstream, which uses related links in the [related navigation component][related_navigation]
-  - Related navigation, which uses legacy taxonomies in the [related navigation component][related_navigation]
+  - Related navigation, which uses the [related navigation component][related_navigation] in the context of a sidebar
 
   It must always be used [with the contextual breadcrumbs component][contextual_breadcrumbs].
 
-  [preview]: https://govuk-publishing-components.herokuapp.com/contextual-navigation
+  [preview]: /contextual-navigation
   [step-by-step]: /component-guide/step_by_step_nav
   [related_navigation]: /component-guide/related_navigation
-  [taxonomy-sidebar]: https://govuk-publishing-components.herokuapp.com/component-guide/taxonomy_navigation
   [contextual_breadcrumbs]: /component-guide/contextual_breadcrumbs
 accessibility_criteria: |
   Components called by this component must be accessible
 examples:
   default:
+    description: Display collections, guides, quick links, ordered related items and related mainstream content.
     data:
       content_item:
         title: "A content item"
         links:
           ordered_related_items:
-            - title: "Find an apprenticeship"
-              base_path: "/apply-apprenticeship"
+          - title: Find an apprenticeship
+            base_path: /apply-apprenticeship
+          - title: Training and study at work
+            base_path: /training-study-work-your-rights
+          - title: Careers helpline for teenagers
+            base_path: /careers-helpline-for-teenagers
+          document_collections:
+          - title: Recruit an apprentice (formerly apprenticeship vacancies)
+            base_path: /government/collections/apprenticeship-vacancies
+            document_type: document_collection
+          - title: The future of jobs and skills
+            base_path: /government/collections/the-future-of-jobs-and-skills
+            document_type: document_collection
   with_step_by_step:
     data:
       content_item:

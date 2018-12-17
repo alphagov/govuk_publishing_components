@@ -32,7 +32,7 @@ describe "Contextual navigation" do
   scenario "There's a mainstream browse page tagged" do
     given_theres_a_page_with_browse_page
     and_i_visit_that_page
-    then_i_see_the_browse_page_in_the_sidebar
+    then_i_see_the_browse_page_in_the_footer
     and_the_parent_based_breadcrumbs
   end
 
@@ -51,16 +51,16 @@ describe "Contextual navigation" do
   end
 
   scenario "There's a taxon tagged" do
-    given_theres_a_guide_with_a_live_taxon_and_collection_tagged_to_it
+    given_theres_a_guide_with_a_live_taxon_tagged_to_it
     and_i_visit_that_page
-    then_i_see_the_taxonomy_sidebar_and_collection
+    then_i_see_the_taxon_in_the_related_navigation_footer
     and_the_taxonomy_breadcrumbs
   end
 
   scenario "There's legacy things tagged" do
     given_theres_a_page_with_just_legacy_taxonomy
     and_i_visit_that_page
-    then_i_see_the_related_navigation_sidebar
+    then_i_see_the_legacy_topic_in_the_related_navigation_footer
     and_the_parent_based_breadcrumbs
   end
 
@@ -111,19 +111,14 @@ describe "Contextual navigation" do
     content_store_has_item(content_item["base_path"], content_item)
   end
 
-  def given_theres_a_guide_with_a_live_taxon_and_collection_tagged_to_it
-    document_collection = random_item("document_collection", "title" => "A cool document collection")
+  def given_theres_a_guide_with_a_live_taxon_tagged_to_it
     alpha_taxon = random_item("taxon", "title" => "An alpha taxon", "phase" => "alpha")
     live_taxon = random_item("taxon", "title" => "A live taxon", "phase" => "live")
-
-    stub_request(:get, "http://rummager.dev.gov.uk/search.json?count=3&fields%5B%5D=link&fields%5B%5D=title&filter_navigation_document_supertype=guidance&filter_taxons%5B%5D=#{live_taxon['content_id']}&similar_to=/page-with-contextual-navigation&start=0").
-      to_return(body: { results: [{ title: 'A similar item' }] }.to_json)
 
     content_store_has_random_item(
       schema: "guide",
       links: {
         "taxons" => [live_taxon, alpha_taxon],
-        "document_collections" => [document_collection],
       }
     )
   end
@@ -167,14 +162,18 @@ describe "Contextual navigation" do
     expect(page).not_to have_selector(".gem-c-step-nav__header")
   end
 
-  def then_i_see_the_browse_page_in_the_sidebar
-    expect(page).to have_selector(".gem-c-related-navigation")
-    expect(page).to have_content("A browse page")
+  def then_i_see_the_browse_page_in_the_footer
+    within '.gem-c-contextual-footer' do
+      expect(page).to have_selector(".gem-c-related-navigation")
+      expect(page).to have_content("A browse page")
+    end
   end
 
   def then_i_see_the_related_links_sidebar
-    expect(page).to have_selector(".gem-c-related-navigation")
-    expect(page).to have_content("A related link curated in Publisher")
+    within '.gem-c-contextual-sidebar' do
+      expect(page).to have_selector(".gem-c-related-navigation")
+      expect(page).to have_content("A related link curated in Publisher")
+    end
   end
 
   def and_the_parent_based_breadcrumbs
@@ -191,14 +190,16 @@ describe "Contextual navigation" do
     end
   end
 
-  def then_i_see_the_taxonomy_sidebar_and_collection
-    expect(page).to have_css(".gem-c-taxonomy-navigation__link", text: "A live taxon")
-    expect(page).to have_css(".gem-c-taxonomy-navigation__section-link", text: "A cool document collection")
+  def then_i_see_the_taxon_in_the_related_navigation_footer
+    within '.gem-c-contextual-footer' do
+      expect(page).to have_css(".gem-c-related-navigation__link", text: "A live taxon")
+    end
   end
 
-  def then_i_see_the_related_navigation_sidebar
-    expect(page).to have_selector(".gem-c-related-navigation")
-    expect(page).to have_content("A legacy topic")
+  def then_i_see_the_legacy_topic_in_the_related_navigation_footer
+    within '.gem-c-contextual-footer' do
+      expect(page).to have_css(".gem-c-related-navigation__link", text: "A legacy topic")
+    end
   end
 
   def content_store_has_random_item(schema: "placeholder", links: {})
