@@ -33,15 +33,24 @@ describe "Feedback", type: :view do
     before do
       allow_any_instance_of(ActionDispatch::Request).to receive(:user_agent).and_return(ascii_agent)
       allow_any_instance_of(ActionDispatch::Request).to receive(:original_url).and_return(ascii_url)
-      render_component({})
     end
 
     it "encodes user-agents to UTF-8" do
+      render_component({})
+
       expect(response.body).to include(utf8_agent)
     end
 
     it "encodes URL params to UTF-8" do
+      render_component({})
+
       expect(response.body).to include(utf8_url)
+    end
+
+    it "doesn't encode if the user-agent is nil" do
+      allow_any_instance_of(ActionDispatch::Request).to receive(:user_agent).and_return(nil)
+
+      expect { render_component({}) }.to_not raise_error
     end
   end
 end
