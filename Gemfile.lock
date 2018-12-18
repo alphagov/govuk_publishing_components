@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    govuk_publishing_components (12.21.0)
+    govuk_publishing_components (12.22.0)
       govspeak (>= 5.0.3)
       govuk_app_config
       govuk_frontend_toolkit

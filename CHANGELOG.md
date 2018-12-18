@@ -10,6 +10,9 @@
 ## Unreleased
 
 - BREAKING: Merge checkbox components (PR #659)
+
+## 12.22.0
+
 * Accept a maxlength attribute for input (PR #670)
 
 ## 12.21.0
