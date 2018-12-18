@@ -13,14 +13,21 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       var configOptions = {
         selectElement: document.getElementById($selectElem.attr('id')),
         showAllValues: true,
-        confirmOnBlur: false
+        confirmOnBlur: true,
+        preserveNullOptions: true, // https://github.com/alphagov/accessible-autocomplete#null-options
+        defaultValue: ""
       };
 
-      if ($selectElem.data('track-category') !== undefined && $selectElem.data('track-action') !== undefined) {
-        configOptions.onConfirm = function(val) {
-          track($selectElem.data('track-category'), $selectElem.data('track-action'), val, $selectElem.data('track-options'));
-        };
-      }
+      configOptions.onConfirm = function(label) {
+        if ($selectElem.data('track-category') !== undefined && $selectElem.data('track-action') !== undefined) {
+          track($selectElem.data('track-category'), $selectElem.data('track-action'), label, $selectElem.data('track-options'));
+        }
+        // This is to compensate for the fact that the accessible-autocomplete library will not
+        // update the hidden select if the onConfirm function is supplied
+        // https://github.com/alphagov/accessible-autocomplete/issues/322
+        var value = $selectElem.children("option").filter(function () { return $(this).html() == label; }).val();
+        $selectElem.val(value).trigger( "change" );
+      };
 
       new accessibleAutocomplete.enhanceSelectElement(configOptions);
     };
