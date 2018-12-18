@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 13.1
 
 * Accessible autocomplete triggers change if tracking data is supplied (PR #666) 
 
