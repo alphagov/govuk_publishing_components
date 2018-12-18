@@ -10,6 +10,7 @@
 ## Unreleased
 
 - BREAKING: Merge checkbox components (PR #659)
+* Accept a maxlength attribute for input (PR #670)
 
 ## 12.21.0
 * Retires the taxonomy navigation component (PR #606)
