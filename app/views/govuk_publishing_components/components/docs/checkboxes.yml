@@ -46,6 +46,18 @@ examples:
           value: "red"
         - label: "Green"
           value: "green"
+  with_custom_ids_on_individal_checkboxes:
+    description: Individual checkboxes can be given specific ids if required. Note that the general id option can still be used, but the individual ids will override the general one if it is given.
+    data:
+      name: "carrots"
+      id: "carrots"
+      heading: "What kind of carrots do you like?"
+      items:
+        - label: "Orange"
+          value: "orange"
+          id: "custom-orange-id"
+        - label: "Purple"
+          value: "purple"
   with_custom_hint_text:
     description: Note that a hint (and a heading) is only displayed if there is more than one checkbox.
     data:

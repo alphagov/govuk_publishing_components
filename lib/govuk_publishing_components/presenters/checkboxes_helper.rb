@@ -46,7 +46,7 @@ module GovukPublishingComponents
       end
 
       def checkbox_markup(checkbox, index)
-        checkbox_id = "#{@id}-#{index}"
+        checkbox_id = checkbox[:id] || "#{@id}-#{index}"
         controls = checkbox[:conditional].present? ? "#{checkbox_id}-conditional-#{index || rand(1..100)}" : checkbox[:controls]
         checkbox_name = checkbox[:name].present? ? checkbox[:name] : @name
         checked = true if checkbox[:checked].present?

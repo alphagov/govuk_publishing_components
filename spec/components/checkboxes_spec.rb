@@ -48,9 +48,32 @@ describe "Checkboxes", type: :view do
       ]
     )
     assert_select ".gem-c-checkboxes#favourite-colour"
+    assert_select ".govuk-checkboxes__input#favourite-colour-0"
     assert_select ".govuk-checkboxes__label[for='favourite-colour-0']", text: "Red"
+    assert_select ".govuk-checkboxes__input#favourite-colour-1"
     assert_select ".govuk-checkboxes__label[for='favourite-colour-1']", text: "Green"
+    assert_select ".govuk-checkboxes__input#favourite-colour-2"
     assert_select ".govuk-checkboxes__label[for='favourite-colour-2']", text: "Blue"
+  end
+
+  it "renders checkboxes with individual ids" do
+    render_component(
+      id: "favourite-colour",
+      name: "favourite_colour",
+      heading: "What is your favourite colour?",
+      items: [
+        { label: "Red", value: "red", id: "custom" },
+        { label: "Green", value: "green" },
+        { label: "Blue", value: "blue", id: "also-custom" }
+      ]
+    )
+    assert_select ".gem-c-checkboxes#favourite-colour"
+    assert_select ".govuk-checkboxes__input#custom"
+    assert_select ".govuk-checkboxes__label[for='custom']", text: "Red"
+    assert_select ".govuk-checkboxes__input#favourite-colour-1"
+    assert_select ".govuk-checkboxes__label[for='favourite-colour-1']", text: "Green"
+    assert_select ".govuk-checkboxes__input#also-custom"
+    assert_select ".govuk-checkboxes__label[for='also-custom']", text: "Blue"
   end
 
   it "renders checkboxes with a custom hint" do
