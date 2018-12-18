@@ -1,72 +1,50 @@
 <%
-  id ||= "checkboxes-#{SecureRandom.hex(4)}"
-  classes ||= ''
-  css_classes = %w( gem-c-checkboxes govuk-form-group )
-  css_classes << classes if classes
-  error ||= nil
-  css_classes << "govuk-form-group--error" if error
-  heading ||= nil
-  hint_text ||= "Select all that apply."
-  items ||= []
-  is_page_heading ||= false
-
-  # check if any item is set as being conditional
-  has_conditional = items.any? { |item| item.is_a?(Hash) && item[:conditional] }
-  has_nested = items.any? { |item| item.is_a?(Hash) && item[:items] }
+  cb_helper = GovukPublishingComponents::Presenters::CheckboxesHelper.new(local_assigns)
+  id = cb_helper.id
 %>
 
-<%= tag.div id: id, class: css_classes, data: { module: "checkboxes" } do %>
-  <%= tag.fieldset class: "govuk-fieldset", "aria-describedby": "#{id}-hint #{"#{id}-error" if error}" do %>
+<%= tag.div id: id, class: cb_helper.css_classes, data: { module: "checkboxes" } do %>
+  <% if cb_helper.items.length == 1 %>
+    <%= cb_helper.checkbox_markup(cb_helper.items[0], 0) %>
 
-    <% if heading.present? %>
-      <% if is_page_heading %>
-        <%= tag.legend class: "govuk-fieldset__legend govuk-fieldset__legend--xl gem-c-title gem-c-title--margin-bottom-5" do %>
-          <%= tag.h1 heading, class: "gem-c-title__text" %>
-        <% end %>
-      <% else %>
-        <%= tag.legend heading, class: "govuk-fieldset__legend govuk-fieldset__legend--m" %>
+  <% else %>
+    <%= tag.fieldset class: "govuk-fieldset", "aria-describedby": cb_helper.fieldset_describedby do %>
+      <%= cb_helper.heading_markup %>
+
+      <% if cb_helper.hint_text %>
+        <%= tag.span cb_helper.hint_text, id: "#{id}-hint", class: "govuk-hint" %>
       <% end %>
-    <% end %>
 
-    <%= tag.span hint_text, id: "#{id}-hint", class: "govuk-hint" %>
+      <% if cb_helper.error %>
+        <%= tag.span error, id: "#{id}-error", class: "govuk-error-message" %>
+      <% end %>
 
-    <% if error.present? %>
-      <%= tag.span error, id: "#{id}-error", class: "govuk-error-message" %>
-    <% end %>
+      <%= tag.ul class: "govuk-checkboxes gem-c-checkboxes__list", data: {
+        module: ('checkboxes' if cb_helper.has_conditional),
+        nested: ('true' if cb_helper.has_nested),
+      } do %>
+        <% cb_helper.items.each_with_index do |item, index| %>
+          <%= tag.li class: "gem-c-checkboxes__list-item" do %>
+            <%= cb_helper.checkbox_markup(item, index) %>
 
-    <%= tag.ul class: "govuk-checkboxes gem-c-checkboxes__list", data: {
-      module: ('checkboxes' if has_conditional),
-      nested: ('true' if has_nested),
-    } do %>
-      <% items.each_with_index do |item, index| %>
-        <%= tag.li class: "gem-c-checkboxes__list-item" do %>
-          <%= render 'govuk_publishing_components/components/checkbox', {
-            id: id,
-            name: name,
-            item: item,
-            index: index,
-          } %>
-          <% if item[:conditional] %>
-            <%= tag.div item[:conditional], id: "#{id}-#{index}-conditional-#{index}", class: "govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" %>
-          <% end %>
+            <% if item[:conditional] %>
+              <%= tag.div item[:conditional], id: "#{id}-#{index}-conditional-#{index}", class: "govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" %>
+            <% end %>
 
-          <% if item[:items].present? %>
-            <%= tag.ul id: "#{id}-nested-#{index}", class: "govuk-checkboxes govuk-checkboxes--nested gem-c-checkboxes__list", data: { parent: "#{id}-#{index}" } do %>
-              <% item[:items].each_with_index do |nested_item, nested_index| %>
-                <%= tag.li class: "gem-c-checkboxes__list-item" do %>
-                  <%= render 'govuk_publishing_components/components/checkbox', {
-                    id: id,
-                    name: name,
-                    item: nested_item,
-                    index: "#{index}-#{nested_index}",
-                  } %>
+            <% if item[:items].present? %>
+              <%= tag.ul id: "#{id}-nested-#{index}", class: "govuk-checkboxes govuk-checkboxes--nested", data: { parent: "#{id}-#{index}" } do %>
+                <% item[:items].each_with_index do |nested_item, nested_index| %>
+                  <%= tag.li class: "gem-c-checkboxes__list-item" do %>
+                    <%= cb_helper.checkbox_markup(nested_item, "#{index}-#{nested_index}") %>
+                  <% end %>
                 <% end %>
               <% end %>
             <% end %>
+
           <% end %>
         <% end %>
       <% end %>
-    <% end %>
 
+    <% end %>
   <% end %>
 <% end %>

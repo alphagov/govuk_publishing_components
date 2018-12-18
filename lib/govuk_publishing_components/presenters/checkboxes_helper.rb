@@ -1,0 +1,71 @@
+module GovukPublishingComponents
+  module Presenters
+    class CheckboxesHelper
+      include ActionView::Helpers
+      include ActionView::Context
+
+      attr_reader :items, :name, :css_classes, :error, :has_conditional, :has_nested, :id, :hint_text
+
+      def initialize(options)
+        @items = options[:items] || []
+        @name = options[:name]
+        @css_classes = %w(gem-c-checkboxes govuk-form-group)
+        @css_classes << "govuk-form-group--error" if options[:error]
+        @error = true if options[:error]
+
+        # check if any item is set as being conditional
+        @has_conditional = options[:items].any? { |item| item.is_a?(Hash) && item[:conditional] }
+        @has_nested = options[:items].any? { |item| item.is_a?(Hash) && item[:items] }
+
+        @id = options[:id] || "checkboxes-#{SecureRandom.hex(4)}"
+        @heading = options[:heading]
+        @is_page_heading = options[:is_page_heading]
+        @hint_text = options[:hint_text] || "Select all that apply."
+      end
+
+      def fieldset_describedby
+        text = %w()
+        text << "#{id}-hint" if @hint_text
+        text << "#{id}-error" if @error
+        text
+      end
+
+      def heading_markup
+        return unless @heading.present?
+
+        if @is_page_heading
+          content_tag(
+            :legend,
+            class: "govuk-fieldset__legend govuk-fieldset__legend--xl gem-c-title gem-c-title--margin-bottom-5"
+          ) do
+            content_tag(:h1, @heading, class: "gem-c-title__text")
+          end
+        else
+          content_tag(:legend, @heading, class: "govuk-fieldset__legend govuk-fieldset__legend--m")
+        end
+      end
+
+      def checkbox_markup(checkbox, index)
+        checkbox_id = checkbox[:id] || "#{@id}-#{index}"
+        controls = checkbox[:conditional].present? ? "#{checkbox_id}-conditional-#{index || rand(1..100)}" : checkbox[:controls]
+        checkbox_name = checkbox[:name].present? ? checkbox[:name] : @name
+        checked = true if checkbox[:checked].present?
+        data = checkbox[:data_attributes] || {}
+        data[:controls] = controls
+
+        markup = capture do
+          concat check_box_tag checkbox_name, checkbox[:value], checked, class: "govuk-checkboxes__input", id: checkbox_id, data: data
+          concat content_tag(:label, checkbox[:label], for: checkbox_id, class: "govuk-label govuk-checkboxes__label")
+          concat content_tag(:span, checkbox[:hint], id: "#{checkbox_id}-item-hint", class: "govuk-hint govuk-checkboxes__hint") if checkbox[:hint]
+        end
+
+        content_tag(
+          :div,
+          class: "gem-c-checkbox govuk-checkboxes__item",
+        ) do
+          markup
+        end
+      end
+    end
+  end
+end

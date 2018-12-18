@@ -18,7 +18,7 @@ describe("Checkboxes component", function () {
            </div>\
            <div id="checkboxes-1ac8e5cf-nested-0" class="govuk-checkboxes govuk-checkboxes--nested" data-parent="checkboxes-1ac8e5cf-0">\
               <div class="gem-c-checkbox govuk-checkboxes__item">\
-                 <input id="checkboxes-1ac8e5cf-0-0" name="favourite_colour" type="checkbox" value="light_red" class="govuk-checkboxes__input">\
+                 <input id="checkboxes-1ac8e5cf-0-0" name="favourite_colour" type="checkbox" value="light_red" class="govuk-checkboxes__input" data-controls="thing">\
                  <label class="govuk-label govuk-checkboxes__label" for="checkboxes-1ac8e5cf-0-0">Light Red</label>\
               </div>\
               <div class="gem-c-checkbox govuk-checkboxes__item">\
@@ -32,7 +32,7 @@ describe("Checkboxes component", function () {
            </div>\
            <div id="checkboxes-1ac8e5cf-nested-1" class="govuk-checkboxes govuk-checkboxes--nested" data-parent="checkboxes-1ac8e5cf-1">\
               <div class="gem-c-checkbox govuk-checkboxes__item">\
-                 <input id="checkboxes-1ac8e5cf-1-0" name="favourite_colour" type="checkbox" value="light_blue" class="govuk-checkboxes__input">\
+                 <input id="checkboxes-1ac8e5cf-1-0" name="favourite_colour" type="checkbox" value="light_blue" class="govuk-checkboxes__input" data-controls="thing2">\
                  <label class="govuk-label govuk-checkboxes__label" for="checkboxes-1ac8e5cf-1-0">Light blue</label>\
               </div>\
               <div class="gem-c-checkbox govuk-checkboxes__item">\
@@ -82,5 +82,11 @@ describe("Checkboxes component", function () {
 
     $nestedChildren.eq(0).click();
     expect($parentCheckbox.is(':checked')).toEqual(false);
+  });
+
+  it('applies aria-controls attributes if it finds data-controls attributes', function () {
+    expect($('#checkboxes-1ac8e5cf-0-0.govuk-checkboxes__input').attr('aria-controls')).toBe('thing');
+    expect($('#checkboxes-1ac8e5cf-1-0.govuk-checkboxes__input').attr('aria-controls')).toBe('thing2');
+    expect($('#checkboxes-1ac8e5cf-0.govuk-checkboxes__input').attr('aria-controls')).toBe(undefined);
   });
 });

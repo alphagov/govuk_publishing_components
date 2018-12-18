@@ -5,7 +5,38 @@ describe "Checkboxes", type: :view do
     "checkboxes"
   end
 
-  it "renders checkboxes" do
+  it "renders a single checkbox" do
+    render_component(
+      name: "favourite_colour",
+      items: [
+        { label: "Red", value: "red" },
+      ]
+    )
+    assert_select ".gem-c-checkboxes.govuk-form-group"
+    assert_select "fieldset", false
+    assert_select ".govuk-label.govuk-checkboxes__label", text: "Red"
+    assert_select ".govuk-hint", false
+  end
+
+  it "renders multiples checkboxes" do
+    render_component(
+      name: "favourite_colour",
+      heading: "What is your favourite colour?",
+      items: [
+        { label: "Red", value: "red" },
+        { label: "Green", value: "green" },
+      ]
+    )
+    assert_select "fieldset.govuk-fieldset"
+    assert_select "legend", text: "What is your favourite colour?"
+    assert_select "legend h1", false
+    assert_select ".govuk-hint", text: "Select all that apply."
+    assert_select ".govuk-checkboxes"
+    assert_select ".govuk-label", text: "Red"
+    assert_select ".govuk-label", text: "Green"
+  end
+
+  it "renders checkboxes with a given id" do
     render_component(
       id: "favourite-colour",
       name: "favourite_colour",
@@ -16,12 +47,58 @@ describe "Checkboxes", type: :view do
         { label: "Blue", value: "blue" }
       ]
     )
-    assert_select ".govuk-checkboxes"
-    assert_select "label[for='favourite-colour-0']", text: "Red"
-    assert_select "label[for='favourite-colour-1']", text: "Green"
-    assert_select "label[for='favourite-colour-2']", text: "Blue"
-    assert_select "legend", text: "What is your favourite colour?"
-    assert_select "legend h1", false
+    assert_select ".gem-c-checkboxes#favourite-colour"
+    assert_select ".govuk-checkboxes__input#favourite-colour-0"
+    assert_select ".govuk-checkboxes__label[for='favourite-colour-0']", text: "Red"
+    assert_select ".govuk-checkboxes__input#favourite-colour-1"
+    assert_select ".govuk-checkboxes__label[for='favourite-colour-1']", text: "Green"
+    assert_select ".govuk-checkboxes__input#favourite-colour-2"
+    assert_select ".govuk-checkboxes__label[for='favourite-colour-2']", text: "Blue"
+  end
+
+  it "renders checkboxes with individual ids" do
+    render_component(
+      id: "favourite-colour",
+      name: "favourite_colour",
+      heading: "What is your favourite colour?",
+      items: [
+        { label: "Red", value: "red", id: "custom" },
+        { label: "Green", value: "green" },
+        { label: "Blue", value: "blue", id: "also-custom" }
+      ]
+    )
+    assert_select ".gem-c-checkboxes#favourite-colour"
+    assert_select ".govuk-checkboxes__input#custom"
+    assert_select ".govuk-checkboxes__label[for='custom']", text: "Red"
+    assert_select ".govuk-checkboxes__input#favourite-colour-1"
+    assert_select ".govuk-checkboxes__label[for='favourite-colour-1']", text: "Green"
+    assert_select ".govuk-checkboxes__input#also-custom"
+    assert_select ".govuk-checkboxes__label[for='also-custom']", text: "Blue"
+  end
+
+  it "renders checkboxes with a custom hint" do
+    render_component(
+      name: "favourite_colour",
+      hint_text: "Choose carefully",
+      items: [
+        { label: "Red", value: "red" },
+        { label: "Green", value: "green" },
+      ]
+    )
+    assert_select ".govuk-hint", text: "Choose carefully"
+  end
+
+  it "does not render a hint or heading if there is only one checkbox" do
+    render_component(
+      name: "favourite_colour",
+      heading: "What is your favourite colour?",
+      hint_text: "Choose carefully",
+      items: [
+        { label: "Red", value: "red" },
+      ]
+    )
+    assert_select ".govuk-hint", false
+    assert_select ".govuk-fieldset__legend", false
   end
 
   it "renders checkboxes with the legend as the page heading" do
@@ -39,22 +116,71 @@ describe "Checkboxes", type: :view do
     assert_select "legend h1", "What is your favourite skittle?"
   end
 
-  it "renders checkboxes with custom hint text" do
+  it "renders checkboxes with aria-controls attributes" do
     render_component(
-      name: "favourite-skittle",
+      name: "favourite_colour",
       heading: "What is your favourite skittle?",
-      hint_text: "Taste the rainbow",
+      hint_text: "Choose carefully",
       items: [
-        { label: "Red", value: "red" },
-        { label: "Green", value: "green" },
-        { label: "Blue", value: "blue" }
+        { label: "Red", value: "red", controls: "js-live-results" },
+        { label: "Green", value: "green", controls: "js-live-results2" },
       ]
     )
-    assert_select ".govuk-checkboxes"
-    assert_select(".govuk-hint", text: "Taste the rainbow")
+    assert_select ".govuk-checkboxes__input[data-controls='js-live-results']"
+    assert_select ".govuk-checkboxes__input[data-controls='js-live-results2']"
   end
 
-  it "renders checkboxes with hint text for checkbox item" do
+  it "renders a checkbox with data attributes" do
+    render_component(
+      name: "with_tracking",
+      heading: "What is your favourite skittle?",
+      items: [
+        {
+          label: "Tracked",
+          value: "tracked",
+          data_attributes: {
+            track_category: "checkboxClicked",
+            track_label: "/news-and-communications",
+            track_options: {
+              dimension28: 2,
+              dimension29: "Tracked"
+            }
+          }
+        }
+      ]
+    )
+    assert_select ".govuk-checkboxes__input[data-track-category='checkboxClicked']"
+    assert_select ".govuk-checkboxes__input[data-track-label='/news-and-communications']"
+    assert_select ".govuk-checkboxes__input[data-track-options='{\"dimension28\":2,\"dimension29\":\"Tracked\"}']"
+  end
+
+  it "renders checkboxes with both aria-controls and other data attributes" do
+    render_component(
+      name: "with_tracking",
+      heading: "What is your favourite skittle?",
+      items: [
+        {
+          label: "Tracked",
+          value: "tracked",
+          data_attributes: {
+            track_category: "checkboxClicked",
+            track_label: "/news-and-communications",
+            track_options: {
+              dimension28: 2,
+              dimension29: "Tracked"
+            }
+          },
+          controls: "js-live-results"
+        }
+      ]
+    )
+    assert_select ".govuk-checkboxes__input[data-track-category='checkboxClicked']"
+    assert_select ".govuk-checkboxes__input[data-track-label='/news-and-communications']"
+    assert_select ".govuk-checkboxes__input[data-track-options='{\"dimension28\":2,\"dimension29\":\"Tracked\"}']"
+    assert_select ".govuk-checkboxes__input[data-controls='js-live-results']"
+  end
+
+  it "renders checkboxes with hint text for individual checkboxes" do
     render_component(
       id: "nationality",
       name: "nationality",
@@ -63,7 +189,7 @@ describe "Checkboxes", type: :view do
       items: [
         { label: "British", value: "british", hint: "including English, Scottish, Welsh and Northern Irish" },
         { label: "Irish", value: "irish" },
-        { label: "Other", value: "other" }
+        { label: "Other", value: "other", hint: "Anything other than the above" }
       ]
     )
     assert_select ".govuk-checkboxes"
@@ -71,6 +197,7 @@ describe "Checkboxes", type: :view do
     assert_select "label[for='nationality-1']", text: "Irish"
     assert_select "label[for='nationality-2']", text: "Other"
     assert_select("#nationality-0-item-hint", text: "including English, Scottish, Welsh and Northern Irish")
+    assert_select("#nationality-2-item-hint", text: "Anything other than the above")
   end
 
   it "renders checkboxes with error message" do

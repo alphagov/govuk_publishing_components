@@ -9,6 +9,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
    Modules.Checkboxes = function () {
     this.start = function (scope) {
       var _this = this;
+      this.applyAriaControlsAttributes(scope);
 
       $(scope).find('[data-nested=true] input[type=checkbox]').on('change', function(e) {
         var checkbox = e.target;
@@ -21,6 +22,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           _this.toggleParentCheckbox(isNested, checkbox);
         }
       });
+
     };
 
     this.toggleNestedCheckboxes = function(scope, checkbox) {
@@ -40,6 +42,12 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       } else {
         $('#' + parent_id).prop("checked", false);
       }
+    };
+
+    this.applyAriaControlsAttributes = function (scope) {
+      $(scope).find('[data-controls]').each(function () {
+        $(this).attr('aria-controls', $(this).attr('data-controls'));
+      });
     };
   };
 })(window.GOVUK.Modules);
