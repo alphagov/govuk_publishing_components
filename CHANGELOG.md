@@ -7,8 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 13.0.0
 
+* Encode feedback component to ensure UTF-8 characters are rendered (PR #673)
 * Fix autocomplete styles (PR #671)
 * BREAKING: Merge checkbox components (PR #659)
 * Accept a maxlength attribute for input (PR #670)
