@@ -9,10 +9,12 @@
 
 ## Unreleased
 
-- BREAKING: Merge checkbox components (PR #659)
+* Fix autocomplete styles (PR #671)
+* BREAKING: Merge checkbox components (PR #659)
 * Accept a maxlength attribute for input (PR #670)
 
 ## 12.21.0
+
 * Retires the taxonomy navigation component (PR #606)
 * Introduces a new contextual footer component (PR #606)
 * Use ERB comments not HTML comments in template markup (PR #667)

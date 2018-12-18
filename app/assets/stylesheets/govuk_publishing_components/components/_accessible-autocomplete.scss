@@ -7,7 +7,11 @@
 
 .gem-c-accessible-autocomplete {
   .autocomplete__input {
-    background: govuk-colour("white");
+    z-index: 1;
+  }
+
+  .autocomplete__dropdown-arrow-down {
+    z-index: 0;
   }
 
   .autocomplete__option {
