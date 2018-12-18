@@ -7,9 +7,13 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 13.2.0
+
+* Add guard for user agent and url being nil in feedback (PR #677)
+
 ## 13.1
 
-* Accessible autocomplete triggers change if tracking data is supplied (PR #666) 
+* Accessible autocomplete triggers change if tracking data is supplied (PR #666)
 
 ## 13.0.0
 
