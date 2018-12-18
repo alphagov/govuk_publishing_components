@@ -3,8 +3,9 @@
   margin_top ||= 1
   margin_top_class = "gem-c-feedback--top-margin" if margin_top == 1
   email_regex = /[^\s=\/?&]+(?:@|%40)[^\s=\/?&]+/
-  stripped_path = request.original_url.gsub(email_regex, '[email]')
-  stripped_url = request.fullpath.gsub(email_regex, '[email]')
+  stripped_path = request.original_url.gsub(email_regex, '[email]').encode
+  stripped_url = request.fullpath.gsub(email_regex, '[email]').encode
+  user_agent = request.user_agent.encode
 %>
 
 <div class="gem-c-feedback <%= margin_top_class %>" data-module="feedback">
@@ -90,7 +91,7 @@
         <div class="gem-c-feedback__error-summary gem-c-feedback__js-show js-hidden js-errors" tabindex="-1"></div>
 
         <input type="hidden" name="url" value="<%= stripped_path -%>">
-        <input type="hidden" name="user_agent" value="<%= request.user_agent -%>">
+        <input type="hidden" name="user_agent" value="<%= user_agent -%>">
 
         <h3 class="gem-c-feedback__form-heading">Help us improve GOV.UK</h3>
         <p id="feedback_explanation" class="gem-c-feedback__form-paragraph">Don’t include personal or financial information like your National Insurance number or credit card details.</p>
@@ -136,7 +137,7 @@
         <div class="gem-c-feedback__error-summary js-hidden js-errors" tabindex="-1"></div>
 
         <input type="hidden" name="url" value="<%= stripped_path -%>">
-        <input type="hidden" name="user_agent" value="<%= request.user_agent -%>">
+        <input type="hidden" name="user_agent" value="<%= user_agent -%>">
 
         <input name="email_survey_signup[survey_id]" type="hidden" value="footer_satisfaction_survey">
         <input name="email_survey_signup[survey_source]" type="hidden" value="<%= stripped_path -%>">
