@@ -11,6 +11,7 @@
 
 * Put margin bottom on autocomplete (PR #680)
 * Adds hidden class to conditional reveals for radio to resolve flicker issue (PR #679)
+* Limit hint styles to checkboxes (PR #681)
 
 ## 13.2.0
 
