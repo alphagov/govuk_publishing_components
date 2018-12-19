@@ -98,7 +98,7 @@
           <% end %>
 
           <% if item[:conditional] %>
-          <div class="govuk-radios__conditional" id="<%= conditional_id %>">
+          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="<%= conditional_id %>">
             <%= item[:conditional] %>
           </div>
           <% end %>
