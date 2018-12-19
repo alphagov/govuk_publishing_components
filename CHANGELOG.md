@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 13.3.0
 
 * Put margin bottom on autocomplete (PR #680)
 * Adds hidden class to conditional reveals for radio to resolve flicker issue (PR #679)
@@ -17,7 +17,7 @@
 
 * Add guard for user agent and url being nil in feedback (PR #677)
 
-## 13.1
+## 13.1.0
 
 * Accessible autocomplete triggers change if tracking data is supplied (PR #666)
 
