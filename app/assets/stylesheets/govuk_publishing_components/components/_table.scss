@@ -1,8 +1,4 @@
-@import "helpers/govuk-frontend-settings";
 @import "govuk-frontend/components/table/table";
-@import "govuk-frontend/core/links";
-@import "govuk-frontend/helpers/shape-arrow";
-@import "govuk-frontend/helpers/focusable";
 
 $table-border-width: 1px;
 $table-border-colour: govuk-colour("grey-2");

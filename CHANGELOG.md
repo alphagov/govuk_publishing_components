@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Move all commonly used imports into all_components.scss (PR #683)
+
 ## 13.5.0
 
 * Allow heading on single checkbox (PR #686)
