@@ -50,4 +50,8 @@
   .govuk-label:not(.govuk-label--m):not(.govuk-label--l):not(.govuk-label--xl) + .govuk-hint {
     margin-bottom: 0;
   }
+
+  .gem-c-checkboxes__legend--hidden {
+    @include govuk-visually-hidden();
+  }
 }

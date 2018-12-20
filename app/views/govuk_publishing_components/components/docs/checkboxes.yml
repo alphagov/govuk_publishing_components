@@ -35,6 +35,19 @@ examples:
           value: "green"
         - label: "Blue"
           value: "blue"
+  with_a_hidden_heading:
+    description: If the heading/legend on the checkboxes is not required, it can be visually hidden using this option. It will still be visible to screen readers.
+    data:
+      name: "favourite_colour"
+      heading: "What is your favourite colour?"
+      visually_hide_heading: true
+      items:
+        - label: "Red"
+          value: "red"
+        - label: "Green"
+          value: "green"
+        - label: "Blue"
+          value: "blue"
   with_a_custom_id_attribute:
     description: Note that if an id is not given one is generated automatically. In either case, the id is applied to the parent element of the checkboxes, and each checkbox is given the same id with an incremented number at the end, e.g. the checkboxes below have ids of potatoes-0 and potatoes-1.
     data:
@@ -59,7 +72,7 @@ examples:
         - label: "Purple"
           value: "purple"
   with_custom_hint_text:
-    description: Note that a hint (and a heading) is only displayed if there is more than one checkbox.
+    description: Hint text defaults to 'Select all that apply' but can be overridden with this option. Note that a hint (and a heading) is only displayed if there is more than one checkbox.
     data:
       name: "favourite_skittle"
       heading: "What is your favourite skittle?"
@@ -72,10 +85,11 @@ examples:
         - label: "Blue"
           value: "blue"
   without_hint_text:
-    description: Hint text defaults to 'Select all that apply'. This can be removed entirely with this option.
+    description: Hint text can be removed entirely with this option. Note that this option can be combined with the visually_hide_heading option, as shown.
     data:
       name: "favourite_skittle"
       heading: "What is your favourite skittle?"
+      visually_hide_heading: true
       no_hint_text: true
       items:
         - label: "Mauve"

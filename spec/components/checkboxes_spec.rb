@@ -36,6 +36,34 @@ describe "Checkboxes", type: :view do
     assert_select ".govuk-label", text: "Green"
   end
 
+  it "renders nothing if no heading is supplied" do
+    render_component(
+      name: "favourite_colour",
+      items: [
+        { label: "Red", value: "red" },
+        { label: "Green", value: "green" },
+      ]
+    )
+    assert_select "fieldset.govuk-fieldset", false
+    assert_select "legend", false
+    assert_select "legend h1", false
+    assert_select ".govuk-hint", false
+    assert_select ".govuk-checkboxes", false
+  end
+
+  it "renders a hidden heading/legend" do
+    render_component(
+      name: "favourite_colour",
+      heading: "What is your favourite colour?",
+      visually_hide_heading: true,
+      items: [
+        { label: "Red", value: "red" },
+        { label: "Green", value: "green" },
+      ]
+    )
+    assert_select ".govuk-fieldset__legend.gem-c-checkboxes__legend--hidden", text: "What is your favourite colour?"
+  end
+
   it "renders checkboxes with a given id" do
     render_component(
       id: "favourite-colour",
@@ -54,6 +82,7 @@ describe "Checkboxes", type: :view do
     assert_select ".govuk-checkboxes__label[for='favourite-colour-1']", text: "Green"
     assert_select ".govuk-checkboxes__input#favourite-colour-2"
     assert_select ".govuk-checkboxes__label[for='favourite-colour-2']", text: "Blue"
+    assert_select ".govuk-fieldset[aria-describedby='favourite-colour-hint']"
   end
 
   it "renders checkboxes with individual ids" do
@@ -79,6 +108,7 @@ describe "Checkboxes", type: :view do
   it "renders checkboxes with a custom hint" do
     render_component(
       name: "favourite_colour",
+      heading: "What is your favourite skittle?",
       hint_text: "Choose carefully",
       items: [
         { label: "Red", value: "red" },

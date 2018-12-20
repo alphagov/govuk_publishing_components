@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Change heading/legend/hint options on checkboxes component (PR #684)
+
 ## 13.3.0
 
 * Put margin bottom on autocomplete (PR #680)
