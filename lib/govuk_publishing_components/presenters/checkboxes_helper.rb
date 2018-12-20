@@ -18,11 +18,17 @@ module GovukPublishingComponents
         @has_nested = options[:items].any? { |item| item.is_a?(Hash) && item[:items] }
 
         @id = options[:id] || "checkboxes-#{SecureRandom.hex(4)}"
-        @heading = options[:heading]
+        @heading = options[:heading] || nil
         @is_page_heading = options[:is_page_heading]
         @no_hint_text = options[:no_hint_text]
         @hint_text = options[:hint_text] || "Select all that apply." unless @no_hint_text
         @visually_hide_heading = options[:visually_hide_heading]
+      end
+
+      # should have a fieldset if there's a heading, or if more than one checkbox
+      # separate check is in the view for if more than one checkbox and no heading, in which case fail
+      def should_have_fieldset
+        @items.length > 1 || @heading
       end
 
       def fieldset_describedby

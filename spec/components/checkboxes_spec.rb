@@ -51,6 +51,17 @@ describe "Checkboxes", type: :view do
     assert_select ".govuk-checkboxes", false
   end
 
+  it "shows a heading/legend if supplied with only one checkbox" do
+    render_component(
+      name: "favourite_colour",
+      heading: "Favourite colour?",
+      items: [
+        { label: "Red", value: "red" },
+      ]
+    )
+    assert_select ".govuk-fieldset__legend", text: "Favourite colour?"
+  end
+
   it "renders a hidden heading/legend" do
     render_component(
       name: "favourite_colour",
@@ -134,14 +145,12 @@ describe "Checkboxes", type: :view do
   it "does not render a hint or heading if there is only one checkbox" do
     render_component(
       name: "favourite_colour",
-      heading: "What is your favourite colour?",
-      hint_text: "Choose carefully",
       items: [
         { label: "Red", value: "red" },
       ]
     )
-    assert_select ".govuk-hint", false
     assert_select ".govuk-fieldset__legend", false
+    assert_select ".govuk-hint", false
   end
 
   it "renders checkboxes with the legend as the page heading" do
