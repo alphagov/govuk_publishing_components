@@ -234,12 +234,12 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       expect(structured_data['about']).to eql([
                                                  {
                                                      "@context" => "http://schema.org",
-                                                     "@type" => "CreativeWork",
+                                                     "@type" => "Thing",
                                                      "sameAs" => "https://www.gov.uk/education/becoming-an-apprentice"
                                                  },
                                                  {
                                                      "@context" => "http://schema.org",
-                                                     "@type" => "CreativeWork",
+                                                     "@type" => "Thing",
                                                      "sameAs" => "https://www.gov.uk/employment/finding-job"
                                                  }
                                              ])
@@ -260,7 +260,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       expect(structured_data['about']).to eql([
                                                   {
                                                       "@context" => "http://schema.org",
-                                                      "@type" => "CreativeWork",
+                                                      "@type" => "Thing",
                                                       "sameAs" => "https://www.gov.uk/education/becoming-an-apprentice"
                                                   }
                                               ])
