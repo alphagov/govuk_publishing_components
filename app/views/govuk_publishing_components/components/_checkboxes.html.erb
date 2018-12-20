@@ -4,10 +4,7 @@
 %>
 
 <%= tag.div id: id, class: cb_helper.css_classes, data: { module: "checkboxes" } do %>
-  <% if cb_helper.items.length == 1 %>
-    <%= cb_helper.checkbox_markup(cb_helper.items[0], 0) %>
-
-  <% else %>
+  <% if cb_helper.should_have_fieldset %>
     <% if cb_helper.heading_markup %>
       <%= tag.fieldset class: "govuk-fieldset", "aria-describedby": cb_helper.fieldset_describedby do %>
         <%= cb_helper.heading_markup %>
@@ -41,12 +38,13 @@
                   <% end %>
                 <% end %>
               <% end %>
-
             <% end %>
           <% end %>
         <% end %>
-
       <% end %>
     <% end %>
+
+  <% else %>
+    <%= cb_helper.checkbox_markup(cb_helper.items[0], 0) %>
   <% end %>
 <% end %>

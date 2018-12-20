@@ -11,11 +11,8 @@ accessibility_criteria: |
   - be usable with touch
   - indicate when they have focus
   - have correctly associated labels
-  - have a legend (see below)
 
   Labels use the [label component](/component-guide/label).
-
-  Checkboxes in a fieldset require a legend. The text of the legend is passed using the 'heading' option. If no heading is passed, no legend is shown, which causes an accessibility error. You must pass a heading when using this component, or provide other measures to ensure accessibility.
 examples:
   default:
     data:
@@ -35,6 +32,38 @@ examples:
           value: "green"
         - label: "Blue"
           value: "blue"
+  with_a_heading_on_one_checkbox:
+    description: One checkbox does not require a fieldset and therefore does not require a legend. However, if a heading is supplied, a fieldset will be included in the component and the heading used as the legend, as shown.
+    data:
+      name: "agree"
+      heading: "Please tick the box to agree"
+      items:
+        - label: "I agree"
+          value: "agree"
+  with_custom_hint_text:
+    description: Hint text defaults to 'Select all that apply' but can be overridden with this option. Note that a hint (and a heading) is only displayed if there is more than one checkbox.
+    data:
+      name: "favourite_skittle"
+      heading: "What is your favourite skittle?"
+      hint_text: "Taste the rainbow"
+      items:
+        - label: "Red"
+          value: "red"
+        - label: "Green"
+          value: "green"
+        - label: "Blue"
+          value: "blue"
+  without_hint_text:
+    description: Hint text can be removed entirely with this option. Note that this option can be combined with the visually_hide_heading option.
+    data:
+      name: "favourite_skittle"
+      heading: "What is your favourite skittle?"
+      no_hint_text: true
+      items:
+        - label: "Mauve"
+          value: "mauve"
+        - label: "Sunset orange"
+          value: "sunsetorange"
   with_a_hidden_heading:
     description: If the heading/legend on the checkboxes is not required, it can be visually hidden using this option. It will still be visible to screen readers.
     data:
@@ -71,31 +100,6 @@ examples:
           id: "custom-orange-id"
         - label: "Purple"
           value: "purple"
-  with_custom_hint_text:
-    description: Hint text defaults to 'Select all that apply' but can be overridden with this option. Note that a hint (and a heading) is only displayed if there is more than one checkbox.
-    data:
-      name: "favourite_skittle"
-      heading: "What is your favourite skittle?"
-      hint_text: "Taste the rainbow"
-      items:
-        - label: "Red"
-          value: "red"
-        - label: "Green"
-          value: "green"
-        - label: "Blue"
-          value: "blue"
-  without_hint_text:
-    description: Hint text can be removed entirely with this option. Note that this option can be combined with the visually_hide_heading option, as shown.
-    data:
-      name: "favourite_skittle"
-      heading: "What is your favourite skittle?"
-      visually_hide_heading: true
-      no_hint_text: true
-      items:
-        - label: "Mauve"
-          value: "mauve"
-        - label: "Sunset orange"
-          value: "sunsetorange"
   with_legend_as_page_heading:
     description: Since the legend/heading is required, if the checkboxes are alone on a page it makes sense to use this element as the H1 on the page rather than duplicate text.
     data:

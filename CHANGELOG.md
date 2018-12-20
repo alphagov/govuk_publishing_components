@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Allow heading on single checkbox (PR #686)
+
 ## 13.4.0
 
 * Change heading/legend/hint options on checkboxes component (PR #684)
