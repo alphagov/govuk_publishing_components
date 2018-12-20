@@ -88,6 +88,19 @@ describe "Checkboxes", type: :view do
     assert_select ".govuk-hint", text: "Choose carefully"
   end
 
+  it "renders checkboxes with no hint" do
+    render_component(
+      name: "favourite_colour",
+      no_hint_text: true,
+      items: [
+        { label: "Red", value: "red" },
+        { label: "Green", value: "green" },
+      ]
+    )
+    assert_select ".govuk-hint", false
+    assert_select ".govuk-fieldset[aria-describedby]", false
+  end
+
   it "does not render a hint or heading if there is only one checkbox" do
     render_component(
       name: "favourite_colour",

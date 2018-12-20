@@ -71,6 +71,17 @@ examples:
           value: "green"
         - label: "Blue"
           value: "blue"
+  without_hint_text:
+    description: Hint text defaults to 'Select all that apply'. This can be removed entirely with this option.
+    data:
+      name: "favourite_skittle"
+      heading: "What is your favourite skittle?"
+      no_hint_text: true
+      items:
+        - label: "Mauve"
+          value: "mauve"
+        - label: "Sunset orange"
+          value: "sunsetorange"
   with_legend_as_page_heading:
     description: Since the legend/heading is required, if the checkboxes are alone on a page it makes sense to use this element as the H1 on the page rather than duplicate text.
     data:
