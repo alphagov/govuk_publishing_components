@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 13.5.0
 
 * Allow heading on single checkbox (PR #686)
 
