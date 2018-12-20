@@ -20,14 +20,18 @@ module GovukPublishingComponents
         @id = options[:id] || "checkboxes-#{SecureRandom.hex(4)}"
         @heading = options[:heading]
         @is_page_heading = options[:is_page_heading]
-        @hint_text = options[:hint_text] || "Select all that apply."
+        @no_hint_text = options[:no_hint_text]
+        @hint_text = options[:hint_text] || "Select all that apply." unless @no_hint_text
+        @visually_hide_heading = options[:visually_hide_heading]
       end
 
       def fieldset_describedby
-        text = %w()
-        text << "#{id}-hint" if @hint_text
-        text << "#{id}-error" if @error
-        text
+        unless @no_hint_text
+          text = %w()
+          text << "#{id}-hint" if @hint_text
+          text << "#{id}-error" if @error
+          text
+        end
       end
 
       def heading_markup
@@ -41,7 +45,10 @@ module GovukPublishingComponents
             content_tag(:h1, @heading, class: "gem-c-title__text")
           end
         else
-          content_tag(:legend, @heading, class: "govuk-fieldset__legend govuk-fieldset__legend--m")
+          classes = %w(govuk-fieldset__legend govuk-fieldset__legend--m)
+          classes << "gem-c-checkboxes__legend--hidden" if @visually_hide_heading
+
+          content_tag(:legend, @heading, class: classes)
         end
       end
 
