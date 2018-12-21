@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Improve autocomplete appearance without js (PR #695)
+* Adds tracking to select component (PR #690)
 
 ## 13.5.1
 

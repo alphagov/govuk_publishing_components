@@ -4,13 +4,14 @@
   label ||= false
 
   select_helper = GovukPublishingComponents::Presenters::SelectHelper.new(options)
+  data_module = "data-module=track-select-change" unless select_helper.data_tracking?.eql?(false)
 %>
 <% if options.any? && id && label %>
   <div class="govuk-form-group gem-c-select">
     <label class="govuk-label" for="<%= id %>">
       <%= label %>
     </label>
-    <select class="govuk-select" id="<%= id %>" name="<%= id %>">
+    <select class="govuk-select" id="<%= id %>" name="<%= id %>" <%= data_module %> >
       <%= options_for_select(select_helper.option_markup, select_helper.selected_option) %>
     </select>
   </div>
