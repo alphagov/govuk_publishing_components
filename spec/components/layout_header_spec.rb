@@ -41,11 +41,13 @@ describe "Layout header", type: :view do
     navigation_items = [
       { text: "Foo", href: "/foo", active: true },
       { text: "Bar", href: "/bar" },
+      { text: "Hello", href: "/hello", show_only_in_collapsed_menu: true },
     ]
 
     render_component(environment: "staging", navigation_items: navigation_items)
 
     assert_select ".govuk-header__navigation-item.govuk-header__navigation-item--active", text: "Foo"
     assert_select ".govuk-header__navigation-item", text: "Bar"
+    assert_select ".govuk-header__navigation-item.govuk-header__navigation-item--collapsed-menu-only", text: "Hello"
   end
 end

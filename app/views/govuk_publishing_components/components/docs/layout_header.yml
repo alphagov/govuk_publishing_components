@@ -31,6 +31,9 @@ examples:
         active: true
       - text: Navigation item 2
         href: "#2"
+      - text: Hidden on desktop
+        href: "#3"
+        show_only_in_collapsed_menu: true
   full_width:
     description: |
       This is difficult to preview because the preview windows are constrained, but the header will stretch to the size of its container.
