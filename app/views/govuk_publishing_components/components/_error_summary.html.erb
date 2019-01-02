@@ -10,7 +10,7 @@
   end
 %>
 <%= tag.div(
-  class: "gem-c-error-summary",
+  class: "gem-c-error-summary govuk-error-summary",
   data: { module: "error-summary" }.merge(data_attributes),
   aria: { labelledby: title_id },
   role: "alert",
@@ -18,23 +18,20 @@
   id: id,
 ) do %>
   <% if title %>
-    <h2 class="gem-c-error-summary__title" id="<%= title_id %>">
+    <h2 class="govuk-error-summary__title" id="<%= title_id %>">
       <%= title %>
     </h2>
   <% end %>
-  <div class="gem-c-error-summary__body">
+  <div class="govuk-error-summary__body">
     <% if description %>
-      <p class="gem-c-error-summary__text"><%= description %></p>
+      <p><%= description %></p>
     <% end %>
     <% if items.present? %>
-      <ul class="gem-c-error-summary__list">
+      <ul class="govuk-list govuk-error-summary__list">
         <% items.each_with_index do |item, index| %>
-          <li class="gem-c-error-summary__list__item">
+          <li class="gem-c-error-summary__list-item">
             <% if item[:href] %>
-              <a
-                class="js-error-summary__link gem-c-error-summary__link"
-                href="<%= item[:href] %>"
-              ><%= item[:text] %></a>
+              <%= link_to item[:text], item[:href] %>
             <% else %>
               <%= item[:text] %>
             <% end %>
