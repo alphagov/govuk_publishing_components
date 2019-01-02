@@ -17,7 +17,7 @@ module GovukPublishingComponents
             "@id" => page.canonical_url,
           },
           "name" => page.title,
-          "description" => page.body
+          "description" => page.description || page.body
         }.merge(parent_organisations).merge(sub_organisations)
       end
 

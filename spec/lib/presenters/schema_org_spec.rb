@@ -47,7 +47,8 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
     it "generates schema.org GovernmentOrganization" do
       content_item = generate_org(
         "base_path" => "/ministry-of-magic",
-        "title" => "Ministry of Magic"
+        "title" => "Ministry of Magic",
+        "description" => "The magical ministry."
       )
 
       structured_data = generate_structured_data(
@@ -57,6 +58,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
 
       expect(structured_data["@type"]).to eq("GovernmentOrganization")
       expect(structured_data["name"]).to eq("Ministry of Magic")
+      expect(structured_data["description"]).to eq("The magical ministry.")
       expect(structured_data["mainEntityOfPage"]["@id"]).to eq("http://www.dev.gov.uk/ministry-of-magic")
     end
 
