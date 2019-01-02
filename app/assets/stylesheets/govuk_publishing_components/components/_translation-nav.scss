@@ -1,5 +1,3 @@
-@import "mixins/margins";
-
 .gem-c-translation-nav {
   @include responsive-top-margin;
   @include govuk-text-colour;

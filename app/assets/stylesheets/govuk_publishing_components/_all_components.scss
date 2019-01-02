@@ -1,18 +1,27 @@
-// Include all of the GOV.UK Frontend styles. This includes fonts, and individual components.
-@import "components/helpers/govuk-frontend-settings";
-
 // This is the file that the application needs to include in order to use
 // the components.
+
+// Include all of the GOV.UK Frontend styles. This includes fonts, and individual components.
+
+@import "components/helpers/govuk-frontend-settings";
+
+// Include common imports used by many components
+@import "govuk-frontend/all";
 
 // `govuk_frontend_toolkit`
 @import "measurements";
 @import "grid_layout";
 @import "typography";
 @import "colours";
+@import "css3";
+
 @import "components/helpers/variables";
 @import "components/helpers/brand-colours";
 @import "components/mixins/media-down";
+@import "components/mixins/margins";
+@import "components/mixins/clearfix";
 
+// components
 @import "components/accessible-autocomplete";
 @import "components/back-link";
 @import "components/breadcrumbs";
