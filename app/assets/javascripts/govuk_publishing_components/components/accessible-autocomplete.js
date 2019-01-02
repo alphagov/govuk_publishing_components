@@ -26,7 +26,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         // update the hidden select if the onConfirm function is supplied
         // https://github.com/alphagov/accessible-autocomplete/issues/322
         var value = $selectElem.children("option").filter(function () { return $(this).html() == label; }).val();
-        $selectElem.val(value).trigger( "change" );
+        if (typeof value !== 'undefined') {
+          $selectElem.val(value).trigger( "change" );
+        }
       };
 
       new accessibleAutocomplete.enhanceSelectElement(configOptions);
