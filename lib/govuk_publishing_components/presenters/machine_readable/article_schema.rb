@@ -141,7 +141,7 @@ module GovukPublishingComponents
         live_taxons.map do |taxon|
           {
               "@context" => "http://schema.org",
-              "@type" => "CreativeWork",
+              "@type" => "Thing",
               "sameAs" => taxon["web_url"]
           }
         end
