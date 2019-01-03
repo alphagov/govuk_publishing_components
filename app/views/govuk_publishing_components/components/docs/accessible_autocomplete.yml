@@ -13,7 +13,7 @@ examples:
     data:
       label:
         text: 'Countries'
-      options: [['', ''], ['France', 'fr'], ['Germany', 'de'], ['Sweden', 'se'], ['Switzerland', 'ch'], ['United Kingdom', 'gb'], ['United States', 'us']]
+      options: [['', ''], ['France', 'fr'], ['Germany', 'de'], ['Sweden', 'se'], ['Switzerland', 'ch'], ['United Kingdom', 'gb'], ['United States', 'us'], ['The Separate Customs Territory of Taiwan, Penghu, Kinmen, and Matsu (Chinese Taipei)', 'tw']]
   with_unique_identifier:
     data:
       id: 'unique-autocomplete'
