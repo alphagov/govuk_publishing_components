@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Improve autocomplete appearance without js (PR #695)
+
 ## 13.5.1
 
 * Add value check to accessible autocomplete custom onConfirm function (PR #693)
