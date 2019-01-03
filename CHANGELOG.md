@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 13.5.1
 
 * Add value check to accessible autocomplete custom onConfirm function (PR #693)
 * Move all commonly used imports into all_components.scss (PR #683)
