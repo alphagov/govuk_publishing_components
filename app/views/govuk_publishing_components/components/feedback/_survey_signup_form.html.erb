@@ -17,7 +17,7 @@
       <div class="gem-c-feedback__error-summary js-hidden js-errors" tabindex="-1"></div>
 
       <input name="email_survey_signup[survey_id]" type="hidden" value="footer_satisfaction_survey">
-      <input name="email_survey_signup[survey_source]" type="hidden" value="<%= utf_encode(stripped_path) -%>">
+      <input name="email_survey_signup[survey_source]" type="hidden" value="<%= stripped_path %>">
       <input name="email_survey_signup[ga_client_id]" type="hidden" value="1627485790.1515403243">
 
       <h3 class="gem-c-feedback__form-heading">Help us improve GOV.UK</h3>
@@ -35,7 +35,7 @@
       <%= render "govuk_publishing_components/components/button", {
         text: "Send me the survey"
       } %>
-      <a href="https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=<%= utf_encode(stripped_url) -%>&amp;gcl=1627485790.1515403243" class="gem-c-feedback__email-link govuk-link" id="take-survey" target="_blank" rel="noopener noreferrer">Don’t have an email address?</a>
+      <a href="https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=<%= stripped_url %>&amp;gcl=1627485790.1515403243" class="gem-c-feedback__email-link govuk-link" id="take-survey" target="_blank" rel="noopener noreferrer">Don’t have an email address?</a>
     </div>
   </div>
 </form>
