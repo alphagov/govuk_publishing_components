@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    govuk_publishing_components (13.5.2)
+    govuk_publishing_components (13.5.3)
       govspeak (>= 5.0.3)
       govuk_app_config
       govuk_frontend_toolkit
@@ -111,7 +111,7 @@ GEM
       rubocop (~> 0.58)
       rubocop-rspec (~> 1.28)
       scss_lint
-    govuk_app_config (1.10.0)
+    govuk_app_config (1.11.2)
       aws-xray-sdk (~> 0.10.0)
       logstasher (~> 1.2.2)
       sentry-raven (~> 2.7.1)
