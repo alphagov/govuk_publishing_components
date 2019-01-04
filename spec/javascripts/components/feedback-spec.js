@@ -54,7 +54,6 @@ describe("Feedback component", function () {
             '<div class="gem-c-feedback__error-summary js-hidden js-errors" tabindex="-1"></div>' +
 
             '<input type="hidden" name="url" value="http://example.com/path/to/page">' +
-            '<input type="hidden" name="user_agent" value="Safari">' +
 
             '<h2 class="gem-c-feedback__form-heading">Help us improve GOV.UK</h2>' +
             '<p class="gem-c-feedback__form-paragraph">To help us improve GOV.UK, we\'d like to know more about your visit today. We\'ll send you a link to a feedback form. It will take only 2 minutes to fill in. Don\'t worry we won\'t send you spam or share your email address with anyone.</p>' +
@@ -473,8 +472,7 @@ describe("Feedback component", function () {
       expect(request.method).toBe('POST');
       expect(request.data()).toEqual({
         url: ["http://example.com/path/to/page"],
-        'email_survey_signup[email_address]': ["test@test.com"],
-        user_agent: ["Safari"]
+        'email_survey_signup[email_address]': ["test@test.com"]
       });
     });
 
