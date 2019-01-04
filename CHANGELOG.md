@@ -7,14 +7,16 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 13.5.4
 
-* allow navigation items to only show in collapsed menu (PR #691)
+* Allow navigation items to only show in collapsed menu (PR #691)
+* Update panel component to support prepended and appended content (PR #701)
 
 ## 13.5.3
 
 * Update error-summary component to use govuk-frontend styles (PR #692)
 * Fix issues with data submission in the Feedback component (#698, #699, #700)
+=======
 
 ## 13.5.2
 

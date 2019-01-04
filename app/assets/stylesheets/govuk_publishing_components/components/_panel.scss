@@ -1,1 +1,14 @@
 @import "govuk-frontend/components/panel/panel";
+
+.gem-c-panel__prepend {
+  @include govuk-font($size: 24, $weight: bold);
+  margin-bottom: govuk-spacing(3);
+}
+
+.gem-c-panel__append {
+  @include govuk-font($size: 24, $weight: bold);
+}
+
+.gem-c-panel__prepend ~ .govuk-panel__title {
+  margin-bottom: govuk-spacing(3);
+}
