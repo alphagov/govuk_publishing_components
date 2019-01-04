@@ -25,32 +25,17 @@ describe "Feedback", type: :view do
   end
 
   describe "ASCII characters" do
-    let(:ascii_agent)   { 'áscii_user_ágent%EE%90%80'.force_encoding('ASCII-8BIT') }
-    let(:utf8_agent)    { ascii_agent.encode }
     let(:ascii_url)     { 'http://www.test.com/test?áscii=%EE%90%80'.force_encoding('ASCII-8BIT') }
     let(:utf8_url)      { ascii_url.encode }
 
     before do
-      allow_any_instance_of(ActionDispatch::Request).to receive(:user_agent).and_return(ascii_agent)
       allow_any_instance_of(ActionDispatch::Request).to receive(:original_url).and_return(ascii_url)
-    end
-
-    it "encodes user-agents to UTF-8" do
-      render_component({})
-
-      expect(response.body).to include(utf8_agent)
     end
 
     it "encodes URL params to UTF-8" do
       render_component({})
 
       expect(response.body).to include(utf8_url)
-    end
-
-    it "doesn't encode if the user-agent is nil" do
-      allow_any_instance_of(ActionDispatch::Request).to receive(:user_agent).and_return(nil)
-
-      expect { render_component({}) }.to_not raise_error
     end
   end
 end
