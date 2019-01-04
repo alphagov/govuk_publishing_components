@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix issues with data submission in the Feedback component (#698, #699, #700)
+
 ## 13.5.2
 
 * Improve autocomplete appearance without js (PR #695)
