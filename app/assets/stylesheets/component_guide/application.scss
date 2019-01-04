@@ -24,8 +24,21 @@
   }
 }
 
+.component-search {
+  display: none;
+
+  .js-enabled & {
+    display: block;
+    margin-top: $govuk-gutter * 2;
+  }
+}
+
 .component-body {
   margin-bottom: $govuk-gutter * 1.5;
+}
+
+.component-guide-hidden {
+  display: none;
 }
 
 .component-doc {
