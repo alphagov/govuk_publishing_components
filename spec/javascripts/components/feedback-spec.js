@@ -22,7 +22,6 @@ describe("Feedback component", function () {
             '<div class="gem-c-feedback__error-summary js-hidden js-errors" tabindex="-1"></div>' +
 
             '<input type="hidden" name="url" value="http://example.com/path/to/page">' +
-            '<input type="hidden" name="user_agent" value="Safari">' +
 
             '<h2 class="gem-c-feedback__form-heading">Help us improve GOV.UK</h2>' +
             '<p class="gem-c-feedback__form-paragraph">Don\'t include personal or financial information like your National Insurance number or credit card details.</p>' +
@@ -372,7 +371,6 @@ describe("Feedback component", function () {
         url: ["http://example.com/path/to/page"],
         what_doing: ["I was looking for some information about local government."],
         what_wrong: ["The background should be green."],
-        user_agent: ["Safari"],
         referrer: ["unknown"],
         javascript_enabled: ["true"]
       });
