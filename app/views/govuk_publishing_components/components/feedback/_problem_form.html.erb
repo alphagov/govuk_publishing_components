@@ -1,0 +1,44 @@
+<form action="/contact/govuk/problem_reports"
+  id="something-is-wrong"
+  class="gem-c-feedback__form js-feedback-form js-hidden"
+  data-track-category="Onsite Feedback"
+  data-track-action="GOV.UK Send Form"
+  method="post">
+  <a href="#"
+    class="gem-c-feedback__close gem-c-feedback__js-show js-close-form"
+    data-track-category="Onsite Feedback"
+    data-track-action="GOV.UK Close Form"
+    aria-controls="something-is-wrong"
+    aria-expanded="true"
+    role="button">Close</a>
+
+  <div class="gem-c-feedback__grid-row">
+    <div class="gem-c-feedback__column-two-thirds">
+      <div class="gem-c-feedback__error-summary gem-c-feedback__js-show js-hidden js-errors" tabindex="-1"></div>
+
+      <input type="hidden" name="url" value="<%= path_without_pii %>">
+
+      <h3 class="gem-c-feedback__form-heading">Help us improve GOV.UK</h3>
+      <p id="feedback_explanation" class="gem-c-feedback__form-paragraph">Don’t include personal or financial information like your National Insurance number or credit card details.</p>
+
+      <%= render "govuk_publishing_components/components/input", {
+        label: {
+          text: "What were you doing?"
+        },
+        name: "what_doing",
+        describedby: "feedback_explanation"
+      } %>
+
+      <%= render "govuk_publishing_components/components/input", {
+        label: {
+          text: "What went wrong?"
+        },
+        name: "what_wrong"
+      } %>
+
+      <%= render "govuk_publishing_components/components/button", {
+        text: "Send"
+      } %>
+    </div>
+  </div>
+</form>

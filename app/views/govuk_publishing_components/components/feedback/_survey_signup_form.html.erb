@@ -1,0 +1,41 @@
+<form action="/contact/govuk/email-survey-signup"
+  id="page-is-not-useful"
+  class="gem-c-feedback__form gem-c-feedback__form--email gem-c-feedback__js-show js-feedback-form js-hidden"
+  data-track-category="yesNoFeedbackForm"
+  data-track-action="Send Form"
+  method="post">
+  <a href="#"
+    class="gem-c-feedback__close js-close-form"
+    data-track-category="yesNoFeedbackForm"
+    data-track-action="ffFormClose"
+    aria-controls="page-is-not-useful"
+    aria-expanded="true"
+    role="button">Close</a>
+
+  <div class="gem-c-feedback__grid-row">
+    <div class="gem-c-feedback__column-two-thirds">
+      <div class="gem-c-feedback__error-summary js-hidden js-errors" tabindex="-1"></div>
+
+      <input name="email_survey_signup[survey_id]" type="hidden" value="footer_satisfaction_survey">
+      <input name="email_survey_signup[survey_source]" type="hidden" value="<%= path_without_pii %>">
+      <input name="email_survey_signup[ga_client_id]" type="hidden" value="1627485790.1515403243">
+
+      <h3 class="gem-c-feedback__form-heading">Help us improve GOV.UK</h3>
+      <p id="survey_explanation" class="gem-c-feedback__form-paragraph">To help us improve GOV.UK, we’d like to know more about your visit today. We’ll send you a link to a feedback form. It will take only 2 minutes to fill in. Don’t worry we won’t send you spam or share your email address with anyone.</p>
+
+      <%= render "govuk_publishing_components/components/input", {
+        label: {
+          text: "Email address"
+        },
+        name: "email_survey_signup[email_address]",
+        type: "email",
+        describedby: "survey_explanation"
+      } %>
+
+      <%= render "govuk_publishing_components/components/button", {
+        text: "Send me the survey"
+      } %>
+      <a href="https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=<%= url_without_pii %>&amp;gcl=1627485790.1515403243" class="gem-c-feedback__email-link govuk-link" id="take-survey" target="_blank" rel="noopener noreferrer">Don’t have an email address?</a>
+    </div>
+  </div>
+</form>
