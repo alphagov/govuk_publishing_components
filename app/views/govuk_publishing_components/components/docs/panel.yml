@@ -14,3 +14,12 @@ examples:
   no_description:
     data:
       title: Content has been published
+  with_prepend:
+    data:
+      prepend: The clocks go forward
+      title: 31 March
+  with_prepend_and_append:
+    data:
+      prepend: The next bank holiday in England and Wales is
+      title: 19 April
+      append: Good Friday

@@ -11,7 +11,7 @@ describe "Panel", type: :view do
     end
   end
 
-  it "renders an error summary with title and aria-labelledby set correctly" do
+  it "renders a panel component with title and body" do
     render_component(
       title: 'Application complete',
       description: 'Description'
@@ -19,5 +19,17 @@ describe "Panel", type: :view do
 
     assert_select ".govuk-panel__title", text: 'Application complete'
     assert_select ".govuk-panel__body", text: 'Description'
+  end
+
+  it "renders a panel component with prepend, title and append " do
+    render_component(
+      title: 'Application complete',
+      prepend: 'Prepended content',
+      append: 'Appended content'
+    )
+
+    assert_select ".govuk-panel__title", text: 'Application complete'
+    assert_select ".gem-c-panel__prepend", text: 'Prepended content'
+    assert_select ".gem-c-panel__append", text: 'Appended content'
   end
 end
