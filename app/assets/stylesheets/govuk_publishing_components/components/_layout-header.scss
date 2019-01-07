@@ -54,3 +54,9 @@
   background-color: govuk-colour("yellow");
   color: govuk-colour("black");
 }
+
+.govuk-header__navigation-item--collapsed-menu-only {
+  @include govuk-media-query($from: desktop) {
+    display: none;
+  }
+}

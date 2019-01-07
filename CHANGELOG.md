@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* allow navigation items to only show in collapsed menu (PR #691)
+
 ## 13.5.3
 
 * Update error-summary component to use govuk-frontend styles (PR #692)
