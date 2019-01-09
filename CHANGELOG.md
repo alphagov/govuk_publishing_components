@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add search to component guide (PR #706)
+
 ## 13.5.4
 
 * Allow navigation items to only show in collapsed menu (PR #691)
@@ -16,7 +20,6 @@
 
 * Update error-summary component to use govuk-frontend styles (PR #692)
 * Fix issues with data submission in the Feedback component (#698, #699, #700)
-=======
 
 ## 13.5.2
 
