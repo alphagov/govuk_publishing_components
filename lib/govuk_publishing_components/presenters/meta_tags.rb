@@ -29,13 +29,6 @@ module GovukPublishingComponents
         meta_tags["govuk:format"] = content_item[:document_type] if content_item[:document_type]
         meta_tags["govuk:publishing-application"] = content_item[:publishing_app] if content_item[:publishing_app]
         meta_tags["govuk:schema-name"] = content_item[:schema_name] if content_item[:schema_name]
-
-        user_journey_stage = content_item[:user_journey_document_supertype]
-        meta_tags["govuk:user-journey-stage"] = user_journey_stage if user_journey_stage
-
-        navigation_document_type = content_item[:navigation_document_supertype]
-        meta_tags["govuk:navigation-document-type"] = navigation_document_type if navigation_document_type
-
         meta_tags["govuk:content-id"] = content_item[:content_id] if content_item[:content_id]
         meta_tags["govuk:withdrawn"] = "withdrawn" if content_item[:withdrawn_notice].present?
         meta_tags["govuk:content-has-history"] = "true" if has_content_history?

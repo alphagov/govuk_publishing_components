@@ -76,16 +76,6 @@ describe "Meta tags", type: :view do
     assert_empty render_component(content_item: { details: { political: true } }).strip
   end
 
-  it "renders user journey stage when user journey supertype is included" do
-    render_component(content_item: { user_journey_document_supertype: 'some-stage-of-journey' })
-    assert_meta_tag('govuk:user-journey-stage', 'some-stage-of-journey')
-  end
-
-  it "renders navigation document type when content item has navigation document supertype" do
-    render_component(content_item: { navigation_document_supertype: 'guidance' })
-    assert_meta_tag('govuk:navigation-document-type', 'guidance')
-  end
-
   it "renders 'political' political status when political content and government is current" do
     current = true
     political = true
