@@ -13,9 +13,9 @@ module GovukPublishingComponents
         statistical_data_sets
       ).freeze
 
-      def initialize(content_item:, context: nil)
-        @content_item = content_item
-        @context = context
+      def initialize(options = {})
+        @content_item = options.fetch(:content_item) { raise ArgumentError, 'missing argument: content_item' }
+        @context = options.fetch(:context, nil)
       end
 
       def related_navigation
