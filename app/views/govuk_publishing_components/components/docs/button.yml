@@ -33,6 +33,11 @@ examples:
       text: "I'm really a link sssh"
       href: "http://www.gov.uk"
       target: "_blank"
+  with_type:
+    description: Buttons default to having a type of submit, but in some cases it may be desirable to have a different type.
+    data:
+      text: "Button type button"
+      type: "button"
   start_now_button:
     data:
       text: "Start now"

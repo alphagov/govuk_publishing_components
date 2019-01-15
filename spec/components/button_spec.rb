@@ -22,6 +22,18 @@ describe "Button", type: :view do
     assert_select ".govuk-button", text: "Submit"
   end
 
+  it "renders with the correct types" do
+    render_component(text: "Submit")
+    assert_select ".govuk-button[type=submit]", text: "Submit"
+
+    render_component(text: "Link", href: "#", type: "button")
+    assert_select "a.govuk-button", text: "Link"
+    assert_select "a.govuk-button[type=submit]", false
+
+    render_component(text: "Button", type: "button")
+    assert_select ".govuk-button[type=button]"
+  end
+
   it "renders start now button" do
     render_component(text: "Start now", href: "#", start: true)
     assert_select ".govuk-button[href='#']", text: "Start now"
