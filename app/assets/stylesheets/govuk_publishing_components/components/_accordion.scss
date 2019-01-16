@@ -1,0 +1,15 @@
+@import "govuk-frontend/components/accordion/accordion";
+
+.govuk-accordion--condensed {
+  .govuk-accordion__section-button {
+    @include govuk-media-query($from: tablet) {
+      @include govuk-font($size: 19, $weight: bold);
+    }
+  }
+
+  .govuk-accordion__section-summary {
+    @include govuk-media-query($from: tablet) {
+      @include govuk-font($size: 16);
+    }
+  }
+}

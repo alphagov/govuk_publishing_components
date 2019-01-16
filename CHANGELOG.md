@@ -8,8 +8,8 @@
   of the commit log.
 
 ## Unreleased
-
 * Extend accessible autocomplete onConfirm function (PR #718)
+* Add Accordion component based on GOV.UK Frontend (PR #714)
 * Add type option to button component (PR #711)
 
 ## 13.6.1
