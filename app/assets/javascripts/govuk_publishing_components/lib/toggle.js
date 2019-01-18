@@ -1,12 +1,35 @@
 /*
   Toggle the display of elements
 
-  This is a straight copy of the same file from static.
+  Use as follows:
+
+  <div data-module="gem-toggle">
+    <a href="#" data-controls="target" data-expanded="true">
+      Show more
+    </a>
+    <div id="target">
+      Content to be toggled
+    </div>
+  </div>
 
   Use `data-controls` and `data-expanded` to indicate the
   starting state and the IDs of the elements that the toggle
   controls. This is synonymous with ARIA attributes, which
   get added when starting.
+
+  If you want to set `data-expanded` to false, you must add
+  the `js-hidden` class to the element you wish to hide in
+  your template, the module will not do this for you.
+
+  `data-controls` can contain more than one element, space
+  separated.
+
+  Use `data-toggle-class` on the parent element to set the
+  class that is toggled. Defaults to `js-hidden`.
+
+  Use `data-toggled-text` on the trigger element to set the
+  text shown when the element is toggled. Defaults to not
+  changing.
 */
 
 window.GOVUK.Modules = window.GOVUK.Modules || {};
