@@ -83,4 +83,20 @@ describe('A toggle module', function () {
       expect(element.find('#another-target').is('.js-hidden')).toBe(true);
     });
   });
+
+  describe('when a custom class is given', function () {
+    var element = $('\
+      <div data-toggle-class="myclass">\
+        <a href="#" class="my-toggle" data-expanded="true" data-controls="target">Toggle</a>\
+        <div id="target">Target</div>\
+      </div>');
+
+    it('toggles the given class', function () {
+      toggle.start(element);
+
+      expect(element.find('#target').is('.myclass')).toBe(false);
+      element.find('.my-toggle').trigger('click');
+      expect(element.find('#target').is('.myclass')).toBe(true);
+    });
+  });
 });

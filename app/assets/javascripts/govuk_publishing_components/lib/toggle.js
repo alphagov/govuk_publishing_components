@@ -17,6 +17,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   Modules.GemToggle = function () {
     this.start = function ($el) {
       var toggleSelector = '[data-controls][data-expanded]';
+      var toggleClass = $el.attr('data-toggle-class') || 'js-hidden';
 
       $el.on('click', toggleSelector, toggle);
       $el.find(toggleSelector).each(addAriaAttrs);
@@ -43,10 +44,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
         if (expanded) {
           $toggle.attr('aria-expanded', false);
-          $targets.addClass('js-hidden');
+          $targets.addClass(toggleClass);
         } else {
           $toggle.attr('aria-expanded', true);
-          $targets.removeClass('js-hidden');
+          $targets.removeClass(toggleClass);
         }
 
         var toggledText = $toggle.data('toggled-text');
