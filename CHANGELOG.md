@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Extend toggle module (PR #712)
+
 ## 13.6.0
 
 * Add search to component guide (PR #706)
