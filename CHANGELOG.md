@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 13.6.1
 
 * Extend toggle module (PR #712)
 
