@@ -13,3 +13,9 @@
     @include govuk-font(19)
   }
 }
+
+.gem-c-accessible-autocomplete--hide-menu {
+  .autocomplete__menu {
+    display: none;
+  }
+}
