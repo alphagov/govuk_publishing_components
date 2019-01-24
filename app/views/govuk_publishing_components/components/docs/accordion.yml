@@ -1,0 +1,351 @@
+name: Accordion (experimental)
+description: The accordion component lets users show and hide sections of related content on a page.
+govuk_frontend_components:
+  - accordion
+body: |
+  This component is based on the [design system accordion component](https://design-system.service.gov.uk/components/accordion/) and is currently experimental. If using this component, please feed back any research findings to the design team.
+
+accessibility_criteria: |
+  The accordion must:
+
+    * accept focus
+    * be usable with a keyboard
+    * indicate when they have focus
+    * be usable with touch
+    * be usable with voice commands
+    * have visible text
+    * indicate to users that each section can be expanded and collapsed
+    * inform the user when a step has been expanded or collapsed
+    * be readable when only the text of the page is zoomed in
+
+  Section headings must use a button element:
+
+    * so that sections can be toggled with the space and enter keys
+    * so that sections can't be opened in a new tab or window
+
+  When JavaScript is unavailable the component must:
+
+  * be fully expanded
+  * not be marked as expandable
+shared_accessibility_criteria:
+  - link
+examples:
+  default:
+    data:
+      items:
+        - heading:
+            text: "Writing well for the web"
+          content:
+            html: "<p class='govuk-body'>This is the content for Writing well for the web.</p>"
+        - heading:
+            text: "Writing well for specialists"
+          content:
+            html: "<p class='govuk-body'>This is the content for Writing well for specialists.</p>"
+        - heading:
+            text: "Know your audience"
+          content:
+            html: "<p class='govuk-body'>This is the content for Know your audience.</p>"
+        - heading:
+            text: "How people read"
+          content:
+            html: "<p class='govuk-body'>This is the content for How people read.</p>"
+  with_supplied_identification:
+    description: |
+      An `id` is optional as it's automatically generated, but it can be supplied if a specific `id` is required.
+
+      The `id` must be **unique** across the domain of your service - this is because as the open / closed state of individual instances of the accordion persists across page loads using `localStorage`.
+
+      Used as an `id` in the HTML for the accordion as a whole, and also as a prefix for the `id`s of the section contents and the buttons that open them, so that those `id`s can be the target of `aria-labelledby` and `aria-control` attributes.
+    data:
+      id: with-supplied-id-thats-unique-across-the-domain
+      items:
+        - heading:
+            text: "Writing well for the web"
+          content:
+            html: "<p class='govuk-body'>This is the content for Writing well for the web.</p>"
+        - heading:
+            text: "Writing well for specialists"
+          content:
+            html: "<p class='govuk-body'>This is the content for Writing well for specialists.</p>"
+        - heading:
+            text: "Know your audience"
+          content:
+            html: "<p class='govuk-body'>This is the content for Know your audience.</p>"
+        - heading:
+            text: "How people read"
+          content:
+            html: "<p class='govuk-body'>This is the content for How people read.</p>"
+  with_summary:
+    description: Adds a subheading below each section heading.
+    data:
+      items:
+        - heading:
+            text: "Understanding agile project management"
+          summary:
+            text: "Introductions, methods, core features."
+          content:
+            html:
+              '<ul class="govuk-list">
+                  <li>
+                    <a class="govuk-link" href="#">Agile and government services: an introduction</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link" href="#">Agile methods: an introduction</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link" href="#">Core principles of agile</a>
+                  </li>
+              </ul>'
+        - heading:
+            text: "Working with agile methods"
+          summary:
+            text: "Workspaces, tools and techniques, user stories, planning."
+          content:
+            html:
+              '<ul class="govuk-list">
+                  <li>
+                    <a class="govuk-link" href="#">Creating an agile working environment</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link" href="#">Agile tools and techniques</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link" href="#">Set up a team wall</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link" href="#">Writing user stories</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link" href="#">Planning in agile</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link" href="#">Deciding on priorities</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link" href="#">Developing a roadmap</a>
+                  </li>
+              </ul>'
+        - heading:
+            text: "Governing agile services"
+          summary:
+            text: "Principles, measuring progress, spending money."
+          content:
+            html:
+              '<ul class="govuk-list">
+                  <li>
+                    <a class="govuk-link" href="#">Governance principles for agile service delivery</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link" href="#">Measuring and reporting progress</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link" href="#">Spend controls: check if you need approval to spend money on a service</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link" href="#">Spend controls: apply for approval to spend money on a service</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link" href="#">Spend controls: the new pipeline process</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link" href="#">Working across organisational boundaries</a>
+                  </li>
+              </ul>'
+        - heading:
+            text: "Phases of an agile project"
+          summary:
+            text: "Discovery, alpha, beta, live and retirement."
+          content:
+            html:
+              '<ul class="govuk-list">
+                  <li>
+                    <a class="govuk-link" href="#">How the discovery phase works</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link" href="#">How the alpha phase works</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link" href="#">How the beta phase works</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link" href="#">How the live phase works</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link" href="#">Retiring your service</a>
+                  </li>
+              </ul>'
+  with_data_attributes:
+    description: |
+      Adds custom data attributes to the accordion to each section. Accepts an hash, so multiple attributes can be added.
+
+      The `data_attributes` hash is for the outermost element in the accordion.
+
+      Each item can also have a `data_attributes` hash. This is placed on the `button` that triggers the opening and closing - useful for differentiating between each section of the accordion.
+
+    data:
+      data_attributes:
+          gtm: 'gtm-accordion'
+          ga: 'ga-accordion'
+      items:
+        - heading:
+            text: "Writing well for the web"
+          content:
+            html: "<p class='govuk-body'>This is the content for Writing well for the web.</p>"
+          data_attributes:
+            gtm: 'gtm-accordion-item-1'
+        - heading:
+            text: "Writing well for specialists"
+          content:
+            html: "<p class='govuk-body'>This is the content for Writing well for specialists.</p>"
+          data_attributes:
+            gtm: 'gtm-accordion-item-2'
+        - heading:
+            text: "Know your audience"
+          content:
+            html: "<p class='govuk-body'>This is the content for Know your audience.</p>"
+          data_attributes:
+            gtm: 'gtm-accordion-item-3'
+        - heading:
+            text: "How people read"
+          content:
+            html: "<p class='govuk-body'>This is the content for How people read.</p>"
+          data_attributes:
+            gtm: 'gtm-accordion-item-4'
+  different_heading_level:
+    description: This will alter the level of the heading, not the appearance of the heading.
+    data:
+      heading_level: 5
+      items:
+        - heading:
+            text: "Writing well for the web"
+          content:
+            html: "<p class='govuk-body'>This is the content for Writing well for the web.</p>"
+        - heading:
+            text: "Writing well for specialists"
+          content:
+            html: "<p class='govuk-body'>This is the content for Writing well for specialists.</p>"
+        - heading:
+            text: "Know your audience"
+          content:
+            html: "<p class='govuk-body'>This is the content for Know your audience.</p>"
+        - heading:
+            text: "How people read"
+          content:
+            html: "<p class='govuk-body'>This is the content for How people read.</p>"
+  with_section_open:
+    description: |
+      Adding `expanded: true` to the item will mean the section will default to being open, rather than closed. Once a user has opened or closed a section, the state of each section will be remembered - this can override a section's default.
+    data:
+      items:
+        - heading:
+            text: "Writing well for the web"
+          content:
+            html: "<p class='govuk-body'>This is the content for Writing well for the web.</p>"
+          expanded: true
+        - heading:
+            text: "Writing well for specialists"
+          content:
+            html: "<p class='govuk-body'>This is the content for Writing well for specialists.</p>"
+        - heading:
+            text: "Know your audience"
+          content:
+            html: "<p class='govuk-body'>This is the content for Know your audience.</p>"
+        - heading:
+            text: "How people read"
+          content:
+            html: "<p class='govuk-body'>This is the content for How people read.</p>"
+  condensed_layout:
+    description: |
+      This is for when a smaller accordion is required. Since smaller screens trigger a single column layout, this modifier only makes the accordion smaller when viewed on large screens.
+    data:
+      condensed: true
+      items:
+        - heading:
+            text: "Understanding agile project management"
+          content:
+            html:
+              '<ul class="govuk-list">
+                  <li>
+                    <a class="govuk-link govuk-body-s" href="#">Agile and government services: an introduction</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link govuk-body-s" href="#">Agile methods: an introduction</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link govuk-body-s" href="#">Core principles of agile</a>
+                  </li>
+              </ul>'
+        - heading:
+            text: "Working with agile methods"
+          summary:
+            text: "Workspaces, tools and techniques, user stories, planning."
+          content:
+            html:
+              '<ul class="govuk-list">
+                  <li>
+                    <a class="govuk-link govuk-body-s" href="#">Creating an agile working environment</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link govuk-body-s" href="#">Agile tools and techniques</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link govuk-body-s" href="#">Set up a team wall</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link govuk-body-s" href="#">Writing user stories</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link govuk-body-s" href="#">Planning in agile</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link govuk-body-s" href="#">Deciding on priorities</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link govuk-body-s" href="#">Developing a roadmap</a>
+                  </li>
+              </ul>'
+        - heading:
+            text: "Governing agile services"
+          content:
+            html:
+              '<ul class="govuk-list">
+                  <li>
+                    <a class="govuk-link govuk-body-s" href="#">Governance principles for agile service delivery</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link govuk-body-s" href="#">Measuring and reporting progress</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link govuk-body-s" href="#">Spend controls: check if you need approval to spend money on a service</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link govuk-body-s" href="#">Spend controls: apply for approval to spend money on a service</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link govuk-body-s" href="#">Spend controls: the new pipeline process</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link govuk-body-s" href="#">Working across organisational boundaries</a>
+                  </li>
+              </ul>'
+        - heading:
+            text: "Phases of an agile project"
+          content:
+            html:
+              '<ul class="govuk-list">
+                  <li>
+                    <a class="govuk-link govuk-body-s" href="#">How the discovery phase works</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link govuk-body-s" href="#">How the alpha phase works</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link govuk-body-s" href="#">How the beta phase works</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link govuk-body-s" href="#">How the live phase works</a>
+                  </li>
+                  <li>
+                    <a class="govuk-link govuk-body-s" href="#">Retiring your service</a>
+                  </li>
+              </ul>'
