@@ -7,7 +7,8 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 13.7.0
+
 * Extend accessible autocomplete onConfirm function (PR #718)
 * Add Accordion component based on GOV.UK Frontend (PR #714)
 * Add type option to button component (PR #711)
