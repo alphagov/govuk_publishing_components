@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Extend accessible autocomplete onConfirm function (PR #718)
 * Add type option to button component (PR #711)
 
 ## 13.6.1
