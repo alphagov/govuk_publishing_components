@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove classes option from components (PR #727)
+
 ## 15.3.0
 
 * Update skip-link to allow custom link text (PR #755)
