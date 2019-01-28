@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add govuk-frontend spacing scale to hint (PR #724)
 * Increase focus contrast of feedback links (PR #731)
 
 ## 13.8.1

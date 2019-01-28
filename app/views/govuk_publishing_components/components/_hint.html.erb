@@ -1,8 +1,9 @@
 <%
   id ||= "hint-#{SecureRandom.hex(4)}"
-  classes ||= ''
+  margin_bottom ||= 3
+
   css_classes = %w( gem-c-hint govuk-hint )
-  css_classes << classes if classes
+  css_classes << ([*0..9].include?(margin_bottom) ? "govuk-!-margin-bottom-#{margin_bottom}" : "govuk-!-margin-bottom-3")
 %>
 
 <%= tag.span id: id, class: css_classes do %>
