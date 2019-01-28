@@ -14,6 +14,7 @@ describe "AccessibleAutocomplete", type: :view do
 
     assert_select ".govuk-label", text: "Countries", for: "basic-autocomplete"
     assert_select "select#basic-autocomplete"
+    assert_select "select[multiple]", false
     assert_select "select#basic-autocomplete option[value=gb]"
     assert_select "select#basic-autocomplete option[value=gb]", text: 'United Kingdom'
     assert_select "select#basic-autocomplete option[value=us]"
@@ -50,5 +51,27 @@ describe "AccessibleAutocomplete", type: :view do
       id: 'basic-autocomplete',
       label: { text: "Countries" }
     )
+  end
+
+  it 'renders the multiple selection version correctly' do
+    render_component(
+      multiple: true,
+      label: { text: "Countries" },
+      options: [['United Kingdom', 'gb'], ['United States', 'us']]
+    )
+
+    assert_select "select[multiple]"
+    assert_select ".gem-c-accessible-autocomplete.gem-c-accessible-autocomplete--hide-facets", false
+  end
+
+  it 'does not show facet tags for multiple when given the option' do
+    render_component(
+      multiple: true,
+      hide_facets: true,
+      label: { text: "Countries" },
+      options: [['United Kingdom', 'gb'], ['United States', 'us']]
+    )
+
+    assert_select ".gem-c-accessible-autocomplete.gem-c-accessible-autocomplete--hide-facets"
   end
 end

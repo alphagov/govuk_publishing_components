@@ -7,6 +7,14 @@ describe("An accessible autocomplete component", function () {
     autocomplete.start($('.gem-c-accessible-autocomplete'));
   }
 
+  function loadAutocompleteMultiple() {
+    //var multipleHtml = html.replace('<select', '<select multiple ');
+    setFixtures(html);
+    var autocomplete = new GOVUK.Modules.AccessibleAutocomplete();
+    $('.gem-c-accessible-autocomplete').find('select').attr('multiple','multiple').find('option:first-child').remove();
+    autocomplete.start($('.gem-c-accessible-autocomplete'));
+  }
+
   var html = '\
     <div class="gem-c-accessible-autocomplete" data-module="accessible-autocomplete">\
       <select id="test" class="govuk-select" data-track-category="category" data-track-action="action">\
@@ -121,6 +129,48 @@ describe("An accessible autocomplete component", function () {
     it('when an input is cleared', function () {
       expect(GOVUK.analytics.trackEvent).
         toHaveBeenCalledWith('category', 'action', Object({ label: '' }));
+    });
+  });
+
+  describe('in multiple mode', function() {
+    beforeEach(function (done) {
+      loadAutocompleteMultiple();
+      // use the component api for this test
+      // as methods in previous tests don't seem to
+      // work in multiple mode
+      var onConfirm = $('select').data('onconfirm');
+
+      $('.autocomplete__input').val('Deer');
+      onConfirm('Deer', 'de');
+
+      testAsyncWithDeferredReturnValue().done(function () {
+        done();
+      });
+    });
+
+    it('selects one option in the select', function () {
+      expect($('select').val()).toEqual(['de']);
+    });
+  });
+
+  describe('in multiple mode', function() {
+    beforeEach(function (done) {
+      loadAutocompleteMultiple();
+      var onConfirm = $('select').data('onconfirm');
+
+      $('.autocomplete__input').val('Moose');
+      onConfirm('Moose', 'mo');
+
+      $('.autocomplete__input').val('Deer');
+      onConfirm('Deer', 'de');
+
+      testAsyncWithDeferredReturnValue().done(function () {
+        done();
+      });
+    });
+
+    it('selects multiple options in the select', function () {
+      expect($('select').val()).toEqual(['mo', 'de']);
     });
   });
 });
