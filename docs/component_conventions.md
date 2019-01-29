@@ -19,13 +19,46 @@ The namespace indicates where a component lives. A single page on GOV.UK could r
 
 | Type | Location | Example | Description |
 | -- | -- | -- | -- |
-| Template | `app/views/components` | `_my-comp.html.erb` | The template logic and markup. The template defines the component’s API. Filename must begin with an underscore. |
+| Template | `app/views/components` | `_my-comp.html.erb` | [Template logic and markup](#template) |
 | Documentation | `app/views/components/docs` | `my-comp.yml` | [Describes the component](#write-documentation) |
 | Styles | `app/assets/stylesheets/components` | `_my-comp.scss` | [Component styles](#styles) |
+| Print styles | `app/assets/stylesheets/components/print` | `_my-comp.scss` | [Component styles](#styles) |
 | Images | `app/assets/images/govuk_publishing_components` | `my-comp.png` | [Images](#images) |
 | Scripts | `app/assets/javascripts/components` | `my-comp.js` | [Javascript enhancements](#javascript) |
-| Tests | `test/components` | `my_comp_test.rb` | Unit tests |
+| Tests | `test/components` | `my_comp_test.rb` | [Unit tests](#tests) |
+| Javascript tests | `spec/components` | `my_comp_spec.rb` | [Unit tests](#tests) |
 | Helpers | `lib/govuk_publishing_components/presenters` | `my_comp_helper.rb` | [Helpers](#helpers) |
+
+## Template
+
+The template logic and markup. The template defines the component’s API. Filename must begin with an underscore.
+
+If complex logic is required this should be handled using a [helper](#helpers).
+
+Example:
+
+```ruby
+<%
+  options ||= []
+  id ||= false
+  helper = GovukPublishingComponents::Presenters::MyComponentHelper.new(options)
+%>
+
+<% if options.any? %>
+  <div class="govuk-something" id="<%= id %>">
+    <h2>An example component</h2>
+    <%= helper.someContent %>
+  </div>
+<% endif %>
+```
+
+If a component includes a heading, consider including an option to control the heading level (see the [heading component](https://govuk-publishing-components.herokuapp.com/component-guide/heading/specific_heading_level) for example).
+
+Components can use other components within their template, if required (see the [input component](https://github.com/alphagov/govuk_publishing_components/blob/master/app/views/govuk_publishing_components/components/_input.html.erb#L37) for example).
+
+Complex components can be split into smaller partials to make them easier to understand and maintain (see the [feedback component](https://github.com/alphagov/govuk_publishing_components/blob/master/app/views/govuk_publishing_components/components/_feedback.html.erb) for example).
+
+Components should not have an option to include arbitrary classes as this could violate the principle of isolation. If there is a requirement for a styling variation on a component this should be included as an option e.g. `small: true`.
 
 ## Write documentation
 
@@ -145,7 +178,7 @@ With the exception of namespaces, follow the [GOV.UK Frontend CSS conventions](h
 
 All CSS selectors should follow the BEM naming convention shown above, explained in [more detail here](https://github.com/alphagov/govuk-frontend/blob/master/docs/contributing/coding-standards/css.md#block-element-modifier-bem).
 
-Note: to avoid long and complicated class names, we follow the [BEM guidance](http://getbem.com/faq/#css-nested-elements) that classes do not have to reflect the nested nature of the DOM.
+Note: to avoid long and complicated class names, we follow the [BEM guidance](http://getbem.com/faq/#css-nested-elements) that classes do not have to reflect the nested nature of the DOM. We also try to avoid nesting classes too deeply, so that styles can be overridden more easily if needed.
 
 ```scss
   // Avoid this:
@@ -163,6 +196,12 @@ Visit the links below for more information:
 
 * [Official BEM Documentation](https://en.bem.info/methodology/naming-convention/#css-selector-naming-convention)
 * [Guide on BEM naming conventions](https://webdesign.tutsplus.com/articles/an-introduction-to-the-bem-methodology--cms-19403)
+
+### Layout
+
+New components should be built with a bottom margin and no top margin.
+
+A standard for options to control this spacing has [not been decided upon yet](https://github.com/alphagov/govuk_publishing_components/pull/292), although it is likely we will adopt something using the [Design System spacing](https://design-system.service.gov.uk/styles/spacing/).
 
 ### Linting
 All stylesheets must be linted according to [the style rules](https://github.com/alphagov/govuk-lint/blob/master/configs/scss_lint/gds-sass-styleguide.yml) in [govuk-lint](https://github.com/alphagov/govuk-lint).
@@ -187,6 +226,16 @@ SVGs can also be used for images, ideally inline in templates and compressed.
 Follow the [GOV.UK Frontend JS conventions](https://github.com/alphagov/govuk-frontend/blob/master/docs/contributing/coding-standards/js.md).
 
 Scripts should use the [module pattern provided by govuk_frontend_toolkit](https://github.com/alphagov/govuk_frontend_toolkit/blob/master/docs/javascript.md#modules) and be linted using [StandardJS](https://standardjs.com/).
+
+Most components should have an option to include arbitrary data attributes (see the [checkboxes component](https://govuk-publishing-components.herokuapp.com/component-guide/checkboxes/checkboxes_with_data_attributes) for example). These can be used for many purposes including tracking (see the [select component](https://govuk-publishing-components.herokuapp.com/component-guide/select/with_tracking) for [example code](https://github.com/alphagov/govuk_publishing_components/blob/master/app/assets/javascripts/govuk_publishing_components/components/select.js)) but specific tracking should only be added to a component where there is a real need for it.
+
+Some [common Javascript modules](https://github.com/alphagov/govuk_publishing_components/tree/master/app/assets/javascripts/govuk_publishing_components/lib) are available. If new functionality is required, consider adding it as a common module.
+
+## Tests
+
+Component tests should include a check that the component doesn't fail if no data is passed.
+
+Javascript tests should be included if the component has any Javascript that is unique to it. Use of existing Javascript modules should be covered by existing tests.
 
 ## Helpers
 
