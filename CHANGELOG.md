@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 13.8.0
 
 * Update contextual breadcrumbs to not show taxonomy breadcrumbs when showing specialist documents (PR #725)  
 
