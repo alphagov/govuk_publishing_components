@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update contextual breadcrumbs to not show taxonomy breadcrumbs when showing specialist documents (PR #725)  
+
 ## 13.7.0
 
 * Extend accessible autocomplete onConfirm function (PR #718)

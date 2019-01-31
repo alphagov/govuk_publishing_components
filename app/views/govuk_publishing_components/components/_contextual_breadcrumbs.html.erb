@@ -18,7 +18,7 @@
   <% elsif navigation.content_has_curated_related_items? %>
     <%# Rendering parent-based breadcrumbs because the page has curated related links %>
     <%= render 'govuk_publishing_components/components/breadcrumbs', breadcrumbs: navigation.breadcrumbs %>
-  <% elsif navigation.content_is_tagged_to_a_live_taxon? %>
+  <% elsif navigation.content_is_tagged_to_a_live_taxon? && !navigation.content_is_a_specialist_document? %>
     <%# Rendering taxonomy breadcrumbs because the page is tagged to live taxons %>
     <%= render 'govuk_publishing_components/components/breadcrumbs',
       breadcrumbs: navigation.taxon_breadcrumbs[:breadcrumbs],

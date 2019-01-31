@@ -21,7 +21,7 @@ module GovukPublishingComponents
       end
 
       def breadcrumbs
-        if content_item["schema_name"] == "specialist_document"
+        if content_is_a_specialist_document?
           parent_finder = content_item.dig("links", "finder", 0)
           return [] unless parent_finder
 
@@ -50,6 +50,10 @@ module GovukPublishingComponents
 
       def content_is_tagged_to_a_live_taxon?
         content_item.dig("links", "taxons").to_a.any? { |taxon| taxon["phase"] == "live" }
+      end
+
+      def content_is_a_specialist_document?
+        content_item["schema_name"] == "specialist_document"
       end
 
       def content_tagged_to_current_step_by_step?
