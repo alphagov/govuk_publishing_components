@@ -76,6 +76,34 @@ describe "ContextualBreadcrumbs", type: :view do
     assert_no_selector(".gem-c-breadcrumbs")
   end
 
+  it "renders parent finder breadcrumb if content schema is a specialist document" do
+    content_item = example_document_for("specialist_document", "cma-cases")
+    content_item["links"]["taxons"] = [
+      {
+        api_path: "/api/content/business/competition",
+        base_path: "/business/competition",
+        document_type: "taxon",
+        phase: "live",
+        links: {
+          parent_taxons: [
+            {
+              api_path: "/api/content/business-and-industry/business-regulation",
+              base_path: "/business-and-industry/business-regulation",
+              document_type: "taxon",
+              phase: "live",
+              links: {}
+            }
+          ]
+        }
+      }
+    ]
+
+    render_component(content_item: content_item)
+
+    assert_select "a", text: "Home"
+    assert_select "a", text: "Competition and Markets Authority cases"
+  end
+
   it "renders no breadcrumbs if there aren't any" do
     content_item = example_document_for("guide", "guide")
     content_item = remove_mainstream_browse(content_item)
