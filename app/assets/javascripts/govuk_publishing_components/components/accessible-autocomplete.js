@@ -28,13 +28,18 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     };
 
     this.onConfirm = function(label, removeDropDown) {
+
+      function escapeHTML(str){
+        return new Option(str).innerHTML;
+      }
+
       if ($selectElem.data('track-category') !== undefined && $selectElem.data('track-action') !== undefined) {
         track($selectElem.data('track-category'), $selectElem.data('track-action'), label, $selectElem.data('track-options'));
       }
       // This is to compensate for the fact that the accessible-autocomplete library will not
       // update the hidden select if the onConfirm function is supplied
       // https://github.com/alphagov/accessible-autocomplete/issues/322
-      var value = $selectElem.children("option").filter(function () { return $(this).html() == label; }).val();
+      var value = $selectElem.children("option").filter(function () { return $(this).html() == escapeHTML(label); }).val();
       if (typeof value !== 'undefined') {
         $selectElem.val(value).change();
       }
