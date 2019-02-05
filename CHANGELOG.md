@@ -7,9 +7,13 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 13.8.1
+
+* Fix autocomplete to allow it to handle HTML entities in the select list (PR #728)
+
 ## 13.8.0
 
-* Update contextual breadcrumbs to not show taxonomy breadcrumbs when showing specialist documents (PR #725)  
+* Update contextual breadcrumbs to not show taxonomy breadcrumbs when showing specialist documents (PR #725)
 
 ## 13.7.0
 
