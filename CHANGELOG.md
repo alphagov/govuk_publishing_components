@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* `BREAKING:` Adds custom event category for checkbox change events. Any app with it's own tracking logic for checkboxes will need to remove it (PR #729)
+
 ## 14.0.0
 
 * BREAKING: Add govuk-frontend spacing scale to hint (PR #724)

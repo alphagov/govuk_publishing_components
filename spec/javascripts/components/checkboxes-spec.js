@@ -13,7 +13,7 @@ describe("Checkboxes component", function () {
         <span id="checkboxes-1ac8e5cf-hint" class="govuk-hint">Select all that apply.</span>\
         <div class="govuk-checkboxes" data-nested="true">\
            <div class="gem-c-checkbox govuk-checkboxes__item">\
-              <input id="checkboxes-1ac8e5cf-0" name="favourite_colour" type="checkbox" value="red" class="govuk-checkboxes__input">\
+              <input id="checkboxes-1ac8e5cf-0" name="favourite_colour" type="checkbox" value="red" class="govuk-checkboxes__input" data-track-category="choseFavouriteColour" data-track-action="favourite-color" data-track-label="red" data-track-value="1" data-track-options='{"dimension28": "wubbalubbadubdub","dimension29": "Pickle Rick"}'>\
               <label class="govuk-label govuk-checkboxes__label" for="checkboxes-1ac8e5cf-0">Red</label>\
            </div>\
            <div id="checkboxes-1ac8e5cf-nested-0" class="govuk-checkboxes govuk-checkboxes--nested" data-parent="checkboxes-1ac8e5cf-0">\
@@ -27,7 +27,7 @@ describe("Checkboxes component", function () {
               </div>\
            </div>\
            <div class="gem-c-checkbox govuk-checkboxes__item">\
-              <input id="checkboxes-1ac8e5cf-1" name="favourite_colour" type="checkbox" value="blue" class="govuk-checkboxes__input">\
+              <input id="checkboxes-1ac8e5cf-1" name="favourite_colour" type="checkbox" value="blue" class="govuk-checkboxes__input" data-track-category="choseFavouriteColour" data-uncheck-track-category="unselectedFavouriteColour" data-track-action="favourite-color" data-track-label="blue" data-track-value="2" data-track-options='{"dimension28":"Get schwifty","dimension29":"Squanch"}'>\
               <label class="govuk-label govuk-checkboxes__label" for="checkboxes-1ac8e5cf-1">Blue</label>\
            </div>\
            <div id="checkboxes-1ac8e5cf-nested-1" class="govuk-checkboxes govuk-checkboxes--nested" data-parent="checkboxes-1ac8e5cf-1">\
@@ -51,6 +51,9 @@ describe("Checkboxes component", function () {
   var $parentCheckboxWrapper;
   var $parentCheckbox;
   var $nestedChildren;
+  var $checkboxesWrapper;
+  var expectedRedOptions;
+  var expectedBlueOptions;
 
   beforeEach(function() {
     setFixtures(FIXTURE);
@@ -59,6 +62,15 @@ describe("Checkboxes component", function () {
     $parentCheckboxWrapper = $('.govuk-checkboxes--nested:eq(0)').prev('.govuk-checkboxes__item');
     $parentCheckbox = $parentCheckboxWrapper.find('.govuk-checkboxes__input');
     $nestedChildren = $parentCheckboxWrapper.next('.govuk-checkboxes--nested').find('.govuk-checkboxes__input');
+    $checkboxesWrapper = $(".gem-c-checkboxes");
+    expectedRedOptions =  {label: "red", value: 1, dimension28: "wubbalubbadubdub", dimension29: "Pickle Rick"};
+    expectedBlueOptions = {label: "blue", value: 2, dimension28: "Get schwifty", dimension29: "Squanch"};
+
+    GOVUK.analytics = {
+      trackEvent: function(){}
+    }
+
+    spyOn(GOVUK.analytics, 'trackEvent');
   });
 
   it('checking a parent checkbox checks all its children', function () {
@@ -88,5 +100,37 @@ describe("Checkboxes component", function () {
     expect($('#checkboxes-1ac8e5cf-0-0.govuk-checkboxes__input').attr('aria-controls')).toBe('thing');
     expect($('#checkboxes-1ac8e5cf-1-0.govuk-checkboxes__input').attr('aria-controls')).toBe('thing2');
     expect($('#checkboxes-1ac8e5cf-0.govuk-checkboxes__input').attr('aria-controls')).toBe(undefined);
+  });
+
+  it('fires a Google analytics event when it is checked', function () {
+    $checkbox = $checkboxesWrapper.find(":input[value='red']");
+    $checkbox.trigger("click");
+    expect($checkbox.is(":checked")).toBe(true);
+
+    expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith("choseFavouriteColour", "favourite-color", expectedRedOptions);
+  });
+
+  it('fires a Google analytics event when it is unchecked and there is no uncheck track category', function () {
+    $checkbox = $checkboxesWrapper.find(":input[value='red']");
+    $checkbox.trigger("click");
+    expect($checkbox.is(":checked")).toBe(true);
+
+    GOVUK.analytics.trackEvent.calls.reset();
+
+    $checkbox.trigger("click");
+    expect($checkbox.is(":checked")).toBe(false);
+
+    expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith("choseFavouriteColour", "favourite-color", expectedRedOptions);
+  });
+
+  it('fires a Google analytics event when it is unchecked and there is an uncheck track category', function () {
+    $checkbox = $checkboxesWrapper.find(":input[value='blue']");
+    $checkbox.trigger("click");
+    expect($checkbox.is(":checked")).toBe(true);
+    expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith("choseFavouriteColour", "favourite-color", expectedBlueOptions);
+
+    $checkbox.trigger("click");
+    expect($checkbox.is(":checked")).toBe(false);
+    expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith("unselectedFavouriteColour", "favourite-color", expectedBlueOptions);
   });
 });
