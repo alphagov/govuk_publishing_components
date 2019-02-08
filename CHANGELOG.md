@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add `autocomplete` attribute option to input component and use it on feedback component's survey signup form (PR #733)
+
 ## 16.3.0
 
 * Fix issue embedding videos in govspeak after YouTube API is loaded (PR #775)
