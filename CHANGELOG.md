@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Increase focus contrast of feedback links (PR #731)
+
 ## 13.8.1
 
 * Fix autocomplete to allow it to handle HTML entities in the select list (PR #728)
