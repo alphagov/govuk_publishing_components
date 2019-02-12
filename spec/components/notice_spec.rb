@@ -20,25 +20,25 @@ describe "Notice", type: :view do
     assert_select ".gem-c-notice[aria-label=Notice][role=region]"
   end
 
+  it "renders a notice with a title and description" do
+    render_component(title: "Statistics release cancelled", description: "<pre>Some HTML</pre>".html_safe)
+    assert_select ".gem-c-notice__title", text: "Statistics release cancelled"
+    assert_select ".gem-c-notice pre", text: "Some HTML"
+  end
+
   it "renders a notice with a title and description text" do
     render_component(title: "Statistics release cancelled", description_text: "Duplicate, added in error")
     assert_select ".gem-c-notice__title", text: "Statistics release cancelled"
     assert_select ".gem-c-notice__description", text: "Duplicate, added in error"
   end
 
-  it "renders a notice with a title and description HTML" do
-    render_component(title: "Statistics release cancelled", description_html: "<pre>Some HTML</pre>".html_safe)
-    assert_select ".gem-c-notice__title", text: "Statistics release cancelled"
-    assert_select ".gem-c-notice pre", text: "Some HTML"
-  end
-
-  it "renders a notice with a title and description govspeak from a block" do
+  it "renders a notice with a title and description from a block" do
     render_component(title: "Statistics release cancelled") do
-      "Duplicate, added in error"
+      "<pre>Some HTML</pre>".html_safe
     end
 
     assert_select ".gem-c-notice__title", text: "Statistics release cancelled"
-    assert_select ".govuk-govspeak", text: "Duplicate, added in error"
+    assert_select ".gem-c-notice pre", text: "Some HTML"
   end
 
   it "renders a notice with a title and description govspeak" do
@@ -51,10 +51,10 @@ describe "Notice", type: :view do
   end
 
   it "renders title as heading only if description present" do
-    render_component(title: "Statistics release cancelled", description_text: "Duplicate, added in error")
+    render_component(title: "Statistics release cancelled", description: "<p>Some HTML</p>".html_safe)
     assert_select "h2.gem-c-notice__title", text: "Statistics release cancelled"
 
-    render_component(title: "Statistics release cancelled", description_html: "<p>Some HTML</p>".html_safe)
+    render_component(title: "Statistics release cancelled", description_text: "Duplicate, added in error")
     assert_select "h2.gem-c-notice__title", text: "Statistics release cancelled"
 
     render_component(title: "Statistics release cancelled", description_govspeak: "[some](govspeak)".html_safe)
