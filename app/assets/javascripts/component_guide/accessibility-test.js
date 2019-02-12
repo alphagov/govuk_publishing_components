@@ -132,15 +132,53 @@
         var activeElParent = _findParent(activeEl, '[data-module="test-a11y"]')
         var wrapper = activeElParent.querySelector(resultContainerSelector)
 
-        if (wrapper) {
-          var resultHTML = '<h3>(' + result.id + ') ' + result.summary + ' <a href="' + result.url + '">(see guidance)</a></h3>' +
-          '<p>' + selectorObj.reasons.join('<br />') + '</p>' +
-          '<p>Element can be found using the selector:<br /><span class="selector">' +
-          selectorObj.selector +
-          '</span></p>'
-
-          wrapper.insertAdjacentHTML('beforeend', resultHTML)
+        if (!wrapper) {
+          return
         }
+
+        // Section to announce the overall problem.
+        var headerNodeLink = document.createElement('a')
+        headerNodeLink.href = result.url
+        headerNodeLink.textContent = "(see guidance)"
+
+        var headerNode = document.createElement('h3')
+        headerNode.textContent = result.summary + ' (' + result.id + ') '
+        headerNode.appendChild(headerNodeLink)
+
+        // Section to explain the reasons
+        var reasonsListNode = document.createElement('ul')
+        selectorObj.reasons.forEach(function (reason) {
+          var listItemNode = document.createElement('li')
+          listItemNode.textContent = reason
+          reasonsListNode.appendChild(listItemNode)
+        })
+
+        var reasonsHeaderNode = document.createElement('h4')
+        reasonsHeaderNode.textContent = 'Possible reasons why:'
+
+        var reasonsNode = document.createElement('div')
+        reasonsNode.appendChild(reasonsHeaderNode)
+        reasonsNode.appendChild(reasonsListNode)
+
+        // Section to help find the element
+        var findHeader = document.createElement('h4')
+        findHeader.textContent = 'Element can be found using the selector:'
+
+        var findSelectorNode = document.createElement('span')
+        findSelectorNode.className = 'selector' 
+        findSelectorNode.textContent = selectorObj.selector
+        
+        var findNode = document.createElement('p')
+        findNode.appendChild(findHeader)
+        findNode.appendChild(findSelectorNode)
+
+        // Put all the sections together
+        var resultHTML = document.createElement('div')
+        resultHTML.appendChild(headerNode)
+        resultHTML.appendChild(reasonsNode)
+        resultHTML.appendChild(findNode)
+
+        wrapper.appendChild(resultHTML)
       })
     })
   }
