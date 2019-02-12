@@ -279,10 +279,6 @@ examples:
           <li>تابعنا باللغة العربية عبر</li>
           <li>تابعنا باللغة العربية عبر تويتر </li>
         </ul>
-  with_bold_unstyled:
-    data:
-      block: |
-        <p>This content has <strong>text in strong tags</strong>, but they are not styled as bold</p>
   with_youtube_embed:
     data:
       block: |
