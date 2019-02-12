@@ -7,9 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 15.0.0
 
-* `BREAKING:` Adds custom event category for checkbox change events. Any app with it's own tracking logic for checkboxes will need to remove it (PR #729)
+* BREAKING: Adds custom event category for checkbox change events. Any app with it's own tracking logic for checkboxes will need to remove it (PR #729)
 
 ## 14.0.0
 
