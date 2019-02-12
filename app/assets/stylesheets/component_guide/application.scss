@@ -172,12 +172,9 @@
     display: none;
   }
 
-  h3 {
-    @include govuk-font($size: 19, $weight: bold);
-  }
-
   p,
-  h3 {
+  h3,
+  h4 {
     margin-top: 0;
     margin-bottom: $govuk-gutter / 2;
   }
@@ -188,6 +185,13 @@
 
   h3:not(:first-child) {
     margin-top: $govuk-gutter;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    padding-left: 1em;
+    margin-bottom: 1em;
   }
 
   .selector {
