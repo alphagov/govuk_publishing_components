@@ -17,6 +17,10 @@ examples:
     data:
       title: 'Statistics release cancelled'
       description: '<p>The Oil &amp; Gas Authority launched a new website on 3 October 2016 to reflect its new status as a government company.</p><p>This formalises the transfer of the Secretary of State’s regulatory powers in respect of oil and gas to the OGA, and grants it new powers. This website will no longer be updated. Visitors should refer to <a rel="external" href="https://www.ogauthority.co.uk/news-publications/announcements/2015/establishment-of-the-oil-and-gas-authority-1/">www.ogauthority.co.uk</a></p>'
+  with_description_from_a_block:
+    data:
+      title: 'Statistics release update'
+      block: '<p>The Oil &amp; Gas Authority launched a new website on 3 October 2016 to reflect its new status as a government company.</p><p>This formalises the transfer of the Secretary of State’s regulatory powers in respect of oil and gas to the OGA, and grants it new powers. This website will no longer be updated. Visitors should refer to <a rel="external" href="https://www.ogauthority.co.uk/news-publications/announcements/2015/establishment-of-the-oil-and-gas-authority-1/">www.ogauthority.co.uk</a></p>'
   with_description_text:
     data:
       title: 'Statistics release cancelled'
@@ -25,10 +29,6 @@ examples:
     data:
       title: 'Statistics release update'
       description_govspeak: '<p>The Oil &amp; Gas Authority launched a new website on 3 October 2016 to reflect its new status as a government company.</p><p>This formalises the transfer of the Secretary of State’s regulatory powers in respect of oil and gas to the OGA, and grants it new powers. This website will no longer be updated. Visitors should refer to <a rel="external" href="https://www.ogauthority.co.uk/news-publications/announcements/2015/establishment-of-the-oil-and-gas-authority-1/">www.ogauthority.co.uk</a></p>'
-  with_govspeak_from_a_block:
-    data:
-      title: 'Statistics release update'
-      block: '<p>The Oil &amp; Gas Authority launched a new website on 3 October 2016 to reflect its new status as a government company.</p><p>This formalises the transfer of the Secretary of State’s regulatory powers in respect of oil and gas to the OGA, and grants it new powers. This website will no longer be updated. Visitors should refer to <a rel="external" href="https://www.ogauthority.co.uk/news-publications/announcements/2015/establishment-of-the-oil-and-gas-authority-1/">www.ogauthority.co.uk</a></p>'
   with_markup_in_the_title:
     description: In some circumstances it may be necessary to include simple markup in the title, such as a link. Note that this will be wrapped in a H2 tag if there is no description included, so be sure that any markup inserted is valid inside that tag (e.g. another heading tag inside a H2 would be invalid).
     data:
