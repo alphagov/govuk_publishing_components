@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-* Add description_html option to notice component (PR #740)
+* Add description option to notice component (PR #740, PR #742)
 
 ## 15.0.0
 
