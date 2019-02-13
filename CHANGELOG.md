@@ -7,6 +7,8 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 15.1.0
+
 * Add description option to notice component (PR #740, PR #742)
 
 ## 15.0.0
