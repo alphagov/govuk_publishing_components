@@ -1,10 +1,10 @@
 <% if defined?(title) %>
   <%
     description_text ||= false
-    description_govspeak ||= yield || ""
-    description_html ||= false
+    description_govspeak ||= false
+    description ||= yield || false
     margin_bottom_class = " gem-c-notice--bottom-margin" unless local_assigns[:margin_bottom]
-    description_present = description_text.present? || description_govspeak.present? || description_html.present?
+    description_present = description.present? || description_text.present? || description_govspeak.present?
   %>
   <section class="gem-c-notice<%= margin_bottom_class %>" aria-label="Notice" role="region">
     <% if description_present %>
@@ -17,11 +17,11 @@
       <p class="gem-c-notice__description"><%= description_text %></p>
     <% end %>
 
-    <% if description_html %>
-      <%= description_html %>
+    <% if description %>
+      <%= description %>
     <% end %>
 
-    <% unless description_govspeak.empty? %>
+    <% if description_govspeak.present? %>
       <%= render 'govuk_publishing_components/components/govspeak', content: description_govspeak %>
     <% end %>
   </section>
