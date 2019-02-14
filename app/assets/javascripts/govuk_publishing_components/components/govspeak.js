@@ -9,10 +9,17 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       if (!$element.hasClass('disable-youtube')) {
         this.embedYoutube($element)
       }
+
+      this.createBarcharts($element)
     }
 
     this.embedYoutube = function ($element) {
       var enhancement = new window.GOVUK.GovspeakYoutubeLinkEnhancement($element)
+      enhancement.init()
+    }
+
+    this.createBarcharts = function ($element) {
+      var enhancement = new window.GOVUK.GovspeakBarchartEnhancement($element)
       enhancement.init()
     }
   }
