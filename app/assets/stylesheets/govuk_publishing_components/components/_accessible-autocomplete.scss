@@ -10,12 +10,38 @@
   }
 
   .autocomplete__option {
-    @include govuk-font(19)
+    @include govuk-font(19);
+  }
+
+  // needed as frontend doesn't currently support select multiples
+  // hopefully will in future and this can be removed
+  .govuk-select[multiple] {
+    height: auto;
+  }
+
+  .js-enabled & .app-c-autocomplete__multiselect-instructions {
+    display: none;
+  }
+
+  .autocomplete__list .autocomplete__option {
+    padding: 5px 6px;
+
+    &:before {
+      position: relative;
+      top: 3px;
+      padding-top: 2px;
+    }
   }
 }
 
 .gem-c-accessible-autocomplete--hide-menu {
   .autocomplete__menu {
+    display: none;
+  }
+}
+
+.gem-c-accessible-autocomplete--hide-facets {
+  .autocomplete__list {
     display: none;
   }
 }

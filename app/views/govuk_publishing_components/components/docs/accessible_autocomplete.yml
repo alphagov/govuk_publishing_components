@@ -40,3 +40,18 @@ examples:
         track_action: 'chosen_action'
         track_option:
           custom_dimension: 'your_custom_dimension'
+  with_multiple_selections:
+    description: This parameter allows the user to choose more than one option from the autocomplete. The component generates a select multiple in place of a regular select, and the autocomplete Javascript detects this and provides the multiple selection functionality.
+    data:
+      multiple: true
+      label:
+        text: 'Countries'
+      options: [['France', 'fr'], ['Germany', 'de'], ['Sweden', 'se'], ['Switzerland', 'ch'], ['United Kingdom', 'gb'], ['United States', 'us'], ['The Separate Customs Territory of Taiwan, Penghu, Kinmen, and Matsu (Chinese Taipei)', 'tw']]
+  with_multiple_selections_hide_facets:
+    description: This parameter hides the facet tags shown by the component in multiple mode when options have been chosen. This seems counter to likely requirements but is needed for finders where the app generates its own facet tags.
+    data:
+      multiple: true
+      hide_facets: true
+      label:
+        text: 'Countries'
+      options: [['France', 'fr'], ['Germany', 'de'], ['Sweden', 'se'], ['Switzerland', 'ch'], ['United Kingdom', 'gb'], ['United States', 'us'], ['The Separate Customs Territory of Taiwan, Penghu, Kinmen, and Matsu (Chinese Taipei)', 'tw']]

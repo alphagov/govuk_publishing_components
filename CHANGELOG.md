@@ -19,6 +19,7 @@
 
 * BREAKING: Add govuk-frontend spacing scale to hint (PR #724)
 * Increase focus contrast of feedback links (PR #731)
+* Add multiple selection option to autocomplete (PR #723)
 
 ## 13.8.1
 

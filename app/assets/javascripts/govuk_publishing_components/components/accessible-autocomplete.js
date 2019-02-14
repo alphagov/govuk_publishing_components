@@ -27,8 +27,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       $selectElem.data('onconfirm', this.onConfirm);
     };
 
-    this.onConfirm = function(label, removeDropDown) {
-
+    this.onConfirm = function(label, value, removeDropDown) {
       function escapeHTML(str){
         return new Option(str).innerHTML;
       }
@@ -39,21 +38,30 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       // This is to compensate for the fact that the accessible-autocomplete library will not
       // update the hidden select if the onConfirm function is supplied
       // https://github.com/alphagov/accessible-autocomplete/issues/322
-      var value = $selectElem.children("option").filter(function () { return $(this).html() == escapeHTML(label); }).val();
-      if (typeof value !== 'undefined') {
-        $selectElem.val(value).change();
-      }
+      if (typeof label !== 'undefined') {
+        if (typeof value === 'undefined') {
+          value = $selectElem.children("option").filter(function () { return $(this).html() == escapeHTML(label); }).val();
+        }
 
-      // used to clear the autocomplete when clicking on a facet tag in finder-frontend
-      // very brittle but menu visibility is determined by autocomplete after this function is called
-      // setting autocomplete val to '' causes menu to appear, we don't want that, this solves it
-      // ideally will rewrite autocomplete to have better hooks in future
-      if (removeDropDown) {
-        $selectElem.closest('.gem-c-accessible-autocomplete').addClass('gem-c-accessible-autocomplete--hide-menu');
-        setTimeout(function() {
-          $('.autocomplete__menu').remove(); // this element is recreated every time the user starts typing
-          $selectElem.closest('.gem-c-accessible-autocomplete').removeClass('gem-c-accessible-autocomplete--hide-menu');
-        }, 100);
+        if (typeof value !== 'undefined') {
+          var $option = $selectElem.find('option[value=\'' + value + '\']');
+          // if removeDropDown we are clearing the selection from outside the component
+          var selectState = typeof removeDropDown === 'undefined' ? true : false;
+          $option.prop('selected', selectState);
+          $selectElem.change();
+        }
+
+        // used to clear the autocomplete when clicking on a facet tag in finder-frontend
+        // very brittle but menu visibility is determined by autocomplete after this function is called
+        // setting autocomplete val to '' causes menu to appear, we don't want that, this solves it
+        // ideally will rewrite autocomplete to have better hooks in future
+        if (removeDropDown) {
+          $selectElem.closest('.gem-c-accessible-autocomplete').addClass('gem-c-accessible-autocomplete--hide-menu');
+          setTimeout(function() {
+            $('.autocomplete__menu').remove(); // this element is recreated every time the user starts typing
+            $selectElem.closest('.gem-c-accessible-autocomplete').removeClass('gem-c-accessible-autocomplete--hide-menu');
+          }, 100);
+        }
       }
     };
 
