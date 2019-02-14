@@ -102,8 +102,8 @@ window.GOVUK = window.GOVUK || {};
   YoutubeLinkEnhancement.initLegacy = function () {
     var $govspeaks = $('.govuk-govspeak:not(.gem-c-govspeak):not(.disable-youtube)')
     $govspeaks.each(function () {
-      var enhancer = new YoutubeLinkEnhancement($(this))
-      enhancer.init()
+      var enhancement = new GOVUK.GovspeakYoutubeLinkEnhancement($(this))
+      enhancement.init()
     })
   }
 

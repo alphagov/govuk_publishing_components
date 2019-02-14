@@ -77,15 +77,17 @@ describe('Youtube link enhancement', function () {
     })
 
     it('embeds videos in non-component govspeak elements', function () {
+      spyOn(window.GOVUK, 'GovspeakYoutubeLinkEnhancement')
+        .and.returnValue(jasmine.createSpyObj('enhancement', ['init']))
       GOVUK.GovspeakYoutubeLinkEnhancement.initLegacy()
-      var $nonComponentGovspeak = $('#non-component-govspeak')
-      expect($nonComponentGovspeak.find('.media-player').length).toBe(1)
+      expect(window.GOVUK.GovspeakYoutubeLinkEnhancement).toHaveBeenCalledWith($('#non-component-govspeak'))
     })
 
     it('doesn\'t embed videos for component govspeak elements', function () {
+      spyOn(window.GOVUK, 'GovspeakYoutubeLinkEnhancement')
+        .and.returnValue(jasmine.createSpyObj('enhancement', ['init']))
       GOVUK.GovspeakYoutubeLinkEnhancement.initLegacy()
-      var $componentGovspeak = $('#component-govspeak')
-      expect($componentGovspeak.find('.media-player').length).toBe(0)
+      expect(window.GOVUK.GovspeakYoutubeLinkEnhancement).not.toHaveBeenCalledWith($('#component-govspeak'))
     })
   })
 })
