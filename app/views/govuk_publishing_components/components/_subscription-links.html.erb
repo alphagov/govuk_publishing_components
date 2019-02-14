@@ -1,13 +1,16 @@
 <%
   brand ||= false
+  margin_bottom ||= 0
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
   sl_helper = GovukPublishingComponents::Presenters::SubscriptionLinksHelper.new(local_assigns)
+
+  css_classes = %w( gem-c-subscription-links )
+  css_classes << ([*0..9].include?(margin_bottom) ? "govuk-!-margin-bottom-#{margin_bottom}" : "govuk-!-margin-bottom-0")
+  css_classes << brand_helper.brand_class
+  data = {"module": "gem-toggle"} if sl_helper.feed_link_box_value
 %>
 <% if sl_helper.component_data_is_valid? %>
-  <section
-    class="gem-c-subscription-links <%= brand_helper.brand_class %>"
-    <%= "data-module=gem-toggle" if sl_helper.feed_link_box_value %>
-  >
+  <%= tag.section class: css_classes, data: data do %>
     <h2 class="gem-c-subscription-links__hidden-header visuallyhidden"><%= t("govuk_component.subscription_links.subscriptions", default: "Subscriptions") %></h2>
     <ul
       class="gem-c-subscription-links__list"
@@ -44,5 +47,5 @@
         } %>
       </div>
     <% end %>
-  </section>
+  <% end %>
 <% end %>

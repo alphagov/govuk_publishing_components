@@ -7,6 +7,11 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add margin option to subscription links (PR #748)
+* Add multiple selection option to autocomplete (PR #723)
+
 ## 15.1.0
 
 * Add description option to notice component (PR #740, PR #742)
@@ -19,7 +24,6 @@
 
 * BREAKING: Add govuk-frontend spacing scale to hint (PR #724)
 * Increase focus contrast of feedback links (PR #731)
-* Add multiple selection option to autocomplete (PR #723)
 
 ## 13.8.1
 
