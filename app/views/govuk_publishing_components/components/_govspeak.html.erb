@@ -7,7 +7,7 @@
   classes << "disable-youtube" if disable_youtube_expansions
 %>
 
-<div class="gem-c-govspeak govuk-govspeak <%= classes.join(" ") %>">
+<div class="gem-c-govspeak govuk-govspeak <%= classes.join(" ") %>" data-module="govspeak">
   <% if local_assigns.include?(:content) %>
     <% if content.html_safe? %>
       <%= content %>
