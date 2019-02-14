@@ -11,6 +11,8 @@
 .gem-c-govspeak {
   @include govuk-text-colour;
 
+  @include core-16;
+
   ol,
   ul,
   p {
