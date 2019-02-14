@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 15.2.0
 
 * Add margin option to subscription links (PR #748)
 * Add multiple selection option to autocomplete (PR #723)
