@@ -17,6 +17,12 @@ examples:
     data:
       email_signup_link: '/foreign-travel-advice/singapore/email-signup'
       feed_link: '/foreign-travel-advice/singapore.atom'
+  with_margin:
+    description: The component accepts a number for margin bottom from 0 to 9 (0px to 60px) using the [GOV.UK Frontend spacing scale](http://govuk-frontend-review.herokuapp.com/docs/#settings/spacing-variable-govuk-spacing-points). It defaults to having no margin bottom, although some margin is supplied by the links themselves (so that when they stack on mobile there is space between them).
+    data:
+      email_signup_link: '/foreign-travel-advice/singapore/email-signup'
+      feed_link: '/foreign-travel-advice/singapore.atom'
+      margin_bottom: 9
   with_only_email_signup_link:
     data:
       email_signup_link: '/foreign-travel-advice/singapore/email-signup'
