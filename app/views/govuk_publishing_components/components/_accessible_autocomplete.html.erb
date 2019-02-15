@@ -7,31 +7,36 @@
   multiple ||= false
   hide_facets ||= false
 
-  classes = %w(gem-c-accessible-autocomplete)
+  classes = %w(gem-c-accessible-autocomplete govuk-form-group)
   classes << "gem-c-accessible-autocomplete--hide-facets" if hide_facets
+  hint_text = "0 #{t('components.autocomplete.selected')}" if hide_facets && multiple
+  hint_id = "describes-select-#{SecureRandom.hex(4)}" if hide_facets && multiple
 %>
 <% if label && options.any? %>
-  <div class="govuk-form-group">
+  <%= tag.div class: classes, data: { module: "accessible-autocomplete", hint: hint_id, selected_text: t('components.autocomplete.selected') } do %>
     <%=
       render "govuk_publishing_components/components/label", {
         html_for: id
       }.merge(label.symbolize_keys)
     %>
 
-    <%= tag.div class: classes, data: { module: "accessible-autocomplete" } do %>
-      <% if multiple %>
-        <span class="govuk-hint app-c-autocomplete__multiselect-instructions"><%= t('components.autocomplete.multiselect') %></span>
-      <% end %>
-
-      <%=
-        select_tag(
-          id,
-          options_for_select(options, selected_option),
-          multiple: multiple,
-          class: "govuk-select",
-          data: data_attributes
-        )
-      %>
+    <% if hint_text %>
+      <span class="govuk-hint gem-c-autocomplete__multiselect-count" id="<%= hint_id %>" aria-live="polite"><%= t('components.autocomplete.selected') %></span>
     <% end %>
-  </div>
+
+    <% if multiple %>
+      <span class="govuk-hint gem-c-autocomplete__multiselect-instructions"><%= t('components.autocomplete.multiselect') %></span>
+    <% end %>
+
+    <%=
+      select_tag(
+        id,
+        options_for_select(options, selected_option),
+        multiple: multiple,
+        class: "govuk-select",
+        data: data_attributes,
+        described_by: hint_id
+      )
+    %>
+  <% end %>
 <% end %>

@@ -62,6 +62,7 @@ describe "AccessibleAutocomplete", type: :view do
 
     assert_select "select[multiple]"
     assert_select ".gem-c-accessible-autocomplete.gem-c-accessible-autocomplete--hide-facets", false
+    assert_select ".gem-c-accessible-autocomplete .gem-c-autocomplete__multiselect-instructions"
   end
 
   it 'does not show facet tags for multiple when given the option' do

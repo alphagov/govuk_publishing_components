@@ -6,6 +6,8 @@ body: |
   [label component](https://github.com/component-guide/label).
 
   If Javascript is disabled, the component appears as a select box, so the user can still select an option.
+
+  Note that in single selection mode the autocomplete requires an empty item at the start of the options, or it is impossible to deselect a value.
 accessibility_criteria: |
   [Accessibility acceptance criteria](https://github.com/alphagov/accessible-autocomplete/blob/master/accessibility-criteria.md)
 examples:
@@ -41,7 +43,10 @@ examples:
         track_option:
           custom_dimension: 'your_custom_dimension'
   with_multiple_selections:
-    description: This parameter allows the user to choose more than one option from the autocomplete. The component generates a select multiple in place of a regular select, and the autocomplete Javascript detects this and provides the multiple selection functionality.
+    description: |
+      This parameter allows the user to choose more than one option from the autocomplete. The component generates a select multiple in place of a regular select, and the autocomplete Javascript detects this and provides the multiple selection functionality.
+
+      Note that the select multiple does not require an empty value, in contrast to when in single selection mode.
     data:
       multiple: true
       label:

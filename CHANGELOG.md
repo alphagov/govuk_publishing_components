@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Support an embed option on examples to allow embedding a component in a particular HTML context (PR #747)
+* Add an option count to the autocomplete when no facets (PR #753)
 
 ## 15.2.0
 

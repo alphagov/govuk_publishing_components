@@ -8,9 +8,19 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   Modules.AccessibleAutocomplete = function () {
     var $selectElem;
+    var updateCount;
+    var updateCountSelected;
+    var $updateCountElement;
 
     this.start = function ($element) {
       $selectElem = $element.find('select');
+      updateCount = $element.data('hint');
+
+      if (updateCount) {
+        $updateCountElement = $('#' + $element.data('hint'));
+        updateCountSelected = $element.data('selected-text');
+        updateCountText($selectElem);
+      }
 
       var configOptions = {
         selectElement: document.getElementById($selectElem.attr('id')),
@@ -25,6 +35,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       new accessibleAutocomplete.enhanceSelectElement(configOptions);
       //attach the onConfirm function to data attr, to call it in finder-frontend when clearing facet tags
       $selectElem.data('onconfirm', this.onConfirm);
+
+      // add aria-describedby to link the input to the 'x selected' information for screen readers
+      if (updateCount) {
+        $element.find('.autocomplete__input').attr('aria-describedby', $element.data('hint'));
+      }
     };
 
     this.onConfirm = function(label, value, removeDropDown) {
@@ -51,6 +66,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           $selectElem.change();
         }
 
+        if (updateCount) {
+          updateCountText($selectElem);
+        }
+
         // used to clear the autocomplete when clicking on a facet tag in finder-frontend
         // very brittle but menu visibility is determined by autocomplete after this function is called
         // setting autocomplete val to '' causes menu to appear, we don't want that, this solves it
@@ -64,6 +83,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         }
       }
     };
+
+    function updateCountText($selectElem) {
+      var countText = $selectElem.val() ? $selectElem.val().length : 0;
+      $updateCountElement.html(countText + " " + updateCountSelected);
+    }
 
     function track (category, action, label, options) {
       if (GOVUK.analytics && GOVUK.analytics.trackEvent) {

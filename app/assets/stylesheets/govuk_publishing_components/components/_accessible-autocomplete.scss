@@ -19,10 +19,6 @@
     height: auto;
   }
 
-  .js-enabled & .app-c-autocomplete__multiselect-instructions {
-    display: none;
-  }
-
   .autocomplete__list .autocomplete__option {
     padding: 5px 6px;
 
@@ -43,5 +39,23 @@
 .gem-c-accessible-autocomplete--hide-facets {
   .autocomplete__list {
     display: none;
+  }
+}
+
+.gem-c-autocomplete__multiselect-instructions {
+  display: block;
+}
+
+.gem-c-autocomplete__multiselect-count {
+  display: none;
+}
+
+.js-enabled {
+  .gem-c-autocomplete__multiselect-instructions {
+    display: none;
+  }
+
+  .gem-c-autocomplete__multiselect-count {
+    display: block;
   }
 }

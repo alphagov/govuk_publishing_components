@@ -25,6 +25,7 @@ en:
   components:
     autocomplete:
       multiselect: "To select multiple items in a list, hold down Ctrl (PC) or Cmd (Mac) key."
+      selected: "selected"
     back_link:
       back: 'Back'
     contents_list:
