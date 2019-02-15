@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Support an embed option on examples to allow embedding a component in a particular HTML context (PR #747)
+
 ## 15.2.0
 
 * Add margin option to subscription links (PR #748)
