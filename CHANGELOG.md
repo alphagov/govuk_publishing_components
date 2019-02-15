@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Support an embed option on examples to allow embedding a component in a particular HTML context (PR #747)
+* Change header link from Announcements to News and communications (PR #752)
 
 ## 15.2.0
 

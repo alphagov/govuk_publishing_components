@@ -10,7 +10,7 @@ describe "Government navigation", type: :view do
 
     assert_select "\#proposition-links li a", text: "Departments"
     assert_link_with_text("/government/organisations", "Departments")
-    assert_link_with_text("/government/announcements", "Announcements")
+    assert_link_with_text("/news-and-communications", "News and communications")
   end
 
   it "has no active links by default" do
