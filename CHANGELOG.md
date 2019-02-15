@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* BREAKING: Apply JS enhancements to govspeak (PR #751)
 * Refactor accessible autocomplete (PR #764)
 * Remove autocomplete hide facets option (PR #761)
 * Remove classes option from components (PR #727)
