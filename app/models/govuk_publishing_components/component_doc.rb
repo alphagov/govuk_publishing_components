@@ -6,7 +6,8 @@ module GovukPublishingComponents
                 :body,
                 :component,
                 :accessibility_excluded_rules,
-                :source
+                :source,
+                :embed
 
     def initialize(component)
       @component = component
@@ -16,6 +17,7 @@ module GovukPublishingComponents
       @body = component[:body]
       @accessibility_excluded_rules = component[:accessibility_excluded_rules]
       @source = component[:source]
+      @embed = component[:embed]
     end
 
     def accessibility_criteria
@@ -74,6 +76,7 @@ module GovukPublishingComponents
     def examples
       @examples ||= component[:examples].map do |id, example_data|
         example_data = example_data || {}
+        example_data["embed"] ||= embed
         ComponentExample.new(id.to_s, example_data)
       end
     end

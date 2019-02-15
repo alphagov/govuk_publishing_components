@@ -1,12 +1,20 @@
+<%
+component_code =
+  if example.has_block?
+    "<%= render \"#{@component_doc.partial_path}\", #{example.pretty_data} do %\>\n" +
+    "  #{example.block.html_safe}" +
+    "<% end %\>"
+  else
+    "<%= render \"#{@component_doc.partial_path}\", #{example.pretty_data} %\>"
+  end
+
+code =
+  if example.has_embed?
+    example.embed.sub("<%= component %\>", component_code)
+  else
+    component_code
+  end
+%>
 <div class="component-call component-highlight" contenteditable>
-  <% if example.has_block? %>
-    <%
-      code = "<%= render \"#{@component_doc.partial_path}\", #{example.pretty_data} do %\>\n"
-      code += "  #{example.block.html_safe}"
-      code += "<% end %\>"
-    -%>
-    <pre><code><%= example.highlight_code(code) %></code></pre>
-  <% else %>
-    <pre><code><%= example.highlight_code("\<%= render \"#{@component_doc.partial_path}\", #{example.pretty_data} %\>") %></code></pre>
-  <% end %>
+  <pre><code><%= example.highlight_code(code) %></code></pre>
 </div>
