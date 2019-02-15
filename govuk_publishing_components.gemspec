@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "capybara", "~> 2.14.4"
   s.add_development_dependency "foreman", "~> 0.64"
   s.add_development_dependency "gds-api-adapters"
-  s.add_development_dependency "govuk-lint", "~> 3.3"
+  s.add_development_dependency "govuk-lint", "~> 3.11"
   s.add_development_dependency "govuk_schemas", "~> 3.2"
   s.add_development_dependency "jasmine", "~> 2.4.0"
   s.add_development_dependency "poltergeist", "~> 1.16.0"
