@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Remove classes option from components (PR #727)
+* Add margin option to textarea component (PR #757)
 
 ## 15.3.0
 
