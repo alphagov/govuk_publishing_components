@@ -107,8 +107,8 @@ examples:
               text: Policies
             - href: '/government/publications'
               text: Publications
-            - href: '/government/announcements'
-              text: Announcements
+            - href: '/news-and-communications'
+              text: News and communications
       meta:
         items:
           - href: '/help'
