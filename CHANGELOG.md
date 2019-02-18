@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 15.3.0
 
 * Update skip-link to allow custom link text (PR #755)
 * Support an embed option on examples to allow embedding a component in a particular HTML context (PR #747)
