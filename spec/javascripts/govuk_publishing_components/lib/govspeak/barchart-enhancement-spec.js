@@ -41,29 +41,4 @@ describe('Barchart enhancement', function () {
 
     expect($element.find('.mc-chart').length).toBe(0)
   })
-
-  describe('initLegacy', function () {
-    beforeEach(function () {
-      setFixtures(
-        '<div id="non-component-govspeak" class="govuk-govspeak">' +
-          chartHtml +
-        '</div>' +
-        '<div id="component-govspeak" class="gem-c-govspeak govuk-govspeak">' +
-          chartHtml +
-        '</div>'
-      )
-    })
-
-    it('creates charts in non-component govspeak elements', function () {
-      GOVUK.GovspeakBarchartEnhancement.initLegacy()
-      var $nonComponentGovspeak = $('#non-component-govspeak')
-      expect($nonComponentGovspeak.find('.mc-chart').length).toBe(1)
-    })
-
-    it('doesn\'t create charts for component govspeak elements', function () {
-      GOVUK.GovspeakBarchartEnhancement.initLegacy()
-      var $componentGovspeak = $('#component-govspeak')
-      expect($componentGovspeak.find('.mc-chart').length).toBe(0)
-    })
-  })
 })

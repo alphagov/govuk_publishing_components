@@ -92,20 +92,5 @@ window.GOVUK = window.GOVUK || {};
     }
   }
 
-  // This function is so that static can maintain backwards compatible behaviour
-  // without having it's own copy of this code.
-  //
-  // Traditionally static would enhance all govuk-govspeak elements, thus ones
-  // outside of the govspeak components wouldn't be included. This problem
-  // should go away if we reach the nirvana of the govspeak component being
-  // the sole way to embed govspeak
-  YoutubeLinkEnhancement.initLegacy = function () {
-    var $govspeaks = $('.govuk-govspeak:not(.gem-c-govspeak):not(.disable-youtube)')
-    $govspeaks.each(function () {
-      var enhancement = new GOVUK.GovspeakYoutubeLinkEnhancement($(this))
-      enhancement.init()
-    })
-  }
-
   GOVUK.GovspeakYoutubeLinkEnhancement = YoutubeLinkEnhancement
 })(window.GOVUK, window.jQuery)

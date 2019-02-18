@@ -61,33 +61,4 @@ describe('Youtube link enhancement', function () {
       expect(id).not.toBeDefined()
     })
   })
-
-  describe('initLegacy', function () {
-    var youtubeHtml = '<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">Agile at GDS</a></p>'
-
-    beforeEach(function () {
-      setFixtures(
-        '<div id="non-component-govspeak" class="govuk-govspeak">' +
-          youtubeHtml +
-        '</div>' +
-        '<div id="component-govspeak" class="gem-c-govspeak govuk-govspeak">' +
-          youtubeHtml +
-        '</div>'
-      )
-    })
-
-    it('embeds videos in non-component govspeak elements', function () {
-      spyOn(window.GOVUK, 'GovspeakYoutubeLinkEnhancement')
-        .and.returnValue(jasmine.createSpyObj('enhancement', ['init']))
-      GOVUK.GovspeakYoutubeLinkEnhancement.initLegacy()
-      expect(window.GOVUK.GovspeakYoutubeLinkEnhancement).toHaveBeenCalledWith($('#non-component-govspeak'))
-    })
-
-    it('doesn\'t embed videos for component govspeak elements', function () {
-      spyOn(window.GOVUK, 'GovspeakYoutubeLinkEnhancement')
-        .and.returnValue(jasmine.createSpyObj('enhancement', ['init']))
-      GOVUK.GovspeakYoutubeLinkEnhancement.initLegacy()
-      expect(window.GOVUK.GovspeakYoutubeLinkEnhancement).not.toHaveBeenCalledWith($('#component-govspeak'))
-    })
-  })
 })

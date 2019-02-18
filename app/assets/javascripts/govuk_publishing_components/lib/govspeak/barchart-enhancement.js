@@ -22,20 +22,5 @@ window.GOVUK = window.GOVUK || {};
     })
   }
 
-  // This function is so that static can maintain backwards compatible behaviour
-  // without having it's own copy of this code.
-  //
-  // Traditionally static would enhance all govuk-govspeak elements, thus ones
-  // outside of the govspeak components wouldn't be included. This problem
-  // should go away if we reach the nirvana of the govspeak component being
-  // the sole way to embed govspeak
-  BarchartEnhancement.initLegacy = function () {
-    var $toEmbed = $('.govuk-govspeak:not(.gem-c-govspeak)')
-    $toEmbed.each(function () {
-      var embed = new BarchartEnhancement($(this))
-      embed.init()
-    })
-  }
-
   GOVUK.GovspeakBarchartEnhancement = BarchartEnhancement
 }(window.GOVUK, window.jQuery))
