@@ -1,4 +1,5 @@
 <%
   href ||= '#main-content'
+  text ||= t('components.skip_link.text')
 %>
-<%= link_to("Skip to main content", href, class: "gem-c-skip-link govuk-skip-link") %>
+<%= link_to(text, href, class: "gem-c-skip-link govuk-skip-link") %>

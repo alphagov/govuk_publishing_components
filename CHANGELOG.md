@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Update skip-link to allow custom link text (PR #755)
 * Support an embed option on examples to allow embedding a component in a particular HTML context (PR #747)
 
 ## 15.2.0

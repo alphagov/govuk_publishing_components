@@ -12,4 +12,13 @@ accessibility_criteria: |
 examples:
   default:
     data:
-      href: '#content'
+  with_different_text:
+    data:
+      text: 'Skip to results'
+  with_different_href:
+    data:
+      href: '#somewhere-on-the-page'
+  custom_title_and_href:
+    data:
+      text: 'Skip to my content'
+      href: '#my-content'
