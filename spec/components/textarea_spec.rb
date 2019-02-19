@@ -72,6 +72,26 @@ describe "Textarea", type: :view do
     assert_select ".govuk-textarea", text: "More detail provided"
   end
 
+  it "applies a specified bottom margin" do
+    render_component(
+      label: { text: "Can you provide more detail?" },
+      name: "with-custom-margin-bottom",
+      margin_bottom: 6
+    )
+
+    assert_select '.govuk-textarea.govuk-\!-margin-bottom-6'
+  end
+
+  it "defaults to the initial bottom margin if an incorrect value is passed" do
+    render_component(
+      label: { text: "Can you provide more detail?" },
+      name: "with-fallback-margin-bottom",
+      margin_bottom: 12
+    )
+
+    assert_select '.govuk-textarea.govuk-\!-margin-bottom-3'
+  end
+
   context "when a hint is provided" do
     before do
       render_component(

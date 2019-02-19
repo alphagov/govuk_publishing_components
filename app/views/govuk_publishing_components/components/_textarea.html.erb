@@ -7,6 +7,7 @@
 
   label ||= nil
   hint ||= nil
+  margin_bottom ||= 3
   error_message ||= nil
   error_items ||= nil
   character_count ||= nil
@@ -18,6 +19,7 @@
   css_classes = %w(gem-c-textarea govuk-textarea)
   css_classes << "js-character-count" if character_count
   css_classes << "govuk-textarea--error" if has_error
+  css_classes << ([*0..9].include?(margin_bottom) ? "govuk-!-margin-bottom-#{margin_bottom}" : "govuk-!-margin-bottom-3")
   form_group_css_classes = %w(govuk-form-group)
   form_group_css_classes << "govuk-form-group--error" if has_error
 
