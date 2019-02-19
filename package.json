@@ -1,8 +1,25 @@
 {
+  "private": true,
+  "name": "govuk_publishing_components",
+  "license": "MIT",
+  "scripts": {
+    "lint:js": "standard 'app/assets/javascripts/govuk_publishing_components/**/*.js'",
+    "lint:scss": "sass-lint 'app/assets/stylesheets/**/*.scss' -v -q",
+    "lint": "npm run lint:js && npm run lint:scss"
+  },
+  "standard": {
+    "ignore": [
+      "app/assets/javascripts/govuk_publishing_components/vendor/**/*.js"
+    ]
+  },
   "dependencies": {
     "accessible-autocomplete": "git://github.com/alphagov/accessible-autocomplete.git#add-multiselect-support",
     "axe-core": "3.2.2",
     "govuk-frontend": "2.11.0",
     "jquery": "1.12.4"
+  },
+  "devDependencies": {
+    "sass-lint": "^1.13.1",
+    "standard": "^12.0.1"
   }
 }
