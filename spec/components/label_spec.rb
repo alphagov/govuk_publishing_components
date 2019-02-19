@@ -52,4 +52,17 @@ describe "Label", type: :view do
     )
     assert_select ".govuk-label--s"
   end
+
+  it "renders label when required to be inside the radio component" do
+    render_component(
+      is_radio_label: true,
+      text: "A label for the radio component",
+      html_for: "id-radio",
+      hint_id: "should-match-aria-describedby-input",
+      hint_text: "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+    )
+
+    assert_select ".gem-c-label.govuk-label.govuk-radios__label"
+    assert_select ".govuk-hint.govuk-radios__hint"
+  end
 end

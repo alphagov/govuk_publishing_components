@@ -89,8 +89,7 @@
             <%= render "govuk_publishing_components/components/label", {
               hint_id: label_hint_id,
               html_for: label_id,
-              classes: "govuk-radios__label",
-              hint_text_classes: "govuk-radios__hint",
+              is_radio_label: true,
               hint_text: item[:hint_text],
               text: item[:text],
               bold: item[:bold]
@@ -98,9 +97,9 @@
           <% end %>
 
           <% if item[:conditional] %>
-          <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="<%= conditional_id %>">
-            <%= item[:conditional] %>
-          </div>
+            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="<%= conditional_id %>">
+              <%= item[:conditional] %>
+            </div>
           <% end %>
 
         <% end %>

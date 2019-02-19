@@ -1,13 +1,14 @@
 <%
-  classes ||= ''
   hint_text ||= ''
-  hint_text_classes ||= ''
+  is_radio_label ||= false
   bold ||= false
+
   css_classes = %w( gem-c-label govuk-label )
   css_classes << "govuk-label--s" if bold
-  css_classes << classes if classes
+  css_classes << "govuk-radios__label" if is_radio_label
+
   hint_text_css_classes = %w( govuk-hint )
-  hint_text_css_classes << hint_text_classes if hint_text_classes
+  hint_text_css_classes << "govuk-radios__hint" if is_radio_label
 %>
 
 <%= tag.label for: html_for, class: css_classes do %>
