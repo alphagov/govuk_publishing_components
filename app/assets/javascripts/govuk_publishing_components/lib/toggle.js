@@ -1,3 +1,4 @@
+/* eslint-env jquery */
 /*
   Toggle the display of elements
 
@@ -40,70 +41,70 @@
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
-  'use strict';
+  'use strict'
 
   Modules.GemToggle = function () {
     this.start = function ($el) {
-      var toggleSelector = '[data-controls][data-expanded]';
-      var toggleClass = $el.attr('data-toggle-class') || 'js-hidden';
-      var trackable = '[data-track-category][data-track-action]';
+      var toggleSelector = '[data-controls][data-expanded]'
+      var toggleClass = $el.attr('data-toggle-class') || 'js-hidden'
+      var trackable = '[data-track-category][data-track-action]'
 
-      $el.on('click', toggleSelector, toggle);
-      $el.find(toggleSelector).each(addAriaAttrs);
+      $el.on('click', toggleSelector, toggle)
+      $el.find(toggleSelector).each(addAriaAttrs)
 
       // Add the ARIA attributes with JavaScript
       // If the JS fails and there's no interactive elements, having
       // no aria attributes is an accurate representation.
       function addAriaAttrs () {
-        var $toggle = $(this);
-        $toggle.attr('role', 'button');
-        $toggle.attr('aria-controls', $toggle.data('controls'));
-        $toggle.attr('aria-expanded', $toggle.data('expanded'));
+        var $toggle = $(this)
+        $toggle.attr('role', 'button')
+        $toggle.attr('aria-controls', $toggle.data('controls'))
+        $toggle.attr('aria-expanded', $toggle.data('expanded'))
 
-        var $targets = getTargetElements($toggle);
-        $targets.attr('aria-live', 'polite');
-        $targets.attr('role', 'region');
-        $toggle.data('$targets', $targets);
+        var $targets = getTargetElements($toggle)
+        $targets.attr('aria-live', 'polite')
+        $targets.attr('role', 'region')
+        $toggle.data('$targets', $targets)
       }
 
       function toggle (event) {
-        var $toggle = $(event.target),
-          expanded = $toggle.attr('aria-expanded') === 'true',
-          $targets = $toggle.data('$targets');
+        var $toggle = $(event.target)
+        var expanded = $toggle.attr('aria-expanded') === 'true'
+        var $targets = $toggle.data('$targets')
 
         if (expanded) {
-          $toggle.attr('aria-expanded', false);
-          $targets.addClass(toggleClass);
+          $toggle.attr('aria-expanded', false)
+          $targets.addClass(toggleClass)
         } else {
-          $toggle.attr('aria-expanded', true);
-          $targets.removeClass(toggleClass);
+          $toggle.attr('aria-expanded', true)
+          $targets.removeClass(toggleClass)
         }
 
-        var toggledText = $toggle.data('toggled-text');
+        var toggledText = $toggle.data('toggled-text')
         if (typeof toggledText === 'string') {
-          $toggle.data('toggled-text', $toggle.text());
-          $toggle.text(toggledText);
+          $toggle.data('toggled-text', $toggle.text())
+          $toggle.text(toggledText)
         }
 
-        if (GOVUK.analytics && GOVUK.analytics.trackEvent && $toggle.is(trackable)) {
-          track($toggle);
+        if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent && $toggle.is(trackable)) {
+          track($toggle)
         }
 
-        event.preventDefault();
+        event.preventDefault()
       }
 
       function getTargetElements ($toggle) {
-        var ids = $toggle.attr('aria-controls').split(' '),
-          selector = '#' + ids.join(', #');
+        var ids = $toggle.attr('aria-controls').split(' ')
+        var selector = '#' + ids.join(', #')
 
-        return $el.find(selector);
+        return $el.find(selector)
       }
 
       function track ($toggle) {
-        var options = { label: $toggle.data('toggled-text') || $toggle.text() };
+        var options = { label: $toggle.data('toggled-text') || $toggle.text() }
 
-        GOVUK.analytics.trackEvent($toggle.data('track-category'), $toggle.data('track-action'), options);
+        window.GOVUK.analytics.trackEvent($toggle.data('track-category'), $toggle.data('track-action'), options)
       }
-    };
-  };
-})(window.GOVUK.Modules);
+    }
+  }
+})(window.GOVUK.Modules)

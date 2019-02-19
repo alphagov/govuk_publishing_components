@@ -1,4 +1,4 @@
-//= require govuk_publishing_components/vendor/magna-charta.min
+// = require govuk_publishing_components/vendor/magna-charta.min
 
 window.GOVUK = window.GOVUK || {};
 
