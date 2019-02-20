@@ -16,21 +16,21 @@
 }
 
 .gem-c-metadata--inverse {
-  color: govuk-colour('white');
+  color: govuk-colour("white");
 
   a:link,
   a:active,
   a:visited {
-    color: govuk-colour('white');
+    color: govuk-colour("white");
   }
 
   a:focus {
-    color: govuk-colour('black');
+    color: govuk-colour("black");
   }
 }
 
 .gem-c-metadata__term {
-  margin-top: 0.5em;
+  margin-top: .5em;
   line-height: normal;
 
   @include media(tablet) {

@@ -19,11 +19,11 @@
     @include govuk-font($size: 16);
 
     p {
-      margin: 0.25em 0;
+      margin: .25em 0;
     }
   }
 
   @include govuk-media-query($until: tablet) {
-    margin: 0.75em 0;
+    margin: .75em 0;
   }
 }

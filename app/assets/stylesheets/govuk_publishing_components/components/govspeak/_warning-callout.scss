@@ -19,7 +19,7 @@
     background-size: $icon-size $icon-size;
     background-repeat: no-repeat;
 
-    @include device-pixel-ratio() {
+    @include device-pixel-ratio {
       background-image: image-url("icon-important-2x.png");
     }
 

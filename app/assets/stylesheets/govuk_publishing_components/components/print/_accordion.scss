@@ -11,12 +11,12 @@
 
 // Change the colour from the blue link colour to black.
 .govuk-accordion__section-button {
-  color: govuk-colour('black') !important;
+  color: govuk-colour("black") !important;
 }
 
 // Change the summary subheading size.
 .govuk-accordion__section-summary {
-  @include govuk-typography-common();
+  @include govuk-typography-common;
   @include govuk-typography-responsive($size: 16, $important: true);
 
   .govuk-accordion--condensed & {
@@ -24,7 +24,7 @@
   }
 }
 
-// Hide the unusable 'Open all' button and the '+' icons.
+// Hide the unusable "Open all" button and the "+" icons.
 .govuk-accordion__open-all,
 .govuk-accordion__icon {
   display: none !important;

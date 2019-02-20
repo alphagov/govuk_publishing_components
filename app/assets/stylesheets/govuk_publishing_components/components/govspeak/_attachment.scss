@@ -37,7 +37,7 @@
         width: $thumbnail-width;
         height: 140px;
         background: $white;
-        outline: $thumb-border-width solid transparentize($black, 0.9);
+        outline: $thumb-border-width solid transparentize($black, .9);
 
         @include ie-lte(8) {
           // IE8 incorrectly asserts the "max-width: 100%" rule to be 0

@@ -1,11 +1,11 @@
 $highlight-answer-bg-color: #28a197;
-$highlight-answer-color: #fff;
+$highlight-answer-color: #ffffff;
 
 .gem-c-govspeak .highlight-answer {
   background-color: $highlight-answer-bg-color;
   color: $highlight-answer-color;
   text-align: center;
-  padding: 1.75em 0.75em 1.25em;
+  padding: 1.75em .75em 1.25em;
   margin: 0 -1em 1em;
 
   p {
@@ -15,7 +15,7 @@ $highlight-answer-color: #fff;
     em {
       @include govuk-font($size: 80, $weight: bold);
       display: block;
-      padding-top: 0.1em;
+      padding-top: .1em;
       color: $highlight-answer-color;
     }
   }

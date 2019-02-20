@@ -18,14 +18,14 @@
 
 .gem-c-related-navigation__sub-heading--footer {
   @include bold-19;
-  border-top: none;
+  border-top: 0;
   padding-top: 0;
   margin-top: $gutter-half;
   margin-bottom: $gutter-one-third;
 }
 
 .gem-c-related-navigation__main-heading  + .gem-c-related-navigation__sub-heading {
-  border-top: none;
+  border-top: 0;
   padding-top: 0;
 }
 

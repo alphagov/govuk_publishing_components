@@ -64,19 +64,19 @@
 
 // all crest images are currently in whitehall
 @mixin crest($crest) {
-  background: image-url('crests/#{$crest}_13px.png') no-repeat 5px 0;
+  background: image-url("crests/#{$crest}_13px.png") no-repeat 5px 0;
   background-size: auto 20px;
 
-  @include device-pixel-ratio() {
-    background-image: image-url('crests/#{$crest}_13px_x2.png');
+  @include device-pixel-ratio {
+    background-image: image-url("crests/#{$crest}_13px_x2.png");
   }
 
   @include media(tablet) {
-    background: image-url('crests/#{$crest}_18px.png') no-repeat 6px 0;
+    background: image-url("crests/#{$crest}_18px.png") no-repeat 6px 0;
     background-size: auto 26px;
 
-    @include device-pixel-ratio() {
-      background-image: image-url('crests/#{$crest}_18px_x2.png');
+    @include device-pixel-ratio {
+      background-image: image-url("crests/#{$crest}_18px_x2.png");
     }
   }
 }
@@ -92,51 +92,51 @@
 }
 
 .gem-c-organisation-logo__crest--dit {
-  @include crest('dit_crest');
+  @include crest("dit_crest");
 }
 
 .gem-c-organisation-logo__crest--bis {
-  @include crest('bis_crest');
+  @include crest("bis_crest");
 }
 
 .gem-c-organisation-logo__crest--hmrc {
-  @include crest('hmrc_crest');
+  @include crest("hmrc_crest");
 }
 
 .gem-c-organisation-logo__crest--ho {
-  @include crest('ho_crest');
+  @include crest("ho_crest");
   @include tall-crest;
 }
 
 .gem-c-organisation-logo__crest--mod {
-  @include crest('mod_crest');
+  @include crest("mod_crest");
   @include tall-crest;
 }
 
 .gem-c-organisation-logo__crest--single-identity,
 .gem-c-organisation-logo__crest--eo,
 .gem-c-organisation-logo__crest--org {
-  @include crest('org_crest');
+  @include crest("org_crest");
 }
 
 .gem-c-organisation-logo__crest--portcullis {
-  @include crest('portcullis');
+  @include crest("portcullis");
 }
 
 .gem-c-organisation-logo__crest--so {
-  @include crest('so_crest');
+  @include crest("so_crest");
 }
 
 .gem-c-organisation-logo__crest--ukaea {
-  @include crest('ukaea_crest');
+  @include crest("ukaea_crest");
 }
 
 .gem-c-organisation-logo__crest--ukho {
-  @include crest('ukho');
+  @include crest("ukho");
   @include tall-crest;
 }
 
 .gem-c-organisation-logo__crest--wales {
-  @include crest('wales_crest');
+  @include crest("wales_crest");
   @include tall-crest;
 }

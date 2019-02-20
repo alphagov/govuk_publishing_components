@@ -8,7 +8,7 @@
 }
 
 .gem-c-image-card__image-wrapper {
-  @include grid-column( 1 / 3, mobile );
+  @include grid-column(1 / 3, mobile);
   margin: 0;
 
   @include media(tablet) {
@@ -28,7 +28,7 @@
 }
 
 .gem-c-image-card__text-wrapper {
-  @include grid-column( 2 / 3, mobile );
+  @include grid-column(2 / 3, mobile);
 }
 
 .gem-c-image-card__title {

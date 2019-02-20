@@ -51,15 +51,16 @@
     h4 .number,
     h5 .number,
     h6 .number {
-      margin-right: 0.1em;
+      margin-right: .1em;
 
       .direction-rtl & {
         margin-right: 0;
-        margin-left: 0.1em;
+        margin-left: .1em;
       }
     }
 
     // scss-lint:disable QualifyingElement
+    // sass-lint:disable no-qualifying-elements
     // this class will only be for tables and is to distinguish from a bare `table`
     // the row classes below should not be applied to anything else but `tr`s
     table.financial-data {
@@ -129,6 +130,7 @@
         background-color: $grey-3;
       }
     }
+    // sass-lint:enable no-qualifying-elements
     // scss-lint:enable QualifyingElement
   }
 }

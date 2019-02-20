@@ -91,7 +91,7 @@
   margin-top: $govuk-gutter-half;
   margin-bottom: $govuk-gutter-half;
 
-  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+  font-family: Consolas, Monaco, "Andale Mono", monospace;
   font-size: 16px;
   line-height: 1.5;
   border: 1px solid $govuk-border-colour;
@@ -125,6 +125,10 @@
 }
 
 .component-guide-preview {
+  padding: ($govuk-gutter * 1.5) $govuk-gutter $govuk-gutter;
+  border: 1px solid $govuk-border-colour;
+  position: relative;
+
   &.direction-rtl {
     direction: rtl;
     text-align: start;
@@ -138,17 +142,13 @@
     padding: 0;
   }
 
-  padding: ($govuk-gutter * 1.5) $govuk-gutter $govuk-gutter;
-  border: 1px solid $govuk-border-colour;
-  position: relative;
-
   &:before {
     @include govuk-font($size: 14);
     content: attr(data-content);
     position: absolute;
     top: 0;
     left: 0;
-    padding: 0.21053em 0.78947em;
+    padding: .21053em .78947em;
     background: $govuk-border-colour;
     color: govuk-colour("black");
     font-weight: bold;
@@ -246,12 +246,14 @@ html {
 
 .hide-header-and-footer {
   // scss-lint:disable IdSelector
+  // sass-lint:disable no-ids
   #global-header,
   #global-header-bar,
   #global-breadcrumb,
   #footer {
     display: none;
   }
+  // sass-lint:enable no-ids
   // scss-lint:enable IdSelector
 }
 
@@ -273,15 +275,18 @@ html {
 
 // Hide survey banner
 // scss-lint:disable IdSelector
-#user-satisfaction-survey-container {
+// sass-lint:disable no-ids
+#user-satisfaction-survey-container,
+#global-cookie-message {
   display: none;
 }
+// sass-lint:enable no-ids
 // scss-lint:enable IdSelector
 
 // Rouge syntax highlighting
 // Based on https://github.com/alphagov/tech-docs-template/blob/master/template/source/stylesheets/palette/_syntax-highlighting.scss
 
-$code-00: scale-color(govuk-colour("grey-4"), $lightness:50%); // Default Background
+$code-00: scale-color(govuk-colour("grey-4"), $lightness: 50%); // Default Background
 $code-01: #f5f5f5; // Lighter Background (Unused)
 $code-02: #bfc1c3; // Selection Background
 $code-03: darken($govuk-secondary-text-colour, 2%); // Comments, Invisibles, Line Highlighting
@@ -291,17 +296,18 @@ $code-06: #ffffff; // Light Foreground (Unused)
 $code-07: #ffffff; // Light Background (Unused)
 
 $code-08: #ae5f3d; // Variables, XML Tags, Markup Link Text, Markup Lists
-$code-09: #0E7754; // Integers, Boolean, Constants, XML Attributes, Markup Link Url
-$code-0a: #4C4077; // Classes, Markup Bold, Search Text Background
+$code-09: #0e7754; // Integers, Boolean, Constants, XML Attributes, Markup Link Url
+$code-0a: #4c4077; // Classes, Markup Bold, Search Text Background
 $code-0b: govuk-colour("blue"); // Strings, Inherited Class, Markup Code
 $code-0c: govuk-colour("blue"); // Support, Regular Expressions, Escape Characters, Markup Quotes
-$code-0d: #4C4077; // Functions, Methods, Attribute IDs, Headings
+$code-0d: #4c4077; // Functions, Methods, Attribute IDs, Headings
 $code-0e: #a71d5d; // Keywords, Storage, Selector, Markup Italic
-$code-0f: #C92424; // Deprecated, Opening/Closing Embedded Language Tags e.g. <?php ?> (Unused)
+$code-0f: #c92424; // Deprecated, Opening/Closing Embedded Language Tags e.g. <?php ?> (Unused)
 
-$code-insert-bg: #DEF8CA;
-$code-delete-bg: #FADDDD;
+$code-insert-bg: #def8ca;
+$code-delete-bg: #fadddd;
 
+// sass-lint:disable no-empty-rulesets
 .component-highlight {
 
   // Map Rouge / Pygments Tokens to work with 'Base 16' themes
@@ -498,6 +504,7 @@ $code-delete-bg: #FADDDD;
     font-weight: bold;
   }
 }
+// sass-lint:enable no-empty-rulesets
 
 // Specific for this Gem, optimized for erb render statements
 .component-highlight {

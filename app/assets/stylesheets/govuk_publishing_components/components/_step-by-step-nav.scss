@@ -75,7 +75,7 @@ $top-border: solid 2px $grey-3;
   @include _core-font-generator(14px, 14px, 14px, 1, 1, false);
   position: relative;
   z-index: 1; // this and relative position stops focus outline underlap with border of accordion
-  padding: 0.5em 0;
+  padding: .5em 0;
   text-decoration: underline;
 
   &:hover {
@@ -132,8 +132,10 @@ $top-border: solid 2px $grey-3;
 
   &:after {
     // scss-lint:disable DuplicateProperty
+    // sass-lint:disable no-duplicate-properties
     height: -webkit-calc(100% - #{$gutter-half}); // fallback for iphone 4
     height: calc(100% - #{$gutter-half});
+    // sass-lint:enable no-duplicate-properties
     // scss-lint:enable DuplicateProperty
   }
 
@@ -215,14 +217,11 @@ $top-border: solid 2px $grey-3;
 }
 
 .gem-c-step-nav__circle-background {
-  $shadow-offset: 0.1em;
+  $shadow-offset: .1em;
   $shadow-colour: $white;
 
   // to make numbers readable for users zooming text only in browsers such as Firefox
-  text-shadow: 0 -#{$shadow-offset} 0 $shadow-colour,
-              $shadow-offset 0 0 $shadow-colour,
-              0 $shadow-offset 0 $shadow-colour,
-              -#{$shadow-offset} 0 0 $shadow-colour;
+  text-shadow: 0 -#{$shadow-offset} 0 $shadow-colour, $shadow-offset 0 0 $shadow-colour, 0 $shadow-offset 0 $shadow-colour, -#{$shadow-offset} 0 0 $shadow-colour;
 }
 
 .gem-c-step-nav__circle-step-label,
@@ -371,7 +370,7 @@ $top-border: solid 2px $grey-3;
     content: "";
     position: absolute;
     z-index: 5;
-    top: 0.6em; // position the dot to align with the first row of text in the link
+    top: .6em; // position the dot to align with the first row of text in the link
     left: -($gutter + $gutter-half);
     margin-left: ($number-circle-size / 2) - ($dot-size / 2);
     width: $dot-size;

@@ -1,5 +1,5 @@
-$info-background: #D5E8F3;
-$high-alert-border:#C00;
+$info-background: #d5e8f3;
+$high-alert-border: #cc0000;
 
 .gem-c-govspeak .advisory {
   background: image-url("icon-information.png") no-repeat scroll 98% 1em $info-background;
@@ -8,13 +8,13 @@ $high-alert-border:#C00;
   padding: 1em;
   text-align: left;
 
-  @include device-pixel-ratio() {
+  @include device-pixel-ratio {
     background-image: image-url("icon-information-2x.png");
     background-size: 27px 27px;
   }
 
   p {
-    margin: 0 0.75em 0 0;
+    margin: 0 .75em 0 0;
     min-height: 1.75em;
     padding-right: 3em;
   }

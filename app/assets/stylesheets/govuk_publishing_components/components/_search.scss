@@ -22,7 +22,7 @@ $large-input-size: 50px;
   @include govuk-focusable;
 
   padding: 6px;
-  margin: 0.5em 0;
+  margin: .5em 0;
   width: 100%;
   height: $input-size;
   border: 0;
@@ -98,7 +98,7 @@ $large-input-size: 50px;
       border: 0;
     }
 
-    @include device-pixel-ratio() {
+    @include device-pixel-ratio {
       background-size: 52.5px auto;
       background-position: 115% 50%;
     }
@@ -174,7 +174,7 @@ $large-input-size: 50px;
     height: $large-input-size;
     background-position: 8px 50%;
 
-    @include device-pixel-ratio() {
+    @include device-pixel-ratio {
       background-size: 60px auto;
       background-position: 160% 50%;
     }
