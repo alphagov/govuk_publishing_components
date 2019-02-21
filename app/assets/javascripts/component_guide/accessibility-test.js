@@ -1,3 +1,5 @@
+//= require axe-core
+
 (function (window, document, axe) {
   window.GOVUK = window.GOVUK || {}
 
