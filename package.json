@@ -3,5 +3,8 @@
     "accessible-autocomplete": "git://github.com/alphagov/accessible-autocomplete.git#add-multiselect-support",
     "govuk-frontend": "^2.5.1",
     "jquery": "1.12.4"
+  },
+  "devDependencies": {
+    "axe-core": "^3.1.2"
   }
 }
