@@ -16,14 +16,14 @@
   }
 
   .additional-information {
-    @include core-16;
+    @include govuk-font($size: 16);
 
     p {
       margin: 0.25em 0;
     }
   }
 
-  @include media-down(mobile) {
+  @include govuk-media-query($until: tablet) {
     margin: 0.75em 0;
   }
 }

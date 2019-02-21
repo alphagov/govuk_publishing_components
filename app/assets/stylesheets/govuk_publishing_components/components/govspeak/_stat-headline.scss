@@ -10,19 +10,19 @@
     margin-bottom: $gutter-half;
     margin-top: $gutter-half;
 
-    @include media(tablet) {
+    @include govuk-media-query($from: tablet) {
       margin-bottom: $gutter-two-thirds;
       margin-top: $gutter-two-thirds;
     }
 
     p {
-      @include bold-19;
+      @include govuk-font($size: 19, $weight: bold);
       margin: 0;
     }
 
     em {
+      @include govuk-font($size: 80, $weight: bold);
       display: block;
-      @include bold-80;
       margin: 3px 0 -5px;
     }
   }

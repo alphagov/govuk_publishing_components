@@ -11,7 +11,7 @@
     border-spacing: 0;
     margin: $gutter 0;
     width: $full-width;
-    @include core-14;
+    @include govuk-font($size: 14);
 
     caption {
       text-align: left;
@@ -26,9 +26,9 @@
     }
 
     th {
+      @include govuk-font($size: 14, $weight: bold);
       text-align: left;
       color: $black;
-      @include bold-14;
     }
 
     td small {

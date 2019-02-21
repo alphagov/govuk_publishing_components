@@ -16,7 +16,7 @@
     // to the browser default, this is needed in govuk_publishing_components
     // as there is not a global reset like there is in govuk_frontend_toolkit
     button {
-      @include core-16;
+      @include govuk-font($size: 16);
     }
   }
 }

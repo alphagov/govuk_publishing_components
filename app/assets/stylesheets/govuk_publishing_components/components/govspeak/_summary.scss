@@ -4,10 +4,10 @@
   color: $text-colour;
 
   p {
-    @include core-19;
+    @include govuk-font($size: 19);
   }
 
-  @include media-down(mobile) {
+  @include govuk-media-query($until: tablet) {
     margin: 0 0 2em;
     padding: 0;
   }
