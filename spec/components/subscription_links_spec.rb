@@ -33,6 +33,16 @@ describe "subscription links", type: :view do
     assert_select '.gem-c-subscription-links.govuk-\!-margin-bottom-7'
   end
 
+  it "defaults to the initial bottom margin if an incorrect value is passed" do
+    render_component(email_signup_link: 'email-signup', feed_link: 'singapore.atom', margin_bottom: 20)
+    assert_select "[class='^=govuk-\!-margin-bottom-']", false
+  end
+
+  it "has no margin class added by default" do
+    render_component(email_signup_link: 'email-signup', feed_link: 'singapore.atom')
+    assert_select "[class='^=govuk-\!-margin-bottom-']", false
+  end
+
   it "renders custom texts" do
     render_component(email_signup_link: 'email-signup', feed_link: 'singapore.atom', email_signup_link_text: 'Get email!', feed_link_text: 'View feed!')
     assert_select ".gem-c-subscription-links__link--email-alerts[href=\"email-signup\"]", text: "Get email!"
