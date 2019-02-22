@@ -35,5 +35,11 @@ RSpec.describe GovukPublishingComponents::Presenters::SharedHelper do
       heading = shared_helper.get_heading_level
       expect(heading).to eql('h2')
     end
+
+    it "returns a span instead of a heading if heading level is 0" do
+      shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(heading_level: 0)
+      result = shared_helper.get_heading_level
+      expect(result).to eql('span')
+    end
   end
 end

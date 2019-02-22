@@ -14,7 +14,9 @@ module GovukPublishingComponents
       end
 
       def get_heading_level
-        [*1..6].include?(@heading_level) ? "h#{@heading_level}" : "h2"
+        return [*1..6].include?(@heading_level) ? "h#{@heading_level}" : "h2" unless @heading_level.zero?
+
+        "span"
       end
     end
   end
