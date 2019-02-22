@@ -7,12 +7,13 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 16.0.0
 
 * BREAKING: Apply JS enhancements to govspeak (PR #751)
 * Refactor accessible autocomplete (PR #764)
 * Remove autocomplete hide facets option (PR #761)
-* Remove classes option from components (PR #727)
+* Enable rendering an open details element (PR #762)
+* Remove classes option from inset-text, label, radio and warning-text components (PR #727)
 * Add margin option to textarea component (PR #757)
 * Update alert components to use consistent bottom margin (PR #765)
 
