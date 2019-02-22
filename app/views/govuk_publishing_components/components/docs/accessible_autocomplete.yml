@@ -47,11 +47,3 @@ examples:
       label:
         text: 'Countries'
       options: [['France', 'fr'], ['Germany', 'de'], ['Sweden', 'se'], ['Switzerland', 'ch'], ['United Kingdom', 'gb'], ['United States', 'us'], ['The Separate Customs Territory of Taiwan, Penghu, Kinmen, and Matsu (Chinese Taipei)', 'tw']]
-  with_multiple_selections_hide_facets:
-    description: This parameter hides the facet tags shown by the component in multiple mode when options have been chosen. This seems counter to likely requirements but is needed for finders where the app generates its own facet tags.
-    data:
-      multiple: true
-      hide_facets: true
-      label:
-        text: 'Countries'
-      options: [['France', 'fr'], ['Germany', 'de'], ['Sweden', 'se'], ['Switzerland', 'ch'], ['United Kingdom', 'gb'], ['United States', 'us'], ['The Separate Customs Territory of Taiwan, Penghu, Kinmen, and Matsu (Chinese Taipei)', 'tw']]
