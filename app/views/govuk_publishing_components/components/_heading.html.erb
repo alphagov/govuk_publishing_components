@@ -2,8 +2,9 @@
   brand ||= false
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
   heading_helper = GovukPublishingComponents::Presenters::HeadingHelper.new(local_assigns)
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 %>
-<%= content_tag(heading_helper.heading_tag, text,
+<%= content_tag(shared_helper.get_heading_level, text,
     class: "gem-c-heading #{heading_helper.classes} #{brand_helper.brand_class} #{brand_helper.border_color_class}",
     id: heading_helper.id
 ) %>
