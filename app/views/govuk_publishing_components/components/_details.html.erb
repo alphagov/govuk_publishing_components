@@ -1,5 +1,6 @@
 <% data_attributes ||= nil %>
-<%= tag.details class: "gem-c-details govuk-details", data: data_attributes do %>
+<% open ||= nil %>
+<%= tag.details class: "gem-c-details govuk-details", data: data_attributes, open: open do %>
   <summary class="govuk-details__summary">
     <span class="govuk-details__summary-text">
       <%= title %>

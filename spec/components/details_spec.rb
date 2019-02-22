@@ -14,4 +14,12 @@ describe "Details", type: :view do
     assert_select ".govuk-details__summary-text", text: "Some title"
     assert_select ".govuk-details__text", text: "This is more info"
   end
+
+  it "renders an open details element" do
+    render_component(title: "Some title", open: true) do
+      "This is more info"
+    end
+
+    assert_select "details.gem-c-details[open]"
+  end
 end
