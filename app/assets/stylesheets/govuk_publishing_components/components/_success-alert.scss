@@ -2,7 +2,7 @@
   color: $gem-text-colour;
   padding: $gem-spacing-scale-3;
   border: $gem-border-width-mobile solid $gem-success-colour;
-  margin-bottom: $gem-spacing-scale-4;
+  @include govuk-responsive-margin(8, "bottom");
 
   @include media(tablet) {
     padding: $gem-spacing-scale-4;
