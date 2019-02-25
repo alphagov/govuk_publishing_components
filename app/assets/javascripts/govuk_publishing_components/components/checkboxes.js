@@ -56,7 +56,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     };
 
     this.toggleParentCheckbox = function(scope, checkbox) {
-      var siblings = $(checkbox).closest('.gem-c-checkboxes__list-item').siblings();
+      var siblings = $(checkbox).closest('.govuk-checkboxes__item').siblings();
       var parent_id = scope.data('parent');
 
       if (checkbox.checked && siblings.length == siblings.find(':checked').length) {

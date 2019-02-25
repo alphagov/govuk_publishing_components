@@ -1,16 +1,7 @@
 @import "govuk-frontend/components/checkboxes/checkboxes";
 
-.gem-c-checkbox.gem-c-checkbox--margin-bottom:last-child,
-.gem-c-checkbox.gem-c-checkbox--margin-bottom:last-of-type {
-  margin-bottom: $gutter-two-thirds;
-
-  @include media(tablet) {
-    margin-bottom: $gutter;
-  }
-}
-
 .govuk-checkboxes--nested {
-  margin-left: (govuk-spacing(3) + 3px);
+  margin-left: -(govuk-spacing(4) + 2px); //22px
   box-sizing: border-box;
   border-left-style: solid;
   border-left-width: 4px;
@@ -24,22 +15,14 @@
   }
 }
 
+.govuk-checkboxes__conditional {
+  margin-top: govuk-spacing(2);
+  margin-left: -(govuk-spacing(4) + 2px); //22px
+}
+
 .gem-c-checkboxes__list {
   padding-left: govuk-spacing(0);
   margin: 0;
-}
-
-.gem-c-checkboxes__list-item {
-  list-style: none;
-  margin-bottom: govuk-spacing(2);
-}
-
-.gem-c-checkboxes__list-item:last-child {
-  margin-bottom: 0;
-
-  .govuk-checkboxes--nested {
-    margin-bottom: 0;
-  }
 }
 
 .gem-c-checkboxes {
