@@ -13,6 +13,7 @@
 * Remove autocomplete hide facets option (PR #761)
 * Remove classes option from components (PR #727)
 * Add margin option to textarea component (PR #757)
+* Update alert components to use consistent bottom margin (PR #765)
 
 ## 15.3.0
 
