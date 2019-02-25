@@ -11,6 +11,7 @@
 
 * Create shared helper for components (PR #759)
 * Use delegated event handlers for checkbox events (PR #770)
+* Add margin option to details component (PR #768)
 
 ## 16.1.0
 
