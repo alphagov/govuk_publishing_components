@@ -5,10 +5,6 @@
   options ||= []
   selected_option ||= nil
   multiple ||= false
-  hide_facets ||= false
-
-  classes = %w(gem-c-accessible-autocomplete)
-  classes << "gem-c-accessible-autocomplete--hide-facets" if hide_facets
 %>
 <% if label && options.any? %>
   <div class="govuk-form-group">
@@ -18,7 +14,7 @@
       }.merge(label.symbolize_keys)
     %>
 
-    <%= tag.div class: classes, data: { module: "accessible-autocomplete" } do %>
+    <%= tag.div class: "gem-c-accessible-autocomplete", data: { module: "accessible-autocomplete" } do %>
       <% if multiple %>
         <span class="govuk-hint app-c-autocomplete__multiselect-instructions"><%= t('components.autocomplete.multiselect') %></span>
       <% end %>
