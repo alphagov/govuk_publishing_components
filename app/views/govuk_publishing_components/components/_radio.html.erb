@@ -71,6 +71,10 @@
 
             data_attrs = { "aria-controls": conditional_id }
             data_attrs["tracking-url"] =  item[:url] if item.key?(:url)
+
+            if item.fetch(:data_attributes, {}).any?
+              data_attrs = data_attrs.merge(item[:data_attributes])
+            end
           %>
           <%= tag.div class: %w( gem-c-radio govuk-radios__item ) do %>
             <%= check_box_tag name,
