@@ -11,14 +11,16 @@
 .gem-c-govspeak {
   @include govuk-text-colour;
 
+  @include govuk-font($size: 16);
+
   ol,
   ul,
   p {
-    @include core-19;
+    @include govuk-font($size: 19);
     margin-top: $gutter-half;
     margin-bottom: $gutter-half;
 
-    @include media(tablet) {
+    @include govuk-media-query($from: tablet) {
       margin-top: $gutter-two-thirds;
       margin-bottom: $gutter-two-thirds;
     }
@@ -28,24 +30,24 @@
 
   // H1's are not allowed and thus are styled bare
   h1 {
-    @include core-19;
+    @include govuk-font($size: 19);
     margin: 0;
     padding: 0;
   }
 
   h2 {
-    @include bold-27;
+    @include govuk-font($size: 27, $weight: bold);
     margin-top: $gutter;
     margin-bottom: 0;
 
-    @include media(desktop) {
+    @include govuk-media-query($from: desktop) {
       margin-top: $gutter * 1.5;
       margin-bottom: 0;
     }
   }
 
   h3 {
-    @include bold-19;
+    @include govuk-font($size: 19, $weight: bold);
     margin-top: $gutter + 5px;
     margin-bottom: 0;
   }
@@ -53,7 +55,7 @@
   h4,
   h5,
   h6 {
-    @include bold-19;
+    @include govuk-font($size: 19, $weight: bold);
     margin-top: $gutter + 5px;
     margin-bottom: 0;
 
@@ -174,7 +176,7 @@
   &.direction-rtl blockquote {
     padding: 0 $gutter-two-thirds 0 0;
 
-    @include media(desktop) {
+    @include govuk-media-query($from: desktop) {
       margin: 0 (-$gutter) 0 0;
     }
 
@@ -182,7 +184,7 @@
       padding-right: $gutter-half;
       padding-left: 0;
 
-      @include media(tablet) {
+      @include govuk-media-query($from: tablet) {
         padding-right: $gutter;
         padding-left: 0;
       }

@@ -10,7 +10,7 @@
   .fraction {
     sup,
     sub {
-      @include core-14;
+      @include govuk-font($size: 14);
     }
 
     img {

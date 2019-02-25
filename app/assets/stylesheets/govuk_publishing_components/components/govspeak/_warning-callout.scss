@@ -29,12 +29,12 @@
     // Center the icon around the baseline
     padding-top: ($icon-size - $line-height-mobile) / 2;
 
-    @include media(tablet) {
+    @include govuk-media-query($from: tablet) {
       padding-top: ($icon-size - $line-height-tablet) / 2;
     }
 
     p {
-      @include bold-19;
+      @include govuk-font($size: 19, $weight: bold);
       margin-left: 1em;
     }
   }

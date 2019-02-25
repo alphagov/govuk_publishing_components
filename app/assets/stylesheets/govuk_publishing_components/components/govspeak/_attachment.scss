@@ -55,7 +55,7 @@
 
     .attachment-details {
       h2 {
-        @include core-27;
+        @include govuk-font($size: 27);
         margin: 0;
       }
 
@@ -64,7 +64,7 @@
       }
 
       .metadata {
-        @include core-14;
+        @include govuk-font($size: 14);
       }
 
       .changed,
@@ -75,7 +75,7 @@
 
       .preview,
       .download {
-        @include core-19;
+        @include govuk-font($size: 19);
 
         strong {
           font-weight: bold;
@@ -87,12 +87,12 @@
       }
 
       .opendocument-help {
-        @include core-14;
+        @include govuk-font($size: 14);
       }
 
       .accessibility-warning {
         h2 {
-          @include core-14;
+          @include govuk-font($size: 14);
           margin: 0;
         }
       }

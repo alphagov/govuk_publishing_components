@@ -9,11 +9,11 @@ $highlight-answer-color: #fff;
   margin: 0 -1em 1em;
 
   p {
-    @include bold-24;
+    @include govuk-font($size: 24, $weight: bold);
     color: $highlight-answer-color;
 
     em {
-      @include bold-80;
+      @include govuk-font($size: 80, $weight: bold);
       display: block;
       padding-top: 0.1em;
       color: $highlight-answer-color;
@@ -24,9 +24,9 @@ $highlight-answer-color: #fff;
     margin-bottom: 0;
   }
 
-  @include media-down(mobile) {
+  @include govuk-media-query($until: tablet) {
     margin: 0 0 1em;
-    @include core-48;
+    @include govuk-font($size: 48);
 
     p {
       font-size: 1em;

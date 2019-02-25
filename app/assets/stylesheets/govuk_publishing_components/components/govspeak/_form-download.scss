@@ -1,7 +1,7 @@
 .gem-c-govspeak .form-download {
   padding: 0.25em 0;
 
-  @include media-down(mobile) {
+  @include govuk-media-query($until: tablet) {
     margin: 1em 0 1.5em;
   }
 

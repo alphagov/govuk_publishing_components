@@ -28,7 +28,7 @@ $high-alert-border:#C00;
     border-color: $high-alert-border;
   }
 
-  @include media-down(mobile) {
+  @include govuk-media-query($until: tablet) {
     margin: 0 0 1em;
   }
 }

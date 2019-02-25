@@ -14,17 +14,17 @@
 
   .gem-c-govspeak {
     h2 {
-      @include bold-36;
+      @include govuk-font($size: 36, $weight: bold);
     }
 
     h3 {
-      @include bold-27;
+      @include govuk-font($size: 27, $weight: bold);
     }
 
     .stat-headline:first-child {
       margin-top: $gutter;
 
-      @include media(tablet) {
+      @include govuk-media-query($from: tablet) {
         margin-top: ($gutter * 2) + $gutter-two-thirds;
       }
     }
@@ -33,7 +33,7 @@
     h3 {
       margin-top: $gutter;
 
-      @include media(tablet) {
+      @include govuk-media-query($from: tablet) {
         margin-top: ($gutter * 2) + $gutter-two-thirds;
       }
     }
@@ -42,7 +42,7 @@
     h3:first-child {
       margin-top: $gutter-two-thirds;
 
-      @include media(tablet) {
+      @include govuk-media-query($from: tablet) {
         margin-top: 0;
       }
     }

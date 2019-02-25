@@ -24,7 +24,7 @@
       width: $full-width;
 
       h3 {
-        @include bold-19;
+        @include govuk-font($size: 19, $weight: bold);
         margin-bottom: 5px;
       }
 
@@ -39,8 +39,8 @@
       }
 
       .comments {
-        @include core-16;
-        @include media(tablet) {
+        @include govuk-font($size: 16);
+        @include govuk-media-query($from: tablet) {
           margin-bottom: 0;
         }
       }

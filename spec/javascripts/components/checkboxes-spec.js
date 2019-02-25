@@ -13,7 +13,7 @@ describe("Checkboxes component", function () {
         <span id="checkboxes-1ac8e5cf-hint" class="govuk-hint">Select all that apply.</span>\
         <div class="govuk-checkboxes" data-nested="true">\
            <div class="gem-c-checkbox govuk-checkboxes__item">\
-              <input id="checkboxes-1ac8e5cf-0" name="favourite_colour" type="checkbox" value="red" class="govuk-checkboxes__input" data-track-category="choseFavouriteColour" data-track-action="favourite-color" data-track-label="red" data-track-value="1" data-track-options='{"dimension28": "wubbalubbadubdub","dimension29": "Pickle Rick"}'>\
+              <input id="checkboxes-1ac8e5cf-0" name="favourite_colour" type="checkbox" value="red" class="govuk-checkboxes__input" data-track-category="choseFavouriteColour" data-track-action="favourite-color" data-track-label="red" data-track-value="1" data-track-options=\'{"dimension28": "wubbalubbadubdub","dimension29": "Pickle Rick"}\'>\
               <label class="govuk-label govuk-checkboxes__label" for="checkboxes-1ac8e5cf-0">Red</label>\
            </div>\
            <div id="checkboxes-1ac8e5cf-nested-0" class="govuk-checkboxes govuk-checkboxes--nested" data-parent="checkboxes-1ac8e5cf-0">\
@@ -27,7 +27,7 @@ describe("Checkboxes component", function () {
               </div>\
            </div>\
            <div class="gem-c-checkbox govuk-checkboxes__item">\
-              <input id="checkboxes-1ac8e5cf-1" name="favourite_colour" type="checkbox" value="blue" class="govuk-checkboxes__input" data-track-category="choseFavouriteColour" data-uncheck-track-category="unselectedFavouriteColour" data-track-action="favourite-color" data-track-label="blue" data-track-value="2" data-track-options='{"dimension28":"Get schwifty","dimension29":"Squanch"}'>\
+              <input id="checkboxes-1ac8e5cf-1" name="favourite_colour" type="checkbox" value="blue" class="govuk-checkboxes__input" data-track-category="choseFavouriteColour" data-uncheck-track-category="unselectedFavouriteColour" data-track-action="favourite-color" data-track-label="blue" data-track-value="2" data-track-options=\'{"dimension28":"Get schwifty","dimension29":"Squanch"}\'>\
               <label class="govuk-label govuk-checkboxes__label" for="checkboxes-1ac8e5cf-1">Blue</label>\
            </div>\
            <div id="checkboxes-1ac8e5cf-nested-1" class="govuk-checkboxes govuk-checkboxes--nested" data-parent="checkboxes-1ac8e5cf-1">\
