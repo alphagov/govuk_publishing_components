@@ -11,7 +11,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       var _this = this;
       this.applyAriaControlsAttributes(scope);
 
-      $(scope).find('[data-nested=true] input[type=checkbox]').on('change', function(e) {
+      $(scope).on('change', '[data-nested=true] input[type=checkbox]', function(e) {
         var checkbox = e.target;
         var isNested = $(checkbox).closest('.govuk-checkboxes--nested');
         var hasNested = $('.govuk-checkboxes--nested[data-parent=' + checkbox.id + ']');
@@ -23,7 +23,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         }
       });
 
-      $(scope).find('input[type=checkbox]').on('change', function(e) {
+      $(scope).on('change', 'input[type=checkbox]', function(e) {
         if (GOVUK.analytics && GOVUK.analytics.trackEvent) {
           var $checkbox = $(e.target);
           var category = $checkbox.data("track-category");
