@@ -102,6 +102,26 @@ describe "Radio", type: :view do
     assert_select ".govuk-radios__item .govuk-label--s"
   end
 
+  it "renders a radio item with contextual-guidance data attribute" do
+    render_component(
+      name: "radio-group-data-attributes",
+      items: [
+        {
+          value: "cool-button",
+          text: "Best button in town",
+          data_attributes: { "contextual-guidance": "cool-buttons-guidance" },
+        },
+        {
+          value: "no-data-attributes-button",
+          text: "Worst button in town",
+        },
+      ]
+    )
+
+    assert_select ".govuk-radios__item:first-child .govuk-radios__input[data-contextual-guidance=cool-buttons-guidance]"
+    assert_select ".govuk-radios__item:last-child .govuk-radios__input[data-contextual-guidance]", false
+  end
+
   it "renders radio items with hint text" do
     render_component(
       name: "radio-group-hint-text",

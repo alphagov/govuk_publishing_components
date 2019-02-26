@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Enable ability to add data attributes to a single radio button (PR #766)
+
 ## 16.0.0
 
 * BREAKING: Apply JS enhancements to govspeak (PR #751)

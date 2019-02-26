@@ -130,6 +130,15 @@ examples:
       - value: "govuk-verify"
         text: "Use GOV.UK Verify"
         checked: true
+  with_data_attributes:
+    data:
+      name: "radio-group-data-attributes"
+      items:
+      - value: "cool-button"
+        text: "Best button in town"
+        data_attributes: { "contextual-guidance": "cool-buttons-guidance" }
+      - value: "no-data-attributes-button"
+        text: "Worst button in town"
   with_custom_id_prefix:
     data:
       id_prefix: 'custom'
