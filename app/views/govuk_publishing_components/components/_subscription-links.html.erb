@@ -1,11 +1,14 @@
 <%
   brand ||= false
-  margin_bottom ||= 0
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
   sl_helper = GovukPublishingComponents::Presenters::SubscriptionLinksHelper.new(local_assigns)
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+
+  local_assigns[:margin_bottom] ||= 0
+  local_assigns[:margin_bottom] = 0 if local_assigns[:margin_bottom] > 9
 
   css_classes = %w( gem-c-subscription-links )
-  css_classes << ([*0..9].include?(margin_bottom) ? "govuk-!-margin-bottom-#{margin_bottom}" : "govuk-!-margin-bottom-0")
+  css_classes << (shared_helper.get_margin_bottom) unless local_assigns[:margin_bottom] == 0
   css_classes << brand_helper.brand_class
   data = {"module": "gem-toggle"} if sl_helper.feed_link_box_value
 %>

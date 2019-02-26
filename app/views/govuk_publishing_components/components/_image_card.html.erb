@@ -2,6 +2,7 @@
   brand ||= false
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
   card_helper = GovukPublishingComponents::Presenters::ImageCardHelper.new(local_assigns)
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 %>
 <% if card_helper.href || card_helper.extra_links.any? %>
   <div class="gem-c-image-card <%= "gem-c-image-card--large" if card_helper.large %> <%= brand_helper.brand_class %>"
@@ -13,7 +14,7 @@
       <%= card_helper.context %>
 
       <% if card_helper.heading_text %>
-        <%= content_tag(card_helper.heading_tag,
+        <%= content_tag(shared_helper.get_heading_level,
           class: "gem-c-image-card__title") do %>
             <% if card_helper.href %>
               <%= link_to card_helper.heading_text, card_helper.href,

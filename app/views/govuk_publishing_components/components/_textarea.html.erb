@@ -7,7 +7,8 @@
 
   label ||= nil
   hint ||= nil
-  margin_bottom ||= 3
+  local_assigns[:margin_bottom] ||= 6
+  local_assigns[:margin_bottom] = 6 if local_assigns[:margin_bottom] > 9
   error_message ||= nil
   error_items ||= nil
   character_count ||= nil
@@ -16,12 +17,14 @@
   has_error ||= error_message || error_items&.any?
   error_id = "error-#{SecureRandom.hex(4)}"
 
-  css_classes = %w(gem-c-textarea govuk-textarea)
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+
+  css_classes = %w(govuk-textarea)
   css_classes << "js-character-count" if character_count
   css_classes << "govuk-textarea--error" if has_error
-  css_classes << ([*0..9].include?(margin_bottom) ? "govuk-!-margin-bottom-#{margin_bottom}" : "govuk-!-margin-bottom-3")
-  form_group_css_classes = %w(govuk-form-group)
+  form_group_css_classes = %w(gem-c-textarea govuk-form-group)
   form_group_css_classes << "govuk-form-group--error" if has_error
+  form_group_css_classes << (shared_helper.get_margin_bottom)
 
   aria_described_by ||= nil
   if hint || has_error

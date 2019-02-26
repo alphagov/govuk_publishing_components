@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Create shared helper for components (PR #759)
 * Use delegated event handlers for checkbox events (PR #770)
 
 ## 16.1.0

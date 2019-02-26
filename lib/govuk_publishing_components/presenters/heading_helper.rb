@@ -4,8 +4,6 @@ module GovukPublishingComponents
       attr_reader :heading_tag, :id, :classes
 
       def initialize(options)
-        @heading_tag = "h2"
-        @heading_tag = "h#{options[:heading_level]}" if [1, 2, 3, 4, 5, 6].include? options[:heading_level]
         @id = options[:id]
 
         @classes = ""

@@ -1,6 +1,6 @@
 require "govuk_publishing_components/config"
 require "govuk_publishing_components/engine"
-require "govuk_publishing_components/presenters/accordion_helper"
+require "govuk_publishing_components/presenters/shared_helper"
 require "govuk_publishing_components/presenters/breadcrumbs"
 require "govuk_publishing_components/presenters/button_helper"
 require "govuk_publishing_components/presenters/contextual_navigation"

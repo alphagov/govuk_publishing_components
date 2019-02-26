@@ -1,9 +1,9 @@
 <%
   id ||= "hint-#{SecureRandom.hex(4)}"
-  margin_bottom ||= 3
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
   css_classes = %w( gem-c-hint govuk-hint )
-  css_classes << ([*0..9].include?(margin_bottom) ? "govuk-!-margin-bottom-#{margin_bottom}" : "govuk-!-margin-bottom-3")
+  css_classes << (shared_helper.get_margin_bottom)
 %>
 
 <%= tag.span id: id, class: css_classes do %>
