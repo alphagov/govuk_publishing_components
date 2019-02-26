@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 16.1.0
 
 * Enable ability to add data attributes to a single radio button (PR #766)
 
