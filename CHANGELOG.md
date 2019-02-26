@@ -10,6 +10,7 @@
 ## 16.1.0
 
 * Enable ability to add data attributes to a single radio button (PR #766)
+* Use delegated event handlers for checkbox events (PR #770)
 
 ## 16.0.0
 
