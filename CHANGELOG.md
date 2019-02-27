@@ -25,12 +25,12 @@
 * Remove classes option from inset-text, label, radio and warning-text components (PR #727)
 * Add margin option to textarea component (PR #757)
 * Update alert components to use consistent bottom margin (PR #765)
+* Change header link from Announcements to News and communications (PR #752)
 
 ## 15.3.0
 
 * Update skip-link to allow custom link text (PR #755)
 * Support an embed option on examples to allow embedding a component in a particular HTML context (PR #747)
-* Change header link from Announcements to News and communications (PR #752)
 
 ## 15.2.0
 
