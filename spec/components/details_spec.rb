@@ -22,4 +22,22 @@ describe "Details", type: :view do
 
     assert_select "details.gem-c-details[open]"
   end
+
+  it "applies a specified bottom margin" do
+    render_component(
+      title: "Some title",
+      margin_bottom: 0
+    )
+
+    assert_select '.govuk-details.govuk-\!-margin-bottom-0'
+  end
+
+  it "defaults to the initial bottom margin if an incorrect value is passed" do
+    render_component(
+      title: "Some title",
+      margin_bottom: 12
+    )
+
+    assert_select '.govuk-details.govuk-\!-margin-bottom-3'
+  end
 end
