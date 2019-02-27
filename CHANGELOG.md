@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Support data attributes for the back-link component (PR #773)
 * Create shared helper for components (PR #759)
 * Use delegated event handlers for checkbox events (PR #770)
 

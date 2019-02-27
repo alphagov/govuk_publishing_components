@@ -14,3 +14,8 @@ examples:
     data:
       text: 'Back to document list'
       href: '#'
+  with_data_attributes:
+    data:
+      href: '#'
+      data_attributes:
+        tracking: GT-1234
