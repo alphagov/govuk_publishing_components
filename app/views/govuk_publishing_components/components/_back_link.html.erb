@@ -1,10 +1,10 @@
 <%
   text ||= t('components.back_link.back')
+  data_attributes ||= nil
 %>
-<%= link_to text,
+<%= link_to(
+  text,
   href,
-  class: %w(
-    gem-c-back-link
-    govuk-back-link
-  )
- %>
+  class: %w(gem-c-back-link govuk-back-link),
+  data: data_attributes
+) %>
