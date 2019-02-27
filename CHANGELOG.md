@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 16.2.0
 
 * Support data attributes for the back-link component (PR #773)
 * Create shared helper for components (PR #759)
