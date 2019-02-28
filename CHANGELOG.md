@@ -9,6 +9,7 @@
 
 ## 16.2.0
 
+* BREAKING: Reduce checkboxes markup (PR #767)
 * Support data attributes for the back-link component (PR #773)
 * Create shared helper for components (PR #759)
 * Use delegated event handlers for checkbox events (PR #770)

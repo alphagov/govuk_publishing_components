@@ -22,7 +22,7 @@
           nested: ('true' if cb_helper.has_nested),
         } do %>
           <% cb_helper.items.each_with_index do |item, index| %>
-            <%= tag.li class: "gem-c-checkboxes__list-item" do %>
+            <%= tag.li class: "govuk-checkboxes__item" do %>
               <%= cb_helper.checkbox_markup(item, index) %>
 
               <% if item[:conditional] %>
@@ -32,7 +32,7 @@
               <% if item[:items].present? %>
                 <%= tag.ul id: "#{id}-nested-#{index}", class: "govuk-checkboxes govuk-checkboxes--nested", data: { parent: "#{id}-#{index}" } do %>
                   <% item[:items].each_with_index do |nested_item, nested_index| %>
-                    <%= tag.li class: "gem-c-checkboxes__list-item" do %>
+                    <%= tag.li class: "govuk-checkboxes__item" do %>
                       <%= cb_helper.checkbox_markup(nested_item, "#{index}-#{nested_index}") %>
                     <% end %>
                   <% end %>
@@ -45,6 +45,8 @@
     <% end %>
 
   <% else %>
-    <%= cb_helper.checkbox_markup(cb_helper.items[0], 0) %>
+    <div class="govuk-checkboxes__item">
+      <%= cb_helper.checkbox_markup(cb_helper.items[0], 0) %>
+    </div>
   <% end %>
 <% end %>
