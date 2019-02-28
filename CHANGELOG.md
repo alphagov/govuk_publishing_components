@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix issue embedding videos in govspeak after YouTube API is loaded (PR #775)
+
 ## 16.2.0
 
 * Support data attributes for the back-link component (PR #773)
