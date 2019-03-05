@@ -1,0 +1,71 @@
+name: Modal dialogue
+description: Shows only one section, with no other navigation options, until the user finishes the immediate task
+body: |
+  Use where the application has gotten into a state from which it shouldn’t or can’t proceed without input from the user or the state of the current page needs to be preserved.
+
+  In a document-centric application, for instance, adding an inline image might need the user to supply an image file, alternative text, caption and credits if not using an existing image. In other context, the user may need to search for a specific item before proceeding.
+
+  Modal instances are automatically initialised and their state can be changed programmatically using bounded functions (e.g. `$modalDialogue.open()` and `$modalDialogue.close()`)
+accessibility_criteria: |
+  The modal dialogue box must:
+
+  - receive focus on open
+  - inform the user that it is a dialogue
+  - provide a heading that says what the dialogue is about
+  - prevent mouse clicks outside the dialogue while open
+  - prevent scrolling the page while the dialogue is open
+  - prevent tabbing to outside the dialogue while open
+  - can be operable with a keyboard (allows the ESC key to close the dialogue)
+  - return focus to last focused element on close
+
+examples:
+  default:
+    embed: |
+      <button class="govuk-button" data-toggle="modal" data-target="modal-default">Open modal</button>
+      <%= component %>
+    data:
+      id: modal-default
+      block: |
+        <h1 class="govuk-heading-l">Modal title</h1>
+        <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet fringilla dictum. Morbi at vehicula augue. Pellentesque varius orci et augue pellentesque, sed elementum massa posuere. Curabitur egestas consectetur arcu, in porta lorem sagittis eu. Nulla facilisi. Sed scelerisque ligula lectus. Nulla et ligula a eros laoreet lacinia nec et ipsum. Ut sagittis sapien est, ut blandit risus laoreet at. Vestibulum vitae erat sed dolor ultricies efficitur.</p>
+  wide:
+    description: |
+      A wide version of the modal dialogue will provide the same width with the main container
+    embed: |
+      <button class="govuk-button" data-toggle="modal" data-target="modal-wide">Open wide modal</button>
+      <%= component %>
+    data:
+      id: modal-wide
+      wide: true
+      block: |
+        <h1 class="govuk-heading-l">Modal title</h1>
+          <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet fringilla dictum. Morbi at vehicula augue. Pellentesque varius orci et augue pellentesque, sed elementum massa posuere. Curabitur egestas consectetur arcu, in porta lorem sagittis eu. Nulla facilisi. Sed scelerisque ligula lectus. Nulla et ligula a eros laoreet lacinia nec et ipsum. Ut sagittis sapien est, ut blandit risus laoreet at. Vestibulum vitae erat sed dolor ultricies efficitur.</p>
+  with_form:
+    description: |
+      Modal dialogue with form elements inside to show how it prevents tabbing to outside the dialogue when open while preserving the tabindex on focusable elements
+    embed: |
+      <button class="govuk-button" data-toggle="modal" data-target="modal-with-form">Open modal with form</button>
+      <%= component %>
+    data:
+      id: modal-with-form
+      block: |
+        <h1 class="govuk-heading-l">Search contacts</h1>
+          <label class="govuk-label govuk-visually-hidden" for="contacts">Search contacts</label>
+          <div class="govuk-form-group"><input class="govuk-input" id="contacts"></div>
+          <button class="govuk-button">Insert contact</button>
+
+  with_large_content:
+    description: |
+      Modal dialogue with a large block content to show how the modal scrolls withing the page and how it prevents scrolling the page while the dialogue is open
+    embed: |
+      <button class="govuk-button" data-toggle="modal" data-target="modal-with-large-content">Open modal with large content</button>
+      <%= component %>
+    data:
+      id: modal-with-large-content
+      block: |
+        <h1 class="govuk-heading-l">Modal title</h1>
+          <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet fringilla dictum. Morbi at vehicula augue. Pellentesque varius orci et augue pellentesque, sed elementum massa posuere. Curabitur egestas consectetur arcu, in porta lorem sagittis eu. Nulla facilisi. Sed scelerisque ligula lectus. Nulla et ligula a eros laoreet lacinia nec et ipsum. Ut sagittis sapien est, ut blandit risus laoreet at. Vestibulum vitae erat sed dolor ultricies efficitur.</p>
+          <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet fringilla dictum. Morbi at vehicula augue. Pellentesque varius orci et augue pellentesque, sed elementum massa posuere. Curabitur egestas consectetur arcu, in porta lorem sagittis eu. Nulla facilisi. Sed scelerisque ligula lectus. Nulla et ligula a eros laoreet lacinia nec et ipsum. Ut sagittis sapien est, ut blandit risus laoreet at. Vestibulum vitae erat sed dolor ultricies efficitur.</p>
+          <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet fringilla dictum. Morbi at vehicula augue. Pellentesque varius orci et augue pellentesque, sed elementum massa posuere. Curabitur egestas consectetur arcu, in porta lorem sagittis eu. Nulla facilisi. Sed scelerisque ligula lectus. Nulla et ligula a eros laoreet lacinia nec et ipsum. Ut sagittis sapien est, ut blandit risus laoreet at. Vestibulum vitae erat sed dolor ultricies efficitur.</p>
+          <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet fringilla dictum. Morbi at vehicula augue. Pellentesque varius orci et augue pellentesque, sed elementum massa posuere. Curabitur egestas consectetur arcu, in porta lorem sagittis eu. Nulla facilisi. Sed scelerisque ligula lectus. Nulla et ligula a eros laoreet lacinia nec et ipsum. Ut sagittis sapien est, ut blandit risus laoreet at. Vestibulum vitae erat sed dolor ultricies efficitur.</p>
+          <p class="govuk-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet fringilla dictum. Morbi at vehicula augue. Pellentesque varius orci et augue pellentesque, sed elementum massa posuere. Curabitur egestas consectetur arcu, in porta lorem sagittis eu. Nulla facilisi. Sed scelerisque ligula lectus. Nulla et ligula a eros laoreet lacinia nec et ipsum. Ut sagittis sapien est, ut blandit risus laoreet at. Vestibulum vitae erat sed dolor ultricies efficitur.</p>
