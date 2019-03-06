@@ -1,4 +1,4 @@
-name: Modal dialogue
+name: Modal dialogue (experimental)
 description: Shows only one section, with no other navigation options, until the user finishes the immediate task
 body: |
   Use where the application has gotten into a state from which it shouldn’t or can’t proceed without input from the user or the state of the current page needs to be preserved.
