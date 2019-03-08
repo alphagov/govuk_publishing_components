@@ -277,6 +277,14 @@ Code can be called and referred to in the template as follows:
 <%= card_helper.heading_tag %>
 ```
 
+### Shared helper
+
+There is also a [shared helper](https://github.com/alphagov/govuk_publishing_components/blob/master/lib/govuk_publishing_components/presenters/shared_helper.rb) that can provide common functionality to all components. This includes a margin bottom option and a heading level option. See components that use the shared helper for [examples of usage](https://github.com/alphagov/govuk_publishing_components/blob/master/app/views/govuk_publishing_components/components/_heading.html.erb).
+
+```
+shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+```
+
 ## Passing HTML to a component
 Avoid marking HTML as safe within components, this means avoiding use of `raw` or `html_safe` within a component's view.
 
