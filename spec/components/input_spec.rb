@@ -84,6 +84,16 @@ describe "Input", type: :view do
     assert_select ".govuk-input[aria-controls='another-element']"
   end
 
+  it "renders inputs with an autocomplete attribute if provided" do
+    render_component(
+      label: { text: "What is your name?" },
+      name: "name",
+      autocomplete: "name"
+    )
+
+    assert_select ".govuk-input[autocomplete='name']"
+  end
+
   it "renders input with a data attributes" do
     render_component(
       data: { module: "contextual-guidance" },

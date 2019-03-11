@@ -103,3 +103,10 @@ examples:
       name: "name"
       value: "You can't type more"
       maxlength: 10
+  with_autocomplete:
+    data:
+      label:
+        text: "Automatically complete the field with a user's email address (in supporting browsers)"
+      name: "name"
+      type: "email"
+      autocomplete: "email"
