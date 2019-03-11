@@ -6,6 +6,59 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 (function (Modules) {
   "use strict";
 
+  var TRACK_QUERIES_WAIT_TIME = 500
+
+  function sourceForResults(select, trackQuery) {
+    var options = $.map(select.options, function (option) {
+      return option.textContent || option.innerText
+    })
+
+    var inputDebounceTimer = null
+
+    return function (query, populateResults) {
+      var results = options.filter(function (option) {
+        return option.toLowerCase().indexOf(query.toLowerCase()) !== -1
+      })
+
+      populateResults(results)
+
+      if (trackQuery) {
+        clearTimeout(inputDebounceTimer)
+        inputDebounceTimer = setTimeout(
+          function () {
+            trackQuery(query, results)
+          },
+          TRACK_QUERIES_WAIT_TIME
+        )
+      }
+    }
+  }
+
+  function trackQueriesWithGoogleTagManager (query, results) {
+    dataLayer.push({
+      event: 'accessible-autocomplete-query',
+      eventDetails: {
+        query: query,
+        results: results
+      }
+    });
+  }
+
+  function getTrackQueryFunction ($selectElem) {
+    var trackQueries = $selectElem.data('track-queries')
+    if (typeof trackQueries === 'function') {
+      return trackQueries
+    } else if (trackQueries === 'all') {
+      return trackQueriesWithGoogleTagManager
+    } else if (trackQueries === 'with-no-results') {
+      return function (query, results) {
+        if (results.length === 0) {
+          trackQueriesWithGoogleTagManager(query, results)
+        }
+      }
+    }
+  }
+
   Modules.AccessibleAutocomplete = function () {
     var $selectElem;
 
@@ -14,6 +67,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
       var configOptions = {
         selectElement: document.getElementById($selectElem.attr('id')),
+        source: sourceForResults($selectElem[0], getTrackQueryFunction($selectElem)),
         showAllValues: true,
         confirmOnBlur: true,
         preserveNullOptions: true, // https://github.com/alphagov/accessible-autocomplete#null-options
