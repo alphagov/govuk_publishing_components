@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add `autocomplete` attribute option to input component and use it on feedback component's survey signup form (PR #733)
+* Add experimental modal dialogue component from Content Publisher (PR #778)
 
 ## 16.3.0
 
