@@ -1,5 +1,5 @@
 $govuk-modal-margin: govuk-spacing(6);
-$govuk-modal-close-button-size: 40px;
+$govuk-modal-close-button-size: 44px;
 $govuk-modal-z-index: 1000;
 $govuk-modal-wide-breakpoint: $govuk-page-width + $govuk-modal-margin * 2 + $govuk-border-width-form-element * 2;
 
@@ -89,7 +89,7 @@ $govuk-modal-wide-breakpoint: $govuk-page-width + $govuk-modal-margin * 2 + $gov
 }
 
 .gem-c-modal-dialogue__header {
-  padding: 6px govuk-spacing(3) 8px;
+  padding: 8px govuk-spacing(3) 10px;
   color: govuk-colour("white");
   background: govuk-colour("black");
 }
@@ -123,10 +123,10 @@ $govuk-modal-wide-breakpoint: $govuk-page-width + $govuk-modal-margin * 2 + $gov
   cursor: pointer;
 
   @include govuk-focusable-fill;
-  @include govuk-font($size: 36, $weight: bold);
+  @include govuk-font($size: 36, $weight: bold, $line-height: 1.3);
   @include govuk-media-query($until: tablet) {
     font-size: 36px;
-    line-height: 1.15;
+    line-height: 1.3;
   }
 
   &:focus,
