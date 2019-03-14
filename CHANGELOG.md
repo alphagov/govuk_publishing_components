@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 16.5.0
 
 * Change consultations header link to link to new finders (PR #783)
 
