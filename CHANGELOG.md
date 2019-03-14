@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## UNRELEASED
+
+* Allow custom name attribute on search input (PR #787)
+
 ## 16.5.0
 
 * Change consultations header link to link to new finders (PR #783)

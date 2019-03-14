@@ -2,7 +2,7 @@ name: "Search"
 description: "Search box"
 body: |
   A search box with label and attached submit button. The component must be used within an HTML form.
-  The search input has a name="q" attribute and a customisable ID.
+  The search input has a name="q" attribute and a customisable ID and NAME.
 
   It can be used on white or on govuk-blue using the on_govuk_blue option.
 
@@ -38,3 +38,7 @@ examples:
   large_version:
     data:
       size: "large"
+  change_field_name:
+    description: To be used if you need to change the default name 'q'
+    data:
+      name: "my_own_fieldname"

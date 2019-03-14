@@ -42,4 +42,14 @@ describe "Search", type: :view do
     render_component(size: "large")
     assert_select ".gem-c-search.gem-c-search--large"
   end
+
+  it "renders a search box with a default name" do
+    render_component({})
+    assert_select 'input[name="q"]'
+  end
+
+  it "renders a search box with a custom name" do
+    render_component(name: "my_custom_field")
+    assert_select 'input[name="my_custom_field"]'
+  end
 end
