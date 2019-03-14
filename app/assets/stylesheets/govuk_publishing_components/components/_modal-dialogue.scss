@@ -31,6 +31,9 @@ $govuk-modal-wide-breakpoint: $govuk-page-width + $govuk-modal-margin * 2 + $gov
   overflow-y: auto;
   border: 0;
 
+  @include govuk-font($size: 19);
+  @include govuk-text-colour;
+  @include govuk-focusable;
   @include govuk-media-query($from: tablet) {
     position: relative;
     top: inherit;
@@ -43,10 +46,6 @@ $govuk-modal-wide-breakpoint: $govuk-page-width + $govuk-modal-margin * 2 + $gov
     margin: $govuk-modal-margin auto;
     border: $govuk-border-width-form-element solid $govuk-input-border-colour;
   }
-
-  @include govuk-font($size: 19);
-  @include govuk-text-colour;
-  @include govuk-focusable;
 }
 
 .gem-c-modal-dialogue__box--wide {
