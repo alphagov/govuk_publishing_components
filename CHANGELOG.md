@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Change consultations header link to link to new finders (PR #783)
+
 ## 16.4.0
 
 * Add `autocomplete` attribute option to input component and use it on feedback component's survey signup form (PR #733)
