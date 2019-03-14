@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## UNRELEASED
+## 16.6.0
 
 * Allow custom name attribute on search input (PR #787)
 * Suppress search components submit button (PR #786)
