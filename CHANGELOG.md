@@ -10,6 +10,7 @@
 ## UNRELEASED
 
 * Allow custom name attribute on search input (PR #787)
+* Suppress search components submit button (PR #786)
 
 ## 16.5.0
 
