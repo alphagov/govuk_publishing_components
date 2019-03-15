@@ -1,4 +1,4 @@
-//= require axe-core
+//= require axe-core/axe.js
 
 (function (window, document, axe) {
   window.GOVUK = window.GOVUK || {}
@@ -159,9 +159,9 @@
         findHeader.textContent = 'Element can be found using the selector:'
 
         var findSelectorNode = document.createElement('span')
-        findSelectorNode.className = 'selector' 
+        findSelectorNode.className = 'selector'
         findSelectorNode.textContent = selectorObj.selector
-        
+
         var findNode = document.createElement('p')
         findNode.appendChild(findHeader)
         findNode.appendChild(findSelectorNode)
