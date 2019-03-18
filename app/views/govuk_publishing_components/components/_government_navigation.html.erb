@@ -30,7 +30,7 @@
       </a>
     </li>
     <li>
-      <a class="<%= 'active' if active == 'consultations' %>" href="/search/policy-papers-and-consultations?content_store_document_type[]=open_consultations&content_store_document_type[]=closed_consultations">
+      <a class="<%= 'active' if active == 'consultations' %>" href="<%= CGI::escapeHTML('/search/policy-papers-and-consultations?content_store_document_type[]=open_consultations&content_store_document_type[]=closed_consultations') %>">
         <%= t("govuk_component.government_navigation.consultations", default: "Consultations") %>
       </a>
     </li>
