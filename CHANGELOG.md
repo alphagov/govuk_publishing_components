@@ -11,6 +11,7 @@
 
 * Allow custom name attribute on search input (PR #787)
 * Suppress search components submit button (PR #786)
+* Fixes issue in test for consultations header link (PR #788)
 
 ## 16.5.0
 
