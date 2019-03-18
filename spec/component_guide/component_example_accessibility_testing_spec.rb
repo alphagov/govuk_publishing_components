@@ -13,12 +13,12 @@ describe 'Component example with automated testing', js: true do
 
   it 'throws JavaScript errors if a component has an accessibility issue' do
     expect { visit '/component-guide/test-component-with-a11y-issue' }
-      .to raise_error(Capybara::Poltergeist::JavascriptError)
+      .to raise_error(Selenium::WebDriver::Error::JavascriptError)
   end
 
   it 'shows accessibility violations on the page' do
     expect { visit '/component-guide/test-component-with-a11y-issue' }
-      .to raise_error(Capybara::Poltergeist::JavascriptError)
+      .to raise_error(Selenium::WebDriver::Error::JavascriptError)
 
     expect(page).to have_selector('.js-test-a11y-failed.js-test-a11y-finished')
 
