@@ -15,12 +15,14 @@
   tabindex ||= nil
   readonly ||= nil
   maxlength ||= nil
+  width ||= nil
   has_error = error_message || error_items&.any?
   hint_id = "hint-#{SecureRandom.hex(4)}"
   error_id = "error-#{SecureRandom.hex(4)}"
 
   css_classes = %w(gem-c-input govuk-input)
   css_classes << "govuk-input--error" if has_error
+  css_classes << "govuk-input--width-#{width}" if [2, 3, 4, 5, 10, 20, 30].include?(width)
   form_group_css_classes = %w(govuk-form-group)
   form_group_css_classes << "govuk-form-group--error" if has_error
 
