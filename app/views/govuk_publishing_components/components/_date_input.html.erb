@@ -4,13 +4,26 @@
   legend_text ||= nil
   hint ||= nil
   error_message ||= nil
+  describedby ||= nil
 
   has_error = error_message
 
   css_classes = %w(gem-c-date-input govuk-date-input)
-  css_classes << "govuk-input--error" if has_error
   form_group_css_classes = %w(govuk-form-group)
   form_group_css_classes << "govuk-form-group--error" if has_error
+
+  hint_id = "hint-#{SecureRandom.hex(4)}"
+  error_id = "error-#{SecureRandom.hex(4)}"
+
+  aria_described_by ||= nil
+  if hint || has_error || describedby
+    aria_described_by = []
+    aria_described_by << hint_id if hint
+    aria_described_by << error_id if has_error
+    aria_described_by << describedby if describedby
+    aria_described_by = aria_described_by.join(" ")
+  end
+
 %>
 
 <% date_input_items = [
@@ -20,12 +33,10 @@
 ] %>
 
 <%= content_tag :div, class: form_group_css_classes do %>
-
   <% fieldset_content = capture do %>
-
     <% if hint %>
       <%= render "govuk_publishing_components/components/hint", {
-        id: id + '-hint',
+        id: hint_id,
         text: hint,
         margin_bottom: 2
       } %>
@@ -33,32 +44,40 @@
 
     <% if error_message %>
       <%= render "govuk_publishing_components/components/error_message", {
-        id:  id + '-error',
+        id:  error_id,
         text: error_message
       } %>
     <% end %>
 
-    <% date_input_items.each do |item| %>
-      <%= tag.div class: "govuk-date-input__item" do %>
-        <%= render "govuk_publishing_components/components/input", {
-          label: {
-            text: item[:name].capitalize
-          },
-          error_style: has_error,
-          name: item[:name],
-          value: item[:value],
-          width: item[:width],
-          id: item[:id],
-          type: "number",
-          data: item[:data],
-          autocomplete: item[:autocomplete]
-        } %>
+    <%= tag.div class: css_classes, id: id do %>
+      <% date_input_items.each do |item| %>
+        <%= tag.div class: "govuk-date-input__item" do %>
+          <%= render "govuk_publishing_components/components/input", {
+            label: {
+              text: item[:name].capitalize
+            },
+            error_style: has_error,
+            name: item[:name],
+            value: item[:value],
+            width: item[:width],
+            id: item[:id],
+            type: "number",
+            data: item[:data],
+            autocomplete: item[:autocomplete]
+          } %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
 
-  <%= render "govuk_publishing_components/components/fieldset", {
-    legend_text: legend_text,
-    text: fieldset_content
-  } %>
+  <% if legend_text %>
+    <%= render "govuk_publishing_components/components/fieldset", {
+      describedby: aria_described_by,
+      legend_text: legend_text,
+      text: fieldset_content,
+      role: "group"
+    } %>
+  <% else %>
+    <%= fieldset_content %>
+  <% end %>
 <% end %>

@@ -1,7 +1,9 @@
 <% text = text || yield %>
-<fieldset class="gem-c-fieldset govuk-fieldset">
-  <legend class="govuk-fieldset__legend">
+<% describedby ||= nil %>
+<% role ||= nil %>
+<%= tag.fieldset class: "gem-c-fieldset govuk-fieldset", aria: { describedby: describedby }, role: role do %>
+  <%= tag.legend class: "govuk-fieldset__legend" do %>
     <%= legend_text %>
-  </legend>
+  <% end %>
   <%= text %>
-</fieldset>
+<% end %>
