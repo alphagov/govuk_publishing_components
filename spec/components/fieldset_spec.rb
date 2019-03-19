@@ -17,7 +17,7 @@ describe "Fieldset", type: :view do
       text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad neque, maxime est ea laudantium totam fuga!'
     )
 
-    assert_select ".gem-c-fieldset__legend", text: 'Do you have a passport?'
+    assert_select ".govuk-fieldset__legend", text: 'Do you have a passport?'
     assert_select ".gem-c-fieldset", text: /Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad neque, maxime est ea laudantium totam fuga!/
   end
 end
