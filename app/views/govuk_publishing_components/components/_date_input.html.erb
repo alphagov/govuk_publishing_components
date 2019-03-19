@@ -1,0 +1,64 @@
+<%
+  id ||= "input-#{SecureRandom.hex(4)}"
+
+  legend_text ||= nil
+  hint ||= nil
+  error_message ||= nil
+
+  has_error = error_message
+
+  css_classes = %w(gem-c-date-input govuk-date-input)
+  css_classes << "govuk-input--error" if has_error
+  form_group_css_classes = %w(govuk-form-group)
+  form_group_css_classes << "govuk-form-group--error" if has_error
+%>
+
+<% date_input_items = [
+  { :name => "day", :width => 2 },
+  { :name => "month", :width => 2 },
+  { :name => "year", :width => 4 }
+] %>
+
+<%= content_tag :div, class: form_group_css_classes do %>
+
+  <% fieldset_content = capture do %>
+
+    <% if hint %>
+      <%= render "govuk_publishing_components/components/hint", {
+        id: id + '-hint',
+        text: hint,
+        margin_bottom: 2
+      } %>
+    <% end %>
+
+    <% if error_message %>
+      <%= render "govuk_publishing_components/components/error_message", {
+        id:  id + '-error',
+        text: error_message
+      } %>
+    <% end %>
+
+    <% date_input_items.each do |item| %>
+      <%= tag.div class: "govuk-date-input__item" do %>
+        <%= render "govuk_publishing_components/components/input", {
+          label: {
+            text: item[:name].capitalize
+          },
+          has_error: has_error,
+          name: item[:name],
+          value: item[:value],
+          width: item[:width],
+          id: item[:id],
+          type: "number",
+          data: item[:data],
+          autocomplete: item[:autocomplete]
+        } %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <%= render "govuk_publishing_components/components/fieldset", {
+    legend_text: legend_text,
+    text: fieldset_content
+  } %>
+<% end %>

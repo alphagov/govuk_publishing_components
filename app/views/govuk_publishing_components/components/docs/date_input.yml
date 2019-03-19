@@ -1,0 +1,34 @@
+name: Form date input
+description: Use the date input component to help users enter a memorable date or one they can easily look up.
+accessibility_criteria: |
+  Inputs in the component must:
+
+  * accept focus
+  * be focusable with a keyboard
+  * be usable with a keyboard
+  * be usable with touch
+  * indicate when they have focus
+  * be recognisable as form input elements
+  * have correctly associated labels
+  * be of the appropriate type for their use, e.g. password inputs should be of type 'password'
+
+  Labels use the [label component](/component-guide/label).
+
+  Avoid using autofocus and tabindex unless you have user research to support this behaviour.
+govuk_frontend_components:
+  - date-input
+examples:
+  default:
+    data: {}
+  with_legend:
+    data:
+      legend_text: "What is your name?"
+  with_hint:
+    data:
+      legend_text: "What is your name?"
+      hint: "For example, 31 3 1980"
+  with_error:
+    data:
+      legend_text: "What is your name?"
+      hint: "For example, 31 3 1980"
+      error_message: "Error message goes here"
