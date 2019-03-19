@@ -1,5 +1,11 @@
 <%
   id ||= "input-#{SecureRandom.hex(4)}"
+  name ||= nil
+  items ||= [
+    { :name => "day", :width => 2 },
+    { :name => "month", :width => 2 },
+    { :name => "year", :width => 4 }
+  ]
 
   legend_text ||= nil
   hint ||= nil
@@ -26,12 +32,6 @@
 
 %>
 
-<% date_input_items = [
-  { :name => "day", :width => 2 },
-  { :name => "month", :width => 2 },
-  { :name => "year", :width => 4 }
-] %>
-
 <%= content_tag :div, class: form_group_css_classes do %>
   <% fieldset_content = capture do %>
     <% if hint %>
@@ -50,14 +50,14 @@
     <% end %>
 
     <%= tag.div class: css_classes, id: id do %>
-      <% date_input_items.each do |item| %>
+      <% items.each do |item| %>
         <%= tag.div class: "govuk-date-input__item" do %>
           <%= render "govuk_publishing_components/components/input", {
             label: {
-              text: item[:name].capitalize
+              text: item[:label] || item[:name].capitalize
             },
             error_style: has_error,
-            name: item[:name],
+            name: name ? (name + "[" + item[:name] + "]") : item[:name],
             value: item[:value],
             width: item[:width],
             id: item[:id],

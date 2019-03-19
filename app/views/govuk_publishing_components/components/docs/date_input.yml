@@ -20,15 +20,35 @@ govuk_frontend_components:
 examples:
   default:
     data: {}
+  with_name:
+    data:
+      name: "dob"
   with_legend:
     data:
-      legend_text: "What is your name?"
+      legend_text: "What is your date of birth?"
   with_hint:
     data:
-      legend_text: "What is your name?"
+      legend_text: "What is your date of birth?"
       hint: "For example, 31 3 1980"
   with_error:
     data:
-      legend_text: "What is your name?"
+      legend_text: "What is your date of birth?"
       hint: "For example, 31 3 1980"
       error_message: "Error message goes here"
+  with_custom_items:
+    data:
+      legend_text: "Beth yw eich dyddiad geni?"
+      hint: "Er enghraifft, 31 3 1980"
+      items:
+        - label: Dydd
+          name: dob-dydd
+          width: 2
+          value: 31
+        - label: Mis
+          name: dob-mis
+          width: 2
+          value: 3
+        - label: Blwyddyn
+          name: dob-blwyddyn
+          width: 4
+          value: 1980
