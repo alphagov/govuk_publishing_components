@@ -110,3 +110,10 @@ examples:
       name: "name"
       type: "email"
       autocomplete: "email"
+  with_custom_width:
+    data:
+      label:
+        text: "National insurance number"
+      hint: It’s on your National insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
+      name: "name"
+      width: 10

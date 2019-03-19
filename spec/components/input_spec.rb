@@ -123,6 +123,23 @@ describe "Input", type: :view do
     assert_select ".govuk-input[maxlength='10']"
   end
 
+  it "renders input with custom width" do
+    render_component(
+      name: "email-address",
+      width: 10
+    )
+
+    assert_select ".govuk-input.govuk-input--width-10"
+  end
+
+  it "renders default input width if the custom width is not supported" do
+    render_component(
+      name: "email-address",
+      width: 11
+    )
+    expect(page).to have_no_css('.govuk-input--width-10')
+  end
+
   context "when a hint is provided" do
     before do
       render_component(
