@@ -1,3 +1,5 @@
+//= require axe-core/axe.js
+
 (function (window, document, axe) {
   window.GOVUK = window.GOVUK || {}
 
@@ -58,7 +60,7 @@
         url + '\n\n' +
         violations.map(function (violation) {
           var help = 'Problem: ' + violation.help + ' (' + violation.id + ')'
-          var helpUrl = 'Try fixing it with this help: ' + _formatHelpUrl(violation.helpUrl)
+          var helpUrl = 'Try fixing it with this help: ' + violation.helpUrl
           var htmlAndTarget = violation.nodes.map(_renderNode).join('\n\n')
 
           return [
@@ -94,17 +96,9 @@
         'id': result.id,
         'summary': result.help,
         'selectors': cssSelector,
-        'url': _formatHelpUrl(result.helpUrl)
+        'url': result.helpUrl
       }
     })
-  }
-
-  var _formatHelpUrl = function (helpUrl) {
-    if (axe.version.indexOf('alpha') === -1) {
-      console.warn('Deprecation warning: helpUrl formatting is no longer needed so can be deleted')
-      return helpUrl
-    }
-    return helpUrl.replace('3.0.0-alpha', '2.3')
   }
 
   var _renderNode = function (node) {
@@ -165,9 +159,9 @@
         findHeader.textContent = 'Element can be found using the selector:'
 
         var findSelectorNode = document.createElement('span')
-        findSelectorNode.className = 'selector' 
+        findSelectorNode.className = 'selector'
         findSelectorNode.textContent = selectorObj.selector
-        
+
         var findNode = document.createElement('p')
         findNode.appendChild(findHeader)
         findNode.appendChild(findSelectorNode)

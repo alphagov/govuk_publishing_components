@@ -1,4 +1,4 @@
-/* global describe, afterEach, it, expect */
+/* global describe, afterEach, it, expect, spyOn */
 
 var TEST_SELECTOR = '.js-test-a11y'
 
@@ -47,7 +47,7 @@ function renderErrorMessage (option) {
 describe('AccessibilityTest', function () {
   afterEach(function () {
     removeFromDom(TEST_SELECTOR)
-    document.body.className = '';
+    document.body.className = ''
   })
 
   it('should do nothing if no callback is specified', function () {
@@ -132,8 +132,8 @@ describe('AccessibilityTest', function () {
         id: 'color-contrast',
         problem: 'Elements must have sufficient color contrast',
         html: '<a href="#" style="">Low contrast</a>',
-        selector: TEST_SELECTOR + ' > a',
-        helpUrl: 'https://dequeuniversity.com/rules/axe/2.3/color-contrast?application=axeAPI'
+        selector: 'a[href="\\#"]',
+        helpUrl: 'https://dequeuniversity.com/rules/axe/3.2/color-contrast?application=axeAPI'
       })
 
       expect(violations).toBe(errorMessage)
@@ -155,8 +155,8 @@ describe('AccessibilityTest', function () {
         id: 'image-alt',
         problem: 'Images must have alternate text',
         html: '<img src="">',
-        selector: TEST_SELECTOR + ' > img',
-        helpUrl: 'https://dequeuniversity.com/rules/axe/2.3/image-alt?application=axeAPI'
+        selector: 'img',
+        helpUrl: 'https://dequeuniversity.com/rules/axe/3.2/image-alt?application=axeAPI'
       })
 
       expect(violations).toBe(errorMessage)
@@ -170,8 +170,8 @@ describe('AccessibilityTest', function () {
 
     AccessibilityTest(TEST_SELECTOR, function (err, violations, pageResults) {
       expect(pageResults.incompleteWarnings[0].summary).toBe("Elements must have sufficient color contrast")
-      expect(pageResults.incompleteWarnings[0].url).toBe("https://dequeuniversity.com/rules/axe/2.3/color-contrast?application=axeAPI")
-      expect(pageResults.incompleteWarnings[0].selectors[0].selector[0]).toBe('.js-test-a11y > a')
+      expect(pageResults.incompleteWarnings[0].url).toBe("https://dequeuniversity.com/rules/axe/3.2/color-contrast?application=axeAPI")
+      expect(pageResults.incompleteWarnings[0].selectors[0].selector[0]).toBe('a[href="\\#"]')
       expect(pageResults.incompleteWarnings[0].selectors[0].reasons[0]).toBe('Element\'s background color could not be determined due to a background image')
       done()
     })
@@ -182,9 +182,9 @@ describe('AccessibilityTest', function () {
 
     AccessibilityTest(TEST_SELECTOR, function (err, violations, pageResults) {
       expect(pageResults.violations[0].summary).toBe("Elements must have sufficient color contrast")
-      expect(pageResults.violations[0].url).toBe("https://dequeuniversity.com/rules/axe/2.3/color-contrast?application=axeAPI")
-      expect(pageResults.violations[0].selectors[0].selector[0]).toBe('.js-test-a11y > a')
-      expect(pageResults.violations[0].selectors[0].reasons[0]).toBe('Element has insufficient color contrast of 1.35 (foreground color: #dddddd, background color: #ffffff, font size: 12.0pt, font weight: normal)')
+      expect(pageResults.violations[0].url).toBe("https://dequeuniversity.com/rules/axe/3.2/color-contrast?application=axeAPI")
+      expect(pageResults.violations[0].selectors[0].selector[0]).toBe('a[href="\\#"]')
+      expect(pageResults.violations[0].selectors[0].reasons[0]).toBe('Element has insufficient color contrast of 1.35 (foreground color: #dddddd, background color: #ffffff, font size: 12.0pt, font weight: normal). Expected contrast ratio of 4.5:1')
       done()
     })
   })
@@ -202,8 +202,8 @@ describe('AccessibilityTest', function () {
           id: 'color-contrast',
           problem: 'Elements must have sufficient color contrast',
           html: '<a href="#" style="">Low contrast</a>',
-          selector: TEST_SELECTOR + ' > a',
-          helpUrl: 'https://dequeuniversity.com/rules/axe/2.3/color-contrast?application=axeAPI'
+          selector: 'a[href="\\#"]',
+          helpUrl: 'https://dequeuniversity.com/rules/axe/3.2/color-contrast?application=axeAPI'
         }) +
         '\n\n- - -\n\n' +
         renderErrorMessage({
@@ -211,8 +211,8 @@ describe('AccessibilityTest', function () {
           skipHeader: true,
           problem: 'Images must have alternate text',
           html: '<img src="">',
-          selector: TEST_SELECTOR + ' > img',
-          helpUrl: 'https://dequeuniversity.com/rules/axe/2.3/image-alt?application=axeAPI'
+          selector: 'img',
+          helpUrl: 'https://dequeuniversity.com/rules/axe/3.2/image-alt?application=axeAPI'
         })
       )
 
