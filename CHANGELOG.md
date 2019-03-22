@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 16.7.0
 
 * Update fieldset component to use GOV.UK Frontend styles (PR #791)
 * Add width option to input component (PR #790)
