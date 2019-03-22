@@ -7,6 +7,8 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+* Add disabled attribute to checkbox items
+
 ## 16.7.0
 
 * Update fieldset component to use GOV.UK Frontend styles (PR #791)
