@@ -30,6 +30,11 @@
   Use `data-toggled-text` on the trigger element to set the
   text shown when the element is toggled. Defaults to not
   changing.
+
+  Use `data-track-category` and `data-track-action` together
+  to enable analytics on the element. The label will be
+  determined based on the text present within the element
+  at the time it was clicked.
 */
 
 window.GOVUK.Modules = window.GOVUK.Modules || {};
@@ -41,6 +46,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.start = function ($el) {
       var toggleSelector = '[data-controls][data-expanded]';
       var toggleClass = $el.attr('data-toggle-class') || 'js-hidden';
+      var trackable = '[data-track-category][data-track-action]';
 
       $el.on('click', toggleSelector, toggle);
       $el.find(toggleSelector).each(addAriaAttrs);
@@ -79,6 +85,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           $toggle.text(toggledText);
         }
 
+        if (GOVUK.analytics && GOVUK.analytics.trackEvent && $toggle.is(trackable)) {
+          track($toggle);
+        }
+
         event.preventDefault();
       }
 
@@ -87,6 +97,12 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           selector = '#' + ids.join(', #');
 
         return $el.find(selector);
+      }
+
+      function track ($toggle) {
+        var options = { label: $toggle.data('toggled-text') || $toggle.text() };
+
+        GOVUK.analytics.trackEvent($toggle.data('track-category'), $toggle.data('track-action'), options);
       }
     };
   };
