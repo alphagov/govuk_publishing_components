@@ -63,11 +63,12 @@ module GovukPublishingComponents
         controls = checkbox[:conditional].present? ? "#{checkbox_id}-conditional-#{index || rand(1..100)}" : checkbox[:controls]
         checkbox_name = checkbox[:name].present? ? checkbox[:name] : @name
         checked = true if checkbox[:checked].present?
+        disabled = true if checkbox[:disabled].present?
         data = checkbox[:data_attributes] || {}
         data[:controls] = controls
 
         capture do
-          concat check_box_tag checkbox_name, checkbox[:value], checked, class: "govuk-checkboxes__input", id: checkbox_id, data: data
+          concat check_box_tag checkbox_name, checkbox[:value], checked, disabled: disabled, class: "govuk-checkboxes__input", id: checkbox_id, data: data
           concat content_tag(:label, checkbox[:label], for: checkbox_id, class: "govuk-label govuk-checkboxes__label")
           concat content_tag(:span, checkbox[:hint], id: "#{checkbox_id}-item-hint", class: "govuk-hint govuk-checkboxes__hint") if checkbox[:hint]
         end

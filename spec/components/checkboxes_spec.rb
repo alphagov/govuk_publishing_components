@@ -324,4 +324,18 @@ describe "Checkboxes", type: :view do
     assert_select ".govuk-checkboxes.govuk-checkboxes--nested"
     assert_select ".govuk-checkboxes.govuk-checkboxes--nested input[value=light_red]"
   end
+
+  it "renders checkboxes with disabled attribute applied" do
+    render_component(
+      name: "planet",
+      heading: "What is your favourite planet?",
+      hint_text: "Choose carefully",
+      items: [
+        { label: "Earth", value: "Earth" },
+        { label: "Pluto", value: "pluto", disabled: true },
+      ]
+    )
+    assert_select ".govuk-checkboxes__input[disabled]", value: 'pluto'
+  end
+
 end

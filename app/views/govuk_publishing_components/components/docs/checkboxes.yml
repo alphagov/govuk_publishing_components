@@ -219,6 +219,19 @@ examples:
           value: "irish"
         - label: "Other"
           value: "other"
+  checkbox_items_with_disabled_items:
+    data:
+      name: "planet"
+      heading: "What is favourite planet?"
+      hint_text: "You can't choose a dwarf planet"
+      items:
+        - label: "Earth"
+          value: "earth"
+        - label: "Mars"
+          value: "mars"
+        - label: "Pluto"
+          value: "pluto"
+          disabled: true
   checkbox_items_with_nested_checkboxes:
     data:
       name: "favourite_colour"
