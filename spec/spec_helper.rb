@@ -55,12 +55,7 @@ RSpec.configure do |config|
   # triggering implicit auto-inclusion in groups with matching metadata.
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
-  config.after(:each, type: :system, js: true) do
-    page.driver.enable_logging
-    errors = page.driver.browser.manage.logs.get(:browser)
-    if errors.present?
-      message = errors.map(&:message).join("\n\n")
-      raise DriverJSError, message
-    end
+  config.before(:each, js: true)  do
+    Capybara.current_driver = :headless_chrome
   end
 end
