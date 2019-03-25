@@ -14,7 +14,8 @@ describe 'Component example with automated testing', js: true do
   it 'throws JavaScript errors if a component has an accessibility issue' do
     visit '/component-guide/test-component-with-a11y-issue'
 
-    raised_js_errors = page.driver.browser.manage.logs.get(:browser)
+    raised_js_errors = page.driver.browser.manage.logs
+                           .get(:browser)
                            .select { |m| m.level == 'SEVERE' }
 
     expect(raised_js_errors.length).to eq(1)
