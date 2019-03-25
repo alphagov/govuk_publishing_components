@@ -12,18 +12,22 @@ describe 'Component example with automated testing', js: true do
   end
 
   it 'throws JavaScript errors if a component has an accessibility issue' do
-    expect { visit '/component-guide/test-component-with-a11y-issue' }
-      .to raise_error(Selenium::WebDriver::Error::JavascriptError)
+    visit '/component-guide/test-component-with-a11y-issue'
+
+    raised_js_errors = page.driver.browser.manage.logs.get(:browser)
+                           .select { |m| m.level == 'SEVERE' }
+
+    expect(raised_js_errors.length).to eq(1)
   end
 
   it 'shows accessibility violations on the page' do
-    expect { visit '/component-guide/test-component-with-a11y-issue' }
-      .to raise_error(Selenium::WebDriver::Error::JavascriptError)
-
+    visit '/component-guide/test-component-with-a11y-issue'
     expect(page).to have_selector('.js-test-a11y-failed.js-test-a11y-finished')
 
     selector_with_error = page.first('.selector').text
-    expect(page).to have_selector(selector_with_error)
+    # the img element has no src, Capybara and Chrome cannot find it as it does not have
+    # a visual presence.
+    expect(page).to have_selector(selector_with_error, visible: false)
 
     within '.component-guide-preview--violation' do
       expect(page).to have_selector('h3', text: 'Images must have alternate text')
