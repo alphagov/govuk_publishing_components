@@ -118,9 +118,10 @@ GEM
     govuk_schemas (3.2.0)
       json-schema (~> 2.8.0)
     hashdiff (0.3.9)
-    govuk_test (0.3.1)
+    govuk_test (0.4.0)
       capybara
       chromedriver-helper
+      ptools
       puma
       selenium-webdriver
     hashdiff (0.3.8)
@@ -180,6 +181,8 @@ GEM
     pry-byebug (3.7.0)
       byebug (~> 11.0)
       pry (~> 0.10)
+    psych (3.1.0)
+    ptools (1.3.5)
     public_suffix (3.0.3)
     puma (3.12.0)
     rack (2.0.6)
@@ -318,16 +321,13 @@ DEPENDENCIES
   govuk-lint (~> 3.11)
   govuk_publishing_components!
   govuk_schemas (~> 3.2)
-  govuk_test (~> 0.3.1)
+  govuk_test (~> 0.4.0)
   jasmine (~> 2.4.0)
   pry-byebug
   rspec-rails (~> 3.6)
   uglifier (>= 1.3.0)
   webmock (~> 3.5.0)
   yard
-
-RUBY VERSION
-   ruby 2.6.1p33
 
 BUNDLED WITH
    1.17.3
