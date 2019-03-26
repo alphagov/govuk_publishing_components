@@ -25,26 +25,29 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
       $(scope).on('change', 'input[type=checkbox]', function(e) {
         if (GOVUK.analytics && GOVUK.analytics.trackEvent) {
-          var $checkbox = $(e.target);
-          var category = $checkbox.data("track-category");
-          if (typeof category !== "undefined") {
-            var isChecked = $checkbox.is(":checked");
-            var uncheckTrackCategory = $checkbox.data("uncheck-track-category");
-            if (!isChecked && typeof uncheckTrackCategory !== "undefined") {
-              category = uncheckTrackCategory;
+          // where checkboxes are manipulated externally in finders, suppressAnalytics
+          // is passed to prevent duplicate GA events
+          if(typeof e.suppressAnalytics === 'undefined' || e.suppressAnalytics !== true ) {
+            var $checkbox = $(e.target);
+            var category = $checkbox.data("track-category");
+            if (typeof category !== "undefined") {
+              var isChecked = $checkbox.is(":checked");
+              var uncheckTrackCategory = $checkbox.data("uncheck-track-category");
+              if (!isChecked && typeof uncheckTrackCategory !== "undefined") {
+                category = uncheckTrackCategory;
+              }
+              var action = $checkbox.data("track-action");
+              var options = $checkbox.data("track-options");
+              if (typeof options !== 'object' || options === null) {
+                options = {};
+              }
+              options['value'] = $checkbox.data("track-value");
+              options['label'] = $checkbox.data("track-label");
+              GOVUK.analytics.trackEvent(category, action, options);
             }
-            var action = $checkbox.data("track-action");
-            var options = $checkbox.data("track-options");
-            if (typeof options !== 'object' || options === null) {
-              options = {};
-            }
-            options['value'] = $checkbox.data("track-value");
-            options['label'] = $checkbox.data("track-label");
-            GOVUK.analytics.trackEvent(category, action, options);
           }
         }
       });
-
     };
 
     this.toggleNestedCheckboxes = function(scope, checkbox) {

@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Control when checkboxes change event sends Google Analytics tracking info (PR #801)
+
 ## 16.8.0
 
 * Add date input component based on GOV.UK Frontend (PR #792)
