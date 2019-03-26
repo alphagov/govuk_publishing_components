@@ -133,4 +133,26 @@ describe("Checkboxes component", function () {
     expect($checkbox.is(":checked")).toBe(false);
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith("unselectedFavouriteColour", "favourite-color", expectedBlueOptions);
   });
+
+  describe('controlling Google analytics track event when a checkbox is changed', function () {
+    it('fires a Google analytics event if suppressAnalytics not passed to the change event', function () {
+      $checkbox = $checkboxesWrapper.find(":input[value='blue']");
+      $checkbox.trigger("change");
+      expect(GOVUK.analytics.trackEvent).toHaveBeenCalled();
+    })
+
+    it('fires a Google analytics event if suppressAnalytics is set to false and passed to the change event', function () {
+      $checkbox = $checkboxesWrapper.find(":input[value='blue']");
+      fakeOnChangeEvent = { type: "change", suppressAnalytics: false};
+      $checkbox.trigger(fakeOnChangeEvent);
+      expect(GOVUK.analytics.trackEvent).toHaveBeenCalled();
+    })
+
+    it('does not fire a Google analytics event if suppressAnalytics is passed to the change event', function () {
+      $checkbox = $checkboxesWrapper.find(":input[value='blue']");
+      fakeOnChangeEvent = { type: "change", suppressAnalytics: true};
+      $checkbox.trigger(fakeOnChangeEvent);
+      expect(GOVUK.analytics.trackEvent).not.toHaveBeenCalled();
+    })
+  });
 });
