@@ -1,0 +1,82 @@
+<%
+  id ||= "input-#{SecureRandom.hex(4)}"
+  name ||= nil
+  items ||= [
+    { :name => "day", :width => 2 },
+    { :name => "month", :width => 2 },
+    { :name => "year", :width => 4 }
+  ]
+
+  legend_text ||= nil
+  hint ||= nil
+  error_message ||= nil
+  describedby ||= nil
+
+  css_classes = %w(gem-c-date-input govuk-date-input)
+  form_group_css_classes = %w(govuk-form-group)
+  form_group_css_classes << "govuk-form-group--error" if error_message
+
+  hint_id = "hint-#{SecureRandom.hex(4)}"
+  error_id = "error-#{SecureRandom.hex(4)}"
+
+  aria_described_by ||= nil
+  if hint || error_message || describedby
+    aria_described_by = []
+    aria_described_by << hint_id if hint
+    aria_described_by << error_id if error_message
+    aria_described_by << describedby if describedby
+    aria_described_by = aria_described_by.join(" ")
+  end
+
+%>
+
+<%= content_tag :div, class: form_group_css_classes do %>
+  <% fieldset_content = capture do %>
+    <% if hint %>
+      <%= render "govuk_publishing_components/components/hint", {
+        id: hint_id,
+        text: hint,
+        margin_bottom: 2
+      } %>
+    <% end %>
+
+    <% if error_message %>
+      <%= render "govuk_publishing_components/components/error_message", {
+        id:  error_id,
+        text: error_message
+      } %>
+    <% end %>
+
+    <%= tag.div class: css_classes, id: id do %>
+      <% items.each do |item| %>
+        <%= tag.div class: "govuk-date-input__item" do %>
+          <%= render "govuk_publishing_components/components/input", {
+            label: {
+              text: item[:label] || item[:name].capitalize
+            },
+            grouped: true,
+            has_error: error_message,
+            name: name ? (name + "[" + item[:name] + "]") : item[:name],
+            value: item[:value],
+            width: item[:width],
+            id: item[:id],
+            type: "number",
+            data: item[:data],
+            autocomplete: item[:autocomplete]
+          } %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+
+  <% if legend_text %>
+    <%= render "govuk_publishing_components/components/fieldset", {
+      describedby: aria_described_by,
+      legend_text: legend_text,
+      text: fieldset_content,
+      role: "group"
+    } %>
+  <% else %>
+    <%= fieldset_content %>
+  <% end %>
+<% end %>

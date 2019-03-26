@@ -9,6 +9,7 @@
 
 ## 16.7.0
 
+* Add date input component based on GOV.UK Frontend (PR #792)
 * Update fieldset component to use GOV.UK Frontend styles (PR #791)
 * Add width option to input component (PR #790)
 * Add tracking to toggle.js (PR #796)

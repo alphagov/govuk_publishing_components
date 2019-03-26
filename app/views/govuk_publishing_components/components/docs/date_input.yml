@@ -1,0 +1,57 @@
+name: Form date input
+description: Use the date input component to help users enter a memorable date or one they can easily look up.
+accessibility_criteria: |
+  Inputs in the component must:
+
+  * accept focus
+  * be focusable with a keyboard
+  * be usable with a keyboard
+  * be usable with touch
+  * indicate when they have focus
+  * be recognisable as form input elements
+  * have correctly associated labels
+  * be of the appropriate type for their use, in this case 'number'
+
+  Labels use the [label component](/component-guide/label).
+
+  Avoid using autofocus and tabindex unless you have user research to support this behaviour.
+govuk_frontend_components:
+  - date-input
+examples:
+  default:
+    data: {}
+  with_name:
+    description: |
+      Settting a name at the component level helps generating the name for each individual input within the
+      component as follows: `custom-name[day]`, `custom-name[month]`, `custom-name[year]`
+    data:
+      name: "dob"
+  with_legend:
+    data:
+      legend_text: "What is your date of birth?"
+  with_hint:
+    data:
+      legend_text: "What is your date of birth?"
+      hint: "For example, 31 3 1980"
+  with_error:
+    data:
+      legend_text: "What is your date of birth?"
+      hint: "For example, 31 3 1980"
+      error_message: "Error message goes here"
+  with_custom_items:
+    data:
+      legend_text: "Beth yw eich dyddiad geni?"
+      hint: "Er enghraifft, 31 3 1980"
+      items:
+        - label: Dydd
+          name: dob-dydd
+          width: 2
+          value: 31
+        - label: Mis
+          name: dob-mis
+          width: 2
+          value: 3
+        - label: Blwyddyn
+          name: dob-blwyddyn
+          width: 4
+          value: 1980
