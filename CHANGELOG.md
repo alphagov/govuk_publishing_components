@@ -7,11 +7,13 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 16.8.0
+
 * Add date input component based on GOV.UK Frontend (PR #792)
 * Add cookie banner component and migrate the remaining [govuk-template.js](https://github.com/alphagov/govuk_template/blob/master/source/assets/javascripts/govuk-template.js) scripts from [govuk_template](https://github.com/alphagov/govuk_template/) (PR #795)
 
 ## 16.7.0
+
 * Update fieldset component to use GOV.UK Frontend styles (PR #791)
 * Add width option to input component (PR #790)
 * Add tracking to toggle.js (PR #796)
