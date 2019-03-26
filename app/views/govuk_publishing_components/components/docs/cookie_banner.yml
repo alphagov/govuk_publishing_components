@@ -1,0 +1,19 @@
+name: Cookie banner
+description: Help users manage their personal data by telling them when you store cookies on their device.
+body: |
+  Setting `data-hide-cookie-banner="true"` on any link inside the banner will overwrite the default action and when clicked will dismiss the cookie banner for a period of 365 days (approx. 1 year).
+accessibility_criteria: |
+  Text in the cookie banner must be clear and unambiguous and should provide a way to dismiss the message.
+
+  Links in the component must:
+
+  - accept focus
+  - be focusable with a keyboard
+  - indicate when they have focus
+examples:
+  default:
+    data: {}
+  custom_message:
+    data:
+      id: custom-message
+      message: GOV.UK uses cookies to make the site simpler. <a class="govuk-link" href="https://www.gov.uk/help/cookies">Find out more about cookies</a>

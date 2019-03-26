@@ -1,0 +1,18 @@
+$govuk-cookie-banner-background: #d5e8f3;
+
+.js-enabled {
+  .gem-c-cookie-banner {
+    display: none; // shown with JS, always on for non-JS
+  }
+}
+
+.gem-c-cookie-banner {
+  @include govuk-font($size: 16);
+  padding: 10px 0;
+  background-color: $govuk-cookie-banner-background;
+}
+
+.gem-c-cookie-banner__message {
+  margin-top: 0;
+  margin-bottom: 0;
+}
