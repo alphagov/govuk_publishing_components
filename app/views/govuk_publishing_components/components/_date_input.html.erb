@@ -54,7 +54,8 @@
             label: {
               text: item[:label] || item[:name].capitalize
             },
-            error_style: error_message,
+            grouped: true,
+            has_error: error_message,
             name: name ? (name + "[" + item[:name] + "]") : item[:name],
             value: item[:value],
             width: item[:width],
