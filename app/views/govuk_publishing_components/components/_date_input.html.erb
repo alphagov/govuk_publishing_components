@@ -12,20 +12,18 @@
   error_message ||= nil
   describedby ||= nil
 
-  has_error = error_message
-
   css_classes = %w(gem-c-date-input govuk-date-input)
   form_group_css_classes = %w(govuk-form-group)
-  form_group_css_classes << "govuk-form-group--error" if has_error
+  form_group_css_classes << "govuk-form-group--error" if error_message
 
   hint_id = "hint-#{SecureRandom.hex(4)}"
   error_id = "error-#{SecureRandom.hex(4)}"
 
   aria_described_by ||= nil
-  if hint || has_error || describedby
+  if hint || error_message || describedby
     aria_described_by = []
     aria_described_by << hint_id if hint
-    aria_described_by << error_id if has_error
+    aria_described_by << error_id if error_message
     aria_described_by << describedby if describedby
     aria_described_by = aria_described_by.join(" ")
   end
@@ -56,7 +54,7 @@
             label: {
               text: item[:label] || item[:name].capitalize
             },
-            error_style: has_error,
+            error_style: error_message,
             name: name ? (name + "[" + item[:name] + "]") : item[:name],
             value: item[:value],
             width: item[:width],

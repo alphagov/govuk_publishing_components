@@ -10,7 +10,7 @@ accessibility_criteria: |
   * indicate when they have focus
   * be recognisable as form input elements
   * have correctly associated labels
-  * be of the appropriate type for their use, e.g. password inputs should be of type 'password'
+  * be of the appropriate type for their use, in this case 'number'
 
   Labels use the [label component](/component-guide/label).
 
@@ -21,6 +21,9 @@ examples:
   default:
     data: {}
   with_name:
+    description: |
+      Settting a name at the component level helps generating the name for each individual input within the
+      component as follows: `custom-name[day]`, `custom-name[month]`, `custom-name[year]`
     data:
       name: "dob"
   with_legend:
