@@ -90,7 +90,7 @@ describe "File upload", type: :view do
     end
 
     it "renders the error message" do
-      assert_select ".govuk-error-message", text: "Please upload a file"
+      assert_select ".govuk-error-message", text: "Error: Please upload a file"
     end
 
     it "has 'aria-describedby' the error message id" do
@@ -116,7 +116,7 @@ describe "File upload", type: :view do
     end
 
     it "renders the error message" do
-      assert_select ".govuk-error-message", text: "Error item 1Error item 2"
+      assert_select ".govuk-error-message", text: "Error: Error item 1Error item 2"
     end
 
     it "has 'aria-describedby' the error message id" do

@@ -51,7 +51,7 @@ describe "Date input", type: :view do
       error_message: "Error message goes here"
     )
 
-    assert_select ".govuk-form-group--error .govuk-fieldset[role=group] .govuk-error-message", text: "Error message goes here"
+    assert_select ".govuk-form-group--error .govuk-fieldset[role=group] .govuk-error-message", text: "Error: Error message goes here"
     assert_select ".govuk-form-group--error .govuk-fieldset[role=group] .govuk-date-input__item .govuk-input--error", 3
   end
 

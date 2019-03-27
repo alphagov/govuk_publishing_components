@@ -271,7 +271,7 @@ describe "Radio", type: :view do
       ]
     )
 
-    assert_select ".govuk-error-message", text: "Please select one option"
+    assert_select ".govuk-error-message", text: "Error: Please select one option"
 
     dom = Nokogiri::HTML(rendered)
     error_id = dom.xpath('//span')[0].attr('id')
@@ -295,7 +295,7 @@ describe "Radio", type: :view do
       ]
     )
 
-    assert_select ".govuk-error-message", text: "Please select one option"
+    assert_select ".govuk-error-message", text: "Error: Please select one option"
 
     dom = Nokogiri::HTML(rendered)
     hint_id = dom.xpath('//span')[0].attr('id')
@@ -327,7 +327,7 @@ describe "Radio", type: :view do
       ]
     )
 
-    assert_select ".govuk-error-message", text: "Error item 1Error item 2"
+    assert_select ".govuk-error-message", text: "Error: Error item 1Error item 2"
   end
 
   it "renders radio-group with welsh translated 'or'" do

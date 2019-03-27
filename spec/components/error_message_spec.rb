@@ -8,6 +8,6 @@ describe "Error message", type: :view do
   it "renders error message" do
     render_component(text: "Please enter your National Insurance number")
 
-    assert_select(".govuk-error-message", text: "Please enter your National Insurance number")
+    assert_select(".govuk-error-message", text: "Error: Please enter your National Insurance number")
   end
 end
