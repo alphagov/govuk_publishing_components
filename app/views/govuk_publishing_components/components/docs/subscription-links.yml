@@ -72,3 +72,9 @@ examples:
           dimension29: 'dimension29feedLink'
         }
       }
+  as_small_form:
+    data:
+      email_signup_link: '/foreign-travel-advice/singapore/email-signup'
+      feed_link: '/foreign-travel-advice/singapore.atom'
+      small_form: true
+

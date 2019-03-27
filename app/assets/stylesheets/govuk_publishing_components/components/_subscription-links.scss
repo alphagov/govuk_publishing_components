@@ -1,6 +1,6 @@
 .gem-c-subscription-links {
   @include govuk-text-colour;
-  @include bold-19;
+  @include govuk-font(19, $weight: bold);
 
   .gem-c-subscription-links__hidden-header {
     @include govuk-visually-hidden;
@@ -8,15 +8,15 @@
 
   .gem-c-subscription-links__list {
     list-style: none;
-    margin: 0 (-$gutter-half / 2);
+    margin: 0 (-govuk-spacing(3) / 2);
     padding: 0;
   }
 
   .gem-c-subscription-links__list-item {
     display: inline-block;
-    margin-left: $gutter-half / 2;
-    margin-right: $gutter-half / 2;
-    margin-bottom: $gutter-half;
+    margin-left: govuk-spacing(2);
+    margin-right: govuk-spacing(2);
+    margin-bottom: govuk-spacing(3);
   }
 
   .gem-c-subscription-links__link {
@@ -49,13 +49,13 @@
 
     @include device-pixel-ratio() {
       background-image: image-url("govuk_publishing_components/mail-icon-x2.png");
-      background-size: 20px 14px;
+      background-size: govuk-spacing(4) govuk-spacing(3);
     }
   }
 
   .gem-c-subscription-links__feed-box {
-    padding: $gutter-half;
-    margin-bottom: $gutter-half;
+    padding: govuk-spacing(3);
+    margin-bottom: govuk-spacing(3);
     background: $grey-3;
 
     .js-enabled &.js-hidden {
@@ -65,6 +65,10 @@
 
   .gem-c-subscription-links__feed-hidden-description {
     @include govuk-visually-hidden;
+  }
+
+  .gem-c-subscription-links--small {
+    @include govuk-font(16);
   }
 }
 
