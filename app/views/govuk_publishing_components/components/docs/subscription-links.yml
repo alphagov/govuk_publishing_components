@@ -1,5 +1,7 @@
 name: Subscription links
 description: Links to ‘Get email alerts’ and ‘Subscribe to feed’
+body: |
+  <strong>NOTE: This component includes a h2 heading by default but can be suppressed by using `hide_heading` option (see below)<strong>
 accessibility_criteria: |
   Icons in subscription links must be presentational and ignored by screen readers.
 
@@ -77,4 +79,11 @@ examples:
       email_signup_link: '/foreign-travel-advice/singapore/email-signup'
       feed_link: '/foreign-travel-advice/singapore.atom'
       small_form: true
-
+  without_heading:
+    description: |
+      By default the component includes an h2 heading. The component could be used anywhere on the page and could mean
+      that it produces invalid markup or make the site unaccessible.
+    data:
+      email_signup_link: '/foreign-travel-advice/singapore/email-signup'
+      feed_link: '/foreign-travel-advice/singapore.atom'
+      hide_heading: true

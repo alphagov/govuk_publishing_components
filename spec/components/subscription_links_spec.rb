@@ -83,4 +83,21 @@ describe "subscription links", type: :view do
     render_component(email_signup_link: 'email-signup', feed_link: 'singapore.atom', small_form: true)
     assert_select ".gem-c-subscription-links__list--small"
   end
+
+  describe 'component heading' do
+    it 'renders a heading by default' do
+      render_component(email_signup_link: 'email-signup', feed_link: 'singapore.atom')
+      assert_select "h2.gem-c-subscription-links__hidden-header"
+    end
+
+    it 'renders a heading by default' do
+      render_component(email_signup_link: 'email-signup', feed_link: 'singapore.atom', hide_heading: false)
+      assert_select "h2.gem-c-subscription-links__hidden-header"
+    end
+
+    it 'renders without a heading' do
+      render_component(email_signup_link: 'email-signup', feed_link: 'singapore.atom', hide_heading: true)
+      assert_select "h2.gem-c-subscription-links__hidden-header", false
+    end
+  end
 end
