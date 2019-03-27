@@ -12,6 +12,10 @@
     padding: 0;
   }
 
+  .gem-c-subscription-links__list--small {
+    @include govuk-font(16);
+  }
+
   .gem-c-subscription-links__list-item {
     display: inline-block;
     margin-left: govuk-spacing(2);
@@ -66,10 +70,6 @@
 
   .gem-c-subscription-links__feed-hidden-description {
     @include govuk-visually-hidden;
-  }
-
-  .gem-c-subscription-links--small {
-    @include govuk-font(16);
   }
 }
 

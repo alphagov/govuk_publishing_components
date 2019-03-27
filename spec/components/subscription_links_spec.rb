@@ -78,4 +78,9 @@ describe "subscription links", type: :view do
     assert_select ".gem-c-subscription-links[data-module=\"gem-toggle\"]"
     assert_select ".gem-c-subscription-links__list[data-module=\"track-click\"] .gem-c-subscription-links__link--feed[data-track-category=\"test\"]"
   end
+
+  it "adds small form modifier to the list of links" do
+    render_component(email_signup_link: 'email-signup', feed_link: 'singapore.atom', small_form: true)
+    assert_select ".gem-c-subscription-links__list--small"
+  end
 end
