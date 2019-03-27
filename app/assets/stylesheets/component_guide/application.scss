@@ -6,6 +6,8 @@
 @import "govuk-frontend/helpers/all";
 @import "govuk-frontend/core/all";
 
+@include _govuk-font-face-nta;
+
 .component-guide-wrapper {
   padding-bottom: $govuk-gutter * 1.5;
 }
