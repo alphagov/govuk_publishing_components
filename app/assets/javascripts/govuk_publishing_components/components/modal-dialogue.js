@@ -8,6 +8,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.$module = $module[0]
     this.$dialogBox = this.$module.querySelector('.gem-c-modal-dialogue__box')
     this.$closeButton = this.$module.querySelector('.gem-c-modal-dialogue__close-button')
+    this.$html = document.querySelector('html')
     this.$body = document.querySelector('body')
 
     this.$module.open = this.handleOpen.bind(this)
@@ -33,8 +34,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       event.preventDefault()
     }
 
-    this.$body.classList.add('app-o-template__body--modal')
-    this.$body.classList.add('app-o-template__body--blur')
+    this.$html.classList.add('gem-o-template--modal')
+    this.$body.classList.add('gem-o-template__body--modal')
+    this.$body.classList.add('gem-o-template__body--blur')
     this.$focusedElementBeforeOpen = document.activeElement
     this.$module.style.display = 'block'
     this.$dialogBox.focus()
@@ -47,8 +49,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       event.preventDefault()
     }
 
-    this.$body.classList.remove('app-o-template__body--modal')
-    this.$body.classList.remove('app-o-template__body--blur')
+    this.$html.classList.remove('gem-o-template--modal')
+    this.$body.classList.remove('gem-o-template__body--modal')
+    this.$body.classList.remove('gem-o-template__body--blur')
     this.$module.style.display = 'none'
     this.$focusedElementBeforeOpen.focus()
 
