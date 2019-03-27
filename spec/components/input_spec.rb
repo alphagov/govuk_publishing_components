@@ -168,7 +168,7 @@ describe "Input", type: :view do
     end
 
     it "renders the error message" do
-      assert_select ".govuk-error-message", text: "Please enter a valid email address"
+      assert_select ".govuk-error-message", text: "Error: Please enter a valid email address"
     end
 
     it "has 'aria-describedby' the error message id" do
@@ -194,7 +194,7 @@ describe "Input", type: :view do
     end
 
     it "renders the error message" do
-      assert_select ".govuk-error-message", text: "Error item 1Error item 2"
+      assert_select ".govuk-error-message", text: "Error: Error item 1Error item 2"
     end
 
     it "has 'aria-describedby' the error message id" do
