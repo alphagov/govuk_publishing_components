@@ -22,7 +22,6 @@
   .gem-c-subscription-links__link {
     @extend %govuk-link;
     text-decoration: none;
-    padding-left: 28px;
     background-repeat: no-repeat;
     background-position: 0 20%;
 
@@ -33,6 +32,7 @@
 
   .gem-c-subscription-links__link--feed {
     background-image: image-url("govuk_publishing_components/feed-icon-black.png");
+    padding-left: govuk-spacing(4);
 
     // if this is a toggle, only show if js is enabled
     &[data-controls] {
@@ -46,6 +46,7 @@
 
   .gem-c-subscription-links__link--email-alerts {
     background-image: image-url("govuk_publishing_components/mail-icon.png");
+    padding-left: govuk-spacing(5);
 
     @include device-pixel-ratio() {
       background-image: image-url("govuk_publishing_components/mail-icon-x2.png");
