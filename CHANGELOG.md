@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 16.9.0
 
 * Control when checkboxes change event sends Google Analytics tracking info (PR #801)
 * Updates govuk-frontend from 2.5.1 to 2.9.0 (PR #794)
