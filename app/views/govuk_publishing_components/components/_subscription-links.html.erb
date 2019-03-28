@@ -11,10 +11,13 @@
   css_classes << (shared_helper.get_margin_bottom) unless local_assigns[:margin_bottom] == 0
   css_classes << brand_helper.brand_class
   data = {"module": "gem-toggle"} if sl_helper.feed_link_box_value
+  hide_heading ||= false
 %>
 <% if sl_helper.component_data_is_valid? %>
   <%= tag.section class: css_classes, data: data do %>
-    <h2 class="gem-c-subscription-links__hidden-header visuallyhidden"><%= t("govuk_component.subscription_links.subscriptions", default: "Subscriptions") %></h2>
+    <% unless hide_heading %>
+      <h2 class="gem-c-subscription-links__hidden-header visuallyhidden"><%= t("govuk_component.subscription_links.subscriptions", default: "Subscriptions") %></h2>
+    <% end %>
     <ul
       class="gem-c-subscription-links__list<%= ' gem-c-subscription-links__list--small' if local_assigns[:small_form] == true %>"
       <%= "data-module=track-click" if sl_helper.tracking_is_present? %>
