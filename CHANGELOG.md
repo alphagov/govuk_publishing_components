@@ -10,6 +10,8 @@
 ## Unreleased
 
 * Control when checkboxes change event sends Google Analytics tracking info (PR #801)
+* Updates govuk-frontend from 2.5.1 to 2.9.0 (PR #794)
+* Adds small form option to subscription component (PR #803)
 
 ## 16.8.0
 
