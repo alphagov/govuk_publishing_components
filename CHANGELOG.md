@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unrelease
+## 16.9.1
 
 * Fix margin spacing for small form subscription links (PR #808)
 
