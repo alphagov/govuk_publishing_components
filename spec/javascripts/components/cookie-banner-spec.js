@@ -11,7 +11,7 @@ describe('Cookie banner component', function () {
     container.innerHTML =
     '<div id="global-cookie-message" class="gem-c-cookie-banner" data-module="cookie-banner">' +
       '<p class="gem-c-cookie-banner__message govuk-width-container">' +
-        '<a class="govuk-link" href="https://www.gov.uk/help/cookies">Find out more about cookies</a> or <a class="govuk-link" href="#" data-hide-cookie-banner="true">hide this message</a>' +
+        '<a class="govuk-link" href="/help/cookies">Find out more about cookies</a> or <a class="govuk-link" href="#" data-hide-cookie-banner="true">hide this message</a>' +
       '</p>' +
     '</div>'
 
