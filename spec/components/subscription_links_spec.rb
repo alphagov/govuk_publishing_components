@@ -82,6 +82,7 @@ describe "subscription links", type: :view do
   it "adds small form modifier to the list of links" do
     render_component(email_signup_link: 'email-signup', feed_link: 'singapore.atom', small_form: true)
     assert_select ".gem-c-subscription-links__list--small"
+    assert_select ".gem-c-subscription-links__list-item--small"
   end
 
   describe 'component heading' do

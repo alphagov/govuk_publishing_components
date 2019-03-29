@@ -23,7 +23,7 @@
       <%= "data-module=track-click" if sl_helper.tracking_is_present? %>
     >
       <% if sl_helper.email_signup_link.present? %>
-        <li class="gem-c-subscription-links__list-item">
+        <li class="gem-c-subscription-links__list-item<%= ' gem-c-subscription-links__list-item--small' if local_assigns[:small_form] == true %>" >
           <%= link_to sl_helper.email_signup_link_text, sl_helper.email_signup_link,
             class: "gem-c-subscription-links__link gem-c-subscription-links__link--email-alerts #{brand_helper.color_class}",
             data: sl_helper.email_signup_link_data_attributes
@@ -32,7 +32,7 @@
       <% end %>
 
       <% if sl_helper.feed_link_box_value || sl_helper.feed_link %>
-        <li class="gem-c-subscription-links__list-item">
+        <li class="gem-c-subscription-links__list-item<%= ' gem-c-subscription-links__list-item--small' if local_assigns[:small_form] == true %>">
           <%= link_to sl_helper.feed_link_text, sl_helper.feed_link,
             class: "gem-c-subscription-links__link gem-c-subscription-links__link--feed #{brand_helper.color_class}",
             data: sl_helper.feed_link_data_attributes

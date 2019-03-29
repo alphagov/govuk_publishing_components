@@ -23,6 +23,21 @@
     margin-bottom: govuk-spacing(3);
   }
 
+  .gem-c-subscription-links__list-item--small {
+    display: inline-block;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: govuk-spacing(2);
+
+    &:first-child {
+      margin-right: govuk-spacing(2);
+    }
+
+    &:only-child {
+      margin-right: 0;
+    }
+  }
+
   .gem-c-subscription-links__link {
     @extend %govuk-link;
     text-decoration: none;
