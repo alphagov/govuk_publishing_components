@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unrelease
+
+* Fix margin spacing for small form subscription links (PR #808)
+
 ## 16.9.0
 
 * Control when checkboxes change event sends Google Analytics tracking info (PR #801)
