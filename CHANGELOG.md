@@ -10,6 +10,7 @@
 ## 16.9.1
 
 * Fix margin spacing for small form subscription links (PR #808)
+* Use relative path for linking to the cookies help page from the Cookie banner (PR #807)
 
 ## 16.9.0
 
