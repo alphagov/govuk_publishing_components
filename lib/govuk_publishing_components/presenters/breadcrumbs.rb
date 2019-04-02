@@ -19,9 +19,9 @@ module GovukPublishingComponents
       attr_reader :breadcrumbs, :request_path
 
       def item_list_element
-        breadcrumbs.each_with_index.map do |crumb, index|
-          Breadcrumb.new(crumb, index).item_list_element(@request_path)
-        end
+        breadcrumbs.each_with_index.map { |crumb, index| Breadcrumb.new(crumb, index) }.
+          select(&:is_link?).
+          map { |breadcrumb| breadcrumb.item_list_element(@request_path) }
       end
     end
 
