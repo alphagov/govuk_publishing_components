@@ -7,9 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 16.9.2
 
 * Correct breadcrumb structured data for missing URL (PR #810)
+* Fix the modal component to prevent the page from scrolling behind it when open (PR #805)
 
 ## 16.9.1
 
@@ -22,7 +23,6 @@
 * Updates govuk-frontend from 2.5.1 to 2.9.0 (PR #794)
 * Adds small form option to subscription component (PR #803)
 * Suppress subscription components heading (PR #804)
-* Update the modal component to prevent the page from scrolling behind it when open (PR #805)
 
 ## 16.8.0
 
