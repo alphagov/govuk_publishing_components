@@ -76,6 +76,25 @@ describe('Modal dialogue component', function () {
     })
   })
 
+  describe('resize', function () {
+    it('should resize the modal to full width', function () {
+      var modal = document.querySelector('.gem-c-modal-dialogue')
+      modal.resize('wide')
+
+      var dialogBox = modal.querySelector('.gem-c-modal-dialogue__box')
+      expect(dialogBox).toHaveClass('gem-c-modal-dialogue__box--wide')
+    })
+
+    it('should resize the modal to narrow width', function () {
+      var modal = document.querySelector('.gem-c-modal-dialogue')
+      modal.resize('wide')
+      modal.resize('narrow')
+
+      var dialogBox = modal.querySelector('.gem-c-modal-dialogue__box')
+      expect(dialogBox).not.toHaveClass('gem-c-modal-dialogue__box--wide')
+    })
+  })
+
   describe('open', function () {
     beforeEach(function () {
       var modal = document.querySelector('.gem-c-modal-dialogue')
