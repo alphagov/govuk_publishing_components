@@ -11,6 +11,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.$html = document.querySelector('html')
     this.$body = document.querySelector('body')
 
+    this.$module.resize = this.handleResize.bind(this)
     this.$module.open = this.handleOpen.bind(this)
     this.$module.close = this.handleClose.bind(this)
     this.$module.focusDialog = this.handleFocusDialog.bind(this)
@@ -26,6 +27,16 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
     if (this.$closeButton) {
       this.$closeButton.addEventListener('click', this.$module.close)
+    }
+  }
+
+  ModalDialogue.prototype.handleResize = function (size) {
+    if (size == "narrow") {
+      this.$dialogBox.classList.remove('gem-c-modal-dialogue__box--wide')
+    }
+
+    if (size == "wide") {
+      this.$dialogBox.classList.add('gem-c-modal-dialogue__box--wide')
     }
   }
 
