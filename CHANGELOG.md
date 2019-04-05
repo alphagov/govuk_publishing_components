@@ -7,6 +7,8 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 16.10.0
+
 - Support dynamic resizing of the modal component (PR #812)
 
 ## 16.9.2
