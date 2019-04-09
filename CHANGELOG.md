@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+- Enforce compatibility with deprecated packages for media print stylesheet (PR #815)
+
 ## 16.10.0
 
 - Support dynamic resizing of the modal component (PR #812)
