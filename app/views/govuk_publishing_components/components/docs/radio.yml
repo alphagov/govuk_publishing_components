@@ -44,6 +44,15 @@ examples:
         text: "Use Government Gateway"
       - value: "govuk-verify"
         text: "Use GOV.UK Verify"
+  with_small_radios:
+    data:
+      name: "radio-group"
+      small: true
+      items:
+      - value: "government-gateway"
+        text: "Use Government Gateway"
+      - value: "govuk-verify"
+        text: "Use GOV.UK Verify"
   with_bold:
     description: 'Used to provide better contrast between long labels and hint text, Note that the `:or` option [is documented as a string due to a bug](https://github.com/alphagov/govuk_publishing_components/issues/102)'
     data:

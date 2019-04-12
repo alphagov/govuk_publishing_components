@@ -53,6 +53,25 @@ describe "Radio", type: :view do
     assert_select ".govuk-radios__item:last-child .govuk-radios__label", text: "Use GOV.UK Verify"
   end
 
+  it "renders small radios" do
+    render_component(
+      name: "radio-group-multiple-items",
+      small: true,
+      items: [
+        {
+          value: "government-gateway",
+          text: "Use Government Gateway"
+        },
+        {
+          value: "govuk-verify",
+          text: "Use GOV.UK Verify"
+        }
+      ]
+    )
+
+    assert_select ".govuk-radios.govuk-radios--small"
+  end
+
   it "renders radio-group with a legend" do
     render_component(
       name: "favourite-smartie",
