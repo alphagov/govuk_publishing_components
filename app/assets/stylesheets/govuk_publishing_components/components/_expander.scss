@@ -1,0 +1,46 @@
+.gem-c-expander {
+  border-bottom: solid 1px govuk-colour("black");
+}
+
+.gem-c-expander__title {
+  @include govuk-font(19, $weight: bold);
+  position: relative;
+  padding: govuk-spacing(2) 0 0 0;
+  cursor: pointer;
+}
+
+.gem-c-expander__content {
+  padding: govuk-spacing(2) 0;
+}
+
+.gem-c-expander__icon {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 30px;
+  height: 100%;
+  fill: currentColor;
+}
+
+.gem-c-expander__button {
+  @include govuk-font(19, $weight: bold);
+  @include govuk-focusable;
+  position: relative;
+  width: 100%;
+  border: 0;
+  padding: govuk-spacing(2) govuk-spacing(6) govuk-spacing(2) 0;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+}
+
+.js-enabled {
+  [aria-expanded="true"] .gem-c-expander__icon--up {
+    display: block;
+  }
+
+  [aria-expanded="false"] .gem-c-expander__icon--down {
+    display: block;
+  }
+}

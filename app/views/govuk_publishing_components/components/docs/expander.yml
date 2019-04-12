@@ -1,0 +1,30 @@
+name: Expander (experimental)
+description: A block of content that can be expanded and collapsed.
+accessibility_criteria: |
+  The component must:
+
+  - indicate that it is expandable/collapsible
+  - indicate the initial state of expandable content
+  - indicate where the state of expandable content has changed
+  - be operable with a keyboard
+  - be expanded by default without Javascript enabled
+examples:
+  default:
+    data:
+      title: Organisation
+      block: |
+        This is some content that is passed to the component. It should be distinct from the component, in that the component should not style or interact with it, other than to show and hide it.
+  expand_by_default:
+    description: Shows the content by default. It can still be hidden.
+    data:
+      title: Location
+      open_on_load: true
+      block: |
+        This is some content that is passed to the component. It should be distinct from the component, in that the component should not style or interact with it, other than to show and hide it.
+  with_margin_bottom:
+    description: The component accepts a number for margin bottom from 0 to 9 (0px to 60px) using the [GOV.UK Frontend spacing scale](http://govuk-frontend-review.herokuapp.com/docs/#settings/spacing-variable-govuk-spacing-points). It defaults to a margin bottom of 0.
+    data:
+      title: Person
+      margin_bottom: 9
+      block: |
+        This is some content that is passed to the component. It should be distinct from the component, in that the component should not style or interact with it, other than to show and hide it.
