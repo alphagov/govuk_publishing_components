@@ -36,6 +36,19 @@ describe "Checkboxes", type: :view do
     assert_select ".govuk-label", text: "Green"
   end
 
+  it "renders small checkboxes" do
+    render_component(
+      name: "favourite_colour",
+      heading: "What is your favourite colour?",
+      small: true,
+      items: [
+        { label: "Red", value: "red" },
+        { label: "Green", value: "green" },
+      ]
+    )
+    assert_select ".govuk-checkboxes.govuk-checkboxes--small"
+  end
+
   it "renders nothing if no heading is supplied" do
     render_component(
       name: "favourite_colour",

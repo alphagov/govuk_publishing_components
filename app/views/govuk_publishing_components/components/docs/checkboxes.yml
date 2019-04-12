@@ -32,6 +32,16 @@ examples:
           value: "green"
         - label: "Blue"
           value: "blue"
+  with_small_checkboxes:
+    data:
+      name: "favourite_small_synonym"
+      heading: "What is your favourite synonym for small?"
+      small: true
+      items:
+        - label: "Tiny"
+          value: "tiny"
+        - label: "Little"
+          value: "little"
   with_a_heading_on_one_checkbox:
     description: One checkbox does not require a fieldset and therefore does not require a legend. However, if a heading is supplied, a fieldset will be included in the component and the heading used as the legend, as shown.
     data:
