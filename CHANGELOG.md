@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 16.11.0
 
 - Fix script in header component not being compatible with the govuk_template script (PR #818)
 - Upgrade to govuk-frontend 2.10.0 (PR #817)
