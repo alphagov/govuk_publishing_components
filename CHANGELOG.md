@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+- Upgrade to govuk-frontend 2.10.0 (PR #817)
+
 ## 16.10.1
 
 - Enforce compatibility with deprecated packages for media print stylesheet (PR #815)

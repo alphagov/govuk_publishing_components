@@ -4,6 +4,7 @@
 
   label ||= nil
   heading ||= nil
+  small ||= false
   is_page_heading ||= false
   hint ||= nil
   error_message ||= nil
@@ -15,6 +16,9 @@
 
   form_group_css_classes = %w(govuk-form-group)
   form_group_css_classes << "govuk-form-group--error" if has_error
+
+  radio_classes = %w(govuk-radios)
+  radio_classes << "govuk-radios--small" if small
 
   aria = "#{hint_id} #{"#{error_id}" if has_error}".strip if hint or has_error
 
@@ -53,7 +57,7 @@
       } %>
     <% end %>
 
-    <%= content_tag :div, class: "govuk-radios",
+    <%= content_tag :div, class: radio_classes,
       data: {
         module: ('radios' if has_conditional)
       } do %>

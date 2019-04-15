@@ -1,4 +1,5 @@
 <%
+  # cb_helper.css_classes generates "gem-c-checkboxes"
   cb_helper = GovukPublishingComponents::Presenters::CheckboxesHelper.new(local_assigns)
   id = cb_helper.id
 %>
@@ -17,7 +18,7 @@
           <%= tag.span error, id: "#{id}-error", class: "govuk-error-message" %>
         <% end %>
 
-        <%= tag.ul class: "govuk-checkboxes gem-c-checkboxes__list", data: {
+        <%= tag.ul class: cb_helper.list_classes, data: {
           module: ('checkboxes' if cb_helper.has_conditional),
           nested: ('true' if cb_helper.has_nested),
         } do %>

@@ -4,7 +4,7 @@ module GovukPublishingComponents
       include ActionView::Helpers
       include ActionView::Context
 
-      attr_reader :items, :name, :css_classes, :error, :has_conditional, :has_nested, :id, :hint_text
+      attr_reader :items, :name, :css_classes, :list_classes, :error, :has_conditional, :has_nested, :id, :hint_text
 
       def initialize(options)
         @items = options[:items] || []
@@ -12,6 +12,9 @@ module GovukPublishingComponents
         @css_classes = %w(gem-c-checkboxes govuk-form-group)
         @css_classes << "govuk-form-group--error" if options[:error]
         @error = true if options[:error]
+
+        @list_classes = %w(govuk-checkboxes gem-c-checkboxes__list)
+        @list_classes << "govuk-checkboxes--small" if options[:small]
 
         # check if any item is set as being conditional
         @has_conditional = options[:items].any? { |item| item.is_a?(Hash) && item[:conditional] }
