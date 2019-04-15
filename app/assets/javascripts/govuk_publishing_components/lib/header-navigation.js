@@ -4,7 +4,7 @@
   'use strict'
 
   if (document.querySelectorAll && document.addEventListener) {
-    var els = document.querySelectorAll('.js-header-toggle')
+    var els = document.querySelectorAll('a.js-header-toggle')
     var i
     var _i
     for (i = 0, _i = els.length; i < _i; i++) {
