@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+- Fix script in header component not being compatible with the govuk_template script (PR #818)
 - Upgrade to govuk-frontend 2.10.0 (PR #817)
 
 ## 16.10.1
