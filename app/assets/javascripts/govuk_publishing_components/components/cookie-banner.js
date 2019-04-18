@@ -18,17 +18,14 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   CookieBanner.prototype.showCookieMessage = function () {
     var hasCookieMessage = (this.$module && window.GOVUK.cookie('seen_cookie_message') !== 'true')
-
     if (hasCookieMessage) {
       this.$module.style.display = 'block'
-      document.addEventListener('DOMContentLoaded', function (event) {
-        if (window.GOVUK.analytics && typeof window.GOVUK.analytics.trackEvent === 'function') {
-          window.GOVUK.analytics.trackEvent('cookieBanner', 'Cookie banner shown', {
-            value: 1,
-            nonInteraction: true
-          })
-        }
-      })
+    } else {
+      if (window.GOVUK.analytics && typeof window.GOVUK.analytics.trackEvent === 'function') {
+        window.GOVUK.analytics.trackEvent('cookieBanner', 'Cookie banner not shown', {
+          nonInteraction: true
+        })
+      }
     }
   }
 
