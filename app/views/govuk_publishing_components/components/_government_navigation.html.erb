@@ -25,11 +25,6 @@
       </a>
     </li>
     <li class="clear-child">
-      <a class="<%= 'active' if active == 'publications' %>" href="/government/publications">
-        <%= t("govuk_component.government_navigation.publications", default: "Publications") %>
-      </a>
-    </li>
-    <li>
       <a class="<%= 'active' if active == 'consultations' %>" href="<%= CGI::escapeHTML('/search/policy-papers-and-consultations?content_store_document_type[]=open_consultations&content_store_document_type[]=closed_consultations') %>">
         <%= t("govuk_component.government_navigation.consultations", default: "Consultations") %>
       </a>

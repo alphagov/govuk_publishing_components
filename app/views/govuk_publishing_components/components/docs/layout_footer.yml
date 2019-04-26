@@ -105,8 +105,6 @@ examples:
               text: Worldwide
             - href: '/government/policies'
               text: Policies
-            - href: '/government/publications'
-              text: Publications
             - href: '/news-and-communications'
               text: News and communications
       meta:
