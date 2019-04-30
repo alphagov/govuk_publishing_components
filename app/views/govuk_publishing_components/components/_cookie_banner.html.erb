@@ -1,9 +1,41 @@
 <%
+  new_cookie_banner ||= false
   id ||= 'global-cookie-message'
-  message ||= capture do %>
-  GOV.UK uses cookies to make the site simpler. <a class="govuk-link" href="/help/cookies" data-module="track-click" data-track-category="cookieBanner" data-track-action="Cookie banner clicked">Find out more about cookies</a> <span class="gem-c-cookie-banner__hide-link">or <a class="govuk-link" href="#" data-hide-cookie-banner="true" data-module="track-click" data-track-category="cookieBanner" data-track-action="Cookie banner hidden">hide this message</a></span>
-<% end %>
 
-<div id="<%= id %>" class="gem-c-cookie-banner" data-module="cookie-banner">
-  <p class="gem-c-cookie-banner__message govuk-width-container"><%= message %></p>
+  cookie_banner_class = new_cookie_banner ? "gem-c-cookie-banner--new" : "gem-c-cookie-banner"
+
+  cookie_banner_helper = GovukPublishingComponents::Presenters::CookieBannerHelper.new(local_assigns)
+
+  message = cookie_banner_helper.message
+%>
+
+<div id="<%= id %>" class="<%= cookie_banner_class %>" data-module="cookie-banner">
+  <div class="gem-c-cookie-banner__wrapper govuk-width-container">
+    <p class="gem-c-cookie-banner__message"><%= message %></p>
+    <% if new_cookie_banner %>
+      <div class="gem-c-cookie-banner__buttons">
+        <%= render "govuk_publishing_components/components/button", {
+          text: "Accept cookies",
+          secondary: true,
+          inline_layout: true,
+          data_attributes: {
+            module: "track-click",
+            "track-category": "cookieBanner",
+            "track-action": "Cookie banner accepted"
+          }
+        } %>
+        <%= render "govuk_publishing_components/components/button", {
+          text: "Cookie settings",
+          href: "/help/cookies",
+          secondary: true,
+          inline_layout: true,
+          data_attributes: {
+            module: "track-click",
+            "track-category": "cookieBanner",
+            "track-action": "Cookie banner settings clicked"
+          }
+        } %>
+      </div>
+    <% end %>
+  </div>
 </div>
