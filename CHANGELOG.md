@@ -11,6 +11,7 @@
 
  - Add search icon option to the input component.
  - Permit Document List metadata fields to have nil values.
+ - Upgrade to GOV.UK Frontend version 2.11.0.
 
 ## 16.12.0
 
