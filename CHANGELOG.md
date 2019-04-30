@@ -10,6 +10,7 @@
 ## Unreleased
 
  - Add search icon option to the input component.
+ - Permit Document List metadata fields to have nil values.
 
 ## 16.12.0
 
