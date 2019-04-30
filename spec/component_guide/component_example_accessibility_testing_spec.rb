@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 describe 'Component example with automated testing', js: true do
   it 'has accessibility testing hooks' do

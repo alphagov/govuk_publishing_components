@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 describe 'Component guide index' do
   # Load ordering test can only fail if run as the first test in suite

@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 describe 'Component example' do
   it 'illustrates how to use the component' do

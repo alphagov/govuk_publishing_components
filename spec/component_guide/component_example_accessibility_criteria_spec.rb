@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 describe 'Component examples with accessibility criteria' do
   it 'shows the accessibility acceptance criteria as HTML' do
