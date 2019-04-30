@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+ - Add search icon option to the input component.
+
 ## 16.12.0
 
 - Fire GA event when cookie banner isn't shown, instead of when it is (PR #821)
