@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+- Remove govspeak dependency with kramdown for markdown rendering (PR #827)
 - Add gds-adpi-adapters and plek as dependencies (PR #830)
 
 ## 16.13.0

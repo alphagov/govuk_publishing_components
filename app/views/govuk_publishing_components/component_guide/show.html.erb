@@ -13,7 +13,9 @@
       <%= render 'govuk_publishing_components/components/lead_paragraph', text: @component_doc.description %>
       <% if @component_doc.body.present? %>
         <div class="component-body">
-          <%= render 'govuk_publishing_components/components/govspeak', content: raw(@component_doc.html_body) %>
+          <div class="component-markdown">
+            <%= raw(@component_doc.html_body) %>
+          </div>
         </div>
       <% end %>
     </div>
@@ -30,7 +32,7 @@
 
   <% if @component_doc.govuk_frontend_components.any? %>
     <h2 class="component-doc-h2">GOV.UK Design System</h2>
-    <%= render 'govuk_publishing_components/components/govspeak' do %>
+    <div class="component-markdown">
       <p>This component incorporates components from the <%= link_to "GOV.UK Design System", "https://design-system.service.gov.uk" %>:</p>
 
       <ul>
@@ -38,14 +40,16 @@
         <li><%= link_to component.humanize, "https://design-system.service.gov.uk/components/#{component}" %></li>
       <% end %>
       </ul>
-    <% end %>
+    </div>
   <% end %>
 
   <% if @component_doc.accessibility_criteria.present? %>
     <div class="govuk-grid-row component-accessibility-criteria">
       <div class="govuk-grid-column-two-thirds">
         <h2 class="component-doc-h2">Accessibility acceptance criteria</h2>
-        <%= render 'govuk_publishing_components/components/govspeak', content: raw(@component_doc.html_accessibility_criteria) %>
+        <div class="component-markdown">
+          <%= raw(@component_doc.html_accessibility_criteria) %>
+        </div>
       </div>
     </div>
   <% end %>
@@ -61,7 +65,9 @@
             <a href="<%= component_example_path(@component_doc.id, example.id) %>" class="govuk-link"><%= example.name %></a>
             <small>(<a href="<%= component_preview_path(@component_doc.id, example.id) %>" class="govuk-link">preview</a>)</small>
           </h3>
-          <%= render "govuk_publishing_components/components/govspeak", content: raw(example.html_description) %>
+          <div class="component-markdown">
+            <%= raw(example.html_description) %>
+          </div>
           <%= render "govuk_publishing_components/component_guide/component_doc/call", component_doc: @component_doc, example: example %>
           <%= render "govuk_publishing_components/component_guide/component_doc/preview", component_doc: @component_doc, example: example %>
         </div>

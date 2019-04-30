@@ -1,0 +1,144 @@
+@mixin markdown-typography {
+  @include govuk-text-colour;
+
+  @include govuk-font($size: 16);
+
+  $gutter-two-thirds: $govuk-gutter - ($govuk-gutter / 3);
+
+  ol,
+  ul,
+  p {
+    @include govuk-font($size: 19);
+    margin-top: $govuk-gutter-half;
+    margin-bottom: $govuk-gutter-half;
+
+    @include govuk-media-query($from: tablet) {
+      margin-top: $gutter-two-thirds;
+      margin-bottom: $gutter-two-thirds;
+    }
+  }
+
+  // Headings
+
+  // Markdown is expected to be styled within a document with a H1 title
+  // thus H1's are not expected and are discouraged by bare styling
+
+  h1 {
+    @include govuk-font($size: 19);
+    margin: 0;
+    padding: 0;
+  }
+
+  h2 {
+    @include govuk-font($size: 27, $weight: bold);
+    margin-top: $govuk-gutter;
+    margin-bottom: 0;
+
+    @include govuk-media-query($from: desktop) {
+      margin-top: $govuk-gutter * 1.5;
+      margin-bottom: 0;
+    }
+  }
+
+  h3 {
+    @include govuk-font($size: 19, $weight: bold);
+    margin-top: $govuk-gutter + 5px;
+    margin-bottom: 0;
+  }
+
+  // H4, H5 and H6 are discouraged and thus styled the same
+
+  h4,
+  h5,
+  h6 {
+    @include govuk-font($size: 19, $weight: bold);
+    margin-top: $govuk-gutter + 5px;
+    margin-bottom: 0;
+
+    + p {
+      margin-top: 5px;
+    }
+  }
+
+  h5,
+  h6 {
+    margin: 0;
+  }
+
+  h2:first-child,
+  h3:first-child,
+  h4:first-child,
+  p:first-child {
+    margin-top: 0;
+  }
+
+  // Links
+
+  a {
+    @include govuk-link-style-default;
+    @include govuk-focusable-fill;
+  }
+
+  // Lists
+
+  ol,
+  ul {
+    list-style: decimal;
+    list-style-position: outside;
+    margin-left: $gutter-two-thirds;
+    padding: 0;
+
+    ul,
+    ol {
+      margin-top: 0;
+      margin-bottom: 0;
+      padding: 0;
+    }
+  }
+
+  ul {
+    list-style: disc;
+    list-style-position: outside;
+  }
+
+  li {
+    margin: 0 0 5px 0;
+    padding: 0;
+
+    p {
+      margin: 0;
+      padding: 0;
+    }
+
+    p + p,
+    p + ul,
+    p + ol,
+    ul + p,
+    ul + ol,
+    ol + p,
+    ol + ul {
+      margin-top: 5px;
+    }
+  }
+
+  // Text styles
+
+  sup {
+    font-size: 0.8em;
+    line-height: 0.7em;
+    vertical-align: super;
+  }
+
+  abbr {
+    cursor: help;
+    text-decoration: none;
+  }
+
+  // Horizontal Rule
+
+  hr {
+    margin-top: $govuk-gutter - 1px;
+    margin-bottom: $govuk-gutter;
+    border-top: 1px solid $govuk-border-colour;
+  }
+}

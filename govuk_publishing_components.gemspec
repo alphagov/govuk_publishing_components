@@ -17,9 +17,9 @@ Gem::Specification.new do |s|
   s.files = Dir["{node_modules,app,config,db,lib}/**/*", "DEVELOPMENT.md", "LICENCE.md", "Rakefile", "README.md"]
 
   s.add_dependency "gds-api-adapters"
-  s.add_dependency "govspeak", ">= 5.0.3"
   s.add_dependency "govuk_app_config"
   s.add_dependency "govuk_frontend_toolkit"
+  s.add_dependency "kramdown"
   s.add_dependency "rails", ">= 5.0.0.1"
   s.add_dependency "rake"
   s.add_dependency "rouge"

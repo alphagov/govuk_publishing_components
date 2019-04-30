@@ -1,6 +1,7 @@
 // This file contains the styles for the Component Guide.
 
 @import "govuk_publishing_components/components/helpers/govuk-frontend-settings";
+@import "govuk_publishing_components/components/helpers/markdown-typography";
 @import "govuk-frontend/settings/all";
 @import "govuk-frontend/tools/all";
 @import "govuk-frontend/helpers/all";
@@ -232,6 +233,10 @@
       }
     }
   }
+}
+
+.component-markdown {
+  @include markdown-typography;
 }
 
 // Preview Page Styling
