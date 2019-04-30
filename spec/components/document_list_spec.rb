@@ -74,6 +74,27 @@ describe "Document list", type: :view do
     assert_select "#{attribute} time[datetime='2017-07-19T15:01:48Z']"
   end
 
+  it "renders a document list item even when public_updated_at is nil" do
+    render_component(
+      items: [
+        {
+          link: {
+            text: "Some news stories are timeless",
+            path: "/timeless-news",
+          },
+          metadata: {
+            document_type: "News Story",
+            public_updated_at: nil
+          }
+        }
+      ]
+    )
+
+    assert_select ".gem-c-document-list__item-title[href='/timeless-news']", text: "Some news stories are timeless"
+    assert_select ".gem-c-document-list__attribute", text: "News Story"
+  end
+
+
   it "renders a document list with link tracking" do
     render_component(
       items: [

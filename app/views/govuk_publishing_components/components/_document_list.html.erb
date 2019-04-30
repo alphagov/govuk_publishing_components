@@ -34,7 +34,7 @@
 
         <% if item[:metadata] %>
           <ul class="gem-c-document-list__item-metadata">
-            <% item[:metadata].each do |item_metadata_key, item_metadata_value| %>
+            <% item[:metadata].compact.each do |item_metadata_key, item_metadata_value| %>
               <li class="gem-c-document-list__attribute">
                 <% if item_metadata_key.to_s.eql?("public_updated_at") %>
                   <time datetime="<%= item_metadata_value.iso8601 %>">
