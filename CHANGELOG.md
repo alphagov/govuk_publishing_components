@@ -7,11 +7,11 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 16.13.0
 
- - Add search icon option to the input component.
- - Permit Document List metadata fields to have nil values.
- - Upgrade to GOV.UK Frontend version 2.11.0.
+ - Add an option to display search icon in input element (PR #824)
+ - Permit Document List metadata fields to have nil values. (PR #828)
+ - Upgrade to GOV.UK Frontend version 2.11.0. (PR #826)
 
 ## 16.12.0
 
