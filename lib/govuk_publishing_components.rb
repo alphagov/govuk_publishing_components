@@ -1,3 +1,4 @@
+require "active_support"
 require "govuk_publishing_components/config"
 require "govuk_publishing_components/engine"
 require "govuk_publishing_components/presenters/shared_helper"
