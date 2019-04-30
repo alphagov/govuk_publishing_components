@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+- Fire GA event when cookie banner isn't shown, instead of when it is (PR #821)
+
 ## 16.11.0
 
 - Fix script in header component not being compatible with the govuk_template script (PR #818)
