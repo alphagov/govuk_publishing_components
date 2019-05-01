@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+- Add gds-adpi-adapters and plek as dependencies (PR #830)
+
 ## 16.13.0
 
  - Add an option to display search icon in input element (PR #824)
