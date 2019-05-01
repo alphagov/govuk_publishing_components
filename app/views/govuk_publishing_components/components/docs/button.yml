@@ -92,3 +92,12 @@ examples:
       text: "Click me"
       margin_bottom: true
       title: "A button to click"
+  inline_layout:
+    description: Buttons will display adjacent to each other until mobile view, when they will appear on top of each other.
+    embed: |
+      <button class="govuk-button">First button</button>
+      <%= component %>
+    data:
+      text: "Second button"
+      inline_layout: true
+

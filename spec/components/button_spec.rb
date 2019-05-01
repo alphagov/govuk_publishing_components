@@ -161,4 +161,10 @@ describe "Button", type: :view do
 
     assert_select ".govuk-button[title='Do it!']"
   end
+
+  it "renders an inline button" do
+    render_component(text: "Button one", inline_layout: true)
+
+    assert_select ".gem-c-button--inline", text: "Button one"
+  end
 end

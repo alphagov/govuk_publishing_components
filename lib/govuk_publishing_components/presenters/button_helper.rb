@@ -4,7 +4,7 @@ module GovukPublishingComponents
   module Presenters
     class ButtonHelper
       attr_reader :href, :text, :title, :info_text, :rel, :data_attributes,
-        :margin_bottom, :target, :type, :start, :secondary, :secondary_quiet, :destructive
+        :margin_bottom, :inline_layout, :target, :type, :start, :secondary, :secondary_quiet, :destructive
 
       def initialize(local_assigns)
         @href = local_assigns[:href]
@@ -15,6 +15,7 @@ module GovukPublishingComponents
         @default_data_attributes = { "prevent-double-click" => true }
         @data_attributes = local_assigns[:data_attributes]
         @margin_bottom = local_assigns[:margin_bottom]
+        @inline_layout = local_assigns[:inline_layout]
         @target = local_assigns[:target]
         @type = local_assigns[:type]
         @start = local_assigns[:start]
@@ -51,6 +52,7 @@ module GovukPublishingComponents
         classes << "gem-c-button--secondary-quiet" if secondary_quiet
         classes << "govuk-button--warning" if destructive
         classes << "gem-c-button--bottom-margin" if margin_bottom
+        classes << "gem-c-button--inline" if inline_layout
         classes.join(" ")
       end
     end
