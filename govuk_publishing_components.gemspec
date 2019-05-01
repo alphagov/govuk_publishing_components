@@ -20,10 +20,10 @@ Gem::Specification.new do |s|
   s.add_dependency "govuk_app_config"
   s.add_dependency "govuk_frontend_toolkit"
   s.add_dependency "kramdown"
+  s.add_dependency "plek"
   s.add_dependency "rails", ">= 5.0.0.1"
   s.add_dependency "rake"
   s.add_dependency "rouge"
-  s.add_dependency "plek"
   s.add_dependency "sass-rails", ">= 5.0.4"
 
   s.add_development_dependency "capybara", "~> 2.14.4"
