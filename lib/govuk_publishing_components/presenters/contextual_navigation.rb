@@ -21,7 +21,7 @@ module GovukPublishingComponents
       end
 
       def breadcrumbs
-        if content_is_a_specialist_document?
+        if content_tagged_to_a_finder?
           parent_finder = content_item.dig("links", "finder", 0)
           return [] unless parent_finder
 
@@ -38,6 +38,10 @@ module GovukPublishingComponents
         else
           ContentBreadcrumbsBasedOnParent.new(content_item).breadcrumbs[:breadcrumbs]
         end
+      end
+
+      def content_tagged_to_a_finder?
+        content_item.dig("links", "finder").present?
       end
 
       def content_tagged_to_mainstream_browse_pages?

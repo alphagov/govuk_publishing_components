@@ -104,6 +104,14 @@ describe "ContextualBreadcrumbs", type: :view do
     assert_select "a", text: "Competition and Markets Authority cases"
   end
 
+  it "renders parent finder breadcrumb if content has a finder linked" do
+    content_item = example_document_for("guide", "guide-with-facet-groups")
+    render_component(content_item: content_item)
+
+    assert_select "a", text: "Home"
+    assert_select "a", text: "EU Withdrawal Act 2018 statutory instruments"
+  end
+
   it "renders no breadcrumbs if there aren't any" do
     content_item = example_document_for("guide", "guide")
     content_item = remove_mainstream_browse(content_item)
