@@ -18,7 +18,9 @@ describe "All components" do
         expect(yaml["name"]).not_to be_nil
         expect(yaml["description"]).not_to be_nil
         expect(yaml["examples"]).not_to be_nil
-        expect(yaml["accessibility_criteria"]).not_to be_nil
+        expect(
+          yaml["accessibility_criteria"] || yaml["shared_accessibility_criteria"]
+        ).not_to be_nil
       end
 
       it "has the correct class in the ERB template",
