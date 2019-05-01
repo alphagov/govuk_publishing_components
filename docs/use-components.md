@@ -13,3 +13,15 @@ A component from the gem would be included like this:
 ```erb
 <%= render "govuk_publishing_components/components/back_link", href: "#" %>
 ```
+
+Components can be rendered from outside of a Rails view by calling a render method directly on `GovukPublishingComponents`.
+
+```ruby
+GovukPublishingComponents.render("govuk_publishing_components/components/back_link", href: "#")
+```
+
+A locale can be specified as an argument to render a component in a particular localisation.
+
+```ruby
+GovukPublishingComponents.render("govuk_publishing_components/components/back_link", href: "#", locale: "cy")
+```

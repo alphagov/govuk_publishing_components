@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 describe 'Component preview' do
   it 'shows all component examples on a page without header or footer' do

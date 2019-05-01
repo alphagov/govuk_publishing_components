@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+- Provide `GovukPublishingComponents.render` method for rendering components outside of views (PR #832)
 - Remove govspeak dependency with kramdown for markdown rendering (PR #827)
 - Add gds-adpi-adapters and plek as dependencies (PR #830)
 

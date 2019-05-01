@@ -1,3 +1,5 @@
+require "active_support"
+require "action_controller"
 require "govuk_publishing_components/config"
 require "govuk_publishing_components/engine"
 require "govuk_publishing_components/presenters/shared_helper"
@@ -29,5 +31,20 @@ require "govuk_publishing_components/app_helpers/table_helper"
 require "govuk_publishing_components/app_helpers/brand_helper"
 require "govuk_publishing_components/app_helpers/environment"
 
+# Add view and i18n paths for usage outside of a Rails app
+ActionController::Base.append_view_path(
+  File.expand_path("app/views", GovukPublishingComponents::Config.gem_directory)
+)
+
+I18n.load_path.unshift(
+  *Dir.glob(File.expand_path("config/locales/*.yml", GovukPublishingComponents::Config.gem_directory))
+)
+
 module GovukPublishingComponents
+  def self.render(component, options = {})
+    I18n.with_locale(options.fetch(:locale, "en")) do
+      renderer = ActionController::Base.renderer
+      renderer.render(partial: component, locals: options)
+    end
+  end
 end
