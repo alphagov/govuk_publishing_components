@@ -49,11 +49,11 @@ module GovukPublishingComponents
     end
 
     def html_body
-      govspeak_to_html(body) if body.present?
+      markdown_to_html(body) if body.present?
     end
 
     def html_accessibility_criteria
-      govspeak_to_html(accessibility_criteria) if accessibility_criteria.present?
+      markdown_to_html(accessibility_criteria) if accessibility_criteria.present?
     end
 
     def partial_path
@@ -83,8 +83,8 @@ module GovukPublishingComponents
 
   private
 
-    def govspeak_to_html(govspeak)
-      Govspeak::Document.new(govspeak).to_html
+    def markdown_to_html(markdown)
+      Kramdown::Document.new(markdown).to_html
     end
   end
 end

@@ -68,7 +68,7 @@ module GovukPublishingComponents
     end
 
     def html_description
-      govspeak_to_html(description) if description.present?
+      markdown_to_html(description) if description.present?
     end
 
     def has_block?
@@ -81,8 +81,8 @@ module GovukPublishingComponents
 
   private
 
-    def govspeak_to_html(govspeak)
-      Govspeak::Document.new(govspeak).to_html
+    def markdown_to_html(markdown)
+      Kramdown::Document.new(markdown).to_html
     end
   end
 end
