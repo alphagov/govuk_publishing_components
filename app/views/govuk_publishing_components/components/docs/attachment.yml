@@ -1,0 +1,57 @@
+name: Attachment (experimental)
+description: Displays a link to download an attachment and metadata about the file
+body: |
+  This component is marked as experimental as it is part of a drive to provide
+  a consistent place for attachment presentation logic (currently this logic is
+  within [Govspeak][] and [Whitehall][]). The API for this
+  component may change during this process.
+
+  It shows a link to a document that is attached to GOV.UK content along with a
+  thumbnail and relevant file data.
+
+  It is intended to be rendered in Govspeak and as an attachment 'preview' in
+  Content Publisher.
+
+  [Govspeak]: https://github.com/alphagov/govspeak/blob/c3a0742c87537a371108d097cea23688efa90a14/lib/govspeak/presenters/attachment_presenter.rb
+  [Whitehall]: https://github.com/alphagov/whitehall/blob/5c760eea912320c5a80ef59791df47161d889f2f/app/helpers/document_helper.rb
+shared_accessibility_criteria:
+- link
+accessibility_criteria: |
+  The thumbnail image has no `alt` attribute, which causes the link which wraps
+  the thumbnail to contain no content. Since screen readers will have nothing to
+  read in this case, we set `aria-hidden=true` on the thumbail so that it's hidden.
+examples:
+  default:
+    data:
+      attachment:
+        title: "Department for Transport information asset register"
+        url: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/747661/department-for-transport-information-asset-register.csv
+        filename: department-for-transport-information-asset-register.csv
+        content_type: text/csv
+        file_size: 20000
+  with_number_of_pages:
+    data:
+      attachment:
+        title: "Temporary snow ploughs: guidance note"
+        url: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/259634/temporary-snow-ploughs.pdf
+        filename: temporary-snow-ploughs.pdf
+        content_type: application/pdf
+        file_size: 20000
+        number_of_pages: 7
+  opendocument:
+    data:
+      attachment:
+        title: "BEIS Information Asset Register"
+        url: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/744083/BEIS_Information_Asset_Register_.ods
+        filename: BEIS_Information_Asset_Register_.ods
+        content_type: application/vnd.oasis.opendocument.spreadsheet
+        file_size: 20000
+  help_text_disabled:
+    data:
+      attachment:
+        title: "BEIS Information Asset Register"
+        url: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/744083/BEIS_Information_Asset_Register_.ods
+        filename: BEIS_Information_Asset_Register_.ods
+        content_type: application/vnd.oasis.opendocument.spreadsheet
+        file_size: 20000
+      hide_help_text: true

@@ -23,6 +23,8 @@ en:
   common:
     translations: "Translations"
   components:
+    attachment:
+      opendocument_html: "This file is in an <a href='https://www.gov.uk/guidance/open-document-format-odf-guidance-for-uk-government/overview-of-productivity-software' target=%{target} class='govuk-link'>OpenDocument</a> format"
     autocomplete:
       multiselect: "To select multiple items in a list, hold down Ctrl (PC) or Cmd (Mac) key."
     back_link:
