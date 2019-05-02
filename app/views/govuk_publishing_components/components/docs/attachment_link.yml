@@ -22,6 +22,7 @@ examples:
       attachment:
         title: "Temporary snow ploughs: guidance note"
         url: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/259634/temporary-snow-ploughs.pdf
+        filename: temporary-snow-ploughs.pdf
         content_type: application/pdf
         file_size: 20000
         number_of_pages: 1
@@ -34,6 +35,7 @@ examples:
       attachment:
         title: "Temporary snow ploughs: guidance note"
         url: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/259634/temporary-snow-ploughs.pdf
+        filename: temporary-snow-ploughs.pdf
         content_type: application/pdf
         file_size: 20000
         number_of_pages: 1
