@@ -6,9 +6,13 @@ RSpec.describe 'Contextual footer', type: :view do
   end
 
   it 'renders the footer' do
-    render_component(
-      content_item: GovukSchemas::RandomExample.for_schema(frontend_schema: 'speech')
-    )
+    content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: 'speech') do |payload|
+      # If this item is a part of a step nav this component might not render
+      payload["links"].delete("part_of_step_navs")
+      payload
+    end
+
+    render_component(content_item: content_item)
 
     assert_select '.gem-c-contextual-footer'
   end
