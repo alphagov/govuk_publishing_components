@@ -300,6 +300,7 @@ PLATFORMS
 DEPENDENCIES
   capybara (~> 2.14.4)
   foreman (~> 0.64)
+  gds-api-adapters (~> 59.1)
   govuk-lint (~> 3.11)
   govuk_publishing_components!
   govuk_schemas (~> 3.2)
