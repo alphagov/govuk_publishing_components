@@ -1,0 +1,45 @@
+name: Attachment link (experimental)
+description: A link to a file with metadata of the file contents
+body: |
+  This component is marked as experimental as it is part of a drive to provide
+  a consistent place for attachment presentation logic (currently this logic is
+  within [Govspeak][] and [Whitehall][]). The API for this
+  component may change during this process.
+
+  It provides a means to show a link to an attachment with some
+  relevant file data.
+
+  It is expected to be embedded inside an element that provides text styles
+  (such as `.govuk-body`) so does not provide its own text styling.
+
+  [Govspeak]: https://github.com/alphagov/govspeak/blob/c3a0742c87537a371108d097cea23688efa90a14/lib/govspeak/presenters/attachment_presenter.rb
+  [Whitehall]: https://github.com/alphagov/whitehall/blob/5c760eea912320c5a80ef59791df47161d889f2f/app/helpers/document_helper.rb
+shared_accessibility_criteria:
+- link
+examples:
+  default:
+    data:
+      attachment:
+        title: "Temporary snow ploughs: guidance note"
+        url: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/259634/temporary-snow-ploughs.pdf
+        content_type: application/pdf
+        file_size: 20000
+        number_of_pages: 1
+  embedded_in_govuk_body:
+    embed: |
+      <p class="govuk-body">
+        <%= component %>
+      </p>
+    data:
+      attachment:
+        title: "Temporary snow ploughs: guidance note"
+        url: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/259634/temporary-snow-ploughs.pdf
+        content_type: application/pdf
+        file_size: 20000
+        number_of_pages: 1
+  with_target_blank:
+    data:
+      attachment:
+        title: "Temporary snow ploughs: guidance note"
+        url: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/259634/temporary-snow-ploughs.pdf
+      target: _blank

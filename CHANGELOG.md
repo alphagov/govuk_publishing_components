@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+- Add attachment link (experimental) component (PR #833)
 - Add plek as a dependency (PR #834)
 - Provide `GovukPublishingComponents.render` method for rendering components outside of views (PR #832)
 - Remove govspeak dependency with kramdown for markdown rendering (PR #827)
