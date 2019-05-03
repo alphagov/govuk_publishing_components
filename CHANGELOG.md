@@ -10,6 +10,7 @@
 ## Unreleased
 
 - Update cookie-banner behaviour without Javascript (PR #843)
+- Add attachment (experimental) component (PR #842)
 
 ## 16.14.1
 
