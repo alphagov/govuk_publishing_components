@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 16.14.1
 
 - Revert the cookie banner tracking which was added in v16.12.0 (PR #839)
 
