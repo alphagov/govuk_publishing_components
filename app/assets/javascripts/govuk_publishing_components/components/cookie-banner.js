@@ -20,12 +20,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     var hasCookieMessage = (this.$module && window.GOVUK.cookie('seen_cookie_message') !== 'true')
     if (hasCookieMessage) {
       this.$module.style.display = 'block'
-    } else {
-      if (window.GOVUK.analytics && typeof window.GOVUK.analytics.trackEvent === 'function') {
-        window.GOVUK.analytics.trackEvent('cookieBanner', 'Cookie banner not shown', {
-          nonInteraction: true
-        })
-      }
     }
   }
 
