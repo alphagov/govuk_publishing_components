@@ -52,9 +52,4 @@ describe "Search", type: :view do
     render_component(name: "my_custom_field")
     assert_select 'input[name="my_custom_field"]'
   end
-
-  it "renders a search box without a submit button" do
-    render_component(hide_search_button: true)
-    assert_select '.gem-c-search__submit-wrapper button[type="submit"]', false, "This component should not have a submit button"
-  end
 end
