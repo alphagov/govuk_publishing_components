@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+- Revert the cookie banner tracking which was added in v16.12.0 (PR #839)
+
 ## 16.14.0
 
 - Add attachment link (experimental) component (PR #833)
