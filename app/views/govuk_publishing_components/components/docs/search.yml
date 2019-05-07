@@ -42,7 +42,3 @@ examples:
     description: To be used if you need to change the default name 'q'
     data:
       name: "my_own_fieldname"
-  remove_search_submit_button:
-      description: Sometimes this component may be used inside an existing form which has another submit button. A form should only have one submit button. The search button will be displayed by default.
-      data:
-        show_search_button: false

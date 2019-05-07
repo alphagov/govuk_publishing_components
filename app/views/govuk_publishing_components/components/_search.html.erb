@@ -9,7 +9,6 @@
   id ||= "search-main-" + SecureRandom.hex(4)
   label_text ||= "Search GOV.UK"
   name ||= 'q'
-  hide_search_button ||= false
 %>
 
 <div class="gem-c-search <%= class_name %>" data-module="gem-toggle-input-class-on-focus">
@@ -19,11 +18,9 @@
   <div class="gem-c-search__item-wrapper">
     <input type="search" value="<%= value %>"
       id="<%= id %>" name="<%= name %>" title="Search"
-      class="gem-c-search__item gem-c-search__input js-class-toggle<%= ' gem-c-search__suppressed-button' if hide_search_button %>">
-    <% unless hide_search_button %>
-      <div class="gem-c-search__item gem-c-search__submit-wrapper">
-        <button type="submit" class="gem-c-search__submit">Search</button>
-      </div>
-    <% end %>
+      class="gem-c-search__item gem-c-search__input js-class-toggle">
+    <div class="gem-c-search__item gem-c-search__submit-wrapper">
+      <button type="submit" class="gem-c-search__submit">Search</button>
+    </div>
   </div>
 </div>

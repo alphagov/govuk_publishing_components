@@ -152,10 +152,6 @@ $large-input-size: 50px;
       border-right: 0;
     }
 
-    .gem-c-search__input[type="search"].gem-c-search__suppressed-button {
-      border-right: solid 1px $grey-2;
-    }
-
     .js-enabled & {
       .gem-c-search__label {
         color: $secondary-text-colour;
