@@ -20,8 +20,8 @@ $thumbnail-shadow-width: 0 2px 2px;
 
 .gem-c-attachment__thumbnail-image {
   display: block;
-  width: $thumbnail-width;
-  max-width: 100%;
+  width: auto; // for IE8
+  max-width: $thumbnail-width;
   height: $thumbnail-height;
   outline: $thumbnail-border solid $thumbnail-border-colour;
   background: govuk-colour("white");
