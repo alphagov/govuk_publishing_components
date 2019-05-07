@@ -2,7 +2,8 @@ $govuk-cookie-banner-background: #d5e8f3;
 $govuk-cookie-banner-background-new: govuk-colour("white");
 
 .js-enabled {
-  .gem-c-cookie-banner {
+  .gem-c-cookie-banner,
+  .gem-c-cookie-banner--new {
     display: none; // shown with JS, always on for non-JS
   }
 }
@@ -26,6 +27,7 @@ $govuk-cookie-banner-background-new: govuk-colour("white");
   }
 }
 
+// Styles for the new version of the cookie banner
 .gem-c-cookie-banner--new {
   @include govuk-font($size: 16);
   border: 2px solid govuk-colour("black");
@@ -38,9 +40,51 @@ $govuk-cookie-banner-background-new: govuk-colour("white");
   padding-bottom: govuk-spacing(2);
 }
 
-.gem-c-cookie-banner--new .gem-c-cookie-banner__buttons {
+.gem-c-cookie-banner__buttons {
   display: inline-block;
   vertical-align: middle;
+}
+
+.gem-c-cookie-banner__confirmation {
+  display: none;
+  position: relative;
+  padding: 0 govuk-spacing(2);
+}
+
+.gem-c-cookie-banner__confirmation-message,
+.gem-c-cookie-banner__hide-button {
+  display: block;
+
+  @include govuk-media-query($from: tablet) {
+    display: inline-block;
+  }
+}
+
+.gem-c-cookie-banner__confirmation-message {
+  margin-right: govuk-spacing(4);
+}
+
+.gem-c-cookie-banner__hide-button {
+  @include govuk-font($size: 16);
+  outline: 0;
+  border: 0;
+  background: none;
+  text-decoration: underline;
+  color: $govuk-link-colour;
+  padding: govuk-spacing(0);
+  margin-top: govuk-spacing(2);
+
+
+  &:hover {
+    color: $govuk-link-hover-colour;
+    cursor: pointer;
+  }
+
+  @include govuk-media-query($from: tablet) {
+    margin-top: govuk-spacing(0);
+    position: absolute;
+    right: 0;
+  }
 }
 
 // Override the styles from govuk_template
@@ -52,9 +96,14 @@ $govuk-cookie-banner-background-new: govuk-colour("white");
   box-sizing: border-box;
 
   .gem-c-cookie-banner__message,
-  .gem-c-cookie-banner__buttons {
-    @include govuk-width-container;
+  .gem-c-cookie-banner__buttons,
+  .gem-c-cookie-banner__confirmation,
+  .gem-c-cookie-banner__confirmation-message {
     @include core-19;
+  }
+
+  p {
+    margin: 0;
   }
 }
 // sass-lint:enable no-ids
