@@ -16,3 +16,11 @@ $govuk-cookie-banner-background: #d5e8f3;
   margin-top: 0;
   margin-bottom: 0;
 }
+
+.gem-c-cookie-banner__hide-link {
+  display: none;
+
+  .js-enabled & {
+    display: inline-block;
+  }
+}

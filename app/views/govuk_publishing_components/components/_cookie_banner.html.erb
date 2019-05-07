@@ -1,7 +1,7 @@
 <%
   id ||= 'global-cookie-message'
   message ||= capture do %>
-  GOV.UK uses cookies to make the site simpler. <a class="govuk-link" href="/help/cookies" data-module="track-click" data-track-category="cookieBanner" data-track-action="Cookie banner clicked">Find out more about cookies</a> or <a class="govuk-link" href="#" data-hide-cookie-banner="true" data-module="track-click" data-track-category="cookieBanner" data-track-action="Cookie banner hidden">hide this message</a>
+  GOV.UK uses cookies to make the site simpler. <a class="govuk-link" href="/help/cookies" data-module="track-click" data-track-category="cookieBanner" data-track-action="Cookie banner clicked">Find out more about cookies</a> <span class="gem-c-cookie-banner__hide-link">or <a class="govuk-link" href="#" data-hide-cookie-banner="true" data-module="track-click" data-track-category="cookieBanner" data-track-action="Cookie banner hidden">hide this message</a></span>
 <% end %>
 
 <div id="<%= id %>" class="gem-c-cookie-banner" data-module="cookie-banner">
