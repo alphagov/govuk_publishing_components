@@ -124,9 +124,8 @@ describe "Contextual navigation" do
   end
 
   def given_theres_a_page_with_just_legacy_taxonomy
-    topic = random_item("topic", "title" => "A legacy topic")
     content_store_has_random_item(links: {
-      "topics" => [topic],
+      "topics" => [example_item("topic", "topic")],
       "parent" => [example_item("mainstream_browse_page", "top_level_page")]
     })
   end
@@ -198,7 +197,7 @@ describe "Contextual navigation" do
 
   def then_i_see_the_legacy_topic_in_the_related_navigation_footer
     within '.gem-c-contextual-footer' do
-      expect(page).to have_css(".gem-c-related-navigation__link", text: "A legacy topic")
+      expect(page).to have_css(".gem-c-related-navigation__link", text: "Oil and gas")
     end
   end
 
