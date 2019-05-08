@@ -271,10 +271,9 @@ html {
   }
 }
 
-// Hide survey and cookie banners
+// Hide survey banner
 // scss-lint:disable IdSelector
-#user-satisfaction-survey-container,
-#global-cookie-message {
+#user-satisfaction-survey-container {
   display: none;
 }
 // scss-lint:enable IdSelector
