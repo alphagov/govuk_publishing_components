@@ -7,10 +7,12 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 16.16.0
+- Add attachment (experimental) component (PR #842)
+
 ## 16.15.0
 
 - Update cookie-banner behaviour without Javascript (PR #843)
-- Add attachment (experimental) component (PR #842)
 
 ## 16.14.1
 
