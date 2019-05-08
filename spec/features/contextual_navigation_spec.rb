@@ -81,7 +81,7 @@ describe "Contextual navigation" do
   def given_theres_a_page_with_browse_page
     content_store_has_random_item(
       links: {
-        "parent" => [random_item("mainstream_browse_page", "title" => "A parent")],
+        "parent" => [example_item("mainstream_browse_page", "top_level_page")],
         "mainstream_browse_pages" => [example_item("mainstream_browse_page", "root_page")],
       }
     )
@@ -90,7 +90,7 @@ describe "Contextual navigation" do
   def given_theres_a_page_with_related_items
     content_store_has_random_item(
       links: {
-        "parent" => [random_item("mainstream_browse_page", "title" => "A parent")],
+        "parent" => [example_item("mainstream_browse_page", "top_level_page")],
         "ordered_related_items" => [example_item("guide", "guide")]
       }
     )
@@ -102,7 +102,7 @@ describe "Contextual navigation" do
       "base_path" => "/page-with-contextual-navigation",
       "document_type" => "travel_advice",
       "links" => {
-        "parent" => [random_item("mainstream_browse_page", "title" => "A parent")],
+        "parent" => [example_item("mainstream_browse_page", "top_level_page")],
         "taxons" => [example_item("taxon", "taxon")],
         "ordered_related_items" => [example_item("guide", "guide")]
       }
@@ -127,7 +127,7 @@ describe "Contextual navigation" do
     topic = random_item("topic", "title" => "A legacy topic")
     content_store_has_random_item(links: {
       "topics" => [topic],
-      "parent" => [random_item("mainstream_browse_page", "title" => "A parent")]
+      "parent" => [example_item("mainstream_browse_page", "top_level_page")]
     })
   end
 
@@ -179,7 +179,7 @@ describe "Contextual navigation" do
   def and_the_parent_based_breadcrumbs
     within '.gem-c-breadcrumbs' do
       expect(page).to have_link("Home")
-      expect(page).to have_link("A parent")
+      expect(page).to have_link("Benefits")
     end
   end
 
