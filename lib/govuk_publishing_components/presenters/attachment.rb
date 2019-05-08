@@ -48,6 +48,14 @@ module GovukPublishingComponents
         pluralize(attachment_data[:number_of_pages], "page")
       end
 
+      def thumbnail
+        "https://www.gov.uk/government/assets/pub-cover-doc-afe3b0a8a9511beeca890340170aee8b5649413f948e512c9b8ce432d8513d32.png"
+      end
+
+      def opendocument?
+        content_type.opendocument?
+      end
+
       class SupportedContentType
         attr_reader :content_type, :name, :abbr
 
@@ -77,6 +85,10 @@ module GovukPublishingComponents
           { content_type: "text/xml", extension: ".xsd", abbr: "XSD", name: "XML Schema" }.freeze,
         ].freeze
 
+        OPENDOCUMENT_CONTENT_TYPES = %w(application/vnd.oasis.opendocument.presentation
+                                        application/vnd.oasis.opendocument.spreadsheet
+                                        application/vnd.oasis.opendocument.text).freeze
+
         def self.find(content_type, extension = nil)
           matching_types = TYPES.select { |type| type[:content_type] == content_type }
 
@@ -96,6 +108,10 @@ module GovukPublishingComponents
           @name = content_type[:name]
           @abbr = content_type[:abbr]
         end
+
+        def opendocument?
+          OPENDOCUMENT_CONTENT_TYPES.include?(content_type)
+        end
       end
 
       class UnsupportedContentType
@@ -108,6 +124,10 @@ module GovukPublishingComponents
         def name; end
 
         def abbr; end
+
+        def opendocument?
+          false
+        end
       end
     end
   end

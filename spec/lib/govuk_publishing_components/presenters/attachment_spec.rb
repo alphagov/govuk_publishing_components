@@ -85,4 +85,20 @@ RSpec.describe GovukPublishingComponents::Presenters::Attachment do
       expect(attachment.readable_number_of_pages).to eq("3 pages")
     end
   end
+
+  describe "#opendocument?" do
+    it "returns true if content type is an OpenDocument" do
+      attachment = described_class.new(title: "test",
+                                       url: "test",
+                                       content_type: "application/vnd.oasis.opendocument.text")
+      expect(attachment.opendocument?).to be true
+    end
+
+    it "returns false if content type is an OpenDocument" do
+      attachment = described_class.new(title: "test",
+                                       url: "test",
+                                       content_type: "application/msword")
+      expect(attachment.opendocument?).to be false
+    end
+  end
 end
