@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 16.15.0
 
 - Update cookie-banner behaviour without Javascript (PR #843)
 
