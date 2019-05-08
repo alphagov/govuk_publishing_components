@@ -91,7 +91,7 @@ describe "Contextual navigation" do
     content_store_has_random_item(
       links: {
         "parent" => [random_item("mainstream_browse_page", "title" => "A parent")],
-        "ordered_related_items" => [random_item("guide", "title" => "A related link curated in Publisher")]
+        "ordered_related_items" => [example_item("guide", "guide")]
       }
     )
   end
@@ -103,8 +103,8 @@ describe "Contextual navigation" do
       "document_type" => "travel_advice",
       "links" => {
         "parent" => [random_item("mainstream_browse_page", "title" => "A parent")],
-        "ordered_related_items" => [random_item("guide", "title" => "A related link curated in Publisher")]
         "taxons" => [example_item("taxon", "taxon")],
+        "ordered_related_items" => [example_item("guide", "guide")]
       }
     )
 
@@ -172,7 +172,7 @@ describe "Contextual navigation" do
   def then_i_see_the_related_links_sidebar
     within '.gem-c-contextual-sidebar' do
       expect(page).to have_selector(".gem-c-related-navigation")
-      expect(page).to have_content("A related link curated in Publisher")
+      expect(page).to have_content("The national curriculum")
     end
   end
 
