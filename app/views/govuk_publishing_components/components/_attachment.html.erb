@@ -8,15 +8,15 @@
     content = tag.abbr(attachment.content_type_abbr,
                        class: "gem-c-attachment__abbr",
                        title: attachment.readable_content_type)
-    attributes << tag.span(content)
+    attributes << tag.span(content, class: "gem-c-attachment__attribute")
   end
 
   if attachment.readable_file_size
-    attributes << tag.span(attachment.readable_file_size)
+    attributes << tag.span(attachment.readable_file_size, class: "gem-c-attachment__attribute")
   end
 
   if attachment.readable_number_of_pages
-    attributes << tag.span(attachment.readable_number_of_pages)
+    attributes << tag.span(attachment.readable_number_of_pages, class: "gem-c-attachment__attribute")
   end
 %>
 <%= tag.section class: "gem-c-attachment" do %>
