@@ -82,7 +82,7 @@ describe "Contextual navigation" do
     content_store_has_random_item(
       links: {
         "parent" => [random_item("mainstream_browse_page", "title" => "A parent")],
-        "mainstream_browse_pages" => [random_item("mainstream_browse_page", "title" => "A browse page")],
+        "mainstream_browse_pages" => [example_item("mainstream_browse_page", "root_page")],
       }
     )
   end
@@ -165,7 +165,7 @@ describe "Contextual navigation" do
   def then_i_see_the_browse_page_in_the_footer
     within '.gem-c-contextual-footer' do
       expect(page).to have_selector(".gem-c-related-navigation")
-      expect(page).to have_content("A browse page")
+      expect(page).to have_content("Browse")
     end
   end
 
