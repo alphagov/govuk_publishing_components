@@ -103,8 +103,8 @@ describe "Contextual navigation" do
       "document_type" => "travel_advice",
       "links" => {
         "parent" => [random_item("mainstream_browse_page", "title" => "A parent")],
-        "taxons" => [random_item("taxon", "phase" => "live")],
         "ordered_related_items" => [random_item("guide", "title" => "A related link curated in Publisher")]
+        "taxons" => [example_item("taxon", "taxon")],
       }
     )
 
@@ -112,8 +112,8 @@ describe "Contextual navigation" do
   end
 
   def given_theres_a_guide_with_a_live_taxon_tagged_to_it
-    alpha_taxon = random_item("taxon", "title" => "An alpha taxon", "phase" => "alpha")
-    live_taxon = random_item("taxon", "title" => "A live taxon", "phase" => "live")
+    alpha_taxon = example_item("taxon", "taxon_in_alpha_phase")
+    live_taxon = example_item("taxon", "taxon")
 
     content_store_has_random_item(
       schema: "guide",
@@ -186,13 +186,13 @@ describe "Contextual navigation" do
   def and_the_taxonomy_breadcrumbs
     within '.gem-c-breadcrumbs' do
       expect(page).to have_link("Home")
-      expect(page).to have_link("A live taxon")
+      expect(page).to have_link("A level")
     end
   end
 
   def then_i_see_the_taxon_in_the_related_navigation_footer
     within '.gem-c-contextual-footer' do
-      expect(page).to have_css(".gem-c-related-navigation__link", text: "A live taxon")
+      expect(page).to have_css(".gem-c-related-navigation__link", text: "A level")
     end
   end
 
