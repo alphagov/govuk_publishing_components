@@ -24,6 +24,7 @@ $thumbnail-shadow-width: 0 2px 2px;
   max-width: $thumbnail-width;
   height: $thumbnail-height;
   outline: $thumbnail-border solid $thumbnail-border-colour;
+  border: $thumbnail-border-colour; // for IE9 & IE10
   background: govuk-colour("white");
   box-shadow: $thumbnail-shadow-width $thumbnail-shadow-colour;
 }
