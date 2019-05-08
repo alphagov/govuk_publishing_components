@@ -213,6 +213,10 @@ describe "Contextual navigation" do
     GovukSchemas::Example.find(schema_name, example_name: "step_by_step_nav")
   end
 
+  def example_item(schema_name, example_name)
+    GovukSchemas::Example.find(schema_name, example_name: example_name)
+  end
+
   def random_item(schema_name, merge_with = {})
     GovukSchemas::RandomExample.for_schema(frontend_schema: schema_name) do |random_item|
       random_item.merge(merge_with)
