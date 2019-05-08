@@ -7,60 +7,66 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased changes
+
+* Adds support to allow parent finder to show as breadcrumbs (PR #831)
+
 ## 16.18.0
 
-- Add inline radio button option (PR #860)
-- Add new version of (experimental) cookie banner (PR #845)
-- Add inline variation for button component (PR #845)
-- Fix govspeak overriding attachment styling (PR #856)
+* Add inline radio button option (PR #860)
+* Add new version of (experimental) cookie banner (PR #845)
+* Add inline variation for button component (PR #845)
+* Fix govspeak overriding attachment styling (PR #856)
+
 
 ## 16.17.0
 
-- Replace gems version of warning button with GOV.UK Frontend version (PR #848)
-- Prevent double click by default for submit buttons (PR #849)
-- Add inline SVG icons to attachment component (PR #850)
-- Update contextual navigation feature tests to use examples from govuk-content-schemas (PR #847)
+* Replace gems version of warning button with GOV.UK Frontend version (PR #848)
+* Prevent double click by default for submit buttons (PR #849)
+* Add inline SVG icons to attachment component (PR #850)
+* Update contextual navigation feature tests to use examples from govuk-content-schemas (PR #847)
 
 ## 16.16.0
-- Add attachment (experimental) component (PR #842)
+
+* Add attachment (experimental) component (PR #842)
 
 ## 16.15.0
 
-- Update cookie-banner behaviour without Javascript (PR #843)
+* Update cookie-banner behaviour without Javascript (PR #843)
 
 ## 16.14.1
 
-- Revert the cookie banner tracking which was added in v16.12.0 (PR #839)
+* Revert the cookie banner tracking which was added in v16.12.0 (PR #839)
 
 ## 16.14.0
 
-- Add attachment link (experimental) component (PR #833)
-- Add plek as a dependency (PR #834)
-- Provide `GovukPublishingComponents.render` method for rendering components outside of views (PR #832)
-- Remove govspeak dependency with kramdown for markdown rendering (PR #827)
+* Add attachment link (experimental) component (PR #833)
+* Add plek as a dependency (PR #834)
+* Provide `GovukPublishingComponents.render` method for rendering components outside of views (PR #832)
+* Remove govspeak dependency with kramdown for markdown rendering (PR #827)
 
 ## 16.13.0
 
- - Add an option to display search icon in input element (PR #824)
- - Permit Document List metadata fields to have nil values. (PR #828)
- - Upgrade to GOV.UK Frontend version 2.11.0. (PR #826)
+* Add an option to display search icon in input element (PR #824)
+* Permit Document List metadata fields to have nil values. (PR #828)
+* Upgrade to GOV.UK Frontend version 2.11.0. (PR #826)
 
 ## 16.12.0
 
-- Fire GA event when cookie banner isn't shown, instead of when it is (PR #821)
+* Fire GA event when cookie banner isn't shown, instead of when it is (PR #821)
 
 ## 16.11.0
 
-- Fix script in header component not being compatible with the govuk_template script (PR #818)
-- Upgrade to govuk-frontend 2.10.0 (PR #817)
+* Fix script in header component not being compatible with the govuk_template script (PR #818)
+* Upgrade to govuk-frontend 2.10.0 (PR #817)
 
 ## 16.10.1
 
-- Enforce compatibility with deprecated packages for media print stylesheet (PR #815)
+* Enforce compatibility with deprecated packages for media print stylesheet (PR #815)
 
 ## 16.10.0
 
-- Support dynamic resizing of the modal component (PR #812)
+* Support dynamic resizing of the modal component (PR #812)
 
 ## 16.9.2
 
