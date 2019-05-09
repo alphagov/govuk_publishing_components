@@ -32,8 +32,7 @@ module GovukPublishingComponents
         options[:role] = "button" if link?
         options[:type] = button_type
         options[:rel] = rel if rel
-        options[:data] = data_attributes ? data_attributes.merge(@default_data_attributes) : @default_data_attributes
-        options[:data] = data_attributes if button_type != "submit"
+        options[:data] = button_type == "submit" ? data_attributes.to_h.merge(@default_data_attributes) : data_attributes
         options[:title] = title if title
         options[:target] = target if target
         options
