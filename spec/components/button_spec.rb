@@ -54,8 +54,8 @@ describe "Button", type: :view do
 
   it "renders destructive button" do
     render_component(text: "Warning", href: "#", destructive: true)
-    assert_select ".gem-c-button--destructive[href='#']", text: "Warning"
-    assert_select ".gem-c-button--destructive"
+    assert_select ".govuk-button--warning[href='#']", text: "Warning"
+    assert_select ".govuk-button--warning"
   end
 
   it "renders an anchor if href set" do
