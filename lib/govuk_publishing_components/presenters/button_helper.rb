@@ -48,7 +48,7 @@ module GovukPublishingComponents
         classes << "govuk-button--start" if start
         classes << "gem-c-button--secondary" if secondary
         classes << "gem-c-button--secondary-quiet" if secondary_quiet
-        classes << "gem-c-button--destructive" if destructive
+        classes << "govuk-button--warning" if destructive
         classes << "gem-c-button--bottom-margin" if margin_bottom
         classes.join(" ")
       end

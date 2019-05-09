@@ -8,10 +8,6 @@ $gem-secondary-button-hover-background-colour: govuk-colour("grey-4");
 $gem-quiet-button-colour: govuk-colour("grey-1");
 $gem-quiet-button-hover-colour: darken($gem-quiet-button-colour, 5%);
 
-$gem-destructive-button-background-colour: govuk-colour("red");
-$gem-destructive-button-hover-background-colour: darken($gem-destructive-button-background-colour, 5%);
-$gem-destructive-button-border-colour: govuk-colour("black");
-
 // Because govuk-frontend adds a responsive bottom margin by default for each component
 // we reset it to zero so we can set it separately using `gem-c-button--bottom-margin`
 // If we decide to use responsive margins consistently across components we can remove this
@@ -95,22 +91,6 @@ $gem-destructive-button-border-colour: govuk-colour("black");
 
   &:before {
     content: none;
-  }
-}
-
-.gem-c-button--destructive {
-  background-color: $gem-destructive-button-background-colour;
-  box-shadow: 0 2px 0 $gem-destructive-button-border-colour;
-
-  &:link,
-  &:visited,
-  &:active,
-  &:focus {
-    background-color: $gem-destructive-button-background-colour;
-  }
-
-  &:hover {
-    background-color: $gem-destructive-button-hover-background-colour;
   }
 }
 
