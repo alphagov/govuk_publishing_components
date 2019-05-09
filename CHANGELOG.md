@@ -7,6 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+- Replace gems version of warning button with GOV.UK Frontend version (PR #848)
+
 ## 16.16.0
 - Add attachment (experimental) component (PR #842)
 
