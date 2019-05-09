@@ -101,4 +101,36 @@ RSpec.describe GovukPublishingComponents::Presenters::Attachment do
       expect(attachment.opendocument?).to be false
     end
   end
+
+  describe "#document?" do
+    it "returns true for content types specified as a document" do
+      attachment = described_class.new(title: "test",
+                                       url: "test",
+                                       content_type: "application/msword")
+      expect(attachment.document?).to be true
+    end
+
+    it "returns false for a content type not specified as a document" do
+      attachment = described_class.new(title: "test",
+                                       url: "test",
+                                       content_type: "text/plain")
+      expect(attachment.document?).to be false
+    end
+  end
+
+  describe "#spreadsheet?" do
+    it "returns true for content types specified as a document" do
+      attachment = described_class.new(title: "test",
+                                       url: "test",
+                                       content_type: "text/csv")
+      expect(attachment.spreadsheet?).to be true
+    end
+
+    it "returns false for a content type not specified as a spreadsheet" do
+      attachment = described_class.new(title: "test",
+                                       url: "test",
+                                       content_type: "text/plain")
+      expect(attachment.spreadsheet?).to be false
+    end
+  end
 end

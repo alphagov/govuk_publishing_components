@@ -4,6 +4,8 @@ module GovukPublishingComponents
       include ActionView::Helpers::NumberHelper
       include ActionView::Helpers::TextHelper
 
+      delegate :opendocument?, :document?, :spreadsheet?, to: :content_type
+
       attr_reader :attachment_data
 
       # Expects a hash of attachment data
@@ -48,46 +50,34 @@ module GovukPublishingComponents
         pluralize(attachment_data[:number_of_pages], "page")
       end
 
-      def thumbnail
-        "https://www.gov.uk/government/assets/pub-cover-doc-afe3b0a8a9511beeca890340170aee8b5649413f948e512c9b8ce432d8513d32.png"
-      end
-
-      def opendocument?
-        content_type.opendocument?
-      end
-
       class SupportedContentType
-        attr_reader :content_type, :name, :abbr
+        attr_reader :content_type_data
 
         TYPES = [
-          { content_type: "application/msword", name: "MS Word Document" }.freeze, # doc
-          { content_type: "application/pdf", abbr: "PDF", name: "Portable Document Format" }.freeze,
+          { content_type: "application/msword", name: "MS Word Document", document: true }.freeze, # doc
+          { content_type: "application/pdf", abbr: "PDF", name: "Portable Document Format", document: true }.freeze,
           { content_type: "application/postscript", extension: ".ps", abbr: "PS", name: "PostScript" }.freeze,
           { content_type: "application/postscript", extension: ".eps", abbr: "EPS", name: "Encapsulated PostScript" }.freeze,
           { content_type: "application/rtf", abbr: "RTF", name: "Rich Text Format" }.freeze,
-          { content_type: "application/vnd.ms-excel", name: "MS Excel Spreadsheet" }.freeze,
+          { content_type: "application/vnd.ms-excel", name: "MS Excel Spreadsheet", spreadsheet: true }.freeze,
           { content_type: "application/vnd.ms-excel.sheet.macroenabled.12", abbr: "XLSM", name: "MS Excel Macro-Enabled Workbook" }.freeze,
           { content_type: "application/vnd.ms-powerpoint", name: "MS Powerpoint Presentation" }.freeze, # ppt
-          { content_type: "application/vnd.oasis.opendocument.presentation", abbr: "ODP", name: "OpenDocument Presentation" }.freeze,
-          { content_type: "application/vnd.oasis.opendocument.spreadsheet", abbr: "ODS", name: "OpenDocument Spreadsheet" }.freeze,
-          { content_type: "application/vnd.oasis.opendocument.text", abbr: "ODT", name: "OpenDocument Text document" }.freeze,
+          { content_type: "application/vnd.oasis.opendocument.presentation", abbr: "ODP", name: "OpenDocument Presentation", opendocument: true }.freeze,
+          { content_type: "application/vnd.oasis.opendocument.spreadsheet", abbr: "ODS", name: "OpenDocument Spreadsheet", opendocument: true, spreadsheet: true }.freeze,
+          { content_type: "application/vnd.oasis.opendocument.text", abbr: "ODT", name: "OpenDocument Text document", opendocument: true, document: true }.freeze,
           { content_type: "application/vnd.openxmlformats-officedocument.presentationml.presentation", name: "MS Powerpoint Presentation" }.freeze, # pptx
-          { content_type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", name: "MS Excel Spreadsheet" }.freeze, # xlsx
-          { content_type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document", name: "MS Word Document" }.freeze, # docx
+          { content_type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", name: "MS Excel Spreadsheet", spreadsheet: true }.freeze, # xlsx
+          { content_type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document", name: "MS Word Document", document: true }.freeze, # docx
           { content_type: "application/xml", abbr: "XML", name: "XML Document" }.freeze,
           { content_type: "image/gif", abbr: "GIF", name: "Graphics Interchange Format" }.freeze,
           { content_type: "image/jpeg", name: "JPEG" }.freeze,
           { content_type: "image/png", abbr: "PNG", name: "Portable Network Graphic" }.freeze,
           { content_type: "image/vnd.dxf", abbr: "DXF", name: "AutoCAD Drawing Exchange Format" }.freeze,
-          { content_type: "text/csv", abbr: "CSV", name: "Comma-separated Values" }.freeze,
+          { content_type: "text/csv", abbr: "CSV", name: "Comma-separated Values", spreadsheet: true }.freeze,
           { content_type: "text/plain", name: "Plain Text" }.freeze,
           { content_type: "text/xml", extension: ".xml", abbr: "XML", name: "XML Document" }.freeze,
           { content_type: "text/xml", extension: ".xsd", abbr: "XSD", name: "XML Schema" }.freeze,
         ].freeze
-
-        OPENDOCUMENT_CONTENT_TYPES = %w(application/vnd.oasis.opendocument.presentation
-                                        application/vnd.oasis.opendocument.spreadsheet
-                                        application/vnd.oasis.opendocument.text).freeze
 
         def self.find(content_type, extension = nil)
           matching_types = TYPES.select { |type| type[:content_type] == content_type }
@@ -103,14 +93,32 @@ module GovukPublishingComponents
           new(content_type)
         end
 
-        def initialize(content_type)
-          @content_type = content_type[:content_type]
-          @name = content_type[:name]
-          @abbr = content_type[:abbr]
+        def initialize(content_type_data)
+          @content_type_data = content_type_data
+        end
+
+        def content_type
+          content_type_data[:content_type]
+        end
+
+        def abbr
+          content_type_data[:abbr]
+        end
+
+        def name
+          content_type_data[:name]
         end
 
         def opendocument?
-          OPENDOCUMENT_CONTENT_TYPES.include?(content_type)
+          !!content_type_data[:opendocument]
+        end
+
+        def document?
+          !!content_type_data[:document]
+        end
+
+        def spreadsheet?
+          !!content_type_data[:spreadsheet]
         end
       end
 
@@ -126,6 +134,14 @@ module GovukPublishingComponents
         def abbr; end
 
         def opendocument?
+          false
+        end
+
+        def document?
+          false
+        end
+
+        def spreadsheet?
           false
         end
       end
