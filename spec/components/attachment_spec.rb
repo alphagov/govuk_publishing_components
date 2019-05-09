@@ -40,6 +40,16 @@ describe "Attachment", type: :view do
     expect(rendered).to match(/2 pages/)
   end
 
+  it "can show file type that doesn't have an abbreviation" do
+    render_component(
+      attachment: {
+        title: "Attachment",
+        url: "attachment",
+        content_type: "text/plain",
+      },
+    )
+    expect(rendered).to match(/Plain Text/)
+  end
   it "shows OpenDocument help text if OpenDocument format" do
     render_component(
       attachment: {

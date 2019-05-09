@@ -4,10 +4,14 @@
   hide_help_text ||= false
   attributes = []
 
-  if attachment.content_type_abbr
-    content = tag.abbr(attachment.content_type_abbr,
-                       class: "gem-c-attachment__abbr",
-                       title: attachment.readable_content_type)
+  if attachment.readable_content_type
+    content = if attachment.content_type_abbr
+                raw tag.abbr(attachment.content_type.abbr,
+                             title: attachment.readable_content_type,
+                             class: "gem-c-attachment__abbr")
+              else
+                attachment.readable_content_type
+              end
     attributes << tag.span(content, class: "gem-c-attachment__attribute")
   end
 
