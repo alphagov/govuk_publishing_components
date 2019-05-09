@@ -15,7 +15,6 @@ describe "Attachment", type: :view do
     render_component(attachment: { title: "Attachment", url: "https://gov.uk/attachment" })
     assert_select ".gem-c-attachment"
     assert_select "a[href='https://gov.uk/attachment']", text: "Attachment"
-    assert_select "img[src='https://www.gov.uk/government/assets/pub-cover-doc-afe3b0a8a9511beeca890340170aee8b5649413f948e512c9b8ce432d8513d32.png'][class='gem-c-attachment__thumbnail-image']"
   end
 
   it "can have a target specified" do

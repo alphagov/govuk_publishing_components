@@ -22,9 +22,13 @@
 <%= tag.section class: "gem-c-attachment" do %>
   <%= tag.div class: "gem-c-attachment__thumbnail" do %>
     <%= link_to attachment.url, target: target, tabindex: "-1", "aria-hidden": true do %>
-      <%= tag.img class: "gem-c-attachment__thumbnail-image",
-                  src: attachment.thumbnail
-      %>
+      <% if attachment.document? %>
+        <%= render "govuk_publishing_components/components/attachment/thumbnail_document.svg" %>
+      <% elsif attachment.spreadsheet? %>
+        <%= render "govuk_publishing_components/components/attachment/thumbnail_spreadsheet.svg" %>
+      <% else %>
+        <%= render "govuk_publishing_components/components/attachment/thumbnail_generic.svg" %>
+      <% end %>
     <% end %>
   <% end %>
 
