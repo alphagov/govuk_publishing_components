@@ -12,7 +12,8 @@ module GovukPublishingComponents
         @title = local_assigns[:title]
         @info_text = local_assigns[:info_text]
         @rel = local_assigns[:rel]
-        @data_attributes = local_assigns[:data_attributes]
+        @default_data_attributes = { "prevent-double-click" => true }
+        @data_attributes = local_assigns[:data_attributes] ? local_assigns[:data_attributes].merge(@default_data_attributes) : @default_data_attributes
         @margin_bottom = local_assigns[:margin_bottom]
         @target = local_assigns[:target]
         @type = local_assigns[:type]

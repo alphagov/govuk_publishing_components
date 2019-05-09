@@ -99,7 +99,15 @@ describe "Button", type: :view do
     assert_select ".govuk-button.gem-c-button--bottom-margin", text: "Submit"
   end
 
-  it "renders data attributes correctly for buttons" do
+  it "renders the default data attribute for buttons" do
+    render_component(
+      text: "Submit",
+    )
+
+    assert_select "button.govuk-button[data-prevent-double-click='true']"
+  end
+
+  it "renders custom data attributes correctly for buttons" do
     render_component(
       text: "Submit",
       data_attributes: {
@@ -112,6 +120,7 @@ describe "Button", type: :view do
     assert_select "button.govuk-button[data-module='cross-domain-tracking']"
     assert_select "button.govuk-button[data-tracking-code='GA-123ABC']"
     assert_select "button.govuk-button[data-tracking-name='transactionTracker']"
+    assert_select "button.govuk-button[data-prevent-double-click='true']"
   end
 
   it "renders data attributes correctly for links" do
