@@ -25,7 +25,11 @@
 %>
 <%= tag.section class: "gem-c-attachment" do %>
   <%= tag.div class: "gem-c-attachment__thumbnail" do %>
-    <%= link_to attachment.url, target: target, tabindex: "-1", "aria-hidden": true do %>
+    <%= link_to attachment.url,
+                class: "govuk-link",
+                target: target,
+                tabindex: "-1",
+                "aria-hidden": true do %>
       <% if attachment.document? %>
         <%= render "govuk_publishing_components/components/attachment/thumbnail_document.svg" %>
       <% elsif attachment.spreadsheet? %>
