@@ -107,6 +107,24 @@ describe "Button", type: :view do
     assert_select "button.govuk-button[data-prevent-double-click='true']"
   end
 
+  it "renders the default data attribute for submit buttons" do
+    render_component(
+      text: "Submit",
+      type: "submit"
+    )
+
+    assert_select "button.govuk-button[data-prevent-double-click='true']"
+  end
+
+  it "doesn't render the default data attribute for buttons with type button" do
+    render_component(
+      text: "Submit",
+      type: "button"
+    )
+
+    assert_select "button.govuk-button[data-prevent-double-click='true']", false
+  end
+
   it "renders custom data attributes correctly for buttons" do
     render_component(
       text: "Submit",
@@ -120,7 +138,6 @@ describe "Button", type: :view do
     assert_select "button.govuk-button[data-module='cross-domain-tracking']"
     assert_select "button.govuk-button[data-tracking-code='GA-123ABC']"
     assert_select "button.govuk-button[data-tracking-name='transactionTracker']"
-    assert_select "button.govuk-button[data-prevent-double-click='true']"
   end
 
   it "renders data attributes correctly for links" do
