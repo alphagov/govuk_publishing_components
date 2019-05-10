@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 16.17.0
 - Replace gems version of warning button with GOV.UK Frontend version (PR #848)
 - Prevent double click by default for submit buttons (PR #849)
 - Update contextual navigation feature tests to use examples from govuk-content-schemas (PR #847)
