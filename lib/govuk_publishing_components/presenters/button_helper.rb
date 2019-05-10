@@ -12,6 +12,7 @@ module GovukPublishingComponents
         @title = local_assigns[:title]
         @info_text = local_assigns[:info_text]
         @rel = local_assigns[:rel]
+        @default_data_attributes = { "prevent-double-click" => true }
         @data_attributes = local_assigns[:data_attributes]
         @margin_bottom = local_assigns[:margin_bottom]
         @target = local_assigns[:target]
@@ -31,7 +32,7 @@ module GovukPublishingComponents
         options[:role] = "button" if link?
         options[:type] = button_type
         options[:rel] = rel if rel
-        options[:data] = data_attributes if data_attributes
+        options[:data] = button_type == "submit" ? data_attributes.to_h.merge(@default_data_attributes) : data_attributes
         options[:title] = title if title
         options[:target] = target if target
         options
