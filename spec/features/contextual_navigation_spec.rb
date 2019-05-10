@@ -81,8 +81,8 @@ describe "Contextual navigation" do
   def given_theres_a_page_with_browse_page
     content_store_has_random_item(
       links: {
-        "parent" => [random_item("mainstream_browse_page", "title" => "A parent")],
-        "mainstream_browse_pages" => [random_item("mainstream_browse_page", "title" => "A browse page")],
+        "parent" => [example_item("mainstream_browse_page", "top_level_page")],
+        "mainstream_browse_pages" => [example_item("mainstream_browse_page", "root_page")],
       }
     )
   end
@@ -90,8 +90,8 @@ describe "Contextual navigation" do
   def given_theres_a_page_with_related_items
     content_store_has_random_item(
       links: {
-        "parent" => [random_item("mainstream_browse_page", "title" => "A parent")],
-        "ordered_related_items" => [random_item("guide", "title" => "A related link curated in Publisher")]
+        "parent" => [example_item("mainstream_browse_page", "top_level_page")],
+        "ordered_related_items" => [example_item("guide", "guide")]
       }
     )
   end
@@ -102,9 +102,9 @@ describe "Contextual navigation" do
       "base_path" => "/page-with-contextual-navigation",
       "document_type" => "travel_advice",
       "links" => {
-        "parent" => [random_item("mainstream_browse_page", "title" => "A parent")],
-        "taxons" => [random_item("taxon", "phase" => "live")],
-        "ordered_related_items" => [random_item("guide", "title" => "A related link curated in Publisher")]
+        "parent" => [example_item("mainstream_browse_page", "top_level_page")],
+        "taxons" => [example_item("taxon", "taxon")],
+        "ordered_related_items" => [example_item("guide", "guide")]
       }
     )
 
@@ -112,8 +112,8 @@ describe "Contextual navigation" do
   end
 
   def given_theres_a_guide_with_a_live_taxon_tagged_to_it
-    alpha_taxon = random_item("taxon", "title" => "An alpha taxon", "phase" => "alpha")
-    live_taxon = random_item("taxon", "title" => "A live taxon", "phase" => "live")
+    alpha_taxon = example_item("taxon", "taxon_in_alpha_phase")
+    live_taxon = example_item("taxon", "taxon")
 
     content_store_has_random_item(
       schema: "guide",
@@ -124,10 +124,9 @@ describe "Contextual navigation" do
   end
 
   def given_theres_a_page_with_just_legacy_taxonomy
-    topic = random_item("topic", "title" => "A legacy topic")
     content_store_has_random_item(links: {
-      "topics" => [topic],
-      "parent" => [random_item("mainstream_browse_page", "title" => "A parent")]
+      "topics" => [example_item("topic", "topic")],
+      "parent" => [example_item("mainstream_browse_page", "top_level_page")]
     })
   end
 
@@ -165,40 +164,40 @@ describe "Contextual navigation" do
   def then_i_see_the_browse_page_in_the_footer
     within '.gem-c-contextual-footer' do
       expect(page).to have_selector(".gem-c-related-navigation")
-      expect(page).to have_content("A browse page")
+      expect(page).to have_content("Browse")
     end
   end
 
   def then_i_see_the_related_links_sidebar
     within '.gem-c-contextual-sidebar' do
       expect(page).to have_selector(".gem-c-related-navigation")
-      expect(page).to have_content("A related link curated in Publisher")
+      expect(page).to have_content("The national curriculum")
     end
   end
 
   def and_the_parent_based_breadcrumbs
     within '.gem-c-breadcrumbs' do
       expect(page).to have_link("Home")
-      expect(page).to have_link("A parent")
+      expect(page).to have_link("Benefits")
     end
   end
 
   def and_the_taxonomy_breadcrumbs
     within '.gem-c-breadcrumbs' do
       expect(page).to have_link("Home")
-      expect(page).to have_link("A live taxon")
+      expect(page).to have_link("A level")
     end
   end
 
   def then_i_see_the_taxon_in_the_related_navigation_footer
     within '.gem-c-contextual-footer' do
-      expect(page).to have_css(".gem-c-related-navigation__link", text: "A live taxon")
+      expect(page).to have_css(".gem-c-related-navigation__link", text: "A level")
     end
   end
 
   def then_i_see_the_legacy_topic_in_the_related_navigation_footer
     within '.gem-c-contextual-footer' do
-      expect(page).to have_css(".gem-c-related-navigation__link", text: "A legacy topic")
+      expect(page).to have_css(".gem-c-related-navigation__link", text: "Oil and gas")
     end
   end
 
@@ -211,6 +210,10 @@ describe "Contextual navigation" do
 
   def random_step_nav_item(schema_name)
     GovukSchemas::Example.find(schema_name, example_name: "step_by_step_nav")
+  end
+
+  def example_item(schema_name, example_name)
+    GovukSchemas::Example.find(schema_name, example_name: example_name)
   end
 
   def random_item(schema_name, merge_with = {})

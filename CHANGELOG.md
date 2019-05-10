@@ -10,6 +10,7 @@
 ## Unreleased
 - Replace gems version of warning button with GOV.UK Frontend version (PR #848)
 - Prevent double click by default for submit buttons (PR #849)
+- Update contextual navigation feature tests to use examples from govuk-content-schemas (PR #847)
 
 ## 16.16.0
 - Add attachment (experimental) component (PR #842)
