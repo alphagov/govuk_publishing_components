@@ -4,23 +4,29 @@
   hide_help_text ||= false
   attributes = []
 
-  if attachment.readable_content_type
+  if attachment.content_type_name
     content = if attachment.content_type_abbr
                 raw tag.abbr(attachment.content_type.abbr,
-                             title: attachment.readable_content_type,
+                             title: attachment.content_type_name,
                              class: "gem-c-attachment__abbr")
               else
-                attachment.readable_content_type
+                attachment.content_type_name
               end
     attributes << tag.span(content, class: "gem-c-attachment__attribute")
   end
 
-  if attachment.readable_file_size
-    attributes << tag.span(attachment.readable_file_size, class: "gem-c-attachment__attribute")
+  if attachment.file_size
+    attributes << tag.span(
+      number_to_human_size(attachment.file_size),
+      class: "gem-c-attachment__attribute",
+    )
   end
 
-  if attachment.readable_number_of_pages
-    attributes << tag.span(attachment.readable_number_of_pages, class: "gem-c-attachment__attribute")
+  if attachment.number_of_pages
+    attributes << tag.span(
+      pluralize(attachment.number_of_pages, "page"),
+      class: "gem-c-attachment__attribute",
+    )
   end
 %>
 <%= tag.section class: "gem-c-attachment" do %>

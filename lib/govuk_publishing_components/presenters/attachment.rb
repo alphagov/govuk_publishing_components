@@ -1,9 +1,6 @@
 module GovukPublishingComponents
   module Presenters
     class Attachment
-      include ActionView::Helpers::NumberHelper
-      include ActionView::Helpers::TextHelper
-
       delegate :opendocument?, :document?, :spreadsheet?, to: :content_type
 
       attr_reader :attachment_data
@@ -34,20 +31,16 @@ module GovukPublishingComponents
         content_type.abbr
       end
 
-      def readable_content_type
+      def content_type_name
         content_type.name
       end
 
-      def readable_file_size
-        return unless attachment_data[:file_size]
-
-        number_to_human_size(attachment_data[:file_size])
+      def file_size
+        attachment_data[:file_size]
       end
 
-      def readable_number_of_pages
-        return unless attachment_data[:number_of_pages]
-
-        pluralize(attachment_data[:number_of_pages], "page")
+      def number_of_pages
+        attachment_data[:number_of_pages]
       end
 
       class SupportedContentType
