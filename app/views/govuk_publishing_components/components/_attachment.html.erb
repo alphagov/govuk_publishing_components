@@ -45,8 +45,9 @@
           class: "govuk-link",
           target: target %>
   <% end %>
-  <%= tag.p class: "gem-c-attachment__metadata" do %>
-    <%= raw(attributes.join(', ')) if attributes.any? %>
+
+  <% if attributes.any? %>
+    <%= tag.p raw(attributes.join(', ')), class: "gem-c-attachment__metadata" %>
   <% end %>
 
   <% unless hide_help_text %>

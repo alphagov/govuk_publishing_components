@@ -50,6 +50,19 @@ describe "Attachment", type: :view do
     )
     expect(rendered).to match(/Plain Text/)
   end
+
+  it "doesn't show metadata information when there isn't any to show" do
+    render_component(
+      attachment: {
+        title: "Attachment",
+        url: "attachment",
+        content_type: "unknown/type",
+      },
+    )
+
+    assert_select ".gem-c-attachment__metadata", false
+  end
+
   it "shows OpenDocument help text if OpenDocument format" do
     render_component(
       attachment: {
