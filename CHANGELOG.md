@@ -7,6 +7,11 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+- Add new version of (experimental) cookie banner (PR #845)
+- Add inline variation for button component (PR #845)
+
 ## 16.17.0
 
 - Replace gems version of warning button with GOV.UK Frontend version (PR #848)
