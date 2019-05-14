@@ -1,4 +1,5 @@
 Rails.application.config.assets.precompile += %w(
+  govuk_publishing_components/all_components.js
   govuk_publishing_components/vendor/modernizr.js
   govuk_publishing_components/component_guide.css
   govuk_publishing_components/search-button.png
@@ -17,6 +18,9 @@ Rails.application.config.assets.precompile += %w(
   govuk_publishing_components/govuk-schema-placeholder-1x1.png
   govuk_publishing_components/govuk-schema-placeholder-4x3.png
   govuk_publishing_components/govuk-schema-placeholder-16x9.png
+  component_guide/visual-regression.js
+  component_guide/accessibility-test.js
+  component_guide/filter-components.js
 )
 
 # Add GOV.Frontend assets

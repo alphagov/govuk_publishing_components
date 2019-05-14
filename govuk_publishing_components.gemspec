@@ -31,7 +31,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "gds-api-adapters", "~> 59.1"
   s.add_development_dependency "govuk-lint", "~> 3.11"
   s.add_development_dependency "govuk_schemas", "~> 3.2"
-  s.add_development_dependency "jasmine", "~> 2.4.0"
+  s.add_development_dependency "jasmine", "~> 3"
   s.add_development_dependency "poltergeist", "~> 1.16.0"
   s.add_development_dependency "rspec-rails", "~> 3.6"
   s.add_development_dependency "uglifier", ">= 1.3.0"

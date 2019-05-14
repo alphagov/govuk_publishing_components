@@ -117,12 +117,12 @@ GEM
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     jaro_winkler (1.5.2)
-    jasmine (2.4.0)
-      jasmine-core (~> 2.4)
+    jasmine (3.4.0)
+      jasmine-core (~> 3.4.0)
       phantomjs
       rack (>= 1.2.1)
       rake
-    jasmine-core (2.99.2)
+    jasmine-core (3.4.0)
     json-schema (2.8.1)
       addressable (>= 2.4)
     kgio (2.11.2)
@@ -304,7 +304,7 @@ DEPENDENCIES
   govuk-lint (~> 3.11)
   govuk_publishing_components!
   govuk_schemas (~> 3.2)
-  jasmine (~> 2.4.0)
+  jasmine (~> 3)
   poltergeist (~> 1.16.0)
   pry-byebug
   rspec-rails (~> 3.6)
