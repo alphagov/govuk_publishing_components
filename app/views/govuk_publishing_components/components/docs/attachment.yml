@@ -17,9 +17,8 @@ body: |
 shared_accessibility_criteria:
 - link
 accessibility_criteria: |
-  The thumbnail image has no `alt` attribute, which causes the link which wraps
-  the thumbnail to contain no content. Since screen readers will have nothing to
-  read in this case, we set `aria-hidden=true` on the thumbail so that it's hidden.
+  The thumbnail image, and the link wrapping it, must not focusable or shown to
+  screenreaders.
 examples:
   default:
     data:
@@ -49,9 +48,9 @@ examples:
   help_text_disabled:
     data:
       attachment:
-        title: "BEIS Information Asset Register"
-        url: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/744083/BEIS_Information_Asset_Register_.ods
-        filename: BEIS_Information_Asset_Register_.ods
-        content_type: application/vnd.oasis.opendocument.spreadsheet
-        file_size: 20000
+        title: "Attitudes in Iraq: June 2005 wave 1"
+        url: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/137879/20130110_Iraq_wave01.txt
+        filename: 20130110_Iraq_wave01.txt
+        content_type: text/plain
+        file_size: 108515
       hide_help_text: true

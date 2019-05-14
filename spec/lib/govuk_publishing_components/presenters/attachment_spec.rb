@@ -62,30 +62,6 @@ RSpec.describe GovukPublishingComponents::Presenters::Attachment do
     end
   end
 
-  describe "#readable_file_size" do
-    it "returns nil if there isn't a file_size provided" do
-      attachment = described_class.new(title: "test", url: "test")
-      expect(attachment.readable_file_size).to be_nil
-    end
-
-    it "returns a human readable file size if file_size is provided" do
-      attachment = described_class.new(title: "test", url: "test", file_size: 1024)
-      expect(attachment.readable_file_size).to eq("1 KB")
-    end
-  end
-
-  describe "#readable_number_of_pages" do
-    it "returns nil if there isn't a number_of_pages provided" do
-      attachment = described_class.new(title: "test", url: "test")
-      expect(attachment.readable_number_of_pages).to be_nil
-    end
-
-    it "returns a pluralised number of pages if number_of_pages is provided" do
-      attachment = described_class.new(title: "test", url: "test", number_of_pages: 3)
-      expect(attachment.readable_number_of_pages).to eq("3 pages")
-    end
-  end
-
   describe "#opendocument?" do
     it "returns true if content type is an OpenDocument" do
       attachment = described_class.new(title: "test",
@@ -99,6 +75,38 @@ RSpec.describe GovukPublishingComponents::Presenters::Attachment do
                                        url: "test",
                                        content_type: "application/msword")
       expect(attachment.opendocument?).to be false
+    end
+  end
+
+  describe "#document?" do
+    it "returns true for content types specified as a document" do
+      attachment = described_class.new(title: "test",
+                                       url: "test",
+                                       content_type: "application/msword")
+      expect(attachment.document?).to be true
+    end
+
+    it "returns false for a content type not specified as a document" do
+      attachment = described_class.new(title: "test",
+                                       url: "test",
+                                       content_type: "text/plain")
+      expect(attachment.document?).to be false
+    end
+  end
+
+  describe "#spreadsheet?" do
+    it "returns true for content types specified as a document" do
+      attachment = described_class.new(title: "test",
+                                       url: "test",
+                                       content_type: "text/csv")
+      expect(attachment.spreadsheet?).to be true
+    end
+
+    it "returns false for a content type not specified as a spreadsheet" do
+      attachment = described_class.new(title: "test",
+                                       url: "test",
+                                       content_type: "text/plain")
+      expect(attachment.spreadsheet?).to be false
     end
   end
 end
