@@ -39,6 +39,21 @@ examples:
         content_type: application/pdf
         file_size: 20000
         number_of_pages: 1
+  embedded_in_govspeak:
+    description: |
+      This component can be embedded in Govspeak with the `[AttachmentLink:]` code.
+    embed: |
+      <%= render "govuk_publishing_components/components/govspeak" do %>
+        <p>Some introductory information about <%= component %>.</p>
+      <% end %>
+    data:
+      attachment:
+        title: "Temporary snow ploughs: guidance note"
+        url: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/259634/temporary-snow-ploughs.pdf
+        filename: temporary-snow-ploughs.pdf
+        content_type: application/pdf
+        file_size: 20000
+        number_of_pages: 1
   with_target_blank:
     data:
       attachment:
