@@ -31,11 +31,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   ModalDialogue.prototype.handleResize = function (size) {
-    if (size == "narrow") {
+    if (size === 'narrow') {
       this.$dialogBox.classList.remove('gem-c-modal-dialogue__box--wide')
     }
 
-    if (size == "wide") {
+    if (size === 'wide') {
       this.$dialogBox.classList.add('gem-c-modal-dialogue__box--wide')
     }
   }

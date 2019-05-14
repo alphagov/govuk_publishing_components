@@ -67,7 +67,7 @@
     background-image: image-url("govuk_publishing_components/mail-icon.png");
     padding-left: govuk-spacing(5);
 
-    @include device-pixel-ratio() {
+    @include device-pixel-ratio {
       background-image: image-url("govuk_publishing_components/mail-icon-x2.png");
       background-size: govuk-spacing(4) govuk-spacing(3);
     }
@@ -87,4 +87,3 @@
     @include govuk-visually-hidden;
   }
 }
-

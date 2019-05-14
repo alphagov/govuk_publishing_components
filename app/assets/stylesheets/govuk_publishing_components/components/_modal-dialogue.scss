@@ -19,7 +19,7 @@ $govuk-modal-wide-breakpoint: $govuk-page-width + $govuk-modal-margin * 2 + $gov
 .gem-c-modal-dialogue__box {
   display: block;
   position: fixed;
-  background: govuk-colour('white');
+  background: govuk-colour("white");
   top: 0;
   right: 0;
   bottom: 0;

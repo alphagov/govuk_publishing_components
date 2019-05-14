@@ -1,6 +1,7 @@
 @import "govuk-frontend/components/button/button";
 
 // scss-lint:disable PlaceholderInExtend
+// sass-lint:disable placeholder-in-extend
 .gem-c-govspeak {
   .button,
   .govuk-button {
@@ -12,4 +13,5 @@
     @extend .govuk-button--start;
   }
 }
+// sass-lint:enable placeholder-in-extend
 // scss-lint:enable PlaceholderInExtend

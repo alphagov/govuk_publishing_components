@@ -1,5 +1,5 @@
-//= require govuk_publishing_components/vendor/jquery-ui-1.10.2.custom
-//= require govuk_publishing_components/vendor/jquery.player.min
+// = require govuk_publishing_components/vendor/jquery-ui-1.10.2.custom
+// = require govuk_publishing_components/vendor/jquery.player.min
 
 window.GOVUK = window.GOVUK || {};
 

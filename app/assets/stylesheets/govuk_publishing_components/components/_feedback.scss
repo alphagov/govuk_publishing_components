@@ -38,7 +38,7 @@
 }
 
 .gem-c-feedback__column-two-thirds {
-  @include grid-column( 2 / 3 );
+  @include grid-column(2 / 3);
 }
 
 .gem-c-feedback__prompt {
@@ -197,7 +197,9 @@
 // so we need to apply  govuk-input styles using a stronger selector
 .gem-c-feedback input[type="text"] {
   // scss-lint:disable PlaceholderInExtend
+  // sass-lint:disable placeholder-in-extend
   @extend .govuk-input;
+  // sass-lint:enable placeholder-in-extend
   // scss-lint:enable PlaceholderInExtend
   margin: 0;
 }

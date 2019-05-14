@@ -1,7 +1,7 @@
 @import "govuk-frontend/settings/colours-organisations";
 @import "govuk-frontend/helpers/colour";
 
-@mixin organisation-brand-colour() {
+@mixin organisation-brand-colour {
   @each $organisation in map-keys($govuk-colours-organisations) {
     .brand--#{$organisation} {
       .brand__color {
@@ -15,7 +15,7 @@
 
         &:hover,
         &:focus {
-          color: darken( govuk-organisation-colour($organisation), 10% );
+          color: darken(govuk-organisation-colour($organisation), 10%);
         }
       }
 
@@ -46,7 +46,7 @@
 
     &:hover,
     &:focus {
-      color: darken( govuk-organisation-colour("office-of-the-leader-of-the-house-of-commons"), 10% );
+      color: darken(govuk-organisation-colour("office-of-the-leader-of-the-house-of-commons"), 10%);
     }
   }
 
@@ -70,7 +70,7 @@
 
     &:hover,
     &:focus {
-      color: darken( govuk-colour("bright-purple"), 10% );
+      color: darken(govuk-colour("bright-purple"), 10%);
     }
   }
 

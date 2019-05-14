@@ -8,6 +8,7 @@
 
 // Disable linting for vendor asset
 // scss-lint:disable all
+// sass-lint:disable-all
 /*
  * magna-charta example stylesheet
  * https://github.com/alphagov/magna-charta
@@ -72,7 +73,7 @@
 
     // KEY STYLES
     .mc-thead {
-      background-color: #fff;
+      background-color: #ffffff;
       display: table-header-group;
       padding: $bar-spacing;
       border: 1px solid $key-border;
@@ -247,7 +248,7 @@
 
     .mc-bar-outdented {
       span {
-        color: #111;
+        color: #111111;
       }
     }
 
@@ -268,7 +269,7 @@
       .mc-tbody {
         .mc-tr {
           .mc-bar-cell {
-            color: #111;
+            color: #111111;
           }
 
           .mc-bar-negative {
