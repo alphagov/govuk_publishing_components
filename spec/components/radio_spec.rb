@@ -72,6 +72,25 @@ describe "Radio", type: :view do
     assert_select ".govuk-radios.govuk-radios--small"
   end
 
+  it "renders inline radios" do
+    render_component(
+      name: "inline-radios",
+      inline: true,
+      items: [
+        {
+          value: "on",
+          text: "On"
+        },
+        {
+          value: "off",
+          text: "Off"
+        }
+      ]
+    )
+
+    assert_select ".govuk-radios.govuk-radios--inline"
+  end
+
   it "renders radio-group with a legend" do
     render_component(
       name: "favourite-smartie",

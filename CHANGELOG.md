@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+- Add inline radio button option (PR #860)
 - Add new version of (experimental) cookie banner (PR #845)
 - Add inline variation for button component (PR #845)
 
