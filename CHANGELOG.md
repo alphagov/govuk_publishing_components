@@ -11,6 +11,7 @@
 
 - Add new version of (experimental) cookie banner (PR #845)
 - Add inline variation for button component (PR #845)
+- Fix govspeak overriding attachment styling (PR #856)
 
 ## 16.17.0
 
