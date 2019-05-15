@@ -250,3 +250,14 @@ examples:
       - value: "govuk-verify"
         text: "Use GOV.UK Verify"
         url: "https://www.tax.service.gov.uk/check-your-state-pension/signin/verify?journey_hint=uk_idp_sign_in"
+  inline:
+    description: "When providing small (or few) options, the radio buttons should be inline rather than stacked."
+    data:
+      name: "inline-radios"
+      inline: true
+      items:
+      - value: "on"
+        text: "On"
+      - value: "off"
+        text: "Off"
+
