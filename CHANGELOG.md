@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add SearchResultsPage schema.org schema (PR #861)
+
 ## 16.19.0
 
 * Adds support to allow parent finder to show as breadcrumbs (PR #831)
@@ -17,7 +21,6 @@
 * Add new version of (experimental) cookie banner (PR #845)
 * Add inline variation for button component (PR #845)
 * Fix govspeak overriding attachment styling (PR #856)
-
 
 ## 16.17.0
 
