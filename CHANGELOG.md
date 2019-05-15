@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 16.18.0
 
 - Add inline radio button option (PR #860)
 - Add new version of (experimental) cookie banner (PR #845)
