@@ -46,20 +46,31 @@
     <% end %>
   <% end %>
 
-  <%= tag.h2 class: "gem-c-attachment__title" do %>
-    <%= link_to attachment.title, attachment.url,
-          class: "govuk-link",
-          target: target %>
-  <% end %>
+  <%= tag.div class: "gem-c-attachment__details" do %>
+    <%= tag.h2 class: "gem-c-attachment__title" do %>
+      <%= link_to attachment.title, attachment.url,
+            class: "govuk-link",
+            target: target %>
+    <% end %>
 
-  <% if attributes.any? %>
-    <%= tag.p raw(attributes.join(', ')), class: "gem-c-attachment__metadata" %>
-  <% end %>
+    <% if attributes.any? %>
+      <%= tag.p raw(attributes.join(', ')), class: "gem-c-attachment__metadata" %>
+    <% end %>
 
-  <% unless hide_help_text %>
-    <% if attachment.opendocument? %>
-      <%= tag.p class: "gem-c-attachment__metadata" do %>
-        <%= t("components.attachment.opendocument_html", target: target) %>
+    <% unless hide_help_text %>
+      <% if attachment.opendocument? %>
+        <%= tag.p class: "gem-c-attachment__metadata" do %>
+          <%= t("components.attachment.opendocument_html", target: target) %>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <% if attachment.alternative_format_contact_email %>
+      <%= tag.p t("components.attachment.request_format_text"), class: "gem-c-attachment__metadata" %>
+      <%= render "govuk_publishing_components/components/details", {
+        title: t("components.attachment.request_format_cta")
+      } do %>
+        <%= t("components.attachment.request_format_details_html", alternative_format_contact_email: attachment.alternative_format_contact_email) %>
       <% end %>
     <% end %>
   <% end %>

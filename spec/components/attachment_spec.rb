@@ -74,6 +74,18 @@ describe "Attachment", type: :view do
     assert_select "a[href='https://www.gov.uk/guidance/open-document-format-odf-guidance-for-uk-government/overview-of-productivity-software']"
   end
 
+  it "shows section to request a different form if a contact email is provided" do
+    render_component(
+      attachment: {
+        title: "Attachment",
+        url: "attachment",
+        content_type: "application/vnd.oasis.opendocument.spreadsheet",
+        alternative_format_contact_email: "defra.helpline@defra.gsi.gov.uk"
+      },
+    )
+    assert_select "a[href='mailto:defra.helpline@defra.gsi.gov.uk']"
+  end
+
   it "does not show help text if disabled" do
     render_component(
       attachment: {
