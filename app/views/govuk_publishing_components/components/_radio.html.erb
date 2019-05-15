@@ -5,6 +5,7 @@
   label ||= nil
   heading ||= nil
   small ||= false
+  inline ||= false
   is_page_heading ||= false
   hint ||= nil
   error_message ||= nil
@@ -19,6 +20,7 @@
 
   radio_classes = %w(govuk-radios)
   radio_classes << "govuk-radios--small" if small
+  radio_classes << "govuk-radios--inline" if inline
 
   aria = "#{hint_id} #{"#{error_id}" if has_error}".strip if hint or has_error
 
