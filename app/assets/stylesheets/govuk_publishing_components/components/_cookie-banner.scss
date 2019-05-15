@@ -1,14 +1,16 @@
 $govuk-cookie-banner-background: #d5e8f3;
+$govuk-cookie-banner-background-new: govuk-colour("white");
 
 .js-enabled {
-  .gem-c-cookie-banner {
+  .gem-c-cookie-banner,
+  .gem-c-cookie-banner--new {
     display: none; // shown with JS, always on for non-JS
   }
 }
 
 .gem-c-cookie-banner {
   @include govuk-font($size: 16);
-  padding: 10px 0;
+  padding: govuk-spacing(2) 0;
   background-color: $govuk-cookie-banner-background;
 }
 
@@ -24,3 +26,85 @@ $govuk-cookie-banner-background: #d5e8f3;
     display: inline-block;
   }
 }
+
+// Styles for the new version of the cookie banner
+.gem-c-cookie-banner--new {
+  @include govuk-font($size: 16);
+  border: 2px solid govuk-colour("black");
+}
+
+.gem-c-cookie-banner--new .gem-c-cookie-banner__message {
+  display: inline-block;
+  margin-bottom: govuk-spacing(1);
+  padding-right: govuk-spacing(4);
+  padding-bottom: govuk-spacing(2);
+}
+
+.gem-c-cookie-banner__buttons {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.gem-c-cookie-banner__confirmation {
+  display: none;
+  position: relative;
+  padding: 0 govuk-spacing(2);
+}
+
+.gem-c-cookie-banner__confirmation-message,
+.gem-c-cookie-banner__hide-button {
+  display: block;
+
+  @include govuk-media-query($from: tablet) {
+    display: inline-block;
+  }
+}
+
+.gem-c-cookie-banner__confirmation-message {
+  margin-right: govuk-spacing(4);
+}
+
+.gem-c-cookie-banner__hide-button {
+  @include govuk-font($size: 16);
+  outline: 0;
+  border: 0;
+  background: none;
+  text-decoration: underline;
+  color: $govuk-link-colour;
+  padding: govuk-spacing(0);
+  margin-top: govuk-spacing(2);
+
+
+  &:hover {
+    color: $govuk-link-hover-colour;
+    cursor: pointer;
+  }
+
+  @include govuk-media-query($from: tablet) {
+    margin-top: govuk-spacing(0);
+    position: absolute;
+    right: 0;
+  }
+}
+
+// Override the styles from govuk_template
+// scss-lint:disable IdSelector
+// sass-lint:disable no-ids
+.gem-c-cookie-banner--new#global-cookie-message {
+  background-color: $govuk-cookie-banner-background-new;
+  padding: govuk-spacing(4) 0;
+  box-sizing: border-box;
+
+  .gem-c-cookie-banner__message,
+  .gem-c-cookie-banner__buttons,
+  .gem-c-cookie-banner__confirmation,
+  .gem-c-cookie-banner__confirmation-message {
+    @include core-19;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+// sass-lint:enable no-ids
+// scss-lint:enable IdSelector

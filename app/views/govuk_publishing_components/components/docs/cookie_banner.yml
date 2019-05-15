@@ -10,6 +10,8 @@ accessibility_criteria: |
   - accept focus
   - be focusable with a keyboard
   - indicate when they have focus
+accessibility_excluded_rules:
+  - 'duplicate-id' # a banner should have a unique id for a given page. However, this page contains multiple examples of the banner with the same id.
 examples:
   default:
     data: {}
@@ -17,3 +19,7 @@ examples:
     data:
       id: custom-message
       message: GOV.UK uses cookies to make the site simpler. <a class="govuk-link" href="/help/cookies">Find out more about cookies</a>
+  new_cookie_banner:
+    description: FOR TESTING PURPOSES ONLY. This is a new proposed iteration of the cookie banner. The current banner will remain the same across the live site for now.
+    data:
+        new_cookie_banner: true
