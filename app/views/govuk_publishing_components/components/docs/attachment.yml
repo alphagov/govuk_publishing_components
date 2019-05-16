@@ -54,3 +54,18 @@ examples:
         content_type: text/plain
         file_size: 108515
       hide_help_text: true
+  embedded_in_govspeak:
+    description: |
+      This component can be embedded in Govspeak with the `[Attachment:]` code.
+    embed: |
+      <%= render "govuk_publishing_components/components/govspeak" do %>
+        <p>Some text.</p>
+        <%= component %>
+      <% end %>
+    data:
+      attachment:
+        title: "BEIS Information Asset Register"
+        url: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/744083/BEIS_Information_Asset_Register_.ods
+        filename: BEIS_Information_Asset_Register_.ods
+        content_type: application/vnd.oasis.opendocument.spreadsheet
+        file_size: 20000

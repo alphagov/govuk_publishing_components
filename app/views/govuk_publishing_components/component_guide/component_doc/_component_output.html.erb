@@ -1,7 +1,7 @@
 <% component = capture do %>
   <% if example.has_block? %>
     <%= render component_doc.partial_path, example.html_safe_data do %>
-      <%= example.block.html_safe %>
+      <%= render inline: example.block %>
     <% end %>
   <% else %>
     <%= render component_doc.partial_path, example.html_safe_data %>
@@ -9,7 +9,7 @@
 <% end %>
 
 <% if example.has_embed? %>
-  <%= ERB.new(example.embed).result(binding).html_safe %>
+  <%= render inline: example.embed, locals: { component: component } %>
 <% else %>
   <%= component %>
 <% end %>

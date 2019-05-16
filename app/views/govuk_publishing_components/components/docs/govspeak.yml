@@ -374,14 +374,43 @@ examples:
             </li>
           </ol>
         </div>
+  attachment_link:
+    description: Attachment link component rendered within Govspeak
+    data:
+      block: |
+        <p>
+          A reference to my
+          <%= render "govuk_publishing_components/components/attachment_link",
+              attachment: { url: "https://example.com/file.pdf",
+                            title: "Attachment",
+                            file_size: 1024,
+                            content_type: "application/pdf",
+                            number_of_pages: 2 }
+          %>
+          that is in my paragraph.
+        </p>
+  attachment:
+    description: Attachment component rendered within Govspeak
+    data:
+      block: |
+        <p>An attachment as a block</p>
+
+        <%= render "govuk_publishing_components/components/attachment",
+            attachment: { url: "https://example.com/file.odt",
+                          title: "Attachment",
+                          file_size: 1024,
+                          content_type: "application/vnd.oasis.opendocument.text" }
+        %>
   inline_attachment:
+    description: Legacy inline attachment embed used by Whitehall and Specialist Publisher
     data:
       block: |
         <p>testing my attachment <span class="inline-attachment" id="attachment_1399340">
           <a href="/government/uploads/system/uploads/attachment_data/file/498071/PHE_Payments_over__25k_Jun_15.csv">testing</a>
           (<span class="type"><abbr title="Comma-separated Values">CSV</abbr></span>, <span class="file-size">65.4KB</span>)</span> works in the middle of copy.
         </p>
-  block_attachments:
+  whitehall_block_attachments:
+    description: Attachments rendered by govspeak extensions within Whitehall
     data:
       block: |
         <section class="attachment embedded" id="attachment_1399345">
@@ -521,7 +550,8 @@ examples:
             </p>
           </div>
         </section>
-  block_attachment_rtl:
+  whitehall_block_attachment_rtl:
+    description: Attachments rendered by govspeak extensions within Whitehall
     data:
       direction: rtl
       block: |
