@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add Welsh translation of the contents list heading (PR #862)
 * Enable passing data attributes to attachment components (PR #874)
 * Add potentialSearchAction to the GovernmentOrganization schema (PR #870)
 
