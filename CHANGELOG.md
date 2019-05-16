@@ -9,9 +9,11 @@
 
 ## Unreleased
 
-- Fix broken call to content_type fallback method (PR #869)
-- Remove links to Whitehall publications (PR #823)
-- Add request different format section to attachment component (PR #858)
+* Fix broken call to content_type fallback method (PR #869)
+* Remove links to Whitehall publications (PR #823)
+* Add request different format section to attachment component (PR #858)
+* Change default new cookie banner consent to on (PR #864)
+* Hide new cookie banner on cookie settings page (PR #864)
 
 ## 16.20.1
 
