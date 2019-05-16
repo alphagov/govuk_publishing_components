@@ -7,11 +7,11 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased changes
+## 16.19.0
 
 * Adds support to allow parent finder to show as breadcrumbs (PR #831)
 
-## 16.18.0
+## 16.18.0
 
 * Add inline radio button option (PR #860)
 * Add new version of (experimental) cookie banner (PR #845)
