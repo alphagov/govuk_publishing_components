@@ -69,3 +69,10 @@ examples:
             - title: "Dodgy Wands Commission"
               base_path: "/dodgy-wands-commission"
       schema: :organisation
+  search_results_page_schema:
+    data:
+      content_item:
+        title: "The finding of all things"
+        base_path: "/finder/all"
+        details: {}
+      schema: :search_results_page

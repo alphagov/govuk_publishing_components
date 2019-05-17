@@ -6,6 +6,7 @@ require 'govuk_publishing_components/presenters/machine_readable/is_part_of_sche
 require 'govuk_publishing_components/presenters/machine_readable/news_article_schema'
 require 'govuk_publishing_components/presenters/machine_readable/organisation_schema'
 require 'govuk_publishing_components/presenters/machine_readable/person_schema'
+require 'govuk_publishing_components/presenters/machine_readable/search_results_page_schema'
 
 module GovukPublishingComponents
   module Presenters
@@ -25,6 +26,8 @@ module GovukPublishingComponents
           PersonSchema.new(page).structured_data
         elsif page.schema == :organisation
           OrganisationSchema.new(page).structured_data
+        elsif page.schema == :search_results_page
+          SearchResultsPageSchema.new(page).structured_data
         else
           raise "#{page.schema} is not supported"
         end

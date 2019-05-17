@@ -50,6 +50,15 @@ describe "Machine readable metadata", type: :view do
     assert_meta_tag "twitter:image", "https://example.org/high-res.jpg"
   end
 
+  it "generates machine readable JSON-LD for finders" do
+    example = GovukSchemas::RandomExample.for_schema(frontend_schema: "finder")
+    render_component(content_item: example, schema: :search_results_page)
+
+    json_linked_data = Nokogiri::HTML(rendered).css('script').text
+
+    assert JSON.parse(json_linked_data)
+  end
+
   def assert_meta_tag(name, content)
     assert_select "meta[name='#{name}'][content='#{content}']"
   end
