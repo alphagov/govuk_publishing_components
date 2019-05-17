@@ -9,6 +9,7 @@
 
 ## 16.20.0
 
+* Revert 'Prevent double click by default for submit buttons' (PR #865)
 * Add SearchResultsPage schema.org schema (PR #861)
 
 ## 16.19.0

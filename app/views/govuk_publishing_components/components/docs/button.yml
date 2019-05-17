@@ -8,8 +8,6 @@ body: |
   These instances of buttons are added by Content Designers, ideally this duplication would not exist but we currently don't have shared markup
   via our components within the generated [govspeak](https://github.com/alphagov/govspeak).
   (This is a challenge to the reader)
-
-  Buttons with type submit (implicitly defined of unset) are enhanced to [prevent them from being double clicked](https://github.com/alphagov/govuk-frontend/commit/884e7dd73ad943d71fb701da15626e6a7ad0b933).
 accessibility_criteria: |
   The button must:
 
