@@ -6,6 +6,10 @@
 - Don't include changes that are purely internal. The CHANGELOG should be a
   useful summary for people upgrading their application, not a replication
   of the commit log.
+  
+## Unreleased
+
+- Remove links to Whitehall publications (PR #823)
 
 ## 16.20.0
 
