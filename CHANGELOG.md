@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 16.20.0
 
 * Add SearchResultsPage schema.org schema (PR #861)
 
