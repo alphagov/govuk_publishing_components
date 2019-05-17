@@ -6,10 +6,11 @@
 - Don't include changes that are purely internal. The CHANGELOG should be a
   useful summary for people upgrading their application, not a replication
   of the commit log.
-  
+
 ## Unreleased
 
 - Remove links to Whitehall publications (PR #823)
+- Add request different format section to attachment component (PR #858)
 
 ## 16.20.1
 

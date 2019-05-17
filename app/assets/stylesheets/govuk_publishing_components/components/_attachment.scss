@@ -10,6 +10,11 @@ $thumbnail-icon-border-colour: govuk-colour("grey-3");
 .gem-c-attachment {
   @include govuk-font(19);
   @include govuk-clearfix;
+  position: relative;
+
+  .govuk-details__summary {
+    @include govuk-font($size: 14);
+  }
 }
 
 .gem-c-attachment__thumbnail {
@@ -34,6 +39,10 @@ $thumbnail-icon-border-colour: govuk-colour("grey-3");
   stroke: $thumbnail-icon-border-colour;
 }
 
+.gem-c-attachment__details {
+  padding-left: $thumbnail-width + $thumbnail-border-width * 2 + govuk-spacing(5);
+}
+
 .gem-c-attachment__title {
   @include govuk-font($size: 27);
   margin: 0 0 govuk-spacing(3);
@@ -42,6 +51,10 @@ $thumbnail-icon-border-colour: govuk-colour("grey-3");
 .gem-c-attachment__metadata {
   @include govuk-font($size: 14);
   margin: 0 0 govuk-spacing(3);
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 }
 
 .gem-c-attachment__abbr {
