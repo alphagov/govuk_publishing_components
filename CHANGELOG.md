@@ -11,9 +11,12 @@
 
 - Remove links to Whitehall publications (PR #823)
 
-## 16.20.0
+## 16.20.1
 
 * Revert 'Prevent double click by default for submit buttons' (PR #865)
+
+## 16.20.0
+
 * Add SearchResultsPage schema.org schema (PR #861)
 
 ## 16.19.0
