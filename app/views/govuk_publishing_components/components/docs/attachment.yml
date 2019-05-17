@@ -53,7 +53,7 @@ examples:
         filename: 20130110_Iraq_wave01.txt
         content_type: text/plain
         file_size: 108515
-      hide_help_text: true
+      hide_opendocument_metadata: true
   embedded_in_govspeak:
     description: |
       This component can be embedded in Govspeak with the `[Attachment:]` code.

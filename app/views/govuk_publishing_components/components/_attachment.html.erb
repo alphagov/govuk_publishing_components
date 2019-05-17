@@ -1,7 +1,7 @@
 <%
   attachment = GovukPublishingComponents::Presenters::Attachment.new(attachment)
   target ||= "_self"
-  hide_help_text ||= false
+  hide_opendocument_metadata ||= false
   attributes = []
 
   if attachment.content_type_name
@@ -57,7 +57,7 @@
       <%= tag.p raw(attributes.join(', ')), class: "gem-c-attachment__metadata" %>
     <% end %>
 
-    <% unless hide_help_text %>
+    <% unless hide_opendocument_metadata %>
       <% if attachment.opendocument? %>
         <%= tag.p class: "gem-c-attachment__metadata" do %>
           <%= t("components.attachment.opendocument_html", target: target) %>
