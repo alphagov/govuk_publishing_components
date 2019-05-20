@@ -23,12 +23,11 @@ $gem-quiet-button-hover-colour: darken($gem-quiet-button-colour, 5%);
 }
 
 .gem-c-button--inline {
-  width: 100%;
+  width: auto;
   margin-bottom: govuk-spacing(1);
   margin-right: govuk-spacing(2);
 
   @include govuk-media-query($from: tablet) {
-    width: auto;
     margin-bottom: 0;
   }
 }

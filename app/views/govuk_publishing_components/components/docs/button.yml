@@ -93,7 +93,7 @@ examples:
   inline_layout:
     description: Buttons will display adjacent to each other until mobile view, when they will appear on top of each other.
     embed: |
-      <button class="govuk-button">First button</button>
+      <button class="gem-c-button govuk-button gem-c-button--inline">First button</button>
       <%= component %>
     data:
       text: "Second button"
