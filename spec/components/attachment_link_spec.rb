@@ -40,4 +40,15 @@ describe "Attachment Link", type: :view do
     expect(rendered).to match(/2 KB/)
     expect(rendered).to match(/2 pages/)
   end
+
+  it "can show file type that doesn't have an abbreviation" do
+    render_component(
+      attachment: {
+        title: "Attachment",
+        url: "attachment",
+        content_type: "text/plain",
+      },
+    )
+    expect(rendered).to match(/Plain Text/)
+  end
 end
