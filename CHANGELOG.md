@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+- Fix broken call to content_type fallback method (PR #869)
 - Remove links to Whitehall publications (PR #823)
 - Add request different format section to attachment component (PR #858)
 
