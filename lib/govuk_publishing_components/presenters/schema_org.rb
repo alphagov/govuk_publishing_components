@@ -1,5 +1,6 @@
 require 'govuk_publishing_components/presenters/machine_readable/page'
 require 'govuk_publishing_components/presenters/machine_readable/article_schema'
+require 'govuk_publishing_components/presenters/machine_readable/creative_work_schema'
 require 'govuk_publishing_components/presenters/machine_readable/how_to_schema'
 require 'govuk_publishing_components/presenters/machine_readable/has_part_schema'
 require 'govuk_publishing_components/presenters/machine_readable/is_part_of_schema'
