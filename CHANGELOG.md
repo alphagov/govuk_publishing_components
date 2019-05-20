@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update inline button styling on mobile (PR #872)
+
 ## 16.21.0
 
 * Add request different format section to attachment component (PR #858)
