@@ -7,16 +7,16 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 16.21.0
 
-* Fix broken call to content_type fallback method (PR #869)
-* Remove links to Whitehall publications (PR #823)
 * Add request different format section to attachment component (PR #858)
+* Fix broken call to content_type fallback method (PR #869)
 * Change default new cookie banner consent to on (PR #864)
 * Hide new cookie banner on cookie settings page (PR #864)
 
 ## 16.20.1
 
+* Remove links to Whitehall publications (PR #823)
 * Revert 'Prevent double click by default for submit buttons' (PR #865)
 
 ## 16.20.0
