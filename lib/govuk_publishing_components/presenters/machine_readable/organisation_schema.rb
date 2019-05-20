@@ -17,7 +17,12 @@ module GovukPublishingComponents
             "@id" => page.canonical_url,
           },
           "name" => page.title,
-          "description" => page.description || page.body
+          "description" => page.description || page.body,
+          "potentialAction" => {
+            "@type": "SearchAction",
+            "target": scoped_search_url,
+            "query": "required"
+          }
         }.merge(parent_organisations).merge(sub_organisations)
       end
 
@@ -52,6 +57,15 @@ module GovukPublishingComponents
           "@type" => "GovernmentOrganization",
           "sameAs" => url
         }
+      end
+
+      def slug
+        uri = URI.parse(page.canonical_url)
+        File.basename(uri.path)
+      end
+
+      def scoped_search_url
+        "#{Plek.current.website_root}/search/all?keywords={query}&organisations[]=#{slug}"
       end
     end
   end
