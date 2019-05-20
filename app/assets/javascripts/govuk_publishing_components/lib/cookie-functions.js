@@ -5,9 +5,9 @@
   var root = this
   var defaultCookieConsent = {
     'essential': true,
-    'settings': false,
-    'usage': false,
-    'campaigns': false
+    'settings': true,
+    'usage': true,
+    'campaigns': true
   }
 
   if (typeof root.GOVUK === 'undefined') { root.GOVUK = {} }

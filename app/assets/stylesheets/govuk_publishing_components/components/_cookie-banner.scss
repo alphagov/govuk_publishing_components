@@ -65,7 +65,7 @@ $govuk-cookie-banner-background-new: govuk-colour("white");
 }
 
 .gem-c-cookie-banner__hide-button {
-  @include govuk-font($size: 16);
+  @include govuk-font($size: 19);
   outline: 0;
   border: 0;
   background: none;
@@ -99,7 +99,7 @@ $govuk-cookie-banner-background-new: govuk-colour("white");
   .gem-c-cookie-banner__buttons,
   .gem-c-cookie-banner__confirmation,
   .gem-c-cookie-banner__confirmation-message {
-    @include core-19;
+    @include govuk-font($size: 19);
   }
 
   p {

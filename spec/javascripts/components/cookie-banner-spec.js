@@ -80,7 +80,7 @@ describe('New cookie banner', function () {
   it('sets a default consent cookie', function () {
     var banner = document.querySelector('.gem-c-cookie-banner--new[data-module="cookie-banner"]')
     expect(window.GOVUK.getCookie('seen_cookie_message')).toBeFalsy()
-    expect(window.GOVUK.getCookie('cookie_policy')).toEqual('"{\\"essential\\":true,\\"settings\\":false,\\"usage\\":false,\\"campaigns\\":false}"')
+    expect(window.GOVUK.getCookie('cookie_policy')).toEqual('"{\\"essential\\":true,\\"settings\\":true,\\"usage\\":true,\\"campaigns\\":true}"')
     expect(banner).toBeVisible()
   })
 
