@@ -51,6 +51,12 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         "description" => "The magical ministry."
       )
 
+      search_action = {
+        "@type": "SearchAction",
+        "target": "http://www.dev.gov.uk/search/all?keywords={query}&organisations[]=ministry-of-magic",
+        "query": "required"
+      }
+
       structured_data = generate_structured_data(
         content_item: content_item,
         schema: :organisation
@@ -60,6 +66,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       expect(structured_data["name"]).to eq("Ministry of Magic")
       expect(structured_data["description"]).to eq("The magical ministry.")
       expect(structured_data["mainEntityOfPage"]["@id"]).to eq("http://www.dev.gov.uk/ministry-of-magic")
+      expect(structured_data["potentialAction"]).to eq(search_action)
     end
 
     it "generates organisation structure" do

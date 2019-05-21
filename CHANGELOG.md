@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add potentialSearchAction to the GovernmentOrganization schema (PR #870)
+
 ## 16.22.0
 
 * Update inline button styling on mobile (PR #872)
