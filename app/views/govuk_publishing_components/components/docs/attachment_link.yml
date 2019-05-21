@@ -60,3 +60,10 @@ examples:
         title: "Temporary snow ploughs: guidance note"
         url: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/259634/temporary-snow-ploughs.pdf
       target: _blank
+  with_data_attributes:
+    data:
+      attachment:
+        title: "Temporary snow ploughs: guidance note"
+        url: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/259634/temporary-snow-ploughs.pdf
+      data_attributes:
+        gtm: "attachment-preview"

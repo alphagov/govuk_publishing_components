@@ -97,4 +97,18 @@ describe "Attachment", type: :view do
     )
     assert_select "a[href='https://www.gov.uk/guidance/open-document-format-odf-guidance-for-uk-government/overview-of-productivity-software']", false
   end
+
+  it "embeds any specified data attributes into the links" do
+    render_component(
+      attachment: {
+        title: "Attachment",
+        url: "attachment",
+        content_type: "application/vnd.oasis.opendocument.spreadsheet",
+      },
+        data_attributes: { gtm: "attachment-preview" },
+    )
+
+    assert_select ".gem-c-attachment__thumbnail a.govuk-link[data-gtm='attachment-preview']"
+    assert_select ".gem-c-attachment__title a.govuk-link[data-gtm='attachment-preview']"
+  end
 end

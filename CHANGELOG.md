@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Enable passing data attributes to attachment components (PR #874)
 * Add potentialSearchAction to the GovernmentOrganization schema (PR #870)
 
 ## 16.22.0
