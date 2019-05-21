@@ -51,4 +51,15 @@ describe "Attachment Link", type: :view do
     )
     expect(rendered).to match(/Plain Text/)
   end
+
+  it "embeds any specified data attributes into the link" do
+    render_component(
+      attachment: {
+        title: "Attachment",
+        url: "attachment",
+      },
+      data_attributes: { gtm: "attachment-preview" },
+    )
+    assert_select "a.govuk-link[data-gtm='attachment-preview']"
+  end
 end

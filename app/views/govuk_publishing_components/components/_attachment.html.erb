@@ -3,6 +3,7 @@
   target ||= "_self"
   hide_opendocument_metadata ||= false
   attributes = []
+  data_attributes ||= {}
 
   if attachment.content_type_name
     content = if attachment.content_type_abbr
@@ -35,7 +36,8 @@
                 class: "govuk-link",
                 target: target,
                 tabindex: "-1",
-                "aria-hidden": true do %>
+                "aria-hidden": true,
+                data: data_attributes do %>
       <% if attachment.document? %>
         <%= render "govuk_publishing_components/components/attachment/thumbnail_document.svg" %>
       <% elsif attachment.spreadsheet? %>
@@ -50,7 +52,8 @@
     <%= tag.h2 class: "gem-c-attachment__title" do %>
       <%= link_to attachment.title, attachment.url,
             class: "govuk-link",
-            target: target %>
+            target: target,
+            data: data_attributes %>
     <% end %>
 
     <% if attributes.any? %>
