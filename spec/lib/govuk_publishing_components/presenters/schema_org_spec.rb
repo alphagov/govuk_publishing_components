@@ -53,7 +53,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
 
       search_action = {
         "@type": "SearchAction",
-        "target": "http://www.dev.gov.uk/search/all?keywords={query}&organisations[]=ministry-of-magic",
+        "target": "http://www.dev.gov.uk/search/all?keywords={query}&organisations%5B%5D=ministry-of-magic",
         "query": "required"
       }
 

@@ -18,12 +18,7 @@ module GovukPublishingComponents
           },
           "name" => page.title,
           "description" => page.description || page.body,
-          "potentialAction" => {
-            "@type": "SearchAction",
-            "target": scoped_search_url,
-            "query": "required"
-          }
-        }.merge(parent_organisations).merge(sub_organisations)
+        }.merge(parent_organisations).merge(sub_organisations).merge(search_action)
       end
 
     private
@@ -59,13 +54,17 @@ module GovukPublishingComponents
         }
       end
 
+      def search_action
+        PotentialSearchActionSchema.new(organisation_facet_params).structured_data
+      end
+
       def slug
         uri = URI.parse(page.canonical_url)
         File.basename(uri.path)
       end
 
-      def scoped_search_url
-        "#{Plek.current.website_root}/search/all?keywords={query}&organisations[]=#{slug}"
+      def organisation_facet_params
+        { organisations: [slug] }
       end
     end
   end
