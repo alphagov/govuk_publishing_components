@@ -6,3 +6,5 @@ cy:
       or: 'neu'
     back_link:
       back: "Yn ôl"
+    contents_list: 
+      contents: Cynnwys

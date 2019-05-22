@@ -128,6 +128,11 @@ describe "Contents list", type: :view do
     assert_select ".gem-c-contents-list__link.brand__color", count: 6
   end
 
+  it "renders the heading in welsh" do
+    I18n.with_locale(:cy) { render_component(contents: contents_list) }
+    assert_select ".gem-c-contents-list__title", text: "Cynnwys"
+  end
+
   it "hides the title" do
     render_component(contents: nested_contents_list, hide_title: true)
     assert_select ".gem-c-contents-list__title", false
