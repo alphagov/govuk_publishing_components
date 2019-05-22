@@ -1,16 +1,19 @@
-<% if defined?(title) %>
-  <%
-    description_text ||= false
-    description_govspeak ||= false
-    description ||= yield || false
-    margin_bottom_class = " gem-c-notice--bottom-margin" unless local_assigns[:margin_bottom]
-    description_present = description.present? || description_text.present? || description_govspeak.present?
-  %>
+<%
+  title ||= false
+  description_text ||= false
+  description_govspeak ||= false
+  description ||= yield || false
+  margin_bottom_class = " gem-c-notice--bottom-margin" unless local_assigns[:margin_bottom]
+  description_present = description.present? || description_text.present? || description_govspeak.present?
+%>
+<% if title || description_present %>
   <section class="gem-c-notice<%= margin_bottom_class %>" aria-label="Notice" role="region">
-    <% if description_present %>
-      <h2 class="gem-c-notice__title"><%= title %></h2>
-    <% else %>
-      <span class="gem-c-notice__title"><%= title %></span>
+    <% if title %>
+      <% if description_present %>
+        <h2 class="gem-c-notice__title"><%= title %></h2>
+      <% else %>
+        <span class="gem-c-notice__title"><%= title %></span>
+      <% end %>
     <% end %>
 
     <% if description_text %>
