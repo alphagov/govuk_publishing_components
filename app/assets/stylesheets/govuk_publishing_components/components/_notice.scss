@@ -1,11 +1,11 @@
 .gem-c-notice {
   @include govuk-text-colour;
   clear: both;
-  padding: $gutter-two-thirds;
-  border: 2px solid $govuk-blue;
+  padding: govuk-spacing(4);
+  border: 2px solid govuk-colour("blue");
 
-  @include media(mobile) {
-    padding: $gutter-half;
+  @include govuk-media-query($from: mobile) {
+    padding: govuk-spacing(3);
   }
 
   .govuk-govspeak, {
@@ -24,8 +24,8 @@
 }
 
 .gem-c-notice__title {
-  @include bold-27;
-  margin: 0 0 $gutter-one-third 0;
+  @include govuk-font(27, $weight: bold);
+  margin: 0 0 govuk-spacing(2) 0;
 
   &:last-child {
     margin-bottom: 0;
@@ -37,6 +37,6 @@
 }
 
 .gem-c-notice__description {
-  @include core-19;
+  @include govuk-font(19);
   margin: 0;
 }
