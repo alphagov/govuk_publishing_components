@@ -1,15 +1,15 @@
 .gem-c-document-list {
   @include govuk-text-colour;
-  @include core-19;
+  @include govuk-font(19);
   margin: 0;
   padding: 0;
 }
 
 .gem-c-document-list__item {
   overflow: hidden;
-  margin-bottom: $gutter-one-third;
-  padding-bottom: $gutter-one-third;
-  border-bottom: 1px solid $border-colour;
+  margin-bottom: govuk-spacing(2);
+  padding-bottom: govuk-spacing(2);
+  border-bottom: 1px solid $govuk-border-colour;
   list-style: none;
 
   &:last-child {
@@ -20,21 +20,21 @@
 .gem-c-document-list__item-title {
   @include govuk-link-common;
   @include govuk-link-style-default;
-  @include bold-19;
+  @include govuk-font($size: 19, $weight: bold);
   display: inline-block;
 }
 
 .gem-c-document-list__item-title--context {
-  margin-right: $gutter-one-third;
+  margin-right: govuk-spacing(2);
 
   .direction-rtl & {
     margin-right: 0;
-    margin-left: $gutter-one-third;
+    margin-left: govuk-spacing(2);
   }
 }
 
 .gem-c-document-list__item-context {
-  color: $grey-1;
+  color: govuk-colour("grey-1");
 }
 
 .gem-c-document-list__item-description {
@@ -49,23 +49,23 @@
 
 .gem-c-document-list__attribute {
   @include govuk-text-colour;
-  @include core-14;
+  @include govuk-font(14);
   display: inline-block;
   list-style: none;
-  padding-right: $gutter-two-thirds;
+  padding-right: govuk-spacing(4);
 
   .direction-rtl & {
     padding-right: 0;
-    padding-left: $gutter-two-thirds;
+    padding-left: govuk-spacing(4);
   }
 }
 
 .gem-c-document-list--bottom-margin {
-  margin-bottom: $gutter-two-thirds;
+  margin-bottom: govuk-spacing(4);
 }
 
 .gem-c-document-list--top-margin {
-  margin-top: $gutter-two-thirds;
+  margin-top: govuk-spacing(4);
 }
 
 .gem-c-document-list__multi-list {
