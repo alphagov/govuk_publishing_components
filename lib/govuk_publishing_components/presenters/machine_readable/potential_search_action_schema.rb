@@ -5,7 +5,7 @@ module GovukPublishingComponents
     class PotentialSearchActionSchema
       attr_reader :facet_params
 
-      BASE_SEARCH_URL = "#{Plek.current.website_root}/search/all?keywords={query}".freeze
+      BASE_SEARCH_URL = "#{Plek.current.website_root}/search/all?keywords={query}&order=relevance".freeze
 
       def initialize(facet_params)
         @facet_params = facet_params

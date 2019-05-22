@@ -43,7 +43,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
 
       search_action = {
         "@type": "SearchAction",
-        "target": "http://www.dev.gov.uk/search/all?keywords={query}&manual=%2Fguidance%2Fplane-manual",
+        "target": "http://www.dev.gov.uk/search/all?keywords={query}&order=relevance&manual=%2Fguidance%2Fplane-manual",
         "query": "required"
       }
       expect(structured_data['potentialAction']).to eql(search_action)
@@ -80,7 +80,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
 
       search_action = {
         "@type": "SearchAction",
-        "target": "http://www.dev.gov.uk/search/all?keywords={query}&organisations%5B%5D=ministry-of-magic",
+        "target": "http://www.dev.gov.uk/search/all?keywords={query}&order=relevance&organisations%5B%5D=ministry-of-magic",
         "query": "required"
       }
 
