@@ -7,6 +7,7 @@ require 'govuk_publishing_components/presenters/machine_readable/is_part_of_sche
 require 'govuk_publishing_components/presenters/machine_readable/news_article_schema'
 require 'govuk_publishing_components/presenters/machine_readable/organisation_schema'
 require 'govuk_publishing_components/presenters/machine_readable/person_schema'
+require 'govuk_publishing_components/presenters/machine_readable/potential_search_action_schema'
 require 'govuk_publishing_components/presenters/machine_readable/search_results_page_schema'
 
 module GovukPublishingComponents

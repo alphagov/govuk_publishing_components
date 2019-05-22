@@ -43,6 +43,14 @@ module GovukPublishingComponents
         local_assigns[:image_placeholders]
       end
 
+      def document_type
+        content_item["document_type"]
+      end
+
+      def base_path
+        content_item["base_path"]
+      end
+
       def content_item
         local_assigns[:content_item]
       end

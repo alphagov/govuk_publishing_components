@@ -9,7 +9,9 @@ module GovukPublishingComponents
 
       def structured_data
         # http://schema.org/Article
-        data = CreativeWorkSchema.new(@page).structured_data.merge(body)
+        data = CreativeWorkSchema.new(@page).structured_data
+          .merge(body)
+          .merge(search_action)
         data["@type"] = "Article"
         data
       end
@@ -24,6 +26,13 @@ module GovukPublishingComponents
         {
           "articleBody" => page.body
         }
+      end
+
+      def search_action
+        return {} unless page.document_type == "manual"
+
+        manuals_facet_params = { manual: page.base_path }
+        PotentialSearchActionSchema.new(manuals_facet_params).structured_data
       end
     end
   end

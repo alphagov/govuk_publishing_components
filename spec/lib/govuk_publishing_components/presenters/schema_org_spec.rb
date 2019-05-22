@@ -22,6 +22,33 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       expect(structured_data['articleBody']).to eql("Foo")
     end
 
+    it "generates search info in Articles for manuals" do
+      content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "manual") do |random_item|
+        random_item.merge(
+          "base_path" => "/guidance/plane-manual",
+          "details" => {
+            "body" => "Ensure you have a left phalange before take off."
+          }
+        )
+      end
+
+      structured_data = generate_structured_data(
+        content_item: content_item,
+        schema: :article,
+      ).structured_data
+
+      expect(structured_data['@type']).to eql("Article")
+      expect(structured_data['mainEntityOfPage']['@id']).to eql("http://www.dev.gov.uk/guidance/plane-manual")
+      expect(structured_data['articleBody']).to eql("Ensure you have a left phalange before take off.")
+
+      search_action = {
+        "@type": "SearchAction",
+        "target": "http://www.dev.gov.uk/search/all?keywords={query}&order=relevance&manual=%2Fguidance%2Fplane-manual",
+        "query": "required"
+      }
+      expect(structured_data['potentialAction']).to eql(search_action)
+    end
+
     it "generates schema.org NewsArticles" do
       content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "answer")
 
@@ -53,7 +80,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
 
       search_action = {
         "@type": "SearchAction",
-        "target": "http://www.dev.gov.uk/search/all?keywords={query}&organisations[]=ministry-of-magic",
+        "target": "http://www.dev.gov.uk/search/all?keywords={query}&order=relevance&organisations%5B%5D=ministry-of-magic",
         "query": "required"
       }
 
