@@ -1,33 +1,33 @@
 .gem-c-error-alert {
   color: $gem-text-colour;
-  padding: $gem-spacing-scale-3;
+  padding: govuk-spacing(3);
   border: $gem-border-width-mobile solid $gem-error-colour;
   @include govuk-responsive-margin(8, "bottom");
 
-  @include media(tablet) {
-    padding: $gem-spacing-scale-4;
+  @include govuk-media-query($from: tablet) {
+    padding: govuk-spacing(4);
     border-width: $gem-border-width-tablet;
   }
 }
 
 .gem-c-error-alert__message {
-  @include bold-19;
+  @include govuk-font(19, $weight: bold);
   margin: 0;
 }
 
 .gem-c-error-summary__title {
   margin-top: 0;
-  margin-bottom: $gem-spacing-scale-3;
+  margin-bottom: govuk-spacing(3);
 
-  @include media(tablet) {
-    margin-bottom: $gem-spacing-scale-4;
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: govuk-spacing(4);
   }
 
-  @include bold-24;
+  @include govuk-font(24, $weight: bold);
 }
 
 .gem-c-error-summary__body {
-  @include core-19;
+  @include govuk-font(19);
   margin: 0;
 }
 

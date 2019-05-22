@@ -1,4 +1,4 @@
-name: Error Alert
+name: Error alert
 description: Used at the top of the page, to summarise a unsuccessful user action.
 accessibility_criteria: |
   - should be focused on page load, to ensure the message is noticed by
