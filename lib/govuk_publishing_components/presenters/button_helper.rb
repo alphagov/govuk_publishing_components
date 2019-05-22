@@ -4,7 +4,8 @@ module GovukPublishingComponents
   module Presenters
     class ButtonHelper
       attr_reader :href, :text, :title, :info_text, :rel, :data_attributes,
-        :margin_bottom, :inline_layout, :target, :type, :start, :secondary, :secondary_quiet, :destructive
+                  :margin_bottom, :inline_layout, :target, :type, :start,
+                  :secondary, :secondary_quiet, :destructive
 
       def initialize(local_assigns)
         @href = local_assigns[:href]

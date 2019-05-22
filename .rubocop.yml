@@ -3,3 +3,8 @@ Metrics/BlockLength:
     - 'lib/tasks/*.rake'
     - 'spec/**/*.rb'
     - '*.gemspec'
+Layout/AlignArguments:
+  Exclude:
+    - 'lib/tasks/*.rake'
+    - 'spec/**/*.rb'
+    - '*.gemspec'
