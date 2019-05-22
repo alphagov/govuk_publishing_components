@@ -35,9 +35,9 @@ Gem::Specification.new do |s|
   s.add_development_dependency "poltergeist", "~> 1.16.0"
   s.add_development_dependency "rspec-rails", "~> 3.6"
   s.add_development_dependency "uglifier", ">= 1.3.0"
-  # Needed to load slimmer test helpers
-  # https://github.com/alphagov/slimmer/issues/201
   s.add_development_dependency "pry-byebug"
+  # Webmock is needed to load slimmer test helpers
+  # https://github.com/alphagov/slimmer/issues/201
   s.add_development_dependency "webmock", "~> 3.5.0"
   s.add_development_dependency "yard"
 end
