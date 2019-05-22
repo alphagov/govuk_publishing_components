@@ -9,24 +9,12 @@ module GovukPublishingComponents
         @query_parameters = query_parameters
       end
 
-      def step_navs
-        @step_navs ||= parsed_step_navs.map do |step_nav|
-          StepByStepModel.new(step_nav)
-        end
-      end
-
-      def related_to_step_navs
-        @related_to_step_navs ||= parsed_related_to_step_navs.map do |step_nav|
-          StepByStepModel.new(step_nav)
-        end
-      end
-
       def show_sidebar?
-        show_header? && current_step_nav.steps.present?
+        content_tagged_to_current_step_by_step? && current_step_nav.steps.present?
       end
 
-      def show_header?
-        step_navs.count == 1 || active_step_by_step?
+      def content_tagged_to_current_step_by_step?
+        step_navs.one? || active_step_by_step?
       end
 
       def show_related_links?
@@ -60,7 +48,7 @@ module GovukPublishingComponents
       end
 
       def header
-        if show_header?
+        if content_tagged_to_current_step_by_step?
           {
             title: current_step_nav.title,
             path: current_step_nav.base_path,
@@ -104,6 +92,18 @@ module GovukPublishingComponents
         step_nav_list += step_navs if step_navs.any?
         step_nav_list += related_to_step_navs if related_to_step_navs.any?
         step_nav_list
+      end
+
+      def step_navs
+        @step_navs ||= parsed_step_navs.map do |step_nav|
+          StepByStepModel.new(step_nav)
+        end
+      end
+
+      def related_to_step_navs
+        @related_to_step_navs ||= parsed_related_to_step_navs.map do |step_nav|
+          StepByStepModel.new(step_nav)
+        end
       end
 
       def parsed_step_navs

@@ -145,9 +145,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
       it "handled gracefully" do
         step_nav_links = described_class.new(content_store_response, '/giant-pool/planning')
 
-        expect(step_nav_links.step_navs.count).to eq(0)
-
-        expect(step_nav_links.show_header?).to be false
+        expect(step_nav_links.content_tagged_to_current_step_by_step?).to be false
         expect(step_nav_links.header).to eq({})
 
         expect(step_nav_links.show_related_links?).to be false
@@ -172,9 +170,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
       it "parses the content item" do
         step_nav_links = described_class.new(content_store_response, '/vomit-comet-session')
 
-        expect(step_nav_links.step_navs.count).to eq(1)
-
-        expect(step_nav_links.show_header?).to be true
+        expect(step_nav_links.content_tagged_to_current_step_by_step?).to be true
         expect(step_nav_links.header).to eq(
           path: "/learn-to-spacewalk",
           title: "Learn to spacewalk: small step by giant leap",
@@ -216,8 +212,6 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
       it "parses the content item" do
         step_nav_links = described_class.new(content_store_response, '/vomit-comet-session')
 
-        expect(step_nav_links.step_navs.count).to eq(2)
-
         expect(step_nav_links.show_related_links?).to be true
         expect(step_nav_links.related_links).to eq([
           {
@@ -232,7 +226,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
           }
         ])
 
-        expect(step_nav_links.show_header?).to be false
+        expect(step_nav_links.content_tagged_to_current_step_by_step?).to be false
         expect(step_nav_links.show_sidebar?).to be false
       end
     end
@@ -252,9 +246,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
       it "parses the content item" do
         step_nav_links = described_class.new(content_store_response, '/vomit-comet-session')
 
-        expect(step_nav_links.step_navs.count).to eq(6)
-
-        expect(step_nav_links.show_header?).to be false
+        expect(step_nav_links.content_tagged_to_current_step_by_step?).to be false
         expect(step_nav_links.show_related_links?).to be false
         expect(step_nav_links.show_sidebar?).to be false
       end
@@ -264,7 +256,6 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
   context "configuring step by step content for a sidebar navigation element" do
     it "sets up navigation appropriately" do
       step_nav_helper = described_class.new(content_item, "/random_url")
-      expect(step_nav_helper.step_navs.count).to eq(1)
 
       sidebar = step_nav_helper.sidebar
 
@@ -280,8 +271,6 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
     it "configures active links appropriately" do
       step_nav_helper = described_class.new(content_item, "/driving-lessons-learning-to-drive")
       sidebar = step_nav_helper.sidebar
-
-      expect(step_nav_helper.step_navs.count).to eq(1)
 
       # shows the step with /driving-lessons-learning-to-drive
       expect(sidebar[:show_step]).to eq(2)
@@ -397,7 +386,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
       }
       step_nav_helper = described_class.new(content_item, "/driving-lessons-learning-to-drive", "step-by-step-nav" => "cccc-dddd")
       expect(step_nav_helper.active_step_by_step?).to eq(true)
-      expect(step_nav_helper.show_header?).to eq(true)
+      expect(step_nav_helper.content_tagged_to_current_step_by_step?).to eq(true)
     end
 
     it "shows the titles of the other step navs the content item is part of" do

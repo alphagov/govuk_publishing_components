@@ -3,6 +3,10 @@ module GovukPublishingComponents
     # @private
     class ContextualNavigation
       attr_reader :content_item, :request_path, :query_parameters
+      delegate :content_tagged_to_current_step_by_step?,
+               :show_related_links?, :show_also_part_of_step_nav?,
+               :header, :related_links, :sidebar, :also_part_of_step_nav,
+               to: :step_nav_helper
 
       # @param content_item A content item hash with strings as keys
       # @param request_path `request.path`
@@ -60,18 +64,7 @@ module GovukPublishingComponents
         content_item["schema_name"] == "specialist_document"
       end
 
-      def content_tagged_to_current_step_by_step?
-        # TODO: remove indirection here
-        step_nav_helper.show_header?
-      end
-
-      def content_tagged_to_a_reasonable_number_of_step_by_steps?
-        step_nav_helper.show_related_links?
-      end
-
-      def content_tagged_to_other_step_by_steps?
-        step_nav_helper.show_also_part_of_step_nav?
-      end
+    private
 
       def step_nav_helper
         @step_nav_helper ||= PageWithStepByStepNavigation.new(content_item, request_path, query_parameters)

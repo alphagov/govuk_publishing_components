@@ -7,6 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+* Refactor to make step by steps easier to work with. (PR #880)
+
 ## 16.27.0
 
 * Allow target attribute on links for the error summary component (PR #894)

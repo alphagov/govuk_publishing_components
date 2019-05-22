@@ -5,7 +5,7 @@
   <% if navigation.content_tagged_to_current_step_by_step? %>
     <%# Rendering step by step nav breadcrumbs because there's 1 step by step %>
     <%= render 'govuk_publishing_components/components/step_by_step_nav_header',
-      navigation.step_nav_helper.header %>
+      navigation.header %>
   <% elsif navigation.content_tagged_to_a_finder? %>
     <%# Rendering finder breadcrumbs because the page is tagged to a finder %>
     <%= render 'govuk_publishing_components/components/breadcrumbs', breadcrumbs: navigation.breadcrumbs %>
