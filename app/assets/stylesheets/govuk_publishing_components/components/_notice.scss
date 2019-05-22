@@ -1,12 +1,10 @@
 .gem-c-notice {
   @include govuk-text-colour;
-  clear: both;
-  padding: govuk-spacing(4);
-  border: 2px solid govuk-colour("blue");
+  @include govuk-responsive-padding(4);
+  @include govuk-responsive-margin(8, "bottom");
 
-  @include govuk-media-query($from: mobile) {
-    padding: govuk-spacing(3);
-  }
+  clear: both;
+  border: 2px solid govuk-colour("blue");
 
   .govuk-govspeak, {
     p:last-child {
@@ -19,13 +17,10 @@
   }
 }
 
-.gem-c-notice--bottom-margin {
-  @include responsive-bottom-margin;
-}
-
 .gem-c-notice__title {
-  @include govuk-font(27, $weight: bold);
-  margin: 0 0 govuk-spacing(2) 0;
+  @include govuk-font(24, $weight: bold);
+  margin-top: 0;
+  @include govuk-responsive-margin(4, "bottom");
 
   &:last-child {
     margin-bottom: 0;
