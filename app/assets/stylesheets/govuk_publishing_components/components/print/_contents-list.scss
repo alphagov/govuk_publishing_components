@@ -9,7 +9,7 @@
 
 // Put indentation back where we use list style types
 .gem-c-contents-list__list-item--dashed {
-  margin-left: $gutter / 2;
+  margin-left: govuk-spacing(3);
   list-style-type: disc;
 }
 
