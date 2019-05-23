@@ -29,3 +29,5 @@ Before publishing a new version [check the open and approved pull requests](http
 7. Create a pull request and copy the changelog text for the current version in the pull request description.
 
 8. Once the pull request is approved, merge to master. This action will trigger the CI to publish the new version to RubyGems. A [dependabot](https://github.com/dependabot) pull request will automatically be raised in frontend applications.
+
+See an [example pull request](https://github.com/alphagov/govuk_publishing_components/pull/873/files) for publishing a new version to RubyGems.
