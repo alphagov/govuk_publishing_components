@@ -18,6 +18,7 @@ Components should be added to this gem if they are required in more than one app
 - [Develop a component](/docs/develop-component.md)
 - [Run the component guide](/docs/run-component-guide.md)
 - [Move a component from an application to the gem](/docs/moving-components-upstream-into-this-gem.md)
+- [Publish this gem](/docs/publishing-to-rubygems.md)
 
 ## Architecture / structure
 
