@@ -9,6 +9,9 @@
 
 ## Unreleased
 
+* Update notice component to render without title (PR #884)
+* Add margin option to notice component (PR #884)
+
 # 16.23.0
 
 * Add contents list heading Welsh translation (PR #881)

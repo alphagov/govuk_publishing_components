@@ -1,28 +1,32 @@
-<% if defined?(title) %>
-  <%
-    description_text ||= false
-    description_govspeak ||= false
-    description ||= yield || false
-    margin_bottom_class = " gem-c-notice--bottom-margin" unless local_assigns[:margin_bottom]
-    description_present = description.present? || description_text.present? || description_govspeak.present?
-  %>
-  <section class="gem-c-notice<%= margin_bottom_class %>" aria-label="Notice" role="region">
-    <% if description_present %>
-      <h2 class="gem-c-notice__title"><%= title %></h2>
-    <% else %>
-      <span class="gem-c-notice__title"><%= title %></span>
+<%
+  title ||= false
+  description_text ||= false
+  description_govspeak ||= false
+  description ||= yield || false
+  local_assigns[:margin_bottom] ||= 8
+  local_assigns[:margin_bottom] = 8 if local_assigns[:margin_bottom] > 9
+
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+
+  css_classes = %w(gem-c-notice)
+  css_classes << (shared_helper.get_margin_bottom)
+
+  description_present = description.present? || description_text.present? || description_govspeak.present?
+%>
+<% if title || description_present %>
+  <%= tag.section class: css_classes, aria: { label: "Notice" }, role: "region" do %>
+    <% if title %>
+      <% if description_present %>
+        <%= tag.h2 title, class: "gem-c-notice__title" %>
+      <% else %>
+        <%= tag.span title, class: "gem-c-notice__title" %>
+      <% end %>
     <% end %>
 
-    <% if description_text %>
-      <p class="gem-c-notice__description"><%= description_text %></p>
-    <% end %>
+    <%= tag.p description_text, class: "gem-c-notice__description" if description_text %>
 
-    <% if description %>
-      <%= description %>
-    <% end %>
+    <%= description if description %>
 
-    <% if description_govspeak.present? %>
-      <%= render 'govuk_publishing_components/components/govspeak', content: description_govspeak %>
-    <% end %>
-  </section>
+    <%= render 'govuk_publishing_components/components/govspeak', content: description_govspeak if description_govspeak %>
+  <% end %>
 <% end %>
