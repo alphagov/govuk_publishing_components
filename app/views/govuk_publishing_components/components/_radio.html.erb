@@ -65,9 +65,7 @@
       } do %>
       <% items.each_with_index do |item, index| %>
         <% if item === :or %>
-          <div class="gem-c-radios__divider govuk-radios__divider">
-            <%= t('components.radio.or') %>
-          </div>
+          <%= tag.div t('components.radio.or'), class: "govuk-radios__divider" %>
         <% else %>
           <%
             item_next = items[index + 1] unless index === items.size - 1
@@ -107,9 +105,7 @@
           <% end %>
 
           <% if item[:conditional] %>
-            <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="<%= conditional_id %>">
-              <%= item[:conditional] %>
-            </div>
+            <%= tag.div item[:conditional], class:"govuk-radios__conditional govuk-radios__conditional--hidden", id: conditional_id %>
           <% end %>
 
         <% end %>
