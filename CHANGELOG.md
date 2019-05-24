@@ -9,6 +9,8 @@
 
 ## Unreleased
 
+## 16.24.0
+
 * Update notice component to render without title (PR #884)
 * Add margin option to notice component (PR #884)
 * Remove related step by steps from CreativeWork schema (PR #888)
