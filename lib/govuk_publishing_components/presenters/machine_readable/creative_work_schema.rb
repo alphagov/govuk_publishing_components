@@ -60,26 +60,11 @@ module GovukPublishingComponents
       end
 
       def is_part_of
-        return {} unless step_by_step_schemas.any? || document_collections.any?
+        return {} unless document_collections.any?
 
         {
-          "isPartOf" => document_collections + step_by_step_schemas
+          "isPartOf" => document_collections
         }
-      end
-
-      def step_by_step_schemas
-        # We could include `related_to_step_navs` eventually too, but initially
-        # link to those that we render in the "step_by_step_nav_related" component
-        @step_by_step_schemas ||= fetch_step_by_step_schemas
-      end
-
-      def fetch_step_by_step_schemas
-        page.content_item.dig("links", "part_of_step_navs").to_a.map do |step_by_step|
-          step_by_step_page = linked_page(step_by_step)
-          structured_data = HowToSchema.new(step_by_step_page.canonical_url).structured_data
-
-          structured_data.merge(image_schema)
-        end
       end
 
       def linked_page(step_by_step)
