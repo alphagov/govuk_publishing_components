@@ -9,6 +9,8 @@
 
 ## Unreleased
 
+* Add machine readable breadcrumbs to the step by step header (PR #892)
+
 ## 16.25.0
 
 * Support data attributes in modal dialogue (PR #890)
