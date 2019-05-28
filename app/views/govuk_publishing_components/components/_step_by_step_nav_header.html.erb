@@ -2,8 +2,17 @@
   title ||= false
   path ||= false
   tracking_id ||= false
+  breadcrumbs = [
+    { title: "Home", url: "/" },
+    { title: title, url: path }
+  ]
+  breadcrumb_presenter = GovukPublishingComponents::Presenters::Breadcrumbs.new(breadcrumbs, request.path)
 %>
 <% if title %>
+  <script type="application/ld+json">
+    <%= raw breadcrumb_presenter.structured_data.to_json %>
+  </script>
+
   <div class="gem-c-step-nav-header" data-module="track-click">
     <span class="gem-c-step-nav-header__part-of">Part of</span>
     <% if path %>
