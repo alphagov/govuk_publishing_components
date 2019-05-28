@@ -9,6 +9,8 @@
 
 ## Unreleased
 
+## 16.25.0
+
 * Support data attributes in modal dialogue (PR #890)
 
 ## 16.24.0
