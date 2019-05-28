@@ -9,6 +9,8 @@
 
 ## Unreleased
 
+* Support data attributes in modal dialogue (PR #890)
+
 ## 16.24.0
 
 * Update notice component to render without title (PR #884)
