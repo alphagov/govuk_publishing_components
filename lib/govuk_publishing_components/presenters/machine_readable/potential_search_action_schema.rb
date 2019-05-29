@@ -3,12 +3,13 @@ require 'plek'
 module GovukPublishingComponents
   module Presenters
     class PotentialSearchActionSchema
-      attr_reader :facet_params
+      attr_reader :facet_params, :description
 
       BASE_SEARCH_URL = "#{Plek.current.website_root}/search/all?keywords={query}&order=relevance".freeze
 
-      def initialize(facet_params)
+      def initialize(facet_params, description)
         @facet_params = facet_params
+        @description = description
       end
 
       def structured_data
@@ -16,6 +17,7 @@ module GovukPublishingComponents
         {
           "potentialAction" => {
             "@type": "SearchAction",
+            "description": description,
             "target": search_template,
             "query": "required"
           }
