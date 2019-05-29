@@ -9,6 +9,8 @@
 
 ## Unreleased
 
+* Allow target attribute on links for the error summary component (PR #894)
+
 ## 16.26.0
 
 * Add machine readable breadcrumbs to the step by step header (PR #892)

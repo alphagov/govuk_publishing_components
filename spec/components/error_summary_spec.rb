@@ -81,7 +81,8 @@ describe "Error summary", type: :view do
         },
         {
           text: 'Descriptive link to the question with an error 3',
-          href: '#example-error-3'
+          href: '#example-error-3',
+          target: '_blank'
         },
         {
           text: 'Description for error 4 with no link'
@@ -101,8 +102,8 @@ describe "Error summary", type: :view do
       text: 'Descriptive link to the question with an error 2'
     )
     assert_select(
-      "ul li a:last-of-type[href='#example-error-3']",
-      text: 'Descriptive link to the question with an error 3'
+      "ul li a:last-of-type[href='#example-error-3'][target='_blank']",
+      text: 'Descriptive link to the question with an error 3',
     )
     assert_select(
       "ul li:last-of-type",
