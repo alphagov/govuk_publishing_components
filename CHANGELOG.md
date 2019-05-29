@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 16.27.0
 
 * Allow target attribute on links for the error summary component (PR #894)
 
