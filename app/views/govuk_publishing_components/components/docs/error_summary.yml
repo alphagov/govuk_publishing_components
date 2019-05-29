@@ -32,3 +32,14 @@ examples:
         tracking: GTM-123AB
       items:
       - text: Descriptive link to the question with an error 1
+  with_custom_target_on_links:
+    data:
+      title: Message to alert the user to a problem goes here
+      description: Optional description of the errors and how to correct them
+      items:
+      - text: Descriptive link to the question with an error oppening in a new window
+        href: '#example-error-1'
+        target: '_blank'
+      - text: Descriptive link to the question with an error oppening in the same window
+        href: '#example-error-2'
+        target: '_self'
