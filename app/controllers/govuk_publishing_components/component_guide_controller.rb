@@ -48,7 +48,7 @@ module GovukPublishingComponents
 
     def index_breadcrumb
       {
-        title: GovukPublishingComponents::Config.component_guide_title,
+        title: "Component Guide",
         url: component_guide_path
       }
     end
