@@ -21,18 +21,30 @@ module GovukPublishingComponents
         end
       end
 
+      def secondary_step_by_steps
+        @secondary_step_by_steps ||= parsed_secondary_to_step_navs.map do |step_nav|
+          StepByStepModel.new(step_nav)
+        end
+      end
+
       def show_sidebar?
         show_header? && current_step_nav.steps.present?
       end
 
       def show_header?
-        step_navs.count == 1 || active_step_by_step?
+        step_navs.count == 1 || active_step_by_step? || show_secondary_step_by_step?
       end
 
       def show_related_links?
-        return true if active_step_by_step?
-
-        step_navs.any? && step_navs.count < 5
+        if active_step_by_step?
+          true
+        elsif step_navs.any? && step_navs.count < 5
+          true
+        elsif show_related_links_for_secondary_step_by_steps?
+          true
+        else
+          false
+        end
       end
 
       def show_also_part_of_step_nav?
@@ -40,7 +52,16 @@ module GovukPublishingComponents
       end
 
       def related_links
-        step_by_step_navs = active_step_by_step? ? [active_step_by_step] : step_navs
+        step_by_step_navs = if active_step_by_step?
+                              [active_step_by_step]
+                            elsif step_navs.any?
+                              step_navs
+                            elsif show_related_links_for_secondary_step_by_steps?
+                              secondary_step_by_steps
+                            else
+                              []
+                            end
+
         format_related_links(step_by_step_navs)
       end
 
@@ -71,6 +92,10 @@ module GovukPublishingComponents
         end
       end
 
+      def primary_step_by_steps?
+        step_navs_combined_list.any?
+      end
+
       def active_step_by_step?
         active_step_nav_content_id.present? && active_step_by_step.present?
       end
@@ -81,14 +106,34 @@ module GovukPublishingComponents
         @active_step_navs.first
       end
 
+      def secondary_step_by_step?
+        secondary_step_by_steps.any?
+      end
+
+      def secondary_step_by_step
+        secondary_step_by_steps.first
+      end
+
+      def show_secondary_step_by_step?
+        !primary_step_by_steps? && secondary_step_by_step? && secondary_step_by_steps.count === 1
+      end
+
+      def show_related_links_for_secondary_step_by_steps?
+        !primary_step_by_steps? && secondary_step_by_step? && secondary_step_by_steps.count < 5
+      end
+
     private
 
       attr_reader :content_item, :current_path
 
       def current_step_nav
-        return active_step_by_step if active_step_by_step?
-
-        step_navs.first
+        if active_step_by_step?
+          active_step_by_step
+        elsif primary_step_by_steps?
+          step_navs.first
+        elsif show_secondary_step_by_step?
+          secondary_step_by_step
+        end
       end
 
       def active_step_nav_content_id
@@ -112,6 +157,10 @@ module GovukPublishingComponents
 
       def parsed_related_to_step_navs
         content_item.dig("links", "related_to_step_navs").to_a
+      end
+
+      def parsed_secondary_to_step_navs
+        content_item.dig("links", "secondary_to_step_navs").to_a
       end
 
       def configure_for_sidebar(step_nav_content)
