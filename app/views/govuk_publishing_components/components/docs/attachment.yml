@@ -1,18 +1,16 @@
-name: Attachment (experimental)
+name: Attachment
 description: Displays a link to download an attachment and metadata about the file
 body: |
-  This component is marked as experimental as it is part of a drive to provide
-  a consistent place for attachment presentation logic (currently this logic is
-  within [Govspeak][] and [Whitehall][]). The API for this
-  component may change during this process.
-
-  It shows a link to a document that is attached to GOV.UK content along with a
-  thumbnail and relevant file data.
+  This component shows a link to a document that is attached to GOV.UK content
+  along with a thumbnail and relevant file data.
 
   It is intended to be rendered in Govspeak and as an attachment 'preview' in
   Content Publisher.
 
-  [Govspeak]: https://github.com/alphagov/govspeak/blob/c3a0742c87537a371108d097cea23688efa90a14/lib/govspeak/presenters/attachment_presenter.rb
+  It is not as rich in features as the [attachment rendering][Whitehall]
+  provided by Whitehall, it lacks support for multiple languages, CSV previews
+  and publication fields
+
   [Whitehall]: https://github.com/alphagov/whitehall/blob/5c760eea912320c5a80ef59791df47161d889f2f/app/helpers/document_helper.rb
 shared_accessibility_criteria:
 - link
