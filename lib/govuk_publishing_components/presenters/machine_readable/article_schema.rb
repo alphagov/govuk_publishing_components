@@ -32,7 +32,11 @@ module GovukPublishingComponents
         return {} unless page.document_type == "manual"
 
         manuals_facet_params = { manual: page.base_path }
-        PotentialSearchActionSchema.new(manuals_facet_params).structured_data
+        PotentialSearchActionSchema.new(manuals_facet_params, search_description).structured_data
+      end
+
+      def search_description
+        I18n.t(:scoped_search_description, scope: %i(components article_schema), title: page.title)
       end
     end
   end

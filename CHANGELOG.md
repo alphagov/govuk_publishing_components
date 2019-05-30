@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add descriptions for search actions on machine readable components (PR #897)
+
 ## 16.27.0
 
 * Allow target attribute on links for the error summary component (PR #894)

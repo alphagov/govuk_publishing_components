@@ -55,12 +55,16 @@ module GovukPublishingComponents
       end
 
       def search_action
-        PotentialSearchActionSchema.new(organisation_facet_params).structured_data
+        PotentialSearchActionSchema.new(organisation_facet_params, search_description).structured_data
       end
 
       def slug
         uri = URI.parse(page.canonical_url)
         File.basename(uri.path)
+      end
+
+      def search_description
+        I18n.t(:all_content_search_description, scope: %i(components organisation_schema), organisation: page.title)
       end
 
       def organisation_facet_params

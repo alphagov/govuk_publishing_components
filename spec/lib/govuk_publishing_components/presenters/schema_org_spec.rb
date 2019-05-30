@@ -28,7 +28,8 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
           "base_path" => "/guidance/plane-manual",
           "details" => {
             "body" => "Ensure you have a left phalange before take off."
-          }
+          },
+          "title" => "Phoebe's flying guide"
         )
       end
 
@@ -43,6 +44,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
 
       search_action = {
         "@type": "SearchAction",
+        "description": "Search within Phoebe's flying guide",
         "target": "http://www.dev.gov.uk/search/all?keywords={query}&order=relevance&manual=%2Fguidance%2Fplane-manual",
         "query": "required"
       }
@@ -80,6 +82,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
 
       search_action = {
         "@type": "SearchAction",
+        "description": "Find all content from Ministry of Magic",
         "target": "http://www.dev.gov.uk/search/all?keywords={query}&order=relevance&organisations%5B%5D=ministry-of-magic",
         "query": "required"
       }
