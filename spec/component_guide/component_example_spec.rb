@@ -71,7 +71,16 @@ describe 'Component example' do
     expect(page).to have_content(example)
   end
 
-  it 'marks strings in examples as html_safe' do
+  it 'sanitizes strings in code example' do
+    visit '/component-guide/test-component-with-html-params'
+    within ".component-call" do
+      1.upto(7) do |i|
+        expect(page).to have_text("sanitize(\"<span class=\\\"param-#{i}\\\">#{i}</span>\")")
+      end
+    end
+  end
+
+  it 'marks strings in preview as html_safe' do
     visit '/component-guide/test-component-with-html-params'
     within ".test-component-with-html-params" do
       7.times do |i|

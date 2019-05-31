@@ -29,7 +29,18 @@ module GovukPublishingComponents
     end
 
     def pretty_data
-      JSON.pretty_generate(data).gsub('\\n', "\n    ").gsub(/"(\w*)":/, '\1:').strip
+      json_key_regex = /"(\w*)":/ # matches quoted keys ending with a colon, i.e. "key":
+      output = JSON.pretty_generate(data).gsub('\\n', "\n    ").gsub(json_key_regex, '\1:')
+
+      quoted_string_regex = /"((?:[^"\\]|\\.)*)"/ # matches "some text" - ignores escaped quotes, i.e. \"
+      output.gsub(quoted_string_regex) do |group|
+        match = Regexp.last_match[1]
+        contains_html?(match) ? "sanitize(#{group})" : group
+      end
+    end
+
+    def contains_html?(input)
+      ActionController::Base.helpers.strip_tags(input) != input
     end
 
     def data?
