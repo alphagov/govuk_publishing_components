@@ -11,19 +11,14 @@ describe 'Component example with automated testing', js: true do
     expect(page).to have_selector('.js-test-a11y-success.js-test-a11y-finished')
   end
 
-  it 'throws JavaScript errors if a component has an accessibility issue' do
-    expect { visit '/component-guide/test-component-with-a11y-issue' }
-      .to raise_error(Capybara::Poltergeist::JavascriptError)
-  end
-
-  it 'shows accessibility violations on the page' do
-    expect { visit '/component-guide/test-component-with-a11y-issue' }
-      .to raise_error(Capybara::Poltergeist::JavascriptError)
-
+  it 'shows accessibility violations on the page and through browser console' do
+    visit '/component-guide/test-component-with-a11y-issue'
     expect(page).to have_selector('.js-test-a11y-failed.js-test-a11y-finished')
 
+    expect(page.driver.browser.manage.logs.get(:browser).map { |e| e.message if e.message.match(/Accessibility issues/) }).not_to be_empty
+
     selector_with_error = page.first('.selector').text
-    expect(page).to have_selector(selector_with_error)
+    expect(page).to have_selector(selector_with_error, visible: false)
 
     within '.component-guide-preview--violation' do
       expect(page).to have_selector('h3', text: 'Images must have alternate text')
