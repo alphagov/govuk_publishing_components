@@ -41,8 +41,11 @@ $govuk-cookie-banner-background-new: govuk-colour("white");
 }
 
 .gem-c-cookie-banner__buttons {
-  display: inline-block;
   vertical-align: middle;
+
+  @include govuk-media-query($from: desktop) {
+    display: inline-block;
+  }
 }
 
 .gem-c-cookie-banner__confirmation {
