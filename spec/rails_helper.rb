@@ -4,10 +4,10 @@ require File.expand_path('dummy/config/environment', __dir__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 require 'capybara/rails'
-require 'capybara/poltergeist'
+require 'govuk_test'
 
-# Allow us to test Javascript for example errors thrown by examples
-Capybara.current_driver = Capybara.javascript_driver = :poltergeist
+GovukTest.configure
+Selenium::WebDriver::Remote::Capabilities.chrome(loggingPrefs: { browser: 'ALL' })
 
 RSpec.configure do |config|
   config.include Capybara::DSL
