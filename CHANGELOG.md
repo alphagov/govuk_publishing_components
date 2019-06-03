@@ -9,6 +9,8 @@
 
 ## Unreleased
 
+* Remove dependence on Poltergeist and PhantomJS by moving to govuk_test gem (PR #905)
+
 ## 16.27.1
 
 * Add descriptions for search actions on machine readable components (PR #897)
