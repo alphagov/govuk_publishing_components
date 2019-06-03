@@ -7,12 +7,12 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 16.28.0
+* Make inline buttons 50% width from mobile - tablet (PR #898)
 
 ## 16.27.1
 
 * Add descriptions for search actions on machine readable components (PR #897)
-* Make inline buttons 50% width from mobile - tablet (PR #898)
 
 ## 16.27.0
 
