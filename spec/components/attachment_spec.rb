@@ -71,7 +71,7 @@ describe "Attachment", type: :view do
         content_type: "application/vnd.oasis.opendocument.spreadsheet",
       },
     )
-    assert_select "a[href='https://www.gov.uk/guidance/open-document-format-odf-guidance-for-uk-government/overview-of-productivity-software']"
+    assert_select "a[href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation']"
   end
 
   it "shows section to request a different format if a contact email is provided" do
