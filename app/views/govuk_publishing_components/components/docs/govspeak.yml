@@ -10,7 +10,7 @@ body: |
   Some JavaScript behaviours are applied to this component:
 
   - Progressively enhanced, accessible charts (using [Magna Charta](https://github.com/alphagov/magna-charta), derived from tabular data (see [example](./govspeak/charts))
-  - Progressively enhanced, accessible embedded YouTube player (using [AccessibleMediaPlayer](https://github.com/alphagov/Accessible-Media-Player)) (see [example](./govspeak/with_youtube_embed))
+  - Progressively enhanced, accessible embedded YouTube player (see [example](./govspeak/with_youtube_embed))
 
 accessibility_criteria: |
   - headings must be part of a correct heading structure for the page
