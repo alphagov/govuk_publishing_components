@@ -8,8 +8,8 @@
   of the commit log.
 
 ## 16.28.0
-* Make inline buttons 50% width from mobile - tablet (PR #898)
 
+* Make inline buttons 50% width from mobile - tablet (PR #898)
 * Remove dependence on Poltergeist and PhantomJS by moving to govuk_test gem (PR #905)
 
 ## 16.27.1
