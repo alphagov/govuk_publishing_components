@@ -7,9 +7,14 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## 16.28.0
-* Make inline buttons 50% width from mobile - tablet (PR #898)
+## Unreleased
 
+* Accept error_items on date input component (PR #907)
+* Accept items on error message component (PR #907)
+
+## 16.28.0
+
+* Make inline buttons 50% width from mobile - tablet (PR #898)
 * Remove dependence on Poltergeist and PhantomJS by moving to govuk_test gem (PR #905)
 
 ## 16.27.1

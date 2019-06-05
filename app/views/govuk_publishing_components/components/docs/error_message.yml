@@ -14,3 +14,9 @@ examples:
   default:
     data:
       text: "Please enter your National Insurance Number"
+  with_items:
+    description: Error items are a common pattern where a collection of error is passed with each item having a text attribute of the error
+    data:
+      items:
+        - text: Error 1
+        - text: Error 2
