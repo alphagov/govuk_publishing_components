@@ -10,14 +10,14 @@
   label ||= nil
   hint ||= nil
   error_message ||= nil
-  error_items ||= nil
+  error_items ||= []
   grouped ||= nil
   autofocus ||= nil
   tabindex ||= nil
   readonly ||= nil
   maxlength ||= nil
   width ||= nil
-  has_error ||= error_message || error_items&.any?
+  has_error ||= error_message || error_items.any?
   hint_id = "hint-#{SecureRandom.hex(4)}"
   error_id = "error-#{SecureRandom.hex(4)}"
   search_icon ||= nil
@@ -53,15 +53,11 @@
     } %>
   <% end %>
 
-  <% if error_message %>
+  <% if has_error %>
     <%= render "govuk_publishing_components/components/error_message", {
       id: error_id,
-      text: error_message
-    } %>
-  <% elsif error_items %>
-    <%= render "govuk_publishing_components/components/error_message", {
-      id: error_id,
-      text: raw(error_items.map { |item| item[:text] }.join("<br/>"))
+      text: error_message,
+      items: error_items,
     } %>
   <% end %>
 

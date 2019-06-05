@@ -10,11 +10,11 @@
   local_assigns[:margin_bottom] ||= 6
   local_assigns[:margin_bottom] = 6 if local_assigns[:margin_bottom] > 9
   error_message ||= nil
-  error_items ||= nil
+  error_items ||= []
   character_count ||= nil
   maxlength ||= nil
   hint_id = "hint-#{SecureRandom.hex(4)}"
-  has_error ||= error_message || error_items&.any?
+  has_error ||= error_message || error_items.any?
   error_id = "error-#{SecureRandom.hex(4)}"
 
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
@@ -47,15 +47,11 @@
     } %>
   <% end %>
 
-  <% if error_message %>
+  <% if has_error %>
     <%= render "govuk_publishing_components/components/error_message", {
       id: error_id,
-      text: error_message
-    } %>
-  <% elsif error_items %>
-    <%= render "govuk_publishing_components/components/error_message", {
-      id: error_id,
-      text: raw(error_items.map { |item| item[:text] }.join("<br/>"))
+      text: error_message,
+      items: error_items,
     } %>
   <% end %>
 
