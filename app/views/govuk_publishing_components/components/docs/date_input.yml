@@ -38,6 +38,13 @@ examples:
       legend_text: "What is your date of birth?"
       hint: "For example, 31 3 1980"
       error_message: "Error message goes here"
+  with_error_items:
+    data:
+      legend_text: "What is your date of birth?"
+      hint: "For example, 31 3 1980"
+      error_items:
+        - text: "Error 1"
+        - text: "Error 2"
   with_custom_items:
     data:
       legend_text: "Beth yw eich dyddiad geni?"

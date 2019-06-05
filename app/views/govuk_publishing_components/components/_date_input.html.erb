@@ -10,20 +10,22 @@
   legend_text ||= nil
   hint ||= nil
   error_message ||= nil
+  error_items ||= []
   describedby ||= nil
+  has_error ||= error_message || error_items.any?
 
   css_classes = %w(gem-c-date-input govuk-date-input)
   form_group_css_classes = %w(govuk-form-group)
-  form_group_css_classes << "govuk-form-group--error" if error_message
+  form_group_css_classes << "govuk-form-group--error" if has_error
 
   hint_id = "hint-#{SecureRandom.hex(4)}"
   error_id = "error-#{SecureRandom.hex(4)}"
 
   aria_described_by ||= nil
-  if hint || error_message || describedby
+  if hint || has_error || describedby
     aria_described_by = []
     aria_described_by << hint_id if hint
-    aria_described_by << error_id if error_message
+    aria_described_by << error_id if has_error
     aria_described_by << describedby if describedby
     aria_described_by = aria_described_by.join(" ")
   end
@@ -45,6 +47,11 @@
         id:  error_id,
         text: error_message
       } %>
+    <% elsif error_items %>
+      <%= render "govuk_publishing_components/components/error_message", {
+        id: error_id,
+        text: raw(error_items.map { |item| item[:text] }.join("<br/>"))
+      } %>
     <% end %>
 
     <%= tag.div class: css_classes, id: id do %>
@@ -55,7 +62,7 @@
               text: item[:label] || item[:name].capitalize
             },
             grouped: true,
-            has_error: error_message,
+            has_error: has_error,
             name: name ? (name + "[" + item[:name] + "]") : item[:name],
             value: item[:value],
             width: item[:width],
