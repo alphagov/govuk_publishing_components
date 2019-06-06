@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 16.29.0
 
 * Accept error_items on date input component (PR #907)
 * Accept items on error message component (PR #907)
