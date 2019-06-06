@@ -3,6 +3,7 @@
   description_text ||= false
   description_govspeak ||= false
   description ||= yield || false
+  aria_live ||= false
   local_assigns[:margin_bottom] ||= 8
   local_assigns[:margin_bottom] = 8 if local_assigns[:margin_bottom] > 9
 
@@ -11,10 +12,12 @@
   css_classes = %w(gem-c-notice)
   css_classes << (shared_helper.get_margin_bottom)
 
+  aria_attributes = aria_live ? {label: 'Notice', live: 'polite'} : {label: 'Notice'}
+
   description_present = description.present? || description_text.present? || description_govspeak.present?
 %>
 <% if title || description_present %>
-  <%= tag.section class: css_classes, aria: { label: "Notice" }, role: "region" do %>
+  <%= tag.section class: css_classes, aria: aria_attributes, role: "region" do %>
     <% if title %>
       <% if description_present %>
         <%= tag.h2 title, class: "gem-c-notice__title" %>

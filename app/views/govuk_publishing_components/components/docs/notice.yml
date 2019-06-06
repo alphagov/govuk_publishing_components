@@ -36,3 +36,9 @@ examples:
   without_title:
     data:
       description_govspeak: '<p>Scheduled to publish at 8am on 25 April 2019<br/><a href="change-date">Change date</a><br/><a href="stop-scheduled-publishing">Stop scheduled publishing</a></p>'
+  with_aria_live:
+    description: Passing the aria live flag to the notice component will read the notice out to users if the notice changes, e.g on form submission the notice may go from hidden to visible.
+    data:
+      title: 'Your settings have been saved'
+      description_govspeak: <p>This is a confirmation message to tell you your settings have been saved</p>
+      aria_live: true

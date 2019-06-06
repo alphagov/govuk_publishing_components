@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add aria-live flag to notice component (PR #911)
+
 ## 16.29.0
 
 * Accept error_items on date input component (PR #907)
