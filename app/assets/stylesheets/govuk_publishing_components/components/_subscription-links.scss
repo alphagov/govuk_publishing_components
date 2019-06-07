@@ -8,7 +8,7 @@
 
   .gem-c-subscription-links__list {
     list-style: none;
-    margin: 0 (-govuk-spacing(3) / 2);
+    margin: 0 (- govuk-spacing(3) / 2);
     padding: 0;
   }
 
@@ -44,7 +44,7 @@
     background-repeat: no-repeat;
     background-position: 0 20%;
 
-    @include media(tablet) {
+    @include govuk-media-query($from: tablet) {
       background-position: 0 35%;
     }
   }
@@ -67,7 +67,7 @@
     background-image: image-url("govuk_publishing_components/mail-icon.png");
     padding-left: govuk-spacing(5);
 
-    @include device-pixel-ratio {
+    @include govuk-device-pixel-ratio {
       background-image: image-url("govuk_publishing_components/mail-icon-x2.png");
       background-size: govuk-spacing(4) govuk-spacing(3);
     }
@@ -76,7 +76,7 @@
   .gem-c-subscription-links__feed-box {
     padding: govuk-spacing(3);
     margin-bottom: govuk-spacing(3);
-    background: $grey-3;
+    background: govuk-colour("grey-3");
 
     .js-enabled &.js-hidden {
       display: none;
