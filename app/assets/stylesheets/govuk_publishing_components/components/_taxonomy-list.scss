@@ -1,10 +1,10 @@
 .gem-c-taxonomy-list {
   display: flex;
   flex-wrap: wrap;
-  margin: $gutter-half 0 0 0;
+  margin: govuk-spacing(3) 0 0 0;
   padding: 0;
 
-  @include media(tablet) {
+  @include govuk-media-query($from: tablet) {
     margin-right: -25px;
   }
 }
@@ -12,10 +12,10 @@
 .gem-c-taxonomy-list__item {
   list-style: none;
 
-  @include media(tablet) {
-    @include box-sizing(border-box);
+  @include govuk-media-query($from: tablet) {
+    box-sizing: border-box;
     width: 33%;
-    padding-right: $gutter-one-third;
+    padding-right: govuk-spacing(2);
     vertical-align: top;
   }
 }
