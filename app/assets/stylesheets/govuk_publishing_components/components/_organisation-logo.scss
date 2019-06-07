@@ -4,7 +4,7 @@
   line-height: (15 / 13);
   font-weight: 400;
 
-  @include media(tablet) {
+  @include govuk-media-query($from: tablet) {
     font-size: 18px;
     line-height: 20px;
   }
@@ -14,7 +14,7 @@
   text-transform: none;
   text-decoration: none;
   display: block;
-  color: $black;
+  color: govuk-colour("black");
   height: auto;
   width: auto;
 
@@ -29,11 +29,11 @@
 
 .gem-c-organisation-logo__crest {
   // Default brand colour
-  border-left: 2px solid $black;
+  border-left: 2px solid govuk-colour("black");
   padding-top: 20px;
   padding-left: 6px;
 
-  @include media(tablet) {
+  @include govuk-media-query($from: tablet) {
     padding-top: 25px;
     padding-left: 7px;
   }
@@ -48,13 +48,13 @@
 .gem-c-organisation-logo__name {
   position: relative;
   top: 3px;
-  font-family: $helvetica-regular;
+  font-family: "HelveticaNeue", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
 }
 
 .gem-c-organisation-logo__link {
   @include govuk-link-common;
   @include govuk-link-style-text;
-  font-family: $helvetica-regular;
+  font-family: "HelveticaNeue", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
 
   &:hover,
   &:focus {
@@ -67,15 +67,15 @@
   background: image-url("crests/#{$crest}_13px.png") no-repeat 5px 0;
   background-size: auto 20px;
 
-  @include device-pixel-ratio {
+  @include govuk-device-pixel-ratio {
     background-image: image-url("crests/#{$crest}_13px_x2.png");
   }
 
-  @include media(tablet) {
+  @include govuk-media-query($from: tablet) {
     background: image-url("crests/#{$crest}_18px.png") no-repeat 6px 0;
     background-size: auto 26px;
 
-    @include device-pixel-ratio {
+    @include govuk-device-pixel-ratio {
       background-image: image-url("crests/#{$crest}_18px_x2.png");
     }
   }
@@ -85,7 +85,7 @@
   padding-top: 25px;
   background-size: auto 25px;
 
-  @include media(tablet) {
+  @include govuk-media-query($from: tablet) {
     padding-top: 35px;
     background-size: auto 34px;
   }
