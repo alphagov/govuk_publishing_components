@@ -1,5 +1,6 @@
 $govuk-cookie-banner-background: #d5e8f3;
 $govuk-cookie-banner-background-new: govuk-colour("white");
+$govuk-cookie-banner-text-green: #00823b;
 
 .js-enabled {
   .gem-c-cookie-banner,
@@ -38,6 +39,7 @@ $govuk-cookie-banner-background-new: govuk-colour("white");
   margin-bottom: govuk-spacing(1);
   padding-right: govuk-spacing(4);
   padding-bottom: govuk-spacing(2);
+  color: $govuk-cookie-banner-text-green;
 
   @include govuk-media-query($from: desktop) {
     padding-bottom: 0;
@@ -80,7 +82,7 @@ $govuk-cookie-banner-background-new: govuk-colour("white");
 .gem-c-cookie-banner__confirmation {
   display: none;
   position: relative;
-  padding: 0 govuk-spacing(2);
+  padding: govuk-spacing(1);
 }
 
 .gem-c-cookie-banner__confirmation-message,
