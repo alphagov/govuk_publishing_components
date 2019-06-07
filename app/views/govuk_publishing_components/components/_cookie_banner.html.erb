@@ -7,7 +7,6 @@
   cookie_banner_helper = GovukPublishingComponents::Presenters::CookieBannerHelper.new(local_assigns)
 
   message = cookie_banner_helper.message
-  confirmation_message = cookie_banner_helper.confirmation_message
 %>
 
 <div id="<%= id %>" class="<%= cookie_banner_class %>" data-module="cookie-banner">
@@ -47,7 +46,12 @@
 
   <% if new_cookie_banner %>
     <div class="gem-c-cookie-banner__confirmation govuk-width-container">
-      <p class="gem-c-cookie-banner__confirmation-message"><%= confirmation_message %></p>
+      <p class="gem-c-cookie-banner__confirmation-message">
+        You&#8217;ve accepted all cookies. You can
+        <a class="govuk-link" href="/help/cookies" data-module="track-click" data-track-category="cookieBanner" data-track-action="Cookie banner settings clicked from confirmation">
+          change your cookie settings
+        </a> at any time.
+      </p>
       <button class="gem-c-cookie-banner__hide-button" data-hide-cookie-banner="true">Hide</button>
     </div>
   <% end %>

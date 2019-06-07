@@ -9,10 +9,6 @@ module GovukPublishingComponents
         @local_assigns = local_assigns
       end
 
-      def confirmation_message
-        'You\'ve accepted all cookies. You can <a class="govuk-link" href="/help/cookies" data-module="track-click" data-track-category="cookieBanner" data-track-action="Cookie banner settings clicked from confirmation">change your cookie settings</a> at any time.'.html_safe
-      end
-
       def message
         return @message if @message.present?
 
