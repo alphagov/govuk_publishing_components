@@ -16,7 +16,7 @@
     min-height: 2.5em;
     padding: 0 0 0 2.5em;
 
-    @include device-pixel-ratio {
+    @include govuk-device-pixel-ratio {
       background-image: image-url("icon-file-download-2x.png");
       background-size: 25px 25px;
     }

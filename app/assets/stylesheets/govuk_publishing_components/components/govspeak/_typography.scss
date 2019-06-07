@@ -15,7 +15,7 @@
   &.direction-rtl ol,
   &.direction-rtl ul {
     margin-left: 0;
-    margin-right: $gutter-two-thirds;
+    margin-right: govuk-spacing(4);
 
     ul,
     ol {
@@ -27,26 +27,26 @@
   // Block quotes
 
   blockquote {
-    padding: 0 0 0 $gutter-two-thirds;
+    padding: 0 0 0 govuk-spacing(4);
     margin: 0;
     border: 0;
 
-    @include media(desktop) {
-      margin: 0 0 0 (-$gutter);
+    @include govuk-media-query($from: desktop) {
+      margin: 0 0 0 (- govuk-spacing(6));
     }
 
     p {
-      padding-left: $gutter-half;
+      padding-left: govuk-spacing(3);
 
-      @include media(tablet) {
-        padding-left: $gutter;
+      @include govuk-media-query($from: tablet) {
+        padding-left: govuk-spacing(6);
       }
 
       &:before {
         content: "\201C";
         float: left;
         clear: both;
-        margin-left: -$gutter-half;
+        margin-left: -(govuk-spacing(3));
       }
 
       &:last-child:after {
@@ -56,25 +56,25 @@
   }
 
   &.direction-rtl blockquote {
-    padding: 0 $gutter-two-thirds 0 0;
+    padding: 0 govuk-spacing(4) 0 0;
 
     @include govuk-media-query($from: desktop) {
-      margin: 0 (-$gutter) 0 0;
+      margin: 0 (- govuk-spacing(6)) 0 0;
     }
 
     p {
-      padding-right: $gutter-half;
+      padding-right: govuk-spacing(3);
       padding-left: 0;
 
       @include govuk-media-query($from: tablet) {
-        padding-right: $gutter;
+        padding-right: govuk-spacing(6);
         padding-left: 0;
       }
 
       &:before {
         content: "\201D";
         float: right;
-        margin-right: -$gutter-half;
+        margin-right: -(govuk-spacing(3));
         margin-left: 0;
       }
 

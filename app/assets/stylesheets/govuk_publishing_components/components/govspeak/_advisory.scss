@@ -8,7 +8,7 @@ $high-alert-border: #cc0000;
   padding: 1em;
   text-align: left;
 
-  @include device-pixel-ratio {
+  @include govuk-device-pixel-ratio {
     background-image: image-url("icon-information-2x.png");
     background-size: 27px 27px;
   }
@@ -24,7 +24,7 @@ $high-alert-border: #cc0000;
   }
 
   &.high-alert {
-    background-color: $panel-colour;
+    background-color: govuk-colour("grey-3");
     border-color: $high-alert-border;
   }
 

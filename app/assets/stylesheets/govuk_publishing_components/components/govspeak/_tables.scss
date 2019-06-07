@@ -9,8 +9,8 @@
   table {
     border-collapse: collapse;
     border-spacing: 0;
-    margin: $gutter 0;
-    width: $full-width;
+    margin: govuk-spacing(6) 0;
+    width: 100%;
     @include govuk-font($size: 14);
 
     caption {
@@ -21,14 +21,14 @@
     th,
     td {
       vertical-align: top;
-      padding: $gutter-one-third $gutter-one-third $gutter-one-third 0;
-      border-bottom: solid 1px $border-colour;
+      padding: govuk-spacing(2) govuk-spacing(2) govuk-spacing(2) 0;
+      border-bottom: solid 1px govuk-colour("grey-2");
     }
 
     th {
       @include govuk-font($size: 14, $weight: bold);
       text-align: left;
-      color: $black;
+      color: $govuk-text-colour;
     }
 
     td small {

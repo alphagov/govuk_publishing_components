@@ -19,9 +19,9 @@
 
   .attachment {
     position: relative;
-    margin: $gutter 0;
-    padding: $gutter-half 0 0 ($thumbnail-width + $gutter);
-    @extend %contain-floats;
+    margin: govuk-spacing(6) 0;
+    padding: govuk-spacing(3) 0 0 ($thumbnail-width + govuk-spacing(6));
+    @include govuk-clearfix;
 
     &:first-child {
       margin-top: 0;
@@ -29,32 +29,32 @@
     }
 
     .attachment-thumb {
-      $thumb-border-width: $gutter-one-third / 2;
+      $thumb-border-width: govuk-spacing(2) / 2;
 
       position: relative;
       float: left;
       margin-top: $thumb-border-width;
-      margin-left: -($thumbnail-width + $gutter - $thumb-border-width);
-      padding-bottom: $gutter-half;
+      margin-left: -($thumbnail-width + govuk-spacing(6) - $thumb-border-width);
+      padding-bottom: govuk-spacing(3);
 
       img {
         display: block;
         width: $thumbnail-width;
         height: 140px;
-        background: $white;
-        outline: $thumb-border-width solid transparentize($black, .9);
+        background: govuk-colour("white");
+        outline: $thumb-border-width solid transparentize(govuk-colour("black"), .9);
 
-        @include ie-lte(8) {
+        @include govuk-if-ie8 {
           // IE8 incorrectly asserts the "max-width: 100%" rule to be 0
           // because of the collapsed width on its floating container
           // Reset the max-width so that thumbnails render at the specified
           // width above.
           // http://www.456bereastreet.com/archive/201202/using_max-width_on_images_can_make_them_disappear_in_ie8/
           max-width: none;
-          border: $thumb-border-width solid $grey-3;
+          border: $thumb-border-width solid govuk-colour("grey-3");
         }
 
-        @include box-shadow(0 2px 2px rgba($black, .4));
+        box-shadow: 0 2px 2px rgba(govuk-colour("black"), .4);
       }
     }
 
@@ -65,7 +65,7 @@
       }
 
       p {
-        margin: $gutter-one-third 0;
+        margin: govuk-spacing(2) 0;
       }
 
       .metadata {
@@ -88,7 +88,7 @@
       }
 
       .preview {
-        padding-right: $gutter-half;
+        padding-right: govuk-spacing(3);
       }
 
       .opendocument-help {
@@ -109,12 +109,12 @@
   }
 
   &.direction-rtl .attachment {
-    padding: $gutter-half ($thumbnail-width + $gutter) 0 0;
+    padding: govuk-spacing(3) ($thumbnail-width + govuk-spacing(6)) 0 0;
 
     .attachment-thumb {
       float: right;
       margin-left: 0;
-      margin-right: (($thumbnail-width * -1) - $gutter-half);
+      margin-right: (($thumbnail-width * -1) - govuk-spacing(3));
     }
   }
 }

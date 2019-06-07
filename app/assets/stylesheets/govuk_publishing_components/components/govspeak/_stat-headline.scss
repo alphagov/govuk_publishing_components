@@ -7,12 +7,12 @@
 
 .gem-c-govspeak {
   .stat-headline {
-    margin-bottom: $gutter-half;
-    margin-top: $gutter-half;
+    margin-bottom: govuk-spacing(3);
+    margin-top: govuk-spacing(3);
 
     @include govuk-media-query($from: tablet) {
-      margin-bottom: $gutter-two-thirds;
-      margin-top: $gutter-two-thirds;
+      margin-bottom: govuk-spacing(4);
+      margin-top: govuk-spacing(4);
     }
 
     p {

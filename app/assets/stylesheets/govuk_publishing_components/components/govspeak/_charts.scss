@@ -33,9 +33,9 @@
   // CHART COLOUR SCHEME
 
   @import "colours"; // Cabinet Office colour palette (feel free to choose your own)
-  $chart-border: $white; // Chart border colour
-  $key-border: $white; // Key border colour
-  $bar-colours: $govuk-blue, $turquoise, $green, $grass-green, $yellow, $orange, $red, $mellow-red;
+  $chart-border: govuk-colour("white"); // Chart border colour
+  $key-border: govuk-colour("white"); // Key border colour
+  $bar-colours: govuk-colour("blue"), $turquoise, $green, $grass-green, $yellow, $orange, $govuk-error-colour, $mellow-red;
 
   // HELPER MIXINS
 
@@ -151,7 +151,7 @@
           text-align: left;
           padding: $bar-padding 0;
           margin-bottom: 1px;
-          color: $white;
+          color: govuk-colour("white");
           text-indent: $bar-padding;
         }
 
@@ -196,7 +196,7 @@
       .mc-stacked-total {
         padding: $bar-padding 0;
         background-color: transparent !important;
-        color: $black;
+        color: govuk-colour("black");
         display: inline-block;
         text-indent: 5px;
       }
@@ -240,7 +240,7 @@
         text-align: left;
         padding: $bar-padding 0;
         margin-bottom: 1px;
-        color: $white;
+        color: govuk-colour("white");
         text-indent: 4px;
         line-height: 1.5;
       }

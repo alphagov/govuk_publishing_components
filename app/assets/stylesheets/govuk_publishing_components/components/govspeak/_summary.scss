@@ -1,7 +1,7 @@
 .gem-c-govspeak .summary {
   margin: 0 0 2em;
   padding: 0;
-  color: $text-colour;
+  color: $govuk-text-colour;
 
   p {
     @include govuk-font($size: 19);
