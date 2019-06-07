@@ -1,40 +1,44 @@
 .gem-c-step-nav-related {
   @include govuk-text-colour;
-  border-top: 2px solid $govuk-blue;
-  margin-bottom: $gutter;
+  border-top: 2px solid govuk-colour("blue");
+  margin-bottom: govuk-spacing(6);
 }
 
 .gem-c-step-nav-related__heading {
-  margin-top: $gutter-half;
-  margin-bottom: $gutter-one-third;
-  @include bold-19;
+  margin-top: govuk-spacing(3);
+  margin-bottom: govuk-spacing(2);
+  @include govuk-font(19, $weight: bold);
 }
 
 .gem-c-step-nav-related__links {
-  @include bold-16;
+  @include govuk-font(16, $weight: bold);
   margin: 0;
   padding: 0;
 }
 
 .gem-c-step-nav-related--singular {
-  margin-bottom: $gutter-one-third + 3;
+  margin-bottom: govuk-spacing(2) + 3;
 
   .gem-c-step-nav-related__heading {
-    @include _core-font-generator(19px, 19px, 19px, 1.4, 1.4, false, bold);
-    margin-top: $gutter-two-thirds;
+    @include govuk-font(19, $weight: bold, $line-height: 1.4);
+    margin-top: govuk-spacing(4);
+
+    @include govuk-media-query($until: tablet) {
+      font-size: 19px;
+    }
   }
 
   .gem-c-step-nav-related__pretitle {
-    margin-bottom: $gutter-one-quarter;
+    margin-bottom: govuk-spacing(6) / 4;
   }
 }
 
 .gem-c-step-nav-related__pretitle {
   display: block;
-  margin-bottom: $gutter-half;
+  margin-bottom: govuk-spacing(3);
 
-  @include media(tablet) {
-    margin-bottom: 5px;
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: govuk-spacing(1);
   }
 }
 
@@ -43,10 +47,10 @@
 }
 
 .gem-c-step-nav-related__link-item {
-  margin-top: $gutter-half;
+  margin-top: govuk-spacing(3);
 
-  @include media(tablet) {
-    margin-top: 5px;
+  @include govuk-media-query($from: tablet) {
+    margin-top: govuk-spacing(1);
   }
 }
 
