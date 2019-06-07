@@ -1,6 +1,6 @@
 .gem-c-lead-paragraph {
   @include govuk-text-colour;
-  @include core-24;
+  @include govuk-font(24);
   margin-top: 0;
   @include responsive-bottom-margin;
   // Ensure the text has a line-length of around 60 characters
@@ -8,5 +8,5 @@
 }
 
 .gem-c-lead-paragraph--inverse {
-  color: $white;
+  color: govuk-colour("white");
 }
