@@ -1,46 +1,46 @@
 .gem-c-heading {
   @include govuk-text-colour;
-  @include bold-27;
+  @include govuk-font(27, $weight: bold);
   margin: 0;
 }
 
 .gem-c-heading--font-size-24 {
-  @include bold-24;
+  @include govuk-font(24, $weight: bold);
 }
 
 .gem-c-heading--font-size-19 {
-  @include bold-19;
+  @include govuk-font(19, $weight: bold);
 }
 
 // special case for publications and consultations pages
 // separated to allow normalisation of the component for wider use
 .gem-c-heading--mobile-top-margin {
-  margin-top: $gutter;
-  margin-bottom: $gutter-half;
+  margin-top: govuk-spacing(6);
+  margin-bottom: govuk-spacing(3);
 
-  @include media(tablet) {
+  @include govuk-media-query($from: tablet) {
     margin-top: 0;
-    margin-bottom: $gutter;
+    margin-bottom: govuk-spacing(6);
   }
 }
 
 .gem-c-heading--padding {
-  padding: $gutter-half 0;
+  padding: govuk-spacing(3) 0;
 }
 
 // margins would ideally be handled by a general model for all components
 // but we don't have one yet, so this is in anticipation of that
 // suggested scale is as follows, not fully implemented
-// $gutter = 4
-// $gutter-two-thirds = 3
-// $gutter-half = 2
-// $gutter-one-third = 1
+// govuk-spacing(6)= 4
+// govuk-spacing(4) = 3
+// govuk-spacing(3) = 2
+// govuk-spacing(2) = 1
 .gem-c-heading--margin-bottom-4 {
-  margin-bottom: $gutter;
+  margin-bottom: govuk-spacing(6);
 }
 
 .gem-c-heading--margin-bottom-2 {
-  margin-bottom: $gutter-half;
+  margin-bottom: govuk-spacing(3);
 }
 
 // border color will default to black
