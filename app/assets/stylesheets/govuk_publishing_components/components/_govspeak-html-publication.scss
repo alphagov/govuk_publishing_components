@@ -1,6 +1,6 @@
 // Override govspeak styles with HTML publication specific ones
 .gem-c-govspeak-html-publication {
-  margin-bottom: $gutter * 1.5;
+  margin-bottom: govuk-spacing(6) * 1.5;
   z-index: 2;
 
   // This fixes the positioning of the sticky element. The reason it's done on the parent element
@@ -22,25 +22,25 @@
     }
 
     .stat-headline:first-child {
-      margin-top: $gutter;
+      margin-top: govuk-spacing(6);
 
       @include govuk-media-query($from: tablet) {
-        margin-top: ($gutter * 2) + $gutter-two-thirds;
+        margin-top: govuk-spacing(9) + govuk-spacing(4);
       }
     }
 
     h2,
     h3 {
-      margin-top: $gutter;
+      margin-top: govuk-spacing(6);
 
       @include govuk-media-query($from: tablet) {
-        margin-top: ($gutter * 2) + $gutter-two-thirds;
+        margin-top: govuk-spacing(9) + govuk-spacing(4);
       }
     }
 
     h2:first-child,
     h3:first-child {
-      margin-top: $gutter-two-thirds;
+      margin-top: govuk-spacing(4);
 
       @include govuk-media-query($from: tablet) {
         margin-top: 0;
@@ -67,7 +67,7 @@
 
       .numeric {
         text-align: right;
-        font-family: $nta-light-tabular;
+        @include govuk-font(14, $weight: regular, $tabular: true);
       }
 
       // make all elements inside thead look the same
@@ -75,12 +75,16 @@
       // and make all of thead and tfoot stand out
       thead,
       tfoot {
-        background-color: $grey-3;
+        background-color: govuk-colour("grey-3");
       }
 
       thead th,
       thead td {
-        font-weight: bold;
+        @include govuk-font(14, $weight: bold, $tabular: true);
+
+        &.numeric {
+          @include govuk-font(14, $weight: bold, $tabular: true);
+        }
       }
 
       // don't make `th`s bold unless they are a section heading or a (sub)total row
@@ -93,30 +97,30 @@
       // is intentionally small and not balanced with other padding
       // as tables can be quite wide
       tr > :first-child {
-        padding-left: $gutter-one-third / 2;
+        padding-left: govuk-spacing(1);
       }
 
       // add spacing so that groupings are clearer
       tr.section-heading > * {
         font-weight: bold;
-        padding-top: $gutter;
+        padding-top: govuk-spacing(6);
       }
 
       // ideally this should be just a top margin on the tfoot
       // but as that is very tricky, this is more complex
       tbody:last-of-type tr:last-child > *,
       tfoot ~ tbody:last-of-type tr:last-child > * {
-        padding-bottom: $gutter;
+        padding-bottom: govuk-spacing(6);
       }
 
       tbody:last-child tr:last-child > * {
-        padding-bottom: $gutter-one-third;
+        padding-bottom: govuk-spacing(2);
       }
 
       // total and subtotal rows
       tr.subtotal > *,
       tr.total > * {
-        border-top: 3px solid $grey-2;
+        border-top: 3px solid govuk-colour("grey-2");
       }
 
       tr.total > *,
@@ -127,7 +131,7 @@
       // the total is usually in the tfoot, so already has that background colour
       // but when it's used inside the tbody, it should also be highlighted
       tr.total {
-        background-color: $grey-3;
+        background-color: govuk-colour("grey-3");
       }
     }
     // sass-lint:enable no-qualifying-elements
