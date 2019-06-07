@@ -37,10 +37,24 @@ describe "New cookie banner", type: :view do
   it "renders a button for accepting cookies" do
     render_component(new_cookie_banner: true)
     assert_select '.gem-c-cookie-banner__buttons .gem-c-button', text: "Accept cookies"
+    assert_select '.gem-c-cookie-banner__buttons .gem-c-button[data-module=track-click][data-track-category=cookieBanner][data-track-action="Cookie banner accepted"]'
   end
 
   it "renders a button for viewing cookie settings" do
     render_component(new_cookie_banner: true)
     assert_select '.gem-c-cookie-banner__buttons .gem-c-button', text: "Cookie settings"
+    assert_select '.gem-c-cookie-banner__buttons .gem-c-button[data-module=track-click][data-track-category=cookieBanner][data-track-action="Cookie banner settings clicked"]'
+  end
+
+  it "renders a confirmation message" do
+    render_component(new_cookie_banner: true)
+    assert_select '.gem-c-cookie-banner__confirmation-message', text: "You’ve accepted all cookies. You can change your cookie settings at any time."
+  end
+
+  it "renders a link to the settings page within the confirmation message" do
+    render_component(new_cookie_banner: true)
+    assert_select '.gem-c-cookie-banner__confirmation-message a', text: "change your cookie settings"
+    assert_select '.gem-c-cookie-banner__confirmation-message a[data-module=track-click][data-track-category=cookieBanner][data-track-action="Cookie banner settings clicked from confirmation"]'
+  end
   end
 end
