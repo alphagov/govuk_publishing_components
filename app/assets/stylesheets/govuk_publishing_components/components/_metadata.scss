@@ -1,8 +1,8 @@
 .gem-c-metadata {
   @include govuk-text-colour;
-  @include core-16;
+  @include govuk-font(16);
   @include responsive-bottom-margin;
-  @extend %contain-floats;
+  @include govuk-clearfix;
 
   a {
     @include govuk-link-common;
@@ -33,13 +33,13 @@
   margin-top: .5em;
   line-height: normal;
 
-  @include media(tablet) {
-    @include box-sizing(border-box);
+  @include govuk-media-query($from: tablet) {
+    box-sizing: border-box;
     float: left;
     clear: left;
     width: 30%;
     max-width: 11em;
-    padding-right: $gutter-one-third;
+    padding-right: govuk-spacing(2);
     margin-top: 0;
   }
 }
@@ -48,8 +48,8 @@
   float: right;
   clear: right;
 
-  @include media(tablet) {
-    padding-left: $gutter-one-third;
+  @include govuk-media-query($from: tablet) {
+    padding-left: govuk-spacing(2);
     padding-right: 0;
   }
 }
@@ -58,7 +58,7 @@
   margin: 0;
   line-height: normal;
 
-  @include media(tablet) {
+  @include govuk-media-query($from: tablet) {
     float: left;
     width: 70%;
   }
