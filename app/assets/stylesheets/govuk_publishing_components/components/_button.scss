@@ -24,16 +24,14 @@ $gem-quiet-button-hover-colour: darken($gem-quiet-button-colour, 5%);
 
 .gem-c-button--inline {
   display: block;
+  width: 100%;
   margin-bottom: govuk-spacing(1);
-
-  @include govuk-media-query($from: mobile) {
-    @include box-sizing(border-box);
-    display: inline-block;
-    width: 48%;
-  }
+  vertical-align: top;
 
   @include govuk-media-query($from: desktop) {
+    display: inline-block;
     width: auto;
+    vertical-align: baseline;
   }
 }
 

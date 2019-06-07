@@ -38,13 +38,42 @@ $govuk-cookie-banner-background-new: govuk-colour("white");
   margin-bottom: govuk-spacing(1);
   padding-right: govuk-spacing(4);
   padding-bottom: govuk-spacing(2);
+
+  @include govuk-media-query($from: desktop) {
+    padding-bottom: 0;
+  }
 }
 
 .gem-c-cookie-banner__buttons {
-  vertical-align: middle;
+  @include govuk-clearfix;
 
   @include govuk-media-query($from: desktop) {
     display: inline-block;
+  }
+}
+
+.gem-c-cookie-banner__button {
+  display: inline-block;
+  width: 100%;
+
+  @include govuk-media-query($from: mobile, $until: desktop) {
+    width: 49%;
+
+    &.gem-c-cookie-banner__button-accept {
+      float: left;
+    }
+
+    &.gem-c-cookie-banner__button-settings {
+      float: right;
+    }
+  }
+
+  @include govuk-media-query($from: desktop) {
+    width: auto;
+  }
+
+  @include govuk-media-query($until: 455px) {
+    width: 100%;
   }
 }
 
