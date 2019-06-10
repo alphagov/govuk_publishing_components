@@ -9,6 +9,8 @@
 
 ## Unreleased
 
+* Add unsafe-eval to Content Security Policy for component-guide routes (PR #913)
+* Add nonce attribute to inline scripts if Content Security Policy use a nonce generator PR (PR #913)
 * Add aria-live flag to notice component (PR #911)
 
 ## 16.29.0
