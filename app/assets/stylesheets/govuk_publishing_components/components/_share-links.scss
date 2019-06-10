@@ -8,27 +8,27 @@ $share-button-height: 32px;
 }
 
 .gem-c-share-links__list-item {
-  @include box-sizing(border-box);
+  box-sizing: border-box;
   position: relative;
   display: inline-block;
   min-height: $share-button-height;
-  padding-left: ($share-button-width + $gutter-one-third);
-  margin-bottom: $gutter-one-third;
+  padding-left: ($share-button-width + govuk-spacing(2));
+  margin-bottom: govuk-spacing(2);
   font-size: $share-button-height / 2;
   line-height: $share-button-height;
 }
 
 .gem-c-share-links__link {
   @extend %govuk-link;
-  @include bold-16;
-  margin-right: $gutter;
+  @include govuk-font(16, $weight: bold);
+  margin-right: govuk-spacing(6);
   text-decoration: none;
 }
 
 .gem-c-share-links__title {
   @include govuk-text-colour;
   @include govuk-font($size: 16, $line-height: 1.5);
-  margin: 0 0 $gutter-one-third 0;
+  margin: 0 0 govuk-spacing(2) 0;
 }
 
 .gem-c-share-links__link-icon {
@@ -44,12 +44,12 @@ $share-button-height: 32px;
   .gem-c-share-links__link {
     display: inline-block;
     margin-right: 0;
-    margin-left: $gutter;
+    margin-left: govuk-spacing(6);
   }
 
   .gem-c-share-links__list-item {
     padding-left: 0;
-    padding-right: ($share-button-width + $gutter-one-third);
+    padding-right: ($share-button-width + govuk-spacing(2));
   }
 
   .gem-c-share-links__link-icon {

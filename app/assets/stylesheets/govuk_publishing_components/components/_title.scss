@@ -6,10 +6,10 @@
 // but we don't have one yet, so this is in anticipation of that
 // suggested scale is as follows, not fully implemented
 // no margin = 0
-// $gutter = 4
+// govuk-spacing(6)= 4
 // responsive-bottom-margin = 5
 .gem-c-title--margin-bottom-4 {
-  margin-bottom: $gutter;
+  margin-bottom: govuk-spacing(6);
 }
 
 .gem-c-title--margin-bottom-5 {
@@ -17,7 +17,7 @@
 }
 
 .gem-c-title--inverse {
-  color: $white;
+  color: govuk-colour("white");
 
   .gem-c-title__text,
   .gem-c-title__context {
@@ -26,8 +26,8 @@
 }
 
 .gem-c-title__context {
-  @include core-24;
-  color: $secondary-text-colour;
+  @include govuk-font(24);
+  color: $govuk-secondary-text-colour;
   margin: 0;
 }
 
@@ -39,7 +39,7 @@
     color: inherit;
 
     &:focus {
-      color: $black;
+      color: $govuk-text-colour;
     }
   }
 
@@ -51,10 +51,10 @@
 
 .gem-c-title__text {
   @include govuk-text-colour;
-  @include bold-48;
+  @include govuk-font(48, $weight: bold);
   margin: 0;
 }
 
 .gem-c-title__text--long {
-  @include bold-36;
+  @include govuk-font(36, $weight: bold);
 }

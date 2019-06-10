@@ -1,9 +1,6 @@
 .gem-c-pagination {
   display: block;
-  margin-top: $gutter;
-  margin-bottom: $gutter;
-  margin-left: -$gutter-half;
-  margin-right: -$gutter-half;
+  margin: govuk-spacing(6) (- govuk-spacing(3) );
 }
 
 .gem-c-pagination__list {
@@ -12,26 +9,26 @@
 }
 
 .gem-c-pagination__item {
-  @include core-16($line-height: (20 / 16));
+  @include govuk-font($size: 16, $line-height: (20 / 16));
   list-style: none;
 }
 
 .gem-c-pagination__link {
   @extend %govuk-link;
   display: block;
-  padding: $gutter-half;
+  padding: govuk-spacing(3);
   text-decoration: none;
 
   &:hover,
   &:active,
   &:visited,
   &:focus {
-    color: $link-colour;
+    color: $govuk-link-colour;
   }
 
   &:hover,
   &:active {
-    background-color: $canvas-colour;
+    background-color: govuk-colour("grey-4");
   }
 }
 
@@ -44,12 +41,12 @@
 }
 
 .gem-c-pagination__link-text {
-  @include bold-19;
-  margin-left: $gutter / 3;
+  @include govuk-font(19, $weight: bold);
+  margin-left: govuk-spacing(2);
 }
 
 .gem-c-pagination__link-icon {
-  @include core-24($line-height: (33.75 / 27));
+  @include govuk-font($size: 24, $line-height: (33.75 / 27));
   display: inline-block;
   margin-bottom: 1px;
   height: .482em;
@@ -60,9 +57,9 @@
   display: inline-block;
   margin-top: .1em;
   text-decoration: underline;
-  margin-left: $gutter;
+  margin-left: govuk-spacing(5);
 
-  @include media(mobile) {
-    margin-left: $gutter-half + 9;
+  @include govuk-media-query($from: tablet) {
+    margin-left: govuk-spacing(6);
   }
 }

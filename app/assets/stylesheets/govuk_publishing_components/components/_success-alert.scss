@@ -4,14 +4,14 @@
   border: $gem-border-width-mobile solid $gem-success-colour;
   @include govuk-responsive-margin(8, "bottom");
 
-  @include media(tablet) {
+  @include govuk-media-query($from: tablet) {
     padding: $gem-spacing-scale-4;
     border-width: $gem-border-width-tablet;
   }
 }
 
 .gem-c-success-alert__message {
-  @include bold-19;
+  @include govuk-font(19, $weight: bold);
   margin: 0;
 }
 
@@ -19,15 +19,15 @@
   margin-top: 0;
   margin-bottom: $gem-spacing-scale-3;
 
-  @include media(tablet) {
+  @include govuk-media-query($from: tablet) {
     margin-bottom: $gem-spacing-scale-4;
   }
 
-  @include bold-24;
+  @include govuk-font(24, $weight: bold);
 }
 
 .gem-c-success-summary__body {
-  @include core-19;
+  @include govuk-font(19);
   margin: 0;
 }
 

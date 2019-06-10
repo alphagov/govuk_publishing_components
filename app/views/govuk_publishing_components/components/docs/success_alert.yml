@@ -1,4 +1,4 @@
-name: Success Alert
+name: Success alert
 description: Used at the top of the page, to summarise a successful user action.
 accessibility_criteria: |
   - should be focused on page load, to ensure the message is noticed by

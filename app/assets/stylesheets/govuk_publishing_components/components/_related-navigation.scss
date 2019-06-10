@@ -1,27 +1,27 @@
 .gem-c-related-navigation {
   @include govuk-text-colour;
-  border-top: 2px solid $govuk-blue;
+  border-top: 2px solid govuk-colour("blue");
 }
 
 .gem-c-related-navigation__main-heading {
-  @include bold-19;
-  margin-top: $gutter-half;
-  margin-bottom: $gutter-one-third;
+  @include govuk-font(19, $weight: bold);
+  margin-top: govuk-spacing(3);
+  margin-bottom: govuk-spacing(2);
 }
 
 .gem-c-related-navigation__sub-heading {
-  @include core-16;
-  border-top: 1px solid $border-colour;
+  @include govuk-font(16);
+  border-top: 1px solid govuk-colour("grey-2");
   margin: 0;
-  padding-top: $gutter-half;
+  padding-top: govuk-spacing(3);
 }
 
 .gem-c-related-navigation__sub-heading--footer {
-  @include bold-19;
+  @include govuk-font(19, $weight: bold);
   border-top: 0;
   padding-top: 0;
-  margin-top: $gutter-half;
-  margin-bottom: $gutter-one-third;
+  margin-top: govuk-spacing(3);
+  margin-bottom: govuk-spacing(2);
 }
 
 .gem-c-related-navigation__main-heading  + .gem-c-related-navigation__sub-heading {
@@ -30,21 +30,21 @@
 }
 
 .gem-c-related-navigation__sub-heading--other {
-  @include bold-19;
+  @include govuk-font(19, $weight: bold);
   border-top: 0;
   padding-top: 0;
 }
 
 .gem-c-related-navigation__nav-section {
-  margin-bottom: $gutter;
+  margin-bottom: govuk-spacing(6);
 }
 
 .gem-c-related-navigation__link {
   list-style-type: none;
-  margin-top: $gutter-half;
+  margin-top: govuk-spacing(3);
   @include govuk-font($size: 16, $weight: regular, $line-height: 1.5);
 
-  @include media(tablet) {
+  @include govuk-media-query($from: tablet) {
     margin-top: 5px;
   }
 }
