@@ -11,6 +11,7 @@
 
 * Change step by step navigation active step link state (PR #937)
 * Fix dialog element role in modal dialogue component (PR #920)
+* Add ministers to organisation page schema. (PR #921)
 
 ## 17.1.1
 

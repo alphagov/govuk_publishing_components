@@ -69,6 +69,28 @@ examples:
             - title: "Dodgy Wands Commission"
               base_path: "/dodgy-wands-commission"
       schema: :organisation
+  organisation_schema_with_people:
+    data:
+      content_item:
+        title: "Ministry of Organisation"
+        base_path: "/foo"
+        details:
+          ordered_ministers:
+            - name_prefix: "Minister"
+              name: "Rufus Scrimgeour MP"
+              role: "Minister for Magic"
+              href: "/rufus-scrimgeour"
+              role_href: "/minister-for-magic"
+              image:
+                url: "https://images.gov.uk/rufus.jpg"
+            - name_prefix: "Minister"
+              name: "Rufus Scrimgeour MP"
+              role: "Head of Auror Office"
+              href: "/rufus-scrimgeour"
+              role_href: "/head-of-auror-office"
+              image:
+                url: "https://images.gov.uk/rufus.jpg"
+      schema: :organisation
   search_results_page_schema:
     data:
       content_item:
