@@ -11,6 +11,7 @@
 
 * Support data attributes for error summary items (PR #924)
 * Disable youtube embeds if campaign cookies turned off (PR #919)
+* Add options to document list component (PR #917)
 * Add aria-live flag to notice component (PR #911)
 * Check the consent cookie before setting cookies (PR #916)
 * Override vertical align: top for inline buttons (PR #912)
