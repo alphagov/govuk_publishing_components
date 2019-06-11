@@ -123,7 +123,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       }
 
       function showError (error) {
-        error = [
+        var genericError = [
           '<h2 class="gem-c-feedback__heading">',
           '  Sorry, we’re unable to receive your message right now. ',
           '</h2>',
@@ -131,8 +131,14 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           ' feedback on the <a href="/contact/govuk">contact page</a>.</p>'
         ].join('')
 
+        // if the response is not a 404 or 500, show the error message if it exists
+        // otherwise show the generic message
+        // this covers the 422 status the feedback application return for empty fields
+        // for all other, show generic error
         if (typeof (error.responseJSON) !== 'undefined') {
-          error = typeof (error.responseJSON.message) === 'undefined' ? error : error.responseJSON.message
+          error = typeof (error.responseJSON.message) === 'undefined' ? genericError : error.responseJSON.message
+        } else {
+          error = genericError
         }
         var $errors = that.$activeForm.find('.js-errors')
         $errors.html(error).removeClass(jshiddenClass).focus()
