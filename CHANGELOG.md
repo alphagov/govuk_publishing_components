@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add aria-live flag to notice component (PR #911)
+* Check the consent cookie before setting cookies (PR #916)
 
 ## 16.29.0
 
