@@ -39,8 +39,16 @@
 
 .gem-c-document-list__item-description {
   @include govuk-text-colour;
-  @include govuk-font($size: 16, $line-height: 1.5);
   margin: 0 0 5px 0;
+}
+
+.gem-c-document-list__subtext {
+  margin: govuk-spacing(1) 0 0 0;
+}
+
+.gem-c-document-list__item-description,
+.gem-c-document-list__subtext {
+  @include govuk-font($size: 16, $line-height: 1.5);
 }
 
 .gem-c-document-list__item-metadata {

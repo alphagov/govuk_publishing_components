@@ -76,6 +76,27 @@ examples:
           text: 'Become an apprentice'
           path: '/become-an-apprentice'
           description: 'Becoming an apprentice - what to expect, apprenticeship levels, pay and training, making an application, complaining about an apprenticeship.'
+      - link:
+          text: 'Become a journeyman'
+          path: '/become-a-journeyman'
+          description: 'Becoming a journeyman - what to expect, what to take, pay and training, making an application, complaining about being a journeyman.'
+  with_description_and_metadata:
+    data:
+      items:
+      - link:
+          text: 'School behaviour and attendance: parental responsibility measures'
+          path: '/government/publications/parental-responsibility-measures-for-behaviour-and-attendance'
+          description: 'The responsibilities parents have relating to school behaviour and attendance.'
+        metadata:
+          public_updated_at: 2017-01-05 14:50:33
+          document_type: 'Statutory guidance'
+      - link:
+          text: 'School exclusion'
+          path: '/government/publications/school-exclusion'
+          description: 'Rules governing school exclusion.'
+        metadata:
+          public_updated_at: 2017-07-19 15:01:48
+          document_type: 'Statutory guidance'
   with_branding:
     description: Where this component could be used on an organisation page (such as the [Attorney General's Office](https://www.gov.uk/government/organisations/attorney-generals-office)) branding can be applied for link colours and border colours. See the [branding documentation](https://github.com/alphagov/govuk_publishing_components/blob/master/docs/component_branding.md) for more details.
     data:
@@ -115,6 +136,26 @@ examples:
           path: '/government/organisations/advisory-committee-on-the-microbiological-safety-of-food'
           context: 'moving to GOV.UK'
           description: "Works with 4 agencies and public bodies"
+  with_subtext:
+    description: This is used on finders to highlight search results from past governments.
+    data:
+      items:
+      - link:
+          text: 'Department for Education – Statistics at DfE'
+          path: '/government/organisations/department-for-education/about/statistics'
+          description: 'The Department for Education publishes official statistics on education and children.'
+        metadata:
+          public_updated_at: 2017-07-19 15:01:48
+          document_type: 'Corporate information'
+        subtext: 'First published during the 2007 Labour Government'
+      - link:
+          text: 'State-funded school inspections and outcomes: management information'
+          path: '/government/organisations/department-for-education/about/statistics'
+          description: 'Management information published monthly and a one-off publication of inspections and outcomes from 2005 to 2015.'
+        metadata:
+          public_updated_at: 2017-07-19 15:01:48
+          document_type: 'Statistical data set'
+        subtext: 'First published during the 1996 Conservative Government'
   right_to_left:
     data:
       items:

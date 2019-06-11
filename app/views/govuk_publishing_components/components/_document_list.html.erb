@@ -47,6 +47,10 @@
             <% end %>
           </ul>
         <% end %>
+
+        <% if item[:subtext] %>
+          <p class="gem-c-document-list__subtext"><%= item[:subtext] %></p>
+        <% end %>
       </li>
     <% end %>
   <% unless within_multitype_list %>

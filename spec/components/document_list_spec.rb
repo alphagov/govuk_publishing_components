@@ -206,4 +206,21 @@ describe "Document list", type: :view do
     assert_select '.gem-c-document-list__item-title--context[href="/link/path"]', text: 'Link Title'
     assert_select '.gem-c-document-list__item-context', text: 'some context'
   end
+
+  it "adds subtext" do
+    render_component(
+      items: [
+        {
+          link: {
+            text: "Link Title",
+            path: "/link/path",
+            context: "some context"
+          },
+          subtext: "This is some subtext"
+        }
+      ]
+    )
+
+    assert_select '.gem-c-document-list__subtext', text: 'This is some subtext'
+  end
 end
