@@ -105,7 +105,7 @@
     var currentConsentCookie = window.GOVUK.getCookie('cookie_policy')
 
     // If we're setting the consent cookie OR deleting a cookie, allow by default
-    if (cookieName === 'cookie_policy' || (cookieValue === null || false)) {
+    if (cookieName === 'cookie_policy' || (cookieValue === null || cookieValue === false)) {
       return true
     }
 
