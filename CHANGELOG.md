@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Disable youtube embeds if campaign cookies turned off (PR #919)
 * Add aria-live flag to notice component (PR #911)
 * Check the consent cookie before setting cookies (PR #916)
 
