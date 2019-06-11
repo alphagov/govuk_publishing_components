@@ -99,6 +99,27 @@ describe "Contextual navigation" do
     then_i_see_the_primary_step_by_step
   end
 
+  scenario "There's a related to step by step lists and no primary step by step list" do
+    given_there_is_a_related_to_step_nav
+    and_i_visit_that_page
+    then_theres_no_step_by_step_at_all
+    and_no_step_by_step_header
+  end
+
+  scenario "There are three related to step by step lists and no primary step by step list" do
+    given_there_are_three_related_to_step_nav
+    and_i_visit_that_page
+    then_theres_no_step_by_step_at_all
+    and_no_step_by_step_header
+  end
+
+  scenario "There are three related to step by step lists, no primary step by step list and one secondary to step nav" do
+    given_there_are_three_related_to_step_nav_and_one_secondary_to_step_nav
+    and_i_visit_that_page
+    then_theres_no_step_by_step_at_all
+    and_no_step_by_step_header
+  end
+
   include GdsApi::TestHelpers::ContentStore
 
   def given_theres_a_page_with_a_step_by_step
@@ -142,6 +163,25 @@ describe "Contextual navigation" do
     content_store_has_random_item(links: {
       secondary_to_step_navs: 1.times.map { random_step_nav_item("step_by_step_nav") },
       part_of_step_navs: part_of_step_navs
+    })
+  end
+
+  def given_there_is_a_related_to_step_nav
+    content_store_has_random_item(links: {
+      related_to_step_navs: 1.times.map { random_step_nav_item("step_by_step_nav") }
+    })
+  end
+
+  def given_there_are_three_related_to_step_nav
+    content_store_has_random_item(links: {
+      related_to_step_navs: 3.times.map { random_step_nav_item("step_by_step_nav") }
+    })
+  end
+
+  def given_there_are_three_related_to_step_nav_and_one_secondary_to_step_nav
+    content_store_has_random_item(links: {
+      related_to_step_navs: 3.times.map { random_step_nav_item("step_by_step_nav") },
+      secondary_to_step_navs: 1.times.map { random_step_nav_item("step_by_step_nav") }
     })
   end
 
