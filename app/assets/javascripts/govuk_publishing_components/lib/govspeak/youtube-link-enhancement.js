@@ -13,10 +13,12 @@ window.GOVUK = window.GOVUK || {};
   YoutubeLinkEnhancement.prototype.init = function () {
     var $youtubeLinks = this.$element.find('a[href*="youtube.com"], a[href*="youtu.be"]')
     var _this = this
+
     $youtubeLinks.each(function () {
       var $link = $(this)
-
-      if (_this.hasDisabledEmbed($link)) {
+      // if users have disabled 'campaigns' cookie in the new cookie page settings
+      // we also need to disable the youtube video embed
+      if (_this.hasDisabledEmbed($link) || !YoutubeLinkEnhancement.campaignCookies()) {
         return true
       }
 
@@ -59,6 +61,11 @@ window.GOVUK = window.GOVUK || {};
     if ($captions.length) {
       return $captions.first().attr('href')
     }
+  }
+
+  YoutubeLinkEnhancement.campaignCookies = function () {
+    var cookiePolicy = window.GOVUK.getCookie('cookie_policy') ? JSON.parse(window.GOVUK.getCookie('cookie_policy')) : 'undefined'
+    return cookiePolicy !== 'undefined' ? cookiePolicy.campaigns : true
   }
 
   YoutubeLinkEnhancement.nextId = function () {
