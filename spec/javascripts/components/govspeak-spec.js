@@ -1,4 +1,15 @@
 describe('Govspeak component', function () {
+  beforeEach(function () {
+    // For some reason, JSON.parse on the cookie works in the browser, but fails in Jasmine tests.
+    // It seems to be due to extra escaping of quotes when the code is run in the tests, which means JSON.parse doesn't
+    // work as expected. So we'll stub this value instead.  
+    spyOn(JSON, 'parse').and.returnValue({
+      'essential': true,
+      'settings': true,
+      'usage': true
+    })
+    window.GOVUK.cookie('cookie_policy', null)
+  })
   var govspeakModule = new GOVUK.Modules.Govspeak()
 
   it('embeds youtube videos', function () {
