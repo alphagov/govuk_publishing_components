@@ -7,43 +7,51 @@
   cookie_banner_helper = GovukPublishingComponents::Presenters::CookieBannerHelper.new(local_assigns)
 
   message = cookie_banner_helper.message
-  confirmation_message = cookie_banner_helper.confirmation_message
 %>
 
-<div id="<%= id %>" class="<%= cookie_banner_class %>" data-module="cookie-banner">
+<div id="<%= id %>" class="<%= cookie_banner_class %>" data-module="cookie-banner" aria-live="polite">
   <div class="gem-c-cookie-banner__wrapper govuk-width-container">
     <p class="gem-c-cookie-banner__message"><%= message %></p>
     <% if new_cookie_banner %>
       <div class="gem-c-cookie-banner__buttons">
-        <%= render "govuk_publishing_components/components/button", {
-          text: "Accept cookies",
-          secondary: true,
-          inline_layout: true,
-          data_attributes: {
-            module: "track-click",
-            "accept-cookies": "true",
-            "track-category": "cookieBanner",
-            "track-action": "Cookie banner accepted"
-          }
-        } %>
-        <%= render "govuk_publishing_components/components/button", {
-          text: "Cookie settings",
-          href: "/help/cookies",
-          secondary: true,
-          inline_layout: true,
-          data_attributes: {
-            module: "track-click",
-            "track-category": "cookieBanner",
-            "track-action": "Cookie banner settings clicked"
-          }
-        } %>
+        <div class="gem-c-cookie-banner__button gem-c-cookie-banner__button-accept">
+          <%= render "govuk_publishing_components/components/button", {
+            text: "Accept cookies",
+            secondary: true,
+            inline_layout: true,
+            data_attributes: {
+              module: "track-click",
+              "accept-cookies": "true",
+              "track-category": "cookieBanner",
+              "track-action": "Cookie banner accepted"
+            }
+          } %>
+        </div>
+        <div class="gem-c-cookie-banner__button gem-c-cookie-banner__button-settings">
+          <%= render "govuk_publishing_components/components/button", {
+            text: "Cookie settings",
+            href: "/help/cookies",
+            secondary: true,
+            inline_layout: true,
+            data_attributes: {
+              module: "track-click",
+              "track-category": "cookieBanner",
+              "track-action": "Cookie banner settings clicked"
+            }
+          } %>
+        </div>
       </div>
     <% end %>
   </div>
 
   <% if new_cookie_banner %>
     <div class="gem-c-cookie-banner__confirmation govuk-width-container">
-      <p class="gem-c-cookie-banner__confirmation-message"><%= confirmation_message %></p>
+      <p class="gem-c-cookie-banner__confirmation-message">
+        You&#8217;ve accepted all cookies. You can
+        <a class="govuk-link" href="/help/cookies" data-module="track-click" data-track-category="cookieBanner" data-track-action="Cookie banner settings clicked from confirmation">
+          change your cookie settings
+        </a> at any time.
+      </p>
       <button class="gem-c-cookie-banner__hide-button" data-hide-cookie-banner="true">Hide</button>
     </div>
   <% end %>

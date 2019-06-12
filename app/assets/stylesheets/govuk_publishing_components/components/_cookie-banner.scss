@@ -1,5 +1,6 @@
 $govuk-cookie-banner-background: #d5e8f3;
 $govuk-cookie-banner-background-new: govuk-colour("white");
+$govuk-cookie-banner-text-green: #00823b;
 
 .js-enabled {
   .gem-c-cookie-banner,
@@ -38,33 +39,63 @@ $govuk-cookie-banner-background-new: govuk-colour("white");
   margin-bottom: govuk-spacing(1);
   padding-right: govuk-spacing(4);
   padding-bottom: govuk-spacing(2);
+  color: $govuk-cookie-banner-text-green;
 }
 
 .gem-c-cookie-banner__buttons {
-  vertical-align: middle;
+  @include govuk-clearfix;
 
   @include govuk-media-query($from: desktop) {
     display: inline-block;
   }
 }
 
+.gem-c-cookie-banner__button {
+  display: inline-block;
+  width: 100%;
+
+  @include govuk-media-query($from: mobile, $until: desktop) {
+    width: 49%;
+
+    &.gem-c-cookie-banner__button-accept {
+      float: left;
+    }
+
+    &.gem-c-cookie-banner__button-settings {
+      float: right;
+    }
+  }
+
+  @include govuk-media-query($from: desktop) {
+    width: auto;
+  }
+
+  @include govuk-media-query($until: 455px) {
+    width: 100%;
+  }
+}
+
 .gem-c-cookie-banner__confirmation {
   display: none;
   position: relative;
-  padding: 0 govuk-spacing(2);
+  padding: govuk-spacing(1);
 }
 
 .gem-c-cookie-banner__confirmation-message,
 .gem-c-cookie-banner__hide-button {
   display: block;
 
-  @include govuk-media-query($from: tablet) {
+  @include govuk-media-query($from: desktop) {
     display: inline-block;
   }
 }
 
 .gem-c-cookie-banner__confirmation-message {
   margin-right: govuk-spacing(4);
+
+  @include govuk-media-query($from: desktop) {
+    max-width: 90%;
+  }
 }
 
 .gem-c-cookie-banner__hide-button {
@@ -83,10 +114,10 @@ $govuk-cookie-banner-background-new: govuk-colour("white");
     cursor: pointer;
   }
 
-  @include govuk-media-query($from: tablet) {
+  @include govuk-media-query($from: desktop) {
     margin-top: govuk-spacing(0);
     position: absolute;
-    right: 0;
+    right: govuk-spacing(1);
   }
 }
 

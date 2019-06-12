@@ -12,6 +12,9 @@
 * Disable youtube embeds if campaign cookies turned off (PR #919)
 * Add aria-live flag to notice component (PR #911)
 * Check the consent cookie before setting cookies (PR #916)
+* Override vertical align: top for inline buttons (PR #912)
+* Change cookie banner text to green (PR #912)
+* Accessibility and design fixes for cookie banner (#912)
 
 ## 16.29.0
 
