@@ -2,6 +2,8 @@ name: Cookie banner
 description: Help users manage their personal data by telling them when you store cookies on their device.
 body: |
   Setting `data-hide-cookie-banner="true"` on any link inside the banner will overwrite the default action and when clicked will dismiss the cookie banner for a period of 365 days (approx. 1 year).
+
+  If the examples below are not showing the banner, make sure the `seen_cookie_message` cookie is not present or is set to false.
 accessibility_criteria: |
   Text in the cookie banner must be clear and unambiguous and should provide a way to dismiss the message.
 
