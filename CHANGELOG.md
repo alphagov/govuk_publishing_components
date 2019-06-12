@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix dialog element role in modal dialogue component (PR #920)
+
 ## 17.1.0
 
 * Add tracking to the hide button on new cookie banner (PR #928)
