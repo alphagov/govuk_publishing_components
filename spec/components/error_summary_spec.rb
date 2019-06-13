@@ -46,46 +46,25 @@ describe "Error summary", type: :view do
     assert_select ".govuk-error-summary__list", count: 0
   end
 
-  it "renders an error summary with items" do
-    render_component(
-      title: 'Message to alert the user to a problem goes here',
-      description: 'Optional description of the errors and how to correct them',
-      items: [
-        {
-          text: 'Descriptive link to the question with an error',
-          href: '#example-error-1'
-        }
-      ]
-    )
-
-    assert_select ".govuk-error-summary__title", text: 'Message to alert the user to a problem goes here'
-    assert_select ".govuk-error-summary__body p", text: 'Optional description of the errors and how to correct them'
-    assert_select(
-      "ul li a:first-of-type[href='#example-error-1']",
-      text: 'Descriptive link to the question with an error'
-    )
-  end
-
-  it "renders an error summary with multiple links" do
+  it "renders an error summary with items links" do
     render_component(
       title: 'Message to alert the user to a problem goes here',
       description: 'Optional description of the errors and how to correct them',
       items: [
         {
           text: 'Descriptive link to the question with an error 1',
-          href: '#example-error-1'
+          href: '#example-error-1',
+          data_attributes: { gtm: "tracking-1" }
         },
         {
           text: 'Descriptive link to the question with an error 2',
-          href: '#example-error-2'
+          href: '#example-error-2',
+          target: '_blank',
+          data_attributes: { gtm: "tracking-2" }
         },
         {
-          text: 'Descriptive link to the question with an error 3',
-          href: '#example-error-3',
-          target: '_blank'
-        },
-        {
-          text: 'Description for error 4 with no link'
+          text: 'Description for error 3 with no link',
+          data_attributes: { gtm: "tracking-3" }
         }
       ]
     )
@@ -94,20 +73,16 @@ describe "Error summary", type: :view do
     assert_select ".govuk-error-summary__body p", text: 'Optional description of the errors and how to correct them'
 
     assert_select(
-      "ul li a:first-of-type[href='#example-error-1']",
+      "ul li a:first-of-type[href='#example-error-1'][data-gtm='tracking-1']",
       text: 'Descriptive link to the question with an error 1'
     )
     assert_select(
-      "ul li a:nth-of-type(1)[href='#example-error-2']",
+      "ul li a:nth-of-type(1)[href='#example-error-2'][data-gtm='tracking-2']",
       text: 'Descriptive link to the question with an error 2'
     )
     assert_select(
-      "ul li a:last-of-type[href='#example-error-3'][target='_blank']",
-      text: 'Descriptive link to the question with an error 3',
-    )
-    assert_select(
-      "ul li:last-of-type",
-      text: 'Description for error 4 with no link'
+      "ul li:last-of-type span[data-gtm='tracking-3']",
+      text: 'Description for error 3 with no link'
     )
   end
 end
