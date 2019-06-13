@@ -30,11 +30,6 @@ describe('New cookie banner', function () {
     document.body.appendChild(container)
     element = document.querySelector('.gem-c-cookie-banner--new')
 
-    // For some reason, JSON.parse on the cookie works in the browser, but fails in Jasmine tests.
-    // It seems to be due to extra escaping of quotes when the code is run in the tests, which means JSON.parse doesn't
-    // work as expected. So we'll stub this value instead.
-    spyOn(JSON, "parse").and.returnValue({"essential":true,"settings":true,"usage":true,"campaigns":true});
-
     window.GOVUK.cookie('cookie_policy', null)
     window.GOVUK.cookie('seen_cookie_message', null)
   })
