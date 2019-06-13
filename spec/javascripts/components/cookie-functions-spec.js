@@ -107,13 +107,16 @@ describe('Cookie helper functions', function () {
       expect(window.GOVUK.checkConsentCookie('test_cookie', false)).toBe(true)
     })
 
-    it('sets a default cookie if one does not already exist', function() {
+    it('returns true if the consent cookie does not exist and the cookie name is recognised', function() {
       expect(window.GOVUK.getConsentCookie()).toBeFalsy()
 
-      window.GOVUK.cookie('seen_cookie_message', true)
+      expect(window.GOVUK.checkConsentCookie('seen_cookie_message', true)).toBe(true)
+    })
 
-      expect(window.GOVUK.cookie('seen_cookie_message')).toBeTruthy()
-      expect(window.GOVUK.getConsentCookie()).toEqual({ essential: true, settings: true, usage: false, campaigns: true })
+    it('returns false if the consent cookie does not exist and the cookie name is not recognised', function() {
+      expect(window.GOVUK.getConsentCookie()).toBeFalsy()
+
+      expect(window.GOVUK.checkConsentCookie('fake_cookie')).toBe(false)
     })
 
     it('returns the consent for a given cookie', function() {

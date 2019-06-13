@@ -97,8 +97,9 @@ describe('New cookie banner', function () {
     expect(window.GOVUK.getCookie('seen_cookie_message')).toBeTruthy()
   })
 
-  it('does not show the banner if user has acknowledged the banner previously', function() {
+  it('does not show the banner if user has acknowledged the banner previously and consent cookie is present', function() {
     window.GOVUK.setCookie('seen_cookie_message', "true")
+    window.GOVUK.setDefaultConsentCookie()
     new GOVUK.Modules.CookieBanner().start($(element))
 
     var newCookieBanner = document.querySelector('.gem-c-cookie-banner--new')

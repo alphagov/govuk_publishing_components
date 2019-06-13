@@ -42,6 +42,14 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       this.$acceptCookiesLink.addEventListener('click', this.$module.setCookieConsent)
     }
 
+    // Force the new cookie banner to show if we don't think the user has seen it before
+    // This involves resetting the seen_cookie_message cookie, which may be set to true if they've seen the old cookie banner
+    if (!window.GOVUK.cookie('cookie_policy')) {
+      if (window.GOVUK.cookie('seen_cookie_message') === 'true') {
+        window.GOVUK.cookie('seen_cookie_message', false)
+      }
+    }
+
     this.showNewCookieMessage()
   }
 
@@ -59,16 +67,16 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     // Hide the cookie banner on the cookie settings page, to avoid circular journeys
     if (newCookieBanner && window.location.pathname === '/help/cookies') {
       this.$module.style.display = 'none'
-    }
+    } else {
+      var shouldHaveCookieMessage = (this.$module && window.GOVUK.cookie('seen_cookie_message') !== 'true')
 
-    var shouldHaveCookieMessage = (this.$module && window.GOVUK.cookie('seen_cookie_message') !== 'true')
+      if (shouldHaveCookieMessage) {
+        this.$module.style.display = 'block'
 
-    if (shouldHaveCookieMessage) {
-      this.$module.style.display = 'block'
-
-      // Set the default consent cookie if it isn't already present
-      if (!window.GOVUK.cookie('cookie_policy')) {
-        window.GOVUK.setDefaultConsentCookie()
+        // Set the default consent cookie if it isn't already present
+        if (!window.GOVUK.cookie('cookie_policy')) {
+          window.GOVUK.setDefaultConsentCookie()
+        }
       }
     }
   }
