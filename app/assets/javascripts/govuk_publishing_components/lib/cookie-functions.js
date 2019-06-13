@@ -115,6 +115,19 @@
 
     for (var cookieType in options) {
       cookieConsent[cookieType] = options[cookieType]
+
+      // Delete cookies of that type if consent being set to false
+      if (!options[cookieType]) {
+        for (var cookie in COOKIE_CATEGORIES) {
+          if (COOKIE_CATEGORIES[cookie] === cookieType) {
+            window.GOVUK.cookie(cookie, null)
+
+            if (window.GOVUK.cookie(cookie)) {
+              document.cookie = cookie + '=;expires=' + new Date() + ';domain=.' + window.location.hostname + ';path=/'
+            }
+          }
+        }
+      }
     }
 
     window.GOVUK.setCookie('cookie_policy', JSON.stringify(cookieConsent))
