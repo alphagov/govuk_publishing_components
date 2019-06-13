@@ -90,7 +90,11 @@
     var consentCookieObj
 
     if (consentCookie) {
-      consentCookieObj = JSON.parse(consentCookie)
+      try {
+        consentCookieObj = JSON.parse(consentCookie)
+      } catch (err) {
+        return null
+      }
 
       if (typeof consentCookieObj !== 'object' && consentCookieObj !== null) {
         consentCookieObj = JSON.parse(consentCookieObj)
@@ -116,13 +120,8 @@
     window.GOVUK.setCookie('cookie_policy', JSON.stringify(cookieConsent))
   }
 
-  window.GOVUK.checkConsentCookie = function (cookieName, cookieValue) {
+  window.GOVUK.checkConsentCookieCategory = function (cookieCategory) {
     var currentConsentCookie = window.GOVUK.getConsentCookie()
-
-    // If we're setting the consent cookie OR deleting a cookie, allow by default
-    if (cookieName === 'cookie_policy' || (cookieValue === null || cookieValue === false)) {
-      return true
-    }
 
     // If the consent cookie doesn't exist, set the default consent cookie
     if (!currentConsentCookie) {
@@ -131,15 +130,30 @@
 
     currentConsentCookie = window.GOVUK.getConsentCookie()
 
+    // Sometimes currentConsentCookie is malformed in some of the tests, so we need to handle these
+    try {
+      return currentConsentCookie[cookieCategory]
+    } catch (e) {
+      console.error(e)
+      return false
+    }
+  }
+
+  window.GOVUK.checkConsentCookie = function (cookieName, cookieValue) {
+    // If we're setting the consent cookie OR deleting a cookie, allow by default
+    if (cookieName === 'cookie_policy' || (cookieValue === null || cookieValue === false)) {
+      return true
+    }
+
     // Survey cookies are dynamically generated, so we need to check for these separately
     if (cookieName.match('^govuk_surveySeen') || cookieName.match('^govuk_taken')) {
-      return currentConsentCookie['essential']
+      return window.GOVUK.checkConsentCookieCategory('essential')
     }
 
     if (COOKIE_CATEGORIES[cookieName]) {
       var cookieCategory = COOKIE_CATEGORIES[cookieName]
 
-      return currentConsentCookie[cookieCategory]
+      return window.GOVUK.checkConsentCookieCategory(cookieCategory)
     } else {
       // Deny the cookie if it is not known to us
       return false
