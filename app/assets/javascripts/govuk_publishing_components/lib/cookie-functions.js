@@ -12,6 +12,7 @@
   }
 
   var COOKIE_CATEGORIES = {
+    'TLSversion': 'usage',
     'cookie_policy': 'essential',
     'govuk_not_first_visit': 'essential',
     'govuk_browser_upgrade_dismisssed': 'essential',
