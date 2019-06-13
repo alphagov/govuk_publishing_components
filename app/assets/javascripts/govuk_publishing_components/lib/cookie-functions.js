@@ -114,9 +114,14 @@
       window.GOVUK.setDefaultConsentCookie()
     }
 
-    if (COOKIE_CATEGORIES[cookieName]) {
-      var consent = JSON.parse(window.GOVUK.getCookie('cookie_policy'))
+    var consent = JSON.parse(window.GOVUK.getCookie('cookie_policy'))
 
+    // Survey cookies are dynamically generated, so we need to check for these separately
+    if (cookieName.match('^govuk_surveySeen') || cookieName.match('^govuk_taken')) {
+      return consent['essential']
+    }
+
+    if (COOKIE_CATEGORIES[cookieName]) {
       var cookieCategory = COOKIE_CATEGORIES[cookieName]
 
       return consent[cookieCategory]
