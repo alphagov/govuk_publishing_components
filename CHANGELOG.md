@@ -11,6 +11,7 @@
 
 * Add tracking to the hide button on new cookie banner (PR #928)
 * Delete cookies when a user removes consent (PR #923)
+* Reset seen_cookie_message if new cookie banner present (PR #925)
 
 ## 17.0.0
 
