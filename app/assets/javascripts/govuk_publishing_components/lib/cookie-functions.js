@@ -74,17 +74,6 @@
     window.GOVUK.setCookie('cookie_policy', JSON.stringify(approvedConsent))
   }
 
-  window.GOVUK.denyAllCookieTypes = function () {
-    var deniedConsent = {
-      'essential': false,
-      'settings': false,
-      'usage': false,
-      'campaigns': false
-    }
-
-    window.GOVUK.setCookie('cookie_policy', JSON.stringify(deniedConsent))
-  }
-
   window.GOVUK.getConsentCookie = function () {
     var consentCookie = window.GOVUK.cookie('cookie_policy')
     var consentCookieObj
