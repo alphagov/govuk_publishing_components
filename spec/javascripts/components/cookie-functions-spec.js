@@ -107,6 +107,14 @@ describe('Cookie helper functions', function () {
       expect(window.GOVUK.checkConsentCookie('test_cookie', false)).toBe(true)
     })
 
+    it('does not set a default consent cookie if one is not present', function() {
+      window.GOVUK.cookie('cookie_policy', null)
+
+      window.GOVUK.checkConsentCookieCategory('seen_cookie_message', true)
+
+      expect(window.GOVUK.getConsentCookie()).toBeFalsy()
+    })
+
     it('returns true if the consent cookie does not exist and the cookie name is recognised', function() {
       expect(window.GOVUK.getConsentCookie()).toBeFalsy()
 
