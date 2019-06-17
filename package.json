@@ -16,7 +16,7 @@
     "accessible-autocomplete": "git://github.com/alphagov/accessible-autocomplete.git#add-multiselect-support",
     "axe-core": "3.2.2",
     "govuk-frontend": "2.11.0",
-    "jquery": "3.4.0"
+    "jquery": "1.12.4"
   },
   "devDependencies": {
     "sass-lint": "^1.13.1",
