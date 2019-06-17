@@ -36,20 +36,6 @@
   $key-border: govuk-colour("white"); // Key border colour
   $bar-colours: govuk-colour("blue"), govuk-colour("turquoise"), govuk-colour("green"), govuk-colour("light-green"), govuk-colour("yellow"), govuk-colour("orange"), govuk-colour("red"), govuk-colour("bright-red");
 
-  // HELPER MIXINS
-
-  @mixin visually-hidden {
-    // Hides content visually, but not from screen readers
-    position: absolute !important;
-    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-    clip: rect(1px, 1px, 1px, 1px);
-    padding: 0 !important;
-    border: 0 !important;
-    height: 1px !important;
-    width: 1px !important;
-    overflow: hidden;
-  }
-
   // CHART STYLES
   .mc-chart {
     font-size: $base-unit;
@@ -299,7 +285,7 @@
   // Hides the original table
   .visually-hidden,
   .visually-hidden caption {
-    @include visually-hidden;
+    @include govuk-visually-hidden;
 
     // It's reapplied to captions because Firefox can't hide
     // table captions unless it's applied directly to it. Go figure.
