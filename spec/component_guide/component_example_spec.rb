@@ -38,9 +38,12 @@ describe 'Component example' do
   it 'yields a block in component examples' do
     visit '/component-guide/test-component-with-block'
 
-    expect(page).to have_selector('.component-guide-preview .test-component-with-block', text: 'Here\'s a block')
+    expect(page).to have_selector('.component-guide-preview .test-component-with-block', text: "Here's a block")
 
-    expect(page).to have_content(%(<%= render "components/test-component-with-block", {\n} do %>\n<div class="test-block">Here's a block</div>\n<% end %>))
+    expect(page).to have_content(%(<%= render "components/test-component-with-block", {))
+    expect(page).to have_content(%(} do %>))
+    expect(page).to have_content(%(<div class="test-block">Here's a block</div>))
+    expect(page).to have_content(%(<% end %>))
   end
 
   it 'allows examples to embedded in HTML' do
@@ -49,12 +52,9 @@ describe 'Component example' do
     expect(page).to have_selector('.component-guide-preview .input-control-for-embedded-component')
     expect(page).to have_selector('.component-guide-preview .test-component-with-embed')
 
-    example = <<~EXAMPLE
-      <input class="input-control-for-embedded-component">
-      <%= render "components/test-component-with-embed", {
-      } %>
-    EXAMPLE
-    expect(page).to have_content(example)
+    expect(page).to have_content(%(<input class="input-control-for-embedded-component">))
+    expect(page).to have_content(%(<%= render "components/test-component-with-embed", {))
+    expect(page).to have_content(%(} %>))
   end
 
   it 'allows specific examples to embed different HTML' do
@@ -63,12 +63,9 @@ describe 'Component example' do
     expect(page).to have_selector('.component-guide-preview .button-control-for-embedded-component')
     expect(page).to have_selector('.component-guide-preview .test-component-with-embed')
 
-    example = <<~EXAMPLE
-      <button class="button-control-for-embedded-component">Action</button>
-      <%= render "components/test-component-with-embed", {
-      } %>
-    EXAMPLE
-    expect(page).to have_content(example)
+    expect(page).to have_content(%(<button class="button-control-for-embedded-component">Action</button>))
+    expect(page).to have_content(%(<%= render "components/test-component-with-embed", {))
+    expect(page).to have_content(%(} %>))
   end
 
   it 'sanitizes strings in code example' do
