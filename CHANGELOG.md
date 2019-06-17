@@ -11,6 +11,10 @@
 
 * Fix dialog element role in modal dialogue component (PR #920)
 
+## 17.1.1
+
+* Fix resetting cookie mechanism for new banner (PR #935)
+
 ## 17.1.0
 
 * Add tracking to the hide button on new cookie banner (PR #928)
