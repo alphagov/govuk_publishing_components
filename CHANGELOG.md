@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add tracking to the hide button on new cookie banner (PR #928)
+* Delete cookies when a user removes consent (PR #923)
 
 ## 17.0.0
 
@@ -21,7 +22,7 @@
 * BREAKING: Check the consent cookie before setting cookies (PR #916)
 * Override vertical align: top for inline buttons (PR #912)
 * Change cookie banner text to green (PR #912)
-* Accessibility and design fixes for cookie banner (#912)
+* Accessibility and design fixes for cookie banner (PR #912)
 
 ## 16.29.0
 
