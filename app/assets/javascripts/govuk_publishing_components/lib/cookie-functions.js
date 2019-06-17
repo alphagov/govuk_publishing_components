@@ -142,6 +142,8 @@
   }
 
   window.GOVUK.checkConsentCookie = function (cookieName, cookieValue) {
+    var currentConsentCookie = window.GOVUK.getConsentCookie()
+
     // If we're setting the consent cookie OR deleting a cookie, allow by default
     if (cookieName === 'cookie_policy' || (cookieValue === null || cookieValue === false)) {
       return true
@@ -150,6 +152,11 @@
     // Survey cookies are dynamically generated, so we need to check for these separately
     if (cookieName.match('^govuk_surveySeen') || cookieName.match('^govuk_taken')) {
       return window.GOVUK.checkConsentCookieCategory('essential')
+    }
+
+    // If the consent cookie doesn't exist, set the default consent cookie
+    if (!currentConsentCookie && COOKIE_CATEGORIES[cookieName]) {
+      return true
     }
 
     if (COOKIE_CATEGORIES[cookieName]) {
