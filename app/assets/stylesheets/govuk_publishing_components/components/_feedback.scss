@@ -1,5 +1,5 @@
 .gem-c-feedback {
-  max-width: 960px;
+  max-width: $govuk-page-width;
   margin: 0 auto;
 
   .visually-hidden {
@@ -8,10 +8,10 @@
 }
 
 .gem-c-feedback--top-margin {
-  margin-top: $gutter;
+  margin-top: govuk-spacing(6);
 
-  @include media(tablet) {
-    margin-top: $gutter * 2;
+  @include govuk-media-query($from: tablet) {
+    margin-top: govuk-spacing(9);
   }
 }
 
@@ -33,25 +33,23 @@
   }
 }
 
-.gem-c-feedback__grid-row {
-  @extend %grid-row;
-}
+@include govuk-grid-row($class: "gem-c-feedback__grid-row");
 
 .gem-c-feedback__column-two-thirds {
-  @include grid-column(2 / 3);
+  @include govuk-grid-column(two-thirds, $class: false)
 }
 
 .gem-c-feedback__prompt {
-  @extend %contain-floats;
-  background-color: $govuk-blue;
-  color: $white;
-  padding: $gutter-one-third $gutter-half 0;
+  @include govuk-clearfix;
+  background-color: govuk-colour("blue");
+  color: govuk-colour("white");
+  padding: govuk-spacing(2) govuk-spacing(3) 0;
   outline: 0;
 }
 
 .gem-c-feedback__prompt-question,
 .gem-c-feedback__prompt-success {
-  @include bold-19;
+  @include govuk-font(19, $weight: bold);
   display: inline-block;
 
   // There's a global h3 rule in some layouts that interferes with this component
@@ -61,27 +59,27 @@
     outline: 0;
   }
 
-  @include media(tablet) {
-    @include bold-16;
+  @include govuk-media-query($from: tablet) {
+    @include govuk-font(16, $weight: bold);
     float: left;
   }
 }
 
 .gem-c-feedback__prompt-link {
   @include govuk-link-common;
-  @include core-19;
-  margin-left: $gutter-half;
+  @include govuk-font(19);
+  margin-left: govuk-spacing(3);
 
-  @include media(tablet) {
-    @include core-16;
+  @include govuk-media-query($from: tablet) {
+    @include govuk-font(16);
     float: left; // needed to ensure vertical alignment consistent with prompt-link--wrong
-    margin-left: $gutter-one-third;
+    margin-left: govuk-spacing(2);
   }
 }
 
 .gem-c-feedback__prompt-link:link,
 .gem-c-feedback__prompt-link:visited {
-  color: $white;
+  color: govuk-colour("white");
 
   &:focus {
     color: $govuk-focus-text-colour;
@@ -91,43 +89,43 @@
 .gem-c-feedback__prompt-link--wrong {
   display: block;
   clear: both;
-  margin-top: $gutter-half;
+  margin-top: govuk-spacing(3);
   margin-left: 0;
 
-  @include media(tablet) {
+  @include govuk-media-query($from: tablet) {
     float: right;
     clear: none;
     margin-top: 0;
-    margin-left: $gutter-one-third;
+    margin-left: govuk-spacing(2);
   }
 }
 
 .gem-c-feedback__error-summary {
-  margin-bottom: $gutter-half;
-  padding: $gutter-half;
-  border: solid 4px $error-colour;
+  margin-bottom: govuk-spacing(3);
+  padding: govuk-spacing(3);
+  border: solid $govuk-border-width-mobile $govuk-error-colour;
   clear: both;
 
   &:focus {
-    outline: solid 3px $focus-colour;
+    outline: solid 3px $govuk-focus-colour;
   }
 
-  @include media(tablet) {
-    border-width: 5px;
+  @include govuk-media-query($from: tablet) {
+    border-width: $govuk-border-width;
   }
 
   // this comes from the backend so we can't put a class on it
   h2,
   .gem-c-feedback__heading {
     @include govuk-text-colour;
-    @include bold-24;
+    @include govuk-font(24, $weight: bold);
     margin: 0;
   }
 
   p {
     @include govuk-text-colour;
-    @include core-19;
-    margin: $gutter-one-third 0;
+    @include govuk-font(19);
+    margin: govuk-spacing(2) 0;
   }
 
   a {
@@ -136,60 +134,60 @@
 }
 
 .gem-c-feedback__error-message {
-  @include bold-19;
+  @include govuk-font(19, $weight: bold);
   display: block;
   padding: 4px 0 0;
-  color: $error-colour;
+  color: $govuk-error-colour;
 }
 
 .gem-c-feedback__form {
-  margin-top: $gutter-half;
-  padding: $gutter-half 0;
-  border-top: $gutter-one-third solid $govuk-blue;
+  margin-top: govuk-spacing(3);
+  padding: govuk-spacing(3) 0;
+  border-top: govuk-spacing(2) solid govuk-colour("blue");
 
-  @include media(tablet) {
-    padding: $gutter 0;
+  @include govuk-media-query($from: tablet) {
+    padding: govuk-spacing(6) 0;
   }
 }
 
 .gem-c-feedback__form-heading {
   @include govuk-text-colour;
-  @include bold-24;
-  margin: 0 0 $gutter-half 0;
+  @include govuk-font(24, $weight: bold);
+  margin: 0 0 govuk-spacing(3) 0;
 }
 
 .gem-c-feedback__form-paragraph {
   @include govuk-text-colour;
-  @include core-19;
-  margin: 0 0 $gutter 0;
+  @include govuk-font(19);
+  margin: 0 0 govuk-spacing(6) 0;
 }
 
 .gem-c-feedback__form-label {
-  @include core-16;
+  @include govuk-font(16);
   display: block;
-  padding-bottom: $gutter-half;
+  padding-bottom: govuk-spacing(3);
 }
 
 .gem-c-feedback__close {
   @include govuk-link-common;
   @include govuk-link-style-default;
-  @include core-19;
+  @include govuk-font(19);
   float: right;
-  margin: 0 0 $gutter-one-third 0;
+  margin: 0 0 govuk-spacing(2) 0;
 
-  @include media(tablet) {
+  @include govuk-media-query($from: tablet) {
     padding-top: 0;
   }
 }
 
 .gem-c-feedback__email-link {
   display: block;
-  margin-top: $gutter-half;
+  margin-top: govuk-spacing(3);
 
-  @include media(tablet) {
+  @include govuk-media-query($from: tablet) {
     display: inline-block;
     margin-top: 0;
-    margin-left: $gutter-half;
+    margin-left: govuk-spacing(3);
   }
 }
 
