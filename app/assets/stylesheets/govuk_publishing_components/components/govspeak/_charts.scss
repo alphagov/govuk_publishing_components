@@ -6,16 +6,8 @@
 // - alphagov/whitehall: ✔︎
 // - alphagov/govspeak: ✔︎
 
-// Disable linting for vendor asset
-// scss-lint:disable all
-// sass-lint:disable-all
-/*
- * magna-charta example stylesheet
- * https://github.com/alphagov/magna-charta
- *
- * Author: Tim Paul
- * Licensed under the MIT license.
- */
+// adapted from magna-charta example stylesheet
+// https://github.com/alphagov/magna-charta/blob/master/demo/stylesheets/magna-charta.css
 
 .gem-c-govspeak {
   // DEFAULT CHART STYLES
@@ -35,6 +27,8 @@
   $chart-border: govuk-colour("white"); // Chart border colour
   $key-border: govuk-colour("white"); // Key border colour
   $bar-colours: govuk-colour("blue"), govuk-colour("turquoise"), govuk-colour("green"), govuk-colour("light-green"), govuk-colour("yellow"), govuk-colour("orange"), govuk-colour("red"), govuk-colour("bright-red");
+  $bar-cell-colour: #ebebeb;
+  $bar-outdented-colour: #111111;
 
   // CHART STYLES
   .mc-chart {
@@ -58,7 +52,7 @@
 
     // KEY STYLES
     .mc-thead {
-      background-color: #ffffff;
+      background-color: govuk-colour("white");
       display: table-header-group;
       padding: $bar-spacing;
       border: 1px solid $key-border;
@@ -213,7 +207,8 @@
       }
     }
 
-    .mc-td, .mc-th {
+    .mc-td,
+    .mc-th {
       padding: 0;
       padding-right: $bar-spacing;
       margin-right: $stack-spacing;
@@ -221,7 +216,7 @@
 
       &.mc-bar-cell {
         display: block;
-        background-color: #ebebeb; // Just for testing
+        background-color: $bar-cell-colour; // Just for testing
         text-align: left;
         padding: $bar-padding 0;
         margin-bottom: 1px;
@@ -233,7 +228,7 @@
 
     .mc-bar-outdented {
       span {
-        color: #111111;
+        color: $bar-outdented-colour;
       }
     }
 
@@ -251,15 +246,13 @@
 
     // OUTDENTED BAR VALUES
     &.mc-outdented {
-      .mc-tbody {
-        .mc-tr {
-          .mc-bar-cell {
-            color: #111111;
-          }
+      .mc-tr {
+        .mc-bar-cell {
+          color: $bar-cell-colour;
+        }
 
-          .mc-bar-negative {
-            text-align: left;
-          }
+        .mc-bar-negative {
+          text-align: left;
         }
       }
     }
