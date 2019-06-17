@@ -32,10 +32,9 @@
 
   // CHART COLOUR SCHEME
 
-  @import "colours"; // Cabinet Office colour palette (feel free to choose your own)
   $chart-border: govuk-colour("white"); // Chart border colour
   $key-border: govuk-colour("white"); // Key border colour
-  $bar-colours: govuk-colour("blue"), $turquoise, $green, $grass-green, $yellow, $orange, $govuk-error-colour, $mellow-red;
+  $bar-colours: govuk-colour("blue"), govuk-colour("turquoise"), govuk-colour("green"), govuk-colour("light-green"), govuk-colour("yellow"), govuk-colour("orange"), govuk-colour("red"), govuk-colour("bright-red");
 
   // HELPER MIXINS
 
