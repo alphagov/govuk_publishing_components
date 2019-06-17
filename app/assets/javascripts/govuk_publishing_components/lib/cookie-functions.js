@@ -12,6 +12,7 @@
   }
 
   var COOKIE_CATEGORIES = {
+    'TLSversion': 'usage',
     'cookie_policy': 'essential',
     'govuk_not_first_visit': 'essential',
     'govuk_browser_upgrade_dismisssed': 'essential',
@@ -84,42 +85,75 @@
     window.GOVUK.setCookie('cookie_policy', JSON.stringify(deniedConsent))
   }
 
-  window.GOVUK.setConsentCookie = function (options) {
-    var currentConsentCookie = window.GOVUK.getCookie('cookie_policy')
-    var cookieConsentJSON
+  window.GOVUK.getConsentCookie = function () {
+    var consentCookie = window.GOVUK.cookie('cookie_policy')
+    var consentCookieObj
 
-    if (currentConsentCookie) {
-      cookieConsentJSON = JSON.parse(currentConsentCookie)
+    if (consentCookie) {
+      try {
+        consentCookieObj = JSON.parse(consentCookie)
+      } catch (err) {
+        return null
+      }
+
+      if (typeof consentCookieObj !== 'object' && consentCookieObj !== null) {
+        consentCookieObj = JSON.parse(consentCookieObj)
+      }
     } else {
-      cookieConsentJSON = DEFAULT_COOKIE_CONSENT
+      return null
+    }
+
+    return consentCookieObj
+  }
+
+  window.GOVUK.setConsentCookie = function (options) {
+    var cookieConsent = window.GOVUK.getConsentCookie()
+
+    if (!cookieConsent) {
+      cookieConsent = DEFAULT_COOKIE_CONSENT
     }
 
     for (var cookieType in options) {
-      cookieConsentJSON[cookieType] = options[cookieType]
+      cookieConsent[cookieType] = options[cookieType]
     }
 
-    window.GOVUK.setCookie('cookie_policy', JSON.stringify(cookieConsentJSON))
+    window.GOVUK.setCookie('cookie_policy', JSON.stringify(cookieConsent))
   }
 
-  window.GOVUK.checkConsentCookie = function (cookieName, cookieValue) {
-    var currentConsentCookie = window.GOVUK.getCookie('cookie_policy')
-
-    // If we're setting the consent cookie OR deleting a cookie, allow by default
-    if (cookieName === 'cookie_policy' || (cookieValue === null || cookieValue === false)) {
-      return true
-    }
+  window.GOVUK.checkConsentCookieCategory = function (cookieCategory) {
+    var currentConsentCookie = window.GOVUK.getConsentCookie()
 
     // If the consent cookie doesn't exist, set the default consent cookie
     if (!currentConsentCookie) {
       window.GOVUK.setDefaultConsentCookie()
     }
 
-    if (COOKIE_CATEGORIES[cookieName]) {
-      var consent = JSON.parse(window.GOVUK.getCookie('cookie_policy'))
+    currentConsentCookie = window.GOVUK.getConsentCookie()
 
+    // Sometimes currentConsentCookie is malformed in some of the tests, so we need to handle these
+    try {
+      return currentConsentCookie[cookieCategory]
+    } catch (e) {
+      console.error(e)
+      return false
+    }
+  }
+
+  window.GOVUK.checkConsentCookie = function (cookieName, cookieValue) {
+    // If we're setting the consent cookie OR deleting a cookie, allow by default
+    if (cookieName === 'cookie_policy' || (cookieValue === null || cookieValue === false)) {
+      return true
+    }
+
+    // Survey cookies are dynamically generated, so we need to check for these separately
+    if (cookieName.match('^govuk_surveySeen') || cookieName.match('^govuk_taken')) {
+      return window.GOVUK.checkConsentCookieCategory('essential')
+    }
+
+    if (COOKIE_CATEGORIES[cookieName]) {
       var cookieCategory = COOKIE_CATEGORIES[cookieName]
 
-      return consent[cookieCategory]
+      return window.GOVUK.checkConsentCookieCategory(cookieCategory)
     } else {
       // Deny the cookie if it is not known to us
       return false

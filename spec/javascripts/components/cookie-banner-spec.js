@@ -20,11 +20,6 @@ describe('Cookie banner', function () {
     document.body.appendChild(container)
     var element = document.querySelector('[data-module="cookie-banner"]')
 
-    // For some reason, JSON.parse on the cookie works in the browser, but fails in Jasmine tests.
-    // It seems to be due to extra escaping of quotes when the code is run in the tests, which means JSON.parse doesn't
-    // work as expected. So we'll stub this value instead.
-    spyOn(JSON, "parse").and.returnValue({"essential":true,"settings":true,"usage":true,"campaigns":true});
-
     window.GOVUK.cookie('seen_cookie_message', null)
     window.GOVUK.cookie('cookie_policy', null)
     new GOVUK.Modules.CookieBanner().start($(element))
