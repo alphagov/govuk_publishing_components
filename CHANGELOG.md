@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Update feedback component error handling (PR #918)
 * Support data attributes for error summary items (PR #924)
 * Disable youtube embeds if campaign cookies turned off (PR #919)
 * Add aria-live flag to notice component (PR #911)
