@@ -7,13 +7,14 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 17.0.0
 
+* Fix allowing/denying cookies (PR #922)
 * Update feedback component error handling (PR #918)
 * Support data attributes for error summary items (PR #924)
 * Disable youtube embeds if campaign cookies turned off (PR #919)
 * Add aria-live flag to notice component (PR #911)
-* Check the consent cookie before setting cookies (PR #916)
+* BREAKING: Check the consent cookie before setting cookies (PR #916)
 * Override vertical align: top for inline buttons (PR #912)
 * Change cookie banner text to green (PR #912)
 * Accessibility and design fixes for cookie banner (#912)
