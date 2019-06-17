@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 17.1.0
 
 * Add tracking to the hide button on new cookie banner (PR #928)
 * Delete cookies when a user removes consent (PR #923)
