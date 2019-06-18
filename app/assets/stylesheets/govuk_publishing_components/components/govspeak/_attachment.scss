@@ -29,12 +29,10 @@
     }
 
     .attachment-thumb {
-      $thumb-border-width: govuk-spacing(2) / 2;
-
       position: relative;
       float: left;
-      margin-top: $thumb-border-width;
-      margin-left: -($thumbnail-width + govuk-spacing(6) - $thumb-border-width);
+      margin-top: $govuk-border-width;
+      margin-left: -($thumbnail-width + govuk-spacing(6) - $govuk-border-width);
       padding-bottom: govuk-spacing(3);
 
       img {
@@ -42,7 +40,7 @@
         width: $thumbnail-width;
         height: 140px;
         background: govuk-colour("white");
-        outline: $thumb-border-width solid transparentize(govuk-colour("black"), .9);
+        outline: $govuk-border-width solid transparentize(govuk-colour("black"), .9);
 
         @include govuk-if-ie8 {
           // IE8 incorrectly asserts the "max-width: 100%" rule to be 0
@@ -51,7 +49,7 @@
           // width above.
           // http://www.456bereastreet.com/archive/201202/using_max-width_on_images_can_make_them_disappear_in_ie8/
           max-width: none;
-          border: $thumb-border-width solid govuk-colour("grey-3");
+          border: $govuk-border-width solid govuk-colour("grey-3");
         }
 
         box-shadow: 0 2px 2px rgba(govuk-colour("black"), .4);
