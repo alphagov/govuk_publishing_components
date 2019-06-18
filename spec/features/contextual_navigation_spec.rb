@@ -25,8 +25,8 @@ describe "Contextual navigation" do
   scenario "I see the step by step I am currently interacting with" do
     given_theres_are_two_step_by_step_lists
     and_i_visit_that_page_by_clicking_on_a_step_by_step_link
-    then_i_see_the_step_by_step
-    and_the_step_by_step_header
+    then_i_see_the_step_by_step_that_i_am_interacting_with
+    and_i_see_the_other_step_by_step_as_an_also_part_of_list
   end
 
   scenario "There's a mainstream browse page tagged" do
@@ -127,7 +127,12 @@ describe "Contextual navigation" do
   end
 
   def given_theres_are_two_step_by_step_lists
-    content_store_has_random_item(links: { part_of_step_navs: 2.times.map { random_step_nav_item("step_by_step_nav") } })
+    part_of_step_navs = 2.times.map { random_step_nav_item("step_by_step_nav") }
+    part_of_step_navs[0]["title"] = "PRIMARY STEP BY STEP - NOT INTERACTING WITH"
+    part_of_step_navs[1]["content_id"] = "8ad999bd-8603-40eb-97c0-999cb22047cd"
+    part_of_step_navs[1]["title"] = "PRIMARY STEP BY STEP - INTERACTING WITH"
+
+    content_store_has_random_item(links: { part_of_step_navs: part_of_step_navs })
   end
 
   def given_theres_are_six_step_by_step_lists
@@ -242,12 +247,21 @@ describe "Contextual navigation" do
   end
 
   def and_i_visit_that_page_by_clicking_on_a_step_by_step_link
-    visit "/contextual-navigation/page-with-contextual-navigation?step-by-step-nav=8ad782bd-8603-40eb-97c0-434cb22047cd"
+    visit "/contextual-navigation/page-with-contextual-navigation?step-by-step-nav=8ad999bd-8603-40eb-97c0-999cb22047cd"
   end
 
   def then_i_see_the_step_by_step
     expect(page).to have_selector(".gem-c-step-nav-related")
     expect(page).to have_selector(".gem-c-step-nav__header")
+  end
+
+  def then_i_see_the_step_by_step_that_i_am_interacting_with
+    expect(page).to have_selector(".gem-c-step-nav-related")
+    expect(page).to have_selector(".gem-c-step-nav__header")
+    within '.gem-c-step-nav-header' do
+      expect(page).to have_content("PRIMARY STEP BY STEP - INTERACTING WITH")
+      expect(page).not_to have_content("PRIMARY STEP BY STEP - NOT INTERACTING WITH")
+    end
   end
 
   def and_the_step_by_step_header
@@ -279,6 +293,14 @@ describe "Contextual navigation" do
   def and_i_dont_see_the_secondary_step_by_step_related_links
     within '.gem-c-step-nav-related' do
       expect(page).not_to have_content("SECONDARY STEP BY STEP")
+    end
+  end
+
+  def and_i_see_the_other_step_by_step_as_an_also_part_of_list
+    within '.gem-c-step-nav-related:last-child' do
+      expect(page).to have_content('Also part of')
+      expect(page).to have_content("PRIMARY STEP BY STEP - NOT INTERACTING WITH")
+      expect(page).not_to have_content("PRIMARY STEP BY STEP - INTERACTING WITH")
     end
   end
 
