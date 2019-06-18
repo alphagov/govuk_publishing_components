@@ -120,6 +120,14 @@ describe "Contextual navigation" do
     and_no_step_by_step_header
   end
 
+  scenario "There's 2 primary step by step, 1 secondary step by step and I am interacting with one of the primary" do
+    given_there_are_two_primary_step_by_steps_and_one_secondary_to_step_navs
+    and_i_visit_that_page_by_clicking_on_a_step_by_step_link
+    then_i_see_the_step_by_step_that_i_am_interacting_with
+    and_i_see_the_other_step_by_step_as_an_also_part_of_list
+    and_i_dont_see_the_secondary_step_by_step_in_the_also_part_of_list
+  end
+
   include GdsApi::TestHelpers::ContentStore
 
   def given_theres_a_page_with_a_step_by_step
@@ -168,6 +176,21 @@ describe "Contextual navigation" do
     content_store_has_random_item(links: {
       secondary_to_step_navs: 1.times.map { random_step_nav_item("step_by_step_nav") },
       part_of_step_navs: part_of_step_navs
+    })
+  end
+
+  def given_there_are_two_primary_step_by_steps_and_one_secondary_to_step_navs
+    part_of_step_navs = 2.times.map { random_step_nav_item("step_by_step_nav") }
+    part_of_step_navs[0]["title"] = "PRIMARY STEP BY STEP - NOT INTERACTING WITH"
+    part_of_step_navs[1]["content_id"] = "8ad999bd-8603-40eb-97c0-999cb22047cd"
+    part_of_step_navs[1]["title"] = "PRIMARY STEP BY STEP - INTERACTING WITH"
+
+    secondary_to_step_navs = 1.times.map { random_step_nav_item("step_by_step_nav") }
+    secondary_to_step_navs[0]["title"] = "SECONDARY STEP BY STEP"
+
+    content_store_has_random_item(links: {
+      part_of_step_navs: part_of_step_navs,
+      secondary_to_step_navs: secondary_to_step_navs
     })
   end
 
@@ -301,6 +324,12 @@ describe "Contextual navigation" do
       expect(page).to have_content('Also part of')
       expect(page).to have_content("PRIMARY STEP BY STEP - NOT INTERACTING WITH")
       expect(page).not_to have_content("PRIMARY STEP BY STEP - INTERACTING WITH")
+    end
+  end
+
+  def and_i_dont_see_the_secondary_step_by_step_in_the_also_part_of_list
+    within '.gem-c-step-nav-related:last-child' do
+      expect(page).not_to have_content("SECONDARY STEP BY STEP")
     end
   end
 
