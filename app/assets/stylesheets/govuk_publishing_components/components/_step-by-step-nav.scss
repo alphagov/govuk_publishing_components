@@ -2,7 +2,6 @@ $stroke-width: 2px;
 $stroke-width-large: 3px;
 $number-circle-size: 26px;
 $number-circle-size-large: 35px;
-$dot-size: 16px;
 $top-border: solid 2px $grey-3;
 
 @mixin step-nav-vertical-line ($line-style: solid) {
@@ -372,20 +371,19 @@ $top-border: solid 2px $grey-3;
     z-index: 5;
     top: .6em; // position the dot to align with the first row of text in the link
     left: -($gutter + $gutter-half);
-    margin-left: ($number-circle-size / 2) - ($dot-size / 2);
-    width: $dot-size;
-    height: $dot-size;
-    margin-top: -($dot-size / 2);
+    margin-top: -($stroke-width / 2);
+    margin-left: ($number-circle-size / 2);
+    width: $number-circle-size / 2;
+    height: $stroke-width;
     background: $black;
-    border: solid 2px $white;
-    border-radius: 100px;
   }
 
   .gem-c-step-nav--large & {
     @include media(tablet) {
       &:before {
         left: -($gutter * 2);
-        margin-left: ($number-circle-size-large / 2) - ($dot-size / 2);
+        margin-left: ($number-circle-size-large / 2);
+        height: $stroke-width-large;
       }
     }
   }
