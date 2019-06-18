@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Change step by step navigation active step link state (PR #937)
 * Fix dialog element role in modal dialogue component (PR #920)
 
 ## 17.1.1
