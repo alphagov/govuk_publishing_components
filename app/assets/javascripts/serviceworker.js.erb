@@ -1,0 +1,81 @@
+var KILLSWITCHENABLED = false; // turning this on will delete all caches
+var CACHE_VERSION = 'v3';
+var CACHE_NAME = "GOVUK:" + CACHE_VERSION;
+var CACHE_URLS = [
+  '<%= asset_path "application.js" %>',
+  '<%= asset_path "application.css" %>',
+  '/offline.html'
+];
+
+ function onInstall(event) {
+  console.log('[Serviceworker]', "Installing!", event);
+  self.skipWaiting();
+  event.waitUntil(
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        cacheNames.map(function(cacheName) {
+          if (CACHE_NAME.indexOf(cacheName) === -1) {
+            console.log('Deleting out of date cache:', cacheName);
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    }).then(function(){
+      caches.open(CACHE_NAME).then(function(cache) {
+        return cache.addAll(CACHE_URLS);
+      })
+    })
+  );
+}
+
+ function onActivate(event) {
+  console.log('[Serviceworker]', "Activating!", event);
+  // Optional: Get a list of all the current open windows/tabs under
+  // our service worker's control, and force them to reload.
+  // This can "unbreak" any open windows/tabs as soon as the new
+  // service worker activates, rather than users having to manually reload.
+  self.clients.matchAll({ type: 'window' }).then(function(windowClients) {
+    windowClients.forEach(function(windowClient) {
+      windowClient.navigate(windowClient.url);
+    });
+  });
+
+   // implementation of kill switch
+  if (KILLSWITCHENABLED) {
+    // delete all existing SW caches
+    event.waitUntil(
+      caches.keys()
+        .then(function(cacheNames) {
+          return Promise.all(
+            cacheNames.map(function(cacheName) {
+              return caches.delete(cacheName);
+            })
+          ).then(function(response) {
+            console.info('All service worker caches deleted');
+          })
+        })
+    );
+  }
+}
+
+ function onFetch(event) {
+  if (event.request.mode === 'navigate' || (event.request.method === 'GET' && event.request.headers.get('accept').includes('text/html'))) {
+    event.respondWith(
+      fetch(event.request.url).catch(function(error) {
+        // Return the cached page if it exists
+        return caches.match(event.request.url);
+      })
+    );
+  } else {
+    // Respond with everything else if we can
+    event.respondWith(caches.match(event.request)
+      .then(function(response) {
+        return response || fetch(event.request);
+      })
+    );
+  }
+}
+
+self.addEventListener('install', onInstall);
+self.addEventListener('activate', onActivate);
+self.addEventListener('fetch', onFetch);

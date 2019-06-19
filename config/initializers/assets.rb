@@ -31,3 +31,7 @@ Rails.application.config.assets.paths += %W(
   #{__dir__}/../../node_modules/govuk-frontend/assets/fonts
   #{__dir__}/../../node_modules/
 )
+
+# Service worker
+
+Rails.configuration.assets.precompile += %w[serviceworker.js manifest.json]
