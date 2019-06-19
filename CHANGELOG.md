@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 17.3.0
 
 * Set the expiry of consent cookie to 1 year (PR #940)
 * Sets the default expiry of cookies to 30 days if not specified (PR #940)
