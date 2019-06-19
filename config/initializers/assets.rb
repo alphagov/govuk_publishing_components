@@ -17,6 +17,8 @@ Rails.application.config.assets.precompile += %w(
   govuk_publishing_components/govuk-schema-placeholder-1x1.png
   govuk_publishing_components/govuk-schema-placeholder-4x3.png
   govuk_publishing_components/govuk-schema-placeholder-16x9.png
+  govuk_publishing_components/serviceworker.js
+  govuk_publishing_components/manifest.json
 )
 
 # Add GOV.Frontend assets
@@ -31,7 +33,3 @@ Rails.application.config.assets.paths += %W(
   #{__dir__}/../../node_modules/govuk-frontend/assets/fonts
   #{__dir__}/../../node_modules/
 )
-
-# Service worker
-
-Rails.configuration.assets.precompile += %w[serviceworker.js manifest.json]
