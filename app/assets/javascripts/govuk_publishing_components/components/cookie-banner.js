@@ -46,7 +46,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     // This involves resetting the seen_cookie_message cookie, which may be set to true if they've seen the old cookie banner
     if (!window.GOVUK.cookie('cookie_policy')) {
       if (window.GOVUK.cookie('seen_cookie_message') === 'true') {
-        window.GOVUK.cookie('seen_cookie_message', false)
+        window.GOVUK.cookie('seen_cookie_message', false, { days: 365 })
       }
     }
 
@@ -95,7 +95,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   CookieBanner.prototype.setCookieConsent = function () {
     window.GOVUK.approveAllCookieTypes()
     this.$module.showConfirmationMessage()
-    window.GOVUK.setCookie('seen_cookie_message', 'true')
+    window.GOVUK.cookie('seen_cookie_message', 'true', { days: 365 })
   }
 
   CookieBanner.prototype.showConfirmationMessage = function () {

@@ -9,6 +9,9 @@
 
 ## Unreleased
 
+* Set the expiry of consent cookie to 1 year (PR #940)
+* Sets the default expiry of cookies to 30 days if not specified (PR #940)
+
 ## 17.2.0
 
 * Change step by step navigation active step link state (PR #937)
