@@ -130,6 +130,84 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       expect(structured_data["subOrganization"][0]["sameAs"]).to eq("http://www.dev.gov.uk/dodgy-wands-commission")
     end
 
+    it "generates person schemas for ministers with their roles" do
+      content_item = generate_org.tap do |org|
+        org["details"]["ordered_ministers"] = [
+          {
+            "name_prefix" => "Minister",
+            "name" => "Rufus Scrimgeour MP",
+            "role" => "Minister for Magic",
+            "href" => "/rufus-scrimgeour",
+            "role_href" => "/minister-for-magic",
+            "image" => {
+              "url" => "https://images.gov.uk/rufus.jpg"
+            }
+          },
+          {
+            "name_prefix" => "Minister",
+            "name" => "Rufus Scrimgeour MP",
+            "role" => "Head of Auror Office",
+            "href" => "/rufus-scrimgeour",
+            "role_href" => "/head-of-auror-office",
+            "image" => {
+              "url" => "https://images.gov.uk/rufus.jpg"
+            }
+          },
+          {
+            "name_prefix" => "",
+            "name" => "Barty Crouch Sr. MP",
+            "role" => "Head of Department of Magical Law Enforcement",
+            "href" => "/barty-crouch-sr",
+            "role_href" => "/head-of-mle",
+            "image" => {
+              "url" => "https://images.gov.uk/barty.jpg"
+            }
+          }
+        ]
+      end
+
+      structured_data = generate_structured_data(
+        content_item: content_item,
+        schema: :organisation
+      ).structured_data
+
+      expect(structured_data["@type"]).to eq("GovernmentOrganization")
+      expect(structured_data["member"].count).to eq(2)
+      expect(structured_data["member"].first).to eq(
+        "@type" => "Person",
+        "honorificPrefix" => "Minister",
+        "image" => "https://images.gov.uk/rufus.jpg",
+        "name" => "Rufus Scrimgeour MP",
+        "url" => "http://www.dev.gov.uk/rufus-scrimgeour",
+        "hasOccupation" => [
+          {
+            "@type" => "Role",
+            "name" => "Minister for Magic",
+            "url" => "http://www.dev.gov.uk/minister-for-magic"
+          },
+          {
+            "@type" => "Role",
+            "name" => "Head of Auror Office",
+            "url" => "http://www.dev.gov.uk/head-of-auror-office"
+          }
+        ]
+      )
+    end
+
+    it "doesn't include `member` if there are no ministers" do
+      content_item = generate_org.tap do |org|
+        org["details"].delete("ordered_ministers")
+      end
+
+      structured_data = generate_structured_data(
+        content_item: content_item,
+        schema: :organisation
+      ).structured_data
+
+      expect(structured_data["@type"]).to eq("GovernmentOrganization")
+      expect(structured_data.keys).to_not include("member")
+    end
+
     it "allows override of the URL" do
       content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "answer") do |random_item|
         random_item.merge(
@@ -403,7 +481,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       GovukPublishingComponents::Presenters::SchemaOrg.new(GovukPublishingComponents::Presenters::Page.new(args))
     end
 
-    def generate_org(details)
+    def generate_org(details = {})
       # We're skipping validation of the example schema for now because content
       # schemas expect a lot of linked items to have base paths.  This is not the
       # case.  It appears that the full fix is not trivial, partly because lots

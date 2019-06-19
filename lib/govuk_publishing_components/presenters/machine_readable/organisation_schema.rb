@@ -18,10 +18,75 @@ module GovukPublishingComponents
           },
           "name" => page.title,
           "description" => page.description || page.body,
-        }.merge(parent_organisations).merge(sub_organisations).merge(search_action)
+        }
+        .merge(members)
+        .merge(parent_organisations)
+        .merge(sub_organisations)
+        .merge(search_action)
       end
 
     private
+
+      def members
+        return {} unless ministers.present?
+
+        members = ministers_with_grouped_roles.map do |person, roles|
+          person.merge("hasOccupation" => roles)
+        end
+
+        {
+          "member" => members
+        }
+      end
+
+      def ministers
+        page.content_item.dig("details", "ordered_ministers") || []
+      end
+
+      def ministers_with_grouped_roles
+        ministers.reduce({}) do |grouped, minister|
+          person_schema = person_schema_for_minister(minister)
+
+          if grouped.has_key? person_schema
+            grouped[person_schema] << role_for_minister(minister)
+          else
+            grouped[person_schema] = [role_for_minister(minister)]
+          end
+          grouped
+        end
+      end
+
+      def person_schema_for_minister(minister)
+        {
+          "@type" => "Person",
+          "honorificPrefix" => minister["name_prefix"],
+          "image" => minister.dig("image", "url"),
+          "name" => minister["name"],
+          "url" => minister_url(minister)
+        }
+      end
+
+      def role_for_minister(minister)
+        return {} unless minister["role"].present?
+
+        {
+          "@type" => "Role",
+          "name" => minister["role"],
+          "url" => role_url(minister)
+        }
+      end
+
+      def minister_url(minister)
+        "#{website_root}#{minister['href']}"
+      end
+
+      def role_url(minister)
+        "#{website_root}#{minister['role_href']}"
+      end
+
+      def website_root
+        @website_root ||= Plek.new.website_root
+      end
 
       def parent_organisations
         related_organisations("ordered_parent_organisations", "parentOrganization")
