@@ -9,9 +9,12 @@
 
 ## Unreleased
 
+## 17.2.0
+
 * Change step by step navigation active step link state (PR #937)
 * Fix dialog element role in modal dialogue component (PR #920)
 * Add ministers to organisation page schema. (PR #921)
+* Add options to document list component (PR #917)
 
 ## 17.1.1
 
@@ -29,7 +32,6 @@
 * Update feedback component error handling (PR #918)
 * Support data attributes for error summary items (PR #924)
 * Disable youtube embeds if campaign cookies turned off (PR #919)
-* Add options to document list component (PR #917)
 * Add aria-live flag to notice component (PR #911)
 * BREAKING: Check the consent cookie before setting cookies (PR #916)
 * Override vertical align: top for inline buttons (PR #912)
