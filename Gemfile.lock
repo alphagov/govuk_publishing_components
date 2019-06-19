@@ -11,6 +11,7 @@ PATH
       rake
       rouge
       sassc-rails (>= 2.0.1)
+      serviceworker-rails
 
 GEM
   remote: https://rubygems.org/
@@ -269,6 +270,8 @@ GEM
       rubyzip (~> 1.2, >= 1.2.2)
     sentry-raven (2.7.4)
       faraday (>= 0.7.6, < 1.0)
+    serviceworker-rails (0.5.5)
+      railties (>= 3.1)
     sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)

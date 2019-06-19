@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
   s.add_dependency "rake"
   s.add_dependency "rouge"
   s.add_dependency "sassc-rails", ">= 2.0.1"
+  s.add_dependency "serviceworker-rails"
 
   s.add_development_dependency "capybara", "~> 3.22.0"
   s.add_development_dependency "foreman", "~> 0.64"
