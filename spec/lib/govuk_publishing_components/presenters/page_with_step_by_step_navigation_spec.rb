@@ -474,6 +474,584 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
     end
   end
 
+  context("secondary step by steps") do
+    let(:step_nav) do
+      {
+        "content_id" => "aaaa-bbbb",
+        "title" => "Lose your lunch: lurch by lurch",
+        "base_path" => "/lose-your-lunch",
+        "details" => {
+          "step_by_step_nav" => {
+            "steps" => [
+              "title": "Step one"
+            ]
+          }
+        }
+      }
+    end
+
+    context "secondary steps without other step by step links" do
+      context "for a content item with a single `secondary_to_step_navs` links" do
+        let(:content_store_response) do
+          {
+            "title" => "Book a session in the vomit comet",
+            "document_type" => "transaction",
+            "links" => {
+              "secondary_to_step_navs" => [step_nav],
+            }
+          }
+        end
+
+        it "parses the content item" do
+          step_nav_links = described_class.new(content_store_response, '/vomit-comet-session')
+
+          expect(step_nav_links.step_navs.count).to eq(0)
+          expect(step_nav_links.secondary_step_by_steps.count).to eq(1)
+
+          expect(step_nav_links.show_secondary_step_by_step?).to be true
+          expect(step_nav_links.show_related_links_for_secondary_step_by_steps?).to be true
+          expect(step_nav_links.show_header?).to be true
+          expect(step_nav_links.header).to eq(
+            path: "/lose-your-lunch",
+            title: "Lose your lunch: lurch by lurch",
+            tracking_id: "aaaa-bbbb"
+          )
+
+          expect(step_nav_links.show_related_links?).to be true
+          expect(step_nav_links.related_links).to eq([
+            {
+              href: "/lose-your-lunch",
+              text: "Lose your lunch: lurch by lurch",
+              tracking_id: "aaaa-bbbb"
+            }
+          ])
+
+          expect(step_nav_links.show_sidebar?).to be true
+        end
+      end
+
+      context "for a content item with a couple `secondary_to_step_navs` links" do
+        let(:step_nav2) do
+          {
+            "content_id" => "aaaa-bbbb-2",
+            "title" => "Lose your lunch: lurch by lurch 2",
+            "base_path" => "/lose-your-lunch-2",
+          }
+        end
+
+        let(:content_store_response) do
+          {
+            "title" => "Book a session in the vomit comet",
+            "document_type" => "transaction",
+            "links" => {
+              "secondary_to_step_navs" => [step_nav, step_nav2],
+            }
+          }
+        end
+
+        it "parses the content item" do
+          step_nav_links = described_class.new(content_store_response, '/vomit-comet-session')
+
+          expect(step_nav_links.step_navs.count).to eq(0)
+          expect(step_nav_links.secondary_step_by_steps.count).to eq(2)
+
+          expect(step_nav_links.show_secondary_step_by_step?).to be false
+          expect(step_nav_links.show_related_links_for_secondary_step_by_steps?).to be true
+          expect(step_nav_links.show_related_links?).to be true
+          expect(step_nav_links.related_links).to eq([
+            {
+              href: "/lose-your-lunch",
+              text: "Lose your lunch: lurch by lurch",
+              tracking_id: "aaaa-bbbb"
+            },
+            {
+              href: "/lose-your-lunch-2",
+              text: "Lose your lunch: lurch by lurch 2",
+              tracking_id: "aaaa-bbbb-2"
+            }
+          ])
+
+          expect(step_nav_links.show_header?).to be false
+          expect(step_nav_links.show_sidebar?).to be false
+        end
+      end
+
+      context "for a content item with many `secondary_to_step_navs` links" do
+        let(:content_store_response) do
+          {
+            "title" => "Book a session in the vomit comet",
+            "document_type" => "transaction",
+            "links" => {
+              "secondary_to_step_navs" => Array.new(6, step_nav),
+            }
+          }
+        end
+
+        it "parses the content item" do
+          step_nav_links = described_class.new(content_store_response, '/vomit-comet-session')
+
+          expect(step_nav_links.step_navs.count).to eq(0)
+          expect(step_nav_links.secondary_step_by_steps.count).to eq(6)
+
+          expect(step_nav_links.show_secondary_step_by_step?).to be false
+          expect(step_nav_links.show_related_links_for_secondary_step_by_steps?).to be false
+          expect(step_nav_links.show_header?).to be false
+          expect(step_nav_links.show_related_links?).to be false
+          expect(step_nav_links.show_sidebar?).to be false
+        end
+      end
+    end
+
+    context "secondary step by steps with primary step by steps" do
+      let(:primary_step_nav) do
+        {
+          "content_id" => "PRIMARY-aaaa-bbbb",
+          "title" => "PRIMARY Lose your lunch: lurch by lurch",
+          "base_path" => "/PRIMARY-lose-your-lunch",
+          "details" => {
+            "step_by_step_nav" => {
+              "steps" => [
+                "title": "Step one"
+              ]
+            }
+          }
+        }
+      end
+
+      context "for a content item with a single `secondary_to_step_navs` links and a single `part_of_step_navs` link" do
+        let(:content_store_response) do
+          {
+            "title" => "Book a session in the vomit comet",
+            "document_type" => "transaction",
+            "links" => {
+              "part_of_step_navs" => [primary_step_nav],
+              "secondary_to_step_navs" => [step_nav],
+            }
+          }
+        end
+
+        it "parses the content item" do
+          step_nav_links = described_class.new(content_store_response, '/vomit-comet-session')
+
+          expect(step_nav_links.step_navs.count).to eq(1)
+          expect(step_nav_links.secondary_step_by_steps.count).to eq(1)
+
+          expect(step_nav_links.show_secondary_step_by_step?).to be false
+          expect(step_nav_links.show_related_links_for_secondary_step_by_steps?).to be false
+          expect(step_nav_links.show_header?).to be true
+          expect(step_nav_links.header).to eq(
+            path: "/PRIMARY-lose-your-lunch",
+            title: "PRIMARY Lose your lunch: lurch by lurch",
+            tracking_id: "PRIMARY-aaaa-bbbb"
+          )
+
+          expect(step_nav_links.show_related_links?).to be true
+          expect(step_nav_links.related_links).to eq([
+            {
+              href: "/PRIMARY-lose-your-lunch",
+              text: "PRIMARY Lose your lunch: lurch by lurch",
+              tracking_id: "PRIMARY-aaaa-bbbb"
+            }
+          ])
+
+          expect(step_nav_links.show_sidebar?).to be true
+        end
+      end
+
+      context "for a content item with a couple `secondary_to_step_navs` links and a single `part_of_step_navs` link" do
+        let(:step_nav2) do
+          {
+            "content_id" => "aaaa-bbbb-2",
+            "title" => "Lose your lunch: lurch by lurch 2",
+            "base_path" => "/lose-your-lunch-2",
+          }
+        end
+
+        let(:content_store_response) do
+          {
+            "title" => "Book a session in the vomit comet",
+            "document_type" => "transaction",
+            "links" => {
+              "part_of_step_navs" => [primary_step_nav],
+              "secondary_to_step_navs" => [step_nav, step_nav2],
+            }
+          }
+        end
+
+        it "parses the content item" do
+          step_nav_links = described_class.new(content_store_response, '/vomit-comet-session')
+
+          expect(step_nav_links.step_navs.count).to eq(1)
+          expect(step_nav_links.secondary_step_by_steps.count).to eq(2)
+
+          expect(step_nav_links.show_secondary_step_by_step?).to be false
+          expect(step_nav_links.show_related_links_for_secondary_step_by_steps?).to be false
+          expect(step_nav_links.show_header?).to be true
+          expect(step_nav_links.header).to eq(
+            path: "/PRIMARY-lose-your-lunch",
+            title: "PRIMARY Lose your lunch: lurch by lurch",
+            tracking_id: "PRIMARY-aaaa-bbbb"
+          )
+
+          expect(step_nav_links.show_related_links?).to be true
+          expect(step_nav_links.related_links).to eq([
+            {
+              href: "/PRIMARY-lose-your-lunch",
+              text: "PRIMARY Lose your lunch: lurch by lurch",
+              tracking_id: "PRIMARY-aaaa-bbbb"
+            }
+          ])
+
+          expect(step_nav_links.show_sidebar?).to be true
+        end
+      end
+
+      context "for a content item with a single `secondary_to_step_navs` links and a couple `part_of_step_navs` link" do
+        let(:primary_step_nav2) do
+          {
+            "content_id" => "PRIMARY-aaaa-bbbb-2",
+            "title" => "PRIMARY Lose your lunch: lurch by lurch 2",
+            "base_path" => "/PRIMARY-lose-your-lunch-2",
+          }
+        end
+
+        let(:content_store_response) do
+          {
+            "title" => "Book a session in the vomit comet",
+            "document_type" => "transaction",
+            "links" => {
+              "part_of_step_navs" => [primary_step_nav, primary_step_nav2],
+              "secondary_to_step_navs" => [step_nav],
+            }
+          }
+        end
+
+        it "parses the content item" do
+          step_nav_links = described_class.new(content_store_response, '/vomit-comet-session')
+
+          expect(step_nav_links.step_navs.count).to eq(2)
+          expect(step_nav_links.secondary_step_by_steps.count).to eq(1)
+
+          expect(step_nav_links.show_secondary_step_by_step?).to be false
+          expect(step_nav_links.show_related_links_for_secondary_step_by_steps?).to be false
+          expect(step_nav_links.show_related_links?).to be true
+          expect(step_nav_links.related_links).to eq([
+            {
+              href: "/PRIMARY-lose-your-lunch",
+              text: "PRIMARY Lose your lunch: lurch by lurch",
+              tracking_id: "PRIMARY-aaaa-bbbb"
+            },
+            {
+              href: "/PRIMARY-lose-your-lunch-2",
+              text: "PRIMARY Lose your lunch: lurch by lurch 2",
+              tracking_id: "PRIMARY-aaaa-bbbb-2"
+            }
+          ])
+
+          expect(step_nav_links.show_header?).to be false
+          expect(step_nav_links.show_sidebar?).to be false
+        end
+      end
+
+      context "for a content item with a couple `secondary_to_step_navs` links and a couple `part_of_step_navs` link" do
+        let(:primary_step_nav2) do
+          {
+            "content_id" => "PRIMARY-aaaa-bbbb-2",
+            "title" => "PRIMARY Lose your lunch: lurch by lurch 2",
+            "base_path" => "/PRIMARY-lose-your-lunch-2",
+          }
+        end
+
+        let(:step_nav2) do
+          {
+            "content_id" => "aaaa-bbbb-2",
+            "title" => "Lose your lunch: lurch by lurch 2",
+            "base_path" => "/lose-your-lunch-2",
+          }
+        end
+
+        let(:content_store_response) do
+          {
+            "title" => "Book a session in the vomit comet",
+            "document_type" => "transaction",
+            "links" => {
+              "part_of_step_navs" => [primary_step_nav, primary_step_nav2],
+              "secondary_to_step_navs" => [step_nav, step_nav2],
+            }
+          }
+        end
+
+        it "parses the content item" do
+          step_nav_links = described_class.new(content_store_response, '/vomit-comet-session')
+
+          expect(step_nav_links.step_navs.count).to eq(2)
+          expect(step_nav_links.secondary_step_by_steps.count).to eq(2)
+
+          expect(step_nav_links.show_secondary_step_by_step?).to be false
+          expect(step_nav_links.show_related_links_for_secondary_step_by_steps?).to be false
+          expect(step_nav_links.show_related_links?).to be true
+          expect(step_nav_links.related_links).to eq([
+            {
+              href: "/PRIMARY-lose-your-lunch",
+              text: "PRIMARY Lose your lunch: lurch by lurch",
+              tracking_id: "PRIMARY-aaaa-bbbb"
+            },
+            {
+              href: "/PRIMARY-lose-your-lunch-2",
+              text: "PRIMARY Lose your lunch: lurch by lurch 2",
+              tracking_id: "PRIMARY-aaaa-bbbb-2"
+            }
+          ])
+
+          expect(step_nav_links.show_header?).to be false
+          expect(step_nav_links.show_sidebar?).to be false
+        end
+      end
+
+      context "for a content item with many `secondary_to_step_navs` links and many `part_of_step_navs` link" do
+        let(:content_store_response) do
+          {
+            "title" => "Book a session in the vomit comet",
+            "document_type" => "transaction",
+            "links" => {
+              "part_of_step_navs" => Array.new(6, primary_step_nav),
+              "secondary_to_step_navs" => Array.new(6, step_nav),
+            }
+          }
+        end
+
+        it "parses the content item" do
+          step_nav_links = described_class.new(content_store_response, '/vomit-comet-session')
+
+          expect(step_nav_links.step_navs.count).to eq(6)
+          expect(step_nav_links.secondary_step_by_steps.count).to eq(6)
+
+          expect(step_nav_links.show_secondary_step_by_step?).to be false
+          expect(step_nav_links.show_related_links_for_secondary_step_by_steps?).to be false
+          expect(step_nav_links.show_header?).to be false
+          expect(step_nav_links.show_related_links?).to be false
+          expect(step_nav_links.show_sidebar?).to be false
+        end
+      end
+    end
+
+    context "secondary step by steps with related to step by steps" do
+      let(:related_to_step_nav) do
+        {
+          "content_id" => "RELATED-aaaa-bbbb",
+          "title" => "RELATED Lose your lunch: lurch by lurch",
+          "base_path" => "/RELATED-lose-your-lunch",
+          "details" => {
+            "step_by_step_nav" => {
+              "steps" => [
+                "title": "Step one"
+              ]
+            }
+          }
+        }
+      end
+
+      context "for a content item with a single `secondary_to_step_navs` links and a single `related_to_step_navs` link" do
+        let(:content_store_response) do
+          {
+            "title" => "Book a session in the vomit comet",
+            "document_type" => "transaction",
+            "links" => {
+              "related_to_step_navs" => Array.new(1, related_to_step_nav),
+              "secondary_to_step_navs" => Array.new(1, step_nav),
+            }
+          }
+        end
+
+        it "parses the content item" do
+          step_nav_links = described_class.new(content_store_response, '/vomit-comet-session')
+
+          expect(step_nav_links.step_navs.count).to eq(0)
+          expect(step_nav_links.secondary_step_by_steps.count).to eq(1)
+          expect(step_nav_links.related_to_step_navs.count).to eq(1)
+
+          expect(step_nav_links.show_secondary_step_by_step?).to be false
+          expect(step_nav_links.show_related_links_for_secondary_step_by_steps?).to be false
+          expect(step_nav_links.show_header?).to be false
+          expect(step_nav_links.show_related_links?).to be false
+          expect(step_nav_links.show_sidebar?).to be false
+        end
+      end
+
+      context "for a content item with a couple `secondary_to_step_navs` links and a single `related_to_step_navs` link" do
+        let(:content_store_response) do
+          {
+            "title" => "Book a session in the vomit comet",
+            "document_type" => "transaction",
+            "links" => {
+              "related_to_step_navs" => Array.new(1, related_to_step_nav),
+              "secondary_to_step_navs" => Array.new(2, step_nav),
+            }
+          }
+        end
+
+        it "parses the content item" do
+          step_nav_links = described_class.new(content_store_response, '/vomit-comet-session')
+
+          expect(step_nav_links.step_navs.count).to eq(0)
+          expect(step_nav_links.secondary_step_by_steps.count).to eq(2)
+          expect(step_nav_links.related_to_step_navs.count).to eq(1)
+
+          expect(step_nav_links.show_secondary_step_by_step?).to be false
+          expect(step_nav_links.show_related_links_for_secondary_step_by_steps?).to be false
+          expect(step_nav_links.show_header?).to be false
+          expect(step_nav_links.show_related_links?).to be false
+          expect(step_nav_links.show_sidebar?).to be false
+        end
+      end
+
+      context "for a content item with a single `secondary_to_step_navs` links and a couple `related_to_step_navs` link" do
+        let(:content_store_response) do
+          {
+            "title" => "Book a session in the vomit comet",
+            "document_type" => "transaction",
+            "links" => {
+              "related_to_step_navs" => Array.new(2, related_to_step_nav),
+              "secondary_to_step_navs" => Array.new(1, step_nav),
+            }
+          }
+        end
+
+        it "parses the content item" do
+          step_nav_links = described_class.new(content_store_response, '/vomit-comet-session')
+
+          expect(step_nav_links.step_navs.count).to eq(0)
+          expect(step_nav_links.secondary_step_by_steps.count).to eq(1)
+          expect(step_nav_links.related_to_step_navs.count).to eq(2)
+
+          expect(step_nav_links.show_secondary_step_by_step?).to be false
+          expect(step_nav_links.show_related_links_for_secondary_step_by_steps?).to be false
+          expect(step_nav_links.show_header?).to be false
+          expect(step_nav_links.show_related_links?).to be false
+          expect(step_nav_links.show_sidebar?).to be false
+        end
+      end
+
+      context "for a content item with a couple `secondary_to_step_navs` links and a couple `related_to_step_navs` link" do
+        let(:content_store_response) do
+          {
+            "title" => "Book a session in the vomit comet",
+            "document_type" => "transaction",
+            "links" => {
+              "related_to_step_navs" => Array.new(2, related_to_step_nav),
+              "secondary_to_step_navs" => Array.new(2, step_nav),
+            }
+          }
+        end
+
+        it "parses the content item" do
+          step_nav_links = described_class.new(content_store_response, '/vomit-comet-session')
+
+          expect(step_nav_links.step_navs.count).to eq(0)
+          expect(step_nav_links.secondary_step_by_steps.count).to eq(2)
+          expect(step_nav_links.related_to_step_navs.count).to eq(2)
+
+          expect(step_nav_links.show_secondary_step_by_step?).to be false
+          expect(step_nav_links.show_related_links_for_secondary_step_by_steps?).to be false
+          expect(step_nav_links.show_header?).to be false
+          expect(step_nav_links.show_related_links?).to be false
+          expect(step_nav_links.show_sidebar?).to be false
+        end
+      end
+
+      context "for a content item with many `secondary_to_step_navs` links and many `related_to_step_navs` link" do
+        let(:content_store_response) do
+          {
+            "title" => "Book a session in the vomit comet",
+            "document_type" => "transaction",
+            "links" => {
+              "related_to_step_navs" => Array.new(6, related_to_step_nav),
+              "secondary_to_step_navs" => Array.new(6, step_nav),
+            }
+          }
+        end
+
+        it "parses the content item" do
+          step_nav_links = described_class.new(content_store_response, '/vomit-comet-session')
+
+          expect(step_nav_links.step_navs.count).to eq(0)
+          expect(step_nav_links.secondary_step_by_steps.count).to eq(6)
+          expect(step_nav_links.related_to_step_navs.count).to eq(6)
+
+          expect(step_nav_links.show_secondary_step_by_step?).to be false
+          expect(step_nav_links.show_related_links_for_secondary_step_by_steps?).to be false
+          expect(step_nav_links.show_header?).to be false
+          expect(step_nav_links.show_related_links?).to be false
+          expect(step_nav_links.show_sidebar?).to be false
+        end
+      end
+    end
+
+    context "secondary step by step with active step by step" do
+      it "shows header for related to step nav when a step by step is active and there is also a secondary step by step" do
+        related_to_step_navs = {
+          "content_id" => "cccc-dddd",
+          "title" => "Learn to spacewalk: small step by giant leap",
+          "base_path" => "/learn-to-spacewalk"
+        }
+        content_item = {
+          "title" => "Book a session in the vomit comet",
+          "document_type" => "transaction",
+          "links" => {
+            "secondary_to_step_navs" => [step_nav],
+            "related_to_step_navs" => [related_to_step_navs],
+          }
+        }
+        step_nav_links = described_class.new(content_item, "/driving-lessons-learning-to-drive", "step-by-step-nav" => "cccc-dddd")
+        expect(step_nav_links.step_navs.count).to eq(0)
+        expect(step_nav_links.secondary_step_by_steps.count).to eq(1)
+
+        expect(step_nav_links.show_secondary_step_by_step?).to be false
+        expect(step_nav_links.show_related_links_for_secondary_step_by_steps?).to be false
+        expect(step_nav_links.active_step_by_step?).to eq(true)
+        expect(step_nav_links.show_header?).to eq(true)
+        expect(step_nav_links.related_links).to eq([
+          {
+            href: "/learn-to-spacewalk",
+            text: "Learn to spacewalk: small step by giant leap",
+            tracking_id: "cccc-dddd"
+          }
+        ])
+      end
+
+      it "shows header for part of step nav when a step by step is active and there is also a secondary step by step" do
+        part_of_step_navs = {
+          "content_id" => "cccc-dddd",
+          "title" => "Learn to spacewalk: small step by giant leap",
+          "base_path" => "/learn-to-spacewalk"
+        }
+        content_item = {
+          "title" => "Book a session in the vomit comet",
+          "document_type" => "transaction",
+          "links" => {
+            "secondary_to_step_navs" => [step_nav],
+            "part_of_step_navs" => [part_of_step_navs],
+          }
+        }
+        step_nav_links = described_class.new(content_item, "/driving-lessons-learning-to-drive", "step-by-step-nav" => "cccc-dddd")
+        expect(step_nav_links.step_navs.count).to eq(1)
+        expect(step_nav_links.secondary_step_by_steps.count).to eq(1)
+
+        expect(step_nav_links.show_secondary_step_by_step?).to be false
+        expect(step_nav_links.show_related_links_for_secondary_step_by_steps?).to be false
+        expect(step_nav_links.active_step_by_step?).to eq(true)
+        expect(step_nav_links.show_header?).to eq(true)
+        expect(step_nav_links.related_links).to eq([
+          {
+            href: "/learn-to-spacewalk",
+            text: "Learn to spacewalk: small step by giant leap",
+            tracking_id: "cccc-dddd"
+          }
+        ])
+      end
+    end
+  end
+
   def payload_for(schema, content_item)
     GovukSchemas::RandomExample.for_schema(frontend_schema: schema) do |payload|
       payload.merge(content_item)
