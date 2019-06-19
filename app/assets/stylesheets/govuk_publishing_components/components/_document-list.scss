@@ -39,8 +39,16 @@
 
 .gem-c-document-list__item-description {
   @include govuk-text-colour;
-  @include govuk-font($size: 16, $line-height: 1.5);
   margin: 0 0 5px 0;
+}
+
+.gem-c-document-list__subtext {
+  margin: govuk-spacing(1) 0 0 0;
+}
+
+.gem-c-document-list__item-description,
+.gem-c-document-list__subtext {
+  @include govuk-font($size: 16, $line-height: 1.5);
 }
 
 .gem-c-document-list__item-metadata {
@@ -71,4 +79,20 @@
 .gem-c-document-list__multi-list {
   width: 100%;
   margin-right: 25px;
+}
+
+.gem-c-document-list__item--highlight {
+  border: 1px solid govuk-colour("grey-2");
+  padding: govuk-spacing(6);
+  margin-bottom: govuk-spacing(6);
+
+  .gem-c-document-list__item-title {
+    @include govuk-font(24, bold);
+  }
+}
+
+.gem-c-document-list__highlight-text {
+  @include govuk-font(16, bold);
+  margin: 0 0 govuk-spacing(3) 0;
+
 }

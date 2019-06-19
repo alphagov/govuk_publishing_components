@@ -206,4 +206,46 @@ describe "Document list", type: :view do
     assert_select '.gem-c-document-list__item-title--context[href="/link/path"]', text: 'Link Title'
     assert_select '.gem-c-document-list__item-context', text: 'some context'
   end
+
+  it "adds subtext" do
+    render_component(
+      items: [
+        {
+          link: {
+            text: "Link Title",
+            path: "/link/path",
+          },
+          subtext: "This is some subtext"
+        }
+      ]
+    )
+
+    assert_select '.gem-c-document-list__subtext', text: 'This is some subtext'
+  end
+
+  it "highlights items" do
+    render_component(
+      items: [
+        {
+          link: {
+            text: "Link Title",
+            path: "/link/path",
+          },
+          highlight: true,
+          highlight_text: 'Most relevant result'
+        },
+        {
+          link: {
+            text: "Link Title",
+            path: "/link/path",
+          },
+          highlight: true
+        }
+      ]
+    )
+
+    assert_select '.gem-c-document-list__item.gem-c-document-list__item--highlight', count: 2
+    assert_select '.gem-c-document-list__item:nth-child(1) .gem-c-document-list__highlight-text', text: 'Most relevant result'
+    assert_select '.gem-c-document-list__item:nth-child(2) .gem-c-document-list__highlight-text', false
+  end
 end
