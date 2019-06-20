@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 17.4.0
 
 * Add inverse option to contextual breadcrumbs (PR #943)
 * Adds support for secondary content items for step by step (PR #900)
