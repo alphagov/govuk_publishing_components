@@ -58,6 +58,7 @@ describe('New cookie banner', function () {
   })
 
   it('sets consent cookie when accepting cookies', function () {
+    spyOn(window.GOVUK, 'setCookie').and.callThrough()
     new GOVUK.Modules.CookieBanner().start($(element))
 
     // Manually reset the consent cookie so we can check the accept button works as intended
@@ -67,6 +68,7 @@ describe('New cookie banner', function () {
     var acceptCookiesButton = document.querySelector('[data-accept-cookies]')
     acceptCookiesButton.click()
 
+    expect(window.GOVUK.setCookie).toHaveBeenCalledWith('seen_cookie_message', 'true', { days: 365 })
     expect(window.GOVUK.getCookie('cookie_policy')).toEqual('"{\\"essential\\":true,\\"settings\\":true,\\"usage\\":true,\\"campaigns\\":true}"')
   })
 
@@ -87,6 +89,8 @@ describe('New cookie banner', function () {
   })
 
   it('should hide when pressing the "hide" link', function () {
+    spyOn(window.GOVUK, 'setCookie').and.callThrough()
+
     new GOVUK.Modules.CookieBanner().start($(element))
 
     var banner = document.querySelector('[data-module="cookie-banner"]')
@@ -94,6 +98,7 @@ describe('New cookie banner', function () {
     link.dispatchEvent(new window.Event('click'))
 
     expect(banner).toBeHidden()
+    expect(window.GOVUK.setCookie).toHaveBeenCalledWith('seen_cookie_message', 'true', { days: 365 })
     expect(window.GOVUK.getCookie('seen_cookie_message')).toBeTruthy()
   })
 

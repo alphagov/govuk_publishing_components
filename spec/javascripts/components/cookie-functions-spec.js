@@ -9,6 +9,8 @@ describe('Cookie helper functions', function () {
   'use strict'
 
   beforeEach(function () {
+    spyOn(window.GOVUK, 'setCookie').and.callThrough();
+
     window.GOVUK.cookie('seen_cookie_message', null)
     window.GOVUK.cookie('cookie_policy', null)
   })
@@ -28,6 +30,22 @@ describe('Cookie helper functions', function () {
       window.GOVUK.cookie('seen_cookie_message', 'test')
 
       expect(window.GOVUK.getCookie('seen_cookie_message')).toBe('test')
+    })
+
+    it('sets a default expiry of 30 days if no options are provided', function() {
+      expect(window.GOVUK.getCookie('seen_cookie_message')).toBeFalsy()
+
+      window.GOVUK.cookie('seen_cookie_message', 'test')
+
+      expect(window.GOVUK.setCookie).toHaveBeenCalledWith('seen_cookie_message', 'test', { days: 30 })
+    })
+
+    it('sets the expiry if one is provided', function() {
+      expect(window.GOVUK.getCookie('seen_cookie_message')).toBeFalsy()
+
+      window.GOVUK.cookie('seen_cookie_message', 'test', { days: 100 })
+
+      expect(window.GOVUK.setCookie).toHaveBeenCalledWith('seen_cookie_message', 'test', { days: 100 })
     })
 
     it('can change the value of an existing cookie', function() {
@@ -59,6 +77,7 @@ describe('Cookie helper functions', function () {
 
       window.GOVUK.setDefaultConsentCookie()
 
+      expect(window.GOVUK.setCookie).toHaveBeenCalledWith('cookie_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}', Object({ days: 365 }));
       expect(window.GOVUK.getConsentCookie()).toEqual({'essential': true, 'settings': true, 'usage': true, 'campaigns': true})
     })
 
@@ -70,6 +89,7 @@ describe('Cookie helper functions', function () {
 
       window.GOVUK.approveAllCookieTypes()
 
+      expect(window.GOVUK.setCookie).toHaveBeenCalledWith('cookie_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}', Object({ days: 365 }));
       expect(window.GOVUK.getConsentCookie()).toEqual({'essential': true, 'settings': true, 'usage': true, 'campaigns': true})
     })
 
@@ -92,6 +112,7 @@ describe('Cookie helper functions', function () {
 
       window.GOVUK.setConsentCookie({'essential': false})
 
+      expect(window.GOVUK.setCookie).toHaveBeenCalledWith('cookie_policy', '{"essential":false,"settings":true,"usage":false,"campaigns":true}', Object({ days: 365 }));
       expect(window.GOVUK.getConsentCookie().essential).toBe(false)
       expect(window.GOVUK.cookie('seen_cookie_message')).toBeFalsy()
     })
