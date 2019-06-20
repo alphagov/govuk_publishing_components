@@ -25,8 +25,8 @@ describe "Contextual navigation" do
   scenario "I see the step by step I am currently interacting with" do
     given_theres_are_two_step_by_step_lists
     and_i_visit_that_page_by_clicking_on_a_step_by_step_link
-    then_i_see_the_step_by_step
-    and_the_step_by_step_header
+    then_i_see_the_step_by_step_that_i_am_interacting_with
+    and_i_see_the_other_step_by_step_as_an_also_part_of_list
   end
 
   scenario "There's a mainstream browse page tagged" do
@@ -64,6 +64,70 @@ describe "Contextual navigation" do
     and_the_parent_based_breadcrumbs
   end
 
+  scenario "There's a secondary step by step list and no primary step by step list" do
+    given_theres_a_page_with_a_secondary_step_by_step
+    and_i_visit_that_page
+    then_i_see_the_step_by_step
+    and_the_step_by_step_header
+  end
+
+  scenario "There's between 2-5 secondary step by step lists and no primary step by step list" do
+    given_there_are_two_secondary_step_by_step_lists
+    and_i_visit_that_page
+    then_i_just_see_the_step_by_step_related_links
+  end
+
+  scenario "There's 6 or more secondary step by step lists and no primary step by step list" do
+    given_there_are_six_secondary_step_by_step_lists
+    and_i_visit_that_page
+    then_theres_no_step_by_step_at_all
+    and_no_step_by_step_header
+  end
+
+  scenario "There's 3 secondary step by steps and 2 primary step by step lists" do
+    given_there_are_three_secondary_step_by_steps_and_two_primary_to_step_navs
+    and_i_visit_that_page
+    then_i_just_see_the_step_by_step_related_links_with_just_two_links
+    and_i_dont_see_the_secondary_step_by_step_related_links
+  end
+
+  scenario "There's 1 primary step by step and 1 secondary step by step" do
+    given_there_are_one_primary_step_by_steps_and_one_secondary_to_step_navs
+    and_i_visit_that_page
+    then_i_see_the_step_by_step
+    and_the_step_by_step_header
+    then_i_see_the_primary_step_by_step
+  end
+
+  scenario "There's a related to step by step lists and no primary step by step list" do
+    given_there_is_a_related_to_step_nav
+    and_i_visit_that_page
+    then_theres_no_step_by_step_at_all
+    and_no_step_by_step_header
+  end
+
+  scenario "There are three related to step by step lists and no primary step by step list" do
+    given_there_are_three_related_to_step_nav
+    and_i_visit_that_page
+    then_theres_no_step_by_step_at_all
+    and_no_step_by_step_header
+  end
+
+  scenario "There are three related to step by step lists, no primary step by step list and one secondary to step nav" do
+    given_there_are_three_related_to_step_nav_and_one_secondary_to_step_nav
+    and_i_visit_that_page
+    then_theres_no_step_by_step_at_all
+    and_no_step_by_step_header
+  end
+
+  scenario "There's 2 primary step by step, 1 secondary step by step and I am interacting with one of the primary" do
+    given_there_are_two_primary_step_by_steps_and_one_secondary_to_step_navs
+    and_i_visit_that_page_by_clicking_on_a_step_by_step_link
+    then_i_see_the_step_by_step_that_i_am_interacting_with
+    and_i_see_the_other_step_by_step_as_an_also_part_of_list
+    and_i_dont_see_the_secondary_step_by_step_in_the_also_part_of_list
+  end
+
   include GdsApi::TestHelpers::ContentStore
 
   def given_theres_a_page_with_a_step_by_step
@@ -71,11 +135,82 @@ describe "Contextual navigation" do
   end
 
   def given_theres_are_two_step_by_step_lists
-    content_store_has_random_item(links: { part_of_step_navs: 2.times.map { random_step_nav_item("step_by_step_nav") } })
+    part_of_step_navs = 2.times.map { random_step_nav_item("step_by_step_nav") }
+    part_of_step_navs[0]["title"] = "PRIMARY STEP BY STEP - NOT INTERACTING WITH"
+    part_of_step_navs[1]["content_id"] = "8ad999bd-8603-40eb-97c0-999cb22047cd"
+    part_of_step_navs[1]["title"] = "PRIMARY STEP BY STEP - INTERACTING WITH"
+
+    content_store_has_random_item(links: { part_of_step_navs: part_of_step_navs })
   end
 
   def given_theres_are_six_step_by_step_lists
     content_store_has_random_item(links: { part_of_step_navs: 6.times.map { random_step_nav_item("step_by_step_nav") } })
+  end
+
+  def given_theres_a_page_with_a_secondary_step_by_step
+    content_store_has_random_item(links: { secondary_to_step_navs: [random_step_nav_item("step_by_step_nav")] })
+  end
+
+  def given_there_are_two_secondary_step_by_step_lists
+    content_store_has_random_item(links: { secondary_to_step_navs: 2.times.map { random_step_nav_item("step_by_step_nav") } })
+  end
+
+  def given_there_are_six_secondary_step_by_step_lists
+    content_store_has_random_item(links: { secondary_to_step_navs: 6.times.map { random_step_nav_item("step_by_step_nav") } })
+  end
+
+  def given_there_are_three_secondary_step_by_steps_and_two_primary_to_step_navs
+    secondary_to_step_navs = 3.times.map { random_step_nav_item("step_by_step_nav") }
+    secondary_to_step_navs[0]["title"] = "SECONDARY STEP BY STEP"
+
+    content_store_has_random_item(links: {
+      secondary_to_step_navs: secondary_to_step_navs,
+      part_of_step_navs: 2.times.map { random_step_nav_item("step_by_step_nav") }
+    })
+  end
+
+  def given_there_are_one_primary_step_by_steps_and_one_secondary_to_step_navs
+    part_of_step_navs = 1.times.map { random_step_nav_item("step_by_step_nav") }
+    part_of_step_navs[0]["title"] = "PRIMARY STEP BY STEP"
+
+    content_store_has_random_item(links: {
+      secondary_to_step_navs: 1.times.map { random_step_nav_item("step_by_step_nav") },
+      part_of_step_navs: part_of_step_navs
+    })
+  end
+
+  def given_there_are_two_primary_step_by_steps_and_one_secondary_to_step_navs
+    part_of_step_navs = 2.times.map { random_step_nav_item("step_by_step_nav") }
+    part_of_step_navs[0]["title"] = "PRIMARY STEP BY STEP - NOT INTERACTING WITH"
+    part_of_step_navs[1]["content_id"] = "8ad999bd-8603-40eb-97c0-999cb22047cd"
+    part_of_step_navs[1]["title"] = "PRIMARY STEP BY STEP - INTERACTING WITH"
+
+    secondary_to_step_navs = 1.times.map { random_step_nav_item("step_by_step_nav") }
+    secondary_to_step_navs[0]["title"] = "SECONDARY STEP BY STEP"
+
+    content_store_has_random_item(links: {
+      part_of_step_navs: part_of_step_navs,
+      secondary_to_step_navs: secondary_to_step_navs
+    })
+  end
+
+  def given_there_is_a_related_to_step_nav
+    content_store_has_random_item(links: {
+      related_to_step_navs: 1.times.map { random_step_nav_item("step_by_step_nav") }
+    })
+  end
+
+  def given_there_are_three_related_to_step_nav
+    content_store_has_random_item(links: {
+      related_to_step_navs: 3.times.map { random_step_nav_item("step_by_step_nav") }
+    })
+  end
+
+  def given_there_are_three_related_to_step_nav_and_one_secondary_to_step_nav
+    content_store_has_random_item(links: {
+      related_to_step_navs: 3.times.map { random_step_nav_item("step_by_step_nav") },
+      secondary_to_step_navs: 1.times.map { random_step_nav_item("step_by_step_nav") }
+    })
   end
 
   def given_theres_a_page_with_browse_page
@@ -135,12 +270,21 @@ describe "Contextual navigation" do
   end
 
   def and_i_visit_that_page_by_clicking_on_a_step_by_step_link
-    visit "/contextual-navigation/page-with-contextual-navigation?step-by-step-nav=8ad782bd-8603-40eb-97c0-434cb22047cd"
+    visit "/contextual-navigation/page-with-contextual-navigation?step-by-step-nav=8ad999bd-8603-40eb-97c0-999cb22047cd"
   end
 
   def then_i_see_the_step_by_step
     expect(page).to have_selector(".gem-c-step-nav-related")
     expect(page).to have_selector(".gem-c-step-nav__header")
+  end
+
+  def then_i_see_the_step_by_step_that_i_am_interacting_with
+    expect(page).to have_selector(".gem-c-step-nav-related")
+    expect(page).to have_selector(".gem-c-step-nav__header")
+    within '.gem-c-step-nav-header' do
+      expect(page).to have_content("PRIMARY STEP BY STEP - INTERACTING WITH")
+      expect(page).not_to have_content("PRIMARY STEP BY STEP - NOT INTERACTING WITH")
+    end
   end
 
   def and_the_step_by_step_header
@@ -152,6 +296,14 @@ describe "Contextual navigation" do
     expect(page).not_to have_selector(".gem-c-step-nav__header")
   end
 
+  def then_i_just_see_the_step_by_step_related_links_with_just_two_links
+    expect(page).to have_selector(".gem-c-step-nav-related")
+    expect(page).not_to have_selector(".gem-c-step-nav__header")
+    within('.gem-c-step-nav-related') do
+      expect(page).to have_xpath(".//li", count: 2)
+    end
+  end
+
   def and_no_step_by_step_header
     expect(page).not_to have_selector(".gem-c-step-nav-header")
   end
@@ -159,6 +311,26 @@ describe "Contextual navigation" do
   def then_theres_no_step_by_step_at_all
     expect(page).not_to have_selector(".gem-c-step-nav-related")
     expect(page).not_to have_selector(".gem-c-step-nav__header")
+  end
+
+  def and_i_dont_see_the_secondary_step_by_step_related_links
+    within '.gem-c-step-nav-related' do
+      expect(page).not_to have_content("SECONDARY STEP BY STEP")
+    end
+  end
+
+  def and_i_see_the_other_step_by_step_as_an_also_part_of_list
+    within '.gem-c-step-nav-related:last-child' do
+      expect(page).to have_content('Also part of')
+      expect(page).to have_content("PRIMARY STEP BY STEP - NOT INTERACTING WITH")
+      expect(page).not_to have_content("PRIMARY STEP BY STEP - INTERACTING WITH")
+    end
+  end
+
+  def and_i_dont_see_the_secondary_step_by_step_in_the_also_part_of_list
+    within '.gem-c-step-nav-related:last-child' do
+      expect(page).not_to have_content("SECONDARY STEP BY STEP")
+    end
   end
 
   def then_i_see_the_browse_page_in_the_footer
@@ -172,6 +344,12 @@ describe "Contextual navigation" do
     within '.gem-c-contextual-sidebar' do
       expect(page).to have_selector(".gem-c-related-navigation")
       expect(page).to have_content("The national curriculum")
+    end
+  end
+
+  def then_i_see_the_primary_step_by_step
+    within '.gem-c-step-nav-header' do
+      expect(page).to have_content("PRIMARY STEP BY STEP")
     end
   end
 

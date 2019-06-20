@@ -7,6 +7,12 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Adds support for secondary content items for step by step (PR #900)
+* Adds missing tests for related to step navs (PR #900)
+* Adds missing tests for also part of step navs component (PR #900)
+
 ## 17.3.0
 
 * Set the expiry of consent cookie to 1 year (PR #940)

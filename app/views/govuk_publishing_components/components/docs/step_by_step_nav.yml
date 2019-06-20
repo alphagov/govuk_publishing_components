@@ -462,6 +462,41 @@ examples:
           Expand the step by step in the querystring
 
           Show a list of the other step by steps (including other step by steps that have been marked as "hidden") under an "Also part of" heading, if the content item is part of less than 5 step by step journeys
+
+      Changes to the rules when there is a secondary step by step linked:
+
+      1. Content item is part of one step by step
+
+          No change. Expand the step by step in the sidebar.
+
+      2. Content item is part of multiple step by steps and no secondary step by step
+
+          No change. Will show a list of primary step by steps under the "Part of" heading. Secondary step by steps will not be shown.
+
+      3. User is on a step by step journey (the query string is in the url)
+
+          No change. Active step by step will be expanded.
+
+      4. Content item is part of multiple primary step by steps and a single secondary step by step 
+
+          No change. Show "Part of" step by steps list. Secondary step by step won't be shown.
+
+      5. Content item is part of multiple step by steps and multiple secondary step by steps
+
+          No change. Show "Part of" step by step list. Secondary step by step won't be shown.
+
+      6. Step by step is marked as "hidden" for the content page
+
+          No change. "Also part of" component will only show when an active step by step is shown.
+
+      7. Content item is part of one secondary step by step and no other step by steps are linked.
+
+          Show secondary step by step expanded.
+
+      8. Content item is part of multiple secondary step by steps and no other step by steps are linked.
+
+          Show secondary step by step list in "Part of" component.
+
     data:
       tracking_id: "this-is-the-content-id"
       steps: [
