@@ -45,6 +45,11 @@ describe "ContextualBreadcrumbs", type: :view do
     assert_select "a", text: "Passports"
   end
 
+  it "renders inverse parent-based breadcrumbs if the content_item is tagged to mainstream browse" do
+    render_component(content_item: example_document_for("place", "find-regional-passport-office"), inverse: true)
+    assert_select ".gem-c-breadcrumbs.gem-c-breadcrumbs--inverse"
+  end
+
   it "renders curated related items breadcrumbs if the content_item has curated related items" do
     content_item = example_document_for("licence", "licence_without_continuation_link")
     content_item = remove_mainstream_browse(content_item)
@@ -65,6 +70,15 @@ describe "ContextualBreadcrumbs", type: :view do
     assert_select "a", text: "Home"
     assert_select "a", text: "School curriculum"
     assert_select "a", text: "Education, training and skills"
+  end
+
+  it "renders inverse taxon breadcrumbs if there are some and no mainstream or curated_content" do
+    content_item = example_document_for("guide", "guide")
+    content_item = remove_mainstream_browse(content_item)
+    content_item = remove_curated_related_item(content_item)
+    content_item = set_live_taxons(content_item)
+    render_component(content_item: content_item, inverse: true)
+    assert_select ".gem-c-breadcrumbs.gem-c-breadcrumbs--inverse"
   end
 
   it "renders no taxon breadcrumbs if they are not live" do
@@ -118,6 +132,12 @@ describe "ContextualBreadcrumbs", type: :view do
 
     assert_select "a", text: "Home"
     assert_select "a", text: "EU Withdrawal Act 2018 statutory instruments"
+  end
+
+  it "renders inverse parent finder breadcrumb" do
+    content_item = example_document_for("guide", "guide-with-facet-groups")
+    render_component(content_item: content_item, prioritise_taxon_breadcrumbs: true, inverse: true)
+    assert_select ".gem-c-breadcrumbs.gem-c-breadcrumbs--inverse"
   end
 
   it "renders no breadcrumbs if there aren't any" do
