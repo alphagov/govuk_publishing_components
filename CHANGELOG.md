@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add inverse option to contextual breadcrumbs (PR #943)
 * Adds support for secondary content items for step by step (PR #900)
 * Adds missing tests for related to step navs (PR #900)
 * Adds missing tests for also part of step navs component (PR #900)
