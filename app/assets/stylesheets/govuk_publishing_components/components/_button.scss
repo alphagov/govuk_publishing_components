@@ -32,6 +32,7 @@ $gem-quiet-button-hover-colour: darken($gem-quiet-button-colour, 5%);
     display: inline-block;
     width: auto;
     vertical-align: baseline;
+    margin-right: govuk-spacing(2);
   }
 }
 

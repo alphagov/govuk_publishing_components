@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Increase spacing between inline buttons on desktop (PR #946)
+
 ## 17.4.0
 
 * Add inverse option to contextual breadcrumbs (PR #943)
