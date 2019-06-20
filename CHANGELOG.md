@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 17.5.0
 
 * Increase spacing between inline buttons on desktop (PR #946)
 
