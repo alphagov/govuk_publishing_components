@@ -55,14 +55,16 @@ $govuk-cookie-banner-text-green: #00823b;
   width: 100%;
 
   @include govuk-media-query($from: mobile, $until: desktop) {
-    width: 49%;
-
     &.gem-c-cookie-banner__button-accept {
       float: left;
+      width: 49%;
     }
 
     &.gem-c-cookie-banner__button-settings {
-      float: right;
+      .js-enabled & {
+        float: right;
+        width: 49%;
+      }
     }
   }
 
@@ -72,6 +74,14 @@ $govuk-cookie-banner-text-green: #00823b;
 
   @include govuk-media-query($until: 455px) {
     width: 100%;
+  }
+}
+
+.gem-c-cookie-banner__button-accept {
+  display: none;
+
+  .js-enabled & {
+    display: inline-block;
   }
 }
 
