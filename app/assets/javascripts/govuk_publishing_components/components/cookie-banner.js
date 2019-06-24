@@ -95,6 +95,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   CookieBanner.prototype.setCookieConsent = function () {
     window.GOVUK.approveAllCookieTypes()
     this.$module.showConfirmationMessage()
+    document.querySelector('.gem-c-cookie-banner__confirmation').focus()
     window.GOVUK.cookie('seen_cookie_message', 'true', { days: 365 })
   }
 
