@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 17.6.0
 
 * Add landmark to cookie banner (PR #949)
 * Cookie banner confirmation message is read automatically to screenreaders (PR #949)
