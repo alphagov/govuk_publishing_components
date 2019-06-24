@@ -11,6 +11,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.$module.setCookieConsent = this.setCookieConsent.bind(this)
 
     this.$module.newCookieBanner = document.querySelector('.gem-c-cookie-banner--new')
+    this.$module.cookieBannerConfirmationMessage = document.querySelector('.gem-c-cookie-banner__confirmation')
 
     // Temporary check while we have 2 banners co-existing.
     // Once the new banner has been deployed, we will be able to remove code relating to the old banner
@@ -62,10 +63,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   CookieBanner.prototype.showNewCookieMessage = function () {
-    var newCookieBanner = document.querySelector('.gem-c-cookie-banner--new')
-
     // Hide the cookie banner on the cookie settings page, to avoid circular journeys
-    if (newCookieBanner && window.location.pathname === '/help/cookies') {
+    if (this.$module.newCookieBanner && window.location.pathname === '/help/cookies') {
       this.$module.style.display = 'none'
     } else {
       var shouldHaveCookieMessage = (this.$module && window.GOVUK.cookie('seen_cookie_message') !== 'true')
@@ -95,16 +94,15 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   CookieBanner.prototype.setCookieConsent = function () {
     window.GOVUK.approveAllCookieTypes()
     this.$module.showConfirmationMessage()
-    document.querySelector('.gem-c-cookie-banner__confirmation').focus()
+    this.$module.cookieBannerConfirmationMessage.focus()
     window.GOVUK.cookie('seen_cookie_message', 'true', { days: 365 })
   }
 
   CookieBanner.prototype.showConfirmationMessage = function () {
     this.$cookieBannerMainContent = document.querySelector('.gem-c-cookie-banner__wrapper')
-    this.$cookieBannerConfirmationMessage = document.querySelector('.gem-c-cookie-banner__confirmation')
 
     this.$cookieBannerMainContent.style.display = 'none'
-    this.$cookieBannerConfirmationMessage.style.display = 'block'
+    this.$module.cookieBannerConfirmationMessage.style.display = 'block'
   }
 
   Modules.CookieBanner = CookieBanner
