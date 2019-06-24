@@ -7,6 +7,11 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add landmark to cookie banner (PR #949)
+* Cookie banner confirmation message is read automatically to screenreaders (PR #949)
+
 ## 17.5.0
 
 * Increase spacing between inline buttons on desktop (PR #946)
