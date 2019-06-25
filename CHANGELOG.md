@@ -7,7 +7,12 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unpublished
+
+* Add an inverse flag to the phase banner
+
 ## 17.6.1
+
 * Fix confirmation message being read to screenreaders (PR #952)
 * Hide 'Accept Cookies' button when Javascript not available (PR #948)
 
