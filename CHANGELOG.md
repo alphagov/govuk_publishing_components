@@ -7,8 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
-
+## 17.6.1
 * Fix confirmation message being read to screenreaders (PR #952)
 * Hide 'Accept Cookies' button when Javascript not available (PR #948)
 
