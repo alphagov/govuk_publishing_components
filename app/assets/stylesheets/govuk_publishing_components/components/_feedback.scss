@@ -33,10 +33,12 @@
   }
 }
 
-@include govuk-grid-row($class: "gem-c-feedback__grid-row");
+.gem-c-feedback__grid-row {
+  @extend %govuk-grid-row;
+}
 
 .gem-c-feedback__column-two-thirds {
-  @include govuk-grid-column(two-thirds, $class: false)
+  @include govuk-grid-column(two-thirds)
 }
 
 .gem-c-feedback__prompt {
