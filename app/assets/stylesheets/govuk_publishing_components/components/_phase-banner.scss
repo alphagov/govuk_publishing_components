@@ -6,3 +6,22 @@
     margin-right: govuk-spacing(2);
   }
 }
+
+.gem-c-phase-banner--inverse {
+  background: $govuk-brand-colour;
+
+  .govuk-phase-banner__content__tag {
+    background: govuk-colour("white");
+    color: $govuk-brand-colour;
+  }
+
+  .govuk-phase-banner__content__app-name,
+  .govuk-phase-banner__text,
+  .govuk-link {
+    color: govuk-colour("white");
+
+    &:focus {
+      color: govuk-colour("black");
+    }
+  }
+}

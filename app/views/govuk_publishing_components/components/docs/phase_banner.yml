@@ -18,8 +18,17 @@ examples:
     data:
       phase: beta
       message: This is an optional different message to explain what the state means in this
-        context which can take <a href='https://www.gov.uk'>HTML</a>
+        context which can take <a class="govuk-link" href='https://www.gov.uk'>HTML</a>
   with_app_name:
     data:
       app_name: Skittles Maker
       phase: beta
+  inverse_for_blue_background:
+    data:
+      phase: beta
+      inverse: true
+  inverse_for_blue_background_with_app_name:
+    data:
+      app_name: Skittles Maker
+      phase: beta
+      inverse: true
