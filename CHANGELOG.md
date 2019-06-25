@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix confirmation message being read to screenreaders (PR #952)
+
 ## 17.6.0
 
 * Add landmark to cookie banner (PR #949)
