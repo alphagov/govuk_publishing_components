@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Fix confirmation message being read to screenreaders (PR #952)
+* Hide 'Accept Cookies' button when Javascript not available (PR #948)
 
 ## 17.6.0
 
