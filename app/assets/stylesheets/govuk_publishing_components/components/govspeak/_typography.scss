@@ -46,7 +46,7 @@
         content: "\201C";
         float: left;
         clear: both;
-        margin-left: -(govuk-spacing(3));
+        margin-left: (- govuk-spacing(3));
       }
 
       &:last-child:after {
@@ -74,7 +74,7 @@
       &:before {
         content: "\201D";
         float: right;
-        margin-right: -(govuk-spacing(3));
+        margin-right: (- govuk-spacing(3));
         margin-left: 0;
       }
 
