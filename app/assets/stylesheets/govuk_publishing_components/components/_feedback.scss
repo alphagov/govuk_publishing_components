@@ -105,7 +105,7 @@
 .gem-c-feedback__error-summary {
   margin-bottom: govuk-spacing(3);
   padding: govuk-spacing(3);
-  border: solid $govuk-border-width-mobile $govuk-error-colour;
+  border: solid $govuk-border-width-narrow $govuk-error-colour;
   clear: both;
 
   &:focus {
