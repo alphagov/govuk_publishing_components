@@ -18,7 +18,7 @@ describe("Feedback component", function () {
         '<a href="#" class="gem-c-feedback__close js-close-form" aria-controls="something-is-wrong" aria-expanded="true" data-track-category="Onsite Feedback" data-track-action="GOV.UK Close Form">Close</a>' +
 
         '<div class="grid-row">' +
-          '<div class="column-two-thirds">' +
+          '<div class="column-two-thirds" id="survey-wrapper">' +
             '<div class="gem-c-feedback__error-summary js-hidden js-errors" tabindex="-1"></div>' +
 
             '<input type="hidden" name="url" value="http://example.com/path/to/page">' +
@@ -63,7 +63,6 @@ describe("Feedback component", function () {
             '<input class="gem-c-input " id="input-111111" name="email_survey_signup[email_address]" type="text">' +
 
             '<input class="gem-c-feedback__submit" type="submit" value="Send me the survey">' +
-            '<a href="FIXME" class="">Don\'t have an email address?</a>' +
           '</div>' +
         '</div>' +
       '</form>' +
@@ -104,6 +103,27 @@ describe("Feedback component", function () {
     loadFeedbackComponent();
 
     expect($('#something-is-wrong').find("[name=referrer]").val()).toBe("unknown");
+  });
+
+  it("should append a hidden 'ga_client_id' field to the form with the appropriate value", function() {
+    loadFeedbackComponent();
+    window.GOVUK.setCookie('_ga', 'GA1.3.512324446.1561716924', {})
+    $('.js-page-is-not-useful').click();
+    expect($('#page-is-not-useful').find("[name='email_survey_signup[ga_client_id]']").val()).toBe("512324446.1561716924");
+  });
+
+  it("should append a hidden 'ga_client_id' field to the from with a default value if no client id is present", function() {
+    loadFeedbackComponent();
+    window.GOVUK.setCookie('_ga', '', {})
+    $('.js-page-is-not-useful').click();
+    expect($('#page-is-not-useful').find("[name='email_survey_signup[ga_client_id]']").val()).toBe("111111111.1111111111");
+  });
+
+  it("should append the \'Don’t have an email address?\' link at the bottom of the form", function(){
+    loadFeedbackComponent();
+    $('.js-page-is-not-useful').click();
+
+    expect($('#survey-wrapper').find('#take-survey').length).toBe(1);
   });
 
   describe("clicking the 'page was useful' link", function () {
@@ -460,6 +480,7 @@ describe("Feedback component", function () {
     });
 
     it("submits the feedback to the feedback frontend", function () {
+      window.GOVUK.setCookie('_ga', '', {})
       loadFeedbackComponent();
       fillAndSubmitPageIsNotUsefulForm();
 
@@ -467,7 +488,8 @@ describe("Feedback component", function () {
       expect(request.url).toBe('/contact/govuk/email-survey-signup');
       expect(request.method).toBe('POST');
       expect(request.data()).toEqual({
-        'email_survey_signup[email_address]': ["test@test.com"]
+        'email_survey_signup[email_address]': ["test@test.com"],
+        'email_survey_signup[ga_client_id]': ['111111111.1111111111']
       });
     });
 
