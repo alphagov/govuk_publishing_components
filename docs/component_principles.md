@@ -8,7 +8,7 @@ A component is a package comprised of template, style, behaviour and documentati
 
 * is accessible
 * is documented
-* [follows convention](component_conventions.md)
+* [follows convention](/docs/component_conventions.md)
 * is isolated
 * is tested
 * can be translated

@@ -5,7 +5,7 @@ Before publishing a new version [check the open and approved pull requests](http
 1. Checkout **master** and pull latest changes.
 
 2. Create and checkout a new branch (`release-[version-number]`).
-  The version number is determined by looking at the [current "Unreleased" changes in CHANGELOG](../CHANGELOG.md) and updating the previous release number depending on the kind of entries:
+  The version number is determined by looking at the [current "Unreleased" changes in CHANGELOG](/CHANGELOG.md) and updating the previous release number depending on the kind of entries:
 
   - `Breaking changes` corresponds to a `major` (1.X.X) change.
   - `New features` corresponds to a `minor` (X.1.X) change.
@@ -15,16 +15,16 @@ Before publishing a new version [check the open and approved pull requests](http
 
   See [Semantic Versioning](https://semver.org/) for more information.
 
-3. Update [`CHANGELOG.md`](../CHANGELOG.md) "Unreleased" heading with the new version number and [review the latest commits](https://github.com/alphagov/govuk_publishing_components/commits/master) to make sure the latest changes are correctly reflected in the [CHANGELOG]((../CHANGELOG.md)).
+3. Update [`CHANGELOG.md`](/CHANGELOG.md) "Unreleased" heading with the new version number and [review the latest commits](https://github.com/alphagov/govuk_publishing_components/commits/master) to make sure the latest changes are correctly reflected in the [CHANGELOG]((/CHANGELOG.md)).
 
-4. Update [`lib/govuk_publishing_components/version.rb`](../lib/govuk_publishing_components/version.rb) version with the new version number.
+4. Update [`lib/govuk_publishing_components/version.rb`](/lib/govuk_publishing_components/version.rb) version with the new version number.
 
 5. Run `bundle install && npm install` to ensure you have the latest dependencies installed.
 
 6. Commit changes. These should include updates in the following files:
-  - [`CHANGELOG.md`](../CHANGELOG.md)
-  - [`lib/govuk_publishing_components/version.rb`](../lib/govuk_publishing_components/version.rb)
-  - [`Gemfile.lock`](../Gemfile.lock)
+  - [`CHANGELOG.md`](/CHANGELOG.md)
+  - [`lib/govuk_publishing_components/version.rb`](/lib/govuk_publishing_components/version.rb)
+  - [`Gemfile.lock`](/Gemfile.lock)
 
 7. Create a pull request and copy the changelog text for the current version in the pull request description.
 
