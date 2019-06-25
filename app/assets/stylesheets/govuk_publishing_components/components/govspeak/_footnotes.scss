@@ -11,9 +11,9 @@
 
 .gem-c-govspeak {
   .footnotes {
-    border-top: 1px solid $border-colour;
-    margin-top: $gutter;
-    padding-top: $gutter-one-third;
+    border-top: 1px solid govuk-colour("grey-2");
+    margin-top: govuk-spacing(6);
+    padding-top: govuk-spacing(2);
 
     ol {
       margin-top: 0;

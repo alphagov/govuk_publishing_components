@@ -8,21 +8,21 @@
   img {
     width: auto;
     height: auto;
-    max-width: $full-width;
+    max-width: 100%;
   }
 
   figure {
-    width: $full-width;
+    width: 100%;
     clear: both;
     overflow: hidden;
-    padding: $gutter-one-third 0 0;
+    padding: govuk-spacing(2) 0 0;
 
     img {
       display: inline;
       text-align: center;
       width: auto;
       height: auto;
-      max-width: $full-width;
+      max-width: 100%;
     }
 
     figcaption {

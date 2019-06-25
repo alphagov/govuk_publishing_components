@@ -6,9 +6,9 @@
   .info-notice,
   .help-notice,
   .call-to-action {
-    margin: $gutter-half 0;
-    padding: 0 $gutter-half;
-    border: 1pt solid $border-colour;
+    margin: govuk-spacing(3) 0;
+    padding: 0 govuk-spacing(3);
+    border: 1pt solid govuk-colour("grey-2");
   }
 
   .help-notice p {
@@ -23,7 +23,7 @@
   }
 
   .attachment {
-    margin: $gutter 0;
+    margin: govuk-spacing(6) 0;
 
     &:first-child {
       margin-top: 0;
@@ -41,7 +41,7 @@
 
     .accessibility-warning {
       h2 {
-        @include core-14;
+        @include govuk-font(14);
       }
 
       .toggler {
@@ -51,7 +51,7 @@
   }
 
   .footnotes {
-    border-top: 1px solid $text-colour;
+    border-top: 1px solid $govuk-text-colour;
   }
 
   .legislative-list {

@@ -9,19 +9,19 @@
   // .address is used by the `$A` markdown pattern
   .address,
   .contact {
-    border-left: 1px solid $border-colour;
-    padding-left: $gutter-half;
-    margin-bottom: $gutter;
-    margin-top: $gutter;
+    border-left: 1px solid govuk-colour("grey-2");
+    padding-left: govuk-spacing(3);
+    margin-bottom: govuk-spacing(6);
+    margin-top: govuk-spacing(6);
   }
 
   .contact {
-    @extend %contain-floats;
+    @include govuk-clearfix;
     position: relative;
 
     .content {
       float: none;
-      width: $full-width;
+      width: 100%;
 
       h3 {
         @include govuk-font($size: 19, $weight: bold);
