@@ -14,7 +14,7 @@ This will create a template, scss file and yml documentation file for a new comp
 
 ## Option 2: create a component in the gem
 
-Currently components in the gem must be manually created. File naming conventions should follow those in the [component conventions](docs/component_conventions.md), but a slightly different directory structure is required to avoid conflicts with components in applications.
+Currently components in the gem must be manually created. File naming conventions should follow those in the [component conventions](/docs/component_conventions.md), but a slightly different directory structure is required to avoid conflicts with components in applications.
 
 * Stylesheets go in `app/assets/stylesheets/govuk_publishing_components/components`
 * Print stylesheets go in `app/assets/stylesheets/govuk_publishing_components/components/print`
