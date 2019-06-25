@@ -33,11 +33,14 @@ $table-row-even-background-colour: govuk-colour("grey-4");
 
     .app-table__sort-link {
       @include govuk-link-style-no-visited-state;
-      @include govuk-focusable-fill;
       position: relative;
       padding-right: $sort-link-arrow-size;
       color: $govuk-link-colour;
       text-decoration: none;
+
+      &:focus {
+        @include govuk-focused-text;
+      }
 
       &::after {
         content: "";
@@ -124,4 +127,3 @@ $table-row-even-background-colour: govuk-colour("grey-4");
     border: 0;
   }
 }
-

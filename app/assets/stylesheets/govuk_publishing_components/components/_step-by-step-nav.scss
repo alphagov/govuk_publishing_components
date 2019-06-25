@@ -237,7 +237,9 @@ $top-border: solid 2px $grey-3;
   }
 
   .gem-c-step-nav__button {
-    @include govuk-focusable;
+    &:focus {
+      outline: $govuk-focus-width solid $govuk-focus-colour;
+    }
   }
 
   &:hover {
