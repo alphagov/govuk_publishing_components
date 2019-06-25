@@ -1,4 +1,4 @@
-@import "govuk-frontend/components/button/button";
+@import "govuk/components/button/button";
 
 $gem-secondary-button-colour: #00823b;
 $gem-secondary-button-hover-colour: darken($gem-secondary-button-colour, 5%);
@@ -110,7 +110,7 @@ $gem-quiet-button-hover-colour: darken($gem-quiet-button-colour, 5%);
 
 // Begin adjustments for font baseline offset
 // These should be removed when the font is updated with the correct baseline
-// For the 1px addition please see https://github.com/alphagov/govuk-frontend/pull/365#discussion_r154349428
+// For the 1px addition please see https://github.com/alphagov/govuk/pull/365#discussion_r154349428
 
 $offset: 2;
 

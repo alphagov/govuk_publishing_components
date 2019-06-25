@@ -1,4 +1,4 @@
-@import "govuk-frontend/components/error-summary/error-summary";
+@import "govuk/components/error-summary/error-summary";
 
 .gem-c-error-summary__list-item {
   @include govuk-font($size: 19, $weight: bold);

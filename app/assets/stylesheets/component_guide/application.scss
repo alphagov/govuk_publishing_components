@@ -2,10 +2,10 @@
 
 @import "govuk_publishing_components/components/helpers/govuk-frontend-settings";
 @import "govuk_publishing_components/components/helpers/markdown-typography";
-@import "govuk-frontend/settings/all";
-@import "govuk-frontend/tools/all";
-@import "govuk-frontend/helpers/all";
-@import "govuk-frontend/core/all";
+@import "govuk/settings/all";
+@import "govuk/tools/all";
+@import "govuk/helpers/all";
+@import "govuk/core/all";
 
 @include _govuk-font-face-nta;
 

@@ -1,5 +1,5 @@
-@import "govuk-frontend/components/header/header";
-@import "govuk-frontend/components/tag/tag";
+@import "govuk/components/header/header";
+@import "govuk/components/tag/tag";
 
 .gem-c-layout-header--production .govuk-header__container {
   border-bottom-color: govuk-colour("bright-red");
