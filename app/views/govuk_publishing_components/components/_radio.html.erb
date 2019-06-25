@@ -62,7 +62,7 @@
 
     <%= content_tag :div, class: radio_classes,
       data: {
-        module: ('radios' if has_conditional)
+        module: ('govuk-radios' if has_conditional)
       } do %>
       <% items.each_with_index do |item, index| %>
         <% if item === :or %>

@@ -8,7 +8,7 @@
   accordion_classes << 'govuk-accordion--condensed' if condensed
 
   data_attributes ||= {}
-  data_attributes[:module] = 'accordion'
+  data_attributes[:module] = 'govuk-accordion'
 %>
 <% if items.any? %>
   <%= tag.div(class: accordion_classes, id: id, data: data_attributes) do %>

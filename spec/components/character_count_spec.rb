@@ -36,7 +36,7 @@ describe "Character count", type: :view do
       maxlength: "100",
     )
 
-    assert_select ".govuk-character-count[data-module='character-count']"
+    assert_select ".govuk-character-count[data-module='govuk-character-count']"
     assert_select ".govuk-character-count[data-maxlength='100']"
   end
 end

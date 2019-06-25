@@ -266,7 +266,7 @@ describe "Radio", type: :view do
       ]
     )
 
-    assert_select ".govuk-radios[data-module=radios]"
+    assert_select ".govuk-radios[data-module=govuk-radios]"
     assert_select ".govuk-radios__conditional", text: "You’ll need to prove your identity using Government Gateway"
   end
 

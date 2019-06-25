@@ -131,7 +131,7 @@ describe 'Accordion', type: :view do
     assert_select "[data-gtm='google-tag-manager']", count: 2
   end
 
-  it '`data-module="accordion"` attribute is present when no custom data attributes given' do
+  it '`data-module="govuk-accordion"` attribute is present when no custom data attributes given' do
     test_data = {
       id: 'test-for-module-data-attributes',
       items: [{
@@ -144,10 +144,10 @@ describe 'Accordion', type: :view do
               }]
     }
     render_component(test_data)
-    assert_select "[data-module='accordion']", count: 1
+    assert_select "[data-module='govuk-accordion']", count: 1
   end
 
-  it '`data-module="accordion"` attribute is present when custom data attributes given' do
+  it '`data-module="govuk-accordion"` attribute is present when custom data attributes given' do
     test_data = {
       id: 'test-for-module-data-attributes',
       data_attributes: {
@@ -169,7 +169,7 @@ describe 'Accordion', type: :view do
               }]
     }
     render_component(test_data)
-    assert_select "[data-module='accordion']", count: 1
+    assert_select "[data-module='govuk-accordion']", count: 1
     assert_select "[data-gtm]", count: 2
     assert_select "[data-gtm='this-is-gtm']", count: 1
     assert_select "[data-gtm='this-is-a-second-gtm']", count: 1
