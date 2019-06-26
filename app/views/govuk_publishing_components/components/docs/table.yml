@@ -95,13 +95,17 @@ examples:
           format: numeric
           sort_direction: descending
           href: /?sort_direction=desc
+          data_attributes:
+            tracking: "UTM-123A"
         - text: Rate for vehicles
           format: numeric
           href: /?sort_direction=desc
+          data_attributes:
+            tracking: "UTM-123B"
       rows:
       -
         - text: January
-        - text: 
+        - text:
           format: numeric
         - text: £95
           format: numeric

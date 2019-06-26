@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Enable data attributes for table header links (PR #962)
+
 ## 17.9.0
 
 * Use shared_helper for heading margin (PR #958)
