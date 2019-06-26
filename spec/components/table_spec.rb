@@ -128,7 +128,10 @@ describe "Table", type: :view do
         {
           text: "Rate for vehicles",
           format: "numeric",
-          href: "/?sort_direction=desc"
+          href: "/?sort_direction=desc",
+          data_attributes: {
+            tracking: "UTM-123"
+          }
         }
       ]
     )
@@ -138,6 +141,6 @@ describe "Table", type: :view do
     assert_select ".govuk-table th:nth-child(2).govuk-table__header--active", "Rate for bicycles"
     assert_select ".govuk-table th:nth-child(2).govuk-table__header--active a.app-table__sort-link--descending[href='/?sort_direction=desc']"
 
-    assert_select ".govuk-table th:nth-child(3) a.app-table__sort-link[href='/?sort_direction=desc']"
+    assert_select ".govuk-table th:nth-child(3) a.app-table__sort-link[href='/?sort_direction=desc'][data-tracking='UTM-123']"
   end
 end
