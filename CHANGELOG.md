@@ -7,9 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 17.8.0
 
-* Remove old cookie banner code (PR #959)
+* Remove old cookie banner code and new_cookie_banner flag (PR #959)
 
 ## 17.7.0
 

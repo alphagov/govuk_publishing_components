@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    govuk_publishing_components (17.7.0)
+    govuk_publishing_components (17.8.0)
       gds-api-adapters
       govuk_app_config
       govuk_frontend_toolkit
@@ -217,7 +217,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
-    rouge (3.4.1)
+    rouge (3.5.1)
     rspec-core (3.8.0)
       rspec-support (~> 3.8.0)
     rspec-expectations (3.8.3)
