@@ -7,13 +7,17 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Use shared_helper for heading margin (PR #958)
+
 ## 17.8.0
 
 * Remove old cookie banner code and new_cookie_banner flag (PR #959)
 
 ## 17.7.0
 
-* Add an inverse flag to the phase banner
+* Add an inverse flag to the phase banner (PR #954)
 
 ## 17.6.1
 
