@@ -1,31 +1,31 @@
 .gem-c-translation-nav {
   @include responsive-top-margin;
   @include govuk-text-colour;
-  @include core-16;
-  margin-bottom: $gutter;
-  border-bottom: 1px solid $border-colour;
+  @include govuk-font(16);
+  margin-bottom: govuk-spacing(6);
+  border-bottom: 1px solid $govuk-border-colour;
 }
 
 .gem-c-translation-nav__list {
-  @extend %contain-floats;
+  @include govuk-clearfix;
   list-style: none;
-  margin: 0 (-$gutter-one-third);
+  margin: 0 (- govuk-spacing(2));
   padding: 0;
 }
 
 .gem-c-translation-nav__list-item {
   float: left;
-  padding-left: $gutter-one-third;
-  padding-right: $gutter-one-third;
-  margin-bottom: $gutter-one-third;
-  border-right: 1px solid $border-colour;
+  padding-left: govuk-spacing(2);
+  padding-right: govuk-spacing(2);
+  margin-bottom: govuk-spacing(2);
+  border-right: 1px solid $govuk-border-colour;
   height: 16px;
 
   .direction-rtl & {
     direction: rtl;
     float: right;
     text-align: start;
-    border-left: 1px solid $border-colour;
+    border-left: 1px solid $govuk-border-colour;
     border-right: 0;
   }
 }
