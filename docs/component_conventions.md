@@ -2,7 +2,7 @@
 
 ## Namespacing
 
-All components must use the `.app-` or `.pub-` namespace with the `c` prefix. The `c` is for component. For example, `.app-c-banner`.
+All components must use the `.app-` namespace with the `c` prefix. The `c` is for component. For example, `.app-c-banner`.
 
 Do not use the `.govuk-` namespace.
 
@@ -11,9 +11,8 @@ The namespace indicates where a component lives. A single page on GOV.UK could r
 | Prefix | Place |
 | -- | -- |
 | `.app-c-` | Component lives within the frontend application |
-| `.pub-c-` | Component is shared between publishing frontends and lives in static |
+| `.gem-c-` | Component originates from the govuk_publishing_components gem |
 | `.govuk-` | Component originates from [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend) |
-| `.gem-c-` | Component originates from the govuk_publishing_components_gem |
 
 ## Structure
 
