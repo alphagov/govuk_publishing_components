@@ -3,7 +3,8 @@ description: The accordion component lets users show and hide sections of relate
 govuk_frontend_components:
   - accordion
 body: |
-  This component is based on the [design system accordion component](https://design-system.service.gov.uk/components/accordion/) and is currently experimental. If using this component, please feed back any research findings to the design team.
+  This component is based on the [design system accordion component](https://design-system.service.gov.uk/components/accordion/)
+  and is currently experimental. If using this component, please feed back any research findings to the Design System team.
 
 accessibility_criteria: |
   The accordion must:

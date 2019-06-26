@@ -3,9 +3,9 @@ description: Shows only one section, with no other navigation options, until the
 body: |
   Use where the application has gotten into a state from which it shouldn’t or can’t proceed without input from the user or the state of the current page needs to be preserved.
 
-  In a document-centric application, for instance, adding an inline image might need the user to supply an image file, alternative text, caption and credits if not using an existing image. In other context, the user may need to search for a specific item before proceeding.
-
   Modal instances are automatically initialised and their state can be changed programmatically using bounded functions (e.g. `$modalDialogue.open()` and `$modalDialogue.close()`)
+
+  This component is currently experimental. If you are using it, please feed back any research findings to the Content Publisher team.
 accessibility_criteria: |
   The modal dialogue box must:
 
