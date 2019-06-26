@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove old cookie banner code (PR #959)
+
 ## 17.7.0
 
 * Add an inverse flag to the phase banner
