@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 17.10.0
 
 * Enable data attributes for table header links (PR #962)
 
