@@ -1,4 +1,4 @@
-name: Layout header (experimental)
+name: Layout header
 description: The header provides the crown logo, product or service name and navigation
 body: |
   Requires the specification of the environment (development, integration,

@@ -1,24 +1,11 @@
-name: Admin layout (experimental)
+name: Admin layout
 description: A layout to be used by admin applications
 body: |
-  This component is experimental. Breaking changes are likely and we'll not release
-  major version of the gem for these changes. Typically you'll use this together
-  with the [layout header component](/component-guide/layout_header) and the
+  Typically you'll use this together with the
+  [layout header component](/component-guide/layout_header) and the
   [layout footer component](/component-guide/layout_footer).
 
   Because it is an entire HTML document, this component can only be [previewed on a separate page](/admin).
-
-  Inside this component you can use a number of classes provided by govuk-frontend:
-
-  - [Typography classes](https://design-system.service.gov.uk/styles/typography/) like `.govuk-link`, `.govuk-heading`
-  - [Layout grid classes](https://design-system.service.gov.uk/styles/layout/) like `.govuk-grid-column-two-thirds`
-  - [Spacing classes](https://design-system.service.gov.uk/styles/spacing/) like `.govuk-!-margin-bottom-3`
-  - [List classes](https://design-system.service.gov.uk/styles/typography/#lists) like `.govuk-list` and `.govuk-list--bullet`
-  - [Section break classes](https://design-system.service.gov.uk/styles/typography/#section-break) like `.govuk-section-break`
-  - The `.govuk-visually-hidden` class to hide things
-
-  Be *very* careful when using one of these classes, prefer to use a component
-  instead of consuming govuk-frontend directly.
 
 display_preview: false
 display_html: true
