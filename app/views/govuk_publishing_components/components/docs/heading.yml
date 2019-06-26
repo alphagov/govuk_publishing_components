@@ -43,13 +43,10 @@ examples:
       text: 'Padded'
       padding: true
   with_margin:
-    description: |
-      Configurable bottom margin for the component. This has been built in anticipation of being compatible with a theoretical future model for component margins.
-
-      Accepted parameters for this option are 2 (gives a margin of gutter-half) and 4 (gutter). See the Sass file for more detail.
+    description: The component accepts a number for margin bottom from 0 to 9 (0px to 60px) using the [GOV.UK Frontend spacing scale](http://govuk-frontend-review.herokuapp.com/docs/#settings/spacing-variable-govuk-spacing-points). It defaults to having no margin bottom.
     data:
       text: 'Really big bottom margin'
-      margin_bottom: 4
+      margin_bottom: 9
   with_mobile_top_margin:
     description: |
       On publications and consultations the layout of the page requires that the heading component have spacing above it on mobile. Since this is a specific use case, this is now an option on the component rather than the default behaviour.
