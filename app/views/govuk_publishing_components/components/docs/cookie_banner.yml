@@ -21,7 +21,3 @@ examples:
     data:
       id: custom-message
       message: GOV.UK uses cookies to make the site simpler. <a class="govuk-link" href="/help/cookies">Find out more about cookies</a>
-  new_cookie_banner:
-    description: FOR TESTING PURPOSES ONLY. This is a new proposed iteration of the cookie banner. The current banner will remain the same across the live site for now.
-    data:
-        new_cookie_banner: true

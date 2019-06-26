@@ -10,29 +10,16 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.$module.showConfirmationMessage = this.showConfirmationMessage.bind(this)
     this.$module.setCookieConsent = this.setCookieConsent.bind(this)
 
-    this.$module.newCookieBanner = document.querySelector('.gem-c-cookie-banner--new')
+    this.$module.newCookieBanner = document.querySelectorAll('.gem-c-cookie-banner--new, .gem-c-cookie-banner')
     this.$module.cookieBannerConfirmationMessage = document.querySelector('.gem-c-cookie-banner__confirmation')
 
     // Temporary check while we have 2 banners co-existing.
     // Once the new banner has been deployed, we will be able to remove code relating to the old banner
     // Separating the code out like this does mean some repetition, but will make it easier to remove later
-    if (this.$module.newCookieBanner) {
-      this.setupNewCookieMessage()
-    } else {
-      this.setupCookieMessage()
-    }
+    this.setupCookieMessage()
   }
 
   CookieBanner.prototype.setupCookieMessage = function () {
-    this.$hideLink = this.$module.querySelector('a[data-hide-cookie-banner]')
-    if (this.$hideLink) {
-      this.$hideLink.addEventListener('click', this.$module.hideCookieMessage)
-    }
-
-    this.showCookieMessage()
-  }
-
-  CookieBanner.prototype.setupNewCookieMessage = function () {
     this.$hideLink = this.$module.querySelector('button[data-hide-cookie-banner]')
     if (this.$hideLink) {
       this.$hideLink.addEventListener('click', this.$module.hideCookieMessage)
@@ -51,18 +38,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       }
     }
 
-    this.showNewCookieMessage()
+    this.showCookieMessage()
   }
 
   CookieBanner.prototype.showCookieMessage = function () {
-    var shouldHaveCookieMessage = (this.$module && window.GOVUK.cookie('seen_cookie_message') !== 'true')
-
-    if (shouldHaveCookieMessage) {
-      this.$module.style.display = 'block'
-    }
-  }
-
-  CookieBanner.prototype.showNewCookieMessage = function () {
     // Hide the cookie banner on the cookie settings page, to avoid circular journeys
     if (this.$module.newCookieBanner && window.location.pathname === '/help/cookies') {
       this.$module.style.display = 'none'
