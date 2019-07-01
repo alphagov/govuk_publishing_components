@@ -43,7 +43,7 @@ examples:
       text: 'Padded'
       padding: true
   with_margin:
-    description: The component accepts a number for margin bottom from 0 to 9 (0px to 60px) using the [GOV.UK Frontend spacing scale](http://govuk-frontend-review.herokuapp.com/docs/#settings/spacing-variable-govuk-spacing-points). It defaults to having no margin bottom.
+    description: The component accepts a number for margin bottom from 0 to 9 (0px to 60px) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having no margin bottom.
     data:
       text: 'Really big bottom margin'
       margin_bottom: 9
