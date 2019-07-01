@@ -36,19 +36,23 @@ describe "Title", type: :view do
     assert_select ".gem-c-title--inverse", text: "Hello World"
   end
 
+  it "has a default margin of 8" do
+    render_component(title: 'Margin default')
+    assert_select '.gem-c-title.govuk-\!-margin-bottom-8'
+  end
+
   it "adds margin 0" do
     render_component(title: 'Margin 0', margin_bottom: 0)
-    assert_select ".gem-c-title.gem-c-title--margin-bottom-4", false
-    assert_select ".gem-c-title.gem-c-title--margin-bottom-5", false
+    assert_select '.gem-c-title.govuk-\!-margin-bottom-0'
   end
 
-  it "adds margin 4" do
+  it "adds a valid margin" do
     render_component(title: 'Margin 4', margin_bottom: 4)
-    assert_select ".gem-c-title.gem-c-title--margin-bottom-4"
+    assert_select '.gem-c-title.govuk-\!-margin-bottom-4'
   end
 
-  it "adds margin 5" do
-    render_component(title: 'Margin 5', margin_bottom: 5)
-    assert_select ".gem-c-title.gem-c-title--margin-bottom-5"
+  it "ignores an invalid margin" do
+    render_component(title: 'Margin wat', margin_bottom: 17)
+    assert_select "[class='^=govuk-\!-margin-bottom-']", false
   end
 end

@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Remove references to old `gem-c-cookie-banner--new` class (PR #972)
+* Change title margin option (PR #969)
 
 ## 17.11.0
 
