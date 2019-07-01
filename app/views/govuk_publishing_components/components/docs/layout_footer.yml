@@ -1,4 +1,4 @@
-name: Layout footer (experimental)
+name: Layout footer
 description: The footer provides copyright, licensing and other information
 govuk_frontend_components:
   - footer
