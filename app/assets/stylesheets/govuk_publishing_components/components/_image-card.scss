@@ -73,7 +73,7 @@
 .gem-c-image-card__metadata {
   @include govuk-font(14);
   margin: 0 0 (govuk-spacing(3) / 2);
-  color: govuk-colour("grey-1");
+  color: govuk-colour("dark-grey");
 
   @include govuk-media-query($from: tablet) {
     margin-bottom: 0;

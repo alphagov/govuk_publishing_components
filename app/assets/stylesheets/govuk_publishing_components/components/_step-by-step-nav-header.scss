@@ -2,9 +2,9 @@
   @include govuk-text-colour;
   position: relative;
   padding: 10px;
-  background: govuk-colour("grey-4");
-  border-top: solid 1px govuk-colour("grey-2");
-  border-bottom: solid 1px govuk-colour("grey-2");
+  background: govuk-colour("light-grey");
+  border-top: solid 1px govuk-colour("mid-grey");
+  border-bottom: solid 1px govuk-colour("mid-grey");
 
   @include govuk-media-query($from: tablet) {
     padding: govuk-spacing(3);

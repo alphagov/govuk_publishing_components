@@ -8,7 +8,7 @@
   .call-to-action {
     margin: govuk-spacing(3) 0;
     padding: 0 govuk-spacing(3);
-    border: 1pt solid govuk-colour("grey-2");
+    border: 1pt solid $govuk-border-colour;
   }
 
   .help-notice p {
