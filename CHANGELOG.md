@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Stop the hardcoding of a google client ID in the feedback footer (PR #957)
+
 ## 17.10.0
 
 * Enable data attributes for table header links (PR #962)

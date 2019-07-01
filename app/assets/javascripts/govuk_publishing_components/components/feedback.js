@@ -20,6 +20,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       this.$promptQuestions = $element.find('.js-prompt-questions')
       this.$promptSuccessMessage = $element.find('.js-prompt-success')
       this.$somethingIsWrongForm = $element.find('#something-is-wrong')
+      this.$surveyForm = $element.find('#page-is-not-useful')
+      this.$surveyWrapper = $element.find('#survey-wrapper')
 
       var that = this
       var jshiddenClass = 'js-hidden'
@@ -47,6 +49,17 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         trackEvent(getTrackEventParams(that.$pageIsUsefulButton))
         showFormSuccess()
         revealInitialPrompt()
+      })
+
+      this.$pageIsNotUsefulButton.on('click', function (e) {
+        var gaClientId
+        var dummyGaClientId = '111111111.1111111111'
+        if (window.GOVUK.cookie('_ga') === null || window.GOVUK.cookie('_ga') === '') {
+          gaClientId = dummyGaClientId
+        } else {
+          gaClientId = window.GOVUK.cookie('_ga').split('.').slice(-2).join('.')
+        }
+        setHiddenValuesNotUsefulForm(gaClientId)
       })
 
       $element.find('form').on('submit', function (e) {
@@ -88,6 +101,14 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       function setHiddenValues () {
         that.$somethingIsWrongForm.append('<input type="hidden" name="javascript_enabled" value="true"/>')
         that.$somethingIsWrongForm.append($('<input type="hidden" name="referrer">').val(document.referrer || 'unknown'))
+      }
+
+      function setHiddenValuesNotUsefulForm (gaClientId) {
+        var currentPathName = window.location.pathname.replace(/[^\s=?&]+(?:@|%40)[^\s=?&]+/, '[email]')
+        var finalPathName = encodeURI(currentPathName)
+
+        that.$surveyForm.append($('<input name="email_survey_signup[ga_client_id]" type="hidden">').val(gaClientId || '0'))
+        that.$surveyWrapper.append('<a href="https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=' + finalPathName + '&amp;gcl=' + gaClientId + '" class="gem-c-feedback__email-link govuk-link" id="take-survey" target="_blank" rel="noopener noreferrer">Don’t have an email address?</a>')
       }
 
       function updateAriaAttributes (linkClicked) {

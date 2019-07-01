@@ -13,12 +13,10 @@
     role="button">Close</a>
 
   <div class="gem-c-feedback__grid-row">
-    <div class="gem-c-feedback__column-two-thirds">
+    <div class="gem-c-feedback__column-two-thirds" id="survey-wrapper">
       <div class="gem-c-feedback__error-summary js-hidden js-errors" tabindex="-1"></div>
 
       <input name="email_survey_signup[survey_id]" type="hidden" value="footer_satisfaction_survey">
-      <input name="email_survey_signup[survey_source]" type="hidden" value="<%= path_without_pii %>">
-      <input name="email_survey_signup[ga_client_id]" type="hidden" value="1627485790.1515403243">
 
       <h3 class="gem-c-feedback__form-heading">Help us improve GOV.UK</h3>
       <p id="survey_explanation" class="gem-c-feedback__form-paragraph">To help us improve GOV.UK, we’d like to know more about your visit today. We’ll send you a link to a feedback form. It will take only 2 minutes to fill in. Don’t worry we won’t send you spam or share your email address with anyone.</p>
@@ -34,9 +32,8 @@
       } %>
 
       <%= render "govuk_publishing_components/components/button", {
-        text: "Send me the survey"
+        text: "Send me the survey",
       } %>
-      <a href="https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=<%= path_without_pii %>&amp;gcl=1627485790.1515403243" class="gem-c-feedback__email-link govuk-link" id="take-survey" target="_blank" rel="noopener noreferrer">Don’t have an email address?</a>
     </div>
   </div>
 </form>
