@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 17.11.0
 
 * Stop the hardcoding of a google client ID in the feedback footer (PR #957)
 
