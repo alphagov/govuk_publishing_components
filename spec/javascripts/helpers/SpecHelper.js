@@ -1,23 +1,9 @@
-beforeEach(function () {
-  jasmine.addMatchers({
-    toBeEqualAsJSON: function (util, customEqualityTesters) {
-      return {
-        compare: function (actual, expected) {
-          var actualAsJSON = JSON.stringify(actual);
-          var expectedAsJSON = JSON.stringify(expected);
+/* eslint-env jasmine, jquery */
 
-          var result = {};
+var resetCookies = function () {
+  document.cookie.split(';').forEach(function (c) { document.cookie = c.replace(/^ +/, '').replace(/=.*/, '=;expires=' + new Date().toUTCString() + ';path=/') })
+}
 
-          result.pass = actualAsJSON === expectedAsJSON;
-
-          if (result.pass)
-            result.message = "Expected " + actualAsJSON + " not to be equal to " + expectedAsJSON + " once converted to JSON";
-          else
-            result.message = "Expected " + actualAsJSON + " to be equal to " + expectedAsJSON + " once converted to JSON";
-
-          return result;
-        }
-      }
-    }
-  });
-});
+afterEach(function () {
+  resetCookies()
+})
