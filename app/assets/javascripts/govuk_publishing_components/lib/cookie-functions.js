@@ -1,8 +1,8 @@
 // used by the cookie banner component
 
-(function () {
+(function (root) {
   'use strict'
-  var root = this
+  window.GOVUK = window.GOVUK || {}
 
   var DEFAULT_COOKIE_CONSENT = {
     'essential': true,
@@ -29,8 +29,6 @@
     '_gat': 'usage',
     'analytics_next_page_call': 'usage'
   }
-
-  if (typeof root.GOVUK === 'undefined') { root.GOVUK = {} }
 
   /*
     Cookie methods
@@ -198,4 +196,4 @@
     }
     return null
   }
-}).call(this)
+}(window))
