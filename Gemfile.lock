@@ -64,7 +64,7 @@ GEM
       oj (~> 3.0)
     builder (3.2.3)
     byebug (11.0.1)
-    capybara (3.22.0)
+    capybara (3.25.0)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
@@ -124,12 +124,12 @@ GEM
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     jaro_winkler (1.5.2)
-    jasmine (2.4.0)
-      jasmine-core (~> 2.4)
+    jasmine (3.4.0)
+      jasmine-core (~> 3.4.0)
       phantomjs
       rack (>= 1.2.1)
       rake
-    jasmine-core (2.99.2)
+    jasmine-core (3.4.0)
     json-schema (2.8.1)
       addressable (>= 2.4)
     kgio (2.11.2)
@@ -173,7 +173,7 @@ GEM
     pry-byebug (3.7.0)
       byebug (~> 11.0)
       pry (~> 0.10)
-    public_suffix (3.1.0)
+    public_suffix (3.1.1)
     puma (3.12.1)
     rack (2.0.7)
     rack-cache (1.9.0)
@@ -295,10 +295,10 @@ GEM
       nokogiri (~> 1.6)
       rubyzip (~> 1.0)
       selenium-webdriver (~> 3.0)
-    webmock (3.5.1)
+    webmock (3.6.0)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
-      hashdiff
+      hashdiff (>= 0.4.0, < 2.0.0)
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
@@ -310,18 +310,18 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  capybara (~> 3.22.0)
-  foreman (~> 0.64)
+  capybara (~> 3.25)
+  foreman (~> 0.85)
   gds-api-adapters (~> 59.1)
   govuk-lint (~> 3.11)
   govuk_publishing_components!
   govuk_schemas (~> 3.2)
   govuk_test (~> 0.4.3)
-  jasmine (~> 2.4.0)
+  jasmine (~> 3.4.0)
   pry-byebug
-  rspec-rails (~> 3.6)
-  uglifier (>= 1.3.0)
-  webmock (~> 3.5.0)
+  rspec-rails (~> 3.8)
+  uglifier (>= 4.1.0)
+  webmock (~> 3.6.0)
   yard
 
 BUNDLED WITH
