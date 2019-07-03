@@ -50,7 +50,7 @@ describe('Cookie banner', function () {
     new GOVUK.Modules.CookieBanner().start($(element))
 
     expect(GOVUK.getCookie('seen_cookie_message')).toEqual(null)
-    expect(JSON.stringify(GOVUK.getCookie('cookie_policy'))).toEqual('"{\\"essential\\":true,\\"settings\\":true,\\"usage\\":true,\\"campaigns\\":true}"')
+    expect(GOVUK.getCookie('cookie_policy')).toEqual('"{\\"essential\\":true,\\"settings\\":true,\\"usage\\":true,\\"campaigns\\":true}"')
   })
 
   it('sets consent cookie when accepting cookies', function () {
@@ -60,14 +60,14 @@ describe('Cookie banner', function () {
     new GOVUK.Modules.CookieBanner().start($(element))
 
     // Manually reset the consent cookie so we can check the accept button works as intended
-    expect(JSON.stringify(GOVUK.getCookie('cookie_policy'))).toEqual('"{\\"essential\\":true,\\"settings\\":true,\\"usage\\":true,\\"campaigns\\":true}"')
+    expect(GOVUK.getCookie('cookie_policy')).toEqual('"{\\"essential\\":true,\\"settings\\":true,\\"usage\\":true,\\"campaigns\\":true}"')
     GOVUK.cookie('cookie_policy', null)
 
     var acceptCookiesButton = document.querySelector('[data-accept-cookies]')
     acceptCookiesButton.click()
 
     expect(GOVUK.setCookie).toHaveBeenCalledWith('seen_cookie_message', 'true', { days: 365 })
-    expect(JSON.stringify(GOVUK.getCookie('cookie_policy'))).toEqual('"{\\"essential\\":true,\\"settings\\":true,\\"usage\\":true,\\"campaigns\\":true}"')
+    expect(GOVUK.getCookie('cookie_policy')).toEqual('"{\\"essential\\":true,\\"settings\\":true,\\"usage\\":true,\\"campaigns\\":true}"')
   })
 
   it('shows a confirmation message when cookies have been accepted', function () {
