@@ -10,6 +10,10 @@
       <%= tag.fieldset class: "govuk-fieldset", "aria-describedby": cb_helper.fieldset_describedby do %>
         <%= cb_helper.heading_markup %>
 
+        <% if cb_helper.description %>
+          <%= tag.p cb_helper.description, class: "govuk-body" %>
+        <% end %>
+
         <% if cb_helper.hint_text %>
           <%= tag.span cb_helper.hint_text, id: "#{id}-hint", class: "govuk-hint" %>
         <% end %>

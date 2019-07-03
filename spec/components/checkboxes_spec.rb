@@ -337,4 +337,17 @@ describe "Checkboxes", type: :view do
     assert_select ".govuk-checkboxes.govuk-checkboxes--nested"
     assert_select ".govuk-checkboxes.govuk-checkboxes--nested input[value=light_red]"
   end
+
+  it "renders checkboxes with a description text" do
+    render_component(
+      name: "favourite_colour",
+      heading: "What is your favourite skittle?",
+      description: "This is a description about skittles.",
+      items: [
+        { label: "Red", value: "red" },
+        { label: "Green", value: "green" },
+      ]
+    )
+    assert_select ".govuk-body", text: "This is a description about skittles."
+  end
 end
