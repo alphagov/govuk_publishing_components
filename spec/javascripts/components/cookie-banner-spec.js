@@ -1,12 +1,10 @@
 /* eslint-env jasmine, jquery */
 /* global GOVUK */
 
-var container, element;
-
-var GOVUK = window.GOVUK || {};
-
 describe('Cookie banner', function () {
   'use strict'
+
+  var container
 
   beforeEach(function () {
     container = document.createElement('div')
@@ -28,17 +26,14 @@ describe('Cookie banner', function () {
       '</div>'
 
     document.body.appendChild(container)
-    element = document.querySelector('.gem-c-cookie-banner')
-
-    window.GOVUK.cookie('cookie_policy', null)
-    window.GOVUK.cookie('seen_cookie_message', null)
   })
 
   afterEach(function () {
     document.body.removeChild(container)
   })
 
-  it('should show the cookie banner', function() {
+  it('should show the cookie banner', function () {
+    var element = document.querySelector('[data-module="cookie-banner"]')
     new GOVUK.Modules.CookieBanner().start($(element))
 
     var newCookieBanner = document.querySelector('.gem-c-cookie-banner')
@@ -51,28 +46,32 @@ describe('Cookie banner', function () {
   })
 
   it('sets a default consent cookie', function () {
+    var element = document.querySelector('[data-module="cookie-banner"]')
     new GOVUK.Modules.CookieBanner().start($(element))
 
-    expect(window.GOVUK.getCookie('seen_cookie_message')).toEqual(null)
-    expect(window.GOVUK.getCookie('cookie_policy')).toEqual('"{\\"essential\\":true,\\"settings\\":true,\\"usage\\":true,\\"campaigns\\":true}"')
+    expect(GOVUK.getCookie('seen_cookie_message')).toEqual(null)
+    expect(GOVUK.getCookie('cookie_policy')).toEqual('"{\\"essential\\":true,\\"settings\\":true,\\"usage\\":true,\\"campaigns\\":true}"')
   })
 
   it('sets consent cookie when accepting cookies', function () {
-    spyOn(window.GOVUK, 'setCookie').and.callThrough()
+    spyOn(GOVUK, 'setCookie').and.callThrough()
+
+    var element = document.querySelector('[data-module="cookie-banner"]')
     new GOVUK.Modules.CookieBanner().start($(element))
 
     // Manually reset the consent cookie so we can check the accept button works as intended
-    expect(window.GOVUK.getCookie('cookie_policy')).toEqual('"{\\"essential\\":true,\\"settings\\":true,\\"usage\\":true,\\"campaigns\\":true}"')
-    window.GOVUK.cookie('cookie_policy', null)
+    expect(GOVUK.getCookie('cookie_policy')).toEqual('"{\\"essential\\":true,\\"settings\\":true,\\"usage\\":true,\\"campaigns\\":true}"')
+    GOVUK.cookie('cookie_policy', null)
 
     var acceptCookiesButton = document.querySelector('[data-accept-cookies]')
     acceptCookiesButton.click()
 
-    expect(window.GOVUK.setCookie).toHaveBeenCalledWith('seen_cookie_message', 'true', { days: 365 })
-    expect(window.GOVUK.getCookie('cookie_policy')).toEqual('"{\\"essential\\":true,\\"settings\\":true,\\"usage\\":true,\\"campaigns\\":true}"')
+    expect(GOVUK.setCookie).toHaveBeenCalledWith('seen_cookie_message', 'true', { days: 365 })
+    expect(GOVUK.getCookie('cookie_policy')).toEqual('"{\\"essential\\":true,\\"settings\\":true,\\"usage\\":true,\\"campaigns\\":true}"')
   })
 
   it('shows a confirmation message when cookies have been accepted', function () {
+    var element = document.querySelector('[data-module="cookie-banner"]')
     new GOVUK.Modules.CookieBanner().start($(element))
 
     var acceptCookiesButton = document.querySelector('[data-accept-cookies]')
@@ -89,8 +88,9 @@ describe('Cookie banner', function () {
   })
 
   it('should hide when pressing the "hide" link', function () {
-    spyOn(window.GOVUK, 'setCookie').and.callThrough()
+    spyOn(GOVUK, 'setCookie').and.callThrough()
 
+    var element = document.querySelector('[data-module="cookie-banner"]')
     new GOVUK.Modules.CookieBanner().start($(element))
 
     var banner = document.querySelector('[data-module="cookie-banner"]')
@@ -98,13 +98,15 @@ describe('Cookie banner', function () {
     link.dispatchEvent(new window.Event('click'))
 
     expect(banner).toBeHidden()
-    expect(window.GOVUK.setCookie).toHaveBeenCalledWith('seen_cookie_message', 'true', { days: 365 })
-    expect(window.GOVUK.getCookie('seen_cookie_message')).toBeTruthy()
+    expect(GOVUK.setCookie).toHaveBeenCalledWith('seen_cookie_message', 'true', { days: 365 })
+    expect(GOVUK.getCookie('seen_cookie_message')).toBeTruthy()
   })
 
-  it('does not show the banner if user has acknowledged the banner previously and consent cookie is present', function() {
-    window.GOVUK.setCookie('seen_cookie_message', "true")
-    window.GOVUK.setDefaultConsentCookie()
+  it('does not show the banner if user has acknowledged the banner previously and consent cookie is present', function () {
+    GOVUK.setCookie('seen_cookie_message', 'true')
+    GOVUK.setDefaultConsentCookie()
+
+    var element = document.querySelector('[data-module="cookie-banner"]')
     new GOVUK.Modules.CookieBanner().start($(element))
 
     var newCookieBanner = document.querySelector('.gem-c-cookie-banner')

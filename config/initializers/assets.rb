@@ -1,4 +1,9 @@
 Rails.application.config.assets.precompile += %w(
+  component_guide/accessibility-test.js
+  component_guide/application.js
+  component_guide/filter-components.js
+  component_guide/visual-regression.js
+  govuk_publishing_components/all_components.js
   govuk_publishing_components/vendor/modernizr.js
   govuk_publishing_components/component_guide.css
   govuk_publishing_components/search-button.png
