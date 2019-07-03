@@ -2,8 +2,7 @@ $govuk-cookie-banner-background: govuk-colour("white");
 $govuk-cookie-banner-text-green: #00823b;
 
 .js-enabled {
-  .gem-c-cookie-banner,
-  .gem-c-cookie-banner--new {
+  .gem-c-cookie-banner {
     display: none; // shown with JS, always on for non-JS
   }
 }
@@ -12,12 +11,6 @@ $govuk-cookie-banner-text-green: #00823b;
   @include govuk-font($size: 16);
   padding: govuk-spacing(2) 0;
   background-color: $govuk-cookie-banner-background;
-  border: 2px solid govuk-colour("black");
-}
-
-// Styles for the new version of the cookie banner
-.gem-c-cookie-banner--new {
-  @include govuk-font($size: 16);
   border: 2px solid govuk-colour("black");
 }
 
@@ -121,7 +114,6 @@ $govuk-cookie-banner-text-green: #00823b;
 // Override the styles from govuk_template
 // scss-lint:disable IdSelector
 // sass-lint:disable no-ids
-.gem-c-cookie-banner--new#global-cookie-message,
 .gem-c-cookie-banner#global-cookie-message {
   background-color: $govuk-cookie-banner-background;
   padding: govuk-spacing(4) 0;
