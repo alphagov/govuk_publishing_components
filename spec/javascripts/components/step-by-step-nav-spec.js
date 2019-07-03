@@ -108,6 +108,7 @@ describe('A stepnav module', function () {
 
   afterEach(function () {
     $(document).off()
+    window.sessionStorage.clear()
   })
 
   it('has a class of gem-c-step-nav--active to indicate the js has loaded', function () {
