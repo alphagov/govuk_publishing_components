@@ -101,7 +101,7 @@
     var cookieConsent = window.GOVUK.getConsentCookie()
 
     if (!cookieConsent) {
-      cookieConsent = DEFAULT_COOKIE_CONSENT
+      cookieConsent = JSON.parse(JSON.stringify(DEFAULT_COOKIE_CONSENT))
     }
 
     for (var cookieType in options) {
