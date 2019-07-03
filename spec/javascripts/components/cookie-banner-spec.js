@@ -26,16 +26,10 @@ describe('Cookie banner', function () {
       '</div>'
 
     document.body.appendChild(container)
-
-    GOVUK.cookie('cookie_policy', null)
-    GOVUK.cookie('seen_cookie_message', null)
   })
 
   afterEach(function () {
     document.body.removeChild(container)
-
-    GOVUK.cookie('cookie_policy', null)
-    GOVUK.cookie('seen_cookie_message', null)
   })
 
   it('should show the cookie banner', function () {

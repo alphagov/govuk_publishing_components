@@ -5,24 +5,7 @@ var GOVUK = window.GOVUK || {}
 describe('Cookie helper functions', function () {
   'use strict'
 
-  beforeEach(function (done) {
-    GOVUK.cookie('seen_cookie_message', null)
-    GOVUK.cookie('cookie_policy', null)
-    done()
-  })
-
-  afterEach(function () {
-    GOVUK.cookie('seen_cookie_message', null)
-    GOVUK.cookie('cookie_policy', null)
-  })
-
   describe('GOVUK.cookie', function () {
-    beforeEach(function (done) {
-      GOVUK.cookie('seen_cookie_message', null)
-      GOVUK.cookie('cookie_policy', null)
-      done()
-    })
-
     it('returns the cookie value if not provided with a value to set', function () {
       GOVUK.cookie('seen_cookie_message', 'testing fetching cookie value')
 
