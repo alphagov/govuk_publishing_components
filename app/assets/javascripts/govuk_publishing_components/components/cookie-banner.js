@@ -10,7 +10,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.$module.showConfirmationMessage = this.showConfirmationMessage.bind(this)
     this.$module.setCookieConsent = this.setCookieConsent.bind(this)
 
-    this.$module.newCookieBanner = document.querySelectorAll('.gem-c-cookie-banner--new, .gem-c-cookie-banner')
+    this.$module.cookieBanner = document.querySelector('.gem-c-cookie-banner')
     this.$module.cookieBannerConfirmationMessage = document.querySelector('.gem-c-cookie-banner__confirmation')
 
     // Temporary check while we have 2 banners co-existing.
@@ -43,7 +43,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   CookieBanner.prototype.showCookieMessage = function () {
     // Hide the cookie banner on the cookie settings page, to avoid circular journeys
-    if (this.$module.newCookieBanner && window.location.pathname === '/help/cookies') {
+    if (this.$module.cookieBanner && window.location.pathname === '/help/cookies') {
       this.$module.style.display = 'none'
     } else {
       var shouldHaveCookieMessage = (this.$module && window.GOVUK.cookie('seen_cookie_message') !== 'true')
