@@ -150,7 +150,7 @@ examples:
     data:
       large: true
       href: "/still-not-a-page"
-      image_src: "https://assets.publishing.service.gov.uk/frontend/homepage/leaving-the-eu-bc9992ee672a30d8e8a3e195c9afa750e618748130a4e073a593ba36dfc29af9.jpg"
+      image_src: "https://assets.publishing.service.gov.uk/frontend/homepage/uk-leaves-the-eu-d84d2981a9953d8b1261c9d25016223b0a8af3c096fa2d5e03510d73a78e3c60.jpg"
       image_alt: "some meaningful alt text please"
       context:
         date: 2017-06-14 11:30:00
@@ -204,4 +204,3 @@ examples:
         }
       ]
       extra_links_no_indent: true
-
