@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 17.12.0
 
 * Remove references to old `gem-c-cookie-banner--new` class (PR #972)
 * Change title margin option (PR #969)
