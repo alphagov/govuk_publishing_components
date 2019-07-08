@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Replace accessible media player with Youtube player (PR #908)
+
 ## 17.17.0
 
 * Restore missing field to feedback survey form (PR #998)
