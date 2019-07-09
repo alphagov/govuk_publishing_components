@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## UNRELEASED
+
+* Reset focus when feedback component is closed before submit (PR #975)
+
 ## 17.12.0
 
 * Remove references to old `gem-c-cookie-banner--new` class (PR #972)

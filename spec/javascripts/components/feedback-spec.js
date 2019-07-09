@@ -276,7 +276,7 @@ describe('Feedback component', function () {
 
     it('shows the prompt', function () {
       expect($('.gem-c-feedback .js-prompt')).not.toHaveClass('js-hidden')
-      expect(document.activeElement).toBe($('.gem-c-feedback .js-prompt').get(0))
+      expect(document.activeElement).toBe($('.js-something-is-wrong').get(0))
     })
 
     it('conveys that the feedback form is hidden', function () {
@@ -318,7 +318,7 @@ describe('Feedback component', function () {
 
     it('shows the prompt', function () {
       expect($('.gem-c-feedback .js-prompt')).not.toHaveClass('js-hidden')
-      expect(document.activeElement).toBe($('.gem-c-feedback .js-prompt').get(0))
+      expect(document.activeElement).toBe($('.js-page-is-not-useful').get(0))
     })
 
     it('conveys that the feedback form is hidden', function () {
