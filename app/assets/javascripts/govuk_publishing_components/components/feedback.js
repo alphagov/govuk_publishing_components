@@ -42,6 +42,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         trackEvent(getTrackEventParams($(this)))
         setInitialAriaAttributes()
         revealInitialPrompt()
+        var refocusClass = '.js-' + $(e.target).attr('aria-controls')
+        $element.find(refocusClass).focus()
       })
 
       this.$pageIsUsefulButton.on('click', function (e) {
