@@ -10,15 +10,13 @@ $large-input-size: 50px;
   display: block;
 
   h1 {
-    @include core-19($line-height: $input-size, $line-height-640: $input-size);
+    @include govuk-font($size: 19, $line-height: $input-size);
     margin: 0;
   }
 }
 
 .gem-c-search__input[type="search"] { // overly specific to prevent some overrides from outside
-  @include box-sizing(border-box);
-  @include core-19($line-height: (28 / 19), $line-height-640: (28 / 16));
-  @include appearance(none);
+  @include govuk-font($size: 19, $line-height: (28 / 19));
   @include govuk-focusable;
 
   padding: 6px;
@@ -26,8 +24,12 @@ $large-input-size: 50px;
   width: 100%;
   height: $input-size;
   border: 0;
-  background: $white;
+  background: govuk-colour("white");
   border-radius: 0; //otherwise iphones apply an automatic border radius
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 .gem-c-search__submit {
@@ -42,20 +44,20 @@ $large-input-size: 50px;
 @if ($is-ie == false) or ($ie-version >= 8) {
   .js-enabled {
     .gem-c-search__label {
-      @include core-19($line-height: $input-size, $line-height-640: $input-size);
+      @include govuk-font($size: 19, $line-height: $input-size);
 
       position: absolute;
       left: 15px;
       top: 1px;
       z-index: 1;
-      color: $secondary-text-colour;
+      color: $govuk-secondary-text-colour;
     }
   }
 
   .gem-c-search__item-wrapper {
     display: table;
     width: 100%;
-    background: $white;
+    background: govuk-colour("white");
   }
 
   //general class applied to search input and button wrapper
@@ -98,7 +100,7 @@ $large-input-size: 50px;
       border: 0;
     }
 
-    @include device-pixel-ratio {
+    @include govuk-device-pixel-ratio {
       background-size: 52.5px auto;
       background-position: 115% 50%;
     }
@@ -107,22 +109,22 @@ $large-input-size: 50px;
 
 .gem-c-search--on-govuk-blue {
   .gem-c-search__label {
-    color: $white;
+    color: govuk-colour("white");
   }
 
   .gem-c-search__submit {
-    background-color: $black;
-    color: $white;
+    background-color: govuk-colour("black");
+    color: govuk-colour("white");
 
     &:hover {
-      background-color: lighten($black, 5%);
+      background-color: lighten(govuk-colour("black"), 5%);
     }
   }
 
   @if ($is-ie == false) or ($ie-version >= 8) {
     .js-enabled & {
       .gem-c-search__label {
-        color: $secondary-text-colour;
+        color: $govuk-secondary-text-colour;
       }
     }
   }
@@ -131,19 +133,19 @@ $large-input-size: 50px;
 
 .gem-c-search--on-white {
   .gem-c-search__label {
-    color: $black;
+    color: govuk-colour("black");
   }
 
   .gem-c-search__input[type="search"] {
-    border: solid 1px $grey-2;
+    border: solid 1px govuk-colour("grey-2");
   }
 
   .gem-c-search__submit {
-    background-color: $light-blue;
-    color: $white;
+    background-color: govuk-colour("light-blue");
+    color: govuk-colour("white");
 
     &:hover {
-      background-color: lighten($light-blue, 5%);
+      background-color: lighten(govuk-colour("light-blue"), 5%);
     }
   }
 
@@ -154,7 +156,7 @@ $large-input-size: 50px;
 
     .js-enabled & {
       .gem-c-search__label {
-        color: $secondary-text-colour;
+        color: $govuk-secondary-text-colour;
       }
     }
   }
@@ -162,7 +164,7 @@ $large-input-size: 50px;
 
 .gem-c-search--large {
   .gem-c-search__label {
-    @include core-19($line-height: $large-input-size, $line-height-640: $large-input-size);
+    @include govuk-font($size: 19, $line-height: $large-input-size);
   }
 
   .gem-c-search__input[type="search"] {
@@ -174,7 +176,7 @@ $large-input-size: 50px;
     height: $large-input-size;
     background-position: 8px 50%;
 
-    @include device-pixel-ratio {
+    @include govuk-device-pixel-ratio {
       background-size: 60px auto;
       background-position: 160% 50%;
     }
