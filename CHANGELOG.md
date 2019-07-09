@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## UNRELEASED
+## 17.12.1
 
 * Reset focus when feedback component is closed before submit (PR #975)
 
