@@ -140,8 +140,14 @@
   color: $govuk-error-colour;
 }
 
+.gem-c-feedback__survey-container {
+  @include govuk-media-query($until: tablet) {
+    padding: govuk-spacing(4);
+  }
+}
+
 .gem-c-feedback__form {
-  margin-top: govuk-spacing(3);
+  margin: govuk-spacing(3) govuk-spacing(2) 0 govuk-spacing(2);
   padding: govuk-spacing(3) 0;
   border-top: govuk-spacing(2) solid govuk-colour("blue");
 
@@ -173,7 +179,7 @@
   @include govuk-link-style-default;
   @include govuk-font(19);
   float: right;
-  margin: 0 0 govuk-spacing(2) 0;
+  margin: 0 govuk-spacing(1) govuk-spacing(2) 0;
 
   @include govuk-media-query($from: tablet) {
     padding-top: 0;
