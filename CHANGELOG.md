@@ -7,6 +7,11 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Stop duplicate links within feedback form (PR #981)
+* Add spacing to the feedback form (PR #981)
+
 ## 17.12.2
 
 * Make some tab component styles more specific to override `.content-block` (PR #978)
