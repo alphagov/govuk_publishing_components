@@ -7,8 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 17.13.0
 
+* Add support for description text (PR #971)
 * Stop duplicate links within feedback form (PR #981)
 * Add spacing to the feedback form (PR #981)
 
