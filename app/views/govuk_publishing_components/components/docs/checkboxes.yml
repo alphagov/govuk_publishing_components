@@ -63,6 +63,47 @@ examples:
           value: "green"
         - label: "Blue"
           value: "blue"
+  with_description_text:
+    description: |
+      If a description text is added, it is displayed under the legend but before the hint text.
+      The description text can only render text and not govspeak specific syntax.
+      This is a pattern that is used across GOV.UK where a question is followed by a description.
+    data:
+      name: "favourite_skittle"
+      heading: "Choose your favourite skittles"
+      description: |
+        Skittles consist of hard sugar shells imprinted with the letter "S".
+        The interior consists mainly of sugar, corn syrup, and hydrogenated 
+        palm kernel oil along with fruit juice, citric acid, natural and artificial flavors.
+      hint_text: "Taste the rainbow"
+      items:
+        - label: "Red"
+          value: "red"
+        - label: "Green"
+          value: "green"
+        - label: "Blue"
+          value: "blue"
+  with_description_text_and_header:
+    description: |
+      If a description text is added with a page heading, it is displayed under the heading but before the hint text.
+      The description text can only render text and not govspeak specific syntax.
+      This is a pattern that is used across GOV.UK where a question is followed by a description.
+    data:
+      name: "favourite_skittle"
+      heading: "Choose your favourite skittles"
+      is_page_heading: true
+      description: |
+        Skittles consist of hard sugar shells imprinted with the letter "S".
+        The interior consists mainly of sugar, corn syrup, and hydrogenated 
+        palm kernel oil along with fruit juice, citric acid, natural and artificial flavors.
+      hint_text: "Taste the rainbow"
+      items:
+        - label: "Red"
+          value: "red"
+        - label: "Green"
+          value: "green"
+        - label: "Blue"
+          value: "blue"
   without_hint_text:
     description: Hint text can be removed entirely with this option. Note that this option can be combined with the visually_hide_heading option.
     data:

@@ -7,6 +7,7 @@
   small ||= false
   inline ||= false
   is_page_heading ||= false
+  description ||= nil
   hint ||= nil
   error_message ||= nil
   error_items ||= []
@@ -38,6 +39,10 @@
       <% else %>
         <%= tag.legend heading, class: "govuk-fieldset__legend govuk-fieldset__legend--m" %>
       <% end %>
+    <% end %>
+
+    <% if description.present? %>
+      <%= tag.p description, class: "govuk-body" %>
     <% end %>
 
     <% if hint %>

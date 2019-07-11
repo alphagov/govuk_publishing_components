@@ -411,6 +411,19 @@ describe "Radio", type: :view do
     assert_select ".govuk-radios input[data-tracking-url='#{gateway_url}']"
     assert_select ".govuk-radios input[data-tracking-url='#{verify_url}']"
   end
+
+  it "renders description text" do
+    render_component(
+      name: "favourite-skittle",
+      heading: "What is your favourite skittle?",
+      description: "This is a description about skittles.",
+      items: [
+        { label: "Red", value: "red" },
+        { label: "Blue", value: "blue" }
+      ]
+    )
+    assert_select ".govuk-body", "This is a description about skittles."
+  end
 end
 
 # This component can be interacted with, so use integration tests for these cases.

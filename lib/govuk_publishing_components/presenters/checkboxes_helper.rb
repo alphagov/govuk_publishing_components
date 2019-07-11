@@ -4,7 +4,7 @@ module GovukPublishingComponents
       include ActionView::Helpers
       include ActionView::Context
 
-      attr_reader :items, :name, :css_classes, :list_classes, :error, :has_conditional, :has_nested, :id, :hint_text
+      attr_reader :items, :name, :css_classes, :list_classes, :error, :has_conditional, :has_nested, :id, :hint_text, :description
 
       def initialize(options)
         @items = options[:items] || []
@@ -23,6 +23,7 @@ module GovukPublishingComponents
         @id = options[:id] || "checkboxes-#{SecureRandom.hex(4)}"
         @heading = options[:heading] || nil
         @is_page_heading = options[:is_page_heading]
+        @description = options[:description] || nil
         @no_hint_text = options[:no_hint_text]
         @hint_text = options[:hint_text] || "Select all that apply." unless @no_hint_text
         @visually_hide_heading = options[:visually_hide_heading]
