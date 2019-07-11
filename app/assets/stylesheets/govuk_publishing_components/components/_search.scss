@@ -45,7 +45,7 @@ $large-input-size: 50px;
     @include govuk-font($size: 19, $line-height: $input-size);
 
     position: absolute;
-    left: 15px;
+    left: govuk-spacing(3);
     top: 1px;
     z-index: 1;
     color: $govuk-secondary-text-colour;
