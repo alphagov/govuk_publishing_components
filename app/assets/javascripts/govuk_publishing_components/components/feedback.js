@@ -109,8 +109,13 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         var currentPathName = window.location.pathname.replace(/[^\s=?&]+(?:@|%40)[^\s=?&]+/, '[email]')
         var finalPathName = encodeURI(currentPathName)
 
-        that.$surveyForm.append($('<input name="email_survey_signup[ga_client_id]" type="hidden">').val(gaClientId || '0'))
-        that.$surveyWrapper.append('<a href="https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=' + finalPathName + '&amp;gcl=' + gaClientId + '" class="gem-c-feedback__email-link govuk-link" id="take-survey" target="_blank" rel="noopener noreferrer">Don’t have an email address?</a>')
+        if (document.querySelectorAll('[name="email_survey_signup[ga_client_id]"]').length === 0) {
+          that.$surveyForm.append($('<input name="email_survey_signup[ga_client_id]" type="hidden">').val(gaClientId || '0'))
+        }
+
+        if (document.querySelectorAll('.gem-c-feedback__email-link#take-survey').length === 0) {
+          that.$surveyWrapper.append('<a href="https://www.smartsurvey.co.uk/s/gov-uk-banner/?c=' + finalPathName + '&amp;gcl=' + gaClientId + '" class="gem-c-feedback__email-link govuk-link" id="take-survey" target="_blank" rel="noopener noreferrer">Don’t have an email address?</a>')
+        }
       }
 
       function updateAriaAttributes (linkClicked) {
