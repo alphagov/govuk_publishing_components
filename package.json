@@ -14,11 +14,11 @@
   },
   "dependencies": {
     "accessible-autocomplete": "git://github.com/alphagov/accessible-autocomplete.git#add-multiselect-support",
-    "axe-core": "3.2.2",
     "govuk-frontend": "2.11.0",
     "jquery": "1.12.4"
   },
   "devDependencies": {
+    "axe-core": "3.2.2",
     "sass-lint": "^1.13.1",
     "standard": "^12.0.1"
   }
