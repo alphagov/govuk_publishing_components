@@ -350,4 +350,18 @@ describe "Checkboxes", type: :view do
     )
     assert_select ".govuk-body", text: "This is a description about skittles."
   end
+
+  it "renders checkboxes with a govspeak description text" do
+    render_component(
+      name: "favourite_colour",
+      heading: "What is your favourite skittle?",
+      description: render("govuk_publishing_components/components/govspeak",
+        content: "<p>This is a description about skittles.</p>".html_safe),
+      items: [
+        { label: "Red", value: "red" },
+        { label: "Green", value: "green" },
+      ]
+    )
+    assert_select ".govuk-body", text: "This is a description about skittles."
+  end
 end
