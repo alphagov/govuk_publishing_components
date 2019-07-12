@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased changes
+
+* Change paragraph to div for descriptions to support govspeak (PR #985)
+
 ## 17.13.0
 
 * Add support for description text (PR #971)

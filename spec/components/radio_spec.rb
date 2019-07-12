@@ -424,6 +424,20 @@ describe "Radio", type: :view do
     )
     assert_select ".govuk-body", "This is a description about skittles."
   end
+
+  it "renders govspeak description text" do
+    render_component(
+      name: "favourite-skittle",
+      heading: "What is your favourite skittle?",
+      description: render("govuk_publishing_components/components/govspeak",
+        content: "<p>This is a description about skittles.</p>".html_safe),
+      items: [
+        { label: "Red", value: "red" },
+        { label: "Blue", value: "blue" }
+      ]
+    )
+    assert_select ".govuk-body", "This is a description about skittles."
+  end
 end
 
 # This component can be interacted with, so use integration tests for these cases.
