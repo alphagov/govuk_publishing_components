@@ -11,12 +11,13 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.$module.setCookieConsent = this.setCookieConsent.bind(this)
 
     this.$module.cookieBanner = document.querySelector('.gem-c-cookie-banner')
-    this.$module.cookieBannerConfirmationMessage = document.querySelector('.gem-c-cookie-banner__confirmation')
+    this.$module.cookieBannerConfirmationMessage = this.$module.querySelector('.gem-c-cookie-banner__confirmation')
 
-    // Temporary check while we have 2 banners co-existing.
-    // Once the new banner has been deployed, we will be able to remove code relating to the old banner
-    // Separating the code out like this does mean some repetition, but will make it easier to remove later
     this.setupCookieMessage()
+
+    // Listen for cross-origin communication messages (e.g. hideCookieBanner for when previewing GOV.UK pages
+    // in publishing applications
+    this.listenForCrossOriginMessages()
   }
 
   CookieBanner.prototype.setupCookieMessage = function () {
@@ -82,6 +83,42 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
     this.$cookieBannerMainContent.style.display = 'none'
     this.$module.cookieBannerConfirmationMessage.style.display = 'block'
+  }
+
+  CookieBanner.prototype.listenForCrossOriginMessages = function () {
+    window.addEventListener('message', this.receiveMessage.bind(this), false)
+  }
+
+  CookieBanner.prototype.receiveMessage = function (event) {
+    var trustedDomain = 'publishing.service.gov.uk'
+    var origin = event.origin
+
+    // Return if no origin is given or the browser doesn't support lastIndexOf
+    if (!origin || !origin.lastIndexOf) {
+      return
+    }
+
+    // Polyfill origin.endsWith(trustedDomain) for IE
+    var offset = origin.length - trustedDomain.length
+    var trustedOrigin = offset >= 0 && origin.lastIndexOf(trustedDomain, offset) === offset
+
+    // Return if the given origin is not trusted
+    if (!trustedOrigin) {
+      return
+    }
+
+    // Read JSON data from event
+    var dataObject = {}
+    try {
+      dataObject = JSON.parse(event.data)
+    } catch (err) {
+      // Don't throw errors as the emmited message may not be in a JSON format
+    } finally {
+      if (dataObject.hideCookieBanner === 'true') {
+        // Visually hide the cookie banner
+        this.$module.style.display = 'none'
+      }
+    }
   }
 
   Modules.CookieBanner = CookieBanner

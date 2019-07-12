@@ -113,4 +113,20 @@ describe('Cookie banner', function () {
 
     expect(newCookieBanner).not.toBeVisible()
   })
+
+  it('hides the cookie banner if a cross-origin messages says so', function () {
+    var element = document.querySelector('[data-module="cookie-banner"]')
+    var cookieBannerModule = new GOVUK.Modules.CookieBanner()
+    cookieBannerModule.start($(element))
+
+    var mockMessage = {
+      data: JSON.stringify({ 'hideCookieBanner': 'true' }),
+      origin: 'https://content-publisher.publishing.service.gov.uk'
+    }
+
+    cookieBannerModule.receiveMessage(mockMessage)
+
+    var newCookieBanner = document.querySelector('.gem-c-cookie-banner')
+    expect(newCookieBanner).not.toBeVisible()
+  })
 })
