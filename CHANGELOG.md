@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 17.14.0
 
 * Update cookie banner component to hide if cross-origin message has `hideCookieBanner` set to `true` (PR #988)
 * Change paragraph to div for descriptions to support govspeak description in checkboxes and radios (PR #985)
