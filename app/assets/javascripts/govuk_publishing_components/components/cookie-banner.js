@@ -13,9 +13,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.$module.cookieBanner = document.querySelector('.gem-c-cookie-banner')
     this.$module.cookieBannerConfirmationMessage = this.$module.querySelector('.gem-c-cookie-banner__confirmation')
 
-    // Temporary check while we have 2 banners co-existing.
-    // Once the new banner has been deployed, we will be able to remove code relating to the old banner
-    // Separating the code out like this does mean some repetition, but will make it easier to remove later
     this.setupCookieMessage()
 
     // Listen for cross-origin communication messages (e.g. hideCookieBanner for when previewing GOV.UK pages
