@@ -1,4 +1,4 @@
-<% meta_tags = GovukPublishingComponents::Presenters::MetaTags.new(content_item, local_assigns).meta_tags %>
+<% meta_tags = GovukPublishingComponents::Presenters::MetaTags.new(content_item, local_assigns, request).meta_tags %>
 
 <% meta_tags.each do |name, content| %>
   <meta name="<%= name %>" content="<%= content %>">
