@@ -156,6 +156,27 @@ examples:
           public_updated_at: 2017-07-19 15:01:48
           document_type: 'Statistical data set'
         subtext: 'First published during the 1996 Conservative Government'
+  without_underline:
+    description: The current search design does not include underlines on links and has been tested without underlines. Other uses will require further user testing.
+    data:
+      remove_underline: true
+      items:
+      - link:
+          text: 'Department for Education – Statistics at DfE'
+          path: '/government/organisations/department-for-education/about/statistics'
+          description: 'The Department for Education publishes official statistics on education and children.'
+        metadata:
+          public_updated_at: 2017-07-19 15:01:48
+          document_type: 'Corporate information'
+        subtext: 'First published during the 2007 Labour Government'
+      - link:
+          text: 'State-funded school inspections and outcomes: management information'
+          path: '/government/organisations/department-for-education/about/statistics'
+          description: 'Management information published monthly and a one-off publication of inspections and outcomes from 2005 to 2015.'
+        metadata:
+          public_updated_at: 2017-07-19 15:01:48
+          document_type: 'Statistical data set'
+        subtext: 'First published during the 1996 Conservative Government'
   highlighted_result:
     description: Highlight one or more of the items in the list. This is used on finders to provide a 'top result' for a search. The `highlight_text` parameter is optional.
     data:
