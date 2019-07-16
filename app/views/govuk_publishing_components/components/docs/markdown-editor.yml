@@ -1,0 +1,32 @@
+name: Markdown editor
+description: Markdown formatting buttons for text inputs.
+body: |
+  A markdown editor component to help users easily insert common markdown into their content without having to research or have prior knowledge.
+
+  Dependant on <a href="https://github.com/github/markdown-toolbar-element" target="_blank">https://github.com/github/markdown-toolbar-element</a>.
+accessibility_criteria: |
+  The markdown editor must:
+
+  - have a label
+examples:
+  default:
+    data:
+      label_text: "Enter your markdown here"
+      textarea:
+        name: "more-detail-1"
+        rows: 15
+  preset_value:
+    data:
+      label_text: Enter your markdown here
+      textarea:
+        name: "more-detail-2"
+        value: |
+          ## Hello I'm already set
+          Hi :)
+  with_error:
+    data:
+      label_text: Enter your markdown here
+      textarea:
+        name: "more-detail-3"
+      error_items:
+        - text: Your markdown is invalid.

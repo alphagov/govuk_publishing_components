@@ -1,0 +1,54 @@
+<%
+  label_text ||= "Enter your markdown here"
+  textarea ||= {}
+  error_items ||= []
+
+  component_classes = %w[gem-c-markdown-editor govuk-form-group]
+  component_classes << "govuk-form-group--error" if error_items.any?
+
+  textarea[:id] = textarea[:id].present? ? textarea[:id] : textarea[:name]
+%>
+<%= tag.div class: component_classes do %>
+
+  <%= render "govuk_publishing_components/components/label", {
+      html_for: textarea[:id].present? ? textarea[:id] : textarea[:name],
+      text: label_text
+  } %>
+
+  <% if error_items.any? %>
+    <%= render "govuk_publishing_components/components/error_message", {
+      items: error_items
+    } %>
+  <% end %>
+
+  <div class="gem-c-markdown-editor__container js-markdown-editor__container">
+    <div class="gem-c-markdown-editor__head js-markdown-editor__head">
+      <div class="gem-c-markdown-editor__toolbar">
+        <markdown-toolbar class="gem-c-markdown-editor__toolbar-group" for="<%= textarea[:id] %>">
+          <md-header-2 class="gem-c-markdown-editor__toolbar-button" title="Heading level 2" aria-label="Heading level 2">
+            <%= render "govuk_publishing_components/components/markdown_editor/heading_two.svg" %>
+          </md-header-2>
+          <md-header-3 class="gem-c-markdown-editor__toolbar-button" title="Heading level 3" aria-label="Heading level 3">
+            <%= render "govuk_publishing_components/components/markdown_editor/heading_three.svg" %>
+          </md-header-3>
+          <md-link class="gem-c-markdown-editor__toolbar-button" title="Link" aria-label="Link">
+            <%= render "govuk_publishing_components/components/markdown_editor/link.svg" %>
+          </md-link>
+          <md-quote class="gem-c-markdown-editor__toolbar-button" title="Blockquote" aria-label="Blockquote">
+            <%= render "govuk_publishing_components/components/markdown_editor/blockquote.svg" %>
+          </md-quote>
+          <md-ordered-list class="gem-c-markdown-editor__toolbar-button" title="Numbered list" aria-label="Numbered list">
+            <%= render "govuk_publishing_components/components/markdown_editor/numbered_list.svg" %>
+          </md-ordered-list>
+          <md-unordered-list class="gem-c-markdown-editor__toolbar-button" title="Bullets" aria-label="Bullets">
+            <%= render "govuk_publishing_components/components/markdown_editor/bullets.svg" %>
+          </md-unordered-list>
+        </markdown-toolbar>
+      </div>
+    </div>
+
+    <div class="gem-c-markdown-editor__input js-markdown-editor-input">
+      <%= render "govuk_publishing_components/components/textarea", textarea %>
+    </div>
+  </div>
+<% end %>
