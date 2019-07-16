@@ -223,6 +223,22 @@ describe "Document list", type: :view do
     assert_select '.gem-c-document-list__subtext', text: 'This is some subtext'
   end
 
+  it "removes underline from links" do
+    render_component(
+      remove_underline: true,
+      items: [
+        {
+          link: {
+            text: "Link Title",
+            path: "/link/path",
+          }
+        }
+      ]
+    )
+
+    assert_select '.gem-c-document-list.gem-c-document-list--no-underline'
+  end
+
   it "highlights items" do
     render_component(
       items: [
