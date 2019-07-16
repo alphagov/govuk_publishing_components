@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 17.15.0
 
 * Add no underline option to document list component (PR #990)
 
