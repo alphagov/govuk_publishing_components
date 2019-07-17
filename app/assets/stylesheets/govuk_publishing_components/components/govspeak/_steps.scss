@@ -1,23 +1,36 @@
 .gem-c-govspeak .steps {
   padding-left: 0;
   margin-left: 0;
+  counter-reset: step-counter;
   overflow: hidden;
 
   > li {
-    background-position: 0 .87em;
-    background-repeat: no-repeat;
+    counter-increment: step-counter;
     list-style-type: decimal;
     margin-left: 0;
     padding: .75em 0 .75em 2.2em;
+    position: relative;
+    // fixes :before positioning in IE
+    // occurs due to text being wrapped in p tag (block element)
+    display: block;
 
-    @for $i from 1 through 14 {
-      &:nth-child(#{$i}) {
-        background-image: image-url("icon-steps/icon-step-#{$i}.png");
+    &:before {
+      position: absolute;
+      height: 1em;
+      width: 1em;
+      content: counter(step-counter);
+      left: 0;
+      // match top padding
+      top: .75em;
+      padding: .3em .3em .25em .3em;
+      @include govuk-font($size: 16);
+      border-radius: 50%;
+      color: govuk-colour("white");
+      background: govuk-colour("black");
+      text-align: center;
 
-        @include govuk-device-pixel-ratio {
-          background-image: image-url("icon-steps/icon-step-#{$i}-2x.png");
-          background-size: 24px 24px;
-        }
+      @include govuk-media-query($from: tablet) {
+        padding: .25em;
       }
     }
   }
