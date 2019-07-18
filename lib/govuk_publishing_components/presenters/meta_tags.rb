@@ -1,9 +1,9 @@
 module GovukPublishingComponents
   module Presenters
     class MetaTags
-      attr_reader :content_item, :details, :links, :local_assigns
+      attr_reader :content_item, :details, :links, :local_assigns, :request
 
-      def initialize(content_item, local_assigns)
+      def initialize(content_item, local_assigns, request)
         # We have to call deep_symbolize_keys because we're often dealing with a
         # parsed JSON document which will have string keys by default, but our
         # components use symbol keys and we want consistency.
@@ -11,6 +11,7 @@ module GovukPublishingComponents
         @details = @content_item[:details] || {}
         @links = @content_item[:links] || {}
         @local_assigns = local_assigns
+        @request = request
       end
 
       def meta_tags
@@ -98,6 +99,14 @@ module GovukPublishingComponents
         stepnavs = links[:part_of_step_navs] || []
         stepnavs_content = stepnavs.map { |stepnav| stepnav[:content_id] }.join(",")
         meta_tags["govuk:stepnavs"] = stepnavs_content if stepnavs_content.present?
+
+        step_nav_helper = PageWithStepByStepNavigation.new(content_item, request.path, request.query_parameters)
+        if step_nav_helper.show_secondary_step_by_step?
+          meta_tags["govuk:navigation-page-type"] = "Secondary step by step shown"
+        elsif step_nav_helper.show_header?
+          meta_tags["govuk:navigation-page-type"] = "Primary step by step shown"
+        end
+
         meta_tags
       end
 
