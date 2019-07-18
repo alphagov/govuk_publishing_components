@@ -39,11 +39,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   CookieBanner.prototype.showCookieMessage = function () {
-    // Hide the cookie banner on the cookie settings page, to avoid circular journeys
-    // or when presented in an iframe by a publishing application
-    if (this.isInCookiesPage() || (this.isInIframe() && this.parentIsPublishingDomain())) {
-      this.$module.style.display = 'none'
-    } else {
+    // Show the cookie banner if not in the cookie settings page or in an iframe
+    if (!this.isInCookiesPage() && !this.isInIframe()) {
       var shouldHaveCookieMessage = (this.$module && window.GOVUK.cookie('seen_cookie_message') !== 'true')
 
       if (shouldHaveCookieMessage) {
@@ -92,17 +89,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   CookieBanner.prototype.isInIframe = function () {
     return window.parent && window.location !== window.parent.location
-  }
-
-  CookieBanner.prototype.parentIsPublishingDomain = function () {
-    var publishingDomain = 'publishing.service.gov.uk'
-    var currentDomain = window.parent.location.origin
-
-    // Polyfill currentDomain.endsWith(publishingDomain) for IE
-    var offset = currentDomain.length - publishingDomain.length
-    var domainMatch = offset >= 0 && currentDomain.lastIndexOf(publishingDomain, offset) === offset
-
-    return domainMatch
   }
 
   Modules.CookieBanner = CookieBanner
