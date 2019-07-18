@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Use div elements for hint messages (PR #996)
+
 ## 17.16.0
 
 * Track when primary or secondary step by step are shown (PR #989)
