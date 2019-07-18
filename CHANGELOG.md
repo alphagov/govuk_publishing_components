@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove expectation that sprockets is installed when used in a Rails app (PR #999)
+
 ## 17.18.0
 
 * Replace accessible media player with Youtube player (PR #908)
