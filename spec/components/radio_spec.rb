@@ -289,7 +289,7 @@ describe "Radio", type: :view do
     assert_select ".govuk-hint", text: "You’ll need to prove your identity using one of the following methods"
 
     dom = Nokogiri::HTML(rendered)
-    hint_id = dom.xpath('//span')[0].attr('id')
+    hint_id = dom.xpath('//div[contains(@class, "govuk-hint")]')[0].attr('id')
     assert_select ".govuk-fieldset[aria-describedby='#{hint_id}']"
   end
 
@@ -336,8 +336,8 @@ describe "Radio", type: :view do
     assert_select ".govuk-error-message", text: "Error: Please select one option"
 
     dom = Nokogiri::HTML(rendered)
-    hint_id = dom.xpath('//span')[0].attr('id')
-    error_id = dom.xpath('//span')[1].attr('id')
+    hint_id = dom.xpath('//div[contains(@class, "govuk-hint")]')[0].attr('id')
+    error_id = dom.xpath('//span')[0].attr('id')
     ids = hint_id + " " + error_id
     assert_select ".govuk-fieldset[aria-describedby='#{ids}']"
   end
