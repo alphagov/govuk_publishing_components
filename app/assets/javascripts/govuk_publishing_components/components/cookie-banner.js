@@ -14,10 +14,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.$module.cookieBannerConfirmationMessage = this.$module.querySelector('.gem-c-cookie-banner__confirmation')
 
     this.setupCookieMessage()
-
-    // Listen for cross-origin communication messages (e.g. hideCookieBanner for when previewing GOV.UK pages
-    // in publishing applications
-    this.listenForCrossOriginMessages()
   }
 
   CookieBanner.prototype.setupCookieMessage = function () {
@@ -44,7 +40,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   CookieBanner.prototype.showCookieMessage = function () {
     // Hide the cookie banner on the cookie settings page, to avoid circular journeys
-    if (this.$module.cookieBanner && window.location.pathname === '/help/cookies') {
+    // or when presented in an iframe by a publishing application
+    if (this.isInCookiesPage() || (this.isInIframe() && this.parentIsPublishingDomain())) {
       this.$module.style.display = 'none'
     } else {
       var shouldHaveCookieMessage = (this.$module && window.GOVUK.cookie('seen_cookie_message') !== 'true')
@@ -89,36 +86,23 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     window.addEventListener('message', this.receiveMessage.bind(this), false)
   }
 
-  CookieBanner.prototype.receiveMessage = function (event) {
-    var trustedDomain = 'publishing.service.gov.uk'
-    var origin = event.origin
+  CookieBanner.prototype.isInCookiesPage = function () {
+    return window.location.pathname === '/help/cookies'
+  }
 
-    // Return if no origin is given or the browser doesn't support lastIndexOf
-    if (!origin || !origin.lastIndexOf) {
-      return
-    }
+  CookieBanner.prototype.isInIframe = function () {
+    return window.parent && window.location !== window.parent.location
+  }
 
-    // Polyfill origin.endsWith(trustedDomain) for IE
-    var offset = origin.length - trustedDomain.length
-    var trustedOrigin = offset >= 0 && origin.lastIndexOf(trustedDomain, offset) === offset
+  CookieBanner.prototype.parentIsPublishingDomain = function () {
+    var publishingDomain = 'publishing.service.gov.uk'
+    var currentDomain = window.parent.location.origin
 
-    // Return if the given origin is not trusted
-    if (!trustedOrigin) {
-      return
-    }
+    // Polyfill currentDomain.endsWith(publishingDomain) for IE
+    var offset = currentDomain.length - publishingDomain.length
+    var domainMatch = offset >= 0 && currentDomain.lastIndexOf(publishingDomain, offset) === offset
 
-    // Read JSON data from event
-    var dataObject = {}
-    try {
-      dataObject = JSON.parse(event.data)
-    } catch (err) {
-      // Don't throw errors as the emmited message may not be in a JSON format
-    } finally {
-      if (dataObject.hideCookieBanner === 'true') {
-        // Visually hide the cookie banner
-        this.$module.style.display = 'none'
-      }
-    }
+    return domainMatch
   }
 
   Modules.CookieBanner = CookieBanner
