@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    govuk_publishing_components (17.15.0)
+    govuk_publishing_components (17.16.0)
       gds-api-adapters
       govuk_app_config
       govuk_frontend_toolkit

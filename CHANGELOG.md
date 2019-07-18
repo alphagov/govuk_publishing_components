@@ -7,6 +7,12 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 17.16.0
+
+* Track when primary or secondary step by step are shown (PR #989)
+* Update image-card to use govuk-frontend (PR #967)
+* Update search to use govuk-frontend (PR #977)
+
 ## 17.15.0
 
 * Add no underline option to document list component (PR #990)
