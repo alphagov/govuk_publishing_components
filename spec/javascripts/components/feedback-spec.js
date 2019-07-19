@@ -54,7 +54,7 @@ describe('Feedback component', function () {
       '<div class="grid-row">' +
         '<div class="column-two-thirds">' +
           '<div class="gem-c-feedback__error-summary js-hidden js-errors" tabindex="-1"></div>' +
-          '<input name="email_survey_signup[survey_source]" type="hidden" value="<%= path_without_pii %>">' +
+          '<input name="email_survey_signup[survey_source]" type="hidden" value="a_source">' +
 
           '<h2 class="gem-c-feedback__form-heading">Help us improve GOV.UK</h2>' +
           '<p class="gem-c-feedback__form-paragraph">To help us improve GOV.UK, we\'d like to know more about your visit today. We\'ll send you a link to a feedback form. It will take only 2 minutes to fill in. Don\'t worry we won\'t send you spam or share your email address with anyone.</p>' +
@@ -384,11 +384,11 @@ describe('Feedback component', function () {
       expect(request.url).toBe('/contact/govuk/page_improvements')
       expect(request.method).toBe('POST')
       expect(request.data()).toEqual({
-        url: ['http://example.com/path/to/page'],
-        what_doing: ['I was looking for some information about local government.'],
-        what_wrong: ['The background should be green.'],
-        referrer: ['unknown'],
-        javascript_enabled: ['true']
+        'url': ['http://example.com/path/to/page'],
+        'what_doing': ['I was looking for some information about local government.'],
+        'what_wrong': ['The background should be green.'],
+        'referrer': ['unknown'],
+        'javascript_enabled': ['true']
       })
     })
 
@@ -486,7 +486,8 @@ describe('Feedback component', function () {
       expect(request.method).toBe('POST')
       expect(request.data()).toEqual({
         'email_survey_signup[email_address]': ['test@test.com'],
-        'email_survey_signup[ga_client_id]': ['111111111.1111111111']
+        'email_survey_signup[ga_client_id]': ['111111111.1111111111'],
+        'email_survey_signup[survey_source]': ['a_source']
       })
     })
 
@@ -681,6 +682,34 @@ describe('Feedback component', function () {
       })
 
       expect(document.activeElement).toBe($('#page-is-not-useful .js-errors').get(0))
+    })
+  })
+
+  describe('submitting a form that fails because email_survey_signup[survey_source] is missing', function () {
+    beforeEach(function () {
+      jasmine.Ajax.install()
+
+      loadFeedbackComponent()
+      fillAndSubmitSomethingIsWrongForm()
+
+      jasmine.Ajax.requests.mostRecent().respondWith({
+        status: 422,
+        contentType: 'application/json',
+        responseText: '{"message":"email survey sign up failure","errors":{"survey_source":["can\'t be blank"]}}'
+      })
+    })
+
+    afterEach(function () {
+      jasmine.Ajax.uninstall()
+    })
+
+    it('displays the generic error message in place of the less helpful "email survey sign up failure"', function () {
+      expect($('.gem-c-feedback__error-summary').html()).toContainText(
+        'Sorry, we’re unable to receive your message right now. ' +
+        'If the problem persists, we have other ways for you to provide ' +
+        'feedback on the contact page.'
+      )
+      expect($('.gem-c-feedback__error-summary').html()).not.toContainText('email survey sign up failure')
     })
   })
 

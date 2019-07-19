@@ -165,6 +165,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         // for all other, show generic error
         if (typeof (error.responseJSON) !== 'undefined') {
           error = typeof (error.responseJSON.message) === 'undefined' ? genericError : error.responseJSON.message
+
+          if (error === 'email survey sign up failure') {
+            error = genericError
+          }
         } else {
           error = genericError
         }
