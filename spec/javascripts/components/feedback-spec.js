@@ -54,6 +54,7 @@ describe('Feedback component', function () {
       '<div class="grid-row">' +
         '<div class="column-two-thirds">' +
           '<div class="gem-c-feedback__error-summary js-hidden js-errors" tabindex="-1"></div>' +
+          '<input name="email_survey_signup[survey_source]" type="hidden" value="<%= path_without_pii %>">' +
 
           '<h2 class="gem-c-feedback__form-heading">Help us improve GOV.UK</h2>' +
           '<p class="gem-c-feedback__form-paragraph">To help us improve GOV.UK, we\'d like to know more about your visit today. We\'ll send you a link to a feedback form. It will take only 2 minutes to fill in. Don\'t worry we won\'t send you spam or share your email address with anyone.</p>' +
