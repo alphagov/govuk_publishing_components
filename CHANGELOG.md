@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Restore missing field to feedback survey form (PR #998)
 * Use div elements for hint messages (PR #996)
 
 ## 17.16.0
