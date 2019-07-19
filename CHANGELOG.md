@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 17.17.0
 
 * Restore missing field to feedback survey form (PR #998)
 * Use div elements for hint messages (PR #996)
