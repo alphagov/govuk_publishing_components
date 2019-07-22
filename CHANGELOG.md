@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 17.18.0
 
 * Replace accessible media player with Youtube player (PR #908)
 * Prevent the cookie banner component from rendering when in an iframe (PR #995)
