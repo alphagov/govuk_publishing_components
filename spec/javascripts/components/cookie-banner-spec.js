@@ -36,11 +36,10 @@ describe('Cookie banner', function () {
     var element = document.querySelector('[data-module="cookie-banner"]')
     new GOVUK.Modules.CookieBanner().start($(element))
 
-    var newCookieBanner = document.querySelector('.gem-c-cookie-banner')
     var cookieBannerMain = document.querySelector('.gem-c-cookie-banner__wrapper')
     var cookieBannerConfirmation = document.querySelector('.gem-c-cookie-banner__confirmation')
 
-    expect(newCookieBanner).toBeVisible()
+    expect(element).toBeVisible()
     expect(cookieBannerMain).toBeVisible()
     expect(cookieBannerConfirmation).not.toBeVisible()
   })
@@ -93,11 +92,10 @@ describe('Cookie banner', function () {
     var element = document.querySelector('[data-module="cookie-banner"]')
     new GOVUK.Modules.CookieBanner().start($(element))
 
-    var banner = document.querySelector('[data-module="cookie-banner"]')
     var link = document.querySelector('button[data-hide-cookie-banner="true"]')
     link.dispatchEvent(new window.Event('click'))
 
-    expect(banner).toBeHidden()
+    expect(element).toBeHidden()
     expect(GOVUK.setCookie).toHaveBeenCalledWith('seen_cookie_message', 'true', { days: 365 })
     expect(GOVUK.getCookie('seen_cookie_message')).toBeTruthy()
   })
@@ -109,24 +107,25 @@ describe('Cookie banner', function () {
     var element = document.querySelector('[data-module="cookie-banner"]')
     new GOVUK.Modules.CookieBanner().start($(element))
 
-    var newCookieBanner = document.querySelector('.gem-c-cookie-banner')
-
-    expect(newCookieBanner).not.toBeVisible()
+    expect(element).not.toBeVisible()
   })
 
-  it('hides the cookie banner if a cross-origin messages says so', function () {
-    var element = document.querySelector('[data-module="cookie-banner"]')
-    var cookieBannerModule = new GOVUK.Modules.CookieBanner()
-    cookieBannerModule.start($(element))
+  describe('when rendered inside an iframe', function () {
+    var windowParent = window.parent
+    var mockWindowParent = {} // window.parent would be different than window when used inside an iframe
 
-    var mockMessage = {
-      data: JSON.stringify({ 'hideCookieBanner': 'true' }),
-      origin: 'https://content-publisher.publishing.service.gov.uk'
-    }
+    beforeEach(function () {
+      window.parent = mockWindowParent
+    })
 
-    cookieBannerModule.receiveMessage(mockMessage)
+    afterEach(function () {
+      window.parent = windowParent
+    })
 
-    var newCookieBanner = document.querySelector('.gem-c-cookie-banner')
-    expect(newCookieBanner).not.toBeVisible()
+    it('should hide the cookie banner', function () {
+      var element = document.querySelector('[data-module="cookie-banner"]')
+      new GOVUK.Modules.CookieBanner().start($(element))
+      expect(element).toBeHidden()
+    })
   })
 })
