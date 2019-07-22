@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Replace accessible media player with Youtube player (PR #908)
+* Prevent the cookie banner component from rendering when in an iframe (PR #995)
 
 ## 17.17.0
 
