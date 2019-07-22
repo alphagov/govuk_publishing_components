@@ -1,77 +1,107 @@
-// = require govuk_publishing_components/vendor/jquery-ui-1.10.2.custom
-// = require govuk_publishing_components/vendor/jquery.player.min
-
-window.GOVUK = window.GOVUK || {};
-
-(function (GOVUK, $) {
+(function () {
   'use strict'
+  window.GOVUK = window.GOVUK || {}
+  var GOVUK = window.GOVUK || {}
 
   var YoutubeLinkEnhancement = function ($element) {
     this.$element = $element
   }
 
   YoutubeLinkEnhancement.prototype.init = function () {
-    var $youtubeLinks = this.$element.find('a[href*="youtube.com"], a[href*="youtu.be"]')
-    var _this = this
+    if (!this.campaignCookiesAllowed()) {
+      return
+    }
 
-    $youtubeLinks.each(function () {
-      var $link = $(this)
-      // if users have disabled 'campaigns' cookie in the new cookie page settings
-      // we also need to disable the youtube video embed
-      if (_this.hasDisabledEmbed($link) || !YoutubeLinkEnhancement.campaignCookies()) {
-        return true
-      }
+    var $youtubeLinks = this.$element.querySelectorAll('a[href*="youtube.com"], a[href*="youtu.be"]')
 
-      var videoId = YoutubeLinkEnhancement.parseVideoId($link.attr('href'))
-      if (videoId) {
-        _this.embedVideo($link, videoId)
+    if ($youtubeLinks.length > 0) {
+      YoutubeLinkEnhancement.insertApiScript()
+    }
+
+    for (var i = 0; i < $youtubeLinks.length; ++i) {
+      var $link = $youtubeLinks[i]
+
+      var videoId = YoutubeLinkEnhancement.parseVideoId($link.getAttribute('href'))
+
+      if (!this.hasDisabledEmbed($link) && videoId) {
+        this.setupVideo($link, videoId)
       }
-    })
+    }
   }
 
   YoutubeLinkEnhancement.prototype.hasDisabledEmbed = function ($link) {
-    return $link.attr('data-youtube-player') === 'off'
+    return $link.getAttribute('data-youtube-player') === 'off'
   }
 
-  YoutubeLinkEnhancement.prototype.embedVideo = function ($link, videoId) {
-    var $mediaPlayer = $('<span class="media-player" />')
+  YoutubeLinkEnhancement.prototype.setupVideo = function ($link, videoId) {
+    var elementId = YoutubeLinkEnhancement.nextId()
 
-    $link.parent().replaceWith($mediaPlayer)
+    var parentPara = $link.parentNode
+    var parentContainer = parentPara.parentNode
 
-    var protocol = this.protocol()
+    var youtubeVideoContainer = document.createElement('div')
+    youtubeVideoContainer.className += 'gem-c-govspeak__youtube-video'
+    youtubeVideoContainer.innerHTML = '<span id="' + elementId + '" data-video-id="' + videoId + '"></span>'
 
-    $mediaPlayer.player({
-      id: YoutubeLinkEnhancement.nextId(),
-      media: videoId,
-      captions: this.captions($link),
-      url: protocol + '//www.youtube.com/apiplayer?enablejsapi=1&version=3&playerapiid='
-    })
+    parentContainer.replaceChild(youtubeVideoContainer, parentPara)
+    this.insertVideo(elementId, videoId, $link.textContent)
   }
 
-  YoutubeLinkEnhancement.prototype.protocol = function () {
-    var scheme = document.location.protocol
-    if (scheme === 'file:') {
-      scheme = 'https:'
+  YoutubeLinkEnhancement.prototype.insertVideo = function (elementId, videoId, title) {
+    var videoInsert = function () {
+      new window.YT.Player(elementId, { // eslint-disable-line no-new
+        videoId: videoId,
+        host: 'https://www.youtube-nocookie.com',
+        playerVars: {
+          // enables the player to be controlled via IFrame or JavaScript Player API calls
+          enablejsapi: 1,
+          // don't show related videos
+          rel: 0,
+          // disable option to allow single key shortcuts due to (WCAG SC 2.1.4)
+          // https://www.w3.org/WAI/WCAG21/quickref/#character-key-shortcuts
+          disablekb: 1,
+          // prevent the YouTube logo from displaying in the control bar
+          modestbranding: 1
+        },
+        events: {
+          onReady: function (event) {
+            // update iframe title attribute once video is ready
+            event.target.a.setAttribute('title', title + ' (video)')
+          }
+        }
+      })
     }
-    return scheme
-  }
 
-  YoutubeLinkEnhancement.prototype.captions = function ($link) {
-    var $captions = $link.siblings('.captions')
-    if ($captions.length) {
-      return $captions.first().attr('href')
+    videoInsert = videoInsert.bind(this)
+
+    if (YoutubeLinkEnhancement.playerApiReady) {
+      videoInsert.call()
+    } else {
+      YoutubeLinkEnhancement.queuedInserts.push(videoInsert)
     }
   }
 
-  YoutubeLinkEnhancement.campaignCookies = function () {
-    var cookiePolicy = window.GOVUK.getCookie('cookie_policy') ? JSON.parse(window.GOVUK.getCookie('cookie_policy')) : 'undefined'
-    return cookiePolicy !== 'undefined' ? cookiePolicy.campaigns : true
+  YoutubeLinkEnhancement.prototype.campaignCookiesAllowed = function () {
+    var cookiePolicy = window.GOVUK.getConsentCookie()
+    return cookiePolicy !== null ? cookiePolicy.campaigns : true
   }
 
   YoutubeLinkEnhancement.nextId = function () {
     this.embedCount = this.embedCount || 0
     this.embedCount += 1
     return 'youtube-' + this.embedCount
+  }
+
+  YoutubeLinkEnhancement.insertApiScript = function () {
+    if (this.apiScriptInserted) {
+      return
+    }
+
+    var tag = document.createElement('script')
+    tag.src = 'https://www.youtube.com/player_api'
+    var firstScriptTag = document.getElementsByTagName('script')[0]
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
+    this.apiScriptInserted = true
   }
 
   // This is a public class method so it can be used outside of this embed to
@@ -99,5 +129,17 @@ window.GOVUK = window.GOVUK || {};
     }
   }
 
+  YoutubeLinkEnhancement.apiScriptInserted = false
+  YoutubeLinkEnhancement.playerApiReady = false
+  // an array of functions to be called once the Youtube Player API is ready
+  YoutubeLinkEnhancement.queuedInserts = []
+
+  window.onYouTubePlayerAPIReady = function () {
+    YoutubeLinkEnhancement.playerApiReady = true
+    for (var i = 0; i < YoutubeLinkEnhancement.queuedInserts.length; i++) {
+      YoutubeLinkEnhancement.queuedInserts[i].call()
+    }
+  }
+
   GOVUK.GovspeakYoutubeLinkEnhancement = YoutubeLinkEnhancement
-})(window.GOVUK, window.jQuery)
+})()

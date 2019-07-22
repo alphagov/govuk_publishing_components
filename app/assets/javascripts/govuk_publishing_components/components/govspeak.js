@@ -13,8 +13,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       this.createBarcharts($element)
     }
 
-    this.embedYoutube = function ($element) {
-      var enhancement = new window.GOVUK.GovspeakYoutubeLinkEnhancement($element)
+    this.embedYoutube = function ($jqElement) {
+      var enhancement = new window.GOVUK.GovspeakYoutubeLinkEnhancement($jqElement[0])
       enhancement.init()
     }
 
