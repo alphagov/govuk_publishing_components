@@ -55,6 +55,7 @@
         playerVars: {
           // enables the player to be controlled via IFrame or JavaScript Player API calls
           enablejsapi: 1,
+          origin: window.location.origin,
           // don't show related videos
           rel: 0,
           // disable option to allow single key shortcuts due to (WCAG SC 2.1.4)
