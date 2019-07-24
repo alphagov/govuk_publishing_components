@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Remove expectation that sprockets is installed when used in a Rails app (PR #999)
+* Fix tabs list overwrite on mobile (PR #1003)
 
 ## 17.18.0
 
