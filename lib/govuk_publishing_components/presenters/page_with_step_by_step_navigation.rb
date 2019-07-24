@@ -4,7 +4,7 @@ module GovukPublishingComponents
     # Only used by the step by step component
     class PageWithStepByStepNavigation
       def initialize(content_store_response, current_path, query_parameters = {})
-        @content_item = content_store_response.to_h
+        @content_item = content_store_response.to_h.deep_symbolize_keys
         @current_path = current_path
         @query_parameters = query_parameters
       end
@@ -152,15 +152,15 @@ module GovukPublishingComponents
       end
 
       def parsed_step_navs
-        content_item.dig("links", "part_of_step_navs").to_a
+        content_item.dig(:links, :part_of_step_navs).to_a
       end
 
       def parsed_related_to_step_navs
-        content_item.dig("links", "related_to_step_navs").to_a
+        content_item.dig(:links, :related_to_step_navs).to_a
       end
 
       def parsed_secondary_to_step_navs
-        content_item.dig("links", "secondary_to_step_navs").to_a
+        content_item.dig(:links, :secondary_to_step_navs).to_a
       end
 
       def configure_for_sidebar(step_nav_content)
