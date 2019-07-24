@@ -1,3 +1,5 @@
+return unless Rails.application.config.respond_to?(:assets)
+
 Rails.application.config.assets.precompile += %w(
   component_guide/accessibility-test.js
   component_guide/application.js
