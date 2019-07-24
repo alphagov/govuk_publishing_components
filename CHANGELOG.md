@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 17.19.0
 
 * Remove expectation that sprockets is installed when used in a Rails app (PR #999)
 * Fix tabs list overwrite on mobile (PR #1003)
