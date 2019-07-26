@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 17.9.1
 
 * Replace subscription links images with SVG (PR #1008)
 * Change subscription links CSS (PR #1007)
