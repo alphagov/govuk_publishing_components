@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Change subscription links CSS (PR #1007)
+
 ## 17.9.0
 
 * Remove expectation that sprockets is installed when used in a Rails app (PR #999)

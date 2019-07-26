@@ -8,7 +8,7 @@
 
   .gem-c-subscription-links__list {
     list-style: none;
-    margin: 0 (- govuk-spacing(3) / 2);
+    margin: 0;
     padding: 0;
   }
 
@@ -18,9 +18,12 @@
 
   .gem-c-subscription-links__list-item {
     display: inline-block;
-    margin-left: govuk-spacing(2);
-    margin-right: govuk-spacing(2);
+    margin-right: govuk-spacing(4);
     margin-bottom: govuk-spacing(3);
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
 
   .gem-c-subscription-links__list-item--small {
