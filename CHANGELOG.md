@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Replace subscription links images with SVG (PR #1008)
 * Change subscription links CSS (PR #1007)
 
 ## 17.9.0
