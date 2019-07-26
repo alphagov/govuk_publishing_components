@@ -52,30 +52,6 @@
     }
   }
 
-  .gem-c-subscription-links__link--feed {
-    background-image: image-url("govuk_publishing_components/feed-icon-black.png");
-    padding-left: govuk-spacing(4);
-
-    // if this is a toggle, only show if js is enabled
-    &[data-controls] {
-      display: none;
-
-      .js-enabled & {
-        display: block;
-      }
-    }
-  }
-
-  .gem-c-subscription-links__link--email-alerts {
-    background-image: image-url("govuk_publishing_components/mail-icon.png");
-    padding-left: govuk-spacing(5);
-
-    @include govuk-device-pixel-ratio {
-      background-image: image-url("govuk_publishing_components/mail-icon-x2.png");
-      background-size: govuk-spacing(4) govuk-spacing(3);
-    }
-  }
-
   .gem-c-subscription-links__feed-box {
     padding: govuk-spacing(3);
     margin-bottom: govuk-spacing(3);
@@ -88,5 +64,16 @@
 
   .gem-c-subscription-links__feed-hidden-description {
     @include govuk-visually-hidden;
+  }
+}
+
+.gem-c-subscription-links__icon {
+  margin-right: .1em;
+}
+
+.gem-c-subscription-links__list-item--small {
+  .gem-c-subscription-links__icon {
+    @include scale(.9);
+    transform-origin: bottom left;
   }
 }
