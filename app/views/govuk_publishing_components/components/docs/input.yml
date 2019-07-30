@@ -16,7 +16,7 @@ accessibility_criteria: |
 
   Avoid using autofocus and tabindex unless you have user research to support this behaviour.
 govuk_frontend_components:
-  - input
+  - text-input
 examples:
   default:
     data:
