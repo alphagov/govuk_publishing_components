@@ -36,7 +36,7 @@ describe "Button", type: :view do
 
   it "renders start now button" do
     render_component(text: "Start now", href: "#", start: true)
-    assert_select ".govuk-button[href='#']", text: "Start now"
+    assert_select ".govuk-button[href='#']", text: /Start now/
     assert_select ".govuk-button--start"
   end
 
