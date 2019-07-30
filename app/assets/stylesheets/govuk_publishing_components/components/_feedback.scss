@@ -34,7 +34,7 @@
 }
 
 .gem-c-feedback__column-two-thirds {
-  @include govuk-grid-column(two-thirds)
+  @include govuk-grid-column($width: two-thirds)
 }
 
 .gem-c-feedback__prompt {

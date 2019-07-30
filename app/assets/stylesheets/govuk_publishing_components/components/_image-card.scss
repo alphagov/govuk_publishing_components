@@ -7,8 +7,8 @@
 }
 
 .gem-c-image-card__image-wrapper {
-  @include govuk-grid-column(one-third, $class: false, $at: mobile);
-  @include govuk-grid-column(full, $class: false, $at: tablet);
+  @include govuk-grid-column($width: one-third, $at: mobile);
+  @include govuk-grid-column($width: full, $at: tablet);
 
   margin: 0;
 
@@ -29,8 +29,8 @@
 }
 
 .gem-c-image-card__text-wrapper {
-  @include govuk-grid-column(two-thirds, $class: false, $at: mobile);
-  @include govuk-grid-column(full, $class: false, $at: tablet);
+  @include govuk-grid-column($width: two-thirds, $at: mobile);
+  @include govuk-grid-column($width: full, $at: tablet);
 }
 
 .gem-c-image-card__title {
@@ -119,7 +119,7 @@
 
 .gem-c-image-card--large {
   .gem-c-image-card__image-wrapper {
-    @include govuk-grid-column(two-thirds, $class: false, $at: tablet);
+    @include govuk-grid-column($width: two-thirds, $at: tablet);
 
     margin-bottom: govuk-spacing(2);
     float: none;
@@ -134,7 +134,7 @@
   }
 
   .gem-c-image-card__text-wrapper {
-    @include govuk-grid-column(one-third, $class: false, $at: tablet);
+    @include govuk-grid-column($width: one-third, $at: tablet);
 
     padding: 0;
     overflow: hidden;
