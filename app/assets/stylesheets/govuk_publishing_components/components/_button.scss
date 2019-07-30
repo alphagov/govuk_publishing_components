@@ -107,15 +107,3 @@ $gem-quiet-button-hover-colour: darken($gem-quiet-button-colour, 5%);
     content: none;
   }
 }
-
-// Begin adjustments for font baseline offset
-// These should be removed when the font is updated with the correct baseline
-// For the 1px addition please see https://github.com/alphagov/govuk/pull/365#discussion_r154349428
-
-$offset: 2;
-
-.gem-c-button--secondary,
-.gem-c-button--secondary-quiet {
-  padding-top: (govuk-spacing(2) - $govuk-border-width-form-element + $offset); // s1
-  padding-bottom: (govuk-spacing(2) - $govuk-border-width-form-element - $offset + 1); // s1
-}
