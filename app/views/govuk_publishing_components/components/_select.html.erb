@@ -2,6 +2,7 @@
   options ||= []
   id ||= false
   label ||= false
+  full_width ||= false
 
   select_helper = GovukPublishingComponents::Presenters::SelectHelper.new(options)
   data_module = "data-module=track-select-change" unless select_helper.data_tracking?.eql?(false)
@@ -11,7 +12,7 @@
     <label class="govuk-label" for="<%= id %>">
       <%= label %>
     </label>
-    <select class="govuk-select" id="<%= id %>" name="<%= id %>" <%= data_module %> >
+    <select class="govuk-select <%= 'gem-c-select__select--full-width' if full_width %>" id="<%= id %>" name="<%= id %>" <%= data_module %> >
       <%= options_for_select(select_helper.option_markup, select_helper.selected_option) %>
     </select>
   </div>

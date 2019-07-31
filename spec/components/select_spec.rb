@@ -170,4 +170,21 @@ describe "Select", type: :view do
     assert_select ".gem-c-select [data-module=track-select-change]", false
     assert_select ".gem-c-select [data-another-attribute=test1][data-second-item=item1][data-option=option1]"
   end
+
+  it "renders a select box full width" do
+    render_component(
+      id: "mydropdown",
+      label: "My dropdown",
+      full_width: true,
+      options: [
+        {
+          value: "government-gateway",
+          text: "Use Government Gateway"
+        }
+      ]
+    )
+
+    assert_select "select[name=mydropdown]"
+    assert_select ".gem-c-select .gem-c-select__select--full-width"
+  end
 end
