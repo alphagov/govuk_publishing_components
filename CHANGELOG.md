@@ -10,9 +10,9 @@
 ## Unreleased
 
 * Add full width option to select component (PR #1012)
+* Change statistics header link to link to new finder (PR #1015)
 
 ## 17.19.1
-
 * Replace subscription links images with SVG (PR #1008)
 * Change subscription links CSS (PR #1007)
 

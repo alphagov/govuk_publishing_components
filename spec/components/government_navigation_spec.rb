@@ -12,6 +12,7 @@ describe "Government navigation", type: :view do
     assert_link_with_text("/government/organisations", "Departments")
     assert_link_with_text("/news-and-communications", "News and communications")
     assert_link_with_text("/search/policy-papers-and-consultations?content_store_document_type[]=open_consultations&amp;content_store_document_type[]=closed_consultations", "Consultations")
+    assert_link_with_text("/search/research-and-statistics", "Statistics")
   end
 
   it "has no active links by default" do
