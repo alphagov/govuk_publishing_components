@@ -7,8 +7,6 @@
 @import "govuk/helpers/all";
 @import "govuk/core/all";
 
-@include _govuk-font-face-gds-transport;
-
 .component-guide-wrapper {
   padding-bottom: $govuk-gutter * 1.5;
 }
