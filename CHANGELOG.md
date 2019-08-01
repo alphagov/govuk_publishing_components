@@ -7,12 +7,16 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## 17.9.1
+## Unreleased
+
+* Add full width option to select component (PR #1012)
+
+## 17.19.1
 
 * Replace subscription links images with SVG (PR #1008)
 * Change subscription links CSS (PR #1007)
 
-## 17.9.0
+## 17.19.0
 
 * Remove expectation that sprockets is installed when used in a Rails app (PR #999)
 * Fix tabs list overwrite on mobile (PR #1003)

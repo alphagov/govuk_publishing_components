@@ -79,4 +79,17 @@ examples:
         value: 'option2'
       - text: 'Option three'
         value: 'option3'
+  full_width:
+    description: Make the select width 100%. This is used for facets in finder-frontend's search.
+    data:
+      id: 'dropdown5'
+      label: 'Really wide'
+      full_width: true
+      options:
+      - text: 'Option one'
+        value: 'option1'
+      - text: 'Option two'
+        value: 'option2'
+      - text: 'Option three'
+        value: 'option3'
 
