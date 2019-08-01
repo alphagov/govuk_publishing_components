@@ -33,10 +33,6 @@
   }
 }
 
-.gem-c-feedback__column-two-thirds {
-  @include govuk-grid-column($width: two-thirds)
-}
-
 .gem-c-feedback__prompt {
   @include govuk-clearfix;
   background-color: govuk-colour("blue");
@@ -136,12 +132,6 @@
   display: block;
   padding: 4px 0 0;
   color: $govuk-error-colour;
-}
-
-.gem-c-feedback__survey-container {
-  @include govuk-media-query($until: tablet) {
-    padding: govuk-spacing(4);
-  }
 }
 
 .gem-c-feedback__form {
