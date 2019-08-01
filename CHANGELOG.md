@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add tests for email feedback form (PR #1017)
+
 ## 17.20.0
 
 * Add full width option to select component (PR #1012)

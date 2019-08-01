@@ -55,6 +55,7 @@ describe('Feedback component', function () {
         '<div class="column-two-thirds">' +
           '<div class="gem-c-feedback__error-summary js-hidden js-errors" tabindex="-1"></div>' +
           '<input name="email_survey_signup[survey_source]" type="hidden" value="a_source">' +
+          '<input name="email_survey_signup[survey_id]" type="hidden" value="an_id">' +
 
           '<h2 class="gem-c-feedback__form-heading">Help us improve GOV.UK</h2>' +
           '<p class="gem-c-feedback__form-paragraph">To help us improve GOV.UK, we\'d like to know more about your visit today. We\'ll send you a link to a feedback form. It will take only 2 minutes to fill in. Don\'t worry we won\'t send you spam or share your email address with anyone.</p>' +
@@ -487,7 +488,8 @@ describe('Feedback component', function () {
       expect(request.data()).toEqual({
         'email_survey_signup[email_address]': ['test@test.com'],
         'email_survey_signup[ga_client_id]': ['111111111.1111111111'],
-        'email_survey_signup[survey_source]': ['a_source']
+        'email_survey_signup[survey_source]': ['a_source'],
+        'email_survey_signup[survey_id]': ['an_id']
       })
     })
 
