@@ -27,7 +27,7 @@
 
   &:hover,
   &:active {
-    background-color: govuk-colour("light-grey");
+    background-color: govuk-colour("light-grey", $legacy: "grey-4");
   }
 }
 

@@ -37,10 +37,10 @@
 
 .gem-c-highlight-boxes__item {
   box-sizing: border-box;
-  border: 1px solid govuk-colour("mid-grey");
+  border: 1px solid govuk-colour("mid-grey", $legacy: "grey-2");
   padding: govuk-spacing(3) * 1.5;
   height: 100%;
-  box-shadow: 7px 7px 0 govuk-colour("white"), 8px 8px 0 govuk-colour("mid-grey");
+  box-shadow: 7px 7px 0 govuk-colour("white"), 8px 8px 0 govuk-colour("mid-grey", $legacy: "grey-2");
 }
 
 .gem-c-highlight-boxes--inverse {

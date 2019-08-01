@@ -26,7 +26,7 @@
 
   $chart-border: govuk-colour("white"); // Chart border colour
   $key-border: govuk-colour("white"); // Key border colour
-  $bar-colours: govuk-colour("blue"), govuk-colour("turquoise"), govuk-colour("green"), govuk-colour("light-green"), govuk-colour("yellow"), govuk-colour("orange"), govuk-colour("red"), govuk-colour("red");
+  $bar-colours: govuk-colour("blue"), govuk-colour("turquoise"), govuk-colour("green"), govuk-colour("light-green"), govuk-colour("yellow"), govuk-colour("orange"), govuk-colour("red"), govuk-colour("bright-purple", $legacy: "bright-red");
   $bar-cell-colour: #ebebeb;
   $bar-outdented-colour: #111111;
 
