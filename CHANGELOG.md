@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 17.20.0
 
 * Add full width option to select component (PR #1012)
 * Change statistics header link to link to new finder (PR #1015)
