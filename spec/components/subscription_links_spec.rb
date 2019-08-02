@@ -101,4 +101,26 @@ describe "subscription links", type: :view do
       assert_select "h2.gem-c-subscription-links__hidden-header", false
     end
   end
+
+  it "adds a lang attribute when set" do
+    render_component(
+      email_signup_link: 'email-signup',
+      email_signup_link_text: 'Get email!',
+      email_signup_link_text_locale: 'en',
+      feed_link: 'singapore.atom',
+      feed_link_text: 'View feed!',
+      feed_link_text_locale: 'en',
+    )
+    assert_select ".gem-c-subscription-links__link[lang='en']", 2
+  end
+
+  it "no lang attribute is added when not set" do
+    render_component(
+      email_signup_link: 'email-signup',
+      email_signup_link_text: 'Get email!',
+      feed_link: 'singapore.atom',
+      feed_link_text: 'View feed!',
+    )
+    assert_select ".gem-c-subscription-links__link[lang]", false
+  end
 end
