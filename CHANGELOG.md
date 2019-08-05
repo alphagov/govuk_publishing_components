@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add tests for email feedback form (PR #1017)
+* Add `lang` attribute option to subscription links (PR #1019)
 
 ## 17.20.0
 

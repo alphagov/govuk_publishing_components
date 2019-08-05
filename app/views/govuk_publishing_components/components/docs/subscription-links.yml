@@ -81,9 +81,20 @@ examples:
       small_form: true
   without_heading:
     description: |
-      By default the component includes an h2 heading. The component could be used anywhere on the page and could mean
-      that it produces invalid markup or make the site unaccessible.
+      By default the component includes an h2 heading. The component could be used anywhere on the page and could mean that it produces invalid markup or make the site unaccessible.
     data:
       email_signup_link: '/foreign-travel-advice/singapore/email-signup'
       feed_link: '/foreign-travel-advice/singapore.atom'
       hide_heading: true
+  with_a_different_language:
+    data:
+      email_signup_link: '/foreign-travel-advice/singapore/email-signup'
+      email_signup_link_text: 'Recevez des notifications'
+      email_signup_link_text_locale: 'fr'
+      feed_link: '/foreign-travel-advice/singapore.atom'
+      feed_link_text: 'Flux RSS'
+      feed_link_text_locale: 'fr'
+    description: |
+      The component is used on translated pages that don't have a translation for the text strings. This means that it could display the fallback English string if the translate method can't find an appropriate translation. This makes sure that the `lang` can be set to ensure that browsers understand which parts of the page are in each language.
+
+      The `lang` attribute **must** be set to a [valid BCP47 string](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang#Language_tag_syntax). A valid code can be the two or three letter language code - for example, English is `en` or `eng`, Korean is `ko` or `kor` - but if in doubt please check.
