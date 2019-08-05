@@ -8,6 +8,16 @@
   of the commit log.
 
 ## Unreleased
+
+* BREAKING: Update to [govuk-frontend 3.0.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.0.0) (PR #1010)
+
+  You must make the following changes when you migrate to this release:
+  - Check application's dependencies on deprecated projects (`govuk_frontend_toolkit`, `govuk_elements_rails` and `govuk_template`) and set [compatibility flags](https://govuk-frontend-review.herokuapp.com/docs/#settings/compatibility) appropriately before importing `govuk_publishing_components`. Note that all applications that rely on a layout from static depend indirectly on `govuk_template` and most frontend applications rely on `govuk_frontend_toolkit`. [Example commit](https://github.com/alphagov/calendars/commit/edd649e6c2c7732d4a2e44713dd9463feeaf990b)
+  - Update [`govuk-colour` mixins](https://govuk-frontend-review.herokuapp.com/docs/#helpers/colour-function-govuk-colour) to support legacy colours. [Example commit](https://github.com/alphagov/calendars/commit/ccd2b25873ee026858958d4732d42071bea57255)
+  - Check [govuk-frontend 3.0 changelog](https://github.com/alphagov/govuk-frontend/releases/tag/v3.0.0) to see if and how the breaking release affects your application.
+
+* Update feedback component to use govuk-frontend layout classes (PR #1010)
+* Fix focus and hover states for breadcrumbs, contents-list, highlight-boxes, modal-dialogue, step-by-step-nav, previous-and-next-navigation and title component (PR #1010)
 * Normalise falsey values to nil for subscription links component (PR #1021)
 
 ## 17.21.0
