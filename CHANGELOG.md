@@ -11,6 +11,7 @@
 
 * Add tests for email feedback form (PR #1017)
 * Add `lang` attribute option to subscription links (PR #1019)
+* Fix for select height zoom problem (PR #1018)
 
 ## 17.20.0
 
@@ -18,6 +19,7 @@
 * Change statistics header link to link to new finder (PR #1015)
 
 ## 17.19.1
+
 * Replace subscription links images with SVG (PR #1008)
 * Change subscription links CSS (PR #1007)
 
