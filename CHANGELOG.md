@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 17.21.0
 
 * Add tests for email feedback form (PR #1017)
 * Add `lang` attribute option to subscription links (PR #1019)
