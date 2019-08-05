@@ -16,7 +16,7 @@ body: |
   [header]: /component-guide/step_by_step_nav_header
   [footer]: /component-guide/contextual_footer
   [sidebar]: /component-guide/contextual_sidebar
-  [breadcrumbs]: https://govuk-publishing-components.herokuapp.com/component-guide/breadcrumbs
+  [breadcrumbs]: https://components.publishing.service.gov.uk/component-guide/breadcrumbs
 accessibility_criteria: |
   Components called by this component must be accessible
 examples:
