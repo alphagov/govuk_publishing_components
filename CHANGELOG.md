@@ -7,6 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+* Normalise falsey values to nil for subscription links component (PR #1021)
+
 ## 17.21.0
 
 * Add tests for email feedback form (PR #1017)
