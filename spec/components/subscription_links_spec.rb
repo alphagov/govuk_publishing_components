@@ -106,12 +106,13 @@ describe "subscription links", type: :view do
     render_component(
       email_signup_link: 'email-signup',
       email_signup_link_text: 'Get email!',
-      email_signup_link_text_locale: 'en',
+      email_signup_link_text_locale: 'es',
       feed_link: 'singapore.atom',
       feed_link_text: 'View feed!',
-      feed_link_text_locale: 'en',
+      feed_link_text_locale: 'fr',
     )
-    assert_select ".gem-c-subscription-links__link[lang='en']", 2
+    assert_select ".gem-c-subscription-links__link[lang='es']", 1
+    assert_select ".gem-c-subscription-links__link[lang='fr']", 1
   end
 
   it "no lang attribute is added when not set" do
@@ -120,6 +121,36 @@ describe "subscription links", type: :view do
       email_signup_link_text: 'Get email!',
       feed_link: 'singapore.atom',
       feed_link_text: 'View feed!',
+    )
+    assert_select ".gem-c-subscription-links__link[lang]", false
+  end
+
+  it "no lang attribute set when locale is set but empty" do
+    render_component(
+      email_signup_link: 'email-signup',
+      email_signup_link_text_locale: '',
+      feed_link: 'singapore.atom',
+      feed_link_text_locale: '',
+    )
+    assert_select ".gem-c-subscription-links__link[lang]", false
+  end
+
+  it "no lang attribute set when locale is false" do
+    render_component(
+      email_signup_link: 'email-signup',
+      email_signup_link_text_locale: false,
+      feed_link: 'singapore.atom',
+      feed_link_text_locale: false,
+    )
+    assert_select ".gem-c-subscription-links__link[lang]", false
+  end
+
+  it "no lang attribute set when locale is nil" do
+    render_component(
+      email_signup_link: 'email-signup',
+      email_signup_link_text_locale: nil,
+      feed_link: 'singapore.atom',
+      feed_link_text_locale: nil,
     )
     assert_select ".gem-c-subscription-links__link[lang]", false
   end
