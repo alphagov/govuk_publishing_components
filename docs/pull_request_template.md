@@ -10,5 +10,5 @@
 
 <!--
 ## View Changes
-https://govuk-publishing-compon-pr-[PR-NUMBER].herokuapp.com/
+https://govuk-publishing-compo-pr-[PR-NUMBER].herokuapp.com/
 -->
