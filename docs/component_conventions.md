@@ -51,7 +51,7 @@ Example:
 <% endif %>
 ```
 
-If a component includes a heading, consider including an option to control the heading level (see the [heading component](https://govuk-publishing-components.herokuapp.com/component-guide/heading/specific_heading_level) for example).
+If a component includes a heading, consider including an option to control the heading level (see the [heading component](https://components.publishing.service.gov.uk/component-guide/heading/specific_heading_level) for example).
 
 Components can use other components within their template, if required (see the [input component](https://github.com/alphagov/govuk_publishing_components/blob/master/app/views/govuk_publishing_components/components/_input.html.erb#L37) for example).
 
@@ -252,7 +252,7 @@ Follow the [GOV.UK Frontend JS conventions](https://github.com/alphagov/govuk-fr
 
 Scripts should use the [module pattern provided by govuk_frontend_toolkit](https://github.com/alphagov/govuk_frontend_toolkit/blob/master/docs/javascript.md#modules) and be linted using [StandardJS](https://standardjs.com/).
 
-Most components should have an option to include arbitrary data attributes (see the [checkboxes component](https://govuk-publishing-components.herokuapp.com/component-guide/checkboxes/checkboxes_with_data_attributes) for example). These can be used for many purposes including tracking (see the [select component](https://govuk-publishing-components.herokuapp.com/component-guide/select/with_tracking) for [example code](https://github.com/alphagov/govuk_publishing_components/blob/master/app/assets/javascripts/govuk_publishing_components/components/select.js)) but specific tracking should only be added to a component where there is a real need for it.
+Most components should have an option to include arbitrary data attributes (see the [checkboxes component](https://components.publishing.service.gov.uk/component-guide/checkboxes/checkboxes_with_data_attributes) for example). These can be used for many purposes including tracking (see the [select component](https://components.publishing.service.gov.uk/component-guide/select/with_tracking) for [example code](https://github.com/alphagov/govuk_publishing_components/blob/master/app/assets/javascripts/govuk_publishing_components/components/select.js)) but specific tracking should only be added to a component where there is a real need for it.
 
 Some [common Javascript modules](https://github.com/alphagov/govuk_publishing_components/tree/master/app/assets/javascripts/govuk_publishing_components/lib) are available. If new functionality is required, consider adding it as a common module.
 

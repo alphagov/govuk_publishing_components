@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  if Rails.env.production?
+    constraints(host: "govuk-publishing-components.herokuapp.com") do
+      match "/(*path)" => redirect { |params, _req|
+                            "https://components.publishing.service.gov.uk/#{params[:path]}"
+                          }, via: %i[get post]
+    end
+  end
+
   mount GovukPublishingComponents::Engine, at: "/component-guide"
   root to: redirect('/component-guide')
   get 'test', to: 'welcome#index'
