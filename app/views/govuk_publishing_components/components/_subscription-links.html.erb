@@ -16,8 +16,8 @@
 
   hide_heading ||= false
 
-  email_signup_link_text_locale = local_assigns[:email_signup_link_text_locale]
-  feed_link_text_locale = local_assigns[:feed_link_text_locale]
+  email_signup_link_text_locale = local_assigns[:email_signup_link_text_locale].presence
+  feed_link_text_locale = local_assigns[:feed_link_text_locale].presence
 %>
 <% if sl_helper.component_data_is_valid? %>
   <%= tag.section class: css_classes, data: data do %>
