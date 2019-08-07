@@ -8,8 +8,9 @@
     width_class = "govuk-width-container"
   end
 %>
-<header class="gem-c-layout-header govuk-header gem-c-layout-header--<%= environment %>" role="banner" data-module="govuk-header">
+<header class="gem-c-layout-header govuk-header gem-c-layout-header--<%= environment %> govuk-grid-row" role="banner" data-module="govuk-header">
   <div class="govuk-header__container <%= width_class %>">
+    <div class="govuk-grid-column-two-thirds">
     <div class="govuk-header__logo gem-c-header__logo">
       <a href="/" class="govuk-header__link govuk-header__link--homepage">
         <span class="govuk-header__logotype">
@@ -23,14 +24,14 @@
             GOV.UK
           </span>
         </span>
-
-        <span class="govuk-header__product-name gem-c-header__product-name">
-          <%= product_name %>
-        </span>
-
-        <span class="gem-c-environment-tag govuk-tag gem-c-environment-tag--<%= environment %>">
-          <%= environment %>
-        </span>
+        <% unless local_assigns[:hide_product_details] %>
+          <span class="govuk-header__product-name gem-c-header__product-nam">
+            <%= product_name %>
+          </span>
+          <span class="gem-c-environment-tag govuk-tag gem-c-environment-tag--<%= environment %>">
+            <%= environment %>
+          </span>
+        <% end %>
       </a>
 
     </div><div class="govuk-header__content gem-c-header__content">
@@ -54,5 +55,16 @@
     <% end %>
 
     </div>
+    </div>
+
+    <% if local_assigns[:search] %>
+        <div class="govuk-grid-column-one-third">
+          <%= render "govuk_publishing_components/components/search", {
+            id: "site-search-text",
+            label_text: "Search",
+          } %>
+        </div>
+    <% end %>
+
   </div>
 </header>
