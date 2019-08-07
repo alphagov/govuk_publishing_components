@@ -1,13 +1,16 @@
 <%
   full_width ||= false
   product_name ||= "Publishing"
+  public_environment = environment.eql?("public")
   navigation_items ||= []
+
   if full_width
     width_class = "govuk-header__container--full-width"
   else
     width_class = "govuk-width-container"
   end
 %>
+
 <header class="gem-c-layout-header govuk-header gem-c-layout-header--<%= environment %> govuk-grid-row" role="banner" data-module="govuk-header">
   <div class="govuk-header__container <%= width_class %>">
     <div class="govuk-grid-column-two-thirds">
@@ -24,8 +27,8 @@
             GOV.UK
           </span>
         </span>
-        <% unless local_assigns[:hide_product_details] %>
-          <span class="govuk-header__product-name gem-c-header__product-nam">
+        <% unless public_environment %>
+          <span class="govuk-header__product-name gem-c-header__product-name">
             <%= product_name %>
           </span>
           <span class="gem-c-environment-tag govuk-tag gem-c-environment-tag--<%= environment %>">
@@ -33,9 +36,7 @@
           </span>
         <% end %>
       </a>
-
     </div><div class="govuk-header__content gem-c-header__content">
-
     <% if navigation_items.any? %>
     <button role="button" class="govuk-header__menu-button gem-c-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
     <nav class="gem-c-header__nav">
