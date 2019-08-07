@@ -31,13 +31,16 @@
     <%= yield :head %>
   </head>
   <body class="gem-c-layout-for-public">
-    <%= render "govuk_publishing_components/components/layout_header", {
-      environment: "public",
-      hide_product_details: true,
-      search: true
+    <%= render "govuk_publishing_components/components/skip_link", {
+      href: "#content"
     } %>
 
-    <main class="govuk-width-container">
+    <%= render "govuk_publishing_components/components/layout_header", {
+      environment: "public",
+      search: true,
+    } %>
+
+    <main class="govuk-width-container" id="content">
       <%= yield %>
     </main>
 
