@@ -1,12 +1,8 @@
 <%
   title ||= "GOV.UK - The best place to find government services and information"
   html_lang ||= "en"
-  full_width ||= false
-  without_search ||= false
-  omit_header ||= false
-  body_classes ||= ""
-  main_classes ||= ""
--%>
+%>
+
 <!DOCTYPE html>
   <!--[if lt IE 9]><html class="lte-ie8" lang="<%= html_lang %>"><![endif]-->
   <!--[if gt IE 8]><!--><html lang="<%= html_lang %>"><!--<![endif]-->
@@ -16,54 +12,37 @@
 
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag "application", media: "all", 'data-turbolinks-track': "reload" %>
-    <%= stylesheet_link_tag "print", media: "print" %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'print', media: 'print' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <link rel="shortcut icon" href="<%= asset_path 'favicon.ico' %>" type="image/x-icon" />
-    <link rel="mask-icon" href="<%= asset_path 'govuk-mask-icon.svg' %>" color="#0b0c0c">
-    <link rel="apple-touch-icon" sizes="180x180" href="<%= asset_path "govuk-apple-touch-icon-180x180.png" %>">
-    <link rel="apple-touch-icon" sizes="167x167" href="<%= asset_path "govuk-apple-touch-icon-167x167.png" %>">
-    <link rel="apple-touch-icon" sizes="152x152" href="<%= asset_path "govuk-apple-touch-icon-152x152.png" %>">
-    <link rel="apple-touch-icon" href="<%= asset_path "govuk-apple-touch-icon.png" %>">
+    <%= stylesheet_link_tag "fonts.css", media: "all", integrity: true, crossorigin: "anonymous" %>
+    <!--[if lt IE 9]><%= javascript_include_tag "ie.js", integrity: true, crossorigin: "anonymous" %><![endif]-->
 
+    <%# the colour used for theme-color is the standard palette $black from
+        https://github.com/alphagov/govuk_frontend_toolkit/blob/master/stylesheets/colours/_palette.scss %>
     <meta name="theme-color" content="#0b0c0c" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Ensure that older IE versions always render with the correct rendering engine -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <!-- The default og:image is added below :head so that scrapers see any custom metatags first, and this is just a fallback -->
-    <meta property="og:image" content="<%= asset_path "govuk-opengraph-image.png" %>">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <%# The default og:image is added below :head so that scrapers see any custom metatags first, and this is just a fallback %>
+    <meta property="og:image" content="<%= asset_path "opengraph-image.png" %>">
 
     <%= yield :head %>
   </head>
-  <body class="gem-c-layout-for-public govuk-template__body <%= body_classes %>">
-    <script>
-      document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
-    </script>
-
-    <%= render "govuk_publishing_components/components/skip_link", {
-      href: "#content"
+  <body class="gem-c-layout-for-public">
+    <%= render "govuk_publishing_components/components/layout_header", {
+      environment: "public",
+      hide_product_details: true,
+      search: true
     } %>
 
-    <%= render "govuk_publishing_components/components/cookie_banner" %>
-
-    <% unless omit_header %>
-      <%= render "govuk_publishing_components/components/layout_header", {
-        environment: "public",
-        search: !without_search,
-        remove_bottom_border: full_width,
-      } %>
-    <% end %>
-
-    <main class="<%= "govuk-width-container govuk-main-wrapper" unless full_width %> <%= main_classes %>" id="content">
+    <main class="govuk-width-container">
       <%= yield %>
     </main>
 
-    <%= render "govuk_publishing_components/components/feedback", {} %>
-
     <% unless local_assigns[:hide_footer_links] %>
       <%= render "govuk_publishing_components/components/layout_footer", {
-        with_border: true,
         navigation: [
           {
             title: "Prepare for Brexit",
@@ -432,7 +411,6 @@
         }
       } %>
     <% end %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>
 <!-- Thanks Martha -->
