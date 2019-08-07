@@ -35,7 +35,10 @@ examples:
       hint_id: "should-match-aria-describedby-input-bold"
       hint_text: "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
   inside_a_radio_component:
-    description: Then the label is used inside the [radio component](/component-guide/radio) additional classes are required on the radio, which are added by this option. This is already handled by the radio component and is a specific use case, but is worth documenting.
+    description: |
+      When the label is used inside the [radio component](/component-guide/radio) additional classes are required on the radio, which are added by this option. This is already handled by the radio component and is a specific use case, but is worth documenting.
+
+      Note that this example will not render correctly - do not be alarmed. It only works properly when inside the radio component.
     data:
       text: "National Insurance number"
       html_for: "id-that-matches-input"
