@@ -90,6 +90,10 @@ module GovukPublishingComponents
         related_navigation.flat_map(&:last).any?
       end
 
+      def t_locale_check(locale)
+        locale.presence unless locale.eql?(I18n.locale.to_s)
+      end
+
     private
 
       def related_items
@@ -184,7 +188,13 @@ module GovukPublishingComponents
           links = links.find_all { |link| link['document_type'] == only }
         end
 
-        links.map { |link| { path: link['base_path'], text: link['title'] } }
+        links.map { |link|
+          {
+            path: link['base_path'],
+            text: link['title'],
+            locale: link['locale'],
+          }
+        }
       end
     end
   end

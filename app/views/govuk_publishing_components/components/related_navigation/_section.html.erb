@@ -28,6 +28,7 @@
           link[:path],
           class: related_nav_helper.section_css_class("gem-c-related-navigation__section-link", section_title, link),
           rel: link[:rel],
+          lang: related_nav_helper.t_locale_check(link[:locale]),
           data: {
             track_category: 'relatedLinkClicked',
             track_action: "#{section_index}.#{index} #{related_nav_helper.construct_section_heading(section_title) || t('components.related_navigation.related_content')}",
