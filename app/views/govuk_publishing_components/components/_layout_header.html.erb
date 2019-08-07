@@ -11,6 +11,7 @@
 %>
 <header class="gem-c-layout-header govuk-header gem-c-layout-header--<%= environment %>" role="banner" data-module="govuk-header">
   <div class="govuk-header__container <%= width_class %>">
+    <div class="govuk-grid-column-two-thirds">
     <div class="govuk-header__logo gem-c-header__logo">
       <a href="/" class="govuk-header__link govuk-header__link--homepage">
         <span class="govuk-header__logotype">
@@ -57,5 +58,16 @@
     <% end %>
 
     </div>
+    </div>
+
+    <% if local_assigns[:search] %>
+        <div class="govuk-grid-column-one-third">
+          <%= render "govuk_publishing_components/components/search", {
+            id: "site-search-text",
+            label_text: "Search",
+          } %>
+        </div>
+    <% end %>
+
   </div>
 </header>
