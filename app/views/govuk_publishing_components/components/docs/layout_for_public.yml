@@ -1,0 +1,13 @@
+name: Public layout
+description: A layout to be used by public-facing applications
+body: |
+  Because it is an entire HTML document, this component can only be [previewed on a separate page](/public).
+
+display_preview: false
+display_html: true
+examples:
+  default:
+    data:
+      title: 'Example layout'
+      block: |
+        <!-- Page content goes here -->

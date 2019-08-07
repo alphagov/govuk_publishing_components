@@ -20,6 +20,10 @@ class WelcomeController < ApplicationController
     render "admin_example", layout: "dummy_admin_layout"
   end
 
+  def public
+    render 'public_example', layout: 'dummy_public_layout'
+  end
+
   def tabsexample
     render "tabs_example", layout: "dummy_admin_layout"
   end
