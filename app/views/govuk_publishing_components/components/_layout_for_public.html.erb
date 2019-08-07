@@ -29,7 +29,11 @@
 
     <%= yield :head %>
   </head>
-  <body class="gem-c-layout-for-public">
+  <body class="gem-c-layout-for-public govuk-template__body">
+    <script>
+      document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
+    </script>
+
     <%= render "govuk_publishing_components/components/skip_link", {
       href: "#content"
     } %>
