@@ -50,6 +50,10 @@ $top-border: solid 2px $grey-3;
   background: none;
   border: 0;
   margin: 0;
+
+  &:focus {
+    @include govuk-focused-text;
+  }
 }
 
 // removes extra dotted outline from buttons in Firefox
@@ -238,7 +242,11 @@ $top-border: solid 2px $grey-3;
 
   .gem-c-step-nav__button {
     &:focus {
-      outline: $govuk-focus-width solid $govuk-focus-colour;
+      @include govuk-focused-text;
+
+      .gem-c-step-nav__toggle-link {
+        @include govuk-focused-text;
+      }
     }
   }
 
@@ -250,6 +258,12 @@ $top-border: solid 2px $grey-3;
 
     .gem-c-step-nav__toggle-link {
       text-decoration: underline;
+    }
+  }
+
+  &:focus {
+    .gem-c-step-nav__button {
+      color: $govuk-focus-text-colour;
     }
   }
 
