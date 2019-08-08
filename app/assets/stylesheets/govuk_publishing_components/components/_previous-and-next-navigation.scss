@@ -29,6 +29,10 @@
   &:active {
     background-color: govuk-colour("light-grey", $legacy: "grey-4");
   }
+
+  &:focus {
+    @include govuk-focused-text;
+  }
 }
 
 .gem-c-pagination__link-title {
