@@ -23,7 +23,6 @@
     <link rel="apple-touch-icon" href="<%= asset_path "govuk-apple-touch-icon.png" %>">
 
     <meta name="theme-color" content="#0b0c0c" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Ensure that older IE versions always render with the correct rendering engine -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -41,6 +40,8 @@
     <%= render "govuk_publishing_components/components/skip_link", {
       href: "#content"
     } %>
+
+    <%= render "govuk_publishing_components/components/cookie_banner" %>
 
     <%= render "govuk_publishing_components/components/layout_header", {
       environment: "public",
