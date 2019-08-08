@@ -18,8 +18,13 @@
   border-bottom-color: govuk-colour("dark-grey", $legacy: "grey-1");
 }
 
+.gem-c-layout-header__logo,
+.gem-c-layout-header__search {
+  padding: 0;
+}
+
 .gem-c-header__logo {
-  width: auto;
+  white-space: nowrap;
 }
 
 .gem-c-header__content {
