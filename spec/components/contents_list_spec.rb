@@ -137,4 +137,9 @@ describe "Contents list", type: :view do
     render_component(contents: nested_contents_list, hide_title: true)
     assert_select ".gem-c-contents-list__title", false
   end
+
+  it "adds an inverse class if inverse flag is passed" do
+    render_component(contents: nested_contents_list, inverse: true)
+    assert_select ".gem-c-contents-list--inverse"
+  end
 end
