@@ -1,5 +1,5 @@
-$highlight-answer-bg-color: #28a197;
-$highlight-answer-color: #ffffff;
+$highlight-answer-bg-color: govuk-colour("green");
+$highlight-answer-color: govuk-colour("white");
 
 .gem-c-govspeak .highlight-answer {
   background-color: $highlight-answer-bg-color;
