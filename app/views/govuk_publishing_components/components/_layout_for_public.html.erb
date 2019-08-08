@@ -20,9 +20,7 @@
     <%# the colour used for theme-color is the standard palette $black from
         https://github.com/alphagov/govuk_frontend_toolkit/blob/master/stylesheets/colours/_palette.scss %>
     <meta name="theme-color" content="#0b0c0c" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <%# The default og:image is added below :head so that scrapers see any custom metatags first, and this is just a fallback %>
     <meta property="og:image" content="<%= asset_path "opengraph-image.png" %>">
 
@@ -36,6 +34,8 @@
     <%= render "govuk_publishing_components/components/skip_link", {
       href: "#content"
     } %>
+
+    <%= render "govuk_publishing_components/components/cookie_banner" %>
 
     <%= render "govuk_publishing_components/components/layout_header", {
       environment: "public",
