@@ -21,14 +21,17 @@
 
   &:hover,
   &:active,
-  &:visited,
-  &:focus {
+  &:visited {
     color: $govuk-link-colour;
   }
 
   &:hover,
   &:active {
-    background-color: govuk-colour("grey-4");
+    background-color: govuk-colour("light-grey", $legacy: "grey-4");
+  }
+
+  &:focus {
+    @include govuk-focused-text;
   }
 }
 

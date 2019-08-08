@@ -76,7 +76,10 @@
 
   a {
     @include govuk-link-style-default;
-    @include govuk-focusable-fill;
+
+    &:focus {
+      @include govuk-focused-text;
+    }
   }
 
   // Lists

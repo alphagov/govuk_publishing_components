@@ -1,9 +1,23 @@
 <% button = GovukPublishingComponents::Presenters::ButtonHelper.new(local_assigns) %>
 
+<% start_icon = capture do %>
+  <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" role="presentation" focusable="false">
+    <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z" />
+  </svg>
+<% end %>
+
+<%
+  if button.start
+    button_text = button.text + start_icon
+  else
+    button_text = button.text
+  end
+%>
+
 <% if button.link? %>
-  <%= link_to button.text, button.href, button.html_options %>
+  <%= link_to button_text, button.href, button.html_options %>
 <% else %>
-  <%= content_tag :button, button.text, button.html_options %>
+  <%= content_tag :button, button_text, button.html_options %>
 <% end %>
 
 <% if button.info_text %>

@@ -1,11 +1,11 @@
-@import "govuk-frontend/components/button/button";
+@import "govuk/components/button/button";
 
 $gem-secondary-button-colour: #00823b;
 $gem-secondary-button-hover-colour: darken($gem-secondary-button-colour, 5%);
 $gem-secondary-button-background-colour: govuk-colour("white");
-$gem-secondary-button-hover-background-colour: govuk-colour("grey-4");
+$gem-secondary-button-hover-background-colour: govuk-colour("light-grey", $legacy: "grey-4");
 
-$gem-quiet-button-colour: govuk-colour("grey-1");
+$gem-quiet-button-colour: govuk-colour("dark-grey", $legacy: "grey-1");
 $gem-quiet-button-hover-colour: darken($gem-quiet-button-colour, 5%);
 
 // Because govuk-frontend adds a responsive bottom margin by default for each component
@@ -106,16 +106,4 @@ $gem-quiet-button-hover-colour: darken($gem-quiet-button-colour, 5%);
   &:before {
     content: none;
   }
-}
-
-// Begin adjustments for font baseline offset
-// These should be removed when the font is updated with the correct baseline
-// For the 1px addition please see https://github.com/alphagov/govuk-frontend/pull/365#discussion_r154349428
-
-$offset: 2;
-
-.gem-c-button--secondary,
-.gem-c-button--secondary-quiet {
-  padding-top: (govuk-spacing(2) - $govuk-border-width-form-element + $offset); // s1
-  padding-bottom: (govuk-spacing(2) - $govuk-border-width-form-element - $offset + 1); // s1
 }

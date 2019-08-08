@@ -1,5 +1,5 @@
 /* eslint-env jquery */
-// = require govuk-frontend/components/checkboxes/checkboxes.js
+// = require govuk/components/checkboxes/checkboxes.js
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 

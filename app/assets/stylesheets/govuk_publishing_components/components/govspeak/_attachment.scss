@@ -49,7 +49,7 @@
           // width above.
           // http://www.456bereastreet.com/archive/201202/using_max-width_on_images_can_make_them_disappear_in_ie8/
           max-width: none;
-          border: $govuk-border-width solid govuk-colour("grey-3");
+          border: $govuk-border-width solid govuk-colour("mid-grey", $legacy: "grey-3");
         }
 
         box-shadow: 0 2px 2px rgba(govuk-colour("black"), .4);

@@ -40,7 +40,7 @@
 }
 
 .gem-c-document-list__item-context {
-  color: govuk-colour("grey-1");
+  color: govuk-colour("dark-grey", $legacy: "grey-1");
 }
 
 .gem-c-document-list__item-description {
@@ -88,7 +88,7 @@
 }
 
 .gem-c-document-list__item--highlight {
-  border: 1px solid govuk-colour("grey-2");
+  border: 1px solid govuk-colour("mid-grey", $legacy: "grey-2");
   padding: govuk-spacing(6);
   margin-bottom: govuk-spacing(6);
 

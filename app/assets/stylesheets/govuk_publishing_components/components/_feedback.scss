@@ -33,12 +33,6 @@
   }
 }
 
-@include govuk-grid-row($class: "gem-c-feedback__grid-row");
-
-.gem-c-feedback__column-two-thirds {
-  @include govuk-grid-column(two-thirds, $class: false)
-}
-
 .gem-c-feedback__prompt {
   @include govuk-clearfix;
   background-color: govuk-colour("blue");
@@ -103,7 +97,7 @@
 .gem-c-feedback__error-summary {
   margin-bottom: govuk-spacing(3);
   padding: govuk-spacing(3);
-  border: solid $govuk-border-width-mobile $govuk-error-colour;
+  border: solid $govuk-border-width-narrow $govuk-error-colour;
   clear: both;
 
   &:focus {
@@ -138,12 +132,6 @@
   display: block;
   padding: 4px 0 0;
   color: $govuk-error-colour;
-}
-
-.gem-c-feedback__survey-container {
-  @include govuk-media-query($until: tablet) {
-    padding: govuk-spacing(4);
-  }
 }
 
 .gem-c-feedback__form {

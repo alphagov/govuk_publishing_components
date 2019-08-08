@@ -7,8 +7,8 @@
 }
 
 .gem-c-image-card__image-wrapper {
-  @include govuk-grid-column(one-third, $class: false, $at: mobile);
-  @include govuk-grid-column(full, $class: false, $at: tablet);
+  @include govuk-grid-column($width: one-third, $at: mobile);
+  @include govuk-grid-column($width: full, $at: tablet);
 
   margin: 0;
 
@@ -29,8 +29,8 @@
 }
 
 .gem-c-image-card__text-wrapper {
-  @include govuk-grid-column(two-thirds, $class: false, $at: mobile);
-  @include govuk-grid-column(full, $class: false, $at: tablet);
+  @include govuk-grid-column($width: two-thirds, $at: mobile);
+  @include govuk-grid-column($width: full, $at: tablet);
 }
 
 .gem-c-image-card__title {
@@ -44,6 +44,10 @@
 
   &:hover {
     text-decoration: underline;
+  }
+
+  &:focus {
+    text-decoration: none;
   }
 
   // the after element extends the link to cover the image, removing the
@@ -73,7 +77,7 @@
 .gem-c-image-card__metadata {
   @include govuk-font(14);
   margin: 0 0 (govuk-spacing(3) / 2);
-  color: govuk-colour("grey-1");
+  color: govuk-colour("dark-grey", $legacy: "grey-1");
 
   @include govuk-media-query($from: tablet) {
     margin-bottom: 0;
@@ -119,7 +123,7 @@
 
 .gem-c-image-card--large {
   .gem-c-image-card__image-wrapper {
-    @include govuk-grid-column(two-thirds, $class: false, $at: tablet);
+    @include govuk-grid-column($width: two-thirds, $at: tablet);
 
     margin-bottom: govuk-spacing(2);
     float: none;
@@ -134,7 +138,7 @@
   }
 
   .gem-c-image-card__text-wrapper {
-    @include govuk-grid-column(one-third, $class: false, $at: tablet);
+    @include govuk-grid-column($width: one-third, $at: tablet);
 
     padding: 0;
     overflow: hidden;

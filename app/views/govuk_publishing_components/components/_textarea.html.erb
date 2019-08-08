@@ -20,7 +20,7 @@
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
   css_classes = %w(govuk-textarea)
-  css_classes << "js-character-count" if character_count
+  css_classes << "govuk-js-character-count" if character_count
   css_classes << "govuk-textarea--error" if has_error
   form_group_css_classes = %w(gem-c-textarea govuk-form-group)
   form_group_css_classes << "govuk-form-group--error" if has_error

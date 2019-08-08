@@ -8,7 +8,7 @@
     width_class = "govuk-width-container"
   end
 %>
-<header class="gem-c-layout-header govuk-header gem-c-layout-header--<%= environment %>" role="banner" data-module="header">
+<header class="gem-c-layout-header govuk-header gem-c-layout-header--<%= environment %>" role="banner" data-module="govuk-header">
   <div class="govuk-header__container <%= width_class %>">
     <div class="govuk-header__logo">
       <a href="/" class="govuk-header__link govuk-header__link--homepage">
@@ -36,7 +36,7 @@
     </div><div class="govuk-header__content">
 
     <% if navigation_items.any? %>
-    <button role="button" class="govuk-header__menu-button js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
+    <button role="button" class="govuk-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
     <nav>
       <ul id="navigation" class="govuk-header__navigation govuk-header__navigation--end" aria-label="Top Level Navigation">
         <% navigation_items.each_with_index do |item, index| %>

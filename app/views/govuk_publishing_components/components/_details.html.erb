@@ -1,11 +1,13 @@
 <%
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
-  data_attributes ||= nil
   open ||= nil
   margin_bottom ||= 3
   css_classes = %w(gem-c-details govuk-details)
   css_classes << (shared_helper.get_margin_bottom)
+
+  data_attributes ||= {}
+  data_attributes[:module] = 'govuk-details'
 %>
 <%= tag.details class: css_classes, data: data_attributes, open: open do %>
   <summary class="govuk-details__summary">

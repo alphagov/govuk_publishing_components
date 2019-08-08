@@ -17,7 +17,6 @@ $large-input-size: 50px;
 
 .gem-c-search__input[type="search"] { // overly specific to prevent some overrides from outside
   @include govuk-font($size: 19, $line-height: (28 / 19));
-  @include govuk-focusable;
 
   padding: 6px;
   margin: .5em 0;
@@ -30,14 +29,22 @@ $large-input-size: 50px;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+
+  &:focus {
+    outline: $govuk-focus-width solid $govuk-focus-colour;
+    outline-offset: inherit;
+  }
 }
 
 .gem-c-search__submit {
-  @include govuk-focusable;
   padding: 6px;
   border: 0;
   cursor: pointer;
   border-radius: 0;
+
+  &:focus {
+    outline: $govuk-focus-width solid $govuk-focus-colour;
+  }
 }
 
 .js-enabled {
@@ -132,7 +139,7 @@ $large-input-size: 50px;
   }
 
   .gem-c-search__input[type="search"] {
-    border: solid 1px govuk-colour("grey-2");
+    border: solid 1px govuk-colour("mid-grey", $legacy: "grey-2");
   }
 
   .gem-c-search__submit {

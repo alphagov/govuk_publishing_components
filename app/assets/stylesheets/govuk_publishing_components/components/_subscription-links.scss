@@ -55,7 +55,7 @@
   .gem-c-subscription-links__feed-box {
     padding: govuk-spacing(3);
     margin-bottom: govuk-spacing(3);
-    background: govuk-colour("grey-3");
+    background: govuk-colour("light-grey", $legacy: "grey-3");
 
     .js-enabled &.js-hidden {
       display: none;
