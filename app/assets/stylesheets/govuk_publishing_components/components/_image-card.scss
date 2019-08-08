@@ -46,6 +46,10 @@
     text-decoration: underline;
   }
 
+  &:focus {
+    text-decoration: none;
+  }
+
   // the after element extends the link to cover the image, removing the
   // need for a duplicate link. Other elements apart from the image are given
   // position relative and a higher z-index to put them above the after element
