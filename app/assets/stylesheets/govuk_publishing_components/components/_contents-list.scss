@@ -60,19 +60,20 @@
 
 .gem-c-contents-list__list-item--dashed {
   $contents-spacing: govuk-spacing(5);
-  margin-left: $contents-spacing;
+  position: relative;
+  padding-left: $contents-spacing;
   padding-right: $contents-spacing;
 
   &:before {
-    content: "— ";
-    margin-left: -$contents-spacing;
-    padding-right: 5px;
+    content: "—";
+    position: absolute;
+    left: 0;
+    width: govuk-spacing(4);
+    overflow: hidden;
 
     .direction-rtl & {
-      margin-left: 0;
-      margin-right: -$contents-spacing;
-      padding-right: 0;
-      padding-left: 5px;
+      left: auto;
+      right: 0;
     }
   }
 
