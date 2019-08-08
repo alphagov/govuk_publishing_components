@@ -26,6 +26,11 @@ describe "Title", type: :view do
     assert_select ".gem-c-title__context-link[href='/format'][data-tracking]", text: "Format"
   end
 
+  it "applies context language if supplied to a context string" do
+    render_component(title: "Bonjour Monde", context: "hello", context_locale: 'en')
+    assert_select ".gem-c-title__context[lang='en']"
+  end
+
   it "applies title length if supplied" do
     render_component(title: "Hello World", context: "format", average_title_length: 'long')
     assert_select ".gem-c-title .gem-c-title__text--long", text: "Hello World"
@@ -54,5 +59,10 @@ describe "Title", type: :view do
   it "ignores an invalid margin" do
     render_component(title: 'Margin wat', margin_bottom: 17)
     assert_select "[class='^=govuk-\!-margin-bottom-']", false
+  end
+
+  it "applies context language if supplied to a context link" do
+    render_component(title: "Bonjour", context: { text: "Format", href: "/format" }, context_locale: "en")
+    assert_select ".gem-c-title__context[lang='en']"
   end
 end

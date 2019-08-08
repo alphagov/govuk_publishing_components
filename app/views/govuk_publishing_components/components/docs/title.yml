@@ -24,6 +24,15 @@ examples:
     data:
       context: Publication
       title: My page title
+  with_context_language_labelled:
+    description: |
+      Sometimes this component appears on a page that has been translated. The title will naturally be supplied in the required language but the context string may fall back to the default. In these instances we need to label the language so the page remains semantic and screenreaders can handle the switch.
+
+      The `lang` attribute **must** be set to a [valid BCP47 string](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang#Language_tag_syntax). A valid code can be the two or three letter language code - for example, English is `en` or `eng`, Korean is `ko` or `kor` - but if in doubt please check.
+    data:
+      context: Publication
+      context_locale: en
+      title: My page title
   with_context_link:
     description: |
       It’s unclear if links in the context of a title are useful and are being clicked by users. Data attributes are included to track this behaviour.
@@ -69,3 +78,4 @@ examples:
       margin_bottom: 0
     context:
       dark_background: true
+
