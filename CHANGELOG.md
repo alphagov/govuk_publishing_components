@@ -16,6 +16,9 @@
   - Update [`govuk-colour` mixins](https://govuk-frontend-review.herokuapp.com/docs/#helpers/colour-function-govuk-colour) to support legacy colours. [Example commit](https://github.com/alphagov/calendars/commit/ccd2b25873ee026858958d4732d42071bea57255)
   - Check [govuk-frontend 3.0 changelog](https://github.com/alphagov/govuk-frontend/releases/tag/v3.0.0) to see if and how the breaking release affects your application.
 
+* BREAKING: Remove the accessible-autocomplete component (PR #1038)
+  [content-data-admin](https://github.com/alphagov/content-data-admin) is the only application that uses the accessible-autocomplete component. In order to migrate to this release it you must copy the files removed in PR #1038.
+
 * Update feedback component to use govuk-frontend layout classes (PR #1010)
 * Fix focus and hover states for breadcrumbs, contents-list, highlight-boxes, modal-dialogue, step-by-step-nav, previous-and-next-navigation and title component (PR #1010)
 * Normalise falsey values to nil for subscription links component (PR #1021)
