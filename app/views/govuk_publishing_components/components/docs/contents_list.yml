@@ -215,4 +215,16 @@ examples:
             text: Guidance and regulation
           - href: "#third-thing"
             text: Consultations
+  inverse:
+    description: Displays with no background colour, no box shadow and white text, for use on (for example) the [inverse header](/component-guide/inverse_header)
+    data:
+      inverse: true
+      contents:
+        - href: "#item-1"
+          text: "Item 1"
+        - href: "#item-2"
+          text: "Item 2"
+    context:
+      dark_background: true
+
 

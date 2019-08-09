@@ -22,6 +22,7 @@
 * Update feedback component to use govuk-frontend layout classes (PR #1010)
 * Fix focus and hover states for breadcrumbs, contents-list, highlight-boxes, modal-dialogue, step-by-step-nav, previous-and-next-navigation and title component (PR #1010)
 * Normalise falsey values to nil for subscription links component (PR #1021)
+* Add inverse flag to contents list components (PR #1037)
 
 ## 17.21.0
 

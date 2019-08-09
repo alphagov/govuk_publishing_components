@@ -10,10 +10,25 @@
   box-shadow: 0 20px 15px -10px govuk-colour("white");
 }
 
+.gem-c-contents-list--inverse {
+  background: transparent;
+  box-shadow: none;
+}
+
 .gem-c-contents-list__title {
   @include govuk-text-colour;
   @include govuk-font($size: 16, $weight: regular, $line-height: 1.5);
   margin: 0;
+}
+
+.gem-c-contents-list--inverse .gem-c-contents-list__title,
+.gem-c-contents-list--inverse .gem-c-contents-list__link:link,
+.gem-c-contents-list--inverse .gem-c-contents-list__link:visited {
+  color: govuk-colour("white");
+}
+
+.gem-c-contents-list--inverse .gem-c-contents-list__link:focus {
+  color: $govuk-focus-text-colour;
 }
 
 .gem-c-contents-list__list,
@@ -74,6 +89,10 @@
       left: auto;
       right: 0;
     }
+  }
+
+  .gem-c-contents-list--inverse &:before {
+    color: govuk-colour("white");
   }
 
   // Focus styles on IE8 and older include the
