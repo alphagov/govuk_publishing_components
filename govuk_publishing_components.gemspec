@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.homepage    = "https://github.com/alphagov/govuk_publishing_components"
   s.license     = "MIT"
 
-  s.files = Dir["{node_modules,app,config,db,lib}/**/*", "DEVELOPMENT.md", "LICENCE.md", "Rakefile", "README.md"]
+  s.files = Dir["{node_modules/govuk-frontend,app,config,db,lib}/**/*", "DEVELOPMENT.md", "LICENCE.md", "Rakefile", "README.md"]
 
   s.add_dependency "gds-api-adapters"
   s.add_dependency "govuk_app_config"
