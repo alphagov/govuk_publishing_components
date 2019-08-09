@@ -87,6 +87,7 @@ examples:
         - text: £125
           format: numeric
   with_sortable_head:
+    description: This option allows links to be added to the table headers for sorting. Sorting must be handled server side, it is not done by the component.
     data:
       sortable: true
       head:
