@@ -154,6 +154,13 @@
     padding-bottom: govuk-spacing(2);
   }
 
+  .gem-c-image-card__title-link {
+    &:after {
+      left: 0;
+      right: 0;
+    }
+  }
+
   .gem-c-image-card__description {
     @include govuk-font(19);
   }
