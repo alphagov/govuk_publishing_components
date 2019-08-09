@@ -19,15 +19,15 @@
   &:link,
   &:visited {
     color: inherit;
-
-    &:focus {
-      color: $govuk-focus-text-colour;
-    }
   }
 
-  &:hover,
-  &:focus {
+  &:hover {
     text-decoration: underline;
+  }
+
+  &:focus {
+    text-decoration: none;
+    color: $govuk-focus-text-colour;
   }
 }
 
