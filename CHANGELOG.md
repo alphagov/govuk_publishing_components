@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Make the gem _slimmer_ by only including GOV.UK Frontend (#1041)
+
 ## 18.0.0
 
 * BREAKING: Update to [govuk-frontend 3.0.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.0.0) (PR #1010)
