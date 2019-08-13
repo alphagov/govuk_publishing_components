@@ -52,4 +52,9 @@ describe "Search", type: :view do
     render_component(name: "my_custom_field")
     assert_select 'input[name="my_custom_field"]'
   end
+
+  it "renders a search box with no margin" do
+    render_component(no_margin: true)
+    assert_select '.gem-c-search--no-margin'
+  end
 end
