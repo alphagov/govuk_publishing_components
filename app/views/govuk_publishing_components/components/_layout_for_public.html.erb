@@ -1,6 +1,7 @@
 <%
   title ||= "GOV.UK - The best place to find government services and information"
   html_lang ||= "en"
+  full_width ||= false
   layout_helper = GovukPublishingComponents::Presenters::PublicLayoutHelper.new(local_assigns)
 -%>
 <!DOCTYPE html>
@@ -48,7 +49,7 @@
       search: true,
     } %>
 
-    <main class="govuk-width-container govuk-main-wrapper" id="content">
+    <main class="<%= "govuk-width-container govuk-main-wrapper" unless full_width %>" id="content">
       <%= yield %>
     </main>
 

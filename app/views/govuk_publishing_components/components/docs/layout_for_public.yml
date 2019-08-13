@@ -11,3 +11,8 @@ examples:
       title: 'Example layout'
       block: |
         <!-- Page content goes here -->
+  full_width:
+    description: By default, the layout applies the `govuk-width-container` class to the main element. We can remove this class by setting `full_width` to `true`
+    data:
+      full_width: true
+      
