@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 18.0.1
 
 * Make the gem _slimmer_ by only including GOV.UK Frontend (#1041)
 * Remove unused image assets previously used in the button component and references to zombie image assets (#1042)
