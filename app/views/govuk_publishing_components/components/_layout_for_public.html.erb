@@ -1,6 +1,7 @@
 <%
   title ||= "GOV.UK - The best place to find government services and information"
   html_lang ||= "en"
+  full_width ||= false
 -%>
 <!DOCTYPE html>
   <!--[if lt IE 9]><html class="lte-ie8" lang="<%= html_lang %>"><![endif]-->
@@ -42,7 +43,7 @@
       search: true,
     } %>
 
-    <main class="govuk-width-container" id="content">
+    <main class="<%= "govuk-width-container" unless full_width %>" id="content">
       <%= yield %>
     </main>
 
