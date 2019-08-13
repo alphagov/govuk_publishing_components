@@ -5,6 +5,8 @@ body: |
 
 display_preview: false
 display_html: true
+accessibility_criteria: |
+  TBD
 examples:
   default:
     data:
