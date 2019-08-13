@@ -62,4 +62,12 @@ describe "Search", type: :view do
     render_component(aria_controls: "something-else")
     assert_select "input[aria-controls='something-else']"
   end
+
+  it "renders a search box with custom margins" do
+    render_component(
+      margin_top: 3,
+      margin_bottom: 2,
+    )
+    assert_select '.gem-c-search.govuk-\!-margin-top-3.govuk-\!-margin-bottom-2'
+  end
 end
