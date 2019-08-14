@@ -18,6 +18,12 @@
   border-bottom-color: govuk-colour("dark-grey", $legacy: "grey-1");
 }
 
+.gem-c-layout-header--no-bottom-border,
+.gem-c-layout-header--no-bottom-border .govuk-header__container {
+  margin-bottom: 0;
+  border-bottom: 0;
+}
+
 .gem-c-layout-header__logo,
 .gem-c-layout-header__search {
   padding: 0;

@@ -35,8 +35,6 @@ describe "Layout header", type: :view do
     assert_select ".govuk-header__container--full-width"
   end
 
-
-
   it "renders the header with navigation items" do
     navigation_items = [
       { text: "Foo", href: "/foo", active: true },
@@ -49,5 +47,11 @@ describe "Layout header", type: :view do
     assert_select ".govuk-header__navigation-item.govuk-header__navigation-item--active", text: "Foo"
     assert_select ".govuk-header__navigation-item", text: "Bar"
     assert_select ".govuk-header__navigation-item.govuk-header__navigation-item--collapsed-menu-only", text: "Hello"
+  end
+
+  it "renders the header without the bottom border" do
+    render_component(remove_bottom_border: true, environment: 'public')
+
+    assert_select ".gem-c-layout-header--no-bottom-border"
   end
 end
