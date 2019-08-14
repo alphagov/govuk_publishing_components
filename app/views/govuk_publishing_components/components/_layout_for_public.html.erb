@@ -49,6 +49,7 @@
     <%= render "govuk_publishing_components/components/layout_header", {
       environment: "public",
       search: true,
+      remove_bottom_border: full_width
     } %>
 
     <main class="<%= "govuk-width-container govuk-main-wrapper" unless full_width %> <%= main_classes %>" id="content">
