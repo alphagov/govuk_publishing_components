@@ -1,8 +1,9 @@
 <%
   meta ||= []
   navigation ||= []
+  with_border ||= false
 %>
-<footer class="gem-c-layout-footer govuk-footer" role="contentinfo">
+<footer class="gem-c-layout-footer govuk-footer <%= "gem-c-layout-footer--border" if with_border %> role="contentinfo">
   <div class="govuk-width-container ">
     <% if navigation.any? %>
       <div class="govuk-footer__navigation">

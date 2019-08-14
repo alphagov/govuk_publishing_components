@@ -83,4 +83,25 @@ describe "Layout footer", type: :view do
       expect(link.attr('rel').to_s).to eq "noopener"
     end
   end
+
+  it 'renders the footer with a top border' do
+    render_component(
+      with_border: true,
+      navigation: [
+        {
+          title: "Services and information",
+          columns: 2,
+          items: [
+            {
+              href: "/browse/benefits",
+              text: "Benefits",
+              attributes: { target: "_blank" }
+            }
+          ]
+        }
+      ]
+    )
+
+    assert_select '.gem-c-layout-footer--border'
+  end
 end
