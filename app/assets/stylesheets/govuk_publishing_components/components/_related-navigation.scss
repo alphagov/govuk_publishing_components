@@ -42,10 +42,10 @@
 .gem-c-related-navigation__link {
   list-style-type: none;
   margin-top: govuk-spacing(3);
-  @include govuk-font($size: 16, $weight: regular, $line-height: 1.5);
+  @include govuk-font($size: 16, $weight: regular, $line-height: 1.45);
 
   @include govuk-media-query($from: tablet) {
-    margin-top: 5px;
+    line-height: 1.28;
   }
 }
 

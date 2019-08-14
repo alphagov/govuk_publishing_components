@@ -11,6 +11,7 @@
 
 * Expand share links component (PR #1046)
 * Add locale option so `lang` attribute can be used on related links (PR #1026)
+* Rejigs related navigation line height to avoid focus state overlap (PR #1045)
 
 ## 18.0.1
 
