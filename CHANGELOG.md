@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 18.1.1
+
+* Restore node_modules gem dependencies (PR #1048)
+
 ## 18.1.0
 
 * Expand share links component (PR #1046)
