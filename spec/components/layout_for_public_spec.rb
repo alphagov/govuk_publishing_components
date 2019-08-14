@@ -34,4 +34,10 @@ describe "Layout for public", type: :view do
 
     assert_select 'body.homepage, main.test-new-body-class'
   end
+
+  it "can display without search bar" do
+    render_component(without_search: true)
+
+    assert_select '.gem-c-layout-for-public .gem-c-search', false
+  end
 end
