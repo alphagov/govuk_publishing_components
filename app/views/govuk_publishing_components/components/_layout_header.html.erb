@@ -1,6 +1,7 @@
 <%
   full_width ||= false
   product_name ||= "Publishing"
+  search ||= false
   public_environment = environment.eql?("public")
   navigation_items ||= []
   remove_bottom_border ||= false
@@ -59,7 +60,7 @@
     </div>
     </div>
 
-    <% if local_assigns[:search] %>
+    <% if search %>
         <div class="govuk-grid-column-one-third gem-c-layout-header__search">
           <%= render "govuk_publishing_components/components/search", {
             id: "site-search-text",

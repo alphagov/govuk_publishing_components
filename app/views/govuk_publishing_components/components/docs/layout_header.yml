@@ -47,6 +47,10 @@ examples:
     data:
       remove_bottom_border: true
       environment: 'public'
+  with_search_bar:
+    data:
+      environment: 'public'
+      search: true
 
 accessibility_criteria: |
   The component must:
