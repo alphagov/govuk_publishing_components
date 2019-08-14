@@ -9,9 +9,10 @@
 
 ## 18.0.1
 
-* Make the gem _slimmer_ by only including GOV.UK Frontend (#1041)
-* Remove unused image assets previously used in the button component and references to zombie image assets (#1042)
-* Fix start button showing SVG code (#1043)
+* Make the gem _slimmer_ by only including GOV.UK Frontend (PR #1041)
+* Remove unused image assets previously used in the button component and references to zombie image assets (PR #1042)
+* Fix start button showing SVG code (PR #1043)
+* Add locale option so `lang` attribute can be used on related links (PR #1026)
 
 ## 18.0.0
 

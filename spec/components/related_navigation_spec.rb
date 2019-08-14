@@ -5,13 +5,14 @@ describe "Related navigation", type: :view do
     "related_navigation"
   end
 
-  def construct_links(type, base_path, title, document_type = nil)
+  def construct_links(type, base_path, title, document_type = nil, locale = nil)
     {
       type => [
         {
           "base_path" => base_path,
           "title" => title,
           "document_type" => document_type,
+          "locale" => locale
         }
       ]
     }
@@ -195,5 +196,35 @@ describe "Related navigation", type: :view do
     assert_select ".gem-c-related-navigation__section-link[data-track-category='relatedLinkClicked']"
     assert_select ".gem-c-related-navigation__section-link[data-track-action='1.1 Explore the topic']"
     assert_select ".gem-c-related-navigation__section-link[data-track-label='/apprenticeships']"
+  end
+
+  it "uses lang when locale is set" do
+    content_item = {}
+    content_item['links'] = construct_links(
+      "topics", "/apprenticeships", "Apprenticeships", "topic", "ko"
+    )
+    render_component(content_item: content_item)
+
+    assert_select ".gem-c-related-navigation__section-link[lang='ko']"
+  end
+
+  it "lang is not used when the same as the app's locale" do
+    content_item = {}
+    content_item['links'] = construct_links(
+      "topics", "/apprenticeships", "Apprenticeships", "topic", I18n.locale
+    )
+    render_component(content_item: content_item)
+
+    assert_select ".gem-c-related-navigation__section-link[lang='#{I18n.locale}']", false
+  end
+
+  it "lang is not used when no locale is set" do
+    content_item = {}
+    content_item['links'] = construct_links(
+      "topics", "/apprenticeships", "Apprenticeships", "topic"
+    )
+    render_component(content_item: content_item)
+
+    assert_select ".gem-c-related-navigation__section-link[lang]", false
   end
 end

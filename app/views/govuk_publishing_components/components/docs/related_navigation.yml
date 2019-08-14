@@ -206,6 +206,52 @@ examples:
             - title: Pest Control
               base_path: /pest-control
               document_type: contact
+  with_different_languages:
+    description: |
+      Each link can have a `locale` parameter to set the correct `lang` attribute.
+
+      If the link locale is the same as the document locale, then the lang attribute won't be used. For example, `lang="en"` won't appear on a page written in English.
+    data:
+      content_item:
+        links:
+          ordered_related_items:
+            - title: Find an apprenticeship (French)
+              base_path: /apply-apprenticeship.fr
+              locale: fr
+          topics:
+            - title: Apprenticeships, 14 to 19 education and training for work (Korean)
+              base_path: /browse/education/find-course.ko
+              document_type: topic
+              locale: ko
+          topical_events:
+            - title: UK-China High-Level People to People Dialogue 2017 (Spanish)
+              base_path: /government/topical-events/uk-china-high-level-people-to-people-dialogue-2017.es
+              document_type: topical_event
+              locale: es
+          related:
+            - title: Jam producers (Spanish)
+              base_path: /jam-producers.es
+              document_type: contact
+              locale: es
+          related_statistical_data_sets:
+            - title: International road fuel prices (Italian)
+              base_path: /government/statistical-data-sets/comparisons-of-industrial-and-domestic-energy-prices-monthly-figures.it
+              document_type: statistical_data_set
+              locale: it
+          document_collections:
+            - title: Recruit an apprentice (formerly apprenticeship vacancies)
+              base_path: /government/collections/apprenticeship-vacancies
+              document_type: document_collection
+              locale: en
+          world_locations:
+            - title: South Sudan (Arabic)
+              base_path: /world/south-sudan/news.ar
+              locale: ar
+        details:
+          external_related_links:
+            - url: "http://media.slc.co.uk/sfe/1718/ft/sfe_terms_and_conditions_guide_1718_d.pdf"
+              title: "Student loans: terms and conditions 2017 to 2018 (PDF, 136KB)"
+              locale: en
   with_all_related-content:
     data:
       content_item:

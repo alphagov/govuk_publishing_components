@@ -113,14 +113,17 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
         })
 
       expected = {
-        "related_items" => [{ path: "/related-item", text: "related item" }],
+        "related_items" => [{ locale: "en", path: "/related-item", text: "related item" }],
         "related_guides" => [],
-        "collections" => [{ path: "/related-collection", text: "related collection" }],
-        "topics" => [{ path: "/browse/something", text: "A mainstream browse page" }, { path: "/related-topic", text: "related topic" }],
+        "collections" => [{ locale: "en", path: "/related-collection", text: "related collection" }],
+        "topics" => [
+          { locale: "en", path: "/browse/something", text: "A mainstream browse page" },
+          { locale: "en", path: "/related-topic", text: "related topic" }
+        ],
         "related_contacts" => [],
         "related_external_links" => [],
-        "topical_events" => [{ path: "/related-topical-event", text: "related topical event" }],
-        "world_locations" => [{ path: "/world/world-location/news", text: "World, ~ (@Location)" }],
+        "topical_events" => [{ locale: "en", path: "/related-topical-event", text: "related topical event" }],
+        "world_locations" => [{ locale: "en", path: "/world/world-location/news", text: "World, ~ (@Location)" }],
         "statistical_data_sets" => [],
       }
 
@@ -153,7 +156,7 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
         })
 
       expect(payload["statistical_data_sets"]).to eql(
-        [{ path: "/related-statistical-data-set", text: "related statistical data set" }]
+        [{ locale: "en", path: "/related-statistical-data-set", text: "related statistical data set" }]
       )
     end
 
@@ -193,7 +196,7 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
         })
 
       expect(payload["topics"]).to eql(
-        [{ text: "Self Assessment", path: "/browse/tax/self-assessment" }]
+        [{ locale: "en", text: "Self Assessment", path: "/browse/tax/self-assessment" }]
       )
     end
 
@@ -201,9 +204,9 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
       example = GovukSchemas::Example.find("guide", example_name: "single-page-guide")
       payload = described_class.new(content_item: example).related_navigation
       expected = [
-        { text: "Travel abroad", path: "/browse/abroad/travel-abroad" },
-        { text: "Arriving in the UK", path: "/browse/visas-immigration/arriving-in-the-uk" },
-        { text: "Pets", path: "/topic/animal-welfare/pets" },
+        { locale: "en", text: "Travel abroad", path: "/browse/abroad/travel-abroad" },
+        { locale: "en", text: "Arriving in the UK", path: "/browse/visas-immigration/arriving-in-the-uk" },
+        { locale: "en", text: "Pets", path: "/topic/animal-welfare/pets" },
       ]
       expect(payload["topics"]).to eql(expected)
     end
@@ -243,7 +246,7 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
         },)
 
       expect(payload["related_contacts"]).to eql(
-        [{ path: "/foo", text: "Foo" }]
+        [{ locale: "en", path: "/foo", text: "Foo" }]
       )
     end
 
@@ -286,8 +289,8 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
 
       expect(payload["topics"]).to eql(
         [
-          { path: "/taxon-b", text: "Taxon B" },
-          { path: "/taxon-a", text: "Taxon A" },
+          { locale: "en", path: "/taxon-b", text: "Taxon B" },
+          { locale: "en", path: "/taxon-a", text: "Taxon A" },
         ]
        )
     end
