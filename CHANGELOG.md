@@ -7,12 +7,16 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Expand share links component (PR #1046)
+* Add locale option so `lang` attribute can be used on related links (PR #1026)
+
 ## 18.0.1
 
 * Make the gem _slimmer_ by only including GOV.UK Frontend (PR #1041)
 * Remove unused image assets previously used in the button component and references to zombie image assets (PR #1042)
 * Fix start button showing SVG code (PR #1043)
-* Add locale option so `lang` attribute can be used on related links (PR #1026)
 
 ## 18.0.0
 
