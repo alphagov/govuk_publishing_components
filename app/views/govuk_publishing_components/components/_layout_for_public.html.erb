@@ -2,6 +2,8 @@
   title ||= "GOV.UK - The best place to find government services and information"
   html_lang ||= "en"
   full_width ||= false
+  body_classes ||= ""
+  main_classes ||= ""
 -%>
 <!DOCTYPE html>
   <!--[if lt IE 9]><html class="lte-ie8" lang="<%= html_lang %>"><![endif]-->
@@ -33,7 +35,7 @@
 
     <%= yield :head %>
   </head>
-  <body class="gem-c-layout-for-public govuk-template__body">
+  <body class="gem-c-layout-for-public govuk-template__body <%= body_classes %>">
     <script>
       document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
     </script>
@@ -49,7 +51,7 @@
       search: true,
     } %>
 
-    <main class="<%= "govuk-width-container govuk-main-wrapper" unless full_width %>" id="content">
+    <main class="<%= "govuk-width-container govuk-main-wrapper" unless full_width %> <%= main_classes %>" id="content">
       <%= yield %>
     </main>
 

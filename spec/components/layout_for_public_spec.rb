@@ -22,4 +22,16 @@ describe "Layout for public", type: :view do
 
     assert_select '#content.govuk-width-container', false, 'Should not apply govuk-width-container class when full width'
   end
+
+  it "adds additional main classes if provided" do
+    render_component(main_classes: "homepage test-new-main-class")
+
+    assert_select 'main.homepage, main.test-new-main-class'
+  end
+
+  it "adds additional body classes if provided" do
+    render_component(body_classes: "homepage test-new-body-class")
+
+    assert_select 'body.homepage, main.test-new-body-class'
+  end
 end
