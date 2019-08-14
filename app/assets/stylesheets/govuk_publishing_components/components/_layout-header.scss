@@ -22,12 +22,20 @@
 .gem-c-layout-header--no-bottom-border .govuk-header__container {
   margin-bottom: 0;
   border-bottom: 0;
+
+  @include govuk-media-query($until: tablet) {
+    padding-bottom: govuk-spacing(1);
+  }
 }
 
 .gem-c-layout-header__logo,
 .gem-c-layout-header__search {
   padding: 0;
   margin-bottom: govuk-spacing(2);
+
+  @include govuk-media-query($until: "tablet") {
+    margin-bottom: 0;
+  }
 }
 
 .gem-c-header__logo {
@@ -45,7 +53,7 @@
 .gem-c-header__product-name {
   display: none;
 
-  @include govuk-media-query($from: tablet) {
+  @include govuk-media-query($from: "tablet") {
     display: inline-block;
   }
 }
