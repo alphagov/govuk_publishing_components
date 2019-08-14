@@ -163,6 +163,11 @@ examples:
           icon: 'linkedin'
         },
         {
+          href: '/whatsapp-share-link',
+          text: 'WhatsApp',
+          icon: 'whatsapp'
+        },
+        {
           href: '/other-share-link',
           text: 'Anything else that might be included that could have quite a long name',
           icon: 'other'
