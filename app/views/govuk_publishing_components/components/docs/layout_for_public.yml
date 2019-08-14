@@ -13,3 +13,12 @@ examples:
       title: 'Example layout'
       block: |
         <!-- Page content goes here -->
+  full_width:
+    description: By default, the layout applies the `govuk-width-container` class to the main element. We can remove this class by setting `full_width` to `true`
+    data:
+      full_width: true
+  with_additional_classes:
+    description: You are able to pass additional classes to the main and body elements
+    data:
+      main_classes: "homepage test-main-class"
+      body_classes: "mainstream test-body-class"
