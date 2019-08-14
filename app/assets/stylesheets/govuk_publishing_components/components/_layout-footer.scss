@@ -1,1 +1,5 @@
 @import "govuk/components/footer/footer";
+
+.gem-c-layout-footer--border {
+  border-top: govuk-spacing(2) solid govuk-colour("blue");
+}
