@@ -58,6 +58,17 @@ $share-button-height: 32px;
   }
 }
 
+.gem-c-share-links--columns {
+  .gem-c-share-links__list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .gem-c-share-links__list-item {
+    flex: 0 0 200px;
+  }
+}
+
 .gem-c-share-links--stacked {
   .gem-c-share-links__list-item {
     display: block;
