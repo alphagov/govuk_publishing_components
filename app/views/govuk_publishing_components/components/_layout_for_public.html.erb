@@ -37,7 +37,6 @@
     <script>
       document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
     </script>
-
     <%= render "govuk_publishing_components/components/skip_link", {
       href: "#content"
     } %>
@@ -52,6 +51,10 @@
     <main class="<%= "govuk-width-container govuk-main-wrapper" unless full_width %>" id="content">
       <%= yield %>
     </main>
+
+    <div class="govuk-width-container">
+      <%= render "govuk_publishing_components/components/feedback" %>
+    </div>
 
     <% unless local_assigns[:hide_footer_links] %>
       <%= render "govuk_publishing_components/components/layout_footer", {
