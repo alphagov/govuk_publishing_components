@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 18.1.0
 
 * Expand share links component (PR #1046)
 * Add locale option so `lang` attribute can be used on related links (PR #1026)
