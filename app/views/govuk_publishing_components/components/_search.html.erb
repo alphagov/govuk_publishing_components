@@ -3,6 +3,8 @@
   class_name = "gem-c-search--on-govuk-blue" if local_assigns.include?(:on_govuk_blue)
   size ||= ""
   no_margin ||= false
+  no_border ||= false
+  class_name = "#{class_name} gem-c-search--no-border" if no_border
   class_name = "#{class_name} gem-c-search--large" if size == 'large'
   class_name = "#{class_name} gem-c-search--no-margin" if no_margin
   class_name = "#{class_name} gem-c-search--separate-label" if local_assigns.include?(:inline_label)
