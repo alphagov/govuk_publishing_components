@@ -181,6 +181,12 @@ $large-input-size: 50px;
   }
 }
 
+.gem-c-search--no-border {
+  .gem-c-search__input[type="search"] {
+    border: 0;
+  }
+}
+
 .gem-c-search--large {
   .gem-c-search__label {
     @include govuk-font($size: 19, $line-height: $large-input-size);
