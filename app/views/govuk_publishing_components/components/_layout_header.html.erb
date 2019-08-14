@@ -1,15 +1,12 @@
 <%
-  full_width ||= false
   product_name ||= "Publishing"
   public_environment = environment.eql?("public")
+  full_width ||= false
+  search ||= false
+  search_left ||= false
   navigation_items ||= []
   remove_bottom_border ||= false
-
-  if full_width
-    width_class = "govuk-header__container--full-width"
-  else
-    width_class = "govuk-width-container"
-  end
+  width_class = full_width ? "govuk-header__container--full-width" : "govuk-width-container"
 %>
 
 <header class="gem-c-layout-header govuk-header gem-c-layout-header--<%= environment %> <%= "gem-c-layout-header--no-bottom-border" if remove_bottom_border %>" role="banner" data-module="govuk-header">
@@ -60,7 +57,7 @@
     </div>
     </div>
 
-    <% if local_assigns[:search] %>
+    <% if search %>
         <div class="govuk-grid-column-one-third gem-c-layout-header__search">
           <%= render "govuk_publishing_components/components/search", {
             id: "site-search-text",
