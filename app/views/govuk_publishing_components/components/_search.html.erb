@@ -1,10 +1,12 @@
 <%
   size ||= ""
+  no_border ||= false
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   classes = %w(gem-c-search gem-c-search--on-white)
   classes << (shared_helper.get_margin_top)
   classes << (shared_helper.get_margin_bottom) if local_assigns[:margin_bottom]
   classes << "gem-c-search--large" if size == 'large'
+  classes << "gem-c-search--no-border" if no_border
   classes << "gem-c-search--on-govuk-blue" if local_assigns[:on_govuk_blue].eql?(true)
   classes << "gem-c-search--separate-label" if local_assigns.include?(:inline_label)
 

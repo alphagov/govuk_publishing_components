@@ -78,6 +78,10 @@ module GovukPublishingComponents
       context["dark_background"].present?
     end
 
+    def black_background?
+      !!context['black_background']
+    end
+
     def html_description
       markdown_to_html(description) if description.present?
     end
