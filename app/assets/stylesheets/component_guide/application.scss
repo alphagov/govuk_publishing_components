@@ -136,6 +136,10 @@
     background-color: govuk-colour("blue");
   }
 
+  &.black-background {
+    background-color: govuk-colour("black");
+  }
+
   &.component-output {
     padding: 0;
   }
