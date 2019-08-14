@@ -3,12 +3,21 @@
   title ||= false
   track_as_sharing ||= false
   stacked ||= false
+  columns ||= false
 
   brand ||= false
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
+
+  classes = %w(gem-c-share-links)
+  classes << "gem-c-share-links--stacked" if stacked
+  classes << "gem-c-share-links--columns" if columns
+  classes << brand_helper.brand_class
+
+  data_attributes ||= {}
+  data_attributes[:module] = 'track-click'
 %>
 <% if links.any? %>
-  <div class="gem-c-share-links <%= brand_helper.brand_class %> <%= 'gem-c-share-links--stacked' if stacked %>" data-module="track-click">
+  <%= tag.div(class: classes, data: data_attributes) do %>
     <% if title %>
       <h2 class="gem-c-share-links__title"><%= title %></h2>
     <% end %>
@@ -62,6 +71,9 @@
               <% elsif link[:icon] == 'youtube' %>
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="9 9 32 32"><path fill="currentColor" d="M9 9h32v32H9V9z"/><path fill="#FFF" d="M19.88 33.32V16.68L33.32 25l-13.44 8.32z"/></svg>
 
+              <% elsif link[:icon] == 'whatsapp' %>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><path d="M0 32V0h32v32H0zm20.839-13.894c-.263-.131-1.555-.766-1.796-.854-.24-.088-.416-.132-.59.131-.176.263-.68.855-.833 1.03-.153.176-.307.198-.57.066-.262-.131-1.109-.41-2.113-1.304-.78-.697-1.308-1.557-1.461-1.82-.153-.263-.016-.406.115-.536.118-.118.263-.308.394-.46.131-.154.175-.264.263-.44.088-.174.044-.328-.022-.46-.066-.131-.591-1.424-.81-1.95-.214-.513-.43-.443-.59-.452a10.506 10.506 0 0 0-.505-.009.964.964 0 0 0-.7.329c-.241.263-.92.899-.92 2.192 0 1.293.942 2.542 1.073 2.718.131.176 1.852 2.83 4.489 3.967.626.27 1.116.433 1.497.554.63.2 1.202.172 1.655.104.505-.075 1.555-.636 1.774-1.25.219-.613.219-1.14.153-1.25-.066-.108-.24-.174-.503-.306zm-4.795 6.547h-.003a8.73 8.73 0 0 1-4.449-1.219l-.319-.19-3.308.869.883-3.226-.208-.33a8.718 8.718 0 0 1-1.336-4.652c.001-4.819 3.922-8.74 8.744-8.74a8.68 8.68 0 0 1 6.179 2.564 8.686 8.686 0 0 1 2.557 6.183c-.002 4.82-3.922 8.74-8.74 8.74zm7.44-16.18a10.449 10.449 0 0 0-7.44-3.084c-5.796 0-10.513 4.717-10.516 10.516 0 1.853.484 3.662 1.404 5.256l-1.492 5.45 5.574-1.463a10.504 10.504 0 0 0 5.026 1.28h.004c5.796 0 10.514-4.717 10.516-10.515a10.455 10.455 0 0 0-3.077-7.44z" fill="currentColor"/></svg>
+
               <% else %>
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="9 9 32 32"><path fill="currentColor" d="M9 9h32v32H9V9z"/><path fill="#FFF" d="M12.84 14.12v19.2h5.76l5.76 5.76v-5.76h12.8v-19.2H12.84zm3.2 8.32H28.2V25H16.04v-2.56zm16 7.68h-16v-2.56h16v2.56zm1.92-10.24H16.04v-2.56h17.92v2.56z"/></svg>
 
@@ -70,5 +82,5 @@
         </li>
       <% end %>
     </ul>
-  </div>
+  <% end %>
 <% end %>

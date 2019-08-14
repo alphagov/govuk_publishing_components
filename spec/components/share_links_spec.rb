@@ -53,6 +53,11 @@ describe "ShareLinks", type: :view do
     assert_select ".gem-c-share-links.brand--attorney-generals-office .gem-c-share-links__link.brand__color"
   end
 
+  it "arranges in columns" do
+    render_component(links: [links[0]], columns: true)
+    assert_select ".gem-c-share-links.gem-c-share-links--columns"
+  end
+
   it "accepts the stacking option" do
     render_component(links: links, stacked: true)
     assert_select ".gem-c-share-links.gem-c-share-links--stacked"
