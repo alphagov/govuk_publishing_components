@@ -62,4 +62,9 @@ describe "Search", type: :view do
     render_component(no_margin: true)
     assert_select '.gem-c-search--no-margin'
   end
+
+  it "renders a search box with no border" do
+    render_component(no_border: true)
+    assert_select '.gem-c-search--no-border'
+  end
 end
