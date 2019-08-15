@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Restore jquery as gem dependency (PR #1051)
 * Fix share links columns option layout (PR #1050)
 
 ## 18.1.1
