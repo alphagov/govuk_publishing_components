@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## unreleased
+
+* Add option to hide day numbers in timestamps in document lists (PR #1053)
+
 ## 18.1.2
 
 * Restore jquery as gem dependency (PR #1051)
