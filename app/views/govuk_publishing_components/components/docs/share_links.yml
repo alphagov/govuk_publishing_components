@@ -92,38 +92,41 @@ examples:
         },
       ]
   arrange_in_columns:
-    description: Share links are arranged in even columns that adjust according to the available space. This option uses flexbox, which is not fully supported in IE <= 10, so in those browsers the columns are not even.
+    description: |
+      Share links are arranged in even columns that adjust according to the available space. Note that the column width is based on an assumed width, so if the text in the links is very long it may wrap onto a second line, which is undesirable.
+
+      This option uses CSS grid, which is not fully supported in IE <= 11, so in those browsers the columns are floated.
     data:
       columns: true
       links: [
         {
           href: '/facebook-share-link',
-          text: 'Facebook',
+          text: 'Share on Facebook',
           icon: 'facebook'
         },
         {
           href: '/twitter-share-link',
-          text: 'Twitter',
+          text: 'Share on Twitter',
           icon: 'twitter'
         },
         {
           href: '/email-share-link',
-          text: 'Email',
+          text: 'Share on email to someone you know',
           icon: 'email'
         },
         {
           href: '/flickr-share-link',
-          text: 'Flickr',
+          text: 'Share on Flickr',
           icon: 'flickr'
         },
         {
           href: '/instagram-share-link',
-          text: 'Instagram',
+          text: 'Share on Instagram',
           icon: 'instagram'
         },
         {
           href: '/linkedin-share-link',
-          text: 'Linkedin',
+          text: 'Share on Linkedin',
           icon: 'linkedin'
         },
       ]

@@ -13,7 +13,7 @@ $share-button-height: 32px;
   display: inline-block;
   min-height: $share-button-height;
   padding-left: ($share-button-width + govuk-spacing(2));
-  padding-right: govuk-spacing(1);
+  padding-right: govuk-spacing(2);
   margin-bottom: govuk-spacing(2);
   font-size: $share-button-height / 2;
   line-height: $share-button-height;
@@ -49,7 +49,7 @@ $share-button-height: 32px;
   }
 
   .gem-c-share-links__list-item {
-    padding-left: govuk-spacing(1);
+    padding-left: govuk-spacing(2);
     padding-right: ($share-button-width + govuk-spacing(2));
   }
 
@@ -61,12 +61,18 @@ $share-button-height: 32px;
 
 .gem-c-share-links--columns {
   .gem-c-share-links__list {
-    display: flex;
-    flex-wrap: wrap;
+    @include govuk-clearfix;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
 
   .gem-c-share-links__list-item {
-    flex: 0 0 200px;
+    float: left;
+    min-width: 200px;
+  }
+
+  .gem-c-share-links__link {
+    margin: 0;
   }
 }
 
