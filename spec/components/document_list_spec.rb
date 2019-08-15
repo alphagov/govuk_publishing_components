@@ -74,6 +74,47 @@ describe "Document list", type: :view do
     assert_select "#{attribute} time[datetime='2017-07-19T15:01:48Z']"
   end
 
+  it "can hide the day in pretty-printed timestamps" do
+    render_component(
+      use_month_year_dates: true,
+      items: [
+        {
+          link: {
+            text: "School behaviour and attendance: parental responsibility measures",
+            path: "/government/publications/parental-responsibility-measures-for-behaviour-and-attendance",
+          },
+          metadata: {
+            public_updated_at: Time.zone.parse("2017-01-05 14:50:33 +0000"),
+            document_type: "Statutory guidance"
+          }
+        },
+        {
+          link: {
+            text: "Become an apprentice",
+            path: "/become-an-apprentice",
+            description: 'Becoming an apprentice - what to expect'
+          },
+          metadata: {
+            public_updated_at: Time.zone.parse("2017-07-19 15:01:48 +0000"),
+            document_type: "Statutory guidance"
+          }
+        }
+      ]
+    )
+    li = ".gem-c-document-list__item-title"
+    attribute = ".gem-c-document-list__attribute"
+
+    assert_select "#{li}[href='/government/publications/parental-responsibility-measures-for-behaviour-and-attendance']", text: "School behaviour and attendance: parental responsibility measures"
+    assert_select "#{attribute} time", text: "January 2017"
+    assert_select "#{attribute} time[datetime='2017-01']"
+    assert_select ".gem-c-document-list__attribute", text: "Statutory guidance"
+
+    assert_select "#{li}[href='/become-an-apprentice']", text: "Become an apprentice"
+    assert_select ".gem-c-document-list__item-description", text: 'Becoming an apprentice - what to expect'
+    assert_select "#{attribute} time", text: "July 2017"
+    assert_select "#{attribute} time[datetime='2017-07']"
+  end
+
   it "renders a document list item even when public_updated_at is nil" do
     render_component(
       items: [

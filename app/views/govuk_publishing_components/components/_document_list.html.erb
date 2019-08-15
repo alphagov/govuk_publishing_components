@@ -10,6 +10,9 @@
   within_multitype_list_class = " gem-c-document-list__multi-list" if within_multitype_list
   title_with_context_class = " gem-c-document-list__item-title--context"
 
+  use_month_year_dates ||= false
+  date_format = use_month_year_dates ? "%B %Y" : "%e %B %Y"
+
   brand ||= false
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
 %>
@@ -46,8 +49,8 @@
             <% item[:metadata].compact.each do |item_metadata_key, item_metadata_value| %>
               <li class="gem-c-document-list__attribute">
                 <% if item_metadata_key.to_s.eql?("public_updated_at") %>
-                  <time datetime="<%= item_metadata_value.iso8601 %>">
-                    <%= l(item_metadata_value, format: '%e %B %Y') %>
+                  <time datetime="<%= use_month_year_dates ? item_metadata_value.strftime('%Y-%m') : item_metadata_value.iso8601 %>">
+                    <%= l(item_metadata_value, format: date_format) %>
                   </time>
                 <% else %>
                   <%= item_metadata_value %>
