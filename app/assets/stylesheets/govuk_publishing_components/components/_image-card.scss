@@ -110,8 +110,13 @@
   margin: 0;
   list-style: none;
 
+  .gem-c-image-card__list-item {
+    margin-bottom: govuk-spacing(1);
+  }
+
   .gem-c-image-card__list-item-link {
     @extend %govuk-link;
+    line-height: 1.35em;
   }
 
   &.gem-c-image-card__list--indented {
