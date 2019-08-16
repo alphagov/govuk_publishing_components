@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix image card responsiveness (PR #1055)
+
 ## 18.1.2
 
 * Restore jquery as gem dependency (PR #1051)
