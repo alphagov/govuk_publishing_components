@@ -45,7 +45,7 @@
 
 .gem-c-document-list__item-description {
   @include govuk-text-colour;
-  margin: 0 0 5px 0;
+  margin: govuk-spacing(1) 0;
 }
 
 .gem-c-document-list__subtext {
