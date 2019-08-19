@@ -1,15 +1,10 @@
 .gem-c-image-card {
   @include govuk-clearfix;
   @include govuk-text-colour;
-
-  margin: 0 (- govuk-spacing(3)) govuk-spacing(6) (- govuk-spacing(3));
   position: relative;
 }
 
 .gem-c-image-card__image-wrapper {
-  @include govuk-grid-column($width: one-third, $at: mobile);
-  @include govuk-grid-column($width: full, $at: tablet);
-
   margin: 0;
 
   @include govuk-media-query($from: tablet) {
@@ -23,14 +18,23 @@
   }
 }
 
+@include govuk-media-query($from: mobile, $until: tablet) {
+  .gem-c-image-card {
+    margin: 0 (- govuk-spacing(3)) govuk-spacing(6) (- govuk-spacing(3));
+  }
+
+  .gem-c-image-card__image-wrapper {
+    @include govuk-grid-column($width: one-third, $at: mobile);
+  }
+
+  .gem-c-image-card__text-wrapper {
+    @include govuk-grid-column($width: two-thirds, $at: mobile);
+  }
+}
+
 .gem-c-image-card__image {
   display: block;
   max-width: 100%;
-}
-
-.gem-c-image-card__text-wrapper {
-  @include govuk-grid-column($width: two-thirds, $at: mobile);
-  @include govuk-grid-column($width: full, $at: tablet);
 }
 
 .gem-c-image-card__title {
