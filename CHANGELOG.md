@@ -7,6 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+* `value` and `name` can be set on button component (PR #1059)
+
 ## 18.2.0
 
 * Fix nested checkboxes js (PR #1065)
