@@ -18,11 +18,20 @@
   border-bottom-color: govuk-colour("dark-grey", $legacy: "grey-1");
 }
 
-.govuk-header__logo {
+.gem-c-header__logo {
   white-space: nowrap;
+  width: auto;
 }
 
-.govuk-header__product-name {
+.gem-c-header__content {
+  width: auto;
+
+  @include govuk-media-query($from: desktop) {
+    float: right;
+  }
+}
+
+.gem-c-header__product-name {
   display: none;
 
   @include govuk-media-query($from: tablet) {
