@@ -64,24 +64,15 @@ describe "Input", type: :view do
     assert_select ".govuk-input[value='example@example.com']"
   end
 
-  it "renders inputs with an aria-describedby if provided" do
+  it "renders inputs with aria attributes if provided" do
     render_component(
       label: { text: "What is your email address?" },
       name: "email-address",
-      describedby: "some-other-element"
+      describedby: "something",
+      controls: "something-else"
     )
 
-    assert_select ".govuk-input[aria-describedby='some-other-element']"
-  end
-
-  it "renders inputs with an aria-controls if provided" do
-    render_component(
-      label: { text: "What is your postcode?" },
-      name: "postcode",
-      controls: "another-element"
-    )
-
-    assert_select ".govuk-input[aria-controls='another-element']"
+    assert_select ".govuk-input[aria-describedby='something'][aria-controls='something-else']"
   end
 
   it "renders inputs with an autocomplete attribute if provided" do
