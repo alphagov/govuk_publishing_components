@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Fix image card responsiveness (PR #1055)
+* Make contextual title accept and present lang parameter (PR #1056)
 
 ## 18.1.2
 
