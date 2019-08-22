@@ -6,7 +6,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 (function (Modules) {
   'use strict'
 
-  Modules.Checkboxes = function () {
+  Modules.GovukCheckboxes = function () {
     this.start = function (scope) {
       var _this = this
       this.applyAriaControlsAttributes(scope)
