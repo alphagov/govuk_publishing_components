@@ -1,0 +1,66 @@
+name: Summary list
+description: Use the summary list to summarise information, for example, a user’s responses at the end of a form.
+accessibility_criteria: |
+  Action links in the component must:
+
+  * indicate what the action refers to (e.g. Change _name_)
+shared_accessibility_criteria:
+  - link
+govuk_frontend_components:
+  - summary-list
+examples:
+  default:
+    data:
+      title: "Title, summary and body"
+      items:
+      - field: "Title"
+        value: "Ethical standards for public service providers"
+      - field: "Summary"
+        value: "Find out more about our reviews on the subject of ethical standards for public service providers, including our 2014 report, 2015 guidance and 2018 follow-up publication."
+      - field: "Body"
+        value: "After the government decided in 2013 to expand the remit of the Committee to include public service providers, the Committee on Standards in Public Life produced our first report on the issue: Ethical Standards for Providers of Public Services in 2014."
+
+  with_edit_on_section:
+    data:
+      title: "Title, summary and body"
+      edit:
+        href: "edit-title-summary-body"
+        data_attributes:
+          gtm: "edit-title-summary-body"
+      items:
+      - field: "Title"
+        value: "Ethical standards for public service providers"
+      - field: "Summary"
+        value: "Find out more about our reviews on the subject of ethical standards for public service providers, including our 2014 report, 2015 guidance and 2018 follow-up publication."
+      - field: "Body"
+        value: "After the government decided in 2013 to expand the remit of the Committee to include public service providers, the Committee on Standards in Public Life produced our first report on the issue: Ethical Standards for Providers of Public Services in 2014."
+
+  with_edit_on_individual_items:
+    data:
+      title: "Title, summary and body"
+      items:
+      - field: "Title"
+        value: "Ethical standards for public service providers"
+        edit:
+          href: "edit-title"
+          data_attributes:
+            gtm: "edit-title"
+      - field: "Summary"
+        value: "Find out more about our reviews on the subject of ethical standards for public service providers, including our 2014 report, 2015 guidance and 2018 follow-up publication."
+        edit:
+          href: "edit-summary"
+        delete:
+          href: "delete-summary"
+      - field: "Body"
+        value: "After the government decided in 2013 to expand the remit of the Committee to include public service providers, the Committee on Standards in Public Life produced our first report on the issue: Ethical Standards for Providers of Public Services in 2014."
+        edit:
+          href: "edit-body"
+        delete:
+          href: "delete-body"
+
+  with_block:
+    description: Use the summary list with a block when you need to show an empty state message or load another component.
+    data:
+      title: "Topics"
+      block: |
+        <p class="govuk-body">No topics specified for this document.</p>
