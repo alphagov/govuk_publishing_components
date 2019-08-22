@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 18.2.0
 
 * Fix nested checkboxes js (PR #1065)
 * Fix image card responsiveness (PR #1055)
