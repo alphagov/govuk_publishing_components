@@ -3,12 +3,12 @@
 
 describe('Checkboxes component', function () {
   function loadCheckboxesComponent () {
-    var checkboxes = new GOVUK.Modules.Checkboxes()
+    var checkboxes = new GOVUK.Modules.GovukCheckboxes()
     checkboxes.start($('.gem-c-checkboxes'))
   }
 
   var FIXTURE =
-  '<div id="checkboxes-1ac8e5cf" class="gem-c-checkboxes govuk-form-group " data-module="checkboxes">' +
+  '<div id="checkboxes-1ac8e5cf" class="gem-c-checkboxes govuk-form-group " data-module="govuk-checkboxes">' +
      '<fieldset class="govuk-fieldset" aria-describedby="checkboxes-1ac8e5cf-hint ">' +
         '<legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">' +
            '<h1 class="govuk-fieldset__heading">What is your favourite colour?</h1>' +

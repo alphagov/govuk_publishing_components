@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Fix nested checkboxes js (PR #1065)
 * Fix image card responsiveness (PR #1055)
 * Make contextual title accept and present lang parameter (PR #1056)
 * Add summary-list component based on GOV.UK Frontend (PR #1061)
