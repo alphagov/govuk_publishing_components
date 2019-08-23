@@ -37,22 +37,18 @@ examples:
         text: "Has an id"
       name: "hasid"
       id: "hasid"
-  aria_described_by:
+  with_aria_attributes:
     description: |
-      Allows the addition of an aria-describedby attribute. Note that this will be overridden in the event of an error, where the error will be used for the describedby attribute value.
+      The component accepts two possible aria attributes: aria-describedby and aria-controls.
 
-      The example below uses the ID of the main container for demonstration purposes as there aren't any useful elements with IDs in the component guide. In real use this would be passed the ID of an element that correctly described the input.
+      [aria-describedby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-describedby_attribute) is used to indicate the ID of the element that describes the input. This will be overridden in the event of an error, where the error will be used for the describedby attribute value. This example uses the ID of the main container for demonstration purposes as there aren't any useful elements with IDs in the component guide. In real use this would be passed the ID of an element that correctly described the input.
+
+      aria-controls allows the addition of an aria-controls attribute, for use in places like the finders where the page is updated dynamically after value changes to the input.
     data:
       label:
         text: "This is an example only and may not work with a screen reader"
       name: "labelledby"
       describedby: "wrapper"
-  aria_controls:
-    description: Allows the addition of an aria-controls attribute, for use in places like the finders where the page is updated dynamically after value changes to the input.
-    data:
-      label:
-        text: "This is an example only and will not work with a screen reader as intended"
-      name: "controls"
       controls: "wrapper"
   with_hint:
     data:

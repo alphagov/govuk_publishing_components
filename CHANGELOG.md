@@ -8,7 +8,9 @@
   of the commit log.
 
 ## Unreleased
+
 * `value` and `name` can be set on button component (PR #1059)
+* Consolidate input aria documentation and tests (PR #1062)
 
 ## 18.2.0
 
