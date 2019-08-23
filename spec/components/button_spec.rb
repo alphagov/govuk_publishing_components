@@ -141,4 +141,32 @@ describe "Button", type: :view do
 
     assert_select ".gem-c-button--inline", text: "Button one"
   end
+
+  it "renders with a name and a value attribute when name and value are set" do
+    render_component(text: "Button one", value: "this_value", name: "this_name")
+
+    assert_select ".gem-c-button[name='this_name']", 1
+    assert_select ".gem-c-button[value='this_value']", 1
+  end
+
+  it "renders without a name or a value attribute when only value is set" do
+    render_component(text: "Button one", value: "this_value")
+
+    assert_select ".gem-c-button[name]", 0
+    assert_select ".gem-c-button[value]", 0
+  end
+
+  it "renders without a name or a value attribute when only name is set" do
+    render_component(text: "Button one", name: "this_name")
+
+    assert_select ".gem-c-button[name]", 0
+    assert_select ".gem-c-button[value]", 0
+  end
+
+  it "renders without a name or a value attribute neither name or value is set" do
+    render_component(text: "Button one")
+
+    assert_select ".gem-c-button[name]", 0
+    assert_select ".gem-c-button[value]", 0
+  end
 end

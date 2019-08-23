@@ -98,4 +98,13 @@ examples:
     data:
       text: "Second button"
       inline_layout: true
+  with_name_and_value_set:
+    description: |
+      By default, the button has no value or name set so it will not pass information when the form is submitted. This allows a name and value to be added so a button can add information to the form submission.
+
+      Please note that Internet Explorer 6 and 7 have **breaking bugs** when submitting a form with multiple buttons - this can [change what value is submitted by the button](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Notes). Make sure to check your user needs and browser usage.
+    data:
+      text: "This is the button text"
+      value: "this_is_the_value"
+      name: "this_is_the_name"
 
