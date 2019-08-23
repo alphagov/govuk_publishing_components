@@ -1,5 +1,11 @@
 @import "govuk/components/textarea/textarea";
 
-.gem-c-textarea .govuk-textarea {
-  margin-bottom: 0;
+.gem-c-textarea {
+  .govuk-textarea {
+    margin-bottom: 0;
+
+    + .govuk-hint {
+      margin-top: govuk-spacing(1);
+    }
+  }
 }
