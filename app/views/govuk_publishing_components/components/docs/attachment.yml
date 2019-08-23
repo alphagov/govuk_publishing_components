@@ -29,7 +29,7 @@ examples:
   with_number_of_pages:
     data:
       attachment:
-        title: "Temporary snow ploughs: guidance note"
+        title: "Department for Transport, temporary snow ploughs: guidance note"
         url: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/259634/temporary-snow-ploughs.pdf
         filename: temporary-snow-ploughs.pdf
         content_type: application/pdf
