@@ -56,9 +56,12 @@
   @include govuk-link-style-text;
   font-family: "HelveticaNeue", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
 
-  &:hover,
-  &:focus {
+  &:hover {
     text-decoration: underline;
+  }
+
+  &:focus {
+    box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-focus-colour, 0 8px $govuk-focus-text-colour;
   }
 }
 
