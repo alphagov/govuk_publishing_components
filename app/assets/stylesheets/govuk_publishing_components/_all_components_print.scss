@@ -3,12 +3,6 @@
 
 @import "components/helpers/govuk-frontend-settings";
 
-// `govuk_frontend_toolkit`
-@import "measurements";
-@import "grid_layout";
-@import "typography";
-@import "colours";
-
 @import "components/print/accordion";
 @import "components/print/contents-list";
 @import "components/print/feedback";

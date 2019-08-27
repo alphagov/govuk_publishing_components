@@ -10,7 +10,7 @@ $gem-spacing-scale-6: 40px;
 $gem-spacing-scale-7: 50px;
 $gem-spacing-scale-8: 60px;
 
-$gem-text-colour: $text-colour;
+$gem-text-colour: $govuk-text-colour;
 $gem-secondary-text-colour: $govuk-secondary-text-colour;
 
 // Border widths
@@ -21,7 +21,7 @@ $gem-border-width-error: 4px;
 
 // Focus
 $gem-focus-width: 3px;
-$gem-focus-colour: $focus-colour;
+$gem-focus-colour: $govuk-focus-colour;
 
-$gem-error-colour: $red;
-$gem-success-colour: $button-colour;
+$gem-error-colour: govuk-colour("red");
+$gem-success-colour: govuk-colour("green");

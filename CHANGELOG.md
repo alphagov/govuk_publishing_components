@@ -7,9 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## unreleased
+## Unreleased
 
 * Allow summary_list to render without borders (PR #1073)
+* Remove govuk_frontend_toolkit sass dependencies (PR #1069)
 
 ## 18.3.1
 
