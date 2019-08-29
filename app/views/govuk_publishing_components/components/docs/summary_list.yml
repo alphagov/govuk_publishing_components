@@ -20,6 +20,14 @@ examples:
       - field: "Body"
         value: "After the government decided in 2013 to expand the remit of the Committee to include public service providers, the Committee on Standards in Public Life produced our first report on the issue: Ethical Standards for Providers of Public Services in 2014."
 
+  without_title:
+    data:
+      items:
+      - field: "Title"
+        value: "Ethical standards for public service providers"
+      - field: "Summary"
+        value: "Find out more about our reviews on the subject of ethical standards for public service providers, including our 2014 report, 2015 guidance and 2018 follow-up publication."
+
   with_edit_on_section:
     data:
       title: "Title, summary and body"
