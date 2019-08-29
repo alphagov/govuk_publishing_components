@@ -28,6 +28,16 @@ examples:
       - field: "Summary"
         value: "Find out more about our reviews on the subject of ethical standards for public service providers, including our 2014 report, 2015 guidance and 2018 follow-up publication."
 
+  without_borders:
+    data:
+      borderless: true
+      title: "Title, summary and body"
+      items:
+      - field: "Title"
+        value: "Ethical standards for public service providers"
+      - field: "Summary"
+        value: "Find out more about our reviews on the subject of ethical standards for public service providers, including our 2014 report, 2015 guidance and 2018 follow-up publication."
+
   with_edit_on_section:
     data:
       title: "Title, summary and body"

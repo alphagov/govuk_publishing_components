@@ -38,6 +38,14 @@ describe "Summary list", type: :view do
     assert_select '.gem-c-summary__block', text: 'Some HTML'
   end
 
+  it "renders without borders" do
+    render_component(
+      title: 'Title, summary and body',
+      borderless: true
+    )
+    assert_select '.gem-c-summary-list.govuk-summary-list--no-border'
+  end
+
   it "renders items" do
     render_component(
       items: [

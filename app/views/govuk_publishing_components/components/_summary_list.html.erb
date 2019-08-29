@@ -1,12 +1,13 @@
 <%
   id ||= nil
   title ||= nil
+  borderless ||= false
   edit ||= {}
   items ||= []
   block ||= yield
 %>
 <% if title || items.any? %>
-  <%= tag.div class: "gem-c-summary-list", id: id do %>
+  <%= tag.div class: "gem-c-summary-list #{"govuk-summary-list--no-border" if borderless}", id: id do %>
     <% if title %>
       <%= tag.h3 title, class: "govuk-heading-m" %>
       <% if edit.any? %>
