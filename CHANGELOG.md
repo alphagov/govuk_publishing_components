@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## unreleased
+
+* Allow summary_list to render without borders (PR #1073)
+
 ## 18.3.1
 
 * Adjust share links column width (PR #1074)
