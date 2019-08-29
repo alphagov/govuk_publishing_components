@@ -1,0 +1,14 @@
+// TODO: Remove when appropriate
+// govuk_template overrides the styles set by
+// govuk-frontend 3.0.0. This mixin is intended as a temporary fix
+// to ensure focus styles are as expected in apps using govuk_template
+
+@mixin govuk-template-link-focus-override {
+  &:focus,
+  &:active:focus,
+  &:link:focus,
+  &:visited:focus {
+    @include govuk-focused-text;
+    color: govuk-colour("black") !important;
+  }
+}

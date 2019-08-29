@@ -10,6 +10,7 @@
 
 @import "components/helpers/variables";
 @import "components/helpers/brand-colours";
+@import "components/mixins/govuk-template-link-focus-override";
 @import "components/mixins/media-down";
 @import "components/mixins/margins";
 @import "components/mixins/clearfix";
