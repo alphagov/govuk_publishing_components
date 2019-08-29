@@ -56,6 +56,10 @@
       }
     }
 
+    .attachment-thumb a:focus img {
+      outline: $govuk-border-width solid $govuk-focus-colour;
+    }
+
     .attachment-details {
       h2 {
         @include govuk-font($size: 27);

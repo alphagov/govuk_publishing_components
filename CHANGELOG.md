@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Make focus state on attachment thumbnails visible
+
 ## 18.3.0
 
 * `value` and `name` can be set on button component (PR #1059)
