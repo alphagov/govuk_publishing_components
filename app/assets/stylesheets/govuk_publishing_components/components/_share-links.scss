@@ -59,16 +59,18 @@ $share-button-height: 32px;
   }
 }
 
+$column-width: 150px;
+
 .gem-c-share-links--columns {
   .gem-c-share-links__list {
     @include govuk-clearfix;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax($column-width, 1fr));
   }
 
   .gem-c-share-links__list-item {
     float: left;
-    min-width: 200px;
+    min-width: $column-width;
   }
 
   .gem-c-share-links__link {

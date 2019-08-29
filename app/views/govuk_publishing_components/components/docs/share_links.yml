@@ -93,7 +93,7 @@ examples:
       ]
   arrange_in_columns:
     description: |
-      Share links are arranged in even columns that adjust according to the available space. Note that the column width is based on an assumed width, so if the text in the links is very long it may wrap onto a second line, which is undesirable.
+      Share links are arranged in even columns that adjust according to the available space. Note that the column width is based on an assumed width, so if the link text is long it may wrap (the example below demonstrates this).
 
       This option uses CSS grid, which is not fully supported in IE <= 11, so in those browsers the columns are floated.
     data:
@@ -101,12 +101,12 @@ examples:
       links: [
         {
           href: '/facebook-share-link',
-          text: 'Share on Facebook',
+          text: 'Facebook',
           icon: 'facebook'
         },
         {
           href: '/twitter-share-link',
-          text: 'Share on Twitter',
+          text: 'Twitter',
           icon: 'twitter'
         },
         {
@@ -116,17 +116,17 @@ examples:
         },
         {
           href: '/flickr-share-link',
-          text: 'Share on Flickr',
+          text: 'Flickr',
           icon: 'flickr'
         },
         {
           href: '/instagram-share-link',
-          text: 'Share on Instagram',
+          text: 'Instagram',
           icon: 'instagram'
         },
         {
           href: '/linkedin-share-link',
-          text: 'Share on Linkedin',
+          text: 'Linkedin',
           icon: 'linkedin'
         },
       ]
