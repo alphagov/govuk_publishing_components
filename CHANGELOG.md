@@ -10,6 +10,7 @@
 ## unreleased
 
 * Allow summary_list to render without borders (PR #1073)
+* Adds inset-prompt component (PR #1077)
 
 ## 18.3.1
 
