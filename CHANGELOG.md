@@ -14,6 +14,7 @@
 * Remove govuk_frontend_toolkit sass dependencies (PR #1069)
 * Explicitly set focus states (PR #1071)
 * Override edit link text on summary-link component (#1076)
+* Allow inset-text to take a block (PR #1078)
 
 ## 18.3.1
 
