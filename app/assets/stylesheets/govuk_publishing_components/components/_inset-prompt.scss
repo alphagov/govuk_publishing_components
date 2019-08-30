@@ -1,0 +1,48 @@
+.gem-c-inset-prompt {
+  @include govuk-text-colour;
+  @include govuk-responsive-padding(4);
+  @include govuk-responsive-margin(6, "bottom");
+
+  border-left: $govuk-border-width-narrow solid govuk-colour("dark-grey");
+
+  @include govuk-media-query($from: tablet) {
+    border-left: $govuk-border-width solid govuk-colour("dark-grey");
+  }
+
+  background-color: govuk-colour("light-grey");
+}
+
+.gem-c-inset-prompt--error {
+  border-color: $govuk-error-colour;
+  background-color: govuk-tint($govuk-error-colour, 90%);
+}
+
+.gem-c-inset-prompt__title {
+  @include govuk-font($size: 24, $weight: bold);
+
+  margin-top: 0;
+  @include govuk-responsive-margin(4, "bottom");
+}
+
+.gem-c-inset-prompt__body {
+  @include govuk-font($size: 19);
+
+  p {
+    margin-top: 0;
+    @include govuk-responsive-margin(4, "bottom");
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.gem-c-inset-prompt__list {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.gem-c-inset-prompt__list a {
+  @include govuk-link-common;
+  @include govuk-link-style-default;
+}

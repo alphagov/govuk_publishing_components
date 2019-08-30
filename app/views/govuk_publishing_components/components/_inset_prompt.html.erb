@@ -1,0 +1,36 @@
+<%
+  title ||= false
+  description ||= false
+  items ||= []
+  id ||= nil
+  error = false if error.nil?
+  data_attributes ||= {}
+  root_classes = %w[gem-c-inset-prompt]
+  root_classes << "gem-c-inset-prompt--error" if error
+
+  if title
+%>
+  <%= tag.div class: root_classes, id: id, data: data_attributes do %>
+    <%= tag.h3 title, class: "gem-c-inset-prompt__title" %>
+
+    <%= tag.div class: "gem-c-inset-prompt__body" do %>
+      <%= description if description %>
+
+      <% if items.any? %>
+        <%= tag.ul class: "govuk-list gem-c-inset-prompt__list" do %>
+          <% items.each_with_index do |item, index| %>
+            <%= tag.li do %>
+              <% if item[:href] %>
+                <%= link_to(item[:text], item[:href], data: item[:data_attributes], class: "govuk-link govuk-link--no-visited-state") %>
+              <% else %>
+                <%= tag.span data: item[:data_attributes] do %>
+                  <%= item[:text] %>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
