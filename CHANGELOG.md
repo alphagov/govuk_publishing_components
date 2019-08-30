@@ -7,8 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## unreleased
+## Unreleased
 
+* Restore margin bottom to the image card (PR #1079)
 * Allow summary_list to render without borders (PR #1073)
 
 ## 18.3.1
