@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix components focus state spacing (PR #1054)
+
 ## 19.0.0
 
 * **BREAKING:** Remove govuk_frontend_toolkit sass dependencies (PR #1069)
