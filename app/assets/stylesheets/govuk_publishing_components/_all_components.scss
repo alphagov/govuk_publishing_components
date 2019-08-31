@@ -8,13 +8,6 @@
 // Include common imports used by many components
 @import "govuk/all";
 
-// `govuk_frontend_toolkit`
-@import "measurements";
-@import "grid_layout";
-@import "typography";
-@import "colours";
-@import "css3";
-
 @import "components/helpers/variables";
 @import "components/helpers/brand-colours";
 @import "components/mixins/media-down";
@@ -75,7 +68,6 @@
 @import "components/step-by-step-nav";
 @import "components/subscription-links";
 @import "components/success-alert";
-@import "components/summary-list";
 @import "components/tabs";
 @import "components/table";
 @import "components/taxonomy-list";

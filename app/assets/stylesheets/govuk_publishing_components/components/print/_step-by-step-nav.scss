@@ -49,16 +49,18 @@ $stroke-width: 3px;
 }
 
 .gem-c-step-nav__circle {
-  @include _core-font-generator(19px, 16px, 19px, 30px, 23px, false, bold);
   box-sizing: border-box;
   position: absolute;
   top: 0;
   left: 0;
   width: $number-circle-size;
   height: $number-circle-size;
-  background: $white;
+  background: govuk-colour("white");
   border-radius: 100px;
   text-align: center;
+  font-size: 19px;
+  font-weight: bold;
+  line-height: 1.5;
 }
 
 .gem-c-step-nav__circle--number {
@@ -68,7 +70,7 @@ $stroke-width: 3px;
 .gem-c-step-nav__step,
 .gem-c-step-nav__paragraph,
 .gem-c-step-nav__links {
-  @include core-16;
+  @include govuk-font(16);
   padding-bottom: 1em;
 }
 
@@ -78,13 +80,13 @@ $stroke-width: 3px;
 }
 
 .gem-c-step-nav__title {
-  @include bold-19;
+  @include govuk-font(19, $weight: bold);
   margin: 0 0 .5em 0;
   padding: 0;
 }
 
 .gem-c-step-nav__button--title {
-  @include bold-19;
+  @include govuk-font(19, $weight: bold);
   padding: 0;
   border: 0;
   background: none;
@@ -112,6 +114,11 @@ $stroke-width: 3px;
 
 .gem-c-step-nav__link {
   margin-bottom: .3em;
+}
+
+.gem-c-step-nav__circle-step-label,
+.gem-c-step-nav__circle-step-colon {
+  display: none;
 }
 
 // scss-lint:enable SelectorFormat
