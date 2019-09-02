@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Restore margin bottom to the image card (PR #1079)
 * Allow summary_list to render without borders (PR #1073)
 * Remove govuk_frontend_toolkit sass dependencies (PR #1069)
 

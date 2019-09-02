@@ -2,6 +2,7 @@
   @include govuk-clearfix;
   @include govuk-text-colour;
   position: relative;
+  margin-bottom: govuk-spacing(6);
 }
 
 .gem-c-image-card__image-wrapper {
@@ -62,11 +63,18 @@
     position: absolute;
     z-index: 1;
     top: 0;
-    left: govuk-spacing(3);
-    right: govuk-spacing(3);
+    left: 0;
+    right: 0;
     height: 100%;
     $ie-background: rgba(255, 255, 255, 0);
     background: $ie-background; // because internet explorer
+  }
+
+  @include govuk-media-query($from: mobile, $until: tablet) {
+    &:after {
+      left: govuk-spacing(3);
+      right: govuk-spacing(3);
+    }
   }
 }
 
@@ -158,11 +166,9 @@
     padding-bottom: govuk-spacing(2);
   }
 
-  .gem-c-image-card__title-link {
-    &:after {
-      left: 0;
-      right: 0;
-    }
+  .gem-c-image-card__title-link:after {
+    left: 0;
+    right: 0;
   }
 
   .gem-c-image-card__description {
