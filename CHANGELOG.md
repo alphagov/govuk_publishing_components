@@ -12,7 +12,11 @@
 * Restore margin bottom to the image card (PR #1079)
 * Allow summary_list to render without borders (PR #1073)
 * Remove govuk_frontend_toolkit sass dependencies (PR #1069)
+<<<<<<< HEAD
 * Explicitly set focus states (PR #1071)
+=======
+* Override edit link text on summary-link component (#1076)
+>>>>>>> 8cbdd3ef... Update CHANGELOG
 
 ## 18.3.1
 
