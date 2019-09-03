@@ -321,6 +321,7 @@ DEPENDENCIES
   jasmine (~> 3.4.0)
   pry-byebug
   rspec-rails (~> 3.8)
+  selenium-webdriver (= 3.142.3)
   uglifier (>= 4.1.0)
   webmock (~> 3.6.0)
   yard
