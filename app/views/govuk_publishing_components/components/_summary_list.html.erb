@@ -15,9 +15,9 @@
           <%= tag.li class: "govuk-summary-list__actions-list-item" do %>
             <%= link_to edit.fetch(:href),
                       class: "govuk-link gem-c-summary-list__edit-section-link",
-                      title: "Edit #{title}",
+                      title: "#{edit.fetch(:link_text, "Edit")} #{title}",
                       data: edit.fetch(:data_attributes, {}) do %>
-               Edit <%= tag.span title, class: "govuk-visually-hidden" %>
+               <%= edit.fetch(:link_text, "Edit") %> <%= tag.span title, class: "govuk-visually-hidden" %>
             <% end %>
           <% end %>
         <% end %>

@@ -41,6 +41,24 @@ examples:
         data_attributes:
           gtm: "edit-title-summary-body"
 
+  with_custom_link_on_section:
+    data:
+      edit:
+        href: "custom-link"
+        link_text: "Reorder"
+      title: "Items"
+      items:
+      - field: "Item 1"
+        value: "Value 2"
+      - field: "Item 2"
+        value: "Value 2"
+      - field: "Item 3"
+        value: "Value 3"
+    accessibility_criteria: |
+      Take care that the provided `link_text` still makes sense to screen readers when combined with the title.
+      For instance, `Reorder` link text and `Items` title becomes `Reorder Items`, which reads fine, but link text
+      of `Summary` would read as `Summary Items`, which does not make sense.
+
   with_edit_on_individual_items:
     data:
       title: "Title, summary and body"

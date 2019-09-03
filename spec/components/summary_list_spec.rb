@@ -29,6 +29,18 @@ describe "Summary list", type: :view do
     assert_select '.gem-c-summary-list__edit-section-link[title="Edit Title, summary and body"][href="#edit-title-summary-body"][data-gtm="edit-title-summary-body"]', text: 'Edit Title, summary and body'
   end
 
+  it "renders section title with custom link text" do
+    render_component(
+      title: 'Items',
+      edit: {
+        href: "#custom-action",
+        link_text: "Reorder"
+      }
+    )
+    assert_select '.gem-c-summary-list .govuk-heading-m', text: 'Items'
+    assert_select '.gem-c-summary-list__edit-section-link[title="Reorder Items"][href="#custom-action"]', text: 'Reorder Items'
+  end
+
   it "renders section title with block" do
     render_component(
       title: 'Title, summary and body',
