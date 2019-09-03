@@ -7,11 +7,12 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 19.0.0
 
+* **BREAKING:** Remove govuk_frontend_toolkit sass dependencies (PR #1069)
+    * This will break apps that rely on mixins and variables from govuk_frontend_toolkit - you must replace these with mixins and variables from GOV.UK Frontend
 * Restore margin bottom to the image card (PR #1079)
 * Allow summary_list to render without borders (PR #1073)
-* Remove govuk_frontend_toolkit sass dependencies (PR #1069)
 * Explicitly set focus states (PR #1071)
 * Override edit link text on summary-link component (#1076)
 
