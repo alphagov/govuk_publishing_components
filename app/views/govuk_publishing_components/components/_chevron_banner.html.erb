@@ -1,0 +1,23 @@
+<%
+  href ||= false
+  text ||= false
+  hover_border ||= false
+
+  data_attributes ||= {}
+  data_attributes[:module] = 'track-click' if data_attributes.any?
+%>
+<% if href && text %>
+  <% #This assumes the application calling the component supports passing :extra_headers into the layout. %>
+  <% #If not, add the following to your application layout file: `yield :extra_headers` %>
+  <% content_for :extra_headers do %>
+    <link rel="preload" as="image" href="<%= asset_path 'govuk_publishing_components/chevron-banner/chevron-banner-hover.svg' %>" type="image/svg+xml">
+    <link rel="preload" as="image" href="<%= asset_path 'govuk_publishing_components/chevron-banner/chevron-banner-hover-border.svg' %>" type="image/svg+xml">
+    <link rel="preload" as="image" href="<%= asset_path 'govuk_publishing_components/chevron-banner/chevron-banner-focus.svg' %>" type="image/svg+xml">
+  <% end %>
+
+  <div class="gem-c-chevron-banner <%= "gem-c-chevron-banner--hover-border" if hover_border %>">
+    <div class="gem-c-chevron-banner__link-container">
+      <%= link_to(text, href, class: "gem-c-chevron-banner__link govuk-link", data: data_attributes) %>
+    </div>
+  </div>
+<% end %>
