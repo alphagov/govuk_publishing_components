@@ -1,7 +1,10 @@
 <%
   id ||= "inset-text-#{SecureRandom.hex(4)}"
 %>
-
 <%= tag.div id: id, class: "gem-c-inset-text govuk-inset-text" do %>
-  <%= text %>
+  <% if defined? text %>
+    <%= text %>
+  <% elsif block_given? %>
+    <%= yield %>
+  <% end %>
 <% end %>

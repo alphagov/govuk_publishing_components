@@ -19,6 +19,7 @@
 * Allow summary_list to render without borders (PR #1073)
 * Explicitly set focus states (PR #1071)
 * Override edit link text on summary-link component (#1076)
+* Allow inset-text to take a block (PR #1078)
 
 ## 18.3.1
 
