@@ -58,6 +58,10 @@ module GovukPublishingComponents
       def logo_url
         local_assigns[:logo_url]
       end
+
+      def parts
+        content_item.dig("details", "parts") || []
+      end
     end
   end
 end

@@ -62,6 +62,43 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       expect(structured_data['@type']).to eql("NewsArticle")
     end
 
+    it "generates schema.org FAQPages" do
+      content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "guide") do |random_item|
+        random_item.merge(
+          "base_path" => "/how-to-train-your-dragon",
+          "details" => {
+            "parts" => [
+              {
+                "title" => "Overview",
+                "slug" => "overview",
+                "body" => "<p>First catch your dragon</p>"
+              },
+              {
+                "title" => "Insurance",
+                "slug" => "insurance",
+                "body" => "<p>Contact the Berk insurance bureau for more details.</p>"
+              }
+            ]
+          }
+        )
+      end
+
+      structured_data = generate_structured_data(
+        content_item: content_item,
+        schema: :faq,
+      ).structured_data
+
+      expect(structured_data['@type']).to eql("FAQPage")
+
+      q_and_a_pairs = structured_data['mainEntity']
+      expect(q_and_a_pairs.count).to eq(2)
+      expect(q_and_a_pairs.first["url"]).to eq("http://www.dev.gov.uk/how-to-train-your-dragon")
+      expect(q_and_a_pairs.second["url"]).to eq("http://www.dev.gov.uk/how-to-train-your-dragon/insurance")
+
+      expect(q_and_a_pairs.first["name"]).to eq("Overview")
+      expect(q_and_a_pairs.first["acceptedAnswer"]["text"]).to eq("<p>First catch your dragon</p>")
+    end
+
     it "generates schema.org Person" do
       content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "person")
 
