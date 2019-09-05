@@ -5,8 +5,4 @@
     display: block;
     clear: both;
   }
-
-  @include ie-lte(7) {
-    zoom: 1;
-  }
 }
