@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 20.1.0
 
 * Add FAQPage schema ([PR #1087](https://github.com/alphagov/govuk_publishing_components/pull/1087))
 
