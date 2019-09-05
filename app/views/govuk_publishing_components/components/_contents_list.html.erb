@@ -2,7 +2,6 @@
   cl_helper = GovukPublishingComponents::Presenters::ContentsListHelper.new
   format_numbers ||= false
   underline_links ||= false
-  inverse ||= false
   contents ||= []
   aria_label ||= ''
   nested = !!contents.find { |c| c[:items] && c[:items].any? }
@@ -20,10 +19,7 @@
 <% if contents.any? %>
   <nav
     role="navigation"
-    class="gem-c-contents-list
-      <%= 'gem-c-contents-list--inverse' if inverse %>
-      <%= 'gem-c-contents-list--no-underline' unless underline_links %>
-      <%= brand_helper.brand_class %>"
+    class="gem-c-contents-list <%= 'gem-c-contents-list--no-underline' unless underline_links %> <%= brand_helper.brand_class %>"
     data-module="track-click"
     <% if aria_label.present? %>
       aria-label="<%= aria_label %>"
