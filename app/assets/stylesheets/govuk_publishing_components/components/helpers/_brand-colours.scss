@@ -15,7 +15,7 @@
 
         &:hover,
         &:focus {
-          color: darken(govuk-organisation-colour($organisation), 10%);
+          color: govuk-colour("black");
         }
       }
 

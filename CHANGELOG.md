@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Set all branded links to correct focus colour (PR #1088)
 * Fix components focus state spacing (PR #1054)
 
 ## 19.0.0
