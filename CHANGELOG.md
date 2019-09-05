@@ -7,9 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 20.0.0
 
-* Remove the inverse flag for contents list component ([PR #1090](https://github.com/alphagov/govuk_publishing_components/pull/1090))
+* **BREAKING:** Remove the inverse flag for contents list component ([PR #1090](https://github.com/alphagov/govuk_publishing_components/pull/1090))
+    * Will stop any inverse flags on the contents list component from working
 * Set all branded links to correct focus colour ([PR #1088](https://github.com/alphagov/govuk_publishing_components/pull/1088))
 * Fix components focus state spacing ([PR #1054](https://github.com/alphagov/govuk_publishing_components/pull/1054))
 * Allow inset-text to take a block ([PR #1078](https://github.com/alphagov/govuk_publishing_components/pull/1078))
