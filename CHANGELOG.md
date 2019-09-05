@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Remove the inverse flag for contents list component (PR #1090)
 * Set all branded links to correct focus colour (PR #1088)
 * Fix components focus state spacing (PR #1054)
 
