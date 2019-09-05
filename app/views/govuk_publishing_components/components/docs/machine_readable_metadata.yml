@@ -41,6 +41,21 @@ examples:
         details: {}
       schema: :article
       body: "Some other body"
+  a_guide:
+    data:
+      content_item:
+        title: "How to train your dragon"
+        base_path: "/how-to-train-your-dragon"
+        details:
+          parts:
+            - slug: overview
+              body: A thing on how to train scaly beasts
+              title: Overview
+            - slug: treating-injuries
+              body: Get to know a good blacksmith
+              title: Treating injuries
+      schema: :faq
+      canonical_url: https://www.gov.uk/how-to-train-your-dragon
   person_schema:
     data:
       content_item:

@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add FAQPage schema ([PR #1087](https://github.com/alphagov/govuk_publishing_components/pull/1087))
+
 ## 20.0.0
 
 * **BREAKING:** Remove the inverse flag for contents list component ([PR #1090](https://github.com/alphagov/govuk_publishing_components/pull/1090))
