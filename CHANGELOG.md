@@ -12,6 +12,7 @@
 * Remove the inverse flag for contents list component ([PR #1090](https://github.com/alphagov/govuk_publishing_components/pull/1090))
 * Set all branded links to correct focus colour ([PR #1088](https://github.com/alphagov/govuk_publishing_components/pull/1088))
 * Fix components focus state spacing ([PR #1054](https://github.com/alphagov/govuk_publishing_components/pull/1054))
+* Allow inset-text to take a block ([PR #1078](https://github.com/alphagov/govuk_publishing_components/pull/1078))
 
 ## 19.0.0
 
@@ -21,7 +22,6 @@
 * Allow summary_list to render without borders ([PR #1073](https://github.com/alphagov/govuk_publishing_components/pull/1073))
 * Explicitly set focus states ([PR #1071](https://github.com/alphagov/govuk_publishing_components/pull/1071))
 * Override edit link text on summary-link component ([PR #1076](https://github.com/alphagov/govuk_publishing_components/pull/1076))
-* Allow inset-text to take a block ([PR #1078](https://github.com/alphagov/govuk_publishing_components/pull/1078))
 
 ## 18.3.1
 
