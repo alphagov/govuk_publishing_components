@@ -99,7 +99,7 @@
 * Fix tabs list overwrite on mobile (PR #1003)
 * Set the origin when rendering the YouTube player (PR #1004)
 
-## 17.18.0
+## 17.18.0
 
 * Replace accessible media player with Youtube player (PR #908)
 * Prevent the cookie banner component from rendering when in an iframe (PR #995)
@@ -130,7 +130,7 @@
 * Stop duplicate links within feedback form (PR #981)
 * Add spacing to the feedback form (PR #981)
 
-## 17.12.2
+## 17.12.2
 
 * Make some tab component styles more specific to override `.content-block` (PR #978)
 
@@ -159,11 +159,11 @@
 
 * Remove old cookie banner code and new_cookie_banner flag (PR #959)
 
-## 17.7.0
+## 17.7.0
 
 * Add an inverse flag to the phase banner (PR #954)
 
-## 17.6.1
+## 17.6.1
 
 * Fix confirmation message being read to screenreaders (PR #952)
 * Hide 'Accept Cookies' button when Javascript not available (PR #948)
@@ -250,7 +250,7 @@
 * Add margin option to notice component (PR #884)
 * Remove related step by steps from CreativeWork schema (PR #888)
 
-# 16.23.0
+## 16.23.0
 
 * Add contents list heading Welsh translation (PR #881)
 * Enable passing data attributes to attachment components (PR #874)
@@ -639,7 +639,7 @@ Static provided stylesheets.
   will be an undefined constant
 - Apps which the admin layout no longer need to include jQuery as this comes
   bundled in the admin scripts.
-* Use a purple environment colour on Heroku (#566). Make sure to add a `HEROKU` environment variable to Heroku instances.
+* Use a purple environment colour on Heroku (#566). Make sure to add a `HEROKU` environment variable to Heroku instances.
 * Use a red favicon colour on production (#566)
 
 ## 11.2.0
@@ -704,7 +704,7 @@ are being unpublished. Use the new single Topic Taxonomy instead. (#540)
 
 * Insert component guide script elements before closing body element (PR #525)
 
-## 9.23.0
+## 9.23.0
 
 * Add half_width flag for higlight boxes (PR #520)
 
@@ -896,7 +896,7 @@ are being unpublished. Use the new single Topic Taxonomy instead. (#540)
 ## 9.3.0
 
 * Add Metadata component from Static (PR #374)
-* Remove the special casing to run this component in Static (#379)
+* Remove the special casing to run this component in Static (#379)
 
 ## 9.2.3
 
