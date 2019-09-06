@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 20.2.2
 
 * Fix data attributes in delete summary list item ([PR #1103](https://github.com/alphagov/govuk_publishing_components/pull/1103))
 
