@@ -31,24 +31,21 @@ $yellow: #ffdd00;
   }
 }
 
-.gem-c-chevron-banner:focus-within {
-  .gem-c-chevron-banner__link-container {
-    border-right: 2px solid;
-    border-color: govuk-colour("black");
-    background-color: $yellow;
+.gem-c-chevron-banner:focus-within .gem-c-chevron-banner__link-container {
+  border-right: 2px solid;
+  border-color: govuk-colour("black");
+  background-color: $yellow;
 
-    @include govuk-media-query($from: mobile) {
-      border-right: 0;
-    }
+  @include govuk-media-query($from: mobile) {
+    border-right: 0;
   }
+}
 
 .gem-c-chevron-banner:focus-within .gem-c-chevron-banner__link-container:after {
   background-image: image-url("govuk_publishing_components/chevron-banner/chevron-banner-small-focus.svg");
 
   @include govuk-media-query($from: mobile) {
-    .gem-c-chevron-banner__link-container:after {
-      background-image: image-url("govuk_publishing_components/chevron-banner/chevron-banner-focus.svg");
-    }
+    background-image: image-url("govuk_publishing_components/chevron-banner/chevron-banner-focus.svg");
   }
 }
 
@@ -89,6 +86,11 @@ $yellow: #ffdd00;
     background-repeat: no-repeat;
     background-position: -1px center;
     background-size: auto 100%;
+  }
+
+  // Target IE 9-11
+  @media screen and (min-width: 0\0) {
+    background-position: -8px center;
   }
 }
 
