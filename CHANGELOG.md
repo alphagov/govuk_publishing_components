@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Improve chevron banner component ([PR #1098](https://github.com/alphagov/govuk_publishing_components/pull/1098))
+* Add input style override override ([PR #1099](https://github.com/alphagov/govuk_publishing_components/pull/1099))
 
 ## 20.2.0
 

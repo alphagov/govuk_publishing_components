@@ -6,7 +6,13 @@
 }
 
 // this overrides styles from static that break the look of the component
+// unfortunately we then need to override the override for the search icon variant
+// TODO: remove these styles once static is made less aggressive
 .gem-c-input.govuk-input {
   margin: 0;
   padding: govuk-spacing(1);
+
+  &.gem-c-input--search-icon {
+    padding-left: govuk-spacing(6);
+  }
 }
