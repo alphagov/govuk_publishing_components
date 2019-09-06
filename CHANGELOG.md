@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Improve chevron banner component ([PR #1098](https://github.com/alphagov/govuk_publishing_components/pull/1098))
+
 ## 20.2.0
 
 * Ensure input styles are not overridden by static ([PR #1094](https://github.com/alphagov/govuk_publishing_components/pull/1094))
