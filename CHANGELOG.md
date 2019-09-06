@@ -8,6 +8,8 @@
   of the commit log.
 
 ## Unreleased
+
+* Ensure input styles are not overridden by static ([PR #1094](https://github.com/alphagov/govuk_publishing_components/pull/1094))
 * Fixes focus state spacing on 'extensive' related navigation links ([PR #1085](https://github.com/alphagov/govuk_publishing_components/pull/1085))
 
 ## 20.1.0
