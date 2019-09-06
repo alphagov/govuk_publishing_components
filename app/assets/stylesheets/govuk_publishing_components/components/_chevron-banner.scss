@@ -11,8 +11,10 @@ $yellow: #ffdd00;
     background-color: $dark-red;
   }
 
-  .gem-c-chevron-banner__link-container:after {
-    background-image: image-url("govuk_publishing_components/chevron-banner/chevron-banner-hover.svg");
+  @include govuk-media-query($from: mobile) {
+    .gem-c-chevron-banner__link-container:after {
+      background-image: image-url("govuk_publishing_components/chevron-banner/chevron-banner-hover.svg");
+    }
   }
 }
 
@@ -26,8 +28,10 @@ $yellow: #ffdd00;
     }
   }
 
-  .gem-c-chevron-banner__link-container:after {
-    background-image: image-url("govuk_publishing_components/chevron-banner/chevron-banner-hover-border.svg");
+  @include govuk-media-query($from: mobile) {
+    .gem-c-chevron-banner__link-container:after {
+      background-image: image-url("govuk_publishing_components/chevron-banner/chevron-banner-hover-border.svg");
+    }
   }
 }
 
@@ -58,7 +62,12 @@ $yellow: #ffdd00;
 
   @include govuk-media-query($from: mobile) {
     border-radius: 5px 0 0 5px;
-    margin-right: 104px;
+    margin-right: 120px;
+    padding: govuk-spacing(3);
+  }
+
+  @include govuk-media-query($from: desktop) {
+    padding: govuk-spacing(4);
   }
 }
 
@@ -81,7 +90,7 @@ $yellow: #ffdd00;
     top: 0;
     right: 0;
     height: 100%;
-    min-width: 105px;
+    min-width: 120px;
     background-image: image-url("govuk_publishing_components/chevron-banner/chevron-banner.svg");
     background-repeat: no-repeat;
     background-position: -1px center;
