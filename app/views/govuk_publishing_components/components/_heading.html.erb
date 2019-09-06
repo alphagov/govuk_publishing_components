@@ -1,5 +1,7 @@
 <%
   brand ||= false
+  lang = local_assigns[:lang].presence
+
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
   heading_helper = GovukPublishingComponents::Presenters::HeadingHelper.new(local_assigns)
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
@@ -12,5 +14,6 @@
 %>
 <%= content_tag(shared_helper.get_heading_level, text,
     class: classes,
-    id: heading_helper.id
+    id: heading_helper.id,
+    lang: lang
 ) %>
