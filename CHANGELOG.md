@@ -7,6 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+* Fixes focus state spacing on 'extensive' related navigation links ([PR #1085](https://github.com/alphagov/govuk_publishing_components/pull/1085))
+
 ## 20.1.0
 
 * Add FAQPage schema ([PR #1087](https://github.com/alphagov/govuk_publishing_components/pull/1087))

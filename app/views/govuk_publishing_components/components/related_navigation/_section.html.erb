@@ -26,7 +26,7 @@
         link_element = link_to(
           link[:text],
           link[:path],
-          class: related_nav_helper.section_css_class("gem-c-related-navigation__section-link", section_title, link),
+          class: related_nav_helper.section_css_class("gem-c-related-navigation__section-link", section_title, link, (index >= section_link_limit)),
           rel: link[:rel],
           lang: related_nav_helper.t_locale_check(link[:locale]),
           data: {
@@ -60,7 +60,7 @@
         </a>
       </li>
 
-      <li class="gem-c-related-navigation__link">
+      <li class="gem-c-related-navigation__link gem-c-related-navigation__link--truncated-links">
         <span id="toggle_<%= section_title %>" class="gem-c-related-navigation__toggle-more js-hidden">
           <%= to_sentence(constructed_link_array) %>
         </span>

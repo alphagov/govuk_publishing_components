@@ -60,8 +60,10 @@ module GovukPublishingComponents
         end
       end
 
-      def section_css_class(css_class, section_title, link = {})
-        css_classes = [css_class, "#{css_class}--#{@context}"]
+      def section_css_class(css_class, section_title, link = {}, link_is_inline = false)
+        css_classes = [css_class]
+        css_classes << "#{css_class}--#{@context}" unless @context.nil?
+        css_classes << "#{css_class}--inline" if link_is_inline
 
         unless DEFINED_SECTIONS.include?(section_title) || link.fetch(:finder, false)
           css_classes << " #{css_class}--other"
