@@ -50,7 +50,7 @@
                       <%= link_to item[:delete].fetch(:href),
                                   class: "govuk-link",
                                   title: "Delete #{item[:field]}",
-                                  data: item[:edit].fetch(:data_attributes, {}) do %>
+                                  data: item[:delete].fetch(:data_attributes, {}) do %>
                         Delete <%= tag.span item[:field], class: "govuk-visually-hidden" %>
                       <% end %>
                     <% end %>
