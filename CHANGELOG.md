@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 20.1.1
 
 * Ensure input styles are not overridden by static ([PR #1094](https://github.com/alphagov/govuk_publishing_components/pull/1094))
 * Fixes focus state spacing on 'extensive' related navigation links ([PR #1085](https://github.com/alphagov/govuk_publishing_components/pull/1085))
