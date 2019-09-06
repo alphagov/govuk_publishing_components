@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add ability to pass language to heading component ([PR #1102](https://github.com/alphagov/govuk_publishing_components/pull/1102))
+
 ## 20.2.2
 
 * Fix data attributes in delete summary list item ([PR #1103](https://github.com/alphagov/govuk_publishing_components/pull/1103))
