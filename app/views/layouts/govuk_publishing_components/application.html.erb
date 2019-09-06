@@ -24,6 +24,7 @@
     <% end %>
 
     <%= javascript_include_tag "govuk_publishing_components/vendor/modernizr" %>
+    <%= yield :extra_headers %>
   </head>
   <body class="gem-c-layout-for-admin govuk-template__body <%= 'hide-header-and-footer' if @preview %>">
     <script>

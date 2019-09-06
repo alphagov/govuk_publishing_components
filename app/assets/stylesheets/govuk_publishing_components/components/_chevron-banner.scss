@@ -1,0 +1,128 @@
+$red: #e61e32;
+$dark-red: #b31424;
+$yellow: #ffdd00;
+
+.gem-c-chevron-banner {
+  position: relative;
+}
+
+.gem-c-chevron-banner:hover {
+  .gem-c-chevron-banner__link-container {
+    background-color: $dark-red;
+  }
+
+  .gem-c-chevron-banner__link-container:after {
+    background-image: image-url("govuk_publishing_components/chevron-banner/chevron-banner-hover.svg");
+  }
+}
+
+.gem-c-chevron-banner--hover-border:hover {
+  .gem-c-chevron-banner__link-container {
+    border-right: 2px solid;
+    border-color: govuk-colour("white");
+
+    @include govuk-media-query($from: mobile) {
+      border-right: 0;
+    }
+  }
+
+  .gem-c-chevron-banner__link-container:after {
+    background-image: image-url("govuk_publishing_components/chevron-banner/chevron-banner-hover-border.svg");
+  }
+}
+
+.gem-c-chevron-banner:focus-within .gem-c-chevron-banner__link-container {
+  border-right: 2px solid;
+  border-color: govuk-colour("black");
+  background-color: $yellow;
+
+  @include govuk-media-query($from: mobile) {
+    border-right: 0;
+  }
+}
+
+.gem-c-chevron-banner:focus-within .gem-c-chevron-banner__link-container:after {
+  background-image: image-url("govuk_publishing_components/chevron-banner/chevron-banner-small-focus.svg");
+
+  @include govuk-media-query($from: mobile) {
+    background-image: image-url("govuk_publishing_components/chevron-banner/chevron-banner-focus.svg");
+  }
+}
+
+.gem-c-chevron-banner__link-container {
+  background-color: $red;
+  padding: govuk-spacing(4);
+  border-radius: 5px;
+  border: 2px solid transparent;
+  border-right: 0;
+
+  @include govuk-media-query($from: mobile) {
+    border-radius: 5px 0 0 5px;
+    margin-right: 104px;
+  }
+}
+
+.gem-c-chevron-banner__link-container:after {
+  content: "";
+  position: absolute;
+  right: 10px;
+  top: 0;
+  width: 25px;
+  height: 100%;
+  background-image: image-url("govuk_publishing_components/chevron-banner/chevron-banner-small.svg");
+  background-size: 25px 25px;
+  background-repeat: no-repeat;
+  background-position: center right;
+
+  @include govuk-media-query($from: mobile) {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    min-width: 105px;
+    background-image: image-url("govuk_publishing_components/chevron-banner/chevron-banner.svg");
+    background-repeat: no-repeat;
+    background-position: -1px center;
+    background-size: auto 100%;
+  }
+
+  // Target IE 9-11
+  @media screen and (min-width: 0\0) {
+    background-position: -8px center;
+  }
+}
+
+.gem-c-chevron-banner__link {
+  @include govuk-media-query($until: mobile) {
+    display: block;
+    width: 80%;
+  }
+}
+
+.gem-c-chevron-banner__link:link,
+.gem-c-chevron-banner__link:visited,
+.gem-c-chevron-banner__link:hover {
+  @include govuk-font(24, $weight: bold);
+  color: govuk-colour("white");
+  text-decoration: none;
+}
+
+// The yellow is hardcoded so it doesn't vary between apps as a result of the partial GOVUK Frontend V3 pgrade
+.gem-c-chevron-banner__link:link:focus,
+.gem-c-chevron-banner__link:focus {
+  color: govuk-colour("black");
+  background-color: $yellow;
+  box-shadow: 0 -2px $yellow, 0 4px govuk-colour("black");
+}
+
+.gem-c-chevron-banner__link:after {
+  content: "";
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
