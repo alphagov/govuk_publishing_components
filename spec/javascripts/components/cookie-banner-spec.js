@@ -6,6 +6,8 @@ describe('Cookie banner', function () {
 
   var container
 
+  var DEFAULT_COOKIE_CONSENT
+
   beforeEach(function () {
     container = document.createElement('div')
     container.innerHTML =
@@ -26,6 +28,10 @@ describe('Cookie banner', function () {
       '</div>'
 
     document.body.appendChild(container)
+
+    // set and store default cookie consent to use as basis of comparison
+    window.GOVUK.setDefaultConsentCookie()
+    DEFAULT_COOKIE_CONSENT = GOVUK.getCookie('cookie_policy')
   })
 
   afterEach(function () {
@@ -49,7 +55,7 @@ describe('Cookie banner', function () {
     new GOVUK.Modules.CookieBanner().start($(element))
 
     expect(GOVUK.getCookie('seen_cookie_message')).toEqual(null)
-    expect(GOVUK.getCookie('cookie_policy')).toEqual('"{\\"essential\\":true,\\"settings\\":true,\\"usage\\":true,\\"campaigns\\":true}"')
+    expect(GOVUK.getCookie('cookie_policy')).toEqual(DEFAULT_COOKIE_CONSENT)
   })
 
   it('sets consent cookie when accepting cookies', function () {
@@ -59,14 +65,14 @@ describe('Cookie banner', function () {
     new GOVUK.Modules.CookieBanner().start($(element))
 
     // Manually reset the consent cookie so we can check the accept button works as intended
-    expect(GOVUK.getCookie('cookie_policy')).toEqual('"{\\"essential\\":true,\\"settings\\":true,\\"usage\\":true,\\"campaigns\\":true}"')
+    expect(GOVUK.getCookie('cookie_policy')).toEqual(DEFAULT_COOKIE_CONSENT)
     GOVUK.cookie('cookie_policy', null)
 
     var acceptCookiesButton = document.querySelector('[data-accept-cookies]')
     acceptCookiesButton.click()
 
     expect(GOVUK.setCookie).toHaveBeenCalledWith('seen_cookie_message', 'true', { days: 365 })
-    expect(GOVUK.getCookie('cookie_policy')).toEqual('"{\\"essential\\":true,\\"settings\\":true,\\"usage\\":true,\\"campaigns\\":true}"')
+    expect(GOVUK.getCookie('cookie_policy')).toEqual(DEFAULT_COOKIE_CONSENT)
   })
 
   it('shows a confirmation message when cookies have been accepted', function () {
