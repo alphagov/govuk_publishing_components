@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix focus states on cookie-banner confirmation message ([PR #1109](https://github.com/alphagov/govuk_publishing_components/pull/1109))
+
 ## 20.3.0
 
 * Add ability to pass language to heading component ([PR #1102](https://github.com/alphagov/govuk_publishing_components/pull/1102))
