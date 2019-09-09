@@ -7,9 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 20.3.0
 
 * Add ability to pass language to heading component ([PR #1102](https://github.com/alphagov/govuk_publishing_components/pull/1102))
+* Fix chapter URLs in FAQ page schema ([PR #1105](https://github.com/alphagov/govuk_publishing_components/pull/1105)).
 
 ## 20.2.2
 
