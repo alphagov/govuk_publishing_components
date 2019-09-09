@@ -42,10 +42,14 @@ module GovukPublishingComponents
 
       def part_url(part, index)
         if index.zero?
-          page.canonical_url
+          guide_url
         else
-          page.canonical_url + "/" + part["slug"]
+          guide_url + "/" + part["slug"]
         end
+      end
+
+      def guide_url
+        Plek.new.website_root + page.base_path
       end
     end
   end
