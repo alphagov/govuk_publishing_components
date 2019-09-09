@@ -50,7 +50,7 @@ module GovukPublishingComponents
         if @is_page_heading
           content_tag(
             :legend,
-            class: "govuk-fieldset__legend govuk-fieldset__legend--xl gem-c-title gem-c-title--margin-bottom-5"
+            class: "govuk-fieldset__legend govuk-fieldset__legend--xl gem-c-title"
           ) do
             content_tag(:h1, @heading, class: "gem-c-title__text")
           end
