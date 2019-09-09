@@ -4,7 +4,7 @@ module GovukPublishingComponents
       include ActionView::Helpers
       include ActionView::Context
 
-      attr_reader :items, :name, :css_classes, :list_classes, :error, :has_conditional, :has_nested, :id, :hint_text, :description
+      attr_reader :items, :name, :css_classes, :list_classes, :error, :has_conditional, :has_nested, :id, :hint_text, :description, :heading_size
 
       def initialize(options)
         @items = options[:items] || []
@@ -22,6 +22,8 @@ module GovukPublishingComponents
 
         @id = options[:id] || "checkboxes-#{SecureRandom.hex(4)}"
         @heading = options[:heading] || nil
+        @heading_size = options[:heading_size]
+        @heading_size = 'm' unless %w(s m l xl).include?(@heading_size)
         @is_page_heading = options[:is_page_heading]
         @description = options[:description] || nil
         @no_hint_text = options[:no_hint_text]
@@ -55,7 +57,8 @@ module GovukPublishingComponents
             content_tag(:h1, @heading, class: "gem-c-title__text")
           end
         else
-          classes = %w(govuk-fieldset__legend govuk-fieldset__legend--m)
+          classes = %w(govuk-fieldset__legend)
+          classes << "govuk-fieldset__legend--#{@heading_size}"
           classes << "gem-c-checkboxes__legend--hidden" if @visually_hide_heading
 
           content_tag(:legend, @heading, class: classes)
