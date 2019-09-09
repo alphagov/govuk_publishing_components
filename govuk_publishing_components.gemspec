@@ -18,7 +18,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency "gds-api-adapters"
   s.add_dependency "govuk_app_config"
-  s.add_dependency "govuk_frontend_toolkit"
   s.add_dependency "kramdown"
   s.add_dependency "plek"
   s.add_dependency "rails", ">= 5.0.0.1"
