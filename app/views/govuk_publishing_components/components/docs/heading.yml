@@ -68,3 +68,11 @@ examples:
       brand: 'department-for-environment-food-rural-affairs'
       padding: true
       border_top: 5
+  with_lang_attribute:
+    description: |
+      The component is used on translated pages that don’t have a translation for the text strings. This means that it could display the fallback English string if the translate method can’t find an appropriate translation. This makes sure that the lang can be set to ensure that browsers understand which parts of the page are in each language.
+
+      The lang attribute must be set to a [valid BCP47 string](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang#Language_tag_syntax). A valid code can be the two or three letter language code - for example, English is en or eng, Korean is ko or kor - but if in doubt please check.
+    data:
+      text: "Ein gweinidogion"
+      lang: "cy"

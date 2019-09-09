@@ -80,4 +80,9 @@ describe "Heading", type: :view do
     render_component(text: 'Branded', brand: 'attorney-generals-office')
     assert_select ".gem-c-heading.brand--attorney-generals-office.brand__border-color"
   end
+
+  it "adds a lang attribute if passed" do
+    render_component(text: 'Branded', lang: "cy")
+    assert_select ".gem-c-heading[lang=cy]"
+  end
 end
