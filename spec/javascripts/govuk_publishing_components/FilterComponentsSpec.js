@@ -8,6 +8,11 @@ function addFormInput() {
   document.body.appendChild(form);
 };
 
+function removeFormInput() {
+  form = document.querySelector('form')
+  document.body.removeChild(form)
+}
+
 function addComponents() {
   var list = document.createElement('ul');
   list.classList.add("component-list");
@@ -43,6 +48,10 @@ describe('FilterComponents', function() {
     addFormInput();
     addComponents();
   });
+
+  afterAll(function() {
+    removeFormInput();
+  })
 
   it('hides all components that do not match search criteria', function() {
     FilterComponents("Accordion");
