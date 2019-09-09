@@ -69,6 +69,13 @@ $govuk-cookie-banner-text-green: #00823b;
   display: none;
   position: relative;
   padding: govuk-spacing(1);
+
+
+  // This element is focused using JavaScript so that it's being read out by screen readers
+  // for this reason we don't want to show the default outline or emphasise it visually using `govuk-focused-text`
+  &:focus {
+    outline: none;
+  }
 }
 
 .gem-c-cookie-banner__confirmation-message,
@@ -98,10 +105,13 @@ $govuk-cookie-banner-text-green: #00823b;
   padding: govuk-spacing(0);
   margin-top: govuk-spacing(2);
 
-
   &:hover {
     color: $govuk-link-hover-colour;
     cursor: pointer;
+  }
+
+  &:focus {
+    @include govuk-focused-text;
   }
 
   @include govuk-media-query($from: desktop) {
