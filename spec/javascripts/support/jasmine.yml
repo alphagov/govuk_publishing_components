@@ -18,6 +18,7 @@ src_files:
 
   # Include the components that we want to test (this is what apps do)
   - assets/govuk_publishing_components/all_components.js
+  - assets/govuk_publishing_components/modules.js
 
   # Use some of the assets from the component guide for testing
   - assets/component_guide/visual-regression.js
