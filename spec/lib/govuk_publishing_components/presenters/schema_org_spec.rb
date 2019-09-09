@@ -63,7 +63,10 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
     end
 
     it "generates schema.org FAQPages" do
-      content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "guide") do |random_item|
+      content_item = GovukSchemas::RandomExample.for_schema(
+        frontend_schema: "guide",
+        canonical_url: "http://www.dev.gov.uk/how-to-train-your-dragon/insurance"
+      ) do |random_item|
         random_item.merge(
           "base_path" => "/how-to-train-your-dragon",
           "details" => {
