@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 20.4.0
 
 * Update ODT guidance link ([PR #906](https://github.com/alphagov/govuk_publishing_components/pull/906))
 * Fix focus states on cookie-banner confirmation message ([PR #1109](https://github.com/alphagov/govuk_publishing_components/pull/1109))
