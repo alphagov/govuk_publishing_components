@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Fix focus states on cookie-banner confirmation message ([PR #1109](https://github.com/alphagov/govuk_publishing_components/pull/1109))
+* Allow custom heading size on checkboxes and radios ([PR #1107](https://github.com/alphagov/govuk_publishing_components/pull/1107))
 
 ## 20.3.0
 

@@ -119,6 +119,34 @@ describe "Radio", type: :view do
     assert_select "legend h1", "What is your favourite skittle?"
   end
 
+  it "renders radio-group with custom heading size" do
+    render_component(
+      name: "favourite-skittle",
+      heading: "What is your favourite skittle?",
+      heading_size: "s",
+      items: [
+        { label: "Red", value: "red" },
+        { label: "Green", value: "green" },
+        { label: "Blue", value: "blue" }
+      ]
+    )
+    assert_select ".govuk-fieldset__legend.govuk-fieldset__legend--s", "What is your favourite skittle?"
+  end
+
+  it "renders radio-group with default heading size when passing an undefined size" do
+    render_component(
+      name: "favourite-skittle",
+      heading: "What is your favourite skittle?",
+      heading_size: "x",
+      items: [
+        { label: "Red", value: "red" },
+        { label: "Green", value: "green" },
+        { label: "Blue", value: "blue" }
+      ]
+    )
+    assert_select ".govuk-fieldset__legend.govuk-fieldset__legend--m", "What is your favourite skittle?"
+  end
+
   it "renders radio-group with bold labels" do
     render_component(
       name: "radio-group-bold-labels",

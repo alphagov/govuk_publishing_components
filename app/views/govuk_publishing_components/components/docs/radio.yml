@@ -126,7 +126,7 @@ examples:
       heading: "What is your favourite colour?"
       description: |
         Skittles consist of hard sugar shells imprinted with the letter "S".
-        The interior consists mainly of sugar, corn syrup, and hydrogenated 
+        The interior consists mainly of sugar, corn syrup, and hydrogenated
         palm kernel oil along with fruit juice, citric acid, natural and artificial flavors.
       items:
       - value: "red"
@@ -141,7 +141,7 @@ examples:
       heading: "What is your favourite colour?"
       description: |
         Skittles consist of hard sugar shells imprinted with the letter "S".
-        The interior consists mainly of sugar, corn syrup, and hydrogenated 
+        The interior consists mainly of sugar, corn syrup, and hydrogenated
         palm kernel oil along with fruit juice, citric acid, natural and artificial flavors.
       hint: "Choose the colour"
       items:
@@ -158,7 +158,7 @@ examples:
       is_page_heading: true
       description: |
         Skittles consist of hard sugar shells imprinted with the letter "S".
-        The interior consists mainly of sugar, corn syrup, and hydrogenated 
+        The interior consists mainly of sugar, corn syrup, and hydrogenated
         palm kernel oil along with fruit juice, citric acid, natural and artificial flavors.
       hint: "Choose the colour"
       items:
@@ -168,6 +168,19 @@ examples:
         text: "Green"
       - value: "blue"
         text: "Blue"
+  with_custom_heading_size:
+    data:
+      name: "radio-group-description"
+      heading: "What is your favourite colour?"
+      heading_size: "s"
+      items:
+      - value: "red"
+        text: "Red"
+      - value: "green"
+        text: "Green"
+      - value: "blue"
+        text: "Blue"
+
   with_hint_text_on_radios:
     data:
       name: "radio-group-hint-text"
@@ -308,4 +321,3 @@ examples:
           text: "On"
         - value: "off"
           text: "Off"
-
