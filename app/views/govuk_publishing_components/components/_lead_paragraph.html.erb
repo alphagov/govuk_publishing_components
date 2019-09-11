@@ -1,10 +1,15 @@
 <%
   text ||= ""
   inverse ||= false
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+
+  custom_margin_bottom_class =  shared_helper.get_margin_bottom if [*0..9].include?(local_assigns[:margin_bottom])
+
+  classes = %w(gem-c-lead-paragraph)
+  classes << "gem-c-lead-paragraph--inverse" if inverse
+  classes << custom_margin_bottom_class if local_assigns[:margin_bottom]
 %>
 
 <% if text.present? %>
-  <p class="gem-c-lead-paragraph <% if inverse %>gem-c-lead-paragraph--inverse<% end %>">
-    <%= text %>
-  </p>
+  <%= content_tag :p, text, class: classes %>
 <% end %>
