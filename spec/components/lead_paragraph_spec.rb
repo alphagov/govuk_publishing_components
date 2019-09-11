@@ -18,4 +18,9 @@ describe "Lead paragraph", type: :view do
     render_component(text: 'UK Visas and Immigration is making changes to the Immigration Rules affecting various categories.')
     assert_select ".gem-c-lead-paragraph", text: "UK Visas and Immigration is making changes to the Immigration Rules affecting various categories."
   end
+
+  it "sets a custom margin bottom" do
+    render_component(text: "This is a lead paragraph", margin_bottom: 3)
+    assert_select '.gem-c-lead-paragraph.govuk-\!-margin-bottom-3'
+  end
 end
