@@ -11,9 +11,11 @@ module GovukPublishingComponents
         @contents = options[:contents] || []
         @nested = !!@contents.find { |c| c[:items] && c[:items].any? }
         @format_numbers = options[:format_numbers]
+        @font_size = options[:font_size]
 
         @classes = %w(gem-c-contents-list)
         @classes << " gem-c-contents-list--no-underline" unless options[:underline_links]
+        @classes << " gem-c-contents-list--font-size-#{@font_size}" if [24, 19].include? @font_size
       end
 
       def list_item_classes(list_item, nested)
