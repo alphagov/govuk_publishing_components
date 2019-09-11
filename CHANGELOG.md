@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 20.5.0
 
 * Add font-size option to contents list component ([PR #1112](https://github.com/alphagov/govuk_publishing_components/pull/1112))
 * Add margin-bottom option to lead paragraph component ([PR #1114](https://github.com/alphagov/govuk_publishing_components/pull/1114))

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    govuk_publishing_components (20.4.0)
+    govuk_publishing_components (20.5.0)
       gds-api-adapters
       govuk_app_config
       govuk_frontend_toolkit
@@ -322,7 +322,8 @@ DEPENDENCIES
   yard
 
 RUBY VERSION
-   ruby 2.6.3p62
+  ruby 2.6.3p62
+
 
 BUNDLED WITH
    1.17.3
