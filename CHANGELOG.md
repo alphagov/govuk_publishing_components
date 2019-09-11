@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Update to [govuk-frontend to 3.2.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.2.0) ([PR #1113](https://github.com/alphagov/govuk_publishing_components/pull/1113))
 * Fix focus state on step by step nav when header element is hovered [PR #1119](https://github.com/alphagov/govuk_publishing_components/pull/1119)
 
 ## 20.5.1
