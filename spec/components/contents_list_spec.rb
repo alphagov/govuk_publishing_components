@@ -137,4 +137,12 @@ describe "Contents list", type: :view do
     render_component(contents: nested_contents_list, hide_title: true)
     assert_select ".gem-c-contents-list__title", false
   end
+
+  it "can render the component in different font sizes" do
+    render_component(contents: contents_list, font_size: 24)
+    assert_select ".gem-c-contents-list--font-size-24"
+
+    render_component(contents: contents_list, font_size: 19)
+    assert_select ".gem-c-contents-list--font-size-19"
+  end
 end

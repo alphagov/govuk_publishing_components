@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add font-size option to contents list component ([PR #1112](https://github.com/alphagov/govuk_publishing_components/pull/1112))
+
 ## 20.4.0
 
 * Update ODT guidance link ([PR #906](https://github.com/alphagov/govuk_publishing_components/pull/906))

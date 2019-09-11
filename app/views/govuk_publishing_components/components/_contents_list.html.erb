@@ -1,47 +1,35 @@
-<%
-  cl_helper = GovukPublishingComponents::Presenters::ContentsListHelper.new
+<%-
+  cl_helper = GovukPublishingComponents::Presenters::ContentsListHelper.new(local_assigns)
+  aria_label ||= nil
   format_numbers ||= false
-  underline_links ||= false
-  contents ||= []
-  aria_label ||= ''
-  nested = !!contents.find { |c| c[:items] && c[:items].any? }
-  parent_list_item_modifier = if nested
-                                'parent'
-                              elsif format_numbers
-                                'numbered'
-                              else
-                                'dashed'
-                              end
+  hide_title ||= false
+
   brand ||= false
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
-  hide_title ||= false
-%>
-<% if contents.any? %>
-  <nav
-    role="navigation"
-    class="gem-c-contents-list <%= 'gem-c-contents-list--no-underline' unless underline_links %> <%= brand_helper.brand_class %>"
-    data-module="track-click"
-    <% if aria_label.present? %>
-      aria-label="<%= aria_label %>"
-    <% end %>
-  >
+
+  classes = cl_helper.classes
+  classes << brand_helper.brand_class
+-%>
+<% if cl_helper.contents.any? %>
+  <%= content_tag(
+    :nav,
+    class: classes,
+    "aria-label": aria_label,
+    role: "navigation",
+    data: {
+      module: "track-click"
+    }
+  ) do %>
     <% unless hide_title %>
       <h2 class="gem-c-contents-list__title"><%= t("components.contents_list.contents") %></h2>
     <% end %>
 
     <ol class="gem-c-contents-list__list">
       <% contents.each.with_index(1) do |contents_item, position| %>
-        <%
-          active_class = "gem-c-contents-list__list-item--active" if contents_item[:active]
-          aria_current = "aria-current = true" if contents_item[:active]
-        %>
-        <li
-          class="gem-c-contents-list__list-item gem-c-contents-list__list-item--<%= parent_list_item_modifier %> <%= active_class %>"
-          <%= aria_current %>
-        >
+        <li class="<%= cl_helper.list_item_classes(contents_item, false) %>" <%= "aria-current=true" if contents_item[:active] %>>
           <% link_text = format_numbers ? cl_helper.wrap_numbers_with_spans(contents_item[:text]) : contents_item[:text] %>
           <%= link_to_if !contents_item[:active], link_text, contents_item[:href],
-            class: "gem-c-contents-list__link #{brand_helper.color_class}",
+            class: "gem-c-contents-list__link govuk-link #{brand_helper.color_class}",
             data: {
               track_category: 'contentsClicked',
               track_action: "content_item #{position}",
@@ -51,19 +39,13 @@
               }
             }
           %>
+
           <% if contents_item[:items] && contents_item[:items].any? %>
             <ol class="gem-c-contents-list__nested-list">
               <% contents_item[:items].each.with_index(1) do |nested_contents_item, nested_position| %>
-              <%
-                active_class = "gem-c-contents-list__list-item--active" if nested_contents_item[:active]
-                aria_current = "aria-current = true" if nested_contents_item[:active]
-              %>
-                <li
-                  class="gem-c-contents-list__list-item gem-c-contents-list__list-item--dashed <%= active_class %>"
-                  <%= aria_current %>
-                >
+                <li class="<%= cl_helper.list_item_classes(nested_contents_item, true) %>" <%= "aria-current=true" if nested_contents_item[:active] %>>
                   <%= link_to_if !nested_contents_item[:active], nested_contents_item[:text], nested_contents_item[:href],
-                    class: "gem-c-contents-list__link #{brand_helper.color_class}",
+                    class: "gem-c-contents-list__link govuk-link #{brand_helper.color_class}",
                     data: {
                       track_category: 'contentsClicked',
                       track_action: "nested_content_item #{position}:#{nested_position}",
@@ -76,9 +58,9 @@
                 </li>
               <% end %>
             </ol>
-          <% end %>
+            <% end %>
         </li>
       <% end %>
     </ol>
-  </nav>
+  <% end %>
 <% end %>

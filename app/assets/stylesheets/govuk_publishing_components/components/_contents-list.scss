@@ -10,6 +10,16 @@
   box-shadow: 0 20px 15px -10px govuk-colour("white");
 }
 
+.gem-c-contents-list--font-size-19 .gem-c-contents-list__title,
+.gem-c-contents-list--font-size-19 .gem-c-contents-list__list {
+  @include govuk-font($size: 19, $line-height: 1.5);
+}
+
+.gem-c-contents-list--font-size-24 .gem-c-contents-list__title,
+.gem-c-contents-list--font-size-24 .gem-c-contents-list__list {
+  @include govuk-font($size: 24, $line-height: 1.5);
+}
+
 .gem-c-contents-list__title {
   @include govuk-text-colour;
   @include govuk-font($size: 16, $weight: regular, $line-height: 1.5);
