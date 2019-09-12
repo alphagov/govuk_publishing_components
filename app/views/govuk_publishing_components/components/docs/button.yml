@@ -56,6 +56,10 @@ examples:
     data:
       text: "Destructive button"
       destructive: true
+  button_looks_like_link:
+    data:
+      text: "Button, but look like a link"
+      as_link: true
   start_now_button_with_info_text:
     data:
       text: "Start now"

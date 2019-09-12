@@ -107,3 +107,45 @@ $gem-quiet-button-hover-colour: darken($gem-quiet-button-colour, 5%);
     content: none;
   }
 }
+
+.gem-c-button--as-link {
+  padding: 0;
+  border-width: 0;
+  box-shadow: none;
+  color: $govuk-link-colour;
+  background: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  text-decoration: underline;
+
+  @include govuk-link-common;
+  @include govuk-link-style-default;
+
+  // Remove default button focus outline in Firefox
+  &::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+  }
+
+  // very specific to combat .govuk-button styles from
+  // https://github.com/alphagov/govuk-frontend/blob/master/src/govuk/components/button/_button.scss#L112
+  &:focus:not(:active):not(:hover) {
+    @include govuk-focused-text;
+  }
+
+  &:hover {
+    color: $govuk-link-hover-colour;
+    text-decoration: underline;
+    background: none;
+    box-shadow: none;
+  }
+
+  &:active {
+    color: $govuk-link-active-colour;
+    text-decoration: underline;
+  }
+
+  &:before {
+    content: none;
+  }
+}

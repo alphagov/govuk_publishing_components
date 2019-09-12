@@ -70,6 +70,12 @@ describe "Button", type: :view do
     assert_select "a.govuk-button", false
   end
 
+  it "renders a button that looks like a link" do
+    render_component(text: "Button, but looks like a link", as_link: true)
+    assert_select "button.gem-c-button--as-link", text: "Button, but looks like a link"
+    assert_select "button.gem-c-button--as-link[role=button]", true
+  end
+
   it "renders info text" do
     render_component(text: "Start now", info_text: "Information text")
     assert_select ".govuk-button", text: "Start now"

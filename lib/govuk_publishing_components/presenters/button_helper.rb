@@ -5,7 +5,7 @@ module GovukPublishingComponents
     class ButtonHelper
       attr_reader :href, :text, :title, :info_text, :rel, :data_attributes,
                   :margin_bottom, :inline_layout, :target, :type, :start,
-                  :secondary, :secondary_quiet, :destructive, :name, :value
+                  :secondary, :secondary_quiet, :destructive, :name, :value, :as_link
 
       def initialize(local_assigns)
         @href = local_assigns[:href]
@@ -24,15 +24,20 @@ module GovukPublishingComponents
         @destructive = local_assigns[:destructive]
         @name = local_assigns[:name]
         @value = local_assigns[:value]
+        @as_link = local_assigns[:as_link]
       end
 
       def link?
         href.present?
       end
 
+      def as_link?
+        as_link.present?
+      end
+
       def html_options
         options = { class: css_classes }
-        options[:role] = "button" if link?
+        options[:role] = "button" if link? || as_link?
         options[:type] = button_type
         options[:rel] = rel if rel
         options[:data] = data_attributes if data_attributes
@@ -44,7 +49,7 @@ module GovukPublishingComponents
       end
 
       def button_type
-        type || "submit" unless link?
+        type || "submit" unless link? || as_link?
       end
 
     private
@@ -57,6 +62,7 @@ module GovukPublishingComponents
         classes << "govuk-button--warning" if destructive
         classes << "gem-c-button--bottom-margin" if margin_bottom
         classes << "gem-c-button--inline" if inline_layout
+        classes << "gem-c-button--as-link" if as_link
         classes.join(" ")
       end
     end

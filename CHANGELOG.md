@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add "Button looks like a link" variant [#PR 1135](https://github.com/alphagov/govuk_publishing_components/pull/1135)
+
 ## 21.2.0
 
 * Fieldset custom legend size ([PR #1134](https://github.com/alphagov/govuk_publishing_components/pull/1134))
