@@ -1,6 +1,6 @@
-## Modules
+## JavaScript Modules
 
-The toolkit comes with a module pattern that makes it easy to write re-usable modular components, without having to worry about where and when the module should be instantiated.
+GOV.UK Publishing Components inherits a module pattern that makes it easy to write re-usable modular components, without having to worry about where and when the module should be instantiated.
 
 ### Usage
 
@@ -42,14 +42,14 @@ A module must add its constructor to `GOVUK.Modules` and it must have a `start` 
 The simplest module looks like:
 
 ```javascript
-;(function(Modules) {
+(function(Modules) {
   'use strict'
 
-  Modules.SomeModule = function() {
-    this.start = function($element) {
-      // module code
-    }
+  function SomeModule () {}
+  SomeModule.prototype.start = function($element) {
+    // module code
   }
+  Modules.SomeModule = SomeModule
 })(window.GOVUK.Modules)
 ```
 
@@ -73,7 +73,7 @@ Make it clear where a javascript module will be applying behaviour:
 Beginning with a set of event listeners clearly indicates the module’s intentions.
 
 ```js
-this.start = function($element) {
+SomeModule.prototype.start = function($element) {
   $element.on('click', '.js-toggle', toggle)
   $element.on('click', '.js-cancel', cancel)
 }
@@ -106,4 +106,4 @@ Keep modules flexible by moving configuration to data attributes on the module�
 
 #### Include Jasmine specs
 
-Modules should have their own tests, whether they’re being included with the toolkit or are app specific.
+Modules should have their own tests, whether they’re being included with the GOV.UK Publishing Components or are app specific.
