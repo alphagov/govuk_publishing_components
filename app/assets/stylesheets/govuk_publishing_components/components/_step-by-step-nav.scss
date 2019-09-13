@@ -262,7 +262,7 @@ $top-border: solid 2px govuk-colour("mid-grey", $legacy: "grey-3");
   }
 
   &:hover {
-    .gem-c-step-nav__button,
+    .gem-c-step-nav__button:not(:focus),
     .gem-c-step-nav__circle {
       color: $govuk-link-colour;
     }
