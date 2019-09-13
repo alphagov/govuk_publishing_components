@@ -262,19 +262,13 @@ $top-border: solid 2px govuk-colour("mid-grey", $legacy: "grey-3");
   }
 
   &:hover {
-    .gem-c-step-nav__button,
+    .gem-c-step-nav__button:not(:focus),
     .gem-c-step-nav__circle {
       color: $govuk-link-colour;
     }
 
     .gem-c-step-nav__toggle-link {
       text-decoration: underline;
-    }
-  }
-
-  &:focus {
-    .gem-c-step-nav__button {
-      color: $govuk-focus-text-colour;
     }
   }
 
