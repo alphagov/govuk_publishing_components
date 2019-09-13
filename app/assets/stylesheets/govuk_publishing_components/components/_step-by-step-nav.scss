@@ -272,12 +272,6 @@ $top-border: solid 2px govuk-colour("mid-grey", $legacy: "grey-3");
     }
   }
 
-  &:focus {
-    .gem-c-step-nav__button {
-      color: $govuk-focus-text-colour;
-    }
-  }
-
   .gem-c-step-nav--large & {
     @include govuk-media-query($from: tablet) {
       padding: govuk-spacing(6) 0;
