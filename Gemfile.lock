@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    govuk_publishing_components (20.5.0)
+    govuk_publishing_components (20.5.1)
       gds-api-adapters
       govuk_app_config
       kramdown
@@ -316,10 +316,6 @@ DEPENDENCIES
   uglifier (>= 4.1.0)
   webmock (~> 3.6.0)
   yard
-
-RUBY VERSION
-  ruby 2.6.3p62
-
 
 BUNDLED WITH
    1.17.3
