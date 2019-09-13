@@ -36,6 +36,12 @@ module GovukPublishingComponents
       end
     end
 
+    def designer
+      @component_doc = component_docs.get(params[:component])
+      @preview = false
+      @component_example = @component_doc.examples.find { |f| f.id == params[:example] }
+    end
+
   private
 
     def component_docs

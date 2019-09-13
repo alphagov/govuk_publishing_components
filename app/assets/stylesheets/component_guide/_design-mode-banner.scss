@@ -1,0 +1,16 @@
+.govuk-c-design-mode-component__banner {
+  display: none;
+
+  &.govuk-panel {
+    color: govuk-colour("white");
+    background-color: govuk-colour("blue");
+    margin-bottom: govuk-spacing(0);
+    padding: govuk-spacing(2);
+    top: govuk-spacing(0);
+    z-index: 100;
+
+    .govuk-panel__body {
+      @include govuk-font($size: 19, $weight: bold);
+    }
+  }
+}

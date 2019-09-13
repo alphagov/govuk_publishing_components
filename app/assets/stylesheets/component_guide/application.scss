@@ -6,6 +6,8 @@
 @import "govuk/tools/all";
 @import "govuk/helpers/all";
 @import "govuk/core/all";
+@import "./design-mode-banner";
+@import "./download-screenshot";
 
 .component-guide-wrapper {
   padding-bottom: $govuk-gutter * 1.5;

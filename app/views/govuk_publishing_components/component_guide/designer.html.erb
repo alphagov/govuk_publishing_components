@@ -1,0 +1,32 @@
+<%= render 'govuk_publishing_components/components/title', title: @component_doc.name, context: "Design mode" %>
+
+<div class="govuk-!-margin-bottom-6">
+  <%= render "govuk_publishing_components/components/button", {
+    text: "Turn on design mode",
+    inline_layout: true,
+    secondary: true,
+    data_attributes: {
+      module: "toggle-design-mode"
+    }
+  } %>
+  <a
+    class="gem-c-button govuk-button gem-c-button--secondary-quiet gem-c-button--inline"
+    id="take-screenshot-download"
+    data-module="take-screenshot"
+    download="<%= @component_doc.name %> - screenshot.png"
+  >
+    Generate screenshot
+  </a>
+</div>
+
+<div class="govuk-panel govuk-c-design-mode-component__banner" id="design-mode-banner">
+  <div class="govuk-panel__body">You are in design mode.</div>
+</div>
+
+<div data-module="test-a11y" data-excluded-rules="<%= @component_doc.accessibility_excluded_rules %>" id="component-preview">
+  <%= render "govuk_publishing_components/component_guide/component_doc/component", component_doc: @component_doc, example: @component_example, preview_page: false %>
+</div>
+
+<div class="govuk-c-download-screenshot" id="govuk-c-download-screenshot">
+  <div id="govuk-c-download-screenshot__result" class="govuk-!-margin-top-4 govuk-!-margin-bottom-4"></div>
+</div>
