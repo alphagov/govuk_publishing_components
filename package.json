@@ -16,7 +16,7 @@
     "axe-core": "3.2.2",
     "govuk-frontend": "3.0.0",
     "html2canvas": "^1.0.0-rc.3",
-    "jquery": "1.12.4"
+    "jquery": "^3.4.1"
   },
   "devDependencies": {
     "sass-lint": "^1.13.1",
