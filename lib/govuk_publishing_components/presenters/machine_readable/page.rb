@@ -59,8 +59,8 @@ module GovukPublishingComponents
         local_assigns[:logo_url]
       end
 
-      def parts
-        content_item.dig("details", "parts") || []
+      def requested_path
+        local_assigns[:request_path]
       end
     end
   end
