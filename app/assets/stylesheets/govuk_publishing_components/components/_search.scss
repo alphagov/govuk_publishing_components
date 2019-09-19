@@ -7,11 +7,26 @@ $large-input-size: 50px;
 }
 
 .gem-c-search__label {
+  @include govuk-font($size: 19, $line-height: $input-size);
   display: block;
 
   h1 {
     @include govuk-font($size: 19, $line-height: $input-size);
     margin: 0;
+  }
+
+  .js-enabled & {
+    position: absolute;
+    left: govuk-spacing(3);
+    top: 1px;
+    z-index: 1;
+    color: $govuk-secondary-text-colour;
+  }
+
+  // match label colour with the label component colour
+  // when javascript is enabled and inline_label option  is set to false
+  .js-enabled .gem-c-search--separate-label & {
+    color: $govuk-text-colour;
   }
 }
 
@@ -19,10 +34,10 @@ $large-input-size: 50px;
   @include govuk-font($size: 19, $line-height: (28 / 19));
 
   padding: 6px;
-  margin: .5em 0;
+  margin: 0;
   width: 100%;
   height: $input-size;
-  border: 0;
+  border: $govuk-border-width-form-element solid $govuk-input-border-colour;
   background: govuk-colour("white");
   border-radius: 0; //otherwise iphones apply an automatic border radius
   box-sizing: border-box;
@@ -30,32 +45,66 @@ $large-input-size: 50px;
   -moz-appearance: none;
   appearance: none;
 
+  // the .focus class is added by JS and ensures that the input remains above the label once clicked/filled in
+  &:focus,
+  &.focus {
+    z-index: 2;
+  }
+
   &:focus {
     outline: $govuk-focus-width solid $govuk-focus-colour;
-    outline-offset: inherit;
+    // Ensure outline appears outside of the element
+    outline-offset: 0;
+    // Double the border by adding its width again. Use `box-shadow` for this // instead of changing `border-width`
+    // Also, `outline` cannot be utilised here as it is already used for the yellow focus state.
+    box-shadow: inset 0 0 0 $govuk-border-width-form-element;
+
+    @include govuk-if-ie8 {
+      // IE8 doesn't support `box-shadow` so double the border with
+      // `border-width`.
+      border-width: $govuk-border-width-form-element * 2;
+    }
   }
 }
 
 .gem-c-search__submit {
-  padding: 6px;
   border: 0;
   cursor: pointer;
   border-radius: 0;
+  position: relative;
+  padding: 0;
+  width: $input-size;
+  height: $input-size;
+  background-image: image-url("govuk_publishing_components/search-button.png");
+  background-repeat: no-repeat;
+  background-position: 2px 50%;
+  text-indent: -5000px;
+  overflow: hidden;
+
+  @include govuk-device-pixel-ratio {
+    background-size: 52.5px auto;
+    background-position: 115% 50%;
+  }
 
   &:focus {
+    z-index: 2;
     outline: $govuk-focus-width solid $govuk-focus-colour;
+    // Ensure outline appears outside of the element
+    outline-offset: 0;
+    // Double the border by adding its width again. Use `box-shadow` for this // instead of changing `border-width` - this is for consistency with
+    // Also, `outline` cannot be utilised
+    // here as it is already used for the yellow focus state.
+    box-shadow: inset 0 0 0 $govuk-border-width-form-element * 2 govuk-colour("black");
+
+    @include govuk-if-ie8 {
+      // IE8 doesn't support `box-shadow` so double the border with
+      // `border-width`.
+      border-width: $govuk-border-width-form-element * 2;
+    }
   }
-}
 
-.js-enabled {
-  .gem-c-search__label {
-    @include govuk-font($size: 19, $line-height: $input-size);
-
-    position: absolute;
-    left: govuk-spacing(3);
-    top: 1px;
-    z-index: 1;
-    color: $govuk-secondary-text-colour;
+  &::-moz-focus-inner {
+    border: 0;
   }
 }
 
@@ -72,48 +121,23 @@ $large-input-size: 50px;
   vertical-align: top;
 }
 
-.gem-c-search__input[type="search"] {
-  margin: 0;
-
-  // the .focus class is added by JS and ensures that the input remains above the label once clicked/filled in
-  &:focus,
-  &.focus {
-    z-index: 2;
-  }
-}
-
 .gem-c-search__submit-wrapper {
   width: 1%;
-}
-
-.gem-c-search__submit {
-  position: relative;
-  padding: 0;
-  width: $input-size;
-  height: $input-size;
-  background-image: image-url("govuk_publishing_components/search-button.png");
-  background-repeat: no-repeat;
-  background-position: 2px 50%;
-  text-indent: -5000px;
-  overflow: hidden;
-
-  &:focus {
-    z-index: 2;
-  }
-
-  &::-moz-focus-inner {
-    border: 0;
-  }
-
-  @include govuk-device-pixel-ratio {
-    background-size: 52.5px auto;
-    background-position: 115% 50%;
-  }
 }
 
 .gem-c-search--on-govuk-blue {
   .gem-c-search__label {
     color: govuk-colour("white");
+  }
+
+  .gem-c-search__input {
+    border-width: 0;
+
+    // no need for black outline as there is enough contrast
+    // with the blue background
+    &:focus {
+      box-shadow: none;
+    }
   }
 
   .gem-c-search__submit {
@@ -132,15 +156,7 @@ $large-input-size: 50px;
   }
 }
 
-
 .gem-c-search--on-white {
-  .gem-c-search__label {
-    color: govuk-colour("black");
-  }
-
-  .gem-c-search__input[type="search"] {
-    border: solid 1px govuk-colour("mid-grey", $legacy: "grey-2");
-  }
 
   .gem-c-search__submit {
     background-color: govuk-colour("light-blue");
@@ -152,12 +168,11 @@ $large-input-size: 50px;
   }
 
   .gem-c-search__input[type="search"] {
-    border-right: 0;
-  }
+    border-right-width: 0;
 
-  .js-enabled & {
-    .gem-c-search__label {
-      color: $govuk-secondary-text-colour;
+    // add the border once focused
+    &:focus {
+      border-right-width: 2px;
     }
   }
 }
