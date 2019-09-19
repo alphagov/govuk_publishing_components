@@ -62,44 +62,82 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       expect(structured_data['@type']).to eql("NewsArticle")
     end
 
-    it "generates schema.org FAQPages" do
-      content_item = GovukSchemas::RandomExample.for_schema(
-        frontend_schema: "guide",
-        canonical_url: "http://www.dev.gov.uk/how-to-train-your-dragon/insurance"
-      ) do |random_item|
-        random_item.merge(
-          "base_path" => "/how-to-train-your-dragon",
-          "details" => {
-            "parts" => [
-              {
-                "title" => "Overview",
-                "slug" => "overview",
-                "body" => "<p>First catch your dragon</p>"
-              },
-              {
-                "title" => "Insurance",
-                "slug" => "insurance",
-                "body" => "<p>Contact the Berk insurance bureau for more details.</p>"
-              }
-            ]
-          }
-        )
+    context "schema.org FAQPages" do
+      it "parses html into questions and answers" do
+        part_body = "<h2 id='step-one'>Step one</h2>
+                     <p>First catch your dragon</p>
+                     <h2 id='step-two'>Step two</h2>
+                     <p>Give it a treat</p>
+                     <h2 id='step-three'>Step three</h2>
+                     <p>Give it a pat (wear gloves)</p>"
+
+        content_item = dragon_guide
+
+        structured_data = generate_structured_data(
+          content_item: content_item,
+          schema: :faq,
+          body: part_body
+        ).structured_data
+
+        expect(structured_data['@type']).to eql("FAQPage")
+
+        q_and_a = structured_data['mainEntity']
+        expect(q_and_a.count).to eq(3)
+
+        expect(q_and_a.first["url"]).to eq("http://www.dev.gov.uk/how-to-train-your-dragon#step-one")
+        expect(q_and_a.second["url"]).to eq("http://www.dev.gov.uk/how-to-train-your-dragon#step-two")
+
+        expect(q_and_a.first["name"]).to eq("Step one")
+        expect(q_and_a.first["acceptedAnswer"]["text"].strip).to eq("<p>First catch your dragon</p>")
+
+        expect(q_and_a.second["name"]).to eq("Step two")
+        expect(q_and_a.second["acceptedAnswer"]["text"].strip).to eq("<p>Give it a treat</p>")
       end
 
-      structured_data = generate_structured_data(
-        content_item: content_item,
-        schema: :faq,
-      ).structured_data
+      it "handles missing h2s at the start of the body" do
+        part_body = "<p>First catch your dragon</p>
+                     <h2 id='step-two'>Step two</h2>
+                     <p>Give it a treat</p>
+                     <h2 id='step-three'>Step three</h2>
+                     <p>Give it a pat (wear gloves)</p>"
 
-      expect(structured_data['@type']).to eql("FAQPage")
+        content_item = dragon_guide
 
-      q_and_a_pairs = structured_data['mainEntity']
-      expect(q_and_a_pairs.count).to eq(2)
-      expect(q_and_a_pairs.first["url"]).to eq("http://www.dev.gov.uk/how-to-train-your-dragon")
-      expect(q_and_a_pairs.second["url"]).to eq("http://www.dev.gov.uk/how-to-train-your-dragon/insurance")
 
-      expect(q_and_a_pairs.first["name"]).to eq("Overview")
-      expect(q_and_a_pairs.first["acceptedAnswer"]["text"]).to eq("<p>First catch your dragon</p>")
+        q_and_a = generate_structured_data(
+          content_item: content_item,
+          schema: :faq,
+          body: part_body
+        ).structured_data['mainEntity']
+
+        expect(q_and_a.first["name"]).to eq("Summary")
+        expect(q_and_a.first["url"]).to eq("http://www.dev.gov.uk/how-to-train-your-dragon")
+        expect(q_and_a.first["acceptedAnswer"]["text"].strip).to eq("<p>First catch your dragon</p>")
+      end
+
+      it "handles an empty body to ensure that preview works OK" do
+        empty_part_body = ""
+        content_item = dragon_guide
+
+        q_and_a = generate_structured_data(
+          content_item: content_item,
+          schema: :faq,
+          body: empty_part_body
+        ).structured_data['mainEntity']
+
+        expect(q_and_a).to eq([])
+      end
+
+      def dragon_guide
+        GovukSchemas::RandomExample.for_schema(
+          frontend_schema: "guide",
+          canonical_url: "http://www.dev.gov.uk/how-to-train-your-dragon/insurance"
+        ) do |random_item|
+          random_item.merge(
+            "base_path" => "/how-to-train-your-dragon"
+          )
+        end
+      end
     end
 
     it "generates schema.org Person" do

@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Iterate FAQ schema to split content around h2 headings. [PR #1127](https://github.com/alphagov/govuk_publishing_components/pull/1127)
+
 ## 20.5.2
 
 * Update to [govuk-frontend to 3.2.0](https://github.com/alphagov/govuk-frontend/releases/tag/v3.2.0) ([PR #1113](https://github.com/alphagov/govuk_publishing_components/pull/1113))

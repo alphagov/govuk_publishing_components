@@ -54,6 +54,12 @@ examples:
             - slug: treating-injuries
               body: Get to know a good blacksmith
               title: Treating injuries
+      body: >
+        <p>Training scaly beasts can be tricky</p>
+        <h2 id='preparation'>Preparation</h2>
+        <p>Prepare by meditating and writing a will</p>
+        <h2 id='afterwards'>Afterwards<h2>
+        <p>Your next of kin may need a strong stomach</p>
       schema: :faq
       canonical_url: https://www.gov.uk/how-to-train-your-dragon
   person_schema:
