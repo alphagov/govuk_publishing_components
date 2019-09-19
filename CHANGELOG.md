@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update search component styles [PR #1128](https://github.com/alphagov/govuk_publishing_components/pull/1128)
+
 ## 21.0.0
 
 * **BREAKING** (in government-frontend) Iterate FAQ schema to split content around h2 headings. [PR #1127](https://github.com/alphagov/govuk_publishing_components/pull/1127)
