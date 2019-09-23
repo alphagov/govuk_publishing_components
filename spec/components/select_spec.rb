@@ -50,7 +50,7 @@ describe "Select", type: :view do
       ]
     )
 
-    assert_select "select[name=mydropdown]"
+    assert_select "select[name=mydropdown][id=mydropdown]"
     assert_select ".govuk-label[for=mydropdown]", text: "My dropdown"
     assert_select ".govuk-select option[value=government-gateway]"
   end
@@ -78,6 +78,22 @@ describe "Select", type: :view do
     assert_select ".govuk-select option[value=big]"
     assert_select ".govuk-select option[value=small]"
     assert_select ".govuk-select option[value=medium]"
+  end
+
+  it "can accept an id and a name" do
+    render_component(
+      id: "mydropdown",
+      label: "My dropdown",
+      name: "somethingelse",
+      options: [
+        {
+          value: "government-gateway",
+          text: "Use Government Gateway"
+        }
+      ]
+    )
+
+    assert_select "select[name=somethingelse][id=mydropdown]"
   end
 
   it "renders a select a preselected item" do
