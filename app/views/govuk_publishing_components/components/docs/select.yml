@@ -103,4 +103,16 @@ examples:
         value: 'option2'
       - text: 'Option three'
         value: 'option3'
-
+  with_custom_label_size:
+    description: Make the label different sizes. Valid options are 's', 'm', 'l' and 'xl'.
+    data:
+      id: 'dropdown6'
+      label: 'Bigger!'
+      heading_size: 'xl'
+      options:
+      - text: 'Option one'
+        value: 'option1'
+      - text: 'Option two'
+        value: 'option2'
+      - text: 'Option three'
+        value: 'option3'

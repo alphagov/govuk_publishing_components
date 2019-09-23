@@ -203,4 +203,20 @@ describe "Select", type: :view do
     assert_select "select[name=mydropdown]"
     assert_select ".gem-c-select .gem-c-select__select--full-width"
   end
+
+  it "renders a select box with a custom label size" do
+    render_component(
+      id: "mydropdown",
+      label: "My dropdown",
+      heading_size: "s",
+      options: [
+        {
+          value: "government-gateway",
+          text: "Use Government Gateway"
+        }
+      ]
+    )
+
+    assert_select ".govuk-label.govuk-label--s"
+  end
 end
