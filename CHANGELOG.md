@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Update search component styles [PR #1128](https://github.com/alphagov/govuk_publishing_components/pull/1128)
+* Add name option to select component ([PR #1130](https://github.com/alphagov/govuk_publishing_components/pull/1130))
 
 ## 21.0.0
 
