@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fieldset custom legend size ([PR #1134](https://github.com/alphagov/govuk_publishing_components/pull/1134))
+
 ## 21.1.1
 
 * Update cookie banner text ([PR #1136](https://github.com/alphagov/govuk_publishing_components/pull/1136))
