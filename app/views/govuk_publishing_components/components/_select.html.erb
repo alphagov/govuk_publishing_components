@@ -4,15 +4,17 @@
   label ||= false
   full_width ||= false
   name ||= id
+  heading_size = '' unless ['s', 'm', 'l', 'xl'].include?(heading_size)
+
+  label_classes = %w(govuk-label)
+  label_classes << "govuk-label--#{heading_size}" if heading_size
 
   select_helper = GovukPublishingComponents::Presenters::SelectHelper.new(options)
   data_module = "data-module=track-select-change" unless select_helper.data_tracking?.eql?(false)
 %>
 <% if options.any? && id && label %>
   <div class="govuk-form-group gem-c-select">
-    <label class="govuk-label" for="<%= id %>">
-      <%= label %>
-    </label>
+    <%= label_tag(id, label, class: label_classes) %>
     <select class="govuk-select <%= 'gem-c-select__select--full-width' if full_width %>" id="<%= id %>" name="<%= name %>" <%= data_module %> >
       <%= options_for_select(select_helper.option_markup, select_helper.selected_option) %>
     </select>
