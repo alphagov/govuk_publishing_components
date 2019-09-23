@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.1.0
 
 * Add label size option for select ([PR #1131](https://github.com/alphagov/govuk_publishing_components/pull/1131))
 * Update search component styles [PR #1128](https://github.com/alphagov/govuk_publishing_components/pull/1128)
