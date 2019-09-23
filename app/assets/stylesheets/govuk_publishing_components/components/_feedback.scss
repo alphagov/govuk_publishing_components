@@ -1,6 +1,8 @@
 .gem-c-feedback {
-  max-width: $govuk-page-width;
+  background: govuk-colour("white");
   margin: 0 auto;
+  max-width: $govuk-page-width;
+  position: relative;
 
   .visually-hidden {
     @include govuk-visually-hidden;
