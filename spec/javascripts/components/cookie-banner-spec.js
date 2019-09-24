@@ -13,7 +13,7 @@ describe('Cookie banner', function () {
     container.innerHTML =
       '<div id="global-cookie-message" class="gem-c-cookie-banner" data-module="cookie-banner">' +
         '<div class="gem-c-cookie-banner__wrapper govuk-width-container" data-cookie-banner-main="true">' +
-          '<p class="gem-c-cookie-banner__message">GOV.UK uses cookies to make the site simpler.</p>' +
+          '<p class="gem-c-cookie-banner__message">GOV.UK uses cookies which are essential for the site to work. We also use non-essential cookies to help us improve government digital services. Any data collected is anonymised. By continuing to use this site, you agree to our use of cookies.</p>' +
           '<div class="gem-c-cookie-banner__buttons">' +
             '<button class="gem-c-button govuk-button gem-c-button--secondary-quiet gem-c-button--inline" type="submit" data-module="track-click" data-accept-cookies="true" data-track-category="cookieBanner" data-track-action="Cookie banner accepted">Accept cookies</button>' +
             '<a class="gem-c-button govuk-button gem-c-button--secondary-quiet gem-c-button--inline" role="button" data-module="track-click" data-track-category="cookieBanner" data-track-action="Cookie banner settings clicked" href="/help/cookies">Cookie settings</a>' +
