@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update cookie banner text ([PR #1136](https://github.com/alphagov/govuk_publishing_components/pull/1136))
+
 ## 21.1.0
 
 * Add label size option for select ([PR #1131](https://github.com/alphagov/govuk_publishing_components/pull/1131))
