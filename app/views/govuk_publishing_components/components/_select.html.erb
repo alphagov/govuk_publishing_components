@@ -4,7 +4,7 @@
   label ||= false
   full_width ||= false
   name ||= id
-  heading_size = '' unless ['s', 'm', 'l', 'xl'].include?(heading_size)
+  heading_size = false unless ['s', 'm', 'l', 'xl'].include?(heading_size)
 
   label_classes = %w(govuk-label)
   label_classes << "govuk-label--#{heading_size}" if heading_size

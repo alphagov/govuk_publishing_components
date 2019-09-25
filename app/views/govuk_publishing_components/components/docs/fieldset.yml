@@ -17,6 +17,18 @@ examples:
 
         <input type="radio" id="default-no" name="default"t>
         <label for="default-no">No</label>
+  with_custom_legend_size:
+    description: Make the legend different sizes. Valid options are 's', 'm', 'l' and 'xl'.
+    data:
+      legend_text: 'Do you have a driving license?'
+      heading_size: 'l'
+      text: |
+        <!-- Use the radio component, this is hardcoded only for this example -->
+        <input type="radio" id="size-yes" name="default"t>
+        <label for="size-yes">Yes</label>
+
+        <input type="radio" id="size-no" name="default"t>
+        <label for="size-no">No</label>
   with_html_legend:
     description: 'If you only have one fieldset on the page you might want to include the title of the page as the legend text. Used with a [captured](http://api.rubyonrails.org/classes/ActionView/Helpers/CaptureHelper.html#method-i-capture) [title](http://components.publishing.service.gov.uk/component-guide/title)'
     data:

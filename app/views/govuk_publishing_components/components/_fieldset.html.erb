@@ -1,8 +1,14 @@
-<% text = text || yield %>
-<% describedby ||= nil %>
-<% role ||= nil %>
+<%
+  text = text || yield
+  describedby ||= nil
+  role ||= nil
+  heading_size = false unless ['s', 'm', 'l', 'xl'].include?(heading_size)
+
+  legend_classes = %w(govuk-fieldset__legend)
+  legend_classes << "govuk-fieldset__legend--#{heading_size}" if heading_size
+%>
 <%= tag.fieldset class: "gem-c-fieldset govuk-fieldset", aria: { describedby: describedby }, role: role do %>
-  <%= tag.legend class: "govuk-fieldset__legend" do %>
+  <%= tag.legend class: legend_classes do %>
     <%= legend_text %>
   <% end %>
   <%= text %>
