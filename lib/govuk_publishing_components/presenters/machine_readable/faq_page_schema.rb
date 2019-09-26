@@ -44,7 +44,7 @@ module GovukPublishingComponents
 
       # Generates a hash of questions and associated information:
       # - question: the text in the h2 tag preceding other markup. Questions are
-      #             used to key the hash. "Summary" is set as the default, as
+      #             used to key the hash. The page title is set as the default, as
       #             there is often a preamble in guides before any h2 is set.
       #
       # - :answer: the markup that is not an h2 tag. It is associated with the
@@ -55,7 +55,7 @@ module GovukPublishingComponents
       def question_and_answers(html)
         doc = Nokogiri::HTML(html)
 
-        question = "Summary"
+        question = page.title
 
         # rubocop:disable Style/IfInsideElse
         doc.xpath("html/body").children.each_with_object({}) do |element, q_and_as|
