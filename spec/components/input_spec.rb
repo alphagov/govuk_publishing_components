@@ -194,4 +194,14 @@ describe "Input", type: :view do
       assert_select ".govuk-input[aria-describedby='#{error_id}']"
     end
   end
+
+  it "renders text input different sized labels" do
+    render_component(
+      label: { text: "What is your email address?" },
+      name: "email-address",
+      heading_size: "xl"
+    )
+
+    assert_select ".govuk-label.govuk-label--xl"
+  end
 end

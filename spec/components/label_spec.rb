@@ -39,6 +39,16 @@ describe "Label", type: :view do
     assert_select ".govuk-hint[id=should-match-aria-describedby-input]"
   end
 
+  it "renders label with different label sizes" do
+    render_component(
+      text: "National Insurance number",
+      html_for: "id-that-matches-input",
+      heading_size: "m",
+    )
+
+    assert_select ".gem-c-label.govuk-label.govuk-label--m"
+  end
+
   it "renders label with bold text" do
     render_component(
       text: "National Insurance number",

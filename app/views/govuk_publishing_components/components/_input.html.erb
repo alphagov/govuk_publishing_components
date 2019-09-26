@@ -21,6 +21,7 @@
   hint_id = "hint-#{SecureRandom.hex(4)}"
   error_id = "error-#{SecureRandom.hex(4)}"
   search_icon ||= nil
+  heading_size = false unless ['s', 'm', 'l', 'xl'].include?(heading_size)
 
   css_classes = %w(gem-c-input govuk-input)
   css_classes << "govuk-input--error" if has_error
@@ -42,7 +43,8 @@
 <%= content_tag :div, class: form_group_css_classes do %>
   <% if label %>
     <%= render "govuk_publishing_components/components/label", {
-      html_for: id
+      html_for: id,
+      heading_size: heading_size
     }.merge(label.symbolize_keys) %>
   <% end %>
 

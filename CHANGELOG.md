@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add error state to select component ([PR #1141](https://github.com/alphagov/govuk_publishing_components/pull/1141))
+* Add size option to label ([PR #1140](https://github.com/alphagov/govuk_publishing_components/pull/1140))
 
 ## 21.2.0
 

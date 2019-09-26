@@ -27,6 +27,12 @@ examples:
       html_for: "id-that-matches-input"
       hint_id: "should-match-aria-describedby-input"
       hint_text: "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+  with_custom_label_size:
+    description: Make the label different sizes. Valid options are 's', 'm', 'l' and 'xl'.
+    data:
+      text: "Surname"
+      html_for: "id-that-matches-input"
+      heading_size: "xl"
   bold_with_hint:
     data:
       bold: true
