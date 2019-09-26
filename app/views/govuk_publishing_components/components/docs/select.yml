@@ -104,6 +104,19 @@ examples:
         value: 'option1'
       - text: 'Will make own arrangements'
         value: 'option2'
+  with_error_id_but_no_message:
+    description: For some selects the error message should be rendered separately but an error state is still required (currently required in smart answers). In this scenario an error_id can be passed without an error_message to highlight the component and set aria-describedby correctly.
+    data:
+      id: 'dropdown4-2'
+      label: 'What lunch option would you like?'
+      error_id: 'error_id'
+      options:
+      - text: ""
+        value: ""
+      - text: 'Vegetarian'
+        value: 'option1'
+      - text: 'Meat'
+        value: 'option2'
   full_width:
     description: Make the select width 100%. This is used for facets in finder-frontend's search.
     data:

@@ -206,6 +206,23 @@ describe "Select", type: :view do
     assert_select ".govuk-select.govuk-select--error[aria-describedby=error_id]"
   end
 
+  it "applies aria-describedby if an error is is given" do
+    render_component(
+      id: "mydropdown",
+      label: "My dropdown",
+      error_id: "error_id",
+      options: [
+        {
+          value: "government-gateway",
+          text: "Use Government Gateway"
+        }
+      ]
+    )
+
+    assert_select ".gem-c-error-message.govuk-error-message", false
+    assert_select ".govuk-select.govuk-select--error[aria-describedby=error_id]"
+  end
+
   it "renders a select box full width" do
     render_component(
       id: "mydropdown",
