@@ -5,17 +5,20 @@
   full_width ||= false
   name ||= id
   heading_size = false unless ['s', 'm', 'l', 'xl'].include?(heading_size)
-
   error_message ||= nil
-  error_id ||= "error-#{SecureRandom.hex(4)}" if error_message
-  aria_describedby = { describedby: error_id } if error_message
+  error_id ||= nil
+
+  if error_message || error_id
+    error_id = "error-#{SecureRandom.hex(4)}" unless error_id
+    aria_describedby = { describedby: error_id }
+  end
 
   css_classes = %w(govuk-form-group gem-c-select)
   css_classes << "govuk-form-group--error" if error_message
 
   select_classes = %w(govuk-select)
   select_classes << "gem-c-select__select--full-width" if full_width
-  select_classes << "govuk-select--error" if error_message
+  select_classes << "govuk-select--error" if error_id
 
   label_classes = %w(govuk-label)
   label_classes << "govuk-label--#{heading_size}" if heading_size

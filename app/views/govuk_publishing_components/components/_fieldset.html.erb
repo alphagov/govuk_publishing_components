@@ -3,13 +3,33 @@
   describedby ||= nil
   role ||= nil
   heading_size = false unless ['s', 'm', 'l', 'xl'].include?(heading_size)
+  error_message ||= nil
+  error_id ||= nil
+
+  if error_message
+    error_id = "error-#{SecureRandom.hex(4)}" unless error_id
+    describedby = error_id
+  end
+
+  css_classes = %w(gem-c-fieldset govuk-form-group)
+  css_classes << "govuk-form-group--error" if error_message
+
+  fieldset_classes = %w(govuk-fieldset)
 
   legend_classes = %w(govuk-fieldset__legend)
   legend_classes << "govuk-fieldset__legend--#{heading_size}" if heading_size
 %>
-<%= tag.fieldset class: "gem-c-fieldset govuk-fieldset", aria: { describedby: describedby }, role: role do %>
-  <%= tag.legend class: legend_classes do %>
-    <%= legend_text %>
+<%= tag.div class: css_classes do %>
+  <%= tag.fieldset class: fieldset_classes, aria: { describedby: describedby }, role: role do %>
+    <%= tag.legend class: legend_classes do %>
+      <%= legend_text %>
+    <% end %>
+    <% if error_message %>
+      <%= render "govuk_publishing_components/components/error_message", {
+        text: error_message,
+        id: error_id
+      } %>
+    <% end %>
+    <%= text %>
   <% end %>
-  <%= text %>
 <% end %>
