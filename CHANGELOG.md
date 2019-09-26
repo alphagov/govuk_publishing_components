@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Fix some minor issues with the FAQPage schema ([PR #1142](https://github.com/alphagov/govuk_publishing_components/pull/1142))
 * Add error state to select component ([PR #1141](https://github.com/alphagov/govuk_publishing_components/pull/1141))
 * Add size option to label ([PR #1140](https://github.com/alphagov/govuk_publishing_components/pull/1140))
 

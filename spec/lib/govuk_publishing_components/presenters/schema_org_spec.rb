@@ -94,7 +94,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         expect(q_and_a.second["acceptedAnswer"]["text"].strip).to eq("<p>Give it a treat</p>")
       end
 
-      it "handles missing h2s at the start of the body" do
+      it "handles missing h2s at the start of the body by using the page title" do
         part_body = "<p>First catch your dragon</p>
                      <h2 id='step-two'>Step two</h2>
                      <p>Give it a treat</p>
@@ -103,6 +103,24 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
 
         content_item = dragon_guide
 
+        q_and_a = generate_structured_data(
+          content_item: content_item,
+          schema: :faq,
+          body: part_body
+        ).structured_data['mainEntity']
+
+        expect(q_and_a.first["name"]).to eq("How to train your dragon")
+        expect(q_and_a.first["url"]).to eq("http://www.dev.gov.uk/how-to-train-your-dragon")
+        expect(q_and_a.first["acceptedAnswer"]["text"].strip).to eq("<p>First catch your dragon</p>")
+      end
+
+      it "does not include questions when there is no associated answer" do
+        part_body = "<p>First catch your dragon</p>
+                     <h2 id='step-two'>Step two</h2>
+                     <h2 id='step-three'>Step three</h2>
+                     <p>Give it a pat (wear gloves)</p>"
+
+        content_item = dragon_guide
 
         q_and_a = generate_structured_data(
           content_item: content_item,
@@ -110,9 +128,8 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
           body: part_body
         ).structured_data['mainEntity']
 
-        expect(q_and_a.first["name"]).to eq("Summary")
-        expect(q_and_a.first["url"]).to eq("http://www.dev.gov.uk/how-to-train-your-dragon")
-        expect(q_and_a.first["acceptedAnswer"]["text"].strip).to eq("<p>First catch your dragon</p>")
+        expect(q_and_a.count).to eq(2)
+        expect(q_and_a.map { |faq| faq["name"] }).to_not include("Step two")
       end
 
       it "handles an empty body to ensure that preview works OK" do
@@ -134,6 +151,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
           canonical_url: "http://www.dev.gov.uk/how-to-train-your-dragon/insurance"
         ) do |random_item|
           random_item.merge(
+            "title" => "How to train your dragon",
             "base_path" => "/how-to-train-your-dragon"
           )
         end
