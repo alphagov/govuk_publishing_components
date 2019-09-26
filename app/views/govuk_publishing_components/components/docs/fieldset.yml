@@ -12,10 +12,10 @@ examples:
       legend_text: 'Do you have a passport?'
       text: |
         <!-- Use the radio component, this is hardcoded only for this example -->
-        <input type="radio" id="default-yes" name="default"t>
+        <input type="radio" id="default-yes" name="default">
         <label for="default-yes">Yes</label>
 
-        <input type="radio" id="default-no" name="default"t>
+        <input type="radio" id="default-no" name="default">
         <label for="default-no">No</label>
   with_custom_legend_size:
     description: Make the legend different sizes. Valid options are 's', 'm', 'l' and 'xl'.
@@ -24,10 +24,10 @@ examples:
       heading_size: 'l'
       text: |
         <!-- Use the radio component, this is hardcoded only for this example -->
-        <input type="radio" id="size-yes" name="default"t>
+        <input type="radio" id="size-yes" name="default">
         <label for="size-yes">Yes</label>
 
-        <input type="radio" id="size-no" name="default"t>
+        <input type="radio" id="size-no" name="default">
         <label for="size-no">No</label>
   with_html_legend:
     description: 'If you only have one fieldset on the page you might want to include the title of the page as the legend text. Used with a [captured](http://api.rubyonrails.org/classes/ActionView/Helpers/CaptureHelper.html#method-i-capture) [title](http://components.publishing.service.gov.uk/component-guide/title)'
@@ -44,3 +44,15 @@ examples:
 
         <input type="radio" id="html-legend-no" name="html-legend">
         <label for="html-legend-no">No</label>
+  with_error_message:
+    description: The component also accepts an error_id, or generates one automatically.
+    data:
+      legend_text: 'Do you have a passport?'
+      error_message: 'Please choose an option'
+      text: |
+        <!-- Use the radio component, this is hardcoded only for this example -->
+        <input type="radio" id="default2-yes" name="default2">
+        <label for="default2-yes">Yes</label>
+
+        <input type="radio" id="default2-no" name="default2">
+        <label for="default2-no">No</label>

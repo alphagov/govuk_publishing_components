@@ -30,4 +30,17 @@ describe "Fieldset", type: :view do
 
     assert_select ".govuk-fieldset__legend.govuk-fieldset__legend--xl"
   end
+
+  it "renders a fieldset with an error correctly" do
+    render_component(
+      legend_text: 'Do you have a passport?',
+      error_message: 'uh oh',
+      error_id: "error_id",
+      text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad neque, maxime est ea laudantium totam fuga!'
+    )
+
+    assert_select ".gem-c-fieldset.govuk-form-group.govuk-form-group--error"
+    assert_select ".govuk-fieldset[aria-describedby=error_id]"
+    assert_select ".gem-c-error-message[id=error_id]", text: 'Error: uh oh'
+  end
 end
