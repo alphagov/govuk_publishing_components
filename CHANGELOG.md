@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.3.0
 
 * Fix some minor issues with the FAQPage schema ([PR #1142](https://github.com/alphagov/govuk_publishing_components/pull/1142))
 * Add select component error state without message ([PR #1143](https://github.com/alphagov/govuk_publishing_components/pull/1143))
