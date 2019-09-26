@@ -118,3 +118,10 @@ examples:
       name: "search-box"
       type: "search"
       search_icon: true
+  with_custom_label_size:
+    description: Make the label different sizes. Valid options are 's', 'm', 'l' and 'xl'.
+    data:
+      label:
+        text: "What is your name?"
+      name: "name"
+      heading_size: "l"
