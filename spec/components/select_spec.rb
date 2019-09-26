@@ -187,6 +187,25 @@ describe "Select", type: :view do
     assert_select ".gem-c-select [data-another-attribute=test1][data-second-item=item1][data-option=option1]"
   end
 
+  it "renders a select box in an error state" do
+    render_component(
+      id: "mydropdown",
+      label: "My dropdown",
+      error_message: "Please choose an option",
+      error_id: "error_id",
+      options: [
+        {
+          value: "government-gateway",
+          text: "Use Government Gateway"
+        }
+      ]
+    )
+
+    assert_select ".govuk-form-group.gem-c-select.govuk-form-group--error"
+    assert_select ".gem-c-error-message.govuk-error-message", text: "Error: Please choose an option"
+    assert_select ".govuk-select.govuk-select--error[aria-describedby=error_id]"
+  end
+
   it "renders a select box full width" do
     render_component(
       id: "mydropdown",
