@@ -16,19 +16,18 @@
           <div class="component-markdown">
             <%= raw(@component_doc.html_body) %>
           </div>
+
+          <p class="govuk-body"><%= link_to "Search for usage of this component on GitHub", @component_doc.github_search_url, class: "govuk-link" %></p>
         </div>
       <% end %>
     </div>
   </div>
 
-  <div class="component-doc">
-    <h2 class="component-doc-h2">How to call this component</h2>
-    <%= render "govuk_publishing_components/component_guide/component_doc/call", component_doc: @component_doc, example: @component_doc.example %>
-    <%= link_to "Search for usage on GitHub", @component_doc.github_search_url, class: "govuk-link" %>
-    <h2 class="component-doc-h2">How it looks</h2>
-  </div>
-
+  <h2 class="component-doc-h2">How it looks</h2>
   <%= render "govuk_publishing_components/component_guide/component_doc/preview", component_doc: @component_doc, example: @component_doc.example %>
+
+  <h2 class="component-doc-h2">How to call this component</h2>
+  <%= render "govuk_publishing_components/component_guide/component_doc/call", component_doc: @component_doc, example: @component_doc.example %>
 
   <% if @component_doc.govuk_frontend_components.any? %>
     <h2 class="component-doc-h2">GOV.UK Design System</h2>
@@ -68,8 +67,8 @@
           <div class="component-markdown">
             <%= raw(example.html_description) %>
           </div>
-          <%= render "govuk_publishing_components/component_guide/component_doc/call", component_doc: @component_doc, example: example %>
           <%= render "govuk_publishing_components/component_guide/component_doc/preview", component_doc: @component_doc, example: example %>
+          <%= render "govuk_publishing_components/component_guide/component_doc/call", component_doc: @component_doc, example: example %>
         </div>
       <% end %>
     </div>
