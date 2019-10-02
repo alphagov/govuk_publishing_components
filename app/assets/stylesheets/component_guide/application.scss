@@ -7,6 +7,8 @@
 @import "govuk/helpers/all";
 @import "govuk/core/all";
 
+$gem-guide-border-width: 1px;
+
 .component-guide-wrapper {
   padding-bottom: $govuk-gutter * 1.5;
 }
@@ -32,10 +34,6 @@
     display: block;
     margin-top: $govuk-gutter * 2;
   }
-}
-
-.component-body {
-  margin-bottom: $govuk-gutter * 1.5;
 }
 
 .component-guide-hidden {
@@ -86,13 +84,13 @@
 }
 
 .component-call {
-  margin-top: $govuk-gutter-half;
+  margin-top: -$gem-guide-border-width;
   margin-bottom: $govuk-gutter-half;
 
   font-family: Consolas, Monaco, "Andale Mono", monospace;
   font-size: 16px;
   line-height: 1.5;
-  border: 1px solid $govuk-border-colour;
+  border: $gem-guide-border-width solid $govuk-border-colour;
 
   &[contenteditable]:hover {
     cursor: text;
@@ -124,7 +122,7 @@
 
 .component-guide-preview {
   padding: ($govuk-gutter * 1.5) $govuk-gutter $govuk-gutter;
-  border: 1px solid $govuk-border-colour;
+  border: $gem-guide-border-width solid $govuk-border-colour;
   position: relative;
 
   &.direction-rtl {
@@ -165,7 +163,7 @@
 .component-guide-preview--violation,
 .component-guide-preview--warning {
   @include govuk-text-colour;
-  margin-top: $govuk-gutter-half;
+  margin-top: -$gem-guide-border-width;
 
   @include govuk-font($size: 19);
 
