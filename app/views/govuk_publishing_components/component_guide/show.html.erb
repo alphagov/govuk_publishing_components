@@ -23,7 +23,9 @@
     </div>
   </div>
 
-  <h2 class="component-doc-h2">How it looks</h2>
+  <h2 class="component-doc-h2">How it looks
+    <small>(<a href="<%= component_preview_all_path(@component_doc.id) %>" class="govuk-link">preview all</a>)</small>
+  </h2>
   <%= render "govuk_publishing_components/component_guide/component_doc/preview", component_doc: @component_doc, example: @component_doc.example %>
 
   <h2 class="component-doc-h2">How to call this component</h2>
@@ -55,9 +57,7 @@
 
   <% if @component_doc.other_examples.any? %>
     <div class="examples">
-      <h2 class="component-doc-h2">Other examples
-        <small>(<a href="<%= component_preview_all_path(@component_doc.id) %>" class="govuk-link">preview all</a>)</small>
-      </h2>
+      <h2 class="component-doc-h2">Other examples</h2>
       <% @component_doc.other_examples.each do |example| %>
         <div class="component-example">
           <h3 class="example-title">
