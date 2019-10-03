@@ -26,6 +26,7 @@ Rails.application.config.assets.precompile += %w(
   govuk_publishing_components/chevron-banner-hover.svg
   govuk_publishing_components/chevron-banner-small.svg
   govuk_publishing_components/chevron-banner-small-focus.svg
+  govuk_publishing_components/crests/*.png
 )
 
 # GOV.UK Frontend assets
