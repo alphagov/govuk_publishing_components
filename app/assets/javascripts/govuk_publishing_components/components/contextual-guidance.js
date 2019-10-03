@@ -11,9 +11,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       '[data-contextual-guidance="' + this.$module.id + '"]'
     )
 
-    fields.forEach(function (field) {
-      field.addEventListener('focus', this.handleFocus.bind(this))
-    }, this)
+    for (var i = 0; i < fields.length; i++) {
+      fields[i].addEventListener('focus', this.handleFocus.bind(this))
+    }
   }
 
   ContextualGuidance.prototype.handleFocus = function (event) {
@@ -26,9 +26,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   ContextualGuidance.prototype.hideAllGuidance = function () {
     var guidances = document.querySelectorAll('[data-module="contextual-guidance"]')
 
-    guidances.forEach(function (guidance) {
-      guidance.style.display = 'none'
-    })
+    for (var i = 0; i < guidances.length; i++) {
+      guidances[i].style.display = 'none'
+    }
   }
 
   Modules.ContextualGuidance = ContextualGuidance
