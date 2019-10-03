@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Move organisation crest images into the gem ([PR #1149](https://github.com/alphagov/govuk_publishing_components/pull/1149))
+
 ## 21.3.0
 
 * Fix some minor issues with the FAQPage schema ([PR #1142](https://github.com/alphagov/govuk_publishing_components/pull/1142))
