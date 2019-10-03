@@ -1,0 +1,13 @@
+<%
+  id ||= nil
+  title ||= nil
+  data_attributes ||= {}
+  data_attributes[:module] = "contextual-guidance"
+%>
+
+<%= tag.div class: "gem-c-contextual-guidance__wrapper", id: id, data: data_attributes do %>
+  <%= tag.div class: "gem-c-contextual-guidance" do %>
+    <%= tag.h2 title, class: "govuk-heading-s" %>
+    <%= yield %>
+  <% end %>
+<% end %>

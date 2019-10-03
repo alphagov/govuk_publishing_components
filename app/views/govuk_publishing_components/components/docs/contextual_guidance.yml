@@ -1,0 +1,44 @@
+name: Contextual guidance
+description: Provides a container with additional information when focusing an input field (e.g. input, textarea)
+body: |
+  This component is build to be used with a focusable elements that refers to it.
+
+  The contextual guidance must have an id. The input must refer the contextual guidance using a `data-contextual-guidance`
+  attribute (e.g. `<input data-contextual-guidance="my-contextual-guidance-id">`).
+
+  On tablet and desktop, the guidance container is set to float on the page and prevent other elements from moving around (e.g. pushing next fields down the page).
+
+  To use this component in a form built using a grid layout, an `gem-c-contextual-guidance__form` class needs to be added to the wrapping `<form>` element.
+  When used like this the last guidance won't overflow in order to prevent it from overlapping with the footer.
+
+part_of_admin_layout: true
+accessibility_criteria: |
+  The component must:
+
+  * be hidden by default
+  * be visible when the associated input field if focused
+  * stay visible until another input field with guidance is being focused
+shared_accessibility_criteria:
+  - link
+examples:
+  default:
+    description: Reveals a contextul guidance on the side overflowing the container
+    embed: |
+      <form class="gem-c-contextual-guidance__form">
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+            <div class="govuk-form-group">
+              <label for="title" class="govuk-label govuk-label--s">Title</label>
+              <input class="govuk-input" id="title" data-contextual-guidance="news-title-guidance" placeholder="Focus to reveal">
+            </div>
+          </div>
+          <div class="govuk-grid-column-one-third">
+            <%= component %>
+          </div>
+        </div>
+      </form>
+    data:
+      title: Writing a news title
+      id: news-title-guidance
+      block: |
+        The title must make clear what the content offers users. Use the words your users do to help them find this. Avoid wordplay or teases.
