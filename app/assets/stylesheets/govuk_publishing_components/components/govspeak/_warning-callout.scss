@@ -15,14 +15,9 @@
     margin: 2em 0;
 
     // Add '!' icon
-    background-image: image-url("icon-important.png");
+    background-image: image-url("govuk_publishing_components/icon-important.svg");
     background-size: $icon-size $icon-size;
     background-repeat: no-repeat;
-
-    @include govuk-device-pixel-ratio {
-      background-image: image-url("icon-important-2x.png");
-    }
-
     min-height: $icon-size;
     padding-left: $icon-size;
 
