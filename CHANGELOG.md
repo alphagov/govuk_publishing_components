@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add warning, file download and numbered steps icons that were originally fetched from govuk_frontend_toolkit ([PR #1154](https://github.com/alphagov/govuk_publishing_components/pull/1154))
+
 ## 21.4.0
 
 * Move organisation crest images into the gem ([PR #1149](https://github.com/alphagov/govuk_publishing_components/pull/1149))
