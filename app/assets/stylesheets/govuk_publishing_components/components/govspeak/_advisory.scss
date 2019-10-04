@@ -24,7 +24,7 @@ $high-alert-border: #cc0000;
 
   &.high-alert {
     background-color: govuk-colour("light-grey", $legacy: "grey-3");
-    border-color: $high-alert-border;
+    border: 1px solid $high-alert-border;
   }
 
   @include govuk-media-query($until: tablet) {
