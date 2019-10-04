@@ -18,9 +18,8 @@ module GovukPublishingComponents
         end
       end
 
-      # id should be lowercase, contain only numbers and letters and replace spaces with dashes
       def generate_step_nav_id(step_title)
-        step_title.downcase.tr(" ", "-").gsub(/[^a-z0-9\-\s]/i, '')
+        step_title.parameterize
       end
 
     private

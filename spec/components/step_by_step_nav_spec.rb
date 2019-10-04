@@ -165,7 +165,7 @@ describe "step nav", type: :view do
 
     assert_select step1 + " #step-panel-step-1-1.gem-c-step-nav__panel"
     assert_select step1and + " #step-panel-step-1-and-2.gem-c-step-nav__panel"
-    assert_select step3 + "#step-3"
+    assert_select step3 + "#step-3-_"
   end
 
   it "renders correct list elements and includes length of lists" do
