@@ -12,13 +12,10 @@
   a {
     display: block;
     font-weight: 600;
-    background: image-url("icon-file-download.png") no-repeat scroll 0 0;
+    background-image: image-url("govuk_publishing_components/icon-file-download.svg");
+    background-repeat: no-repeat;
+    background-size: 40px 40px;
     min-height: 2.5em;
-    padding: 0 0 0 2.5em;
-
-    @include govuk-device-pixel-ratio {
-      background-image: image-url("icon-file-download-2x.png");
-      background-size: 25px 25px;
-    }
+    padding: 0 0 0 50px;
   }
 }
