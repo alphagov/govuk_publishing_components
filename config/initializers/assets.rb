@@ -20,6 +20,8 @@ Rails.application.config.assets.precompile += %w(
   govuk_publishing_components/govuk-schema-placeholder-4x3.png
   govuk_publishing_components/govuk-schema-placeholder-16x9.png
   govuk_publishing_components/search-button.png
+  govuk_publishing_components/icon-file-download.svg
+  govuk_publishing_components/icon-important.svg
   govuk_publishing_components/chevron-banner.svg
   govuk_publishing_components/chevron-banner-focus.svg
   govuk_publishing_components/chevron-banner-hover-border.svg

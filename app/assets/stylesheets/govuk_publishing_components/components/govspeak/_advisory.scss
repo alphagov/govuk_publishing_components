@@ -2,16 +2,15 @@ $info-background: #d5e8f3;
 $high-alert-border: #cc0000;
 
 .gem-c-govspeak .advisory {
-  background: image-url("icon-information.png") no-repeat scroll 98% 1em $info-background;
+  background-image: image-url("govuk_publishing_components/icon-important.svg");
+  background-repeat: no-repeat;
+  background-size: 30px 30px;
+  background-position: 98% center;
+  background-color: $info-background;
   line-height: 1.3em;
   margin: 0 -1em 1em;
-  padding: 1em;
+  padding: govuk-spacing(3) govuk-spacing(8) govuk-spacing(3) govuk-spacing(3);
   text-align: left;
-
-  @include govuk-device-pixel-ratio {
-    background-image: image-url("icon-information-2x.png");
-    background-size: 27px 27px;
-  }
 
   p {
     margin: 0 .75em 0 0;
@@ -25,7 +24,7 @@ $high-alert-border: #cc0000;
 
   &.high-alert {
     background-color: govuk-colour("light-grey", $legacy: "grey-3");
-    border-color: $high-alert-border;
+    border: 1px solid $high-alert-border;
   }
 
   @include govuk-media-query($until: tablet) {
