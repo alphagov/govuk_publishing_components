@@ -6,28 +6,25 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   ContextualGuidance.prototype.start = function ($module) {
     this.$module = $module[0]
-
-    var fields = document.querySelectorAll(
-      '[data-contextual-guidance="' + this.$module.id + '"]'
-    )
-
-    for (var i = 0; i < fields.length; i++) {
-      fields[i].addEventListener('focus', this.handleFocus.bind(this))
-    }
+    this.$guidance = this.$module.querySelector('.gem-c-contextual-guidance__wrapper')
+    this.$inputId = this.$guidance.getAttribute('for')
+    this.$input = this.$module.querySelector('#' + this.$inputId)
+    if (!this.$input) return
+    this.$input.addEventListener('focus', this.handleFocus.bind(this))
   }
 
   ContextualGuidance.prototype.handleFocus = function (event) {
     this.hideAllGuidance()
     if (!event.target.dataset.contextualGuidanceHideOnly) {
-      this.$module.style.display = 'block'
+      this.$guidance.style.display = 'block'
     }
   }
 
   ContextualGuidance.prototype.hideAllGuidance = function () {
-    var guidances = document.querySelectorAll('[data-module="contextual-guidance"]')
+    var $guidances = document.querySelectorAll('.gem-c-contextual-guidance__wrapper')
 
-    for (var i = 0; i < guidances.length; i++) {
-      guidances[i].style.display = 'none'
+    for (var i = 0; i < $guidances.length; i++) {
+      $guidances[i].style.display = 'none'
     }
   }
 

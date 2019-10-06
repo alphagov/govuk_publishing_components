@@ -1,10 +1,7 @@
 name: Contextual guidance
 description: Provides a container with additional information when focusing an input field (e.g. input, textarea)
 body: |
-  This component is build to be used with a focusable elements that refers to it.
-
-  The contextual guidance must have an id. The input must refer the contextual guidance using a `data-contextual-guidance`
-  attribute (e.g. `<input data-contextual-guidance="my-contextual-guidance-id">`).
+  This component is build to be used with an input field passed in as a block and must reference its ID using the `html_for` attribute.
 
   On tablet and desktop, the guidance container is set to float on the page and prevent other elements from moving around (e.g. pushing next fields down the page).
 part_of_admin_layout: true
@@ -20,10 +17,12 @@ examples:
   default:
     description: Reveals a contextul guidance on the side overflowing the container
     data:
-      id: news-title-guidance
+      html_for: news-title
       title: Writing a news title
       content: |
         <p>The title must make clear what the content offers users. Use the words your users do to help them find this. Avoid wordplay or teases.</p>
       block: |
-        <label class="gem-c-label govuk-label" for="news-title">News title</label>
-        <input id="news-title" type="text" class="gem-c-input govuk-input" data-contextual-guidance="news-title-guidance">
+        <div class="govuk-form-group">
+          <label class="gem-c-label govuk-label" for="news-title">News title</label>
+          <input id="news-title" type="text" class="gem-c-input govuk-input">
+        </div>

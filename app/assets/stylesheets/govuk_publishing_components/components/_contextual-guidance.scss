@@ -1,5 +1,14 @@
-.govuk-grid-row:last-of-type .gem-c-contextual-guidance__wrapper {
-  position: relative;
+.gem-c-contextual-guidance {
+  .govuk-grid-column-one-third {
+    position: relative;
+  }
+
+  &:last-of-type {
+    .gem-c-contextual-guidance__wrapper {
+      position: relative;
+      width: 100%;
+    }
+  }
 }
 
 .gem-c-contextual-guidance__wrapper {
@@ -26,7 +35,7 @@
   }
 }
 
-.gem-c-contextual-guidance {
+.gem-c-contextual-guidance__guidance {
   padding-left: govuk-spacing(3);
   border-left: 4px solid $govuk-focus-colour;
   background: govuk-colour("white");

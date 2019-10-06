@@ -6,17 +6,19 @@
   data_attributes[:module] = "contextual-guidance"
 %>
 
-<%= tag.div class: "govuk-grid-row" do %>
-  <%= tag.div class: "govuk-grid-column-two-thirds" do %>
-    <%= tag.div class: "gem-c-contextual-guidance__input-field" do %>
-      <%= yield %>
+<%= tag.div class: "gem-c-contextual-guidance", id: id, data: data_attributes do %>
+  <%= tag.div class: "govuk-grid-row" do %>
+    <%= tag.div class: "govuk-grid-column-two-thirds" do %>
+      <%= tag.div class: "gem-c-contextual-guidance__input-field" do %>
+        <%= yield %>
+      <% end %>
     <% end %>
-  <% end %>
-  <%= tag.div class: "govuk-grid-column-one-third" do %>
-    <%= tag.div class: "gem-c-contextual-guidance__wrapper", id: id, data: data_attributes do %>
-      <%= tag.div class: "gem-c-contextual-guidance" do %>
-        <%= tag.h2 title, class: "govuk-heading-s" %>
-        <%= content %>
+    <%= tag.div class: "govuk-grid-column-one-third" do %>
+      <%= tag.div class: "gem-c-contextual-guidance__wrapper", for: html_for do %>
+        <%= tag.div class: "gem-c-contextual-guidance__guidance" do %>
+          <%= tag.h2 title, class: "govuk-heading-s" %>
+          <%= content %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
