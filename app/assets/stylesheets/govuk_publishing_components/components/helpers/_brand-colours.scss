@@ -15,7 +15,7 @@
 
         &:hover,
         &:focus {
-          color: govuk-colour("black");
+          color: $govuk-focus-text-colour;
         }
       }
 
@@ -46,7 +46,7 @@
 
     &:hover,
     &:focus {
-      color: darken(govuk-organisation-colour("office-of-the-leader-of-the-house-of-commons"), 10%);
+      color: $govuk-focus-text-colour;
     }
   }
 
@@ -70,7 +70,7 @@
 
     &:hover,
     &:focus {
-      color: darken(govuk-colour("bright-purple"), 10%);
+      color: $govuk-focus-text-colour;
     }
   }
 
