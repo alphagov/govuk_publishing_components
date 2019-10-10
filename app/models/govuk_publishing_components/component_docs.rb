@@ -1,7 +1,8 @@
 module GovukPublishingComponents
   # @private
   class ComponentDocs
-    def initialize(gem_components: false)
+    def initialize(gem_components: false, limit_to: false)
+      @limit_to = limit_to
       @documentation_directory = gem_components ? gem_documentation_directory : app_documentation_directory
     end
 
@@ -14,6 +15,10 @@ module GovukPublishingComponents
       fetch_component_docs.map { |component| build(component) }.sort_by(&:name)
     end
 
+    def used_in_this_app
+      fetch_component_docs.map { |component| build(component) if component_in_use(component[:id]) }.compact.sort_by(&:name)
+    end
+
   private
 
     def build(component)
@@ -23,6 +28,10 @@ module GovukPublishingComponents
     def fetch_component_docs
       doc_files = Rails.root.join(@documentation_directory, "*.yml")
       Dir[doc_files].sort.map { |file| parse_documentation(file) }
+    end
+
+    def component_in_use(component)
+      return true if @limit_to.include?(component)
     end
 
     def fetch_component_doc(id)

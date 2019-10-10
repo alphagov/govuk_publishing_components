@@ -5,6 +5,7 @@ module GovukPublishingComponents
     def index
       @component_docs = component_docs.all
       @gem_component_docs = gem_component_docs.all
+      @components_in_use_docs = components_in_use_docs.used_in_this_app
     end
 
     def show
@@ -44,6 +45,22 @@ module GovukPublishingComponents
 
     def gem_component_docs
       @gem_component_docs ||= ComponentDocs.new(gem_components: true)
+    end
+
+    def components_in_use_docs
+      @components_in_use_docs ||= ComponentDocs.new(gem_components: true, limit_to: components_in_use)
+    end
+
+    def components_in_use
+      matches = []
+
+      files = Dir["#{Rails.root}/app/views/**/*.html.erb"]
+      files.each do |file|
+        data = File.read(file)
+        matches << data.scan(/(govuk_publishing_components\/components\/[a-z_]+)/)
+      end
+
+      matches.flatten.uniq.map(&:to_s).map{ |m| m.gsub('govuk_publishing_components/components/', '') }
     end
 
     def index_breadcrumb
