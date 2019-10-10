@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Bring specific org focus states in line with others ([PR #1158](https://github.com/alphagov/govuk_publishing_components/pull/1158))
+
 ## 21.5.0
 
 * Add contextual guidance component ([PR #1156](https://github.com/alphagov/govuk_publishing_components/pull/1156))
