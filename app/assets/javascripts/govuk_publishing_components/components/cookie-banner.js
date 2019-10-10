@@ -50,7 +50,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         if (!window.GOVUK.cookie('cookie_policy')) {
           window.GOVUK.setDefaultConsentCookie()
         }
+      } else {
+        this.$module.style.display = 'none'
       }
+    } else {
+      this.$module.style.display = 'none'
     }
   }
 
