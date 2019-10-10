@@ -1,27 +1,7 @@
 return unless Rails.application.config.respond_to?(:assets)
 
 # GOV.UK Publishing Components assets
-Rails.application.config.assets.precompile += %w(
-  component_guide/application.js
-  govuk_publishing_components/dependencies.js
-  govuk_publishing_components/all_components.js
-  govuk_publishing_components/vendor/modernizr.js
-  govuk_publishing_components/component_guide.css
-  govuk_publishing_components/favicon-development.png
-  govuk_publishing_components/favicon-example.png
-  govuk_publishing_components/favicon-integration.png
-  govuk_publishing_components/favicon-production.png
-  govuk_publishing_components/favicon-staging.png
-  govuk_publishing_components/govuk-logo.png
-  govuk_publishing_components/govuk-schema-placeholder-1x1.png
-  govuk_publishing_components/govuk-schema-placeholder-4x3.png
-  govuk_publishing_components/govuk-schema-placeholder-16x9.png
-  govuk_publishing_components/icon-file-download.svg
-  govuk_publishing_components/icon-important.svg
-  govuk_publishing_components/search-button.png
-  govuk_publishing_components/chevron-banner/*.svg
-  govuk_publishing_components/crests/*.png
-)
+Rails.application.config.assets.precompile  = %w( manifest.js )
 
 # GOV.UK Frontend assets
 Rails.application.config.assets.precompile += %w(
