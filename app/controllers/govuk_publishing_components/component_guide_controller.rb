@@ -40,8 +40,8 @@ module GovukPublishingComponents
 
     def components_in_use_sass
       components_in_use.map { |component|
-        "@import 'govuk_publishing_components/components/#{component}';"
-      }.join("\n").prepend("@import 'govuk_publishing_components/govuk-frontend';\n")
+        "@import 'govuk_publishing_components/components/_#{component.gsub('_', '-')}';" if component_has_sass_file(component.gsub('_', '-'))
+      }.join("\n").squeeze("\n").prepend("@import 'govuk_publishing_components/component_support';\n")
     end
 
   private
@@ -64,10 +64,14 @@ module GovukPublishingComponents
       files = Dir["#{Rails.root}/app/views/**/*.html.erb"]
       files.each do |file|
         data = File.read(file)
-        matches << data.scan(/(govuk_publishing_components\/components\/[a-z_]+)/)
+        matches << data.scan(/(govuk_publishing_components\/components\/[a-z_-]+)/)
       end
 
-      matches.flatten.uniq.map(&:to_s).sort.map{ |m| m.gsub('govuk_publishing_components/components/', '') }
+      matches.flatten.uniq.map(&:to_s).sort.map { |m| m.gsub('govuk_publishing_components/components/', '') }
+    end
+
+    def component_has_sass_file(component)
+      Pathname.new(__dir__ + "/../../assets/stylesheets/govuk_publishing_components/components/_#{component}.scss").exist?
     end
 
     def index_breadcrumb

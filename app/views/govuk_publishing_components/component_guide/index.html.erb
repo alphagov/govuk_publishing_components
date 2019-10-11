@@ -22,7 +22,13 @@
   <%= render "govuk_publishing_components/components/details", {
     title: "Suggested Sass for this application"
   } do %>
-    <pre><%= @components_in_use_sass %></pre>
+    <%= render "govuk_publishing_components/components/textarea", {
+      label: {
+        text: "Add this to your application's main scss file"
+      },
+      name: "more-detail",
+      value: @components_in_use_sass
+    } %>
   <% end %>
 <pre>
 
