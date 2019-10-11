@@ -19,6 +19,15 @@
 <% unless ENV["MAIN_COMPONENT_GUIDE"] %>
   <h2 class="component-doc-h2">Gem components used by this app (<%= @components_in_use_docs.length %>)</h2>
 
+  <%= render "govuk_publishing_components/components/details", {
+    title: "Suggested Sass for this application"
+  } do %>
+    <pre><%= @components_in_use_sass %></pre>
+  <% end %>
+<pre>
+
+</pre>
+
   <ul class="component-list">
     <% @components_in_use_docs.each do |component_doc| %>
       <li>

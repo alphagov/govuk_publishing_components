@@ -6,6 +6,7 @@ module GovukPublishingComponents
       @component_docs = component_docs.all
       @gem_component_docs = gem_component_docs.all
       @components_in_use_docs = components_in_use_docs.used_in_this_app
+      @components_in_use_sass = components_in_use_sass
     end
 
     def show
@@ -37,6 +38,12 @@ module GovukPublishingComponents
       end
     end
 
+    def components_in_use_sass
+      components_in_use.map { |component|
+        "@import 'govuk_publishing_components/components/#{component}';"
+      }.join("\n").prepend("@import 'govuk_publishing_components/govuk-frontend';\n")
+    end
+
   private
 
     def component_docs
@@ -60,7 +67,7 @@ module GovukPublishingComponents
         matches << data.scan(/(govuk_publishing_components\/components\/[a-z_]+)/)
       end
 
-      matches.flatten.uniq.map(&:to_s).map{ |m| m.gsub('govuk_publishing_components/components/', '') }
+      matches.flatten.uniq.map(&:to_s).sort.map{ |m| m.gsub('govuk_publishing_components/components/', '') }
     end
 
     def index_breadcrumb
