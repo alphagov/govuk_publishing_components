@@ -17,13 +17,14 @@ src_files:
   - spec/javascripts/vendor/mock-ajax.js
 
   # Include the components that we want to test (this is what apps do)
-  - assets/govuk_publishing_components/all_components.js
-  - assets/govuk_publishing_components/modules.js
+  - node_modules/govuk-frontend/govuk/all.js
+  - app/assets/javascripts/govuk_publishing_components/**/*.js
 
   # Use some of the assets from the component guide for testing
-  - assets/component_guide/visual-regression.js
-  - assets/component_guide/accessibility-test.js
-  - assets/component_guide/filter-components.js
+  - node_modules/axe-core/axe.js
+  - app/assets/javascripts/component_guide/visual-regression.js
+  - app/assets/javascripts/component_guide/accessibility-test.js
+  - app/assets/javascripts/component_guide/filter-components.js
 
 # stylesheets
 #
@@ -37,7 +38,6 @@ src_files:
 #   - stylesheets/*.css
 #
 stylesheets:
-  - assets/component_guide/application.css
 
 # helpers
 #
