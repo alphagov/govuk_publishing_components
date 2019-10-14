@@ -7,6 +7,13 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 22.0.0
+
+* BREAKING: Update to Sprockets 4 ([PR #1160](https://github.com/alphagov/govuk_publishing_components/pull/1160))
+  You must make the following changes when you migrate to this release:
+  - Check application assets and make sure they are [declared in the `manifest.js`](https://github.com/rails/sprockets/blob/master/UPGRADING.md#manifestjs)
+  - Check reference paths against [assets.paths declarations in govuk_publishing_components](https://github.com/alphagov/govuk_publishing_components/blob/master/config/initializers/assets.rb#L15-L19) and update accordingly.
+
 ## 21.5.1
 
 * Bring specific org focus states in line with others ([PR #1158](https://github.com/alphagov/govuk_publishing_components/pull/1158))
