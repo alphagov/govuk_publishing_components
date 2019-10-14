@@ -2,7 +2,7 @@
 
 // This adds in javascript that initialises components and dependencies
 // that are provided by Slimmer in public frontend applications.
-// = require jquery/dist/jquery
+// = require jquery.js
 // = require ./modules.js
 
 $(document).ready(function () {
