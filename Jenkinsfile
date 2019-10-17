@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 
-library("govuk")
+library("govuk@release-branch-to-rubygem")
 
 node {
   govuk.buildProject(
