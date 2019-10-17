@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add component print styles ([PR #1164](https://github.com/alphagov/govuk_publishing_components/pull/1164))
+
 ## 22.0.0
 
 * BREAKING: Update to Sprockets 4 ([PR #1160](https://github.com/alphagov/govuk_publishing_components/pull/1160))
