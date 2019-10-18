@@ -10,6 +10,7 @@ PATH
       rake
       rouge
       sassc-rails (>= 2.0.1)
+      sprockets (< 4)
 
 GEM
   remote: https://rubygems.org/
