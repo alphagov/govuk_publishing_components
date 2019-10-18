@@ -1,4 +1,4 @@
-//= require axe.js
+//= require axe-core/axe.js
 
 (function (window, document, axe) {
   window.GOVUK = window.GOVUK || {}
