@@ -1,11 +1,8 @@
 return unless Rails.application.config.respond_to?(:assets)
 
 # GOV.UK Publishing Components assets
-Rails.application.config.assets.precompile  = %w( manifest.js )
-
 Rails.application.config.assets.precompile += %w(
   component_guide/accessibility-test.js
-  component_guide/application.css
   component_guide/application.js
   component_guide/filter-components.js
   component_guide/visual-regression.js
@@ -45,9 +42,3 @@ Rails.application.config.assets.paths += %W(
   #{__dir__}/../../node_modules/govuk-frontend/
   #{__dir__}/../../node_modules/
 )
-
-# Disable concurency otherwise the assets will be compiled in a random order
-# resulting in failures where, for example, a mixin is called but not yet compiled
-Rails.application.config.assets.configure do |environment|
-  environment.export_concurrent = false
-end

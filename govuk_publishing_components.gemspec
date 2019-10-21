@@ -24,9 +24,10 @@ Gem::Specification.new do |s|
   s.add_dependency "rake"
   s.add_dependency "rouge"
   s.add_dependency "sassc-rails", ">= 2.0.1"
+  s.add_dependency "sprockets", "< 4"
 
   s.add_development_dependency "capybara", "~> 3.25"
-  s.add_development_dependency "foreman", "~> 0.85"
+  s.add_development_dependency "foreman", "= 0.85"
   s.add_development_dependency "gds-api-adapters", "~> 59.1"
   s.add_development_dependency "govuk-lint", "~> 3.11"
   s.add_development_dependency "govuk_schemas", "~> 3.2"
