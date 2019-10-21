@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.6.0
 
 * Add component print styles ([PR #1164](https://github.com/alphagov/govuk_publishing_components/pull/1164))
 * Bring specific org focus states in line with others ([PR #1158](https://github.com/alphagov/govuk_publishing_components/pull/1158))
