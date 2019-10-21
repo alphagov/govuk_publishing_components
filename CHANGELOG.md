@@ -11,6 +11,7 @@
 
 * Add component print styles ([PR #1164](https://github.com/alphagov/govuk_publishing_components/pull/1164))
 * Bring specific org focus states in line with others ([PR #1158](https://github.com/alphagov/govuk_publishing_components/pull/1158))
+* Add inverse option to translation component ([PR #1173](https://github.com/alphagov/govuk_publishing_components/pull/1173))
 
 ## 21.5.0
 
