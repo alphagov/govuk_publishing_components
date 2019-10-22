@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## UNRELEASED
+
+* Add a new essential cookie to the acceptance list ([PR #1175](https://github.com/alphagov/govuk_publishing_components/pull/1175))
+
 ## 21.6.0
 
 * Add component print styles ([PR #1164](https://github.com/alphagov/govuk_publishing_components/pull/1164))

@@ -17,6 +17,7 @@
     'govuk_not_first_visit': 'essential',
     'govuk_browser_upgrade_dismisssed': 'essential',
     'seen_cookie_message': 'essential',
+    'cookie_preferences_set': 'essential',
     'govuk_surveySeenUserSatisfactionSurvey': 'essential',
     'govuk_takenUserSatisfactionSurvey': 'essential',
     '_email-alert-frontend_session': 'essential',
