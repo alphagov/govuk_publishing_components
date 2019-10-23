@@ -20,7 +20,7 @@ describe "Chevron Banner", type: :view do
   it "renders a chevron banner correctly" do
     render_component(href: '/a-link', text: "This is a link")
     assert_select ".gem-c-chevron-banner"
-    assert_select ".gem-c-chevron-banner__link.govuk-link[href='/a-link']", text: "This is a link"
+    assert_select ".gem-c-chevron-banner__link[href='/a-link']", text: "This is a link"
   end
 
   it "can render with a border on hover" do

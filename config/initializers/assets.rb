@@ -22,12 +22,7 @@ Rails.application.config.assets.precompile += %w(
   govuk_publishing_components/search-button.png
   govuk_publishing_components/icon-file-download.svg
   govuk_publishing_components/icon-important.svg
-  govuk_publishing_components/chevron-banner.svg
-  govuk_publishing_components/chevron-banner-focus.svg
-  govuk_publishing_components/chevron-banner-hover-border.svg
-  govuk_publishing_components/chevron-banner-hover.svg
-  govuk_publishing_components/chevron-banner-small.svg
-  govuk_publishing_components/chevron-banner-small-focus.svg
+  govuk_publishing_components/chevron-banner/*.svg
   govuk_publishing_components/crests/*.png
 )
 
