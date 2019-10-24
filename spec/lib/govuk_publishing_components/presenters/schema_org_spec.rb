@@ -51,6 +51,146 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       expect(structured_data['potentialAction']).to eql(search_action)
     end
 
+    context "schema.org GovernmentService" do
+      before(:each) do
+        @organisations = [
+          {
+            'title' => 'Ministry of Dragons',
+            'web_url' => 'http://www.dev.gov.uk/ministry-of-dragons'
+          },
+          {
+            'title' => 'Ministry of Safety',
+            'web_url' => 'http://www.dev.gov.uk/ministry-of-safety'
+          }
+        ]
+
+        @ordered_related_items = [
+          {
+            'title' => 'Apply for your first dragon',
+            'schema_name' => 'transaction',
+            'web_url' => 'http://www.dev.gov.uk/apply-for-your-first-dragon'
+          },
+          {
+            'title' => 'Dragon handling: your guide to a healthy dragon',
+            'schema_name' => 'guidance',
+            'web_url' => 'http://www.dev.gov.uk/dragon-handling'
+          },
+          {
+            'title' => 'Renew your dragon flying license',
+            'schema_name' => 'transaction',
+            'web_url' => 'http://www.dev.gov.uk/renew-dragon-flying-license'
+          }
+        ]
+      end
+
+      it 'generates schema.org GovernmentService with basic properties' do
+        content_item = transaction_content_item([], [])
+
+        structured_data = generate_structured_data(
+          content_item: content_item,
+          schema: :government_service,
+        ).structured_data
+
+        expect(structured_data['@type']).to eql('GovernmentService')
+        expect(structured_data['name']).to eql('Apply for your dragon housing license')
+        expect(structured_data['description']).to eql('This service lets you apply for a license to keep your dragon at home.')
+        expect(structured_data['url']).to end_with '/apply-for-your-dragon-housing-license'
+      end
+
+      it 'generates schema.org GovernmentService without provider when no organisation is tagged' do
+        content_item = transaction_content_item([], @ordered_related_items)
+
+        structured_data = generate_structured_data(
+          content_item: content_item,
+          schema: :government_service,
+        ).structured_data
+
+        expect(structured_data.has_key?('provider')).to eql(false)
+      end
+
+      it 'generates schema.org GovernmentService with provider when at least one organisation exists' do
+        expected_providers = [
+          {
+            "@type" => "GovernmentOrganization",
+            "name" => "Ministry of Dragons",
+            "url" => "http://www.dev.gov.uk/ministry-of-dragons"
+          },
+          {
+            "@type" => "GovernmentOrganization",
+            "name" => "Ministry of Safety",
+            "url" => "http://www.dev.gov.uk/ministry-of-safety"
+          },
+        ]
+
+        content_item = transaction_content_item(@organisations, [])
+
+        structured_data = generate_structured_data(
+          content_item: content_item,
+          schema: :government_service,
+        ).structured_data
+
+        expect(structured_data['provider']).to eql(expected_providers)
+      end
+
+      it 'generates schema.org GovernmentService without related services when there are no related services' do
+        content_item = transaction_content_item(@organisations, [])
+
+        structured_data = generate_structured_data(
+          content_item: content_item,
+          schema: :government_service,
+        ).structured_data
+
+        expect(structured_data.has_key?('isRelatedTo')).to eql(false)
+      end
+
+      it 'generates schema.org GovernmentService with related services when related services exist as related links' do
+        expected_related_services = [
+          {
+            "@type" => "GovernmentService",
+            "name" => "Apply for your first dragon",
+            "url" => "http://www.dev.gov.uk/apply-for-your-first-dragon"
+          },
+          {
+            "@type" => "GovernmentService",
+            "name" => "Renew your dragon flying license",
+            "url" => "http://www.dev.gov.uk/renew-dragon-flying-license"
+          }
+        ]
+
+        content_item = transaction_content_item([], @ordered_related_items)
+
+        structured_data = generate_structured_data(
+          content_item: content_item,
+          schema: :government_service,
+        ).structured_data
+
+        expect(structured_data['isRelatedTo']).to eql(expected_related_services)
+      end
+
+      def transaction_content_item(organisations = [], ordered_related_items = [])
+        content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "transaction")
+          .merge!(
+            "title" => "Apply for your dragon housing license",
+            "description" => "This service lets you apply for a license to keep your dragon at home.",
+            "base_path" => "/apply-for-your-dragon-housing-license"
+          )
+
+        if organisations.any?
+          content_item['links']['organisations'] = organisations
+        else
+          content_item['links'].delete('organisations')
+        end
+
+        if ordered_related_items.any?
+          content_item['links']['ordered_related_items'] = ordered_related_items
+        else
+          content_item['links'].delete('ordered_related_items')
+        end
+
+        content_item
+      end
+    end
+
     it "generates schema.org NewsArticles" do
       content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "answer")
 

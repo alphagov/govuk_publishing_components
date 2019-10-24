@@ -62,6 +62,14 @@ examples:
         <p>Your next of kin may need a strong stomach</p>
       schema: :faq
       canonical_url: https://www.gov.uk/how-to-train-your-dragon
+  government_service_schema:
+    data:
+      content_item:
+        title: "Apply for your first dragon"
+        base_path: "/apply-for-your-first-dragon"
+        description: "Apply for your first dragon from the Ministry of Dragons online"
+        details: {}
+      schema: :government_service
   person_schema:
     data:
       content_item:
