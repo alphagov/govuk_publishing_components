@@ -7,12 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
   
-## Unreleased
+## 21.7.0
 
 * Add GovernmentService schema.org schema to machine readable metadata component ([PR #1177](https://github.com/alphagov/govuk_publishing_components/pull/1177))
-
-## Unreleased
-
 * Fix print styles applying to all media in admin layout ([PR #1178](https://github.com/alphagov/govuk_publishing_components/pull/1178))
 
 ## 21.6.1
