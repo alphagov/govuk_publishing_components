@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix print styles applying to all media in admin layout ([PR #1178](https://github.com/alphagov/govuk_publishing_components/pull/1178))
+
 ## 21.6.1
 
 * Add a new essential cookie to the acceptance list ([PR #1175](https://github.com/alphagov/govuk_publishing_components/pull/1175))
