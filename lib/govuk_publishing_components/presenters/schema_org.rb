@@ -2,6 +2,7 @@ require 'govuk_publishing_components/presenters/machine_readable/page'
 require 'govuk_publishing_components/presenters/machine_readable/article_schema'
 require 'govuk_publishing_components/presenters/machine_readable/creative_work_schema'
 require 'govuk_publishing_components/presenters/machine_readable/faq_page_schema'
+require 'govuk_publishing_components/presenters/machine_readable/government_service_schema'
 require 'govuk_publishing_components/presenters/machine_readable/has_part_schema'
 require 'govuk_publishing_components/presenters/machine_readable/is_part_of_schema'
 require 'govuk_publishing_components/presenters/machine_readable/news_article_schema'
@@ -24,6 +25,8 @@ module GovukPublishingComponents
           FaqPageSchema.new(page).structured_data
         elsif page.schema == :article
           ArticleSchema.new(page).structured_data
+        elsif page.schema == :government_service
+          GovernmentServiceSchema.new(page).structured_data
         elsif page.schema == :news_article
           NewsArticleSchema.new(page).structured_data
         elsif page.schema == :person
