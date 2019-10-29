@@ -102,6 +102,7 @@ $yellow: #ffdd00;
   box-sizing: border-box;
   width: 100%;
   border: 2px solid $red;
+  z-index: 1;
 
   @include govuk-media-query($from: 450px, $until: desktop) {
     padding: govuk-spacing(2) 25px govuk-spacing(2) govuk-spacing(2);
@@ -121,4 +122,17 @@ $yellow: #ffdd00;
   @include govuk-font(24, $weight: bold);
   color: govuk-colour("white");
   text-decoration: none;
+}
+
+// IE "hack" to stop the chevron SVG being stretched
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .gem-c-chevron-banner__chevron {
+    max-width: 160px;
+  }
+}
+
+@media screen and (min-width: 0\0) {
+  .gem-c-chevron-banner__chevron {
+    max-width: 160px;
+  }
 }
