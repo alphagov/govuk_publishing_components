@@ -41,8 +41,7 @@
                                   class: "govuk-link",
                                   title: "Change #{item[:field]}",
                                   data: item[:edit].fetch(:data_attributes, {}) do %>
-                        Change <%= tag.span item[:field], class: "govuk-visually-hidden" %>
-                      <% end %>
+                        Change<%= tag.span " " + item[:field], class: "govuk-visually-hidden" %><% end %>
                     <% end %>
                   <% end %>
                   <% if item.fetch(:delete, {}).any? %>
@@ -51,7 +50,7 @@
                                   class: "govuk-link",
                                   title: "Delete #{item[:field]}",
                                   data: item[:delete].fetch(:data_attributes, {}) do %>
-                        Delete <%= tag.span item[:field], class: "govuk-visually-hidden" %>
+                        Delete<%= tag.span " " +  item[:field], class: "govuk-visually-hidden" %>
                       <% end %>
                     <% end %>
                   <% end %>
