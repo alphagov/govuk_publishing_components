@@ -6,7 +6,11 @@
 - Don't include changes that are purely internal. The CHANGELOG should be a
   useful summary for people upgrading their application, not a replication
   of the commit log.
-  
+
+## Unreleased
+
+* Add id option to fieldset ([PR #1183](https://github.com/alphagov/govuk_publishing_components/pull/1183))
+
 ## 21.7.0
 
 * Add GovernmentService schema.org schema to machine readable metadata component ([PR #1177](https://github.com/alphagov/govuk_publishing_components/pull/1177))

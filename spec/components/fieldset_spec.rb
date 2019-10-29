@@ -21,6 +21,16 @@ describe "Fieldset", type: :view do
     assert_select ".gem-c-fieldset", text: /Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad neque, maxime est ea laudantium totam fuga!/
   end
 
+  it "renders a fieldset with an id" do
+    render_component(
+      legend_text: 'Do you have a passport?',
+      id: 'passports',
+      text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad neque, maxime est ea laudantium totam fuga!'
+    )
+
+    assert_select ".govuk-fieldset#passports"
+  end
+
   it "renders a fieldset with a custom size legend" do
     render_component(
       legend_text: 'Do you have a passport?',
