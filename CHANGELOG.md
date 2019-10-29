@@ -7,9 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.8.0
 
 * Add id option to fieldset ([PR #1183](https://github.com/alphagov/govuk_publishing_components/pull/1183))
+* Fix edit link on summary-list component ([PR #1182](https://github.com/alphagov/govuk_publishing_components/pull/1182))
 * Make chevron component more resilient ([PR #1181](https://github.com/alphagov/govuk_publishing_components/pull/1181))
 
 ## 21.7.0
