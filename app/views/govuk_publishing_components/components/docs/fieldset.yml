@@ -17,6 +17,17 @@ examples:
 
         <input type="radio" id="default-no" name="default">
         <label for="default-no">No</label>
+  with_id_attribute:
+    data:
+      legend_text: 'Do you have a passport?'
+      id: passports
+      text: |
+        <!-- Use the radio component, this is hardcoded only for this example -->
+        <input type="radio" id="passport-yes" name="default">
+        <label for="passport-yes">Yes</label>
+
+        <input type="radio" id="passport-no" name="default">
+        <label for="passport-no">No</label>
   with_custom_legend_size:
     description: Make the legend different sizes. Valid options are 's', 'm', 'l' and 'xl'.
     data:
