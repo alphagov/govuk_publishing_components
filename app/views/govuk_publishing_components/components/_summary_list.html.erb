@@ -15,9 +15,9 @@
           <%= tag.li class: "govuk-summary-list__actions-list-item" do %>
             <%= link_to edit.fetch(:href),
                       class: "govuk-link gem-c-summary-list__edit-section-link",
-                      title: "#{edit.fetch(:link_text, "Edit")} #{title}",
+                      title: "#{edit.fetch(:link_text, "Change")} #{title}",
                       data: edit.fetch(:data_attributes, {}) do %>
-               <%= edit.fetch(:link_text, "Edit") %> <%= tag.span title, class: "govuk-visually-hidden" %>
+               <%= edit.fetch(:link_text, "Change") %> <%= tag.span title, class: "govuk-visually-hidden" %>
             <% end %>
           <% end %>
         <% end %>
@@ -39,10 +39,9 @@
                     <%= tag.li class: "govuk-summary-list__actions-list-item" do %>
                       <%= link_to item[:edit].fetch(:href),
                                   class: "govuk-link",
-                                  title: "Edit #{item[:field]}",
+                                  title: "Change #{item[:field]}",
                                   data: item[:edit].fetch(:data_attributes, {}) do %>
-                        Edit <%= tag.span item[:field], class: "govuk-visually-hidden" %>
-                      <% end %>
+                        Change<%= tag.span " " + item[:field], class: "govuk-visually-hidden" %><% end %>
                     <% end %>
                   <% end %>
                   <% if item.fetch(:delete, {}).any? %>
@@ -51,7 +50,7 @@
                                   class: "govuk-link",
                                   title: "Delete #{item[:field]}",
                                   data: item[:delete].fetch(:data_attributes, {}) do %>
-                        Delete <%= tag.span item[:field], class: "govuk-visually-hidden" %>
+                        Delete<%= tag.span " " +  item[:field], class: "govuk-visually-hidden" %>
                       <% end %>
                     <% end %>
                   <% end %>

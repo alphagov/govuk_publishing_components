@@ -26,7 +26,7 @@ describe "Summary list", type: :view do
       }
     )
     assert_select '.gem-c-summary-list .govuk-heading-m', text: 'Title, summary and body'
-    assert_select '.gem-c-summary-list__edit-section-link[title="Edit Title, summary and body"][href="#edit-title-summary-body"][data-gtm="edit-title-summary-body"]', text: 'Edit Title, summary and body'
+    assert_select '.gem-c-summary-list__edit-section-link[title="Change Title, summary and body"][href="#edit-title-summary-body"][data-gtm="edit-title-summary-body"]', text: 'Change Title, summary and body'
   end
 
   it "renders section title with custom link text" do
@@ -93,7 +93,7 @@ describe "Summary list", type: :view do
     )
     assert_select '.govuk-summary-list__key', text: 'Title'
     assert_select '.govuk-summary-list__value', text: 'Ethical standards for public service providers'
-    assert_select '.govuk-summary-list__actions-list-item .govuk-link[title="Edit Title"][href="#edit-title"][data-gtm="edit-title"]', text: "Edit Title"
+    assert_select '.govuk-summary-list__actions-list-item .govuk-link[title="Change Title"][href="#edit-title"][data-gtm="edit-title"]', text: "Change Title"
   end
 
   it "renders items with delete action" do
