@@ -15,7 +15,7 @@ examples:
   default:
     data:
       href: '/test-link'
-      text: 'This is some text'
+      text: 'Gwiriwch beth sydd angen i chi wneud os nad oes cytundeb'
   with_hover_border:
     data:
       href: '/test-link'

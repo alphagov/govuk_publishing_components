@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add id option to fieldset ([PR #1183](https://github.com/alphagov/govuk_publishing_components/pull/1183))
+* Make chevron component more resilient ([PR #1181](https://github.com/alphagov/govuk_publishing_components/pull/1181))
 
 ## 21.7.0
 
