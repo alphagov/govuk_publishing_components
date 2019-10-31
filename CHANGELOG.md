@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Configure cookie banner to not appear in Google snippets ([PR #1185](https://github.com/alphagov/govuk_publishing_components/pull/1185))
+
 ## 21.8.0
 
 * Add id option to fieldset ([PR #1183](https://github.com/alphagov/govuk_publishing_components/pull/1183))
