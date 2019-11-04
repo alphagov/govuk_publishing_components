@@ -60,6 +60,32 @@ module GovukPublishingComponents
         content_item["schema_name"] == "specialist_document"
       end
 
+      def tagged_to_brexit?
+        taxons = content_item.dig("links", "taxons").to_a
+        brexit_taxon = "d6c2de5d-ef90-45d1-82d4-5f2438369eea"
+        world_brexit_taxon = "d4c4d91d-fbe7-4eff-bd57-189138c626c9"
+
+        taxons.each do |taxon|
+          if taxon["content_id"].eql?(brexit_taxon) ||
+              taxon["content_id"].eql?(world_brexit_taxon) ||
+              taxon.dig("links", "parent_taxons").to_a.any? { |taxon_item| taxon_item["content_id"].eql?(brexit_taxon) }
+            return true
+          end
+        end
+
+        false
+      end
+
+      def show_brexit_cta?
+        # If tagged directly to /brexit or /world/brexit
+        # Or if tagged to a taxon which has /brexit as a parent
+        tagged_to_brexit?
+      end
+
+      def step_by_step_count
+        step_nav_helper.step_navs.count
+      end
+
       def content_tagged_to_current_step_by_step?
         # TODO: remove indirection here
         step_nav_helper.show_header?
