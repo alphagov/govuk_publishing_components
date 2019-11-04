@@ -10,7 +10,7 @@
   data_attributes[:module] = 'govuk-details'
 %>
 <%= tag.details class: css_classes, data: data_attributes, open: open do %>
-  <summary class="govuk-details__summary">
+  <summary class="govuk-details__summary" data-details-track-click>
     <span class="govuk-details__summary-text">
       <%= title %>
     </span>

@@ -32,6 +32,21 @@ describe "Details", type: :view do
     assert_select '.govuk-details.govuk-\!-margin-bottom-0'
   end
 
+  it "applies data attributes when provided" do
+    render_component(
+      title: "Some title",
+      data_attributes: {
+        track_category: "track-category",
+        track_action: "track-action",
+        track_label: "track-label"
+      }
+    )
+
+    assert_select '.govuk-details[data-track-category="track-category"]'
+    assert_select '.govuk-details[data-track-action="track-action"]'
+    assert_select '.govuk-details[data-track-label="track-label"]'
+  end
+
   it "defaults to the initial bottom margin if an incorrect value is passed" do
     render_component(
       title: "Some title",
