@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix string merge in summary-list component ([PR #1188](https://github.com/alphagov/govuk_publishing_components/pull/1188))
+
 ## 21.8.1
 
 * Configure cookie banner to not appear in Google snippets ([PR #1185](https://github.com/alphagov/govuk_publishing_components/pull/1185))
