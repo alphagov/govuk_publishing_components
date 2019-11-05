@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Fix string merge in summary-list component ([PR #1188](https://github.com/alphagov/govuk_publishing_components/pull/1188))
+* Add Brexit call-to-action link as a related link in the contextual sidebar ([PR #1189](https://github.com/alphagov/govuk_publishing_components/pull/1189))
 
 ## 21.8.1
 
