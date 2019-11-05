@@ -38,7 +38,7 @@ examples:
           - title: The future of jobs and skills
             base_path: /government/collections/the-future-of-jobs-and-skills
             document_type: document_collection
-  with_step_by_step:
+  with_part_of_step_by_step:
     data:
       content_item:
         title: "A content item"
@@ -51,3 +51,99 @@ examples:
           ordered_related_items:
             - title: "Find an apprenticeship"
               base_path: "/apply-apprenticeship"
+  with_current_step_by_step:
+    data:
+      content_item:
+        title: "A content item"
+        links:
+          part_of_step_navs:
+            - title: "Choosing a micropig or micropug: step by step"
+              base_path: "/micropigs-vs-micropugs"
+              details:
+                step_by_step_nav:
+                  title: 'Stay in the UK after it leaves the EU (''settled status''): step by step'
+                  steps:
+                  - title: Check if you need to apply to the EU Settlement Scheme
+                    contents:
+                    - type: paragraph
+                      text: 'You may need to apply to the EU Settlement Scheme to continue living
+                        in the UK. '
+                    - type: list
+                      contents:
+                      - text: Check if you need to apply
+                        href: "/settled-status-eu-citizens-families/eligibility"
+                    optional: false
+                  - title: Find out what status you’ll get
+                    contents:
+                    - type: paragraph
+                      text: You’ll get settled or pre-settled status depending on how long you’ve
+                        been living in the UK. This might affect when you choose to apply.
+                    - type: list
+                      contents:
+                      - text: Find out what you’ll get
+                        href: "/settled-status-eu-citizens-families/what-settled-and-presettled-status-means"
+                    optional: false
+  with_brexit_cta_and_related_links:
+    data:
+      content_item:
+        title: "A content item"
+        links:
+          taxons:
+            - content_id: "test"
+              title: "Not Brexit"
+              phase: "live"
+              links:
+                parent_taxons:
+                  - content_id: "d6c2de5d-ef90-45d1-82d4-5f2438369eea"
+                    title: "Brexit"
+          ordered_related_items:
+          - title: Find an apprenticeship
+            base_path: /apply-apprenticeship
+          - title: Training and study at work
+            base_path: /training-study-work-your-rights
+          - title: Careers helpline for teenagers
+            base_path: /careers-helpline-for-teenagers
+          document_collections:
+          - title: Recruit an apprentice (formerly apprenticeship vacancies)
+            base_path: /government/collections/apprenticeship-vacancies
+            document_type: document_collection
+          - title: The future of jobs and skills
+            base_path: /government/collections/the-future-of-jobs-and-skills
+            document_type: document_collection
+  with_brexit_cta_and_step_by_steps:
+    data:
+      content_item:
+        title: "A content item"
+        links:
+          taxons:
+            - content_id: "d6c2de5d-ef90-45d1-82d4-5f2438369eea"
+              title: "Brexit"
+              phase: "live"
+          part_of_step_navs:
+            - title: "Choosing a micropig or micropug: step by step"
+              base_path: "/micropigs-vs-micropugs"
+              details:
+                step_by_step_nav:
+                  title: 'Stay in the UK after it leaves the EU (''settled status''): step by step'
+                  steps:
+                  - title: Check if you need to apply to the EU Settlement Scheme
+                    contents:
+                    - type: paragraph
+                      text: 'You may need to apply to the EU Settlement Scheme to continue living
+                        in the UK. '
+                    - type: list
+                      contents:
+                      - text: Check if you need to apply
+                        href: "/settled-status-eu-citizens-families/eligibility"
+                    optional: false
+                  - title: Find out what status you’ll get
+                    contents:
+                    - type: paragraph
+                      text: You’ll get settled or pre-settled status depending on how long you’ve
+                        been living in the UK. This might affect when you choose to apply.
+                    - type: list
+                      contents:
+                      - text: Find out what you’ll get
+                        href: "/settled-status-eu-citizens-families/what-settled-and-presettled-status-means"
+                    optional: false
+

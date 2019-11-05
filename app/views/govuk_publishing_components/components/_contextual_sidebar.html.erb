@@ -1,6 +1,10 @@
 <% navigation = GovukPublishingComponents::Presenters::ContextualNavigation.new(content_item, request) %>
 
 <div class="gem-c-contextual-sidebar">
+  <% if navigation.show_brexit_cta? && navigation.step_by_step_count.eql?(0) %>
+    <%= render 'govuk_publishing_components/components/contextual_sidebar/brexit_cta' %>
+  <% end %>
+
   <% if navigation.content_tagged_to_a_reasonable_number_of_step_by_steps? %>
     <%# Rendering step by step related items because there are a few but not too many of them %>
     <%= render 'govuk_publishing_components/components/step_by_step_nav_related', links: navigation.step_nav_helper.related_links %>
@@ -17,9 +21,13 @@
   <% if navigation.content_tagged_to_other_step_by_steps? %>
     <%# Rendering step by step related items because there are a few but not too many of them %>
     <%= render 'govuk_publishing_components/components/step_by_step_nav_related', {
-      pretitle: "Also part of", 
+      pretitle: "Also part of",
       links: navigation.step_nav_helper.also_part_of_step_nav,
       always_display_as_list: true
     } %>
+  <% end %>
+
+  <% if navigation.show_brexit_cta? && navigation.step_by_step_count > 0 %>
+    <%= render 'govuk_publishing_components/components/contextual_sidebar/brexit_cta' %>
   <% end %>
 </div>
