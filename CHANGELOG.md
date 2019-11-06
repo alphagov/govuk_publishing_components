@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Allow tracking on the details component ([PR #1187](https://github.com/alphagov/govuk_publishing_components/pull/1187))
+
 ## 21.9.0
 
 * Fix string merge in summary-list component ([PR #1188](https://github.com/alphagov/govuk_publishing_components/pull/1188))
