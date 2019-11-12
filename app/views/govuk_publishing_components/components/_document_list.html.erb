@@ -24,13 +24,25 @@
         <% if item[:highlight] && item[:highlight_text] %>
           <p class='gem-c-document-list__highlight-text'><%= item[:highlight_text] %></p>
         <% end %>
+
         <%=
-          link_to(
-            item[:link][:text],
-            item[:link][:path],
-            data: item[:link][:data_attributes],
-            class: "gem-c-document-list__item-title #{brand_helper.color_class} #{title_with_context_class if item[:link][:context]}"
-          )
+          class_str = "gem-c-document-list__item-title #{brand_helper.color_class} #{title_with_context_class if item[:link][:context]}"
+
+          if item[:link][:path]
+            link_to(
+              item[:link][:text],
+              item[:link][:path],
+              data: item[:link][:data_attributes],
+              class: "#{class_str} gem-c-document-list__item-link",
+            )
+          else
+            content_tag(
+              "span",
+              item[:link][:text],
+              data: item[:link][:data_attributes],
+              class: class_str,
+            )
+          end
         %>
 
         <% if item[:link][:context] %>
