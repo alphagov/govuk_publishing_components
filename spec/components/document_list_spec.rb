@@ -138,7 +138,8 @@ describe "Document list", type: :view do
         }
       ]
     )
-    li = ".gem-c-document-list__item-title"
+
+    li = "a.gem-c-document-list__item-title"
 
     assert_select "#{li}[href='/link1']", text: "Link 1"
     assert_select "#{li}[data-track-category='navDocumentCollectionLinkClicked']", text: "Link 1"
@@ -151,6 +152,28 @@ describe "Document list", type: :view do
     assert_select "#{li}[data-track-action='1.2']", text: "Link 2"
     assert_select "#{li}[data-track-label='/link2']", text: "Link 2"
     assert_select "#{li}[data-track-options='{\"dimension28\":\"2\",\"dimension29\":\"Link 2\"}']", text: "Link 2"
+  end
+
+  it "renders a document list without links" do
+    render_component(
+      items: [
+        {
+          link: {
+            text: "School behaviour and attendance: parental responsibility measures",
+          },
+        },
+        {
+          link: {
+            text: "Become an apprentice",
+          },
+        }
+      ]
+    )
+
+    span = "span.gem-c-document-list__item-title"
+
+    assert_select "#{span}:first-of-type", text: "School behaviour and attendance: parental responsibility measures"
+    assert_select "#{span}:last-of-type", text: "Become an apprentice"
   end
 
   it "adds branding correctly" do

@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Support document list items without links ([PR #1194](https://github.com/alphagov/govuk_publishing_components/pull/1194))
+
 ## 21.10.0
 
 * Allow tracking on the details component ([PR #1187](https://github.com/alphagov/govuk_publishing_components/pull/1187))
