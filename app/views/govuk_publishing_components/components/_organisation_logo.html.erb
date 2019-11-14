@@ -1,21 +1,41 @@
 <%
   logo_helper = GovukPublishingComponents::Presenters::OrganisationLogoHelper.new(local_assigns)
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(organisation[:brand])
+
   organisation ||= {}
+  heading_level ||= false
+  inline ||= false
+
+  # Check if `heading_level` is a number; if so, check if it's an appropriate
+  # number.
+  use_heading = heading_level.is_a?(Integer) ?
+                  (heading_level >= 1 && heading_level <= 6) :
+                  false
+
+  # Set the wrapping element to be a heading or a `div`
+  wrapping_element = use_heading ? "h#{heading_level}" : "div"
+
+  wrapper_classes = %w(gem-c-organisation-logo)
+  wrapper_classes << brand_helper.brand_class
+
+  container_classes = [
+    logo_helper.logo_container_class,
+    brand_helper.border_color_class
+  ]
 %>
-<div
-  class="gem-c-organisation-logo <%= brand_helper.brand_class %>"
+<<%= wrapping_element %>
+  class="<%= wrapper_classes.join(" ") %>"
   <%= "data-module=track-click" if organisation[:data_attributes] %>
 >
   <% if organisation[:url] %>
     <%= link_to organisation[:url],
-      class: "#{logo_helper.logo_container_class} #{brand_helper.border_color_class}",
+      class: container_classes.join(" "),
       data: organisation[:data_attributes] do %>
       <%= logo_helper.logo_content %>
     <% end %>
   <% else %>
-    <div class="<%= logo_helper.logo_container_class %> <%= brand_helper.border_color_class %>">
+    <div class="<%= container_classes.join(" ") %>">
       <%= logo_helper.logo_content %>
     </div>
   <% end %>
-</div>
+</<%= wrapping_element %>>
