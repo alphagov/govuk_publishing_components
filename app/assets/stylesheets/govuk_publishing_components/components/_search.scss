@@ -159,11 +159,11 @@ $large-input-size: 50px;
 .gem-c-search--on-white {
 
   .gem-c-search__submit {
-    background-color: govuk-colour("light-blue");
+    background-color: govuk-colour("blue");
     color: govuk-colour("white");
 
     &:hover {
-      background-color: lighten(govuk-colour("light-blue"), 5%);
+      background-color: lighten(govuk-colour("blue"), 5%);
     }
   }
 
