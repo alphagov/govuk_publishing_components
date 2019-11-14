@@ -28,5 +28,8 @@
       var searchTerm = searchField.value;
       window.GOVUK.FilterComponents(searchTerm);
     });
+
+    // trigger search if search query exists in query string on page load
+    window.GOVUK.FilterComponents(searchField.value);
   }
 })();
