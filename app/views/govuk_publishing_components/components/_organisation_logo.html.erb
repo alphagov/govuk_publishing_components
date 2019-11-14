@@ -22,6 +22,7 @@
     logo_helper.logo_container_class,
     brand_helper.border_color_class
   ]
+  container_classes << "gem-c-organisation-logo__container--inline" if inline
 %>
 <<%= wrapping_element %>
   class="<%= wrapper_classes.join(" ") %>"

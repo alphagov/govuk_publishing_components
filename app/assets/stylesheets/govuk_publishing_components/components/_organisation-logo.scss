@@ -22,6 +22,11 @@
   direction: ltr;
 }
 
+.gem-c-organisation-logo__container--inline {
+  display: inline-block;
+  padding-right: govuk-spacing(1);
+}
+
 // Scale images on smaller viewports
 .gem-c-organisation-logo__image {
   max-width: 100%;

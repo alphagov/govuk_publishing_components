@@ -10,6 +10,8 @@ body: |
 
   The logo can optionally be wrapped in a heading.
 
+  The logo can be set to not take up the full width of the parent container with the `inline` option.
+
 accessibility_criteria: |
   The crest image itself must be presentational and ignored by screen readers.
 
@@ -180,3 +182,12 @@ examples:
         brand: cabinet-office
         crest: 'single-identity'
       heading_level: 1
+  inline-block:
+    description: This option is useful to stop a large selectable area.
+    data:
+      organisation:
+        name: Cabinet Office
+        url: '/government/organisations/cabinet-office'
+        brand: cabinet-office
+        crest: 'single-identity'
+      inline: true

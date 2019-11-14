@@ -90,4 +90,14 @@ describe "Organisation logo", type: :view do
     render_component(organisation: { name: "Name" }, heading_level: 'm')
     assert_select "div.gem-c-organisation-logo"
   end
+
+  it "renders a inline container when set" do
+    render_component(organisation: { name: "Name" }, inline: true)
+    assert_select "div.gem-c-organisation-logo__container--inline"
+  end
+
+  it "renders inline link when set" do
+    render_component(organisation: { name: "Name", url: "/some-link" }, inline: true)
+    assert_select "a.gem-c-organisation-logo__container--inline"
+  end
 end
