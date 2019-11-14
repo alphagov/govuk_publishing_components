@@ -27,7 +27,7 @@ describe "Organisation logo", type: :view do
   end
 
   it "doesn't include a link when a URL is not provided" do
-    render_component(organisation: { name: "Linked" })
+    render_component(organisation: { name: "Not linked" })
     assert_select "a.gem-c-organisation-logo__container.gem-c-organisation-logo__link[href='/somewhere']", false
     assert_select ".gem-c-organisation-logo__container"
   end
