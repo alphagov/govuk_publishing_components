@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Update background colour for search buttons ([PR #1197](https://github.com/alphagov/govuk_publishing_components/pull/1197))
 * Support document list items without links ([PR #1194](https://github.com/alphagov/govuk_publishing_components/pull/1194))
 
 ## 21.10.0
