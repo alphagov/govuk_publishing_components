@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.11.0
 
 * Update background colour for search buttons ([PR #1197](https://github.com/alphagov/govuk_publishing_components/pull/1197))
 * Add option to wrap the organisation logo with a heading, and for the organisation logo to not take up the entire width of the parent element ([PR #1198](https://github.com/alphagov/govuk_publishing_components/pull/1198))
