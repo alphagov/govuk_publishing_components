@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Update background colour for search buttons ([PR #1197](https://github.com/alphagov/govuk_publishing_components/pull/1197))
+* Add option to wrap the organisation logo with a heading, and for the organisation logo to not take up the entire width of the parent element ([PR #1198](https://github.com/alphagov/govuk_publishing_components/pull/1198))
 * Support document list items without links ([PR #1194](https://github.com/alphagov/govuk_publishing_components/pull/1194))
 
 ## 21.10.0

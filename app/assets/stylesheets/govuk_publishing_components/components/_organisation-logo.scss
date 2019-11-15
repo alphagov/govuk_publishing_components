@@ -22,6 +22,11 @@
   direction: ltr;
 }
 
+.gem-c-organisation-logo__container--inline {
+  display: inline-block;
+  padding-right: govuk-spacing(1);
+}
+
 // Scale images on smaller viewports
 .gem-c-organisation-logo__image {
   max-width: 100%;
@@ -61,7 +66,11 @@
   }
 
   &:focus {
+    // Using `@include govuk-focused-text;` would obscure the text. Tweaked
+    // spacing needed to prevent overlap of the text and the focus state's thick
+    // black line.
     box-shadow: 0 -2px $govuk-focus-colour, 0 4px $govuk-focus-colour, 0 8px $govuk-focus-text-colour;
+    text-decoration: none;
   }
 }
 

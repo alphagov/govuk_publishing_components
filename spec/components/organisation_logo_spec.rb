@@ -27,7 +27,7 @@ describe "Organisation logo", type: :view do
   end
 
   it "doesn't include a link when a URL is not provided" do
-    render_component(organisation: { name: "Linked" })
+    render_component(organisation: { name: "Not linked" })
     assert_select "a.gem-c-organisation-logo__container.gem-c-organisation-logo__link[href='/somewhere']", false
     assert_select ".gem-c-organisation-logo__container"
   end
@@ -69,5 +69,35 @@ describe "Organisation logo", type: :view do
 
     render_component(organisation: { data_attributes: data_attributes })
     assert_select ".gem-c-organisation-logo a.gem-c-organisation-logo__container.gem-c-organisation-logo__link[data-track-category='someLinkClicked']", false
+  end
+
+  it "uses a div by default" do
+    render_component(organisation: { name: "Name" })
+    assert_select "div.gem-c-organisation-logo"
+  end
+
+  it "uses a heading when specified" do
+    render_component(organisation: { name: "Name" }, heading_level: 3)
+    assert_select "h3.gem-c-organisation-logo"
+  end
+
+  it "uses a div when a inappropriate heading level is used" do
+    render_component(organisation: { name: "Name" }, heading_level: 7)
+    assert_select "div.gem-c-organisation-logo"
+  end
+
+  it "uses a div when a inappropriate parameter is passed" do
+    render_component(organisation: { name: "Name" }, heading_level: 'm')
+    assert_select "div.gem-c-organisation-logo"
+  end
+
+  it "renders a inline container when set" do
+    render_component(organisation: { name: "Name" }, inline: true)
+    assert_select "div.gem-c-organisation-logo__container--inline"
+  end
+
+  it "renders inline link when set" do
+    render_component(organisation: { name: "Name", url: "/some-link" }, inline: true)
+    assert_select "a.gem-c-organisation-logo__container--inline"
   end
 end
