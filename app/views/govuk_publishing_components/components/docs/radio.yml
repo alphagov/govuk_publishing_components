@@ -31,8 +31,7 @@ accessibility_criteria: |
   - Left Arrow and Up Arrow: move focus to the previous radio button in the group, uncheck the previously focused button, and check the newly focused button. If focus is on the first button, focus moves to the last button.
 
 accessibility_excluded_rules:
-- radiogroup # Since this is in isolation we don't want to wrap a fieldset here.
-- aria-expanded # We use aria expanded to reflect the state of a conditionally revealed radio content even if this attribute is not officially supported on this element.
+  - aria-expanded # We use aria expanded to reflect the state of a conditionally revealed radio content even if this attribute is not officially supported on this element.
 govuk_frontend_components:
   - radios
 examples:
