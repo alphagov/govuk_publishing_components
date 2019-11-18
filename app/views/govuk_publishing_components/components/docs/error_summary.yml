@@ -5,6 +5,8 @@ accessibility_criteria: |
   - list of errors should be clickable and focus the inputs with errors
 shared_accessibility_criteria:
   - link
+accessibility_excluded_rules:
+  - skip-link # This component is creating references to to sections on the page that do not exist in examples
 examples:
   default:
     data:
