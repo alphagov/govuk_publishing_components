@@ -24,6 +24,8 @@ accessibility_criteria: |
   Links with formatted numbers must separate the number and text with a space for correct screen reader pronunciation. This changes pronunciation from "1 dot Item" to "1 Item".
 shared_accessibility_criteria:
   - link
+accessibility_excluded_rules:
+  - skip-link # The examples for this component are using references to sections on the page that do not exist in examples
 examples:
   default:
     data:
