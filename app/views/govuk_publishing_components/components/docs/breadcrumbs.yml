@@ -8,6 +8,8 @@ shared_accessibility_criteria:
 accessibility_criteria:
   The breadcrumb links must have a text contrast ratio higher than 4.5:1 against the background colour to meet WCAG AA
   (this especially applies when [using the inverse flag](/component-guide/breadcrumbs/inverse)).
+accessibility_excluded_rules:
+  - skip-link # This component is creating a reference to #content which is part of the layout
 display_html: true
 examples:
   default:
