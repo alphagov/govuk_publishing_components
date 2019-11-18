@@ -9,6 +9,8 @@ accessibility_criteria: |
   * be used in conjunction with content that renders a text contrast ratio higher than 4.5:1
   against the header colour to meet WCAG AA.
 
+accessibility_excluded_rules:
+  - skip-link # Examples of this component contain breadcrumbs, creating a reference to #content which is part of the layout
 examples:
   default:
     data:
