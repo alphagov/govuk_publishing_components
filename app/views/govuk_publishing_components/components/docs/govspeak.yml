@@ -17,6 +17,8 @@ accessibility_criteria: |
   - text should have a text contrast ratio higher than 4.5:1 against the background colour to meet WCAG AA
 shared_accessibility_criteria:
   - link
+accessibility_excluded_rules:
+  - landmark-complementary-is-top-level # Statistic headlines are generating an aside element which can not be a top level in the examples
 examples:
   basic_content:
     data:
