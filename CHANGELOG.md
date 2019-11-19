@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Migrate primary-links.js from frontend_toolkit ([PR #1201](https://github.com/alphagov/govuk_publishing_components/pull/1201))
+
 ## 21.11.0
 
 * Update background colour for search buttons ([PR #1197](https://github.com/alphagov/govuk_publishing_components/pull/1197))
