@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.12.0
 
 * Migrate primary-links.js from frontend_toolkit ([PR #1201](https://github.com/alphagov/govuk_publishing_components/pull/1201))
 
