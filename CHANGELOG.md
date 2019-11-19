@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Allow aria-controls attribute on search component ([PR #1203](https://github.com/alphagov/govuk_publishing_components/pull/1203))
+
 ## 21.12.0
 
 * Migrate primary-links.js from frontend_toolkit ([PR #1201](https://github.com/alphagov/govuk_publishing_components/pull/1201))
