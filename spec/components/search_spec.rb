@@ -52,4 +52,9 @@ describe "Search", type: :view do
     render_component(name: "my_custom_field")
     assert_select 'input[name="my_custom_field"]'
   end
+
+  it "renders a search box with the aria-controls attribute" do
+    render_component(aria_controls: "something-else")
+    assert_select "input[aria-controls='something-else']"
+  end
 end

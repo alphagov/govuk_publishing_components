@@ -42,3 +42,9 @@ examples:
     description: To be used if you need to change the default name 'q'
     data:
       name: "my_own_fieldname"
+  with_aria_controls_attribute:
+    description: |
+      The aria-controls attribute is a 'relationship attribute' which denotes which elements in a page an interactive element or set of elements has control over and affects.
+      For places like the finders where the page is updated dynamically after value changes to the input.
+    data:
+      aria_controls: "wrapper"
