@@ -9,6 +9,8 @@
 
 ## Unreleased
 
+* Update govuk-frontend to 3.4.0 ([PR #1204](https://github.com/alphagov/govuk_publishing_components/pull/1204))
+
 * Allow aria-controls attribute on search component ([PR #1203](https://github.com/alphagov/govuk_publishing_components/pull/1203))
 
 ## 21.12.0
