@@ -29,12 +29,12 @@ examples:
       environment: production
       navigation_items:
       - text: Navigation item 1
-        href: "#1"
+        href: "item-1"
         active: true
       - text: Navigation item 2
-        href: "#2"
+        href: "item-2"
       - text: Hidden on desktop
-        href: "#3"
+        href: "item-3"
         show_only_in_collapsed_menu: true
   full_width:
     description: |
