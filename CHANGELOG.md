@@ -7,9 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.13.1
 
-* Add a condition to check that we can use the content_security_policy feature supported from Rails 5.2.
+* Add a condition to check that we can use the content_security_policy feature supported from Rails 5.2. ([PR #1206](https://github.com/alphagov/govuk_publishing_components/pull/1206))
 
 ## 21.13.0
 
