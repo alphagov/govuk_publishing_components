@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add a condition to check that we can use the content_security_policy feature supported from Rails 5.2.
+
 ## 21.13.0
 
 * Update govuk-frontend to 3.4.0 ([PR #1204](https://github.com/alphagov/govuk_publishing_components/pull/1204))
