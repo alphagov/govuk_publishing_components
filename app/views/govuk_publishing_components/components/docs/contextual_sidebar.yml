@@ -57,31 +57,29 @@ examples:
         title: "A content item"
         links:
           part_of_step_navs:
-            - title: "Choosing a micropig or micropug: step by step"
+            - title: "Learn to drive a car: step by step"
               base_path: "/micropigs-vs-micropugs"
               details:
                 step_by_step_nav:
                   title: 'Stay in the UK after it leaves the EU (''settled status''): step by step'
                   steps:
-                  - title: Check if you need to apply to the EU Settlement Scheme
+                  - title: Check you're allowed to drive
                     contents:
                     - type: paragraph
-                      text: 'You may need to apply to the EU Settlement Scheme to continue living
-                        in the UK. '
+                      text: Most people can start learning to drive when they’re 17.
                     - type: list
                       contents:
-                      - text: Check if you need to apply
-                        href: "/settled-status-eu-citizens-families/eligibility"
+                      - text: Check what age you can drive
+                        href: "/vehicles-can-drive"
                     optional: false
-                  - title: Find out what status you’ll get
+                  - title: Driving lessons and practice
                     contents:
                     - type: paragraph
-                      text: You’ll get settled or pre-settled status depending on how long you’ve
-                        been living in the UK. This might affect when you choose to apply.
+                      text: You need a provisional driving licence to take lessons or practice.
                     - type: list
                       contents:
-                      - text: Find out what you’ll get
-                        href: "/settled-status-eu-citizens-families/what-settled-and-presettled-status-means"
+                      - text: The Highway Code
+                        href: "/guidance/the-highway-code"
                     optional: false
   with_brexit_cta_and_related_links:
     data:

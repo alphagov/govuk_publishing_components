@@ -215,7 +215,7 @@ examples:
   different_heading_level:
     description: This will alter the level of the heading, not the appearance of the heading.
     data:
-      heading_level: 5
+      heading_level: 3
       items:
         - heading:
             text: "Writing well for the web"
