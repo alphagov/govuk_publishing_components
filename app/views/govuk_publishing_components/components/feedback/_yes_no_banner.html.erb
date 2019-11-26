@@ -5,59 +5,63 @@
 <div class="gem-c-feedback__prompt gem-c-feedback__js-show js-prompt" tabindex="-1">
   <div class="gem-c-feedback__js-prompt-questions js-prompt-questions">
     <h2 class="gem-c-feedback__prompt-question">Is this page useful?</h2>
-
     <%= link_to contact_govuk_path, {
-      class: 'gem-c-feedback__prompt-link',
-      data: {
-        'track-category' => 'yesNoFeedbackForm',
-        'track-action' => 'ffMaybeClick'
-      },
-      'aria-expanded': false,
-      role: 'button',
-      style: 'display: none;',
-      hidden: 'hidden',
-      'aria-hidden': 'true',
-    } do %>
-      Maybe
+        class: 'gem-c-feedback__prompt-link',
+        data: {
+          'track-category' => 'yesNoFeedbackForm',
+          'track-action' => 'ffMaybeClick'
+        },
+        'aria-expanded': false,
+        role: 'button',
+        style: 'display: none;',
+        hidden: 'hidden',
+        'aria-hidden': 'true',
+      } do %>
+        Maybe
     <% end %>
-
-    <%= link_to contact_govuk_path, {
-      class: 'gem-c-feedback__prompt-link gem-c-feedback__prompt-link--useful js-page-is-useful',
-      data: {
-        'track-category' => 'yesNoFeedbackForm',
-        'track-action' => 'ffYesClick'
-      },
-      'aria-expanded': false,
-      role: 'button',
-    } do %>
-      Yes <span class="visually-hidden">this page is useful</span>
-    <% end %>
-
-    <%= link_to contact_govuk_path, {
-      class: 'gem-c-feedback__prompt-link js-toggle-form js-page-is-not-useful',
-      data: {
-        'track-category' => 'yesNoFeedbackForm',
-        'track-action' => 'ffNoClick'
-      },
-      'aria-controls': 'page-is-not-useful',
-      'aria-expanded': false,
-      role: 'button',
-    } do %>
-      No <span class="visually-hidden">this page is not useful</span>
-    <% end %>
-
-    <%= link_to contact_govuk_path, {
-      class: 'gem-c-feedback__prompt-link gem-c-feedback__prompt-link--wrong js-toggle-form js-something-is-wrong',
-      data: {
-        'track-category' => 'Onsite Feedback',
-        'track-action' => 'GOV.UK Open Form'
-      },
-      'aria-controls': 'something-is-wrong',
-      'aria-expanded': false,
-      role: 'button',
-    } do %>
-      Is there anything wrong with this page?
-    <% end %>
+    <ul class="gem-c-feedback__option-list">
+      <li class="gem-c-feedback__option-list-item">
+        <%= link_to contact_govuk_path, {
+          class: 'gem-c-feedback__prompt-link gem-c-feedback__prompt-link--useful js-page-is-useful',
+          data: {
+            'track-category' => 'yesNoFeedbackForm',
+            'track-action' => 'ffYesClick'
+          },
+          'aria-expanded': false,
+          role: 'button',
+        } do %>
+          Yes <span class="visually-hidden">this page is useful</span>
+        <% end %>
+      </li>
+      <li class="gem-c-feedback__option-list-item">
+        <%= link_to contact_govuk_path, {
+          class: 'gem-c-feedback__prompt-link js-toggle-form js-page-is-not-useful',
+          data: {
+            'track-category' => 'yesNoFeedbackForm',
+            'track-action' => 'ffNoClick'
+          },
+          'aria-controls': 'page-is-not-useful',
+          'aria-expanded': false,
+          role: 'button',
+        } do %>
+          No <span class="visually-hidden">this page is not useful</span>
+        <% end %>
+      </li>
+      <li class="gem-c-feedback__option-list-item">
+        <%= link_to contact_govuk_path, {
+          class: 'gem-c-feedback__prompt-link gem-c-feedback__prompt-link--wrong js-toggle-form js-something-is-wrong',
+          data: {
+            'track-category' => 'Onsite Feedback',
+            'track-action' => 'GOV.UK Open Form'
+          },
+          'aria-controls': 'something-is-wrong',
+          'aria-expanded': false,
+          role: 'button',
+        } do %>
+          Is there anything wrong with this page?
+        <% end %>
+      </li>
+    </ul>
   </div>
 
   <div class="gem-c-feedback__prompt-success js-prompt-success js-hidden" tabindex="-1">
