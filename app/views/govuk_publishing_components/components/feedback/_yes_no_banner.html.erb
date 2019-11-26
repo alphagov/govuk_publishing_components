@@ -5,8 +5,7 @@
 <div class="gem-c-feedback__prompt gem-c-feedback__js-show js-prompt" tabindex="-1">
   <div class="gem-c-feedback__js-prompt-questions js-prompt-questions">
     <h2 class="gem-c-feedback__prompt-question">Is this page useful?</h2>
-    <ul class="gem-c-feedback__option-list">
-      <%= link_to contact_govuk_path, {
+    <%= link_to contact_govuk_path, {
         class: 'gem-c-feedback__prompt-link',
         data: {
           'track-category' => 'yesNoFeedbackForm',
@@ -19,7 +18,8 @@
         'aria-hidden': 'true',
       } do %>
         Maybe
-      <% end %>
+    <% end %>
+    <ul class="gem-c-feedback__option-list">
       <li class="gem-c-feedback__option-list-item">
         <%= link_to contact_govuk_path, {
           class: 'gem-c-feedback__prompt-link gem-c-feedback__prompt-link--useful js-page-is-useful',
