@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 21.13.2
+
+* Change tags and styling for feedback component ([PR #1207](https://github.com/alphagov/govuk_publishing_components/pull/1207))
+
 ## 21.13.1
 
 * Add a condition to check that we can use the content_security_policy feature supported from Rails 5.2. ([PR #1206](https://github.com/alphagov/govuk_publishing_components/pull/1206))
