@@ -7,11 +7,24 @@ describe('Feedback component', function () {
     '<div class="gem-c-feedback__prompt js-prompt" tabindex="-1">' +
       '<div class="js-prompt-questions">' +
         '<h3 class="gem-c-feedback__is-useful-question">Is this page useful?</h3>' +
-        '<a href="/contact/govuk" class="gem-c-feedback__prompt-link gem-c-feedback__prompt-link--useful js-page-is-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffYesClick">Yes <span class="visually-hidden">this page is useful</span></a>' +
-        '<a href="/contact/govuk" class="gem-c-feedback__prompt-link js-toggle-form js-page-is-not-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffNoClick" aria-controls="page-is-not-useful" aria-expanded="false">No <span class="visually-hidden">this page is not useful</span></a>' +
-        '<a href="/contact/govuk" class="gem-c-feedback__prompt-link gem-c-feedback__prompt-link--wrong js-toggle-form js-something-is-wrong" data-track-category="Onsite Feedback" data-track-action="GOV.UK Open Form" aria-controls="something-is-wrong" aria-expanded="false">Is there anything wrong with this page?</a>' +
+        '<ul class="gem-c-feedback__option-list">' +
+          '<li class="gem-c-feedback__option-list-item gem-c-feedback__option-list-item--useful">' +
+              '<a class="gem-c-feedback__prompt-link js-page-is-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffYesClick" aria-expanded="false" role="button" href="/contact/govuk">' +
+                  'Yes <span class="visually-hidden">this page is useful</span>' +
+              '</a>' +
+          '</li>' +
+          '<li class="gem-c-feedback__option-list-item gem-c-feedback__option-list-item--not-useful">' +
+            '<a class="gem-c-feedback__prompt-link js-toggle-form js-page-is-not-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffNoClick" aria-controls="page-is-not-useful" aria-expanded="false" role="button" href="/contact/govuk">' +
+              'No <span class="visually-hidden">this page is not useful</span>' +
+            '</a>' +
+          '</li>' +
+          '<li class="gem-c-feedback__option-list-item gem-c-feedback__option-list-item--wrong">' +
+            '<a class="gem-c-feedback__prompt-link js-toggle-form js-something-is-wrong" data-track-category="Onsite Feedback" data-track-action="GOV.UK Open Form" aria-controls="something-is-wrong" aria-expanded="false" role="button" href="/contact/govuk">' +
+              'Is there anything wrong with this page?' +
+            '</a>' +
+          '</li>' +
+        '</ul>' +
       '</div>' +
-
       '<div class="gem-c-feedback__prompt-success js-prompt-success js-hidden" tabindex="-1">' +
         'Thanks for your feedback.' +
       '</div>' +
