@@ -20,9 +20,9 @@
         Maybe
     <% end %>
     <ul class="gem-c-feedback__option-list">
-      <li class="gem-c-feedback__option-list-item">
+      <li class="gem-c-feedback__option-list-item gem-c-feedback__option-list-item--useful">
         <%= link_to contact_govuk_path, {
-          class: 'gem-c-feedback__prompt-link gem-c-feedback__prompt-link--useful js-page-is-useful',
+          class: 'gem-c-feedback__prompt-link js-page-is-useful',
           data: {
             'track-category' => 'yesNoFeedbackForm',
             'track-action' => 'ffYesClick'
@@ -33,7 +33,7 @@
           Yes <span class="visually-hidden">this page is useful</span>
         <% end %>
       </li>
-      <li class="gem-c-feedback__option-list-item">
+      <li class="gem-c-feedback__option-list-item gem-c-feedback__option-list-item--not-useful">
         <%= link_to contact_govuk_path, {
           class: 'gem-c-feedback__prompt-link js-toggle-form js-page-is-not-useful',
           data: {
@@ -47,9 +47,9 @@
           No <span class="visually-hidden">this page is not useful</span>
         <% end %>
       </li>
-      <li class="gem-c-feedback__option-list-item">
+      <li class="gem-c-feedback__option-list-item gem-c-feedback__option-list-item--wrong">
         <%= link_to contact_govuk_path, {
-          class: 'gem-c-feedback__prompt-link gem-c-feedback__prompt-link--wrong js-toggle-form js-something-is-wrong',
+          class: 'gem-c-feedback__prompt-link js-toggle-form js-something-is-wrong',
           data: {
             'track-category' => 'Onsite Feedback',
             'track-action' => 'GOV.UK Open Form'

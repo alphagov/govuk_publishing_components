@@ -64,11 +64,9 @@
 .gem-c-feedback__prompt-link {
   @include govuk-link-common;
   @include govuk-font(19);
-  margin-left: govuk-spacing(3);
 
   @include govuk-media-query($from: tablet) {
     @include govuk-font(16);
-    float: left; // needed to ensure vertical alignment consistent with prompt-link--wrong
     margin-left: govuk-spacing(2);
   }
 }
@@ -79,20 +77,6 @@
 
   &:focus {
     color: $govuk-focus-text-colour;
-  }
-}
-
-.gem-c-feedback__prompt-link--wrong {
-  display: block;
-  clear: both;
-  margin-top: govuk-spacing(3);
-  margin-left: 0;
-
-  @include govuk-media-query($from: tablet) {
-    float: right;
-    clear: none;
-    margin-top: 0;
-    margin-left: govuk-spacing(2);
   }
 }
 
@@ -202,4 +186,79 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+
+
+.js-enabled {
+  .gem-c-feedback__js-prompt-questions {
+    @include govuk-media-query($until: tablet) {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 140));
+      grid-template-rows: repeat(2, auto);
+    }
+  }
+
+  .gem-c-feedback__prompt-question {
+    @include govuk-media-query($until: tablet) {
+      grid-area: 1 / 1;
+    }
+  }
+
+  .gem-c-feedback__option-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    @include govuk-media-query($until: tablet) {
+      grid-area: 1 / 1 / 2 / 3;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(140px, 140px));
+      grid-template-rows: repeat(2, auto);
+      // older grid spec
+      grid-row-gap: govuk-spacing(3);
+      // newer grid spec
+      row-gap: govuk-spacing(3); // sass-lint:disable-line no-misspelled-properties
+    }
+  }
+
+  .gem-c-feedback__option-list-item {
+    @include govuk-media-query($from: tablet) {
+      float: left;
+    }
+  }
+
+  .gem-c-feedback__option-list-item--useful {
+    @include govuk-media-query($until: tablet) {
+      display: inline-block;
+      @supports (display: grid) {
+        grid-area: 1 / 2;
+        padding-left: govuk-spacing(3);
+      }
+    }
+  }
+
+  .gem-c-feedback__option-list-item--not-useful {
+    @include govuk-media-query($until: tablet) {
+      display: inline-block;
+      @supports (display: grid) {
+        grid-area: 1 / 2;
+        padding-left: 50px;
+      }
+    }
+  }
+
+  .gem-c-feedback__option-list-item--wrong {
+    @include govuk-media-query($until: tablet) {
+      display: block;
+      margin-top: govuk-spacing(3);
+      @supports (display: grid) {
+        margin-top: 0;
+        grid-area: 2 / 1 / 2 / 3;
+      }
+    }
+
+    @include govuk-media-query($from: tablet) {
+      float: right;
+    }
+  }
 }
