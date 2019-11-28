@@ -9,6 +9,8 @@
 
 ## Unreleased
 
+* Fix Feedback component layout on mobile ([#1211](https://github.com/alphagov/govuk_publishing_components/pull/1207))
+
 * Fix header environment label layout on mobile ([PR #1212](https://github.com/alphagov/govuk_publishing_components/pull/1212))
 
 ## 21.13.2
