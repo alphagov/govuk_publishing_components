@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix header environment label layout on mobile ([PR #1212](https://github.com/alphagov/govuk_publishing_components/pull/1212))
+
 ## 21.13.2
 
 * Change tags and styling for feedback component ([PR #1207](https://github.com/alphagov/govuk_publishing_components/pull/1207))
