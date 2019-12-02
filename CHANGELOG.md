@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add finder doc types to things that strip postcodes from GA. ([#1214](https://github.com/alphagov/govuk_publishing_components/pull/1214))
+
 ## 21.13.3
 
 * Fix Feedback component layout on mobile ([#1211](https://github.com/alphagov/govuk_publishing_components/pull/1207))
