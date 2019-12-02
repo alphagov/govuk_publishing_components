@@ -371,8 +371,8 @@ describe "Meta tags", type: :view do
     assert_meta_tag("govuk:static-analytics:strip-postcodes", "true")
   end
 
-  it "renders the static-analytics:strip-postcodes tag if the content item is a 'search'" do
-    render_component(content_item: { document_type: 'search' })
+  it "renders the static-analytics:strip-postcodes tag if the content item is a 'finder'" do
+    render_component(content_item: { document_type: 'finder' })
     assert_meta_tag("govuk:static-analytics:strip-postcodes", "true")
   end
 
