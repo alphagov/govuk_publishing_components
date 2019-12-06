@@ -9,6 +9,8 @@
 
 ## Unreleased
 
+* Simplify CSS Grid on feedback component ([#1216](https://github.com/alphagov/govuk_publishing_components/pull/1216))
+
 * Add finder doc types to things that strip postcodes from GA. ([#1214](https://github.com/alphagov/govuk_publishing_components/pull/1214))
 
 ## 21.13.3
