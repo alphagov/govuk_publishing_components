@@ -193,8 +193,6 @@
   .gem-c-feedback__js-prompt-questions {
     @include govuk-media-query($until: tablet) {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(150px, 140));
-      grid-template-rows: repeat(2, auto);
     }
   }
 
@@ -210,10 +208,9 @@
     padding: 0;
 
     @include govuk-media-query($until: tablet) {
-      grid-area: 1 / 1 / 2 / 3;
+      grid-area: 1 / 1 / 2 / 2;
       display: grid;
-      grid-template-columns: repeat(2, minmax(140px, 140px));
-      grid-template-rows: repeat(2, auto);
+      grid-template-columns: 140px 1fr;
       // older grid spec
       grid-row-gap: govuk-spacing(3);
       // newer grid spec
