@@ -164,9 +164,9 @@
   display: block;
   margin-top: govuk-spacing(3);
 
-  @include govuk-media-query($from: tablet) {
+  @include govuk-media-query($from: desktop) {
     display: inline-block;
-    margin-top: 0;
+    margin-top: govuk-spacing(2);
     margin-left: govuk-spacing(3);
   }
 }
