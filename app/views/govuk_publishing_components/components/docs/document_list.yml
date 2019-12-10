@@ -236,3 +236,30 @@ examples:
           document_type: 'Organisation'
     context:
       right_to_left: true
+  with_parts:
+    description: Display child items, such as parts of guides or travel advice. Child items accept the same paramaters as parent items.
+    data:
+      items:
+      - link:
+          text: 'Universal credit'
+          path: '/universal-credit'
+          description: 'Universal Credit is replacing 6 other benefits with a single monthly payment if you are out of work or on a low income - eligibility, how to prepare'
+        parts:
+        - link:
+            text: 'What universal credit is'
+            path: '/universal-credit/what-it-is'
+            description: 'Universal Credit is a payment to help with your living costs. It’s paid monthly - or twice a month for some people in Scotland.'
+        - link:
+            text: 'Elegibility'
+            path: '/universal-credit/eligibility'
+            description: 'You may be able to get Universal Credit if: you’re on a low income or out...'
+            data_attributes:
+              track_category: 'resultPart'
+              track_action: 2
+              track_label: 'Result part 2'
+              track_options:
+                dimension82: 2
+        - link:
+            text: 'Criteria'
+            description: 'no url provided, just text'
+  
