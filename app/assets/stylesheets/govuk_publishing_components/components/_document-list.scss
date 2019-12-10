@@ -105,3 +105,32 @@
   margin: 0 0 govuk-spacing(3) 0;
 
 }
+
+.gem-c-document-list__children {
+  margin-bottom: 0;
+  margin-top: govuk-spacing(3);
+}
+
+.gem-c-document-list-child {
+  @include govuk-font($size: 16);
+}
+
+.gem-c-document-list-child__heading {
+  @include govuk-typography-weight-bold;
+}
+
+.gem-c-document-list-child__link {
+  @include govuk-link-common;
+  @include govuk-link-style-default;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.gem-c-document-list-child__description {
+  @include govuk-text-colour;
+  margin-top: govuk-spacing(1);
+  margin-bottom: govuk-spacing(1);
+}
