@@ -6,9 +6,9 @@
 
   var DEFAULT_COOKIE_CONSENT = {
     'essential': true,
-    'settings': true,
-    'usage': true,
-    'campaigns': true
+    'settings': false,
+    'usage': false,
+    'campaigns': false
   }
 
   var COOKIE_CATEGORIES = {
