@@ -7,6 +7,7 @@ describe('Cookie banner', function () {
   var container
 
   var DEFAULT_COOKIE_CONSENT
+  var ALL_COOKIE_CONSENT
 
   beforeEach(function () {
     container = document.createElement('div')
@@ -28,10 +29,14 @@ describe('Cookie banner', function () {
       '</div>'
 
     document.body.appendChild(container)
+    // set and store consent for all as a basis of comparison
+    window.GOVUK.setCookie('cookie_policy', "{\"essential\":true,\"settings\":true,\"usage\":true,\"campaigns\":true}")
+    ALL_COOKIE_CONSENT = GOVUK.getCookie('cookie_policy')
 
     // set and store default cookie consent to use as basis of comparison
     window.GOVUK.setDefaultConsentCookie()
     DEFAULT_COOKIE_CONSENT = GOVUK.getCookie('cookie_policy')
+
   })
 
   afterEach(function () {
@@ -72,7 +77,7 @@ describe('Cookie banner', function () {
     acceptCookiesButton.click()
 
     expect(GOVUK.setCookie).toHaveBeenCalledWith('seen_cookie_message', 'true', { days: 365 })
-    expect(GOVUK.getCookie('cookie_policy')).toEqual(DEFAULT_COOKIE_CONSENT)
+    expect(GOVUK.getCookie('cookie_policy')).toEqual(ALL_COOKIE_CONSENT)
   })
 
   it('shows a confirmation message when cookies have been accepted', function () {
