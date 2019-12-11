@@ -1,37 +1,42 @@
 <%
   id ||= 'global-cookie-message'
-  message ||= "GOV.UK uses cookies which are essential for the site to work. We also use non-essential cookies to help us improve government digital services. Any data collected is anonymised."
 %>
 
-<div id="<%= id %>" class="gem-c-cookie-banner" data-module="cookie-banner" role="region" aria-label="cookie banner" data-nosnippet>
+<div id="<%= id %>" class="gem-c-cookie-banner govuk-clearfix" data-module="cookie-banner" role="region" aria-label="cookie banner" data-nosnippet>
   <div class="gem-c-cookie-banner__wrapper govuk-width-container">
-    <p class="gem-c-cookie-banner__message"><%= message %></p>
-    <div class="gem-c-cookie-banner__buttons">
-      <div class="gem-c-cookie-banner__button gem-c-cookie-banner__button-accept">
-        <%= render "govuk_publishing_components/components/button", {
-          text: "Accept cookies",
-          secondary: true,
-          inline_layout: true,
-          data_attributes: {
-            module: "track-click",
-            "accept-cookies": "true",
-            "track-category": "cookieBanner",
-            "track-action": "Cookie banner accepted"
-          }
-        } %>
-      </div>
-      <div class="gem-c-cookie-banner__button gem-c-cookie-banner__button-settings">
-        <%= render "govuk_publishing_components/components/button", {
-          text: "Cookie settings",
-          href: "/help/cookies",
-          secondary: true,
-          inline_layout: true,
-          data_attributes: {
-            module: "track-click",
-            "track-category": "cookieBanner",
-            "track-action": "Cookie banner settings clicked"
-          }
-        } %>
+    <div class="govuk-row">
+      <div class=" govuk-grid-column-two-thirds">
+        <div class="gem-c-cookie-banner__message">
+          <span class="govuk-heading-m">Tell us whether you agree to cookies</span>
+          <p class="govuk-body">We use cookies to help improve government services and make the website work as well as possible.</p>
+          <p class="govuk-body">Do you agree to us using cookies?</p>
+        </div>
+        <div class="gem-c-cookie-banner__buttons">
+          <div class="gem-c-cookie-banner__button gem-c-cookie-banner__button-accept">
+            <%= render "govuk_publishing_components/components/button", {
+              text: "Accept all cookies",
+              inline_layout: true,
+              data_attributes: {
+                module: "track-click",
+                "accept-cookies": "true",
+                "track-category": "cookieBanner",
+                "track-action": "Cookie banner accepted"
+              }
+            } %>
+          </div>
+          <div class="gem-c-cookie-banner__button gem-c-cookie-banner__button-settings">
+            <%= render "govuk_publishing_components/components/button", {
+              text: "No, take me to cookie settings",
+              href: "/help/cookies",
+              inline_layout: true,
+              data_attributes: {
+                module: "track-click",
+                "track-category": "cookieBanner",
+                "track-action": "Cookie banner settings clicked"
+              }
+            } %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

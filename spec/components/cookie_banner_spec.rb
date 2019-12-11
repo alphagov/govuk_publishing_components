@@ -12,12 +12,6 @@ describe "Cookie banner", type: :view do
     assert_select 'button[data-hide-cookie-banner="true"]'
   end
 
-  it "renders with custom values" do
-    render_component(id: 'custom-cookie-message', message: "Custom message")
-    assert_select '.gem-c-cookie-banner[id="custom-cookie-message"][data-module="cookie-banner"]'
-    assert_select '.govuk-width-container .gem-c-cookie-banner__message', text: "Custom message"
-  end
-
   it "renders a button for accepting cookies" do
     render_component(new_cookie_banner: true)
     assert_select '.gem-c-cookie-banner__buttons .gem-c-button', text: "Accept cookies"

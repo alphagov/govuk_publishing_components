@@ -1,5 +1,4 @@
-$govuk-cookie-banner-background: govuk-colour("white");
-$govuk-cookie-banner-text-green: #00823b;
+$govuk-cookie-banner-background: govuk-colour("light-grey", "grey-4");
 
 .js-enabled {
   .gem-c-cookie-banner {
@@ -16,10 +15,10 @@ $govuk-cookie-banner-text-green: #00823b;
 
 .gem-c-cookie-banner__message {
   display: inline-block;
+  @include govuk-font($size: 16);
   margin-bottom: govuk-spacing(1);
   padding-right: govuk-spacing(4);
   padding-bottom: govuk-spacing(2);
-  color: $govuk-cookie-banner-text-green;
 }
 
 .gem-c-cookie-banner__buttons {
@@ -137,8 +136,10 @@ $govuk-cookie-banner-text-green: #00823b;
   }
 
   p {
-    margin: 0;
+    @include govuk-font($size: 19);
+    margin: 0 0 govuk-spacing(2) 0;
   }
+
 }
 // sass-lint:enable no-ids
 // scss-lint:enable IdSelector
