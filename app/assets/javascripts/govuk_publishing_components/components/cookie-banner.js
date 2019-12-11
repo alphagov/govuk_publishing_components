@@ -29,7 +29,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
     // Force the new cookie banner to show if we don't think the user has seen it before
     // This involves resetting the seen_cookie_message cookie, which may be set to true if they've seen the old cookie banner
-    if (!window.GOVUK.cookie('cookie_policy')) {
+    if (!window.GOVUK.cookie('cookies_policy')) {
       if (window.GOVUK.cookie('seen_cookie_message') === 'true') {
         window.GOVUK.cookie('seen_cookie_message', false, { days: 365 })
       }
@@ -47,7 +47,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         this.$module.style.display = 'block'
 
         // Set the default consent cookie if it isn't already present
-        if (!window.GOVUK.cookie('cookie_policy')) {
+        if (!window.GOVUK.cookie('cookies_policy')) {
           window.GOVUK.setDefaultConsentCookie()
         }
       } else {

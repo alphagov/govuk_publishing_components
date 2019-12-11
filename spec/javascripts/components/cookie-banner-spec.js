@@ -30,12 +30,12 @@ describe('Cookie banner', function () {
 
     document.body.appendChild(container)
     // set and store consent for all as a basis of comparison
-    window.GOVUK.setCookie('cookie_policy', "{\"essential\":true,\"settings\":true,\"usage\":true,\"campaigns\":true}")
-    ALL_COOKIE_CONSENT = GOVUK.getCookie('cookie_policy')
+    window.GOVUK.setCookie('cookies_policy', "{\"essential\":true,\"settings\":true,\"usage\":true,\"campaigns\":true}")
+    ALL_COOKIE_CONSENT = GOVUK.getCookie('cookies_policy')
 
     // set and store default cookie consent to use as basis of comparison
     window.GOVUK.setDefaultConsentCookie()
-    DEFAULT_COOKIE_CONSENT = GOVUK.getCookie('cookie_policy')
+    DEFAULT_COOKIE_CONSENT = GOVUK.getCookie('cookies_policy')
 
   })
 
@@ -60,7 +60,7 @@ describe('Cookie banner', function () {
     new GOVUK.Modules.CookieBanner().start($(element))
 
     expect(GOVUK.getCookie('seen_cookie_message')).toEqual(null)
-    expect(GOVUK.getCookie('cookie_policy')).toEqual(DEFAULT_COOKIE_CONSENT)
+    expect(GOVUK.getCookie('cookies_policy')).toEqual(DEFAULT_COOKIE_CONSENT)
   })
 
   it('sets consent cookie when accepting cookies', function () {
@@ -70,14 +70,14 @@ describe('Cookie banner', function () {
     new GOVUK.Modules.CookieBanner().start($(element))
 
     // Manually reset the consent cookie so we can check the accept button works as intended
-    expect(GOVUK.getCookie('cookie_policy')).toEqual(DEFAULT_COOKIE_CONSENT)
-    GOVUK.cookie('cookie_policy', null)
+    expect(GOVUK.getCookie('cookies_policy')).toEqual(DEFAULT_COOKIE_CONSENT)
+    GOVUK.cookie('cookies_policy', null)
 
     var acceptCookiesButton = document.querySelector('[data-accept-cookies]')
     acceptCookiesButton.click()
 
     expect(GOVUK.setCookie).toHaveBeenCalledWith('seen_cookie_message', 'true', { days: 365 })
-    expect(GOVUK.getCookie('cookie_policy')).toEqual(ALL_COOKIE_CONSENT)
+    expect(GOVUK.getCookie('cookies_policy')).toEqual(ALL_COOKIE_CONSENT)
   })
 
   it('shows a confirmation message when cookies have been accepted', function () {
