@@ -7,61 +7,61 @@ describe('Cookie helper functions', function () {
 
   describe('GOVUK.cookie', function () {
     it('returns the cookie value if not provided with a value to set', function () {
-      GOVUK.cookie('seen_cookie_message', 'testing fetching cookie value')
+      GOVUK.cookie('cookie_preferences_set', 'testing fetching cookie value')
 
-      GOVUK.cookie('seen_cookie_message')
+      GOVUK.cookie('cookie_preferences_set')
 
-      expect(GOVUK.cookie('seen_cookie_message')).toBe('testing fetching cookie value')
+      expect(GOVUK.cookie('cookie_preferences_set')).toBe('testing fetching cookie value')
     })
 
     it('can create a new cookie', function () {
-      expect(GOVUK.getCookie('seen_cookie_message')).toBeFalsy()
+      expect(GOVUK.getCookie('cookie_preferences_set')).toBeFalsy()
 
-      GOVUK.cookie('seen_cookie_message', 'test')
+      GOVUK.cookie('cookie_preferences_set', 'test')
 
-      expect(GOVUK.getCookie('seen_cookie_message')).toBe('test')
+      expect(GOVUK.getCookie('cookie_preferences_set')).toBe('test')
     })
 
     it('sets a default expiry of 30 days if no options are provided', function () {
       spyOn(GOVUK, 'setCookie').and.callThrough()
 
-      expect(GOVUK.getCookie('seen_cookie_message')).toBeFalsy()
+      expect(GOVUK.getCookie('cookie_preferences_set')).toBeFalsy()
 
-      GOVUK.cookie('seen_cookie_message', 'test')
+      GOVUK.cookie('cookie_preferences_set', 'test')
 
-      expect(GOVUK.setCookie).toHaveBeenCalledWith('seen_cookie_message', 'test', { days: 30 })
+      expect(GOVUK.setCookie).toHaveBeenCalledWith('cookie_preferences_set', 'test', { days: 30 })
     })
 
     it('sets the expiry if one is provided', function () {
       spyOn(GOVUK, 'setCookie').and.callThrough()
 
-      expect(GOVUK.getCookie('seen_cookie_message')).toBeFalsy()
+      expect(GOVUK.getCookie('cookie_preferences_set')).toBeFalsy()
 
-      GOVUK.cookie('seen_cookie_message', 'test', { days: 100 })
+      GOVUK.cookie('cookie_preferences_set', 'test', { days: 100 })
 
-      expect(GOVUK.setCookie).toHaveBeenCalledWith('seen_cookie_message', 'test', { days: 100 })
+      expect(GOVUK.setCookie).toHaveBeenCalledWith('cookie_preferences_set', 'test', { days: 100 })
     })
 
     it('can change the value of an existing cookie', function () {
-      GOVUK.cookie('seen_cookie_message', 'test1')
+      GOVUK.cookie('cookie_preferences_set', 'test1')
 
-      expect(GOVUK.getCookie('seen_cookie_message')).toBe('test1')
+      expect(GOVUK.getCookie('cookie_preferences_set')).toBe('test1')
 
-      GOVUK.cookie('seen_cookie_message', 'test2')
+      GOVUK.cookie('cookie_preferences_set', 'test2')
 
-      expect(GOVUK.getCookie('seen_cookie_message')).toBe('test2')
+      expect(GOVUK.getCookie('cookie_preferences_set')).toBe('test2')
     })
 
     it('deletes the cookie if value is set to false', function () {
-      GOVUK.cookie('seen_cookie_message', false)
+      GOVUK.cookie('cookie_preferences_set', false)
 
-      expect(GOVUK.getCookie('seen_cookie_message')).toBeFalsy()
+      expect(GOVUK.getCookie('cookie_preferences_set')).toBeFalsy()
     })
 
     it('deletes the cookie if value is set to null', function () {
-      GOVUK.cookie('seen_cookie_message', null)
+      GOVUK.cookie('cookie_preferences_set', null)
 
-      expect(GOVUK.getCookie('seen_cookie_message')).toBeFalsy()
+      expect(GOVUK.getCookie('cookie_preferences_set')).toBeFalsy()
     })
   })
 
@@ -102,18 +102,18 @@ describe('Cookie helper functions', function () {
     })
 
     it('deletes relevant cookies in that category if consent is set to false', function () {
-      GOVUK.setConsentCookie({ 'essential': true })
+      GOVUK.setConsentCookie({ 'usage': true })
 
-      GOVUK.setCookie('seen_cookie_message', 'this is an essential cookie')
+      GOVUK.setCookie('analytics_next_page_call', 'this is a usage cookie')
 
-      expect(GOVUK.cookie('seen_cookie_message')).toBe('this is an essential cookie')
+      expect(GOVUK.cookie('analytics_next_page_call')).toBe('this is a usage cookie')
 
       spyOn(GOVUK, 'setCookie').and.callThrough()
-      GOVUK.setConsentCookie({ 'essential': false })
+      GOVUK.setConsentCookie({ 'usage': false })
 
-      expect(GOVUK.setCookie).toHaveBeenCalledWith('cookies_policy', '{"essential":false,"settings":false,"usage":false,"campaigns":false}', Object({ days: 365 }))
-      expect(GOVUK.getConsentCookie().essential).toBe(false)
-      expect(GOVUK.cookie('seen_cookie_message')).toBeFalsy()
+      expect(GOVUK.setCookie).toHaveBeenCalledWith('cookies_policy', '{"essential":true,"settings":false,"usage":false,"campaigns":false}', Object({ days: 365 }))
+      expect(GOVUK.getConsentCookie().usage).toBe(false)
+      expect(GOVUK.cookie('analytics_next_page_call')).toBeFalsy()
     })
   })
 
@@ -130,7 +130,7 @@ describe('Cookie helper functions', function () {
     it('does not set a default consent cookie if one is not present', function () {
       GOVUK.cookie('cookies_policy', null)
 
-      GOVUK.checkConsentCookieCategory('seen_cookie_message', true)
+      GOVUK.checkConsentCookieCategory('cookie_preferences_set', true)
 
       expect(GOVUK.getConsentCookie()).toBeFalsy()
     })
@@ -138,7 +138,7 @@ describe('Cookie helper functions', function () {
     it('returns true if the consent cookie does not exist and the cookie name is recognised', function () {
       expect(GOVUK.getConsentCookie()).toBeFalsy()
 
-      expect(GOVUK.checkConsentCookie('seen_cookie_message', true)).toBe(true)
+      expect(GOVUK.checkConsentCookie('cookie_preferences_set', true)).toBe(true)
     })
 
     it('returns false if the consent cookie does not exist and the cookie name is not recognised', function () {

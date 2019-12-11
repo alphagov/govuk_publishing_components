@@ -30,13 +30,12 @@ describe('Cookie banner', function () {
 
     document.body.appendChild(container)
     // set and store consent for all as a basis of comparison
-    window.GOVUK.setCookie('cookies_policy', "{\"essential\":true,\"settings\":true,\"usage\":true,\"campaigns\":true}")
+    window.GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
     ALL_COOKIE_CONSENT = GOVUK.getCookie('cookies_policy')
 
     // set and store default cookie consent to use as basis of comparison
     window.GOVUK.setDefaultConsentCookie()
     DEFAULT_COOKIE_CONSENT = GOVUK.getCookie('cookies_policy')
-
   })
 
   afterEach(function () {
@@ -52,14 +51,39 @@ describe('Cookie banner', function () {
 
     expect(element).toBeVisible()
     expect(cookieBannerMain).toBeVisible()
-    expect(cookieBannerConfirmation).not.toBeVisible()
+    expect(cookieBannerConfirmation).toBeHidden()
+  })
+
+  it('should show the cookie banner when preferences have not been actively set', function () {
+    GOVUK.setDefaultConsentCookie() // Set default cookies, which are set whether there is any interaction or not.
+
+    var element = document.querySelector('[data-module="cookie-banner"]')
+
+    new GOVUK.Modules.CookieBanner().start($(element))
+
+    var cookieBannerMain = document.querySelector('.gem-c-cookie-banner__wrapper')
+    var cookieBannerConfirmation = document.querySelector('.gem-c-cookie-banner__confirmation')
+
+    expect(element).toBeVisible()
+    expect(cookieBannerMain).toBeVisible()
+    expect(cookieBannerConfirmation).toBeHidden()
+  })
+
+  it('should hide the cookie banner when preferences have been actively set', function () {
+    GOVUK.cookie('cookie_preferences_set', 'true', { days: 365 })
+
+    var element = document.querySelector('[data-module="cookie-banner"]')
+
+    new GOVUK.Modules.CookieBanner().start($(element))
+
+    expect(element).toBeHidden()
   })
 
   it('sets a default consent cookie', function () {
     var element = document.querySelector('[data-module="cookie-banner"]')
     new GOVUK.Modules.CookieBanner().start($(element))
 
-    expect(GOVUK.getCookie('seen_cookie_message')).toEqual(null)
+    expect(GOVUK.getCookie('cookie_preferences_set')).toEqual(null)
     expect(GOVUK.getCookie('cookies_policy')).toEqual(DEFAULT_COOKIE_CONSENT)
   })
 
@@ -76,7 +100,8 @@ describe('Cookie banner', function () {
     var acceptCookiesButton = document.querySelector('[data-accept-cookies]')
     acceptCookiesButton.click()
 
-    expect(GOVUK.setCookie).toHaveBeenCalledWith('seen_cookie_message', 'true', { days: 365 })
+    expect(GOVUK.setCookie).toHaveBeenCalledWith('cookie_preferences_set', 'true', { days: 365 })
+    expect(GOVUK.getCookie('cookie_preferences_set')).toEqual('true')
     expect(GOVUK.getCookie('cookies_policy')).toEqual(ALL_COOKIE_CONSENT)
   })
 
@@ -89,11 +114,11 @@ describe('Cookie banner', function () {
     var confirmationMessage = document.querySelector('div[data-cookie-banner-confirmation]')
 
     expect(mainCookieBanner).toBeVisible()
-    expect(confirmationMessage).not.toBeVisible()
+    expect(confirmationMessage).toBeHidden()
 
     acceptCookiesButton.click()
 
-    expect(mainCookieBanner).not.toBeVisible()
+    expect(mainCookieBanner).toBeHidden()
     expect(confirmationMessage).toBeVisible()
   })
 
@@ -107,18 +132,7 @@ describe('Cookie banner', function () {
     link.dispatchEvent(new window.Event('click'))
 
     expect(element).toBeHidden()
-    expect(GOVUK.setCookie).toHaveBeenCalledWith('seen_cookie_message', 'true', { days: 365 })
-    expect(GOVUK.getCookie('seen_cookie_message')).toBeTruthy()
-  })
-
-  it('does not show the banner if user has acknowledged the banner previously and consent cookie is present', function () {
-    GOVUK.setCookie('seen_cookie_message', 'true')
-    GOVUK.setDefaultConsentCookie()
-
-    var element = document.querySelector('[data-module="cookie-banner"]')
-    new GOVUK.Modules.CookieBanner().start($(element))
-
-    expect(element).not.toBeVisible()
+    expect(GOVUK.getCookie('cookie_preferences_set')).toBeTruthy()
   })
 
   describe('when rendered inside an iframe', function () {
