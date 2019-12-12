@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Allow custom heading size on fieldset component ([#1223](https://github.com/alphagov/govuk_publishing_components/pull/1223))
+
 ## 21.13.5
 
 * Fix checkbox small option ([#1221](https://github.com/alphagov/govuk_publishing_components/pull/1221))

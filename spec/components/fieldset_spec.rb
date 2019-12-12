@@ -31,6 +31,15 @@ describe "Fieldset", type: :view do
     assert_select ".govuk-fieldset#passports"
   end
 
+  it "renders a fieldset with the legend as heading" do
+    render_component(
+      legend_text: 'Do you have a passport?',
+      heading_level: 2,
+      text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad neque, maxime est ea laudantium totam fuga!'
+    )
+    assert_select ".govuk-fieldset .govuk-fieldset__legend h2", "Do you have a passport?"
+  end
+
   it "renders a fieldset with a custom size legend" do
     render_component(
       legend_text: 'Do you have a passport?',

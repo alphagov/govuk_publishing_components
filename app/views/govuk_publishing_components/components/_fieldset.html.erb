@@ -1,7 +1,10 @@
 <%
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+
   text = text || yield
   describedby ||= nil
   role ||= nil
+  heading_level ||= nil
   heading_size = false unless ['s', 'm', 'l', 'xl'].include?(heading_size)
   error_message ||= nil
   error_id ||= nil
@@ -22,8 +25,17 @@
 %>
 <%= tag.div class: css_classes do %>
   <%= tag.fieldset class: fieldset_classes, aria: { describedby: describedby }, role: role, id: id do %>
-    <%= tag.legend class: legend_classes do %>
-      <%= legend_text %>
+    <% if heading_level %>
+      <%= tag.legend class: legend_classes do %>
+        <%= content_tag(
+              shared_helper.get_heading_level,
+              legend_text,
+              class: "govuk-fieldset__heading"
+            )
+        %>
+      <% end %>
+    <% else %>
+      <%= tag.legend legend_text, class: legend_classes %>
     <% end %>
     <% if error_message %>
       <%= render "govuk_publishing_components/components/error_message", {
