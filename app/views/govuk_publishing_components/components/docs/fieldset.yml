@@ -53,21 +53,6 @@ examples:
 
           <input type="radio" id="size-no" name="default">
           <label for="size-no">No</label>
-  with_html_legend:
-    description: 'If you only have one fieldset on the page you might want to include the title of the page as the legend text. Used with a [captured](http://api.rubyonrails.org/classes/ActionView/Helpers/CaptureHelper.html#method-i-capture) [title](http://components.publishing.service.gov.uk/component-guide/title)'
-    data:
-      legend_text: |
-        <!-- Use the title component, this is hardcoded only for this example -->
-          <h1 style="font-size: 48px; line-height: 1.0416666667; font-weight: bold; margin: 0 0 30px 0;">
-            Do you have a passport?
-          </h1>
-      block: |
-        <!-- Use the radio component, this is hardcoded only for this example -->
-          <input type="radio" id="html-legend-yes" name="html-legend">
-          <label for="html-legend-yes">Yes</label>
-
-          <input type="radio" id="html-legend-no" name="html-legend">
-          <label for="html-legend-no">No</label>
   with_error_message:
     description: The component also accepts an error_id, or generates one automatically.
     data:
