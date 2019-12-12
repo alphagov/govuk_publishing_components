@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 21.13.5
+
+* Fix checkbox small option ([#1221](https://github.com/alphagov/govuk_publishing_components/pull/1221))
+
 ## 21.13.4
 
 * Fix 'Help us improve' feedback form button / link alignment ([#1217](https://github.com/alphagov/govuk_publishing_components/pull/1217))
