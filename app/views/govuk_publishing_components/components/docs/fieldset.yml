@@ -28,6 +28,19 @@ examples:
 
         <input type="radio" id="passport-no" name="default">
         <label for="passport-no">No</label>
+  with_heading:
+    description: Make the legend different sizes. Valid options are 's', 'm', 'l' and 'xl'.
+    data:
+      legend_text: 'Do you have a driving license?'
+      heading_level: 2
+      heading_size: 'm'
+      text: |
+        <!-- Use the radio component, this is hardcoded only for this example -->
+        <input type="radio" id="level-yes" name="default">
+        <label for="level-yes">Yes</label>
+
+        <input type="radio" id="level-no" name="default">
+        <label for="level-no">No</label>
   with_custom_legend_size:
     description: Make the legend different sizes. Valid options are 's', 'm', 'l' and 'xl'.
     data:
