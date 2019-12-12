@@ -1,5 +1,7 @@
 name: Form checkboxes
 description: Let users select one or more options with checkboxes.
+body: |
+  If there is more than one checkbox they are rendered in a list. If there is only one, the markup is simplified to a single div and a heading attribute is not required.
 govuk_frontend_components:
   - checkboxes
 accessibility_criteria: |
