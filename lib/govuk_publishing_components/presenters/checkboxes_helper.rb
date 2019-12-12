@@ -11,10 +11,10 @@ module GovukPublishingComponents
         @name = options[:name]
         @css_classes = %w(gem-c-checkboxes govuk-form-group)
         @css_classes << "govuk-form-group--error" if options[:error]
+        @css_classes << "govuk-checkboxes--small" if options[:small]
         @error = true if options[:error]
 
         @list_classes = %w(govuk-checkboxes gem-c-checkboxes__list)
-        @list_classes << "govuk-checkboxes--small" if options[:small]
 
         # check if any item is set as being conditional
         @has_conditional = options[:items].any? { |item| item.is_a?(Hash) && item[:conditional] }

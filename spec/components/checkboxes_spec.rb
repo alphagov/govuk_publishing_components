@@ -46,7 +46,7 @@ describe "Checkboxes", type: :view do
         { label: "Green", value: "green" },
       ]
     )
-    assert_select ".govuk-checkboxes.govuk-checkboxes--small"
+    assert_select ".gem-c-checkboxes.govuk-checkboxes--small"
   end
 
   it "renders nothing if no heading is supplied" do
