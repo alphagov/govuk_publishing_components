@@ -7,12 +7,11 @@
     <div class="govuk-row">
       <div class=" govuk-grid-column-two-thirds">
         <div class="gem-c-cookie-banner__message">
-          <span class="govuk-heading-m">Tell us whether you agree to cookies</span>
-          <p class="govuk-body">We use cookies to help improve government services and make the website work as well as possible.</p>
-          <p class="govuk-body">Do you agree to us using cookies?</p>
+          <span class="govuk-heading-m">Tell us whether you accept cookies</span>
+          <p class="govuk-body">We use cookies to improve government services and make the GOV.UK website work as well as possible.</p>
         </div>
         <div class="gem-c-cookie-banner__buttons">
-          <div class="gem-c-cookie-banner__button gem-c-cookie-banner__button-accept">
+          <div class="gem-c-cookie-banner__button gem-c-cookie-banner__button-accept govuk-grid-column-full govuk-grid-column-one-half-from-desktop">
             <%= render "govuk_publishing_components/components/button", {
               text: "Accept all cookies",
               inline_layout: true,
@@ -24,9 +23,9 @@
               }
             } %>
           </div>
-          <div class="gem-c-cookie-banner__button gem-c-cookie-banner__button-settings">
+          <div class="gem-c-cookie-banner__button gem-c-cookie-banner__button-settings govuk-grid-column-full govuk-grid-column-one-half-from-desktop">
             <%= render "govuk_publishing_components/components/button", {
-              text: "No, take me to cookie settings",
+              text: "Set cookie preferences",
               href: "/help/cookies",
               inline_layout: true,
               data_attributes: {

@@ -8,9 +8,8 @@ describe "Cookie banner", type: :view do
   it "renders with default values" do
     render_component({})
     assert_select '.gem-c-cookie-banner[id="global-cookie-message"][data-module="cookie-banner"]'
-    assert_select '.govuk-width-container .gem-c-cookie-banner__message', text: "Tell us whether you agree to cookies
-          We use cookies to help improve government services and make the website work as well as possible.
-          Do you agree to us using cookies?"
+    assert_select '.govuk-width-container .gem-c-cookie-banner__message', text: "Tell us whether you accept cookies
+          We use cookies to improve government services and make the GOV.UK website work as well as possible."
     assert_select 'button[data-hide-cookie-banner="true"]'
   end
 
@@ -22,7 +21,7 @@ describe "Cookie banner", type: :view do
 
   it "renders a button for viewing cookie settings" do
     render_component(new_cookie_banner: true)
-    assert_select '.gem-c-cookie-banner__buttons .gem-c-button', text: "No, take me to cookie settings"
+    assert_select '.gem-c-cookie-banner__buttons .gem-c-button', text: "Set cookie preferences"
     assert_select '.gem-c-cookie-banner__buttons .gem-c-button[data-module=track-click][data-track-category=cookieBanner][data-track-action="Cookie banner settings clicked"]'
   end
 

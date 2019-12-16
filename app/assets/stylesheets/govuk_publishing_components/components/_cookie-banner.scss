@@ -10,57 +10,28 @@ $govuk-cookie-banner-background: govuk-colour("light-grey", "grey-4");
   @include govuk-font($size: 16);
   padding: govuk-spacing(2) 0;
   background-color: $govuk-cookie-banner-background;
-  border: 2px solid govuk-colour("black");
 }
 
 .gem-c-cookie-banner__message {
   display: inline-block;
   @include govuk-font($size: 16);
-  margin-bottom: govuk-spacing(1);
   padding-right: govuk-spacing(4);
   padding-bottom: govuk-spacing(2);
 }
 
-.gem-c-cookie-banner__buttons {
-  @include govuk-clearfix;
-
-  @include govuk-media-query($from: desktop) {
-    display: inline-block;
-  }
-}
-
 .gem-c-cookie-banner__button {
-  display: inline-block;
-  width: 100%;
 
-  @include govuk-media-query($from: mobile, $until: desktop) {
-    &.gem-c-cookie-banner__button-accept {
-      float: left;
-      width: 49%;
+  &.govuk-grid-column-one-half-from-desktop {
+    padding:0;
+  }
+
+  .govuk-button {
+    width: 90%;
+
+    @include govuk-media-query($until: desktop) {
+      margin-bottom: govuk-spacing(4);
     }
 
-    &.gem-c-cookie-banner__button-settings {
-      .js-enabled & {
-        float: right;
-        width: 49%;
-      }
-    }
-  }
-
-  @include govuk-media-query($from: desktop) {
-    width: auto;
-  }
-
-  @include govuk-media-query($until: 455px) {
-    width: 100%;
-  }
-}
-
-.gem-c-cookie-banner__button-accept {
-  display: none;
-
-  .js-enabled & {
-    display: inline-block;
   }
 }
 
