@@ -35,6 +35,16 @@ $govuk-cookie-banner-background: govuk-colour("light-grey", "grey-4");
   }
 }
 
+// Only show accept button if users have js and can accept
+.gem-c-cookie-banner__button-accept {
+  display: none;
+}
+
+.js-enabled .gem-c-cookie-banner__button-accept {
+  display: inline-block;
+}
+
+
 .gem-c-cookie-banner__confirmation {
   display: none;
   position: relative;
