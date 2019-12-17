@@ -14,7 +14,7 @@
   var COOKIE_CATEGORIES = {
     'cookies_policy': 'essential',
     'seen_cookie_message': 'essential',
-    'cookie_preferences_set': 'essential',
+    'cookies_preferences_set': 'essential',
     '_email-alert-frontend_session': 'essential',
     'licensing_session': 'essential',
     'govuk_contact_referrer': 'essential',
