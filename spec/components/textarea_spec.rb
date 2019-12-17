@@ -42,6 +42,16 @@ describe "Textarea", type: :view do
     assert_select ".govuk-textarea[data-module='contextual-guidance']"
   end
 
+  it "renders textarea with aria describedby attribute if provided" do
+    render_component(
+      label: { text: "Title" },
+      name: "described",
+      describedby: "contextual-guidance",
+    )
+
+    assert_select ".govuk-textarea[aria-describedby='contextual-guidance']"
+  end
+
   it "renders textarea with disabled spellcheck" do
     render_component(
       spellcheck: "false",
@@ -137,6 +147,20 @@ describe "Textarea", type: :view do
 
       assert_select ".govuk-textarea[aria-describedby='#{error_id}']"
     end
+  end
+
+  it "renders multiple aria describedby" do
+    render_component(
+      label: { text: "Title" },
+      name: "with-multiple-aria-describedby",
+      hint: "Don’t include personal or financial information.",
+      error_message: "Please enter more detail",
+      describedby: "contextual-guidance",
+    )
+    hint_id = css_select(".govuk-hint").attr("id")
+    error_id = css_select(".govuk-error-message").attr("id")
+
+    assert_select ".govuk-textarea[aria-describedby='#{hint_id} #{error_id} contextual-guidance']"
   end
 
   context "when error_items are provided" do
