@@ -12,23 +12,23 @@
   }
 
   var COOKIE_CATEGORIES = {
-    'TLSversion': 'usage',
     'cookies_policy': 'essential',
-    'govuk_not_first_visit': 'essential',
-    'govuk_browser_upgrade_dismisssed': 'essential',
     'seen_cookie_message': 'essential',
     'cookie_preferences_set': 'essential',
-    'govuk_surveySeenUserSatisfactionSurvey': 'essential',
-    'govuk_takenUserSatisfactionSurvey': 'essential',
     '_email-alert-frontend_session': 'essential',
-    'global_bar_seen': 'essential',
     'licensing_session': 'essential',
     'govuk_contact_referrer': 'essential',
-    'JS-Detection': 'usage',
+    'global_bar_seen': 'settings',
+    'govuk_browser_upgrade_dismisssed': 'settings',
+    'govuk_not_first_visit': 'settings',
+    'govuk_surveySeenUserSatisfactionSurvey': 'settings',
+    'govuk_takenUserSatisfactionSurvey': 'settings',
+    'analytics_next_page_call': 'usage',
     '_ga': 'usage',
     '_gid': 'usage',
     '_gat': 'usage',
-    'analytics_next_page_call': 'usage'
+    'JS-Detection': 'usage',
+    'TLSversion': 'usage'
   }
 
   /*
