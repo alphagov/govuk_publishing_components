@@ -76,3 +76,15 @@ examples:
       name: "maxlength"
       value: "You can't type more"
       maxlength: 19
+  with_aria_attributes:
+    description: Use `describedby` when the textarea is described by an element outside the component; for example, when used in conjunction with a [contextual guidance](/component-guide/contextual_guidance).
+    embed: |
+      <%= component %>
+      <p class="govuk-body" id="contextual-guidance">The title must make clear what the content offers users. Use the words your users do to help them find this. Avoid wordplay or teases.</p>
+    data:
+      label:
+        text: "Title"
+        bold: true
+      name: "described"
+      rows: 2
+      describedby: "contextual-guidance"

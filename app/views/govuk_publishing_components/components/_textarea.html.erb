@@ -2,6 +2,7 @@
   id ||= "textarea-#{SecureRandom.hex(4)}"
   value ||= nil
   rows ||= 5
+  describedby ||= nil
   data ||= nil
   spellcheck ||= "true"
 
@@ -27,10 +28,11 @@
   form_group_css_classes << (shared_helper.get_margin_bottom)
 
   aria_described_by ||= nil
-  if hint || has_error
+  if hint || has_error || describedby
     aria_described_by = []
     aria_described_by << hint_id if hint
     aria_described_by << error_id if has_error
+    aria_described_by << describedby if describedby
     aria_described_by = aria_described_by.join(" ")
   end
 %>

@@ -4,6 +4,7 @@
   content ||= nil
   data_attributes ||= {}
   data_attributes[:module] = "contextual-guidance"
+  guidance_id ||= nil
 %>
 
 <%= tag.div class: "gem-c-contextual-guidance", id: id, data: data_attributes do %>
@@ -14,7 +15,7 @@
       <% end %>
     <% end %>
     <%= tag.div class: "govuk-grid-column-one-third" do %>
-      <%= tag.div class: "gem-c-contextual-guidance__wrapper", for: html_for do %>
+      <%= tag.div class: "gem-c-contextual-guidance__wrapper", for: html_for, id: guidance_id do %>
         <%= tag.div class: "gem-c-contextual-guidance__guidance" do %>
           <%= tag.h2 title, class: "govuk-heading-s" %>
           <%= content %>
