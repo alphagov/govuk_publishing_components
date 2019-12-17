@@ -7,6 +7,11 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Allow textarea to be described by an element outside the component ([#1225](https://github.com/alphagov/govuk_publishing_components/pull/1225))
+* Add guidance_id to contextual guidance component ([#1225](https://github.com/alphagov/govuk_publishing_components/pull/1225))
+
 ## 21.14.0
 
 * Allow custom heading size on fieldset component ([#1223](https://github.com/alphagov/govuk_publishing_components/pull/1223))
