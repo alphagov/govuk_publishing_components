@@ -236,3 +236,12 @@ examples:
           document_type: 'Organisation'
     context:
       right_to_left: true
+  with_a_single_item:
+    data:
+      items:
+      - link:
+          text: 'Alternative provision'
+          path: '/government/publications/alternative-provision'
+        metadata:
+          public_updated_at: 2016-06-27 10:29:44
+          document_type: 'Statutory guidance'
