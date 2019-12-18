@@ -77,6 +77,21 @@ describe('Cookie helper functions', function () {
       expect(GOVUK.getConsentCookie()).toEqual({ 'essential': true, 'settings': false, 'usage': false, 'campaigns': false })
     })
 
+    it('deletes cookies after default consent cookie set', function() {
+      var date = new Date();
+      var days = days || 365;
+      date.setTime(+ date + (days * 86400000)); //24 * 60 * 60 * 1000
+
+      document.cookie = 'analytics_next_page_call=test;expires=' + date.toGMTString() + ';domain=.' + window.location.hostname + ';path=/'
+
+      expect(GOVUK.getCookie('analytics_next_page_call')).toBe("test")
+
+      GOVUK.setDefaultConsentCookie()
+
+      expect(GOVUK.getConsentCookie().usage).toBe(false)
+      expect(GOVUK.getCookie('analytics_next_page_call')).toBeFalsy()
+    })
+
     it('can set the consent cookie to approve all cookie categories', function () {
       spyOn(GOVUK, 'setCookie').and.callThrough()
 

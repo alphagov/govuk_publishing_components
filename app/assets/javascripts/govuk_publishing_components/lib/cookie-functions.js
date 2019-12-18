@@ -64,7 +64,7 @@
   }
 
   window.GOVUK.setDefaultConsentCookie = function () {
-    window.GOVUK.setCookie('cookies_policy', JSON.stringify(DEFAULT_COOKIE_CONSENT), { days: 365 })
+    window.GOVUK.setConsentCookie(DEFAULT_COOKIE_CONSENT)
   }
 
   window.GOVUK.approveAllCookieTypes = function () {
