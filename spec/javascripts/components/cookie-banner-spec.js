@@ -70,7 +70,7 @@ describe('Cookie banner', function () {
   })
 
   it('should hide the cookie banner when preferences have been actively set', function () {
-    GOVUK.cookie('cookie_preferences_set', 'true', { days: 365 })
+    GOVUK.cookie('cookies_preferences_set', 'true', { days: 365 })
 
     var element = document.querySelector('[data-module="cookie-banner"]')
 
@@ -83,7 +83,7 @@ describe('Cookie banner', function () {
     var element = document.querySelector('[data-module="cookie-banner"]')
     new GOVUK.Modules.CookieBanner().start($(element))
 
-    expect(GOVUK.getCookie('cookie_preferences_set')).toEqual(null)
+    expect(GOVUK.getCookie('cookies_preferences_set')).toEqual(null)
     expect(GOVUK.getCookie('cookies_policy')).toEqual(DEFAULT_COOKIE_CONSENT)
   })
 
@@ -100,8 +100,8 @@ describe('Cookie banner', function () {
     var acceptCookiesButton = document.querySelector('[data-accept-cookies]')
     acceptCookiesButton.click()
 
-    expect(GOVUK.setCookie).toHaveBeenCalledWith('cookie_preferences_set', 'true', { days: 365 })
-    expect(GOVUK.getCookie('cookie_preferences_set')).toEqual('true')
+    expect(GOVUK.setCookie).toHaveBeenCalledWith('cookies_preferences_set', 'true', { days: 365 })
+    expect(GOVUK.getCookie('cookies_preferences_set')).toEqual('true')
     expect(GOVUK.getCookie('cookies_policy')).toEqual(ALL_COOKIE_CONSENT)
   })
 
@@ -132,7 +132,7 @@ describe('Cookie banner', function () {
     link.dispatchEvent(new window.Event('click'))
 
     expect(element).toBeHidden()
-    expect(GOVUK.getCookie('cookie_preferences_set')).toBeTruthy()
+    expect(GOVUK.getCookie('cookies_preferences_set')).toBeTruthy()
   })
 
   describe('when rendered inside an iframe', function () {

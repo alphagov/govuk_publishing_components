@@ -7,61 +7,61 @@ describe('Cookie helper functions', function () {
 
   describe('GOVUK.cookie', function () {
     it('returns the cookie value if not provided with a value to set', function () {
-      GOVUK.cookie('cookie_preferences_set', 'testing fetching cookie value')
+      GOVUK.cookie('cookies_preferences_set', 'testing fetching cookie value')
 
-      GOVUK.cookie('cookie_preferences_set')
+      GOVUK.cookie('cookies_preferences_set')
 
-      expect(GOVUK.cookie('cookie_preferences_set')).toBe('testing fetching cookie value')
+      expect(GOVUK.cookie('cookies_preferences_set')).toBe('testing fetching cookie value')
     })
 
     it('can create a new cookie', function () {
-      expect(GOVUK.getCookie('cookie_preferences_set')).toBeFalsy()
+      expect(GOVUK.getCookie('cookies_preferences_set')).toBeFalsy()
 
-      GOVUK.cookie('cookie_preferences_set', 'test')
+      GOVUK.cookie('cookies_preferences_set', 'test')
 
-      expect(GOVUK.getCookie('cookie_preferences_set')).toBe('test')
+      expect(GOVUK.getCookie('cookies_preferences_set')).toBe('test')
     })
 
     it('sets a default expiry of 30 days if no options are provided', function () {
       spyOn(GOVUK, 'setCookie').and.callThrough()
 
-      expect(GOVUK.getCookie('cookie_preferences_set')).toBeFalsy()
+      expect(GOVUK.getCookie('cookies_preferences_set')).toBeFalsy()
 
-      GOVUK.cookie('cookie_preferences_set', 'test')
+      GOVUK.cookie('cookies_preferences_set', 'test')
 
-      expect(GOVUK.setCookie).toHaveBeenCalledWith('cookie_preferences_set', 'test', { days: 30 })
+      expect(GOVUK.setCookie).toHaveBeenCalledWith('cookies_preferences_set', 'test', { days: 30 })
     })
 
     it('sets the expiry if one is provided', function () {
       spyOn(GOVUK, 'setCookie').and.callThrough()
 
-      expect(GOVUK.getCookie('cookie_preferences_set')).toBeFalsy()
+      expect(GOVUK.getCookie('cookies_preferences_set')).toBeFalsy()
 
-      GOVUK.cookie('cookie_preferences_set', 'test', { days: 100 })
+      GOVUK.cookie('cookies_preferences_set', 'test', { days: 100 })
 
-      expect(GOVUK.setCookie).toHaveBeenCalledWith('cookie_preferences_set', 'test', { days: 100 })
+      expect(GOVUK.setCookie).toHaveBeenCalledWith('cookies_preferences_set', 'test', { days: 100 })
     })
 
     it('can change the value of an existing cookie', function () {
-      GOVUK.cookie('cookie_preferences_set', 'test1')
+      GOVUK.cookie('cookies_preferences_set', 'test1')
 
-      expect(GOVUK.getCookie('cookie_preferences_set')).toBe('test1')
+      expect(GOVUK.getCookie('cookies_preferences_set')).toBe('test1')
 
-      GOVUK.cookie('cookie_preferences_set', 'test2')
+      GOVUK.cookie('cookies_preferences_set', 'test2')
 
-      expect(GOVUK.getCookie('cookie_preferences_set')).toBe('test2')
+      expect(GOVUK.getCookie('cookies_preferences_set')).toBe('test2')
     })
 
     it('deletes the cookie if value is set to false', function () {
-      GOVUK.cookie('cookie_preferences_set', false)
+      GOVUK.cookie('cookies_preferences_set', false)
 
-      expect(GOVUK.getCookie('cookie_preferences_set')).toBeFalsy()
+      expect(GOVUK.getCookie('cookies_preferences_set')).toBeFalsy()
     })
 
     it('deletes the cookie if value is set to null', function () {
-      GOVUK.cookie('cookie_preferences_set', null)
+      GOVUK.cookie('cookies_preferences_set', null)
 
-      expect(GOVUK.getCookie('cookie_preferences_set')).toBeFalsy()
+      expect(GOVUK.getCookie('cookies_preferences_set')).toBeFalsy()
     })
   })
 
@@ -130,7 +130,7 @@ describe('Cookie helper functions', function () {
     it('does not set a default consent cookie if one is not present', function () {
       GOVUK.cookie('cookies_policy', null)
 
-      GOVUK.checkConsentCookieCategory('cookie_preferences_set', true)
+      GOVUK.checkConsentCookieCategory('cookies_preferences_set', true)
 
       expect(GOVUK.getConsentCookie()).toBeFalsy()
     })
@@ -138,7 +138,7 @@ describe('Cookie helper functions', function () {
     it('returns true if the consent cookie does not exist and the cookie name is recognised', function () {
       expect(GOVUK.getConsentCookie()).toBeFalsy()
 
-      expect(GOVUK.checkConsentCookie('cookie_preferences_set', true)).toBe(true)
+      expect(GOVUK.checkConsentCookie('cookies_preferences_set', true)).toBe(true)
     })
 
     it('returns false if the consent cookie does not exist and the cookie name is not recognised', function () {
