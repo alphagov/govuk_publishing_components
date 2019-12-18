@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Delete unconsented cookies automatically ([#1239](https://github.com/alphagov/govuk_publishing_components/pull/1239))
+* Simplify document list component markup when having only one item ([#1226](https://github.com/alphagov/govuk_publishing_components/pull/1226))
 
 ## 21.15.2
 
