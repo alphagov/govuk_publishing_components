@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix URL in cookie banner component ([#1228](https://github.com/alphagov/govuk_publishing_components/pull/1228))
+
 ## 21.15.0
 
 * Allow textarea to be described by an element outside the component ([#1225](https://github.com/alphagov/govuk_publishing_components/pull/1225))
