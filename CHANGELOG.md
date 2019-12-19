@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.15.0
 
 * Allow textarea to be described by an element outside the component ([#1225](https://github.com/alphagov/govuk_publishing_components/pull/1225))
 * Add guidance_id to contextual guidance component ([#1225](https://github.com/alphagov/govuk_publishing_components/pull/1225))
