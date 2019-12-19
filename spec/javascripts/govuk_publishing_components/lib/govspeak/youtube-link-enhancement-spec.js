@@ -56,7 +56,7 @@ describe('Youtube link enhancement', function () {
     })
 
     it('doesn\'t replace links when a user has revoked campaign cookie consent', function () {
-      window.GOVUK.cookie('cookie_policy', JSON.stringify({ campaigns: false }))
+      window.GOVUK.cookie('cookies_policy', JSON.stringify({ campaigns: false }))
 
       container.innerHTML =
         '<div class="gem-c-govspeak">' +

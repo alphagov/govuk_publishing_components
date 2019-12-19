@@ -6,29 +6,30 @@
 
   var DEFAULT_COOKIE_CONSENT = {
     'essential': true,
-    'settings': true,
-    'usage': true,
-    'campaigns': true
+    'settings': false,
+    'usage': false,
+    'campaigns': false
   }
 
   var COOKIE_CATEGORIES = {
-    'TLSversion': 'usage',
-    'cookie_policy': 'essential',
-    'govuk_not_first_visit': 'essential',
-    'govuk_browser_upgrade_dismisssed': 'essential',
+    'cookies_policy': 'essential',
     'seen_cookie_message': 'essential',
     'cookie_preferences_set': 'essential',
-    'govuk_surveySeenUserSatisfactionSurvey': 'essential',
-    'govuk_takenUserSatisfactionSurvey': 'essential',
+    'cookies_preferences_set': 'essential',
     '_email-alert-frontend_session': 'essential',
-    'global_bar_seen': 'essential',
     'licensing_session': 'essential',
     'govuk_contact_referrer': 'essential',
-    'JS-Detection': 'usage',
+    'global_bar_seen': 'settings',
+    'govuk_browser_upgrade_dismisssed': 'settings',
+    'govuk_not_first_visit': 'settings',
+    'govuk_surveySeenUserSatisfactionSurvey': 'settings',
+    'govuk_takenUserSatisfactionSurvey': 'settings',
+    'analytics_next_page_call': 'usage',
     '_ga': 'usage',
     '_gid': 'usage',
     '_gat': 'usage',
-    'analytics_next_page_call': 'usage'
+    'JS-Detection': 'usage',
+    'TLSversion': 'usage'
   }
 
   /*
@@ -63,7 +64,7 @@
   }
 
   window.GOVUK.setDefaultConsentCookie = function () {
-    window.GOVUK.setCookie('cookie_policy', JSON.stringify(DEFAULT_COOKIE_CONSENT), { days: 365 })
+    window.GOVUK.setConsentCookie(DEFAULT_COOKIE_CONSENT)
   }
 
   window.GOVUK.approveAllCookieTypes = function () {
@@ -74,11 +75,11 @@
       'campaigns': true
     }
 
-    window.GOVUK.setCookie('cookie_policy', JSON.stringify(approvedConsent), { days: 365 })
+    window.GOVUK.setCookie('cookies_policy', JSON.stringify(approvedConsent), { days: 365 })
   }
 
   window.GOVUK.getConsentCookie = function () {
-    var consentCookie = window.GOVUK.cookie('cookie_policy')
+    var consentCookie = window.GOVUK.cookie('cookies_policy')
     var consentCookieObj
 
     if (consentCookie) {
@@ -122,7 +123,7 @@
       }
     }
 
-    window.GOVUK.setCookie('cookie_policy', JSON.stringify(cookieConsent), { days: 365 })
+    window.GOVUK.setCookie('cookies_policy', JSON.stringify(cookieConsent), { days: 365 })
   }
 
   window.GOVUK.checkConsentCookieCategory = function (cookieName, cookieCategory) {
@@ -146,7 +147,7 @@
 
   window.GOVUK.checkConsentCookie = function (cookieName, cookieValue) {
     // If we're setting the consent cookie OR deleting a cookie, allow by default
-    if (cookieName === 'cookie_policy' || (cookieValue === null || cookieValue === false)) {
+    if (cookieName === 'cookies_policy' || (cookieValue === null || cookieValue === false)) {
       return true
     }
 

@@ -17,7 +17,3 @@ accessibility_excluded_rules:
 examples:
   default:
     data: {}
-  custom_message:
-    data:
-      id: custom-message
-      message: GOV.UK uses cookies to make the site simpler. <a class="govuk-link" href="/help/cookies">Find out more about cookies</a>

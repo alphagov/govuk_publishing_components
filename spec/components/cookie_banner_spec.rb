@@ -8,25 +8,20 @@ describe "Cookie banner", type: :view do
   it "renders with default values" do
     render_component({})
     assert_select '.gem-c-cookie-banner[id="global-cookie-message"][data-module="cookie-banner"]'
-    assert_select '.govuk-width-container .gem-c-cookie-banner__message', text: "GOV.UK uses cookies which are essential for the site to work. We also use non-essential cookies to help us improve government digital services. Any data collected is anonymised. By continuing to use this site, you agree to our use of cookies."
+    assert_select '.govuk-width-container .gem-c-cookie-banner__message', text: "Tell us whether you accept cookies
+          We use cookies to collect information about how you use GOV.UK. We use this information to make the website work as well as possible and improve government services."
     assert_select 'button[data-hide-cookie-banner="true"]'
-  end
-
-  it "renders with custom values" do
-    render_component(id: 'custom-cookie-message', message: "Custom message")
-    assert_select '.gem-c-cookie-banner[id="custom-cookie-message"][data-module="cookie-banner"]'
-    assert_select '.govuk-width-container .gem-c-cookie-banner__message', text: "Custom message"
   end
 
   it "renders a button for accepting cookies" do
     render_component(new_cookie_banner: true)
-    assert_select '.gem-c-cookie-banner__buttons .gem-c-button', text: "Accept cookies"
+    assert_select '.gem-c-cookie-banner__buttons .gem-c-button', text: "Accept all cookies"
     assert_select '.gem-c-cookie-banner__buttons .gem-c-button[data-module=track-click][data-track-category=cookieBanner][data-track-action="Cookie banner accepted"]'
   end
 
   it "renders a button for viewing cookie settings" do
     render_component(new_cookie_banner: true)
-    assert_select '.gem-c-cookie-banner__buttons .gem-c-button', text: "Cookie settings"
+    assert_select '.gem-c-cookie-banner__buttons .gem-c-button', text: "Set cookie preferences"
     assert_select '.gem-c-cookie-banner__buttons .gem-c-button[data-module=track-click][data-track-category=cookieBanner][data-track-action="Cookie banner settings clicked"]'
   end
 
