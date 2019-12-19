@@ -22,8 +22,6 @@
     'global_bar_seen': 'settings',
     'govuk_browser_upgrade_dismisssed': 'settings',
     'govuk_not_first_visit': 'settings',
-    'govuk_surveySeenUserSatisfactionSurvey': 'settings',
-    'govuk_takenUserSatisfactionSurvey': 'settings',
     'analytics_next_page_call': 'usage',
     '_ga': 'usage',
     '_gid': 'usage',
@@ -153,7 +151,7 @@
 
     // Survey cookies are dynamically generated, so we need to check for these separately
     if (cookieName.match('^govuk_surveySeen') || cookieName.match('^govuk_taken')) {
-      return window.GOVUK.checkConsentCookieCategory(cookieName, 'essential')
+      return window.GOVUK.checkConsentCookieCategory(cookieName, 'settings')
     }
 
     if (COOKIE_CATEGORIES[cookieName]) {
@@ -167,6 +165,7 @@
   }
 
   window.GOVUK.setCookie = function (name, value, options) {
+    console.log("setting a cookie", name)
     if (window.GOVUK.checkConsentCookie(name, value)) {
       if (typeof options === 'undefined') {
         options = {}
