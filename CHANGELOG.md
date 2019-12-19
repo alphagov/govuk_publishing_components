@@ -11,6 +11,7 @@
 
 * Allow textarea to be described by an element outside the component ([#1225](https://github.com/alphagov/govuk_publishing_components/pull/1225))
 * Add guidance_id to contextual guidance component ([#1225](https://github.com/alphagov/govuk_publishing_components/pull/1225))
+* Update cookie banner component from an opt-out to an opt-in approach ([#1227](https://github.com/alphagov/govuk_publishing_components/pull/1227))
 
 ## 21.14.0
 
