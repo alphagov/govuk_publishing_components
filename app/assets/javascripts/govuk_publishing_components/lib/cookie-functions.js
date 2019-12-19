@@ -114,7 +114,9 @@
             window.GOVUK.cookie(cookie, null)
 
             if (window.GOVUK.cookie(cookie)) {
-              document.cookie = cookie + '=;expires=' + new Date() + ';domain=.' + window.location.hostname + ';path=/'
+              // We need to handle deleting cookies on the domain and the .domain
+              document.cookie = cookie + '=;expires=' + new Date() + ';'
+              document.cookie = cookie + '=;expires=' + new Date() + ';domain=' + window.location.hostname + ';path=/'
             }
           }
         }
@@ -165,7 +167,6 @@
   }
 
   window.GOVUK.setCookie = function (name, value, options) {
-    console.log("setting a cookie", name)
     if (window.GOVUK.checkConsentCookie(name, value)) {
       if (typeof options === 'undefined') {
         options = {}
