@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Use correct grid row class in cookie banner ([#1233](https://github.com/alphagov/govuk_publishing_components/pull/1233))
+
 ## 21.15.1
 
 * Fix URL in cookie banner component ([#1228](https://github.com/alphagov/govuk_publishing_components/pull/1228))
