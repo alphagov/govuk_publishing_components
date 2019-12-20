@@ -22,8 +22,6 @@
     'global_bar_seen': 'settings',
     'govuk_browser_upgrade_dismisssed': 'settings',
     'govuk_not_first_visit': 'settings',
-    'govuk_surveySeenUserSatisfactionSurvey': 'settings',
-    'govuk_takenUserSatisfactionSurvey': 'settings',
     'analytics_next_page_call': 'usage',
     '_ga': 'usage',
     '_gid': 'usage',
@@ -116,7 +114,9 @@
             window.GOVUK.cookie(cookie, null)
 
             if (window.GOVUK.cookie(cookie)) {
-              document.cookie = cookie + '=;expires=' + new Date() + ';domain=.' + window.location.hostname + ';path=/'
+              // We need to handle deleting cookies on the domain and the .domain
+              document.cookie = cookie + '=;expires=' + new Date() + ';'
+              document.cookie = cookie + '=;expires=' + new Date() + ';domain=' + window.location.hostname + ';path=/'
             }
           }
         }
@@ -153,7 +153,7 @@
 
     // Survey cookies are dynamically generated, so we need to check for these separately
     if (cookieName.match('^govuk_surveySeen') || cookieName.match('^govuk_taken')) {
-      return window.GOVUK.checkConsentCookieCategory(cookieName, 'essential')
+      return window.GOVUK.checkConsentCookieCategory(cookieName, 'settings')
     }
 
     if (COOKIE_CATEGORIES[cookieName]) {
