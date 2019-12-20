@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Delete unconsented cookies automatically ([#1239](https://github.com/alphagov/govuk_publishing_components/pull/1239))
+
 ## 21.15.2
 
 * Use correct grid row class in cookie banner ([#1233](https://github.com/alphagov/govuk_publishing_components/pull/1233))
