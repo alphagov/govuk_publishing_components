@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.16.2
 
 * Fix stray closing tag in document list component ([#1242](https://github.com/alphagov/govuk_publishing_components/pull/1242))
 
