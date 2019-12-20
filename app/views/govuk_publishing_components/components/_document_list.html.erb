@@ -76,7 +76,7 @@
         </li>
       <% end %>
     <% end %>
-  <% unless within_multitype_list %>
+  <% unless within_multitype_list || items.one? %>
     </ol>
   <% end %>
 <% end %>
