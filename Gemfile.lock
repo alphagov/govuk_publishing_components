@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    govuk_publishing_components (21.15.1)
+    govuk_publishing_components (21.15.2)
       gds-api-adapters
       govuk_app_config
       kramdown
@@ -280,7 +280,7 @@ GEM
       unf_ext
     unf_ext (0.0.7.6)
     unicode-display_width (1.6.0)
-    unicorn (5.5.1)
+    unicorn (5.5.2)
       kgio (~> 2.6)
       raindrops (~> 0.7)
     webdrivers (4.1.3)
