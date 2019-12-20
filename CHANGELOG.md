@@ -12,6 +12,7 @@
 * Use correct grid row class in cookie banner ([#1233](https://github.com/alphagov/govuk_publishing_components/pull/1233))
 * Fix categorisation of survey cookies ([#1234](https://github.com/alphagov/govuk_publishing_components/pull/1234))
 * Improve cookie deletion code ([#1234](https://github.com/alphagov/govuk_publishing_components/pull/1234))
+* Fix cookie banner layout on mobile ([#1235](https://github.com/alphagov/govuk_publishing_components/pull/1235))
 
 ## 21.15.1
 
