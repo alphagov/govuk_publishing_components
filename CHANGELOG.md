@@ -7,14 +7,17 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 21.16.1
+
+* Create pageview on cookie consent ([#1238](https://github.com/alphagov/govuk_publishing_components/pull/1238))
+* Simplify document list component markup when having only one item ([#1226](https://github.com/alphagov/govuk_publishing_components/pull/1226))
+
 ## 21.16.0
 
 * Delete unconsented cookies automatically ([#1239](https://github.com/alphagov/govuk_publishing_components/pull/1239))
-* Simplify document list component markup when having only one item ([#1226](https://github.com/alphagov/govuk_publishing_components/pull/1226))
 
 ## 21.15.2
 
-* Create pageview on cookie consent ([#1238](https://github.com/alphagov/govuk_publishing_components/pull/1238))
 * Use correct grid row class in cookie banner ([#1233](https://github.com/alphagov/govuk_publishing_components/pull/1233))
 * Fix categorisation of survey cookies ([#1234](https://github.com/alphagov/govuk_publishing_components/pull/1234))
 * Improve cookie deletion code ([#1234](https://github.com/alphagov/govuk_publishing_components/pull/1234))
