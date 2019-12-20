@@ -87,6 +87,18 @@ describe('Cookie banner', function () {
     expect(GOVUK.getCookie('cookies_policy')).toEqual(DEFAULT_COOKIE_CONSENT)
   })
 
+  it('deletes unconsented cookies if cookie preferences not explicitly set', function () {
+    window.GOVUK.setCookie('_ga', 'this is not allowed!')
+    spyOn(GOVUK, 'deleteUnconsentedCookies').and.callThrough()
+
+    var element = document.querySelector('[data-module="cookie-banner"]')
+    new GOVUK.Modules.CookieBanner().start($(element))
+
+    expect(GOVUK.getCookie('cookies_policy')).toEqual(DEFAULT_COOKIE_CONSENT)
+    expect(GOVUK.deleteUnconsentedCookies).toHaveBeenCalled()
+    expect(GOVUK.getCookie('_ga', null))
+  })
+
   it('sets consent cookie when accepting cookies', function () {
     spyOn(GOVUK, 'setCookie').and.callThrough()
 

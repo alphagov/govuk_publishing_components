@@ -42,6 +42,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         if (!window.GOVUK.cookie('cookies_policy')) {
           window.GOVUK.setDefaultConsentCookie()
         }
+
+        window.GOVUK.deleteUnconsentedCookies()
       } else {
         this.$module.style.display = 'none'
       }
