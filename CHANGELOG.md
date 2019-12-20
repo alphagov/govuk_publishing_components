@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix stray closing tag in document list component ([#1242](https://github.com/alphagov/govuk_publishing_components/pull/1242))
+
 ## 21.16.1
 
 * Create pageview on cookie consent ([#1238](https://github.com/alphagov/govuk_publishing_components/pull/1238))
