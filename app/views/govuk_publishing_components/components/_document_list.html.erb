@@ -8,75 +8,73 @@
 
   within_multitype_list ||= false
   within_multitype_list_class = " gem-c-document-list__multi-list" if within_multitype_list
+  title_with_context_class = " gem-c-document-list__item-title--context"
 
   brand ||= false
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
 %>
-<% def document(item, brand_helper) %>
-  <% title_with_context_class = " gem-c-document-list__item-title--context" %>
-  <% if item[:highlight] && item[:highlight_text] %>
-    <p class='gem-c-document-list__highlight-text'><%= item[:highlight_text] %></p>
-  <% end %>
-  <%=
-    item_classes = "gem-c-document-list__item-title #{brand_helper.color_class} #{title_with_context_class if item[:link][:context]}"
-
-    if item[:link][:path]
-      link_to(
-        item[:link][:text],
-        item[:link][:path],
-        data: item[:link][:data_attributes],
-        class: "#{item_classes} gem-c-document-list__item-link",
-      )
-    else
-      content_tag(
-        "span",
-        item[:link][:text],
-        data: item[:link][:data_attributes],
-        class: item_classes,
-      )
-    end
-  %>
-  <% if item[:link][:context] %>
-    <span class="gem-c-document-list__item-context"><%= item[:link][:context] %></span>
-  <% end %>
-  <% if item[:link][:description] %>
-    <p class="gem-c-document-list__item-description" ><%= item[:link][:description] %></p>
-  <% end %>
-  <% if item[:metadata] %>
-    <ul class="gem-c-document-list__item-metadata">
-      <% item[:metadata].compact.each do |item_metadata_key, item_metadata_value| %>
-        <li class="gem-c-document-list__attribute">
-          <% if item_metadata_key.to_s.eql?("public_updated_at") %>
-            <time datetime="<%= item_metadata_value.iso8601 %>">
-              <%= l(item_metadata_value, format: '%e %B %Y') %>
-            </time>
-          <% else %>
-            <%= item_metadata_value %>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
-  <% end %>
-  <% if item[:subtext] %>
-    <p class="gem-c-document-list__subtext"><%= item[:subtext] %></p>
-  <% end %>
-<% end %>
 <% if items.any? %>
-  <% unless within_multitype_list || items.one? %>
+  <% unless within_multitype_list %>
     <ol class="<%= classes %>">
   <% end %>
     <% items.each do |item| %>
       <% highlight_class = " gem-c-document-list__item--highlight" if item[:highlight] %>
 
-      <% if items.one? %>
-        <% document(item, brand_helper) %>
-      <% else %>
-        <li class="gem-c-document-list__item<%= within_multitype_list_class %> <%= brand_helper.brand_class %> <%= highlight_class %>">
-          <% document(item, brand_helper) %>
-        </li>
-      <% end %>
+      <li class="gem-c-document-list__item<%= within_multitype_list_class %> <%= brand_helper.brand_class %> <%= highlight_class %>">
+        <% if item[:highlight] && item[:highlight_text] %>
+          <p class='gem-c-document-list__highlight-text'><%= item[:highlight_text] %></p>
+        <% end %>
+
+        <%=
+          item_classes = "gem-c-document-list__item-title #{brand_helper.color_class} #{title_with_context_class if item[:link][:context]}"
+
+          if item[:link][:path]
+            link_to(
+              item[:link][:text],
+              item[:link][:path],
+              data: item[:link][:data_attributes],
+              class: "#{item_classes} gem-c-document-list__item-link",
+            )
+          else
+            content_tag(
+              "span",
+              item[:link][:text],
+              data: item[:link][:data_attributes],
+              class: item_classes,
+            )
+          end
+        %>
+
+        <% if item[:link][:context] %>
+          <span class="gem-c-document-list__item-context"><%= item[:link][:context] %></span>
+        <% end %>
+
+        <% if item[:link][:description] %>
+          <p class="gem-c-document-list__item-description" ><%= item[:link][:description] %></p>
+        <% end %>
+
+        <% if item[:metadata] %>
+          <ul class="gem-c-document-list__item-metadata">
+            <% item[:metadata].compact.each do |item_metadata_key, item_metadata_value| %>
+              <li class="gem-c-document-list__attribute">
+                <% if item_metadata_key.to_s.eql?("public_updated_at") %>
+                  <time datetime="<%= item_metadata_value.iso8601 %>">
+                    <%= l(item_metadata_value, format: '%e %B %Y') %>
+                  </time>
+                <% else %>
+                  <%= item_metadata_value %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <% if item[:subtext] %>
+          <p class="gem-c-document-list__subtext"><%= item[:subtext] %></p>
+        <% end %>
+      </li>
     <% end %>
-  <% unless within_multitype_list || items.one? %>
+  <% unless within_multitype_list %>
     </ol>
   <% end %>
 <% end %>

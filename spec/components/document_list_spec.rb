@@ -27,16 +27,6 @@ describe "Document list", type: :view do
             public_updated_at: Time.zone.parse("2017-01-05 14:50:33 +0000"),
             document_type: "Statutory guidance"
           }
-        },
-        {
-          link: {
-            text: "Become an apprentice",
-            path: "/become-an-apprentice",
-          },
-          metadata: {
-            public_updated_at: Time.zone.parse("2017-07-19 15:01:48 +0000"),
-            document_type: "Statutory guidance"
-          }
         }
       ]
     )
@@ -199,16 +189,6 @@ describe "Document list", type: :view do
             public_updated_at: Time.zone.parse("2017-01-05 14:50:33 +0000"),
             document_type: "Statutory guidance"
           }
-        },
-        {
-          link: {
-            text: "Become an apprentice",
-            path: "/become-an-apprentice",
-          },
-          metadata: {
-            public_updated_at: Time.zone.parse("2017-07-19 15:01:48 +0000"),
-            document_type: "Statutory guidance"
-          }
         }
       ]
     )
@@ -220,12 +200,6 @@ describe "Document list", type: :view do
   it "does not wrap link in heading element if no description or metadata provided" do
     render_component(
       items: [
-        {
-          link: {
-            text: "Link Title",
-            path: "/link/path",
-          }
-        },
         {
           link: {
             text: "Link Title",
@@ -276,12 +250,6 @@ describe "Document list", type: :view do
     render_component(
       remove_underline: true,
       items: [
-        {
-          link: {
-            text: "Link Title",
-            path: "/link/path",
-          }
-        },
         {
           link: {
             text: "Link Title",
