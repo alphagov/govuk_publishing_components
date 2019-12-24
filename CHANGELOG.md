@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Revert 'Simplify document list component markup when having only one item' ([#1244](https://github.com/alphagov/govuk_publishing_components/pull/1244))
+
 ## 21.16.2
 
 * Fix stray closing tag in document list component ([#1242](https://github.com/alphagov/govuk_publishing_components/pull/1242))
