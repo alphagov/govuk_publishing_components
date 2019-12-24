@@ -29,12 +29,6 @@
       rules: axeRules
     }
 
-    // TODO: Remove when aXe core patched
-    // https://github.com/dequelabs/axe-core/issues/525
-    if (document.querySelector('svg') && !(document.querySelector('svg').children instanceof HTMLCollection)) {
-      delete axeOptions['restoreScroll']
-    }
-
     axe.run(selector, axeOptions, function (err, results) {
       if (err) {
         return callback('aXe Error: ' + err)
