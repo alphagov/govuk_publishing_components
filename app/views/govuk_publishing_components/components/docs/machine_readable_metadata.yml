@@ -127,3 +127,10 @@ examples:
         base_path: "/finder/all"
         details: {}
       schema: :search_results_page
+  dataset_schema:
+    data:
+      content_item:
+        title: "All the data about Hogwarts"
+        base_path: "government/statistical-data-sets/hogwarts-data"
+        details: {}
+      schema: :dataset
