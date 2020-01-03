@@ -10,6 +10,7 @@ require 'govuk_publishing_components/presenters/machine_readable/organisation_sc
 require 'govuk_publishing_components/presenters/machine_readable/person_schema'
 require 'govuk_publishing_components/presenters/machine_readable/potential_search_action_schema'
 require 'govuk_publishing_components/presenters/machine_readable/search_results_page_schema'
+require 'govuk_publishing_components/presenters/machine_readable/dataset_schema'
 
 module GovukPublishingComponents
   module Presenters
@@ -35,6 +36,8 @@ module GovukPublishingComponents
           OrganisationSchema.new(page).structured_data
         elsif page.schema == :search_results_page
           SearchResultsPageSchema.new(page).structured_data
+        elsif page.schema == :dataset
+          DatasetSchema.new(page).structured_data
         else
           raise "#{page.schema} is not supported"
         end

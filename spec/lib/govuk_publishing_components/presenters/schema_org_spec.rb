@@ -51,6 +51,33 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       expect(structured_data['potentialAction']).to eql(search_action)
     end
 
+    it "generates schema.org Datasets" do
+      content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "statistical_data_set") do |random_item|
+        random_item.merge(
+          "details" => {
+            "body" => "Dataset body",
+            "political": false,
+              "government": {
+              "title": "Government title",
+              "slug": "government-title",
+              "current": false
+            },
+          },
+          "description" => "Dataset description",
+          "title" => "Dataset Title"
+        )
+      end
+
+      structured_data = generate_structured_data(
+        content_item: content_item,
+        schema: :dataset,
+      ).structured_data
+
+      expect(structured_data['@type']).to eql("Dataset")
+      expect(structured_data['name']).to eql("Dataset Title")
+      expect(structured_data['description']).to eql("Dataset description")
+    end
+
     context "schema.org GovernmentService" do
       before(:each) do
         @organisations = [
