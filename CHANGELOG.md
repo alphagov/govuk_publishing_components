@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 21.18.0
+
+* Remove Brexit CTA link from checker start page ([#1249](https://github.com/alphagov/govuk_publishing_components/pull/1249))
+
 ## 21.17.0
 
 * Add Dataset schema.org schema to machine readable metadata component ([#1247](https://github.com/alphagov/govuk_publishing_components/pull/1247))
