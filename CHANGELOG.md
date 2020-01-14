@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Increase notice border size ([#1254](https://github.com/alphagov/govuk_publishing_components/pull/1254))
+
 ## 21.19.0
 
 * Add print icons ([#1251](https://github.com/alphagov/govuk_publishing_components/pull/1251))
