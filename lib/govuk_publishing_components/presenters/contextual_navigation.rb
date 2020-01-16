@@ -49,7 +49,7 @@ module GovukPublishingComponents
       end
 
       def content_has_curated_related_items?
-        content_item.dig("links", "ordered_related_items").present?
+        content_item.dig("links", "ordered_related_items").present? && content_item.dig("links", "parent").present?
       end
 
       def content_is_tagged_to_a_live_taxon?
