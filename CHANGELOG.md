@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Check for ordered related items and parent in breadcrumb logic ([#1257](https://github.com/alphagov/govuk_publishing_components/pull/1257))
+
 ## 21.19.1
 
 * Increase notice border size ([#1254](https://github.com/alphagov/govuk_publishing_components/pull/1254))
