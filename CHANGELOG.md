@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update govuk-frontend to 3.5.0 ([#1262](https://github.com/alphagov/govuk_publishing_components/pull/1262))
+
 ## 21.20.0
 
 * Check for ordered related items and parent in breadcrumb logic ([#1257](https://github.com/alphagov/govuk_publishing_components/pull/1257))
