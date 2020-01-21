@@ -10,6 +10,8 @@
 ## Unreleased
 
 * Update govuk-frontend to 3.5.0 ([#1262](https://github.com/alphagov/govuk_publishing_components/pull/1262))
+* Change the dataset schema description ([#1260](https://github.com/alphagov/govuk_publishing_components/pull/1260))
+
 
 ## 21.20.0
 
