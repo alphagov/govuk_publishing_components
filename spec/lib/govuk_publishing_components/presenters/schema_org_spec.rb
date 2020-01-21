@@ -55,7 +55,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "statistical_data_set") do |random_item|
         random_item.merge(
           "details" => {
-            "body" => "Dataset body",
+            "body" => "Dataset body" + ("a" * 5001),
             "political": false,
               "government": {
               "title": "Government title",
@@ -75,7 +75,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
 
       expect(structured_data['@type']).to eql("Dataset")
       expect(structured_data['name']).to eql("Dataset Title")
-      expect(structured_data['description']).to eql("Dataset description")
+      expect(structured_data['description'].length).to eql(5000)
     end
 
     context "schema.org GovernmentService" do

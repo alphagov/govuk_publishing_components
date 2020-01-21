@@ -20,7 +20,7 @@ module GovukPublishingComponents
 
       def description
         {
-          "description" => page.description || page.body
+          "description" => (page.body || page.description).slice(0..4999)
         }
       end
 
