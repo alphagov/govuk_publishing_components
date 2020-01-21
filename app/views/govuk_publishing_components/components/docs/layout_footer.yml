@@ -140,3 +140,10 @@ examples:
               attributes:
                 data:
                   tracking: GTM-123AB
+      meta:
+        items:
+          - href: '/cymraeg'
+            text: Rhestr o Wasanaethau Cymraeg
+            attributes:
+              lang: en
+              hreflang: en

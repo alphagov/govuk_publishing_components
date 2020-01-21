@@ -40,9 +40,11 @@
           <ul class="govuk-footer__inline-list">
             <% meta[:items].each do |item| %>
               <li class="govuk-footer__inline-list-item">
-                <a class="govuk-footer__link" href="<%= item[:href] %>">
-                  <%= item[:text] %>
-                </a>
+                <%
+                  attributes = { class: "govuk-footer__link" }.merge(item.fetch(:attributes, {}))
+                  attributes[:rel] = "noopener" if attributes[:target] == "_blank" && !attributes[:rel]
+                %>
+                <%= link_to item[:text], item[:href], attributes %>
               </li>
             <% end %>
           </ul>

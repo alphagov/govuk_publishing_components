@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Update govuk-frontend to 3.5.0 ([#1262](https://github.com/alphagov/govuk_publishing_components/pull/1262))
+* Add attribute parameter to meta links in layout footer component ([#1261](https://github.com/alphagov/govuk_publishing_components/pull/1261))
 * Change the dataset schema description ([#1260](https://github.com/alphagov/govuk_publishing_components/pull/1260))
 
 
