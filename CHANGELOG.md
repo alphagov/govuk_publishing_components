@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.21.0
 
 * Update govuk-frontend to 3.5.0 ([#1262](https://github.com/alphagov/govuk_publishing_components/pull/1262))
 * Add attribute parameter to meta links in layout footer component ([#1261](https://github.com/alphagov/govuk_publishing_components/pull/1261))
