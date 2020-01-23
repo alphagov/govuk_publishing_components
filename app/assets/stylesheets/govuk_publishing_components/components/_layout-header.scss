@@ -31,7 +31,6 @@
 .gem-c-layout-header__logo,
 .gem-c-layout-header__search {
   padding: 0;
-  margin-bottom: govuk-spacing(2);
 
   @include govuk-media-query($until: "tablet") {
     margin-bottom: 0;
@@ -40,6 +39,8 @@
 
 .gem-c-header__logo {
   white-space: nowrap;
+  margin-top: govuk-spacing(1);
+  margin-bottom: govuk-spacing(3);
 }
 
 .gem-c-header__content {
