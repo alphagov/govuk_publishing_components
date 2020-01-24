@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove limits on showing >5 step by step navigation sidebar elements ([#1267](https://github.com/alphagov/govuk_publishing_components/pull/1267))
+
 ## 21.21.1
 
 * Update the text for the Transition contextual sidebar link ([#1264](https://github.com/alphagov/govuk_publishing_components/pull/1264))

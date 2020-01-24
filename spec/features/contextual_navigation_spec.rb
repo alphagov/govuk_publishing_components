@@ -8,17 +8,10 @@ describe "Contextual navigation" do
     and_the_step_by_step_header
   end
 
-  scenario "There's between 2-5 step by step lists" do
+  scenario "There's more than one step by step" do
     given_theres_are_two_step_by_step_lists
     and_i_visit_that_page
     then_i_just_see_the_step_by_step_related_links
-    and_no_step_by_step_header
-  end
-
-  scenario "There's 6 or more step by step lists" do
-    given_theres_are_six_step_by_step_lists
-    and_i_visit_that_page
-    then_theres_no_step_by_step_at_all
     and_no_step_by_step_header
   end
 
@@ -71,17 +64,10 @@ describe "Contextual navigation" do
     and_the_step_by_step_header
   end
 
-  scenario "There's between 2-5 secondary step by step lists and no primary step by step list" do
+  scenario "There's more than one secondary step by step list and no primary step by step list" do
     given_there_are_two_secondary_step_by_step_lists
     and_i_visit_that_page
     then_i_just_see_the_step_by_step_related_links
-  end
-
-  scenario "There's 6 or more secondary step by step lists and no primary step by step list" do
-    given_there_are_six_secondary_step_by_step_lists
-    and_i_visit_that_page
-    then_theres_no_step_by_step_at_all
-    and_no_step_by_step_header
   end
 
   scenario "There's 3 secondary step by steps and 2 primary step by step lists" do
@@ -143,20 +129,12 @@ describe "Contextual navigation" do
     content_store_has_random_item(links: { part_of_step_navs: part_of_step_navs })
   end
 
-  def given_theres_are_six_step_by_step_lists
-    content_store_has_random_item(links: { part_of_step_navs: 6.times.map { random_step_nav_item("step_by_step_nav") } })
-  end
-
   def given_theres_a_page_with_a_secondary_step_by_step
     content_store_has_random_item(links: { secondary_to_step_navs: [random_step_nav_item("step_by_step_nav")] })
   end
 
   def given_there_are_two_secondary_step_by_step_lists
     content_store_has_random_item(links: { secondary_to_step_navs: 2.times.map { random_step_nav_item("step_by_step_nav") } })
-  end
-
-  def given_there_are_six_secondary_step_by_step_lists
-    content_store_has_random_item(links: { secondary_to_step_navs: 6.times.map { random_step_nav_item("step_by_step_nav") } })
   end
 
   def given_there_are_three_secondary_step_by_steps_and_two_primary_to_step_navs

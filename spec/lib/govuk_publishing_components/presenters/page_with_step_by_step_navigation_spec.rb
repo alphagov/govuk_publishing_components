@@ -255,7 +255,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
         expect(step_nav_links.step_navs.count).to eq(6)
 
         expect(step_nav_links.show_header?).to be false
-        expect(step_nav_links.show_related_links?).to be false
+        expect(step_nav_links.show_related_links?).to be true
         expect(step_nav_links.show_sidebar?).to be false
       end
     end
@@ -575,31 +575,6 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
           expect(step_nav_links.show_sidebar?).to be false
         end
       end
-
-      context "for a content item with many `secondary_to_step_navs` links" do
-        let(:content_store_response) do
-          {
-            "title" => "Book a session in the vomit comet",
-            "document_type" => "transaction",
-            "links" => {
-              "secondary_to_step_navs" => Array.new(6, step_nav),
-            }
-          }
-        end
-
-        it "parses the content item" do
-          step_nav_links = described_class.new(content_store_response, '/vomit-comet-session')
-
-          expect(step_nav_links.step_navs.count).to eq(0)
-          expect(step_nav_links.secondary_step_by_steps.count).to eq(6)
-
-          expect(step_nav_links.show_secondary_step_by_step?).to be false
-          expect(step_nav_links.show_related_links_for_secondary_step_by_steps?).to be false
-          expect(step_nav_links.show_header?).to be false
-          expect(step_nav_links.show_related_links?).to be false
-          expect(step_nav_links.show_sidebar?).to be false
-        end
-      end
     end
 
     context "secondary step by steps with primary step by steps" do
@@ -807,32 +782,6 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
           expect(step_nav_links.show_sidebar?).to be false
         end
       end
-
-      context "for a content item with many `secondary_to_step_navs` links and many `part_of_step_navs` link" do
-        let(:content_store_response) do
-          {
-            "title" => "Book a session in the vomit comet",
-            "document_type" => "transaction",
-            "links" => {
-              "part_of_step_navs" => Array.new(6, primary_step_nav),
-              "secondary_to_step_navs" => Array.new(6, step_nav),
-            }
-          }
-        end
-
-        it "parses the content item" do
-          step_nav_links = described_class.new(content_store_response, '/vomit-comet-session')
-
-          expect(step_nav_links.step_navs.count).to eq(6)
-          expect(step_nav_links.secondary_step_by_steps.count).to eq(6)
-
-          expect(step_nav_links.show_secondary_step_by_step?).to be false
-          expect(step_nav_links.show_related_links_for_secondary_step_by_steps?).to be false
-          expect(step_nav_links.show_header?).to be false
-          expect(step_nav_links.show_related_links?).to be false
-          expect(step_nav_links.show_sidebar?).to be false
-        end
-      end
     end
 
     context "secondary step by steps with related to step by steps" do
@@ -950,33 +899,6 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
           expect(step_nav_links.step_navs.count).to eq(0)
           expect(step_nav_links.secondary_step_by_steps.count).to eq(2)
           expect(step_nav_links.related_to_step_navs.count).to eq(2)
-
-          expect(step_nav_links.show_secondary_step_by_step?).to be false
-          expect(step_nav_links.show_related_links_for_secondary_step_by_steps?).to be false
-          expect(step_nav_links.show_header?).to be false
-          expect(step_nav_links.show_related_links?).to be false
-          expect(step_nav_links.show_sidebar?).to be false
-        end
-      end
-
-      context "for a content item with many `secondary_to_step_navs` links and many `related_to_step_navs` link" do
-        let(:content_store_response) do
-          {
-            "title" => "Book a session in the vomit comet",
-            "document_type" => "transaction",
-            "links" => {
-              "related_to_step_navs" => Array.new(6, related_to_step_nav),
-              "secondary_to_step_navs" => Array.new(6, step_nav),
-            }
-          }
-        end
-
-        it "parses the content item" do
-          step_nav_links = described_class.new(content_store_response, '/vomit-comet-session')
-
-          expect(step_nav_links.step_navs.count).to eq(0)
-          expect(step_nav_links.secondary_step_by_steps.count).to eq(6)
-          expect(step_nav_links.related_to_step_navs.count).to eq(6)
 
           expect(step_nav_links.show_secondary_step_by_step?).to be false
           expect(step_nav_links.show_related_links_for_secondary_step_by_steps?).to be false
