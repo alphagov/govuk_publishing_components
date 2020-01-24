@@ -38,7 +38,7 @@ module GovukPublishingComponents
       def show_related_links?
         if active_step_by_step?
           true
-        elsif step_navs.any? && step_navs.count < 5
+        elsif step_navs.any?
           true
         elsif show_related_links_for_secondary_step_by_steps?
           true
@@ -119,7 +119,7 @@ module GovukPublishingComponents
       end
 
       def show_related_links_for_secondary_step_by_steps?
-        !primary_step_by_steps? && secondary_step_by_step? && secondary_step_by_steps.count < 5
+        !primary_step_by_steps? && secondary_step_by_step?
       end
 
     private
