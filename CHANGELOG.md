@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 21.21.1
+
+* Update the text for the Transition contextual sidebar link ([#1264](https://github.com/alphagov/govuk_publishing_components/pull/1264))
+
 ## 21.21.0
 
 * Update govuk-frontend to 3.5.0 ([#1262](https://github.com/alphagov/govuk_publishing_components/pull/1262))
