@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    govuk_publishing_components (21.21.0)
+    govuk_publishing_components (21.21.1)
       gds-api-adapters
       govuk_app_config
       kramdown
@@ -100,9 +100,9 @@ GEM
       rubocop (~> 0.64)
       rubocop-rspec (~> 1.28)
       scss_lint
-    govuk_app_config (2.0.1)
+    govuk_app_config (2.0.2)
       logstasher (>= 1.2.2, < 1.4.0)
-      sentry-raven (>= 2.7.1, < 2.12.0)
+      sentry-raven (>= 2.7.1, < 2.14.0)
       statsd-ruby (~> 1.4.0)
       unicorn (>= 5.4, < 5.6)
     govuk_schemas (3.2.0)
@@ -259,7 +259,7 @@ GEM
     selenium-webdriver (3.142.3)
       childprocess (>= 0.5, < 2.0)
       rubyzip (~> 1.2, >= 1.2.2)
-    sentry-raven (2.11.3)
+    sentry-raven (2.13.0)
       faraday (>= 0.7.6, < 1.0)
     sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
