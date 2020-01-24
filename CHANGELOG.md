@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.21.2
 
 * Remove limits on showing >5 step by step navigation sidebar elements ([#1267](https://github.com/alphagov/govuk_publishing_components/pull/1267))
 
