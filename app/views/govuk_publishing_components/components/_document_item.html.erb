@@ -1,0 +1,77 @@
+<%
+  brand ||= false
+  brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
+  within_list ||= false
+  within_multitype_list ||= false
+
+  classes = "gem-c-document-item "
+  classes << "gem-c-document-item--multi-list" if within_multitype_list
+  classes << "gem-c-document-item--highlight" if item[:highlight]
+  classes << brand_helper.brand_class if brand
+
+  title_classes = "gem-c-document-item__title "
+  title_classes << "gem-c-document-item__title--context" if item[:link][:context]
+  title_classes << brand_helper.color_class if brand
+%>
+
+<% if within_list %>
+  <li class="<%= classes %>">
+<% else %>
+  <div class="<%= classes %>">
+<% end %>
+
+  <% if item[:highlight] && item[:highlight_text] %>
+    <p class='gem-c-document-item__highlight-text'><%= item[:highlight_text] %></p>
+  <% end %>
+
+  <%=
+    if item[:link][:path]
+      link_to(
+        item[:link][:text],
+        item[:link][:path],
+        data: item[:link][:data_attributes],
+        class: "#{title_classes} gem-c-document-item__link",
+      )
+    else
+      content_tag(
+        "span",
+        item[:link][:text],
+        data: item[:link][:data_attributes],
+        class: title_classes,
+      )
+    end
+  %>
+
+  <% if item[:link][:context] %>
+    <span class="gem-c-document-item__context"><%= item[:link][:context] %></span>
+  <% end %>
+
+  <% if item[:link][:description] %>
+    <p class="gem-c-document-item__description" ><%= item[:link][:description] %></p>
+  <% end %>
+
+  <% if item[:metadata] %>
+    <ul class="gem-c-document-item__metadata">
+      <% item[:metadata].compact.each do |item_metadata_key, item_metadata_value| %>
+        <li class="gem-c-document-item__attribute">
+          <% if item_metadata_key.to_s.eql?("public_updated_at") %>
+            <time datetime="<%= item_metadata_value.iso8601 %>">
+              <%= l(item_metadata_value, format: '%e %B %Y') %>
+            </time>
+          <% else %>
+            <%= item_metadata_value %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <% if item[:subtext] %>
+    <p class="gem-c-document-item__subtext"><%= item[:subtext] %></p>
+  <% end %>
+
+<% if within_list %>
+  </li>
+<% else %>
+  </div>
+<% end %>

@@ -5,103 +5,10 @@
   padding: 0;
 }
 
-.gem-c-document-list__item {
-  overflow: hidden;
-  margin-bottom: govuk-spacing(4);
-  padding-bottom: govuk-spacing(4);
-  border-bottom: 1px solid $govuk-border-colour;
-  list-style: none;
-
-  &:last-child {
-    border-bottom: 0;
-  }
-}
-
-.gem-c-document-list__item-title {
-  @include govuk-font($size: 19, $weight: bold);
-  display: inline-block;
-}
-
-.gem-c-document-list__item-link {
-  @include govuk-link-common;
-  @include govuk-link-style-default;
-}
-
-.gem-c-document-list--no-underline {
-  .gem-c-document-list__item-title {
-    text-decoration: none;
-  }
-}
-
-.gem-c-document-list__item-title--context {
-  margin-right: govuk-spacing(2);
-
-  .direction-rtl & {
-    margin-right: 0;
-    margin-left: govuk-spacing(2);
-  }
-}
-
-.gem-c-document-list__item-context {
-  color: govuk-colour("dark-grey", $legacy: "grey-1");
-}
-
-.gem-c-document-list__item-description {
-  @include govuk-text-colour;
-  margin: govuk-spacing(1) 0;
-}
-
-.gem-c-document-list__subtext {
-  margin: govuk-spacing(1) 0 0 0;
-}
-
-.gem-c-document-list__item-description,
-.gem-c-document-list__subtext {
-  @include govuk-font($size: 16, $line-height: 1.5);
-}
-
-.gem-c-document-list__item-metadata {
-  padding: 0;
-}
-
-.gem-c-document-list__attribute {
-  @include govuk-text-colour;
-  @include govuk-font(14);
-  display: inline-block;
-  list-style: none;
-  padding-right: govuk-spacing(4);
-
-  .direction-rtl & {
-    padding-right: 0;
-    padding-left: govuk-spacing(4);
-  }
-}
-
 .gem-c-document-list--bottom-margin {
   margin-bottom: govuk-spacing(4);
 }
 
 .gem-c-document-list--top-margin {
   margin-top: govuk-spacing(4);
-}
-
-.gem-c-document-list__multi-list {
-  width: 100%;
-  margin-right: 25px;
-}
-
-.gem-c-document-list__item--highlight {
-  border: 1px solid govuk-colour("mid-grey", $legacy: "grey-2");
-  padding: govuk-spacing(6);
-  margin-bottom: govuk-spacing(6);
-
-  .gem-c-document-list__item-title {
-    @include govuk-font(24, bold);
-  }
-}
-
-.gem-c-document-list__highlight-text {
-  @include govuk-font(16, bold);
-  margin: 0 0 govuk-spacing(3) 0;
-
 }

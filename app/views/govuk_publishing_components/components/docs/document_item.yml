@@ -1,0 +1,142 @@
+name: Document item
+description: A document item including a link, description and metadata
+body: |
+  Outputs a document that may include:
+
+  * document title
+  * link to the document
+  * last updated date object
+  * document type
+
+  This component is used in the [document_list component](/component-guide/document_list).
+
+shared_accessibility_criteria:
+  - link
+examples:
+  default:
+    data:
+      item:
+        link:
+          text: 'Alternative provision'
+          path: '/government/publications/alternative-provision'
+        metadata:
+          public_updated_at: 2016-06-27 10:29:44
+          document_type: 'Statutory guidance'
+  without_links:
+    data:
+      item:
+        link:
+          text: 'Alternative provision'
+        metadata:
+          public_updated_at: 2016-06-27 10:29:44
+          document_type: 'Statutory guidance'
+  with_data_attributes_on_links:
+    data:
+      item:
+        link:
+          text: 'School behaviour and attendance: parental responsibility measures'
+          path: '/government/publications/parental-responsibility-measures-for-behaviour-and-attendance'
+          data_attributes:
+            track_category: 'navDocumentCollectionLinkClicked'
+            track_action: 1.1
+            track_label: '/government/publications/parental-responsibility-measures-for-behaviour-and-attendance'
+            track_options:
+              dimension28: 2
+              dimension29: 'School behaviour and attendance: parental responsibility measures'
+        metadata:
+          public_updated_at: 2017-01-05 14:50:33
+          document_type: 'Statutory guidance'
+  with_description:
+    description: Documents can be passed to the component with a description. This is for use on topic pages, to display lists of mainstream services.
+    data:
+      item:
+        link:
+          text: 'Become an apprentice'
+          path: '/become-an-apprentice'
+          description: 'Becoming an apprentice - what to expect, apprenticeship levels, pay and training, making an application, complaining about an apprenticeship.'
+  with_description_and_metadata:
+    data:
+      item:
+        link:
+          text: 'School behaviour and attendance: parental responsibility measures'
+          path: '/government/publications/parental-responsibility-measures-for-behaviour-and-attendance'
+          description: 'The responsibilities parents have relating to school behaviour and attendance.'
+        metadata:
+          public_updated_at: 2017-01-05 14:50:33
+          document_type: 'Statutory guidance'
+  with_branding:
+    description: Where this component could be used on an organisation page (such as the [Attorney General's Office](https://www.gov.uk/government/organisations/attorney-generals-office)) branding can be applied for link colours and border colours. See the [branding documentation](https://github.com/alphagov/govuk_publishing_components/blob/master/docs/component_branding.md) for more details.
+    data:
+      brand: 'attorney-generals-office'
+      item:
+        link:
+          text: 'School behaviour and attendance: parental responsibility measures'
+          path: '/government/publications/parental-responsibility-measures-for-behaviour-and-attendance'
+        metadata:
+          public_updated_at: 2017-01-05 14:50:33
+          document_type: 'Statutory guidance'
+  with_only_link:
+    data:
+      item:
+        link:
+          text: 'School behaviour and attendance: parental responsibility measures'
+          path: '/government/publications/parental-responsibility-measures-for-behaviour-and-attendance'
+  with_context:
+    description: Context can be provided to render next to the item title.
+    data:
+      item:
+        link:
+          text: 'Forestry Commission'
+          path: '/government/organisations/forestry-commission'
+          context: 'separate website'
+  with_subtext:
+    description: This is used on finders to highlight search results from past governments.
+    data:
+      item:
+        link:
+          text: 'Department for Education – Statistics at DfE'
+          path: '/government/organisations/department-for-education/about/statistics'
+          description: 'The Department for Education publishes official statistics on education and children.'
+        metadata:
+          public_updated_at: 2017-07-19 15:01:48
+          document_type: 'Corporate information'
+        subtext: 'First published during the 2007 Labour Government'
+  without_underline:
+    description: The current search design does not include underlines on links and has been tested without underlines. Other uses will require further user testing.
+    data:
+      remove_underline: true
+      item:
+        link:
+          text: 'Department for Education – Statistics at DfE'
+          path: '/government/organisations/department-for-education/about/statistics'
+          description: 'The Department for Education publishes official statistics on education and children.'
+        metadata:
+          public_updated_at: 2017-07-19 15:01:48
+          document_type: 'Corporate information'
+        subtext: 'First published during the 2007 Labour Government'
+  highlighted_result:
+    description: Highlight one or more of the item in the list. This is used on finders to provide a 'top result' for a search. The `highlight_text` parameter is optional.
+    data:
+      item:
+        link:
+          text: 'Department for Education – Statistics at DfE'
+          path: '/government/organisations/department-for-education/about/statistics'
+          description: 'The Department for Education publishes official statistics on education and children.'
+        metadata:
+          public_updated_at: 2017-07-19 15:01:48
+          document_type: 'Corporate information'
+        subtext: 'First published during the 2007 Labour Government'
+        highlight: true
+        highlight_text: 'Most relevant result'
+  right_to_left:
+    data:
+      item:
+        link:
+          text: 'School behaviour and attendance: parental responsibility measures'
+          path: '/government/publications/parental-responsibility-measures-for-behaviour-and-attendance'
+          description: "Statutory guidance for schools, local authorities and the police on dealing with poor attendance and behaviour in school"
+        metadata:
+          public_updated_at: 2017-01-05 14:50:33
+          document_type: 'Statutory guidance'
+      context:
+        right_to_left: true
