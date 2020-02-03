@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.22.0
 
 * Add cookie category lookup function ([#1272](https://github.com/alphagov/govuk_publishing_components/pull/1272))
 * Fix a world location link for 'UK mission in the European Union' ([#1274](https://github.com/alphagov/govuk_publishing_components/pull/1274))
