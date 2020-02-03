@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add cookie category lookup function ([#1272](https://github.com/alphagov/govuk_publishing_components/pull/1272))
+
 ## 21.21.3
 
 * Increase margin between related step by step links and adjust font weight ([#1269](https://github.com/alphagov/govuk_publishing_components/pull/1269))
