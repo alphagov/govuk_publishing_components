@@ -193,6 +193,10 @@
     return null
   }
 
+  window.GOVUK.getCookieCategory = function (cookie) {
+    return COOKIE_CATEGORIES[cookie]
+  }
+
   window.GOVUK.deleteCookie = function (cookie) {
     window.GOVUK.cookie(cookie, null)
 
