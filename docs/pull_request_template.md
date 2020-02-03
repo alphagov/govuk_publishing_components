@@ -7,8 +7,3 @@
 
 ## Visual Changes
 <!-- If the change results in visual changes, show a before and after -->
-
-<!--
-## View Changes
-https://govuk-publishing-compo-pr-[PR-NUMBER].herokuapp.com/
--->
