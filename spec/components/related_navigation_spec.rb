@@ -78,6 +78,15 @@ describe "Related navigation", type: :view do
     assert_select ".gem-c-related-navigation__section-link[href=\"/world/usa/news\"]", text: 'USA'
   end
 
+  it "renders world locations section when passed special case world location items" do
+    content_item = {}
+    content_item["links"] = construct_links("world_locations", nil, "UK Mission to the European Union")
+    render_component(content_item: content_item)
+
+    assert_select ".gem-c-related-navigation__sub-heading", text: 'World locations'
+    assert_select ".gem-c-related-navigation__section-link[href=\"/world/uk-mission-to-the-eu/news\"]", text: 'UK Mission to the European Union'
+  end
+
   it "renders collection section when passed collection items" do
     content_item = {}
     content_item["links"] = construct_links(
