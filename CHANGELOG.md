@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Make maxlength or maxwords required ([#1276](https://github.com/alphagov/govuk_publishing_components/pull/1276))
+
 ## 21.22.0
 
 * Add cookie category lookup function ([#1272](https://github.com/alphagov/govuk_publishing_components/pull/1272))
