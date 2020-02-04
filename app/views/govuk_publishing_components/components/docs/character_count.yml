@@ -51,3 +51,11 @@ examples:
           text: "Can you provide more detail?"
         name: "more-detail-value"
       maxwords: 10
+  with_threshold:
+    data:
+      textarea:
+        label:
+          text: "Can you provide more detail?"
+        name: "more-detail-with-threshold"
+      threshold: 75
+      maxlength: 20
