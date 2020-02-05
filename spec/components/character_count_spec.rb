@@ -5,6 +5,10 @@ describe "Character count", type: :view do
     "character_count"
   end
 
+  it "fails to render if maxlength or maxwords are not passed" do
+    assert_empty render_component({})
+  end
+
   it "renders character count with textarea" do
     render_component(
       name: "character-count",
@@ -14,8 +18,8 @@ describe "Character count", type: :view do
       },
       data: {
         module: "character-count",
-        maxlength: "100",
-      }
+      },
+      maxlength: "100"
     )
 
     assert_select ".govuk-character-count .govuk-textarea"
