@@ -60,4 +60,10 @@ describe "Layout header", type: :view do
 
     assert_select ".gem-c-layout-header .gem-c-search"
   end
+
+  it "renders the search bar on the left when requested" do
+    render_component(environment: 'public', search: true, search_left: true)
+
+    assert_select ".gem-c-layout-header--search-left"
+  end
 end
