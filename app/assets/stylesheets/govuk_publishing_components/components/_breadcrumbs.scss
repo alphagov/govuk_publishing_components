@@ -1,4 +1,5 @@
 @import "govuk/components/breadcrumbs/breadcrumbs";
+@import "mixins/chevron";
 
 .gem-c-breadcrumbs--inverse.govuk-breadcrumbs--collapse-on-mobile .govuk-breadcrumbs__list-item .govuk-breadcrumbs__link {
   &:link,
@@ -26,87 +27,27 @@
   margin-left: 0;
   padding-left: 0;
   margin-right: 20px;
+  @include chevron($direction: "right", $color: govuk-colour("dark-grey"));
 
-  &:before {
+  &:before,
+  &:last-of-type:after {
     display: none;
   }
 
-  &:after {
-    content: "";
-    display: inline-block;
-    position: relative;
-    top: -1px;
-    bottom: 1px;
-    right: -7px;
-    width: 7px;
-    height: 7px;
-    margin: auto 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-    border: solid;
-    border-width: 1px 1px 0 0;
-    border-color: govuk-colour("dark-grey");
-  }
-
-  &:last-of-type {
-    &:after {
-      display: none;
-    }
-  }
-
   @include govuk-media-query($until: tablet) {
+    display: none;
     margin-bottom: 0;
-
-    @include govuk-visually-hidden($important: false);
-    padding-top: 14px;
-    padding-bottom: 14px;
-    padding-left: 10px;
+    padding: 14px 0;
 
     &:last-of-type {
-      margin-bottom: inherit;
-      position: inherit;
-      width: inherit;
-      height: inherit;
-      margin: inherit;
-      padding: inherit;
-      overflow: inherit;
-      clip: inherit;
-      -webkit-clip-path: inherit;
-      clip-path: inherit;
-      border: inherit;
-      white-space: inherit;
-      padding-top: 14px;
-      padding-bottom: 14px;
-      padding-left: 20px;
-      max-width: 75%;
-
-      &:after {
-        display: none;
-      }
-
-      .govuk-breadcrumbs__link {
-        display: inline-block;
-        margin-left: 0;
-        vertical-align: text-top;
-      }
+      display: inline-block;
+      padding-left: 0;
+      margin-right: 0;
+      max-width: calc(80% - 14px);
     }
 
     &:first-of-type {
-      margin-bottom: inherit;
-      position: inherit;
-      width: inherit;
-      height: inherit;
-      margin: inherit;
-      padding: inherit;
-      overflow: inherit;
-      clip: inherit;
-      -webkit-clip-path: inherit;
-      clip-path: inherit;
-      border: inherit;
-      white-space: inherit;
-      padding-top: 14px;
-      padding-bottom: 14px;
+      display: inline-block;
       padding-left: 0;
     }
 
