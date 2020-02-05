@@ -1,0 +1,37 @@
+// An angled chevron
+// $direction - direction the chevron will point to: up, down, left, margin-right
+// $color - color of the chevron
+
+@mixin chevron($direction, $color) {
+
+  $angle: 45deg !default;
+
+  &:after {
+    content: "";
+    display: inline-block;
+    position: relative;
+    top: -1px;
+    bottom: 1px;
+    right: -7px;
+    width: 7px;
+    height: 7px;
+    margin: auto 0;
+    @if $direction == "up" {
+      $angle: 315deg;
+    } @else if $direction == "down" {
+      $angle: 135deg;
+    } @else if $direction == "left" {
+      $angle: 225deg;
+    } @else if $direction == "right" {
+      $angle: 45deg;
+    }
+
+    -webkit-transform: rotate($angle);
+    -ms-transform: rotate($angle);
+    transform: rotate($angle);
+
+    border: solid;
+    border-width: 1px 1px 0 0;
+    border-color: $color;
+  }
+ }
