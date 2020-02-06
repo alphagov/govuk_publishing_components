@@ -8,25 +8,11 @@ $large-input-size: 50px;
 
 .gem-c-search__label {
   @include govuk-font($size: 19, $line-height: $input-size);
-  display: block;
+  color: $govuk-secondary-text-colour;
 
   h1 {
     @include govuk-font($size: 19, $line-height: $input-size);
     margin: 0;
-  }
-
-  .js-enabled & {
-    position: absolute;
-    left: govuk-spacing(3);
-    top: 1px;
-    z-index: 1;
-    color: $govuk-secondary-text-colour;
-  }
-
-  // match label colour with the label component colour
-  // when javascript is enabled and inline_label option  is set to false
-  .js-enabled .gem-c-search--separate-label & {
-    color: $govuk-text-colour;
   }
 }
 
@@ -148,12 +134,6 @@ $large-input-size: 50px;
       background-color: lighten(govuk-colour("black"), 5%);
     }
   }
-
-  .js-enabled & {
-    .gem-c-search__label {
-      color: $govuk-secondary-text-colour;
-    }
-  }
 }
 
 .gem-c-search--on-white {
@@ -198,9 +178,3 @@ $large-input-size: 50px;
   }
 }
 
-.gem-c-search--separate-label {
-  .gem-c-search__label {
-    position: relative;
-    left: auto;
-  }
-}
