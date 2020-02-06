@@ -12,7 +12,7 @@
   aria_controls ||= nil
 %>
 
-<div class="gem-c-search <%= class_name %>" data-module="gem-toggle-input-class-on-focus">
+<div class="gem-c-search <%= class_name %>">
   <label for="<%= id %>" class="gem-c-search__label">
     <%= label_text %>
   </label>
@@ -20,7 +20,7 @@
     <input type="search" value="<%= value %>"
       id="<%= id %>" name="<%= name %>" title="Search"
       aria-controls="<%= aria_controls %>"
-      class="gem-c-search__item gem-c-search__input js-class-toggle">
+      class="gem-c-search__item gem-c-search__input">
     <div class="gem-c-search__item gem-c-search__submit-wrapper">
       <button type="submit" class="gem-c-search__submit">Search</button>
     </div>
