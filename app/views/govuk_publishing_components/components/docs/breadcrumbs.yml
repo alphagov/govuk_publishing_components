@@ -69,14 +69,3 @@ examples:
         url: '/browse/abroad'
       - title: 'Travel abroad'
         url: '/browse/abroad/travel-abroad'
-  Expand_on_mobile:
-    description: This shows all elements of the breadcrumb on a mobile device in portrait orientation, not collpased and shown in entirety
-    data:
-      collapse_on_mobile: false
-      breadcrumbs:
-      - title: 'Home'
-        url: '/'
-      - title: 'Education, training and skills'
-        url: '/education'
-        is_page_parent: true
-      - title: 'Education of disadvantaged children'
