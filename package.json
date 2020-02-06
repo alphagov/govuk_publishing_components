@@ -13,6 +13,7 @@
     ]
   },
   "dependencies": {
+    "accessible-autocomplete": "git://github.com/kevindew/accessible-autocomplete.git",
     "axe-core": "^3.4.1",
     "govuk-frontend": "^3.5.0",
     "jquery": "1.12.4"
