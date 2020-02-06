@@ -1,25 +1,28 @@
 <%
+  inline_label ||= true unless local_assigns.include?(:inline_label)
   class_name = "gem-c-search--on-white"
   class_name = "gem-c-search--on-govuk-blue" if local_assigns.include?(:on_govuk_blue)
   size ||= ""
   class_name = "#{class_name} gem-c-search--large" if size == 'large'
-  class_name = "#{class_name} gem-c-search--separate-label" if local_assigns.include?(:inline_label)
+  label_class_name = "govuk-visually-hidden" if inline_label
 
   value ||= ""
   id ||= "search-main-" + SecureRandom.hex(4)
   label_text ||= "Search GOV.UK"
+  placeholder_text ||= label_text if inline_label
   name ||= 'q'
   aria_controls ||= nil
 %>
 
 <div class="gem-c-search <%= class_name %>">
-  <label for="<%= id %>" class="gem-c-search__label">
+  <label for="<%= id %>" class="gem-c-search__label <%= label_class_name %>">
     <%= label_text %>
   </label>
   <div class="gem-c-search__item-wrapper">
     <input type="search" value="<%= value %>"
       id="<%= id %>" name="<%= name %>" title="Search"
       aria-controls="<%= aria_controls %>"
+      placeholder="<%= placeholder_text %>"
       class="gem-c-search__item gem-c-search__input">
     <div class="gem-c-search__item gem-c-search__submit-wrapper">
       <button type="submit" class="gem-c-search__submit">Search</button>
