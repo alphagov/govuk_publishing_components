@@ -1,11 +1,11 @@
 <%
   breadcrumbs ||= []
-  collapse_on_mobile ||= true
   inverse ||= false
-  collapse_class =  collapse_on_mobile ? "govuk-breadcrumbs--collapse-on-mobile" : ""
+  collapse_class = defined?(collapse_on_mobile) && collapse_on_mobile == false ?  "" : "govuk-breadcrumbs--collapse-on-mobile"
   invert_class = inverse ? "gem-c-breadcrumbs--inverse" : ""
   breadcrumb_presenter = GovukPublishingComponents::Presenters::Breadcrumbs.new(breadcrumbs, request.path)
 %>
+
 <script type="application/ld+json">
   <%= raw breadcrumb_presenter.structured_data.to_json %>
 </script>
