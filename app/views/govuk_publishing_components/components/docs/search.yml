@@ -16,6 +16,9 @@ accessibility_criteria: |
 examples:
   default:
     data: {}
+  with_input_value_and_inline_label:
+    data:
+      value: "driving licence"
   apply_custom_styling_to_the_label_and_set_search_value:
     data:
       inline_label: false
