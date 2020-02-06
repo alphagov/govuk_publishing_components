@@ -1,7 +1,7 @@
 @import "govuk/components/breadcrumbs/breadcrumbs";
 @import "mixins/chevron";
 
-.gem-c-breadcrumbs--inverse.govuk-breadcrumbs--collapse-on-mobile .govuk-breadcrumbs__list-item .govuk-breadcrumbs__link {
+.gem-c-breadcrumbs--inverse .govuk-breadcrumbs__list-item .govuk-breadcrumbs__link {
   &:link,
   &:visited,
   &:hover,
@@ -14,16 +14,15 @@
   }
 }
 
-.gem-c-breadcrumbs--inverse.govuk-breadcrumbs--collapse-on-mobile .govuk-breadcrumbs__list-item {
+.gem-c-breadcrumbs--inverse .govuk-breadcrumbs__list-item {
   color: govuk-colour("white");
 }
 
-.gem-c-breadcrumbs--inverse.govuk-breadcrumbs--collapse-on-mobile .govuk-breadcrumbs__list-item:after {
+.gem-c-breadcrumbs--inverse .govuk-breadcrumbs__list-item:after {
   border-color: govuk-colour("white");
 }
 
-.govuk-breadcrumbs--collapse-on-mobile .govuk-breadcrumbs__list-item {
-
+.govuk-breadcrumbs .govuk-breadcrumbs__list-item {
   margin-left: 0;
   padding-left: 0;
   margin-right: 20px;
@@ -43,7 +42,7 @@
       display: inline-block;
       padding-left: 0;
       margin-right: 0;
-      max-width: calc(80% - 14px);
+      max-width: 76%;
     }
 
     &:first-of-type {
