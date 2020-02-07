@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Update govspeak button styles ([PR #1282](https://github.com/alphagov/govuk_publishing_components/pull/1282))
 * Make maxlength or maxwords required ([#1276](https://github.com/alphagov/govuk_publishing_components/pull/1276))
 
 ## 21.22.0
