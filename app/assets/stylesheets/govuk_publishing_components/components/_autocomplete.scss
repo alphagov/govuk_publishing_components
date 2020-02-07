@@ -121,3 +121,7 @@ $app-focus-colour: $govuk-focus-colour;
     }
   }
 }
+
+.autocomplete__menu--visible {
+  padding-top: govuk-spacing(1);
+}
