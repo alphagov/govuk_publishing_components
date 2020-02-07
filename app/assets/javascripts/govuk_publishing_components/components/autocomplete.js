@@ -154,10 +154,13 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   Autocomplete.prototype.initAutoCompleteSelect = function ($select) {
+    var showAllValues = $select.getAttribute("data-show-values")
+
     // disabled eslint because we can not control the name of the constructor (expected to be EnhanceSelectElement)
     new window.accessibleAutocomplete.enhanceSelectElement({ // eslint-disable-line no-new, new-cap
       selectElement: $select,
       minLength: 3,
+      showAllValues: showAllValues,
       showNoOptionsFound: true
     })
   }

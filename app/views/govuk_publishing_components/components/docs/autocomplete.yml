@@ -185,3 +185,25 @@ examples:
           - France
           - Germany
           - United Kingdom
+  autocomplete_show_values_on_focus:
+    description: |
+      A select where all values are shown on focus
+    data:
+      id: autocomplete-showvaluesonfocus
+      name: autocomplete-showvaluesonfocus
+      label:
+        text: Search
+      show_values_on_focus: true
+      select:
+        options:
+          -
+            -
+          -
+            - France
+            - fr
+          -
+            - Germany
+            - de
+          -
+            - United Kingdom
+            - uk

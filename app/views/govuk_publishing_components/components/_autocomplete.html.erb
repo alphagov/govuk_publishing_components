@@ -8,6 +8,7 @@
   aria = error_id if error_items.any?
   data_attributes ||= {}
   select ||= {}
+  show_values_on_focus ||= false
   input ||= {}
   search ||= false
   search_with_label ||= false
@@ -48,6 +49,7 @@
       options_for_select(select[:options], select[:selected]),
       id: id,
       class: "govuk-select",
+      "data-show-values": show_values_on_focus,
       size: select[:size],
       multiple: select[:multiple]
     %>
