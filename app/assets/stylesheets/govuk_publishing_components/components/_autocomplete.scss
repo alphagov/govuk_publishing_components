@@ -1,0 +1,123 @@
+@import url(asset-path("accessible-autocomplete/dist/accessible-autocomplete.min.css"));
+
+$app-focus-colour: $govuk-focus-colour;
+
+.app-c-autocomplete {
+  margin-bottom: govuk-spacing(6);
+
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: govuk-spacing(4);
+  }
+}
+
+.app-c-autocomplete--search {
+  .autocomplete__input {
+    // scss-lint:disable PlaceholderInExtend
+    @extend .gem-c-input--search-icon;
+  }
+}
+
+.autocomplete__wrapper {
+  background: govuk-colour("white");
+}
+
+.autocomplete__input {
+  @include govuk-font(19);
+  z-index: 1;
+  color: $govuk-text-colour;
+}
+
+.autocomplete__input:focus,
+.autocomplete__input--focused {
+  outline: $govuk-focus-width solid $govuk-focus-colour;
+  outline-offset: $govuk-border-width-form-element;
+  box-shadow: $govuk-input-border-colour 0 0 0 $govuk-border-width-form-element;
+}
+
+.autocomplete__hint {
+  @include govuk-font(19);
+  z-index: 1;
+  color: $govuk-secondary-text-colour;
+}
+
+.autocomplete__dropdown-arrow-down {
+  z-index: 0;
+}
+
+.autocomplete__option {
+  @include govuk-font(19);
+  color: $govuk-text-colour;
+
+  mark {
+    border-bottom: 3px solid $govuk-focus-text-colour;
+    background: $app-focus-colour;
+  }
+}
+
+.autocomplete__list {
+  margin-top: 0;
+
+  .autocomplete__option,
+  .autocomplete__option:hover {
+    padding: 5px 6px;
+
+    &:before {
+      position: relative;
+      top: 3px;
+      padding-top: 2px;
+    }
+  }
+
+  .autocomplete__selected-option,
+  .autocomplete__selected-option:hover {
+    @include govuk-font(19);
+    margin: govuk-spacing(2) 0 0;
+    color: $govuk-text-colour;
+  }
+
+  .autocomplete__remove-option {
+    @include govuk-font(16);
+    @extend %govuk-link;
+  }
+}
+
+.autocomplete__option-hint {
+  display: block;
+  @include govuk-font(16);
+  color: $govuk-secondary-text-colour;
+}
+
+.autocomplete__option--focused,
+.autocomplete__option:hover {
+  color: govuk-colour("white");
+
+  .autocomplete__option-hint {
+    color: govuk-colour("white");
+  }
+}
+
+.app-c-autocomplete--narrow {
+  max-width: 200px;
+
+  @include govuk-media-query($from: tablet) {
+    max-width: 230px;
+  }
+}
+
+.js-enabled {
+  .app-c-autocomplete {
+    .govuk-select[multiple] {
+      height: 40px;
+    }
+  }
+
+  .app-c-autocomplete__multiselect-instructions {
+    display: none;
+  }
+
+  .app-c-autocomplete--search {
+    .govuk-label {
+      @include govuk-visually-hidden;
+    }
+  }
+}
