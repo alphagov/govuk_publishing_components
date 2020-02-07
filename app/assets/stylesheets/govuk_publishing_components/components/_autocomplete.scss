@@ -10,7 +10,8 @@ $app-focus-colour: $govuk-focus-colour;
   }
 }
 
-.app-c-autocomplete--search {
+.app-c-autocomplete--search,
+.app-c-autocomplete--search-with-label {
   .autocomplete__input {
     // scss-lint:disable PlaceholderInExtend
     @extend .gem-c-input--search-icon;
