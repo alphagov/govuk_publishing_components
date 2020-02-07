@@ -10,11 +10,16 @@
   select ||= {}
   input ||= {}
   search ||= false
+  search_with_label ||= false
   jsonly ||= false
 
   root_classes = %w(app-c-autocomplete govuk-form-group)
   root_classes << "app-c-autocomplete--#{width}" if width
-  root_classes << "app-c-autocomplete--search" if search
+  if search
+    root_classes << "app-c-autocomplete--search"
+  elsif search_with_label
+    root_classes << "app-c-autocomplete--search-with-label"
+  end
   root_classes << "app-js-only" if jsonly
   root_classes << "govuk-form-group--error" if error_items.any?
 %>

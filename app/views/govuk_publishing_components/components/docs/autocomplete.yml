@@ -155,6 +155,20 @@ examples:
           - France
           - Germany
           - United Kingdom
+  autocomplete_search_with_visible_label:
+    description: |
+      The search option automatically hides the label visually. Use `search_with_label` instead of `search` if you want a visible label.
+    data:
+      id: autocomplete-search
+      name: autocomplete-search
+      label:
+        text: Search
+      search_with_label: true
+      input:
+        options:
+          - France
+          - Germany
+          - United Kingdom
   autocomplete_js_only:
     description: |
       Shows an autocomplete component only if JavaScript is enabled.
