@@ -29,7 +29,6 @@
 }
 
 .gem-c-layout-header--search-left {
-
   .gem-c-header__menu-button {
     position: absolute;
     margin-top: - govuk-spacing(7);
@@ -76,13 +75,11 @@
     }
 
     .gem-c-header__content {
-      @include govuk-grid-column(two-thirds, $at: desktop);
+      @include govuk-grid-column(two-thirds);
       padding-left: govuk-spacing(6);
       padding-right: govuk-spacing(1);
     }
-
   }
-
 }
 
 .gem-c-layout-header__logo,
