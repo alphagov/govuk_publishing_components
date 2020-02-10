@@ -4,7 +4,7 @@ body: |
   Accepts an array of breadcrumb objects. Each crumb must have a title and a URL.
   Links have tracking data but links to the homepage (any link with a url of "/") will be tracked separately as `homeLinkClicked`
 
-  Note: By default on mobile devices, in portrait orientation, the breadcrumb will collapse to the Home and Last Sub Section
+  Note: Only the first and last items in the breadcrumb will be displayed on a page width less than 640px
 shared_accessibility_criteria:
   - link
 accessibility_criteria:
