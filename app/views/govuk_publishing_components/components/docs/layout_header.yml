@@ -57,8 +57,6 @@ examples:
       - text: News and communications
         href: "item-6"
         active: true
-
-
   full_width:
     description: |
       This is difficult to preview because the preview windows are constrained, but the header will stretch to the size of its container.
