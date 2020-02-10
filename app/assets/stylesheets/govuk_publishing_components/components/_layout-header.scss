@@ -59,6 +59,7 @@
 
   .gem-c-header__content {
     position: relative;
+    width: 100%;
   }
 
   @include govuk-media-query($from: desktop) {
