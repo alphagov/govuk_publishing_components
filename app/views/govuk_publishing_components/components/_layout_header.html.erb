@@ -12,35 +12,29 @@
   else
     width_class = "govuk-width-container"
   end
+
+  header_classes = "gem-c-layout-header govuk-header gem-c-layout-header--#{environment}"
+  header_classes << " gem-c-layout-header--no-bottom-border" if remove_bottom_border
+  header_classes << " gem-c-layout-header--search-left" if search_left
 %>
 
-<% if search_left %>
-  <header class="gem-c-layout-header gem-c-layout-header--search-left govuk-header gem-c-layout-header--<%= environment %> <%= "gem-c-layout-header--no-bottom-border" if remove_bottom_border %>" role="banner" data-module="govuk-header">
+<header class="<%= header_classes %>"  role="banner" data-module="govuk-header">
     <div class="govuk-header__container <%= width_class %>">
-      <div class="govuk-grid-row govuk-!-margin-left-0 govuk-!-margin-right-0">
-        <div class="gem-c-layout-header__logo govuk-grid-column-one-third-from-desktop">
-            <%= render "govuk_publishing_components/components/layout_header/header_logo", public_environment: public_environment, environment: environment, product_name: product_name %>
+      <% if search_left %>
+        <div class="govuk-grid-row govuk-!-margin-left-0 govuk-!-margin-right-0">
+          <div class="gem-c-layout-header__logo govuk-grid-column-one-third-from-desktop">
+              <%= render "govuk_publishing_components/components/layout_header/header_logo", public_environment: public_environment, environment: environment, product_name: product_name %>
+          </div>
         </div>
-      </div>
-      <div  class="govuk-grid-row govuk-!-margin-left-0 govuk-!-margin-right-0">
-        <div class="govuk-grid-column-full govuk-grid-column-one-third-from-desktop gem-c-layout-header__search">
-          <%= render "govuk_publishing_components/components/search", {
-            id: "site-search-text",
-            label_text: "Search",
-            no_border: true,
-            no_margin: true
-          } %>
+        <div  class="govuk-grid-row govuk-!-margin-left-0 govuk-!-margin-right-0">
+          <div class="govuk-grid-column-full govuk-grid-column-one-third-from-desktop gem-c-layout-header__search">
+            <%= render "govuk_publishing_components/components/layout_header/search" %>
+          </div>
+          <div class="govuk-header__content gem-c-header__content govuk-grid-column-full govuk-grid-column-two-thirds-from-desktop">
+            <%= render "govuk_publishing_components/components/layout_header/navigation_items", navigation_items: navigation_items  %>
+          </div>
         </div>
-        <div class="govuk-header__content gem-c-header__content govuk-grid-column-full">
-          <%= render "govuk_publishing_components/components/layout_header/navigation_items", navigation_items: navigation_items  %>
-        </div>
-      </div>
-    </div>
-  </header>
-
-<% else %>
-  <header class="gem-c-layout-header govuk-header gem-c-layout-header--<%= environment %> <%= "gem-c-layout-header--no-bottom-border" if remove_bottom_border %>" role="banner" data-module="govuk-header">
-    <div class="govuk-header__container <%= width_class %>">
+    <% else %>
       <div class="gem-c-layout-header__logo govuk-grid-column-two-thirds">
       <%= render "govuk_publishing_components/components/layout_header/header_logo", public_environment: public_environment, environment: environment, product_name: product_name %>
       </div>
@@ -49,14 +43,9 @@
       </div>
       <% if search %>
           <div class="govuk-grid-column-one-third gem-c-layout-header__search">
-            <%= render "govuk_publishing_components/components/search", {
-              id: "site-search-text",
-              label_text: "Search",
-              no_border: true,
-              no_margin: true
-            } %>
+            <%= render "govuk_publishing_components/components/layout_header/search" %>
           </div>
       <% end %>
-    </div>
-  </header>
-<% end %>
+    <% end %>
+  </div>
+</header>
