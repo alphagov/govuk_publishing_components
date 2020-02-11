@@ -1,17 +1,17 @@
 <%
   breadcrumbs ||= []
-  collapse_on_mobile ||= false
+  collapse_on_mobile ||= true
   inverse ||= false
-  collapse_class =  collapse_on_mobile && breadcrumbs.any? { |crumb| crumb[:is_page_parent] } ? "gem-c-breadcrumbs--collapse-on-mobile" : ""
+  # collapse_class =  collapse_on_mobile && breadcrumbs.any? { |crumb| crumb[:is_page_parent] } ? "gem-c-breadcrumbs--collapse-on-mobile" : ""
+  collapse_class =  collapse_on_mobile ? "govuk-breadcrumbs--collapse-on-mobile" : ""
   invert_class = inverse ? "gem-c-breadcrumbs--inverse" : ""
   breadcrumb_presenter = GovukPublishingComponents::Presenters::Breadcrumbs.new(breadcrumbs, request.path)
 %>
-
 <script type="application/ld+json">
   <%= raw breadcrumb_presenter.structured_data.to_json %>
 </script>
 
-<div class="gem-c-breadcrumbs govuk-breadcrumbs <%= invert_class %>" data-module="track-click">
+<div class="gem-c-breadcrumbs govuk-breadcrumbs <%= invert_class %> <%= collapse_class %>" data-module="track-click">
   <ol class="govuk-breadcrumbs__list">
     <% breadcrumbs.each_with_index do |crumb, index| %>
       <% breadcrumb = GovukPublishingComponents::Presenters::Breadcrumb.new(crumb, index) %>
@@ -33,4 +33,3 @@
     <% end %>
   </ol>
 </div>
-

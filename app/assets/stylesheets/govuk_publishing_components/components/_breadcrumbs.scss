@@ -1,6 +1,6 @@
 @import "govuk/components/breadcrumbs/breadcrumbs";
 
-.gem-c-breadcrumbs--inverse .govuk-breadcrumbs__list-item .govuk-breadcrumbs__link {
+.gem-c-breadcrumbs--inverse.govuk-breadcrumbs--collapse-on-mobile .govuk-breadcrumbs__list-item .govuk-breadcrumbs__link {
   &:link,
   &:visited,
   &:hover,
@@ -13,10 +13,109 @@
   }
 }
 
-.gem-c-breadcrumbs--inverse .govuk-breadcrumbs__list-item {
+.gem-c-breadcrumbs--inverse.govuk-breadcrumbs--collapse-on-mobile .govuk-breadcrumbs__list-item {
   color: govuk-colour("white");
 }
 
-.gem-c-breadcrumbs--inverse .govuk-breadcrumbs__list-item:before {
+.gem-c-breadcrumbs--inverse.govuk-breadcrumbs--collapse-on-mobile .govuk-breadcrumbs__list-item:after {
   border-color: govuk-colour("white");
+}
+
+.govuk-breadcrumbs--collapse-on-mobile .govuk-breadcrumbs__list-item {
+
+  margin-left: 0;
+  padding-left: 0;
+  margin-right: 20px;
+
+  &:before {
+    display: none;
+  }
+
+  &:after {
+    content: "";
+    display: inline-block;
+    position: relative;
+    top: -1px;
+    bottom: 1px;
+    right: -7px;
+    width: 7px;
+    height: 7px;
+    margin: auto 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    border: solid;
+    border-width: 1px 1px 0 0;
+    border-color: govuk-colour("dark-grey");
+  }
+
+  &:last-of-type {
+    &:after {
+      display: none;
+    }
+  }
+
+  @include govuk-media-query($until: tablet) {
+    margin-bottom: 0;
+
+    @include govuk-visually-hidden($important: false);
+    padding-top: 14px;
+    padding-bottom: 14px;
+    padding-left: 10px;
+
+    &:last-of-type {
+      margin-bottom: inherit;
+      position: inherit;
+      width: inherit;
+      height: inherit;
+      margin: inherit;
+      padding: inherit;
+      overflow: inherit;
+      clip: inherit;
+      -webkit-clip-path: inherit;
+      clip-path: inherit;
+      border: inherit;
+      white-space: inherit;
+      padding-top: 14px;
+      padding-bottom: 14px;
+      padding-left: 20px;
+      max-width: 75%;
+
+      &:after {
+        display: none;
+      }
+
+      .govuk-breadcrumbs__link {
+        display: inline-block;
+        margin-left: 0;
+        vertical-align: text-top;
+      }
+    }
+
+    &:first-of-type {
+      margin-bottom: inherit;
+      position: inherit;
+      width: inherit;
+      height: inherit;
+      margin: inherit;
+      padding: inherit;
+      overflow: inherit;
+      clip: inherit;
+      -webkit-clip-path: inherit;
+      clip-path: inherit;
+      border: inherit;
+      white-space: inherit;
+      padding-top: 14px;
+      padding-bottom: 14px;
+      padding-left: 0;
+    }
+
+    &.gem-c-breadcrumbs--parent {
+      background-image: none;
+      display: block;
+      margin-left: 0;
+      padding-left: 14px;
+      position: relative;
+    }
+  }
 }
