@@ -30,7 +30,6 @@
 
 .gem-c-layout-header--search-left {
   .gem-c-header__menu-button {
-    position: absolute;
     margin-top: - govuk-spacing(7);
     left: 0;
   }
@@ -47,9 +46,6 @@
 
   .gem-c-layout-header__search {
     margin-bottom: govuk-spacing(2);
-  }
-
-  .gem-c-layout-header__search {
     padding-bottom: govuk-spacing(5);
   }
 
@@ -89,10 +85,15 @@
 }
 
 .gem-c-header__logo {
-  white-space: nowrap;
   margin-top: govuk-spacing(1);
   margin-bottom: govuk-spacing(3);
+
+  @include govuk-media-query($from: desktop) {
+    white-space: nowrap;
+  }
 }
+
+
 
 .gem-c-header__content {
   width: auto;
@@ -100,10 +101,6 @@
   @include govuk-media-query($from: desktop) {
     float: right;
   }
-}
-
-.govuk-header__navigation--end {
-  text-align: right;
 }
 
 .gem-c-header__product-name {
