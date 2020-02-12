@@ -22,6 +22,12 @@
   border-color: govuk-colour("white");
 }
 
+@include govuk-media-query($until: tablet) {
+  .govuk-breadcrumbs__list {
+    display: flex;
+  }
+}
+
 .govuk-breadcrumbs__list-item {
   margin-left: 0;
   padding-left: 0;
@@ -42,13 +48,12 @@
       display: inline-block;
       padding-left: 0;
       margin-right: 0;
-      max-width: 72%;
+      flex: 1;
     }
 
     &:first-of-type {
       display: inline-block;
       padding-left: 0;
-      max-width: 22%;
     }
   }
 }
