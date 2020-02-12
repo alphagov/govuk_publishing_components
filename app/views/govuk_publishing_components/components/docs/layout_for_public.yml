@@ -6,15 +6,24 @@ body: |
 display_preview: false
 display_html: true
 accessibility_criteria: |
-  TBD
+  The layout template must:
+
+    * have a `lang` attribute
+    * contain a [skip link](/component-guide/skip_link)
+    * have a sensible page `<title>`
 examples:
   default:
     data:
       title: 'Example layout'
       block: |
-        <!-- Page content goes here -->
+        <h1>Page content goes here</h1>
   full_width:
     description: By default, the layout applies the `govuk-width-container` class to the main element. We can remove this class by setting `full_width` to `true`
     data:
       full_width: true
-      
+      block: |
+        <h1>Page content goes here</h1>
+  omit_header:
+    description: This allows the header to be omitted which is currently used when rendering CSV previews from Whitehall
+    data:
+      omit_header: true
