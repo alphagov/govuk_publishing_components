@@ -22,7 +22,6 @@ Gem::Specification.new do |s|
   s.add_dependency "plek"
   s.add_dependency "rails", ">= 5.0.0.1"
   s.add_dependency "rake"
-  s.add_dependency "rouge"
   s.add_dependency "sassc-rails", ">= 2.0.1"
   s.add_dependency "sprockets", "< 4"
 
@@ -34,6 +33,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "govuk_test", "~> 1"
   s.add_development_dependency "jasmine", "~> 3.4.0"
   s.add_development_dependency "pry-byebug"
+  s.add_development_dependency "rouge"
   s.add_development_dependency "rspec-rails", "~> 3.8"
   s.add_development_dependency "selenium-webdriver", "= 3.142.3"
   s.add_development_dependency "uglifier", ">= 4.1.0"
