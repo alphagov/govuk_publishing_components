@@ -52,6 +52,7 @@
   .gem-c-header__content {
     position: relative;
     width: 100%;
+    padding-bottom: govuk-spacing(2);
   }
 
   @include govuk-media-query($from: desktop) {
@@ -80,7 +81,7 @@
   padding: 0;
 
   @include govuk-media-query($until: "tablet") {
-    margin-bottom: 0;
+    margin-bottom: govuk-spacing(3);
   }
 }
 
