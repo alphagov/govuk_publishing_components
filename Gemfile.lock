@@ -8,6 +8,7 @@ PATH
       plek
       rails (>= 5.0.0.1)
       rake
+      rouge
       sassc-rails (>= 2.0.1)
       sprockets (< 4)
 
@@ -99,7 +100,7 @@ GEM
       rubocop (~> 0.64)
       rubocop-rspec (~> 1.28)
       scss_lint
-    govuk_app_config (2.0.3)
+    govuk_app_config (2.0.2)
       logstasher (>= 1.2.2, < 1.4.0)
       sentry-raven (>= 2.7.1, < 2.14.0)
       statsd-ruby (~> 1.4.0)
@@ -310,7 +311,6 @@ DEPENDENCIES
   govuk_test (~> 1)
   jasmine (~> 3.4.0)
   pry-byebug
-  rouge
   rspec-rails (~> 3.8)
   selenium-webdriver (= 3.142.3)
   uglifier (>= 4.1.0)
