@@ -34,4 +34,9 @@
     top: 5px;
     bottom: auto;
   }
+
+  .govuk-breadcrumbs__list,
+  .govuk-breadcrumbs__link {
+    padding: govuk-spacing(1) 0;
+  }
 }
