@@ -20,3 +20,18 @@
 .gem-c-breadcrumbs--inverse .govuk-breadcrumbs__list-item:before {
   border-color: govuk-colour("white");
 }
+
+@include govuk-media-query($until: tablet) {
+  .govuk-breadcrumbs__list {
+    display: flex;
+  }
+
+  .govuk-breadcrumbs__list-item:not(:last-child):not(:first-child) {
+    display: none;
+  }
+
+  .govuk-breadcrumbs__list-item:before {
+    top: 5px;
+    bottom: auto;
+  }
+}
