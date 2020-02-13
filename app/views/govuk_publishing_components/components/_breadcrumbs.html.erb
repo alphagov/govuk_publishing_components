@@ -1,8 +1,6 @@
 <%
   breadcrumbs ||= []
-  collapse_on_mobile ||= false
   inverse ||= false
-  collapse_class =  collapse_on_mobile && breadcrumbs.any? { |crumb| crumb[:is_page_parent] } ? "gem-c-breadcrumbs--collapse-on-mobile" : ""
   invert_class = inverse ? "gem-c-breadcrumbs--inverse" : ""
   breadcrumb_presenter = GovukPublishingComponents::Presenters::Breadcrumbs.new(breadcrumbs, request.path)
 %>
@@ -33,4 +31,3 @@
     <% end %>
   </ol>
 </div>
-
