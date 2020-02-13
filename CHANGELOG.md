@@ -11,6 +11,7 @@
 
 * Enable custom margin top on title component ([PR #1302](https://github.com/alphagov/govuk_publishing_components/pull/1302))
 * Enable aria-label on modal dialogue component ([PR #1300](https://github.com/alphagov/govuk_publishing_components/pull/1300))
+* Fix component guide layout in IE11 ([PR #1293](https://github.com/alphagov/govuk_publishing_components/pull/1293))
 
 ## 21.22.2
 
@@ -189,7 +190,7 @@
 
 * Add warning, file download and numbered steps icons that were originally fetched from govuk_frontend_toolkit ([PR #1154](https://github.com/alphagov/govuk_publishing_components/pull/1154))
 
-## 21.4.0
+## 21.4.0
 
 * Move organisation crest images into the gem ([PR #1149](https://github.com/alphagov/govuk_publishing_components/pull/1149))
 
