@@ -22,3 +22,7 @@ examples:
     data:
       main_classes: "homepage test-main-class"
       body_classes: "mainstream test-body-class"
+  omit_header:
+    description: This allows the header to be omitted which is currently used when rendering CSV previews from Whitehall
+    data:
+      omit_header: true

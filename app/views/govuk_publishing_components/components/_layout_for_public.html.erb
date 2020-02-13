@@ -3,6 +3,7 @@
   html_lang ||= "en"
   full_width ||= false
   without_search ||= false
+  omit_header ||= false
   body_classes ||= ""
   main_classes ||= ""
 -%>
@@ -46,11 +47,13 @@
 
     <%= render "govuk_publishing_components/components/cookie_banner" %>
 
-    <%= render "govuk_publishing_components/components/layout_header", {
-      environment: "public",
-      search: !without_search,
-      remove_bottom_border: full_width,
-    } %>
+    <% unless omit_header %>
+      <%= render "govuk_publishing_components/components/layout_header", {
+        environment: "public",
+        search: !without_search,
+        remove_bottom_border: full_width,
+      } %>
+    <% end %>
 
     <main class="<%= "govuk-width-container govuk-main-wrapper" unless full_width %> <%= main_classes %>" id="content">
       <%= yield %>
