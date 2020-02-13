@@ -40,4 +40,10 @@ describe "Layout for public", type: :view do
 
     assert_select '.gem-c-layout-for-public .gem-c-search', false
   end
+
+  it "can omit the header" do
+    render_component(omit_header: true)
+
+    assert_select '.gem-c-layout-for-public .gem-c-layout-header', false
+  end
 end
