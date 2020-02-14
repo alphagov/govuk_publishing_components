@@ -1,4 +1,7 @@
-# GOV.UK Publishing Components
+GOV.UK Publishing Components ·
+[![status](https://badgen.net/github/status/alphagov/govuk_publishing_components/master)](https://ci.integration.publishing.service.gov.uk/job/govuk_publishing_components/job/master/)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+=====================
 
 This gem:
 
@@ -7,8 +10,6 @@ This gem:
 - Provides an application to preview components
 
 Components should be added to this gem if they are required in more than one application, otherwise they should be added to that application.
-
-![Screenshot of component guide](docs/screenshot.png)
 
 ## How to
 
