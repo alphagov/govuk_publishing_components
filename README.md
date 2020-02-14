@@ -8,8 +8,6 @@ This gem:
 
 Components should be added to this gem if they are required in more than one application, otherwise they should be added to that application.
 
-![Screenshot of component guide](docs/screenshot.png)
-
 ## How to
 
 - [Install and use this gem](/docs/install-and-use.md)
