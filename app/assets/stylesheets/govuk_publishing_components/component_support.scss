@@ -1,7 +1,12 @@
 // This file should be included in an application prior to specific components
-// It provides govuk-frontend and supporting gem component helpers and mixins
+// It provides supporting gem component helpers and mixins
+// and everything else from govuk-frontend not included in govuk_frontend_support
+@import "govuk/core/all";
+@import "govuk/objects/all";
+@import "govuk/components/all";
+@import "govuk/utilities/all";
+@import "govuk/overrides/all";
 
-@import "govuk/all";
 @import "govuk_publishing_components/components/helpers/variables";
 @import "govuk_publishing_components/components/helpers/brand-colours";
 @import "govuk_publishing_components/components/mixins/govuk-template-link-focus-override";
