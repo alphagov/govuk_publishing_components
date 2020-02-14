@@ -11,6 +11,7 @@
 
 ## Unreleased
 
+* Mobile breadcrumb to wrap long taxon and correctly align chevron top ([PR #1296](https://github.com/alphagov/govuk_publishing_components/pull/1296))
 * Mobile breadcrumb to show first and last items only ([PR #1290](https://github.com/alphagov/govuk_publishing_components/pull/1290))
 
 ## 21.22.1
