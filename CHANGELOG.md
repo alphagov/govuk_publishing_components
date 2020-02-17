@@ -7,11 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-
-
 ## Unreleased
 
 * Mobile breadcrumb to show first and last items only ([PR #1290](https://github.com/alphagov/govuk_publishing_components/pull/1290))
+* Increases spacing between document links ([PR #1294](https://github.com/alphagov/govuk_publishing_components/pull/1294))
 
 ## 21.22.1
 
