@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.22.2
 
 * Mobile breadcrumb to wrap long taxon and correctly align chevron top ([PR #1296](https://github.com/alphagov/govuk_publishing_components/pull/1296))
 * Mobile breadcrumb to show first and last items only ([PR #1290](https://github.com/alphagov/govuk_publishing_components/pull/1290))
