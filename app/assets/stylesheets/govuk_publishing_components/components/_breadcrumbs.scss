@@ -23,6 +23,10 @@
 
 @include govuk-media-query($until: tablet) {
 
+  .govuk-breadcrumbs__list {
+    display: flex;
+  }
+
   .govuk-breadcrumbs__list-item:not(:last-child):not(:first-child) {
     display: none;
   }
@@ -30,6 +34,11 @@
   .govuk-breadcrumbs__list-item {
     padding-top: 14px;
     padding-bottom: 14px;
+  }
+
+  .govuk-breadcrumbs__list-item:before {
+    margin: 0;
+    top: 18px;
   }
 
   .govuk-breadcrumbs__link {
