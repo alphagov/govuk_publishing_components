@@ -6,7 +6,7 @@
     { title: "Home", url: "/" },
     { title: title, url: path }
   ]
-  breadcrumb_presenter = GovukPublishingComponents::Presenters::Breadcrumbs.new(breadcrumbs, request.path)
+  breadcrumb_presenter = GovukPublishingComponents::Presenters::Breadcrumbs.new(breadcrumbs)
 %>
 <% if title %>
   <script type="application/ld+json">

@@ -24,9 +24,9 @@ describe "Breadcrumbs", type: :view do
     breadcrumbs = [
       { title: 'Section 1', url: '/section-1' },
       { title: 'Section 2', url: '/section-2' },
-      { title: 'Section 3', is_current_page: true },
+      { title: 'Section 3', url: '/section-3' },
     ]
-    structured_data = GovukPublishingComponents::Presenters::Breadcrumbs.new(breadcrumbs, "/section-3").structured_data
+    structured_data = GovukPublishingComponents::Presenters::Breadcrumbs.new(breadcrumbs).structured_data
     expect(structured_data["@type"]).to eq("BreadcrumbList")
     expect(structured_data["itemListElement"].first["@type"]).to eq("ListItem")
     expect(structured_data["itemListElement"].first["position"]).to eq(1)
@@ -43,7 +43,7 @@ describe "Breadcrumbs", type: :view do
       { title: 'Section 1', url: '/section-1' },
       { title: 'Section 2' },
     ]
-    structured_data = GovukPublishingComponents::Presenters::Breadcrumbs.new(breadcrumbs, "/section-3").structured_data
+    structured_data = GovukPublishingComponents::Presenters::Breadcrumbs.new(breadcrumbs).structured_data
     expect(structured_data["@type"]).to eq("BreadcrumbList")
     expect(structured_data["itemListElement"].count).to eq(1)
     expect(structured_data["itemListElement"].first["@type"]).to eq("ListItem")

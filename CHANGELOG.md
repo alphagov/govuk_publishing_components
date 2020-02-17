@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Mobile breadcrumb update guidance [PR #1298](https://github.com/alphagov/govuk_publishing_components/pull/1298)
+
 ## 21.23.1
 
 * Change attachment request format text to match Whitehall ([PR #1306](https://github.com/alphagov/govuk_publishing_components/pull/1306))
