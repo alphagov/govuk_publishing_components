@@ -20,4 +20,12 @@ describe 'Modal dialogue', type: :view do
 
     assert_select '.gem-c-modal-dialogue__box.gem-c-modal-dialogue__box--wide', count: 1
   end
+
+  it 'applies aria-label to the dialog element' do
+    render_component(id: 'my-modal', aria_label: "My modal") do
+      "Content"
+    end
+
+    assert_select '.gem-c-modal-dialogue__box[aria-label="My modal"]'
+  end
 end

@@ -2,13 +2,14 @@
   id ||= "modal-dialogue-#{SecureRandom.hex(4)}"
   wide ||= false
   data_attributes = {}
+  aria_label ||= nil
   dialog_classes = ["gem-c-modal-dialogue__box"]
   dialog_classes << "gem-c-modal-dialogue__box--wide" if wide
 %>
 
 <%= tag.div class: "gem-c-modal-dialogue", data: { module: "modal-dialogue" }, id: id do %>
   <%= tag.div class: "gem-c-modal-dialogue__overlay" %>
-  <%= tag.dialog class: dialog_classes, data: data_attributes, aria: { modal: true }, role: "dialog", tabindex: 0 do %>
+  <%= tag.dialog class: dialog_classes, data: data_attributes, aria: { modal: true, label: aria_label }, role: "dialog", tabindex: 0 do %>
     <%= tag.div class: "gem-c-modal-dialogue__header" do %>
       <svg role="presentation" focusable="false" class="gem-c-modal-dialogue__logotype-crown" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 132 97" height="26" width="30">
         <path fill="currentColor" fill-rule="evenodd"
