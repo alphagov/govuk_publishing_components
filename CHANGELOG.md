@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Mobile breadcrumb update guidance [PR #1298](https://github.com/alphagov/govuk_publishing_components/pull/1298)
+* Add page heading captions to checkboxes and radio boxes components ([PR #1304](https://github.com/alphagov/govuk_publishing_components/pull/1304))
 
 ## 21.23.1
 

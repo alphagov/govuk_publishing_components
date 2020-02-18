@@ -119,6 +119,36 @@ describe "Radio", type: :view do
     assert_select "legend h1", "What is your favourite skittle?"
   end
 
+  it "renders radio-group with a page heading caption" do
+    render_component(
+      name: "favourite-skittle",
+      heading: "What is your favourite skittle?",
+      heading_caption: "Question 3 of 9",
+      is_page_heading: true,
+      items: [
+        { label: "Red", value: "red" },
+        { label: "Blue", value: "blue" }
+      ]
+    )
+    assert_select ".govuk-radios"
+    assert_select "legend h1", text: "What is your favourite skittle?"
+    assert_select "legend span.govuk-caption-xl", "Question 3 of 9"
+  end
+
+  it "renders no caption if the header is not a page heading" do
+    render_component(
+      name: "favourite-skittle",
+      heading_caption: "Question 3 of 9",
+      items: [
+        { label: "Red", value: "red" },
+        { label: "Green", value: "green" },
+      ]
+    )
+    assert_select ".govuk-radios"
+    assert_select "legend h1", false
+    assert_select "legend span.govuk-caption-xl", false
+  end
+
   it "renders radio-group with custom heading size" do
     render_component(
       name: "favourite-skittle",

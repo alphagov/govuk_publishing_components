@@ -108,6 +108,21 @@ examples:
         text: "Yes"
       - value: "no"
         text: "No"
+  with_page_header_and_caption:
+    description: |
+      If a caption text is provided with a page heading, it will be displayed above the heading.
+      A caption can only be used with a page heading. If a heading is not provided the caption will not render.
+      The pattern is used across GOV.UK to show a high-level section that this page question falls into.
+    data:
+      name: "radio-group-heading"
+      heading: "Is it snowing?"
+      heading_caption: "Question 3 of 9"
+      is_page_heading: true
+      items:
+        - value: "yes"
+          text: "Yes"
+        - value: "no"
+          text: "No"
   with_page_heading_and_hint:
     data:
       name: "radio-group-heading"
