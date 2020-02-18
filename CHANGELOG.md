@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* UI Updates to previous and next navigation component ([PR #1305](https://github.com/alphagov/govuk_publishing_components/pull/1305))
 * Update Sass documentation ([PR #1321](https://github.com/alphagov/govuk_publishing_components/pull/1321))
 * Improve suggested sass functionality ([PR #1320](https://github.com/alphagov/govuk_publishing_components/pull/1320))
 * Fix layout header width issue ([PR #1319](https://github.com/alphagov/govuk_publishing_components/pull/1319))
