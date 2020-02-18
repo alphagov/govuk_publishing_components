@@ -194,7 +194,6 @@ examples:
         text: "Green"
       - value: "blue"
         text: "Blue"
-
   with_hint_text_on_radios:
     data:
       name: "radio-group-hint-text"
