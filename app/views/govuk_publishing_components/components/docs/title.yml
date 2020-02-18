@@ -50,7 +50,7 @@ examples:
       context: Publication
       title: My page title which is often really long and verbose and has lots of extra words it doesn't need
       average_title_length: long
-  with_margin:
+  with_margin_bottom:
     description: |
       The component accepts a number for margin bottom from 0 to 9 (0px to 60px) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having a margin bottom of 50px.
 
@@ -78,4 +78,13 @@ examples:
       margin_bottom: 0
     context:
       dark_background: true
-
+  using_design_system_template:
+    description: |
+      This option allows the removal of top margin from the component so that it works within a [Design System page template](https://design-system.service.gov.uk/styles/page-template/default/index.html), where spacing above the title is already provided by padding on the wrapping div.
+    embed: |
+      <main class="govuk-main-wrapper">
+        <%= component %>
+      </main>
+    data:
+      title: My page title
+      margin_top: 0
