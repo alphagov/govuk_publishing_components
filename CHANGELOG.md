@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.23.0
 
 * Enable custom margin top on title component ([PR #1302](https://github.com/alphagov/govuk_publishing_components/pull/1302))
 * Enable aria-label on modal dialogue component ([PR #1300](https://github.com/alphagov/govuk_publishing_components/pull/1300))
