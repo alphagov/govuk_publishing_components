@@ -4,7 +4,8 @@ module GovukPublishingComponents
       include ActionView::Helpers
       include ActionView::Context
 
-      attr_reader :items, :name, :css_classes, :list_classes, :error, :has_conditional, :has_nested, :id, :hint_text, :description, :heading_size
+      attr_reader :items, :name, :css_classes, :list_classes, :error, :has_conditional,
+                  :has_nested, :id, :hint_text, :description, :heading_size, :heading_caption
 
       def initialize(options)
         @items = options[:items] || []
@@ -24,6 +25,7 @@ module GovukPublishingComponents
         @heading = options[:heading] || nil
         @heading_size = options[:heading_size]
         @heading_size = 'm' unless %w(s m l xl).include?(@heading_size)
+        @heading_caption = options[:heading_caption] || nil
         @is_page_heading = options[:is_page_heading]
         @description = options[:description] || nil
         @no_hint_text = options[:no_hint_text]
@@ -54,7 +56,8 @@ module GovukPublishingComponents
             :legend,
             class: "govuk-fieldset__legend govuk-fieldset__legend--xl gem-c-title"
           ) do
-            content_tag(:h1, @heading, class: "gem-c-title__text")
+            concat content_tag(:span, heading_caption, class: "govuk-caption-xl") if heading_caption.present?
+            concat content_tag(:h1, @heading, class: "gem-c-title__text")
           end
         else
           classes = %w(govuk-fieldset__legend)
