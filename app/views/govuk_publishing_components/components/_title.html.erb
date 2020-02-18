@@ -7,14 +7,15 @@
   context_data = context.is_a?(Hash) ? context[:data] : false
 
   inverse ||= false
+  local_assigns[:margin_top] ||= 8
   local_assigns[:margin_bottom] ||= 8
 
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
-  classes = %w(gem-c-title govuk-!-margin-top-8)
+  classes = %w(gem-c-title)
   classes << "gem-c-title--inverse" if inverse
+  classes << (shared_helper.get_margin_top)
   classes << (shared_helper.get_margin_bottom)
-
 %>
 <%= content_tag(:div, class: classes) do %>
   <% if context %>
