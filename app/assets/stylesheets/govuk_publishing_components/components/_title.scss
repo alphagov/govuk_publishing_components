@@ -32,11 +32,10 @@
 }
 
 .gem-c-title__text {
-  @include govuk-text-colour;
-  @include govuk-font(48, $weight: bold);
+  @extend %govuk-heading-xl;
   margin: 0;
 }
 
 .gem-c-title__text--long {
-  @include govuk-font(36, $weight: bold);
+  @extend %govuk-heading-l;
 }
