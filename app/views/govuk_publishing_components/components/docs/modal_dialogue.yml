@@ -3,7 +3,10 @@ description: Shows only one section, with no other navigation options, until the
 body: |
   Use where the application has gotten into a state from which it shouldn’t or can’t proceed without input from the user or the state of the current page needs to be preserved.
 
-  Modal instances are automatically initialised and their state can be changed programmatically using bounded functions (e.g. `$modalDialogue.open()` and `$modalDialogue.close()`)
+  Modal instances are automatically initialised and their state can be changed programmatically using bounded functions (e.g. `$modalDialogue.open()` and `$modalDialogue.close()`).
+
+  When the component is not limited to presenting information (e.g. an alert dialog or an informative dialog) and it contains interactive elements (e.g. form elements) you should use the `aria_label` attribute.
+  This will provide context around what the modal dialogue is about and will prevent it from being too verbose for screen reader users (if `aria_label` is not specified the whole modal content will be read out).
 
   This component is currently experimental. If you are using it, please feed back any research findings to the Content Publisher team.
 accessibility_criteria: |
@@ -48,6 +51,7 @@ examples:
       <%= component %>
     data:
       id: modal-with-form
+      aria_label: Search contacts
       block: |
         <h1 class="govuk-heading-l">Search contacts</h1>
           <label class="govuk-label govuk-visually-hidden" for="contacts">Search contacts</label>

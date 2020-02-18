@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Enable aria-label on modal dialogue component ([PR #1300](https://github.com/alphagov/govuk_publishing_components/pull/1300))
+
 ## 21.22.2
 
 * Mobile breadcrumb to wrap long taxon and correctly align chevron top ([PR #1296](https://github.com/alphagov/govuk_publishing_components/pull/1296))
