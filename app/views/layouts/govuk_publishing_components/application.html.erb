@@ -32,21 +32,22 @@
     </script>
     <% if @preview %>
       <main id="wrapper" class="govuk-width-container">
+        <%= yield %>
+      </main>
     <% else %>
       <%= render "govuk_publishing_components/components/layout_header", {
         environment: GovukPublishingComponents::AppHelpers::Environment.current_acceptance_environment,
         product_name: GovukPublishingComponents::Config.component_guide_title,
         href: component_guide_path
       } %>
-
-      <main id="wrapper" class="govuk-width-container component-guide-wrapper">
-      <%= render 'govuk_publishing_components/components/breadcrumbs', breadcrumbs: @guide_breadcrumbs  %>
-    <% end %>
-
-    <%= yield %>
-    </main>
-
-    <% unless @preview %>
+      <div class="govuk-width-container app-width-container--wide">
+        <% if @guide_breadcrumbs %>
+          <%= render 'govuk_publishing_components/components/breadcrumbs', breadcrumbs: @guide_breadcrumbs  %>
+        <% end %>
+        <main id="wrapper" class="govuk-main-wrapper">
+          <%= yield %>
+        </main>
+      </div>
       <%= render "govuk_publishing_components/components/layout_footer" %>
     <% end %>
 

@@ -9,10 +9,6 @@
 
 $gem-guide-border-width: 1px;
 
-.component-guide-wrapper {
-  padding-bottom: $govuk-gutter * 1.5;
-}
-
 .component-list {
   @include govuk-text-colour;
   @extend %govuk-list--bullet;
