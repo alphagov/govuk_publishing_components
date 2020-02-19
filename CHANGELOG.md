@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Change attachment request format text to match Whitehall ([PR #1306](https://github.com/alphagov/govuk_publishing_components/pull/1306))
+
 ## 21.23.0
 
 * Enable custom margin top on title component ([PR #1302](https://github.com/alphagov/govuk_publishing_components/pull/1302))
