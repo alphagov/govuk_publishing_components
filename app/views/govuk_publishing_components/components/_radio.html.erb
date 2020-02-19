@@ -4,6 +4,7 @@
 
   label ||= nil
   heading ||= nil
+  heading_caption ||= nil
   small ||= false
   inline ||= false
   is_page_heading ||= false
@@ -39,6 +40,7 @@
     <% if heading.present? %>
       <% if is_page_heading %>
         <%= tag.legend class: "govuk-fieldset__legend govuk-fieldset__legend--xl gem-c-title" do %>
+          <%= tag.span(heading_caption, class: "govuk-caption-xl") if heading_caption.present? %>
           <%= tag.h1 heading, class: "gem-c-title__text" %>
         <% end %>
       <% else %>

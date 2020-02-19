@@ -106,6 +106,23 @@ examples:
           value: "green"
         - label: "Blue"
           value: "blue"
+  with_page_header_and_caption:
+    description: |
+      If a caption text is provided with a page heading, it will be displayed above the heading.
+      A caption can only be used with a page heading. If a heading is not provided the caption will not render.
+      The pattern is used across GOV.UK to show a high-level section that this page question falls into.
+    data:
+      name: "favourite_skittle"
+      heading: "Choose your favourite skittles"
+      heading_caption: "Question 3 of 9"
+      is_page_heading: true
+      items:
+        - label: "Red"
+          value: "red"
+        - label: "Green"
+          value: "green"
+        - label: "Blue"
+          value: "blue"
   without_hint_text:
     description: Hint text can be removed entirely with this option. Note that this option can be combined with the visually_hide_heading option.
     data:

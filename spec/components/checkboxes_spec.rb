@@ -52,6 +52,7 @@ describe "Checkboxes", type: :view do
   it "renders nothing if no heading is supplied" do
     render_component(
       name: "favourite_colour",
+      heading_caption: "Question 3 of 9",
       items: [
         { label: "Red", value: "red" },
         { label: "Green", value: "green" },
@@ -60,6 +61,7 @@ describe "Checkboxes", type: :view do
     assert_select "fieldset.govuk-fieldset", false
     assert_select "legend", false
     assert_select "legend h1", false
+    assert_select "legend span.govuk-caption-xl", false
     assert_select ".govuk-hint", false
     assert_select ".govuk-checkboxes", false
   end
@@ -377,6 +379,37 @@ describe "Checkboxes", type: :view do
       ]
     )
     assert_select ".govuk-body", text: "This is a description about skittles."
+  end
+
+  it "renders checkboxes with a page heading and caption" do
+    render_component(
+      name: "favourite_colour",
+      heading_caption: "Question 3 of 9",
+      heading: "What is your favourite skittle?",
+      is_page_heading: true,
+      description: "This is a description about skittles.",
+      items: [
+        { label: "Red", value: "red" },
+        { label: "Green", value: "green" },
+      ]
+    )
+    assert_select "legend span.govuk-caption-xl", text: "Question 3 of 9"
+    assert_select "legend h1", text: "What is your favourite skittle?"
+  end
+
+  it "renders no caption if the header is not a page heading" do
+    render_component(
+      name: "favourite_colour",
+      heading_caption: "Question 3 of 9",
+      heading: "What is your favourite skittle?",
+      description: "This is a description about skittles.",
+      items: [
+        { label: "Red", value: "red" },
+        { label: "Green", value: "green" },
+      ]
+    )
+    assert_select "legend span.govuk-caption-xl", false
+    assert_select "legend h1", false
   end
 
   it "renders checkboxes with a govspeak description text" do
