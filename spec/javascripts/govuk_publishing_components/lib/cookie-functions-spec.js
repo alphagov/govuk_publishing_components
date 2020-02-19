@@ -176,4 +176,28 @@ describe('Cookie helper functions', function () {
       expect(GOVUK.checkConsentCookie('fake_cookie', 'just for testing')).toBeFalsy()
     })
   })
+
+  describe('cookie override function', function () {
+    beforeEach(function() {
+      window.GOVUK.overrideCookieCategories = function() {
+        return {
+          'cookies_policy': 'essential',
+          'cookies_preferences_set': 'essential',
+          'custom_allowed_cookie': 'settings'
+        }
+      }
+    })
+
+    afterEach(function() {
+      window.GOVUK.overrideCookieCategories = undefined
+    })
+
+    it('can define own cookies to allow', function () {
+      GOVUK.approveAllCookieTypes()
+
+      GOVUK.setCookie("custom_allowed_cookie", "this is an allowed cookie")
+
+      expect(GOVUK.getCookie('custom_allowed_cookie')).toEqual("this is an allowed cookie")
+    })
+  })
 })
