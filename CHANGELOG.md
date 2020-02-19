@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.24.0
 
 * Change back link arrow to chevron [PR #1299](https://github.com/alphagov/govuk_publishing_components/pull/1299)
 * Mobile breadcrumb update guidance [PR #1298](https://github.com/alphagov/govuk_publishing_components/pull/1298)
