@@ -41,9 +41,12 @@ module GovukPublishingComponents
 
     def components_in_use_sass(print_styles)
       print_path = "print/" if print_styles
+      additional_files = "@import 'govuk_publishing_components/govuk_frontend_support';\n"
+      additional_files << "@import 'govuk_publishing_components/component_support';\n" unless print_styles
+
       components_in_use.map { |component|
         "@import 'govuk_publishing_components/components/#{print_path}_#{component.gsub('_', '-')}';" if component_has_sass_file(component.gsub('_', '-'), print_styles)
-      }.join("\n").squeeze("\n").prepend("@import 'govuk_publishing_components/govuk_frontend_support';\n@import 'govuk_publishing_components/component_support';\n")
+      }.join("\n").squeeze("\n").prepend(additional_files)
     end
 
   private
