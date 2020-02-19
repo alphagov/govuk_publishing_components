@@ -2,7 +2,7 @@
   breadcrumbs ||= []
   inverse ||= false
   invert_class = inverse ? "gem-c-breadcrumbs--inverse" : ""
-  breadcrumb_presenter = GovukPublishingComponents::Presenters::Breadcrumbs.new(breadcrumbs, request.path)
+  breadcrumb_presenter = GovukPublishingComponents::Presenters::Breadcrumbs.new(breadcrumbs)
 %>
 
 <script type="application/ld+json">

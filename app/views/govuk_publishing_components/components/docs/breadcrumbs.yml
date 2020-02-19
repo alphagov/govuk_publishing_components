@@ -3,6 +3,8 @@ description: "Navigational breadcrumbs, showing page hierarchy"
 body: |
   Accepts an array of breadcrumb objects. Each crumb must have a title and a URL.
   Links have tracking data but links to the homepage (any link with a url of "/") will be tracked separately as `homeLinkClicked`
+
+  Note: Only the first and last (or parent) item in the breadcrumb will be displayed when the page width is less than the "tablet" govuk-breakpoint.
 shared_accessibility_criteria:
   - link
 accessibility_criteria:
@@ -28,7 +30,6 @@ examples:
       - title: 'Sub-section'
         url: '/section/sub-section'
         title: 'Education of disadvantaged children'
-        is_current_page: true
       inverse: true
     context:
       dark_background: true
@@ -67,26 +68,8 @@ examples:
         url: '/browse/abroad'
       - title: 'Travel abroad'
         url: '/browse/abroad/travel-abroad'
-  last_breadcrumb_is_current_page:
-    data:
-      breadcrumbs:
-      - title: 'Home'
-        url: '/'
-      - title: 'Passports, travel and living abroad'
-        url: '/browse/abroad'
-      - title: 'Travel abroad'
-  highlight_current_page:
-    description: This is currently used on pages tagged to the taxonomy, such as [on this page](https://www.gov.uk/guidance/pupil-premium-information-for-schools-and-alternative-provision-settings).
-    data:
-      breadcrumbs:
-      - title: 'Home'
-        url: '/'
-      - title: 'Education, training and skills'
-        url: '/education'
-      - title: 'Education of disadvantaged children'
-        is_current_page: true
-  collapse_on_mobile:
-    description: This is currently used within on pages tagged to the taxonomy, such as [on this page](https://www.gov.uk/guidance/pupil-premium-information-for-schools-and-alternative-provision-settings).
+  long_taxon_on_mobile:
+    description: This is an example of a breadcrumb (specifically for mobile) with long taxons on the the parent item and a greater touch target area
     data:
       collapse_on_mobile: true
       breadcrumbs:
@@ -94,5 +77,5 @@ examples:
         url: '/'
       - title: 'Education, training and skills'
         url: '/education'
-        is_page_parent: true
-      - title: 'Education of disadvantaged children'
+      - title: 'Education of disadvantaged children appended with some extra long content to make this a very very very very long taxon'
+        url: '/education'
