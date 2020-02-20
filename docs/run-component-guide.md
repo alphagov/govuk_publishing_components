@@ -1,7 +1,9 @@
 ## Running the component guide as a standalone app
 
 If you want to work on this gem directly, without having to add it to another
-application, you can run it on your local machine or using [govuk-docker](https://github.com/alphagov/govuk-docker). You'll need [Ruby](https://www.ruby-lang.org/en/downloads/) and [Node.js](https://nodejs.org/en/) installed to get this project running.
+application, you can run it on your local machine or using [govuk-docker](https://github.com/alphagov/govuk-docker). 
+
+To run it locally you'll need [Ruby](https://www.ruby-lang.org/en/downloads/) and [Node.js](https://nodejs.org/en/) installed to get this project running.
 
 ### Running the component guide on your local machine
 ```
