@@ -39,8 +39,9 @@
   @include govuk-clearfix;
   background-color: govuk-colour("blue");
   color: govuk-colour("white");
-  padding: govuk-spacing(2) govuk-spacing(3) 0;
+  padding: govuk-spacing(5);
   outline: 0;
+  border-bottom: solid 1px govuk-colour("white");
 }
 
 .gem-c-feedback__prompt-question,
@@ -222,6 +223,19 @@
     @include govuk-media-query($from: tablet) {
       float: left;
     }
+
+    @include govuk-media-query($until: tablet) {
+      position: relative;
+
+      .gem-c-feedback__prompt-link:after {
+        content: "";
+        position: absolute;
+        top: -14px;
+        right: 0;
+        left: 0;
+        bottom: -14px;
+      }
+    }
   }
 
   .gem-c-feedback__option-list-item--useful {
@@ -229,7 +243,7 @@
       display: inline-block;
       @supports (display: grid) {
         grid-area: 1 / 2;
-        padding-left: govuk-spacing(3);
+        padding-left: govuk-spacing(5);
       }
     }
   }
@@ -239,7 +253,7 @@
       display: inline-block;
       @supports (display: grid) {
         grid-area: 1 / 2;
-        padding-left: 50px;
+        margin-left: 90px;
       }
     }
   }
@@ -249,13 +263,29 @@
       display: block;
       margin-top: govuk-spacing(3);
       @supports (display: grid) {
-        margin-top: 0;
+        margin-top: govuk-spacing(5);
         grid-area: 2 / 1 / 2 / 3;
+      }
+
+      &:before {
+        content: "";
+        border-bottom: 1px solid govuk-colour("white");
+        width: calc(100% + 50px);
+        position: absolute;
+        margin-left: - govuk-spacing(5);
+        top: - govuk-spacing(4);
       }
     }
 
     @include govuk-media-query($from: tablet) {
       float: right;
+    }
+  }
+
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    // IE10+ CSS here
+    .gem-c-feedback__option-list-item--wrong:before {
+      border-bottom: 0;
     }
   }
 }
