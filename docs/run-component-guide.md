@@ -20,7 +20,7 @@ cd ~/govuk/govuk-docker
 make govuk_publishing_components
 
 cd ~/govuk/govuk_publishing_components
-govuk-docker up govuk_publishing_components-app
+govuk-docker-up
 ```
 
 Then visit [http://govuk-publishing-components.dev.gov.uk/component-guide/](http://govuk-publishing-components.dev.gov.uk/component-guide/).
