@@ -8,6 +8,8 @@
   of the commit log.
 
 ## Unreleased
+
+* Add cookie category override function [PR #1312](https://github.com/alphagov/govuk_publishing_components/pull/1312)
 * Make cookie banner text and preferences URL customisable [PR #1310](https://github.com/alphagov/govuk_publishing_components/pull/1310)
 
 ## 21.24.0
