@@ -48,4 +48,14 @@ describe "Cookie banner", type: :view do
     assert_select ".gem-c-cookie-banner__message .govuk-body", text: "This is some custom text with a link to the cookies page"
     assert_select ".govuk-link[href='/cookies']", text: "cookies page"
   end
+
+  it "renders with a custom preferences page link" do
+    render_component(cookie_preferences_href: "/cookies")
+    assert_select ".gem-c-cookie-banner__button-settings a[href='/cookies']", text: "Set cookie preferences"
+    assert_select '.gem-c-cookie-banner__button-settings a[data-module=track-click][data-track-category=cookieBanner][data-track-action="Cookie banner settings clicked"]'
+
+    # Check that the confirmation message also includes the custom URL
+    assert_select ".gem-c-cookie-banner__confirmation-message a[href='/cookies']", text: "change your cookie settings"
+    assert_select '.gem-c-cookie-banner__confirmation-message a[data-module=track-click][data-track-category=cookieBanner][data-track-action="Cookie banner settings clicked from confirmation"]'
+  end
 end

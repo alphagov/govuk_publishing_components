@@ -1,6 +1,7 @@
 <%
   id ||= 'global-cookie-message'
   text ||= raw("We use <a class='govuk-link' href='/help/cookies'>cookies to collect information</a> about how you use GOV.UK. We use this information to make the website work as well as possible and improve government services.")
+  cookie_preferences_href ||= "/help/cookies"
 %>
 
 <div id="<%= id %>" class="gem-c-cookie-banner govuk-clearfix" data-module="cookie-banner" role="region" aria-label="cookie banner" data-nosnippet>
@@ -27,7 +28,7 @@
           <div class="gem-c-cookie-banner__button gem-c-cookie-banner__button-settings govuk-grid-column-full govuk-grid-column-one-half-from-desktop">
             <%= render "govuk_publishing_components/components/button", {
               text: "Set cookie preferences",
-              href: "/help/cookies",
+              href: cookie_preferences_href,
               inline_layout: true,
               data_attributes: {
                 module: "track-click",
@@ -43,7 +44,7 @@
 
   <div class="gem-c-cookie-banner__confirmation govuk-width-container" tabindex="-1">
     <p class="gem-c-cookie-banner__confirmation-message">
-      You&#8217;ve accepted all cookies. You can <a class="govuk-link" href="/help/cookies" data-module="track-click" data-track-category="cookieBanner" data-track-action="Cookie banner settings clicked from confirmation">change your cookie settings</a> at any time.
+      You&#8217;ve accepted all cookies. You can <a class="govuk-link" href="<%= cookie_preferences_href %>" data-module="track-click" data-track-category="cookieBanner" data-track-action="Cookie banner settings clicked from confirmation">change your cookie settings</a> at any time.
     </p>
     <button class="gem-c-cookie-banner__hide-button" data-hide-cookie-banner="true" data-module="track-click" data-track-category="cookieBanner" data-track-action="Hide cookie banner">Hide</button>
   </div>
