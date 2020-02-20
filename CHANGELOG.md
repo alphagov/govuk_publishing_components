@@ -9,13 +9,13 @@
 
 ## Unreleased
 
-* Add cookie category override function [PR #1312](https://github.com/alphagov/govuk_publishing_components/pull/1312)
-* Make cookie banner text and preferences URL customisable [PR #1310](https://github.com/alphagov/govuk_publishing_components/pull/1310)
+* Add cookie category override function ([PR #1312](https://github.com/alphagov/govuk_publishing_components/pull/1312))
+* Make cookie banner text and preferences URL customisable ([PR #1310](https://github.com/alphagov/govuk_publishing_components/pull/1310))
 
 ## 21.24.0
 
-* Change back link arrow to chevron [PR #1299](https://github.com/alphagov/govuk_publishing_components/pull/1299)
-* Mobile breadcrumb update guidance [PR #1298](https://github.com/alphagov/govuk_publishing_components/pull/1298)
+* Change back link arrow to chevron ([PR #1299](https://github.com/alphagov/govuk_publishing_components/pull/1299))
+* Mobile breadcrumb update guidance ([PR #1298](https://github.com/alphagov/govuk_publishing_components/pull/1298))
 * Add page heading captions to checkboxes and radio boxes components ([PR #1304](https://github.com/alphagov/govuk_publishing_components/pull/1304))
 
 ## 21.23.1
