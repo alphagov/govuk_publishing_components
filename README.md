@@ -3,11 +3,12 @@ GOV.UK Publishing Components ·
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 =====================
 
-This gem:
+GOV.UK Publishing Components is a Ruby gem to document and distribute components in GOV.UK frontend applications.
 
-- Provides shared components for applications
-- Provides helpers to generate component payloads
-- Provides an application to preview components
+It provides:
+- a shared library of components
+- helpers to generate component payloads
+- an application to preview components and provide guidance
 
 Components should be added to this gem if they are required in more than one application, otherwise they should be added to that application.
 
@@ -19,7 +20,7 @@ Components should be added to this gem if they are required in more than one app
 - [Develop a component](/docs/develop-component.md)
 - [Run the component guide](/docs/run-component-guide.md)
 - [Move a component from an application to the gem](/docs/moving-components-upstream-into-this-gem.md)
-- [Publish this gem](/docs/publishing-to-rubygems.md)
+- [Publish/release a new version of the gem](/docs/publishing-to-rubygems.md)
 
 ## Architecture / structure
 
@@ -32,18 +33,12 @@ There are 2 types of helper classes in this app:
 - [AppHelpers](lib/govuk_publishing_components/app_helpers). Are exposed to the applications using this gem. They should be documented using RDoc.
 - [Component Presenters](lib/govuk_publishing_components/presenters). Anything in these classes is only for use within the components. They should be marked `@private`.
 
-## GOV.UK Frontend
+## Relationship with GOV.UK Design System
 
-This gem is the way GOV.UK consumes [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend), part of the GOV.UK Design System.
+GOV.UK Publishing Components also makes [GOV.UK Design System](https://design-system.service.gov.uk/) styles and components available to GOV.UK frontend applications. This gem consumes [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend) via [NPM](https://www.npmjs.com/).
 
-We use NPM to pull in the GOV.UK Frontend styles and Javascript, but we don't commit
-the `node_modules` directory. To install GOV.UK Frontend on your machine, run:
-
-```
-npm install
-```
-
-You'll need to have installed Node and NPM for this.
+## Browser and assistive technology support
+GOV.UK Publishing Components shares the same standards in terms of browser and assistive technology support with [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend#browser-and-assistive-technology-support).
 
 ## Documentation
 
@@ -51,7 +46,7 @@ You'll need to have installed Node and NPM for this.
 
 Run the documentation locally with:
 
-```
+```sh
 bundle exec yard server --reload
 ```
 
@@ -59,7 +54,7 @@ bundle exec yard server --reload
 
 The default rake task runs all tests:
 
-```
+```sh
 bin/rake
 ```
 
