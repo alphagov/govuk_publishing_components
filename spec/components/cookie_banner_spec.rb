@@ -42,4 +42,10 @@ describe "Cookie banner", type: :view do
     assert_select '.gem-c-cookie-banner__confirmation .gem-c-cookie-banner__hide-button', text: "Hide"
     assert_select '.gem-c-cookie-banner__hide-button[data-module=track-click][data-track-category=cookieBanner][data-track-action="Hide cookie banner"]'
   end
+
+  it "renders with custom text" do
+    render_component(text: sanitize("This is some custom text with a link to the <a href='/cookies' class='govuk-link'>cookies page</a>"))
+    assert_select ".gem-c-cookie-banner__message .govuk-body", text: "This is some custom text with a link to the cookies page"
+    assert_select ".govuk-link[href='/cookies']", text: "cookies page"
+  end
 end

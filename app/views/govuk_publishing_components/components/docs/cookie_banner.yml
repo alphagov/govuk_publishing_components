@@ -17,3 +17,6 @@ accessibility_excluded_rules:
 examples:
   default:
     data: {}
+  with_custom_text:
+    data:
+      text: "This is some custom text in my cookie banner which lets users know what we're using cookies for. I can also include a link to the <a class='govuk-link' href='/cookies'>cookies page</a>"
