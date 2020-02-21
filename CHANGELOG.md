@@ -7,7 +7,8 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.25.0
+
 * Make cookie banner text and preferences URL customisable ([PR #1310](https://github.com/alphagov/govuk_publishing_components/pull/1310))
 * Add DGU-specific cookie ([PR #1315](https://github.com/alphagov/govuk_publishing_components/pull/1315))
 
