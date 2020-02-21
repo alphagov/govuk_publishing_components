@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Allow individual components to be imported into apps ([PR #1159](https://github.com/alphagov/govuk_publishing_components/pull/1159))
+
 ## 21.25.0
 
 * Make cookie banner text and preferences URL customisable ([PR #1310](https://github.com/alphagov/govuk_publishing_components/pull/1310))

@@ -17,8 +17,44 @@
 </form>
 
 <% unless ENV["MAIN_COMPONENT_GUIDE"] %>
-  <h2 class="component-doc-h2">Components in this application</h2>
+  <h2 class="component-doc-h2">Gem components used by this app (<%= @components_in_use_docs.length %>)</h2>
 
+  <%= render "govuk_publishing_components/components/details", {
+    title: "Suggested Sass for this application"
+  } do %>
+    <%= render "govuk_publishing_components/components/textarea", {
+      label: {
+        text: "Add this to your application's main scss file"
+      },
+      name: "main-sass",
+      value: @components_in_use_sass
+    } %>
+    <%= render "govuk_publishing_components/components/textarea", {
+      label: {
+        text: "Add this to your application's print scss file"
+      },
+      name: "print-sass",
+      value: @components_in_use_print_sass
+    } %>
+  <% end %>
+<pre>
+
+</pre>
+
+  <ul class="component-list">
+    <% @components_in_use_docs.each do |component_doc| %>
+      <li>
+        <%= link_to component_doc.name, component_doc_path(component_doc.id), class: "govuk-link" %>
+        <p>
+          <%= component_doc.description %>
+        </p>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% unless ENV["MAIN_COMPONENT_GUIDE"] %>
+  <h2 class="component-doc-h2">Components in this application (<%= @component_docs.length %>)</h2>
   <ul class="component-list">
     <% @component_docs.each do |component_doc| %>
       <li>
@@ -30,7 +66,7 @@
     <% end %>
   </ul>
 
-  <h2 class="component-doc-h2">Components in the gem</h2>
+  <h2 class="component-doc-h2">All gem components (<%= @gem_component_docs.length %>)</h2>
 <% end %>
 
 <ul class="component-list">

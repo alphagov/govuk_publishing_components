@@ -5,6 +5,9 @@ module GovukPublishingComponents
     def index
       @component_docs = component_docs.all
       @gem_component_docs = gem_component_docs.all
+      @components_in_use_docs = components_in_use_docs.used_in_this_app
+      @components_in_use_sass = components_in_use_sass(false)
+      @components_in_use_print_sass = components_in_use_sass(true)
     end
 
     def show
@@ -36,6 +39,16 @@ module GovukPublishingComponents
       end
     end
 
+    def components_in_use_sass(print_styles)
+      print_path = "print/" if print_styles
+      additional_files = "@import 'govuk_publishing_components/govuk_frontend_support';\n"
+      additional_files << "@import 'govuk_publishing_components/component_support';\n" unless print_styles
+
+      components_in_use.map { |component|
+        "@import 'govuk_publishing_components/components/#{print_path}_#{component.gsub('_', '-')}';" if component_has_sass_file(component.gsub('_', '-'), print_styles)
+      }.join("\n").squeeze("\n").prepend(additional_files)
+    end
+
   private
 
     def component_docs
@@ -44,6 +57,27 @@ module GovukPublishingComponents
 
     def gem_component_docs
       @gem_component_docs ||= ComponentDocs.new(gem_components: true)
+    end
+
+    def components_in_use_docs
+      @components_in_use_docs ||= ComponentDocs.new(gem_components: true, limit_to: components_in_use)
+    end
+
+    def components_in_use
+      matches = []
+
+      files = Dir["#{Rails.root}/app/views/**/*.html.erb"]
+      files.each do |file|
+        data = File.read(file)
+        matches << data.scan(/(govuk_publishing_components\/components\/[a-z_-]+)/)
+      end
+
+      matches.flatten.uniq.map(&:to_s).sort.map { |m| m.gsub('govuk_publishing_components/components/', '') }
+    end
+
+    def component_has_sass_file(component, print_styles)
+      print_path = "print/" if print_styles
+      Pathname.new(__dir__ + "/../../assets/stylesheets/govuk_publishing_components/components/#{print_path}_#{component}.scss").exist?
     end
 
     def index_breadcrumb

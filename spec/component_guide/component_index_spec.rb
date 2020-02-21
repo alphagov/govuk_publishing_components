@@ -43,6 +43,37 @@ describe 'Component guide index' do
     expect(page).to have_selector('script[src*="/assets/application"]', visible: false)
   end
 
+  it 'includes suggested sass for the application' do
+    visit '/component-guide'
+    expected_main_sass = "@import 'govuk_publishing_components/govuk_frontend_support';
+@import 'govuk_publishing_components/component_support';
+
+@import 'govuk_publishing_components/components/_contextual-sidebar';
+@import 'govuk_publishing_components/components/_error-summary';
+@import 'govuk_publishing_components/components/_govspeak';
+@import 'govuk_publishing_components/components/_input';
+@import 'govuk_publishing_components/components/_layout-footer';
+@import 'govuk_publishing_components/components/_layout-for-admin';
+@import 'govuk_publishing_components/components/_layout-header';
+@import 'govuk_publishing_components/components/_skip-link';
+@import 'govuk_publishing_components/components/_tabs';
+@import 'govuk_publishing_components/components/_title';"
+
+    expected_print_sass = "@import 'govuk_publishing_components/govuk_frontend_support';
+
+@import 'govuk_publishing_components/components/print/_govspeak';
+@import 'govuk_publishing_components/components/print/_layout-footer';
+@import 'govuk_publishing_components/components/print/_layout-header';
+@import 'govuk_publishing_components/components/print/_skip-link';
+@import 'govuk_publishing_components/components/print/_title';"
+
+    expect(page).to have_selector('.component-doc-h2', text: 'Gem components used by this app (12)')
+    expect(page).to have_selector('.govuk-details__summary-text', text: 'Suggested Sass for this application')
+
+    expect(page.find(:css, 'textarea[name="main-sass"]', visible: false).value).to eq(expected_main_sass)
+    expect(page.find(:css, 'textarea[name="print-sass"]', visible: false).value).to eq(expected_print_sass)
+  end
+
   it 'creates a page for the component' do
     visit '/component-guide/test-component'
     expect(body).to include('A test component for the dummy app')
