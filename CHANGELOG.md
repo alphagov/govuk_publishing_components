@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.26.0
 
 * Allow individual components to be imported into apps ([PR #1159](https://github.com/alphagov/govuk_publishing_components/pull/1159))
 
