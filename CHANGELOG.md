@@ -9,6 +9,7 @@
 
 ## Unreleased
 * Make cookie banner text and preferences URL customisable [PR #1310](https://github.com/alphagov/govuk_publishing_components/pull/1310)
+* Add DGU-specific cookie ([PR #1315](https://github.com/alphagov/govuk_publishing_components/pull/1315))
 
 ## 21.24.0
 
