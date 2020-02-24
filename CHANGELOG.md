@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Allow individual components to be imported into apps ([PR #1159](https://github.com/alphagov/govuk_publishing_components/pull/1159))
+* Update Sass documentation ([PR #1321](https://github.com/alphagov/govuk_publishing_components/pull/1321))
 
 ## 21.26.0
 

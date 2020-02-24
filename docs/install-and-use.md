@@ -51,17 +51,35 @@ end
 
 To make use of the components, you'll have to include the JS and CSS in your application.
 
-### CSS
+### Import Sass for individual components
 
-```css
-# application.scss
+The Sass for any components in use in an application should be imported. In order for this to work you must first import some generic Sass files that include `govuk-frontend` and some gem specific mixins and variables.
+
+**Note that you will need to keep this up to date if you add or remove components from your application.**
+
+For example:
+
+```scss
+// supporting sass
+@import 'govuk_publishing_components/govuk_frontend_support';
+@import 'govuk_publishing_components/component_support';
+// component specific sass
+@import 'govuk_publishing_components/components/_back-link';
+```
+
+If you load the component guide in the application the suggested Sass for it has been generated for you. Click the 'Suggested Sass for this application' link, then copy and paste the output into your `application.scss` file. Remember to also copy the suggested print Sass into your application's `print.scss` file.
+
+### Import all Sass (deprecated, will be removed in a later version)
+
+```scss
+// application.scss
 @import "govuk_publishing_components/all_components";
 ```
 
 And for print styles
 
-```css
-# print.scss
+```scss
+// print.scss
 @import "govuk_publishing_components/all_components_print";
 ```
 
