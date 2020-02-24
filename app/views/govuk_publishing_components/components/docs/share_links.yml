@@ -65,6 +65,20 @@ examples:
           icon: 'facebook'
         }
       ]
+  with_custom_visually_hidden_text:
+    description: |
+      Use this option to specify a visually hidden text for screenreaders to prepend to the link text.
+
+      If omitted, the default text used will be 'Share on'.
+    data:
+      links: [
+        {
+          href: 'share',
+          text: 'Facebook',
+          hidden_text: 'Download from',
+          icon: 'facebook'
+        }
+      ]
   with_branding:
     description: Organisation [colour branding](https://github.com/alphagov/govuk_publishing_components/blob/master/docs/component_branding.md) can be added to the component as shown.
     data:

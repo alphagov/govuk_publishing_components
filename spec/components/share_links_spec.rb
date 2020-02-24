@@ -15,6 +15,7 @@ describe "ShareLinks", type: :view do
       {
         href: '/twitter',
         text: 'Twitter',
+        hidden_text: 'Tweet to',
         icon: 'twitter'
       },
     ]
@@ -61,5 +62,15 @@ describe "ShareLinks", type: :view do
   it "accepts the stacking option" do
     render_component(links: links, stacked: true)
     assert_select ".gem-c-share-links.gem-c-share-links--stacked"
+  end
+
+  it "displays the visually hidden text 'Share on' if custom hidden_text is not specified" do
+    render_component(links: links)
+    assert_select ".gem-c-share-links .gem-c-share-links__link[href=\"/facebook\"] .govuk-visually-hidden", text: "Share on"
+  end
+
+  it "displays the provided visually hidden text" do
+    render_component(links: links)
+    assert_select ".gem-c-share-links .gem-c-share-links__link[href=\"/twitter\"] .govuk-visually-hidden", text: "Tweet to"
   end
 end
