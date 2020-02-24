@@ -44,7 +44,18 @@ module GovukPublishingComponents
       additional_files = "@import 'govuk_publishing_components/govuk_frontend_support';\n"
       additional_files << "@import 'govuk_publishing_components/component_support';\n" unless print_styles
 
-      components_in_use.map { |component|
+      components = components_in_use
+      extra_components = []
+
+      components.each do |component|
+        components_in_component = components_within_component(component)
+        extra_components << components_in_component
+      end
+
+      components << extra_components.compact
+      components = components.flatten.uniq.sort
+
+      components.map { |component|
         "@import 'govuk_publishing_components/components/#{print_path}_#{component.gsub('_', '-')}';" if component_has_sass_file(component.gsub('_', '-'), print_styles)
       }.join("\n").squeeze("\n").prepend(additional_files)
     end
@@ -78,6 +89,12 @@ module GovukPublishingComponents
     def component_has_sass_file(component, print_styles)
       print_path = "print/" if print_styles
       Pathname.new(__dir__ + "/../../assets/stylesheets/govuk_publishing_components/components/#{print_path}_#{component}.scss").exist?
+    end
+
+    def components_within_component(component)
+      data = File.read(Pathname.new(__dir__ + "/../../views/govuk_publishing_components/components/_#{component}.html.erb"))
+      match = data.scan(/(govuk_publishing_components\/components\/[a-z_-]+)/)
+      match.flatten.uniq.map(&:to_s).sort.map { |m| m.gsub('govuk_publishing_components/components/', '') }
     end
 
     def index_breadcrumb

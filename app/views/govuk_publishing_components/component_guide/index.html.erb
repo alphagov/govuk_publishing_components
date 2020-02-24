@@ -24,14 +24,14 @@
   } do %>
     <%= render "govuk_publishing_components/components/textarea", {
       label: {
-        text: "Add this to your application's main scss file"
+        text: "Add this to your application's main scss file, before your other local imports."
       },
       name: "main-sass",
       value: @components_in_use_sass
     } %>
     <%= render "govuk_publishing_components/components/textarea", {
       label: {
-        text: "Add this to your application's print scss file"
+        text: "Add this to your application's print scss file, before your other local imports."
       },
       name: "print-sass",
       value: @components_in_use_print_sass
