@@ -7,8 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.26.1
 
+* Add visually hidden text to share links component ([PR #1286](https://github.com/alphagov/govuk_publishing_components/pull/1286/))
 * Update Sass documentation ([PR #1321](https://github.com/alphagov/govuk_publishing_components/pull/1321))
 * Improve suggested sass functionality ([PR #1320](https://github.com/alphagov/govuk_publishing_components/pull/1320))
 * Fix layout header width issue ([PR #1319](https://github.com/alphagov/govuk_publishing_components/pull/1319))
