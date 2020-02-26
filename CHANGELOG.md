@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Dont show breadcrumb item with no url ([PR #1324](https://github.com/alphagov/govuk_publishing_components/pull/1324))
+
 ## 21.26.1
 
 * Add visually hidden text to share links component ([PR #1286](https://github.com/alphagov/govuk_publishing_components/pull/1286/))

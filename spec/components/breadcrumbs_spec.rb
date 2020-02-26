@@ -128,13 +128,13 @@ describe "Breadcrumbs", type: :view do
     assert_select ".gem-c-breadcrumbs--inverse"
   end
 
-  it "allows the last breadcrumb to be text only" do
+  it "ignore breadcrumb items without url" do
     render_component(
       breadcrumbs: [
         { title: 'Topic', url: '/topic' },
         { title: 'Current Page' },
       ]
     )
-    assert_select('.govuk-breadcrumbs__list-item:last-child', 'Current Page')
+    assert_select('.govuk-breadcrumbs__list-item:last-child', 'Topic')
   end
 end

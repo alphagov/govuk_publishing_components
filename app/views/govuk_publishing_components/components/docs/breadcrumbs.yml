@@ -71,7 +71,6 @@ examples:
   long_taxon_on_mobile:
     description: This is an example of a breadcrumb (specifically for mobile) with long taxons on the the parent item and a greater touch target area
     data:
-      collapse_on_mobile: true
       breadcrumbs:
       - title: 'Home'
         url: '/'
