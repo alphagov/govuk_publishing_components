@@ -217,14 +217,3 @@ examples:
             text: Guidance and regulation
           - href: "#third-thing"
             text: Consultations
-  with_different_font_size:
-    description: Choose a different font size. Valid options are 24 (24px) and 19 (19px), with the component defaulting to 16px.
-    data:
-      font_size: 24
-      contents:
-        - href: "#first-thing"
-          text: Community best practice
-        - href: "#second-thing"
-          text: Guidance and regulation
-        - href: "#third-thing"
-          text: Consultations
