@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.26.2
 
 * Streamline feedback component ([PR #1327](https://github.com/alphagov/govuk_publishing_components/pull/1327))
 * Dont show breadcrumb item with no url ([PR #1324](https://github.com/alphagov/govuk_publishing_components/pull/1324))
