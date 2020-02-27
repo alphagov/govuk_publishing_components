@@ -152,7 +152,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
       function showError (error) {
         var genericError = [
-          '<h2 class="gem-c-feedback__heading">',
+          '<h2>',
           '  Sorry, we’re unable to receive your message right now. ',
           '</h2>',
           '<p>If the problem persists, we have other ways for you to provide',
