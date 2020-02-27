@@ -95,21 +95,22 @@
   }
 
   // this comes from the backend so we can't put a class on it
-  h2,
-  .gem-c-feedback__heading {
+  h2 {
     @include govuk-text-colour;
-    @include govuk-font(24, $weight: bold);
-    margin: 0;
+    @include govuk-font($size: 24, $weight: bold);
+    margin: 0 0 govuk-spacing(3) 0;
   }
 
   p {
     @include govuk-text-colour;
-    @include govuk-font(19);
-    margin: govuk-spacing(2) 0;
+    @include govuk-font($size: 19);
+    margin: 0 0 govuk-spacing(3) 0;
   }
 
   a {
-    @extend %govuk-link;
+    @include govuk-link-common;
+    @include govuk-link-style-default;
+    @include govuk-link-print-friendly;
   }
 }
 
@@ -173,13 +174,15 @@
 
 // static.css on GOV.UK overwrites the component styles using input[type="text"]
 // so we need to apply  govuk-input styles using a stronger selector
-.gem-c-feedback input[type="text"] {
-  // scss-lint:disable PlaceholderInExtend
-  // sass-lint:disable placeholder-in-extend
-  @extend .govuk-input;
-  // sass-lint:enable placeholder-in-extend
-  // scss-lint:enable PlaceholderInExtend
+.gem-c-feedback .gem-c-input[type="text"] {
+  @include govuk-font($size: 19);
   margin: 0;
+  padding: govuk-spacing(1);
+  border: $govuk-border-width-form-element solid $govuk-input-border-colour;
+
+  &:focus {
+    outline: $govuk-focus-width solid $govuk-focus-colour;
+  }
 }
 
 .gem-c-feedback__option-list {
