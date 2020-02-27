@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Remove font_size option on contents list ([PR #1325](https://github.com/alphagov/govuk_publishing_components/pull/1325))
+* Fix feedback component tests ([PR #1329](https://github.com/alphagov/govuk_publishing_components/pull/1329))
 
 ## 21.26.2
 
