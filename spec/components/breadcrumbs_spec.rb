@@ -137,4 +137,14 @@ describe "Breadcrumbs", type: :view do
     )
     assert_select('.govuk-breadcrumbs__list-item:last-child', 'Topic')
   end
+
+  it "collapses on mobile if passed a flag" do
+    render_component(collapse_on_mobile: true, breadcrumbs: [
+        { title: 'Home', url: '/' },
+        { title: 'Section', url: '/section' },
+        { title: 'Sub-section', url: '/sub-section' },
+      ])
+
+    assert_select('.gem-c-breadcrumbs.govuk-breadcrumbs.gem-c-breadcrumbs--collapse-on-mobile')
+  end
 end

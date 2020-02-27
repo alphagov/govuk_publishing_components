@@ -1,15 +1,19 @@
 <%
   breadcrumbs ||= []
   inverse ||= false
-  invert_class = inverse ? "gem-c-breadcrumbs--inverse" : ""
+  collapse_on_mobile ||= false
   breadcrumb_presenter = GovukPublishingComponents::Presenters::Breadcrumbs.new(breadcrumbs)
+
+  classes = "gem-c-breadcrumbs govuk-breadcrumbs"
+  classes << " gem-c-breadcrumbs--collapse-on-mobile" if collapse_on_mobile
+  classes << " gem-c-breadcrumbs--inverse" if inverse
 %>
 
 <script type="application/ld+json">
   <%= raw breadcrumb_presenter.structured_data.to_json %>
 </script>
 
-<div class="gem-c-breadcrumbs govuk-breadcrumbs <%= invert_class %>" data-module="track-click">
+<div class="<%= classes %>" data-module="track-click">
   <ol class="govuk-breadcrumbs__list">
     <% breadcrumbs.each_with_index do |crumb, index| %>
       <% breadcrumb = GovukPublishingComponents::Presenters::Breadcrumb.new(crumb, index) %>
