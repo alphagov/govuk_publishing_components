@@ -1,6 +1,7 @@
 <% navigation = GovukPublishingComponents::Presenters::ContextualNavigation.new(content_item, request) %>
 <% prioritise_taxon_breadcrumbs ||= false %>
 <% inverse ||= false %>
+<% collapse_on_mobile ||= true unless local_assigns[:collapse_on_mobile].eql?(false) %>
 
 <div class='gem-c-contextual-breadcrumbs'>
   <% if navigation.content_tagged_to_current_step_by_step? %>
@@ -9,27 +10,29 @@
       navigation.step_nav_helper.header %>
   <% elsif navigation.content_tagged_to_a_finder? %>
     <%# Rendering finder breadcrumbs because the page is tagged to a finder %>
-    <%= render 'govuk_publishing_components/components/breadcrumbs', breadcrumbs: navigation.breadcrumbs, inverse: inverse %>
+    <%= render 'govuk_publishing_components/components/breadcrumbs', breadcrumbs: navigation.breadcrumbs, inverse: inverse, collapse_on_mobile: collapse_on_mobile %>
   <% elsif navigation.content_is_tagged_to_a_live_taxon? && prioritise_taxon_breadcrumbs %>
     <%# Rendering taxonomy breadcrumbs because the page is tagged to live taxons
           and we want to prioritise them over all other breadcrumbs %>
     <%= render 'govuk_publishing_components/components/breadcrumbs',
                breadcrumbs: navigation.taxon_breadcrumbs[:breadcrumbs],
-               inverse: inverse %>
+               inverse: inverse,
+               collapse_on_mobile: collapse_on_mobile %>
   <% elsif navigation.content_tagged_to_mainstream_browse_pages? %>
     <%# Rendering parent-based breadcrumbs because the page is tagged to mainstream browse %>
-    <%= render 'govuk_publishing_components/components/breadcrumbs', breadcrumbs: navigation.breadcrumbs, inverse: inverse %>
+    <%= render 'govuk_publishing_components/components/breadcrumbs', breadcrumbs: navigation.breadcrumbs, inverse: inverse, collapse_on_mobile: collapse_on_mobile %>
   <% elsif navigation.content_has_curated_related_items? %>
     <%# Rendering parent-based breadcrumbs because the page has curated related links %>
-    <%= render 'govuk_publishing_components/components/breadcrumbs', breadcrumbs: navigation.breadcrumbs, inverse: inverse %>
+    <%= render 'govuk_publishing_components/components/breadcrumbs', breadcrumbs: navigation.breadcrumbs, inverse: inverse, collapse_on_mobile: collapse_on_mobile %>
   <% elsif navigation.content_is_tagged_to_a_live_taxon? && !navigation.content_is_a_specialist_document? %>
     <%# Rendering taxonomy breadcrumbs because the page is tagged to live taxons %>
     <%= render 'govuk_publishing_components/components/breadcrumbs',
       breadcrumbs: navigation.taxon_breadcrumbs[:breadcrumbs],
-      inverse: inverse %>
+      inverse: inverse,
+      collapse_on_mobile: collapse_on_mobile %>
   <% elsif navigation.breadcrumbs.any? %>
     <%# Rendering parent-based breadcrumbs because no browse, no related links, no live taxons %>
-    <%= render 'govuk_publishing_components/components/breadcrumbs', breadcrumbs: navigation.breadcrumbs, inverse: inverse %>
+    <%= render 'govuk_publishing_components/components/breadcrumbs', breadcrumbs: navigation.breadcrumbs, inverse: inverse, collapse_on_mobile: collapse_on_mobile %>
   <% else %>
     <%# Not rendering any breadcrumbs because there aren't any %>
   <% end %>

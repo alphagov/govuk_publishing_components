@@ -31,6 +31,24 @@ describe "ContextualBreadcrumbs", type: :view do
     content_item
   end
 
+  it "renders breadcrumbs that collapse on mobile by default" do
+    content_item = example_document_for("guide", "guide")
+    content_item = remove_mainstream_browse(content_item)
+    content_item = remove_curated_related_item(content_item)
+    content_item = set_live_taxons(content_item)
+    render_component(content_item: content_item)
+    assert_select ".gem-c-breadcrumbs.gem-c-breadcrumbs--collapse-on-mobile"
+  end
+
+  it "renders breadcrumbs that don't collapse on mobile if flag is passed" do
+    content_item = example_document_for("guide", "guide")
+    content_item = remove_mainstream_browse(content_item)
+    content_item = remove_curated_related_item(content_item)
+    content_item = set_live_taxons(content_item)
+    render_component(content_item: content_item, collapse_on_mobile: false)
+    assert_select ".gem-c-breadcrumbs.gem-c-breadcrumbs--collapse-on-mobile", false
+  end
+
   it "renders step by step breadcrumbs and step by step header if the content item is tagged to step by step" do
     render_component(content_item: example_document_for("guide", "guide-with-step-navs"))
     assert_select(".gem-c-step-nav-header")
