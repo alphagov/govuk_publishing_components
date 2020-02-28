@@ -4,7 +4,7 @@ body: |
   Accepts an array of breadcrumb objects. Each crumb must have a title and a URL.
   Links have tracking data but links to the homepage (any link with a url of "/") will be tracked separately as `homeLinkClicked`
 
-  Note: Only the first and last (or parent) item in the breadcrumb will be displayed when the page width is less than the "tablet" govuk-breakpoint.
+   We recommend that if using the breadcrumbs for navigation purposes, you set collapse_on_mobile to true to make things more readable for mobile users. However, you can specify `collapse_on_mobile`:`false` or remove the flag completely to stop this behaviour.
 shared_accessibility_criteria:
   - link
 accessibility_criteria:
@@ -16,6 +16,7 @@ display_html: true
 examples:
   default:
     data:
+      collapse_on_mobile: true
       breadcrumbs:
       - title: 'Section'
         url: '/section'
@@ -24,6 +25,7 @@ examples:
   inverse:
     description: On a dark background, such as the header of topic pages
     data:
+      collapse_on_mobile: true
       breadcrumbs:
       - title: 'Section'
         url: '/section'
@@ -35,14 +37,17 @@ examples:
       dark_background: true
   no_breadcrumbs:
     data:
+      collapse_on_mobile: true
       breadcrumbs: []
   single_section:
     data:
+      collapse_on_mobile: true
       breadcrumbs:
       - title: 'Section'
         url: '/section'
   many_breadcrumbs:
     data:
+      collapse_on_mobile: true
       breadcrumbs:
       - title: 'Home'
         url: '/'
@@ -54,6 +59,7 @@ examples:
         url: '/section/sub-section/sub-sub-section'
   no_home:
     data:
+      collapse_on_mobile: true
       breadcrumbs:
       - title: 'Service Manual'
         url: '/service-manual'
@@ -61,6 +67,7 @@ examples:
         url: '/service-manual/agile-delivery'
   real:
     data:
+      collapse_on_mobile: true
       breadcrumbs:
       - title: 'Home'
         url: '/'
@@ -68,9 +75,10 @@ examples:
         url: '/browse/abroad'
       - title: 'Travel abroad'
         url: '/browse/abroad/travel-abroad'
-  long_taxon_on_mobile:
-    description: This is an example of a breadcrumb (specifically for mobile) with long taxons on the the parent item and a greater touch target area
+  long_taxon:
+    description: This is an example of a breadcrumb with long taxons to demonstrate the wrapping behaviour and touch target area on mobile
     data:
+      collapse_on_mobile: true
       breadcrumbs:
       - title: 'Home'
         url: '/'
@@ -78,3 +86,14 @@ examples:
         url: '/education'
       - title: 'Education of disadvantaged children appended with some extra long content to make this a very very very very long taxon'
         url: '/education'
+  stop_collapsing_on_mobile:
+    description: We recommend that if using the breadcrumbs for navigation purposes, you set collapse_on_mobile to true to make things more readable for mobile users. However, you can specify `collapse_on_mobile`:`false` or remove the flag completely to stop this behaviour.
+    data:
+      collapse_on_mobile: false
+      breadcrumbs:
+      - title: 'Home'
+        url: '/'
+      - title: 'Passports, travel and living abroad'
+        url: '/browse/abroad'
+      - title: 'Travel abroad'
+        url: '/browse/abroad/travel-abroad'

@@ -128,13 +128,26 @@ describe "Breadcrumbs", type: :view do
     assert_select ".gem-c-breadcrumbs--inverse"
   end
 
-  it "ignore breadcrumb items without url" do
+  it "renders breadcrumb items without link as text" do
     render_component(
       breadcrumbs: [
         { title: 'Topic', url: '/topic' },
         { title: 'Current Page' },
       ]
     )
-    assert_select('.govuk-breadcrumbs__list-item:last-child', 'Topic')
+
+    assert_link_with_text_in('.govuk-breadcrumbs__list-item:first-child', '/topic', 'Topic')
+    assert_select('.govuk-breadcrumbs__list-item:last-child', 'Current Page')
+    assert_select('.govuk-breadcrumbs__list-item:last-child a', false)
+  end
+
+  it "collapses on mobile if passed a flag" do
+    render_component(collapse_on_mobile: true, breadcrumbs: [
+        { title: 'Home', url: '/' },
+        { title: 'Section', url: '/section' },
+        { title: 'Sub-section', url: '/sub-section' },
+      ])
+
+    assert_select('.gem-c-breadcrumbs.govuk-breadcrumbs.gem-c-breadcrumbs--collapse-on-mobile')
   end
 end

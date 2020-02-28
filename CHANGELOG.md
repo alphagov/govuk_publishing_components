@@ -11,6 +11,8 @@
 
 * Remove font_size option on contents list ([PR #1325](https://github.com/alphagov/govuk_publishing_components/pull/1325))
 * Fix feedback component tests ([PR #1329](https://github.com/alphagov/govuk_publishing_components/pull/1329))
+* Revert 'Dont show breadcrumb item with no url' ([PR #1330](https://github.com/alphagov/govuk_publishing_components/pull/1330))
+* Make breadcrumb collapsing behaviour opt-in and provide `collapse_on_mobile` flag ([PR #1330](https://github.com/alphagov/govuk_publishing_components/pull/1330))
 
 ## 21.26.2
 
