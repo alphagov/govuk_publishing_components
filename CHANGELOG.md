@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.27.0
 
 * Remove font_size option on contents list ([PR #1325](https://github.com/alphagov/govuk_publishing_components/pull/1325))
 * Fix feedback component tests ([PR #1329](https://github.com/alphagov/govuk_publishing_components/pull/1329))
