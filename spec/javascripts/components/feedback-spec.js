@@ -208,9 +208,11 @@ describe('Feedback component', function () {
 
     it('focusses the first field in the form', function () {
       loadFeedbackComponent()
+      var $input = $('#page-is-not-useful .gem-c-input')[0]
+      spyOn($input, 'focus')
       $('a.js-page-is-not-useful').click()
 
-      expect(document.activeElement).toBe($('#page-is-not-useful .gem-c-input').get(0))
+      expect($input.focus).toHaveBeenCalled()
     })
 
     it('triggers a Google Analytics event', function () {
@@ -259,9 +261,11 @@ describe('Feedback component', function () {
 
     it('focusses the first field in the form', function () {
       loadFeedbackComponent()
+      var $input = $('#something-is-wrong .gem-c-input')[0]
+      spyOn($input, 'focus')
       $('a.js-something-is-wrong').click()
 
-      expect(document.activeElement).toBe($('#something-is-wrong .gem-c-input').get(0))
+      expect($input.focus).toHaveBeenCalled()
     })
 
     it('triggers a Google Analytics event', function () {
@@ -619,6 +623,8 @@ describe('Feedback component', function () {
 
     it('focusses the error message', function () {
       loadFeedbackComponent()
+      var $input = $('#something-is-wrong .js-errors')[0]
+      spyOn($input, 'focus')
       fillAndSubmitSomethingIsWrongForm()
 
       jasmine.Ajax.requests.mostRecent().respondWith({
@@ -627,8 +633,7 @@ describe('Feedback component', function () {
         responseText: '{}'
       })
 
-      var $shouldBe = $('#something-is-wrong .js-errors').get(0)
-      expect(document.activeElement).toBe($shouldBe)
+      expect($input.focus).toHaveBeenCalled()
     })
   })
 
@@ -688,6 +693,8 @@ describe('Feedback component', function () {
 
     it('focusses the generic error', function () {
       loadFeedbackComponent()
+      var $input = $('#page-is-not-useful .js-errors')[0]
+      spyOn($input, 'focus')
       fillAndSubmitPageIsNotUsefulForm()
 
       jasmine.Ajax.requests.mostRecent().respondWith({
@@ -696,7 +703,7 @@ describe('Feedback component', function () {
         responseText: '{"errors": {"path": ["can\'t be blank"], "description": ["can\'t be blank"]}}'
       })
 
-      expect(document.activeElement).toBe($('#page-is-not-useful .js-errors').get(0))
+      expect($input.focus).toHaveBeenCalled()
     })
   })
 
