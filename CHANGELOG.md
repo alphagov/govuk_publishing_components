@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## ## 21.27.1
 
 * Fix handling of `on_govuk_blue` parameter value in the search component ([PR #1334](https://github.com/alphagov/govuk_publishing_components/pull/1334))
 
