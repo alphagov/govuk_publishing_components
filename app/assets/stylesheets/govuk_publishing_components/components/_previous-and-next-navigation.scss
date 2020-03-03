@@ -1,6 +1,6 @@
 .gem-c-pagination {
   display: block;
-  margin: govuk-spacing(6) (- govuk-spacing(3) );
+  margin: govuk-spacing(8) 0;
 }
 
 .gem-c-pagination__list {
@@ -11,13 +11,17 @@
 .gem-c-pagination__item {
   @include govuk-font($size: 16, $line-height: (20 / 16));
   list-style: none;
+
+  &:first-child {
+    margin-bottom: govuk-spacing(4);
+  }
 }
 
 .gem-c-pagination__link {
   @extend %govuk-link;
   display: block;
-  padding: govuk-spacing(3);
   text-decoration: none;
+  padding-bottom: govuk-spacing(4);
 
   &:hover,
   &:active,
@@ -37,6 +41,7 @@
 
 .gem-c-pagination__link-title {
   display: block;
+  padding-top: govuk-spacing(3);
 }
 
 .gem-c-pagination__link-divider {
