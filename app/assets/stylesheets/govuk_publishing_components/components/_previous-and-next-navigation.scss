@@ -40,6 +40,10 @@
     .gem-c-pagination__link-title {
       border-top-color: transparent;
     }
+
+    .gem-c-pagination__link-icon {
+      fill: $govuk-text-colour;
+    }
   }
 }
 
@@ -64,6 +68,7 @@
   margin-bottom: 1px;
   height: .482em;
   width: .63em;
+  fill: govuk-colour("dark-grey");
 }
 
 .gem-c-pagination__link-label {
