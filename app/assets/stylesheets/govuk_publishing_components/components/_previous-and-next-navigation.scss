@@ -36,11 +36,16 @@
 
   &:focus {
     @include govuk-focused-text;
+
+    .gem-c-pagination__link-title {
+      border-top-color: transparent;
+    }
   }
 }
 
 .gem-c-pagination__link-title {
   display: block;
+  border-top: 1px solid $govuk-border-colour;
   padding-top: govuk-spacing(3);
 }
 
