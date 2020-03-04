@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", ">= 5.0.0.1"
   s.add_dependency "rake"
   s.add_dependency "rouge"
+  s.add_dependency "sass", "3.7.4"
   s.add_dependency "sassc-rails", ">= 2.0.1"
   s.add_dependency "sprockets", "< 4"
 
