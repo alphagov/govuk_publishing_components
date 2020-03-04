@@ -1,32 +1,32 @@
 begin
-  require 'rspec/core/rake_task'
+  require "rspec/core/rake_task"
   RSpec::Core::RakeTask.new(:spec)
 rescue LoadError
   puts "Running in production mode"
 end
 
-APP_RAKEFILE = File.expand_path('spec/dummy/Rakefile', __dir__)
+APP_RAKEFILE = File.expand_path("spec/dummy/Rakefile", __dir__)
 
-load 'rails/tasks/engine.rake'
-load 'rails/tasks/statistics.rake'
+load "rails/tasks/engine.rake"
+load "rails/tasks/statistics.rake"
 
-require 'bundler/gem_tasks'
+require "bundler/gem_tasks"
 
 namespace :assets do
   desc "Test precompiling assets through dummy application"
   task :precompile do
-    Rake::Task['app:assets:precompile'].invoke
+    Rake::Task["app:assets:precompile"].invoke
   end
 
   desc "Test cleaning assets through dummy application"
   task :clean do
-    Rake::Task['app:assets:clean'].invoke
+    Rake::Task["app:assets:clean"].invoke
   end
 
   desc "Test clobbering assets through dummy application"
   task :clobber do
-    Rake::Task['app:assets:clobber'].invoke
+    Rake::Task["app:assets:clobber"].invoke
   end
 end
 
-task default: [:spec, 'app:jasmine:ci']
+task default: [:spec, "app:jasmine:ci"]

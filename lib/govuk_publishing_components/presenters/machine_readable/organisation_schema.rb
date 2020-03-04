@@ -35,7 +35,7 @@ module GovukPublishingComponents
         end
 
         {
-          "member" => members
+          "member" => members,
         }
       end
 
@@ -62,7 +62,7 @@ module GovukPublishingComponents
           "honorificPrefix" => minister["name_prefix"],
           "image" => minister.dig("image", "url"),
           "name" => minister["name"],
-          "url" => minister_url(minister)
+          "url" => minister_url(minister),
         }
       end
 
@@ -72,7 +72,7 @@ module GovukPublishingComponents
         {
           "@type" => "Role",
           "name" => minister["role"],
-          "url" => role_url(minister)
+          "url" => role_url(minister),
         }
       end
 
@@ -107,7 +107,7 @@ module GovukPublishingComponents
         end
 
         {
-          schema_name => related_orgs
+          schema_name => related_orgs,
         }
       end
 
@@ -115,7 +115,7 @@ module GovukPublishingComponents
         {
           "@context" => "http://schema.org",
           "@type" => "GovernmentOrganization",
-          "sameAs" => url
+          "sameAs" => url,
         }
       end
 

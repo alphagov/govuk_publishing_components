@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "Select", type: :view do
   def component_name
@@ -11,31 +11,31 @@ describe "Select", type: :view do
 
   it "does not render if items are passed but no id is passed" do
     assert_empty render_component(
-      label: 'My label',
+      label: "My label",
       options: [
         {
           value: "government-gateway",
-          text: "Use Government Gateway"
-        }
-      ]
+          text: "Use Government Gateway",
+        },
+      ],
     )
   end
 
   it "does not render if items are passed but no label is passed" do
     assert_empty render_component(
-      id: 'mydropdown',
+      id: "mydropdown",
       options: [
         {
           value: "government-gateway",
-          text: "Use Government Gateway"
-        }
-      ]
+          text: "Use Government Gateway",
+        },
+      ],
     )
   end
 
 
   it "does not render if no items are passed" do
-    assert_empty render_component(id: 'mydropdown', label: "My label", options: [])
+    assert_empty render_component(id: "mydropdown", label: "My label", options: [])
   end
 
   it "renders a select box with one item" do
@@ -45,9 +45,9 @@ describe "Select", type: :view do
       options: [
         {
           value: "government-gateway",
-          text: "Use Government Gateway"
-        }
-      ]
+          text: "Use Government Gateway",
+        },
+      ],
     )
 
     assert_select "select[name=mydropdown][id=mydropdown]"
@@ -62,17 +62,17 @@ describe "Select", type: :view do
       options: [
         {
           value: "big",
-          text: "Big"
+          text: "Big",
         },
         {
           value: "medium",
-          text: "Medium"
+          text: "Medium",
         },
         {
           value: "small",
-          text: "Small"
-        }
-      ]
+          text: "Small",
+        },
+      ],
     )
 
     assert_select ".govuk-select option[value=big]"
@@ -88,9 +88,9 @@ describe "Select", type: :view do
       options: [
         {
           value: "government-gateway",
-          text: "Use Government Gateway"
-        }
-      ]
+          text: "Use Government Gateway",
+        },
+      ],
     )
 
     assert_select "select[name=somethingelse][id=mydropdown]"
@@ -103,18 +103,18 @@ describe "Select", type: :view do
       options: [
         {
           value: "big",
-          text: "Big"
+          text: "Big",
         },
         {
           value: "medium",
           text: "Medium",
-          selected: true
+          selected: true,
         },
         {
           value: "small",
-          text: "Small"
-        }
-      ]
+          text: "Small",
+        },
+      ],
     )
 
     assert_select ".govuk-select option[value=medium][selected]"
@@ -133,11 +133,11 @@ describe "Select", type: :view do
             track_action: "action",
             track_options: {
               dimension28: 28,
-              dimension29: "twentynine"
-            }
-          }
-        }
-      ]
+              dimension29: "twentynine",
+            },
+          },
+        },
+      ],
     )
 
     assert_select ".gem-c-select [data-module=track-select-change]"
@@ -156,11 +156,11 @@ describe "Select", type: :view do
             track_action: "action",
             track_options: {
               dimension28: 28,
-              dimension29: "twentynine"
-            }
-          }
-        }
-      ]
+              dimension29: "twentynine",
+            },
+          },
+        },
+      ],
     )
 
     assert_select ".govuk-select option[value=1][data-track-category='category'][data-track-action='action'][data-track-options='{\"dimension28\":28,\"dimension29\":\"twentynine\"}']"
@@ -177,10 +177,10 @@ describe "Select", type: :view do
           data_attributes: {
             another_attribute: "test1",
             second_item: "item1",
-            option: "option1"
-          }
-        }
-      ]
+            option: "option1",
+          },
+        },
+      ],
     )
 
     assert_select ".gem-c-select [data-module=track-select-change]", false
@@ -196,9 +196,9 @@ describe "Select", type: :view do
       options: [
         {
           value: "government-gateway",
-          text: "Use Government Gateway"
-        }
-      ]
+          text: "Use Government Gateway",
+        },
+      ],
     )
 
     assert_select ".govuk-form-group.gem-c-select.govuk-form-group--error"
@@ -214,9 +214,9 @@ describe "Select", type: :view do
       options: [
         {
           value: "government-gateway",
-          text: "Use Government Gateway"
-        }
-      ]
+          text: "Use Government Gateway",
+        },
+      ],
     )
 
     assert_select ".gem-c-error-message.govuk-error-message", false
@@ -231,9 +231,9 @@ describe "Select", type: :view do
       options: [
         {
           value: "government-gateway",
-          text: "Use Government Gateway"
-        }
-      ]
+          text: "Use Government Gateway",
+        },
+      ],
     )
 
     assert_select "select[name=mydropdown]"
@@ -248,9 +248,9 @@ describe "Select", type: :view do
       options: [
         {
           value: "government-gateway",
-          text: "Use Government Gateway"
-        }
-      ]
+          text: "Use Government Gateway",
+        },
+      ],
     )
 
     assert_select ".govuk-label.govuk-label--s"

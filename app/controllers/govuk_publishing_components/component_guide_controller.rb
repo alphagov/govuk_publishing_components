@@ -22,8 +22,8 @@ module GovukPublishingComponents
                              index_breadcrumb,
                              component_breadcrumb(@component_doc, @component_example),
                              {
-                               title: @component_example.name
-                             }
+                               title: @component_example.name,
+                             },
                            ]
     end
 
@@ -56,7 +56,7 @@ module GovukPublishingComponents
       components = components.flatten.uniq.sort
 
       components.map { |component|
-        "@import 'govuk_publishing_components/components/#{print_path}_#{component.gsub('_', '-')}';" if component_has_sass_file(component.gsub('_', '-'), print_styles)
+        "@import 'govuk_publishing_components/components/#{print_path}_#{component.gsub('_', '-')}';" if component_has_sass_file(component.gsub("_", "-"), print_styles)
       }.join("\n").squeeze("\n").prepend(additional_files)
     end
 
@@ -83,7 +83,7 @@ module GovukPublishingComponents
         matches << data.scan(/(govuk_publishing_components\/components\/[a-z_-]+)/)
       end
 
-      matches.flatten.uniq.map(&:to_s).sort.map { |m| m.gsub('govuk_publishing_components/components/', '') }
+      matches.flatten.uniq.map(&:to_s).sort.map { |m| m.gsub("govuk_publishing_components/components/", "") }
     end
 
     def component_has_sass_file(component, print_styles)
@@ -94,13 +94,13 @@ module GovukPublishingComponents
     def components_within_component(component)
       data = File.read(Pathname.new(__dir__ + "/../../views/govuk_publishing_components/components/_#{component}.html.erb"))
       match = data.scan(/(govuk_publishing_components\/components\/[a-z_-]+)/)
-      match.flatten.uniq.map(&:to_s).sort.map { |m| m.gsub('govuk_publishing_components/components/', '') }
+      match.flatten.uniq.map(&:to_s).sort.map { |m| m.gsub("govuk_publishing_components/components/", "") }
     end
 
     def index_breadcrumb
       {
         title: GovukPublishingComponents::Config.component_guide_title,
-        url: component_guide_path
+        url: component_guide_path,
       }
     end
 

@@ -4,7 +4,7 @@ describe GovukPublishingComponents do
   describe ".render" do
     it "can render a component" do
       rendered = GovukPublishingComponents.render(
-        "govuk_publishing_components/components/button"
+        "govuk_publishing_components/components/button",
       )
 
       expect(rendered).to match(/<button/)
@@ -13,7 +13,7 @@ describe GovukPublishingComponents do
     it "can pass the component options" do
       rendered = GovukPublishingComponents.render(
         "govuk_publishing_components/components/button",
-        text: "My Button"
+        text: "My Button",
       )
 
       expect(rendered).to match(/My Button/)

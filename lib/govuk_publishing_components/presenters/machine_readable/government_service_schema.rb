@@ -14,7 +14,7 @@ module GovukPublishingComponents
           "@type" => "GovernmentService",
           "name" => page.title,
           "description" => page.description,
-          "url" => page.canonical_url
+          "url" => page.canonical_url,
         }
           .merge(provider)
           .merge(related_services)
@@ -23,38 +23,38 @@ module GovukPublishingComponents
     private
 
       def related_services
-        related_links = page.content_item.dig('links', 'ordered_related_items')
+        related_links = page.content_item.dig("links", "ordered_related_items")
 
         return {} unless related_links.present?
 
         {
           "isRelatedTo" => related_links.each_with_object([]) do |link, items|
-            if link['schema_name'] == 'transaction'
+            if link["schema_name"] == "transaction"
               items << {
                 "@type" => "GovernmentService",
-                "name" => link['title'],
-                "url" => link['web_url']
+                "name" => link["title"],
+                "url" => link["web_url"],
               }
             end
-          end
+          end,
         }
       end
 
       def provider
-        organisations = page.content_item.dig('links', 'organisations')
+        organisations = page.content_item.dig("links", "organisations")
 
         return {} unless organisations.present?
 
         providers = organisations.map do |organisation|
           {
             "@type" => "GovernmentOrganization",
-            "name" => organisation['title'],
-            "url" => organisation['web_url']
+            "name" => organisation["title"],
+            "url" => organisation["web_url"],
           }
         end
 
         {
-          "provider" => providers
+          "provider" => providers,
         }
       end
     end

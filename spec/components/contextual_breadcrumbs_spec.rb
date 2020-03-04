@@ -123,11 +123,11 @@ describe "ContextualBreadcrumbs", type: :view do
               base_path: "/business-and-industry/business-regulation",
               document_type: "taxon",
               phase: "live",
-              links: {}
-            }
-          ]
-        }
-      }
+              links: {},
+            },
+          ],
+        },
+      },
     ]
 
     render_component(content_item: content_item)

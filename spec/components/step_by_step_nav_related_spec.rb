@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "Step by step navigation related", type: :view do
   def component_name
@@ -8,47 +8,47 @@ describe "Step by step navigation related", type: :view do
   def one_link
     [
       {
-        href: '/link1',
-        text: 'Link 1'
-      }
+        href: "/link1",
+        text: "Link 1",
+      },
     ]
   end
 
   def two_links
     [
       {
-        href: '/link1',
-        text: 'Link 1'
+        href: "/link1",
+        text: "Link 1",
       },
       {
-        href: '/link2',
-        text: 'Link 2'
-      }
+        href: "/link2",
+        text: "Link 2",
+      },
     ]
   end
 
   def one_link_with_tracking
     [
       {
-        href: '/link1',
-        text: 'Link 1',
-        tracking_id: 'peter'
-      }
+        href: "/link1",
+        text: "Link 1",
+        tracking_id: "peter",
+      },
     ]
   end
 
   def two_links_with_tracking
     [
       {
-        href: '/link1',
-        text: 'Link 1',
-        tracking_id: 'peter'
+        href: "/link1",
+        text: "Link 1",
+        tracking_id: "peter",
       },
       {
-        href: '/link2',
-        text: 'Link 2',
-        tracking_id: 'paul'
-      }
+        href: "/link2",
+        text: "Link 2",
+        tracking_id: "paul",
+      },
     ]
   end
 
@@ -61,8 +61,8 @@ describe "Step by step navigation related", type: :view do
 
     this_link = ".gem-c-step-nav-related .gem-c-step-nav-related__heading .gem-c-step-nav-related__link"
 
-    assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__heading .gem-c-step-nav-related__pretitle", text: 'Part of'
-    assert_select this_link + "[href='/link1']", text: 'Link 1'
+    assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__heading .gem-c-step-nav-related__pretitle", text: "Part of"
+    assert_select this_link + "[href='/link1']", text: "Link 1"
     assert_select this_link + "[data-track-category='stepNavPartOfClicked']"
     assert_select this_link + "[data-track-action='Part of']"
     assert_select this_link + "[data-track-label='/link1']"
@@ -75,9 +75,9 @@ describe "Step by step navigation related", type: :view do
 
     this_link = ".gem-c-step-nav-related .gem-c-step-nav-related__links .gem-c-step-nav-related__link[href='/link2']"
 
-    assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__heading .gem-c-step-nav-related__pretitle", text: 'Part of'
-    assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__links .gem-c-step-nav-related__link[href='/link1']", text: 'Link 1'
-    assert_select this_link, text: 'Link 2'
+    assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__heading .gem-c-step-nav-related__pretitle", text: "Part of"
+    assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__links .gem-c-step-nav-related__link[href='/link1']", text: "Link 1"
+    assert_select this_link, text: "Link 2"
     assert_select this_link + "[data-track-category='stepNavPartOfClicked']"
     assert_select this_link + "[data-track-action='Part of']"
     assert_select this_link + "[data-track-label='/link2']"
@@ -86,9 +86,9 @@ describe "Step by step navigation related", type: :view do
   end
 
   it "shows alternative heading text" do
-    render_component(links: one_link, pretitle: 'Moo')
+    render_component(links: one_link, pretitle: "Moo")
 
-    assert_select ".gem-c-step-nav-related__pretitle", text: 'Moo'
+    assert_select ".gem-c-step-nav-related__pretitle", text: "Moo"
     assert_select ".gem-c-step-nav-related__link[data-track-action='Moo']"
   end
 
@@ -108,7 +108,7 @@ describe "Step by step navigation related", type: :view do
   it "displays as a list when always_display_as_list is passed in" do
     render_component(links: one_link, always_display_as_list: true)
 
-    assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__heading .gem-c-step-nav-related__pretitle", text: 'Part of'
-    assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__links .gem-c-step-nav-related__link[href='/link1']", text: 'Link 1'
+    assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__heading .gem-c-step-nav-related__pretitle", text: "Part of"
+    assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__links .gem-c-step-nav-related__link[href='/link1']", text: "Link 1"
   end
 end

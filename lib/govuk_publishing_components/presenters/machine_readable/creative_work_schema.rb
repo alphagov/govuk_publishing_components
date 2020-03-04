@@ -28,8 +28,8 @@ module GovukPublishingComponents
             "logo" => {
               "@type" => "ImageObject",
               "url" => page.logo_url,
-            }
-          }
+            },
+          },
         }.merge(image_schema).merge(author_schema).merge(is_part_of).merge(about).merge(has_part)
       end
 
@@ -39,7 +39,7 @@ module GovukPublishingComponents
 
       def image_schema
         {
-          "image" => page.has_image? ? [page.image_url] : page.image_placeholders
+          "image" => page.has_image? ? [page.image_url] : page.image_placeholders,
         }
       end
 
@@ -51,7 +51,7 @@ module GovukPublishingComponents
             "@type" => "Organization",
             "name" => publishing_organisation["title"],
             "url" => Plek.current.website_root + publishing_organisation["base_path"],
-          }
+          },
         }
       end
 
@@ -63,7 +63,7 @@ module GovukPublishingComponents
         return {} unless document_collections.any?
 
         {
-          "isPartOf" => document_collections
+          "isPartOf" => document_collections,
         }
       end
 
@@ -72,7 +72,7 @@ module GovukPublishingComponents
           content_item: step_by_step,
           schema: :article,
           logo_url: page.logo_url,
-          image_placeholders: page.image_placeholders
+          image_placeholders: page.image_placeholders,
         )
       end
 
@@ -80,7 +80,7 @@ module GovukPublishingComponents
         return {} unless collection_pages("documents").any?
 
         {
-            "hasPart" => collection_pages("documents").map { |document| HasPartSchema.new(document).structured_data }
+            "hasPart" => collection_pages("documents").map { |document| HasPartSchema.new(document).structured_data },
         }
       end
 
@@ -101,7 +101,7 @@ module GovukPublishingComponents
         return {} unless live_taxons.any?
 
         {
-            "about" => linked_taxons
+            "about" => linked_taxons,
         }
       end
 
@@ -117,7 +117,7 @@ module GovukPublishingComponents
           {
               "@context" => "http://schema.org",
               "@type" => "Thing",
-              "sameAs" => taxon["web_url"]
+              "sameAs" => taxon["web_url"],
           }
         end
       end

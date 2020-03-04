@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "Chevron Banner", type: :view do
   def component_name
@@ -18,25 +18,25 @@ describe "Chevron Banner", type: :view do
   end
 
   it "renders a chevron banner correctly" do
-    render_component(href: '/a-link', text: "This is a link")
+    render_component(href: "/a-link", text: "This is a link")
     assert_select ".gem-c-chevron-banner"
     assert_select ".gem-c-chevron-banner__link[href='/a-link']", text: "This is a link"
   end
 
   it "can render with a border on hover" do
-    render_component(href: '/a-link', text: "This is a link", hover_border: true)
-    assert_select '.gem-c-chevron-banner--hover-border'
+    render_component(href: "/a-link", text: "This is a link", hover_border: true)
+    assert_select ".gem-c-chevron-banner--hover-border"
   end
 
   it "automatically adds data module track click if data attributes are provided" do
     render_component(
-      href: '/a-link',
+      href: "/a-link",
       text: "This is a link",
       data_attributes: {
         "data-track-category": "category",
         "data-track-action": "action",
-        "data-track-label": "label"
-      }
+        "data-track-label": "label",
+      },
     )
 
     assert_select ".gem-c-chevron-banner__link[data-module='track-click']", text: "This is a link"
@@ -44,13 +44,13 @@ describe "Chevron Banner", type: :view do
 
   it "adds data attributes when supplied" do
     render_component(
-      href: '/a-link',
+      href: "/a-link",
       text: "This is a link",
       data_attributes: {
         "track-category": "category",
         "track-action": "action",
-        "track-label": "label"
-      }
+        "track-label": "label",
+      },
     )
 
     assert_select ".gem-c-chevron-banner__link[data-track-category='category']"

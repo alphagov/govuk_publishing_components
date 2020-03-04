@@ -19,7 +19,7 @@ module GovukPublishingComponents
 
       def main_entity
         {
-          "mainEntity" => questions_and_answers_markup
+          "mainEntity" => questions_and_answers_markup,
         }
       end
 
@@ -36,8 +36,8 @@ module GovukPublishingComponents
             "acceptedAnswer" => {
               "@type" => "Answer",
               "url" => q_and_a_url,
-              "text" => value[:answer]
-            }
+              "text" => value[:answer],
+            },
           }
         end
       end

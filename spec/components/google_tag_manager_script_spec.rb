@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "Google tag manager script", type: :view do
   def component_name
@@ -6,7 +6,7 @@ describe "Google tag manager script", type: :view do
   end
 
   it "renders a script tag" do
-    render_component(gtm_id: 'GTM_ID')
+    render_component(gtm_id: "GTM_ID")
 
     assert_select "script"
     expect(rendered).to include "window,document,'script','dataLayer','GTM_ID'"

@@ -16,7 +16,7 @@ describe "Search", type: :view do
   end
 
   it "doesn't render a search box for a dark background if the parameter is invalid" do
-    render_component(on_govuk_blue: 'dummy')
+    render_component(on_govuk_blue: "dummy")
     assert_select ".gem-c-search.gem-c-search--on-govuk-blue", false
   end
 

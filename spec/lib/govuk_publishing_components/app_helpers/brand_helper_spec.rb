@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 RSpec.describe GovukPublishingComponents::AppHelpers::BrandHelper do
   describe "Brand helper" do
@@ -11,11 +11,11 @@ RSpec.describe GovukPublishingComponents::AppHelpers::BrandHelper do
     end
 
     it "returns the expected brand" do
-      brand = GovukPublishingComponents::AppHelpers::BrandHelper.new('attorney-generals-office')
+      brand = GovukPublishingComponents::AppHelpers::BrandHelper.new("attorney-generals-office")
 
-      expect(brand.brand_class).to eql('brand--attorney-generals-office')
-      expect(brand.border_color_class).to eql('brand__border-color')
-      expect(brand.color_class).to eql('brand__color')
+      expect(brand.brand_class).to eql("brand--attorney-generals-office")
+      expect(brand.border_color_class).to eql("brand__border-color")
+      expect(brand.color_class).to eql("brand__color")
     end
   end
 end

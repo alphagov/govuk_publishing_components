@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "Machine readable metadata", type: :view do
   def component_name
@@ -9,7 +9,7 @@ describe "Machine readable metadata", type: :view do
     example = GovukSchemas::RandomExample.for_schema(frontend_schema: "generic")
     render_component(content_item: example, schema: :article)
 
-    json_linked_data = Nokogiri::HTML(rendered).css('script').text
+    json_linked_data = Nokogiri::HTML(rendered).css("script").text
 
     assert JSON.parse(json_linked_data)
   end
@@ -18,7 +18,7 @@ describe "Machine readable metadata", type: :view do
     example = GovukSchemas::RandomExample.for_schema(frontend_schema: "person")
     render_component(content_item: example, schema: :person)
 
-    json_linked_data = Nokogiri::HTML(rendered).css('script').text
+    json_linked_data = Nokogiri::HTML(rendered).css("script").text
 
     assert JSON.parse(json_linked_data)
   end
@@ -54,7 +54,7 @@ describe "Machine readable metadata", type: :view do
     example = GovukSchemas::RandomExample.for_schema(frontend_schema: "finder")
     render_component(content_item: example, schema: :search_results_page)
 
-    json_linked_data = Nokogiri::HTML(rendered).css('script').text
+    json_linked_data = Nokogiri::HTML(rendered).css("script").text
 
     assert JSON.parse(json_linked_data)
   end

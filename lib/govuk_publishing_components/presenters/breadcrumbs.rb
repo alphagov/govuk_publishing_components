@@ -37,7 +37,7 @@ module GovukPublishingComponents
         {
           "@type" => "ListItem",
           "position" => index,
-          "item" => list_item_item
+          "item" => list_item_item,
         }
       end
 
@@ -50,27 +50,27 @@ module GovukPublishingComponents
       end
 
       def aria_current
-        'false'
+        "false"
       end
 
       def tracking_data(breadcrumbs_length)
         data = {
-          track_category: 'breadcrumbClicked',
+          track_category: "breadcrumbClicked",
           track_action: index,
           track_label: path,
           track_options: {
               dimension28: breadcrumbs_length.to_s,
-              dimension29: crumb[:title]
-          }
+              dimension29: crumb[:title],
+          },
         }
 
         is_homepage = crumb[:url] == "/"
 
         if is_homepage
-          data[:track_category] = 'homeLinkClicked'
-          data[:track_action] = 'homeBreadcrumb'
-          data[:track_label] = ''
-          data[:track_options] = '{}'
+          data[:track_category] = "homeLinkClicked"
+          data[:track_action] = "homeBreadcrumb"
+          data[:track_label] = ""
+          data[:track_options] = "{}"
         end
 
         data

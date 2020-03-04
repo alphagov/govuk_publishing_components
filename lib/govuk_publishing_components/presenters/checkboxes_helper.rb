@@ -24,7 +24,7 @@ module GovukPublishingComponents
         @id = options[:id] || "checkboxes-#{SecureRandom.hex(4)}"
         @heading = options[:heading] || nil
         @heading_size = options[:heading_size]
-        @heading_size = 'm' unless %w(s m l xl).include?(@heading_size)
+        @heading_size = "m" unless %w(s m l xl).include?(@heading_size)
         @heading_caption = options[:heading_caption] || nil
         @is_page_heading = options[:is_page_heading]
         @description = options[:description] || nil
@@ -54,7 +54,7 @@ module GovukPublishingComponents
         if @is_page_heading
           content_tag(
             :legend,
-            class: "govuk-fieldset__legend govuk-fieldset__legend--xl gem-c-title"
+            class: "govuk-fieldset__legend govuk-fieldset__legend--xl gem-c-title",
           ) do
             concat content_tag(:span, heading_caption, class: "govuk-caption-xl") if heading_caption.present?
             concat content_tag(:h1, @heading, class: "gem-c-title__text")

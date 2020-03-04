@@ -80,7 +80,7 @@ describe "Attachment", type: :view do
         title: "Attachment",
         url: "attachment",
         content_type: "application/vnd.oasis.opendocument.spreadsheet",
-        alternative_format_contact_email: "defra.helpline@defra.gsi.gov.uk"
+        alternative_format_contact_email: "defra.helpline@defra.gsi.gov.uk",
       },
     )
     assert_select "a[href='mailto:defra.helpline@defra.gsi.gov.uk']"

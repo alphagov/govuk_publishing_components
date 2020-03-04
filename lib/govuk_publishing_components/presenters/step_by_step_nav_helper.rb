@@ -28,7 +28,7 @@ module GovukPublishingComponents
         content_tag(
           :p,
           text,
-          class: "gem-c-step-nav__paragraph"
+          class: "gem-c-step-nav__paragraph",
         )
       end
 
@@ -37,17 +37,17 @@ module GovukPublishingComponents
           get_list_element(element[:style]),
           class: "gem-c-step-nav__list #{get_list_style(element[:style])}",
           data: {
-            length: element[:contents].length
-          }
+            length: element[:contents].length,
+          },
         ) do
           element[:contents].collect { |contents|
             concat(
               content_tag(
                 :li,
-                class: "gem-c-step-nav__list-item js-list-item #{link_active(contents[:active])}"
+                class: "gem-c-step-nav__list-item js-list-item #{link_active(contents[:active])}",
               ) do
                 create_list_item_content(contents)
-              end
+              end,
             )
           }
         end
@@ -66,11 +66,11 @@ module GovukPublishingComponents
 
           link_to(
             href,
-            rel: ("external" if href.start_with?('http')),
+            rel: ("external" if href.start_with?("http")),
             data: {
-              position: "#{@options[:step_index] + 1}.#{@link_index}"
+              position: "#{@options[:step_index] + 1}.#{@link_index}",
             },
-            class: "gem-c-step-nav__link js-link"
+            class: "gem-c-step-nav__link js-link",
           ) do
             text
           end
@@ -99,7 +99,7 @@ module GovukPublishingComponents
       end
 
       def external_url?(href)
-        href.start_with?('http')
+        href.start_with?("http")
       end
 
       def link_with_step_nav_query_parameter(href)

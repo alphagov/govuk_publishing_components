@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "Fieldset", type: :view do
   def component_name
@@ -13,19 +13,19 @@ describe "Fieldset", type: :view do
 
   it "renders a fieldset correctly" do
     render_component(
-      legend_text: 'Do you have a passport?',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad neque, maxime est ea laudantium totam fuga!'
+      legend_text: "Do you have a passport?",
+      text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad neque, maxime est ea laudantium totam fuga!",
     )
 
-    assert_select ".govuk-fieldset__legend", text: 'Do you have a passport?'
+    assert_select ".govuk-fieldset__legend", text: "Do you have a passport?"
     assert_select ".gem-c-fieldset", text: /Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad neque, maxime est ea laudantium totam fuga!/
   end
 
   it "renders a fieldset with an id" do
     render_component(
-      legend_text: 'Do you have a passport?',
-      id: 'passports',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad neque, maxime est ea laudantium totam fuga!'
+      legend_text: "Do you have a passport?",
+      id: "passports",
+      text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad neque, maxime est ea laudantium totam fuga!",
     )
 
     assert_select ".govuk-fieldset#passports"
@@ -33,18 +33,18 @@ describe "Fieldset", type: :view do
 
   it "renders a fieldset with the legend as heading" do
     render_component(
-      legend_text: 'Do you have a passport?',
+      legend_text: "Do you have a passport?",
       heading_level: 2,
-      text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad neque, maxime est ea laudantium totam fuga!'
+      text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad neque, maxime est ea laudantium totam fuga!",
     )
     assert_select ".govuk-fieldset .govuk-fieldset__legend h2", "Do you have a passport?"
   end
 
   it "renders a fieldset with a custom size legend" do
     render_component(
-      legend_text: 'Do you have a passport?',
-      heading_size: 'xl',
-      text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad neque, maxime est ea laudantium totam fuga!'
+      legend_text: "Do you have a passport?",
+      heading_size: "xl",
+      text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad neque, maxime est ea laudantium totam fuga!",
     )
 
     assert_select ".govuk-fieldset__legend.govuk-fieldset__legend--xl"
@@ -52,14 +52,14 @@ describe "Fieldset", type: :view do
 
   it "renders a fieldset with an error correctly" do
     render_component(
-      legend_text: 'Do you have a passport?',
-      error_message: 'uh oh',
+      legend_text: "Do you have a passport?",
+      error_message: "uh oh",
       error_id: "error_id",
-      text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad neque, maxime est ea laudantium totam fuga!'
+      text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ad neque, maxime est ea laudantium totam fuga!",
     )
 
     assert_select ".gem-c-fieldset.govuk-form-group.govuk-form-group--error"
     assert_select ".govuk-fieldset[aria-describedby=error_id]"
-    assert_select ".gem-c-error-message[id=error_id]", text: 'Error: uh oh'
+    assert_select ".gem-c-error-message[id=error_id]", text: "Error: uh oh"
   end
 end

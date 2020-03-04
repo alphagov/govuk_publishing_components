@@ -1,5 +1,5 @@
-require 'spec_helper'
-require 'action_view'
+require "spec_helper"
+require "action_view"
 
 RSpec.describe GovukPublishingComponents::Presenters::StepByStepNavHelper do
   include ActionView::Helpers::SanitizeHelper
@@ -9,7 +9,7 @@ RSpec.describe GovukPublishingComponents::Presenters::StepByStepNavHelper do
 
     it "generates step nav ids correctly" do
       id = step_helper.generate_step_nav_id("This isn't a real step title - numb3rs okay?")
-      expect(id).to eql('this-isn-t-a-real-step-title-numb3rs-okay')
+      expect(id).to eql("this-isn-t-a-real-step-title-numb3rs-okay")
     end
 
     it "generates a paragraph" do

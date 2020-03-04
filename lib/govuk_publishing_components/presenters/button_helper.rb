@@ -1,4 +1,4 @@
-require 'action_view'
+require "action_view"
 
 module GovukPublishingComponents
   module Presenters

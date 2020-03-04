@@ -8,15 +8,15 @@ describe "ShareLinks", type: :view do
   def links
     [
       {
-        href: '/facebook',
-        text: 'Facebook',
-        icon: 'facebook'
+        href: "/facebook",
+        text: "Facebook",
+        icon: "facebook",
       },
       {
-        href: '/twitter',
-        text: 'Twitter',
-        hidden_text: 'Tweet to',
-        icon: 'twitter'
+        href: "/twitter",
+        text: "Twitter",
+        hidden_text: "Tweet to",
+        icon: "twitter",
       },
     ]
   end
@@ -32,7 +32,7 @@ describe "ShareLinks", type: :view do
   end
 
   it "renders a custom title" do
-    render_component(links: links, title: 'Share this page')
+    render_component(links: links, title: "Share this page")
     assert_select ".gem-c-share-links__title", text: "Share this page"
   end
 
@@ -40,7 +40,7 @@ describe "ShareLinks", type: :view do
     render_component(links: [links[0]])
     assert_select ".gem-c-share-links .gem-c-share-links__link[href=\"/facebook\"]"
     assert_select ".gem-c-share-links .gem-c-share-links__link[href=\"/twitter\"]",
-      false, "A twitter share link has not been provided so should not have been rendered"
+                  false, "A twitter share link has not been provided so should not have been rendered"
   end
 
   it "adds social interactions tracking" do
@@ -50,7 +50,7 @@ describe "ShareLinks", type: :view do
   end
 
   it "adds branding correctly" do
-    render_component(links: [links[0]], brand: 'attorney-generals-office')
+    render_component(links: [links[0]], brand: "attorney-generals-office")
     assert_select ".gem-c-share-links.brand--attorney-generals-office .gem-c-share-links__link.brand__color"
   end
 

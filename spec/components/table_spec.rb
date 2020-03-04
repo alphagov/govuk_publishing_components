@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "Table", type: :view do
   def component_name
@@ -15,7 +15,7 @@ describe "Table", type: :view do
   it "renders with caption" do
     render_component(
       caption: "My caption",
-      caption_classes: "govuk-heading-m"
+      caption_classes: "govuk-heading-m",
     )
 
     assert_select "caption.govuk-heading-m", "My caption"
@@ -26,18 +26,18 @@ describe "Table", type: :view do
       rows: [
         [
           {
-            text: "January"
+            text: "January",
           },
           {
             text: "£85",
-            format: "numeric"
+            format: "numeric",
           },
           {
             text: "£95",
-            format: "numeric"
-          }
-        ]
-      ]
+            format: "numeric",
+          },
+        ],
+      ],
     )
 
     assert_select ".govuk-table td:first-child", "January"
@@ -49,18 +49,18 @@ describe "Table", type: :view do
       rows: [
         [
           {
-            text: "January"
+            text: "January",
           },
           {
             text: nil,
-            format: "numeric"
+            format: "numeric",
           },
           {
             text: "£95",
-            format: "numeric"
-          }
-        ]
-      ]
+            format: "numeric",
+          },
+        ],
+      ],
     )
 
     assert_select ".govuk-table td:first-child", "January"
@@ -71,17 +71,17 @@ describe "Table", type: :view do
     render_component(
       head: [
         {
-          text: "Month you apply"
+          text: "Month you apply",
         },
         {
           text: "Rate for bicycles",
-          format: "numeric"
+          format: "numeric",
         },
         {
           text: "Rate for vehicles",
-          format: "numeric"
-        }
-      ]
+          format: "numeric",
+        },
+      ],
     )
 
     assert_select ".govuk-table th:first-child", "Month you apply"
@@ -94,18 +94,18 @@ describe "Table", type: :view do
       rows: [
         [
           {
-            text: "January"
+            text: "January",
           },
           {
             text: "£85",
-            format: "numeric"
+            format: "numeric",
           },
           {
             text: "£95",
-            format: "numeric"
-          }
-        ]
-      ]
+            format: "numeric",
+          },
+        ],
+      ],
     )
 
     assert_select ".govuk-table th:first-child", "January"
@@ -117,23 +117,23 @@ describe "Table", type: :view do
       sortable: true,
       head: [
         {
-          text: "Month you apply"
+          text: "Month you apply",
         },
         {
           text: "Rate for bicycles",
           format: "numeric",
           sort_direction: "descending",
-          href: "/?sort_direction=desc"
+          href: "/?sort_direction=desc",
         },
         {
           text: "Rate for vehicles",
           format: "numeric",
           href: "/?sort_direction=desc",
           data_attributes: {
-            tracking: "UTM-123"
-          }
-        }
-      ]
+            tracking: "UTM-123",
+          },
+        },
+      ],
     )
 
     assert_select ".govuk-table.govuk-table--sortable"

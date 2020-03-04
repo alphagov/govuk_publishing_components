@@ -23,8 +23,8 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
                 "introduction": [
                   {
                     "content_type": "text/govspeak",
-                    "content": "Check what you need to do to learn to drive."
-                  }
+                    "content": "Check what you need to do to learn to drive.",
+                  },
                 ],
                 "steps": [
                   {
@@ -32,7 +32,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
                     "contents": [
                       {
                         "type": "paragraph",
-                        "text": "Most people can start learning to drive when they’re 17."
+                        "text": "Most people can start learning to drive when they’re 17.",
                       },
                       {
                         "type": "list",
@@ -40,26 +40,26 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
                         "contents": [
                           {
                             "href": "/vehicles-can-drive",
-                            "text": "Check what age you can drive"
+                            "text": "Check what age you can drive",
                           },
                           {
                             "href": "/legal-obligations-drivers-riders",
-                            "text": "Requirements for driving legally"
+                            "text": "Requirements for driving legally",
                           },
                           {
                             "href": "/driving-eyesight-rules",
-                            "text": "Driving eyesight rules"
-                          }
-                        ]
-                      }
-                    ]
+                            "text": "Driving eyesight rules",
+                          },
+                        ],
+                      },
+                    ],
                   },
                   {
                     "title": "Driving lessons and practice",
                     "contents": [
                       {
                         "type": "paragraph",
-                        "text": "You need a provisional driving licence to take lessons or practice."
+                        "text": "You need a provisional driving licence to take lessons or practice.",
                       },
                       {
                         "type": "list",
@@ -67,23 +67,23 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
                         "contents": [
                           {
                             "href": "/guidance/the-highway-code",
-                            "text": "The Highway Code"
+                            "text": "The Highway Code",
                           },
                           {
                             "href": "/driving-lessons-learning-to-drive",
-                            "text": "Taking driving lessons"
+                            "text": "Taking driving lessons",
                           },
                           {
                             "href": "/find-driving-schools-and-lessons",
-                            "text": "Find driving schools, lessons and instructors"
+                            "text": "Find driving schools, lessons and instructors",
                           },
                           {
                             "href": "/government/publications/car-show-me-tell-me-vehicle-safety-questions",
-                            "text": "Practise vehicle safety questions"
-                          }
-                        ]
-                      }
-                    ]
+                            "text": "Practise vehicle safety questions",
+                          },
+                        ],
+                      },
+                    ],
                   },
                   {
                     "title": "Prepare for your theory test",
@@ -95,26 +95,26 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
                         "contents": [
                           {
                             "href": "/theory-test/revision-and-practice",
-                            "text": "Theory test revision and practice"
+                            "text": "Theory test revision and practice",
                           },
                           {
                             "href": "/take-practice-theory-test",
-                            "text": "Take a practice theory test"
+                            "text": "Take a practice theory test",
                           },
                           {
                             "href": "https://www.safedrivingforlife.info/shop/product/official-dvsa-theory-test-kit-app-app",
-                            "text": "Theory and hazard perception test app"
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              }
-            }
-          }
-        ]
-      }
+                            "text": "Theory and hazard perception test app",
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            },
+          },
+        ],
+      },
     )
   }
 
@@ -127,10 +127,10 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
         "details" => {
           "step_by_step_nav" => {
             "steps" => [
-              "title": "Step one"
-            ]
-          }
-        }
+              "title": "Step one",
+            ],
+          },
+        },
       }
     end
 
@@ -143,7 +143,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
       end
 
       it "handled gracefully" do
-        step_nav_links = described_class.new(content_store_response, '/giant-pool/planning')
+        step_nav_links = described_class.new(content_store_response, "/giant-pool/planning")
 
         expect(step_nav_links.step_navs.count).to eq(0)
 
@@ -165,12 +165,12 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
           "document_type" => "transaction",
           "links" => {
             "part_of_step_navs" => [step_nav],
-          }
+          },
         }
       end
 
       it "parses the content item" do
-        step_nav_links = described_class.new(content_store_response, '/vomit-comet-session')
+        step_nav_links = described_class.new(content_store_response, "/vomit-comet-session")
 
         expect(step_nav_links.step_navs.count).to eq(1)
 
@@ -178,7 +178,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
         expect(step_nav_links.header).to eq(
           path: "/learn-to-spacewalk",
           title: "Learn to spacewalk: small step by giant leap",
-          tracking_id: "cccc-dddd"
+          tracking_id: "cccc-dddd",
         )
 
         expect(step_nav_links.show_related_links?).to be true
@@ -186,8 +186,8 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
           {
             href: "/learn-to-spacewalk",
             text: "Learn to spacewalk: small step by giant leap",
-            tracking_id: "cccc-dddd"
-          }
+            tracking_id: "cccc-dddd",
+          },
         ])
 
         expect(step_nav_links.show_sidebar?).to be true
@@ -199,7 +199,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
         {
           "content_id" => "aaaa-bbbb",
           "title" => "Lose your lunch: lurch by lurch",
-          "base_path" => "/lose-your-lunch"
+          "base_path" => "/lose-your-lunch",
         }
       end
 
@@ -209,12 +209,12 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
           "document_type" => "transaction",
           "links" => {
             "part_of_step_navs" => [step_nav, step_nav2],
-          }
+          },
         }
       end
 
       it "parses the content item" do
-        step_nav_links = described_class.new(content_store_response, '/vomit-comet-session')
+        step_nav_links = described_class.new(content_store_response, "/vomit-comet-session")
 
         expect(step_nav_links.step_navs.count).to eq(2)
 
@@ -223,13 +223,13 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
           {
             href: "/learn-to-spacewalk",
             text: "Learn to spacewalk: small step by giant leap",
-            tracking_id: "cccc-dddd"
+            tracking_id: "cccc-dddd",
           },
           {
             href: "/lose-your-lunch",
             text: "Lose your lunch: lurch by lurch",
-            tracking_id: "aaaa-bbbb"
-          }
+            tracking_id: "aaaa-bbbb",
+          },
         ])
 
         expect(step_nav_links.show_header?).to be false
@@ -245,12 +245,12 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
           "document_type" => "transaction",
           "links" => {
             "part_of_step_navs" => Array.new(6, step_nav),
-          }
+          },
         }
       end
 
       it "parses the content item" do
-        step_nav_links = described_class.new(content_store_response, '/vomit-comet-session')
+        step_nav_links = described_class.new(content_store_response, "/vomit-comet-session")
 
         expect(step_nav_links.step_navs.count).to eq(6)
 
@@ -305,7 +305,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
     it "returns the active step nav in the related links if there is an active step by step" do
       step_nav_helper = described_class.new(content_item, "/driving-lessons-learning-to-drive", "step-by-step-nav" => "e01e924b-9c7c-4c71-8241-66a575c2f61f")
       expect(step_nav_helper.related_links.count).to eq(1)
-      expect(step_nav_helper.related_links.first['tracking_id']).to eq(content_item[:content_id])
+      expect(step_nav_helper.related_links.first["tracking_id"]).to eq(content_item[:content_id])
       expect(step_nav_helper.show_related_links?).to be true
     end
 
@@ -323,13 +323,13 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
       step_nav = {
         "content_id" => "cccc-dddd",
         "title" => "Learn to spacewalk: small step by giant leap",
-        "base_path" => "/learn-to-spacewalk"
+        "base_path" => "/learn-to-spacewalk",
       }
 
       another_step_nav = {
         "content_id" => "aaaa-bbbb",
         "title" => "Lose your lunch: lurch by lurch",
-        "base_path" => "/lose-your-lunch"
+        "base_path" => "/lose-your-lunch",
       }
 
       content_item_in_two_step_navs = {
@@ -337,12 +337,12 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
         "document_type" => "transaction",
         "links" => {
           "part_of_step_navs" => [step_nav, another_step_nav],
-        }
+        },
       }
 
       step_nav_helper = described_class.new(content_item_in_two_step_navs, "/driving-lessons-learning-to-drive", "step-by-step-nav" => "cccc-dddd")
       expect(step_nav_helper.also_part_of_step_nav.count).to eq(1)
-      expect(step_nav_helper.also_part_of_step_nav.first[:tracking_id]).to eq('aaaa-bbbb')
+      expect(step_nav_helper.also_part_of_step_nav.first[:tracking_id]).to eq("aaaa-bbbb")
       expect(step_nav_helper.show_also_part_of_step_nav?).to be true
     end
 
@@ -350,14 +350,14 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
       step_nav = {
         "content_id" => "cccc-dddd",
         "title" => "Learn to spacewalk: small step by giant leap",
-        "base_path" => "/learn-to-spacewalk"
+        "base_path" => "/learn-to-spacewalk",
       }
       content_item = {
         "title" => "Book a session in the vomit comet",
         "document_type" => "transaction",
         "links" => {
           "related_to_step_navs" => [step_nav],
-        }
+        },
       }
       step_nav_helper = described_class.new(content_item, "/driving-lessons-learning-to-drive", "step-by-step-nav" => "cccc-dddd")
       expect(step_nav_helper.active_step_by_step?).to eq(true)
@@ -368,14 +368,14 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
       step_nav = {
         "content_id" => "cccc-dddd",
         "title" => "Learn to spacewalk: small step by giant leap",
-        "base_path" => "/learn-to-spacewalk"
+        "base_path" => "/learn-to-spacewalk",
       }
       content_item = {
         "title" => "Book a session in the vomit comet",
         "document_type" => "transaction",
         "links" => {
           "related_to_step_navs" => [step_nav],
-        }
+        },
       }
       step_nav_helper = described_class.new(content_item, "/driving-lessons-learning-to-drive")
       expect(step_nav_helper.active_step_by_step?).to eq(false)
@@ -386,14 +386,14 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
       step_nav = {
         "content_id" => "cccc-dddd",
         "title" => "Learn to spacewalk: small step by giant leap",
-        "base_path" => "/learn-to-spacewalk"
+        "base_path" => "/learn-to-spacewalk",
       }
       content_item = {
         "title" => "Book a session in the vomit comet",
         "document_type" => "transaction",
         "links" => {
           "related_to_step_navs" => [step_nav],
-        }
+        },
       }
       step_nav_helper = described_class.new(content_item, "/driving-lessons-learning-to-drive", "step-by-step-nav" => "cccc-dddd")
       expect(step_nav_helper.active_step_by_step?).to eq(true)
@@ -404,23 +404,23 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
       step_nav = {
         "content_id" => "cccc-dddd",
         "title" => "Learn to spacewalk: small step by giant leap",
-        "base_path" => "/learn-to-spacewalk"
+        "base_path" => "/learn-to-spacewalk",
       }
       another_step_nav = {
         "content_id" => "aaaa-bbbb",
         "title" => "Lose your lunch: lurch by lurch",
-        "base_path" => "/lose-your-lunch"
+        "base_path" => "/lose-your-lunch",
       }
       content_item_in_two_step_navs = {
         "title" => "Book a session in the vomit comet",
         "document_type" => "transaction",
         "links" => {
           "related_to_step_navs" => [step_nav, another_step_nav],
-        }
+        },
       }
       step_nav_helper = described_class.new(content_item_in_two_step_navs, "/driving-lessons-learning-to-drive", "step-by-step-nav" => "cccc-dddd")
       expect(step_nav_helper.also_part_of_step_nav.count).to eq(1)
-      expect(step_nav_helper.also_part_of_step_nav.first[:tracking_id]).to eq('aaaa-bbbb')
+      expect(step_nav_helper.also_part_of_step_nav.first[:tracking_id]).to eq("aaaa-bbbb")
       expect(step_nav_helper.show_also_part_of_step_nav?).to be true
     end
 
@@ -428,32 +428,32 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
       step_nav = {
         "content_id" => "cccc-dddd",
         "title" => "Learn to spacewalk: small step by giant leap",
-        "base_path" => "/learn-to-spacewalk"
+        "base_path" => "/learn-to-spacewalk",
       }
       another_step_nav = {
         "content_id" => "aaaa-bbbb",
         "title" => "Lose your lunch: lurch by lurch",
-        "base_path" => "/lose-your-lunch"
+        "base_path" => "/lose-your-lunch",
       }
       another_step_nav2 = {
         "content_id" => "aaaa-bbbb",
         "title" => "Lose your lunch: lurch by lurch 2",
-        "base_path" => "/lose-your-lunch-2"
+        "base_path" => "/lose-your-lunch-2",
       }
       another_step_nav3 = {
         "content_id" => "aaaa-bbbb",
         "title" => "Lose your lunch: lurch by lurch 3",
-        "base_path" => "/lose-your-lunch-3"
+        "base_path" => "/lose-your-lunch-3",
       }
       another_step_nav4 = {
         "content_id" => "aaaa-bbbb",
         "title" => "Lose your lunch: lurch by lurch 4",
-        "base_path" => "/lose-your-lunch-4"
+        "base_path" => "/lose-your-lunch-4",
       }
       another_step_nav5 = {
         "content_id" => "aaaa-bbbb",
         "title" => "Lose your lunch: lurch by lurch 5",
-        "base_path" => "/lose-your-lunch-5"
+        "base_path" => "/lose-your-lunch-5",
       }
       content_item_in_six_step_navs = {
         "title" => "Book a session in the vomit comet",
@@ -467,7 +467,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
             another_step_nav4,
             another_step_nav5,
           ],
-        }
+        },
       }
       step_nav_helper = described_class.new(content_item_in_six_step_navs, "/driving-lessons-learning-to-drive", "step-by-step-nav" => "cccc-dddd")
       expect(step_nav_helper.show_also_part_of_step_nav?).to eq(false)
@@ -483,10 +483,10 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
         "details" => {
           "step_by_step_nav" => {
             "steps" => [
-              "title": "Step one"
-            ]
-          }
-        }
+              "title": "Step one",
+            ],
+          },
+        },
       }
     end
 
@@ -498,12 +498,12 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
             "document_type" => "transaction",
             "links" => {
               "secondary_to_step_navs" => [step_nav],
-            }
+            },
           }
         end
 
         it "parses the content item" do
-          step_nav_links = described_class.new(content_store_response, '/vomit-comet-session')
+          step_nav_links = described_class.new(content_store_response, "/vomit-comet-session")
 
           expect(step_nav_links.step_navs.count).to eq(0)
           expect(step_nav_links.secondary_step_by_steps.count).to eq(1)
@@ -514,7 +514,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
           expect(step_nav_links.header).to eq(
             path: "/lose-your-lunch",
             title: "Lose your lunch: lurch by lurch",
-            tracking_id: "aaaa-bbbb"
+            tracking_id: "aaaa-bbbb",
           )
 
           expect(step_nav_links.show_related_links?).to be true
@@ -522,8 +522,8 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
             {
               href: "/lose-your-lunch",
               text: "Lose your lunch: lurch by lurch",
-              tracking_id: "aaaa-bbbb"
-            }
+              tracking_id: "aaaa-bbbb",
+            },
           ])
 
           expect(step_nav_links.show_sidebar?).to be true
@@ -545,12 +545,12 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
             "document_type" => "transaction",
             "links" => {
               "secondary_to_step_navs" => [step_nav, step_nav2],
-            }
+            },
           }
         end
 
         it "parses the content item" do
-          step_nav_links = described_class.new(content_store_response, '/vomit-comet-session')
+          step_nav_links = described_class.new(content_store_response, "/vomit-comet-session")
 
           expect(step_nav_links.step_navs.count).to eq(0)
           expect(step_nav_links.secondary_step_by_steps.count).to eq(2)
@@ -562,13 +562,13 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
             {
               href: "/lose-your-lunch",
               text: "Lose your lunch: lurch by lurch",
-              tracking_id: "aaaa-bbbb"
+              tracking_id: "aaaa-bbbb",
             },
             {
               href: "/lose-your-lunch-2",
               text: "Lose your lunch: lurch by lurch 2",
-              tracking_id: "aaaa-bbbb-2"
-            }
+              tracking_id: "aaaa-bbbb-2",
+            },
           ])
 
           expect(step_nav_links.show_header?).to be false
@@ -586,10 +586,10 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
           "details" => {
             "step_by_step_nav" => {
               "steps" => [
-                "title": "Step one"
-              ]
-            }
-          }
+                "title": "Step one",
+              ],
+            },
+          },
         }
       end
 
@@ -601,12 +601,12 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
             "links" => {
               "part_of_step_navs" => [primary_step_nav],
               "secondary_to_step_navs" => [step_nav],
-            }
+            },
           }
         end
 
         it "parses the content item" do
-          step_nav_links = described_class.new(content_store_response, '/vomit-comet-session')
+          step_nav_links = described_class.new(content_store_response, "/vomit-comet-session")
 
           expect(step_nav_links.step_navs.count).to eq(1)
           expect(step_nav_links.secondary_step_by_steps.count).to eq(1)
@@ -617,7 +617,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
           expect(step_nav_links.header).to eq(
             path: "/PRIMARY-lose-your-lunch",
             title: "PRIMARY Lose your lunch: lurch by lurch",
-            tracking_id: "PRIMARY-aaaa-bbbb"
+            tracking_id: "PRIMARY-aaaa-bbbb",
           )
 
           expect(step_nav_links.show_related_links?).to be true
@@ -625,8 +625,8 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
             {
               href: "/PRIMARY-lose-your-lunch",
               text: "PRIMARY Lose your lunch: lurch by lurch",
-              tracking_id: "PRIMARY-aaaa-bbbb"
-            }
+              tracking_id: "PRIMARY-aaaa-bbbb",
+            },
           ])
 
           expect(step_nav_links.show_sidebar?).to be true
@@ -649,12 +649,12 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
             "links" => {
               "part_of_step_navs" => [primary_step_nav],
               "secondary_to_step_navs" => [step_nav, step_nav2],
-            }
+            },
           }
         end
 
         it "parses the content item" do
-          step_nav_links = described_class.new(content_store_response, '/vomit-comet-session')
+          step_nav_links = described_class.new(content_store_response, "/vomit-comet-session")
 
           expect(step_nav_links.step_navs.count).to eq(1)
           expect(step_nav_links.secondary_step_by_steps.count).to eq(2)
@@ -665,7 +665,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
           expect(step_nav_links.header).to eq(
             path: "/PRIMARY-lose-your-lunch",
             title: "PRIMARY Lose your lunch: lurch by lurch",
-            tracking_id: "PRIMARY-aaaa-bbbb"
+            tracking_id: "PRIMARY-aaaa-bbbb",
           )
 
           expect(step_nav_links.show_related_links?).to be true
@@ -673,8 +673,8 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
             {
               href: "/PRIMARY-lose-your-lunch",
               text: "PRIMARY Lose your lunch: lurch by lurch",
-              tracking_id: "PRIMARY-aaaa-bbbb"
-            }
+              tracking_id: "PRIMARY-aaaa-bbbb",
+            },
           ])
 
           expect(step_nav_links.show_sidebar?).to be true
@@ -697,12 +697,12 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
             "links" => {
               "part_of_step_navs" => [primary_step_nav, primary_step_nav2],
               "secondary_to_step_navs" => [step_nav],
-            }
+            },
           }
         end
 
         it "parses the content item" do
-          step_nav_links = described_class.new(content_store_response, '/vomit-comet-session')
+          step_nav_links = described_class.new(content_store_response, "/vomit-comet-session")
 
           expect(step_nav_links.step_navs.count).to eq(2)
           expect(step_nav_links.secondary_step_by_steps.count).to eq(1)
@@ -714,13 +714,13 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
             {
               href: "/PRIMARY-lose-your-lunch",
               text: "PRIMARY Lose your lunch: lurch by lurch",
-              tracking_id: "PRIMARY-aaaa-bbbb"
+              tracking_id: "PRIMARY-aaaa-bbbb",
             },
             {
               href: "/PRIMARY-lose-your-lunch-2",
               text: "PRIMARY Lose your lunch: lurch by lurch 2",
-              tracking_id: "PRIMARY-aaaa-bbbb-2"
-            }
+              tracking_id: "PRIMARY-aaaa-bbbb-2",
+            },
           ])
 
           expect(step_nav_links.show_header?).to be false
@@ -752,12 +752,12 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
             "links" => {
               "part_of_step_navs" => [primary_step_nav, primary_step_nav2],
               "secondary_to_step_navs" => [step_nav, step_nav2],
-            }
+            },
           }
         end
 
         it "parses the content item" do
-          step_nav_links = described_class.new(content_store_response, '/vomit-comet-session')
+          step_nav_links = described_class.new(content_store_response, "/vomit-comet-session")
 
           expect(step_nav_links.step_navs.count).to eq(2)
           expect(step_nav_links.secondary_step_by_steps.count).to eq(2)
@@ -769,13 +769,13 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
             {
               href: "/PRIMARY-lose-your-lunch",
               text: "PRIMARY Lose your lunch: lurch by lurch",
-              tracking_id: "PRIMARY-aaaa-bbbb"
+              tracking_id: "PRIMARY-aaaa-bbbb",
             },
             {
               href: "/PRIMARY-lose-your-lunch-2",
               text: "PRIMARY Lose your lunch: lurch by lurch 2",
-              tracking_id: "PRIMARY-aaaa-bbbb-2"
-            }
+              tracking_id: "PRIMARY-aaaa-bbbb-2",
+            },
           ])
 
           expect(step_nav_links.show_header?).to be false
@@ -793,10 +793,10 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
           "details" => {
             "step_by_step_nav" => {
               "steps" => [
-                "title": "Step one"
-              ]
-            }
-          }
+                "title": "Step one",
+              ],
+            },
+          },
         }
       end
 
@@ -808,12 +808,12 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
             "links" => {
               "related_to_step_navs" => Array.new(1, related_to_step_nav),
               "secondary_to_step_navs" => Array.new(1, step_nav),
-            }
+            },
           }
         end
 
         it "parses the content item" do
-          step_nav_links = described_class.new(content_store_response, '/vomit-comet-session')
+          step_nav_links = described_class.new(content_store_response, "/vomit-comet-session")
 
           expect(step_nav_links.step_navs.count).to eq(0)
           expect(step_nav_links.secondary_step_by_steps.count).to eq(1)
@@ -835,12 +835,12 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
             "links" => {
               "related_to_step_navs" => Array.new(1, related_to_step_nav),
               "secondary_to_step_navs" => Array.new(2, step_nav),
-            }
+            },
           }
         end
 
         it "parses the content item" do
-          step_nav_links = described_class.new(content_store_response, '/vomit-comet-session')
+          step_nav_links = described_class.new(content_store_response, "/vomit-comet-session")
 
           expect(step_nav_links.step_navs.count).to eq(0)
           expect(step_nav_links.secondary_step_by_steps.count).to eq(2)
@@ -862,12 +862,12 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
             "links" => {
               "related_to_step_navs" => Array.new(2, related_to_step_nav),
               "secondary_to_step_navs" => Array.new(1, step_nav),
-            }
+            },
           }
         end
 
         it "parses the content item" do
-          step_nav_links = described_class.new(content_store_response, '/vomit-comet-session')
+          step_nav_links = described_class.new(content_store_response, "/vomit-comet-session")
 
           expect(step_nav_links.step_navs.count).to eq(0)
           expect(step_nav_links.secondary_step_by_steps.count).to eq(1)
@@ -889,12 +889,12 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
             "links" => {
               "related_to_step_navs" => Array.new(2, related_to_step_nav),
               "secondary_to_step_navs" => Array.new(2, step_nav),
-            }
+            },
           }
         end
 
         it "parses the content item" do
-          step_nav_links = described_class.new(content_store_response, '/vomit-comet-session')
+          step_nav_links = described_class.new(content_store_response, "/vomit-comet-session")
 
           expect(step_nav_links.step_navs.count).to eq(0)
           expect(step_nav_links.secondary_step_by_steps.count).to eq(2)
@@ -914,7 +914,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
         related_to_step_navs = {
           "content_id" => "cccc-dddd",
           "title" => "Learn to spacewalk: small step by giant leap",
-          "base_path" => "/learn-to-spacewalk"
+          "base_path" => "/learn-to-spacewalk",
         }
         content_item = {
           "title" => "Book a session in the vomit comet",
@@ -922,7 +922,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
           "links" => {
             "secondary_to_step_navs" => [step_nav],
             "related_to_step_navs" => [related_to_step_navs],
-          }
+          },
         }
         step_nav_links = described_class.new(content_item, "/driving-lessons-learning-to-drive", "step-by-step-nav" => "cccc-dddd")
         expect(step_nav_links.step_navs.count).to eq(0)
@@ -936,8 +936,8 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
           {
             href: "/learn-to-spacewalk",
             text: "Learn to spacewalk: small step by giant leap",
-            tracking_id: "cccc-dddd"
-          }
+            tracking_id: "cccc-dddd",
+          },
         ])
       end
 
@@ -945,7 +945,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
         part_of_step_navs = {
           "content_id" => "cccc-dddd",
           "title" => "Learn to spacewalk: small step by giant leap",
-          "base_path" => "/learn-to-spacewalk"
+          "base_path" => "/learn-to-spacewalk",
         }
         content_item = {
           "title" => "Book a session in the vomit comet",
@@ -953,7 +953,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
           "links" => {
             "secondary_to_step_navs" => [step_nav],
             "part_of_step_navs" => [part_of_step_navs],
-          }
+          },
         }
         step_nav_links = described_class.new(content_item, "/driving-lessons-learning-to-drive", "step-by-step-nav" => "cccc-dddd")
         expect(step_nav_links.step_navs.count).to eq(1)
@@ -967,8 +967,8 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
           {
             href: "/learn-to-spacewalk",
             text: "Learn to spacewalk: small step by giant leap",
-            tracking_id: "cccc-dddd"
-          }
+            tracking_id: "cccc-dddd",
+          },
         ])
       end
     end

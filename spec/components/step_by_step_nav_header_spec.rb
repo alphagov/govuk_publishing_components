@@ -39,7 +39,7 @@ describe "Step by step navigation header", type: :view do
 
     expected_breadcrumb_values = [
       ["Home", "http://www.dev.gov.uk/"],
-      ["This is my title", "http://www.dev.gov.uk/notalink"]
+      ["This is my title", "http://www.dev.gov.uk/notalink"],
     ]
 
     schema_sections = css_select("script[type='application/ld+json']")

@@ -11,18 +11,18 @@ module GovukPublishingComponents
           {
             title: parent.title,
             url: parent.base_path,
-            is_page_parent: index.zero?
+            is_page_parent: index.zero?,
           }
         end
 
         ordered_parents << {
           title: "Home",
           url: "/",
-          is_page_parent: ordered_parents.empty?
+          is_page_parent: ordered_parents.empty?,
         }
 
         {
-          breadcrumbs: ordered_parents.reverse
+          breadcrumbs: ordered_parents.reverse,
         }
       end
 

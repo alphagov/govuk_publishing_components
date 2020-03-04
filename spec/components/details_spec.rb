@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "Details", type: :view do
   def component_name
@@ -26,7 +26,7 @@ describe "Details", type: :view do
   it "applies a specified bottom margin" do
     render_component(
       title: "Some title",
-      margin_bottom: 0
+      margin_bottom: 0,
     )
 
     assert_select '.govuk-details.govuk-\!-margin-bottom-0'
@@ -38,8 +38,8 @@ describe "Details", type: :view do
       data_attributes: {
         track_category: "track-category",
         track_action: "track-action",
-        track_label: "track-label"
-      }
+        track_label: "track-label",
+      },
     )
 
     assert_select '.govuk-details[data-track-category="track-category"]'
@@ -50,7 +50,7 @@ describe "Details", type: :view do
   it "defaults to the initial bottom margin if an incorrect value is passed" do
     render_component(
       title: "Some title",
-      margin_bottom: 12
+      margin_bottom: 12,
     )
 
     assert_select '.govuk-details.govuk-\!-margin-bottom-3'

@@ -49,8 +49,8 @@ describe "Organisation logo", type: :view do
       track_label: "/some-link",
       track_options: {
         dimension28: 2,
-        dimension29: "Organisation link"
-      }
+        dimension29: "Organisation link",
+      },
     }
 
     render_component(organisation: { url: "/some-link", data_attributes: data_attributes })
@@ -64,7 +64,7 @@ describe "Organisation logo", type: :view do
 
   it "doesn't add data tracking attributes when no link is specified" do
     data_attributes = {
-      track_category: "someLinkClicked"
+      track_category: "someLinkClicked",
     }
 
     render_component(organisation: { data_attributes: data_attributes })
@@ -87,7 +87,7 @@ describe "Organisation logo", type: :view do
   end
 
   it "uses a div when a inappropriate parameter is passed" do
-    render_component(organisation: { name: "Name" }, heading_level: 'm')
+    render_component(organisation: { name: "Name" }, heading_level: "m")
     assert_select "div.gem-c-organisation-logo"
   end
 

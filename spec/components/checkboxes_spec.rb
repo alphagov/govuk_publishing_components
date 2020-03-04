@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "Checkboxes", type: :view do
   def component_name
@@ -10,7 +10,7 @@ describe "Checkboxes", type: :view do
       name: "favourite_colour",
       items: [
         { label: "Red", value: "red" },
-      ]
+      ],
     )
     assert_select ".gem-c-checkboxes.govuk-form-group"
     assert_select "fieldset", false
@@ -25,7 +25,7 @@ describe "Checkboxes", type: :view do
       items: [
         { label: "Red", value: "red" },
         { label: "Green", value: "green" },
-      ]
+      ],
     )
     assert_select "fieldset.govuk-fieldset"
     assert_select "legend", text: "What is your favourite colour?"
@@ -44,7 +44,7 @@ describe "Checkboxes", type: :view do
       items: [
         { label: "Red", value: "red" },
         { label: "Green", value: "green" },
-      ]
+      ],
     )
     assert_select ".gem-c-checkboxes.govuk-checkboxes--small"
   end
@@ -56,7 +56,7 @@ describe "Checkboxes", type: :view do
       items: [
         { label: "Red", value: "red" },
         { label: "Green", value: "green" },
-      ]
+      ],
     )
     assert_select "fieldset.govuk-fieldset", false
     assert_select "legend", false
@@ -72,7 +72,7 @@ describe "Checkboxes", type: :view do
       heading: "Favourite colour?",
       items: [
         { label: "Red", value: "red" },
-      ]
+      ],
     )
     assert_select ".govuk-fieldset__legend", text: "Favourite colour?"
   end
@@ -85,7 +85,7 @@ describe "Checkboxes", type: :view do
       items: [
         { label: "Red", value: "red" },
         { label: "Green", value: "green" },
-      ]
+      ],
     )
     assert_select ".govuk-fieldset__legend.gem-c-checkboxes__legend--hidden", text: "What is your favourite colour?"
   end
@@ -98,8 +98,8 @@ describe "Checkboxes", type: :view do
       items: [
         { label: "Red", value: "red" },
         { label: "Green", value: "green" },
-        { label: "Blue", value: "blue" }
-      ]
+        { label: "Blue", value: "blue" },
+      ],
     )
     assert_select ".gem-c-checkboxes#favourite-colour"
     assert_select ".govuk-checkboxes__input#favourite-colour-0"
@@ -119,8 +119,8 @@ describe "Checkboxes", type: :view do
       items: [
         { label: "Red", value: "red", id: "custom" },
         { label: "Green", value: "green" },
-        { label: "Blue", value: "blue", id: "also-custom" }
-      ]
+        { label: "Blue", value: "blue", id: "also-custom" },
+      ],
     )
     assert_select ".gem-c-checkboxes#favourite-colour"
     assert_select ".govuk-checkboxes__input#custom"
@@ -139,7 +139,7 @@ describe "Checkboxes", type: :view do
       items: [
         { label: "Red", value: "red" },
         { label: "Green", value: "green" },
-      ]
+      ],
     )
     assert_select ".govuk-hint", text: "Choose carefully"
   end
@@ -151,7 +151,7 @@ describe "Checkboxes", type: :view do
       items: [
         { label: "Red", value: "red" },
         { label: "Green", value: "green" },
-      ]
+      ],
     )
     assert_select ".govuk-hint", false
     assert_select ".govuk-fieldset[aria-describedby]", false
@@ -162,7 +162,7 @@ describe "Checkboxes", type: :view do
       name: "favourite_colour",
       items: [
         { label: "Red", value: "red" },
-      ]
+      ],
     )
     assert_select ".govuk-fieldset__legend", false
     assert_select ".govuk-hint", false
@@ -176,8 +176,8 @@ describe "Checkboxes", type: :view do
       items: [
         { label: "Red", value: "red" },
         { label: "Green", value: "green" },
-        { label: "Blue", value: "blue" }
-      ]
+        { label: "Blue", value: "blue" },
+      ],
     )
     assert_select ".govuk-checkboxes"
     assert_select "legend h1", "What is your favourite skittle?"
@@ -191,8 +191,8 @@ describe "Checkboxes", type: :view do
       items: [
         { label: "Red", value: "red" },
         { label: "Green", value: "green" },
-        { label: "Blue", value: "blue" }
-      ]
+        { label: "Blue", value: "blue" },
+      ],
     )
     assert_select ".govuk-fieldset__legend.govuk-fieldset__legend--s", "What is your favourite skittle?"
   end
@@ -205,8 +205,8 @@ describe "Checkboxes", type: :view do
       items: [
         { label: "Red", value: "red" },
         { label: "Green", value: "green" },
-        { label: "Blue", value: "blue" }
-      ]
+        { label: "Blue", value: "blue" },
+      ],
     )
     assert_select ".govuk-fieldset__legend.govuk-fieldset__legend--m", "What is your favourite skittle?"
   end
@@ -219,7 +219,7 @@ describe "Checkboxes", type: :view do
       items: [
         { label: "Red", value: "red", controls: "js-live-results" },
         { label: "Green", value: "green", controls: "js-live-results2" },
-      ]
+      ],
     )
     assert_select ".govuk-checkboxes__input[data-controls='js-live-results']"
     assert_select ".govuk-checkboxes__input[data-controls='js-live-results2']"
@@ -238,11 +238,11 @@ describe "Checkboxes", type: :view do
             track_label: "/news-and-communications",
             track_options: {
               dimension28: 2,
-              dimension29: "Tracked"
-            }
-          }
-        }
-      ]
+              dimension29: "Tracked",
+            },
+          },
+        },
+      ],
     )
     assert_select ".govuk-checkboxes__input[data-track-category='checkboxClicked']"
     assert_select ".govuk-checkboxes__input[data-track-label='/news-and-communications']"
@@ -262,12 +262,12 @@ describe "Checkboxes", type: :view do
             track_label: "/news-and-communications",
             track_options: {
               dimension28: 2,
-              dimension29: "Tracked"
-            }
+              dimension29: "Tracked",
+            },
           },
-          controls: "js-live-results"
-        }
-      ]
+          controls: "js-live-results",
+        },
+      ],
     )
     assert_select ".govuk-checkboxes__input[data-track-category='checkboxClicked']"
     assert_select ".govuk-checkboxes__input[data-track-label='/news-and-communications']"
@@ -284,8 +284,8 @@ describe "Checkboxes", type: :view do
       items: [
         { label: "British", value: "british", hint: "including English, Scottish, Welsh and Northern Irish" },
         { label: "Irish", value: "irish" },
-        { label: "Other", value: "other", hint: "Anything other than the above" }
-      ]
+        { label: "Other", value: "other", hint: "Anything other than the above" },
+      ],
     )
     assert_select ".govuk-checkboxes"
     assert_select "label[for='nationality-0']", text: "British"
@@ -305,8 +305,8 @@ describe "Checkboxes", type: :view do
       items: [
         { label: "British", value: "british", hint: "including English, Scottish, Welsh and Northern Irish" },
         { label: "Irish", value: "irish" },
-        { label: "Other", value: "other" }
-      ]
+        { label: "Other", value: "other" },
+      ],
     )
     assert_select ".govuk-checkboxes"
     assert_select("#nationality-error", text: "Select if you are British, Irish or a citizen of a different country")
@@ -321,8 +321,8 @@ describe "Checkboxes", type: :view do
       items: [
         { label: "British", value: "british", conditional: "including English, Scottish, Welsh and Northern Irish" },
         { label: "Irish", value: "irish" },
-        { label: "Other", value: "other", conditional: "Sorry this is so vague" }
-      ]
+        { label: "Other", value: "other", conditional: "Sorry this is so vague" },
+      ],
     )
     assert_select ".govuk-checkboxes"
     assert_select("#nationality-0-conditional-0", text: "including English, Scottish, Welsh and Northern Irish")
@@ -338,8 +338,8 @@ describe "Checkboxes", type: :view do
       items: [
         { label: "British", value: "british", checked: true },
         { label: "Irish", value: "irish" },
-        { label: "Other", value: "other" }
-      ]
+        { label: "Other", value: "other" },
+      ],
     )
     assert_select ".govuk-checkboxes"
     assert_select ".govuk-checkboxes__input[checked]", value: "british"
@@ -356,12 +356,12 @@ describe "Checkboxes", type: :view do
           value: "red",
           items: [
             { label: "Light Red", value: "light_red" },
-            { label: "Dark Red", value: "dark_red" }
-          ]
+            { label: "Dark Red", value: "dark_red" },
+          ],
         },
         { label: "Blue", value: "blue" },
-        { label: "Other", value: "other" }
-      ]
+        { label: "Other", value: "other" },
+      ],
     )
     assert_select ".govuk-checkboxes"
     assert_select ".govuk-checkboxes.govuk-checkboxes--nested"
@@ -376,7 +376,7 @@ describe "Checkboxes", type: :view do
       items: [
         { label: "Red", value: "red" },
         { label: "Green", value: "green" },
-      ]
+      ],
     )
     assert_select ".govuk-body", text: "This is a description about skittles."
   end
@@ -391,7 +391,7 @@ describe "Checkboxes", type: :view do
       items: [
         { label: "Red", value: "red" },
         { label: "Green", value: "green" },
-      ]
+      ],
     )
     assert_select "legend span.govuk-caption-xl", text: "Question 3 of 9"
     assert_select "legend h1", text: "What is your favourite skittle?"
@@ -406,7 +406,7 @@ describe "Checkboxes", type: :view do
       items: [
         { label: "Red", value: "red" },
         { label: "Green", value: "green" },
-      ]
+      ],
     )
     assert_select "legend span.govuk-caption-xl", false
     assert_select "legend h1", false
@@ -417,11 +417,11 @@ describe "Checkboxes", type: :view do
       name: "favourite_colour",
       heading: "What is your favourite skittle?",
       description: render("govuk_publishing_components/components/govspeak",
-        content: "<p>This is a description about skittles.</p>".html_safe),
+                          content: "<p>This is a description about skittles.</p>".html_safe),
       items: [
         { label: "Red", value: "red" },
         { label: "Green", value: "green" },
-      ]
+      ],
     )
     assert_select ".govuk-body", text: "This is a description about skittles."
   end

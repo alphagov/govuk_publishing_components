@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnParent do
   describe "#breadcrumbs" do
@@ -15,7 +15,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
       expect(breadcrumbs).to eq(
         breadcrumbs: [
           { title: "Home", url: "/" },
-        ]
+        ],
       )
     end
 
@@ -26,7 +26,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
       expect(breadcrumbs).to eq(
         breadcrumbs: [
           { title: "Home", url: "/" },
-        ]
+        ],
       )
     end
 
@@ -44,8 +44,8 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
       expect(breadcrumbs).to eq(
         breadcrumbs: [
           { title: "Home", url: "/" },
-          { title: "A-parent", url: "/a-parent" }
-        ]
+          { title: "A-parent", url: "/a-parent" },
+        ],
       )
     end
 
@@ -63,8 +63,8 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
         "title" => "A-parent",
         "base_path" => "/a-parent",
         "links" => {
-          "parent" => [grandparent]
-        }
+          "parent" => [grandparent],
+        },
       }
 
       content_item = content_item_with_parents([parent])
@@ -74,15 +74,15 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
         breadcrumbs: [
           { title: "Home", url: "/" },
           { title: "Another-parent", url: "/another-parent" },
-          { title: "A-parent", url: "/a-parent" }
-        ]
+          { title: "A-parent", url: "/a-parent" },
+        ],
       )
     end
   end
 
   def content_item_with_parents(parents)
     {
-      "links" => { "parent" => parents }
+      "links" => { "parent" => parents },
     }
   end
 

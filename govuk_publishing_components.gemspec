@@ -1,8 +1,9 @@
-$:.push File.expand_path('lib', __dir__)
+$:.push File.expand_path("lib", __dir__)
 
 # Maintain your gem's version:
 require "govuk_publishing_components/version"
 
+# rubocop:disable Metrics/BlockLength
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
   s.name        = "govuk_publishing_components"
@@ -23,18 +24,19 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", ">= 5.0.0.1"
   s.add_dependency "rake"
   s.add_dependency "rouge"
+  s.add_dependency "sass", "3.7.4"
   s.add_dependency "sassc-rails", ">= 2.0.1"
   s.add_dependency "sprockets", "< 4"
 
   s.add_development_dependency "capybara", "~> 3.25"
   s.add_development_dependency "foreman", "= 0.85"
   s.add_development_dependency "gds-api-adapters", "~> 59.1"
-  s.add_development_dependency "govuk-lint", "~> 3.11"
   s.add_development_dependency "govuk_schemas", "~> 3.2"
   s.add_development_dependency "govuk_test", "~> 1"
   s.add_development_dependency "jasmine", "~> 3.4.0"
   s.add_development_dependency "pry-byebug"
   s.add_development_dependency "rspec-rails", "~> 3.8"
+  s.add_development_dependency "rubocop-govuk", "~> 3"
   s.add_development_dependency "selenium-webdriver", "= 3.142.3"
   s.add_development_dependency "uglifier", ">= 4.1.0"
   # Webmock is needed to load slimmer test helpers
@@ -42,3 +44,4 @@ Gem::Specification.new do |s|
   s.add_development_dependency "webmock", "~> 3.6.0"
   s.add_development_dependency "yard"
 end
+# rubocop:enable Metrics/BlockLength

@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "Radio", type: :view do
   def component_name
@@ -10,8 +10,8 @@ describe "Radio", type: :view do
       render_component(items: [
         {
           value: "government-gateway",
-          text: "Use Government Gateway"
-        }
+          text: "Use Government Gateway",
+        },
       ])
     end
   end
@@ -22,9 +22,9 @@ describe "Radio", type: :view do
       items: [
         {
           value: "government-gateway",
-          text: "Use Government Gateway"
-        }
-      ]
+          text: "Use Government Gateway",
+        },
+      ],
     )
 
     assert_select ".govuk-radios__input[name=radio-group-one-item]"
@@ -39,13 +39,13 @@ describe "Radio", type: :view do
       items: [
         {
           value: "government-gateway",
-          text: "Use Government Gateway"
+          text: "Use Government Gateway",
         },
         {
           value: "govuk-verify",
-          text: "Use GOV.UK Verify"
-        }
-      ]
+          text: "Use GOV.UK Verify",
+        },
+      ],
     )
 
     assert_select ".govuk-radios__input[name=radio-group-multiple-items]"
@@ -60,13 +60,13 @@ describe "Radio", type: :view do
       items: [
         {
           value: "government-gateway",
-          text: "Use Government Gateway"
+          text: "Use Government Gateway",
         },
         {
           value: "govuk-verify",
-          text: "Use GOV.UK Verify"
-        }
-      ]
+          text: "Use GOV.UK Verify",
+        },
+      ],
     )
 
     assert_select ".govuk-radios.govuk-radios--small"
@@ -79,13 +79,13 @@ describe "Radio", type: :view do
       items: [
         {
           value: "on",
-          text: "On"
+          text: "On",
         },
         {
           value: "off",
-          text: "Off"
-        }
-      ]
+          text: "Off",
+        },
+      ],
     )
 
     assert_select ".govuk-radios.govuk-radios--inline"
@@ -97,8 +97,8 @@ describe "Radio", type: :view do
       heading: "What is your favourite smartie?",
       items: [
         { label: "Red", value: "red" },
-        { label: "Blue", value: "blue" }
-      ]
+        { label: "Blue", value: "blue" },
+      ],
     )
     assert_select ".govuk-radios"
     assert_select "legend", "What is your favourite smartie?"
@@ -112,8 +112,8 @@ describe "Radio", type: :view do
       is_page_heading: true,
       items: [
         { label: "Red", value: "red" },
-        { label: "Blue", value: "blue" }
-      ]
+        { label: "Blue", value: "blue" },
+      ],
     )
     assert_select ".govuk-radios"
     assert_select "legend h1", "What is your favourite skittle?"
@@ -127,8 +127,8 @@ describe "Radio", type: :view do
       is_page_heading: true,
       items: [
         { label: "Red", value: "red" },
-        { label: "Blue", value: "blue" }
-      ]
+        { label: "Blue", value: "blue" },
+      ],
     )
     assert_select ".govuk-radios"
     assert_select "legend h1", text: "What is your favourite skittle?"
@@ -142,7 +142,7 @@ describe "Radio", type: :view do
       items: [
         { label: "Red", value: "red" },
         { label: "Green", value: "green" },
-      ]
+      ],
     )
     assert_select ".govuk-radios"
     assert_select "legend h1", false
@@ -157,8 +157,8 @@ describe "Radio", type: :view do
       items: [
         { label: "Red", value: "red" },
         { label: "Green", value: "green" },
-        { label: "Blue", value: "blue" }
-      ]
+        { label: "Blue", value: "blue" },
+      ],
     )
     assert_select ".govuk-fieldset__legend.govuk-fieldset__legend--s", "What is your favourite skittle?"
   end
@@ -171,8 +171,8 @@ describe "Radio", type: :view do
       items: [
         { label: "Red", value: "red" },
         { label: "Green", value: "green" },
-        { label: "Blue", value: "blue" }
-      ]
+        { label: "Blue", value: "blue" },
+      ],
     )
     assert_select ".govuk-fieldset__legend.govuk-fieldset__legend--m", "What is your favourite skittle?"
   end
@@ -184,14 +184,14 @@ describe "Radio", type: :view do
         {
           value: "government-gateway",
           text: "Use Government Gateway",
-          bold: true
+          bold: true,
         },
         {
           value: "govuk-verify",
           text: "Use GOV.UK Verify",
-          bold: true
-        }
-      ]
+          bold: true,
+        },
+      ],
     )
 
     assert_select ".govuk-radios__input[name=radio-group-bold-labels]"
@@ -211,7 +211,7 @@ describe "Radio", type: :view do
           value: "no-data-attributes-button",
           text: "Worst button in town",
         },
-      ]
+      ],
     )
 
     assert_select ".govuk-radios__item:first-child .govuk-radios__input[data-contextual-guidance=cool-buttons-guidance]"
@@ -225,14 +225,14 @@ describe "Radio", type: :view do
         {
           value: "government-gateway",
           hint_text: "You'll have a user ID if you've signed up to do things like sign up Self Assessment tax return online.",
-          text: "Use Government Gateway"
+          text: "Use Government Gateway",
         },
         {
           value: "govuk-verify",
           hint_text: "You'll have an account if you've already proved your identity with a certified company, such as the Post Office.",
-          text: "Use GOV.UK Verify"
-        }
-      ]
+          text: "Use GOV.UK Verify",
+        },
+      ],
     )
 
     assert_select ".govuk-radios__input[name=radio-group-hint-text]"
@@ -248,14 +248,14 @@ describe "Radio", type: :view do
       items: [
         {
           value: "government-gateway",
-          text: "Use Government Gateway"
+          text: "Use Government Gateway",
         },
         {
           value: "govuk-verify",
           text: "Use GOV.UK Verify",
-          checked: true
-        }
-      ]
+          checked: true,
+        },
+      ],
     )
 
     assert_select ".govuk-radios__input[name=radio-group-checked-option]"
@@ -264,18 +264,18 @@ describe "Radio", type: :view do
 
   it "renders radio-group with custom id prefix" do
     render_component(
-      id_prefix: 'custom',
+      id_prefix: "custom",
       name: "radio-group-custom-id-prefix",
       items: [
         {
           value: "government-gateway",
-          text: "Use Government Gateway"
+          text: "Use Government Gateway",
         },
         {
           value: "govuk-verify",
-          text: "Use GOV.UK Verify"
-        }
-      ]
+          text: "Use GOV.UK Verify",
+        },
+      ],
     )
 
     assert_select ".govuk-radios__input[name=radio-group-custom-id-prefix]"
@@ -291,14 +291,14 @@ describe "Radio", type: :view do
       items: [
         {
           value: "government-gateway",
-          text: "Use Government Gateway"
+          text: "Use Government Gateway",
         },
         :or,
         {
           value: "govuk-verify",
-          text: "Use GOV.UK Verify"
-        }
-      ]
+          text: "Use GOV.UK Verify",
+        },
+      ],
     )
 
     assert_select ".govuk-radios__input[name=radio-group-or-divider]"
@@ -314,14 +314,14 @@ describe "Radio", type: :view do
         {
           value: "government-gateway",
           text: "Use Government Gateway",
-          conditional: "You’ll need to prove your identity using Government Gateway"
+          conditional: "You’ll need to prove your identity using Government Gateway",
         },
         {
           value: "govuk-verify",
           text: "Use GOV.UK Verify",
-          conditional: "You’ll need to prove your identity using GOV.UK Verify"
-        }
-      ]
+          conditional: "You’ll need to prove your identity using GOV.UK Verify",
+        },
+      ],
     )
 
     assert_select ".govuk-radios[data-module=govuk-radios]"
@@ -335,19 +335,19 @@ describe "Radio", type: :view do
       items: [
         {
           value: "government-gateway",
-          text: "Use Government Gateway"
+          text: "Use Government Gateway",
         },
         {
           value: "govuk-verify",
-          text: "Use GOV.UK Verify"
-        }
-      ]
+          text: "Use GOV.UK Verify",
+        },
+      ],
     )
 
     assert_select ".govuk-hint", text: "You’ll need to prove your identity using one of the following methods"
 
     dom = Nokogiri::HTML(rendered)
-    hint_id = dom.xpath('//div[contains(@class, "govuk-hint")]')[0].attr('id')
+    hint_id = dom.xpath('//div[contains(@class, "govuk-hint")]')[0].attr("id")
     assert_select ".govuk-fieldset[aria-describedby='#{hint_id}']"
   end
 
@@ -358,19 +358,19 @@ describe "Radio", type: :view do
       items: [
         {
           value: "government-gateway",
-          text: "Use Government Gateway"
+          text: "Use Government Gateway",
         },
         {
           value: "govuk-verify",
-          text: "Use GOV.UK Verify"
-        }
-      ]
+          text: "Use GOV.UK Verify",
+        },
+      ],
     )
 
     assert_select ".govuk-error-message", text: "Error: Please select one option"
 
     dom = Nokogiri::HTML(rendered)
-    error_id = dom.xpath('//span')[0].attr('id')
+    error_id = dom.xpath("//span")[0].attr("id")
     assert_select ".govuk-fieldset[aria-describedby='#{error_id}']"
   end
 
@@ -382,20 +382,20 @@ describe "Radio", type: :view do
       items: [
         {
           value: "government-gateway",
-          text: "Use Government Gateway"
+          text: "Use Government Gateway",
         },
         {
           value: "govuk-verify",
-          text: "Use GOV.UK Verify"
-        }
-      ]
+          text: "Use GOV.UK Verify",
+        },
+      ],
     )
 
     assert_select ".govuk-error-message", text: "Error: Please select one option"
 
     dom = Nokogiri::HTML(rendered)
-    hint_id = dom.xpath('//div[contains(@class, "govuk-hint")]')[0].attr('id')
-    error_id = dom.xpath('//span')[0].attr('id')
+    hint_id = dom.xpath('//div[contains(@class, "govuk-hint")]')[0].attr("id")
+    error_id = dom.xpath("//span")[0].attr("id")
     ids = hint_id + " " + error_id
     assert_select ".govuk-fieldset[aria-describedby='#{ids}']"
   end
@@ -405,22 +405,22 @@ describe "Radio", type: :view do
       name: "radio-group-conditional",
       error_items: [
         {
-          text: "Error item 1"
+          text: "Error item 1",
         },
         {
-          text: "Error item 2"
-        }
+          text: "Error item 2",
+        },
       ],
       items: [
         {
           value: "government-gateway",
-          text: "Use Government Gateway"
+          text: "Use Government Gateway",
         },
         {
           value: "govuk-verify",
-          text: "Use GOV.UK Verify"
-        }
-      ]
+          text: "Use GOV.UK Verify",
+        },
+      ],
     )
 
     assert_select ".govuk-error-message", text: "Error: Error item 1Error item 2"
@@ -433,14 +433,14 @@ describe "Radio", type: :view do
         items: [
           {
             value: "government-gateway",
-            text: "Use Government Gateway"
+            text: "Use Government Gateway",
           },
           :or,
           {
             value: "govuk-verify",
-            text: "Use GOV.UK Verify"
-          }
-        ]
+            text: "Use GOV.UK Verify",
+          },
+        ],
       )
     end
 
@@ -462,8 +462,8 @@ describe "Radio", type: :view do
           value: "govuk-verify",
           text: "Use GOV.UK Verify",
           url: verify_url,
-        }
-      ]
+        },
+      ],
     )
 
     assert_select ".govuk-radios input[data-tracking-url='#{gateway_url}']"
@@ -477,8 +477,8 @@ describe "Radio", type: :view do
       description: "This is a description about skittles.",
       items: [
         { label: "Red", value: "red" },
-        { label: "Blue", value: "blue" }
-      ]
+        { label: "Blue", value: "blue" },
+      ],
     )
     assert_select ".govuk-body", "This is a description about skittles."
   end
@@ -488,32 +488,32 @@ describe "Radio", type: :view do
       name: "favourite-skittle",
       heading: "What is your favourite skittle?",
       description: render("govuk_publishing_components/components/govspeak",
-        content: "<p>This is a description about skittles.</p>".html_safe),
+                          content: "<p>This is a description about skittles.</p>".html_safe),
       items: [
         { label: "Red", value: "red" },
-        { label: "Blue", value: "blue" }
-      ]
+        { label: "Blue", value: "blue" },
+      ],
     )
     assert_select ".govuk-body", "This is a description about skittles."
   end
 end
 
 # This component can be interacted with, so use integration tests for these cases.
-describe 'Radio (integration)' do
+describe "Radio (integration)" do
   def input_visible
     false # our inputs are hidden with CSS, and rely on the label.
   end
 
   it "radio can choose an option" do
-    visit '/component-guide/radio/default/preview'
+    visit "/component-guide/radio/default/preview"
 
-    within '.component-guide-preview' do
-      assert_text 'Use GOV.UK Verify'
-      assert_text 'Use Government Gateway'
+    within ".component-guide-preview" do
+      assert_text "Use GOV.UK Verify"
+      assert_text "Use Government Gateway"
 
       expect(page).to_not have_selector("[@class='govuk-radios__input'][@checked='checked']", visible: input_visible)
 
-      page.choose(option: 'govuk-verify', allow_label_click: true)
+      page.choose(option: "govuk-verify", allow_label_click: true)
 
       expect(page).to_not have_selector("[@class='govuk-radios__input'][@value='government-gateway'][@checked='checked']", visible: input_visible)
       expect(page).to have_selector("[@class='govuk-radios__input'][@value='govuk-verify'][@checked='checked']", visible: input_visible)
@@ -521,16 +521,16 @@ describe 'Radio (integration)' do
   end
 
   it "radio can choose an option when already has one checked" do
-    visit '/component-guide/radio/with_checked_option/preview'
+    visit "/component-guide/radio/with_checked_option/preview"
 
-    within '.component-guide-preview' do
-      assert_text 'Use Government Gateway'
-      assert_text 'Use GOV.UK Verify'
+    within ".component-guide-preview" do
+      assert_text "Use Government Gateway"
+      assert_text "Use GOV.UK Verify"
 
       expect(page).to have_selector("[@class='govuk-radios__input'][@value='govuk-verify'][@checked='checked']", visible: input_visible)
       expect(page).to_not have_selector("[@class='govuk-radios__input'][@value='government-gateway'][@checked='checked']", visible: input_visible)
 
-      page.choose(option: 'government-gateway', allow_label_click: true)
+      page.choose(option: "government-gateway", allow_label_click: true)
 
       expect(page).to have_selector("[@class='govuk-radios__input'][@value='government-gateway'][@checked='checked']", visible: input_visible)
       expect(page).to_not have_selector("[@class='govuk-radios__input'][@value='govuk-verify'][@checked='checked']", visible: input_visible)

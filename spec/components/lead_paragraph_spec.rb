@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "Lead paragraph", type: :view do
   def component_name
@@ -15,7 +15,7 @@ describe "Lead paragraph", type: :view do
   end
 
   it "renders a lead paragraph" do
-    render_component(text: 'UK Visas and Immigration is making changes to the Immigration Rules affecting various categories.')
+    render_component(text: "UK Visas and Immigration is making changes to the Immigration Rules affecting various categories.")
     assert_select ".gem-c-lead-paragraph", text: "UK Visas and Immigration is making changes to the Immigration Rules affecting various categories."
   end
 

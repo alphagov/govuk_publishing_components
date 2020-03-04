@@ -1,6 +1,6 @@
 ruby File.read(".ruby-version").strip unless ENV["RBENV_VERSION"]
 
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
 # Declare your gem's dependencies in govuk_publishing_components.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and

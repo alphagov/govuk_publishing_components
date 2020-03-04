@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "Inset text", type: :view do
   def component_name
@@ -24,7 +24,7 @@ describe "Inset text", type: :view do
 
   it "renders only the text if both text and block are provided" do
     block = "<p id='foo'>Foo</p>".html_safe
-    render_component(text: 'Bar') { block }
+    render_component(text: "Bar") { block }
 
     assert_select(".govuk-inset-text", text: "Bar")
     assert_select(".govuk-inset-text p#foo", false, "Block should not have rendered")

@@ -57,7 +57,7 @@ module GovukPublishingComponents
     end
 
     def partial_path
-      if source == 'gem'
+      if source == "gem"
         "govuk_publishing_components/components/#{id}"
       else
         "#{GovukPublishingComponents::Config.component_directory_name}/#{id}"

@@ -1,7 +1,7 @@
-require 'webmock/rspec'
+require "webmock/rspec"
 require "govuk_publishing_components"
-require 'govuk_schemas'
-require_relative 'support/components_helper.rb'
+require "govuk_schemas"
+require_relative "support/components_helper.rb"
 require "gds_api/test_helpers/content_store"
 
 WebMock.disable_net_connect!(allow_localhost: true)

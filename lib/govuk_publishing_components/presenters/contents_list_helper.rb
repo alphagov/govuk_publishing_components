@@ -1,4 +1,4 @@
-require 'action_view'
+require "action_view"
 
 module GovukPublishingComponents
   module Presenters
@@ -36,7 +36,7 @@ module GovukPublishingComponents
         number = /^\d{1,3}(\.?|\.\d{1,2})(?=\s)/.match(content_item_text)
 
         if number
-          words = content_item_text.sub(number.to_s, '').strip #remove the number from the text
+          words = content_item_text.sub(number.to_s, "").strip #remove the number from the text
           content_item_link.sub(content_item_text, "<span class=\"gem-c-contents-list__number\">#{number} </span><span class=\"gem-c-contents-list__numbered-text\">#{words}</span>").squish.html_safe
         else
           content_item_link
@@ -47,11 +47,11 @@ module GovukPublishingComponents
 
       def parent_modifier
         if @nested
-          'parent'
+          "parent"
         elsif @format_numbers
-          'numbered'
+          "numbered"
         else
-          'dashed'
+          "dashed"
         end
       end
     end

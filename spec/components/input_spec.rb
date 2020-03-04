@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "Input", type: :view do
   def component_name
@@ -37,7 +37,7 @@ describe "Input", type: :view do
     render_component(
       label: { text: "What is your email address?" },
       name: "email-address",
-      id: "test"
+      id: "test",
     )
 
     assert_select ".govuk-input#test"
@@ -46,7 +46,7 @@ describe "Input", type: :view do
   it "sets the 'for' on the label to the input id" do
     render_component(
       label: { text: "What is your email address?" },
-      name: "email-address"
+      name: "email-address",
     )
 
     input = css_select(".govuk-input")
@@ -69,7 +69,7 @@ describe "Input", type: :view do
       label: { text: "What is your email address?" },
       name: "email-address",
       describedby: "something",
-      controls: "something-else"
+      controls: "something-else",
     )
 
     assert_select ".govuk-input[aria-describedby='something'][aria-controls='something-else']"
@@ -79,7 +79,7 @@ describe "Input", type: :view do
     render_component(
       label: { text: "What is your name?" },
       name: "name",
-      autocomplete: "name"
+      autocomplete: "name",
     )
 
     assert_select ".govuk-input[autocomplete='name']"
@@ -88,7 +88,7 @@ describe "Input", type: :view do
   it "renders input with a data attributes" do
     render_component(
       data: { module: "contextual-guidance" },
-      name: "with-data-attributes"
+      name: "with-data-attributes",
     )
 
     assert_select ".govuk-input[data-module='contextual-guidance']"
@@ -99,7 +99,7 @@ describe "Input", type: :view do
       label: { text: "Username" },
       name: "username",
       autofocus: true,
-      tabindex: 0
+      tabindex: 0,
     )
 
     assert_select ".govuk-input[autofocus][tabindex='0']"
@@ -108,7 +108,7 @@ describe "Input", type: :view do
   it "sets the maxlength when provided" do
     render_component(
       name: "email-address",
-      maxlength: 10
+      maxlength: 10,
     )
 
     assert_select ".govuk-input[maxlength='10']"
@@ -117,7 +117,7 @@ describe "Input", type: :view do
   it "renders input with custom width" do
     render_component(
       name: "email-address",
-      width: 10
+      width: 10,
     )
 
     assert_select ".govuk-input.govuk-input--width-10"
@@ -126,9 +126,9 @@ describe "Input", type: :view do
   it "renders default input width if the custom width is not supported" do
     render_component(
       name: "email-address",
-      width: 11
+      width: 11,
     )
-    expect(page).to have_no_css('.govuk-input--width-10')
+    expect(page).to have_no_css(".govuk-input--width-10")
   end
 
   context "when a hint is provided" do
@@ -175,12 +175,12 @@ describe "Input", type: :view do
         name: "email-address",
         error_items: [
           {
-            text: "Error item 1"
+            text: "Error item 1",
           },
           {
-            text: "Error item 2"
-          }
-        ]
+            text: "Error item 2",
+          },
+        ],
       )
     end
 
@@ -199,7 +199,7 @@ describe "Input", type: :view do
     render_component(
       label: { text: "What is your email address?" },
       name: "email-address",
-      heading_size: "xl"
+      heading_size: "xl",
     )
 
     assert_select ".govuk-label.govuk-label--xl"

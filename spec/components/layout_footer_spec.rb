@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "Layout footer", type: :view do
   def component_name
@@ -26,11 +26,11 @@ describe "Layout footer", type: :view do
           items: [
             {
               href: "/browse/benefits",
-              text: "Benefits"
-            }
-          ]
-        }
-      ]
+              text: "Benefits",
+            },
+          ],
+        },
+      ],
     )
 
     assert_select ".govuk-footer__navigation .govuk-footer__heading", text: "Services and information"
@@ -47,16 +47,16 @@ describe "Layout footer", type: :view do
             {
               href: "/browse/benefits",
               text: "Benefits",
-              attributes: { title: "A title" }
-            }
-          ]
-        }
-      ]
+              attributes: { title: "A title" },
+            },
+          ],
+        },
+      ],
     )
 
-    assert_select 'a' do |link|
-      expect(link.attr('class').to_s).to eq "govuk-footer__link"
-      expect(link.attr('title').to_s).to eq "A title"
+    assert_select "a" do |link|
+      expect(link.attr("class").to_s).to eq "govuk-footer__link"
+      expect(link.attr("title").to_s).to eq "A title"
     end
   end
 
@@ -70,17 +70,17 @@ describe "Layout footer", type: :view do
             {
               href: "/browse/benefits",
               text: "Benefits",
-              attributes: { target: "_blank" }
-            }
-          ]
-        }
-      ]
+              attributes: { target: "_blank" },
+            },
+          ],
+        },
+      ],
     )
 
-    assert_select 'a' do |link|
-      expect(link.attr('class').to_s).to eq "govuk-footer__link"
-      expect(link.attr('target').to_s).to eq "_blank"
-      expect(link.attr('rel').to_s).to eq "noopener"
+    assert_select "a" do |link|
+      expect(link.attr("class").to_s).to eq "govuk-footer__link"
+      expect(link.attr("target").to_s).to eq "_blank"
+      expect(link.attr("rel").to_s).to eq "noopener"
     end
   end
 
@@ -95,7 +95,7 @@ describe "Layout footer", type: :view do
               href: "/browse/benefits",
               text: "Benefits",
             },
-          ]
+          ],
         },
       ],
       meta: {
@@ -105,17 +105,17 @@ describe "Layout footer", type: :view do
             text: "Rhestr o Wasanaethau Cymraeg",
             attributes: {
               lang: "cy",
-              hreflang: "cy"
+              hreflang: "cy",
             },
           },
-        ]
+        ],
       },
     )
 
-    assert_select '.govuk-footer__meta-item a' do |link|
-      expect(link.attr('class').to_s).to eq "govuk-footer__link"
-      expect(link.attr('lang').to_s).to eq "cy"
-      expect(link.attr('hreflang').to_s).to eq "cy"
+    assert_select ".govuk-footer__meta-item a" do |link|
+      expect(link.attr("class").to_s).to eq "govuk-footer__link"
+      expect(link.attr("lang").to_s).to eq "cy"
+      expect(link.attr("hreflang").to_s).to eq "cy"
     end
   end
 
@@ -130,7 +130,7 @@ describe "Layout footer", type: :view do
               href: "/browse/benefits",
               text: "Benefits",
             },
-          ]
+          ],
         },
       ],
       meta: {
@@ -139,17 +139,17 @@ describe "Layout footer", type: :view do
             href: "/guidance/keeping-a-pet-pig-or-micropig",
             text: "Keeping a pet pig or 'micropig'",
             attributes: {
-              target: "_blank"
+              target: "_blank",
             },
           },
-        ]
+        ],
       },
     )
 
-    assert_select '.govuk-footer__meta-item a' do |link|
-      expect(link.attr('class').to_s).to eq "govuk-footer__link"
-      expect(link.attr('target').to_s).to eq "_blank"
-      expect(link.attr('rel').to_s).to eq "noopener"
+    assert_select ".govuk-footer__meta-item a" do |link|
+      expect(link.attr("class").to_s).to eq "govuk-footer__link"
+      expect(link.attr("target").to_s).to eq "_blank"
+      expect(link.attr("rel").to_s).to eq "noopener"
     end
   end
 end

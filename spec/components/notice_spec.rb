@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "Notice", type: :view do
   def component_name
@@ -73,7 +73,7 @@ describe "Notice", type: :view do
   end
 
   it "adds an aria-live attribute when the aria-live flag is provided" do
-    render_component(title: 'Your settings have been saved', aria_live: true)
+    render_component(title: "Your settings have been saved", aria_live: true)
     assert_select ".gem-c-notice[aria-live=polite]"
   end
 end

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnTaxons do
   describe "Taxon breadcrumbs" do
@@ -9,7 +9,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnT
 
       expect {
         described_class.new(
-          payload
+          payload,
         ).breadcrumbs
       }.to_not raise_error
     end
@@ -25,7 +25,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnT
       expect(breadcrumbs).to eq(
         breadcrumbs: [
           { title: "Home", url: "/", is_page_parent: true },
-        ]
+        ],
       )
     end
 
@@ -37,11 +37,11 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnT
         breadcrumbs: [
           { title: "Home", url: "/", is_page_parent: false },
           { title: "Taxon", url: "/taxon", is_page_parent: true },
-        ]
+        ],
       )
     end
 
-    context 'with a taxon with taxon parents' do
+    context "with a taxon with taxon parents" do
       it "includes parents and grandparents when available" do
         grandparent = {
           "title" => "Another-parent",
@@ -58,8 +58,8 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnT
           "base_path" => "/a-parent",
           "phase" => "live",
           "links" => {
-            "parent_taxons" => [grandparent]
-          }
+            "parent_taxons" => [grandparent],
+          },
         }
 
         content_item = content_item_tagged_to_taxon([parent])
@@ -71,12 +71,12 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnT
             { title: "Another-parent", url: "/another-parent", is_page_parent: false },
             { title: "A-parent", url: "/a-parent", is_page_parent: false },
             { title: "Taxon", url: "/taxon", is_page_parent: true },
-          ]
+          ],
         )
       end
     end
 
-    context 'with a taxon content item with parent taxons' do
+    context "with a taxon content item with parent taxons" do
       it "includes parents and grandparents when available" do
         parent = {
           "content_id" => "30c1b93d-2553-47c9-bc3c-fc5b513ecc32",
@@ -85,8 +85,8 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnT
           "base_path" => "/a-parent",
           "phase" => "live",
           "links" => {
-            "parent_taxons" => []
-          }
+            "parent_taxons" => [],
+          },
         }
 
         content_item = taxon_with_parent_taxons([parent])
@@ -96,12 +96,12 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnT
           breadcrumbs: [
             { title: "Home", url: "/", is_page_parent: false },
             { title: "A-parent", url: "/a-parent", is_page_parent: true },
-          ]
+          ],
         )
       end
     end
 
-    context 'with multiple parents' do
+    context "with multiple parents" do
       it "selects the first parent taxon in alphabetical order by title" do
         parent1 = {
           "content_id" => "30c1b93d-2553-47c9-bc3c-fc5b513ecc32",
@@ -110,8 +110,8 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnT
           "base_path" => "/parent-a",
           "phase" => "live",
           "links" => {
-            "parent_taxons" => []
-          }
+            "parent_taxons" => [],
+          },
         }
         parent2 = {
           "content_id" => "30c1b93d-2553-47c9-bc3c-fc5b513ecc32",
@@ -120,8 +120,8 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnT
           "base_path" => "/parent-b",
           "phase" => "live",
           "links" => {
-            "parent_taxons" => []
-          }
+            "parent_taxons" => [],
+          },
         }
 
         content_item = taxon_with_parent_taxons([parent2, parent1])
@@ -131,7 +131,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnT
           breadcrumbs: [
             { title: "Home", url: "/", is_page_parent: false },
             { title: "Parent A", url: "/parent-a", is_page_parent: true },
-          ]
+          ],
         )
       end
     end
@@ -168,7 +168,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnT
             "base_path" => "/taxon",
             "phase" => "live",
             "links" => {
-              "parent_taxons" => parents
+              "parent_taxons" => parents,
             },
           },
         ],
