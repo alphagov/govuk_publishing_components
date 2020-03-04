@@ -12,7 +12,7 @@ module GovukPublishingComponents
         {
           "@context" => "http://schema.org",
           "@type" => "CreativeWork",
-          "sameAs" => has_part_url
+          "sameAs" => has_part_url,
         }
       end
     end

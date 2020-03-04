@@ -15,16 +15,16 @@ describe "Breadcrumbs", type: :view do
   end
 
   it "renders a single breadcrumb" do
-    render_component(breadcrumbs: [{ title: 'Section', url: '/section' }])
+    render_component(breadcrumbs: [{ title: "Section", url: "/section" }])
 
-    assert_link_with_text_in('.govuk-breadcrumbs__list-item:first-child', '/section', 'Section')
+    assert_link_with_text_in(".govuk-breadcrumbs__list-item:first-child", "/section", "Section")
   end
 
   it "renders schema data" do
     breadcrumbs = [
-      { title: 'Section 1', url: '/section-1' },
-      { title: 'Section 2', url: '/section-2' },
-      { title: 'Section 3', url: '/section-3' },
+      { title: "Section 1", url: "/section-1" },
+      { title: "Section 2", url: "/section-2" },
+      { title: "Section 3", url: "/section-3" },
     ]
     structured_data = GovukPublishingComponents::Presenters::Breadcrumbs.new(breadcrumbs).structured_data
     expect(structured_data["@type"]).to eq("BreadcrumbList")
@@ -40,8 +40,8 @@ describe "Breadcrumbs", type: :view do
 
   it "omits breadcrumb structured data when no url is present" do
     breadcrumbs = [
-      { title: 'Section 1', url: '/section-1' },
-      { title: 'Section 2' },
+      { title: "Section 1", url: "/section-1" },
+      { title: "Section 2" },
     ]
     structured_data = GovukPublishingComponents::Presenters::Breadcrumbs.new(breadcrumbs).structured_data
     expect(structured_data["@type"]).to eq("BreadcrumbList")
@@ -53,11 +53,11 @@ describe "Breadcrumbs", type: :view do
   end
 
   it "renders all data attributes for tracking" do
-    render_component(breadcrumbs: [{ title: 'Section', url: '/section' }])
+    render_component(breadcrumbs: [{ title: "Section", url: "/section" }])
 
     expected_tracking_options = {
       dimension28: "1",
-      dimension29: "Section"
+      dimension29: "Section",
     }
 
     assert_select '.gem-c-breadcrumbs[data-module="track-click"]', 1
@@ -68,11 +68,11 @@ describe "Breadcrumbs", type: :view do
   end
 
   it "a link to the homepage has separate tracking data" do
-    render_component(breadcrumbs: [{ title: 'Section', url: '/section' }, { title: 'Home', url: '/' }])
+    render_component(breadcrumbs: [{ title: "Section", url: "/section" }, { title: "Home", url: "/" }])
 
     expected_tracking_options = {
         dimension28: "2",
-        dimension29: "Section"
+        dimension29: "Section",
     }
 
     assert_select '.gem-c-breadcrumbs[data-module="track-click"]', 1
@@ -90,9 +90,9 @@ describe "Breadcrumbs", type: :view do
 
   it "tracks the total breadcrumb count on each breadcrumb" do
     breadcrumbs = [
-      { title: 'Section 1', url: '/section-1' },
-      { title: 'Section 2', url: '/section-2' },
-      { title: 'Section 3', url: '/section-3' },
+      { title: "Section 1", url: "/section-1" },
+      { title: "Section 2", url: "/section-2" },
+      { title: "Section 3", url: "/section-3" },
     ]
     render_component(breadcrumbs: breadcrumbs)
 
@@ -109,20 +109,20 @@ describe "Breadcrumbs", type: :view do
 
   it "renders a list of breadcrumbs" do
     render_component(breadcrumbs: [
-        { title: 'Home', url: '/' },
-        { title: 'Section', url: '/section' },
-        { title: 'Sub-section', url: '/sub-section' },
+        { title: "Home", url: "/" },
+        { title: "Section", url: "/section" },
+        { title: "Sub-section", url: "/sub-section" },
       ])
 
-    assert_link_with_text_in('.govuk-breadcrumbs__list-item:first-child', '/', 'Home')
-    assert_link_with_text_in('.govuk-breadcrumbs__list-item:first-child + li', '/section', 'Section')
-    assert_link_with_text_in('.govuk-breadcrumbs__list-item:last-child', '/sub-section', 'Sub-section')
+    assert_link_with_text_in(".govuk-breadcrumbs__list-item:first-child", "/", "Home")
+    assert_link_with_text_in(".govuk-breadcrumbs__list-item:first-child + li", "/section", "Section")
+    assert_link_with_text_in(".govuk-breadcrumbs__list-item:last-child", "/sub-section", "Sub-section")
   end
 
   it "renders inverted breadcrumbs when passed a flag" do
     render_component(breadcrumbs: [
-        { title: 'Home', url: '/' },
-        { title: 'Section', url: '/section' },
+        { title: "Home", url: "/" },
+        { title: "Section", url: "/section" },
       ], inverse: true)
 
     assert_select ".gem-c-breadcrumbs--inverse"
@@ -131,23 +131,23 @@ describe "Breadcrumbs", type: :view do
   it "renders breadcrumb items without link as text" do
     render_component(
       breadcrumbs: [
-        { title: 'Topic', url: '/topic' },
-        { title: 'Current Page' },
-      ]
+        { title: "Topic", url: "/topic" },
+        { title: "Current Page" },
+      ],
     )
 
-    assert_link_with_text_in('.govuk-breadcrumbs__list-item:first-child', '/topic', 'Topic')
-    assert_select('.govuk-breadcrumbs__list-item:last-child', 'Current Page')
-    assert_select('.govuk-breadcrumbs__list-item:last-child a', false)
+    assert_link_with_text_in(".govuk-breadcrumbs__list-item:first-child", "/topic", "Topic")
+    assert_select(".govuk-breadcrumbs__list-item:last-child", "Current Page")
+    assert_select(".govuk-breadcrumbs__list-item:last-child a", false)
   end
 
   it "collapses on mobile if passed a flag" do
     render_component(collapse_on_mobile: true, breadcrumbs: [
-        { title: 'Home', url: '/' },
-        { title: 'Section', url: '/section' },
-        { title: 'Sub-section', url: '/sub-section' },
+        { title: "Home", url: "/" },
+        { title: "Section", url: "/section" },
+        { title: "Sub-section", url: "/sub-section" },
       ])
 
-    assert_select('.gem-c-breadcrumbs.govuk-breadcrumbs.gem-c-breadcrumbs--collapse-on-mobile')
+    assert_select(".gem-c-breadcrumbs.govuk-breadcrumbs.gem-c-breadcrumbs--collapse-on-mobile")
   end
 end

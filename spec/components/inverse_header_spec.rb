@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 def block
   "<div class=\"gem-c-title gem-c-title--inverse\">

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 RSpec.describe GovukPublishingComponents::AppHelpers::Environment do
   describe ".current_acceptance_environment" do

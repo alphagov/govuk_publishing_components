@@ -1,4 +1,4 @@
-require 'plek'
+require "plek"
 
 module GovukPublishingComponents
   module Presenters
@@ -19,8 +19,8 @@ module GovukPublishingComponents
             "@type": "SearchAction",
             "description": description,
             "target": search_template,
-            "query": "required"
-          }
+            "query": "required",
+          },
         }
       end
 

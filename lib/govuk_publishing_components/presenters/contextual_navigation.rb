@@ -8,12 +8,12 @@ module GovukPublishingComponents
       # @param request_path `request.path`
       def initialize(content_item, request)
         @content_item = content_item
-        @request_path = simple_smart_answer? ? content_item['base_path'] : request.path
+        @request_path = simple_smart_answer? ? content_item["base_path"] : request.path
         @query_parameters = request.query_parameters
       end
 
       def simple_smart_answer?
-        content_item['document_type'] === "simple_smart_answer"
+        content_item["document_type"] === "simple_smart_answer"
       end
 
       def taxon_breadcrumbs
@@ -31,9 +31,9 @@ module GovukPublishingComponents
               url: "/",
             },
             {
-              title: parent_finder['title'],
-              url: parent_finder['base_path'],
-            }
+              title: parent_finder["title"],
+              url: parent_finder["base_path"],
+            },
           ]
         else
           ContentBreadcrumbsBasedOnParent.new(content_item).breadcrumbs[:breadcrumbs]

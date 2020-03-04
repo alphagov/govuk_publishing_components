@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "Government navigation", type: :view do
   def component_name
@@ -22,7 +22,7 @@ describe "Government navigation", type: :view do
   end
 
   it "can mark a link as active" do
-    render_component(active: 'departments')
+    render_component(active: "departments")
 
     assert_select "a.active", text: "Departments"
   end

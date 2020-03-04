@@ -7,8 +7,8 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         random_item.merge(
           "base_path" => "/foo",
           "details" => {
-            "body" => "Foo"
-          }
+            "body" => "Foo",
+          },
         )
       end
 
@@ -17,9 +17,9 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         schema: :article,
       ).structured_data
 
-      expect(structured_data['@type']).to eql("Article")
-      expect(structured_data['mainEntityOfPage']['@id']).to eql("http://www.dev.gov.uk/foo")
-      expect(structured_data['articleBody']).to eql("Foo")
+      expect(structured_data["@type"]).to eql("Article")
+      expect(structured_data["mainEntityOfPage"]["@id"]).to eql("http://www.dev.gov.uk/foo")
+      expect(structured_data["articleBody"]).to eql("Foo")
     end
 
     it "generates search info in Articles for manuals" do
@@ -27,9 +27,9 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         random_item.merge(
           "base_path" => "/guidance/plane-manual",
           "details" => {
-            "body" => "Ensure you have a left phalange before take off."
+            "body" => "Ensure you have a left phalange before take off.",
           },
-          "title" => "Phoebe's flying guide"
+          "title" => "Phoebe's flying guide",
         )
       end
 
@@ -38,17 +38,17 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         schema: :article,
       ).structured_data
 
-      expect(structured_data['@type']).to eql("Article")
-      expect(structured_data['mainEntityOfPage']['@id']).to eql("http://www.dev.gov.uk/guidance/plane-manual")
-      expect(structured_data['articleBody']).to eql("Ensure you have a left phalange before take off.")
+      expect(structured_data["@type"]).to eql("Article")
+      expect(structured_data["mainEntityOfPage"]["@id"]).to eql("http://www.dev.gov.uk/guidance/plane-manual")
+      expect(structured_data["articleBody"]).to eql("Ensure you have a left phalange before take off.")
 
       search_action = {
         "@type": "SearchAction",
         "description": "Search within Phoebe's flying guide",
         "target": "http://www.dev.gov.uk/search/all?keywords={query}&order=relevance&manual=%2Fguidance%2Fplane-manual",
-        "query": "required"
+        "query": "required",
       }
-      expect(structured_data['potentialAction']).to eql(search_action)
+      expect(structured_data["potentialAction"]).to eql(search_action)
     end
 
     it "generates schema.org Datasets" do
@@ -60,11 +60,11 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
               "government": {
               "title": "Government title",
               "slug": "government-title",
-              "current": false
+              "current": false,
             },
           },
           "description" => "Dataset description",
-          "title" => "Dataset Title"
+          "title" => "Dataset Title",
         )
       end
 
@@ -73,44 +73,44 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         schema: :dataset,
       ).structured_data
 
-      expect(structured_data['@type']).to eql("Dataset")
-      expect(structured_data['name']).to eql("Dataset Title")
-      expect(structured_data['description'].length).to eql(5000)
+      expect(structured_data["@type"]).to eql("Dataset")
+      expect(structured_data["name"]).to eql("Dataset Title")
+      expect(structured_data["description"].length).to eql(5000)
     end
 
     context "schema.org GovernmentService" do
       before(:each) do
         @organisations = [
           {
-            'title' => 'Ministry of Dragons',
-            'web_url' => 'http://www.dev.gov.uk/ministry-of-dragons'
+            "title" => "Ministry of Dragons",
+            "web_url" => "http://www.dev.gov.uk/ministry-of-dragons",
           },
           {
-            'title' => 'Ministry of Safety',
-            'web_url' => 'http://www.dev.gov.uk/ministry-of-safety'
-          }
+            "title" => "Ministry of Safety",
+            "web_url" => "http://www.dev.gov.uk/ministry-of-safety",
+          },
         ]
 
         @ordered_related_items = [
           {
-            'title' => 'Apply for your first dragon',
-            'schema_name' => 'transaction',
-            'web_url' => 'http://www.dev.gov.uk/apply-for-your-first-dragon'
+            "title" => "Apply for your first dragon",
+            "schema_name" => "transaction",
+            "web_url" => "http://www.dev.gov.uk/apply-for-your-first-dragon",
           },
           {
-            'title' => 'Dragon handling: your guide to a healthy dragon',
-            'schema_name' => 'guidance',
-            'web_url' => 'http://www.dev.gov.uk/dragon-handling'
+            "title" => "Dragon handling: your guide to a healthy dragon",
+            "schema_name" => "guidance",
+            "web_url" => "http://www.dev.gov.uk/dragon-handling",
           },
           {
-            'title' => 'Renew your dragon flying license',
-            'schema_name' => 'transaction',
-            'web_url' => 'http://www.dev.gov.uk/renew-dragon-flying-license'
-          }
+            "title" => "Renew your dragon flying license",
+            "schema_name" => "transaction",
+            "web_url" => "http://www.dev.gov.uk/renew-dragon-flying-license",
+          },
         ]
       end
 
-      it 'generates schema.org GovernmentService with basic properties' do
+      it "generates schema.org GovernmentService with basic properties" do
         content_item = transaction_content_item([], [])
 
         structured_data = generate_structured_data(
@@ -118,13 +118,13 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
           schema: :government_service,
         ).structured_data
 
-        expect(structured_data['@type']).to eql('GovernmentService')
-        expect(structured_data['name']).to eql('Apply for your dragon housing license')
-        expect(structured_data['description']).to eql('This service lets you apply for a license to keep your dragon at home.')
-        expect(structured_data['url']).to end_with '/apply-for-your-dragon-housing-license'
+        expect(structured_data["@type"]).to eql("GovernmentService")
+        expect(structured_data["name"]).to eql("Apply for your dragon housing license")
+        expect(structured_data["description"]).to eql("This service lets you apply for a license to keep your dragon at home.")
+        expect(structured_data["url"]).to end_with "/apply-for-your-dragon-housing-license"
       end
 
-      it 'generates schema.org GovernmentService without provider when no organisation is tagged' do
+      it "generates schema.org GovernmentService without provider when no organisation is tagged" do
         content_item = transaction_content_item([], @ordered_related_items)
 
         structured_data = generate_structured_data(
@@ -132,20 +132,20 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
           schema: :government_service,
         ).structured_data
 
-        expect(structured_data.has_key?('provider')).to eql(false)
+        expect(structured_data.has_key?("provider")).to eql(false)
       end
 
-      it 'generates schema.org GovernmentService with provider when at least one organisation exists' do
+      it "generates schema.org GovernmentService with provider when at least one organisation exists" do
         expected_providers = [
           {
             "@type" => "GovernmentOrganization",
             "name" => "Ministry of Dragons",
-            "url" => "http://www.dev.gov.uk/ministry-of-dragons"
+            "url" => "http://www.dev.gov.uk/ministry-of-dragons",
           },
           {
             "@type" => "GovernmentOrganization",
             "name" => "Ministry of Safety",
-            "url" => "http://www.dev.gov.uk/ministry-of-safety"
+            "url" => "http://www.dev.gov.uk/ministry-of-safety",
           },
         ]
 
@@ -156,10 +156,10 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
           schema: :government_service,
         ).structured_data
 
-        expect(structured_data['provider']).to eql(expected_providers)
+        expect(structured_data["provider"]).to eql(expected_providers)
       end
 
-      it 'generates schema.org GovernmentService without related services when there are no related services' do
+      it "generates schema.org GovernmentService without related services when there are no related services" do
         content_item = transaction_content_item(@organisations, [])
 
         structured_data = generate_structured_data(
@@ -167,21 +167,21 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
           schema: :government_service,
         ).structured_data
 
-        expect(structured_data.has_key?('isRelatedTo')).to eql(false)
+        expect(structured_data.has_key?("isRelatedTo")).to eql(false)
       end
 
-      it 'generates schema.org GovernmentService with related services when related services exist as related links' do
+      it "generates schema.org GovernmentService with related services when related services exist as related links" do
         expected_related_services = [
           {
             "@type" => "GovernmentService",
             "name" => "Apply for your first dragon",
-            "url" => "http://www.dev.gov.uk/apply-for-your-first-dragon"
+            "url" => "http://www.dev.gov.uk/apply-for-your-first-dragon",
           },
           {
             "@type" => "GovernmentService",
             "name" => "Renew your dragon flying license",
-            "url" => "http://www.dev.gov.uk/renew-dragon-flying-license"
-          }
+            "url" => "http://www.dev.gov.uk/renew-dragon-flying-license",
+          },
         ]
 
         content_item = transaction_content_item([], @ordered_related_items)
@@ -191,7 +191,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
           schema: :government_service,
         ).structured_data
 
-        expect(structured_data['isRelatedTo']).to eql(expected_related_services)
+        expect(structured_data["isRelatedTo"]).to eql(expected_related_services)
       end
 
       def transaction_content_item(organisations = [], ordered_related_items = [])
@@ -199,19 +199,19 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
           .merge!(
             "title" => "Apply for your dragon housing license",
             "description" => "This service lets you apply for a license to keep your dragon at home.",
-            "base_path" => "/apply-for-your-dragon-housing-license"
+            "base_path" => "/apply-for-your-dragon-housing-license",
           )
 
         if organisations.any?
-          content_item['links']['organisations'] = organisations
+          content_item["links"]["organisations"] = organisations
         else
-          content_item['links'].delete('organisations')
+          content_item["links"].delete("organisations")
         end
 
         if ordered_related_items.any?
-          content_item['links']['ordered_related_items'] = ordered_related_items
+          content_item["links"]["ordered_related_items"] = ordered_related_items
         else
-          content_item['links'].delete('ordered_related_items')
+          content_item["links"].delete("ordered_related_items")
         end
 
         content_item
@@ -226,7 +226,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         schema: :news_article,
       ).structured_data
 
-      expect(structured_data['@type']).to eql("NewsArticle")
+      expect(structured_data["@type"]).to eql("NewsArticle")
     end
 
     context "schema.org FAQPages" do
@@ -243,12 +243,12 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         structured_data = generate_structured_data(
           content_item: content_item,
           schema: :faq,
-          body: part_body
+          body: part_body,
         ).structured_data
 
-        expect(structured_data['@type']).to eql("FAQPage")
+        expect(structured_data["@type"]).to eql("FAQPage")
 
-        q_and_a = structured_data['mainEntity']
+        q_and_a = structured_data["mainEntity"]
         expect(q_and_a.count).to eq(3)
 
         expect(q_and_a.first["url"]).to eq("http://www.dev.gov.uk/how-to-train-your-dragon#step-one")
@@ -273,8 +273,8 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         q_and_a = generate_structured_data(
           content_item: content_item,
           schema: :faq,
-          body: part_body
-        ).structured_data['mainEntity']
+          body: part_body,
+        ).structured_data["mainEntity"]
 
         expect(q_and_a.first["name"]).to eq("How to train your dragon")
         expect(q_and_a.first["url"]).to eq("http://www.dev.gov.uk/how-to-train-your-dragon")
@@ -292,8 +292,8 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         q_and_a = generate_structured_data(
           content_item: content_item,
           schema: :faq,
-          body: part_body
-        ).structured_data['mainEntity']
+          body: part_body,
+        ).structured_data["mainEntity"]
 
         expect(q_and_a.count).to eq(2)
         expect(q_and_a.map { |faq| faq["name"] }).to_not include("Step two")
@@ -306,8 +306,8 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         q_and_a = generate_structured_data(
           content_item: content_item,
           schema: :faq,
-          body: empty_part_body
-        ).structured_data['mainEntity']
+          body: empty_part_body,
+        ).structured_data["mainEntity"]
 
         expect(q_and_a).to eq([])
       end
@@ -315,11 +315,11 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       def dragon_guide
         GovukSchemas::RandomExample.for_schema(
           frontend_schema: "guide",
-          canonical_url: "http://www.dev.gov.uk/how-to-train-your-dragon/insurance"
+          canonical_url: "http://www.dev.gov.uk/how-to-train-your-dragon/insurance",
         ) do |random_item|
           random_item.merge(
             "title" => "How to train your dragon",
-            "base_path" => "/how-to-train-your-dragon"
+            "base_path" => "/how-to-train-your-dragon",
           )
         end
       end
@@ -333,26 +333,26 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         schema: :person,
       ).structured_data
 
-      expect(structured_data['@type']).to eql("Person")
+      expect(structured_data["@type"]).to eql("Person")
     end
 
     it "generates schema.org GovernmentOrganization" do
       content_item = generate_org(
         "base_path" => "/ministry-of-magic",
         "title" => "Ministry of Magic",
-        "description" => "The magical ministry."
+        "description" => "The magical ministry.",
       )
 
       search_action = {
         "@type": "SearchAction",
         "description": "Find all content from Ministry of Magic",
         "target": "http://www.dev.gov.uk/search/all?keywords={query}&order=relevance&organisations%5B%5D=ministry-of-magic",
-        "query": "required"
+        "query": "required",
       }
 
       structured_data = generate_structured_data(
         content_item: content_item,
-        schema: :organisation
+        schema: :organisation,
       ).structured_data
 
       expect(structured_data["@type"]).to eq("GovernmentOrganization")
@@ -365,12 +365,12 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
     it "generates organisation structure" do
       parent_content_item = generate_org(
         "base_path" => "/ministry-of-magic",
-        "title" => "Ministry of Magic"
+        "title" => "Ministry of Magic",
       )
 
       child_content_item = generate_org(
         "base_path" => "/dodgy-wands-commission",
-        "title" => "Dodgy Wands Commission"
+        "title" => "Dodgy Wands Commission",
       )
 
       content_item = generate_org(
@@ -378,13 +378,13 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         "title" => "Magical Artefacts Agency",
         "links" => {
           "ordered_parent_organisations" => [parent_content_item],
-          "ordered_child_organisations" => [child_content_item]
-        }
+          "ordered_child_organisations" => [child_content_item],
+        },
       )
 
       structured_data = generate_structured_data(
         content_item: content_item,
-        schema: :organisation
+        schema: :organisation,
       ).structured_data
 
       expect(structured_data["@type"]).to eq("GovernmentOrganization")
@@ -403,8 +403,8 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
             "href" => "/rufus-scrimgeour",
             "role_href" => "/minister-for-magic",
             "image" => {
-              "url" => "https://images.gov.uk/rufus.jpg"
-            }
+              "url" => "https://images.gov.uk/rufus.jpg",
+            },
           },
           {
             "name_prefix" => "Minister",
@@ -413,8 +413,8 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
             "href" => "/rufus-scrimgeour",
             "role_href" => "/head-of-auror-office",
             "image" => {
-              "url" => "https://images.gov.uk/rufus.jpg"
-            }
+              "url" => "https://images.gov.uk/rufus.jpg",
+            },
           },
           {
             "name_prefix" => "",
@@ -423,15 +423,15 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
             "href" => "/barty-crouch-sr",
             "role_href" => "/head-of-mle",
             "image" => {
-              "url" => "https://images.gov.uk/barty.jpg"
-            }
-          }
+              "url" => "https://images.gov.uk/barty.jpg",
+            },
+          },
         ]
       end
 
       structured_data = generate_structured_data(
         content_item: content_item,
-        schema: :organisation
+        schema: :organisation,
       ).structured_data
 
       expect(structured_data["@type"]).to eq("GovernmentOrganization")
@@ -446,14 +446,14 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
           {
             "@type" => "Role",
             "name" => "Minister for Magic",
-            "url" => "http://www.dev.gov.uk/minister-for-magic"
+            "url" => "http://www.dev.gov.uk/minister-for-magic",
           },
           {
             "@type" => "Role",
             "name" => "Head of Auror Office",
-            "url" => "http://www.dev.gov.uk/head-of-auror-office"
-          }
-        ]
+            "url" => "http://www.dev.gov.uk/head-of-auror-office",
+          },
+        ],
       )
     end
 
@@ -464,7 +464,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
 
       structured_data = generate_structured_data(
         content_item: content_item,
-        schema: :organisation
+        schema: :organisation,
       ).structured_data
 
       expect(structured_data["@type"]).to eq("GovernmentOrganization")
@@ -474,17 +474,17 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
     it "allows override of the URL" do
       content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "answer") do |random_item|
         random_item.merge(
-          "base_path" => "/foo"
+          "base_path" => "/foo",
         )
       end
 
       structured_data = generate_structured_data(
         content_item: content_item,
         schema: :article,
-        canonical_url: "https://www.gov.uk/foo/bar"
+        canonical_url: "https://www.gov.uk/foo/bar",
       ).structured_data
 
-      expect(structured_data['mainEntityOfPage']['@id']).to eql("https://www.gov.uk/foo/bar")
+      expect(structured_data["mainEntityOfPage"]["@id"]).to eql("https://www.gov.uk/foo/bar")
     end
 
     it "allows override of the body" do
@@ -492,18 +492,18 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         random_item.merge(
           "base_path" => "/foo",
           "details" => {
-            "body" => "Foo"
-          }
+            "body" => "Foo",
+          },
         )
       end
 
       structured_data = generate_structured_data(
         content_item: content_item,
         schema: :article,
-        body: "Bar"
+        body: "Bar",
       ).structured_data
 
-      expect(structured_data['articleBody']).to eql("Bar")
+      expect(structured_data["articleBody"]).to eql("Bar")
     end
 
     it "adds the primary publishing org as the author" do
@@ -516,9 +516,9 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
                 "title" => "Foo org",
                 "locale" => "en",
                 "base_path" => "/orgs/foo",
-              }
-            ]
-          }
+              },
+            ],
+          },
         )
       end
 
@@ -527,7 +527,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         schema: :article,
       ).structured_data
 
-      expect(structured_data['author']['name']).to eql("Foo org")
+      expect(structured_data["author"]["name"]).to eql("Foo org")
     end
 
     it "adds an image if it's available" do
@@ -541,7 +541,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         schema: :article,
       ).structured_data
 
-      expect(structured_data['image']).to eql(["/foo"])
+      expect(structured_data["image"]).to eql(["/foo"])
     end
 
     it "adds placeholders if there's no image" do
@@ -553,10 +553,10 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       structured_data = generate_structured_data(
         content_item: content_item,
         schema: :article,
-        image_placeholders: [1, 2]
+        image_placeholders: [1, 2],
       ).structured_data
 
-      expect(structured_data['image']).to eql([1, 2])
+      expect(structured_data["image"]).to eql([1, 2])
     end
 
     it "adds about schema if there are live taxons" do
@@ -566,20 +566,20 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
 
       structured_data = generate_structured_data(
         content_item: content_item,
-        schema: :article
+        schema: :article,
       ).structured_data
 
-      expect(structured_data['about']).to eql([
+      expect(structured_data["about"]).to eql([
                                                  {
                                                      "@context" => "http://schema.org",
                                                      "@type" => "Thing",
-                                                     "sameAs" => "https://www.gov.uk/education/becoming-an-apprentice"
+                                                     "sameAs" => "https://www.gov.uk/education/becoming-an-apprentice",
                                                  },
                                                  {
                                                      "@context" => "http://schema.org",
                                                      "@type" => "Thing",
-                                                     "sameAs" => "https://www.gov.uk/employment/finding-job"
-                                                 }
+                                                     "sameAs" => "https://www.gov.uk/employment/finding-job",
+                                                 },
                                              ])
     end
 
@@ -592,15 +592,15 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
 
       structured_data = generate_structured_data(
         content_item: content_item,
-        schema: :article
+        schema: :article,
       ).structured_data
 
-      expect(structured_data['about']).to eql([
+      expect(structured_data["about"]).to eql([
                                                   {
                                                       "@context" => "http://schema.org",
                                                       "@type" => "Thing",
-                                                      "sameAs" => "https://www.gov.uk/education/becoming-an-apprentice"
-                                                  }
+                                                      "sameAs" => "https://www.gov.uk/education/becoming-an-apprentice",
+                                                  },
                                               ])
     end
 
@@ -614,10 +614,10 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
 
       structured_data = generate_structured_data(
         content_item: content_item,
-        schema: :article
+        schema: :article,
       ).structured_data
 
-      expect(structured_data['about']).to eql(nil)
+      expect(structured_data["about"]).to eql(nil)
     end
 
     it "links to items that belongs to the content" do
@@ -638,8 +638,8 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
                       "schema_name" => "publication",
                       "title" => "Acetic acid: health effects and incident management",
                       "api_url" => "/api/content/acetic-acid-properties-uses-and-incident-management",
-                      "web_url" => "https://www.gov.uk/acetic-acid-properties-uses-and-incident-management"
-                  }
+                      "web_url" => "https://www.gov.uk/acetic-acid-properties-uses-and-incident-management",
+                  },
               ],
               "primary_publishing_organisation" => [
                   {
@@ -647,19 +647,19 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
                       "title" => "Foo org",
                       "locale" => "en",
                       "base_path" => "/orgs/foo",
-                  }
-              ]
-          }
+                  },
+              ],
+          },
         )
       end
 
       structured_data = generate_structured_data(
         content_item: content_item,
-        schema: :article
+        schema: :article,
       ).structured_data
 
-      expect(structured_data['hasPart'][0]['@type']).to eq('CreativeWork')
-      expect(structured_data['hasPart'][0]['sameAs']).to eq('https://www.gov.uk/acetic-acid-properties-uses-and-incident-management')
+      expect(structured_data["hasPart"][0]["@type"]).to eq("CreativeWork")
+      expect(structured_data["hasPart"][0]["sameAs"]).to eq("https://www.gov.uk/acetic-acid-properties-uses-and-incident-management")
     end
 
     it "links to document collection items that is part of the content" do
@@ -681,8 +681,8 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
                     "withdrawn" => false,
                     "links" => {},
                     "api_url" => "https://www.gov.uk/api/content/government/collections/chemical-hazards-compendium",
-                    "web_url" => "https://www.gov.uk/government/collections/chemical-hazards-compendium"
-                  }
+                    "web_url" => "https://www.gov.uk/government/collections/chemical-hazards-compendium",
+                  },
               ],
               "primary_publishing_organisation" => [
                   {
@@ -690,19 +690,19 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
                       "title" => "Public Health England",
                       "locale" => "en",
                       "base_path" => "/government/organisations/public-health-england",
-                  }
-              ]
-          }
+                  },
+              ],
+          },
         )
       end
 
       structured_data = generate_structured_data(
         content_item: content_item,
-        schema: :article
+        schema: :article,
       ).structured_data
 
-      expect(structured_data['isPartOf'][0]['@type']).to eq('CreativeWork')
-      expect(structured_data['isPartOf'][0]['sameAs']).to eq('https://www.gov.uk/government/collections/chemical-hazards-compendium')
+      expect(structured_data["isPartOf"][0]["@type"]).to eq("CreativeWork")
+      expect(structured_data["isPartOf"][0]["sameAs"]).to eq("https://www.gov.uk/government/collections/chemical-hazards-compendium")
     end
 
     def live_taxons_links
@@ -720,7 +720,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
               "withdrawn" => false,
               "phase" => "live",
               "api_url" => "https://www.gov.uk/api/content/education/becoming-an-apprentice",
-              "web_url" => "https://www.gov.uk/education/becoming-an-apprentice"
+              "web_url" => "https://www.gov.uk/education/becoming-an-apprentice",
             },
             {
               "api_path" => "/api/content/employment/finding-job",
@@ -733,10 +733,10 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
               "withdrawn" => false,
               "phase" => "live",
               "api_url" => "https://www.gov.uk/api/content/employment/finding-job",
-              "web_url" => "https://www.gov.uk/employment/finding-job"
-            }
-          ]
-        }
+              "web_url" => "https://www.gov.uk/employment/finding-job",
+            },
+          ],
+        },
       }
     end
 

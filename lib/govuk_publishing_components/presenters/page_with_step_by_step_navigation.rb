@@ -85,7 +85,7 @@ module GovukPublishingComponents
           {
             title: current_step_nav.title,
             path: current_step_nav.base_path,
-            tracking_id: current_step_nav.content_id
+            tracking_id: current_step_nav.content_id,
           }
         else
           {}
@@ -137,7 +137,7 @@ module GovukPublishingComponents
       end
 
       def active_step_nav_content_id
-        @active_step_nav_content_id ||= @query_parameters['step-by-step-nav'].present? ? @query_parameters['step-by-step-nav'] : nil
+        @active_step_nav_content_id ||= @query_parameters["step-by-step-nav"].present? ? @query_parameters["step-by-step-nav"] : nil
       end
 
       def steps
@@ -185,7 +185,7 @@ module GovukPublishingComponents
           {
             href: step_nav.base_path,
             text: step_nav.title,
-            tracking_id: step_nav.content_id
+            tracking_id: step_nav.content_id,
           }
         end
       end

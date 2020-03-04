@@ -1,4 +1,4 @@
-require 'rouge'
+require "rouge"
 
 module GovukPublishingComponents
   class ComponentExample
@@ -22,7 +22,7 @@ module GovukPublishingComponents
       id.humanize
     end
 
-    def highlight_code(string_to_format = '')
+    def highlight_code(string_to_format = "")
       formatter = Rouge::Formatters::HTML.new
       lexer = Rouge::Lexers::ERB.new
       formatter.format(lexer.lex(string_to_format)).html_safe
@@ -71,11 +71,11 @@ module GovukPublishingComponents
     end
 
     def right_to_left?
-      !!context['right_to_left']
+      !!context["right_to_left"]
     end
 
     def dark_background?
-      !!context['dark_background']
+      !!context["dark_background"]
     end
 
     def html_description

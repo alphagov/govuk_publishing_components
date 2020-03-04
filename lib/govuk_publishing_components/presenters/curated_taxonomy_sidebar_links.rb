@@ -1,4 +1,4 @@
-require 'set'
+require "set"
 
 module GovukPublishingComponents
   module Presenters
@@ -34,7 +34,7 @@ module GovukPublishingComponents
 
         [
           {
-            title: 'Elsewhere on GOV.UK',
+            title: "Elsewhere on GOV.UK",
             related_content: format_for_sidebar(elsewhere_items),
           },
         ]
@@ -45,14 +45,14 @@ module GovukPublishingComponents
 
         external_links = @content_item.external_links.map do |link|
           {
-            title: link['title'],
-            link: link['url'],
+            title: link["title"],
+            link: link["url"],
           }
         end
 
         [
           {
-            title: 'Elsewhere on the web',
+            title: "Elsewhere on the web",
             related_content: external_links,
           },
         ]

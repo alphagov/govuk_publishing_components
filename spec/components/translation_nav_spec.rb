@@ -8,16 +8,16 @@ describe "Translation nav", type: :view do
   def multiple_translations
     [
       {
-        locale: 'en',
-        base_path: '/en',
-        text: 'English',
-        active: true
+        locale: "en",
+        base_path: "/en",
+        text: "English",
+        active: true,
       },
       {
-        locale: 'hi',
-        base_path: '/hi',
-        text: 'हिंदी',
-      }
+        locale: "hi",
+        base_path: "/hi",
+        text: "हिंदी",
+      },
     ]
   end
 
@@ -29,12 +29,12 @@ describe "Translation nav", type: :view do
     assert_empty render_component(
       translations: [
         {
-          locale: 'en',
-          base_path: '/en',
-          text: 'English',
-          active: true
-        }
-      ]
+          locale: "en",
+          base_path: "/en",
+          text: "English",
+          active: true,
+        },
+      ],
     )
   end
 
@@ -71,14 +71,14 @@ describe "Translation nav", type: :view do
   end
 
   it "adds branding correctly" do
-    render_component(translations: multiple_translations, brand: 'attorney-generals-office')
+    render_component(translations: multiple_translations, brand: "attorney-generals-office")
     assert_select ".gem-c-translation-nav.brand--attorney-generals-office"
     assert_select ".gem-c-translation-nav .brand__color"
   end
 
   it "adds data tracking" do
     translations_with_tracking = multiple_translations
-    translations_with_tracking[1][:data_attributes] = { track_category: 'category', track_label: 'label' }
+    translations_with_tracking[1][:data_attributes] = { track_category: "category", track_label: "label" }
     render_component(translations: translations_with_tracking)
     assert_select ".gem-c-translation-nav a[data-track-category='category'][data-track-label='label']", text: "हिंदी"
   end

@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "Panel", type: :view do
   def component_name
@@ -13,23 +13,23 @@ describe "Panel", type: :view do
 
   it "renders a panel component with title and body" do
     render_component(
-      title: 'Application complete',
-      description: 'Description'
+      title: "Application complete",
+      description: "Description",
     )
 
-    assert_select ".govuk-panel__title", text: 'Application complete'
-    assert_select ".govuk-panel__body", text: 'Description'
+    assert_select ".govuk-panel__title", text: "Application complete"
+    assert_select ".govuk-panel__body", text: "Description"
   end
 
   it "renders a panel component with prepend, title and append " do
     render_component(
-      title: 'Application complete',
-      prepend: 'Prepended content',
-      append: 'Appended content'
+      title: "Application complete",
+      prepend: "Prepended content",
+      append: "Appended content",
     )
 
-    assert_select ".govuk-panel__title", text: 'Application complete'
-    assert_select ".gem-c-panel__prepend", text: 'Prepended content'
-    assert_select ".gem-c-panel__append", text: 'Appended content'
+    assert_select ".govuk-panel__title", text: "Application complete"
+    assert_select ".gem-c-panel__prepend", text: "Prepended content"
+    assert_select ".gem-c-panel__append", text: "Appended content"
   end
 end

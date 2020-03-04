@@ -7,7 +7,7 @@ describe "Highlight Box", type: :view do
 
   it "renders nothing if no items are provided" do
     assert_empty render_component(
-      items: []
+      items: [],
     )
   end
 
@@ -16,12 +16,12 @@ describe "Highlight Box", type: :view do
       render_component(
         items: [
           link: {
-            path: '/education'
+            path: "/education",
           },
           metadata: {
-            organisation: "Department of Education"
-          }
-        ]
+            organisation: "Department of Education",
+          },
+        ],
       )
     end
   end
@@ -31,12 +31,12 @@ describe "Highlight Box", type: :view do
       render_component(
         items: [
           link: {
-            text: 'Department of Education'
+            text: "Department of Education",
           },
           metadata: {
-            organisation: "Department of Education"
-          }
-        ]
+            organisation: "Department of Education",
+          },
+        ],
       )
     end
   end
@@ -45,48 +45,48 @@ describe "Highlight Box", type: :view do
     render_component(
       items: [
         link: {
-          text: 'Become an apprentice',
-          path: '/become-an-apprentice'
-        }
-      ]
+          text: "Become an apprentice",
+          path: "/become-an-apprentice",
+        },
+      ],
     )
 
-    assert_select ".gem-c-highlight-boxes__title[href=\"/become-an-apprentice\"]", text: 'Become an apprentice'
+    assert_select ".gem-c-highlight-boxes__title[href=\"/become-an-apprentice\"]", text: "Become an apprentice"
   end
 
   it "renders a description if provided" do
     render_component(
       items: [
         link: {
-          text: 'Become an apprentice',
-          path: '/become-an-apprentice',
-          description: "How to become an apprentice"
-        }
-      ]
+          text: "Become an apprentice",
+          path: "/become-an-apprentice",
+          description: "How to become an apprentice",
+        },
+      ],
     )
 
-    assert_select ".gem-c-highlight-boxes__description", text: 'How to become an apprentice'
+    assert_select ".gem-c-highlight-boxes__description", text: "How to become an apprentice"
   end
 
   it "renders metadata if provided" do
     render_component(
       items: [
         link: {
-          text: 'Become an apprentice',
-          path: '/become-an-apprentice',
-          description: "How to become an apprentice"
+          text: "Become an apprentice",
+          path: "/become-an-apprentice",
+          description: "How to become an apprentice",
         },
         metadata: {
           public_updated_at: Time.zone.parse("2017-01-05 14:50:33 +0000"),
-          organisations: 'Department of Education',
-          document_type: 'Guide'
-        }
-      ]
+          organisations: "Department of Education",
+          document_type: "Guide",
+        },
+      ],
     )
 
-    assert_select ".gem-c-highlight-boxes__metadata", text: 'Guide'
+    assert_select ".gem-c-highlight-boxes__metadata", text: "Guide"
     assert_select "time[datetime='2017-01-05T14:50:33Z']"
-    assert_select ".gem-c-highlight-boxes__metadata", text: 'Department of Education'
+    assert_select ".gem-c-highlight-boxes__metadata", text: "Department of Education"
   end
 
   it "renders multiple content items" do
@@ -94,42 +94,42 @@ describe "Highlight Box", type: :view do
       items: [
         {
           link: {
-            text: 'Become an apprentice',
-            path: '/become-an-apprentice',
-            description: "How to become an apprentice"
+            text: "Become an apprentice",
+            path: "/become-an-apprentice",
+            description: "How to become an apprentice",
           },
           metadata: {
             public_updated_at: Time.zone.parse("2016-06-27 14:50:33 +0000"),
-            organisations: 'Department of Education',
-            document_type: 'Guide'
-          }
+            organisations: "Department of Education",
+            document_type: "Guide",
+          },
         },
         {
           link: {
-            text: 'Student finance',
-            path: '/student-finance',
-            description: "Student finance"
+            text: "Student finance",
+            path: "/student-finance",
+            description: "Student finance",
           },
           metadata: {
             public_updated_at: Time.zone.parse("1994-11-21 14:50:33 +0000"),
-            organisations: 'Department of Education',
-            document_type: 'Detailed Guide'
-          }
-        }
-      ]
+            organisations: "Department of Education",
+            document_type: "Detailed Guide",
+          },
+        },
+      ],
     )
 
-    assert_select ".gem-c-highlight-boxes__item .gem-c-highlight-boxes__title[href=\"/become-an-apprentice\"]", text: 'Become an apprentice'
-    assert_select ".gem-c-highlight-boxes__item .gem-c-highlight-boxes__description", text: 'How to become an apprentice'
-    assert_select ".gem-c-highlight-boxes__metadata", text: 'Guide'
+    assert_select ".gem-c-highlight-boxes__item .gem-c-highlight-boxes__title[href=\"/become-an-apprentice\"]", text: "Become an apprentice"
+    assert_select ".gem-c-highlight-boxes__item .gem-c-highlight-boxes__description", text: "How to become an apprentice"
+    assert_select ".gem-c-highlight-boxes__metadata", text: "Guide"
     assert_select "time[datetime='2016-06-27T14:50:33Z']"
-    assert_select ".gem-c-highlight-boxes__metadata", text: 'Department of Education'
+    assert_select ".gem-c-highlight-boxes__metadata", text: "Department of Education"
 
-    assert_select ".gem-c-highlight-boxes__item .gem-c-highlight-boxes__title[href=\"/student-finance\"]", text: 'Student finance'
-    assert_select ".gem-c-highlight-boxes__item .gem-c-highlight-boxes__description", text: 'Student finance'
-    assert_select ".gem-c-highlight-boxes__metadata", text: 'Detailed Guide'
+    assert_select ".gem-c-highlight-boxes__item .gem-c-highlight-boxes__title[href=\"/student-finance\"]", text: "Student finance"
+    assert_select ".gem-c-highlight-boxes__item .gem-c-highlight-boxes__description", text: "Student finance"
+    assert_select ".gem-c-highlight-boxes__metadata", text: "Detailed Guide"
     assert_select "time[datetime='1994-11-21T14:50:33Z']"
-    assert_select ".gem-c-highlight-boxes__metadata", text: 'Department of Education'
+    assert_select ".gem-c-highlight-boxes__metadata", text: "Department of Education"
   end
 
   it "adds inverse class when inverse flag passed" do
@@ -137,16 +137,16 @@ describe "Highlight Box", type: :view do
       inverse: true,
       items: [
         link: {
-          text: 'Become an apprentice',
-          path: '/become-an-apprentice',
-          description: "How to become an apprentice"
+          text: "Become an apprentice",
+          path: "/become-an-apprentice",
+          description: "How to become an apprentice",
         },
         metadata: {
           public_updated_at: Time.zone.parse("2017-01-05 14:50:33 +0000"),
-          organisations: 'Department of Education',
-          document_type: 'Guide'
-        }
-      ]
+          organisations: "Department of Education",
+          document_type: "Guide",
+        },
+      ],
     )
 
     assert_select ".gem-c-highlight-boxes__item.gem-c-highlight-boxes--inverse"
@@ -156,17 +156,17 @@ describe "Highlight Box", type: :view do
     render_component(
       items: [
         link: {
-          text: 'Become an apprentice',
-          path: '/become-an-apprentice',
+          text: "Become an apprentice",
+          path: "/become-an-apprentice",
           description: "How to become an apprentice",
-          featured: true
+          featured: true,
         },
         metadata: {
           public_updated_at: Time.zone.parse("2017-01-05 14:50:33 +0000"),
-          organisations: 'Department of Education',
-          document_type: 'Guide'
-        }
-      ]
+          organisations: "Department of Education",
+          document_type: "Guide",
+        },
+      ],
     )
 
     assert_select ".gem-c-highlight-boxes__title.gem-c-highlight-boxes__title--featured"
@@ -178,17 +178,17 @@ describe "Highlight Box", type: :view do
       half_width: true,
       items: [
         link: {
-          text: 'Become an apprentice',
-          path: '/become-an-apprentice',
+          text: "Become an apprentice",
+          path: "/become-an-apprentice",
           description: "How to become an apprentice",
-          featured: true
+          featured: true,
         },
         metadata: {
           public_updated_at: Time.zone.parse("2017-01-05 14:50:33 +0000"),
-          organisations: 'Department of Education',
-          document_type: 'Guide'
-        }
-      ]
+          organisations: "Department of Education",
+          document_type: "Guide",
+        },
+      ],
     )
 
     assert_select ".gem-c-highlight-boxes__item-wrapper--half-width"
@@ -199,25 +199,25 @@ describe "Highlight Box", type: :view do
       items: [
         {
           link: {
-            text: 'Become an apprentice',
-            path: '/become-an-apprentice',
+            text: "Become an apprentice",
+            path: "/become-an-apprentice",
             description: "How to become an apprentice",
             data_attributes: {
               track_category: "servicesHighlightBoxClicked",
               track_action: 1,
-              track_label: "/becoming-an-apprentice"
-            }
+              track_label: "/becoming-an-apprentice",
+            },
           },
           metadata: {
             public_updated_at: Time.zone.parse("2016-06-27 14:50:33 +0000"),
-            organisations: 'Department of Education',
-            document_type: 'Guide'
-          }
+            organisations: "Department of Education",
+            document_type: "Guide",
+          },
         },
         {
           link: {
-            text: 'Student finance',
-            path: '/student-finance',
+            text: "Student finance",
+            path: "/student-finance",
             description: "Student finance",
             data_attributes: {
               track_category: "servicesHighlightBoxClicked",
@@ -225,17 +225,17 @@ describe "Highlight Box", type: :view do
               track_label: "/student-finance",
               track_options: {
                 dimension28: 2,
-                dimension29: "Student Finance"
-              }
-            }
+                dimension29: "Student Finance",
+              },
+            },
           },
           metadata: {
             public_updated_at: Time.zone.parse("1994-11-21 14:50:33 +0000"),
-            organisations: 'Department of Education',
-            document_type: 'Detailed Guide'
-          }
-        }
-      ]
+            organisations: "Department of Education",
+            document_type: "Detailed Guide",
+          },
+        },
+      ],
     )
 
     assert_select ".gem-c-highlight-boxes__title[data-track-category='servicesHighlightBoxClicked']"

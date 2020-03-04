@@ -22,7 +22,7 @@ module GovukPublishingComponents
           [
             option[:text],
             option[:value],
-            options_data_attribute(option[:data_attributes])
+            options_data_attribute(option[:data_attributes]),
           ]
         }
       end

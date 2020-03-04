@@ -16,13 +16,13 @@ describe "TaxonomyList", type: :view do
           link: {
             text: "Education, Skills and Training",
             path: "/education",
-            description: "Everything about Education"
+            description: "Everything about Education",
           },
           metadata: {
-            document_type: "Taxon"
-          }
-        ]
-      }
+            document_type: "Taxon",
+          },
+        ],
+      },
     )
 
     assert_select ".gem-c-taxonomy-list .gem-c-highlight-boxes__title[href='/education']", text: "Education, Skills and Training"
@@ -37,13 +37,13 @@ describe "TaxonomyList", type: :view do
           link: {
             text: "Student Finance",
             path: "/student-finance",
-            description: "How to apply for student finance"
+            description: "How to apply for student finance",
           },
           metadata: {
-            document_type: "Guide"
-          }
-        ]
-      }
+            document_type: "Guide",
+          },
+        ],
+      },
     )
 
     assert_select ".gem-c-taxonomy-list .gem-c-document-list__item-title[href='/student-finance']", text: "Student Finance"
@@ -59,15 +59,15 @@ describe "TaxonomyList", type: :view do
             link: {
               path: "/apprenticeships",
               text: "Apprenticeships",
-              heading_level: 0
+              heading_level: 0,
             },
             image: {
               url: "/path/to/image",
               alt: "Apprentices working",
-            }
-          }
-        ]
-      }
+            },
+          },
+        ],
+      },
     )
 
     assert_select ".gem-c-taxonomy-list .gem-c-image-card__title-link[href='/apprenticeships']", text: "Apprenticeships"
@@ -82,24 +82,24 @@ describe "TaxonomyList", type: :view do
           link: {
             text: "Student Finance",
             path: "/student-finance",
-            description: "How to apply for student finance"
+            description: "How to apply for student finance",
           },
           metadata: {
-            document_type: "Guide"
-          }
-        ]
+            document_type: "Guide",
+          },
+        ],
       },
       highlight_box: {
         items: [
           link: {
             text: "Education, Skills and Training",
             path: "/education",
-            description: "Everything about Education"
+            description: "Everything about Education",
           },
           metadata: {
-            document_type: "Taxon"
-          }
-        ]
+            document_type: "Taxon",
+          },
+        ],
       },
       image_cards: {
         items: [
@@ -107,15 +107,15 @@ describe "TaxonomyList", type: :view do
             link: {
               path: "/apprenticeships",
               text: "Apprenticeships",
-              heading_level: 0
+              heading_level: 0,
             },
             image: {
               url: "/path/to/image",
               alt: "Apprentices working",
-            }
-          }
-        ]
-      }
+            },
+          },
+        ],
+      },
     )
 
     assert_select "ul.gem-c-taxonomy-list", count: 1

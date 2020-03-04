@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "Date input", type: :view do
   def component_name
@@ -18,7 +18,7 @@ describe "Date input", type: :view do
 
   it "renders with custom name on input fields" do
     render_component(
-      name: "dob"
+      name: "dob",
     )
 
     assert_select ".govuk-input[name='dob[day]'].govuk-input--width-2", 1
@@ -28,7 +28,7 @@ describe "Date input", type: :view do
 
   it "renders with legend and fieldset" do
     render_component(
-      legend_text: "What is your date of birth?"
+      legend_text: "What is your date of birth?",
     )
 
     assert_select ".govuk-fieldset[role=group] .govuk-fieldset__legend", text: "What is your date of birth?"
@@ -39,7 +39,7 @@ describe "Date input", type: :view do
   it "renders with hint" do
     render_component(
       legend_text: "What is your date of birth?",
-      hint: "For example, 31 3 1980"
+      hint: "For example, 31 3 1980",
     )
 
     assert_select ".govuk-fieldset[role=group] .govuk-hint", text: "For example, 31 3 1980"
@@ -48,7 +48,7 @@ describe "Date input", type: :view do
   it "renders with error message" do
     render_component(
       legend_text: "What is your date of birth?",
-      error_message: "Error message goes here"
+      error_message: "Error message goes here",
     )
 
     assert_select ".govuk-form-group--error .govuk-fieldset[role=group] .govuk-error-message", text: "Error: Error message goes here"
@@ -61,8 +61,8 @@ describe "Date input", type: :view do
       items: [
         { label: "Dydd", name: "dob-dydd", width: 2, value: 31 },
         { label: "Mis", name: "dob-mis", width: 2, value: 3 },
-        { label: "Blwyddyn", name: "dob-blwyddyn", width: 4, value: 1980 }
-      ]
+        { label: "Blwyddyn", name: "dob-blwyddyn", width: 4, value: 1980 },
+      ],
     )
 
     assert_select ".govuk-date-input__item:nth-child(1)", text: "Dydd"

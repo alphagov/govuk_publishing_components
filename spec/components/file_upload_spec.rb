@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "File upload", type: :view do
   def component_name
@@ -26,7 +26,7 @@ describe "File upload", type: :view do
   it "renders input with a data attributes" do
     render_component(
       data: { module: "contextual-guidance" },
-      name: "with-data-attributes"
+      name: "with-data-attributes",
     )
 
     assert_select ".govuk-file-upload[data-module='contextual-guidance']"
@@ -35,7 +35,7 @@ describe "File upload", type: :view do
   it "sets the 'for' on the label to the input id" do
     render_component(
       label: { text: "Can you provide more detail?" },
-      name: "file-upload-label"
+      name: "file-upload-label",
     )
 
     input = css_select(".govuk-file-upload")
@@ -106,12 +106,12 @@ describe "File upload", type: :view do
         name: "file-upload-hint-error-message",
         error_items: [
           {
-            text: "Error item 1"
+            text: "Error item 1",
           },
           {
-            text: "Error item 2"
-          }
-        ]
+            text: "Error item 2",
+          },
+        ],
       )
     end
 

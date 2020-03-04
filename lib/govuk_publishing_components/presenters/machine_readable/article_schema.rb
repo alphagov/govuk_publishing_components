@@ -24,7 +24,7 @@ module GovukPublishingComponents
         return {} unless page.body.present?
 
         {
-          "articleBody" => page.body
+          "articleBody" => page.body,
         }
       end
 

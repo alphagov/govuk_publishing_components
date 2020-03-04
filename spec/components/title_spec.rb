@@ -27,12 +27,12 @@ describe "Title", type: :view do
   end
 
   it "applies context language if supplied to a context string" do
-    render_component(title: "Bonjour Monde", context: "hello", context_locale: 'en')
+    render_component(title: "Bonjour Monde", context: "hello", context_locale: "en")
     assert_select ".gem-c-title__context[lang='en']"
   end
 
   it "applies title length if supplied" do
-    render_component(title: "Hello World", context: "format", average_title_length: 'long')
+    render_component(title: "Hello World", context: "format", average_title_length: "long")
     assert_select ".gem-c-title .gem-c-title__text--long", text: "Hello World"
   end
 
@@ -42,42 +42,42 @@ describe "Title", type: :view do
   end
 
   it "has a default margin bottom of 8" do
-    render_component(title: 'Margin default')
+    render_component(title: "Margin default")
     assert_select '.gem-c-title.govuk-\!-margin-bottom-8'
   end
 
   it "applies a margin bottom of 0" do
-    render_component(title: 'Margin 0', margin_bottom: 0)
+    render_component(title: "Margin 0", margin_bottom: 0)
     assert_select '.gem-c-title.govuk-\!-margin-bottom-0'
   end
 
   it "applies a valid margin bottom" do
-    render_component(title: 'Margin 4', margin_bottom: 4)
+    render_component(title: "Margin 4", margin_bottom: 4)
     assert_select '.gem-c-title.govuk-\!-margin-bottom-4'
   end
 
   it "ignores an invalid margin bottom" do
-    render_component(title: 'Margin wat', margin_bottom: 17)
+    render_component(title: "Margin wat", margin_bottom: 17)
     assert_select "[class='^=govuk-\!-margin-bottom-']", false
   end
 
   it "has a default margin top of 8" do
-    render_component(title: 'Margin default')
+    render_component(title: "Margin default")
     assert_select '.gem-c-title.govuk-\!-margin-top-8'
   end
 
   it "applies a margin top of 0" do
-    render_component(title: 'Margin 0', margin_top: 0)
+    render_component(title: "Margin 0", margin_top: 0)
     assert_select '.gem-c-title.govuk-\!-margin-top-0'
   end
 
   it "applies a valid margin top" do
-    render_component(title: 'Margin 4', margin_top: 4)
+    render_component(title: "Margin 4", margin_top: 4)
     assert_select '.gem-c-title.govuk-\!-margin-top-4'
   end
 
   it "ignores an invalid margin top" do
-    render_component(title: 'Margin wat', margin_top: 17)
+    render_component(title: "Margin wat", margin_top: 17)
     assert_select "[class='^=govuk-\!-margin-top-']", false
   end
 

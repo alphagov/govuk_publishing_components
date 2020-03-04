@@ -70,9 +70,9 @@ module GovukPublishingComponents
 
       def add_taxonomy_tags(meta_tags)
         themes = root_taxon_slugs(content_item)
-        meta_tags["govuk:themes"] = themes.to_a.sort.join(', ') unless themes.empty?
+        meta_tags["govuk:themes"] = themes.to_a.sort.join(", ") unless themes.empty?
 
-        taxons = if content_item[:document_type] == 'taxon'
+        taxons = if content_item[:document_type] == "taxon"
                    [content_item]
                  else
                    links[:taxons] || []
@@ -84,14 +84,14 @@ module GovukPublishingComponents
           slug_without_theme = base_path[%r{/[^/]+/(.+)}, 1]
           # Return the slug without the theme, or in the special case of a root taxon,
           # just return the full slug (because it doesn't have a slug beneath the theme)
-          slug_without_theme || base_path.sub(%r(^/), '')
+          slug_without_theme || base_path.sub(%r(^/), "")
         end
         taxon_ids = taxons.map { |taxon| taxon[:content_id] }
 
         meta_tags["govuk:taxon-id"] = taxon_ids.first unless taxon_ids.empty?
-        meta_tags["govuk:taxon-ids"] = taxon_ids.join(',') unless taxon_ids.empty?
+        meta_tags["govuk:taxon-ids"] = taxon_ids.join(",") unless taxon_ids.empty?
         meta_tags["govuk:taxon-slug"] = taxon_slugs_without_theme.first unless taxon_slugs_without_theme.empty?
-        meta_tags["govuk:taxon-slugs"] = taxon_slugs_without_theme.join(',') unless taxon_slugs_without_theme.empty?
+        meta_tags["govuk:taxon-slugs"] = taxon_slugs_without_theme.join(",") unless taxon_slugs_without_theme.empty?
         meta_tags
       end
 
@@ -123,7 +123,7 @@ module GovukPublishingComponents
         parent_taxons = links[:parent_taxons] || links[:taxons] unless links.nil?
 
         if parent_taxons.blank?
-          root_taxon_set << content_item[:base_path].sub(%r(^/), '') if content_item[:document_type] == 'taxon'
+          root_taxon_set << content_item[:base_path].sub(%r(^/), "") if content_item[:document_type] == "taxon"
         else
           parent_taxons.each do |parent_taxon|
             root_taxon_set += root_taxon_slugs(parent_taxon)

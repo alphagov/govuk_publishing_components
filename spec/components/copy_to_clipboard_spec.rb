@@ -9,7 +9,7 @@ describe "Copy to clipboard", type: :view do
     render_component(
       label: "Some label",
       copyable_content: "https://www.example.org",
-      button_text: "Copy link"
+      button_text: "Copy link",
     )
 
     assert_select "label", text: "Some label"

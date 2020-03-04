@@ -15,8 +15,8 @@ describe "Contextual guidance", type: :view do
     render_component(
       html_for: "news-title",
       title: "Writing a news title",
-      guidance_id: 'news-title-guidance',
-      content: sanitize("<p>The title must make clear what the content offers users</p>")
+      guidance_id: "news-title-guidance",
+      content: sanitize("<p>The title must make clear what the content offers users</p>"),
     ) do
       tag.input id: "news-title", name: "news-title", type: "text"
     end

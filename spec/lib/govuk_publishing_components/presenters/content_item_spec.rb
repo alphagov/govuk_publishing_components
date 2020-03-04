@@ -14,9 +14,9 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentItem do
                 {
                   "content_id" => "aaaa-bbbb",
                   "title" => "Taxon",
-                }
-              ]
-            }
+                },
+              ],
+            },
           }
         end
 
@@ -26,7 +26,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentItem do
             "document_type" => "answer",
             "links" => {
               "taxons" => [taxon],
-            }
+            },
           }
         end
 
@@ -47,9 +47,9 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentItem do
                 {
                   "content_id" => "xxxx-xxxx",
                   "title" => "Non Whitelisted Taxon",
-                }
-              ]
-            }
+                },
+              ],
+            },
           }
         end
 
@@ -59,7 +59,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentItem do
             "document_type" => "answer",
             "links" => {
               "taxons" => [taxon],
-            }
+            },
           }
         end
 
@@ -110,9 +110,9 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentItem do
                 {
                   "content_id" => "aaaa-bbbb",
                   "title" => "Taxon",
-                }
-              ]
-            }
+                },
+              ],
+            },
           }
         end
 
@@ -122,7 +122,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentItem do
             "document_type" => "taxon",
             "links" => {
               "parent_taxons" => [taxon],
-            }
+            },
           }
         end
 
@@ -143,9 +143,9 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentItem do
                 {
                   "content_id" => "xxxx-xxxx",
                   "title" => "Non Whitelisted Taxon",
-                }
-              ]
-            }
+                },
+              ],
+            },
           }
         end
 
@@ -155,7 +155,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentItem do
             "document_type" => "taxon",
             "links" => {
               "parent_taxons" => [taxon],
-            }
+            },
           }
         end
 

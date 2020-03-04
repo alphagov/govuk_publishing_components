@@ -7,7 +7,7 @@ describe "Contextual sidebar", type: :view do
 
   it "renders the sidebar" do
     render_component(
-      content_item: GovukSchemas::RandomExample.for_schema(frontend_schema: "speech")
+      content_item: GovukSchemas::RandomExample.for_schema(frontend_schema: "speech"),
     )
 
     assert_select ".gem-c-contextual-sidebar"

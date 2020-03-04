@@ -14,7 +14,7 @@ module GovukPublishingComponents
         ordered_parents << { title: "Home", url: "/" }
 
         {
-          breadcrumbs: ordered_parents.reverse
+          breadcrumbs: ordered_parents.reverse,
         }
       end
 

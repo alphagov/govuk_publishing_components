@@ -1,9 +1,9 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "All components" do
   Dir.glob("app/views/govuk_publishing_components/components/*.erb").each do |filename|
-    template = filename.split('/').last
-    component_name = template.sub('_', '').sub('.html.erb', '')
+    template = filename.split("/").last
+    component_name = template.sub("_", "").sub(".html.erb", "")
 
     describe component_name do
       yaml_file = "#{__dir__}/../../app/views/govuk_publishing_components/components/docs/#{component_name}.yml"
@@ -19,13 +19,13 @@ describe "All components" do
         expect(yaml["description"]).not_to be_nil
         expect(yaml["examples"]).not_to be_nil
         expect(
-          yaml["accessibility_criteria"] || yaml["shared_accessibility_criteria"]
+          yaml["accessibility_criteria"] || yaml["shared_accessibility_criteria"],
         ).not_to be_nil
       end
 
       it "has the correct class in the ERB template",
-        skip: component_name.in?(%w[step_by_step_nav_related step_by_step_nav_header step_by_step_nav previous_and_next_navigation]),
-        not_applicable: component_name.in?(%w[meta_tags machine_readable_metadata google_tag_manager_script table admin_analytics]) do
+         skip: component_name.in?(%w[step_by_step_nav_related step_by_step_nav_header step_by_step_nav previous_and_next_navigation]),
+         not_applicable: component_name.in?(%w[meta_tags machine_readable_metadata google_tag_manager_script table admin_analytics]) do
         erb = File.read(filename)
 
         class_name = "gem-c-#{component_name.dasherize}"
@@ -48,7 +48,7 @@ describe "All components" do
       it "doesn't use `html_safe`", not_applicable: component_name.in?(%w[govspeak]) do
         file = File.read(filename)
 
-        expect(file).not_to match 'html_safe'
+        expect(file).not_to match "html_safe"
       end
     end
   end

@@ -38,9 +38,9 @@ module GovukPublishingComponents
       file = Rails.root.join(@documentation_directory, "#{id}.yml")
       if !file.exist?
         file = gem_documentation_directory.join("#{id}.yml")
-        parse_documentation(file).merge(source: 'gem')
+        parse_documentation(file).merge(source: "gem")
       else
-        parse_documentation(file).merge(source: 'application')
+        parse_documentation(file).merge(source: "application")
       end
     end
 

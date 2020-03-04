@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "Button", type: :view do
   def component_name
@@ -105,8 +105,8 @@ describe "Button", type: :view do
       data_attributes: {
         "module": "cross-domain-tracking",
         "tracking-code": "GA-123ABC",
-        "tracking-name": "transactionTracker"
-      }
+        "tracking-name": "transactionTracker",
+      },
     )
 
     assert_select "button.govuk-button[data-module='cross-domain-tracking']"
@@ -121,8 +121,8 @@ describe "Button", type: :view do
       data_attributes: {
         "module": "cross-domain-tracking",
         "tracking-code": "GA-123ABC",
-        "tracking-name": "transactionTracker"
-      }
+        "tracking-name": "transactionTracker",
+      },
     )
 
     assert_select "a.govuk-button[data-module='cross-domain-tracking']"

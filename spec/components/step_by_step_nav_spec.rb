@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "step nav", type: :view do
   def component_name
@@ -8,113 +8,113 @@ describe "step nav", type: :view do
   def stepnav
     [
       {
-        title: 'Step 1',
+        title: "Step 1",
         optional: true,
         contents: [
           {
-            type: 'paragraph',
-            text: 'Step 1 paragraph'
+            type: "paragraph",
+            text: "Step 1 paragraph",
           },
           {
-            type: 'list',
+            type: "list",
             contents: [
               {
-                href: '/link1',
-                text: 'Link 1.1.1',
+                href: "/link1",
+                text: "Link 1.1.1",
               },
               {
-                href: 'http://www.gov.uk',
-                text: 'Link 1.1.2',
-                context: '£0 to £300'
+                href: "http://www.gov.uk",
+                text: "Link 1.1.2",
+                context: "£0 to £300",
               },
-            ]
+            ],
           },
           {
-            type: 'list',
-            style: 'choice',
+            type: "list",
+            style: "choice",
             contents: [
               {
-                href: '/link3',
-                text: 'Link 1.1.3',
+                href: "/link3",
+                text: "Link 1.1.3",
               },
               {
-                href: '/link4',
-                text: 'Link 1.1.4'
-              }
-            ]
-          }
-        ]
+                href: "/link4",
+                text: "Link 1.1.4",
+              },
+            ],
+          },
+        ],
       },
       {
-        title: 'Step 1 and',
+        title: "Step 1 and",
         optional: false,
         logic: "and",
         contents: [
           {
-            type: 'paragraph',
-            text: 'Step 1 and paragraph'
-          }
-        ]
+            type: "paragraph",
+            text: "Step 1 and paragraph",
+          },
+        ],
       },
       {
-        title: 'Step 2',
+        title: "Step 2",
         contents: [
           {
-            type: 'paragraph',
-            text: 'Step 2 paragraph'
+            type: "paragraph",
+            text: "Step 2 paragraph",
           },
           {
-            type: 'list',
-            style: 'choice',
+            type: "list",
+            style: "choice",
             contents: [
               {
-                href: '/link5',
-                text: 'Link 2.1.1',
+                href: "/link5",
+                text: "Link 2.1.1",
               },
               {
-                href: '/link6',
+                href: "/link6",
                 active: true,
-                text: 'Link 2.1.2',
+                text: "Link 2.1.2",
               },
-            ]
-          }
-        ]
+            ],
+          },
+        ],
       },
       {
-        title: 'Step 2 or',
-        logic: 'or',
+        title: "Step 2 or",
+        logic: "or",
         contents: [
           {
-            type: 'paragraph',
-            text: 'test'
+            type: "paragraph",
+            text: "test",
           },
           {
-            type: 'list',
+            type: "list",
             contents: [
               {
-                href: '/link7',
-                text: 'Link 2.2.1'
+                href: "/link7",
+                text: "Link 2.2.1",
               },
               {
-                text: 'or'
+                text: "or",
               },
               {
-                href: '/link8',
-                text: 'Link 2.2.2'
-              }
-            ]
-          }
-        ]
+                href: "/link8",
+                text: "Link 2.2.2",
+              },
+            ],
+          },
+        ],
       },
       {
         title: 'Step 3?"`_!',
         contents: [
           {
-            type: 'paragraph',
-            text: 'test'
-          }
-        ]
-      }
+            type: "paragraph",
+            text: "test",
+          },
+        ],
+      },
     ]
   end
 

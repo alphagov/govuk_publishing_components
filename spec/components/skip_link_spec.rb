@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "Skip Link", type: :view do
   def component_name
@@ -11,12 +11,12 @@ describe "Skip Link", type: :view do
   end
 
   it "renders a skip link correctly when href is specified" do
-    render_component(href: '#skip-to')
+    render_component(href: "#skip-to")
     assert_select ".govuk-skip-link[href=\"#skip-to\"]", text: "Skip to main content"
   end
 
   it "renders a skip link correctly when text is specified" do
-    render_component(text: 'Go to somewhere on the page')
+    render_component(text: "Go to somewhere on the page")
     assert_select ".govuk-skip-link[href=\"#main-content\"]", text: "Go to somewhere on the page"
   end
 end

@@ -13,11 +13,11 @@ module GovukPublishingComponents
         statistical_data_sets
       ).freeze
       WORLD_LOCATION_SPECIAL_CASES = {
-        'UK Mission to the European Union' => 'uk-mission-to-the-eu',
+        "UK Mission to the European Union" => "uk-mission-to-the-eu",
       }.freeze
 
       def initialize(options = {})
-        @content_item = options.fetch(:content_item) { raise ArgumentError, 'missing argument: content_item' }
+        @content_item = options.fetch(:content_item) { raise ArgumentError, "missing argument: content_item" }
         @context = options.fetch(:context, nil)
       end
 
@@ -57,8 +57,8 @@ module GovukPublishingComponents
         unless section_title === "related_items"
           I18n.t("components.related_#{@context}_navigation." + section_title,
                  default: [
-                   I18n.t('components.related_navigation.' + section_title),
-                   section_title.tr('_', ' '),
+                   I18n.t("components.related_navigation." + section_title),
+                   section_title.tr("_", " "),
                  ])
         end
       end
@@ -72,15 +72,15 @@ module GovukPublishingComponents
           css_classes << " #{css_class}--other"
         end
 
-        css_classes.join(' ')
+        css_classes.join(" ")
       end
 
       def section_data_track_count(section_title)
-        String(@context || 'sidebar') + String(section_title).camelcase
+        String(@context || "sidebar") + String(section_title).camelcase
       end
 
       def section_heading_level
-        @context == :footer ? 'h2' : 'h3'
+        @context == :footer ? "h2" : "h3"
       end
 
       def calculate_section_link_limit(links)
@@ -129,26 +129,26 @@ module GovukPublishingComponents
     private
 
       def translation_present?(content)
-        default_string = 'This is a string to act as a default for the `I18n.translate` method. Comparing the result reveals if there is a translation in the i18n files.'
+        default_string = "This is a string to act as a default for the `I18n.translate` method. Comparing the result reveals if there is a translation in the i18n files."
         I18n.translate(
           content,
           default: default_string,
-          fallback: false
+          fallback: false,
         ) != default_string
       end
 
       def related_items
-        related_quick_links = content_item_details_for('quick_links')
+        related_quick_links = content_item_details_for("quick_links")
 
         if related_quick_links.any?
           related_quick_links + related_mainstream_content
         else
-          content_item_links_for('ordered_related_items') + related_mainstream_content
+          content_item_links_for("ordered_related_items") + related_mainstream_content
         end
       end
 
       def related_world_locations
-        content_item_links_for('world_locations')
+        content_item_links_for("world_locations")
           .map do |link|
             slug = WORLD_LOCATION_SPECIAL_CASES[link[:text]] || link[:text].parameterize
             link.merge(path: "/world/#{slug}/news")
@@ -156,11 +156,11 @@ module GovukPublishingComponents
       end
 
       def related_statistical_data_sets
-        content_item_links_for('related_statistical_data_sets', only: 'statistical_data_set')
+        content_item_links_for("related_statistical_data_sets", only: "statistical_data_set")
       end
 
       def related_taxons
-        content_item_links_for('taxons', only: 'taxon')
+        content_item_links_for("taxons", only: "taxon")
       end
 
       def related_topics
@@ -174,8 +174,8 @@ module GovukPublishingComponents
       end
 
       def related_legacy_topics
-        mainstream_browse_page_links = content_item_links_for('mainstream_browse_pages', only: 'mainstream_browse_page')
-        topic_links = content_item_links_for('topics', only: 'topic')
+        mainstream_browse_page_links = content_item_links_for("mainstream_browse_pages", only: "mainstream_browse_page")
+        topic_links = content_item_links_for("topics", only: "topic")
 
         mainstream_browse_page_links + topic_links.find_all do |topic_link|
           mainstream_browse_page_links.none? do |mainstream_browse_page_link|
@@ -185,58 +185,58 @@ module GovukPublishingComponents
       end
 
       def related_topical_events
-        content_item_links_for('topical_events', only: 'topical_event')
+        content_item_links_for("topical_events", only: "topical_event")
       end
 
       def related_contacts
-        content_item_links_for('related', only: 'contact')
+        content_item_links_for("related", only: "contact")
       end
 
       def related_external_links
-        content_item_details_for('external_related_links')
+        content_item_details_for("external_related_links")
       end
 
       def related_mainstream_content
         return [] unless detailed_guide?
 
-        content_item_links_for('related_mainstream_content')
+        content_item_links_for("related_mainstream_content")
       end
 
       def related_guides
         return [] unless detailed_guide?
 
-        content_item_links_for('related_guides')
+        content_item_links_for("related_guides")
       end
 
       def related_document_collections
-        content_item_links_for('document_collections', only: 'document_collection')
+        content_item_links_for("document_collections", only: "document_collection")
       end
 
       def detailed_guide?
-        @content_item['document_type'] == 'detailed_guide'
+        @content_item["document_type"] == "detailed_guide"
       end
 
       def content_item_details_for(key)
-        Array(@content_item.dig('details', key))
-          .map { |link| { path: link['url'], text: link['title'], rel: 'external' } }
+        Array(@content_item.dig("details", key))
+          .map { |link| { path: link["url"], text: link["title"], rel: "external" } }
       end
 
       def content_item_links_for(key, only: nil)
-        links = Array(@content_item.dig('links', key))
+        links = Array(@content_item.dig("links", key))
 
-        if key == 'taxons'
-          links = links.find_all { |link| link['phase'] == 'live' }
+        if key == "taxons"
+          links = links.find_all { |link| link["phase"] == "live" }
         end
 
         if only.present?
-          links = links.find_all { |link| link['document_type'] == only }
+          links = links.find_all { |link| link["document_type"] == only }
         end
 
         links.map { |link|
           {
-            path: link['base_path'],
-            text: link['title'],
-            locale: link['locale'],
+            path: link["base_path"],
+            text: link["title"],
+            locale: link["locale"],
           }
         }
       end

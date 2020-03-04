@@ -17,7 +17,7 @@ module GovukPublishingComponents
             "@id" => page.canonical_url,
           },
           "name" => page.title,
-          "description" => page.body
+          "description" => page.body,
         }.merge(image_schema)
       end
 
@@ -30,8 +30,8 @@ module GovukPublishingComponents
 
         {
           "image" => [
-            page.image_url
-          ]
+            page.image_url,
+          ],
         }
       end
     end

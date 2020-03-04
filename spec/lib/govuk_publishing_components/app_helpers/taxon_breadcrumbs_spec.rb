@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 RSpec.describe GovukPublishingComponents::AppHelpers::TaxonBreadcrumbs do
   describe "Taxon breadcrumbs" do
@@ -23,7 +23,7 @@ RSpec.describe GovukPublishingComponents::AppHelpers::TaxonBreadcrumbs do
       expect(breadcrumbs).to eq(
         [
           { title: "Home", url: "/", is_page_parent: true },
-        ]
+        ],
       )
     end
 
@@ -35,11 +35,11 @@ RSpec.describe GovukPublishingComponents::AppHelpers::TaxonBreadcrumbs do
       expect(breadcrumbs).to eq(
         [
           { title: "Home", url: "/", is_page_parent: true },
-        ]
+        ],
       )
     end
 
-    context 'with a taxon with taxon parents' do
+    context "with a taxon with taxon parents" do
       it "includes parents and grandparents when available" do
         grandparent = {
           "title" => "Another-parent",
@@ -56,8 +56,8 @@ RSpec.describe GovukPublishingComponents::AppHelpers::TaxonBreadcrumbs do
           "base_path" => "/a-parent",
           "phase" => "live",
           "links" => {
-            "parent_taxons" => [grandparent]
-          }
+            "parent_taxons" => [grandparent],
+          },
         }
 
         content_item = taxon_with_parent_taxons([parent])
@@ -68,7 +68,7 @@ RSpec.describe GovukPublishingComponents::AppHelpers::TaxonBreadcrumbs do
             { title: "Home", url: "/", is_page_parent: false },
             { title: "Another-parent", url: "/another-parent", is_page_parent: false },
             { title: "A-parent", url: "/a-parent", is_page_parent: true },
-          ]
+          ],
         )
       end
     end

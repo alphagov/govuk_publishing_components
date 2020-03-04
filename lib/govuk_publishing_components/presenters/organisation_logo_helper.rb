@@ -21,7 +21,7 @@ module GovukPublishingComponents
         if image
           image_tag(logo_image_src, alt: logo_image_alt, class: "gem-c-organisation-logo__image")
         else
-          content_tag('span', name, class: "gem-c-organisation-logo__name")
+          content_tag("span", name, class: "gem-c-organisation-logo__name")
         end
       end
 

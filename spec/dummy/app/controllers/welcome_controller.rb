@@ -17,14 +17,14 @@ class WelcomeController < ApplicationController
   end
 
   def admin
-    render 'admin_example', layout: 'dummy_admin_layout'
+    render "admin_example", layout: "dummy_admin_layout"
   end
 
   def tabsexample
-    render 'tabs_example', layout: 'dummy_admin_layout'
+    render "tabs_example", layout: "dummy_admin_layout"
   end
 
   def errorsummary
-    render 'error_summary', layout: 'dummy_admin_layout'
+    render "error_summary", layout: "dummy_admin_layout"
   end
 end

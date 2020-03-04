@@ -1,14 +1,14 @@
-require 'spec_helper'
-require 'action_view'
+require "spec_helper"
+require "action_view"
 
 RSpec.describe GovukPublishingComponents::Presenters::ContentsListHelper do
   include ActionView::Helpers::SanitizeHelper
 
   describe "Contents list helper" do
     it "wraps a number and text in separate span elements" do
-      assert_split_number_and_text('1. Thing', '1.', 'Thing')
-      assert_split_number_and_text('10. Thing', '10.', 'Thing')
-      assert_split_number_and_text('100. Thing', '100.', 'Thing')
+      assert_split_number_and_text("1. Thing", "1.", "Thing")
+      assert_split_number_and_text("10. Thing", "10.", "Thing")
+      assert_split_number_and_text("100. Thing", "100.", "Thing")
     end
 
     it "keeps a space between number and text for screen reader pronunciation" do
@@ -21,11 +21,11 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentsListHelper do
     end
 
     it "wraps a number and text in span elements if it's a number without a period" do
-      assert_split_number_and_text('1 Thing', '1', 'Thing')
+      assert_split_number_and_text("1 Thing", "1", "Thing")
     end
 
     it "wraps a number in the form X.Y" do
-      assert_split_number_and_text('1.2 Vision', '1.2', 'Vision')
+      assert_split_number_and_text("1.2 Vision", "1.2", "Vision")
     end
 
     it "does nothing if no number is found" do

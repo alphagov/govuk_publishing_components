@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "Character count", type: :view do
   def component_name
@@ -14,12 +14,12 @@ describe "Character count", type: :view do
       name: "character-count",
       textarea: {
         label: { text: "Can you provide more detail?" },
-        name: "more-details"
+        name: "more-details",
       },
       data: {
         module: "character-count",
       },
-      maxlength: "100"
+      maxlength: "100",
     )
 
     assert_select ".govuk-character-count .govuk-textarea"
@@ -32,10 +32,10 @@ describe "Character count", type: :view do
       name: "character-count",
       textarea: {
         label: { text: "Can you provide more detail?" },
-        name: "more-details"
+        name: "more-details",
       },
       data: {
-        module: "character-count"
+        module: "character-count",
       },
       maxlength: "100",
     )

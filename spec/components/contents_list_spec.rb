@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "Contents list", type: :view do
   def component_name
@@ -7,28 +7,28 @@ describe "Contents list", type: :view do
 
   def contents_list
     [
-      { href: '/one', text: "1. One" },
-      { href: '/two', text: "2. Two" }
+      { href: "/one", text: "1. One" },
+      { href: "/two", text: "2. Two" },
     ]
   end
 
   def contents_list_with_active_item
     [
-      { href: '/one', text: "1. One" },
-      { href: '/two', text: "2. Two", active: true },
-      { href: '/three', text: "3. Three" }
+      { href: "/one", text: "1. One" },
+      { href: "/two", text: "2. Two", active: true },
+      { href: "/three", text: "3. Three" },
     ]
   end
 
   def nested_contents_list
     contents_list << {
-                       href: '/three',
+                       href: "/three",
                        text: "3. Three",
                        items: [
-                         { href: '/nested-one', text: "Nested one" },
-                         { href: '/nested-two', text: "Nested two" },
-                         { href: '/nested-four', text: "4. Four" },
-                       ]
+                         { href: "/nested-one", text: "Nested one" },
+                         { href: "/nested-two", text: "Nested two" },
+                         { href: "/nested-four", text: "4. Four" },
+                       ],
                      }
   end
 
@@ -58,7 +58,7 @@ describe "Contents list", type: :view do
     assert_select ".gem-c-contents-list"
     assert_select ".gem-c-contents-list__link[href='/one']", text: "1. One"
     assert_select ".gem-c-contents-list__link[href='/two']", count: 0
-    assert_select ".gem-c-contents-list__list-item[2]", text: '2. Two'
+    assert_select ".gem-c-contents-list__list-item[2]", text: "2. Two"
     assert_select ".gem-c-contents-list__list-item--active[aria-current='true']"
   end
 
@@ -67,8 +67,8 @@ describe "Contents list", type: :view do
     assert_select ".gem-c-contents-list"
     assert_select ".gem-c-contents-list__link[href='/one']", text: "1. One"
     assert_select ".gem-c-contents-list__link[href='/two']", count: 0
-    assert_select ".gem-c-contents-list__list-item[2]", text: '2. Two'
-    assert_select ".gem-c-contents-list__list-item[2] .gem-c-contents-list__number", text: '2.'
+    assert_select ".gem-c-contents-list__list-item[2]", text: "2. Two"
+    assert_select ".gem-c-contents-list__list-item[2] .gem-c-contents-list__number", text: "2."
     assert_select ".gem-c-contents-list__list-item--active[aria-current='true']"
   end
 
@@ -122,7 +122,7 @@ describe "Contents list", type: :view do
   end
 
   it "applies branding correctly" do
-    render_component(contents: nested_contents_list, format_numbers: true, brand: 'attorney-generals-office')
+    render_component(contents: nested_contents_list, format_numbers: true, brand: "attorney-generals-office")
     assert_select ".gem-c-contents-list.brand--attorney-generals-office"
     assert_select ".gem-c-contents-list__link", count: 6
     assert_select ".gem-c-contents-list__link.brand__color", count: 6

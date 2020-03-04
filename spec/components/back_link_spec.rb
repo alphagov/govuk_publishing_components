@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "Back Link", type: :view do
   def component_name
@@ -12,17 +12,17 @@ describe "Back Link", type: :view do
   end
 
   it "renders a back link correctly" do
-    render_component(href: '/back-me')
+    render_component(href: "/back-me")
     assert_select '.govuk-back-link[href="/back-me"]', text: "Back"
   end
 
   it "can render in welsh" do
-    I18n.with_locale(:cy) { render_component(href: '/back-me') }
+    I18n.with_locale(:cy) { render_component(href: "/back-me") }
     assert_select '.govuk-back-link[href="/back-me"]', text: "Yn ôl"
   end
 
   it "renders a back link with data attributes" do
-    render_component(href: '/back-me', data_attributes: { tracking: "GT-123" })
+    render_component(href: "/back-me", data_attributes: { tracking: "GT-123" })
     assert_select '.govuk-back-link[data-tracking="GT-123"]'
   end
 end

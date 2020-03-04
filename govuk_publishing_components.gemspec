@@ -1,4 +1,4 @@
-$:.push File.expand_path('lib', __dir__)
+$:.push File.expand_path("lib", __dir__)
 
 # Maintain your gem's version:
 require "govuk_publishing_components/version"

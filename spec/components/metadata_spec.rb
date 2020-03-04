@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "Metadata", type: :view do
   def component_name
@@ -16,48 +16,48 @@ describe "Metadata", type: :view do
   it "renders from metadata" do
     render_component(from: "<a href='/link'>Department</a>")
 
-    assert_definition('From:', 'Department')
-    assert_link_with_text_in('dd', '/link', 'Department')
+    assert_definition("From:", "Department")
+    assert_link_with_text_in("dd", "/link", "Department")
   end
 
   it "renders part of metadata" do
     render_component(part_of: "<a href='/link'>Department</a>")
 
-    assert_definition('Part of:', 'Department')
-    assert_link_with_text_in('dd', '/link', 'Department')
+    assert_definition("Part of:", "Department")
+    assert_link_with_text_in("dd", "/link", "Department")
   end
 
   it "renders history metadata" do
     render_component(history: "Updated 2 weeks ago")
 
-    assert_definition('History:', 'Updated 2 weeks ago')
+    assert_definition("History:", "Updated 2 weeks ago")
   end
 
   it "renders custom metadata" do
     render_component(other: {
         "Related topics": [
           "<a href='/government/topics/arts-and-culture'>Arts and culture</a>",
-          "<a href='/government/topics/sports-and-leisure'>Sports and leisure</a>"
+          "<a href='/government/topics/sports-and-leisure'>Sports and leisure</a>",
         ],
-        "Applies to": "England"
+        "Applies to": "England",
       })
 
-    assert_definition('Related topics:', 'Arts and culture and Sports and leisure')
-    assert_definition('Applies to:', 'England')
-    assert_link_with_text_in('dd', '/government/topics/arts-and-culture', 'Arts and culture')
-    assert_link_with_text_in('dd', '/government/topics/sports-and-leisure', 'Sports and leisure')
+    assert_definition("Related topics:", "Arts and culture and Sports and leisure")
+    assert_definition("Applies to:", "England")
+    assert_link_with_text_in("dd", "/government/topics/arts-and-culture", "Arts and culture")
+    assert_link_with_text_in("dd", "/government/topics/sports-and-leisure", "Sports and leisure")
   end
 
   it "renders multiples as a single sentence (except history)" do
     render_component(from: %w(one another),
       part_of: %w(this that),
       other: {
-        "Related topics": %w(a b c)
+        "Related topics": %w(a b c),
       })
 
-    assert_definition('From:', 'one and another')
-    assert_definition('Part of:', 'this and that')
-    assert_definition('Related topics:', 'a, b, and c')
+    assert_definition("From:", "one and another")
+    assert_definition("Part of:", "this and that")
+    assert_definition("Related topics:", "a, b, and c")
   end
 
   it "long lists of metadata are truncated and the remainder hidden behind a toggle for from" do
@@ -139,10 +139,10 @@ describe "Metadata", type: :view do
       "<a href=\"/business-finance-support?industries%5B%5D=transport-and-distribution\">Transport and distribution</a>",
       "<a href=\"/business-finance-support?industries%5B%5D=travel-and-leisure\">Travel and leisure</a>",
       "<a href=\"/business-finance-support?industries%5B%5D=utilities-providers\">Utilities providers</a>",
-      "<a href=\"/business-finance-support?industries%5B%5D=wholesale-and-retail\">Wholesale and retail</a>"
+      "<a href=\"/business-finance-support?industries%5B%5D=wholesale-and-retail\">Wholesale and retail</a>",
     ]
     render_component(other: {
-        "Industry": links
+        "Industry": links,
     })
 
     assert_truncation(links.length, 5)
@@ -165,11 +165,11 @@ describe "Metadata", type: :view do
       "<a href=\"/business-finance-support?industries%5B%5D=transport-and-distribution\">Transport and distribution</a>",
       "<a href=\"/business-finance-support?industries%5B%5D=travel-and-leisure\">Travel and leisure</a>",
       "<a href=\"/business-finance-support?industries%5B%5D=utilities-providers\">Utilities providers</a>",
-      "<a href=\"/business-finance-support?industries%5B%5D=wholesale-and-retail\">Wholesale and retail</a>"
+      "<a href=\"/business-finance-support?industries%5B%5D=wholesale-and-retail\">Wholesale and retail</a>",
     ]
-    I18n.with_locale('cy') do
+    I18n.with_locale("cy") do
       render_component(other: {
-          "Industry": links
+          "Industry": links,
       })
     end
 
@@ -186,7 +186,7 @@ describe "Metadata", type: :view do
       "<a href=\"/business-finance-support?industries%5B%5D=hospitality-and-catering\">Hospitality and catering</a>",
     ]
     render_component(other: {
-        "Industry": links
+        "Industry": links,
     })
 
     assert_no_truncation(links.length)

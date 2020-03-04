@@ -20,13 +20,13 @@ module GovukPublishingComponents
 
       def description
         {
-          "description" => (page.body || page.description).slice(0..4999)
+          "description" => (page.body || page.description).slice(0..4999),
         }
       end
 
       def name
         {
-          "name" => page.title
+          "name" => page.title,
         }
       end
     end

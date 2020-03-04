@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "Textarea", type: :view do
   def component_name
@@ -36,7 +36,7 @@ describe "Textarea", type: :view do
   it "renders textarea with a data attributes" do
     render_component(
       data: { module: "contextual-guidance" },
-      name: "with-data-attributes"
+      name: "with-data-attributes",
     )
 
     assert_select ".govuk-textarea[data-module='contextual-guidance']"
@@ -55,7 +55,7 @@ describe "Textarea", type: :view do
   it "renders textarea with disabled spellcheck" do
     render_component(
       spellcheck: "false",
-      name: "with-disabled-spellcheck"
+      name: "with-disabled-spellcheck",
     )
 
     assert_select ".govuk-textarea[spellcheck='false']"
@@ -64,7 +64,7 @@ describe "Textarea", type: :view do
   it "sets the 'for' on the label to the textarea id" do
     render_component(
       label: { text: "Can you provide more detail?" },
-      name: "more-detail-label"
+      name: "more-detail-label",
     )
 
     textarea = css_select(".govuk-textarea")
@@ -86,7 +86,7 @@ describe "Textarea", type: :view do
     render_component(
       label: { text: "Can you provide more detail?" },
       name: "with-custom-margin-bottom",
-      margin_bottom: 4
+      margin_bottom: 4,
     )
 
     assert_select '.gem-c-textarea.govuk-\!-margin-bottom-4'
@@ -96,7 +96,7 @@ describe "Textarea", type: :view do
     render_component(
       label: { text: "Can you provide more detail?" },
       name: "with-fallback-margin-bottom",
-      margin_bottom: 12
+      margin_bottom: 12,
     )
 
     assert_select '.gem-c-textarea.govuk-\!-margin-bottom-6'
@@ -169,12 +169,12 @@ describe "Textarea", type: :view do
         name: "more-detail-hint-error-message",
         error_items: [
           {
-            text: "Error item 1"
+            text: "Error item 1",
           },
           {
-            text: "Error item 2"
-          }
-        ]
+            text: "Error item 2",
+          },
+        ],
       )
     end
 

@@ -22,7 +22,7 @@ module GovukPublishingComponents
         ordered_parents << {
           title: "Home",
           url: "/",
-          is_page_parent: ordered_parents.empty?
+          is_page_parent: ordered_parents.empty?,
         }
 
         ordered_parents.reverse

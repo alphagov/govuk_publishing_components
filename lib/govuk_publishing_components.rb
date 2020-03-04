@@ -34,11 +34,11 @@ require "govuk_publishing_components/app_helpers/environment"
 
 # Add view and i18n paths for usage outside of a Rails app
 ActionController::Base.append_view_path(
-  File.expand_path("app/views", GovukPublishingComponents::Config.gem_directory)
+  File.expand_path("app/views", GovukPublishingComponents::Config.gem_directory),
 )
 
 I18n.load_path.unshift(
-  *Dir.glob(File.expand_path("config/locales/*.yml", GovukPublishingComponents::Config.gem_directory))
+  *Dir.glob(File.expand_path("config/locales/*.yml", GovukPublishingComponents::Config.gem_directory)),
 )
 
 module GovukPublishingComponents

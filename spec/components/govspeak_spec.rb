@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "Govspeak", type: :view do
   def component_name
@@ -7,24 +7,24 @@ describe "Govspeak", type: :view do
 
   it "renders content in a govspeak wrapper" do
     render_component(
-      content: '<h1>content</h1>'.html_safe
+      content: "<h1>content</h1>".html_safe,
     )
-    assert_select ".gem-c-govspeak h1", text: 'content'
+    assert_select ".gem-c-govspeak h1", text: "content"
   end
 
   it "renders right to left content correctly" do
     render_component(
       direction: "rtl",
-      content: "<h2>right to left</h2>".html_safe
+      content: "<h2>right to left</h2>".html_safe,
     )
 
-    assert_select ".direction-rtl h2", text: 'right to left'
+    assert_select ".direction-rtl h2", text: "right to left"
   end
 
   it "can disable youtube expansion" do
     render_component(
       disable_youtube_expansions: true,
-      content: "<h2>youtube</h2>".html_safe
+      content: "<h2>youtube</h2>".html_safe,
     )
 
     assert_select ".disable-youtube h2", text: "youtube"

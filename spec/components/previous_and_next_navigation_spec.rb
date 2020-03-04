@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "Previous and next navigation", type: :view do
   def component_name
@@ -13,7 +13,7 @@ describe "Previous and next navigation", type: :view do
     render_component(previous_page: {
       url: "previous-page",
       title: "Previous page",
-      label: "1 of 3"
+      label: "1 of 3",
     })
 
     assert_select ".gem-c-pagination[role='navigation']"
@@ -26,7 +26,7 @@ describe "Previous and next navigation", type: :view do
     render_component(next_page: {
       url: "next-page",
       title: "Next page",
-      label: "2 of 3"
+      label: "2 of 3",
     })
 
     assert_select ".gem-c-pagination__link-title", text: "Next page"
@@ -39,13 +39,13 @@ describe "Previous and next navigation", type: :view do
       previous_page: {
         url: "previous-page",
         title: "Previous page",
-        label: "1 of 3"
+        label: "1 of 3",
       },
       next_page: {
         url: "next-page",
         title: "Next page",
-        label: "2 of 3"
-      }
+        label: "2 of 3",
+      },
     )
 
     assert_select ".gem-c-pagination__item--previous .gem-c-pagination__link .visually-hidden", text: ":"
@@ -56,12 +56,12 @@ describe "Previous and next navigation", type: :view do
     render_component(
       previous_page: {
         url: "previous-page",
-        title: "Previous page"
+        title: "Previous page",
       },
       next_page: {
         url: "next-page",
-        title: "Next page"
-      }
+        title: "Next page",
+      },
     )
 
     assert_select ".gem-c-pagination__item--previous .gem-c-pagination__link .visually-hidden", false

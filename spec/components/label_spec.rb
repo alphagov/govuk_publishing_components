@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "Label", type: :view do
   def component_name
@@ -19,7 +19,7 @@ describe "Label", type: :view do
 
     assert_select(
       ".govuk-label[for='id-that-matches-input']",
-      text: "National Insurance number"
+      text: "National Insurance number",
     )
   end
 
@@ -28,12 +28,12 @@ describe "Label", type: :view do
       text: "National Insurance number",
       html_for: "id-that-matches-input",
       hint_id: "should-match-aria-describedby-input",
-      hint_text: "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+      hint_text: "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.",
     )
 
     assert_select(
       ".govuk-label[for='id-that-matches-input']",
-      text: "National Insurance number"
+      text: "National Insurance number",
     )
     assert_select ".govuk-hint", text: "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
     assert_select ".govuk-hint[id=should-match-aria-describedby-input]"
@@ -58,7 +58,7 @@ describe "Label", type: :view do
 
     assert_select(
       ".govuk-label[for='id-that-matches-input']",
-      text: "National Insurance number"
+      text: "National Insurance number",
     )
     assert_select ".govuk-label--s"
   end
@@ -69,7 +69,7 @@ describe "Label", type: :view do
       text: "A label for the radio component",
       html_for: "id-radio",
       hint_id: "should-match-aria-describedby-input",
-      hint_text: "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+      hint_text: "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.",
     )
 
     assert_select ".gem-c-label.govuk-label.govuk-radios__label"

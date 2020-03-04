@@ -143,7 +143,7 @@ describe "Contextual navigation" do
 
     content_store_has_random_item(links: {
       secondary_to_step_navs: secondary_to_step_navs,
-      part_of_step_navs: 2.times.map { random_step_nav_item("step_by_step_nav") }
+      part_of_step_navs: 2.times.map { random_step_nav_item("step_by_step_nav") },
     })
   end
 
@@ -153,7 +153,7 @@ describe "Contextual navigation" do
 
     content_store_has_random_item(links: {
       secondary_to_step_navs: 1.times.map { random_step_nav_item("step_by_step_nav") },
-      part_of_step_navs: part_of_step_navs
+      part_of_step_navs: part_of_step_navs,
     })
   end
 
@@ -168,26 +168,26 @@ describe "Contextual navigation" do
 
     content_store_has_random_item(links: {
       part_of_step_navs: part_of_step_navs,
-      secondary_to_step_navs: secondary_to_step_navs
+      secondary_to_step_navs: secondary_to_step_navs,
     })
   end
 
   def given_there_is_a_related_to_step_nav
     content_store_has_random_item(links: {
-      related_to_step_navs: 1.times.map { random_step_nav_item("step_by_step_nav") }
+      related_to_step_navs: 1.times.map { random_step_nav_item("step_by_step_nav") },
     })
   end
 
   def given_there_are_three_related_to_step_nav
     content_store_has_random_item(links: {
-      related_to_step_navs: 3.times.map { random_step_nav_item("step_by_step_nav") }
+      related_to_step_navs: 3.times.map { random_step_nav_item("step_by_step_nav") },
     })
   end
 
   def given_there_are_three_related_to_step_nav_and_one_secondary_to_step_nav
     content_store_has_random_item(links: {
       related_to_step_navs: 3.times.map { random_step_nav_item("step_by_step_nav") },
-      secondary_to_step_navs: 1.times.map { random_step_nav_item("step_by_step_nav") }
+      secondary_to_step_navs: 1.times.map { random_step_nav_item("step_by_step_nav") },
     })
   end
 
@@ -196,7 +196,7 @@ describe "Contextual navigation" do
       links: {
         "parent" => [example_item("mainstream_browse_page", "top_level_page")],
         "mainstream_browse_pages" => [example_item("mainstream_browse_page", "root_page")],
-      }
+      },
     )
   end
 
@@ -204,8 +204,8 @@ describe "Contextual navigation" do
     content_store_has_random_item(
       links: {
         "parent" => [example_item("mainstream_browse_page", "top_level_page")],
-        "ordered_related_items" => [example_item("guide", "guide")]
-      }
+        "ordered_related_items" => [example_item("guide", "guide")],
+      },
     )
   end
 
@@ -217,8 +217,8 @@ describe "Contextual navigation" do
       "links" => {
         "parent" => [example_item("mainstream_browse_page", "top_level_page")],
         "taxons" => [example_item("taxon", "taxon")],
-        "ordered_related_items" => [example_item("guide", "guide")]
-      }
+        "ordered_related_items" => [example_item("guide", "guide")],
+      },
     )
 
     content_store_has_item(content_item["base_path"], content_item)
@@ -232,14 +232,14 @@ describe "Contextual navigation" do
       schema: "guide",
       links: {
         "taxons" => [live_taxon, alpha_taxon],
-      }
+      },
     )
   end
 
   def given_theres_a_page_with_just_legacy_taxonomy
     content_store_has_random_item(links: {
       "topics" => [example_item("topic", "topic")],
-      "parent" => [example_item("mainstream_browse_page", "top_level_page")]
+      "parent" => [example_item("mainstream_browse_page", "top_level_page")],
     })
   end
 
@@ -259,7 +259,7 @@ describe "Contextual navigation" do
   def then_i_see_the_step_by_step_that_i_am_interacting_with
     expect(page).to have_selector(".gem-c-step-nav-related")
     expect(page).to have_selector(".gem-c-step-nav__header")
-    within '.gem-c-step-nav-header' do
+    within ".gem-c-step-nav-header" do
       expect(page).to have_content("PRIMARY STEP BY STEP - INTERACTING WITH")
       expect(page).not_to have_content("PRIMARY STEP BY STEP - NOT INTERACTING WITH")
     end
@@ -277,7 +277,7 @@ describe "Contextual navigation" do
   def then_i_just_see_the_step_by_step_related_links_with_just_two_links
     expect(page).to have_selector(".gem-c-step-nav-related")
     expect(page).not_to have_selector(".gem-c-step-nav__header")
-    within('.gem-c-step-nav-related') do
+    within(".gem-c-step-nav-related") do
       expect(page).to have_xpath(".//li", count: 2)
     end
   end
@@ -292,67 +292,67 @@ describe "Contextual navigation" do
   end
 
   def and_i_dont_see_the_secondary_step_by_step_related_links
-    within '.gem-c-step-nav-related' do
+    within ".gem-c-step-nav-related" do
       expect(page).not_to have_content("SECONDARY STEP BY STEP")
     end
   end
 
   def and_i_see_the_other_step_by_step_as_an_also_part_of_list
-    within '.gem-c-step-nav-related:last-child' do
-      expect(page).to have_content('Also part of')
+    within ".gem-c-step-nav-related:last-child" do
+      expect(page).to have_content("Also part of")
       expect(page).to have_content("PRIMARY STEP BY STEP - NOT INTERACTING WITH")
       expect(page).not_to have_content("PRIMARY STEP BY STEP - INTERACTING WITH")
     end
   end
 
   def and_i_dont_see_the_secondary_step_by_step_in_the_also_part_of_list
-    within '.gem-c-step-nav-related:last-child' do
+    within ".gem-c-step-nav-related:last-child" do
       expect(page).not_to have_content("SECONDARY STEP BY STEP")
     end
   end
 
   def then_i_see_the_browse_page_in_the_footer
-    within '.gem-c-contextual-footer' do
+    within ".gem-c-contextual-footer" do
       expect(page).to have_selector(".gem-c-related-navigation")
       expect(page).to have_content("Browse")
     end
   end
 
   def then_i_see_the_related_links_sidebar
-    within '.gem-c-contextual-sidebar' do
+    within ".gem-c-contextual-sidebar" do
       expect(page).to have_selector(".gem-c-related-navigation")
       expect(page).to have_content("The national curriculum")
     end
   end
 
   def then_i_see_the_primary_step_by_step
-    within '.gem-c-step-nav-header' do
+    within ".gem-c-step-nav-header" do
       expect(page).to have_content("PRIMARY STEP BY STEP")
     end
   end
 
   def and_the_parent_based_breadcrumbs
-    within '.gem-c-breadcrumbs' do
+    within ".gem-c-breadcrumbs" do
       expect(page).to have_link("Home")
       expect(page).to have_link("Benefits")
     end
   end
 
   def and_the_taxonomy_breadcrumbs
-    within '.gem-c-breadcrumbs' do
+    within ".gem-c-breadcrumbs" do
       expect(page).to have_link("Home")
       expect(page).to have_link("A level")
     end
   end
 
   def then_i_see_the_taxon_in_the_related_navigation_footer
-    within '.gem-c-contextual-footer' do
+    within ".gem-c-contextual-footer" do
       expect(page).to have_css(".gem-c-related-navigation__link", text: "A level")
     end
   end
 
   def then_i_see_the_legacy_topic_in_the_related_navigation_footer
-    within '.gem-c-contextual-footer' do
+    within ".gem-c-contextual-footer" do
       expect(page).to have_css(".gem-c-related-navigation__link", text: "Oil and gas")
     end
   end

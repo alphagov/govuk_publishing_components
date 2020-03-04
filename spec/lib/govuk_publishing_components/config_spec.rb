@@ -14,7 +14,7 @@ describe GovukPublishingComponents::Config do
       expect(GovukPublishingComponents::Config.application_stylesheet).to eql("custom_stylesheet")
       expect(GovukPublishingComponents::Config.application_print_stylesheet).to eql("custom_print_stylesheet")
       expect(GovukPublishingComponents::Config.application_javascript).to eql("custom_javascript")
-      expect(GovukPublishingComponents::Config.component_directory_name).to eql('components')
+      expect(GovukPublishingComponents::Config.component_directory_name).to eql("components")
     end
   end
 end
