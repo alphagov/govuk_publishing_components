@@ -47,24 +47,23 @@
           No <span class="visually-hidden">this page is not useful</span>
         <% end %>
       </li>
-      <li class="gem-c-feedback__option-list-item gem-c-feedback__option-list-item--wrong">
-        <%= link_to contact_govuk_path, {
-          class: 'gem-c-feedback__prompt-link js-toggle-form js-something-is-wrong',
-          data: {
-            'track-category' => 'Onsite Feedback',
-            'track-action' => 'GOV.UK Open Form'
-          },
-          'aria-controls': 'something-is-wrong',
-          'aria-expanded': false,
-          role: 'button',
-        } do %>
-          Is there anything wrong with this page?
-        <% end %>
-      </li>
     </ul>
   </div>
-
-  <div class="gem-c-feedback__prompt-success js-prompt-success js-hidden" tabindex="-1">
+  <div class="gem-c-feedback__js-prompt-questions gem-c-feedback__prompt-success js-prompt-success js-hidden" tabindex="-1">
     Thank you for your feedback
+  </div>
+  <div class="gem-c-feedback__js-prompt-questions gem-c-feedback__js-prompt-questions--something-is-wrong js-prompt-questions">
+    <%= link_to contact_govuk_path, {
+      class: 'gem-c-feedback__prompt-link js-toggle-form js-something-is-wrong',
+      data: {
+        'track-category' => 'Onsite Feedback',
+        'track-action' => 'GOV.UK Open Form'
+      },
+      'aria-controls': 'something-is-wrong',
+      'aria-expanded': false,
+      role: 'button',
+    } do %>
+      Is there anything wrong with this page?
+    <% end %>
   </div>
 </div>
