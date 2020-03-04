@@ -3,3 +3,7 @@
 .gem-c-layout-footer--border {
   border-top: govuk-spacing(2) solid govuk-colour("blue");
 }
+
+.gem-c-layout-footer .govuk-footer__list {
+  padding-bottom: govuk-spacing(7);
+}

@@ -8,30 +8,40 @@
     <% if navigation.any? %>
       <div class="govuk-footer__navigation">
         <% navigation.each do |item| %>
-          <div class="govuk-footer__section">
-            <h2 class="govuk-footer__heading govuk-heading-m"><%= item[:title] %></h2>
-            <% if item[:items] %>
-              <%
-                list_classes = %w( govuk-footer__list )
-                list_classes << "govuk-footer__list--columns-#{item[:columns]}" if item[:columns]
-              %>
-              <ul class="<%= list_classes.join(' ') %>">
-                <% item[:items].each do |item| %>
-                  <% if item[:href] && item[:text] %>
-                    <li class="govuk-footer__list-item">
-                      <%
-                        attributes = { class: "govuk-footer__link" }.merge(item.fetch(:attributes, {}))
-                        attributes[:rel] = "noopener" if attributes[:target] == "_blank" && !attributes[:rel]
-                      %>
-                      <%= link_to item[:text], item[:href], attributes %>
-                    </li>
+          <% if item[:items] %>
+            <%
+              case item[:columns]
+              when 2
+                width_class = "govuk-grid-column-two-thirds"
+              when 3
+                width_class = "govuk-grid-column-full"
+              else
+                width_class = "govuk-grid-column-one-third"
+              end
+
+              list_classes = %w( govuk-footer__list )
+              list_classes << "govuk-footer__list--columns-#{item[:columns]}" if item[:columns]
+            %>
+            <div class="<%= width_class %>">
+              <h2 class="govuk-footer__heading govuk-heading-m"><%= item[:title] %></h2>
+                <ul class="<%= list_classes.join(' ') %>">
+                  <% item[:items].each do |item| %>
+                    <% if item[:href] && item[:text] %>
+                      <li class="govuk-footer__list-item">
+                        <%
+                          attributes = { class: "govuk-footer__link" }.merge(item.fetch(:attributes, {}))
+                          attributes[:rel] = "noopener" if attributes[:target] == "_blank" && !attributes[:rel]
+                        %>
+                        <%= link_to item[:text], item[:href], attributes %>
+                      </li>
+                    <% end %>
                   <% end %>
-                <% end %>
-              </ul>
+                </ul>
+            </div>
             <% end %>
-          </div>
         <% end %>
       </div>
+
       <hr class="govuk-footer__section-break">
     <% end %>
     <div class="govuk-footer__meta">
