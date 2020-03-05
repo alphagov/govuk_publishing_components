@@ -11,6 +11,7 @@
 
 * Make feedback component more responsive and usable on mobile ([PR #1346](https://github.com/alphagov/govuk_publishing_components/pull/1346))
 * Extend document-list component to show parts of a document ([PR #1326](https://github.com/alphagov/govuk_publishing_components/pull/1326))
+* Update govspeak button styles again ([PR #1342](https://github.com/alphagov/govuk_publishing_components/pull/1342))
 
 ## 21.28.1
 

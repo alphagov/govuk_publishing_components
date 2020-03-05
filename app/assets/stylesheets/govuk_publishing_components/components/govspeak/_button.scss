@@ -3,13 +3,10 @@
 // scss-lint:disable PlaceholderInExtend
 // sass-lint:disable placeholder-in-extend
 .gem-c-govspeak {
-  .button,
-  .govuk-button,
   .gem-c-button {
     @extend .govuk-button;
   }
 
-  .button-start,
   .govuk-button--start {
     @extend .govuk-button--start;
   }
