@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe "Layout for public", type: :view do
   def component_name
@@ -20,30 +20,30 @@ describe "Layout for public", type: :view do
   it "can support full width layouts" do
     render_component(full_width: true)
 
-    assert_select '#content.govuk-width-container', false, 'Should not apply govuk-width-container class when full width'
+    assert_select "#content.govuk-width-container", false, "Should not apply govuk-width-container class when full width"
   end
 
   it "adds additional main classes if provided" do
     render_component(main_classes: "homepage test-new-main-class")
 
-    assert_select 'main.homepage, main.test-new-main-class'
+    assert_select "main.homepage, main.test-new-main-class"
   end
 
   it "adds additional body classes if provided" do
     render_component(body_classes: "homepage test-new-body-class")
 
-    assert_select 'body.homepage, main.test-new-body-class'
+    assert_select "body.homepage, main.test-new-body-class"
   end
 
   it "can display without search bar" do
     render_component(without_search: true)
 
-    assert_select '.gem-c-layout-for-public .gem-c-search', false
+    assert_select ".gem-c-layout-for-public .gem-c-search", false
   end
 
   it "can omit the header" do
     render_component(omit_header: true)
 
-    assert_select '.gem-c-layout-for-public .gem-c-layout-header', false
+    assert_select ".gem-c-layout-for-public .gem-c-layout-header", false
   end
 end

@@ -120,7 +120,7 @@ describe "Layout footer", type: :view do
   end
 
 
-  it 'renders the footer with a top border' do
+  it "renders the footer with a top border" do
     render_component(
       with_border: true,
       navigation: [
@@ -131,14 +131,14 @@ describe "Layout footer", type: :view do
             {
               href: "/browse/benefits",
               text: "Benefits",
-              attributes: { target: "_blank" }
-            }
-          ]
-        }
-      ]
+              attributes: { target: "_blank" },
+            },
+          ],
+        },
+      ],
     )
 
-    assert_select '.gem-c-layout-footer--border'
+    assert_select ".gem-c-layout-footer--border"
   end
 
   it "renders the footer meta link with attributes but will set the rel attribute if target is blank" do
