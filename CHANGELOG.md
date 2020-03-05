@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Improve numeric inputs ([PR #1345](https://github.com/alphagov/govuk_publishing_components/pull/1345))
+* Enable custom classes and `aria-label` on button component ([PR #1344](https://github.com/alphagov/govuk_publishing_components/pull/1344))
 * Tweak pagination component spacing and add border ([PR #1337](https://github.com/alphagov/govuk_publishing_components/pull/1337))
 
 ## 21.27.1
