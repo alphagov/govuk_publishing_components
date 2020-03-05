@@ -175,4 +175,10 @@ describe "Button", type: :view do
 
     assert_select ".gem-c-button.js-selector-1.js-selector-2"
   end
+
+  it "renders with aria-label" do
+    render_component(text: "Button", aria_label: "Button with custom label")
+
+    assert_select '.gem-c-button[aria-label="Button with custom label"]'
+  end
 end
