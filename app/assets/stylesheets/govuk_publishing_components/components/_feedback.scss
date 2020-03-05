@@ -27,7 +27,7 @@
 .gem-c-feedback__js-show,
 .gem-c-feedback__form,
 .gem-c-feedback__prompt-success,
-.gem-c-feedback__js-prompt-questions,
+.gem-c-feedback__prompt-questions,
 .gem-c-feedback__error-summary {
   display: none;
 
@@ -40,8 +40,7 @@
   }
 }
 
-.gem-c-feedback__js-prompt-questions  {
-  border-bottom: 1px solid govuk-colour("white");
+.gem-c-feedback__prompt-questions {
   padding: govuk-spacing(5) govuk-spacing(5) govuk-spacing(5) govuk-spacing(5);
   width: 50%;
   float: left;
@@ -55,7 +54,7 @@
   }
 }
 
-.gem-c-feedback__js-prompt-questions--something-is-wrong {
+.gem-c-feedback__prompt-questions--something-is-wrong {
   text-align: right;
 
   @include govuk-media-query($until: tablet) {

@@ -3,7 +3,7 @@
 %>
 
 <div class="gem-c-feedback__prompt gem-c-feedback__js-show js-prompt" tabindex="-1">
-  <div class="gem-c-feedback__js-prompt-questions js-prompt-questions">
+  <div class="gem-c-feedback__prompt-questions js-prompt-questions">
     <h2 class="gem-c-feedback__prompt-question">Is this page useful?</h2>
     <!-- Maybe button exists only to try and capture clicks by bots -->
     <%= link_to contact_govuk_path, {
@@ -50,10 +50,10 @@
       </li>
     </ul>
   </div>
-  <div class="gem-c-feedback__js-prompt-questions gem-c-feedback__prompt-success js-prompt-success js-hidden" tabindex="-1">
+  <div class="gem-c-feedback__prompt-questions gem-c-feedback__prompt-success js-prompt-success js-hidden" tabindex="-1">
     Thank you for your feedback
   </div>
-  <div class="gem-c-feedback__js-prompt-questions gem-c-feedback__js-prompt-questions--something-is-wrong js-prompt-questions">
+  <div class="gem-c-feedback__prompt-questions gem-c-feedback__prompt-questions--something-is-wrong js-prompt-questions">
     <%= link_to contact_govuk_path, {
       class: 'gem-c-feedback__prompt-link js-toggle-form js-something-is-wrong',
       data: {
