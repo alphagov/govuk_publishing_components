@@ -248,16 +248,7 @@
     display: inline-block;
   }
 
-  .gem-c-feedback__option-list-item--useful {
+  .gem-c-feedback__option-list-item:first-child {
     margin-right: govuk-spacing(7);
-    @include govuk-media-query($until: tablet) {
-      display: inline-block;
-    }
-  }
-
-  .gem-c-feedback__option-list-item--not-useful {
-    @include govuk-media-query($until: tablet) {
-      display: inline-block;
-    }
   }
 }
