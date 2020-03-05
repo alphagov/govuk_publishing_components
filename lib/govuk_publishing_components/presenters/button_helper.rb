@@ -5,7 +5,8 @@ module GovukPublishingComponents
     class ButtonHelper
       attr_reader :href, :text, :title, :info_text, :rel, :data_attributes,
                   :margin_bottom, :inline_layout, :target, :type, :start,
-                  :secondary, :secondary_quiet, :destructive, :name, :value
+                  :secondary, :secondary_quiet, :destructive, :name, :value,
+                  :classes
 
       def initialize(local_assigns)
         @href = local_assigns[:href]
@@ -24,6 +25,7 @@ module GovukPublishingComponents
         @destructive = local_assigns[:destructive]
         @name = local_assigns[:name]
         @value = local_assigns[:value]
+        @classes = local_assigns[:classes]
       end
 
       def link?
@@ -50,14 +52,15 @@ module GovukPublishingComponents
     private
 
       def css_classes
-        classes = %w(gem-c-button govuk-button)
-        classes << "govuk-button--start" if start
-        classes << "gem-c-button--secondary" if secondary
-        classes << "gem-c-button--secondary-quiet" if secondary_quiet
-        classes << "govuk-button--warning" if destructive
-        classes << "gem-c-button--bottom-margin" if margin_bottom
-        classes << "gem-c-button--inline" if inline_layout
-        classes.join(" ")
+        css_classes = %w(gem-c-button govuk-button)
+        css_classes << "govuk-button--start" if start
+        css_classes << "gem-c-button--secondary" if secondary
+        css_classes << "gem-c-button--secondary-quiet" if secondary_quiet
+        css_classes << "govuk-button--warning" if destructive
+        css_classes << "gem-c-button--bottom-margin" if margin_bottom
+        css_classes << "gem-c-button--inline" if inline_layout
+        css_classes << classes if classes
+        css_classes.join(" ")
       end
     end
   end

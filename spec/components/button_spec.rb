@@ -169,4 +169,10 @@ describe "Button", type: :view do
     assert_select ".gem-c-button[name]", 0
     assert_select ".gem-c-button[value]", 0
   end
+
+  it "renders with custom CSS classes" do
+    render_component(text: "Button", classes: "js-selector-1 js-selector-2")
+
+    assert_select ".gem-c-button.js-selector-1.js-selector-2"
+  end
 end
