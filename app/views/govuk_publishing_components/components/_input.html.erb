@@ -38,6 +38,15 @@
     aria_described_by << describedby if describedby
     aria_described_by = aria_described_by.join(" ")
   end
+
+  if type == "number"
+    type = "text"
+    inputmode = "numeric"
+    pattern = "[0-9]*"
+  end
+
+  inputmode ||= nil
+  pattern ||= nil
 %>
 
 <%= content_tag :div, class: form_group_css_classes do %>
@@ -74,6 +83,8 @@
       autofocus: autofocus,
       readonly: readonly,
       maxlength: maxlength,
+      inputmode: inputmode,
+      pattern: pattern,
       aria: {
         describedby: aria_described_by,
         controls: controls

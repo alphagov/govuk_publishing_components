@@ -33,6 +33,16 @@ describe "Input", type: :view do
     assert_select ".govuk-input[name='email-address']"
   end
 
+  # https://design-system.service.gov.uk/components/text-input/#numbers
+  it "renders inputs with type number as per Design System guidance" do
+    render_component(
+      name: "account-number",
+      type: "number",
+    )
+
+    assert_select ".govuk-input[type='text'][pattern='[0-9]*'][inputmode='numeric']"
+  end
+
   it "renders an input with a given id" do
     render_component(
       label: { text: "What is your email address?" },
