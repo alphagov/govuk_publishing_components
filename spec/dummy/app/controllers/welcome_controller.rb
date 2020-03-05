@@ -21,7 +21,7 @@ class WelcomeController < ApplicationController
   end
 
   def public
-    render 'public_example', layout: 'dummy_public_layout'
+    render "public_example", layout: "dummy_public_layout"
   end
 
   def tabsexample

@@ -79,7 +79,7 @@ module GovukPublishingComponents
     end
 
     def black_background?
-      !!context['black_background']
+      !!context["black_background"]
     end
 
     def html_description

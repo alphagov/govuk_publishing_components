@@ -15,8 +15,8 @@
 
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= stylesheet_link_tag 'print', media: 'print' %>
+    <%= stylesheet_link_tag "application", media: "all" %>
+    <%= stylesheet_link_tag "print", media: "print" %>
 
     <link rel="shortcut icon" href="<%= asset_path 'favicon.ico' %>" type="image/x-icon" />
     <link rel="mask-icon" href="<%= asset_path 'govuk-mask-icon.svg' %>" color="#0b0c0c">
@@ -27,10 +27,10 @@
 
     <meta name="theme-color" content="#0b0c0c" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Ensure that older IE versions always render with the correct rendering engine -->
+    <% #  Ensure that older IE versions always render with the correct rendering engine %>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <!-- The default og:image is added below :head so that scrapers see any custom metatags first, and this is just a fallback -->
+    <% # The default og:image is added below :head so that scrapers see any custom metatags first, and this is just a fallback %>
     <meta property="og:image" content="<%= asset_path "govuk-opengraph-image.png" %>">
 
     <%= yield :head %>
@@ -71,4 +71,3 @@
     <%= javascript_include_tag 'application' %>
   </body>
 </html>
-<!-- Thanks Martha -->

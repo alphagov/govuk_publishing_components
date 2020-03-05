@@ -1,3 +1,5 @@
+@import "govuk_publishing_components/components/search";
+@import "govuk_publishing_components/components/skip-link";
 @import "govuk/components/header/header";
 @import "govuk/components/tag/tag";
 
@@ -105,7 +107,7 @@
 .gem-c-header__product-name {
   display: none;
 
-  @include govuk-media-query($from: "tablet") {
+  @include govuk-media-query($from: tablet) {
     display: inline-block;
   }
 }

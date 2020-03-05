@@ -41,7 +41,7 @@ examples:
         href: "item-3"
         show_only_in_collapsed_menu: true
   with_left_search_and_navigation:
-    description: This supports pages where the search appears onthe left with multiple navigation links on the right, such as the [How government works](https://www.gov.uk/government/how-government-works) page
+    description: This supports pages where the search appears on the left with multiple navigation links on the right, such as the [How government works](https://www.gov.uk/government/how-government-works) page
     data:
       search_left: true
       environment: public
