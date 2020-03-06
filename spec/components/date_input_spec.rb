@@ -10,8 +10,8 @@ describe "Date input", type: :view do
 
     assert_select ".govuk-date-input", 1
     assert_select ".govuk-date-input__item", 3
-    assert_select ".govuk-input[type='number'].govuk-input--width-2", 2
-    assert_select ".govuk-input[type='number'].govuk-input--width-4", 1
+    assert_select ".govuk-input.govuk-input--width-2", 2
+    assert_select ".govuk-input.govuk-input--width-4", 1
 
     assert_select ".govuk-date-input__item:first-child", text: "Day"
   end
