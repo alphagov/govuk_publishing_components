@@ -71,27 +71,25 @@
         <% if item[:subtext] %>
           <p class="gem-c-document-list__subtext"><%= item[:subtext] %></p>
         <% end %>
-        
-        <% if item.include?(:parts) && item[:parts].any? %>
+
+        <% if item[:parts] && item[:parts].any? %>
           <ul class="gem-c-document-list__children govuk-list">
             <% item[:parts].each do |part| %>
               <li class="gem-c-document-list-child">
                 <%=
-                  item_classes = "gem-c-document-list-child__heading #{brand_helper.color_class}"
-
                   if part[:link][:path]
                     link_to(
                       part[:link][:text],
                       part[:link][:path],
                       data: part[:link][:data_attributes],
-                      class: "#{item_classes} gem-c-document-list-child__link",
+                      class: "gem-c-document-list-child__heading #{brand_helper.color_class} gem-c-document-list-child__link",
                     )
                   else
                     content_tag(
                       "span",
                       part[:link][:text],
                       data: part[:link][:data_attributes],
-                      class: "gem-c-document-list-child__heading", 
+                      class: "gem-c-document-list-child__heading",
                     )
                   end
                 %>

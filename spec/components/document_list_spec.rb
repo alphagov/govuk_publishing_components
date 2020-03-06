@@ -295,29 +295,29 @@ describe "Document list", type: :view do
           link: {
             text: "Universal credit",
             path: "/universal-credit",
-            description: "Universal Credit is replacing 6 other benefits with a single monthly payment if you are out of work or on a low income - eligibility, how to prepare"
+            description: "Universal Credit is replacing 6 other benefits with a single monthly payment if you are out of work or on a low income - eligibility, how to prepare",
           },
           parts: [
             {
               link: {
                 text: "What universal credit is",
                 path: "/universal-credit/what-it-is",
-                description: "Universal Credit is a payment to help with your living costs. It’s paid monthly - or twice a month for some people in Scotland."
-              }
+                description: "Universal Credit is a payment to help with your living costs. It’s paid monthly - or twice a month for some people in Scotland.",
+              },
             },
             {
               link: {
                 text: "Elegibility",
                 path: "/universal-credit/eligibility",
                 description: "You may be able to get Universal Credit if: you’re on a low income or out...",
-              }
-            }
-          ]
-        }
-      ]
+              },
+            },
+          ],
+        },
+      ],
     )
 
-    assert_select '.gem-c-document-list__item .gem-c-document-list-child', count: 2
+    assert_select ".gem-c-document-list__item .gem-c-document-list-child", count: 2
   end
 
   it "adds branding to document part link correctly" do
@@ -328,22 +328,22 @@ describe "Document list", type: :view do
           link: {
             text: "Universal credit",
             path: "/universal-credit",
-            description: "Universal Credit is replacing 6 other benefits with a single monthly payment if you are out of work or on a low income - eligibility, how to prepare"
+            description: "Universal Credit is replacing 6 other benefits with a single monthly payment if you are out of work or on a low income - eligibility, how to prepare",
           },
           parts: [
             {
               link: {
                 text: "What universal credit is",
                 path: "/universal-credit/what-it-is",
-                description: "Universal Credit is a payment to help with your living costs. It’s paid monthly - or twice a month for some people in Scotland."
-              }
-            }
-          ]
-        }
-      ]
+                description: "Universal Credit is a payment to help with your living costs. It’s paid monthly - or twice a month for some people in Scotland.",
+              },
+            },
+          ],
+        },
+      ],
     )
 
-    assert_select '.gem-c-document-list .gem-c-document-list-child__link.brand__color'
+    assert_select ".gem-c-document-list .gem-c-document-list-child__link.brand__color"
   end
 
   it "renders document part without link" do
@@ -353,18 +353,18 @@ describe "Document list", type: :view do
           link: {
             text: "Universal credit",
             path: "/universal-credit",
-            description: "Universal Credit is replacing 6 other benefits with a single monthly payment if you are out of work or on a low income - eligibility, how to prepare"
+            description: "Universal Credit is replacing 6 other benefits with a single monthly payment if you are out of work or on a low income - eligibility, how to prepare",
           },
           parts: [
             {
               link: {
                 text: "Criteria",
-                description: "no url provided, just text"
-              }
-            }
-          ]
-        }
-      ]
+                description: "no url provided, just text",
+              },
+            },
+          ],
+        },
+      ],
     )
 
     assert_select ".gem-c-document-list span.gem-c-document-list-child__heading", text: "Criteria"
@@ -377,22 +377,22 @@ describe "Document list", type: :view do
           link: {
             text: "Universal credit",
             path: "/universal-credit",
-            description: "Universal Credit is replacing 6 other benefits with a single monthly payment if you are out of work or on a low income - eligibility, how to prepare"
+            description: "Universal Credit is replacing 6 other benefits with a single monthly payment if you are out of work or on a low income - eligibility, how to prepare",
           },
           parts: [
             {
               link: {
                 text: "What universal credit is",
                 path: "/universal-credit/what-it-is",
-                description: "Universal Credit is a payment to help with your living costs. It’s paid monthly - or twice a month for some people in Scotland."
-              }
-            }
-          ]
-        }
-      ]
+                description: "Universal Credit is a payment to help with your living costs. It’s paid monthly - or twice a month for some people in Scotland.",
+              },
+            },
+          ],
+        },
+      ],
     )
 
-    assert_select '.gem-c-document-list__item .gem-c-document-list-child__description', text: "Universal Credit is a payment to help with your living costs. It’s paid monthly - or twice a month for some people in Scotland."
+    assert_select ".gem-c-document-list__item .gem-c-document-list-child__description", text: "Universal Credit is a payment to help with your living costs. It’s paid monthly - or twice a month for some people in Scotland."
   end
 
   it "renders document part with link tracking" do
@@ -402,7 +402,7 @@ describe "Document list", type: :view do
           link: {
             text: "Universal credit",
             path: "/universal-credit",
-            description: "Universal Credit is replacing 6 other benefits with a single monthly payment if you are out of work or on a low income - eligibility, how to prepare"
+            description: "Universal Credit is replacing 6 other benefits with a single monthly payment if you are out of work or on a low income - eligibility, how to prepare",
           },
           parts: [
             {
@@ -415,14 +415,14 @@ describe "Document list", type: :view do
                   track_action: 1,
                   track_label: "part 1",
                   track_options: {
-                    dimension82: 1
-                  }
-                }
-              }
-            }
-          ]
-        }
-      ]
+                    dimension82: 1,
+                  },
+                },
+              },
+            },
+          ],
+        },
+      ],
     )
 
     link = ".gem-c-document-list-child__link"
