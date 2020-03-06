@@ -3,10 +3,9 @@
   margin: 0 auto;
   max-width: $govuk-page-width;
   position: relative;
-  border-bottom: 1px solid govuk-colour("white");
 
-  @include govuk-media-query($until: tablet) {
-    border-bottom: 0;
+  @include govuk-media-query($from: tablet) {
+    border-bottom: 1px solid govuk-colour("white");
   }
 
   .visually-hidden {
@@ -41,24 +40,24 @@
 }
 
 .gem-c-feedback__prompt-questions {
+  text-align: center;
+  border-bottom: 1px solid govuk-colour("white");
   padding: govuk-spacing(5) govuk-spacing(5) govuk-spacing(5) govuk-spacing(5);
-  width: 50%;
-  float: left;
   box-sizing: border-box;
 
-  @include govuk-media-query($until: tablet) {
-    text-align: center;
-    border-bottom: 1px solid govuk-colour("white");
-    width: 100%;
-    float: none;
+  @include govuk-media-query($from: tablet) {
+    width: 50%;
+    float: left;
+    text-align: left;
+    border-bottom: 0;
   }
 }
 
 .gem-c-feedback__prompt-questions--something-is-wrong {
-  text-align: right;
+  text-align: center;
 
-  @include govuk-media-query($until: tablet) {
-    text-align: center;
+  @include govuk-media-query($from: tablet) {
+    text-align: right;
   }
 }
 
