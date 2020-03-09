@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Make feedback component more responsive and usable on mobile ([PR #1346](https://github.com/alphagov/govuk_publishing_components/pull/1346))
+
 ## 21.28.1
 
 * Fix overflowing text in attachments ([PR #1352](https://github.com/alphagov/govuk_publishing_components/pull/1352))
