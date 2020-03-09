@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get "contextual-navigation", to: "welcome#contextual_navigation"
   get "contextual-navigation/*base_path", to: "welcome#contextual_navigation"
   get "admin", to: "welcome#admin"
-  get 'public', to: 'welcome#public'
+  get "public", to: "welcome#public"
   get "error-summary", to: "welcome#errorsummary"
   get "tabsexample", to: "welcome#tabsexample"
   get "table", to: "welcome#table"
