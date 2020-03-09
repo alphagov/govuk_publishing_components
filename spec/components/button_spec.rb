@@ -170,10 +170,16 @@ describe "Button", type: :view do
     assert_select ".gem-c-button[value]", 0
   end
 
-  it "renders with custom CSS classes" do
+  it "renders with `js-` prefixed classes for interactive hooks" do
     render_component(text: "Button", classes: "js-selector-1 js-selector-2")
 
     assert_select ".gem-c-button.js-selector-1.js-selector-2"
+  end
+
+  it "raises exception is CSS classes are not prefixed with `js-`" do
+    expect {
+      render_component(text: "Button", classes: "my-class")
+    }.to raise_error("The button component expects classes to be prefixed with `js-`")
   end
 
   it "renders with aria-label" do

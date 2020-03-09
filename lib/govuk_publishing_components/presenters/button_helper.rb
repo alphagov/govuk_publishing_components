@@ -25,7 +25,12 @@ module GovukPublishingComponents
         @destructive = local_assigns[:destructive]
         @name = local_assigns[:name]
         @value = local_assigns[:value]
-        @classes = local_assigns[:classes]
+        if local_assigns.include?(:classes)
+          @classes = local_assigns[:classes].split(" ")
+          unless @classes.all? { |c| c.start_with?("js-") }
+            raise(ArgumentError, "The button component expects classes to be prefixed with `js-`")
+          end
+        end
         @aria_label = local_assigns[:aria_label]
       end
 

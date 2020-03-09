@@ -107,4 +107,12 @@ examples:
       text: "This is the button text"
       value: "this_is_the_value"
       name: "this_is_the_name"
-
+  with_js_classes:
+    description: Use `js-` prefixed classes only as interaction hooks – to query and operate on elements via JavaScript
+    data:
+      text: "Button"
+      classes: "js-selector-1 js-selector-2"
+  with_aria_label:
+    data:
+      text: "Button"
+      aria_label: "Button with custom label"
