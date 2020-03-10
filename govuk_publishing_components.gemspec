@@ -2,8 +2,6 @@ $:.push File.expand_path("lib", __dir__)
 
 # Maintain your gem's version:
 require "govuk_publishing_components/version"
-
-# rubocop:disable Metrics/BlockLength
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
   s.name        = "govuk_publishing_components"
@@ -44,4 +42,3 @@ Gem::Specification.new do |s|
   s.add_development_dependency "webmock", "~> 3.6.0"
   s.add_development_dependency "yard"
 end
-# rubocop:enable Metrics/BlockLength
