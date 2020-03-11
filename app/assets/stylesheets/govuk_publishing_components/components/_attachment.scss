@@ -41,6 +41,11 @@ $thumbnail-icon-border-colour: govuk-colour("mid-grey", $legacy: "grey-3");
 
 .gem-c-attachment__details {
   padding-left: $thumbnail-width + $thumbnail-border-width * 2 + govuk-spacing(5);
+
+  .gem-c-details {
+    word-break: break-word;
+    word-wrap: break-word;
+  }
 }
 
 .gem-c-attachment__title {
