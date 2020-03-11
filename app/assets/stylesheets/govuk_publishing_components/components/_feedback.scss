@@ -117,6 +117,29 @@
   }
 }
 
+.gem-c-feedback__option-list {
+  display: inline-block;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin-right: govuk-spacing(2);
+  margin-top: govuk-spacing(2);
+
+  @include govuk-media-query($from: tablet) {
+    margin-top: 0;
+  }
+}
+
+.gem-c-feedback__option-list-item {
+  display: inline-block;
+}
+
+.gem-c-feedback__option-list-item:first-child {
+  margin-right: govuk-spacing(7);
+}
+
+
+// Feedback form styles
 .gem-c-feedback__error-summary {
   margin-bottom: govuk-spacing(3);
   padding: govuk-spacing(3);
@@ -219,28 +242,5 @@
 
   &:focus {
     outline: $govuk-focus-width solid $govuk-focus-colour;
-  }
-}
-
-.js-enabled {
-  .gem-c-feedback__option-list {
-    display: inline-block;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    margin-right: govuk-spacing(2);
-    margin-top: govuk-spacing(2);
-
-    @include govuk-media-query($from: tablet) {
-      margin-top: 0;
-    }
-  }
-
-  .gem-c-feedback__option-list-item {
-    display: inline-block;
-  }
-
-  .gem-c-feedback__option-list-item:first-child {
-    margin-right: govuk-spacing(7);
   }
 }
