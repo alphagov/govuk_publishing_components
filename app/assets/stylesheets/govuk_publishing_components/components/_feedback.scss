@@ -8,10 +8,6 @@
     margin-top: govuk-spacing(9);
     border-bottom: 1px solid govuk-colour("white");
   }
-
-  .visually-hidden {
-    @include govuk-visually-hidden;
-  }
 }
 
 // hide without js
