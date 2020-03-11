@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.28.0
 
 * Improve numeric inputs ([PR #1345](https://github.com/alphagov/govuk_publishing_components/pull/1345))
 * Enable custom classes and `aria-label` on button component ([PR #1344](https://github.com/alphagov/govuk_publishing_components/pull/1344))
