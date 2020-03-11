@@ -489,7 +489,7 @@ examples:
             </p>
             <div data-module="toggle" class="accessibility-warning" id="attachment-1243761-accessibility-help">
               <h2>This file may not be suitable for users of assistive technology.
-                <a class="toggler" href="#attachment-1243761-accessibility-request" data-controls="attachment-1243761-accessibility-request" data-expanded="false">Request a different format.</a>
+                <a class="toggler" href="#attachment-1243761-accessibility-request" data-controls="attachment-1243761-accessibility-request" data-expanded="false">Request an accessible format.</a>
               </h2>
               <p id="attachment-1243761-accessibility-request" class="help-block js-hidden"><span class="arrow"></span>
                 If you use assistive technology and need a version of this document
@@ -516,9 +516,9 @@ examples:
             <a aria-hidden="true" class="thumbnail" href="http://example.com"><img alt="" src="//www.gov.uk/government/assets/pub-cover-a380604bb953dc22ac9dcfbf3cc65598327f493c37b09ac497c45148cbaa21b1.png"></a>
           </div>
           <div class="attachment-details">
-            <h2 class="title"><a rel="external" href="http://example.com">An external link</a></h2>
+            <h2 class="title"><a rel="external" href="https://www.arcgis.com/apps/opsdashboard/index.html#/f94c3c90da5b4e9f9a0b19484dd4bb14">Track coronavirus cases</a></h2>
             <p class="metadata">
-              <span class="url">http://example.com</span>
+              <span class="url">https://www.arcgis.com/apps/opsdashboard/index.html#/f94c3c90da5b4e9f9a0b19484dd4bb14</span>
             </p>
           </div>
         </section>
