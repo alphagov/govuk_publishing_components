@@ -70,6 +70,11 @@
         @include govuk-font($size: 14);
       }
 
+      .url {
+        word-break: break-word;
+        word-wrap: break-word;
+      }
+
       .changed,
       .references,
       .unnumbered-paper {
@@ -98,6 +103,8 @@
           @include govuk-font($size: 14);
           margin: 0;
         }
+        word-break: break-word;
+        word-wrap: break-word;
       }
 
       .js-hidden {

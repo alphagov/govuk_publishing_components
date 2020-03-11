@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix overflowing text in attachments ([PR #1352](https://github.com/alphagov/govuk_publishing_components/pull/1352))
+
 ## 21.28.0
 
 * Improve numeric inputs ([PR #1345](https://github.com/alphagov/govuk_publishing_components/pull/1345))
