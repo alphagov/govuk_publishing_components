@@ -18,12 +18,6 @@ describe "Feedback", type: :view do
     assert_select ".gem-c-feedback .gem-c-feedback__prompt-link.js-something-is-wrong[href='/contact/govuk']", text: "Is there anything wrong with this page?"
   end
 
-  it "removes top margin when margin_top flag is set" do
-    render_component(margin_top: 0)
-
-    assert_select ".gem-c-feedback.gem-c-feedback--margin-top", false
-  end
-
   it "has required email survey signup form fields" do
     render_component({})
 

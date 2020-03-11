@@ -1,23 +1,16 @@
 .gem-c-feedback {
   background: govuk-colour("white");
-  margin: 0 auto;
+  margin: govuk-spacing(6) auto 0 auto;
   max-width: $govuk-page-width;
   position: relative;
 
   @include govuk-media-query($from: tablet) {
+    margin-top: govuk-spacing(9);
     border-bottom: 1px solid govuk-colour("white");
   }
 
   .visually-hidden {
     @include govuk-visually-hidden;
-  }
-}
-
-.gem-c-feedback--top-margin {
-  margin-top: govuk-spacing(6);
-
-  @include govuk-media-query($from: tablet) {
-    margin-top: govuk-spacing(9);
   }
 }
 
