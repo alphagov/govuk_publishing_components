@@ -87,8 +87,16 @@
 .gem-c-feedback__prompt-link {
   @include govuk-link-common;
   @include govuk-font(19);
-  position: relative;
   display: inline-block;
+
+  @include govuk-media-query($from: tablet) {
+    @include govuk-font(16);
+  }
+}
+
+.gem-c-feedback__email-link,
+.gem-c-feedback__prompt-link {
+  position: relative;
 
   &:after {
     content: "";
@@ -97,10 +105,6 @@
     right: -14px;
     left: -14px;
     bottom: -14px;
-  }
-
-  @include govuk-media-query($from: tablet) {
-    @include govuk-font(16);
   }
 }
 
@@ -219,7 +223,7 @@
 
 .gem-c-feedback__email-link {
   display: block;
-  margin-top: govuk-spacing(3);
+  margin-top: govuk-spacing(4);
 
   @include govuk-media-query($from: desktop) {
     display: inline-block;
