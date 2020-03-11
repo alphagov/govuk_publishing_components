@@ -1,9 +1,7 @@
 name: Feedback
 description: Invites user feedback on the current page.
 body: |
-  This component is designed to sit at the bottom of pages on GOV.UK to allow users to submit feedback on that page. It is based on the 'improve this page' component from the Service manual, but changes have been made.
-
-  This component includes imported button styles, which is not ideal (styles are duplicated). Once the [button component](/component-guide/button) has been moved to the gem, this should be used instead.
+  This component is designed to sit at the bottom of pages on GOV.UK to allow users to submit feedback on that page.
 accessibility_criteria: |
   Form elements in the component must:
 

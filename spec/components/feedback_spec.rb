@@ -8,20 +8,14 @@ describe "Feedback", type: :view do
   it "asks the user if the page is useful without javascript enabled" do
     render_component({})
 
-    assert_select ".gem-c-feedback .gem-c-feedback__option-list-item--useful a[href='/contact/govuk']", text: "Yes this page is useful"
-    assert_select ".gem-c-feedback .gem-c-feedback__prompt-link.js-page-is-not-useful[href='/contact/govuk']", text: "No this page is not useful"
+    assert_select ".gem-c-feedback .gem-c-feedback__option-list-item .js-page-is-useful[href='/contact/govuk']", text: "Yes this page is useful"
+    assert_select ".gem-c-feedback .gem-c-feedback__option-list-item .js-page-is-not-useful[href='/contact/govuk']", text: "No this page is not useful"
   end
 
   it "asks the user if there is anything wrong with the page without javascript enabled" do
     render_component({})
 
-    assert_select ".gem-c-feedback .gem-c-feedback__option-list-item--wrong a[href='/contact/govuk']", text: "Is there anything wrong with this page?"
-  end
-
-  it "removes top margin when margin_top flag is set" do
-    render_component(margin_top: 0)
-
-    assert_select ".gem-c-feedback.gem-c-feedback--margin-top", false
+    assert_select ".gem-c-feedback .gem-c-feedback__prompt-link.js-something-is-wrong[href='/contact/govuk']", text: "Is there anything wrong with this page?"
   end
 
   it "has required email survey signup form fields" do

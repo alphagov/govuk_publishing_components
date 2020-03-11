@@ -1,7 +1,4 @@
 <%
-  margin_top ||= 1
-  margin_top_class = "gem-c-feedback--top-margin" if margin_top == 1
-
   def utf_encode(element)
     element.is_a?(String) ? element.encode : element
   end
@@ -11,7 +8,7 @@
   path_without_pii = utf_encode(request.fullpath.gsub(email_regex, '[email]'))
 %>
 
-<div class="gem-c-feedback <%= margin_top_class %>" data-module="feedback">
+<div class="gem-c-feedback" data-module="feedback">
   <%= render "govuk_publishing_components/components/feedback/yes_no_banner" %>
   <%= render "govuk_publishing_components/components/feedback/problem_form", url_without_pii: url_without_pii %>
   <%= render "govuk_publishing_components/components/feedback/survey_signup_form", path_without_pii: path_without_pii %>

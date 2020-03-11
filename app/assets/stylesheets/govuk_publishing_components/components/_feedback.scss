@@ -1,19 +1,12 @@
 .gem-c-feedback {
   background: govuk-colour("white");
-  margin: 0 auto;
+  margin: govuk-spacing(6) auto 0 auto;
   max-width: $govuk-page-width;
   position: relative;
 
-  .visually-hidden {
-    @include govuk-visually-hidden;
-  }
-}
-
-.gem-c-feedback--top-margin {
-  margin-top: govuk-spacing(6);
-
   @include govuk-media-query($from: tablet) {
     margin-top: govuk-spacing(9);
+    border-bottom: 1px solid govuk-colour("white");
   }
 }
 
@@ -22,7 +15,7 @@
 .gem-c-feedback__js-show,
 .gem-c-feedback__form,
 .gem-c-feedback__prompt-success,
-.gem-c-feedback__js-prompt-questions,
+.gem-c-feedback__prompt-questions,
 .gem-c-feedback__error-summary {
   display: none;
 
@@ -35,39 +28,83 @@
   }
 }
 
+.gem-c-feedback__prompt-questions {
+  text-align: center;
+  border-bottom: 1px solid govuk-colour("white");
+  padding: govuk-spacing(5) govuk-spacing(5) govuk-spacing(5) govuk-spacing(5);
+  box-sizing: border-box;
+
+  @include govuk-media-query($from: tablet) {
+    width: 50%;
+    float: left;
+    text-align: left;
+    border-bottom: 0;
+  }
+}
+
+.gem-c-feedback__prompt-questions--something-is-wrong {
+  text-align: center;
+
+  @include govuk-media-query($from: tablet) {
+    text-align: right;
+  }
+}
+
 .gem-c-feedback__prompt {
   @include govuk-clearfix;
   background-color: govuk-colour("blue");
   color: govuk-colour("white");
-  padding: govuk-spacing(2) govuk-spacing(3) 0;
   outline: 0;
 }
 
 .gem-c-feedback__prompt-question,
 .gem-c-feedback__prompt-success {
   @include govuk-font(19, $weight: bold);
+
+  @include govuk-media-query($from: tablet) {
+    @include govuk-font(16, $weight: bold);
+  }
+}
+
+.gem-c-feedback__prompt-question {
   display: inline-block;
 
   // There's a global h3 rule in some layouts that interferes with this component
   margin: 0;
+
+  margin-left: govuk-spacing(4);
+  margin-right: govuk-spacing(4);
 
   &:focus {
     outline: 0;
   }
 
   @include govuk-media-query($from: tablet) {
-    @include govuk-font(16, $weight: bold);
-    float: left;
+    margin-left: 0;
   }
 }
 
 .gem-c-feedback__prompt-link {
   @include govuk-link-common;
   @include govuk-font(19);
+  display: inline-block;
 
   @include govuk-media-query($from: tablet) {
     @include govuk-font(16);
-    margin-left: govuk-spacing(2);
+  }
+}
+
+.gem-c-feedback__email-link,
+.gem-c-feedback__prompt-link {
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: -14px;
+    right: -14px;
+    left: -14px;
+    bottom: -14px;
   }
 }
 
@@ -80,6 +117,29 @@
   }
 }
 
+.gem-c-feedback__option-list {
+  display: inline-block;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin-right: govuk-spacing(2);
+  margin-top: govuk-spacing(2);
+
+  @include govuk-media-query($from: tablet) {
+    margin-top: 0;
+  }
+}
+
+.gem-c-feedback__option-list-item {
+  display: inline-block;
+}
+
+.gem-c-feedback__option-list-item:first-child {
+  margin-right: govuk-spacing(7);
+}
+
+
+// Feedback form styles
 .gem-c-feedback__error-summary {
   margin-bottom: govuk-spacing(3);
   padding: govuk-spacing(3);
@@ -163,7 +223,7 @@
 
 .gem-c-feedback__email-link {
   display: block;
-  margin-top: govuk-spacing(3);
+  margin-top: govuk-spacing(4);
 
   @include govuk-media-query($from: desktop) {
     display: inline-block;
@@ -182,83 +242,5 @@
 
   &:focus {
     outline: $govuk-focus-width solid $govuk-focus-colour;
-  }
-}
-
-.gem-c-feedback__option-list {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-
-.js-enabled {
-  .gem-c-feedback__js-prompt-questions {
-    @include govuk-media-query($until: tablet) {
-      display: grid;
-    }
-  }
-
-  .gem-c-feedback__prompt-question {
-    @include govuk-media-query($until: tablet) {
-      grid-area: 1 / 1;
-    }
-  }
-
-  .gem-c-feedback__option-list {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-
-    @include govuk-media-query($until: tablet) {
-      grid-area: 1 / 1 / 2 / 2;
-      display: grid;
-      grid-template-columns: 140px 1fr;
-      // older grid spec
-      grid-row-gap: govuk-spacing(3);
-      // newer grid spec
-      row-gap: govuk-spacing(3); // sass-lint:disable-line no-misspelled-properties
-    }
-  }
-
-  .gem-c-feedback__option-list-item {
-    @include govuk-media-query($from: tablet) {
-      float: left;
-    }
-  }
-
-  .gem-c-feedback__option-list-item--useful {
-    @include govuk-media-query($until: tablet) {
-      display: inline-block;
-      @supports (display: grid) {
-        grid-area: 1 / 2;
-        padding-left: govuk-spacing(3);
-      }
-    }
-  }
-
-  .gem-c-feedback__option-list-item--not-useful {
-    @include govuk-media-query($until: tablet) {
-      display: inline-block;
-      @supports (display: grid) {
-        grid-area: 1 / 2;
-        padding-left: 50px;
-      }
-    }
-  }
-
-  .gem-c-feedback__option-list-item--wrong {
-    @include govuk-media-query($until: tablet) {
-      display: block;
-      margin-top: govuk-spacing(3);
-      @supports (display: grid) {
-        margin-top: 0;
-        grid-area: 2 / 1 / 2 / 3;
-      }
-    }
-
-    @include govuk-media-query($from: tablet) {
-      float: right;
-    }
   }
 }
