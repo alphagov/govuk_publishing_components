@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.29.0
 
 * Make feedback component more responsive and usable on mobile ([PR #1346](https://github.com/alphagov/govuk_publishing_components/pull/1346))
 * Extend document-list component to show parts of a document ([PR #1326](https://github.com/alphagov/govuk_publishing_components/pull/1326))
@@ -17,7 +17,7 @@
 
 * Fix overflowing text in attachments ([PR #1352](https://github.com/alphagov/govuk_publishing_components/pull/1352))
 
-## 21.28.0
+## 21.28.0
 
 * Improve numeric inputs ([PR #1345](https://github.com/alphagov/govuk_publishing_components/pull/1345))
 * Enable custom classes and `aria-label` on button component ([PR #1344](https://github.com/alphagov/govuk_publishing_components/pull/1344))
