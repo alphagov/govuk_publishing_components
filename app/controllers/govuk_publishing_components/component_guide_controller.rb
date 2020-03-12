@@ -53,11 +53,12 @@ module GovukPublishingComponents
       end
 
       components << extra_components.compact
+      components << components_used_by_component_guide.compact
       components = components.flatten.uniq.sort
 
       components.map { |component|
         "@import 'govuk_publishing_components/components/#{print_path}_#{component.gsub('_', '-')}';" if component_has_sass_file(component.gsub("_", "-"), print_styles)
-      }.join("\n").squeeze("\n").prepend(additional_files)
+      }.compact.uniq.sort.join("\n").squeeze("\n").prepend(additional_files)
     end
 
   private
@@ -109,6 +110,10 @@ module GovukPublishingComponents
         h[:title] = component_doc.name
         h[:url] = component_doc_path(component_doc.id) if component_example
       end
+    end
+
+    def components_used_by_component_guide
+      %w(breadcrumbs details layout-footer layout-header lead-paragraph search textarea title)
     end
   end
 end
