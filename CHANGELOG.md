@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Patch: add missing legacy colour for dark-grey ([PR #1358](https://github.com/alphagov/govuk_publishing_components/pull/1358))
+
 ## 21.29.0
 
 * Make feedback component more responsive and usable on mobile ([PR #1346](https://github.com/alphagov/govuk_publishing_components/pull/1346))
