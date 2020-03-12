@@ -287,4 +287,150 @@ describe "Document list", type: :view do
     assert_select ".gem-c-document-list__item:nth-child(1) .gem-c-document-list__highlight-text", text: "Most relevant result"
     assert_select ".gem-c-document-list__item:nth-child(2) .gem-c-document-list__highlight-text", false
   end
+
+  it "renders document parts if available" do
+    render_component(
+      items: [
+        {
+          link: {
+            text: "Universal credit",
+            path: "/universal-credit",
+            description: "Universal Credit is replacing 6 other benefits with a single monthly payment if you are out of work or on a low income - eligibility, how to prepare",
+          },
+          parts: [
+            {
+              link: {
+                text: "What universal credit is",
+                path: "/universal-credit/what-it-is",
+                description: "Universal Credit is a payment to help with your living costs. It’s paid monthly - or twice a month for some people in Scotland.",
+              },
+            },
+            {
+              link: {
+                text: "Elegibility",
+                path: "/universal-credit/eligibility",
+                description: "You may be able to get Universal Credit if: you’re on a low income or out...",
+              },
+            },
+          ],
+        },
+      ],
+    )
+
+    assert_select ".gem-c-document-list__item .gem-c-document-list-child", count: 2
+  end
+
+  it "adds branding to document part link correctly" do
+    render_component(
+      brand: "attorney-generals-office",
+      items: [
+        {
+          link: {
+            text: "Universal credit",
+            path: "/universal-credit",
+            description: "Universal Credit is replacing 6 other benefits with a single monthly payment if you are out of work or on a low income - eligibility, how to prepare",
+          },
+          parts: [
+            {
+              link: {
+                text: "What universal credit is",
+                path: "/universal-credit/what-it-is",
+                description: "Universal Credit is a payment to help with your living costs. It’s paid monthly - or twice a month for some people in Scotland.",
+              },
+            },
+          ],
+        },
+      ],
+    )
+
+    assert_select ".gem-c-document-list .gem-c-document-list-child__link.brand__color"
+  end
+
+  it "renders document part without link" do
+    render_component(
+      items: [
+        {
+          link: {
+            text: "Universal credit",
+            path: "/universal-credit",
+            description: "Universal Credit is replacing 6 other benefits with a single monthly payment if you are out of work or on a low income - eligibility, how to prepare",
+          },
+          parts: [
+            {
+              link: {
+                text: "Criteria",
+                description: "no url provided, just text",
+              },
+            },
+          ],
+        },
+      ],
+    )
+
+    assert_select ".gem-c-document-list span.gem-c-document-list-child__heading", text: "Criteria"
+  end
+
+  it "renders document part description" do
+    render_component(
+      items: [
+        {
+          link: {
+            text: "Universal credit",
+            path: "/universal-credit",
+            description: "Universal Credit is replacing 6 other benefits with a single monthly payment if you are out of work or on a low income - eligibility, how to prepare",
+          },
+          parts: [
+            {
+              link: {
+                text: "What universal credit is",
+                path: "/universal-credit/what-it-is",
+                description: "Universal Credit is a payment to help with your living costs. It’s paid monthly - or twice a month for some people in Scotland.",
+              },
+            },
+          ],
+        },
+      ],
+    )
+
+    assert_select ".gem-c-document-list__item .gem-c-document-list-child__description", text: "Universal Credit is a payment to help with your living costs. It’s paid monthly - or twice a month for some people in Scotland."
+  end
+
+  it "renders document part with link tracking" do
+    render_component(
+      items: [
+        {
+          link: {
+            text: "Universal credit",
+            path: "/universal-credit",
+            description: "Universal Credit is replacing 6 other benefits with a single monthly payment if you are out of work or on a low income - eligibility, how to prepare",
+          },
+          parts: [
+            {
+              link: {
+                text: "Elegibility",
+                path: "/universal-credit/eligibility",
+                description: "You may be able to get Universal Credit if: you’re on a low income or out...",
+                data_attributes: {
+                  track_category: "part",
+                  track_action: 1,
+                  track_label: "part 1",
+                  track_options: {
+                    dimension82: 1,
+                  },
+                },
+              },
+            },
+          ],
+        },
+      ],
+    )
+
+    link = ".gem-c-document-list-child__link"
+
+    assert_select "#{link}[href='/universal-credit/eligibility']", text: "Elegibility"
+    assert_select "#{link}[data-track-category='part']", text: "Elegibility"
+    assert_select "#{link}[data-track-action='1']", text: "Elegibility"
+    assert_select "#{link}[data-track-label='part 1']", text: "Elegibility"
+    assert_select "#{link}[data-track-options='{\"dimension82\":1}']", text: "Elegibility"
+  end
 end
