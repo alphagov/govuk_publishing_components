@@ -109,4 +109,27 @@ RSpec.describe GovukPublishingComponents::Presenters::Attachment do
       expect(attachment.spreadsheet?).to be false
     end
   end
+
+  describe "#reference" do
+    context "when reference details are provided" do
+      it "returns a well formatted reference string" do
+        attachment = described_class.new(title: "test",
+                                         url: "test",
+                                         content_type: "text/csv",
+                                         isbn: "111",
+                                         unique_reference: "222",
+                                         command_paper_number: "333",
+                                         hoc_paper_number: "444",
+                                         parliamentary_session: "555")
+        expect(attachment.reference).to eq("ISBN 111, 222, 333, HC 444 555")
+      end
+
+      it "returns an empty string is no reference details are provided" do
+        attachment = described_class.new(title: "test",
+                                         url: "test",
+                                         content_type: "text/csv")
+        expect(attachment.reference).to eq("")
+      end
+    end
+  end
 end

@@ -105,10 +105,27 @@ describe "Attachment", type: :view do
         url: "attachment",
         content_type: "application/vnd.oasis.opendocument.spreadsheet",
       },
-        data_attributes: { gtm: "attachment-preview" },
+      data_attributes: { gtm: "attachment-preview" },
     )
 
     assert_select ".gem-c-attachment__thumbnail a.govuk-link[data-gtm='attachment-preview']"
     assert_select ".gem-c-attachment__title a.govuk-link[data-gtm='attachment-preview']"
+  end
+
+  it "shows reference details on the first metadata line if provided" do
+    render_component(
+      attachment: {
+          title: "The government financial reporting review",
+          url: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/791567/the_government_financial_reporting_review_web.pdf",
+          filename: "department-for-transport-information-asset-register.csv",
+          content_type: "application/pdf",
+          file_size: 20000,
+          number_of_pages: 7,
+          isbn: "978-1-5286-1173-2",
+          unique_reference: "2259",
+          command_paper_number: "Cd. 67",
+        },
+      )
+    assert_select ".gem-c-attachment__metadata:nth-of-type(1)", text: "Ref: ISBN 978-1-5286-1173-2, 2259, Cd. 67"
   end
 end
