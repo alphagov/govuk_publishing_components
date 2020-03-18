@@ -132,4 +132,40 @@ RSpec.describe GovukPublishingComponents::Presenters::Attachment do
       end
     end
   end
+
+  describe "#unnumbered_reference" do
+    it "returns 'Unnumbered command paper' if unnumbered_command_paper is true" do
+      attachment = described_class.new(title: "test",
+                                       url: "test",
+                                       content_type: "text/csv",
+                                       unnumbered_command_paper: true)
+      expect(attachment.unnumbered_reference).to eq("Unnumbered command paper")
+    end
+
+    it "returns 'Unnumbered act paper' if unnumbered_hoc_paper is true" do
+      attachment = described_class.new(title: "test",
+                                       url: "test",
+                                       content_type: "text/csv",
+                                       unnumbered_hoc_paper: true)
+      expect(attachment.unnumbered_reference).to eq("Unnumbered act paper")
+    end
+
+    it "returns nil if unnumbered_command_paper is true and command_paper_number is set" do
+      attachment = described_class.new(title: "test",
+                                       url: "test",
+                                       content_type: "text/csv",
+                                       command_paper_number: "333",
+                                       unnumbered_command_paper: true)
+      expect(attachment.unnumbered_reference).to be nil
+    end
+
+    it "returns nil if unnumbered_hoc_paper is true and hoc_paper_number is set" do
+      attachment = described_class.new(title: "test",
+                                       url: "test",
+                                       content_type: "text/csv",
+                                       hoc_paper_number: "444",
+                                       unnumbered_hoc_paper: true)
+      expect(attachment.unnumbered_reference).to be nil
+    end
+  end
 end

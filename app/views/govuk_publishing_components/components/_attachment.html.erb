@@ -60,6 +60,10 @@
       <%= tag.p "Ref: #{attachment.reference}", class: "gem-c-attachment__metadata gem-c-attachment__metadata--compact" %>
     <% end %>
 
+    <% if attachment.unnumbered_reference.present? %>
+      <%= tag.p attachment.unnumbered_reference, class: "gem-c-attachment__metadata gem-c-attachment__metadata--compact" %>
+    <% end %>
+
     <% if attributes.any? %>
       <%= tag.p raw(attributes.join(', ')), class: "gem-c-attachment__metadata" %>
     <% end %>

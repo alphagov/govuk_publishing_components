@@ -61,6 +61,12 @@ module GovukPublishingComponents
         reference.join(", ")
       end
 
+      def unnumbered_reference
+        unnumbered_reference = "Unnumbered command paper" if attachment_data[:unnumbered_command_paper].eql?(true) && !attachment_data[:command_paper_number]
+        unnumbered_reference = "Unnumbered act paper" if attachment_data[:unnumbered_hoc_paper].eql?(true) && !attachment_data[:hoc_paper_number]
+        unnumbered_reference
+      end
+
       class SupportedContentType
         attr_reader :content_type_data
 
