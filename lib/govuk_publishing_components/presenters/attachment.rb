@@ -67,6 +67,10 @@ module GovukPublishingComponents
         unnumbered_reference
       end
 
+      def is_official_document
+        attachment_data[:command_paper_number].present? || attachment_data[:hoc_paper_number].present? || attachment_data[:unnumbered_command_paper].eql?(true) || attachment_data[:unnumbered_hoc_paper].eql?(true)
+      end
+
       class SupportedContentType
         attr_reader :content_type_data
 

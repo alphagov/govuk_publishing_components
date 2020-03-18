@@ -145,4 +145,20 @@ describe "Attachment", type: :view do
       )
     assert_select ".gem-c-attachment__metadata:nth-of-type(2)", text: "Unnumbered command paper"
   end
+
+  it "shows 'Order a copy' link on the third metadata line if it's an official document" do
+    render_component(
+      attachment: {
+          title: "The government financial reporting review",
+          url: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/791567/the_government_financial_reporting_review_web.pdf",
+          filename: "department-for-transport-information-asset-register.csv",
+          content_type: "application/pdf",
+          file_size: 20000,
+          number_of_pages: 7,
+          isbn: "978-1-5286-1173-2",
+          command_paper_number: "Cd. 67",
+        },
+      )
+    assert_select ".gem-c-attachment__metadata:nth-of-type(3) .govuk-link", text: "Order a copy"
+  end
 end

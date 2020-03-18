@@ -168,4 +168,29 @@ RSpec.describe GovukPublishingComponents::Presenters::Attachment do
       expect(attachment.unnumbered_reference).to be nil
     end
   end
+
+  describe "#is_official_document" do
+    it "returns true if command_paper_number is set" do
+      attachment = described_class.new(title: "test",
+                                       url: "test",
+                                       content_type: "text/csv",
+                                       command_paper_number: "333")
+      expect(attachment.is_official_document).to be true
+    end
+
+    it "returns true if hoc_paper_number is set" do
+      attachment = described_class.new(title: "test",
+                                       url: "test",
+                                       content_type: "text/csv",
+                                       hoc_paper_number: "444")
+      expect(attachment.is_official_document).to be true
+    end
+
+    it "returns false if no command_paper_number or hoc_paper_number are set" do
+      attachment = described_class.new(title: "test",
+                                       url: "test",
+                                       content_type: "text/csv")
+      expect(attachment.is_official_document).to be false
+    end
+  end
 end
