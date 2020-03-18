@@ -3,7 +3,7 @@ GOV.UK Publishing Components ·
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 =====================
 
-GOV.UK Publishing Components is a Ruby gem to document and distribute components in GOV.UK frontend applications.
+GOV.UK Publishing Components is a Ruby gem to document and distribute components for GOV.UK applications.
 
 It provides:
 - a shared library of components
