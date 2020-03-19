@@ -19,6 +19,6 @@
   },
   "devDependencies": {
     "sass-lint": "^1.13.1",
-    "standard": "^12.0.1"
+    "standard": "^14.3.3"
   }
 }
