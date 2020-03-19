@@ -28,7 +28,7 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency "capybara", "~> 3.25"
   s.add_development_dependency "foreman", "= 0.85"
-  s.add_development_dependency "gds-api-adapters", "~> 59.1"
+  s.add_development_dependency "gds-api-adapters", ">= 0"
   s.add_development_dependency "govuk_schemas", "~> 3.2"
   s.add_development_dependency "govuk_test", "~> 1"
   s.add_development_dependency "jasmine", "~> 3.4.0"
