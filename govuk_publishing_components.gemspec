@@ -39,6 +39,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency "uglifier", ">= 4.1.0"
   # Webmock is needed to load slimmer test helpers
   # https://github.com/alphagov/slimmer/issues/201
-  s.add_development_dependency "webmock", "~> 3.6.0"
+  s.add_development_dependency "webmock", "~> 3.8.3"
   s.add_development_dependency "yard"
 end
