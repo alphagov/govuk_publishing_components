@@ -15,7 +15,7 @@
   "dependencies": {
     "axe-core": "^3.5.0",
     "govuk-frontend": "^3.5.0",
-    "jquery": "1.12.4"
+    "jquery": "3.4.0"
   },
   "devDependencies": {
     "sass-lint": "^1.13.1",
