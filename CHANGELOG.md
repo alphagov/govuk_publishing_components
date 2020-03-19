@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update attachment component to accommodate publications ([PR #1375](https://github.com/alphagov/govuk_publishing_components/pull/1375))
+
 ## 21.29.1
 
 * Patch: add missing legacy colour for dark-grey ([PR #1358](https://github.com/alphagov/govuk_publishing_components/pull/1358))

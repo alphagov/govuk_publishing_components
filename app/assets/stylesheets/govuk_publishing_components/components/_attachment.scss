@@ -66,6 +66,10 @@ $thumbnail-icon-border-colour: govuk-colour("mid-grey", $legacy: "grey-3");
   }
 }
 
+.gem-c-attachment__metadata--compact {
+  margin-bottom: 0;
+}
+
 .gem-c-attachment__abbr {
   text-decoration: none;
   cursor: help;

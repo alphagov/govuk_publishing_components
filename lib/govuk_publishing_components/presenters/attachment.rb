@@ -47,6 +47,30 @@ module GovukPublishingComponents
         attachment_data[:alternative_format_contact_email]
       end
 
+      def reference
+        reference = []
+        reference << "ISBN #{attachment_data[:isbn]}" if attachment_data[:isbn].present?
+        reference << attachment_data[:unique_reference] if attachment_data[:unique_reference].present?
+        reference << attachment_data[:command_paper_number] if attachment_data[:command_paper_number].present?
+        if attachment_data[:hoc_paper_number].present?
+          hoc_reference = "HC #{attachment_data[:hoc_paper_number]}"
+          hoc_reference += " #{attachment_data[:parliamentary_session]}" if attachment_data[:parliamentary_session].present?
+          reference << hoc_reference
+        end
+
+        reference.join(", ")
+      end
+
+      def unnumbered_reference
+        unnumbered_reference = "Unnumbered command paper" if attachment_data[:unnumbered_command_paper].eql?(true) && !attachment_data[:command_paper_number]
+        unnumbered_reference = "Unnumbered act paper" if attachment_data[:unnumbered_hoc_paper].eql?(true) && !attachment_data[:hoc_paper_number]
+        unnumbered_reference
+      end
+
+      def is_official_document
+        attachment_data[:command_paper_number].present? || attachment_data[:hoc_paper_number].present? || attachment_data[:unnumbered_command_paper].eql?(true) || attachment_data[:unnumbered_hoc_paper].eql?(true)
+      end
+
       class SupportedContentType
         attr_reader :content_type_data
 
