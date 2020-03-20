@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.31.0
 
 * Prepare header component for public-facing usage ([PR #1384](https://github.com/alphagov/govuk_publishing_components/pull/1384))
 
