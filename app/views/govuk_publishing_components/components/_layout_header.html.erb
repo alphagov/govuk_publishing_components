@@ -1,6 +1,7 @@
 <%
   full_width ||= false
   product_name ||= "Publishing"
+  public_environment = environment.eql?("public")
   navigation_items ||= []
   if full_width
     width_class = "govuk-header__container--full-width"
@@ -24,13 +25,15 @@
           </span>
         </span>
 
-        <span class="govuk-header__product-name gem-c-header__product-name">
-          <%= product_name %>
-        </span>
+        <% unless public_environment %>
+          <span class="govuk-header__product-name gem-c-header__product-name">
+            <%= product_name %>
+          </span>
 
-        <span class="gem-c-environment-tag govuk-tag gem-c-environment-tag--<%= environment %>">
-          <%= environment %>
-        </span>
+          <span class="gem-c-environment-tag govuk-tag gem-c-environment-tag--<%= environment %>">
+            <%= environment %>
+          </span>
+        <% end %>
       </a>
 
     </div><div class="govuk-header__content gem-c-header__content">
