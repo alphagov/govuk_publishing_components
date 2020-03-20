@@ -35,7 +35,12 @@ describe "Layout header", type: :view do
     assert_select ".govuk-header__container--full-width"
   end
 
+  it "does not render the product name and environment tag if environment is 'public'" do
+    render_component(environment: "public", product_name: "Product name")
 
+    assert_select ".gem-c-header__product-name", 0
+    assert_select ".gem-c-environment-tag", 0
+  end
 
   it "renders the header with navigation items" do
     navigation_items = [
