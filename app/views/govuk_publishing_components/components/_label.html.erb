@@ -3,6 +3,7 @@
   is_radio_label ||= false
   bold ||= false
   heading_size = false unless ['s', 'm', 'l', 'xl'].include?(heading_size)
+  is_page_heading ||= false
 
   css_classes = %w( gem-c-label govuk-label )
   css_classes << "govuk-label--s" if bold
@@ -13,8 +14,12 @@
   hint_text_css_classes << "govuk-radios__hint" if is_radio_label
 %>
 
-<%= tag.label for: html_for, class: css_classes do %>
-  <%= text %>
+<% if is_page_heading %>
+  <%= tag.h1 text, class: "govuk-label-wrapper" do %>
+    <%= tag.label text, for: html_for, class: css_classes %>
+  <% end %>
+<% else %>
+  <%= tag.label text, for: html_for, class: css_classes %>
 <% end %>
 
 <% if hint_text.present? %>

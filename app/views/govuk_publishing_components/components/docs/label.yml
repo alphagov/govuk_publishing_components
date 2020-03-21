@@ -24,22 +24,29 @@ examples:
   with_hint:
     data:
       text: "National Insurance number"
-      html_for: "id-that-matches-input"
+      html_for: "id-that-matches-input-1"
       hint_id: "should-match-aria-describedby-input"
       hint_text: "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
   with_custom_label_size:
     description: Make the label different sizes. Valid options are 's', 'm', 'l' and 'xl'.
     data:
       text: "Surname"
-      html_for: "id-that-matches-input"
+      html_for: "id-that-matches-input-2"
       heading_size: "xl"
   bold_with_hint:
     data:
       bold: true
       text: "National Insurance number"
-      html_for: "id-that-matches-input"
+      html_for: "id-that-matches-input-3"
       hint_id: "should-match-aria-describedby-input-bold"
       hint_text: "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+  as_page_heading:
+    data:
+      is_page_heading: true
+      heading_size: "xl" 
+      text: "National Insurance number"
+      html_for: "id-that-matches-input-4"
+      hint_id: "should-match-aria-describedby-input-bold"
   inside_a_radio_component:
     description: |
       When the label is used inside the [radio component](/component-guide/radio) additional classes are required on the radio, which are added by this option. This is already handled by the radio component and is a specific use case, but is worth documenting.
@@ -47,7 +54,7 @@ examples:
       Note that this example will not render correctly - do not be alarmed. It only works properly when inside the radio component.
     data:
       text: "National Insurance number"
-      html_for: "id-that-matches-input"
+      html_for: "id-that-matches-input-5"
       is_radio_label: true
       html_for: "id-radio"
       hint_id: "id-radio"
