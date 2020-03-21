@@ -63,6 +63,19 @@ describe "Label", type: :view do
     assert_select ".govuk-label--s"
   end
 
+  it "renders label as page heading" do
+    render_component(
+      text: "National Insurance number",
+      html_for: "id-that-matches-input",
+      is_page_heading: true,
+    )
+
+    assert_select(
+      "h1.govuk-label-wrapper .govuk-label[for='id-that-matches-input']",
+      text: "National Insurance number",
+    )
+  end
+
   it "renders label when required to be inside the radio component" do
     render_component(
       is_radio_label: true,

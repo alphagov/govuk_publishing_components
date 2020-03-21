@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Enable label as page heading ([PR #1389](https://github.com/alphagov/govuk_publishing_components/pull/1389))
+
 ## 21.31.0
 
 * Prepare header component for public-facing usage ([PR #1384](https://github.com/alphagov/govuk_publishing_components/pull/1384))
