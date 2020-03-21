@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.32.0
 
 * Enable label as page heading ([PR #1389](https://github.com/alphagov/govuk_publishing_components/pull/1389))
 
