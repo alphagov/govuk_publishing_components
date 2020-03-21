@@ -56,6 +56,14 @@ examples:
         href: '#example-error-1'
       - text: Descriptive link to the question with an error 2
         href: '#example-error-2'
+  with_label_as_page_heading:
+    data:
+      label:
+        is_page_heading: true
+        heading_size: "xl"
+        text: "Can you provide more detail?"
+      hint: "Please include as much information as possible."
+      name: "more-detail-error"
   with_value:
     data:
       label:
