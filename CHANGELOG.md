@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add custom multivariate test as essential cookie ([PR #1400](https://github.com/alphagov/govuk_publishing_components/pull/1400))
+
 ## 21.33.0
 
 * Add PHE branding ([PR #1396](https://github.com/alphagov/govuk_publishing_components/pull/1396))
