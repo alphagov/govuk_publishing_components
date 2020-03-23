@@ -85,4 +85,9 @@ describe "Heading", type: :view do
     render_component(text: "Branded", lang: "cy")
     assert_select ".gem-c-heading[lang=cy]"
   end
+
+  it "inverts the heading" do
+    render_component(text: "Inverted", inverse: true)
+    assert_select ".gem-c-heading.gem-c-heading--inverse"
+  end
 end
