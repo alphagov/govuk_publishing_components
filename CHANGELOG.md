@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add PHE branding ([PR #1396](https://github.com/alphagov/govuk_publishing_components/pull/1396))
+* Add invert option to heading component ([PR #1397](https://github.com/alphagov/govuk_publishing_components/pull/1397))
 
 ## 21.32.0
 
