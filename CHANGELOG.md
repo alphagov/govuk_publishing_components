@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.34.0
 
 * Add custom multivariate test as essential cookie ([PR #1400](https://github.com/alphagov/govuk_publishing_components/pull/1400))
 
