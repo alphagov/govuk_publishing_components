@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix conditional reveal on checkboxes #1402 ([PR #1402](https://github.com/alphagov/govuk_publishing_components/pull/1402))
+
 ## 21.34.0
 
 * Add custom multivariate test as essential cookie ([PR #1400](https://github.com/alphagov/govuk_publishing_components/pull/1400))
