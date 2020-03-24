@@ -313,6 +313,18 @@ examples:
       - value: "govuk-verify"
         text: "Use GOV.UK Verify"
         conditional: "You’ll need to prove your identity using GOV.UK Verify"
+  conditional_checked:
+    data:
+      name: "radio-group-conditional"
+      id_prefix: "conditional-checked"
+      items:
+      - value: "government-gateway"
+        text: "Use Government Gateway"
+        conditional: "You’ll need to prove your identity using Government Gateway"
+        checked: true
+      - value: "govuk-verify"
+        text: "Use GOV.UK Verify"
+        conditional: "You’ll need to prove your identity using GOV.UK Verify"
   tracking-url:
     data:
       name: "radio-group-tracking-url"
