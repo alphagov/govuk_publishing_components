@@ -70,11 +70,13 @@ module GovukPublishingComponents
 
       def checkbox_markup(checkbox, index)
         checkbox_id = checkbox[:id] || "#{@id}-#{index}"
-        controls = checkbox[:conditional].present? ? "#{checkbox_id}-conditional-#{index || rand(1..100)}" : checkbox[:controls]
+        controls = checkbox[:controls]
+        aria_controls = "#{checkbox_id}-conditional-#{index || rand(1..100)}" if checkbox[:conditional].present?
         checkbox_name = checkbox[:name].present? ? checkbox[:name] : @name
         checked = true if checkbox[:checked].present?
         data = checkbox[:data_attributes] || {}
         data[:controls] = controls
+        data["aria-controls"] = aria_controls
 
         capture do
           concat check_box_tag checkbox_name, checkbox[:value], checked, class: "govuk-checkboxes__input", id: checkbox_id, data: data

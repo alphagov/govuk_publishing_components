@@ -285,9 +285,26 @@ examples:
         - label: "Phone"
           value: "phone"
           conditional: <div class="govuk-form-group"><label class="govuk-label" for="contact-by-phone">Phone number</label><input class="govuk-input govuk-!-width-one-third" id="contact-by-phone" name="contactingme" type="tel"></div>
-        - label: "Other"
-          value: "other"
-          conditional: "See no styling."
+        - label: "Text message"
+          value: "text"
+          conditional: <div class="govuk-form-group"><label class="govuk-label" for="contact-by-text">Mobile phone number</label><input class="govuk-input govuk-!-width-one-third" id="contact-by-text" name="contactingme" type="tel"></div>
+  checkbox_items_with_conditional_reveal_checked:
+    data:
+      name: "contacting-checked"
+      id: "contacting-checked"
+      heading: "How would you like to be contacted?"
+      hint_text: "Please select all options that are relevant to you."
+      items:
+        - label: "Email"
+          value: "email"
+          conditional: <div class="govuk-form-group"><label class="govuk-label" for="contact-by-email">Email address</label><input class="govuk-input govuk-!-width-one-third" id="contact-by-email" name="contactingme" type="email"></div>
+          checked: true
+        - label: "Phone"
+          value: "phone"
+          conditional: <div class="govuk-form-group"><label class="govuk-label" for="contact-by-phone">Phone number</label><input class="govuk-input govuk-!-width-one-third" id="contact-by-phone" name="contactingme" type="tel"></div>
+        - label: "Text message"
+          value: "text"
+          conditional: <div class="govuk-form-group"><label class="govuk-label" for="contact-by-text">Mobile phone number</label><input class="govuk-input govuk-!-width-one-third" id="contact-by-text" name="contactingme" type="tel"></div>
   checkbox_items_with_checked_items:
     data:
       name: "nationality"
