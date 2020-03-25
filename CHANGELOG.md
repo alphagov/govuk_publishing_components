@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Set global_bar_cookie immediately when cookie consent given ([PR #1405](https://github.com/alphagov/govuk_publishing_components/pull/1405))
+
 ## 21.34.1
 
 * Fix conditional reveal on checkboxes #1402 ([PR #1402](https://github.com/alphagov/govuk_publishing_components/pull/1402))
