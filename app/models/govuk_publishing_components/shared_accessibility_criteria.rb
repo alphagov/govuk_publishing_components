@@ -13,6 +13,7 @@ Links in the component must:
 - be usable with touch
 - be usable with [voice commands](https://www.w3.org/WAI/perspectives/voice.html)
 - have visible text
+- have meaningful text
       "
     end
   end
