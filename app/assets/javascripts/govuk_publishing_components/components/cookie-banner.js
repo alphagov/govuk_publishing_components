@@ -71,6 +71,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     if (window.GOVUK.analyticsInit) {
       window.GOVUK.analyticsInit()
     }
+    if (window.GOVUK.globalBarInit) {
+      window.GOVUK.globalBarInit.init()
+    }
   }
 
   CookieBanner.prototype.showConfirmationMessage = function () {
