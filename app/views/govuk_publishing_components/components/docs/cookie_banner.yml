@@ -6,12 +6,8 @@ body: |
   If the examples below are not showing the banner, make sure the `cookies_preferences_set` cookie is not present or is set to false.
 accessibility_criteria: |
   Text in the cookie banner must be clear and unambiguous and should provide a way to dismiss the message.
-
-  Links in the component must:
-
-  - accept focus
-  - be focusable with a keyboard
-  - indicate when they have focus
+shared_accessibility_criteria:
+  - link
 accessibility_excluded_rules:
   - 'duplicate-id' # a banner should have a unique id for a given page. However, this page contains multiple examples of the banner with the same id.
 examples:

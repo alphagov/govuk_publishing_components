@@ -7,16 +7,6 @@ accessibility_criteria: |
 
   - have a text contrast ratio higher than 4.5:1 against the background colour to meet [WCAG AA](https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast)
 
-  Links in the Footer must:
-
-  - accept focus
-  - be focusable with a keyboard
-  - be usable with a keyboard
-  - indicate when they have focus
-  - change in appearance when touched (in the touch-down state)
-  - change in appearance when hovered
-  - have visible text
-
   Images in the Footer must:
 
   - be presentational when linked to from accompanying text "Open Government Licence (OGL) icon".
@@ -36,6 +26,8 @@ accessibility_criteria: |
     Assumption made is that is most predictable for users of assistive technologies.
     The spec indicates that `contentinfo` is useful for "Examples of information included in this region of the page are copyrights and links to privacy statements.", which may indicate that it might be better placed around the 'meta' section of this component.
     Should be challenged if user research indicates this is an issue.
+shared_accessibility_criteria:
+  - link
 accessibility_excluded_rules:
   - landmark-contentinfo-is-top-level # The footer element can not be top level in the examples
 examples:
