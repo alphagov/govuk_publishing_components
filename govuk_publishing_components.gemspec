@@ -33,7 +33,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "govuk_test", "~> 1"
   s.add_development_dependency "jasmine", "~> 3.5.1"
   s.add_development_dependency "pry-byebug"
-  s.add_development_dependency "rspec-rails", "~> 3.8"
+  s.add_development_dependency "rspec-rails", "~> 4.0"
   s.add_development_dependency "rubocop-govuk", "~> 3"
   s.add_development_dependency "selenium-webdriver", "= 3.142.7"
   s.add_development_dependency "uglifier", ">= 4.1.0"
