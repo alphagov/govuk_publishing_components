@@ -120,6 +120,29 @@ describe('Cookie banner', function () {
     expect(GOVUK.analyticsInit).toHaveBeenCalled()
   })
 
+  it('sets global_bar_seen cookie when accepting cookies', function () {
+    GOVUK.globalBarInit = {
+      init: function () {}
+    }
+    spyOn(GOVUK.globalBarInit, 'init')
+    spyOn(GOVUK, 'setCookie').and.callThrough()
+
+    var element = document.querySelector('[data-module="cookie-banner"]')
+    new GOVUK.Modules.CookieBanner().start($(element))
+
+    // Manually reset the consent cookie so we can check the accept button works as intended
+    expect(GOVUK.getCookie('cookies_policy')).toEqual(DEFAULT_COOKIE_CONSENT)
+    GOVUK.cookie('cookies_policy', null)
+
+    var acceptCookiesButton = document.querySelector('[data-accept-cookies]')
+    acceptCookiesButton.click()
+
+    expect(GOVUK.setCookie).toHaveBeenCalledWith('cookies_preferences_set', 'true', { days: 365 })
+    expect(GOVUK.getCookie('cookies_preferences_set')).toEqual('true')
+    expect(GOVUK.getCookie('cookies_policy')).toEqual(ALL_COOKIE_CONSENT)
+    expect(GOVUK.globalBarInit.init).toHaveBeenCalled()
+  })
+
   it('shows a confirmation message when cookies have been accepted', function () {
     var element = document.querySelector('[data-module="cookie-banner"]')
     new GOVUK.Modules.CookieBanner().start($(element))
