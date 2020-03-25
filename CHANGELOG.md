@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update link accessibility criteria ([PR #1407](https://github.com/alphagov/govuk_publishing_components/pull/1407))
+
 ## 21.35.0
 
 * Set global_bar_cookie immediately when cookie consent given ([PR #1405](https://github.com/alphagov/govuk_publishing_components/pull/1405))
