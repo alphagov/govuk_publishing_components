@@ -3,6 +3,8 @@ module GovukPublishingComponents
     append_view_path File.join(Rails.root, "app", "views", GovukPublishingComponents::Config.component_directory_name)
 
     def index
+      @application_path = Rails.root
+      @component_gem_path = Gem.loaded_specs["govuk_publishing_components"].full_gem_path
       @component_docs = component_docs.all
       @gem_component_docs = gem_component_docs.all
       @components_in_use_docs = components_in_use_docs.used_in_this_app
@@ -44,7 +46,7 @@ module GovukPublishingComponents
       additional_files = "@import 'govuk_publishing_components/govuk_frontend_support';\n"
       additional_files << "@import 'govuk_publishing_components/component_support';\n" unless print_styles
 
-      components = components_in_use
+      components = components_in_use("#{@application_path}/app/views/")
       extra_components = []
 
       components.each do |component|
@@ -53,11 +55,12 @@ module GovukPublishingComponents
       end
 
       components << extra_components.compact
+      components << components_used_by_component_guide.compact
       components = components.flatten.uniq.sort
 
       components.map { |component|
         "@import 'govuk_publishing_components/components/#{print_path}_#{component.gsub('_', '-')}';" if component_has_sass_file(component.gsub("_", "-"), print_styles)
-      }.join("\n").squeeze("\n").prepend(additional_files)
+      }.compact.uniq.sort.join("\n").squeeze("\n").prepend(additional_files)
     end
 
   private
@@ -71,13 +74,13 @@ module GovukPublishingComponents
     end
 
     def components_in_use_docs
-      @components_in_use_docs ||= ComponentDocs.new(gem_components: true, limit_to: components_in_use)
+      @components_in_use_docs ||= ComponentDocs.new(gem_components: true, limit_to: components_in_use("#{@application_path}/app/views/"))
     end
 
-    def components_in_use
+    def components_in_use(path)
       matches = []
 
-      files = Dir["#{Rails.root}/app/views/**/*.html.erb"]
+      files = Dir[path + "**/*.html.erb"]
       files.each do |file|
         data = File.read(file)
         matches << data.scan(/(govuk_publishing_components\/components\/[a-z_-]+)/)
@@ -88,11 +91,11 @@ module GovukPublishingComponents
 
     def component_has_sass_file(component, print_styles)
       print_path = "print/" if print_styles
-      Pathname.new(__dir__ + "/../../assets/stylesheets/govuk_publishing_components/components/#{print_path}_#{component}.scss").exist?
+      Pathname.new(@component_gem_path + "/app/assets/stylesheets/govuk_publishing_components/components/#{print_path}_#{component}.scss").exist?
     end
 
     def components_within_component(component)
-      data = File.read(Pathname.new(__dir__ + "/../../views/govuk_publishing_components/components/_#{component}.html.erb"))
+      data = File.read(@component_gem_path + "/app/views/govuk_publishing_components/components/_#{component}.html.erb")
       match = data.scan(/(govuk_publishing_components\/components\/[a-z_-]+)/)
       match.flatten.uniq.map(&:to_s).sort.map { |m| m.gsub("govuk_publishing_components/components/", "") }
     end
@@ -109,6 +112,11 @@ module GovukPublishingComponents
         h[:title] = component_doc.name
         h[:url] = component_doc_path(component_doc.id) if component_example
       end
+    end
+
+    def components_used_by_component_guide
+      components = components_in_use("#{@component_gem_path}/app/views/govuk_publishing_components/component_guide/")
+      components << components_in_use("#{@component_gem_path}/app/views/layouts/")
     end
   end
 end
