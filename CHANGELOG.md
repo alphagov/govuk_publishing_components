@@ -7,9 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.36.0
 
 * Update link accessibility criteria ([PR #1407](https://github.com/alphagov/govuk_publishing_components/pull/1407))
+* Fix duplicate CSS for components loading in component guide ([PR #1356](https://github.com/alphagov/govuk_publishing_components/pull/1356))
 
 ## 21.35.0
 
@@ -46,7 +47,6 @@
 
 ## 21.29.0
 
-* Fix duplicate CSS for components loading in component guide ([PR #1356](https://github.com/alphagov/govuk_publishing_components/pull/1356))
 * Make feedback component more responsive and usable on mobile ([PR #1346](https://github.com/alphagov/govuk_publishing_components/pull/1346))
 * Extend document-list component to show parts of a document ([PR #1326](https://github.com/alphagov/govuk_publishing_components/pull/1326))
 * Update govspeak button styles again ([PR #1342](https://github.com/alphagov/govuk_publishing_components/pull/1342))
