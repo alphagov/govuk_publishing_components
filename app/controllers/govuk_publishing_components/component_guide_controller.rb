@@ -46,7 +46,7 @@ module GovukPublishingComponents
       additional_files = "@import 'govuk_publishing_components/govuk_frontend_support';\n"
       additional_files << "@import 'govuk_publishing_components/component_support';\n" unless print_styles
 
-      components = components_in_use("#{@application_path}/app/views/**/*.html.erb")
+      components = components_in_use("#{@application_path}/app/views/")
       extra_components = []
 
       components.each do |component|
@@ -74,13 +74,13 @@ module GovukPublishingComponents
     end
 
     def components_in_use_docs
-      @components_in_use_docs ||= ComponentDocs.new(gem_components: true, limit_to: components_in_use("#{@application_path}/app/views/**/*.html.erb"))
+      @components_in_use_docs ||= ComponentDocs.new(gem_components: true, limit_to: components_in_use("#{@application_path}/app/views/"))
     end
 
     def components_in_use(path)
       matches = []
 
-      files = Dir[path]
+      files = Dir[path + "**/*.html.erb"]
       files.each do |file|
         data = File.read(file)
         matches << data.scan(/(govuk_publishing_components\/components\/[a-z_-]+)/)
@@ -115,7 +115,8 @@ module GovukPublishingComponents
     end
 
     def components_used_by_component_guide
-      %w(breadcrumbs details layout-footer layout-header lead-paragraph search textarea title)
+      components = components_in_use("#{@component_gem_path}/app/views/govuk_publishing_components/component_guide/")
+      components << components_in_use("#{@component_gem_path}/app/views/layouts/")
     end
   end
 end
