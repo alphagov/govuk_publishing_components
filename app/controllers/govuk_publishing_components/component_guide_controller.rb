@@ -46,7 +46,7 @@ module GovukPublishingComponents
       additional_files = "@import 'govuk_publishing_components/govuk_frontend_support';\n"
       additional_files << "@import 'govuk_publishing_components/component_support';\n" unless print_styles
 
-      components = components_in_use("#{@application_path}/app/views/")
+      components = components_in_use
       extra_components = []
 
       components.each do |component|
@@ -55,7 +55,6 @@ module GovukPublishingComponents
       end
 
       components << extra_components.compact
-      components << components_used_by_component_guide.compact
       components = components.flatten.uniq.sort
 
       components.map { |component|
@@ -74,13 +73,13 @@ module GovukPublishingComponents
     end
 
     def components_in_use_docs
-      @components_in_use_docs ||= ComponentDocs.new(gem_components: true, limit_to: components_in_use("#{@application_path}/app/views/"))
+      @components_in_use_docs ||= ComponentDocs.new(gem_components: true, limit_to: components_in_use)
     end
 
-    def components_in_use(path)
+    def components_in_use
       matches = []
 
-      files = Dir[path + "**/*.html.erb"]
+      files = Dir["#{@application_path}/app/views/**/*.html.erb"]
       files.each do |file|
         data = File.read(file)
         matches << data.scan(/(govuk_publishing_components\/components\/[a-z_-]+)/)
@@ -112,11 +111,6 @@ module GovukPublishingComponents
         h[:title] = component_doc.name
         h[:url] = component_doc_path(component_doc.id) if component_example
       end
-    end
-
-    def components_used_by_component_guide
-      components = components_in_use("#{@component_gem_path}/app/views/govuk_publishing_components/component_guide/")
-      components << components_in_use("#{@component_gem_path}/app/views/layouts/")
     end
   end
 end
