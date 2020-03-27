@@ -23,6 +23,16 @@ describe "Textarea", type: :view do
     assert_select ".govuk-label", text: "Can you provide more detail?"
   end
 
+  it "renders textarea with a custom id" do
+    render_component(
+      label: { text: "Can you provide more detail?" },
+      name: "more-details",
+      id: "this-id",
+    )
+
+    assert_select "#this-id.govuk-textarea"
+  end
+
   it "renders textarea with a custom number of rows" do
     render_component(
       name: "custom-rows",
