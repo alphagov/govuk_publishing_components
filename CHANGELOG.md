@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.36.1
 
 * Fix back link arrow rendering in Safari ([PR #1411](https://github.com/alphagov/govuk_publishing_components/pull/1411))
 * Change component guide sass ([PR #1409](https://github.com/alphagov/govuk_publishing_components/pull/1409))
