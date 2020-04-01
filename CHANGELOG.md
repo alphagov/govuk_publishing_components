@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add heading option to warning component ([PR #1415](https://github.com/alphagov/govuk_publishing_components/pull/1415))
+
 ## 21.36.1
 
 * Fix back link arrow rendering in Safari ([PR #1411](https://github.com/alphagov/govuk_publishing_components/pull/1411))

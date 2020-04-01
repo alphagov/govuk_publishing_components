@@ -29,3 +29,7 @@ examples:
     data:
       text: "This content has changed"
       highlight_text: true
+  as_a_heading:
+    data:
+      text: "This is a heading 3"
+      heading_level: 3
