@@ -51,6 +51,10 @@ module GovukPublishingComponents
         content_item["base_path"]
       end
 
+      def attachments
+        content_item.dig("details", "attachments")
+      end
+
       def content_item
         local_assigns[:content_item]
       end

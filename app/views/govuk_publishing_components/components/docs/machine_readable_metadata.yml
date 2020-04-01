@@ -134,3 +134,24 @@ examples:
         base_path: "government/statistical-data-sets/hogwarts-data"
         details: {}
       schema: :dataset
+  dataset_schema_with_attachments:
+    data:
+      content_item:
+        title: "All the data about Hogwarts"
+        base_path: "government/statistical-data-sets/hogwarts-data"
+        details:
+          attachments:
+            - attachment_type: "file"
+              url: "https://assets.publishing.service.gov.uk/hogwarts-data/headmasters.csv"
+              title: "List of headmasters"
+              content_type: "text/csv"
+              id: "headmasters.csv"
+            - attachment_type: "html"
+              url: "https://www.gov.uk/government/statistical-data-sets/hogwarts-data/houses"
+              title: "Houses of Hogwarts"
+              id: "houses"
+            - attachment_type: "external"
+              url: "https://hogwarts.gov.uk/datasets/dungeon-cleaning-schedule"
+              title: "Dungeon cleaning shedule"
+              id: "dungeon-cleaning-schedule"
+      schema: :dataset

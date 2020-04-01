@@ -62,6 +62,11 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
               "slug": "government-title",
               "current": false,
             },
+            "attachments" => [
+              { "id" => "1", "attachment_type" => "file", "url" => "https://www.gov.uk/a-cat.jpg", "title" => "A picture of a cat", "content_type" => "image/jpeg" },
+              { "id" => "2", "attachment_type" => "html", "url" => "https://www.gov.uk/dogs", "title" => "Some good boys" },
+              { "id" => "3", "attachment_type" => "external", "url" => "https://micropig-register.service.gov.uk", "title" => "Register of government micropigs" },
+            ],
           },
           "description" => "Dataset description",
           "title" => "Dataset Title",
@@ -76,6 +81,11 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       expect(structured_data["@type"]).to eql("Dataset")
       expect(structured_data["name"]).to eql("Dataset Title")
       expect(structured_data["description"].length).to eql(5000)
+      expect(structured_data["distribution"]).to eql([
+        { "name" => "A picture of a cat", "contentUrl" => "https://www.gov.uk/a-cat.jpg", "encodingFormat" => "image/jpeg" },
+        { "name" => "Some good boys", "url" => "https://www.gov.uk/dogs" },
+        { "name" => "Register of government micropigs", "url" => "https://micropig-register.service.gov.uk" },
+      ])
     end
 
     context "schema.org GovernmentService" do
