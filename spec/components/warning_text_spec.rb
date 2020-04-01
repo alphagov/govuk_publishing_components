@@ -42,4 +42,10 @@ describe "warning text", type: :view do
     render_component(highlight_text: true, large_font: true, text: "Because")
     assert_select(".govuk-warning-text__text.gem-c-warning-text__text--highlight.gem-c-warning-text__text--large", text: /Because/i)
   end
+
+  it "renders as a heading" do
+    render_component(text: "Because", heading_level: 1)
+    assert_select("h1.govuk-warning-text__text", text: /Because/i)
+    assert_select("h1.govuk-warning-text__text .govuk-warning-text__assistive", text: /Warning/i)
+  end
 end

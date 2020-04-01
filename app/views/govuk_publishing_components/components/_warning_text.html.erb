@@ -4,6 +4,9 @@
   text_icon ||= '!'
   large_font ||= false
   highlight_text ||= false
+  heading_level ||= 0
+
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
   text_classes = %w(govuk-warning-text__text)
   text_classes << "gem-c-warning-text__text--no-indent" if text_icon.empty?
@@ -15,8 +18,17 @@
   <% unless text_icon.empty? %>
     <%= tag.span text_icon, class: "govuk-warning-text__icon", "aria-hidden": "true" %>
   <% end %>
-  <%= tag.strong class: text_classes do %>
+  <% inner_text = capture do %>
     <%= tag.span text_assistive, class: "govuk-warning-text__assistive" %>
     <%= text %>
+  <% end %>
+  <% if heading_level > 0 %>
+    <%= content_tag(shared_helper.get_heading_level, class: text_classes) do %>
+      <%= inner_text %>
+    <% end %>
+  <% else %>
+    <%= tag.strong class: text_classes do %>
+      <%= inner_text %>
+    <% end %>
   <% end %>
 <% end %>

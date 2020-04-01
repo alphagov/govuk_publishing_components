@@ -1,5 +1,9 @@
 @import "govuk/components/warning-text/warning-text";
 
+.gem-c-warning-text .govuk-warning-text__text {
+  margin: 0;
+}
+
 .gem-c-warning-text__text--no-indent {
   padding-left: 0;
   margin-left: 0;
