@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.37.0
 
 * Add heading option to warning component ([PR #1415](https://github.com/alphagov/govuk_publishing_components/pull/1415))
 * Add the "distribution" property to the dataset machine readable metadata ([PR #1416](https://github.com/alphagov/govuk_publishing_components/pull/1416))
