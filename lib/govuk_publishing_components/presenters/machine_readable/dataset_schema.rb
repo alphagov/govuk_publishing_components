@@ -28,8 +28,11 @@ module GovukPublishingComponents
       end
 
       def description
+        descr = page.body || page.description
+        return {} unless descr
+
         {
-          "description" => (page.body || page.description).slice(0..4999),
+          "description" => descr.slice(0..4999),
         }
       end
 
