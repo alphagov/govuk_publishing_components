@@ -54,6 +54,8 @@
     youtubeVideoContainer.className += 'gem-c-govspeak__youtube-video'
     youtubeVideoContainer.innerHTML = '<span id="' + elementId + '" data-video-id="' + id + '"></span>'
 
+    options['title'] = $link.textContent
+
     parentContainer.replaceChild(youtubeVideoContainer, parentPara)
     this.insertVideo(elementId, options)
   }
@@ -90,7 +92,8 @@
         events: {
           onReady: function (event) {
             // update iframe title attribute once video is ready
-            event.target.a.setAttribute('title', title + ' (video)')
+            var videoTitle = options.title
+            event.target.f.title = videoTitle + ' (video)'
           }
         }
       })
