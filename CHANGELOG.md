@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.38.0
 
 * Expand video player to support youtube livestream URLs ([PR #1418](https://github.com/alphagov/govuk_publishing_components/pull/1418))
 
