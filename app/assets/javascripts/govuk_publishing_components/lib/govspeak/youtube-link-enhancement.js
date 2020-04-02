@@ -20,11 +20,19 @@
 
     for (var i = 0; i < $youtubeLinks.length; ++i) {
       var $link = $youtubeLinks[i]
+      var href = $link.getAttribute('href')
 
-      var videoId = YoutubeLinkEnhancement.parseVideoId($link.getAttribute('href'))
+      if (href.includes("/live_stream")) {
+        var channelId = YoutubeLinkEnhancement.parseLivestream(href)
 
-      if (!this.hasDisabledEmbed($link) && videoId) {
-        this.setupVideo($link, videoId)
+        if (!this.hasDisabledEmbed($link) && channelId) {
+          this.setupVideo({link: $link, channel: channelId})
+        }
+      } else {
+        var videoId = YoutubeLinkEnhancement.parseVideoId(href)
+        if (!this.hasDisabledEmbed($link) && videoId) {
+          this.setupVideo({link: $link, videoId: videoId})
+        }
       }
     }
   }
@@ -33,21 +41,36 @@
     return $link.getAttribute('data-youtube-player') === 'off'
   }
 
-  YoutubeLinkEnhancement.prototype.setupVideo = function ($link, videoId) {
+  YoutubeLinkEnhancement.prototype.setupVideo = function (options) {
     var elementId = YoutubeLinkEnhancement.nextId()
+    var $link = options.link
+
+    var id = options.videoId ? options.videoId : options.channel
 
     var parentPara = $link.parentNode
     var parentContainer = parentPara.parentNode
 
     var youtubeVideoContainer = document.createElement('div')
     youtubeVideoContainer.className += 'gem-c-govspeak__youtube-video'
-    youtubeVideoContainer.innerHTML = '<span id="' + elementId + '" data-video-id="' + videoId + '"></span>'
+    youtubeVideoContainer.innerHTML = '<span id="' + elementId + '" data-video-id="' + id + '"></span>'
+
+    options['title'] = $link.textContent
 
     parentContainer.replaceChild(youtubeVideoContainer, parentPara)
-    this.insertVideo(elementId, videoId, $link.textContent)
+    this.insertVideo(elementId, options)
   }
 
-  YoutubeLinkEnhancement.prototype.insertVideo = function (elementId, videoId, title) {
+  YoutubeLinkEnhancement.prototype.insertVideo = function (elementId, options) {
+    var channelId = ""
+    var videoId = ""
+
+    if (options.channel) {
+      channelId = options.channel
+      videoId = "live_stream"
+    } else {
+      videoId = options.videoId
+    }
+
     var videoInsert = function () {
       new window.YT.Player(elementId, { // eslint-disable-line no-new
         videoId: videoId,
@@ -62,12 +85,15 @@
           // https://www.w3.org/WAI/WCAG21/quickref/#character-key-shortcuts
           disablekb: 1,
           // prevent the YouTube logo from displaying in the control bar
-          modestbranding: 1
+          modestbranding: 1,
+          // To support live_stream videos
+          channel: channelId
         },
         events: {
           onReady: function (event) {
             // update iframe title attribute once video is ready
-            event.target.a.setAttribute('title', title + ' (video)')
+            var videoTitle = options.title
+            event.target.f.title = videoTitle + ' (video)'
           }
         }
       })
@@ -105,6 +131,14 @@
     this.apiScriptInserted = true
   }
 
+  YoutubeLinkEnhancement.parseLivestream = function (url) {
+    var matches = url.match(/channel=([^&]*)/)
+
+    if (matches) {
+      return matches[1]
+    }
+  }
+
   // This is a public class method so it can be used outside of this embed to
   // check that user input for videos will be supported in govspeak
   YoutubeLinkEnhancement.parseVideoId = function (url) {
@@ -123,8 +157,7 @@
       }
       return params.v
     }
-
-    if (url.indexOf('youtu.be') > -1) {
+    else if (url.indexOf('youtu.be') > -1) {
       parts = url.split('/')
       return parts.pop()
     }
