@@ -13,7 +13,7 @@
     ]
   },
   "dependencies": {
-    "axe-core": "^3.5.2",
+    "axe-core": "^3.5.3",
     "govuk-frontend": "^3.6.0",
     "jquery": "1.12.4"
   },
