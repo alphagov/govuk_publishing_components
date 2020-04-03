@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Update yellow hex code for Public Health England ([PR #1428](https://github.com/alphagov/govuk_publishing_components/pull/1428))
+* Remove ':visited' styling from 'Order a copy' link ([PR #1427](https://github.com/alphagov/govuk_publishing_components/pull/1427))
 
 ## 21.38.2
 
