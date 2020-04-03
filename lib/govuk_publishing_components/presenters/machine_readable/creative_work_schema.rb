@@ -17,10 +17,10 @@ module GovukPublishingComponents
             "@type" => "WebPage",
             "@id" => page.canonical_url,
           },
-          "headline" => page.title,
+          "name" => page.title,
           "datePublished" => page.content_item["first_published_at"],
           "dateModified" => page.content_item["public_updated_at"],
-          "description" => page.description,
+          "text" => page.description,
           "publisher" => {
             "@type" => "Organization",
             "name" => "GOV.UK",

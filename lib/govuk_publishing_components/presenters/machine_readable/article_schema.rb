@@ -10,6 +10,7 @@ module GovukPublishingComponents
       def structured_data
         # http://schema.org/Article
         data = CreativeWorkSchema.new(@page).structured_data
+          .merge(head_line)
           .merge(body)
           .merge(search_action)
         data["@type"] = "Article"
@@ -17,6 +18,13 @@ module GovukPublishingComponents
       end
 
     private
+
+      def head_line
+        {
+          "headLine" => page.title,
+          "description" => page.description,
+        }
+      end
 
       # Not all formats have a `body` - some have their content split over
       # multiple fields. In this case we'll skip the `articleBody` field
