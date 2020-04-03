@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.38.1
 
 * Correct CreativeWork to use name and text fields instead of headLine and description ([PR #1423](https://github.com/alphagov/govuk_publishing_components/pull/1423))
 
