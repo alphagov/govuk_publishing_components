@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update yellow hex code for Public Health England ([PR #1428](https://github.com/alphagov/govuk_publishing_components/pull/1428))
+
 ## 21.38.2
 
 * Switch Public Health England branding colour from green to yellow ([PR #1425](https://github.com/alphagov/govuk_publishing_components/pull/1425))
