@@ -143,3 +143,18 @@ examples:
         isbn: "978-1-913635-01-5"
         unique_reference: "2942"
         unnumbered_hoc_paper: true
+  hide_order_a_copy:
+    description: |
+      With 'Order a copy' hidden
+    data:
+      attachment:
+        title: "Budget 2020"
+        url: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/871799/Budget_2020_Web_Accessible_Complete.pdf
+        filename: Budget_2020_Web_Accessible_Complete.pdf
+        content_type: application/pdf
+        file_size: 20000
+        number_of_pages: 12
+        isbn: "978-1-913635-01-5"
+        unique_reference: "2942"
+        unnumbered_hoc_paper: true
+      hide_order_copy_link: true

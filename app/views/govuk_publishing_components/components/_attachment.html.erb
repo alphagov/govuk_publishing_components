@@ -2,6 +2,7 @@
   attachment = GovukPublishingComponents::Presenters::Attachment.new(attachment)
   target ||= "_self"
   hide_opendocument_metadata ||= false
+  hide_order_copy_link ||= false
   attributes = []
   data_attributes ||= {}
 
@@ -68,7 +69,7 @@
       <%= tag.p raw(attributes.join(', ')), class: "gem-c-attachment__metadata" %>
     <% end %>
 
-    <% if attachment.is_official_document %>
+    <% if attachment.is_official_document && !hide_order_copy_link %>
       <%= tag.p link_to("Order a copy", "https://www.gov.uk/guidance/how-to-buy-printed-copies-of-official-documents", class: "govuk-link govuk-link--no-visited-state", target: "_blank"),
         class: "gem-c-attachment__metadata" %>
     <% end %>

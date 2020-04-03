@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add 'hide_order_copy_link' parameter to hide 'Order a copy' ([PR #1430](https://github.com/alphagov/govuk_publishing_components/pull/1430))
+
 ## 21.38.3
 
 * Update yellow hex code for Public Health England ([PR #1428](https://github.com/alphagov/govuk_publishing_components/pull/1428))
