@@ -24,7 +24,7 @@
 
 * Correct CreativeWork to use name and text fields instead of headLine and description ([PR #1423](https://github.com/alphagov/govuk_publishing_components/pull/1423))
 
-## 21.38.0
+## 21.38.0
 
 * Expand video player to support youtube livestream URLs ([PR #1418](https://github.com/alphagov/govuk_publishing_components/pull/1418))
 
