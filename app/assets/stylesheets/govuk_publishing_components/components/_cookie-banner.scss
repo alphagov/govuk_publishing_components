@@ -77,6 +77,7 @@ $govuk-cookie-banner-background: govuk-colour("light-grey", "grey-4");
 
   @include govuk-media-query($from: desktop) {
     max-width: 90%;
+    margin-bottom: 0;
   }
 }
 
@@ -106,6 +107,24 @@ $govuk-cookie-banner-background: govuk-colour("light-grey", "grey-4");
   }
 }
 
+.gem-c-cookie-banner__buttons--flex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+
+  .govuk-button {
+    flex-grow: 1;
+    flex-basis: 10rem;
+    margin-right: govuk-spacing(3);
+    margin-bottom: govuk-spacing(3);
+  }
+
+  .gem-c-cookie-banner__link {
+    flex-grow: 1;
+    display: inline-block;
+  }
+}
+
 // Override the styles from govuk_template
 // scss-lint:disable IdSelector
 // sass-lint:disable no-ids
@@ -130,6 +149,11 @@ $govuk-cookie-banner-background: govuk-colour("light-grey", "grey-4");
     margin: 0 0 govuk-spacing(2) 0;
   }
 
+  .gem-c-cookie-banner__confirmation-message {
+    @include govuk-media-query($from: desktop) {
+      margin-bottom: 0;
+    }
+  }
 }
 // sass-lint:enable no-ids
 // scss-lint:enable IdSelector
