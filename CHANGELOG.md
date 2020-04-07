@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add application stylesheet where needed ([PR #1436](https://github.com/alphagov/govuk_publishing_components/pull/1436))
+
 ## 21.38.4
 
 * Add 'hide_order_copy_link' parameter to hide 'Order a copy' ([PR #1430](https://github.com/alphagov/govuk_publishing_components/pull/1430))
