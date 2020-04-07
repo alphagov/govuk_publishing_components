@@ -1,10 +1,7 @@
 <% content_for :title, "#{@component_doc.name} component" %>
 <% content_for :application_stylesheet do %>
   <% if @component_doc.source == "application" %>
-    <%= stylesheet_link_tag "#{GovukPublishingComponents::Config.application_stylesheet}" %>
-    <% if GovukPublishingComponents::Config.application_print_stylesheet %>
-      <%= stylesheet_link_tag "#{GovukPublishingComponents::Config.application_print_stylesheet}", media: "print" %>
-    <% end %>
+    <%= render 'application_stylesheet' %>
   <% end %>
 <% end %>
 
