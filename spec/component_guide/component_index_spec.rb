@@ -47,24 +47,24 @@ describe "Component guide index" do
     visit "/component-guide"
     expected_main_sass = "@import 'govuk_publishing_components/govuk_frontend_support';
 @import 'govuk_publishing_components/component_support';
-@import 'govuk_publishing_components/components/_breadcrumbs';
-@import 'govuk_publishing_components/components/_contextual-sidebar';
-@import 'govuk_publishing_components/components/_error-message';
-@import 'govuk_publishing_components/components/_error-summary';
-@import 'govuk_publishing_components/components/_govspeak';
-@import 'govuk_publishing_components/components/_hint';
-@import 'govuk_publishing_components/components/_input';
-@import 'govuk_publishing_components/components/_label';
-@import 'govuk_publishing_components/components/_layout-footer';
-@import 'govuk_publishing_components/components/_layout-for-admin';
-@import 'govuk_publishing_components/components/_layout-header';
-@import 'govuk_publishing_components/components/_related-navigation';
-@import 'govuk_publishing_components/components/_skip-link';
-@import 'govuk_publishing_components/components/_step-by-step-nav';
-@import 'govuk_publishing_components/components/_step-by-step-nav-header';
-@import 'govuk_publishing_components/components/_step-by-step-nav-related';
-@import 'govuk_publishing_components/components/_tabs';
-@import 'govuk_publishing_components/components/_title';"
+@import 'govuk_publishing_components/components/breadcrumbs';
+@import 'govuk_publishing_components/components/contextual-sidebar';
+@import 'govuk_publishing_components/components/error-message';
+@import 'govuk_publishing_components/components/error-summary';
+@import 'govuk_publishing_components/components/govspeak';
+@import 'govuk_publishing_components/components/hint';
+@import 'govuk_publishing_components/components/input';
+@import 'govuk_publishing_components/components/label';
+@import 'govuk_publishing_components/components/layout-footer';
+@import 'govuk_publishing_components/components/layout-for-admin';
+@import 'govuk_publishing_components/components/layout-header';
+@import 'govuk_publishing_components/components/related-navigation';
+@import 'govuk_publishing_components/components/skip-link';
+@import 'govuk_publishing_components/components/step-by-step-nav';
+@import 'govuk_publishing_components/components/step-by-step-nav-header';
+@import 'govuk_publishing_components/components/step-by-step-nav-related';
+@import 'govuk_publishing_components/components/tabs';
+@import 'govuk_publishing_components/components/title';"
 
     expect(page).to have_selector(".component-doc-h2", text: "Gem components used by this app (12)")
     expect(page).to have_selector(".govuk-details__summary-text", text: "Suggested Sass for this application")
@@ -75,13 +75,13 @@ describe "Component guide index" do
   it "includes suggested print sass for the application" do
     visit "/component-guide"
     expected_print_sass = "@import 'govuk_publishing_components/govuk_frontend_support';
-@import 'govuk_publishing_components/components/print/_govspeak';
-@import 'govuk_publishing_components/components/print/_layout-footer';
-@import 'govuk_publishing_components/components/print/_layout-header';
-@import 'govuk_publishing_components/components/print/_skip-link';
-@import 'govuk_publishing_components/components/print/_step-by-step-nav';
-@import 'govuk_publishing_components/components/print/_step-by-step-nav-header';
-@import 'govuk_publishing_components/components/print/_title';"
+@import 'govuk_publishing_components/components/print/govspeak';
+@import 'govuk_publishing_components/components/print/layout-footer';
+@import 'govuk_publishing_components/components/print/layout-header';
+@import 'govuk_publishing_components/components/print/skip-link';
+@import 'govuk_publishing_components/components/print/step-by-step-nav';
+@import 'govuk_publishing_components/components/print/step-by-step-nav-header';
+@import 'govuk_publishing_components/components/print/title';"
 
     expect(page.find(:css, 'textarea[name="print-sass"]', visible: false).value).to eq(expected_print_sass)
   end

@@ -58,7 +58,7 @@ module GovukPublishingComponents
       components = components.flatten.uniq.sort
 
       components.map { |component|
-        "@import 'govuk_publishing_components/components/#{print_path}_#{component.gsub('_', '-')}';" if component_has_sass_file(component.gsub("_", "-"), print_styles)
+        "@import 'govuk_publishing_components/components/#{print_path}#{component.gsub('_', '-')}';" if component_has_sass_file(component.gsub("_", "-"), print_styles)
       }.compact.uniq.sort.join("\n").squeeze("\n").prepend(additional_files)
     end
 
