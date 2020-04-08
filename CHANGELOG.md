@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased changes
+
+* Adds tracking for youtube ([PR #1440](https://github.com/alphagov/govuk_publishing_components/pull/1438))
+
 ## 21.39.0
 * Add cookie banner variation for services ([PR #1438](https://github.com/alphagov/govuk_publishing_components/pull/1438))
 

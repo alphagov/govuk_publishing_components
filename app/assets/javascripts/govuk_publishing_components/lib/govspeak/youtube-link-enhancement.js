@@ -21,17 +21,30 @@
     for (var i = 0; i < $youtubeLinks.length; ++i) {
       var $link = $youtubeLinks[i]
       var href = $link.getAttribute('href')
+      var hasTracking = $link.getAttribute('data-youtube-player-analytics') == "true"
+      var options = {
+        link: $link
+      }
+
+      if (hasTracking) {
+        options.tracking = {
+          hasTracking: hasTracking,
+          category: $link.getAttribute('data-youtube-player-analytics-category')
+        }
+      }
 
       if (href.includes("/live_stream")) {
         var channelId = YoutubeLinkEnhancement.parseLivestream(href)
 
         if (!this.hasDisabledEmbed($link) && channelId) {
-          this.setupVideo({link: $link, channel: channelId})
+          options.channelId = channelId
+          this.setupVideo(options)
         }
       } else {
         var videoId = YoutubeLinkEnhancement.parseVideoId(href)
         if (!this.hasDisabledEmbed($link) && videoId) {
-          this.setupVideo({link: $link, videoId: videoId})
+          options.videoId = videoId
+          this.setupVideo(options)
         }
       }
     }
@@ -94,6 +107,28 @@
             // update iframe title attribute once video is ready
             var videoTitle = options.title
             event.target.f.title = videoTitle + ' (video)'
+          },
+          onStateChange: function (event) {
+            var states = {
+              "-1": "VideoUnstarted",
+              "0": "VideoEnded",
+              "1": "VideoPlaying",
+              "2": "VideoPaused",
+              "3": "VideoBuffering",
+              "5": "VideoCued"
+            }
+
+            if (states[event.data] && options.tracking && options.tracking.hasTracking
+                && window.GOVUK.analytics && window.GOVUK.analytics.trackEvent)
+            {
+              var tracking = {
+                category: options.tracking.category,
+                action: states[event.data],
+                label: { transport: 'beacon', label: event.target.getVideoUrl() }
+              }
+
+              window.GOVUK.analytics.trackEvent(tracking.category, tracking.action, tracking.label)
+            }
           }
         }
       })
