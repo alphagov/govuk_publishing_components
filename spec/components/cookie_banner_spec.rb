@@ -43,10 +43,16 @@ describe "Cookie banner", type: :view do
     assert_select '.gem-c-cookie-banner__hide-button[data-module=track-click][data-track-category=cookieBanner][data-track-action="Hide cookie banner"]'
   end
 
-  it "renders with custom text" do
-    render_component(text: sanitize("This is some custom text with a link to the <a href='/cookies' class='govuk-link'>cookies page</a>"))
+  it "renders with custom content" do
+    render_component(
+      title: "Can we store analytics cookies on your device?",
+      text: sanitize("This is some custom text with a link to the <a href='/cookies' class='govuk-link'>cookies page</a>"),
+      confirmation_message: "You’ve accepted all cookies.",
+    )
+    assert_select ".gem-c-cookie-banner__message .govuk-heading-m", text: "Can we store analytics cookies on your device?"
     assert_select ".gem-c-cookie-banner__message .govuk-body", text: "This is some custom text with a link to the cookies page"
     assert_select ".govuk-link[href='/cookies']", text: "cookies page"
+    assert_select ".gem-c-cookie-banner__confirmation-message", text: "You’ve accepted all cookies."
   end
 
   it "renders with a custom preferences page link" do
@@ -57,5 +63,34 @@ describe "Cookie banner", type: :view do
     # Check that the confirmation message also includes the custom URL
     assert_select ".gem-c-cookie-banner__confirmation-message a[href='/cookies']", text: "change your cookie settings"
     assert_select '.gem-c-cookie-banner__confirmation-message a[data-module=track-click][data-track-category=cookieBanner][data-track-action="Cookie banner settings clicked from confirmation"]'
+  end
+
+  it "renders the 'analytics only' version" do
+    render_component(
+      title: "Can we store analytics cookies on your device?",
+      text: "Analytics cookies help us understand how our website is being used.",
+      services_cookies: {
+        yes: {
+          text: "Yes",
+          data_attributes: {
+            "track-category": "cookieBanner",
+          },
+        },
+        no: {
+          text: "No",
+          data_attributes: {
+            "track-category": "cookieBanner",
+          },
+        },
+        cookie_preferences: {
+          text: "How we use cookies",
+          href: "/cookies",
+        },
+      },
+    )
+
+    assert_select ".gem-c-cookie-banner__buttons--flex button[data-module=track-click][data-track-category=cookieBanner][data-accept-cookies=true]", text: "Yes"
+    assert_select ".gem-c-cookie-banner__buttons--flex button[data-module=track-click][data-track-category=cookieBanner][data-hide-cookie-banner=true]", text: "No"
+    assert_select ".gem-c-cookie-banner__buttons--flex .gem-c-cookie-banner__link[href='/cookies']", text: "How we use cookies"
   end
 end
