@@ -11,6 +11,7 @@
 
 * Adds tracking for youtube ([PR #1440](https://github.com/alphagov/govuk_publishing_components/pull/1438))
 * Fix excess newlines for the Attachment Link component ([PR #1442](https://github.com/alphagov/govuk_publishing_components/pull/1442))
+* Bugfix: Ensure cookie banner hide button always hides the cookie banner ([PR #1443](https://github.com/alphagov/govuk_publishing_components/pull/1443)).
 
 ## 21.39.0
 
