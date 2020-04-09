@@ -37,7 +37,7 @@
         var channelId = YoutubeLinkEnhancement.parseLivestream(href)
 
         if (!this.hasDisabledEmbed($link) && channelId) {
-          options.channelId = channelId
+          options.channel = channelId
           this.setupVideo(options)
         }
       } else {
