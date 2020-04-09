@@ -10,8 +10,10 @@
 ## Unreleased changes
 
 * Adds tracking for youtube ([PR #1440](https://github.com/alphagov/govuk_publishing_components/pull/1438))
+* Fix excess newlines for the Attachment Link component ([PR #1442](https://github.com/alphagov/govuk_publishing_components/pull/1442))
 
 ## 21.39.0
+
 * Add cookie banner variation for services ([PR #1438](https://github.com/alphagov/govuk_publishing_components/pull/1438))
 
 ## 21.38.5

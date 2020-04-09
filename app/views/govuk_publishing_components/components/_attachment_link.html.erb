@@ -33,7 +33,6 @@
   <%= link_to(attachment.title, attachment.url,
               class: "govuk-link",
               target: target,
-              data: data_attributes) %>
-
-  <%= raw("(#{attributes.join(', ')})") if attributes.any? %>
+              data: data_attributes) -%>
+  <%= raw("(#{attributes.join(', ')})") if attributes.any? -%>
 <% end %>
