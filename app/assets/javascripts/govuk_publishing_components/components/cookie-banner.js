@@ -17,9 +17,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   CookieBanner.prototype.setupCookieMessage = function () {
-    this.$hideLink = this.$module.querySelector('button[data-hide-cookie-banner]')
-    if (this.$hideLink) {
-      this.$hideLink.addEventListener('click', this.$module.hideCookieMessage)
+    this.$hideLinks = this.$module.querySelectorAll('button[data-hide-cookie-banner]')
+    if (this.$hideLinks && this.$hideLinks.length) {
+      for (var i = 0; i < this.$hideLinks.length; i++) {
+        this.$hideLinks[i].addEventListener('click', this.$module.hideCookieMessage)
+      }
     }
 
     this.$acceptCookiesLink = this.$module.querySelector('button[data-accept-cookies]')
