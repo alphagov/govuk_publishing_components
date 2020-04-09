@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fixes a bug with Youtube livestream introduced in #1440 ([PR #1447](https://github.com/alphagov/govuk_publishing_components/pull/1447))
+
 ## 21.40.0
 
 * Adds tracking for youtube ([PR #1440](https://github.com/alphagov/govuk_publishing_components/pull/1438))
