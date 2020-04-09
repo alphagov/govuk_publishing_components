@@ -67,6 +67,39 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentItem do
           expect(described_class.new(content_item_response).parent_taxons).to eq([])
         end
       end
+
+      context "with a taxon whose parent is the coronavirus taxon" do
+        let(:taxon) do
+          {
+              "content_id" => "cccc-dddd",
+              "title" => "Taxon",
+              "phase" => "live",
+              "links" => {
+                  "parent_taxons" => [
+                      {
+                          "base_path" => "/coronavirus-taxons",
+                          "content_id" => "xxxx-xxxx",
+                          "title" => "Non Whitelisted Taxon",
+                      },
+                  ],
+              },
+          }
+        end
+
+        let(:content_item_response) do
+          {
+              "title" => "Some Answer Content Item",
+              "document_type" => "answer",
+              "links" => {
+                  "taxons" => [taxon],
+              },
+          }
+        end
+
+        it "returns an empty array" do
+          expect(described_class.new(content_item_response).parent_taxons).to eq([])
+        end
+      end
     end
 
     context "for a content item with no taxons links" do

@@ -50,6 +50,20 @@ describe "Contextual navigation" do
     and_the_taxonomy_breadcrumbs
   end
 
+  scenario "There's a child of coronavirus taxon and another taxon tagged" do
+    given_theres_a_guide_tagged_to_a_child_of_the_coronavirus_taxon_and_a_live_taxon
+    and_i_visit_that_page
+    then_i_see_the_taxon_in_the_related_navigation_footer
+    and_the_taxonomy_breadcrumbs
+  end
+
+  scenario "There's a coronavirus taxon and another taxon tagged" do
+    given_theres_a_guide_tagged_to_the_coronavirus_taxon_and_a_live_taxon
+    and_i_visit_that_page
+    then_i_see_the_taxon_in_the_related_navigation_footer
+    and_the_taxonomy_breadcrumbs
+  end
+
   scenario "There's legacy things tagged" do
     given_theres_a_page_with_just_legacy_taxonomy
     and_i_visit_that_page
@@ -236,6 +250,42 @@ describe "Contextual navigation" do
     )
   end
 
+  def given_theres_a_guide_tagged_to_a_child_of_the_coronavirus_taxon_and_a_live_taxon
+    coronavirus_taxon = example_item("taxon", "taxon").tap do |taxon|
+      taxon["title"] = "Coronavirus taxon"
+      taxon["base_path"] = "/coronavirus-taxons"
+    end
+
+    child_of_coronavirus_taxon = example_item("taxon", "taxon").tap do |taxon|
+      taxon["title"] = "Child of Coronavirus taxon"
+      taxon["links"]["parent_taxons"] = [coronavirus_taxon]
+    end
+
+    live_taxon = example_item("taxon", "taxon")
+
+    content_store_has_random_item(
+      schema: "guide",
+      links: {
+        "taxons" => [child_of_coronavirus_taxon, live_taxon],
+      },
+    )
+  end
+
+  def given_theres_a_guide_tagged_to_the_coronavirus_taxon_and_a_live_taxon
+    coronavirus_taxon = example_item("taxon", "taxon").tap do |taxon|
+      taxon["title"] = "Coronavirus taxon"
+      taxon["base_path"] = "/coronavirus-taxons"
+    end
+    live_taxon = example_item("taxon", "taxon")
+
+    content_store_has_random_item(
+      schema: "guide",
+      links: {
+        "taxons" => [coronavirus_taxon, live_taxon],
+      },
+    )
+  end
+
   def given_theres_a_page_with_just_legacy_taxonomy
     content_store_has_random_item(links: {
       "topics" => [example_item("topic", "topic")],
@@ -342,12 +392,14 @@ describe "Contextual navigation" do
     within ".gem-c-breadcrumbs" do
       expect(page).to have_link("Home")
       expect(page).to have_link("A level")
+      expect(page).to_not have_css(".gem-c-related-navigation__link", text: "Child of Coronavirus taxon")
     end
   end
 
   def then_i_see_the_taxon_in_the_related_navigation_footer
     within ".gem-c-contextual-footer" do
       expect(page).to have_css(".gem-c-related-navigation__link", text: "A level")
+      expect(page).to_not have_css(".gem-c-related-navigation__link", text: "Child of Coronavirus taxon")
     end
   end
 

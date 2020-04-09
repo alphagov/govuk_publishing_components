@@ -53,7 +53,7 @@ module GovukPublishingComponents
       end
 
       def content_is_tagged_to_a_live_taxon?
-        content_item.dig("links", "taxons").to_a.any? { |taxon| taxon["phase"] == "live" }
+        ContentItem.new(content_item).parent_taxons.any?
       end
 
       def content_is_a_specialist_document?

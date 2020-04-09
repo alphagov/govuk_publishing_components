@@ -225,7 +225,7 @@ module GovukPublishingComponents
         links = Array(@content_item.dig("links", key))
 
         if key == "taxons"
-          links = links.find_all { |link| link["phase"] == "live" }
+          links = links.find_all { |link| link["phase"] == "live" && is_not_a_coronavirus_taxon?(link) }
         end
 
         if only.present?
@@ -239,6 +239,18 @@ module GovukPublishingComponents
             locale: link["locale"],
           }
         }
+      end
+
+      def is_not_a_coronavirus_taxon?(taxon)
+        return false if taxon["base_path"] == CORONAVIRUS_TAXON_BASE_PATH
+
+        parent_taxons = recursive_parents_of_taxon(taxon).flatten.compact
+        parent_taxons.all? { |child_taxon| child_taxon["base_path"] != CORONAVIRUS_TAXON_BASE_PATH }
+      end
+
+      def recursive_parents_of_taxon(taxon)
+        taxon.dig("links", "parent_taxons") || [].
+            map { |parent_taxon| recursive_parents_of_taxon(parent_taxon) }.flatten.compact
       end
     end
   end
