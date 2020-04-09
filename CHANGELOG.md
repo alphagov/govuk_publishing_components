@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.41.0
 
 * Fixes a bug with Youtube livestream introduced in #1440 ([PR #1447](https://github.com/alphagov/govuk_publishing_components/pull/1447))
 
