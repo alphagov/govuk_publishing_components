@@ -62,4 +62,27 @@ describe "Attachment Link", type: :view do
     )
     assert_select "a.govuk-link[data-gtm='attachment-preview']"
   end
+
+  it "does not have a newline character after the last metadata attribute's closing span tag" do
+    render_component(
+      attachment: {
+        title: "Attachment",
+        url: "attachment",
+        content_type: "text/plain",
+      },
+    )
+
+    expect(rendered).to end_with("</span>)</span>")
+  end
+
+  it "does not have any newline characters after the link element" do
+    render_component(
+      attachment: {
+        title: "Attachment",
+        url: "attachment",
+      },
+    )
+
+    expect(rendered).not_to match(/<\/a>\n/)
+  end
 end
