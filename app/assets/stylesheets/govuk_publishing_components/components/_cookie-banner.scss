@@ -112,16 +112,12 @@ $govuk-cookie-banner-background: govuk-colour("light-grey", "grey-4");
   flex-wrap: wrap;
   align-items: baseline;
 
-  .govuk-button {
+  .govuk-button,
+  .gem-c-cookie-banner__link {
     flex-grow: 1;
     flex-basis: 10rem;
     margin-right: govuk-spacing(3);
     margin-bottom: govuk-spacing(3);
-  }
-
-  .gem-c-cookie-banner__link {
-    flex-grow: 1;
-    display: inline-block;
   }
 }
 

@@ -7,13 +7,17 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased changes
+
+* Fix button alignment on cookie-banner ([PR #1450](https://github.com/alphagov/govuk_publishing_components/pull/1450))
+
 ## 21.41.0
 
 * Fixes a bug with Youtube livestream introduced in #1440 ([PR #1447](https://github.com/alphagov/govuk_publishing_components/pull/1447))
 
 ## 21.40.0
 
-* Adds tracking for youtube ([PR #1440](https://github.com/alphagov/govuk_publishing_components/pull/1438))
+* Adds tracking for youtube ([PR #1440](https://github.com/alphagov/govuk_publishing_components/pull/1440))
 * Fix excess newlines for the Attachment Link component ([PR #1442](https://github.com/alphagov/govuk_publishing_components/pull/1442))
 * Bugfix: Ensure cookie banner hide button always hides the cookie banner ([PR #1443](https://github.com/alphagov/govuk_publishing_components/pull/1443)).
 
