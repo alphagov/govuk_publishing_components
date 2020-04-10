@@ -27,18 +27,34 @@
 
         summary_classes = %w(govuk-accordion__section-summary govuk-body)
       %>
-      <%= tag.div(class: section_classes) do %>
-        <div class="govuk-accordion__section-header">
-          <%=
-            content_tag(
-              shared_helper.get_heading_level,
-              content_tag('span', item[:heading][:text], class: "govuk-accordion__section-button", id: "#{id}-heading-#{index}", data: item[:data_attributes]),
-              class: 'govuk-accordion__section-heading'
-            )
-          %>
-          <%= tag.div(item[:summary][:text], id: "#{id}-summary-#{index}", class: summary_classes) if item[:summary].present? %>
-        </div>
-        <%= tag.div(item[:content][:html], id: "#{id}-content-#{index}", class: "govuk-accordion__section-content", 'aria-labelledby': "#{id}-heading-#{index}") %>
+
+      <% if item[:heading][:hub_url] %>
+        <%= tag.div(class: "govuk-accordion__link-section") do %>
+          <div class="govuk-accordion__section-link-header">
+            <%=
+              content_tag(
+                  shared_helper.get_heading_level,
+                  content_tag('a', item[:heading][:text], href: item[:heading][:url], class: "covid__page-guidance-link", id: "#{id}-heading-#{index}", data: item[:data_attributes]),
+                  class: 'govuk-accordion__section-link'
+              )
+            %>
+          </div>
+          <%= tag.div(item[:content][:html], id: "#{id}-content-#{index}", class: "govuk-accordion__link-section-content", 'aria-labelledby': "#{id}-heading-#{index}") %>
+        <% end %>
+      <% else %>
+        <%= tag.div(class: section_classes) do %>
+          <div class="govuk-accordion__section-header">
+            <%=
+              content_tag(
+                  shared_helper.get_heading_level,
+                  content_tag('span', item[:heading][:text], class: "govuk-accordion__section-button", id: "#{id}-heading-#{index}", data: item[:data_attributes]),
+                  class: 'govuk-accordion__section-heading'
+              )
+            %>
+            <%= tag.div(item[:summary][:text], id: "#{id}-summary-#{index}", class: summary_classes) if item[:summary].present? %>
+          </div>
+          <%= tag.div(item[:content][:html], id: "#{id}-content-#{index}", class: "govuk-accordion__section-content", 'aria-labelledby': "#{id}-heading-#{index}") %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>
