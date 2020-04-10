@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased changes
+## 21.41.1
 
 * Fix button alignment on cookie-banner ([PR #1450](https://github.com/alphagov/govuk_publishing_components/pull/1450))
 
