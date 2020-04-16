@@ -28,7 +28,8 @@
       document.body.className = ((document.body.className) ? document.body.className + ' js-enabled' : 'js-enabled');
     </script>
     <% if @preview %>
-      <main id="wrapper" class="govuk-width-container">
+      <%= render "govuk_publishing_components/components/skip_link" %>
+      <main id="main-content" class="govuk-width-container">
         <%= yield %>
       </main>
     <% else %>
