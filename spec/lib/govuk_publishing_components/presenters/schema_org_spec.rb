@@ -309,6 +309,42 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
         expect(q_and_a.map { |faq| faq["name"] }).to_not include("Step two")
       end
 
+      it "parses nested questions" do
+        part_body = "<div>
+                     <main>
+                     <h2 id='step-one'>Step one</h2>
+                     <p>First catch your dragon</p>
+                     <h2 id='step-two'>Step two</h2>
+                     <p>Give it a treat</p>
+                     <h2 id='step-three'>Step three</h2>
+                     <p>Give it a pat (wear gloves)</p>
+                     </main>
+                     </div>
+                    "
+
+        content_item = dragon_guide
+
+        q_and_a = generate_structured_data(
+          content_item: content_item,
+          schema: :faq,
+          body: part_body,
+          ).structured_data["mainEntity"]
+
+        expect(q_and_a.count).to eq(3)
+
+        expect(q_and_a.first["url"]).to eq("http://www.dev.gov.uk/how-to-train-your-dragon#step-one")
+        expect(q_and_a.second["url"]).to eq("http://www.dev.gov.uk/how-to-train-your-dragon#step-two")
+
+        expect(q_and_a.first["name"]).to eq("Step one")
+        expect(q_and_a.first["acceptedAnswer"]["text"].strip).to eq("<p>First catch your dragon</p>")
+
+        expect(q_and_a.second["name"]).to eq("Step two")
+        expect(q_and_a.second["acceptedAnswer"]["text"].strip).to eq("<p>Give it a treat</p>")
+
+        expect(q_and_a.third["name"]).to eq("Step three")
+        expect(q_and_a.third["acceptedAnswer"]["text"].strip).to eq("<p>Give it a pat (wear gloves)</p>")
+      end
+
       it "handles an empty body to ensure that preview works OK" do
         empty_part_body = ""
         content_item = dragon_guide

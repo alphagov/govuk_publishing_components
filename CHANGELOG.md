@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Make FAQs look deeper in the page for questions ([PR #1437](https://github.com/alphagov/govuk_publishing_components/pull/1437))
+
 ## 21.41.1
 
 * Fix button alignment on cookie-banner ([PR #1450](https://github.com/alphagov/govuk_publishing_components/pull/1450))
