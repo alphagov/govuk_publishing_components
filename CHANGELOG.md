@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.41.2
 
 * Make FAQs look deeper in the page for questions ([PR #1437](https://github.com/alphagov/govuk_publishing_components/pull/1437))
 
