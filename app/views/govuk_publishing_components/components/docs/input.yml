@@ -64,11 +64,13 @@ examples:
       name: "name"
       hint: "Please provide your first and last name"
   with_error:
+    description: An id for the error message is automatically generated, but can also be passed if required.
     data:
       label:
         text: "What is your name?"
       name: "name"
       error_message: "Please could you provide your name"
+      error_id: "optional"
   with_error_items:
     data:
       label:

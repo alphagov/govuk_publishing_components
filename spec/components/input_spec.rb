@@ -165,11 +165,16 @@ describe "Input", type: :view do
       render_component(
         name: "email-address",
         error_message: "Please enter a valid email address",
+        error_id: "optional"
       )
     end
 
     it "renders the error message" do
       assert_select ".govuk-error-message", text: "Error: Please enter a valid email address"
+    end
+
+    it "accepts a passed error id" do
+      assert_select "#optional.govuk-error-message"
     end
 
     it "has 'aria-describedby' the error message id" do
