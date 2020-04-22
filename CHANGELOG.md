@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Change title component context ([PR #1464](https://github.com/alphagov/govuk_publishing_components/pull/1464))
 * Expand scope of suggested sass functionality ([PR #1461](https://github.com/alphagov/govuk_publishing_components/pull/1461))
 
 ## 21.41.2

@@ -18,7 +18,7 @@ describe "Title", type: :view do
 
   it "title context appears" do
     render_component(title: "Hello World", context: "Format")
-    assert_select ".gem-c-title__context", text: "Format"
+    assert_select ".govuk-caption-xl", text: "Format"
   end
 
   it "title context link appears" do
@@ -28,7 +28,7 @@ describe "Title", type: :view do
 
   it "applies context language if supplied to a context string" do
     render_component(title: "Bonjour Monde", context: "hello", context_locale: "en")
-    assert_select ".gem-c-title__context[lang='en']"
+    assert_select ".govuk-caption-xl[lang='en']"
   end
 
   it "applies title length if supplied" do
@@ -83,6 +83,6 @@ describe "Title", type: :view do
 
   it "applies context language if supplied to a context link" do
     render_component(title: "Bonjour", context: { text: "Format", href: "/format" }, context_locale: "en")
-    assert_select ".gem-c-title__context[lang='en']"
+    assert_select ".govuk-caption-xl[lang='en']"
   end
 end

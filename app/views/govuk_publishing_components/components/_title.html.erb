@@ -19,9 +19,9 @@
 %>
 <%= content_tag(:div, class: classes) do %>
   <% if context %>
-    <p class="gem-c-title__context" <%= "lang=#{context_locale}" if context_locale.present? %>>
+    <span class="govuk-caption-xl" <%= "lang=#{context_locale}" if context_locale.present? %>>
       <%= context_href ? link_to(context_text, context_href, class: 'gem-c-title__context-link govuk-link', data: context_data) : context_text %>
-    </p>
+    </span>
   <% end %>
   <h1 class="gem-c-title__text <% if average_title_length %>gem-c-title__text--<%= average_title_length %><% end %>">
     <%= title %>
