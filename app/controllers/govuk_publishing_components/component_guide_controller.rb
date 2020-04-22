@@ -80,6 +80,8 @@ module GovukPublishingComponents
       matches = []
 
       files = Dir["#{@application_path}/app/views/**/*.html.erb"]
+      files.concat Dir["#{@application_path}/app/**/*.rb"]
+
       files.each do |file|
         data = File.read(file)
         matches << data.scan(/(govuk_publishing_components\/components\/[a-z_-]+)/)
