@@ -32,6 +32,14 @@ examples:
         name: "with-hint"
         hint: "Please include as much information as possible."
       maxlength: 10
+  with_id_for_textarea:
+    data:
+      textarea:
+        label:
+          text: "What is your quest?"
+        name: "with-an-id"
+      id: "custom-id"
+      maxlength: 10
   with_error:
     data:
       textarea:
