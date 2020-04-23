@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.41.4
 
 * Fix inverse option for title component context ([PR #1466](https://github.com/alphagov/govuk_publishing_components/pull/1466))
 
