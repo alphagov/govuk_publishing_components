@@ -233,6 +233,20 @@ examples:
             text: "How people read"
           content:
             html: "<p class='govuk-body'>This is the content for How people read.</p>"
+  with_margin_bottom:
+    description: |
+      The component accepts a number for margin bottom from 0 to 9 (0px to 60px) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having a margin bottom of 30px.
+    data:
+      margin_bottom: 0
+      items:
+        - heading:
+            text: "Writing well for the web"
+          content:
+            html: "<p class='govuk-body'>This is the content for Writing well for the web.</p>"
+        - heading:
+            text: "Writing well for specialists"
+          content:
+            html: "<p class='govuk-body'>This is the content for Writing well for specialists.</p>"
   with_section_open:
     description: |
       Adding `expanded: true` to the item will mean the section will default to being open, rather than closed. Once a user has opened or closed a section, the state of each section will be remembered - this can override a section's default.

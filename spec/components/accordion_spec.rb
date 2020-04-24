@@ -96,6 +96,33 @@ describe "Accordion", type: :view do
     assert_select "h5", count: 1
   end
 
+  it "sets a default margin bottom" do
+    test_data = {
+      items: [{
+                heading: { text: "Heading 1" },
+                summary: { text: "Summary 1." },
+                content: { html: "<p>Content 1.</p>" },
+              }],
+    }
+
+    render_component(test_data)
+    assert_select '.gem-c-accordion.govuk-\!-margin-bottom-6'
+  end
+
+  it "sets a custom margin bottom" do
+    test_data = {
+      margin_bottom: 0,
+      items: [{
+                heading: { text: "Heading 1" },
+                summary: { text: "Summary 1." },
+                content: { html: "<p>Content 1.</p>" },
+              }],
+    }
+
+    render_component(test_data)
+    assert_select '.gem-c-accordion.govuk-\!-margin-bottom-0'
+  end
+
   it "default heading level is used when heading_level is not set" do
     test_data = {
       id: "heading-level-default",
