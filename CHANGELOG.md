@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.42.0
 
 * Add custom margin option to accordion component ([PR #1470](https://github.com/alphagov/govuk_publishing_components/pull/1470))
 * Explicitly set accordion heading line height ([PR #1386](https://github.com/alphagov/govuk_publishing_components/pull/1386))
