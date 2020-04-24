@@ -1,11 +1,14 @@
 <%
+  local_assigns[:margin_bottom] ||= 6
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
   id ||= "default-id-#{SecureRandom.hex(4)}"
   items ||= []
   condensed ||= false
+
   accordion_classes = %w(gem-c-accordion govuk-accordion)
   accordion_classes << 'govuk-accordion--condensed' if condensed
+  accordion_classes << (shared_helper.get_margin_bottom)
 
   data_attributes ||= {}
   data_attributes[:module] = 'govuk-accordion'
