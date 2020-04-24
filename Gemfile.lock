@@ -126,7 +126,7 @@ GEM
     json-schema (2.8.1)
       addressable (>= 2.4)
     kgio (2.11.3)
-    kramdown (2.2.0)
+    kramdown (2.2.1)
       rexml
     link_header (0.0.8)
     logstash-event (1.2.02)
