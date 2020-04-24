@@ -28,12 +28,24 @@
       for (var i = 0, l = modules.length; i < l; i++) {
         var module
         var element = $(modules[i])
-        var type = camelCaseAndCapitalise(element.data('module'))
+        var moduleName = camelCaseAndCapitalise(element.data('module'))
         var started = element.data('module-started')
+        var frontendModuleName = moduleName.replace('Govuk', '')
 
-        if (typeof GOVUK.Modules[type] === 'function' && !started) {
-          module = new GOVUK.Modules[type]()
+        if ( // GOV.UK Publishing & Legacy Modules
+          typeof GOVUK.Modules[moduleName] === 'function' &&
+          !GOVUK.Modules[moduleName].prototype.init &&
+          !started
+        ) {
+          module = new GOVUK.Modules[moduleName]()
           module.start(element)
+          element.data('module-started', true)
+        } else if ( // GOV.UK Frontend Modules
+          typeof GOVUK.Modules[frontendModuleName] === 'function' &&
+          GOVUK.Modules[frontendModuleName].prototype.init &&
+          !started
+        ) {
+          module = new GOVUK.Modules[frontendModuleName](element[0]).init()
           element.data('module-started', true)
         }
       }
