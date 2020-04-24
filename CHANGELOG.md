@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add custom margin option to accordion component ([PR #1470](https://github.com/alphagov/govuk_publishing_components/pull/1470))
+* Explicitly set accordion heading line height ([PR #1386](https://github.com/alphagov/govuk_publishing_components/pull/1386))
 
 ## 21.41.4
 

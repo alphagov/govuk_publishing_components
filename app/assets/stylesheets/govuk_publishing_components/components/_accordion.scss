@@ -1,5 +1,15 @@
 @import "govuk/components/accordion/accordion";
 
+.gem-c-accordion {
+  .govuk-accordion__section-heading {
+    // this is a temporary addition to fix the line height when it
+    // is being overridden by styles from govuk-template in collections
+    @include govuk-media-query($until: desktop) {
+      @include govuk-font(24, $weight: bold, $line-height: 1.6);
+    }
+  }
+}
+
 .govuk-accordion--condensed {
   .govuk-accordion__section-button {
     @include govuk-media-query($from: tablet) {
