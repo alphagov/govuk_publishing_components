@@ -32,3 +32,10 @@ examples:
       app_name: Skittles Maker
       phase: beta
       inverse: true
+  with_govspeak_embedded:
+    data:
+      phase: beta
+      message: |
+        <div class="gem-c-govspeak gem-c-govspeak--small gem-c-govspeak--unspaced govuk-govspeak" data-module="govspeak">
+          <p>This is a description - <a href="https://www.gov.uk/help/beta">provide us with feedback</a></p>
+        </div>
