@@ -4,7 +4,7 @@ require "action_controller/railtie"
 require "action_view/railtie"
 require "action_mailer/railtie"
 require "rails/test_unit/railtie"
-require "sprockets/railtie"
+require "sassc-rails"
 # Require jasmine at runtime allow the app:jasmine:ci task to build correctly
 
 begin
