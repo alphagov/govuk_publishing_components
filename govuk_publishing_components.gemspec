@@ -22,8 +22,6 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", ">= 5.0.0.1"
   s.add_dependency "rake"
   s.add_dependency "rouge"
-  s.add_dependency "sass", "3.7.4"
-  s.add_dependency "sassc-rails", ">= 2.0.1"
   s.add_dependency "sprockets", "< 4"
 
   s.add_development_dependency "capybara", "~> 3.25"
@@ -35,6 +33,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "pry-byebug"
   s.add_development_dependency "rspec-rails", "~> 4.0"
   s.add_development_dependency "rubocop-govuk", "~> 3"
+  s.add_development_dependency "sassc-rails", "~> 2"
   s.add_development_dependency "selenium-webdriver", "= 3.142.7"
   s.add_development_dependency "uglifier", ">= 4.1.0"
   # Webmock is needed to load slimmer test helpers
