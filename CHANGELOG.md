@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix margin on buttons with info text ([PR #1474](https://github.com/alphagov/govuk_publishing_components/pull/1474))
+
 ## 21.42.0
 
 * Add custom margin option to accordion component ([PR #1470](https://github.com/alphagov/govuk_publishing_components/pull/1470))
