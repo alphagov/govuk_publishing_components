@@ -3,16 +3,20 @@ require "action_view"
 module GovukPublishingComponents
   module Presenters
     class ButtonHelper
-      attr_reader :href, :text, :title, :info_text, :rel, :data_attributes,
-                  :margin_bottom, :inline_layout, :target, :type, :start,
-                  :secondary, :secondary_quiet, :destructive, :name, :value,
-                  :classes, :aria_label
+      attr_reader :href, :text, :title, :info_text, :info_text_classes,
+                  :rel, :data_attributes, :margin_bottom, :inline_layout,
+                  :target, :type, :start, :secondary, :secondary_quiet,
+                  :destructive, :name, :value, :classes, :aria_label
 
       def initialize(local_assigns)
         @href = local_assigns[:href]
         @text = local_assigns[:text]
         @title = local_assigns[:title]
         @info_text = local_assigns[:info_text]
+        @info_text_classes = %w(gem-c-button__info-text)
+        if local_assigns[:margin_bottom]
+          @info_text_classes << "gem-c-button__info-text--bottom-margin"
+        end
         @rel = local_assigns[:rel]
         @data_attributes = local_assigns[:data_attributes]
         @margin_bottom = local_assigns[:margin_bottom]
@@ -64,7 +68,7 @@ module GovukPublishingComponents
         css_classes << "gem-c-button--secondary" if secondary
         css_classes << "gem-c-button--secondary-quiet" if secondary_quiet
         css_classes << "govuk-button--warning" if destructive
-        css_classes << "gem-c-button--bottom-margin" if margin_bottom
+        css_classes << "gem-c-button--bottom-margin" if margin_bottom && !info_text
         css_classes << "gem-c-button--inline" if inline_layout
         css_classes << classes if classes
         css_classes.join(" ")
