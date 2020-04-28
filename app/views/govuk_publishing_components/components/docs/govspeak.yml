@@ -30,6 +30,27 @@ examples:
       content: |
         <h2>This is a title</h2>
         <p>This is some body text with <a href=#>a link</a></p>
+  small:
+    description: |
+      Applying this option reduces the size of typography to be consistent with
+      the body-small option provided by govuk-frontend.
+      This isn't recommended for large blocks of govspeak as it won't be
+      applied uniformly to all elements.
+    data:
+      small: true
+      content: |
+        <p>Copy is rendered at a smaller size <a href=#>with the small option</a></p>
+  unspaced:
+    description: |
+      Applying this option removes the margins from typograph elements with the
+      expectation that these will be used in situations where they are embedded
+      into elements already providing margins. This is only intended for small
+      snippets of govspeak and only affects basic typography.
+    data:
+      unspaced: true
+      content: |
+        <h2>This is a h2 title</h2>
+        <p>Elements have the margin spacing removed</p>
   heading_levels:
     data:
       block: |

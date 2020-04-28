@@ -5,6 +5,8 @@
   classes = []
   classes << direction_class if direction_class
   classes << "disable-youtube" if disable_youtube_expansions
+  classes << "gem-c-govspeak--small" if local_assigns[:small]
+  classes << "gem-c-govspeak--unspaced" if local_assigns[:unspaced]
 %>
 
 <div class="gem-c-govspeak govuk-govspeak <%= classes.join(" ") %>" data-module="govspeak">

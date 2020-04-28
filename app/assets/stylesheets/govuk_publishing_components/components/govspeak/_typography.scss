@@ -92,3 +92,32 @@
     font-weight: inherit;
   }
 }
+
+.gem-c-govspeak--small {
+  ol,
+  ul,
+  p {
+    @include govuk-font($size: 16)
+  }
+}
+
+.gem-c-govspeak--unspaced {
+  p,
+  ol,
+  ul,
+  li,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 0;
+    margin-bottom: 0;
+
+    @include govuk-media-query($from: tablet) {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+}
