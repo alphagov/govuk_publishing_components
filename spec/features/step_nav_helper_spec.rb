@@ -74,7 +74,6 @@ describe "Specimen usage of step by step navigation helpers" do
     end
   end
 
-
   context "multiple related step by step navigation journeys" do
     before do
       content_store_has_random_item(base_path: "/step-nav/vomit-comet", schema: "transaction", part_of_step_navs: [
@@ -110,7 +109,6 @@ describe "Specimen usage of step by step navigation helpers" do
       expect(page).not_to have_selector(".gem-c-step-nav")
     end
   end
-
 
   def content_store_has_random_item(base_path:, schema: "placeholder", part_of_step_navs: [])
     links = if part_of_step_navs

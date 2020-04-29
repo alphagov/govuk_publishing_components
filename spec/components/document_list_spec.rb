@@ -94,7 +94,6 @@ describe "Document list", type: :view do
     assert_select ".gem-c-document-list__attribute", text: "News Story"
   end
 
-
   it "renders a document list with link tracking" do
     render_component(
       items: [
