@@ -95,7 +95,6 @@ describe "Contents list", type: :view do
     assert_tracking_link("options", { dimension29: "Nested one" }.to_json)
   end
 
-
   it "formats numbers in contents links" do
     render_component(contents: contents_list, format_numbers: true)
     link_selector = ".gem-c-contents-list__list-item--numbered a[href='/one']"

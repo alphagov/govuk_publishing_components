@@ -237,7 +237,6 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
       end
     end
 
-
     context "for a content item with many `part_of_step_navs` links" do
       let(:content_store_response) do
         {

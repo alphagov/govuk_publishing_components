@@ -33,7 +33,6 @@ describe "Select", type: :view do
     )
   end
 
-
   it "does not render if no items are passed" do
     assert_empty render_component(id: "mydropdown", label: "My label", options: [])
   end
