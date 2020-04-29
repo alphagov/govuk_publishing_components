@@ -18,7 +18,8 @@ $gem-quiet-button-hover-colour: darken($gem-quiet-button-colour, 5%);
 // this will be moved and extended into a model for general component spacing
 // once this has been decided upon and other work completed, see:
 // https://trello.com/c/KEkNsxG3/142-3-implement-customisable-spacing-for-components
-.gem-c-button--bottom-margin {
+.gem-c-button--bottom-margin,
+.gem-c-button__info-text--bottom-margin {
   @include responsive-bottom-margin;
 }
 
