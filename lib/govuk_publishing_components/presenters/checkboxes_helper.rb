@@ -10,12 +10,12 @@ module GovukPublishingComponents
       def initialize(options)
         @items = options[:items] || []
         @name = options[:name]
-        @css_classes = %w(gem-c-checkboxes govuk-form-group)
+        @css_classes = %w[gem-c-checkboxes govuk-form-group]
         @css_classes << "govuk-form-group--error" if options[:error]
         @css_classes << "govuk-checkboxes--small" if options[:small]
         @error = true if options[:error]
 
-        @list_classes = %w(govuk-checkboxes gem-c-checkboxes__list)
+        @list_classes = %w[govuk-checkboxes gem-c-checkboxes__list]
 
         # check if any item is set as being conditional
         @has_conditional = options[:items].any? { |item| item.is_a?(Hash) && item[:conditional] }
@@ -24,7 +24,7 @@ module GovukPublishingComponents
         @id = options[:id] || "checkboxes-#{SecureRandom.hex(4)}"
         @heading = options[:heading] || nil
         @heading_size = options[:heading_size]
-        @heading_size = "m" unless %w(s m l xl).include?(@heading_size)
+        @heading_size = "m" unless %w[s m l xl].include?(@heading_size)
         @heading_caption = options[:heading_caption] || nil
         @is_page_heading = options[:is_page_heading]
         @description = options[:description] || nil
@@ -41,7 +41,7 @@ module GovukPublishingComponents
 
       def fieldset_describedby
         unless @no_hint_text
-          text = %w()
+          text = %w[]
           text << "#{id}-hint" if @hint_text
           text << "#{id}-error" if @error
           text
@@ -60,7 +60,7 @@ module GovukPublishingComponents
             concat content_tag(:h1, @heading, class: "gem-c-title__text")
           end
         else
-          classes = %w(govuk-fieldset__legend)
+          classes = %w[govuk-fieldset__legend]
           classes << "govuk-fieldset__legend--#{@heading_size}"
           classes << "gem-c-checkboxes__legend--hidden" if @visually_hide_heading
 

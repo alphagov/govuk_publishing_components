@@ -160,7 +160,7 @@ describe "Related navigation", type: :view do
 
   it "adds a show more toggle link to long sections" do
     content_item = { "links" => { "world_locations" => [] } }
-    %w(USA Wales Fiji Iceland Sweden Mauritius Brazil).each do |country|
+    %w[USA Wales Fiji Iceland Sweden Mauritius Brazil].each do |country|
       content_item["links"]["world_locations"] << { "title" => country }
     end
     render_component(content_item: content_item)
@@ -173,7 +173,7 @@ describe "Related navigation", type: :view do
 
   it "does not use a Show More for only one link above the max per section" do
     content_item = { "links" => { "world_locations" => [] } }
-    %w(USA Wales Fiji Iceland Sweden Mauritius).each do |country|
+    %w[USA Wales Fiji Iceland Sweden Mauritius].each do |country|
       content_item["links"]["world_locations"] << { "title" => country }
     end
     render_component(content_item: content_item)

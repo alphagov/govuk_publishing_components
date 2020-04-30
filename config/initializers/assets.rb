@@ -1,7 +1,7 @@
 return unless Rails.application.config.respond_to?(:assets)
 
 # GOV.UK Publishing Components assets
-Rails.application.config.assets.precompile += %w(
+Rails.application.config.assets.precompile += %w[
   component_guide/accessibility-test.js
   component_guide/application.js
   component_guide/filter-components.js
@@ -25,16 +25,16 @@ Rails.application.config.assets.precompile += %w(
   govuk_publishing_components/icon-important.svg
   govuk_publishing_components/chevron-banner/*.svg
   govuk_publishing_components/crests/*.png
-)
+]
 
 # GOV.UK Frontend assets
-Rails.application.config.assets.precompile += %w(
+Rails.application.config.assets.precompile += %w[
   govuk-logotype-crown.png
-)
+]
 
-Rails.application.config.assets.paths += %W(
+Rails.application.config.assets.paths += %W[
   #{__dir__}/../../node_modules/govuk-frontend/govuk/assets/images
   #{__dir__}/../../node_modules/govuk-frontend/govuk/assets/fonts
   #{__dir__}/../../node_modules/govuk-frontend/
   #{__dir__}/../../node_modules/
-)
+]

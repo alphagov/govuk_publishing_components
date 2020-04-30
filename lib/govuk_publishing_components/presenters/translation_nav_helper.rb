@@ -22,7 +22,7 @@ module GovukPublishingComponents
       end
 
       def classes
-        classes = %w(gem-c-translation-nav)
+        classes = %w[gem-c-translation-nav]
         classes << inverse_class if @inverse
         classes << margin_class if @no_margin_top
         classes.join(" ")

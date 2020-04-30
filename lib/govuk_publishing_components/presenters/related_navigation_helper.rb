@@ -4,14 +4,14 @@ module GovukPublishingComponents
     # Only used by the related_navigation component
     class RelatedNavigationHelper
       MAX_SECTION_LENGTH = 5
-      DEFINED_SECTIONS = %w(
+      DEFINED_SECTIONS = %w[
         related_guides
         topics
         collections
         topical_events
         world_locations
         statistical_data_sets
-      ).freeze
+      ].freeze
       WORLD_LOCATION_SPECIAL_CASES = {
         "UK Mission to the European Union" => "uk-mission-to-the-eu",
       }.freeze

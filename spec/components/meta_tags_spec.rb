@@ -39,8 +39,8 @@ describe "Meta tags", type: :view do
   it "renders organisations in a meta tag with angle brackets" do
     content_item = {
       links: {
-        organisations:            [{ analytics_identifier: "O1" }, { analytics_identifier: "O1" }],
-        worldwide_organisations:  [{ analytics_identifier: "W4" }],
+        organisations: [{ analytics_identifier: "O1" }, { analytics_identifier: "O1" }],
+        worldwide_organisations: [{ analytics_identifier: "W4" }],
       },
     }
 

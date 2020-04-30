@@ -125,7 +125,7 @@ describe "Attachment", type: :view do
           unique_reference: "2259",
           command_paper_number: "Cd. 67",
         },
-      )
+    )
     assert_select ".gem-c-attachment__metadata:nth-of-type(1)", text: "Ref: ISBN 978-1-5286-1173-2, 2259, Cd. 67"
   end
 
@@ -142,7 +142,7 @@ describe "Attachment", type: :view do
           unique_reference: "2259",
           unnumbered_command_paper: true,
         },
-      )
+    )
     assert_select ".gem-c-attachment__metadata:nth-of-type(2)", text: "Unnumbered command paper"
   end
 
@@ -158,7 +158,7 @@ describe "Attachment", type: :view do
           isbn: "978-1-5286-1173-2",
           command_paper_number: "Cd. 67",
         },
-      )
+    )
     assert_select ".gem-c-attachment__metadata:nth-of-type(3) .govuk-link", text: "Order a copy"
   end
 

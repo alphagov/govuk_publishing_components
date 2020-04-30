@@ -13,7 +13,7 @@ module GovukPublishingComponents
         @text = local_assigns[:text]
         @title = local_assigns[:title]
         @info_text = local_assigns[:info_text]
-        @info_text_classes = %w(gem-c-button__info-text)
+        @info_text_classes = %w[gem-c-button__info-text]
         if local_assigns[:margin_bottom]
           @info_text_classes << "gem-c-button__info-text--bottom-margin"
         end
@@ -63,7 +63,7 @@ module GovukPublishingComponents
     private
 
       def css_classes
-        css_classes = %w(gem-c-button govuk-button)
+        css_classes = %w[gem-c-button govuk-button]
         css_classes << "govuk-button--start" if start
         css_classes << "gem-c-button--secondary" if secondary
         css_classes << "gem-c-button--secondary-quiet" if secondary_quiet

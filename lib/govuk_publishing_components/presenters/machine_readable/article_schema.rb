@@ -44,7 +44,7 @@ module GovukPublishingComponents
       end
 
       def search_description
-        I18n.t(:scoped_search_description, scope: %i(components article_schema), title: page.title)
+        I18n.t(:scoped_search_description, scope: %i[components article_schema], title: page.title)
       end
     end
   end

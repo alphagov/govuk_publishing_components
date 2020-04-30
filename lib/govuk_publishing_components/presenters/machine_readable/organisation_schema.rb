@@ -44,7 +44,7 @@ module GovukPublishingComponents
       end
 
       def ministers_with_grouped_roles
-        ministers.reduce({}) do |grouped, minister|
+        ministers.each_with_object({}) do |minister, grouped|
           person_schema = person_schema_for_minister(minister)
 
           if grouped.has_key? person_schema
@@ -52,7 +52,6 @@ module GovukPublishingComponents
           else
             grouped[person_schema] = [role_for_minister(minister)]
           end
-          grouped
         end
       end
 
@@ -129,7 +128,7 @@ module GovukPublishingComponents
       end
 
       def search_description
-        I18n.t(:all_content_search_description, scope: %i(components organisation_schema), organisation: page.title)
+        I18n.t(:all_content_search_description, scope: %i[components organisation_schema], organisation: page.title)
       end
 
       def organisation_facet_params

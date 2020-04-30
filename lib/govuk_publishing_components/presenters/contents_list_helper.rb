@@ -12,7 +12,7 @@ module GovukPublishingComponents
         @nested = !!@contents.find { |c| c[:items] && c[:items].any? }
         @format_numbers = options[:format_numbers]
 
-        @classes = %w(gem-c-contents-list)
+        @classes = %w[gem-c-contents-list]
         @classes << " gem-c-contents-list--no-underline" unless options[:underline_links]
       end
 
@@ -26,7 +26,7 @@ module GovukPublishingComponents
       end
 
       def wrap_numbers_with_spans(content_item_link)
-        content_item_text = strip_tags(content_item_link) #just the text of the link
+        content_item_text = strip_tags(content_item_link) # just the text of the link
 
         # Must start with a number
         # Number must be between 1 and 999 (ie not 2014)
@@ -36,7 +36,7 @@ module GovukPublishingComponents
         number = /^\d{1,3}(\.?|\.\d{1,2})(?=\s)/.match(content_item_text)
 
         if number
-          words = content_item_text.sub(number.to_s, "").strip #remove the number from the text
+          words = content_item_text.sub(number.to_s, "").strip # remove the number from the text
           content_item_link.sub(content_item_text, "<span class=\"gem-c-contents-list__number\">#{number} </span><span class=\"gem-c-contents-list__numbered-text\">#{words}</span>").squish.html_safe
         else
           content_item_link
