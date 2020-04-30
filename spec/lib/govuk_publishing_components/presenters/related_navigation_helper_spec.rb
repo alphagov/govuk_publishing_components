@@ -292,7 +292,7 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
           { locale: "en", path: "/taxon-b", text: "Taxon B" },
           { locale: "en", path: "/taxon-a", text: "Taxon A" },
         ],
-       )
+      )
     end
 
     context "for a sidebar" do

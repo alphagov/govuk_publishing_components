@@ -109,7 +109,7 @@ module GovukPublishingComponents
     end
 
     def component_breadcrumb(component_doc, component_example = nil)
-      Hash.new.tap do |h|
+      {}.tap do |h|
         h[:title] = component_doc.name
         h[:url] = component_doc_path(component_doc.id) if component_example
       end

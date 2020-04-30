@@ -57,7 +57,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
           "details" => {
             "body" => "Dataset body" + ("a" * 5001),
             "political": false,
-              "government": {
+            "government": {
               "title": "Government title",
               "slug": "government-title",
               "current": false,
@@ -328,7 +328,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
           content_item: content_item,
           schema: :faq,
           body: part_body,
-          ).structured_data["mainEntity"]
+        ).structured_data["mainEntity"]
 
         expect(q_and_a.count).to eq(3)
 

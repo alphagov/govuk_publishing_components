@@ -4,10 +4,10 @@ module GovukPublishingComponents
       def self.helper(context, caption = nil, opt = {})
         builder = TableBuilder.new(context.tag)
 
-        classes = %w(gem-c-table govuk-table)
+        classes = %w[gem-c-table govuk-table]
         classes << "govuk-table--sortable" if opt[:sortable]
 
-        caption_classes = %w(govuk-table__caption)
+        caption_classes = %w[govuk-table__caption]
         caption_classes << opt[:caption_classes] if opt[:caption_classes]
 
         context.tag.table class: classes do
@@ -46,17 +46,17 @@ module GovukPublishingComponents
         end
 
         def header(str, opt = {})
-          classes = %w(govuk-table__header)
+          classes = %w[govuk-table__header]
           classes << "govuk-table__header--#{opt[:format]}" if opt[:format]
           classes << "govuk-table__header--active" if opt[:sort_direction]
-          link_classes = %w(app-table__sort-link)
+          link_classes = %w[app-table__sort-link]
           link_classes << "app-table__sort-link--#{opt[:sort_direction]}" if opt[:sort_direction]
           str = link_to str, opt[:href], class: link_classes, data: opt[:data_attributes] if opt[:href]
           tag.th str, class: classes, scope: opt[:scope] || "col"
         end
 
         def cell(str, opt = {})
-          classes = %w(govuk-table__cell)
+          classes = %w[govuk-table__cell]
           classes << "govuk-table__cell--" + opt[:format] if opt[:format]
           classes << "govuk-table__cell--empty" unless str
           str ||= "Not set"
