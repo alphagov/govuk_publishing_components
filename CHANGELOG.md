@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Fix legacy colour on input component ([PR #1487](https://github.com/alphagov/govuk_publishing_components/pull/1487))
+* Add `exclusive` option to checkboxes component ([PR #1478](https://github.com/alphagov/govuk_publishing_components/pull/1478))
 
 ## 21.45.0
 
