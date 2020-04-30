@@ -14,7 +14,7 @@ describe('Checkboxes component', function () {
            '<h1 class="govuk-fieldset__heading">What is your favourite colour?</h1>' +
         '</legend>' +
         '<span id="checkboxes-1ac8e5cf-hint" class="govuk-hint">Select all that apply.</span>' +
-        '<ul class="govuk-checkboxes gem-c-checkboxes__list" data-nested="true">' +
+        '<ul class="govuk-checkboxes gem-c-checkboxes__list" data-nested="true" data-exclusive="true">' +
            '<li class="govuk-checkboxes__item">' +
               '<input id="checkboxes-1ac8e5cf-0" name="favourite_colour" type="checkbox" value="red" class="govuk-checkboxes__input" data-track-category="choseFavouriteColour" data-track-action="favourite-color" data-track-label="red" data-track-value="1" data-track-options=\'{"dimension28": "wubbalubbadubdub","dimension29": "Pickle Rick"}\'>' +
               '<label class="govuk-label govuk-checkboxes__label" for="checkboxes-1ac8e5cf-0">Red</label>' +
@@ -44,7 +44,7 @@ describe('Checkboxes component', function () {
               '</ul>' +
            '</li>' +
            '<li class="govuk-checkboxes__item">' +
-              '<input id="checkboxes-1ac8e5cf-2" name="favourite_colour" type="checkbox" value="other" class="govuk-checkboxes__input">' +
+              '<input id="checkboxes-1ac8e5cf-2" name="favourite_colour" type="checkbox" value="other" class="govuk-checkboxes__input" data-exclusive="true">' +
               '<label class="govuk-label govuk-checkboxes__label" for="checkboxes-1ac8e5cf-2">Other</label>' +
            '</li>' +
         '</ul>' +
@@ -57,6 +57,8 @@ describe('Checkboxes component', function () {
   var $checkboxesWrapper
   var expectedRedOptions
   var expectedBlueOptions
+  var $exclusiveOption
+  var $nonExclusiveOptions
 
   beforeEach(function () {
     window.setFixtures(FIXTURE)
@@ -66,6 +68,8 @@ describe('Checkboxes component', function () {
     $parentCheckbox = $parentCheckboxWrapper.find('> .govuk-checkboxes__input')
     $nestedChildren = $parentCheckboxWrapper.find('.govuk-checkboxes--nested .govuk-checkboxes__input')
     $checkboxesWrapper = $('.gem-c-checkboxes')
+    $exclusiveOption = $checkboxesWrapper.find('input[type=checkbox][data-exclusive]')
+    $nonExclusiveOptions = $checkboxesWrapper.find('input[type=checkbox]:not([data-exclusive])')
     expectedRedOptions = { label: 'red', value: 1, dimension28: 'wubbalubbadubdub', dimension29: 'Pickle Rick' }
     expectedBlueOptions = { label: 'blue', value: 2, dimension28: 'Get schwifty', dimension29: 'Squanch' }
 
@@ -156,6 +160,20 @@ describe('Checkboxes component', function () {
       var fakeOnChangeEvent = { type: 'change', suppressAnalytics: true }
       $checkbox.trigger(fakeOnChangeEvent)
       expect(GOVUK.analytics.trackEvent).not.toHaveBeenCalled()
+    })
+  })
+
+  describe('with exclusive option', function () {
+    it('unchecks non-exclusive options when exclusive option is checked', function () {
+      $nonExclusiveOptions.first().click()
+      $exclusiveOption.click()
+      expect($nonExclusiveOptions.length).toEqual($nonExclusiveOptions.filter(':not(checked)').length)
+      expect($exclusiveOption.is(':checked')).toEqual(true)
+    })
+
+    it('unchecks exclusive option when a non-exclusive option is checked', function () {
+      $nonExclusiveOptions.first().click()
+      expect($exclusiveOption.is(':checked')).toEqual(false)
     })
   })
 })

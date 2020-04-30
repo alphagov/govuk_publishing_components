@@ -268,6 +268,28 @@ examples:
           value: "irish"
         - label: "Other"
           value: "other"
+  checkbox_with_exclusive_item:
+    description: |
+      Allows an option to become exclusive, as follows:
+
+        - when the exclusive item is checked, all non-exclusive items are unchecked
+        - when a non-exclusive item is checked, the exclusive item is unchecked
+
+      This behaviour should be doubled by similar checks on the backend.
+    data:
+      name: "nationality-exclusive"
+      heading: "What kind of expertise can you offer?"
+      hint_text: "Select the types of support you can offer."
+      items:
+        - label: "Medical"
+          value: "medical"
+        - label: "Engineering"
+          value: "engineering"
+        - label: "Other"
+          value: "other"
+        - label: "I cannot offer expertise"
+          value: "no-expertise"
+          exclusive: true
   checkbox_items_with_conditional_reveal:
     description: |
       Checkboxes can be configured to show additional elements when checked. This could include further components, such as text inputs as shown.
