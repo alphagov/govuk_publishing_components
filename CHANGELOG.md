@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add suffix option to input component ([PR #1481](https://github.com/alphagov/govuk_publishing_components/pull/1481))
 * Fix margin on buttons with info text ([PR #1474](https://github.com/alphagov/govuk_publishing_components/pull/1474))
 
 ## 21.42.0
