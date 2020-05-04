@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Fix margin on buttons with info text ([PR #1474](https://github.com/alphagov/govuk_publishing_components/pull/1474))
+* Update step by step header component style ([PR #1476](https://github.com/alphagov/govuk_publishing_components/pull/1476))
 
 ## 21.42.0
 

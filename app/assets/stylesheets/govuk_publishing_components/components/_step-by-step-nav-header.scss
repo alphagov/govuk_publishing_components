@@ -3,26 +3,24 @@
   position: relative;
   padding: 10px;
   background: govuk-colour("light-grey", $legacy: "grey-4");
-  border-top: solid 1px govuk-colour("mid-grey", $legacy: "grey-2");
-  border-bottom: solid 1px govuk-colour("mid-grey", $legacy: "grey-2");
+  border-bottom: solid 1px govuk-colour("blue");
+  margin-top: govuk-spacing(3);
 
   @include govuk-media-query($from: tablet) {
-    padding: govuk-spacing(3);
+    padding: govuk-spacing(5);
   }
 }
 
 // scss-lint:disable SelectorFormat
 
 .gem-c-step-nav-header__part-of {
-  @include govuk-font(16, $weight: bold);
-
+  @include govuk-font(19, $weight: bold);
   display: block;
-  padding-bottom: .2em;
 }
 
 .gem-c-step-nav-header__title {
   @extend %govuk-link;
-  @include govuk-font(24, $weight: bold);
+  @include govuk-font(24, $weight: bold, $line-height: 1);
 }
 
 // scss-lint:enable SelectorFormat

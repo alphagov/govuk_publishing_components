@@ -16,6 +16,10 @@ examples:
     data:
       title: 'Having children: step by step'
       path: /childcare-parenting/pregnancy-and-birth
+  with_a_long_text:
+    data:
+      title: 'Coronavirus: businesses and self-employed people'
+      path: /childcare-parenting/pregnancy-and-birth
   with_unique_tracking:
     description: In order to identify the step by step navigation the component is part of, we need to track a unique ID of the navigation in Google Analytics. This ID should be the same across all pages that are linked from and are part of that navigation. Its value is included in any tracking events, specifically in dimension96. It refers to the ID of the step nav that the component links to.
     data:
