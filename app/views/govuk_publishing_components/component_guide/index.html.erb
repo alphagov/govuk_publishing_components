@@ -20,7 +20,7 @@
   <h2 class="component-doc-h2">Gem components used by this app (<%= @components_in_use_docs.length %>)</h2>
 
   <%= render "govuk_publishing_components/components/details", {
-    title: "Suggested Sass for this application"
+    title: "Suggested imports for this application"
   } do %>
     <%= render "govuk_publishing_components/components/textarea", {
       label: {
@@ -35,6 +35,13 @@
       },
       name: "print-sass",
       value: @components_in_use_print_sass
+    } %>
+    <%= render "govuk_publishing_components/components/textarea", {
+      label: {
+        text: "Add this to your application's main js file, before your other local imports."
+      },
+      name: "main-js",
+      value: @components_in_use_js
     } %>
   <% end %>
 <pre>
