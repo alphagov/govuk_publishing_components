@@ -37,20 +37,22 @@
                 <%= tag.ul class: "govuk-summary-list__actions-list" do %>
                   <% if item.fetch(:edit, {}).any? %>
                     <%= tag.li class: "govuk-summary-list__actions-list-item" do %>
+                      <% edit_link_text = item[:edit][:link_text] || "Change" %>
                       <%= link_to item[:edit].fetch(:href),
                                   class: "govuk-link",
-                                  title: "Change #{item[:field]}",
+                                  title: "#{edit_link_text} #{item[:field]}",
                                   data: item[:edit].fetch(:data_attributes, {}) do %>
-                        Change<%= tag.span " #{item[:field]}", class: "govuk-visually-hidden" %><% end %>
+                        <%= edit_link_text %><%= tag.span " #{item[:field]}", class: "govuk-visually-hidden" %><% end %>
                     <% end %>
                   <% end %>
                   <% if item.fetch(:delete, {}).any? %>
                     <%= tag.li class: "govuk-summary-list__actions-list-item" do %>
+                      <% delete_link_text = item[:delete][:link_text] || "Delete" %>
                       <%= link_to item[:delete].fetch(:href),
                                   class: "govuk-link",
-                                  title: "Delete #{item[:field]}",
+                                  title: "#{delete_link_text} #{item[:field]}",
                                   data: item[:delete].fetch(:data_attributes, {}) do %>
-                        Delete<%= tag.span " #{item[:field]}", class: "govuk-visually-hidden" %>
+                        <%= delete_link_text %><%= tag.span " #{item[:field]}", class: "govuk-visually-hidden" %>
                       <% end %>
                     <% end %>
                   <% end %>

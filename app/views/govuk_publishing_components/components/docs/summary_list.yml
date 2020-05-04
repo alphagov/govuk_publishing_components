@@ -42,6 +42,10 @@ examples:
           gtm: "edit-title-summary-body"
 
   with_custom_link_on_section:
+    description: |
+      Take care that the provided `link_text` still makes sense to screen readers when combined with the title.
+      For instance, `Reorder` link text and `Items` title becomes `Reorder Items`, which reads fine, but link text
+      of `Summary` would read as `Summary Items`, which does not make sense.
     data:
       edit:
         href: "custom-link"
@@ -54,12 +58,9 @@ examples:
         value: "Value 2"
       - field: "Item 3"
         value: "Value 3"
-    accessibility_criteria: |
-      Take care that the provided `link_text` still makes sense to screen readers when combined with the title.
-      For instance, `Reorder` link text and `Items` title becomes `Reorder Items`, which reads fine, but link text
-      of `Summary` would read as `Summary Items`, which does not make sense.
 
   with_edit_on_individual_items:
+    description: The link text can be optionally modified using the 'link_text' parameter, as for the edit link in previous examples.
     data:
       title: "Title, summary and body"
       items:
@@ -67,6 +68,7 @@ examples:
         value: "Ethical standards for public service providers"
         edit:
           href: "edit-title"
+          text: "Edit"
           data_attributes:
             gtm: "edit-title"
       - field: "Summary"
@@ -79,8 +81,10 @@ examples:
         value: "After the government decided in 2013 to expand the remit of the Committee to include public service providers, the Committee on Standards in Public Life produced our first report on the issue: Ethical Standards for Providers of Public Services in 2014."
         edit:
           href: "edit-body"
+          link_text: "Edit"
         delete:
           href: "delete-body"
+          link_text: "Remove"
 
   with_block:
     description: Use the summary list with a block when you need to show an empty state message or load another component.
