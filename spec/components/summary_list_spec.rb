@@ -115,4 +115,25 @@ describe "Summary list", type: :view do
     assert_select ".govuk-summary-list__value", text: "Ethical standards for public service providers"
     assert_select '.govuk-summary-list__actions-list-item .govuk-link[title="Delete Title"][href="#delete-title"][data-gtm="delete-title"]', text: "Delete Title"
   end
+
+  it "renders items with custom text for edit and delete action" do
+    render_component(
+      items: [
+        {
+          field: "Title",
+          value: "Ethical standards for public service providers",
+          edit: {
+            href: "#edit-title",
+            link_text: "Edit",
+          },
+          delete: {
+            href: "#delete-title",
+            link_text: "Remove",
+          },
+        },
+      ],
+    )
+    assert_select '.govuk-summary-list__actions-list-item .govuk-link[title="Edit Title"][href="#edit-title"]', text: "Edit Title"
+    assert_select '.govuk-summary-list__actions-list-item .govuk-link[title="Remove Title"][href="#delete-title"]', text: "Remove Title"
+  end
 end
