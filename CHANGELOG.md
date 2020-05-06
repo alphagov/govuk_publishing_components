@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix legacy colour on input component ([PR #1487](https://github.com/alphagov/govuk_publishing_components/pull/1487))
+
 ## 21.45.0
 
 * Add suffix option to input component ([PR #1481](https://github.com/alphagov/govuk_publishing_components/pull/1481))
