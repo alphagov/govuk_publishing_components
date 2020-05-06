@@ -132,3 +132,20 @@ examples:
         text: "What is your name?"
       name: "name"
       heading_size: "l"
+  with_suffix:
+    description: To help users understand how the input should look like. Often used for units of measurement.
+    data:
+      label:
+        text: "Lead times in days"
+      name: "lead-times"
+      width: 10
+      suffix: "days"
+  with_suffix_and_error:
+    description: To help users understand how the input should look like. Often used for units of measurement.
+    data:
+      label:
+        text: "Lead times in days"
+      error_message: "Enter the approximate lead time in days, do not include words or symbols."
+      name: "lead-times"
+      width: 10
+      suffix: "days"

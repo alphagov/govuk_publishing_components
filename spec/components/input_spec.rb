@@ -214,4 +214,14 @@ describe "Input", type: :view do
 
     assert_select ".govuk-label.govuk-label--xl"
   end
+
+  it "renders text input with suffix" do
+    render_component(
+      label: { text: "Approximate lead times, in days" },
+      name: "lead-times",
+      suffix: "days",
+    )
+    assert_select ".gem-c-input__wrapper .gem-c-input[name=lead-times]"
+    assert_select ".gem-c-input__wrapper .gem-c-input__suffix[aria-hidden=true]", text: "days"
+  end
 end

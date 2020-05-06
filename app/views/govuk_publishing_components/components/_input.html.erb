@@ -22,6 +22,7 @@
   error_id = "error-#{SecureRandom.hex(4)}"
   search_icon ||= nil
   heading_size = false unless ['s', 'm', 'l', 'xl'].include?(heading_size)
+  suffix ||= nil
 
   css_classes = %w(gem-c-input govuk-input)
   css_classes << "govuk-input--error" if has_error
@@ -72,22 +73,30 @@
     } %>
   <% end %>
 
-  <%= tag.input name: name,
-      value: value,
-      class: css_classes,
-      id: id,
-      type: type,
-      data: data,
-      autocomplete: autocomplete,
-      tabindex: tabindex,
-      autofocus: autofocus,
-      readonly: readonly,
-      maxlength: maxlength,
-      inputmode: inputmode,
-      pattern: pattern,
-      aria: {
-        describedby: aria_described_by,
-        controls: controls
-      }
+  <% input_tag = tag.input name: name,
+    value: value,
+    class: css_classes,
+    id: id,
+    type: type,
+    data: data,
+    autocomplete: autocomplete,
+    tabindex: tabindex,
+    autofocus: autofocus,
+    readonly: readonly,
+    maxlength: maxlength,
+    inputmode: inputmode,
+    pattern: pattern,
+    aria: {
+      describedby: aria_described_by,
+      controls: controls
+    }
   %>
+
+  <% if suffix %>
+    <%= tag.div class: "gem-c-input__wrapper" do %>
+      <%= input_tag %><%= tag.span suffix, class: "gem-c-input__suffix", aria: { hidden: true } %>
+    <% end %>
+  <% else %>
+    <%= input_tag %>
+  <% end %>
 <% end %>
