@@ -7,13 +7,16 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 21.45.0
+
+* Add suffix option to input component ([PR #1481](https://github.com/alphagov/govuk_publishing_components/pull/1481))
+
 ## 21.44.0
 
 * Allow summary list custom link text ([PR #1483](https://github.com/alphagov/govuk_publishing_components/pull/1483))
 
 ## 21.43.0
 
-* Add suffix option to input component ([PR #1481](https://github.com/alphagov/govuk_publishing_components/pull/1481))
 * Fix margin on buttons with info text ([PR #1474](https://github.com/alphagov/govuk_publishing_components/pull/1474))
 * Update step by step header component style ([PR #1476](https://github.com/alphagov/govuk_publishing_components/pull/1476))
 
