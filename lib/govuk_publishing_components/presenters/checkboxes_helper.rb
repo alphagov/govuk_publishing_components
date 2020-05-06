@@ -5,7 +5,8 @@ module GovukPublishingComponents
       include ActionView::Context
 
       attr_reader :items, :name, :css_classes, :list_classes, :error, :has_conditional,
-                  :has_nested, :id, :hint_text, :description, :heading_size, :heading_caption
+                  :has_nested, :id, :hint_text, :description, :heading_size, :heading_caption,
+                  :has_exclusive
 
       def initialize(options)
         @items = options[:items] || []
@@ -19,6 +20,7 @@ module GovukPublishingComponents
 
         # check if any item is set as being conditional
         @has_conditional = options[:items].any? { |item| item.is_a?(Hash) && item[:conditional] }
+        @has_exclusive = options[:items].any? { |item| item.is_a?(Hash) && item[:exclusive] }
         @has_nested = options[:items].any? { |item| item.is_a?(Hash) && item[:items] }
 
         @id = options[:id] || "checkboxes-#{SecureRandom.hex(4)}"
@@ -77,6 +79,7 @@ module GovukPublishingComponents
         data = checkbox[:data_attributes] || {}
         data[:controls] = controls
         data["aria-controls"] = aria_controls
+        data[:exclusive] = checkbox[:exclusive]
 
         capture do
           concat check_box_tag checkbox_name, checkbox[:value], checked, class: "govuk-checkboxes__input", id: checkbox_id, data: data

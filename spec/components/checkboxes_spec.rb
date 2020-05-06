@@ -312,6 +312,23 @@ describe "Checkboxes", type: :view do
     assert_select("#nationality-error", text: "Select if you are British, Irish or a citizen of a different country")
   end
 
+  it "renders checkboxes with exclusive option" do
+    render_component(
+      id: "nationality",
+      name: "nationality",
+      heading: "What is your nationality?",
+      error: "Select if you are British, Irish or a citizen of a different country",
+      hint_text: "If you have dual nationality, select all options that are relevant to you.",
+      items: [
+        { label: "British", value: "british", hint: "including English, Scottish, Welsh and Northern Irish" },
+        { label: "Irish", value: "irish" },
+        { label: "Other", value: "other", exclusive: true },
+      ],
+    )
+    assert_select ".govuk-checkboxes[data-exclusive=true]"
+    assert_select ".govuk-checkboxes__input[value=other][data-exclusive=true]"
+  end
+
   it "renders checkboxes with conditional reveal" do
     render_component(
       id: "nationality",

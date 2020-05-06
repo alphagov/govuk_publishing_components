@@ -48,6 +48,21 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           }
         }
       })
+
+      $(scope).on('change', '[data-exclusive=true] input[type=checkbox]', function (e) {
+        var currentCheckbox = e.target
+        var checkboxes = currentCheckbox.closest('.govuk-checkboxes')
+        var exclusiveOption = $(checkboxes).find('input[type=checkbox][data-exclusive]')
+        var nonExclusiveOptions = $(checkboxes).find('input[type=checkbox]:not([data-exclusive])')
+
+        if (currentCheckbox.dataset.exclusive === 'true' && currentCheckbox.checked === true) {
+          nonExclusiveOptions.each(function () {
+            $(this).prop('checked', false)
+          })
+        } else if (currentCheckbox.dataset.exclusive !== 'true' && currentCheckbox.checked === true) {
+          exclusiveOption.prop('checked', false)
+        }
+      })
     }
 
     this.toggleNestedCheckboxes = function (scope, checkbox) {
