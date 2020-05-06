@@ -21,12 +21,12 @@ module GovukPublishingComponents
       @component_doc = component_docs.get(params[:component])
       @component_example = @component_doc.examples.find { |f| f.id == params[:example] }
       @guide_breadcrumbs = [
-                             index_breadcrumb,
-                             component_breadcrumb(@component_doc, @component_example),
-                             {
-                               title: @component_example.name,
-                             },
-                           ]
+        index_breadcrumb,
+        component_breadcrumb(@component_doc, @component_example),
+        {
+          title: @component_example.name,
+        },
+      ]
     end
 
     def preview

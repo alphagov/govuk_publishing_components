@@ -8,9 +8,9 @@ module GovukPublishingComponents
       def structured_data
         # http://schema.org/isPartOf - minimal
         {
-            "@context" => "http://schema.org",
-            "@type" => "CreativeWork",
-            "sameAs" => @is_part_of_url,
+          "@context" => "http://schema.org",
+          "@type" => "CreativeWork",
+          "sameAs" => @is_part_of_url,
         }
       end
     end

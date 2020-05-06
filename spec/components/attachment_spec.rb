@@ -115,16 +115,16 @@ describe "Attachment", type: :view do
   it "shows reference details on the first metadata line if provided" do
     render_component(
       attachment: {
-          title: "The government financial reporting review",
-          url: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/791567/the_government_financial_reporting_review_web.pdf",
-          filename: "department-for-transport-information-asset-register.csv",
-          content_type: "application/pdf",
-          file_size: 20000,
-          number_of_pages: 7,
-          isbn: "978-1-5286-1173-2",
-          unique_reference: "2259",
-          command_paper_number: "Cd. 67",
-        },
+        title: "The government financial reporting review",
+        url: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/791567/the_government_financial_reporting_review_web.pdf",
+        filename: "department-for-transport-information-asset-register.csv",
+        content_type: "application/pdf",
+        file_size: 20000,
+        number_of_pages: 7,
+        isbn: "978-1-5286-1173-2",
+        unique_reference: "2259",
+        command_paper_number: "Cd. 67",
+      },
     )
     assert_select ".gem-c-attachment__metadata:nth-of-type(1)", text: "Ref: ISBN 978-1-5286-1173-2, 2259, Cd. 67"
   end
@@ -132,16 +132,16 @@ describe "Attachment", type: :view do
   it "shows unnumbered details on the second metadata line if marked so" do
     render_component(
       attachment: {
-          title: "The government financial reporting review",
-          url: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/791567/the_government_financial_reporting_review_web.pdf",
-          filename: "department-for-transport-information-asset-register.csv",
-          content_type: "application/pdf",
-          file_size: 20000,
-          number_of_pages: 7,
-          isbn: "978-1-5286-1173-2",
-          unique_reference: "2259",
-          unnumbered_command_paper: true,
-        },
+        title: "The government financial reporting review",
+        url: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/791567/the_government_financial_reporting_review_web.pdf",
+        filename: "department-for-transport-information-asset-register.csv",
+        content_type: "application/pdf",
+        file_size: 20000,
+        number_of_pages: 7,
+        isbn: "978-1-5286-1173-2",
+        unique_reference: "2259",
+        unnumbered_command_paper: true,
+      },
     )
     assert_select ".gem-c-attachment__metadata:nth-of-type(2)", text: "Unnumbered command paper"
   end
@@ -149,15 +149,15 @@ describe "Attachment", type: :view do
   it "shows 'Order a copy' link on the third metadata line if it's an official document" do
     render_component(
       attachment: {
-          title: "The government financial reporting review",
-          url: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/791567/the_government_financial_reporting_review_web.pdf",
-          filename: "department-for-transport-information-asset-register.csv",
-          content_type: "application/pdf",
-          file_size: 20000,
-          number_of_pages: 7,
-          isbn: "978-1-5286-1173-2",
-          command_paper_number: "Cd. 67",
-        },
+        title: "The government financial reporting review",
+        url: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/791567/the_government_financial_reporting_review_web.pdf",
+        filename: "department-for-transport-information-asset-register.csv",
+        content_type: "application/pdf",
+        file_size: 20000,
+        number_of_pages: 7,
+        isbn: "978-1-5286-1173-2",
+        command_paper_number: "Cd. 67",
+      },
     )
     assert_select ".gem-c-attachment__metadata:nth-of-type(3) .govuk-link", text: "Order a copy"
   end

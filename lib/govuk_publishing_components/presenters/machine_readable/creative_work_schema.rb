@@ -80,7 +80,7 @@ module GovukPublishingComponents
         return {} unless collection_pages("documents").any?
 
         {
-            "hasPart" => collection_pages("documents").map { |document| HasPartSchema.new(document).structured_data },
+          "hasPart" => collection_pages("documents").map { |document| HasPartSchema.new(document).structured_data },
         }
       end
 
@@ -101,7 +101,7 @@ module GovukPublishingComponents
         return {} unless live_taxons.any?
 
         {
-            "about" => linked_taxons,
+          "about" => linked_taxons,
         }
       end
 
@@ -115,9 +115,9 @@ module GovukPublishingComponents
       def linked_taxons
         live_taxons.map do |taxon|
           {
-              "@context" => "http://schema.org",
-              "@type" => "Thing",
-              "sameAs" => taxon["web_url"],
+            "@context" => "http://schema.org",
+            "@type" => "Thing",
+            "sameAs" => taxon["web_url"],
           }
         end
       end

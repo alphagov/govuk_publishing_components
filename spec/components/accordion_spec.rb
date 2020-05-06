@@ -14,9 +14,9 @@ describe "Accordion", type: :view do
     test_data = {
       id: "test-for-heading-and-content",
       items: [{
-                heading: { text: "Heading 1" },
-                content: { html: "<p>Content 1.</p>" },
-              },
+        heading: { text: "Heading 1" },
+        content: { html: "<p>Content 1.</p>" },
+      },
               {
                 heading: { text: "Heading 2" },
                 content: { html: "<p>Content 2.</p>" },
@@ -43,10 +43,10 @@ describe "Accordion", type: :view do
     test_data = {
       id: "test-for-id",
       items: [{
-                heading: { text: "Heading 1" },
-                summary: { text: "Summary 1." },
-                content: { html: "<p>Content 1.</p>" },
-              },
+        heading: { text: "Heading 1" },
+        summary: { text: "Summary 1." },
+        content: { html: "<p>Content 1.</p>" },
+      },
               {
                 heading: { text: "Heading 2" },
                 summary: { text: "Summary 2." },
@@ -65,10 +65,10 @@ describe "Accordion", type: :view do
   it "an id is created when no id is set" do
     test_data = {
       items: [{
-                heading: { text: "Heading 1" },
-                summary: { text: "Summary 1." },
-                content: { html: "<p>Content 1.</p>" },
-              }],
+        heading: { text: "Heading 1" },
+        summary: { text: "Summary 1." },
+        content: { html: "<p>Content 1.</p>" },
+      }],
     }
 
     render_component(test_data)
@@ -87,10 +87,10 @@ describe "Accordion", type: :view do
       id: "heading-level-change",
       heading_level: 5,
       items: [{
-                heading: { text: "Heading 1" },
-                summary: { text: "Summary 1." },
-                content: { html: "<p>Content 1.</p>" },
-              }],
+        heading: { text: "Heading 1" },
+        summary: { text: "Summary 1." },
+        content: { html: "<p>Content 1.</p>" },
+      }],
     }
     render_component(test_data)
     assert_select "h5", count: 1
@@ -99,10 +99,10 @@ describe "Accordion", type: :view do
   it "sets a default margin bottom" do
     test_data = {
       items: [{
-                heading: { text: "Heading 1" },
-                summary: { text: "Summary 1." },
-                content: { html: "<p>Content 1.</p>" },
-              }],
+        heading: { text: "Heading 1" },
+        summary: { text: "Summary 1." },
+        content: { html: "<p>Content 1.</p>" },
+      }],
     }
 
     render_component(test_data)
@@ -113,10 +113,10 @@ describe "Accordion", type: :view do
     test_data = {
       margin_bottom: 0,
       items: [{
-                heading: { text: "Heading 1" },
-                summary: { text: "Summary 1." },
-                content: { html: "<p>Content 1.</p>" },
-              }],
+        heading: { text: "Heading 1" },
+        summary: { text: "Summary 1." },
+        content: { html: "<p>Content 1.</p>" },
+      }],
     }
 
     render_component(test_data)
@@ -127,10 +127,10 @@ describe "Accordion", type: :view do
     test_data = {
       id: "heading-level-default",
       items: [{
-                heading: { text: "Heading 1" },
-                summary: { text: "Summary 1." },
-                content: { html: "<p>Content 1.</p>" },
-              }],
+        heading: { text: "Heading 1" },
+        summary: { text: "Summary 1." },
+        content: { html: "<p>Content 1.</p>" },
+      }],
     }
 
     render_component(test_data)
@@ -141,10 +141,10 @@ describe "Accordion", type: :view do
     test_data = {
       id: "test-for-data-attributes",
       items: [{
-                heading: { text: "Heading 1" },
-                content: { html: "<p>Content 1.</p>" },
-                data_attributes: { gtm: "google-tag-manager" },
-              },
+        heading: { text: "Heading 1" },
+        content: { html: "<p>Content 1.</p>" },
+        data_attributes: { gtm: "google-tag-manager" },
+      },
               {
                 heading: { text: "Heading 2" },
                 content: { html: "<p>Content 2.</p>" },
@@ -162,9 +162,9 @@ describe "Accordion", type: :view do
     test_data = {
       id: "test-for-module-data-attributes",
       items: [{
-                heading: { text: "Heading 1" },
-                content: { html: "<p>Content 1.</p>" },
-              },
+        heading: { text: "Heading 1" },
+        content: { html: "<p>Content 1.</p>" },
+      },
               {
                 heading: { text: "Heading 2" },
                 content: { html: "<p>Content 2.</p>" },
@@ -181,12 +181,12 @@ describe "Accordion", type: :view do
         accordion: "first",
       },
       items: [{
-                data_attributes: {
-                  gtm: "this-is-gtm",
-                },
-                heading: { text: "Heading 1" },
-                content: { html: "<p>Content 1.</p>" },
-              },
+        data_attributes: {
+          gtm: "this-is-gtm",
+        },
+        heading: { text: "Heading 1" },
+        content: { html: "<p>Content 1.</p>" },
+      },
               {
                 data_attributes: {
                   gtm: "this-is-a-second-gtm",
@@ -208,11 +208,11 @@ describe "Accordion", type: :view do
       id: "condensed-layout",
       condensed: true,
       items: [{
-                heading: { text: "Heading 1" },
-                summary: { text: "Summary 1." },
-                content: { html: "<p>Content 1.</p>" },
-                expanded: true,
-              },
+        heading: { text: "Heading 1" },
+        summary: { text: "Summary 1." },
+        content: { html: "<p>Content 1.</p>" },
+        expanded: true,
+      },
               {
                 heading: { text: "Heading 2" },
                 summary: { text: "Summary 2." },
@@ -229,10 +229,10 @@ describe "Accordion", type: :view do
       id: "condensed-layout",
       condensed: true,
       items: [{
-                heading: { text: "Heading 1" },
-                summary: { text: "Summary 1." },
-                content: { html: "<p>Content 1.</p>" },
-              }],
+        heading: { text: "Heading 1" },
+        summary: { text: "Summary 1." },
+        content: { html: "<p>Content 1.</p>" },
+      }],
     }
     render_component(test_data)
     assert_select ".govuk-accordion.govuk-accordion--condensed", count: 1
@@ -242,10 +242,10 @@ describe "Accordion", type: :view do
     test_data = {
       id: "thanks-nunjucks",
       items: [{
-                heading: { text: "Heading 1" },
-                summary: { text: "Summary 1." },
-                content: { html: "<p>Content 1.</p>" },
-              }],
+        heading: { text: "Heading 1" },
+        summary: { text: "Summary 1." },
+        content: { html: "<p>Content 1.</p>" },
+      }],
     }
 
     render_component(test_data)

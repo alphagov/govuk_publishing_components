@@ -22,14 +22,14 @@ describe "Contents list", type: :view do
 
   def nested_contents_list
     contents_list << {
-                       href: "/three",
-                       text: "3. Three",
-                       items: [
-                         { href: "/nested-one", text: "Nested one" },
-                         { href: "/nested-two", text: "Nested two" },
-                         { href: "/nested-four", text: "4. Four" },
-                       ],
-                     }
+      href: "/three",
+      text: "3. Three",
+      items: [
+        { href: "/nested-one", text: "Nested one" },
+        { href: "/nested-two", text: "Nested two" },
+        { href: "/nested-four", text: "4. Four" },
+      ],
+    }
   end
 
   def assert_tracking_link(name, value, total = 1)
