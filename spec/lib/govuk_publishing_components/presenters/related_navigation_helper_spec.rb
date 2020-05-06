@@ -45,7 +45,7 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
                                 "title" => "government",
                                 "slug" => "government",
                                 "current" => true,
-                                },
+                              },
                               "political" => true,
                               "delivered_on" => "2017-09-22T14:30:00+01:00",
                             },

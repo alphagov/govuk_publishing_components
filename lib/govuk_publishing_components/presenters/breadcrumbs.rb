@@ -59,8 +59,8 @@ module GovukPublishingComponents
           track_action: index,
           track_label: path,
           track_options: {
-              dimension28: breadcrumbs_length.to_s,
-              dimension29: crumb[:title],
+            dimension28: breadcrumbs_length.to_s,
+            dimension29: crumb[:title],
           },
         }
 

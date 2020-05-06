@@ -71,8 +71,8 @@ describe "Breadcrumbs", type: :view do
     render_component(breadcrumbs: [{ title: "Section", url: "/section" }, { title: "Home", url: "/" }])
 
     expected_tracking_options = {
-        dimension28: "2",
-        dimension29: "Section",
+      dimension28: "2",
+      dimension29: "Section",
     }
 
     assert_select '.gem-c-breadcrumbs[data-module="track-click"]', 1
@@ -109,10 +109,10 @@ describe "Breadcrumbs", type: :view do
 
   it "renders a list of breadcrumbs" do
     render_component(breadcrumbs: [
-        { title: "Home", url: "/" },
-        { title: "Section", url: "/section" },
-        { title: "Sub-section", url: "/sub-section" },
-      ])
+      { title: "Home", url: "/" },
+      { title: "Section", url: "/section" },
+      { title: "Sub-section", url: "/sub-section" },
+    ])
 
     assert_link_with_text_in(".govuk-breadcrumbs__list-item:first-child", "/", "Home")
     assert_link_with_text_in(".govuk-breadcrumbs__list-item:first-child + li", "/section", "Section")
@@ -121,9 +121,9 @@ describe "Breadcrumbs", type: :view do
 
   it "renders inverted breadcrumbs when passed a flag" do
     render_component(breadcrumbs: [
-        { title: "Home", url: "/" },
-        { title: "Section", url: "/section" },
-      ], inverse: true)
+      { title: "Home", url: "/" },
+      { title: "Section", url: "/section" },
+    ], inverse: true)
 
     assert_select ".gem-c-breadcrumbs--inverse"
   end
@@ -143,10 +143,10 @@ describe "Breadcrumbs", type: :view do
 
   it "collapses on mobile if passed a flag" do
     render_component(collapse_on_mobile: true, breadcrumbs: [
-        { title: "Home", url: "/" },
-        { title: "Section", url: "/section" },
-        { title: "Sub-section", url: "/sub-section" },
-      ])
+      { title: "Home", url: "/" },
+      { title: "Section", url: "/section" },
+      { title: "Sub-section", url: "/sub-section" },
+    ])
 
     assert_select(".gem-c-breadcrumbs.govuk-breadcrumbs.gem-c-breadcrumbs--collapse-on-mobile")
   end

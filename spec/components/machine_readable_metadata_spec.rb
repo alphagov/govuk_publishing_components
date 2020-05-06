@@ -26,8 +26,8 @@ describe "Machine readable metadata", type: :view do
   it "uses images if available" do
     example = GovukSchemas::RandomExample.for_schema(frontend_schema: "news_article") do |item|
       item["details"]["image"] = {
-          "url" => "https://example.org/low-res.jpg",
-        }
+        "url" => "https://example.org/low-res.jpg",
+      }
       item
     end
 
@@ -39,9 +39,9 @@ describe "Machine readable metadata", type: :view do
   it "uses high resolution images if available" do
     example = GovukSchemas::RandomExample.for_schema(frontend_schema: "news_article") do |item|
       item["details"]["image"] = {
-          "url" => "https://example.org/low-res.jpg",
-          "high_resolution_url" => "https://example.org/high-res.jpg",
-        }
+        "url" => "https://example.org/low-res.jpg",
+        "high_resolution_url" => "https://example.org/high-res.jpg",
+      }
       item
     end
 
