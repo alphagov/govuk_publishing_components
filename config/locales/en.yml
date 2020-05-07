@@ -32,6 +32,8 @@ en:
       scoped_search_description: "Search within %{title}"
     back_link:
       back: 'Back'
+    checkboxes:
+      or: 'or'
     contents_list:
       contents: Contents
     organisation_schema:

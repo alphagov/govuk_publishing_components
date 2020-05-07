@@ -25,6 +25,15 @@
   margin: 0;
 }
 
+.gem-c-checkboxes__divider {
+  @include govuk-font($size: 19);
+  @include govuk-text-colour;
+  list-style-type: none;
+  margin-bottom: govuk-spacing(2);
+  text-align: center;
+  width: 40px;
+}
+
 .gem-c-checkboxes {
   // this is complex but needed to override the govuk-frontend styles in
   // https://github.com/alphagov/govuk-frontend/blob/b8058640b9602ecb6e1f66f887553190cbae7b46/src/components/hint/_hint.scss#L16

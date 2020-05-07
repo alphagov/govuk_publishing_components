@@ -287,6 +287,7 @@ examples:
           value: "engineering"
         - label: "Other"
           value: "other"
+        - :or
         - label: "I cannot offer expertise"
           value: "no-expertise"
           exclusive: true
