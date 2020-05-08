@@ -90,16 +90,3 @@
     border-color: govuk-colour("black");
   }
 }
-
-// new brand colour to match Public Health England
-// used on the coronavirus page
-// note that PHE already has a different brand colour, the brand
-// department-for-health is used on the PHE org page
-$gem-c-covid-yellow: #ffe114;
-
-.brand--public-health-england {
-  &.brand__border-color,
-  .brand__border-color {
-    border-color: $gem-c-covid-yellow;
-  }
-}
