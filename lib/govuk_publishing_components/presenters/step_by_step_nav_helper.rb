@@ -40,7 +40,7 @@ module GovukPublishingComponents
             length: element[:contents].length,
           },
         ) do
-          element[:contents].collect { |contents|
+          element[:contents].collect do |contents|
             concat(
               content_tag(
                 :li,
@@ -49,7 +49,7 @@ module GovukPublishingComponents
                 create_list_item_content(contents)
               end,
             )
-          }
+          end
         end
       end
 

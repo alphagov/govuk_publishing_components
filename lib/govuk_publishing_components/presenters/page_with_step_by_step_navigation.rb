@@ -115,7 +115,7 @@ module GovukPublishingComponents
       end
 
       def show_secondary_step_by_step?
-        !primary_step_by_steps? && secondary_step_by_step? && secondary_step_by_steps.count === 1
+        !primary_step_by_steps? && secondary_step_by_step? && secondary_step_by_steps.count == 1
       end
 
       def show_related_links_for_secondary_step_by_steps?

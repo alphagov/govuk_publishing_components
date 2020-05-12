@@ -9,7 +9,7 @@ module GovukPublishingComponents
 
       def initialize(options)
         @contents = options[:contents] || []
-        @nested = !!@contents.find { |c| c[:items] && c[:items].any? }
+        @nested = @contents.any? { |c| c[:items] && c[:items].any? }
         @format_numbers = options[:format_numbers]
 
         @classes = %w[gem-c-contents-list]

@@ -17,14 +17,14 @@ module GovukPublishingComponents
       def get_options
         return if options.nil?
 
-        options.map { |option|
+        options.map do |option|
           @selected_option = option[:value] if option[:selected]
           [
             option[:text],
             option[:value],
             options_data_attribute(option[:data_attributes]),
           ]
-        }
+        end
       end
 
       def options_data_attribute(attributes)

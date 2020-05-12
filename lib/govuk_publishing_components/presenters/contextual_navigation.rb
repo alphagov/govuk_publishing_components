@@ -13,7 +13,7 @@ module GovukPublishingComponents
       end
 
       def simple_smart_answer?
-        content_item["document_type"] === "simple_smart_answer"
+        content_item["document_type"] == "simple_smart_answer"
       end
 
       def taxon_breadcrumbs

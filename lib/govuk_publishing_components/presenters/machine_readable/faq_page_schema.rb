@@ -100,7 +100,7 @@ module GovukPublishingComponents
       end
 
       def answer_is_unset?(q_and_as, question)
-        !q_and_as[question].has_key?(:answer)
+        !q_and_as[question].key?(:answer)
       end
 
       # we use H2 tags as the "question" and the html between them as the "answer"

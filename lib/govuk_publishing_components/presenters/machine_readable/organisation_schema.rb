@@ -47,7 +47,7 @@ module GovukPublishingComponents
         ministers.each_with_object({}) do |minister, grouped|
           person_schema = person_schema_for_minister(minister)
 
-          if grouped.has_key? person_schema
+          if grouped.key? person_schema
             grouped[person_schema] << role_for_minister(minister)
           else
             grouped[person_schema] = [role_for_minister(minister)]

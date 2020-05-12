@@ -54,7 +54,7 @@ module GovukPublishingComponents
       end
 
       def construct_section_heading(section_title)
-        unless section_title === "related_items"
+        unless section_title == "related_items"
           I18n.t("components.related_#{@context}_navigation." + section_title,
                  default: [
                    I18n.t("components.related_navigation." + section_title),
@@ -232,13 +232,13 @@ module GovukPublishingComponents
           links = links.find_all { |link| link["document_type"] == only }
         end
 
-        links.map { |link|
+        links.map do |link|
           {
             path: link["base_path"],
             text: link["title"],
             locale: link["locale"],
           }
-        }
+        end
       end
     end
   end
