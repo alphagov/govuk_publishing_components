@@ -149,15 +149,30 @@ examples:
           <caption>A table with data</caption>
           <thead>
             <tr>
-              <th>Heading 1</th><th>Heading 2</th>
+              <th>Group</th>
+              <th>Explanation</th>
+              <th>Current and continuing guidance</th>
+              <th>Government support</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>cell 1</td><td>cell 2</td>
+              <th>Clinically extremely vulnerable people (all people in this cohort will have received communication from the NHS)</th>
+              <td>People defined on medical grounds a clinically extremely vulnerable, meaning they are at the greatest risk of severe illness. This group includes solid organ transplant recipients, people receiving chemotherapy, renal dialysis patients and others.</td>
+              <td>Follow shielding guidance by staying at home at all times and avoiding all non-essential face-to-face contact. This guidance is in place until end June.</td>
+              <td>Support available from the National Shielding Programme, which includes food supplies (through food boxes and priority supermarket deliveries), pharmacy deliveries and care. Support is available via the NHS Volunteer Responders app.</td>
             </tr>
             <tr>
-              <td>cell 3</td><td>cell 4</td>
+              <th>Clinically vulnerable people</th>
+              <td>People considered to be at higher risk of severe illness from COVID-19. Clinically vulnerable people include the following: people aged 70 or older, people with liver disease, people with diabetes, pregnant women and others.</td>
+              <td>Stay at home as much as possible. If you do go out, take particular care to minimise contact with others outside your household.</td>
+              <td>Range of support available while measures in place, including by local authorities and through voluntary and community groups. Support is available via the NHS Volunteer Responders app.</td>
+            </tr>
+            <tr>
+              <th>Vulnerable people (non-clinical)</th>
+              <td>There are a range of people who can be classified as ‘vulnerable’ due to non-clinical factors, such as children at risk of violence or with special education needs, victims of domestic abuse, rough sleepers and others.</td>
+              <td>People in this group will need to follow general guidance except where they are also clinically vulnerable or clinically extremely vulnerable, where they should follow guidance as set out above.</td>
+              <td>For those who need it, a range of support and guidance across public services and the benefits system, including by central and local government and the voluntary and community sector.</td>
             </tr>
           </tbody>
         </table>
