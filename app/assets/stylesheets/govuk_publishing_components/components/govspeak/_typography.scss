@@ -17,6 +17,10 @@
     margin-left: 0;
     margin-right: govuk-spacing(4);
 
+    a {
+      overflow-wrap: break-word;
+    }
+
     ul,
     ol {
       margin-top: 0;
