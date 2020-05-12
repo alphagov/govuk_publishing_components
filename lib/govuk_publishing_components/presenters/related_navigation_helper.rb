@@ -54,7 +54,7 @@ module GovukPublishingComponents
       end
 
       def construct_section_heading(section_title)
-        unless section_title === "related_items"
+        unless section_title == "related_items"
           I18n.t("components.related_#{@context}_navigation." + section_title,
                  default: [
                    I18n.t("components.related_navigation." + section_title),

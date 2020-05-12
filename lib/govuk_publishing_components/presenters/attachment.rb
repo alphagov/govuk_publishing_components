@@ -131,15 +131,15 @@ module GovukPublishingComponents
         end
 
         def opendocument?
-          !!content_type_data[:opendocument]
+          content_type_data[:opendocument].present?
         end
 
         def document?
-          !!content_type_data[:document]
+          content_type_data[:document].present?
         end
 
         def spreadsheet?
-          !!content_type_data[:spreadsheet]
+          content_type_data[:spreadsheet].present?
         end
       end
 

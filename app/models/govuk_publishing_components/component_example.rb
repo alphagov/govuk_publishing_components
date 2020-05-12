@@ -71,11 +71,11 @@ module GovukPublishingComponents
     end
 
     def right_to_left?
-      !!context["right_to_left"]
+      context["right_to_left"].present?
     end
 
     def dark_background?
-      !!context["dark_background"]
+      context["dark_background"].present?
     end
 
     def html_description
@@ -83,11 +83,11 @@ module GovukPublishingComponents
     end
 
     def has_block?
-      !!block
+      block.present?
     end
 
     def has_embed?
-      !!embed
+      embed.present?
     end
 
   private
