@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Prevent govspeak links from breaking the layout ([PR #1492](https://github.com/alphagov/govuk_publishing_components/pull/1492))
 * Remove PHE brand colour ([PR #1489](https://github.com/alphagov/govuk_publishing_components/pull/1489))
 * Fix legacy colour on input component ([PR #1487](https://github.com/alphagov/govuk_publishing_components/pull/1487))
 * Add `exclusive` option to checkboxes component ([PR #1478](https://github.com/alphagov/govuk_publishing_components/pull/1478))
