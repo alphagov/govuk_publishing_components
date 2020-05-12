@@ -232,13 +232,13 @@ module GovukPublishingComponents
           links = links.find_all { |link| link["document_type"] == only }
         end
 
-        links.map { |link|
+        links.map do |link|
           {
             path: link["base_path"],
             text: link["title"],
             locale: link["locale"],
           }
-        }
+        end
       end
     end
   end

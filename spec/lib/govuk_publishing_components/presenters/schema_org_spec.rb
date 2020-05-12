@@ -142,7 +142,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
           schema: :government_service,
         ).structured_data
 
-        expect(structured_data.has_key?("provider")).to eql(false)
+        expect(structured_data.key?("provider")).to eql(false)
       end
 
       it "generates schema.org GovernmentService with provider when at least one organisation exists" do
@@ -177,7 +177,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
           schema: :government_service,
         ).structured_data
 
-        expect(structured_data.has_key?("isRelatedTo")).to eql(false)
+        expect(structured_data.key?("isRelatedTo")).to eql(false)
       end
 
       it "generates schema.org GovernmentService with related services when related services exist as related links" do

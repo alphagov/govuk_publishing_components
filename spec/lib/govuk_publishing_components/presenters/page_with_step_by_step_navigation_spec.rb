@@ -1,7 +1,7 @@
 require "spec_helper"
 
 RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigation do
-  let(:content_item) {
+  let(:content_item) do
     payload_for(
       "guide",
       "links" => {
@@ -116,7 +116,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PageWithStepByStepNavigati
         ],
       },
     )
-  }
+  end
 
   context "rules for handling differing numbers of linked step navs" do
     let(:step_nav) do
