@@ -15,6 +15,10 @@
     margin-top: govuk-spacing(6);
     padding-top: govuk-spacing(2);
 
+    a {
+      overflow-wrap: break-word;
+    }
+
     ol {
       margin-top: 0;
       padding-top: 0;

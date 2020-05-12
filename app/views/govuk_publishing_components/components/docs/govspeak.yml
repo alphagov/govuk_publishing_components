@@ -257,6 +257,10 @@ examples:
             <li id="fn:1a">
               <p>And here is the definition. <a href="#fnref:1a" class="reversefootnote">&#8617;</a></p>
             </li>
+            <li id="fn:2">
+              <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/datasets/weeklyprovisionalfiguresondeathsregisteredinenglandandwales" class="govuk-link">https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/datasets/weeklyprovisionalfiguresondeathsregisteredinenglandandwales</a>
+              <a href="#fnref:2" class="govuk-link">↩</a>
+            </li>
           </ol>
         </div>
   rtl_block:
