@@ -9,7 +9,9 @@
   table {
     border-collapse: collapse;
     border-spacing: 0;
+    display: block;
     margin: govuk-spacing(6) 0;
+    overflow-x: auto;
     width: 100%;
     @include govuk-font($size: 14);
 
