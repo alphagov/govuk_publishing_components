@@ -120,10 +120,13 @@ describe "Breadcrumbs", type: :view do
   end
 
   it "renders inverted breadcrumbs when passed a flag" do
-    render_component(breadcrumbs: [
-      { title: "Home", url: "/" },
-      { title: "Section", url: "/section" },
-    ], inverse: true)
+    render_component(
+      breadcrumbs: [
+        { title: "Home", url: "/" },
+        { title: "Section", url: "/section" },
+      ],
+      inverse: true,
+    )
 
     assert_select ".gem-c-breadcrumbs--inverse"
   end
@@ -142,11 +145,14 @@ describe "Breadcrumbs", type: :view do
   end
 
   it "collapses on mobile if passed a flag" do
-    render_component(collapse_on_mobile: true, breadcrumbs: [
-      { title: "Home", url: "/" },
-      { title: "Section", url: "/section" },
-      { title: "Sub-section", url: "/sub-section" },
-    ])
+    render_component(
+      collapse_on_mobile: true,
+      breadcrumbs: [
+        { title: "Home", url: "/" },
+        { title: "Section", url: "/section" },
+        { title: "Sub-section", url: "/sub-section" },
+      ],
+    )
 
     assert_select(".gem-c-breadcrumbs.govuk-breadcrumbs.gem-c-breadcrumbs--collapse-on-mobile")
   end

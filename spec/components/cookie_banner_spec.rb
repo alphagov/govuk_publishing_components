@@ -8,7 +8,8 @@ describe "Cookie banner", type: :view do
   it "renders with default values" do
     render_component({})
     assert_select '.gem-c-cookie-banner[id="global-cookie-message"][data-module="cookie-banner"]'
-    assert_select ".govuk-width-container .gem-c-cookie-banner__message", text: "Tell us whether you accept cookies
+    assert_select ".govuk-width-container .gem-c-cookie-banner__message",
+                  text: "Tell us whether you accept cookies
           We use cookies to collect information about how you use GOV.UK. We use this information to make the website work as well as possible and improve government services."
     assert_select 'button[data-hide-cookie-banner="true"]'
   end

@@ -3,7 +3,8 @@ Rails.application.routes.draw do
     constraints(host: "govuk-publishing-components.herokuapp.com") do
       match "/(*path)" => redirect { |params, _req|
                             "https://components.publishing.service.gov.uk/#{params[:path]}"
-                          }, via: %i[get post]
+                          },
+            via: %i[get post]
     end
   end
 

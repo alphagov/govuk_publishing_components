@@ -26,7 +26,7 @@ module GovukPublishingComponents
   private
 
     def create_directory_if_not_exists(dir)
-      if !File.directory?(dir)
+      unless File.directory?(dir)
         puts("Directory #{dir} not found, creating")
         FileUtils.mkdir_p dir
       end

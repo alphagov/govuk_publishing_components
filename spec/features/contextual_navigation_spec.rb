@@ -358,8 +358,11 @@ describe "Contextual navigation" do
   end
 
   def content_store_has_random_item(schema: "placeholder", links: {})
-    content_item = random_item(schema, "base_path" => "/page-with-contextual-navigation",
-                                       "links" => links)
+    content_item = random_item(
+      schema,
+      "base_path" => "/page-with-contextual-navigation",
+      "links" => links,
+    )
 
     content_store_has_item(content_item["base_path"], content_item)
   end
