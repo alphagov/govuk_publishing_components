@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.46.0
 
 * Prevent govspeak tables from breaking the layout ([PR #1493](https://github.com/alphagov/govuk_publishing_components/pull/1493))
 * Prevent govspeak links from breaking the layout ([PR #1492](https://github.com/alphagov/govuk_publishing_components/pull/1492))
