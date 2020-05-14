@@ -1,0 +1,25 @@
+<%
+  text ||= false
+  nowrap_text ||= false
+  href ||= false
+  light_text ||= false
+  compact ||= false
+  simple ||= false
+  dark_icon ||= false
+  data ||= nil
+  css_classes = %w(gem-c-action-link)
+  css_classes << "gem-c-action-link--light-text" if light_text
+  css_classes << "gem-c-action-link--compact" if compact
+  css_classes << "gem-c-action-link--dark-icon" if dark_icon
+  css_classes << "gem-c-action-link--simple" if simple
+%>
+<% if href.present? && text.present? %>
+  <div class="<%= css_classes.join(' ') %>">
+    <span class="gem-c-action-link__link-wrapper">
+      <%= link_to  href, :class => "govuk-link gem-c-action-link__link", :data => data do %>
+        <%= text %>
+        <%= content_tag(:span, nowrap_text, class: "gem-c-action-link__nowrap-text") if nowrap_text %>
+      <% end %>
+    </span>
+  </div>
+<% end %>

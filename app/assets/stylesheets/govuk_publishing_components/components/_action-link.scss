@@ -1,0 +1,113 @@
+.gem-c-action-link {
+  display: table;
+
+  &:before {
+    content: "";
+    display: table-cell;
+    width: 50px;
+    height: 45px;
+    // sass-lint:disable no-duplicate-properties
+    background-image: image-url("govuk_publishing_components/action-link-arrow.png");
+    background-image: image-url("govuk_publishing_components/action-link-arrow.svg");
+    // sass-lint:enable no-duplicate-properties
+    background-repeat: no-repeat;
+    background-position: 0 50%;
+    background-size: 37px auto;
+  }
+
+  @include govuk-media-query($until: tablet) {
+    max-width: 410px;
+  }
+}
+
+
+.gem-c-action-link__link-wrapper {
+  @include govuk-font(19, $weight: bold, $line-height: 20px);
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.gem-c-action-link__link {
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:focus,
+  &:active {
+    text-decoration: none;
+    color: govuk-colour("black");
+  }
+}
+
+.gem-c-action-link__nowrap-text {
+  white-space: nowrap;
+}
+
+.gem-c-action-link--simple {
+  &:before {
+    width: 30px;
+    height: 30px;
+    // sass-lint:disable no-duplicate-properties
+    background-image: image-url("govuk_publishing_components/action-link-arrow--simple.png");
+    background-image: image-url("govuk_publishing_components/action-link-arrow--simple.svg");
+    // sass-lint:enable no-duplicate-properties
+    background-size: 25px auto;
+    background-position: 0 0;
+  }
+
+  .gem-c-action-link__link {
+    text-decoration: none;
+  }
+}
+
+.gem-c-action-link--dark-icon {
+  max-width: none;
+
+  @include govuk-media-query($until: tablet) {
+    margin-bottom: govuk-spacing(2);
+  }
+
+  &:before {
+    width: 35px;
+    height: 30px;
+    // sass-lint:disable no-duplicate-properties
+    background-image: image-url("govuk_publishing_components/action-link-arrow--dark.png");
+    background-image: image-url("govuk_publishing_components/action-link-arrow--dark.svg");
+    // sass-lint:enable no-duplicate-properties
+    background-size: 25px auto;
+    background-position: 0 0;
+  }
+
+  .gem-c-action-link__link {
+    text-decoration: none;
+  }
+}
+
+.gem-c-action-link--light-text {
+  .gem-c-action-link__link {
+    color: govuk-colour("white");
+    text-decoration: underline;
+
+    &:link,
+    &:visited {
+      color: govuk-colour("white");
+    }
+
+    &:focus,
+    &:active {
+      text-decoration: none;
+      color: govuk-colour("black");
+    }
+  }
+}
+
+.gem-c-action-link--compact {
+  &:before {
+    height: 30px;
+    width: 26px;
+  }
+
+  @include govuk-media-query($until: tablet) {
+    margin-bottom: 0;
+  }
+}
