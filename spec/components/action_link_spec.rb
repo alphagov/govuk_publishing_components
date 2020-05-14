@@ -22,6 +22,15 @@ describe "Action link", type: :view do
     assert_select ".gem-c-action-link .gem-c-action-link__nowrap-text", text: "about COVID"
   end
 
+  it "renders subtext" do
+    render_component(
+      text: "Get more info",
+      href: "/coronavirus",
+      subtext: "because info is important",
+    )
+    assert_select ".gem-c-action-link.gem-c-action-link--with-subtext .gem-c-action-link__subtext", text: "because info is important"
+  end
+
   it "renders simple icon version" do
     render_component(
       text: "Get more info",

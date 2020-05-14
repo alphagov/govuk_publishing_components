@@ -19,6 +19,19 @@ examples:
       light_text: true
     context:
       dark_background: true
+  with_subtext:
+    data:
+      text: "Emergency something"
+      href: '/page'
+      subtext: "This is about the emergency"
+  with_subtext_on_a_dark_background:
+    data:
+      text: "Emergency something"
+      href: '/page'
+      subtext: "This is about the emergency that is happening right now unfortunately so pay attention"
+      light_text: true
+    context:
+      dark_background: true
   simple_arrow:
     data:
       text: "Getting financial help and keeping your business safe"

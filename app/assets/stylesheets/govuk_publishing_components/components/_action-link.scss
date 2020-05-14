@@ -20,7 +20,6 @@
   }
 }
 
-
 .gem-c-action-link__link-wrapper {
   @include govuk-font(19, $weight: bold, $line-height: 20px);
   display: table-cell;
@@ -28,6 +27,8 @@
 }
 
 .gem-c-action-link__link {
+  color: inherit;
+
   &:hover {
     text-decoration: underline;
   }
@@ -41,6 +42,42 @@
 
 .gem-c-action-link__nowrap-text {
   white-space: nowrap;
+}
+
+.gem-c-action-link--with-subtext {
+  max-width: none;
+
+  .gem-c-action-link__link-wrapper,
+  .gem-c-action-link__subtext-wrapper {
+    display: block;
+
+    @include govuk-media-query($from: tablet) {
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+}
+
+.gem-c-action-link__subtext {
+  @include govuk-font(19);
+  display: block;
+  font-weight: normal;
+  color: inherit;
+
+  @include govuk-media-query($from: tablet) {
+    position: relative;
+    padding-left: govuk-spacing(4);
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: govuk-spacing(2);
+      width: govuk-spacing(2);
+      height: 100%;
+      border-left: solid 1px $govuk-text-colour;
+    }
+  }
 }
 
 .gem-c-action-link--simple {
@@ -84,8 +121,9 @@
 }
 
 .gem-c-action-link--light-text {
+  color: govuk-colour("white");
+
   .gem-c-action-link__link {
-    color: govuk-colour("white");
     text-decoration: underline;
 
     &:link,
@@ -97,6 +135,12 @@
     &:active {
       text-decoration: none;
       color: govuk-colour("black");
+    }
+  }
+
+  .gem-c-action-link__subtext {
+    &:before {
+      border-color: govuk-colour("white");
     }
   }
 }

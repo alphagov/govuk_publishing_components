@@ -2,6 +2,7 @@
   text ||= false
   nowrap_text ||= false
   href ||= false
+  subtext ||= false
   light_text ||= false
   compact ||= false
   simple ||= false
@@ -12,6 +13,7 @@
   css_classes << "gem-c-action-link--compact" if compact
   css_classes << "gem-c-action-link--dark-icon" if dark_icon
   css_classes << "gem-c-action-link--simple" if simple
+  css_classes << "gem-c-action-link--with-subtext" if subtext
 %>
 <% if href.present? && text.present? %>
   <div class="<%= css_classes.join(' ') %>">
@@ -21,5 +23,10 @@
         <%= content_tag(:span, nowrap_text, class: "gem-c-action-link__nowrap-text") if nowrap_text %>
       <% end %>
     </span>
+    <% if subtext %>
+      <span class="gem-c-action-link__subtext-wrapper">
+        <%= content_tag(:span, subtext, class: "gem-c-action-link__subtext") %>
+      </span>
+    <% end %>
   </div>
 <% end %>
