@@ -3,10 +3,25 @@ require "action_view"
 module GovukPublishingComponents
   module Presenters
     class ButtonHelper
-      attr_reader :href, :text, :title, :info_text, :info_text_classes,
-                  :rel, :data_attributes, :margin_bottom, :inline_layout,
-                  :target, :type, :start, :secondary, :secondary_quiet,
-                  :destructive, :name, :value, :classes, :aria_label
+      attr_reader :href,
+                  :text,
+                  :title,
+                  :info_text,
+                  :info_text_classes,
+                  :rel,
+                  :data_attributes,
+                  :margin_bottom,
+                  :inline_layout,
+                  :target,
+                  :type,
+                  :start,
+                  :secondary,
+                  :secondary_quiet,
+                  :destructive,
+                  :name,
+                  :value,
+                  :classes,
+                  :aria_label
 
       def initialize(local_assigns)
         @href = local_assigns[:href]

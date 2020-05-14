@@ -76,20 +76,24 @@ describe "Specimen usage of step by step navigation helpers" do
 
   context "multiple related step by step navigation journeys" do
     before do
-      content_store_has_random_item(base_path: "/step-nav/vomit-comet", schema: "transaction", part_of_step_navs: [
-        {
-          "content_id" => "8f5d4f2b-daf0-4460-88c1-fdd76c90f6f1",
-          "locale" => "en",
-          "title" => "Learn to spacewalk: small step by giant leap",
-          "base_path" => "/learn-to-spacewalk",
-        },
-        {
-          "content_id" => "8f5d4f2b-daf0-4460-88c1-fdd76c90f6f2",
-          "locale" => "en",
-          "title" => "Lose your lunch: lurch by lurch",
-          "base_path" => "/lose-your-lunch",
-        },
-      ])
+      content_store_has_random_item(
+        base_path: "/step-nav/vomit-comet",
+        schema: "transaction",
+        part_of_step_navs: [
+          {
+            "content_id" => "8f5d4f2b-daf0-4460-88c1-fdd76c90f6f1",
+            "locale" => "en",
+            "title" => "Learn to spacewalk: small step by giant leap",
+            "base_path" => "/learn-to-spacewalk",
+          },
+          {
+            "content_id" => "8f5d4f2b-daf0-4460-88c1-fdd76c90f6f2",
+            "locale" => "en",
+            "title" => "Lose your lunch: lurch by lurch",
+            "base_path" => "/lose-your-lunch",
+          },
+        ],
+      )
 
       visit "/step-nav/vomit-comet"
     end

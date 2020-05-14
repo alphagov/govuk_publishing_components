@@ -4,8 +4,18 @@ module GovukPublishingComponents
       include ActionView::Helpers
       include ActionView::Context
 
-      attr_reader :items, :name, :css_classes, :list_classes, :error, :has_conditional,
-                  :has_nested, :id, :hint_text, :description, :heading_size, :heading_caption,
+      attr_reader :items,
+                  :name,
+                  :css_classes,
+                  :list_classes,
+                  :error,
+                  :has_conditional,
+                  :has_nested,
+                  :id,
+                  :hint_text,
+                  :description,
+                  :heading_size,
+                  :heading_caption,
                   :has_exclusive
 
       def initialize(options)

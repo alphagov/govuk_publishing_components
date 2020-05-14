@@ -64,48 +64,60 @@ RSpec.describe GovukPublishingComponents::Presenters::Attachment do
 
   describe "#opendocument?" do
     it "returns true if content type is an OpenDocument" do
-      attachment = described_class.new(title: "test",
-                                       url: "test",
-                                       content_type: "application/vnd.oasis.opendocument.text")
+      attachment = described_class.new(
+        title: "test",
+        url: "test",
+        content_type: "application/vnd.oasis.opendocument.text",
+      )
       expect(attachment.opendocument?).to be true
     end
 
     it "returns false if content type is an OpenDocument" do
-      attachment = described_class.new(title: "test",
-                                       url: "test",
-                                       content_type: "application/msword")
+      attachment = described_class.new(
+        title: "test",
+        url: "test",
+        content_type: "application/msword",
+      )
       expect(attachment.opendocument?).to be false
     end
   end
 
   describe "#document?" do
     it "returns true for content types specified as a document" do
-      attachment = described_class.new(title: "test",
-                                       url: "test",
-                                       content_type: "application/msword")
+      attachment = described_class.new(
+        title: "test",
+        url: "test",
+        content_type: "application/msword",
+      )
       expect(attachment.document?).to be true
     end
 
     it "returns false for a content type not specified as a document" do
-      attachment = described_class.new(title: "test",
-                                       url: "test",
-                                       content_type: "text/plain")
+      attachment = described_class.new(
+        title: "test",
+        url: "test",
+        content_type: "text/plain",
+      )
       expect(attachment.document?).to be false
     end
   end
 
   describe "#spreadsheet?" do
     it "returns true for content types specified as a document" do
-      attachment = described_class.new(title: "test",
-                                       url: "test",
-                                       content_type: "text/csv")
+      attachment = described_class.new(
+        title: "test",
+        url: "test",
+        content_type: "text/csv",
+      )
       expect(attachment.spreadsheet?).to be true
     end
 
     it "returns false for a content type not specified as a spreadsheet" do
-      attachment = described_class.new(title: "test",
-                                       url: "test",
-                                       content_type: "text/plain")
+      attachment = described_class.new(
+        title: "test",
+        url: "test",
+        content_type: "text/plain",
+      )
       expect(attachment.spreadsheet?).to be false
     end
   end
@@ -113,21 +125,25 @@ RSpec.describe GovukPublishingComponents::Presenters::Attachment do
   describe "#reference" do
     context "when reference details are provided" do
       it "returns a well formatted reference string" do
-        attachment = described_class.new(title: "test",
-                                         url: "test",
-                                         content_type: "text/csv",
-                                         isbn: "111",
-                                         unique_reference: "222",
-                                         command_paper_number: "333",
-                                         hoc_paper_number: "444",
-                                         parliamentary_session: "555")
+        attachment = described_class.new(
+          title: "test",
+          url: "test",
+          content_type: "text/csv",
+          isbn: "111",
+          unique_reference: "222",
+          command_paper_number: "333",
+          hoc_paper_number: "444",
+          parliamentary_session: "555",
+        )
         expect(attachment.reference).to eq("ISBN 111, 222, 333, HC 444 555")
       end
 
       it "returns an empty string is no reference details are provided" do
-        attachment = described_class.new(title: "test",
-                                         url: "test",
-                                         content_type: "text/csv")
+        attachment = described_class.new(
+          title: "test",
+          url: "test",
+          content_type: "text/csv",
+        )
         expect(attachment.reference).to eq("")
       end
     end
@@ -135,61 +151,75 @@ RSpec.describe GovukPublishingComponents::Presenters::Attachment do
 
   describe "#unnumbered_reference" do
     it "returns 'Unnumbered command paper' if unnumbered_command_paper is true" do
-      attachment = described_class.new(title: "test",
-                                       url: "test",
-                                       content_type: "text/csv",
-                                       unnumbered_command_paper: true)
+      attachment = described_class.new(
+        title: "test",
+        url: "test",
+        content_type: "text/csv",
+        unnumbered_command_paper: true,
+      )
       expect(attachment.unnumbered_reference).to eq("Unnumbered command paper")
     end
 
     it "returns 'Unnumbered act paper' if unnumbered_hoc_paper is true" do
-      attachment = described_class.new(title: "test",
-                                       url: "test",
-                                       content_type: "text/csv",
-                                       unnumbered_hoc_paper: true)
+      attachment = described_class.new(
+        title: "test",
+        url: "test",
+        content_type: "text/csv",
+        unnumbered_hoc_paper: true,
+      )
       expect(attachment.unnumbered_reference).to eq("Unnumbered act paper")
     end
 
     it "returns nil if unnumbered_command_paper is true and command_paper_number is set" do
-      attachment = described_class.new(title: "test",
-                                       url: "test",
-                                       content_type: "text/csv",
-                                       command_paper_number: "333",
-                                       unnumbered_command_paper: true)
+      attachment = described_class.new(
+        title: "test",
+        url: "test",
+        content_type: "text/csv",
+        command_paper_number: "333",
+        unnumbered_command_paper: true,
+      )
       expect(attachment.unnumbered_reference).to be nil
     end
 
     it "returns nil if unnumbered_hoc_paper is true and hoc_paper_number is set" do
-      attachment = described_class.new(title: "test",
-                                       url: "test",
-                                       content_type: "text/csv",
-                                       hoc_paper_number: "444",
-                                       unnumbered_hoc_paper: true)
+      attachment = described_class.new(
+        title: "test",
+        url: "test",
+        content_type: "text/csv",
+        hoc_paper_number: "444",
+        unnumbered_hoc_paper: true,
+      )
       expect(attachment.unnumbered_reference).to be nil
     end
   end
 
   describe "#is_official_document" do
     it "returns true if command_paper_number is set" do
-      attachment = described_class.new(title: "test",
-                                       url: "test",
-                                       content_type: "text/csv",
-                                       command_paper_number: "333")
+      attachment = described_class.new(
+        title: "test",
+        url: "test",
+        content_type: "text/csv",
+        command_paper_number: "333",
+      )
       expect(attachment.is_official_document).to be true
     end
 
     it "returns true if hoc_paper_number is set" do
-      attachment = described_class.new(title: "test",
-                                       url: "test",
-                                       content_type: "text/csv",
-                                       hoc_paper_number: "444")
+      attachment = described_class.new(
+        title: "test",
+        url: "test",
+        content_type: "text/csv",
+        hoc_paper_number: "444",
+      )
       expect(attachment.is_official_document).to be true
     end
 
     it "returns false if no command_paper_number or hoc_paper_number are set" do
-      attachment = described_class.new(title: "test",
-                                       url: "test",
-                                       content_type: "text/csv")
+      attachment = described_class.new(
+        title: "test",
+        url: "test",
+        content_type: "text/csv",
+      )
       expect(attachment.is_official_document).to be false
     end
   end

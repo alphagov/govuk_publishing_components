@@ -487,8 +487,10 @@ describe "Radio", type: :view do
     render_component(
       name: "favourite-skittle",
       heading: "What is your favourite skittle?",
-      description: render("govuk_publishing_components/components/govspeak",
-                          content: "<p>This is a description about skittles.</p>".html_safe),
+      description: render(
+        "govuk_publishing_components/components/govspeak",
+        content: "<p>This is a description about skittles.</p>".html_safe,
+      ),
       items: [
         { label: "Red", value: "red" },
         { label: "Blue", value: "blue" },
