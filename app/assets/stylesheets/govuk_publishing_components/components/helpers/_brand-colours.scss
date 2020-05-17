@@ -1,6 +1,3 @@
-@import "govuk/settings/colours-organisations";
-@import "govuk/helpers/colour";
-
 @mixin organisation-brand-colour {
   @each $organisation in map-keys($govuk-colours-organisations) {
     .brand--#{$organisation} {
