@@ -6,9 +6,9 @@ module GovukPublishingComponents
       #   and the bottom one the lowest priority
       PRIORITY_TAXONS = {
         education_coronavirus: "272308f4-05c8-4d0d-abc7-b7c2e3ccd249",
-        business_coronavirus:  "65666cdf-b177-4d79-9687-b9c32805e450",
-        coronavirus:           "5b7b9532-a775-4bd2-a3aa-6ce380184b6c"
-      }
+        business_coronavirus: "65666cdf-b177-4d79-9687-b9c32805e450",
+        coronavirus: "5b7b9532-a775-4bd2-a3aa-6ce380184b6c",
+      }.freeze
 
       # Returns the highest priority taxon that has a content_id matching those in PRIORITY_TAXONS
       def self.call(content_item)
@@ -22,20 +22,21 @@ module GovukPublishingComponents
       end
 
       def taxon
-        @taxon ||= priority_taxons.sort_by { |t| PRIORITY_TAXONS.values.index(t['content_id']) }.first
+        @taxon ||= priority_taxons.min_by { |t| PRIORITY_TAXONS.values.index(t["content_id"]) }
       end
 
-      private
+    private
 
       def priority_taxons
         taxons = content_item.dig("links", "taxons")&.map do |taxon|
           taxon.dig("links", "parent_taxons")&.select do |parent_taxon|
-            PRIORITY_TAXONS.values.include?(parent_taxon['content_id'])
+            PRIORITY_TAXONS.values.include?(parent_taxon["content_id"])
           end
         end
         return [] unless taxons
 
         taxons.flatten!
+        taxons.compact!
         taxons
       end
     end

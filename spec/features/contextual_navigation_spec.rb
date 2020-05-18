@@ -251,9 +251,9 @@ describe "Contextual navigation" do
 
   def given_theres_a_page_with_coronavirus_taxon
     live_taxon = example_item("taxon", "taxon")
-    live_taxon['links']['parent_taxons'] << coronavirus_taxon
+    live_taxon["links"]["parent_taxons"] << coronavirus_taxon
 
-    content_store_has_random_item links:({ "taxons" => [live_taxon] })
+    content_store_has_random_item links: { "taxons" => [live_taxon] }
   end
 
   def and_i_visit_that_page
@@ -408,7 +408,7 @@ describe "Contextual navigation" do
       "title" => "Coronavirus (COVID-19)",
       "api_url" => "https://www.gov.uk/api/content/coronavirus-taxon",
       "web_url" => "https://www.gov.uk/coronavirus-taxon",
-      "locale" => "en"
+      "locale" => "en",
     }
   end
 end
