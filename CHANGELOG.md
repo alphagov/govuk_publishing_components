@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add action link component ([PR #1497](https://github.com/alphagov/govuk_publishing_components/pull/1497))
+
 ## 21.46.0
 
 * Prevent govspeak tables from breaking the layout ([PR #1493](https://github.com/alphagov/govuk_publishing_components/pull/1493))

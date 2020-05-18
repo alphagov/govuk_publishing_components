@@ -1,0 +1,55 @@
+name: Action link
+description: Use action links to help users get to the next stage of a journey quickly.
+shared_accessibility_criteria:
+  - link
+examples:
+  default:
+    data:
+      text: Go to NHS 111 online
+      href: '/my-test-page'
+  with_bottom_margin:
+    data:
+      text: Look at this margin
+      href: '/my-test-page'
+      margin_bottom: 9
+  with_data_attributes:
+    data:
+      text: "Coronavirus (COVID-19)"
+      href: '/my-test-page'
+      data:
+        attr_test: "hasDataAttribute"
+  with_no_wrapping_text:
+    data:
+      text: "Coronavirus (COVID-19):"
+      nowrap_text: what you need to do
+      href: '/my-test-page'
+  with_light_text:
+    data:
+      text: "Coronavirus (COVID-19)"
+      href: '/my-test-page'
+      light_text: true
+    context:
+      dark_background: true
+  with_subtext:
+    data:
+      text: "Emergency something"
+      href: '/page'
+      subtext: "This is about the emergency"
+  with_subtext_on_a_dark_background:
+    data:
+      text: "Emergency something"
+      href: '/page'
+      subtext: "This is about the emergency that is happening right now unfortunately so pay attention"
+      light_text: true
+    context:
+      dark_background: true
+  simple_arrow:
+    data:
+      text: "Getting financial help and keeping your business safe"
+      href: "/financial-help"
+      simple: true
+  with_dark_icon:
+    data:
+      text: "Coronavirus (COVID-19)"
+      href: '/my-test-page'
+      dark_icon: true

@@ -1,0 +1,34 @@
+<%
+  local_assigns[:margin_bottom] ||= 0
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+
+  text ||= false
+  nowrap_text ||= false
+  href ||= false
+  subtext ||= false
+  light_text ||= false
+  simple ||= false
+  dark_icon ||= false
+  data ||= nil
+  css_classes = %w(gem-c-action-link)
+  css_classes << "gem-c-action-link--light-text" if light_text
+  css_classes << "gem-c-action-link--dark-icon" if dark_icon
+  css_classes << "gem-c-action-link--simple" if simple
+  css_classes << "gem-c-action-link--with-subtext" if subtext
+  css_classes << (shared_helper.get_margin_bottom)
+%>
+<% if href.present? && text.present? %>
+  <div class="<%= css_classes.join(' ') %>">
+    <span class="gem-c-action-link__link-wrapper">
+      <%= link_to  href, :class => "govuk-link gem-c-action-link__link", :data => data do %>
+        <%= text %>
+        <%= content_tag(:span, nowrap_text, class: "gem-c-action-link__nowrap-text") if nowrap_text %>
+      <% end %>
+    </span>
+    <% if subtext %>
+      <span class="gem-c-action-link__subtext-wrapper">
+        <%= content_tag(:span, subtext, class: "gem-c-action-link__subtext") %>
+      </span>
+    <% end %>
+  </div>
+<% end %>
