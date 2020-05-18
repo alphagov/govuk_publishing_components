@@ -13,6 +13,23 @@ describe "Action link", type: :view do
     assert_empty render_component(href: "/coronavirus")
   end
 
+  it "applies default margin to the component" do
+    render_component(
+      text: "Get more info",
+      href: "/coronavirus",
+    )
+    assert_select '.gem-c-action-link.govuk-\!-margin-bottom-0'
+  end
+
+  it "applies margin to the component" do
+    render_component(
+      text: "Get more info",
+      href: "/coronavirus",
+      margin_bottom: 6,
+    )
+    assert_select '.gem-c-action-link.govuk-\!-margin-bottom-6'
+  end
+
   it "renders non wrapping text if nowrap text is passed through" do
     render_component(
       text: "Get more info",

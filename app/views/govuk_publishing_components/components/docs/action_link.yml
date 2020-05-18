@@ -7,6 +7,11 @@ examples:
     data:
       text: Go to NHS 111 online
       href: '/my-test-page'
+  with_bottom_margin:
+    data:
+      text: Look at this margin
+      href: '/my-test-page'
+      margin_bottom: 9
   with_no_wrapping_text:
     data:
       text: "Coronavirus (COVID-19):"

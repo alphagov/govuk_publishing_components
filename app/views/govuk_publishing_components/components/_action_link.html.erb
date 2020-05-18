@@ -1,4 +1,7 @@
 <%
+  local_assigns[:margin_bottom] ||= 0
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+
   text ||= false
   nowrap_text ||= false
   href ||= false
@@ -14,6 +17,7 @@
   css_classes << "gem-c-action-link--dark-icon" if dark_icon
   css_classes << "gem-c-action-link--simple" if simple
   css_classes << "gem-c-action-link--with-subtext" if subtext
+  css_classes << (shared_helper.get_margin_bottom)
 %>
 <% if href.present? && text.present? %>
   <div class="<%= css_classes.join(' ') %>">
