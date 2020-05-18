@@ -1,6 +1,12 @@
 require "rails_helper"
 
 describe "Contextual navigation" do
+  scenario "There is a coronavirus taxon" do
+    given_theres_a_page_with_coronavirus_taxon
+    and_i_visit_that_page
+    then_i_see_the_coronavirus_contextual_breadcrumbs
+  end
+
   scenario "There's a step by step list" do
     given_theres_a_page_with_a_step_by_step
     and_i_visit_that_page
@@ -243,6 +249,13 @@ describe "Contextual navigation" do
     })
   end
 
+  def given_theres_a_page_with_coronavirus_taxon
+    live_taxon = example_item("taxon", "taxon")
+    live_taxon['links']['parent_taxons'] << coronavirus_taxon
+
+    content_store_has_random_item links:({ "taxons" => [live_taxon] })
+  end
+
   def and_i_visit_that_page
     visit "/contextual-navigation/page-with-contextual-navigation"
   end
@@ -345,6 +358,12 @@ describe "Contextual navigation" do
     end
   end
 
+  def then_i_see_the_coronavirus_contextual_breadcrumbs
+    within ".gem-c-contextual-breadcrumbs" do
+      expect(page).to have_link(coronavirus_taxon["title"])
+    end
+  end
+
   def then_i_see_the_taxon_in_the_related_navigation_footer
     within ".gem-c-contextual-footer" do
       expect(page).to have_css(".gem-c-related-navigation__link", text: "A level")
@@ -379,5 +398,17 @@ describe "Contextual navigation" do
     GovukSchemas::RandomExample.for_schema(frontend_schema: schema_name) do |random_item|
       random_item.merge(merge_with)
     end
+  end
+
+  def coronavirus_taxon
+    {
+      "content_id" => "5b7b9532-a775-4bd2-a3aa-6ce380184b6c",
+      "api_path" => "/api/content/coronavirus-taxon",
+      "base_path" => "/coronavirus-taxon",
+      "title" => "Coronavirus (COVID-19)",
+      "api_url" => "https://www.gov.uk/api/content/coronavirus-taxon",
+      "web_url" => "https://www.gov.uk/coronavirus-taxon",
+      "locale" => "en"
+    }
   end
 end
