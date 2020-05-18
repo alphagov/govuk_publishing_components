@@ -21,7 +21,7 @@
 }
 
 .gem-c-action-link__link-wrapper {
-  @include govuk-font(19, $weight: bold, $line-height: 20px);
+  @include govuk-font(19, $weight: bold, $line-height: 1.3);
   display: table-cell;
   vertical-align: middle;
 }
