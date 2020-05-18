@@ -285,6 +285,25 @@ describe "Radio", type: :view do
     assert_select ".govuk-radios__label[for=custom-1]", text: "Use GOV.UK Verify"
   end
 
+  it "renders radio-group with custom id" do
+    render_component(
+      id: "radio-group",
+      name: "radio-group-custom-id",
+      items: [
+        {
+          value: "government-gateway",
+          text: "Use Government Gateway",
+        },
+        {
+          value: "govuk-verify",
+          text: "Use GOV.UK Verify",
+        },
+      ],
+    )
+
+    assert_select ".govuk-form-group[id=radio-group]"
+  end
+
   it "renders radio-group with or divider" do
     render_component(
       name: "radio-group-or-divider",

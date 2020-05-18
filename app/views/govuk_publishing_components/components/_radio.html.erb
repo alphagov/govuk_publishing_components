@@ -1,4 +1,5 @@
 <%
+  id ||= nil
   id_prefix ||= "radio-#{SecureRandom.hex(4)}"
   items ||= []
 
@@ -34,7 +35,7 @@
   # check if any item is set as being conditional
   has_conditional = items.any? { |item| item.is_a?(Hash) && item[:conditional] }
 %>
-<%= content_tag :div, class: form_group_css_classes do %>
+<%= tag.div id: id, class: form_group_css_classes do %>
   <%= tag.fieldset class: "govuk-fieldset", "aria-describedby": aria do %>
 
     <% if heading.present? %>

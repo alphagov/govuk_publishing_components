@@ -346,3 +346,12 @@ examples:
           text: "On"
         - value: "off"
           text: "Off"
+  with_custom_id_attribute:
+    data:
+      name: "radio-group"
+      id: "radio-group"
+      items:
+      - value: "government-gateway"
+        text: "Use Government Gateway"
+      - value: "govuk-verify"
+        text: "Use GOV.UK Verify"
