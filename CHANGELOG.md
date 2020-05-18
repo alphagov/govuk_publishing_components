@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add action link component ([PR #1497](https://github.com/alphagov/govuk_publishing_components/pull/1497))
+* Add `id` to checkboxes component ([PR #1503](https://github.com/alphagov/govuk_publishing_components/pull/1503))
 
 ## 21.46.0
 
