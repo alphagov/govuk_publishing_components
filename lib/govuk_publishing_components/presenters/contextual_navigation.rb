@@ -2,11 +2,6 @@ module GovukPublishingComponents
   module Presenters
     # @private
     class ContextualNavigation
-      # keys are label, values are the content_ids for the matching taxons
-      PRIORITY_TAXONS = {
-        coronavirus: "5b7b9532-a775-4bd2-a3aa-6ce380184b6c"
-      }
-
       attr_reader :content_item, :request_path, :query_parameters
 
       # @param content_item A content item hash with strings as keys
@@ -26,11 +21,7 @@ module GovukPublishingComponents
       end
 
       def priority_taxon
-        @priority_taxon ||= content_item.dig("links", "taxons")&.map do |taxon|
-          taxon.dig("links", "parent_taxons")&.detect do |parent_taxon|
-            PRIORITY_TAXONS.values.include?(parent_taxon['content_id'])
-          end
-        end&.compact&.first
+        @priority_taxon ||= ContentBreadcrumbsBasedOnPriority.call(content_item)
       end
 
       def breadcrumbs
