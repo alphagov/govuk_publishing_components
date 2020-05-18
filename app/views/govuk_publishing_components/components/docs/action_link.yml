@@ -47,13 +47,6 @@ examples:
       text: "Coronavirus (COVID-19)"
       href: '/my-test-page'
       dark_icon: true
-  compact:
-    description: This version is meant to go on a dark background (same colour as the arrow background colour)
-    data:
-      text: "Coronavirus (COVID-19)"
-      href: '/my-test-page'
-      dark_icon: true
-      compact: true
   with_data_attributes:
     data:
       text: "Coronavirus (COVID-19)"

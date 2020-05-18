@@ -75,15 +75,6 @@ describe "Action link", type: :view do
     assert_select ".gem-c-action-link--light-text"
   end
 
-  it "renders compact version" do
-    render_component(
-      text: "Get more info",
-      href: "/coronavirus",
-      compact: true,
-    )
-    assert_select ".gem-c-action-link--compact"
-  end
-
   it "has data attributes if data attributes are passed in" do
     render_component(
       text: "Get more info",

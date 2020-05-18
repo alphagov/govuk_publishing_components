@@ -7,13 +7,11 @@
   href ||= false
   subtext ||= false
   light_text ||= false
-  compact ||= false
   simple ||= false
   dark_icon ||= false
   data ||= nil
   css_classes = %w(gem-c-action-link)
   css_classes << "gem-c-action-link--light-text" if light_text
-  css_classes << "gem-c-action-link--compact" if compact
   css_classes << "gem-c-action-link--dark-icon" if dark_icon
   css_classes << "gem-c-action-link--simple" if simple
   css_classes << "gem-c-action-link--with-subtext" if subtext

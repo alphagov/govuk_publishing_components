@@ -105,7 +105,7 @@
   }
 
   &:before {
-    width: 35px;
+    width: 30px;
     height: 30px;
     // sass-lint:disable no-duplicate-properties
     background-image: image-url("govuk_publishing_components/action-link-arrow--dark.png");
@@ -142,16 +142,5 @@
     &:before {
       border-color: govuk-colour("white");
     }
-  }
-}
-
-.gem-c-action-link--compact {
-  &:before {
-    height: 30px;
-    width: 26px;
-  }
-
-  @include govuk-media-query($until: tablet) {
-    margin-bottom: 0;
   }
 }
