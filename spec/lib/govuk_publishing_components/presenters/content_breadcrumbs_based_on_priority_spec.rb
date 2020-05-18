@@ -1,14 +1,6 @@
 require "spec_helper"
 
 RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnPriority do
-  let(:coronavirus_taxon) do
-    {
-      "content_id" => "5b7b9532-a775-4bd2-a3aa-6ce380184b6c",
-      "base_path" => "/coronavirus-path",
-      "title" => "Coronavirus",
-    }
-  end
-
   let(:education_taxon) do
     {
       "content_id" => "272308f4-05c8-4d0d-abc7-b7c2e3ccd249",
@@ -33,33 +25,25 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
     }
   end
 
-  let(:payload) { [coronavirus_taxon] }
+  let(:payload) { [education_taxon] }
 
   subject { described_class.new(content_with(payload)) }
 
   describe "#taxon" do
     it "returns the matching taxon" do
-      expect(subject.taxon).to eq(coronavirus_taxon)
+      expect(subject.taxon).to eq(education_taxon)
     end
 
     context "with business taxon" do
-      let(:payload) { [coronavirus_taxon, business_taxon] }
+      let(:payload) { [business_taxon] }
 
       it "returns the business taxon" do
         expect(subject.taxon).to eq(business_taxon)
       end
     end
 
-    context "with education taxon" do
-      let(:payload) { [coronavirus_taxon, education_taxon] }
-
-      it "returns the business taxon" do
-        expect(subject.taxon).to eq(education_taxon)
-      end
-    end
-
     context "with education and business taxons" do
-      let(:payload) { [coronavirus_taxon, education_taxon, business_taxon] }
+      let(:payload) { [education_taxon, business_taxon] }
 
       it "returns the business taxon" do
         expect(subject.taxon).to eq(education_taxon)
@@ -76,10 +60,10 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
   end
 
   describe ".call" do
-    let(:content) { content_with([coronavirus_taxon]) }
+    let(:content) { content_with([education_taxon]) }
 
     it "returns the matching taxon" do
-      expect(described_class.call(content)).to eq(coronavirus_taxon)
+      expect(described_class.call(content)).to eq(education_taxon)
     end
   end
 

@@ -7,7 +7,6 @@ module GovukPublishingComponents
       PRIORITY_TAXONS = {
         education_coronavirus: "272308f4-05c8-4d0d-abc7-b7c2e3ccd249",
         business_coronavirus: "65666cdf-b177-4d79-9687-b9c32805e450",
-        coronavirus: "5b7b9532-a775-4bd2-a3aa-6ce380184b6c",
       }.freeze
 
       # Returns the highest priority taxon that has a content_id matching those in PRIORITY_TAXONS

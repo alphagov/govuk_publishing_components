@@ -402,12 +402,10 @@ describe "Contextual navigation" do
 
   def coronavirus_taxon
     {
-      "content_id" => "5b7b9532-a775-4bd2-a3aa-6ce380184b6c",
-      "api_path" => "/api/content/coronavirus-taxon",
-      "base_path" => "/coronavirus-taxon",
-      "title" => "Coronavirus (COVID-19)",
-      "api_url" => "https://www.gov.uk/api/content/coronavirus-taxon",
-      "web_url" => "https://www.gov.uk/coronavirus-taxon",
+      "content_id" => "65666cdf-b177-4d79-9687-b9c32805e450",
+      "api_path" => "/api/content/coronavirus-taxon/businesses-and-self-employed-people",
+      "base_path" => "/coronavirus-taxon/businesses-and-self-employed-people",
+      "title" => "Businesses and self-employed people",
       "locale" => "en",
     }
   end
