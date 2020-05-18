@@ -12,6 +12,12 @@ examples:
       text: Look at this margin
       href: '/my-test-page'
       margin_bottom: 9
+  with_data_attributes:
+    data:
+      text: "Coronavirus (COVID-19)"
+      href: '/my-test-page'
+      data:
+        attr_test: "hasDataAttribute"
   with_no_wrapping_text:
     data:
       text: "Coronavirus (COVID-19):"
@@ -47,9 +53,3 @@ examples:
       text: "Coronavirus (COVID-19)"
       href: '/my-test-page'
       dark_icon: true
-  with_data_attributes:
-    data:
-      text: "Coronavirus (COVID-19)"
-      href: '/my-test-page'
-      data:
-        attr_test: "hasDataAttribute"
