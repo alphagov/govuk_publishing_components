@@ -45,7 +45,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
     context "with education and business taxons" do
       let(:payload) { [education_taxon, business_taxon] }
 
-      it "returns the business taxon" do
+      it "returns the education taxon" do
         expect(subject.taxon).to eq(education_taxon)
       end
     end
