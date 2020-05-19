@@ -92,7 +92,11 @@
     }
   %>
 
-  <% if suffix %>
+  <% if prefix %>
+    <%= tag.div class: "gem-c-input__wrapper" do %>
+      <%= tag.span prefix, class: "gem-c-input__prefix", aria: { hidden: true } %><%= input_tag %>
+    <% end %>
+  <% elsif suffix %> 
     <%= tag.div class: "gem-c-input__wrapper" do %>
       <%= input_tag %><%= tag.span suffix, class: "gem-c-input__suffix", aria: { hidden: true } %>
     <% end %>
