@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Expand js classes code ([PR #1513](https://github.com/alphagov/govuk_publishing_components/pull/1513))
+
 ## 21.47.0
 
 * Add action link component ([PR #1497](https://github.com/alphagov/govuk_publishing_components/pull/1497))
