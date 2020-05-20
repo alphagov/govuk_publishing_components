@@ -20,6 +20,10 @@ module GovukPublishingComponents
         @taxon_breadcrumbs ||= ContentBreadcrumbsBasedOnTaxons.new(content_item).breadcrumbs
       end
 
+      def priority_taxon
+        @priority_taxon ||= ContentBreadcrumbsBasedOnPriority.call(content_item)
+      end
+
       def breadcrumbs
         if content_tagged_to_a_finder?
           parent_finder = content_item.dig("links", "finder", 0)
