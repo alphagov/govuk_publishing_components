@@ -1,4 +1,8 @@
-<% button = GovukPublishingComponents::Presenters::ButtonHelper.new(local_assigns) %>
+<%
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+  local_assigns[:classes] = shared_helper.classes
+  button = GovukPublishingComponents::Presenters::ButtonHelper.new(local_assigns)
+%>
 
 <% start_button_text = capture do %>
   <%= button.text %>

@@ -188,7 +188,7 @@ describe "Button", type: :view do
   it "raises exception is CSS classes are not prefixed with `js-`" do
     expect {
       render_component(text: "Button", classes: "my-class")
-    }.to raise_error("The button component expects classes to be prefixed with `js-`")
+    }.to raise_error("Passed classes must be prefixed with `js-`")
   end
 
   it "renders with aria-label" do
