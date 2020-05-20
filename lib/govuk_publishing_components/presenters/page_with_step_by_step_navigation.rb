@@ -169,11 +169,11 @@ module GovukPublishingComponents
             next unless content[:contents]
 
             content[:contents].each do |link|
-              if link[:href] == current_path
-                link[:active] = true
-                step_nav_content[:show_step] = step_index + 1
-                step_nav_content[:highlight_step] = step_index + 1
-              end
+              next unless link[:href] == current_path
+
+              link[:active] = true
+              step_nav_content[:show_step] = step_index + 1
+              step_nav_content[:highlight_step] = step_index + 1
             end
           end
         end
