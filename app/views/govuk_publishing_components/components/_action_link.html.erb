@@ -10,17 +10,22 @@
   simple ||= false
   dark_icon ||= false
   data ||= nil
+  classes ||= nil
+
   css_classes = %w(gem-c-action-link)
   css_classes << "gem-c-action-link--light-text" if light_text
   css_classes << "gem-c-action-link--dark-icon" if dark_icon
   css_classes << "gem-c-action-link--simple" if simple
   css_classes << "gem-c-action-link--with-subtext" if subtext
   css_classes << (shared_helper.get_margin_bottom)
+
+  link_classes = %w(govuk-link gem-c-action-link__link)
+  link_classes << shared_helper.classes if classes
 %>
 <% if href.present? && text.present? %>
   <div class="<%= css_classes.join(' ') %>">
     <span class="gem-c-action-link__link-wrapper">
-      <%= link_to  href, :class => "govuk-link gem-c-action-link__link", :data => data do %>
+      <%= link_to  href, :class => link_classes, :data => data do %>
         <%= text %>
         <%= content_tag(:span, nowrap_text, class: "gem-c-action-link__nowrap-text") if nowrap_text %>
       <% end %>
