@@ -10,6 +10,7 @@
 ## 21.48.0
 
 * Expand js classes code ([PR #1513](https://github.com/alphagov/govuk_publishing_components/pull/1513))
+* Tweak size of action link subtext divider ([PR #1512](https://github.com/alphagov/govuk_publishing_components/pull/1512))
 
 ## 21.47.0
 
