@@ -21,9 +21,7 @@ module GovukPublishingComponents
           is_page_parent: ordered_parents.empty?,
         }
 
-        {
-          breadcrumbs: ordered_parents.reverse,
-        }
+        ordered_parents.reverse
       end
 
     private

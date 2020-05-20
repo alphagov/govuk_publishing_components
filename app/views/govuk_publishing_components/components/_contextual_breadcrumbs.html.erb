@@ -23,7 +23,7 @@
     <%# Rendering taxonomy breadcrumbs because the page is tagged to live taxons
           and we want to prioritise them over all other breadcrumbs %>
     <%= render 'govuk_publishing_components/components/breadcrumbs',
-               breadcrumbs: navigation.taxon_breadcrumbs[:breadcrumbs],
+               breadcrumbs: navigation.taxon_breadcrumbs,
                inverse: inverse,
                collapse_on_mobile: collapse_on_mobile %>
   <% elsif navigation.content_tagged_to_mainstream_browse_pages? %>
@@ -35,7 +35,7 @@
   <% elsif navigation.content_is_tagged_to_a_live_taxon? && !navigation.content_is_a_specialist_document? %>
     <%# Rendering taxonomy breadcrumbs because the page is tagged to live taxons %>
     <%= render 'govuk_publishing_components/components/breadcrumbs',
-      breadcrumbs: navigation.taxon_breadcrumbs[:breadcrumbs],
+      breadcrumbs: navigation.taxon_breadcrumbs,
       inverse: inverse,
       collapse_on_mobile: collapse_on_mobile %>
   <% elsif navigation.breadcrumbs.any? %>

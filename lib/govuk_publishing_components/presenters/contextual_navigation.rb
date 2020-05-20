@@ -25,23 +25,23 @@ module GovukPublishingComponents
       end
 
       def breadcrumbs
-        if content_tagged_to_a_finder?
-          parent_finder = content_item.dig("links", "finder", 0)
-          return [] unless parent_finder
+        return breadcrumbs_based_on_parent unless content_tagged_to_a_finder?
+        return [] unless parent_finder
 
-          [
-            {
-              title: "Home",
-              url: "/",
-            },
-            {
-              title: parent_finder["title"],
-              url: parent_finder["base_path"],
-            },
-          ]
-        else
-          ContentBreadcrumbsBasedOnParent.new(content_item).breadcrumbs[:breadcrumbs]
-        end
+        [
+          {
+            title: "Home",
+            url: "/",
+          },
+          {
+            title: parent_finder["title"],
+            url: parent_finder["base_path"],
+          },
+        ]
+      end
+
+      def use_taxon_breadcrumbs?
+        navigation.content_is_tagged_to_a_live_taxon? && !navigation.content_is_a_specialist_document?
       end
 
       def content_tagged_to_a_finder?
@@ -62,6 +62,10 @@ module GovukPublishingComponents
 
       def content_is_a_specialist_document?
         content_item["schema_name"] == "specialist_document"
+      end
+
+      def content_is_a_html_publication?
+        content_item["document_type"] == "html_publication"
       end
 
       def tagged_to_brexit?
@@ -106,8 +110,16 @@ module GovukPublishingComponents
         step_nav_helper.show_also_part_of_step_nav?
       end
 
+      def breadcrumbs_based_on_parent
+        ContentBreadcrumbsBasedOnParent.new(content_item).breadcrumbs[:breadcrumbs]
+      end
+
       def step_nav_helper
         @step_nav_helper ||= PageWithStepByStepNavigation.new(content_item, request_path, query_parameters)
+      end
+
+      def parent_finder
+        @parent_finder ||= content_item.dig("links", "finder", 0)
       end
     end
   end
