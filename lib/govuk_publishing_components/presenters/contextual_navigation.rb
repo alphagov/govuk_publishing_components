@@ -20,8 +20,8 @@ module GovukPublishingComponents
         @taxon_breadcrumbs ||= ContentBreadcrumbsBasedOnTaxons.new(content_item).breadcrumbs
       end
 
-      def priority_taxon
-        @priority_taxon ||= ContentBreadcrumbsBasedOnPriority.call(content_item)
+      def priority_breadcrumbs
+        @priority_breadcrumbs ||= ContentBreadcrumbsBasedOnPriority.call(content_item)
       end
 
       def breadcrumbs
