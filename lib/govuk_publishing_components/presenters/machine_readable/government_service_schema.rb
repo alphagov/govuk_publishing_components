@@ -29,13 +29,13 @@ module GovukPublishingComponents
 
         {
           "isRelatedTo" => related_links.each_with_object([]) do |link, items|
-            if link["schema_name"] == "transaction"
-              items << {
-                "@type" => "GovernmentService",
-                "name" => link["title"],
-                "url" => link["web_url"],
-              }
-            end
+            next unless link["schema_name"] == "transaction"
+
+            items << {
+              "@type" => "GovernmentService",
+              "name" => link["title"],
+              "url" => link["web_url"],
+            }
           end,
         }
       end
