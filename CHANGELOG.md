@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add is_page_heading to select ([PR #1516](https://github.com/alphagov/govuk_publishing_components/pull/1516))
+
 ## 21.49.0
 
 * Add priority breadcrumb ([PR #1501] (https://github.com/alphagov/govuk_publishing_components/pull/1501))

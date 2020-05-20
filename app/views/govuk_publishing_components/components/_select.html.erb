@@ -4,6 +4,7 @@
   label ||= false
   full_width ||= false
   name ||= id
+  is_page_heading ||= false
   heading_size = false unless ['s', 'm', 'l', 'xl'].include?(heading_size)
   error_message ||= nil
   error_id ||= nil
@@ -28,7 +29,11 @@
 %>
 <% if options.any? && id && label %>
   <%= content_tag :div, class: css_classes do %>
-    <%= label_tag(id, label, class: label_classes) %>
+    <% if is_page_heading %>
+      <%= tag.h1 label_tag(id, label, class: label_classes), class: "gem-c-title__text" %>
+    <% else %>
+      <%= label_tag(id, label, class: label_classes) %>
+    <% end %>
 
     <% if error_message %>
       <%= render "govuk_publishing_components/components/error_message", {

@@ -254,4 +254,19 @@ describe "Select", type: :view do
 
     assert_select ".govuk-label.govuk-label--s"
   end
+
+  it "renders select with a label inside a heading" do
+    render_component(
+      id: "colour",
+      label: "What is you favourite colour?",
+      is_page_heading: true,
+      options: [
+        { text: "Red", value: "red" },
+        { text: "Blue", value: "blue" },
+      ],
+    )
+
+    assert_select "select[name=colour]"
+    assert_select ".gem-c-select h1.gem-c-title__text label.govuk-label"
+  end
 end
