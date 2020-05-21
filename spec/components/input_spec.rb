@@ -215,6 +215,16 @@ describe "Input", type: :view do
     assert_select ".govuk-label.govuk-label--xl"
   end
 
+  it "renders text input with prefix" do
+    render_component(
+      label: { text: "Cost per item, in pounds" },
+      name: "cost-per-item",
+      prefix: "£",
+    )
+    assert_select ".gem-c-input__wrapper .gem-c-input[name=cost-per-item]"
+    assert_select ".gem-c-input__wrapper .gem-c-input__prefix[aria-hidden=true]", text: "£"
+  end
+
   it "renders text input with suffix" do
     render_component(
       label: { text: "Approximate lead times, in days" },
