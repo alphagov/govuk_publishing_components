@@ -140,6 +140,15 @@ examples:
       name: "lead-times"
       width: 10
       suffix: "days"
+  with_prefix_and_suffix:
+    description: To help users understand how the input should look like. Often used for units of measurement.
+    data:
+      label:
+        text: "Cost per item, in pounds"
+      name: "Cost-per-item"
+      width: 10
+      prefix: "£"
+      suffix: "per item"
   with_suffix_and_error:
     description: To help users understand how the input should look like. Often used for units of measurement.
     data:

@@ -22,6 +22,7 @@
   error_id = "error-#{SecureRandom.hex(4)}"
   search_icon ||= nil
   heading_size = false unless ['s', 'm', 'l', 'xl'].include?(heading_size)
+  prefix ||= nil
   suffix ||= nil
 
   css_classes = %w(gem-c-input govuk-input)
@@ -92,7 +93,13 @@
     }
   %>
 
-  <% if prefix %>
+  <% if prefix && suffix %>
+    <%= tag.div class: "gem-c-input__wrapper" do %>
+      <%= tag.span prefix, class: "gem-c-input__prefix", aria: { hidden: true } %>
+      <%= input_tag %>
+      <%= tag.span suffix, class: "gem-c-input__suffix", aria: { hidden: true } %>
+    <% end %>
+  <% elsif prefix %>
     <%= tag.div class: "gem-c-input__wrapper" do %>
       <%= tag.span prefix, class: "gem-c-input__prefix", aria: { hidden: true } %><%= input_tag %>
     <% end %>

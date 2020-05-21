@@ -31,12 +31,12 @@
   }
 }
 
-.gem-c-input__prefix, .gem-c-input__suffix {
+.gem-c-input__prefix,
+.gem-c-input__suffix {
   @include govuk-font($size: 19);
 
   background-color: govuk-colour("light-grey", $legacy: "grey-3");
   border: $govuk-border-width-form-element solid $govuk-input-border-colour;
-  border-left: 0;
   box-sizing: border-box;
   cursor: default; // emphasise non-editable status of prefixes and suffixes
   display: inline-block;
@@ -47,7 +47,7 @@
   padding: govuk-spacing(1);
   min-width: 40px;
   @if $govuk-typography-use-rem {
-      min-width: govuk-px-to-rem(40px);
+    min-width: govuk-px-to-rem(40px);
   }
   margin-top: 0;
 }
