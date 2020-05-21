@@ -24,16 +24,24 @@
 %>
 <% if href.present? && text.present? %>
   <div class="<%= css_classes.join(' ') %>">
-    <span class="gem-c-action-link__link-wrapper">
-      <%= link_to  href, :class => link_classes, :data => data do %>
-        <%= text %>
-        <%= content_tag(:span, nowrap_text, class: "gem-c-action-link__nowrap-text") if nowrap_text %>
-      <% end %>
-    </span>
-    <% if subtext %>
-      <span class="gem-c-action-link__subtext-wrapper">
-        <%= content_tag(:span, subtext, class: "gem-c-action-link__subtext") %>
+    <% contents = capture do %>
+      <span class="gem-c-action-link__link-wrapper">
+        <%= link_to  href, :class => link_classes, :data => data do %>
+          <%= text %>
+          <%= content_tag(:span, nowrap_text, class: "gem-c-action-link__nowrap-text") if nowrap_text %>
+        <% end %>
       </span>
+      <% if subtext %>
+        <span class="gem-c-action-link__subtext-wrapper">
+          <%= content_tag(:span, subtext, class: "gem-c-action-link__subtext") %>
+        </span>
+      <% end %>
+    <% end %>
+
+    <% if subtext %>
+      <%= content_tag(:span, contents, class: "gem-c-action-link__contents-wrapper") %>
+    <% else %>
+      <%= contents %>
     <% end %>
   </div>
 <% end %>
