@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Change `_all_components.scss` to use dependencies from support stylesheets  ([PR #1502](https://github.com/alphagov/govuk_publishing_components/pull/1502))
 * Allow individual JavaScript imports ([PR #1472](https://github.com/alphagov/govuk_publishing_components/pull/1472))
 
   To import individual components refer to ['Include the assets section in docs'](https://github.com/alphagov/govuk_publishing_components/blob/master/docs/install-and-use.md) and the 'Suggested imports for this application' section available on `/component-guide` in your application.
