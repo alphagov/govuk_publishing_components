@@ -16,6 +16,15 @@ module GovukPublishingComponents
         content_item["document_type"] == "simple_smart_answer"
       end
 
+      def html_document_with_parent_api?
+        (content_item["document_type"] == "html_publication") && parent_api_url
+      end
+
+      def parent_api_url
+        parent = content_item.dig('links', 'parent')&.first
+        parent['base_path'] if parent
+      end
+
       def taxon_breadcrumbs
         @taxon_breadcrumbs ||= ContentBreadcrumbsBasedOnTaxons.new(content_item).breadcrumbs
       end

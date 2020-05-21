@@ -13,31 +13,53 @@ module GovukPublishingComponents
         @prioritise_taxon_breadcrumbs = prioritise_taxon_breadcrumbs
       end
 
-      def navigation
-        @navigation ||= ContextualNavigation.new(content_item, request)
+      def content_item_navigation
+        @content_item_navigation ||= ContextualNavigation.new(content_item, request)
+      end
+
+      def parent_item_navigation
+        @parent_item_navigation ||= ContextualNavigation.new(parent_item, request)
+      end
+
+      def parent_item
+        @parent_item ||= Services.content_store.content_item(content_item_navigation.parent_api_url)
+      rescue GdsApi::ContentStore::ItemNotFound
+        # Do nothing
+      end
+
+      def parent_item_options
+        @parent_options ||= options(parent_item_navigation)
+      end
+
+      def content_item_options
+        @content_item_options ||= options(content_item_navigation)
+      end
+
+      def parent_breadcrumbs
+        breadcrumbs = parent_item_options[:breadcrumbs]
+        breadcrumbs.last[:is_page_parent] = false
+        breadcrumbs << {
+          title: parent_item['title'],
+          url: parent_item['base_path'],
+          is_page_parent: true
+        }
       end
 
       def output
-        OpenStruct.new(options)
+        return content_item_options unless content_item_navigation.html_document_with_parent_api?
+        return parent_item_options if parent_item_navigation.priority_breadcrumbs
+
+        {
+          step_by_step: parent_item_options[:step_by_step],
+          breadcrumbs: parent_breadcrumbs
+        }
       end
 
-      def breadcrumbs
-        navigation.breadcrumbs
-      end
-
-      def priority_breadcrumbs
-        navigation.priority_breadcrumbs
-      end
-
-      def taxon_breadcrumbs
-        navigation.taxon_breadcrumbs
-      end
-
-      def options
-        if priority_breadcrumbs
+      def options(navigation)
+        if navigation.priority_breadcrumbs
           {
             step_by_step: true,
-            breadcrumbs: priority_breadcrumbs,
+            breadcrumbs: navigation.priority_breadcrumbs,
           }
         elsif navigation.content_tagged_to_current_step_by_step?
           {
@@ -47,38 +69,35 @@ module GovukPublishingComponents
         elsif navigation.content_tagged_to_a_finder?
           {
             step_by_step: false,
-            breadcrumbs: breadcrumbs,
+            breadcrumbs: navigation.breadcrumbs,
           }
         elsif navigation.content_is_tagged_to_a_live_taxon? && prioritise_taxon_breadcrumbs
           {
             step_by_step: false,
-            breadcrumbs: taxon_breadcrumbs,
+            breadcrumbs: navigation.taxon_breadcrumbs,
           }
         elsif navigation.content_tagged_to_mainstream_browse_pages?
           {
             step_by_step: false,
-            breadcrumbs: breadcrumbs,
+            breadcrumbs: navigation.breadcrumbs,
           }
         elsif navigation.content_has_curated_related_items?
           {
             step_by_step: false,
-            breadcrumbs: breadcrumbs,
+            breadcrumbs: navigation.breadcrumbs,
           }
         elsif navigation.content_is_tagged_to_a_live_taxon? && !navigation.content_is_a_specialist_document?
           {
             step_by_step: false,
-            breadcrumbs: taxon_breadcrumbs,
+            breadcrumbs: navigation.taxon_breadcrumbs,
           }
-        elsif breadcrumbs.any?
+        elsif navigation.breadcrumbs.any?
           {
             step_by_step: false,
-            breadcrumbs: breadcrumbs,
+            breadcrumbs: navigation.breadcrumbs,
           }
         else
-          {
-            step_by_step: false,
-            breadcrumbs: false,
-          }
+          {}
         end
       end
     end
