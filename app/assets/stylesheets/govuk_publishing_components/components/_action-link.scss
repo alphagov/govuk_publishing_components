@@ -20,6 +20,11 @@
   }
 }
 
+.gem-c-action-link__contents-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+}
+
 .gem-c-action-link__link-wrapper {
   @include govuk-font(19, $weight: bold, $line-height: 1.3);
   display: table-cell;
