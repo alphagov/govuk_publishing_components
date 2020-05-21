@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.50.1
 
 * Tweak action link ([PR #1518](https://github.com/alphagov/govuk_publishing_components/pull/1518))
 
