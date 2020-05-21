@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.50.0
 
 * Add is_page_heading to select ([PR #1516](https://github.com/alphagov/govuk_publishing_components/pull/1516))
 
