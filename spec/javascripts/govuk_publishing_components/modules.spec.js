@@ -34,61 +34,97 @@ describe('GOVUK Modules', function () {
     container.remove()
   })
 
-  describe('when a module exists', function () {
-    var callback
+  describe('when modules exist', function () {
+    var container
+    var callbackLegacyModule
+    var callbackGovukModule
+    var callbackFrontendModule
 
     beforeEach(function () {
-      callback = jasmine.createSpy()
-      GOVUK.Modules.TestAlertModule = function () {
+      callbackLegacyModule = jasmine.createSpy()
+      callbackGovukModule = jasmine.createSpy()
+      callbackFrontendModule = jasmine.createSpy()
+
+      // GOV.UK Frontend Toolkit Modules
+      GOVUK.Modules.LegacyTestAlertModule = function () {
         var that = this
         that.start = function (element) {
-          callback(element)
+          callbackLegacyModule(element)
         }
       }
+
+      // GOV.UK Publishing Modules
+      function GovukTestAlertModule () { }
+      GovukTestAlertModule.prototype.start = function (element) {
+        callbackGovukModule(element)
+      }
+      GOVUK.Modules.GovukTestAlertModule = GovukTestAlertModule
+
+      // GOV.UK Frontend Modules
+      function TestAlertModule (element) {
+        this.element = element
+      }
+      TestAlertModule.prototype.init = function () {
+        callbackFrontendModule(this.element)
+      }
+      GOVUK.Modules.TestAlertModule = TestAlertModule
+
+      container = $('<div></div>')
     })
 
     afterEach(function () {
+      delete GOVUK.Modules.LegacyTestAlertModule
+      delete GOVUK.Modules.GovukTestAlertModule
       delete GOVUK.Modules.TestAlertModule
+
+      container.remove()
     })
 
     it('starts modules within a container', function () {
-      var module = $('<div data-module="test-alert-module"></div>')
-      var container = $('<div></div>').append(module)
+      var legacyModule = $('<div data-module="legacy-test-alert-module"></div>')
+      var publishingModule = $('<div data-module="govuk-test-alert-module"></div>')
+      var frontendModule = $('<div data-module="test-alert-module"></div>')
+      container.append(legacyModule).append(publishingModule).append(frontendModule)
 
       GOVUK.modules.start(container)
-      expect(callback).toHaveBeenCalled()
+      expect(callbackLegacyModule).toHaveBeenCalled()
+      expect(callbackGovukModule).toHaveBeenCalled()
+      expect(callbackFrontendModule).toHaveBeenCalled()
     })
 
     it('does not start modules that are already started', function () {
-      var module = $('<div data-module="test-alert-module"></div>')
-      $('<div></div>').append(module)
+      var module = $('<div data-module="legacy-test-alert-module"></div>')
+      container.append(module)
 
       GOVUK.modules.start(module)
       GOVUK.modules.start(module)
-      expect(callback.calls.count()).toBe(1)
+      expect(callbackLegacyModule.calls.count()).toBe(1)
     })
 
-    it('passes the HTML element to the module\'s start method', function () {
-      var module = $('<div data-module="test-alert-module"></div>')
-      var container = $('<h1></h1>').append(module)
+    it('passes the HTML element to the module’s start method', function () {
+      var module = $('<div data-module="legacy-test-alert-module"></div>')
+      container.append(module)
 
       GOVUK.modules.start(container)
 
-      var args = callback.calls.argsFor(0)
-      expect(args[0].is('div[data-module="test-alert-module"]')).toBe(true)
+      var args = callbackLegacyModule.calls.argsFor(0)
+      expect(args[0].is('div[data-module="legacy-test-alert-module"]')).toBe(true)
     })
 
     it('starts all modules that are on the page', function () {
       var modules = $(
-        '<div data-module="test-alert-module"></div>' +
-        '<strong data-module="test-alert-module"></strong>' +
-        '<span data-module="test-alert-module"></span>'
+        '<div data-module="legacy-test-alert-module"></div>' +
+        '<strong data-module="legacy-test-alert-module"></strong>' +
+        '<span data-module="legacy-test-alert-module"></span>' +
+        '<div data-module="govuk-test-alert-module"></div>' +
+        '<div data-module="test-alert-module"></div>'
       )
 
       $('body').append(modules)
       GOVUK.modules.start()
-      expect(callback.calls.count()).toBe(3)
-
+      expect(callbackLegacyModule.calls.count()).toBe(3)
+      expect(callbackGovukModule.calls.count()).toBe(1)
+      expect(callbackFrontendModule.calls.count()).toBe(1)
       modules.remove()
     })
   })

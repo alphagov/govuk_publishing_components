@@ -10,6 +10,7 @@ module GovukPublishingComponents
       @components_in_use_docs = components_in_use_docs.used_in_this_app
       @components_in_use_sass = components_in_use_sass(false)
       @components_in_use_print_sass = components_in_use_sass(true)
+      @components_in_use_js = components_in_use_js
     end
 
     def show
@@ -62,6 +63,25 @@ module GovukPublishingComponents
       }.compact.uniq.sort.join("\n").squeeze("\n").prepend(additional_files)
     end
 
+    def components_in_use_js
+      additional_files = "//= require govuk_publishing_components/lib\n"
+
+      components = components_in_use
+      extra_components = []
+
+      components.each do |component|
+        components_in_component = components_within_component(component)
+        extra_components << components_in_component
+      end
+
+      components << extra_components.compact
+      components = components.flatten.uniq.sort
+
+      components.map { |component|
+        "//= require govuk_publishing_components/components/#{component.gsub('_', '-')}" if component_has_js_file(component.gsub("_", "-"))
+      }.compact.uniq.sort.join("\n").squeeze("\n").prepend(additional_files)
+    end
+
   private
 
     def component_docs
@@ -93,6 +113,10 @@ module GovukPublishingComponents
     def component_has_sass_file(component, print_styles)
       print_path = "print/" if print_styles
       Pathname.new(@component_gem_path + "/app/assets/stylesheets/govuk_publishing_components/components/#{print_path}_#{component}.scss").exist?
+    end
+
+    def component_has_js_file(component)
+      Pathname.new(@component_gem_path + "/app/assets/javascripts/govuk_publishing_components/components/#{component}.js").exist?
     end
 
     def components_within_component(component)

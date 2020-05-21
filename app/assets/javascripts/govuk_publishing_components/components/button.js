@@ -1,5 +1,5 @@
 // This component relies on JavaScript from GOV.UK Frontend
-// = require govuk/components/error-summary/error-summary.js
+// = require govuk/components/button/button.js
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {}
-window.GOVUK.Modules.ErrorSummary = window.GOVUKFrontend
+window.GOVUK.Modules.Button = window.GOVUKFrontend
