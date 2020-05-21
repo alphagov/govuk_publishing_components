@@ -7,6 +7,12 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Allow individual JavaScript imports ([PR #1472](https://github.com/alphagov/govuk_publishing_components/pull/1472))
+
+  To import individual components refer to ['Include the assets section in docs'](https://github.com/alphagov/govuk_publishing_components/blob/master/docs/install-and-use.md) and the 'Suggested imports for this application' section available on `/component-guide` in your application.
+
 ## 21.50.1
 
 * Tweak action link ([PR #1518](https://github.com/alphagov/govuk_publishing_components/pull/1518))
@@ -202,7 +208,7 @@
 
 ## 21.26.0
 
-* Allow individual components to be imported into apps ([PR #1159](https://github.com/alphagov/govuk_publishing_components/pull/1159))
+* Allow individual Sass imports ([PR #1159](https://github.com/alphagov/govuk_publishing_components/pull/1159))
 
 ## 21.25.0
 
