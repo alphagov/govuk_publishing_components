@@ -27,47 +27,61 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
 
   let(:payload) { [education_taxon] }
 
-  subject { described_class.new(content_with(payload)) }
-
   describe "#taxon" do
-    it "returns the matching taxon" do
-      expect(subject.taxon).to eq(education_taxon)
-    end
+    %w[directly_tagged_to_taxons indirectly_tagged_to_taxons].each do |tagged_to_taxons|
+      context tagged_to_taxons do
+        subject { described_class.new(send(tagged_to_taxons, payload)) }
 
-    context "with business taxon" do
-      let(:payload) { [business_taxon] }
+        it "returns the matching taxon" do
+          expect(subject.taxon).to eq(education_taxon)
+        end
 
-      it "returns the business taxon" do
-        expect(subject.taxon).to eq(business_taxon)
+        context "with business taxon" do
+          let(:payload) { [business_taxon] }
+
+          it "returns the business taxon" do
+            expect(subject.taxon).to eq(business_taxon)
+          end
+        end
+
+        context "with education and business taxons" do
+          let(:payload) { [education_taxon, business_taxon] }
+
+          it "returns the education taxon" do
+            expect(subject.taxon).to eq(education_taxon)
+          end
+        end
+
+        context "with no matches" do
+          let(:payload) { [] }
+
+          it "returns nil" do
+            expect(subject.taxon).to be_nil
+          end
+        end
       end
-    end
 
-    context "with education and business taxons" do
-      let(:payload) { [education_taxon, business_taxon] }
+      describe ".call" do
+        let(:content) { send(tagged_to_taxons, [education_taxon]) }
 
-      it "returns the education taxon" do
-        expect(subject.taxon).to eq(education_taxon)
-      end
-    end
-
-    context "with no matches" do
-      let(:payload) { [] }
-
-      it "returns nil" do
-        expect(subject.taxon).to be_nil
+        it "returns the matching taxon" do
+          expect(described_class.call(content)).to eq(education_taxon)
+        end
       end
     end
   end
 
-  describe ".call" do
-    let(:content) { content_with([education_taxon]) }
 
-    it "returns the matching taxon" do
-      expect(described_class.call(content)).to eq(education_taxon)
-    end
+  def directly_tagged_to_taxons(taxons)
+    taxons << other_taxon
+    {
+      "links" => {
+        "taxons" => taxons.shuffle,
+      },
+    }
   end
 
-  def content_with(taxons)
+  def indirectly_tagged_to_taxons(taxons)
     taxons << other_taxon
     {
       "links" => {
