@@ -227,7 +227,7 @@ describe "Contextual navigation" do
       },
     )
 
-    content_store_has_item(content_item["base_path"], content_item)
+    stub_content_store_has_item(content_item["base_path"], content_item)
   end
 
   def given_theres_a_guide_with_a_live_taxon_tagged_to_it
@@ -383,7 +383,7 @@ describe "Contextual navigation" do
       "links" => links,
     )
 
-    content_store_has_item(content_item["base_path"], content_item)
+    stub_content_store_has_item(content_item["base_path"], content_item)
   end
 
   def random_step_nav_item(schema_name)

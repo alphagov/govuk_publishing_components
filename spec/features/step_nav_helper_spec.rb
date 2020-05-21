@@ -127,7 +127,7 @@ describe "Specimen usage of step by step navigation helpers" do
         "links" => links,
       )
     end
-    content_store_has_item(content_item["base_path"], content_item)
+    stub_content_store_has_item(content_item["base_path"], content_item)
     content_item
   end
 
