@@ -71,7 +71,6 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
     end
   end
 
-
   def directly_tagged_to_taxons(taxons)
     taxons << other_taxon
     {

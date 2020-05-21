@@ -27,18 +27,16 @@ module GovukPublishingComponents
     private
 
       def priority_taxons
-        taxons = []
-        content_item.dig("links", "taxons")&.map do |taxon|
-          taxons << taxon if priority_taxon?(taxon)
-
-          taxons << taxon.dig("links", "parent_taxons")&.select do |parent_taxon|
-            priority_taxon?(parent_taxon)
-          end
+        taxons = content_item.dig("links", "taxons")
+        taxon_tree(taxons).select do |taxon|
+          priority_taxon?(taxon)
         end
+      end
 
-        taxons.flatten!
-        taxons.compact!
-        taxons
+      def taxon_tree(taxons)
+        return [] if taxons.blank?
+
+        taxons + taxons.flat_map { |taxon| taxon_tree(taxon.dig("links", "parent_taxons")) }
       end
 
       def priority_taxon?(taxon)
