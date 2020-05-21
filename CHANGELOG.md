@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.51.0
 
 * Change `_all_components.scss` to use dependencies from support stylesheets  ([PR #1502](https://github.com/alphagov/govuk_publishing_components/pull/1502))
 * Allow individual JavaScript imports ([PR #1472](https://github.com/alphagov/govuk_publishing_components/pull/1472))
