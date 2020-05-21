@@ -19,7 +19,7 @@ Mount the component guide in your application:
 
 ```ruby
 # config/routes.rb
-mount GovukPublishingComponents::Engine, at: "/component-guide"
+mount GovukPublishingComponents::Engine, at: "/component-guide" if Rails.env.development?
 ```
 
 If your application was government-frontend the component guide would be at:
