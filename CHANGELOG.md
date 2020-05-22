@@ -7,14 +7,16 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add prefix option to input component ([PR #1509](https://github.com/alphagov/govuk_publishing_components/pull/1509))
+
 ## 21.51.0
 
 * Change `_all_components.scss` to use dependencies from support stylesheets  ([PR #1502](https://github.com/alphagov/govuk_publishing_components/pull/1502))
 * Allow individual JavaScript imports ([PR #1472](https://github.com/alphagov/govuk_publishing_components/pull/1472))
 
   To import individual components refer to ['Include the assets section in docs'](https://github.com/alphagov/govuk_publishing_components/blob/master/docs/install-and-use.md) and the 'Suggested imports for this application' section available on `/component-guide` in your application.
-
-* Add prefix option to input component ([PR #1509](https://github.com/alphagov/govuk_publishing_components/pull/1509))
 
 ## 21.50.1
 
