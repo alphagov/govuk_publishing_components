@@ -57,22 +57,18 @@ module GovukPublishingComponents
 
         question = page.title
 
-        # rubocop:disable Style/IfInsideElse
         doc.xpath("html/body").children.each_with_object({}) do |element, q_and_as|
           if question_element?(element)
             question = element.text
             q_and_as[question] = { anchor: element["id"] }
+          elsif question_hash_is_unset?(q_and_as, question)
+            q_and_as[question] = { answer: element.to_s }
+          elsif answer_is_unset?(q_and_as, question)
+            q_and_as[question][:answer] = element.to_s
           else
-            if question_hash_is_unset?(q_and_as, question)
-              q_and_as[question] = { answer: element.to_s }
-            elsif answer_is_unset?(q_and_as, question)
-              q_and_as[question][:answer] = element.to_s
-            else
-              q_and_as[question][:answer] << element.to_s
-            end
+            q_and_as[question][:answer] << element.to_s
           end
         end
-        # rubocop:enable Style/IfInsideElse
       end
 
       def question_hash_is_unset?(q_and_as, question)
