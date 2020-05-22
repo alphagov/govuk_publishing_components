@@ -25,12 +25,14 @@ module GovukPublishingComponents
       end
 
       def breadcrumbs
-        taxon && { title: taxon['title'], path: taxon['base_path'] }
+        taxon && { title: taxon["title"], path: taxon["base_path"] }
       end
 
     private
 
       def priority_taxons
+        return [] unless content_item["links"].is_a?(Hash)
+
         taxons = content_item.dig("links", "taxons")
         taxon_tree(taxons).select do |taxon|
           priority_taxon?(taxon)

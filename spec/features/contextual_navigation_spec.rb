@@ -4,6 +4,7 @@ describe "Contextual navigation" do
   scenario "There is a coronavirus taxon" do
     given_theres_a_page_with_coronavirus_taxon
     and_i_visit_that_page
+    then_i_do_not_see_home_and_parent_breadcrumbs
     then_i_see_the_coronavirus_contextual_breadcrumbs
   end
 
@@ -47,6 +48,29 @@ describe "Contextual navigation" do
     and_i_visit_that_page
     then_i_see_the_related_links_sidebar
     and_the_parent_based_breadcrumbs
+  end
+
+  scenario "It's a HTML Publication document" do
+    given_there_is_a_parent_page
+    and_the_page_is_an_html_publication_with_that_parent
+    and_i_visit_that_page
+    then_i_see_home_and_parent_breadcrumbs
+  end
+
+  scenario "It's a HTML Publication with a parent with coronavirus taxon" do
+    given_there_is_a_parent_page_with_coronavirus_taxon
+    and_the_page_is_an_html_publication_with_that_parent
+    and_i_visit_that_page
+    then_i_do_not_see_home_and_parent_breadcrumbs
+    then_i_see_the_coronavirus_contextual_breadcrumbs
+  end
+
+  scenario "It's a HTML Publication with a parent with breadcrumbs" do
+    given_there_is_a_parent_page_with_two_taxon
+    and_the_page_is_an_html_publication_with_that_parent
+    and_i_visit_that_page
+    then_i_see_home_and_parent_breadcrumbs
+    then_i_see_four_breadcrumb_links # home, 2 x taxon, parent
   end
 
   scenario "There's a taxon tagged" do
@@ -256,6 +280,34 @@ describe "Contextual navigation" do
     content_store_has_random_item links: { "taxons" => [live_taxon] }
   end
 
+  def given_there_is_a_parent_page
+    @parent = random_item("placeholder")
+  end
+
+  def given_there_is_a_parent_page_with_coronavirus_taxon
+    taxon = example_item("taxon", "taxon")
+    taxon["links"]["parent_taxons"] << coronavirus_taxon
+
+    @parent = random_item("placeholder")
+    @parent["links"]["taxons"] = [taxon]
+  end
+
+  def given_there_is_a_parent_page_with_two_taxon
+    taxon = example_item("taxon", "taxon")
+    taxon_two = example_item("taxon", "taxon")
+    @parent = random_item("guide")
+    @parent["links"] = { "taxons" => [taxon, taxon_two] }
+  end
+
+  def and_the_page_is_an_html_publication_with_that_parent
+    content_item = example_item("html_publication", "published")
+    content_item["base_path"] = "/page-with-contextual-navigation"
+    content_item["links"]["parent"] = [@parent]
+
+    stub_content_store_has_item(@parent["base_path"], @parent)
+    stub_content_store_has_item(content_item["base_path"], content_item)
+  end
+
   def and_i_visit_that_page
     visit "/contextual-navigation/page-with-contextual-navigation"
   end
@@ -374,6 +426,23 @@ describe "Contextual navigation" do
     within ".gem-c-contextual-footer" do
       expect(page).to have_css(".gem-c-related-navigation__link", text: "Oil and gas")
     end
+  end
+
+  def then_i_see_home_and_parent_breadcrumbs
+    within ".gem-c-breadcrumbs" do
+      expect(page).to have_link("Home")
+      expect(page).to have_link(@parent["title"])
+    end
+  end
+
+  def then_i_see_four_breadcrumb_links
+    within(".gem-c-breadcrumbs") do
+      expect(page).to have_selector(".govuk-breadcrumbs__list-item", count: 4)
+    end
+  end
+
+  def then_i_do_not_see_home_and_parent_breadcrumbs
+    expect(page).not_to have_selector(".gem-c-breadcrumbs")
   end
 
   def content_store_has_random_item(schema: "placeholder", links: {})

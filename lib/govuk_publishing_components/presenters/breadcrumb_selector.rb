@@ -22,13 +22,13 @@ module GovukPublishingComponents
       end
 
       def parent_item
-        @parent_item ||= Services.content_store.content_item(content_item_navigation.parent_api_url)
+        @parent_item ||= Services.content_store.content_item(content_item_navigation.parent_api_path)
       rescue GdsApi::ContentStore::ItemNotFound
         # Do nothing
       end
 
       def parent_item_options
-        @parent_options ||= options(parent_item_navigation)
+        @parent_item_options ||= options(parent_item_navigation)
       end
 
       def content_item_options
@@ -36,22 +36,22 @@ module GovukPublishingComponents
       end
 
       def parent_breadcrumbs
-        breadcrumbs = parent_item_options[:breadcrumbs]
+        breadcrumbs = [parent_item_options[:breadcrumbs]].flatten # to ensure breadcrumbs always an array
         breadcrumbs.last[:is_page_parent] = false
         breadcrumbs << {
-          title: parent_item['title'],
-          url: parent_item['base_path'],
-          is_page_parent: true
+          title: parent_item["title"],
+          url: parent_item["base_path"],
+          is_page_parent: true,
         }
       end
 
       def output
-        return content_item_options unless content_item_navigation.html_document_with_parent_api?
+        return content_item_options unless content_item_navigation.html_document_with_parent?
         return parent_item_options if parent_item_navigation.priority_breadcrumbs
 
         {
           step_by_step: parent_item_options[:step_by_step],
-          breadcrumbs: parent_breadcrumbs
+          breadcrumbs: parent_breadcrumbs,
         }
       end
 
