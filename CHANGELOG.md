@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add prefix option to input component ([PR #1509](https://github.com/alphagov/govuk_publishing_components/pull/1509))
+* Undo recursive FAQPage presenter ([PR #1527](https://github.com/alphagov/govuk_publishing_components/pull/1527))
 
 ## 21.51.0
 

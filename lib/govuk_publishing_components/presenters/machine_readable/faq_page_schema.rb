@@ -58,29 +58,10 @@ module GovukPublishingComponents
         question = page.title
 
         doc.xpath("html/body").children.each_with_object({}) do |element, q_and_as|
-          _q_and_as, question = recursive_question_and_answers(element, question, q_and_as)
-        end
-      end
-
-      def recursive_question_and_answers(element, question, q_and_as)
-        if is_a_question?(element)
-          question = element.text
-          q_and_as[question] = { anchor: element["id"] }
-        else
-          q_and_as = add_answer_to_question(q_and_as, element, question)
-          element.children.each do |child_element|
-            if child_element.element?
-              q_and_as, question = recursive_question_and_answers(child_element, question, q_and_as)
-            end
-          end
-        end
-
-        [q_and_as, question]
-      end
-
-      def add_answer_to_question(q_and_as, element, question)
-        if no_questions_in_subtree?(element)
-          if question_hash_is_unset?(q_and_as, question)
+          if question_element?(element)
+            question = element.text
+            q_and_as[question] = { anchor: element["id"] }
+          elsif question_hash_is_unset?(q_and_as, question)
             q_and_as[question] = { answer: element.to_s }
           elsif answer_is_unset?(q_and_as, question)
             q_and_as[question][:answer] = element.to_s
@@ -88,11 +69,6 @@ module GovukPublishingComponents
             q_and_as[question][:answer] << element.to_s
           end
         end
-        q_and_as
-      end
-
-      def no_questions_in_subtree?(element)
-        element.search(QUESTION_TAG).none?
       end
 
       def question_hash_is_unset?(q_and_as, question)
@@ -106,7 +82,7 @@ module GovukPublishingComponents
       # we use H2 tags as the "question" and the html between them as the "answer"
       QUESTION_TAG = "h2".freeze
 
-      def is_a_question?(element)
+      def question_element?(element)
         element.name == QUESTION_TAG
       end
 
