@@ -11,6 +11,7 @@
 
 * Add prefix option to input component ([PR #1509](https://github.com/alphagov/govuk_publishing_components/pull/1509))
 * Undo recursive FAQPage presenter ([PR #1527](https://github.com/alphagov/govuk_publishing_components/pull/1527))
+* Allow arbitrary depth in priority taxonomy tagging([PR #1530](https://github.com/alphagov/govuk_publishing_components/pull/1530))
 
 ## 21.51.0
 
