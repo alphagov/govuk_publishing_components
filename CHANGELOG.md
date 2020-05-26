@@ -9,6 +9,8 @@
 
 ## Unreleased
 
+* Increase limit for steps bullet point images ([PR #1534](https://github.com/alphagov/govuk_publishing_components/pull/1534))
+
 ## 21.52.0
 
 * Add prefix option to input component ([PR #1509](https://github.com/alphagov/govuk_publishing_components/pull/1509))
