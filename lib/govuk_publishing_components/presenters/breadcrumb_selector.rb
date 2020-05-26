@@ -86,7 +86,7 @@ module GovukPublishingComponents
             step_by_step: false,
             breadcrumbs: navigation.breadcrumbs,
           }
-        elsif navigation.content_is_tagged_to_a_live_taxon? && !navigation.content_is_a_specialist_document?
+        elsif navigation.use_taxon_breadcrumbs?
           {
             step_by_step: false,
             breadcrumbs: navigation.taxon_breadcrumbs,

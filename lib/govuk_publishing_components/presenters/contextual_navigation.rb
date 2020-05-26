@@ -50,7 +50,7 @@ module GovukPublishingComponents
       end
 
       def use_taxon_breadcrumbs?
-        navigation.content_is_tagged_to_a_live_taxon? && !navigation.content_is_a_specialist_document?
+        content_is_tagged_to_a_live_taxon? && !content_is_a_specialist_document?
       end
 
       def content_tagged_to_a_finder?
