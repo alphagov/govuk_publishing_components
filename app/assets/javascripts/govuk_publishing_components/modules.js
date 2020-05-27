@@ -1,22 +1,23 @@
 ;(function (global) {
   'use strict'
 
-  var $ = global.jQuery
   var GOVUK = global.GOVUK || {}
   GOVUK.Modules = GOVUK.Modules || {}
 
   GOVUK.modules = {
     find: function (container) {
-      container = container || $('body')
+      container = container || document.querySelector('body')
+
+      if (container.jquery) container = container[0]
 
       var modules
       var moduleSelector = '[data-module]'
 
-      modules = container.find(moduleSelector)
+      modules = Array.prototype.slice.call(container.querySelectorAll(moduleSelector))
 
       // Container could be a module too
-      if (container.is(moduleSelector)) {
-        modules = modules.add(container)
+      if (container.getAttribute('data-module')) {
+        modules.push(container)
       }
 
       return modules
@@ -27,9 +28,9 @@
 
       for (var i = 0, l = modules.length; i < l; i++) {
         var module
-        var element = $(modules[i])
-        var moduleName = camelCaseAndCapitalise(element.data('module'))
-        var started = element.data('module-started')
+        var element = modules[i]
+        var moduleName = camelCaseAndCapitalise(element.getAttribute('data-module'))
+        var started = element.getAttribute('data-module-started')
         var frontendModuleName = moduleName.replace('Govuk', '')
 
         if ( // GOV.UK Publishing & Legacy Modules
@@ -39,14 +40,14 @@
         ) {
           module = new GOVUK.Modules[moduleName]()
           module.start(element)
-          element.data('module-started', true)
+          element.setAttribute('data-module-started', true)
         } else if ( // GOV.UK Frontend Modules
           typeof GOVUK.Modules[frontendModuleName] === 'function' &&
           GOVUK.Modules[frontendModuleName].prototype.init &&
           !started
         ) {
-          module = new GOVUK.Modules[frontendModuleName](element[0]).init()
-          element.data('module-started', true)
+          module = new GOVUK.Modules[frontendModuleName](element).init()
+          element.setAttribute('data-module-started', true)
         }
       }
 

@@ -11,7 +11,7 @@ describe('GOVUK Modules', function () {
     $('body').append(module)
 
     expect(GOVUK.modules.find().length).toBe(1)
-    expect(GOVUK.modules.find().eq(0).is('[data-module="a-module"]')).toBe(true)
+    expect(GOVUK.modules.find()[0].getAttribute('data-module')).toBe('a-module')
     module.remove()
   })
 
@@ -20,7 +20,7 @@ describe('GOVUK Modules', function () {
     var container = $('<div></div>').append(module)
 
     expect(GOVUK.modules.find(container).length).toBe(1)
-    expect(GOVUK.modules.find(container).eq(0).data('module')).toBe('a-module')
+    expect(GOVUK.modules.find(container)[0].getAttribute('data-module')).toBe('a-module')
     container.remove()
   })
 
@@ -29,8 +29,8 @@ describe('GOVUK Modules', function () {
     var container = $('<div data-module="container-module"></div>').append(module)
 
     expect(GOVUK.modules.find(container).length).toBe(2)
-    expect(GOVUK.modules.find(container).eq(0).data('module')).toBe('container-module')
-    expect(GOVUK.modules.find(container).eq(1).data('module')).toBe('a-module')
+    expect(GOVUK.modules.find(container)[1].getAttribute('data-module')).toBe('container-module')
+    expect(GOVUK.modules.find(container)[0].getAttribute('data-module')).toBe('a-module')
     container.remove()
   })
 
@@ -108,7 +108,7 @@ describe('GOVUK Modules', function () {
       GOVUK.modules.start(container)
 
       var args = callbackLegacyModule.calls.argsFor(0)
-      expect(args[0].is('div[data-module="legacy-test-alert-module"]')).toBe(true)
+      expect(args[0].getAttribute('data-module')).toBe('legacy-test-alert-module')
     })
 
     it('starts all modules that are on the page', function () {
