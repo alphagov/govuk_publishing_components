@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.52.1
 
 * Increase limit for steps bullet point images ([PR #1534](https://github.com/alphagov/govuk_publishing_components/pull/1534))
 
