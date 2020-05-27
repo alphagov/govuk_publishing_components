@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.53.0
 
 * Add breadcrumbs from parent for html documents ([PR #1526] (https://github.com/alphagov/govuk_publishing_components/pull/1526)
 
