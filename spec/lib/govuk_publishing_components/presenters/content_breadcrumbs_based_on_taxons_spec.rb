@@ -23,7 +23,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnT
       breadcrumbs = breadcrumbs_for(content_item)
 
       expect(breadcrumbs).to eq(
-        breadcrumbs: [
+        [
           { title: "Home", url: "/", is_page_parent: true },
         ],
       )
@@ -34,7 +34,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnT
       breadcrumbs = breadcrumbs_for(content_item)
 
       expect(breadcrumbs).to eq(
-        breadcrumbs: [
+        [
           { title: "Home", url: "/", is_page_parent: false },
           { title: "Taxon", url: "/taxon", is_page_parent: true },
         ],
@@ -66,7 +66,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnT
         breadcrumbs = breadcrumbs_for(content_item)
 
         expect(breadcrumbs).to eq(
-          breadcrumbs: [
+          [
             { title: "Home", url: "/", is_page_parent: false },
             { title: "Another-parent", url: "/another-parent", is_page_parent: false },
             { title: "A-parent", url: "/a-parent", is_page_parent: false },
@@ -93,7 +93,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnT
         breadcrumbs = breadcrumbs_for(content_item)
 
         expect(breadcrumbs).to eq(
-          breadcrumbs: [
+          [
             { title: "Home", url: "/", is_page_parent: false },
             { title: "A-parent", url: "/a-parent", is_page_parent: true },
           ],
@@ -128,7 +128,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnT
         breadcrumbs = breadcrumbs_for(content_item)
 
         expect(breadcrumbs).to eq(
-          breadcrumbs: [
+          [
             { title: "Home", url: "/", is_page_parent: false },
             { title: "Parent A", url: "/parent-a", is_page_parent: true },
           ],

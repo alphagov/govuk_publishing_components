@@ -11,7 +11,7 @@ module GovukPublishingComponents
 
       # Returns the highest priority taxon that has a content_id matching those in PRIORITY_TAXONS
       def self.call(content_item)
-        new(content_item).taxon
+        new(content_item).breadcrumbs
       end
 
       attr_reader :content_item
@@ -24,9 +24,15 @@ module GovukPublishingComponents
         @taxon ||= priority_taxons.min_by { |t| PRIORITY_TAXONS.values.index(t["content_id"]) }
       end
 
+      def breadcrumbs
+        taxon && { title: taxon["title"], path: taxon["base_path"] }
+      end
+
     private
 
       def priority_taxons
+        return [] unless content_item["links"].is_a?(Hash)
+
         taxons = content_item.dig("links", "taxons")
         taxon_tree(taxons).select do |taxon|
           priority_taxon?(taxon)
