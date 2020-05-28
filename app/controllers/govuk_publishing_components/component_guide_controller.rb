@@ -47,22 +47,7 @@ module GovukPublishingComponents
       additional_files = "@import 'govuk_publishing_components/govuk_frontend_support';\n"
       additional_files << "@import 'govuk_publishing_components/component_support';\n" unless print_styles
 
-      components = components_in_use
-      components_to_search = components
-      loop = true
-
-      while loop
-        extra_components = find_partials_in(components_to_search)
-
-        if extra_components.any?
-          components << extra_components
-          components_to_search = extra_components
-        else
-          loop = false
-        end
-      end
-
-      components = components.flatten.uniq.sort
+      components = find_all_partials_in(components_in_use)
 
       components.map { |component|
         "@import 'govuk_publishing_components/components/#{print_path}#{component.gsub('_', '-')}';" if component_has_sass_file(component.gsub("_", "-"), print_styles)
@@ -72,16 +57,7 @@ module GovukPublishingComponents
     def components_in_use_js
       additional_files = "//= require govuk_publishing_components/lib\n"
 
-      components = components_in_use
-      extra_components = []
-
-      components.each do |component|
-        components_in_component = components_within_component(component)
-        extra_components << components_in_component
-      end
-
-      components << extra_components.compact
-      components = components.flatten.uniq.sort
+      components = find_all_partials_in(components_in_use)
 
       components.map { |component|
         "//= require govuk_publishing_components/components/#{component.gsub('_', '-')}" if component_has_js_file(component.gsub("_", "-"))
@@ -114,6 +90,24 @@ module GovukPublishingComponents
       end
 
       matches.flatten.uniq.map(&:to_s).sort.map { |m| m.gsub("govuk_publishing_components/components/", "") }
+    end
+
+    def find_all_partials_in(components)
+      components_to_search = components
+      partials_found = true
+
+      while partials_found
+        extra_components = find_partials_in(components_to_search)
+
+        if extra_components.any?
+          components << extra_components
+          components_to_search = extra_components
+        else
+          partials_found = false
+        end
+      end
+
+      components.flatten.uniq.sort
     end
 
     def find_partials_in(components)
