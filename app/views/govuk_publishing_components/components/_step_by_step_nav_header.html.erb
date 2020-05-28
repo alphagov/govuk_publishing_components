@@ -1,12 +1,23 @@
 <%
   title ||= false
   path ||= false
-  tracking_id ||= false
   breadcrumbs = [
     { title: "Home", url: "/" },
     { title: title, url: path }
   ]
   breadcrumb_presenter = GovukPublishingComponents::Presenters::Breadcrumbs.new(breadcrumbs)
+
+  tracking_id ||= false
+  tracking_category ||= "stepNavHeaderClicked"
+  tracking_action ||= "top"
+  tracking_label ||= path
+  tracking_dimension_enabled = tracking_dimension_enabled != false
+  tracking_dimension ||= title
+  tracking_dimension_index ||= 29
+
+  if tracking_id
+    tracking_options ||= ({ dimension96: tracking_id }).to_json
+  end
 %>
 <% if title %>
   <script type="application/ld+json">
@@ -18,12 +29,17 @@
     <% if path %>
       <a href="<%= path %>"
         class="gem-c-step-nav-header__title"
-        data-track-category="stepNavHeaderClicked"
-        data-track-action="top"
-        data-track-label="<%= path %>"
-        data-track-dimension="<%= title %>"
-        data-track-dimension-index="29"
-        data-track-options='{"dimension96" : "<%= tracking_id %>" }'>
+        data-track-category="<%= tracking_category %>"
+        data-track-action="<%= tracking_action %>"
+        data-track-label="<%= tracking_label %>"
+        <% if tracking_dimension_enabled %>
+          data-track-dimension="<%= tracking_dimension %>"
+          data-track-dimension-index="<%= tracking_dimension_index %>"
+        <% end %>
+        <% if tracking_id %>
+          data-track-options='<%= tracking_options %>'
+        <% end %>
+      >
         <%= title %>
       </a>
     <% else %>

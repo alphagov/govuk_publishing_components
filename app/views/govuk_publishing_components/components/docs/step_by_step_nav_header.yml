@@ -26,3 +26,20 @@ examples:
       title: 'With a tracking id'
       path: '#'
       tracking_id: 'this-is-the-tracking-id'
+  with_custom_tracking:
+    data:
+      title: 'With a custom tracking'
+      path: '#'
+      tracking_category: "customTrackingCategoryClicked"
+      tracking_action: "customTrackingAction"
+      tracking_label: "customTrackingLabel"
+      tracking_dimension: "customTrackingDimension"
+      tracking_dimension_index: "23"
+  without_custom_dimension:
+    data:
+      title: 'Without custom dimensions'
+      path: '#'
+      tracking_category: "customTrackingCategoryClicked"
+      tracking_action: "customTrackingAction"
+      tracking_label: "customTrackingLabel"
+      tracking_dimension_enabled: false

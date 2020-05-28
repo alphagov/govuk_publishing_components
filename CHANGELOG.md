@@ -7,9 +7,14 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Modify Step nav header component to support custom tracking ([PR #1533](https://github.com/alphagov/govuk_publishing_components/pull/1533))
+
+
 ## 21.53.0
 
-* Add breadcrumbs from parent for html documents ([PR #1526] (https://github.com/alphagov/govuk_publishing_components/pull/1526)
+* Add breadcrumbs from parent for html documents ([PR #1526](https://github.com/alphagov/govuk_publishing_components/pull/1526))
 
 ## 21.52.1
 
