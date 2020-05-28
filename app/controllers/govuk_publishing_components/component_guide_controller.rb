@@ -48,14 +48,20 @@ module GovukPublishingComponents
       additional_files << "@import 'govuk_publishing_components/component_support';\n" unless print_styles
 
       components = components_in_use
-      extra_components = []
+      components_to_search = components
+      loop = true
 
-      components.each do |component|
-        components_in_component = components_within_component(component)
-        extra_components << components_in_component
+      while loop
+        extra_components = find_partials_in(components_to_search)
+
+        if extra_components.any?
+          components << extra_components
+          components_to_search = extra_components
+        else
+          loop = false
+        end
       end
 
-      components << extra_components.compact
       components = components.flatten.uniq.sort
 
       components.map { |component|
@@ -110,6 +116,16 @@ module GovukPublishingComponents
       matches.flatten.uniq.map(&:to_s).sort.map { |m| m.gsub("govuk_publishing_components/components/", "") }
     end
 
+    def find_partials_in(components)
+      extra_components = []
+      components.each do |component|
+        components_in_component = components_within_component(component)
+        extra_components << components_in_component
+      end
+
+      extra_components.flatten.uniq.sort
+    end
+
     def component_has_sass_file(component, print_styles)
       print_path = "print/" if print_styles
       Pathname.new(@component_gem_path + "/app/assets/stylesheets/govuk_publishing_components/components/#{print_path}_#{component}.scss").exist?
@@ -120,8 +136,10 @@ module GovukPublishingComponents
     end
 
     def components_within_component(component)
-      data = File.read(@component_gem_path + "/app/views/govuk_publishing_components/components/_#{component}.html.erb")
-      match = data.scan(/(govuk_publishing_components\/components\/[a-z_-]+)/)
+      filename = @component_gem_path + "/app/views/govuk_publishing_components/components/#{component}.html.erb"
+      filename = filename.sub(/.*\K\//, "/_") # files begin with _ but the method may have been passed 'filename' or 'dir/partial'
+      data = File.read(filename)
+      match = data.scan(/(govuk_publishing_components\/components\/[\/a-z_-]+)/)
       match.flatten.uniq.map(&:to_s).sort.map { |m| m.gsub("govuk_publishing_components/components/", "") }
     end
 
