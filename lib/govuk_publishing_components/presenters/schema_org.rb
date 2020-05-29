@@ -4,6 +4,7 @@ require "govuk_publishing_components/presenters/machine_readable/creative_work_s
 require "govuk_publishing_components/presenters/machine_readable/faq_page_schema"
 require "govuk_publishing_components/presenters/machine_readable/government_service_schema"
 require "govuk_publishing_components/presenters/machine_readable/has_part_schema"
+require "govuk_publishing_components/presenters/machine_readable/html_publication_schema"
 require "govuk_publishing_components/presenters/machine_readable/is_part_of_schema"
 require "govuk_publishing_components/presenters/machine_readable/news_article_schema"
 require "govuk_publishing_components/presenters/machine_readable/organisation_schema"
@@ -22,22 +23,29 @@ module GovukPublishingComponents
       end
 
       def structured_data
-        if page.schema == :faq
-          FaqPageSchema.new(page).structured_data
-        elsif page.schema == :article
-          ArticleSchema.new(page).structured_data
-        elsif page.schema == :government_service
-          GovernmentServiceSchema.new(page).structured_data
-        elsif page.schema == :news_article
-          NewsArticleSchema.new(page).structured_data
-        elsif page.schema == :person
-          PersonSchema.new(page).structured_data
-        elsif page.schema == :organisation
-          OrganisationSchema.new(page).structured_data
-        elsif page.schema == :search_results_page
-          SearchResultsPageSchema.new(page).structured_data
-        elsif page.schema == :dataset
-          DatasetSchema.new(page).structured_data
+        schema_for_page.new(page).structured_data
+      end
+
+      def schema_for_page
+        case page.schema
+        when :faq
+          FaqPageSchema
+        when :article
+          ArticleSchema
+        when :government_service
+          GovernmentServiceSchema
+        when :news_article
+          NewsArticleSchema
+        when :person
+          PersonSchema
+        when :organisation
+          OrganisationSchema
+        when :search_results_page
+          SearchResultsPageSchema
+        when :dataset
+          DatasetSchema
+        when :html_publication
+          HtmlPublicationSchema
         else
           raise "#{page.schema} is not supported"
         end
