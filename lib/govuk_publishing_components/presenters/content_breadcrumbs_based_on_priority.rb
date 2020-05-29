@@ -25,7 +25,14 @@ module GovukPublishingComponents
       end
 
       def breadcrumbs
-        taxon && { title: taxon["title"], path: taxon["base_path"] }
+        taxon && {
+          title: taxon["title"],
+          path: taxon["base_path"],
+          tracking_category: "breadcrumbClicked",
+          tracking_action: "superBreadcrumb",
+          tracking_label: content_item["base_path"],
+          tracking_dimension_enabled: false,
+        }
       end
 
     private

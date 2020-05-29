@@ -65,7 +65,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
         let(:content) { send(tagged_to_taxons, [education_taxon]) }
 
         it "returns the matching taxon" do
-          expect(described_class.call(content)).to eq(breadcrumb_for(education_taxon))
+          expect(described_class.call(content)).to eq(breadcrumb_for(content, education_taxon))
         end
       end
     end
@@ -95,10 +95,14 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
     }
   end
 
-  def breadcrumb_for(taxon)
+  def breadcrumb_for(content_item, taxon)
     {
       title: taxon["title"],
       path: taxon["base_path"],
+      tracking_category: "breadcrumbClicked",
+      tracking_action: "superBreadcrumb",
+      tracking_label: content_item["base_path"],
+      tracking_dimension_enabled: false,
     }
   end
 end
