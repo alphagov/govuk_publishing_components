@@ -49,9 +49,11 @@ module GovukPublishingComponents
         return content_item_options unless content_item_navigation.html_document_with_parent?
         return parent_item_options if parent_item_navigation.priority_breadcrumbs
 
+        step_by_step_header = parent_item_options[:step_by_step]
+
         {
-          step_by_step: parent_item_options[:step_by_step],
-          breadcrumbs: parent_breadcrumbs,
+          step_by_step: step_by_step_header,
+          breadcrumbs: step_by_step_header ? parent_breadcrumbs.first : parent_breadcrumbs,
         }
       end
 

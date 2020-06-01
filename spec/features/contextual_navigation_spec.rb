@@ -73,6 +73,13 @@ describe "Contextual navigation" do
     then_i_see_four_breadcrumb_links # home, 2 x taxon, parent
   end
 
+  scenario "It's a HTML Publication with a parent tagged to a step by step" do
+    given_there_is_a_parent_page_with_a_step_by_step
+    and_the_page_is_an_html_publication_with_that_parent
+    and_i_visit_that_page
+    then_i_see_the_step_by_step_breadcrumbs
+  end
+
   scenario "There's a taxon tagged" do
     given_theres_a_guide_with_a_live_taxon_tagged_to_it
     and_i_visit_that_page
@@ -299,6 +306,13 @@ describe "Contextual navigation" do
     @parent["links"] = { "taxons" => [taxon, taxon_two] }
   end
 
+  def given_there_is_a_parent_page_with_a_step_by_step
+    step_by_step = random_step_nav_item("step_by_step_nav").merge("title" => "A step by step page")
+
+    @parent = random_item("placeholder")
+    @parent["links"]["part_of_step_navs"] = [step_by_step]
+  end
+
   def and_the_page_is_an_html_publication_with_that_parent
     content_item = example_item("html_publication", "published")
     content_item["base_path"] = "/page-with-contextual-navigation"
@@ -413,6 +427,12 @@ describe "Contextual navigation" do
   def then_i_see_the_coronavirus_contextual_breadcrumbs
     within ".gem-c-contextual-breadcrumbs" do
       expect(page).to have_link(coronavirus_taxon["title"])
+    end
+  end
+
+  def then_i_see_the_step_by_step_breadcrumbs
+    within ".gem-c-contextual-breadcrumbs" do
+      expect(page).to have_link("A step by step page")
     end
   end
 
