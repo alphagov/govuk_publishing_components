@@ -46,7 +46,7 @@ module GovukPublishingComponents
       end
 
       def output
-        return content_item_options unless content_item_navigation.html_document_with_parent?
+        return content_item_options unless content_item_navigation.html_publication_with_parent?
         return parent_item_options if parent_item_navigation.priority_breadcrumbs
 
         step_by_step_header = parent_item_options[:step_by_step]

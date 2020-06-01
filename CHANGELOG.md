@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix FAQ Schemas for html publications ([PR #1543](https://github.com/alphagov/govuk_publishing_components/pull/1543)
+
 ## 21.54.0
 
 * Modify Step nav header component to support custom tracking ([PR #1533](https://github.com/alphagov/govuk_publishing_components/pull/1533))

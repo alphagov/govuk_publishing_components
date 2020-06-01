@@ -751,7 +751,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
     end
 
     def generate_structured_data(args)
-      GovukPublishingComponents::Presenters::SchemaOrg.new(GovukPublishingComponents::Presenters::Page.new(args))
+      described_class.new(GovukPublishingComponents::Presenters::Page.new(args))
     end
 
     def generate_org(details = {})
