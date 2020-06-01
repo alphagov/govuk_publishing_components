@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove unnecessary margin around expanded feedback component ([PR #1547](https://github.com/alphagov/govuk_publishing_components/pull/1547))
+
 ## 21.55.3
 
 * Use video title as eventLabel for YT video event tracking ([PR #1562](https://github.com/alphagov/govuk_publishing_components/pull/1562))
