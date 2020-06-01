@@ -7,11 +7,12 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.54.0
 
-* Add margin bottom option to step nav header component ([PR #1544](https://github.com/alphagov/govuk_publishing_components/pull/1544))
 * Modify Step nav header component to support custom tracking ([PR #1533](https://github.com/alphagov/govuk_publishing_components/pull/1533))
-
+* Adds tracking for super breadcrumbs ([PR #1542](https://github.com/alphagov/govuk_publishing_components/pull/1542))
+* Add margin bottom option to step nav header component ([PR #1544](https://github.com/alphagov/govuk_publishing_components/pull/1544))
+* Bugfix to Step nav header on HTML publications ([PR #1545](https://github.com/alphagov/govuk_publishing_components/pull/1545))
 
 ## 21.53.0
 
