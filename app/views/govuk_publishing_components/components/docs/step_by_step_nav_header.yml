@@ -20,6 +20,12 @@ examples:
     data:
       title: 'Coronavirus: businesses and self-employed people'
       path: /childcare-parenting/pregnancy-and-birth
+  with_margin_bottom:
+    description: |
+      The component accepts a number for margin bottom from 0 to 9 (0px to 60px) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having a margin bottom of 30px.
+    data:
+      title: 'Learn to practice flexible spacing: step by step'
+      margin_bottom: 9
   with_unique_tracking:
     description: In order to identify the step by step navigation the component is part of, we need to track a unique ID of the navigation in Google Analytics. This ID should be the same across all pages that are linked from and are part of that navigation. Its value is included in any tracking events, specifically in dimension96. It refers to the ID of the step nav that the component links to.
     data:

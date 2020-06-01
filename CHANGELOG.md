@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add margin bottom option to step nav header component ([PR #1544](https://github.com/alphagov/govuk_publishing_components/pull/1544))
 * Modify Step nav header component to support custom tracking ([PR #1533](https://github.com/alphagov/govuk_publishing_components/pull/1533))
 
 
