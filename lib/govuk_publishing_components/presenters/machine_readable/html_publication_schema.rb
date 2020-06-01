@@ -60,6 +60,8 @@ module GovukPublishingComponents
         Hash[pairs]
       end
 
+      # From: https://stackoverflow.com/a/7816046/1014251
+      # If `stop_xpath` is `nil` gets text to end of content
       def content_between(start_xpath, stop_xpath = nil)
         node = doc.at_xpath(start_xpath).next_element
         stop = stop_xpath && doc.at_xpath(stop_xpath)
