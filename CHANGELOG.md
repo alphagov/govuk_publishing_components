@@ -7,9 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.55.0
 
 * Add new options to action link component ([PR #1551](https://github.com/alphagov/govuk_publishing_components/pull/1551))
+* Bump govuk-frontend from 3.6.0 to 3.7.0 ([PR #1549](https://github.com/alphagov/govuk_publishing_components/pull/1549))
 * Fix FAQ Schemas for html publications ([PR #1543](https://github.com/alphagov/govuk_publishing_components/pull/1543)
 
 ## 21.54.0
