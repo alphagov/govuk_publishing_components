@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "axe-core": "^3.5.4",
-    "govuk-frontend": "^3.6.0",
+    "govuk-frontend": "^3.7.0",
     "jquery": "1.12.4"
   },
   "devDependencies": {
