@@ -5,10 +5,6 @@ describe "Action link", type: :view do
     "action_link"
   end
 
-  it "renders nothing without a href" do
-    assert_empty render_component(text: "Get more info")
-  end
-
   it "renders nothing without text" do
     assert_empty render_component(href: "/coronavirus")
   end
@@ -57,6 +53,26 @@ describe "Action link", type: :view do
     assert_select ".gem-c-action-link.gem-c-action-link--with-subtext .gem-c-action-link__subtext", text: "because info is important"
   end
 
+  it "shows subtext like on mobile" do
+    render_component(
+      text: "Get more info",
+      subtext: "because info is important",
+      mobile_subtext: true,
+    )
+    assert_select ".gem-c-action-link.gem-c-action-link--mobile-subtext"
+  end
+
+  it "can add a link to subtext" do
+    render_component(
+      text: "Get more info",
+      href: "/main-href",
+      subtext: "because info is important",
+      subtext_href: "/subtext-href",
+    )
+    assert_select ".gem-c-action-link .gem-c-action-link__link[href='/main-href']"
+    assert_select ".gem-c-action-link .gem-c-action-link__subtext .govuk-link[href='/subtext-href']"
+  end
+
   it "renders simple icon version" do
     render_component(
       text: "Get more info",
@@ -73,6 +89,15 @@ describe "Action link", type: :view do
       dark_icon: true,
     )
     assert_select ".gem-c-action-link--dark-icon"
+  end
+
+  it "renders NHS icon version" do
+    render_component(
+      text: "Get more info",
+      href: "/coronavirus",
+      nhs_icon: true,
+    )
+    assert_select ".gem-c-action-link--nhs"
   end
 
   it "renders light text version" do

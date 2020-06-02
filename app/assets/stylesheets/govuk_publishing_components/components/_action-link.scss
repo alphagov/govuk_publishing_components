@@ -63,6 +63,20 @@
   }
 }
 
+.gem-c-action-link--mobile-subtext {
+  .gem-c-action-link__subtext-wrapper {
+    display: block;
+  }
+
+  .gem-c-action-link__subtext {
+    padding: 0;
+
+    &:before {
+      display: none;
+    }
+  }
+}
+
 .gem-c-action-link__subtext {
   @include govuk-font(19);
   display: block;
@@ -125,10 +139,23 @@
   }
 }
 
+.gem-c-action-link--nhs {
+  &:before {
+    width: 80px;
+    height: 70px;
+    // sass-lint:disable no-duplicate-properties
+    background-image: image-url("govuk_publishing_components/action-link--nhs.png");
+    background-image: image-url("govuk_publishing_components/action-link--nhs.svg");
+    // sass-lint:enable no-duplicate-properties
+    background-size: 85% auto;
+  }
+}
+
 .gem-c-action-link--light-text {
   color: govuk-colour("white");
 
-  .gem-c-action-link__link {
+  .gem-c-action-link__link,
+  .gem-c-action-link__subtext-link {
     text-decoration: underline;
 
     &:link,
