@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add new options to action link component ([PR #1551](https://github.com/alphagov/govuk_publishing_components/pull/1551))
 * Fix FAQ Schemas for html publications ([PR #1543](https://github.com/alphagov/govuk_publishing_components/pull/1543)
 
 ## 21.54.0
