@@ -21,37 +21,24 @@
   border-color: govuk-colour("white");
 }
 
-.gem-c-breadcrumbs--collapse-on-mobile {
+.govuk-breadcrumbs--collapse-on-mobile {
   @include govuk-media-query($until: tablet) {
-    .govuk-breadcrumbs__list {
-      display: flex;
-    }
-
-    .govuk-breadcrumbs__list-item:not(:last-child):not(:first-child) {
-      display: none;
-    }
-
     .govuk-breadcrumbs__list-item {
       padding-top: 14px;
       padding-bottom: 14px;
     }
 
     .govuk-breadcrumbs__list-item:before {
-      margin: 0;
       top: 18px;
-    }
-
-    .govuk-breadcrumbs__link {
-      position: relative;
     }
 
     .govuk-breadcrumbs__link:after {
       content: "";
       position: absolute;
-      top: -14px;
+      top: 0;
       right: 0;
       left: 0;
-      bottom: -14px;
+      bottom: 0;
     }
   }
 }
