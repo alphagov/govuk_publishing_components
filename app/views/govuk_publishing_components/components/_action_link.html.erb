@@ -6,34 +6,54 @@
   nowrap_text ||= false
   href ||= false
   subtext ||= false
+  subtext_href ||= false
+  mobile_subtext ||= false
   light_text ||= false
   simple ||= false
   dark_icon ||= false
+  nhs_icon ||= false
   data ||= nil
   classes ||= nil
 
   css_classes = %w(gem-c-action-link)
   css_classes << "gem-c-action-link--light-text" if light_text
   css_classes << "gem-c-action-link--dark-icon" if dark_icon
+  css_classes << "gem-c-action-link--nhs" if nhs_icon
   css_classes << "gem-c-action-link--simple" if simple
   css_classes << "gem-c-action-link--with-subtext" if subtext
+  css_classes << "gem-c-action-link--mobile-subtext" if mobile_subtext
   css_classes << (shared_helper.get_margin_bottom)
 
   link_classes = %w(govuk-link gem-c-action-link__link)
   link_classes << shared_helper.classes if classes
 %>
-<% if href.present? && text.present? %>
+<% if text.present? %>
   <div class="<%= css_classes.join(' ') %>">
     <% contents = capture do %>
       <span class="gem-c-action-link__link-wrapper">
-        <%= link_to  href, :class => link_classes, :data => data do %>
+        <% main_text = capture do %>
           <%= text %>
           <%= content_tag(:span, nowrap_text, class: "gem-c-action-link__nowrap-text") if nowrap_text %>
         <% end %>
+
+        <% if href.present? %>
+          <%= link_to href, class: link_classes, data: data do %>
+            <%= main_text %>
+          <% end %>
+        <% else %>
+          <%= main_text %>
+        <% end %>
       </span>
+
       <% if subtext %>
         <span class="gem-c-action-link__subtext-wrapper">
-          <%= content_tag(:span, subtext, class: "gem-c-action-link__subtext") %>
+          <% if subtext_href %>
+            <%= content_tag(:span, subtext, class: "gem-c-action-link__subtext") do %>
+              <%= link_to subtext, subtext_href, class: "gem-c-action-link__subtext-link govuk-link", data: data %>
+            <% end %>
+          <% else %>
+            <%= content_tag(:span, subtext, class: "gem-c-action-link__subtext") %>
+          <% end %>
         </span>
       <% end %>
     <% end %>
