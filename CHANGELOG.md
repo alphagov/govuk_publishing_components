@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Find components within components ([PR #1541](https://github.com/alphagov/govuk_publishing_components/pull/1541))
+
 ## 21.55.0
 
 * Add new options to action link component ([PR #1551](https://github.com/alphagov/govuk_publishing_components/pull/1551))
