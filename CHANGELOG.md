@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.55.1
 
 * Find components within components ([PR #1541](https://github.com/alphagov/govuk_publishing_components/pull/1541))
 
