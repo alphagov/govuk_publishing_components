@@ -58,20 +58,20 @@ module GovukPublishingComponents
       end
 
       def options(navigation)
-        if navigation.priority_breadcrumbs
+        if navigation.content_tagged_to_a_finder?
           {
-            step_by_step: true,
-            breadcrumbs: navigation.priority_breadcrumbs,
+            step_by_step: false,
+            breadcrumbs: navigation.breadcrumbs,
           }
         elsif navigation.content_tagged_to_current_step_by_step?
           {
             step_by_step: true,
             breadcrumbs: navigation.step_nav_helper.header,
           }
-        elsif navigation.content_tagged_to_a_finder?
+        elsif navigation.priority_breadcrumbs
           {
-            step_by_step: false,
-            breadcrumbs: navigation.breadcrumbs,
+            step_by_step: true,
+            breadcrumbs: navigation.priority_breadcrumbs,
           }
         elsif navigation.content_is_tagged_to_a_live_taxon? && prioritise_taxon_breadcrumbs
           {
