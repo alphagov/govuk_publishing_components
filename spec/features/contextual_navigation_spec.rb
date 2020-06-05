@@ -282,7 +282,7 @@ describe "Contextual navigation" do
 
   def given_theres_a_page_with_coronavirus_taxon
     live_taxon = example_item("taxon", "taxon")
-    live_taxon["links"]["parent_taxons"] << coronavirus_taxon
+    live_taxon["links"]["parent_taxons"] = [coronavirus_taxon]
 
     content_store_has_random_item links: { "taxons" => [live_taxon] }
   end
@@ -293,10 +293,11 @@ describe "Contextual navigation" do
 
   def given_there_is_a_parent_page_with_coronavirus_taxon
     taxon = example_item("taxon", "taxon")
-    taxon["links"]["parent_taxons"] << coronavirus_taxon
+    taxon["links"]["parent_taxons"] = [coronavirus_taxon]
 
     @parent = random_item("placeholder")
     @parent["links"]["taxons"] = [taxon]
+    @parent["links"].delete("finder")
   end
 
   def given_there_is_a_parent_page_with_two_taxon
@@ -311,6 +312,7 @@ describe "Contextual navigation" do
 
     @parent = random_item("placeholder")
     @parent["links"]["part_of_step_navs"] = [step_by_step]
+    @parent["links"].delete("finder")
   end
 
   def and_the_page_is_an_html_publication_with_that_parent
