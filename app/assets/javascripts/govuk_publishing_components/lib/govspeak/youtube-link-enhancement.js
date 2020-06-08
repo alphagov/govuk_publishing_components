@@ -109,6 +109,8 @@
             event.target.f.title = videoTitle + ' (video)'
           },
           onStateChange: function (event) {
+            var eventData = event.data
+            var eventTarget = event.target
             var states = {
               "-1": "VideoUnstarted",
               "0": "VideoEnded",
@@ -117,14 +119,13 @@
               "3": "VideoBuffering",
               "5": "VideoCued"
             }
-
-            if (states[event.data] && options.tracking && options.tracking.hasTracking
+            if (states[eventData] && options.tracking && options.tracking.hasTracking
                 && window.GOVUK.analytics && window.GOVUK.analytics.trackEvent)
             {
               var tracking = {
                 category: options.tracking.category,
-                action: states[event.data],
-                label: { transport: 'beacon', label: event.target.getVideoUrl() }
+                action: states[eventData],
+                label: { transport: 'beacon', label: eventTarget.getVideoData && eventTarget.getVideoData().title }
               }
 
               window.GOVUK.analytics.trackEvent(tracking.category, tracking.action, tracking.label)
