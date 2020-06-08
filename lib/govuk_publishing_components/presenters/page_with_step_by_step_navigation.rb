@@ -3,6 +3,8 @@ module GovukPublishingComponents
     # @private
     # Only used by the step by step component
     class PageWithStepByStepNavigation
+      MAX_SECTION_LENGTH = RelatedNavigationHelper::MAX_SECTION_LENGTH
+
       def initialize(content_store_response, current_path, query_parameters = {})
         @content_item = content_store_response.to_h.deep_symbolize_keys
         @current_path = current_path
@@ -48,7 +50,7 @@ module GovukPublishingComponents
       end
 
       def show_also_part_of_step_nav?
-        active_step_by_step? && also_part_of_step_nav.any? && step_navs_combined_list.count < 5
+        active_step_by_step? && also_part_of_step_nav.any? && step_navs_combined_list.count < MAX_SECTION_LENGTH
       end
 
       def related_links

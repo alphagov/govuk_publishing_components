@@ -34,7 +34,10 @@ module GovukPublishingComponents
       end
 
       def breadcrumbs
-        return breadcrumbs_based_on_parent unless content_tagged_to_a_finder?
+        breadcrumbs_based_on_ancestors
+      end
+
+      def finder_breadcrumbs
         return [] unless parent_finder
 
         [
@@ -119,8 +122,8 @@ module GovukPublishingComponents
         step_nav_helper.show_also_part_of_step_nav?
       end
 
-      def breadcrumbs_based_on_parent
-        ContentBreadcrumbsBasedOnParent.new(content_item).breadcrumbs[:breadcrumbs]
+      def breadcrumbs_based_on_ancestors
+        ContentBreadcrumbsBasedOnAncestors.new(content_item).breadcrumbs
       end
 
       def step_nav_helper
