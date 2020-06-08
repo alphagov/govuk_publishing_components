@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.55.2
 
 * Reorder the breadcrumb so superbreadcrumb not top option ([PR #1556](https://github.com/alphagov/govuk_publishing_components/pull/1556))
 
