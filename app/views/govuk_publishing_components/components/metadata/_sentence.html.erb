@@ -8,9 +8,9 @@
 %>
 <% if remaining.any? %>
   <%= items.to_sentence(last_word_connector: ', ').html_safe %>
-  <div class="gem-c-metadata__toggle-wrap">
+  <div class="gem-c-metadata__toggle-wrap govuk-!-display-none-print">
     <a href="#"
-       class="gem-c-metadata__definition-link"
+       class="gem-c-metadata__definition-link govuk-!-display-none-print"
        data-controls="toggle-<%= toggle_id %>"
        data-expanded="false"
        data-toggled-text="<%= t("components.metadata.toggle_less", default: "Show fewer") %>">

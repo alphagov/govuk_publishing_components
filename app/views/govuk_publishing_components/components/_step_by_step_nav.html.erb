@@ -19,7 +19,7 @@
 <% if steps %>
   <div
     data-module="gemstepnav"
-    class="gem-c-step-nav js-hidden <% unless small %>gem-c-step-nav--large<% end %>"
+    class="gem-c-step-nav js-hidden <% if small %>govuk-!-display-none-print<% end %> <% unless small %>gem-c-step-nav--large<% end %>"
     <%= "data-remember" if remember_last_step %>
     <%= "data-id=#{tracking_id}" if tracking_id %>
     data-show-text="<%= t("components.step_by_step_nav.show", default: "show") %>"
@@ -56,7 +56,7 @@
                       <%= logic %>
                     <% else %>
                       <% step_number += 1 %>
-                      <span class="gem-c-step-nav__circle-step-label visuallyhidden">Step</span> <%= step_number %><span class="gem-c-step-nav__circle-step-colon visuallyhidden" aria-hidden="true">:</span>
+                      <span class="gem-c-step-nav__circle-step-label govuk-!-display-none-print visuallyhidden">Step</span> <%= step_number %><span class="gem-c-step-nav__circle-step-colon govuk-!-display-none-print visuallyhidden" aria-hidden="true">:</span>
                     <% end %>
                   </span>
                 </span>
