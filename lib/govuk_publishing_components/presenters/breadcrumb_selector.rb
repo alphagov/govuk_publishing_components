@@ -25,6 +25,56 @@ module GovukPublishingComponents
 
     private
 
+      def best_match_option
+        return content_item_options unless content_item_navigation.html_publication_with_parent?
+
+        {
+          step_by_step: parent_is_step_by_step?,
+          breadcrumbs: parent_is_step_by_step? ? parent_breadcrumbs.first : parent_breadcrumbs,
+        }
+      end
+
+      def options(navigation)
+        if navigation.content_tagged_to_a_finder?
+          {
+            step_by_step: false,
+            breadcrumbs: navigation.finder_breadcrumbs,
+          }
+        elsif navigation.content_tagged_to_current_step_by_step?
+          {
+            step_by_step: true,
+            breadcrumbs: navigation.step_nav_helper.header,
+          }
+        elsif navigation.content_is_tagged_to_a_live_taxon? && prioritise_taxon_breadcrumbs
+          {
+            step_by_step: false,
+            breadcrumbs: navigation.taxon_breadcrumbs,
+          }
+        elsif navigation.content_tagged_to_mainstream_browse_pages?
+          {
+            step_by_step: false,
+            breadcrumbs: navigation.breadcrumbs,
+          }
+        elsif navigation.content_has_a_topic?
+          {
+            step_by_step: false,
+            breadcrumbs: navigation.topic_breadcrumbs,
+          }
+        elsif navigation.use_taxon_breadcrumbs?
+          {
+            step_by_step: false,
+            breadcrumbs: navigation.taxon_breadcrumbs,
+          }
+        elsif navigation.breadcrumbs.any?
+          {
+            step_by_step: false,
+            breadcrumbs: navigation.breadcrumbs,
+          }
+        else
+          {}
+        end
+      end
+
       def content_item_navigation
         @content_item_navigation ||= ContextualNavigation.new(content_item, request)
       end
@@ -59,56 +109,6 @@ module GovukPublishingComponents
 
       def parent_is_step_by_step?
         parent_item_options[:step_by_step]
-      end
-
-      def best_match_option
-        return content_item_options unless content_item_navigation.html_publication_with_parent?
-
-        {
-          step_by_step: parent_is_step_by_step?,
-          breadcrumbs: parent_is_step_by_step? ? parent_breadcrumbs.first : parent_breadcrumbs,
-        }
-      end
-
-      def options(navigation)
-        if navigation.content_tagged_to_a_finder?
-          {
-            step_by_step: false,
-            breadcrumbs: navigation.finder_breadcrumbs,
-          }
-        elsif navigation.content_tagged_to_current_step_by_step?
-          {
-            step_by_step: true,
-            breadcrumbs: navigation.step_nav_helper.header,
-          }
-        elsif navigation.content_is_tagged_to_a_live_taxon? && prioritise_taxon_breadcrumbs
-          {
-            step_by_step: false,
-            breadcrumbs: navigation.taxon_breadcrumbs,
-          }
-        elsif navigation.content_tagged_to_mainstream_browse_pages?
-          {
-            step_by_step: false,
-            breadcrumbs: navigation.breadcrumbs,
-          }
-        elsif navigation.content_has_curated_related_items?
-          {
-            step_by_step: false,
-            breadcrumbs: navigation.breadcrumbs,
-          }
-        elsif navigation.use_taxon_breadcrumbs?
-          {
-            step_by_step: false,
-            breadcrumbs: navigation.taxon_breadcrumbs,
-          }
-        elsif navigation.breadcrumbs.any?
-          {
-            step_by_step: false,
-            breadcrumbs: navigation.breadcrumbs,
-          }
-        else
-          {}
-        end
       end
     end
   end

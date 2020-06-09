@@ -10,12 +10,17 @@ describe "ContextualBreadcrumbs", type: :view do
   end
 
   def remove_mainstream_browse(content_item)
-    content_item["links"]["mainstream_browse_pages"] = nil
+    content_item["links"].delete("mainstream_browse_pages")
     content_item
   end
 
   def remove_curated_related_item(content_item)
-    content_item["links"]["ordered_related_items"] = nil
+    content_item["links"].delete("ordered_related_items")
+    content_item
+  end
+
+  def remove_topics(content_item)
+    content_item["links"].delete("topics")
     content_item
   end
 
@@ -83,6 +88,7 @@ describe "ContextualBreadcrumbs", type: :view do
     content_item = remove_mainstream_browse(content_item)
     content_item = remove_curated_related_item(content_item)
     content_item = set_live_taxons(content_item)
+    content_item = remove_topics(content_item)
     render_component(content_item: content_item)
     assert_no_selector(".gem-c-step-nav-header")
     assert_select "a", text: "Home"

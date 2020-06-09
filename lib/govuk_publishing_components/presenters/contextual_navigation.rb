@@ -26,11 +26,15 @@ module GovukPublishingComponents
       end
 
       def taxon_breadcrumbs
-        @taxon_breadcrumbs ||= ContentBreadcrumbsBasedOnTaxons.new(content_item).breadcrumbs
+        @taxon_breadcrumbs ||= ContentBreadcrumbsBasedOnTaxons.call(content_item)
       end
 
       def priority_breadcrumbs
         @priority_breadcrumbs ||= ContentBreadcrumbsBasedOnPriority.call(content_item)
+      end
+
+      def topic_breadcrumbs
+        @topic_breadcrumbs ||= ContentBreadcrumbsBasedOnTopic.call(content_item)
       end
 
       def breadcrumbs
@@ -80,6 +84,10 @@ module GovukPublishingComponents
         content_item["document_type"] == "html_publication"
       end
 
+      def content_has_a_topic?
+        content_item.dig("links", "topics").present?
+      end
+
       def tagged_to_brexit?
         taxons = content_item.dig("links", "taxons").to_a
         brexit_taxon = "d6c2de5d-ef90-45d1-82d4-5f2438369eea"
@@ -123,7 +131,7 @@ module GovukPublishingComponents
       end
 
       def breadcrumbs_based_on_ancestors
-        ContentBreadcrumbsBasedOnAncestors.new(content_item).breadcrumbs
+        ContentBreadcrumbsBasedOnAncestors.call(content_item)
       end
 
       def step_nav_helper
