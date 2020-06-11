@@ -59,7 +59,7 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     arel (9.0.0)
     ast (2.4.1)
-    brakeman (4.8.1)
+    brakeman (4.8.2)
     builder (3.2.4)
     byebug (11.1.3)
     capybara (3.32.2)
