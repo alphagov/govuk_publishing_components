@@ -1,8 +1,6 @@
 .gem-c-feedback {
   background: govuk-colour("white");
-  margin: govuk-spacing(6) auto 0 auto;
-  max-width: $govuk-page-width;
-  position: relative;
+  margin-top: govuk-spacing(6);
 
   @include govuk-media-query($from: tablet) {
     margin-top: govuk-spacing(9);
@@ -182,7 +180,6 @@
 }
 
 .gem-c-feedback__form {
-  margin: govuk-spacing(3) govuk-spacing(2) 0 govuk-spacing(2);
   padding: govuk-spacing(3) 0;
   border-top: govuk-spacing(2) solid govuk-colour("blue");
 
