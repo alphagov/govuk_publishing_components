@@ -1,10 +1,6 @@
 module GovukPublishingComponents
   module Presenters
     class BreadcrumbSelector
-      def self.call(*args)
-        new(*args).output
-      end
-
       attr_reader :content_item, :request, :prioritise_taxon_breadcrumbs
 
       def initialize(content_item, request, prioritise_taxon_breadcrumbs)
@@ -12,6 +8,22 @@ module GovukPublishingComponents
         @request = request
         @prioritise_taxon_breadcrumbs = prioritise_taxon_breadcrumbs
       end
+
+      def breadcrumbs
+        best_match_option[:breadcrumbs]
+      end
+
+      def step_by_step
+        best_match_option[:step_by_step]
+      end
+
+      def priority_breadcrumbs
+        return parent_item_navigation.priority_breadcrumbs if content_item_navigation.html_publication_with_parent?
+
+        content_item_navigation.priority_breadcrumbs
+      end
+
+    private
 
       def content_item_navigation
         @content_item_navigation ||= ContextualNavigation.new(content_item, request)
@@ -45,9 +57,8 @@ module GovukPublishingComponents
         }
       end
 
-      def output
+      def best_match_option
         return content_item_options unless content_item_navigation.html_publication_with_parent?
-        return parent_item_options if parent_item_navigation.priority_breadcrumbs
 
         step_by_step_header = parent_item_options[:step_by_step]
 
@@ -67,11 +78,6 @@ module GovukPublishingComponents
           {
             step_by_step: true,
             breadcrumbs: navigation.step_nav_helper.header,
-          }
-        elsif navigation.priority_breadcrumbs
-          {
-            step_by_step: true,
-            breadcrumbs: navigation.priority_breadcrumbs,
           }
         elsif navigation.content_is_tagged_to_a_live_taxon? && prioritise_taxon_breadcrumbs
           {

@@ -4,8 +4,9 @@ describe "Contextual navigation" do
   scenario "There is a coronavirus taxon" do
     given_theres_a_page_with_coronavirus_taxon
     and_i_visit_that_page
-    then_i_do_not_see_home_and_parent_breadcrumbs
-    then_i_see_the_coronavirus_contextual_breadcrumbs
+    then_i_see_the_step_by_step
+    and_the_step_by_step_header
+    and_i_see_the_coronavirus_contextual_breadcrumbs
   end
 
   scenario "There's a step by step list" do
@@ -54,15 +55,15 @@ describe "Contextual navigation" do
     given_there_is_a_parent_page
     and_the_page_is_an_html_publication_with_that_parent
     and_i_visit_that_page
-    then_i_see_home_and_parent_breadcrumbs
+    then_i_see_home_and_parent_links
   end
 
   scenario "It's a HTML Publication with a parent with coronavirus taxon" do
     given_there_is_a_parent_page_with_coronavirus_taxon
     and_the_page_is_an_html_publication_with_that_parent
     and_i_visit_that_page
-    then_i_do_not_see_home_and_parent_breadcrumbs
-    then_i_see_the_coronavirus_contextual_breadcrumbs
+    then_i_see_home_and_parent_links
+    and_i_see_the_coronavirus_contextual_breadcrumbs
   end
 
   scenario "It's a HTML Publication with a parent with breadcrumbs" do
@@ -118,7 +119,6 @@ describe "Contextual navigation" do
     given_there_are_one_primary_step_by_steps_and_one_secondary_to_step_navs
     and_i_visit_that_page
     then_i_see_the_step_by_step
-    and_the_step_by_step_header
     then_i_see_the_primary_step_by_step
   end
 
@@ -284,7 +284,12 @@ describe "Contextual navigation" do
     live_taxon = example_item("taxon", "taxon")
     live_taxon["links"]["parent_taxons"] = [coronavirus_taxon]
 
-    content_store_has_random_item links: { "taxons" => [live_taxon] }
+    content_store_has_random_item(
+      links: {
+        "taxons" => [live_taxon],
+        part_of_step_navs: [random_step_nav_item("step_by_step_nav")],
+      },
+    )
   end
 
   def given_there_is_a_parent_page
@@ -426,7 +431,7 @@ describe "Contextual navigation" do
     end
   end
 
-  def then_i_see_the_coronavirus_contextual_breadcrumbs
+  def and_i_see_the_coronavirus_contextual_breadcrumbs
     within ".gem-c-contextual-breadcrumbs" do
       expect(page).to have_link(coronavirus_taxon["title"])
     end
@@ -447,6 +452,14 @@ describe "Contextual navigation" do
   def then_i_see_the_legacy_topic_in_the_related_navigation_footer
     within ".gem-c-contextual-footer" do
       expect(page).to have_css(".gem-c-related-navigation__link", text: "Oil and gas")
+    end
+  end
+
+  # Use links version if output could be either step by step or breadcrumbs
+  def then_i_see_home_and_parent_links
+    within ".gem-c-contextual-breadcrumbs" do
+      expect(page).to have_link("Home")
+      expect(page).to have_link(@parent["title"])
     end
   end
 
