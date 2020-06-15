@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.55.4
 
 * Rework suggested imports functionality ([PR #1571](https://github.com/alphagov/govuk_publishing_components/pull/1571))
 * Remove unnecessary margin around expanded feedback component ([PR #1547](https://github.com/alphagov/govuk_publishing_components/pull/1547))
