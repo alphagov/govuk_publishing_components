@@ -33,7 +33,7 @@ describe "Summary list", type: :view do
     )
     assert_select ".gem-c-summary-list h3.govuk-heading-m.gem-c-summary-list__group-title", text: "Title, summary and body"
     assert_select '.gem-c-summary-list__group-actions-list .govuk-link[title="Change Title, summary and body"][href="#edit-title-summary-body"][data-gtm="edit-title-summary-body"]', text: "Change Title, summary and body"
-    assert_select '.gem-c-summary-list__group-actions-list .govuk-link[title="Delete Title, summary and body"][href="#delete-title-summary-body"][data-gtm="delete-title-summary-body"]', text: "Delete Title, summary and body"
+    assert_select '.gem-c-summary-list__group-actions-list .govuk-link.gem-link--destructive[title="Delete Title, summary and body"][href="#delete-title-summary-body"][data-gtm="delete-title-summary-body"]', text: "Delete Title, summary and body"
   end
 
   it "renders section title with custom link text" do
@@ -120,7 +120,7 @@ describe "Summary list", type: :view do
     )
     assert_select ".govuk-summary-list__key", text: "Title"
     assert_select ".govuk-summary-list__value", text: "Ethical standards for public service providers"
-    assert_select '.govuk-summary-list__actions-list-item .govuk-link[title="Delete Title"][href="#delete-title"][data-gtm="delete-title"]', text: "Delete Title"
+    assert_select '.govuk-summary-list__actions-list-item .govuk-link.gem-link--destructive[title="Delete Title"][href="#delete-title"][data-gtm="delete-title"]', text: "Delete Title"
   end
 
   it "renders items with custom text for edit and delete action" do
@@ -141,6 +141,6 @@ describe "Summary list", type: :view do
       ],
     )
     assert_select '.govuk-summary-list__actions-list-item .govuk-link[title="Edit Title"][href="#edit-title"]', text: "Edit Title"
-    assert_select '.govuk-summary-list__actions-list-item .govuk-link[title="Remove Title"][href="#delete-title"]', text: "Remove Title"
+    assert_select '.govuk-summary-list__actions-list-item .govuk-link.gem-link--destructive[title="Remove Title"][href="#delete-title"]', text: "Remove Title"
   end
 end
