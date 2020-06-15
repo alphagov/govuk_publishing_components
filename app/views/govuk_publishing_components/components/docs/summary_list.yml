@@ -1,5 +1,6 @@
 name: Summary list
 description: Use the summary list to summarise information, for example, a user’s responses at the end of a form.
+body:  This component extends the [Summary list component in the Design System](https://design-system.service.gov.uk/components/summary-list/) allowing the rendering of multiple groups of lists, and actions at the group level.
 accessibility_criteria: |
   Action links in the component must:
 
@@ -40,6 +41,26 @@ examples:
         href: "edit-title-summary-body"
         data_attributes:
           gtm: "edit-title-summary-body"
+
+  with_delete_on_section:
+    data:
+      <<: *default-example-data
+      delete:
+        href: "delete-title-summary-body"
+        data_attributes:
+          gtm: "delete-title-summary-body"
+
+  with_edit_and_delete_on_section:
+    data:
+      <<: *default-example-data
+      edit:
+        href: "edit-title-summary-body"
+        data_attributes:
+          gtm: "edit-title-summary-body"
+      delete:
+        href: "delete-title-summary-body"
+        data_attributes:
+          gtm: "delete-title-summary-body"
 
   with_custom_link_on_section:
     description: |

@@ -15,7 +15,7 @@ describe "Summary list", type: :view do
     assert_select ".gem-c-summary-list .govuk-heading-m", text: "Title, summary and body"
   end
 
-  it "renders section title with edit action" do
+  it "renders section title with edit and delete actions" do
     render_component(
       title: "Title, summary and body",
       edit: {
@@ -24,9 +24,16 @@ describe "Summary list", type: :view do
           gtm: "edit-title-summary-body",
         },
       },
+      delete: {
+        href: "#delete-title-summary-body",
+        data_attributes: {
+          gtm: "delete-title-summary-body",
+        },
+      },
     )
-    assert_select ".gem-c-summary-list .govuk-heading-m", text: "Title, summary and body"
-    assert_select '.gem-c-summary-list__edit-section-link[title="Change Title, summary and body"][href="#edit-title-summary-body"][data-gtm="edit-title-summary-body"]', text: "Change Title, summary and body"
+    assert_select ".gem-c-summary-list h3.govuk-heading-m.gem-c-summary-list__group-title", text: "Title, summary and body"
+    assert_select '.gem-c-summary-list__group-actions-list .govuk-link[title="Change Title, summary and body"][href="#edit-title-summary-body"][data-gtm="edit-title-summary-body"]', text: "Change Title, summary and body"
+    assert_select '.gem-c-summary-list__group-actions-list .govuk-link[title="Delete Title, summary and body"][href="#delete-title-summary-body"][data-gtm="delete-title-summary-body"]', text: "Delete Title, summary and body"
   end
 
   it "renders section title with custom link text" do
@@ -38,7 +45,7 @@ describe "Summary list", type: :view do
       },
     )
     assert_select ".gem-c-summary-list .govuk-heading-m", text: "Items"
-    assert_select '.gem-c-summary-list__edit-section-link[title="Reorder Items"][href="#custom-action"]', text: "Reorder Items"
+    assert_select '.gem-c-summary-list__group-actions-list .govuk-link[title="Reorder Items"][href="#custom-action"]', text: "Reorder Items"
   end
 
   it "renders section title with block" do

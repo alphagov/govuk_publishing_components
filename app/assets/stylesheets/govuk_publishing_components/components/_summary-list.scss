@@ -1,7 +1,6 @@
 @import "govuk/components/summary-list/summary-list";
 
 .gem-c-summary-list {
-  position: relative;
   border-bottom: 1px solid $govuk-border-colour;
 
   @include govuk-font(19);
@@ -14,12 +13,26 @@
   &:nth-last-of-type(1) {
     border-bottom: 0;
   }
+
+  .govuk-summary-list {
+    clear: both;
+  }
 }
 
-.gem-c-summary-list__edit-section-link {
-  position: absolute;
-  top: 0;
-  right: 0;
+.gem-c-summary-list__group-title {
+  @include govuk-media-query($from: tablet) {
+    display: inline-block;
+    margin-right: govuk-spacing(3);
+  }
+}
+
+.gem-c-summary-list__group-actions-list {
+  margin-bottom: govuk-spacing(3);
+
+  @include govuk-media-query($from: tablet) {
+    float: right;
+    width: auto;
+  }
 }
 
 .gem-c-summary__block {
