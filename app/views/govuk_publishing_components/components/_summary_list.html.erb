@@ -1,4 +1,8 @@
 <%
+  local_assigns[:heading_level] ||= 3
+  heading_size = 'm' unless ['s', 'm', 'l', 'xl'].include?(heading_size)
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+
   id ||= nil
   title ||= nil
   borderless ||= false
@@ -10,7 +14,7 @@
 <% if title || items.any? %>
   <%= tag.div class: "gem-c-summary-list #{"govuk-summary-list--no-border" if borderless}", id: id do %>
     <% if title %>
-      <%= tag.h3 title, class: "govuk-heading-m gem-c-summary-list__group-title" %>
+      <%= content_tag(shared_helper.get_heading_level, title, class: "govuk-heading-#{heading_size} gem-c-summary-list__group-title") %>
       <% if edit.any? || delete.any? %>
         <%= tag.ul class: "govuk-summary-list__actions-list gem-c-summary-list__group-actions-list" do %>
           <%- if edit.any? %>

@@ -36,15 +36,17 @@ describe "Summary list", type: :view do
     assert_select '.gem-c-summary-list__group-actions-list .govuk-link.gem-link--destructive[title="Delete Title, summary and body"][href="#delete-title-summary-body"][data-gtm="delete-title-summary-body"]', text: "Delete Title, summary and body"
   end
 
-  it "renders section title with custom link text" do
+  it "renders section title with custom link text and heading level" do
     render_component(
       title: "Items",
+      heading_level: 2,
+      heading_size: "l",
       edit: {
         href: "#custom-action",
         link_text: "Reorder",
       },
     )
-    assert_select ".gem-c-summary-list .govuk-heading-m", text: "Items"
+    assert_select ".gem-c-summary-list h2.govuk-heading-l", text: "Items"
     assert_select '.gem-c-summary-list__group-actions-list .govuk-link[title="Reorder Items"][href="#custom-action"]', text: "Reorder Items"
   end
 
