@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Rework suggested imports functionality ([PR #1571](https://github.com/alphagov/govuk_publishing_components/pull/1571))
 * Remove unnecessary margin around expanded feedback component ([PR #1547](https://github.com/alphagov/govuk_publishing_components/pull/1547))
 
 ## 21.55.3

@@ -2,6 +2,8 @@ module GovukPublishingComponents
   class ComponentGuideController < GovukPublishingComponents::ApplicationController
     append_view_path File.join(Rails.root, "app", "views", GovukPublishingComponents::Config.component_directory_name)
 
+    MATCH_COMPONENTS = /(?<=govuk_publishing_components\/components\/)[\/a-zA-Z_-]+(?=['"])/.freeze
+
     def index
       @application_path = Rails.root
       @component_gem_path = Gem.loaded_specs["govuk_publishing_components"].full_gem_path
@@ -86,24 +88,30 @@ module GovukPublishingComponents
 
       files.each do |file|
         data = File.read(file)
-        matches << data.scan(/(govuk_publishing_components\/components\/[a-z_-]+)/)
+        matches << data.scan(MATCH_COMPONENTS)
       end
 
-      matches.flatten.uniq.map(&:to_s).sort.map { |m| m.gsub("govuk_publishing_components/components/", "") }
+      matches.flatten.uniq.map(&:to_s).sort
     end
 
-    def find_all_partials_in(components)
-      components_to_search = components
-      partials_found = true
+    def find_all_partials_in(templates)
+      components = [templates]
 
-      while partials_found
-        extra_components = find_partials_in(components_to_search)
+      templates.each do |template|
+        partials_found = true
+        components_to_search = [template]
+        components_found = []
 
-        if extra_components.any?
-          components << extra_components
-          components_to_search = extra_components
-        else
-          partials_found = false
+        while partials_found
+          extra_components = find_partials_in(components_to_search)
+
+          if extra_components.any?
+            components_found << extra_components
+            components_to_search = extra_components
+          else
+            partials_found = false
+            components << components_found.uniq.sort if components_found.any?
+          end
         end
       end
 
@@ -113,8 +121,7 @@ module GovukPublishingComponents
     def find_partials_in(components)
       extra_components = []
       components.each do |component|
-        components_in_component = components_within_component(component)
-        extra_components << components_in_component
+        extra_components << components_within_component(component)
       end
 
       extra_components.flatten.uniq.sort
@@ -132,9 +139,12 @@ module GovukPublishingComponents
     def components_within_component(component)
       filename = @component_gem_path + "/app/views/govuk_publishing_components/components/#{component}.html.erb"
       filename = filename.sub(/.*\K\//, "/_") # files begin with _ but the method may have been passed 'filename' or 'dir/partial'
+
+      return [] unless File.file?(filename)
+
       data = File.read(filename)
-      match = data.scan(/(govuk_publishing_components\/components\/[\/a-z_-]+)/)
-      match.flatten.uniq.map(&:to_s).sort.map { |m| m.gsub("govuk_publishing_components/components/", "") }
+      match = data.scan(MATCH_COMPONENTS)
+      match.flatten.uniq.map(&:to_s).sort
     end
 
     def index_breadcrumb
