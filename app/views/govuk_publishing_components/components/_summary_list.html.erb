@@ -1,23 +1,42 @@
 <%
+  local_assigns[:heading_level] ||= 3
+  heading_size = 'm' unless ['s', 'm', 'l', 'xl'].include?(heading_size)
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+
   id ||= nil
   title ||= nil
   borderless ||= false
   edit ||= {}
+  delete ||= {}
   items ||= []
   block ||= yield
 %>
 <% if title || items.any? %>
   <%= tag.div class: "gem-c-summary-list #{"govuk-summary-list--no-border" if borderless}", id: id do %>
     <% if title %>
-      <%= tag.h3 title, class: "govuk-heading-m" %>
-      <% if edit.any? %>
-        <%= tag.ul class: "govuk-summary-list__actions-list" do %>
-          <%= tag.li class: "govuk-summary-list__actions-list-item" do %>
-            <%= link_to edit.fetch(:href),
-                      class: "govuk-link gem-c-summary-list__edit-section-link",
-                      title: "#{edit.fetch(:link_text, "Change")} #{title}",
-                      data: edit.fetch(:data_attributes, {}) do %>
-               <%= edit.fetch(:link_text, "Change") %> <%= tag.span title, class: "govuk-visually-hidden" %>
+      <%= content_tag(shared_helper.get_heading_level, title, class: "govuk-heading-#{heading_size} gem-c-summary-list__group-title") %>
+      <% if edit.any? || delete.any? %>
+        <%= tag.ul class: "govuk-summary-list__actions-list gem-c-summary-list__group-actions-list" do %>
+          <%- if edit.any? %>
+            <% edit_section_link_text = edit[:link_text] || t("components.summary_list.edit") %>
+            <%= tag.li class: "govuk-summary-list__actions-list-item" do -%>
+              <%= link_to edit.fetch(:href),
+                        class: "govuk-link",
+                        title: "#{edit_section_link_text} #{title}",
+                        data: edit.fetch(:data_attributes, {}) do %>
+                <%= edit_section_link_text %><%= tag.span " #{title}", class: "govuk-visually-hidden" -%>
+              <% end %>
+            <% end %>
+          <% end %>
+          <% if delete.any? %>
+            <% delete_section_link_text = delete[:link_text] || t("components.summary_list.delete") %>
+            <%= tag.li class: "govuk-summary-list__actions-list-item" do -%>
+              <%= link_to delete.fetch(:href),
+                        class: "govuk-link gem-link--destructive",
+                        title: "#{delete_section_link_text} #{title}",
+                        data: delete.fetch(:data_attributes, {}) do %>
+                <%= delete_section_link_text %><%= tag.span " #{title}", class: "govuk-visually-hidden" -%>
+              <% end %>
             <% end %>
           <% end %>
         <% end %>
@@ -37,22 +56,23 @@
                 <%= tag.ul class: "govuk-summary-list__actions-list" do %>
                   <% if item.fetch(:edit, {}).any? %>
                     <%= tag.li class: "govuk-summary-list__actions-list-item" do %>
-                      <% edit_link_text = item[:edit][:link_text] || "Change" %>
+                      <% edit_link_text = item[:edit][:link_text] || t("components.summary_list.edit") %>
                       <%= link_to item[:edit].fetch(:href),
                                   class: "govuk-link",
                                   title: "#{edit_link_text} #{item[:field]}",
                                   data: item[:edit].fetch(:data_attributes, {}) do %>
-                        <%= edit_link_text %><%= tag.span " #{item[:field]}", class: "govuk-visually-hidden" %><% end %>
+                        <%= edit_link_text %><%= tag.span " #{item[:field]}", class: "govuk-visually-hidden" -%>
+                      <% end %>
                     <% end %>
                   <% end %>
                   <% if item.fetch(:delete, {}).any? %>
                     <%= tag.li class: "govuk-summary-list__actions-list-item" do %>
-                      <% delete_link_text = item[:delete][:link_text] || "Delete" %>
+                      <% delete_link_text = item[:delete][:link_text] || t("components.summary_list.delete") %>
                       <%= link_to item[:delete].fetch(:href),
-                                  class: "govuk-link",
+                                  class: "govuk-link gem-link--destructive",
                                   title: "#{delete_link_text} #{item[:field]}",
                                   data: item[:delete].fetch(:data_attributes, {}) do %>
-                        <%= delete_link_text %><%= tag.span " #{item[:field]}", class: "govuk-visually-hidden" %>
+                        <%= delete_link_text %><%= tag.span " #{item[:field]}", class: "govuk-visually-hidden" -%>
                       <% end %>
                     <% end %>
                   <% end %>

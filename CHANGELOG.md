@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update summary list component to allow delete action at the group level and custom heading levels ([PR #1574](https://github.com/alphagov/govuk_publishing_components/pull/1574))
+
 ## 21.55.4
 
 * Rework suggested imports functionality ([PR #1571](https://github.com/alphagov/govuk_publishing_components/pull/1571))
