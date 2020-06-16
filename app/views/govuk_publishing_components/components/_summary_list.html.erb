@@ -18,7 +18,7 @@
       <% if edit.any? || delete.any? %>
         <%= tag.ul class: "govuk-summary-list__actions-list gem-c-summary-list__group-actions-list" do %>
           <%- if edit.any? %>
-            <% edit_section_link_text = edit[:link_text] || "Change" %>
+            <% edit_section_link_text = edit[:link_text] || t("components.summary_list.edit") %>
             <%= tag.li class: "govuk-summary-list__actions-list-item" do -%>
               <%= link_to edit.fetch(:href),
                         class: "govuk-link",
@@ -29,7 +29,7 @@
             <% end %>
           <% end %>
           <% if delete.any? %>
-            <% delete_section_link_text = delete[:link_text] || "Delete" %>
+            <% delete_section_link_text = delete[:link_text] || t("components.summary_list.delete") %>
             <%= tag.li class: "govuk-summary-list__actions-list-item" do -%>
               <%= link_to delete.fetch(:href),
                         class: "govuk-link gem-link--destructive",
@@ -56,7 +56,7 @@
                 <%= tag.ul class: "govuk-summary-list__actions-list" do %>
                   <% if item.fetch(:edit, {}).any? %>
                     <%= tag.li class: "govuk-summary-list__actions-list-item" do %>
-                      <% edit_link_text = item[:edit][:link_text] || "Change" %>
+                      <% edit_link_text = item[:edit][:link_text] || t("components.summary_list.edit") %>
                       <%= link_to item[:edit].fetch(:href),
                                   class: "govuk-link",
                                   title: "#{edit_link_text} #{item[:field]}",
@@ -67,7 +67,7 @@
                   <% end %>
                   <% if item.fetch(:delete, {}).any? %>
                     <%= tag.li class: "govuk-summary-list__actions-list-item" do %>
-                      <% delete_link_text = item[:delete][:link_text] || "Delete" %>
+                      <% delete_link_text = item[:delete][:link_text] || t("components.summary_list.delete") %>
                       <%= link_to item[:delete].fetch(:href),
                                   class: "govuk-link gem-link--destructive",
                                   title: "#{delete_link_text} #{item[:field]}",

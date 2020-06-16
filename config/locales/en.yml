@@ -71,3 +71,6 @@ en:
       email_signup_link_text: "Get email alerts"
       feed_link_text: "Subscribe to feed"
       subscriptions: "Subscriptions"
+    summary_list:
+      edit: "Change"
+      delete: "Delete"
