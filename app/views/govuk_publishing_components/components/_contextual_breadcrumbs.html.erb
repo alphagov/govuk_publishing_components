@@ -1,16 +1,20 @@
 <% prioritise_taxon_breadcrumbs ||= false %>
-<% breadcrumb_selector = GovukPublishingComponents::Presenters::BreadcrumbSelector.call(content_item, request, prioritise_taxon_breadcrumbs) %>
+<% breadcrumb_selector = GovukPublishingComponents::Presenters::BreadcrumbSelector.new(content_item, request, prioritise_taxon_breadcrumbs) %>
 <% inverse ||= false %>
 <% collapse_on_mobile ||= true unless local_assigns[:collapse_on_mobile].eql?(false) %>
 
-<div class='gem-c-contextual-breadcrumbs'>
-  <% if breadcrumb_selector[:step_by_step] %>
-    <%= render 'govuk_publishing_components/components/step_by_step_nav_header',
-               breadcrumb_selector[:breadcrumbs] %>
-  <% elsif breadcrumb_selector[:breadcrumbs] %>
+<div class="gem-c-contextual-breadcrumbs">
+  <% if breadcrumb_selector.step_by_step %>
+    <%= render 'govuk_publishing_components/components/step_by_step_nav_header', breadcrumb_selector.breadcrumbs %>
+  <% elsif breadcrumb_selector.breadcrumbs %>
     <%= render 'govuk_publishing_components/components/breadcrumbs',
-               breadcrumbs: breadcrumb_selector[:breadcrumbs],
+               breadcrumbs: breadcrumb_selector.breadcrumbs,
                inverse: inverse,
                collapse_on_mobile: collapse_on_mobile %>
   <% end %>
+
+  <%= render(
+        'govuk_publishing_components/components/step_by_step_nav_header', breadcrumb_selector.priority_breadcrumbs
+      ) if breadcrumb_selector.priority_breadcrumbs
+  %>
 </div>
