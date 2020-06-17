@@ -6,6 +6,7 @@ module GovukPublishingComponents
       #   and the bottom one the lowest priority
       PRIORITY_TAXONS = {
         education_coronavirus: "272308f4-05c8-4d0d-abc7-b7c2e3ccd249",
+        worker_coronavirus: "b7f57213-4b16-446d-8ded-81955d782680",
         business_coronavirus: "65666cdf-b177-4d79-9687-b9c32805e450",
       }.freeze
 
