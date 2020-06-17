@@ -16,7 +16,6 @@ module GovukPublishingComponents
         return breadcrumbs unless topics.present?
 
         breadcrumbs << topic_breadcrumb
-        breadcrumbs.reverse!
         breadcrumbs
       end
 
