@@ -52,7 +52,7 @@ describe "Contextual navigation" do
   end
 
   scenario "It's a HTML Publication document" do
-    given_there_is_a_parent_page
+    given_there_is_a_non_step_by_step_parent_page
     and_the_page_is_an_html_publication_with_that_parent
     and_i_visit_that_page
     then_i_see_home_and_parent_links
@@ -292,17 +292,24 @@ describe "Contextual navigation" do
     )
   end
 
-  def given_there_is_a_parent_page
-    @parent = random_item("placeholder")
+  def given_there_is_a_non_step_by_step_parent_page
+    @parent = not_step_by_step_content
   end
 
   def given_there_is_a_parent_page_with_coronavirus_taxon
     taxon = example_item("taxon", "taxon")
     taxon["links"]["parent_taxons"] = [coronavirus_taxon]
 
-    @parent = random_item("placeholder")
+    @parent = not_step_by_step_content
     @parent["links"]["taxons"] = [taxon]
     @parent["links"].delete("finder")
+  end
+
+  def not_step_by_step_content
+    not_step_by_step_content = random_item("placeholder")
+    not_step_by_step_content["links"].delete("part_of_step_navs")
+    not_step_by_step_content["links"].delete("secondary_to_step_navs")
+    not_step_by_step_content
   end
 
   def given_there_is_a_parent_page_with_two_taxon
