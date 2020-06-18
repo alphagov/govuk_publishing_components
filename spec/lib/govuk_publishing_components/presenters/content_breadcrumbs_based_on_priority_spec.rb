@@ -17,6 +17,14 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
     }
   end
 
+  let(:worker_taxon) do
+    {
+      "content_id" => "b7f57213-4b16-446d-8ded-81955d782680",
+      "base_path" => "/coronavirus-taxon/work-and-financial-support",
+      "title" => "Work and financial support during coronavirus",
+    }
+  end
+
   let(:other_taxon) do
     {
       "content_id" => SecureRandom.uuid,
@@ -41,6 +49,14 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
 
           it "returns the business taxon" do
             expect(subject.taxon).to eq(business_taxon)
+          end
+        end
+
+        context "with worker taxon" do
+          let(:payload) { [worker_taxon] }
+
+          it "returns the worker taxon" do
+            expect(subject.taxon).to eq(worker_taxon)
           end
         end
 
