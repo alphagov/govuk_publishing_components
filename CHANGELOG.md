@@ -7,12 +7,12 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## unreleased
+## 21.56.1
 
 * Replace bodged parent breadcrumbs with specialist topic breadcrumbs ([PR #1565](https://github.com/alphagov/govuk_publishing_components/pull/1565))
 * Add worker support hub page to the priority breadcrumb list ([PR #1579](https://github.com/alphagov/govuk_publishing_components/pull/1579))
 
-## 21.26.0
+## 21.56.0
 
 * Update summary list component to allow delete action at the group level and custom heading levels ([PR #1574](https://github.com/alphagov/govuk_publishing_components/pull/1574))
 
