@@ -31,7 +31,7 @@ module GovukPublishingComponents
           }
         when :footer
           {
-            "topics" => related_topics,
+            "topics" => related_topics_or_taxons,
             "topical_events" => related_topical_events,
             "world_locations" => related_world_locations,
             "statistical_data_sets" => related_statistical_data_sets,
@@ -43,7 +43,7 @@ module GovukPublishingComponents
             "related_items" => related_items,
             "related_guides" => related_guides,
             "collections" => related_document_collections,
-            "topics" => related_topics,
+            "topics" => related_topics_or_taxons,
             "topical_events" => related_topical_events,
             "world_locations" => related_world_locations,
             "statistical_data_sets" => related_statistical_data_sets,
@@ -162,26 +162,27 @@ module GovukPublishingComponents
       end
 
       def related_taxons
-        content_item_links_for("taxons", only: "taxon")
+        @related_taxons ||= content_item_links_for("taxons", only: "taxon")
+      end
+
+      def related_topics_or_taxons
+        return related_topics if related_topics.any?
+        return related_taxons if related_taxons.any?
+
+        []
       end
 
       def related_topics
-        if related_legacy_topics.any?
-          related_legacy_topics
-        elsif related_taxons.any?
-          related_taxons
-        else
-          []
-        end
-      end
+        @related_topics ||= begin
+          mainstream_browse_page_links = content_item_links_for("mainstream_browse_pages", only: "mainstream_browse_page")
+          topic_links = content_item_links_for("topics", only: "topic")
 
-      def related_legacy_topics
-        mainstream_browse_page_links = content_item_links_for("mainstream_browse_pages", only: "mainstream_browse_page")
-        topic_links = content_item_links_for("topics", only: "topic")
+          return topic_links if topic_links.present? && mainstream_browse_page_links.empty?
 
-        mainstream_browse_page_links + topic_links.find_all do |topic_link|
-          mainstream_browse_page_links.none? do |mainstream_browse_page_link|
-            mainstream_browse_page_link[:text] == topic_link[:text]
+          mainstream_browse_page_links + topic_links.find_all do |topic_link|
+            mainstream_browse_page_links.none? do |mainstream_browse_page_link|
+              mainstream_browse_page_link[:text] == topic_link[:text]
+            end
           end
         end
       end

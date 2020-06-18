@@ -31,24 +31,30 @@ describe "Contextual navigation" do
   end
 
   scenario "There's a mainstream browse page tagged" do
-    given_theres_a_page_with_browse_page
+    given_theres_a_browse_page
     and_i_visit_that_page
     then_i_see_the_browse_page_in_the_footer
-    and_the_parent_based_breadcrumbs
+    and_the_default_breadcrumbs
   end
 
   scenario "The page has curated related items" do
     given_theres_a_page_with_related_items
     and_i_visit_that_page
     then_i_see_the_related_links_sidebar
-    and_the_parent_based_breadcrumbs
+    and_the_default_breadcrumbs
   end
 
-  scenario "It's a travel advice page" do
-    given_there_is_a_travel_advice_page
+  scenario "The page has a topic" do
+    given_theres_a_page_with_a_topic
     and_i_visit_that_page
-    then_i_see_the_related_links_sidebar
-    and_the_parent_based_breadcrumbs
+    then_i_see_the_topic_breadcrumb
+  end
+
+  scenario "The page has many topics" do
+    given_theres_a_page_with_more_than_one_topic
+    and_i_visit_that_page
+    then_i_see_the_topic_breadcrumb
+    and_i_see_the_both_topics_in_the_related_navigation_footer
   end
 
   scenario "It's a HTML Publication document" do
@@ -88,11 +94,11 @@ describe "Contextual navigation" do
     and_the_taxonomy_breadcrumbs
   end
 
-  scenario "There's legacy things tagged" do
-    given_theres_a_page_with_just_legacy_taxonomy
+  scenario "A browse page has a topic" do
+    given_theres_a_browse_page_with_a_topic
     and_i_visit_that_page
-    then_i_see_the_legacy_topic_in_the_related_navigation_footer
-    and_the_parent_based_breadcrumbs
+    then_i_see_the_topic_in_the_related_navigation_footer
+    and_the_default_breadcrumbs
   end
 
   scenario "There's a secondary step by step list and no primary step by step list" do
@@ -228,10 +234,10 @@ describe "Contextual navigation" do
     })
   end
 
-  def given_theres_a_page_with_browse_page
+  def given_theres_a_browse_page
     content_store_has_random_item(
       links: {
-        "parent" => [example_item("mainstream_browse_page", "top_level_page")],
+        "parent" => [top_level_mainstream_browse_page],
         "mainstream_browse_pages" => [example_item("mainstream_browse_page", "root_page")],
       },
     )
@@ -240,30 +246,15 @@ describe "Contextual navigation" do
   def given_theres_a_page_with_related_items
     content_store_has_random_item(
       links: {
-        "parent" => [example_item("mainstream_browse_page", "top_level_page")],
+        "parent" => [top_level_mainstream_browse_page],
         "ordered_related_items" => [example_item("guide", "guide")],
       },
     )
-  end
-
-  def given_there_is_a_travel_advice_page
-    content_item = random_item(
-      "travel_advice",
-      "base_path" => "/page-with-contextual-navigation",
-      "document_type" => "travel_advice",
-      "links" => {
-        "parent" => [example_item("mainstream_browse_page", "top_level_page")],
-        "taxons" => [example_item("taxon", "taxon")],
-        "ordered_related_items" => [example_item("guide", "guide")],
-      },
-    )
-
-    stub_content_store_has_item(content_item["base_path"], content_item)
   end
 
   def given_theres_a_guide_with_a_live_taxon_tagged_to_it
     alpha_taxon = example_item("taxon", "taxon_in_alpha_phase")
-    live_taxon = example_item("taxon", "taxon")
+    live_taxon = taxon_item
 
     content_store_has_random_item(
       schema: "guide",
@@ -273,15 +264,26 @@ describe "Contextual navigation" do
     )
   end
 
-  def given_theres_a_page_with_just_legacy_taxonomy
+  def given_theres_a_browse_page_with_a_topic
     content_store_has_random_item(links: {
-      "topics" => [example_item("topic", "topic")],
-      "parent" => [example_item("mainstream_browse_page", "top_level_page")],
+      "topics" => [topic_item],
+      "mainstream_browse_pages" => [top_level_mainstream_browse_page],
+      "parent" => [top_level_mainstream_browse_page],
     })
   end
 
+  def given_theres_a_page_with_a_topic
+    content_store_has_random_item(links: { "topics" => [topic_item] })
+  end
+
+  def given_theres_a_page_with_more_than_one_topic
+    content_store_has_random_item(
+      links: { "topics" => [topic_item, second_topic_item] },
+    )
+  end
+
   def given_theres_a_page_with_coronavirus_taxon
-    live_taxon = example_item("taxon", "taxon")
+    live_taxon = taxon_item
     live_taxon["links"]["parent_taxons"] = [coronavirus_taxon]
 
     content_store_has_random_item(
@@ -297,7 +299,7 @@ describe "Contextual navigation" do
   end
 
   def given_there_is_a_parent_page_with_coronavirus_taxon
-    taxon = example_item("taxon", "taxon")
+    taxon = taxon_item
     taxon["links"]["parent_taxons"] = [coronavirus_taxon]
 
     @parent = not_step_by_step_content
@@ -313,8 +315,8 @@ describe "Contextual navigation" do
   end
 
   def given_there_is_a_parent_page_with_two_taxon
-    taxon = example_item("taxon", "taxon")
-    taxon_two = example_item("taxon", "taxon")
+    taxon = taxon_item
+    taxon_two = taxon_item
     @parent = random_item("guide")
     @parent["links"] = { "taxons" => [taxon, taxon_two] }
   end
@@ -424,17 +426,24 @@ describe "Contextual navigation" do
     end
   end
 
-  def and_the_parent_based_breadcrumbs
+  def then_i_see_the_topic_breadcrumb
     within ".gem-c-breadcrumbs" do
       expect(page).to have_link("Home")
-      expect(page).to have_link("Benefits")
+      expect(page).to have_link(topic_item["title"])
+    end
+  end
+
+  def and_the_default_breadcrumbs
+    within ".gem-c-breadcrumbs" do
+      expect(page).to have_link("Home")
+      expect(page).to have_link(top_level_mainstream_browse_page["title"])
     end
   end
 
   def and_the_taxonomy_breadcrumbs
     within ".gem-c-breadcrumbs" do
       expect(page).to have_link("Home")
-      expect(page).to have_link("A level")
+      expect(page).to have_link(taxon_item["title"])
     end
   end
 
@@ -452,13 +461,20 @@ describe "Contextual navigation" do
 
   def then_i_see_the_taxon_in_the_related_navigation_footer
     within ".gem-c-contextual-footer" do
-      expect(page).to have_css(".gem-c-related-navigation__link", text: "A level")
+      expect(page).to have_css(".gem-c-related-navigation__link", text: taxon_item["title"])
     end
   end
 
-  def then_i_see_the_legacy_topic_in_the_related_navigation_footer
+  def then_i_see_the_topic_in_the_related_navigation_footer
     within ".gem-c-contextual-footer" do
-      expect(page).to have_css(".gem-c-related-navigation__link", text: "Oil and gas")
+      expect(page).to have_css(".gem-c-related-navigation__link", text: topic_item["title"])
+    end
+  end
+
+  def and_i_see_the_both_topics_in_the_related_navigation_footer
+    within ".gem-c-contextual-footer" do
+      expect(page).to have_css(".gem-c-related-navigation__link", text: topic_item["title"])
+      expect(page).to have_css(".gem-c-related-navigation__link", text: second_topic_item["title"])
     end
   end
 
@@ -519,5 +535,21 @@ describe "Contextual navigation" do
       "title" => "Businesses and self-employed people",
       "locale" => "en",
     }
+  end
+
+  def top_level_mainstream_browse_page
+    @top_level_mainstream_browse_page ||= example_item("mainstream_browse_page", "top_level_page")
+  end
+
+  def taxon_item
+    @taxon_item ||= example_item("taxon", "taxon")
+  end
+
+  def topic_item
+    @topic_item ||= example_item("topic", "topic")
+  end
+
+  def second_topic_item
+    @second_topic_item ||= example_item("topic", "curated_subtopic")
   end
 end

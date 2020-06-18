@@ -2,6 +2,10 @@ module GovukPublishingComponents
   module Presenters
     # @private
     class ContentBreadcrumbsBasedOnTaxons
+      def self.call(content_item)
+        new(content_item).breadcrumbs
+      end
+
       def initialize(content_item)
         @content_item = ContentItem.new(content_item)
       end

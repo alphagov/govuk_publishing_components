@@ -1,6 +1,6 @@
 require "spec_helper"
 
-RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnParent do
+RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnAncestors do
   describe "#breadcrumbs" do
     it "can handle any valid content item" do
       payload = GovukSchemas::RandomExample.for_schema(frontend_schema: "placeholder")
@@ -13,7 +13,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
       breadcrumbs = breadcrumbs_for(content_item)
 
       expect(breadcrumbs).to eq(
-        breadcrumbs: [
+        [
           { title: "Home", url: "/" },
         ],
       )
@@ -24,7 +24,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
       breadcrumbs = breadcrumbs_for(content_item)
 
       expect(breadcrumbs).to eq(
-        breadcrumbs: [
+        [
           { title: "Home", url: "/" },
         ],
       )
@@ -42,7 +42,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
       breadcrumbs = breadcrumbs_for(content_item)
 
       expect(breadcrumbs).to eq(
-        breadcrumbs: [
+        [
           { title: "Home", url: "/" },
           { title: "A-parent", url: "/a-parent" },
         ],
@@ -71,7 +71,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
       breadcrumbs = breadcrumbs_for(content_item)
 
       expect(breadcrumbs).to eq(
-        breadcrumbs: [
+        [
           { title: "Home", url: "/" },
           { title: "Another-parent", url: "/another-parent" },
           { title: "A-parent", url: "/a-parent" },
