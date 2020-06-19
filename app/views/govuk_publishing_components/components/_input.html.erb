@@ -95,15 +95,14 @@
 
   <% if prefix && suffix %>
     <%= tag.div class: "gem-c-input__wrapper" do %>
-      <%= tag.span prefix, class: "gem-c-input__prefix", aria: { hidden: true } %>
-      <%= input_tag %>
-      <%= tag.span suffix, class: "gem-c-input__suffix", aria: { hidden: true } %>
+      <% # The line below relies on in-line styling for legacy browsers and it's whitespace-sensitive %>
+      <%= tag.span prefix, class: "gem-c-input__prefix", aria: { hidden: true } %><%= input_tag %><%= tag.span suffix, class: "gem-c-input__suffix", aria: { hidden: true } %>
     <% end %>
   <% elsif prefix %>
     <%= tag.div class: "gem-c-input__wrapper" do %>
       <%= tag.span prefix, class: "gem-c-input__prefix", aria: { hidden: true } %><%= input_tag %>
     <% end %>
-  <% elsif suffix %> 
+  <% elsif suffix %>
     <%= tag.div class: "gem-c-input__wrapper" do %>
       <%= input_tag %><%= tag.span suffix, class: "gem-c-input__suffix", aria: { hidden: true } %>
     <% end %>
