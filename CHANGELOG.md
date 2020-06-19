@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix layout on input with prefix/suffix ([PR #1581](https://github.com/alphagov/govuk_publishing_components/pull/1581))
+
 ## 21.56.1
 
 * Replace bodged parent breadcrumbs with specialist topic breadcrumbs ([PR #1565](https://github.com/alphagov/govuk_publishing_components/pull/1565))
