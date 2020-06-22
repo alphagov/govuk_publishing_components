@@ -1,0 +1,26 @@
+<%
+  text ||= t('components.print_link.text')
+  href ||= nil
+  data_attributes ||= nil
+
+  require_js ||= href.nil?
+%>
+
+<% if require_js %>
+  <div class="gem-c-print-button">
+    <%= content_tag(:button, text, {
+        class: %w(gem-c-print-button__button govuk-link),
+        data: data_attributes
+    }) %>
+  </div>
+<% else %>
+  <div class="gem-c-print-link">
+    <%= link_to(
+      text,
+      href,
+      class: %w(gem-c-print-link__link govuk-link),
+      rel: "alternate",
+      data: data_attributes
+    ) %>
+  </div>
+<% end %>

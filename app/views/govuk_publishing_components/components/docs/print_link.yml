@@ -1,0 +1,17 @@
+name: Print link
+description: A link with a print icon to help users print the current page
+body: |
+  This component calls `print()` via the browser's DOM API. By default it relies on JavaScript and is not shown in environments where JavaScript is disabled. However, you can override this default behaviour and specify an alternative href to print the page.  
+accessibility_criteria: |
+  - The print icon must be presentational and ignored by screen readers.
+shared_accessibility_criteria:
+  - link
+examples:
+  default:
+  with_different_text:
+    data:
+      text: "Print this manual"
+  with_different_href:
+    description: You specify a alternative href URL that will override the default behaviour. When this is set the print link will also be displayed when JavaScript is disabled.
+    data:
+      href: "/print"
