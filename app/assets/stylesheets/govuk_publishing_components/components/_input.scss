@@ -10,6 +10,7 @@
 // TODO: remove these styles once static is made less aggressive
 .gem-c-input.govuk-input {
   margin: 0;
+  min-width: 0;
   padding: govuk-spacing(1);
 
   &.gem-c-input--search-icon {
@@ -40,16 +41,19 @@
   box-sizing: border-box;
   cursor: default; // emphasise non-editable status of prefixes and suffixes
   display: inline-block;
+  flex: 0 0 auto;
+  height: 40px;
+  margin-top: 0;
+  min-width: 40px;
+  padding: govuk-spacing(1);
+  text-align: center;
   white-space: nowrap;
   width: auto;
-  text-align: center;
-  height: 40px;
-  padding: govuk-spacing(1);
-  min-width: 40px;
+
   @if $govuk-typography-use-rem {
+    height: govuk-px-to-rem(40px);
     min-width: govuk-px-to-rem(40px);
   }
-  margin-top: 0;
 }
 
 .gem-c-input__prefix {

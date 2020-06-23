@@ -132,6 +132,14 @@ examples:
         text: "What is your name?"
       name: "name"
       heading_size: "l"
+  with_prefix:
+    description: To help users understand how the input should look like. Often used for units of measurement.
+    data:
+      label:
+        text: "Cost, in pounds"
+      name: "cost"
+      width: 10
+      prefix: "£"
   with_suffix:
     description: To help users understand how the input should look like. Often used for units of measurement.
     data:
@@ -145,7 +153,7 @@ examples:
     data:
       label:
         text: "Cost per item, in pounds"
-      name: "Cost-per-item"
+      name: "cost-per-item"
       width: 10
       prefix: "£"
       suffix: "per item"
