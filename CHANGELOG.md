@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Hide services cookie banner when JavaScript is disabled ([PR #1586](https://github.com/alphagov/govuk_publishing_components/pull/1586))
+
 ## 21.56.2
 
 * Fix layout on input with prefix/suffix ([PR #1581](https://github.com/alphagov/govuk_publishing_components/pull/1581))
