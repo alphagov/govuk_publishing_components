@@ -90,6 +90,7 @@ describe "Cookie banner", type: :view do
       },
     )
 
+    assert_select ".gem-c-cookie-banner.gem-c-cookie-banner--services"
     assert_select ".gem-c-cookie-banner__buttons--flex button[data-module=track-click][data-track-category=cookieBanner][data-accept-cookies=true]", text: "Yes"
     assert_select ".gem-c-cookie-banner__buttons--flex button[data-module=track-click][data-track-category=cookieBanner][data-hide-cookie-banner=true]", text: "No"
     assert_select ".gem-c-cookie-banner__buttons--flex .gem-c-cookie-banner__link[href='/cookies']", text: "How we use cookies"

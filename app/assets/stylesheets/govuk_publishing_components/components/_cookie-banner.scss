@@ -12,6 +12,10 @@ $govuk-cookie-banner-background: govuk-colour("light-grey", "grey-4");
   background-color: $govuk-cookie-banner-background;
 }
 
+.gem-c-cookie-banner--services {
+  display: none;
+}
+
 .gem-c-cookie-banner__message {
   display: inline-block;
   padding-bottom: govuk-spacing(2);

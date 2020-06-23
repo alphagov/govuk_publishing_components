@@ -5,9 +5,11 @@
   cookie_preferences_href ||= "/help/cookies"
   confirmation_message ||= raw("You’ve accepted all cookies. You can <a class='govuk-link' href='#{cookie_preferences_href}' data-module='track-click' data-track-category='cookieBanner' data-track-action='Cookie banner settings clicked from confirmation'>change your cookie settings</a> at any time.")
   services_cookies ||= nil
+  css_classes = %w(gem-c-cookie-banner govuk-clearfix)
+  css_classes << "gem-c-cookie-banner--services" if services_cookies
 %>
 
-<div id="<%= id %>" class="gem-c-cookie-banner govuk-clearfix" data-module="cookie-banner" role="region" aria-label="cookie banner" data-nosnippet>
+<div id="<%= id %>" class="<%= css_classes.join(' ') %>" data-module="cookie-banner" role="region" aria-label="cookie banner" data-nosnippet>
   <div class="gem-c-cookie-banner__wrapper govuk-width-container">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
