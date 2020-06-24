@@ -1,15 +1,10 @@
 .gem-c-heading {
-  @include govuk-text-colour;
-  @include govuk-font(27, $weight: bold);
   margin: 0;
 }
 
-.gem-c-heading--font-size-24 {
-  @include govuk-font(24, $weight: bold);
-}
-
-.gem-c-heading--font-size-19 {
-  @include govuk-font(19, $weight: bold);
+.gem-c-heading--font-size-27 {
+  @include govuk-text-colour;
+  @include govuk-font(27, $weight: bold);
 }
 
 // special case for publications and consultations pages

@@ -21,14 +21,42 @@ describe "Heading", type: :view do
     assert_select "h3.gem-c-heading", text: "Original consultation"
   end
 
-  it "adds font size 2" do
-    render_component(text: "font size 24", font_size: 24)
-    assert_select ".gem-c-heading.gem-c-heading--font-size-24"
+  it "adds xl font size" do
+    render_component(text: "Extra large", font_size: "xl")
+    assert_select ".gem-c-heading.govuk-heading-xl"
   end
 
-  it "adds font size 3" do
-    render_component(text: "font size 19", font_size: 19)
-    assert_select ".gem-c-heading.gem-c-heading--font-size-19"
+  it "adds l font size" do
+    render_component(text: "Large", font_size: "l")
+    assert_select ".gem-c-heading.govuk-heading-l"
+  end
+
+  it "adds m font size" do
+    render_component(text: "Medium", font_size: "m")
+    assert_select ".gem-c-heading.govuk-heading-m"
+  end
+
+  it "supports legacy font size option of 24" do
+    render_component(text: "Medium", font_size: 24)
+    assert_select ".gem-c-heading.govuk-heading-m"
+  end
+
+  it "adds s font size" do
+    render_component(text: "Small", font_size: "s")
+    assert_select ".gem-c-heading.govuk-heading-s"
+  end
+
+  it "supports legacy font size option of 19" do
+    render_component(text: "Small", font_size: 19)
+    assert_select ".gem-c-heading.govuk-heading-s"
+  end
+
+  it "adds default font size if given no or an invalid value" do
+    render_component(text: "font size not specified")
+    assert_select ".gem-c-heading.gem-c-heading--font-size-27"
+
+    render_component(text: "font size 199", font_size: 199)
+    assert_select ".gem-c-heading.gem-c-heading--font-size-27"
   end
 
   it "has a specified id attribute" do
