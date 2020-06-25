@@ -75,6 +75,11 @@ examples:
       text: Getting financial help and keeping your business safe
       href: "/financial-help"
       simple: true
+  with_small_icon:
+    data:
+      text: Coronavirus (COVID-19)
+      href: "/my-test-page"
+      small_icon: true
   with_dark_icon:
     data:
       text: Coronavirus (COVID-19)
