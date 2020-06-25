@@ -11,6 +11,7 @@
   light_text ||= false
   simple ||= false
   dark_icon ||= false
+  small_icon ||= false
   nhs_icon ||= false
   data ||= nil
   classes ||= nil
@@ -18,6 +19,7 @@
   css_classes = %w(gem-c-action-link)
   css_classes << "gem-c-action-link--light-text" if light_text
   css_classes << "gem-c-action-link--dark-icon" if dark_icon
+  css_classes << "gem-c-action-link--small-icon" if small_icon
   css_classes << "gem-c-action-link--nhs" if nhs_icon
   css_classes << "gem-c-action-link--simple" if simple
   css_classes << "gem-c-action-link--with-subtext" if subtext
