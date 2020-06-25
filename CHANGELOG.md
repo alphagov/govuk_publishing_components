@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.57.0
 
 * Hide services cookie banner when JavaScript is disabled ([PR #1586](https://github.com/alphagov/govuk_publishing_components/pull/1586))
 * Improve print styles for govspeak info, help and call to action callouts ([PR #1588](https://github.com/alphagov/govuk_publishing_components/pull/1588) )
