@@ -16,6 +16,7 @@
 ## 21.56.2
 
 * Fix layout on input with prefix/suffix ([PR #1581](https://github.com/alphagov/govuk_publishing_components/pull/1581))
+* Add print link component ([PR #1582](https://github.com/alphagov/govuk_publishing_components/pull/1582))
 
 ## 21.56.1
 

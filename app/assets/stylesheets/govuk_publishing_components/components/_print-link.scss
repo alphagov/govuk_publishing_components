@@ -1,0 +1,52 @@
+.gem-c-print-link {
+  display: none;
+  margin-bottom: 2em;
+  margin-top: 2em;
+}
+
+.gem-c-print-link.gem-c-print-link--show-without-js {
+  display: block;
+}
+
+.js-enabled {
+  .gem-c-print-link {
+    display: block;
+  }
+}
+
+.gem-c-print-link__link {
+  background: image-url("govuk_publishing_components/icon-print.png") no-repeat 10px 50%;
+
+  margin-left: -10px;
+  padding: .5em .5em .5em 38px;
+
+  @include govuk-device-pixel-ratio($ratio: 2) {
+    background-image: image-url("govuk_publishing_components/icon-print-2x.png");
+    background-size: 16px 18px;
+  }
+
+  &:focus {
+    @include govuk-focused-text;
+  }
+}
+
+.gem-c-print-link__button {
+  @extend %govuk-body-s;
+  background: image-url("govuk_publishing_components/icon-print.png") no-repeat 10px 50%;
+  border: 0;
+  color: $govuk-link-colour;
+  cursor: pointer;
+  margin: 0;
+  margin-left: -10px;
+  padding: .5em .5em .5em 38px;
+  text-decoration: underline;
+
+  @include govuk-device-pixel-ratio($ratio: 2) {
+    background-image: image-url("govuk_publishing_components/icon-print-2x.png");
+    background-size: 16px 18px;
+  }
+
+  &:focus {
+    @include govuk-focused-text;
+  }
+}

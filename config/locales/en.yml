@@ -58,6 +58,8 @@ en:
       policies: "Policies"
       statistical_data_sets: "Statistical data sets"
       topical_events: "Topical events"
+    print_link:
+      text: "Print this page"
     skip_link:
       text: "Skip to main content"
     step_by_step_nav:
