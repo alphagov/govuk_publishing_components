@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 21.57.1
+
+* Minor adjustment to action link icon spacing ([PR #1593](https://github.com/alphagov/govuk_publishing_components/pull/1593))
+
 ## 21.57.0
 
 * Hide services cookie banner when JavaScript is disabled ([PR #1586](https://github.com/alphagov/govuk_publishing_components/pull/1586))
