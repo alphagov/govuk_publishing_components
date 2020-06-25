@@ -7,8 +7,12 @@
   .help-notice,
   .call-to-action {
     margin: govuk-spacing(3) 0;
-    padding: 0 govuk-spacing(3);
+  }
+
+  .call-to-action {
+    background: none;
     border: 1pt solid $govuk-border-colour;
+    padding: govuk-spacing(3);
   }
 
   .help-notice p {
