@@ -1,7 +1,7 @@
 module GovukPublishingComponents
   class AuditController < GovukPublishingComponents::ApplicationController
     def show
-      path = Gem.loaded_specs["govuk_publishing_components"].full_gem_path
+      path = Dir.pwd
 
       templates_path = "app/views/govuk_publishing_components/components"
       stylesheets_path = "app/assets/stylesheets/govuk_publishing_components/components"
@@ -26,20 +26,61 @@ module GovukPublishingComponents
       @component_tests = find_files(tests, [path, tests_path].join("/"))
       @component_js_tests = find_files(js_tests, [path, js_tests_path].join("/"))
 
-      @data = {
-        # name: 'govuk_publishing_components',
-        # components: @components,
-        # component_stylesheets: @component_stylesheets,
-        # component_print_stylesheets: @component_print_stylesheets,
-        # component_javascripts: @component_javascripts,
-        # component_tests: @component_tests,
-        # component_js_tests: @component_js_tests,
+      data = {
+        components: @components,
+        component_stylesheets: @component_stylesheets,
+        component_print_stylesheets: @component_print_stylesheets,
+        component_javascripts: @component_javascripts,
+        component_tests: @component_tests,
+        component_js_tests: @component_js_tests,
         components_containing_components: find_all_partials_in(templates),
         component_listing: list_all_component_details,
       }
+
+      application_data = analyse_applications(File.expand_path("..", path))
+      compared_data = AuditComparer.new(data, application_data)
+
+      @applications = compared_data.data
+      @gem = compared_data.gem_data
     end
 
   private
+
+    def analyse_applications(path)
+      results = []
+      applications = %w(
+        calculators
+        collections
+        collections-publisher
+        content-data-admin
+        content-publisher
+        email-alert-frontend
+        feedback
+        finder-frontend
+        frontend
+        government-frontend
+        govspeak-preview
+        info-frontend
+        licence-finder
+        manuals-frontend
+        release
+        search-admin
+        service-manual-frontend
+        signon
+        smart-answers
+        static
+        travel-advice-publisher
+        whitehall
+      ).sort
+
+      applications.each do |application|
+        application_path = [path, application].join('/')
+        app = AuditApplications.new(application_path, application)
+        results << app.data
+      end
+
+      results
+    end
 
     def find_files(files, replace)
       files.map { |file| clean_file_name(file.gsub(replace, "")) }.sort
