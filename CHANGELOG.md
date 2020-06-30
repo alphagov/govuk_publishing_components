@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix search component label accessibility ([PR #1594](https://github.com/alphagov/govuk_publishing_components/pull/1594))
+
 ## 21.57.1
 
 * Minor adjustment to action link icon spacing ([PR #1593](https://github.com/alphagov/govuk_publishing_components/pull/1593))
