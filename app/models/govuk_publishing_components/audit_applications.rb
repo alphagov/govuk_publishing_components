@@ -61,21 +61,22 @@ module GovukPublishingComponents
 
       files.each do |file|
         src = File.read(file)
-        components_found << find_match(find, replace, src, file)
+        components_found << find_match(find, replace, src)
       end
 
       found = components_found.flatten.uniq.sort
-      return ["none"] if found.empty?
+      return %w[none] if found.empty?
+
       found
     end
 
-    def find_match(find, replace, src, file)
-      return ["all"] if src.match(@find_all_stylesheets) || src.match(@find_all_print_stylesheets) || src.match(@find_all_javascripts)
+    def find_match(find, replace, src)
+      return %w[all] if src.match(@find_all_stylesheets) || src.match(@find_all_print_stylesheets) || src.match(@find_all_javascripts)
 
       matches = src.scan(find)
       all_matches = []
       matches.each do |match|
-        match.to_s.gsub!(replace, '')
+        match.to_s.gsub!(replace, "")
         all_matches << clean_file_name(match.tr('[])\'"', ""))
       end
 

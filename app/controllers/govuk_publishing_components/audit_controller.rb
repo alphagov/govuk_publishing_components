@@ -15,7 +15,7 @@ module GovukPublishingComponents
 
     def analyse_applications(path)
       results = []
-      applications = %w(
+      applications = %w[
         calculators
         collections
         collections-publisher
@@ -38,10 +38,10 @@ module GovukPublishingComponents
         static
         travel-advice-publisher
         whitehall
-      ).sort
+      ].sort
 
       applications.each do |application|
-        application_path = [path, application].join('/')
+        application_path = [path, application].join("/")
         app = AuditApplications.new(application_path, application)
         results << app.data
       end

@@ -37,27 +37,27 @@ module GovukPublishingComponents
           summary: [
             {
               name: "Components in templates",
-              value: components_in_templates.flatten.uniq.sort.join(', '),
+              value: components_in_templates.flatten.uniq.sort.join(", "),
             },
             {
               name: "Components in stylesheets",
-              value: components_in_stylesheets.join(', '),
+              value: components_in_stylesheets.join(", "),
             },
             {
               name: "Components in print stylesheets",
-              value: components_in_print_stylesheets.join(', '),
+              value: components_in_print_stylesheets.join(", "),
             },
             {
               name: "Components in javascripts",
-              value: components_in_javascripts.join(', '),
+              value: components_in_javascripts.join(", "),
             },
             {
               name: "Components in ruby",
-              value: components_in_ruby.join(', '),
+              value: components_in_ruby.join(", "),
             },
           ],
           missing_includes: missing_includes,
-          warning_count: count_warnings(missing_includes)
+          warning_count: count_warnings(missing_includes),
         }
       end
 
@@ -103,7 +103,7 @@ module GovukPublishingComponents
       if key # we don't check for ruby files
         components.each do |component|
           warning = false
-          warning = true if @gem_data[key.to_sym].include? component unless override_warning
+          warning = true if @gem_data[key.to_sym].include?(component) && !override_warning
           results << {
             warning: warning,
             component: component,
@@ -116,7 +116,7 @@ module GovukPublishingComponents
 
     def missing_includes(templates, stylesheets, print_stylesheets, javascripts, ruby)
       all = (templates.clone << stylesheets.clone << print_stylesheets.clone << javascripts.clone << ruby.clone).flatten.uniq
-      all = all - ["all"]
+      all = all - %w[all] - %w[none]
 
       {
         not_in_templates: find_missing(templates, all),
@@ -158,7 +158,7 @@ module GovukPublishingComponents
         results << {
           component: component[:name],
           count: found_in_applications.uniq.length,
-          list: found_in_applications.uniq.join(', '),
+          list: found_in_applications.uniq.join(", "),
         }
       end
 
