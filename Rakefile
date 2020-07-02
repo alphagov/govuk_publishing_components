@@ -29,4 +29,9 @@ namespace :assets do
   end
 end
 
-task default: [:spec, "app:jasmine:ci"]
+desc "Run RuboCop linting"
+task lint: :environment do
+  sh "bundle exec rubocop --format clang"
+end
+
+task default: [:lint, :spec, "app:jasmine:ci"]
