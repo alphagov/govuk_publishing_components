@@ -20,7 +20,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         var detailsClick = detailsComponent.querySelector('[data-details-track-click]')
         var that = this
 
-        $(detailsClick).click(function (e) {
+        detailsClick.addEventListener('click', function (event) {
           that.trackDefault(detailsComponent)
         })
       }
@@ -37,7 +37,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           trackOptions = {}
         }
 
-        trackOptions['label'] = componentStatus
+        trackOptions.label = componentStatus
 
         if (trackAction && trackCategory) {
           window.GOVUK.analytics.trackEvent(trackCategory, trackAction, trackOptions)
