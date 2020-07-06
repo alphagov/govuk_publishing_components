@@ -122,6 +122,9 @@ GEM
       rack (>= 1.2.1)
       rake
     jasmine-core (3.5.0)
+    jasmine_selenium_runner (3.0.0)
+      jasmine (~> 3.0)
+      selenium-webdriver (~> 3.8)
     json-schema (2.8.1)
       addressable (>= 2.4)
     kgio (2.11.3)
@@ -316,6 +319,7 @@ DEPENDENCIES
   govuk_schemas (~> 4.0)
   govuk_test (~> 1)
   jasmine (~> 3.5.1)
+  jasmine_selenium_runner (~> 3.0.0)
   pry-byebug
   rspec-rails (~> 4.0)
   rubocop-govuk (~> 3)
