@@ -74,17 +74,19 @@ describe('Cookie helper functions', function () {
       GOVUK.setDefaultConsentCookie()
 
       expect(GOVUK.setCookie).toHaveBeenCalledWith('cookies_policy', '{"essential":true,"settings":false,"usage":false,"campaigns":false}', Object({ days: 365 }))
-      expect(GOVUK.getConsentCookie()).toEqual({ 'essential': true, 'settings': false, 'usage': false, 'campaigns': false })
+      expect(GOVUK.getConsentCookie()).toEqual({ essential: true, settings: false, usage: false, campaigns: false })
     })
 
-    it('deletes cookies after default consent cookie set', function() {
-      var date = new Date();
-      var days = days || 365;
-      date.setTime(+ date + (days * 86400000)); //24 * 60 * 60 * 1000
+    it('deletes cookies after default consent cookie set', function () {
+      var date = new Date()
+      date.setTime(date.valueOf() + (365 * 24 * 60 * 60 * 1000))
 
-      document.cookie = 'analytics_next_page_call=test;expires=' + date.toGMTString() + ';domain=.' + window.location.hostname + ';path=/'
+      document.cookie = 'analytics_next_page_call=test' +
+        ';expires=' + date.toUTCString() +
+        ';domain=' + window.location.hostname +
+        ';path=/'
 
-      expect(GOVUK.getCookie('analytics_next_page_call')).toBe("test")
+      expect(GOVUK.getCookie('analytics_next_page_call')).toBe('test')
 
       GOVUK.setDefaultConsentCookie()
 
@@ -95,7 +97,7 @@ describe('Cookie helper functions', function () {
     it('can set the consent cookie to approve all cookie categories', function () {
       spyOn(GOVUK, 'setCookie').and.callThrough()
 
-      GOVUK.setConsentCookie({ 'usage': false, 'essential': false })
+      GOVUK.setConsentCookie({ usage: false, essential: false })
 
       expect(GOVUK.getConsentCookie().essential).toBe(false)
       expect(GOVUK.getConsentCookie().usage).toBe(false)
@@ -103,7 +105,7 @@ describe('Cookie helper functions', function () {
       GOVUK.approveAllCookieTypes()
 
       expect(GOVUK.setCookie).toHaveBeenCalledWith('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}', Object({ days: 365 }))
-      expect(GOVUK.getConsentCookie()).toEqual({ 'essential': true, 'settings': true, 'usage': true, 'campaigns': true })
+      expect(GOVUK.getConsentCookie()).toEqual({ essential: true, settings: true, usage: true, campaigns: true })
     })
 
     it('returns null if the consent cookie does not exist', function () {
@@ -117,14 +119,14 @@ describe('Cookie helper functions', function () {
     })
 
     it('deletes relevant cookies in that category if consent is set to false', function () {
-      GOVUK.setConsentCookie({ 'usage': true })
+      GOVUK.setConsentCookie({ usage: true })
 
       GOVUK.setCookie('analytics_next_page_call', 'this is a usage cookie')
 
       expect(GOVUK.cookie('analytics_next_page_call')).toBe('this is a usage cookie')
 
       spyOn(GOVUK, 'setCookie').and.callThrough()
-      GOVUK.setConsentCookie({ 'usage': false })
+      GOVUK.setConsentCookie({ usage: false })
 
       expect(GOVUK.setCookie).toHaveBeenCalledWith('cookies_policy', '{"essential":true,"settings":false,"usage":false,"campaigns":false}', Object({ days: 365 }))
       expect(GOVUK.getConsentCookie().usage).toBe(false)
@@ -134,7 +136,7 @@ describe('Cookie helper functions', function () {
 
   describe('check cookie consent', function () {
     it('returns true if trying to set the consent cookie', function () {
-      expect(GOVUK.checkConsentCookie('cookies_policy', { 'essential': true })).toBe(true)
+      expect(GOVUK.checkConsentCookie('cookies_policy', { essential: true })).toBe(true)
     })
 
     it('returns true if deleting a cookie', function () {
@@ -163,11 +165,11 @@ describe('Cookie helper functions', function () {
     })
 
     it('returns the consent for a given cookie', function () {
-      GOVUK.setConsentCookie({ 'usage': false })
+      GOVUK.setConsentCookie({ usage: false })
 
       expect(GOVUK.checkConsentCookie('analytics_next_page_call', 'set a usage cookie')).toBeFalsy()
 
-      GOVUK.setConsentCookie({ 'usage': true })
+      GOVUK.setConsentCookie({ usage: true })
 
       expect(GOVUK.checkConsentCookie('analytics_next_page_call', 'set a usage cookie')).toBeTruthy()
     })
