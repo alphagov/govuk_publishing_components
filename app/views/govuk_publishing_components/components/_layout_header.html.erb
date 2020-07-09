@@ -7,13 +7,7 @@
   navigation_items ||= []
   remove_bottom_border ||= false
   search_left ||= false
-
-  if full_width
-    width_class = "govuk-header__container--full-width"
-  else
-    width_class = "govuk-width-container"
-  end
-
+  width_class = full_width ? "govuk-header__container--full-width" : "govuk-width-container"
   header_classes = %w(gem-c-layout-header govuk-header)
   header_classes << "gem-c-layout-header--#{environment}"
   header_classes << "gem-c-layout-header--no-bottom-border" if remove_bottom_border

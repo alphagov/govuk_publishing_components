@@ -29,8 +29,14 @@ describe "Layout for public", type: :view do
     assert_select "#content.govuk-width-container", false, "Should not apply govuk-width-container class when full width"
   end
 
+  it "displays with search bar by default" do
+    render_component({})
+
+    assert_select ".gem-c-layout-for-public .gem-c-search"
+  end
+
   it "can display without search bar" do
-    render_component(without_search: true)
+    render_component(show_search: false)
 
     assert_select ".gem-c-layout-for-public .gem-c-search", false
   end
