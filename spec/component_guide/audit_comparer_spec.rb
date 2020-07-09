@@ -4,7 +4,7 @@ require_relative "../../app/models/govuk_publishing_components/audit_comparer.rb
 describe "Comparing data from an application with the components" do
   gem = {
     name: "govuk_publishing_components",
-    components: [
+    component_templates: [
       "component one",
       "component two",
       "component three",
@@ -20,12 +20,8 @@ describe "Comparing data from an application with the components" do
     component_javascripts: [
       "component one",
     ],
-    component_tests: [
-      "component one",
-    ],
-    component_js_tests: [
-      "component one",
-    ],
+    component_tests: [],
+    component_js_tests: [],
     components_containing_components: [
       {
         component: "component one",
@@ -42,18 +38,36 @@ describe "Comparing data from an application with the components" do
       {
         name: "Dummy application",
         application_found: true,
-        components_in_templates: [
-          "component one",
-          "component two",
-        ],
-        components_in_stylesheets: [
-          "component one",
-          "component two",
-        ],
-        components_in_print_stylesheets: [],
-        components_in_javascripts: [],
-        components_in_ruby: [
-          "component three",
+        components_found: [
+          {
+            location: "templates",
+            components: [
+              "component one",
+              "component that does not exist",
+            ],
+          },
+          {
+            location: "stylesheets",
+            components: [
+              "component one",
+              "component two",
+              "component four",
+            ],
+          },
+          {
+            location: "print_stylesheets",
+            components: [],
+          },
+          {
+            location: "javascripts",
+            components: [],
+          },
+          {
+            location: "ruby",
+            components: [
+              "component three",
+            ],
+          },
         ],
       },
     ]
@@ -66,11 +80,11 @@ describe "Comparing data from an application with the components" do
         summary: [
           {
             name: "Components in templates",
-            value: "component one, component three, component two",
+            value: "component one, component that does not exist, component three",
           },
           {
             name: "Components in stylesheets",
-            value: "component one, component two",
+            value: "component one, component two, component four",
           },
           {
             name: "Components in print stylesheets",
@@ -85,56 +99,33 @@ describe "Comparing data from an application with the components" do
             value: "component three",
           },
         ],
-        missing_includes: [
+        warnings: [
           {
-            name: "Not in templates",
-            values: [],
+            component: "component that does not exist",
+            message: "Included in templates but component does not exist",
           },
           {
-            name: "Not in stylesheets",
-            values: [
-              {
-                warning: true,
-                component: "component three",
-              },
-            ],
+            component: "component four",
+            message: "Included in stylesheets but component does not exist",
           },
           {
-            name: "Not in print stylesheets",
-            values: [
-              {
-                warning: false,
-                component: "component one",
-              },
-              {
-                warning: false,
-                component: "component three",
-              },
-              {
-                warning: true,
-                component: "component two",
-              },
-            ],
+            component: "component three",
+            message: "Included in templates but not stylesheets",
           },
           {
-            name: "Not in javascripts",
-            values: [
-              {
-                warning: true,
-                component: "component one",
-              },
-              {
-                warning: false,
-                component: "component three",
-              },
-              {
-                warning: false,
-                component: "component two",
-              },
-            ],
+            component: "component one",
+            message: "Included in templates but not javascripts",
+          },
+          {
+            component: "component three",
+            message: "Included in ruby but not stylesheets",
+          },
+          {
+            component: "component two",
+            message: "Included in stylesheets but not templates",
           },
         ],
-        warning_count: 3,
+        warning_count: 6,
       },
     ]
 
@@ -146,14 +137,33 @@ describe "Comparing data from an application with the components" do
       {
         name: "Dummy application",
         application_found: true,
-        components_in_templates: [
-          "component one",
-          "component two",
+        components_found: [
+          {
+            location: "templates",
+            components: [
+              "component one",
+              "component two",
+            ],
+          },
+          {
+            location: "stylesheets",
+            components: %w[all],
+          },
+          {
+            location: "print_stylesheets",
+            components: %w[all],
+          },
+          {
+            location: "javascripts",
+            components: %w[all],
+          },
+          {
+            location: "ruby",
+            components: [
+              "component that does not exist",
+            ],
+          },
         ],
-        components_in_stylesheets: %w[all],
-        components_in_print_stylesheets: %w[all],
-        components_in_javascripts: %w[all],
-        components_in_ruby: %w[none],
       },
     ]
     comparer = GovukPublishingComponents::AuditComparer.new(gem, application)
@@ -181,67 +191,16 @@ describe "Comparing data from an application with the components" do
           },
           {
             name: "Components in ruby",
-            value: "none",
+            value: "component that does not exist",
           },
         ],
-        missing_includes: [
+        warnings: [
           {
-            name: "Not in templates",
-            values: [],
-          },
-          {
-            name: "Not in stylesheets",
-            values: [
-              {
-                warning: false,
-                component: "component one",
-              },
-              {
-                warning: false,
-                component: "component three",
-              },
-              {
-                warning: false,
-                component: "component two",
-              },
-            ],
-          },
-          {
-            name: "Not in print stylesheets",
-            values: [
-              {
-                warning: false,
-                component: "component one",
-              },
-              {
-                warning: false,
-                component: "component three",
-              },
-              {
-                warning: false,
-                component: "component two",
-              },
-            ],
-          },
-          {
-            name: "Not in javascripts",
-            values: [
-              {
-                warning: false,
-                component: "component one",
-              },
-              {
-                warning: false,
-                component: "component three",
-              },
-              {
-                warning: false,
-                component: "component two",
-              },
-            ],
+            component: "component that does not exist",
+            message: "Included in ruby but component does not exist",
           },
         ],
-        warning_count: 0,
+        warning_count: 1,
       },
     ]
 

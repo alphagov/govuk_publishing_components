@@ -18,18 +18,22 @@ module GovukPublishingComponents
       data = []
 
       results.each do |result|
-        @all_stylesheets = true if result[:components_in_stylesheets].include?("all")
-        @all_print_stylesheets = true if result[:components_in_print_stylesheets].include?("all")
-        @all_javascripts = true if result[:components_in_javascripts].include?("all")
+        templates = result[:components_found].find { |c| c[:location] == "templates" }
+        stylesheets = result[:components_found].find { |c| c[:location] == "stylesheets" }
+        print_stylesheets = result[:components_found].find { |c| c[:location] == "print_stylesheets" }
+        javascripts = result[:components_found].find { |c| c[:location] == "javascripts" }
+        ruby = result[:components_found].find { |c| c[:location] == "ruby" }
 
-        components_in_templates = include_any_components_within_components(result[:components_in_templates])
-        components_in_stylesheets = result[:components_in_stylesheets]
-        components_in_print_stylesheets = result[:components_in_print_stylesheets]
-        components_in_javascripts = result[:components_in_javascripts]
-        components_in_ruby = result[:components_in_ruby]
-        missing_includes = missing_includes(components_in_templates, components_in_stylesheets, components_in_print_stylesheets, components_in_javascripts, components_in_ruby)
+        @all_stylesheets = true if stylesheets[:components].include?("all")
+        @all_print_stylesheets = true if print_stylesheets[:components].include?("all")
+        @all_javascripts = true if javascripts[:components].include?("all")
 
-        missing_includes = highlight_missing_issues(missing_includes)
+        templates[:components] = include_any_components_within_components(templates[:components])
+
+        warnings = []
+        warnings << warn_about_missing_components(result[:components_found])
+        warnings << warn_about_missing_assets(result[:components_found])
+        warnings = warnings.flatten
 
         data << {
           name: result[:name],
@@ -37,27 +41,27 @@ module GovukPublishingComponents
           summary: [
             {
               name: "Components in templates",
-              value: components_in_templates.flatten.uniq.sort.join(", "),
+              value: templates[:components].flatten.uniq.sort.join(", "),
             },
             {
               name: "Components in stylesheets",
-              value: components_in_stylesheets.join(", "),
+              value: stylesheets[:components].join(", "),
             },
             {
               name: "Components in print stylesheets",
-              value: components_in_print_stylesheets.join(", "),
+              value: print_stylesheets[:components].join(", "),
             },
             {
               name: "Components in javascripts",
-              value: components_in_javascripts.join(", "),
+              value: javascripts[:components].join(", "),
             },
             {
               name: "Components in ruby",
-              value: components_in_ruby.join(", "),
+              value: ruby[:components].join(", "),
             },
           ],
-          missing_includes: missing_includes,
-          warning_count: count_warnings(missing_includes),
+          warnings: warnings,
+          warning_count: warnings.length,
         }
       end
 
@@ -72,73 +76,66 @@ module GovukPublishingComponents
       components.flatten.uniq.sort
     end
 
-    def highlight_missing_issues(results)
-      results.map do |key, value|
-        {
-          name: prettify_key(key),
-          values: check_if_component_item_exists(value, key.to_s),
-        }
-      end
+    def create_warning(component, message)
+      {
+        component: component,
+        message: message,
+      }
     end
 
-    def check_if_component_item_exists(components, filetype)
-      key = "components" if filetype == "not_in_templates"
+    def find_missing_items(first_group, second_group)
+      warnings = []
 
-      if filetype == "not_in_stylesheets"
-        key = "component_stylesheets"
-        override_warning = true if @all_stylesheets
-      end
+      first_group.each do |first|
+        first_location = first[:location]
 
-      if filetype == "not_in_print_stylesheets"
-        key = "component_print_stylesheets"
-        override_warning = true if @all_print_stylesheets
-      end
+        second_group.each do |second|
+          second_location = second[:location]
+          in_current = find_missing(second[:components].clone, first[:components].clone)
 
-      if filetype == "not_in_javascripts"
-        key = "component_javascripts"
-        override_warning = true if @all_javascripts
-      end
+          next if second[:components].include?("all")
 
-      results = []
-      if key # we don't check for ruby files
-        components.each do |component|
-          warning = false
-          warning = true if @gem_data[key.to_sym].include?(component) && !override_warning
-          results << {
-            warning: warning,
-            component: component,
-          }
+          in_current.each do |component|
+            if @gem_data.include?("component_#{second_location}".to_sym)
+              warnings << create_warning(component, "Included in #{first_location} but not #{second_location}") if @gem_data["component_#{second_location}".to_sym].include?(component)
+            end
+          end
         end
       end
 
-      results
+      warnings
     end
 
-    def missing_includes(templates, stylesheets, print_stylesheets, javascripts, ruby)
-      all = (templates.clone << stylesheets.clone << print_stylesheets.clone << javascripts.clone << ruby.clone).flatten.uniq
-      all = all - %w[all] - %w[none]
+    def warn_about_missing_assets(components)
+      warnings = []
 
-      {
-        not_in_templates: find_missing(templates, all),
-        not_in_stylesheets: find_missing(stylesheets, all),
-        not_in_print_stylesheets: find_missing(print_stylesheets, all),
-        not_in_javascripts: find_missing(javascripts, all),
-      }
+      code = components.select { |c| c[:location] == "templates" || c[:location] == "ruby" }
+      assets = components.select { |c| c[:location] == "stylesheets" || c[:location] == "print_stylesheets" || c[:location] == "javascripts" }
+
+      warnings << find_missing_items(code, assets)
+      warnings << find_missing_items(assets, code)
+      warnings.flatten
+    end
+
+    def warn_about_missing_components(results)
+      warnings = []
+
+      results.each do |result|
+        location = result[:location]
+        result[:components].each do |component|
+          warnings << create_warning(component, "Included in #{location} but component does not exist") if component_does_not_exist(component)
+        end
+      end
+
+      warnings
+    end
+
+    def component_does_not_exist(component)
+      !@gem_data[:component_templates].include?(component) unless component == "all"
     end
 
     def find_missing(needle, haystack)
       (haystack - needle).flatten.sort
-    end
-
-    def count_warnings(missing_includes)
-      count = 0
-      missing_includes.each do |include|
-        include[:values].each do |value|
-          count += 1 if value[:warning]
-        end
-      end
-
-      count
     end
 
     def get_components_by_application
