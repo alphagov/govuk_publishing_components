@@ -233,14 +233,12 @@ html {
 
 .hide-header-and-footer {
   // stylelint-disable selector-max-id
-  // sass-lint:disable no-ids
   #global-header,
   #global-header-bar,
   #global-breadcrumb,
   #footer {
     display: none;
   }
-  // sass-lint:enable no-ids
   // stylelint-enable selector-max-id
 }
 
@@ -262,12 +260,10 @@ html {
 
 // Hide survey banner
 // stylelint-disable selector-max-id
-// sass-lint:disable no-ids
 #user-satisfaction-survey-container,
 #global-cookie-message {
   display: none;
 }
-// sass-lint:enable no-ids
 // stylelint-enable selector-max-id
 
 // Rouge syntax highlighting
@@ -294,7 +290,6 @@ $code-0f: #c92424; // Deprecated, Opening/Closing Embedded Language Tags e.g. <?
 $code-insert-bg: #def8ca;
 $code-delete-bg: #fadddd;
 
-// sass-lint:disable no-empty-rulesets
 .component-highlight {
 
   // Map Rouge / Pygments Tokens to work with 'Base 16' themes
@@ -491,7 +486,6 @@ $code-delete-bg: #fadddd;
     font-weight: bold;
   }
 }
-// sass-lint:enable no-empty-rulesets
 
 // Specific for this Gem, optimized for erb render statements
 .component-highlight { // stylelint-disable-line no-duplicate-selectors

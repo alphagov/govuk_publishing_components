@@ -4,9 +4,8 @@
   "license": "MIT",
   "scripts": {
     "lint:js": "standard 'app/assets/javascripts/**/*.js' 'spec/javascripts/**/*.js'",
-    "lint:scss": "sass-lint 'app/assets/stylesheets/**/*.scss' -v -q",
-    "lint:stylelint": "stylelint app/assets/stylesheets/",
-    "lint": "yarn run lint:js && yarn run lint:scss && yarn run lint:stylelint"
+    "lint:scss": "stylelint app/assets/stylesheets/",
+    "lint": "yarn run lint:js && yarn run lint:scss"
   },
   "standard": {
     "ignore": [
@@ -25,7 +24,6 @@
     "jquery": "1.12.4"
   },
   "devDependencies": {
-    "sass-lint": "^1.13.1",
     "standard": "^14.3.4",
     "stylelint": "^13.6.1",
     "stylelint-config-gds": "0.1.0-pre.2"
