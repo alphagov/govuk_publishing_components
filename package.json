@@ -5,7 +5,8 @@
   "scripts": {
     "lint:js": "standard 'app/assets/javascripts/**/*.js' 'spec/javascripts/**/*.js'",
     "lint:scss": "sass-lint 'app/assets/stylesheets/**/*.scss' -v -q",
-    "lint": "yarn run lint:js && yarn run lint:scss"
+    "lint:stylelint": "stylelint app/assets/stylesheets/",
+    "lint": "yarn run lint:js && yarn run lint:scss && yarn run lint:stylelint"
   },
   "standard": {
     "ignore": [
@@ -15,6 +16,26 @@
       "spec/javascripts/vendor/*.js"
     ]
   },
+  "stylelint": {
+    "extends": "stylelint-config-gds/scss",
+    "rules": {
+      "block-closing-brace-empty-line-before": null,
+      "block-opening-brace-space-before": null,
+      "indentation": null,
+      "max-empty-lines": null,
+      "max-nesting-depth": null,
+      "no-duplicate-selectors": null,
+      "rule-empty-line-before": null,
+      "scss/at-mixin-argumentless-call-parentheses": null,
+      "scss/at-extend-no-missing-placeholder": null,
+      "shorthand-property-no-redundant-values": null,
+      "selector-combinator-space-before": null,
+      "selector-descendant-combinator-no-non-space": null,
+      "selector-pseudo-element-colon-notation": null,
+      "selector-max-id": null,
+      "selector-no-qualifying-type": null
+    }
+  },
   "dependencies": {
     "axe-core": "^3.5.4",
     "govuk-frontend": "^3.7.0",
@@ -22,6 +43,8 @@
   },
   "devDependencies": {
     "sass-lint": "^1.13.1",
-    "standard": "^14.3.4"
+    "standard": "^14.3.4",
+    "stylelint": "^13.6.1",
+    "stylelint-config-gds": "0.1.0-pre.2"
   }
 }
