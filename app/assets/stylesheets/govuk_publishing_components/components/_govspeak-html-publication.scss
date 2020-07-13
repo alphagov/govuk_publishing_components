@@ -61,6 +61,7 @@
       }
     }
 
+    // stylelint-disable selector-no-qualifying-type
     // sass-lint:disable no-qualifying-elements
     // this class will only be for tables and is to distinguish from a bare `table`
     // the row classes below should not be applied to anything else but `tr`s
@@ -135,5 +136,6 @@
       }
     }
     // sass-lint:enable no-qualifying-elements
+    // stylelint-enable selector-no-qualifying-type
   }
 }

@@ -17,10 +17,7 @@
     ]
   },
   "stylelint": {
-    "extends": "stylelint-config-gds/scss",
-    "rules": {
-      "selector-no-qualifying-type": null
-    }
+    "extends": "stylelint-config-gds/scss"
   },
   "dependencies": {
     "axe-core": "^3.5.4",
