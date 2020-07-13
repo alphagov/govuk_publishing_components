@@ -19,18 +19,11 @@
   "stylelint": {
     "extends": "stylelint-config-gds/scss",
     "rules": {
-      "block-closing-brace-empty-line-before": null,
-      "block-opening-brace-space-before": null,
-      "indentation": null,
-      "max-empty-lines": null,
       "max-nesting-depth": null,
       "no-duplicate-selectors": null,
-      "rule-empty-line-before": null,
       "scss/at-mixin-argumentless-call-parentheses": null,
       "scss/at-extend-no-missing-placeholder": null,
       "shorthand-property-no-redundant-values": null,
-      "selector-combinator-space-before": null,
-      "selector-descendant-combinator-no-non-space": null,
       "selector-pseudo-element-colon-notation": null,
       "selector-max-id": null,
       "selector-no-qualifying-type": null

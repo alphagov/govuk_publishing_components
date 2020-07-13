@@ -24,7 +24,7 @@
   margin-bottom: govuk-spacing(2);
 }
 
-.gem-c-related-navigation__main-heading  + .gem-c-related-navigation__sub-heading {
+.gem-c-related-navigation__main-heading + .gem-c-related-navigation__sub-heading {
   border-top: 0;
   padding-top: 0;
 }
@@ -62,7 +62,7 @@
 
   .js-enabled & {
     display: inline-block;
-   }
+  }
 }
 
 .gem-c-related-navigation__section-link {

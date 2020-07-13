@@ -27,7 +27,6 @@ $govuk-cookie-banner-background: govuk-colour("light-grey", "grey-4");
 }
 
 .gem-c-cookie-banner__button {
-
   &.govuk-grid-column-one-half-from-desktop {
     padding: 0;
   }
@@ -40,7 +39,6 @@ $govuk-cookie-banner-background: govuk-colour("light-grey", "grey-4");
     @include govuk-media-query($until: desktop) {
       margin-bottom: govuk-spacing(4);
     }
-
   }
 }
 
@@ -53,12 +51,10 @@ $govuk-cookie-banner-background: govuk-colour("light-grey", "grey-4");
   display: inline-block;
 }
 
-
 .gem-c-cookie-banner__confirmation {
   display: none;
   position: relative;
   padding: govuk-spacing(1);
-
 
   // This element is focused using JavaScript so that it's being read out by screen readers
   // for this reason we don't want to show the default outline or emphasise it visually using `govuk-focused-text`

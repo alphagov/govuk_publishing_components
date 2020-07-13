@@ -105,7 +105,6 @@ $table-row-even-background-colour: govuk-colour("light-grey", $legacy: "grey-4")
 
       @include govuk-shape-arrow($direction: down, $base: $sort-link-arrow-size, $display: inline-block);
     }
-
   }
 
   .govuk-table__row {

@@ -63,7 +63,6 @@
     // this class will only be for tables and is to distinguish from a bare `table`
     // the row classes below should not be applied to anything else but `tr`s
     table.financial-data {
-
       .numeric {
         text-align: right;
         @include govuk-font(14, $weight: regular, $tabular: true);
