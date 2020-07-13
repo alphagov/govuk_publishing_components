@@ -29,7 +29,7 @@ $top-border: solid 2px govuk-colour("mid-grey", $legacy: "grey-3");
 // we want to ensure that both large and small step navs have the same size font on mobile
 // this will stop text resizing if compatibility mode is turned off
 @mixin step-nav-font($size, $tablet-size: $size, $weight: normal, $line-height: 1.3, $tablet-line-height: $line-height) {
-  @include govuk-typography-common();
+  @include govuk-typography-common;
   font-size: $size + px;
   font-weight: $weight;
   line-height: $line-height;
