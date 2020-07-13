@@ -9,6 +9,8 @@
 // - alphagov/whitehall: ✔︎
 // - alphagov/govspeak: ✔︎
 
+// stylelint-disable max-nesting-depth
+
 .gem-c-govspeak {
   @include markdown-typography;
 

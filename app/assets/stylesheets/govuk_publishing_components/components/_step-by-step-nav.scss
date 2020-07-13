@@ -320,17 +320,17 @@ $top-border: solid 2px govuk-colour("mid-grey", $legacy: "grey-3");
 
   + .gem-c-step-nav__list {
     margin-top: -5px;
-
-    .gem-c-step-nav--large & {
-      @include govuk-media-query($from: tablet) {
-        margin-top: -govuk-spacing(3);
-      }
-    }
   }
 
   .gem-c-step-nav--large & {
     @include govuk-media-query($from: tablet) {
       padding-bottom: govuk-spacing(6);
+    }
+  }
+
+  .gem-c-step-nav--large & + .gem-c-step-nav__list {
+    @include govuk-media-query($from: tablet) {
+      margin-top: -govuk-spacing(3);
     }
   }
 }

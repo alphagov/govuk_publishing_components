@@ -214,10 +214,10 @@ $gem-guide-border-width: 1px;
       @include govuk-text-colour;
       @include govuk-font($size: 24, $weight: bold);
       margin: $govuk-gutter-half 0;
+    }
 
-      small {
-        @include govuk-font($size: 16, $weight: bold);
-      }
+    .example-title small {
+      @include govuk-font($size: 16, $weight: bold);
     }
   }
 }

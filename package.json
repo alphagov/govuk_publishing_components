@@ -19,7 +19,6 @@
   "stylelint": {
     "extends": "stylelint-config-gds/scss",
     "rules": {
-      "max-nesting-depth": null,
       "no-duplicate-selectors": null,
       "scss/at-mixin-argumentless-call-parentheses": null,
       "scss/at-extend-no-missing-placeholder": null,

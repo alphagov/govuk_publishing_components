@@ -9,6 +9,8 @@
 // - alphagov/whitehall: ✔︎
 // - alphagov/govspeak: ✔︎
 
+// stylelint-disable max-nesting-depth
+
 .gem-c-govspeak {
   .footnotes {
     border-top: 1px solid govuk-colour("mid-grey", $legacy: "grey-2");
