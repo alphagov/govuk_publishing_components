@@ -38,6 +38,7 @@ $stroke-width: 3px;
 }
 
 .gem-c-step-nav__step {
+  padding-left: 60px;
   position: relative;
 }
 
@@ -70,11 +71,6 @@ $stroke-width: 3px;
 .gem-c-step-nav__links {
   @include govuk-font(16);
   padding-bottom: 1em;
-}
-
-.gem-c-step-nav__step {
-  position: relative;
-  padding-left: 60px;
 }
 
 .gem-c-step-nav__title {

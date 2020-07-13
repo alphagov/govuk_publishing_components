@@ -12,6 +12,7 @@
 // These styles are defined in Static: https://github.com/alphagov/static/blob/a815620cada7ea1c65428c1c3b3ac4dbe28977bf/app/assets/stylesheets/helpers/_text.scss
 // This sets more specific selectors so those unwanted styles are overidden
 // sass-lint:disable no-qualifying-elements
+// stylelint-disable no-duplicate-selectors
 ul.govuk-tabs__list {
   margin: 0;
   padding: 0;

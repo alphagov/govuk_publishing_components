@@ -490,7 +490,7 @@ $code-delete-bg: #fadddd;
 // sass-lint:enable no-empty-rulesets
 
 // Specific for this Gem, optimized for erb render statements
-.component-highlight {
+.component-highlight { // stylelint-disable-line no-duplicate-selectors
   .s2 {
     color: $code-08;
   }

@@ -12,6 +12,7 @@
 
 .gem-c-step-nav-related__links {
   @include govuk-font(16);
+  list-style: none;
   margin: 0;
   padding: 0;
 }
@@ -40,10 +41,6 @@
   @include govuk-media-query($from: tablet) {
     margin-bottom: govuk-spacing(1);
   }
-}
-
-.gem-c-step-nav-related__links {
-  list-style: none;
 }
 
 .gem-c-step-nav-related__link-item {

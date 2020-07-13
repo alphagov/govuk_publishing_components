@@ -11,15 +11,13 @@
   color: govuk-colour("white");
 }
 
-.gem-c-inverse-header {
+.gem-c-inverse-header .gem-c-inverse-header__supplement,
+.gem-c-inverse-header .publication-header__last-changed {
   // This publication-header class is injected on publication pages, really
   // it should be a component class or be a component in it's own right.
-  .gem-c-inverse-header__supplement,
-  .publication-header__last-changed {
-    @include govuk-font($size: 16, $line-height: 1.5);
-    color: govuk-colour("white");
-    margin: 0;
-  }
+  @include govuk-font($size: 16, $line-height: 1.5);
+  color: govuk-colour("white");
+  margin: 0;
 }
 
 .gem-c-inverse-header--full-width {
