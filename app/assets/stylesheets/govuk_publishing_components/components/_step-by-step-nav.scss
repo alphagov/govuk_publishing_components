@@ -122,7 +122,7 @@ $top-border: solid 2px govuk-colour("mid-grey", $legacy: "grey-3");
     @include govuk-media-query($from: tablet) {
       padding-left: govuk-spacing(9);
 
-      &:after {
+      &:after { // stylelint-disable-line max-nesting-depth
         @include step-nav-line-position-large;
         top: govuk-spacing(6);
       }

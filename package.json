@@ -19,7 +19,6 @@
   "stylelint": {
     "extends": "stylelint-config-gds/scss",
     "rules": {
-      "selector-pseudo-element-colon-notation": null,
       "selector-max-id": null,
       "selector-no-qualifying-type": null
     }
