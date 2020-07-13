@@ -145,12 +145,10 @@ $top-border: solid 2px govuk-colour("mid-grey", $legacy: "grey-3");
   }
 
   &:after {
-    // scss-lint:disable DuplicateProperty
     // sass-lint:disable no-duplicate-properties
     height: -webkit-calc(100% - #{govuk-spacing(3)}); // fallback for iphone 4
     height: calc(100% - #{govuk-spacing(3)});
     // sass-lint:enable no-duplicate-properties
-    // scss-lint:enable DuplicateProperty
   }
 
   .gem-c-step-nav__help:after {

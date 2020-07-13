@@ -11,7 +11,6 @@
 // We have some styles within GOVUK (.content-block) which can leak into the list styles for this component.
 // These styles are defined in Static: https://github.com/alphagov/static/blob/a815620cada7ea1c65428c1c3b3ac4dbe28977bf/app/assets/stylesheets/helpers/_text.scss
 // This sets more specific selectors so those unwanted styles are overidden
-// scss-lint:disable QualifyingElement
 // sass-lint:disable no-qualifying-elements
 ul.govuk-tabs__list {
   margin: 0;
@@ -31,5 +30,4 @@ li.govuk-tabs__list-item {
     }
   }
 }
-// scss-lint:enable QualifyingElement
 // sass-lint:enable no-qualifying-elements
