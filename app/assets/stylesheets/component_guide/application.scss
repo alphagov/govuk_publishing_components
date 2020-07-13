@@ -232,6 +232,7 @@ html {
 }
 
 .hide-header-and-footer {
+  // stylelint-disable selector-max-id
   // sass-lint:disable no-ids
   #global-header,
   #global-header-bar,
@@ -240,6 +241,7 @@ html {
     display: none;
   }
   // sass-lint:enable no-ids
+  // stylelint-enable selector-max-id
 }
 
 .component-guide-preview-page {
@@ -259,12 +261,14 @@ html {
 }
 
 // Hide survey banner
+// stylelint-disable selector-max-id
 // sass-lint:disable no-ids
 #user-satisfaction-survey-container,
 #global-cookie-message {
   display: none;
 }
 // sass-lint:enable no-ids
+// stylelint-enable selector-max-id
 
 // Rouge syntax highlighting
 // Based on https://github.com/alphagov/tech-docs-template/blob/master/template/source/stylesheets/palette/_syntax-highlighting.scss

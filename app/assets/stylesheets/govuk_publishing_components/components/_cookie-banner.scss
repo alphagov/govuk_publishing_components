@@ -122,6 +122,7 @@ $govuk-cookie-banner-background: govuk-colour("light-grey", "grey-4");
 }
 
 // Override the styles from govuk_template
+// stylelint-disable selector-max-id
 // sass-lint:disable no-ids
 .gem-c-cookie-banner#global-cookie-message {
   background-color: $govuk-cookie-banner-background;
