@@ -15,3 +15,6 @@
     </div>
   </div>
 </p>
+<% content_for :before_content do %>
+  <% render "govuk_publishing_components/components/back_link", href:'/' %>
+<% end %>

@@ -47,6 +47,7 @@ describe "Component guide index" do
     visit "/component-guide"
     expected_main_sass = "@import 'govuk_publishing_components/govuk_frontend_support';
 @import 'govuk_publishing_components/component_support';
+@import 'govuk_publishing_components/components/back-link';
 @import 'govuk_publishing_components/components/breadcrumbs';
 @import 'govuk_publishing_components/components/button';
 @import 'govuk_publishing_components/components/contextual-sidebar';
@@ -72,6 +73,7 @@ describe "Component guide index" do
 @import 'govuk_publishing_components/components/tabs';
 @import 'govuk_publishing_components/components/title';"
     expected_print_sass = "@import 'govuk_publishing_components/govuk_frontend_support';
+@import 'govuk_publishing_components/components/print/back-link';
 @import 'govuk_publishing_components/components/print/button';
 @import 'govuk_publishing_components/components/print/feedback';
 @import 'govuk_publishing_components/components/print/govspeak';

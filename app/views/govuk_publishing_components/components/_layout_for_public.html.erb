@@ -53,10 +53,12 @@
         remove_bottom_border: full_width,
       } %>
     <% end %>
-
-    <main class="<%= "govuk-width-container govuk-main-wrapper" unless full_width %>" id="content">
-      <%= yield %>
-    </main>
+    <div class="<%= "govuk-width-container" unless full_width %>"  id="content">
+      <%= yield :before_content %>
+      <main class="govuk-main-wrapper">
+        <%= yield %>
+      </main>
+    </div>
 
     <div class="govuk-width-container">
       <%= render "govuk_publishing_components/components/feedback" %>
