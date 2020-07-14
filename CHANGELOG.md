@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.58.0
 
 * Fix search component label accessibility ([PR #1594](https://github.com/alphagov/govuk_publishing_components/pull/1594))
 * Add list component ([PR #1595](https://github.com/alphagov/govuk_publishing_components/pull/1595))
