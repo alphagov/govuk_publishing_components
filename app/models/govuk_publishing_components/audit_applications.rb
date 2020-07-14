@@ -22,13 +22,13 @@ module GovukPublishingComponents
 
       find_ruby = /(?<=render\(["']{1}govuk_publishing_components\/components\/)[a-zA-Z_-]+['"]{1}(?=['"])/
 
-      components_in_templates = find_components(templates, find_templates) || []
-      components_in_stylesheets = find_components(stylesheets, find_stylesheets) || []
-      components_in_print_stylesheets = find_components(stylesheets, find_print_stylesheets) || []
-      components_in_javascripts = find_components(javascripts, find_javascripts) || []
+      components_in_templates = find_components(templates, find_templates, "templates") || []
+      components_in_stylesheets = find_components(stylesheets, find_stylesheets, "stylesheets") || []
+      components_in_print_stylesheets = find_components(stylesheets, find_print_stylesheets, "print_stylesheets") || []
+      components_in_javascripts = find_components(javascripts, find_javascripts, "javascripts") || []
 
-      components_in_helpers = find_components(helpers, find_ruby) || []
-      components_in_presenters = find_components(presenters, find_ruby) || []
+      components_in_helpers = find_components(helpers, find_ruby, "ruby") || []
+      components_in_presenters = find_components(presenters, find_ruby, "ruby") || []
       components_in_ruby = [components_in_helpers, components_in_presenters].flatten.uniq
 
       @data = {
@@ -61,21 +61,23 @@ module GovukPublishingComponents
 
   private
 
-    def find_components(files, find)
+    def find_components(files, find, type)
       components_found = []
 
       files.each do |file|
         src = File.read(file)
-        components_found << find_match(find, src)
+        components_found << find_match(find, src, type)
       end
 
-      found = components_found.flatten.uniq.sort
-
-      found
+      # found = components_found.flatten.uniq.sort
+      # found
+      components_found.flatten.uniq.sort
     end
 
-    def find_match(find, src)
-      return %w[all] if src.match(@find_all_stylesheets) || src.match(@find_all_print_stylesheets) || src.match(@find_all_javascripts)
+    def find_match(find, src, type)
+      return %w[all] if src.match(@find_all_stylesheets) && type == "stylesheets"
+      return %w[all] if src.match(@find_all_print_stylesheets) && type == "print_stylesheets"
+      return %w[all] if src.match(@find_all_javascripts) && type == "javascripts"
 
       matches = src.scan(find)
       all_matches = []
