@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Fix search component label accessibility ([PR #1594](https://github.com/alphagov/govuk_publishing_components/pull/1594))
+* Add list component ([PR #1595](https://github.com/alphagov/govuk_publishing_components/pull/1595))
 
 ## 21.57.1
 

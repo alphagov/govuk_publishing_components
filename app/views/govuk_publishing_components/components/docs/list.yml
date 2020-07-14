@@ -1,0 +1,64 @@
+name: List
+description: A list - unordered or ordered, with or without counters / bullet points.
+body: |
+  This is an ordered or unordered list, with or without visible bullets / numbers.
+
+  The `items` parameter can include HTML to display - such as links or another
+  list. This HTML can either be directly coded or come from another component.
+accessibility_criteria: |
+  The list must:
+
+  - inform the user how many items are in the list
+  - convey the content structure
+  - indicate the current page when contents span different pages, and not link to itself
+
+  The list may:
+
+  - include an `aria-label` to contextualise the list if helpful
+govuk_frontend_components:
+  - list
+examples:
+  default:
+    description: "The default is an unordered list with no bullet points or numbers."
+    data: &default-example-data
+      items:
+      - "Tony&rsquo;s Chocolonely"
+      - '<a href="https://en.wikipedia.org/wiki/Cherry_Ripe_(chocolate_bar)" rel="noopener" class="govuk-link">Cherry Ripe</a>'
+      - "Snickers"
+      - "Chomp"
+      - "Penguin"
+      - "Boost"
+  unordered_list_with_aria-label:
+    description: "A list with an aria-label"
+    data:
+      aria_label: "A list of delicious chocolate bars."
+      <<: *default-example-data
+  unordered_list_with_bullet_points:
+    description: "An unordered list with visible bullet points."
+    data:
+      visible_counters: true
+      <<: *default-example-data
+  ordered_list_without_numbers:
+    description: "This is an ordered list where the numbers aren't visible."
+    data:
+      list_type: "number"
+      <<: *default-example-data
+  ordered_list_with_numbers:
+    description: |
+      This is an ordered list with the numbers visible.
+    data:
+      list_type: "number"
+      visible_counters: true
+      <<: *default-example-data
+  with_extra_spacing:
+    description: |
+      Increases the amount of spacing between the list items.
+    data:
+      extra_spacing: true
+      <<: *default-example-data
+  with_id_attribute:
+    description: |
+      Sets the `id` on the `ul` or `ol` element.
+    data:
+      id: 'super-fantastic-chocolate-list'
+      <<: *default-example-data
