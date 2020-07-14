@@ -85,6 +85,7 @@ module GovukPublishingComponents
 
       files = Dir["#{@application_path}/app/views/**/*.html.erb"]
       files.concat Dir["#{@application_path}/app/**/*.rb"]
+      files.concat Dir["#{@application_path}/lib/**/*.rb"]
 
       files.each do |file|
         data = File.read(file)
