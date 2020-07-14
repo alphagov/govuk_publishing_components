@@ -10,11 +10,14 @@
 ## Unreleased
 
 * Add component auditing ([PR #1589](https://github.com/alphagov/govuk_publishing_components/pull/1589))
+* Check that details component exists (to fix bug created in #1597) ([PR #1602](https://github.com/alphagov/govuk_publishing_components/pull/1602))
+
 
 ## 21.58.0
 
 * Fix search component label accessibility ([PR #1594](https://github.com/alphagov/govuk_publishing_components/pull/1594))
 * Add list component ([PR #1595](https://github.com/alphagov/govuk_publishing_components/pull/1595))
+* Remove jQuery from details component ([PR #1597](https://github.com/alphagov/govuk_publishing_components/pull/1597))
 
 ## 21.57.1
 

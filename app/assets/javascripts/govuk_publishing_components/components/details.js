@@ -20,9 +20,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         var detailsClick = detailsComponent.querySelector('[data-details-track-click]')
         var that = this
 
-        detailsClick.addEventListener('click', function (event) {
-          that.trackDefault(detailsComponent)
-        })
+        if (detailsClick) {
+          detailsClick.addEventListener('click', function (event) {
+            that.trackDefault(detailsComponent)
+          })
+        }
       }
     }
 
