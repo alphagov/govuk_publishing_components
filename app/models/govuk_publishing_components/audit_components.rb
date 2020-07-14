@@ -27,7 +27,7 @@ module GovukPublishingComponents
       @component_js_tests = find_files(js_tests, [path, js_tests_path].join("/"))
 
       @data = {
-        component_templates: @components,
+        component_code: @components,
         component_stylesheets: @component_stylesheets,
         component_print_stylesheets: @component_print_stylesheets,
         component_javascripts: @component_javascripts,

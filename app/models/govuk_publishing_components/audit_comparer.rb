@@ -91,6 +91,7 @@ module GovukPublishingComponents
 
         second_group.each do |second|
           second_location = second[:location]
+          second_location = "code" if %w[templates ruby].include?(second_location)
           in_current = find_missing(second[:components].clone, first[:components].clone)
 
           next if second[:components].include?("all")
@@ -110,6 +111,12 @@ module GovukPublishingComponents
       warnings = []
 
       code = components.select { |c| c[:location] == "templates" || c[:location] == "ruby" }
+      code = [
+        {
+          location: "code",
+          components: code.map { |c| c[:components] }.flatten.uniq.sort,
+        },
+      ]
       assets = components.select { |c| c[:location] == "stylesheets" || c[:location] == "print_stylesheets" || c[:location] == "javascripts" }
 
       warnings << find_missing_items(code, assets)
@@ -131,7 +138,7 @@ module GovukPublishingComponents
     end
 
     def component_does_not_exist(component)
-      !@gem_data[:component_templates].include?(component) unless component == "all"
+      !@gem_data[:component_code].include?(component) unless component == "all"
     end
 
     def find_missing(needle, haystack)

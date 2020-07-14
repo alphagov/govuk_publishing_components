@@ -4,7 +4,7 @@ require_relative "../../app/models/govuk_publishing_components/audit_comparer.rb
 describe "Comparing data from an application with the components" do
   gem = {
     name: "govuk_publishing_components",
-    component_templates: [
+    component_code: [
       "component one",
       "component two",
       "component three",
@@ -110,22 +110,18 @@ describe "Comparing data from an application with the components" do
           },
           {
             component: "component three",
-            message: "Included in templates but not stylesheets",
+            message: "Included in code but not stylesheets",
           },
           {
             component: "component one",
-            message: "Included in templates but not javascripts",
-          },
-          {
-            component: "component three",
-            message: "Included in ruby but not stylesheets",
+            message: "Included in code but not javascripts",
           },
           {
             component: "component two",
-            message: "Included in stylesheets but not templates",
+            message: "Included in stylesheets but not code",
           },
         ],
-        warning_count: 6,
+        warning_count: 5,
       },
     ]
 
@@ -201,6 +197,92 @@ describe "Comparing data from an application with the components" do
           },
         ],
         warning_count: 1,
+      },
+    ]
+
+    expect(comparer.data).to match(expected)
+  end
+
+  it "returns a comparison for an application using a mixed approach" do
+    application = [
+      {
+        name: "Dummy application",
+        application_found: true,
+        components_found: [
+          {
+            location: "templates",
+            components: [
+              "component two",
+              "component three",
+            ],
+          },
+          {
+            location: "stylesheets",
+            components: [
+              "component one",
+              "component three",
+            ],
+          },
+          {
+            location: "print_stylesheets",
+            components: %w[all],
+          },
+          {
+            location: "javascripts",
+            components: %w[all],
+          },
+          {
+            location: "ruby",
+            components: [
+              "component that does not exist",
+            ],
+          },
+        ],
+      },
+    ]
+    comparer = GovukPublishingComponents::AuditComparer.new(gem, application)
+
+    expected = [
+      {
+        name: "Dummy application",
+        application_found: true,
+        summary: [
+          {
+            name: "Components in templates",
+            value: "component three, component two",
+          },
+          {
+            name: "Components in stylesheets",
+            value: "component one, component three",
+          },
+          {
+            name: "Components in print stylesheets",
+            value: "all",
+          },
+          {
+            name: "Components in javascripts",
+            value: "all",
+          },
+          {
+            name: "Components in ruby",
+            value: "component that does not exist",
+          },
+        ],
+        warnings: [
+          {
+            component: "component that does not exist",
+            message: "Included in ruby but component does not exist",
+          },
+          {
+            component: "component two",
+            message: "Included in code but not stylesheets",
+          },
+          {
+            component: "component one",
+            message: "Included in stylesheets but not code",
+          },
+        ],
+        warning_count: 3,
       },
     ]
 

@@ -6,7 +6,7 @@ describe "Auditing the components in the gem" do
     gem = GovukPublishingComponents::AuditComponents.new("#{Dir.pwd}/spec/dummy_gem")
 
     expected = {
-      component_templates: [
+      component_code: [
         "test component",
         "test component containing other component",
       ],
