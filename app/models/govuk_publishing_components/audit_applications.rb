@@ -6,8 +6,6 @@ module GovukPublishingComponents
       templates = Dir["#{path}/app/views/**/*.html.erb"]
       stylesheets = Dir["#{path}/app/assets/stylesheets/**/*.scss"]
       javascripts = Dir["#{path}/app/assets/javascripts/**/*.js"]
-      helpers = Dir["#{path}/app/helpers/**/*.rb"]
-      presenters = Dir["#{path}/app/presenters/**/*.rb"]
 
       find_templates = /(?<=govuk_publishing_components\/components\/)[\/a-zA-Z_-]+(?=['"])/
 
@@ -20,16 +18,20 @@ module GovukPublishingComponents
       @find_all_javascripts = /\/\/[ ]*= require govuk_publishing_components\/all_components/
       find_javascripts = /(?<=require govuk_publishing_components\/components\/)[a-zA-Z_-]+/
 
-      find_ruby = /(?<=render\(["']{1}govuk_publishing_components\/components\/)[a-zA-Z_-]+['"]{1}(?=['"])/
-
       components_in_templates = find_components(templates, find_templates, "templates") || []
       components_in_stylesheets = find_components(stylesheets, find_stylesheets, "stylesheets") || []
       components_in_print_stylesheets = find_components(stylesheets, find_print_stylesheets, "print_stylesheets") || []
       components_in_javascripts = find_components(javascripts, find_javascripts, "javascripts") || []
 
-      components_in_helpers = find_components(helpers, find_ruby, "ruby") || []
-      components_in_presenters = find_components(presenters, find_ruby, "ruby") || []
-      components_in_ruby = [components_in_helpers, components_in_presenters].flatten.uniq
+      find_ruby = /(?<=render\(["']{1}govuk_publishing_components\/components\/)[a-zA-Z_-]+/
+      ruby_paths = %w[/app/helpers/ /app/presenters/ /lib/]
+
+      components_in_ruby = []
+      ruby_paths.each do |ruby_path|
+        components_in_ruby << find_components(Dir["#{path}#{ruby_path}**/*.rb"], find_ruby, "ruby") || []
+      end
+
+      components_in_ruby = components_in_ruby.flatten.uniq
 
       @data = {
         name: name,
@@ -69,8 +71,6 @@ module GovukPublishingComponents
         components_found << find_match(find, src, type)
       end
 
-      # found = components_found.flatten.uniq.sort
-      # found
       components_found.flatten.uniq.sort
     end
 
