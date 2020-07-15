@@ -1,6 +1,6 @@
 #!/bin/bash
 
-npm install
+yarn install
 bundle check || bundle install
 
 export MAIN_COMPONENT_GUIDE=true

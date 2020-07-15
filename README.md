@@ -35,7 +35,7 @@ There are 2 types of helper classes in this app:
 
 ## Relationship with GOV.UK Design System
 
-GOV.UK Publishing Components also makes [GOV.UK Design System](https://design-system.service.gov.uk/) styles and components available to GOV.UK's frontend applications. This gem consumes [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend) via [NPM](https://www.npmjs.com/).
+GOV.UK Publishing Components also makes [GOV.UK Design System](https://design-system.service.gov.uk/) styles and components available to GOV.UK's frontend applications. This gem consumes [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend) via [Yarn](https://classic.yarnpkg.com/).
 
 ## Browser and assistive technology support
 GOV.UK Publishing Components shares the same standards in terms of browser and assistive technology support with [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend#browser-and-assistive-technology-support).

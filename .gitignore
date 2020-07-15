@@ -6,7 +6,6 @@ spec/dummy/tmp/
 spec/dummy/public/assets/
 doc
 .yardoc
-
 tmp/failures.txt
 node_modules
-yarn.lock
+yarn-error.log
