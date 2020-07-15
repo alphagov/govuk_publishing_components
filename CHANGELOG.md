@@ -7,11 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.59.0
 
 * Add component auditing ([PR #1589](https://github.com/alphagov/govuk_publishing_components/pull/1589))
 * Check that details component exists (to fix bug created in #1597) ([PR #1602](https://github.com/alphagov/govuk_publishing_components/pull/1602))
-
 
 ## 21.58.0
 
