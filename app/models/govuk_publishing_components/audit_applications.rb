@@ -67,8 +67,12 @@ module GovukPublishingComponents
       components_found = []
 
       files.each do |file|
-        src = File.read(file)
-        components_found << find_match(find, src, type)
+        begin
+          src = File.read(file)
+          components_found << find_match(find, src, type)
+        rescue
+          puts "File #{file} not found"
+        end
       end
 
       components_found.flatten.uniq.sort
