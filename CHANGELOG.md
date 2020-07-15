@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add more font sizes to heading component ([PR #1587](https://github.com/alphagov/govuk_publishing_components/pull/1587))
+
 ## 21.59.0
 
 * Add component auditing ([PR #1589](https://github.com/alphagov/govuk_publishing_components/pull/1589))
