@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Make component auditing more resilient ([PR #1604](https://github.com/alphagov/govuk_publishing_components/pull/1604))
 * Add more font sizes to heading component ([PR #1587](https://github.com/alphagov/govuk_publishing_components/pull/1587))
 
 ## 21.59.0
