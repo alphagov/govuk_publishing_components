@@ -503,3 +503,9 @@ $code-delete-bg: #fadddd;
     color: $code-09;
   }
 }
+
+.sticky-table-header {
+  position: sticky;
+  top: 0;
+  background: govuk-colour("white");
+}
