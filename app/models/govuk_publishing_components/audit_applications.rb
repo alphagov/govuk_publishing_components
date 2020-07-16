@@ -3,11 +3,11 @@ module GovukPublishingComponents
     attr_reader :data
 
     def initialize(path, name)
-      templates = Dir["#{path}/app/views/**/*.html.erb"]
+      templates = Dir["#{path}/app/views/**/*.erb"]
       stylesheets = Dir["#{path}/app/assets/stylesheets/**/*.scss"]
       javascripts = Dir["#{path}/app/assets/javascripts/**/*.js"]
 
-      find_templates = /(?<=govuk_publishing_components\/components\/)[\/a-zA-Z_-]+(?=['"])/
+      find_components = /(?<=govuk_publishing_components\/components\/)[\/a-zA-Z_-]+(?=['"])/
 
       @find_all_stylesheets = /@import ["']{1}govuk_publishing_components\/all_components/
       find_stylesheets = /(?<=@import ["']{1}govuk_publishing_components\/components\/)(?!print)+[a-zA-Z_-]+(?=['"])/
@@ -18,23 +18,21 @@ module GovukPublishingComponents
       @find_all_javascripts = /\/\/[ ]*= require govuk_publishing_components\/all_components/
       find_javascripts = /(?<=require govuk_publishing_components\/components\/)[a-zA-Z_-]+/
 
-      components_in_templates = find_components(templates, find_templates, "templates") || []
+      components_in_templates = find_components(templates, find_components, "templates") || []
       components_in_stylesheets = find_components(stylesheets, find_stylesheets, "stylesheets") || []
       components_in_print_stylesheets = find_components(stylesheets, find_print_stylesheets, "print_stylesheets") || []
       components_in_javascripts = find_components(javascripts, find_javascripts, "javascripts") || []
 
-      find_ruby = /(?<=render\(["']{1}govuk_publishing_components\/components\/)[a-zA-Z_-]+/
       ruby_paths = %w[/app/helpers/ /app/presenters/ /lib/]
-
       components_in_ruby = []
       ruby_paths.each do |ruby_path|
-        components_in_ruby << find_components(Dir["#{path}#{ruby_path}**/*.rb"], find_ruby, "ruby") || []
+        components_in_ruby << find_components(Dir["#{path}#{ruby_path}**/*.{rb,erb}"], find_components, "ruby") || []
       end
-
       components_in_ruby = components_in_ruby.flatten.uniq
 
       application_found = application_exists(path)
       components_found = []
+
       if application_found
         components_found = [
           {

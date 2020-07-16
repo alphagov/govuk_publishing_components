@@ -60,6 +60,7 @@ describe "Component guide index" do
 @import 'govuk_publishing_components/components/layout-footer';
 @import 'govuk_publishing_components/components/layout-for-admin';
 @import 'govuk_publishing_components/components/layout-header';
+@import 'govuk_publishing_components/components/print-link';
 @import 'govuk_publishing_components/components/related-navigation';
 @import 'govuk_publishing_components/components/skip-link';
 @import 'govuk_publishing_components/components/step-by-step-nav';
@@ -68,7 +69,7 @@ describe "Component guide index" do
 @import 'govuk_publishing_components/components/tabs';
 @import 'govuk_publishing_components/components/title';"
 
-    expect(page).to have_selector(".component-doc-h2", text: "Gem components used by this app (13)")
+    expect(page).to have_selector(".component-doc-h2", text: "Gem components used by this app (15)")
     expect(page).to have_selector(".govuk-details__summary-text", text: "Suggested imports for this application")
 
     expect(page.find(:css, 'textarea[name="main-sass"]', visible: false).value).to eq(expected_main_sass)
@@ -97,6 +98,7 @@ describe "Component guide index" do
 //= require govuk_publishing_components/components/error-summary
 //= require govuk_publishing_components/components/feedback
 //= require govuk_publishing_components/components/govspeak
+//= require govuk_publishing_components/components/print-link
 //= require govuk_publishing_components/components/step-by-step-nav
 //= require govuk_publishing_components/components/tabs"
 

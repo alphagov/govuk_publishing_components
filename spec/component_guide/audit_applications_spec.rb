@@ -28,7 +28,7 @@ describe "Auditing the components in applications" do
         },
         {
           location: "ruby",
-          components: [],
+          components: ["button", "govspeak", "print link"],
         },
       ],
     }

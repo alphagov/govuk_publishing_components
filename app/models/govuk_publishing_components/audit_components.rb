@@ -19,7 +19,7 @@ module GovukPublishingComponents
       tests_path = "spec/components"
       js_tests_path = "spec/javascripts/components"
 
-      templates = Dir["#{path}/#{templates_path}/*.html.erb"]
+      templates = Dir["#{path}/#{templates_path}/*.erb"]
       stylesheets = Dir["#{path}/#{stylesheets_path}/*.scss"]
       print_stylesheets = Dir["#{path}/#{print_stylesheets_path}/*.scss"]
       javascripts = Dir["#{path}/#{javascripts_path}/*.js"]
@@ -53,11 +53,22 @@ module GovukPublishingComponents
     end
 
     def clean_file_name(name)
-      name.tr("/_-", " ").gsub(".html.erb", "").gsub(".scss", "").gsub(".js", "").gsub("spec", "").gsub(".rb", "").strip
+      name.tr("/_-", " ")
+        .gsub(".html.erb", "")
+        .gsub(".erb", "")
+        .gsub(".scss", "")
+        .gsub(".js", "")
+        .gsub("spec", "")
+        .gsub(".rb", "")
+        .strip
     end
 
     def get_component_name_from_full_path(path)
-      path.gsub("/_", "/").gsub(@templates_full_path, "").gsub(".html.erb", "").tr('\"\'', "")
+      path.gsub("/_", "/")
+        .gsub(@templates_full_path, "")
+        .gsub(".html.erb", "")
+        .gsub(".erb", "")
+        .tr('\"\'', "")
     end
 
     def get_component_link(component)
