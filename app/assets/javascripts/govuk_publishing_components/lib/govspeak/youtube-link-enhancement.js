@@ -21,7 +21,7 @@
     for (var i = 0; i < $youtubeLinks.length; ++i) {
       var $link = $youtubeLinks[i]
       var href = $link.getAttribute('href')
-      var hasTracking = $link.getAttribute('data-youtube-player-analytics') == "true"
+      var hasTracking = $link.hasAttribute('data-youtube-player-analytics')
       var options = {
         link: $link
       }
@@ -33,7 +33,7 @@
         }
       }
 
-      if (href.includes("/live_stream")) {
+      if (href.includes('/live_stream')) {
         var channelId = YoutubeLinkEnhancement.parseLivestream(href)
 
         if (!this.hasDisabledEmbed($link) && channelId) {
@@ -67,19 +67,19 @@
     youtubeVideoContainer.className += 'gem-c-govspeak__youtube-video'
     youtubeVideoContainer.innerHTML = '<span id="' + elementId + '" data-video-id="' + id + '"></span>'
 
-    options['title'] = $link.textContent
+    options.title = $link.textContent
 
     parentContainer.replaceChild(youtubeVideoContainer, parentPara)
     this.insertVideo(elementId, options)
   }
 
   YoutubeLinkEnhancement.prototype.insertVideo = function (elementId, options) {
-    var channelId = ""
-    var videoId = ""
+    var channelId = ''
+    var videoId = ''
 
     if (options.channel) {
       channelId = options.channel
-      videoId = "live_stream"
+      videoId = 'live_stream'
     } else {
       videoId = options.videoId
     }
@@ -112,16 +112,17 @@
             var eventData = event.data
             var eventTarget = event.target
             var states = {
-              "-1": "VideoUnstarted",
-              "0": "VideoEnded",
-              "1": "VideoPlaying",
-              "2": "VideoPaused",
-              "3": "VideoBuffering",
-              "5": "VideoCued"
+              /* eslint-disable quote-props */
+              '-1': 'VideoUnstarted',
+              '0': 'VideoEnded',
+              '1': 'VideoPlaying',
+              '2': 'VideoPaused',
+              '3': 'VideoBuffering',
+              '5': 'VideoCued'
+              /* eslint-enable */
             }
-            if (states[eventData] && options.tracking && options.tracking.hasTracking
-                && window.GOVUK.analytics && window.GOVUK.analytics.trackEvent)
-            {
+            if (states[eventData] && options.tracking && options.tracking.hasTracking &&
+                window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
               var tracking = {
                 category: options.tracking.category,
                 action: states[eventData],
@@ -192,8 +193,7 @@
         params[part[0]] = part[1]
       }
       return params.v
-    }
-    else if (url.indexOf('youtu.be') > -1) {
+    } else if (url.indexOf('youtu.be') > -1) {
       parts = url.split('/')
       return parts.pop()
     }

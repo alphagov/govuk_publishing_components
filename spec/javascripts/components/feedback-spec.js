@@ -402,11 +402,11 @@ describe('Feedback component', function () {
       expect(request.url).toBe('/contact/govuk/page_improvements')
       expect(request.method).toBe('POST')
       expect(request.data()).toEqual({
-        'url': ['http://example.com/path/to/page'],
-        'what_doing': ['I was looking for some information about local government.'],
-        'what_wrong': ['The background should be green.'],
-        'referrer': ['unknown'],
-        'javascript_enabled': ['true']
+        url: ['http://example.com/path/to/page'],
+        what_doing: ['I was looking for some information about local government.'],
+        what_wrong: ['The background should be green.'],
+        referrer: ['unknown'],
+        javascript_enabled: ['true']
       })
     })
 

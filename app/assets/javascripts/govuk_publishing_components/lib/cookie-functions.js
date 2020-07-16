@@ -5,31 +5,31 @@
   window.GOVUK = window.GOVUK || {}
 
   var DEFAULT_COOKIE_CONSENT = {
-    'essential': true,
-    'settings': false,
-    'usage': false,
-    'campaigns': false
+    essential: true,
+    settings: false,
+    usage: false,
+    campaigns: false
   }
 
   var COOKIE_CATEGORIES = {
-    'cookies_policy': 'essential',
-    'seen_cookie_message': 'essential',
-    'cookie_preferences_set': 'essential',
-    'cookies_preferences_set': 'essential',
+    cookies_policy: 'essential',
+    seen_cookie_message: 'essential',
+    cookie_preferences_set: 'essential',
+    cookies_preferences_set: 'essential',
     '_email-alert-frontend_session': 'essential',
-    'licensing_session': 'essential',
-    'govuk_contact_referrer': 'essential',
-    'multivariatetest_cohort_coronavirus_extremely_vulnerable_rate_limit': 'essential',
-    'dgu_beta_banner_dismissed': 'settings',
-    'global_bar_seen': 'settings',
-    'govuk_browser_upgrade_dismisssed': 'settings',
-    'govuk_not_first_visit': 'settings',
-    'analytics_next_page_call': 'usage',
-    '_ga': 'usage',
-    '_gid': 'usage',
-    '_gat': 'usage',
+    licensing_session: 'essential',
+    govuk_contact_referrer: 'essential',
+    multivariatetest_cohort_coronavirus_extremely_vulnerable_rate_limit: 'essential',
+    dgu_beta_banner_dismissed: 'settings',
+    global_bar_seen: 'settings',
+    govuk_browser_upgrade_dismisssed: 'settings',
+    govuk_not_first_visit: 'settings',
+    analytics_next_page_call: 'usage',
+    _ga: 'usage',
+    _gid: 'usage',
+    _gat: 'usage',
     'JS-Detection': 'usage',
-    'TLSversion': 'usage'
+    TLSversion: 'usage'
   }
 
   /*
@@ -69,10 +69,10 @@
 
   window.GOVUK.approveAllCookieTypes = function () {
     var approvedConsent = {
-      'essential': true,
-      'settings': true,
-      'usage': true,
-      'campaigns': true
+      essential: true,
+      settings: true,
+      usage: true,
+      campaigns: true
     }
 
     window.GOVUK.setCookie('cookies_policy', JSON.stringify(approvedConsent), { days: 365 })
