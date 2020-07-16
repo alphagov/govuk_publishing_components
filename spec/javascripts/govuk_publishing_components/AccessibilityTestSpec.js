@@ -80,7 +80,7 @@ describe('AccessibilityTest', function () {
       // Protect against test failing if PhantomJS updated
       if (!(document.querySelector('svg').children instanceof HTMLCollection)) {
         axeOptions = window.axe.run.calls.argsFor(0)
-        expect(axeOptions['restoreScroll']).toBe(undefined)
+        expect(axeOptions.restoreScroll).toBe(undefined)
       }
       done()
     })
@@ -169,8 +169,8 @@ describe('AccessibilityTest', function () {
     addToDom('<a href="#">Link</a>', 'a { background-image: url("/"); }')
 
     AccessibilityTest(TEST_SELECTOR, function (err, violations, pageResults) {
-      expect(pageResults.incompleteWarnings[0].summary).toBe("Elements must have sufficient color contrast")
-      expect(pageResults.incompleteWarnings[0].url).toBe("https://dequeuniversity.com/rules/axe/3.5/color-contrast?application=axeAPI")
+      expect(pageResults.incompleteWarnings[0].summary).toBe('Elements must have sufficient color contrast')
+      expect(pageResults.incompleteWarnings[0].url).toBe('https://dequeuniversity.com/rules/axe/3.5/color-contrast?application=axeAPI')
       expect(pageResults.incompleteWarnings[0].selectors[0].selector[0]).toBe('a[href="\\#"]')
       expect(pageResults.incompleteWarnings[0].selectors[0].reasons[0]).toBe('Element\'s background color could not be determined due to a background image')
       done()
@@ -181,8 +181,8 @@ describe('AccessibilityTest', function () {
     addToDom('<img src=""><a href="#">Low contrast</a>', 'a { background: white; color: #ddd }')
 
     AccessibilityTest(TEST_SELECTOR, function (err, violations, pageResults) {
-      expect(pageResults.violations[0].summary).toBe("Elements must have sufficient color contrast")
-      expect(pageResults.violations[0].url).toBe("https://dequeuniversity.com/rules/axe/3.5/color-contrast?application=axeAPI")
+      expect(pageResults.violations[0].summary).toBe('Elements must have sufficient color contrast')
+      expect(pageResults.violations[0].url).toBe('https://dequeuniversity.com/rules/axe/3.5/color-contrast?application=axeAPI')
       expect(pageResults.violations[0].selectors[0].selector[0]).toBe('a[href="\\#"]')
       expect(pageResults.violations[0].selectors[0].reasons[0]).toBe('Element has insufficient color contrast of 1.35 (foreground color: #dddddd, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1')
       done()

@@ -6,7 +6,7 @@ describe('Youtube link enhancement', function () {
       container = document.createElement('div')
     })
 
-    afterEach(function() {
+    afterEach(function () {
       document.body.removeChild(container)
     })
 
@@ -110,7 +110,7 @@ describe('Youtube link enhancement', function () {
       container = document.createElement('div')
     })
 
-    afterEach(function() {
+    afterEach(function () {
       document.body.removeChild(container)
     })
 

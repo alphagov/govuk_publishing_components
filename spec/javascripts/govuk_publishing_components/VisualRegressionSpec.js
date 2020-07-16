@@ -1,58 +1,57 @@
 /* global describe, afterEach, it, expect */
 
-var VisualDiffTool = window.GOVUK.VisualDiffTool;
-var windowLocation;
+var VisualDiffTool = window.GOVUK.VisualDiffTool
+var windowLocation
 
 describe('VisualDiffTool', function () {
-
   describe('throws errors', function () {
     it('throws error if not running on local page', function () {
-      expect(VisualDiffTool).toThrow();
-    });
-  });
+      expect(VisualDiffTool).toThrow()
+    })
+  })
 
-  describe('URL processing', function() {
-    beforeEach(function() {
-      spyOn(console, 'log').and.callThrough();
-    });
+  describe('URL processing', function () {
+    beforeEach(function () {
+      spyOn(console, 'log').and.callThrough()
+    })
 
-    afterEach(function() {
+    afterEach(function () {
       // We need to call this again to 'turn off' the diff tool that's running from each test
-      VisualDiffTool();
-      windowLocation = null;
-    });
+      VisualDiffTool()
+      windowLocation = null
+    })
 
-    it('compares dev.gov.uk to gov.uk', function() {
+    it('compares dev.gov.uk to gov.uk', function () {
       windowLocation = {
         href: 'http://government-frontend.dev.gov.uk',
         host: 'government-frontend.dev.gov.uk'
-      };
+      }
 
-      VisualDiffTool(windowLocation);
+      VisualDiffTool(windowLocation)
 
-      expect(console.log.calls.mostRecent().args[0]).toContain("https://www.gov.uk");
-    });
+      expect(console.log.calls.mostRecent().args[0]).toContain('https://www.gov.uk')
+    })
 
-    it('compares local component guide to heroku deploy', function() {
+    it('compares local component guide to heroku deploy', function () {
       windowLocation = {
         href: 'http://government-frontend.dev.gov.uk/component-guide',
         host: 'government-frontend.dev.gov.uk'
-      };
+      }
 
-      VisualDiffTool(windowLocation);
+      VisualDiffTool(windowLocation)
 
-      expect(console.log.calls.mostRecent().args[0]).toContain("https://government-frontend.herokuapp.com/component-guide");
-    });
+      expect(console.log.calls.mostRecent().args[0]).toContain('https://government-frontend.herokuapp.com/component-guide')
+    })
 
-    it('compares pr heroku app to master heroku deploy', function() {
+    it('compares pr heroku app to master heroku deploy', function () {
       windowLocation = {
         href: 'https://government-frontend-pr-100.herokuapp.com',
         host: 'government-frontend-pr-100.herokuapp.com'
-      };
+      }
 
-      VisualDiffTool(windowLocation);
+      VisualDiffTool(windowLocation)
 
-      expect(console.log.calls.mostRecent().args[0]).toContain("https://government-frontend.herokuapp.com");
-    });
-  });
-});
+      expect(console.log.calls.mostRecent().args[0]).toContain('https://government-frontend.herokuapp.com')
+    })
+  })
+})

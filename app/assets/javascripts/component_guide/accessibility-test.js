@@ -34,20 +34,20 @@
         return callback('aXe Error: ' + err)
       }
 
-      if (typeof results === "undefined") {
+      if (typeof results === 'undefined') {
         return callback('aXe Error: Expected results but none returned')
       }
 
       var consoleErrorText = _consoleErrorText(results.violations, results.url)
-      var bodyClass = results.violations.length === 0 ? "js-test-a11y-success" : "js-test-a11y-failed"
-      document.body.classList.add(bodyClass);
-      document.body.classList.add("js-test-a11y-finished");
+      var bodyClass = results.violations.length === 0 ? 'js-test-a11y-success' : 'js-test-a11y-failed'
+      document.body.classList.add(bodyClass)
+      document.body.classList.add('js-test-a11y-finished')
 
       callback(undefined, consoleErrorText, _processAxeResultsForPage(results))
     })
   }
 
-  var _consoleErrorText = function(violations, url) {
+  var _consoleErrorText = function (violations, url) {
     if (violations.length !== 0) {
       return (
         '\n' + 'Accessibility issues at ' +
@@ -69,28 +69,28 @@
     }
   }
 
-  var _processAxeResultsForPage = function(results) {
+  var _processAxeResultsForPage = function (results) {
     return {
       violations: _mapSummaryAndCause(results.violations),
       incompleteWarnings: _mapSummaryAndCause(results.incomplete)
     }
   }
 
-  var _mapSummaryAndCause = function(resultsArray) {
+  var _mapSummaryAndCause = function (resultsArray) {
     return resultsArray.map(function (result) {
       var cssSelector = result.nodes.map(function (node) {
-                          return {
-                            'selector': node.target,
-                            'reasons': node.any.map(function(item) {
-                              return item.message
-                            })
-                          }
-                        })
+        return {
+          selector: node.target,
+          reasons: node.any.map(function (item) {
+            return item.message
+          })
+        }
+      })
       return {
-        'id': result.id,
-        'summary': result.help,
-        'selectors': cssSelector,
-        'url': result.helpUrl
+        id: result.id,
+        summary: result.help,
+        selectors: cssSelector,
+        url: result.helpUrl
       }
     })
   }
@@ -127,7 +127,7 @@
         // Section to announce the overall problem.
         var headerNodeLink = document.createElement('a')
         headerNodeLink.href = result.url
-        headerNodeLink.textContent = "(see guidance)"
+        headerNodeLink.textContent = '(see guidance)'
 
         var headerNode = document.createElement('h3')
         headerNode.textContent = result.summary + ' (' + result.id + ') '
