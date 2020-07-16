@@ -83,9 +83,9 @@ module GovukPublishingComponents
     def components_in_use
       matches = []
 
-      files = Dir["#{@application_path}/app/views/**/*.html.erb"]
+      files = Dir["#{@application_path}/app/views/**/*.erb"]
       files.concat Dir["#{@application_path}/app/**/*.rb"]
-      files.concat Dir["#{@application_path}/lib/**/*.rb"]
+      files.concat Dir["#{@application_path}/lib/**/*.{rb,erb}"]
 
       files.each do |file|
         data = File.read(file)
