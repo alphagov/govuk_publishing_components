@@ -112,12 +112,14 @@
             var eventData = event.data
             var eventTarget = event.target
             var states = {
+              /* eslint-disable quote-props */
               '-1': 'VideoUnstarted',
-              0: 'VideoEnded',
-              1: 'VideoPlaying',
-              2: 'VideoPaused',
-              3: 'VideoBuffering',
-              5: 'VideoCued'
+              '0': 'VideoEnded',
+              '1': 'VideoPlaying',
+              '2': 'VideoPaused',
+              '3': 'VideoBuffering',
+              '5': 'VideoCued'
+              /* eslint-enable */
             }
             if (states[eventData] && options.tracking && options.tracking.hasTracking &&
                 window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
