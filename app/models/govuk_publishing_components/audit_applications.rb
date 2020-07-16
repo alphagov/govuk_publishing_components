@@ -72,6 +72,9 @@ module GovukPublishingComponents
       end
 
       components_found.flatten.uniq.sort
+    rescue StandardError
+      puts "File #{file} not found"
+      components_found.flatten.uniq.sort
     end
 
     def find_match(find, src, type)

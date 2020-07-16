@@ -3,9 +3,11 @@ module GovukPublishingComponents
     attr_reader :data, :gem_data
 
     def initialize(gem_data, results)
-      @gem_data = gem_data
-      @data = sort_results(results)
-      @gem_data[:components_by_application] = get_components_by_application
+      if gem_data[:gem_found]
+        @gem_data = gem_data
+        @data = sort_results(results)
+        @gem_data[:components_by_application] = get_components_by_application
+      end
     end
 
   private

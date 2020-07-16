@@ -7,8 +7,8 @@ module GovukPublishingComponents
       applications = analyse_applications(File.expand_path("..", path))
       compared_data = AuditComparer.new(components.data, applications)
 
-      @applications = compared_data.data
-      @components = compared_data.gem_data
+      @applications = compared_data.data || []
+      @components = compared_data.gem_data || []
     end
 
   private

@@ -3,6 +3,15 @@ module GovukPublishingComponents
     attr_reader :data
 
     def initialize(path)
+      @data = {
+        gem_found: false,
+      }
+      compile_data(path) if Dir.exist?(path)
+    end
+
+  private
+
+    def compile_data(path)
       templates_path = "app/views/govuk_publishing_components/components"
       stylesheets_path = "app/assets/stylesheets/govuk_publishing_components/components"
       print_stylesheets_path = "app/assets/stylesheets/govuk_publishing_components/components/print"
@@ -27,6 +36,7 @@ module GovukPublishingComponents
       @component_js_tests = find_files(js_tests, [path, js_tests_path].join("/"))
 
       @data = {
+        gem_found: true,
         component_code: @components,
         component_stylesheets: @component_stylesheets,
         component_print_stylesheets: @component_print_stylesheets,
@@ -37,8 +47,6 @@ module GovukPublishingComponents
         component_listing: list_all_component_details,
       }
     end
-
-  private
 
     def find_files(files, replace)
       files.map { |file| clean_file_name(file.gsub(replace, "")) }.sort

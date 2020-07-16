@@ -3,7 +3,8 @@ require_relative "../../app/models/govuk_publishing_components/audit_application
 
 describe "Auditing the components in applications" do
   it "returns correct information" do
-    application = GovukPublishingComponents::AuditApplications.new("#{Dir.pwd}/spec/dummy", "an application")
+    path = File.join(File.dirname(__FILE__), "../dummy")
+    application = GovukPublishingComponents::AuditApplications.new(path, "an application")
 
     expected = {
       name: "an application",
