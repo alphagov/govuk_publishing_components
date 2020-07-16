@@ -10,7 +10,7 @@ module GovukPublishingComponents
       find_components = /(?<=govuk_publishing_components\/components\/)[\/a-zA-Z_-]+(?=['"])/
 
       @find_all_stylesheets = /@import ["']{1}govuk_publishing_components\/all_components/
-      find_stylesheets = /(?<=@import ["']{1}govuk_publishing_components\/components\/)(?!print)+[a-zA-Z_-]+(?=['"])/
+      find_stylesheets = /(?<=@import ["']{1}govuk_publishing_components\/components\/)(?!print\/)+[a-zA-Z_-]+(?=['"])/
 
       @find_all_print_stylesheets = /@import ["']{1}govuk_publishing_components\/all_components_print/
       find_print_stylesheets = /(?<=@import ["']{1}govuk_publishing_components\/components\/print\/)[a-zA-Z_-]+(?=['"])/
