@@ -1,4 +1,4 @@
-/* global describe, afterEach, it, expect */
+/* eslint-env jasmine */
 
 var VisualDiffTool = window.GOVUK.VisualDiffTool
 var windowLocation

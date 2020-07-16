@@ -31,11 +31,11 @@
 
     axe.run(selector, axeOptions, function (err, results) {
       if (err) {
-        return callback('aXe Error: ' + err)
+        return callback(new Error('aXe Error: ' + err))
       }
 
       if (typeof results === 'undefined') {
-        return callback('aXe Error: Expected results but none returned')
+        return callback(new Error('aXe Error: Expected results but none returned'))
       }
 
       var consoleErrorText = _consoleErrorText(results.violations, results.url)

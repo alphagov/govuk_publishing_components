@@ -1,4 +1,4 @@
-/* global describe, afterEach, it, expect */
+/* eslint-env jasmine */
 
 var FilterComponents = window.GOVUK.FilterComponents
 
@@ -9,7 +9,7 @@ function addFormInput () {
 };
 
 function removeFormInput () {
-  form = document.querySelector('form')
+  var form = document.querySelector('form')
   document.body.removeChild(form)
 }
 

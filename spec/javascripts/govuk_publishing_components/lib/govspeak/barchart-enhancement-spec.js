@@ -1,3 +1,6 @@
+/* eslint-env jasmine, jquery */
+/* global GOVUK */
+
 describe('Barchart enhancement', function () {
   var chartHtml = '<table class="js-barchart-table mc-auto-outdent">' +
                     '<tbody>' +

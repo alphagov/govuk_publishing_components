@@ -42,16 +42,17 @@
   }
 
   var _processComparisonURL = function (url) {
+    var appName
     var href = url.href
     var host = url.host
 
     if (href.includes('dev.gov.uk/component-guide')) {
-      var appName = host.split('.')[0]
+      appName = host.split('.')[0]
       return _forceHTTPS(href.replace(host, appName + '.herokuapp.com'))
     } else if (href.includes('dev.gov.uk')) {
       return _forceHTTPS(href.replace(host, 'www.gov.uk'))
     } else if (href.includes('-pr-')) {
-      var appName = host.split('-pr')[0]
+      appName = host.split('-pr')[0]
       return _forceHTTPS(href.replace(host, appName + '.herokuapp.com'))
     } else {
       throw new Error('Visual Diff Tool: You need to run this tool against a page running on your local dev environment')

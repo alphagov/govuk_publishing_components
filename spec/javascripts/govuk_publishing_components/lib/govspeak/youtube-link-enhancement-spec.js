@@ -1,3 +1,6 @@
+/* eslint-env jasmine, jquery */
+/* global GOVUK */
+
 describe('Youtube link enhancement', function () {
   describe('embed behaviour', function () {
     var container
