@@ -3,13 +3,16 @@
   "name": "govuk_publishing_components",
   "license": "MIT",
   "scripts": {
-    "lint:js": "standard 'app/assets/javascripts/govuk_publishing_components/**/*.js' && standard 'spec/javascripts/components/**/*.js'",
+    "lint:js": "standard 'app/assets/javascripts/**/*.js' 'spec/javascripts/**/*.js'",
     "lint:scss": "sass-lint 'app/assets/stylesheets/**/*.scss' -v -q",
     "lint": "yarn run lint:js && yarn run lint:scss"
   },
   "standard": {
     "ignore": [
-      "app/assets/javascripts/govuk_publishing_components/vendor/**/*.js"
+      "app/assets/javascripts/component_guide/vendor/**/*.js",
+      "app/assets/javascripts/govuk_publishing_components/vendor/**/*.js",
+      "spec/javascripts/helpers/*.js",
+      "spec/javascripts/vendor/*.js"
     ]
   },
   "dependencies": {
