@@ -78,7 +78,7 @@ describe "Comparing data from an application with the components" do
     ]
     comparer = GovukPublishingComponents::AuditComparer.new(gem_not_found, application)
     expected = nil
-    expect(comparer.data).to match(expected)
+    expect(comparer.applications_data).to match(expected)
   end
 
   it "returns a comparison for an application using individual components" do
@@ -173,7 +173,7 @@ describe "Comparing data from an application with the components" do
       },
     ]
 
-    expect(comparer.data).to match(expected)
+    expect(comparer.applications_data).to match(expected)
   end
 
   it "returns a comparison for an application using all components" do
@@ -248,7 +248,7 @@ describe "Comparing data from an application with the components" do
       },
     ]
 
-    expect(comparer.data).to match(expected)
+    expect(comparer.applications_data).to match(expected)
   end
 
   it "returns a comparison for an application using a mixed approach" do
@@ -334,6 +334,6 @@ describe "Comparing data from an application with the components" do
       },
     ]
 
-    expect(comparer.data).to match(expected)
+    expect(comparer.applications_data).to match(expected)
   end
 end

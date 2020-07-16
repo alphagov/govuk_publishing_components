@@ -33,10 +33,10 @@ module GovukPublishingComponents
 
       components_in_ruby = components_in_ruby.flatten.uniq
 
-      @data = {
-        name: name,
-        application_found: application_exists(path),
-        components_found: [
+      application_found = application_exists(path)
+      components_found = []
+      if application_found
+        components_found = [
           {
             location: "templates",
             components: components_in_templates,
@@ -57,7 +57,13 @@ module GovukPublishingComponents
             location: "ruby",
             components: components_in_ruby,
           },
-        ],
+        ]
+      end
+
+      @data = {
+        name: name,
+        application_found: application_found,
+        components_found: components_found,
       }
     end
 
@@ -69,11 +75,10 @@ module GovukPublishingComponents
       files.each do |file|
         src = File.read(file)
         components_found << find_match(find, src, type)
+      rescue StandardError
+        puts "File #{file} not found"
       end
 
-      components_found.flatten.uniq.sort
-    rescue StandardError
-      puts "File #{file} not found"
       components_found.flatten.uniq.sort
     end
 

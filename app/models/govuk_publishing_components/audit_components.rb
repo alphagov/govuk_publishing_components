@@ -6,7 +6,7 @@ module GovukPublishingComponents
       @data = {
         gem_found: false,
       }
-      compile_data(path) if Dir.exist?(path)
+      @data = compile_data(path) if Dir.exist?(path)
     end
 
   private
@@ -35,7 +35,7 @@ module GovukPublishingComponents
       @component_tests = find_files(tests, [path, tests_path].join("/"))
       @component_js_tests = find_files(js_tests, [path, js_tests_path].join("/"))
 
-      @data = {
+      {
         gem_found: true,
         component_code: @components,
         component_stylesheets: @component_stylesheets,
