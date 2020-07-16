@@ -405,7 +405,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         var dimension28 = $(event.target).closest('.gem-c-step-nav__list').attr('data-length')
 
         if (dimension28) {
-          trackingOptions['dimension28'] = dimension28
+          trackingOptions.dimension28 = dimension28
         }
 
         stepNavTracker.track('stepNavLinkClicked', linkPosition, trackingOptions)
@@ -421,9 +421,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         // dimension28 records the number of links in the step that was shown/hidden (handled in click event)
         if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
           options = options || {}
-          options['dimension26'] = options['dimension26'] || totalSteps.toString()
-          options['dimension27'] = options['dimension27'] || totalLinks.toString()
-          options['dimension96'] = options['dimension96'] || uniqueId
+          options.dimension26 = options.dimension26 || totalSteps.toString()
+          options.dimension27 = options.dimension27 || totalLinks.toString()
+          options.dimension96 = options.dimension96 || uniqueId
           window.GOVUK.analytics.trackEvent(category, action, options)
         }
       }

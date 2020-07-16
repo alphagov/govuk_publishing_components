@@ -42,8 +42,8 @@ window.GOVUK.Modules.Checkboxes = window.GOVUKFrontend;
               if (typeof options !== 'object' || options === null) {
                 options = {}
               }
-              options['value'] = $checkbox.data('track-value')
-              options['label'] = $checkbox.data('track-label')
+              options.value = $checkbox.data('track-value')
+              options.label = $checkbox.data('track-label')
               window.GOVUK.analytics.trackEvent(category, action, options)
             }
           }
