@@ -9,9 +9,6 @@ node {
       stage("Install yarn dependencies") {
         sh("yarn")
       }
-      stage("Lint Javascript and SCSS") {
-        sh("yarn run lint")
-      }
     }
   )
 }
