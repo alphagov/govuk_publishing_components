@@ -3,17 +3,13 @@ require_relative "boot"
 require "action_controller/railtie"
 require "action_view/railtie"
 require "action_mailer/railtie"
-require "rails/test_unit/railtie"
+# We need to load govuk_test before jasmine_selenium runner so webdrivers is
+# initialised.
+require "govuk_test"
+require "jasmine"
+require "jasmine_selenium_runner"
 require "sassc-rails"
-# Require jasmine at runtime allow the app:jasmine:ci task to build correctly
 
-begin
-  require "jasmine"
-rescue LoadError
-  puts "Running in production mode"
-end
-
-Bundler.require(*Rails.groups)
 require "govuk_publishing_components"
 
 module Dummy
