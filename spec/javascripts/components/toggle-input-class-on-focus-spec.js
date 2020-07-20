@@ -24,9 +24,9 @@ describe('A toggle class module', function () {
     it('applies the focus style on focus and removes it on blur', function () {
       var searchInput = element.find('.js-class-toggle')
       expect(searchInput.is('.focus')).toBe(false)
-      searchInput.trigger('focus')
+      searchInput.triggerHandler('focus')
       expect(searchInput.is('.focus')).toBe(true)
-      searchInput.trigger('blur')
+      searchInput.triggerHandler('blur')
       expect(searchInput.is('.focus')).toBe(false)
     })
   })
@@ -49,9 +49,9 @@ describe('A toggle class module', function () {
 
     it('does not remove the focus style on blur if the search box already has a value', function () {
       var searchInput = element.find('.js-class-toggle')
-      searchInput.trigger('focus')
+      searchInput.triggerHandler('focus')
       expect(searchInput.is('.focus')).toBe(true)
-      searchInput.trigger('blur')
+      searchInput.triggerHandler('blur')
       expect(searchInput.is('.focus')).toBe(true)
     })
   })
