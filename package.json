@@ -5,7 +5,7 @@
   "scripts": {
     "lint:js": "standard 'app/assets/javascripts/govuk_publishing_components/**/*.js' && standard 'spec/javascripts/components/**/*.js'",
     "lint:scss": "sass-lint 'app/assets/stylesheets/**/*.scss' -v -q",
-    "lint": "npm run lint:js && npm run lint:scss"
+    "lint": "yarn run lint:js && yarn run lint:scss"
   },
   "standard": {
     "ignore": [

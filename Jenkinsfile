@@ -6,11 +6,8 @@ node {
   govuk.buildProject(
     rubyLintDiff: false,
     beforeTest: {
-      stage("Install npm dependencies") {
-        sh("npm install")
-      }
-      stage("Lint Javascript and SCSS") {
-        sh("npm run lint")
+      stage("Install yarn dependencies") {
+        sh("yarn")
       }
     }
   )

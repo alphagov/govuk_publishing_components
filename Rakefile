@@ -36,7 +36,7 @@ end
 
 desc "Run Javascript and Sass linting"
 task lint_js_and_sass: :environment do
-  sh "npm run lint"
+  sh "yarn run lint"
 end
 
 task default: [:lint_ruby, :lint_js_and_sass, :spec, "app:jasmine:ci"]

@@ -19,7 +19,7 @@ Before publishing a new version [check the open and approved pull requests](http
 
 4. Update [`lib/govuk_publishing_components/version.rb`](/lib/govuk_publishing_components/version.rb) version with the new version number.
 
-5. Run `bundle install && npm install` to ensure you have the latest dependencies installed.
+5. Run `bundle install && yarn install` to ensure you have the latest dependencies installed.
 
 6. Commit changes. These should include updates in the following files:
   - [`CHANGELOG.md`](/CHANGELOG.md)
