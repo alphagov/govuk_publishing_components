@@ -1,9 +1,5 @@
-begin
-  require "rspec/core/rake_task"
-  RSpec::Core::RakeTask.new(:spec)
-rescue LoadError
-  puts "Running in production mode"
-end
+require "rubocop/rake_task"
+require "rspec/core/rake_task"
 
 APP_RAKEFILE = File.expand_path("spec/dummy/Rakefile", __dir__)
 
@@ -11,6 +7,9 @@ load "rails/tasks/engine.rake"
 load "rails/tasks/statistics.rake"
 
 require "bundler/gem_tasks"
+
+RuboCop::RakeTask.new
+RSpec::Core::RakeTask.new
 
 namespace :assets do
   desc "Test precompiling assets through dummy application"
@@ -29,14 +28,9 @@ namespace :assets do
   end
 end
 
-desc "Run RuboCop linting"
-task lint_ruby: :environment do
-  sh "bundle exec rubocop --format clang"
-end
-
-desc "Run Javascript and Sass linting"
-task lint_js_and_sass: :environment do
+desc "Linting for Ruby, JS and SASS"
+task lint: %i[rubocop environment] do
   sh "yarn run lint"
 end
 
-task default: [:lint_ruby, :lint_js_and_sass, :spec, "app:jasmine:ci"]
+task default: [:lint, :spec, "app:jasmine:ci"]
