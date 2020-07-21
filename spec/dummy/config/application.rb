@@ -3,12 +3,17 @@ require_relative "boot"
 require "action_controller/railtie"
 require "action_view/railtie"
 require "action_mailer/railtie"
-# We need to load govuk_test before jasmine_selenium runner so webdrivers is
-# initialised.
-require "govuk_test"
-require "jasmine"
-require "jasmine_selenium_runner"
 require "sassc-rails"
+
+# In a heroku environment we don't have chrome and chromedriver available
+# so loading these gems fails.
+unless ENV["HEROKU"]
+  # We need to load govuk_test before jasmine_selenium runner so webdrivers is
+  # initialised.
+  require "govuk_test"
+  require "jasmine"
+  require "jasmine_selenium_runner"
+end
 
 require "govuk_publishing_components"
 
