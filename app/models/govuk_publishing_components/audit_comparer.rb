@@ -1,11 +1,13 @@
 module GovukPublishingComponents
   class AuditComparer
-    attr_reader :data, :gem_data
+    attr_reader :applications_data, :gem_data
 
     def initialize(gem_data, results)
-      @gem_data = gem_data
-      @data = sort_results(results)
-      @gem_data[:components_by_application] = get_components_by_application
+      if gem_data[:gem_found]
+        @gem_data = gem_data
+        @applications_data = sort_results(results)
+        @gem_data[:components_by_application] = get_components_by_application || []
+      end
     end
 
   private
@@ -18,51 +20,58 @@ module GovukPublishingComponents
       data = []
 
       results.each do |result|
-        templates = result[:components_found].find { |c| c[:location] == "templates" }
-        stylesheets = result[:components_found].find { |c| c[:location] == "stylesheets" }
-        print_stylesheets = result[:components_found].find { |c| c[:location] == "print_stylesheets" }
-        javascripts = result[:components_found].find { |c| c[:location] == "javascripts" }
-        ruby = result[:components_found].find { |c| c[:location] == "ruby" }
+        if result[:application_found]
+          templates = result[:components_found].find { |c| c[:location] == "templates" }
+          stylesheets = result[:components_found].find { |c| c[:location] == "stylesheets" }
+          print_stylesheets = result[:components_found].find { |c| c[:location] == "print_stylesheets" }
+          javascripts = result[:components_found].find { |c| c[:location] == "javascripts" }
+          ruby = result[:components_found].find { |c| c[:location] == "ruby" }
 
-        @all_stylesheets = true if stylesheets[:components].include?("all")
-        @all_print_stylesheets = true if print_stylesheets[:components].include?("all")
-        @all_javascripts = true if javascripts[:components].include?("all")
+          @all_stylesheets = true if stylesheets[:components].include?("all")
+          @all_print_stylesheets = true if print_stylesheets[:components].include?("all")
+          @all_javascripts = true if javascripts[:components].include?("all")
 
-        templates[:components] = include_any_components_within_components(templates[:components])
+          templates[:components] = include_any_components_within_components(templates[:components])
 
-        warnings = []
-        warnings << warn_about_missing_components(result[:components_found])
-        warnings << warn_about_missing_assets(result[:components_found])
-        warnings = warnings.flatten
+          warnings = []
+          warnings << warn_about_missing_components(result[:components_found])
+          warnings << warn_about_missing_assets(result[:components_found])
+          warnings = warnings.flatten
 
-        data << {
-          name: result[:name],
-          application_found: result[:application_found],
-          summary: [
-            {
-              name: "Components in templates",
-              value: templates[:components].flatten.uniq.sort.join(", "),
-            },
-            {
-              name: "Components in stylesheets",
-              value: stylesheets[:components].join(", "),
-            },
-            {
-              name: "Components in print stylesheets",
-              value: print_stylesheets[:components].join(", "),
-            },
-            {
-              name: "Components in javascripts",
-              value: javascripts[:components].join(", "),
-            },
-            {
-              name: "Components in ruby",
-              value: ruby[:components].join(", "),
-            },
-          ],
-          warnings: warnings,
-          warning_count: warnings.length,
-        }
+          data << {
+            name: result[:name],
+            application_found: result[:application_found],
+            summary: [
+              {
+                name: "Components in templates",
+                value: templates[:components].flatten.uniq.sort.join(", "),
+              },
+              {
+                name: "Components in stylesheets",
+                value: stylesheets[:components].join(", "),
+              },
+              {
+                name: "Components in print stylesheets",
+                value: print_stylesheets[:components].join(", "),
+              },
+              {
+                name: "Components in javascripts",
+                value: javascripts[:components].join(", "),
+              },
+              {
+                name: "Components in ruby",
+                value: ruby[:components].join(", "),
+              },
+            ],
+            warnings: warnings,
+            warning_count: warnings.length,
+          }
+        else
+          data << {
+            name: result[:name],
+            application_found: result[:application_found],
+          }
+        end
       end
 
       data
@@ -147,12 +156,16 @@ module GovukPublishingComponents
 
     def get_components_by_application
       results = []
+      found_something = false
 
       @gem_data[:component_listing].each do |component|
         found_in_applications = []
 
-        @data.each do |application|
+        @applications_data.each do |application|
+          next unless application[:application_found]
+
           name = application[:name]
+          found_something = true
 
           application[:summary].each do |item|
             found_in_applications << name if item[:value].include?(component[:name])
@@ -166,7 +179,7 @@ module GovukPublishingComponents
         }
       end
 
-      results
+      results if found_something
     end
   end
 end

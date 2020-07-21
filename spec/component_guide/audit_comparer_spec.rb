@@ -3,6 +3,7 @@ require_relative "../../app/models/govuk_publishing_components/audit_comparer.rb
 
 describe "Comparing data from an application with the components" do
   gem = {
+    gem_found: true,
     name: "govuk_publishing_components",
     component_code: [
       "component one",
@@ -32,6 +33,53 @@ describe "Comparing data from an application with the components" do
     ],
     component_listing: [],
   }
+
+  gem_not_found = {
+    gem_found: false,
+  }
+
+  it "behaves appropriately if the gem components were not found" do
+    application = [
+      {
+        name: "Dummy application",
+        application_found: true,
+        components_found: [
+          {
+            location: "templates",
+            components: [
+              "component one",
+              "component that does not exist",
+            ],
+          },
+          {
+            location: "stylesheets",
+            components: [
+              "component one",
+              "component two",
+              "component four",
+            ],
+          },
+          {
+            location: "print_stylesheets",
+            components: [],
+          },
+          {
+            location: "javascripts",
+            components: [],
+          },
+          {
+            location: "ruby",
+            components: [
+              "component three",
+            ],
+          },
+        ],
+      },
+    ]
+    comparer = GovukPublishingComponents::AuditComparer.new(gem_not_found, application)
+    expected = nil
+    expect(comparer.applications_data).to match(expected)
+  end
 
   it "returns a comparison for an application using individual components" do
     application = [
@@ -125,7 +173,7 @@ describe "Comparing data from an application with the components" do
       },
     ]
 
-    expect(comparer.data).to match(expected)
+    expect(comparer.applications_data).to match(expected)
   end
 
   it "returns a comparison for an application using all components" do
@@ -200,7 +248,7 @@ describe "Comparing data from an application with the components" do
       },
     ]
 
-    expect(comparer.data).to match(expected)
+    expect(comparer.applications_data).to match(expected)
   end
 
   it "returns a comparison for an application using a mixed approach" do
@@ -286,6 +334,6 @@ describe "Comparing data from an application with the components" do
       },
     ]
 
-    expect(comparer.data).to match(expected)
+    expect(comparer.applications_data).to match(expected)
   end
 end

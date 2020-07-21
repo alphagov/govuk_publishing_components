@@ -2,10 +2,23 @@ require "rails_helper"
 require_relative "../../app/models/govuk_publishing_components/audit_components.rb"
 
 describe "Auditing the components in the gem" do
-  it "returns correct information" do
-    gem = GovukPublishingComponents::AuditComponents.new("#{Dir.pwd}/spec/dummy_gem")
+  it "fails gracefully if the gem is not found" do
+    path = File.join(File.dirname(__FILE__), "not/a/real/directory")
+    gem = GovukPublishingComponents::AuditComponents.new(path)
 
     expected = {
+      gem_found: false,
+    }
+
+    expect(gem.data).to match(expected)
+  end
+
+  it "returns correct information" do
+    path = File.join(File.dirname(__FILE__), "../dummy_gem")
+    gem = GovukPublishingComponents::AuditComponents.new(path)
+
+    expected = {
+      gem_found: true,
       component_code: [
         "test component",
         "test component containing other component",

@@ -3,6 +3,15 @@ module GovukPublishingComponents
     attr_reader :data
 
     def initialize(path)
+      @data = {
+        gem_found: false,
+      }
+      @data = compile_data(path) if Dir.exist?(path)
+    end
+
+  private
+
+    def compile_data(path)
       templates_path = "app/views/govuk_publishing_components/components"
       stylesheets_path = "app/assets/stylesheets/govuk_publishing_components/components"
       print_stylesheets_path = "app/assets/stylesheets/govuk_publishing_components/components/print"
@@ -10,7 +19,7 @@ module GovukPublishingComponents
       tests_path = "spec/components"
       js_tests_path = "spec/javascripts/components"
 
-      templates = Dir["#{path}/#{templates_path}/*.html.erb"]
+      templates = Dir["#{path}/#{templates_path}/*.erb"]
       stylesheets = Dir["#{path}/#{stylesheets_path}/*.scss"]
       print_stylesheets = Dir["#{path}/#{print_stylesheets_path}/*.scss"]
       javascripts = Dir["#{path}/#{javascripts_path}/*.js"]
@@ -26,7 +35,8 @@ module GovukPublishingComponents
       @component_tests = find_files(tests, [path, tests_path].join("/"))
       @component_js_tests = find_files(js_tests, [path, js_tests_path].join("/"))
 
-      @data = {
+      {
+        gem_found: true,
         component_code: @components,
         component_stylesheets: @component_stylesheets,
         component_print_stylesheets: @component_print_stylesheets,
@@ -38,18 +48,27 @@ module GovukPublishingComponents
       }
     end
 
-  private
-
     def find_files(files, replace)
       files.map { |file| clean_file_name(file.gsub(replace, "")) }.sort
     end
 
     def clean_file_name(name)
-      name.tr("/_-", " ").gsub(".html.erb", "").gsub(".scss", "").gsub(".js", "").gsub("spec", "").gsub(".rb", "").strip
+      name.tr("/_-", " ")
+        .gsub(".html.erb", "")
+        .gsub(".erb", "")
+        .gsub(".scss", "")
+        .gsub(".js", "")
+        .gsub("spec", "")
+        .gsub(".rb", "")
+        .strip
     end
 
     def get_component_name_from_full_path(path)
-      path.gsub("/_", "/").gsub(@templates_full_path, "").gsub(".html.erb", "").tr('\"\'', "")
+      path.gsub("/_", "/")
+        .gsub(@templates_full_path, "")
+        .gsub(".html.erb", "")
+        .gsub(".erb", "")
+        .tr('\"\'', "")
     end
 
     def get_component_link(component)
