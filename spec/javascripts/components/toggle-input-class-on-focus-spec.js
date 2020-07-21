@@ -14,7 +14,7 @@ describe('A toggle class module', function () {
     beforeEach(function () {
       element = $(
         '<div data-module="gem-toggle-input-class-on-focus">' +
-            '<input type="search" class="js-class-toggle"/>' +
+          '<input type="search" class="js-class-toggle"/>' +
         '</div>')
       $('body').append(element)
       toggle = new GOVUK.Modules.GemToggleInputClassOnFocus()

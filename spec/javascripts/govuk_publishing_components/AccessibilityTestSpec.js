@@ -1,4 +1,5 @@
-/* global describe, afterEach, it, expect, spyOn */
+/* eslint-env jasmine */
+/* global HTMLCollection */
 
 var TEST_SELECTOR = '.js-test-a11y'
 
@@ -70,17 +71,17 @@ describe('AccessibilityTest', function () {
   // https://github.com/dequelabs/axe-core/issues/525
   it('should prevent aXe from erroring when SVG is present by disabling restoreScroll', function (done) {
     spyOn(window.axe, 'run').and.callThrough()
-    addToDom('<div style="height: 1000px; width: 100px;"></div><svg class="svg" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">\
-                <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>\
-              </svg>')
+    addToDom('<div style="height: 1000px; width: 100px;"></div><svg class="svg" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">' +
+                '<path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>' +
+              '</svg>')
 
     AccessibilityTest(TEST_SELECTOR, function (err, violations, incompleteWarnings) {
       expect(err).toBe(undefined)
 
       // Protect against test failing if PhantomJS updated
       if (!(document.querySelector('svg').children instanceof HTMLCollection)) {
-        axeOptions = window.axe.run.calls.argsFor(0)
-        expect(axeOptions['restoreScroll']).toBe(undefined)
+        var axeOptions = window.axe.run.calls.argsFor(0)
+        expect(axeOptions.restoreScroll).toBe(undefined)
       }
       done()
     })
@@ -89,7 +90,7 @@ describe('AccessibilityTest', function () {
   it('should add a class to the body when it finishes', function (done) {
     addToDom('<div>text</div>')
 
-    AccessibilityTest(TEST_SELECTOR, function (err, violations, incompleteWarnings) {
+    AccessibilityTest(TEST_SELECTOR, function () {
       expect(document.body.classList.contains('js-test-a11y-finished')).toBe(true)
       done()
     })
@@ -98,7 +99,7 @@ describe('AccessibilityTest', function () {
   it('should add a class to the body when it finds no violations', function (done) {
     addToDom('<div>text</div>')
 
-    AccessibilityTest(TEST_SELECTOR, function (err, violations, incompleteWarnings) {
+    AccessibilityTest(TEST_SELECTOR, function () {
       expect(document.body.classList.contains('js-test-a11y-success')).toBe(true)
       done()
     })
@@ -168,9 +169,9 @@ describe('AccessibilityTest', function () {
   it('process incomplete warnings into object for rendering in guide', function (done) {
     addToDom('<a href="#">Link</a>', 'a { background-image: url("/"); }')
 
-    AccessibilityTest(TEST_SELECTOR, function (err, violations, pageResults) {
-      expect(pageResults.incompleteWarnings[0].summary).toBe("Elements must have sufficient color contrast")
-      expect(pageResults.incompleteWarnings[0].url).toBe("https://dequeuniversity.com/rules/axe/3.5/color-contrast?application=axeAPI")
+    AccessibilityTest(TEST_SELECTOR, function (_err, _violations, pageResults) {
+      expect(pageResults.incompleteWarnings[0].summary).toBe('Elements must have sufficient color contrast')
+      expect(pageResults.incompleteWarnings[0].url).toBe('https://dequeuniversity.com/rules/axe/3.5/color-contrast?application=axeAPI')
       expect(pageResults.incompleteWarnings[0].selectors[0].selector[0]).toBe('a[href="\\#"]')
       expect(pageResults.incompleteWarnings[0].selectors[0].reasons[0]).toBe('Element\'s background color could not be determined due to a background image')
       done()
@@ -180,9 +181,9 @@ describe('AccessibilityTest', function () {
   it('process violations into object for rendering in guide', function (done) {
     addToDom('<img src=""><a href="#">Low contrast</a>', 'a { background: white; color: #ddd }')
 
-    AccessibilityTest(TEST_SELECTOR, function (err, violations, pageResults) {
-      expect(pageResults.violations[0].summary).toBe("Elements must have sufficient color contrast")
-      expect(pageResults.violations[0].url).toBe("https://dequeuniversity.com/rules/axe/3.5/color-contrast?application=axeAPI")
+    AccessibilityTest(TEST_SELECTOR, function (_err, _violations, pageResults) {
+      expect(pageResults.violations[0].summary).toBe('Elements must have sufficient color contrast')
+      expect(pageResults.violations[0].url).toBe('https://dequeuniversity.com/rules/axe/3.5/color-contrast?application=axeAPI')
       expect(pageResults.violations[0].selectors[0].selector[0]).toBe('a[href="\\#"]')
       expect(pageResults.violations[0].selectors[0].reasons[0]).toBe('Element has insufficient color contrast of 1.35 (foreground color: #dddddd, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1')
       done()

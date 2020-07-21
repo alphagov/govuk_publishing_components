@@ -1,3 +1,6 @@
+/* eslint-env jasmine, jquery */
+/* global GOVUK */
+
 describe('Youtube link enhancement', function () {
   describe('embed behaviour', function () {
     var container
@@ -6,7 +9,7 @@ describe('Youtube link enhancement', function () {
       container = document.createElement('div')
     })
 
-    afterEach(function() {
+    afterEach(function () {
       document.body.removeChild(container)
     })
 
@@ -110,7 +113,7 @@ describe('Youtube link enhancement', function () {
       container = document.createElement('div')
     })
 
-    afterEach(function() {
+    afterEach(function () {
       document.body.removeChild(container)
     })
 
