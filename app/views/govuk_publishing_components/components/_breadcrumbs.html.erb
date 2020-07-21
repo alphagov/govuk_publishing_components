@@ -10,7 +10,7 @@
 %>
 
 <script type="application/ld+json">
-  <%= raw breadcrumb_presenter.structured_data.to_json %>
+  <%= raw JSON.pretty_generate(breadcrumb_presenter.structured_data) %>
 </script>
 
 <div class="<%= classes %>" data-module="track-click">

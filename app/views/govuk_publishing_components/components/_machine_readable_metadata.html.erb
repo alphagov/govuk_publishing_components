@@ -9,7 +9,7 @@
 <% structured_data = GovukPublishingComponents::Presenters::SchemaOrg.new(page).structured_data %>
 
 <script type="application/ld+json">
-  <%= raw structured_data.to_json %>
+  <%= raw JSON.pretty_generate(structured_data) %>
 </script>
 
 <link rel="canonical" href="<%= page.canonical_url %>" />
