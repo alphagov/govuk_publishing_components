@@ -11,12 +11,12 @@
   inline ||= false
   is_page_heading ||= false
 
-  if ['s', 'm', 'l', 'xl'].include?(heading_size)
+  if ["s", "m", "l", "xl"].include?(heading_size)
     size = heading_size
   elsif is_page_heading
-    size = 'xl'
+    size = "xl"
   else
-    size = 'm'
+    size = "m"
   end
 
   description ||= nil
@@ -58,7 +58,11 @@
     <% end %>
 
     <% if description.present? %>
-      <%= tag.div description, class: "govuk-body" %>
+      <% output_description = render "govuk_publishing_components/components/govspeak" do %>
+        <%= tag.div description, class: "govuk-body" %>
+      <% end %>
+
+      <%= output_description %>
     <% end %>
 
     <% if hint %>
@@ -78,11 +82,11 @@
 
     <%= content_tag :div, class: radio_classes,
       data: {
-        module: ('govuk-radios' if has_conditional)
+        module: ("govuk-radios" if has_conditional)
       } do %>
       <% items.each_with_index do |item, index| %>
         <% if item === :or %>
-          <%= tag.div t('components.radio.or'), class: "govuk-radios__divider" %>
+          <%= tag.div t("components.radio.or"), class: "govuk-radios__divider" %>
         <% else %>
           <%
             item_next = items[index + 1] unless index === items.size - 1

@@ -552,16 +552,14 @@ describe "Radio", type: :view do
     render_component(
       name: "favourite-skittle",
       heading: "What is your favourite skittle?",
-      description: render(
-        "govuk_publishing_components/components/govspeak",
-        content: "<p>This is a description about skittles.</p>".html_safe,
-      ),
+      description: sanitize("<ul><li>This is a list item</li><li>This is another list item</li></ul>"),
       items: [
         { label: "Red", value: "red" },
         { label: "Blue", value: "blue" },
       ],
     )
-    assert_select ".govuk-body", "This is a description about skittles."
+    assert_select ".gem-c-govspeak .govuk-body ul li", "This is a list item"
+    assert_select ".gem-c-govspeak .govuk-body ul li:nth-child(2)", "This is another list item"
   end
 end
 

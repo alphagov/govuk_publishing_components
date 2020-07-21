@@ -149,6 +149,21 @@ examples:
         text: "Green"
       - value: "blue"
         text: "Blue"
+  with_markup_in_the_description:
+    data:
+      name: "radio-group-description"
+      heading: "What is your favourite flavours?"
+      description: |
+        <p>The flavour of Skittles has changed over the years. The original flavours were orange, lemon, lime, blackcurrent, and strawberry - new flavours include mint, sweet heat, citrus punch, and pomegranate. For even more, read <a href="https://en.wikipedia.org/wiki/List_of_Skittles_products" rel="noopener">the full list of Skittle flavours on Wikipedia</a>.</p>
+      items:
+      - value: "strawberry"
+        text: "Strawberry"
+      - value: "lemon"
+        text: "Lemon"
+      - value: "apple"
+        text: "Apple"
+      - value: "blackcurrent"
+        text: "Blackcurrent"
   with_description_and_hint:
     data:
       name: "radio-group-description"
