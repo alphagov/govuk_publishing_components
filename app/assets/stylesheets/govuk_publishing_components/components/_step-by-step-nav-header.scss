@@ -19,7 +19,6 @@
 }
 
 .gem-c-step-nav-header__title {
-  @extend %govuk-link;
   @include govuk-font(24, $weight: bold, $line-height: 1);
 }
 
