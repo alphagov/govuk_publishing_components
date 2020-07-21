@@ -183,6 +183,10 @@ examples:
       - value: "blue"
         text: "Blue"
   with_custom_heading_size:
+    description: |
+      This allows the size of the legend to be changed. Valid options are s, m, l, xl, defaulting to m if no option is passed. 
+
+      If the is_page_heading option is true and heading_size is not set, the text size will be xl.
     data:
       name: "radio-group-description"
       heading: "What is your favourite colour?"

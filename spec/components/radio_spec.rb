@@ -149,6 +149,52 @@ describe "Radio", type: :view do
     assert_select "legend span.govuk-caption-xl", false
   end
 
+  it "renders radio-group with a custom page heading size" do
+    render_component(
+      name: "favourite-skittle",
+      heading: "What is your favourite skittle?",
+      heading_caption: "Question 3 of 9",
+      heading_size: "l",
+      is_page_heading: true,
+      items: [
+        { label: "Red", value: "red" },
+        { label: "Blue", value: "blue" },
+      ],
+    )
+    assert_select ".govuk-radios"
+    assert_select "legend.govuk-fieldset__legend--l h1.govuk-fieldset__heading", text: "What is your favourite skittle?"
+    assert_select "legend span.govuk-caption-l", "Question 3 of 9"
+  end
+
+  it "renders radio-group with no custom page heading size" do
+    render_component(
+      name: "favourite-skittle",
+      heading: "What is your favourite skittle?",
+      heading_caption: "Question 3 of 9",
+      is_page_heading: true,
+      items: [
+        { label: "Red", value: "red" },
+        { label: "Blue", value: "blue" },
+      ],
+    )
+    assert_select ".govuk-radios"
+    assert_select "legend.govuk-fieldset__legend--xl h1.govuk-fieldset__heading", text: "What is your favourite skittle?"
+    assert_select "legend span.govuk-caption-xl", "Question 3 of 9"
+  end
+
+  it "renders radio-group with heading size m if no custom size or page heading option is passed in" do
+    render_component(
+      name: "favourite-skittle",
+      heading: "What is your favourite skittle?",
+      items: [
+        { label: "Red", value: "red" },
+        { label: "Blue", value: "blue" },
+      ],
+    )
+    assert_select ".govuk-radios"
+    assert_select "legend.govuk-fieldset__legend--m", text: "What is your favourite skittle?"
+  end
+
   it "renders radio-group with custom heading size" do
     render_component(
       name: "favourite-skittle",

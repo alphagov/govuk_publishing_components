@@ -6,10 +6,18 @@
   label ||= nil
   heading ||= nil
   heading_caption ||= nil
+  heading_size ||= nil
   small ||= false
   inline ||= false
   is_page_heading ||= false
-  heading_size = 'm' unless ['s', 'm', 'l', 'xl'].include?(heading_size)
+
+  if ['s', 'm', 'l', 'xl'].include?(heading_size)
+    size = heading_size
+  elsif is_page_heading
+    size = 'xl'
+  else
+    size = 'm'
+  end
 
   description ||= nil
   hint ||= nil
@@ -28,7 +36,7 @@
   radio_classes << "govuk-radios--inline" if inline
 
   legend_classes = %w(govuk-fieldset__legend)
-  legend_classes << "govuk-fieldset__legend--#{heading_size}"
+  legend_classes << "govuk-fieldset__legend--#{size}"
 
   aria = "#{hint_id} #{"#{error_id}" if has_error}".strip if hint or has_error
 
@@ -40,9 +48,9 @@
 
     <% if heading.present? %>
       <% if is_page_heading %>
-        <%= tag.legend class: "govuk-fieldset__legend govuk-fieldset__legend--xl gem-c-title" do %>
-          <%= tag.span(heading_caption, class: "govuk-caption-xl") if heading_caption.present? %>
-          <%= tag.h1 heading, class: "gem-c-title__text" %>
+        <%= tag.legend class: legend_classes do %>
+          <%= tag.span(heading_caption, class: "govuk-caption-#{size}") if heading_caption.present? %>
+          <%= tag.h1 heading, class: "gem-c-radio__heading-text govuk-fieldset__heading" %>
         <% end %>
       <% else %>
         <%= tag.legend heading, class: legend_classes %>
