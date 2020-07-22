@@ -8,12 +8,12 @@ window.GOVUK.Modules.Checkboxes = window.GOVUKFrontend;
   function GovukCheckboxes () { }
 
   GovukCheckboxes.prototype.start = function ($module) {
-    this.$module = $module
-    this.$checkboxes = this.$module[0].querySelectorAll('input[type=checkbox]')
-    this.$nestedCheckboxes = this.$module[0].querySelectorAll('[data-nested=true] input[type=checkbox]')
-    this.$exclusiveCheckboxes = this.$module[0].querySelectorAll('[data-exclusive=true] input[type=checkbox]')
+    this.$module = $module[0]
+    this.$checkboxes = this.$module.querySelectorAll('input[type=checkbox]')
+    this.$nestedCheckboxes = this.$module.querySelectorAll('[data-nested=true] input[type=checkbox]')
+    this.$exclusiveCheckboxes = this.$module.querySelectorAll('[data-exclusive=true] input[type=checkbox]')
 
-    this.applyAriaControlsAttributes(this.$module[0])
+    this.applyAriaControlsAttributes(this.$module)
 
     for (var i = 0; i < this.$checkboxes.length; i++) {
       this.$checkboxes[i].addEventListener('change', this.handleCheckboxChange)
@@ -58,7 +58,7 @@ window.GOVUK.Modules.Checkboxes = window.GOVUKFrontend;
   GovukCheckboxes.prototype.handleNestedCheckboxChange = function (event) {
     var $checkbox = event.target
     var $isNested = $checkbox.closest('.govuk-checkboxes--nested')
-    var $hasNested = this.$module[0].querySelector('.govuk-checkboxes--nested[data-parent=' + $checkbox.id + ']')
+    var $hasNested = this.$module.querySelector('.govuk-checkboxes--nested[data-parent=' + $checkbox.id + ']')
 
     if ($hasNested) {
       this.toggleNestedCheckboxes($hasNested, $checkbox)
