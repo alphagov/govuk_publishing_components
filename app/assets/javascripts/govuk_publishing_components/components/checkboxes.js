@@ -19,11 +19,11 @@ window.GOVUK.Modules.Checkboxes = window.GOVUKFrontend;
       this.$checkboxes[i].addEventListener('change', this.handleCheckboxChange)
     }
 
-    for (var i = 0; i < this.$nestedCheckboxes.length; i++) {
+    for (i = 0; i < this.$nestedCheckboxes.length; i++) {
       this.$nestedCheckboxes[i].addEventListener('change', this.handleNestedCheckboxChange.bind(this))
     }
 
-    for (var i = 0; i < this.$exclusiveCheckboxes.length; i++) {
+    for (i = 0; i < this.$exclusiveCheckboxes.length; i++) {
       this.$exclusiveCheckboxes[i].addEventListener('change', this.handleExclusiveCheckboxChange)
     }
   }
@@ -32,7 +32,7 @@ window.GOVUK.Modules.Checkboxes = window.GOVUKFrontend;
     if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
       // where checkboxes are manipulated externally in finders, suppressAnalytics
       // is passed to prevent duplicate GA events
-      if (!event.detail || event.detail && event.detail.suppressAnalytics !== true) {
+      if (!event.detail || (event.detail && event.detail.suppressAnalytics !== true)) {
         var $checkbox = event.target
         var category = $checkbox.getAttribute('data-track-category')
         if (category) {
@@ -56,37 +56,37 @@ window.GOVUK.Modules.Checkboxes = window.GOVUKFrontend;
   }
 
   GovukCheckboxes.prototype.handleNestedCheckboxChange = function (event) {
-    var checkbox = event.target
-    var isNested = checkbox.closest('.govuk-checkboxes--nested')
-    var hasNested = this.$module[0].querySelector('.govuk-checkboxes--nested[data-parent=' + checkbox.id + ']')
+    var $checkbox = event.target
+    var $isNested = $checkbox.closest('.govuk-checkboxes--nested')
+    var $hasNested = this.$module[0].querySelector('.govuk-checkboxes--nested[data-parent=' + $checkbox.id + ']')
 
-    if (hasNested) {
-      this.toggleNestedCheckboxes(hasNested, checkbox)
-    } else if (isNested) {
-      this.toggleParentCheckbox(isNested, checkbox)
+    if ($hasNested) {
+      this.toggleNestedCheckboxes($hasNested, $checkbox)
+    } else if ($isNested) {
+      this.toggleParentCheckbox($isNested, $checkbox)
     }
   }
 
-  GovukCheckboxes.prototype.toggleNestedCheckboxes = function (scope, checkbox) {
-    var $nestedCheckboxes = scope.querySelectorAll('input[type=checkbox]')
-    if (checkbox.checked) {
+  GovukCheckboxes.prototype.toggleNestedCheckboxes = function ($scope, $checkbox) {
+    var $nestedCheckboxes = $scope.querySelectorAll('input[type=checkbox]')
+    if ($checkbox.checked) {
       for (var i = 0; i < $nestedCheckboxes.length; i++) {
         $nestedCheckboxes[i].checked = true
       }
     } else {
-      for (var i = 0; i < $nestedCheckboxes.length; i++) {
+      for (i = 0; i < $nestedCheckboxes.length; i++) {
         $nestedCheckboxes[i].checked = false
       }
     }
   }
 
-  GovukCheckboxes.prototype.toggleParentCheckbox = function (scope, checkbox) {
-    var $inputs = scope.querySelectorAll('input')
-    var $checkedInputs = scope.querySelectorAll('input:checked')
-    var parentId = scope.dataset.parent
+  GovukCheckboxes.prototype.toggleParentCheckbox = function ($scope, $checkbox) {
+    var $inputs = $scope.querySelectorAll('input')
+    var $checkedInputs = $scope.querySelectorAll('input:checked')
+    var parentId = $scope.dataset.parent
     var $parent = document.getElementById(parentId)
 
-    if (checkbox.checked && $inputs.length === $checkedInputs.length) {
+    if ($checkbox.checked && $inputs.length === $checkedInputs.length) {
       $parent.checked = true
     } else {
       $parent.checked = false
@@ -110,8 +110,8 @@ window.GOVUK.Modules.Checkboxes = window.GOVUKFrontend;
     }
   }
 
-  GovukCheckboxes.prototype.applyAriaControlsAttributes = function (scope) {
-    var $inputs = scope.querySelectorAll('[data-controls]')
+  GovukCheckboxes.prototype.applyAriaControlsAttributes = function ($scope) {
+    var $inputs = $scope.querySelectorAll('[data-controls]')
 
     for (var i = 0; i < $inputs.length; i++) {
       $inputs[i].setAttribute('aria-controls', $inputs[i].getAttribute('data-controls'))
