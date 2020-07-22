@@ -44,20 +44,27 @@ GOV.UK Publishing Components shares the same standards in terms of browser and a
 
 [See the rubydoc.info documentation](http://www.rubydoc.info/gems/govuk_publishing_components)
 
-Run the documentation locally with:
+
+## Working locally
+
+### Install dependencies
+
+As well as the Ruby, you will also need the [Yarn package manager](https://classic.yarnpkg.com/en/docs/install/) to allow installing [npm](https://npmjs.com) dependencies.
+
+Install the application's dependencies with:
 
 ```sh
-bundle exec yard server --reload
+bundle install
+yarn install
 ```
 
-## Running tests
+### Running tests
 
-The default rake task runs all tests:
+The default rake task runs all the linting and test tasks:
 
 ```sh
 bin/rake
 ```
-
 Javascript is tested using Jasmine and the [Jasmine gem](https://github.com/pivotal/jasmine-gem). Tests can be run either in the browser or on the command line via the dummy app’s tasks:
 
 ```sh
@@ -66,6 +73,24 @@ bin/rake app:jasmine
 
 # command line
 bin/rake app:jasmine:ci
+```
+
+### Viewing the component guide
+
+View the component guide in your browser with:
+
+```sh
+./startup.sh
+```
+
+The guide should be available at http://localhost:3212
+
+### View documentation
+
+Preview documentation in your browser with:
+
+```sh
+bundle exec yard server --reload
 ```
 
 ## Licence
