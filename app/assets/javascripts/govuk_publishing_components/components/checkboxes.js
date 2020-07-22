@@ -9,39 +9,18 @@ window.GOVUK.Modules.Checkboxes = window.GOVUKFrontend;
 
   GovukCheckboxes.prototype.start = function ($module) {
     this.$module = $module
+    this.$checkboxes = this.$module[0].querySelectorAll('input[type=checkbox]')
     this.$nestedCheckboxes = this.$module[0].querySelectorAll('[data-nested=true] input[type=checkbox]')
 
     this.applyAriaControlsAttributes(this.$module[0])
 
+    for (var i = 0; i < this.$checkboxes.length; i++) {
+      this.$checkboxes[i].addEventListener('change', this.handleCheckboxChange)
+    }
+
     for (var i = 0; i < this.$nestedCheckboxes.length; i++) {
       this.$nestedCheckboxes[i].addEventListener('change', this.handleNestedCheckboxChange.bind(this))
     }
-
-    $(this.$module).on('change', 'input[type=checkbox]', function (e) {
-      if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
-        // where checkboxes are manipulated externally in finders, suppressAnalytics
-        // is passed to prevent duplicate GA events
-        if (typeof e.suppressAnalytics === 'undefined' || e.suppressAnalytics !== true) {
-          var $checkbox = $(e.target)
-          var category = $checkbox.data('track-category')
-          if (typeof category !== 'undefined') {
-            var isChecked = $checkbox.is(':checked')
-            var uncheckTrackCategory = $checkbox.data('uncheck-track-category')
-            if (!isChecked && typeof uncheckTrackCategory !== 'undefined') {
-              category = uncheckTrackCategory
-            }
-            var action = $checkbox.data('track-action')
-            var options = $checkbox.data('track-options')
-            if (typeof options !== 'object' || options === null) {
-              options = {}
-            }
-            options.value = $checkbox.data('track-value')
-            options.label = $checkbox.data('track-label')
-            window.GOVUK.analytics.trackEvent(category, action, options)
-          }
-        }
-      }
-    })
 
     $(this.$module).on('change', '[data-exclusive=true] input[type=checkbox]', function (e) {
       var currentCheckbox = e.target
@@ -57,6 +36,33 @@ window.GOVUK.Modules.Checkboxes = window.GOVUKFrontend;
         exclusiveOption.prop('checked', false)
       }
     })
+  }
+
+  GovukCheckboxes.prototype.handleCheckboxChange = function (event) {
+    if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
+      // where checkboxes are manipulated externally in finders, suppressAnalytics
+      // is passed to prevent duplicate GA events
+      if (!event.detail || event.detail && event.detail.suppressAnalytics !== true) {
+        var $checkbox = event.target
+        var category = $checkbox.getAttribute('data-track-category')
+        if (category) {
+          var uncheckTrackCategory = $checkbox.getAttribute('data-uncheck-track-category')
+          if (!$checkbox.checked && uncheckTrackCategory) {
+            category = uncheckTrackCategory
+          }
+          var action = $checkbox.getAttribute('data-track-action')
+          var options = $checkbox.getAttribute('data-track-options')
+          if (options) {
+            options = JSON.parse(options)
+          } else {
+            options = {}
+          }
+          options.value = $checkbox.getAttribute('data-track-value')
+          options.label = $checkbox.getAttribute('data-track-label')
+          window.GOVUK.analytics.trackEvent(category, action, options)
+        }
+      }
+    }
   }
 
   GovukCheckboxes.prototype.handleNestedCheckboxChange = function (event) {
