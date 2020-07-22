@@ -125,7 +125,7 @@
     .gem-c-image-card__list-item {
       position: relative;
 
-      &:before {
+      &:before { // stylelint-disable-line max-nesting-depth
         content: "-";
         position: absolute;
         left: (- govuk-spacing(3));

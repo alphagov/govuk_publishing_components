@@ -214,10 +214,10 @@ $gem-guide-border-width: 1px;
       @include govuk-text-colour;
       @include govuk-font($size: 24, $weight: bold);
       margin: $govuk-gutter-half 0;
+    }
 
-      small {
-        @include govuk-font($size: 16, $weight: bold);
-      }
+    .example-title small {
+      @include govuk-font($size: 16, $weight: bold);
     }
   }
 }
@@ -232,16 +232,14 @@ html {
 }
 
 .hide-header-and-footer {
-  // scss-lint:disable IdSelector
-  // sass-lint:disable no-ids
+  // stylelint-disable selector-max-id
   #global-header,
   #global-header-bar,
   #global-breadcrumb,
   #footer {
     display: none;
   }
-  // sass-lint:enable no-ids
-  // scss-lint:enable IdSelector
+  // stylelint-enable selector-max-id
 }
 
 .component-guide-preview-page {
@@ -261,14 +259,12 @@ html {
 }
 
 // Hide survey banner
-// scss-lint:disable IdSelector
-// sass-lint:disable no-ids
+// stylelint-disable selector-max-id
 #user-satisfaction-survey-container,
 #global-cookie-message {
   display: none;
 }
-// sass-lint:enable no-ids
-// scss-lint:enable IdSelector
+// stylelint-enable selector-max-id
 
 // Rouge syntax highlighting
 // Based on https://github.com/alphagov/tech-docs-template/blob/master/template/source/stylesheets/palette/_syntax-highlighting.scss
@@ -294,7 +290,6 @@ $code-0f: #c92424; // Deprecated, Opening/Closing Embedded Language Tags e.g. <?
 $code-insert-bg: #def8ca;
 $code-delete-bg: #fadddd;
 
-// sass-lint:disable no-empty-rulesets
 .component-highlight {
 
   // Map Rouge / Pygments Tokens to work with 'Base 16' themes
@@ -391,7 +386,7 @@ $code-delete-bg: #fadddd;
   // Literals
   //
 
-  .l  {     // Literal
+  .l {     // Literal
     color: $code-09;
   }
 
@@ -491,10 +486,9 @@ $code-delete-bg: #fadddd;
     font-weight: bold;
   }
 }
-// sass-lint:enable no-empty-rulesets
 
 // Specific for this Gem, optimized for erb render statements
-.component-highlight {
+.component-highlight { // stylelint-disable-line no-duplicate-selectors
   .s2 {
     color: $code-08;
   }

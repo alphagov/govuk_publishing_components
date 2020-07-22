@@ -6,10 +6,8 @@
     display: table-cell;
     width: 50px;
     height: 45px;
-    // sass-lint:disable no-duplicate-properties
     background: image-url("govuk_publishing_components/action-link-arrow.png");
     background: image-url("govuk_publishing_components/action-link-arrow.svg"), linear-gradient(transparent, transparent);
-    // sass-lint:enable no-duplicate-properties
     background-repeat: no-repeat;
     background-position: 0 50%;
     background-size: 37px auto;
@@ -103,10 +101,8 @@
   &:before {
     width: 30px;
     height: 30px;
-    // sass-lint:disable no-duplicate-properties
     background: image-url("govuk_publishing_components/action-link-arrow--simple.png");
     background: image-url("govuk_publishing_components/action-link-arrow--simple.svg"), linear-gradient(transparent, transparent);
-    // sass-lint:enable no-duplicate-properties
     background-repeat: no-repeat;
     background-size: 25px auto;
     background-position: 0 2px;
@@ -119,10 +115,8 @@
 
 .gem-c-action-link--dark-icon {
   &:before {
-    // sass-lint:disable no-duplicate-properties
     background: image-url("govuk_publishing_components/action-link-arrow--dark.png");
     background: image-url("govuk_publishing_components/action-link-arrow--dark.svg"), linear-gradient(transparent, transparent);
-    // sass-lint:enable no-duplicate-properties
   }
 }
 
@@ -151,10 +145,8 @@
   &:before {
     width: 80px;
     height: 70px;
-    // sass-lint:disable no-duplicate-properties
     background: image-url("govuk_publishing_components/action-link--nhs.png");
     background: image-url("govuk_publishing_components/action-link--nhs.svg"), linear-gradient(transparent, transparent);
-    // sass-lint:enable no-duplicate-properties
     background-repeat: no-repeat;
     background-size: 85% auto;
     background-position: 0 50%;

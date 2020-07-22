@@ -45,7 +45,7 @@
       position: relative;
     }
 
-    .govuk-breadcrumbs__link::after {
+    .govuk-breadcrumbs__link:after {
       content: "";
       position: absolute;
       top: -14px;

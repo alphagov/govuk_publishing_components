@@ -1,3 +1,5 @@
+// stylelint-disable max-nesting-depth
+
 // Override govspeak styles with HTML publication specific ones
 .gem-c-govspeak-html-publication {
   margin-bottom: govuk-spacing(6) * 1.5;
@@ -59,12 +61,10 @@
       }
     }
 
-    // scss-lint:disable QualifyingElement
-    // sass-lint:disable no-qualifying-elements
+    // stylelint-disable selector-no-qualifying-type
     // this class will only be for tables and is to distinguish from a bare `table`
     // the row classes below should not be applied to anything else but `tr`s
     table.financial-data {
-
       .numeric {
         text-align: right;
         @include govuk-font(14, $weight: regular, $tabular: true);
@@ -134,7 +134,6 @@
         background-color: govuk-colour("light-grey", $legacy: "grey-3");
       }
     }
-    // sass-lint:enable no-qualifying-elements
-    // scss-lint:enable QualifyingElement
+    // stylelint-enable selector-no-qualifying-type
   }
 }

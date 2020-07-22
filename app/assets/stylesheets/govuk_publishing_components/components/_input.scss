@@ -20,7 +20,7 @@
 
 .gem-c-input__wrapper {
   display: flex;
-  display: -ms-flexbox; // sass-lint:disable-line no-duplicate-properties
+  display: -ms-flexbox;
 
   .gem-c-input {
     display: inline-block;

@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "lint:js": "standard 'app/assets/javascripts/**/*.js' 'spec/javascripts/**/*.js'",
-    "lint:scss": "sass-lint 'app/assets/stylesheets/**/*.scss' -v -q",
+    "lint:scss": "stylelint app/assets/stylesheets/",
     "lint": "yarn run lint:js && yarn run lint:scss"
   },
   "standard": {
@@ -15,13 +15,17 @@
       "spec/javascripts/vendor/*.js"
     ]
   },
+  "stylelint": {
+    "extends": "stylelint-config-gds/scss"
+  },
   "dependencies": {
     "axe-core": "^3.5.4",
     "govuk-frontend": "^3.7.0",
     "jquery": "1.12.4"
   },
   "devDependencies": {
-    "sass-lint": "^1.13.1",
-    "standard": "^14.3.4"
+    "standard": "^14.3.4",
+    "stylelint": "^13.6.1",
+    "stylelint-config-gds": "0.1.0-pre.2"
   }
 }

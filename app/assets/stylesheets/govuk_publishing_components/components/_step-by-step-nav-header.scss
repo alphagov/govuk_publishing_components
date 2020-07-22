@@ -11,8 +11,6 @@
   }
 }
 
-// scss-lint:disable SelectorFormat
-
 .gem-c-step-nav-header__part-of {
   @include govuk-font(19, $weight: bold);
   display: block;
@@ -21,5 +19,3 @@
 .gem-c-step-nav-header__title {
   @include govuk-font(24, $weight: bold, $line-height: 1);
 }
-
-// scss-lint:enable SelectorFormat
