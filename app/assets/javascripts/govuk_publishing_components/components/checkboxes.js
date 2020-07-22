@@ -11,6 +11,7 @@ window.GOVUK.Modules.Checkboxes = window.GOVUKFrontend;
     this.$module = $module
     this.$checkboxes = this.$module[0].querySelectorAll('input[type=checkbox]')
     this.$nestedCheckboxes = this.$module[0].querySelectorAll('[data-nested=true] input[type=checkbox]')
+    this.$exclusiveCheckboxes = this.$module[0].querySelectorAll('[data-exclusive=true] input[type=checkbox]')
 
     this.applyAriaControlsAttributes(this.$module[0])
 
@@ -22,20 +23,9 @@ window.GOVUK.Modules.Checkboxes = window.GOVUKFrontend;
       this.$nestedCheckboxes[i].addEventListener('change', this.handleNestedCheckboxChange.bind(this))
     }
 
-    $(this.$module).on('change', '[data-exclusive=true] input[type=checkbox]', function (e) {
-      var currentCheckbox = e.target
-      var checkboxes = currentCheckbox.closest('.govuk-checkboxes')
-      var exclusiveOption = $(checkboxes).find('input[type=checkbox][data-exclusive]')
-      var nonExclusiveOptions = $(checkboxes).find('input[type=checkbox]:not([data-exclusive])')
-
-      if (currentCheckbox.dataset.exclusive === 'true' && currentCheckbox.checked === true) {
-        nonExclusiveOptions.each(function () {
-          $(this).prop('checked', false)
-        })
-      } else if (currentCheckbox.dataset.exclusive !== 'true' && currentCheckbox.checked === true) {
-        exclusiveOption.prop('checked', false)
-      }
-    })
+    for (var i = 0; i < this.$exclusiveCheckboxes.length; i++) {
+      this.$exclusiveCheckboxes[i].addEventListener('change', this.handleExclusiveCheckboxChange)
+    }
   }
 
   GovukCheckboxes.prototype.handleCheckboxChange = function (event) {
@@ -100,6 +90,23 @@ window.GOVUK.Modules.Checkboxes = window.GOVUKFrontend;
       $parent.checked = true
     } else {
       $parent.checked = false
+    }
+  }
+
+  GovukCheckboxes.prototype.handleExclusiveCheckboxChange = function (event) {
+    var $currentCheckbox = event.target
+    var $checkboxes = $currentCheckbox.closest('.govuk-checkboxes')
+    var $exclusiveOption = $checkboxes.querySelector('input[type=checkbox][data-exclusive]')
+    var $nonExclusiveOptions = $checkboxes.querySelectorAll('input[type=checkbox]:not([data-exclusive])')
+
+    if ($currentCheckbox.dataset.exclusive === 'true' && $currentCheckbox.checked === true) {
+      for (var i = 0; i < $nonExclusiveOptions.length; i++) {
+        $nonExclusiveOptions[i].checked = false
+      }
+    } else if ($currentCheckbox.dataset.exclusive !== 'true' && $currentCheckbox.checked === true) {
+      if ($exclusiveOption) {
+        $exclusiveOption.checked = false
+      }
     }
   }
 
