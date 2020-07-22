@@ -9,19 +9,13 @@ window.GOVUK.Modules.Checkboxes = window.GOVUKFrontend;
 
   GovukCheckboxes.prototype.start = function ($module) {
     this.$module = $module
-    this.applyAriaControlsAttributes(this.$module)
+    this.$nestedCheckboxes = this.$module[0].querySelectorAll('[data-nested=true] input[type=checkbox]')
 
-    $(this.$module).on('change', '[data-nested=true] input[type=checkbox]', function (e) {
-      var checkbox = e.target
-      var isNested = $(checkbox).closest('.govuk-checkboxes--nested')
-      var hasNested = $('.govuk-checkboxes--nested[data-parent=' + checkbox.id + ']')
+    this.applyAriaControlsAttributes(this.$module[0])
 
-      if (hasNested.length) {
-        this.toggleNestedCheckboxes(hasNested, checkbox)
-      } else if (isNested.length) {
-        this.toggleParentCheckbox(isNested, checkbox)
-      }
-    }.bind(this))
+    for (var i = 0; i < this.$nestedCheckboxes.length; i++) {
+      this.$nestedCheckboxes[i].addEventListener('change', this.handleNestedCheckboxChange.bind(this))
+    }
 
     $(this.$module).on('change', 'input[type=checkbox]', function (e) {
       if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
@@ -65,29 +59,50 @@ window.GOVUK.Modules.Checkboxes = window.GOVUKFrontend;
     })
   }
 
+  GovukCheckboxes.prototype.handleNestedCheckboxChange = function (event) {
+    var checkbox = event.target
+    var isNested = checkbox.closest('.govuk-checkboxes--nested')
+    var hasNested = this.$module[0].querySelector('.govuk-checkboxes--nested[data-parent=' + checkbox.id + ']')
+
+    if (hasNested) {
+      this.toggleNestedCheckboxes(hasNested, checkbox)
+    } else if (isNested) {
+      this.toggleParentCheckbox(isNested, checkbox)
+    }
+  }
+
   GovukCheckboxes.prototype.toggleNestedCheckboxes = function (scope, checkbox) {
+    var $nestedCheckboxes = scope.querySelectorAll('input[type=checkbox]')
     if (checkbox.checked) {
-      scope.find('input[type=checkbox]').prop('checked', true)
+      for (var i = 0; i < $nestedCheckboxes.length; i++) {
+        $nestedCheckboxes[i].checked = true
+      }
     } else {
-      scope.find('input[type=checkbox]').prop('checked', false)
+      for (var i = 0; i < $nestedCheckboxes.length; i++) {
+        $nestedCheckboxes[i].checked = false
+      }
     }
   }
 
   GovukCheckboxes.prototype.toggleParentCheckbox = function (scope, checkbox) {
-    var siblings = $(checkbox).closest('.govuk-checkboxes__item').siblings()
-    var parentId = scope.data('parent')
+    var $inputs = scope.querySelectorAll('input')
+    var $checkedInputs = scope.querySelectorAll('input:checked')
+    var parentId = scope.dataset.parent
+    var $parent = document.getElementById(parentId)
 
-    if (checkbox.checked && siblings.length === siblings.find(':checked').length) {
-      $('#' + parentId).prop('checked', true)
+    if (checkbox.checked && $inputs.length === $checkedInputs.length) {
+      $parent.checked = true
     } else {
-      $('#' + parentId).prop('checked', false)
+      $parent.checked = false
     }
   }
 
   GovukCheckboxes.prototype.applyAriaControlsAttributes = function (scope) {
-    $(scope).find('[data-controls]').each(function () {
-      $(this).attr('aria-controls', $(this).attr('data-controls'))
-    })
+    var $inputs = scope.querySelectorAll('[data-controls]')
+
+    for (var i = 0; i < $inputs.length; i++) {
+      $inputs[i].setAttribute('aria-controls', $inputs[i].getAttribute('data-controls'))
+    }
   }
 
   Modules.GovukCheckboxes = GovukCheckboxes
