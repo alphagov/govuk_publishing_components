@@ -64,7 +64,7 @@ module GovukPublishingComponents
     end
 
     def get_component_name_from_full_path(path)
-      path.gsub("/_", "/")
+      path.gsub(/.*\K\/_/, "/")
         .gsub(@templates_full_path, "")
         .gsub(".html.erb", "")
         .gsub(".erb", "")
