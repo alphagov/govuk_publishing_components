@@ -3,8 +3,10 @@ module GovukPublishingComponents
     attr_reader :data
 
     def initialize(path, name)
+      @path = path
       application_found = application_exists(path)
       components_found = []
+      @gem_style_references = []
 
       if application_found
         templates = Dir["#{path}/app/views/**/*.erb"]
@@ -62,6 +64,7 @@ module GovukPublishingComponents
         name: name,
         application_found: application_found,
         components_found: components_found,
+        gem_style_references: @gem_style_references.flatten.uniq.sort,
       }
     end
 
@@ -73,6 +76,8 @@ module GovukPublishingComponents
       files.each do |file|
         src = File.read(file)
         components_found << find_match(find, src, type)
+        gem_references = find_gem_references(file, src)
+        @gem_style_references << gem_references if gem_references
       rescue StandardError
         puts "File #{file} not found"
       end
@@ -92,6 +97,13 @@ module GovukPublishingComponents
       end
 
       all_matches
+    end
+
+    def find_gem_references(file, src)
+      find_gem_classes = /gem-c-[-_a-zA-Z]+/
+      clean_file_path = /(?<=#{Regexp.escape(@path)}\/)[\/a-zA-Z_-]+.[a-zA-Z.]+/
+
+      return file[clean_file_path] if find_gem_classes.match?(src)
     end
 
     def clean_file_name(name)

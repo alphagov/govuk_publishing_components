@@ -20,7 +20,11 @@
       </li>
     </ul>
     <div class="govuk-tabs__panel" id="applications">
-      <h2 class="govuk-heading-l">Applications</h2>
+      <%= render "govuk_publishing_components/components/heading", {
+        text: "Applications",
+        font_size: "l",
+        margin_bottom: 6
+      } %>
 
       <% if @applications.any? %>
         <details class="govuk-details" data-module="govuk-details">
@@ -66,7 +70,12 @@
                     </p>
                   <% end %>
 
-                  <h3 class="govuk-heading-m">Components used</h3>
+                  <%= render "govuk_publishing_components/components/heading", {
+                    text: "Components used",
+                    font_size: "m",
+                    margin_bottom: 4,
+                    heading_level: 3,
+                  } %>
 
                   <dl class="govuk-summary-list">
                     <% application[:summary].each do |item| %>
@@ -84,6 +93,22 @@
                       </div>
                     <% end %>
                   </dl>
+
+                  <% if application[:gem_style_references].any? %>
+                    <%= render "govuk_publishing_components/components/heading", {
+                      text: "Component references",
+                      font_size: "m",
+                      margin_bottom: 4,
+                      heading_level: 3,
+                    } %>
+
+                    <p class="govuk-body">This shows instances of `gem-c-` classes found in the application. If a reference is found in a stylesheet or in code a warning is created, as this could be a style override or hard coded component markup.</p>
+                    <ul class="govuk-list govuk-list--bullet">
+                      <% application[:gem_style_references].each do |ref| %>
+                        <li><%= ref %></li>
+                      <% end %>
+                    </ul>
+                  <% end %>
                 <% else %>
                   <p class="govuk-body">This application was not found. This could be because you do not have this repository checked out locally.</p>
                 <% end %>
@@ -97,7 +122,11 @@
     </div>
 
     <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="components-gem">
-      <h2 class="govuk-heading-l">Components</h2>
+      <%= render "govuk_publishing_components/components/heading", {
+        text: "Components",
+        font_size: "l",
+        margin_bottom: 6,
+      } %>
 
       <% if @components.any? %>
         <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
