@@ -29,7 +29,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "gds-api-adapters", ">= 0"
   s.add_development_dependency "govuk_schemas", "~> 4.0"
   s.add_development_dependency "govuk_test", "~> 1"
-  s.add_development_dependency "jasmine", "~> 3.5.1"
+  s.add_development_dependency "jasmine", "~> 3.6.0"
   s.add_development_dependency "jasmine_selenium_runner", "~> 3.0.0"
   s.add_development_dependency "pry-byebug"
   s.add_development_dependency "rspec-rails", "~> 4.0"
