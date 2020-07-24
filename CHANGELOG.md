@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.60.0
 
 * Make component auditing more resilient ([PR #1604](https://github.com/alphagov/govuk_publishing_components/pull/1604))
 * Add more font sizes to heading component ([PR #1587](https://github.com/alphagov/govuk_publishing_components/pull/1587))
