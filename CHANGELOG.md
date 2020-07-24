@@ -13,6 +13,7 @@
 * Add more font sizes to heading component ([PR #1587](https://github.com/alphagov/govuk_publishing_components/pull/1587))
 * Format machine-readable output ([PR #1617](https://github.com/alphagov/govuk_publishing_components/pull/1617))
 * Add support for custom sizes for radio page headers ([PR #1616](https://github.com/alphagov/govuk_publishing_components/pull/1616))
+* Add support for custom heading size for checkboxes ([PR #1623](https://github.com/alphagov/govuk_publishing_components/pull/1623))
 
 ## 21.59.0
 

@@ -416,6 +416,52 @@ describe "Checkboxes", type: :view do
     assert_select "legend h1", text: "What is your favourite skittle?"
   end
 
+  it "renders checkboxes with custom sized page heading and caption" do
+    render_component(
+      name: "favourite_colour",
+      heading_caption: "Question 3 of 9",
+      heading: "What is your favourite skittle?",
+      heading_size: "l",
+      is_page_heading: true,
+      description: "This is a description about skittles.",
+      items: [
+        { label: "Red", value: "red" },
+        { label: "Green", value: "green" },
+      ],
+    )
+    assert_select "legend span.govuk-caption-l", text: "Question 3 of 9"
+    assert_select "legend.govuk-fieldset__legend--l h1", text: "What is your favourite skittle?"
+  end
+
+  it "renders checkboxes with default size for page heading and caption if no custom heading size is passed in" do
+    render_component(
+      name: "favourite_colour",
+      heading_caption: "Question 3 of 9",
+      heading: "What is your favourite skittle?",
+      is_page_heading: true,
+      description: "This is a description about skittles.",
+      items: [
+        { label: "Red", value: "red" },
+        { label: "Green", value: "green" },
+      ],
+    )
+    assert_select "legend span.govuk-caption-xl", text: "Question 3 of 9"
+    assert_select "legend.govuk-fieldset__legend--xl h1", text: "What is your favourite skittle?"
+  end
+
+  it "renders checkboxes with default size for heading if no custom heading size or page heading option is passed in" do
+    render_component(
+      name: "favourite_colour",
+      heading: "What is your favourite skittle?",
+      description: "This is a description about skittles.",
+      items: [
+        { label: "Red", value: "red" },
+        { label: "Green", value: "green" },
+      ],
+    )
+    assert_select "legend.govuk-fieldset__legend--m", text: "What is your favourite skittle?"
+  end
+
   it "renders no caption if the header is not a page heading" do
     render_component(
       name: "favourite_colour",
