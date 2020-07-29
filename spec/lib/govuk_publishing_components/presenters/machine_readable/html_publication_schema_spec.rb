@@ -30,7 +30,7 @@ RSpec.describe GovukPublishingComponents::Presenters::HtmlPublicationSchema do
 
     it "behaves like an article" do
       expect(structured_data["@type"]).to eql("Article")
-      expect(structured_data["articleBody"]).to eq(page.body)
+      expect(structured_data["articleBody"].to_s).to eq(page.body)
     end
 
     context "when one heading present" do
