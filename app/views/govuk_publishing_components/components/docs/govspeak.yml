@@ -190,6 +190,51 @@ examples:
             </tr>
           </tbody>
         </table>
+  chart_with_colours:
+    data:
+      block: |
+        <table class="js-barchart-table mc-auto-outdent">
+          <thead>
+            <tr>
+              <th scope="col">Number position</th>
+              <th scope="col">Apples</th>
+              <th scope="col">Oranges</th>
+              <th scope="col">Bananas</th>
+              <th scope="col">Pears</th>
+              <th scope="col">Grapes</th>
+              <th scope="col">Strawberries</th>
+              <th scope="col">Plums</th>
+              <th scope="col">Apricots</th>
+              <th scope="col">Pineapples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Numbers inside bar</td>
+              <td>16</td>
+              <td>48</td>
+              <td>39</td>
+              <td>50</td>
+              <td>24</td>
+              <td>10</td>
+              <td>62</td>
+              <td>29</td>
+              <td>81</td>
+            </tr>
+            <tr>
+              <td>Numbers outside bar</td>
+              <td>2</td>
+              <td>1</td>
+              <td>2</td>
+              <td>1</td>
+              <td>1</td>
+              <td>3</td>
+              <td>3</td>
+              <td>1</td>
+              <td>2</td>
+            </tr>
+          </tbody>
+        </table>
   address:
     data:
       block: |
