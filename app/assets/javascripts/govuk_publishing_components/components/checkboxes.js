@@ -31,8 +31,8 @@ window.GOVUK.Modules.Checkboxes = window.GOVUKFrontend;
 
   GovukCheckboxes.prototype.handleCheckboxChange = function (event) {
     if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
-      // where checkboxes are manipulated externally in finders, suppressAnalytics
-      // is passed to prevent duplicate GA events
+      // Where checkboxes are manipulated externally in finders, `suppressAnalytics`
+      // is passed to prevent duplicate GA events.
       if (!event.detail || (event.detail && event.detail.suppressAnalytics !== true)) {
         var $checkbox = event.target
         var category = $checkbox.getAttribute('data-track-category')
