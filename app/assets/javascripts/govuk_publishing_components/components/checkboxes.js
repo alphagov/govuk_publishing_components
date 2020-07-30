@@ -1,4 +1,5 @@
 /* eslint-env jquery */
+// = require govuk/vendor/polyfills/Element/prototype/closest.js
 // = require govuk/components/checkboxes/checkboxes.js
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {}
