@@ -84,7 +84,7 @@ window.GOVUK.Modules.Checkboxes = window.GOVUKFrontend;
   GovukCheckboxes.prototype.toggleParentCheckbox = function ($scope, $checkbox) {
     var $inputs = $scope.querySelectorAll('input')
     var $checkedInputs = $scope.querySelectorAll('input:checked')
-    var parentId = $scope.dataset.parent
+    var parentId = $scope.getAttribute('data-parent')
     var $parent = document.getElementById(parentId)
 
     if ($checkbox.checked && $inputs.length === $checkedInputs.length) {
