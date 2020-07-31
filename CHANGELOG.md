@@ -12,6 +12,7 @@
 * **BREAKING** Layout header component always displays product name and environment when provided ([PR #1736](https://github.com/alphagov/govuk_publishing_components/pull/1736))
 * Add heading option to panel component ([PR #1741](https://github.com/alphagov/govuk_publishing_components/pull/1741)) MINOR
 * **BREAKING** Force contents list title to always be Contents or regional equivalent ([PR #1734](https://github.com/alphagov/govuk_publishing_components/pull/1734))
+* **BREAKING** Remove ability to pass Govspeak unsanitized HTML ([PR #1632](https://github.com/alphagov/govuk_publishing_components/pull/1632))
 
 ## 21.69.0
 
