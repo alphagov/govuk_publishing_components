@@ -142,3 +142,15 @@
     display: none;
   }
 }
+
+.gem-c-layout-header__search-form {
+  display: none;
+
+  &.js-visible {
+    display: block;
+  }
+
+  @include govuk-media-query($from: tablet) {
+    display: block;
+  }
+}
