@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.60.1
 
 * Change bar chart numbers and colours to be accessible ([PR #1608](https://github.com/alphagov/govuk_publishing_components/pull/1608))
 
