@@ -3,11 +3,11 @@ require_relative "../../app/models/govuk_publishing_components/audit_application
 
 describe "Auditing the components in applications" do
   it "returns correct information" do
-    path = File.join(File.dirname(__FILE__), "../dummy")
-    application = GovukPublishingComponents::AuditApplications.new(path, "an application")
+    path = File.join(Dir.pwd, "/spec/dummy")
+    application = GovukPublishingComponents::AuditApplications.new(path, "govuk_publishing_components")
 
     expected = {
-      name: "an application",
+      name: "govuk_publishing_components",
       application_found: true,
       components_found: [
         {
@@ -30,6 +30,10 @@ describe "Auditing the components in applications" do
           location: "ruby",
           components: ["button", "govspeak", "print link"],
         },
+      ],
+      gem_style_references: [
+        "app/assets/stylesheets/application.scss",
+        "app/views/layouts/dummy_admin_layout.html.erb",
       ],
     }
 

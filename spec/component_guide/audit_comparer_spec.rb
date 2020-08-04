@@ -117,6 +117,7 @@ describe "Comparing data from an application with the components" do
             ],
           },
         ],
+        gem_style_references: [],
       },
     ]
     comparer = GovukPublishingComponents::AuditComparer.new(gem, application)
@@ -170,6 +171,7 @@ describe "Comparing data from an application with the components" do
           },
         ],
         warning_count: 5,
+        gem_style_references: [],
       },
     ]
 
@@ -208,6 +210,7 @@ describe "Comparing data from an application with the components" do
             ],
           },
         ],
+        gem_style_references: [],
       },
     ]
     comparer = GovukPublishingComponents::AuditComparer.new(gem, application)
@@ -245,6 +248,7 @@ describe "Comparing data from an application with the components" do
           },
         ],
         warning_count: 1,
+        gem_style_references: [],
       },
     ]
 
@@ -286,6 +290,11 @@ describe "Comparing data from an application with the components" do
             ],
           },
         ],
+        gem_style_references: [
+          "a_made_up_application/app/assets/stylesheets/application.scss",
+          "a_made_up_application/app/assets/stylesheets/application.js",
+          "a_made_up_application/app/views/layouts/dummy_admin_layout.html",
+        ],
       },
     ]
     comparer = GovukPublishingComponents::AuditComparer.new(gem, application)
@@ -316,6 +325,11 @@ describe "Comparing data from an application with the components" do
             value: "component that does not exist",
           },
         ],
+        gem_style_references: [
+          "a_made_up_application/app/assets/stylesheets/application.scss",
+          "a_made_up_application/app/assets/stylesheets/application.js",
+          "a_made_up_application/app/views/layouts/dummy_admin_layout.html",
+        ],
         warnings: [
           {
             component: "component that does not exist",
@@ -329,8 +343,16 @@ describe "Comparing data from an application with the components" do
             component: "component one",
             message: "Included in stylesheets but not code",
           },
+          {
+            component: "Possible component style override",
+            message: "a_made_up_application/app/assets/stylesheets/application.scss",
+          },
+          {
+            component: "Possible hard coded component markup",
+            message: "a_made_up_application/app/views/layouts/dummy_admin_layout.html",
+          },
         ],
-        warning_count: 3,
+        warning_count: 5,
       },
     ]
 

@@ -3,37 +3,39 @@ module GovukPublishingComponents
     attr_reader :data
 
     def initialize(path, name)
-      templates = Dir["#{path}/app/views/**/*.erb"]
-      stylesheets = Dir["#{path}/app/assets/stylesheets/**/*.scss"]
-      javascripts = Dir["#{path}/app/assets/javascripts/**/*.js"]
-
-      find_components = /(?<=govuk_publishing_components\/components\/)[\/a-zA-Z_-]+(?=['"])/
-
-      @find_all_stylesheets = /@import ["']{1}govuk_publishing_components\/all_components/
-      find_stylesheets = /(?<=@import ["']{1}govuk_publishing_components\/components\/)(?!print\/)+[a-zA-Z_-]+(?=['"])/
-
-      @find_all_print_stylesheets = /@import ["']{1}govuk_publishing_components\/all_components_print/
-      find_print_stylesheets = /(?<=@import ["']{1}govuk_publishing_components\/components\/print\/)[a-zA-Z_-]+(?=['"])/
-
-      @find_all_javascripts = /\/\/[ ]*= require govuk_publishing_components\/all_components/
-      find_javascripts = /(?<=require govuk_publishing_components\/components\/)[a-zA-Z_-]+/
-
-      components_in_templates = find_components(templates, find_components, "templates") || []
-      components_in_stylesheets = find_components(stylesheets, find_stylesheets, "stylesheets") || []
-      components_in_print_stylesheets = find_components(stylesheets, find_print_stylesheets, "print_stylesheets") || []
-      components_in_javascripts = find_components(javascripts, find_javascripts, "javascripts") || []
-
-      ruby_paths = %w[/app/helpers/ /app/presenters/ /lib/]
-      components_in_ruby = []
-      ruby_paths.each do |ruby_path|
-        components_in_ruby << find_components(Dir["#{path}#{ruby_path}**/*.{rb,erb}"], find_components, "ruby") || []
-      end
-      components_in_ruby = components_in_ruby.flatten.uniq
-
+      @path = path
       application_found = application_exists(path)
       components_found = []
+      @gem_style_references = []
 
       if application_found
+        templates = Dir["#{path}/app/views/**/*.erb"]
+        stylesheets = Dir["#{path}/app/assets/stylesheets/**/*.scss"]
+        javascripts = Dir["#{path}/app/assets/javascripts/**/*.js"]
+
+        find_components = /(?<=govuk_publishing_components\/components\/)[\/a-zA-Z_-]+(?=['"])/
+
+        @find_all_stylesheets = /@import ["']{1}govuk_publishing_components\/all_components/
+        find_stylesheets = /(?<=@import ["']{1}govuk_publishing_components\/components\/)(?!print\/)+[a-zA-Z_-]+(?=['"])/
+
+        @find_all_print_stylesheets = /@import ["']{1}govuk_publishing_components\/all_components_print/
+        find_print_stylesheets = /(?<=@import ["']{1}govuk_publishing_components\/components\/print\/)[a-zA-Z_-]+(?=['"])/
+
+        @find_all_javascripts = /\/\/[ ]*= require govuk_publishing_components\/all_components/
+        find_javascripts = /(?<=require govuk_publishing_components\/components\/)[a-zA-Z_-]+/
+
+        components_in_templates = find_components(templates, find_components, "templates") || []
+        components_in_stylesheets = find_components(stylesheets, find_stylesheets, "stylesheets") || []
+        components_in_print_stylesheets = find_components(stylesheets, find_print_stylesheets, "print_stylesheets") || []
+        components_in_javascripts = find_components(javascripts, find_javascripts, "javascripts") || []
+
+        ruby_paths = %w[/app/helpers/ /app/presenters/ /lib/]
+        components_in_ruby = []
+        ruby_paths.each do |ruby_path|
+          components_in_ruby << find_components(Dir["#{path}#{ruby_path}**/*.{rb,erb}"], find_components, "ruby") || []
+        end
+        components_in_ruby = components_in_ruby.flatten.uniq
+
         components_found = [
           {
             location: "templates",
@@ -62,6 +64,7 @@ module GovukPublishingComponents
         name: name,
         application_found: application_found,
         components_found: components_found,
+        gem_style_references: @gem_style_references.flatten.uniq.sort,
       }
     end
 
@@ -73,6 +76,8 @@ module GovukPublishingComponents
       files.each do |file|
         src = File.read(file)
         components_found << find_match(find, src, type)
+        gem_references = find_gem_references(file, src)
+        @gem_style_references << gem_references if gem_references
       rescue StandardError
         puts "File #{file} not found"
       end
@@ -92,6 +97,13 @@ module GovukPublishingComponents
       end
 
       all_matches
+    end
+
+    def find_gem_references(file, src)
+      find_gem_classes = /gem-c-[-_a-zA-Z]+/
+      clean_file_path = /(?<=#{Regexp.escape(@path)}\/)[\/a-zA-Z_-]+.[a-zA-Z.]+/
+
+      return file[clean_file_path] if find_gem_classes.match?(src)
     end
 
     def clean_file_name(name)

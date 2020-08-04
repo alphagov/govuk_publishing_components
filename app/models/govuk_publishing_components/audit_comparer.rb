@@ -36,6 +36,7 @@ module GovukPublishingComponents
           warnings = []
           warnings << warn_about_missing_components(result[:components_found])
           warnings << warn_about_missing_assets(result[:components_found])
+          warnings << warn_about_style_overrides(result[:gem_style_references])
           warnings = warnings.flatten
 
           data << {
@@ -65,6 +66,7 @@ module GovukPublishingComponents
             ],
             warnings: warnings,
             warning_count: warnings.length,
+            gem_style_references: result[:gem_style_references],
           }
         else
           data << {
@@ -148,6 +150,17 @@ module GovukPublishingComponents
 
     def component_does_not_exist(component)
       !@gem_data[:component_code].include?(component) unless component == "all"
+    end
+
+    def warn_about_style_overrides(results)
+      warnings = []
+
+      results.each do |result|
+        warnings << create_warning("Possible component style override", result) if result.include? ".scss"
+        warnings << create_warning("Possible hard coded component markup", result) if [".html", ".rb"].any? { |needle| result.include? needle }
+      end
+
+      warnings
     end
 
     def find_missing(needle, haystack)
