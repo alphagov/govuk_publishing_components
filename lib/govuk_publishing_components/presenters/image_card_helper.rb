@@ -4,7 +4,7 @@ module GovukPublishingComponents
       include ActionView::Helpers
       include ActionView::Context
 
-      attr_reader :href, :href_data_attributes, :extra_links, :large, :extra_links_no_indent, :heading_text, :metadata
+      attr_reader :href, :href_data_attributes, :extra_links, :large, :extra_links_no_indent, :heading_text, :metadata, :lang
 
       def initialize(local_assigns)
         @href = local_assigns[:href]
@@ -18,6 +18,7 @@ module GovukPublishingComponents
         @heading_text = local_assigns[:heading_text]
         @extra_links_no_indent = local_assigns[:extra_links_no_indent]
         @metadata = local_assigns[:metadata]
+        @lang = local_assigns[:lang]
       end
 
       def is_tracking?
