@@ -98,4 +98,9 @@ describe "ImageCard", type: :view do
     render_component(href: "#", metadata: "Unpaid")
     assert_select ".gem-c-image-card__metadata", text: "Unpaid"
   end
+
+  it "applies lang attribute when lang is specified" do
+    render_component(href: "#", lang: "cy")
+    assert_select ".gem-c-image-card[lang='cy']"
+  end
 end
