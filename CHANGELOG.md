@@ -8,7 +8,7 @@
   of the commit log.
 
 
-## Unreleased
+## 21.60.2
 
 * Add optional lang parameter to image card component ([PR #1634](https://github.com/alphagov/govuk_publishing_components/pull/1634))
 
