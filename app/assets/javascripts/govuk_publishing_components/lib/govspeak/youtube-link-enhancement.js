@@ -33,7 +33,7 @@
         }
       }
 
-      if (href.includes('/live_stream')) {
+      if (href.indexOf('/live_stream') >= 0) {
         var channelId = YoutubeLinkEnhancement.parseLivestream(href)
 
         if (!this.hasDisabledEmbed($link) && channelId) {
