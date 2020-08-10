@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.60.3
 
 * Fix display of embedded YouTube videos for Internet Explorer users ([PR #1640](https://github.com/alphagov/govuk_publishing_components/pull/1640))
 
