@@ -8,6 +8,7 @@ Rails.application.config.assets.precompile += %w[
   component_guide/visual-regression.js
   component_guide/print.css
   govuk_publishing_components/all_components.js
+  govuk_publishing_components/ie.js
   govuk_publishing_components/modules.js
   govuk_publishing_components/vendor/modernizr.js
   govuk_publishing_components/component_guide.css
