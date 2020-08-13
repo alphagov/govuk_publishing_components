@@ -10,7 +10,11 @@ body: |
 display_preview: false
 display_html: true
 accessibility_criteria: |
-  TBD
+  The layout template must:
+
+    * have a `lang` attribute
+    * contain a [skip link](/component-guide/skip_link)
+    * have a sensible page `<title>`
 examples:
   default:
     data:

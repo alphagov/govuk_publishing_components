@@ -7,6 +7,10 @@ govuk_frontend_components:
   - header
 accessibility_excluded_rules:
   - landmark-banner-is-top-level # The header element can not be top level in the examples
+  - duplicate-id-aria # IDs will be duplicated in component examples list
+  - form-field-multiple-labels # Form labels will be ambiguous in component examples list
+  - landmark-no-duplicate-banner # banners will be duplicated in component examples list
+  - landmark-unique # aria-label attributes will be duplicated in component examples list
 examples:
   default:
     data:
@@ -36,12 +40,42 @@ examples:
       - text: Hidden on desktop
         href: "item-3"
         show_only_in_collapsed_menu: true
+  with_left_search_and_navigation:
+    description: This supports pages where the search appears on the left with multiple navigation links on the right, such as the [How government works](https://www.gov.uk/government/how-government-works) page
+    data:
+      search_left: true
+      environment: public
+      navigation_items:
+      - text: Departments
+        href: "item-1"
+      - text: Worldwide
+        href: "item-2"
+      - text: How government works
+        href: "item-3"
+      - text: Get involved
+        href: "item-4"
+      - text: Consultations
+        href: "item-4"
+      - text: Statistics
+        href: "item-5"
+      - text: News and communications
+        href: "item-6"
+        active: true
   full_width:
     description: |
       This is difficult to preview because the preview windows are constrained, but the header will stretch to the size of its container.
     data:
       environment: production
       full_width: true
+  no_bottom_border:
+    description: This is useful for pages where a large full-width banner is the first thing to appear on the page, for example, the [GOV.UK homepage](https://www.gov.uk)
+    data:
+      remove_bottom_border: true
+      environment: 'public'
+  with_search_bar:
+    data:
+      environment: 'public'
+      search: true
 
 accessibility_criteria: |
   The component must:

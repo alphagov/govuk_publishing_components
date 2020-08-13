@@ -55,4 +55,28 @@ describe "Layout header", type: :view do
     assert_select ".govuk-header__navigation-item", text: "Bar"
     assert_select ".govuk-header__navigation-item.govuk-header__navigation-item--collapsed-menu-only", text: "Hello"
   end
+
+  it "renders the header without the bottom border" do
+    render_component(remove_bottom_border: true, environment: "public")
+
+    assert_select ".gem-c-layout-header--no-bottom-border"
+  end
+
+  it "renders without a search bar by default" do
+    render_component({ environment: "" })
+
+    assert_select ".gem-c-layout-header .gem-c-search", false
+  end
+
+  it "renders a search bar" do
+    render_component(environment: "public", search: true)
+
+    assert_select ".gem-c-layout-header .gem-c-search"
+  end
+
+  it "renders the search bar on the left when requested" do
+    render_component(environment: "public", search: true, search_left: true)
+
+    assert_select ".gem-c-layout-header--search-left"
+  end
 end

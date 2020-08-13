@@ -8,6 +8,7 @@ Rails.application.config.assets.precompile += %w[
   component_guide/visual-regression.js
   component_guide/print.css
   govuk_publishing_components/all_components.js
+  govuk_publishing_components/ie.js
   govuk_publishing_components/modules.js
   govuk_publishing_components/vendor/modernizr.js
   govuk_publishing_components/component_guide.css
@@ -30,6 +31,13 @@ Rails.application.config.assets.precompile += %w[
 # GOV.UK Frontend assets
 Rails.application.config.assets.precompile += %w[
   govuk-logotype-crown.png
+  favicon.ico
+  govuk-opengraph-image.png
+  govuk-mask-icon.svg
+  govuk-apple-touch-icon-180x180.png
+  govuk-apple-touch-icon-167x167.png
+  govuk-apple-touch-icon-152x152.png
+  govuk-apple-touch-icon.png
 ]
 
 Rails.application.config.assets.paths += %W[

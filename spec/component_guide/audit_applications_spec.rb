@@ -12,7 +12,7 @@ describe "Auditing the components in applications" do
       components_found: [
         {
           location: "templates",
-          components: ["contextual breadcrumbs", "contextual footer", "contextual sidebar", "error summary", "feedback", "govspeak", "input", "layout footer", "layout for admin", "layout header", "skip link", "tabs", "title"],
+          components: ["back link", "contextual breadcrumbs", "contextual footer", "contextual sidebar", "error summary", "feedback", "govspeak", "input", "layout footer", "layout for admin", "layout for public", "layout header", "skip link", "tabs", "title"],
         },
         {
           location: "stylesheets",
