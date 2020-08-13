@@ -12,6 +12,7 @@
 * Hide priority breadcrumb from transition content tagged to a step by step ([PR #1654](https://github.com/alphagov/govuk_publishing_components/pull/1654))
 * Use collapsible breadcrumbs from govuk-frontend ([PR #1552](https://github.com/alphagov/govuk_publishing_components/pull/1552))
 * Add role alert to feedback component confirmation ([PR #1656](https://github.com/alphagov/govuk_publishing_components/pull/1656))
+* Add locale attribute to document lists for rendering lang attributes ([PR #1643](https://github.com/alphagov/govuk_publishing_components/pull/1643))
 
 ## 21.62.0
 
