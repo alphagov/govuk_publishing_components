@@ -33,6 +33,7 @@
               item[:link][:path],
               data: item[:link][:data_attributes],
               class: "#{item_classes} gem-c-document-list__item-link",
+              lang: item[:link][:locale].presence
             )
           else
             content_tag(
