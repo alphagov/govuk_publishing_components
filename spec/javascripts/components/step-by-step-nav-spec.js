@@ -5,7 +5,6 @@ describe('A stepnav module', function () {
   'use strict'
 
   var $element
-  var stepnav
   var html =
     '<div data-module="gemstepnav" class="gem-c-step-nav js-hidden" data-id="unique-id" data-show-text="Show" data-hide-text="Hide" data-show-all-text="Show all" data-hide-all-text="Hide all">' +
       '<ol class="gem-c-step-nav__steps">' +
@@ -25,7 +24,7 @@ describe('A stepnav module', function () {
           '<div class="gem-c-step-nav__panel js-panel" id="step-panel-topic-step-one-1">' +
             '<ol class="gem-c-step-nav__list" data-length="1">' +
               '<li class="gem-c-step-nav__list-item js-list-item">' +
-                '<a href="/link1" class="gem-c-step-nav__link js-link" data-position="1.1">Link 1</a>' +
+                '<a href="#link1" class="gem-c-step-nav__link js-link" data-position="1.1">Link 1</a>' +
               '</li>' +
             '</ol>' +
           '</div>' +
@@ -46,10 +45,10 @@ describe('A stepnav module', function () {
           '<div class="gem-c-step-nav__panel js-panel" id="step-panel-topic-step-two-1">' +
             '<ol class="gem-c-step-nav__list" data-length="2">' +
               '<li class="gem-c-step-nav__list-item js-will-be-an-active-link js-list-item">' +
-                '<a href="/link2" class="gem-c-step-nav__link js-link" data-position="2.1"><span class="visuallyhidden">You are currently viewing: </span>Link 2</a>' +
+                '<a href="#link2" class="gem-c-step-nav__link js-link" data-position="2.1"><span class="visuallyhidden">You are currently viewing: </span>Link 2</a>' +
               '</li>' +
               '<li class="gem-c-step-nav__list-item js-list-item">' +
-                '<a href="/link3" class="gem-c-step-nav__link js-link" data-position="2.2">Link 3</a>' +
+                '<a href="#link3" class="gem-c-step-nav__link js-link" data-position="2.2">Link 3</a>' +
               '</li>' +
               '<li class="gem-c-step-nav__list-item js-will-be-an-active-link js-list-item">' +
                 '<a href="#content" class="gem-c-step-nav__link js-link" data-position="2.3"><span class="visuallyhidden">You are currently viewing: </span>Link 4</a>' +
@@ -73,13 +72,13 @@ describe('A stepnav module', function () {
           '<div class="gem-c-step-nav__panel js-panel" id="step-panel-topic-step-three-1">' +
             '<ol class="gem-c-step-nav__list" data-length="5">' +
               '<li class="gem-c-step-nav__list-item js-will-be-an-active-link js-list-item">' +
-                '<a href="/link4" class="gem-c-step-nav__link js-link" data-position="3.1"><span class="visuallyhidden">You are currently viewing: </span>Link 5</a>' +
+                '<a href="#link4" class="gem-c-step-nav__link js-link" data-position="3.1"><span class="visuallyhidden">You are currently viewing: </span>Link 5</a>' +
               '</li>' +
               '<li class="gem-c-step-nav__list-item js-will-be-an-active-link js-list-item">' +
-                '<a href="/link5" class="gem-c-step-nav__link js-link" data-position="3.2"><span class="visuallyhidden">You are currently viewing: </span>Link 6</a>' +
+                '<a href="#link5" class="gem-c-step-nav__link js-link" data-position="3.2"><span class="visuallyhidden">You are currently viewing: </span>Link 6</a>' +
               '</li>' +
               '<li class="gem-c-step-nav__list-item js-list-item">' +
-                '<a href="http://www.gov.uk" class="gem-c-step-nav__link js-link" data-position="3.3" rel="external">Link 7</a>' +
+                '<a href="#www.gov.uk" class="gem-c-step-nav__link js-link" data-position="3.3" rel="external">Link 7</a>' +
               '</li>' +
               '<li class="gem-c-step-nav__list-item js-will-be-an-active-link js-list-item">' +
                 '<a href="#content" class="gem-c-step-nav__link js-link" data-position="3.4"><span class="visuallyhidden">You are currently viewing: </span>Link 8</a>' +
@@ -98,9 +97,8 @@ describe('A stepnav module', function () {
   var expectedstepnavLinkCount = 0
 
   beforeEach(function () {
-    stepnav = new GOVUK.Modules.Gemstepnav()
     $element = $(html)
-    stepnav.start($element)
+    new GOVUK.Modules.Gemstepnav().start($element)
     expectedstepnavStepCount = $element.find('.gem-c-step-nav__step').length
     expectedstepnavContentCount = $element.find('.gem-c-step-nav__step').first().find('.js-link').length
     expectedstepnavLinkCount = $element.find('.gem-c-step-nav__list-item').length
@@ -233,15 +231,15 @@ describe('A stepnav module', function () {
   describe('Opening a step', function () {
     // When a step is open (testing: toggleStep, openStep)
     it('has a class of step-is-shown', function () {
-      var $stepLink = $element.find('.gem-c-step-nav__header .gem-c-step-nav__button--title')
-      var $step = $element.find('.gem-c-step-nav__step')
+      var $stepLink = $element.find('.gem-c-step-nav__header .gem-c-step-nav__button--title').first()
+      var $step = $element.find('.gem-c-step-nav__step').first()
       $stepLink.click()
       expect($step).toHaveClass('step-is-shown')
     })
 
     // When a step is open (testing: toggleState, setExpandedState)
     it('has a an aria-expanded attribute and the value is true', function () {
-      var $stepLink = $element.find('.gem-c-step-nav__header .gem-c-step-nav__button--title')
+      var $stepLink = $element.find('.gem-c-step-nav__header .gem-c-step-nav__button--title').first()
       $stepLink.click()
       expect($stepLink).toHaveAttr('aria-expanded', 'true')
     })
@@ -253,7 +251,7 @@ describe('A stepnav module', function () {
       }
       spyOn(GOVUK.analytics, 'trackEvent')
 
-      var $stepLink = $element.find('.gem-c-step-nav__header .js-step-title-text')
+      var $stepLink = $element.find('.gem-c-step-nav__header .js-step-title-text').first()
       $stepLink.click()
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavShown', {
@@ -387,11 +385,10 @@ describe('A stepnav module', function () {
 
   describe('when the option to remember which steps are open is on', function () {
     beforeEach(function () {
-      stepnav = new GOVUK.Modules.Gemstepnav()
       $element = $(html)
       $element.attr('data-remember', true)
       $element.addClass('gem-c-step-nav--large')
-      stepnav.start($element)
+      new GOVUK.Modules.Gemstepnav().start($element)
     })
 
     afterEach(function () {
@@ -448,12 +445,11 @@ describe('A stepnav module', function () {
         store = {}
       })
 
-      stepnav = new GOVUK.Modules.Gemstepnav()
       $element = $(html)
       $element.attr('data-remember', true)
       $element.addClass('gem-c-step-nav--large')
       window.sessionStorage.setItem('unique-id', '["topic-step-one","topic-step-three"]')
-      stepnav.start($element)
+      new GOVUK.Modules.Gemstepnav().start($element)
     })
 
     afterEach(function () {
@@ -501,12 +497,11 @@ describe('A stepnav module', function () {
         store = {}
       })
 
-      stepnav = new GOVUK.Modules.Gemstepnav()
       $element = $(html)
       $element.attr('data-remember', true)
       $element.addClass('gem-c-step-nav--large')
       window.sessionStorage.setItem('unique-id', '["topic-step-one","topic-step-two","topic-step-three"]')
-      stepnav.start($element)
+      new GOVUK.Modules.Gemstepnav().start($element)
     })
 
     afterEach(function () {
@@ -534,11 +529,10 @@ describe('A stepnav module', function () {
         store = {}
       })
 
-      stepnav = new GOVUK.Modules.Gemstepnav()
       $element = $(html)
       $element.attr('data-remember', true)
       window.sessionStorage.setItem('unique-id', '["topic-step-one","topic-step-two","topic-step-three"]')
-      stepnav.start($element)
+      new GOVUK.Modules.Gemstepnav().start($element)
     })
 
     afterEach(function () {
@@ -561,10 +555,9 @@ describe('A stepnav module', function () {
 
   describe('when a step is supposed to be shown by default', function () {
     beforeEach(function () {
-      stepnav = new GOVUK.Modules.Gemstepnav()
       $element = $(html)
       $element.find('#topic-step-two').attr('data-show', '')
-      stepnav.start($element)
+      new GOVUK.Modules.Gemstepnav().start($element)
     })
 
     it('shows the step it\'s supposed to', function () {
@@ -583,19 +576,18 @@ describe('A stepnav module', function () {
 
   describe('When tracking a big step nav', function () {
     beforeEach(function () {
-      stepnav = new GOVUK.Modules.Gemstepnav()
       $element = $(html)
       $element.addClass('gem-c-step-nav--large')
-      stepnav.start($element)
-    })
+      new GOVUK.Modules.Gemstepnav().start($element)
 
-    it('triggers a google analytics custom event when clicking on the title on a big stepnav', function () {
       GOVUK.analytics = {
         trackEvent: function () {
         }
       }
       spyOn(GOVUK.analytics, 'trackEvent')
+    })
 
+    it('triggers a google analytics custom event when clicking on the title on a big stepnav', function () {
       var $stepLink = $element.find('.gem-c-step-nav__header .js-step-title-text')
       $stepLink.click()
 
@@ -609,12 +601,6 @@ describe('A stepnav module', function () {
     })
 
     it('triggers a google analytics custom event when clicking on the icon on a big stepnav', function () {
-      GOVUK.analytics = {
-        trackEvent: function () {
-        }
-      }
-      spyOn(GOVUK.analytics, 'trackEvent')
-
       var $stepIcon = $element.find('.js-toggle-link')
       $stepIcon.click()
 
@@ -628,12 +614,6 @@ describe('A stepnav module', function () {
     })
 
     it('triggers a google analytics custom event when clicking in space in the header on a big stepnav', function () {
-      GOVUK.analytics = {
-        trackEvent: function () {
-        }
-      }
-      spyOn(GOVUK.analytics, 'trackEvent')
-
       var $stepHeader = $element.find('.gem-c-step-nav__header').first()
       $stepHeader.click()
 
@@ -647,12 +627,6 @@ describe('A stepnav module', function () {
     })
 
     it('triggers a google analytics custom event when hiding by clicking on the title on a big stepnav', function () {
-      GOVUK.analytics = {
-        trackEvent: function () {
-        }
-      }
-      spyOn(GOVUK.analytics, 'trackEvent')
-
       var $stepLink = $element.find('.gem-c-step-nav__header .js-step-title-text')
       $stepLink.click()
       $stepLink.click()
@@ -667,12 +641,6 @@ describe('A stepnav module', function () {
     })
 
     it('triggers a google analytics custom event when hiding by clicking on the icon on a big stepnav', function () {
-      GOVUK.analytics = {
-        trackEvent: function () {
-        }
-      }
-      spyOn(GOVUK.analytics, 'trackEvent')
-
       var $stepIcon = $element.find('.js-toggle-link')
       $stepIcon.click()
       $stepIcon.click()
@@ -687,12 +655,6 @@ describe('A stepnav module', function () {
     })
 
     it('triggers a google analytics custom event when hiding by clicking in space in the header on a big stepnav', function () {
-      GOVUK.analytics = {
-        trackEvent: function () {
-        }
-      }
-      spyOn(GOVUK.analytics, 'trackEvent')
-
       var $stepHeader = $element.find('.gem-c-step-nav__header')
       $stepHeader.click()
       $stepHeader.click()
@@ -707,11 +669,6 @@ describe('A stepnav module', function () {
     })
 
     it('triggers a google analytics custom event when clicking the "Show all" button on a big stepnav', function () {
-      GOVUK.analytics = {
-        trackEvent: function () {
-        }
-      }
-      spyOn(GOVUK.analytics, 'trackEvent')
       clickShowHideAll()
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavAllShown', {
@@ -723,11 +680,6 @@ describe('A stepnav module', function () {
     })
 
     it('triggers a google analytics custom event when clicking the "Hide all" button on a big stepnav', function () {
-      GOVUK.analytics = {
-        trackEvent: function () {
-        }
-      }
-      spyOn(GOVUK.analytics, 'trackEvent')
       clickShowHideAll()
       clickShowHideAll()
 
@@ -740,15 +692,10 @@ describe('A stepnav module', function () {
     })
 
     it('triggers a google analytics custom event when clicking a panel link on a big stepnav', function () {
-      GOVUK.analytics = {
-        trackEvent: function () {
-        }
-      }
-      spyOn(GOVUK.analytics, 'trackEvent')
-      $element.find('.js-link').first().click()
+      $element.find('.js-link').first()[0].click()
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('stepNavLinkClicked', '1.1', {
-        label: '/link1 : Big',
+        label: '#link1 : Big',
         dimension26: expectedstepnavStepCount.toString(),
         dimension27: expectedstepnavLinkCount.toString(),
         dimension28: expectedstepnavContentCount.toString(),
@@ -764,11 +711,11 @@ describe('A stepnav module', function () {
     }
     spyOn(GOVUK.analytics, 'trackEvent')
 
-    var $panelLink = $element.find('.js-link').first()
-    $panelLink.click()
+    var $panelLink = $element.find('.js-link')
+    $panelLink[0].click()
 
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('stepNavLinkClicked', '1.1', {
-      label: '/link1 : Small',
+      label: '#link1 : Small',
       dimension26: expectedstepnavStepCount.toString(),
       dimension27: expectedstepnavLinkCount.toString(),
       dimension28: expectedstepnavContentCount.toString(),
@@ -797,10 +744,9 @@ describe('A stepnav module', function () {
 
   describe('in a double dot situation', function () {
     beforeEach(function () {
-      stepnav = new GOVUK.Modules.Gemstepnav()
       $element = $(html)
       $element.find('.js-will-be-an-active-link').addClass('gem-c-step-nav__list-item--active')
-      stepnav.start($element)
+      new GOVUK.Modules.Gemstepnav().start($element)
     })
 
     afterEach(function () {
@@ -809,12 +755,12 @@ describe('A stepnav module', function () {
     })
 
     it('puts a clicked link in session storage', function () {
-      $element.find('.js-link[data-position="3.1"]').click()
+      $element.find('.js-link[data-position="3.1"]')[0].click()
       expect(window.sessionStorage.getItem('govuk-step-nav-active-link_unique-id')).toBe('3.1')
     })
 
     it('does not put an external clicked link in session storage', function () {
-      $element.find('.js-link[data-position="3.3"]').click()
+      $element.find('.js-link[data-position="3.3"]')[0].click()
       expect(window.sessionStorage.getItem('govuk-step-nav-active-link_unique-id')).toBe(null)
     })
 
@@ -836,7 +782,7 @@ describe('A stepnav module', function () {
     it('highlights a clicked #content link and its parent step, and removes other highlighting', function () {
       expect($element.find(('.gem-c-step-nav__list-item--active')).length).toBe(1)
 
-      var $firstLink = $element.find('.js-link[data-position="3.4"]')
+      var $firstLink = $element.find('.js-link[data-position="3.4"]')[0]
       $firstLink.click()
       expect(window.sessionStorage.getItem('govuk-step-nav-active-link_unique-id')).toBe('3.4')
       expect($firstLink.closest('.js-list-item')).toHaveClass('gem-c-step-nav__list-item--active')
@@ -844,7 +790,7 @@ describe('A stepnav module', function () {
       expect($element.find(('.gem-c-step-nav__list-item--active')).length).toBe(1)
       expect($element.find(('.gem-c-step-nav__step--active')).length).toBe(1)
 
-      var $secondLink = $element.find('.js-link[data-position="3.5"]')
+      var $secondLink = $element.find('.js-link[data-position="3.5"]')[0]
       $secondLink.click()
       expect(window.sessionStorage.getItem('govuk-step-nav-active-link_unique-id')).toBe('3.5')
       expect($secondLink.closest('.js-list-item')).toHaveClass('gem-c-step-nav__list-item--active')
@@ -869,11 +815,10 @@ describe('A stepnav module', function () {
         store = {}
       })
 
-      stepnav = new GOVUK.Modules.Gemstepnav()
       $element = $(html)
       $element.find('.js-will-be-an-active-link').addClass('gem-c-step-nav__list-item--active')
       window.sessionStorage.setItem('govuk-step-nav-active-link_unique-id', '3.5')
-      stepnav.start($element)
+      new GOVUK.Modules.Gemstepnav().start($element)
     })
 
     afterEach(function () {
@@ -888,6 +833,9 @@ describe('A stepnav module', function () {
     })
   })
 
+  // it's possible that the stored value for active link is invalid - perhaps because the step nav id matches
+  // another one that already stored a value. In this situation we want to make sure the code behaves sensibly
+  // i.e. it doesn't fail to find the stored link and remove the active styling from everything
   describe('in a double dot situation where a clicked link that is not highlighted is already stored on page load', function () {
     beforeEach(function () {
       var store = {}
@@ -903,11 +851,10 @@ describe('A stepnav module', function () {
         store = {}
       })
 
-      stepnav = new GOVUK.Modules.Gemstepnav()
       $element = $(html)
       $element.find('.js-will-be-an-active-link').addClass('gem-c-step-nav__list-item--active')
       window.sessionStorage.setItem('govuk-step-nav-active-link_unique-id', 'definitelynotvalid')
-      stepnav.start($element)
+      new GOVUK.Modules.Gemstepnav().start($element)
     })
 
     afterEach(function () {
@@ -916,8 +863,8 @@ describe('A stepnav module', function () {
     })
 
     it('highlights only one link', function () {
-      expect($element.find(('.gem-c-step-nav__list-item--active')).length).toBe(1)
-      expect($element.find(('.gem-c-step-nav__step--active')).length).toBe(1)
+      expect($element.find('.gem-c-step-nav__list-item--active').length).toBe(1)
+      expect($element.find('.gem-c-step-nav__step--active').length).toBe(1)
     })
   })
 
@@ -926,8 +873,7 @@ describe('A stepnav module', function () {
       $element = $(html)
       $element.find('.js-will-be-an-active-link').addClass('gem-c-step-nav__list-item--active')
       $element.find('.gem-c-step-nav__step').removeClass('gem-c-step-nav__step--active')
-      stepnav = new GOVUK.Modules.Gemstepnav()
-      stepnav.start($element)
+      new GOVUK.Modules.Gemstepnav().start($element)
     })
 
     afterEach(function () {
@@ -943,10 +889,10 @@ describe('A stepnav module', function () {
 
   describe('if no unique id is set', function () {
     beforeEach(function () {
-      stepnav = new GOVUK.Modules.Gemstepnav()
       $element = $(html)
       $element.removeAttr('data-id')
-      stepnav.start($element)
+      new GOVUK.Modules.Gemstepnav().start($element)
+
       GOVUK.analytics = {
         trackEvent: function () {
         }
@@ -1065,10 +1011,10 @@ describe('A stepnav module', function () {
     })
 
     it('triggers a google analytics custom event when clicking on a panel link', function () {
-      $element.find('.js-link').first().click()
+      $element.find('.js-link').first()[0].click()
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('stepNavLinkClicked', '1.1', {
-        label: '/link1 : Small',
+        label: '#link1 : Small',
         dimension26: expectedstepnavStepCount.toString(),
         dimension27: expectedstepnavLinkCount.toString(),
         dimension28: expectedstepnavContentCount.toString(),
