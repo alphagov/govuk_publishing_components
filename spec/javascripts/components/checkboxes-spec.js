@@ -70,8 +70,8 @@ describe('Checkboxes component', function () {
     $checkboxesWrapper = $('.gem-c-checkboxes')
     $exclusiveOption = $checkboxesWrapper.find('input[type=checkbox][data-exclusive]')
     $nonExclusiveOptions = $checkboxesWrapper.find('input[type=checkbox]:not([data-exclusive])')
-    expectedRedOptions = { label: 'red', value: 1, dimension28: 'wubbalubbadubdub', dimension29: 'Pickle Rick' }
-    expectedBlueOptions = { label: 'blue', value: 2, dimension28: 'Get schwifty', dimension29: 'Squanch' }
+    expectedRedOptions = { label: 'red', value: '1', dimension28: 'wubbalubbadubdub', dimension29: 'Pickle Rick' }
+    expectedBlueOptions = { label: 'blue', value: '2', dimension28: 'Get schwifty', dimension29: 'Squanch' }
 
     GOVUK.analytics = {
       trackEvent: function () {}
@@ -144,21 +144,22 @@ describe('Checkboxes component', function () {
   describe('controlling Google analytics track event when a checkbox is changed', function () {
     it('fires a Google analytics event if suppressAnalytics not passed to the change event', function () {
       var $checkbox = $checkboxesWrapper.find(":input[value='blue']")
-      $checkbox.trigger('change')
+      var fakeOnChangeEvent = new window.CustomEvent('change')
+      $checkbox[0].dispatchEvent(fakeOnChangeEvent)
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalled()
     })
 
     it('fires a Google analytics event if suppressAnalytics is set to false and passed to the change event', function () {
       var $checkbox = $checkboxesWrapper.find(":input[value='blue']")
-      var fakeOnChangeEvent = { type: 'change', suppressAnalytics: false }
-      $checkbox.trigger(fakeOnChangeEvent)
+      var fakeOnChangeEvent = new window.CustomEvent('change', { detail: { suppressAnalytics: false } })
+      $checkbox[0].dispatchEvent(fakeOnChangeEvent)
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalled()
     })
 
     it('does not fire a Google analytics event if suppressAnalytics is passed to the change event', function () {
       var $checkbox = $checkboxesWrapper.find(":input[value='blue']")
-      var fakeOnChangeEvent = { type: 'change', suppressAnalytics: true }
-      $checkbox.trigger(fakeOnChangeEvent)
+      var fakeOnChangeEvent = new window.CustomEvent('change', { detail: { suppressAnalytics: true } })
+      $checkbox[0].dispatchEvent(fakeOnChangeEvent)
       expect(GOVUK.analytics.trackEvent).not.toHaveBeenCalled()
     })
   })
