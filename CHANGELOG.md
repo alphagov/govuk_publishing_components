@@ -13,6 +13,7 @@
 * Replace jQuery in checkboxes.js ([PR #1620](https://github.com/alphagov/govuk_publishing_components/pull/1620))
 * Add lang attribute to image card date/time element ([PR #1642](https://github.com/alphagov/govuk_publishing_components/pull/1642))
 * Add priority breadcrumb to content tagged to the transition taxon ([PR #1646](https://github.com/alphagov/govuk_publishing_components/pull/1646))
+* Add new brand colour for FCDO ([PR#1648](https://github.com/alphagov/govuk_publishing_components/pull/1648))
 
 ## 21.60.3
 
