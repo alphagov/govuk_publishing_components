@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add role="alert" to cookie banner confirmation ([PR #1658](https://github.com/alphagov/govuk_publishing_components/pull/1658))
+* Remove jquery from step by step component ([PR #1645](https://github.com/alphagov/govuk_publishing_components/pull/1645))
 
 ## 21.63.0
 
