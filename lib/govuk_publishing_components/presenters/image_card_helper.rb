@@ -45,7 +45,7 @@ module GovukPublishingComponents
 
         content_tag(:p, class: "gem-c-image-card__context") do
           if @context[:date]
-            date = content_tag(:time, l(@context[:date], format: "%e %B %Y"), datetime: @context[:date].iso8601)
+            date = content_tag(:time, l(@context[:date], format: "%e %B %Y"), datetime: @context[:date].iso8601, lang: "en")
             dash = content_tag(:span, " — ", 'aria-hidden': true)
 
             if @context[:text]
