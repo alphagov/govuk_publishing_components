@@ -29,7 +29,9 @@
     </div>
   </div>
 
-  <h2 class="component-doc-h2">How it looks
+  <h2 class="component-doc-h2">
+    <a href="<%= component_example_path(@component_doc.id, "default") %>" class="govuk-link">How it looks</a>
+    <small>(<a href="<%= component_preview_path(@component_doc.id, "default") %>" class="govuk-link">preview</a>)</small>
     <small>(<a href="<%= component_preview_all_path(@component_doc.id) %>" class="govuk-link">preview all</a>)</small>
   </h2>
   <%= render "govuk_publishing_components/component_guide/component_doc/preview", component_doc: @component_doc, example: @component_doc.example %>
