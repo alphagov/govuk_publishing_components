@@ -1,4 +1,3 @@
-/* eslint-env jquery */
 /*
   Toggle the display of elements
 
@@ -8,7 +7,7 @@
     <a href="#" data-controls="target" data-expanded="true">
       Show more
     </a>
-    <div id="target">
+    <div id="target" class="js-hidden">
       Content to be toggled
     </div>
   </div>
@@ -37,74 +36,89 @@
   determined based on the text present within the element
   at the time it was clicked.
 */
-
+window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
-  'use strict'
+  function GemToggle () { }
 
-  Modules.GemToggle = function () {
-    this.start = function ($el) {
-      var toggleSelector = '[data-controls][data-expanded]'
-      var toggleClass = $el.attr('data-toggle-class') || 'js-hidden'
-      var trackable = '[data-track-category][data-track-action]'
+  GemToggle.prototype.start = function ($module) {
+    this.$module = $module[0]
+    this.$module.toggleTrigger = this.$module.querySelector('[data-controls][data-expanded]')
 
-      $el.on('click', toggleSelector, toggle)
-      $el.find(toggleSelector).each(addAriaAttrs)
+    if (this.$module.toggleTrigger) {
+      this.$module.toggleClass = this.$module.getAttribute('data-toggle-class') || 'js-hidden'
 
-      // Add the ARIA attributes with JavaScript
-      // If the JS fails and there's no interactive elements, having
-      // no aria attributes is an accurate representation.
-      function addAriaAttrs () {
-        var $toggle = $(this)
-        $toggle.attr('role', 'button')
-        $toggle.attr('aria-controls', $toggle.data('controls'))
-        $toggle.attr('aria-expanded', $toggle.data('expanded'))
+      this.$module.isTrackable = this.$module.toggleTrigger.hasAttribute('data-track-category') && this.$module.toggleTrigger.hasAttribute('data-track-action')
 
-        var $targets = getTargetElements($toggle)
-        $targets.attr('aria-live', 'polite')
-        $targets.attr('role', 'region')
-        $toggle.data('$targets', $targets)
+      if (this.$module.isTrackable) {
+        this.$module.trackCategory = this.$module.toggleTrigger.getAttribute('data-track-category')
+        this.$module.trackAction = this.$module.toggleTrigger.getAttribute('data-track-action')
       }
 
-      function toggle (event) {
-        var $toggle = $(event.target)
-        var expanded = $toggle.attr('aria-expanded') === 'true'
-        var $targets = $toggle.data('$targets')
-
-        if (expanded) {
-          $toggle.attr('aria-expanded', false)
-          $targets.addClass(toggleClass)
-        } else {
-          $toggle.attr('aria-expanded', true)
-          $targets.removeClass(toggleClass)
-        }
-
-        var toggledText = $toggle.data('toggled-text')
-        if (typeof toggledText === 'string') {
-          $toggle.data('toggled-text', $toggle.text())
-          $toggle.text(toggledText)
-        }
-
-        if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent && $toggle.is(trackable)) {
-          track($toggle)
-        }
-
-        event.preventDefault()
-      }
-
-      function getTargetElements ($toggle) {
-        var ids = $toggle.attr('aria-controls').split(' ')
-        var selector = '#' + ids.join(', #')
-
-        return $el.find(selector)
-      }
-
-      function track ($toggle) {
-        var options = { label: $toggle.data('toggled-text') || $toggle.text() }
-
-        window.GOVUK.analytics.trackEvent($toggle.data('track-category'), $toggle.data('track-action'), options)
-      }
+      this.addAriaAttrs()
+      this.toggleOnClick()
     }
   }
+
+  // Add the ARIA attributes with JavaScript
+  // If the JS fails and there's no interactive elements, having
+  // no aria attributes is an accurate representation.
+  GemToggle.prototype.addAriaAttrs = function () {
+    this.$module.toggleTrigger.setAttribute('role', 'button')
+    this.$module.toggleTrigger.setAttribute('aria-controls', this.$module.toggleTrigger.getAttribute('data-controls'))
+    this.$module.toggleTrigger.setAttribute('aria-expanded', this.$module.toggleTrigger.getAttribute('data-expanded'))
+    this.$module.targets = this.getTargetElements()
+
+    for (var i = 0; i < this.$module.targets.length; i++) {
+      this.$module.targets[i].setAttribute('aria-live', 'polite')
+      this.$module.targets[i].setAttribute('role', 'region')
+    }
+  }
+
+  GemToggle.prototype.getTargetElements = function () {
+    var ids = this.$module.toggleTrigger.getAttribute('aria-controls').split(' ')
+    var selector = '#' + ids.join(', #')
+
+    return this.$module.querySelectorAll(selector)
+  }
+
+  GemToggle.prototype.toggleOnClick = function () {
+    var that = this
+
+    this.$module.toggleTrigger.addEventListener('click', function (event) {
+      event.preventDefault()
+      var expanded = this.getAttribute('aria-expanded') === 'true'
+
+      if (expanded) {
+        this.setAttribute('aria-expanded', false)
+        for (var i = 0; i < that.$module.targets.length; i++) {
+          that.$module.targets[i].classList.add(that.$module.toggleClass)
+        }
+      } else {
+        this.setAttribute('aria-expanded', true)
+        for (var j = 0; j < that.$module.targets.length; j++) {
+          that.$module.targets[j].classList.remove(that.$module.toggleClass)
+        }
+      }
+
+      var toggledText = this.getAttribute('data-toggled-text')
+
+      if (typeof toggledText === 'string') {
+        this.setAttribute('data-toggled-text', this.innerText)
+        this.innerText = toggledText
+      }
+
+      if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent && that.$module.isTrackable) {
+        that.track()
+      }
+    })
+  }
+
+  GemToggle.prototype.track = function () {
+    var options = { label: this.$module.toggleTrigger.getAttribute('data-toggled-text') || this.$module.toggleTrigger.innerText }
+    window.GOVUK.analytics.trackEvent(this.$module.trackCategory, this.$module.trackAction, options)
+  }
+
+  Modules.GemToggle = GemToggle
 })(window.GOVUK.Modules)
