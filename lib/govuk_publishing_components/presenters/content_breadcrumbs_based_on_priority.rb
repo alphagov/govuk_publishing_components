@@ -8,6 +8,7 @@ module GovukPublishingComponents
         education_coronavirus: "272308f4-05c8-4d0d-abc7-b7c2e3ccd249",
         worker_coronavirus: "b7f57213-4b16-446d-8ded-81955d782680",
         business_coronavirus: "65666cdf-b177-4d79-9687-b9c32805e450",
+        transition_period: "d6c2de5d-ef90-45d1-82d4-5f2438369eea",
       }.freeze
 
       # Returns the highest priority taxon that has a content_id matching those in PRIORITY_TAXONS

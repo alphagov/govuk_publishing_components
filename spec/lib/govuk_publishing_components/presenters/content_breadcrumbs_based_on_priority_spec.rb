@@ -25,6 +25,14 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
     }
   end
 
+  let(:transition_period_taxon) do
+    {
+      "content_id" => "d6c2de5d-ef90-45d1-82d4-5f2438369eea",
+      "base_path" => "/transition",
+      "title" => "Transition",
+    }
+  end
+
   let(:other_taxon) do
     {
       "content_id" => SecureRandom.uuid,
@@ -57,6 +65,14 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
 
           it "returns the worker taxon" do
             expect(subject.taxon).to eq(worker_taxon)
+          end
+        end
+
+        context "with transition taxon" do
+          let(:payload) { [transition_period_taxon] }
+
+          it "returns the worker taxon" do
+            expect(subject.taxon).to eq(transition_period_taxon)
           end
         end
 
