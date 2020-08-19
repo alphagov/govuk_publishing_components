@@ -4,3 +4,11 @@
 @import "govuk/settings/all";
 @import "govuk/tools/all";
 @import "govuk/helpers/all";
+$govuk-colours-organisations: map-merge(
+  $govuk-colours-organisations,
+  (
+    "foreign-commonwealth-development-office": (
+      colour: #012169
+    )
+  )
+);
