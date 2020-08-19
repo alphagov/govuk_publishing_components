@@ -1,14 +1,14 @@
 /*
   Toggle the display of elements
 
-  Use as follows:
+  Basic use:
 
   <div data-module="gem-toggle">
-    <a href="#" data-controls="target" data-expanded="true">
-      Show more
+    <a href="#" data-controls="target1" data-expanded="false">
+      Show/hide
     </a>
-    <div id="target" class="js-hidden">
-      Content to be toggled
+    <div id="target1" class="js-hidden">
+      Content hidden on page load
     </div>
   </div>
 
@@ -21,18 +21,65 @@
   the `js-hidden` class to the element you wish to hide in
   your template, the module will not do this for you.
 
-  `data-controls` can contain more than one element, space
-  separated.
-
   Use `data-toggle-class` on the parent element to set the
   class that is toggled. Defaults to `js-hidden`.
+
+  Content shown by default:
+
+  <div data-module="gem-toggle">
+    <a href="#" data-controls="target2" data-expanded="true">
+      Show/hide
+    </a>
+    <div id="target2">
+      Content shown on page load
+    </div>
+  </div>
+
+  Change text when clicked:
+
+  <div data-module="gem-toggle">
+    <a href="#" data-controls="target3" data-expanded="true" data-toggled-text="Show more">
+      Show less
+    </a>
+    <div id="target3">
+      Content shown on page load, toggle text changes depending on state
+    </div>
+  </div>
 
   Use `data-toggled-text` on the trigger element to set the
   text shown when the element is toggled. Defaults to not
   changing.
 
+  Show/hide multiple elements:
+
+  <div data-module="gem-toggle">
+    <a href="#" data-controls="target4 target5" data-expanded="false">
+      Show/hide
+    </a>
+    <div id="target4" class="js-hidden">
+      Content hidden on page load
+    </div>
+    <div id="target5" class="js-hidden">
+      Content hidden on page load
+    </div>
+  </div>
+
+  `data-controls` can contain more than one element, space
+  separated.
+
+  With tracking:
+
+  <div data-module="gem-toggle">
+    <a href="#" data-controls="target6" data-expanded="true" data-track-category="category" data-track-action="action" data-toggled-text="Show more">
+      Show less
+    </a>
+    <div id="target6">
+      Content shown on page load, tracked when expanded and collapsed
+    </div>
+  </div>
+
   Use `data-track-category` and `data-track-action` together
-  to enable analytics on the element. The label will be
+  to enable analytics on the element. The track label will be
   determined based on the text present within the element
   at the time it was clicked.
 */
