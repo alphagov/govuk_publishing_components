@@ -7,10 +7,12 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## 21.62.0
-
-* Add new brand colour for FCDO ([PR#1648](https://github.com/alphagov/govuk_publishing_components/pull/1648))
+## Unrelased
 * Hide priority breadcrumb from transition content tagged to a step by step ([PR #1654](https://github.com/alphagov/govuk_publishing_components/pull/1654))
+
+## 21.62.0
+* Add new brand colour for FCDO ([PR#1648](https://github.com/alphagov/govuk_publishing_components/pull/1648))
+
 
 ## 21.61.0
 
