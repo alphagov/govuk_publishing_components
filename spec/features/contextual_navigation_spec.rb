@@ -9,6 +9,12 @@ describe "Contextual navigation" do
     and_i_see_the_coronavirus_contextual_breadcrumbs
   end
 
+  scenario "There is a transition taxon" do
+    given_theres_a_page_with_transition_taxon
+    and_i_visit_that_page
+    and_i_see_the_transition_contextual_breadcrumbs
+  end
+
   scenario "There's a step by step list" do
     given_theres_a_page_with_a_step_by_step
     and_i_visit_that_page
@@ -70,6 +76,14 @@ describe "Contextual navigation" do
     and_i_visit_that_page
     then_i_see_home_and_parent_links
     and_i_see_the_coronavirus_contextual_breadcrumbs
+  end
+
+  scenario "A page is tagged to the transition taxon and a step_by_step" do
+    given_theres_a_page_with_transition_taxon_tagged_to_step_by_step
+    and_i_visit_that_page
+    then_i_see_the_step_by_step
+    and_the_step_by_step_header
+    and_i_do_not_see_the_transition_contextual_breadcrumbs
   end
 
   scenario "It's a HTML Publication with a parent with breadcrumbs" do
@@ -294,6 +308,25 @@ describe "Contextual navigation" do
     )
   end
 
+  def given_theres_a_page_with_transition_taxon_tagged_to_step_by_step
+    given_theres_a_page_with_transition_taxon(part_of_step_navs: true)
+  end
+
+  def given_theres_a_page_with_transition_taxon(part_of_step_navs: nil)
+    live_taxon = taxon_item
+    live_taxon["links"]["parent_taxons"] = [transition_taxon]
+    links = { "taxons" => [live_taxon] }
+
+    if part_of_step_navs == true
+      links[:part_of_step_navs] = []
+      links[:part_of_step_navs] << random_step_nav_item("step_by_step_nav")
+    end
+
+    content_store_has_random_item(
+      links: links,
+    )
+  end
+
   def given_there_is_a_non_step_by_step_parent_page
     @parent = not_step_by_step_content
   end
@@ -453,6 +486,18 @@ describe "Contextual navigation" do
     end
   end
 
+  def and_i_do_not_see_the_transition_contextual_breadcrumbs
+    within ".gem-c-contextual-breadcrumbs" do
+      expect(page).not_to have_link(transition_taxon["title"])
+    end
+  end
+
+  def and_i_see_the_transition_contextual_breadcrumbs
+    within ".gem-c-contextual-breadcrumbs" do
+      expect(page).to have_link(transition_taxon["title"])
+    end
+  end
+
   def then_i_see_the_step_by_step_breadcrumbs
     within ".gem-c-contextual-breadcrumbs" do
       expect(page).to have_link("A step by step page")
@@ -533,6 +578,16 @@ describe "Contextual navigation" do
       "api_path" => "/api/content/coronavirus-taxon/businesses-and-self-employed-people",
       "base_path" => "/coronavirus-taxon/businesses-and-self-employed-people",
       "title" => "Businesses and self-employed people",
+      "locale" => "en",
+    }
+  end
+
+  def transition_taxon
+    {
+      "content_id" => "d6c2de5d-ef90-45d1-82d4-5f2438369eea",
+      "api_path" => "/api/content/transition",
+      "base_path" => "/transition",
+      "title" => "Transition period",
       "locale" => "en",
     }
   end
