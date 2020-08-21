@@ -91,6 +91,18 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
             expect(subject.taxon).to be_nil
           end
         end
+
+        context "with priority-taxon query_parameters" do
+          let(:payload) { [education_taxon, business_taxon] }
+          let(:preferred_content_id) { business_taxon["content_id"] }
+          let(:query_parameters) { { "priority-taxon" => preferred_content_id } }
+
+          subject { described_class.new(send(tagged_to_taxons, payload), query_parameters) }
+
+          it "returns the preferred priority taxon" do
+            expect(subject.taxon).to eq(business_taxon)
+          end
+        end
       end
 
       describe ".call" do

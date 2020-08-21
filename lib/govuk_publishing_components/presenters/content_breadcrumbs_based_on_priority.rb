@@ -24,7 +24,13 @@ module GovukPublishingComponents
       end
 
       def taxon
-        @taxon ||= priority_taxons.min_by { |t| PRIORITY_TAXONS.values.index(t["content_id"]) }
+        @taxon ||= begin
+          if preferred_priority_taxon
+            priority_taxons.find { |t| t["content_id"] == preferred_priority_taxon }
+          else
+            priority_taxons.min_by { |t| PRIORITY_TAXONS.values.index(t["content_id"]) }
+          end
+        end
       end
 
       def breadcrumbs
