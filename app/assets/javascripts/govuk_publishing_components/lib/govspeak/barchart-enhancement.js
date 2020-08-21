@@ -14,12 +14,14 @@ window.GOVUK = window.GOVUK || {};
     // causes quite a mess. The not .mc-chart is because it creates a second
     // .js-barchart-table element with .mc-chart and then the
     // .js-barchart-table-init is given when we initialise
-    var $barcharts = this.$element.find('.js-barchart-table:not(.mc-chart):not(.js-barchart-table-init)')
-    $barcharts.each(function () {
-      var $table = $(this)
-      $.magnaCharta($table, { toggleText: 'Change between chart and table' })
-      $table.addClass('js-barchart-table-init')
-    })
+    var $barcharts = this.$element.querySelectorAll('.js-barchart-table:not(.mc-chart):not(.js-barchart-table-init)')
+
+    for (var i = 0; i < $barcharts.length; i++) {
+      var $table = $barcharts[i]
+      // magna charta is a jquery plugin so we have to pass a jquery object to it
+      $.magnaCharta($($table), { toggleText: 'Change between chart and table' })
+      $table.classList.add('js-barchart-table-init')
+    }
   }
 
   GOVUK.GovspeakBarchartEnhancement = BarchartEnhancement
