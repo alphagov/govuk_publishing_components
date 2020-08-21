@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add role="alert" to cookie banner confirmation ([PR #1658](https://github.com/alphagov/govuk_publishing_components/pull/1658))
+
 ## 21.63.0
 
 * Hide priority breadcrumb from transition content tagged to a step by step ([PR #1654](https://github.com/alphagov/govuk_publishing_components/pull/1654))
