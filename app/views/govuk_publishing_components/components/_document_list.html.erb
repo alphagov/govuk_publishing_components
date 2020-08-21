@@ -33,6 +33,7 @@
               item[:link][:path],
               data: item[:link][:data_attributes],
               class: "#{item_classes} gem-c-document-list__item-link",
+              lang: item[:link][:locale].presence
             )
           else
             content_tag(
@@ -54,16 +55,24 @@
 
         <% if item[:metadata] %>
           <ul class="gem-c-document-list__item-metadata">
-            <% item[:metadata].compact.each do |item_metadata_key, item_metadata_value| %>
-              <li class="gem-c-document-list__attribute">
-                <% if item_metadata_key.to_s.eql?("public_updated_at") %>
-                  <time datetime="<%= item_metadata_value.iso8601 %>">
-                    <%= l(item_metadata_value, format: '%e %B %Y') %>
-                  </time>
-                <% else %>
-                  <%= item_metadata_value %>
+            <% item[:metadata].compact.each do |item_metadata_key, item_metadata_value| %> 
+              <% if !item_metadata_key.to_s.eql?("locale") %>
+                <% lang = item[:metadata][:locale].present? && item[:metadata][:locale][item_metadata_key].present? ? item[:metadata][:locale][item_metadata_key] : nil %>
+
+                <%= content_tag(
+                  :li, item_metadata_value,
+                  class: "gem-c-document-list__attribute",
+                  lang: lang
+                ) do %>
+                  <% if item_metadata_key.to_s.eql?("public_updated_at") %>
+                    <time datetime="<%= item_metadata_value.iso8601 %>">
+                      <%= l(item_metadata_value, format: '%e %B %Y') %>
+                    </time>
+                  <% else %>
+                    <%= item_metadata_value %>
+                  <% end %>
                 <% end %>
-              </li>
+              <% end %>
             <% end %>
           </ul>
         <% end %>

@@ -432,4 +432,29 @@ describe "Document list", type: :view do
     assert_select "#{link}[data-track-label='part 1']", text: "Elegibility"
     assert_select "#{link}[data-track-options='{\"dimension82\":1}']", text: "Elegibility"
   end
+
+  it "adds lang attributes to elements only when locale is passed" do
+    render_component(
+      items: [
+        {
+          link: {
+            text: "Tryloywder Uwch Staff Ysgrifennydd Gwladol Cymru Ionawr-Mawrth 2020",
+            path: "/government/publications/office-of-the-secretary-of-state-for-wales-senior-staff-transparency-january-march-2020",
+            locale: "cy",
+          },
+          metadata: {
+            will_be_translated: "Data tryloywder",
+            will_not_be_translated: "English text",
+            locale: {
+              will_be_translated: "cy",
+            },
+          },
+        },
+      ],
+    )
+
+    assert_select ".gem-c-document-list__item-title[lang=\"cy\"]", text: "Tryloywder Uwch Staff Ysgrifennydd Gwladol Cymru Ionawr-Mawrth 2020"
+    assert_select ".gem-c-document-list__attribute[lang=\"cy\"]", text: "Data tryloywder"
+    assert_select ".gem-c-document-list__attribute:not([lang=\"cy\"])", text: "English text"
+  end
 end
