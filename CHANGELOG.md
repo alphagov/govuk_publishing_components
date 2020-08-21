@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.63.0
 
 * Hide priority breadcrumb from transition content tagged to a step by step ([PR #1654](https://github.com/alphagov/govuk_publishing_components/pull/1654))
 * Use collapsible breadcrumbs from govuk-frontend ([PR #1552](https://github.com/alphagov/govuk_publishing_components/pull/1552))
