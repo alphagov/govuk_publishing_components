@@ -154,6 +154,6 @@ describe "Breadcrumbs", type: :view do
       ],
     )
 
-    assert_select(".gem-c-breadcrumbs.govuk-breadcrumbs.gem-c-breadcrumbs--collapse-on-mobile")
+    assert_select(".gem-c-breadcrumbs.govuk-breadcrumbs.govuk-breadcrumbs--collapse-on-mobile")
   end
 end

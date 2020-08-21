@@ -42,7 +42,7 @@ describe "ContextualBreadcrumbs", type: :view do
     content_item = remove_curated_related_item(content_item)
     content_item = set_live_taxons(content_item)
     render_component(content_item: content_item)
-    assert_select ".gem-c-breadcrumbs.gem-c-breadcrumbs--collapse-on-mobile"
+    assert_select ".gem-c-breadcrumbs.govuk-breadcrumbs--collapse-on-mobile"
   end
 
   it "renders breadcrumbs that don't collapse on mobile if flag is passed" do
