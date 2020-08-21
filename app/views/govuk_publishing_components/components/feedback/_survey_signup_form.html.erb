@@ -10,7 +10,7 @@
     data-track-action="ffFormClose"
     aria-controls="page-is-not-useful"
     aria-expanded="true"
-    role="button">Close</a>
+    role="button"><%= t("components.feedback.close", default: "Close") %></a>
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds" id="survey-wrapper">
@@ -19,12 +19,12 @@
       <input name="email_survey_signup[survey_id]" type="hidden" value="footer_satisfaction_survey">
       <input name="email_survey_signup[survey_source]" type="hidden" value="<%= path_without_pii %>">
 
-      <h3 class="gem-c-feedback__form-heading">Help us improve GOV.UK</h3>
-      <p id="survey_explanation" class="gem-c-feedback__form-paragraph">To help us improve GOV.UK, we’d like to know more about your visit today. We’ll send you a link to a feedback form. It will take only 2 minutes to fill in. Don’t worry we won’t send you spam or share your email address with anyone.</p>
+      <h3 class="gem-c-feedback__form-heading"><%= t("components.feedback.help_us_improve_govuk", default: "Help us improve GOV.UK") %></h3>
+      <p id="survey_explanation" class="gem-c-feedback__form-paragraph"><%= t("components.feedback.more_about_visit", default: "To help us improve GOV.UK, we’d like to know more about your visit today. We’ll send you a link to a feedback form. It will take only 2 minutes to fill in. Don’t worry we won’t send you spam or share your email address with anyone.") %></p>
 
       <%= render "govuk_publishing_components/components/input", {
         label: {
-          text: "Email address"
+          text: t("components.feedback.email_address", default: "Email address")
         },
         name: "email_survey_signup[email_address]",
         type: "email",
@@ -32,8 +32,8 @@
         describedby: "survey_explanation"
       } %>
 
-      <%= render "govuk_publishing_components/components/button", {
-        text: "Send me the survey",
+       <%= render "govuk_publishing_components/components/button", {
+        text: t("components.feedback.send_me_survey", default: "Send me the survey"),
       } %>
     </div>
   </div>

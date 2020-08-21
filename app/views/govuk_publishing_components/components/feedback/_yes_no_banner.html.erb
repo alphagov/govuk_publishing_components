@@ -4,9 +4,9 @@
 
 <div class="gem-c-feedback__prompt gem-c-feedback__js-show js-prompt" tabindex="-1">
   <div class="gem-c-feedback__prompt-questions js-prompt-questions">
-    <h2 class="gem-c-feedback__prompt-question">Is this page useful?</h2>
+    <h2 class="gem-c-feedback__prompt-question"><%= t("components.feedback.is_this_page_useful", default: "Is this page useful?") %></h2>
     <!-- Maybe button exists only to try and capture clicks by bots -->
-    <%= link_to contact_govuk_path, {
+    <%= link_to t("components.feedback.maybe", default: "Maybe"), contact_govuk_path, {
         class: 'gem-c-feedback__prompt-link',
         data: {
           'track-category' => 'yesNoFeedbackForm',
@@ -17,9 +17,7 @@
         style: 'display: none;',
         hidden: 'hidden',
         'aria-hidden': 'true',
-      } do %>
-        Maybe
-    <% end %>
+      } %>
     <ul class="gem-c-feedback__option-list">
       <li class="gem-c-feedback__option-list-item">
         <%= link_to contact_govuk_path, {
@@ -31,7 +29,7 @@
           'aria-expanded': false,
           role: 'button',
         } do %>
-          Yes <span class="govuk-visually-hidden">this page is useful</span>
+          <%= t("components.feedback.yes", default: "Yes") %> <span class="govuk-visually-hidden"><%= t("components.feedback.is_useful", default: "this page is useful") %></span>
         <% end %>
       </li>
       <li class="gem-c-feedback__option-list-item">
@@ -45,13 +43,13 @@
           'aria-expanded': false,
           role: 'button',
         } do %>
-          No <span class="govuk-visually-hidden">this page is not useful</span>
+          <%= t("components.feedback.no", default: "No") %> <span class="govuk-visually-hidden"><%= t("components.feedback.is_not_useful", default: "this page is not useful") %></span>
         <% end %>
       </li>
     </ul>
   </div>
   <div class="gem-c-feedback__prompt-questions gem-c-feedback__prompt-success js-prompt-success js-hidden" tabindex="-1">
-    Thank you for your feedback
+    <%= t("components.feedback.thank_you_for_feedback", default: "Thank you for your feedback") %>
   </div>
   <div class="gem-c-feedback__prompt-questions gem-c-feedback__prompt-questions--something-is-wrong js-prompt-questions">
     <%= link_to contact_govuk_path, {
@@ -64,7 +62,7 @@
       'aria-expanded': false,
       role: 'button',
     } do %>
-      Is there anything wrong with this page?
+      <%= t("components.feedback.anything_wrong", default: "Is there anything wrong with this page?") %>
     <% end %>
   </div>
 </div>
