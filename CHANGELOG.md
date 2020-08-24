@@ -12,6 +12,7 @@
 * Remove jquery from toggle code ([PR #1649](https://github.com/alphagov/govuk_publishing_components/pull/1649))
 * Add role="alert" to cookie banner confirmation ([PR #1658](https://github.com/alphagov/govuk_publishing_components/pull/1658))
 * Remove jquery from step by step component ([PR #1645](https://github.com/alphagov/govuk_publishing_components/pull/1645))
+* Fix panel component disjointed heading ([PR #1660](https://github.com/alphagov/govuk_publishing_components/pull/1660))
 
 ## 21.63.0
 
