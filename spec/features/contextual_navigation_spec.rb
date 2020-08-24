@@ -2,11 +2,23 @@ require "rails_helper"
 
 describe "Contextual navigation" do
   scenario "There is a coronavirus taxon" do
-    given_theres_a_page_with_coronavirus_taxon
+    given_theres_a_page_with_coronavirus_business_taxon
     and_i_visit_that_page
     then_i_see_the_step_by_step
     and_the_step_by_step_header
-    and_i_see_the_coronavirus_contextual_breadcrumbs
+    and_i_see_the_coronavirus_contextual_breadcrumbs_for_business
+  end
+
+  scenario "I see the preferred taxon in the super breadcrumb if I access via a business taxon link" do
+    given_theres_a_page_with_coronavirus_business_taxon
+    then_i_visit_that_page_by_clicking_on_a_priority_taxon_link_for_business
+    and_i_see_the_coronavirus_contextual_breadcrumbs_for_business
+  end
+
+  scenario "I see the preferred taxon in the super breadcrumb if I access via a workers taxon link" do
+    given_theres_a_page_with_coronavirus_workers_taxon
+    then_i_visit_that_page_by_clicking_on_a_priority_taxon_link_for_workers
+    and_i_see_the_coronavirus_contextual_breadcrumbs_for_workers
   end
 
   scenario "There is a transition taxon" do
@@ -71,11 +83,11 @@ describe "Contextual navigation" do
   end
 
   scenario "It's a HTML Publication with a parent with coronavirus taxon" do
-    given_there_is_a_parent_page_with_coronavirus_taxon
+    given_there_is_a_parent_page_with_coronavirus_business_taxon
     and_the_page_is_an_html_publication_with_that_parent
     and_i_visit_that_page
     then_i_see_home_and_parent_links
-    and_i_see_the_coronavirus_contextual_breadcrumbs
+    and_i_see_the_coronavirus_contextual_breadcrumbs_for_business
   end
 
   scenario "A page is tagged to the transition taxon and a step_by_step" do
@@ -296,9 +308,21 @@ describe "Contextual navigation" do
     )
   end
 
-  def given_theres_a_page_with_coronavirus_taxon
+  def given_theres_a_page_with_coronavirus_business_taxon
     live_taxon = taxon_item
-    live_taxon["links"]["parent_taxons"] = [coronavirus_taxon]
+    live_taxon["links"]["parent_taxons"] = [coronavirus_business_taxon]
+
+    content_store_has_random_item(
+      links: {
+        "taxons" => [live_taxon],
+        part_of_step_navs: [random_step_nav_item("step_by_step_nav")],
+      },
+    )
+  end
+
+  def given_theres_a_page_with_coronavirus_workers_taxon
+    live_taxon = taxon_item
+    live_taxon["links"]["parent_taxons"] = [coronavirus_workers_taxon]
 
     content_store_has_random_item(
       links: {
@@ -331,9 +355,9 @@ describe "Contextual navigation" do
     @parent = not_step_by_step_content
   end
 
-  def given_there_is_a_parent_page_with_coronavirus_taxon
+  def given_there_is_a_parent_page_with_coronavirus_business_taxon
     taxon = taxon_item
-    taxon["links"]["parent_taxons"] = [coronavirus_taxon]
+    taxon["links"]["parent_taxons"] = [coronavirus_business_taxon]
 
     @parent = not_step_by_step_content
     @parent["links"]["taxons"] = [taxon]
@@ -377,6 +401,14 @@ describe "Contextual navigation" do
 
   def and_i_visit_that_page_by_clicking_on_a_step_by_step_link
     visit "/contextual-navigation/page-with-contextual-navigation?step-by-step-nav=8ad999bd-8603-40eb-97c0-999cb22047cd"
+  end
+
+  def then_i_visit_that_page_by_clicking_on_a_priority_taxon_link_for_business
+    visit "/contextual-navigation/page-with-contextual-navigation?priority-taxon=65666cdf-b177-4d79-9687-b9c32805e450"
+  end
+
+  def then_i_visit_that_page_by_clicking_on_a_priority_taxon_link_for_workers
+    visit "/contextual-navigation/page-with-contextual-navigation?priority-taxon=b7f57213-4b16-446d-8ded-81955d782680"
   end
 
   def then_i_see_the_step_by_step
@@ -480,9 +512,15 @@ describe "Contextual navigation" do
     end
   end
 
-  def and_i_see_the_coronavirus_contextual_breadcrumbs
+  def and_i_see_the_coronavirus_contextual_breadcrumbs_for_business
     within ".gem-c-contextual-breadcrumbs" do
-      expect(page).to have_link(coronavirus_taxon["title"])
+      expect(page).to have_link(coronavirus_business_taxon["title"])
+    end
+  end
+
+  def and_i_see_the_coronavirus_contextual_breadcrumbs_for_workers
+    within ".gem-c-contextual-breadcrumbs" do
+      expect(page).to have_link(coronavirus_workers_taxon["title"])
     end
   end
 
@@ -572,12 +610,22 @@ describe "Contextual navigation" do
     end
   end
 
-  def coronavirus_taxon
+  def coronavirus_business_taxon
     {
       "content_id" => "65666cdf-b177-4d79-9687-b9c32805e450",
       "api_path" => "/api/content/coronavirus-taxon/businesses-and-self-employed-people",
       "base_path" => "/coronavirus-taxon/businesses-and-self-employed-people",
       "title" => "Businesses and self-employed people",
+      "locale" => "en",
+    }
+  end
+
+  def coronavirus_workers_taxon
+    {
+      "content_id" => "b7f57213-4b16-446d-8ded-81955d782680",
+      "api_path" => "/api/content/coronavirus-taxon/work-and-financial-support",
+      "base_path" => "/coronavirus-taxon/work-and-financial-support",
+      "title" => "Work and financial support during coronavirus",
       "locale" => "en",
     }
   end
