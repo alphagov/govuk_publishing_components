@@ -9,9 +9,4 @@ $(document).ready(function () {
   'use strict'
 
   window.GOVUK.modules.start()
-
-  // Static has a Toggle module in here we have a GemToggle module, we can't
-  // easily change govspeak to use GemToggle but we can use the GemToggle module
-  var gemToggle = new window.GOVUK.Modules.GemToggle()
-  gemToggle.start($('[data-module=toggle]'))
 })
