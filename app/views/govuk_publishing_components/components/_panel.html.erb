@@ -4,22 +4,24 @@
   append ||= false
 %>
 <div class="gem-c-panel govuk-panel govuk-panel--confirmation">
-  <% if prepend %>
-    <div class="gem-c-panel__prepend">
-      <%= prepend %>
-    </div>
-  <% end %>
   <h2 class="govuk-panel__title">
-    <%= title %>
+    <% if prepend %>
+      <span class="gem-c-panel__prepend">
+        <%= prepend %>
+      </span>
+    <% end %>
+    <span class="govuk-panel__title-text">
+      <%= title %>
+    </span>
+    <% if append %>
+      <span class="gem-c-panel__append">
+        <%= append %>
+      </span>
+    <% end %>
   </h2>
   <% if description %>
     <div class="govuk-panel__body">
       <%= description %>
-    </div>
-  <% end %>
-  <% if append %>
-    <div class="gem-c-panel__append">
-      <%= append %>
     </div>
   <% end %>
 </div>
