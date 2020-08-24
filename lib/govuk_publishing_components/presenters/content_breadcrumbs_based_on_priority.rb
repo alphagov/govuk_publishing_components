@@ -25,11 +25,8 @@ module GovukPublishingComponents
 
       def taxon
         @taxon ||= begin
-          if preferred_priority_taxon
-            priority_taxons.find { |t| t["content_id"] == preferred_priority_taxon }
-          else
-            priority_taxons.min_by { |t| PRIORITY_TAXONS.values.index(t["content_id"]) }
-          end
+          default_taxon = priority_taxons.min_by { |t| PRIORITY_TAXONS.values.index(t["content_id"]) }
+          preferred_taxon || default_taxon
         end
       end
 
@@ -45,6 +42,12 @@ module GovukPublishingComponents
       end
 
     private
+
+      def preferred_taxon
+        if preferred_priority_taxon
+          priority_taxons.find { |t| t["content_id"] == preferred_priority_taxon }
+        end
+      end
 
       def priority_taxons
         return [] unless content_item["links"].is_a?(Hash)
