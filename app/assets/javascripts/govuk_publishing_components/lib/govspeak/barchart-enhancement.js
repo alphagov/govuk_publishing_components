@@ -18,8 +18,7 @@ window.GOVUK = window.GOVUK || {};
 
     for (var i = 0; i < $barcharts.length; i++) {
       var $table = $barcharts[i]
-      // magna charta is a jquery plugin so we have to pass a jquery object to it
-      $.magnaCharta($($table), { toggleText: 'Change between chart and table' })
+      new GOVUK.Modules.MagnaCharta().start($table, { toggleText: 'Change between chart and table' })
       $table.classList.add('js-barchart-table-init')
     }
   }
