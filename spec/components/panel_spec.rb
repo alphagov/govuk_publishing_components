@@ -17,7 +17,7 @@ describe "Panel", type: :view do
       description: "Description",
     )
 
-    assert_select ".govuk-panel__title", text: "Application complete"
+    assert_select ".govuk-panel__title .govuk-panel__title-text", text: "Application complete"
     assert_select ".govuk-panel__body", text: "Description"
   end
 
@@ -28,7 +28,7 @@ describe "Panel", type: :view do
       append: "Appended content",
     )
 
-    assert_select ".govuk-panel__title", text: "Application complete"
+    assert_select ".govuk-panel__title .govuk-panel__title-text", text: "Application complete"
     assert_select ".gem-c-panel__prepend", text: "Prepended content"
     assert_select ".gem-c-panel__append", text: "Appended content"
   end
