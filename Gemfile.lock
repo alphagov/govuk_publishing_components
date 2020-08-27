@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    govuk_publishing_components (21.63.0)
+    govuk_publishing_components (21.63.1)
       govuk_app_config
       kramdown
       plek
@@ -276,7 +276,7 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
-    sentry-raven (3.0.2)
+    sentry-raven (3.0.3)
       faraday (>= 1.0)
     sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
