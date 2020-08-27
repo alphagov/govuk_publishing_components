@@ -1,5 +1,5 @@
-// Based on magna-charta: https://github.com/alphagov/magna-charta
-
+//= require govuk/vendor/polyfills/Element/prototype/classList.js
+// This is a non-jQuery version of Magna Charta: https://github.com/alphagov/magna-charta
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
@@ -21,7 +21,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     for (var k in options) this.options[k] = options[k]
     this.detectIEVersion()
 
-    // if it's IE7 or less, we just show the plain tables
+    // Magna Charta doesn't work in IE7 or less - so plain tables are shown to those browsers
     this.ENABLED = !(this.ie && this.ie < 8)
 
     // store a reference to the table in the object
@@ -29,7 +29,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
     // lets make what will become the new graph
     this.$graph = document.createElement('div')
-    this.$graph.setAttribute('aria-hidden', 'true') // FIXME this never gets updated
+
+    // set the graph to aria-hidden, which isn't changed at any point
+    // the graph is totally inaccessible, so we let screen readers navigate the table
+    // and ignore the graph entirely
+    this.$graph.setAttribute('aria-hidden', 'true')
 
     // copy over classes from the table, and add the extra one
     this.$graph.setAttribute('class', this.$table.className)
@@ -257,7 +261,13 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       var $this = trs[i]
 
       // the first td is going to be the key, so ignore it
-      var $bodyCells = $this.querySelectorAll('.mc-td:not(:first-child)')
+      // we'd use $this.querySelectorAll('.mc-td:not(:first-child)') but for IE8
+      var $bodyCellsOriginal = $this.querySelectorAll('.mc-td')
+      var $bodyCells = []
+      for (var k = 1; k < $bodyCellsOriginal.length; k++) {
+        $bodyCells.push($bodyCellsOriginal[k])
+      }
+
       var bodyCellsLength = $bodyCells.length
 
       // might be the row containing th elements, so we need to check

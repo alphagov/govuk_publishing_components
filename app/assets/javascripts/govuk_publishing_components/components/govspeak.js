@@ -7,7 +7,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   Govspeak.prototype.start = function ($module) {
     this.$module = $module[0]
 
-    if (!this.$module.classList.contains('disable-youtube')) {
+    if (this.$module.className.indexOf('disable-youtube') === -1) {
       this.embedYoutube()
     }
 
