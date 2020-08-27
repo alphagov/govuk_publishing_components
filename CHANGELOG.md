@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove jquery from govspeak ([PR #1657](https://github.com/alphagov/govuk_publishing_components/pull/1657))
+
 ## 21.63.2
 
 * Fix the on blue logic for the search component ([PR #1663](https://github.com/alphagov/govuk_publishing_components/pull/1663))
