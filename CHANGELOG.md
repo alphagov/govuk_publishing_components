@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix the on blue logic for the search component ([PR #1663](https://github.com/alphagov/govuk_publishing_components/pull/1663))
+
 ## 21.63.1
 
 * Remove jquery from toggle code ([PR #1649](https://github.com/alphagov/govuk_publishing_components/pull/1649))
