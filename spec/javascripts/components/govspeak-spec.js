@@ -20,7 +20,7 @@ describe('Govspeak', function () {
       document.body.appendChild(container)
 
       var element = document.querySelector('.gem-c-govspeak')
-      govspeakModule.start($(element))
+      new GOVUK.Modules.Govspeak().start($(element))
 
       expect(document.querySelectorAll('.gem-c-govspeak__youtube-video').length).toBe(1)
     })
@@ -34,7 +34,7 @@ describe('Govspeak', function () {
       document.body.appendChild(container)
 
       var element = document.querySelector('.gem-c-govspeak')
-      govspeakModule.start($(element))
+      new GOVUK.Modules.Govspeak().start($(element))
 
       expect(document.querySelectorAll('.gem-c-govspeak__youtube-video').length).toBe(0)
     })

@@ -14,34 +14,35 @@ describe('Barchart enhancement', function () {
                   '</table>'
 
   it('creates a barchart from a table', function () {
-    var $element = $('<div>' + chartHtml + '</div>')
+    var $element = document.createElement('div')
+    $element.innerHTML = chartHtml
 
     var enhancement = new GOVUK.GovspeakBarchartEnhancement($element)
     enhancement.init()
 
-    expect($element.find('.mc-chart').length).toBe(1)
+    expect($element.querySelectorAll('.mc-chart').length).toBe(1)
   })
 
   it('marks a chart as initialised', function () {
-    var $chart = $(chartHtml)
-    var $element = $('<div />')
-    $element.append($chart)
+    var $element = document.createElement('div')
+    $element.innerHTML = chartHtml
 
     var enhancement = new GOVUK.GovspeakBarchartEnhancement($element)
     enhancement.init()
 
-    expect($chart.hasClass('js-barchart-table-init')).toBe(true)
+    var $chart = $element.querySelectorAll('.js-barchart-table')[0]
+    expect($chart.classList.contains('js-barchart-table-init')).toBe(true)
   })
 
   it('doesn\'t create a chart if the chart is flagged as initialised', function () {
-    var $chart = $(chartHtml)
-    $chart.addClass('js-barchart-table-init')
-    var $element = $('<div />')
-    $element.append($chart)
+    var $element = document.createElement('div')
+    $element.innerHTML = chartHtml
+    var $chart = $element.querySelectorAll('.js-barchart-table')[0]
+    $chart.classList.add('js-barchart-table-init')
 
     var enhancement = new GOVUK.GovspeakBarchartEnhancement($element)
     enhancement.init()
 
-    expect($element.find('.mc-chart').length).toBe(0)
+    expect($element.querySelectorAll('.mc-chart').length).toBe(0)
   })
 })

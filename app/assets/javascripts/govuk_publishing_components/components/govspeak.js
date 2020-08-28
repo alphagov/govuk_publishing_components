@@ -2,25 +2,27 @@ window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
-  'use strict'
+  function Govspeak () { }
 
-  Modules.Govspeak = function () {
-    this.start = function ($element) {
-      if (!$element.hasClass('disable-youtube')) {
-        this.embedYoutube($element)
-      }
+  Govspeak.prototype.start = function ($module) {
+    this.$module = $module[0]
 
-      this.createBarcharts($element)
+    if (this.$module.className.indexOf('disable-youtube') === -1) {
+      this.embedYoutube()
     }
 
-    this.embedYoutube = function ($jqElement) {
-      var enhancement = new window.GOVUK.GovspeakYoutubeLinkEnhancement($jqElement[0])
-      enhancement.init()
-    }
-
-    this.createBarcharts = function ($element) {
-      var enhancement = new window.GOVUK.GovspeakBarchartEnhancement($element)
-      enhancement.init()
-    }
+    this.createBarcharts()
   }
+
+  Govspeak.prototype.embedYoutube = function () {
+    var enhancement = new window.GOVUK.GovspeakYoutubeLinkEnhancement(this.$module)
+    enhancement.init()
+  }
+
+  Govspeak.prototype.createBarcharts = function () {
+    var enhancement = new window.GOVUK.GovspeakBarchartEnhancement(this.$module)
+    enhancement.init()
+  }
+
+  Modules.Govspeak = Govspeak
 })(window.GOVUK.Modules)
