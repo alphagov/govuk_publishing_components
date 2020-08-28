@@ -53,7 +53,9 @@
           <%= tag.h1 heading, class: "gem-c-radio__heading-text govuk-fieldset__heading" %>
         <% end %>
       <% else %>
-        <%= tag.legend heading, class: legend_classes %>
+        <%= tag.legend class: legend_classes do %>
+          <%= tag.h2 heading, class: "govuk-fieldset__heading" %>
+        <% end %>
       <% end %>
     <% end %>
 
