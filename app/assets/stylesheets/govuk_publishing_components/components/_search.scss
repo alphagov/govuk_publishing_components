@@ -24,6 +24,7 @@ $large-input-size: 50px;
     padding-left: govuk-spacing(3);
     z-index: 1;
     color: $govuk-secondary-text-colour;
+    background-color: govuk-colour("white");
   }
 
   // match label colour with the label component colour
