@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Remove jquery from govspeak ([PR #1657](https://github.com/alphagov/govuk_publishing_components/pull/1657))
+* Add white background to absolute positioned search label ([PR #1667](https://github.com/alphagov/govuk_publishing_components/pull/1667))
 
 ## 21.63.2
 
