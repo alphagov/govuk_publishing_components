@@ -7,9 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.63.3
 
 * Remove jquery from govspeak ([PR #1657](https://github.com/alphagov/govuk_publishing_components/pull/1657))
+* Add h2 tag into legend by default ([PR #1665](https://github.com/alphagov/govuk_publishing_components/pull/1665))
 
 ## 21.63.2
 
