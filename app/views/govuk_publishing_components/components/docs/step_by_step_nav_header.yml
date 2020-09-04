@@ -3,7 +3,9 @@ description: Shows that a content page is part of a step by step navigation
 body: |
   The component indicates to the user that the current page is part of a [step by step navigation](/component-guide/step_by_step_nav), and can provide a link to it.
 accessibility_criteria: |
-  The component is designed to go into the top of an existing content page and should not interfere with the heading structure of the page, so therefore should not contain a heading tag.
+  The component is designed to go into the top of an existing content page. This component looks like a heading so uses a heading level 2 element.
+
+  An earlier version of the component did not use a heading element &ndash; this failed WCAG 2.1 Success Criterion 1.3.1 ("Information, structure, and relationships conveyed through presentation can be programmatically determined or are available in text.")
 
   An early version of the component contained a hidden skip link for keyboard and screen reader users, that jumped to the step by step navigation component in the sidebar (similiar to the 'skip to content' link at the top of all GOV.UK pages). User testing suggested that rather than helping users it confused them, so this has been removed.
 shared_accessibility_criteria:
