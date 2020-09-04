@@ -1,52 +1,55 @@
-/* eslint-env jquery */
-
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
-  'use strict'
+  function TrackSelectChange () { }
 
-  Modules.TrackSelectChange = function () {
-    this.start = function (element) {
-      element.change(function (e) {
-        var selectedOption = $(this).find(':selected')
-        var trackable = '[data-track-category][data-track-action]'
+  TrackSelectChange.prototype.start = function ($module) {
+    this.$module = $module[0]
+    this.$module.trackChange = this.trackChange.bind(this)
+    this.$module.fireTrackingChange = this.fireTrackingChange.bind(this)
+    this.$module.addEventListener('change', this.trackChange)
+  }
 
-        if (selectedOption.is(trackable)) {
-          fireTrackingChange(selectedOption)
-        }
-      })
+  TrackSelectChange.prototype.trackChange = function () {
+    var selectedOption = this.options[this.selectedIndex]
 
-      function fireTrackingChange (element) {
-        var options = { transport: 'beacon' }
-        var category = element.attr('data-track-category')
-        var action = element.attr('data-track-action')
-        var label = element.attr('data-track-label')
-        var value = element.attr('data-track-value')
-        var dimension = element.attr('data-track-dimension')
-        var dimensionIndex = element.attr('data-track-dimension-index')
-        var extraOptions = element.attr('data-track-options')
-
-        if (label) {
-          options.label = label
-        }
-
-        if (value) {
-          options.value = value
-        }
-
-        if (dimension && dimensionIndex) {
-          options['dimension' + dimensionIndex] = dimension
-        }
-
-        if (extraOptions) {
-          $.extend(options, JSON.parse(extraOptions))
-        }
-
-        if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
-          window.GOVUK.analytics.trackEvent(category, action, options)
-        }
-      };
+    if (selectedOption.hasAttribute('data-track-category') && selectedOption.hasAttribute('data-track-action')) {
+      this.fireTrackingChange(selectedOption)
     }
   }
+
+  TrackSelectChange.prototype.fireTrackingChange = function (selectedOption) {
+    var options = { transport: 'beacon' }
+    var category = selectedOption.getAttribute('data-track-category')
+    var action = selectedOption.getAttribute('data-track-action')
+    var label = selectedOption.getAttribute('data-track-label')
+    var value = selectedOption.getAttribute('data-track-value')
+    var dimension = selectedOption.getAttribute('data-track-dimension')
+    var dimensionIndex = selectedOption.getAttribute('data-track-dimension-index')
+    var extraOptions = selectedOption.getAttribute('data-track-options')
+
+    if (label) {
+      options.label = label
+    }
+
+    if (value) {
+      options.value = value
+    }
+
+    if (dimension && dimensionIndex) {
+      options['dimension' + dimensionIndex] = dimension
+    }
+
+    if (extraOptions) {
+      extraOptions = JSON.parse(extraOptions)
+      for (var k in extraOptions) options[k] = extraOptions[k]
+    }
+
+    if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
+      window.GOVUK.analytics.trackEvent(category, action, options)
+    }
+  }
+
+  Modules.TrackSelectChange = TrackSelectChange
 })(window.GOVUK.Modules)

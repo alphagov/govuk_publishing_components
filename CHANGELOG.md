@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Remove jQuery from select.js ([PR #1670](https://github.com/alphagov/govuk_publishing_components/pull/1670))
 * Add language attribute to feed box ([PR #1706](https://github.com/alphagov/govuk_publishing_components/pull/1706))
 * Replace feedback component links with buttons ([PR #1699](https://github.com/alphagov/govuk_publishing_components/pull/1699)) MINOR
 * Extend contents list component ([PR #1710](https://github.com/alphagov/govuk_publishing_components/pull/1710))
