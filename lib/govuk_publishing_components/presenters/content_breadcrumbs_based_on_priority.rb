@@ -12,18 +12,22 @@ module GovukPublishingComponents
       }.freeze
 
       # Returns the highest priority taxon that has a content_id matching those in PRIORITY_TAXONS
-      def self.call(content_item)
-        new(content_item).breadcrumbs
+      def self.call(content_item, query_parameters = nil)
+        new(content_item, query_parameters).breadcrumbs
       end
 
-      attr_reader :content_item
+      attr_reader :content_item, :query_parameters
 
-      def initialize(content_item)
+      def initialize(content_item, query_parameters = nil)
         @content_item = content_item
+        @query_parameters = query_parameters
       end
 
       def taxon
-        @taxon ||= priority_taxons.min_by { |t| PRIORITY_TAXONS.values.index(t["content_id"]) }
+        @taxon ||= begin
+          default_taxon = priority_taxons.min_by { |t| PRIORITY_TAXONS.values.index(t["content_id"]) }
+          preferred_taxon || default_taxon
+        end
       end
 
       def breadcrumbs
@@ -38,6 +42,12 @@ module GovukPublishingComponents
       end
 
     private
+
+      def preferred_taxon
+        if preferred_priority_taxon
+          priority_taxons.find { |t| t["content_id"] == preferred_priority_taxon }
+        end
+      end
 
       def priority_taxons
         return [] unless content_item["links"].is_a?(Hash)
@@ -56,6 +66,10 @@ module GovukPublishingComponents
 
       def priority_taxon?(taxon)
         PRIORITY_TAXONS.values.include?(taxon["content_id"])
+      end
+
+      def preferred_priority_taxon
+        query_parameters["priority-taxon"] if query_parameters
       end
     end
   end

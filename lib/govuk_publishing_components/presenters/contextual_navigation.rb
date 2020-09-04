@@ -30,7 +30,7 @@ module GovukPublishingComponents
       end
 
       def priority_breadcrumbs
-        @priority_breadcrumbs ||= ContentBreadcrumbsBasedOnPriority.call(content_item)
+        @priority_breadcrumbs ||= ContentBreadcrumbsBasedOnPriority.call(content_item, query_parameters)
       end
 
       def topic_breadcrumbs
