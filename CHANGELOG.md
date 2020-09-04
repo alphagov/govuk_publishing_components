@@ -7,7 +7,8 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.64.0
+
 * Superbreadcrumb can have a priority taxon selected via query param ([PR #1666](https://github.com/alphagov/govuk_publishing_components/pull/1666))
 
 ## 21.63.3
