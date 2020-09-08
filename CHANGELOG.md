@@ -7,10 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.65.0
 
 * Step by step nav header updated to use heading ([PR #1671](https://github.com/alphagov/govuk_publishing_components/pull/1671))
-* Increase icon size and allow transparent icons on action link component ([PR #1674](https://github.com/alphagov/govuk_publishing_components/pull/1671))
+* Increase icon size and allow transparent icons on action link component ([PR #1674](https://github.com/alphagov/govuk_publishing_components/pull/1674))
 
 ## 21.64.0
 
