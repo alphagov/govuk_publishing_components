@@ -4,13 +4,13 @@
   &:before {
     content: "";
     display: table-cell;
-    width: 50px;
+    width: 60px;
     height: 45px;
     background: image-url("govuk_publishing_components/action-link-arrow.png");
     background: image-url("govuk_publishing_components/action-link-arrow.svg"), linear-gradient(transparent, transparent);
     background-repeat: no-repeat;
     background-position: 0 50%;
-    background-size: 37px auto;
+    background-size: 45px auto;
   }
 
   @include govuk-media-query($until: tablet) {
@@ -138,6 +138,12 @@
 
   .gem-c-action-link__link {
     text-decoration: none;
+  }
+}
+
+.gem-c-action-link--transparent-icon {
+  &:before {
+    background-image: image-url("govuk_publishing_components/action-link-arrow--transparent.svg");
   }
 }
 
