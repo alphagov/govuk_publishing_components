@@ -9,7 +9,6 @@ $large-input-size: 50px;
 .gem-c-search__label {
   @include govuk-font($size: 19, $line-height: $input-size);
   display: block;
-  background: govuk-colour("white");
 
   h1 {
     @include govuk-font($size: 19, $line-height: $input-size);
@@ -24,6 +23,7 @@ $large-input-size: 50px;
     padding-left: govuk-spacing(3);
     z-index: 1;
     color: $govuk-secondary-text-colour;
+    background: govuk-colour("white");
   }
 
   // match label colour with the label component colour
