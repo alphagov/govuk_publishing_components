@@ -10,14 +10,24 @@ describe "Search", type: :view do
     assert_select ".gem-c-search.gem-c-search--on-white"
   end
 
-  it "renders a search box for a dark background" do
+  it "renders a search box for a blue background" do
     render_component(on_govuk_blue: true)
     assert_select ".gem-c-search.gem-c-search--on-govuk-blue"
   end
 
-  it "doesn't render a search box for a dark background if the parameter is invalid" do
+  it "doesn't render a search box for a blue background if the parameter is invalid" do
     render_component(on_govuk_blue: "dummy")
     assert_select ".gem-c-search.gem-c-search--on-govuk-blue", false
+  end
+
+  it "renders a search box for a black background" do
+    render_component(on_govuk_black: true)
+    assert_select ".gem-c-search.gem-c-search--on-govuk-black"
+  end
+
+  it "doesn't render a search box for a black background if the parameter is invalid" do
+    render_component(on_govuk_black: "dummy")
+    assert_select ".gem-c-search.gem-c-search--on-govuk-black", false
   end
 
   it "renders a search box with a custom label text" do

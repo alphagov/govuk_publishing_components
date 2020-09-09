@@ -9,6 +9,8 @@
   classes << "gem-c-search--no-border" if no_border
   if local_assigns[:on_govuk_blue].eql?(true)
     classes << "gem-c-search--on-govuk-blue"
+  elsif local_assigns[:on_govuk_black].eql?(true)
+    classes << "gem-c-search--on-govuk-black"
   else
     classes << "gem-c-search--on-white"
   end

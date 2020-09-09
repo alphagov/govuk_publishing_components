@@ -129,13 +129,7 @@ $large-input-size: 50px;
 }
 
 .gem-c-search--on-govuk-blue {
-  .gem-c-search__label {
-    color: govuk-colour("white");
-  }
-
   .gem-c-search__input {
-    border-width: 0;
-
     // no need for black outline as there is enough contrast
     // with the blue background
     &:focus {
@@ -151,24 +145,9 @@ $large-input-size: 50px;
       background-color: lighten(govuk-colour("black"), 5%);
     }
   }
-
-  .js-enabled & {
-    .gem-c-search__label {
-      color: $govuk-secondary-text-colour;
-    }
-  }
 }
 
 .gem-c-search--on-white {
-  .gem-c-search__submit {
-    background-color: govuk-colour("blue");
-    color: govuk-colour("white");
-
-    &:hover {
-      background-color: lighten(govuk-colour("blue"), 5%);
-    }
-  }
-
   .gem-c-search__input[type="search"] {
     border-right-width: 0;
 
@@ -179,9 +158,30 @@ $large-input-size: 50px;
   }
 }
 
-.gem-c-search--no-border {
+.gem-c-search--on-white,
+.gem-c-search--on-govuk-black {
+  .gem-c-search__submit {
+    background-color: govuk-colour("blue");
+    color: govuk-colour("white");
+
+    &:hover {
+      background-color: lighten(govuk-colour("blue"), 5%);
+    }
+  }
+}
+
+.gem-c-search--on-govuk-blue,
+.gem-c-search--on-govuk-black {
   .gem-c-search__input[type="search"] {
     border: 0;
+  }
+
+  .gem-c-search__label {
+    color: govuk-colour("white");
+
+    .js-enabled & {
+      color: $govuk-secondary-text-colour;
+    }
   }
 }
 
