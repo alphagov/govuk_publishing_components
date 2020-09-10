@@ -12,6 +12,7 @@
   margin: 0;
   min-width: 0;
   padding: govuk-spacing(1);
+  box-sizing: border-box;
 
   &.gem-c-input--search-icon {
     padding-left: govuk-spacing(6);
