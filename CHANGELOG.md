@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix search box label colour ([PR #1680](https://github.com/alphagov/govuk_publishing_components/pull/1680))
+
 ## 21.65.0
 
 * Step by step nav header updated to use heading ([PR #1671](https://github.com/alphagov/govuk_publishing_components/pull/1671))
