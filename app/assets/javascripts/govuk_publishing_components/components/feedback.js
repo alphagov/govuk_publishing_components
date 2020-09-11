@@ -103,12 +103,23 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       function setHiddenValues () {
         that.$somethingIsWrongForm.append('<input type="hidden" name="javascript_enabled" value="true"/>')
         that.$somethingIsWrongForm.append($('<input type="hidden" name="referrer">').val(document.referrer || 'unknown'))
+        that.$somethingIsWrongForm.data('invalidInfoError', [
+          '<h2>',
+          '  Sorry, we’re unable to send your message as you haven’t given us any information.',
+          '</h2>',
+          '<p>Please tell us what you were doing or what went wrong</p>'
+        ].join(''))
       }
 
       function setHiddenValuesNotUsefulForm (gaClientId) {
         var currentPathName = window.location.pathname.replace(/[^\s=?&]+(?:@|%40)[^\s=?&]+/, '[email]')
         var finalPathName = encodeURI(currentPathName)
-
+        that.$surveyForm.data('invalidInfoError', [
+          '<h2>',
+          '  Sorry, we’re unable to send your message as you haven’t given us a valid email address. ',
+          '</h2>',
+          '<p>Enter an email address in the correct format, like name@example.com</p>'
+        ].join(''))
         if (document.querySelectorAll('[name="email_survey_signup[ga_client_id]"]').length === 0) {
           that.$surveyForm.append($('<input name="email_survey_signup[ga_client_id]" type="hidden">').val(gaClientId || '0'))
         }
@@ -169,6 +180,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           if (error === 'email survey sign up failure') {
             error = genericError
           }
+        } else if (error.status === 422) {
+          error = that.$activeForm.data('invalidInfoError') || genericError
         } else {
           error = genericError
         }
