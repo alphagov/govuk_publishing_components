@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Fix search box label colour ([PR #1680](https://github.com/alphagov/govuk_publishing_components/pull/1680))
+* Feedback form errors frontend workaround ([PR #1684](https://github.com/alphagov/govuk_publishing_components/pull/1684))
 
 ## 21.65.0
 
