@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 26.65.1
 
 * Fix search box label colour ([PR #1680](https://github.com/alphagov/govuk_publishing_components/pull/1680))
 
