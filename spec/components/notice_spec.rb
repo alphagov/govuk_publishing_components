@@ -76,4 +76,14 @@ describe "Notice", type: :view do
     render_component(title: "Your settings have been saved", aria_live: true)
     assert_select ".gem-c-notice[aria-live=polite]"
   end
+
+  it "adds a lang attribute when lang is provided" do
+    render_component(title: "Your settings have been saved", lang: "en")
+    assert_select ".gem-c-notice[lang=en]"
+  end
+
+  it "adds no lang attribute when lang is not provided" do
+    render_component(title: "Your settings have been saved")
+    assert_select ".gem-c-notice[lang=en]", false
+  end
 end
