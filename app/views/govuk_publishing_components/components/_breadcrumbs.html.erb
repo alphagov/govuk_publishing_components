@@ -17,16 +17,13 @@
   <ol class="govuk-breadcrumbs__list">
     <% breadcrumbs.each_with_index do |crumb, index| %>
       <% breadcrumb = GovukPublishingComponents::Presenters::Breadcrumb.new(crumb, index) %>
-        <li class="govuk-breadcrumbs__list-item" aria-current="<%= breadcrumb.aria_current %>">
+        <li class="govuk-breadcrumbs__list-item">
         <% if breadcrumb.is_link? %>
           <%= link_to(
             breadcrumb[:title],
             breadcrumb.path,
             data: breadcrumb.tracking_data(breadcrumbs.length),
             class: "govuk-breadcrumbs__link",
-            aria: {
-              current: breadcrumb.aria_current,
-            }
           ) %>
         <% else %>
           <%= breadcrumb[:title] %>

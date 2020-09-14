@@ -49,10 +49,6 @@ module GovukPublishingComponents
         crumb[:url]
       end
 
-      def aria_current
-        "false"
-      end
-
       def tracking_data(breadcrumbs_length)
         data = {
           track_category: "breadcrumbClicked",
