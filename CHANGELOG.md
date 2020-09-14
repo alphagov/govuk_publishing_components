@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Remove jQuery from toggle-input-class JS ([PR #1683](https://github.com/alphagov/govuk_publishing_components/pull/1683))
+* Remove aria-expanded attribute from yes feedback button ([PR #1687](https://github.com/alphagov/govuk_publishing_components/pull/1687))
 
 ## 26.65.1
 
