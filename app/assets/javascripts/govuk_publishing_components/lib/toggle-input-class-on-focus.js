@@ -1,36 +1,41 @@
+//= require govuk/vendor/polyfills/Element/prototype/classList.js
 /*
   Toggle the class 'focus' on input boxes on element focus/blur
   Used by the search component but generic enough for reuse
 */
+window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
-  'use strict'
+  function GemToggleInputClassOnFocus () { }
 
-  Modules.GemToggleInputClassOnFocus = function () {
-    this.start = function ($el) {
-      var $toggleTarget = $el.find('.js-class-toggle')
+  GemToggleInputClassOnFocus.prototype.start = function ($module) {
+    this.$module = $module[0]
+    this.toggleTarget = this.$module.querySelector('.js-class-toggle')
+    this.$module.addFocusClass = this.addFocusClass.bind(this)
+    this.$module.removeFocusClassFromEmptyInput = this.removeFocusClassFromEmptyInput.bind(this)
 
-      if (!inputIsEmpty()) {
-        addFocusClass()
-      }
+    if (!this.inputIsEmpty()) {
+      this.addFocusClass()
+    }
 
-      $toggleTarget.on('focus', addFocusClass)
-      $toggleTarget.on('blur', removeFocusClassFromEmptyInput)
+    this.toggleTarget.addEventListener('focus', this.$module.addFocusClass)
+    this.toggleTarget.addEventListener('blur', this.$module.removeFocusClassFromEmptyInput)
+  }
 
-      function inputIsEmpty () {
-        return $toggleTarget.val() === ''
-      }
+  GemToggleInputClassOnFocus.prototype.inputIsEmpty = function () {
+    return this.toggleTarget.value === ''
+  }
 
-      function addFocusClass () {
-        $toggleTarget.addClass('focus')
-      }
+  GemToggleInputClassOnFocus.prototype.addFocusClass = function () {
+    this.toggleTarget.classList.add('focus')
+  }
 
-      function removeFocusClassFromEmptyInput () {
-        if (inputIsEmpty()) {
-          $toggleTarget.removeClass('focus')
-        }
-      }
+  GemToggleInputClassOnFocus.prototype.removeFocusClassFromEmptyInput = function () {
+    if (this.inputIsEmpty()) {
+      this.toggleTarget.classList.remove('focus')
     }
   }
+
+  Modules.GemToggleInputClassOnFocus = GemToggleInputClassOnFocus
 })(window.GOVUK.Modules)
