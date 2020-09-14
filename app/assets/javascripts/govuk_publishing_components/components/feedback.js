@@ -8,19 +8,23 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   Modules.Feedback = function () {
     this.start = function ($element) {
+      this.element = $element[0]
+      this.somethingIsWrongForm = this.element.querySelector('#something-is-wrong')
+      this.surveyForm = this.element.querySelector('#page-is-not-useful')
       this.$prompt = $element.find('.js-prompt')
       this.$fields = $element.find('.gem-c-feedback__form-field')
       this.$forms = $element.find('.js-feedback-form')
       this.$toggleForms = $element.find('.js-toggle-form')
       this.$closeForms = $element.find('.js-close-form')
+      this.activeForm = false
       this.$activeForm = false
       this.$pageIsUsefulButton = $element.find('.js-page-is-useful')
       this.$pageIsNotUsefulButton = $element.find('.js-page-is-not-useful')
       this.$somethingIsWrongButton = $element.find('.js-something-is-wrong')
       this.$promptQuestions = $element.find('.js-prompt-questions')
       this.$promptSuccessMessage = $element.find('.js-prompt-success')
-      this.$somethingIsWrongForm = $element.find('#something-is-wrong')
-      this.$surveyForm = $element.find('#page-is-not-useful')
+      this.$somethingIsWrongForm = $(this.somethingIsWrongForm)
+      this.$surveyForm = $(this.surveyForm)
       this.$surveyWrapper = $element.find('#survey-wrapper')
 
       var that = this
@@ -103,12 +107,23 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       function setHiddenValues () {
         that.$somethingIsWrongForm.append('<input type="hidden" name="javascript_enabled" value="true"/>')
         that.$somethingIsWrongForm.append($('<input type="hidden" name="referrer">').val(document.referrer || 'unknown'))
+        that.somethingIsWrongForm.invalidInfoError = [
+          '<h2>',
+          '  Sorry, we’re unable to send your message as you haven’t given us any information.',
+          '</h2>',
+          '<p>Please tell us what you were doing or what went wrong</p>'
+        ].join('')
       }
 
       function setHiddenValuesNotUsefulForm (gaClientId) {
         var currentPathName = window.location.pathname.replace(/[^\s=?&]+(?:@|%40)[^\s=?&]+/, '[email]')
         var finalPathName = encodeURI(currentPathName)
-
+        that.surveyForm.invalidInfoError = [
+          '<h2>',
+          '  Sorry, we’re unable to send your message as you haven’t given us a valid email address. ',
+          '</h2>',
+          '<p>Enter an email address in the correct format, like name@example.com</p>'
+        ].join('')
         if (document.querySelectorAll('[name="email_survey_signup[ga_client_id]"]').length === 0) {
           that.$surveyForm.append($('<input name="email_survey_signup[ga_client_id]" type="hidden">').val(gaClientId || '0'))
         }
@@ -124,7 +139,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       }
 
       function toggleForm (formId) {
-        that.$activeForm = $element.find('#' + formId)
+        that.activeForm = that.element.querySelector('#' + formId)
+        that.$activeForm = $(that.activeForm)
         that.$activeForm.toggleClass(jshiddenClass)
         that.$prompt.toggleClass(jshiddenClass)
 
@@ -158,18 +174,20 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           '<p>If the problem persists, we have other ways for you to provide',
           ' feedback on the <a href="/contact/govuk">contact page</a>.</p>'
         ].join('')
-
         // if the response is not a 404 or 500, show the error message if it exists
         // otherwise show the generic message
-        // this covers the 422 status the feedback application return for empty fields
-        // for all other, show generic error
         if (typeof (error.responseJSON) !== 'undefined') {
           error = typeof (error.responseJSON.message) === 'undefined' ? genericError : error.responseJSON.message
 
           if (error === 'email survey sign up failure') {
             error = genericError
           }
+        } else if (error.status === 422) {
+          // there's clobbering by nginx on all 422 requests, which is why the response returns a rendered html page instead of the expected JSON
+          // this is a temporary workaround to ensure that are are displaying relevant error messages to the users
+          error = that.activeForm.invalidInfoError || genericError
         } else {
+          // for all other, show generic error
           error = genericError
         }
         var $errors = that.$activeForm.find('.js-errors')
