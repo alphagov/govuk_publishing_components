@@ -213,11 +213,11 @@ $large-input-size: 50px;
 }
 
 .search-toggle {
+  display: none;
   background-color: govuk-colour("blue");
   background-image: image-url("govuk_publishing_components/search-button.png");
   background-position: 0 50%;
   background-repeat: no-repeat;
-  display: block;
   float: right;
   height: 30px;
   margin: -46px 0;
@@ -225,6 +225,7 @@ $large-input-size: 50px;
   padding: 0;
   text-indent: -5000px;
   width: 36px;
+  border: 0;
 
   &:focus {
     border-width: 0;
@@ -249,5 +250,11 @@ $large-input-size: 50px;
 
   @include govuk-media-query($from: tablet) {
     display: none;
+  }
+
+  @include govuk-media-query($until: tablet) {
+    .js-enabled & {
+      display: block;
+    }
   }
 }
