@@ -42,3 +42,11 @@ examples:
       title: 'Your settings have been saved'
       description_govspeak: <p>This is a confirmation message to tell you your settings have been saved</p>
       aria_live: true
+  with_locale:
+    description: |
+      Passing a lang value allows the content of the notice to be labelled as being a different language from surrounding content.
+      The lang attribute must be set to a [valid BCP47 string](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang#Language_tag_syntax). A valid code can be the two or three letter language code - for example, English is en or eng, Korean is ko or kor - but if in doubt please check.
+    data:
+      title: 'This publication was withdrawn on 30 September 2015'
+      description_govspeak: <p>This document is no longer current. We published a new version on 30 September 2015.</p>
+      lang: 'en'
