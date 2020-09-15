@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix magna charta span width bug ([PR #1691](https://github.com/alphagov/govuk_publishing_components/pull/1691)) FIX
+
 ## 21.66.0
 
 * Remove jQuery from toggle-input-class JS ([PR #1683](https://github.com/alphagov/govuk_publishing_components/pull/1683))
