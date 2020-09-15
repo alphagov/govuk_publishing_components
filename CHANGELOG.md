@@ -12,6 +12,7 @@
 * Remove jQuery from toggle-input-class JS ([PR #1683](https://github.com/alphagov/govuk_publishing_components/pull/1683))
 * Add locale attribute to notice component ([PR #1686](https://github.com/alphagov/govuk_publishing_components/pull/1686))
 * Remove aria-expanded attribute from yes feedback button ([PR #1687](https://github.com/alphagov/govuk_publishing_components/pull/1687))
+* Mobile search toggle button ([PR #1682](https://github.com/alphagov/govuk_publishing_components/pull/1682))
 
 ## 26.65.1
 
