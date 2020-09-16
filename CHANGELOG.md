@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.66.1
 
 * Fix magna charta span width bug ([PR #1691](https://github.com/alphagov/govuk_publishing_components/pull/1691)) FIX
 
