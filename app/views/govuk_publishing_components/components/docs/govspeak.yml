@@ -188,6 +188,12 @@ examples:
             <tr>
               <td>row 2</td><td>15</td>
             </tr>
+            <tr>
+              <td>row 3</td><td>2</td>
+            </tr>
+            <tr>
+              <td>row 4</td><td>48</td>
+            </tr>
           </tbody>
         </table>
   chart_with_colours:

@@ -396,14 +396,14 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       var $cell = cells[i]
       var cellVal = parseFloat(this.utils.stripValue($cell.innerText), 10)
       var $cellSpan = $cell.querySelector('span')
-      var spanWidth = parseFloat(window.getComputedStyle($cellSpan, null).width.replace('px', '')) + 10 // +10 just for extra padding
-      var cellWidth = parseFloat(window.getComputedStyle($cell, null).width.replace('px', ''))
+      var spanWidth = $cell.querySelector('span').offsetWidth + 5 // +5 just for extra padding
+      var cellWidth = $cell.offsetWidth
 
       if (!this.options.stacked) {
       // if it's 0, it is effectively outdented
         if (cellVal === 0) { $cell.classList.add('mc-bar-outdented') }
 
-        if ((this.options.autoOutdent && spanWidth > cellWidth) || this.options.outdentAll) {
+        if ((this.options.autoOutdent && spanWidth >= cellWidth) || this.options.outdentAll) {
           $cell.classList.add('mc-bar-outdented')
           $cellSpan.style.marginLeft = '100%'
           $cellSpan.style.display = 'inline-block'
