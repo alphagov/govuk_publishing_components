@@ -3,6 +3,25 @@
   @include govuk-text-colour;
   position: relative;
   margin-bottom: govuk-spacing(6);
+  display: flex;
+  display: -ms-flexbox;
+  flex-direction: column-reverse;
+  -ms-flex-direction: column-reverse;
+
+  @include govuk-media-query($from: mobile, $until: tablet) {
+    display: block;
+
+    .gem-c-image-card__text-wrapper {
+      float: right;
+      padding-left: 0;
+    }
+  }
+}
+
+.gem-c-image-card__header-and-context-wrapper {
+  display: flex;
+  flex-direction: column-reverse;
+  -ms-flex-direction: column-reverse;
 }
 
 .gem-c-image-card__image-wrapper {
@@ -135,7 +154,11 @@
 }
 
 .gem-c-image-card--large.gem-c-image-card {
+  display: flex;
   margin: 0 0 govuk-spacing(6) 0;
+  @include govuk-media-query($from: tablet) {
+    display: block;
+  }
 }
 
 .gem-c-image-card--large {
@@ -161,6 +184,7 @@
     overflow: hidden;
 
     @include govuk-media-query($from: tablet) {
+      float: right;
       padding: 0 govuk-spacing(3);
       margin-bottom: 0;
     }
@@ -178,5 +202,14 @@
 
   .gem-c-image-card__description {
     @include govuk-font(19);
+  }
+}
+
+.gem-c-image-card--no-image {
+  .gem-c-image-card__text-wrapper {
+    @include govuk-media-query($from: mobile, $until: tablet) {
+      float: left;
+      padding: 0 govuk-spacing(3);
+    }
   }
 }
