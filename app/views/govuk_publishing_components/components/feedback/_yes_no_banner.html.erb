@@ -6,18 +6,10 @@
   <div class="gem-c-feedback__prompt-questions js-prompt-questions">
     <h2 class="gem-c-feedback__prompt-question"><%= t("components.feedback.is_this_page_useful", default: "Is this page useful?") %></h2>
     <!-- Maybe button exists only to try and capture clicks by bots -->
-    <%= link_to t("components.feedback.maybe", default: "Maybe"), contact_govuk_path, {
-        class: 'gem-c-feedback__prompt-link',
-        data: {
-          'track-category' => 'yesNoFeedbackForm',
-          'track-action' => 'ffMaybeClick'
-        },
-        'aria-expanded': false,
-        role: 'button',
-        style: 'display: none;',
-        hidden: 'hidden',
-        'aria-hidden': 'true',
-      } %>
+    <button class="govuk-button govuk-button--secondary gem-c-feedback__prompt-link" data-track-category="yesNoFeedbackForm" data-track-action="ffMaybeClick" aria-expanded="false" style="display: none" hidden="hidden" aria-hidden="true">
+      <%= t("components.feedback.maybe", default: "Maybe") %>
+    </button>
+    
     <ul class="gem-c-feedback__option-list">
       <li class="gem-c-feedback__option-list-item">
         <button class="govuk-button govuk-button--secondary gem-c-feedback__prompt-link js-page-is-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffYesClick">
