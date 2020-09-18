@@ -7,6 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add default aria-label for contents list component ([PR #1698](https://github.com/alphagov/govuk_publishing_components/pull/1698))
 
 ## 21.66.2
 
