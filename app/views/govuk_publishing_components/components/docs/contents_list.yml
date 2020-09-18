@@ -17,9 +17,7 @@ accessibility_criteria: |
   - inform the user how many items are in the list
   - convey the content structure
   - indicate the current page when contents span different pages, and not link to itself
-
-  The contents list may:
-  - include an aria-label to contextualise the list if helpful
+  - include an aria-label to contextualise the list
 
   Links with formatted numbers must separate the number and text with a space for correct screen reader pronunciation. This changes pronunciation from "1 dot Item" to "1 Item".
 shared_accessibility_criteria:
@@ -67,8 +65,8 @@ examples:
           active: true
         - href: "#third-thing"
           text: Third thing
-  aria_label:
-    description: 'An aria-label string can be used to contextualise the navigation for assistive technology.'
+  with_custom_aria_label:
+    description: 'An aria-label string should be used to contextualise the navigation for assistive technology. Defaults to "Contents" if aria-label is not passed.'
     data:
       aria_label: "Pages in this guide"
       contents:
