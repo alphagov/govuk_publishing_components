@@ -8,7 +8,7 @@
   of the commit log.
 
 
-## Unreleased
+## 21.66.2
 
 * Swap out ol for ul on documents list ([PR #1694](https://github.com/alphagov/govuk_publishing_components/pull/1694)) FIX
 * Search toggle inner text fix ([PR #1696](https://github.com/alphagov/govuk_publishing_components/pull/1696)) FIX
