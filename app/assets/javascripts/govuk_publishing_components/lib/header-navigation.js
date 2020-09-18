@@ -13,6 +13,7 @@
         var target = this.getAttribute('href') ? document.getElementById(this.getAttribute('href').substr(1)) : document.getElementById(this.getAttribute('data-search-toggle-for'))
         var targetClass = target.getAttribute('class') || ''
         var sourceClass = this.getAttribute('class') || ''
+        var isSearchToggle = sourceClass.match('search-toggle')
 
         if (targetClass.indexOf('js-visible') !== -1) {
           target.setAttribute('class', targetClass.replace(/(^|\s)js-visible(\s|$)/, ''))
@@ -21,10 +22,14 @@
         }
         if (sourceClass.indexOf('js-visible') !== -1) {
           this.setAttribute('class', sourceClass.replace(/(^|\s)js-visible(\s|$)/, ''))
-          this.innerText = 'Show search'
+          if (isSearchToggle) {
+            this.innerText = 'Show search'
+          }
         } else {
           this.setAttribute('class', sourceClass + ' js-visible')
-          this.innerText = 'Hide search'
+          if (isSearchToggle) {
+            this.innerText = 'Hide search'
+          }
         }
         this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') !== 'true')
         target.setAttribute('aria-hidden', target.getAttribute('aria-hidden') === 'false')
