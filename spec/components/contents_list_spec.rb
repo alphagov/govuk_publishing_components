@@ -115,6 +115,11 @@ describe "Contents list", type: :view do
     assert_select "#{nested_link_selector} .gem-c-contents-list__numbered-text", count: 0
   end
 
+  it "defaults to an aria label of 'Contents' when aria label is not supplied" do
+    render_component(contents: contents_list_with_active_item)
+    assert_select ".gem-c-contents-list[aria-label=\"Contents\"]"
+  end
+
   it "aria label is rendered when supplied" do
     render_component(contents: contents_list_with_active_item, aria_label: "All pages in this guide")
     assert_select ".gem-c-contents-list[aria-label=\"All pages in this guide\"]"
