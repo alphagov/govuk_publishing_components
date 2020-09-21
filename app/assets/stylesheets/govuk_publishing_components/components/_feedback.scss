@@ -173,7 +173,7 @@
 
 .gem-c-feedback__option-list-item:first-child {
   @include govuk-media-query($from: mobile) {
-    margin-right: govuk-spacing(4); 
+    margin-right: govuk-spacing(4);
   }
 }
 
