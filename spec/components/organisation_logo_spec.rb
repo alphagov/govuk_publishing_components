@@ -100,4 +100,14 @@ describe "Organisation logo", type: :view do
     render_component(organisation: { name: "Name", url: "/some-link" }, inline: true)
     assert_select "a.gem-c-organisation-logo__container--inline"
   end
+
+  it "sets the language to en by default" do
+    render_component(organisation: { name: "Name" })
+    assert_select ".gem-c-organisation-logo__name[lang='en']", false
+  end
+
+  it "overrides the language when specified" do
+    render_component(organisation: { name: "Name" }, lang: "cy")
+    assert_select ".gem-c-organisation-logo__name[lang='cy']"
+  end
 end

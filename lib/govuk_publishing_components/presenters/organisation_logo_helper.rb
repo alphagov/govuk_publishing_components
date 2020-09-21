@@ -11,6 +11,7 @@ module GovukPublishingComponents
         @url = local_assigns[:organisation][:url]
         @crest = local_assigns[:organisation][:crest]
         @image = local_assigns[:organisation][:image] || false
+        @lang = local_assigns[:lang] || nil
         if @image
           @logo_image_src = local_assigns[:organisation][:image][:url] || false
           @logo_image_alt = local_assigns[:organisation][:image][:alt_text] || false
@@ -21,7 +22,7 @@ module GovukPublishingComponents
         if image
           image_tag(logo_image_src, alt: logo_image_alt, class: "gem-c-organisation-logo__image")
         else
-          content_tag("span", name, class: "gem-c-organisation-logo__name")
+          content_tag("span", name, class: "gem-c-organisation-logo__name", lang: @lang)
         end
       end
 
