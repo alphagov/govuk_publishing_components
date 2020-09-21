@@ -80,9 +80,21 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
       if (!thisel.querySelectorAll('.js-toggle-link').length) {
         var span = document.createElement('span')
-        span.className = 'gem-c-step-nav__toggle-link js-toggle-link'
-        span.setAttribute('aria-hidden', true)
-        span.setAttribute('hidden', 'hidden')
+        var showHideSpan = document.createElement('span')
+        var commaSpan = document.createElement('span')
+        var thisSectionSpan = document.createElement('span')
+
+        showHideSpan.className = 'gem-c-step-nav__toggle-link js-toggle-link'
+        commaSpan.className = 'govuk-visually-hidden'
+        thisSectionSpan.className = 'govuk-visually-hidden'
+
+        commaSpan.innerHTML = ', '
+        thisSectionSpan.innerHTML = ' this section'
+
+        span.appendChild(commaSpan)
+        span.appendChild(showHideSpan)
+        span.appendChild(thisSectionSpan)
+
         thisel.querySelectorAll('.js-step-title-button')[0].appendChild(span)
       }
     }
