@@ -11,6 +11,7 @@
 
 * Add lang option to organisation logo text ([PR #1700](https://github.com/alphagov/govuk_publishing_components/pull/1700))
 * Add default aria-label for contents list component ([PR #1698](https://github.com/alphagov/govuk_publishing_components/pull/1698))
+* Reorder image card elements ([PR #1695](https://github.com/alphagov/govuk_publishing_components/pull/1695)) FIX
 
 ## 21.66.2
 

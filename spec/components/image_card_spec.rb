@@ -77,6 +77,11 @@ describe "ImageCard", type: :view do
     assert_select ".gem-c-image-card__list-item .brand__color"
   end
 
+  it "labels a no-image version" do
+    render_component(href: "#", heading_text: "test", extra_links: [{ href: "/1", text: "link1" }], brand: "attorney-generals-office")
+    assert_select ".gem-c-image-card--no-image"
+  end
+
   it "renders a large version" do
     render_component(href: "#", large: true)
     assert_select ".gem-c-image-card.gem-c-image-card--large"

@@ -3,32 +3,32 @@
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
   card_helper = GovukPublishingComponents::Presenters::ImageCardHelper.new(local_assigns)
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+  classes = "gem-c-image-card"
+  classes << " gem-c-image-card--large" if card_helper.large
+  classes << " gem-c-image-card--no-image" unless defined?(image_src)
 %>
 <% if card_helper.href || card_helper.extra_links.any? %>
-  <div class="gem-c-image-card <%= "gem-c-image-card--large" if card_helper.large %> <%= brand_helper.brand_class %>"
+  <div class="<%= classes %> <%= brand_helper.brand_class %>"
     <%= "data-module=track-click" if card_helper.is_tracking? %>
     <%= "lang=#{card_helper.lang}" if card_helper.lang %>>
-    <%= card_helper.image %>
-
     <div class="gem-c-image-card__text-wrapper">
-      <%= card_helper.context %>
-
-      <% if card_helper.heading_text %>
-        <%= content_tag(shared_helper.get_heading_level,
-          class: "gem-c-image-card__title") do %>
-            <% if card_helper.href %>
-              <%= link_to card_helper.heading_text, card_helper.href,
-                class: "gem-c-image-card__title-link #{brand_helper.color_class}",
-                data: card_helper.href_data_attributes
-              %>
-            <% else %>
-              <%= card_helper.heading_text %>
-            <% end %>
+      <div class="gem-c-image-card__header-and-context-wrapper">
+        <% if card_helper.heading_text %>
+          <%= content_tag(shared_helper.get_heading_level,
+            class: "gem-c-image-card__title") do %>
+              <% if card_helper.href %>
+                <%= link_to card_helper.heading_text, card_helper.href,
+                  class: "gem-c-image-card__title-link #{brand_helper.color_class}",
+                  data: card_helper.href_data_attributes
+                %>
+              <% else %>
+                <%= card_helper.heading_text %>
+              <% end %>
+          <% end %>
         <% end %>
-      <% end %>
-
+        <%= card_helper.context %>
+      </div>
       <%= card_helper.description %>
-
       <% if card_helper.extra_links.any? %>
         <ul class="gem-c-image-card__list <%= "gem-c-image-card__list--indented" if not card_helper.extra_links_no_indent %>">
           <% card_helper.extra_links.each do |link| %>
@@ -41,10 +41,10 @@
           <% end %>
         </ul>
       <% end %>
-
       <% if card_helper.metadata %>
         <p class="gem-c-image-card__metadata"><%= card_helper.metadata %></p>
       <% end %>
     </div>
+    <%= card_helper.image %>
   </div>
 <% end %>
