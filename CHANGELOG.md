@@ -7,6 +7,11 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+
+## Unreleased
+
+* Update step by step show/hide text to be more verbose for screen readers ([PR #1701](https://github.com/alphagov/govuk_publishing_components/pull/1701)) FIX
+
 ## 21.67.1
 
 * Fix IE11 height bug on image card ([PR #1713](https://github.com/alphagov/govuk_publishing_components/pull/1713))
