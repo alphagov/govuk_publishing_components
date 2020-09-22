@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.66.3
 
 * Add lang option to organisation logo text ([PR #1700](https://github.com/alphagov/govuk_publishing_components/pull/1700))
 * Add default aria-label for contents list component ([PR #1698](https://github.com/alphagov/govuk_publishing_components/pull/1698))
