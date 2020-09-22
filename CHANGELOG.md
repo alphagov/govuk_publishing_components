@@ -7,7 +7,12 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add language attribute to feed box ([PR #1706](https://github.com/alphagov/govuk_publishing_components/pull/1706))
+
 ## 21.66.4
+
 * Reorder image card elements ([PR #1695](https://github.com/alphagov/govuk_publishing_components/pull/1695)) FIX
 
 ## 21.66.3
