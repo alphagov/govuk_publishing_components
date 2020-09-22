@@ -191,12 +191,3 @@ examples:
         brand: cabinet-office
         crest: 'single-identity'
       inline: true
-  with-explicit-language:
-    description: The language attribute on the name of the organisation can be set if required. If this option is not passed, no lang attribute is set.
-    data:
-      organisation:
-        name: Tŷ'r Cwmnïau
-        url: '/government/organisations/companies-house.cy'
-        brand: department-for-business-innovation-skills
-        crest: 'single-identity'
-      lang: "cy"
