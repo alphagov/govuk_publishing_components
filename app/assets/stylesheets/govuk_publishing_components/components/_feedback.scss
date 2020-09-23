@@ -11,7 +11,6 @@
 // hide without js
 // show with js, unless also has the js-hidden class
 .gem-c-feedback__js-show,
-.gem-c-feedback__form,
 .gem-c-feedback__prompt-success,
 .gem-c-feedback__prompt-questions,
 .gem-c-feedback__error-summary {
@@ -26,6 +25,24 @@
   }
 }
 
+// maintain table display for prompt and prompt-questions
+.js-enabled .gem-c-feedback__prompt {
+  @include govuk-media-query($from: tablet) {
+    display: table;
+  }
+}
+
+.js-enabled .gem-c-feedback__prompt-questions {
+  @include govuk-media-query($from: tablet) {
+    display: table-cell;
+  }
+}
+
+// show the default feedback form without js
+.js-enabled .gem-c-feedback__form.js-hidden {
+  display: none;
+}
+
 .gem-c-feedback__prompt-questions {
   text-align: center;
   border-bottom: 1px solid govuk-colour("white");
@@ -34,7 +51,7 @@
 
   @include govuk-media-query($from: tablet) {
     width: 50%;
-    float: left;
+    display: table-cell;
     text-align: left;
     border-bottom: 0;
   }
@@ -45,6 +62,8 @@
 
   @include govuk-media-query($from: tablet) {
     text-align: right;
+    vertical-align: bottom;
+    float: none;
   }
 }
 
@@ -53,6 +72,12 @@
   background-color: govuk-colour("blue");
   color: govuk-colour("white");
   outline: 0;
+
+  @include govuk-media-query($from: tablet) {
+    @include govuk-font(16, $weight: bold);
+    display: table;
+    width: 100%;
+  }
 }
 
 .gem-c-feedback__prompt-question,
@@ -65,13 +90,9 @@
 }
 
 .gem-c-feedback__prompt-question {
+  vertical-align: text-top;
   display: inline-block;
-
-  // There's a global h3 rule in some layouts that interferes with this component
-  margin: 0;
-
-  margin-left: govuk-spacing(4);
-  margin-right: govuk-spacing(4);
+  margin: govuk-spacing(2) govuk-spacing(4);
 
   &:focus {
     outline: 0;
@@ -79,13 +100,26 @@
 
   @include govuk-media-query($from: tablet) {
     margin-left: 0;
+    margin-top: 0;
+    display: block;
+  }
+
+  // This custom media-query is to account for some awkward positioning where the yes and no buttons are too big to sit inline with the prompt question
+  @include govuk-media-query($from: 950px) {
+    display: inline-block;
+    margin-top: govuk-spacing(2);
   }
 }
 
 .gem-c-feedback__prompt-link {
-  @include govuk-link-common;
   @include govuk-font(19);
-  display: inline-block;
+  box-shadow: 0 2px 0 govuk-colour("black");
+  min-width: 100%;
+
+  @include govuk-media-query($from: mobile) {
+    min-width: 100px;
+    margin-bottom: 0;
+  }
 
   @include govuk-media-query($from: tablet) {
     @include govuk-font(16);
@@ -116,12 +150,15 @@
 }
 
 .gem-c-feedback__option-list {
-  display: inline-block;
   list-style-type: none;
   margin: 0;
   padding: 0;
-  margin-right: govuk-spacing(2);
   margin-top: govuk-spacing(2);
+
+  @include govuk-media-query($from: mobile) {
+    display: inline-block;
+    margin-right: govuk-spacing(2);
+  }
 
   @include govuk-media-query($from: tablet) {
     margin-top: 0;
@@ -129,11 +166,15 @@
 }
 
 .gem-c-feedback__option-list-item {
-  display: inline-block;
+  @include govuk-media-query($from: mobile) {
+    display: inline-block;
+  }
 }
 
 .gem-c-feedback__option-list-item:first-child {
-  margin-right: govuk-spacing(7);
+  @include govuk-media-query($from: mobile) {
+    margin-right: govuk-spacing(4);
+  }
 }
 
 // Feedback form styles
@@ -206,15 +247,8 @@
 }
 
 .gem-c-feedback__close {
-  @include govuk-link-common;
-  @include govuk-link-style-default;
-  @include govuk-font(19);
   float: right;
   margin: 0 govuk-spacing(1) govuk-spacing(2) 0;
-
-  @include govuk-media-query($from: tablet) {
-    padding-top: 0;
-  }
 }
 
 .gem-c-feedback__email-link {

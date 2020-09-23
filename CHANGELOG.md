@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add language attribute to feed box ([PR #1706](https://github.com/alphagov/govuk_publishing_components/pull/1706))
+* Replace feedback component links with buttons ([PR #1699](https://github.com/alphagov/govuk_publishing_components/pull/1699)) MINOR
 
 ## 21.66.4
 
