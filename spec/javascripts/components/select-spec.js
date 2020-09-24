@@ -1,5 +1,5 @@
 /* eslint-env jasmine, jquery */
-/* global GOVUK */
+/* global GOVUK, Event */
 
 describe('Track select change', function () {
   var tracker
@@ -9,36 +9,72 @@ describe('Track select change', function () {
     trackEvent: function () {}
   }
 
-  beforeEach(function () {
-    spyOn(GOVUK.analytics, 'trackEvent')
-
-    $element = $(
-      '<select id="taxon-list" name="taxon-list" data-module="track-select-change"' +
-        '<option value="">All topics</option>' +
-        '<option data-track-category="filterClicked" data-track-action="taxon-list" data-track-label="Social care" value="7d67047c-bf22-4c34-b566-b46d6973f961">Social care</option>' +
-        '<option data-track-label="Social care" value="no-data-attributes">No data attributes</option>' +
-      '</select>'
-    )
-
-    tracker = new GOVUK.Modules.TrackSelectChange()
-    tracker.start($element)
-  })
-
   afterEach(function () {
     GOVUK.analytics.trackEvent.calls.reset()
   })
 
-  it('tracks when the selected value is changed', function () {
-    $element.val('7d67047c-bf22-4c34-b566-b46d6973f961').change()
+  describe('by default', function () {
+    beforeEach(function () {
+      spyOn(GOVUK.analytics, 'trackEvent')
 
-    expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith(
-      'filterClicked', 'taxon-list', { transport: 'beacon', label: 'Social care' }
-    )
+      $element = $(
+        '<select id="taxon-list" name="taxon-list" data-module="track-select-change">' +
+          '<option value="">All topics</option>' +
+          '<option data-track-category="filterClicked" data-track-action="taxon-list" data-track-label="Social care" value="7d67047c-bf22-4c34-b566-b46d6973f961">Social care</option>' +
+          '<option data-track-label="Social care" value="no-data-attributes">No data attributes</option>' +
+        '</select>'
+      )
+
+      tracker = new GOVUK.Modules.TrackSelectChange()
+      tracker.start($element)
+    })
+
+    it('tracks when the selected value is changed', function () {
+      $element.val('7d67047c-bf22-4c34-b566-b46d6973f961')
+      var jsSelect = $element[0]
+      var event = new Event('change')
+      jsSelect.dispatchEvent(event)
+
+      expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith(
+        'filterClicked', 'taxon-list', { transport: 'beacon', label: 'Social care' }
+      )
+    })
+
+    it('does not fire an event if track category and track action are not present', function () {
+      $element.val('no-data-attributes')
+      var jsSelect = $element[0]
+      var event = new Event('change')
+      jsSelect.dispatchEvent(event)
+
+      expect(GOVUK.analytics.trackEvent.calls.count()).toEqual(0)
+    })
   })
 
-  it('does not fire an event if track category and track action are not present', function () {
-    $element.val('no-data-attributes').change()
+  describe('with options', function () {
+    beforeEach(function () {
+      spyOn(GOVUK.analytics, 'trackEvent')
 
-    expect(GOVUK.analytics.trackEvent.calls.count()).toEqual(0)
+      $element = $(
+        '<select id="taxon-list" name="taxon-list" data-module="track-select-change">' +
+          '<option value="">All topics</option>' +
+          '<option data-track-category="filterClicked" data-track-action="taxon-list" data-track-label="Social care" value="7d67047c-bf22-4c34-b566-b46d6973f961" data-track-options=\'{"dimension28": "2x1 plates","dimension29": "1x1 tiles"}\'>Social care</option>' +
+          '<option data-track-label="Social care" value="no-data-attributes">No data attributes</option>' +
+        '</select>'
+      )
+
+      tracker = new GOVUK.Modules.TrackSelectChange()
+      tracker.start($element)
+    })
+
+    it('includes extra options when present on the select', function () {
+      $element.val('7d67047c-bf22-4c34-b566-b46d6973f961')
+      var jsSelect = $element[0]
+      var event = new Event('change')
+      jsSelect.dispatchEvent(event)
+
+      expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith(
+        'filterClicked', 'taxon-list', { transport: 'beacon', label: 'Social care', dimension28: '2x1 plates', dimension29: '1x1 tiles' }
+      )
+    })
   })
 })
