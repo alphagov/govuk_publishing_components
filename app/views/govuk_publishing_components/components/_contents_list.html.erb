@@ -2,8 +2,9 @@
   cl_helper = GovukPublishingComponents::Presenters::ContentsListHelper.new(local_assigns)
   aria_label ||= "Contents"
   format_numbers ||= false
+  title_lang ||= false
+  title = local_assigns[:title].presence || t("components.contents_list.contents")
   hide_title ||= false
-
   brand ||= false
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
 
@@ -21,7 +22,13 @@
     }
   ) do %>
     <% unless hide_title %>
-      <h2 class="gem-c-contents-list__title"><%= t("components.contents_list.contents") %></h2>
+      <%= content_tag(
+        :h2,
+        class: "gem-c-contents-list__title",
+        lang: title_lang.presence
+      ) do %>
+        <%= title %>
+      <% end %>
     <% end %>
 
     <ol class="gem-c-contents-list__list">
