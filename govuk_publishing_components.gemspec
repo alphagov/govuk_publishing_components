@@ -30,6 +30,9 @@ Gem::Specification.new do |s|
   s.add_development_dependency "jasmine", "~> 3.6.0"
   s.add_development_dependency "jasmine_selenium_runner", "~> 3.0.0"
   s.add_development_dependency "pry-byebug"
+  # Puma 5.0.1 has a breaking API change with Capybara, hopefully this will
+  # be resolved quickly with 5.0.2
+  s.add_development_dependency "puma", "< 5"
   s.add_development_dependency "rake"
   s.add_development_dependency "rspec-rails", "~> 4.0"
   s.add_development_dependency "rubocop-govuk", "~> 3"
