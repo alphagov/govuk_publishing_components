@@ -29,6 +29,7 @@
 
   @include govuk-media-query($from: tablet) {
     margin-bottom: govuk-spacing(2);
+    height: 100%;
   }
 
   + .gem-c-image-card__text-wrapper {

@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix IE11 height bug on image card ([PR #1713](https://github.com/alphagov/govuk_publishing_components/pull/1713))
+
 ## 21.67.0
 
 * Remove jQuery from select.js ([PR #1670](https://github.com/alphagov/govuk_publishing_components/pull/1670))
