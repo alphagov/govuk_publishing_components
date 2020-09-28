@@ -8,7 +8,7 @@
   of the commit log.
 
 
-## Unreleased
+## 21.67.2
 
 * Update step by step show/hide text to be more verbose for screen readers ([PR #1701](https://github.com/alphagov/govuk_publishing_components/pull/1701)) FIX
 
