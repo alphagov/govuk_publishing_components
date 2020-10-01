@@ -121,7 +121,7 @@
   &:hover {
     // backup style for browsers that don't support rgba
     background: govuk-colour("black");
-    background: rgba(govuk-colour("black"), 0.2);
+    background: rgba(govuk-colour("black"), .2);
   }
 
   @include govuk-media-query($from: mobile) {
