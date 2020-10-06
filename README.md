@@ -1,4 +1,4 @@
-GOV.UK Publishing Components 
+GOV.UK Publishing Components
 [![status](https://badgen.net/github/status/alphagov/govuk_publishing_components/master)](https://ci.integration.publishing.service.gov.uk/job/govuk_publishing_components/job/master/)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 [![Stylelint Style Guide](https://img.shields.io/badge/code_style-stylelint-brightgreen.svg)](https://github.com/alphagov/stylelint-config-gds/)
@@ -58,6 +58,10 @@ Install the application's dependencies with:
 bundle install
 yarn install
 ```
+
+### Running a local app with a local gem
+
+The GDS Developer Docs has a [guide on local frontend development](https://docs.publishing.service.gov.uk/manual/local-frontend-development.html) that covers setting up a local app to use the local version of the components gem in Docker and using the `./startup.sh` script.
 
 ### Running tests
 
