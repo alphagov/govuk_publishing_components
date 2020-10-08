@@ -171,10 +171,17 @@
       color: govuk-colour("white");
     }
 
+    &:hover {
+      color: #DDDCDB
+    }
+
     &:focus,
     &:active {
       text-decoration: none;
       color: govuk-colour("black");
+      &:hover {
+        color: govuk-colour("black");
+      }
     }
   }
 
