@@ -7,6 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Set feedback buttons to be transparent ([PR #1719](https://github.com/alphagov/govuk_publishing_components/pull/1719))
 
 ## 21.67.2
 

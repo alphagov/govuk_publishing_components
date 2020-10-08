@@ -90,7 +90,7 @@
 }
 
 .gem-c-feedback__prompt-question {
-  vertical-align: text-top;
+  vertical-align: top;
   display: inline-block;
   margin: govuk-spacing(2) govuk-spacing(4);
 
@@ -113,8 +113,16 @@
 
 .gem-c-feedback__prompt-link {
   @include govuk-font(19);
-  box-shadow: 0 2px 0 govuk-colour("black");
+  background: transparent;
+  box-shadow: 0 2px 0 govuk-colour("white");
+  border: 1px govuk-colour("white") solid;
   min-width: 100%;
+
+  &:hover {
+    // backup style for browsers that don't support rgba
+    background: govuk-colour("black");
+    background: rgba(govuk-colour("black"), .2);
+  }
 
   @include govuk-media-query($from: mobile) {
     min-width: 100px;

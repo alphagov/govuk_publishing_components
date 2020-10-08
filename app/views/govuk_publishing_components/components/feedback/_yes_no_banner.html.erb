@@ -6,18 +6,18 @@
   <div class="gem-c-feedback__prompt-questions js-prompt-questions">
     <h2 class="gem-c-feedback__prompt-question"><%= t("components.feedback.is_this_page_useful", default: "Is this page useful?") %></h2>
     <!-- Maybe button exists only to try and capture clicks by bots -->
-    <button class="govuk-button govuk-button--secondary gem-c-feedback__prompt-link" data-track-category="yesNoFeedbackForm" data-track-action="ffMaybeClick" aria-expanded="false" style="display: none" hidden="hidden" aria-hidden="true">
+    <button data-track-category="yesNoFeedbackForm" data-track-action="ffMaybeClick" aria-expanded="false" style="display: none" hidden="hidden" aria-hidden="true">
       <%= t("components.feedback.maybe", default: "Maybe") %>
     </button>
     
     <ul class="gem-c-feedback__option-list">
       <li class="gem-c-feedback__option-list-item">
-        <button class="govuk-button govuk-button--secondary gem-c-feedback__prompt-link js-page-is-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffYesClick">
+        <button class="govuk-button gem-c-feedback__prompt-link js-page-is-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffYesClick">
           <%= t("components.feedback.yes", default: "Yes") %> <span class="govuk-visually-hidden"><%= t("components.feedback.is_useful", default: "this page is useful") %></span>
         </button>
       </li>
       <li class="gem-c-feedback__option-list-item">
-        <button class="govuk-button govuk-button--secondary gem-c-feedback__prompt-link js-toggle-form js-page-is-not-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffNoClick" aria-controls="page-is-not-useful" aria-expanded="false">
+        <button class="govuk-button gem-c-feedback__prompt-link js-toggle-form js-page-is-not-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffNoClick" aria-controls="page-is-not-useful" aria-expanded="false">
           <%= t("components.feedback.no", default: "No") %> <span class="govuk-visually-hidden"><%= t("components.feedback.is_not_useful", default: "this page is not useful") %></span>
         </button>
       </li>
@@ -27,8 +27,8 @@
     <%= t("components.feedback.thank_you_for_feedback", default: "Thank you for your feedback") %>
   </div>
   <div class="gem-c-feedback__prompt-questions gem-c-feedback__prompt-questions--something-is-wrong js-prompt-questions">
-    <button class="govuk-button govuk-button--secondary gem-c-feedback__prompt-link js-toggle-form js-something-is-wrong" data-track-category="Onsite Feedback" data-track-action="GOV-UK Open Form" aria-controls="something-is-wrong" aria-expanded="false">
-      <%= t("components.feedback.anything_wrong", default: "Is there anything wrong with this page?") %>
+    <button class="govuk-button gem-c-feedback__prompt-link js-toggle-form js-something-is-wrong" data-track-category="Onsite Feedback" data-track-action="GOV-UK Open Form" aria-controls="something-is-wrong" aria-expanded="false">
+      <%= t("components.feedback.something_wrong", default: "There is something wrong with this page") %>
     </button>
   </div>
 </div>
