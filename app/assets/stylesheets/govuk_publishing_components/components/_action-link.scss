@@ -1,3 +1,5 @@
+$gem-hover-dark-background: #dddcdb;
+
 .gem-c-action-link {
   display: table;
 
@@ -171,10 +173,18 @@
       color: govuk-colour("white");
     }
 
+    &:hover {
+      color: $gem-hover-dark-background;
+    }
+
     &:focus,
     &:active {
       text-decoration: none;
       color: govuk-colour("black");
+
+      &:hover {
+        color: govuk-colour("black");
+      }
     }
   }
 
