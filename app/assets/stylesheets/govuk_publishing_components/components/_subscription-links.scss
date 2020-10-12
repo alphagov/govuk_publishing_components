@@ -1,79 +1,129 @@
 .gem-c-subscription-links {
   @include govuk-text-colour;
   @include govuk-font(19, $weight: bold);
+}
 
-  .gem-c-subscription-links__hidden-header {
-    @include govuk-visually-hidden;
-  }
+.gem-c-subscription-links__hidden-header {
+  @include govuk-visually-hidden;
+}
 
-  .gem-c-subscription-links__list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
+.gem-c-subscription-links__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 
-  .gem-c-subscription-links__list--small {
-    @include govuk-font(16);
-  }
+.gem-c-subscription-links__list--small {
+  @include govuk-font(16);
+}
 
-  .gem-c-subscription-links__list-item {
-    display: inline-block;
-    margin-right: govuk-spacing(4);
-    margin-bottom: govuk-spacing(3);
+.gem-c-subscription-links__list-item {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: govuk-spacing(4);
+  margin-bottom: govuk-spacing(3);
 
-    &:last-child {
-      margin-right: 0;
-    }
-  }
-
-  .gem-c-subscription-links__list-item--small {
-    display: inline-block;
-    margin-left: 0;
+  &:last-child {
     margin-right: 0;
-    margin-bottom: govuk-spacing(2);
+  }
+}
 
-    &:first-child {
-      margin-right: govuk-spacing(2);
-    }
+.gem-c-subscription-links__list-item--small {
+  display: inline-block;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: govuk-spacing(2);
 
-    &:only-child {
-      margin-right: 0;
-    }
+  &:first-child {
+    margin-right: govuk-spacing(2);
   }
 
-  .gem-c-subscription-links__link {
-    @extend %govuk-link;
+  &:only-child {
+    margin-right: 0;
+  }
+}
+
+.gem-c-subscription-links__item {
+  @extend %govuk-link;
+  display: inline-block;
+  text-decoration: none;
+  background-repeat: no-repeat;
+  background-position: 0 20%;
+
+  @include govuk-media-query($from: tablet) {
+    background-position: 0 35%;
+  }
+}
+
+.gem-c-subscription-links__item--button {
+  display: none;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  padding: govuk-spacing(2);
+  border: 1px solid $gem-quiet-button-colour;
+  background-color: $gem-secondary-button-background-colour;
+
+  .js-enabled & {
+    display: inline-block;
+  }
+
+  &:not(.brand__color) {
+    color: $govuk-link-colour;
+  }
+
+  &:visited,
+  &:active,
+  &:focus {
     text-decoration: none;
-    background-repeat: no-repeat;
-    background-position: 0 20%;
-
-    @include govuk-media-query($from: tablet) {
-      background-position: 0 35%;
-    }
   }
 
-  .gem-c-subscription-links__feed-box {
-    padding: govuk-spacing(3);
-    margin-bottom: govuk-spacing(3);
-    background: govuk-colour("light-grey", $legacy: "grey-3");
-
-    .js-enabled &.js-hidden {
-      display: none;
-    }
+  &:focus {
+    color: $govuk-focus-text-colour;
+    border: 1px solid $govuk-focus-colour;
+    outline: 3px solid transparent;
   }
 
-  .gem-c-subscription-links__feed-hidden-description {
+  &:hover:not(:focus) {
+    background-color: $gem-secondary-button-hover-background-colour;
+    text-decoration: none;
+  }
+}
+
+.gem-c-subscription-links__feed-box {
+  padding: govuk-spacing(3);
+  margin-bottom: govuk-spacing(3);
+  background: govuk-colour("light-grey", $legacy: "grey-3");
+
+  .js-enabled &.js-hidden {
+    display: none;
+  }
+}
+
+.gem-c-subscription-links__feed-hidden-description {
+  .js-enabled & {
     @include govuk-visually-hidden;
   }
 }
 
 .gem-c-subscription-links__icon {
   margin-right: .1em;
+  color: govuk-colour("black");
 }
 
-.gem-c-subscription-links__list-item--small {
-  .gem-c-subscription-links__icon {
-    @include scale(.9);
-    transform-origin: bottom left;
+.gem-c-subscription-links__list-item--small .gem-c-subscription-links__icon {
+  @include scale(.9);
+  transform-origin: bottom left;
+}
+
+.gem-c-subscription-links--with-feed-box {
+  .gem-c-subscription-links__item--link {
+    padding: govuk-spacing(2) govuk-spacing(2) govuk-spacing(2) 0;
+    border: 1px solid transparent;
+    border-bottom: 1px solid govuk-colour("dark-grey");
+
+    &:focus {
+      border-bottom-color: transparent;
+    }
   }
 }
