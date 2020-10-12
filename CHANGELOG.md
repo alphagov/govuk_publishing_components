@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Adding hover styling for action link ([PR #1728](https://github.com/alphagov/govuk_publishing_components/pull/1728))
 * Feed subscription link accessibility fix ([PR #1721](https://github.com/alphagov/govuk_publishing_components/pull/1721))
 * Update search component input label ([PR #1727](https://github.com/alphagov/govuk_publishing_components/pull/1727))
 
