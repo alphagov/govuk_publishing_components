@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add legacy colour to subscription links ([PR #1731](https://github.com/alphagov/govuk_publishing_components/pull/1731)) FIX
+
 ## 21.68.1
 
 * Adding hover styling for action link ([PR #1728](https://github.com/alphagov/govuk_publishing_components/pull/1728))
