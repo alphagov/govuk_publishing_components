@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Force contents list title to always be Contents or regional equivalent ([PR #1734](https://github.com/alphagov/govuk_publishing_components/pull/1734)) BREAKING
+
 ## 21.69.0
 
 * Update action link component to support simple light arrow ([PR #1739](https://github.com/alphagov/govuk_publishing_components/pull/1739))

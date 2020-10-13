@@ -137,18 +137,8 @@ describe "Contents list", type: :view do
     assert_select ".gem-c-contents-list__title", text: "Cynnwys"
   end
 
-  it "applies a custom title, if one is supplied" do
-    render_component(contents: contents_list, title: "On this page")
-    assert_select ".gem-c-contents-list__title", text: "On this page"
-  end
-
-  it "adds a lang attribute to the title, if a title_lang is supplied" do
-    render_component(contents: contents_list, title_lang: "fr")
-    assert_select ".gem-c-contents-list__title[lang=\"fr\"]"
-  end
-
-  it "hides the title" do
-    render_component(contents: nested_contents_list, hide_title: true)
-    assert_select ".gem-c-contents-list__title", false
+  it "adds a lang attribute to the title if falling back to English" do
+    I18n.with_locale(:ru) { render_component(contents: contents_list) }
+    assert_select ".gem-c-contents-list__title[lang=\"en\"]"
   end
 end
