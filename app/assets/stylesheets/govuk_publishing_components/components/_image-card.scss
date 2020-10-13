@@ -88,6 +88,7 @@
     height: 100%;
     $ie-background: rgba(255, 255, 255, 0);
     background: $ie-background; // because internet explorer
+    -ms-high-contrast-adjust: none;
   }
 
   @include govuk-media-query($from: mobile, $until: tablet) {
