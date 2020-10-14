@@ -2,15 +2,19 @@
   text ||= t('components.print_link.text')
   href ||= nil
   data_attributes ||= {}
-
   require_js ||= href.nil?
+
   data_attributes[:module] = 'print-link' if require_js
+
+  classes = %w(govuk-link)
+  classes << "gem-c-print-link__button" if href.nil?
+  classes << "gem-c-print-link__link govuk-link--no-visited-state" if href.present?
 %>
 
 <% if require_js %>
   <div class="gem-c-print-link" >
     <%= content_tag(:button, text, {
-        class: %w(gem-c-print-link__button govuk-link),
+        class: classes,
         data: data_attributes
     }) %>
   </div>
@@ -19,9 +23,13 @@
     <%= link_to(
       text,
       href,
-      class: %w(gem-c-print-link__link govuk-link),
+      class: classes,
       rel: "alternate",
-      data: data_attributes
+      data: data_attributes,
+      role: "button",
+      data: {
+        module: "button",
+      },
     ) %>
   </div>
 <% end %>
