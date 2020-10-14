@@ -11,10 +11,12 @@
         GOV.UK
       </span>
     </span>
-    <% unless public_environment %>
+    <% if product_name %>
       <span class="govuk-header__product-name gem-c-header__product-name">
         <%= product_name %>
       </span>
+    <% end %>
+    <% if environment %>
       <span class="gem-c-environment-tag govuk-tag gem-c-environment-tag--<%= environment %>">
         <%= environment %>
       </span>
