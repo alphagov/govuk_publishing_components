@@ -82,6 +82,15 @@ describe "Action link", type: :view do
     assert_select ".gem-c-action-link--simple"
   end
 
+  it "renders simple light icon version" do
+    render_component(
+      text: "Get more info",
+      href: "/coronavirus",
+      simple_light: true,
+    )
+    assert_select ".gem-c-action-link--simple-light"
+  end
+
   it "renders dark icon version" do
     render_component(
       text: "Get more info",

@@ -10,6 +10,7 @@
   mobile_subtext ||= false
   light_text ||= false
   simple ||= false
+  simple_light ||= false
   dark_icon ||= false
   small_icon ||= false
   nhs_icon ||= false
@@ -24,6 +25,7 @@
   css_classes << "gem-c-action-link--transparent-icon" if transparent_icon
   css_classes << "gem-c-action-link--nhs" if nhs_icon
   css_classes << "gem-c-action-link--simple" if simple
+  css_classes << "gem-c-action-link--simple-light" if simple_light
   css_classes << "gem-c-action-link--with-subtext" if subtext
   css_classes << "gem-c-action-link--mobile-subtext" if mobile_subtext
   css_classes << (shared_helper.get_margin_bottom)
