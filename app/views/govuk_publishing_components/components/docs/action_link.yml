@@ -83,6 +83,14 @@ examples:
       text: Getting financial help and keeping your business safe
       href: "/financial-help"
       simple: true
+  simple_light_arrow:
+    data:
+      text: Getting financial help and keeping your business safe
+      href: "/financial-help"
+      light_text: true
+      simple_light: true
+    context:
+      dark_background: true
   with_small_icon:
     data:
       text: Coronavirus (COVID-19)

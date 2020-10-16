@@ -115,6 +115,22 @@ $gem-hover-dark-background: #dddcdb;
   }
 }
 
+.gem-c-action-link--simple-light {
+  &:before {
+    width: 30px;
+    height: 30px;
+    background: image-url("govuk_publishing_components/action-link-arrow--simple-light.png");
+    background: image-url("govuk_publishing_components/action-link-arrow--simple-light.svg"), linear-gradient(transparent, transparent);
+    background-repeat: no-repeat;
+    background-size: 25px auto;
+    background-position: 0 2px;
+  }
+
+  .gem-c-action-link__link {
+    text-decoration: none;
+  }
+}
+
 .gem-c-action-link--dark-icon {
   &:before {
     background: image-url("govuk_publishing_components/action-link-arrow--dark.png");

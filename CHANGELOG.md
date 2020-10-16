@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Update action link component to support simple light arrow ([PR #1739](https://github.com/alphagov/govuk_publishing_components/pull/1739))
 * Update print component to look like a button ([PR #1735](https://github.com/alphagov/govuk_publishing_components/pull/1735)) MINOR
 * Add legacy colour to subscription links ([PR #1731](https://github.com/alphagov/govuk_publishing_components/pull/1731)) FIX
 
