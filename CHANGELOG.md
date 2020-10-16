@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 21.69.0
 
 * Update action link component to support simple light arrow ([PR #1739](https://github.com/alphagov/govuk_publishing_components/pull/1739))
 * Update print component to look like a button ([PR #1735](https://github.com/alphagov/govuk_publishing_components/pull/1735)) MINOR
