@@ -23,3 +23,7 @@ examples:
       prepend: The next bank holiday in England and Wales is
       title: 19 April
       append: Good Friday
+  with_different_heading_level:
+    data:
+      title: This is a H1
+      heading_level: 1

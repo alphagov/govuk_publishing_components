@@ -2,9 +2,11 @@
   description ||= false
   prepend ||= false
   append ||= false
+
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 %>
 <div class="gem-c-panel govuk-panel govuk-panel--confirmation">
-  <h2 class="govuk-panel__title">
+  <%= content_tag(shared_helper.get_heading_level, class: "govuk-panel__title") do %>
     <% if prepend %>
       <span class="gem-c-panel__prepend">
         <%= prepend %>
@@ -18,7 +20,8 @@
         <%= append %>
       </span>
     <% end %>
-  </h2>
+  <% end %>
+
   <% if description %>
     <div class="govuk-panel__body">
       <%= description %>

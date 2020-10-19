@@ -32,4 +32,21 @@ describe "Panel", type: :view do
     assert_select ".gem-c-panel__prepend", text: "Prepended content"
     assert_select ".gem-c-panel__append", text: "Appended content"
   end
+
+  it "renders with a default heading level of 2" do
+    render_component(
+      title: "Application complete",
+    )
+
+    assert_select "h2.govuk-panel__title", text: "Application complete"
+  end
+
+  it "renders with a different heading level" do
+    render_component(
+      title: "Application complete",
+      heading_level: 1,
+    )
+
+    assert_select "h1.govuk-panel__title", text: "Application complete"
+  end
 end
