@@ -1,13 +1,10 @@
 <%-
   cl_helper = GovukPublishingComponents::Presenters::ContentsListHelper.new(local_assigns)
-  aria_label ||= "Contents"
+  aria_label ||= t("components.contents_list.contents")
   format_numbers ||= false
-  title_lang ||= false
-  title = local_assigns[:title].presence || t("components.contents_list.contents")
-  hide_title ||= false
   brand ||= false
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
-
+  title_fallback = t("components.contents_list.contents", locale: I18n.locale, fallback: false, default: "en")
   classes = cl_helper.classes
   classes << brand_helper.brand_class
 -%>
@@ -21,14 +18,12 @@
       module: "track-click"
     }
   ) do %>
-    <% unless hide_title %>
-      <%= content_tag(
-        :h2,
-        class: "gem-c-contents-list__title",
-        lang: title_lang.presence
-      ) do %>
-        <%= title %>
-      <% end %>
+    <%= content_tag(
+      :h2, {class: "gem-c-contents-list__title"}.merge(
+        title_fallback == "en" ? {:lang => "en",} : {}
+      )
+    ) do %>
+      <%= t("components.contents_list.contents") %>
     <% end %>
 
     <ol class="gem-c-contents-list__list">
