@@ -5,6 +5,7 @@
   require_js ||= href.nil?
 
   data_attributes[:module] = 'print-link' if require_js
+  data_attributes[:module] = 'button' if href.present?
 
   classes = %w(govuk-link)
   classes << "gem-c-print-link__button" if href.nil?
@@ -27,9 +28,6 @@
       rel: "alternate",
       data: data_attributes,
       role: "button",
-      data: {
-        module: "button",
-      },
     ) %>
   </div>
 <% end %>
