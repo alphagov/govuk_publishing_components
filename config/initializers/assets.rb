@@ -11,6 +11,7 @@ Rails.application.config.assets.precompile += %w[
   govuk_publishing_components/ie.js
   govuk_publishing_components/modules.js
   govuk_publishing_components/vendor/modernizr.js
+  govuk_publishing_components/analytics.js
   govuk_publishing_components/component_guide.css
   govuk_publishing_components/favicon-development.png
   govuk_publishing_components/favicon-example.png
