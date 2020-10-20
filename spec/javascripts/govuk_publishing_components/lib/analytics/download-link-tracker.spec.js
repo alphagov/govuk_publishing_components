@@ -32,7 +32,7 @@ describe('GOVUK.analyticsPlugins.downloadLinkTracker', function () {
     $('html').off()
     $('body').off()
     $links.remove()
-    delete GOVUK.analytics
+    GOVUK.analytics.trackEvent.calls.reset()
   })
 
   it('listens to clicks on links that match the selector', function () {

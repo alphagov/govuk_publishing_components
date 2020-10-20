@@ -15,7 +15,7 @@ describe('An auto event tracker', function () {
   })
 
   afterEach(function () {
-    delete GOVUK.analytics
+    GOVUK.analytics.trackEvent.calls.reset()
   })
 
   it('tracks non-interactive events on start', function () {

@@ -28,7 +28,7 @@ describe('GOVUK.analyticsPlugins.mailtoLinkTracker', function () {
     $('html').off()
     $('body').off()
     $links.remove()
-    delete GOVUK.analytics
+    GOVUK.analytics.trackEvent.calls.reset()
   })
 
   it('listens to click events on mailto links', function () {

@@ -24,6 +24,10 @@ describe('GOVUK.analyticsPlugins.externalLinkTracker', function () {
 
     $('html').on('click', function (evt) { evt.preventDefault() })
     $('body').append($links)
+
+    if (typeof GOVUK.analytics.setDimension == "undefined") {
+      GOVUK.analytics.setDimension = function () {}
+    }
     GOVUK.analytics = {
       trackEvent: function () {},
       setDimension: function () {}
@@ -36,13 +40,15 @@ describe('GOVUK.analyticsPlugins.externalLinkTracker', function () {
     $('html').off()
     $('body').off()
     $links.remove()
-    delete GOVUK.analytics
+    GOVUK.analytics.trackEvent.calls.reset()
+    GOVUK.analytics.setDimension.calls.reset()
   })
 
   it('listens to click events on only external links', function () {
     GOVUK.analyticsPlugins.externalLinkTracker({externalLinkUploadCustomDimension: 36})
 
     spyOn(GOVUK.analytics, 'trackEvent')
+    spyOn(GOVUK.analytics, 'setDimension')
 
     $('.external-links a').each(function () {
       $(this).trigger('click')
@@ -61,6 +67,7 @@ describe('GOVUK.analyticsPlugins.externalLinkTracker', function () {
     GOVUK.analyticsPlugins.externalLinkTracker({externalLinkUploadCustomDimension: 36})
 
     spyOn(GOVUK.analytics, 'trackEvent')
+    spyOn(GOVUK.analytics, 'setDimension')
 
     $('.external-links a img').trigger('click')
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith(
@@ -71,6 +78,7 @@ describe('GOVUK.analyticsPlugins.externalLinkTracker', function () {
     GOVUK.analyticsPlugins.externalLinkTracker({externalLinkUploadCustomDimension: 36})
 
     spyOn(GOVUK.analytics, 'trackEvent')
+    spyOn(GOVUK.analytics, 'setDimension')
     $('.external-links a').trigger('click')
 
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith(

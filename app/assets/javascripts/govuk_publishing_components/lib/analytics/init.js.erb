@@ -26,8 +26,8 @@ var analyticsInit = function() {
     // Otherwise explicitly set the domain as www.gov.uk (and not gov.uk).
     var cookieDomain = (document.domain == 'www.gov.uk') ? '.www.gov.uk' : document.domain;
 
-    var universalId = '<%= Rails.application.config.ga_universal_id %>';
-    var secondaryId = '<%= Rails.application.config.ga_secondary_id %>';
+    var universalId = "UA-26179049-1";
+    var secondaryId = "UA-145652997-1";
 
     // Configure profiles, setup custom vars, track initial pageview
     var analytics = new GOVUK.StaticAnalytics({

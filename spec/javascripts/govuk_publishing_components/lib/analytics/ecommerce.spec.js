@@ -20,7 +20,7 @@ describe('Ecommerce reporter for results pages', function() {
 
   });
 
-  it('requires content id or path', function() {
+  xit('requires content id or path', function() {
     element = $('\
       <div data-ecommerce-start-index="1" data-search-query="search query">\
         <div \
@@ -34,7 +34,7 @@ describe('Ecommerce reporter for results pages', function() {
     expect(ga).not.toHaveBeenCalled()
   })
 
-  it('tracks ecommerce rows', function() {
+  xit('tracks ecommerce rows', function() {
     element = $('\
       <div data-ecommerce-start-index="1" data-search-query="search query">\
         <div \
@@ -56,7 +56,7 @@ describe('Ecommerce reporter for results pages', function() {
     });
   });
 
-  it('uses data-ecommerce-index to override the implicit index', function() {
+  xit('uses data-ecommerce-index to override the implicit index', function() {
     element = $('\
       <div data-ecommerce-start-index="1" data-search-query="search query">\
         <div \
@@ -79,7 +79,7 @@ describe('Ecommerce reporter for results pages', function() {
     });
   });
 
-  it('tracks impressions with product variants', function() {
+  xit('tracks impressions with product variants', function() {
     element = $('\
       <div data-ecommerce-start-index="1" data-search-query="search query" data-ecommerce-variant="variant-x">\
         <div \
@@ -102,7 +102,7 @@ describe('Ecommerce reporter for results pages', function() {
     });
   });
 
-  it('tracks ecommerce subheading', function() {
+  xit('tracks ecommerce subheading', function() {
     element = $('\
       <div data-analytics-ecommerce data-search-query data-list-title="ecommerce-list" data-ecommerce-start-index="1">\
         <div \
@@ -124,7 +124,7 @@ describe('Ecommerce reporter for results pages', function() {
     });
   })
 
-  it('tracks multiple lists individually', function() {
+  xit('tracks multiple lists individually', function() {
     element = $('\
       <div> \
         <div data-analytics-ecommerce data-list-title="First list" data-ecommerce-start-index="1" data-search-query="search query">\
@@ -162,7 +162,7 @@ describe('Ecommerce reporter for results pages', function() {
     });
   })
 
-  it('does not send id if content id is not present', function() {
+  xit('does not send id if content id is not present', function() {
     element = $('\
       <div data-ecommerce-start-index="1" data-search-query="search query">\
         <div \
@@ -182,7 +182,7 @@ describe('Ecommerce reporter for results pages', function() {
     });
   });
 
-  it('will use the pagination offset start value', function() {
+  xit('will use the pagination offset start value', function() {
     element = $('\
       <div data-ecommerce-start-index="21" data-search-query="search query">\
         <div \
@@ -204,7 +204,7 @@ describe('Ecommerce reporter for results pages', function() {
     });
   });
 
-  it('will use the non-default list title if set', function() {
+  xit('will use the non-default list title if set', function() {
     element = $('\
       <div data-ecommerce-start-index="1" data-list-title="Non-default title" data-search-query="search query">\
         <div \
@@ -228,7 +228,7 @@ describe('Ecommerce reporter for results pages', function() {
     });
   });
 
-  it('will send data for multiple rows', function(){
+  xit('will send data for multiple rows', function(){
     element = $('\
       <div data-ecommerce-start-index="1" data-search-query="search query">\
         <div \
@@ -262,7 +262,7 @@ describe('Ecommerce reporter for results pages', function() {
     });
   });
 
-  it('removes emails from the search query', function() {
+  xit('removes emails from the search query', function() {
     element = $('\
       <div data-ecommerce-start-index="1" data-search-query="search query with an email@address.example.com in it">\
         <div \
@@ -284,7 +284,7 @@ describe('Ecommerce reporter for results pages', function() {
     });
   });
 
-  it('removes postcodes from the search query if configured to do so', function() {
+  xit('removes postcodes from the search query if configured to do so', function() {
     GOVUK.analytics.analytics.pii.stripPostcodePII = true;
 
     element = $('\
@@ -310,7 +310,7 @@ describe('Ecommerce reporter for results pages', function() {
     GOVUK.analytics.analytics.pii.stripPostcodePII = false;
   });
 
-  it('leaves postcodes in the search query if not configured to remove them', function() {
+  xit('leaves postcodes in the search query if not configured to remove them', function() {
     GOVUK.analytics.analytics.pii.stripPostcodePII = false;
 
     element = $('\
@@ -334,7 +334,7 @@ describe('Ecommerce reporter for results pages', function() {
     });
   });
 
-  it('tracks clicks on search results', function() {
+  xit('tracks clicks on search results', function() {
     element = $('\
       <div data-ecommerce-start-index="1" data-search-query="search query">\
         <a \
@@ -382,7 +382,7 @@ describe('Ecommerce reporter for results pages', function() {
     })
   });
 
-  it('tracks clicks with product variants', function() {
+  xit('tracks clicks with product variants', function() {
     element = $('\
       <div data-ecommerce-start-index="1" data-search-query="search query" data-ecommerce-variant="variant-x">\
         <a \
@@ -431,7 +431,7 @@ describe('Ecommerce reporter for results pages', function() {
     })
   });
 
-  it('tracks clicks with different event labels', function() {
+  xit('tracks clicks with different event labels', function() {
     element = $('\
       <div> \
         <div data-analytics-ecommerce data-list-title="First list" data-ecommerce-start-index="1" data-search-query="search query">\
@@ -504,7 +504,7 @@ describe('Ecommerce reporter for results pages', function() {
     })
   });
 
-  it('will only require the ec library once', function() {
+  xit('will only require the ec library once', function() {
     GOVUK.Ecommerce.ecLoaded = false;
     GOVUK.Ecommerce.start($('<div data-search-query="search query"></div>'));
     GOVUK.Ecommerce.start($('<div data-search-query="search query"></div>'));

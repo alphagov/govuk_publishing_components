@@ -25,8 +25,15 @@ describe('GOVUK.GoogleAnalyticsUniversalTracker', function () {
     })
   })
 
+  afterEach(function () {
+    $('head').find('meta[name="govuk:static-analytics:strip-dates"]').remove()
+    $('head').find('meta[name="govuk:static-analytics:strip-postcodes"]').remove()
+    $('[src="https://www.google-analytics.com/analytics.js"]').remove()
+  })
+
   it('can load the libraries needed to run universal Google Analytics', function () {
     delete window.ga
+    // window.ga.calls.reset()
     $('[src="https://www.google-analytics.com/analytics.js"]').remove()
     GOVUK.GoogleAnalyticsUniversalTracker.load()
     expect($('script[async][src="https://www.google-analytics.com/analytics.js"]').length).toBe(1)
@@ -206,7 +213,8 @@ describe('GOVUK.GoogleAnalyticsUniversalTracker', function () {
     })
 
     it('removes any pii from the title', function () {
-      document.title = "With email@email.com 2012-01-01 and wc2b 6nh in it"
+      var title = document.title
+      $('title').html("With email@email.com 2012-01-01 and wc2b 6nh in it")
       // need to reinit all the GA setup because the page title has changed
       addGoogleAnalyticsSpy()
       pageWantsDatesStripped()
@@ -218,6 +226,7 @@ describe('GOVUK.GoogleAnalyticsUniversalTracker', function () {
       })
 
       expect(window.ga.calls.allArgs()).toContain([ 'set', 'title', 'With [email] [date] and [postcode] in it' ])
+      $('title').html(title)
     })
   })
 
@@ -244,8 +253,23 @@ describe('GOVUK.GoogleAnalyticsUniversalTracker', function () {
       expect(window.ga.calls.mostRecent().args).toEqual(['testTracker.send', 'pageview'])
     })
     it('removes pii from the pageview', function () {
+      var title = document.title
+      $('title').html("With email@email.com 2012-01-01 and wc2b 6nh in it")
+
+      // need to reinit all the GA setup because the page title has changed
+      addGoogleAnalyticsSpy()
+      pageWantsDatesStripped()
+      pageWantsPostcodesStripped()
+
+      universal = new GOVUK.GoogleAnalyticsUniversalTracker('id', {
+        cookieDomain: 'cookie-domain.com',
+        siteSpeedSampleRate: 100
+      })
+
       expect(window.ga.calls.allArgs()).toContain(['set', 'title' , 'With [email] [date] and [postcode] in it'])
       expect(window.ga.calls.argsFor(4)[2]).toContain('?address=[email]&postcode=[postcode]&date=[date]')
+
+      $('title').html(title)
     })
     it('can omit sending a pageview', function () {
       universal.addLinkedTrackerDomain('UA-123456', 'testTracker', 'some.service.gov.uk', false)

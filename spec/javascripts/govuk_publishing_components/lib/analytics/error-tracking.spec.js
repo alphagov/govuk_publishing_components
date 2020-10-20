@@ -12,7 +12,7 @@ describe('GOVUK.analyticsPlugins.error', function () {
   })
 
   afterEach(function () {
-    delete GOVUK.analytics
+    GOVUK.analytics.trackEvent.calls.reset()
   })
 
   xit('sends errors to Google Analytics', function () {
