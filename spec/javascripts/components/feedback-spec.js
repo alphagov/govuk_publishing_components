@@ -88,6 +88,14 @@ describe('Feedback component', function () {
 
   beforeEach(function () {
     window.setFixtures(FIXTURE)
+    if (typeof GOVUK.analytics == "undefined") {
+      GOVUK.analytics = {trackEvent: function () {}}
+    }
+    spyOn(GOVUK.analytics, 'trackEvent')
+  })
+
+  afterEach(function () {
+    GOVUK.analytics.trackEvent.calls.reset()
   })
 
   it('hides the forms', function () {
@@ -163,12 +171,6 @@ describe('Feedback component', function () {
     })
 
     it('triggers a Google Analytics event', function () {
-      GOVUK.analytics = {
-        trackEvent: function () {
-        }
-      }
-      spyOn(GOVUK.analytics, 'trackEvent')
-
       loadFeedbackComponent()
       $('a.js-page-is-useful').click()
 
@@ -216,12 +218,6 @@ describe('Feedback component', function () {
     })
 
     it('triggers a Google Analytics event', function () {
-      GOVUK.analytics = {
-        trackEvent: function () {
-        }
-      }
-      spyOn(GOVUK.analytics, 'trackEvent')
-
       loadFeedbackComponent()
       $('a.js-page-is-not-useful').click()
 
@@ -269,12 +265,6 @@ describe('Feedback component', function () {
     })
 
     it('triggers a Google Analytics event', function () {
-      GOVUK.analytics = {
-        trackEvent: function () {
-        }
-      }
-      spyOn(GOVUK.analytics, 'trackEvent')
-
       loadFeedbackComponent()
       $('a.js-something-is-wrong').click()
 
@@ -312,12 +302,6 @@ describe('Feedback component', function () {
     })
 
     it('triggers a Google Analytics event', function () {
-      GOVUK.analytics = {
-        trackEvent: function () {
-        }
-      }
-      spyOn(GOVUK.analytics, 'trackEvent')
-
       $('#something-is-wrong a.js-close-form').click()
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('Onsite Feedback', 'GOV.UK Close Form')
@@ -354,12 +338,6 @@ describe('Feedback component', function () {
     })
 
     it('triggers a Google Analytics event', function () {
-      GOVUK.analytics = {
-        trackEvent: function () {
-        }
-      }
-      spyOn(GOVUK.analytics, 'trackEvent')
-
       $('#page-is-not-useful a.js-close-form').click()
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('yesNoFeedbackForm', 'ffFormClose')
@@ -376,12 +354,6 @@ describe('Feedback component', function () {
     })
 
     it('triggers a Google Analytics event', function () {
-      GOVUK.analytics = {
-        trackEvent: function () {
-        }
-      }
-      spyOn(GOVUK.analytics, 'trackEvent')
-
       loadFeedbackComponent()
       fillAndSubmitSomethingIsWrongForm()
 
@@ -476,12 +448,6 @@ describe('Feedback component', function () {
     })
 
     it('triggers a Google Analytics event', function () {
-      GOVUK.analytics = {
-        trackEvent: function () {
-        }
-      }
-      spyOn(GOVUK.analytics, 'trackEvent')
-
       loadFeedbackComponent()
       fillAndSubmitPageIsNotUsefulForm()
 

@@ -102,12 +102,22 @@ describe('A stepnav module', function () {
     expectedstepnavStepCount = $element.find('.gem-c-step-nav__step').length
     expectedstepnavContentCount = $element.find('.gem-c-step-nav__step').first().find('.js-link').length
     expectedstepnavLinkCount = $element.find('.gem-c-step-nav__list-item').length
+
+    if (typeof GOVUK.analytics == "undefined") {
+      GOVUK.analytics = {trackEvent: function () {}}
+    }
+    spyOn(GOVUK.analytics, 'trackEvent')
   })
 
   afterEach(function () {
     $(document).off()
     window.sessionStorage.clear()
+
+    if (GOVUK.analytics.calls) {
+      GOVUK.analytics.calls.reset()
+    }
   })
+
 
   it('has a class of gem-c-step-nav--active to indicate the js has loaded', function () {
     expect($element).toHaveClass('gem-c-step-nav--active')
@@ -158,11 +168,6 @@ describe('A stepnav module', function () {
 
   describe('Clicking the "Show all" button', function () {
     beforeEach(function () {
-      GOVUK.analytics = {
-        trackEvent: function () {
-        }
-      }
-      spyOn(GOVUK.analytics, 'trackEvent')
       clickShowHideAll()
     })
 
@@ -198,12 +203,6 @@ describe('A stepnav module', function () {
 
   describe('Clicking the "Hide all" button', function () {
     beforeEach(function () {
-      GOVUK.analytics = {
-        trackEvent: function () {
-        }
-      }
-      spyOn(GOVUK.analytics, 'trackEvent')
-
       clickShowHideAll()
       clickShowHideAll()
     })
@@ -230,6 +229,7 @@ describe('A stepnav module', function () {
 
   describe('Opening a step', function () {
     // When a step is open (testing: toggleStep, openStep)
+
     it('has a class of step-is-shown', function () {
       var $stepLink = $element.find('.gem-c-step-nav__header .gem-c-step-nav__button--title').first()
       var $step = $element.find('.gem-c-step-nav__step').first()
@@ -245,12 +245,6 @@ describe('A stepnav module', function () {
     })
 
     it('triggers a google analytics custom event when clicking on the title', function () {
-      GOVUK.analytics = {
-        trackEvent: function () {
-        }
-      }
-      spyOn(GOVUK.analytics, 'trackEvent')
-
       var $stepLink = $element.find('.gem-c-step-nav__header .js-step-title-text').first()
       $stepLink.click()
 
@@ -264,12 +258,6 @@ describe('A stepnav module', function () {
     })
 
     it('triggers a google analytics custom event when clicking on the icon', function () {
-      GOVUK.analytics = {
-        trackEvent: function () {
-        }
-      }
-      spyOn(GOVUK.analytics, 'trackEvent')
-
       var $stepIcon = $element.find('.js-toggle-link')
       $stepIcon.click()
 
@@ -283,12 +271,6 @@ describe('A stepnav module', function () {
     })
 
     it('triggers a google analytics custom event when clicking in space in the header', function () {
-      GOVUK.analytics = {
-        trackEvent: function () {
-        }
-      }
-      spyOn(GOVUK.analytics, 'trackEvent')
-
       var $stepHeader = $element.find('.gem-c-step-nav__header')
       $stepHeader.click()
 
@@ -304,6 +286,7 @@ describe('A stepnav module', function () {
 
   describe('Hiding a step', function () {
     // When a step is hidden (testing: toggleStep, hideStep)
+
     it('removes the step-is-shown class', function () {
       var $stepLink = $element.find('.gem-c-step-nav__header .gem-c-step-nav__button--title')
       var $step = $element.find('.gem-c-step-nav__step')
@@ -323,12 +306,6 @@ describe('A stepnav module', function () {
     })
 
     it('triggers a google analytics custom event when clicking on the title', function () {
-      GOVUK.analytics = {
-        trackEvent: function () {
-        }
-      }
-      spyOn(GOVUK.analytics, 'trackEvent')
-
       var $stepLink = $element.find('.gem-c-step-nav__header .js-step-title-text')
       $stepLink.click() // show
       $stepLink.click() // hide
@@ -343,12 +320,6 @@ describe('A stepnav module', function () {
     })
 
     it('triggers a google analytics custom event when clicking on the icon', function () {
-      GOVUK.analytics = {
-        trackEvent: function () {
-        }
-      }
-      spyOn(GOVUK.analytics, 'trackEvent')
-
       var $stepIcon = $element.find('.js-toggle-link')
       $stepIcon.click()
       $stepIcon.click()
@@ -363,12 +334,6 @@ describe('A stepnav module', function () {
     })
 
     it('triggers a google analytics custom event when clicking in space in the header', function () {
-      GOVUK.analytics = {
-        trackEvent: function () {
-        }
-      }
-      spyOn(GOVUK.analytics, 'trackEvent')
-
       var $stepHeader = $element.find('.gem-c-step-nav__header')
       $stepHeader.click()
       $stepHeader.click()
@@ -579,12 +544,6 @@ describe('A stepnav module', function () {
       $element = $(html)
       $element.addClass('gem-c-step-nav--large')
       new GOVUK.Modules.Gemstepnav().start($element)
-
-      GOVUK.analytics = {
-        trackEvent: function () {
-        }
-      }
-      spyOn(GOVUK.analytics, 'trackEvent')
     })
 
     it('triggers a google analytics custom event when clicking on the title on a big stepnav', function () {
@@ -705,12 +664,6 @@ describe('A stepnav module', function () {
   })
 
   it('triggers a google analytics event when clicking a panel link', function () {
-    GOVUK.analytics = {
-      trackEvent: function () {
-      }
-    }
-    spyOn(GOVUK.analytics, 'trackEvent')
-
     var $panelLink = $element.find('.js-link')
     $panelLink[0].click()
 
@@ -724,12 +677,6 @@ describe('A stepnav module', function () {
   })
 
   it('triggers a google analytics event when clicking to show an optional step', function () {
-    GOVUK.analytics = {
-      trackEvent: function () {
-      }
-    }
-    spyOn(GOVUK.analytics, 'trackEvent')
-
     var $stepHeader = $element.find('.js-step:nth-child(3) .gem-c-step-nav__header')
     $stepHeader.click()
 
@@ -892,12 +839,6 @@ describe('A stepnav module', function () {
       $element = $(html)
       $element.removeAttr('data-id')
       new GOVUK.Modules.Gemstepnav().start($element)
-
-      GOVUK.analytics = {
-        trackEvent: function () {
-        }
-      }
-      spyOn(GOVUK.analytics, 'trackEvent')
     })
 
     it('triggers a google analytics custom event on show all', function () {
@@ -912,12 +853,6 @@ describe('A stepnav module', function () {
     })
 
     it('triggers a google analytics custom event on hide all', function () {
-      GOVUK.analytics = {
-        trackEvent: function () {
-        }
-      }
-      spyOn(GOVUK.analytics, 'trackEvent')
-
       clickShowHideAll()
       clickShowHideAll()
 
