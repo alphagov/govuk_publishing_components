@@ -116,6 +116,9 @@ describe('A stepnav module', function () {
     if (GOVUK.analytics.calls) {
       GOVUK.analytics.calls.reset()
     }
+    if (GOVUK.analytics.trackEvent.calls) {
+      GOVUK.analytics.trackEvent.calls.reset()
+    }
   })
 
   it('has a class of gem-c-step-nav--active to indicate the js has loaded', function () {

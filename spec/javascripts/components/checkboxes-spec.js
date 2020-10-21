@@ -80,6 +80,12 @@ describe('Checkboxes component', function () {
     spyOn(GOVUK.analytics, 'trackEvent')
   })
 
+  afterEach(function () {
+    if (GOVUK.analytics.trackEvent.calls) {
+      GOVUK.analytics.trackEvent.calls.reset()
+    }
+  })
+
   it('checking a parent checkbox checks all its children', function () {
     $parentCheckbox.click()
 

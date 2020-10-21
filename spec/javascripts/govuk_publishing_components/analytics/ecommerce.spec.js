@@ -24,6 +24,7 @@ describe('Ecommerce reporter for results pages', function () {
       campaigns: false
     })
 
+    delete window.GOVUK.analytics
     window.GOVUK.analyticsInit()
     ecommerce = new GOVUK.Ecommerce()
     GOVUK.analytics.gaClientId = '12345.67890'

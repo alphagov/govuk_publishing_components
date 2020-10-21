@@ -1,4 +1,4 @@
-/* global describe it expect beforeEach jasmine spyOn */
+/* eslint-env jasmine, jquery */
 
 describe('GOVUK.Analytics', function () {
   'use strict'
