@@ -6,7 +6,7 @@
   // https://github.com/alphagov/govuk_frontend_toolkit/blob/master/docs/analytics.md#create-an-analytics-tracker
 
   var Analytics = function (config) {
-    this.pii = new GOVUK.pii()
+    this.pii = new GOVUK.Pii()
     this.trackers = []
     if (typeof config.universalId !== 'undefined') {
       var universalId = config.universalId

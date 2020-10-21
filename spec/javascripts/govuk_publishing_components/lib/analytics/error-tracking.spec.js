@@ -1,14 +1,14 @@
-/* global describe it expect beforeEach afterEach spyOn */
+/* eslint-env jasmine, jquery */
+/* global GOVUK */
 
 describe('GOVUK.analyticsPlugins.error', function () {
   'use strict'
-  var GOVUK = window.GOVUK
 
-  GOVUK.analyticsPlugins.error({filenameMustMatch: /gov\.uk/})
+  GOVUK.analyticsPlugins.error({ filenameMustMatch: /gov\.uk/ })
 
   beforeEach(function () {
-    if (typeof GOVUK.analytics == "undefined") {
-      GOVUK.analytics = {trackEvent: function () {}}
+    if (typeof GOVUK.analytics === 'undefined') {
+      GOVUK.analytics = { trackEvent: function () {} }
     }
     spyOn(GOVUK.analytics, 'trackEvent')
   })
@@ -37,7 +37,8 @@ describe('GOVUK.analyticsPlugins.error', function () {
       {
         label: 'http://www.gov.uk/somefile.js: 2',
         value: 1,
-        nonInteraction: true })
+        nonInteraction: true
+      })
 
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith(
       'JavaScript Error',
@@ -45,7 +46,8 @@ describe('GOVUK.analyticsPlugins.error', function () {
       {
         label: ': 2',
         value: 1,
-        nonInteraction: true })
+        nonInteraction: true
+      })
 
     expect(GOVUK.analytics.trackEvent).not.toHaveBeenCalledWith(
       'JavaScript Error',
@@ -53,7 +55,8 @@ describe('GOVUK.analyticsPlugins.error', function () {
       {
         label: 'http://www.broken-external-plugin-site.com/horrible.js: 2',
         value: 1,
-        nonInteraction: true })
+        nonInteraction: true
+      })
   })
 
   function triggerError (filename, lineno, message) {

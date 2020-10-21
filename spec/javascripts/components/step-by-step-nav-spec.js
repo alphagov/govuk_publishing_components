@@ -103,8 +103,8 @@ describe('A stepnav module', function () {
     expectedstepnavContentCount = $element.find('.gem-c-step-nav__step').first().find('.js-link').length
     expectedstepnavLinkCount = $element.find('.gem-c-step-nav__list-item').length
 
-    if (typeof GOVUK.analytics == "undefined") {
-      GOVUK.analytics = {trackEvent: function () {}}
+    if (typeof GOVUK.analytics === 'undefined') {
+      GOVUK.analytics = { trackEvent: function () {} }
     }
     spyOn(GOVUK.analytics, 'trackEvent')
   })
@@ -117,7 +117,6 @@ describe('A stepnav module', function () {
       GOVUK.analytics.calls.reset()
     }
   })
-
 
   it('has a class of gem-c-step-nav--active to indicate the js has loaded', function () {
     expect($element).toHaveClass('gem-c-step-nav--active')

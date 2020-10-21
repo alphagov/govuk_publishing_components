@@ -6,8 +6,8 @@ describe('A toggle module', function () {
 
   var element
 
-  if (typeof GOVUK.analytics == "undefined") {
-    GOVUK.analytics = {trackEvent: function () {}}
+  if (typeof GOVUK.analytics === 'undefined') {
+    GOVUK.analytics = { trackEvent: function () {} }
   }
 
   describe('when starting', function () {

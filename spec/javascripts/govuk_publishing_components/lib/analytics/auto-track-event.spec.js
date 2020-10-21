@@ -10,8 +10,8 @@ describe('An auto event tracker', function () {
     element
 
   beforeEach(function () {
-    if (typeof GOVUK.analytics == "undefined") {
-      GOVUK.analytics = {trackEvent: function () {}}
+    if (typeof GOVUK.analytics === 'undefined') {
+      GOVUK.analytics = { trackEvent: function () {} }
     }
     tracker = new GOVUK.Modules.AutoTrackEvent()
   })
@@ -33,7 +33,7 @@ describe('An auto event tracker', function () {
 
     tracker.start(element)
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith(
-      'category', 'action', {nonInteraction: 1})
+      'category', 'action', { nonInteraction: 1 })
   })
 
   it('can track non-interactive events with optional label and value', function () {
@@ -51,6 +51,6 @@ describe('An auto event tracker', function () {
 
     tracker.start(element)
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith(
-      'category', 'action', {label: 'label', value: 10, nonInteraction: 1})
+      'category', 'action', { label: 'label', value: 10, nonInteraction: 1 })
   })
 })

@@ -25,10 +25,10 @@ describe('GOVUK.analyticsPlugins.downloadLinkTracker', function () {
     $('html').on('click', function (evt) { evt.preventDefault() })
     $('body').append($links)
 
-    if (typeof GOVUK.analytics == "undefined") {
-      GOVUK.analytics = {trackEvent: function () {}}
+    if (typeof GOVUK.analytics === 'undefined') {
+      GOVUK.analytics = { trackEvent: function () {} }
     }
-    GOVUK.analyticsPlugins.downloadLinkTracker({selector: 'a[href$=".pdf"], a[href$=".xslt"], a[href$=".doc"], a[href$=".png"]'})
+    GOVUK.analyticsPlugins.downloadLinkTracker({ selector: 'a[href$=".pdf"], a[href$=".xslt"], a[href$=".doc"], a[href$=".png"]' })
   })
 
   afterEach(function () {
@@ -58,7 +58,7 @@ describe('GOVUK.analyticsPlugins.downloadLinkTracker', function () {
     spyOn(GOVUK.analytics, 'trackEvent')
 
     $('.download-links a img').trigger('click')
-    expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('Download Link Clicked', '/an/image/link.png', {transport: 'beacon'})
+    expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('Download Link Clicked', '/an/image/link.png', { transport: 'beacon' })
   })
 
   it('tracks a download link as an event with link text as the label', function () {
@@ -66,10 +66,10 @@ describe('GOVUK.analyticsPlugins.downloadLinkTracker', function () {
     $('.download-links a').trigger('click')
 
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith(
-      'Download Link Clicked', '/one.pdf', {label: 'PDF', transport: 'beacon'})
+      'Download Link Clicked', '/one.pdf', { label: 'PDF', transport: 'beacon' })
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith(
-      'Download Link Clicked', '/two.xslt', {label: 'Spreadsheet', transport: 'beacon'})
+      'Download Link Clicked', '/two.xslt', { label: 'Spreadsheet', transport: 'beacon' })
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith(
-      'Download Link Clicked', '/something/uploads/system/three.doc', {label: 'Document', transport: 'beacon'})
+      'Download Link Clicked', '/something/uploads/system/three.doc', { label: 'Document', transport: 'beacon' })
   })
 })

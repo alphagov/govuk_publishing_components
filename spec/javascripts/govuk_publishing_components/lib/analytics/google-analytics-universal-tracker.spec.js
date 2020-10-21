@@ -1,10 +1,10 @@
-/* global describe it expect beforeEach spyOn jasmine */
+/* eslint-env jasmine, jquery */
+/* global GOVUK */
 
 var $ = window.jQuery
 
 describe('GOVUK.GoogleAnalyticsUniversalTracker', function () {
   'use strict'
-  var GOVUK = window.GOVUK
 
   function addGoogleAnalyticsSpy () {
     window.ga = function () {}
@@ -49,7 +49,7 @@ describe('GOVUK.GoogleAnalyticsUniversalTracker', function () {
     })
 
     it('configures a Google tracker using the provided profile ID and config', function () {
-      expect(setupArguments[0]).toEqual(['create', 'id', {cookieDomain: 'cookie-domain.com', siteSpeedSampleRate: 100}])
+      expect(setupArguments[0]).toEqual(['create', 'id', { cookieDomain: 'cookie-domain.com', siteSpeedSampleRate: 100 }])
     })
 
     it('anonymises the IP', function () {
@@ -70,7 +70,7 @@ describe('GOVUK.GoogleAnalyticsUniversalTracker', function () {
     })
 
     it('configures a Google tracker using the provided profile ID and cookie domain', function () {
-      expect(setupArguments[0]).toEqual(['create', 'id', {cookieDomain: 'cookie-domain.com'}])
+      expect(setupArguments[0]).toEqual(['create', 'id', { cookieDomain: 'cookie-domain.com' }])
     })
   })
 
@@ -82,27 +82,27 @@ describe('GOVUK.GoogleAnalyticsUniversalTracker', function () {
 
     it('sends them to Google Analytics, forcing a new session', function () {
       universal.trackPageview(undefined, undefined, { sessionControl: 'start' })
-      expect(window.ga.calls.mostRecent().args).toEqual(['send', 'pageview', {sessionControl: 'start'}])
+      expect(window.ga.calls.mostRecent().args).toEqual(['send', 'pageview', { sessionControl: 'start' }])
     })
 
     it('can track a virtual pageview', function () {
       universal.trackPageview('/nicholas-page')
-      expect(window.ga.calls.mostRecent().args).toEqual(['send', 'pageview', {page: '/nicholas-page'}])
+      expect(window.ga.calls.mostRecent().args).toEqual(['send', 'pageview', { page: '/nicholas-page' }])
     })
 
     it('can track a virtual pageview with a custom title', function () {
       universal.trackPageview('/nicholas-page', 'Nicholas Page')
-      expect(window.ga.calls.mostRecent().args).toEqual(['send', 'pageview', {page: '/nicholas-page', title: 'Nicholas Page'}])
+      expect(window.ga.calls.mostRecent().args).toEqual(['send', 'pageview', { page: '/nicholas-page', title: 'Nicholas Page' }])
     })
 
     it('can set the transport method on a pageview', function () {
-      universal.trackPageview('/t', 'T', {transport: 'beacon'})
-      expect(window.ga.calls.mostRecent().args).toEqual(['send', 'pageview', {page: '/t', title: 'T', transport: 'beacon'}])
+      universal.trackPageview('/t', 'T', { transport: 'beacon' })
+      expect(window.ga.calls.mostRecent().args).toEqual(['send', 'pageview', { page: '/t', title: 'T', transport: 'beacon' }])
     })
 
     it('can send a pageview to a named tracker', function () {
-      universal.trackPageview('/path', 'title', { 'trackerName' : 'another_tracker' })
-      expect(window.ga.calls.mostRecent().args).toEqual(['another_tracker.send', 'pageview', { 'page': '/path', 'title': 'title', 'trackerName': 'another_tracker'}])
+      universal.trackPageview('/path', 'title', { trackerName: 'another_tracker' })
+      expect(window.ga.calls.mostRecent().args).toEqual(['another_tracker.send', 'pageview', { page: '/path', title: 'title', trackerName: 'another_tracker' }])
     })
   })
 
@@ -112,46 +112,46 @@ describe('GOVUK.GoogleAnalyticsUniversalTracker', function () {
     }
 
     it('sends them to Google Analytics', function () {
-      universal.trackEvent('category', 'action', {label: 'label'})
+      universal.trackEvent('category', 'action', { label: 'label' })
       expect(window.ga.calls.mostRecent().args).toEqual(
-        ['send', {hitType: 'event', eventCategory: 'category', eventAction: 'action', eventLabel: 'label'}]
+        ['send', { hitType: 'event', eventCategory: 'category', eventAction: 'action', eventLabel: 'label' }]
       )
     })
 
     it('tracks custom dimensions', function () {
-      universal.trackEvent('category', 'action', {dimension29: 'Home'})
+      universal.trackEvent('category', 'action', { dimension29: 'Home' })
       expect(window.ga.calls.mostRecent().args).toEqual(
-        ['send', {hitType: 'event', eventCategory: 'category', eventAction: 'action', dimension29: 'Home'}]
+        ['send', { hitType: 'event', eventCategory: 'category', eventAction: 'action', dimension29: 'Home' }]
       )
     })
 
     it('the label is optional', function () {
       universal.trackEvent('category', 'action')
       expect(window.ga.calls.mostRecent().args).toEqual(
-        ['send', {hitType: 'event', eventCategory: 'category', eventAction: 'action'}]
+        ['send', { hitType: 'event', eventCategory: 'category', eventAction: 'action' }]
       )
     })
 
     it('the option trackerName overrides the default tracker', function () {
-      universal.trackEvent('category', 'action', {trackerName: 'testTracker'})
+      universal.trackEvent('category', 'action', { trackerName: 'testTracker' })
       expect(window.ga.calls.mostRecent().args).toEqual(
-        ['testTracker.send', {hitType: 'event', eventCategory: 'category', eventAction: 'action'}]
+        ['testTracker.send', { hitType: 'event', eventCategory: 'category', eventAction: 'action' }]
       )
     })
 
     it('only sends values if they are parseable as numbers', function () {
-      universal.trackEvent('category', 'action', {label: 'label', value: '10'})
-      expect(eventObjectFromSpy()['eventValue']).toEqual(10)
+      universal.trackEvent('category', 'action', { label: 'label', value: '10' })
+      expect(eventObjectFromSpy().eventValue).toEqual(10)
 
-      universal.trackEvent('category', 'action', {label: 'label', value: 10})
-      expect(eventObjectFromSpy()['eventValue']).toEqual(10)
+      universal.trackEvent('category', 'action', { label: 'label', value: 10 })
+      expect(eventObjectFromSpy().eventValue).toEqual(10)
 
-      universal.trackEvent('category', 'action', {label: 'label', value: 'not a number'})
-      expect(eventObjectFromSpy()['eventValue']).toEqual(undefined)
+      universal.trackEvent('category', 'action', { label: 'label', value: 'not a number' })
+      expect(eventObjectFromSpy().eventValue).toEqual(undefined)
     })
 
     it('can mark an event as non interactive', function () {
-      universal.trackEvent('category', 'action', {label: 'label', value: 0, nonInteraction: true})
+      universal.trackEvent('category', 'action', { label: 'label', value: 0, nonInteraction: true })
       expect(window.ga.calls.mostRecent().args).toEqual(
         ['send', {
           hitType: 'event',
@@ -165,16 +165,16 @@ describe('GOVUK.GoogleAnalyticsUniversalTracker', function () {
     })
 
     it('sends the page if supplied', function () {
-      universal.trackEvent('category', 'action', {page: '/path/to/page'})
+      universal.trackEvent('category', 'action', { page: '/path/to/page' })
       expect(window.ga.calls.mostRecent().args).toEqual(
-        ['send', {hitType: 'event', eventCategory: 'category', eventAction: 'action', page: '/path/to/page'}]
+        ['send', { hitType: 'event', eventCategory: 'category', eventAction: 'action', page: '/path/to/page' }]
       )
     })
 
     it('can set the transport method on an event', function () {
-      universal.trackEvent('category', 'action', {transport: 'beacon'})
+      universal.trackEvent('category', 'action', { transport: 'beacon' })
       expect(window.ga.calls.mostRecent().args).toEqual(
-        ['send', {hitType: 'event', eventCategory: 'category', eventAction: 'action', transport: 'beacon'}]
+        ['send', { hitType: 'event', eventCategory: 'category', eventAction: 'action', transport: 'beacon' }]
       )
     })
   })
@@ -183,10 +183,10 @@ describe('GOVUK.GoogleAnalyticsUniversalTracker', function () {
     it('sends them to Google Analytics', function () {
       universal.trackSocial('network', 'action', 'target')
       expect(window.ga.calls.mostRecent().args).toEqual(['send', {
-        'hitType': 'social',
-        'socialNetwork': 'network',
-        'socialAction': 'action',
-        'socialTarget': 'target'
+        hitType: 'social',
+        socialNetwork: 'network',
+        socialAction: 'action',
+        socialTarget: 'target'
       }])
     })
   })
@@ -214,7 +214,7 @@ describe('GOVUK.GoogleAnalyticsUniversalTracker', function () {
 
     it('removes any pii from the title', function () {
       var title = document.title
-      $('title').html("With email@email.com 2012-01-01 and wc2b 6nh in it")
+      $('title').html('With email@email.com 2012-01-01 and wc2b 6nh in it')
       // need to reinit all the GA setup because the page title has changed
       addGoogleAnalyticsSpy()
       pageWantsDatesStripped()
@@ -225,7 +225,7 @@ describe('GOVUK.GoogleAnalyticsUniversalTracker', function () {
         siteSpeedSampleRate: 100
       })
 
-      expect(window.ga.calls.allArgs()).toContain([ 'set', 'title', 'With [email] [date] and [postcode] in it' ])
+      expect(window.ga.calls.allArgs()).toContain(['set', 'title', 'With [email] [date] and [postcode] in it'])
       $('title').html(title)
     })
   })
@@ -254,7 +254,7 @@ describe('GOVUK.GoogleAnalyticsUniversalTracker', function () {
     })
     it('removes pii from the pageview', function () {
       var title = document.title
-      $('title').html("With email@email.com 2012-01-01 and wc2b 6nh in it")
+      $('title').html('With email@email.com 2012-01-01 and wc2b 6nh in it')
 
       // need to reinit all the GA setup because the page title has changed
       addGoogleAnalyticsSpy()
@@ -266,7 +266,7 @@ describe('GOVUK.GoogleAnalyticsUniversalTracker', function () {
         siteSpeedSampleRate: 100
       })
 
-      expect(window.ga.calls.allArgs()).toContain(['set', 'title' , 'With [email] [date] and [postcode] in it'])
+      expect(window.ga.calls.allArgs()).toContain(['set', 'title', 'With [email] [date] and [postcode] in it'])
       expect(window.ga.calls.argsFor(4)[2]).toContain('?address=[email]&postcode=[postcode]&date=[date]')
 
       $('title').html(title)
@@ -319,11 +319,11 @@ describe('GOVUK.GoogleAnalyticsUniversalTracker', function () {
     })
   })
 
-  function pageWantsDatesStripped() {
-    $('head').append('<meta name="govuk:static-analytics:strip-dates" value="does not matter" />');
+  function pageWantsDatesStripped () {
+    $('head').append('<meta name="govuk:static-analytics:strip-dates" value="does not matter" />')
   }
 
-  function pageWantsPostcodesStripped() {
-    $('head').append('<meta name="govuk:static-analytics:strip-postcodes" value="does not matter" />');
+  function pageWantsPostcodesStripped () {
+    $('head').append('<meta name="govuk:static-analytics:strip-postcodes" value="does not matter" />')
   }
 })

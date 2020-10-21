@@ -15,7 +15,7 @@
 
     function trackClickEvent (evt) {
       var $link = getLinkFromEvent(evt)
-      var options = {transport: 'beacon'}
+      var options = { transport: 'beacon' }
       var href = $link.attr('href')
       var linkText = $.trim($link.text())
 

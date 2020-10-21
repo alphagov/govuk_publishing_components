@@ -100,7 +100,7 @@ describe('Cookie banner', function () {
   })
 
   it('sets consent cookie when accepting cookies', function () {
-    if (typeof GOVUK.analyticsInit == "undefined") {
+    if (typeof GOVUK.analyticsInit === 'undefined') {
       GOVUK.analyticsInit = function () {}
     }
     spyOn(GOVUK, 'analyticsInit')
@@ -123,7 +123,7 @@ describe('Cookie banner', function () {
   })
 
   it('sets global_bar_seen cookie when accepting cookies', function () {
-    if (typeof GOVUK.globalBarInit == "undefined") {
+    if (typeof GOVUK.globalBarInit === 'undefined') {
       GOVUK.globalBarInit = {
         init: function () {}
       }

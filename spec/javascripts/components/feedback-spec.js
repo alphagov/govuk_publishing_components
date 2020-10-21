@@ -88,8 +88,8 @@ describe('Feedback component', function () {
 
   beforeEach(function () {
     window.setFixtures(FIXTURE)
-    if (typeof GOVUK.analytics == "undefined") {
-      GOVUK.analytics = {trackEvent: function () {}}
+    if (typeof GOVUK.analytics === 'undefined') {
+      GOVUK.analytics = { trackEvent: function () {} }
     }
     spyOn(GOVUK.analytics, 'trackEvent')
   })

@@ -6,7 +6,7 @@
   var pii
 
   var GoogleAnalyticsUniversalTracker = function (trackingId, fieldsObject) {
-    pii = new GOVUK.pii()
+    pii = new GOVUK.Pii()
 
     function configureProfile () {
       // https://developers.google.com/analytics/devguides/collection/analyticsjs/command-queue-reference#create
@@ -78,7 +78,6 @@
       }
     }
 
-
     if (!$.isEmptyObject(pageviewObject)) {
       sendToGa(trackerName + 'send', 'pageview', pageviewObject)
     } else {
@@ -142,10 +141,10 @@
   */
   GoogleAnalyticsUniversalTracker.prototype.trackSocial = function (network, action, target, options) {
     var trackingOptions = {
-      'hitType': 'social',
-      'socialNetwork': network,
-      'socialAction': action,
-      'socialTarget': target
+      hitType: 'social',
+      socialNetwork: network,
+      socialAction: action,
+      socialTarget: target
     }
 
     $.extend(trackingOptions, options)
@@ -163,9 +162,9 @@
   */
   GoogleAnalyticsUniversalTracker.prototype.addLinkedTrackerDomain = function (trackerId, name, domain, sendPageView) {
     sendToGa('create',
-             trackerId,
-             'auto',
-             {'name': name})
+      trackerId,
+      'auto',
+      { name: name })
     // Load the plugin.
     sendToGa(name + '.require', 'linker')
 

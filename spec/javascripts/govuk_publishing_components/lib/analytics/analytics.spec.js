@@ -5,7 +5,7 @@ describe('GOVUK.Analytics', function () {
   var GOVUK = window.GOVUK
 
   function addGoogleAnalyticsSpy () {
-    if (typeof window.ga == "undefined") {
+    if (typeof window.ga === 'undefined') {
       window.ga = function () {}
     }
     spyOn(window, 'ga')
@@ -30,7 +30,7 @@ describe('GOVUK.Analytics', function () {
     })
 
     it('configures a universal tracker', function () {
-      expect(universalSetupArguments[0]).toEqual(['create', 'universal-id', {cookieDomain: '.www.gov.uk', siteSpeedSampleRate: 100}])
+      expect(universalSetupArguments[0]).toEqual(['create', 'universal-id', { cookieDomain: '.www.gov.uk', siteSpeedSampleRate: 100 }])
       expect(universalSetupArguments[1]).toEqual(['set', 'anonymizeIp', true])
       expect(universalSetupArguments[2]).toEqual(['set', 'allowAdFeatures', false])
     })
@@ -105,7 +105,7 @@ describe('GOVUK.Analytics', function () {
       expect(window.ga.calls.mostRecent().args[2].title).toEqual('A page')
     })
 
-    it('removes pii from the title', function (){
+    it('removes pii from the title', function () {
       analytics.trackPageview('/foo', 'With email@email.com in it')
       expect(window.ga.calls.mostRecent().args[2].title).toEqual('With [email] in it')
     })
@@ -114,10 +114,10 @@ describe('GOVUK.Analytics', function () {
   describe('when tracking pageviews, events and custom dimensions', function () {
     it('tracks them in universal analytics', function () {
       analytics.trackPageview('/path', 'Title')
-      expect(window.ga.calls.mostRecent().args).toEqual(['send', 'pageview', {page: '/path', title: 'Title'}])
+      expect(window.ga.calls.mostRecent().args).toEqual(['send', 'pageview', { page: '/path', title: 'Title' }])
 
       analytics.trackEvent('category', 'action')
-      expect(window.ga.calls.mostRecent().args).toEqual(['send', {hitType: 'event', eventCategory: 'category', eventAction: 'action'}])
+      expect(window.ga.calls.mostRecent().args).toEqual(['send', { hitType: 'event', eventCategory: 'category', eventAction: 'action' }])
 
       analytics.setDimension(1, 'value', 'name')
       expect(window.ga.calls.mostRecent().args).toEqual(['set', 'dimension1', 'value'])
@@ -273,7 +273,7 @@ describe('GOVUK.Analytics', function () {
       analytics.addLinkedTrackerDomain('1234', 'test', ['www.example.com'])
 
       var allArgs = window.ga.calls.allArgs()
-      expect(allArgs).toContain(['create', '1234', 'auto', {'name': 'test'}])
+      expect(allArgs).toContain(['create', '1234', 'auto', { name: 'test' }])
       expect(allArgs).toContain(['test.require', 'linker'])
       expect(allArgs).toContain(['test.linker:autoLink', ['www.example.com']])
       expect(allArgs).toContain(['test.set', 'anonymizeIp', true])
@@ -285,7 +285,7 @@ describe('GOVUK.Analytics', function () {
       analytics.addLinkedTrackerDomain('5678', 'test2', ['www.example.com', 'www.something.com'])
 
       var allArgs = window.ga.calls.allArgs()
-      expect(allArgs).toContain(['create', '5678', 'auto', {'name': 'test2'}])
+      expect(allArgs).toContain(['create', '5678', 'auto', { name: 'test2' }])
       expect(allArgs).toContain(['test2.require', 'linker'])
       expect(allArgs).toContain(['test2.linker:autoLink', ['www.example.com', 'www.something.com']])
       expect(allArgs).toContain(['test2.set', 'anonymizeIp', true])
@@ -297,7 +297,7 @@ describe('GOVUK.Analytics', function () {
       analytics.addLinkedTrackerDomain('5678', 'test3', ['www.example.com', 'www.something.com', 'www.else.com'])
 
       var allArgs = window.ga.calls.allArgs()
-      expect(allArgs).toContain(['create', '5678', 'auto', {'name': 'test3'}])
+      expect(allArgs).toContain(['create', '5678', 'auto', { name: 'test3' }])
       expect(allArgs).toContain(['test3.require', 'linker'])
       expect(allArgs).toContain(['test3.linker:autoLink', ['www.example.com', 'www.something.com', 'www.else.com']])
       expect(allArgs).toContain(['test3.set', 'anonymizeIp', true])

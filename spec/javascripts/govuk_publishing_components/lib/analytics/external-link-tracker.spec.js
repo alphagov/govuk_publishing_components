@@ -25,10 +25,10 @@ describe('GOVUK.analyticsPlugins.externalLinkTracker', function () {
     $('html').on('click', function (evt) { evt.preventDefault() })
     $('body').append($links)
 
-    if (typeof GOVUK.analytics.trackEvent == "undefined") {
+    if (typeof GOVUK.analytics.trackEvent === 'undefined') {
       GOVUK.analytics.trackEvent = function () {}
     }
-    if (typeof GOVUK.analytics.setDimension == "undefined") {
+    if (typeof GOVUK.analytics.setDimension === 'undefined') {
       GOVUK.analytics.setDimension = function () {}
     }
 
@@ -44,7 +44,7 @@ describe('GOVUK.analyticsPlugins.externalLinkTracker', function () {
   })
 
   it('listens to click events on only external links', function () {
-    GOVUK.analyticsPlugins.externalLinkTracker({externalLinkUploadCustomDimension: 36})
+    GOVUK.analyticsPlugins.externalLinkTracker({ externalLinkUploadCustomDimension: 36 })
 
     spyOn(GOVUK.analytics, 'trackEvent')
     spyOn(GOVUK.analytics, 'setDimension')
@@ -63,35 +63,35 @@ describe('GOVUK.analyticsPlugins.externalLinkTracker', function () {
   })
 
   it('listens to click events on elements within external links', function () {
-    GOVUK.analyticsPlugins.externalLinkTracker({externalLinkUploadCustomDimension: 36})
+    GOVUK.analyticsPlugins.externalLinkTracker({ externalLinkUploadCustomDimension: 36 })
 
     spyOn(GOVUK.analytics, 'trackEvent')
     spyOn(GOVUK.analytics, 'setDimension')
 
     $('.external-links a img').trigger('click')
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith(
-      'External Link Clicked', 'https://www.nationalarchives.gov.uk/an/image/link.png', {transport: 'beacon'})
+      'External Link Clicked', 'https://www.nationalarchives.gov.uk/an/image/link.png', { transport: 'beacon' })
   })
 
   it('tracks an external link\'s href and link text', function () {
-    GOVUK.analyticsPlugins.externalLinkTracker({externalLinkUploadCustomDimension: 36})
+    GOVUK.analyticsPlugins.externalLinkTracker({ externalLinkUploadCustomDimension: 36 })
 
     spyOn(GOVUK.analytics, 'trackEvent')
     spyOn(GOVUK.analytics, 'setDimension')
     $('.external-links a').trigger('click')
 
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith(
-      'External Link Clicked', 'http://www.nationalarchives.gov.uk', {transport: 'beacon', label: 'National Archives'})
+      'External Link Clicked', 'http://www.nationalarchives.gov.uk', { transport: 'beacon', label: 'National Archives' })
 
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith(
-      'External Link Clicked', 'https://www.nationalarchives.gov.uk', {transport: 'beacon'})
+      'External Link Clicked', 'https://www.nationalarchives.gov.uk', { transport: 'beacon' })
 
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith(
-      'External Link Clicked', 'https://www.nationalarchives.gov.uk/one.pdf', {transport: 'beacon', label: 'National Archives PDF'})
+      'External Link Clicked', 'https://www.nationalarchives.gov.uk/one.pdf', { transport: 'beacon', label: 'National Archives PDF' })
   })
 
   it('duplicates the url info in a custom dimension to be used to join with a Google Analytics upload', function () {
-    GOVUK.analyticsPlugins.externalLinkTracker({externalLinkUploadCustomDimension: 36})
+    GOVUK.analyticsPlugins.externalLinkTracker({ externalLinkUploadCustomDimension: 36 })
 
     spyOn(GOVUK.analytics, 'setDimension')
     spyOn(GOVUK.analytics, 'trackEvent')
@@ -99,7 +99,7 @@ describe('GOVUK.analyticsPlugins.externalLinkTracker', function () {
 
     expect(GOVUK.analytics.setDimension).toHaveBeenCalledWith(36, 'http://www.nationalarchives.gov.uk')
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith(
-      'External Link Clicked', 'http://www.nationalarchives.gov.uk', {transport: 'beacon', label: 'National Archives'})
+      'External Link Clicked', 'http://www.nationalarchives.gov.uk', { transport: 'beacon', label: 'National Archives' })
   })
 
   it('does not duplicate the url info if a custom dimension is not provided', function () {
@@ -111,6 +111,6 @@ describe('GOVUK.analyticsPlugins.externalLinkTracker', function () {
 
     expect(GOVUK.analytics.setDimension).not.toHaveBeenCalled()
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith(
-      'External Link Clicked', 'http://www.nationalarchives.gov.uk', {transport: 'beacon', label: 'National Archives'})
+      'External Link Clicked', 'http://www.nationalarchives.gov.uk', { transport: 'beacon', label: 'National Archives' })
   })
 })

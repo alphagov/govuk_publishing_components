@@ -16,7 +16,7 @@
     function trackDownload (evt) {
       var $link = getLinkFromEvent(evt)
       var href = $link.attr('href')
-      var evtOptions = {transport: 'beacon'}
+      var evtOptions = { transport: 'beacon' }
       var linkText = $.trim($link.text())
 
       if (linkText) {
