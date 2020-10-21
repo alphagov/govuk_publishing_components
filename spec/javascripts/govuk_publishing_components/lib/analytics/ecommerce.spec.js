@@ -4,6 +4,15 @@ describe('Ecommerce reporter for results pages', function() {
   var ecommerce,
       element;
 
+  // dimension11 records the device pixel ratio
+  // this used to be hardcoded to '1' which would pass the test on the command line
+  // but fail if run in the browser, depending on the screen's actual device pixel ratio
+  // this fixes that, but dimension11 is no longer needed as GA records this automatically
+  var dimension11 = 1;
+  if (window.devicePixelRatio) {
+    dimension11 = window.devicePixelRatio
+  }
+
   beforeEach(function() {
     window.GOVUK.setConsentCookie({
       'essential': true,
@@ -13,14 +22,15 @@ describe('Ecommerce reporter for results pages', function() {
     })
 
     window.GOVUK.analyticsInit()
-
     ecommerce = new GOVUK.Ecommerce();
     GOVUK.analytics.gaClientId = '12345.67890'
+    if (typeof window.ga == "undefined") {
+      window.ga = function () {}
+    }
     spyOn(window, 'ga')
-
   });
 
-  xit('requires content id or path', function() {
+  it('requires content id or path', function() {
     element = $('\
       <div data-ecommerce-start-index="1" data-search-query="search query">\
         <div \
@@ -30,11 +40,10 @@ describe('Ecommerce reporter for results pages', function() {
     ');
 
     ecommerce.init(element);
-
     expect(ga).not.toHaveBeenCalled()
   })
 
-  xit('tracks ecommerce rows', function() {
+  it('tracks ecommerce rows', function() {
     element = $('\
       <div data-ecommerce-start-index="1" data-search-query="search query">\
         <div \
@@ -56,7 +65,7 @@ describe('Ecommerce reporter for results pages', function() {
     });
   });
 
-  xit('uses data-ecommerce-index to override the implicit index', function() {
+  it('uses data-ecommerce-index to override the implicit index', function() {
     element = $('\
       <div data-ecommerce-start-index="1" data-search-query="search query">\
         <div \
@@ -79,7 +88,7 @@ describe('Ecommerce reporter for results pages', function() {
     });
   });
 
-  xit('tracks impressions with product variants', function() {
+  it('tracks impressions with product variants', function() {
     element = $('\
       <div data-ecommerce-start-index="1" data-search-query="search query" data-ecommerce-variant="variant-x">\
         <div \
@@ -102,7 +111,7 @@ describe('Ecommerce reporter for results pages', function() {
     });
   });
 
-  xit('tracks ecommerce subheading', function() {
+  it('tracks ecommerce subheading', function() {
     element = $('\
       <div data-analytics-ecommerce data-search-query data-list-title="ecommerce-list" data-ecommerce-start-index="1">\
         <div \
@@ -124,7 +133,7 @@ describe('Ecommerce reporter for results pages', function() {
     });
   })
 
-  xit('tracks multiple lists individually', function() {
+  it('tracks multiple lists individually', function() {
     element = $('\
       <div> \
         <div data-analytics-ecommerce data-list-title="First list" data-ecommerce-start-index="1" data-search-query="search query">\
@@ -162,7 +171,7 @@ describe('Ecommerce reporter for results pages', function() {
     });
   })
 
-  xit('does not send id if content id is not present', function() {
+  it('does not send id if content id is not present', function() {
     element = $('\
       <div data-ecommerce-start-index="1" data-search-query="search query">\
         <div \
@@ -182,7 +191,7 @@ describe('Ecommerce reporter for results pages', function() {
     });
   });
 
-  xit('will use the pagination offset start value', function() {
+  it('will use the pagination offset start value', function() {
     element = $('\
       <div data-ecommerce-start-index="21" data-search-query="search query">\
         <div \
@@ -204,7 +213,7 @@ describe('Ecommerce reporter for results pages', function() {
     });
   });
 
-  xit('will use the non-default list title if set', function() {
+  it('will use the non-default list title if set', function() {
     element = $('\
       <div data-ecommerce-start-index="1" data-list-title="Non-default title" data-search-query="search query">\
         <div \
@@ -228,7 +237,7 @@ describe('Ecommerce reporter for results pages', function() {
     });
   });
 
-  xit('will send data for multiple rows', function(){
+  it('will send data for multiple rows', function(){
     element = $('\
       <div data-ecommerce-start-index="1" data-search-query="search query">\
         <div \
@@ -262,7 +271,7 @@ describe('Ecommerce reporter for results pages', function() {
     });
   });
 
-  xit('removes emails from the search query', function() {
+  it('removes emails from the search query', function() {
     element = $('\
       <div data-ecommerce-start-index="1" data-search-query="search query with an email@address.example.com in it">\
         <div \
@@ -284,7 +293,7 @@ describe('Ecommerce reporter for results pages', function() {
     });
   });
 
-  xit('removes postcodes from the search query if configured to do so', function() {
+  it('removes postcodes from the search query if configured to do so', function() {
     GOVUK.analytics.analytics.pii.stripPostcodePII = true;
 
     element = $('\
@@ -310,7 +319,7 @@ describe('Ecommerce reporter for results pages', function() {
     GOVUK.analytics.analytics.pii.stripPostcodePII = false;
   });
 
-  xit('leaves postcodes in the search query if not configured to remove them', function() {
+  it('leaves postcodes in the search query if not configured to remove them', function() {
     GOVUK.analytics.analytics.pii.stripPostcodePII = false;
 
     element = $('\
@@ -334,7 +343,7 @@ describe('Ecommerce reporter for results pages', function() {
     });
   });
 
-  xit('tracks clicks on search results', function() {
+  it('tracks clicks on search results', function() {
     element = $('\
       <div data-ecommerce-start-index="1" data-search-query="search query">\
         <a \
@@ -363,7 +372,7 @@ describe('Ecommerce reporter for results pages', function() {
       eventLabel: 'Results',
       dimension15: '200',
       dimension16: 'unknown',
-      dimension11: '1',
+      dimension11: dimension11.toString(),
       dimension3: 'other',
       dimension4: '00000000-0000-0000-0000-000000000000',
       dimension12: 'not withdrawn',
@@ -382,7 +391,7 @@ describe('Ecommerce reporter for results pages', function() {
     })
   });
 
-  xit('tracks clicks with product variants', function() {
+  it('tracks clicks with product variants', function() {
     element = $('\
       <div data-ecommerce-start-index="1" data-search-query="search query" data-ecommerce-variant="variant-x">\
         <a \
@@ -412,7 +421,7 @@ describe('Ecommerce reporter for results pages', function() {
       eventLabel: 'Results',
       dimension15: '200',
       dimension16: 'unknown',
-      dimension11: '1',
+      dimension11: dimension11.toString(),
       dimension3: 'other',
       dimension4: '00000000-0000-0000-0000-000000000000',
       dimension12: 'not withdrawn',
@@ -431,7 +440,7 @@ describe('Ecommerce reporter for results pages', function() {
     })
   });
 
-  xit('tracks clicks with different event labels', function() {
+  it('tracks clicks with different event labels', function() {
     element = $('\
       <div> \
         <div data-analytics-ecommerce data-list-title="First list" data-ecommerce-start-index="1" data-search-query="search query">\
@@ -461,7 +470,7 @@ describe('Ecommerce reporter for results pages', function() {
       eventLabel: 'Results',
       dimension15: '200',
       dimension16: 'unknown',
-      dimension11: '1',
+      dimension11: dimension11.toString(),
       dimension3: 'other',
       dimension4: '00000000-0000-0000-0000-000000000000',
       dimension12: 'not withdrawn',
@@ -485,7 +494,7 @@ describe('Ecommerce reporter for results pages', function() {
       eventLabel: 'Custom click label',
       dimension15: '200',
       dimension16: 'unknown',
-      dimension11: '1',
+      dimension11: dimension11.toString(),
       dimension3: 'other',
       dimension4: '00000000-0000-0000-0000-000000000000',
       dimension12: 'not withdrawn',
@@ -504,7 +513,7 @@ describe('Ecommerce reporter for results pages', function() {
     })
   });
 
-  xit('will only require the ec library once', function() {
+  it('will only require the ec library once', function() {
     GOVUK.Ecommerce.ecLoaded = false;
     GOVUK.Ecommerce.start($('<div data-search-query="search query"></div>'));
     GOVUK.Ecommerce.start($('<div data-search-query="search query"></div>'));

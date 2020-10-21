@@ -7,7 +7,9 @@ describe('GOVUK.analyticsPlugins.error', function () {
   GOVUK.analyticsPlugins.error({filenameMustMatch: /gov\.uk/})
 
   beforeEach(function () {
-    GOVUK.analytics = {trackEvent: function () {}}
+    if (typeof GOVUK.analytics == "undefined") {
+      GOVUK.analytics = {trackEvent: function () {}}
+    }
     spyOn(GOVUK.analytics, 'trackEvent')
   })
 

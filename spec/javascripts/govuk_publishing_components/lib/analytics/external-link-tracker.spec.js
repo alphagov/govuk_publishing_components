@@ -25,12 +25,11 @@ describe('GOVUK.analyticsPlugins.externalLinkTracker', function () {
     $('html').on('click', function (evt) { evt.preventDefault() })
     $('body').append($links)
 
+    if (typeof GOVUK.analytics.trackEvent == "undefined") {
+      GOVUK.analytics.trackEvent = function () {}
+    }
     if (typeof GOVUK.analytics.setDimension == "undefined") {
       GOVUK.analytics.setDimension = function () {}
-    }
-    GOVUK.analytics = {
-      trackEvent: function () {},
-      setDimension: function () {}
     }
 
     spyOn(GOVUK.analyticsPlugins.externalLinkTracker, 'getHostname').and.returnValue('fake-hostname.com')

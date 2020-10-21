@@ -3,7 +3,9 @@ describe("GOVUK.StaticAnalytics", function() {
 
   beforeEach(function() {
     window.GOVUK.setConsentCookie({'usage': true});
-    window.ga = function() {};
+    if (typeof window.ga == "undefined") {
+      window.ga = function() {}
+    }
     spyOn(window, 'ga');
     spyOn(GOVUK.analyticsPlugins, 'printIntent');
     spyOn(GOVUK.analyticsPlugins, 'error');

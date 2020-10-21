@@ -19,7 +19,10 @@ describe('GOVUK.analyticsPlugins.mailtoLinkTracker', function () {
 
     $('html').on('click', function (evt) { evt.preventDefault() })
     $('body').append($links)
-    GOVUK.analytics = {trackEvent: function () {}}
+
+    if (typeof GOVUK.analytics == "undefined") {
+      GOVUK.analytics = {trackEvent: function () {}}
+    }
 
     GOVUK.analyticsPlugins.mailtoLinkTracker()
   })

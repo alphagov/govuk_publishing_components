@@ -10,7 +10,9 @@ describe('An auto event tracker', function () {
     element
 
   beforeEach(function () {
-    GOVUK.analytics = {trackEvent: function () {}}
+    if (typeof GOVUK.analytics == "undefined") {
+      GOVUK.analytics = {trackEvent: function () {}}
+    }
     tracker = new GOVUK.Modules.AutoTrackEvent()
   })
 

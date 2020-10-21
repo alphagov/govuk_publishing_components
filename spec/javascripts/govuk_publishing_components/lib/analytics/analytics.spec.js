@@ -5,7 +5,9 @@ describe('GOVUK.Analytics', function () {
   var GOVUK = window.GOVUK
 
   function addGoogleAnalyticsSpy () {
-    window.ga = function () {}
+    if (typeof window.ga == "undefined") {
+      window.ga = function () {}
+    }
     spyOn(window, 'ga')
   }
 

@@ -24,7 +24,10 @@ describe('GOVUK.analyticsPlugins.downloadLinkTracker', function () {
 
     $('html').on('click', function (evt) { evt.preventDefault() })
     $('body').append($links)
-    GOVUK.analytics = {trackEvent: function () {}}
+
+    if (typeof GOVUK.analytics == "undefined") {
+      GOVUK.analytics = {trackEvent: function () {}}
+    }
     GOVUK.analyticsPlugins.downloadLinkTracker({selector: 'a[href$=".pdf"], a[href$=".xslt"], a[href$=".doc"], a[href$=".png"]'})
   })
 
