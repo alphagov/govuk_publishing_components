@@ -1,4 +1,7 @@
-<% environment = %w[development production staging integration example].sample %>
+<%
+  environment = %w[development production staging integration example].sample
+  product_name = "Publishing"
+%>
 
 <%= render 'govuk_publishing_components/components/layout_for_admin', {
   environment: environment,
@@ -7,6 +10,7 @@
   <%= render "govuk_publishing_components/components/skip_link" %>
   <%= render "govuk_publishing_components/components/layout_header", {
     environment: environment,
+    product_name: product_name,
     navigation_items: [
       {text: "John Doe", href: "#profile"},
       {text: "Log out", href: "#logout"}

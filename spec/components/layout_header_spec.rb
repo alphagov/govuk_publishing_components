@@ -11,16 +11,24 @@ describe "Layout header", type: :view do
     assert_select ".govuk-header"
   end
 
-  it "renders the header with environment modifier class" do
+  it "renders the header without environment tag if no environment is given" do
+    render_component({})
+
+    assert_select ".gem-c-environment-tag", 0
+  end
+
+  it "renders the header with environment tag and environment modifier class" do
     render_component(environment: "staging")
 
     assert_select ".govuk-header.gem-c-layout-header--staging"
+    assert_select ".gem-c-environment-tag", text: "staging"
   end
 
   it "renders the product name" do
     render_component(environment: "staging", product_name: "Product name")
 
     assert_select ".govuk-header__product-name", text: "Product name"
+    assert_select ".gem-c-environment-tag", text: "staging"
   end
 
   it "renders at a constrained width by default" do
@@ -35,11 +43,10 @@ describe "Layout header", type: :view do
     assert_select ".govuk-header__container--full-width"
   end
 
-  it "does not render the product name and environment tag if environment is 'public'" do
-    render_component(environment: "public", product_name: "Product name")
+  it "renders the product name if given" do
+    render_component(product_name: "Product name")
 
-    assert_select ".gem-c-header__product-name", 0
-    assert_select ".gem-c-environment-tag", 0
+    assert_select ".govuk-header__product-name", text: "Product name"
   end
 
   it "renders the header with navigation items" do
