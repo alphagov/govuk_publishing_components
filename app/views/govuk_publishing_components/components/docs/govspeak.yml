@@ -24,12 +24,7 @@ examples:
     data:
       block: |
         <h2>This is a title</h2>
-          <p>This is some body text with <a href=#>a link</a></p>
-  with_content:
-    data:
-      content: |
-        <h2>This is a title</h2>
-        <p>This is some body text with <a href=#>a link</a></p>
+          <p>This is some body text with <a href="https://example.com">a link</a>.</p>
   heading_levels:
     data:
       block: |
