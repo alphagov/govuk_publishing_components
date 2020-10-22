@@ -14,5 +14,3 @@
 //= require ./analytics/ecommerce
 //= require ./analytics/init
 //= require ./analytics/scroll-tracker
-
-window.GOVUK.analyticsInit()
