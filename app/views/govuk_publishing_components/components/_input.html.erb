@@ -1,4 +1,6 @@
 <%
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+
   id ||= "input-#{SecureRandom.hex(4)}"
   value ||= nil
   type ||= "text"
@@ -22,6 +24,7 @@
   error_id = "error-#{SecureRandom.hex(4)}"
   search_icon ||= nil
   heading_size = false unless ['s', 'm', 'l', 'xl'].include?(heading_size)
+  heading_level ||= nil
   prefix ||= nil
   suffix ||= nil
 
@@ -53,10 +56,20 @@
 
 <%= content_tag :div, class: form_group_css_classes do %>
   <% if label %>
-    <%= render "govuk_publishing_components/components/label", {
-      html_for: id,
-      heading_size: heading_size
-    }.merge(label.symbolize_keys) %>
+    <% label_markup = capture do %>
+      <%= render "govuk_publishing_components/components/label", {
+        html_for: id,
+        heading_size: heading_size
+      }.merge(label.symbolize_keys) %>
+    <% end %>
+
+    <% if heading_level %>
+      <%= content_tag(shared_helper.get_heading_level, class: "govuk-label-wrapper") do %>
+        <%= label_markup %>
+      <% end %>
+    <% else %>
+      <%= label_markup %>
+    <% end %>
   <% end %>
 
   <% if hint %>

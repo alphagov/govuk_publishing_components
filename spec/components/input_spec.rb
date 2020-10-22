@@ -215,6 +215,26 @@ describe "Input", type: :view do
     assert_select ".govuk-label.govuk-label--xl"
   end
 
+  it "renders the label wrapped in a heading" do
+    render_component(
+      label: { text: "Where's your head at?" },
+      name: "heading",
+      heading_level: 3,
+    )
+
+    assert_select "h3.govuk-label-wrapper .govuk-label", text: "Where's your head at?"
+  end
+
+  it "only renders a label wrapped in a heading if specified" do
+    render_component(
+      label: { text: "What is your email address?" },
+      name: "email-address",
+      heading_size: "xl",
+    )
+
+    assert_select ".govuk-label-wrapper", false
+  end
+
   it "renders text input with prefix" do
     render_component(
       label: { text: "Cost per item, in pounds" },
