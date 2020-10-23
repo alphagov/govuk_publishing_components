@@ -5,8 +5,8 @@ describe('Track select change', function () {
   var tracker
   var $element
 
-  GOVUK.analytics = {
-    trackEvent: function () {}
+  if (typeof GOVUK.analytics === 'undefined') {
+    GOVUK.analytics = { trackEvent: function () {} }
   }
 
   afterEach(function () {

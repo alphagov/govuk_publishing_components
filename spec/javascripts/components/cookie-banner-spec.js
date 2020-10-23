@@ -100,7 +100,9 @@ describe('Cookie banner', function () {
   })
 
   it('sets consent cookie when accepting cookies', function () {
-    GOVUK.analyticsInit = function () {}
+    if (typeof GOVUK.analyticsInit === 'undefined') {
+      GOVUK.analyticsInit = function () {}
+    }
     spyOn(GOVUK, 'analyticsInit')
     spyOn(GOVUK, 'setCookie').and.callThrough()
 
@@ -121,8 +123,10 @@ describe('Cookie banner', function () {
   })
 
   it('sets global_bar_seen cookie when accepting cookies', function () {
-    GOVUK.globalBarInit = {
-      init: function () {}
+    if (typeof GOVUK.globalBarInit === 'undefined') {
+      GOVUK.globalBarInit = {
+        init: function () {}
+      }
     }
     spyOn(GOVUK.globalBarInit, 'init')
     spyOn(GOVUK, 'setCookie').and.callThrough()

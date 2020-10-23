@@ -4,8 +4,8 @@
 describe('Details component', function () {
   var FIXTURE
 
-  GOVUK.analytics = {
-    trackEvent: function () {}
+  if (typeof GOVUK.analytics === 'undefined') {
+    GOVUK.analytics = { trackEvent: function () {} }
   }
 
   var callback = jasmine.createSpy()

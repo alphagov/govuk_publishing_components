@@ -73,11 +73,17 @@ describe('Checkboxes component', function () {
     expectedRedOptions = { label: 'red', value: '1', dimension28: 'wubbalubbadubdub', dimension29: 'Pickle Rick' }
     expectedBlueOptions = { label: 'blue', value: '2', dimension28: 'Get schwifty', dimension29: 'Squanch' }
 
-    GOVUK.analytics = {
-      trackEvent: function () {}
+    if (typeof GOVUK.analytics === 'undefined') {
+      GOVUK.analytics = { trackEvent: function () {} }
     }
 
     spyOn(GOVUK.analytics, 'trackEvent')
+  })
+
+  afterEach(function () {
+    if (GOVUK.analytics.trackEvent.calls) {
+      GOVUK.analytics.trackEvent.calls.reset()
+    }
   })
 
   it('checking a parent checkbox checks all its children', function () {
