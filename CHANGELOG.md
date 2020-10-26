@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add custom margin support for print link ([PR #1753](https://github.com/alphagov/govuk_publishing_components/pull/1753))
+* Fix orange outline on global site search ([PR #1752](https://github.com/alphagov/govuk_publishing_components/pull/1752))
 
 ## 23.0.0
 
