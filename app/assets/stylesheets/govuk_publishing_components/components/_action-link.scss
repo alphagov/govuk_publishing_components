@@ -38,10 +38,9 @@ $gem-hover-dark-background: #dddcdb;
     text-decoration: underline;
   }
 
-  &:focus,
-  &:active {
+  &:focus {
     text-decoration: none;
-    color: govuk-colour("black");
+    color: $govuk-focus-text-colour;
   }
 }
 
@@ -193,14 +192,9 @@ $gem-hover-dark-background: #dddcdb;
       color: $gem-hover-dark-background;
     }
 
-    &:focus,
-    &:active {
+    &:focus {
       text-decoration: none;
-      color: govuk-colour("black");
-
-      &:hover {
-        color: govuk-colour("black");
-      }
+      color: $govuk-focus-text-colour;
     }
   }
 
