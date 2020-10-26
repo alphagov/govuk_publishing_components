@@ -36,7 +36,6 @@ $large-input-size: 50px;
 
 .gem-c-search__input[type="search"] { // overly specific to prevent some overrides from outside
   @include govuk-font($size: 19, $line-height: (28 / 19));
-
   padding: 6px;
   margin: 0;
   width: 100%;
@@ -68,6 +67,13 @@ $large-input-size: 50px;
       // `border-width`.
       border-width: $govuk-border-width-form-element * 2;
     }
+  }
+}
+
+@include govuk-compatibility(govuk_template) {
+  //  ultra specific rule overrides focus styling from govuk_template
+  #global-header .gem-c-search__input[type="search"]:focus { // stylelint-disable selector-max-id
+    @extend .gem-c-search__input[type="search"]:focus; // stylelint-disable scss/at-extend-no-missing-placeholder
   }
 }
 
