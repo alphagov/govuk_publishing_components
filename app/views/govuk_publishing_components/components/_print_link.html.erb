@@ -3,33 +3,40 @@
   href ||= nil
   data_attributes ||= {}
   require_js ||= href.nil?
+  margin_top ||= 3
+  margin_bottom ||= 3
 
-  data_attributes[:module] = 'print-link' if require_js
+  data_attributes[:module] = require_js ? "print-link" : "button"
+
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new({
+    margin_top: margin_top,
+    margin_bottom: margin_bottom
+  })
+
+  wrapper_classes = %w(gem-c-print-link)
+  wrapper_classes << "gem-c-print-link--show-without-js" unless require_js
+  wrapper_classes << (shared_helper.get_margin_top)
+  wrapper_classes << (shared_helper.get_margin_bottom)
 
   classes = %w(govuk-link)
   classes << "gem-c-print-link__button" if href.nil?
   classes << "gem-c-print-link__link govuk-link--no-visited-state" if href.present?
 %>
 
-<% if require_js %>
-  <div class="gem-c-print-link" >
+<%= tag.div class: wrapper_classes do %>
+  <% if require_js %>
     <%= content_tag(:button, text, {
         class: classes,
         data: data_attributes
     }) %>
-  </div>
-<% else %>
-  <div class="gem-c-print-link gem-c-print-link--show-without-js">
+  <% else %>
     <%= link_to(
       text,
       href,
       class: classes,
       rel: "alternate",
       data: data_attributes,
-      role: "button",
-      data: {
-        module: "button",
-      },
+      role: "button"
     ) %>
-  </div>
+  <% end %>
 <% end %>
