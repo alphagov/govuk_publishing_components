@@ -30,4 +30,14 @@
       }
     }
   }
+
+  .doc-noteref--in-parentheses {
+    &:before {
+      content: '(';
+    }
+
+    &:after {
+      content: ')';
+    }
+  }
 }
