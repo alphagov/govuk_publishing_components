@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add custom margin support for print link ([PR #1753](https://github.com/alphagov/govuk_publishing_components/pull/1753))
+
 ## 23.0.0
 
 Note - this is version 23.0.0 due to a previously yanked version using 22.0.0; this release is unrelated to the yanked version.
