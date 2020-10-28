@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Change analytics calls ([PR #1757](https://github.com/alphagov/govuk_publishing_components/pull/1757))
+
 ## 23.1.0
 
 * Add custom margin support for print link ([PR #1753](https://github.com/alphagov/govuk_publishing_components/pull/1753))
