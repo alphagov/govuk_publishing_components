@@ -1,4 +1,4 @@
-var analyticsInit = function(linkedDomains) {
+var analyticsInit = function(gaProperty, gaPropertyCrossDomain, linkedDomains) {
   "use strict";
 
   var consentCookie = window.GOVUK.getConsentCookie();
@@ -14,10 +14,11 @@ var analyticsInit = function(linkedDomains) {
 
   // Disable analytics by default
   // This will be reversed below, if the consent cookie says usage cookies are allowed
-  window['ga-disable-UA-26179049-1'] = true;
+  var disabler = 'ga-disable-' + gaProperty
+  window[disabler] = true;
 
   if (consentCookie && consentCookie["usage"]) {
-    window['ga-disable-UA-26179049-1'] = false;
+    window[disabler] = false;
 
     // Load Google Analytics libraries
     GOVUK.StaticAnalytics.load();
@@ -26,12 +27,9 @@ var analyticsInit = function(linkedDomains) {
     // Otherwise explicitly set the domain as www.gov.uk (and not gov.uk).
     var cookieDomain = (document.domain == 'www.gov.uk') ? '.www.gov.uk' : document.domain;
 
-    var universalId = "UA-26179049-1";
-    var secondaryId = "UA-145652997-1";
-
     // Configure profiles, setup custom vars, track initial pageview
     var analytics = new GOVUK.StaticAnalytics({
-      universalId: universalId,
+      universalId: gaProperty,
       cookieDomain: cookieDomain,
       allowLinker: true
     });
@@ -40,7 +38,7 @@ var analyticsInit = function(linkedDomains) {
     GOVUK.analytics = analytics;
 
     if (linkedDomains && linkedDomains.length > 0) {
-      GOVUK.analytics.addLinkedTrackerDomain(secondaryId, 'govuk', linkedDomains);
+      GOVUK.analytics.addLinkedTrackerDomain(gaPropertyCrossDomain, 'govuk', linkedDomains);
     }
   } else {
     GOVUK.analytics = dummyAnalytics
