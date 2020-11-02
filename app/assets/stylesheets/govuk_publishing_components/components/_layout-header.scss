@@ -104,11 +104,16 @@
   }
 }
 
+.govuk-header__logotype {
+  vertical-align: middle;
+}
+
 .gem-c-header__product-name {
   display: none;
 
   @include govuk-media-query($from: tablet) {
     display: inline-block;
+    vertical-align: middle;
   }
 }
 

@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix layout header component in IE ([PR #1760](https://github.com/alphagov/govuk_publishing_components/pull/1760))
+
 ## 23.2.0
 
 * Change analytics calls ([PR #1757](https://github.com/alphagov/govuk_publishing_components/pull/1757))
