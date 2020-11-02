@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Fix layout header component in IE ([PR #1760](https://github.com/alphagov/govuk_publishing_components/pull/1760))
+* Hide footnotes backlink in print version ([PR #1759](https://github.com/alphagov/govuk_publishing_components/pull/1759))
 
 ## 23.2.0
 
