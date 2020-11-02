@@ -3,5 +3,14 @@
 %>
 
 <% if items.any? %>
-
+  <ul class="govuk-list gem-c-column-list">
+    <% items.each do |item| %>
+      <li class="gem-c-column-list__item">
+        <h3 class="govuk-heading-s gem-c-column-list__heading">
+          <%= link_to item[:heading], item[:href], class: "govuk-link" %>
+        </h3>
+        <p class="govuk-body"><%= item[:text] %></p>
+      </li>
+    <% end %>
+  </ul>
 <% end %>
