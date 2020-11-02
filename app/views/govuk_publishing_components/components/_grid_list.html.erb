@@ -1,7 +1,27 @@
 <%
+  title ||= false
   items ||= []
+  columns ||= 3
+
+  if !title
+    raise ArgumentError, "A heading is required for the grid list component to clearly communicate to screen reader users what the intent of the grid list is"
+  end
 %>
 
 <% if items.any? %>
-
+  <h2 class="govuk-visually-hidden"><%= title %></h2>
+  <ul class="govuk-list gem-c-grid-list gem-c-grid-list--column-count-<%= columns %>">
+    <% items.each do |item| %>
+      <li class="gem-c-grid-list__item">
+        <h3 class="govuk-heading-s gem-c-grid-list__heading">
+          <% if item[:href].present? %>
+            <%= link_to item[:heading], item[:href], class: "govuk-link" %>
+          <% else %>
+            <%= item[:heading] %>
+          <% end %>
+        </h3>
+        <p class="govuk-body"><%= item[:text] %></p>
+      </li>
+    <% end %>
+  </ul>
 <% end %>

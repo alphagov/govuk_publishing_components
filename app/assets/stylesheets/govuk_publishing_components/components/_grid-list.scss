@@ -1,0 +1,14 @@
+@for $i from 1 through 4 {
+  .gem-c-grid-list--column-count-#{$i} {
+    columns: $i;
+  }
+}
+
+.gem-c-grid-list__item {
+  display: inline-block;
+  width: 100%;
+}
+
+.gem-c-grid-list__heading {
+  margin-bottom: govuk-spacing(1);
+}
