@@ -12,6 +12,7 @@ describe('GOVUK.StaticAnalytics', function () {
     spyOn(window, 'ga')
     spyOn(GOVUK.analyticsPlugins, 'printIntent')
     spyOn(GOVUK.analyticsPlugins, 'error')
+
     analytics = new GOVUK.StaticAnalytics({
       universalId: 'universal-id',
       cookieDomain: '.www.gov.uk'

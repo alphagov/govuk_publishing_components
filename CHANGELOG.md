@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Change how analytics variables are passed ([PR #1762](https://github.com/alphagov/govuk_publishing_components/pull/1762))
+
 ## 23.2.1
 
 * Fix layout header component in IE ([PR #1760](https://github.com/alphagov/govuk_publishing_components/pull/1760))

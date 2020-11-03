@@ -1,8 +1,14 @@
-var analyticsInit = function (gaProperty, gaPropertyCrossDomain, linkedDomains) {
+var analyticsInit = function () {
   'use strict'
 
-  var consentCookie = window.GOVUK.getConsentCookie()
+  var analyticsVars = window.GOVUK.analyticsVars || false
+  if (analyticsVars) {
+    var gaProperty = window.GOVUK.analyticsVars.gaProperty || false
+    var gaPropertyCrossDomain = window.GOVUK.analyticsVars.gaPropertyCrossDomain || false
+    var linkedDomains = window.GOVUK.analyticsVars.linkedDomains || false
+  }
 
+  var consentCookie = window.GOVUK.getConsentCookie()
   var dummyAnalytics = {
     addLinkedTrackerDomain: function () {},
     setDimension: function () {},
@@ -23,22 +29,24 @@ var analyticsInit = function (gaProperty, gaPropertyCrossDomain, linkedDomains) 
     // Load Google Analytics libraries
     window.GOVUK.StaticAnalytics.load()
 
-    // Use document.domain in dev, preview and staging so that tracking works
-    // Otherwise explicitly set the domain as www.gov.uk (and not gov.uk).
-    var cookieDomain = (document.domain === 'www.gov.uk') ? '.www.gov.uk' : document.domain
+    if (gaProperty) {
+      // Use document.domain in dev, preview and staging so that tracking works
+      // Otherwise explicitly set the domain as www.gov.uk (and not gov.uk).
+      var cookieDomain = (document.domain === 'www.gov.uk') ? '.www.gov.uk' : document.domain
 
-    // Configure profiles, setup custom vars, track initial pageview
-    var analytics = new window.GOVUK.StaticAnalytics({
-      universalId: gaProperty,
-      cookieDomain: cookieDomain,
-      allowLinker: true
-    })
+      // Configure profiles, setup custom vars, track initial pageview
+      var analytics = new window.GOVUK.StaticAnalytics({
+        universalId: gaProperty,
+        cookieDomain: cookieDomain,
+        allowLinker: true
+      })
 
-    // Make interface public for virtual pageviews and events
-    window.GOVUK.analytics = analytics
+      // Make interface public for virtual pageviews and events
+      window.GOVUK.analytics = analytics
 
-    if (linkedDomains && linkedDomains.length > 0) {
-      window.GOVUK.analytics.addLinkedTrackerDomain(gaPropertyCrossDomain, 'govuk', linkedDomains)
+      if (linkedDomains && linkedDomains.length > 0) {
+        window.GOVUK.analytics.addLinkedTrackerDomain(gaPropertyCrossDomain, 'govuk', linkedDomains)
+      }
     }
   } else {
     window.GOVUK.analytics = dummyAnalytics
