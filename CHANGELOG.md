@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix image card link text in high contrast mode in IE ([PR #1732](https://github.com/alphagov/govuk_publishing_components/pull/1732))
+
 ## 23.3.0
 
 * Change how analytics variables are passed ([PR #1762](https://github.com/alphagov/govuk_publishing_components/pull/1762))
