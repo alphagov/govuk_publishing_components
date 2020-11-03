@@ -5,9 +5,10 @@ describe('Cookie banner', function () {
   'use strict'
 
   var container
-
   var DEFAULT_COOKIE_CONSENT
   var ALL_COOKIE_CONSENT
+  window.GOVUK.analyticsVars = window.GOVUK.analyticsVars || {}
+  window.GOVUK.analyticsVars.gaProperty = 'UA-123456-7'
 
   beforeEach(function () {
     container = document.createElement('div')

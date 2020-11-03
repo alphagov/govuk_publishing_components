@@ -5,7 +5,6 @@ var $ = window.jQuery
 describe('An auto event tracker', function () {
   'use strict'
   var GOVUK = window.GOVUK
-
   var tracker,
     element
 

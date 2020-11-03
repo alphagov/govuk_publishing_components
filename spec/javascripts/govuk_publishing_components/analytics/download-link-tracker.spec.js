@@ -5,7 +5,6 @@ var $ = window.jQuery
 describe('GOVUK.analyticsPlugins.downloadLinkTracker', function () {
   'use strict'
   var GOVUK = window.GOVUK
-
   var $links
 
   beforeEach(function () {
