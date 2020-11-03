@@ -241,8 +241,8 @@ describe "Input", type: :view do
       name: "cost-per-item",
       prefix: "£",
     )
-    assert_select ".gem-c-input__wrapper .gem-c-input[name=cost-per-item]"
-    assert_select ".gem-c-input__wrapper .gem-c-input__prefix[aria-hidden=true]", text: "£"
+    assert_select ".govuk-input__wrapper .gem-c-input[name=cost-per-item]"
+    assert_select ".govuk-input__wrapper .govuk-input__prefix[aria-hidden=true]", text: "£"
   end
 
   it "renders text input with suffix" do
@@ -251,7 +251,7 @@ describe "Input", type: :view do
       name: "lead-times",
       suffix: "days",
     )
-    assert_select ".gem-c-input__wrapper .gem-c-input[name=lead-times]"
-    assert_select ".gem-c-input__wrapper .gem-c-input__suffix[aria-hidden=true]", text: "days"
+    assert_select ".govuk-input__wrapper .gem-c-input[name=lead-times]"
+    assert_select ".govuk-input__wrapper .govuk-input__suffix[aria-hidden=true]", text: "days"
   end
 end
