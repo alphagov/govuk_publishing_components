@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Bump govuk-frontend from 3.8.1 to 3.9.1 ([PR #1705](https://github.com/alphagov/govuk_publishing_components/pull/1705))
 * Fix image card link text in high contrast mode in IE ([PR #1732](https://github.com/alphagov/govuk_publishing_components/pull/1732))
 
 ## 23.3.0
@@ -37,10 +38,10 @@ Note - this is version 23.0.0 due to a previously yanked version using 22.0.0; t
 * Fix active state on action link ([PR #1749](https://github.com/alphagov/govuk_publishing_components/pull/1749))
 * Add heading option to input component ([PR #1747](https://github.com/alphagov/govuk_publishing_components/pull/1747)) MINOR
 * Add analytics from static ([PR #1745](https://github.com/alphagov/govuk_publishing_components/pull/1745)) MINOR
-* **BREAKING** Layout header component always displays product name and environment when provided ([PR #1736](https://github.com/alphagov/govuk_publishing_components/pull/1736))
+* **BREAKING:** Layout header component always displays product name and environment when provided ([PR #1736](https://github.com/alphagov/govuk_publishing_components/pull/1736))
 * Add heading option to panel component ([PR #1741](https://github.com/alphagov/govuk_publishing_components/pull/1741)) MINOR
-* **BREAKING** Force contents list title to always be Contents or regional equivalent ([PR #1734](https://github.com/alphagov/govuk_publishing_components/pull/1734))
-* **BREAKING** Remove ability to pass Govspeak unsanitized HTML ([PR #1632](https://github.com/alphagov/govuk_publishing_components/pull/1632))
+* **BREAKING:** Force contents list title to always be Contents or regional equivalent ([PR #1734](https://github.com/alphagov/govuk_publishing_components/pull/1734))
+* **BREAKING:** Remove ability to pass Govspeak unsanitized HTML ([PR #1632](https://github.com/alphagov/govuk_publishing_components/pull/1632))
 
 ## 21.69.0
 
