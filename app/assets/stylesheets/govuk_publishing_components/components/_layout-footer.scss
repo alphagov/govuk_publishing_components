@@ -4,6 +4,11 @@
   border-top: govuk-spacing(2) solid govuk-colour("blue");
 }
 
+.govuk-footer__list-item {
+  display: inline-block;
+  width: 99%;
+}
+
 .gem-c-layout-footer .govuk-footer__list {
   padding-bottom: govuk-spacing(7);
 }
