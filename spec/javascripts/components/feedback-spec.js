@@ -95,7 +95,9 @@ describe('Feedback component', function () {
   })
 
   afterEach(function () {
-    GOVUK.analytics.trackEvent.calls.reset()
+    if (GOVUK.analytics.trackEvent.calls) {
+      GOVUK.analytics.trackEvent.calls.reset()
+    }
   })
 
   it('hides the forms', function () {

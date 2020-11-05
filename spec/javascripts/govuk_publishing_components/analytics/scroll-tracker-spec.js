@@ -10,6 +10,9 @@ describe('GOVUK.ScrollTracker', function () {
   afterEach(function () {
     jasmine.clock().uninstall()
     $(window).unbind('scroll')
+    if (GOVUK.analytics.trackEvent.calls) {
+      GOVUK.analytics.trackEvent.calls.reset()
+    }
   })
 
   describe('enabling on correct pages', function () {

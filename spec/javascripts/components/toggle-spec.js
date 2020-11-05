@@ -6,9 +6,11 @@ describe('A toggle module', function () {
 
   var element
 
-  if (typeof GOVUK.analytics === 'undefined') {
-    GOVUK.analytics = { trackEvent: function () {} }
-  }
+  afterEach(function () {
+    if (GOVUK.analytics.trackEvent.calls) {
+      GOVUK.analytics.trackEvent.calls.reset()
+    }
+  })
 
   describe('when starting', function () {
     beforeEach(function () {

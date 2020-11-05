@@ -9,19 +9,17 @@ describe('An auto event tracker', function () {
     element
 
   beforeEach(function () {
-    if (typeof GOVUK.analytics === 'undefined') {
-      GOVUK.analytics = { trackEvent: function () {} }
-    }
     tracker = new GOVUK.Modules.AutoTrackEvent()
+    spyOn(GOVUK.analytics, 'trackEvent')
   })
 
   afterEach(function () {
-    GOVUK.analytics.trackEvent.calls.reset()
+    if (GOVUK.analytics.trackEvent.calls) {
+      GOVUK.analytics.trackEvent.calls.reset()
+    }
   })
 
   it('tracks non-interactive events on start', function () {
-    spyOn(GOVUK.analytics, 'trackEvent')
-
     element = $(
       '<div ' +
         'data-track-category="category"' +
@@ -36,8 +34,6 @@ describe('An auto event tracker', function () {
   })
 
   it('can track non-interactive events with optional label and value', function () {
-    spyOn(GOVUK.analytics, 'trackEvent')
-
     element = $(
       '<div ' +
         'data-track-category="category"' +

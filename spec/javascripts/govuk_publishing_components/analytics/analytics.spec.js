@@ -24,6 +24,15 @@ describe('GOVUK.Analytics', function () {
     })
   })
 
+  afterEach(function () {
+    if (GOVUK.analytics.trackEvent.calls) {
+      GOVUK.analytics.trackEvent.calls.reset()
+    }
+    if (GOVUK.analytics.setDimension.calls) {
+      GOVUK.analytics.setDimension.calls.reset()
+    }
+  })
+
   describe('when created', function () {
     beforeEach(function () {
       universalSetupArguments = window.ga.calls.allArgs()

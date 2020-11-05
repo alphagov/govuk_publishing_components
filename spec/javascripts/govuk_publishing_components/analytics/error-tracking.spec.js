@@ -7,14 +7,13 @@ describe('GOVUK.analyticsPlugins.error', function () {
   GOVUK.analyticsPlugins.error({ filenameMustMatch: /gov\.uk/ })
 
   beforeEach(function () {
-    if (typeof GOVUK.analytics === 'undefined') {
-      GOVUK.analytics = { trackEvent: function () {} }
-    }
     spyOn(GOVUK.analytics, 'trackEvent')
   })
 
   afterEach(function () {
-    GOVUK.analytics.trackEvent.calls.reset()
+    if (GOVUK.analytics.trackEvent.calls) {
+      GOVUK.analytics.trackEvent.calls.reset()
+    }
   })
 
   xit('sends errors to Google Analytics', function () {

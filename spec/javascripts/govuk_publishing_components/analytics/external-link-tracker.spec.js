@@ -23,19 +23,22 @@ describe('GOVUK.analyticsPlugins.externalLinkTracker', function () {
     $('html').on('click', function (evt) { evt.preventDefault() })
     $('body').append($links)
 
-    GOVUK.analytics = {
-      trackEvent: function () {},
-      setDimension: function () {}
-    }
     spyOn(GOVUK.analyticsPlugins.externalLinkTracker, 'getHostname').and.returnValue('fake-hostname.com')
+    spyOn(GOVUK.analytics, 'trackEvent')
+    spyOn(GOVUK.analytics, 'setDimension')
   })
 
   afterEach(function () {
     $('html').off()
     $('body').off()
     $links.remove()
-    delete window.GOVUK.analytics
-    window.GOVUK.analyticsInit()
+
+    if (GOVUK.analytics.trackEvent.calls) {
+      GOVUK.analytics.trackEvent.calls.reset()
+    }
+    if (GOVUK.analytics.setDimension.calls) {
+      GOVUK.analytics.setDimension.calls.reset()
+    }
   })
 
   // this test passes when run individually but fails with the other tests
@@ -43,24 +46,25 @@ describe('GOVUK.analyticsPlugins.externalLinkTracker', function () {
   xit('listens to click events on only external links', function () {
     GOVUK.analyticsPlugins.externalLinkTracker({ externalLinkUploadCustomDimension: 36 })
 
-    spyOn(GOVUK.analytics, 'trackEvent')
-
     $('.external-links a').each(function () {
       $(this).trigger('click')
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalled()
-      GOVUK.analytics.trackEvent.calls.reset()
+      if (GOVUK.analytics.trackEvent.calls) {
+        GOVUK.analytics.trackEvent.calls.reset()
+      }
     })
 
     $('.internal-links a').each(function () {
       $(this).trigger('click')
       expect(GOVUK.analytics.trackEvent).not.toHaveBeenCalled()
-      GOVUK.analytics.trackEvent.calls.reset()
+      if (GOVUK.analytics.trackEvent.calls) {
+        GOVUK.analytics.trackEvent.calls.reset()
+      }
     })
   })
 
   it('listens to click events on elements within external links', function () {
     GOVUK.analyticsPlugins.externalLinkTracker({ externalLinkUploadCustomDimension: 36 })
-    spyOn(GOVUK.analytics, 'trackEvent')
     $('.external-links a img').trigger('click')
 
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith(
@@ -69,7 +73,6 @@ describe('GOVUK.analyticsPlugins.externalLinkTracker', function () {
 
   it('tracks an external link\'s href and link text', function () {
     GOVUK.analyticsPlugins.externalLinkTracker({ externalLinkUploadCustomDimension: 36 })
-    spyOn(GOVUK.analytics, 'trackEvent')
     $('.external-links a').trigger('click')
 
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith(
@@ -84,8 +87,6 @@ describe('GOVUK.analyticsPlugins.externalLinkTracker', function () {
 
   it('duplicates the url info in a custom dimension to be used to join with a Google Analytics upload', function () {
     GOVUK.analyticsPlugins.externalLinkTracker({ externalLinkUploadCustomDimension: 36 })
-    spyOn(GOVUK.analytics, 'trackEvent')
-    spyOn(GOVUK.analytics, 'setDimension')
     $('.external-links a').trigger('click')
 
     expect(GOVUK.analytics.setDimension).toHaveBeenCalledWith(36, 'http://www.nationalarchives.gov.uk')
@@ -97,8 +98,6 @@ describe('GOVUK.analyticsPlugins.externalLinkTracker', function () {
   // not needed but will require fixing when analytics are fully migrated from static
   xit('does not duplicate the url info if a custom dimension is not provided', function () {
     GOVUK.analyticsPlugins.externalLinkTracker()
-    spyOn(GOVUK.analytics, 'trackEvent')
-    spyOn(GOVUK.analytics, 'setDimension')
     $('.external-links a').trigger('click')
 
     expect(GOVUK.analytics.setDimension).not.toHaveBeenCalled()

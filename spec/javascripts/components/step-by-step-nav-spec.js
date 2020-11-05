@@ -103,9 +103,6 @@ describe('A stepnav module', function () {
     expectedstepnavContentCount = $element.find('.gem-c-step-nav__step').first().find('.js-link').length
     expectedstepnavLinkCount = $element.find('.gem-c-step-nav__list-item').length
 
-    if (typeof GOVUK.analytics === 'undefined') {
-      GOVUK.analytics = { trackEvent: function () {} }
-    }
     spyOn(GOVUK.analytics, 'trackEvent')
   })
 

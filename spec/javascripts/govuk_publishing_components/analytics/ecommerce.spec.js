@@ -28,10 +28,13 @@ describe('Ecommerce reporter for results pages', function () {
     window.GOVUK.analyticsInit()
     ecommerce = new GOVUK.Ecommerce()
     GOVUK.analytics.gaClientId = '12345.67890'
-    if (typeof window.ga === 'undefined') {
-      window.ga = function () {}
-    }
     spyOn(window, 'ga')
+  })
+
+  afterEach(function () {
+    if (window.ga.calls) {
+      window.ga.calls.reset()
+    }
   })
 
   it('requires content id or path', function () {
