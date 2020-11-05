@@ -17,6 +17,8 @@ This gem consumes [`govuk-frontend`](https://github.com/alphagov/govuk-frontend)
 
 6. If the pull request required any code changes ask a colleague for a review, otherwise you can approve it and merge it.
 
+Note that the `govuk-frontend` release type does not dictate the `govuk_publishing_components` release type the latter being based on the required changes imposed by the former.
+
 See an [example pull request](https://github.com/alphagov/govuk_publishing_components/pull/1705) for upgrading to a new minor version of `govuk-frontend`.
 
 See an [example pull request](https://github.com/alphagov/govuk_publishing_components/pull/1010) for upgrading to a new major version of `govuk-frontend`.
