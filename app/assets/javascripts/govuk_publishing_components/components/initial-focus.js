@@ -2,11 +2,12 @@ window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
-  'use strict'
+  function InitialFocus () { }
 
-  Modules.InitialFocus = function () {
-    this.start = function (element) {
-      element.focus()
-    }
+  InitialFocus.prototype.start = function ($module) {
+    this.$module = $module[0]
+    this.$module.focus()
   }
+
+  Modules.InitialFocus = InitialFocus
 })(window.GOVUK.Modules)
