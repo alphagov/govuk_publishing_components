@@ -236,6 +236,20 @@ examples:
             </tr>
           </tbody>
         </table>
+  chart_with_multiple_headings:
+    data:
+      block: |
+        <table id="multiple-table-chart" class="js-barchart-table mc-multiple">
+          <caption>Multiple Table</caption>
+          <thead>
+            <tr><th>Some Data</th><th>YES</th><th>NO</th><th>MAYBE</th></tr>
+          </thead>
+          <tbody>
+            <tr><th>Testing One</th><td>5</td><td>6</td><td>11</td></tr>
+            <tr><th>Testing Two</th><td>6</td><td>2</td><td>8</td></tr>
+            <tr><th>Testing Three</th><td>3</td><td>9</td><td>12</td></tr>
+          </tbody>
+        </table>
   address:
     data:
       block: |
