@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 23.4.0
 
 * Bump govuk-frontend from 3.8.1 to 3.9.1 ([PR #1705](https://github.com/alphagov/govuk_publishing_components/pull/1705))
 * Fix image card link text in high contrast mode in IE ([PR #1732](https://github.com/alphagov/govuk_publishing_components/pull/1732))
