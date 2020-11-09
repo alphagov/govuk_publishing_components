@@ -62,6 +62,19 @@ describe('Magna charta', function () {
       '</tbody>' +
     '</table>'
 
+  var multiple3 =
+    '<table id="multiple3" class="">' +
+      '<caption>Multiple Table</caption>' +
+      '<thead>' +
+        '<tr><th>Some Data</th><th>YES</th><th>NO</th><th>MAYBE</th></tr>' +
+      '</thead>' +
+      '<tbody>' +
+        '<tr><th>Testing One</th><td>5</td><td>6</td><td>11</td></tr>' +
+        '<tr><th>Testing Two</th><td>6</td><td>2</td><td>8</td></tr>' +
+        '<tr><th>Testing Three</th><td>3</td><td>9</td><td>12</td></tr>' +
+      '</tbody>' +
+    '</table>'
+
   var negative =
     '<table id="negative" class="mc-negative">' +
       '<thead>' +
@@ -186,6 +199,25 @@ describe('Magna charta', function () {
       element = $('<div/>').attr('id', 'test-magna-charta').html(multiple2)
       $('body').append(element)
       magna = new GOVUK.Modules.MagnaCharta().start(element.find('#multiple2')[0], { returnReference: true })
+      graph = element.find('.mc-chart')
+      table = element.find('table')
+    })
+
+    afterEach(function () {
+      $('body').find('#test-magna-charta').remove()
+    })
+
+    it('the graph of a multiple table is given a class', function () {
+      expect(graph).toHaveClass('mc-multiple')
+      expect(magna.options.multiple).toBe(true)
+    })
+  })
+
+  describe('creating a graph of a multiple table with row headings', function () {
+    beforeEach(function () {
+      element = $('<div/>').attr('id', 'test-magna-charta').html(multiple3)
+      $('body').append(element)
+      magna = new GOVUK.Modules.MagnaCharta().start(element.find('#multiple3')[0], { returnReference: true })
       graph = element.find('.mc-chart')
       table = element.find('table')
     })

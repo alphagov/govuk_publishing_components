@@ -49,8 +49,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
     // true if it's a 'multiple' table
     // this means multiple bars per rows, but not stacked.
-    var moreThanTwoTDs = this.$table.querySelectorAll('tbody tr')[0].querySelectorAll('td').length > 2
-    this.options.multiple = !this.options.stacked && (this.$table.classList.contains('mc-multiple') || moreThanTwoTDs)
+    var moreThanTwoCells = this.$table.querySelectorAll('tbody tr')[0].querySelectorAll('th, td').length > 2
+
+    this.options.multiple = !this.options.stacked && (this.$table.classList.contains('mc-multiple') || moreThanTwoCells)
 
     // set the outdent options
     // which can be set via classes or overriden by setting the value to true
@@ -118,11 +119,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     tr.classList.add('mc-tr')
 
     var output = ''
-    var allTheTHs = this.$table.querySelectorAll('th')
+    var allTheTHsInTableHead = this.$table.querySelectorAll('thead th')
 
-    for (var i = 0; i < allTheTHs.length; i++) {
+    for (var i = 0; i < allTheTHsInTableHead.length; i++) {
       output += '<div class="mc-th">'
-      output += allTheTHs[i].innerHTML
+      output += allTheTHsInTableHead[i].innerHTML
       output += '</div>'
     }
 
@@ -143,11 +144,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       tr.classList.add('mc-tr')
 
       var cellsOutput = ''
-      var allTheTds = allTheTbodyTrs[i].querySelectorAll('td')
+      var allTheTableBodyCells = allTheTbodyTrs[i].querySelectorAll('th, td')
 
-      for (var j = 0; j < allTheTds.length; j++) {
+      for (var j = 0; j < allTheTableBodyCells.length; j++) {
         cellsOutput += '<div class="mc-td">'
-        cellsOutput += allTheTds[j].innerHTML
+        cellsOutput += allTheTableBodyCells[j].innerHTML
         cellsOutput += '</div>'
       }
       tr.innerHTML = cellsOutput
