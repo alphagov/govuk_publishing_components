@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Align JavaScript modules format in components ([PR #1769](https://github.com/alphagov/govuk_publishing_components/pull/1769))
+* Converts track options correctly when passed in ([PR #1772](https://github.com/alphagov/govuk_publishing_components/pull/1772))
 
 ## 23.4.0
 
