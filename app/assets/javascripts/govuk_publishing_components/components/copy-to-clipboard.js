@@ -2,22 +2,24 @@ window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
-  'use strict'
+  function CopyToClipboard () { }
 
-  Modules.CopyToClipboard = function () {
-    this.start = function (element) {
-      var input = element[0].querySelector('.gem-c-input')
-      var copyButton = element[0].querySelector('.gem-c-button')
+  CopyToClipboard.prototype.start = function ($module) {
+    this.$module = $module[0]
 
-      input.addEventListener('click', function () {
-        input.select()
-      })
+    var input = this.$module.querySelector('.gem-c-input')
+    var copyButton = this.$module.querySelector('.gem-c-button')
 
-      copyButton.addEventListener('click', function (event) {
-        event.preventDefault()
-        input.select()
-        document.execCommand('copy')
-      })
-    }
+    input.addEventListener('click', function () {
+      input.select()
+    })
+
+    copyButton.addEventListener('click', function (event) {
+      event.preventDefault()
+      input.select()
+      document.execCommand('copy')
+    })
   }
+
+  Modules.CopyToClipboard = CopyToClipboard
 })(window.GOVUK.Modules)

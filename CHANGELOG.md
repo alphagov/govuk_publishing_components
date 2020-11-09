@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Align JavaScript modules format in components ([PR #1769](https://github.com/alphagov/govuk_publishing_components/pull/1769))
+
 ## 23.4.0
 
 * Bump govuk-frontend from 3.8.1 to 3.9.1 ([PR #1705](https://github.com/alphagov/govuk_publishing_components/pull/1705))

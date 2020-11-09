@@ -2,13 +2,14 @@ window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
-  'use strict'
+  function PrintLink () { }
 
-  Modules.PrintLink = function () {
-    this.start = function (element) {
-      element[0].addEventListener('click', function () {
-        window.print()
-      })
-    }
+  PrintLink.prototype.start = function ($module) {
+    this.$module = $module[0]
+    this.$module.addEventListener('click', function () {
+      window.print()
+    })
   }
+
+  Modules.PrintLink = PrintLink
 })(window.GOVUK.Modules)
