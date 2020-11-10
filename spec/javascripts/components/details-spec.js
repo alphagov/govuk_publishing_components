@@ -76,4 +76,17 @@ describe('Details component', function () {
 
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('track-category', 'track-action', { label: 'closed' })
   })
+
+  it('allows custom track options', function () {
+    $('.gem-c-details').attr('data-track-action', 'track-action')
+    $('.gem-c-details').attr('data-track-category', 'track-category')
+    $('.gem-c-details').attr('data-track-options', '{"value":"track-value"}')
+    $('.gem-c-details').attr('data-track-label', null)
+
+    loadDetailsComponent()
+
+    $('.govuk-details__summary').click()
+
+    expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('track-category', 'track-action', { label: 'open', value: 'track-value' })
+  })
 })

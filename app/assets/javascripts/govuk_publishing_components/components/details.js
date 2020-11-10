@@ -34,6 +34,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       var trackAction = element.getAttribute('data-track-action')
       var trackOptions = element.getAttribute('data-track-options')
 
+      if (trackOptions) {
+        trackOptions = JSON.parse(trackOptions)
+      }
+
       if (typeof trackOptions !== 'object' || trackOptions === null) {
         trackOptions = {}
       }
