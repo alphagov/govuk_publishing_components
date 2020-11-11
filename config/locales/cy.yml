@@ -6,5 +6,8 @@ cy:
       or: 'neu'
     back_link:
       back: "Yn ôl"
-    contents_list: 
+    contents_list:
       contents: Cynnwys
+    related_navigation:
+      transition:
+        link_path: "/transition.cy"

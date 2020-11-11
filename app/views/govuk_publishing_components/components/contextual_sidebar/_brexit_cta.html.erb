@@ -1,4 +1,6 @@
+<% link_text = t("components.related_navigation.transition.link_text") %>
+<% link_path = t("components.related_navigation.transition.link_path") %>
 <div class="gem-c-contextual-sidebar__brexit-cta govuk-!-margin-bottom-6" data-module="track-click">
-  <h2 class="gem-c-contextual-sidebar__brexit-heading">Transition period</h2>
-  <a href="/transition" class="govuk-link" data-track-category="relatedLinkClicked" data-track-action="1.0 Transition" data-track-label="/transition" data-track-options='{"dimension29":"Find out what it means for you"}'>Find out what it means for you</a>
+  <h2 class="gem-c-contextual-sidebar__brexit-heading"><%= t("components.related_navigation.transition.title") %></h2>
+  <a href="<%= link_path %>" class="govuk-link" data-track-category="relatedLinkClicked" data-track-action="1.0 Transition" data-track-label="<%= link_path %>" data-track-options='{"dimension29":"<%= link_text %>"}'><%= link_text %></a>
 </div>

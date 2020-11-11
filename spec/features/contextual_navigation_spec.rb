@@ -25,6 +25,7 @@ describe "Contextual navigation" do
     given_theres_a_page_with_transition_taxon
     and_i_visit_that_page
     and_i_see_the_transition_contextual_breadcrumbs
+    and_i_see_the_transition_related_links
   end
 
   scenario "There's a step by step list" do
@@ -536,6 +537,13 @@ describe "Contextual navigation" do
     end
   end
 
+  def and_i_see_the_transition_related_links
+    within ".gem-c-contextual-sidebar" do
+      expect(page).to have_css("h2", text: "Brexit transition")
+      expect(page).to have_link("Find out what it means for you", href: "/transition")
+    end
+  end
+
   def then_i_see_the_step_by_step_breadcrumbs
     within ".gem-c-contextual-breadcrumbs" do
       expect(page).to have_link("A step by step page")
@@ -635,7 +643,7 @@ describe "Contextual navigation" do
       "content_id" => "d6c2de5d-ef90-45d1-82d4-5f2438369eea",
       "api_path" => "/api/content/transition",
       "base_path" => "/transition",
-      "title" => "Transition period",
+      "title" => "Brexit Transition",
       "locale" => "en",
     }
   end
