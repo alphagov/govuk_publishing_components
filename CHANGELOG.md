@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 23.5.1
 
 * Update Brexit sidebar navigation ([PR #1777](https://github.com/alphagov/govuk_publishing_components/pull/1777))
 
