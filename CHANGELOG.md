@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix hide zeros values within stacked barcharts ([PR #1776](https://github.com/alphagov/govuk_publishing_components/pull/1776))
+
 ## 23.5.0
 
 * Align JavaScript modules format in components ([PR #1769](https://github.com/alphagov/govuk_publishing_components/pull/1769))

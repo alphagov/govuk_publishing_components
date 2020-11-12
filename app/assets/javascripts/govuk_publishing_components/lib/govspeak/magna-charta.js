@@ -413,7 +413,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         }
       } else {
         // if it's a stacked graph
-        if (spanWidth > cellWidth && cellVal > 0) {
+        if ((spanWidth > cellWidth && cellVal > 0) || (cellVal < 1)) {
           $cell.classList.add('mc-value-overflow')
         }
       }

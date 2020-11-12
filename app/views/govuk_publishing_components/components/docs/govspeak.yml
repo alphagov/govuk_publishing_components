@@ -236,6 +236,47 @@ examples:
             </tr>
           </tbody>
         </table>
+  stacked_chart:
+    data:
+      block: |
+        <table class="js-barchart-table mc-stacked mc-auto-outdent">
+          <thead>
+            <tr>
+              <th scope="col">Colours</th>
+              <th scope="col">Fruits</th>
+              <th scope="col">Vegetables</th>
+              <th scope="col">Beans</th>
+              <th scope="col">Nuts</th>
+              <th scope="col">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Red</td>
+              <td>23</td>
+              <td>9</td>
+              <td>2</td>
+              <td>1</td>
+              <td>35</td>
+            </tr>
+            <tr>
+              <td>Green</td>
+              <td>5</td>
+              <td>33</td>
+              <td>8</td>
+              <td>0</td>
+              <td>46</td>
+            </tr>
+            <tr>
+              <td>Yellow</td>
+              <td>2</td>
+              <td>10</td>
+              <td>0</td>
+              <td>15</td>
+              <td>27</td>
+            </tr>
+          </tbody>
+        </table>
   chart_with_multiple_headings:
     data:
       block: |
