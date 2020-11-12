@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update Brexit sidebar navigation ([PR #1777](https://github.com/alphagov/govuk_publishing_components/pull/1777))
+
 ## 23.5.0
 
 * Align JavaScript modules format in components ([PR #1769](https://github.com/alphagov/govuk_publishing_components/pull/1769))

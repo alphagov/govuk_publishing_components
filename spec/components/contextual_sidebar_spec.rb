@@ -12,4 +12,13 @@ describe "Contextual sidebar", type: :view do
 
     assert_select ".gem-c-contextual-sidebar"
   end
+
+  it "can render in welsh" do
+    I18n.with_locale(:cy) do
+      render_component(
+        content_item: GovukSchemas::RandomExample.for_schema(frontend_schema: "speech"),
+      )
+    end
+    assert_select ".gem-c-contextual-sidebar"
+  end
 end
