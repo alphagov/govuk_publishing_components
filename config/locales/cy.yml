@@ -11,3 +11,6 @@ cy:
     related_navigation:
       transition:
         link_path: "/transition.cy"
+    transition_countdown:
+      day_to_go: "diwrnod i fynd"
+      days_to_go: "diwrnod i fynd"

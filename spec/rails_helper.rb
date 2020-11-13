@@ -12,4 +12,5 @@ Selenium::WebDriver::Remote::Capabilities.chrome(loggingPrefs: { browser: "ALL" 
 RSpec.configure do |config|
   config.include Capybara::DSL
   config.include Helpers::Components, type: :view
+  config.include ActiveSupport::Testing::TimeHelpers
 end
