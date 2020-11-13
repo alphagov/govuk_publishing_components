@@ -1,8 +1,21 @@
 <% navigation = GovukPublishingComponents::Presenters::ContextualNavigation.new(content_item, request) %>
 
 <div class="gem-c-contextual-sidebar">
-  <% if navigation.show_brexit_cta? && navigation.step_by_step_count.eql?(0) %>
+  <% if navigation.show_brexit_cta? && navigation.step_by_step_count.zero? %>
     <%= render 'govuk_publishing_components/components/contextual_sidebar/brexit_cta' %>
+  <% elsif navigation.step_by_step_count.zero? %>
+    <%= render 'govuk_publishing_components/components/transition_countdown', {
+      title: t("components.related_navigation.transition.title"),
+      url: t("components.related_navigation.transition.link_path"),
+      text: t("components.related_navigation.transition.link_text"),
+      data_attributes: {
+        "track-category": "relatedLinkClicked",
+        "track-action": "1.0 Transition",
+        "track-label": t("components.related_navigation.transition.link_path"),
+        "track-options": "{'dimension29':'#{t("components.related_navigation.transition.link_text")}'}"
+      },
+      lang: I18n.locale,
+    } %>
   <% end %>
 
   <% if navigation.content_tagged_to_a_reasonable_number_of_step_by_steps? %>

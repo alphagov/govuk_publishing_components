@@ -13,9 +13,9 @@ module GovukPublishingComponents
 
       def days_text
         if days_left_integer == 1
-          I18n.t("components.transition_countdown.day_to_go")
+          I18n.t!("components.transition_countdown.day_to_go")
         else
-          I18n.t("components.transition_countdown.days_to_go")
+          I18n.t!("components.transition_countdown.days_to_go")
         end
       end
 
@@ -26,7 +26,7 @@ module GovukPublishingComponents
       end
 
       def today_in_london
-        Time.zone.today
+        Time.find_zone("Europe/London").today
       end
     end
   end
