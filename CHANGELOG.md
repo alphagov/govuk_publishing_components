@@ -7,10 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 23.5.2
 
-## Unreleased
-
-* Fix hide zeros values within stacked barcharts ([PR #1776](https://github.com/alphagov/govuk_publishing_components/pull/1776))
+* Fix to hide zeros values within stacked barcharts ([PR #1776](https://github.com/alphagov/govuk_publishing_components/pull/1776))
 
 ## 23.5.1
 
