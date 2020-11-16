@@ -178,4 +178,14 @@ describe "Attachment", type: :view do
     )
     assert_select ".gem-c-attachment__metadata:nth-of-type(3) .govuk-link", false
   end
+
+  it "displays a custom heading level if heading_level is specified" do
+    render_component(heading_level: 3, attachment: { title: "Attachment", url: "https://gov.uk/attachment" })
+    assert_select "h3.gem-c-attachment__title .gem-c-attachment__link", text: "Attachment"
+  end
+
+  it "defaults to h2 if heading_level is not specified" do
+    render_component(attachment: { title: "Attachment", url: "https://gov.uk/attachment" })
+    assert_select "h2.gem-c-attachment__title .gem-c-attachment__link", text: "Attachment"
+  end
 end

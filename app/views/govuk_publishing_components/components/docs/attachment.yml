@@ -158,3 +158,13 @@ examples:
         unique_reference: "2942"
         unnumbered_hoc_paper: true
       hide_order_copy_link: true
+  with_custom_heading_level:
+    description: Default is `h2`.
+    data:
+      heading_level: 3
+      attachment:
+        title: "Department for Transport information asset register"
+        url: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/747661/department-for-transport-information-asset-register.csv
+        filename: department-for-transport-information-asset-register.csv
+        content_type: text/csv
+        file_size: 20000

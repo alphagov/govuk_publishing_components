@@ -5,6 +5,7 @@
   hide_order_copy_link ||= false
   attributes = []
   data_attributes ||= {}
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
   if attachment.content_type_name
     content = if attachment.content_type_abbr
@@ -50,11 +51,11 @@
   <% end %>
 
   <%= tag.div class: "gem-c-attachment__details" do %>
-    <%= tag.h2 class: "gem-c-attachment__title" do %>
+    <%= content_tag(shared_helper.get_heading_level, class: "gem-c-attachment__title") do %>
       <%= link_to attachment.title, attachment.url,
-            class: "govuk-link gem-c-attachment__link",
-            target: target,
-            data: data_attributes %>
+      class: "govuk-link gem-c-attachment__link",
+      target: target,
+      data: data_attributes %>
     <% end %>
 
     <% if attachment.reference.present? %>
