@@ -3,17 +3,22 @@
   "name": "govuk_publishing_components",
   "license": "MIT",
   "scripts": {
-    "lint:js": "standard 'app/assets/javascripts/**/*.js' 'spec/javascripts/**/*.js'",
+    "lint:js": "standardx 'app/assets/javascripts/**/*.js' 'spec/javascripts/**/*.js'",
     "lint:scss": "stylelint app/assets/stylesheets/",
     "lint": "yarn run lint:js && yarn run lint:scss"
   },
-  "standard": {
+  "standardx": {
     "ignore": [
       "app/assets/javascripts/component_guide/vendor/**/*.js",
       "app/assets/javascripts/govuk_publishing_components/vendor/**/*.js",
       "spec/javascripts/helpers/*.js",
       "spec/javascripts/vendor/*.js"
     ]
+  },
+  "eslintConfig": {
+    "rules": {
+      "no-var": 0
+    }
   },
   "stylelint": {
     "extends": "stylelint-config-gds/scss"
@@ -24,7 +29,7 @@
     "jquery": "1.12.4"
   },
   "devDependencies": {
-    "standard": "^14.3.4",
+    "standardx": "^7.0.0",
     "stylelint": "^13.8.0",
     "stylelint-config-gds": "^0.1.0"
   }
