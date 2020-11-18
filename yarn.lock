@@ -2545,10 +2545,10 @@ style-search@^0.1.0:
   resolved "https://registry.yarnpkg.com/style-search/-/style-search-0.1.0.tgz#7958c793e47e32e07d2b5cafe5c0bf8e12e77902"
   integrity sha1-eVjHk+R+MuB9K1yv5cC/jhLneQI=
 
-stylelint-config-gds@0.1.0-pre.2:
-  version "0.1.0-pre.2"
-  resolved "https://registry.yarnpkg.com/stylelint-config-gds/-/stylelint-config-gds-0.1.0-pre.2.tgz#08b79f643b13da34bd915da6284139d26443e813"
-  integrity sha512-76qWrYIL53eLddMlasrrXmYrDyYTJGCKSIMdVAdM8EW7aUw6qBrcYrCJmy2MSZwsUaj3NXjy0dj3LMIoa1KZgg==
+stylelint-config-gds@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/stylelint-config-gds/-/stylelint-config-gds-0.1.0.tgz#3efad0193d1be34ee3d62e76b194541231267dc8"
+  integrity sha512-vUIdZsxYZeHoLeiVBj8Rr7XojrNOOy1luRZtUBm4sVnMvW/QXTCKtgBhJ9WsNmjnf0Sllb9Tf8Zmje3Pa1gN2w==
   dependencies:
     stylelint-config-standard "^20.0.0"
     stylelint-scss "^3.18.0"
@@ -2576,7 +2576,7 @@ stylelint-scss@^3.18.0:
     postcss-selector-parser "^6.0.2"
     postcss-value-parser "^4.1.0"
 
-stylelint@^13.6.1:
+stylelint@^13.8.0:
   version "13.8.0"
   resolved "https://registry.yarnpkg.com/stylelint/-/stylelint-13.8.0.tgz#446765dbe25e3617f819a0165956faf2563ddc23"
   integrity sha512-iHH3dv3UI23SLDrH4zMQDjLT9/dDIz/IpoFeuNxZmEx86KtfpjDOscxLTFioQyv+2vQjPlRZnK0UoJtfxLICXQ==
