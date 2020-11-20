@@ -8,7 +8,7 @@
   of the commit log.
 
 
-## Unreleased
+## 23.7.1
 
 * Update contextual sidebar data track attributes ([PR #1788](https://github.com/alphagov/govuk_publishing_components/pull/1788))
 
