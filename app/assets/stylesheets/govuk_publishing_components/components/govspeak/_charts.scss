@@ -276,9 +276,9 @@
   }
 
   // Hides the original table
-  .visually-hidden,
-  .visually-hidden caption {
-    @include govuk-visually-hidden;
+  .mc-hidden,
+  .mc-hidden caption {
+    display: none;
 
     // It's reapplied to captions because Firefox can't hide
     // table captions unless it's applied directly to it. Go figure.
