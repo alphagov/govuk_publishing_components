@@ -8,6 +8,10 @@
   of the commit log.
 
 
+## Unreleased
+
+* Update contextual sidebar data track attributes ([PR #1788](https://github.com/alphagov/govuk_publishing_components/pull/1788))
+
 ## 23.7.0
 
 * Add transition countdown component ([PR #1783](https://github.com/alphagov/govuk_publishing_components/pull/1783))
