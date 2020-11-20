@@ -10,6 +10,7 @@
 
 ## 23.6.0
 
+* Add transition countdown component ([PR #1783](https://github.com/alphagov/govuk_publishing_components/pull/1783))
 * Fix hide zeros values within stacked barcharts ([PR #1776](https://github.com/alphagov/govuk_publishing_components/pull/1776))
 * Fix GitHub usage link not showing for all components ([PR #1780](https://github.com/alphagov/govuk_publishing_components/pull/1780))
 * Add heading level to attachment component ([PR #1781](https://github.com/alphagov/govuk_publishing_components/pull/1781))
