@@ -7,10 +7,11 @@
   text ||= nil
   url ||= nil
   data_attributes ||= {}
-  lang ||= 'en'
+  lang ||= "en"
+  direction ||= "ltr"
   css_classes = %w(gem-c-transition-countdown)
-  css_classes << 'gem-c-transition-countdown--cta' if url
-  css_classes << 'govuk-link' if url
+  css_classes << "gem-c-transition-countdown--cta" if url
+  css_classes << "govuk-link" if url
 %>
 
 <% countdown = capture do %>
@@ -24,11 +25,11 @@
 <% end %>
 
 <% if url %>
-  <%= link_to url, class: css_classes, data: data_attributes, lang: lang do %>
+  <%= link_to url, class: css_classes, data: data_attributes, lang: lang, dir: direction do %>
     <%= countdown %>
   <% end %>
 <% else %>
-  <%= tag.div class: css_classes, lang: lang do %>
+  <%= tag.div class: css_classes, lang: lang, dir: direction do %>
     <%= countdown %>
   <% end %>
 <% end %>

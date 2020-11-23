@@ -1,4 +1,5 @@
 <% related_nav_helper = GovukPublishingComponents::Presenters::RelatedNavigationHelper.new(local_assigns) %>
+<% shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns) %>
 
 <% if related_nav_helper.related_navigation? %>
   <% random = SecureRandom.hex(4) %>
@@ -8,7 +9,7 @@
       <h2 id="related-nav-related_items-<%= random %>"
           class="gem-c-related-navigation__main-heading"
           data-track-count="sidebarRelatedItemSection"
-          <%= related_nav_helper.t_lang(
+          <%= shared_helper.t_lang(
               "components.related_#{local_assigns[:context]}_navigation.related_content",
               default: 'components.related_navigation.related_content'
             )
@@ -28,6 +29,7 @@
 
       <%= render 'govuk_publishing_components/components/related_navigation/section',
         related_nav_helper: related_nav_helper,
+        shared_helper: shared_helper,
         section_title: section_title,
         links: links,
         section_index: section_index,

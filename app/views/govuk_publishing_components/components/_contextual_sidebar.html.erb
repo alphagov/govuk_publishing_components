@@ -1,4 +1,5 @@
 <% navigation = GovukPublishingComponents::Presenters::ContextualNavigation.new(content_item, request) %>
+<% shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns) %>
 
 <div class="gem-c-contextual-sidebar">
   <% if navigation.show_brexit_cta? && navigation.step_by_step_count.zero? %>
@@ -16,7 +17,7 @@
         "track-dimension": t("components.related_navigation.transition.link_text"),
         "track-dimension-index": "29",
       },
-      lang: I18n.locale,
+      lang: shared_helper.t_locale("components.related_navigation.transition.title"),
     } %>
   <% end %>
 
