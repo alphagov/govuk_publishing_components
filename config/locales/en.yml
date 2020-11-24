@@ -54,6 +54,11 @@ en:
       what_wrong: "What went wrong?"
       send_me_survey: "Send me the survey"
       send: "Send"
+    input:
+      show: Show
+      hide: Hide
+      announce_show: Your password is shown
+      announce_hide: Your password is hidden
     organisation_schema:
       all_content_search_description: "Find all content from %{organisation}"
     radio:
