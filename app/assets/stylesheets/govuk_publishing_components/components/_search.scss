@@ -39,7 +39,7 @@ $large-input-size: 50px;
   padding: 6px;
   margin: 0;
   width: 100%;
-  height: $input-size;
+  height: em(34, 16);
   border: $govuk-border-width-form-element solid $govuk-input-border-colour;
   background: govuk-colour("white");
   border-radius: 0; //otherwise iphones apply an automatic border radius
