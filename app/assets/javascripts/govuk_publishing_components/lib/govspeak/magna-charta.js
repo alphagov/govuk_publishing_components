@@ -215,8 +215,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       return !isNaN(parseFloat(val))
     },
     stripValue: function (val) {
-      var re = new RegExp('\\,|£|%|[a-z]', 'gi')
-      return val.replace(re, '')
+      return val.replace(/,|£|%|[a-z]/gi, '')
     },
     returnMax: function (values) {
       var max = 0

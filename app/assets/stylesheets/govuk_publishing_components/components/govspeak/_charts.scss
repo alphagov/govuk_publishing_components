@@ -152,7 +152,7 @@
         }
 
         .mc-value-overflow {
-          text-indent: -99999px !important;
+          text-indent: -99999px !important; // stylelint-disable-line declaration-no-important
         }
 
         // Bar labels
@@ -178,7 +178,7 @@
 
       .mc-stacked-total {
         padding: $bar-padding 0;
-        background-color: transparent !important;
+        background-color: transparent !important; // stylelint-disable-line declaration-no-important
         color: govuk-colour("black");
         display: inline-block;
         text-indent: 5px;
