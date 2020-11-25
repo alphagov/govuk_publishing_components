@@ -109,6 +109,21 @@
                       <% end %>
                     </ul>
                   <% end %>
+
+                  <% if application[:jquery_references].any? %>
+                    <%= render "govuk_publishing_components/components/heading", {
+                      text: "jQuery references",
+                      font_size: "m",
+                      margin_bottom: 4,
+                      heading_level: 3,
+                    } %>
+                    <p class="govuk-body">This shows JavaScript files that might contain jQuery, which we are trying to remove our dependency on.</p>
+                    <ul class="govuk-list govuk-list--bullet">
+                      <% application[:jquery_references].each do |ref| %>
+                        <li><%= ref %></li>
+                      <% end %>
+                    </ul>
+                  <% end %>
                 <% else %>
                   <p class="govuk-body">This application was not found. This could be because you do not have this repository checked out locally.</p>
                 <% end %>
