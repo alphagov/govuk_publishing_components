@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Extend component auditing ([PR #1796](https://github.com/alphagov/govuk_publishing_components/pull/1796))
+
 ## 23.11.0
 
 * Replace transition countdown component with sidebar partial (PR [#1845](https://github.com/alphagov/govuk_publishing_components/pull/1845))
