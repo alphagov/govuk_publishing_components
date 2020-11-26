@@ -14,8 +14,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       toggleText: 'Toggle between chart and table',
       autoOutdent: false,
       outdentAll: false,
-      chartVisibleText: "Change between chart and table, chart visible",
-      tableVisibleText: "Change between chart and table, table visible",
+      chartVisibleText: 'Change between chart and table, chart visible',
+      tableVisibleText: 'Change between chart and table, table visible',
       toggleAfter: false, // BOOL set TRUE to append the toggle link
       returnReference: false // for testing purposes
     }
@@ -444,8 +444,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     var allCharts = document.querySelectorAll('table.js-barchart-table')
     var id = null
 
-    allCharts.forEach(function(chart, i) {
-      if (chart == module) {
+    allCharts.forEach(function (chart, i) {
+      if (chart === module) {
         id = i
       }
     })
