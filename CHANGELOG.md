@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add some GOV.UK Accounts specific PII redacts ([PR #1807](https://github.com/alphagov/govuk_publishing_components/pull/1807))
+
 ## 23.7.6
 
 * Amend share links columns spacing ([PR #1800](https://github.com/alphagov/govuk_publishing_components/pull/1800))

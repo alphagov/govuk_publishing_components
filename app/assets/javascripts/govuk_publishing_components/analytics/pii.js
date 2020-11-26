@@ -8,6 +8,11 @@
   var POSTCODE_PATTERN = /[A-PR-UWYZ][A-HJ-Z]?[0-9][0-9A-HJKMNPR-Y]?(?:[\s+]|%20)*[0-9][ABD-HJLNPQ-Z]{2}/gi
   var DATE_PATTERN = /\d{4}(-?)\d{2}(-?)\d{2}/g
 
+  // specific URL parameters to be redacted from accounts URLs
+  var RESET_PASSWORD_TOKEN_PATTERN = /reset_password_token=[a-zA-Z0-9-]+/g
+  var UNLOCK_TOKEN_PATTERN = /unlock_token=[a-zA-Z0-9-]+/g
+  var STATE_PATTERN = /state=.[^&]+/g
+
   function shouldStripDates () {
     return ($('meta[name="govuk:static-analytics:strip-dates"]').length > 0)
   }
@@ -35,6 +40,10 @@
 
   pii.prototype.stripPIIFromString = function (string) {
     var stripped = string.replace(EMAIL_PATTERN, '[email]')
+    stripped = stripped.replace(RESET_PASSWORD_TOKEN_PATTERN, 'reset_password_token=[reset_password_token]')
+    stripped = stripped.replace(UNLOCK_TOKEN_PATTERN, 'unlock_token=[unlock_token]')
+    stripped = stripped.replace(STATE_PATTERN, 'state=[state]')
+
     if (this.stripDatePII === true) {
       stripped = stripped.replace(DATE_PATTERN, '[date]')
     }
