@@ -6,6 +6,7 @@ describe('Magna charta', function () {
 
   var element
   var magna
+  var graphContainer
   var graph
   var table
   var toggle
@@ -120,8 +121,9 @@ describe('Magna charta', function () {
       $('body').append(element)
       magna = new GOVUK.Modules.MagnaCharta().start(element.find('#single')[0], { returnReference: true })
       graph = element.find('.mc-chart')
+      graphContainer = element.find('.mc-chart-container')
       table = element.find('table')
-      toggle = element.find('.mc-toggle-link')
+      toggle = element.find('.mc-toggle-button')
     })
 
     afterEach(function () {
@@ -138,13 +140,13 @@ describe('Magna charta', function () {
 
     it('running toggle switches between chart and table', function () {
       toggle[0].click()
-      expect(table).not.toHaveClass('visually-hidden')
-      expect(graph).toHaveClass('visually-hidden')
+      expect(table).not.toHaveClass('mc-hidden')
+      expect(graphContainer).toHaveClass('mc-hidden')
 
       // toggle it back
       toggle[0].click()
-      expect(table).toHaveClass('visually-hidden')
-      expect(graph).not.toHaveClass('visually-hidden')
+      expect(table).toHaveClass('mc-hidden')
+      expect(graphContainer).not.toHaveClass('mc-hidden')
     })
 
     it('new chart div contains all table bits as divs', function () {
@@ -184,7 +186,9 @@ describe('Magna charta', function () {
     })
 
     it('new chart is inserted into DOM after table', function () {
-      expect(table.next()).toHaveClass('mc-chart')
+      var chartContainer = table.next()
+      expect(chartContainer).toHaveClass('mc-chart-container')
+      expect(chartContainer.children(':first')).toHaveClass('mc-chart')
     })
 
     it('bars are given classes to track what number they are', function () {
@@ -298,6 +302,7 @@ describe('Magna charta', function () {
         returnReference: true
       })
       graph = element.find('.mc-chart')
+      graphContainer = element.find('.mc-chart-container')
       table = element.find('table')
     })
 
@@ -306,14 +311,14 @@ describe('Magna charta', function () {
     })
 
     it('doesnt show the chart initially', function () {
-      expect(table).not.toHaveClass('visually-hidden')
-      expect(graph).toHaveClass('visually-hidden')
+      expect(table).not.toHaveClass('mc-hidden')
+      expect(graphContainer).toHaveClass('mc-hidden')
     })
 
     it('graph is shown when toggle is called', function () {
-      element.find('.mc-toggle-link')[0].click()
-      expect(table).toHaveClass('visually-hidden')
-      expect(graph).not.toHaveClass('visually-hidden')
+      element.find('.mc-toggle-button')[0].click()
+      expect(table).toHaveClass('mc-hidden')
+      expect(graphContainer).not.toHaveClass('mc-hidden')
     })
   })
 
