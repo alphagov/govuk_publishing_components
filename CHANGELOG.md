@@ -7,9 +7,12 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix to resolve input zoom-text overlap ([PR #1793](https://github.com/alphagov/govuk_publishing_components/pull/1793))
+
 ## 23.7.2
 * Fix Brexit countdown in the contextual sidebar to use appropriate lang and text direction ([PR #1790](https://github.com/alphagov/govuk_publishing_components/pull/1790))
-* Fix to resolve input zoom-text overlap ([PR #1793](https://github.com/alphagov/govuk_publishing_components/pull/1793))
 
 ## 23.7.1
 
