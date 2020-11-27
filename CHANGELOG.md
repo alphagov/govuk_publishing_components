@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Fix Rails deprecation warning for autoloading during initialisation ([PR #1837](https://github.com/alphagov/govuk_publishing_components/pull/1837))
+* Implement toggle state notifications for screen reader users ([PR #1787](https://github.com/alphagov/govuk_publishing_components/pull/1787))
 
 ## 23.10.1
 
