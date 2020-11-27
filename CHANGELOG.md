@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Implement toggle state notifications for screen reader users ([PR #1787](https://github.com/alphagov/govuk_publishing_components/pull/1787))
+
 ## 23.7.3
 
 * Fix to resolve input zoom-text overlap ([PR #1793](https://github.com/alphagov/govuk_publishing_components/pull/1793))
