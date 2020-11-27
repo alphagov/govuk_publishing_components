@@ -14,6 +14,7 @@
 ## 23.12.1
 
 * Escape dangerous HTML in 'Machine readable metadata' component ([PR #1858](https://github.com/alphagov/govuk_publishing_components/pull/1858))
+* Update magna charter experience for screen reader users ([PR #1787](https://github.com/alphagov/govuk_publishing_components/pull/1787))
 
 ## 23.12.0
 
