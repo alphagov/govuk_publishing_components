@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix to update the current list bullet numbered SVG into a responsive version so it scales correctly via zoom-text-only / improves a11y considerations ([PR #1799](https://github.com/alphagov/govuk_publishing_components/pull/1799))
+
 ## 23.7.3
 
 * Fix to resolve input zoom-text overlap ([PR #1793](https://github.com/alphagov/govuk_publishing_components/pull/1793))
