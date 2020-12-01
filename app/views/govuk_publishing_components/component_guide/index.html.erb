@@ -79,7 +79,7 @@
 
 <% unless ENV["MAIN_COMPONENT_GUIDE"] %>
   <h2 class="component-doc-h2">Components in this application (<%= @component_docs.length %>)</h2>
-  <ul class="component-list">
+  <ul class="component-list" id="list-components-in-this-application">
     <% @component_docs.each do |component_doc| %>
       <li>
         <%= link_to component_doc.name, component_doc_path(component_doc.id), class: "govuk-link" %>
@@ -93,7 +93,7 @@
   <h2 class="component-doc-h2">All gem components (<%= @gem_component_docs.length %>)</h2>
 <% end %>
 
-<ul class="component-list">
+<ul class="component-list" id="list-all-components-in-the-gem">
   <% @gem_component_docs.each do |component_doc| %>
     <li>
       <%= link_to component_doc.name, component_doc_path(component_doc.id), class: "govuk-link" %>

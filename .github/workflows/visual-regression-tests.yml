@@ -1,0 +1,35 @@
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    types:
+      - ready_for_review
+
+jobs:
+  visual-regression-test-components:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true # Also runs `bundle install`
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12"
+      - name: Get Yarn cache directory path
+        id: yarn-cache-directory-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Check for cached Yarn dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.yarn-cache-directory-path.outputs.dir }}
+          key: yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: yarn-
+      - run: yarn install --frozen-lockfile
+      - uses: percy/exec-action@v0.3.1
+        with:
+          command: bundle exec rspec ./spec/visual_regression_tests/all_components.rb
+        env:
+          PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
