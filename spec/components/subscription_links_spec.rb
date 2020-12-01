@@ -11,7 +11,7 @@ describe "subscription links", type: :view do
 
   it "renders an email signup link" do
     render_component(email_signup_link: "/email-signup")
-    assert_select ".gem-c-subscription-links__item[href=\"/email-signup\"]", text: "Get email alerts"
+    assert_select ".gem-c-subscription-links__item[href=\"/email-signup\"]", text: "Get emails"
   end
 
   it "renders a feed link" do
@@ -24,7 +24,7 @@ describe "subscription links", type: :view do
     render_component(email_signup_link: "email-signup", feed_link: "singapore.atom")
     assert_select ".gem-c-subscription-links[data-module='gem-toggle']", false
     assert_select ".gem-c-subscription-links__list[data-module='track-click']", false
-    assert_select ".gem-c-subscription-links__item[href=\"email-signup\"]", text: "Get email alerts"
+    assert_select ".gem-c-subscription-links__item[href=\"email-signup\"]", text: "Get emails"
     assert_select ".gem-c-subscription-links__item[href=\"singapore.atom\"]", text: "Subscribe to feed"
   end
 
