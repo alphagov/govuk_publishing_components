@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Amend share links columns spacing ([PR #1800](https://github.com/alphagov/govuk_publishing_components/pull/1800))
+
 ## 23.7.5
 
 * Update subscription-links default email link text ([PR #1804](https://github.com/alphagov/govuk_publishing_components/pull/1804))

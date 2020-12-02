@@ -40,7 +40,7 @@ $share-button-height: 32px;
   left: 0;
   width: $share-button-width;
   height: $share-button-height;
-  vertical-align: top;
+  line-height: $share-button-height;
 }
 
 .direction-rtl {
@@ -61,7 +61,7 @@ $share-button-height: 32px;
   }
 }
 
-$column-width: 150px;
+$column-width: 9.5em;
 
 .gem-c-share-links--columns {
   .gem-c-share-links__list {
