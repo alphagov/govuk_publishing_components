@@ -1,5 +1,5 @@
 name: Subscription links
-description: Links to ‘Get email alerts’ and ‘Subscribe to feed’
+description: Links to ‘Get emails’ and ‘Subscribe to feed’
 body: |
   <strong>NOTE: This component includes a h2 heading by default but can be suppressed by using `hide_heading` option (see below)<strong>
 accessibility_criteria: |
