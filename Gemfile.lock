@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    govuk_publishing_components (23.7.4)
+    govuk_publishing_components (23.7.5)
       govuk_app_config
       kramdown
       plek
@@ -106,7 +106,7 @@ GEM
       rest-client (~> 2.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    govuk_app_config (2.7.0)
+    govuk_app_config (2.7.1)
       logstasher (>= 1.2.2, < 1.4.0)
       sentry-raven (~> 3.1.1)
       statsd-ruby (~> 1.4.0)
