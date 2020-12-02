@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update subscription-links default email link text ([PR #1804](https://github.com/alphagov/govuk_publishing_components/pull/1804))
+
 ## 23.7.4
 
 * Fix to update the current list bullet numbered SVG into a responsive version so it scales correctly via zoom-text-only / improves a11y considerations ([PR #1799](https://github.com/alphagov/govuk_publishing_components/pull/1799))

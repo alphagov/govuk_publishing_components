@@ -92,7 +92,7 @@ en:
     step_by_step_nav_related:
       part_of: "Part of"
     subscription_links:
-      email_signup_link_text: "Get email alerts"
+      email_signup_link_text: "Get emails"
       feed_link_text: "Subscribe to feed"
       subscriptions: "Subscriptions"
     summary_list:

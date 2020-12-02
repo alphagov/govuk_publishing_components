@@ -14,13 +14,13 @@ module GovukPublishingComponents
       def email_signup_link_text
         return @local_assigns[:email_signup_link_text] if @local_assigns[:email_signup_link_text]
 
-        I18n.t("govuk_component.subscription_links.email_signup_link_text", default: "Get email alerts")
+        I18n.t("components.subscription_links.email_signup_link_text")
       end
 
       def feed_link_text
         return @local_assigns[:feed_link_text] if @local_assigns[:feed_link_text]
 
-        I18n.t("govuk_component.subscription_links.feed_link_text", default: "Subscribe to feed")
+        I18n.t("components.subscription_links.feed_link_text")
       end
 
       def component_data_is_valid?
