@@ -111,7 +111,7 @@ GEM
       sentry-raven (~> 3.1.1)
       statsd-ruby (~> 1.4.0)
       unicorn (>= 5.4, < 5.8)
-    govuk_schemas (4.1.1)
+    govuk_schemas (4.2.0)
       json-schema (~> 2.8.0)
     govuk_test (2.0.0)
       brakeman (~> 4.6)
