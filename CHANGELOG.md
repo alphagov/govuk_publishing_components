@@ -9,6 +9,7 @@
 
 ## 23.7.7
 
+* Add password reveal component ([PR #1794](https://github.com/alphagov/govuk_publishing_components/pull/1794))
 * Add some GOV.UK Accounts specific PII redacts ([PR #1807](https://github.com/alphagov/govuk_publishing_components/pull/1807))
 
 ## 23.7.6
