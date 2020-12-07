@@ -7,9 +7,12 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## 23.7.7
+## 23.8.0
 
 * Add password reveal component ([PR #1794](https://github.com/alphagov/govuk_publishing_components/pull/1794))
+
+## 23.7.7
+
 * Add some GOV.UK Accounts specific PII redacts ([PR #1807](https://github.com/alphagov/govuk_publishing_components/pull/1807))
 
 ## 23.7.6
