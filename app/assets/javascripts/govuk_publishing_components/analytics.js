@@ -14,3 +14,4 @@
 //= require ./analytics/ecommerce
 //= require ./analytics/init
 //= require ./analytics/scroll-tracker
+//= require ./analytics/explicit-cross-domain-links
