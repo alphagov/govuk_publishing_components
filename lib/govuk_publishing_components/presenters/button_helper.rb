@@ -17,6 +17,7 @@ module GovukPublishingComponents
                   :start,
                   :secondary,
                   :secondary_quiet,
+                  :secondary_solid,
                   :destructive,
                   :name,
                   :value,
@@ -41,6 +42,7 @@ module GovukPublishingComponents
         @start = local_assigns[:start]
         @secondary = local_assigns[:secondary]
         @secondary_quiet = local_assigns[:secondary_quiet]
+        @secondary_solid = local_assigns[:secondary_solid]
         @destructive = local_assigns[:destructive]
         @name = local_assigns[:name]
         @value = local_assigns[:value]
@@ -77,6 +79,7 @@ module GovukPublishingComponents
         css_classes << "govuk-button--start" if start
         css_classes << "gem-c-button--secondary" if secondary
         css_classes << "gem-c-button--secondary-quiet" if secondary_quiet
+        css_classes << "govuk-button--secondary" if secondary_solid
         css_classes << "govuk-button--warning" if destructive
         css_classes << "gem-c-button--bottom-margin" if margin_bottom && !info_text
         css_classes << "gem-c-button--inline" if inline_layout

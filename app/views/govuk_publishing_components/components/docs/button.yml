@@ -52,6 +52,10 @@ examples:
     data:
       text: "Secondary quiet button"
       secondary_quiet: true
+  secondary_solid_button:
+    data:
+      text: "Secondary solid button"
+      secondary_solid: true
   destructive_button:
     data:
       text: "Destructive button"

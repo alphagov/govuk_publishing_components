@@ -52,6 +52,12 @@ describe "Button", type: :view do
     assert_select ".gem-c-button--secondary-quiet"
   end
 
+  it "renders secondary solid button" do
+    render_component(text: "Secondary solid", href: "#", secondary_solid: true)
+    assert_select ".govuk-button--secondary[href='#']", text: "Secondary solid"
+    assert_select ".govuk-button--secondary"
+  end
+
   it "renders destructive button" do
     render_component(text: "Warning", href: "#", destructive: true)
     assert_select ".govuk-button--warning[href='#']", text: "Warning"
