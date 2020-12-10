@@ -146,6 +146,14 @@ examples:
         image:
           url: 'https://assets.publishing.service.gov.uk/government/uploads/system/uploads/organisation/logo/321/HMPS.jpg'
           alt_text: 'HM Prison Service'
+  nhs:
+    data:
+      organisation:
+        name: 'nhs'
+        url: 'https://www.nhs.uk/'
+        image:
+          url: '/assets/govuk_publishing_components/org-logo--nhs.png'
+          alt_text: 'NHS'
   with_data_attributes:
     data:
       organisation:
