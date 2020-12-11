@@ -4,7 +4,7 @@
 <div class="gem-c-contextual-sidebar">
   <% if navigation.show_brexit_cta? && navigation.step_by_step_count.zero? %>
     <%= render 'govuk_publishing_components/components/contextual_sidebar/brexit_cta' %>
-  <% elsif navigation.step_by_step_count.zero? %>
+  <% elsif navigation.step_by_step_count.zero? && !navigation.transition_countdown_exception? %>
     <%= render 'govuk_publishing_components/components/transition_countdown', {
       title: t("components.related_navigation.transition.title"),
       url: t("components.related_navigation.transition.link_path"),
