@@ -144,3 +144,23 @@ examples:
                       - text: Find out what you’ll get
                         href: "/settled-status-eu-citizens-families/what-settled-and-presettled-status-means"
                     optional: false
+  transition_countdown_exception:
+    data:
+      content_item:
+        title: "30 creative teams awarded up to £100,000 each for Festival UK* 2022 R&D project"
+        content_id: "c3752802-f091-43a9-ba90-33568fccf391"
+        links:
+          ordered_related_items:
+          - title: Find an apprenticeship
+            base_path: /apply-apprenticeship
+          - title: Training and study at work
+            base_path: /training-study-work-your-rights
+          - title: Careers helpline for teenagers
+            base_path: /careers-helpline-for-teenagers
+          document_collections:
+          - title: Recruit an apprentice (formerly apprenticeship vacancies)
+            base_path: /government/collections/apprenticeship-vacancies
+            document_type: document_collection
+          - title: The future of jobs and skills
+            base_path: /government/collections/the-future-of-jobs-and-skills
+            document_type: document_collection

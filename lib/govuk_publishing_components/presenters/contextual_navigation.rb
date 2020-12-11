@@ -113,6 +113,10 @@ module GovukPublishingComponents
         tagged_to_brexit? && (page_content_id != brexit_start_page_content_id)
       end
 
+      def transition_countdown_exception?
+        content_item["content_id"] == "c3752802-f091-43a9-ba90-33568fccf391"
+      end
+
       def step_by_step_count
         step_nav_helper.step_navs.count
       end
