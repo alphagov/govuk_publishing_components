@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Disable the transition countdown on a certain page ([PR #1821](https://github.com/alphagov/govuk_publishing_components/pull/1821))
+
 ## 23.9.0
 
 * Add support for secondary solid buttons ([PR #1814](https://github.com/alphagov/govuk_publishing_components/pull/1814))
