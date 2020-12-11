@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    govuk_publishing_components (23.9.0)
+    govuk_publishing_components (23.9.1)
       govuk_app_config
       kramdown
       plek
@@ -221,7 +221,7 @@ GEM
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
     rexml (3.2.4)
-    rouge (3.25.0)
+    rouge (3.26.0)
     rspec-core (3.9.2)
       rspec-support (~> 3.9.3)
     rspec-expectations (3.9.2)
