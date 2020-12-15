@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Fix for search input misalignment ([PR #1823](https://github.com/alphagov/govuk_publishing_components/pull/1823))
+* Add type="button" to Show/Hide password button ([PR #1826](https://github.com/alphagov/govuk_publishing_components/pull/1826))
 
 ## 23.9.1
 

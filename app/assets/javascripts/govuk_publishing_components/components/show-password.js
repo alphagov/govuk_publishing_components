@@ -26,6 +26,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.showHide = document.createElement('button')
     this.showHide.className = 'gem-c-show-password__toggle'
     this.showHide.setAttribute('aria-controls', this.input.getAttribute('id'))
+    this.showHide.setAttribute('type', 'button')
     this.showHide.innerHTML = this.showPasswordText
     this.wrapper.insertBefore(this.showHide, this.input.nextSibling)
 
