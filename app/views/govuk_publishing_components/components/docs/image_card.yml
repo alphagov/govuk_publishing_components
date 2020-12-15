@@ -70,7 +70,7 @@ examples:
     description: Don't indent the extra links. Used for links to people pages.
     data:
       href: "/government/people/"
-      image_src: "http://placekitten.com/215/140"
+      image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
       image_alt: "some meaningful alt text please"
       context:
         text: "The Rt Hon"
@@ -85,7 +85,7 @@ examples:
   extra_links_with_no_main_link:
     description: If extra links are included, the main link is not needed. Note that in this configuration the image is not a link as no link has been supplied.
     data:
-      image_src: "http://placekitten.com/215/140"
+      image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
       image_alt: "some meaningful alt text please"
       heading_text: "John Whiskers MP"
       extra_links: [
@@ -151,7 +151,7 @@ examples:
     data:
       large: true
       href: "/still-not-a-page"
-      image_src: "https://assets.publishing.service.gov.uk/frontend/homepage/uk-leaves-the-eu-d84d2981a9953d8b1261c9d25016223b0a8af3c096fa2d5e03510d73a78e3c60.jpg"
+      image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
       image_alt: "some meaningful alt text please"
       context:
         date: 2017-06-14 11:30:00
@@ -208,7 +208,7 @@ examples:
   with_lang:
     description: |
       Pass through an appropriate `lang` to set a HTML lang attribute for the component.
-      
+
       The `lang` attribute **must** be set to a [valid BCP47 string](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang#Language_tag_syntax). A valid code can be the two or three letter language code - for example, English is `en` or `eng`, Korean is `ko` or `kor` - but if in doubt please check.
     data:
       href: "/not-a-page"
