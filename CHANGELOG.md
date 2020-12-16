@@ -17,8 +17,6 @@
 * Add type="button" to Show/Hide password button ([PR #1826](https://github.com/alphagov/govuk_publishing_components/pull/1826))
 * Amend Show/Hide password button CSS ([PR #1828](https://github.com/alphagov/govuk_publishing_components/pull/1828))
 
->>>>>>> 13252807 (Add CHANGELOG entry)
-
 ## 23.9.1
 
 * Disable the transition countdown on a certain page ([PR #1821](https://github.com/alphagov/govuk_publishing_components/pull/1821))
