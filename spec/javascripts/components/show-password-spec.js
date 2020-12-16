@@ -27,6 +27,7 @@ describe('A show password component', function () {
       expect(element.find('.gem-c-show-password__toggle').length).toBe(1)
       expect(element.find('.gem-c-show-password__toggle').text()).toBe('Show')
       expect(element.find('.gem-c-show-password__toggle').attr('aria-controls')).toBe('input')
+      expect(element.find('.gem-c-show-password__toggle').attr('type')).toBe('button')
       expect(element.find('.govuk-visually-hidden').length).toBe(1)
       expect(element.find('.govuk-visually-hidden').text()).toBe('Your password is hidden')
     })
