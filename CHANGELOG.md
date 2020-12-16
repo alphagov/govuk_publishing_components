@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 23.10.0
 
 * Add a data attribute to indicate a link or form should be decorated as if it were a cross-domain link ([PR #1811](https://github.com/alphagov/govuk_publishing_components/pull/1811))
 
