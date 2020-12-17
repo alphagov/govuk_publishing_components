@@ -105,8 +105,10 @@
         events: {
           onReady: function (event) {
             // update iframe title attribute once video is ready
+            // this is done to let screen reader users know that they are focused on a video
+            // https://github.com/alphagov/govuk_publishing_components/pull/908#discussion_r302913995
             var videoTitle = options.title
-            event.target.f.title = videoTitle + ' (video)'
+            event.target.getIframe().title = videoTitle + ' (video)'
           },
           onStateChange: function (event) {
             var eventData = event.data
