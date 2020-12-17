@@ -37,14 +37,16 @@ require "govuk_publishing_components/app_helpers/brand_helper"
 require "govuk_publishing_components/app_helpers/countdown_helper"
 require "govuk_publishing_components/app_helpers/environment"
 
-# Add view and i18n paths for usage outside of a Rails app
-ActionController::Base.append_view_path(
-  File.expand_path("app/views", GovukPublishingComponents::Config.gem_directory),
-)
-
+# Add i18n paths and views for usage outside of a Rails app
 I18n.load_path.unshift(
   *Dir.glob(File.expand_path("config/locales/*.yml", GovukPublishingComponents::Config.gem_directory)),
 )
+
+ActiveSupport.on_load(:action_controller) do
+  ActionController::Base.append_view_path(
+    File.expand_path("app/views", GovukPublishingComponents::Config.gem_directory),
+  )
+end
 
 module GovukPublishingComponents
   def self.render(component, options = {})
