@@ -9,7 +9,50 @@
 
 ## Unreleased
 
+* Fix Rails deprecation warning for autoloading during initialisation ([PR #1837](https://github.com/alphagov/govuk_publishing_components/pull/1837))
 * Implement toggle state notifications for screen reader users ([PR #1787](https://github.com/alphagov/govuk_publishing_components/pull/1787))
+
+## 23.10.1
+
+* Fixes youtube title bug ([PR #1835](https://github.com/alphagov/govuk_publishing_components/pull/1835))
+
+## 23.10.0
+
+* Add a data attribute to indicate a link or form should be decorated as if it were a cross-domain link ([PR #1811](https://github.com/alphagov/govuk_publishing_components/pull/1811))
+
+## 23.9.2
+
+* Fix for search input misalignment ([PR #1823](https://github.com/alphagov/govuk_publishing_components/pull/1823))
+* Add type="button" to Show/Hide password button ([PR #1826](https://github.com/alphagov/govuk_publishing_components/pull/1826))
+* Amend Show/Hide password button CSS ([PR #1828](https://github.com/alphagov/govuk_publishing_components/pull/1828))
+
+## 23.9.1
+
+* Disable the transition countdown on a certain page ([PR #1821](https://github.com/alphagov/govuk_publishing_components/pull/1821))
+
+## 23.9.0
+
+* Add support for secondary solid buttons ([PR #1814](https://github.com/alphagov/govuk_publishing_components/pull/1814))
+
+## 23.8.0
+
+* Add password reveal component ([PR #1794](https://github.com/alphagov/govuk_publishing_components/pull/1794))
+
+## 23.7.7
+
+* Add some GOV.UK Accounts specific PII redacts ([PR #1807](https://github.com/alphagov/govuk_publishing_components/pull/1807))
+
+## 23.7.6
+
+* Amend share links columns spacing ([PR #1800](https://github.com/alphagov/govuk_publishing_components/pull/1800))
+
+## 23.7.5
+
+* Update subscription-links default email link text ([PR #1804](https://github.com/alphagov/govuk_publishing_components/pull/1804))
+
+## 23.7.4
+
+* Fix to update the current list bullet numbered SVG into a responsive version so it scales correctly via zoom-text-only / improves a11y considerations ([PR #1799](https://github.com/alphagov/govuk_publishing_components/pull/1799))
 
 ## 23.7.3
 
