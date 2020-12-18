@@ -30,6 +30,6 @@ jobs:
       - run: yarn install --frozen-lockfile
       - uses: percy/exec-action@v0.3.1
         with:
-          command: bundle exec rspec ./spec/visual_regression_tests/all_components.rb
+          command: bundle exec rspec --tag visual_regression
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}

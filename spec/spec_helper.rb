@@ -10,7 +10,7 @@ WebMock.disable_net_connect!(allow_localhost: true)
 RSpec.configure do |config|
   config.example_status_persistence_file_path = "tmp/failures.txt"
 
-  config.filter_run_excluding not_applicable: true
+  config.filter_run_excluding not_applicable: true, visual_regression: true
 
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
@@ -36,4 +36,9 @@ RSpec.configure do |config|
   # inherited by the metadata hash of host groups and examples, rather than
   # triggering implicit auto-inclusion in groups with matching metadata.
   config.shared_context_metadata_behavior = :apply_to_host_groups
+
+  config.before do |example|
+    # Visual regression tests need the JS driver to be used for screenshots
+    Capybara.current_driver = Capybara.javascript_driver if example.metadata[:visual_regression]
+  end
 end
