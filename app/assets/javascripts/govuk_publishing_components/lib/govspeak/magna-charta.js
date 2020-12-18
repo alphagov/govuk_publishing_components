@@ -11,7 +11,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.options = {
       outOf: 65,
       applyOnInit: true,
-      toggleText: 'Toggle between chart and table',
+      toggleText: 'Toggle between Chart and Table',
       autoOutdent: false,
       outdentAll: false,
       chartVisibleText: 'Change between chart and table, chart visible',
