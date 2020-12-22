@@ -1,7 +1,7 @@
 module GovukPublishingComponents
   module AppHelpers
     class CountdownHelper
-      END_OF_TRANSITION_PERIOD = Time.new(2020, 12, 31, 23, 59).in_time_zone("Europe/London")
+      DEADLINE = Time.new(2020, 12, 31, 23, 59)
 
       def days_left
         sprintf "%02d", days_left_until_deadline
@@ -30,11 +30,19 @@ module GovukPublishingComponents
       end
 
       def seconds_left_until_deadline
-        END_OF_TRANSITION_PERIOD - now_in_london
+        end_of_transition_period - now_in_london
+      end
+
+      def end_of_transition_period
+        london_time_zone(DEADLINE)
       end
 
       def now_in_london
-        Time.now.in_time_zone("Europe/London")
+        london_time_zone(Time.now)
+      end
+
+      def london_time_zone(time)
+        time.in_time_zone("Europe/London")
       end
     end
   end
