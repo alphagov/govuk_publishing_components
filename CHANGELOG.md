@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Fix Rails deprecation warning for autoloading during initialisation ([PR #1837](https://github.com/alphagov/govuk_publishing_components/pull/1837))
+* Turn off the Brexit countdown clock at 23.30 on Brexit eve ([PR #1841](https://github.com/alphagov/govuk_publishing_components/pull/1841))
 
 ## 23.10.1
 
