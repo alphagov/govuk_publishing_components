@@ -1,11 +1,11 @@
 @import 'transition-countdown';
 
-.gem-c-contextual-sidebar__brexit-cta {
+.gem-c-contextual-sidebar__brexit-related-links {
   border-top: 2px solid $govuk-brand-colour;
-}
 
-.gem-c-contextual-sidebar__brexit-heading {
-  @include govuk-font(19, $weight: bold);
-  padding-top: govuk-spacing(3);
-  margin-bottom: govuk-spacing(2);
+  .gem-c-contextual-sidebar__brexit-heading {
+    @include govuk-font(19, $weight: bold);
+    padding-top: govuk-spacing(3);
+    margin-bottom: govuk-spacing(2);
+  }
 }
