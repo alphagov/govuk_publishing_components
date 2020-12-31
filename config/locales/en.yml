@@ -103,6 +103,3 @@ en:
     summary_list:
       edit: "Change"
       delete: "Delete"
-    transition_countdown:
-      day_to_go: "day to go"
-      days_to_go: "days to go"

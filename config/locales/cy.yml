@@ -13,6 +13,3 @@ cy:
         title: "Pontio Brexit"
         link_path: "/transition.cy"
         link_text: "Gwiriwch eich bod chi'n barod ar gyfer 2021"
-    transition_countdown:
-      day_to_go: "diwrnod i fynd"
-      days_to_go: "diwrnod i fynd"

@@ -5,20 +5,7 @@
   <% if navigation.show_brexit_related_links? && navigation.step_by_step_count.zero? %>
     <%= render 'govuk_publishing_components/components/contextual_sidebar/brexit_related_links' %>
   <% elsif navigation.step_by_step_count.zero? && !navigation.transition_countdown_exception? %>
-    <%= render 'govuk_publishing_components/components/transition_countdown', {
-      title: t("components.related_navigation.transition.title"),
-      url: t("components.related_navigation.transition.link_path"),
-      text: t("components.related_navigation.transition.link_text"),
-      data_attributes: {
-        "module": "track-click",
-        "track-category": "relatedLinkClicked",
-        "track-action": "1.0 Transition",
-        "track-label": t("components.related_navigation.transition.link_path"),
-        "track-dimension": t("components.related_navigation.transition.link_text"),
-        "track-dimension-index": "29",
-      },
-      lang: shared_helper.t_locale("components.related_navigation.transition.title"),
-    } %>
+    <%= render 'govuk_publishing_components/components/contextual_sidebar/brexit_cta' %>
   <% end %>
 
   <% if navigation.content_tagged_to_a_reasonable_number_of_step_by_steps? %>

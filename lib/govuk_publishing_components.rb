@@ -34,7 +34,6 @@ require "govuk_publishing_components/presenters/taxonomy_list_helper"
 require "govuk_publishing_components/app_helpers/taxon_breadcrumbs"
 require "govuk_publishing_components/app_helpers/table_helper"
 require "govuk_publishing_components/app_helpers/brand_helper"
-require "govuk_publishing_components/app_helpers/countdown_helper"
 require "govuk_publishing_components/app_helpers/environment"
 
 # Add i18n paths and views for usage outside of a Rails app
