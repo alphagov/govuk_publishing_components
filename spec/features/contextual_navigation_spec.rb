@@ -547,7 +547,7 @@ describe "Contextual navigation" do
 
   def and_i_see_the_transition_related_links
     within ".gem-c-contextual-sidebar" do
-      expect(page).to have_css("h2", text: "Brexit transition")
+      expect(page).to have_css("h2", text: I18n.t("components.related_navigation.transition.title"))
       expect(page).to have_link(I18n.t("components.related_navigation.transition.link_text"), href: "/transition")
     end
   end

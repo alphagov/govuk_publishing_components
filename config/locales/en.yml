@@ -77,9 +77,9 @@ en:
       topical_events: "Topical event"
       world_locations: "World locations"
       transition:
-        title: "Brexit transition"
+        title: "Brexit"
         link_path: "/transition"
-        link_text: "Check you’re ready for 2021"
+        link_text: "Check how the new rules affect you"
     related_footer_navigation:
       collections: "Collections"
       policies: "Policies"
