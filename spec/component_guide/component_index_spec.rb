@@ -71,8 +71,8 @@ describe "Component guide index" do
 @import 'govuk_publishing_components/components/step-by-step-nav-header';
 @import 'govuk_publishing_components/components/step-by-step-nav-related';
 @import 'govuk_publishing_components/components/tabs';
-@import 'govuk_publishing_components/components/title';
-@import 'govuk_publishing_components/components/transition-countdown';"
+@import 'govuk_publishing_components/components/title';"
+
     expected_print_sass = "@import 'govuk_publishing_components/govuk_frontend_support';
 @import 'govuk_publishing_components/components/print/back-link';
 @import 'govuk_publishing_components/components/print/button';

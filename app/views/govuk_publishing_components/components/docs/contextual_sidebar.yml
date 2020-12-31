@@ -81,7 +81,7 @@ examples:
                       - text: The Highway Code
                         href: "/guidance/the-highway-code"
                     optional: false
-  with_brexit_cta_and_related_links:
+  with_brexit_and_other_related_links:
     data:
       content_item:
         title: "A content item"
@@ -108,7 +108,7 @@ examples:
           - title: The future of jobs and skills
             base_path: /government/collections/the-future-of-jobs-and-skills
             document_type: document_collection
-  with_brexit_cta_and_step_by_steps:
+  with_brexit_related_links_and_step_by_steps:
     data:
       content_item:
         title: "A content item"

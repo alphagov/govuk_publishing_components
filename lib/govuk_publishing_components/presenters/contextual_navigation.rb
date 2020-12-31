@@ -104,7 +104,7 @@ module GovukPublishingComponents
         false
       end
 
-      def show_brexit_cta?
+      def show_brexit_related_links?
         # If tagged directly to /brexit or /world/brexit
         # Or if tagged to a taxon which has /brexit as a parent
         # And is not the brexit checker start page

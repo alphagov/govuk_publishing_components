@@ -1,6 +1,20 @@
+<% shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns) %>
 <% link_text = t("components.related_navigation.transition.link_text") %>
 <% link_path = t("components.related_navigation.transition.link_path") %>
-<div class="gem-c-contextual-sidebar__brexit-cta govuk-!-margin-bottom-6" data-module="track-click" lang="en">
+
+<% data_attributes = {
+  "module": "track-click",
+  "track-category": "relatedLinkClicked",
+  "track-action": "1.0 Transition",
+  "track-label": link_path,
+  "track-dimension": link_text,
+  "track-dimension-index": "29",
+} %>
+
+<%= link_to link_path,
+    class: "govuk-link gem-c-contextual-sidebar__brexit-cta",
+    data: data_attributes,
+    lang: shared_helper.t_locale("components.related_navigation.transition.title") do %>
   <h2 class="gem-c-contextual-sidebar__brexit-heading"><%= t("components.related_navigation.transition.title") %></h2>
-  <a href="<%= link_path %>" class="govuk-link" data-track-category="relatedLinkClicked" data-track-action="1.0 Transition" data-track-label="<%= link_path %>" data-track-options='{"dimension29":"<%= link_text %>"}'><%= link_text %></a>
-</div>
+  <p class="gem-c-contextual-sidebar__brexit-text"><%= link_text %></p>
+<% end %>

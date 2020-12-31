@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unversioned
+
+* Replace transition countdown component with sidebar partial (PR [#1845](https://github.com/alphagov/govuk_publishing_components/pull/1845))
+
 ## 23.10.2
 
 * Fix Rails deprecation warning for autoloading during initialisation ([PR #1837](https://github.com/alphagov/govuk_publishing_components/pull/1837))

@@ -547,22 +547,21 @@ describe "Contextual navigation" do
 
   def and_i_see_the_transition_related_links
     within ".gem-c-contextual-sidebar" do
-      expect(page).to have_css("h2", text: "Brexit transition")
+      expect(page).to have_css("h2", text: I18n.t("components.related_navigation.transition.title"))
       expect(page).to have_link(I18n.t("components.related_navigation.transition.link_text"), href: "/transition")
     end
   end
 
   def and_i_see_the_transition_call_to_action
     within ".gem-c-contextual-sidebar" do
-      expect(page).to have_selector(".gem-c-transition-countdown")
-      expect(page).to have_css(".gem-c-transition-countdown__title", text: I18n.t("components.related_navigation.transition.title"))
+      expect(page).to have_selector(".gem-c-contextual-sidebar__brexit-cta")
+      expect(page).to have_css(".gem-c-contextual-sidebar__brexit-heading", text: I18n.t("components.related_navigation.transition.title"))
     end
   end
 
   def and_i_do_not_see_the_transition_call_to_action
     within ".gem-c-contextual-sidebar" do
-      expect(page).not_to have_selector(".gem-c-transition-countdown")
-      expect(page).not_to have_css(".gem-c-transition-countdown__title", text: I18n.t("components.related_navigation.transition.title"))
+      expect(page).not_to have_selector(".gem-c-contextual-sidebar__brexit-cta")
     end
   end
 

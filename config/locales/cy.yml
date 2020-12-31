@@ -10,9 +10,6 @@ cy:
       contents: Cynnwys
     related_navigation:
       transition:
-        title: "Pontio Brexit"
+        title: "Brexit"
         link_path: "/transition.cy"
-        link_text: "Gwiriwch eich bod chi'n barod ar gyfer 2021"
-    transition_countdown:
-      day_to_go: "diwrnod i fynd"
-      days_to_go: "diwrnod i fynd"
+        link_text: "Darganfyddwch sut mae’r rheolau newydd yn effeithio arnoch chi"
