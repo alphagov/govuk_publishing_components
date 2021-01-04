@@ -19,6 +19,12 @@ describe('GOVUK.StaticAnalytics', function () {
     })
   })
 
+  afterEach(function () {
+    if (GOVUK.analytics.trackEvent.calls) {
+      GOVUK.analytics.trackEvent.calls.reset()
+    }
+  })
+
   describe('when created', function () {
     var pageViewObject
 
@@ -951,6 +957,7 @@ describe('GOVUK.StaticAnalytics', function () {
         analytics = new GOVUK.StaticAnalytics({ universalId: 'universal-id' })
         pageViewObject = getPageViewObject()
         expect(pageViewObject.dimension23).toEqual('fr')
+        $('.test-fixture').remove()
       })
 
       it('sets the page language as "unknown" if the main element has no lang attribute as a custom dimension', function () {
@@ -963,6 +970,7 @@ describe('GOVUK.StaticAnalytics', function () {
         analytics = new GOVUK.StaticAnalytics({ universalId: 'universal-id' })
         pageViewObject = getPageViewObject()
         expect(pageViewObject.dimension23).toEqual('unknown')
+        $('.test-fixture').remove()
       })
     })
 
