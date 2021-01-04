@@ -41,9 +41,7 @@ describe('GOVUK.analyticsPlugins.externalLinkTracker', function () {
     }
   })
 
-  // this test passes when run individually but fails with the other tests
-  // not needed but will require fixing when analytics are fully migrated from static
-  xit('listens to click events on only external links', function () {
+  it('listens to click events on only external links', function () {
     GOVUK.analyticsPlugins.externalLinkTracker({ externalLinkUploadCustomDimension: 36 })
 
     $('.external-links a').each(function () {
@@ -94,9 +92,7 @@ describe('GOVUK.analyticsPlugins.externalLinkTracker', function () {
       'External Link Clicked', 'http://www.nationalarchives.gov.uk', { transport: 'beacon', label: 'National Archives' })
   })
 
-  // this test passes when run individually but fails with the other tests
-  // not needed but will require fixing when analytics are fully migrated from static
-  xit('does not duplicate the url info if a custom dimension is not provided', function () {
+  it('does not duplicate the url info if a custom dimension is not provided', function () {
     GOVUK.analyticsPlugins.externalLinkTracker()
     $('.external-links a').trigger('click')
 
