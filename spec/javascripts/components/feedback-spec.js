@@ -88,9 +88,6 @@ describe('Feedback component', function () {
 
   beforeEach(function () {
     window.setFixtures(FIXTURE)
-    if (typeof GOVUK.analytics === 'undefined') {
-      GOVUK.analytics = { trackEvent: function () {} }
-    }
     spyOn(GOVUK.analytics, 'trackEvent')
   })
 
@@ -127,6 +124,8 @@ describe('Feedback component', function () {
     expect($('.js-toggle-form[aria-controls="something-is-wrong"]').attr('aria-expanded')).toBe('false')
   })
 
+  // note that this test will always fail in the browser if you disable 'run tests in random order'
+  // because the page auto reloads so the referrer will be localhost
   it('should append a hidden "referrer" field to the form', function () {
     loadFeedbackComponent()
 
