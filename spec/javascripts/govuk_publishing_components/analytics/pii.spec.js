@@ -122,8 +122,8 @@ describe('GOVUK.PII', function () {
 
     it('observes the meta tag and strips out postcodes', function () {
       expect(pii.stripPostcodePII).toEqual(true)
-      var string = pii.stripPII('this is an@email.com address, this is a sw1a 1aa postcode, this is a 2019-01-21 date')
-      expect(string).toEqual('this is [email] address, this is a [postcode] postcode, this is a 2019-01-21 date')
+      var string = pii.stripPII('this is an@email.com address, this is a sw1a 1aa postcode, this is a long GL194LYX postcode, this is a 2019-01-21 date, this is a p800refund')
+      expect(string).toEqual('this is [email] address, this is a [postcode] postcode, this is a long [postcode] postcode, this is a 2019-01-21 date, this is a p800refund')
     })
   })
 

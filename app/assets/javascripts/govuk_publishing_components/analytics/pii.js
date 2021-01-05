@@ -5,7 +5,7 @@
 
   var GOVUK = global.GOVUK || {}
   var EMAIL_PATTERN = /[^\s=/?&]+(?:@|%40)[^\s=/?&]+/g
-  var POSTCODE_PATTERN = /[A-PR-UWYZ][A-HJ-Z]?[0-9][0-9A-HJKMNPR-Y]?(?:[\s+]|%20)*[0-9][ABD-HJLNPQ-Z]{2}/gi
+  var POSTCODE_PATTERN = /[A-PR-UWYZ][A-HJ-Z]?[0-9][0-9A-HJKMNPR-Y]?(?:[\s+]|%20)*[0-9](?!refund)[ABD-HJLNPQ-Z]{2,3}/gi
   var DATE_PATTERN = /\d{4}(-?)\d{2}(-?)\d{2}/g
 
   // specific URL parameters to be redacted from accounts URLs
