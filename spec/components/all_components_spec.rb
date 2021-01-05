@@ -24,7 +24,7 @@ describe "All components" do
       end
 
       it "has the correct class in the ERB template",
-         skip: component_name.in?(%w[button step_by_step_nav_related step_by_step_nav_header step_by_step_nav previous_and_next_navigation]),
+         skip: component_name.in?(%w[step_by_step_nav_related step_by_step_nav_header step_by_step_nav previous_and_next_navigation]),
          not_applicable: component_name.in?(%w[meta_tags machine_readable_metadata google_tag_manager_script table admin_analytics]) do
         erb = File.read(filename)
 
