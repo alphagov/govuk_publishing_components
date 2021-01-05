@@ -118,6 +118,7 @@ describe "Comparing data from an application with the components" do
           },
         ],
         gem_style_references: [],
+        jquery_references: [],
       },
     ]
     comparer = GovukPublishingComponents::AuditComparer.new(gem, application)
@@ -172,6 +173,7 @@ describe "Comparing data from an application with the components" do
         ],
         warning_count: 5,
         gem_style_references: [],
+        jquery_references: [],
       },
     ]
 
@@ -211,6 +213,7 @@ describe "Comparing data from an application with the components" do
           },
         ],
         gem_style_references: [],
+        jquery_references: [],
       },
     ]
     comparer = GovukPublishingComponents::AuditComparer.new(gem, application)
@@ -249,6 +252,7 @@ describe "Comparing data from an application with the components" do
         ],
         warning_count: 1,
         gem_style_references: [],
+        jquery_references: [],
       },
     ]
 
@@ -295,6 +299,7 @@ describe "Comparing data from an application with the components" do
           "a_made_up_application/app/assets/stylesheets/application.js",
           "a_made_up_application/app/views/layouts/dummy_admin_layout.html",
         ],
+        jquery_references: [],
       },
     ]
     comparer = GovukPublishingComponents::AuditComparer.new(gem, application)
@@ -330,6 +335,7 @@ describe "Comparing data from an application with the components" do
           "a_made_up_application/app/assets/stylesheets/application.js",
           "a_made_up_application/app/views/layouts/dummy_admin_layout.html",
         ],
+        jquery_references: [],
         warnings: [
           {
             component: "component that does not exist",

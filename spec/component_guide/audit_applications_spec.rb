@@ -35,6 +35,9 @@ describe "Auditing the components in applications" do
         "app/assets/stylesheets/application.scss",
         "app/views/layouts/dummy_admin_layout.html.erb",
       ],
+      jquery_references: [
+        "app/assets/javascripts/application.js",
+      ],
     }
 
     expect(application.data).to match(expected)

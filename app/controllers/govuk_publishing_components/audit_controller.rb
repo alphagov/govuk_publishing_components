@@ -21,12 +21,15 @@ module GovukPublishingComponents
         collections-publisher
         content-data-admin
         content-publisher
+        datagovuk_find
         email-alert-frontend
         feedback
         finder-frontend
         frontend
         government-frontend
         govspeak-preview
+        govuk-account-manager-prototype
+        govuk-coronavirus-vulnerable-people-form
         info-frontend
         licence-finder
         manuals-frontend

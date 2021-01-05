@@ -7,6 +7,7 @@ module GovukPublishingComponents
       application_found = application_exists(path)
       components_found = []
       @gem_style_references = []
+      @jquery_references = []
 
       if application_found
         templates = Dir["#{path}/app/views/**/*.erb"]
@@ -65,6 +66,7 @@ module GovukPublishingComponents
         application_found: application_found,
         components_found: components_found,
         gem_style_references: @gem_style_references.flatten.uniq.sort,
+        jquery_references: @jquery_references.flatten.uniq.sort,
       }
     end
 
@@ -76,8 +78,14 @@ module GovukPublishingComponents
       files.each do |file|
         src = File.read(file)
         components_found << find_match(find, src, type)
-        gem_references = find_gem_references(file, src)
-        @gem_style_references << gem_references if gem_references
+
+        if type == "javascripts"
+          jquery_references = find_code_references(file, src, /\$\(/)
+          @jquery_references << jquery_references if jquery_references
+        else
+          gem_style_references = find_code_references(file, src, /gem-c-[-_a-zA-Z]+/)
+          @gem_style_references << gem_style_references if gem_style_references
+        end
       rescue StandardError
         puts "File #{file} not found"
       end
@@ -99,11 +107,10 @@ module GovukPublishingComponents
       all_matches
     end
 
-    def find_gem_references(file, src)
-      find_gem_classes = /gem-c-[-_a-zA-Z]+/
+    def find_code_references(file, src, regex)
       clean_file_path = /(?<=#{Regexp.escape(@path)}\/)[\/a-zA-Z_-]+.[a-zA-Z.]+/
 
-      return file[clean_file_path] if find_gem_classes.match?(src)
+      return file[clean_file_path] if regex.match?(src)
     end
 
     def clean_file_name(name)

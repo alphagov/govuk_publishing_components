@@ -37,6 +37,7 @@ module GovukPublishingComponents
           warnings << warn_about_missing_components(result[:components_found])
           warnings << warn_about_missing_assets(result[:components_found])
           warnings << warn_about_style_overrides(result[:gem_style_references])
+          warnings << warn_about_jquery_references(result[:jquery_references])
           warnings = warnings.flatten
 
           data << {
@@ -67,6 +68,7 @@ module GovukPublishingComponents
             warnings: warnings,
             warning_count: warnings.length,
             gem_style_references: result[:gem_style_references],
+            jquery_references: result[:jquery_references],
           }
         else
           data << {
@@ -158,6 +160,16 @@ module GovukPublishingComponents
       results.each do |result|
         warnings << create_warning("Possible component style override", result) if result.include? ".scss"
         warnings << create_warning("Possible hard coded component markup", result) if [".html", ".rb"].any? { |needle| result.include? needle }
+      end
+
+      warnings
+    end
+
+    def warn_about_jquery_references(results)
+      warnings = []
+
+      results.each do |result|
+        warnings << create_warning("Possible jQuery", result)
       end
 
       warnings
