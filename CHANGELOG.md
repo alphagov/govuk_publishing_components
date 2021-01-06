@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 23.12.0
 
 * Get analytics code ready for use in production ([PR #1767](https://github.com/alphagov/govuk_publishing_components/pull/1767))
 
