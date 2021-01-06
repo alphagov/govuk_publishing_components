@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Get analytics code ready for use in production ([PR #1767](https://github.com/alphagov/govuk_publishing_components/pull/1767))
+
 ## 23.11.1
 
 * Update Brexit CTA copy in contextual sidebar ([PR #1851](https://github.com/alphagov/govuk_publishing_components/pull/1851))
