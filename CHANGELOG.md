@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 23.11.1
 
 * Update Brexit CTA copy in contextual sidebar ([PR #1851](https://github.com/alphagov/govuk_publishing_components/pull/1851))
 * Extend component auditing ([PR #1796](https://github.com/alphagov/govuk_publishing_components/pull/1796))
