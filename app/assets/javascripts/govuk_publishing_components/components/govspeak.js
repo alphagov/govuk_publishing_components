@@ -11,6 +11,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       this.embedYoutube()
     }
 
+    if (this.$module.getAttribute('data-track-links-category')) {
+      this.trackLinks($module)
+    }
+
     this.createBarcharts()
   }
 
@@ -22,6 +26,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   Govspeak.prototype.createBarcharts = function () {
     var enhancement = new window.GOVUK.GovspeakBarchartEnhancement(this.$module)
     enhancement.init()
+  }
+
+  Govspeak.prototype.trackLinks = function ($module) {
+    var tracking = new window.GOVUK.Modules.GovspeakTrackLinks()
+    tracking.start($module)
   }
 
   Modules.Govspeak = Govspeak

@@ -1,13 +1,22 @@
 <%
+  track_links ||= false
+  track_links_category ||= nil
+  track_links = false unless track_links_category.present?
+  
   direction_class = "direction-#{direction}" if local_assigns.include?(:direction)
   disable_youtube_expansions = local_assigns.fetch(:disable_youtube_expansions) if local_assigns.include?(:disable_youtube_expansions)
 
   classes = []
+  classes << "gem-c-govspeak govuk-govspeak"
   classes << direction_class if direction_class
   classes << "disable-youtube" if disable_youtube_expansions
+
+  data_attributes = {}
+  data_attributes[:module] = "govspeak"
+  data_attributes[:track_links_category] = track_links_category if track_links
 %>
 
-<div class="gem-c-govspeak govuk-govspeak <%= classes.join(" ") %>" data-module="govspeak">
+<%= tag.div(class: classes, data: data_attributes) do %>
   <% if local_assigns.include?(:content) %>
     <% if content.html_safe? %>
       <%= content %>
@@ -28,4 +37,4 @@
   <% elsif block_given? %>
     <%= yield %>
   <% end %>
-</div>
+<% end %>

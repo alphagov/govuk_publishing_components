@@ -37,4 +37,31 @@ describe "Govspeak", type: :view do
 
     expect(rendered).to include("content-via-block")
   end
+
+  it "can track links" do
+    render_component(
+      track_links: true,
+      track_links_category: "testing-blah",
+      content: "<a href='/blah'>link tracking</a>".html_safe,
+    )
+
+    assert_select "[data-track-links-category='testing-blah']"
+  end
+
+  it "doesn't track links when links tracking isn't passed in" do
+    render_component(
+      content: "<a href='/blah'>link tracking</a>".html_safe,
+    )
+
+    assert_select "[data-track-links-category]", false
+  end
+
+  it "doesn't track links if tracking category isn't passed in" do
+    render_component(
+      track_links: true,
+      content: "<a href='/blah'>link tracking</a>".html_safe,
+    )
+
+    assert_select "[data-track-links-category]", false
+  end
 end
