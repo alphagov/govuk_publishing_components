@@ -73,10 +73,6 @@ describe('Checkboxes component', function () {
     expectedRedOptions = { label: 'red', value: '1', dimension28: 'wubbalubbadubdub', dimension29: 'Pickle Rick' }
     expectedBlueOptions = { label: 'blue', value: '2', dimension28: 'Get schwifty', dimension29: 'Squanch' }
 
-    if (typeof GOVUK.analytics === 'undefined') {
-      GOVUK.analytics = { trackEvent: function () {} }
-    }
-
     spyOn(GOVUK.analytics, 'trackEvent')
   })
 
@@ -128,7 +124,9 @@ describe('Checkboxes component', function () {
     $checkbox.trigger('click')
     expect($checkbox.is(':checked')).toBe(true)
 
-    GOVUK.analytics.trackEvent.calls.reset()
+    if (GOVUK.analytics.trackEvent.calls) {
+      GOVUK.analytics.trackEvent.calls.reset()
+    }
 
     $checkbox.trigger('click')
     expect($checkbox.is(':checked')).toBe(false)

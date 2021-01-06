@@ -28,10 +28,13 @@ describe('Ecommerce reporter for results pages', function () {
     window.GOVUK.analyticsInit()
     ecommerce = new GOVUK.Ecommerce()
     GOVUK.analytics.gaClientId = '12345.67890'
-    if (typeof window.ga === 'undefined') {
-      window.ga = function () {}
-    }
     spyOn(window, 'ga')
+  })
+
+  afterEach(function () {
+    if (window.ga.calls) {
+      window.ga.calls.reset()
+    }
   })
 
   it('requires content id or path', function () {
@@ -289,9 +292,7 @@ describe('Ecommerce reporter for results pages', function () {
     })
   })
 
-  // this test passes when run individually but fails with the other tests
-  // not needed but will require fixing when analytics are fully migrated from static
-  xit('tracks clicks on search results', function () {
+  it('tracks clicks on search results', function () {
     element = $(
       '<div data-ecommerce-start-index="1" data-search-query="search query">' +
         '<a data-ecommerce-row data-ecommerce-path="/path/to/page" data-ecommerce-content-id="AAAA-1111"></a>' +
@@ -335,9 +336,7 @@ describe('Ecommerce reporter for results pages', function () {
     })
   })
 
-  // this test passes when run individually but fails with the other tests
-  // not needed but will require fixing when analytics are fully migrated from static
-  xit('tracks clicks with product variants', function () {
+  it('tracks clicks with product variants', function () {
     element = $(
       '<div data-ecommerce-start-index="1" data-search-query="search query" data-ecommerce-variant="variant-x">' +
         '<a data-ecommerce-row data-ecommerce-path="/path/to/page" data-ecommerce-content-id="AAAA-1111"></a>' +
@@ -382,9 +381,7 @@ describe('Ecommerce reporter for results pages', function () {
     })
   })
 
-  // this test passes when run individually but fails with the other tests
-  // not needed but will require fixing when analytics are fully migrated from static
-  xit('tracks clicks with different event labels', function () {
+  it('tracks clicks with different event labels', function () {
     element = $(
       '<div> ' +
         '<div data-analytics-ecommerce data-list-title="First list" data-ecommerce-start-index="1" data-search-query="search query">' +

@@ -5,12 +5,10 @@ describe('Track select change', function () {
   var tracker
   var $element
 
-  if (typeof GOVUK.analytics === 'undefined') {
-    GOVUK.analytics = { trackEvent: function () {} }
-  }
-
   afterEach(function () {
-    GOVUK.analytics.trackEvent.calls.reset()
+    if (GOVUK.analytics.trackEvent.calls) {
+      GOVUK.analytics.trackEvent.calls.reset()
+    }
   })
 
   describe('by default', function () {

@@ -5,14 +5,14 @@ describe('A click tracker', function () {
   var element
 
   beforeEach(function () {
-    if (typeof GOVUK.analytics === 'undefined') {
-      GOVUK.analytics = { trackEvent: function () {} }
-    }
     spyOn(GOVUK.analytics, 'trackEvent')
   })
 
   afterEach(function () {
-    GOVUK.analytics.trackEvent.calls.reset()
+    if (GOVUK.analytics.trackEvent.calls) {
+      GOVUK.analytics.trackEvent.calls.reset()
+    }
+    element.remove()
   })
 
   it('tracks click events using "beacon" as transport', function () {
@@ -79,9 +79,6 @@ describe('A click tracker', function () {
   })
 
   it('tracks clicks with arbitrary JSON', function () {
-    GOVUK.analytics = { trackEvent: function () {} }
-    spyOn(GOVUK.analytics, 'trackEvent')
-
     element = $(
       "<a data-module='gem-track-click' data-track-category='category' data-track-action='1' data-track-label='/' data-track-options='{\"dimension28\": \"foo\", \"dimension29\": \"bar\"}' href='#'>Home</a>"
     )

@@ -10,7 +10,6 @@
     var externalLinkUploadCustomDimension = options.externalLinkUploadCustomDimension
     var currentHost = GOVUK.analyticsPlugins.externalLinkTracker.getHostname()
     var externalLinkSelector = 'a[href^="http"]:not(a[href*="' + currentHost + '"])'
-
     $('body').on('click', externalLinkSelector, trackClickEvent)
 
     function trackClickEvent (evt) {
@@ -33,7 +32,6 @@
 
         GOVUK.analytics.setDimension(externalLinkUploadCustomDimension, externalLinkToJoinUploadOn)
       }
-
       GOVUK.analytics.trackEvent('External Link Clicked', href, options)
     }
 

@@ -29,6 +29,13 @@ describe('GOVUK.GoogleAnalyticsUniversalTracker', function () {
     $('head').find('meta[name="govuk:static-analytics:strip-dates"]').remove()
     $('head').find('meta[name="govuk:static-analytics:strip-postcodes"]').remove()
     $('[src="https://www.google-analytics.com/analytics.js"]').remove()
+
+    if (GOVUK.analytics.trackEvent.calls) {
+      GOVUK.analytics.trackEvent.calls.reset()
+    }
+    if (GOVUK.analytics.setDimension.calls) {
+      GOVUK.analytics.setDimension.calls.reset()
+    }
   })
 
   it('can load the libraries needed to run universal Google Analytics', function () {
@@ -204,7 +211,14 @@ describe('GOVUK.GoogleAnalyticsUniversalTracker', function () {
   })
 
   describe('when tracking all events', function () {
-    window.history.replaceState(null, null, '?address=an.email@digital.cabinet-office.gov.uk&postcode=sw11wa&date=2019-01-01')
+    beforeAll(function () {
+      window.history.replaceState(null, null, '?address=an.email@digital.cabinet-office.gov.uk&postcode=sw11wa&date=2019-01-01')
+    })
+
+    afterAll(function () {
+      var href = window.location.href.replace('?address=an.email@digital.cabinet-office.gov.uk&postcode=sw11wa&date=2019-01-01', '')
+      window.history.replaceState(null, null, href)
+    })
 
     it('removes any pii from the location', function () {
       expect(window.ga.calls.mostRecent().args[2]).toContain('address=[email]')
@@ -233,10 +247,20 @@ describe('GOVUK.GoogleAnalyticsUniversalTracker', function () {
   describe('adding a linked tracker', function () {
     var callIndex
 
+    beforeAll(function () {
+      window.history.replaceState(null, null, '?address=an.email@digital.cabinet-office.gov.uk&postcode=sw11wa&date=2019-01-01')
+    })
+
+    afterAll(function () {
+      var href = window.location.href.replace('?address=an.email@digital.cabinet-office.gov.uk&postcode=sw11wa&date=2019-01-01', '')
+      window.history.replaceState(null, null, href)
+    })
+
     beforeEach(function () {
       callIndex = window.ga.calls.count()
       universal.addLinkedTrackerDomain('UA-123456', 'testTracker', ['some.service.gov.uk'])
     })
+
     it('creates a tracker for the ID', function () {
       expect(window.ga.calls.argsFor(callIndex)).toEqual(['create', 'UA-123456', 'auto', Object({ name: 'testTracker' })])
     })

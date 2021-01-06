@@ -18,24 +18,20 @@ describe('GOVUK.analyticsPlugins.mailtoLinkTracker', function () {
 
     $('html').on('click', function (evt) { evt.preventDefault() })
     $('body').append($links)
-
-    if (typeof GOVUK.analytics === 'undefined') {
-      GOVUK.analytics = { trackEvent: function () {} }
-    }
-
     GOVUK.analyticsPlugins.mailtoLinkTracker()
+    spyOn(GOVUK.analytics, 'trackEvent')
   })
 
   afterEach(function () {
     $('html').off()
     $('body').off()
     $links.remove()
-    GOVUK.analytics.trackEvent.calls.reset()
+    if (GOVUK.analytics.trackEvent.calls) {
+      GOVUK.analytics.trackEvent.calls.reset()
+    }
   })
 
   it('listens to click events on mailto links', function () {
-    spyOn(GOVUK.analytics, 'trackEvent')
-
     $('.mailto-links a').each(function () {
       $(this).trigger('click')
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalled()
@@ -44,7 +40,6 @@ describe('GOVUK.analyticsPlugins.mailtoLinkTracker', function () {
   })
 
   it('tracks mailto addresses and link text', function () {
-    spyOn(GOVUK.analytics, 'trackEvent')
     $('.mailto-links a').trigger('click')
 
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith(
@@ -55,8 +50,6 @@ describe('GOVUK.analyticsPlugins.mailtoLinkTracker', function () {
   })
 
   it('listens to click events on elements within mailto links', function () {
-    spyOn(GOVUK.analytics, 'trackEvent')
-
     $('.mailto-links a img').trigger('click')
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith(
       'Mailto Link Clicked', 'mailto:name3@email.com', { transport: 'beacon' })

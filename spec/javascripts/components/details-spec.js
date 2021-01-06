@@ -4,10 +4,6 @@
 describe('Details component', function () {
   var FIXTURE
 
-  if (typeof GOVUK.analytics === 'undefined') {
-    GOVUK.analytics = { trackEvent: function () {} }
-  }
-
   var callback = jasmine.createSpy()
   GOVUK.Modules.TrackClick = function () {
     this.start = function () {
@@ -34,7 +30,9 @@ describe('Details component', function () {
   })
 
   afterEach(function () {
-    GOVUK.analytics.trackEvent.calls.reset()
+    if (GOVUK.analytics.trackEvent.calls) {
+      GOVUK.analytics.trackEvent.calls.reset()
+    }
   })
 
   it('uses built in tracking module when provided with a track-label', function () {

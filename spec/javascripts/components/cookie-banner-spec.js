@@ -101,9 +101,6 @@ describe('Cookie banner', function () {
   })
 
   it('sets consent cookie when accepting cookies', function () {
-    if (typeof GOVUK.analyticsInit === 'undefined') {
-      GOVUK.analyticsInit = function () {}
-    }
     spyOn(GOVUK, 'analyticsInit')
     spyOn(GOVUK, 'setCookie').and.callThrough()
 
