@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Update Brexit CTA copy in contextual sidebar ([PR #1851](https://github.com/alphagov/govuk_publishing_components/pull/1851))
 * Extend component auditing ([PR #1796](https://github.com/alphagov/govuk_publishing_components/pull/1796))
 
 ## 23.11.0
