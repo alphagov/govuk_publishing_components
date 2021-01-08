@@ -59,7 +59,40 @@ describe "Machine readable metadata", type: :view do
     assert JSON.parse(json_linked_data)
   end
 
+  it "escapes harmful HTML in the JSON" do
+    example = GovukSchemas::RandomExample.for_schema(frontend_schema: "generic")
+    example["description"] = bad_html
+
+    render_component(content_item: example, schema: :article)
+    json_linked_data = Nokogiri::HTML(rendered).css("script").text
+
+    assert_equal escaped_html, JSON.parse(json_linked_data)["description"]
+  end
+
+  it "escapes harmful HTML nested several layers inside the JSON" do
+    allow(GovukPublishingComponents::Presenters::SchemaOrg).to receive(:new)
+      .and_return(double("SchemaOrg", structured_data: {
+        "foo" => {
+          "bar" => bad_html,
+        },
+      }))
+    example = GovukSchemas::RandomExample.for_schema(frontend_schema: "generic")
+
+    render_component(content_item: example, schema: :article)
+    json_linked_data = Nokogiri::HTML(rendered).css("script").text
+
+    assert_equal escaped_html, JSON.parse(json_linked_data)["foo"]["bar"]
+  end
+
   def assert_meta_tag(name, content)
     assert_select "meta[name='#{name}'][content='#{content}']"
+  end
+
+  def bad_html
+    "<script>alert('hi')</script>"
+  end
+
+  def escaped_html
+    "\u003cscript\u003ealert('hi')\u003c/script\u003e"
   end
 end
