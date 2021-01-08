@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 23.12.1
+
+* Escape dangerous HTML in 'Machine readable metadata' component ([PR #1858](https://github.com/alphagov/govuk_publishing_components/pull/1858))
+
 ## 23.12.0
 
 * Get analytics code ready for use in production ([PR #1767](https://github.com/alphagov/govuk_publishing_components/pull/1767))
