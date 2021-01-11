@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Hide native browser show password ([PR #1863](https://github.com/alphagov/govuk_publishing_components/pull/1863))
+
 ## 23.12.1
 
 * Escape dangerous HTML in 'Machine readable metadata' component ([PR #1858](https://github.com/alphagov/govuk_publishing_components/pull/1858))
