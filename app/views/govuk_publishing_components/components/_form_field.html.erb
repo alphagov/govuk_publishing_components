@@ -1,0 +1,93 @@
+<%
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+
+  field_id =
+
+  id ||= "input-#{SecureRandom.hex(4)}"
+  value ||= nil
+  type ||= "text"
+  describedby ||= nil
+  controls ||= nil
+  data ||= nil
+  autocomplete ||= nil
+
+  label ||= nil
+  hint ||= nil
+  error_message ||= nil
+  error_items ||= []
+  grouped ||= nil
+  autofocus ||= nil
+  tabindex ||= nil
+  readonly ||= nil
+  maxlength ||= nil
+  width ||= nil
+  has_error ||= error_message || error_items.any?
+  hint_id = "hint-#{SecureRandom.hex(4)}"
+  error_id = "error-#{SecureRandom.hex(4)}"
+  search_icon ||= nil
+  heading_size = false unless ['s', 'm', 'l', 'xl'].include?(heading_size)
+  heading_level ||= nil
+  prefix ||= nil
+  suffix ||= nil
+
+  css_classes = %w(govuk-input)
+  css_classes << "govuk-input--error" if has_error
+  css_classes << "govuk-input--width-#{width}" if [2, 3, 4, 5, 10, 20, 30].include?(width)
+  css_classes << "gem-c-input--search-icon" if search_icon
+  form_group_css_classes = %w(govuk-form-group gem-c-input)
+  form_group_css_classes << "govuk-form-group--error" if has_error && !grouped
+
+  aria_described_by ||= nil
+  if hint || has_error || describedby
+    aria_described_by = []
+    aria_described_by << hint_id if hint
+    aria_described_by << error_id if has_error && !grouped
+    aria_described_by << describedby if describedby
+    aria_described_by = aria_described_by.join(" ")
+  end
+
+  if type == "number"
+    type = "text"
+    inputmode = "numeric"
+    pattern = "[0-9]*"
+  end
+
+  inputmode ||= nil
+  pattern ||= nil
+%>
+
+<%= content_tag :div, class: form_group_css_classes do %>
+  <% if label %>
+    <% label_markup = capture do %>
+      <%= render "govuk_publishing_components/components/label", {
+        html_for: field_id,
+        heading_size: heading_size
+      }.merge(label.symbolize_keys) %>
+    <% end %>
+
+    <% if heading_level %>
+      <%= content_tag(shared_helper.get_heading_level, class: "govuk-label-wrapper") do %>
+        <%= label_markup %>
+      <% end %>
+    <% else %>
+      <%= label_markup %>
+    <% end %>
+  <% end %>
+
+  <% if hint %>
+    <%= render "govuk_publishing_components/components/hint", {
+      id: hint_id,
+      text: hint
+    } %>
+  <% end %>
+
+  <% if has_error %>
+    <%= render "govuk_publishing_components/components/error_message", {
+      id: error_id,
+      text: error_message,
+      items: error_items,
+    } %>
+  <% end %>
+
+  <%= yield(ids) %>
+<% end %>
