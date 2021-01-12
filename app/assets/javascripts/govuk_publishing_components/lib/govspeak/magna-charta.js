@@ -11,9 +11,12 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.options = {
       outOf: 65,
       applyOnInit: true,
-      toggleText: 'Toggle between chart and table',
       autoOutdent: false,
       outdentAll: false,
+      chartVisibleText: 'Change to table and accessible view',
+      tableVisibleText: 'Change to chart view',
+      chartAlertText: 'Chart visible',
+      tableAlertText: 'Table visible',
       toggleAfter: false, // BOOL set TRUE to append the toggle link
       returnReference: false // for testing purposes
     }
@@ -27,6 +30,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     // store a reference to the table in the object
     this.$table = $module
 
+    // a container around the graph element so that it can be targeted by screen readers, allowing us to inform screen reader users that the graph isn't accessible
+    this.$graphContainer = document.createElement('div')
+    this.$graphContainer.className = 'mc-chart-container'
+
     // lets make what will become the new graph
     this.$graph = document.createElement('div')
 
@@ -38,6 +45,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     // copy over classes from the table, and add the extra one
     this.$graph.setAttribute('class', this.$table.className)
     this.$graph.classList.add('mc-chart')
+
+    // get the id of the current chart within the page so that it can be used during the generation of the toggleLink
+    this.chartId = this.getChartId($module)
 
     // set the stacked option based on
     // giving the table a class of mc-stacked
@@ -102,7 +112,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       this.addClassesToHeader()
       this.applyWidths()
       this.insert()
-      this.$table.classList.add('visually-hidden')
+      this.$table.classList.add('mc-hidden')
       this.applyOutdent()
     }
   }
@@ -164,24 +174,42 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   // construct a link to allow the user to toggle between chart and table
-  MagnaCharta.prototype.construct.toggleLink = function (toggleText) {
-    var link = document.createElement('a')
-    link.setAttribute('href', '#')
-    link.classList.add('mc-toggle-link')
-    link.innerHTML = toggleText
-    link.setAttribute('aria-hidden', 'true')
+  MagnaCharta.prototype.construct.toggleLink = function (chartVisibleText) {
+    var link = document.createElement('button')
+
+    // These spans are for managing the content within the button
+    // toggleText is the public facing content whilst toggleStatus is visually hidden content that we use to let screen reader users know that the toggle link has been clicked
+    var toggleText = document.createElement('span')
+    var toggleStatus = document.createElement('span')
+
+    toggleText.classList.add('mc-toggle-text')
+    toggleText.innerHTML = chartVisibleText
+
+    toggleStatus.classList.add('govuk-visually-hidden', 'mc-toggle-status')
+    toggleStatus.setAttribute('role', 'alert')
+
+    link.classList.add('mc-toggle-button')
+    link.appendChild(toggleText)
+    link.appendChild(toggleStatus)
 
     return link
   }
 
   // toggles between showing the table and showing the chart
-  MagnaCharta.prototype.addToggleClick = function () {
+  MagnaCharta.prototype.addToggleClick = function (chartVisible, tableVisible, chartAlert, tableAlert) {
     var that = this
 
     this.toggleLink.addEventListener('click', function (e) {
       e.preventDefault()
-      that.$graph.classList.toggle('visually-hidden')
-      that.$table.classList.toggle('visually-hidden')
+
+      var toggleText = that.toggleLink.querySelector('.mc-toggle-text')
+      var toggleStatus = that.toggleLink.querySelector('.mc-toggle-status')
+
+      that.$graphContainer.classList.toggle('mc-hidden')
+      that.$table.classList.toggle('mc-hidden')
+
+      toggleText.innerHTML = toggleText.innerHTML === tableVisible ? chartVisible : tableVisible
+      toggleStatus.innerHTML = toggleStatus.innerHTML === tableAlert ? chartAlert : tableAlert
     })
   }
 
@@ -191,8 +219,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     // get at options and properties
     var thead = this.construct.thead.call(this)
     var tbody = this.construct.tbody.call(this)
-    this.toggleLink = this.construct.toggleLink(this.options.toggleText)
-    this.addToggleClick(this.toggleLink)
+    this.toggleLink = this.construct.toggleLink(this.options.chartVisibleText)
+    this.addToggleClick(this.options.chartVisibleText, this.options.tableVisibleText, this.options.chartAlertText, this.options.tableAlertText)
 
     if (this.options.hasCaption) {
       var caption = this.construct.caption.call(this)
@@ -379,7 +407,18 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   MagnaCharta.prototype.insert = function () {
-    this.$table.insertAdjacentElement('afterend', this.$graph)
+    var label = document.createElement('span')
+    var labelId = 'mc-chart-not-accessible-' + this.chartId
+
+    label.innerHTML = 'This content is not accessible - switch to table'
+    label.className = 'mc-hidden'
+    label.id = labelId
+
+    this.$graphContainer.setAttribute('aria-labelledby', labelId)
+    this.$graphContainer.appendChild(this.$graph)
+    this.$graphContainer.appendChild(label)
+
+    this.$table.insertAdjacentElement('afterend', this.$graphContainer)
   }
 
   MagnaCharta.prototype.applyOutdent = function () {
@@ -417,6 +456,19 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         }
       }
     }
+  }
+
+  MagnaCharta.prototype.getChartId = function (module) {
+    var allCharts = document.querySelectorAll('table.js-barchart-table')
+    var id = null
+
+    allCharts.forEach(function (chart, i) {
+      if (chart === module) {
+        id = i
+      }
+    })
+
+    return id
   }
 
   Modules.MagnaCharta = MagnaCharta
