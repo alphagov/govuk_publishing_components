@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    govuk_publishing_components (23.12.1)
+    govuk_publishing_components (23.12.2)
       govuk_app_config
       kramdown
       plek
@@ -102,7 +102,7 @@ GEM
       faraday-net_http (~> 1.0)
       multipart-post (>= 1.2, < 3)
       ruby2_keywords
-    faraday-net_http (1.0.0)
+    faraday-net_http (1.0.1)
     ffi (1.12.2)
     gds-api-adapters (68.2.0)
       addressable
