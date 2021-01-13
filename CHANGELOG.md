@@ -7,14 +7,14 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 23.12.2
 
 * Hide native browser show password ([PR #1863](https://github.com/alphagov/govuk_publishing_components/pull/1863))
+* Update magna charter experience for screen reader users ([PR #1787](https://github.com/alphagov/govuk_publishing_components/pull/1787))
 
 ## 23.12.1
 
 * Escape dangerous HTML in 'Machine readable metadata' component ([PR #1858](https://github.com/alphagov/govuk_publishing_components/pull/1858))
-* Update magna charter experience for screen reader users ([PR #1787](https://github.com/alphagov/govuk_publishing_components/pull/1787))
 
 ## 23.12.0
 
