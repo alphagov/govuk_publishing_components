@@ -60,6 +60,27 @@ examples:
       - text: News and communications
         href: "item-6"
         active: true
+  with_custom_navigation_aria_label:
+    description: The navigation has `aria-label="Top level"` by default. This option is here for when the `aria-label` needs to be more descriptive than that.
+    data:
+      search_left: true
+      navigation_aria_label: "Departments and policy"
+      navigation_items:
+      - text: Departments
+        href: "item-1"
+      - text: Worldwide
+        href: "item-2"
+      - text: How government works
+        href: "item-3"
+      - text: Get involved
+        href: "item-4"
+      - text: Consultations
+        href: "item-4"
+      - text: Statistics
+        href: "item-5"
+      - text: News and communications
+        href: "item-6"
+        active: true
   full_width:
     description: |
       This is difficult to preview because the preview windows are constrained, but the header will stretch to the size of its container.
