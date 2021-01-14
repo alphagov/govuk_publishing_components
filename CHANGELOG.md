@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 23.12.3
 
 * Fix text overflow bug in Firefox ([PR #1764](https://github.com/alphagov/govuk_publishing_components/pull/1764))
 * Tidy component filenames ([PR #1848](https://github.com/alphagov/govuk_publishing_components/pull/1848))
