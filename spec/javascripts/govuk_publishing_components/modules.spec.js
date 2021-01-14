@@ -6,13 +6,36 @@ describe('GOVUK Modules', function () {
   'use strict'
   var GOVUK = window.GOVUK
 
-  it('finds modules', function () {
+  it('finds modules in body', function () {
     var module = $('<div data-module="a-module"></div>')
     $('body').append(module)
 
     expect(GOVUK.modules.find().length).toBe(1)
     expect(GOVUK.modules.find().eq(0).is('[data-module="a-module"]')).toBe(true)
     module.remove()
+  })
+
+  it('finds modules in head', function () {
+    var module = $('<meta name="fake-meta" content="blah" data-module="a-module">')
+    $('head').append(module)
+
+    expect(GOVUK.modules.find().length).toBe(1)
+    expect(GOVUK.modules.find().eq(0).is('[data-module="a-module"]')).toBe(true)
+    module.remove()
+  })
+
+  it('finds modules in a page', function () {
+    var headModule = $('<meta name="fake-meta" content="blah" data-module="head-module">')
+    $('head').append(headModule)
+
+    var bodyModule = $('<div data-module="body-module"></div>')
+    $('body').append(bodyModule)
+
+    expect(GOVUK.modules.find().length).toBe(2)
+    expect(GOVUK.modules.find().eq(0).is('[data-module="head-module"]')).toBe(true)
+    expect(GOVUK.modules.find().eq(1).is('[data-module="body-module"]')).toBe(true)
+    headModule.remove()
+    bodyModule.remove()
   })
 
   it('finds modules in a container', function () {
