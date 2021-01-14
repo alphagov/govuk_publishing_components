@@ -1,0 +1,85 @@
+<%
+  # DO NOT MAKE CHANGES TO THIS FILE
+  # It is a temporary copy of _subscription_links.html.erb and will be deleted shortly
+
+  brand ||= false
+  brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
+
+  sl_helper = GovukPublishingComponents::Presenters::SubscriptionLinksHelper.new(local_assigns)
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+
+  local_assigns[:margin_bottom] ||= 0
+  local_assigns[:margin_bottom] = 0 if local_assigns[:margin_bottom] > 9
+
+  css_classes = %w( gem-c-subscription-links )
+  css_classes << (shared_helper.get_margin_bottom) unless local_assigns[:margin_bottom] == 0
+  css_classes << brand_helper.brand_class
+  css_classes << "gem-c-subscription-links--with-feed-box" if sl_helper.feed_link_box_value
+
+  data = {"module": "gem-toggle"} if sl_helper.feed_link_box_value
+
+  hide_heading ||= false
+
+  email_signup_link_text_locale = local_assigns[:email_signup_link_text_locale].presence
+  feed_link_text_locale = local_assigns[:feed_link_text_locale].presence
+%>
+<% if sl_helper.component_data_is_valid? %>
+  <%= tag.section class: css_classes, data: data do %>
+    <% unless hide_heading %>
+      <h2 class="gem-c-subscription-links__hidden-header visuallyhidden"><%= t("govuk_component.subscription_links.subscriptions", default: "Subscriptions") %></h2>
+    <% end %>
+    <ul
+      class="gem-c-subscription-links__list<%= ' gem-c-subscription-links__list--small' if local_assigns[:small_form] == true %>"
+      <%= "data-module=track-click" if sl_helper.tracking_is_present? %>
+    >
+      <% if sl_helper.email_signup_link.present? %>
+        <li class="gem-c-subscription-links__list-item<%= ' gem-c-subscription-links__list-item--small' if local_assigns[:small_form] == true %>" >
+          <% email_link_text = capture do %>
+           <svg xmlns="http://www.w3.org/2000/svg" width="21" height="15.75" class="gem-c-subscription-links__icon" focusable="false" fill="currentColor" aria-hidden="true"><path d="M19.687 0H1.312C.589 0 0 .587 0 1.313v13.124c0 .726.588 1.313 1.313 1.313h18.374c.725 0 1.313-.587 1.313-1.313V1.313C21 .587 20.412 0 19.687 0zm-2.625 2.625L10.5 7.875l-6.563-5.25h13.126zm1.313 10.5H2.625V3.937L10.5 10.5l7.875-6.563v9.188z"/></svg>
+           <%= sl_helper.email_signup_link_text %>
+          <% end %>
+          <%= link_to email_link_text, sl_helper.email_signup_link, {
+            class: "gem-c-subscription-links__item #{brand_helper.color_class} gem-c-subscription-links__item--link",
+            data: sl_helper.email_signup_link_data_attributes,
+            lang: email_signup_link_text_locale
+          } %>
+        </li>
+      <% end %>
+
+      <% if sl_helper.feed_link_box_value || sl_helper.feed_link %>
+        <li class="gem-c-subscription-links__list-item<%= ' gem-c-subscription-links__list-item--small' if local_assigns[:small_form] == true %>">
+          <% feed_link_text = capture do %>
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" class="gem-c-subscription-links__icon" focusable="false" fill="currentColor" aria-hidden="true"><path d="M1.996 11A2 2 0 0 0 0 12.993c0 1.101.895 1.99 1.996 1.99 1.106 0 2-.889 2-1.99a2 2 0 0 0-2-1.993zM.002 5.097V7.97c1.872 0 3.632.733 4.958 2.059A6.984 6.984 0 0 1 7.015 15h2.888c0-5.461-4.443-9.903-9.9-9.903zM.006 0v2.876c6.676 0 12.11 5.44 12.11 12.124H15C15 6.731 8.273 0 .006 0z"/></svg>
+           <%= sl_helper.feed_link_text %>
+          <% end %>
+          <%= tag.button feed_link_text, {
+            class: "gem-c-subscription-links__item #{brand_helper.color_class} gem-c-subscription-links__item--button",
+            data: sl_helper.feed_link_data_attributes,
+            lang: feed_link_text_locale
+          } if sl_helper.feed_link_box_value %>
+          <%= link_to feed_link_text, sl_helper.feed_link,
+            {
+              class: "gem-c-subscription-links__item #{brand_helper.color_class} gem-c-subscription-links__item--link",
+              data: sl_helper.feed_link_data_attributes,
+              lang: feed_link_text_locale
+            } unless sl_helper.feed_link_box_value %>
+        </li>
+      <% end %>
+    </ul>
+
+    <% if sl_helper.feed_link_box_value %>
+      <div class="gem-c-subscription-links__feed-box js-hidden" id="<%= sl_helper.feed_box_id %>">
+        <h3 class="gem-c-subscription-links__feed-hidden-description visuallyhidden govuk-!-margin-top-0"><%= sl_helper.feed_link_text %></h3>
+        <div lang="en">
+          <%= render "govuk_publishing_components/components/input", {
+            label: {
+              text: "Copy and paste this URL into your feed reader"
+            },
+            name: "feed-reader-box",
+            value: feed_link_box_value
+          } %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

@@ -1,0 +1,103 @@
+# DO NOT MAKE CHANGES TO THIS FILE
+# It is a temporary copy of subscription_links.yml and will be deleted shortly
+
+name: Subscription links
+description: Links to ‘Get emails’ and ‘Subscribe to feed’
+body: |
+  <strong>NOTE: This component includes a h2 heading by default but can be suppressed by using `hide_heading` option (see below)<strong>
+accessibility_criteria: |
+  Icons in subscription links must be presentational and ignored by screen readers.
+
+  Toggle elements in the component must:
+
+  - be usable with a keyboard
+  - be usable with touch
+  - be recognised by screen readers as a button
+  - announce to screen readers whether they are expanded or collapsed
+  - show hidden elements by default when Javascript is disabled
+shared_accessibility_criteria:
+  - link
+examples:
+  default:
+    data:
+      email_signup_link: '/foreign-travel-advice/singapore/email-signup'
+      feed_link: '/foreign-travel-advice/singapore.atom'
+  with_margin:
+    description: The component accepts a number for margin bottom from 0 to 9 (0px to 60px) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having no margin bottom, although some margin is supplied by the links themselves (so that when they stack on mobile there is space between them).
+    data:
+      email_signup_link: '/foreign-travel-advice/singapore/email-signup'
+      feed_link: '/foreign-travel-advice/singapore.atom'
+      margin_bottom: 9
+  with_only_email_signup_link:
+    data:
+      email_signup_link: '/foreign-travel-advice/singapore/email-signup'
+  with_only_feed_link:
+    data:
+      feed_link: '/foreign-travel-advice/singapore.atom'
+  with_custom_text:
+    data:
+      email_signup_link: '/foreign-travel-advice/singapore/email-signup'
+      email_signup_link_text: 'Get notifications'
+      feed_link: '/foreign-travel-advice/singapore.atom'
+      feed_link_text: 'View feed'
+  with_copyable_feed_link:
+    description: |
+      This option changes the feed link to a toggle control, which opens a hidden element containing an input prepopulated with the value passed to the component, usually a URL to an atom feed. This uses the [form input](/component-guide/input) component.
+
+      Note that this option overrides the feed_link option, so if both are passed feed_link is ignored. Note that a value for email_signup_link can also be passed as normal.
+    data:
+      email_signup_link: '/foreign-travel-advice/singapore/email-signup'
+      feed_link_box_value: 'https://www.gov.uk/government/organisations/attorney-generals-office.atom'
+  with_branding:
+    description: Organisation [colour branding](https://github.com/alphagov/govuk_publishing_components/blob/master/docs/component_branding.md) can be added to the component as shown.
+    data:
+      brand: 'attorney-generals-office'
+      email_signup_link: '/foreign-travel-advice/singapore/email-signup'
+      feed_link: '/foreign-travel-advice/singapore.atom'
+  with_tracking:
+    description: Data attributes can be passed for each link as shown.
+    data:
+      email_signup_link: '/foreign-travel-advice/singapore/email-signup'
+      email_signup_link_data_attributes: {
+        track_category: 'email_link_category',
+        track_action: 1.1,
+        track_label: 'email_link_label',
+        track_options: {
+          dimension28: 1,
+          dimension29: 'dimension29EmailLink'
+        }
+      }
+      feed_link_box_value: 'https://www.gov.uk/government/organisations/attorney-generals-office.atom'
+      feed_link_data_attributes: {
+        track_category: 'feed_link_category',
+        track_action: 1.2,
+        track_label: 'feed_link_label',
+        track_options: {
+          dimension28: 7,
+          dimension29: 'dimension29feedLink'
+        }
+      }
+  as_small_form:
+    data:
+      email_signup_link: '/foreign-travel-advice/singapore/email-signup'
+      feed_link: '/foreign-travel-advice/singapore.atom'
+      small_form: true
+  without_heading:
+    description: |
+      By default the component includes an h2 heading. The component could be used anywhere on the page and could mean that it produces invalid markup or make the site unaccessible.
+    data:
+      email_signup_link: '/foreign-travel-advice/singapore/email-signup'
+      feed_link: '/foreign-travel-advice/singapore.atom'
+      hide_heading: true
+  with_a_different_language:
+    data:
+      email_signup_link: '/foreign-travel-advice/singapore/email-signup'
+      email_signup_link_text: 'Recevez des notifications'
+      email_signup_link_text_locale: 'fr'
+      feed_link: '/foreign-travel-advice/singapore.atom'
+      feed_link_text: 'Flux RSS'
+      feed_link_text_locale: 'fr'
+    description: |
+      The component is used on translated pages that don't have a translation for the text strings. This means that it could display the fallback English string if the translate method can't find an appropriate translation. This makes sure that the `lang` can be set to ensure that browsers understand which parts of the page are in each language.
+
+      The `lang` attribute **must** be set to a [valid BCP47 string](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang#Language_tag_syntax). A valid code can be the two or three letter language code - for example, English is `en` or `eng`, Korean is `ko` or `kor` - but if in doubt please check.

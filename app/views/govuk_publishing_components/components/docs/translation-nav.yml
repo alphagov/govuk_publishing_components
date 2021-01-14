@@ -1,0 +1,139 @@
+# DO NOT MAKE CHANGES TO THIS FILE
+# It is a temporary copy of translation_nav.yml and will be deleted shortly
+
+name: Translation navigation
+description: A list of links to available translations
+body: The active property indicates the current language.
+accessibility_criteria: |
+  The component must:
+
+  - be [a landmark with a navigation role](https://accessibility.blog.gov.uk/2016/05/27/using-navigation-landmarks/)
+  - have an accessible name in the current language, eg "Translations"
+
+  The translation links must:
+
+  - [identify the language of the text](https://www.w3.org/TR/UNDERSTANDING-WCAG20/meaning-other-lang-id.html#meaning-other-lang-id-examples-head)
+
+    [Watch a screen reader pronounce text differently based on lang attribute](https://bit.ly/screenreaderpronunciation)
+shared_accessibility_criteria:
+  - link
+examples:
+  default:
+    data:
+      translations:
+      - locale: 'en'
+        base_path: '/en'
+        text: 'English'
+        active: true
+      - locale: 'hi'
+        base_path: '/hi'
+        text: 'हिंदी'
+  multiple_translations:
+    data:
+      translations:
+      - locale: 'en'
+        base_path: '/en'
+        text: 'English'
+        active: true
+      - locale: 'fr'
+        base_path: '/fr'
+        text: 'Français'
+      - locale: 'hi'
+        base_path: '/hi'
+        text: 'हिंदी'
+      - locale: 'ja'
+        base_path: '/ja'
+        text: '日本語'
+      - locale: 'ur'
+        base_path: '/ur'
+        text: 'اردو'
+      - locale: 'zh'
+        base_path: '/zh'
+        text: '中文'
+  right_to_left:
+    data:
+      translations:
+        - locale: 'en'
+          base_path: '/en'
+          text: 'English'
+        - locale: 'ar'
+          base_path: '/ar'
+          text: 'العربية'
+          active: true
+    context:
+      right_to_left: true
+  with_branding:
+    description: Organisation [colour branding](https://github.com/alphagov/govuk_publishing_components/blob/master/docs/component_branding.md) can be added to the component as shown.
+    data:
+      brand: 'wales-office'
+      translations:
+      - locale: 'en'
+        base_path: '/en'
+        text: 'English'
+        active: true
+      - locale: 'cy'
+        base_path: '/cy'
+        text: 'Cymraeg'
+  with_no_top_margin:
+    data:
+      no_margin_top: true
+      translations:
+      - locale: 'en'
+        base_path: '/en'
+        text: 'English'
+        active: true
+      - locale: 'cy'
+        base_path: '/cy'
+        text: 'Cymraeg'
+  with_tracking:
+    description: Data attributes can be passed for each link as shown.
+    data:
+      translations:
+      - locale: 'en'
+        base_path: '/en'
+        text: 'English'
+        active: true
+        data_attributes:
+          track_category: 'categoryEnglish'
+          track_action: 1.1
+          track_label: 'labelEnglish'
+          track_options:
+            dimension28: 1
+            dimension29: 'dimension29English'
+      - locale: 'cy'
+        base_path: '/cy'
+        text: 'Cymraeg'
+        data_attributes:
+          track_category: 'categoryWelsh'
+          track_action: 1.2
+          track_label: 'labelWelsh'
+          track_options:
+            dimension28: 1
+            dimension29: 'dimension29Welsh'
+  inverse:
+    data:
+      inverse: true
+      translations:
+      - locale: 'en'
+        base_path: '/en'
+        text: 'English'
+        active: true
+        data_attributes:
+          track_category: 'categoryEnglish'
+          track_action: 1.1
+          track_label: 'labelEnglish'
+          track_options:
+            dimension28: 1
+            dimension29: 'dimension29English'
+      - locale: 'cy'
+        base_path: '/cy'
+        text: 'Cymraeg'
+        data_attributes:
+          track_category: 'categoryWelsh'
+          track_action: 1.2
+          track_label: 'labelWelsh'
+          track_options:
+            dimension28: 1
+            dimension29: 'dimension29Welsh'
+    context:
+      dark_background: true
