@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Tidy component filenames ([PR #1848](https://github.com/alphagov/govuk_publishing_components/pull/1848))
 * Add print styling for magna charta component ([PR #1867](https://github.com/alphagov/govuk_publishing_components/pull/1867))
 
 ## 23.12.2

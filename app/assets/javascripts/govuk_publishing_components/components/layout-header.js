@@ -1,6 +1,3 @@
-// DO NOT MAKE CHANGES TO THIS FILE
-// It is a temporary copy of layout-header.js and will be deleted shortly
-
 // This component relies on JavaScript from GOV.UK Frontend
 // = require govuk/components/header/header.js
 window.GOVUK = window.GOVUK || {}

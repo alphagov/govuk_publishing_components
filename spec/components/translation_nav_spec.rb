@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe "Translation nav", type: :view do
   def component_name
-    "translation-nav"
+    "translation_nav"
   end
 
   def multiple_translations

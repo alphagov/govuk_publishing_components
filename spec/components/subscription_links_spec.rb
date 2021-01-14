@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe "subscription links", type: :view do
   def component_name
-    "subscription-links"
+    "subscription_links"
   end
 
   it "renders nothing when no parameters are given" do

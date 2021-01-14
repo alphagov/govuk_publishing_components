@@ -1,6 +1,3 @@
-# DO NOT MAKE CHANGES TO THIS FILE
-# It is a temporary copy of translation_nav.yml and will be deleted shortly
-
 name: Translation navigation
 description: A list of links to available translations
 body: The active property indicates the current language.
@@ -137,3 +134,4 @@ examples:
             dimension29: 'dimension29Welsh'
     context:
       dark_background: true
+

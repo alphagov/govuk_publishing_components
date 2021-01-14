@@ -101,6 +101,7 @@ describe "Component guide index" do
 //= require govuk_publishing_components/components/error-summary
 //= require govuk_publishing_components/components/feedback
 //= require govuk_publishing_components/components/govspeak
+//= require govuk_publishing_components/components/layout-header
 //= require govuk_publishing_components/components/print-link
 //= require govuk_publishing_components/components/step-by-step-nav
 //= require govuk_publishing_components/components/tabs"
