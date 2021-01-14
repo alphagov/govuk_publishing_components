@@ -7,7 +7,7 @@
 
   GOVUK.modules = {
     find: function (container) {
-      container = container || $('body')
+      container = container || $(document)
 
       var modules
       var moduleSelector = '[data-module]'
