@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update documentation for the meta tags component ([PR #1870](https://github.com/alphagov/govuk_publishing_components/pull/1870))
+
 ## 23.12.3
 
 * Fix text overflow bug in Firefox ([PR #1764](https://github.com/alphagov/govuk_publishing_components/pull/1764))
