@@ -7,9 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 23.13.0
 
-* Update documentation for the meta tags component ([PR #1870](https://github.com/alphagov/govuk_publishing_components/pull/1870))
+* Update documentation and add new tag options for the meta tags component ([PR #1870](https://github.com/alphagov/govuk_publishing_components/pull/1870))
 
 ## 23.12.3
 
