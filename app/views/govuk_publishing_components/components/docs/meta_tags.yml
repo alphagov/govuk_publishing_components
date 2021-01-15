@@ -4,11 +4,43 @@ body: |
   This takes a content-store links hash like object which it can then turn into
   the correct analytics identifier metadata tags.
 
-  The code which reads the meta tags can be found <a href="https://github.com/alphagov/static/blob/master/app/assets/javascripts/analytics/static-analytics.js#L76-L96">in static-analytics.js</a>.
+  These are additionally used by the <a href="https://github.com/alphagov/govuk-browser-extension">GOV.UK browser extension</a> to provide details about a given page. 
+
+  The code which reads the meta tags can be found <a href="https://github.com/alphagov/govuk_publishing_components/blob/master/app/assets/javascripts/govuk_publishing_components/analytics/custom-dimensions.js">in custom-dimensions.js</a>.
 accessibility_criteria: |
   The analytics meta tags component should not be visible to any users.
 display_html: true
 examples:
+  with_core_tags:
+    data:
+      content_item:
+        document_type: "html_publication"
+        publishing_app: "whitehall"
+        schema_name: "html_publication"
+        content_id: "00000000-0000-0000-0000-00000000000"
+        navigation_page_type: "Taxon Page"
+        section: "business tax"
+        withdrawn_notice: true
+  with_content_history_tags:
+    description: |
+      The tags in this object will generate the `content-has-history` tag, set to true. This tag is triggered when either, within `content_item`:
+      
+      1. `public_updated_at` and `first_public_at` within `details` are both present and they aren't the same value
+      2. `change_history` within `details` is present and it has a value of more than 1
+
+      See below example for specific details.
+    data:
+      content_item:
+        public_updated_at: "2021-01-15T12:30:45.000+00:00"
+        details:
+          first_public_at: "2020-11-03T09:15:00.000+00:00"
+          change_history: "5"
+  with_date_and_postcode_stripping_for_static_analytics:
+    data:
+      content_item:
+      local_assigns:
+        strip_dates_pii: true
+        strip_postcodes_pii: true
   with_organisations:
     data:
       content_item:
@@ -24,3 +56,69 @@ examples:
         links:
           world_locations:
           - analytics_identifier: WL3
+  with_political_tags:
+    data:
+      content_item:
+        details:
+          political: true
+          government:
+            current: true
+            slug: "2010-to-2015-conservative-and-liberal-democrat-coalition-government"
+  with_historic_political_tags:
+    data:
+      content_item:
+        details:
+          political: true
+          government:
+            current: false
+            slug: "2010-to-2015-conservative-and-liberal-democrat-coalition-government"
+  with_non-political_tags:
+    data:
+      content_item:
+        details:
+          political: false
+          government:
+            slug: "2010-to-2015-conservative-and-liberal-democrat-coalition-government"
+  with_taxonomy_added_via_document_type:
+    description: |
+      You can trigger taxonomy tag rendering by either including a `document_type` attributes of "taxon" or including the `parent_taxons` or `taxons` attributes under the `links` attribute.
+    data:
+      content_item:
+        content_id: "00000000-0000-0000-0000-000000000000"
+        document_type: "taxon"
+        base_path: "/example-of-taxons"
+  with_taxonomy_added_via_links:
+    data:
+      content_item:
+        links:
+          taxons:
+            - content_id: "11111111-1111-1111-1111-111111111111"
+              document_type: "taxon"
+              base_path: "/disabilities-benefits"
+            - content_id: "22222222-2222-2222-2222-222222222222"
+              document_type: "taxon"
+              base_path: "/childcare-parenting/childrens-social-care-providers"
+              links:
+                parent_taxons:
+                  - content_id: "33333333-3333-3333-3333-333333333333"
+                    document_type: "taxon"
+                    base_path: "/childcare-parenting"
+  with_multiple_step_by_step_tags:
+    data:
+      content_item:
+        links:
+          part_of_step_navs:
+            - content_id: "00000000-0000-0000-0000-000000000000"
+            - content_id: "11111111-1111-1111-1111-111111111111"
+  with_primary_step_by_step_tag:
+    data:
+      content_item:
+        links:
+          part_of_step_navs:
+            - content_id: "00000000-0000-0000-0000-000000000000"
+  with_secondary_step_by_step_tag:
+    data:
+      content_item:
+        links:
+          secondary_to_step_navs:
+            - content_id: "22222222-2222-2222-2222-222222222222"
