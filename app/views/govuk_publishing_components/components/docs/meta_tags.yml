@@ -18,6 +18,8 @@ examples:
         publishing_app: "whitehall"
         schema_name: "html_publication"
         content_id: "00000000-0000-0000-0000-00000000000"
+        navigation_page_type: "Taxon Page"
+        section: "business tax"
         withdrawn_notice: true
   with_content_history_tags:
     description: |
