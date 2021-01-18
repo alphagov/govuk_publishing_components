@@ -333,34 +333,16 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     var that = this
 
     this.$module.showOrHideAllButton.addEventListener('click', function (event) {
-      var shouldshowAll
-      var showHideTexts = that.$module.querySelectorAll('.js-toggle-link')
       var textContent = this.textContent || this.innerText
+      var shouldShowAll = textContent === that.$module.actions.showAllText
 
-      if (textContent === that.$module.actions.showAllText) {
-        that.$module.showOrHideAllButton.innerHTML = that.$module.upChevronSvg + that.$module.actions.hideAllText
-        for (var i = 0; i < showHideTexts.length; i++) {
-          showHideTexts[i].innerHTML = that.$module.upChevronSvg + that.$module.actions.hideText
-        }
-        shouldshowAll = true
+      // Fire GA click tracking
+      stepNavTracker.trackClick('pageElementInteraction', (shouldShowAll ? 'stepNavAllShown' : 'stepNavAllHidden'), {
+        label: (shouldShowAll ? that.$module.actions.showAllText : that.$module.actions.hideAllText) + ': ' + that.$module.stepNavSize
+      })
 
-        stepNavTracker.trackClick('pageElementInteraction', 'stepNavAllShown', {
-          label: that.$module.actions.showAllText + ': ' + that.$module.stepNavSize
-        })
-      } else {
-        that.$module.showOrHideAllButton.innerHTML = that.$module.downChevronSvg + that.$module.actions.showAllText
-        for (var j = 0; j < showHideTexts.length; j++) {
-          showHideTexts[j].innerHTML = that.$module.downChevronSvg + that.$module.actions.showText
-        }
-        shouldshowAll = false
-
-        stepNavTracker.trackClick('pageElementInteraction', 'stepNavAllHidden', {
-          label: that.$module.actions.hideAllText + ': ' + that.$module.stepNavSize
-        })
-      }
-
-      that.setAllStepsShownState(shouldshowAll)
-      that.$module.showOrHideAllButton.setAttribute('aria-expanded', shouldshowAll)
+      that.setAllStepsShownState(shouldShowAll)
+      that.$module.showOrHideAllButton.setAttribute('aria-expanded', shouldShowAll)
       that.setShowHideAllText()
 
       return false
