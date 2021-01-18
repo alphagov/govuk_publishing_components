@@ -18,7 +18,7 @@
 * BREAKING: Retire gem-level SCSS variables ([PR #1881](https://github.com/alphagov/govuk_publishing_components/pull/1881))
 * BREAKING: Remove duplicate `lib/auto-track-event` script ([PR #1894](https://github.com/alphagov/govuk_publishing_components/pull/1894))
 * BREAKING: Remove copies of files ([PR #1878](https://github.com/alphagov/govuk_publishing_components/pull/1878))
-
+* BREAKING: Remove list stylesheet ([PR #1874])(https://github.com/alphagov/govuk_publishing_components/pull/1874)
 ## 23.15.0
 
 * Fix bugs on the feedback component ([PR #1900](https://github.com/alphagov/govuk_publishing_components/pull/1900))
