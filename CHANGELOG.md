@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Bump govuk-frontend from 3.9.1 to 3.10.2 ([PR #1838](https://github.com/alphagov/govuk_publishing_components/pull/1838))
+* Update design for step by step navigation to improve accessibility ([PR #1875](https://github.com/alphagov/govuk_publishing_components/pull/1875))
 
 ## 23.13.0
 
