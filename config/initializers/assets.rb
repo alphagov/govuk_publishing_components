@@ -25,7 +25,6 @@ Rails.application.config.assets.precompile += %w[
   govuk_publishing_components/search-button.png
   govuk_publishing_components/icon-file-download.svg
   govuk_publishing_components/icon-important.svg
-  govuk_publishing_components/chevron-banner/*.svg
   govuk_publishing_components/crests/*.png
   govuk_publishing_components/take-action-amber.svg
   govuk_publishing_components/take-action-green.svg
