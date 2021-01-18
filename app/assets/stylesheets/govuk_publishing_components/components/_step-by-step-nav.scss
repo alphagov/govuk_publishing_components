@@ -56,7 +56,6 @@ $top-border: solid 2px govuk-colour("mid-grey", $legacy: "grey-3");
 
 .gem-c-step-nav__controls {
   padding: 3px 3px 0 0;
-  text-align: right;
 }
 
 .gem-c-step-nav__button {
@@ -93,12 +92,20 @@ $top-border: solid 2px govuk-colour("mid-grey", $legacy: "grey-3");
   @include step-nav-font(14, $line-height: 1);
   position: relative;
   z-index: 1; // this and relative position stops focus outline underlap with border of accordion
-  padding: .5em 0;
-  text-decoration: underline;
+  padding: .5em 0 1.5em;
+
+  &:hover {
+    text-decoration: underline;
+  }
 
   .gem-c-step-nav--large & {
     @include step-nav-font(14, $tablet-size: 16, $line-height: 1);
   }
+}
+
+.gem-c-step-nav__title-text {
+  display: block;
+  margin-bottom: govuk-spacing(1);
 }
 
 .gem-c-step-nav__chevron {
@@ -186,7 +193,7 @@ $top-border: solid 2px govuk-colour("mid-grey", $legacy: "grey-3");
   box-sizing: border-box;
   position: absolute;
   z-index: 5;
-  top: govuk-spacing(3);
+  top: govuk-spacing(1);
   left: 0;
   width: $number-circle-size;
   height: $number-circle-size;
@@ -197,7 +204,7 @@ $top-border: solid 2px govuk-colour("mid-grey", $legacy: "grey-3");
 
   .gem-c-step-nav--large & {
     @include govuk-media-query($from: tablet) {
-      top: govuk-spacing(6);
+      top: govuk-spacing(3);
       width: $number-circle-size-large;
       height: $number-circle-size-large;
     }
@@ -245,7 +252,7 @@ $top-border: solid 2px govuk-colour("mid-grey", $legacy: "grey-3");
 }
 
 .gem-c-step-nav__header {
-  padding: govuk-spacing(3) 0;
+  padding: govuk-spacing(1) 0 govuk-spacing(3);
   border-top: $top-border;
 
   .gem-c-step-nav--active & {
@@ -275,7 +282,7 @@ $top-border: solid 2px govuk-colour("mid-grey", $legacy: "grey-3");
 
   .gem-c-step-nav--large & {
     @include govuk-media-query($from: tablet) {
-      padding: govuk-spacing(6) 0;
+      padding: govuk-spacing(2) 0 govuk-spacing(6);
     }
   }
 }

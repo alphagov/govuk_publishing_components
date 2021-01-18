@@ -177,7 +177,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           '<button ' +
             'class="gem-c-step-nav__button gem-c-step-nav__button--title js-step-title-button" ' +
             'aria-expanded="false" aria-controls="' + contentId + '">' +
-              '<span class="js-step-title-text">' + titleText + '</span>' +
+              '<span class="gem-c-step-nav__title-text js-step-title-text">' + titleText + '</span>' +
           '</button>' +
         '</span>'
     }
