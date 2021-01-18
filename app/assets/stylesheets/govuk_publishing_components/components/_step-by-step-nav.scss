@@ -101,6 +101,11 @@ $top-border: solid 2px govuk-colour("mid-grey", $legacy: "grey-3");
   }
 }
 
+.gem-c-step-nav__chevron {
+  vertical-align: text-top;
+  margin-right: govuk-spacing(1);
+}
+
 .gem-c-step-nav__steps {
   padding: 0;
   margin: 0;
