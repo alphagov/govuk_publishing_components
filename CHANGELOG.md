@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* BREAKING: Retire more gem-level SCSS variables ([PR #1881](https://github.com/alphagov/govuk_publishing_components/pull/1881))
 * Bump govuk-frontend from 3.9.1 to 3.10.2 ([PR #1838](https://github.com/alphagov/govuk_publishing_components/pull/1838))
 
 ## 23.13.0
