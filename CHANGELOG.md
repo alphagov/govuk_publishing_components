@@ -17,6 +17,7 @@
 * BREAKING: Remove chevron banner component ([PR #1873](https://github.com/alphagov/govuk_publishing_components/pull/1873))
 * BREAKING: Retire gem-level SCSS variables ([PR #1881](https://github.com/alphagov/govuk_publishing_components/pull/1881))
 * BREAKING: Remove duplicate `lib/auto-track-event` script ([PR #1894](https://github.com/alphagov/govuk_publishing_components/pull/1894))
+* BREAKING: Remove copies of files ([PR #1878](https://github.com/alphagov/govuk_publishing_components/pull/1878))
 
 ## 23.15.0
 
