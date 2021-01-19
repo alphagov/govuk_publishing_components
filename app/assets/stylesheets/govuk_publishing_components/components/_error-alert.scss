@@ -1,5 +1,5 @@
 .gem-c-error-alert {
-  color: $gem-text-colour;
+  color: $govuk-text-colour;
   padding: govuk-spacing(3);
   border: $gem-border-width-mobile solid $gem-error-colour;
   @include govuk-responsive-margin(8, "bottom");
