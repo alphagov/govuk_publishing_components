@@ -40,6 +40,15 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       this.$module.sessionStoreLink = this.$module.sessionStoreLink + '_' + this.$module.uniqueId
     }
 
+    this.$module.upChevronSvg = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="gem-c-step-nav__chevron">' +
+      '<path d="M19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.75329 19.5 0.499997 15.2467 0.499998 10C0.499999 4.7533 4.7533 0.500001 10 0.500002C15.2467 0.500003 19.5 4.7533 19.5 10Z" stroke="#1D70B8"/>' +
+      '<path d="M6.32617 12.3262L10 8.65234L13.6738 12.3262" stroke="#1D70B8" stroke-width="2"/>' +
+      '</svg>'
+    this.$module.downChevronSvg = '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="gem-c-step-nav__chevron">' +
+      '<path d="M0.499997 10C0.499998 4.75329 4.75329 0.499999 10 0.499999C15.2467 0.5 19.5 4.75329 19.5 10C19.5 15.2467 15.2467 19.5 10 19.5C4.75329 19.5 0.499997 15.2467 0.499997 10Z" stroke="#1D70B8"/>' +
+      '<path d="M13.6738 8.67383L10 12.3477L6.32617 8.67383" stroke="#1D70B8" stroke-width="2"/>' +
+      '</svg>'
+
     var stepNavTracker = new this.StepNavTracker(this.$module.uniqueId, this.$module.totalSteps, this.$module.totalLinks)
 
     this.getTextForInsertedElements()
@@ -66,7 +75,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   Gemstepnav.prototype.addShowHideAllButton = function () {
     var showall = document.createElement('div')
     showall.className = 'gem-c-step-nav__controls'
-    showall.innerHTML = '<button aria-expanded="false" class="gem-c-step-nav__button gem-c-step-nav__button--controls js-step-controls-button">' + this.$module.actions.showAllText + '</button>'
+    showall.innerHTML = '<button aria-expanded="false" class="gem-c-step-nav__button gem-c-step-nav__button--controls js-step-controls-button">' +
+      this.$module.downChevronSvg +
+      this.$module.actions.showAllText +
+      '</button>'
 
     var steps = this.$module.querySelectorAll('.gem-c-step-nav__steps')[0]
     this.$module.insertBefore(showall, steps)
@@ -114,7 +126,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     var data = []
 
     for (var i = 0; i < this.$module.steps.length; i++) {
-      var stepView = new this.StepView(this.$module.steps[i], this.$module.actions.showText, this.$module.actions.hideText)
+      var stepView = new this.StepView(this.$module.steps[i], this.$module)
       stepView.setIsShown(isShown)
 
       if (isShown) {
@@ -136,7 +148,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     for (var i = 0; i < this.$module.steps.length; i++) {
       var thisel = this.$module.steps[i]
       var id = thisel.getAttribute('id')
-      var stepView = new this.StepView(thisel, this.$module.actions.showText, this.$module.actions.hideText)
+      var stepView = new this.StepView(thisel, this.$module)
       var shouldBeShown = thisel.hasAttribute('data-show')
 
       // show the step if it has been remembered or if it has the 'data-show' attribute
@@ -165,7 +177,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           '<button ' +
             'class="gem-c-step-nav__button gem-c-step-nav__button--title js-step-title-button" ' +
             'aria-expanded="false" aria-controls="' + contentId + '">' +
-              '<span class="js-step-title-text">' + titleText + '</span>' +
+              '<span class="gem-c-step-nav__title-text js-step-title-text">' + titleText + '</span>' +
           '</button>' +
         '</span>'
     }
@@ -177,7 +189,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
     for (var i = 0; i < togglePanels.length; i++) {
       togglePanels[i].addEventListener('click', function (event) {
-        var stepView = new that.StepView(this.parentNode, that.$module.actions.showText, that.$module.actions.hideText)
+        var stepView = new that.StepView(this.parentNode, that.$module)
         stepView.toggle()
 
         var stepIsOptional = this.parentNode.hasAttribute('data-optional')
@@ -321,34 +333,16 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     var that = this
 
     this.$module.showOrHideAllButton.addEventListener('click', function (event) {
-      var shouldshowAll
-      var showHideTexts = that.$module.querySelectorAll('.js-toggle-link')
       var textContent = this.textContent || this.innerText
+      var shouldShowAll = textContent === that.$module.actions.showAllText
 
-      if (textContent === that.$module.actions.showAllText) {
-        that.$module.showOrHideAllButton.textContent = that.$module.actions.hideAllText
-        for (var i = 0; i < showHideTexts.length; i++) {
-          showHideTexts[i].innerHTML = that.$module.actions.hideText
-        }
-        shouldshowAll = true
+      // Fire GA click tracking
+      stepNavTracker.trackClick('pageElementInteraction', (shouldShowAll ? 'stepNavAllShown' : 'stepNavAllHidden'), {
+        label: (shouldShowAll ? that.$module.actions.showAllText : that.$module.actions.hideAllText) + ': ' + that.$module.stepNavSize
+      })
 
-        stepNavTracker.trackClick('pageElementInteraction', 'stepNavAllShown', {
-          label: that.$module.actions.showAllText + ': ' + that.$module.stepNavSize
-        })
-      } else {
-        that.$module.showOrHideAllButton.textContent = that.$module.actions.showAllText
-        for (var j = 0; j < showHideTexts.length; j++) {
-          showHideTexts[j].innerHTML = that.$module.actions.showText
-        }
-        shouldshowAll = false
-
-        stepNavTracker.trackClick('pageElementInteraction', 'stepNavAllHidden', {
-          label: that.$module.actions.hideAllText + ': ' + that.$module.stepNavSize
-        })
-      }
-
-      that.setAllStepsShownState(shouldshowAll)
-      that.$module.showOrHideAllButton.setAttribute('aria-expanded', shouldshowAll)
+      that.setAllStepsShownState(shouldShowAll)
+      that.$module.showOrHideAllButton.setAttribute('aria-expanded', shouldShowAll)
       that.setShowHideAllText()
 
       return false
@@ -359,21 +353,23 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     var shownSteps = this.$module.querySelectorAll('.step-is-shown').length
     // Find out if the number of is-opens == total number of steps
     if (shownSteps === this.$module.totalSteps) {
-      this.$module.showOrHideAllButton.textContent = this.$module.actions.hideAllText
+      this.$module.showOrHideAllButton.innerHTML = this.$module.upChevronSvg + this.$module.actions.hideAllText
     } else {
-      this.$module.showOrHideAllButton.textContent = this.$module.actions.showAllText
+      this.$module.showOrHideAllButton.innerHTML = this.$module.downChevronSvg + this.$module.actions.showAllText
     }
   }
 
-  Gemstepnav.prototype.StepView = function (stepElement, showText, hideText) {
+  Gemstepnav.prototype.StepView = function (stepElement, $module) {
     this.stepElement = stepElement
     this.stepContent = this.stepElement.querySelectorAll('.js-panel')[0]
     this.titleButton = this.stepElement.querySelectorAll('.js-step-title-button')[0]
     var textElement = this.stepElement.querySelectorAll('.js-step-title-text')[0]
     this.title = textElement.textContent || textElement.innerText
     this.title = this.title.replace(/^\s+|\s+$/g, '') // this is 'trim' but supporting IE8
-    this.showText = showText
-    this.hideText = hideText
+    this.showText = $module.actions.showText
+    this.hideText = $module.actions.hideText
+    this.upChevronSvg = $module.upChevronSvg
+    this.downChevronSvg = $module.downChevronSvg
 
     this.show = function () {
       this.setIsShown(true)
@@ -398,7 +394,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
       this.titleButton.setAttribute('aria-expanded', isShown)
       var showHideText = this.stepElement.querySelectorAll('.js-toggle-link')[0]
-      showHideText.innerHTML = isShown ? this.hideText : this.showText
+      showHideText.innerHTML = isShown ? this.upChevronSvg + this.hideText : this.downChevronSvg + this.showText
     }
 
     this.isShown = function () {

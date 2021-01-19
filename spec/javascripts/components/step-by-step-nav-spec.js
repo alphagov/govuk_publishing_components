@@ -6,7 +6,7 @@ describe('A stepnav module', function () {
 
   var $element
   var html =
-    '<div data-module="gemstepnav" class="gem-c-step-nav js-hidden" data-id="unique-id" data-show-text="Show" data-hide-text="Hide" data-show-all-text="Show all" data-hide-all-text="Hide all">' +
+    '<div data-module="gemstepnav" class="gem-c-step-nav js-hidden" data-id="unique-id" data-show-text="Show" data-hide-text="Hide" data-show-all-text="Show all steps" data-hide-all-text="Hide all steps">' +
       '<ol class="gem-c-step-nav__steps">' +
         '<li class="gem-c-step-nav__step js-step" id="topic-step-one" data-track-count="stepnavStep">' +
           '<div class="gem-c-step-nav__header js-toggle-panel" data-position="1">' +
@@ -130,11 +130,13 @@ describe('A stepnav module', function () {
     var $showHideAllButton = $element.find('.js-step-controls-button')
 
     expect($showHideAllButton).toExist()
-    expect($showHideAllButton).toHaveText('Show all')
+    expect($showHideAllButton).toHaveText('Show all steps')
     // It has an aria-expanded false attribute as all steps are hidden
     expect($showHideAllButton).toHaveAttr('aria-expanded', 'false')
     // It has an aria-controls attribute that includes all the step_content IDs
     expect($showHideAllButton).toHaveAttr('aria-controls', 'step-panel-topic-step-one-1')
+    // It generates a chevron SVG icon for visual affordance
+    expect($showHideAllButton.find('.gem-c-step-nav__chevron')).toExist()
   })
 
   it('has no steps which have an shown state', function () {
@@ -162,10 +164,12 @@ describe('A stepnav module', function () {
     expect($stepHeader).toContainElement('.gem-c-step-nav__toggle-link')
     $stepHeader.find('.gem-c-step-nav__toggle-link').each(function () {
       expect($(this)).toHaveText('Show')
+      // It generates a chevron SVG icon for visual affordance
+      expect($(this).find('.gem-c-step-nav__chevron')).toExist()
     })
   })
 
-  describe('Clicking the "Show all" button', function () {
+  describe('Clicking the "Show all steps" button', function () {
     beforeEach(function () {
       clickShowHideAll()
     })
@@ -180,8 +184,8 @@ describe('A stepnav module', function () {
       expect($element.find('.js-step-title-button[aria-expanded="true"]').length).toEqual(stepCount)
     })
 
-    it('changes the Show/Hide all button text to "Hide all"', function () {
-      expect($element.find('.js-step-controls-button')).toContainText('Hide all')
+    it('changes the Show/Hide all button text to "Hide all steps"', function () {
+      expect($element.find('.js-step-controls-button')).toContainText('Hide all steps')
     })
 
     it('changes all the "show" elements to say "hide"', function () {
@@ -192,7 +196,7 @@ describe('A stepnav module', function () {
 
     it('triggers a google analytics custom event', function () {
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavAllShown', {
-        label: 'Show all: Small',
+        label: 'Show all steps: Small',
         dimension26: expectedstepnavStepCount.toString(),
         dimension27: expectedstepnavLinkCount.toString(),
         dimension96: 'unique-id'
@@ -200,14 +204,14 @@ describe('A stepnav module', function () {
     })
   })
 
-  describe('Clicking the "Hide all" button', function () {
+  describe('Clicking the "Hide all steps" button', function () {
     beforeEach(function () {
       clickShowHideAll()
       clickShowHideAll()
     })
 
-    it('changes the Show/Hide all button text to "Show all"', function () {
-      expect($element.find('.js-step-controls-button')).toContainText('Show all')
+    it('changes the Show/Hide all button text to "Show all steps"', function () {
+      expect($element.find('.js-step-controls-button')).toContainText('Show all steps')
     })
 
     it('changes all the "hide" elements to say "show"', function () {
@@ -218,7 +222,7 @@ describe('A stepnav module', function () {
 
     it('triggers a google analytics custom event', function () {
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavAllHidden', {
-        label: 'Hide all: Small',
+        label: 'Hide all steps: Small',
         dimension26: expectedstepnavStepCount.toString(),
         dimension27: expectedstepnavLinkCount.toString(),
         dimension96: 'unique-id'
@@ -376,7 +380,7 @@ describe('A stepnav module', function () {
       expect(window.sessionStorage.getItem('unique-id')).toBe('[]')
     })
 
-    it('remembers opened and closed steps using show/hide all', function () {
+    it('remembers opened and closed steps using show/hide all steps', function () {
       var $showHideAllButton = $element.find('.js-step-controls-button')
       var $stepLink2 = $element.find('#topic-step-two .js-toggle-panel')
 
@@ -390,7 +394,7 @@ describe('A stepnav module', function () {
       expect(window.sessionStorage.getItem('unique-id')).toBe('["topic-step-one","topic-step-two","topic-step-three"]')
 
       $showHideAllButton.click() // hide all
-      expect(window.sessionStorage.getItem('unique-id')).toBe(null) // 'hide all' removes the session data entirely
+      expect(window.sessionStorage.getItem('unique-id')).toBe(null) // 'hide all steps' removes the session data entirely
     })
   })
 
@@ -442,7 +446,7 @@ describe('A stepnav module', function () {
 
     it('sets the show all/hide all button text correctly', function () {
       var $showHideAllButton = $element.find('.js-step-controls-button')
-      expect($showHideAllButton).toHaveText('Show all')
+      expect($showHideAllButton).toHaveText('Show all steps')
     })
   })
 
@@ -474,7 +478,7 @@ describe('A stepnav module', function () {
 
     it('sets the show all/hide all button text correctly', function () {
       var $showHideAllButton = $element.find('.js-step-controls-button')
-      expect($showHideAllButton).toHaveText('Hide all')
+      expect($showHideAllButton).toHaveText('Hide all steps')
     })
   })
 
@@ -626,23 +630,23 @@ describe('A stepnav module', function () {
       })
     })
 
-    it('triggers a google analytics custom event when clicking the "Show all" button on a big stepnav', function () {
+    it('triggers a google analytics custom event when clicking the "Show all steps" button on a big stepnav', function () {
       clickShowHideAll()
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavAllShown', {
-        label: 'Show all: Big',
+        label: 'Show all steps: Big',
         dimension26: expectedstepnavStepCount.toString(),
         dimension27: expectedstepnavLinkCount.toString(),
         dimension96: 'unique-id'
       })
     })
 
-    it('triggers a google analytics custom event when clicking the "Hide all" button on a big stepnav', function () {
+    it('triggers a google analytics custom event when clicking the "Hide all steps" button on a big stepnav', function () {
       clickShowHideAll()
       clickShowHideAll()
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavAllHidden', {
-        label: 'Hide all: Big',
+        label: 'Hide all steps: Big',
         dimension26: expectedstepnavStepCount.toString(),
         dimension27: expectedstepnavLinkCount.toString(),
         dimension96: 'unique-id'
@@ -844,7 +848,7 @@ describe('A stepnav module', function () {
       clickShowHideAll()
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavAllShown', {
-        label: 'Show all: Small',
+        label: 'Show all steps: Small',
         dimension26: expectedstepnavStepCount.toString(),
         dimension27: expectedstepnavLinkCount.toString(),
         dimension96: false
@@ -856,7 +860,7 @@ describe('A stepnav module', function () {
       clickShowHideAll()
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('pageElementInteraction', 'stepNavAllHidden', {
-        label: 'Hide all: Small',
+        label: 'Hide all steps: Small',
         dimension26: expectedstepnavStepCount.toString(),
         dimension27: expectedstepnavLinkCount.toString(),
         dimension96: false
