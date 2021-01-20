@@ -50,7 +50,7 @@
         <% end %>
 
         <% if item[:link][:description] %>
-          <p class="gem-c-document-list__item-description" ><%= item[:link][:description] %></p>
+          <p class="gem-c-document-list__item-description <%= "gem-c-document-list__item-description--full-size" if item[:link][:full_size_description] %>"><%= item[:link][:description] %></p>
         <% end %>
 
         <% if item[:metadata] %>

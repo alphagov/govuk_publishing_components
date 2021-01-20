@@ -60,6 +60,10 @@
   @include govuk-font($size: 16, $line-height: 1.5);
 }
 
+.gem-c-document-list__item-description--full-size {
+  @include govuk-font($size: 19);
+}
+
 .gem-c-document-list__item-metadata {
   padding: 0;
 }
