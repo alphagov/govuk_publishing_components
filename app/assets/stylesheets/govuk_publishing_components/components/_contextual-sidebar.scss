@@ -35,12 +35,6 @@ $transition-campaign-dark-blue: #1e1348;
       margin-bottom: govuk-spacing(2);
     }
   }
-
-  @include govuk-compatibility(govuk_template) {
-    .gem-c-contextual-sidebar__brexit-title {
-      margin-bottom: govuk-spacing(3);
-    }
-  }
 }
 
 .gem-c-contextual-sidebar__brexit-cta:focus {
