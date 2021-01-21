@@ -35,7 +35,11 @@
           <%=
             content_tag(
               shared_helper.get_heading_level,
-              content_tag('span', item[:heading][:text], class: "govuk-accordion__section-button", id: "#{id}-heading-#{index}", data: item[:data_attributes]),
+              content_tag('span', 
+              item[:heading][:text], 
+              class: "govuk-accordion__section-button", 
+              id: "#{id}-heading-#{index}", 
+              data: item[:data_attributes]),
               class: 'govuk-accordion__section-heading'
             )
           %>

@@ -2,6 +2,7 @@
 
 .gem-c-accordion {
   .govuk-accordion__section-heading {
+
     // this is a temporary addition to fix the line height when it
     // is being overridden by styles from govuk-template in collections
     @include govuk-media-query($until: desktop) {
@@ -20,6 +21,139 @@
   .govuk-accordion__section-summary {
     @include govuk-media-query($from: tablet) {
       @include govuk-font($size: 16);
+    }
+  }
+}
+
+.js-enabled {
+  .govuk-accordion__controls {
+    text-align: left;
+  }
+
+  .govuk-accordion__open-all {
+    margin: 0 0 govuk-spacing(4) 0;
+    padding-bottom: govuk-spacing(1);
+    padding-left: govuk-spacing(4);
+
+    @include govuk-media-query($from: desktop) {
+      padding-left: govuk-spacing(5);
+    }
+  }
+
+  .govuk-accordion__open-all:before {
+    margin-left: -1.5em;
+    position: absolute;
+    display: block;
+    content: ' ';
+    width: em(20, 16);
+    height: em(20, 16);
+    background: image-url("govuk_publishing_components/accordion--down-arrow.svg");
+    background-size: 100% 100%;
+  }
+
+  .govuk-accordion__open-all--expanded:before {
+    background: image-url("govuk_publishing_components/accordion--up-arrow.svg");
+    background-size: 100% 100%;
+  }
+
+  .govuk-accordion__section-header {
+    padding-bottom: govuk-spacing(6);
+  }
+
+  .gem-c-accordion__toggle-link {
+    margin-left: 1.5em;
+    display: block;
+    @include govuk-font($size: 16);
+    color: $govuk-link-colour;
+    text-transform: capitalize;
+    margin-top: govuk-spacing(1);
+    margin-bottom: govuk-spacing(1);
+    @include govuk-font($size: 16);
+
+    &:active {
+      background: $govuk-link-active-colour;
+    }
+
+    &:hover,
+    &:focus {
+      color: $govuk-link-hover-colour;
+    }
+  }
+
+  .gem-c-accordion__toggle-link:before {
+    position: absolute;
+    display: block;
+    content: ' ';
+    margin-left: -1.5em;
+    background: image-url("govuk_publishing_components/accordion--down-arrow.svg");
+    background-size: 100% 100%;
+    height: em(20, 16);
+    width: em(20, 16);
+  }
+
+  .govuk-accordion__section-content {
+    padding-top: 0;
+    padding-bottom: govuk-spacing(6);
+  }
+
+  .govuk-accordion__section-button {
+    color: $govuk-text-colour;
+
+    &:active {
+      z-index: 1;
+      background: govuk-colour("white");
+      border-color: $govuk-focus-colour;
+      color: $govuk-link-active-colour;
+    }
+
+    &:hover {
+      color: $govuk-link-hover-colour;
+    }
+
+    // TODO clarify: matching step-by-step
+    // &:hover:not(:focus) {
+    //   color: $govuk-link-colour;
+    //   text-decoration: none;
+    // }
+
+    &:focus {
+      z-index: 1;
+      background: $govuk-focus-colour;
+      color: $govuk-focus-text-colour;
+      outline: 0;
+
+      .gem-c-accordion__toggle-link {
+        color: $govuk-focus-text-colour;
+      }
+    }
+  }
+
+  .govuk-accordion__section--expanded {
+    .govuk-accordion__section-header {
+      padding-bottom: govuk-spacing(3);
+    }
+
+    .gem-c-accordion__toggle-link:focus {
+      @include govuk-focused-text;
+    }
+
+    .gem-c-accordion__toggle-link:before {
+      background-image: image-url('govuk_publishing_components/accordion--up-arrow.svg');
+    }
+  }
+}
+
+// on focus, turn arrow icon black for colour constrast (all sections)
+.govuk-accordion__open-all:focus {
+  &:before {
+    filter: brightness(0%);
+  }
+}
+
+.govuk-accordion__section-button:focus {
+  .gem-c-accordion__toggle-link {
+    &:before {
+      filter: brightness(0%);
     }
   }
 }
