@@ -79,7 +79,7 @@ en:
       transition:
         title: "Brexit"
         link_path: "/transition"
-        link_text: "Check how the new Brexit rules affect you"
+        link_text: "Check what you need to do"
     related_footer_navigation:
       collections: "Collections"
       policies: "Policies"
