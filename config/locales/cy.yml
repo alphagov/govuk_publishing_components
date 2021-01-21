@@ -13,3 +13,7 @@ cy:
         title: "Brexit"
         link_path: "/transition.cy"
         link_text: "Gwiriwch beth sydd angen i chi ei wneud"
+      take_action_list:
+        red: Gwiriwch
+        amber: Newidiwch
+        green: Ewch

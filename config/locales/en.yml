@@ -80,6 +80,10 @@ en:
         title: "Brexit"
         link_path: "/transition"
         link_text: "Check what you need to do"
+      take_action_list:
+        red: Check
+        amber: Change
+        green: Go
     related_footer_navigation:
       collections: "Collections"
       policies: "Policies"
