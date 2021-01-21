@@ -3,26 +3,24 @@ $transition-campaign-dark-blue: #1e1348;
 
 .gem-c-contextual-sidebar__brexit-related-links {
   border-top: 2px solid $govuk-brand-colour;
+}
 
-  .gem-c-contextual-sidebar__brexit-heading {
-    @include govuk-font(19, $weight: bold);
-    padding-top: govuk-spacing(3);
-    margin-bottom: govuk-spacing(2);
-  }
+.gem-c-contextual-sidebar__brexit-heading {
+  @extend %govuk-heading-s;
+  margin-top: govuk-spacing(3);
+  margin-bottom: govuk-spacing(2);
 }
 
 .gem-c-contextual-sidebar__brexit-cta {
-  @include govuk-font(19);
   margin-bottom: govuk-spacing(6);
   background-color: govuk-colour('light-grey', $legacy: 'grey-4');
-  border-top: 4px solid $transition-campaign-red;
+  border-top: 2px solid $transition-campaign-red;
   display: block;
-  padding: govuk-spacing(3);
+  padding: 0 govuk-spacing(3) govuk-spacing(3);
   text-decoration: none;
 
   .gem-c-contextual-sidebar__brexit-heading {
-    @extend %govuk-heading-m;
-    color: $transition-campaign-dark-blue;
+    color: $govuk-text-colour;
   }
 
   .gem-c-contextual-sidebar__brexit-text {
