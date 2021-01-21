@@ -4,8 +4,6 @@
 <div class="gem-c-contextual-sidebar">
   <% if navigation.show_brexit_related_links? && navigation.step_by_step_count.zero? %>
     <%= render 'govuk_publishing_components/components/contextual_sidebar/brexit_related_links' %>
-  <% elsif navigation.step_by_step_count.zero? && !navigation.transition_countdown_exception? %>
-    <%= render 'govuk_publishing_components/components/contextual_sidebar/brexit_cta' %>
   <% end %>
 
   <% if navigation.content_tagged_to_a_reasonable_number_of_step_by_steps? %>
@@ -32,5 +30,9 @@
 
   <% if navigation.show_brexit_related_links? && navigation.step_by_step_count > 0 %>
     <%= render 'govuk_publishing_components/components/contextual_sidebar/brexit_related_links' %>
+  <% end %>
+
+  <% if !navigation.show_brexit_related_links? && navigation.step_by_step_count.zero? && !navigation.transition_countdown_exception? %>
+    <%= render 'govuk_publishing_components/components/contextual_sidebar/brexit_cta' %>
   <% end %>
 </div>
