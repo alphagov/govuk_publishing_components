@@ -280,3 +280,11 @@ examples:
           document_type: 'Data tryloywder'
           locale:
             document_type: 'cy'
+  with_full_size_description_text:
+    data:
+      items:
+      - link:
+          text: 'Become an apprentice'
+          path: '/become-an-apprentice'
+          description: 'Becoming an apprentice - what to expect, apprenticeship levels, pay and training, making an application, complaining about an apprenticeship.'
+          full_size_description: true

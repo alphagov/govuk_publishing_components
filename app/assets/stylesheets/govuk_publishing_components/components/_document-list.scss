@@ -7,14 +7,10 @@
 
 .gem-c-document-list__item {
   overflow: hidden;
-  margin-bottom: govuk-spacing(4);
-  padding-bottom: govuk-spacing(4);
-  border-bottom: 1px solid $govuk-border-colour;
+  margin-bottom: govuk-spacing(5);
+  padding-top: govuk-spacing(2);
+  border-top: 1px solid $govuk-border-colour;
   list-style: none;
-
-  &:last-child {
-    border-bottom: 0;
-  }
 }
 
 .gem-c-document-list__item-title {
@@ -52,12 +48,16 @@
 }
 
 .gem-c-document-list__subtext {
-  margin: govuk-spacing(1) 0 0 0;
+  margin: 0;
 }
 
 .gem-c-document-list__item-description,
 .gem-c-document-list__subtext {
   @include govuk-font($size: 16, $line-height: 1.5);
+}
+
+.gem-c-document-list__item-description--full-size {
+  @include govuk-font($size: 19);
 }
 
 .gem-c-document-list__item-metadata {
