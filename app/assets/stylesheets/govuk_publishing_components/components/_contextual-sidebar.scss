@@ -25,6 +25,7 @@ $transition-campaign-dark-blue: #1e1348;
 
   .gem-c-contextual-sidebar__brexit-text {
     @extend %govuk-link;
+    @include govuk-font(16);
 
     margin-top: 0;
     margin-bottom: 0;
