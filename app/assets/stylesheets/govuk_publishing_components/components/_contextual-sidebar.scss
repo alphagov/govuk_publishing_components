@@ -44,33 +44,25 @@ $transition-campaign-dark-blue: #1e1348;
 }
 
 .gem-c-contextual-sidebar__take-action-traffic-lights {
-  margin-top: govuk-spacing(3);
-  text-align: center;
-
-  @include govuk-media-query($from: tablet) {
-    text-align: left;
-  }
+  text-align: left;
+  margin-bottom: govuk-spacing(2);
 }
 
 .gem-c-contextual-sidebar__take-action-traffic-lights > li {
-  margin-bottom: govuk-spacing(1);
   white-space: nowrap;
   display: inline;
-  margin-right: govuk-spacing(3);
+  margin-right: 7px;
+  margin-bottom: govuk-spacing(1);
 }
 
 .gem-c-contextual-sidebar__take-action-traffic-lists-icon {
   vertical-align: middle;
-  margin-top: -5px;
+  margin-top: -2px;
   width: 22px;
-  margin-right: 5px;
-
-  @include govuk-media-query($from: tablet) {
-    width: 28px;
-  }
+  margin-right: 2px;
 }
 
 .gem-c-contextual-sidebar__take-action-traffic-lists-text {
-  @include govuk-font($size: 24, $weight: bold, $line-height: 1.1);
+  @include govuk-font($size: 19, $weight: bold, $line-height: 2);
   vertical-align: middle;
 }
