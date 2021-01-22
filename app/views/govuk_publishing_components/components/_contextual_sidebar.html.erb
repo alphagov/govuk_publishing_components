@@ -32,7 +32,7 @@
     <%= render 'govuk_publishing_components/components/contextual_sidebar/brexit_related_links' %>
   <% end %>
 
-  <% if !navigation.show_brexit_related_links? && navigation.step_by_step_count.zero? && !navigation.transition_countdown_exception? %>
+  <% if navigation.show_brexit_cta? %>
     <%= render 'govuk_publishing_components/components/contextual_sidebar/brexit_cta' %>
   <% end %>
 </div>

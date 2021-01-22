@@ -144,7 +144,33 @@ examples:
                       - text: Find out what you’ll get
                         href: "/settled-status-eu-citizens-families/what-settled-and-presettled-status-means"
                     optional: false
-  transition_countdown_exception:
+  with_brexit_cta:
+    description: For documents tagged with certain taxons defined in `brexit_cta_taxon_allow_list` we show a custom Brexit call to action element.
+    data:
+      content_item:
+        title: "Transport news story"
+        content_id: "3c402d90-fe77-49b9-a8aa-1800d4fc2b3d"
+        links:
+          ordered_related_items:
+          - title: Find an apprenticeship
+            base_path: /apply-apprenticeship
+          - title: Training and study at work
+            base_path: /training-study-work-your-rights
+          - title: Careers helpline for teenagers
+            base_path: /careers-helpline-for-teenagers
+          document_collections:
+          - title: Recruit an apprentice (formerly apprenticeship vacancies)
+            base_path: /government/collections/apprenticeship-vacancies
+            document_type: document_collection
+          - title: The future of jobs and skills
+            base_path: /government/collections/the-future-of-jobs-and-skills
+            document_type: document_collection
+          taxons:
+            - content_id: "a4038b29-b332-4f13-98b1-1c9709e216bc"
+              title: "Transport"
+              phase: "live"
+  with_brexit_cta_document_exception:
+    description: Illustrates an exception to showing the custom Brexit call to action element as defined in `brexit_cta_document_type_exceptions`.
     data:
       content_item:
         title: "30 creative teams awarded up to £100,000 each for Festival UK* 2022 R&D project"
@@ -164,3 +190,36 @@ examples:
           - title: The future of jobs and skills
             base_path: /government/collections/the-future-of-jobs-and-skills
             document_type: document_collection
+          taxons:
+            - content_id: "e2ca2f1a-0ff3-43ce-b813-16645ff27904"
+              title: "Society and culture"
+              phase: "live"
+  with_brexit_cta_taxon_exception:
+    description: Illustrates an exception to showing the custom Brexit call to action element as defined in `brexit_cta_taxon_exception_list`.
+    data:
+      content_item:
+        title: "Local transport news story"
+        content_id: "5c82db20-7631-11e4-a3cb-005056011aef"
+        links:
+          ordered_related_items:
+          - title: Find an apprenticeship
+            base_path: /apply-apprenticeship
+          - title: Training and study at work
+            base_path: /training-study-work-your-rights
+          - title: Careers helpline for teenagers
+            base_path: /careers-helpline-for-teenagers
+          document_collections:
+          - title: Recruit an apprentice (formerly apprenticeship vacancies)
+            base_path: /government/collections/apprenticeship-vacancies
+            document_type: document_collection
+          - title: The future of jobs and skills
+            base_path: /government/collections/the-future-of-jobs-and-skills
+            document_type: document_collection
+          taxons:
+            - content_id: "3b4d6319-fcef-4637-b35a-e3df76321894"
+              title: "Local transport"
+              phase: "live"
+              links:
+                parent_taxons:
+                  - content_id: "a4038b29-b332-4f13-98b1-1c9709e216bc"
+                    title: "Transport"
