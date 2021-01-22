@@ -14,6 +14,7 @@
 <%= link_to link_path,
     class: "govuk-link gem-c-contextual-sidebar__brexit-cta",
     data: data_attributes,
+    aria: { label: "#{t("components.related_navigation.take_action_list.aria_label")} #{link_text}" },
     lang: shared_helper.t_locale("components.related_navigation.transition.title") do %>
   <h2 class="gem-c-contextual-sidebar__brexit-heading"><%= t("components.related_navigation.transition.title") %></h2>
   <ul class="govuk-list gem-c-contextual-sidebar__take-action-traffic-lights">

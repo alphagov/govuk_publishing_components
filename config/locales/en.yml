@@ -84,6 +84,7 @@ en:
         red: Check
         amber: Change
         green: Go
+        aria_label: Brexit campaign slogan, Check, Change, Go.
     related_footer_navigation:
       collections: "Collections"
       policies: "Policies"

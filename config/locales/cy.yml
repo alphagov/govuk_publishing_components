@@ -17,3 +17,4 @@ cy:
         red: Gwiriwch
         amber: Newidiwch
         green: Ewch
+        aria_label: Ymgyrch slogan Brexit, Gwiriwch, Newidiwch, Ewch.
