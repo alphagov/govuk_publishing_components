@@ -40,6 +40,13 @@ $top-border: solid 2px govuk-colour("mid-grey", $legacy: "grey-3");
   }
 }
 
+// Adds a focus state for the chevron icon so that it turns black on button focus
+@mixin step-nav-chevron-focus-state {
+  .gem-c-step-nav__chevron-stroke {
+    stroke: govuk-colour("black");
+  }
+}
+
 .gem-c-step-nav {
   margin-bottom: govuk-spacing(6);
 
@@ -79,12 +86,27 @@ $top-border: solid 2px govuk-colour("mid-grey", $legacy: "grey-3");
 .gem-c-step-nav__button--title {
   @include step-nav-font(19, $weight: bold, $line-height: 1.2);
   display: inline-block;
-  padding: 0;
+  padding: govuk-spacing(1) 0 0;
   text-align: left;
   color: govuk-colour("black");
+  width: 100%;
 
   .gem-c-step-nav--large & {
     @include step-nav-font(19, $tablet-size: 24, $weight: bold, $line-height: 1.4);
+
+    @include govuk-media_query($from: tablet) {
+      padding-top: govuk-spacing(2);
+    }
+  }
+
+  &:focus {
+    box-shadow: 0 -4px govuk-colour("black");
+
+    .gem-c-step-nav__toggle-link {
+      color: govuk-colour("black");
+    }
+
+    @include step-nav-chevron-focus-state();
   }
 }
 
@@ -92,7 +114,8 @@ $top-border: solid 2px govuk-colour("mid-grey", $legacy: "grey-3");
   @include step-nav-font(14, $line-height: 1);
   position: relative;
   z-index: 1; // this and relative position stops focus outline underlap with border of accordion
-  padding: .5em 0 1.5em;
+  margin: .5em 0 1.5em;
+  padding: 0 0 govuk-spacing(1);
 
   &:hover {
     text-decoration: underline;
@@ -100,6 +123,10 @@ $top-border: solid 2px govuk-colour("mid-grey", $legacy: "grey-3");
 
   .gem-c-step-nav--large & {
     @include step-nav-font(14, $tablet-size: 16, $line-height: 1);
+  }
+
+  &:focus {
+    @include step-nav-chevron-focus-state();
   }
 }
 
@@ -257,21 +284,10 @@ $top-border: solid 2px govuk-colour("mid-grey", $legacy: "grey-3");
 }
 
 .gem-c-step-nav__header {
-  padding: govuk-spacing(1) 0 govuk-spacing(6);
   border-top: $top-border;
 
   .gem-c-step-nav--active & {
     cursor: pointer;
-  }
-
-  .gem-c-step-nav__button {
-    &:focus {
-      @include govuk-focused-text;
-
-      .gem-c-step-nav__toggle-link {
-        @include govuk-focused-text;
-      }
-    }
   }
 
   &:hover {
@@ -282,12 +298,6 @@ $top-border: solid 2px govuk-colour("mid-grey", $legacy: "grey-3");
 
     .gem-c-step-nav__toggle-link {
       text-decoration: underline;
-    }
-  }
-
-  .gem-c-step-nav--large & {
-    @include govuk-media-query($from: tablet) {
-      padding-top: govuk-spacing(2);
     }
   }
 }
@@ -307,6 +317,7 @@ $top-border: solid 2px govuk-colour("mid-grey", $legacy: "grey-3");
   display: block;
   color: $govuk-link-colour;
   text-transform: capitalize;
+  padding-bottom: govuk-spacing(6);
 
   .gem-c-step-nav--large & {
     @include step-nav-font(14, $tablet-size: 16, $line-height: 1.2);
