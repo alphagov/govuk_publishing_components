@@ -63,14 +63,12 @@ describe "Contextual navigation" do
     and_i_visit_that_page
     then_i_see_the_related_links_sidebar
     and_the_default_breadcrumbs
-    and_i_see_the_transition_call_to_action
   end
 
   scenario "The page has a topic" do
     given_theres_a_page_with_a_topic
     and_i_visit_that_page
     then_i_see_the_topic_breadcrumb
-    and_i_see_the_transition_call_to_action
   end
 
   scenario "The page has many topics" do
@@ -78,7 +76,6 @@ describe "Contextual navigation" do
     and_i_visit_that_page
     then_i_see_the_topic_breadcrumb
     and_i_see_the_both_topics_in_the_related_navigation_footer
-    and_i_see_the_transition_call_to_action
   end
 
   scenario "It's a HTML Publication document" do
@@ -86,7 +83,6 @@ describe "Contextual navigation" do
     and_the_page_is_an_html_publication_with_that_parent
     and_i_visit_that_page
     then_i_see_home_and_parent_links
-    and_i_see_the_transition_call_to_action
   end
 
   scenario "It's a HTML Publication with a parent with coronavirus taxon" do
@@ -95,7 +91,6 @@ describe "Contextual navigation" do
     and_i_visit_that_page
     then_i_see_home_and_parent_links
     and_i_see_the_coronavirus_contextual_breadcrumbs_for_business
-    and_i_see_the_transition_call_to_action
   end
 
   scenario "A page is tagged to the transition taxon and a step_by_step" do
