@@ -72,6 +72,11 @@ examples:
                       - text: Check what age you can drive
                         href: "/vehicles-can-drive"
                     optional: false
+                  - title: Testing the and
+                    logic: and
+                    contents:
+                    - type: paragraph
+                      text: hello hello what's UP
                   - title: Driving lessons and practice
                     contents:
                     - type: paragraph

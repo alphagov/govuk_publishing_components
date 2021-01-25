@@ -1,8 +1,7 @@
-$stroke-width: 2px;
-$stroke-width-large: 3px;
+$stroke-width: 1px;
 $number-circle-size: 26px;
 $number-circle-size-large: 35px;
-$top-border: solid 2px govuk-colour("mid-grey", $legacy: "grey-3");
+$top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
 
 @mixin step-nav-vertical-line ($line-style: solid) {
   content: "";
@@ -21,8 +20,7 @@ $top-border: solid 2px govuk-colour("mid-grey", $legacy: "grey-3");
 
 @mixin step-nav-line-position-large {
   left: 0;
-  margin-left: ($number-circle-size-large / 2) - ($stroke-width-large / 2);
-  border-width: $stroke-width-large;
+  margin-left: ($number-circle-size-large / 2) - ($stroke-width / 2);
 }
 
 // custom mixin as govuk-font does undesirable things at different breakpoints
@@ -117,7 +115,7 @@ $top-border: solid 2px govuk-colour("mid-grey", $legacy: "grey-3");
   margin: .5em 0 1.5em;
   padding: 0 0 govuk-spacing(1);
 
-  &:hover {
+  &:hover .gem-c-step-nav__button-text {
     text-decoration: underline;
   }
 
@@ -136,12 +134,26 @@ $top-border: solid 2px govuk-colour("mid-grey", $legacy: "grey-3");
 }
 
 .gem-c-step-nav__chevron {
-  display: none;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
+.gem-c-step-nav__button-text {
+  display: inline-block;
+  text-align: left;
+  min-width: 35px;
 
   .gem-c-step-nav--large & {
-    display: inline;
-    vertical-align: text-top;
-    margin-right: govuk-spacing(1);
+    min-width: 40px;
+  }
+}
+
+.gem-c-step-nav__button-text--all {
+  min-width: 87px;
+
+  .gem-c-step-nav--large & {
+    min-width: 100px;
   }
 }
 
@@ -202,7 +214,6 @@ $top-border: solid 2px govuk-colour("mid-grey", $legacy: "grey-3");
       &:before {
         margin-left: $number-circle-size-large / 4;
         width: $number-circle-size-large / 2;
-        border-width: $stroke-width-large;
       }
 
       &:after {
@@ -244,20 +255,26 @@ $top-border: solid 2px govuk-colour("mid-grey", $legacy: "grey-3");
 }
 
 .gem-c-step-nav__circle--number {
-  @include step-nav-font(16, $weight: bold, $line-height: 23px);
+  @include step-nav-font(16, $weight: bold, $line-height: 25px);
   border: solid $stroke-width govuk-colour("mid-grey", $legacy: "grey-2");
 
   .gem-c-step-nav--large & {
-    @include step-nav-font(16, $tablet-size: 19, $weight: bold, $line-height: 23px, $tablet-line-height: 34px);
+    @include step-nav-font(16, $tablet-size: 19, $weight: bold, $line-height: 25px, $tablet-line-height: 34px);
   }
 
-  @include govuk-media-query($from: tablet) {
-    border-width: $stroke-width-large;
+  .gem-c-step-nav__step--active & {
+    background-color: govuk-colour("black");
+
+    .gem-c-step-nav__circle-background {
+      text-shadow: none;
+      color: govuk-colour("white")
+    }
   }
 }
 
 .gem-c-step-nav__circle--logic {
   @include step-nav-font(19, $weight: bold, $line-height: 28px);
+  left: 3px;
 
   .gem-c-step-nav--large & {
     @include step-nav-font(19, $tablet-size: 24, $weight: bold, $line-height: 28px, $tablet-line-height: 34px);
@@ -296,7 +313,7 @@ $top-border: solid 2px govuk-colour("mid-grey", $legacy: "grey-3");
       color: $govuk-link-colour;
     }
 
-    .gem-c-step-nav__toggle-link {
+    .gem-c-step-nav__button-text {
       text-decoration: underline;
     }
   }
@@ -428,7 +445,6 @@ $top-border: solid 2px govuk-colour("mid-grey", $legacy: "grey-3");
       &:before {
         left: -(govuk-spacing(9));
         margin-left: ($number-circle-size-large / 2);
-        height: $stroke-width-large;
       }
     }
   }
