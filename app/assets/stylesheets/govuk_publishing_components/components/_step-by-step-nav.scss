@@ -1,5 +1,5 @@
 $stroke-width: 1px;
-$number-circle-size: 26px;
+$number-circle-size: 30px;
 $number-circle-size-large: 35px;
 $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
 
@@ -15,12 +15,12 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
 
 @mixin step-nav-line-position {
   left: 0;
-  margin-left: ($number-circle-size / 2) - ($stroke-width / 2);
+  margin-left: em(($number-circle-size / 2) - ($stroke-width / 2), 16);
 }
 
 @mixin step-nav-line-position-large {
   left: 0;
-  margin-left: ($number-circle-size-large / 2) - ($stroke-width / 2);
+  margin-left: em(($number-circle-size-large / 2) - ($stroke-width / 2), 16);
 }
 
 // custom mixin as govuk-font does undesirable things at different breakpoints
@@ -104,7 +104,7 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
       color: govuk-colour("black");
     }
 
-    @include step-nav-chevron-focus-state();
+    @include step-nav-chevron-focus-state;
   }
 }
 
@@ -124,7 +124,7 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
   }
 
   &:focus {
-    @include step-nav-chevron-focus-state();
+    @include step-nav-chevron-focus-state;
   }
 }
 
@@ -136,24 +136,28 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
 .gem-c-step-nav__chevron {
   display: inline-block;
   vertical-align: middle;
-  margin-left: 5px;
+  margin-left: em(5, 14);
+
+  .gem-c-step-nav--large & {
+    margin-left: em(5, 16);
+  }
 }
 
 .gem-c-step-nav__button-text {
   display: inline-block;
   text-align: left;
-  min-width: 35px;
+  min-width: em(35, 14);
 
   .gem-c-step-nav--large & {
-    min-width: 40px;
+    min-width: em(40, 16);
   }
 }
 
 .gem-c-step-nav__button-text--all {
-  min-width: 87px;
+  min-width: em(87, 14);
 
   .gem-c-step-nav--large & {
-    min-width: 100px;
+    min-width: em(100, 16);
   }
 }
 
@@ -164,23 +168,23 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
 
 .gem-c-step-nav__step {
   position: relative;
-  padding-left: govuk-spacing(6) + govuk-spacing(3);
+  padding-left: em(govuk-spacing(6) + govuk-spacing(3), 16);
   list-style: none;
 
   // line down the side of a step
   &:after {
     @include step-nav-vertical-line;
     @include step-nav-line-position;
-    top: govuk-spacing(3);
+    top: em(govuk-spacing(3), 16);
   }
 
   .gem-c-step-nav--large & {
     @include govuk-media-query($from: tablet) {
-      padding-left: govuk-spacing(9);
+      padding-left: em(govuk-spacing(9), 16);
 
       &:after { // stylelint-disable-line max-nesting-depth
         @include step-nav-line-position-large;
-        top: govuk-spacing(6);
+        top: em(govuk-spacing(6), 16);
       }
     }
   }
@@ -238,8 +242,8 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
   z-index: 5;
   top: 3px;
   left: 0;
-  width: $number-circle-size;
-  height: $number-circle-size;
+  width: em($number-circle-size, 16);
+  height: em($number-circle-size, 16);
   color: govuk-colour("black");
   background: govuk-colour("white");
   border-radius: 100px;
@@ -248,14 +252,14 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
   .gem-c-step-nav--large & {
     @include govuk-media-query($from: tablet) {
       top: 11px;
-      width: $number-circle-size-large;
-      height: $number-circle-size-large;
+      width: em($number-circle-size-large, 19);
+      height: em($number-circle-size-large, 19);
     }
   }
 }
 
 .gem-c-step-nav__circle--number {
-  @include step-nav-font(16, $weight: bold, $line-height: 25px);
+  @include step-nav-font(16, $weight: bold, $line-height: 29px);
   border: solid $stroke-width govuk-colour("mid-grey", $legacy: "grey-2");
 
   .gem-c-step-nav--large & {
@@ -267,7 +271,7 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
 
     .gem-c-step-nav__circle-background {
       text-shadow: none;
-      color: govuk-colour("white")
+      color: govuk-colour("white");
     }
   }
 }
@@ -275,9 +279,16 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
 .gem-c-step-nav__circle--logic {
   @include step-nav-font(19, $weight: bold, $line-height: 28px);
   left: 3px;
+  width: em($number-circle-size, 19);
+  height: em($number-circle-size, 19);
 
   .gem-c-step-nav--large & {
     @include step-nav-font(19, $tablet-size: 24, $weight: bold, $line-height: 28px, $tablet-line-height: 34px);
+
+    @include govuk-media-query($from: tablet) {
+      width: em($number-circle-size-large, 24);
+      height: em($number-circle-size-large, 24);
+    }
   }
 }
 

@@ -402,7 +402,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       this.titleButton.setAttribute('aria-expanded', isShown)
       var showHideText = this.stepElement.querySelectorAll('.js-toggle-link')[0]
 
-      showHideText.querySelector('.js-toggle-link-text').innerHTML = isShown ?  this.hideText : this.showText
+      showHideText.querySelector('.js-toggle-link-text').innerHTML = isShown ? this.hideText : this.showText
       showHideText.querySelector('.js-toggle-link-icon').innerHTML = isShown ? this.upChevronSvg : this.downChevronSvg
     }
 
