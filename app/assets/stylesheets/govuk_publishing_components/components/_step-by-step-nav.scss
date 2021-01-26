@@ -236,7 +236,7 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
   box-sizing: border-box;
   position: absolute;
   z-index: 5;
-  top: govuk-spacing(1);
+  top: 3px;
   left: 0;
   width: $number-circle-size;
   height: $number-circle-size;
@@ -247,7 +247,7 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
 
   .gem-c-step-nav--large & {
     @include govuk-media-query($from: tablet) {
-      top: govuk-spacing(3);
+      top: 11px;
       width: $number-circle-size-large;
       height: $number-circle-size-large;
     }
@@ -302,6 +302,15 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
 
 .gem-c-step-nav__header {
   border-top: $top-border;
+  padding: govuk-spacing(1) 0 govuk-spacing(6);
+
+  .gem-c-step-nav--large & {
+    padding-top: govuk-spacing(2);
+  }
+
+  .js-enabled & {
+    padding: 0;
+  }
 
   .gem-c-step-nav--active & {
     cursor: pointer;

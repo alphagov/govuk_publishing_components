@@ -1,7 +1,7 @@
 $grey-2: #bfc1c3;
 $white: #ffffff;
 $number-circle-size: 35px;
-$stroke-width: 3px;
+$stroke-width: 1px;
 
 .gem-c-step-nav:not(.gem-c-step-nav--large),
 .gem-c-step-nav__controls,
@@ -63,7 +63,7 @@ $stroke-width: 3px;
 }
 
 .gem-c-step-nav__circle--number {
-  border: solid 3px $grey-2;
+  border: solid 1px $grey-2;
 }
 
 .gem-c-step-nav__step,
