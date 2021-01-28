@@ -235,7 +235,6 @@ module GovukPublishingComponents
 
       def show_brexit_cta?
         brexit_cta_taxon_allow_list? &&
-          !show_brexit_related_links? &&
           step_by_step_count.zero? &&
           !brexit_cta_exception?
       end

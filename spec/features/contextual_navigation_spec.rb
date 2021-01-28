@@ -25,8 +25,7 @@ describe "Contextual navigation" do
     given_theres_a_page_with_transition_taxon
     and_i_visit_that_page
     and_i_see_the_transition_contextual_breadcrumbs
-    and_i_see_the_transition_related_links
-    and_i_do_not_see_the_transition_call_to_action
+    and_i_see_the_transition_call_to_action
   end
 
   scenario "There's a step by step list" do
@@ -99,7 +98,7 @@ describe "Contextual navigation" do
     then_i_see_the_step_by_step
     and_the_step_by_step_header
     and_i_do_not_see_the_transition_contextual_breadcrumbs
-    and_i_do_not_see_the_transition_call_to_action
+    and_i_see_the_transition_call_to_action
   end
 
   scenario "It's a HTML Publication with a parent with breadcrumbs" do
@@ -537,13 +536,6 @@ describe "Contextual navigation" do
   def and_i_see_the_transition_contextual_breadcrumbs
     within ".gem-c-contextual-breadcrumbs" do
       expect(page).to have_link(transition_taxon["title"])
-    end
-  end
-
-  def and_i_see_the_transition_related_links
-    within ".gem-c-contextual-sidebar" do
-      expect(page).to have_css("h2", text: I18n.t("components.related_navigation.transition.title"))
-      expect(page).to have_link(I18n.t("components.related_navigation.transition.link_text"), href: "/transition")
     end
   end
 
