@@ -6,12 +6,12 @@
   items ||= []
   condensed ||= false
 
-  accordion_classes = %w(gem-c-accordion govuk-accordion)
-  accordion_classes << 'govuk-accordion--condensed' if condensed
+  accordion_classes = %w(gem-c-accordion)
+  accordion_classes << 'gem-c-accordion--condensed' if condensed
   accordion_classes << (shared_helper.get_margin_bottom)
 
   data_attributes ||= {}
-  data_attributes[:module] = 'govuk-accordion'
+  data_attributes[:module] = 'gem-c-accordion'
 %>
 <% if items.any? %>
   <%= tag.div(class: accordion_classes, id: id, data: data_attributes) do %>
@@ -25,27 +25,27 @@
 
         item[:data_attributes] ||= nil
 
-        section_classes = %w(govuk-accordion__section)
-        section_classes << 'govuk-accordion__section--expanded' if item[:expanded]
+        section_classes = %w(gem-c-accordion__section)
+        section_classes << 'gem-c-accordion__section--expanded' if item[:expanded]
 
-        summary_classes = %w(govuk-accordion__section-summary govuk-body)
+        summary_classes = %w(gem-c-accordion__section-summary govuk-body)
       %>
-      <%= tag.div(class: section_classes) do %>
-        <div class="govuk-accordion__section-header">
+      <%= tag.section(class: section_classes) do %>
+        <div class="gem-c-accordion__section-header">
           <%=
             content_tag(
               shared_helper.get_heading_level,
               content_tag('span', 
               item[:heading][:text], 
-              class: "govuk-accordion__section-button", 
+              class: "gem-c-accordion__section-button", 
               id: "#{id}-heading-#{index}", 
               data: item[:data_attributes]),
-              class: 'govuk-accordion__section-heading'
+              class: 'gem-c-accordion__section-heading'
             )
           %>
           <%= tag.div(item[:summary][:text], id: "#{id}-summary-#{index}", class: summary_classes) if item[:summary].present? %>
         </div>
-        <%= tag.div(item[:content][:html], id: "#{id}-content-#{index}", class: "govuk-accordion__section-content", 'aria-labelledby': "#{id}-heading-#{index}") %>
+        <%= tag.div(item[:content][:html], id: "#{id}-content-#{index}", class: "gem-c-accordion__section-content", 'aria-labelledby': "#{id}-heading-#{index}") %>
       <% end %>
     <% end %>
   <% end %>

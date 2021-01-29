@@ -39,16 +39,16 @@
           </div>
         </details>
 
-        <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-with-summary-sections">
+        <div class="gem-c-accordion" data-module="gem-c-accordion" id="accordion-with-summary-sections">
           <% @applications.each_with_index do |application, index| %>
-            <div class="govuk-accordion__section ">
-              <div class="govuk-accordion__section-header">
-                <h2 class="govuk-accordion__section-heading">
-                  <span class="govuk-accordion__section-button" id="accordion-with-summary-sections-heading-<%= index %>">
+            <div class="gem-c-accordion__section ">
+              <div class="gem-c-accordion__section-header">
+                <h2 class="gem-c-accordion__section-heading">
+                  <span class="gem-c-accordion__section-button" id="accordion-with-summary-sections-heading-<%= index %>">
                     <%= application[:name] %>
                   </span>
                 </h2>
-                <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-<%= index %>">
+                <div class="gem-c-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-<%= index %>">
                   <% if application[:application_found] %>
                     Warnings:
                     <% if application[:warning_count] > 0 %>
@@ -61,7 +61,7 @@
                   <% end %>
                 </div>
               </div>
-              <div id="accordion-with-summary-sections-content-<%= index %>" class="govuk-accordion__section-content" aria-labelledby="accordion-with-summary-sections-heading-<%= index %>">
+              <div id="accordion-with-summary-sections-content-<%= index %>" class="gem-c-accordion__section-content" aria-labelledby="accordion-with-summary-sections-heading-<%= index %>">
                 <% if application[:application_found] %>
                   <% application[:warnings].each do |warning| %>
                     <p class="govuk-body">
@@ -144,19 +144,19 @@
       } %>
 
       <% if @components.any? %>
-        <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
-          <div class="govuk-accordion__section ">
-            <div class="govuk-accordion__section-header">
-              <h2 class="govuk-accordion__section-heading">
-                <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+        <div class="gem-c-accordion" data-module="gem-c-accordion" id="accordion-default">
+          <div class="gem-c-accordion__section ">
+            <div class="gem-c-accordion__section-header">
+              <h2 class="gem-c-accordion__section-heading">
+                <span class="gem-c-accordion__section-button" id="accordion-default-heading-1">
                   Component files
                 </span>
               </h2>
-              <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
+              <div class="gem-c-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
                 Lists what files each component has
               </div>
             </div>
-            <div id="accordion-default-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-1">
+            <div id="accordion-default-content-1" class="gem-c-accordion__section-content" aria-labelledby="accordion-default-heading-1">
               <table class="govuk-table">
                 <thead class="govuk-table__head">
                   <tr class="govuk-table__row">
@@ -206,18 +206,18 @@
             </div>
           </div>
 
-          <div class="govuk-accordion__section ">
-            <div class="govuk-accordion__section-header">
-              <h2 class="govuk-accordion__section-heading">
-                <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+          <div class="gem-c-accordion__section ">
+            <div class="gem-c-accordion__section-header">
+              <h2 class="gem-c-accordion__section-heading">
+                <span class="gem-c-accordion__section-button" id="accordion-default-heading-2">
                   Components containing components
                 </span>
               </h2>
-              <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-2">
+              <div class="gem-c-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-2">
                 Shows which components contain other components
               </div>
             </div>
-            <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
+            <div id="accordion-default-content-2" class="gem-c-accordion__section-content" aria-labelledby="accordion-default-heading-2">
               <dl class="govuk-summary-list">
                 <% @components[:components_containing_components].each do |component| %>
                   <div class="govuk-summary-list__row">
@@ -232,18 +232,18 @@
               </dl>
             </div>
           </div>
-          <div class="govuk-accordion__section ">
-            <div class="govuk-accordion__section-header">
-              <h2 class="govuk-accordion__section-heading">
-                <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+          <div class="gem-c-accordion__section ">
+            <div class="gem-c-accordion__section-header">
+              <h2 class="gem-c-accordion__section-heading">
+                <span class="gem-c-accordion__section-button" id="accordion-default-heading-2">
                   Components by application
                 </span>
               </h2>
-              <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-2">
+              <div class="gem-c-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-2">
                 Shows which applications use each component
               </div>
             </div>
-            <div id="accordion-default-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-default-heading-2">
+            <div id="accordion-default-content-2" class="gem-c-accordion__section-content" aria-labelledby="accordion-default-heading-2">
               <% if @components[:components_by_application].any? %>
                 <dl class="govuk-summary-list">
                   <% @components[:components_by_application].each do |component| %>
