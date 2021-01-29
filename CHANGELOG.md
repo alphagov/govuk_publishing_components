@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 23.14.0
 
 * Update Brexit CTA on contextual sidebar ([PR #1888](https://github.com/alphagov/govuk_publishing_components/pull/1888))
 * Fix footer classes ([PR #1898](https://github.com/alphagov/govuk_publishing_components/pull/1898))
