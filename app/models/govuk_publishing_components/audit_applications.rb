@@ -14,7 +14,7 @@ module GovukPublishingComponents
         stylesheets = Dir["#{path}/app/assets/stylesheets/**/*.scss"]
         javascripts = Dir["#{path}/app/assets/javascripts/**/*.js"]
 
-        find_components = /(?<=govuk_publishing_components\/components\/)[\/a-zA-Z_-]+(?=['"])/
+        find_components = /(?<=govuk_publishing_components\/components\/)[a-zA-Z_-]+(?=['"])/
 
         @find_all_stylesheets = /@import ["']{1}govuk_publishing_components\/all_components/
         find_stylesheets = /(?<=@import ["']{1}govuk_publishing_components\/components\/)(?!print\/)+[a-zA-Z_-]+(?=['"])/
