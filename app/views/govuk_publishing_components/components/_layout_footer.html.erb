@@ -2,8 +2,10 @@
   meta ||= []
   navigation ||= []
   with_border ||= false
+  classes = %w(gem-c-layout-footer govuk-footer)
+  classes << "gem-c-layout-footer--border" if with_border
 %>
-<footer class="gem-c-layout-footer govuk-footer<%= " gem-c-layout-footer--border" if with_border %>" role="contentinfo">
+<%= tag.footer class: classes, role: "contentinfo" do %>
   <div class="govuk-width-container ">
     <% if navigation.any? %>
       <div class="govuk-footer__navigation">
@@ -80,4 +82,4 @@
       </div>
     </div>
   </div>
-</footer>
+<% end %>
