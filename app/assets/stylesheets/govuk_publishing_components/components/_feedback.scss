@@ -8,41 +8,6 @@
   }
 }
 
-// hide without js
-// show with js, unless also has the js-hidden class
-.gem-c-feedback__js-show,
-.gem-c-feedback__prompt-success,
-.gem-c-feedback__prompt-questions,
-.gem-c-feedback__error-summary {
-  display: none;
-
-  .js-enabled & {
-    display: block;
-
-    &.js-hidden {
-      display: none;
-    }
-  }
-}
-
-// maintain table display for prompt and prompt-questions
-.js-enabled .gem-c-feedback__prompt {
-  @include govuk-media-query($from: tablet) {
-    display: table;
-  }
-}
-
-.js-enabled .gem-c-feedback__prompt-questions {
-  @include govuk-media-query($from: tablet) {
-    display: table-cell;
-  }
-}
-
-// show the default feedback form without js
-.js-enabled .gem-c-feedback__form.js-hidden {
-  display: none;
-}
-
 .gem-c-feedback__prompt-questions {
   text-align: center;
   border-bottom: 1px solid govuk-colour("white");
@@ -137,15 +102,6 @@
 .gem-c-feedback__email-link,
 .gem-c-feedback__prompt-link {
   position: relative;
-
-  &:after {
-    content: "";
-    position: absolute;
-    top: -14px;
-    right: -14px;
-    left: -14px;
-    bottom: -14px;
-  }
 }
 
 .gem-c-feedback__prompt-link:link,
@@ -281,4 +237,39 @@
   &:focus {
     outline: $govuk-focus-width solid $govuk-focus-colour;
   }
+}
+
+// hide without js
+// show with js, unless also has the js-hidden class
+.gem-c-feedback__js-show,
+.gem-c-feedback__prompt-success,
+.gem-c-feedback__prompt-questions,
+.gem-c-feedback__error-summary {
+  display: none;
+
+  .js-enabled & {
+    display: block;
+
+    &.js-hidden {
+      display: none;
+    }
+  }
+}
+
+// maintain table display for prompt and prompt-questions
+.js-enabled .gem-c-feedback__prompt {
+  @include govuk-media-query($from: tablet) {
+    display: table;
+  }
+}
+
+.js-enabled .gem-c-feedback__prompt-questions {
+  @include govuk-media-query($from: tablet) {
+    display: table-cell;
+  }
+}
+
+// show the default feedback form without js
+.js-enabled .gem-c-feedback__form.js-hidden {
+  display: none;
 }
