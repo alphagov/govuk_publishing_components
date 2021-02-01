@@ -12,4 +12,9 @@ cy:
       transition:
         title: "Brexit"
         link_path: "/transition.cy"
-        link_text: "Darganfyddwch sut mae’r rheolau Brexit newydd yn effeithio arnoch chi"
+        link_text: "Gwiriwch beth sydd angen i chi ei wneud"
+      take_action_list:
+        red: Gwiriwch
+        amber: Newidiwch
+        green: Ewch
+        aria_label: Ymgyrch slogan Brexit, Gwiriwch, Newidiwch, Ewch.

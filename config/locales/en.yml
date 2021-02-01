@@ -79,7 +79,12 @@ en:
       transition:
         title: "Brexit"
         link_path: "/transition"
-        link_text: "Check how the new Brexit rules affect you"
+        link_text: "Check what you need to do"
+      take_action_list:
+        red: Check
+        amber: Change
+        green: Go
+        aria_label: Brexit campaign slogan, Check, Change, Go.
     related_footer_navigation:
       collections: "Collections"
       policies: "Policies"

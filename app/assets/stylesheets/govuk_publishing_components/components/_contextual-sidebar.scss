@@ -3,43 +3,36 @@ $transition-campaign-dark-blue: #1e1348;
 
 .gem-c-contextual-sidebar__brexit-related-links {
   border-top: 2px solid $govuk-brand-colour;
+}
 
-  .gem-c-contextual-sidebar__brexit-heading {
-    @include govuk-font(19, $weight: bold);
-    padding-top: govuk-spacing(3);
-    margin-bottom: govuk-spacing(2);
-  }
+.gem-c-contextual-sidebar__brexit-heading {
+  @extend %govuk-heading-s;
+  margin-top: govuk-spacing(3);
+  margin-bottom: govuk-spacing(2);
 }
 
 .gem-c-contextual-sidebar__brexit-cta {
-  @include govuk-font(19);
   margin-bottom: govuk-spacing(6);
   background-color: govuk-colour('light-grey', $legacy: 'grey-4');
-  border-top: 4px solid $transition-campaign-red;
+  border-top: 2px solid $transition-campaign-red;
   display: block;
-  padding: govuk-spacing(3);
+  padding: 0 govuk-spacing(3) govuk-spacing(3);
   text-decoration: none;
 
   .gem-c-contextual-sidebar__brexit-heading {
-    @extend %govuk-heading-m;
-    color: $transition-campaign-dark-blue;
+    color: $govuk-text-colour;
   }
 
   .gem-c-contextual-sidebar__brexit-text {
     @extend %govuk-link;
+    @include govuk-font(16);
 
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: govuk-spacing(1);
     text-decoration: underline;
 
     @include govuk-media-query($from: tablet) {
       margin-bottom: govuk-spacing(2);
-    }
-  }
-
-  @include govuk-compatibility(govuk_template) {
-    .gem-c-contextual-sidebar__brexit-title {
-      margin-bottom: govuk-spacing(3);
     }
   }
 }
@@ -48,4 +41,28 @@ $transition-campaign-dark-blue: #1e1348;
   .gem-c-contextual-sidebar__brexit-text {
     text-decoration: none;
   }
+}
+
+.gem-c-contextual-sidebar__take-action-traffic-lights {
+  text-align: left;
+  margin-bottom: govuk-spacing(2);
+}
+
+.gem-c-contextual-sidebar__take-action-traffic-lights > li {
+  white-space: nowrap;
+  display: inline;
+  margin-right: 7px;
+  margin-bottom: govuk-spacing(1);
+}
+
+.gem-c-contextual-sidebar__take-action-traffic-lists-icon {
+  vertical-align: middle;
+  margin-top: -2px;
+  width: 22px;
+  margin-right: 2px;
+}
+
+.gem-c-contextual-sidebar__take-action-traffic-lists-text {
+  @include govuk-font($size: 19, $weight: bold, $line-height: 2);
+  vertical-align: middle;
 }
