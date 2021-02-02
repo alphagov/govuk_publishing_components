@@ -76,6 +76,30 @@ describe "Layout header", type: :view do
     assert_select ".gem-c-header__nav[aria-label='My fancy label']"
   end
 
+  it "renders the navigation links with data attributes when specified" do
+    navigation_items = [
+      {
+        text: "Foo",
+        href: "/foo",
+        data: {
+          hello: "world",
+        },
+      },
+      {
+        text: "Bar",
+        href: "/bar",
+        data: {
+          more_than_one_word: "test",
+        },
+      },
+    ]
+
+    render_component(navigation_items: navigation_items)
+
+    assert_select ".gem-c-header__nav .govuk-header__link[data-hello='world']", text: "Foo"
+    assert_select ".gem-c-header__nav .govuk-header__link[data-more-than-one-word='test']", text: "Bar"
+  end
+
   it "renders the header without the bottom border" do
     render_component(remove_bottom_border: true, environment: "public")
 

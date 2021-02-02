@@ -81,6 +81,17 @@ examples:
       - text: News and communications
         href: "item-6"
         active: true
+  with_navigation_link_data_attributes:
+    description: Supports adding data attributes i.e for tracking
+    data:
+      navigation_items:
+      - text: Departments
+        href: "item-1"
+        data:
+          module: "a custom attribute"
+          something_else: "some other custom attribute"
+      - text: Worldwide
+        href: "item-2"
   full_width:
     description: |
       This is difficult to preview because the preview windows are constrained, but the header will stretch to the size of its container.
