@@ -1,16 +1,16 @@
 name: Document list
 description: An ordered list of documents including a document type, when updated and a link.
 body: |
-  Outputs a list to documents, based on an array of document data. This may include:
+  Outputs a list to documents, based on an array of document data. A "document" in this context can be an asset (such as a ODT or other downloadable document) or a web page.
+  
+  The component can display:
 
-  * document title
-  * link to the document
-  * last updated date object
-  * document type
+  * a document title
+  * a link to the document
+  * a last updated date object
+  * a document type
 
   Tracking can be added to the links by supplying optional data attributes for each.
-
-  Documents are presented in an ordered list as the component expects that the ordering of the documents is relevant.
 accessibility_criteria: |
   The component must:
 
