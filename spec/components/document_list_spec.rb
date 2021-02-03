@@ -473,4 +473,30 @@ describe "Document list", type: :view do
     assert_select ".gem-c-document-list__attribute[lang=\"cy\"]", text: "Data tryloywder"
     assert_select ".gem-c-document-list__attribute:not([lang=\"cy\"])", text: "English text"
   end
+
+  it "adds rel attribute to elements only when rel is passed" do
+    render_component(
+      items: [
+        {
+          link: {
+            text: "Report Fraud",
+            path: "https://www.actionfraud.police.uk/contact-us",
+            rel: "external",
+          },
+        },
+        {
+          link: {
+            text: "Child Benefit",
+            path: "/contact-child-benefit-office",
+            rel: "bad value",
+          },
+        },
+      ],
+    )
+
+    link = ".gem-c-document-list__item-link"
+
+    assert_select "#{link}[href=\"https://www.actionfraud.police.uk/contact-us\"][rel=\"external\"]", text: "Report Fraud"
+    assert_select "#{link}[href=\"/contact-child-benefit-office\"]:not([rel])", text: "Child Benefit"
+  end
 end

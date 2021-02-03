@@ -305,3 +305,21 @@ examples:
           path: '/become-an-apprentice'
           description: 'Becoming an apprentice - what to expect, apprenticeship levels, pay and training, making an application, complaining about an apprenticeship.'
           full_size_description: true
+  with_rel_link_attribute:
+    description: |
+      The [rel attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel) is an option attribute to dictate the relationship between the document being linked to and the current page. This is predominantly used by search engines to help index journeys through a website.
+      
+      On GOV.UK, this is typically used to dictate an external website being linked to with `rel="external"`, however this component supports:
+      
+      - external
+      - nofollow
+      - noopener
+      - noreferrer
+      - opener
+    data:
+      items:
+      - link:
+          text: 'Report Fraud'
+          path: 'https://www.actionfraud.police.uk/contact-us'
+          rel: 'external'
+          description: "Contact Action Fraud to report fraud and cyber crime, or to tell them you've been the victim of a scam."

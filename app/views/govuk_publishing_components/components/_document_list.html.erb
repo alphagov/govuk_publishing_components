@@ -29,12 +29,21 @@
           item_classes = "gem-c-document-list__item-title #{brand_helper.color_class} #{title_with_context_class if item[:link][:context]}"
 
           if item[:link][:path]
+            rel = [
+              "external",
+              "nofollow",
+              "noopener",
+              "noreferrer",
+              "opener",
+            ].include?(item[:link][:rel]) ? item[:link][:rel] : nil
+
             link_to(
               item[:link][:text],
               item[:link][:path],
               data: item[:link][:data_attributes],
               class: "#{item_classes} gem-c-document-list__item-link",
-              lang: item[:link][:locale].presence
+              lang: item[:link][:locale].presence,
+              rel: rel,
             )
           else
             content_tag(
