@@ -6,7 +6,7 @@
   classes << "gem-c-layout-footer--border" if with_border
 %>
 <%= tag.footer class: classes, role: "contentinfo" do %>
-  <div class="govuk-width-container ">
+  <div class="govuk-width-container" data-module="track-click">
     <% if navigation.any? %>
       <div class="govuk-footer__navigation">
         <% navigation.each do |item| %>
@@ -31,7 +31,10 @@
                     <% if item[:href] && item[:text] %>
                       <li class="govuk-footer__list-item">
                         <%
-                          attributes = { class: "govuk-footer__link" }.merge(item.fetch(:attributes, {}))
+                          attributes = {
+                            class: "govuk-footer__link",
+                            "data-track-category": "footerClicked"
+                          }.merge(item.fetch(:attributes, {}))
                           attributes[:rel] = "noopener" if attributes[:target] == "_blank" && !attributes[:rel]
                         %>
                         <%= link_to item[:text], item[:href], attributes %>
