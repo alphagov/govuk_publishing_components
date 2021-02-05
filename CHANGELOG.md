@@ -11,6 +11,7 @@
 
 * Fix bugs on the feedback component ([PR #1900](https://github.com/alphagov/govuk_publishing_components/pull/1900))
 * Add data attributes to layout footer component ([PR #1904](https://github.com/alphagov/govuk_publishing_components/pull/1904))
+* Add option to remove border from document list items ([PR #1907](https://github.com/alphagov/govuk_publishing_components/pull/1907))
 
 ## 23.14.0
 
