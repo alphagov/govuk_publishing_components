@@ -5,6 +5,7 @@
   classes << " gem-c-document-list--top-margin" if local_assigns[:margin_top]
   classes << " gem-c-document-list--bottom-margin" if local_assigns[:margin_bottom]
   classes << " gem-c-document-list--no-underline" if local_assigns[:remove_underline]
+  classes << " gem-c-document-list--no-top-border" if local_assigns[:remove_top_border]
 
   within_multitype_list ||= false
   within_multitype_list_class = " gem-c-document-list__multi-list" if within_multitype_list

@@ -195,6 +195,23 @@ examples:
           public_updated_at: 2017-07-19 15:01:48
           document_type: 'Statistical data set'
         subtext: 'First published during the 1996 Conservative Government'
+  without_top_border_on_list_element:
+    description: Several interfaces across GOV.UK benefit from the semantics of the document list but have their own bespoke designs, sometimes meaning that the visual border element doesn't gel with said interface. Removing it using the below attribute allows for cleaner visual fidelity in this instances.
+    data:
+      remove_top_border: true
+      items:
+      - link:
+          text: 'Department for Education – Statistics at DfE'
+          path: '/government/organisations/department-for-education/about/statistics'
+        metadata:
+          public_updated_at: 2017-07-19 15:01:48
+          document_type: 'Corporate information'
+      - link:
+          text: 'State-funded school inspections and outcomes: management information'
+          path: '/government/organisations/department-for-education/about/statistics'
+        metadata:
+          public_updated_at: 2017-07-19 15:01:48
+          document_type: 'Statistical data set'
   highlighted_result:
     description: Highlight one or more of the items in the list. This is used on finders to provide a 'top result' for a search. The `highlight_text` parameter is optional.
     data:

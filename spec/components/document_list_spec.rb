@@ -261,6 +261,22 @@ describe "Document list", type: :view do
     assert_select ".gem-c-document-list.gem-c-document-list--no-underline"
   end
 
+  it "removes the top border from list items" do
+    render_component(
+      remove_top_border: true,
+      items: [
+        {
+          link: {
+            text: "Link Title",
+            path: "/link/path",
+          },
+        },
+      ],
+    )
+
+    assert_select ".gem-c-document-list.gem-c-document-list--no-top-border"
+  end
+
   it "highlights items" do
     render_component(
       items: [
