@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Further step by step nav sidebar design updates ([PR #1893](https://github.com/alphagov/govuk_publishing_components/pull/1893))
+
 ## 23.15.0
 
 * Fix bugs on the feedback component ([PR #1900](https://github.com/alphagov/govuk_publishing_components/pull/1900))
