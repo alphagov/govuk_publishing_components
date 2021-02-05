@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 23.15.0
 
 * Fix bugs on the feedback component ([PR #1900](https://github.com/alphagov/govuk_publishing_components/pull/1900))
 * Add data attributes to layout footer component ([PR #1904](https://github.com/alphagov/govuk_publishing_components/pull/1904))
