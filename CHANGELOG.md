@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Remove `listenForCrossOriginMessages` from CookieBanner ([PR #1906](https://github.com/alphagov/govuk_publishing_components/pull/1906))
 * Further step by step nav sidebar design updates ([PR #1893](https://github.com/alphagov/govuk_publishing_components/pull/1893))
 * Add rel attribute option to document list ([PR #1903](https://github.com/alphagov/govuk_publishing_components/pull/1903))
 

@@ -85,10 +85,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.$module.cookieBannerConfirmationMessage.style.display = 'block'
   }
 
-  CookieBanner.prototype.listenForCrossOriginMessages = function () {
-    window.addEventListener('message', this.receiveMessage.bind(this), false)
-  }
-
   CookieBanner.prototype.isInCookiesPage = function () {
     return window.location.pathname === '/help/cookies'
   }
