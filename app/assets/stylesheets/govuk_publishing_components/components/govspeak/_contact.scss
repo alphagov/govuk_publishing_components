@@ -25,11 +25,6 @@
       float: none;
       width: 100%;
 
-      h3 {
-        @include govuk-font($size: 19, $weight: bold);
-        margin-bottom: 5px;
-      }
-
       .email-url-number {
         .email {
           word-wrap: break-word;
