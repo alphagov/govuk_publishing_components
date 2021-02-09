@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Bump govuk-frontend from 3.10.2 to 3.11.0 ([PR #1911](https://github.com/alphagov/govuk_publishing_components/pull/1911))
 * Rescope Brexit CTA on contextual sidebar ([PR #1910](https://github.com/alphagov/govuk_publishing_components/pull/1910))
 * Remove `listenForCrossOriginMessages` from CookieBanner ([PR #1906](https://github.com/alphagov/govuk_publishing_components/pull/1906))
 * Further step by step nav sidebar design updates ([PR #1893](https://github.com/alphagov/govuk_publishing_components/pull/1893))
