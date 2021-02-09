@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 24.0.0
 
 * Bump govuk-frontend from 3.10.2 to 3.11.0 ([PR #1911](https://github.com/alphagov/govuk_publishing_components/pull/1911))
 * Rescope Brexit CTA on contextual sidebar ([PR #1910](https://github.com/alphagov/govuk_publishing_components/pull/1910))
@@ -19,7 +19,8 @@
 * BREAKING: Retire gem-level SCSS variables ([PR #1881](https://github.com/alphagov/govuk_publishing_components/pull/1881))
 * BREAKING: Remove duplicate `lib/auto-track-event` script ([PR #1894](https://github.com/alphagov/govuk_publishing_components/pull/1894))
 * BREAKING: Remove copies of files ([PR #1878](https://github.com/alphagov/govuk_publishing_components/pull/1878))
-* BREAKING: Remove list stylesheet ([PR #1874])(https://github.com/alphagov/govuk_publishing_components/pull/1874)
+* BREAKING: Remove list stylesheet ([PR #1874](https://github.com/alphagov/govuk_publishing_components/pull/1874))
+
 ## 23.15.0
 
 * Fix bugs on the feedback component ([PR #1900](https://github.com/alphagov/govuk_publishing_components/pull/1900))
