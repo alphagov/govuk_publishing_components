@@ -1,24 +1,28 @@
-@import "govuk/components/accordion/accordion";
+@import "govuk_publishing_components/component_support";
 
 $gem-c-accordion-border-width: 3px;
-$gem-c-accordion-bottom-border-width: 2px;
+$gem-c-accordion-bottom-border-width: 1px;
 
 // Buttons within the sections don’t need default styling
 .gem-c-accordion__section-button {
-  @include govuk-font($size: 24, $weight: bold);
   display: inline-block;
   margin-bottom: 0;
   padding-top: govuk-spacing(3);
+  font-weight: bold;
+  @include govuk-font($size: 24, $weight: bold);
 }
 
 .gem-c-accordion__section-header {
-  padding-top: govuk-spacing(3);
-  padding-bottom: govuk-spacing(3);
+  padding-top: govuk-spacing(2) 0;
+}
+
+.gem-c-accordion__section-heading,
+.gem-c-accordion__section-summary {
+  margin: govuk-spacing(1) 0;
 }
 
 .js-enabled {
   .gem-c-accordion {
-
     border-bottom: $gem-c-accordion-bottom-border-width solid $govuk-border-colour;
   }
 
@@ -27,21 +31,18 @@ $gem-c-accordion-bottom-border-width: 2px;
   }
 
   .gem-c-accordion__open-all {
-
     position: relative;
     z-index: 1;
     border-width: 0;
     color: $govuk-link-colour;
     background: none;
-    cursor: pointer;
     -webkit-appearance: none;
-    margin: 0 0 govuk-spacing(4) 0;
-    padding: 0 0 govuk-spacing(1) 0;
-
+    cursor: pointer;
+    margin-bottom: govuk-spacing(4);
+    padding: 0 govuk-spacing(1) govuk-spacing(1) 0;
     @include govuk-font($size: 16);
     @include govuk-link-common;
     @include govuk-link-style-default;
-
     // Remove default button focus outline in Firefox
     &::-moz-focus-inner {
       padding: 0;
@@ -49,29 +50,79 @@ $gem-c-accordion-bottom-border-width: 2px;
     }
   }
 
-  // Focus state to change chervon icon to black
+  .gem-c-accordion__open-all:hover,
+  .gem-c-accordion__open-all-text:hover {
+    text-decoration: underline;
+    color: $govuk-link-colour;
+  }
+
+  // Focus state, also to change chervon icon to black
   .gem-c-accordion__open-all:focus {
-    .gem-c-accordion-nav__chevron--stroke {
-      stroke: govuk-colour("black");
+    .gem-c-accordion__open-all-text,
+    .gem-c-accordion-nav__chevron {
+      color: $govuk-focus-text-colour;
+      text-decoration: none;
     }
+  }
+
+  // Create Chervon icon align with text
+  .gem-c-accordion-nav__chevron {
+    vertical-align: text-top;
+    display: inline-block;
+    box-sizing: border-box;
+    position: relative;
+    width: em(20, 14);
+    height: em(20, 14);
+    margin-left: em(5, 14);
+    border: em(1, 14) solid;
+    border-radius: em(100, 14);
+    // Main icon size across views, yet keep responsive for zoom
+    @include govuk-media-query($from: tablet) {
+      width: em(20, 16);
+      height: em(20, 16);
+      margin-left: em(5, 16);
+      border: em(1, 16) solid;
+    }
+
+    &:after {
+      content: "";
+      display: block;
+      box-sizing: border-box;
+      position: absolute;
+      overflow: visible;
+      width: em(6, 14);
+      height: em(6, 14);
+      border-top: em(2, 14) solid;
+      border-right: em(2, 14) solid;
+      transform: rotate(-45deg);
+      left: em(6, 14);
+      bottom: em(5, 14);
+      @include govuk-media-query($from: tablet) {
+        width: em(6, 16);
+        height: em(6, 16);
+        border-top: em(2, 16) solid;
+        border-right: em(2, 16) solid;
+        left: em(6, 16);
+        bottom: em(5, 16);
+      }
+    }
+  }
+
+  // Rotate icon to create "Down" version
+  .gem-c-accordion-nav__chevron--down {
+    transform: rotate(180deg);
   }
 
   .gem-c-accordion__section-heading {
     // Override browser defaults to ensure consistent element height
-    @include govuk-font(24);
-
     margin-top: 0; // Override browser default
     margin-bottom: 0; // Override browser default
+    @include govuk-font(24);
   }
 
   // Section headers have a pointer cursor as an additional affordance
   .gem-c-accordion__section-header {
     position: relative;
-    // Safe area on the right to avoid clashing with icon
-    padding-right: 40px;
-    border-top: $gem-c-accordion-bottom-border-width solid $govuk-border-colour;
-    color: $govuk-link-colour;
-    cursor: pointer;
   }
 
   // For devices that can't hover such as touch devices,
@@ -80,40 +131,32 @@ $gem-c-accordion-bottom-border-width: 2px;
     .gem-c-accordion__section-header:hover {
       border-top-color: $govuk-link-colour;
       box-shadow: inset 0 $gem-c-accordion-border-width 0 0 $govuk-link-colour;
-    }
-  }
 
-  // Align the arrow icon within the button
-  .gem-c-accordion-nav__chevron {
-    margin-right: govuk-spacing(1);
-    vertical-align: text-top;
-    display: inline-block;
+      .gem-c-accordion__section-button {
+        border-top-color: $govuk-link-colour;
+      }
+    }
   }
 
   // Buttons within the headers don’t need default styling
   .gem-c-accordion__section-button {
-
-    @include govuk-typography-common;
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-left: 0;
-    padding: 0;
-    border-width: 0;
+    padding: govuk-spacing(2) 0 govuk-spacing(5);
+    position: relative;
+    margin: 0;
+    border-width: $gem-c-accordion-bottom-border-width 0 0 0;
+    border-top: $gem-c-accordion-bottom-border-width solid $govuk-border-colour;
     color: $govuk-text-colour;
     background: none;
     text-align: left;
     cursor: pointer;
     -webkit-appearance: none;
+    @include govuk-typography-common;
+    width: 100%;
 
     &:active {
       z-index: 1;
-      background: govuk-colour("white");
-      border-color: $govuk-focus-colour;
       color: $govuk-link-active-colour;
-    }
-
-    &:hover {
-      color: $govuk-link-hover-colour;
+      background: none;
     }
 
     // Remove default button focus outline in Firefox
@@ -123,17 +166,29 @@ $gem-c-accordion-bottom-border-width: 2px;
     }
   }
 
+  .gem-c-accordion__section-button:hover {
+    color: $govuk-link-colour;
+    // On hover, add underline to toggle link
+    .gem-c-accordion__toggle-text {
+      text-decoration: underline;
+      color: $govuk-link-colour;
+    }
+  }
+
   .gem-c-accordion__section-button:focus {
     @include govuk-focused-text;
+    // Overwrite focus border to top
+    box-shadow: 0 0, 0 -4px;
+    border-top: 1px solid transparent;
 
     // Focus state to change the toggle link within individual sections
-    .gem-c-accordion__toggle-link {
+    .gem-c-accordion__toggle-text {
       color: $govuk-focus-text-colour;
+      text-decoration: none;
     }
-
     // Focus state to change chervon icon colour within individual sections
-    .gem-c-accordion-nav__chevron--stroke {
-      stroke: govuk-colour("black");
+    .gem-c-accordion-nav__chevron {
+      color: $govuk-text-colour;
     }
   }
 
@@ -159,7 +214,7 @@ $gem-c-accordion-bottom-border-width: 2px;
     }
   }
 
-  // Add toggle link with Chevron icon on left.
+  // Add toggle link with Chevron icon on right.
   .gem-c-accordion__toggle-link {
     display: block;
     color: $govuk-link-colour;
@@ -171,17 +226,24 @@ $gem-c-accordion-bottom-border-width: 2px;
     &:active {
       background: $govuk-link-active-colour;
     }
+  }
 
-    &:hover,
-    &:focus {
-      color: $govuk-link-hover-colour;
-    }
+  // Setting width of the text, so the icon doesn't shift (left / right) when toggled
+  .gem-c-accordion__toggle-text {
+    min-width: em(40, 16);
+    display: inline-block;
+  }
+
+  .gem-c-accordion__open-all-text {
+    min-width: em(120, 16);
+    display: inline-block;
+    text-align: left;
   }
 
   // Change the summary subheading size.
   .gem-c-accordion__section-summary {
     @include govuk-responsive-margin(2, "top");
-    @include govuk-responsive-margin(1, "bottom");
+    @include govuk-responsive-margin(2, "bottom");
     @include govuk-typography-common;
     @include govuk-typography-responsive($size: 19);
   }
@@ -190,7 +252,7 @@ $gem-c-accordion-bottom-border-width: 2px;
   .gem-c-accordion__section-content {
     display: none;
     @include govuk-responsive-padding(0, "top");
-    @include govuk-responsive-padding(6, "bottom");
+    @include govuk-responsive-padding(8, "bottom");
   }
 
   // Show the body of expanded sections
@@ -203,29 +265,49 @@ $gem-c-accordion-bottom-border-width: 2px;
     margin-bottom: 0;
   }
 
-  // Reduce the height of the inner content once opened
-  .gem-c-accordion__section--expanded .gem-c-accordion__section-header {
-    padding-bottom: govuk-spacing(3);
-  }
-
   // Condensed layout
   .gem-c-accordion--condensed {
     .gem-c-accordion__open-all {
-      margin-bottom: govuk-spacing(2);
+      margin-bottom: govuk-spacing(5);
+      @include govuk-font($size: 14, $line-height: 1);
     }
 
     .gem-c-accordion__section-button {
       @include govuk-typography-responsive($size: 19, $important: true);
+      padding-top: govuk-spacing(1);
+      padding-bottom: govuk-spacing(5);
     }
 
-    .gem-c-accordion__section-header {
-      padding-top: govuk-spacing(2);
-      padding-bottom: govuk-spacing(2);
+    // Reduce Chevron size
+    .gem-c-accordion-nav__chevron {
+      width: em(20, 14);
+      height: em(20, 14);
+      margin-left: em(5, 14);
+      border: em(1, 14) solid;
+      border-radius: em(100, 14);
+      transform: scale(.875);
+
+      &:after {
+        width: em(6, 14);
+        height: em(6, 14);
+        border-top: em(2, 14) solid;
+        border-right: em(2, 14) solid;
+        left: em(6, 14);
+        bottom: em(5, 14);
+      }
+    }
+
+    .gem-c-accordion-nav__chevron--down {
+      transform: scale(.875) rotate(180deg);
     }
 
     .gem-c-accordion__section-summary {
       @include govuk-typography-responsive($size: 16, $important: true);
-      margin-bottom: govuk-spacing(2);
+      margin: govuk-spacing(1) 0;
+    }
+
+    .gem-c-accordion__toggle-link {
+      @include govuk-font($size: 14, $line-height: 1);
     }
   }
 }

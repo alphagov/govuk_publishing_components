@@ -4,7 +4,7 @@ govuk_frontend_components:
   - accordion
 body: |
   This component is based on the [design system accordion component](https://design-system.service.gov.uk/components/accordion/)
-  and is currently experimental. If using this component, please feed back any research findings to the Design System team.
+  and is currently experimental because more research is needed to validate it.  If using this component, [please feed back any research findings to the Design System team](https://design-system.service.gov.uk/components/accordion/#next-steps).
 
 accessibility_criteria: |
   The accordion must:
