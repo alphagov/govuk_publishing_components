@@ -11,13 +11,18 @@ accessibility_criteria: |
 
     * accept focus
     * be usable with a keyboard
-    * indicate when they have focus
+    * the controls must change in appearance when keyboard focus moves to it
+    * the controls must indicate when the mouse is hovered over it
     * be usable with touch
     * be usable with voice commands
     * have visible text
     * indicate to users that each section can be expanded and collapsed
     * inform the user when a step has been expanded or collapsed
-    * be readable when only the text of the page is zoomed in
+    * be readable when only the [text of the page is zoomed in](https://support.mozilla.org/en-US/kb/font-size-and-zoom-increase-size-of-web-pages#w_how-to-only-change-the-size-of-the-text)
+    * zoom in up to 300% without the text spilling off the screen
+    * pass colour contrast
+    * the accordion header button element has aria-controls set to the ID of the element containing the accordion panel content.
+    * section content must have aria-label / aria-labelledby with a value that refers to the button that controls display of the content.
 
   Section headings must use a button element:
 
