@@ -9,8 +9,9 @@
 
 ## Unreleased
 
+* Update `data-module` on layout header and footer ([PR #1913](https://github.com/alphagov/govuk_publishing_components/pull/1913))
 * Update design of accordion component ([PR #1884](https://github.com/alphagov/govuk_publishing_components/pull/1884))
-  
+
 ## 24.0.0
 
 * Bump govuk-frontend from 3.10.2 to 3.11.0 ([PR #1911](https://github.com/alphagov/govuk_publishing_components/pull/1911))
