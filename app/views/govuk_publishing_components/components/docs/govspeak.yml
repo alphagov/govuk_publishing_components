@@ -312,8 +312,8 @@ examples:
       block: |
         <div class="contact" id="contact_1017">
           <div class="content">
-            <h3>Media enquiries</h3>
             <div class="vcard contact-inner">
+              <p>Media enquiries</p>
               <p class="adr">
                 <span class="street-address">2 Marsham Street<br>London</span><br>
                 <span class="postal-code">SW1P 4DF</span>
@@ -332,8 +332,8 @@ examples:
         <h2>This is a title</h2>
         <div class="contact" id="contact_1018">
           <div class="content">
-            <h3>Media enquiries</h3>
             <div class="vcard contact-inner">
+              <p>Media enquiries</p>
               <p class="adr">
                 <span class="street-address">2 Marsham Street<br>London</span><br>
                 <span class="postal-code">SW1P 4DF</span>
@@ -349,8 +349,8 @@ examples:
         <p>This is a paragraph.</p>
         <div class="contact" id="contact_1019">
           <div class="content">
-            <h3>Media enquiries</h3>
             <div class="vcard contact-inner">
+              <p>Media enquiries</p>
               <p class="adr">
                 <span class="street-address">2 Marsham Street<br>London</span><br>
                 <span class="postal-code">SW1P 4DF</span>
