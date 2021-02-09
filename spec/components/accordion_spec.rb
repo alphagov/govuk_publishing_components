@@ -29,14 +29,14 @@ describe "Accordion", type: :view do
 
     render_component(test_data)
 
-    assert_select ".govuk-accordion__section-button", text: "Heading 1", count: 1
-    assert_select ".govuk-accordion__section-content", text: /Content 1./, count: 1
+    assert_select ".gem-c-accordion__section-button", text: "Heading 1", count: 1
+    assert_select ".gem-c-accordion__section-content", text: /Content 1./, count: 1
 
-    assert_select ".govuk-accordion__section-button", text: "Heading 2", count: 1
-    assert_select ".govuk-accordion__section-content", text: /Content 2./, count: 1
+    assert_select ".gem-c-accordion__section-button", text: "Heading 2", count: 1
+    assert_select ".gem-c-accordion__section-content", text: /Content 2./, count: 1
 
-    assert_select ".govuk-accordion__section-button", text: "Heading 3", count: 1
-    assert_select ".govuk-accordion__section-content", text: /Content 3./, count: 1
+    assert_select ".gem-c-accordion__section-button", text: "Heading 3", count: 1
+    assert_select ".gem-c-accordion__section-content", text: /Content 3./, count: 1
   end
 
   it "uses the correct id, and interpolates it correctly" do
@@ -158,7 +158,7 @@ describe "Accordion", type: :view do
     assert_select "[data-gtm='google-tag-manager']", count: 2
   end
 
-  it '`data-module="govuk-accordion"` attribute is present when no custom data attributes given' do
+  it '`data-module="gem-accordion"` attribute is present when no custom data attributes given' do
     test_data = {
       id: "test-for-module-data-attributes",
       items: [{
@@ -171,10 +171,10 @@ describe "Accordion", type: :view do
               }],
     }
     render_component(test_data)
-    assert_select "[data-module='govuk-accordion']", count: 1
+    assert_select "[data-module='gem-accordion']", count: 1
   end
 
-  it '`data-module="govuk-accordion"` attribute is present when custom data attributes given' do
+  it '`data-module="gem-accordion"` attribute is present when custom data attributes given' do
     test_data = {
       id: "test-for-module-data-attributes",
       data_attributes: {
@@ -196,7 +196,7 @@ describe "Accordion", type: :view do
               }],
     }
     render_component(test_data)
-    assert_select "[data-module='govuk-accordion']", count: 1
+    assert_select "[data-module='gem-accordion']", count: 1
     assert_select "[data-gtm]", count: 2
     assert_select "[data-gtm='this-is-gtm']", count: 1
     assert_select "[data-gtm='this-is-a-second-gtm']", count: 1
@@ -220,8 +220,8 @@ describe "Accordion", type: :view do
               }],
     }
     render_component(test_data)
-    assert_select ".govuk-accordion__section.govuk-accordion__section--expanded", count: 1
-    assert_select ".govuk-accordion__section", count: 2
+    assert_select ".gem-c-accordion__section.gem-c-accordion__section--expanded", count: 1
+    assert_select ".gem-c-accordion__section", count: 2
   end
 
   it "condensed class added correctly" do
@@ -235,7 +235,7 @@ describe "Accordion", type: :view do
       }],
     }
     render_component(test_data)
-    assert_select ".govuk-accordion.govuk-accordion--condensed", count: 1
+    assert_select ".gem-c-accordion.gem-c-accordion--condensed", count: 1
   end
 
   it "loop index starts at one, not zero (thanks Nunjucks.)" do

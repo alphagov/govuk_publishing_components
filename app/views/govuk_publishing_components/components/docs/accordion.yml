@@ -4,20 +4,25 @@ govuk_frontend_components:
   - accordion
 body: |
   This component is based on the [design system accordion component](https://design-system.service.gov.uk/components/accordion/)
-  and is currently experimental. If using this component, please feed back any research findings to the Design System team.
+  and is currently experimental because more research is needed to validate it.  If using this component, [please feed back any research findings to the Design System team](https://design-system.service.gov.uk/components/accordion/#next-steps).
 
 accessibility_criteria: |
   The accordion must:
 
     * accept focus
     * be usable with a keyboard
-    * indicate when they have focus
+    * the controls must change in appearance when keyboard focus moves to it
+    * the controls must indicate when the mouse is hovered over it
     * be usable with touch
     * be usable with voice commands
     * have visible text
     * indicate to users that each section can be expanded and collapsed
     * inform the user when a step has been expanded or collapsed
-    * be readable when only the text of the page is zoomed in
+    * be readable when only the [text of the page is zoomed in](https://support.mozilla.org/en-US/kb/font-size-and-zoom-increase-size-of-web-pages#w_how-to-only-change-the-size-of-the-text)
+    * zoom in up to 300% without the text spilling off the screen
+    * pass colour contrast
+    * the accordion header button element has aria-controls set to the ID of the element containing the accordion panel content.
+    * section content must have aria-label / aria-labelledby with a value that refers to the button that controls display of the content.
 
   Section headings must use a button element:
 
