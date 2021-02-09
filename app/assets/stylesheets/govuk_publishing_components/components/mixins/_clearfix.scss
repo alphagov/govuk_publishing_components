@@ -1,8 +1,0 @@
-// Mixin to clear floats
-@mixin gem-h-clearfix {
-  &:after {
-    content: "";
-    display: block;
-    clear: both;
-  }
-}

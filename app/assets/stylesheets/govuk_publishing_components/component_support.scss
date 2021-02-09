@@ -6,12 +6,10 @@
 @import "govuk/utilities/all";
 @import "govuk/overrides/all";
 
-@import "govuk_publishing_components/components/helpers/variables";
 @import "govuk_publishing_components/components/helpers/brand-colours";
 @import "govuk_publishing_components/components/helpers/link";
 @import "govuk_publishing_components/components/helpers/px-to-em";
 @import "govuk_publishing_components/components/mixins/govuk-template-link-focus-override";
 @import "govuk_publishing_components/components/mixins/media-down";
 @import "govuk_publishing_components/components/mixins/margins";
-@import "govuk_publishing_components/components/mixins/clearfix";
 @import "govuk_publishing_components/components/mixins/css3";
