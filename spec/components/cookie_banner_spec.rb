@@ -8,27 +8,33 @@ describe "Cookie banner", type: :view do
   it "renders with default values" do
     render_component({})
     assert_select '.gem-c-cookie-banner[id="global-cookie-message"][data-module="cookie-banner"]'
-    assert_select ".govuk-width-container .gem-c-cookie-banner__message",
-                  text: "Tell us whether you accept cookies
-          We use cookies to collect information about how you use GOV.UK. We use this information to make the website work as well as possible and improve government services."
+    assert_select ".govuk-cookie-banner__heading", text: "Cookies on GOV.UK"
+    assert_select ".govuk-cookie-banner__content p:nth-child(1)", text: "We use some essential cookies to make this website work."
+    assert_select ".govuk-cookie-banner__content p:nth-child(2)", text: "We’d like to set additional cookies to understand how you use GOV.UK, remember your settings and improve government services."
+    assert_select ".govuk-cookie-banner__content p:nth-child(3)", text: "We also use cookies set by other sites to help us deliver content from their services."
     assert_select 'button[data-hide-cookie-banner="true"]'
   end
 
   it "renders a button for accepting cookies" do
     render_component({})
-    assert_select ".gem-c-cookie-banner__buttons .gem-c-button", text: "Accept all cookies"
-    assert_select '.gem-c-cookie-banner__buttons .gem-c-button[data-module=track-click][data-track-category=cookieBanner][data-track-action="Cookie banner accepted"]'
+    assert_select ".govuk-button-group .gem-c-button", text: "Accept additional cookies"
+    assert_select '.govuk-button-group .gem-c-button[data-module=track-click][data-track-category=cookieBanner][data-track-action="Cookie banner accepted"]'
   end
 
-  it "renders a button for viewing cookie settings" do
+  it "renders a button for rejecting cookies" do
     render_component({})
-    assert_select ".gem-c-cookie-banner__buttons .gem-c-button", text: "Set cookie preferences"
-    assert_select '.gem-c-cookie-banner__buttons .gem-c-button[data-module=track-click][data-track-category=cookieBanner][data-track-action="Cookie banner settings clicked"]'
+    assert_select ".govuk-button-group .gem-c-button", text: "Reject additional cookies"
+    assert_select '.govuk-button-group .gem-c-button[data-module=track-click][data-track-category=cookieBanner][data-track-action="Cookie banner rejected"]'
+  end
+
+  it "renders a link for viewing cookie settings" do
+    render_component({})
+    assert_select ".govuk-button-group .govuk-link", text: "View cookies"
   end
 
   it "renders a confirmation message" do
     render_component({})
-    assert_select ".gem-c-cookie-banner__confirmation-message", text: "You’ve accepted all cookies. You can change your cookie settings at any time."
+    assert_select ".gem-c-cookie-banner__confirmation-message", text: "You can change your cookie settings at any time."
   end
 
   it "renders a link to the settings page within the confirmation message" do
@@ -40,7 +46,7 @@ describe "Cookie banner", type: :view do
   it "renders a hide link within the confirmation banner" do
     render_component({})
 
-    assert_select ".gem-c-cookie-banner__confirmation .gem-c-cookie-banner__hide-button", text: "Hide"
+    assert_select ".gem-c-cookie-banner__confirmation .gem-c-cookie-banner__hide-button", text: "Hide this message"
     assert_select '.gem-c-cookie-banner__hide-button[data-module=track-click][data-track-category=cookieBanner][data-track-action="Hide cookie banner"]'
   end
 
@@ -51,15 +57,24 @@ describe "Cookie banner", type: :view do
       confirmation_message: "You’ve accepted all cookies.",
     )
     assert_select ".gem-c-cookie-banner__message .govuk-heading-m", text: "Can we store analytics cookies on your device?"
-    assert_select ".gem-c-cookie-banner__message .govuk-body", text: "This is some custom text with a link to the cookies page"
+    assert_select ".govuk-cookie-banner__content", text: "This is some custom text with a link to the cookies page"
     assert_select ".govuk-link[href='/cookies']", text: "cookies page"
     assert_select ".gem-c-cookie-banner__confirmation-message", text: "You’ve accepted all cookies."
   end
 
+  it "renders with multi paragraph content" do
+    render_component(
+      title: "Can we store analytics cookies on your device?",
+      text: ["Paragraph 1", "Paragraph 2"],
+      confirmation_message: "You’ve accepted all cookies.",
+    )
+    assert_select "p.govuk-body", text: "Paragraph 1"
+    assert_select "p.govuk-body", text: "Paragraph 2"
+  end
+
   it "renders with a custom preferences page link" do
     render_component(cookie_preferences_href: "/cookies")
-    assert_select ".gem-c-cookie-banner__button-settings a[href='/cookies']", text: "Set cookie preferences"
-    assert_select '.gem-c-cookie-banner__button-settings a[data-module=track-click][data-track-category=cookieBanner][data-track-action="Cookie banner settings clicked"]'
+    assert_select ".govuk-button-group a[href='/cookies']", text: "View cookies"
 
     # Check that the confirmation message also includes the custom URL
     assert_select ".gem-c-cookie-banner__confirmation-message a[href='/cookies']", text: "change your cookie settings"
@@ -91,8 +106,8 @@ describe "Cookie banner", type: :view do
     )
 
     assert_select ".gem-c-cookie-banner.gem-c-cookie-banner--services"
-    assert_select ".gem-c-cookie-banner__buttons--flex button[data-module=track-click][data-track-category=cookieBanner][data-accept-cookies=true]", text: "Yes"
-    assert_select ".gem-c-cookie-banner__buttons--flex button[data-module=track-click][data-track-category=cookieBanner][data-hide-cookie-banner=true]", text: "No"
-    assert_select ".gem-c-cookie-banner__buttons--flex .gem-c-cookie-banner__link[href='/cookies']", text: "How we use cookies"
+    assert_select ".govuk-button-group button[data-module=track-click][data-track-category=cookieBanner][data-accept-cookies=true]", text: "Yes"
+    assert_select ".govuk-button-group button[data-module=track-click][data-track-category=cookieBanner][data-reject-cookies=true]", text: "No"
+    assert_select ".govuk-button-group .govuk-link[href='/cookies']", text: "How we use cookies"
   end
 end
