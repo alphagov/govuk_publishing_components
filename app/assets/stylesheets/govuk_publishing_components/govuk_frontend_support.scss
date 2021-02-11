@@ -2,11 +2,3 @@
 // It provides govuk-frontend but adds no weight to the compiled CSS
 @import "components/helpers/govuk-frontend-settings";
 @import "govuk/base";
-$govuk-colours-organisations: map-merge(
-  $govuk-colours-organisations,
-  (
-    "foreign-commonwealth-development-office": (
-      colour: #012169
-    )
-  )
-);
