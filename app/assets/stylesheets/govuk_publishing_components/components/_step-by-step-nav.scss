@@ -141,6 +141,10 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
   .gem-c-step-nav--large & {
     margin-left: em(5, 16);
   }
+
+  svg {
+    pointer-events: none;
+  }
 }
 
 .gem-c-step-nav__button-text {
