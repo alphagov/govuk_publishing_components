@@ -12,6 +12,7 @@
 * Update `govuk-frontend` base SCSS imports ([PR #1922](https://github.com/alphagov/govuk_publishing_components/pull/1922))
 * Remove redundant import in accordion component ([PR #1923](https://github.com/alphagov/govuk_publishing_components/pull/1923))
 * Fix toggle click tracking on step-by-steps ([PR #1925](https://github.com/alphagov/govuk_publishing_components/pull/1925))
+* Accordion summary design adjustment ([PR #1926](https://github.com/alphagov/govuk_publishing_components/pull/1926))
 
 ## 24.1.0
 
