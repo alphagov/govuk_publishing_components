@@ -1,14 +1,4 @@
 // This file should be included in an application prior to specific components
 // It provides govuk-frontend but adds no weight to the compiled CSS
 @import "components/helpers/govuk-frontend-settings";
-@import "govuk/settings/all";
-@import "govuk/tools/all";
-@import "govuk/helpers/all";
-$govuk-colours-organisations: map-merge(
-  $govuk-colours-organisations,
-  (
-    "foreign-commonwealth-development-office": (
-      colour: #012169
-    )
-  )
-);
+@import "govuk/base";
