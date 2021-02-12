@@ -14,8 +14,7 @@ $gem-c-accordion-bottom-border-width: 1px;
   padding-top: govuk-spacing(2) 0;
 }
 
-.gem-c-accordion__section-heading,
-.gem-c-accordion__section-summary {
+.gem-c-accordion__section-heading {
   margin: govuk-spacing(1) 0;
 }
 
@@ -240,7 +239,7 @@ $gem-c-accordion-bottom-border-width: 1px;
 
   // Change the summary subheading size.
   .gem-c-accordion__section-summary {
-    @include govuk-responsive-margin(2, "top");
+    @include govuk-responsive-margin(1, "top");
     @include govuk-responsive-margin(2, "bottom");
     @include govuk-typography-common;
     @include govuk-typography-responsive($size: 19);
@@ -301,7 +300,6 @@ $gem-c-accordion-bottom-border-width: 1px;
 
     .gem-c-accordion__section-summary {
       @include govuk-typography-responsive($size: 16, $important: true);
-      margin: govuk-spacing(1) 0;
     }
 
     .gem-c-accordion__toggle-link {
