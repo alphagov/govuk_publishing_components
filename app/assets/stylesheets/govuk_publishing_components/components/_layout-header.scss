@@ -31,7 +31,7 @@
 }
 
 .gem-c-layout-header--search-left {
-  .gem-c-header__menu-button {
+  .gem-c-header__menu-button.govuk-header__menu-button {
     margin-top: - govuk-spacing(7);
     left: 0;
   }
@@ -70,7 +70,7 @@
       margin-top: 0;
     }
 
-    .gem-c-header__content {
+    .gem-c-header__content.govuk-header__content {
       @include govuk-grid-column(two-thirds);
       padding-left: govuk-spacing(6);
       padding-right: govuk-spacing(1);
@@ -78,10 +78,16 @@
   }
 }
 
+.gem-c-layout-header__search.govuk-grid-column-one-third-from-desktop,
+.gem-c-layout-header__logo.govuk-grid-column-one-third-from-desktop,
+.gem-c-layout-header__search.govuk-grid-column-one-third,
+.gem-c-layout-header__logo.govuk-grid-column-two-thirds {
+  padding-right: 0;
+  padding-left: 0;
+}
+
 .gem-c-layout-header__logo,
 .gem-c-layout-header__search {
-  padding: 0;
-
   @include govuk-media-query($until: "tablet") {
     margin-bottom: govuk-spacing(3);
   }
@@ -96,8 +102,9 @@
   }
 }
 
-.gem-c-header__content {
+.gem-c-header__content.govuk-header__content {
   width: auto;
+  padding-left: 0;
 
   @include govuk-media-query($from: desktop) {
     float: right;
@@ -158,4 +165,13 @@
   @include govuk-media-query($from: tablet) {
     display: block;
   }
+}
+
+.govuk-header__menu-button.gem-c-header__menu-button {
+  top: govuk-spacing(4);
+  right: 0;
+}
+
+.gem-c-header__nav {
+  clear: both;
 }
