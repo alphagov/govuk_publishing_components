@@ -41,11 +41,11 @@
                 "aria-hidden": true,
                 data: data_attributes do %>
       <% if attachment.document? %>
-        <%= render "govuk_publishing_components/components/attachment/thumbnail_document.svg" %>
+        <%= render "govuk_publishing_components/components/attachment/thumbnail_document" %>
       <% elsif attachment.spreadsheet? %>
-        <%= render "govuk_publishing_components/components/attachment/thumbnail_spreadsheet.svg" %>
+        <%= render "govuk_publishing_components/components/attachment/thumbnail_spreadsheet" %>
       <% else %>
-        <%= render "govuk_publishing_components/components/attachment/thumbnail_generic.svg" %>
+        <%= render "govuk_publishing_components/components/attachment/thumbnail_generic" %>
       <% end %>
     <% end %>
   <% end %>
