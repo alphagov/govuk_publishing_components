@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 24.1.1
 
 * Fix deprecation warnings when running tests ([PR #1899](https://github.com/alphagov/govuk_publishing_components/pull/1899))
 * Update `govuk-frontend` base SCSS imports ([PR #1922](https://github.com/alphagov/govuk_publishing_components/pull/1922))
