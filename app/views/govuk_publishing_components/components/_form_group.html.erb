@@ -1,8 +1,6 @@
 <%
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
-  field_id =
-
   id ||= "input-#{SecureRandom.hex(4)}"
   value ||= nil
   type ||= "text"

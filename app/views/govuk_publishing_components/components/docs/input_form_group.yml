@@ -1,0 +1,172 @@
+name: Form input
+description: A form input field and an associated label.
+accessibility_criteria: |
+  Inputs in the component must:
+
+  * accept focus
+  * be focusable with a keyboard
+  * be usable with a keyboard
+  * be usable with touch
+  * indicate when they have focus
+  * be recognisable as form input elements
+  * have correctly associated labels
+  * be of the appropriate type for their use, e.g. password inputs should be of type 'password'
+
+  Labels use the [label component](/component-guide/label).
+
+  Avoid using autofocus and tabindex unless you have user research to support this behaviour.
+govuk_frontend_components:
+  - text-input
+examples:
+  default:
+    data:
+      label:
+        text: "What is your name?"
+      name: "name"
+  specific_input_type:
+    description: By default the input will be type="text". This parameter accepts an alternative, e.g. "search" or "email". No validation is done on this input.
+    data:
+      label:
+        text: "What is your email address?"
+      name: "address"
+      type: "email"
+  numeric_input:
+    description: If input is set to `type="number"` we set the component up as described in the [Design System guidance](https://design-system.service.gov.uk/components/text-input/#numbers) adding `inputmode` and `pattern`. These values can be overridden if necessary.
+    data:
+      label:
+        text: "Account number"
+      name: "account-number"
+      type: "number"
+  with_an_identifier:
+    description: Give the input a specific ID.
+    data:
+      label:
+        text: "Has an id"
+      name: "hasid"
+      id: "hasid"
+  with_aria_attributes:
+    description: |
+      The component accepts two possible aria attributes: aria-describedby and aria-controls.
+
+      [aria-describedby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-describedby_attribute) is used to indicate the ID of the element that describes the input. This will be overridden in the event of an error, where the error will be used for the describedby attribute value. This example uses the ID of the main container for demonstration purposes as there aren't any useful elements with IDs in the component guide. In real use this would be passed the ID of an element that correctly described the input.
+
+      aria-controls allows the addition of an aria-controls attribute, for use in places like the finders where the page is updated dynamically after value changes to the input.
+    data:
+      label:
+        text: "This is an example only and may not work with a screen reader"
+      name: "labelledby"
+      describedby: "wrapper"
+      controls: "wrapper"
+  with_hint:
+    data:
+      label:
+        text: "What is your name?"
+      name: "name"
+      hint: "Please provide your first and last name"
+  with_error:
+    data:
+      label:
+        text: "What is your name?"
+      name: "name"
+      error_message: "Please could you provide your name"
+  with_error_items:
+    data:
+      label:
+        text: "What is your name?"
+      name: "name"
+      error_items:
+      - text: Descriptive link to the question with an error 1
+      - text: Descriptive link to the question with an error 2
+  with_value:
+    data:
+      label:
+        text: "Search for"
+      name: "name"
+      value: "moose"
+  autofocused:
+    data:
+      label:
+        text: "Username"
+      name: "username"
+      autofocus: true
+      tabindex: 0
+  readonly:
+    data:
+      label:
+        text: "Readonly attribute"
+      name: "readonly"
+      value: "You can't change me"
+      readonly: true
+  with_maxlength:
+    data:
+      label:
+        text: "An input that doesn't allow many characters"
+      name: "name"
+      value: "You can't type more"
+      maxlength: 10
+  with_autocomplete:
+    data:
+      label:
+        text: "Automatically complete the field with a user's email address (in supporting browsers)"
+      name: "name"
+      type: "email"
+      autocomplete: "email"
+  with_custom_width:
+    data:
+      label:
+        text: "National insurance number"
+      hint: It’s on your National insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
+      name: "name"
+      width: 10
+  with_search_icon:
+    data:
+      label:
+        text: "Search the internet"
+      name: "search-box"
+      type: "search"
+      search_icon: true
+  with_label_as_heading:
+    description: |
+      Wraps the label in a heading tag. Valid options are 1 to 6. To adjust the size of the label/heading, use the `heading_size` option. Valid options are 's', 'm', 'l' and 'xl'.
+
+      Based on the [heading/label pattern](https://design-system.service.gov.uk/patterns/question-pages/) in the Design System.
+    data:
+      label:
+        text: "This is a heading 1 and a label"
+      name: "name"
+      heading_level: 1
+      heading_size: "l"
+  with_prefix:
+    description: To help users understand how the input should look like. Often used for units of measurement.
+    data:
+      label:
+        text: "Cost, in pounds"
+      name: "cost"
+      width: 10
+      prefix: "£"
+  with_suffix:
+    description: To help users understand how the input should look like. Often used for units of measurement.
+    data:
+      label:
+        text: "Lead times in days"
+      name: "lead-times"
+      width: 10
+      suffix: "days"
+  with_prefix_and_suffix:
+    description: To help users understand how the input should look like. Often used for units of measurement.
+    data:
+      label:
+        text: "Cost per item, in pounds"
+      name: "cost-per-item"
+      width: 10
+      prefix: "£"
+      suffix: "per item"
+  with_suffix_and_error:
+    description: To help users understand how the input should look like. Often used for units of measurement.
+    data:
+      label:
+        text: "Lead times in days"
+      error_message: "Enter the approximate lead time in days, do not include words or symbols."
+      name: "lead-times"
+      width: 10
+      suffix: "days"
