@@ -13,7 +13,7 @@
   <%= raw JSON.pretty_generate(breadcrumb_presenter.structured_data) %>
 </script>
 
-<div class="<%= classes %>" data-module="track-click">
+<div class="<%= classes %>" data-module="gem-track-click">
   <ol class="govuk-breadcrumbs__list">
     <% breadcrumbs.each_with_index do |crumb, index| %>
       <% breadcrumb = GovukPublishingComponents::Presenters::Breadcrumb.new(crumb, index) %>

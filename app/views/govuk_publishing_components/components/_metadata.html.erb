@@ -16,7 +16,7 @@
   classes << "gem-c-metadata--inverse" if inverse
 %>
 <%= content_tag :div, class: classes, data: { module: "gem-toggle" } do %>
-  <dl data-module="track-click">
+  <dl data-module="gem-track-click">
     <% if from.any? %>
       <dt class="gem-c-metadata__term"><%= t("govuk_component.metadata.from", default: "From") %>:</dt>
       <dd class="gem-c-metadata__definition">

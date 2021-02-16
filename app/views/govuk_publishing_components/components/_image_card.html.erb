@@ -9,7 +9,7 @@
 %>
 <% if card_helper.href || card_helper.extra_links.any? %>
   <div class="<%= classes %> <%= brand_helper.brand_class %>"
-    <%= "data-module=track-click" if card_helper.is_tracking? %>
+    <%= "data-module=gem-track-click" if card_helper.is_tracking? %>
     <%= "lang=#{card_helper.lang}" if card_helper.lang %>>
     <div class="gem-c-image-card__text-wrapper">
       <div class="gem-c-image-card__header-and-context-wrapper">

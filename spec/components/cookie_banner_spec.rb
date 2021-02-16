@@ -18,13 +18,13 @@ describe "Cookie banner", type: :view do
   it "renders a button for accepting cookies" do
     render_component({})
     assert_select ".govuk-button-group .gem-c-button", text: "Accept additional cookies"
-    assert_select '.govuk-button-group .gem-c-button[data-module=track-click][data-track-category=cookieBanner][data-track-action="Cookie banner accepted"]'
+    assert_select '.govuk-button-group .gem-c-button[data-module=gem-track-click][data-track-category=cookieBanner][data-track-action="Cookie banner accepted"]'
   end
 
   it "renders a button for rejecting cookies" do
     render_component({})
     assert_select ".govuk-button-group .gem-c-button", text: "Reject additional cookies"
-    assert_select '.govuk-button-group .gem-c-button[data-module=track-click][data-track-category=cookieBanner][data-track-action="Cookie banner rejected"]'
+    assert_select '.govuk-button-group .gem-c-button[data-module=gem-track-click][data-track-category=cookieBanner][data-track-action="Cookie banner rejected"]'
   end
 
   it "renders a link for viewing cookie settings" do
@@ -40,14 +40,14 @@ describe "Cookie banner", type: :view do
   it "renders a link to the settings page within the confirmation message" do
     render_component({})
     assert_select ".gem-c-cookie-banner__confirmation-message a", text: "change your cookie settings"
-    assert_select '.gem-c-cookie-banner__confirmation-message a[data-module=track-click][data-track-category=cookieBanner][data-track-action="Cookie banner settings clicked from confirmation"]'
+    assert_select '.gem-c-cookie-banner__confirmation-message a[data-module=gem-track-click][data-track-category=cookieBanner][data-track-action="Cookie banner settings clicked from confirmation"]'
   end
 
   it "renders a hide link within the confirmation banner" do
     render_component({})
 
     assert_select ".gem-c-cookie-banner__confirmation .gem-c-cookie-banner__hide-button", text: "Hide this message"
-    assert_select '.gem-c-cookie-banner__hide-button[data-module=track-click][data-track-category=cookieBanner][data-track-action="Hide cookie banner"]'
+    assert_select '.gem-c-cookie-banner__hide-button[data-module=gem-track-click][data-track-category=cookieBanner][data-track-action="Hide cookie banner"]'
   end
 
   it "renders with custom content" do
@@ -78,7 +78,7 @@ describe "Cookie banner", type: :view do
 
     # Check that the confirmation message also includes the custom URL
     assert_select ".gem-c-cookie-banner__confirmation-message a[href='/cookies']", text: "change your cookie settings"
-    assert_select '.gem-c-cookie-banner__confirmation-message a[data-module=track-click][data-track-category=cookieBanner][data-track-action="Cookie banner settings clicked from confirmation"]'
+    assert_select '.gem-c-cookie-banner__confirmation-message a[data-module=gem-track-click][data-track-category=cookieBanner][data-track-action="Cookie banner settings clicked from confirmation"]'
   end
 
   it "renders the 'analytics only' version" do
@@ -106,8 +106,8 @@ describe "Cookie banner", type: :view do
     )
 
     assert_select ".gem-c-cookie-banner.gem-c-cookie-banner--services"
-    assert_select ".govuk-button-group button[data-module=track-click][data-track-category=cookieBanner][data-accept-cookies=true]", text: "Yes"
-    assert_select ".govuk-button-group button[data-module=track-click][data-track-category=cookieBanner][data-reject-cookies=true]", text: "No"
+    assert_select ".govuk-button-group button[data-module=gem-track-click][data-track-category=cookieBanner][data-accept-cookies=true]", text: "Yes"
+    assert_select ".govuk-button-group button[data-module=gem-track-click][data-track-category=cookieBanner][data-reject-cookies=true]", text: "No"
     assert_select ".govuk-button-group .govuk-link[href='/cookies']", text: "How we use cookies"
   end
 end

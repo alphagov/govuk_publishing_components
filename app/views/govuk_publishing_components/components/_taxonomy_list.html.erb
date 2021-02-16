@@ -9,7 +9,7 @@
   taxonomy_list_helper = GovukPublishingComponents::Presenters::TaxonomyListHelper.new(image_cards)
 %>
 <% if highlight_box || document_list || image_cards %>
-  <ul class="gem-c-taxonomy-list" data-module="track-click">
+  <ul class="gem-c-taxonomy-list" data-module="gem-track-click">
     <% if image_cards %>
       <% taxonomy_list_helper.image_card_data.each do |image_card| %>
         <li class="gem-c-taxonomy-list__item">
