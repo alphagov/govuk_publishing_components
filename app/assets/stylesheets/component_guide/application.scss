@@ -262,14 +262,6 @@ html {
   }
 }
 
-// Hide survey banner
-// stylelint-disable selector-max-id
-#user-satisfaction-survey-container,
-#global-cookie-message {
-  display: none;
-}
-// stylelint-enable selector-max-id
-
 // Rouge syntax highlighting
 // Based on https://github.com/alphagov/tech-docs-template/blob/master/template/source/stylesheets/palette/_syntax-highlighting.scss
 
