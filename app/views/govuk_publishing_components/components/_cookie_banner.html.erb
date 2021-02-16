@@ -1,72 +1,83 @@
 <%
   id ||= 'global-cookie-message'
-  title ||= "Tell us whether you accept cookies"
-  text ||= raw("We use <a class='govuk-link' href='/help/cookies'>cookies to collect information</a> about how you use GOV.UK. We use this information to make the website work as well as possible and improve government services.")
+  title ||= "Cookies on GOV.UK"
+  text ||= ["We use some essential cookies to make this website work.", "We’d like to set additional cookies to understand how you use GOV.UK, remember your settings and improve government services.", "We also use cookies set by other sites to help us deliver content from their services."]
+  if text.kind_of?(Array)
+    newtext = ""
+    text.each do |t|
+      newtext += "<p class='govuk-body'>#{t}</p>"
+    end
+    text = newtext
+  else
+    text = "<p class='govuk-body'>#{text}</p>"
+  end
+  text = raw(text)
+
   cookie_preferences_href ||= "/help/cookies"
-  confirmation_message ||= raw("You’ve accepted all cookies. You can <a class='govuk-link' href='#{cookie_preferences_href}' data-module='track-click' data-track-category='cookieBanner' data-track-action='Cookie banner settings clicked from confirmation'>change your cookie settings</a> at any time.")
+  confirmation_message ||= raw("You can <a class='govuk-link' href='#{cookie_preferences_href}' data-module='track-click' data-track-category='cookieBanner' data-track-action='Cookie banner settings clicked from confirmation'>change your cookie settings</a> at any time.")
   services_cookies ||= nil
   css_classes = %w(gem-c-cookie-banner govuk-clearfix)
   css_classes << "gem-c-cookie-banner--services" if services_cookies
 %>
-
 <div id="<%= id %>" class="<%= css_classes.join(' ') %>" data-module="cookie-banner" role="region" aria-label="cookie banner" data-nosnippet>
-  <div class="gem-c-cookie-banner__wrapper govuk-width-container">
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <div class="gem-c-cookie-banner__message">
-          <h2 class="govuk-heading-m"><%= title %></h2>
-          <p class="govuk-body"><%= text %></p>
+  <div class="govuk-cookie-banner js-banner-wrapper" role="region" aria-label="<%= title %>">
+    <div class="gem-c-cookie-banner__message govuk-cookie-banner__message govuk-width-container">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-cookie-banner__heading govuk-heading-m"><%= title %></h2>
+          <div class="govuk-cookie-banner__content">
+            <%= text %>
+          </div>
         </div>
-        <% if services_cookies %>
-          <div class="gem-c-cookie-banner__buttons gem-c-cookie-banner__buttons--flex">
+      </div>
+      <% if services_cookies %>
+          <div class="govuk-button-group">
             <%= render "govuk_publishing_components/components/button", {
+              name: "cookies",
               text: services_cookies.dig(:yes, :text) || "Yes",
-              inline_layout: true,
               data_attributes: { module: "track-click", "accept-cookies": "true", }.merge(services_cookies.dig(:yes, :data_attributes) || {})
             } %>
             <%= render "govuk_publishing_components/components/button", {
+              name: "cookies",
               text: services_cookies.dig(:no, :text) || "No",
-              inline_layout: true,
-              data_attributes: { module: "track-click", "hide-cookie-banner": "true", }.merge(services_cookies.dig(:no, :data_attributes) || {})
+              data_attributes: { module: "track-click", "reject-cookies": "true", }.merge(services_cookies.dig(:no, :data_attributes) || {})
             } %>
             <% if services_cookies[:cookie_preferences] %>
-              <%= link_to services_cookies.dig(:cookie_preferences, :text), services_cookies.dig(:cookie_preferences, :href), class: "gem-c-cookie-banner__link govuk-link" %>
+              <%= link_to services_cookies.dig(:cookie_preferences, :text), services_cookies.dig(:cookie_preferences, :href), class: "govuk-link" %>
             <% end %>
           </div>
         <% else %>
-          <div class="gem-c-cookie-banner__buttons">
-            <div class="gem-c-cookie-banner__button gem-c-cookie-banner__button-accept govuk-grid-column-full govuk-grid-column-one-half-from-desktop">
-              <%= render "govuk_publishing_components/components/button", {
-                text: "Accept all cookies",
-                inline_layout: true,
+          <div class="govuk-button-group">
+            <%= render "govuk_publishing_components/components/button", {
+                name: "cookies",
+                text: "Accept additional cookies",
                 data_attributes: {
                   module: "track-click",
                   "accept-cookies": "true",
                   "track-category": "cookieBanner",
-                  "track-action": "Cookie banner accepted"
+                  "track-action": "Cookie banner accepted",
+                  "cookie-types": "all",
                 }
-              } %>
-            </div>
-            <div class="gem-c-cookie-banner__button gem-c-cookie-banner__button-settings govuk-grid-column-full govuk-grid-column-one-half-from-desktop">
-              <%= render "govuk_publishing_components/components/button", {
-                text: "Set cookie preferences",
-                href: cookie_preferences_href,
-                inline_layout: true,
+            } %>
+            <%= render "govuk_publishing_components/components/button", {
+                name: "cookies",
+                text: "Reject additional cookies",
                 data_attributes: {
                   module: "track-click",
+                  "reject-cookies": "true",
                   "track-category": "cookieBanner",
-                  "track-action": "Cookie banner settings clicked"
+                  "track-action": "Cookie banner rejected",
                 }
-              } %>
-            </div>
+            } %>
+            <a class="govuk-link" href="<%= cookie_preferences_href %>">View cookies</a>
           </div>
         <% end %>
-      </div>
     </div>
   </div>
-
-  <div class="gem-c-cookie-banner__confirmation govuk-width-container" tabindex="-1">
+  <div class="gem-c-cookie-banner__confirmation govuk-width-container" tabindex="-1" hidden>
     <p class="gem-c-cookie-banner__confirmation-message" role="alert"><%= confirmation_message %></p>
-    <button class="gem-c-cookie-banner__hide-button" data-hide-cookie-banner="true" data-module="track-click" data-track-category="cookieBanner" data-track-action="Hide cookie banner">Hide</button>
+    <div class="govuk-button-group">
+      <button class="gem-c-cookie-banner__hide-button govuk-button" data-hide-cookie-banner="true" data-module="track-click" data-track-category="cookieBanner" data-track-action="Hide cookie banner">Hide this message</button>
+    </div>
   </div>
 </div>

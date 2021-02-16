@@ -1,6 +1,8 @@
 name: Cookie banner
 description: Help users manage their personal data by telling them when you store cookies on their device.
 body: |
+  By default the cookie banner is shown to all users with just a link to the settings page. If JS is on this is enhanced to show accept/reject buttons if preferences aren't set, or to hide the banner if they are.
+
   Setting `data-hide-cookie-banner="true"` on any link inside the banner will overwrite the default action and when clicked will dismiss the cookie banner for a period of 365 days (approx. 1 year).
 
   If the examples below are not showing the banner, make sure the `cookies_preferences_set` cookie is not present or is set to false.
@@ -18,6 +20,13 @@ examples:
       title: "Can we store analytics cookies on your device?"
       text: "This is some custom text in my cookie banner which lets users know what we're using cookies for. I can also include a link to the <a class='govuk-link' href='/cookies'>cookies page</a>"
       confirmation_message: "You’ve accepted all cookies."
+
+  with_multi_paragraph_custom_content:
+    data:
+      title: "Can we store analytics cookies on your device?"
+      text: ["This is some custom text in my cookie banner.","There are three paragraphs.","They are passed as an array"]
+      confirmation_message: "You’ve accepted all cookies."
+
   with_custom_cookie_preferences_href:
     data:
       cookie_preferences_href: "/cookies"

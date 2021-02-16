@@ -1,3 +1,4 @@
+@import "govuk/components/cookie-banner/cookie-banner";
 $govuk-cookie-banner-background: govuk-colour("light-grey", "grey-4");
 
 .js-enabled {
@@ -7,48 +8,12 @@ $govuk-cookie-banner-background: govuk-colour("light-grey", "grey-4");
 }
 
 .gem-c-cookie-banner {
-  @include govuk-font($size: 16);
-  padding: govuk-spacing(2) 0;
   background-color: $govuk-cookie-banner-background;
 }
 
-.gem-c-cookie-banner--services {
+// can't be used without js so implement there
+.gem-c-cookie-banner .gem-c-button {
   display: none;
-}
-
-.gem-c-cookie-banner__message {
-  display: inline-block;
-  padding-bottom: govuk-spacing(2);
-
-  @include govuk-font($size: 16);
-  @include govuk-media-query($from: desktop) {
-    padding-right: govuk-spacing(4);
-  }
-}
-
-.gem-c-cookie-banner__button {
-  &.govuk-grid-column-one-half-from-desktop {
-    padding: 0;
-  }
-
-  .govuk-button {
-    @include govuk-media-query($from: desktop) {
-      width: 90%;
-    }
-
-    @include govuk-media-query($until: desktop) {
-      margin-bottom: govuk-spacing(4);
-    }
-  }
-}
-
-// Only show accept button if users have js and can accept
-.gem-c-cookie-banner__button-accept {
-  display: none;
-}
-
-.js-enabled .gem-c-cookie-banner__button-accept {
-  display: inline-block;
 }
 
 .gem-c-cookie-banner__confirmation {
@@ -81,51 +46,11 @@ $govuk-cookie-banner-background: govuk-colour("light-grey", "grey-4");
   }
 }
 
-.gem-c-cookie-banner__hide-button {
-  @include govuk-font($size: 19);
-  outline: 0;
-  border: 0;
-  background: none;
-  text-decoration: underline;
-  color: $govuk-link-colour;
-  padding: govuk-spacing(0);
-  margin-top: govuk-spacing(2);
-
-  &:hover {
-    color: $govuk-link-hover-colour;
-    cursor: pointer;
-  }
-
-  &:focus {
-    @include govuk-focused-text;
-  }
-
-  @include govuk-media-query($from: desktop) {
-    margin-top: govuk-spacing(0);
-    position: absolute;
-    right: govuk-spacing(1);
-  }
-}
-
-.gem-c-cookie-banner__buttons--flex {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-
-  .govuk-button,
-  .gem-c-cookie-banner__link {
-    flex-grow: 1;
-    flex-basis: 10rem;
-    margin-right: govuk-spacing(3);
-    margin-bottom: govuk-spacing(3);
-  }
-}
-
 // Override the styles from govuk_template
 // stylelint-disable selector-max-id
 .gem-c-cookie-banner#global-cookie-message {
   background-color: $govuk-cookie-banner-background;
-  padding: govuk-spacing(4) 0;
+  padding: 0;
   box-sizing: border-box;
 
   .gem-c-cookie-banner__message,
@@ -135,18 +60,13 @@ $govuk-cookie-banner-background: govuk-colour("light-grey", "grey-4");
     @include govuk-font($size: 19);
   }
 
-  .gem-c-cookie-banner__message {
-    margin-bottom: 0;
-  }
-
   p {
     @include govuk-font($size: 19);
     margin: 0 0 govuk-spacing(2) 0;
   }
 
-  .gem-c-cookie-banner__confirmation-message {
-    @include govuk-media-query($from: desktop) {
-      margin-bottom: 0;
-    }
+  .gem-c-cookie-banner__message,
+  .gem-c-cookie-banner__confirmation {
+    margin-bottom: - govuk-spacing(2);
   }
 }
