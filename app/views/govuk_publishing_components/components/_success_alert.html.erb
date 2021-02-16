@@ -1,10 +1,25 @@
 <% description ||= nil %>
 
-<%= tag.div class: "gem-c-success-alert", data: { module: "initial-focus" }, role: "alert", tabindex: "-1" do %>
-  <% if description.present? %>
-    <%= tag.h2 message, class: "gem-c-success-summary__title" %>
-    <%= tag.div description, class: "gem-c-success-summary__body" %>
-  <% else %>
-    <%= tag.p message, class: "gem-c-success-alert__message" %>
-  <% end %>
+<%= tag.div class: "gem-c-success-alert govuk-notification-banner govuk-notification-banner--success",
+  role: "alert",
+  tabindex: "-1",
+  aria: {
+    labelledby: "govuk-notification-banner-title",
+  },
+  data: {
+    module: "initial-focus",
+  } do %>
+  <div class="govuk-notification-banner__header">
+    <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+      <%= t("govuk_component.success_alert.success", default: "Success") %>
+    </h2>
+  </div>
+  <div class="govuk-notification-banner__content">
+    <% if description.present? %>
+      <%= tag.h3 message, class: "govuk-notification-banner__heading" %>
+      <%= tag.div description %>
+    <% else %>
+      <%= tag.p message, class: "govuk-body gem-c-success-alert__message" %>
+    <% end %>
+  </div>
 <% end %>

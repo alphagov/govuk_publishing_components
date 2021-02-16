@@ -1,36 +1,5 @@
-.gem-c-success-alert {
-  color: $govuk-text-colour;
-  padding: govuk-spacing(3);
-  border: $govuk-border-width-narrow solid $govuk-success-colour;
-  @include govuk-responsive-margin(8, "bottom");
-
-  @include govuk-media-query($from: tablet) {
-    padding: govuk-spacing(4);
-    border-width: $govuk-border-width;
-  }
-}
+@import "govuk/components/notification-banner/notification-banner";
 
 .gem-c-success-alert__message {
   @include govuk-font(19, $weight: bold);
-  margin: 0;
-}
-
-.gem-c-success-summary__title {
-  margin-top: 0;
-  margin-bottom: govuk-spacing(3);
-
-  @include govuk-media-query($from: tablet) {
-    margin-bottom: govuk-spacing(4);
-  }
-
-  @include govuk-font(24, $weight: bold);
-}
-
-.gem-c-success-summary__body {
-  @include govuk-font(19);
-  margin: 0;
-}
-
-.gem-c-success-alert:focus {
-  outline: $govuk-focus-width solid $govuk-focus-colour;
 }
