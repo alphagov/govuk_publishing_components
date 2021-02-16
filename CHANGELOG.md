@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix Sass warning for extending a compound selector ([PR #1933](https://github.com/alphagov/govuk_publishing_components/pull/1933))
+
 ## 24.3.0
 
 * Fix cookie banner preview in the component guide ([PR #1935](https://github.com/alphagov/govuk_publishing_components/pull/1935))

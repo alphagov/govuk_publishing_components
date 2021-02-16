@@ -34,6 +34,21 @@ $large-input-size: 50px;
   }
 }
 
+%gem-c-search-input-focus {
+  outline: $govuk-focus-width solid $govuk-focus-colour;
+  // Ensure outline appears outside of the element
+  outline-offset: 0;
+  // Double the border by adding its width again. Use `box-shadow` for this // instead of changing `border-width`
+  // Also, `outline` cannot be utilised here as it is already used for the yellow focus state.
+  box-shadow: inset 0 0 0 $govuk-border-width-form-element;
+
+  @include govuk-if-ie8 {
+    // IE8 doesn't support `box-shadow` so double the border with
+    // `border-width`.
+    border-width: $govuk-border-width-form-element * 2;
+  }
+}
+
 .gem-c-search__input[type="search"] { // overly specific to prevent some overrides from outside
   @include govuk-font($size: 19, $line-height: (28 / 19));
   margin: 0;
@@ -59,25 +74,14 @@ $large-input-size: 50px;
   }
 
   &:focus {
-    outline: $govuk-focus-width solid $govuk-focus-colour;
-    // Ensure outline appears outside of the element
-    outline-offset: 0;
-    // Double the border by adding its width again. Use `box-shadow` for this // instead of changing `border-width`
-    // Also, `outline` cannot be utilised here as it is already used for the yellow focus state.
-    box-shadow: inset 0 0 0 $govuk-border-width-form-element;
-
-    @include govuk-if-ie8 {
-      // IE8 doesn't support `box-shadow` so double the border with
-      // `border-width`.
-      border-width: $govuk-border-width-form-element * 2;
-    }
+    @extend %gem-c-search-input-focus;
   }
 }
 
 @include govuk-compatibility(govuk_template) {
   //  ultra specific rule overrides focus styling from govuk_template
   #global-header .gem-c-search__input[type="search"]:focus { // stylelint-disable selector-max-id
-    @extend .gem-c-search__input[type="search"]:focus; // stylelint-disable scss/at-extend-no-missing-placeholder
+    @extend %gem-c-search-input-focus;
   }
 }
 
