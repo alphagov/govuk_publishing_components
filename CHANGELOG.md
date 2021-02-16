@@ -9,7 +9,7 @@
 
 ## Unreleased
 
-* Update cookies banner ([PR #1918](https://github.com/alphagov/govuk_publishing_components/pull/1918))
+* Update cookies banner to align it with govuk-frontend ([PR #1918](https://github.com/alphagov/govuk_publishing_components/pull/1918))
 
 ## 24.1.1
 
