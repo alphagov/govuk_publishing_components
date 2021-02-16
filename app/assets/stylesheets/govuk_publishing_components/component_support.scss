@@ -1,6 +1,7 @@
 // This file should be included in an application prior to specific components
 // It provides supporting gem component helpers and mixins
 // and everything else from govuk-frontend not included in govuk_frontend_support
+@import "govuk/base";
 @import "govuk/core/all";
 @import "govuk/objects/all";
 @import "govuk/utilities/all";

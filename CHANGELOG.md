@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix govuk-frontend deprecation on component_support ([PR #1934](https://github.com/alphagov/govuk_publishing_components/pull/1934))
+
 ## 24.2.0
 
 * Update cookies banner to align it with govuk-frontend ([PR #1918](https://github.com/alphagov/govuk_publishing_components/pull/1918))
