@@ -46,11 +46,18 @@ $govuk-cookie-banner-background: govuk-colour("light-grey", "grey-4");
   }
 }
 
+// Override style from design system so we can have consistent
+// padding on the the banner and the confirmation
+
+.govuk-cookie-banner {
+  padding-top: 0;
+}
+
 // Override the styles from govuk_template
 // stylelint-disable selector-max-id
 .gem-c-cookie-banner#global-cookie-message {
   background-color: $govuk-cookie-banner-background;
-  padding: 0;
+  padding: govuk-spacing(3) 0 0 0;
   box-sizing: border-box;
 
   .gem-c-cookie-banner__message,
