@@ -5,6 +5,7 @@
   id ||= "default-id-#{SecureRandom.hex(4)}"
   items ||= []
   condensed ||= false
+  anchor_navigation ||= false
 
   accordion_classes = %w(gem-c-accordion)
   accordion_classes << 'gem-c-accordion--condensed' if condensed
@@ -12,14 +13,13 @@
 
   data_attributes ||= {}
   data_attributes[:module] = 'gem-accordion'
+  data_attributes[:anchor_navigation] = anchor_navigation
 %>
 <% if items.any? %>
   <%= tag.div(class: accordion_classes, id: id, data: data_attributes) do %>
     <% items.each_with_index do |item, i| %>
       <%
         index = i + 1
-
-        item[:data_attributes] ||= nil
 
         section_classes = %w(gem-c-accordion__section)
         section_classes << 'gem-c-accordion__section--expanded' if item[:expanded]
@@ -29,7 +29,7 @@
 
       <%= tag.section(class: section_classes) do %>
         <div class="gem-c-accordion__section-header">
-          <%= content_tag(shared_helper.get_heading_level, class: 'gem-c-accordion__section-heading') do %>
+          <%= content_tag(shared_helper.get_heading_level, class: 'gem-c-accordion__section-heading', id: item[:heading][:id]) do %>
             <%= tag.span(item[:heading][:text], id: "#{id}-heading-#{index}", data: item[:data_attributes], class: 'gem-c-accordion__section-button') %>
           <% end %>
           <%= tag.div(item[:summary][:text], id: "#{id}-summary-#{index}", class: summary_classes) if item[:summary].present? %>

@@ -274,6 +274,35 @@ examples:
             text: "How people read"
           content:
             html: "<p class='govuk-body'>This is the content for How people read.</p>"
+  with_the_anchor_link_navigation:
+    description: |
+      Some apps require custom ids per accordion section heading for linking between those specific sections, sometimes across multiple pages. An example of this is on manuals pages where multiple manuals will each include large sets of accordions and will reference between specific sections for ease of access to that content. [Live example](https://www.gov.uk/guidance/how-to-publish-on-gov-uk/creating-and-updating-pages#associations).
+
+      This feature automatically opens accordions when an anchor link is clicked within another accordion that links to either the id of an accordion section heading or an id within the content of an accordion. This will also automatically navigate to and open accordions on page load using the same rules.
+
+      This feature won't be used if the `anchor_navigation` flag isn't passed as true to mitigate performance risk from event listeners on a large number of links.
+
+      Unlike with the accordion-wide custom id attribute, any ids passed to accordion headings as part of this feature aren't stored in `localStorage` so don't need to be unique across your domain, but **should still be unique in the context of the page**.
+    data:
+      anchor_navigation: true
+      items:
+        - heading:
+            text: "Writing well for the web"
+            id: "writing-well-for-the-web"
+          content:
+            html: "<p class='govuk-body'>This is the content for Writing well for the web.</p>"
+        - heading:
+            text: "Writing well for specialists"
+          content:
+            html: "<p class='govuk-body'>This is the content for Writing well for specialists.</p>"
+        - heading:
+            text: "Know your audience"
+          content:
+            html: "<p class='govuk-body'>This is the content for Know your audience.</p>"
+        - heading:
+            text: "How people read"
+          content:
+            html: "<p class='govuk-body'>This is the content for How people read.</p>"
   condensed_layout:
     description: |
       This is for when a smaller accordion is required. Since smaller screens trigger a single column layout, this modifier only makes the accordion smaller when viewed on large screens.
