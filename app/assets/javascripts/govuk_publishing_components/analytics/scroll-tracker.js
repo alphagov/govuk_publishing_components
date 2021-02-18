@@ -405,6 +405,34 @@
     ],
     '/eubusiness': [
       ['Heading', 'Additional help and support']
+    ],
+    '/coronavirus': [
+      ['Percent', 20],
+      ['Percent', 40],
+      ['Percent', 60],
+      ['Percent', 80],
+      ['Percent', 100]
+    ],
+    '/coronavirus/education-and-childcare': [
+      ['Percent', 20],
+      ['Percent', 40],
+      ['Percent', 60],
+      ['Percent', 80],
+      ['Percent', 100]
+    ],
+    '/coronavirus/worker-support': [
+      ['Percent', 20],
+      ['Percent', 40],
+      ['Percent', 60],
+      ['Percent', 80],
+      ['Percent', 100]
+    ],
+    '/coronavirus/business-support': [
+      ['Percent', 20],
+      ['Percent', 40],
+      ['Percent', 60],
+      ['Percent', 80],
+      ['Percent', 100]
     ]
   }
 
