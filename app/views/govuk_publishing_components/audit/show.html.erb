@@ -39,98 +39,105 @@
           </div>
         </details>
 
-        <div class="gem-c-accordion" data-module="gem-c-accordion" id="accordion-with-summary-sections">
-          <% @applications.each_with_index do |application, index| %>
-            <div class="gem-c-accordion__section ">
-              <div class="gem-c-accordion__section-header">
-                <h2 class="gem-c-accordion__section-heading">
-                  <span class="gem-c-accordion__section-button" id="accordion-with-summary-sections-heading-<%= index %>">
-                    <%= application[:name] %>
-                  </span>
-                </h2>
-                <div class="gem-c-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-<%= index %>">
-                  <% if application[:application_found] %>
-                    Warnings:
-                    <% if application[:warning_count] > 0 %>
-                      <strong class="govuk-tag govuk-tag--red"><%= application[:warning_count] %></strong>
-                    <% else %>
-                      <%= application[:warning_count] %>
-                    <% end %>
-                  <% else %>
-                    <strong class="govuk-tag govuk-tag--red">Application not found</strong>
-                  <% end %>
-                </div>
-              </div>
-              <div id="accordion-with-summary-sections-content-<%= index %>" class="gem-c-accordion__section-content" aria-labelledby="accordion-with-summary-sections-heading-<%= index %>">
-                <% if application[:application_found] %>
-                  <% application[:warnings].each do |warning| %>
-                    <p class="govuk-body">
-                      <strong class="govuk-tag">Warn</strong>
-                      <strong><%= warning[:component] %></strong> - <%= warning[:message] %>
-                    </p>
-                  <% end %>
+        <% #application_items = [] %>
+        <% application_items = @applications.map do |application| %>
+          <%
+            summary = '<strong class="govuk-tag govuk-tag--red">Application not found</strong>'
 
-                  <%= render "govuk_publishing_components/components/heading", {
-                    text: "Components used",
-                    font_size: "m",
-                    margin_bottom: 4,
-                    heading_level: 3,
-                  } %>
+            if application[:application_found]
+              summary = "Warnings: 0"
+              if application[:warning_count] > 0
+                summary = "Warnings: <strong class=\"govuk-tag govuk-tag--red\">#{application[:warning_count]}</strong>"
+              end
+            end
+          %>
 
-                  <dl class="govuk-summary-list">
-                    <% application[:summary].each do |item| %>
-                      <div class="govuk-summary-list__row">
-                        <dt class="govuk-summary-list__key">
-                          <%= item[:name] %>
-                        </dt>
-                        <dd class="govuk-summary-list__value">
-                          <% if item[:value].length > 0 %>
-                            <%= item[:value] %>
-                          <% else %>
-                            None
-                          <% end %>
-                        </dd>
-                      </div>
-                    <% end %>
-                  </dl>
+          <% accordion_content = capture do %>
+            <% if application[:application_found] %>
+              <% application[:warnings].each do |warning| %>
+                <p class="govuk-body">
+                  <strong class="govuk-tag">Warn</strong>
+                  <strong><%= warning[:component] %></strong> - <%= warning[:message] %>
+                </p>
+              <% end %>
 
-                  <% if application[:gem_style_references].any? %>
-                    <%= render "govuk_publishing_components/components/heading", {
-                      text: "Component references",
-                      font_size: "m",
-                      margin_bottom: 4,
-                      heading_level: 3,
-                    } %>
+              <%= render "govuk_publishing_components/components/heading", {
+                text: "Components used",
+                font_size: "m",
+                margin_bottom: 4,
+                heading_level: 3,
+              } %>
 
-                    <p class="govuk-body">This shows instances of `gem-c-` classes found in the application. If a reference is found in a stylesheet or in code a warning is created, as this could be a style override or hard coded component markup.</p>
-                    <ul class="govuk-list govuk-list--bullet">
-                      <% application[:gem_style_references].each do |ref| %>
-                        <li><%= ref %></li>
+              <dl class="govuk-summary-list">
+                <% application[:summary].each do |item| %>
+                  <div class="govuk-summary-list__row">
+                    <dt class="govuk-summary-list__key">
+                      <%= item[:name] %>
+                    </dt>
+                    <dd class="govuk-summary-list__value">
+                      <% if item[:value].length > 0 %>
+                        <%= item[:value] %>
+                      <% else %>
+                        None
                       <% end %>
-                    </ul>
-                  <% end %>
-
-                  <% if application[:jquery_references].any? %>
-                    <%= render "govuk_publishing_components/components/heading", {
-                      text: "jQuery references",
-                      font_size: "m",
-                      margin_bottom: 4,
-                      heading_level: 3,
-                    } %>
-                    <p class="govuk-body">This shows JavaScript files that might contain jQuery, which we are trying to remove our dependency on.</p>
-                    <ul class="govuk-list govuk-list--bullet">
-                      <% application[:jquery_references].each do |ref| %>
-                        <li><%= ref %></li>
-                      <% end %>
-                    </ul>
-                  <% end %>
-                <% else %>
-                  <p class="govuk-body">This application was not found. This could be because you do not have this repository checked out locally.</p>
+                    </dd>
+                  </div>
                 <% end %>
-              </div>
-            </div>
+              </dl>
+
+              <% if application[:gem_style_references].any? %>
+                <%= render "govuk_publishing_components/components/heading", {
+                  text: "Component references",
+                  font_size: "m",
+                  margin_bottom: 4,
+                  heading_level: 3,
+                } %>
+
+                <p class="govuk-body">This shows instances of `gem-c-` classes found in the application. If a reference is found in a stylesheet or in code a warning is created, as this could be a style override or hard coded component markup.</p>
+                <ul class="govuk-list govuk-list--bullet">
+                  <% application[:gem_style_references].each do |ref| %>
+                    <li><%= ref %></li>
+                  <% end %>
+                </ul>
+              <% end %>
+
+              <% if application[:jquery_references].any? %>
+                <%= render "govuk_publishing_components/components/heading", {
+                  text: "jQuery references",
+                  font_size: "m",
+                  margin_bottom: 4,
+                  heading_level: 3,
+                } %>
+                <p class="govuk-body">This shows JavaScript files that might contain jQuery, which we are trying to remove our dependency on.</p>
+                <ul class="govuk-list govuk-list--bullet">
+                  <% application[:jquery_references].each do |ref| %>
+                    <li><%= ref %></li>
+                  <% end %>
+                </ul>
+              <% end %>
+            <% else %>
+              <p class="govuk-body">This application was not found. This could be because you do not have this repository checked out locally.</p>
+            <% end %>
           <% end %>
-        </div>
+
+          <%
+            {
+              heading: {
+                text: application[:name]
+              },
+              summary: {
+                text: sanitize(summary)
+              },
+              content: {
+                html: sanitize(accordion_content)
+              },
+            }
+          %>
+        <% end %>
+
+        <%= render "govuk_publishing_components/components/accordion", {
+          items: application_items
+        } %>
       <% else %>
         <p class="govuk-body">No applications found.</p>
       <% end %>
@@ -144,125 +151,130 @@
       } %>
 
       <% if @components.any? %>
-        <div class="gem-c-accordion" data-module="gem-c-accordion" id="accordion-default">
-          <div class="gem-c-accordion__section ">
-            <div class="gem-c-accordion__section-header">
-              <h2 class="gem-c-accordion__section-heading">
-                <span class="gem-c-accordion__section-button" id="accordion-default-heading-1">
-                  Component files
-                </span>
-              </h2>
-              <div class="gem-c-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
-                Lists what files each component has
-              </div>
-            </div>
-            <div id="accordion-default-content-1" class="gem-c-accordion__section-content" aria-labelledby="accordion-default-heading-1">
-              <table class="govuk-table">
-                <thead class="govuk-table__head">
-                  <tr class="govuk-table__row">
-                    <th scope="col" class="govuk-table__header sticky-table-header">Component</th>
-                    <th scope="col" class="govuk-table__header sticky-table-header">Stylesheet</th>
-                    <th scope="col" class="govuk-table__header sticky-table-header">Print stylesheet</th>
-                    <th scope="col" class="govuk-table__header sticky-table-header">JS</th>
-                    <th scope="col" class="govuk-table__header sticky-table-header">Test</th>
-                    <th scope="col" class="govuk-table__header sticky-table-header">JS test</th>
-                  </tr>
-                </thead>
-                <tbody class="govuk-table__body">
-                  <% @components[:component_listing].each do |component| %>
-                    <tr class="govuk-table__row">
-                      <th scope="row" class="govuk-table__header">
-                        <a href="<%= component[:link] %>" class="govuk-link"><%= component[:name] %></a>
-                      </th>
-                      <td class="govuk-table__cell">
-                        <% if component[:stylesheet] %>
-                          <strong class="govuk-tag govuk-tag--green">Yes</strong>
-                        <% end %>
-                      </td>
-                      <td class="govuk-table__cell">
-                        <% if component[:print_stylesheet] %>
-                          <strong class="govuk-tag govuk-tag--green">Yes</strong>
-                        <% end %>
-                      </td>
-                      <td class="govuk-table__cell">
-                        <% if component[:javascript] %>
-                          <strong class="govuk-tag govuk-tag--green">Yes</strong>
-                        <% end %>
-                      </td>
-                      <td class="govuk-table__cell">
-                        <% if component[:tests] %>
-                          <strong class="govuk-tag govuk-tag--green">Yes</strong>
-                        <% end %>
-                      </td>
-                      <td class="govuk-table__cell">
-                        <% if component[:js_tests] %>
-                          <strong class="govuk-tag govuk-tag--green">Yes</strong>
-                        <% end %>
-                      </td>
-                    </tr>
-                  <% end %>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div class="gem-c-accordion__section ">
-            <div class="gem-c-accordion__section-header">
-              <h2 class="gem-c-accordion__section-heading">
-                <span class="gem-c-accordion__section-button" id="accordion-default-heading-2">
-                  Components containing components
-                </span>
-              </h2>
-              <div class="gem-c-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-2">
-                Shows which components contain other components
-              </div>
-            </div>
-            <div id="accordion-default-content-2" class="gem-c-accordion__section-content" aria-labelledby="accordion-default-heading-2">
-              <dl class="govuk-summary-list">
-                <% @components[:components_containing_components].each do |component| %>
-                  <div class="govuk-summary-list__row">
-                    <dt class="govuk-summary-list__key">
-                      <a href="<%= component[:link] %>" class="govuk-link"><%= component[:component] %></a>
-                    </dt>
-                    <dd class="govuk-summary-list__value">
-                      <%= component[:sub_components].join(', ') %>
-                    </dd>
-                  </div>
-                <% end %>
-              </dl>
-            </div>
-          </div>
-          <div class="gem-c-accordion__section ">
-            <div class="gem-c-accordion__section-header">
-              <h2 class="gem-c-accordion__section-heading">
-                <span class="gem-c-accordion__section-button" id="accordion-default-heading-2">
-                  Components by application
-                </span>
-              </h2>
-              <div class="gem-c-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-2">
-                Shows which applications use each component
-              </div>
-            </div>
-            <div id="accordion-default-content-2" class="gem-c-accordion__section-content" aria-labelledby="accordion-default-heading-2">
-              <% if @components[:components_by_application].any? %>
-                <dl class="govuk-summary-list">
-                  <% @components[:components_by_application].each do |component| %>
-                    <div class="govuk-summary-list__row">
-                      <dt class="govuk-summary-list__key">
-                        <%= component[:component] %> (<%= component[:count] %>)
-                      </dt>
-                      <dd class="govuk-summary-list__value">
-                        <%= component[:list] %>
-                      </dd>
-                    </div>
-                  <% end %>
-                </dl>
-              <% else %>
-                <p class="govuk-body">Sorry, no applications found.</p>
+        <% component_files = capture do %>
+          <table class="govuk-table">
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header sticky-table-header">Component</th>
+                <th scope="col" class="govuk-table__header sticky-table-header">Stylesheet</th>
+                <th scope="col" class="govuk-table__header sticky-table-header">Print stylesheet</th>
+                <th scope="col" class="govuk-table__header sticky-table-header">JS</th>
+                <th scope="col" class="govuk-table__header sticky-table-header">Test</th>
+                <th scope="col" class="govuk-table__header sticky-table-header">JS test</th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <% @components[:component_listing].each do |component| %>
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header">
+                    <a href="<%= component[:link] %>" class="govuk-link"><%= component[:name] %></a>
+                  </th>
+                  <td class="govuk-table__cell">
+                    <% if component[:stylesheet] %>
+                      <strong class="govuk-tag govuk-tag--green">Yes</strong>
+                    <% end %>
+                  </td>
+                  <td class="govuk-table__cell">
+                    <% if component[:print_stylesheet] %>
+                      <strong class="govuk-tag govuk-tag--green">Yes</strong>
+                    <% end %>
+                  </td>
+                  <td class="govuk-table__cell">
+                    <% if component[:javascript] %>
+                      <strong class="govuk-tag govuk-tag--green">Yes</strong>
+                    <% end %>
+                  </td>
+                  <td class="govuk-table__cell">
+                    <% if component[:tests] %>
+                      <strong class="govuk-tag govuk-tag--green">Yes</strong>
+                    <% end %>
+                  </td>
+                  <td class="govuk-table__cell">
+                    <% if component[:js_tests] %>
+                      <strong class="govuk-tag govuk-tag--green">Yes</strong>
+                    <% end %>
+                  </td>
+                </tr>
               <% end %>
-            </div>
-          </div>
-        </div>
+            </tbody>
+          </table>
+        <% end %>
+
+        <% components_within_components = capture do %>
+          <dl class="govuk-summary-list">
+            <% @components[:components_containing_components].each do |component| %>
+              <div class="govuk-summary-list__row">
+                <dt class="govuk-summary-list__key">
+                  <a href="<%= component[:link] %>" class="govuk-link"><%= component[:component] %></a>
+                </dt>
+                <dd class="govuk-summary-list__value">
+                  <%= component[:sub_components].join(', ') %>
+                </dd>
+              </div>
+            <% end %>
+          </dl>
+        <% end %>
+
+        <% components_by_application = capture do %>
+          <% if @components[:components_by_application].any? %>
+            <dl class="govuk-summary-list">
+              <% @components[:components_by_application].each do |component| %>
+                <div class="govuk-summary-list__row">
+                  <dt class="govuk-summary-list__key">
+                    <%= component[:component] %> (<%= component[:count] %>)
+                  </dt>
+                  <dd class="govuk-summary-list__value">
+                    <%= component[:list] %>
+                  </dd>
+                </div>
+              <% end %>
+            </dl>
+          <% else %>
+            <p class="govuk-body">Sorry, no applications found.</p>
+          <% end %>
+        <% end %>
+
+        <%
+          component_items = [
+            {
+              heading: {
+                text: "Component files",
+              },
+              summary: {
+                text: "Lists what files each component has",
+              },
+              content: {
+                html: component_files
+              },
+            },
+            {
+              heading: {
+                text: "Components containing other components",
+              },
+              summary: {
+                text: "Shows which components contain other components",
+              },
+              content: {
+                html: components_within_components
+              },
+            },
+            {
+              heading: {
+                text: "Components by application",
+              },
+              summary: {
+                text: "Shows which applications use each component",
+              },
+              content: {
+                html: components_by_application
+              },
+            },
+          ]
+        %>
+
+        <%= render "govuk_publishing_components/components/accordion", {
+          items: component_items
+        } %>
       <% else %>
         <p class="govuk-body">No components found.</p>
       <% end %>
