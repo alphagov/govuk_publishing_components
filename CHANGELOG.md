@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Fix cookie banner preview in the component guide ([PR #1935](https://github.com/alphagov/govuk_publishing_components/pull/1935))
+* Implements scroll tracking for the covid pages ([PR #1942](https://github.com/alphagov/govuk_publishing_components/pull/1942))
 
 ## 24.2.0
 
