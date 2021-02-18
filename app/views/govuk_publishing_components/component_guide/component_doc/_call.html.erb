@@ -1,7 +1,7 @@
 <%
 component_code =
   if example.has_block?
-    "<%= render \"#{@component_doc.partial_path}\", #{example.pretty_data} do %\>\n" +
+  "<%= render \"#{@component_doc.partial_path}\", #{example.pretty_data} do (#{example.block_arguments.join(", ")}) %\>\n" +
     "  #{example.block.html_safe}" +
     "<% end %\>"
   else

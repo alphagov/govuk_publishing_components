@@ -7,6 +7,7 @@ module GovukPublishingComponents
                 :context,
                 :description,
                 :block,
+                :block_arguments,
                 :embed
 
     def initialize(id, example)
@@ -15,6 +16,7 @@ module GovukPublishingComponents
       @context = example["context"] || {}
       @description = example["description"] || false
       @block = @data.delete(:block) || false
+      @block_arguments = @data.delete(:block_arguments) || []
       @embed = example["embed"]
     end
 

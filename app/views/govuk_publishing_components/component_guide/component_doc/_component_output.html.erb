@@ -1,7 +1,8 @@
 <% component = capture do %>
   <% if example.has_block? %>
-    <%= render component_doc.partial_path, example.html_safe_data do %>
-      <%= render inline: example.block %>
+    <%= render component_doc.partial_path, example.html_safe_data do |*args| %>
+      <% block_args = example.block_arguments.map(&:to_sym).zip(args).to_h %>
+      <%= render inline: example.block, locals: block_args %>
     <% end %>
   <% else %>
     <%= render component_doc.partial_path, example.html_safe_data %>
