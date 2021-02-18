@@ -11,8 +11,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   GemAccordion.prototype.start = function ($module) {
     this.$module = $module[0]
+    this.sectionClass = 'gem-c-accordion__section'
     this.moduleId = this.$module.getAttribute('id')
-    this.sections = this.$module.querySelectorAll('.gem-c-accordion__section')
+    this.sections = this.$module.querySelectorAll('.' + this.sectionClass)
     this.openAllButton = ''
     this.browserSupportsSessionStorage = helper.checkForSessionStorage()
     this.controlsClass = 'gem-c-accordion__controls'
@@ -35,6 +36,12 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
     this.initControls()
     this.initSectionHeaders()
+
+    // Feature flag for anchor tag navigation used on manuals
+    if (this.$module.getAttribute('data-anchor-navigation')) {
+      this.openByAnchorOnLoad()
+      this.addEventListenersForAnchors()
+    }
 
     // See if "Show all sections" button text should be updated
     var areAllSectionsOpen = this.checkIfAllSectionsOpen()
@@ -59,7 +66,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     accordionControls.appendChild(this.openAllButton)
     this.$module.insertBefore(accordionControls, this.$module.firstChild)
 
-    // Build addtional wrapper for open all toggle text, place icon after wrapped text.
+    // Build additional wrapper for open all toggle text, place icon after wrapped text.
     var wrapperOpenAllText = document.createElement('span')
     wrapperOpenAllText.classList.add(this.openAllTextClass)
     this.openAllButton.insertBefore(wrapperOpenAllText, this.openAllButton.childNodes[0] || null)
@@ -74,6 +81,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     nodeListForEach(this.sections, function (section, i) {
       // Set header attributes
       var header = section.querySelector('.' + this.sectionHeaderClass)
+
       this.initHeaderAttributes(header, i)
       this.setExpanded(this.isExpanded(section), section)
 
@@ -106,12 +114,12 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     srPause.classList.add('govuk-visually-hidden')
     srPause.innerHTML = ', '
 
-    // Build addtional copy for assistive technology
-    var srAddtionalCopy = document.createElement('span')
-    srAddtionalCopy.classList.add('govuk-visually-hidden')
-    srAddtionalCopy.innerHTML = ' this section'
+    // Build additional copy for assistive technology
+    var srAdditionalCopy = document.createElement('span')
+    srAdditionalCopy.classList.add('govuk-visually-hidden')
+    srAdditionalCopy.innerHTML = ' this section'
 
-    // Build addtional wrapper for toggle text, place icon after wrapped text.
+    // Build additional wrapper for toggle text, place icon after wrapped text.
     var wrapperShowHideIcon = document.createElement('span')
     var icon = document.createElement('span')
     icon.classList.add(this.upChevonIconClass)
@@ -138,7 +146,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
 
     button.appendChild(showIcons)
-    button.appendChild(srAddtionalCopy)
+    button.appendChild(srAdditionalCopy)
   }
 
   // When section toggled, set and store state
@@ -281,6 +289,42 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         }
       }
     }
+  }
+
+  // Navigate to and open accordions with anchored content on page load if a hash is present
+  GemAccordion.prototype.openByAnchorOnLoad = function () {
+    if (window.location.hash && this.$module.querySelector(window.location.hash)) {
+      this.openForAnchor(window.location.hash)
+    }
+  }
+
+  // Add event listeners for links to open accordion sections when navigated to using said anchor links on the page
+  // Adding an event listener to all anchor link a tags in an accordion is risky but we circumvent this risk partially by only being a layer of accordion behaviour instead of any sort of change to link behaviour
+  GemAccordion.prototype.addEventListenersForAnchors = function () {
+    var links = this.$module.querySelectorAll('.' + this.sectionInnerContent + ' a[href*="#"]')
+
+    links.forEach(function (link) {
+      if (link.pathname === window.location.pathname) {
+        link.addEventListener('click', this.openForAnchor.bind(this, link.hash))
+      }
+    }.bind(this))
+  }
+
+  // Find the parent accordion section for the given id and open it
+  GemAccordion.prototype.openForAnchor = function (hash) {
+    var target = document.querySelector(hash)
+    var section = this.getContainingSection(target)
+
+    this.setExpanded(true, section)
+  }
+
+  // Loop through the given ids ancestors until the parent section class is found
+  GemAccordion.prototype.getContainingSection = function (target) {
+    while (!target.classList.contains(this.sectionClass)) {
+      target = target.parentElement
+    }
+
+    return target
   }
 
   Modules.GemAccordion = GemAccordion
