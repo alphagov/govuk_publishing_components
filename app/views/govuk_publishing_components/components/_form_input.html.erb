@@ -1,0 +1,53 @@
+<%
+  label ||= nil
+  hint ||= nil
+  error ||= nil
+  input = input&.dup || {}
+  input[:type] ||= "text"
+  input[:id] ||= "#{(input[:name].to_s.parameterize.presence || "input")}-#{SecureRandom.hex(4)}"
+
+  if input[:type] == "number"
+    type = "text"
+    inputmode = "numeric"
+    pattern = "[0-9]*"
+  end
+
+  search_icon = input.delete(:search_icon)
+  numeric = input.delete(:numeric)
+  width = input.delete(:width)
+  prefix = input.delete(:prefix)
+  suffix = input.delete(:suffix)
+  field_error = input.delete(:has_error)
+
+  if numeric
+    input[:inputmode] = "numeric"
+    input[:pattern] ||= "[0-9]*"
+  end
+
+  input[:class] = %w(govuk-input gem-c-form-input__input)
+  input[:class] << "govuk-input--width-#{width}" if [2, 3, 4, 5, 10, 20, 30].include?(width)
+  input[:class] << "gem-c-form-input__input--search-icon" if search_icon
+%>
+
+<%= content_tag :div, class: "gem-c-form-input" do %>
+  <%= render "govuk_publishing_components/components/form_group", {
+    for_id: input[:id],
+    label: label,
+    hint: hint,
+    error: error,
+  } do |field| %>
+    <%
+      input[:class] << "govuk-input--error" if field[:has_error] || field_error
+      if field[:describedby].any?
+        input[:aria] ||= {}
+        describedby = [input.dig(:aria, :describedby)].compact + field[:describedby].values
+        input[:aria][:describedby] = describedby.join(" ") if describedby
+      end
+    %>
+    <%= content_tag :div, class: "govuk-input__wrapper" do %>
+      <%= tag.span prefix, class: "govuk-input__prefix", aria: { hidden: true } if prefix.present? %>
+      <%= tag.input(**input) %>
+      <%= tag.span suffix, class: "govuk-input__suffix", aria: { hidden: true } if suffix.present? %>
+    <% end %>
+  <% end %>
+<% end %>

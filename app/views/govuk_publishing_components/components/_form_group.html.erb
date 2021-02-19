@@ -1,91 +1,54 @@
 <%
+  for_id ||= "form-field-#{SecureRandom.hex(4)}"
+
+  label = if label.is_a?(Hash)
+            label.dup
+          elsif label.present?
+            { text: label }
+          end
+  label[:html_for] = for_id if label && !label&.has_key?(:html_for)
+
+  heading_level = label.delete(:heading_level)
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
-  id ||= "input-#{SecureRandom.hex(4)}"
-  value ||= nil
-  type ||= "text"
-  describedby ||= nil
-  controls ||= nil
-  data ||= nil
-  autocomplete ||= nil
+  hint = if hint.is_a?(Hash)
+           hint.dup
+         elsif hint.present?
+          { text: hint }
+         end
+  hint[:id] = "#{for_id}-hint" if hint && !hint.has_key?(:id)
 
-  label ||= nil
-  hint ||= nil
-  error_message ||= nil
-  error_items ||= []
-  grouped ||= nil
-  autofocus ||= nil
-  tabindex ||= nil
-  readonly ||= nil
-  maxlength ||= nil
-  width ||= nil
-  has_error ||= error_message || error_items.any?
-  hint_id = "hint-#{SecureRandom.hex(4)}"
-  error_id = "error-#{SecureRandom.hex(4)}"
-  search_icon ||= nil
-  heading_size = false unless ['s', 'm', 'l', 'xl'].include?(heading_size)
-  heading_level ||= nil
-  prefix ||= nil
-  suffix ||= nil
+  error = if error.is_a?(Hash)
+            error.dup
+          elsif error.present?
+            { text: error }
+          end
+  error[:id] = "#{for_id}-error" if error && !error.has_key?(:id)
 
-  css_classes = %w(govuk-input)
-  css_classes << "govuk-input--error" if has_error
-  css_classes << "govuk-input--width-#{width}" if [2, 3, 4, 5, 10, 20, 30].include?(width)
-  css_classes << "gem-c-input--search-icon" if search_icon
-  form_group_css_classes = %w(govuk-form-group gem-c-input)
-  form_group_css_classes << "govuk-form-group--error" if has_error && !grouped
+  css_classes = %w(gem-c-form-group govuk-form-group)
+  css_classes << "govuk-form-group--error" if error
 
-  aria_described_by ||= nil
-  if hint || has_error || describedby
-    aria_described_by = []
-    aria_described_by << hint_id if hint
-    aria_described_by << error_id if has_error && !grouped
-    aria_described_by << describedby if describedby
-    aria_described_by = aria_described_by.join(" ")
-  end
-
-  if type == "number"
-    type = "text"
-    inputmode = "numeric"
-    pattern = "[0-9]*"
-  end
-
-  inputmode ||= nil
-  pattern ||= nil
+  field_options = {
+    label_for: label&.[](:html_for),
+    describedby: {
+      hint: hint&.[](:id),
+      error: error&.[](:id),
+    }.compact,
+    has_error: error.present?
+  }
 %>
 
-<%= content_tag :div, class: form_group_css_classes do %>
-  <% if label %>
-    <% label_markup = capture do %>
-      <%= render "govuk_publishing_components/components/label", {
-        html_for: field_id,
-        heading_size: heading_size
-      }.merge(label.symbolize_keys) %>
+<%= content_tag :div, class: css_classes do %>
+  <% if label && heading_level %>
+    <%= content_tag(shared_helper.get_heading_level, class: "govuk-label-wrapper") do %>
+      <%= render "govuk_publishing_components/components/label", label %>
     <% end %>
-
-    <% if heading_level %>
-      <%= content_tag(shared_helper.get_heading_level, class: "govuk-label-wrapper") do %>
-        <%= label_markup %>
-      <% end %>
-    <% else %>
-      <%= label_markup %>
-    <% end %>
+  <% elsif label %>
+    <%= render "govuk_publishing_components/components/label", label %>
   <% end %>
 
-  <% if hint %>
-    <%= render "govuk_publishing_components/components/hint", {
-      id: hint_id,
-      text: hint
-    } %>
-  <% end %>
+  <%= render "govuk_publishing_components/components/hint", hint if hint %>
+  <%= render "govuk_publishing_components/components/error_message", error if error %>
 
-  <% if has_error %>
-    <%= render "govuk_publishing_components/components/error_message", {
-      id: error_id,
-      text: error_message,
-      items: error_items,
-    } %>
-  <% end %>
-
-  <%= yield(ids) %>
+  <%= yield(field_options) %>
 <% end %>

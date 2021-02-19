@@ -1,0 +1,110 @@
+name: Form input
+description: An input field within a form group with label, optional hint and error handling
+accessibility_criteria: |
+  TODO
+examples:
+  default:
+    data:
+      label: "What is your name?"
+      input:
+        name: "name"
+  with_value:
+    data:
+      label: "Search for"
+      input:
+        name: "name"
+        value: "moose"
+  with_an_identifier:
+    description: Give the input a specific ID.
+    data:
+      label: "Has an id"
+      input:
+        name: "hasid"
+        id: "hasid"
+  specific_input_type:
+    description: By default the input will be type="text". This parameter accepts an alternative, e.g. "search" or "email". No validation is done on this input.
+    data:
+      label: "What is your email address?"
+      input:
+        name: "address"
+        type: "email"
+  numeric_input:
+    description: If numeric is set to true we set the component up as described in the [Design System guidance](https://design-system.service.gov.uk/components/text-input/#numbers) adding `inputmode` and `pattern`.
+    data:
+      label: "Account number"
+      input:
+        name: "account-number"
+        numeric: true
+  with_aria_attributes:
+    description: |
+      aria attributes can be provided to improve accessibility.
+
+      [aria-describedby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-describedby_attribute) is used to indicate the ID of the element that describes the input. This will be overridden in the event of an error, where the error will be used for the describedby attribute value. This example uses the ID of the main container for demonstration purposes as there aren't any useful elements with IDs in the component guide. In real use this would be passed the ID of an element that correctly described the input.
+
+      aria-controls allows the addition of an aria-controls attribute, for use in places like the finders where the page is updated dynamically after value changes to the input.
+    data:
+      label: "This is an example only and may not work with a screen reader"
+      input:
+        name: "labelledby"
+        aria:
+          describedby: "wrapper"
+          controls: "wrapper"
+  with_hint:
+    data:
+      label: "What is your name?"
+      hint: "Please provide your first and last name"
+  with_error:
+    data:
+      label: "What is your name?"
+      error: "Please could you provide your name"
+  with_a_width:
+    data:
+      label: "National insurance number"
+      hint: It’s on your National insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
+      input:
+        name: "name"
+        width: 10
+  with_search_icon:
+    data:
+      label: "Search the internet"
+      input:
+        name: "search-box"
+        type: "search"
+        search_icon: true
+  with_prefix:
+    description: To help users understand how the input should look like. Often used for units of measurement.
+    data:
+      label: "Cost, in pounds"
+      input:
+        name: "cost"
+        width: 10
+        prefix: "£"
+  with_suffix:
+    description: To help users understand how the input should look like. Often used for units of measurement.
+    data:
+      label: "Lead times in days"
+      input:
+        name: "lead-times"
+        width: 10
+        suffix: "days"
+  with_prefix_and_suffix:
+    description: To help users understand how the input should look like. Often used for units of measurement.
+    data:
+      label: "Cost per item, in pounds"
+      input:
+        name: "cost-per-item"
+        width: 10
+        prefix: "£"
+        suffix: "per item"
+  with_additional_attributes:
+    description: |
+      You can pass other HTML attributes to the input hash to customise the input
+    data:
+      label: "Username"
+      input:
+        name: "username"
+        value: "a username"
+        autofocus: true
+        tabindex: 0
+        readonly: true
+        maxlength: 10

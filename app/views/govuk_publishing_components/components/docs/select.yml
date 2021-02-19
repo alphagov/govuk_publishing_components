@@ -1,4 +1,4 @@
-name: Select
+name: Select (deprecated)
 description: A dropdown select
 govuk_frontend_components:
   - select

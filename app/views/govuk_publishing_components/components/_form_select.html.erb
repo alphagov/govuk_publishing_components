@@ -1,0 +1,43 @@
+<%
+  label ||= nil
+  hint ||= nil
+  error ||= nil
+  select = select&.dup || {}
+
+  options = select.delete(:options) || []
+  select_helper = GovukPublishingComponents::Presenters::SelectHelper.new(options)
+
+  name = select.delete(:name)
+  full_width = select.delete(:full_width)
+  field_error = select.delete(:has_error)
+
+  select[:id] ||= "#{(select[:name].to_s.parameterize.presence || "select")}-#{SecureRandom.hex(4)}"
+  select[:class] = %w(govuk-select)
+  select[:class] << "gem-c-form-select__select--full-width" if full_width
+
+  select[:data] ||= {}
+  if select_helper.data_tracking? && !select.dig(:data, :module).present?
+    select[:data][:module] = "track-select-change"
+  end
+%>
+
+<%= content_tag :div, class: "gem-c-form-select" do %>
+  <%= render "govuk_publishing_components/components/form_group", {
+    for_id: select[:id],
+    label: label,
+    hint: hint,
+    error: error,
+  } do |field| %>
+  <%
+    select[:class] << "govuk-select--error" if field[:has_error] || field_error
+    if field[:describedby].any?
+      select[:aria] ||= {}
+      describedby = [select.dig(:aria, :describedby)].compact + field[:describedby].values
+      select[:aria][:describedby] = describedby.join(" ") if describedby
+    end
+  %>
+  <%= select_tag name,
+                 options_for_select(select_helper.option_markup, select_helper.selected_option),
+                 select %>
+  <% end %>
+<% end %>

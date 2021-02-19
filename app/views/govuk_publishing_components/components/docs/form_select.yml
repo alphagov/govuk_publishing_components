@@ -1,0 +1,129 @@
+name: Form Select
+description: A dropdown select
+govuk_frontend_components:
+  - select
+accessibility_criteria: |
+  - accept focus
+  - be focusable with a keyboard
+  - be usable with a keyboard
+  - indicate when it has focus
+examples:
+  default:
+    data:
+      label: 'My Dropdown'
+      select:
+        id: 'dropdown1'
+        options:
+        - text: 'Option one'
+          value: 'option1'
+        - text: 'Option two'
+          value: 'option2'
+        - text: 'Option three'
+          value: 'option3'
+  with_selected_field:
+    data:
+      label: 'Option 2 selected'
+      select:
+        id: 'dropdown2'
+        options:
+        - text: 'Option one'
+          value: 'option1'
+        - text: 'Option two'
+          value: 'option2'
+          selected: true
+        - text: 'Option three'
+          value: 'option3'
+  with_tracking:
+    description: 'Tracking can be enabled on the select component by passing a minimum of data_track_category and data_track_action. Other tracking attributes are optional. Note: tracking events do not currently fire within the component guide.'
+    data:
+      label: 'With tracking enabled'
+      select:
+        id: 'dropdown3'
+        options:
+        - text: 'Option one'
+          value: 'option1'
+          data_attributes:
+            track_category: 'relatedLinkClicked'
+            track_action: 1.1
+            track_label: '/link-1'
+            track_options:
+              dimension28: 1
+              dimension29: 'Link 1'
+        - text: 'Option two'
+          value: 'option2'
+          data_attributes:
+            track_category: 'relatedLinkClicked'
+            track_action: 1.2
+            track_label: '/link-2'
+            track_options:
+              dimension28: 2
+              dimension29: 'Link 2'
+        - text: 'Option three'
+          value: 'option3'
+          data_attributes:
+            track_category: 'relatedLinkClicked'
+            track_action: 1.3
+            track_label: '/link-3'
+            track_options:
+              dimension28: 3
+              dimension29: 'Link 3'
+  with_option_data_attributes:
+    description: Other data attributes can be passed to the component if needed.
+    data:
+      label: 'With data attributes'
+      select:
+        id: 'dropdown4'
+        options:
+        - text: 'Option one'
+          value: 'option1'
+          data_attributes:
+            another_attribute: "attribute 1"
+            something_else: "attribute 2"
+        - text: 'Option two'
+          value: 'option2'
+        - text: 'Option three'
+          value: 'option3'
+  with_error:
+    description: If the user has to select an option, it is recommended that a radio button is used instead of a select, but this is not always possible.
+    data:
+      label: 'How will you be travelling to the conference?'
+      error: 'Please choose an option'
+      select:
+        id: 'dropdown4-1'
+        options:
+        - text: ""
+          value: ""
+        - text: 'Public transport'
+          value: 'option1'
+        - text: 'Will make own arrangements'
+          value: 'option2'
+  with_error_id_but_no_message:
+    description: For some selects the error message should be rendered separately but an error state is still required (currently required in smart answers). In this scenario a has_error attribute can be passed to the select with an aria describedby attribute to reference the id that describes the error.
+    data:
+      label: 'What lunch option would you like?'
+      select:
+        id: 'dropdown4-2'
+        has_error: true
+        options:
+        - text: ""
+          value: ""
+        - text: 'Vegetarian'
+          value: 'option1'
+        - text: 'Meat'
+          value: 'option2'
+        aria:
+          describedby: "wrapper"
+  full_width:
+    description: Make the select width 100%. This is used for facets in finder-frontend's search.
+    data:
+      label: 'Really wide'
+      select:
+        id: 'dropdown5'
+        full_width: true
+        options:
+        - text: 'Option one'
+          value: 'option1'
+        - text: 'Option two'
+          value: 'option2'
+        - text: 'Option three'
+          value: 'option3'

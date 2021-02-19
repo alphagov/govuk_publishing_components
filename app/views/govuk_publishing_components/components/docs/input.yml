@@ -1,4 +1,4 @@
-name: Form input
+name: Form input (deprecated)
 description: A form input field and an associated label.
 accessibility_criteria: |
   Inputs in the component must:
