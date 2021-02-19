@@ -1,7 +1,11 @@
 <%
+arguments = if example.block_arguments.any?
+              "(#{example.block_arguments.join(", ")}) "
+            end
+
 component_code =
   if example.has_block?
-  "<%= render \"#{@component_doc.partial_path}\", #{example.pretty_data} do (#{example.block_arguments.join(", ")}) %\>\n" +
+  "<%= render \"#{@component_doc.partial_path}\", #{example.pretty_data} do #{arguments}%\>\n" +
     "  #{example.block.html_safe}" +
     "<% end %\>"
   else
