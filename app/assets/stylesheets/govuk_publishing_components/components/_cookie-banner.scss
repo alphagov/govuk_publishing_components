@@ -69,4 +69,8 @@ $govuk-cookie-banner-background: govuk-colour("light-grey", "grey-4");
   .gem-c-cookie-banner__confirmation {
     margin-bottom: - govuk-spacing(2);
   }
+
+  .gem-c-cookie-banner__confirmation {
+    padding-top: govuk-spacing(4);
+  }
 }

@@ -9,6 +9,7 @@
 
 ## 24.3.0
 
+* Fix padding on cookie banner ([PR #1945](https://github.com/alphagov/govuk_publishing_components/pull/1945))
 * Fix cookie banner preview in the component guide ([PR #1935](https://github.com/alphagov/govuk_publishing_components/pull/1935))
 * Implements scroll tracking for the covid pages ([PR #1942](https://github.com/alphagov/govuk_publishing_components/pull/1942))
 * Add anchor navigation feature to accordions ([PR #1937](https://github.com/alphagov/govuk_publishing_components/pull/1937))
