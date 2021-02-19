@@ -1,3 +1,5 @@
+<% navigation_aria_label ||= "Top level" %>
+
 <% if navigation_items.any? %>
   <button role="button" class="govuk-header__menu-button gem-c-header__menu-button govuk-js-header-toggle" aria-controls="navigation" aria-label="Show or hide Top Level Navigation">Menu</button>
   <%= tag.nav class: "gem-c-header__nav", aria: { label: navigation_aria_label } do %>
