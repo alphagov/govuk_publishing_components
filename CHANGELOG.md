@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Switch from `trackClick` to `gemTrackClick` script ([PR #1944](https://github.com/alphagov/govuk_publishing_components/pull/1944))
 * Add spacing to cookie banner confirmation message ([PR #1936](https://github.com/alphagov/govuk_publishing_components/pull/1936))
 * Fix Sass warning for extending a compound selector ([PR #1933](https://github.com/alphagov/govuk_publishing_components/pull/1933))
 
