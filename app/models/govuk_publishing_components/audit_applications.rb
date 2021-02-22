@@ -86,8 +86,8 @@ module GovukPublishingComponents
           gem_style_references = find_code_references(file, src, /gem-c-[-_a-zA-Z]+/)
           @gem_style_references << gem_style_references if gem_style_references
         end
-      rescue => error
-        puts error.message
+      rescue StandardError => e
+        puts e.message
       end
 
       components_found.flatten.uniq.sort
