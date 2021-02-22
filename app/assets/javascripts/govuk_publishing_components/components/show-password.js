@@ -11,8 +11,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.$module.revertToPasswordOnFormSubmit = this.revertToPasswordOnFormSubmit.bind(this)
     this.input.classList.add('gem-c-input--with-password')
 
-    this.showPasswordText = this.$module.getAttribute('data-show')
-    this.hidePasswordText = this.$module.getAttribute('data-hide')
+    this.showPasswordText = this.$module.getAttribute('data-show-text')
+    this.hidePasswordText = this.$module.getAttribute('data-hide-text')
+    this.showPasswordFullText = this.$module.getAttribute('data-show-full-text')
+    this.hidePasswordFullText = this.$module.getAttribute('data-hide-full-text')
     this.shownPassword = this.$module.getAttribute('data-announce-show')
     this.hiddenPassword = this.$module.getAttribute('data-announce-hide')
 
@@ -27,6 +29,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.showHide.className = 'gem-c-show-password__toggle'
     this.showHide.setAttribute('aria-controls', this.input.getAttribute('id'))
     this.showHide.setAttribute('type', 'button')
+    this.showHide.setAttribute('aria-label', this.showPasswordFullText)
     this.showHide.innerHTML = this.showPasswordText
     this.wrapper.insertBefore(this.showHide, this.input.nextSibling)
 
@@ -50,12 +53,14 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   ShowPassword.prototype.togglePassword = function (event) {
     event.preventDefault()
     this.showHide.innerHTML = this.showHide.innerHTML === this.showPasswordText ? this.hidePasswordText : this.showPasswordText
+    this.showHide.setAttribute('aria-label', this.showHide.getAttribute('aria-label') === this.showPasswordFullText ? this.hidePasswordFullText : this.showPasswordFullText)
     this.statusText.innerHTML = this.statusText.innerHTML === this.shownPassword ? this.hiddenPassword : this.shownPassword
     this.input.setAttribute('type', this.input.getAttribute('type') === 'text' ? 'password' : 'text')
   }
 
   ShowPassword.prototype.revertToPasswordOnFormSubmit = function (event) {
     this.showHide.innerHTML = this.showPasswordText
+    this.showHide.setAttribute('aria-label', this.showPasswordFullText)
     this.statusText.innerHTML = this.hiddenPassword
     this.input.setAttribute('type', 'password')
   }

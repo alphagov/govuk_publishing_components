@@ -88,6 +88,8 @@ en:
     show_password:
       show: Show
       hide: Hide
+      show_password: Show password
+      hide_password: Hide password
       announce_show: Your password is shown
       announce_hide: Your password is hidden
     print_link:
