@@ -26,7 +26,7 @@
         link_element = link_to(
           link[:text],
           link[:path],
-          class: related_nav_helper.section_css_class("gem-c-related-navigation__section-link", section_title, link, (index >= section_link_limit)),
+          class: related_nav_helper.section_css_class("gem-c-related-navigation__section-link", section_title, link: link, link_is_inline: (index >= section_link_limit)),
           rel: link[:rel],
           lang: shared_helper.t_locale_check(link[:locale]),
           data: {

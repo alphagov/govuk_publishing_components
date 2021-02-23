@@ -1,12 +1,6 @@
 module GovukPublishingComponents
   module Presenters
     class HtmlPublicationSchema < FaqPageSchema
-      attr_reader :page
-
-      def initialize(page)
-        @page = page
-      end
-
       def structured_data
         return ArticleSchema.new(page).structured_data if less_than_two_headings_of_any_one_type?
 

@@ -220,12 +220,12 @@ describe "Contextual navigation" do
   end
 
   def given_there_are_one_primary_step_by_steps_and_one_secondary_to_step_navs
-    part_of_step_navs = 1.times.map { random_step_nav_item("step_by_step_nav") }
-    part_of_step_navs[0]["title"] = "PRIMARY STEP BY STEP"
+    part_of_step_nav = random_step_nav_item("step_by_step_nav")
+    part_of_step_nav["title"] = "PRIMARY STEP BY STEP"
 
     content_store_has_random_item(links: {
-      secondary_to_step_navs: 1.times.map { random_step_nav_item("step_by_step_nav") },
-      part_of_step_navs: part_of_step_navs,
+      secondary_to_step_navs: [random_step_nav_item("step_by_step_nav")],
+      part_of_step_navs: [part_of_step_nav],
     })
   end
 
@@ -235,18 +235,18 @@ describe "Contextual navigation" do
     part_of_step_navs[1]["content_id"] = "8ad999bd-8603-40eb-97c0-999cb22047cd"
     part_of_step_navs[1]["title"] = "PRIMARY STEP BY STEP - INTERACTING WITH"
 
-    secondary_to_step_navs = 1.times.map { random_step_nav_item("step_by_step_nav") }
-    secondary_to_step_navs[0]["title"] = "SECONDARY STEP BY STEP"
+    secondary_to_step_nav = random_step_nav_item("step_by_step_nav")
+    secondary_to_step_nav["title"] = "SECONDARY STEP BY STEP"
 
     content_store_has_random_item(links: {
       part_of_step_navs: part_of_step_navs,
-      secondary_to_step_navs: secondary_to_step_navs,
+      secondary_to_step_navs: [secondary_to_step_nav],
     })
   end
 
   def given_there_is_a_related_to_step_nav
     content_store_has_random_item(links: {
-      related_to_step_navs: 1.times.map { random_step_nav_item("step_by_step_nav") },
+      related_to_step_navs: [random_step_nav_item("step_by_step_nav")],
     })
   end
 
@@ -259,7 +259,7 @@ describe "Contextual navigation" do
   def given_there_are_three_related_to_step_nav_and_one_secondary_to_step_nav
     content_store_has_random_item(links: {
       related_to_step_navs: 3.times.map { random_step_nav_item("step_by_step_nav") },
-      secondary_to_step_navs: 1.times.map { random_step_nav_item("step_by_step_nav") },
+      secondary_to_step_navs: [random_step_nav_item("step_by_step_nav")],
     })
   end
 
