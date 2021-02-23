@@ -57,13 +57,14 @@ module GovukPublishingComponents
     # Safe HTML can be passed to components, simulate
     # by marking any string that comes from YAML as safe
     def html_safe_strings(obj)
-      if obj.is_a?(String)
+      case obj
+      when String
         obj.html_safe
-      elsif obj.is_a?(Hash)
+      when Hash
         obj.each do |key, value|
           obj[key] = html_safe_strings(value)
         end
-      elsif obj.is_a?(Array)
+      when Array
         obj.map! { |e| html_safe_strings(e) }
       else
         obj

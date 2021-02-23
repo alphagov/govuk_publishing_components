@@ -110,8 +110,8 @@ module GovukPublishingComponents
           next if second[:components].include?("all")
 
           in_current.each do |component|
-            if @gem_data.include?("component_#{second_location}".to_sym)
-              warnings << create_warning(component, "Included in #{first_location} but not #{second_location}") if @gem_data["component_#{second_location}".to_sym].include?(component)
+            if @gem_data.include?("component_#{second_location}".to_sym) && @gem_data["component_#{second_location}".to_sym].include?(component)
+              warnings << create_warning(component, "Included in #{first_location} but not #{second_location}")
             end
           end
         end

@@ -55,7 +55,7 @@ module GovukPublishingComponents
       # {:a => :b, :b => :c}
       def pairs_hash(array)
         all_but_last = array[0..-2]
-        all_but_first = array[1..-1]
+        all_but_first = array[1..]
         pairs = [all_but_last, all_but_first].transpose
         Hash[pairs]
       end

@@ -1,5 +1,5 @@
 require "rails_helper"
-require_relative "../../app/models/govuk_publishing_components/audit_applications.rb"
+require_relative "../../app/models/govuk_publishing_components/audit_applications"
 
 describe "Auditing the components in applications" do
   it "returns correct information" do

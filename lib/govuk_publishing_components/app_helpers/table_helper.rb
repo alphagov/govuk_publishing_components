@@ -15,6 +15,7 @@ module GovukPublishingComponents
           yield(builder)
         end
       end
+
       class TableBuilder
         include ActionView::Helpers::UrlHelper
         include ActionView::Helpers::TagHelper
@@ -57,7 +58,7 @@ module GovukPublishingComponents
 
         def cell(str, opt = {})
           classes = %w[govuk-table__cell]
-          classes << "govuk-table__cell--" + opt[:format] if opt[:format]
+          classes << "govuk-table__cell--#{opt[:format]}" if opt[:format]
           classes << "govuk-table__cell--empty" unless str
           str ||= "Not set"
           tag.td str, class: classes

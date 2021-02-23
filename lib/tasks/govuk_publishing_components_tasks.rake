@@ -14,7 +14,7 @@ namespace :component do
 
     if components_missing_docs.any?
       error = "You have components which are missing documentation. These components will not be displayed in the component guide:\n"
-      components_missing_docs.each { |component| error += "\t" + component + "\n" }
+      components_missing_docs.each { |component| error += "\t#{component}\n" }
       error += "\n"
       raise NotImplementedError, error
     end

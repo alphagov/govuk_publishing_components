@@ -58,7 +58,7 @@ module GovukPublishingComponents
           I18n.t(
             "components.related_#{@context}_navigation." + section_title,
             default: [
-              I18n.t("components.related_navigation." + section_title),
+              I18n.t("components.related_navigation.#{section_title}"),
               section_title.tr("_", " "),
             ],
           )

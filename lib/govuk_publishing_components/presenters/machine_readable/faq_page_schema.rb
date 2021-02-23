@@ -88,7 +88,7 @@ module GovukPublishingComponents
       end
 
       def section_url(anchor)
-        return page_url + "#" + anchor if anchor.present?
+        return "#{page_url}##{anchor}" if anchor.present?
 
         page_url
       end
