@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
   s.description = "A gem to document components in GOV.UK frontend applications"
   s.homepage    = "https://github.com/alphagov/govuk_publishing_components"
   s.license     = "MIT"
+  s.required_ruby_version = ">= 2.6"
 
   s.files = Dir["{node_modules/govuk-frontend,node_modules/axe-core,node_modules/jquery,app,config,db,lib}/**/*", "LICENCE.md", "README.md"]
 
