@@ -32,7 +32,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "pry-byebug"
   s.add_development_dependency "rake"
   s.add_development_dependency "rspec-rails", "~> 4.0"
-  s.add_development_dependency "rubocop-govuk", "~> 3"
+  s.add_development_dependency "rubocop-govuk", "4.0.0.pre.1"
   s.add_development_dependency "sassc-rails", "~> 2"
   s.add_development_dependency "uglifier", ">= 4.1.0"
   s.add_development_dependency "webmock", "~> 3.8.3"
