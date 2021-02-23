@@ -1,5 +1,5 @@
 require "rails_helper"
-require_relative "../../app/models/govuk_publishing_components/audit_components.rb"
+require_relative "../../app/models/govuk_publishing_components/audit_components"
 
 describe "Auditing the components in the gem" do
   it "fails gracefully if the gem is not found" do

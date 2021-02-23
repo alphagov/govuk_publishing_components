@@ -12,7 +12,7 @@ class WelcomeController < ApplicationController
     }
 
     if params[:base_path]
-      @content_item = Services.content_store.content_item("/" + params[:base_path])
+      @content_item = Services.content_store.content_item("/#{params[:base_path]}")
     end
   end
 

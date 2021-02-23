@@ -1,12 +1,6 @@
 module GovukPublishingComponents
   module Presenters
     class HtmlPublicationSchema < FaqPageSchema
-      attr_reader :page
-
-      def initialize(page)
-        @page = page
-      end
-
       def structured_data
         return ArticleSchema.new(page).structured_data if less_than_two_headings_of_any_one_type?
 
@@ -55,7 +49,7 @@ module GovukPublishingComponents
       # {:a => :b, :b => :c}
       def pairs_hash(array)
         all_but_last = array[0..-2]
-        all_but_first = array[1..-1]
+        all_but_first = array[1..]
         pairs = [all_but_last, all_but_first].transpose
         Hash[pairs]
       end

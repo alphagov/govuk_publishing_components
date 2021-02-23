@@ -55,7 +55,7 @@ RSpec.describe GovukPublishingComponents::Presenters::SchemaOrg do
       content_item = GovukSchemas::RandomExample.for_schema(frontend_schema: "statistical_data_set") do |random_item|
         random_item.merge(
           "details" => {
-            "body" => "Dataset body" + ("a" * 5001),
+            "body" => "Dataset body#{'a' * 5001}",
             "political": false,
             "government": {
               "title": "Government title",

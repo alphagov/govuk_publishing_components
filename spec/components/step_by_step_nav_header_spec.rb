@@ -43,12 +43,12 @@ describe "Step by step navigation header", type: :view do
 
     link = ".gem-c-step-nav-header a.gem-c-step-nav-header__title"
 
-    assert_select link + "[href='/notalink']", text: "This is my title"
-    assert_select link + "[data-track-category='stepNavHeaderClicked']"
-    assert_select link + "[data-track-action='top']"
-    assert_select link + "[data-track-label='/notalink']"
-    assert_select link + "[data-track-dimension='This is my title']"
-    assert_select link + "[data-track-dimension-index='29']"
+    assert_select "#{link}[href='/notalink']", text: "This is my title"
+    assert_select "#{link}[data-track-category='stepNavHeaderClicked']"
+    assert_select "#{link}[data-track-action='top']"
+    assert_select "#{link}[data-track-label='/notalink']"
+    assert_select "#{link}[data-track-dimension='This is my title']"
+    assert_select "#{link}[data-track-dimension-index='29']"
   end
 
   it "defaults to no margin bottom" do
@@ -83,13 +83,13 @@ describe "Step by step navigation header", type: :view do
 
     link = ".gem-c-step-nav-header a.gem-c-step-nav-header__title"
 
-    assert_select link + "[href='/notalink']", text: "This is my title"
-    assert_select link + "[data-track-category='customTrackingCategoryClicked']"
-    assert_select link + "[data-track-action='customTrackingAction']"
-    assert_select link + "[data-track-label='customTrackingLabel']"
-    assert_select link + "[data-track-dimension='customTrackingDimension']"
-    assert_select link + "[data-track-dimension-index='23']"
-    assert_select link + "[data-track-options='{\"dimension96\":\"tracking-id\"}']"
+    assert_select "#{link}[href='/notalink']", text: "This is my title"
+    assert_select "#{link}[data-track-category='customTrackingCategoryClicked']"
+    assert_select "#{link}[data-track-action='customTrackingAction']"
+    assert_select "#{link}[data-track-label='customTrackingLabel']"
+    assert_select "#{link}[data-track-dimension='customTrackingDimension']"
+    assert_select "#{link}[data-track-dimension-index='23']"
+    assert_select "#{link}[data-track-options='{\"dimension96\":\"tracking-id\"}']"
   end
 
   it "adds a custom tracking without tracking id or custom dimensions" do
@@ -104,12 +104,12 @@ describe "Step by step navigation header", type: :view do
 
     link = ".gem-c-step-nav-header a.gem-c-step-nav-header__title"
 
-    assert_select link + "[href='/notalink']", text: "This is my title"
-    assert_select link + "[data-track-category='customTrackingCategoryClicked']"
-    assert_select link + "[data-track-action='customTrackingAction']"
-    assert_select link + "[data-track-label='customTrackingLabel']"
-    assert_select link + "[data-track-dimension]", false
-    assert_select link + "[data-track-dimension-index]", false
-    assert_select link + "[data-track-options]", false
+    assert_select "#{link}[href='/notalink']", text: "This is my title"
+    assert_select "#{link}[data-track-category='customTrackingCategoryClicked']"
+    assert_select "#{link}[data-track-action='customTrackingAction']"
+    assert_select "#{link}[data-track-label='customTrackingLabel']"
+    assert_select "#{link}[data-track-dimension]", false
+    assert_select "#{link}[data-track-dimension-index]", false
+    assert_select "#{link}[data-track-options]", false
   end
 end

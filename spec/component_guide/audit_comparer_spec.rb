@@ -1,5 +1,5 @@
 require "rails_helper"
-require_relative "../../app/models/govuk_publishing_components/audit_comparer.rb"
+require_relative "../../app/models/govuk_publishing_components/audit_comparer"
 
 describe "Comparing data from an application with the components" do
   gem = {

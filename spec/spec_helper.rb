@@ -1,7 +1,7 @@
 require "webmock/rspec"
 require "govuk_publishing_components"
 require "govuk_schemas"
-require_relative "support/components_helper.rb"
+require_relative "support/components_helper"
 require "gds_api/test_helpers/content_store"
 require "faker"
 

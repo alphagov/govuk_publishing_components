@@ -20,8 +20,7 @@ module GovukPublishingComponents
         meta_tags = add_organisation_tags(meta_tags)
         meta_tags = add_political_tags(meta_tags)
         meta_tags = add_taxonomy_tags(meta_tags)
-        meta_tags = add_step_by_step_tags(meta_tags)
-        meta_tags
+        add_step_by_step_tags(meta_tags)
       end
 
     private

@@ -4,9 +4,9 @@ module Helpers
       raise NotImplementedError, "Override this method in your test class"
     end
 
-    def render_component(locals)
+    def render_component(locals, &block)
       if block_given?
-        render("govuk_publishing_components/components/#{component_name}", locals) { yield }
+        render("govuk_publishing_components/components/#{component_name}", locals, &block)
       else
         render "govuk_publishing_components/components/#{component_name}", locals
       end

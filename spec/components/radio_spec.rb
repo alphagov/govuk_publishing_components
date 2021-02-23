@@ -461,7 +461,7 @@ describe "Radio", type: :view do
     dom = Nokogiri::HTML(rendered)
     hint_id = dom.xpath('//div[contains(@class, "govuk-hint")]')[0].attr("id")
     error_id = dom.xpath("//span")[0].attr("id")
-    ids = hint_id + " " + error_id
+    ids = "#{hint_id} #{error_id}"
     assert_select ".govuk-fieldset[aria-describedby='#{ids}']"
   end
 

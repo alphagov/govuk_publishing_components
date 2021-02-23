@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
   s.description = "A gem to document components in GOV.UK frontend applications"
   s.homepage    = "https://github.com/alphagov/govuk_publishing_components"
   s.license     = "MIT"
+  s.required_ruby_version = ">= 2.6"
 
   s.files = Dir["{node_modules/govuk-frontend,node_modules/axe-core,node_modules/jquery,app,config,db,lib}/**/*", "LICENCE.md", "README.md"]
 
@@ -32,7 +33,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "pry-byebug"
   s.add_development_dependency "rake"
   s.add_development_dependency "rspec-rails", "~> 4.0"
-  s.add_development_dependency "rubocop-govuk", "~> 3"
+  s.add_development_dependency "rubocop-govuk", "4.0.0.pre.1"
   s.add_development_dependency "sassc-rails", "~> 2"
   s.add_development_dependency "uglifier", ">= 4.1.0"
   s.add_development_dependency "webmock", "~> 3.8.3"

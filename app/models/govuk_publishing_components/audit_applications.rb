@@ -22,7 +22,7 @@ module GovukPublishingComponents
         @find_all_print_stylesheets = /@import ["']{1}govuk_publishing_components\/all_components_print/
         find_print_stylesheets = /(?<=@import ["']{1}govuk_publishing_components\/components\/print\/)[a-zA-Z_-]+(?=['"])/
 
-        @find_all_javascripts = /\/\/[ ]*= require govuk_publishing_components\/all_components/
+        @find_all_javascripts = /\/\/ *= require govuk_publishing_components\/all_components/
         find_javascripts = /(?<=require govuk_publishing_components\/components\/)[a-zA-Z_-]+/
 
         components_in_templates = find_components(templates, find_components, "templates") || []
