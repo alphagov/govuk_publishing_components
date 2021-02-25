@@ -1,10 +1,14 @@
-<%= render "govuk_publishing_components/components/heading", {
-  text: "Components",
-  font_size: "l",
-  margin_bottom: 6,
-} %>
+<% if @applications_found %>
+  <%= render "govuk_publishing_components/components/heading", {
+    text: "Components",
+    font_size: "l",
+    margin_bottom: 6,
+  } %>
+<% end %>
 
 <% if @components.any? %>
+  <% component_items = [] %>
+
   <% component_files = capture do %>
     <table class="govuk-table">
       <thead class="govuk-table__head">
@@ -54,6 +58,20 @@
     </table>
   <% end %>
 
+  <%
+    component_items << {
+      heading: {
+        text: "Component files",
+      },
+      summary: {
+        text: "Lists what files each component has",
+      },
+      content: {
+        html: component_files
+      },
+    }
+  %>
+
   <% components_within_components = capture do %>
     <dl class="govuk-summary-list">
       <% @components[:components_containing_components].each do |component| %>
@@ -69,50 +87,40 @@
     </dl>
   <% end %>
 
-  <% components_by_application = capture do %>
-    <% if @components[:components_by_application].any? %>
-      <dl class="govuk-summary-list">
-        <% @components[:components_by_application].each do |component| %>
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
-              <%= component[:component] %> (<%= component[:count] %>)
-            </dt>
-            <dd class="govuk-summary-list__value">
-              <%= component[:list] %>
-            </dd>
-          </div>
-        <% end %>
-      </dl>
-    <% else %>
-      <p class="govuk-body">Sorry, no applications found.</p>
-    <% end %>
-  <% end %>
-
   <%
-    component_items = [
-      {
-        heading: {
-          text: "Component files",
-        },
-        summary: {
-          text: "Lists what files each component has",
-        },
-        content: {
-          html: component_files
-        },
+    component_items << {
+      heading: {
+        text: "Components containing other components",
       },
-      {
-        heading: {
-          text: "Components containing other components",
-        },
-        summary: {
-          text: "Shows which components contain other components",
-        },
-        content: {
-          html: components_within_components
-        },
+      summary: {
+        text: "Shows which components contain other components",
       },
-      {
+      content: {
+        html: components_within_components
+      },
+    }
+  %>
+
+  <% if @applications_found %>
+    <% components_by_application = capture do %>
+      <% if @components[:components_by_application].any? %>
+        <dl class="govuk-summary-list">
+          <% @components[:components_by_application].each do |component| %>
+            <div class="govuk-summary-list__row">
+              <dt class="govuk-summary-list__key">
+                <%= component[:component] %> (<%= component[:count] %>)
+              </dt>
+              <dd class="govuk-summary-list__value">
+                <%= component[:list] %>
+              </dd>
+            </div>
+          <% end %>
+        </dl>
+      <% end %>
+    <% end %>
+
+    <%
+      component_items << {
         heading: {
           text: "Components by application",
         },
@@ -122,9 +130,10 @@
         content: {
           html: components_by_application
         },
-      },
-    ]
-  %>
+      }
+    %>
+  <% end %>
+
   <%= render "govuk_publishing_components/components/accordion", {
     items: component_items
   } %>

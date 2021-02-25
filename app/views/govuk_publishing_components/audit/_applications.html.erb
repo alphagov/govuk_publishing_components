@@ -9,17 +9,12 @@
 } %>
 
 <% if @applications.any? %>
-  <details class="govuk-details" data-module="govuk-details">
-    <summary class="govuk-details__summary">
-      <span class="govuk-details__summary-text">
-        How to use this information
-      </span>
-    </summary>
-    <div class="govuk-details__text">
-      <p class="govuk-body">This page shows information about component use on GOV.UK. This information has been cross referenced with the components in the gem to produce warnings where e.g. a print stylesheet for a component exists but has not been included in an application.</p>
-      <p class="govuk-body">Warnings should be investigated, although there may be a reason why the application has been configured as it is. Note that 'code' can refer to templates or ruby code.</p>
-    </div>
-  </details>
+  <%= render "govuk_publishing_components/components/details", {
+    title: "How to use this information"
+  } do %>
+    <p class="govuk-body">This page shows information about component use on GOV.UK. This information has been cross referenced with the components in the gem to produce warnings where e.g. a print stylesheet for a component exists but has not been included in an application.</p>
+    <p class="govuk-body">Warnings should be investigated, although there may be a reason why the application has been configured as it is. Note that 'code' can refer to templates or ruby code.</p>
+  <% end %>
 
   <%
     accordion_content = nil
@@ -31,9 +26,7 @@
 
       if application[:application_found]
         summary = "Warnings: 0"
-        if application[:warning_count] > 0
-          summary = "Warnings: <strong class=\"govuk-tag govuk-tag--red\">#{application[:warning_count]}</strong>"
-        end
+        summary = "Warnings: <strong class=\"govuk-tag govuk-tag--red\">#{application[:warning_count]}</strong>" if application[:warning_count] > 0
       end
     %>
 

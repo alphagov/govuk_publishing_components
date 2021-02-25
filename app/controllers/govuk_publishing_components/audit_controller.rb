@@ -37,6 +37,7 @@ module GovukPublishingComponents
       compared_data = AuditComparer.new(components.data, applications)
 
       @applications = compared_data.applications_data || []
+      @applications_found = count_found_applications
       @components = compared_data.gem_data || []
     end
 
@@ -52,6 +53,15 @@ module GovukPublishingComponents
       end
 
       results
+    end
+
+    def count_found_applications
+      applications_found = false
+      @applications.each do |application|
+        applications_found = true if application[:application_found]
+      end
+
+      applications_found
     end
   end
 end
