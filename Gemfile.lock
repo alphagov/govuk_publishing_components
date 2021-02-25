@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    govuk_publishing_components (24.3.0)
+    govuk_publishing_components (24.3.1)
       govuk_app_config
       kramdown
       plek
@@ -347,4 +347,4 @@ DEPENDENCIES
   yard
 
 BUNDLED WITH
-   1.17.2
+   1.17.3

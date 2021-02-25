@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 24.3.1
 
 * Switch from `trackClick` to `gemTrackClick` script ([PR #1944](https://github.com/alphagov/govuk_publishing_components/pull/1944))
 * Add spacing to cookie banner confirmation message ([PR #1936](https://github.com/alphagov/govuk_publishing_components/pull/1936))
