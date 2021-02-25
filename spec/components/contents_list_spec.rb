@@ -83,7 +83,7 @@ describe "Contents list", type: :view do
   it "renders data attributes for tracking" do
     render_component(contents: nested_contents_list)
 
-    assert_select ".gem-c-contents-list[data-module='track-click']"
+    assert_select ".gem-c-contents-list[data-module='gem-track-click']"
 
     assert_tracking_link("category", "contentsClicked", 6)
     assert_tracking_link("action", "content_item 1")

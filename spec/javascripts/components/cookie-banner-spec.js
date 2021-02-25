@@ -28,16 +28,16 @@ describe('Cookie banner', function () {
             '</div>' +
           '</div>' +
           '<div class="govuk-button-group">' +
-            '<button class="gem-c-button govuk-button" type="submit" data-module="track-click" data-accept-cookies="true" data-track-category="cookieBanner" data-track-action="Cookie banner accepted" data-cookie-types="all" style="display: block;">Accept additional cookies</button>' +
-            '<button class="gem-c-button govuk-button" type="submit" data-module="track-click" data-reject-cookies="true" data-track-category="cookieBanner" data-track-action="Cookie banner rejected" style="display: block;">Reject additional cookies</button>' +
+            '<button class="gem-c-button govuk-button" type="submit" data-module="gem-track-click" data-accept-cookies="true" data-track-category="cookieBanner" data-track-action="Cookie banner accepted" data-cookie-types="all" style="display: block;">Accept additional cookies</button>' +
+            '<button class="gem-c-button govuk-button" type="submit" data-module="gem-track-click" data-reject-cookies="true" data-track-category="cookieBanner" data-track-action="Cookie banner rejected" style="display: block;">Reject additional cookies</button>' +
             '<a class="govuk-link" href="/help/cookies">View cookies</a>' +
           '</div>' +
         '</div>' +
       '</div>' +
       '<div class="gem-c-cookie-banner__confirmation govuk-width-container" tabindex="-1" hidden="">' +
-        '<p class="gem-c-cookie-banner__confirmation-message" role="alert">You can <a class="govuk-link" href="/help/cookies" data-module="track-click" data-track-category="cookieBanner" data-track-action="Cookie banner settings clicked from confirmation">change your cookie settings</a> at any time.</p>' +
+        '<p class="gem-c-cookie-banner__confirmation-message" role="alert">You can <a class="govuk-link" href="/help/cookies" data-module="gem-track-click" data-track-category="cookieBanner" data-track-action="Cookie banner settings clicked from confirmation">change your cookie settings</a> at any time.</p>' +
         '<div class="govuk-button-group">' +
-          '<button class="gem-c-cookie-banner__hide-button govuk-button" data-hide-cookie-banner="true" data-module="track-click" data-track-category="cookieBanner" data-track-action="Hide cookie banner">Hide this message</button>' +
+          '<button class="gem-c-cookie-banner__hide-button govuk-button" data-hide-cookie-banner="true" data-module="gem-track-click" data-track-category="cookieBanner" data-track-action="Hide cookie banner">Hide this message</button>' +
         '</div>' +
       '</div>' +
     '</div>'

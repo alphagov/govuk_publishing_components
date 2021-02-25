@@ -201,7 +201,7 @@ describe "Related navigation", type: :view do
     )
     render_component(content_item: content_item)
 
-    assert_select ".gem-c-related-navigation__nav-section ul[data-module='track-click']"
+    assert_select ".gem-c-related-navigation__nav-section ul[data-module='gem-track-click']"
     assert_select ".gem-c-related-navigation__section-link[data-track-category='relatedLinkClicked']"
     assert_select ".gem-c-related-navigation__section-link[data-track-action='1.1 Explore the topic']"
     assert_select ".gem-c-related-navigation__section-link[data-track-label='/apprenticeships']"

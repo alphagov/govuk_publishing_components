@@ -12,7 +12,7 @@ describe "ImageCard", type: :view do
   it "shows an image" do
     render_component(href: "#", image_src: "/moo.jpg", image_alt: "some meaningful alt text")
     assert_select ".gem-c-image-card .gem-c-image-card__image[src='/moo.jpg'][alt='some meaningful alt text']"
-    assert_select ".gem-c-image-card[data-module='track-click']", false
+    assert_select ".gem-c-image-card[data-module='gem-track-click']", false
   end
 
   it "shows heading text" do
@@ -89,13 +89,13 @@ describe "ImageCard", type: :view do
 
   it "applies tracking attributes" do
     render_component(href: "#", href_data_attributes: { track_category: "cat" }, heading_text: "test")
-    assert_select ".gem-c-image-card[data-module='track-click']"
+    assert_select ".gem-c-image-card[data-module='gem-track-click']"
     assert_select ".gem-c-image-card__title-link[data-track-category='cat']"
   end
 
   it "applies tracking attributes for extra links" do
     render_component(href: "#", extra_links: [{ href: "/", text: "1", data_attributes: { track_category: "cat" } }])
-    assert_select ".gem-c-image-card[data-module='track-click']"
+    assert_select ".gem-c-image-card[data-module='gem-track-click']"
     assert_select ".gem-c-image-card__list-item a[data-track-category='cat']"
   end
 

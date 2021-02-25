@@ -4,7 +4,7 @@
   role="navigation"
   aria-label="<%= t("govuk_component.previous_and_next_navigation.pagination", default: "Pagination") %>"
 >
-  <ul class="gem-c-pagination__list" data-module="track-click">
+  <ul class="gem-c-pagination__list" data-module="gem-track-click">
     <% if local_assigns.include?(:previous_page) %>
       <li class="gem-c-pagination__item gem-c-pagination__item--previous">
         <a href="<%= previous_page[:url] %>"

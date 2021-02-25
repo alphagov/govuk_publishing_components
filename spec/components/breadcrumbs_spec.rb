@@ -60,7 +60,7 @@ describe "Breadcrumbs", type: :view do
       dimension29: "Section",
     }
 
-    assert_select '.gem-c-breadcrumbs[data-module="track-click"]', 1
+    assert_select '.gem-c-breadcrumbs[data-module="gem-track-click"]', 1
     assert_select '.govuk-breadcrumbs__list-item:first-child a[data-track-action="1"]', 1
     assert_select '.govuk-breadcrumbs__list-item:first-child a[data-track-label="/section"]', 1
     assert_select '.govuk-breadcrumbs__list-item:first-child a[data-track-category="breadcrumbClicked"]', 1
@@ -75,7 +75,7 @@ describe "Breadcrumbs", type: :view do
       dimension29: "Section",
     }
 
-    assert_select '.gem-c-breadcrumbs[data-module="track-click"]', 1
+    assert_select '.gem-c-breadcrumbs[data-module="gem-track-click"]', 1
 
     assert_select '.govuk-breadcrumbs__list-item:nth-child(1) a[data-track-action="1"]', 1
     assert_select '.govuk-breadcrumbs__list-item:nth-child(1) a[data-track-label="/section"]', 1

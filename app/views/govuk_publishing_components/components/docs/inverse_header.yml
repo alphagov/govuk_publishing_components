@@ -45,7 +45,7 @@ examples:
     data:
       padding_top: false
       block: |
-        <div class="gem-c-breadcrumbs " data-module="track-click">
+        <div class="gem-c-breadcrumbs " data-module="gem-track-click">
           <ol>
             <li class="">
                 <a data-track-category="breadcrumbClicked" data-track-action="1" data-track-label="/section" data-track-options="{&quot;dimension28&quot;:&quot;2&quot;,&quot;dimension29&quot;:&quot;Section&quot;}" class="gem-c-breadcrumbs--inverse" aria-current="false" href="/section">Section</a>

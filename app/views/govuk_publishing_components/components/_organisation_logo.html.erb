@@ -26,7 +26,7 @@
 %>
 <<%= wrapping_element %>
   class="<%= wrapper_classes.join(" ") %>"
-  <%= "data-module=track-click" if organisation[:data_attributes] %>
+  <%= "data-module=gem-track-click" if organisation[:data_attributes] %>
 >
   <% if organisation[:url] %>
     <%= link_to organisation[:url],

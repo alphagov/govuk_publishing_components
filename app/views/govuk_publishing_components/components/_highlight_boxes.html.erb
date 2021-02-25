@@ -9,7 +9,7 @@
 %>
 <% if items.any? %>
   <% unless within_multitype_list %>
-    <ol class="gem-c-highlight-boxes" <%= "data-module=track-click" if highlight_boxes_helper.data_tracking? %>>
+    <ol class="gem-c-highlight-boxes" <%= "data-module=gem-track-click" if highlight_boxes_helper.data_tracking? %>>
   <% end %>
     <% items.each do |content_item| %>
       <li class="gem-c-highlight-boxes__item-wrapper <%= half_width_class %>">
