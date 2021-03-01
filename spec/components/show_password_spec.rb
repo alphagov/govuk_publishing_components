@@ -19,8 +19,10 @@ describe "Show password", type: :view do
     )
 
     assert_select(".gem-c-show-password[data-module='show-password']")
-    assert_select(".gem-c-show-password[data-show='Show']")
-    assert_select(".gem-c-show-password[data-hide='Hide']")
+    assert_select(".gem-c-show-password[data-show-text='Show']")
+    assert_select(".gem-c-show-password[data-hide-text='Hide']")
+    assert_select(".gem-c-show-password[data-show-full-text='Show password']")
+    assert_select(".gem-c-show-password[data-hide-full-text='Hide password']")
     assert_select(".gem-c-show-password[data-announce-show='Your password is shown']")
     assert_select(".gem-c-show-password[data-announce-hide='Your password is hidden']")
     assert_select(".gem-c-input[autocomplete='off']")
