@@ -156,4 +156,19 @@ describe "Breadcrumbs", type: :view do
 
     assert_select(".gem-c-breadcrumbs.govuk-breadcrumbs.govuk-breadcrumbs--collapse-on-mobile")
   end
+
+  it "has a border when passed a border parameter" do
+    render_component(
+      border: "bottom",
+      breadcrumbs: [
+        { title: "Home", url: "/" },
+        { title: "Section", url: "/section" },
+        { title: "Sub-section", url: "/sub-section" },
+        { title: "Sub-sub-section", url: "/sub-sub-section" },
+        { title: "Sub-sub-sub-section", url: "/sub-sub-sub-section" },
+      ],
+    )
+
+    assert_select(".gem-c-breadcrumbs.govuk-breadcrumbs.gem-c-breadcrumbs--border-bottom")
+  end
 end
