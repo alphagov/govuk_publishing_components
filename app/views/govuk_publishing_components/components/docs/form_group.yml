@@ -34,3 +34,14 @@ examples:
                  name="field"
                  id="<%= field[:label_for] %>"
                  aria-describedby="<%= field[:describedby].values.join(" ") %>">
+  with_a_configured_bottom_margin:
+    data:
+      label: "A large bottom margin"
+      margin_bottom: 9
+      block_arguments:
+        - field
+      block: |
+        <input class="govuk-input<%= " govuk-input--error" if field[:has_error] %>"
+                 name="field"
+                 id="<%= field[:label_for] %>"
+                 aria-describedby="<%= field[:describedby].values.join(" ") %>">

@@ -1,4 +1,4 @@
-name: Form textarea (deprecated)
+name: Form textarea
 description: A textarea field and an associated label
 govuk_frontend_components:
   - textarea
@@ -17,52 +17,53 @@ accessibility_criteria: |
 examples:
   default:
     data:
-      label:
-        text: "Can you provide more detail?"
-      name: "more-detail"
+      label: "Can you provide more detail?"
+      textarea:
+        name: "more-detail"
   with_id_attribute:
     description: An id can be passed for the textarea. By default one is randomly generated.
     data:
-      label:
-        text: "What is the nature of your medical emergency?"
-      name: "emergency-name"
-      id: "emergency-id"
+      label: "What is the nature of your medical emergency?"
+      textarea:
+        name: "emergency-name"
+        id: "emergency-id"
   with_margin_bottom:
     description: The component accepts a number for margin bottom from 0 to 9 (0px to 60px) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to a margin bottom of 6 (30px).
     data:
+      label: "Can you provide more detail?"
       margin_bottom: 9
-      label:
-        text: "Can you provide more detail?"
-      name: "more-detail"
+      textarea:
+        name: "more-detail"
   specific_rows:
     description: Textarea with 10 rows
     data:
-      label:
-        text: "Can you provide more detail?"
-      name: "more-detail-rows"
-      rows: 10
+      label: "Can you provide more detail?"
+      textarea:
+        name: "more-detail-rows"
+        rows: 10
   with_hint:
     data:
-      label:
-        text: "Can you provide more detail?"
-      name: "with-hint"
+      label: "Can you provide more detail?"
       hint: "Please include as much information as possible."
+      textarea:
+        name: "with-hint"
   with_error:
     data:
-      label:
-        text: "Can you provide more detail?"
-      name: "more-detail-error"
-      error_message: "Please could you provide more detail"
+      label: "Can you provide more detail?"
+      error: "Please could you provide more detail"
+      textarea:
+        name: "more-detail-error"
   with_error_items:
     data:
-      label:
-        text: "Can you provide more detail?"
-      name: "more-detail-error"
-      error_items:
-      - text: Descriptive link to the question with an error 1
-        href: '#example-error-1'
-      - text: Descriptive link to the question with an error 2
-        href: '#example-error-2'
+      label: "Can you provide more detail?"
+      error:
+        items:
+        - text: Descriptive link to the question with an error 1
+          href: '#example-error-1'
+        - text: Descriptive link to the question with an error 2
+          href: '#example-error-2'
+      textarea:
+        name: "more-detail-error"
   with_label_as_page_heading:
     data:
       label:
@@ -70,27 +71,14 @@ examples:
         heading_size: "xl"
         text: "Can you provide more detail?"
       hint: "Please include as much information as possible."
-      name: "more-detail-error"
+      textarea:
+        name: "more-detail-error"
   with_value:
     data:
-      label:
-        text: "Can you provide more detail?"
-      name: "more-detail-value"
-      value: "More detail"
-  with_extra_elements:
-    data:
-      label:
-        text: "How about a hint below?"
-      name: "more-elements"
-      block: |
-        <span class="govuk-hint">Here's a hint</span>
-  with_maxlength:
-    data:
-      label:
-        text: "A textarea that doesn't allow many characters"
-      name: "maxlength"
-      value: "You can't type more"
-      maxlength: 19
+      label: "Can you provide more detail?"
+      textarea:
+        name: "more-detail-value"
+        value: "More detail"
   with_aria_attributes:
     description: Use `describedby` when the textarea is described by an element outside the component; for example, when used in conjunction with a [contextual guidance](/component-guide/contextual_guidance).
     embed: |
@@ -100,6 +88,15 @@ examples:
       label:
         text: "Title"
         bold: true
-      name: "described"
-      rows: 2
-      describedby: "contextual-guidance"
+      textarea:
+        name: "described"
+        rows: 2
+        aria:
+          describedby: "contextual-guidance"
+  with_custom_attributes:
+    data:
+      label: "A textarea that doesn't allow many characters"
+      textarea:
+        name: "maxlength"
+        value: "You can't type more"
+        maxlength: 19

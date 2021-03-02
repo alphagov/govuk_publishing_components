@@ -6,10 +6,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   ShowPassword.prototype.start = function ($module) {
     this.$module = $module[0]
-    this.input = this.$module.querySelector('.gem-c-input')
+    this.input = this.$module.querySelector('.gem-c-form-show-password__input')
     this.$module.togglePassword = this.togglePassword.bind(this)
     this.$module.revertToPasswordOnFormSubmit = this.revertToPasswordOnFormSubmit.bind(this)
-    this.input.classList.add('gem-c-input--with-password')
+    this.input.classList.add('gem-c-form-show-password__input')
 
     this.showPasswordText = this.$module.getAttribute('data-show-text')
     this.hidePasswordText = this.$module.getAttribute('data-hide-text')
@@ -20,13 +20,13 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
     // wrap the input in a new div
     this.wrapper = document.createElement('div')
-    this.wrapper.classList.add('gem-c-show-password__input-wrapper')
+    this.wrapper.classList.add('gem-c-form-show-password__input-wrapper')
     this.input.parentNode.insertBefore(this.wrapper, this.input)
     this.wrapper.appendChild(this.input)
 
     // create and append the button
     this.showHide = document.createElement('button')
-    this.showHide.className = 'gem-c-show-password__toggle'
+    this.showHide.className = 'gem-c-form-show-password__toggle'
     this.showHide.setAttribute('aria-controls', this.input.getAttribute('id'))
     this.showHide.setAttribute('type', 'button')
     this.showHide.setAttribute('aria-label', this.showPasswordFullText)

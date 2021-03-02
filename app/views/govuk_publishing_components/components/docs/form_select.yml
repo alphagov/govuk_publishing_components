@@ -83,6 +83,16 @@ examples:
           value: 'option2'
         - text: 'Option three'
           value: 'option3'
+  with_a_large_bottom_margin:
+    data:
+      label: "What is your name?"
+      margin_bottom: 9
+      select:
+        options:
+        - text: 'Option one'
+          value: 'option1'
+        - text: 'Option two'
+          value: 'option2'
   with_error:
     description: If the user has to select an option, it is recommended that a radio button is used instead of a select, but this is not always possible.
     data:

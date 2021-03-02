@@ -8,6 +8,8 @@
           end
   label[:html_for] = for_id if label && !label&.has_key?(:html_for)
 
+  margin_bottom ||= 6 unless (0..9).include?(margin_bottom)
+
   heading_level = label.delete(:heading_level)
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
@@ -27,6 +29,7 @@
 
   css_classes = %w(gem-c-form-group govuk-form-group)
   css_classes << "govuk-form-group--error" if error
+  css_classes << (shared_helper.get_margin_bottom)
 
   field_options = {
     label_for: label&.[](:html_for),

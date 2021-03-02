@@ -57,6 +57,10 @@ examples:
     data:
       label: "What is your name?"
       error: "Please could you provide your name"
+  with_a_large_bottom_margin:
+    data:
+      label: "What is your name?"
+      margin_bottom: 9
   with_a_width:
     data:
       label: "National insurance number"

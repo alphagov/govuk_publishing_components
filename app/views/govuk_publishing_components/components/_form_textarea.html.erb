@@ -1,0 +1,25 @@
+<%
+  form_group_helper = GovukPublishingComponents::Presenters::FormGroupHelper.new(local_assigns)
+
+  textarea = textarea&.dup || {}
+  name = textarea.delete(:name)
+  value = textarea.delete(:value)
+
+  textarea[:id] ||= form_group_helper.generate_field_id(name)
+  textarea[:rows] ||= 5
+  textarea[:spellcheck] = textarea.fetch(:spellcheck, true)
+
+  textarea[:class] = %w(govuk-textarea gem-c-form-textarea__textarea)
+  textarea[:class].append(*form_group_helper.additional_field_classes(textarea))
+%>
+<%= content_tag :div, class: "gem-c-form-textarea" do %>
+  <%= render "govuk_publishing_components/components/form_group",
+    form_group_helper.form_group_options.merge({ for_id: textarea[:id] }) do |field| %>
+    <%
+      textarea[:class] << "govuk-textarea--error" if field[:has_error]
+      form_group_helper.merge_described_by(textarea, field[:describedby].values)
+    %>
+    <%= text_area_tag(name, value, textarea) %>
+    <%= yield if block_given? %>
+  <% end %>
+<% end %>

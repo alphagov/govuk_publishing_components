@@ -1,4 +1,4 @@
-name: Form character count (deprecated)
+name: Form character count
 description: Help users enter text when there is a limit on the number of characters they can type
 govuk_frontend_components:
   - character-count
@@ -19,34 +19,30 @@ accessibility_criteria: |
 examples:
   default:
     data:
+      label: "Can you provide more detail?"
       textarea:
-        label:
-          text: "Can you provide more detail?"
         name: "more-detail"
       maxlength: 10
   with_hint:
     data:
+      label: "Can you provide more detail?"
+      hint: "Please include as much information as possible."
       textarea:
-        label:
-          text: "Can you provide more detail?"
         name: "with-hint"
-        hint: "Please include as much information as possible."
       maxlength: 10
   with_id_for_textarea:
     data:
+      label: "What is your quest?"
       textarea:
-        label:
-          text: "What is your quest?"
         name: "with-an-id"
-      id: "custom-id"
+        id: "custom-id"
       maxlength: 10
   with_error:
     data:
+      label: "Can you provide more detail?"
+      error: "Detail must be 10 characters or less"
       textarea:
-        label:
-          text: "Can you provide more detail?"
         name: "more-detail-error"
-        error_message: "Detail must be 10 characters or less"
         value: |
           221B Baker Street
           London
@@ -54,16 +50,14 @@ examples:
       maxlength: 10
   with_word_count:
     data:
+      label: "Can you provide more detail?"
       textarea:
-        label:
-          text: "Can you provide more detail?"
         name: "more-detail-value"
       maxwords: 10
   with_threshold:
     data:
+      label: "Can you provide more detail?"
       textarea:
-        label:
-          text: "Can you provide more detail?"
         name: "more-detail-with-threshold"
       threshold: 75
       maxlength: 20
