@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add border option to breadcrumb ([PR #1952])(https://github.com/alphagov/govuk_publishing_components/pull/1952) MINOR
+
 ## 24.3.1
 
 * Show password fixes ([PR #1947](https://github.com/alphagov/govuk_publishing_components/pull/1947))

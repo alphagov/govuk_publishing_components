@@ -97,3 +97,25 @@ examples:
         url: '/browse/abroad'
       - title: 'Travel abroad'
         url: '/browse/abroad/travel-abroad'
+  with_border:
+    description: "Set a border below the breadcrumb. Off by default."
+    data:
+      border: "bottom"
+      breadcrumbs:
+      - title: "Section"
+        url: "/section"
+      - title: "Sub-section"
+        url: "/section/sub-section"
+      - title: "Sub-sub-section"
+        url: "/section/sub-section/sub-section"
+  with_border_and_collapse_on_mobile:
+    data:
+      border: "bottom"
+      collapse_on_mobile: true
+      breadcrumbs:
+      - title: "Section"
+        url: "/section"
+      - title: "Sub-section"
+        url: "/section/sub-section"
+      - title: "Sub-sub-section"
+        url: "/section/sub-section/sub-section"
