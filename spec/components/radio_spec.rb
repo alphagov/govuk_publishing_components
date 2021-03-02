@@ -223,6 +223,33 @@ describe "Radio", type: :view do
     assert_select ".govuk-fieldset__legend.govuk-fieldset__legend--m", "What is your favourite skittle?"
   end
 
+  it "renders radio-group with h2 heading level by default" do
+    render_component(
+      name: "favourite-skittle",
+      heading: "What is your favourite skittle?",
+      items: [
+        { label: "Red", value: "red" },
+        { label: "Green", value: "green" },
+        { label: "Blue", value: "blue" },
+      ],
+    )
+    assert_select "h2.govuk-fieldset__heading", text: "What is your favourite skittle?"
+  end
+
+  it "renders radio-group custom heading level if custom heading level is passed" do
+    render_component(
+      name: "favourite-skittle",
+      heading: "What is your favourite skittle?",
+      heading_level: 4,
+      items: [
+        { label: "Red", value: "red" },
+        { label: "Green", value: "green" },
+        { label: "Blue", value: "blue" },
+      ],
+    )
+    assert_select "h4.govuk-fieldset__heading", text: "What is your favourite skittle?"
+  end
+
   it "renders radio-group with bold labels" do
     render_component(
       name: "radio-group-bold-labels",

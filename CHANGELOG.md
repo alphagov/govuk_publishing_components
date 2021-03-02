@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add border option to breadcrumb ([PR #1952])(https://github.com/alphagov/govuk_publishing_components/pull/1952) MINOR
+* Add custom heading level option to radio component ([PR #1951](https://github.com/alphagov/govuk_publishing_components/pull/1951))
 
 ## 24.3.1
 
