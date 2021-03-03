@@ -133,23 +133,17 @@ describe "Summary list", type: :view do
           value: "Ethical standards for public service providers",
           edit: {
             href: "#edit-title",
-            data_attributes: {
-              gtm: "edit-title",
-            },
           },
           delete: {
             href: "#delete-title",
-            data_attributes: {
-              gtm: "delete-title",
-            },
           },
         },
       ],
     )
     assert_select ".govuk-summary-list__key", text: "Title"
     assert_select ".govuk-summary-list__value", text: "Ethical standards for public service providers"
-    assert_select 'li.govuk-summary-list__actions-list-item .govuk-link[title="Change Title"][href="#edit-title"][data-gtm="edit-title"]', text: "Change Title"
-    assert_select 'li.govuk-summary-list__actions-list-item .govuk-link.gem-link--destructive[title="Delete Title"][href="#delete-title"][data-gtm="delete-title"]', text: "Delete Title"
+    assert_select 'li.govuk-summary-list__actions-list-item .govuk-link[title="Change Title"][href="#edit-title"]', text: "Change Title"
+    assert_select 'li.govuk-summary-list__actions-list-item .govuk-link.gem-link--destructive[title="Delete Title"][href="#delete-title"]', text: "Delete Title"
   end
 
   it "renders items with custom text for edit and delete action" do
@@ -171,5 +165,85 @@ describe "Summary list", type: :view do
     )
     assert_select '.govuk-summary-list__actions-list-item .govuk-link[title="Edit Title"][href="#edit-title"]', text: "Edit Title"
     assert_select '.govuk-summary-list__actions-list-item .govuk-link.gem-link--destructive[title="Remove Title"][href="#delete-title"]', text: "Remove Title"
+  end
+
+  it "renders the edit action on section" do
+    render_component(
+      title: "Title",
+      items: [
+        {
+          field: "Title",
+          value: "Ethical standards for public service providers",
+        },
+      ],
+      edit: {
+        href: "edit-title",
+      },
+    )
+    assert_select 'div.govuk-summary-list__actions-list .govuk-link[title="Change Title"][href="edit-title"]', text: "Change Title"
+  end
+
+  it "renders the delete action on section" do
+    render_component(
+      title: "Title",
+      items: [
+        {
+          field: "Title",
+          value: "Ethical standards for public service providers",
+        },
+      ],
+      delete: {
+        href: "delete-title",
+      },
+    )
+    assert_select 'div.govuk-summary-list__actions-list .govuk-link[title="Delete Title"][href="delete-title"]', text: "Delete Title"
+  end
+
+  it "renders the edit and delete actions on section" do
+    render_component(
+      title: "Title",
+      items: [
+        {
+          field: "Title",
+          value: "Ethical standards for public service providers",
+        },
+      ],
+      edit: {
+        href: "edit-title",
+        data_attributes: {
+          gtm: "edit-title",
+        },
+      },
+      delete: {
+        href: "delete-title",
+        data_attributes: {
+          gtm: "delete-title",
+        },
+      },
+    )
+    assert_select 'ul.govuk-summary-list__actions-list .govuk-summary-list__actions-list-item .govuk-link[title="Change Title"][href="edit-title"][data-gtm="edit-title"]', text: "Change Title"
+    assert_select 'ul.govuk-summary-list__actions-list .govuk-summary-list__actions-list-item .govuk-link[title="Delete Title"][href="delete-title"][data-gtm="delete-title"]', text: "Delete Title"
+  end
+
+  it "renders the edit and delete actions on section with custom text" do
+    render_component(
+      title: "Title",
+      items: [
+        {
+          field: "Title",
+          value: "Ethical standards for public service providers",
+        },
+      ],
+      edit: {
+        href: "edit-title",
+        link_text: "Edit",
+      },
+      delete: {
+        href: "delete-title",
+        link_text: "Destroy",
+      },
+    )
+    assert_select 'ul.govuk-summary-list__actions-list .govuk-summary-list__actions-list-item .govuk-link[title="Edit Title"][href="edit-title"]', text: "Edit Title"
+    assert_select 'ul.govuk-summary-list__actions-list .govuk-summary-list__actions-list-item .govuk-link[title="Destroy Title"][href="delete-title"]', text: "Destroy Title"
   end
 end
