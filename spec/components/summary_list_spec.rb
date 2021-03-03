@@ -85,7 +85,7 @@ describe "Summary list", type: :view do
     assert_select ".govuk-summary-list__value", text: "Find out more about our reviews on the subject of ethical standards for public service providers, including our 2014 report, 2015 guidance and 2018 follow-up publication."
   end
 
-  it "renders items with edit action" do
+  it "renders items with only the edit action" do
     render_component(
       items: [
         {
@@ -102,10 +102,10 @@ describe "Summary list", type: :view do
     )
     assert_select ".govuk-summary-list__key", text: "Title"
     assert_select ".govuk-summary-list__value", text: "Ethical standards for public service providers"
-    assert_select '.govuk-summary-list__actions-list-item .govuk-link[title="Change Title"][href="#edit-title"][data-gtm="edit-title"]', text: "Change Title"
+    assert_select 'dd.govuk-summary-list__actions .govuk-link[title="Change Title"][href="#edit-title"][data-gtm="edit-title"]', text: "Change Title"
   end
 
-  it "renders items with delete action" do
+  it "renders items with only the delete action" do
     render_component(
       items: [
         {
@@ -122,7 +122,34 @@ describe "Summary list", type: :view do
     )
     assert_select ".govuk-summary-list__key", text: "Title"
     assert_select ".govuk-summary-list__value", text: "Ethical standards for public service providers"
-    assert_select '.govuk-summary-list__actions-list-item .govuk-link.gem-link--destructive[title="Delete Title"][href="#delete-title"][data-gtm="delete-title"]', text: "Delete Title"
+    assert_select 'dd.govuk-summary-list__actions .govuk-link.gem-link--destructive[title="Delete Title"][href="#delete-title"][data-gtm="delete-title"]', text: "Delete Title"
+  end
+
+  it "renders items with both the edit and the delete action" do
+    render_component(
+      items: [
+        {
+          field: "Title",
+          value: "Ethical standards for public service providers",
+          edit: {
+            href: "#edit-title",
+            data_attributes: {
+              gtm: "edit-title",
+            },
+          },
+          delete: {
+            href: "#delete-title",
+            data_attributes: {
+              gtm: "delete-title",
+            },
+          },
+        },
+      ],
+    )
+    assert_select ".govuk-summary-list__key", text: "Title"
+    assert_select ".govuk-summary-list__value", text: "Ethical standards for public service providers"
+    assert_select 'li.govuk-summary-list__actions-list-item .govuk-link[title="Change Title"][href="#edit-title"][data-gtm="edit-title"]', text: "Change Title"
+    assert_select 'li.govuk-summary-list__actions-list-item .govuk-link.gem-link--destructive[title="Delete Title"][href="#delete-title"][data-gtm="delete-title"]', text: "Delete Title"
   end
 
   it "renders items with custom text for edit and delete action" do
