@@ -1,8 +1,17 @@
-<button class="search-toggle js-header-toggle" data-search-toggle-for="search">Show search</button>
-<form id="search" class="gem-c-layout-header__search-form govuk-clearfix" action="/search" method="get" role="search">
+<button class="search-toggle js-header-toggle" data-search-toggle-for="search">
+  Show search
+</button>
+<form
+  action="/search"
+  class="gem-c-layout-header__search-form govuk-clearfix"
+  id="search"
+  method="get"
+  role="search"
+>
   <%= render "govuk_publishing_components/components/search", {
+    button_text: "Search GOV.UK",
     id: "site-search-text",
+    margin_bottom: 0,
     no_border: true,
-    margin_bottom: 0
   } %>
 </form>
