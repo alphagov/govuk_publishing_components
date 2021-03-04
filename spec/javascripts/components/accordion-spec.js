@@ -5,12 +5,10 @@ describe('An accordion component', function () {
   'use strict'
 
   var element
-  var container
-
-  beforeEach(function () {
-    container = document.createElement('div')
-    container.innerHTML =
-      '<div class="gem-c-accordion govuk-!-margin-bottom-6" id="default-id" data-module="gem-accordion" data-anchor-navigation="true">' +
+  var container = document.createElement('div')
+  var localeData = {}
+  var html =
+      '<div class="gem-c-accordion govuk-!-margin-bottom-6" id="default-id" data-module="gem-accordion" data-anchor-navigation="true" data-show-text="Show" data-hide-text="Hide" data-show-all-text="Show all sections" data-hide-all-text="Hide all sections" data-this-section-visually-hidden=" this section">' +
         '<section class="gem-c-accordion__section">' +
           '<div class="gem-c-accordion__section-header">' +
             '<h2 class="gem-c-accordion__section-heading">' +
@@ -34,13 +32,33 @@ describe('An accordion component', function () {
         '</section>' +
       '</div>'
 
+  beforeEach(function () {
+    container.innerHTML = html
     document.body.appendChild(container)
+
+    // This gunky eslint disable is to account for ruby's rules on object (hash) attribute keys
+    /* eslint-disable dot-notation */
+    localeData['show_text'] = 'st'
+    localeData['hide_text'] = 'ht'
+    localeData['show_all_text'] = 'sa'
+    localeData['hide_all_text'] = 'ha'
+    localeData['this_section_visually_hidden'] = 'vh'
+    /* eslint-enable dot-notation */
+
+    // Because we're passing stringified JSON data, we have to pass this separately so that innerHTML doesn't strip anything and break these tests unexpectedly
+    container.querySelector('.gem-c-accordion').setAttribute('data-locale', JSON.stringify(localeData))
+
     element = document.getElementById('default-id')
     new GOVUK.Modules.GemAccordion().start($(element))
   })
 
   afterEach(function () {
+    $(document).off()
+    window.sessionStorage.clear()
     document.body.removeChild(container)
+
+    // This is to account for the anchor link test persisting the page hash after clicking the link
+    window.location.hash = ''
   })
 
   describe('on page load', function () {
@@ -85,7 +103,7 @@ describe('An accordion component', function () {
       topLevelControl.click()
       expect(topLevelControl.innerText).toEqual('Hide all sections')
 
-      element.querySelectorAll('.gem-c-accordion__section').forEach(function (section, i) {
+      element.querySelectorAll('.gem-c-accordion__section').forEach(function (section) {
         expect(section).toHaveClass('gem-c-accordion__section--expanded')
         expect(section.querySelector('.gem-c-accordion__toggle-text').innerText).toEqual('Hide')
       })
@@ -93,7 +111,7 @@ describe('An accordion component', function () {
       topLevelControl.click()
       expect(topLevelControl.innerText).toEqual('Show all sections')
 
-      element.querySelectorAll('.gem-c-accordion__section').forEach(function (section, i) {
+      element.querySelectorAll('.gem-c-accordion__section').forEach(function (section) {
         expect(section).not.toHaveClass('gem-c-accordion__section--expanded')
         expect(section.querySelector('.gem-c-accordion__toggle-text').innerText).toEqual('Show')
       })
@@ -108,6 +126,37 @@ describe('An accordion component', function () {
 
       link.click()
       expect(element.querySelectorAll('.gem-c-accordion__section')[1]).toHaveClass('gem-c-accordion__section--expanded')
+    })
+  })
+
+  describe('when translation is applied to accordion', function () {
+    // These tests rely on the locale value passed in the markup snapshot above in the form of the following JSON object:
+    // {
+    //   show_text: 'st',
+    //   hide_text: 'ht',
+    //   show_all_text: 'sa',
+    //   hide_all_text: 'ha',
+    //   this_section_visually_hidden: 'vh'
+    // }
+    it('sets lang attributes if locale attribute is present', function () {
+      expect(element.querySelector('.gem-c-accordion__open-all-text').lang).toEqual('sa')
+
+      element.querySelectorAll('.gem-c-accordion__section-button').forEach(function (control) {
+        expect(control.querySelector('.gem-c-accordion__toggle-text').lang).toEqual('st')
+        expect(control.querySelectorAll('.govuk-visually-hidden')[1].lang).toEqual('vh')
+      })
+    })
+
+    it('resets lang attributes upon button click if the locales for hide text is different', function () {
+      var topLevelControlText = element.querySelector('.gem-c-accordion__open-all-text')
+
+      topLevelControlText.click()
+
+      expect(topLevelControlText.lang).toEqual('ha')
+
+      element.querySelectorAll('.gem-c-accordion__section-button').forEach(function (control) {
+        expect(control.querySelector('.gem-c-accordion__toggle-text').lang).toEqual('ht')
+      })
     })
   })
 })

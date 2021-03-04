@@ -11,9 +11,34 @@
   accordion_classes << 'gem-c-accordion--condensed' if condensed
   accordion_classes << (shared_helper.get_margin_bottom)
 
+  translations = {
+    show_text: "components.accordion.show",
+    hide_text: "components.accordion.hide",
+    show_all_text: "components.accordion.show_all",
+    hide_all_text: "components.accordion.hide_all",
+    this_section_visually_hidden: "components.accordion.this_section_visually_hidden",
+  }
+
+  locales = {}
+
   data_attributes ||= {}
   data_attributes[:module] = 'gem-accordion'
   data_attributes[:anchor_navigation] = anchor_navigation
+
+  translations.each do |key, translation|
+    locales[key] = shared_helper.t_locale(translation)
+    data_attributes[key] = t(translation)
+  end
+
+  unique_locales = locales.values.uniq
+
+  if unique_locales.length > 1
+    data_attributes[:locale] = locales
+  else
+    if unique_locales[0] != I18n.locale
+      data_attributes[:locale] = unique_locales[0]
+    end
+  end
 %>
 <% if items.any? %>
   <%= tag.div(class: accordion_classes, id: id, data: data_attributes) do %>

@@ -40,21 +40,21 @@ examples:
     data:
       items:
         - heading:
-            text: "Writing well for the web"
+            text: Writing well for the web
           content:
-            html: "<p class='govuk-body'>This is the content for Writing well for the web.</p>"
+            html: <p class="govuk-body">This is the content for Writing well for the web.</p>
         - heading:
-            text: "Writing well for specialists"
+            text: Writing well for specialists
           content:
-            html: "<p class='govuk-body'>This is the content for Writing well for specialists.</p>"
+            html: <p class="govuk-body">This is the content for Writing well for specialists.</p>
         - heading:
-            text: "Know your audience"
+            text: Know your audience
           content:
-            html: "<p class='govuk-body'>This is the content for Know your audience.</p>"
+            html: <p class="govuk-body">This is the content for Know your audience.</p>
         - heading:
-            text: "How people read"
+            text: How people read
           content:
-            html: "<p class='govuk-body'>This is the content for How people read.</p>"
+            html: <p class="govuk-body">This is the content for How people read.</p>
   with_supplied_identification:
     description: |
       An `id` is optional as it's automatically generated, but it can be supplied if a specific `id` is required.
@@ -66,29 +66,29 @@ examples:
       id: with-supplied-id-thats-unique-across-the-domain
       items:
         - heading:
-            text: "Writing well for the web"
+            text: Writing well for the web
           content:
-            html: "<p class='govuk-body'>This is the content for Writing well for the web.</p>"
+            html: <p class="govuk-body">This is the content for Writing well for the web.</p>
         - heading:
-            text: "Writing well for specialists"
+            text: Writing well for specialists
           content:
-            html: "<p class='govuk-body'>This is the content for Writing well for specialists.</p>"
+            html: <p class="govuk-body">This is the content for Writing well for specialists.</p>
         - heading:
-            text: "Know your audience"
+            text: Know your audience
           content:
-            html: "<p class='govuk-body'>This is the content for Know your audience.</p>"
+            html: <p class="govuk-body">This is the content for Know your audience.</p>
         - heading:
-            text: "How people read"
+            text: How people read
           content:
-            html: "<p class='govuk-body'>This is the content for How people read.</p>"
+            html: <p class="govuk-body">This is the content for How people read.</p>
   with_summary:
     description: Adds a subheading below each section heading.
     data:
       items:
         - heading:
-            text: "Understanding agile project management"
+            text: Understanding agile project management
           summary:
-            text: "Introductions, methods, core features."
+            text: Introductions, methods, core features.
           content:
             html:
               '<ul class="govuk-list">
@@ -103,9 +103,9 @@ examples:
                   </li>
               </ul>'
         - heading:
-            text: "Working with agile methods"
+            text: Working with agile methods
           summary:
-            text: "Workspaces, tools and techniques, user stories, planning."
+            text: Workspaces, tools and techniques, user stories, planning.
           content:
             html:
               '<ul class="govuk-list">
@@ -132,9 +132,9 @@ examples:
                   </li>
               </ul>'
         - heading:
-            text: "Governing agile services"
+            text: Governing agile services
           summary:
-            text: "Principles, measuring progress, spending money."
+            text: Principles, measuring progress, spending money.
           content:
             html:
               '<ul class="govuk-list">
@@ -158,9 +158,9 @@ examples:
                   </li>
               </ul>'
         - heading:
-            text: "Phases of an agile project"
+            text: Phases of an agile project
           summary:
-            text: "Discovery, alpha, beta, live and retirement."
+            text: Discovery, alpha, beta, live and retirement.
           content:
             html:
               '<ul class="govuk-list">
@@ -190,54 +190,54 @@ examples:
 
     data:
       data_attributes:
-          gtm: 'gtm-accordion'
-          ga: 'ga-accordion'
+          gtm: gtm-accordion
+          ga: ga-accordion
       items:
         - heading:
-            text: "Writing well for the web"
+            text: Writing well for the web
           content:
-            html: "<p class='govuk-body'>This is the content for Writing well for the web.</p>"
+            html: <p class="govuk-body">This is the content for Writing well for the web.</p>
           data_attributes:
-            gtm: 'gtm-accordion-item-1'
+            gtm: gtm-accordion-item-1
         - heading:
-            text: "Writing well for specialists"
+            text: Writing well for specialists
           content:
-            html: "<p class='govuk-body'>This is the content for Writing well for specialists.</p>"
+            html: <p class="govuk-body">This is the content for Writing well for specialists.</p>
           data_attributes:
-            gtm: 'gtm-accordion-item-2'
+            gtm: gtm-accordion-item-2
         - heading:
-            text: "Know your audience"
+            text: Know your audience
           content:
-            html: "<p class='govuk-body'>This is the content for Know your audience.</p>"
+            html: <p class="govuk-body">This is the content for Know your audience.</p>
           data_attributes:
-            gtm: 'gtm-accordion-item-3'
+            gtm: gtm-accordion-item-3
         - heading:
-            text: "How people read"
+            text: How people read
           content:
-            html: "<p class='govuk-body'>This is the content for How people read.</p>"
+            html: <p class="govuk-body">This is the content for How people read.</p>
           data_attributes:
-            gtm: 'gtm-accordion-item-4'
+            gtm: gtm-accordion-item-4
   different_heading_level:
     description: This will alter the level of the heading, not the appearance of the heading.
     data:
       heading_level: 3
       items:
         - heading:
-            text: "Writing well for the web"
+            text: Writing well for the web
           content:
-            html: "<p class='govuk-body'>This is the content for Writing well for the web.</p>"
+            html: <p class="govuk-body">This is the content for Writing well for the web.</p>
         - heading:
-            text: "Writing well for specialists"
+            text: Writing well for specialists
           content:
-            html: "<p class='govuk-body'>This is the content for Writing well for specialists.</p>"
+            html: <p class="govuk-body">This is the content for Writing well for specialists.</p>
         - heading:
-            text: "Know your audience"
+            text: Know your audience
           content:
-            html: "<p class='govuk-body'>This is the content for Know your audience.</p>"
+            html: <p class="govuk-body">This is the content for Know your audience.</p>
         - heading:
-            text: "How people read"
+            text: How people read
           content:
-            html: "<p class='govuk-body'>This is the content for How people read.</p>"
+            html: <p class="govuk-body">This is the content for How people read.</p>
   with_margin_bottom:
     description: |
       The component accepts a number for margin bottom from 0 to 9 (0px to 60px) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having a margin bottom of 30px.
@@ -245,35 +245,35 @@ examples:
       margin_bottom: 0
       items:
         - heading:
-            text: "Writing well for the web"
+            text: Writing well for the web
           content:
-            html: "<p class='govuk-body'>This is the content for Writing well for the web.</p>"
+            html: <p class="govuk-body">This is the content for Writing well for the web.</p>
         - heading:
-            text: "Writing well for specialists"
+            text: Writing well for specialists
           content:
-            html: "<p class='govuk-body'>This is the content for Writing well for specialists.</p>"
+            html: <p class="govuk-body">This is the content for Writing well for specialists.</p>
   with_section_open:
     description: |
       Adding `expanded: true` to the item will mean the section will default to being open, rather than closed. Once a user has opened or closed a section, the state of each section will be remembered - this can override a section's default.
     data:
       items:
         - heading:
-            text: "Writing well for the web"
+            text: Writing well for the web
           content:
-            html: "<p class='govuk-body'>This is the content for Writing well for the web.</p>"
+            html: <p class="govuk-body">This is the content for Writing well for the web.</p>
           expanded: true
         - heading:
-            text: "Writing well for specialists"
+            text: Writing well for specialists
           content:
-            html: "<p class='govuk-body'>This is the content for Writing well for specialists.</p>"
+            html: <p class="govuk-body">This is the content for Writing well for specialists.</p>
         - heading:
-            text: "Know your audience"
+            text: Know your audience
           content:
-            html: "<p class='govuk-body'>This is the content for Know your audience.</p>"
+            html: <p class="govuk-body">This is the content for Know your audience.</p>
         - heading:
-            text: "How people read"
+            text: How people read
           content:
-            html: "<p class='govuk-body'>This is the content for How people read.</p>"
+            html: <p class="govuk-body">This is the content for How people read.</p>
   with_the_anchor_link_navigation:
     description: |
       Some apps require custom ids per accordion section heading for linking between those specific sections, sometimes across multiple pages. An example of this is on manuals pages where multiple manuals will each include large sets of accordions and will reference between specific sections for ease of access to that content. [Live example](https://www.gov.uk/guidance/how-to-publish-on-gov-uk/creating-and-updating-pages#associations).
@@ -287,22 +287,22 @@ examples:
       anchor_navigation: true
       items:
         - heading:
-            text: "Writing well for the web"
-            id: "writing-well-for-the-web"
+            text: Writing well for the web
+            id: writing-well-for-the-web
           content:
-            html: "<p class='govuk-body'>This is the content for Writing well for the web.</p>"
+            html: <p class="govuk-body">This is the content for Writing well for the web.</p>
         - heading:
-            text: "Writing well for specialists"
+            text: Writing well for specialists
           content:
-            html: "<p class='govuk-body'>This is the content for Writing well for specialists.</p>"
+            html: <p class="govuk-body">This is the content for Writing well for specialists.</p>
         - heading:
-            text: "Know your audience"
+            text: Know your audience
           content:
-            html: "<p class='govuk-body'>This is the content for Know your audience.</p>"
+            html: <p class="govuk-body">This is the content for Know your audience.</p>
         - heading:
-            text: "How people read"
+            text: How people read
           content:
-            html: "<p class='govuk-body'>This is the content for How people read.</p>"
+            html: <p class="govuk-body">This is the content for How people read.</p>
   condensed_layout:
     description: |
       This is for when a smaller accordion is required. Since smaller screens trigger a single column layout, this modifier only makes the accordion smaller when viewed on large screens.
@@ -310,7 +310,7 @@ examples:
       condensed: true
       items:
         - heading:
-            text: "Understanding agile project management"
+            text: Understanding agile project management
           content:
             html:
               '<ul class="govuk-list">
@@ -325,9 +325,9 @@ examples:
                   </li>
               </ul>'
         - heading:
-            text: "Working with agile methods"
+            text: Working with agile methods
           summary:
-            text: "Workspaces, tools and techniques, user stories, planning."
+            text: Workspaces, tools and techniques, user stories, planning.
           content:
             html:
               '<ul class="govuk-list">
@@ -354,7 +354,7 @@ examples:
                   </li>
               </ul>'
         - heading:
-            text: "Governing agile services"
+            text: Governing agile services
           content:
             html:
               '<ul class="govuk-list">
@@ -378,7 +378,7 @@ examples:
                   </li>
               </ul>'
         - heading:
-            text: "Phases of an agile project"
+            text: Phases of an agile project
           content:
             html:
               '<ul class="govuk-list">
