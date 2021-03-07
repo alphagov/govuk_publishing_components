@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
 
   mount GovukPublishingComponents::Engine, at: "/component-guide"
+  mount MagicLamp::Genie, at: "/magic_lamp"
   root to: redirect("/component-guide")
   get "test", to: "welcome#index"
   get "step-nav/:slug", to: "step_nav#show"

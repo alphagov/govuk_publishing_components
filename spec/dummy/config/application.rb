@@ -16,6 +16,7 @@ unless ENV["HEROKU"]
 end
 
 require "govuk_publishing_components"
+require "magic_lamp"
 
 module Dummy
   class Application < Rails::Application

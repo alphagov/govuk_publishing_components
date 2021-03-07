@@ -1,4 +1,6 @@
 /* eslint-env jasmine, jquery */
+//= require magic_lamp
+//= require magic_lamp/all_fixtures
 
 beforeAll(function () {
   window.GOVUK.analyticsVars = window.GOVUK.analyticsVars || {}

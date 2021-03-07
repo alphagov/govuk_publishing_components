@@ -26,6 +26,8 @@ src_files:
   - assets/component_guide/accessibility-test.js
   - assets/component_guide/filter-components.js
 
+  - assets/magic_lamp.js
+
 # stylesheets
 #
 # Return an array of stylesheet filepaths relative to src_dir to include before jasmine specs.

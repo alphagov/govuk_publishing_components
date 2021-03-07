@@ -2,7 +2,6 @@
 /* global GOVUK */
 
 describe('Details component', function () {
-  var FIXTURE
 
   var callback = jasmine.createSpy()
   GOVUK.Modules.TrackClick = function () {
@@ -19,14 +18,7 @@ describe('Details component', function () {
   beforeEach(function () {
     spyOn(GOVUK.analytics, 'trackEvent')
 
-    FIXTURE =
-      '<details class="gem-c-details govuk-details govuk-!-margin-bottom-3" data-track-category="track-category" data-track-action="track-action" data-track-label="track-label" data-module="govuk-details">' +
-        '<summary class="govuk-details__summary" data-details-track-click="">' +
-        '<span>Toggle text</span>' +
-        '</summary>' +
-      '</details>'
-
-    window.setFixtures(FIXTURE)
+    MagicLamp.load('details')
   })
 
   afterEach(function () {
