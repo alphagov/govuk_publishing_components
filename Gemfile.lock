@@ -152,6 +152,10 @@ GEM
     loofah (2.8.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
+    magic_lamp (1.9.0)
+      method_source
+      rails (>= 4.0.0)
+      rake
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     marcel (0.3.3)
@@ -337,6 +341,7 @@ DEPENDENCIES
   govuk_test (~> 2)
   jasmine (~> 3.6.0)
   jasmine_selenium_runner (~> 3.0.0)
+  magic_lamp
   pry-byebug
   rake
   rspec-rails (~> 4.0)

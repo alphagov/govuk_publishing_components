@@ -30,6 +30,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "govuk_test", "~> 2"
   s.add_development_dependency "jasmine", "~> 3.6.0"
   s.add_development_dependency "jasmine_selenium_runner", "~> 3.0.0"
+  s.add_development_dependency "magic_lamp"
   s.add_development_dependency "pry-byebug"
   s.add_development_dependency "rake"
   s.add_development_dependency "rspec-rails", "~> 4.0"
