@@ -13,7 +13,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
     // If a custom label has been provided, we can simply call the tracking module
     if (customTrackLabel) {
-      var trackDetails = new window.GOVUK.Modules.TrackClick()
+      var trackDetails = new window.GOVUK.Modules.GemTrackClick()
       trackDetails.start($module)
     } else {
       // If no custom label is set, we use the open/close status as the label

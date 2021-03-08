@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix tracking in `details.js` ([PR #1962](https://github.com/alphagov/govuk_publishing_components/pull/1962))
+
 ## 24.4.0
 
 * Add border option to breadcrumb ([PR #1952](https://github.com/alphagov/govuk_publishing_components/pull/1952)) MINOR
