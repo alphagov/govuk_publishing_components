@@ -4,11 +4,11 @@
 #
 # To use the locales, use `I18n.t`:
 #
-#     I18n.t 'hello'
+#     I18n.t "hello"
 #
 # In views, this is aliased to just `t`:
 #
-#     <%= t('hello') %>
+#     <%= t("hello") %>
 #
 # To use a different locale, set it with `I18n.locale`:
 #
@@ -31,11 +31,11 @@ en:
     article_schema:
       scoped_search_description: "Search within %{title}"
     back_link:
-      back: 'Back'
+      back: "Back"
     checkboxes:
-      or: 'or'
+      or: "or"
     contents_list:
-      contents: Contents
+      contents: "Contents"
     feedback:
       is_this_page_useful: "Is this page useful?"
       yes: "Yes"
@@ -61,7 +61,7 @@ en:
     organisation_schema:
       all_content_search_description: "Find all content from %{organisation}"
     radio:
-      or: 'or'
+      or: "or"
     related_navigation:
       collections: "Collection"
       external_links: "Elsewhere on the web"
@@ -80,10 +80,10 @@ en:
         link_path: "/transition"
         link_text: "Check what you need to do"
       take_action_list:
-        red: Check
-        amber: Change
-        green: Go
-        aria_label: Brexit campaign slogan, Check, Change, Go.
+        red: "Check"
+        amber: "Change"
+        green: "Go"
+        aria_label: "Brexit campaign slogan, Check, Change, Go."
     related_footer_navigation:
       collections: "Collections"
       policies: "Policies"
@@ -94,12 +94,12 @@ en:
       label: "Search on GOV.UK"
       input_title: "Search"
     show_password:
-      show: Show
-      hide: Hide
-      show_password: Show password
-      hide_password: Hide password
-      announce_show: Your password is shown
-      announce_hide: Your password is hidden
+      show: "Show"
+      hide: "Hide"
+      show_password: "Show password"
+      hide_password: "Hide password"
+      announce_show: "Your password is shown"
+      announce_hide: "Your password is hidden"
     print_link:
       text: "Print this page"
     skip_link:
