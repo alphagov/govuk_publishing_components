@@ -1,12 +1,12 @@
 <%
-  id ||= nil
+  aria_label ||= nil
   extra_spacing ||= nil
+  id ||= nil
+  items ||= []
   list_type ||= "unordered"
   visible_counters ||= nil
-  items ||= []
-  aria_label ||= nil
 
-  classes = %w(gem-c-list govuk-list)
+  classes = %w[gem-c-list govuk-list]
   classes << "govuk-list--bullet" if visible_counters && list_type === "unordered"
   classes << "govuk-list--number" if visible_counters && list_type === "number"
   classes << "govuk-list--spaced" if extra_spacing
@@ -20,7 +20,7 @@
 <% if items.any? %>
   <%= content_tag list_tag, class: classes, id: id, "aria-label": aria_label do %>
     <% items.each do |item| %>
-      <li><%= sanitize(item) %></li>
+      <li><%= raw(item) %></li>
     <% end %>
   <% end %>
 <% end %>
