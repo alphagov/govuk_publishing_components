@@ -87,7 +87,7 @@ describe "List", type: :view do
     assert_select "ul#this-is-a-test-id li:nth-child(2)", text: "Another test item"
   end
 
-  it "adds links within a list" do
+  it "adds markup within the list items" do
     render_component(
       items: [
         "<a href='https://example.com/'>Test item</a>",
@@ -97,5 +97,25 @@ describe "List", type: :view do
 
     assert_select "ul.govuk-list li a", text: "Test item"
     assert_select "ul.govuk-list li:nth-child(2) a", text: "Another test item"
+  end
+
+  it "keeps attributes intact when given markup" do
+    render_component(
+      items: [
+        "<a
+          href='https://example.com/'
+          data-module='gem-track-click'
+          data-track-category='category'
+          data-track-action='action'
+          data-track-label='Test item'
+        >Test item</a>",
+        "<a href='https://example.com/'>Another test item</a>",
+      ],
+    )
+
+    assert_select "ul.govuk-list li a[data-module='gem-track-click']"
+    assert_select "ul.govuk-list li a[data-track-category='category']"
+    assert_select "ul.govuk-list li a[data-track-action='action']"
+    assert_select "ul.govuk-list li a[data-track-label='Test item']"
   end
 end
