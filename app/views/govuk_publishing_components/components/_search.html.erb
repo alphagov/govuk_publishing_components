@@ -2,9 +2,9 @@
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
   aria_controls ||= nil
-  button_text ||= "Search"
+  button_text ||= t("components.search_box.search_button")
   id ||= "search-main-" + SecureRandom.hex(4)
-  label_text ||= "Search on GOV.UK"
+  label_text ||= t("components.search_box.label")
   name ||= "q"
   no_border ||= false
   size ||= ""
@@ -35,7 +35,7 @@
       class: "gem-c-search__item gem-c-search__input js-class-toggle",
       id: id,
       name: name,
-      title: "Search",
+      title: t("components.search_box.input_title"),
       type: "search",
       value: value,
     ) %>

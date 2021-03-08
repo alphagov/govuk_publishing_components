@@ -54,6 +54,10 @@ en:
       what_wrong: "What went wrong?"
       send_me_survey: "Send me the survey"
       send: "Send"
+    layout_header:
+      search_button: "Search GOV.UK"
+      show_button: "Show search"
+      hide_button: "Hide search"
     organisation_schema:
       all_content_search_description: "Find all content from %{organisation}"
     radio:
@@ -85,6 +89,10 @@ en:
       policies: "Policies"
       statistical_data_sets: "Statistical data sets"
       topical_events: "Topical events"
+    search_box:
+      search_button: "Search"
+      label: "Search on GOV.UK"
+      input_title: "Search"
     show_password:
       show: Show
       hide: Hide
