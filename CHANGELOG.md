@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 24.4.1
 
 * Fix tracking in `details.js` ([PR #1962](https://github.com/alphagov/govuk_publishing_components/pull/1962))
 
