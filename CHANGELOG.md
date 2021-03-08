@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix GOV.UK Frontend deprecation warning for component-guide print stylesheet ([PR #1961](https://github.com/alphagov/govuk_publishing_components/pull/1961))
+
 ## 24.4.1
 
 * Fix tracking in `details.js` ([PR #1962](https://github.com/alphagov/govuk_publishing_components/pull/1962))
