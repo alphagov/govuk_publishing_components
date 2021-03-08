@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Fix GOV.UK Frontend deprecation warning for component-guide print stylesheet ([PR #1961](https://github.com/alphagov/govuk_publishing_components/pull/1961))
+* Update search box button ([PR #1957](https://github.com/alphagov/govuk_publishing_components/pull/1957))
 
 ## 24.4.1
 
