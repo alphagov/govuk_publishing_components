@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.license     = "MIT"
   s.required_ruby_version = ">= 2.6"
 
-  s.files = Dir["{node_modules/govuk-frontend,node_modules/axe-core,node_modules/jquery,app,config,db,lib}/**/*", "LICENCE.md", "README.md"]
+  s.files = Dir["{node_modules/govuk-frontend,node_modules/axe-core,node_modules/jquery,node_modules/sortablejs,app,config,db,lib}/**/*", "LICENCE.md", "README.md"]
 
   s.add_dependency "govuk_app_config"
   s.add_dependency "kramdown"

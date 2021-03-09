@@ -12,6 +12,7 @@
 * Remove lists from summary action links ([PR #1956](https://github.com/alphagov/govuk_publishing_components/pull/1956))
 * Fix GOV.UK Frontend deprecation warning for component-guide print stylesheet ([PR #1961](https://github.com/alphagov/govuk_publishing_components/pull/1961))
 * Update search box button ([PR #1957](https://github.com/alphagov/govuk_publishing_components/pull/1957))
+* Adds Reorderable lists component ([PR #1905](https://github.com/alphagov/govuk_publishing_components/pull/1905))
 
 ## 24.4.1
 

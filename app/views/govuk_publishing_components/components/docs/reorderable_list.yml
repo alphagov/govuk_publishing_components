@@ -1,0 +1,85 @@
+name: Reorderable list
+description: A list of items that can be reordered
+body: |
+  List items can be reordered by drag and drop or by using the up/down buttons.
+  On small viewports the drag and drop feature is disabled to prevent being triggered
+  when scrolling on touch devices.
+
+  This component uses SortableJS - a JavaScript library for drag and drop interactions.
+  When JavaScript is disabled a set of inputs will be shown allowing users to provide
+  an order index for each item.
+
+  When this component is embedded into a form and that form is submit you will receive a
+  parameter of `ordering` (which can be customised with the `input_name` option).
+  This will contain item ids and ordering positions in a hash.
+
+  For example, for two items with id "a" and "b" that are ordered accordingly,
+  you'd receive a submission of `ordering[a]=1&ordering[b]=2`, which Rails can
+  translate to `"ordering" => { "a" => "1", "b" => "2" }`.
+
+accessibility_criteria: |
+  Buttons in this component must:
+
+  * be keyboard focusable
+  * inform the user about which item they operate on
+  * preserve focus after interacting with them
+examples:
+  default:
+    data:
+      items:
+        - id: "ce99dd60-67dc-11eb-ae93-0242ac130002"
+          title: "Budget 2018"
+        - id: "d321cb86-67dc-11eb-ae93-0242ac130002"
+          title: "Budget 2018 (web)"
+        - id: "63a6d29e-6b6d-4157-9067-84c1a390e352"
+          title: "Impact on households: distributional analysis to accompany Budget 2018"
+        - id: "0a4d377d-68f4-472f-b2e3-ef71dc750f85"
+          title: "Table 2.1: Budget 2018 policy decisions"
+        - id: "5ebd75d7-6c37-4b93-b444-1b7c49757fb9"
+          title: "Table 2.2: Measures announced at Autumn Budget 2017 or earlier that will take effect from November 2018 or later (£ million)"
+  with_description:
+    data:
+      items:
+        - id: "ce99dd60-67dc-11eb-ae93-0242ac130002"
+          title: "Budget 2018"
+          description: "PDF, 2.56MB, 48 pages"
+        - id: "d321cb86-67dc-11eb-ae93-0242ac130002"
+          title: "Budget 2018 (web)"
+          description: "HTML attachment"
+        - id: "63a6d29e-6b6d-4157-9067-84c1a390e352"
+          title: "Impact on households: distributional analysis to accompany Budget 2018"
+          description: "PDF, 592KB, 48 pages"
+        - id: "0a4d377d-68f4-472f-b2e3-ef71dc750f85"
+          title: "Table 2.1: Budget 2018 policy decisions"
+          description: "MS Excel Spreadsheet, 248KB"
+        - id: "5ebd75d7-6c37-4b93-b444-1b7c49757fb9"
+          title: "Table 2.2: Measures announced at Autumn Budget 2017 or earlier that will take effect from November 2018 or later (£ million)"
+          description: "MS Excel Spreadsheet, 248KB"
+  within_form:
+    embed: |
+      <form>
+        <%= component %>
+        <button class="govuk-button" type="submit">Save order</button>
+      </form>
+    data:
+      items:
+        - id: "ce99dd60-67dc-11eb-ae93-0242ac130002"
+          title: "Budget 2018"
+        - id: "d321cb86-67dc-11eb-ae93-0242ac130002"
+          title: "Budget 2018 (web)"
+        - id: "63a6d29e-6b6d-4157-9067-84c1a390e352"
+          title: "Impact on households: distributional analysis to accompany Budget 2018"
+        - id: "0a4d377d-68f4-472f-b2e3-ef71dc750f85"
+          title: "Table 2.1: Budget 2018 policy decisions"
+        - id: "5ebd75d7-6c37-4b93-b444-1b7c49757fb9"
+          title: "Table 2.2: Measures announced at Autumn Budget 2017 or earlier that will take effect from November 2018 or later (£ million)"
+  with_custom_input_name:
+    data:
+      input_name: "attachments[ordering]"
+      items:
+        - id: "5ebd75d7-6c37-4b93-b444-1b7c49757fb9"
+          title: "Budget 2018"
+          description: "PDF, 2.56MB, 48 pages"
+        - id: "0a4d377d-68f4-472f-b2e3-ef71dc750f85"
+          title: "Budget 2020"
+          description: "PDF, 2.56MB, 48 pages"
