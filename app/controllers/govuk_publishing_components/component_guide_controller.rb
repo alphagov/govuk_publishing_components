@@ -165,9 +165,9 @@ module GovukPublishingComponents
 
     def index_audit_summary
       components_gem_path = Gem.loaded_specs["govuk_publishing_components"].full_gem_path
-      components = AuditComponents.new(components_gem_path)
+      components = AuditComponents.new(components_gem_path, true)
       application = AuditApplications.new(@application_path, GovukPublishingComponents::ApplicationHelper.get_application_name_from_path(@application_path))
-      compared_data = AuditComparer.new(components.data, [application.data])
+      compared_data = AuditComparer.new(components.data, [application.data], true)
       compared_data.applications_data[0]
     end
   end

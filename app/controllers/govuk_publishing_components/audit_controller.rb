@@ -34,10 +34,9 @@ module GovukPublishingComponents
 
       components = AuditComponents.new(gem_path, false)
       applications = analyse_applications(File.expand_path("..", gem_path), application_dirs)
-      compared_data = AuditComparer.new(components.data, applications)
+      compared_data = AuditComparer.new(components.data, applications, false)
 
       @applications = compared_data.applications_data || []
-      @applications_found = count_found_applications
       @components = compared_data.gem_data || []
     end
 
@@ -45,23 +44,16 @@ module GovukPublishingComponents
 
     def analyse_applications(path, application_dirs)
       results = []
+      @applications_found = false
 
       application_dirs.each do |application|
         application_path = [path, application].join("/")
         app = AuditApplications.new(application_path, application)
+        @applications_found = true if app.data[:application_found]
         results << app.data
       end
 
       results
-    end
-
-    def count_found_applications
-      applications_found = false
-      @applications.each do |application|
-        applications_found = true if application[:application_found]
-      end
-
-      applications_found
     end
   end
 end

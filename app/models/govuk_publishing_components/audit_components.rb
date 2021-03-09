@@ -2,16 +2,17 @@ module GovukPublishingComponents
   class AuditComponents
     attr_reader :data
 
-    def initialize(path)
+    def initialize(path, simple)
       @data = {
         gem_found: false,
       }
-      @data = compile_data(path) if Dir.exist?(path)
+      @data = compile_data(path, simple) if Dir.exist?(path)
     end
 
   private
 
-    def compile_data(path)
+    def compile_data(path, simple)
+      @simple = simple
       templates_path = "app/views/govuk_publishing_components/components"
       stylesheets_path = "app/assets/stylesheets/govuk_publishing_components/components"
       print_stylesheets_path = "app/assets/stylesheets/govuk_publishing_components/components/print"
@@ -128,6 +129,8 @@ module GovukPublishingComponents
     end
 
     def list_all_component_details
+      return [] if @simple
+
       all_component_information = []
 
       @components.each do |component|
