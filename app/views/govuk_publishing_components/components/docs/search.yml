@@ -51,6 +51,16 @@ examples:
   with_aria_controls_attribute:
     description: |
       The aria-controls attribute is a 'relationship attribute' which denotes which elements in a page an interactive element or set of elements has control over and affects.
+
       For places like the finders where the page is updated dynamically after value changes to the input.
     data:
       aria_controls: "wrapper"
+  with_custom_button_text:
+    description: |
+      The search box component may be used multiple times on a page -- for example, on a [guidance and regulation finder results page](https://www.gov.uk/search/guidance-and-regulation?keywords=bananas&order=relevance) there is both the sitewide search in the header and also for the specific finder.
+
+      To avoid confusion, the text inside the button should be different for each form. This can be done by setting the `button_text` parameter.
+
+      This is visually hidden text -- to check for changes use a screen reader or inspect the button element.
+    data:
+      button_text: "Search absolutely everywhere"

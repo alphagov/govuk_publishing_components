@@ -1,8 +1,22 @@
-<button class="search-toggle js-header-toggle" data-search-toggle-for="search">Show search</button>
-<form id="search" class="gem-c-layout-header__search-form govuk-clearfix" action="/search" method="get" role="search">
+<button
+  class="search-toggle js-header-toggle"
+  data-search-toggle-for="search"
+  data-show-text="<%= t("components.layout_header.show_button") %>"
+  data-hide-text="<%= t("components.layout_header.hide_button") %>"
+>
+  <%= t("components.layout_header.show_button") %>
+</button>
+<form
+  action="/search"
+  class="gem-c-layout-header__search-form govuk-clearfix"
+  id="search"
+  method="get"
+  role="search"
+>
   <%= render "govuk_publishing_components/components/search", {
+    button_text: t("components.layout_header.search_button"),
     id: "site-search-text",
+    margin_bottom: 0,
     no_border: true,
-    margin_bottom: 0
   } %>
 </form>

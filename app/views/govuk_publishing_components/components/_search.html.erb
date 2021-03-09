@@ -1,11 +1,19 @@
 <%
-  size ||= ""
-  no_border ||= false
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
-  classes = %w(gem-c-search)
+
+  aria_controls ||= nil
+  button_text ||= t("components.search_box.search_button")
+  id ||= "search-main-" + SecureRandom.hex(4)
+  label_text ||= t("components.search_box.label")
+  name ||= "q"
+  no_border ||= false
+  size ||= ""
+  value ||= ""
+
+  classes = %w[gem-c-search]
   classes << (shared_helper.get_margin_top)
   classes << (shared_helper.get_margin_bottom) if local_assigns[:margin_bottom]
-  classes << "gem-c-search--large" if size == 'large'
+  classes << "gem-c-search--large" if size == "large"
   classes << "gem-c-search--no-border" if no_border
   if local_assigns[:on_govuk_blue].eql?(true)
     classes << "gem-c-search--on-govuk-blue"
@@ -13,25 +21,28 @@
     classes << "gem-c-search--on-white"
   end
   classes << "gem-c-search--separate-label" if local_assigns.include?(:inline_label)
-
-  value ||= ""
-  id ||= "search-main-" + SecureRandom.hex(4)
-  label_text ||= "Search on GOV.UK"
-  name ||= 'q'
-  aria_controls ||= nil
 %>
 
-<div class="<%= classes.join(' ') %>" data-module="gem-toggle-input-class-on-focus">
+<div class="<%= classes.join(" ") %>" data-module="gem-toggle-input-class-on-focus">
   <label for="<%= id %>" class="gem-c-search__label">
     <%= label_text %>
   </label>
   <div class="gem-c-search__item-wrapper">
-    <input type="search" value="<%= value %>"
-      id="<%= id %>" name="<%= name %>" title="Search"
-      aria-controls="<%= aria_controls %>"
-      class="gem-c-search__item gem-c-search__input js-class-toggle">
+    <%= tag.input(
+      aria: {
+        controls: aria_controls,
+      },
+      class: "gem-c-search__item gem-c-search__input js-class-toggle",
+      id: id,
+      name: name,
+      title: t("components.search_box.input_title"),
+      type: "search",
+      value: value,
+    ) %>
     <div class="gem-c-search__item gem-c-search__submit-wrapper">
-      <button type="submit" class="gem-c-search__submit">Search</button>
+      <button class="gem-c-search__submit" type="submit">
+        <%= button_text %>
+      </button>
     </div>
   </div>
 </div>

@@ -1,3 +1,5 @@
+/* eslint-disable no-var */
+
 // used by the header navigation from govuk_template
 
 (function () {
@@ -14,6 +16,8 @@
         var targetClass = target.getAttribute('class') || ''
         var sourceClass = this.getAttribute('class') || ''
         var isSearchToggle = sourceClass.match('search-toggle')
+        var showText = this.getAttribute('data-show-text') || 'Show search'
+        var hideText = this.getAttribute('data-hide-text') || 'Hide search'
 
         if (targetClass.indexOf('js-visible') !== -1) {
           target.setAttribute('class', targetClass.replace(/(^|\s)js-visible(\s|$)/, ''))
@@ -23,12 +27,12 @@
         if (sourceClass.indexOf('js-visible') !== -1) {
           this.setAttribute('class', sourceClass.replace(/(^|\s)js-visible(\s|$)/, ''))
           if (isSearchToggle) {
-            this.innerText = 'Show search'
+            this.innerText = showText
           }
         } else {
           this.setAttribute('class', sourceClass + ' js-visible')
           if (isSearchToggle) {
-            this.innerText = 'Hide search'
+            this.innerText = hideText
           }
         }
         this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') !== 'true')
