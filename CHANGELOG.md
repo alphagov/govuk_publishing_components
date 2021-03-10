@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 24.5.0
 
 * Remove lists from summary action links ([PR #1956](https://github.com/alphagov/govuk_publishing_components/pull/1956))
 * Fix GOV.UK Frontend deprecation warning for component-guide print stylesheet ([PR #1961](https://github.com/alphagov/govuk_publishing_components/pull/1961))
