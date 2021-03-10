@@ -35,18 +35,22 @@ examples:
       borderless: true
 
   with_edit_on_section:
+    description: The edit link can be given an explicit title attribute as shown, or it will generate one of the form `Change [title]``.
     data:
       <<: *default-example-data
       edit:
         href: "edit-title-summary-body"
+        title: "Change this thing"
         data_attributes:
           gtm: "edit-title-summary-body"
 
   with_delete_on_section:
+    description: The delete link can be given an explicit title attribute as shown, or it will generate one of the form `Delete [title]`.
     data:
       <<: *default-example-data
       delete:
         href: "delete-title-summary-body"
+        title: "Delete this thing"
         data_attributes:
           gtm: "delete-title-summary-body"
 
@@ -73,6 +77,8 @@ examples:
       Take care that the provided `link_text` still makes sense to screen readers when combined with the title.
       For instance, `Reorder` link text and `Items` title becomes `Reorder Items`, which reads fine, but link text
       of `Summary` would read as `Summary Items`, which does not make sense.
+
+      Otherwise, pass an explicit title attribute for the link, as shown in previous examples.
     data:
       edit:
         href: "custom-link"
@@ -87,7 +93,10 @@ examples:
         value: "Value 3"
 
   with_edit_on_individual_items:
-    description: The link text can be optionally modified using the 'link_text' parameter, as for the edit link in previous examples.
+    description: |
+      The link text can be optionally modified using the 'link_text' parameter, as for the edit link in previous examples.
+
+      Explicit title attributes can also be passed for the links, to replace the automatically generated ones detailed in previous examples.
     data:
       title: "Title, summary and body"
       items:
@@ -102,8 +111,10 @@ examples:
         value: "Find out more about our reviews on the subject of ethical standards for public service providers, including our 2014 report, 2015 guidance and 2018 follow-up publication."
         edit:
           href: "edit-summary"
+          title: "Edit this thing"
         delete:
           href: "delete-summary"
+          title: "Delete this thing"
       - field: "Body"
         value: "After the government decided in 2013 to expand the remit of the Committee to include public service providers, the Committee on Standards in Public Life produced our first report on the issue: Ethical Standards for Providers of Public Services in 2014."
         edit:

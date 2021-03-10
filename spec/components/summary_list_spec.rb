@@ -246,4 +246,37 @@ describe "Summary list", type: :view do
     assert_select 'ul.govuk-summary-list__actions-list .govuk-summary-list__actions-list-item .govuk-link[title="Edit Title"][href="edit-title"]', text: "Edit Title"
     assert_select 'ul.govuk-summary-list__actions-list .govuk-summary-list__actions-list-item .govuk-link[title="Destroy Title"][href="delete-title"]', text: "Destroy Title"
   end
+
+  it "renders all edit and delete actions with custom title attributes" do
+    render_component(
+      title: "Title",
+      edit: {
+        href: "edit-title",
+        title: "Edit the thing",
+      },
+      delete: {
+        href: "delete-title",
+        title: "Delete the thing",
+      },
+      items: [
+        {
+          field: "Title",
+          value: "Ethical standards for public service providers",
+          edit: {
+            href: "#edit-title",
+            title: "Edit this thing",
+          },
+          delete: {
+            href: "#delete-title",
+            title: "Delete this thing",
+          },
+        },
+      ],
+    )
+    assert_select 'ul.govuk-summary-list__actions-list .govuk-summary-list__actions-list-item .govuk-link[title="Edit the thing"][href="edit-title"]', text: "Change Title"
+    assert_select 'ul.govuk-summary-list__actions-list .govuk-summary-list__actions-list-item .govuk-link[title="Delete the thing"][href="delete-title"]', text: "Delete Title"
+
+    assert_select '.govuk-summary-list__actions-list-item .govuk-link[title="Edit this thing"][href="#edit-title"]', text: "Change Title"
+    assert_select '.govuk-summary-list__actions-list-item .govuk-link.gem-link--destructive[title="Delete this thing"][href="#delete-title"]', text: "Delete Title"
+  end
 end
