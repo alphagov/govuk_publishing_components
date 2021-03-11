@@ -279,4 +279,37 @@ describe "Summary list", type: :view do
     assert_select '.govuk-summary-list__actions-list-item .govuk-link[title="Edit this thing"][href="#edit-title"]', text: "Change Title"
     assert_select '.govuk-summary-list__actions-list-item .govuk-link.gem-link--destructive[title="Delete this thing"][href="#delete-title"]', text: "Delete Title"
   end
+
+  it "renders all links without visually hidden extra text if specified" do
+    render_component(
+      title: "Title",
+      edit: {
+        href: "edit-title",
+        link_text_no_enhance: true,
+      },
+      delete: {
+        href: "delete-title",
+        link_text_no_enhance: true,
+      },
+      items: [
+        {
+          field: "Title",
+          value: "Ethical standards for public service providers",
+          edit: {
+            href: "#edit-title",
+            link_text_no_enhance: true,
+          },
+          delete: {
+            href: "#delete-title",
+            link_text_no_enhance: true,
+          },
+        },
+      ],
+    )
+    assert_select 'ul.govuk-summary-list__actions-list .govuk-summary-list__actions-list-item .govuk-link[href="edit-title"]', text: "Change"
+    assert_select 'ul.govuk-summary-list__actions-list .govuk-summary-list__actions-list-item .govuk-link[href="delete-title"]', text: "Delete"
+
+    assert_select '.govuk-summary-list__actions-list-item .govuk-link[href="#edit-title"]', text: "Change"
+    assert_select '.govuk-summary-list__actions-list-item .govuk-link.gem-link--destructive[href="#delete-title"]', text: "Delete"
+  end
 end

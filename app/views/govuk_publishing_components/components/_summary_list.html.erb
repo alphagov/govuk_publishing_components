@@ -26,7 +26,7 @@
                     class: "govuk-link",
                     title: edit_link_title,
                     data: edit.fetch(:data_attributes, {}) do %>
-            <%= edit_section_link_text %><%= tag.span " #{title}", class: "govuk-visually-hidden" -%>
+            <%= edit_section_link_text %><%= tag.span " #{title}", class: "govuk-visually-hidden" unless edit[:link_text_no_enhance] -%>
           <% end %>
         <% end %>
       <% end %>
@@ -41,7 +41,7 @@
                     class: "govuk-link gem-link--destructive",
                     title: delete_link_title,
                     data: delete.fetch(:data_attributes, {}) do %>
-            <%= delete_section_link_text %><%= tag.span " #{title}", class: "govuk-visually-hidden" -%>
+            <%= delete_section_link_text %><%= tag.span " #{title}", class: "govuk-visually-hidden" unless delete[:link_text_no_enhance] -%>
           <% end %>
         <% end %>
       <% end %>
@@ -86,7 +86,7 @@
                             class: "govuk-link",
                             title: edit_link_title,
                             data: item[:edit].fetch(:data_attributes, {}) do %>
-                  <%= edit_link_text %><%= tag.span " #{item[:field]}", class: "govuk-visually-hidden" -%>
+                  <%= edit_link_text %><%= tag.span " #{item[:field]}", class: "govuk-visually-hidden" unless edit[:link_text_no_enhance] -%>
                 <% end %>
               <% end %>
             <% end %>
@@ -101,7 +101,7 @@
                             class: "govuk-link gem-link--destructive",
                             title: delete_link_title,
                             data: item[:delete].fetch(:data_attributes, {}) do %>
-                  <%= delete_link_text %><%= tag.span " #{item[:field]}", class: "govuk-visually-hidden" -%>
+                  <%= delete_link_text %><%= tag.span " #{item[:field]}", class: "govuk-visually-hidden" unless delete[:link_text_no_enhance] -%>
                 <% end %>
               <% end %>
             <% end %>
