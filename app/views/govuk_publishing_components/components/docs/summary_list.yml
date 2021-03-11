@@ -118,6 +118,21 @@ examples:
           href: "delete-body"
           link_text: "Remove"
 
+  wide_title_layout:
+    description: Allows a slightly adjusted layout for longer text in the field name.
+    data:
+      title: Privacy settings
+      wide_title: true
+      items:
+      - field: "GOV.UK can use cookies while you’re signed in"
+        value: "No"
+        edit:
+          href: "edit-cookies"
+      - field: "GOV.UK can send you feedback emails"
+        value: "Yes"
+        edit:
+          href: "edit-feedback"
+
   with_block:
     description: Use the summary list with a block when you need to show an empty state message or load another component.
     data:

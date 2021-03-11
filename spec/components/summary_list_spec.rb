@@ -312,4 +312,18 @@ describe "Summary list", type: :view do
     assert_select '.govuk-summary-list__actions-list-item .govuk-link[href="#edit-title"]', text: "Change"
     assert_select '.govuk-summary-list__actions-list-item .govuk-link.gem-link--destructive[href="#delete-title"]', text: "Delete"
   end
+
+  it "renders the wider dt layout" do
+    render_component(
+      title: "Title",
+      wide_title: true,
+      items: [
+        {
+          field: "Allow us to contact you regarding your fruit preferences",
+          value: "No",
+        },
+      ],
+    )
+    assert_select(".gem-c-summary-list.gem-c-summary-list--wide-title")
+  end
 end
