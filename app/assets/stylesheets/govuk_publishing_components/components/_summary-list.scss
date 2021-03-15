@@ -38,3 +38,15 @@
 .gem-c-summary__block {
   @include govuk-responsive-margin(6, "bottom");
 }
+
+.gem-c-summary-list--wide-title {
+  @include govuk-media-query($from: 'tablet') {
+    .govuk-summary-list__key {
+      width: 60%;
+    }
+
+    .govuk-summary-list__value {
+      width: 20%;
+    }
+  }
+}

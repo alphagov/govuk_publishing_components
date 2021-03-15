@@ -10,9 +10,10 @@
   delete ||= {}
   items ||= []
   block ||= yield
+  wide_title ||= false
 %>
 <% if title || items.any? %>
-  <%= tag.div class: "gem-c-summary-list #{"govuk-summary-list--no-border" if borderless}", id: id do %>
+  <%= tag.div class: "gem-c-summary-list #{"govuk-summary-list--no-border" if borderless} #{"gem-c-summary-list--wide-title" if wide_title}", id: id do %>
     <% if title %>
       <%= content_tag(shared_helper.get_heading_level, title, class: "govuk-heading-#{heading_size} gem-c-summary-list__group-title") %>
 
@@ -26,7 +27,7 @@
                     class: "govuk-link",
                     title: edit_link_title,
                     data: edit.fetch(:data_attributes, {}) do %>
-            <%= edit_section_link_text %><%= tag.span " #{title}", class: "govuk-visually-hidden" -%>
+            <%= edit_section_link_text %><%= tag.span " #{title}", class: "govuk-visually-hidden" unless edit[:link_text_no_enhance] -%>
           <% end %>
         <% end %>
       <% end %>
@@ -41,7 +42,7 @@
                     class: "govuk-link gem-link--destructive",
                     title: delete_link_title,
                     data: delete.fetch(:data_attributes, {}) do %>
-            <%= delete_section_link_text %><%= tag.span " #{title}", class: "govuk-visually-hidden" -%>
+            <%= delete_section_link_text %><%= tag.span " #{title}", class: "govuk-visually-hidden" unless delete[:link_text_no_enhance] -%>
           <% end %>
         <% end %>
       <% end %>
@@ -86,7 +87,7 @@
                             class: "govuk-link",
                             title: edit_link_title,
                             data: item[:edit].fetch(:data_attributes, {}) do %>
-                  <%= edit_link_text %><%= tag.span " #{item[:field]}", class: "govuk-visually-hidden" -%>
+                  <%= edit_link_text %><%= tag.span " #{item[:field]}", class: "govuk-visually-hidden" unless edit[:link_text_no_enhance] -%>
                 <% end %>
               <% end %>
             <% end %>
@@ -101,7 +102,7 @@
                             class: "govuk-link gem-link--destructive",
                             title: delete_link_title,
                             data: item[:delete].fetch(:data_attributes, {}) do %>
-                  <%= delete_link_text %><%= tag.span " #{item[:field]}", class: "govuk-visually-hidden" -%>
+                  <%= delete_link_text %><%= tag.span " #{item[:field]}", class: "govuk-visually-hidden" unless delete[:link_text_no_enhance] -%>
                 <% end %>
               <% end %>
             <% end %>

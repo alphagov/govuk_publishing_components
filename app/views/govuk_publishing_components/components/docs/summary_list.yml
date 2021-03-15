@@ -35,17 +35,16 @@ examples:
       borderless: true
 
   with_edit_on_section:
-    description: The edit link can be given an explicit title attribute as shown, or it will generate one of the form `Change [title]``.
+    description: For all links shown in the component, see the <a href="/component-guide/summary_list/with_customised_links">with customised links example</a> for guidance.
     data:
       <<: *default-example-data
       edit:
         href: "edit-title-summary-body"
-        title: "Change this thing"
         data_attributes:
           gtm: "edit-title-summary-body"
 
   with_delete_on_section:
-    description: The delete link can be given an explicit title attribute as shown, or it will generate one of the form `Delete [title]`.
+    description: For all links shown in the component, see the <a href="/component-guide/summary_list/with_customised_links">with customised links example</a> for guidance.
     data:
       <<: *default-example-data
       delete:
@@ -55,6 +54,7 @@ examples:
           gtm: "delete-title-summary-body"
 
   with_edit_and_delete_on_section:
+    description: For all links shown in the component, see the <a href="/component-guide/summary_list/with_customised_links">with customised links example</a> for guidance.
     data:
       <<: *default-example-data
       edit:
@@ -66,37 +66,31 @@ examples:
         data_attributes:
           gtm: "delete-title-summary-body"
 
+  with_customised_links:
+    description: |
+      For all links shown in the component, visually hidden text containing the name of the thing it refers to is automatically appended. This offers a better experience for screen reader users by making the link text unique and more explicit. In the example below, the link text would be `Change Title, summary and body`.
+
+      The text of the link can be customised using the `link_text` option. Take care that the provided `link_text` still makes sense to screen readers when combined with the title. For instance, `Reorder` link text and `Items` title becomes `Reorder Items`, which reads fine, but link text of `Summary` would read as `Summary Items`, which does not make sense.
+
+      To override this behaviour, use `link_text_no_enhance` on the link in question, as shown. This will remove the visually hidden text, allowing you to add your own. The component will render a `span` element passed in a capture block.
+
+      Similarly, the link title attribute is automatically generated, using the form `Change [title]`. If this is not required it can be given an explicit title attribute as shown.
+    data:
+      <<: *default-example-data
+      edit:
+        href: "edit-title-summary-body"
+        title: This is a link for editing this document
+        link_text: Edit this document
+        link_text_no_enhance: true
+
   with_custom_section_heading:
     data:
       <<: *default-example-data
       heading_level: 2
       heading_size: l
 
-  with_custom_link_on_section:
-    description: |
-      Take care that the provided `link_text` still makes sense to screen readers when combined with the title.
-      For instance, `Reorder` link text and `Items` title becomes `Reorder Items`, which reads fine, but link text
-      of `Summary` would read as `Summary Items`, which does not make sense.
-
-      Otherwise, pass an explicit title attribute for the link, as shown in previous examples.
-    data:
-      edit:
-        href: "custom-link"
-        link_text: "Reorder"
-      title: "Items"
-      items:
-      - field: "Item 1"
-        value: "Value 2"
-      - field: "Item 2"
-        value: "Value 2"
-      - field: "Item 3"
-        value: "Value 3"
-
   with_edit_on_individual_items:
-    description: |
-      The link text can be optionally modified using the 'link_text' parameter, as for the edit link in previous examples.
-
-      Explicit title attributes can also be passed for the links, to replace the automatically generated ones detailed in previous examples.
+    description: For all links shown in the component, see the <a href="/component-guide/summary_list/with_customised_links">with customised links example</a> for guidance.
     data:
       title: "Title, summary and body"
       items:
@@ -123,6 +117,21 @@ examples:
         delete:
           href: "delete-body"
           link_text: "Remove"
+
+  wide_title_layout:
+    description: Allows a slightly adjusted layout for longer text in the field name.
+    data:
+      title: Privacy settings
+      wide_title: true
+      items:
+      - field: "GOV.UK can use cookies while you’re signed in"
+        value: "No"
+        edit:
+          href: "edit-cookies"
+      - field: "GOV.UK can send you feedback emails"
+        value: "Yes"
+        edit:
+          href: "edit-feedback"
 
   with_block:
     description: Use the summary list with a block when you need to show an empty state message or load another component.
