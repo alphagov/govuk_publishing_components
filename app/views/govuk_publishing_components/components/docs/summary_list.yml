@@ -49,7 +49,6 @@ examples:
       <<: *default-example-data
       delete:
         href: "delete-title-summary-body"
-        title: "Delete this thing"
         data_attributes:
           gtm: "delete-title-summary-body"
 
@@ -72,15 +71,12 @@ examples:
 
       The text of the link can be customised using the `link_text` option. Take care that the provided `link_text` still makes sense to screen readers when combined with the title. For instance, `Reorder` link text and `Items` title becomes `Reorder Items`, which reads fine, but link text of `Summary` would read as `Summary Items`, which does not make sense.
 
-      To override this behaviour, use `link_text_no_enhance` on the link in question, as shown. This will remove the visually hidden text, allowing you to add your own. The component will render a `span` element passed in a capture block.
-
-      Similarly, the link title attribute is automatically generated, using the form `Change [title]`. If this is not required it can be given an explicit title attribute as shown.
+      To override this behaviour, use `link_text_no_enhance` on the link in question, as shown. This will remove the visually hidden text, allowing you to add your own. The component will render a `span` element with a class of `govuk-visually-hidden` included in a passed [capture block](https://apidock.com/rails/ActionView/Helpers/CaptureHelper/capture) as the `link_text` parameter.
     data:
       <<: *default-example-data
       edit:
         href: "edit-title-summary-body"
-        title: This is a link for editing this document
-        link_text: Edit this document
+        link_text: Edit this document <span class="govuk-visually-hidden">my hidden text for screenreaders</span>
         link_text_no_enhance: true
 
   with_custom_section_heading:
@@ -105,10 +101,8 @@ examples:
         value: "Find out more about our reviews on the subject of ethical standards for public service providers, including our 2014 report, 2015 guidance and 2018 follow-up publication."
         edit:
           href: "edit-summary"
-          title: "Edit this thing"
         delete:
           href: "delete-summary"
-          title: "Delete this thing"
       - field: "Body"
         value: "After the government decided in 2013 to expand the remit of the Committee to include public service providers, the Committee on Standards in Public Life produced our first report on the issue: Ethical Standards for Providers of Public Services in 2014."
         edit:
