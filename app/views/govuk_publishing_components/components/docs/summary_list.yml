@@ -71,12 +71,12 @@ examples:
 
       The text of the link can be customised using the `link_text` option. Take care that the provided `link_text` still makes sense to screen readers when combined with the title. For instance, `Reorder` link text and `Items` title becomes `Reorder Items`, which reads fine, but link text of `Summary` would read as `Summary Items`, which does not make sense.
 
-      To override this behaviour, use `link_text_no_enhance` on the link in question, as shown. This will remove the visually hidden text, allowing you to add your own. The component will render a `span` element passed in a capture block.
+      To override this behaviour, use `link_text_no_enhance` on the link in question, as shown. This will remove the visually hidden text, allowing you to add your own. The component will render a `span` element with a class of `govuk-visually-hidden` included in a passed [capture block](https://apidock.com/rails/ActionView/Helpers/CaptureHelper/capture) as the `link_text` parameter.
     data:
       <<: *default-example-data
       edit:
         href: "edit-title-summary-body"
-        link_text: Edit this document
+        link_text: Edit this document <span class="govuk-visually-hidden">my hidden text for screenreaders</span>
         link_text_no_enhance: true
 
   with_custom_section_heading:
