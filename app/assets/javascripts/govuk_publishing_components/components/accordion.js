@@ -293,8 +293,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   // Navigate to and open accordions with anchored content on page load if a hash is present
   GemAccordion.prototype.openByAnchorOnLoad = function () {
-    if (window.location.hash && this.$module.querySelector(window.location.hash)) {
-      this.openForAnchor(window.location.hash)
+    var splitHash = window.location.hash.split('#')[1]
+
+    if (window.location.hash && document.getElementById(splitHash)) {
+      this.openForAnchor(splitHash)
     }
   }
 
@@ -305,20 +307,20 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
     links.forEach(function (link) {
       if (link.pathname === window.location.pathname) {
-        link.addEventListener('click', this.openForAnchor.bind(this, link.hash))
+        link.addEventListener('click', this.openForAnchor.bind(this, link.hash.split('#')[1]))
       }
     }.bind(this))
   }
 
   // Find the parent accordion section for the given id and open it
   GemAccordion.prototype.openForAnchor = function (hash) {
-    var target = document.querySelector(hash)
+    var target = document.getElementById(hash)
     var section = this.getContainingSection(target)
 
     this.setExpanded(true, section)
   }
 
-  // Loop through the given ids ancestors until the parent section class is found
+  // Loop through the given id's ancestors until the parent section class is found
   GemAccordion.prototype.getContainingSection = function (target) {
     while (!target.classList.contains(this.sectionClass)) {
       target = target.parentElement
