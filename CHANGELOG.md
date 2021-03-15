@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Remove title attribute from summary list ([PR #1973](https://github.com/alphagov/govuk_publishing_components/pull/1973))
 * Summary list changes ([PR #1971](https://github.com/alphagov/govuk_publishing_components/pull/1971))
 
 ## 24.5.0
