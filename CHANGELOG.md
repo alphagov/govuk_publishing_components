@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 24.6.0
 
 * Remove title attribute from summary list ([PR #1973](https://github.com/alphagov/govuk_publishing_components/pull/1973))
 * Summary list changes ([PR #1971](https://github.com/alphagov/govuk_publishing_components/pull/1971))
