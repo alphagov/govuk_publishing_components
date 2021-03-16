@@ -249,35 +249,48 @@ describe "Summary list", type: :view do
 
   it "renders all links without visually hidden extra text if specified" do
     render_component(
-      title: "Title",
+      title: "Something",
       edit: {
-        href: "edit-title",
+        href: "edit-something",
         link_text_no_enhance: true,
       },
       delete: {
-        href: "delete-title",
+        href: "delete-something",
         link_text_no_enhance: true,
       },
       items: [
         {
-          field: "Title",
+          field: "Item 1",
           value: "Ethical standards for public service providers",
           edit: {
-            href: "#edit-title",
+            href: "#edit-item-1-title",
             link_text_no_enhance: true,
           },
           delete: {
-            href: "#delete-title",
+            href: "#delete-item-1-title",
             link_text_no_enhance: true,
+          },
+        },
+        {
+          field: "Item 2",
+          value: "Ethical standards for janitorial staff",
+          edit: {
+            href: "#edit-item-2-title",
+          },
+          delete: {
+            href: "#delete-item-2-title",
           },
         },
       ],
     )
-    assert_select 'ul.govuk-summary-list__actions-list .govuk-summary-list__actions-list-item .govuk-link[href="edit-title"]', text: "Change"
-    assert_select 'ul.govuk-summary-list__actions-list .govuk-summary-list__actions-list-item .govuk-link[href="delete-title"]', text: "Delete"
+    assert_select '.govuk-summary-list__actions-list .govuk-link[href="edit-something"]', text: "Change"
+    assert_select '.govuk-summary-list__actions-list .govuk-link[href="delete-something"]', text: "Delete"
 
-    assert_select '.govuk-summary-list__actions-list-item .govuk-link[href="#edit-title"]', text: "Change"
-    assert_select '.govuk-summary-list__actions-list-item .govuk-link.gem-link--destructive[href="#delete-title"]', text: "Delete"
+    assert_select '.govuk-summary-list__row .govuk-summary-list__actions .govuk-link[href="#edit-item-1-title"]', text: "Change"
+    assert_select '.govuk-summary-list__row .govuk-summary-list__actions .govuk-link.gem-link--destructive[href="#delete-item-1-title"]', text: "Delete"
+
+    assert_select '.govuk-summary-list__row .govuk-summary-list__actions .govuk-link[href="#edit-item-2-title"]', text: "Change Item 2"
+    assert_select '.govuk-summary-list__row .govuk-summary-list__actions .govuk-link.gem-link--destructive[href="#delete-item-2-title"]', text: "Delete Item 2"
   end
 
   it "renders the wider dt layout" do

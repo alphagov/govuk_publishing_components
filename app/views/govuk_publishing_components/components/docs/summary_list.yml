@@ -73,7 +73,24 @@ examples:
 
       To override this behaviour, use `link_text_no_enhance` on the link in question, as shown. This will remove the visually hidden text, allowing you to add your own. The component will render a `span` element with a class of `govuk-visually-hidden` included in a passed [capture block](https://apidock.com/rails/ActionView/Helpers/CaptureHelper/capture) as the `link_text` parameter.
     data:
-      <<: *default-example-data
+      title: "Title, summary and body"
+      items:
+      - field: "Title"
+        value: "Rural conservation techniques"
+        edit:
+          href: "edit-title"
+          text: "Edit"
+          data_attributes:
+            gtm: "edit-title"
+      - field: "Body"
+        value: "Following the land use committee change to overreaching rural byelaws in 2009, further policies were adopted."
+        edit:
+          href: "edit-body"
+          link_text: "Edit"
+        delete:
+          href: "delete-body"
+          link_text: "Remove"
+          link_text_no_enhance: true
       edit:
         href: "edit-title-summary-body"
         link_text: Edit this document <span class="govuk-visually-hidden">my hidden text for screenreaders</span>
