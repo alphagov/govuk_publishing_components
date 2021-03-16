@@ -81,7 +81,7 @@
                 <%= link_to item[:edit].fetch(:href),
                             class: "govuk-link",
                             data: item[:edit].fetch(:data_attributes, {}) do %>
-                  <%= edit_link_text %><%= tag.span " #{item[:field]}", class: "govuk-visually-hidden" unless edit[:link_text_no_enhance] -%>
+                  <%= edit_link_text %><%= tag.span " #{item[:field]}", class: "govuk-visually-hidden" unless item[:edit][:link_text_no_enhance] -%>
                 <% end %>
               <% end %>
             <% end %>
@@ -94,7 +94,7 @@
                 <%= link_to item[:delete].fetch(:href),
                             class: "govuk-link gem-link--destructive",
                             data: item[:delete].fetch(:data_attributes, {}) do %>
-                  <%= delete_link_text %><%= tag.span " #{item[:field]}", class: "govuk-visually-hidden" unless delete[:link_text_no_enhance] -%>
+                  <%= delete_link_text %><%= tag.span " #{item[:field]}", class: "govuk-visually-hidden" unless item[:delete][:link_text_no_enhance] -%>
                 <% end %>
               <% end %>
             <% end %>
