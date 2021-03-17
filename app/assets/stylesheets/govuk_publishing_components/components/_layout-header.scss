@@ -54,7 +54,6 @@
   .gem-c-header__content {
     position: relative;
     width: 100%;
-    padding-bottom: govuk-spacing(2);
   }
 
   @include govuk-media-query($from: desktop) {
@@ -103,8 +102,9 @@
 }
 
 .gem-c-header__content.govuk-header__content {
-  width: auto;
   padding-left: 0;
+  padding-bottom: govuk-spacing(2);
+  width: auto;
 
   @include govuk-media-query($from: desktop) {
     float: right;
