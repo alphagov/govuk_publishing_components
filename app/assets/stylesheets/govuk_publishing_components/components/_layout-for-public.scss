@@ -2,3 +2,8 @@
   margin: 0;
   font-family: $govuk-font-family;
 }
+
+.gem-c-layout-for-public__blue-bar {
+  background: $govuk-brand-colour;
+  height: govuk-spacing(2);
+}
