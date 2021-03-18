@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Rescope Brexit CTA to en/cy locale only ([PR #1984](https://github.com/alphagov/govuk_publishing_components/pull/1984))
+* Add js tests for accordion component ([PR #1977](https://github.com/alphagov/govuk_publishing_components/pull/1977))
 
 ## 24.6.1
 
