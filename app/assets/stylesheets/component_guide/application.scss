@@ -148,7 +148,7 @@ $gem-guide-border-width: 1px;
 
 .component-guide-preview--simple {
   border: 0;
-  padding: 0;
+  padding: govuk-spacing(2);
 
   &:before {
     display: none;
