@@ -249,6 +249,10 @@ module GovukPublishingComponents
         false
       end
 
+      def brexit_cta_lang_allow_list?
+        %w[en cy].include?(content_item["locale"])
+      end
+
       def parent_taxon_include?(taxon, taxon_list)
         if taxon.present?
           if taxon.dig("links", "parent_taxons").to_a.any? { |taxon_item| taxon_list.include?(taxon_item["content_id"]) }
@@ -294,6 +298,7 @@ module GovukPublishingComponents
 
       def show_brexit_cta?
         brexit_cta_taxon_allow_list? &&
+          brexit_cta_lang_allow_list? &&
           step_by_step_count.zero? &&
           !brexit_cta_exception?
       end

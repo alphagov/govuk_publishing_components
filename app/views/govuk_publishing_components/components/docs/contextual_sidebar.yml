@@ -155,6 +155,7 @@ examples:
       content_item:
         title: "Transport news story"
         content_id: "3c402d90-fe77-49b9-a8aa-1800d4fc2b3d"
+        locale: "en"
         links:
           ordered_related_items:
           - title: Find an apprenticeship
@@ -180,6 +181,7 @@ examples:
       content_item:
         title: "30 creative teams awarded up to £100,000 each for Festival UK* 2022 R&D project"
         content_id: "c3752802-f091-43a9-ba90-33568fccf391"
+        locale: "en"
         links:
           ordered_related_items:
           - title: Find an apprenticeship
@@ -205,6 +207,7 @@ examples:
       content_item:
         title: "Local transport news story"
         content_id: "5c82db20-7631-11e4-a3cb-005056011aef"
+        locale: "en"
         links:
           ordered_related_items:
           - title: Find an apprenticeship
