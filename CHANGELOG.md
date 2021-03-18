@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Rescope Brexit CTA to en/cy locale only ([PR #1984](https://github.com/alphagov/govuk_publishing_components/pull/1984))
+
 ## 24.6.1
 
 * Fix bug in summary list link text ([PR #1978](https://github.com/alphagov/govuk_publishing_components/pull/1978))
