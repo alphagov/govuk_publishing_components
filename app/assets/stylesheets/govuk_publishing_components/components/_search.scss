@@ -9,7 +9,6 @@ $large-input-size: 50px;
 .gem-c-search__label {
   @include govuk-font($size: 19, $line-height: $input-size);
   display: block;
-  background: govuk-colour("white");
   color: $govuk-text-colour;
 
   h1 {
@@ -25,6 +24,7 @@ $large-input-size: 50px;
     padding-left: govuk-spacing(3);
     z-index: 1;
     color: $govuk-secondary-text-colour;
+    background: govuk-colour("white");
   }
 
   // match label colour with the label component colour
@@ -144,6 +144,10 @@ $large-input-size: 50px;
 }
 
 .gem-c-search--on-govuk-blue {
+  .gem-c-search__label {
+    color: govuk-colour("white");
+  }
+
   .gem-c-search__input {
     border-width: 0;
 
@@ -191,8 +195,18 @@ $large-input-size: 50px;
 }
 
 .gem-c-search--no-border {
+  .gem-c-search__label {
+    color: govuk-colour("white");
+  }
+
   .gem-c-search__input[type="search"] {
     border: 0;
+  }
+
+  .js-enabled & {
+    .gem-c-search__label {
+      color: $govuk-secondary-text-colour;
+    }
   }
 }
 
