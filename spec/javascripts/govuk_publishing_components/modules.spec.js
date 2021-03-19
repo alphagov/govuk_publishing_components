@@ -84,13 +84,29 @@ describe('GOVUK Modules', function () {
       GOVUK.Modules.GovukTestAlertModule = GovukTestAlertModule
 
       // GOV.UK Frontend Modules
-      function TestAlertModule (element) {
+      function TestAlertFrontendModule (element) {
         this.element = element
       }
-      TestAlertModule.prototype.init = function () {
+      TestAlertFrontendModule.prototype.init = function () {
         callbackFrontendModule(this.element)
       }
-      GOVUK.Modules.TestAlertModule = TestAlertModule
+      GOVUK.Modules.TestAlertFrontendModule = TestAlertFrontendModule
+
+      // GOV.UK Publishing Module with a GOVUK Frontend counterpart
+      function GovukTestAlertPublishingAndFrontendModule () { }
+      GovukTestAlertPublishingAndFrontendModule.prototype.start = function (element) {
+        callbackGovukModule(element)
+      }
+      GOVUK.Modules.GovukTestAlertPublishingAndFrontendModule = GovukTestAlertPublishingAndFrontendModule
+
+      // GOV.UK Frontend Module with a GOVUK Publishing Module counterpart
+      function TestAlertPublishingAndFrontendModule (element) {
+        this.element = element
+      }
+      TestAlertPublishingAndFrontendModule.prototype.init = function () {
+        callbackFrontendModule(this.element)
+      }
+      GOVUK.Modules.TestAlertPublishingAndFrontendModule = TestAlertPublishingAndFrontendModule
 
       container = $('<div></div>')
     })
@@ -98,7 +114,9 @@ describe('GOVUK Modules', function () {
     afterEach(function () {
       delete GOVUK.Modules.LegacyTestAlertModule
       delete GOVUK.Modules.GovukTestAlertModule
-      delete GOVUK.Modules.TestAlertModule
+      delete GOVUK.Modules.TestAlertFrontendModule
+      delete GOVUK.Modules.GovukTestAlertPublishingAndFrontendModule
+      delete GOVUK.Modules.TestAlertPublishingAndFrontendModule
 
       container.remove()
     })
@@ -106,8 +124,9 @@ describe('GOVUK Modules', function () {
     it('starts modules within a container', function () {
       var legacyModule = $('<div data-module="legacy-test-alert-module"></div>')
       var publishingModule = $('<div data-module="govuk-test-alert-module"></div>')
-      var frontendModule = $('<div data-module="test-alert-module"></div>')
-      container.append(legacyModule).append(publishingModule).append(frontendModule)
+      var frontendModule = $('<div data-module="test-alert-frontend-module"></div>')
+      var publishingAndFrontendModule = $('<div data-module="govuk-test-alert-publishing-and-frontend-module"></div>')
+      container.append(legacyModule).append(publishingModule).append(frontendModule).append(publishingAndFrontendModule)
 
       GOVUK.modules.start(container)
       expect(callbackLegacyModule).toHaveBeenCalled()
@@ -140,14 +159,15 @@ describe('GOVUK Modules', function () {
         '<strong data-module="legacy-test-alert-module"></strong>' +
         '<span data-module="legacy-test-alert-module"></span>' +
         '<div data-module="govuk-test-alert-module"></div>' +
-        '<div data-module="test-alert-module"></div>'
+        '<div data-module="govuk-test-alert-publishing-and-frontend-module"></div>' +
+        '<div data-module="test-alert-frontend-module"></div>'
       )
 
       $('body').append(modules)
       GOVUK.modules.start()
       expect(callbackLegacyModule.calls.count()).toBe(3)
-      expect(callbackGovukModule.calls.count()).toBe(1)
-      expect(callbackFrontendModule.calls.count()).toBe(1)
+      expect(callbackGovukModule.calls.count()).toBe(2)
+      expect(callbackFrontendModule.calls.count()).toBe(2)
       modules.remove()
     })
   })
