@@ -12,6 +12,7 @@
 * Rescope Brexit CTA to en/cy locale only ([PR #1984](https://github.com/alphagov/govuk_publishing_components/pull/1984))
 * Add js tests for accordion component ([PR #1977](https://github.com/alphagov/govuk_publishing_components/pull/1977))
 * Fix search component label background ([PR #1983](https://github.com/alphagov/govuk_publishing_components/pull/1983))
+* Allow emergency banner and global bar in public layout component ([PR #1978](https://github.com/alphagov/govuk_publishing_components/pull/1915)) MINOR
 
 ## 24.6.1
 
