@@ -40,7 +40,9 @@
           module = new GOVUK.Modules[moduleName]()
           module.start(element)
           element.data('module-started', true)
-        } else if ( // GOV.UK Frontend Modules
+        }
+
+        if ( // GOV.UK Frontend Modules
           typeof GOVUK.Modules[frontendModuleName] === 'function' &&
           GOVUK.Modules[frontendModuleName].prototype.init &&
           !started
