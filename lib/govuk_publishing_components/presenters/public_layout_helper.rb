@@ -3,50 +3,34 @@ module GovukPublishingComponents
     class PublicLayoutHelper
       FOOTER_NAV = [
         {
-          title: "Prepare for Brexit",
+          title: "Coronavirus (COVID-19)",
           columns: 2,
           items: [
             {
-              href: "/business-uk-leaving-eu",
-              text: "Prepare your business or organisation for Brexit",
+              href: "/coronavirus",
+              text: "Coronavirus (COVID-19): guidance and support",
               attributes: {
                 data: {
                   track_category: "footerClicked",
-                  track_action: "brexitLinks",
-                  track_label: "Prepare your business or organisation for the UK leaving the EU",
+                  track_action: "coronavirusLinks",
+                  track_label: "Coronavirus (COVID-19): guidance and support",
                 },
               },
             },
+          ],
+        },
+        {
+          title: "Brexit",
+          columns: 1,
+          items: [
             {
-              href: "/prepare-eu-exit",
-              text: "Prepare for Brexit if you live in the UK",
+              href: "/transition",
+              text: "Check what you need to do",
               attributes: {
                 data: {
                   track_category: "footerClicked",
-                  track_action: "brexitLinks",
-                  track_label: "Prepare for Brexit if you live in the UK",
-                },
-              },
-            },
-            {
-              href: "/uk-nationals-living-eu",
-              text: "Living in Europe after Brexit",
-              attributes: {
-                data: {
-                  track_category: "footerClicked",
-                  track_action: "brexitLinks",
-                  track_label: "Living in Europe after Brexit",
-                },
-              },
-            },
-            {
-              href: "/staying-uk-eu-citizen",
-              text: "Continue to live in the UK after Brexit",
-              attributes: {
-                data: {
-                  track_category: "footerClicked",
-                  track_action: "brexitLinks",
-                  track_label: "Continue to live in the UK after Brexit",
+                  track_action: "transitionLinks",
+                  track_label: "Check what you need to do",
                 },
               },
             },

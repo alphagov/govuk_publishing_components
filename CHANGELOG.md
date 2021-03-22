@@ -9,7 +9,8 @@
 
 ## Unreleased
 
-* Remove Sass `extend` from title component ([PR #1994](https://github.com/alphagov/govuk_publishing_components/pull/1994))
+* Update default footer links ([PR #1989](https://github.com/alphagov/govuk_publishing_components/pull/1989)) PATCH
+* Remove Sass `extend` from title component ([PR #1994](https://github.com/alphagov/govuk_publishing_components/pull/1994)) PATCH
 
 ## 24.7.1
 
