@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove Sass `extend` from title component ([PR #1994](https://github.com/alphagov/govuk_publishing_components/pull/1994))
+
 ## 24.7.1
 
 * Add placeholder locale files to standardise apps. ([PR #1992](https://github.com/alphagov/govuk_publishing_components/pull/1992))

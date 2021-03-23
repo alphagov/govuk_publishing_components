@@ -26,10 +26,5 @@
 }
 
 .gem-c-title__text {
-  @extend %govuk-heading-xl;
   margin: 0;
-}
-
-.gem-c-title__text--long {
-  @extend %govuk-heading-l;
 }

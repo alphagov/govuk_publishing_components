@@ -1,5 +1,6 @@
 <%
   average_title_length ||= false
+
   context ||= false
   context_locale ||= false
   context_text = context.is_a?(Hash) ? context[:text] : context
@@ -12,10 +13,13 @@
 
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
-  classes = %w(gem-c-title)
+  classes = %w[gem-c-title]
   classes << "gem-c-title--inverse" if inverse
   classes << (shared_helper.get_margin_top)
   classes << (shared_helper.get_margin_bottom)
+
+  heading_classes = %w[gem-c-title__text]
+  heading_classes << (average_title_length.present? ? 'govuk-heading-l' : 'govuk-heading-xl')
 %>
 <%= content_tag(:div, class: classes) do %>
   <% if context %>
@@ -23,7 +27,7 @@
       <%= context_href ? link_to(context_text, context_href, class: 'gem-c-title__context-link govuk-link', data: context_data) : context_text %>
     </span>
   <% end %>
-  <h1 class="gem-c-title__text <% if average_title_length %>gem-c-title__text--<%= average_title_length %><% end %>">
+  <h1 class="<%= heading_classes.join(" ") %>">
     <%= title %>
   </h1>
 <% end %>

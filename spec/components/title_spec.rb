@@ -33,7 +33,7 @@ describe "Title", type: :view do
 
   it "applies title length if supplied" do
     render_component(title: "Hello World", context: "format", average_title_length: "long")
-    assert_select ".gem-c-title .gem-c-title__text--long", text: "Hello World"
+    assert_select ".gem-c-title .govuk-heading-l", text: "Hello World"
   end
 
   it "applies the inverse flag if supplied" do
