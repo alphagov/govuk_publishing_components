@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 24.7.1
+
+* Add placeholder locale files to standardise apps. ([PR #1992](https://github.com/alphagov/govuk_publishing_components/pull/1992))
+
 ## 24.7.0
 
 * Add GOVUK Frontend Details module to GOVUK Modules and amend modules.js start function ([PR #1985](https://github.com/alphagov/govuk_publishing_components/pull/1985))
