@@ -16,7 +16,6 @@ module GovukPublishingComponents
     def analyse_applications(path)
       results = []
       applications = %w[
-        calculators
         collections
         collections-publisher
         content-data-admin
