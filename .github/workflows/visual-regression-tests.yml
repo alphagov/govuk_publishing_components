@@ -4,8 +4,6 @@ on:
       - main
       - master
   pull_request:
-    types:
-      - ready_for_review
 
 jobs:
   visual-regression-test-components:
