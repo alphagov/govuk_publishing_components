@@ -9,7 +9,7 @@
 
 ## Unreleased
 
-* Update to component auditing. ([PR 1996](https://github.com/alphagov/govuk_publishing_components/pull/1996))
+* Update to component auditing. ([PR 1996](https://github.com/alphagov/govuk_publishing_components/pull/1996)) PATCH
 * Update default footer links ([PR #1989](https://github.com/alphagov/govuk_publishing_components/pull/1989)) PATCH
 * Remove Sass `extend` from title component ([PR #1994](https://github.com/alphagov/govuk_publishing_components/pull/1994)) PATCH
 
