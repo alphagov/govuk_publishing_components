@@ -12,12 +12,21 @@ describe "Layout footer", type: :view do
   end
 
   it "renders the footer with meta links" do
-    render_component(meta: { items: [{ href: "/help", text: "Help" }] })
+    render_component(
+      meta: {
+        items: [
+          {
+            href: "/help",
+            text: "Help",
+          },
+        ],
+      },
+    )
 
     assert_select ".govuk-footer__meta .govuk-footer__link[href='/help']", text: "Help"
   end
 
-  it "renders the footer with navigation" do
+  it "renders the footer with navigation with multiple links" do
     render_component(
       navigation: [
         {
@@ -28,6 +37,10 @@ describe "Layout footer", type: :view do
               href: "/browse/benefits",
               text: "Benefits",
             },
+            {
+              href: "/browse/births-deaths-marriages",
+              text: "Births, deaths, marriages and care",
+            },
           ],
         },
       ],
@@ -35,6 +48,27 @@ describe "Layout footer", type: :view do
 
     assert_select ".govuk-footer__navigation .govuk-footer__heading", text: "Services and information"
     assert_select ".govuk-footer__navigation .govuk-footer__list--columns-2 .govuk-footer__link[href='/browse/benefits']", text: "Benefits"
+  end
+
+  it "renders the footer with navigation with one link" do
+    render_component(
+      navigation: [
+        {
+          title: "Coronavirus (COVID-19)",
+          columns: 3,
+          items: [
+            {
+              href: "/coronavirus",
+              text: "Coronavirus (COVID-19): guidance and support",
+            },
+          ],
+        },
+      ],
+    )
+
+    assert_select ".govuk-footer__navigation .govuk-footer__list--columns-3", false
+    assert_select ".govuk-footer__navigation .govuk-footer__heading", text: "Coronavirus (COVID-19)"
+    assert_select ".govuk-footer__navigation .govuk-footer__link[href='/coronavirus']", text: "Coronavirus (COVID-19): guidance and support"
   end
 
   it "renders the footer with attributes" do

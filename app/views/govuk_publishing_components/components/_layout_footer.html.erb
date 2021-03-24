@@ -21,8 +21,13 @@
                 width_class = "govuk-grid-column-one-third"
               end
 
-              list_classes = %w( govuk-footer__list )
-              list_classes << "govuk-footer__list--columns-#{item[:columns]}" if item[:columns]
+              # If the list has multiple columns and there is only one link.
+              # This is to prevent a long link wrapping in a column, which
+              # leaves an obvious blank space to the right.
+              single_item_list = (( item[:columns] == 2 || item[:columns] == 3 ) && item[:items].length == 1 )
+
+              list_classes = %w[govuk-footer__list]
+              list_classes << "govuk-footer__list--columns-#{item[:columns]}" if item[:columns] unless single_item_list
             %>
             <div class="<%= width_class %>">
               <h2 class="govuk-footer__heading govuk-heading-m"><%= item[:title] %></h2>
