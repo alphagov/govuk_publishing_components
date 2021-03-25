@@ -66,18 +66,19 @@ examples:
       href: "#"
       start: true
       info_text: "Sometimes you want to explain where a user is going to."
+  with_margin_bottom:
+    description: "The component accepts a number for margin bottom from 0 to 9 (0px to 60px) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having no margin bottom."
+    data:
+      text: "Submit"
+      margin_bottom: 6
   start_now_button_with_info_text_and_margin_bottom:
+    description: "When the component requires margin bottom and has info text, the margin is applied to the info text."
     data:
       text: "Start now"
       href: "#"
       start: true
       info_text: "Sometimes you want to explain where a user is going to and have a margin bottom"
-      margin_bottom: true
-  with_margin_bottom:
-    description: "Sometimes it's useful to break up a page, for example if a button is at the bottom of a page."
-    data:
-      text: "Submit"
-      margin_bottom: true
+      margin_bottom: 6
   extreme_text:
     data:
       text: "I'm a button with lots of text to test how the component scales at extremes."

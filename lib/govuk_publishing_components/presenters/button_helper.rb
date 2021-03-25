@@ -31,7 +31,8 @@ module GovukPublishingComponents
         @info_text = local_assigns[:info_text]
         @info_text_classes = %w[gem-c-button__info-text]
         if local_assigns[:margin_bottom]
-          @info_text_classes << "gem-c-button__info-text--bottom-margin"
+          margin_class = get_margin_bottom(local_assigns[:margin_bottom], true)
+          @info_text_classes << margin_class
         end
         @rel = local_assigns[:rel]
         @data_attributes = local_assigns[:data_attributes]
@@ -81,10 +82,20 @@ module GovukPublishingComponents
         css_classes << "gem-c-button--secondary-quiet" if secondary_quiet
         css_classes << "govuk-button--secondary" if secondary_solid
         css_classes << "govuk-button--warning" if destructive
-        css_classes << "gem-c-button--bottom-margin" if margin_bottom && !info_text
+        if margin_bottom && !info_text
+          margin_class = get_margin_bottom(margin_bottom, false)
+          css_classes << margin_class
+        end
         css_classes << "gem-c-button--inline" if inline_layout
         css_classes << classes if classes
         css_classes.join(" ")
+      end
+
+      def get_margin_bottom(margin, info_text)
+        legacy_class = "gem-c-button--bottom-margin"
+        legacy_class = "gem-c-button__info-text--bottom-margin" if info_text
+
+        [*0..9].include?(margin) ? "govuk-!-margin-bottom-#{margin}" : legacy_class
       end
     end
   end
