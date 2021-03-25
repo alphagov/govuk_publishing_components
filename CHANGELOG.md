@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add cookie ([PR #1999](https://github.com/alphagov/govuk_publishing_components/pull/1999)) PATCH
 * Change button margin option ([PR #1998](https://github.com/alphagov/govuk_publishing_components/pull/1998)) MINOR
 * Add auditing to applications ([PR #1949](https://github.com/alphagov/govuk_publishing_components/pull/1949)) PATCH
 * Update auditing ([PR #1996](https://github.com/alphagov/govuk_publishing_components/pull/1996)) PATCH
