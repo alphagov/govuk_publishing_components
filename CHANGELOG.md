@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 24.8.0
 
 * Add cookie ([PR #1999](https://github.com/alphagov/govuk_publishing_components/pull/1999)) PATCH
 * Change button margin option ([PR #1998](https://github.com/alphagov/govuk_publishing_components/pull/1998)) MINOR
