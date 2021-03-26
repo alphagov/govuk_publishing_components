@@ -13,6 +13,7 @@ module GovukPublishingComponents
       @components_in_use_sass = components_in_use_sass(false)
       @components_in_use_print_sass = components_in_use_sass(true)
       @components_in_use_js = components_in_use_js
+      @index_audit_summary = index_audit_summary
     end
 
     def show
@@ -160,6 +161,14 @@ module GovukPublishingComponents
         h[:title] = component_doc.name
         h[:url] = component_doc_path(component_doc.id) if component_example
       end
+    end
+
+    def index_audit_summary
+      components_gem_path = Gem.loaded_specs["govuk_publishing_components"].full_gem_path
+      components = AuditComponents.new(components_gem_path, true)
+      application = AuditApplications.new(@application_path, GovukPublishingComponents::ApplicationHelper.get_application_name_from_path(@application_path))
+      compared_data = AuditComparer.new(components.data, [application.data], true)
+      compared_data.applications_data[0]
     end
   end
 end

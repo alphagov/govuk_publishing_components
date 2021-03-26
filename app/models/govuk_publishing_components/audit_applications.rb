@@ -86,8 +86,8 @@ module GovukPublishingComponents
           gem_style_references = find_code_references(file, src, /gem-c-[-_a-zA-Z]+/)
           @gem_style_references << gem_style_references if gem_style_references
         end
-      rescue StandardError
-        puts "File #{file} not found"
+      rescue StandardError => e
+        puts e.message
       end
 
       components_found.flatten.uniq.sort
@@ -108,7 +108,7 @@ module GovukPublishingComponents
     end
 
     def find_code_references(file, src, regex)
-      clean_file_path = /(?<=#{Regexp.escape(@path)}\/)[\/a-zA-Z_-]+.[a-zA-Z.]+/
+      clean_file_path = /(?<=#{Regexp.escape(@path.to_s)}\/)[\/a-zA-Z_-]+.[a-zA-Z.]+/
 
       return file[clean_file_path] if regex.match?(src)
     end

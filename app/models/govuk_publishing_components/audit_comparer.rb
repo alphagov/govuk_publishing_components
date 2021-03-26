@@ -2,10 +2,10 @@ module GovukPublishingComponents
   class AuditComparer
     attr_reader :applications_data, :gem_data
 
-    def initialize(gem_data, results)
+    def initialize(gem_data, results, simple)
       if gem_data[:gem_found]
         @gem_data = gem_data
-        @applications_data = sort_results(results)
+        @applications_data = sort_results(results, simple)
         @gem_data[:components_by_application] = get_components_by_application || []
       end
     end
@@ -16,7 +16,8 @@ module GovukPublishingComponents
       key.to_s.gsub("_", " ").capitalize
     end
 
-    def sort_results(results)
+    def sort_results(results, simple)
+      @simple = simple
       data = []
 
       results.each do |result|
@@ -40,10 +41,9 @@ module GovukPublishingComponents
           warnings << warn_about_jquery_references(result[:jquery_references])
           warnings = warnings.flatten
 
-          data << {
-            name: result[:name],
-            application_found: result[:application_found],
-            summary: [
+          summary = []
+          unless @simple
+            summary = [
               {
                 name: "Components in templates",
                 value: templates[:components].flatten.uniq.sort.join(", "),
@@ -64,7 +64,13 @@ module GovukPublishingComponents
                 name: "Components in ruby",
                 value: ruby[:components].join(", "),
               },
-            ],
+            ]
+          end
+
+          data << {
+            name: result[:name],
+            application_found: result[:application_found],
+            summary: summary,
             warnings: warnings,
             warning_count: warnings.length,
             gem_style_references: result[:gem_style_references],
@@ -180,6 +186,8 @@ module GovukPublishingComponents
     end
 
     def get_components_by_application
+      return [] if @simple
+
       results = []
       found_something = false
 
