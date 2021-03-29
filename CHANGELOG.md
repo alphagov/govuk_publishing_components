@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Change button margin option ([PR #1998](https://github.com/alphagov/govuk_publishing_components/pull/1998)) MINOR
 * Add auditing to applications ([PR #1949](https://github.com/alphagov/govuk_publishing_components/pull/1949)) PATCH
 * Update auditing ([PR #1996](https://github.com/alphagov/govuk_publishing_components/pull/1996)) PATCH
 * Update default footer links ([PR #1989](https://github.com/alphagov/govuk_publishing_components/pull/1989)) PATCH
