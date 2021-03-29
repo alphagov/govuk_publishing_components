@@ -25,6 +25,7 @@
     govuk_browser_upgrade_dismisssed: 'settings',
     govuk_not_first_visit: 'settings',
     analytics_next_page_call: 'usage',
+    user_nation: 'settings',
     _ga: 'usage',
     _gid: 'usage',
     _gat: 'usage',
