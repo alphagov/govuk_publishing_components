@@ -8,6 +8,8 @@ body: |
   When the component is not limited to presenting information (e.g. an alert dialog or an informative dialog) and it contains interactive elements (e.g. form elements) you should use the `aria_label` attribute.
   This will provide context around what the modal dialogue is about and will prevent it from being too verbose for screen reader users (if `aria_label` is not specified the whole modal content will be read out).
 
+  Modal components must be a direct descendant of the `<body>` element; we recommend placing it toward the end of the document for performance considerations.
+
   This component is currently experimental. If you are using it, please feed back any research findings to the Content Publisher team.
 accessibility_criteria: |
   The modal dialogue box must:
@@ -21,6 +23,7 @@ accessibility_criteria: |
   - can be operable with a keyboard (allows the ESC key to close the dialogue)
   - return focus to last focused element on close
 
+display_preview: false
 examples:
   default:
     embed: |
