@@ -2,3 +2,16 @@
 // It provides govuk-frontend but adds no weight to the compiled CSS
 @import "components/helpers/govuk-frontend-settings";
 @import "govuk/base";
+
+@import 'components/mixins/margins';
+// TODO: remove this focus override when govuk_template is no longer used
+@import 'components/mixins/govuk-template-link-focus-override';
+@import 'components/mixins/css3';
+
+$gem-secondary-button-colour: #00823b;
+$gem-secondary-button-hover-colour: darken($gem-secondary-button-colour, 5%);
+$gem-secondary-button-background-colour: govuk-colour("white");
+$gem-secondary-button-hover-background-colour: govuk-colour("light-grey", $legacy: "grey-4");
+
+$gem-quiet-button-colour: govuk-colour("dark-grey", $legacy: "grey-1");
+$gem-quiet-button-hover-colour: darken($gem-quiet-button-colour, 5%);

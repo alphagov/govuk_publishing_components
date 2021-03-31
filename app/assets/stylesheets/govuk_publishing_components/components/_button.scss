@@ -1,13 +1,5 @@
 @import "govuk/components/button/button";
 
-$gem-secondary-button-colour: #00823b;
-$gem-secondary-button-hover-colour: darken($gem-secondary-button-colour, 5%);
-$gem-secondary-button-background-colour: govuk-colour("white");
-$gem-secondary-button-hover-background-colour: govuk-colour("light-grey", $legacy: "grey-4");
-
-$gem-quiet-button-colour: govuk-colour("dark-grey", $legacy: "grey-1");
-$gem-quiet-button-hover-colour: darken($gem-quiet-button-colour, 5%);
-
 // Because govuk-frontend adds a responsive bottom margin by default for each component
 // we reset it to zero so we can set it separately using `gem-c-button--bottom-margin`
 // If we decide to use responsive margins consistently across components we can remove this
