@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update success notice component ([PR #1929](https://github.com/alphagov/govuk_publishing_components/pull/1929))
+
 ## 24.8.0
 
 * Add cookie ([PR #1999](https://github.com/alphagov/govuk_publishing_components/pull/1999)) PATCH
