@@ -18,8 +18,8 @@
   wrapper_classes << (shared_helper.get_margin_top)
   wrapper_classes << (shared_helper.get_margin_bottom)
 
-  classes = %w(govuk-link)
-  classes << "gem-c-print-link__button" if href.nil?
+  classes = %w[govuk-link]
+  classes << "govuk-body-s gem-c-print-link__button" if href.nil?
   classes << "gem-c-print-link__link govuk-link--no-visited-state" if href.present?
 %>
 

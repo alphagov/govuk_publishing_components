@@ -41,7 +41,6 @@ $gem-c-print-link-background-height: 18px;
 }
 
 .gem-c-print-link__button {
-  @extend %govuk-body-s;
   border: 1px solid $govuk-border-colour;
   color: $govuk-link-colour;
   cursor: pointer;
