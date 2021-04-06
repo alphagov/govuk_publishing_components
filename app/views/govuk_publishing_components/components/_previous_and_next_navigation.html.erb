@@ -8,7 +8,7 @@
     <% if local_assigns.include?(:previous_page) %>
       <li class="gem-c-pagination__item gem-c-pagination__item--previous">
         <a href="<%= previous_page[:url] %>"
-          class="gem-c-pagination__link"
+          class="govuk-link gem-c-pagination__link"
           rel="prev"
           data-track-category="contentsClicked"
           data-track-action="previous"
@@ -34,7 +34,7 @@
     <% if local_assigns.include?(:next_page) %>
       <li class="gem-c-pagination__item gem-c-pagination__item--next">
         <a href="<%= next_page[:url] %>"
-          class="gem-c-pagination__link"
+          class="govuk-link gem-c-pagination__link"
           rel="next"
           data-track-category="contentsClicked"
           data-track-action="next"
