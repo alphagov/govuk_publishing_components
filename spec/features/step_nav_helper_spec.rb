@@ -28,7 +28,7 @@ describe "Specimen usage of step by step navigation helpers" do
       expect(page).to have_selector(".gem-c-step-nav-related")
 
       within(".gem-c-step-nav-related") do
-        expect(page).to have_selector(".gem-c-step-nav-related__link", count: 1)
+        expect(page).to have_selector(".govuk-link", count: 1)
         expect(page).to have_link("Learn to spacewalk: small step by giant leap", href: "/learn-to-spacewalk")
       end
     end
@@ -58,7 +58,7 @@ describe "Specimen usage of step by step navigation helpers" do
       expect(page).to have_selector(".gem-c-step-nav-related")
 
       within(".gem-c-step-nav-related") do
-        expect(page).to have_selector(".gem-c-step-nav-related__link", count: 1)
+        expect(page).to have_selector(".govuk-link", count: 1)
         expect(page).to have_link("Learn to spacewalk: small step by giant leap", href: "/learn-to-spacewalk")
       end
     end

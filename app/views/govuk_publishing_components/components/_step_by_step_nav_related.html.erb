@@ -11,7 +11,7 @@
       <span class="gem-c-step-nav-related__pretitle"><%= pretitle %></span>
       <% if links.length == 1 && !always_display_as_list %>
           <a href="<%= links[0][:href] %>"
-            class="gem-c-step-nav-related__link govuk-link"
+            class="govuk-link"
             data-track-category="stepNavPartOfClicked"
             data-track-action="<%= pretitle %>"
             data-track-label="<%= links[0][:href] %>"
@@ -27,7 +27,7 @@
           <% links.each do |link| %>
             <li class="gem-c-step-nav-related__link-item">
               <a href="<%= link[:href] %>"
-                class="gem-c-step-nav-related__link govuk-link"
+                class="govuk-link"
                 data-track-category="stepNavPartOfClicked"
                 data-track-action="<%= pretitle %>"
                 data-track-label="<%= link[:href] %>"
