@@ -12,9 +12,18 @@ examples:
     data:
       message: Message to alert the user to a successful action goes here
   with_message_and_description:
+    description: Descriptions can be passed as plain text but it is strongly recommended that you pass these as html, cleaned using `raw` or `sanitize`.
     data:
       message: Message to alert the user to a successful action goes here
-      description: A further description
+      description: <p class="govuk-body">A further description</p>
+  with_custom_title_id:
+    description: |
+      This is for the heading element at the head of the component (reading "Success" by default) where the id is used by an `aria-labelledby` on screen reader focus of the element.
+
+      Please ensure that this id is unique across the view you are building.
+    data:
+      message: Message to alert the user to a successful action goes here
+      title_id: my-custom-success-id
   long_example:
     data:
       message: |

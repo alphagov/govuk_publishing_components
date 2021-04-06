@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Update success notice component ([PR #1929](https://github.com/alphagov/govuk_publishing_components/pull/1929))
+* Tidy up success alert markup ([PR #2004](https://github.com/alphagov/govuk_publishing_components/pull/2004))
 
 ## 24.8.0
 
