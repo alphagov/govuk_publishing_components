@@ -20,7 +20,6 @@ $share-button-height: 32px;
 }
 
 .gem-c-share-links__link {
-  @extend %govuk-link;
   @include govuk-font(16, $weight: bold);
   margin-right: govuk-spacing(6);
   text-decoration: none;
