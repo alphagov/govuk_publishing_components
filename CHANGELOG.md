@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 24.9.0
 
 * Image card link size option ([PR #2007](https://github.com/alphagov/govuk_publishing_components/pull/2007))
 * Update success notice component ([PR #1929](https://github.com/alphagov/govuk_publishing_components/pull/1929))
