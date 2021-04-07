@@ -19,14 +19,14 @@
       <div class="gem-c-image-card__header-and-context-wrapper">
         <% if card_helper.heading_text %>
           <%= content_tag(shared_helper.get_heading_level, class: heading_class) do %>
-              <% if card_helper.href %>
-                <%= link_to card_helper.heading_text, card_helper.href,
-                  class: "gem-c-image-card__title-link #{brand_helper.color_class}",
-                  data: card_helper.href_data_attributes
-                %>
-              <% else %>
-                <%= card_helper.heading_text %>
-              <% end %>
+            <% if card_helper.href %>
+              <%= link_to card_helper.heading_text, card_helper.href,
+                class: "gem-c-image-card__title-link #{brand_helper.color_class}",
+                data: card_helper.href_data_attributes
+              %>
+            <% else %>
+              <%= card_helper.heading_text %>
+            <% end %>
           <% end %>
         <% end %>
         <%= card_helper.context %>
