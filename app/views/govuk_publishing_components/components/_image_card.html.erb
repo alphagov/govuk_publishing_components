@@ -6,6 +6,10 @@
   classes = "gem-c-image-card"
   classes << " gem-c-image-card--large" if card_helper.large
   classes << " gem-c-image-card--no-image" unless defined?(image_src)
+
+  font_size ||= card_helper.large ? 'm' : 's'
+  heading_class = %w[gem-c-image-card__title]
+  heading_class << shared_helper.get_heading_size(font_size, 's')
 %>
 <% if card_helper.href || card_helper.extra_links.any? %>
   <div class="<%= classes %> <%= brand_helper.brand_class %>"
@@ -14,16 +18,15 @@
     <div class="gem-c-image-card__text-wrapper">
       <div class="gem-c-image-card__header-and-context-wrapper">
         <% if card_helper.heading_text %>
-          <%= content_tag(shared_helper.get_heading_level,
-            class: "gem-c-image-card__title") do %>
-              <% if card_helper.href %>
-                <%= link_to card_helper.heading_text, card_helper.href,
-                  class: "gem-c-image-card__title-link #{brand_helper.color_class}",
-                  data: card_helper.href_data_attributes
-                %>
-              <% else %>
-                <%= card_helper.heading_text %>
-              <% end %>
+          <%= content_tag(shared_helper.get_heading_level, class: heading_class) do %>
+            <% if card_helper.href %>
+              <%= link_to card_helper.heading_text, card_helper.href,
+                class: "gem-c-image-card__title-link govuk-link #{brand_helper.color_class}",
+                data: card_helper.href_data_attributes
+              %>
+            <% else %>
+              <%= card_helper.heading_text %>
+            <% end %>
           <% end %>
         <% end %>
         <%= card_helper.context %>
@@ -34,7 +37,7 @@
           <% card_helper.extra_links.each do |link| %>
             <li class="gem-c-image-card__list-item">
               <%= link_to link[:text], link[:href],
-                class: "gem-c-image-card__list-item-link #{brand_helper.color_class}",
+                class: "gem-c-image-card__list-item-link govuk-link #{brand_helper.color_class}",
                 data: link[:data_attributes]
               %>
             </li>

@@ -59,12 +59,10 @@
 }
 
 .gem-c-image-card__title {
-  @include govuk-font(19, $weight: bold);
   margin: 0;
 }
 
 .gem-c-image-card__title-link {
-  @extend %govuk-link;
   text-decoration: none;
 
   &:hover {
@@ -136,7 +134,6 @@
   }
 
   .gem-c-image-card__list-item-link {
-    @extend %govuk-link;
     line-height: 1.35em;
   }
 
@@ -193,7 +190,6 @@
   }
 
   .gem-c-image-card__title {
-    @include govuk-font(24, $weight: bold);
     padding-bottom: govuk-spacing(2);
   }
 

@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Image card link size option ([PR #2007](https://github.com/alphagov/govuk_publishing_components/pull/2007))
 * Update success notice component ([PR #1929](https://github.com/alphagov/govuk_publishing_components/pull/1929))
 * Tidy up success alert markup ([PR #2004](https://github.com/alphagov/govuk_publishing_components/pull/2004))
 
