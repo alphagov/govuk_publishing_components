@@ -31,6 +31,21 @@ describe "ImageCard", type: :view do
     assert_select ".gem-c-image-card h2.gem-c-image-card__title", false
   end
 
+  it "shows the default link size correctly" do
+    render_component(href: "#", heading_text: "normal")
+    assert_select ".gem-c-image-card .gem-c-image-card__title.govuk-heading-s", text: "normal"
+  end
+
+  it "shows the default link size correctly with invalid input" do
+    render_component(href: "#", heading_text: "normal", font_size: "notvalid")
+    assert_select ".gem-c-image-card .gem-c-image-card__title.govuk-heading-s", text: "normal"
+  end
+
+  it "can do different link sizes" do
+    render_component(href: "#", heading_text: "bigger", font_size: "xl")
+    assert_select ".gem-c-image-card .gem-c-image-card__title.govuk-heading-xl", text: "bigger"
+  end
+
   it "shows description" do
     render_component(href: "#", description: "description")
     assert_select ".gem-c-image-card .gem-c-image-card__description", text: "description"

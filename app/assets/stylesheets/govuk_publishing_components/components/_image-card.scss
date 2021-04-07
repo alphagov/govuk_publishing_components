@@ -59,7 +59,6 @@
 }
 
 .gem-c-image-card__title {
-  @include govuk-font(19, $weight: bold);
   margin: 0;
 }
 
@@ -193,7 +192,6 @@
   }
 
   .gem-c-image-card__title {
-    @include govuk-font(24, $weight: bold);
     padding-bottom: govuk-spacing(2);
   }
 

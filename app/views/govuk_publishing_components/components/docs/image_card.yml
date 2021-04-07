@@ -35,6 +35,18 @@ examples:
       image_alt: "some meaningful alt text please"
       heading_text: "I am not a heading"
       heading_level: 0
+  with_different_link_size:
+    description: |
+      Set a different font size for the link. Uses the [GOV.UK Frontend heading sizes](https://design-system.service.gov.uk/styles/typography/#headings) but defaults to 19px for legacy reasons. Valid options are `xl`, `l`, `m` and `s`.
+
+      This option is not tied to the `heading_level` option in order to give flexibility.
+    data:
+      href: "/definitely-not-a-page"
+      image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
+      image_alt: "some meaningful alt text please"
+      heading_text: "I am a big link"
+      heading_level: 0
+      font_size: 'xl'
   with_more_information:
     data:
       href: "/also-not-a-page"

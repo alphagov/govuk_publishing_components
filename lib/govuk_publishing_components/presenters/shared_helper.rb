@@ -31,6 +31,16 @@ module GovukPublishingComponents
         "span"
       end
 
+      def get_heading_size(option, fallback)
+        govuk_class = "govuk-heading-"
+
+        if %w[xl l m s].include? option
+          "#{govuk_class}#{option}"
+        else
+          "#{govuk_class}#{fallback}"
+        end
+      end
+
       def t_locale(content, options = {})
         # Check if the content string has a translation
         content_translation_available = translation_present?(content)
