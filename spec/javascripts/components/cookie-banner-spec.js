@@ -14,7 +14,7 @@ describe('Cookie banner', function () {
     container = document.createElement('div')
 
     container.innerHTML =
-    '<div id="global-cookie-message" class="gem-c-cookie-banner govuk-clearfix" data-module="cookie-banner" role="region" aria-label="cookie banner" data-nosnippet="" style="display: block;">' +
+    '<div id="global-cookie-message" class="gem-c-cookie-banner govuk-clearfix" data-module="cookie-banner" role="region" aria-label="cookie banner" data-nosnippet="">' +
       '<div class="govuk-cookie-banner js-banner-wrapper" role="region" aria-label="Cookies on GOV.UK">' +
         '<div class="gem-c-cookie-banner__message govuk-cookie-banner__message govuk-width-container govuk-body">' +
           '<div class="govuk-grid-row">' +
@@ -28,8 +28,8 @@ describe('Cookie banner', function () {
             '</div>' +
           '</div>' +
           '<div class="govuk-button-group">' +
-            '<button class="gem-c-button govuk-button" type="submit" data-module="gem-track-click" data-accept-cookies="true" data-track-category="cookieBanner" data-track-action="Cookie banner accepted" data-cookie-types="all" style="display: block;">Accept additional cookies</button>' +
-            '<button class="gem-c-button govuk-button" type="submit" data-module="gem-track-click" data-reject-cookies="true" data-track-category="cookieBanner" data-track-action="Cookie banner rejected" style="display: block;">Reject additional cookies</button>' +
+            '<button class="gem-c-button govuk-button" type="submit" data-module="gem-track-click" data-accept-cookies="true" data-track-category="cookieBanner" data-track-action="Cookie banner accepted" data-cookie-types="all">Accept additional cookies</button>' +
+            '<button class="gem-c-button govuk-button" type="submit" data-module="gem-track-click" data-reject-cookies="true" data-track-category="cookieBanner" data-track-action="Cookie banner rejected">Reject additional cookies</button>' +
             '<a class="govuk-link" href="/help/cookies">View cookies</a>' +
           '</div>' +
         '</div>' +
@@ -161,6 +161,10 @@ describe('Cookie banner', function () {
   it('shows a confirmation message when cookies have been accepted', function () {
     var element = document.querySelector('[data-module="cookie-banner"]')
     new GOVUK.Modules.CookieBanner().start($(element))
+    // this is normally set by GOVUK.modules.start but not here as module is called directly
+    // need to set manually as the click below calls GOVUK.modules start and it'll get confused otherwise
+    // essentially this simulates real world use of our modules code
+    $(element).attr('data-module-started', true)
 
     var acceptCookiesButton = document.querySelector('[data-accept-cookies]')
     var mainCookieBanner = document.querySelector('.gem-c-cookie-banner__message')

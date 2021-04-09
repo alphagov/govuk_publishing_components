@@ -35,20 +35,24 @@
         if ( // GOV.UK Publishing & Legacy Modules
           typeof GOVUK.Modules[moduleName] === 'function' &&
           !GOVUK.Modules[moduleName].prototype.init &&
-          !started
+          (!started || started === 'delay')
         ) {
           module = new GOVUK.Modules[moduleName]()
           module.start(element)
-          element.data('module-started', true)
+          if (started !== 'delay') {
+            element.data('module-started', true)
+          }
         }
 
         if ( // GOV.UK Frontend Modules
           typeof GOVUK.Modules[frontendModuleName] === 'function' &&
           GOVUK.Modules[frontendModuleName].prototype.init &&
-          !started
+          (!started || started === 'delay')
         ) {
           module = new GOVUK.Modules[frontendModuleName](element[0]).init()
-          element.data('module-started', true)
+          if (started !== 'delay') {
+            element.data('module-started', true)
+          }
         }
       }
 

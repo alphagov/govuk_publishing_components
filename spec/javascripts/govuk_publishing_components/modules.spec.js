@@ -143,6 +143,15 @@ describe('GOVUK Modules', function () {
       expect(callbackLegacyModule.calls.count()).toBe(1)
     })
 
+    it('starts modules that are delayed', function () {
+      var module = $('<div data-module="legacy-test-alert-module" data-module-started="delay"></div>')
+      container.append(module)
+
+      GOVUK.modules.start(module)
+      GOVUK.modules.start(module)
+      expect(callbackLegacyModule.calls.count()).toBe(2)
+    })
+
     it('passes the HTML element to the module’s start method', function () {
       var module = $('<div data-module="legacy-test-alert-module"></div>')
       container.append(module)

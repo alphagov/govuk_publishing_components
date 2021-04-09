@@ -29,12 +29,32 @@ module = new GOVUK.Modules[type]()
 module.start(element)
 ```
 
-Running `GOVUK.modules.start()` multiple times will have no additional affect. When a module is started a flag is set on the element using the data attribute `module-started`. `data-module-started` is a reserved attribute. It can however be called with an element as the first argument, to allow modules to be started in dynamically loaded content:
+Running `GOVUK.modules.start()` multiple times will have no additional affect for most modules. When a module is started a flag is set on the element using the data attribute `module-started`. `data-module-started` is a reserved attribute. It can however be called with an element as the first argument, to allow modules to be started in dynamically loaded content:
 
 ```javascript
 var $container = $('.dynamic-content')
 GOVUK.modules.start($container)
 ```
+
+### Modules and cookie consent
+
+Some modules might rely on cookie consent being granted before doing anything. If a user consents to cookies on a page with such a module, that module should be started without the user having to reload the page.
+
+Modules that check for cookie consent in their `start` method can be loaded in this way by setting the `data-module-started` attribute in their template to `delay`. When cookies are accepted, the cookie banner calls `GOVUK.modules.start()`, which will start delayed modules a second time. The flow for this process looks like this:
+
+** Without cookie consent **
+
+- page loads, `GOVUK.modules.start()` is called normally
+- delayed modules are started, find that cookie consent has not been given, and do nothing
+- user consents to cookies
+- the cookie banner calls `GOVUK.modules.start()` for a second time
+- all existing normal modules on the page are not started, because they have `data-module-started` set to `true`
+- delayed modules are started a second time, find that cookie consent has been given, and execute
+
+** With cookie consent **
+
+- page loads, `GOVUK.modules.start()` is called normally
+- delayed modules are started, find that cookie consent has been given, and execute as normal
 
 ### Module structure
 
