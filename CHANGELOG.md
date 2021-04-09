@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 24.9.1
 
 * Change to the exceptions list for Brexit branding ([PR #2011](https://github.com/alphagov/govuk_publishing_components/pull/2011))
 
