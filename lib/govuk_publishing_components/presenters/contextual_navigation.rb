@@ -206,8 +206,6 @@ module GovukPublishingComponents
         # Environment
         # International
         # Defence and armed forces
-        # Society and culture
-        # Government
         # Work
         # Welfare
         # Money
@@ -225,8 +223,6 @@ module GovukPublishingComponents
           3cf97f69-84de-41ae-bc7b-7e2cc238fa58
           37d0fa26-abed-4c74-8835-b3b51ae1c8b2
           e491505c-77ae-45b2-84be-8c94b94f6a2b
-          e2ca2f1a-0ff3-43ce-b813-16645ff27904
-          e48ab80a-de80-4e83-bf59-26316856a5f9
           d0f1e5a3-c8f4-4780-8678-994f19104b21
           dded88e2-f92e-424f-b73e-6ad24a839c51
           6acc9db4-780e-4a46-92b4-1812e3c2c48a
