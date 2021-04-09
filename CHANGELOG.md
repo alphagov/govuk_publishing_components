@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Change to the exceptions list for Brexit branding ([PR #2011](https://github.com/alphagov/govuk_publishing_components/pull/2011))
+
 ## 24.9.0
 
 * Image card link size option ([PR #2007](https://github.com/alphagov/govuk_publishing_components/pull/2007))
