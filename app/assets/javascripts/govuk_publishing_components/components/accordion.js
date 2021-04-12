@@ -31,7 +31,16 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.upChevonIconClass = 'gem-c-accordion-nav__chevron'
     this.downChevonIconClass = 'gem-c-accordion-nav__chevron--down'
 
-    // Indicate that js has worked
+    // Translated component content and language attribute pulled from data attributes
+    this.$module.actions = {}
+    this.$module.actions.locale = this.$module.getAttribute('data-locale')
+    this.$module.actions.showText = this.$module.getAttribute('data-show-text')
+    this.$module.actions.hideText = this.$module.getAttribute('data-hide-text')
+    this.$module.actions.showAllText = this.$module.getAttribute('data-show-all-text')
+    this.$module.actions.hideAllText = this.$module.getAttribute('data-hide-all-text')
+    this.$module.actions.thisSectionVisuallyHidden = this.$module.getAttribute('data-this-section-visually-hidden')
+
+    // Indicate that JavaScript has worked
     this.$module.classList.add('gem-c-accordion--active')
 
     this.initControls()
@@ -117,7 +126,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     // Build additional copy for assistive technology
     var srAdditionalCopy = document.createElement('span')
     srAdditionalCopy.classList.add('govuk-visually-hidden')
-    srAdditionalCopy.innerHTML = ' this section'
+    srAdditionalCopy.innerHTML = this.$module.actions.thisSectionVisuallyHidden
+
+    if (this.$module.actions.locale) {
+      srAdditionalCopy.lang = this.filterLocale('this_section_visually_hidden')
+    }
 
     // Build additional wrapper for toggle text, place icon after wrapped text.
     var wrapperShowHideIcon = document.createElement('span')
@@ -178,11 +191,15 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     var icon = section.querySelector('.' + this.upChevonIconClass)
     var showHideText = section.querySelector('.' + this.sectionShowHideTextClass)
     var button = section.querySelector('.' + this.sectionButtonClass)
-    var newButtonText = expanded ? 'Hide' : 'Show'
+    var newButtonText = expanded ? this.$module.actions.hideText : this.$module.actions.showText
 
     showHideText.innerHTML = newButtonText
     button.setAttribute('aria-expanded', expanded)
     button.classList.add(this.toggleLinkClass)
+
+    if (this.$module.actions.locale) {
+      showHideText.lang = this.filterLocale(expanded ? 'hide_text' : 'show_text')
+    }
 
     // Swap icon, change class
     if (expanded) {
@@ -218,9 +235,14 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   GemAccordion.prototype.updateOpenAllButton = function (expanded) {
     var icon = this.openAllButton.querySelector('.' + this.upChevonIconClass)
     var openAllCopy = this.openAllButton.querySelector('.' + this.openAllTextClass)
-    var newButtonText = expanded ? 'Hide all sections' : 'Show all sections'
+    var newButtonText = expanded ? this.$module.actions.hideAllText : this.$module.actions.showAllText
+
     this.openAllButton.setAttribute('aria-expanded', expanded)
     openAllCopy.innerHTML = newButtonText
+
+    if (this.$module.actions.locale) {
+      openAllCopy.lang = this.filterLocale(expanded ? 'hide_all_text' : 'show_all_text')
+    }
 
     // Swap icon, toggle class
     if (expanded) {
@@ -327,6 +349,15 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
 
     return target
+  }
+
+  GemAccordion.prototype.filterLocale = function (key) {
+    if (this.$module.actions.locale && this.$module.actions.locale.indexOf('{') !== -1) {
+      var locales = JSON.parse(this.$module.actions.locale)
+      return locales[key]
+    } else if (this.$module.actions.locale) {
+      return this.$module.actions.locale
+    }
   }
 
   Modules.GemAccordion = GemAccordion

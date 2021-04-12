@@ -23,6 +23,12 @@ en:
   common:
     translations: "Translations"
   components:
+    accordion:
+      show: "Show"
+      hide: "Hide"
+      show_all: "Show all sections"
+      hide_all: "Hide all sections"
+      this_section_visually_hidden: " this section"
     attachment:
       opendocument_html: "This file is in an <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a> format"
       request_format_text: "This file may not be suitable for users of assistive technology."
@@ -58,6 +64,9 @@ en:
       search_button: "Search GOV.UK"
       show_button: "Show search"
       hide_button: "Hide search"
+      top_level: "Top level"
+      nav_items_aria_label: "Show or hide Top Level Navigation"
+      menu: "Menu"
     organisation_schema:
       all_content_search_description: "Find all content from %{organisation}"
     radio:
