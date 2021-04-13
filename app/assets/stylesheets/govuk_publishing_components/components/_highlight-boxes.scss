@@ -50,11 +50,10 @@
 }
 
 .gem-c-highlight-boxes__title {
-  @extend %govuk-link;
   @include govuk-font(19, $weight: bold);
   display: block;
   text-decoration: underline;
-  margin-bottom: 5px;
+  margin-bottom: govuk-spacing(1);
 }
 
 .gem-c-highlight-boxes--inverse .gem-c-highlight-boxes__title {

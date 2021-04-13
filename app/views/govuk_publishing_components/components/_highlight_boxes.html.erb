@@ -17,7 +17,7 @@
           <%= link_to(
             content_item[:link].fetch(:text),
             content_item[:link].fetch(:path),
-            class: "gem-c-highlight-boxes__title #{"gem-c-highlight-boxes__title--featured" if content_item[:link][:featured]}",
+            class: "govuk-link gem-c-highlight-boxes__title #{"gem-c-highlight-boxes__title--featured" if content_item[:link][:featured]}",
             data: content_item[:link][:data_attributes]
             )
           %>

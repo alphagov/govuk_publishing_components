@@ -188,7 +188,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     toggleStatus.classList.add('govuk-visually-hidden', 'mc-toggle-status')
     toggleStatus.setAttribute('role', 'alert')
 
-    link.classList.add('mc-toggle-button')
+    link.classList.add('govuk-body-s', 'mc-toggle-button')
     link.appendChild(toggleText)
     link.appendChild(toggleStatus)
 

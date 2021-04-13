@@ -271,7 +271,6 @@
   }
 
   .mc-toggle-button {
-    @extend %govuk-body-s;
     border: 1px solid $govuk-border-colour;
     color: $govuk-link-colour;
     cursor: pointer;

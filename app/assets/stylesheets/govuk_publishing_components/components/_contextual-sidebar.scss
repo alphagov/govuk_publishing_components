@@ -6,7 +6,6 @@ $transition-campaign-dark-blue: #1e1348;
 }
 
 .gem-c-contextual-sidebar__brexit-heading {
-  @extend %govuk-heading-s;
   margin-top: govuk-spacing(3);
   margin-bottom: govuk-spacing(2);
 }
@@ -24,7 +23,6 @@ $transition-campaign-dark-blue: #1e1348;
   }
 
   .gem-c-contextual-sidebar__brexit-text {
-    @extend %govuk-link;
     @include govuk-font(16);
 
     margin-top: 0;
@@ -38,6 +36,8 @@ $transition-campaign-dark-blue: #1e1348;
 }
 
 .gem-c-contextual-sidebar__brexit-cta:focus {
+  box-shadow: 0 $govuk-focus-width $govuk-focus-text-colour;
+
   .gem-c-contextual-sidebar__brexit-text {
     text-decoration: none;
   }
