@@ -18,12 +18,12 @@
 <header class="<%= header_classes.join(' ') %>"  role="banner" data-module="govuk-header">
   <div class="govuk-header__container <%= width_class %>">
     <% if search_left %>
-      <div class="govuk-grid-row govuk-!-margin-left-0 govuk-!-margin-right-0">
+      <div class="govuk-grid-row">
         <div class="gem-c-layout-header__logo govuk-grid-column-one-third-from-desktop">
           <%= render "govuk_publishing_components/components/layout_header/header_logo", environment: environment, product_name: product_name %>
         </div>
       </div>
-      <div class="govuk-grid-row govuk-!-margin-left-0 govuk-!-margin-right-0">
+      <div class="govuk-grid-row">
         <div class="govuk-grid-column-full govuk-grid-column-one-third-from-desktop gem-c-layout-header__search">
           <%= render "govuk_publishing_components/components/layout_header/search" %>
         </div>
