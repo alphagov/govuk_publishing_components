@@ -9,11 +9,11 @@
 
 ## Unreleased
 * Tidy up untranslated content and formatting on accordion docs ([PR #1958](https://github.com/alphagov/govuk_publishing_components/pull/1958)) PATCH
+* Add visual regression testing tool Percy ([PR #1013](https://github.com/alphagov/govuk_publishing_components/pull/1013)) PATCH
 
 ## 24.9.1
 
 * Change to the exceptions list for Brexit branding ([PR #2011](https://github.com/alphagov/govuk_publishing_components/pull/2011))
-
 
 ## 24.9.0
 
