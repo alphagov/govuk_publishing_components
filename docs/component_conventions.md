@@ -2,7 +2,7 @@
 
 ## Namespacing
 
-All components must use the `.app-` namespace with the `c` prefix. The `c` is for component. For example, `.app-c-banner`.
+All components must use a namespace with a `c` as part of the namespace -- the `c` is for component. For example `.app-c-banner`.
 
 Do not use the `.govuk-` namespace.
 
@@ -74,7 +74,7 @@ The `.yml` file must have:
 | accessibility_criteria | Required | A govspeak markdown block listing the [accessibility acceptance criteria](accessibility_acceptance_criteria.md) this component must meet to be accessible |
 | examples | Required | Each block represents an example and each example is listed in the component guide. Examples must cover all expected use cases. |
 
-### Example yaml file
+### Example YAML file
 
 ```yaml
 name: Name of component
@@ -103,10 +103,9 @@ examples:
       some_parameter: 'A different parameter value'
 ```
 
-#### Yaml configuration for a component which accepts a block
+#### YAML configuration for a component which accepts a block
 
-Some components can accept a block as an argument.
-eg.
+Some components can accept a block as an argument:
 
 ```ruby
 <%= render "my-accepts-block-component", { param: value }, do %>
@@ -114,7 +113,7 @@ eg.
 <% end %>
 ```
 
-To configure the block in the component yaml file you should specify
+To configure the block in the component YAML file you should specify
 a `block` key in the example data:
 
 ```yaml
@@ -126,19 +125,16 @@ examples:
         <span>Some text</span>
 ```
 
-#### Yaml configuration for components that need contextual HTML
+#### YAML configuration for components that need contextual HTML
 
-If a component is only visible, or behaves differently, in a certain context
-the examples for it can be embedded within HTML using the embed option.
-eg.
+If a component is only visible, or behaves differently, in a certain context the examples for it can be embedded within HTML using the embed option:
 
 ```ruby
 <button class="trigger-for-component">Click me</button>
 <%= render "my-hidden-by-default-component", { param: value } %>
 ```
 
-To configure a HTML embed in the component yaml file you can specify `embed` at
-the root or individual examples:
+To configure a HTML embed in the component YAML file you can specify `embed` at the root or individual examples:
 
 ```yaml
 embed: |
@@ -192,6 +188,19 @@ The component guide will wrap a `dark_background` context example with a `dark-b
 
 With the exception of namespaces, follow the [GOV.UK Frontend CSS conventions](https://github.com/alphagov/govuk-frontend/blob/master/docs/contributing/coding-standards/css.md), which describes in more detail our approach to namespaces, linting and BEM (block, element, modifier) CSS naming methodology.
 
+Components can rely on classes from GOV.UK Frontend to allow for modification that build on top of the styles from the Design System. This follows the [recommendations for extending](https://design-system.service.gov.uk/get-started/extending-and-modifying-components/#small-modifications-to-components) from the Design System guide.
+
+For example, extending the button from GOV.UK Frontend could be done like so:
+
+```html
+<button class="govuk-button gem-c-button--inverse">
+  Inverse button
+</button>
+```
+
+This makes it clear what the base component is, what the modifier is, and where the modifications are coming from.
+
+
 ### BEM
 `.block {}`
 
@@ -203,7 +212,7 @@ With the exception of namespaces, follow the [GOV.UK Frontend CSS conventions](h
 
 All CSS selectors should follow the BEM naming convention shown above, explained in [more detail here](https://github.com/alphagov/govuk-frontend/blob/master/docs/contributing/coding-standards/css.md#block-element-modifier-bem).
 
-Note: to avoid long and complicated class names, we follow the [BEM guidance](http://getbem.com/faq/#css-nested-elements) that classes do not have to reflect the nested nature of the DOM. We also try to avoid nesting classes too deeply, so that styles can be overridden more easily if needed.
+Note: to avoid long and complicated class names, we follow the [BEM guidance](http://getbem.com/faq/#css-nested-elements) that classes do not have to reflect the nested nature of the DOM. We also try to avoid nesting classes too deeply so that styles can be overridden if needed.
 
 ```scss
   // Avoid this:
@@ -229,6 +238,7 @@ New components should be built with a bottom margin and no top margin.
 A standard for options to control this spacing has [not been decided upon yet](https://github.com/alphagov/govuk_publishing_components/pull/292), although it is likely we will adopt something using the [Design System spacing](https://design-system.service.gov.uk/styles/spacing/).
 
 ### Linting
+
 All stylesheets must be linted according to [the style rules](https://github.com/alphagov/govuk-lint/blob/master/configs/scss_lint/gds-sass-styleguide.yml) in [govuk-lint](https://github.com/alphagov/govuk-lint).
 
 ```
@@ -268,7 +278,7 @@ Any code needed by a component that is more complex than basic parameter initial
 
 Code can be called and referred to in the template as follows:
 
-```
+```erb
 <%
   card_helper = GovukPublishingComponents::Presenters::ImageCardHelper.new(local_assigns)
 %>
@@ -280,11 +290,12 @@ Code can be called and referred to in the template as follows:
 
 There is also a [shared helper](https://github.com/alphagov/govuk_publishing_components/blob/master/lib/govuk_publishing_components/presenters/shared_helper.rb) that can provide common functionality to all components. This includes a margin bottom option and a heading level option. See components that use the shared helper for [examples of usage](https://github.com/alphagov/govuk_publishing_components/blob/master/app/views/govuk_publishing_components/components/_heading.html.erb).
 
-```
+```erb
 shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 ```
 
 ## Passing HTML to a component
+
 Avoid marking HTML as safe within components, this means avoiding use of `raw` or `html_safe` within a component's view.
 
 By doing this we can avoid the risk of a Cross Site Scripting (XSS) attack.
@@ -320,8 +331,7 @@ Do:
 
 If you have multiple slots where HTML may go, you could consider passing them as parameters.
 
-Note: If you can avoid a requirement for HTML this may be better. In the following example you may consider
-`title: { level: 1, text: 'Application complete' }`.
+Note: If you can avoid a requirement for HTML this may be better. In the following example you may consider `title: { level: 1, text: 'Application complete' }`.
 
 Do not:
 
