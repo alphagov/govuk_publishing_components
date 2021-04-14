@@ -25,14 +25,14 @@
   },
   "dependencies": {
     "axe-core": "^3.5.4",
-    "govuk-frontend": "^3.11.0",
+    "govuk-frontend": "alphagov/govuk-frontend#e7ad30d0",
     "jquery": "1.12.4",
     "sortablejs": "^1.13.0"
   },
   "devDependencies": {
+    "@percy/agent": "^0.9.0",
     "standardx": "^7.0.0",
     "stylelint": "^13.8.0",
-    "stylelint-config-gds": "^0.1.0",
-    "@percy/agent": "^0.9.0"
+    "stylelint-config-gds": "^0.1.0"
   }
 }

@@ -2144,10 +2144,9 @@ gonzales-pe@^4.3.0:
   dependencies:
     minimist "^1.2.5"
 
-govuk-frontend@^3.11.0:
+govuk-frontend@alphagov/govuk-frontend#e7ad30d0:
   version "3.11.0"
-  resolved "https://registry.yarnpkg.com/govuk-frontend/-/govuk-frontend-3.11.0.tgz#5bc38629ec8b290220c2c389dcd664114a045db1"
-  integrity sha512-1hW/3etYBtKPM+PNdWVOijvWVI3mpYL8eb7WLTtlh/Qxf2mCp6LkCsZk9I034n4EJBYQ5jlUWsUlTOOIypftpg==
+  resolved "https://codeload.github.com/alphagov/govuk-frontend/tar.gz/e7ad30d0ad72bee645e9aa4f85055a3f15f7a4bc"
 
 graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0:
   version "4.2.6"
