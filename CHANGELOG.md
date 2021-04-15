@@ -7,10 +7,11 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 24.9.2
+
 * Tidy up untranslated content and formatting on accordion docs ([PR #1958](https://github.com/alphagov/govuk_publishing_components/pull/1958)) PATCH
 * Add visual regression testing tool Percy ([PR #1013](https://github.com/alphagov/govuk_publishing_components/pull/1013)) PATCH
-* Remove @extend from component Sass ([PR #2002](https://github.com/alphagov/govuk_publishing_components/pull/2002)) PATCH
+* Remove `@extend` from component Sass ([PR #2002](https://github.com/alphagov/govuk_publishing_components/pull/2002)) PATCH
 * Remove grid overrides in layout-header ([PR #2013](https://github.com/alphagov/govuk_publishing_components/pull/2013)) PATCH
 
 ## 24.9.1
