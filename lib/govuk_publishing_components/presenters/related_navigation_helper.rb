@@ -67,7 +67,6 @@ module GovukPublishingComponents
 
       def section_css_class(css_class, section_title, link: {}, link_is_inline: false)
         css_classes = [css_class]
-        css_classes << "govuk-link"
         css_classes << "#{css_class}--#{@context}" unless @context.nil?
         css_classes << "#{css_class}--inline" if link_is_inline
 
