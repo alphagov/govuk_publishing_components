@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Remove govuk-link class from headings ([PR #2020](https://github.com/alphagov/govuk_publishing_components/pull/2020))
 * Change wording of report a problem button on feedback component ([PR #2021](https://github.com/alphagov/govuk_publishing_components/pull/2021))
 
 ## 24.9.2
