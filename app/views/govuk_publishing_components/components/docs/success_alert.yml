@@ -24,6 +24,11 @@ examples:
     data:
       message: Message to alert the user to a successful action goes here
       title_id: my-custom-success-id
+  with_styled_link:
+    description: If you need to include a link in your success alert, you need to specify the `govuk-link` and `govuk-notification-banner__link` classes on that link element. This is in line with Design System guidance that the colour of the link in success notification banners can look jarring if any links are a different colour to the principal colour used by the success banner.
+    data:
+      message: Message to alert the user to a successful action goes here
+      description: <p class="govuk-body">A further description with <a href="/a-cool-page" class="govuk-link govuk-notification-banner__link">a link</a></p>
   long_example:
     data:
       message: |
