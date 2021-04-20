@@ -15,7 +15,7 @@ describe "Feedback", type: :view do
   it "asks the user if there is anything wrong with the page without javascript enabled" do
     render_component({})
 
-    assert_select ".gem-c-feedback .gem-c-feedback__prompt-link.js-something-is-wrong", text: "There is something wrong with this page"
+    assert_select ".gem-c-feedback .gem-c-feedback__prompt-link.js-something-is-wrong", text: "Report a problem with this page"
   end
 
   it "has required email survey signup form fields" do

@@ -50,7 +50,7 @@ en:
       is_useful: "this page is useful"
       is_not_useful: "this page is not useful"
       thank_you_for_feedback: "Thank you for your feedback"
-      something_wrong: "There is something wrong with this page"
+      something_wrong: "Report a problem with this page"
       close: "Close"
       help_us_improve_govuk: "Help us improve GOV.UK"
       more_about_visit: "To help us improve GOV.UK, we’d like to know more about your visit today. We’ll send you a link to a feedback form. It will take only 2 minutes to fill in. Don’t worry we won’t send you spam or share your email address with anyone."
