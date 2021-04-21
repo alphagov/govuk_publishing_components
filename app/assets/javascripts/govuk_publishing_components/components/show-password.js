@@ -41,6 +41,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.wrapper.insertBefore(this.statusText, this.showHide.nextSibling)
 
     this.showHide.addEventListener('click', this.$module.togglePassword)
+    this.moveDataAttributesToButton()
 
     this.parentForm = this.input.form
     var disableFormSubmitCheck = this.$module.getAttribute('data-disable-form-submit-check')
@@ -63,6 +64,17 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.showHide.setAttribute('aria-label', this.showPasswordFullText)
     this.statusText.innerHTML = this.hiddenPassword
     this.input.setAttribute('type', 'password')
+  }
+
+  ShowPassword.prototype.moveDataAttributesToButton = function () {
+    var attrs = this.input.attributes
+    for (var i = attrs.length; i >= 0; i--) {
+      var attr = attrs[i]
+      if (attr && /^data-button/.test(attr.name)) {
+        this.showHide.setAttribute(attr.name.replace('-button', ''), attr.value)
+        this.input.removeAttribute(attr.name)
+      }
+    }
   }
 
   Modules.ShowPassword = ShowPassword
