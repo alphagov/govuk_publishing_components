@@ -14,28 +14,8 @@
 <%= link_to link_path,
     class: "govuk-link gem-c-contextual-sidebar__brexit-cta",
     data: data_attributes,
-    aria: { label: "#{t("components.related_navigation.take_action_list.aria_label")} #{link_text}" },
+    aria: { label: "#{t("components.related_navigation.transition.aria_label")}" },
     lang: shared_helper.t_locale("components.related_navigation.transition.title") do %>
   <h2 class="gem-c-contextual-sidebar__brexit-heading govuk-heading-s"><%= t("components.related_navigation.transition.title") %></h2>
-  <ul class="govuk-list gem-c-contextual-sidebar__take-action-traffic-lights">
-    <li>
-      <%= image_tag 'govuk_publishing_components/take-action-red.svg', class: "gem-c-contextual-sidebar__take-action-traffic-lists-icon", alt: "" %>
-      <span class="gem-c-contextual-sidebar__take-action-traffic-lists-text">
-        <%= t("components.related_navigation.take_action_list.red") %>
-      </span>
-    </li>
-    <li>
-      <%= image_tag 'govuk_publishing_components/take-action-amber.svg', class: "gem-c-contextual-sidebar__take-action-traffic-lists-icon", alt: "" %>
-      <span class="gem-c-contextual-sidebar__take-action-traffic-lists-text">
-        <%= t("components.related_navigation.take_action_list.amber") %>
-      </span>
-    </li>
-    <li>
-      <%= image_tag 'govuk_publishing_components/take-action-green.svg', class: "gem-c-contextual-sidebar__take-action-traffic-lists-icon", alt: "" %>
-      <span class="gem-c-contextual-sidebar__take-action-traffic-lists-text">
-        <%= t("components.related_navigation.take_action_list.green") %>
-      </span>
-    </li>
-  </ul>
   <p class="gem-c-contextual-sidebar__brexit-text"><%= link_text %></p>
 <% end %>
