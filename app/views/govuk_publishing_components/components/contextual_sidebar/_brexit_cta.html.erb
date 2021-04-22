@@ -11,11 +11,13 @@
   "track-dimension-index": "29",
 } %>
 
-<%= link_to link_path,
-    class: "govuk-link gem-c-contextual-sidebar__brexit-cta",
-    data: data_attributes,
-    aria: { label: "#{t("components.related_navigation.transition.aria_label")}" },
-    lang: shared_helper.t_locale("components.related_navigation.transition.title") do %>
-  <h2 class="gem-c-contextual-sidebar__brexit-heading govuk-heading-s"><%= t("components.related_navigation.transition.title") %></h2>
-  <p class="gem-c-contextual-sidebar__brexit-text"><%= link_text %></p>
+<%= tag.div class: "gem-c-contextual-sidebar__brexit-cta" do %>
+  <%= tag.h2 t("components.related_navigation.transition.title"), class: "gem-c-contextual-sidebar__brexit-heading govuk-heading-s" %>
+  <%= tag.p class: "gem-c-contextual-sidebar__brexit-text govuk-body" do %>
+    <%= link_to link_text,
+      link_path,
+      class: "govuk-link",
+      data: data_attributes,
+      lang: shared_helper.t_locale("components.related_navigation.transition.title") %>
+  <% end %>
 <% end %>
