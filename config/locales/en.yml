@@ -88,7 +88,6 @@ en:
         title: "Brexit"
         link_path: "/transition"
         link_text: "Check what you need to do"
-        aria_label: "Brexit. Check what you need to do."
     related_footer_navigation:
       collections: "Collections"
       policies: "Policies"

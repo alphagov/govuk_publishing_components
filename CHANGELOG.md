@@ -12,6 +12,7 @@
 * Remove govuk-link class from headings ([PR #2020](https://github.com/alphagov/govuk_publishing_components/pull/2020))
 * Change wording of report a problem button on feedback component ([PR #2021](https://github.com/alphagov/govuk_publishing_components/pull/2021))
 * Remove traffic light indicators from Brexit nav ([#PR2024](https://github.com/alphagov/govuk_publishing_components/pull/2024))
+* Convert Brexit CTA into a standard link ([#PR2026](https://github.com/alphagov/govuk_publishing_components/pull/2026))
 
 ## 24.9.2
 
