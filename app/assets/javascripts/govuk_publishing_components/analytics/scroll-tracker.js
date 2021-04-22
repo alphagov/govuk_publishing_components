@@ -433,6 +433,13 @@
       ['Percent', 60],
       ['Percent', 80],
       ['Percent', 100]
+    ],
+    '/get-coronavirus-test': [
+      ['Percent', 20],
+      ['Percent', 40],
+      ['Percent', 60],
+      ['Percent', 80],
+      ['Percent', 100]
     ]
   }
 
