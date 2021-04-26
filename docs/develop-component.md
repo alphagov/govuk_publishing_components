@@ -42,7 +42,11 @@ For an example of this check [test/.../docs/test-component-with-duplicate-ids.ym
 
 ## Visual regression testing
 
-The component guide includes a visual diff tool that should make it easier to spot when you are introducing visual regressions in your components.
+Visual regression tests are run on each pull request using a third-party tool called [Percy](https://percy.io). This isn't a mandatory check, so any changes that are highlighted by Percy won't prevent a pull request from being merged in.
+
+The screenshots are public, so they can be checked without logging in. A BrowserStack account is needed to approve or reject any changes. It's the responsibility of the person reviewing the pull request code to approve any visual changes that Percy highlights.
+
+The component guide also includes a visual diff tool that should make it easier to spot when you are introducing visual regressions in your components.
 
 It can be run on a locally running version of the component guide, to compare it to the heroku master deploy. For example: [government-frontend.dev.gov.uk/component-guide](http://government-frontend.dev.gov.uk/component-guide) will be compared to [government-frontend.herokuapp.com/component-guide](https://government-frontend.herokuapp.com/component-guide).
 
