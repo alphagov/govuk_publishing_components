@@ -44,7 +44,7 @@ For an example of this check [test/.../docs/test-component-with-duplicate-ids.ym
 
 Visual regression tests are run on each pull request using a third-party tool called [Percy](https://percy.io). This isn't a mandatory check, so any changes that are highlighted by Percy won't prevent a pull request from being merged in.
 
-The screenshots are public, so they can be checked without logging in. A BrowserStack account is needed to approve or reject any changes.
+The screenshots are public, so they can be checked without logging in. A BrowserStack account is needed to approve or reject any changes. It's the responsibility of the person reviewing the pull request code to approve any visual changes that Percy highlights.
 
 The component guide also includes a visual diff tool that should make it easier to spot when you are introducing visual regressions in your components.
 
