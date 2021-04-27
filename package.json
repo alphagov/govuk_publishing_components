@@ -33,6 +33,6 @@
     "standardx": "^7.0.0",
     "stylelint": "^13.8.0",
     "stylelint-config-gds": "^0.1.0",
-    "@percy/agent": "^0.9.0"
+    "@percy/agent": "^0.28.6"
   }
 }
