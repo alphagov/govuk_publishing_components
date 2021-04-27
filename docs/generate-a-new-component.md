@@ -28,4 +28,4 @@ In addition, components in the gem can have helper files. Helper files go in `li
 
 ## Option 3: create a component in Static (don't)
 
-This is deprecated, don't add anymore components to Static.
+This is deprecated, don't add any more components to Static.
