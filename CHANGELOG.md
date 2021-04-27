@@ -11,6 +11,8 @@
 ## Unreleased
 
 * Update documentation about component conventions and visual regression testing ([PR #2015](https://github.com/alphagov/govuk_publishing_components/pull/2015))
+* Remove `@extend` from notice component styles ([PR #2030])(https://github.com/alphagov/govuk_publishing_components/pull/2030)
+
 ## 24.9.4
 
 * Set up scroll tracking for the PCR test start page ([PR #2028](https://github.com/alphagov/govuk_publishing_components/pull/2028))

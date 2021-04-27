@@ -6,7 +6,7 @@
   clear: both;
   border: $govuk-border-width solid govuk-colour("blue");
 
-  .govuk-govspeak, {
+  .govuk-govspeak {
     p:last-child {
       margin-bottom: 0;
     }
@@ -27,7 +27,9 @@
   }
 
   a {
-    @extend %govuk-link;
+    @include govuk-link-common;
+    @include govuk-link-style-default;
+    @include govuk-link-print-friendly;
   }
 }
 
