@@ -15,12 +15,12 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
 
 @mixin step-nav-line-position {
   left: 0;
-  margin-left: em(($number-circle-size / 2) - ($stroke-width / 2), 16);
+  margin-left: govuk-em(($number-circle-size / 2) - ($stroke-width / 2), 16);
 }
 
 @mixin step-nav-line-position-large {
   left: 0;
-  margin-left: em(($number-circle-size-large / 2) - ($stroke-width / 2), 16);
+  margin-left: govuk-em(($number-circle-size-large / 2) - ($stroke-width / 2), 16);
 }
 
 // custom mixin as govuk-font does undesirable things at different breakpoints
@@ -136,10 +136,10 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
 .gem-c-step-nav__chevron {
   display: inline-block;
   vertical-align: middle;
-  margin-left: em(5, 14);
+  margin-left: govuk-em(5, 14);
 
   .gem-c-step-nav--large & {
-    margin-left: em(5, 16);
+    margin-left: govuk-em(5, 16);
   }
 
   svg {
@@ -150,18 +150,18 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
 .gem-c-step-nav__button-text {
   display: inline-block;
   text-align: left;
-  min-width: em(35, 14);
+  min-width: govuk-em(35, 14);
 
   .gem-c-step-nav--large & {
-    min-width: em(40, 16);
+    min-width: govuk-em(40, 16);
   }
 }
 
 .gem-c-step-nav__button-text--all {
-  min-width: em(87, 14);
+  min-width: govuk-em(87, 14);
 
   .gem-c-step-nav--large & {
-    min-width: em(100, 16);
+    min-width: govuk-em(100, 16);
   }
 }
 
@@ -172,23 +172,23 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
 
 .gem-c-step-nav__step {
   position: relative;
-  padding-left: em(govuk-spacing(6) + govuk-spacing(3), 16);
+  padding-left: govuk-em(govuk-spacing(6) + govuk-spacing(3), 16);
   list-style: none;
 
   // line down the side of a step
   &:after {
     @include step-nav-vertical-line;
     @include step-nav-line-position;
-    top: em(govuk-spacing(3), 16);
+    top: govuk-em(govuk-spacing(3), 16);
   }
 
   .gem-c-step-nav--large & {
     @include govuk-media-query($from: tablet) {
-      padding-left: em(govuk-spacing(9), 16);
+      padding-left: govuk-em(govuk-spacing(9), 16);
 
       &:after { // stylelint-disable-line max-nesting-depth
         @include step-nav-line-position-large;
-        top: em(govuk-spacing(6), 16);
+        top: govuk-em(govuk-spacing(6), 16);
       }
     }
   }
@@ -246,8 +246,8 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
   z-index: 5;
   top: 3px;
   left: 0;
-  width: em($number-circle-size, 16);
-  height: em($number-circle-size, 16);
+  width: govuk-em($number-circle-size, 16);
+  height: govuk-em($number-circle-size, 16);
   color: govuk-colour("black");
   background: govuk-colour("white");
   border-radius: 100px;
@@ -256,8 +256,8 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
   .gem-c-step-nav--large & {
     @include govuk-media-query($from: tablet) {
       top: 11px;
-      width: em($number-circle-size-large, 19);
-      height: em($number-circle-size-large, 19);
+      width: govuk-em($number-circle-size-large, 19);
+      height: govuk-em($number-circle-size-large, 19);
     }
   }
 }
@@ -283,15 +283,15 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
 .gem-c-step-nav__circle--logic {
   @include step-nav-font(19, $weight: bold, $line-height: 28px);
   left: 3px;
-  width: em($number-circle-size, 19);
-  height: em($number-circle-size, 19);
+  width: govuk-em($number-circle-size, 19);
+  height: govuk-em($number-circle-size, 19);
 
   .gem-c-step-nav--large & {
     @include step-nav-font(19, $tablet-size: 24, $weight: bold, $line-height: 28px, $tablet-line-height: 34px);
 
     @include govuk-media-query($from: tablet) {
-      width: em($number-circle-size-large, 24);
-      height: em($number-circle-size-large, 24);
+      width: govuk-em($number-circle-size-large, 24);
+      height: govuk-em($number-circle-size-large, 24);
     }
   }
 }
