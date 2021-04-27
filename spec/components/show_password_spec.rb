@@ -50,4 +50,18 @@ describe "Show password", type: :view do
 
     assert_select(".gem-c-input[autocomplete='off']")
   end
+
+  it "renders with data attributes" do
+    render_component(
+      label: {
+        text: "Your password",
+      },
+      data: {
+        track_action: "action",
+        track_label: "label",
+      },
+    )
+
+    assert_select(".gem-c-input[data-track-action='action'][data-track-label='label']")
+  end
 end
