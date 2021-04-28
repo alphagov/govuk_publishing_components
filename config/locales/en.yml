@@ -44,8 +44,8 @@ en:
       contents: "Contents"
     feedback:
       is_this_page_useful: "Is this page useful?"
-      yes: "Yes"
-      no: "No"
+      "yes": "Yes"
+      "no": "No"
       maybe: "Maybe"
       is_useful: "this page is useful"
       is_not_useful: "this page is not useful"
