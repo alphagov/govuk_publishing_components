@@ -65,7 +65,6 @@ en:
       show_button: "Show search"
       hide_button: "Hide search"
       top_level: "Top level"
-      nav_items_aria_label: "Show or hide Top Level Navigation"
       menu: "Menu"
     organisation_schema:
       all_content_search_description: "Find all content from %{organisation}"
