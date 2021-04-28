@@ -326,8 +326,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   // Adding an event listener to all anchor link a tags in an accordion is risky but we circumvent this risk partially by only being a layer of accordion behaviour instead of any sort of change to link behaviour
   GemAccordion.prototype.addEventListenersForAnchors = function () {
     var links = this.$module.querySelectorAll('.' + this.sectionInnerContent + ' a[href*="#"]')
-
-    links.forEach(function (link) {
+    nodeListForEach(links, function (link) {
       if (link.pathname === window.location.pathname) {
         link.addEventListener('click', this.openForAnchor.bind(this, link.hash.split('#')[1]))
       }
