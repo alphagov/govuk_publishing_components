@@ -13,8 +13,8 @@
        class="gem-c-metadata__definition-link"
        data-controls="toggle-<%= toggle_id %>"
        data-expanded="false"
-       data-toggled-text="<%= t("govuk_component.metadata.toggle_less", default: "Show fewer") %>">
-        <%= t("govuk_component.metadata.toggle_more", number: remaining.length, default: "+ #{remaining.length} more") %>
+       data-toggled-text="<%= t("components.metadata.toggle_less", default: "Show fewer") %>">
+        <%= t("components.metadata.toggle_more", number: remaining.length, default: "+ #{remaining.length} more") %>
     </a>
   </div>
   <span id="toggle-<%= toggle_id %>" class="gem-c-metadata__toggle-items js-hidden"><%= remaining.to_sentence.html_safe %></span>

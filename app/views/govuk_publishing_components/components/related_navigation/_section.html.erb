@@ -54,8 +54,8 @@
           class="gem-c-related-navigation__toggle"
           data-controls="toggle_<%= section_title %>"
           data-expanded="false"
-          data-toggled-text="<%= t("govuk_component.metadata.toggle_less", default: "Show fewer") %>">
-          <%= t("govuk_component.metadata.toggle_more",
+          data-toggled-text="<%= t("components.metadata.toggle_less", default: "Show fewer") %>">
+          <%= t("components.metadata.toggle_more",
                 number: related_nav_helper.remaining_link_count(links),
                 default: "+ #{related_nav_helper.remaining_link_count(links)} more") %>
         </a>
