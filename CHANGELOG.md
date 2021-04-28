@@ -8,7 +8,7 @@
   of the commit log.
 
 
-## Unreleased
+## 24.10.0
 
 * Resolve IE11 accordion gem doc duplication ([PR #2036](https://github.com/alphagov/govuk_publishing_components/pull/2036))
 * Add data attributes to show password component ([PR #2025](https://github.com/alphagov/govuk_publishing_components/pull/2025))
