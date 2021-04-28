@@ -5,10 +5,12 @@ require_relative "support/components_helper"
 require "gds_api/test_helpers/content_store"
 require "faker"
 
-require "i18n/coverage"
-require "i18n/coverage/printers/file_printer"
-I18n::Coverage.config.printer = I18n::Coverage::Printers::FilePrinter
-I18n::Coverage.start
+if ENV["USE_I18N_COVERAGE"]
+  require "i18n/coverage"
+  require "i18n/coverage/printers/file_printer"
+  I18n::Coverage.config.printer = I18n::Coverage::Printers::FilePrinter
+  I18n::Coverage.start
+end
 
 WebMock.disable_net_connect!(allow_localhost: true)
 
