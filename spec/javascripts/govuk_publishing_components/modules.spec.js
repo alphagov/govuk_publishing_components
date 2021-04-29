@@ -108,6 +108,20 @@ describe('GOVUK Modules', function () {
       }
       GOVUK.Modules.TestAlertPublishingAndFrontendModule = TestAlertPublishingAndFrontendModule
 
+      // GOV.UK Frontend Module that depends on cookies to start and delays
+      function TestCookieDependencyModule (element) {
+        this.element = element
+      }
+      TestCookieDependencyModule.prototype.init = function () {
+        this.startModule = this.startModule.bind(this)
+        window.addEventListener('cookie-consent', this.startModule)
+      }
+      TestCookieDependencyModule.prototype.startModule = function () {
+        window.removeEventListener('cookie-consent', this.startModule)
+        callbackFrontendModule(this.element)
+      }
+      GOVUK.Modules.TestCookieDependencyModule = TestCookieDependencyModule
+
       container = $('<div></div>')
     })
 
@@ -117,6 +131,7 @@ describe('GOVUK Modules', function () {
       delete GOVUK.Modules.TestAlertFrontendModule
       delete GOVUK.Modules.GovukTestAlertPublishingAndFrontendModule
       delete GOVUK.Modules.TestAlertPublishingAndFrontendModule
+      delete GOVUK.Modules.TestCookieDependencyModule
 
       container.remove()
     })
@@ -169,6 +184,30 @@ describe('GOVUK Modules', function () {
       expect(callbackGovukModule.calls.count()).toBe(2)
       expect(callbackFrontendModule.calls.count()).toBe(2)
       modules.remove()
+    })
+
+    it('starts delayed modules once cookies have been consented', function () {
+      var module = $('<div data-module="test-cookie-dependency-module"></div>')
+      container.append(module)
+      $('body').append(container)
+
+      GOVUK.modules.start(container)
+      expect(callbackFrontendModule.calls.count()).toBe(0)
+      window.GOVUK.triggerEvent(window, 'cookie-consent')
+      expect(callbackFrontendModule.calls.count()).toBe(1)
+    })
+
+    it('starts multiple delayed modules once cookies have been consented', function () {
+      var module1 = $('<div data-module="test-cookie-dependency-module"></div>')
+      var module2 = $('<div data-module="test-cookie-dependency-module"></div>')
+      container.append(module1)
+      container.append(module2)
+      $('body').append(container)
+
+      GOVUK.modules.start(container)
+      expect(callbackFrontendModule.calls.count()).toBe(0)
+      window.GOVUK.triggerEvent(window, 'cookie-consent')
+      expect(callbackFrontendModule.calls.count()).toBe(2)
     })
   })
 })

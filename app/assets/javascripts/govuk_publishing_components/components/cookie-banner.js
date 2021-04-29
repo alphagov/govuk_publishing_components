@@ -88,6 +88,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     if (window.GOVUK.globalBarInit) {
       window.GOVUK.globalBarInit.init()
     }
+    window.GOVUK.triggerEvent(window, 'cookie-consent')
   }
 
   CookieBanner.prototype.rejectCookieConsent = function () {

@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Allow modules to start after cookie consent ([PR #2041](https://github.com/alphagov/govuk_publishing_components/pull/2041))
 * Fix travel advice pages to use parent breadcrumbs ([PR #2050](https://github.com/alphagov/govuk_publishing_components/pull/2050))
 * Refactor heading logic in radio component ([PR #2051](https://github.com/alphagov/govuk_publishing_components/pull/2051))
 
