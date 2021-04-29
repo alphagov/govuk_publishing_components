@@ -7,6 +7,8 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unpublished
+* Remove unused i18n keys ([PR #2038](https://github.com/alphagov/govuk_publishing_components/pull/2038))
 
 ## 24.10.0
 
@@ -15,7 +17,6 @@
 * Update documentation about component conventions and visual regression testing ([PR #2015](https://github.com/alphagov/govuk_publishing_components/pull/2015))
 * Remove `@extend` from notice component styles ([PR #2030](https://github.com/alphagov/govuk_publishing_components/pull/2030))
 * Swap out Sass `em()` function for `govuk-em()` ([PR #2034](https://github.com/alphagov/govuk_publishing_components/pull/2034))
-* Remove unused i18n keys ([PR #2038](https://github.com/alphagov/govuk_publishing_components/pull/2038))
 
 ## 24.9.4
 
