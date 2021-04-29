@@ -44,8 +44,8 @@ en:
       contents: "Contents"
     feedback:
       is_this_page_useful: "Is this page useful?"
-      yes: "Yes"
-      no: "No"
+      "yes": "Yes"
+      "no": "No"
       maybe: "Maybe"
       is_useful: "this page is useful"
       is_not_useful: "this page is not useful"
@@ -65,7 +65,6 @@ en:
       show_button: "Show search"
       hide_button: "Hide search"
       top_level: "Top level"
-      nav_items_aria_label: "Show or hide Top Level Navigation"
       menu: "Menu"
     organisation_schema:
       all_content_search_description: "Find all content from %{organisation}"

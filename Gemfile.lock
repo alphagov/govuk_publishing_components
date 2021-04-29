@@ -135,6 +135,7 @@ GEM
       domain_name (~> 0.5)
     i18n (1.8.9)
       concurrent-ruby (~> 1.0)
+    i18n-coverage (0.2.0)
     jasmine (3.7.0)
       jasmine-core (~> 3.7.0)
       phantomjs
@@ -337,6 +338,7 @@ DEPENDENCIES
   govuk_publishing_components!
   govuk_schemas (~> 4.0)
   govuk_test (~> 2)
+  i18n-coverage
   jasmine (~> 3.7.0)
   jasmine_selenium_runner (~> 3.0.0)
   percy-capybara (~> 4.0, >= 4.0.2)
