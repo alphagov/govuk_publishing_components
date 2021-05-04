@@ -201,20 +201,20 @@ describe "Metadata", type: :view do
   end
 
   def assert_truncation(length, limit)
-    assert_select "span", count: 1
-    assert_select "dd > a", count: limit
-    assert_select "dd span a", count: length - limit
+    assert_select ".gem-c-metadata__toggle-items", count: 1
+    assert_select ".gem-c-metadata__definition > a", count: limit
+    assert_select ".gem-c-metadata__definition .gem-c-metadata__toggle-items a", count: length - limit
     assert_select "a[href=\"#\"]", text: "+ #{length - limit} more"
   end
 
   def assert_no_truncation(length)
-    assert_select "dd > a", count: length
-    assert_select "span", count: 0
+    assert_select ".gem-c-metadata__definition > a", count: length
+    assert_select ".gem-c-metadata__toggle-items", count: 0
   end
 
   def assert_definition(term, definition)
-    assert_select "dt", text: term
-    assert_select "dd", text: definition
+    assert_select ".gem-c-metadata__term", text: term
+    assert_select ".gem-c-metadata__definition", text: definition
   end
 
   def assert_link_with_text_in(selector, link, text)
