@@ -10,7 +10,7 @@
 
 ## Unreleased
 
-* Update postcode regex for PII stripping
+* Update postcode regex for PII stripping ([PR #2043](https://github.com/alphagov/govuk_publishing_components/pull/2043))
 
 ## 24.10.0
 
