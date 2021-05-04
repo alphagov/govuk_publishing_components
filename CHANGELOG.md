@@ -10,6 +10,10 @@
 ## Unpublished
 * Remove unused i18n keys ([PR #2038](https://github.com/alphagov/govuk_publishing_components/pull/2038))
 
+## Unreleased
+
+* Update postcode regex for PII stripping ([PR #2043](https://github.com/alphagov/govuk_publishing_components/pull/2043))
+
 ## 24.10.0
 
 * Resolve IE11 accordion gem doc duplication ([PR #2036](https://github.com/alphagov/govuk_publishing_components/pull/2036))
