@@ -8,6 +8,10 @@
   of the commit log.
 
 
+## Unreleased
+
+* Update postcode regex for PII stripping
+
 ## 24.10.0
 
 * Resolve IE11 accordion gem doc duplication ([PR #2036](https://github.com/alphagov/govuk_publishing_components/pull/2036))

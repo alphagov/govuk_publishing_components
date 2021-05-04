@@ -83,13 +83,15 @@ describe('GOVUK.PII', function () {
       var obj = {
         email: 'this is an@email.com address',
         postcode: 'this is a sw1a 1aa postcode',
-        date: 'this is a 2019-01-21 date'
+        date: 'this is a 2019-01-21 date',
+        uuid: 'd6c2de5d-ef90-45d1-82d4-5f2438369eea'
       }
 
       var strippedObj = {
         email: 'this is [email] address',
         postcode: 'this is a [postcode] postcode',
-        date: 'this is a [date] date'
+        date: 'this is a [date] date',
+        uuid: 'd6c2de5d-ef90-45d1-82d4-5f2438369eea'
       }
 
       obj = pii.stripPII(obj)
@@ -122,8 +124,14 @@ describe('GOVUK.PII', function () {
 
     it('observes the meta tag and strips out postcodes', function () {
       expect(pii.stripPostcodePII).toEqual(true)
-      var string = pii.stripPII('this is an@email.com address, this is a sw1a 1aa postcode, this is a long GL194LYX postcode, this is a 2019-01-21 date, this is a p800refund')
-      expect(string).toEqual('this is [email] address, this is a [postcode] postcode, this is a long [postcode] postcode, this is a 2019-01-21 date, this is a p800refund')
+      var string = pii.stripPII('this is an@email.com address, this is a sw1a 1aa postcode, this is a long GL194LYX postcode, this is a 2019-01-21 date, this is a d6c2de5d-ef90-45d1-82d4-5f2438369eea content ID, this is a p800refund')
+      expect(string).toEqual('this is [email] address, this is a [postcode] postcode, this is a long [postcode] postcode, this is a 2019-01-21 date, this is a d6c2de5d-ef90-45d1-82d4-5f2438369eea content ID, this is a p800refund')
+    })
+
+    it('doesn\'t strip out UUIDs in URLs', function () {
+      expect(pii.stripPostcodePII).toEqual(true)
+      var string = pii.stripPII('gov.uk/thing?postcode=sw1a1aa&uuid=d6c2de5d-ef90-45d1-82d4-5f2438369eea')
+      expect(string).toEqual('gov.uk/thing?postcode=[postcode]&uuid=d6c2de5d-ef90-45d1-82d4-5f2438369eea')
     })
   })
 
@@ -167,7 +175,7 @@ describe('GOVUK.PII', function () {
       pii = new GOVUK.Pii()
     })
 
-    it('observes the meta tag and strips out postcodes', function () {
+    it('observes the meta tag and strips out dates', function () {
       expect(pii.stripDatePII).toEqual(true)
       var string = pii.stripPII('this is an@email.com address, this is a sw1a 1aa postcode, this is a 2019-01-21 date')
       expect(string).toEqual('this is [email] address, this is a sw1a 1aa postcode, this is a [date] date')
