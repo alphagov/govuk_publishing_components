@@ -9,6 +9,7 @@
 
 ## Unpublished
 * Remove unused i18n keys ([PR #2038](https://github.com/alphagov/govuk_publishing_components/pull/2038))
+* Add legacy `govspeak` class alongside gem-c-govspeak ([PR #2044](https://github.com/alphagov/govuk_publishing_components/pull/2044))
 
 ## Unreleased
 

@@ -3,41 +3,44 @@
 $highlight-answer-bg-color: govuk-colour("green");
 $highlight-answer-color: govuk-colour("white");
 
-.gem-c-govspeak .highlight-answer {
-  background-color: $highlight-answer-bg-color;
-  color: $highlight-answer-color;
-  text-align: center;
-  padding: 1.75em .75em 1.25em;
-  margin: 0 -1em 1em;
-
-  p {
-    @include govuk-font($size: 24, $weight: bold);
+.govspeak, // Legacy class name that's still used in some content items - needs to be kept until `.govspeak` is removed from the content items.
+.gem-c-govspeak {
+  .highlight-answer {
+    background-color: $highlight-answer-bg-color;
     color: $highlight-answer-color;
-
-    em {
-      @include govuk-font($size: 80, $weight: bold);
-      display: block;
-      padding-top: .1em;
-      color: $highlight-answer-color;
-    }
-  }
-
-  p:last-child {
-    margin-bottom: 0;
-  }
-
-  @include govuk-media-query($until: tablet) {
-    margin: 0 0 1em;
-    @include govuk-font($size: 48);
+    text-align: center;
+    padding: 1.75em .75em 1.25em;
+    margin: 0 -1em 1em;
 
     p {
-      font-size: 1em;
-      line-height: inherit;
+      @include govuk-font($size: 24, $weight: bold);
+      color: $highlight-answer-color;
 
       em {
+        @include govuk-font($size: 80, $weight: bold);
+        display: block;
+        padding-top: .1em;
+        color: $highlight-answer-color;
+      }
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    @include govuk-media-query($until: tablet) {
+      margin: 0 0 1em;
+      @include govuk-font($size: 48);
+
+      p {
         font-size: 1em;
-        padding-top: 0;
-        display: inline;
+        line-height: inherit;
+
+        em {
+          font-size: 1em;
+          padding-top: 0;
+          display: inline;
+        }
       }
     }
   }
