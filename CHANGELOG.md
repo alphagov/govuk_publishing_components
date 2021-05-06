@@ -7,13 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unpublished
+## 24.10.1
 * Remove unused i18n keys ([PR #2038](https://github.com/alphagov/govuk_publishing_components/pull/2038))
-* Add legacy `govspeak` class alongside gem-c-govspeak ([PR #2044](https://github.com/alphagov/govuk_publishing_components/pull/2044))
-
-## Unreleased
-
 * Update postcode regex for PII stripping ([PR #2043](https://github.com/alphagov/govuk_publishing_components/pull/2043))
+* Add legacy `govspeak` class alongside gem-c-govspeak ([PR #2044](https://github.com/alphagov/govuk_publishing_components/pull/2044))
 
 ## 24.10.0
 
