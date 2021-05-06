@@ -50,6 +50,14 @@ en:
       what_doing: What were you doing?
       what_wrong: What went wrong?
       'yes': 'Yes'
+    government_navigation:
+      consultations:
+      departments:
+      get-involved:
+      how-government-works:
+      news_and_communications:
+      statistics:
+      worldwide:
     layout_header:
       hide_button: Hide search
       menu: Menu
@@ -67,6 +75,8 @@ en:
       toggle_more: "+ %{number} more"
     organisation_schema:
       all_content_search_description: Find all content from %{organisation}
+    previous_and_next_navigation:
+      pagination:
     print_link:
       text: Print this page
     radio:
