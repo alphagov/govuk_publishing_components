@@ -34,23 +34,6 @@
       ['Percent', 80],
       ['Percent', 100]
     ],
-    '/guidance/saving-for-retirement-if-youre-aged-16-to-50': [
-      ['Heading', 'Keep track of your State Pension'],
-      ['Heading', 'Consider ways to improve your State Pension'],
-      ['Heading', 'Personal and stakeholder pensions']
-    ],
-    '/guidance/planning-for-retirement-if-youre-aged-50-or-over': [
-      ['Heading', 'Find out your State Pension age'],
-      ['Heading', 'Consider ways to improve your State Pension'],
-      ['Heading', 'Workplace, personal and stakeholder pensions'],
-      ['Heading', 'Personal and stakeholder pensions']
-    ],
-    '/guidance/retirement-planning-for-current-pensioners': [
-      ['Heading', 'If you reached State Pension age before 6 April 2016'],
-      ['Heading', 'Other ways to increase your income in retirement'],
-      ['Heading', 'Further support in retirement'],
-      ['Heading', 'Winter Fuel Payments']
-    ],
     '/government/collections/disability-confident-campaign': [
       ['Heading', 'Become a Disability Confident employer'],
       ['Heading', 'Aims and objectives'],
