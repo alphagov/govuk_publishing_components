@@ -13,20 +13,6 @@
       ['Percent', 80],
       ['Percent', 100]
     ],
-    '/government/publications/coronavirus-outbreak-faqs-what-you-can-and-cant-do/coronavirus-outbreak-faqs-what-you-can-and-cant-do': [
-      ['Percent', 20],
-      ['Percent', 40],
-      ['Percent', 60],
-      ['Percent', 80],
-      ['Percent', 100]
-    ],
-    '/government/publications/coronavirus-covid-19-online-education-resources/coronavirus-covid-19-list-of-online-education-resources-for-home-education': [
-      ['Percent', 20],
-      ['Percent', 40],
-      ['Percent', 60],
-      ['Percent', 80],
-      ['Percent', 100]
-    ],
     '/guidance/coronavirus-covid-19-information-for-the-public': [
       ['Percent', 20],
       ['Percent', 40],
