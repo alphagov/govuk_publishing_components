@@ -1,15 +1,16 @@
+---
 cy:
   common:
-    translations: "Cyfieithiadau"
+    translations: Cyfieithiadau
   components:
-    radio:
-      or: 'neu'
     back_link:
-      back: "Yn ôl"
+      back: Yn ôl
     contents_list:
       contents: Cynnwys
+    radio:
+      or: neu
     related_navigation:
       transition:
-        title: "Brexit"
         link_path: "/transition.cy"
-        link_text: "Gwiriwch beth sydd angen i chi ei wneud"
+        link_text: Gwiriwch beth sydd angen i chi ei wneud
+        title: Brexit
