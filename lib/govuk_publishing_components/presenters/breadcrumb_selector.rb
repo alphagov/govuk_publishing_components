@@ -60,6 +60,11 @@ module GovukPublishingComponents
             step_by_step: false,
             breadcrumbs: navigation.breadcrumbs,
           }
+        elsif navigation.content_is_travel_advice?
+          {
+            step_by_step: false,
+            breadcrumbs: navigation.breadcrumbs,
+          }
         elsif navigation.content_has_a_topic?
           {
             step_by_step: false,

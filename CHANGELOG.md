@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix travel advice pages to use parent breadcrumbs ([PR #2050](https://github.com/alphagov/govuk_publishing_components/pull/2050))
+
 ## 24.10.1
 * Remove unused i18n keys ([PR #2038](https://github.com/alphagov/govuk_publishing_components/pull/2038))
 * Update postcode regex for PII stripping ([PR #2043](https://github.com/alphagov/govuk_publishing_components/pull/2043))

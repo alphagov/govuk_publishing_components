@@ -16,6 +16,10 @@ module GovukPublishingComponents
         content_item["document_type"] == "simple_smart_answer"
       end
 
+      def content_is_travel_advice?
+        content_item["document_type"] == "travel_advice"
+      end
+
       def html_publication_with_parent?
         (content_item["document_type"] == "html_publication") && parent_api_path
       end

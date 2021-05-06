@@ -57,6 +57,12 @@ describe "Contextual navigation" do
     and_the_default_breadcrumbs
   end
 
+  scenario "Foreign travel advice content" do
+    given_theres_a_travel_advice_page
+    and_i_visit_that_page
+    then_i_see_parent_breadcrumbs
+  end
+
   scenario "The page has curated related items" do
     given_theres_a_page_with_related_items
     and_i_visit_that_page
@@ -268,6 +274,16 @@ describe "Contextual navigation" do
       links: {
         "parent" => [top_level_mainstream_browse_page],
         "mainstream_browse_pages" => [example_item("mainstream_browse_page", "root_page")],
+      },
+    )
+  end
+
+  def given_theres_a_travel_advice_page
+    content_store_has_random_item(
+      schema: "travel_advice",
+      links: {
+        "topics" => [topic_item],
+        "parent" => [example_parent_page],
       },
     )
   end
@@ -508,6 +524,13 @@ describe "Contextual navigation" do
     end
   end
 
+  def then_i_see_parent_breadcrumbs
+    within ".gem-c-breadcrumbs" do
+      expect(page).to have_link("Home")
+      expect(page).to have_link(example_parent_page["title"])
+    end
+  end
+
   def and_the_taxonomy_breadcrumbs
     within ".gem-c-breadcrumbs" do
       expect(page).to have_link("Home")
@@ -654,6 +677,10 @@ describe "Contextual navigation" do
       "title" => "Brexit Transition",
       "locale" => "en",
     }
+  end
+
+  def example_parent_page
+    @example_parent_page ||= example_item("answer", "answer")
   end
 
   def top_level_mainstream_browse_page
