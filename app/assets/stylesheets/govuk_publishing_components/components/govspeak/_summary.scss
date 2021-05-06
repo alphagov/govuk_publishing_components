@@ -1,24 +1,27 @@
-.gem-c-govspeak .summary {
-  margin: 0 0 2em;
-  padding: 0;
-  color: $govuk-text-colour;
-
-  p {
-    @include govuk-font($size: 19);
-  }
-
-  @include govuk-media-query($until: tablet) {
+.govspeak, // Legacy class name that's still used in some content items - needs to be kept until `.govspeak` is removed from the content items.
+.gem-c-govspeak {
+  .summary {
     margin: 0 0 2em;
     padding: 0;
-  }
+    color: $govuk-text-colour;
 
-  p,
-  h2 {
-    border: 0;
-    margin: 0 .75em 0 0;
-  }
+    p {
+      @include govuk-font($size: 19);
+    }
 
-  h2 {
-    line-height: 1.35em;
+    @include govuk-media-query($until: tablet) {
+      margin: 0 0 2em;
+      padding: 0;
+    }
+
+    p,
+    h2 {
+      border: 0;
+      margin: 0 .75em 0 0;
+    }
+
+    h2 {
+      line-height: 1.35em;
+    }
   }
 }
