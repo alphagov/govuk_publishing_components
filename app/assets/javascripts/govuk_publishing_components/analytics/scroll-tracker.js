@@ -20,11 +20,6 @@
       ['Percent', 80],
       ['Percent', 100]
     ],
-    '/government/collections/disability-confident-campaign': [
-      ['Heading', 'Become a Disability Confident employer'],
-      ['Heading', 'Aims and objectives'],
-      ['Heading', 'Inclusive communication']
-    ],
     '/government/publications/the-essential-trustee-what-you-need-to-know-cc3/the-essential-trustee-what-you-need-to-know-what-you-need-to-do': [
       ['Heading', '1. About this guidance'],
       ['Heading', '2. Trustees’ duties at a glance'],
