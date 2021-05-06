@@ -41,11 +41,6 @@
       ['Heading', 'When you can claim Universal Credit'],
       ['Heading', 'More detailed advice']
     ],
-    '/openingupwork': [
-      ['Heading', 'How Universal Credit makes work pay'],
-      ['Heading', 'When you can claim Universal Credit'],
-      ['Heading', 'Help and advice']
-    ],
     '/government/publications/spring-budget-2017-documents/spring-budget-2017': [
       ['Heading', '1. Executive summary'],
       ['Heading', '2. Economic context and public finances'],
