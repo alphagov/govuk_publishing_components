@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Fix travel advice pages to use parent breadcrumbs ([PR #2050](https://github.com/alphagov/govuk_publishing_components/pull/2050))
+* Refactor heading logic in radio component ([PR #2051](https://github.com/alphagov/govuk_publishing_components/pull/2051))
 
 ## 24.10.1
 * Remove unused i18n keys ([PR #2038](https://github.com/alphagov/govuk_publishing_components/pull/2038))
