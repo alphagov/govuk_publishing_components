@@ -11,6 +11,9 @@
   small ||= false
   inline ||= false
   is_page_heading ||= false
+  heading_level = is_page_heading ? 'h1' : shared_helper.get_heading_level
+  heading_classes = %w(govuk-fieldset__heading)
+  heading_classes << "gem-c-radio__heading-text" if heading_level == 'h1'
 
   if ['s', 'm', 'l', 'xl'].include?(heading_size)
     size = heading_size
@@ -46,20 +49,12 @@
 %>
 <%= tag.div id: id, class: form_group_css_classes do %>
   <%= tag.fieldset class: "govuk-fieldset", "aria-describedby": aria do %>
-
     <% if heading.present? %>
-      <% if is_page_heading %>
-        <%= tag.legend class: legend_classes do %>
-          <%= tag.span(heading_caption, class: "govuk-caption-#{size}") if heading_caption.present? %>
-          <%= tag.h1 heading, class: "gem-c-radio__heading-text govuk-fieldset__heading" %>
-        <% end %>
-      <% else %>
-        <%= tag.legend class: legend_classes do %>
-          <%= content_tag(shared_helper.get_heading_level, heading, class: "govuk-fieldset__heading") %>
-        <% end %>
+      <%= tag.legend class: legend_classes do %>
+        <%= tag.span(heading_caption, class: "govuk-caption-#{size}") if heading_caption.present? %>
+        <%= content_tag(heading_level, heading, class: heading_classes) %>
       <% end %>
     <% end %>
-
     <% if description.present? %>
       <%= tag.div description, class: "govuk-body" %>
     <% end %>
