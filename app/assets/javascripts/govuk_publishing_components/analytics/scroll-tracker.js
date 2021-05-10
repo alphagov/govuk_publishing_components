@@ -192,6 +192,12 @@
       ['Percent', 60],
       ['Percent', 80],
       ['Percent', 100]
+    ],
+    '/next-steps-for-your-business/results': [
+      ['Heading', 'Things you need to do next'],
+      ['Heading', 'Rules to follow'],
+      ['Heading', 'Good to know'],
+      ['Heading', 'Change your answers']
     ]
   }
 
