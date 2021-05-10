@@ -36,6 +36,37 @@ var $container = $('.dynamic-content')
 GOVUK.modules.start($container)
 ```
 
+### Modules and cookie consent
+
+Some modules might need cookie consent before doing anything. If a user consents to cookies on a page with such a module, that module should be started without the user having to reload the page.
+
+This can be achieved by structuring a module to listen for the `cookie-consent` event. This event is fired by the cookie banner when the user consents to cookies.
+
+```javascript
+AnExampleModule.prototype.start = function ($module) {
+  this.$module = $module[0]
+  var consentCookie = window.GOVUK.getConsentCookie()
+
+  if (consentCookie && consentCookie.settings) {
+    this.startModule()
+  } else {
+    this.startModule = this.startModule.bind(this)
+    window.addEventListener('cookie-consent', this.startModule)
+  }  
+}
+
+AnExampleModule.prototype.startModule = function () {
+  window.removeEventListener('cookie-consent', this.startModule)
+  // the rest of the module
+}
+```
+
+This functionality runs like this:
+
+- page loads, `GOVUK.modules.start()` is called normally and modules requiring cookie consent check for cookie consent
+- if cookies have been consented, the module calls the rest of its code and carries on as normal
+- if cookies have not been consented, the listener is created and calls the rest of the module when the `cookie-consent` event is fired by the cookie banner
+
 ### Module structure
 
 A module must add its constructor to `GOVUK.Modules` and it must have a `start` method.
