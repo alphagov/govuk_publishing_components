@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 24.10.2
 
 * Allow modules to start after cookie consent ([PR #2041](https://github.com/alphagov/govuk_publishing_components/pull/2041))
 * Fix travel advice pages to use parent breadcrumbs ([PR #2050](https://github.com/alphagov/govuk_publishing_components/pull/2050))
