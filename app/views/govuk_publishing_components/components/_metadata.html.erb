@@ -34,14 +34,15 @@
       <dd class="gem-c-metadata__definition"><%= history %></dd>
     <% end %>
     <% if local_assigns.include?(:first_published) && first_published %>
-      <dt class="gem-c-metadata__term"><%= t("components.metadata.published", default: "Published") %>:</dt>
+      <dt class="gem-c-metadata__term"><%= t("components.metadata.published", default: "Published") %></dt>
       <dd class="gem-c-metadata__definition"><%= first_published %></dd>
     <% end %>
     <% if local_assigns.include?(:last_updated) && last_updated %>
-      <dt class="gem-c-metadata__term"><%= t("components.metadata.last_updated", default: "Last updated") %>:</dt>
+      <dt class="gem-c-metadata__term"><%= t("components.metadata.last_updated", default: "Last updated") %></dt>
       <dd class="gem-c-metadata__definition">
-        <%= last_updated %><% if local_assigns.include?(:see_updates_link) %>,
-          <a href="#history" class="gem-c-metadata__definition-link"
+        <%= last_updated %>
+        <% if local_assigns.include?(:see_updates_link) %>
+          &#8212; <a href="#history" class="gem-c-metadata__definition-link"
                              data-track-category="content-history"
                              data-track-action="see-all-updates-link-clicked"
                              data-track-label="history">

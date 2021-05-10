@@ -66,6 +66,15 @@ en:
       hide_button: "Hide search"
       top_level: "Top level"
       menu: "Menu"
+    metadata:
+      from: "From"
+      part_of: "Part of"
+      history: "History"
+      published: "Published"
+      last_updated: "Last updated"
+      see_all_updates: "See all updates"
+      toggle_less: "Show fewer"
+      toggle_more: "+ %{number} more"
     organisation_schema:
       all_content_search_description: "Find all content from %{organisation}"
     radio:
