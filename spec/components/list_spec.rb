@@ -77,7 +77,7 @@ describe "List", type: :view do
     assert_select "ul.govuk-list--spaced li:nth-child(2)", text: "Another test item"
   end
 
-  it "adds an `id` correctly" do
+  it "adds an outer `id` correctly" do
     render_component(
       id: "this-is-a-test-id",
       items: ["Test item", "Another test item"],
@@ -85,6 +85,27 @@ describe "List", type: :view do
 
     assert_select "ul#this-is-a-test-id li", text: "Test item"
     assert_select "ul#this-is-a-test-id li:nth-child(2)", text: "Another test item"
+  end
+
+  it "adds a generated `id` on the inner list element correctly" do
+    render_component(
+      list_id: true,
+      items: ["Test item", "Another test item"],
+    )
+
+    assert_select "ul li[id]", text: "Test item"
+    assert_select "ul li[id]:nth-child(2)", text: "Another test item"
+  end
+
+  it "adds an custom `id` on the inner list element correctly" do
+    render_component(
+      list_id: true,
+      id_li: "this-is-a-test-id",
+      items: ["Test item", "Another test item"],
+    )
+
+    assert_select "ul li#this-is-a-test-id", text: "Test item"
+    assert_select "ul li#this-is-a-test-id:nth-child(2)", text: "Another test item"
   end
 
   it "adds markup within the list items" do

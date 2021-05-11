@@ -62,3 +62,16 @@ examples:
     data:
       id: 'super-fantastic-chocolate-list'
       <<: *default-example-data
+  with_id_list_attribute:
+    description: |
+      Sets the `id` on the `li` element.
+    data:
+      list_id: true
+      <<: *default-example-data
+  with_id_list_attribute_custom:
+    description: |
+      Sets the `id` on the `li` element with custom ID
+    data:
+      list_id: true
+      id_li: default-id-xxxx
+      <<: *default-example-data

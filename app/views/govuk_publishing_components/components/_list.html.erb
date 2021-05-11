@@ -2,6 +2,8 @@
   aria_label ||= nil
   extra_spacing ||= nil
   id ||= nil
+  id_li ||= nil
+  list_id ||= false
   items ||= []
   list_type ||= "unordered"
   visible_counters ||= nil
@@ -10,6 +12,9 @@
   classes << "govuk-list--bullet" if visible_counters && list_type === "unordered"
   classes << "govuk-list--number" if visible_counters && list_type === "number"
   classes << "govuk-list--spaced" if extra_spacing
+
+  # Default list ID is "list-item-[]" unless a custom ID is defined.
+  list_id = list_id & id_li.present? ? id_li : "list-item-#{SecureRandom.hex(4)}"
 
   # Default list type is unordered list.
   list_tag = "ul"
@@ -20,7 +25,9 @@
 <% if items.any? %>
   <%= content_tag list_tag, class: classes, id: id, "aria-label": aria_label do %>
     <% items.each do |item| %>
-      <li><%= raw(item) %></li>
+      <%= tag.li(id: list_id) do %>
+        <%= raw(item) %>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>
