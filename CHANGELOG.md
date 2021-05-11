@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove phase banner restrictions ([PR #2057](https://github.com/alphagov/govuk_publishing_components/pull/2057))
+
 ## 24.10.2
 
 * Allow modules to start after cookie consent ([PR #2041](https://github.com/alphagov/govuk_publishing_components/pull/2041))
