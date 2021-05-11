@@ -5,18 +5,6 @@ describe "Phase banner", type: :view do
     "phase_banner"
   end
 
-  it "errors without a phase" do
-    expect {
-      render_component({})
-    }.to raise_error("The phase banner component expects a `phase` (`beta` or `alpha`), nil given")
-  end
-
-  it "does not error without a message" do
-    render_component(phase: "alpha")
-
-    assert_select ".gem-c-phase-banner"
-  end
-
   it "shows a custom message" do
     render_component(phase: "alpha", message: "custom message")
 

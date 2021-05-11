@@ -4,10 +4,6 @@ phase ||= nil
 message ||= nil
 inverse ||= false
 
-unless phase.in?(%w[alpha beta])
-  raise ArgumentError, "The phase banner component expects a `phase` (`beta` or `alpha`), #{phase.inspect} given"
-end
-
 unless message.present?
   if phase == "beta"
     message = raw("This part of GOV.UK is being rebuilt &ndash; <a class=\"govuk-link\" href=\"/help/beta\">find out what beta means</a>")
@@ -23,7 +19,7 @@ container_css_classes << "gem-c-phase-banner--inverse" if inverse
 <%= tag.div class: container_css_classes do %>
   <%= tag.p class: "govuk-phase-banner__content" do %>
     <%= tag.strong app_name, class: "govuk-phase-banner__content__app-name" if app_name %>
-    <%= tag.strong phase, class: "govuk-tag govuk-phase-banner__content__tag" %>
+    <%= tag.strong phase, class: "govuk-tag govuk-phase-banner__content__tag" if phase %>
     <%= tag.span message, class: "govuk-phase-banner__text" if message %>
   <% end %>
 <% end %>
