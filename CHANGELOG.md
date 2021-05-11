@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 24.10.3
 
 * Remove phase banner restrictions ([PR #2057](https://github.com/alphagov/govuk_publishing_components/pull/2057))
 
