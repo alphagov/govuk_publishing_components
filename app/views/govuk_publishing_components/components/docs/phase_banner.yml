@@ -1,6 +1,6 @@
-name: Phase (alpha & beta) banner
+name: Phase banner
 description: |
-  A banner that indicates content is in a alpha or beta phase, with an optional explanation
+  A banner that indicates content is in a certain phase (usually alpha or beta), with an optional explanation
 accessibility_criteria: |
   The label must:
 
