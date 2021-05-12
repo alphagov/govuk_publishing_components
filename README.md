@@ -9,6 +9,7 @@ A Ruby gem to document and distribute components for GOV.UK applications. It pro
 - a shared library of components
 - helpers to generate component payloads
 - an application to preview components and provide guidance
+- [GOV.UK Design System](https://design-system.service.gov.uk/) styles and components (via [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend))
 
 Components should be added to this gem if they are required in more than one application, otherwise they should be added to that application.
 
@@ -21,10 +22,6 @@ Components should be added to this gem if they are required in more than one app
 - [Move a component from an application to the gem](docs/moving-components-upstream-into-this-gem.md)
 - [Publish/release a new version of the gem](docs/publishing-to-rubygems.md)
 - [Keep this gem in sync with the Design System](docs/upgrade-govuk-frontend.md)
-
-## Relationship with GOV.UK Design System
-
-GOV.UK Publishing Components also makes [GOV.UK Design System](https://design-system.service.gov.uk/) styles and components available to GOV.UK's frontend applications. This gem consumes [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend) via [Yarn](https://classic.yarnpkg.com/).
 
 ## Browser and assistive technology support
 
