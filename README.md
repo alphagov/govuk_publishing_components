@@ -46,14 +46,6 @@ bin/rake app:jasmine
 bin/rake app:jasmine:ci
 ```
 
-### View documentation
-
-Preview documentation in your browser with:
-
-```sh
-bundle exec yard server --reload
-```
-
 ## Licence
 
 [MIT Licence](LICENCE.md)
