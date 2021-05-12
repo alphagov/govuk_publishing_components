@@ -18,7 +18,6 @@ Components should be added to this gem if they are required in more than one app
 - [Use a component in your application](/docs/use-components.md)
 - [Generate a new component](/docs/generate-a-new-component.md)
 - [Develop a component](/docs/develop-component.md)
-- [Run the component guide](/docs/run-component-guide.md)
 - [Move a component from an application to the gem](/docs/moving-components-upstream-into-this-gem.md)
 - [Publish/release a new version of the gem](/docs/publishing-to-rubygems.md)
 - [Keep this gem in sync with the Design System](/docs/upgrade-govuk-frontend.md)
@@ -46,22 +45,11 @@ GOV.UK Publishing Components shares the same standards in terms of browser and a
 
 [See the rubydoc.info documentation](http://www.rubydoc.info/gems/govuk_publishing_components)
 
-## Working locally
+## Technical documentation
 
-### Install dependencies
+You can use the [GOV.UK Docker environment](https://github.com/alphagov/govuk-docker) or the local `startup.sh` script to run the app. Read the [guidance on local frontend development](https://docs.publishing.service.gov.uk/manual/local-frontend-development.html) to find out more about each approach, before you get started.
 
-As well as the Ruby, you will also need the [Yarn package manager](https://classic.yarnpkg.com/en/docs/install/) to allow installing [npm](https://npmjs.com) dependencies.
-
-Install the application's dependencies with:
-
-```sh
-bundle install
-yarn install
-```
-
-### Running a local app with a local gem
-
-The GDS Developer Docs has a [guide on local frontend development](https://docs.publishing.service.gov.uk/manual/local-frontend-development.html) that covers setting up a local app to use the local version of the components gem in Docker and using the `./startup.sh` script.
+If you are using GOV.UK Docker, remember to combine it with the commands that follow. See the [GOV.UK Docker usage instructions](https://github.com/alphagov/govuk-docker#usage) for examples.
 
 ### Running tests
 
@@ -79,16 +67,6 @@ bin/rake app:jasmine
 # command line
 bin/rake app:jasmine:ci
 ```
-
-### Viewing the component guide
-
-View the component guide in your browser with:
-
-```sh
-./startup.sh
-```
-
-The guide should be available at http://localhost:3212
 
 ### View documentation
 
