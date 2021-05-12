@@ -138,7 +138,7 @@ describe "Radio", type: :view do
     render_component(
       name: "favourite-skittle",
       heading: "What is your favourite skittle?",
-      is_page_heading: true,
+      heading_level: 1,
       items: [
         { label: "Red", value: "red" },
         { label: "Blue", value: "blue" },
@@ -153,7 +153,7 @@ describe "Radio", type: :view do
       name: "favourite-skittle",
       heading: "What is your favourite skittle?",
       heading_caption: "Question 3 of 9",
-      is_page_heading: true,
+      heading_level: 1,
       items: [
         { label: "Red", value: "red" },
         { label: "Blue", value: "blue" },
@@ -184,7 +184,7 @@ describe "Radio", type: :view do
       heading: "What is your favourite skittle?",
       heading_caption: "Question 3 of 9",
       heading_size: "l",
-      is_page_heading: true,
+      heading_level: 1,
       items: [
         { label: "Red", value: "red" },
         { label: "Blue", value: "blue" },
@@ -200,7 +200,7 @@ describe "Radio", type: :view do
       name: "favourite-skittle",
       heading: "What is your favourite skittle?",
       heading_caption: "Question 3 of 9",
-      is_page_heading: true,
+      heading_level: 1,
       items: [
         { label: "Red", value: "red" },
         { label: "Blue", value: "blue" },
