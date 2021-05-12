@@ -40,20 +40,16 @@ You can use the [GOV.UK Docker environment](https://github.com/alphagov/govuk-do
 
 If you are using GOV.UK Docker, remember to combine it with the commands that follow. See the [GOV.UK Docker usage instructions](https://github.com/alphagov/govuk-docker#usage) for examples.
 
-### Running tests
-
-The default rake task runs all the linting and test tasks:
+### Running the test suite
 
 ```sh
+# run all linting / tests
 bin/rake
-```
-Javascript is tested using Jasmine and the [Jasmine gem](https://github.com/pivotal/jasmine-gem). Tests can be run either in the browser or on the command line via the dummy app’s tasks:
 
-```sh
-# browser
+# run JS tests in browser
 bin/rake app:jasmine
 
-# command line
+# run JS tests on command line
 bin/rake app:jasmine:ci
 ```
 
