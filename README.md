@@ -1,12 +1,11 @@
-GOV.UK Publishing Components
+# GOV.UK Publishing Components
+
 [![status](https://badgen.net/github/status/alphagov/govuk_publishing_components/master)](https://ci.integration.publishing.service.gov.uk/job/govuk_publishing_components/job/master/)
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 [![Stylelint Style Guide](https://img.shields.io/badge/code_style-stylelint-brightgreen.svg)](https://github.com/alphagov/stylelint-config-gds/)
-=====================
 
-GOV.UK Publishing Components is a Ruby gem to document and distribute components for GOV.UK applications.
+A Ruby gem to document and distribute components for GOV.UK applications. It provides:
 
-It provides:
 - a shared library of components
 - helpers to generate component payloads
 - an application to preview components and provide guidance
