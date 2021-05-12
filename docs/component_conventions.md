@@ -274,7 +274,15 @@ Javascript tests should be included if the component has any Javascript that is 
 
 ## Helpers
 
-Any code needed by a component that is more complex than basic parameter initialisation should be included in a separate file rather than in the template. Any new presenter files must be included in `lib/govuk_publishing_components.rb` to work.
+![](https://docs.google.com/drawings/d/e/2PACX-1vRj6JM7cQvngDl3Gr_U9G4xga2gsU7Z-d2qHHQcsBdjsW4WaC9_eQdryBJIS69cLkrY7S0fK9BcrPSF/pub?w=960&amp;h=720)
+
+[Source](https://docs.google.com/drawings/d/1N8-kbyCN_xOvvshN6d2HnQz5i5Bqed2WIatI3Nj9gNQ/edit)
+
+Any code needed by a component that is more complex than basic parameter initialisation should be included in a separate file rather than in the template. There are 2 types of helper classes in this app:
+
+- [AppHelpers](lib/govuk_publishing_components/app_helpers). Are exposed to the applications using this gem. They should be documented using RDoc.
+
+- [Component Presenters](lib/govuk_publishing_components/presenters). Anything in these classes is only for use within the components. New presenter files must be included in `lib/govuk_publishing_components.rb` to work. They should be marked `@private`.
 
 Code can be called and referred to in the template as follows:
 

@@ -22,17 +22,6 @@ Components should be added to this gem if they are required in more than one app
 - [Publish/release a new version of the gem](docs/publishing-to-rubygems.md)
 - [Keep this gem in sync with the Design System](docs/upgrade-govuk-frontend.md)
 
-## Architecture / structure
-
-![](https://docs.google.com/drawings/d/e/2PACX-1vRj6JM7cQvngDl3Gr_U9G4xga2gsU7Z-d2qHHQcsBdjsW4WaC9_eQdryBJIS69cLkrY7S0fK9BcrPSF/pub?w=960&amp;h=720)
-
-[Source](https://docs.google.com/drawings/d/1N8-kbyCN_xOvvshN6d2HnQz5i5Bqed2WIatI3Nj9gNQ/edit)
-
-There are 2 types of helper classes in this app:
-
-- [AppHelpers](lib/govuk_publishing_components/app_helpers). Are exposed to the applications using this gem. They should be documented using RDoc.
-- [Component Presenters](lib/govuk_publishing_components/presenters). Anything in these classes is only for use within the components. They should be marked `@private`.
-
 ## Relationship with GOV.UK Design System
 
 GOV.UK Publishing Components also makes [GOV.UK Design System](https://design-system.service.gov.uk/) styles and components available to GOV.UK's frontend applications. This gem consumes [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend) via [Yarn](https://classic.yarnpkg.com/).
