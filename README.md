@@ -14,13 +14,13 @@ Components should be added to this gem if they are required in more than one app
 
 ## How to
 
-- [Install and use this gem](/docs/install-and-use.md)
-- [Use a component in your application](/docs/use-components.md)
-- [Generate a new component](/docs/generate-a-new-component.md)
-- [Develop a component](/docs/develop-component.md)
-- [Move a component from an application to the gem](/docs/moving-components-upstream-into-this-gem.md)
-- [Publish/release a new version of the gem](/docs/publishing-to-rubygems.md)
-- [Keep this gem in sync with the Design System](/docs/upgrade-govuk-frontend.md)
+- [Install and use this gem](docs/install-and-use.md)
+- [Use a component in your application](docs/use-components.md)
+- [Generate a new component](docs/generate-a-new-component.md)
+- [Develop a component](docs/develop-component.md)
+- [Move a component from an application to the gem](docs/moving-components-upstream-into-this-gem.md)
+- [Publish/release a new version of the gem](docs/publishing-to-rubygems.md)
+- [Keep this gem in sync with the Design System](docs/upgrade-govuk-frontend.md)
 
 ## Architecture / structure
 
