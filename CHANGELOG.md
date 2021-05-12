@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Hide print link component from print version ([PR #2063](https://github.com/alphagov/govuk_publishing_components/pull/2063))
+
 ## 24.10.3
 
 * Remove phase banner restrictions ([PR #2057](https://github.com/alphagov/govuk_publishing_components/pull/2057))
