@@ -11,6 +11,8 @@
 
 * Remove `display: none` rules from component print stylesheets, and use the `govuk-!-display-none-print` class instead. ([PR #1561](https://github.com/alphagov/govuk_publishing_components/pull/1561))
 
+* Keep docs in line with incoming change in govspeak ([PR #2064](https://github.com/alphagov/govuk_publishing_components/pull/2064))
+
 ## 24.10.3
 
 * Remove phase banner restrictions ([PR #2057](https://github.com/alphagov/govuk_publishing_components/pull/2057))
