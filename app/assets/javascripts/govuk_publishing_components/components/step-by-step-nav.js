@@ -74,7 +74,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   Gemstepnav.prototype.addShowHideAllButton = function () {
     var showall = document.createElement('div')
-    showall.className = 'gem-c-step-nav__controls'
+    showall.className = 'gem-c-step-nav__controls govuk-!-display-none-print'
     showall.innerHTML = '<button aria-expanded="false" class="gem-c-step-nav__button gem-c-step-nav__button--controls js-step-controls-button">' +
       '<span class="gem-c-step-nav__button-text gem-c-step-nav__button-text--all js-step-controls-button-text">' + this.$module.actions.showAllText + '</span>' +
       '<span class="gem-c-step-nav__chevron js-step-controls-button-icon">' + this.$module.downChevronSvg + '</span>' +
@@ -98,7 +98,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         var commaSpan = document.createElement('span')
         var thisSectionSpan = document.createElement('span')
 
-        showHideSpan.className = 'gem-c-step-nav__toggle-link js-toggle-link'
+        showHideSpan.className = 'gem-c-step-nav__toggle-link js-toggle-link govuk-!-display-none-print'
         showHideSpanText.className = 'gem-c-step-nav__button-text js-toggle-link-text'
         showHideSpanIcon.className = 'gem-c-step-nav__chevron js-toggle-link-icon'
         commaSpan.className = 'govuk-visually-hidden'

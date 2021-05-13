@@ -1,6 +1,2 @@
-.gem-c-metadata {
-  .gem-c-metadata__definition-link,
-  .gem-c-metadata__toggle-wrap {
-    display: none;
-  }
-}
+//  Left this as an empty file as opposed to deleting it because it is @imported in application print stylesheets for example here:
+// https://github.com/alphagov/manuals-frontend/blob/466b4c7a6507a3d76818e26612f174616f5cdf94/app/assets/stylesheets/print.scss#L15

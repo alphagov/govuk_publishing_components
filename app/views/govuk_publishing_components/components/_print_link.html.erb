@@ -13,7 +13,7 @@
     margin_bottom: margin_bottom
   })
 
-  wrapper_classes = %w(gem-c-print-link)
+  wrapper_classes = %w(gem-c-print-link govuk-!-display-none-print)
   wrapper_classes << "gem-c-print-link--show-without-js" unless require_js
   wrapper_classes << (shared_helper.get_margin_top)
   wrapper_classes << (shared_helper.get_margin_bottom)

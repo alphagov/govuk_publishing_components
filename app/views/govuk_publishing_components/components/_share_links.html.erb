@@ -8,7 +8,7 @@
   brand ||= false
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
 
-  classes = %w(gem-c-share-links)
+  classes = %w(gem-c-share-links govuk-!-display-none-print)
   classes << "gem-c-share-links--stacked" if stacked
   classes << "gem-c-share-links--columns" if columns
   classes << brand_helper.brand_class

@@ -29,7 +29,7 @@
               list_classes = %w[govuk-footer__list]
               list_classes << "govuk-footer__list--columns-#{item[:columns]}" if item[:columns] unless single_item_list
             %>
-            <div class="<%= width_class %>">
+            <div class="<%= width_class %> govuk-!-display-none-print">
               <h2 class="govuk-footer__heading govuk-heading-m"><%= item[:title] %></h2>
                 <ul class="<%= list_classes.join(' ') %>">
                   <% item[:items].each do |item| %>
@@ -58,7 +58,7 @@
       <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
         <% if meta.any? %>
           <h2 class="govuk-visually-hidden">Support links</h2>
-          <ul class="govuk-footer__inline-list">
+          <ul class="govuk-footer__inline-list govuk-!-display-none-print">
             <% meta[:items].each do |item| %>
               <li class="govuk-footer__inline-list-item">
                 <%

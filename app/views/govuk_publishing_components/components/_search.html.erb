@@ -10,7 +10,7 @@
   size ||= ""
   value ||= ""
 
-  classes = %w[gem-c-search]
+  classes = %w[gem-c-search govuk-!-display-none-print]
   classes << (shared_helper.get_margin_top)
   classes << (shared_helper.get_margin_bottom) if local_assigns[:margin_bottom]
   classes << "gem-c-search--large" if size == "large"
