@@ -1,134 +1,134 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
+---
 en:
   common:
-    translations: "Translations"
+    translations: Translations
   components:
     accordion:
-      show: "Show"
-      hide: "Hide"
-      show_all: "Show all sections"
-      hide_all: "Hide all sections"
+      hide: Hide
+      hide_all: Hide all sections
+      show: Show
+      show_all: Show all sections
       this_section_visually_hidden: " this section"
-    attachment:
-      opendocument_html: "This file is in an <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a> format"
-      request_format_text: "This file may not be suitable for users of assistive technology."
-      request_format_cta: "Request an accessible format."
-      request_format_details_html: "If you use assistive technology (such as a screen reader) and need a version of this document in a more accessible format, please email <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Please tell us what format you need. It will help us if you say what assistive technology you use."
     article_schema:
-      scoped_search_description: "Search within %{title}"
+      scoped_search_description: Search within %{title}
+    attachment:
+      opendocument_html: This file is in an <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
+        target=%{target} class='govuk-link'>OpenDocument</a> format
+      request_format_cta: Request an accessible format.
+      request_format_details_html: If you use assistive technology (such as a screen
+        reader) and need a version of this document in a more accessible format, please
+        email <a href='mailto:%{alternative_format_contact_email}' target='_blank'
+        class='govuk-link'>%{alternative_format_contact_email}</a>. Please tell us
+        what format you need. It will help us if you say what assistive technology
+        you use.
+      request_format_text: This file may not be suitable for users of assistive technology.
     back_link:
-      back: "Back"
+      back: Back
     checkboxes:
-      or: "or"
+      or: or
     contents_list:
-      contents: "Contents"
+      contents: Contents
     feedback:
-      is_this_page_useful: "Is this page useful?"
-      "yes": "Yes"
-      "no": "No"
-      maybe: "Maybe"
-      is_useful: "this page is useful"
-      is_not_useful: "this page is not useful"
-      thank_you_for_feedback: "Thank you for your feedback"
-      something_wrong: "Report a problem with this page"
-      close: "Close"
-      help_us_improve_govuk: "Help us improve GOV.UK"
-      more_about_visit: "To help us improve GOV.UK, we’d like to know more about your visit today. We’ll send you a link to a feedback form. It will take only 2 minutes to fill in. Don’t worry we won’t send you spam or share your email address with anyone."
-      dont_include_personal_info: "Don’t include personal or financial information like your National Insurance number or credit card details."
-      email_address: "Email address"
-      what_doing: "What were you doing?"
-      what_wrong: "What went wrong?"
-      send_me_survey: "Send me the survey"
-      send: "Send"
+      close: Close
+      dont_include_personal_info: Don’t include personal or financial information
+        like your National Insurance number or credit card details.
+      email_address: Email address
+      help_us_improve_govuk: Help us improve GOV.UK
+      is_not_useful: this page is not useful
+      is_this_page_useful: Is this page useful?
+      is_useful: this page is useful
+      maybe: Maybe
+      more_about_visit: To help us improve GOV.UK, we’d like to know more about your
+        visit today. We’ll send you a link to a feedback form. It will take only 2
+        minutes to fill in. Don’t worry we won’t send you spam or share your email
+        address with anyone.
+      'no': 'No'
+      send: Send
+      send_me_survey: Send me the survey
+      something_wrong: Report a problem with this page
+      thank_you_for_feedback: Thank you for your feedback
+      what_doing: What were you doing?
+      what_wrong: What went wrong?
+      'yes': 'Yes'
+    government_navigation:
+      consultations:
+      departments:
+      get-involved:
+      how-government-works:
+      news_and_communications:
+      statistics:
+      worldwide:
     layout_header:
-      search_button: "Search GOV.UK"
-      show_button: "Show search"
-      hide_button: "Hide search"
-      top_level: "Top level"
-      menu: "Menu"
+      hide_button: Hide search
+      menu: Menu
+      search_button: Search GOV.UK
+      show_button: Show search
+      top_level: Top level
     metadata:
-      from: "From"
-      part_of: "Part of"
-      history: "History"
-      published: "Published"
-      last_updated: "Last updated"
-      see_all_updates: "See all updates"
-      toggle_less: "Show fewer"
+      from: From
+      history: History
+      last_updated: Last updated
+      part_of: Part of
+      published: Published
+      see_all_updates: See all updates
+      toggle_less: Show fewer
       toggle_more: "+ %{number} more"
     organisation_schema:
-      all_content_search_description: "Find all content from %{organisation}"
-    radio:
-      or: "or"
-    related_navigation:
-      collections: "Collection"
-      external_links: "Elsewhere on the web"
-      policies: "Policy"
-      publishers: "Published by"
-      related_content: "Related content"
-      related_external_links: "Elsewhere on the web"
-      related_guides: "Detailed guidance"
-      related_contacts: "Other contacts"
-      statistical_data_sets: "Statistical data set"
-      topics: "Explore the topic"
-      topical_events: "Topical event"
-      world_locations: "World locations"
-      transition:
-        title: "Brexit"
-        link_path: "/transition"
-        link_text: "Check what you need to do"
-    related_footer_navigation:
-      collections: "Collections"
-      policies: "Policies"
-      statistical_data_sets: "Statistical data sets"
-      topical_events: "Topical events"
-    search_box:
-      search_button: "Search"
-      label: "Search on GOV.UK"
-      input_title: "Search"
-    show_password:
-      show: "Show"
-      hide: "Hide"
-      show_password: "Show password"
-      hide_password: "Hide password"
-      announce_show: "Your password is shown"
-      announce_hide: "Your password is hidden"
-    success_alert:
-      success: "Success"
+      all_content_search_description: Find all content from %{organisation}
+    previous_and_next_navigation:
+      pagination:
     print_link:
-      text: "Print this page"
+      text: Print this page
+    radio:
+      or: or
+    related_footer_navigation:
+      collections: Collections
+      policies: Policies
+      statistical_data_sets: Statistical data sets
+      topical_events: Topical events
+    related_navigation:
+      collections: Collection
+      external_links: Elsewhere on the web
+      policies: Policy
+      publishers: Published by
+      related_contacts: Other contacts
+      related_content: Related content
+      related_external_links: Elsewhere on the web
+      related_guides: Detailed guidance
+      statistical_data_sets: Statistical data set
+      topical_events: Topical event
+      topics: Explore the topic
+      transition:
+        link_path: "/transition"
+        link_text: Check what you need to do
+        title: Brexit
+      world_locations: World locations
+    search_box:
+      input_title: Search
+      label: Search on GOV.UK
+      search_button: Search
+    show_password:
+      announce_hide: Your password is hidden
+      announce_show: Your password is shown
+      hide: Hide
+      hide_password: Hide password
+      show: Show
+      show_password: Show password
     skip_link:
-      text: "Skip to main content"
+      text: Skip to main content
     step_by_step_nav:
-      show: "Show"
-      hide: "Hide"
-      show_all: "Show all steps"
-      hide_all: "Hide all steps"
+      hide: Hide
+      hide_all: Hide all steps
+      show: Show
+      show_all: Show all steps
     step_by_step_nav_related:
-      part_of: "Part of"
+      part_of: Part of
     subscription_links:
-      email_signup_link_text: "Get emails"
-      feed_link_text: "Subscribe to feed"
-      subscriptions: "Subscriptions"
+      email_signup_link_text: Get emails
+      feed_link_text: Subscribe to feed
+      subscriptions: Subscriptions
+    success_alert:
+      success: Success
     summary_list:
-      edit: "Change"
-      delete: "Delete"
+      delete: Delete
+      edit: Change
