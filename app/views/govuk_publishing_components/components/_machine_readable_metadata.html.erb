@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="GOV.UK" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="<%= page.canonical_url %>" />
-<meta property="og:title" content="<%= page.title %>" />
+<meta property="og:title" content="<% if page.withdrawn? %>[Withdrawn] <% end %><%= page.title %>" />
 <meta property="og:description" content="<%= strip_tags(page.description) %>" />
 
 <% if page.has_image? %>

@@ -66,6 +66,10 @@ module GovukPublishingComponents
       def requested_path
         local_assigns[:request_path]
       end
+
+      def withdrawn?
+        content_item["withdrawn_notice"].present?
+      end
     end
   end
 end
