@@ -1,0 +1,22 @@
+name: Save this page
+description: Allows users to save a page on GOV.UK
+accessibility_criteria: |
+  Buttons in this component must:
+
+  * be keyboard focusable
+  * inform the user about which item they operate on
+  * preserve focus after interacting with them
+examples:
+  default:
+    description: Displays the signed out user view by default
+    data:
+      page_path: 'super-nice-page-on-govuk'
+  signed_in_and_has_not_saved_page:
+    data:
+      page_path: 'super-nice-page-on-govuk'
+      signed_in: true
+  signed_in_and_has_already_saved_page:
+    data:
+      page_path: 'super-nice-page-on-govuk'
+      signed_in: true
+      page_is_saved: true

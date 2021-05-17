@@ -1,0 +1,24 @@
+<%
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+  signed_in ||= false
+  page_is_saved ||= false
+  page_path ||= nil
+  form_action ||= page_is_saved ? "/my-fancy-delete-action" : "/my-fancy-save-action"
+
+  heading_text = page_is_saved ? t("components.save_this_page.page_was_saved_heading") : t("components.save_this_page.page_not_saved_heading")
+  button_text = page_is_saved ? t("components.save_this_page.remove_page_button") : t("components.save_this_page.add_page_button")
+  additional_text = signed_in ? sanitize(t("components.save_this_page.see_saved_pages_signed_in")) : sanitize(t("components.save_this_page.see_saved_pages_signed_out"))
+%>
+<% if page_path %>
+  <div class="gem-c-save-this-page">
+    <%= content_tag(shared_helper.get_heading_level, heading_text, class: "govuk-heading-s") %>
+    <form action="<%= form_action %>" method="POST">
+      <input type="hidden" name="url" value="<%= page_path %>">
+      <%= render "govuk_publishing_components/components/button", {
+        text: button_text,
+        margin_bottom: 4,
+      } %>
+    </form>
+    <%= content_tag(:p, additional_text, class: 'govuk-body') %>
+  </div>
+<% end %>
