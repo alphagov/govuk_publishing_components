@@ -1,12 +1,19 @@
 <%-
   cl_helper = GovukPublishingComponents::Presenters::ContentsListHelper.new(local_assigns)
+  underline_links ||= false
   aria_label ||= t("components.contents_list.contents")
   format_numbers ||= false
   brand ||= false
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
   title_fallback = t("components.contents_list.contents", locale: I18n.locale, fallback: false, default: "en")
-  classes = cl_helper.classes
+  classes = %w[gem-c-contents-list]
   classes << brand_helper.brand_class
+  link_classes = %w[
+    gem-c-contents-list__link
+    govuk-link
+  ]
+  link_classes << brand_helper.color_class
+  link_classes << "govuk-link--no-underline" unless underline_links
 -%>
 <% if cl_helper.contents.any? %>
   <%= content_tag(
@@ -31,7 +38,7 @@
         <li class="<%= cl_helper.list_item_classes(contents_item, false) %>" <%= "aria-current=true" if contents_item[:active] %>>
           <% link_text = format_numbers ? cl_helper.wrap_numbers_with_spans(contents_item[:text]) : contents_item[:text] %>
           <%= link_to_if !contents_item[:active], link_text, contents_item[:href],
-            class: "gem-c-contents-list__link govuk-link #{brand_helper.color_class}",
+            class:  link_classes,
             data: {
               track_category: 'contentsClicked',
               track_action: "content_item #{position}",
@@ -47,7 +54,7 @@
               <% contents_item[:items].each.with_index(1) do |nested_contents_item, nested_position| %>
                 <li class="<%= cl_helper.list_item_classes(nested_contents_item, true) %>" <%= "aria-current=true" if nested_contents_item[:active] %>>
                   <%= link_to_if !nested_contents_item[:active], nested_contents_item[:text], nested_contents_item[:href],
-                    class: "gem-c-contents-list__link govuk-link #{brand_helper.color_class}",
+                    class: link_classes,
                     data: {
                       track_category: 'contentsClicked',
                       track_action: "nested_content_item #{position}:#{nested_position}",
