@@ -32,10 +32,6 @@
 .gem-c-action-link__link {
   color: inherit;
 
-  &:hover {
-    text-decoration: underline;
-  }
-
   &:focus {
     text-decoration: none;
     color: $govuk-focus-text-colour;
@@ -106,10 +102,6 @@
     background-size: 25px auto;
     background-position: 0 2px;
   }
-
-  .gem-c-action-link__link {
-    text-decoration: none;
-  }
 }
 
 .gem-c-action-link--simple-light {
@@ -121,10 +113,6 @@
     background-repeat: no-repeat;
     background-size: 25px auto;
     background-position: 0 2px;
-  }
-
-  .gem-c-action-link__link {
-    text-decoration: none;
   }
 }
 
@@ -150,10 +138,6 @@
     background-size: 25px auto;
     background-position: 0 2px;
   }
-
-  .gem-c-action-link__link {
-    text-decoration: none;
-  }
 }
 
 .gem-c-action-link--transparent-icon {
@@ -176,25 +160,6 @@
 
 .gem-c-action-link--light-text {
   color: govuk-colour("white");
-
-  .gem-c-action-link__link,
-  .gem-c-action-link__subtext-link {
-    text-decoration: underline;
-
-    &:link,
-    &:visited {
-      color: govuk-colour("white");
-    }
-
-    &:hover {
-      color: $gem-hover-dark-background;
-    }
-
-    &:focus {
-      text-decoration: none;
-      color: $govuk-focus-text-colour;
-    }
-  }
 
   .gem-c-action-link__subtext {
     &:before {
