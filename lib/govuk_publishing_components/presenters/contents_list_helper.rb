@@ -11,9 +11,6 @@ module GovukPublishingComponents
         @contents = options[:contents] || []
         @nested = @contents.any? { |c| c[:items] && c[:items].any? }
         @format_numbers = options[:format_numbers]
-
-        @classes = %w[gem-c-contents-list]
-        @classes << " gem-c-contents-list--no-underline" unless options[:underline_links]
       end
 
       def list_item_classes(list_item, nested)
