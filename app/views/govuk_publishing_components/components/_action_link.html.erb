@@ -32,6 +32,7 @@
 
   link_classes = %w(govuk-link gem-c-action-link__link)
   link_classes << shared_helper.classes if classes
+  link_classes << "govuk-link--inverse" if light_text
 %>
 <% if text.present? %>
   <div class="<%= css_classes.join(' ') %>">
@@ -55,7 +56,7 @@
         <span class="gem-c-action-link__subtext-wrapper">
           <% if subtext_href %>
             <%= content_tag(:span, subtext, class: "gem-c-action-link__subtext") do %>
-              <%= link_to subtext, subtext_href, class: "gem-c-action-link__subtext-link govuk-link", data: data %>
+              <%= link_to subtext, subtext_href, class: link_classes, data: data %>
             <% end %>
           <% else %>
             <%= content_tag(:span, subtext, class: "gem-c-action-link__subtext") %>
