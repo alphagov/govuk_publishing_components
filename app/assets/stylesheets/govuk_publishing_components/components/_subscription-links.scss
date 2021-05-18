@@ -54,6 +54,7 @@
 }
 
 .gem-c-subscription-links__item--button {
+  cursor: pointer;
   display: none;
   font-size: inherit;
   font-weight: inherit;
@@ -68,6 +69,10 @@
 
   &:not(.brand__color) {
     color: $govuk-link-colour;
+  }
+
+  &:hover {
+    color: $govuk-link-hover-colour;
   }
 
   &:visited,
