@@ -20,6 +20,7 @@ $gem-c-print-link-background-height: 18px;
   background: image-url("govuk_publishing_components/icon-print.png") no-repeat govuk-spacing(2) 50%;
   background-size: $gem-c-print-link-background-width $gem-c-print-link-background-height;
   padding: govuk-spacing(2) govuk-spacing(2) govuk-spacing(2) (govuk-spacing(4) + $gem-c-print-link-background-width);
+  text-decoration: none;
 
   @include govuk-device-pixel-ratio($ratio: 2) {
     background-image: image-url("govuk_publishing_components/icon-print-2x.png");
@@ -32,7 +33,6 @@ $gem-c-print-link-background-height: 18px;
 
 .gem-c-print-link__link {
   box-shadow: inset 0 0 0 1px $govuk-border-colour;
-  text-decoration: none;
 
   &:focus {
     border: 0;
