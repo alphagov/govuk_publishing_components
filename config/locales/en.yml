@@ -108,8 +108,8 @@ en:
       page_was_saved_heading: You’ve saved this page
       add_page_button: Add to your saved pages
       remove_page_button: Remove from your saved pages
-      see_saved_pages_signed_in: <a href="/asdf-am-signedin" class="govuk-link">See your saved pages</a>
-      see_saved_pages_signed_out: <a href="/asdf-am-signedout" class="govuk-link">Sign in</a> to see your saved pages.
+      see_saved_pages_signed_in: <a href="%{link}" class="govuk-link">See your saved pages</a>
+      see_saved_pages_signed_out: <a href="%{link}" class="govuk-link">Sign in</a> to see your saved pages.
     search_box:
       input_title: Search
       label: Search on GOV.UK
