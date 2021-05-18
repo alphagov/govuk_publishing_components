@@ -45,7 +45,6 @@
 
 .gem-c-subscription-links__item {
   display: inline-block;
-  text-decoration: none;
   background-repeat: no-repeat;
   background-position: 0 20%;
 
@@ -106,7 +105,7 @@
 }
 
 .gem-c-subscription-links__icon {
-  margin-right: .1em;
+  margin-right: govuk-spacing(1);
   color: govuk-colour("black");
 }
 
