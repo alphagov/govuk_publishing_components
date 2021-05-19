@@ -84,6 +84,28 @@ describe "Machine readable metadata", type: :view do
     assert_equal escaped_html, JSON.parse(json_linked_data)["foo"]["bar"]
   end
 
+  it "marks the page as withdrawn in the oc:title tag where appropriate" do
+    example = GovukSchemas::RandomExample.for_schema(frontend_schema: "case_study") do |item|
+      item["withdrawn_notice"] = { "explanation": "test", "withdrawn_at": "1970-01-01T00:00:00Z" }
+      item
+    end
+
+    render_component(content_item: example, schema: :article)
+
+    assert_select "meta[property='og:title'][content='[Withdrawn] #{example['title']}']"
+  end
+
+  it "does not mark the page as withdrawn in the oc:title tag unless it has been withdrawn" do
+    example = GovukSchemas::RandomExample.for_schema(frontend_schema: "case_study") do |item|
+      item.delete("withdrawn_notice") if item.key? "withdrawn_notice"
+      item
+    end
+    render_component(content_item: example, schema: :article)
+
+    assert_select "meta[property='og:title']"
+    assert_select "meta[property='og:title'][content='[Withdrawn] #{example['title']}']", false
+  end
+
   def assert_meta_tag(name, content)
     assert_select "meta[name='#{name}'][content='#{content}']"
   end

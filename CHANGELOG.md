@@ -14,6 +14,7 @@
 ## 24.10.3
 
 * Remove phase banner restrictions ([PR #2057](https://github.com/alphagov/govuk_publishing_components/pull/2057))
+* Add `[Withdrawn]` to the beginning of the `og:title` meta tag for withdrawn pages ([PR #2066](https://github.com/alphagov/govuk_publishing_components/pull/2066))
 
 ## 24.10.2
 
