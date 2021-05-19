@@ -1,8 +1,6 @@
 <%
-  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
-  signed_in ||= false
-  page_is_saved ||= false
   page_path ||= nil
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   save_this_page = GovukPublishingComponents::Presenters::SaveThisPageHelper.new(local_assigns)
 %>
 <% if page_path %>
