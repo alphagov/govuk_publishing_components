@@ -75,6 +75,7 @@
   // Links
 
   a {
+    @include govuk-link-common;
     @include govuk-link-style-default;
 
     &:focus {

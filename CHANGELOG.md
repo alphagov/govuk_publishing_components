@@ -29,6 +29,8 @@
 * Remove direct anchor styling on inverse header component ([PR #2084](https://github.com/alphagov/govuk_publishing_components/pull/2084))
 * Update action link, contents list and image card components to use new link styles ([PR #2071](https://github.com/alphagov/govuk_publishing_components/pull/2071))
 * Add govuk-link classes to government navigation links ([PR #2081](https://github.com/alphagov/govuk_publishing_components/pull/2081))
+* Update share links to have new underline styles ([PR #2073](https://github.com/alphagov/govuk_publishing_components/pull/2073))
+* Add govuk-link-common mixin to govspeak links ([PR #2078](https://github.com/alphagov/govuk_publishing_components/pull/2078))
 
 ## 24.10.3
 
