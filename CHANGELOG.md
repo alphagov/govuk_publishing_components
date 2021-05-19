@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Remove `display: none` rules from component print stylesheets, and use the `govuk-!-display-none-print` class instead. ([PR #1561](https://github.com/alphagov/govuk_publishing_components/pull/1561))
+* Update link styles for show password component ([PR #2074](https://github.com/alphagov/govuk_publishing_components/pull/2074))
 
 ## 24.10.3
 
