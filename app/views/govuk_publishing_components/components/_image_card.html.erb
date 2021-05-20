@@ -10,6 +10,19 @@
   font_size ||= card_helper.large ? 'm' : 's'
   heading_class = %w[gem-c-image-card__title]
   heading_class << shared_helper.get_heading_size(font_size, 's')
+
+  heading_link_classes = %w[
+    gem-c-image-card__title-link
+    govuk-link
+    govuk-link--no-underline
+  ] 
+  heading_link_classes << brand_helper.color_class
+  extra_link_classes = %w[
+    gem-c-image-card__list-item-link
+    govuk-link
+  ]
+  extra_link_classes << brand_helper.color_class
+
 %>
 <% if card_helper.href || card_helper.extra_links.any? %>
   <div class="<%= classes %> <%= brand_helper.brand_class %>"
@@ -21,7 +34,7 @@
           <%= content_tag(shared_helper.get_heading_level, class: heading_class) do %>
             <% if card_helper.href %>
               <%= link_to card_helper.heading_text, card_helper.href,
-                class: "gem-c-image-card__title-link govuk-link #{brand_helper.color_class}",
+                class: heading_link_classes,
                 data: card_helper.href_data_attributes
               %>
             <% else %>
@@ -37,7 +50,7 @@
           <% card_helper.extra_links.each do |link| %>
             <li class="gem-c-image-card__list-item">
               <%= link_to link[:text], link[:href],
-                class: "gem-c-image-card__list-item-link govuk-link #{brand_helper.color_class}",
+                class: extra_link_classes,
                 data: link[:data_attributes]
               %>
             </li>

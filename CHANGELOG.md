@@ -14,6 +14,7 @@
 * Update link styles for subscription links ([PR #2075](https://github.com/alphagov/govuk_publishing_components/pull/2075))
 * Update inset text block example ([PR #2085](https://github.com/alphagov/govuk_publishing_components/pull/2085))
 * Remove direct anchor styling on inverse header component ([PR #2084](https://github.com/alphagov/govuk_publishing_components/pull/2084))
+* Update action link, contents list and image card components to use new link styles ([PR #2071](https://github.com/alphagov/govuk_publishing_components/pull/2071))
 
 ## 24.10.3
 
