@@ -19,6 +19,7 @@
 * Update share links to have new underline styles ([PR #2073](https://github.com/alphagov/govuk_publishing_components/pull/2073))
 * Add govuk-link-common mixin to govspeak links ([PR #2078](https://github.com/alphagov/govuk_publishing_components/pull/2078))
 * Update links styles for accordion component ([PR #2080](https://github.com/alphagov/govuk_publishing_components/pull/2080))
+* New link styles for prev next navigation ([PR #2088](https://github.com/alphagov/govuk_publishing_components/pull/2088))
 
 ## 24.10.3
 
