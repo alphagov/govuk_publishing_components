@@ -15,6 +15,6 @@ examples:
     data:
       block: |
         <div>
-          <h2 id='heading'>To publish this step by step you need to</h2>
-          <a href='/foo'>Check for broken links</a>
+          <h2 class="govuk-heading-m" id='heading'>To publish this step by step you need to</h2>
+          <a class="govuk-link" href='/foo'>Check for broken links</a>
         </div>
