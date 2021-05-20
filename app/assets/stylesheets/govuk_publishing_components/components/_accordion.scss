@@ -40,25 +40,11 @@ $gem-c-accordion-bottom-border-width: 1px;
     @include govuk-font($size: 16);
     @include govuk-link-common;
     @include govuk-link-style-default;
+
     // Remove default button focus outline in Firefox
     &::-moz-focus-inner {
       padding: 0;
       border: 0;
-    }
-  }
-
-  .gem-c-accordion__open-all:hover,
-  .gem-c-accordion__open-all-text:hover {
-    text-decoration: underline;
-    color: $govuk-link-colour;
-  }
-
-  // Focus state, also to change chervon icon to black
-  .gem-c-accordion__open-all:focus {
-    .gem-c-accordion__open-all-text,
-    .gem-c-accordion-nav__chevron {
-      color: $govuk-focus-text-colour;
-      text-decoration: none;
     }
   }
 
@@ -73,6 +59,7 @@ $gem-c-accordion-bottom-border-width: 1px;
     margin-left: govuk-em(5, 14);
     border: govuk-em(1, 14) solid;
     border-radius: govuk-em(100, 14);
+
     // Main icon size across views, yet keep responsive for zoom
     @include govuk-media-query($from: tablet) {
       width: govuk-em(20, 16);
@@ -94,6 +81,7 @@ $gem-c-accordion-bottom-border-width: 1px;
       transform: rotate(-45deg);
       left: govuk-em(6, 14);
       bottom: govuk-em(5, 14);
+
       @include govuk-media-query($from: tablet) {
         width: govuk-em(6, 16);
         height: govuk-em(6, 16);
@@ -102,6 +90,22 @@ $gem-c-accordion-bottom-border-width: 1px;
         left: govuk-em(6, 16);
         bottom: govuk-em(5, 16);
       }
+    }
+  }
+
+  .gem-c-accordion__open-all:hover,
+  .gem-c-accordion__section-button:hover {
+    .gem-c-accordion-nav__chevron {
+      color: $govuk-link-hover-colour;
+      text-decoration: none;
+    }
+  }
+
+  // Focus state, also to change chervon icon to black
+  .gem-c-accordion__open-all:focus {
+    .gem-c-accordion-nav__chevron {
+      color: $govuk-focus-text-colour;
+      text-decoration: none;
     }
   }
 
@@ -150,6 +154,10 @@ $gem-c-accordion-bottom-border-width: 1px;
     @include govuk-typography-common;
     width: 100%;
 
+    &:hover {
+      color: $govuk-link-hover-colour;
+    }
+
     &:active {
       z-index: 1;
       color: $govuk-link-active-colour;
@@ -163,26 +171,12 @@ $gem-c-accordion-bottom-border-width: 1px;
     }
   }
 
-  .gem-c-accordion__section-button:hover {
-    color: $govuk-link-colour;
-    // On hover, add underline to toggle link
-    .gem-c-accordion__toggle-text {
-      text-decoration: underline;
-      color: $govuk-link-colour;
-    }
-  }
-
   .gem-c-accordion__section-button:focus {
     @include govuk-focused-text;
     // Overwrite focus border to top
     box-shadow: 0 0, 0 -4px;
     border-top: 1px solid transparent;
 
-    // Focus state to change the toggle link within individual sections
-    .gem-c-accordion__toggle-text {
-      color: $govuk-focus-text-colour;
-      text-decoration: none;
-    }
     // Focus state to change chervon icon colour within individual sections
     .gem-c-accordion-nav__chevron {
       color: $govuk-text-colour;
@@ -225,16 +219,41 @@ $gem-c-accordion-bottom-border-width: 1px;
     }
   }
 
-  // Setting width of the text, so the icon doesn't shift (left / right) when toggled
   .gem-c-accordion__toggle-text {
-    min-width: govuk-em(40, 16);
     display: inline-block;
+    // Setting width of the text so the icon doesn't shift left or right when
+    // toggled:
+    min-width: govuk-em(40, 16);
+  }
+
+  // On hover add underline to toggle link only:
+  .gem-c-accordion__section-button:hover .gem-c-accordion__toggle-text {
+    color: $govuk-link-hover-colour;
+    @include govuk-link-decoration;
+    @include govuk-link-hover-decoration;
+  }
+
+  // Ensure the correct focus sstate text colour and no underline:
+  .gem-c-accordion__section-button:focus .gem-c-accordion__toggle-text {
+    color: $govuk-focus-text-colour;
+    text-decoration: none;
   }
 
   .gem-c-accordion__open-all-text {
     min-width: govuk-em(120, 16);
     display: inline-block;
     text-align: left;
+  }
+
+  .gem-c-accordion__open-all:hover {
+    .gem-c-accordion__open-all-text {
+      @include govuk-link-decoration;
+      @include govuk-link-hover-decoration;
+    }
+  }
+
+  .gem-c-accordion__open-all:focus .gem-c-accordion__open-all-text {
+    text-decoration: none;
   }
 
   // Change the summary subheading size.
