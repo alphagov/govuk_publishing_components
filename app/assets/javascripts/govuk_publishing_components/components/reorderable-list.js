@@ -98,7 +98,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       event = new window.CustomEvent(eventName, params)
     } else {
       event = document.createEvent('CustomEvent')
-      event.initCustomEvent(eventName, params.bubbles, params.cancelable)
+      event.initCustomEvent(eventName, params.bubbles, params.cancelable, null)
     }
 
     element.dispatchEvent(event)
