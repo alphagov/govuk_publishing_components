@@ -5,37 +5,37 @@
 <nav id="proposition-menu" class="no-proposition-name gem-c-government-navigation" aria-label="Departments and policy navigation">
   <ul id="proposition-links">
     <li>
-      <a class="<%= 'active' if active == 'departments' %>" href="/government/organisations">
+      <a class="<%= 'active' if active == 'departments' %> govuk-link govuk-link--no-underline govuk-link--inverse" href="/government/organisations">
         <%= t("components.government_navigation.departments", default: "Departments") %>
       </a>
     </li>
     <li>
-      <a class="<%= 'active' if active == 'worldwide' %>" href="/government/world">
+      <a class="<%= 'active' if active == 'worldwide' %> govuk-link govuk-link--no-underline govuk-link--inverse" href="/government/world">
         <%= t("components.government_navigation.worldwide", default: "Worldwide") %>
       </a>
     </li>
     <li>
-      <a class="<%= 'active' if active == 'how-government-works' %>" href="/government/how-government-works">
+      <a class="<%= 'active' if active == 'how-government-works' %> govuk-link govuk-link--no-underline govuk-link--inverse" href="/government/how-government-works">
         <%= t("components.government_navigation.how-government-works", default: "How government works") %>
       </a>
     </li>
     <li>
-      <a class="<%= 'active' if active == 'get-involved' %>" href="/government/get-involved">
+      <a class="<%= 'active' if active == 'get-involved' %> govuk-link govuk-link--no-underline govuk-link--inverse" href="/government/get-involved">
         <%= t("components.government_navigation.get-involved", default: "Get involved") %>
       </a>
     </li>
     <li class="clear-child">
-      <a class="<%= 'active' if active == 'consultations' %>" href="<%= CGI::escapeHTML('/search/policy-papers-and-consultations?content_store_document_type[]=open_consultations&content_store_document_type[]=closed_consultations') %>">
+      <a class="<%= 'active' if active == 'consultations' %> govuk-link govuk-link--no-underline govuk-link--inverse" href="<%= CGI::escapeHTML('/search/policy-papers-and-consultations?content_store_document_type[]=open_consultations&content_store_document_type[]=closed_consultations') %>">
         <%= t("components.government_navigation.consultations", default: "Consultations") %>
       </a>
     </li>
     <li>
-      <a class="<%= 'active' if active == 'statistics' %>" href="/search/research-and-statistics">
+      <a class="<%= 'active' if active == 'statistics' %> govuk-link govuk-link--no-underline govuk-link--inverse" href="/search/research-and-statistics">
         <%= t("components.government_navigation.statistics", default: "Statistics") %>
       </a>
     </li>
     <li>
-      <a class="<%= 'active' if active == 'announcements' %>" href="/news-and-communications">
+      <a class="<%= 'active' if active == 'announcements' %> govuk-link govuk-link--no-underline govuk-link--inverse" href="/news-and-communications">
         <%= t("components.government_navigation.news_and_communications", default: "News and communications") %>
       </a>
     </li>
