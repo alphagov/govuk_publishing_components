@@ -31,6 +31,16 @@
   &:hover,
   &:active {
     background-color: govuk-colour("light-grey", $legacy: "grey-4");
+
+    // Add govuk-link hover decoration to title if no label present
+    .gem-c-pagination__link-text--decorated {
+      @include govuk-link-decoration;
+    }
+
+    .gem-c-pagination__link-label,
+    .gem-c-pagination__link-text--decorated {
+      @include govuk-link-hover-decoration;
+    }
   }
 
   &:focus {
@@ -73,8 +83,8 @@
 .gem-c-pagination__link-label {
   display: inline-block;
   margin-top: .1em;
-  text-decoration: underline;
   margin-left: govuk-spacing(5);
+  @include govuk-link-decoration;
 
   @include govuk-media-query($from: tablet) {
     margin-left: govuk-spacing(6);
