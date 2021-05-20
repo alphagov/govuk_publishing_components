@@ -25,6 +25,7 @@
 * If present, use the url_override field in breadcrumbs ([PR #2093])(https://github.com/alphagov/govuk_publishing_components/pull/2093))
 * Update link styles for show password component ([PR #2074](https://github.com/alphagov/govuk_publishing_components/pull/2074))
 * Update link styles for subscription links ([PR #2075](https://github.com/alphagov/govuk_publishing_components/pull/2075))
+* Update inset text block example ([PR #2085](https://github.com/alphagov/govuk_publishing_components/pull/2085))
 
 ## 24.10.3
 
