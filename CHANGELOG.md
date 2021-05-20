@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Fix accordion anchor link navigation bug ([PR #2087](https://github.com/alphagov/govuk_publishing_components/pull/2087))
 * Remove jQuery from the feedback component ([PR #2062](https://github.com/alphagov/govuk_publishing_components/pull/2062))
 * Remove `display: none` rules from component print stylesheets, and use the `govuk-!-display-none-print` class instead. ([PR #1561](https://github.com/alphagov/govuk_publishing_components/pull/1561))
 * Fix IE11 `initCustomEvent` error ([PR #2079](https://github.com/alphagov/govuk_publishing_components/pull/2079))
