@@ -3,6 +3,8 @@ description: A wrapper to contain header content in white text
 body: |
   This component can be passed a block of template code and will wrap it in a blue header. This is as light-touch as possible and doesn't attempt to deal with the margins and paddings of its content. White text is enforced on content and would need to be overriden where unwanted. Implemented to accomodate topic and list page headings and breadcrumbs but unopinionated about its contents.
 
+  If passing links to the block make sure to add [the inverse modifier](https://design-system.service.gov.uk/styles/typography/#links-on-dark-backgrounds).
+
 accessibility_criteria: |
   The component must:
 
@@ -16,7 +18,7 @@ examples:
     data:
       block: |
         <div class="gem-c-title gem-c-title--inverse">
-          <h1 class="gem-c-title__text ">
+          <h1 class="gem-c-title__text govuk-heading-l">
             Education, Training and Skills
           </h1>
         </div>
@@ -26,7 +28,7 @@ examples:
       full_width: true
       block: |
         <div class="gem-c-title gem-c-title--inverse">
-          <h1 class="gem-c-title__text ">
+          <h1 class="gem-c-title__text govuk-heading-l">
             Education, Training and Skills
           </h1>
         </div>
@@ -35,8 +37,8 @@ examples:
     data:
       block: |
         <div class="gem-c-title gem-c-title--inverse gem-c-title--bottom-margin">
-          <p class="gem-c-title__context">Notice</p>
-          <h1 class="gem-c-title__text">
+          <p class="gem-c-title__context govuk-caption-m">Notice</p>
+          <h1 class="gem-c-title__text govuk-heading-l">
             LN5 0AT, Jackson Homes (Scopwick) Ltd: environmental permit application
           </h1>
         </div>
@@ -45,21 +47,22 @@ examples:
     data:
       padding_top: false
       block: |
-        <div class="gem-c-breadcrumbs " data-module="gem-track-click">
-          <ol>
-            <li class="">
-                <a data-track-category="breadcrumbClicked" data-track-action="1" data-track-label="/section" data-track-options="{&quot;dimension28&quot;:&quot;2&quot;,&quot;dimension29&quot;:&quot;Section&quot;}" class="gem-c-breadcrumbs--inverse" aria-current="false" href="/section">Section</a>
+        <div class="gem-c-breadcrumbs govuk-breadcrumbs govuk-breadcrumbs--collapse-on-mobile gem-c-breadcrumbs--inverse">
+          <ol class="govuk-breadcrumbs__list">
+            <li class="govuk-breadcrumbs__list-item">
+              <a href="/section" class="govuk-breadcrumbs__link">Section</a>
             </li>
-            <li class="">
-                <a data-track-category="breadcrumbClicked" data-track-action="2" data-track-label="#content" data-track-options="{&quot;dimension28&quot;:&quot;2&quot;,&quot;dimension29&quot;:&quot;Education of disadvantaged children&quot;}" class="gem-c-breadcrumbs--inverse gem-c-breadcrumbs--current " aria-current="page" href="#content">Education of disadvantaged children</a>
+            <li class="govuk-breadcrumbs__list-item">
+              <a href="/section/sub-section" class="govuk-breadcrumbs__link">Education of disadvantaged children</a>
             </li>
           </ol>
         </div>
-        <div class="gem-c-title gem-c-title--inverse">
-          <h1 class="gem-c-title__text ">
-            Education, Training and Skills
-          </h1>
-        </div>
         <p class="gem-c-lead-paragraph gem-c-lead-paragraph--inverse">
           Schools and academies, further and higher education, apprenticeships and other skills training, student funding, early years.
+        </p>
+  with_link:
+    data:
+      block: |
+        <p class="gem-c-lead-paragraph gem-c-lead-paragraph--inverse">
+          Schools and academies, further and higher education, apprenticeships and <a href="#other-skills" class="govuk-link govuk-link--inverse">other skills</a> training, student funding, early years.
         </p>
