@@ -103,18 +103,21 @@ describe('An accordion component', function () {
       topLevelControl.click()
       expect(topLevelControl.innerText).toEqual('Hide all sections')
 
-      element.querySelectorAll('.gem-c-accordion__section').forEach(function (section) {
+      var sections = element.querySelectorAll('.gem-c-accordion__section')
+      for (var s = 0; s < sections.length; s++) {
+        var section = sections[s]
         expect(section).toHaveClass('gem-c-accordion__section--expanded')
         expect(section.querySelector('.gem-c-accordion__toggle-text').innerText).toEqual('Hide')
-      })
+      }
 
       topLevelControl.click()
       expect(topLevelControl.innerText).toEqual('Show all sections')
 
-      element.querySelectorAll('.gem-c-accordion__section').forEach(function (section) {
+      for (var q = 0; q < sections.length; q++) {
+        section = sections[q]
         expect(section).not.toHaveClass('gem-c-accordion__section--expanded')
         expect(section.querySelector('.gem-c-accordion__toggle-text').innerText).toEqual('Show')
-      })
+      }
     })
   })
 
@@ -141,10 +144,12 @@ describe('An accordion component', function () {
     it('sets lang attributes if locale attribute is present', function () {
       expect(element.querySelector('.gem-c-accordion__open-all-text').lang).toEqual('sa')
 
-      element.querySelectorAll('.gem-c-accordion__section-button').forEach(function (control) {
+      var buttons = element.querySelectorAll('.gem-c-accordion__section-button')
+      for (var b = 0; b < buttons.length; b++) {
+        var control = buttons[b]
         expect(control.querySelector('.gem-c-accordion__toggle-text').lang).toEqual('st')
         expect(control.querySelectorAll('.govuk-visually-hidden')[1].lang).toEqual('vh')
-      })
+      }
     })
 
     it('resets lang attributes upon button click if the locales for hide text is different', function () {
@@ -154,9 +159,10 @@ describe('An accordion component', function () {
 
       expect(topLevelControlText.lang).toEqual('ha')
 
-      element.querySelectorAll('.gem-c-accordion__section-button').forEach(function (control) {
-        expect(control.querySelector('.gem-c-accordion__toggle-text').lang).toEqual('ht')
-      })
+      var buttons = element.querySelectorAll('.gem-c-accordion__section-button')
+      for (var b = 0; b < buttons.length; b++) {
+        expect(buttons[b].querySelector('.gem-c-accordion__toggle-text').lang).toEqual('ht')
+      }
     })
   })
 })
