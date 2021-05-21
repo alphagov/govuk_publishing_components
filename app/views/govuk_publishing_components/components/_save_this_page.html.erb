@@ -11,6 +11,7 @@
       <%= render "govuk_publishing_components/components/button", {
         text: save_this_page.button_text,
         margin_bottom: 4,
+        secondary_solid: true,
       } %>
     </form>
     <%= content_tag(:p, sanitize(save_this_page.additional_text), class: 'govuk-body') %>
