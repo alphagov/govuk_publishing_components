@@ -1,12 +1,11 @@
 // Default logo corresponds with the "medium stacked" Whitehall equivalent
 .gem-c-organisation-logo {
   font-size: 13px;
-  line-height: (15 / 13);
   font-weight: 400;
+  line-height: 1.35;
 
   @include govuk-media-query($from: tablet) {
     font-size: 18px;
-    line-height: 20px;
   }
 }
 
@@ -62,7 +61,12 @@
   font-family: "HelveticaNeue", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
 
   &:hover {
-    text-decoration: underline;
+    color: $govuk-link-hover-colour;
+  }
+
+  &:active {
+    color: govuk-colour("black");
+    @include govuk-link-hover-decoration;
   }
 
   &:focus {
