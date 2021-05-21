@@ -47,7 +47,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.initSectionHeaders()
 
     // Feature flag for anchor tag navigation used on manuals
-    if (this.$module.getAttribute('data-anchor-navigation')) {
+    if (this.$module.getAttribute('data-anchor-navigation') === 'true') {
       this.openByAnchorOnLoad()
       this.addEventListenersForAnchors()
     }
