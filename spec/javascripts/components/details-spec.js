@@ -5,8 +5,8 @@ describe('Details component', function () {
   var FIXTURE
 
   function loadDetailsComponent () {
-    var details = new GOVUK.Modules.GovukDetails()
-    details.start($('.gem-c-details'))
+    var element = document.querySelector('[data-module="govuk-details"]')
+    new GOVUK.Modules.GovukDetails(element).init()
   }
 
   beforeEach(function () {
