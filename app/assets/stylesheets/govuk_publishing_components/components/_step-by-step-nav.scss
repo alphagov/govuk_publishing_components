@@ -113,10 +113,11 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
   position: relative;
   z-index: 1; // this and relative position stops focus outline underlap with border of accordion
   margin: .5em 0 1.5em;
-  padding: 0 0 govuk-spacing(1);
+  padding: 0 0 govuk-spacing(2);
 
   &:hover .gem-c-step-nav__button-text {
-    text-decoration: underline;
+    @include govuk-link-decoration;
+    @include govuk-link-hover-decoration;
   }
 
   .gem-c-step-nav--large & {
@@ -338,7 +339,8 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
     }
 
     .gem-c-step-nav__button-text {
-      text-decoration: underline;
+      @include govuk-link-decoration;
+      @include govuk-link-hover-decoration;
     }
   }
 }
