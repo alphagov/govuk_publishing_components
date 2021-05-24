@@ -35,8 +35,8 @@ describe('Contextual guidance component', function () {
     document.body.appendChild(container)
     var titleContextualGuidance = document.getElementById('document-title-guidance')
     var summaryContextualGuidance = document.getElementById('document-summary-guidance')
-    new GOVUK.Modules.ContextualGuidance().start($(titleContextualGuidance))
-    new GOVUK.Modules.ContextualGuidance().start($(summaryContextualGuidance))
+    new GOVUK.Modules.ContextualGuidance(titleContextualGuidance).init()
+    new GOVUK.Modules.ContextualGuidance(summaryContextualGuidance).init()
   })
 
   afterEach(function () {
