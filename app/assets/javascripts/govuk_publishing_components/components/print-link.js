@@ -2,10 +2,11 @@ window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
-  function PrintLink () { }
+  function PrintLink ($module) {
+    this.$module = $module
+  }
 
-  PrintLink.prototype.start = function ($module) {
-    this.$module = $module[0]
+  PrintLink.prototype.init = function () {
     this.$module.addEventListener('click', function () {
       window.print()
     })
