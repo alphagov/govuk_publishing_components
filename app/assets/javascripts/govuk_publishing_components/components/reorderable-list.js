@@ -3,13 +3,13 @@ window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
-  function ReorderableList () { }
-
-  ReorderableList.prototype.start = function ($module) {
-    this.$module = $module[0]
+  function ReorderableList ($module) {
+    this.$module = $module
     this.$upButtons = this.$module.querySelectorAll('.js-reorderable-list-up')
     this.$downButtons = this.$module.querySelectorAll('.js-reorderable-list-down')
+  }
 
+  ReorderableList.prototype.init = function () {
     this.sortable = window.Sortable.create(this.$module, { // eslint-disable-line new-cap
       chosenClass: 'gem-c-reorderable-list__item--chosen',
       dragClass: 'gem-c-reorderable-list__item--drag',
