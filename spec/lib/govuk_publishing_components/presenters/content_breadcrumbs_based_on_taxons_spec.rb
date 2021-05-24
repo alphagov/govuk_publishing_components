@@ -99,6 +99,34 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnT
           ],
         )
       end
+
+      context "when parent taxon has a url_override" do
+        it "uses the url_override value instead of the base_path" do
+          parent = {
+            "content_id" => "30c1b93d-2553-47c9-bc3c-fc5b513ecc32",
+            "locale" => "en",
+            "title" => "A-parent",
+            "base_path" => "/a-parent",
+            "phase" => "live",
+            "links" => {
+              "parent_taxons" => [],
+            },
+            "details" => {
+              "url_override" => "/foo",
+            },
+          }
+
+          content_item = taxon_with_parent_taxons([parent])
+          breadcrumbs = breadcrumbs_for(content_item)
+
+          expect(breadcrumbs).to eq(
+            [
+              { title: "Home", url: "/", is_page_parent: false },
+              { title: "A-parent", url: "/foo", is_page_parent: true },
+            ],
+          )
+        end
+      end
     end
 
     context "with multiple parents" do
