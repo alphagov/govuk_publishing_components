@@ -20,6 +20,7 @@
 * Update links styles for accordion component ([PR #2080](https://github.com/alphagov/govuk_publishing_components/pull/2080))
 * New link styles for prev next navigation ([PR #2088](https://github.com/alphagov/govuk_publishing_components/pull/2088))
 * Update organisation logos hover state ([PR #2089](https://github.com/alphagov/govuk_publishing_components/pull/2089))
+* New link styles for step by step nav ([PR #2092](https://github.com/alphagov/govuk_publishing_components/pull/2092))
 
 ## 24.12.0
 

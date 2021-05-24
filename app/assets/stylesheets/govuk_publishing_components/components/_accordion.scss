@@ -36,7 +36,7 @@ $gem-c-accordion-bottom-border-width: 1px;
     -webkit-appearance: none;
     cursor: pointer;
     margin-bottom: govuk-spacing(4);
-    padding: 0 govuk-spacing(1) govuk-spacing(1) 0;
+    padding: 0 govuk-spacing(1) govuk-spacing(2) 0;
     @include govuk-font($size: 16);
     @include govuk-link-common;
     @include govuk-link-style-default;
@@ -250,10 +250,6 @@ $gem-c-accordion-bottom-border-width: 1px;
       @include govuk-link-decoration;
       @include govuk-link-hover-decoration;
     }
-  }
-
-  .gem-c-accordion__open-all:focus .gem-c-accordion__open-all-text {
-    text-decoration: none;
   }
 
   // Change the summary subheading size.
