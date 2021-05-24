@@ -7,8 +7,8 @@ describe('Copy to clipboard component', function () {
   var FIXTURE
 
   function loadCopyToClipboard () {
-    var copyToClipboard = new GOVUK.Modules.CopyToClipboard()
-    copyToClipboard.start($('[data-module=copy-to-clipboard]'))
+    var element = document.querySelector('[data-module=copy-to-clipboard]')
+    new GOVUK.Modules.CopyToClipboard(element).init()
   }
 
   beforeEach(function () {
@@ -25,7 +25,8 @@ describe('Copy to clipboard component', function () {
 
     loadCopyToClipboard()
 
-    $('.govuk-button').trigger('click')
+    var copyButton = document.querySelector('button')
+    window.GOVUK.triggerEvent(copyButton, 'click')
 
     expect(document.execCommand).toHaveBeenCalledWith('copy')
   })
