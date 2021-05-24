@@ -7,8 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 24.11.0
 
+* Add `[Withdrawn]` to the beginning of the `og:title` meta tag for withdrawn pages ([PR #2066](https://github.com/alphagov/govuk_publishing_components/pull/2066))
 * Fix accordion anchor link navigation bug ([PR #2087](https://github.com/alphagov/govuk_publishing_components/pull/2087))
 * Remove jQuery from the feedback component ([PR #2062](https://github.com/alphagov/govuk_publishing_components/pull/2062))
 * Remove `display: none` rules from component print stylesheets, and use the `govuk-!-display-none-print` class instead. ([PR #1561](https://github.com/alphagov/govuk_publishing_components/pull/1561))
@@ -17,7 +18,6 @@
 ## 24.10.3
 
 * Remove phase banner restrictions ([PR #2057](https://github.com/alphagov/govuk_publishing_components/pull/2057))
-* Add `[Withdrawn]` to the beginning of the `og:title` meta tag for withdrawn pages ([PR #2066](https://github.com/alphagov/govuk_publishing_components/pull/2066))
 
 ## 24.10.2
 
