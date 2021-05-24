@@ -2,15 +2,13 @@
 /* global GOVUK */
 
 describe('Govspeak', function () {
-  var govspeakModule = new GOVUK.Modules.Govspeak()
+  var container
+
+  afterEach(function () {
+    document.body.removeChild(container)
+  })
 
   describe('youtube enhancement', function () {
-    var container
-
-    afterEach(function () {
-      document.body.removeChild(container)
-    })
-
     it('embeds youtube videos', function () {
       container = document.createElement('div')
       container.innerHTML =
@@ -19,8 +17,8 @@ describe('Govspeak', function () {
         '<div>'
       document.body.appendChild(container)
 
-      var element = document.querySelector('.gem-c-govspeak')
-      new GOVUK.Modules.Govspeak().start($(element))
+      var element = document.querySelector('[data-module="govspeak"]')
+      new GOVUK.Modules.Govspeak(element).init()
 
       expect(document.querySelectorAll('.gem-c-govspeak__youtube-video').length).toBe(1)
     })
@@ -33,8 +31,8 @@ describe('Govspeak', function () {
         '<div>'
       document.body.appendChild(container)
 
-      var element = document.querySelector('.gem-c-govspeak')
-      new GOVUK.Modules.Govspeak().start($(element))
+      var element = document.querySelector('[data-module="govspeak"]')
+      new GOVUK.Modules.Govspeak(element).init()
 
       expect(document.querySelectorAll('.gem-c-govspeak__youtube-video').length).toBe(0)
     })
@@ -42,7 +40,8 @@ describe('Govspeak', function () {
 
   describe('barchart enhancement', function () {
     it('embeds barcharts', function () {
-      var $element = $(
+      container = document.createElement('div')
+      container.innerHTML =
         '<div id="govspeak-barchart" class="gem-c-govspeak govuk-govspeak" data-module="govspeak">' +
           '<table class="js-barchart-table mc-auto-outdent">' +
             '<tbody>' +
@@ -52,9 +51,12 @@ describe('Govspeak', function () {
             '</tbody>' +
           '</table>' +
         '<div>'
-      )
-      govspeakModule.start($element)
-      expect($element.find('.mc-chart').length).toBe(1)
+      document.body.appendChild(container)
+
+      var element = document.querySelector('[data-module="govspeak"]')
+      new GOVUK.Modules.Govspeak(element).init()
+
+      expect(document.querySelectorAll('.mc-chart').length).toBe(1)
     })
   })
 })
