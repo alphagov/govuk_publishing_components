@@ -81,10 +81,7 @@ describe('Cookie helper functions', function () {
       var date = new Date()
       date.setTime(date.valueOf() + (365 * 24 * 60 * 60 * 1000))
 
-      document.cookie = 'analytics_next_page_call=test' +
-        ';expires=' + date.toUTCString() +
-        ';domain=' + window.location.hostname +
-        ';path=/'
+      GOVUK.setCookie('analytics_next_page_call', 'test', { expires: date.toUTCString(), domain: window.location.hostname, path: '/' })
 
       expect(GOVUK.getCookie('analytics_next_page_call')).toBe('test')
 
