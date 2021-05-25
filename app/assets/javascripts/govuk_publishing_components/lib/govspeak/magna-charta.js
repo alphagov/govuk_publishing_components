@@ -462,11 +462,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     var allCharts = document.querySelectorAll('table.js-barchart-table')
     var id = null
 
-    allCharts.forEach(function (chart, i) {
-      if (chart === module) {
+    for (var i = 0; i < allCharts.length; i++) {
+      if (allCharts[i] === module) {
         id = i
       }
-    })
+    }
 
     return id
   }
