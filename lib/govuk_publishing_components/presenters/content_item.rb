@@ -51,6 +51,10 @@ module GovukPublishingComponents
         content_store_response.fetch("base_path")
       end
 
+      def url_override
+        content_store_response.dig("details", "url_override")
+      end
+
       def description
         content_store_response.fetch("description", "")
       end

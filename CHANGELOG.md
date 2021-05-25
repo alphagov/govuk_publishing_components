@@ -13,6 +13,7 @@
 * Remove jQuery from the feedback component ([PR #2062](https://github.com/alphagov/govuk_publishing_components/pull/2062))
 * Remove `display: none` rules from component print stylesheets, and use the `govuk-!-display-none-print` class instead. ([PR #1561](https://github.com/alphagov/govuk_publishing_components/pull/1561))
 * Fix IE11 `initCustomEvent` error ([PR #2079](https://github.com/alphagov/govuk_publishing_components/pull/2079))
+* If present, use the url_override field in breadcrumbs ([PR #2093])(https://github.com/alphagov/govuk_publishing_components/pull/2093))
 
 ## 24.10.3
 
