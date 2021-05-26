@@ -6,14 +6,12 @@
 <% if page_path %>
   <div class="gem-c-save-this-page">
     <%= content_tag(shared_helper.get_heading_level, save_this_page.heading_text, class: "govuk-heading-s") %>
-    <form action="<%= save_this_page.form_action %>" method="POST">
-      <input type="hidden" name="url" value="<%= page_path %>">
       <%= render "govuk_publishing_components/components/button", {
-        text: save_this_page.button_text,
+        text: save_this_page.link_text,
+        href: save_this_page.link_href,
         margin_bottom: 4,
         secondary_solid: true,
       } %>
-    </form>
     <%= content_tag(:p, sanitize(save_this_page.additional_text), class: 'govuk-body') %>
   </div>
 <% end %>

@@ -29,7 +29,7 @@ describe "Save this page", type: :view do
       page_path: "/test",
       signed_in: true,
     )
-    assert_select ".gem-c-save-this-page button", text: "Add to your saved pages"
+    assert_select ".gem-c-save-this-page a", text: "Add to your saved pages", href: "/account/save-a-page?page_path=/test"
     expect(rendered).to have_content("See your saved pages")
   end
 
@@ -39,7 +39,7 @@ describe "Save this page", type: :view do
       signed_in: true,
       page_is_saved: true,
     )
-    assert_select ".gem-c-save-this-page button", text: "Remove from your saved pages"
+    assert_select ".gem-c-save-this-page a", text: "Remove from your saved pages", href: "/account/delete-a-page?page_path=/test"
     expect(rendered).to have_content("See your saved pages")
   end
 end

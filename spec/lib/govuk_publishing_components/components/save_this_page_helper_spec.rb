@@ -5,19 +5,19 @@ RSpec.describe GovukPublishingComponents::Presenters::SaveThisPageHelper do
   let(:params) { {} }
 
   describe "Shared component helper" do
-    describe "save page form" do
+    describe "save/remove button" do
       let(:add_button_text) { I18n.t("components.save_this_page.add_page_button") }
       let(:remove_button_text) { I18n.t("components.save_this_page.remove_page_button") }
-      let(:add_form_endpoint) { "/placeholder-for-save" }
-      let(:remove_form_endpoint) { "/placeholder-for-delete" }
+      let(:add_button_href) { "/account/save-a-page?page_path=" }
+      let(:remove_button_href) { "/account/delete-a-page?page_path=" }
 
       context "by default" do
         it "uses 'save' endpoint" do
-          expect(helper.form_action).to eql(add_form_endpoint)
+          expect(helper.link_href).to eql(add_button_href)
         end
 
         it "uses 'add page' button" do
-          expect(helper.button_text).to eql(add_button_text)
+          expect(helper.link_text).to eql(add_button_text)
         end
       end
 
@@ -25,35 +25,35 @@ RSpec.describe GovukPublishingComponents::Presenters::SaveThisPageHelper do
         let(:params) { { signed_in: false } }
 
         it "uses 'save' endpoint" do
-          expect(helper.form_action).to eql(add_form_endpoint)
+          expect(helper.link_href).to eql(add_button_href)
         end
 
         it "uses the 'add page' button" do
-          expect(helper.button_text).to eql(add_button_text)
+          expect(helper.link_text).to eql(add_button_text)
         end
       end
 
       context "when user is signed in and the current page was not saved" do
-        let(:params) { { signed_in: true } }
+        let(:params) { { signed_in: true, page_path: "/test" } }
 
         it "uses 'save' endpoint" do
-          expect(helper.form_action).to eql(add_form_endpoint)
+          expect(helper.link_href).to eql("#{add_button_href}/test")
         end
 
         it "uses the 'add page' button" do
-          expect(helper.button_text).to eql(add_button_text)
+          expect(helper.link_text).to eql(add_button_text)
         end
       end
 
       context "when user is signed in and the current page was already saved" do
-        let(:params) { { signed_in: true, page_is_saved: true } }
+        let(:params) { { signed_in: true, page_is_saved: true, page_path: "/test" } }
 
         it "uses 'delete' endpoint" do
-          expect(helper.form_action).to eql(remove_form_endpoint)
+          expect(helper.link_href).to eql("#{remove_button_href}/test")
         end
 
         it "uses 'remove page' button" do
-          expect(helper.button_text).to eql(remove_button_text)
+          expect(helper.link_text).to eql(remove_button_text)
         end
       end
     end
