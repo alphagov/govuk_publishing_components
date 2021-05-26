@@ -24,7 +24,7 @@
 
   if attachment.number_of_pages
     attributes << tag.span(
-      pluralize(attachment.number_of_pages, "page"),
+      I18n.t("components.attachment.page", count: attachment.number_of_pages),
       class: "gem-c-attachment-link__attribute",
     )
   end
