@@ -40,6 +40,18 @@ en:
       contents: Contents
     contextual_sidebar:
       pretitle: Also part of
+    cookie_banner:
+      buttons:
+        accept_cookies: Accept additional cookies
+        reject_cookies: Reject additional cookies
+      hide: Hide this message
+      text:
+        - We use some essential cookies to make this website work.
+        - We’d like to set additional cookies to understand how you use GOV.UK, remember your settings and improve government services.
+        - We also use cookies set by other sites to help us deliver content from their services.
+      confirmation_message: You can %{link} at any time.
+      confirmation_message_link: change your cookie settings
+      title: Cookies on GOV.UK
     feedback:
       close: Close
       dont_include_personal_info: Don’t include personal or financial information
