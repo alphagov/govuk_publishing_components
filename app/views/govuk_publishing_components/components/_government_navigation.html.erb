@@ -6,37 +6,37 @@
   <ul id="proposition-links">
     <li>
       <a class="<%= 'active' if active == 'departments' %>" href="/government/organisations">
-        <%= t("components.government_navigation.departments", default: "Departments") %>
+        <%= t("components.government_navigation.departments") %>
       </a>
     </li>
     <li>
       <a class="<%= 'active' if active == 'worldwide' %>" href="/government/world">
-        <%= t("components.government_navigation.worldwide", default: "Worldwide") %>
+        <%= t("components.government_navigation.worldwide") %>
       </a>
     </li>
     <li>
       <a class="<%= 'active' if active == 'how-government-works' %>" href="/government/how-government-works">
-        <%= t("components.government_navigation.how-government-works", default: "How government works") %>
+        <%= t("components.government_navigation.how-government-works") %>
       </a>
     </li>
     <li>
       <a class="<%= 'active' if active == 'get-involved' %>" href="/government/get-involved">
-        <%= t("components.government_navigation.get-involved", default: "Get involved") %>
+        <%= t("components.government_navigation.get-involved") %>
       </a>
     </li>
     <li class="clear-child">
       <a class="<%= 'active' if active == 'consultations' %>" href="<%= CGI::escapeHTML('/search/policy-papers-and-consultations?content_store_document_type[]=open_consultations&content_store_document_type[]=closed_consultations') %>">
-        <%= t("components.government_navigation.consultations", default: "Consultations") %>
+        <%= t("components.government_navigation.consultations") %>
       </a>
     </li>
     <li>
       <a class="<%= 'active' if active == 'statistics' %>" href="/search/research-and-statistics">
-        <%= t("components.government_navigation.statistics", default: "Statistics") %>
+        <%= t("components.government_navigation.statistics") %>
       </a>
     </li>
     <li>
       <a class="<%= 'active' if active == 'announcements' %>" href="/news-and-communications">
-        <%= t("components.government_navigation.news_and_communications", default: "News and communications") %>
+        <%= t("components.government_navigation.news_and_communications") %>
       </a>
     </li>
   </ul>

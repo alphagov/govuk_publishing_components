@@ -51,13 +51,13 @@ en:
       what_wrong: What went wrong?
       'yes': 'Yes'
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
+      consultations: Consultations
+      departments: Departments
+      get-involved: Get involved
+      how-government-works: How government works
+      news_and_communications: News and communications
+      statistics: Statistics
+      worldwide: Worldwide
     layout_header:
       hide_button: Hide search
       menu: Menu
@@ -76,7 +76,7 @@ en:
     organisation_schema:
       all_content_search_description: Find all content from %{organisation}
     previous_and_next_navigation:
-      pagination:
+      pagination: Pagination
     print_link:
       text: Print this page
     radio:
