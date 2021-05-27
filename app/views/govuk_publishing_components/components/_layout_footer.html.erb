@@ -38,7 +38,9 @@
                         <%
                           attributes = {
                             class: "govuk-footer__link",
-                            "data-track-category": "footerClicked"
+                            data: {
+                              "track-category": "footerClicked"
+                            }
                           }.merge(item.fetch(:attributes, {}))
                           attributes[:rel] = "noopener" if attributes[:target] == "_blank" && !attributes[:rel]
                         %>
