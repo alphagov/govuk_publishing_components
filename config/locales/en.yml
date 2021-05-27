@@ -101,6 +101,8 @@ en:
       see_all_updates: See all updates
       toggle_less: Show fewer
       toggle_more: "+ %{number} more"
+    modal_dialogue:
+      close_modal: Close modal dialogue
     organisation_schema:
       all_content_search_description: Find all content from %{organisation}
     previous_and_next_navigation:
