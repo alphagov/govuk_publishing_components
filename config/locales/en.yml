@@ -155,6 +155,7 @@ en:
       part_of: Part of
     subscription_links:
       email_signup_link_text: Get emails
+      feed_link_label: Copy and paste this URL into your feed reader
       feed_link_text: Subscribe to feed
       subscriptions: Subscriptions
     success_alert:
