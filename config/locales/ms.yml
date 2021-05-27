@@ -13,15 +13,36 @@ ms:
       scoped_search_description:
     attachment:
       opendocument_html:
+      order_a_copy:
+      page:
+        one:
+        other:
+      reference:
       request_format_cta:
       request_format_details_html:
       request_format_text:
     back_link:
       back:
+    character_count:
+      body:
+      type:
+        characters:
+        words:
     checkboxes:
       or:
     contents_list:
       contents:
+    contextual_sidebar:
+      pretitle:
+    cookie_banner:
+      buttons:
+        accept_cookies:
+        reject_cookies:
+      confirmation_message:
+      confirmation_message_link:
+      hide:
+      text:
+      title:
     feedback:
       close:
       dont_include_personal_info:
@@ -48,6 +69,10 @@ ms:
       news_and_communications:
       statistics:
       worldwide:
+    layout_footer:
+      copyright_html:
+      licence_html:
+      support_links:
     layout_header:
       hide_button:
       menu:
@@ -63,6 +88,8 @@ ms:
       see_all_updates:
       toggle_less:
       toggle_more:
+    modal_dialogue:
+      close_modal:
     organisation_schema:
       all_content_search_description:
     previous_and_next_navigation:
@@ -115,6 +142,7 @@ ms:
       part_of:
     subscription_links:
       email_signup_link_text:
+      feed_link_label:
       feed_link_text:
       subscriptions:
     success_alert:
@@ -122,3 +150,5 @@ ms:
     summary_list:
       delete:
       edit:
+    tabs:
+      contents:
