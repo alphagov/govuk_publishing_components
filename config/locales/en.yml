@@ -163,3 +163,5 @@ en:
     summary_list:
       delete: Delete
       edit: Change
+    tabs:
+      contents: Contents
