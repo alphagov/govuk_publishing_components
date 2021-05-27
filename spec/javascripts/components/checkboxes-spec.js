@@ -148,22 +148,19 @@ describe('Checkboxes component', function () {
   describe('controlling Google analytics track event when a checkbox is changed', function () {
     it('fires a Google analytics event if suppressAnalytics not passed to the change event', function () {
       var $checkbox = $checkboxesWrapper.find(":input[value='blue']")
-      var fakeOnChangeEvent = new window.CustomEvent('change')
-      $checkbox[0].dispatchEvent(fakeOnChangeEvent)
+      window.GOVUK.triggerEvent($checkbox[0], 'change')
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalled()
     })
 
     it('fires a Google analytics event if suppressAnalytics is set to false and passed to the change event', function () {
       var $checkbox = $checkboxesWrapper.find(":input[value='blue']")
-      var fakeOnChangeEvent = new window.CustomEvent('change', { detail: { suppressAnalytics: false } })
-      $checkbox[0].dispatchEvent(fakeOnChangeEvent)
+      window.GOVUK.triggerEvent($checkbox[0], 'change', { detail: { suppressAnalytics: false } })
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalled()
     })
 
     it('does not fire a Google analytics event if suppressAnalytics is passed to the change event', function () {
       var $checkbox = $checkboxesWrapper.find(":input[value='blue']")
-      var fakeOnChangeEvent = new window.CustomEvent('change', { detail: { suppressAnalytics: true } })
-      $checkbox[0].dispatchEvent(fakeOnChangeEvent)
+      window.GOVUK.triggerEvent($checkbox[0], 'change', { detail: { suppressAnalytics: true } })
       expect(GOVUK.analytics.trackEvent).not.toHaveBeenCalled()
     })
   })

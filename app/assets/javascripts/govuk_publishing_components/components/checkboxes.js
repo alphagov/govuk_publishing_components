@@ -33,7 +33,9 @@ window.GOVUK.Modules.Checkboxes = window.GOVUKFrontend;
     if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
       // Where checkboxes are manipulated externally in finders, `suppressAnalytics`
       // is passed to prevent duplicate GA events.
-      if (!event.detail || (event.detail && event.detail.suppressAnalytics !== true)) {
+      // use Oliver Steele's Nested Object Access Pattern https://hackernoon.com/accessing-nested-objects-in-javascript-f02f1bd6387f
+      var allowAnalytics = ((event || {}).detail || {}).suppressAnalytics !== true
+      if (allowAnalytics) {
         var $checkbox = event.target
         var category = $checkbox.getAttribute('data-track-category')
         if (category) {
@@ -100,11 +102,11 @@ window.GOVUK.Modules.Checkboxes = window.GOVUKFrontend;
     var $exclusiveOption = $checkboxes.querySelector('input[type=checkbox][data-exclusive]')
     var $nonExclusiveOptions = $checkboxes.querySelectorAll('input[type=checkbox]:not([data-exclusive])')
 
-    if ($currentCheckbox.dataset.exclusive === 'true' && $currentCheckbox.checked === true) {
+    if ($currentCheckbox.getAttribute('data-exclusive') === 'true' && $currentCheckbox.checked === true) {
       for (var i = 0; i < $nonExclusiveOptions.length; i++) {
         $nonExclusiveOptions[i].checked = false
       }
-    } else if ($currentCheckbox.dataset.exclusive !== 'true' && $currentCheckbox.checked === true) {
+    } else if ($currentCheckbox.getAttribute('data-exclusive') !== 'true' && $currentCheckbox.checked === true) {
       if ($exclusiveOption) {
         $exclusiveOption.checked = false
       }
