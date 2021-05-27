@@ -7,10 +7,13 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 24.11.1
+
+* Update shape of tracking link ([PR #2101](https://github.com/alphagov/govuk_publishing_components/pull/2101))
+
 ## 24.11.0
 
 * Add `[Withdrawn]` to the beginning of the `og:title` meta tag for withdrawn pages ([PR #2066](https://github.com/alphagov/govuk_publishing_components/pull/2066))
-* Update shape of tracking link ([PR #2101](https://github.com/alphagov/govuk_publishing_components/pull/2101))
 * Fix accordion anchor link navigation bug ([PR #2087](https://github.com/alphagov/govuk_publishing_components/pull/2087))
 * Remove jQuery from the feedback component ([PR #2062](https://github.com/alphagov/govuk_publishing_components/pull/2062))
 * Remove `display: none` rules from component print stylesheets, and use the `govuk-!-display-none-print` class instead. ([PR #1561](https://github.com/alphagov/govuk_publishing_components/pull/1561))
@@ -30,6 +33,7 @@
 * Update scroll tracker config entries ([PR #2052](https://github.com/alphagov/govuk_publishing_components/pull/2052))
 
 ## 24.10.1
+
 * Remove unused i18n keys ([PR #2038](https://github.com/alphagov/govuk_publishing_components/pull/2038))
 * Update postcode regex for PII stripping ([PR #2043](https://github.com/alphagov/govuk_publishing_components/pull/2043))
 * Add legacy `govspeak` class alongside gem-c-govspeak ([PR #2044](https://github.com/alphagov/govuk_publishing_components/pull/2044))
