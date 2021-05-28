@@ -41,7 +41,9 @@
     // we ignore the possibility of there being campaign variables in the
     // anchor because we wouldn't know how to detect and parse them if they
     // were present
-    return this.pii.stripPIIFromString(location.href.substring(location.origin.length).split('#')[0])
+    // IE can't access window.location.origin, so we have to do this slightly complex thing
+    var root = location.protocol + '//' + location.hostname + (location.port ? ':' + location.port : '')
+    return this.pii.stripPIIFromString(location.href.substring(root.length).split('#')[0])
   }
 
   Analytics.prototype.trackPageview = function (path, title, options) {

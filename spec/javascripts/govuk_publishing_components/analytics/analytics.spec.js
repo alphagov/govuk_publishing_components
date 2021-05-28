@@ -48,6 +48,8 @@ describe('GOVUK.Analytics', function () {
   describe('extracting the default path for a page view', function () {
     it('returns a path extracted from the location', function () {
       var location = {
+        protocol: 'https:',
+        hostname: 'govuk-frontend-toolkit.example.com',
         href: 'https://govuk-frontend-toolkit.example.com/a/path',
         origin: 'https://govuk-frontend-toolkit.example.com'
       }
@@ -56,6 +58,8 @@ describe('GOVUK.Analytics', function () {
 
     it('includes the querystring in the path extracted from the location', function () {
       var location = {
+        protocol: 'https:',
+        hostname: 'govuk-frontend-toolkit.example.com',
         href: 'https://govuk-frontend-toolkit.example.com/a/path?with=a&query=string',
         origin: 'https://govuk-frontend-toolkit.example.com'
       }
@@ -64,6 +68,8 @@ describe('GOVUK.Analytics', function () {
 
     it('removes any anchor from the path extracted from the location', function () {
       var location = {
+        protocol: 'https:',
+        hostname: 'govuk-frontend-toolkit.example.com',
         href: 'https://govuk-frontend-toolkit.example.com/a/path#with-an-anchor',
         origin: 'https://govuk-frontend-toolkit.example.com'
       }

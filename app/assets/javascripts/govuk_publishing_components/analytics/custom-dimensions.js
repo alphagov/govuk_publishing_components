@@ -33,6 +33,8 @@
 
     if (window.devicePixelRatio) {
       customDimensions.dimension11 = window.devicePixelRatio
+    } else {
+      customDimensions.dimension11 = window.screen.deviceXDPI / window.screen.logicalXDPI
     }
 
     return customDimensions
