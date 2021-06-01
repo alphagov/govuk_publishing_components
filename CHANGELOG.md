@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 24.12.0
 
 * Move all hardcoded text from components into locale files ([PR #2100](https://github.com/alphagov/govuk_publishing_components/pull/2100))
 
