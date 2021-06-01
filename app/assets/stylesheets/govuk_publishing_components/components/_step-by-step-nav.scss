@@ -113,7 +113,7 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
   position: relative;
   z-index: 1; // this and relative position stops focus outline underlap with border of accordion
   margin: .5em 0 1.5em;
-  padding: 0 0 govuk-spacing(2);
+  padding: 0 0 govuk-spacing(1);
 
   &:hover .gem-c-step-nav__button-text {
     @include govuk-link-decoration;
@@ -126,6 +126,10 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
 
   &:focus {
     @include step-nav-chevron-focus-state;
+
+    .gem-c-step-nav__button-text {
+      text-decoration: none;
+    }
   }
 }
 
