@@ -10,7 +10,7 @@
     data-track-action="GOV.UK Close Form"
     aria-controls="something-is-wrong"
     aria-expanded="true">
-    <%= t("components.feedback.close", default: "Close") %>
+    <%= t("components.feedback.close") %>
   </button>
 
   <div class="govuk-grid-row">
@@ -19,12 +19,12 @@
 
       <input type="hidden" name="url" value="<%= url_without_pii %>">
 
-      <h3 class="gem-c-feedback__form-heading"><%= t("components.feedback.help_us_improve_govuk", default: "Help us improve GOV.UK") %></h3>
-      <p id="feedback_explanation" class="gem-c-feedback__form-paragraph"><%= t("components.feedback.dont_include_personal_info", default: "Don’t include personal or financial information like your National Insurance number or credit card details.") %></p>
+      <h3 class="gem-c-feedback__form-heading"><%= t("components.feedback.help_us_improve_govuk") %></h3>
+      <p id="feedback_explanation" class="gem-c-feedback__form-paragraph"><%= t("components.feedback.dont_include_personal_info") %></p>
 
       <%= render "govuk_publishing_components/components/input", {
         label: {
-          text: t("components.feedback.what_doing", default: "What were you doing?")
+          text: t("components.feedback.what_doing")
         },
         name: "what_doing",
         describedby: "feedback_explanation"
@@ -32,13 +32,13 @@
 
       <%= render "govuk_publishing_components/components/input", {
         label: {
-          text: t("components.feedback.what_wrong", default: "What went wrong?")
+          text: t("components.feedback.what_wrong")
         },
         name: "what_wrong"
       } %>
 
       <%= render "govuk_publishing_components/components/button", {
-        text: t("components.feedback.send", default: "Send")
+        text: t("components.feedback.send")
       } %>
     </div>
   </div>

@@ -14,6 +14,11 @@ en:
     attachment:
       opendocument_html: This file is in an <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
         target=%{target} class='govuk-link'>OpenDocument</a> format
+      order_a_copy: Order a copy
+      page:
+        one: 1 page
+        other: '%{count} pages'
+      reference: 'Ref: %{reference}'
       request_format_cta: Request an accessible format.
       request_format_details_html: If you use assistive technology (such as a screen
         reader) and need a version of this document in a more accessible format, please
@@ -24,10 +29,29 @@ en:
       request_format_text: This file may not be suitable for users of assistive technology.
     back_link:
       back: Back
+    character_count:
+      body: You can enter up to %{number} %{type}
+      type:
+        characters: characters
+        words: words
     checkboxes:
       or: or
     contents_list:
       contents: Contents
+    contextual_sidebar:
+      pretitle: Also part of
+    cookie_banner:
+      buttons:
+        accept_cookies: Accept additional cookies
+        reject_cookies: Reject additional cookies
+      hide: Hide this message
+      text:
+        - We use some essential cookies to make this website work.
+        - We’d like to set additional cookies to understand how you use GOV.UK, remember your settings and improve government services.
+        - We also use cookies set by other sites to help us deliver content from their services.
+      confirmation_message: You can %{link} at any time.
+      confirmation_message_link: change your cookie settings
+      title: Cookies on GOV.UK
     feedback:
       close: Close
       dont_include_personal_info: Don’t include personal or financial information
@@ -51,13 +75,17 @@ en:
       what_wrong: What went wrong?
       'yes': 'Yes'
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
+      consultations: Consultations
+      departments: Departments
+      get-involved: Get involved
+      how-government-works: How government works
+      news_and_communications: News and communications
+      statistics: Statistics
+      worldwide: Worldwide
+    layout_footer:
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
+      licence_html: All content is available under the <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated
+      support_links: Support links
     layout_header:
       hide_button: Hide search
       menu: Menu
@@ -73,10 +101,12 @@ en:
       see_all_updates: See all updates
       toggle_less: Show fewer
       toggle_more: "+ %{number} more"
+    modal_dialogue:
+      close_modal: Close modal dialogue
     organisation_schema:
       all_content_search_description: Find all content from %{organisation}
     previous_and_next_navigation:
-      pagination:
+      pagination: Pagination
     print_link:
       text: Print this page
     radio:
@@ -125,6 +155,7 @@ en:
       part_of: Part of
     subscription_links:
       email_signup_link_text: Get emails
+      feed_link_label: Copy and paste this URL into your feed reader
       feed_link_text: Subscribe to feed
       subscriptions: Subscriptions
     success_alert:
@@ -132,3 +163,5 @@ en:
     summary_list:
       delete: Delete
       edit: Change
+    tabs:
+      contents: Contents

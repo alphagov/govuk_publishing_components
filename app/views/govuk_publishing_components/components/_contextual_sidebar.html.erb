@@ -18,7 +18,7 @@
   <% if navigation.content_tagged_to_other_step_by_steps? %>
     <%# Rendering step by step related items because there are a few but not too many of them %>
     <%= render 'govuk_publishing_components/components/step_by_step_nav_related', {
-      pretitle: "Also part of",
+      pretitle: t("components.contextual_sidebar.pretitle"),
       links: navigation.step_nav_helper.also_part_of_step_nav,
       always_display_as_list: true
     } %>

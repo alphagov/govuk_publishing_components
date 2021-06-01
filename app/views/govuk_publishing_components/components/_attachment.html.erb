@@ -27,7 +27,7 @@
 
   if attachment.number_of_pages
     attributes << tag.span(
-      pluralize(attachment.number_of_pages, "page"),
+      t("components.attachment.page", count: attachment.number_of_pages),
       class: "gem-c-attachment__attribute",
     )
   end
@@ -59,7 +59,7 @@
     <% end %>
 
     <% if attachment.reference.present? %>
-      <%= tag.p "Ref: #{attachment.reference}", class: "gem-c-attachment__metadata gem-c-attachment__metadata--compact" %>
+      <%= tag.p t("components.attachment.reference", reference: attachment.reference), class: "gem-c-attachment__metadata gem-c-attachment__metadata--compact" %>
     <% end %>
 
     <% if attachment.unnumbered_reference.present? %>
@@ -71,7 +71,7 @@
     <% end %>
 
     <% if attachment.is_official_document && !hide_order_copy_link %>
-      <%= tag.p link_to("Order a copy", "https://www.gov.uk/guidance/how-to-buy-printed-copies-of-official-documents", class: "govuk-link govuk-link--no-visited-state", target: "_blank"),
+      <%= tag.p link_to(t("components.attachment.order_a_copy"), "https://www.gov.uk/guidance/how-to-buy-printed-copies-of-official-documents", class: "govuk-link govuk-link--no-visited-state", target: "_blank"),
         class: "gem-c-attachment__metadata" %>
     <% end %>
 

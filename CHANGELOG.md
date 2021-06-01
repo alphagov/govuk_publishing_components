@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Move all hardcoded text from components into locale files ([PR #2100](https://github.com/alphagov/govuk_publishing_components/pull/2100))
+
 ## 24.11.1
 
 * Update shape of tracking link ([PR #2101](https://github.com/alphagov/govuk_publishing_components/pull/2101))

@@ -18,27 +18,27 @@
 <%= content_tag :div, class: classes, data: { module: "gem-toggle" } do %>
   <dl data-module="gem-track-click">
     <% if from.any? %>
-      <dt class="gem-c-metadata__term"><%= t("components.metadata.from", default: "From") %>:</dt>
+      <dt class="gem-c-metadata__term"><%= t("components.metadata.from") %>:</dt>
       <dd class="gem-c-metadata__definition">
         <%= render 'govuk_publishing_components/components/metadata/sentence', items: from, toggle_id: "from-#{SecureRandom.hex(4)}" %>
       </dd>
     <% end %>
     <% if part_of.any? %>
-      <dt class="gem-c-metadata__term"><%= t("components.metadata.part_of", default: "Part of") %>:</dt>
+      <dt class="gem-c-metadata__term"><%= t("components.metadata.part_of") %>:</dt>
       <dd class="gem-c-metadata__definition">
         <%= render 'govuk_publishing_components/components/metadata/sentence', items: part_of, toggle_id: "part-of-#{SecureRandom.hex(4)}" %>
       </dd>
     <% end %>
     <% if local_assigns.include?(:history) %>
-      <dt class="gem-c-metadata__term"><%= t("components.metadata.history", default: "History") %>:</dt>
+      <dt class="gem-c-metadata__term"><%= t("components.metadata.history") %>:</dt>
       <dd class="gem-c-metadata__definition"><%= history %></dd>
     <% end %>
     <% if local_assigns.include?(:first_published) && first_published %>
-      <dt class="gem-c-metadata__term"><%= t("components.metadata.published", default: "Published") %></dt>
+      <dt class="gem-c-metadata__term"><%= t("components.metadata.published") %></dt>
       <dd class="gem-c-metadata__definition"><%= first_published %></dd>
     <% end %>
     <% if local_assigns.include?(:last_updated) && last_updated %>
-      <dt class="gem-c-metadata__term"><%= t("components.metadata.last_updated", default: "Last updated") %></dt>
+      <dt class="gem-c-metadata__term"><%= t("components.metadata.last_updated") %></dt>
       <dd class="gem-c-metadata__definition">
         <%= last_updated %>
         <% if local_assigns.include?(:see_updates_link) %>
@@ -46,7 +46,7 @@
                              data-track-category="content-history"
                              data-track-action="see-all-updates-link-clicked"
                              data-track-label="history">
-            <%= t("components.metadata.see_all_updates", default: "see all updates") %>
+            <%= t("components.metadata.see_all_updates") %>
           </a>
         <% end %>
       </dd>

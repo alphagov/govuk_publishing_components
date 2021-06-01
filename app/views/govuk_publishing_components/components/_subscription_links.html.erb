@@ -23,7 +23,7 @@
 <% if sl_helper.component_data_is_valid? %>
   <%= tag.section class: css_classes, data: data do %>
     <% unless hide_heading %>
-      <h2 class="gem-c-subscription-links__hidden-header visuallyhidden"><%= t("components.subscription_links.subscriptions", default: "Subscriptions") %></h2>
+      <h2 class="gem-c-subscription-links__hidden-header visuallyhidden"><%= t("components.subscription_links.subscriptions") %></h2>
     <% end %>
     <ul
       class="gem-c-subscription-links__list<%= ' gem-c-subscription-links__list--small' if local_assigns[:small_form] == true %>"
@@ -70,7 +70,7 @@
         <div lang="en">
           <%= render "govuk_publishing_components/components/input", {
             label: {
-              text: "Copy and paste this URL into your feed reader"
+              text: t("components.subscription_links.feed_link_label"),
             },
             name: "feed-reader-box",
             value: feed_link_box_value
