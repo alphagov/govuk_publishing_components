@@ -45,7 +45,6 @@
 
 .gem-c-subscription-links__item {
   display: inline-block;
-  text-decoration: none;
   background-repeat: no-repeat;
   background-position: 0 20%;
 
@@ -55,6 +54,7 @@
 }
 
 .gem-c-subscription-links__item--button {
+  cursor: pointer;
   display: none;
   font-size: inherit;
   font-weight: inherit;
@@ -69,6 +69,10 @@
 
   &:not(.brand__color) {
     color: $govuk-link-colour;
+  }
+
+  &:hover {
+    color: $govuk-link-hover-colour;
   }
 
   &:visited,
@@ -106,7 +110,7 @@
 }
 
 .gem-c-subscription-links__icon {
-  margin-right: .1em;
+  margin-right: govuk-spacing(1);
   color: govuk-colour("black");
 }
 

@@ -25,19 +25,6 @@
   list-style-type: none;
 }
 
-.gem-c-contents-list--no-underline {
-  .gem-c-contents-list__link {
-    text-decoration: none;
-
-    &:hover,
-    &:active {
-      text-decoration: underline;
-    }
-
-    @include govuk-template-link-focus-override;
-  }
-}
-
 .gem-c-contents-list__link {
   .gem-c-contents-list__list-item--parent > & {
     font-weight: bold;
