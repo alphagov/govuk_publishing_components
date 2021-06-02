@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 24.13.0
 
 * Update link styles for show password component ([PR #2074](https://github.com/alphagov/govuk_publishing_components/pull/2074))
 * Update link styles for subscription links ([PR #2075](https://github.com/alphagov/govuk_publishing_components/pull/2075))
@@ -21,6 +21,7 @@
 * New link styles for prev next navigation ([PR #2088](https://github.com/alphagov/govuk_publishing_components/pull/2088))
 * Update organisation logos hover state ([PR #2089](https://github.com/alphagov/govuk_publishing_components/pull/2089))
 * New link styles for step by step nav ([PR #2092](https://github.com/alphagov/govuk_publishing_components/pull/2092))
+* Reset organisation logo margin ([PR #2109](https://github.com/alphagov/govuk_publishing_components/pull/2109))
 
 ## 24.12.0
 
