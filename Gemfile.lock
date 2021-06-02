@@ -349,7 +349,7 @@ DEPENDENCIES
   pry-byebug
   rake
   rspec-rails (~> 5.0)
-  rubocop-govuk (= 4.0.0)
+  rubocop-govuk
   sassc-rails (~> 2)
   uglifier (>= 4.1.0)
   webmock (~> 3.8.3)
