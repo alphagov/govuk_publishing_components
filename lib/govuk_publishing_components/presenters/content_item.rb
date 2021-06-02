@@ -26,11 +26,9 @@ module GovukPublishingComponents
       end
 
       def parent_taxons
-        @parent_taxons ||= begin
-          taxon_links
+        @parent_taxons ||= taxon_links
             .select { |t| phase_is_live?(t) }
             .map { |taxon| ContentItem.new(taxon) }.sort_by(&:title)
-        end
       end
 
       def phase_is_live?(taxon)
