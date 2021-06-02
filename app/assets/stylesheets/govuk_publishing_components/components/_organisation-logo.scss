@@ -3,6 +3,9 @@
   font-size: 13px;
   font-weight: 400;
   line-height: 1.35;
+  // When this is a heading the margin needs to be set to stop it from
+  // inheriting the browser's default margin:
+  margin: 0;
 
   @include govuk-media-query($from: tablet) {
     font-size: 18px;
