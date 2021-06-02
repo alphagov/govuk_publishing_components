@@ -6,16 +6,13 @@
   heading_level ||= false
   inline ||= false
 
-  # Check if `heading_level` is a number; if so, check if it's an appropriate
-  # number.
-  use_heading = heading_level.is_a?(Integer) ?
-                  (heading_level >= 1 && heading_level <= 6) :
-                  false
+  # Check if `heading_level` is an appropriate number:
+  use_heading = [*1..6].include?(heading_level)
 
-  # Set the wrapping element to be a heading or a `div`
-  wrapping_element = use_heading ? "h#{heading_level}" : "div"
+  # Set the wrapping element to be a heading or a `div`:
+  wrapping_element = (use_heading ? "h#{heading_level}" : "div").to_sym
 
-  wrapper_classes = %w(gem-c-organisation-logo)
+  wrapper_classes = %w[gem-c-organisation-logo]
   wrapper_classes << brand_helper.brand_class
 
   container_classes = [
@@ -24,10 +21,13 @@
   ]
   container_classes << "gem-c-organisation-logo__container--inline" if inline
 %>
-<<%= wrapping_element %>
-  class="<%= wrapper_classes.join(" ") %>"
-  <%= "data-module=gem-track-click" if organisation[:data_attributes] %>
->
+
+<%= content_tag(wrapping_element, {
+    class: wrapper_classes,
+    data: {
+      module: ("gem-track-click" if organisation[:data_attributes])
+    }
+  }) do %>
   <% if organisation[:url] %>
     <%= link_to organisation[:url],
       class: container_classes.join(" "),
@@ -39,4 +39,4 @@
       <%= logo_helper.logo_content %>
     </div>
   <% end %>
-</<%= wrapping_element %>>
+<% end %>
