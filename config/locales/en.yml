@@ -129,7 +129,7 @@ en:
       topical_events: Topical event
       topics: Explore the topic
       transition:
-        link_path: "/transition"
+        link_path: "/brexit"
         link_text: Check what you need to do
         title: Brexit
       world_locations: World locations

@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Rename /transition to /brexit ([PR #2112](https://github.com/alphagov/govuk_publishing_components/pull/2112))
+
 ## 24.13.0
 
 * Update link styles for show password component ([PR #2074](https://github.com/alphagov/govuk_publishing_components/pull/2074))
