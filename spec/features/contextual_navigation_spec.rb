@@ -672,8 +672,8 @@ describe "Contextual navigation" do
   def transition_taxon
     {
       "content_id" => "d6c2de5d-ef90-45d1-82d4-5f2438369eea",
-      "api_path" => "/api/content/transition",
-      "base_path" => "/transition",
+      "api_path" => "/api/content/brexit",
+      "base_path" => "/brexit",
       "title" => "Brexit Transition",
       "locale" => "en",
     }

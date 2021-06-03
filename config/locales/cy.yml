@@ -116,7 +116,7 @@ cy:
       topical_events:
       topics:
       transition:
-        link_path: "/transition.cy"
+        link_path: "/brexit.cy"
         link_text: Gwiriwch beth sydd angen i chi ei wneud
         title: Brexit
       world_locations:

@@ -6,7 +6,7 @@
   window.GOVUK = window.GOVUK || {}
 
   var CONFIG = {
-    '/transition': [
+    '/brexit': [
       ['Percent', 20],
       ['Percent', 40],
       ['Percent', 60],

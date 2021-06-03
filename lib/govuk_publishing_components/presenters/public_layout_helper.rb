@@ -24,7 +24,7 @@ module GovukPublishingComponents
           columns: 1,
           items: [
             {
-              href: "/transition",
+              href: "/brexit",
               text: "Check what you need to do",
               attributes: {
                 data: {

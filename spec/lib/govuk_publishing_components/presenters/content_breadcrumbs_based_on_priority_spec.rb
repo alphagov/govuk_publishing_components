@@ -28,7 +28,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
   let(:transition_period_taxon) do
     {
       "content_id" => "d6c2de5d-ef90-45d1-82d4-5f2438369eea",
-      "base_path" => "/transition",
+      "base_path" => "/brexit",
       "title" => "Transition",
     }
   end
