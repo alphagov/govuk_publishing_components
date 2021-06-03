@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 24.13.1
 
 * Rename /transition to /brexit ([PR #2112](https://github.com/alphagov/govuk_publishing_components/pull/2112))
 
