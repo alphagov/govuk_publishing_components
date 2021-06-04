@@ -116,6 +116,9 @@ cy:
       topical_events:
       topics:
       transition:
+        hub_page_link_path:
+        hub_page_link_text:
+        hub_page_title:
         link_path: "/brexit.cy"
         link_text: Gwiriwch beth sydd angen i chi ei wneud
         title: Brexit
