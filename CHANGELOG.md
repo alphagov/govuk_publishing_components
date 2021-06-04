@@ -6,6 +6,10 @@
 - Don't include changes that are purely internal. The CHANGELOG should be a
   useful summary for people upgrading their application, not a replication
   of the commit log.
+  
+## Unreleased
+
+* Add event tracking to header elements ([#2110](https://github.com/alphagov/govuk_publishing_components/pull/2110) 
 
 ## 24.13.2
 
