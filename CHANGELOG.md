@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add alternate Brexit callout text ([PR #21XX](https://github.com/alphagov/govuk_publishing_components/pull/21XX))
+
 ## 24.13.1
 
 * Rename /transition to /brexit ([PR #2112](https://github.com/alphagov/govuk_publishing_components/pull/2112))

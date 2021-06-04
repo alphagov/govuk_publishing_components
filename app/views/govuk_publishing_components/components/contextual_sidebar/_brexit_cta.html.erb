@@ -1,6 +1,11 @@
 <% shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns) %>
-<% link_text = t("components.related_navigation.transition.link_text") %>
-<% link_path = t("components.related_navigation.transition.link_path") %>
+<% cta_helper = GovukPublishingComponents::Presenters::BrexitCtaHelper.new(content_item) %>
+<%
+  title = t(cta_helper.title_key)
+  link_text = t(cta_helper.link_text_key)
+  link_path = t(cta_helper.link_path_key)
+  lang = shared_helper.t_locale(cta_helper.title_key)
+%>
 
 <% data_attributes = {
   "module": "gem-track-click",
@@ -12,12 +17,12 @@
 } %>
 
 <%= tag.div class: "gem-c-contextual-sidebar__brexit-cta" do %>
-  <%= tag.h2 t("components.related_navigation.transition.title"), class: "gem-c-contextual-sidebar__brexit-heading govuk-heading-s" %>
+  <%= tag.h2 title, class: "gem-c-contextual-sidebar__brexit-heading govuk-heading-s" %>
   <%= tag.p class: "gem-c-contextual-sidebar__brexit-text govuk-body" do %>
     <%= link_to link_text,
       link_path,
       class: "govuk-link",
       data: data_attributes,
-      lang: shared_helper.t_locale("components.related_navigation.transition.title") %>
+      lang: lang %>
   <% end %>
 <% end %>
