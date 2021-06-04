@@ -7,6 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+* Allow a custom link to be used on the header logo ([PR #2114](https://github.com/alphagov/govuk_publishing_components/pull/2114))
+
 ## 24.13.2
 
 * Add alternate Brexit callout text ([PR #2115](https://github.com/alphagov/govuk_publishing_components/pull/2115))

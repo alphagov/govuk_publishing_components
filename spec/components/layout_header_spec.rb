@@ -123,4 +123,16 @@ describe "Layout header", type: :view do
 
     assert_select ".gem-c-layout-header--search-left"
   end
+
+  it "has the default logo link when no logo_link is specified" do
+    render_component({})
+
+    assert_select ".govuk-header__link--homepage[href='/']"
+  end
+
+  it "has a custom logo link when specified" do
+    render_component({ logo_link: "https://example.com" })
+
+    assert_select ".govuk-header__link--homepage[href='https://example.com']"
+  end
 end

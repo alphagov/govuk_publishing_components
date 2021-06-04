@@ -84,4 +84,16 @@ describe "Layout for public", type: :view do
 
     assert_select ".gem-c-layout-for-public__blue-bar", false
   end
+
+  it "has the default logo link when no logo_link is specified" do
+    render_component({})
+
+    assert_select ".govuk-header__link--homepage[href='/']"
+  end
+
+  it "has a custom logo link when specified" do
+    render_component({ logo_link: "https://example.com/jam" })
+
+    assert_select ".govuk-header__link--homepage[href='https://example.com/jam']"
+  end
 end
