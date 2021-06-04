@@ -7,9 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 24.13.2
 
-* Add alternate Brexit callout text ([PR #21XX](https://github.com/alphagov/govuk_publishing_components/pull/21XX))
+* Add alternate Brexit callout text ([PR #2115](https://github.com/alphagov/govuk_publishing_components/pull/2115))
 
 ## 24.13.1
 
