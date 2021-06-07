@@ -22,11 +22,11 @@ $(document).ready(function(){
 
 This will attempt to find and start all modules in the page. For the example above it will look for a module at `GOVUK.Modules.SomeModule`. Note the value of the data attribute has been converted to _PascalCase_.
 
-The module will be instantiated and then its `start` method called. The HTML element with the `data-module` attribute is passed as the first argument to the module. This limits modules to acting only within their containing elements.
+The module will be instantiated and then its `init` or `start` method called. The HTML element with the `data-module` attribute is passed as the first argument to the module. This limits modules to acting only within their containing elements.
 
 ```javascript
-module = new GOVUK.Modules[type]()
-module.start(element)
+module = new GOVUK.Modules.SomeModule(element)
+module.init()
 ```
 
 Running `GOVUK.modules.start()` multiple times will have no additional affect. When a module is started a flag is set on the element using the data attribute `module-started`. `data-module-started` is a reserved attribute. It can however be called with an element as the first argument, to allow modules to be started in dynamically loaded content:
@@ -43,8 +43,8 @@ Some modules might need cookie consent before doing anything. If a user consents
 This can be achieved by structuring a module to listen for the `cookie-consent` event. This event is fired by the cookie banner when the user consents to cookies.
 
 ```javascript
-AnExampleModule.prototype.start = function ($module) {
-  this.$module = $module[0]
+AnExampleModule.prototype.init = function ($module) {
+  this.$module = $module
   var consentCookie = window.GOVUK.getConsentCookie()
 
   if (consentCookie && consentCookie.settings) {
@@ -76,9 +76,11 @@ The simplest module looks like:
 (function(Modules) {
   'use strict'
 
-  function SomeModule () {}
-  SomeModule.prototype.start = function($element) {
-    // module code
+  function SomeModule ($element) {
+    // variables and attributes
+  }
+  SomeModule.prototype.init = function() {
+    // function calls and event bindings
   }
   Modules.SomeModule = SomeModule
 })(window.GOVUK.Modules)
