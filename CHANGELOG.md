@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add custom tracking action to Brexit superbreadcrumbs ([PR #2118](https://github.com/alphagov/govuk_publishing_components/pull/2118))
+
 ## 24.13.2
 
 * Add alternate Brexit callout text ([PR #2115](https://github.com/alphagov/govuk_publishing_components/pull/2115))
