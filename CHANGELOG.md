@@ -12,6 +12,7 @@
 * Remove hide-only option from contextual guidance ([PR #2126](https://github.com/alphagov/govuk_publishing_components/pull/2126))
 * Fix click tracking in government_navigation ([PR #2129](https://github.com/alphagov/govuk_publishing_components/pull/2129))
 * Add superbreadcrumb to content tagged to a Brexit child taxon ([PR #2123](https://github.com/alphagov/govuk_publishing_components/pull/2123))
+* Use the `init` API to initialise component modules ([PR #2095](https://github.com/alphagov/govuk_publishing_components/pull/2095))
 
 ## 24.13.4
 
