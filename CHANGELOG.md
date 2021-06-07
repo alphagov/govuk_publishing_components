@@ -9,11 +9,20 @@
 
 ## Unreleased
 
-* BREAKING: Remove ability to link contextual text on titles ([PR #2192](https://github.com/alphagov/govuk_publishing_components/pull/2192))
+* **BREAKING:** Remove ability to link contextual text on titles ([PR #2192](https://github.com/alphagov/govuk_publishing_components/pull/2192))
 * Delete empty print stylesheets ([PR #2225](https://github.com/alphagov/govuk_publishing_components/pull/2225))
-* BREAKING: Remove `is_page_heading` parameter from radio component ([PR #2061](https://github.com/alphagov/govuk_publishing_components/pull/2061))
+* **BREAKING:** Remove `is_page_heading` parameter from radio component ([PR #2061](https://github.com/alphagov/govuk_publishing_components/pull/2061))
 * Intervention: add tracking code and design tweaks ([PR #2224](https://github.com/alphagov/govuk_publishing_components/pull/2224))
-* BREAKING: Remove `em()` Sass mixin ([PR #2220](https://github.com/alphagov/govuk_publishing_components/pull/2220))
+* **BREAKING:** Remove deprecated `em()` Sass mixin ([PR #2220](https://github.com/alphagov/govuk_publishing_components/pull/2220))
+
+  You must make the following changes when you migrate to this release:
+  - Replace `em()` calls with `govuk-em()`
+
+
+* **BREAKING:** Group tracking scripts in `govuk_publishing_components/analytics` ([PR #2117](https://github.com/alphagov/govuk_publishing_components/pull/2117))
+
+  You must make the following changes when you migrate to this release:
+  - Remove any direct reference to `govuk_publishing_components/lib/track-click` and make sure `govuk_publishing_components/analytics` is imported
 
 ## 24.21.1
 
