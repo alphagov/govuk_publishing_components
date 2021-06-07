@@ -3,8 +3,7 @@
 
 describe('Checkboxes component', function () {
   function loadCheckboxesComponent () {
-    var checkboxes = new GOVUK.Modules.GovukCheckboxes()
-    checkboxes.start($('.gem-c-checkboxes'))
+    new GOVUK.Modules.GovukCheckboxes($('.gem-c-checkboxes')[0]).init()
   }
 
   var FIXTURE =

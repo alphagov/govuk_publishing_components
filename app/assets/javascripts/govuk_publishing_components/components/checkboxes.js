@@ -6,14 +6,14 @@ window.GOVUK.Modules = window.GOVUK.Modules || {}
 window.GOVUK.Modules.Checkboxes = window.GOVUKFrontend;
 
 (function (Modules) {
-  function GovukCheckboxes () { }
-
-  GovukCheckboxes.prototype.start = function ($module) {
-    this.$module = $module[0]
+  function GovukCheckboxes ($module) {
+    this.$module = $module
     this.$checkboxes = this.$module.querySelectorAll('input[type=checkbox]')
     this.$nestedCheckboxes = this.$module.querySelectorAll('[data-nested=true] input[type=checkbox]')
     this.$exclusiveCheckboxes = this.$module.querySelectorAll('[data-exclusive=true] input[type=checkbox]')
+  }
 
+  GovukCheckboxes.prototype.init = function () {
     this.applyAriaControlsAttributes(this.$module)
 
     for (var i = 0; i < this.$checkboxes.length; i++) {
