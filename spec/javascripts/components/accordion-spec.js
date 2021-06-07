@@ -49,7 +49,7 @@ describe('An accordion component', function () {
     container.querySelector('.gem-c-accordion').setAttribute('data-locale', JSON.stringify(localeData))
 
     element = document.getElementById('default-id')
-    new GOVUK.Modules.GemAccordion().start($(element))
+    new GOVUK.Modules.GemAccordion(element).init()
   })
 
   afterEach(function () {
