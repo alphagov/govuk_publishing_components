@@ -2,18 +2,18 @@ window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
-  function CookieBanner () { }
+  function CookieBanner ($module) {
+    this.$module = $module
+    this.$module.cookieBanner = document.querySelector('.gem-c-cookie-banner')
+    this.$module.cookieBannerConfirmationMessage = this.$module.querySelector('.gem-c-cookie-banner__confirmation')
+    this.$module.cookieBannerConfirmationMessageText = this.$module.querySelector('.gem-c-cookie-banner__confirmation-message')
+  }
 
-  CookieBanner.prototype.start = function ($module) {
-    this.$module = $module[0]
+  CookieBanner.prototype.init = function () {
     this.$module.hideCookieMessage = this.hideCookieMessage.bind(this)
     this.$module.showConfirmationMessage = this.showConfirmationMessage.bind(this)
     this.$module.setCookieConsent = this.setCookieConsent.bind(this)
     this.$module.rejectCookieConsent = this.rejectCookieConsent.bind(this)
-
-    this.$module.cookieBanner = document.querySelector('.gem-c-cookie-banner')
-    this.$module.cookieBannerConfirmationMessage = this.$module.querySelector('.gem-c-cookie-banner__confirmation')
-    this.$module.cookieBannerConfirmationMessageText = this.$module.querySelector('.gem-c-cookie-banner__confirmation-message')
     this.setupCookieMessage()
   }
 
