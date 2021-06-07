@@ -11,6 +11,12 @@ module GovukPublishingComponents
         transition_period: "d6c2de5d-ef90-45d1-82d4-5f2438369eea",
       }.freeze
 
+      BREXIT_TAXONS = {
+        brexit: "d6c2de5d-ef90-45d1-82d4-5f2438369eea",
+        brexit_business: "634fd193-8039-4a70-a059-919c34ff4bfc",
+        brexit_citizen: "614b2e65-56ac-4f8d-bb9c-d1a14167ba25",
+      }.freeze
+
       # Returns the highest priority taxon that has a content_id matching those in PRIORITY_TAXONS
       def self.call(content_item, query_parameters = nil)
         new(content_item, query_parameters).breadcrumbs
@@ -35,7 +41,7 @@ module GovukPublishingComponents
           title: taxon["title"],
           path: taxon["base_path"],
           tracking_category: "breadcrumbClicked",
-          tracking_action: "superBreadcrumb",
+          tracking_action: tracking_action,
           tracking_label: content_item["base_path"],
           tracking_dimension_enabled: false,
         }
@@ -70,6 +76,14 @@ module GovukPublishingComponents
 
       def preferred_priority_taxon
         query_parameters["priority-taxon"] if query_parameters
+      end
+
+      def tracking_action
+        action = %w[superBreadcrumb]
+        action << "Brexitbusiness" if taxon["content_id"] == BREXIT_TAXONS[:brexit_business]
+        action << "Brexitcitizen" if taxon["content_id"] == BREXIT_TAXONS[:brexit_business]
+        action << "Brexitbusinessandcitizen" if taxon["content_id"] == BREXIT_TAXONS[:brexit]
+        action.join(" ")
       end
     end
   end
