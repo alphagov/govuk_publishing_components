@@ -25,11 +25,33 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
     }
   end
 
-  let(:transition_period_taxon) do
+  let(:brexit_taxon) do
     {
       "content_id" => "d6c2de5d-ef90-45d1-82d4-5f2438369eea",
       "base_path" => "/brexit",
-      "title" => "Transition",
+      "title" => "Brexit",
+    }
+  end
+
+  let(:brexit_business_taxon) do
+    {
+      "content_id" => "634fd193-8039-4a70-a059-919c34ff4bfc",
+      "base_path" => "/brexit/business-guidance",
+      "title" => "Brexit: business guidance",
+      "details" => {
+        "url_override" => "/guidance/brexit-guidance-for-businesses",
+      },
+    }
+  end
+
+  let(:brexit_individuals_taxon) do
+    {
+      "content_id" => "614b2e65-56ac-4f8d-bb9c-d1a14167ba25",
+      "base_path" => "/brexit/guidance-individuals",
+      "title" => "Brexit: guidance for individuals",
+      "details" => {
+        "url_override" => "/guidance/brexit-guidance-for-individuals",
+      },
     }
   end
 
@@ -68,11 +90,11 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
           end
         end
 
-        context "with transition taxon" do
-          let(:payload) { [transition_period_taxon] }
+        context "with brexit taxon" do
+          let(:payload) { [brexit_taxon] }
 
           it "returns the worker taxon" do
-            expect(subject.taxon).to eq(transition_period_taxon)
+            expect(subject.taxon).to eq(brexit_taxon)
           end
         end
 
@@ -81,6 +103,30 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
 
           it "returns the education taxon" do
             expect(subject.taxon).to eq(education_taxon)
+          end
+        end
+
+        context "with brexit_taxon taxon and brexit_individuals taxon" do
+          let(:payload) { [brexit_taxon, brexit_individuals_taxon] }
+
+          it "returns the brexit_individuals taxon" do
+            expect(subject.taxon).to eq(brexit_individuals_taxon)
+          end
+        end
+
+        context "with brexit_taxon taxon and brexit_business taxon" do
+          let(:payload) { [brexit_taxon, brexit_business_taxon] }
+
+          it "returns the brexit_business taxon" do
+            expect(subject.taxon).to eq(brexit_business_taxon)
+          end
+        end
+
+        context "with brexit_individuals taxon and brexit_business taxon" do
+          let(:payload) { [brexit_taxon, brexit_individuals_taxon, brexit_business_taxon] }
+
+          it "returns the brexit_taxon taxon" do
+            expect(subject.taxon).to eq(brexit_taxon)
           end
         end
 

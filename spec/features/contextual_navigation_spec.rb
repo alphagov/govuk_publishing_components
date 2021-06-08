@@ -28,6 +28,24 @@ describe "Contextual navigation" do
     and_i_see_the_brexit_call_to_action
   end
 
+  scenario "There is a page tagged to the brexit business child taxon" do
+    given_theres_a_page_tagged_to_the_brexit_business_taxon
+    and_i_visit_that_page
+    then_i_see_the_brexit_business_contextual_breadcrumbs
+  end
+
+  scenario "There is a page tagged to the brexit individuals child taxon" do
+    given_theres_a_page_tagged_to_the_brexit_individuals_taxon
+    and_i_visit_that_page
+    then_i_see_the_brexit_individuals_contextual_breadcrumbs
+  end
+
+  scenario "There is a page tagged to both brexit child taxons" do
+    given_theres_a_page_tagged_to_both_child_taxons
+    and_i_visit_that_page
+    and_i_see_the_brexit_contextual_breadcrumbs
+  end
+
   scenario "There's a step by step list" do
     given_theres_a_page_with_a_step_by_step
     and_i_visit_that_page
@@ -370,6 +388,26 @@ describe "Contextual navigation" do
     )
   end
 
+  def given_theres_a_page_tagged_to_the_brexit_business_taxon
+    tag_page_to_a_taxon(brexit_business_taxon)
+  end
+
+  def given_theres_a_page_tagged_to_the_brexit_individuals_taxon
+    tag_page_to_a_taxon(brexit_individuals_taxon)
+  end
+
+  def given_theres_a_page_tagged_to_both_child_taxons
+    tag_page_to_a_taxon(brexit_individuals_taxon, brexit_business_taxon)
+  end
+
+  def tag_page_to_a_taxon(*taxons)
+    content_store_has_random_item(
+      links: {
+        "taxons" => taxons,
+      },
+    )
+  end
+
   def given_there_is_a_non_step_by_step_parent_page
     @parent = not_step_by_step_content
   end
@@ -556,10 +594,21 @@ describe "Contextual navigation" do
     end
   end
 
-  def and_i_see_the_brexit_contextual_breadcrumbs
-    within ".gem-c-contextual-breadcrumbs" do
-      expect(page).to have_link(brexit_taxon["title"])
+  def and_i_see_the_brexit_contextual_breadcrumbs(taxon = nil)
+    title = taxon.nil? ? brexit_taxon["title"] : taxon["title"]
+
+    within ".gem-c-step-nav-header" do
+      expect(page).to have_content("Part of")
+      expect(page).to have_link(title)
     end
+  end
+
+  def then_i_see_the_brexit_business_contextual_breadcrumbs
+    and_i_see_the_brexit_contextual_breadcrumbs(brexit_business_taxon)
+  end
+
+  def then_i_see_the_brexit_individuals_contextual_breadcrumbs
+    and_i_see_the_brexit_contextual_breadcrumbs(brexit_individuals_taxon)
   end
 
   def and_i_see_the_brexit_call_to_action
@@ -676,6 +725,32 @@ describe "Contextual navigation" do
       "base_path" => "/brexit",
       "title" => "Brexit",
       "locale" => "en",
+    }
+  end
+
+  def brexit_business_taxon
+    {
+      "content_id" => "634fd193-8039-4a70-a059-919c34ff4bfc",
+      "api_path" => "/api/content/brexit/business-guidance",
+      "base_path" => "/brexit/business-guidance",
+      "title" => "Brexit: business guidance",
+      "locale" => "en",
+      "links" => {
+        "parent_taxons" => [brexit_taxon],
+      },
+    }
+  end
+
+  def brexit_individuals_taxon
+    {
+      "content_id" => "614b2e65-56ac-4f8d-bb9c-d1a14167ba25",
+      "api_path" => "/api/content/brexit/guidance-individuals",
+      "base_path" => "/brexit/guidance-individuals",
+      "title" => "Brexit: guidance for individuals",
+      "locale" => "en",
+      "links" => {
+        "parent_taxons" => [brexit_taxon],
+      },
     }
   end
 
