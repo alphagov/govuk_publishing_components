@@ -7,9 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
   
-## Unreleased
+## 24.13.3
 
-* Add event tracking to header elements ([#2110](https://github.com/alphagov/govuk_publishing_components/pull/2110) 
+* Add event tracking to header elements ([#2110](https://github.com/alphagov/govuk_publishing_components/pull/2110)) 
 
 ## 24.13.2
 
