@@ -85,4 +85,19 @@ describe "Search", type: :view do
     render_component(button_text: "Search please")
     assert_select ".gem-c-search__submit", text: "Search please"
   end
+
+  it "applies data attributes when provided" do
+    render_component(
+      button_text: "Some test text",
+      data_attributes: {
+        track_category: "track-category",
+        track_action: "track-action",
+        track_label: "track-label",
+      },
+    )
+
+    assert_select '.gem-c-search__submit[data-track-category="track-category"]'
+    assert_select '.gem-c-search__submit[data-track-action="track-action"]'
+    assert_select '.gem-c-search__submit[data-track-label="track-label"]'
+  end
 end

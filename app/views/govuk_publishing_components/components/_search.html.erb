@@ -10,6 +10,9 @@
   size ||= ""
   value ||= ""
 
+  data_attributes ||= {}
+  data_attributes[:module] = 'gem-track-click'
+
   classes = %w[gem-c-search govuk-!-display-none-print]
   classes << (shared_helper.get_margin_top)
   classes << (shared_helper.get_margin_bottom) if local_assigns[:margin_bottom]
@@ -40,9 +43,9 @@
       value: value,
     ) %>
     <div class="gem-c-search__item gem-c-search__submit-wrapper">
-      <button class="gem-c-search__submit" type="submit">
+      <%= tag.button class: "gem-c-search__submit", type: "submit", data: data_attributes do %>
         <%= button_text %>
-      </button>
+      <% end %>
     </div>
   </div>
 </div>

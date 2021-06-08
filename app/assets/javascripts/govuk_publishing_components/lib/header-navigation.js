@@ -21,8 +21,14 @@
 
         if (targetClass.indexOf('js-visible') !== -1) {
           target.setAttribute('class', targetClass.replace(/(^|\s)js-visible(\s|$)/, ''))
+          if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
+            window.GOVUK.analytics.trackEvent('headerClicked', 'searchClosed', { label: 'none' })
+          }
         } else {
           target.setAttribute('class', targetClass + ' js-visible')
+          if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
+            window.GOVUK.analytics.trackEvent('headerClicked', 'searchOpened', { label: 'none' })
+          }
         }
         if (sourceClass.indexOf('js-visible') !== -1) {
           this.setAttribute('class', sourceClass.replace(/(^|\s)js-visible(\s|$)/, ''))
