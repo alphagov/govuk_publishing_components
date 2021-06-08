@@ -35,7 +35,7 @@ module GovukPublishingComponents
       def breadcrumbs
         taxon && {
           title: taxon["title"],
-          path: taxon["base_path"],
+          path: breadcrumb_path,
           tracking_category: "breadcrumbClicked",
           tracking_action: tracking_action,
           tracking_label: content_item["base_path"],
@@ -95,6 +95,10 @@ module GovukPublishingComponents
       def tagged_to_both_brexit_child_taxons?
         t = priority_taxons.select { |taxon| brexit_child_taxon?(taxon) }
         t.uniq.count > 1
+      end
+
+      def breadcrumb_path
+        taxon.dig("details", "url_override").present? ? taxon.dig("details", "url_override") : taxon["base_path"]
       end
     end
   end

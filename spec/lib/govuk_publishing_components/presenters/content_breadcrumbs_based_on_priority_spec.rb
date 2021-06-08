@@ -167,6 +167,19 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
         it "returns the matching taxon" do
           expect(described_class.call(content)).to eq(breadcrumb_for(content, education_taxon))
         end
+
+        context "with a url_override field present" do
+          let(:content) { send(tagged_to_taxons, [brexit_individuals_taxon]) }
+          let(:url_override) { brexit_individuals_taxon["details"]["url_override"] }
+
+          it "it replaces the base path" do
+            breadcrumbs = breadcrumb_for(content, brexit_individuals_taxon)
+            breadcrumbs[:path] = url_override
+            breadcrumbs[:tracking_action] = "superBreadcrumb Brexitcitizen"
+
+            expect(described_class.call(content)).to eq(breadcrumbs)
+          end
+        end
       end
     end
   end
