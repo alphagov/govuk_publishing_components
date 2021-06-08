@@ -14,6 +14,10 @@
 ## Unreleased
 * Allow a custom link to be used on the header logo ([PR #2114](https://github.com/alphagov/govuk_publishing_components/pull/2114))
 
+## Unreleased
+
+* Add custom tracking action to Brexit superbreadcrumbs ([PR #2118](https://github.com/alphagov/govuk_publishing_components/pull/2118))
+
 ## 24.13.2
 
 * Add alternate Brexit callout text ([PR #2115](https://github.com/alphagov/govuk_publishing_components/pull/2115))
