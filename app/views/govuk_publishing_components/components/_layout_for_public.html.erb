@@ -4,6 +4,7 @@
   global_bar ||= nil
   html_lang ||= "en"
   layout_helper = GovukPublishingComponents::Presenters::PublicLayoutHelper.new(local_assigns)
+  logo_link ||= "/"
   navigation_items ||= []
   omit_header ||= false
   show_search = local_assigns.include?(:show_search) ? local_assigns[:show_search] : true
@@ -71,6 +72,7 @@
     <% unless omit_header %>
       <%= render "govuk_publishing_components/components/layout_header", {
         search: show_search,
+        logo_link: logo_link,
         navigation_items: navigation_items,
 
         # The (blue) bottom border needs to be underneath the emergency banner -

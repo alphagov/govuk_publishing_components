@@ -11,6 +11,9 @@
 
 * Add event tracking to header elements ([#2110](https://github.com/alphagov/govuk_publishing_components/pull/2110) 
 
+## Unreleased
+* Allow a custom link to be used on the header logo ([PR #2114](https://github.com/alphagov/govuk_publishing_components/pull/2114))
+
 ## 24.13.2
 
 * Add alternate Brexit callout text ([PR #2115](https://github.com/alphagov/govuk_publishing_components/pull/2115))
