@@ -6,11 +6,11 @@
 - Don't include changes that are purely internal. The CHANGELOG should be a
   useful summary for people upgrading their application, not a replication
   of the commit log.
+  
+## 24.13.5
 
-## Unreleased
-
-* Remove hide-only option from contextual guidance ([PR #2126](https://github.com/alphagov/govuk_publishing_components/pull/2126))
 * Fix click tracking in government_navigation ([PR #2129](https://github.com/alphagov/govuk_publishing_components/pull/2129))
+* Remove hide-only option from contextual guidance ([PR #2126](https://github.com/alphagov/govuk_publishing_components/pull/2126))
 * Add superbreadcrumb to content tagged to a Brexit child taxon ([PR #2123](https://github.com/alphagov/govuk_publishing_components/pull/2123))
 * Use the `init` API to initialise component modules ([PR #2095](https://github.com/alphagov/govuk_publishing_components/pull/2095))
 * Add smart_answer to the document types excluded from Brexit navigation ([PR #2133](https://github.com/alphagov/govuk_publishing_components/pull/2133))
