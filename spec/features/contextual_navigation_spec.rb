@@ -21,11 +21,11 @@ describe "Contextual navigation" do
     and_i_see_the_coronavirus_contextual_breadcrumbs_for_workers
   end
 
-  scenario "There is a transition taxon" do
-    given_theres_a_page_with_transition_taxon
+  scenario "There is a brexit taxon" do
+    given_theres_a_page_with_brexit_taxon
     and_i_visit_that_page
-    and_i_see_the_transition_contextual_breadcrumbs
-    and_i_see_the_transition_call_to_action
+    and_i_see_the_brexit_contextual_breadcrumbs
+    and_i_see_the_brexit_call_to_action
   end
 
   scenario "There's a step by step list" do
@@ -33,7 +33,7 @@ describe "Contextual navigation" do
     and_i_visit_that_page
     then_i_see_the_step_by_step
     and_the_step_by_step_header
-    and_i_do_not_see_the_transition_call_to_action
+    and_i_do_not_see_the_brexit_call_to_action
   end
 
   scenario "There's more than one step by step" do
@@ -98,13 +98,13 @@ describe "Contextual navigation" do
     and_i_see_the_coronavirus_contextual_breadcrumbs_for_business
   end
 
-  scenario "A page is tagged to the transition taxon and a step_by_step" do
-    given_theres_a_page_with_transition_taxon_tagged_to_step_by_step
+  scenario "A page is tagged to the brexit taxon and a step_by_step" do
+    given_theres_a_page_with_brexit_taxon_tagged_to_step_by_step
     and_i_visit_that_page
     then_i_see_the_step_by_step
     and_the_step_by_step_header
-    and_i_do_not_see_the_transition_contextual_breadcrumbs
-    and_i_see_the_transition_call_to_action
+    and_i_do_not_see_the_brexit_contextual_breadcrumbs
+    and_i_see_the_brexit_call_to_action
   end
 
   scenario "It's a HTML Publication with a parent with breadcrumbs" do
@@ -351,13 +351,13 @@ describe "Contextual navigation" do
     )
   end
 
-  def given_theres_a_page_with_transition_taxon_tagged_to_step_by_step
-    given_theres_a_page_with_transition_taxon(part_of_step_navs: true)
+  def given_theres_a_page_with_brexit_taxon_tagged_to_step_by_step
+    given_theres_a_page_with_brexit_taxon(part_of_step_navs: true)
   end
 
-  def given_theres_a_page_with_transition_taxon(part_of_step_navs: nil)
+  def given_theres_a_page_with_brexit_taxon(part_of_step_navs: nil)
     live_taxon = taxon_item
-    live_taxon["links"]["parent_taxons"] = [transition_taxon]
+    live_taxon["links"]["parent_taxons"] = [brexit_taxon]
     links = { "taxons" => [live_taxon] }
 
     if part_of_step_navs == true
@@ -550,26 +550,26 @@ describe "Contextual navigation" do
     end
   end
 
-  def and_i_do_not_see_the_transition_contextual_breadcrumbs
+  def and_i_do_not_see_the_brexit_contextual_breadcrumbs
     within ".gem-c-contextual-breadcrumbs" do
-      expect(page).not_to have_link(transition_taxon["title"])
+      expect(page).not_to have_link(brexit_taxon["title"])
     end
   end
 
-  def and_i_see_the_transition_contextual_breadcrumbs
+  def and_i_see_the_brexit_contextual_breadcrumbs
     within ".gem-c-contextual-breadcrumbs" do
-      expect(page).to have_link(transition_taxon["title"])
+      expect(page).to have_link(brexit_taxon["title"])
     end
   end
 
-  def and_i_see_the_transition_call_to_action
+  def and_i_see_the_brexit_call_to_action
     within ".gem-c-contextual-sidebar" do
       expect(page).to have_selector(".gem-c-contextual-sidebar__brexit-cta")
       expect(page).to have_css(".gem-c-contextual-sidebar__brexit-heading", text: I18n.t("components.related_navigation.transition.title"))
     end
   end
 
-  def and_i_do_not_see_the_transition_call_to_action
+  def and_i_do_not_see_the_brexit_call_to_action
     within ".gem-c-contextual-sidebar" do
       expect(page).not_to have_selector(".gem-c-contextual-sidebar__brexit-cta")
     end
@@ -669,12 +669,12 @@ describe "Contextual navigation" do
     }
   end
 
-  def transition_taxon
+  def brexit_taxon
     {
       "content_id" => "d6c2de5d-ef90-45d1-82d4-5f2438369eea",
       "api_path" => "/api/content/brexit",
       "base_path" => "/brexit",
-      "title" => "Brexit Transition",
+      "title" => "Brexit",
       "locale" => "en",
     }
   end
