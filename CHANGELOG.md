@@ -7,21 +7,16 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 24.13.4
 
 * Add tracking to government navigation ([PR #2127](https://github.com/alphagov/govuk_publishing_components/pull/2127))
 * Make jasmine tests pass in Internet Explorer ([PR #2090](https://github.com/alphagov/govuk_publishing_components/pull/2090))
+* Allow a custom link to be used on the header logo ([PR #2114](https://github.com/alphagov/govuk_publishing_components/pull/2114))
+* Add custom tracking action to Brexit superbreadcrumbs ([PR #2118](https://github.com/alphagov/govuk_publishing_components/pull/2118))
 
 ## 24.13.3
 
-* Add event tracking to header elements ([PR #2110](https://github.com/alphagov/govuk_publishing_components/pull/2110)) 
-
-## Unreleased
-* Allow a custom link to be used on the header logo ([PR #2114](https://github.com/alphagov/govuk_publishing_components/pull/2114))
-
-## Unreleased
-
-* Add custom tracking action to Brexit superbreadcrumbs ([PR #2118](https://github.com/alphagov/govuk_publishing_components/pull/2118))
+* Add event tracking to header elements ([PR #2110](https://github.com/alphagov/govuk_publishing_components/pull/2110))
 
 ## 24.13.2
 
