@@ -26,14 +26,14 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
 
     var boundOnClickUpButton = this.onClickUpButton.bind(this)
-    this.$upButtons.forEach(function (button) {
-      button.addEventListener('click', boundOnClickUpButton)
-    })
+    for (var u = 0; u < this.$upButtons.length; u++) {
+      this.$upButtons[u].addEventListener('click', boundOnClickUpButton)
+    }
 
     var boundOnClickDownButton = this.onClickDownButton.bind(this)
-    this.$downButtons.forEach(function (button) {
-      button.addEventListener('click', boundOnClickDownButton)
-    })
+    for (var d = 0; d < this.$downButtons.length; d++) {
+      this.$downButtons[d].addEventListener('click', boundOnClickDownButton)
+    }
   }
 
   ReorderableList.prototype.setupResponsiveChecks = function () {
@@ -85,9 +85,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   ReorderableList.prototype.updateOrderIndexes = function () {
     var $orderInputs = this.$module.querySelectorAll('.gem-c-reorderable-list__actions input')
-    $orderInputs.forEach(function (input, index) {
-      input.setAttribute('value', index + 1)
-    })
+    for (var i = 0; i < $orderInputs.length; i++) {
+      $orderInputs[i].setAttribute('value', i + 1)
+    }
   }
 
   ReorderableList.prototype.triggerEvent = function (element, eventName) {

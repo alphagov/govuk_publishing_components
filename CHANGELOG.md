@@ -6,10 +6,14 @@
 - Don't include changes that are purely internal. The CHANGELOG should be a
   useful summary for people upgrading their application, not a replication
   of the commit log.
-  
+
+## Unreleased
+
+* Make jasmine tests pass in Internet Explorer ([PR #2090](https://github.com/alphagov/govuk_publishing_components/pull/2090))
+
 ## 24.13.3
 
-* Add event tracking to header elements ([#2110](https://github.com/alphagov/govuk_publishing_components/pull/2110)) 
+* Add event tracking to header elements ([PR #2110](https://github.com/alphagov/govuk_publishing_components/pull/2110)) 
 
 ## Unreleased
 * Allow a custom link to be used on the header logo ([PR #2114](https://github.com/alphagov/govuk_publishing_components/pull/2114))

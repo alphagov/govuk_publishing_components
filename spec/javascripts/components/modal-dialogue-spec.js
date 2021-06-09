@@ -5,7 +5,7 @@ function keyPress (element, key) {
   var event = document.createEvent('Event')
   event.keyCode = key // Deprecated, prefer .key instead
   event.key = key
-  event.initEvent('keydown')
+  event.initEvent('keydown', true, false)
   element.dispatchEvent(event)
 }
 

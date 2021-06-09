@@ -96,6 +96,28 @@ describe('A stepnav module', function () {
   var expectedstepnavContentCount = 0
   var expectedstepnavLinkCount = 0
 
+  beforeAll(function () {
+    var store = {}
+    var mock = (function () {
+      return {
+        getItem: function (key) {
+          return store[key] || null
+        },
+        setItem: function (key, value) {
+          store[key] = value + ''
+          return store[key]
+        },
+        removeItem: function (key) {
+          delete store[key]
+        },
+        clear: function () {
+          store = {}
+        }
+      }
+    })()
+    Object.defineProperty(window, 'sessionStorage', { value: mock, configurable: true, enumerable: true, writable: true })
+  })
+
   beforeEach(function () {
     $element = $(html)
     new GOVUK.Modules.Gemstepnav().start($element)
@@ -400,19 +422,6 @@ describe('A stepnav module', function () {
 
   describe('when open steps have been remembered', function () {
     beforeEach(function () {
-      var store = {}
-
-      spyOn(window.sessionStorage, 'getItem').and.callFake(function (key) {
-        return store[key]
-      })
-      spyOn(window.sessionStorage, 'setItem').and.callFake(function (key, value) {
-        store[key] = value + ''
-        return store[key]
-      })
-      spyOn(window.sessionStorage, 'removeItem').and.callFake(function () {
-        store = {}
-      })
-
       $element = $(html)
       $element.attr('data-remember', true)
       $element.addClass('gem-c-step-nav--large')
@@ -452,19 +461,6 @@ describe('A stepnav module', function () {
 
   describe('when all steps have been opened and remembered', function () {
     beforeEach(function () {
-      var store = {}
-
-      spyOn(window.sessionStorage, 'getItem').and.callFake(function (key) {
-        return store[key]
-      })
-      spyOn(window.sessionStorage, 'setItem').and.callFake(function (key, value) {
-        store[key] = value + ''
-        return store[key]
-      })
-      spyOn(window.sessionStorage, 'removeItem').and.callFake(function () {
-        store = {}
-      })
-
       $element = $(html)
       $element.attr('data-remember', true)
       $element.addClass('gem-c-step-nav--large')
@@ -484,19 +480,6 @@ describe('A stepnav module', function () {
 
   describe('when the remember open steps option is applied to a small step nav', function () {
     beforeEach(function () {
-      var store = {}
-
-      spyOn(window.sessionStorage, 'getItem').and.callFake(function (key) {
-        return store[key]
-      })
-      spyOn(window.sessionStorage, 'setItem').and.callFake(function (key, value) {
-        store[key] = value + ''
-        return store[key]
-      })
-      spyOn(window.sessionStorage, 'removeItem').and.callFake(function () {
-        store = {}
-      })
-
       $element = $(html)
       $element.attr('data-remember', true)
       window.sessionStorage.setItem('unique-id', '["topic-step-one","topic-step-two","topic-step-three"]')
@@ -752,19 +735,6 @@ describe('A stepnav module', function () {
 
   describe('in a double dot situation where a clicked link is already stored on page load', function () {
     beforeEach(function () {
-      var store = {}
-
-      spyOn(window.sessionStorage, 'getItem').and.callFake(function (key) {
-        return store[key]
-      })
-      spyOn(window.sessionStorage, 'setItem').and.callFake(function (key, value) {
-        store[key] = value + ''
-        return store[key]
-      })
-      spyOn(window.sessionStorage, 'clear').and.callFake(function () {
-        store = {}
-      })
-
       $element = $(html)
       $element.find('.js-will-be-an-active-link').addClass('gem-c-step-nav__list-item--active')
       window.sessionStorage.setItem('govuk-step-nav-active-link_unique-id', '3.5')
@@ -788,19 +758,6 @@ describe('A stepnav module', function () {
   // i.e. it doesn't fail to find the stored link and remove the active styling from everything
   describe('in a double dot situation where a clicked link that is not highlighted is already stored on page load', function () {
     beforeEach(function () {
-      var store = {}
-
-      spyOn(window.sessionStorage, 'getItem').and.callFake(function (key) {
-        return store[key]
-      })
-      spyOn(window.sessionStorage, 'setItem').and.callFake(function (key, value) {
-        store[key] = value + ''
-        return store[key]
-      })
-      spyOn(window.sessionStorage, 'clear').and.callFake(function () {
-        store = {}
-      })
-
       $element = $(html)
       $element.find('.js-will-be-an-active-link').addClass('gem-c-step-nav__list-item--active')
       window.sessionStorage.setItem('govuk-step-nav-active-link_unique-id', 'definitelynotvalid')
