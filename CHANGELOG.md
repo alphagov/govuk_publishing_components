@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add tracking to government navigation ([PR #2127](https://github.com/alphagov/govuk_publishing_components/pull/2127))
 * Make jasmine tests pass in Internet Explorer ([PR #2090](https://github.com/alphagov/govuk_publishing_components/pull/2090))
 
 ## 24.13.3
