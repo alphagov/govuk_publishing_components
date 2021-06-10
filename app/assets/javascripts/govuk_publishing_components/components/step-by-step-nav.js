@@ -6,10 +6,8 @@ window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
-  function Gemstepnav () { }
-
-  Gemstepnav.prototype.start = function ($module) {
-    this.$module = $module[0]
+  function Gemstepnav ($module) {
+    this.$module = $module
     this.$module.actions = {} // stores text for JS appended elements 'show' and 'hide' on steps, and 'show/hide all' button
     this.$module.rememberShownStep = false
     this.$module.stepNavSize = false
@@ -18,7 +16,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.$module.activeStepClass = 'gem-c-step-nav__step--active'
     this.$module.activeLinkHref = '#content'
     this.$module.uniqueId = false
+  }
 
+  Gemstepnav.prototype.init = function () {
     // Indicate that js has worked
     this.$module.classList.add('gem-c-step-nav--active')
 

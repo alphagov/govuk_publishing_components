@@ -32,7 +32,7 @@ describe('Modal dialogue component', function () {
 
     document.body.appendChild(container)
     var element = document.querySelector('[data-module="modal-dialogue"]')
-    new GOVUK.Modules.ModalDialogue().start($(element))
+    new GOVUK.Modules.ModalDialogue(element).init()
   })
 
   afterEach(function () {

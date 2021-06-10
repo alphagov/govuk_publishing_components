@@ -14,7 +14,7 @@ describe('A show password component', function () {
           '</div>' +
         '</div>'
       )
-      new GOVUK.Modules.ShowPassword().start(element)
+      new GOVUK.Modules.ShowPassword(element[0]).init()
     })
 
     afterEach(function () {
@@ -67,7 +67,7 @@ describe('A show password component', function () {
         '</form>'
       )
       $('body').append(element)
-      new GOVUK.Modules.ShowPassword().start(element.find('.gem-c-show-password'))
+      new GOVUK.Modules.ShowPassword(element.find('.gem-c-show-password')[0]).init()
       $('body').on('submit', function (e) {
         e.preventDefault()
       })
@@ -104,7 +104,7 @@ describe('A show password component', function () {
         '</form>'
       )
       $('body').append(element)
-      new GOVUK.Modules.ShowPassword().start(element.find('.gem-c-show-password'))
+      new GOVUK.Modules.ShowPassword(element.find('.gem-c-show-password')[0]).init()
       $('body').on('submit', function (e) {
         e.preventDefault()
       })
@@ -137,7 +137,7 @@ describe('A show password component', function () {
           '</div>' +
         '</div>'
       )
-      new GOVUK.Modules.ShowPassword().start(element)
+      new GOVUK.Modules.ShowPassword(element[0]).init()
     })
 
     afterEach(function () {

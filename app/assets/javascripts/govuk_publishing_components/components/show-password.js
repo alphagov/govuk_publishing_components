@@ -2,11 +2,12 @@ window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
-  function ShowPassword () { }
-
-  ShowPassword.prototype.start = function ($module) {
-    this.$module = $module[0]
+  function ShowPassword ($module) {
+    this.$module = $module
     this.input = this.$module.querySelector('.gem-c-input')
+  }
+
+  ShowPassword.prototype.init = function () {
     this.$module.togglePassword = this.togglePassword.bind(this)
     this.$module.revertToPasswordOnFormSubmit = this.revertToPasswordOnFormSubmit.bind(this)
     this.input.classList.add('gem-c-input--with-password')

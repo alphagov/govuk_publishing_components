@@ -5,26 +5,20 @@ window.GOVUK.Modules = window.GOVUK.Modules || {}
 window.GOVUK.Modules.Details = window.GOVUKFrontend;
 
 (function (Modules) {
-  function GovukDetails () { }
+  function GovukDetails ($module) {
+    this.$module = $module
+    this.customTrackLabel = this.$module.getAttribute('data-track-label')
+    this.detailsClick = this.$module.querySelector('[data-details-track-click]')
+  }
 
-  GovukDetails.prototype.start = function ($module) {
-    this.$module = $module[0]
-
-    var customTrackLabel = this.$module.getAttribute('data-track-label')
-
-    // If a custom label has been provided, we can simply call the tracking module
-    if (customTrackLabel) {
+  GovukDetails.prototype.init = function () {
+    if (this.customTrackLabel) { // If a custom label has been provided, we can simply call the tracking module
       var trackDetails = new window.GOVUK.Modules.GemTrackClick()
-      trackDetails.start($module)
-    } else {
-      // If no custom label is set, we use the open/close status as the label
-      var detailsClick = this.$module.querySelector('[data-details-track-click]')
-
-      if (detailsClick) {
-        detailsClick.addEventListener('click', function (event) {
-          this.trackDefault(this.$module)
-        }.bind(this))
-      }
+      trackDetails.start($(this.$module))
+    } else if (this.detailsClick) { // If no custom label is set, we use the open/close status as the label
+      this.detailsClick.addEventListener('click', function (event) {
+        this.trackDefault(this.$module)
+      }.bind(this))
     }
   }
 

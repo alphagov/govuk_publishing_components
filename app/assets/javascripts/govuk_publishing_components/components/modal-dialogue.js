@@ -2,14 +2,16 @@ window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
-  function ModalDialogue () { }
-
-  ModalDialogue.prototype.start = function ($module) {
-    this.$module = $module[0]
+  function ModalDialogue ($module) {
+    this.$module = $module
     this.$dialogBox = this.$module.querySelector('.gem-c-modal-dialogue__box')
     this.$closeButton = this.$module.querySelector('.gem-c-modal-dialogue__close-button')
     this.$html = document.querySelector('html')
     this.$body = document.querySelector('body')
+  }
+
+  ModalDialogue.prototype.init = function () {
+    if (!this.$dialogBox || !this.$closeButton) return
 
     this.$module.resize = this.handleResize.bind(this)
     this.$module.open = this.handleOpen.bind(this)

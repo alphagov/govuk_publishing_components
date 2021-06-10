@@ -2,13 +2,14 @@ window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
-  function ContextualGuidance () { }
-
-  ContextualGuidance.prototype.start = function ($module) {
-    this.$module = $module[0]
+  function ContextualGuidance ($module) {
+    this.$module = $module
     this.$guidance = this.$module.querySelector('.gem-c-contextual-guidance__wrapper')
     this.$inputId = this.$guidance.getAttribute('for')
     this.$input = this.$module.querySelector('#' + this.$inputId)
+  }
+
+  ContextualGuidance.prototype.init = function () {
     if (!this.$input) return
     this.$input.addEventListener('focus', this.handleFocus.bind(this))
   }

@@ -769,8 +769,7 @@ describe('Feedback component', function () {
   }
 
   function loadFeedbackComponent () {
-    var feedback = new GOVUK.Modules.Feedback()
-    feedback.start($('.gem-c-feedback'))
+    new GOVUK.Modules.Feedback($('.gem-c-feedback')[0]).init()
   }
 
   function fillAndSubmitSomethingIsWrongForm () {

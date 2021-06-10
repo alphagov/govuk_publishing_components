@@ -7,15 +7,12 @@ window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
-  function GemAccordion () { }
-
-  GemAccordion.prototype.start = function ($module) {
-    this.$module = $module[0]
+  function GemAccordion ($module) {
+    this.$module = $module
     this.sectionClass = 'gem-c-accordion__section'
     this.moduleId = this.$module.getAttribute('id')
     this.sections = this.$module.querySelectorAll('.' + this.sectionClass)
     this.openAllButton = ''
-    this.browserSupportsSessionStorage = helper.checkForSessionStorage()
     this.controlsClass = 'gem-c-accordion__controls'
     this.openAllClass = 'gem-c-accordion__open-all'
     this.openAllTextClass = 'gem-c-accordion__open-all-text'
@@ -39,6 +36,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.$module.actions.showAllText = this.$module.getAttribute('data-show-all-text')
     this.$module.actions.hideAllText = this.$module.getAttribute('data-hide-all-text')
     this.$module.actions.thisSectionVisuallyHidden = this.$module.getAttribute('data-this-section-visually-hidden')
+  }
+
+  GemAccordion.prototype.init = function () {
+    this.browserSupportsSessionStorage = helper.checkForSessionStorage()
 
     // Indicate that JavaScript has worked
     this.$module.classList.add('gem-c-accordion--active')

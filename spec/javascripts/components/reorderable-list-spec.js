@@ -53,9 +53,9 @@ describe('Reorderable list component', function () {
 
     beforeEach(function () {
       window.matchMedia = mockMatchMedia
-      reorderableList = new GOVUK.Modules.ReorderableList()
+      reorderableList = new GOVUK.Modules.ReorderableList(element)
       spyOn(reorderableList, 'setupResponsiveChecks')
-      reorderableList.start($(element))
+      reorderableList.init()
     })
 
     afterEach(function () {
@@ -86,7 +86,7 @@ describe('Reorderable list component', function () {
 
     beforeEach(function () {
       window.matchMedia = mockMatchMedia
-      reorderableList = new GOVUK.Modules.ReorderableList()
+      reorderableList = new GOVUK.Modules.ReorderableList(element)
     })
 
     afterEach(function () {
@@ -95,7 +95,7 @@ describe('Reorderable list component', function () {
 
     it('should setup responsive checks', function () {
       spyOn(reorderableList, 'setupResponsiveChecks')
-      reorderableList.start($(element))
+      reorderableList.init()
 
       expect(reorderableList.setupResponsiveChecks).toHaveBeenCalled()
     })
@@ -117,9 +117,9 @@ describe('Reorderable list component', function () {
     var reorderableList
     var sortable
     beforeEach(function () {
-      reorderableList = new GOVUK.Modules.ReorderableList()
-      reorderableList.start($(element))
-      spyOnEvent($(element), 'reorder-drag')
+      reorderableList = new GOVUK.Modules.ReorderableList(element)
+      reorderableList.init()
+      spyOnEvent(element, 'reorder-drag')
       sortable = reorderableList.sortable
       sortable.sort(sortable.toArray().reverse())
       sortable.options.onSort() // not triggered by 'sort'
@@ -140,7 +140,7 @@ describe('Reorderable list component', function () {
     })
 
     it('should trigger a reorder-drag event', function () {
-      expect('reorder-drag').toHaveBeenTriggeredOn($(element))
+      expect('reorder-drag').toHaveBeenTriggeredOn(element)
     })
   })
 
@@ -148,8 +148,8 @@ describe('Reorderable list component', function () {
     var reorderableList
     var firstItemDownButton
     beforeEach(function () {
-      reorderableList = new GOVUK.Modules.ReorderableList()
-      reorderableList.start($(element))
+      reorderableList = new GOVUK.Modules.ReorderableList(element)
+      reorderableList.init()
       firstItemDownButton = document.querySelector('li:nth-child(1) .js-reorderable-list-down')
       spyOnEvent(firstItemDownButton, 'reorder-move-down')
       firstItemDownButton.click()
@@ -178,8 +178,8 @@ describe('Reorderable list component', function () {
     var reorderableList
     var secondItemUpButton
     beforeEach(function () {
-      reorderableList = new GOVUK.Modules.ReorderableList()
-      reorderableList.start($(element))
+      reorderableList = new GOVUK.Modules.ReorderableList(element)
+      reorderableList.init()
       secondItemUpButton = document.querySelector('li:nth-child(2) .js-reorderable-list-up')
       spyOnEvent(secondItemUpButton, 'reorder-move-up')
       secondItemUpButton.click()

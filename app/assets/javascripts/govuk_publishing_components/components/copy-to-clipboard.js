@@ -2,23 +2,24 @@ window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
-  function CopyToClipboard () { }
+  function CopyToClipboard ($module) {
+    this.$module = $module
+    this.$input = this.$module.querySelector('.gem-c-input')
+    this.$copyButton = this.$module.querySelector('.gem-c-button')
+  }
 
-  CopyToClipboard.prototype.start = function ($module) {
-    this.$module = $module[0]
+  CopyToClipboard.prototype.init = function () {
+    if (!this.$input || !this.$copyButton) return
 
-    var input = this.$module.querySelector('.gem-c-input')
-    var copyButton = this.$module.querySelector('.gem-c-button')
+    this.$input.addEventListener('click', function () {
+      this.$input.select()
+    }.bind(this))
 
-    input.addEventListener('click', function () {
-      input.select()
-    })
-
-    copyButton.addEventListener('click', function (event) {
+    this.$copyButton.addEventListener('click', function (event) {
       event.preventDefault()
-      input.select()
+      this.$input.select()
       document.execCommand('copy')
-    })
+    }.bind(this))
   }
 
   Modules.CopyToClipboard = CopyToClipboard

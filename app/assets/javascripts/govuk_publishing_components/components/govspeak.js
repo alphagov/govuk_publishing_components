@@ -2,11 +2,11 @@ window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
-  function Govspeak () { }
+  function Govspeak ($module) {
+    this.$module = $module
+  }
 
-  Govspeak.prototype.start = function ($module) {
-    this.$module = $module[0]
-
+  Govspeak.prototype.init = function () {
     if (this.$module.className.indexOf('disable-youtube') === -1) {
       this.embedYoutube()
     }
