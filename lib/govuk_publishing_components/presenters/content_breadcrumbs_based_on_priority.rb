@@ -8,13 +8,9 @@ module GovukPublishingComponents
         education_coronavirus: "272308f4-05c8-4d0d-abc7-b7c2e3ccd249",
         worker_coronavirus: "b7f57213-4b16-446d-8ded-81955d782680",
         business_coronavirus: "65666cdf-b177-4d79-9687-b9c32805e450",
-        transition_period: "d6c2de5d-ef90-45d1-82d4-5f2438369eea",
-      }.freeze
-
-      BREXIT_TAXONS = {
-        brexit: "d6c2de5d-ef90-45d1-82d4-5f2438369eea",
         brexit_business: "634fd193-8039-4a70-a059-919c34ff4bfc",
-        brexit_citizen: "614b2e65-56ac-4f8d-bb9c-d1a14167ba25",
+        brexit_individuals: "614b2e65-56ac-4f8d-bb9c-d1a14167ba25",
+        brexit_taxon: "d6c2de5d-ef90-45d1-82d4-5f2438369eea",
       }.freeze
 
       # Returns the highest priority taxon that has a content_id matching those in PRIORITY_TAXONS
@@ -39,7 +35,7 @@ module GovukPublishingComponents
       def breadcrumbs
         taxon && {
           title: taxon["title"],
-          path: taxon["base_path"],
+          path: breadcrumb_path,
           tracking_category: "breadcrumbClicked",
           tracking_action: tracking_action,
           tracking_label: content_item["base_path"],
@@ -52,6 +48,8 @@ module GovukPublishingComponents
       def preferred_taxon
         if preferred_priority_taxon
           priority_taxons.find { |t| t["content_id"] == preferred_priority_taxon }
+        elsif tagged_to_both_brexit_child_taxons?
+          priority_taxons.find { |t| t["content_id"] == PRIORITY_TAXONS[:brexit_taxon] }
         end
       end
 
@@ -74,16 +72,33 @@ module GovukPublishingComponents
         PRIORITY_TAXONS.values.include?(taxon["content_id"])
       end
 
+      def brexit_child_taxon?(taxon)
+        brexit_child_taxons.include?(taxon["content_id"])
+      end
+
+      def brexit_child_taxons
+        [PRIORITY_TAXONS[:brexit_business], PRIORITY_TAXONS[:brexit_individuals]]
+      end
+
       def preferred_priority_taxon
         query_parameters["priority-taxon"] if query_parameters
       end
 
       def tracking_action
         action = %w[superBreadcrumb]
-        action << "Brexitbusiness" if taxon["content_id"] == BREXIT_TAXONS[:brexit_business]
-        action << "Brexitcitizen" if taxon["content_id"] == BREXIT_TAXONS[:brexit_business]
-        action << "Brexitbusinessandcitizen" if taxon["content_id"] == BREXIT_TAXONS[:brexit]
+        action << "Brexitbusiness" if taxon["content_id"] == PRIORITY_TAXONS[:brexit_business]
+        action << "Brexitcitizen" if taxon["content_id"] == PRIORITY_TAXONS[:brexit_individuals]
+        action << "Brexitbusinessandcitizen" if taxon["content_id"] == PRIORITY_TAXONS[:brexit_taxon]
         action.join(" ")
+      end
+
+      def tagged_to_both_brexit_child_taxons?
+        t = priority_taxons.select { |taxon| brexit_child_taxon?(taxon) }
+        t.uniq.count > 1
+      end
+
+      def breadcrumb_path
+        taxon.dig("details", "url_override").present? ? taxon.dig("details", "url_override") : taxon["base_path"]
       end
     end
   end
