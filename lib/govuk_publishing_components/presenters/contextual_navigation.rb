@@ -194,6 +194,7 @@ module GovukPublishingComponents
           maib_report
           raib_report
           simple_smart_answer
+          smart_answer
           transaction
         ]
       end
