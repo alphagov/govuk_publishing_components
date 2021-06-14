@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix misaligned crown in heading component ([PR #2134](https://github.com/alphagov/govuk_publishing_components/pull/2134))
+
 ## 24.18.1
 
 * Update LUX to activate when usage cookies are accepted ([PR #2154](https://github.com/alphagov/govuk_publishing_components/pull/2154)) PATCH
