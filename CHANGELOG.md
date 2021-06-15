@@ -6,7 +6,11 @@
 - Don't include changes that are purely internal. The CHANGELOG should be a
   useful summary for people upgrading their application, not a replication
   of the commit log.
-  
+
+## Unreleased
+
+ * Add real user metrics using Speedcurve's LUX ([PR 2135](https://github.com/alphagov/govuk_publishing_components/pull/2135))
+
 ## 24.13.5
 
 * Fix click tracking in government_navigation ([PR #2129](https://github.com/alphagov/govuk_publishing_components/pull/2129))

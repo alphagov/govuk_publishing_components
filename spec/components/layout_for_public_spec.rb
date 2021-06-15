@@ -96,4 +96,59 @@ describe "Layout for public", type: :view do
 
     assert_select ".govuk-header__link--homepage[href='https://example.com/jam']"
   end
+
+  it "contains real user metrics loader script" do
+    visit "/public"
+    assert page.has_selector?("html > head > script[src*='rum-loader']", visible: :all)
+  end
+
+  it "does not contain real user metrics scripts before cookie banner interacted with" do
+    Capybara.current_driver = Capybara.javascript_driver
+
+    visit "/public"
+
+    assert page.has_selector?("html > head > script[src*='rum-loader']", visible: :all)
+    assert page.has_no_selector?("html > head > script[src*='lux/lux']", visible: :all)
+    assert page.has_no_selector?("html > head > script[src*='lux/lux-polyfill']", visible: :all)
+  end
+
+  it "does not contain real user metrics scripts on the page where cookies are accepted" do
+    Capybara.current_driver = Capybara.javascript_driver
+
+    visit "/public"
+
+    click_button "Accept additional cookies"
+
+    assert page.has_selector?("html > head > script[src*='rum-loader']", visible: :all)
+    assert page.has_no_selector?("html > head > script[src*='lux/lux']", visible: :all)
+    assert page.has_no_selector?("html > head > script[src*='lux/lux-polyfill']", visible: :all)
+  end
+
+  it "contains real user metrics scripts on page after cookies opted in" do
+    Capybara.current_driver = Capybara.javascript_driver
+
+    visit "/public"
+
+    click_button "Accept additional cookies"
+
+    visit "/public"
+
+    assert page.has_selector?("html > head > script[src*='rum-loader']", visible: :all)
+    assert page.has_selector?("html > head > script[src*='lux/lux']", visible: :all)
+    assert page.has_selector?("html > head > script[src*='lux/lux-polyfill']", visible: :all)
+  end
+
+  it "does not contain real user metrics scripts on page after cookies opted out" do
+    Capybara.current_driver = Capybara.javascript_driver
+
+    visit "/public"
+
+    click_button "Reject additional cookies"
+
+    visit "/public"
+
+    assert page.has_selector?("html > head > script[src*='rum-loader']", visible: :all)
+    assert page.has_no_selector?("html > head > script[src*='lux/lux']", visible: :all)
+    assert page.has_no_selector?("html > head > script[src*='lux/lux-polyfill']", visible: :all)
+  end
 end

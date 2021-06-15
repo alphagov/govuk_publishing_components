@@ -1,0 +1,36 @@
+(function() {
+  var marker = document.getElementsByTagName('script')[0]
+  var scripts = [
+    '<%= path_to_javascript("govuk_publishing_components/vendor/lux/lux-polyfill") %>',
+    '<%= path_to_javascript("govuk_publishing_components/vendor/lux/lux") %>'
+  ]
+  var parsedCookie = (function() {
+    try {
+      var cookies = document.cookie.split(';')
+
+      for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i].replace(/\s/g, '') // Remove all whitespace.
+        var cookieName = 'cookies_policy='
+
+        if (cookie.indexOf(cookieName) === 0) {
+          return JSON.parse(cookie.substring(cookieName.length))
+        }
+      }
+    } catch (error) {
+      console.error(error)
+    }
+
+    return {}
+  })()
+
+  if (parsedCookie.usage === true) {
+    for (var i = 0; i < scripts.length; i++) {
+      var script = document.createElement('script')
+      script.src = scripts[i]
+      script.async = true
+      script.defer = true
+
+      marker.parentNode.insertBefore(script, marker)
+    }
+  }
+})()
