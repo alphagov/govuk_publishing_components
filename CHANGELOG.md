@@ -35,6 +35,13 @@
 
 * Add event tracking to header elements ([PR #2110](https://github.com/alphagov/govuk_publishing_components/pull/2110))
 
+## Unreleased
+
+* **BREAKING:** Group tracking scripts in `govuk_publishing_components/analytics` ([PR #2117](https://github.com/alphagov/govuk_publishing_components/pull/2117))
+
+  You must make the following changes when you migrate to this release:
+  - Remove any direct reference to `govuk_publishing_components/lib/track-click` and make sure `govuk_publishing_components/analytics` is imported
+
 ## 24.13.2
 
 * Add alternate Brexit callout text ([PR #2115](https://github.com/alphagov/govuk_publishing_components/pull/2115))
