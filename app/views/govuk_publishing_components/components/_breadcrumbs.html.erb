@@ -16,17 +16,21 @@
   <%= raw JSON.pretty_generate(breadcrumb_presenter.structured_data) %>
 </script>
 
-<div class="<%= classes.join(" ") %>" data-module="gem-track-click">
+<nav class="<%= classes.join(" ") %>" data-module="gem-track-click" aria-label="Breadcrumb">
   <ol class="govuk-breadcrumbs__list">
     <% breadcrumbs.each_with_index do |crumb, index| %>
       <% breadcrumb = GovukPublishingComponents::Presenters::Breadcrumb.new(crumb, index) %>
         <li class="govuk-breadcrumbs__list-item">
         <% if breadcrumb.is_link? %>
+          <% if index == breadcrumbs.size - 1 %>
+            <% last_link = index ? "page" : "" %>
+          <% end %>
           <%= link_to(
             breadcrumb[:title],
             breadcrumb.path,
             data: breadcrumb.tracking_data(breadcrumbs.length),
             class: "govuk-breadcrumbs__link",
+            "aria-current": last_link,
           ) %>
         <% else %>
           <%= breadcrumb[:title] %>
@@ -34,4 +38,4 @@
         </li>
     <% end %>
   </ol>
-</div>
+</nav>
