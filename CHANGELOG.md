@@ -7,8 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 24.14.0
 
+* Add real user metrics using Speedcurve's LUX ([PR #2135](https://github.com/alphagov/govuk_publishing_components/pull/2135))
 * Fix header tracking labels ([PR #2136](https://github.com/alphagov/govuk_publishing_components/pull/2136))
 
 ## 24.13.5
