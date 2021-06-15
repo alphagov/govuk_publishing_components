@@ -1,13 +1,22 @@
 /* eslint-disable */
 
-// ! Remember to keep the settings at the end of this file when updating LUX.
-//
-// The settings are:
-//  * `LUX.customerid = 47044334` to let LUX know who this is
-//  * `LUX.beaconMode = "simple"` to fire the beacon as an image, which is now
-//    allowed by the content security policy.
-//  * `LUX.debug = false` turns debugging on and off. Left set to false - and
-//    kept in the file so it's easier to remember that this can be turned on.
+/*
+ * Part of Speedcurve's LUX script, which allows us to run real user metrics on
+ * pages using the public layout template.
+ *
+ * See docs/real-user-metrics.md for more information.
+ */
+
+
+/* ! Remember to keep the settings at the end of this file when updating LUX.
+ *
+ * The settings are:
+ *  * `LUX.customerid = 47044334` to let LUX know who this is
+ *  * `LUX.beaconMode = "simple"` to fire the beacon as an image, which is now
+ *    allowed by the content security policy.
+ *  * `LUX.debug = false` turns debugging on and off. Left set to false - and
+ *    kept in the file so it's easier to remember that this can be turned on.
+ */
 
 var LUX_t_start = Date.now(),
     LUX = window.LUX || {};

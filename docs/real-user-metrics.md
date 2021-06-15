@@ -10,11 +10,13 @@ The LUX scripts should only be loaded when a user has opted into usage tracking.
 
 ## Custom changes when updating LUX
 
-The scripts for the real user metrics are loaded from our servers - this allows us to know what is contained within the scripts and reduce the risk of unwelcome things being added to GOV.UK
+The scripts for the real user metrics are loaded from our servers - this allows us to know what is contained within the scripts and reduce the risk of unwelcome things being added to GOV.UK.
 
 Because of this, the scripts are audited before being updated and then two extra lines are added to make sure it works correctly. These two lines set the customer ID and turn on beacon mode.
 
 ### Customer ID
+
+The customer ID is an identifier for the site using LUX, not for the user visiting the site. It won't change from page to page, or from visitor to visitor.
 
 When loading `lux.js` from Speedcurve's CDN, the customer ID is appended to the end of the URI as a query string. The script looks for a script in the DOM with a source of `lux.js`, and from that extracts the customer ID.
 
@@ -55,6 +57,6 @@ LUX.getDebug()
 
 [LUX]: https://speedcurve.com/features/lux/
 
-[Public Layout component]: components.publishing.service.gov.uk/component-guide/layout_for_public
+[Public Layout component]: https://components.publishing.service.gov.uk/component-guide/layout_for_public
 
 [csp-govuk-app-config]: https://github.com/alphagov/govuk_app_config/blob/87e445eccee5fba2449a170d5ba628e8a380fcb8/lib/govuk_app_config/govuk_content_security_policy.rb#L36-L38

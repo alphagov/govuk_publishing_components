@@ -1,5 +1,12 @@
 /* eslint-disable */
 
+/*
+ * Part of Speedcurve's LUX script, which allows us to run real user metrics on
+ * pages using the public layout template.
+ *
+ * See docs/real-user-metrics.md for more information.
+ */
+
 LUX = (function () {
   var a =
     "undefined" !== typeof LUX && "undefined" !== typeof LUX.gaMarks
