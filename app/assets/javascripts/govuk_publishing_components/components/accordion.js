@@ -119,11 +119,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     var showIcons = document.createElement('span')
     showIcons.classList.add(this.sectionShowHideIconClass, this.toggleLinkClass)
 
-    // Add pause after heading for assistive technology.
-    var srPause = document.createElement('span')
-    srPause.classList.add('govuk-visually-hidden')
-    srPause.innerHTML = ', '
-
     // Build additional copy for assistive technology
     var srAdditionalCopy = document.createElement('span')
     srAdditionalCopy.classList.add('govuk-visually-hidden')
@@ -140,6 +135,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     showIcons.appendChild(icon)
     wrapperShowHideIcon.classList.add(this.sectionShowHideTextClass)
     showIcons.insertBefore(wrapperShowHideIcon, showIcons.childNodes[0] || null)
+    showIcons.appendChild(srAdditionalCopy)
 
     // Copy all attributes (https://developer.mozilla.org/en-US/docs/Web/API/Element/attributes) from span to button
     for (var i = 0; i < span.attributes.length; i++) {
@@ -151,7 +147,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     button.innerHTML = span.innerHTML
     heading.removeChild(span)
     heading.appendChild(button)
-    button.appendChild(srPause)
 
     // If summary content exists add to DOM in correct order
     if (typeof (summary) !== 'undefined' && summary !== null) {
@@ -160,7 +155,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
 
     button.appendChild(showIcons)
-    button.appendChild(srAdditionalCopy)
   }
 
   // When section toggled, set and store state

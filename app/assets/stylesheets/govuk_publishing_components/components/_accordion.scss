@@ -207,12 +207,17 @@ $gem-c-accordion-bottom-border-width: 1px;
 
   // Add toggle link with Chevron icon on right.
   .gem-c-accordion__toggle-link {
-    display: block;
+    display: inline;
     color: $govuk-link-colour;
     text-transform: capitalize;
     margin-top: govuk-spacing(1);
     margin-bottom: govuk-spacing(1);
     @include govuk-font($size: 16, $line-height: 1);
+
+    &:before {
+      content: "";
+      display: block;
+    }
 
     &:active {
       background: $govuk-link-active-colour;
