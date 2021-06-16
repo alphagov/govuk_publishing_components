@@ -47,3 +47,23 @@
     }
   }
 }).call(this)
+
+;(function () {
+  var $menuToggleButtons = document.querySelectorAll('.govuk-js-header-toggle')
+
+  for (var j = 0; j < $menuToggleButtons.length; j++) {
+    var element = $menuToggleButtons[j]
+
+    element.addEventListener('click', function (event) {
+      var expanded = event.target.getAttribute('aria-expanded')
+
+      if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
+        if (expanded === 'true') {
+          window.GOVUK.analytics.trackEvent('headerClicked', 'menuClosed', { label: 'none' })
+        } else {
+          window.GOVUK.analytics.trackEvent('headerClicked', 'menuOpened', { label: 'none' })
+        }
+      }
+    })
+  }
+})()
