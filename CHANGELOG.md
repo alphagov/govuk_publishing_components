@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Added tracking for the header menu toggle ([PR 2143](https://github.com/alphagov/govuk_publishing_components/pull/2143))
+
 ## 24.15.0
 
  * Set LUX's sampling rate to 1% ([PR 2145](https://github.com/alphagov/govuk_publishing_components/pull/2145))
