@@ -8,19 +8,32 @@
  */
 
 
-/* ! Remember to keep the settings at the end of this file when updating LUX.
+/* ! Remember to keep these settings at the end of this file when updating LUX:
  *
- * The settings are:
  *  * `LUX.customerid = 47044334` to let LUX know who this is
  *  * `LUX.beaconMode = "simple"` to fire the beacon as an image, which is now
  *    allowed by the content security policy.
  *  * `LUX.debug = false` turns debugging on and off. Left set to false - and
  *    kept in the file so it's easier to remember that this can be turned on.
+ *
+ * ! And the sample rate needs to be set inside the main function that's
+ *   assigned to `LUX`:
+
+*  * `LUX.samplerate = 1` to set sample rate to 1% of users.
  */
 
 var LUX_t_start = Date.now(),
     LUX = window.LUX || {};
 LUX = function() {
+    // -------------------------------------------------------------------------
+    // Settings
+    // -------------------------------------------------------------------------
+    // Set the sample rate to 1% to avoid all events being sent.
+    LUX.samplerate = 1
+    // -------------------------------------------------------------------------
+    /// End
+    // -------------------------------------------------------------------------
+
     var gaLog = [];
     dlog("lux.js evaluation start.");
     var version = "214",
@@ -829,6 +842,10 @@ LUX = function() {
 }();
 var LUX_t_end = Date.now();
 
+// -----------------------------------------------------------------------------
+// More settings
+// -----------------------------------------------------------------------------
+//
 // This ID usually appended to the end of the lux.js as a query string when
 // using the SpeedCurve hosted version - but we have to include it here as this
 // is self hosted.
@@ -842,3 +859,10 @@ LUX.beaconMode = "simple";
 // `LUX.getDebug()` in the browser's console will show the history of what's
 // happened.
 LUX.debug = false;
+
+// Forces sampling - useful for when used with `debug = true`
+// LUX.forceSample()
+
+// -----------------------------------------------------------------------------
+// End of more settings
+// -----------------------------------------------------------------------------
