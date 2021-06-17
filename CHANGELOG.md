@@ -6,7 +6,11 @@
 - Don't include changes that are purely internal. The CHANGELOG should be a
   useful summary for people upgrading their application, not a replication
   of the commit log.
-  
+
+## Unreleased
+
+ * Set LUX's sampling rate to 1% ([PR 2145](https://github.com/alphagov/govuk_publishing_components/pull/2145))
+
 ## 24.14.1
 
 * Fix wrong label value for event tracking on menu button ([PR #2139](https://github.com/alphagov/govuk_publishing_components/pull/2139))

@@ -40,7 +40,19 @@ Setting the beacon mode to `"simple"` turns the non-default image method on:
 LUX.beaconMode = 'simple'
 ```
 
-### Debug (bonus mode)
+### Sample rate
+
+LUX defaults to sending every event to Speedcurve - this can be changed by setting `LUX.samplerate` to a integer:
+
+```javascript
+LUX.samplerate = 1 // Whole number from 1 to 100.
+```
+
+This then only sends 1% of visits.
+
+**This must be set at the top of the main `LUX` function or it will default to 100% sample rate.**
+
+### Debugging (bonus mode)
 
 ```javascript
 LUX.debug = true
@@ -51,6 +63,12 @@ Usefully, running `LUX.getDebug()` in the browser's console will show the histor
 
 ```javascript
 LUX.getDebug()
+```
+
+Sampling can also be forced by placing `LUX.forceSample()` at the end of the file:
+
+```javascript
+LUX.forceSample()
 ```
 
 [Performance API]: https://developer.mozilla.org/en-US/docs/Web/API/Performance_API
