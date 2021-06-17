@@ -180,6 +180,12 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
             expect(described_class.call(content)).to eq(breadcrumbs)
           end
         end
+
+        context "when page is tagged to a brexit taxon" do
+          it "adds custom dimension tracking" do
+
+          end
+        end
       end
     end
   end

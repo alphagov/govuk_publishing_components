@@ -39,8 +39,7 @@ module GovukPublishingComponents
           tracking_category: "breadcrumbClicked",
           tracking_action: tracking_action,
           tracking_label: content_item["base_path"],
-          tracking_dimension_enabled: false,
-        }
+        }.merge(custom_dimension_tracking)
       end
 
     private
@@ -80,6 +79,10 @@ module GovukPublishingComponents
         [PRIORITY_TAXONS[:brexit_business], PRIORITY_TAXONS[:brexit_individuals]]
       end
 
+      def brexit_taxons
+        brexit_child_taxons << PRIORITY_TAXONS[:brexit_taxon]
+      end
+
       def preferred_priority_taxon
         query_parameters["priority-taxon"] if query_parameters
       end
@@ -90,6 +93,16 @@ module GovukPublishingComponents
         action << "Brexitcitizen" if taxon["content_id"] == PRIORITY_TAXONS[:brexit_individuals]
         action << "Brexitbusinessandcitizen" if taxon["content_id"] == PRIORITY_TAXONS[:brexit_taxon]
         action.join(" ")
+      end
+
+      def custom_dimension_tracking
+        tracking = { tracking_dimension_enabled: false }
+        if brexit_taxons.include?(taxon["content_id"])
+          tracking[:tracking_dimension_enabled] = true
+          tracking[:tracking_dimension] = "customTrackingDimension"
+          tracking[:tracking_dimension_index] = 111
+        end
+        tracking
       end
 
       def tagged_to_both_brexit_child_taxons?
