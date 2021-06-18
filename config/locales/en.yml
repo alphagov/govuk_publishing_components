@@ -12,20 +12,14 @@ en:
     article_schema:
       scoped_search_description: Search within %{title}
     attachment:
-      opendocument_html: This file is in an <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link'>OpenDocument</a> format
+      opendocument_html: This file is in an <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a> format
       order_a_copy: Order a copy
       page:
         one: 1 page
-        other: '%{count} pages'
+        other: "%{count} pages"
       reference: 'Ref: %{reference}'
       request_format_cta: Request an accessible format.
-      request_format_details_html: If you use assistive technology (such as a screen
-        reader) and need a version of this document in a more accessible format, please
-        email <a href='mailto:%{alternative_format_contact_email}' target='_blank'
-        class='govuk-link'>%{alternative_format_contact_email}</a>. Please tell us
-        what format you need. It will help us if you say what assistive technology
-        you use.
+      request_format_details_html: If you use assistive technology (such as a screen reader) and need a version of this document in a more accessible format, please email <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Please tell us what format you need. It will help us if you say what assistive technology you use.
       request_format_text: This file may not be suitable for users of assistive technology.
     back_link:
       back: Back
@@ -44,28 +38,24 @@ en:
       buttons:
         accept_cookies: Accept additional cookies
         reject_cookies: Reject additional cookies
-      hide: Hide this message
-      text:
-        - We use some essential cookies to make this website work.
-        - We’d like to set additional cookies to understand how you use GOV.UK, remember your settings and improve government services.
-        - We also use cookies set by other sites to help us deliver content from their services.
       confirmation_message: You can %{link} at any time.
       confirmation_message_link: change your cookie settings
+      hide: Hide this message
+      text:
+      - We use some essential cookies to make this website work.
+      - We’d like to set additional cookies to understand how you use GOV.UK, remember your settings and improve government services.
+      - We also use cookies set by other sites to help us deliver content from their services.
       title: Cookies on GOV.UK
     feedback:
       close: Close
-      dont_include_personal_info: Don’t include personal or financial information
-        like your National Insurance number or credit card details.
+      dont_include_personal_info: Don’t include personal or financial information like your National Insurance number or credit card details.
       email_address: Email address
       help_us_improve_govuk: Help us improve GOV.UK
       is_not_useful: this page is not useful
       is_this_page_useful: Is this page useful?
       is_useful: this page is useful
       maybe: Maybe
-      more_about_visit: To help us improve GOV.UK, we’d like to know more about your
-        visit today. We’ll send you a link to a feedback form. It will take only 2
-        minutes to fill in. Don’t worry we won’t send you spam or share your email
-        address with anyone.
+      more_about_visit: To help us improve GOV.UK, we’d like to know more about your visit today. We’ll send you a link to a feedback form. It will take only 2 minutes to fill in. Don’t worry we won’t send you spam or share your email address with anyone.
       'no': 'No'
       send: Send
       send_me_survey: Send me the survey
