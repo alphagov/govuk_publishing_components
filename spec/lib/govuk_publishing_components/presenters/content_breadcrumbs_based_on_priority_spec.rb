@@ -192,7 +192,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
 
             breadcrumbs[:path] = "/guidance/brexit-guidance-for-individuals"
             breadcrumbs[:tracking_action] = "superBreadcrumb Brexitcitizen"
-            breadcrumbs[:tracking_dimension] = "customTrackingDimension"
+            breadcrumbs[:tracking_dimension] = "Brexitcitizen"
             breadcrumbs[:tracking_dimension_enabled] = true
             breadcrumbs[:tracking_dimension_index] = 111
             expect(described_class.call(content)).to eq(breadcrumbs)
