@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add a custom dimension to clicks on super breadcrumbs tagged to a brexit taxon ([PR #2149](https://github.com/alphagov/govuk_publishing_components/pull/2149))
+
 ## 24.15.1
 
 * Added tracking for the header menu toggle ([PR 2143](https://github.com/alphagov/govuk_publishing_components/pull/2143))
