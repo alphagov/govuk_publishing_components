@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 24.15.2
 
 * Update LUX JavaScript from v214 to v216 ([PR #2152](https://github.com/alphagov/govuk_publishing_components/pull/2152))
 * Add a custom dimension to clicks on super breadcrumbs tagged to a brexit taxon ([PR #2149](https://github.com/alphagov/govuk_publishing_components/pull/2149))
