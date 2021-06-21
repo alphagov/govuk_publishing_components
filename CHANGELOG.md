@@ -10,7 +10,8 @@
 ## Unreleased
 
 * Add tracking on search submit to public layout ([PR #2157](https://github.com/alphagov/govuk_publishing_components/pull/2157))
-*Turn off LUX's debug mode ([PR #2156](https://github.com/alphagov/govuk_publishing_components/pull/2156))
+* Turn off LUX's debug mode ([PR #2156](https://github.com/alphagov/govuk_publishing_components/pull/2156))
+* Add scroll tracking for the brexit child taxon pages ([PR #2155](https://github.com/alphagov/govuk_publishing_components/pull/2155))
 
 ## 24.15.2
 
