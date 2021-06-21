@@ -24,7 +24,7 @@
 
 var LUX_t_start = Date.now(),
     LUX = window.LUX || {};
-LUX = function() {
+LUX = (function () {
     // -------------------------------------------------------------------------
     // Settings
     // -------------------------------------------------------------------------
@@ -34,813 +34,969 @@ LUX = function() {
     /// End
     // -------------------------------------------------------------------------
 
-    var gaLog = [];
-    dlog("lux.js evaluation start.");
-    var version = "214",
-        _errorUrl = "https://lux.speedcurve.com/error/",
-        nErrors = 0,
-        maxErrors = 5;
-
-    function errorHandler(e) {
-        nErrors++, e && void 0 !== e.filename && void 0 !== e.message && (-1 !== e.filename.indexOf("/lux.js?") || -1 !== e.message.indexOf("LUX") || nErrors <= maxErrors && "function" == typeof _sample && _sample()) && ((new Image).src = _errorUrl + "?v=" + version + "&id=" + getCustomerId() + "&fn=" + encodeURIComponent(e.filename) + "&ln=" + e.lineno + "&cn=" + e.colno + "&msg=" + encodeURIComponent(e.message) + "&l=" + encodeURIComponent(_getPageLabel()) + (connectionType() ? "&ct=" + connectionType() : ""))
+    var e = [];
+    pe("lux.js evaluation start.");
+    var t = "216",
+      n = 0;
+    function r(e) {
+      n++,
+        e &&
+          void 0 !== e.filename &&
+          void 0 !== e.message &&
+          (-1 !== e.filename.indexOf("/lux.js?") ||
+            -1 !== e.message.indexOf("LUX") ||
+            (n <= 5 && W())) &&
+          (new Image().src =
+            "https://lux.speedcurve.com/error/?v=216&id=" +
+            J() +
+            "&fn=" +
+            encodeURIComponent(e.filename) +
+            "&ln=" +
+            e.lineno +
+            "&cn=" +
+            e.colno +
+            "&msg=" +
+            encodeURIComponent(e.message) +
+            "&l=" +
+            encodeURIComponent(ge()) +
+            (V() ? "&ct=" + V() : ""));
     }
-    window.addEventListener("error", errorHandler);
-    var gaPerfEntries = "object" == typeof window.LUX_al ? window.LUX_al.slice() : [];
+    window.addEventListener("error", r);
+    var i = ("object" == typeof window.LUX_al ? window.LUX_al : []).slice();
     if ("function" == typeof PerformanceObserver) {
-        var perfObserver = new PerformanceObserver((function(e) {
-            e.getEntries().forEach((function(e) {
-                gaPerfEntries.push(e)
-            }))
+      var a = new PerformanceObserver(function (e) {
+        e.getEntries().forEach(function (e) {
+          ("longtask" === e.entryType && -1 !== i.indexOf(e)) || i.push(e);
+        });
+      });
+      try {
+        "function" == typeof PerformanceLongTaskTiming &&
+          a.observe({ type: "longtask", buffered: !0 }),
+          "function" == typeof LargestContentfulPaint &&
+            a.observe({ type: "largest-contentful-paint", buffered: !0 }),
+          "function" == typeof PerformanceElementTiming &&
+            a.observe({ type: "element", buffered: !0 }),
+          "function" == typeof PerformancePaintTiming && a.observe({ type: "paint", buffered: !0 }),
+          "function" == typeof LayoutShift && a.observe({ type: "layout-shift", buffered: !0 });
+      } catch (e) {
+        pe("Long Tasks error.");
+      }
+    } else pe("Long Tasks not supported.");
+    var o,
+      s = 0,
+      u = void 0 !== LUX.gaMarks ? LUX.gaMarks : [],
+      c = void 0 !== LUX.gaMeasures ? LUX.gaMeasures : [],
+      d = {},
+      f = {},
+      m = 0,
+      l = 0,
+      v = 0,
+      g = 0,
+      p = 1,
+      h = "LUX_start",
+      y = "LUX_end",
+      E = me(),
+      T = le(E),
+      L = window.performance,
+      b = 2e3,
+      w = void 0 !== LUX.beaconMode ? LUX.beaconMode : "autoupdate",
+      U = void 0 !== LUX.beaconUrl ? LUX.beaconUrl : "https://lux.speedcurve.com/lux/",
+      X = void 0 !== LUX.samplerate ? LUX.samplerate : 100;
+    pe(
+      "Sample rate = " +
+        X +
+        "%. " +
+        (W()
+          ? "This session IS being sampled."
+          : "This session is NOT being sampled. The data will NOT show up in your LUX dashboards. Call LUX.forceSample() and try again.")
+    );
+    var S,
+      k = void 0 === LUX.auto || LUX.auto,
+      M = LUX.ns ? LUX.ns : Date.now ? Date.now() : +new Date(),
+      B = 0;
+    L && L.timing && L.timing.navigationStart
+      ? ((M = L.timing.navigationStart), (B = LUX.ns ? LUX.ns - M : 0))
+      : (pe("Nav Timing is not supported."), (s |= 2));
+    var N = ["click", "mousedown", "keydown", "touchstart", "pointerdown"],
+      x = { passive: !0, capture: !0 };
+    function C(e) {
+      S ||
+        ((S = Math.round(e)),
+        N.forEach(function (e) {
+          removeEventListener(e, I, x);
         }));
-        try {
-            "function" == typeof PerformanceLongTaskTiming && perfObserver.observe({
-                type: "longtask"
-            }), "function" == typeof LargestContentfulPaint && perfObserver.observe({
-                type: "largest-contentful-paint",
-                buffered: !0
-            }), "function" == typeof PerformanceElementTiming && perfObserver.observe({
-                type: "element",
-                buffered: !0
-            }), "function" == typeof PerformancePaintTiming && perfObserver.observe({
-                type: "paint",
-                buffered: !0
-            }), "function" == typeof LayoutShift && perfObserver.observe({
-                type: "layout-shift",
-                buffered: !0
-            })
-        } catch (e) {
-            dlog("Long Tasks error.")
-        }
-    } else dlog("Long Tasks not supported.");
-    var gFlags = 0,
-        gFlag_InitCalled = 1,
-        gFlag_NoNavTiming = 2,
-        gFlag_NoUserTiming = 4,
-        gFlag_NotVisible = 8,
-        gaMarks = void 0 !== LUX.gaMarks ? LUX.gaMarks : [],
-        gaMeasures = void 0 !== LUX.gaMeasures ? LUX.gaMeasures : [],
-        ghIx = {},
-        ghData = {},
-        gbLuxSent = 0,
-        gbNavSent = 0,
-        gbIxSent = 0,
-        gbUpdated = 0,
-        gbFirstPV = 1,
-        gStartMark = "LUX_start",
-        gEndMark = "LUX_end",
-        gSessionTimeout = 1800,
-        gSyncId = createSyncId(),
-        gUid = refreshUniqueId(gSyncId),
-        gCustomerDataTimeout, perf = window.performance,
-        gMaxQuerystring = 2e3,
-        _beaconUrl = void 0 !== LUX.beaconUrl ? LUX.beaconUrl : "https://lux.speedcurve.com/lux/",
-        _samplerate = void 0 !== LUX.samplerate ? LUX.samplerate : 100;
-    dlog("Sample rate = " + _samplerate + "%. " + (_sample() ? "This session IS being sampled." : "This session is NOT being sampled. The data will NOT show up in your LUX dashboards. Call LUX.forceSample() and try again."));
-    var _auto = void 0 === LUX.auto || LUX.auto,
-        _navigationStart = LUX.ns ? LUX.ns : Date.now ? Date.now() : +new Date,
-        gLuxSnippetStart = 0,
-        gFirstInputDelay;
-    perf && perf.timing && perf.timing.navigationStart ? (_navigationStart = perf.timing.navigationStart, gLuxSnippetStart = LUX.ns ? LUX.ns - _navigationStart : 0) : (dlog("Nav Timing is not supported."), gFlags |= gFlag_NoNavTiming);
-    var gaEventTypes = ["click", "mousedown", "keydown", "touchstart", "pointerdown"],
-        ghListenerOptions = {
-            passive: !0,
-            capture: !0
-        };
-
-    function recordDelay(e) {
-        gFirstInputDelay || (gFirstInputDelay = Math.round(e), gaEventTypes.forEach((function(e) {
-            removeEventListener(e, onInput, ghListenerOptions)
-        })))
     }
-
-    function onPointerDown(e, t) {
-        function n() {
-            recordDelay(e, t), a()
-        }
-
-        function r() {
-            a()
-        }
-
-        function a() {
-            window.removeEventListener("pointerup", n, ghListenerOptions), window.removeEventListener("pointercancel", r, ghListenerOptions)
-        }
-        window.addEventListener("pointerup", n, ghListenerOptions), window.addEventListener("pointercancel", r, ghListenerOptions)
+    function I(e) {
+      var t = !1;
+      try {
+        t = e.cancelable;
+      } catch (e) {
+        return void pe("Permission error accessing input event.");
+      }
+      if (t) {
+        var n = D(!0),
+          r = e.timeStamp;
+        if ((r > 152e7 && (n = Number(new Date())), r > n)) return;
+        var i = n - r;
+        "pointerdown" == e.type
+          ? (function (e, t) {
+              function n() {
+                C(e), i();
+              }
+              function r() {
+                i();
+              }
+              function i() {
+                window.removeEventListener("pointerup", n, x),
+                  window.removeEventListener("pointercancel", r, x);
+              }
+              window.addEventListener("pointerup", n, x),
+                window.addEventListener("pointercancel", r, x);
+            })(i)
+          : C(i);
+      }
     }
-
-    function onInput(e) {
-        var t = !1;
+    function D(e) {
+      var t = (Date.now ? Date.now() : +new Date()) - M,
+        n = _(h);
+      return n && !e ? t - n.startTime : L && L.now ? L.now() : t;
+    }
+    function j(e) {
+      if ((pe("Enter LUX.mark(), name = " + e), L)) {
+        if (L.mark) return L.mark(e);
+        if (L.webkitMark) return L.webkitMark(e);
+      }
+      (s |= 4), u.push({ name: e, entryType: "mark", startTime: D(), duration: 0 });
+    }
+    function _(e) {
+      return (function (e, t) {
+        if (t)
+          for (var n = t.length - 1; n >= 0; n--) {
+            var r = t[n];
+            if (e === r.name) return r;
+          }
+        return;
+      })(e, P());
+    }
+    function P() {
+      if (L) {
+        if (L.getEntriesByType) return L.getEntriesByType("mark");
+        if (L.webkitGetEntriesByType) return L.webkitGetEntriesByType("mark");
+      }
+      return u;
+    }
+    function O() {
+      var e = {},
+        t = _(h),
+        n = P();
+      n &&
+        n.forEach(function (n) {
+          var r = n.name,
+            i = r !== h && t ? t.startTime : 0,
+            a = Math.round(n.startTime - i);
+          a < 0 || (void 0 === e[r] ? (e[r] = a) : (e[r] = Math.max(a, e[r])));
+        });
+      var r = (function () {
+        if (L) {
+          if (L.getEntriesByType) return L.getEntriesByType("measure");
+          if (L.webkitGetEntriesByType) return L.webkitGetEntriesByType("measure");
+        }
+        return c;
+      })();
+      r &&
+        r.forEach(function (n) {
+          if (!(t && n.startTime < t.startTime)) {
+            var r = n.name,
+              i = Math.round(n.duration);
+            void 0 === e[r] ? (e[r] = i) : (e[r] = Math.max(i, e[r]));
+          }
+        });
+      var i = [];
+      return (
+        Object.keys(e).forEach(function (t) {
+          i.push(t + "|" + e[t]);
+        }),
+        i.join(",")
+      );
+    }
+    function H() {
+      if ("function" != typeof PerformanceLongTaskTiming) return "";
+      var e = "",
+        t = {},
+        n = {};
+      if (i.length)
+        for (
+          var r = _(h),
+            a = r ? r.startTime : 0,
+            o = r ? _(y).startTime : L.timing.loadEventEnd - L.timing.navigationStart,
+            s = 0;
+          s < i.length;
+          s++
+        ) {
+          var u = i[s];
+          if ("longtask" === u.entryType) {
+            var c = Math.round(u.duration);
+            if (u.startTime < a) c -= a - u.startTime;
+            else if (u.startTime >= o) continue;
+            var d = u.attribution[0].name;
+            t[d] || ((t[d] = 0), (n[d] = "")),
+              (t[d] += c),
+              (n[d] += "," + Math.round(u.startTime) + "|" + c);
+          }
+        }
+      var f = void 0 !== t.script ? "script" : "unknown";
+      void 0 === t[f] && ((t[f] = 0), (n[f] = ""));
+      var m = (function (e) {
+          for (var t = 0, n = A(), r = 0 === n, i = [], a = e.split(","), o = 0; o < a.length; o++) {
+            var s = a[o].split("|");
+            if (2 === s.length) {
+              var u = parseInt(s[0]),
+                c = parseInt(s[1]);
+              i.push(c), (t = c > t ? c : t), !r && u > n && (u - n > 5e3 ? (r = !0) : (n = u + c));
+            }
+          }
+          var d = i.length,
+            f = (function (e) {
+              if (0 === e.length) return 0;
+              var t = Math.floor(e.length / 2);
+              return (
+                e.sort(function (e, t) {
+                  return e - t;
+                }),
+                e.length % 2 ? e[t] : Math.round((e[t - 1] + e[t]) / 2)
+              );
+            })(i);
+          return { count: d, median: f, max: t, fci: n };
+        })(n[f]),
+        l = ",n|" + m.count + ",d|" + m.median + ",x|" + m.max + (0 === m.fci ? "" : ",i|" + m.fci);
+      return (e += "s|" + t[f] + l + n[f]);
+    }
+    function R() {
+      var e = [];
+      for (var t in d) e.push(t + "|" + d[t]);
+      return e.join(",");
+    }
+    function W() {
+      if (void 0 === T || void 0 === X) return !1;
+      var e = ("" + T).substr(-2);
+      return parseInt(e) < X;
+    }
+    function F() {
+      var e = [];
+      for (var t in f) {
+        var n = "" + f[t];
+        (t = t.replace(/,/g, "").replace(/\|/g, "")),
+          (n = n.replace(/,/g, "").replace(/\|/g, "")),
+          e.push(t + "|" + n);
+      }
+      return encodeURIComponent(e.join(","));
+    }
+    function G() {
+      var e = Z();
+      if (!e)
+        return (function () {
+          for (
+            var e = document.getElementsByTagName("script"), t = 0, n = 0, r = e.length;
+            n < r;
+            n++
+          ) {
+            var i = e[n];
+            !i.src || i.async || i.defer || t++;
+          }
+          return t;
+        })();
+      for (var t = document.getElementsByTagName("script"), n = 0, r = 0, i = t.length; r < i; r++) {
+        var a = t[r];
+        !a.src || a.async || a.defer || 0 == (4 & a.compareDocumentPosition(e)) || n++;
+      }
+      return n;
+    }
+    function q(e) {
+      for (var t = document.getElementsByTagName(e), n = 0, r = 0, i = t.length; r < i; r++) {
+        var a = t[r];
         try {
-            t = e.cancelable
+          n += a.innerHTML.length;
+        } catch (a) {
+          return pe("Error accessing inline element innerHTML."), -1;
+        }
+      }
+      return n;
+    }
+    function z() {
+      var e = "",
+        t = M;
+      if (_(h) && _(y)) {
+        var n = Math.round(_(h).startTime);
+        e = (t += n) + "fs0ls" + (u = Math.round(_(y).startTime) - n) + "le" + u;
+      } else if (L && L.timing) {
+        var r = L.timing,
+          a = (function () {
+            if (L && L.timing) {
+              var e,
+                t = L.timing,
+                n = t.navigationStart;
+              if (n) {
+                if (
+                  L &&
+                  L.getEntriesByType &&
+                  L.getEntriesByType("paint") &&
+                  L.getEntriesByType("paint").length
+                )
+                  for (var r = L.getEntriesByType("paint"), i = 0; i < r.length; i++) {
+                    var a = r[i];
+                    if ("first-paint" === a.name) {
+                      e = Math.round(a.startTime);
+                      break;
+                    }
+                  }
+                else if (window.chrome && "function" == typeof window.chrome.loadTimes) {
+                  var o = window.chrome.loadTimes();
+                  o && (e = Math.round(1e3 * o.firstPaintTime - n));
+                } else t.msFirstPaint && (e = Math.round(t.msFirstPaint - n));
+                if (e > 0) return e;
+              }
+            }
+            return pe("Paint Timing not supported."), null;
+          })(),
+          o = A(),
+          s = (function () {
+            if (i.length)
+              for (var e = i.length - 1; e >= 0; e--) {
+                var t = i[e];
+                if ("largest-contentful-paint" === t.entryType) return Math.round(t.startTime);
+              }
+            return 0;
+          })();
+        e =
+          t +
+          (r.redirectStart ? "rs" + (r.redirectStart - t) : "") +
+          (r.redirectEnd ? "re" + (r.redirectEnd - t) : "") +
+          (r.fetchStart ? "fs" + (r.fetchStart - t) : "") +
+          (r.domainLookupStart ? "ds" + (r.domainLookupStart - t) : "") +
+          (r.domainLookupEnd ? "de" + (r.domainLookupEnd - t) : "") +
+          (r.connectStart ? "cs" + (r.connectStart - t) : "") +
+          (r.secureConnectionStart ? "sc" + (r.secureConnectionStart - t) : "") +
+          (r.connectEnd ? "ce" + (r.connectEnd - t) : "") +
+          (r.requestStart ? "qs" + (r.requestStart - t) : "") +
+          (r.responseStart ? "bs" + (r.responseStart - t) : "") +
+          (r.responseEnd ? "be" + (r.responseEnd - t) : "") +
+          (r.domLoading ? "ol" + (r.domLoading - t) : "") +
+          (r.domInteractive ? "oi" + (r.domInteractive - t) : "") +
+          (r.domContentLoadedEventStart ? "os" + (r.domContentLoadedEventStart - t) : "") +
+          (r.domContentLoadedEventEnd ? "oe" + (r.domContentLoadedEventEnd - t) : "") +
+          (r.domComplete ? "oc" + (r.domComplete - t) : "") +
+          (r.loadEventStart ? "ls" + (r.loadEventStart - t) : "") +
+          (r.loadEventEnd ? "le" + (r.loadEventEnd - t) : "") +
+          (a ? "sr" + a : "") +
+          (o ? "fc" + o : "") +
+          (s ? "lc" + s : "");
+      } else if (_(y)) {
+        var u;
+        e = t + "fs0ls" + (u = Math.round(_(y).startTime)) + "le" + u;
+      }
+      return e;
+    }
+    function A() {
+      if (L && L.getEntriesByType && L.getEntriesByType("paint"))
+        for (var e = L.getEntriesByType("paint"), t = 0; t < e.length; t++) {
+          var n = e[t];
+          if ("first-contentful-paint" === n.name) return Math.round(n.startTime);
+        }
+      return 0;
+    }
+    function J() {
+      if (void 0 !== LUX.customerid) return LUX.customerid;
+      var e = Y("/js/lux.js");
+      return e
+        ? ((LUX.customerid = (function (e, t) {
+            for (var n = e.split("?")[1].split("&"), r = 0, i = n.length; r < i; r++) {
+              var a = n[r].split("=");
+              if (t === a[0]) return a[1];
+            }
+            return;
+          })(e.src, "id")),
+          LUX.customerid)
+        : "";
+    }
+    function Y(e) {
+      for (var t = document.getElementsByTagName("script"), n = 0, r = t.length; n < r; n++) {
+        var i = t[n];
+        if (i.src && -1 !== i.src.indexOf(e)) return i;
+      }
+      return null;
+    }
+    function K(e) {
+      var t = 0;
+      if (e.parentNode) for (; (e = e.parentNode); ) t++;
+      return t;
+    }
+    function Q() {
+      if (L && L.getEntriesByType) {
+        var e = performance.getEntriesByType("navigation");
+        if (e && e.length > 0 && e[0].encodedBodySize) return e[0].encodedBodySize;
+      }
+      return 0;
+    }
+    function V() {
+      var e = navigator.connection,
+        t = "";
+      return (
+        e &&
+          e.effectiveType &&
+          (t =
+            "slow-2g" === (t = e.effectiveType)
+              ? "Slow 2G"
+              : "2g" === t || "3g" === t || "4g" === t || "5g" === t
+              ? t.toUpperCase()
+              : t.charAt(0).toUpperCase() + t.slice(1)),
+        t
+      );
+    }
+    function Z(e) {
+      var t;
+      if ((e || (e = document.body), e)) {
+        var n = e.children;
+        if (n)
+          for (var r = 0, i = n.length; r < i; r++) {
+            var a = n[r];
+            $(a) && (t = a);
+          }
+      }
+      return t ? Z(t) : e;
+    }
+    function $(e) {
+      var t = document.documentElement.clientHeight,
+        n = document.documentElement.clientWidth,
+        r = (function (e) {
+          var t = 0,
+            n = 0;
+          for (; e; ) (t += e.offsetLeft), (n += e.offsetTop), (e = e.offsetParent);
+          return [t, n];
+        })(e);
+      return (
+        r[0] >= 0 && r[1] >= 0 && r[0] < n && r[1] < t && e.offsetWidth > 0 && e.offsetHeight > 0
+      );
+    }
+    function ee() {
+      pe("Enter LUX.send().");
+      var e = J();
+      if (e && E && W() && !m) {
+        j(y);
+        var t = O(),
+          r = (function () {
+            var e = [];
+            if (i.length)
+              for (var t = 0; t < i.length; t++) {
+                var n = i[t];
+                "element" === n.entryType &&
+                  n.identifier &&
+                  n.startTime &&
+                  e.push(n.identifier + "|" + Math.round(n.startTime));
+              }
+            return e.join(",");
+          })(),
+          a = F(),
+          o = "";
+        v || (o = R());
+        var u = H(),
+          c = (function () {
+            if ("function" != typeof LayoutShift) return !1;
+            for (var e = 0, t = 0; t < i.length; t++) {
+              var n = i[t];
+              "layout-shift" !== n.entryType || n.hadRecentInput || (e += n.value);
+            }
+            return e.toFixed(6);
+          })(),
+          d = (function () {
+            var e = "";
+            if (L && L.getEntriesByName) {
+              var t = Y("/js/lux.js");
+              if (t) {
+                var n = L.getEntriesByName(t.src);
+                if (n && n.length) {
+                  var r = n[0],
+                    i = Math.round(r.domainLookupEnd - r.domainLookupStart),
+                    a = Math.round(r.connectEnd - r.connectStart),
+                    o = Math.round(r.responseStart - r.requestStart),
+                    s = Math.round(r.responseEnd - r.responseStart),
+                    u = i + a + o + s,
+                    c = LUX_t_end - LUX_t_start,
+                    d = r.encodedBodySize ? r.encodedBodySize : 0;
+                  e =
+                    "d" +
+                    i +
+                    "t" +
+                    a +
+                    "f" +
+                    o +
+                    "c" +
+                    s +
+                    "n" +
+                    u +
+                    "e" +
+                    c +
+                    "r" +
+                    X +
+                    (d ? "x" + d : "") +
+                    (B ? "l" + B : "") +
+                    "s" +
+                    (LUX_t_start - M);
+                }
+              }
+            }
+            return e;
+          })();
+        document.visibilityState && "visible" !== document.visibilityState && (s |= 8);
+        var f,
+          g,
+          h,
+          w =
+            U +
+            "?v=" +
+            "216&id=" +
+            e +
+            "&sid=" +
+            E +
+            "&uid=" +
+            T +
+            (a ? "&CD=" + a : "") +
+            "&l=" +
+            encodeURIComponent(ge()),
+          k = q("script"),
+          N = q("style"),
+          x =
+            (l ? "" : "&NT=" + z()) +
+            (p ? "&LJS=" + d : "") +
+            "&PS=ns" +
+            (function () {
+              for (
+                var e = document.getElementsByTagName("script"), t = 0, n = 0, r = e.length;
+                n < r;
+                n++
+              )
+                e[n].src && t++;
+              return t;
+            })() +
+            "bs" +
+            G() +
+            (k > -1 ? "is" + k : "") +
+            "ss" +
+            (function () {
+              for (
+                var e = document.getElementsByTagName("link"), t = 0, n = 0, r = e.length;
+                n < r;
+                n++
+              ) {
+                var i = e[n];
+                i.href && "stylesheet" == i.rel && t++;
+              }
+              return t;
+            })() +
+            "bc" +
+            (function () {
+              for (
+                var e = 0, t = document.getElementsByTagName("link"), n = 0, r = t.length;
+                n < r;
+                n++
+              ) {
+                var i = t[n];
+                i.href &&
+                  "stylesheet" === i.rel &&
+                  0 !== i.href.indexOf("data:") &&
+                  (i.onloadcssdefined ||
+                    "print" === i.media ||
+                    "style" === i.as ||
+                    ("function" == typeof i.onload && "all" === i.media) ||
+                    e++);
+              }
+              return e;
+            })() +
+            (N > -1 ? "ic" + N : "") +
+            "ia" +
+            (function () {
+              var e = document.getElementsByTagName("img"),
+                t = [];
+              if (e)
+                for (var n = 0, r = e.length; n < r; n++) {
+                  var i = e[n];
+                  $(i) && t.push(i);
+                }
+              return t;
+            })().length +
+            "it" +
+            document.getElementsByTagName("img").length +
+            "dd" +
+            (function () {
+              for (var e = document.getElementsByTagName("*"), t = e.length, n = 0; t--; )
+                n += K(e[t]);
+              return Math.round(n / e.length);
+            })() +
+            "nd" +
+            document.getElementsByTagName("*").length +
+            "vh" +
+            document.documentElement.clientHeight +
+            "vw" +
+            document.documentElement.clientWidth +
+            "dh" +
+            ((f = document),
+            (g = f.body),
+            (h = f.documentElement),
+            Math.max(
+              g ? g.scrollHeight : 0,
+              g ? g.offsetHeight : 0,
+              h ? h.clientHeight : 0,
+              h ? h.scrollHeight : 0,
+              h ? h.offsetHeight : 0
+            ) + "dw") +
+            (function (e) {
+              var t = e.body,
+                n = e.documentElement;
+              return Math.max(
+                t ? t.scrollWidth : 0,
+                t ? t.offsetWidth : 0,
+                n ? n.clientWidth : 0,
+                n ? n.scrollWidth : 0,
+                n ? n.offsetWidth : 0
+              );
+            })(document) +
+            (Q() ? "ds" + Q() : "") +
+            (V() ? "ct" + V() + "_" : "") +
+            "er" +
+            n +
+            "nt" +
+            (L && L.navigation && void 0 !== L.navigation.type ? L.navigation.type : "") +
+            (navigator.deviceMemory ? "dm" + Math.round(navigator.deviceMemory) : "") +
+            (o ? "&IX=" + o : "") +
+            (S ? "&FID=" + S : "") +
+            (u ? "&CPU=" + u : "") +
+            (s ? "&fl=" + s : "") +
+            (r ? "&ET=" + r : "") +
+            "&HN=" +
+            encodeURIComponent(document.location.hostname) +
+            (!1 !== c ? "&CLS=" + c : ""),
+          C = "";
+        if (t) {
+          var I = w.length + x.length;
+          if (I + t.length <= b) x += "&UT=" + t;
+          else {
+            var D = b - I,
+              _ = t.lastIndexOf(",", D);
+            (x += "&UT=" + t.substring(0, _)), (C = t.substring(_ + 1));
+          }
+        }
+        var P = w + x;
+        pe("Sending main LUX beacon: " + P), re(P), (m = 1), (l = 1), (v = o ? 1 : 0);
+        for (var A = b - w.length; C; ) {
+          var Z = "";
+          if (C.length <= A) (Z = C), (C = "");
+          else {
+            var ee = C.lastIndexOf(",", A);
+            -1 === ee && (ee = C.indexOf(",")),
+              -1 === ee ? ((Z = C), (C = "")) : ((Z = C.substring(0, ee)), (C = C.substring(ee + 1)));
+          }
+          var te = w + "&UT=" + Z;
+          pe("Sending extra User Timing beacon: " + te), re(te);
+        }
+      }
+    }
+    function te() {
+      var e = J();
+      if (e && E && W() && !v && m) {
+        var t = R();
+        if (t) {
+          var n = F(),
+            r =
+              "?v=216&id=" +
+              e +
+              "&sid=" +
+              E +
+              "&uid=" +
+              T +
+              (n ? "&CD=" + n : "") +
+              "&l=" +
+              encodeURIComponent(ge()) +
+              "&IX=" +
+              t +
+              (S ? "&FID=" + S : "") +
+              "&HN=" +
+              encodeURIComponent(document.location.hostname),
+            i = U + r;
+          pe("Sending Interaction Metrics beacon: " + i), re(i), (v = 1);
+        }
+      }
+    }
+    function ne() {
+      var e = J();
+      if (e && E && W() && m) {
+        var t = F();
+        if (t) {
+          var n =
+              "?v=216&id=" +
+              e +
+              "&sid=" +
+              E +
+              "&uid=" +
+              T +
+              "&CD=" +
+              t +
+              "&l=" +
+              encodeURIComponent(ge()) +
+              "&HN=" +
+              encodeURIComponent(document.location.hostname),
+            r = U + n;
+          pe("Sending late Customer Data beacon: " + r), re(r);
+        }
+      }
+    }
+    function re(e) {
+      if ("simple" !== LUX.beaconMode)
+        return (function (e) {
+          var t = document.createElement("script");
+          (t.async = !0), (t.src = e);
+          var n = document.getElementsByTagName("script");
+          n.length
+            ? n[0].parentNode.insertBefore(t, n[0])
+            : ((n = document.getElementsByTagName("head")).length ||
+                (n = document.getElementsByTagName("body")).length) &&
+              n[0].appendChild(t);
+        })(e);
+        console.log(LUX.samplerate)
+      new Image().src = e;
+    }
+    function ie(e) {
+      if (e.id) return e.id;
+      for (var t, n = e; n.parentNode && n.parentNode.tagName; ) {
+        if ((n = n.parentNode).hasAttribute("data-sctrack")) return n.getAttribute("data-sctrack");
+        n.id && !t && (t = n.id);
+      }
+      var r = "INPUT" === e.tagName && "submit" === e.type,
+        i = "BUTTON" === e.tagName,
+        a = "A" === e.tagName;
+      return r && e.value ? e.value : (i || a) && e.innerText ? e.innerText : t || "";
+    }
+    function ae() {
+      void 0 === d.s && (d.s = Math.round(D()));
+    }
+    function oe(e) {
+      if ((fe(), void 0 === d.k)) {
+        if (((d.k = Math.round(D())), e && e.target)) {
+          var t = ie(e.target);
+          t && (d.ki = t);
+        }
+        te();
+      }
+    }
+    function se(e) {
+      if ((fe(), void 0 === d.c)) {
+        d.c = Math.round(D());
+        var t = null;
+        try {
+          e && e.target && (t = e.target);
         } catch (e) {
-            return void dlog("Permission error accessing input event.")
+          pe("Error accessing event target."), (t = null);
         }
         if (t) {
-            var n = _now(!0),
-                r = e.timeStamp;
-            if (r > 152e7 && (n = Number(new Date)), r > n) return;
-            var a = n - r;
-            "pointerdown" == e.type ? onPointerDown(a, e) : recordDelay(a, e)
+          e.clientX && ((d.cx = e.clientX), (d.cy = e.clientY));
+          var n = ie(e.target);
+          n && (d.ci = n);
         }
+        te();
+      }
     }
-
-    function _now(e) {
-        var t = (Date.now ? Date.now() : +new Date) - _navigationStart,
-            n = _getMark(gStartMark);
-        return n && !e ? t - n.startTime : perf && perf.now ? perf.now() : t
+    function ue(e, t) {
+      window.addEventListener
+        ? window.addEventListener(e, t, !1)
+        : window.attachEvent && window.attachEvent("on" + e, t);
     }
-
-    function _mark(e) {
-        if (dlog("Enter LUX.mark(), name = " + e), perf) {
-            if (perf.mark) return perf.mark(e);
-            if (perf.webkitMark) return perf.webkitMark(e)
+    function ce(e, t) {
+      window.removeEventListener
+        ? window.removeEventListener(e, t, !1)
+        : window.detachEvent && window.detachEvent("on" + e, t);
+    }
+    function de() {
+      ue("scroll", ae), ue("keypress", oe), ue("mousedown", se);
+    }
+    function fe() {
+      ce("scroll", ae), ce("keypress", oe), ce("mousedown", se);
+    }
+    function me(e) {
+      var t, n;
+      return e
+        ? Number(new Date()) + "00000"
+        : Number(new Date()) +
+            "" +
+            ((t = parseInt(1e5 * Math.random())), ((n = "00000") + t).slice(-n.length));
+    }
+    function le(e) {
+      var t = (function (e) {
+        try {
+          for (var t = document.cookie.split(";"), n = 0; n < t.length; n++) {
+            var r = t[n].split("=");
+            if (e === r[0].trim()) return unescape(r[1]);
+          }
+        } catch (e) {
+          pe("Error accessing document.cookie.");
         }
-        gFlags |= gFlag_NoUserTiming, gaMarks.push({
-            name: e,
-            entryType: "mark",
-            startTime: _now(),
-            duration: 0
-        })
+        return;
+      })("lux_uid");
+      if (!t || t.length < 11) t = e;
+      else {
+        var n = parseInt(t.substring(0, 10));
+        Number(new Date()) / 1e3 - n > 86400 && (t = e);
+      }
+      return ve(t), t;
     }
-
-    function _measure(e, t, n) {
-        if (dlog("Enter LUX.measure(), name = " + e), void 0 === t && _getMark(gStartMark) && (t = gStartMark), perf) {
-            if (perf.measure) return t ? n ? perf.measure(e, t, n) : perf.measure(e, t) : perf.measure(e);
-            if (perf.webkitMeasure) return perf.webkitMeasure(e, t, n)
+    function ve(e) {
+      return (
+        (function (e, t, n) {
+          try {
+            document.cookie =
+              e + "=" + escape(t) + (n ? "; max-age=" + n : "") + "; path=/; SameSite=Lax";
+          } catch (e) {
+            pe("Error setting document.cookie.");
+          }
+        })("lux_uid", e, 1800),
+        e
+      );
+    }
+    function ge() {
+      if (void 0 !== LUX.label) return LUX.label;
+      if (void 0 !== LUX.jspagelabel) {
+        var e = Function('"use strict"; return ' + LUX.jspagelabel);
+        try {
+          var t = e();
+          if (t) return t;
+        } catch (e) {
+          console.log("Error evaluating customer settings LUX page label:", e);
+        }
+      }
+      return document.title;
+    }
+    function pe(t) {
+      e.push(t), LUX.debug && console.log("LUX: " + t);
+    }
+    N.forEach(function (e) {
+      window.addEventListener(e, I, x);
+    }),
+      k &&
+        ("complete" == document.readyState
+          ? ee()
+          : ue("load", function () {
+              setTimeout(ee, 200);
+            }),
+        ue("beforeunload", ee),
+        ue("unload", ee),
+        ue("beforeunload", te),
+        ue("unload", te)),
+      de();
+    var he = {
+      mark: j,
+      measure: function (e, t, n) {
+        if ((pe("Enter LUX.measure(), name = " + e), void 0 === t && _(h) && (t = h), L)) {
+          if (L.measure) return t ? (n ? L.measure(e, t, n) : L.measure(e, t)) : L.measure(e);
+          if (L.webkitMeasure) return L.webkitMeasure(e, t, n);
         }
         var r = 0,
-            a = _now();
+          i = D();
         if (t) {
-            var i = _getMark(t);
-            if (i) r = i.startTime;
-            else {
-                if (!(perf && perf.timing && perf.timing[t])) return;
-                r = perf.timing[t] - perf.timing.navigationStart
-            }
+          var a = _(t);
+          if (a) r = a.startTime;
+          else {
+            if (!(L && L.timing && L.timing[t])) return;
+            r = L.timing[t] - L.timing.navigationStart;
+          }
         }
         if (n) {
-            var o = _getMark(n);
-            if (o) a = o.startTime;
-            else {
-                if (!(perf && perf.timing && perf.timing[n])) return;
-                a = perf.timing[n] - perf.timing.navigationStart
-            }
+          var o = _(n);
+          if (o) i = o.startTime;
+          else {
+            if (!(L && L.timing && L.timing[n])) return;
+            i = L.timing[n] - L.timing.navigationStart;
+          }
         }
-        gaMeasures.push({
-            name: e,
-            entryType: "measure",
-            startTime: r,
-            duration: a - r
-        })
-    }
-
-    function _getMark(e) {
-        return _getM(e, _getMarks())
-    }
-
-    function _getM(e, t) {
-        if (t)
-            for (var n = t.length - 1; n >= 0; n--) {
-                var r = t[n];
-                if (e === r.name) return r
-            }
-    }
-
-    function _getMarks() {
-        if (perf) {
-            if (perf.getEntriesByType) return perf.getEntriesByType("mark");
-            if (perf.webkitGetEntriesByType) return perf.webkitGetEntriesByType("mark")
-        }
-        return gaMarks
-    }
-
-    function _getMeasures() {
-        if (perf) {
-            if (perf.getEntriesByType) return perf.getEntriesByType("measure");
-            if (perf.webkitGetEntriesByType) return perf.webkitGetEntriesByType("measure")
-        }
-        return gaMeasures
-    }
-
-    function userTimingValues() {
-        var e = {},
-            t = _getMark(gStartMark),
-            n = _getMarks();
-        n && n.forEach((function(n) {
-            var r = n.name,
-                a = r !== gStartMark && t ? t.startTime : 0,
-                i = Math.round(n.startTime - a);
-            i < 0 || (void 0 === e[r] ? e[r] = i : e[r] = Math.max(i, e[r]))
-        }));
-        var r = _getMeasures();
-        r && r.forEach((function(n) {
-            if (!(t && n.startTime < t.startTime)) {
-                var r = n.name,
-                    a = Math.round(n.duration);
-                void 0 === e[r] ? e[r] = a : e[r] = Math.max(a, e[r])
-            }
-        }));
-        var a = [];
-        return Object.keys(e).forEach((function(t) {
-            a.push(t + "|" + e[t])
-        })), a.join(",")
-    }
-
-    function elementTimingValues() {
-        var e = [];
-        if (gaPerfEntries.length)
-            for (var t = 0; t < gaPerfEntries.length; t++) {
-                var n = gaPerfEntries[t];
-                "element" === n.entryType && n.identifier && n.startTime && e.push(n.identifier + "|" + Math.round(n.startTime))
-            }
-        return e.join(",")
-    }
-
-    function cpuTimes() {
-        if ("function" != typeof PerformanceLongTaskTiming) return "";
-        var e = "",
-            t = {},
-            n = {};
-        if (gaPerfEntries.length)
-            for (var r = _getMark(gStartMark), a = r ? r.startTime : 0, i = r ? _getMark(gEndMark).startTime : perf.timing.loadEventEnd - perf.timing.navigationStart, o = 0; o < gaPerfEntries.length; o++) {
-                var s = gaPerfEntries[o];
-                if ("longtask" === s.entryType) {
-                    var d = Math.round(s.duration);
-                    if (s.startTime < a) d -= a - s.startTime;
-                    else if (s.startTime >= i) continue;
-                    var g = s.attribution[0].name;
-                    t[g] || (t[g] = 0, n[g] = ""), t[g] += d, n[g] += "," + Math.round(s.startTime) + "|" + d
-                }
-            }
-        var u = void 0 !== t.script ? "script" : "unknown";
-        void 0 === t[u] && (t[u] = 0, n[u] = "");
-        var c = cpuStats(n[u]),
-            l = ",n|" + c.count + ",d|" + c.median + ",x|" + c.max + (0 === c.fci ? "" : ",i|" + c.fci);
-        return e += "s|" + t[u] + l + n[u]
-    }
-
-    function cpuStats(e) {
-        for (var t = 0, n = getFcp(), r = 0 === n, a = [], i = e.split(","), o = 0; o < i.length; o++) {
-            var s = i[o].split("|");
-            if (2 === s.length) {
-                var d = parseInt(s[0]),
-                    g = parseInt(s[1]);
-                a.push(g), t = g > t ? g : t, !r && d > n && (d - n > 5e3 ? r = !0 : n = d + g)
-            }
-        }
-        return {
-            count: a.length,
-            median: arrayMedian(a),
-            max: t,
-            fci: n
-        }
-    }
-
-    function calculateDCLS() {
-        if ("function" != typeof LayoutShift) return !1;
-        for (var e = 0, t = 0; t < gaPerfEntries.length; t++) {
-            var n = gaPerfEntries[t];
-            "layout-shift" !== n.entryType || n.hadRecentInput || (e += n.value)
-        }
-        return e.toFixed(6)
-    }
-
-    function arrayMedian(e) {
-        if (0 === e.length) return 0;
-        var t = Math.floor(e.length / 2);
-        return e.sort((function(e, t) {
-            return e - t
-        })), e.length % 2 ? e[t] : Math.round((e[t - 1] + e[t]) / 2)
-    }
-
-    function selfLoading() {
-        var e = "";
-        if (perf && perf.getEntriesByName) {
-            var t = getScriptElement("/js/lux.js");
-            if (t) {
-                var n = perf.getEntriesByName(t.src);
-                if (n && n.length) {
-                    var r = n[0],
-                        a = Math.round(r.domainLookupEnd - r.domainLookupStart),
-                        i = Math.round(r.connectEnd - r.connectStart),
-                        o = Math.round(r.responseStart - r.requestStart),
-                        s = Math.round(r.responseEnd - r.responseStart),
-                        d = a + i + o + s,
-                        g = LUX_t_end - LUX_t_start,
-                        u = r.encodedBodySize ? r.encodedBodySize : 0;
-                    e = "d" + a + "t" + i + "f" + o + "c" + s + "n" + d + "e" + g + "r" + _samplerate + (u ? "x" + u : "") + (gLuxSnippetStart ? "l" + gLuxSnippetStart : "") + "s" + (LUX_t_start - _navigationStart)
-                }
-            }
-        }
-        return e
-    }
-
-    function _clearIx() {
-        ghIx = {}
-    }
-
-    function ixValues() {
-        var e = [];
-        for (var t in ghIx) e.push(t + "|" + ghIx[t]);
-        return e.join(",")
-    }
-
-    function _addData(e, t) {
-        dlog("Enter LUX.addData(), name = " + e + ", value = " + t);
+        c.push({ name: e, entryType: "measure", startTime: r, duration: i - r });
+      },
+      init: function () {
+        pe("Enter LUX.init()."),
+          (d = {}),
+          fe(),
+          de(),
+          (l = 0),
+          (m = 0),
+          (v = 0),
+          (p = 0),
+          (E = me()),
+          (T = le(E)),
+          i.splice(0),
+          (s = 0),
+          (s |= 1),
+          j(h);
+      },
+      send: ee,
+      addData: function (e, t) {
+        pe("Enter LUX.addData(), name = " + e + ", value = " + t);
         var n = typeof t;
-        "string" !== typeof e || "string" !== n && "number" !== n && "boolean" !== n || (ghData[e] = t), gbLuxSent && (gCustomerDataTimeout && clearTimeout(gCustomerDataTimeout), gCustomerDataTimeout = setTimeout(_sendCustomerData, 100))
-    }
-
-    function _sample() {
-        if (void 0 === gUid || void 0 === _samplerate) return !1;
-        var e = ("" + gUid).substr(-2);
-        return parseInt(e) < _samplerate
-    }
-
-    function customerDataValues() {
-        var e = [];
-        for (var t in ghData) {
-            var n = "" + ghData[t];
-            t = t.replace(/,/g, "").replace(/\|/g, ""), n = n.replace(/,/g, "").replace(/\|/g, ""), e.push(t + "|" + n)
-        }
-        return encodeURIComponent(e.join(","))
-    }
-
-    function _init() {
-        dlog("Enter LUX.init()."), _clearIx(), _removeIxHandlers(), _addIxHandlers(), gbNavSent = 0, gbLuxSent = 0, gbIxSent = 0, gbFirstPV = 0, gSyncId = createSyncId(), gUid = refreshUniqueId(gSyncId), gaPerfEntries.splice(0), gFlags = 0, gFlags |= gFlag_InitCalled, _mark(gStartMark)
-    }
-
-    function blockingScripts() {
-        var e = lastViewportElement();
-        if (!e) return syncScripts();
-        for (var t = document.getElementsByTagName("script"), n = 0, r = 0, a = t.length; r < a; r++) {
-            var i = t[r];
-            !i.src || i.async || i.defer || 0 == (4 & i.compareDocumentPosition(e)) || n++
-        }
-        return n
-    }
-
-    function blockingStylesheets() {
-        for (var e = 0, t = document.getElementsByTagName("link"), n = 0, r = t.length; n < r; n++) {
-            var a = t[n];
-            a.href && "stylesheet" === a.rel && 0 !== a.href.indexOf("data:") && (a.onloadcssdefined || "print" === a.media || "style" === a.as || "function" == typeof a.onload && "all" === a.media || e++)
-        }
-        return e
-    }
-
-    function syncScripts() {
-        for (var e = document.getElementsByTagName("script"), t = 0, n = 0, r = e.length; n < r; n++) {
-            var a = e[n];
-            !a.src || a.async || a.defer || t++
-        }
-        return t
-    }
-
-    function numScripts() {
-        for (var e = document.getElementsByTagName("script"), t = 0, n = 0, r = e.length; n < r; n++) {
-            e[n].src && t++
-        }
-        return t
-    }
-
-    function numStylesheets() {
-        for (var e = document.getElementsByTagName("link"), t = 0, n = 0, r = e.length; n < r; n++) {
-            var a = e[n];
-            a.href && "stylesheet" == a.rel && t++
-        }
-        return t
-    }
-
-    function inlineTagSize(e) {
-        for (var t = document.getElementsByTagName(e), n = 0, r = 0, a = t.length; r < a; r++) {
-            var i = t[r];
-            try {
-                n += i.innerHTML.length
-            } catch (i) {
-                return dlog("Error accessing inline element innerHTML."), -1
+        "string" !== typeof e || ("string" !== n && "number" !== n && "boolean" !== n) || (f[e] = t),
+          m && (o && clearTimeout(o), (o = setTimeout(ne, 100)));
+      },
+      getSessionId: function () {
+        return T;
+      },
+      getDebug: function () {
+        return e;
+      },
+      forceSample: function () {
+        ve(me(!0)), console.log("Sampling has been turned on for this session.");
+      },
+      doUpdate: function (e, n) {
+        if (e && t < e && document.body && !g) {
+          pe("Updating cached version of lux.js from 216 to " + e + "."), (g = 1);
+          var r = Y("/js/lux.js");
+          if (r)
+            if ("function" == typeof fetch) fetch(r.src, { cache: "reload" });
+            else {
+              var i = document.createElement("iframe");
+              (i.style.display = "none"),
+                (i.id = "LUX_update_iframe"),
+                (i.src =
+                  "//cdn.speedcurve.com/luxupdate.php?src=" +
+                  encodeURIComponent(r.src) +
+                  (n ? "&tw=" + n : "")),
+                document.body.appendChild(i);
             }
         }
-        return n
-    }
-
-    function getNavTiming() {
-        var e = "",
-            t = _navigationStart;
-        if (_getMark(gStartMark) && _getMark(gEndMark)) {
-            var n = Math.round(_getMark(gStartMark).startTime);
-            e = (t += n) + "fs0ls" + (s = Math.round(_getMark(gEndMark).startTime) - n) + "le" + s
-        } else if (perf && perf.timing) {
-            var r = perf.timing,
-                a = getStartRender(),
-                i = getFcp(),
-                o = getLcp();
-            e = t + (r.redirectStart ? "rs" + (r.redirectStart - t) : "") + (r.redirectEnd ? "re" + (r.redirectEnd - t) : "") + (r.fetchStart ? "fs" + (r.fetchStart - t) : "") + (r.domainLookupStart ? "ds" + (r.domainLookupStart - t) : "") + (r.domainLookupEnd ? "de" + (r.domainLookupEnd - t) : "") + (r.connectStart ? "cs" + (r.connectStart - t) : "") + (r.secureConnectionStart ? "sc" + (r.secureConnectionStart - t) : "") + (r.connectEnd ? "ce" + (r.connectEnd - t) : "") + (r.requestStart ? "qs" + (r.requestStart - t) : "") + (r.responseStart ? "bs" + (r.responseStart - t) : "") + (r.responseEnd ? "be" + (r.responseEnd - t) : "") + (r.domLoading ? "ol" + (r.domLoading - t) : "") + (r.domInteractive ? "oi" + (r.domInteractive - t) : "") + (r.domContentLoadedEventStart ? "os" + (r.domContentLoadedEventStart - t) : "") + (r.domContentLoadedEventEnd ? "oe" + (r.domContentLoadedEventEnd - t) : "") + (r.domComplete ? "oc" + (r.domComplete - t) : "") + (r.loadEventStart ? "ls" + (r.loadEventStart - t) : "") + (r.loadEventEnd ? "le" + (r.loadEventEnd - t) : "") + (a ? "sr" + a : "") + (i ? "fc" + i : "") + (o ? "lc" + o : "")
-        } else if (_getMark(gEndMark)) {
-            var s;
-            e = t + "fs0ls" + (s = Math.round(_getMark(gEndMark).startTime)) + "le" + s
-        }
-        return e
-    }
-
-    function getFcp() {
-        if (perf && perf.getEntriesByType && perf.getEntriesByType("paint"))
-            for (var e = perf.getEntriesByType("paint"), t = 0; t < e.length; t++) {
-                var n = e[t];
-                if ("first-contentful-paint" === n.name) return Math.round(n.startTime)
-            }
-        return 0
-    }
-
-    function getLcp() {
-        if (gaPerfEntries.length)
-            for (var e = gaPerfEntries.length - 1; e >= 0; e--) {
-                var t = gaPerfEntries[e];
-                if ("largest-contentful-paint" === t.entryType) return Math.round(t.startTime)
-            }
-        return 0
-    }
-
-    function getStartRender() {
-        if (perf && perf.timing) {
-            var e, t = perf.timing,
-                n = t.navigationStart;
-            if (n) {
-                if (perf && perf.getEntriesByType && perf.getEntriesByType("paint") && perf.getEntriesByType("paint").length)
-                    for (var r = perf.getEntriesByType("paint"), a = 0; a < r.length; a++) {
-                        var i = r[a];
-                        if ("first-paint" === i.name) {
-                            e = Math.round(i.startTime);
-                            break
-                        }
-                    } else if (window.chrome && "function" == typeof window.chrome.loadTimes) {
-                        var o = window.chrome.loadTimes();
-                        o && (e = Math.round(1e3 * o.firstPaintTime - n))
-                    } else t.msFirstPaint && (e = Math.round(t.msFirstPaint - n));
-                if (e > 0) return e
-            }
-        }
-        return dlog("Paint Timing not supported."), null
-    }
-
-    function getCustomerId() {
-        if (void 0 !== LUX.customerid) return LUX.customerid;
-        var e = getScriptElement("/js/lux.js");
-        return e ? (LUX.customerid = getQuerystringParam(e.src, "id"), LUX.customerid) : ""
-    }
-
-    function getScriptElement(e) {
-        for (var t = document.getElementsByTagName("script"), n = 0, r = t.length; n < r; n++) {
-            var a = t[n];
-            if (a.src && -1 !== a.src.indexOf(e)) return a
-        }
-        return null
-    }
-
-    function getQuerystringParam(e, t) {
-        for (var n = e.split("?")[1].split("&"), r = 0, a = n.length; r < a; r++) {
-            var i = n[r].split("=");
-            if (t === i[0]) return i[1]
-        }
-    }
-
-    function avgDomDepth() {
-        for (var e = document.getElementsByTagName("*"), t = e.length, n = 0; t--;) n += numParents(e[t]);
-        return Math.round(n / e.length)
-    }
-
-    function numParents(e) {
-        var t = 0;
-        if (e.parentNode)
-            for (; e = e.parentNode;) t++;
-        return t
-    }
-
-    function docHeight(e) {
-        var t = e.body,
-            n = e.documentElement;
-        return Math.max(t ? t.scrollHeight : 0, t ? t.offsetHeight : 0, n ? n.clientHeight : 0, n ? n.scrollHeight : 0, n ? n.offsetHeight : 0)
-    }
-
-    function docWidth(e) {
-        var t = e.body,
-            n = e.documentElement;
-        return Math.max(t ? t.scrollWidth : 0, t ? t.offsetWidth : 0, n ? n.clientWidth : 0, n ? n.scrollWidth : 0, n ? n.offsetWidth : 0)
-    }
-
-    function docSize() {
-        if (perf && perf.getEntriesByType) {
-            var e = performance.getEntriesByType("navigation");
-            if (e && e.length > 0 && e[0].encodedBodySize) return e[0].encodedBodySize
-        }
-        return 0
-    }
-
-    function navigationType() {
-        return perf && perf.navigation && void 0 !== perf.navigation.type ? perf.navigation.type : ""
-    }
-
-    function connectionType() {
-        var e = navigator.connection,
-            t = "";
-        return e && e.effectiveType && (t = "slow-2g" === (t = e.effectiveType) ? "Slow 2G" : "2g" === t || "3g" === t || "4g" === t || "5g" === t ? t.toUpperCase() : t.charAt(0).toUpperCase() + t.slice(1)), t
-    }
-
-    function imagesATF() {
-        var e = document.getElementsByTagName("img"),
-            t = [];
-        if (e)
-            for (var n = 0, r = e.length; n < r; n++) {
-                var a = e[n];
-                inViewport(a) && t.push(a)
-            }
-        return t
-    }
-
-    function lastViewportElement(e) {
-        var t;
-        if (e || (e = document.body), e) {
-            var n = e.children;
-            if (n)
-                for (var r = 0, a = n.length; r < a; r++) {
-                    var i = n[r];
-                    inViewport(i) && (t = i)
-                }
-        }
-        return t ? lastViewportElement(t) : e
-    }
-
-    function inViewport(e) {
-        var t = document.documentElement.clientHeight,
-            n = document.documentElement.clientWidth,
-            r = findPos(e);
-        return r[0] >= 0 && r[1] >= 0 && r[0] < n && r[1] < t && e.offsetWidth > 0 && e.offsetHeight > 0
-    }
-
-    function findPos(e) {
-        for (var t = 0, n = 0; e;) t += e.offsetLeft, n += e.offsetTop, e = e.offsetParent;
-        return [t, n]
-    }
-
-    function _sendLux() {
-        dlog("Enter LUX.send().");
-        var e = getCustomerId();
-        if (e && gSyncId && validDomain() && _sample() && !gbLuxSent) {
-            _mark(gEndMark);
-            var t = userTimingValues(),
-                n = elementTimingValues(),
-                r = customerDataValues(),
-                a = "";
-            gbIxSent || (a = ixValues());
-            var i = cpuTimes(),
-                o = calculateDCLS(),
-                s = selfLoading();
-            document.visibilityState && "visible" !== document.visibilityState && (gFlags |= gFlag_NotVisible);
-            var d = _beaconUrl + "?v=" + version + "&id=" + e + "&sid=" + gSyncId + "&uid=" + gUid + (r ? "&CD=" + r : "") + "&l=" + encodeURIComponent(_getPageLabel()),
-                g = inlineTagSize("script"),
-                u = inlineTagSize("style"),
-                c = (gbNavSent ? "" : "&NT=" + getNavTiming()) + (gbFirstPV ? "&LJS=" + s : "") + "&PS=ns" + numScripts() + "bs" + blockingScripts() + (g > -1 ? "is" + g : "") + "ss" + numStylesheets() + "bc" + blockingStylesheets() + (u > -1 ? "ic" + u : "") + "ia" + imagesATF().length + "it" + document.getElementsByTagName("img").length + "dd" + avgDomDepth() + "nd" + document.getElementsByTagName("*").length + "vh" + document.documentElement.clientHeight + "vw" + document.documentElement.clientWidth + "dh" + docHeight(document) + "dw" + docWidth(document) + (docSize() ? "ds" + docSize() : "") + (connectionType() ? "ct" + connectionType() + "_" : "") + "er" + nErrors + "nt" + navigationType() + (navigator.deviceMemory ? "dm" + Math.round(navigator.deviceMemory) : "") + (a ? "&IX=" + a : "") + (gFirstInputDelay ? "&FID=" + gFirstInputDelay : "") + (i ? "&CPU=" + i : "") + (gFlags ? "&fl=" + gFlags : "") + (n ? "&ET=" + n : "") + "&HN=" + encodeURIComponent(document.location.hostname) + (!1 !== o ? "&CLS=" + o : ""),
-                l = "";
-            if (t) {
-                var f = d.length + c.length;
-                if (f + t.length <= gMaxQuerystring) c += "&UT=" + t;
-                else {
-                    var m = gMaxQuerystring - f,
-                        p = t.lastIndexOf(",", m);
-                    c += "&UT=" + t.substring(0, p), l = t.substring(p + 1)
-                }
-            }
-            var v = d + c;
-            dlog("Sending main LUX beacon: " + v), _sendBeacon(v), gbLuxSent = 1, gbNavSent = 1, gbIxSent = a ? 1 : 0;
-            for (var h = gMaxQuerystring - d.length; l;) {
-                var y = "";
-                if (l.length <= h) y = l, l = "";
-                else {
-                    var _ = l.lastIndexOf(",", h); - 1 === _ && (_ = l.indexOf(",")), -1 === _ ? (y = l, l = "") : (y = l.substring(0, _), l = l.substring(_ + 1))
-                }
-                var L = d + "&UT=" + y;
-                dlog("Sending extra User Timing beacon: " + L), _sendBeacon(L)
-            }
-        }
-    }
-
-    function _sendIx() {
-        var e = getCustomerId();
-        if (e && gSyncId && validDomain() && _sample() && !gbIxSent && gbLuxSent) {
-            var t = ixValues();
-            if (t) {
-                var n = customerDataValues(),
-                    r = "?v=" + version + "&id=" + e + "&sid=" + gSyncId + "&uid=" + gUid + (n ? "&CD=" + n : "") + "&l=" + encodeURIComponent(_getPageLabel()) + "&IX=" + t + (gFirstInputDelay ? "&FID=" + gFirstInputDelay : "") + "&HN=" + encodeURIComponent(document.location.hostname),
-                    a = _beaconUrl + r;
-                dlog("Sending Interaction Metrics beacon: " + a), _sendBeacon(a), gbIxSent = 1
-            }
-        }
-    }
-
-    function _sendCustomerData() {
-        var e = getCustomerId();
-        if (e && gSyncId && validDomain() && _sample() && gbLuxSent) {
-            var t = customerDataValues();
-            if (t) {
-                var n = "?v=" + version + "&id=" + e + "&sid=" + gSyncId + "&uid=" + gUid + "&CD=" + t + "&l=" + encodeURIComponent(_getPageLabel()) + "&HN=" + encodeURIComponent(document.location.hostname),
-                    r = _beaconUrl + n;
-                dlog("Sending late Customer Data beacon: " + r), _sendBeacon(r)
-            }
-        }
-    }
-
-    function _sendBeacon(e) {
-        if ("simple" !== LUX.beaconMode) return _sendBeaconAutoUpdate(e);
-        (new Image).src = e
-    }
-
-    function _sendBeaconAutoUpdate(e) {
-        var t = document.createElement("script");
-        t.async = !0, t.src = e;
-        var n = document.getElementsByTagName("script");
-        n.length ? n[0].parentNode.insertBefore(t, n[0]) : ((n = document.getElementsByTagName("head")).length || (n = document.getElementsByTagName("body")).length) && n[0].appendChild(t)
-    }
-
-    function interactionAttributionForElement(e) {
-        if (e.id) return e.id;
-        for (var t, n = e; n.parentNode && n.parentNode.tagName;) {
-            if ((n = n.parentNode).hasAttribute("data-sctrack")) return n.getAttribute("data-sctrack");
-            n.id && !t && (t = n.id)
-        }
-        var r = "INPUT" === e.tagName && "submit" === e.type,
-            a = "BUTTON" === e.tagName,
-            i = "A" === e.tagName;
-        return r && e.value ? e.value : (a || i) && e.innerText ? e.innerText : t || ""
-    }
-
-    function _scrollHandler() {
-        void 0 === ghIx.s && (ghIx.s = Math.round(_now()))
-    }
-
-    function _keyHandler(e) {
-        if (_removeIxHandlers(), void 0 === ghIx.k) {
-            if (ghIx.k = Math.round(_now()), e && e.target) {
-                var t = interactionAttributionForElement(e.target);
-                t && (ghIx.ki = t)
-            }
-            _sendIx()
-        }
-    }
-
-    function _clickHandler(e) {
-        if (_removeIxHandlers(), void 0 === ghIx.c) {
-            ghIx.c = Math.round(_now());
-            var t = null;
-            try {
-                e && e.target && (t = e.target)
-            } catch (e) {
-                dlog("Error accessing event target."), t = null
-            }
-            if (t) {
-                e.clientX && (ghIx.cx = e.clientX, ghIx.cy = e.clientY);
-                var n = interactionAttributionForElement(e.target);
-                n && (ghIx.ci = n)
-            }
-            _sendIx()
-        }
-    }
-
-    function _doUpdate(e, t) {
-        if (e && version < e && document.body && !gbUpdated) {
-            dlog("Updating cached version of lux.js from " + version + " to " + e + "."), gbUpdated = 1;
-            var n = getScriptElement("/js/lux.js");
-            if (n)
-                if ("function" == typeof fetch) fetch(n.src, {
-                    cache: "reload"
-                });
-                else {
-                    var r = document.createElement("iframe");
-                    r.style.display = "none", r.id = "LUX_update_iframe", r.src = "//cdn.speedcurve.com/luxupdate.php?src=" + encodeURIComponent(n.src) + (t ? "&tw=" + t : ""), document.body.appendChild(r)
-                }
-        }
-    }
-
-    function addListener(e, t) {
-        window.addEventListener ? window.addEventListener(e, t, !1) : window.attachEvent && window.attachEvent("on" + e, t)
-    }
-
-    function removeListener(e, t) {
-        window.removeEventListener ? window.removeEventListener(e, t, !1) : window.detachEvent && window.detachEvent("on" + e, t)
-    }
-
-    function _addIxHandlers() {
-        addListener("scroll", _scrollHandler), addListener("keypress", _keyHandler), addListener("mousedown", _clickHandler)
-    }
-
-    function _removeIxHandlers() {
-        removeListener("scroll", _scrollHandler), removeListener("keypress", _keyHandler), removeListener("mousedown", _clickHandler)
-    }
-
-    function createSyncId(e) {
-        return e ? Number(new Date) + "00000" : Number(new Date) + "" + _padLeft(parseInt(1e5 * Math.random()), "00000")
-    }
-
-    function refreshUniqueId(e) {
-        var t = _getCookie("lux_uid");
-        if (!t || t.length < 11) t = e;
-        else {
-            var n = parseInt(t.substring(0, 10));
-            Number(new Date) / 1e3 - n > 86400 && (t = e)
-        }
-        return setUniqueId(t), t
-    }
-
-    function setUniqueId(e) {
-        return _setCookie("lux_uid", e, gSessionTimeout), e
-    }
-
-    function _getUniqueId() {
-        return gUid
-    }
-
-    function _getPageLabel() {
-        if (void 0 !== LUX.label) return LUX.label;
-        if (void 0 !== LUX.jspagelabel) {
-            try {
-                var label = eval(LUX.jspagelabel)
-            } catch (e) {
-                console.log("Error evaluating customer settings LUX page label:", e)
-            }
-            if (label) return label
-        }
-        return document.title
-    }
-
-    function validDomain() {
-        return !0
-    }
-
-    function _getCookie(e) {
-        try {
-            for (var t = document.cookie.split(";"), n = 0; n < t.length; n++) {
-                var r = t[n].split("=");
-                if (e === r[0].trim()) return unescape(r[1])
-            }
-        } catch (e) {
-            dlog("Error accessing document.cookie.")
-        }
-    }
-
-    function _setCookie(e, t, n) {
-        try {
-            document.cookie = e + "=" + escape(t) + (n ? "; max-age=" + n : "") + "; path=/; SameSite=Lax"
-        } catch (e) {
-            dlog("Error setting document.cookie.")
-        }
-    }
-
-    function _padLeft(e, t) {
-        return (t + e).slice(-t.length)
-    }
-
-    function dlog(e) {
-        gaLog.push(e), LUX.debug && console.log("LUX: " + e)
-    }
-    gaEventTypes.forEach((function(e) {
-        window.addEventListener(e, onInput, ghListenerOptions)
-    })), _auto && ("complete" == document.readyState ? _sendLux() : addListener("load", (function() {
-        setTimeout(_sendLux, 200)
-    })), addListener("beforeunload", _sendLux), addListener("unload", _sendLux), addListener("beforeunload", _sendIx), addListener("unload", _sendIx)), _addIxHandlers();
-    var _LUX = {
-        mark: _mark,
-        measure: _measure,
-        init: _init,
-        send: _sendLux,
-        addData: _addData,
-        getSessionId: _getUniqueId,
-        getDebug: function() {
-            return gaLog
-        },
-        forceSample: function() {
-            setUniqueId(createSyncId(!0)), console.log("Sampling has been turned on for this session.")
-        },
-        doUpdate: _doUpdate,
-        cmd: function(e) {
-            var t = e.shift();
-            "function" == typeof _LUX[t] && _LUX[t].apply(_LUX, e)
-        },
-        beaconUrl: _beaconUrl,
-        samplerate: _samplerate,
-        auto: _auto,
-        label: void 0 !== LUX.label ? LUX.label : void 0,
-        jspagelabel: void 0 !== LUX.jspagelabel ? LUX.jspagelabel : void 0,
-        version: version,
-        ae: [],
-        al: [],
-        debug: !!LUX.debug
-    };
-    return LUX.ac && LUX.ac.length && LUX.ac.forEach((function(e) {
+      },
+      cmd: function (e) {
         var t = e.shift();
-        "function" == typeof _LUX[t] && _LUX[t].apply(_LUX, e)
-    })), void 0 !== window.LUX_ae && window.LUX_ae.forEach((function(e) {
-        errorHandler(e)
-    })), dlog("lux.js evaluation end."), _LUX
-}();
-var LUX_t_end = Date.now();
+        "function" == typeof he[t] && he[t].apply(he, e);
+      },
+      beaconMode: w,
+      beaconUrl: U,
+      samplerate: X,
+      auto: k,
+      label: void 0 !== LUX.label ? LUX.label : void 0,
+      jspagelabel: void 0 !== LUX.jspagelabel ? LUX.jspagelabel : void 0,
+      version: t,
+      ae: [],
+      al: [],
+      debug: !!LUX.debug,
+    };
+    return (
+      LUX.ac &&
+        LUX.ac.length &&
+        LUX.ac.forEach(function (e) {
+          var t = e.shift();
+          "function" == typeof he[t] && he[t].apply(he, e);
+        }),
+      void 0 !== window.LUX_ae &&
+        window.LUX_ae.forEach(function (e) {
+          r(e);
+        }),
+      pe("lux.js evaluation end."),
+      he
+    );
+  })();
+  var LUX_t_end = Date.now();
 
 // -----------------------------------------------------------------------------
 // More settings
@@ -858,7 +1014,7 @@ LUX.beaconMode = "simple";
 // Setting debug to `true` shows what happening as it happens. Running
 // `LUX.getDebug()` in the browser's console will show the history of what's
 // happened.
-LUX.debug = false;
+LUX.debug = true;
 
 // Forces sampling - useful for when used with `debug = true`
 // LUX.forceSample()
