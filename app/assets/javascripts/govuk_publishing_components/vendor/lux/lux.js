@@ -760,7 +760,6 @@ LUX = (function () {
                 (n = document.getElementsByTagName("body")).length) &&
               n[0].appendChild(t);
         })(e);
-        console.log(LUX.samplerate)
       new Image().src = e;
     }
     function ie(e) {
@@ -1014,7 +1013,7 @@ LUX.beaconMode = "simple";
 // Setting debug to `true` shows what happening as it happens. Running
 // `LUX.getDebug()` in the browser's console will show the history of what's
 // happened.
-LUX.debug = true;
+LUX.debug = false;
 
 // Forces sampling - useful for when used with `debug = true`
 // LUX.forceSample()
