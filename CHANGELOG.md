@@ -7,17 +7,18 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## Unreleased
 
+* Update LUX JavaScript from v214 to v216 ([PR #2152](https://github.com/alphagov/govuk_publishing_components/pull/2152))
 * Add a custom dimension to clicks on super breadcrumbs tagged to a brexit taxon ([PR #2149](https://github.com/alphagov/govuk_publishing_components/pull/2149))
 
 ## 24.15.1
 
-* Added tracking for the header menu toggle ([PR 2143](https://github.com/alphagov/govuk_publishing_components/pull/2143))
+* Added tracking for the header menu toggle ([PR #2143](https://github.com/alphagov/govuk_publishing_components/pull/2143))
 
 ## 24.15.0
 
- * Set LUX's sampling rate to 1% ([PR 2145](https://github.com/alphagov/govuk_publishing_components/pull/2145))
+ * Set LUX's sampling rate to 1% ([PR #2145](https://github.com/alphagov/govuk_publishing_components/pull/2145))
 
 ## 24.14.1
 
