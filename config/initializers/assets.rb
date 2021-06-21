@@ -8,8 +8,8 @@ Rails.application.config.assets.precompile += %w[
   component_guide/visual-regression.js
   component_guide/print.css
   govuk_publishing_components/rum-loader.js
-  govuk_publishing_components/vendor/lux.js
-  govuk_publishing_components/vendor/lux-polyfill.js
+  govuk_publishing_components/vendor/lux/lux-reporter.js
+  govuk_publishing_components/vendor/lux/lux-measurer.js
   govuk_publishing_components/all_components.js
   govuk_publishing_components/ie.js
   govuk_publishing_components/modules.js
