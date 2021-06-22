@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add tracking on search submit to public layout ([PR #2157](https://github.com/alphagov/govuk_publishing_components/pull/2157))
 *Turn off LUX's debug mode ([PR #2156](https://github.com/alphagov/govuk_publishing_components/pull/2156))
 
 ## 24.15.2
