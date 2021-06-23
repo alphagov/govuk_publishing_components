@@ -11,6 +11,7 @@
 
 * Allow custom font size on action links ([PR #2162](https://github.com/alphagov/govuk_publishing_components/pull/2162))
 * Add scroll tracking to /guidance/import-and-export-goods-using-preference-agreements ([PR #2165](https://github.com/alphagov/govuk_publishing_components/pull/2165))
+* Amend layout_for_public component ([PR #2160](https://github.com/alphagov/govuk_publishing_components/pull/2160))
 
 ## 24.15.3
 

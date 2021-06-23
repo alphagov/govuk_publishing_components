@@ -47,6 +47,24 @@ describe "Layout for public", type: :view do
     assert_select ".gem-c-layout-for-public .gem-c-layout-header", false
   end
 
+  it "displays with a feedback component by default" do
+    render_component({})
+
+    assert_select ".gem-c-layout-for-public .gem-c-feedback", true
+  end
+
+  it "can omit the feedback component" do
+    render_component(omit_feedback_form: true)
+
+    assert_select ".gem-c-layout-for-public .gem-c-feedback", false
+  end
+
+  it "can add a product name in the header" do
+    render_component(product_name: "Account")
+
+    assert_select ".gem-c-layout-for-public .gem-c-header__product-name", text: "Account"
+  end
+
   it "can add a emergency banner" do
     render_component({
       emergency_banner: "<div id='test-emergency-banner'>This is an emergency banner test</div>",
