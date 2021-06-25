@@ -212,6 +212,13 @@
       ['Percent', 60],
       ['Percent', 80],
       ['Percent', 100]
+    ],
+    '/guidance/import-and-export-goods-using-preference-agreements': [
+      ['Percent', 20],
+      ['Percent', 40],
+      ['Percent', 60],
+      ['Percent', 80],
+      ['Percent', 100]
     ]
   }
 
