@@ -1,7 +1,9 @@
 <%
+  omit_feedback_form ||= false
   emergency_banner ||= nil
   full_width ||= false
   global_bar ||= nil
+  product_name ||= nil
   html_lang ||= "en"
   layout_helper = GovukPublishingComponents::Presenters::PublicLayoutHelper.new(local_assigns)
   logo_link ||= "/"
@@ -76,6 +78,7 @@
         search: show_search,
         logo_link: logo_link,
         navigation_items: navigation_items,
+        product_name: product_name,
 
         # The (blue) bottom border needs to be underneath the emergency banner -
         # so it has been turned off and added in manually.
@@ -104,9 +107,11 @@
       </main>
     </div>
 
-    <div class="govuk-width-container">
-      <%= render "govuk_publishing_components/components/feedback" %>
-    </div>
+    <% unless omit_feedback_form %>
+      <div class="govuk-width-container">
+        <%= render "govuk_publishing_components/components/feedback" %>
+      </div>
+    <% end %>
 
     <% unless local_assigns[:hide_footer_links] %>
       <%= render "govuk_publishing_components/components/layout_footer", {

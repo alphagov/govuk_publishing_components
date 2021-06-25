@@ -27,6 +27,10 @@ examples:
     description: This allows the header to be omitted which is currently used when rendering CSV previews from Whitehall
     data:
       omit_header: true
+  omit_feedback:
+    description: This allows the feedback form to be omitted
+    data:
+      omit_feedback_form: true
   navigation:
     description: Passes the navigation through to the [header component](/component-guide/layout_header/).
     data:
