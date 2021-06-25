@@ -101,6 +101,12 @@ examples:
       text: Coronavirus (COVID-19)
       href: "/my-test-page"
       dark_icon: true
+  with_custom_font_size:
+    data:
+      text: Guidance for businesses
+      href: "/guidance-for-businesses"
+      dark_icon: true
+      font_size: m
   with_nhs_icon:
     data:
       text: Something about the NHS

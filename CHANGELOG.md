@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Allow custom font size on action links ([PR #2162](https://github.com/alphagov/govuk_publishing_components/pull/2162))
+
 ## 24.15.3
 
 * Add tracking on search submit to public layout ([PR #2157](https://github.com/alphagov/govuk_publishing_components/pull/2157))
