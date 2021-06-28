@@ -2,4 +2,4 @@
 // = require govuk/components/header/header.js
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {}
-window.GOVUK.Modules.Header = window.GOVUKFrontend
+window.GOVUK.Modules.GovukHeader = window.GOVUKFrontend

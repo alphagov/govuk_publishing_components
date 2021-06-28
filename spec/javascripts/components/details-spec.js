@@ -5,8 +5,8 @@ describe('Details component', function () {
   var FIXTURE
 
   function loadDetailsComponent () {
-    var element = document.querySelector('[data-module="govuk-details"]')
-    new GOVUK.Modules.GovukDetails(element).init()
+    var element = document.querySelector('[data-module="gem-details"]')
+    new GOVUK.Modules.GemDetails(element).init()
   }
 
   beforeEach(function () {
@@ -14,7 +14,7 @@ describe('Details component', function () {
     spyOn(GOVUK.Modules, 'GemTrackClick').and.callFake(function () { this.start = function () {} })
 
     FIXTURE =
-      '<details class="gem-c-details govuk-details govuk-!-margin-bottom-3" data-track-category="track-category" data-track-action="track-action" data-track-label="track-label" data-module="govuk-details">' +
+      '<details class="gem-c-details govuk-details govuk-!-margin-bottom-3" data-track-category="track-category" data-track-action="track-action" data-track-label="track-label" data-module="gem-details">' +
         '<summary class="govuk-details__summary" data-details-track-click="">' +
         '<span>Toggle text</span>' +
         '</summary>' +

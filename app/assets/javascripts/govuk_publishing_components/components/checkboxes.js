@@ -3,17 +3,17 @@
 // = require govuk/components/checkboxes/checkboxes.js
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {}
-window.GOVUK.Modules.Checkboxes = window.GOVUKFrontend;
+window.GOVUK.Modules.GovukCheckboxes = window.GOVUKFrontend;
 
 (function (Modules) {
-  function GovukCheckboxes ($module) {
+  function GemCheckboxes ($module) {
     this.$module = $module
     this.$checkboxes = this.$module.querySelectorAll('input[type=checkbox]')
     this.$nestedCheckboxes = this.$module.querySelectorAll('[data-nested=true] input[type=checkbox]')
     this.$exclusiveCheckboxes = this.$module.querySelectorAll('[data-exclusive=true] input[type=checkbox]')
   }
 
-  GovukCheckboxes.prototype.init = function () {
+  GemCheckboxes.prototype.init = function () {
     this.applyAriaControlsAttributes(this.$module)
 
     for (var i = 0; i < this.$checkboxes.length; i++) {
@@ -29,7 +29,7 @@ window.GOVUK.Modules.Checkboxes = window.GOVUKFrontend;
     }
   }
 
-  GovukCheckboxes.prototype.handleCheckboxChange = function (event) {
+  GemCheckboxes.prototype.handleCheckboxChange = function (event) {
     if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
       // Where checkboxes are manipulated externally in finders, `suppressAnalytics`
       // is passed to prevent duplicate GA events.
@@ -58,7 +58,7 @@ window.GOVUK.Modules.Checkboxes = window.GOVUKFrontend;
     }
   }
 
-  GovukCheckboxes.prototype.handleNestedCheckboxChange = function (event) {
+  GemCheckboxes.prototype.handleNestedCheckboxChange = function (event) {
     var $checkbox = event.target
     var $isNested = $checkbox.closest('.govuk-checkboxes--nested')
     var $hasNested = this.$module.querySelector('.govuk-checkboxes--nested[data-parent=' + $checkbox.id + ']')
@@ -70,7 +70,7 @@ window.GOVUK.Modules.Checkboxes = window.GOVUKFrontend;
     }
   }
 
-  GovukCheckboxes.prototype.toggleNestedCheckboxes = function ($scope, $checkbox) {
+  GemCheckboxes.prototype.toggleNestedCheckboxes = function ($scope, $checkbox) {
     var $nestedCheckboxes = $scope.querySelectorAll('input[type=checkbox]')
     if ($checkbox.checked) {
       for (var i = 0; i < $nestedCheckboxes.length; i++) {
@@ -83,7 +83,7 @@ window.GOVUK.Modules.Checkboxes = window.GOVUKFrontend;
     }
   }
 
-  GovukCheckboxes.prototype.toggleParentCheckbox = function ($scope, $checkbox) {
+  GemCheckboxes.prototype.toggleParentCheckbox = function ($scope, $checkbox) {
     var $inputs = $scope.querySelectorAll('input')
     var $checkedInputs = $scope.querySelectorAll('input:checked')
     var parentId = $scope.getAttribute('data-parent')
@@ -96,7 +96,7 @@ window.GOVUK.Modules.Checkboxes = window.GOVUKFrontend;
     }
   }
 
-  GovukCheckboxes.prototype.handleExclusiveCheckboxChange = function (event) {
+  GemCheckboxes.prototype.handleExclusiveCheckboxChange = function (event) {
     var $currentCheckbox = event.target
     var $checkboxes = $currentCheckbox.closest('.govuk-checkboxes')
     var $exclusiveOption = $checkboxes.querySelector('input[type=checkbox][data-exclusive]')
@@ -113,7 +113,7 @@ window.GOVUK.Modules.Checkboxes = window.GOVUKFrontend;
     }
   }
 
-  GovukCheckboxes.prototype.applyAriaControlsAttributes = function ($scope) {
+  GemCheckboxes.prototype.applyAriaControlsAttributes = function ($scope) {
     var $inputs = $scope.querySelectorAll('[data-controls]')
 
     for (var i = 0; i < $inputs.length; i++) {
@@ -121,5 +121,5 @@ window.GOVUK.Modules.Checkboxes = window.GOVUKFrontend;
     }
   }
 
-  Modules.GovukCheckboxes = GovukCheckboxes
+  Modules.GemCheckboxes = GemCheckboxes
 })(window.GOVUK.Modules)

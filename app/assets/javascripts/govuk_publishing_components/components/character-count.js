@@ -2,4 +2,4 @@
 // = require govuk/components/character-count/character-count.js
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {}
-window.GOVUK.Modules.CharacterCount = window.GOVUKFrontend
+window.GOVUK.Modules.GovukCharacterCount = window.GOVUKFrontend
