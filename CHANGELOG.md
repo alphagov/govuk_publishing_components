@@ -7,6 +7,11 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add links to privacy and accessibility statements in layout footer component  ([PR #2168](https://github.com/alphagov/govuk_publishing_components/pull/2168))
+
+
 ## 24.16.0
 
 * Allow custom font size on action links ([PR #2162](https://github.com/alphagov/govuk_publishing_components/pull/2162))
