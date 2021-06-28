@@ -62,11 +62,13 @@ describe('GOVUK Modules', function () {
     var callbackLegacyModule
     var callbackGovukModule
     var callbackFrontendModule
+    var callbackGemFrontendModule
 
     beforeEach(function () {
       callbackLegacyModule = jasmine.createSpy()
       callbackGovukModule = jasmine.createSpy()
       callbackFrontendModule = jasmine.createSpy()
+      callbackGemFrontendModule = jasmine.createSpy()
 
       // GOV.UK Frontend Toolkit Modules
       GOVUK.Modules.LegacyTestAlertModule = function () {
@@ -91,6 +93,15 @@ describe('GOVUK Modules', function () {
         callbackFrontendModule(this.element)
       }
       GOVUK.Modules.TestAlertFrontendModule = TestAlertFrontendModule
+
+      // GOV.UK Gem Frontend Modules
+      function GemTestAlertFrontendModule (element) {
+        this.element = element
+      }
+      GemTestAlertFrontendModule.prototype.init = function () {
+        callbackGemFrontendModule(this.element)
+      }
+      GOVUK.Modules.GemTestAlertFrontendModule = GemTestAlertFrontendModule
 
       // GOV.UK Publishing Module with a GOVUK Frontend counterpart
       function GovukTestAlertPublishingAndFrontendModule () { }
@@ -129,6 +140,7 @@ describe('GOVUK Modules', function () {
       delete GOVUK.Modules.LegacyTestAlertModule
       delete GOVUK.Modules.GovukTestAlertModule
       delete GOVUK.Modules.TestAlertFrontendModule
+      delete GOVUK.Modules.GemTestAlertFrontendModule
       delete GOVUK.Modules.GovukTestAlertPublishingAndFrontendModule
       delete GOVUK.Modules.TestAlertPublishingAndFrontendModule
       delete GOVUK.Modules.TestCookieDependencyModule
@@ -182,7 +194,19 @@ describe('GOVUK Modules', function () {
       GOVUK.modules.start()
       expect(callbackLegacyModule.calls.count()).toBe(3)
       expect(callbackGovukModule.calls.count()).toBe(2)
-      expect(callbackFrontendModule.calls.count()).toBe(2)
+      expect(callbackFrontendModule.calls.count()).toBe(1)
+      modules.remove()
+    })
+
+    it('starts multiple modules on a single element', function () {
+      var modules = $(
+        '<div data-module="test-alert-frontend-module gem-test-alert-frontend-module"></div>'
+      )
+
+      $('body').append(modules)
+      GOVUK.modules.start()
+      expect(callbackGemFrontendModule.calls.count()).toBe(1)
+      expect(callbackFrontendModule.calls.count()).toBe(1)
       modules.remove()
     })
 
