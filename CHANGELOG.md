@@ -7,10 +7,13 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add Brexit variation to action links ([PR #2172](https://github.com/alphagov/govuk_publishing_components/pull/2172))
+
 ## 24.16.1
 
 * Add links to privacy and accessibility statements in layout footer component  ([PR #2168](https://github.com/alphagov/govuk_publishing_components/pull/2168))
-
 
 ## 24.16.0
 
