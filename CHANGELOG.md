@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add Brexit variation to action links ([PR #2172](https://github.com/alphagov/govuk_publishing_components/pull/2172))
+* Add faux `require_tree` for Govspeak and polyfills ([PR #2173](https://github.com/alphagov/govuk_publishing_components/pull/2173))
 
 ## 24.16.1
 
