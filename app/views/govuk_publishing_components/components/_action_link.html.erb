@@ -14,6 +14,7 @@
   dark_icon ||= false
   small_icon ||= false
   nhs_icon ||= false
+  brexit_icon ||= false
   transparent_icon ||= false
   data ||= nil
   classes ||= nil
@@ -25,6 +26,7 @@
   css_classes << "gem-c-action-link--small-icon" if small_icon
   css_classes << "gem-c-action-link--transparent-icon" if transparent_icon
   css_classes << "gem-c-action-link--nhs" if nhs_icon
+  css_classes << "gem-c-action-link--brexit" if brexit_icon
   css_classes << "gem-c-action-link--simple" if simple
   css_classes << "gem-c-action-link--simple-light" if simple_light
   css_classes << "gem-c-action-link--with-subtext" if subtext
