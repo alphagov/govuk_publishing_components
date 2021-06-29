@@ -146,6 +146,31 @@
   }
 }
 
+.gem-c-action-link--brexit {
+  max-width: none;
+
+  &:before {
+    height: 30px;
+    width: 35px;
+    background-image: image-url("govuk_publishing_components/action-link-arrow--brexit.svg");
+    background-repeat: no-repeat;
+    background-size: 25px auto;
+    background-position: 0 0;
+  }
+
+  @include govuk-media-query($until: tablet) {
+    margin-bottom: govuk-spacing(2);
+  }
+
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: govuk-spacing(2);
+
+    &:before {
+      background-position: 0 4px;
+    }
+  }
+}
+
 .gem-c-action-link--nhs {
   &:before {
     width: 80px;
