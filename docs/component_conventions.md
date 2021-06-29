@@ -272,6 +272,8 @@ Component tests should include a check that the component doesn't fail if no dat
 
 Javascript tests should be included if the component has any Javascript that is unique to it. Use of existing Javascript modules should be covered by existing tests.
 
+[Read further guidance on testing components](/docs/testing-components.md).
+
 ## Helpers
 
 ![](https://docs.google.com/drawings/d/e/2PACX-1vRj6JM7cQvngDl3Gr_U9G4xga2gsU7Z-d2qHHQcsBdjsW4WaC9_eQdryBJIS69cLkrY7S0fK9BcrPSF/pub?w=960&amp;h=720)

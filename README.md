@@ -37,11 +37,13 @@ bin/rake app:jasmine:ci
 - [Install and use this gem](docs/install-and-use.md)
 - [Use a component in your application](docs/use-components.md)
 - [Generate a new component](docs/generate-a-new-component.md)
-- [Develop a component](docs/develop-component.md)
+- [Testing a component](docs/testing-components.md)
 - [Move a component from an application to the gem](docs/moving-components-upstream-into-this-gem.md)
 - [Publish/release a new version of the gem](docs/publishing-to-rubygems.md)
 - [Keep this gem in sync with the Design System](docs/upgrade-govuk-frontend.md)
 - [Code documentation on rubydoc.info](http://www.rubydoc.info/gems/govuk_publishing_components)
+- [Component conventions](docs/component_conventions.md)
+- [Component principles](docs/component_principles.md)
 
 ## Licence
 

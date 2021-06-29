@@ -1,16 +1,6 @@
-# Develop a component
+# Testing components
 
-Developing a new component should come from a user need identified by at least one team while developing an application.
-Make sure you test new components with users and you mark them as experimental (add `(experimental)` after the component name in the documentation file) until you collect enough feedback to be confident it could be used across applications.
-
-## Read first
-
-A component must:
-
-* [meet the component principles](/docs/component_principles.md)
-* [follow component conventions](/docs/component_conventions.md)
-
-## Testing
+## Accessibility testing
 
 If you create a component in the application, you can run accessibility tests against it.
 
