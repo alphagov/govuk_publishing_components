@@ -2,16 +2,16 @@
 // = require govuk/components/details/details.js
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {}
-window.GOVUK.Modules.Details = window.GOVUKFrontend;
+window.GOVUK.Modules.GovukDetails = window.GOVUKFrontend;
 
 (function (Modules) {
-  function GovukDetails ($module) {
+  function GemDetails ($module) {
     this.$module = $module
     this.customTrackLabel = this.$module.getAttribute('data-track-label')
     this.detailsClick = this.$module.querySelector('[data-details-track-click]')
   }
 
-  GovukDetails.prototype.init = function () {
+  GemDetails.prototype.init = function () {
     if (this.customTrackLabel) { // If a custom label has been provided, we can simply call the tracking module
       var trackDetails = new window.GOVUK.Modules.GemTrackClick()
       trackDetails.start($(this.$module))
@@ -22,7 +22,7 @@ window.GOVUK.Modules.Details = window.GOVUKFrontend;
     }
   }
 
-  GovukDetails.prototype.trackDefault = function (element) {
+  GemDetails.prototype.trackDefault = function (element) {
     if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
       var componentStatus = (element.getAttribute('open') == null) ? 'open' : 'closed'
       var trackCategory = element.getAttribute('data-track-category')
@@ -45,5 +45,5 @@ window.GOVUK.Modules.Details = window.GOVUKFrontend;
     }
   }
 
-  Modules.GovukDetails = GovukDetails
+  Modules.GemDetails = GemDetails
 })(window.GOVUK.Modules)

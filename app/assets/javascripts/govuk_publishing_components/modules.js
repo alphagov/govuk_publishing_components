@@ -26,29 +26,32 @@
       var modules = this.find(container)
 
       for (var i = 0, l = modules.length; i < l; i++) {
-        var module
         var element = $(modules[i])
-        var moduleName = camelCaseAndCapitalise(element.data('module'))
-        var started = element.data('module-started')
-        var frontendModuleName = moduleName.replace('Govuk', '')
+        var moduleNames = element.data('module').split(' ')
 
-        if ( // GOV.UK Publishing & Legacy Modules
-          typeof GOVUK.Modules[moduleName] === 'function' &&
-          !GOVUK.Modules[moduleName].prototype.init &&
-          !started
-        ) {
-          module = new GOVUK.Modules[moduleName]()
-          module.start(element)
-          element.data('module-started', true)
-        }
+        for (var j = 0, k = moduleNames.length; j < k; j++) {
+          var module
+          var moduleName = camelCaseAndCapitalise(moduleNames[j])
+          var started = element.data(moduleNames[j] + '-module-started')
 
-        if ( // GOV.UK Frontend Modules
-          typeof GOVUK.Modules[frontendModuleName] === 'function' &&
-          GOVUK.Modules[frontendModuleName].prototype.init &&
-          !started
-        ) {
-          module = new GOVUK.Modules[frontendModuleName](element[0]).init()
-          element.data('module-started', true)
+          if ( // GOV.UK Publishing & Legacy Modules
+            typeof GOVUK.Modules[moduleName] === 'function' &&
+            !GOVUK.Modules[moduleName].prototype.init &&
+            !started
+          ) {
+            module = new GOVUK.Modules[moduleName]()
+            module.start(element)
+            element.data(moduleNames[j] + '-module-started', true)
+          }
+
+          if ( // GOV.UK Frontend Modules
+            typeof GOVUK.Modules[moduleName] === 'function' &&
+            GOVUK.Modules[moduleName].prototype.init &&
+            !started
+          ) {
+            module = new GOVUK.Modules[moduleName](element[0]).init()
+            element.data(moduleNames[j] + '-module-started', true)
+          }
         }
       }
 
