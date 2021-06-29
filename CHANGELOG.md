@@ -7,14 +7,15 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 24.17.0
 
+* Allow multiple JavaScript modules on a certain element ([PR #2170](https://github.com/alphagov/govuk_publishing_components/pull/2170))
 * Add Brexit variation to action links ([PR #2172](https://github.com/alphagov/govuk_publishing_components/pull/2172))
 * Add faux `require_tree` for Govspeak and polyfills ([PR #2173](https://github.com/alphagov/govuk_publishing_components/pull/2173))
 
 ## 24.16.1
 
-* Add links to privacy and accessibility statements in layout footer component  ([PR #2168](https://github.com/alphagov/govuk_publishing_components/pull/2168))
+* Add links to privacy and accessibility statements in layout footer component ([PR #2168](https://github.com/alphagov/govuk_publishing_components/pull/2168))
 
 ## 24.16.0
 
