@@ -1,0 +1,37 @@
+name: Super navigation header
+description: The super navigation header provides a consistent header across GOV.UK.
+body: |
+accessibility_criteria: |
+  The component must:
+
+  * have a text contrast ratio higher than 4.5:1 against the background colour to meet WCAG AA
+
+  Images in the super navigation header must:
+
+  * be presentational when linked to from accompanying text (crown icon).
+
+  Landmarks and Roles in the super navigation header should:
+
+  * have a role of banner at the root of the component (<header>) (ARIA 1.1)
+
+  Links in the component must:
+
+  * accept focus
+  * be focusable with a keyboard
+  * be usable with a keyboard
+  * indicate when they have focus
+  * change in appearance when touched (in the touch-down state)
+  * change in appearance when hovered
+  * be usable with touch
+  * be usable with voice commands
+  * have visible text
+  * have meaningful text
+
+accessibility_excluded_rules:
+  - landmark-banner-is-top-level # The header element can not be top level in the examples
+  - duplicate-id-aria # IDs will be duplicated in component examples list
+  - form-field-multiple-labels # Form labels will be ambiguous in component examples list
+  - landmark-no-duplicate-banner # banners will be duplicated in component examples list
+  - landmark-unique # aria-label attributes will be duplicated in component examples list
+examples:
+  default:

@@ -1,0 +1,87 @@
+.gem-c-super-navigation-header__logotype-crown {
+  top: -2px;
+}
+
+.gem-c-super-navigation-header {
+  background: govuk-colour("black");
+}
+
+.gem-c-super-navigation-header__header-logo {
+  padding-top: 13px;
+  padding-bottom: 14px;
+
+  @include govuk-media-query($from: "desktop") {
+    display: block;
+    float: left;
+  }
+}
+
+.gem-c-super-navigation-header__content {
+  @include govuk-media-query($from: "desktop") {
+    display: block;
+    float: right;
+  }
+}
+
+.gem-c-super-navigation-header__items {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 govuk-spacing(1) 0;
+
+  @include govuk-media-query($from: "desktop") {
+    padding: 0;
+  }
+}
+
+.gem-c-super-navigation-header__item {
+  margin-right: 0;
+  padding: govuk-spacing(1) 0;
+
+  @include govuk-media-query($from: "desktop") {
+    float: left;
+    padding: 0;
+  }
+}
+
+.gem-c-super-navigation-header__item-link {
+  display: block;
+  padding: govuk-spacing(3) 0;
+
+  @include govuk-media-query($from: "desktop") {
+    padding: govuk-spacing(4);
+    width: auto;
+  }
+}
+
+// Special search link
+.gem-c-super-navigation-header__item--search {
+  border-bottom: 0;
+}
+
+.gem-c-super-navigation-header__item-link--search {
+  @include govuk-media-query($from: "desktop") {
+    background-color: $govuk-link-colour;
+    display: inherit;
+    width: govuk-spacing(4);
+
+    &:hover {
+      background-color: $govuk-link-hover-colour;
+    }
+  }
+}
+
+.gem-c-super-navigation-header__item-link-text--search {
+  @include govuk-media-query($from: "desktop") {
+    display: none;
+  }
+}
+
+.gem-c-super-navigation-header__item-link-icon--search {
+  display: none;
+
+  @include govuk-media-query($from: "desktop") {
+    display: block;
+    height: 20px;
+    width: 20px;
+  }
+}
