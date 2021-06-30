@@ -22,9 +22,12 @@ If you are using GOV.UK Docker, remember to combine it with the commands that fo
 ### Running the test suite
 
 ```sh
-# run all linting / tests
-bin/rake
+bundle exec rake
+```
 
+To run JavaScript tests (only):
+
+```
 # run JS tests in browser
 bin/rake app:jasmine
 
