@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add margin bottom to radio component ([PR #2175](https://github.com/alphagov/govuk_publishing_components/pull/2175))
+* Add privacy and accessibility links to the layout footer ([PR #2177](https://github.com/alphagov/govuk_publishing_components/pull/2177))
 
 ## 24.17.0
 

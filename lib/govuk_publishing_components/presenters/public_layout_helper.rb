@@ -331,8 +331,16 @@ module GovukPublishingComponents
             text: "Help",
           },
           {
+            href: "/help/privacy-notice",
+            text: "Privacy",
+          },
+          {
             href: "/help/cookies",
             text: "Cookies",
+          },
+          {
+            href: "/help/accessibility-statement",
+            text: "Accessibility statement",
           },
           {
             href: "/contact",

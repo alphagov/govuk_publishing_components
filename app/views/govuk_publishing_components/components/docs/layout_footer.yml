@@ -109,10 +109,14 @@ examples:
         items:
           - href: '/help'
             text: Help
+          - href: '/help/privacy-notice'
+            text: Privacy
           - href: '/help/cookies'
             text: Cookies
           - href: '/contact'
             text: Contact
+          - href: '/help/accessibility-statement'
+            text: Accessibility statement
           - href: '/help/terms-conditions'
             text: Terms and conditions
           - href: '/cymraeg'
@@ -150,10 +154,14 @@ examples:
         items:
           - href: '/help'
             text: Help
+          - href: '/help/privacy-notice'
+            text: Privacy
           - href: '/help/cookies'
             text: Cookies
           - href: '/contact'
             text: Contact
+          - href: '/help/accessibility-statement'
+            text: Accessibility statement
           - href: '/help/terms-conditions'
             text: Terms and conditions
           - href: '/cymraeg'
