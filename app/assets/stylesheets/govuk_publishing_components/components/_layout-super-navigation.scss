@@ -85,3 +85,25 @@
     width: 20px;
   }
 }
+
+.gem-c-super-navigation-header__menu-button {
+  font-size: 19px;
+  font-weight: bold;
+  line-height: 1.3;
+  border-left: 1px solid govuk-colour("mid-grey");
+  border-right: 1px solid govuk-colour("mid-grey");
+  padding: 18px govuk-spacing(4);
+  top: 0;
+}
+
+.js-enabled .gem-c-super-navigation-header__items {
+  display: none;
+
+  @include govuk-media-query($from: "desktop") {
+    display: block;
+  }
+}
+
+.js-enabled .gem-c-super-navigation-header__items--open {
+  display: block;
+}
