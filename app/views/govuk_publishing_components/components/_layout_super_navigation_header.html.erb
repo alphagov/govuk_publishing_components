@@ -110,9 +110,16 @@ search_text = "Search GOV.UK"
         </span>
       </a>
     </div>
-    <nav class="gem-c-layout-super-navigation-header__content" aria-labelledby="navigation-menu-heading">
-      <h2 id="navigation-menu-heading" class="govuk-visually-hidden"><%= navigation_menu_heading %></h2>
-      <ul id="navigation" class="gem-c-layout-super-navigation-header__items">
+    <nav
+      aria-labelledby="super-navigation-menu-heading"
+      class="gem-c-layout-super-navigation-header__content"
+      data-module="super-navigation-toggle"
+      data-text-for-button="Menu"
+      data-text-for-show-menu="Show navigation menu"
+      data-text-for-hide-menu="Hide navigation menu"
+    >
+      <h2 id="super-navigation-menu-heading" class="govuk-visually-hidden"><%= navigation_menu_heading %></h2>
+      <ul id="super-navigation-menu" class="gem-c-layout-super-navigation-header__items">
         <% navigation_links.each do | link | %>
           <li class="govuk-header__navigation-item gem-c-layout-super-navigation-header__item">
             <a class="govuk-header__link gem-c-layout-super-navigation-header__item-link" href="<%= link["href"] %>">
