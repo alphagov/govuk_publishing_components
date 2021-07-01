@@ -65,6 +65,16 @@ examples:
         text: "Use GOV.UK Verify"
         hint_text: "You'll have an account if you've already proved your identity with a certified company, such as the Post Office."
         bold: true
+  with_bottom_margin:
+    description: "The component accepts a number for margin bottom from 0 to 9 (0px to 60px) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to a margin bottom of 30px (6)."
+    data:
+      name: "radio-group"
+      margin_bottom: 9
+      items:
+      - value: "government-gateway"
+        text: "Use Government Gateway"
+      - value: "govuk-verify"
+        text: "Use GOV.UK Verify"
   with_hint_on_form_group:
     data:
       name: "radio-group-error"
