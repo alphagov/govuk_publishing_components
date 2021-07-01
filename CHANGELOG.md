@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 24.18.0
 
 * Add margin bottom to radio component ([PR #2175](https://github.com/alphagov/govuk_publishing_components/pull/2175))
 * Add privacy and accessibility links to the layout footer ([PR #2177](https://github.com/alphagov/govuk_publishing_components/pull/2177))
