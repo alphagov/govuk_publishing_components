@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add margin bottom to radio component ([PR #2175](https://github.com/alphagov/govuk_publishing_components/pull/2175))
+
 ## 24.17.0
 
 * Allow multiple JavaScript modules on a certain element ([PR #2170](https://github.com/alphagov/govuk_publishing_components/pull/2170))

@@ -91,6 +91,35 @@ describe "Radio", type: :view do
     assert_select ".govuk-radios.govuk-radios--inline"
   end
 
+  it "renders radios with the correct default margin bottom" do
+    render_component(
+      name: "radio-group-one-item",
+      items: [
+        {
+          value: "government-gateway",
+          text: "Use Government Gateway",
+        },
+      ],
+    )
+
+    assert_select '.govuk-form-group.govuk-\!-margin-bottom-6'
+  end
+
+  it "renders radios with a given margin bottom" do
+    render_component(
+      name: "radio-group-one-item",
+      margin_bottom: 9,
+      items: [
+        {
+          value: "government-gateway",
+          text: "Use Government Gateway",
+        },
+      ],
+    )
+
+    assert_select '.govuk-form-group.govuk-\!-margin-bottom-9'
+  end
+
   it "renders radio-group with a legend" do
     render_component(
       name: "favourite-smartie",
