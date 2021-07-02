@@ -63,6 +63,7 @@ describe "Component guide index" do
 @import 'govuk_publishing_components/components/layout-for-admin';
 @import 'govuk_publishing_components/components/layout-for-public';
 @import 'govuk_publishing_components/components/layout-header';
+@import 'govuk_publishing_components/components/layout-super-navigation-header';
 @import 'govuk_publishing_components/components/print-link';
 @import 'govuk_publishing_components/components/related-navigation';
 @import 'govuk_publishing_components/components/search';
@@ -80,6 +81,7 @@ describe "Component guide index" do
 @import 'govuk_publishing_components/components/print/govspeak';
 @import 'govuk_publishing_components/components/print/layout-footer';
 @import 'govuk_publishing_components/components/print/layout-header';
+@import 'govuk_publishing_components/components/print/layout-super-navigation-header';
 @import 'govuk_publishing_components/components/print/search';
 @import 'govuk_publishing_components/components/print/skip-link';
 @import 'govuk_publishing_components/components/print/step-by-step-nav';
@@ -102,6 +104,7 @@ describe "Component guide index" do
 //= require govuk_publishing_components/components/feedback
 //= require govuk_publishing_components/components/govspeak
 //= require govuk_publishing_components/components/layout-header
+//= require govuk_publishing_components/components/layout-super-navigation-header
 //= require govuk_publishing_components/components/print-link
 //= require govuk_publishing_components/components/step-by-step-nav
 //= require govuk_publishing_components/components/tabs"
