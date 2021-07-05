@@ -1,0 +1,16 @@
+.gem-c-intervention {
+  @include govuk-text-colour;
+  @include govuk-responsive-padding(4);
+  @include govuk-responsive-margin(4, "bottom");
+  background-color: govuk-colour("light-grey", $legacy: "grey-4");
+}
+
+.gem-c-intervention__title {
+  @include govuk-font(24, $weight: bold);
+  margin-top: 0;
+  @include govuk-responsive-margin(4, "bottom");
+}
+
+.gem-c-intervention__paragraph {
+  @include govuk-font(19);
+}

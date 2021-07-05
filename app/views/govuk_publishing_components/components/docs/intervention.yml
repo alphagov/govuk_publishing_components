@@ -1,0 +1,24 @@
+name: Intervention
+description: An area that contains personalised content to the user
+body: |
+  The intervention is used to show personalised content. For instance, if the user has visited multiple
+  pages in the same area of the site, we might want let them know that there are other pages on GOV.UK
+  that would be useful to them. This component would be used to add this personalised content and would
+  indicate to the user that this is not normally part of the page, but has been added for them specifically.
+
+  Right now the contents of the component are static, as the MVP of personalised content is only for Start a Business.
+  Since many pages will use this component with the same text, we hard-code it here for now.
+
+  The dismiss link will reload the page but the `hide-intervention` query string parameter will cause the
+  backed not to show the intervention again. Some progressive enhancement will be added in later to avoid
+  reloading the page if JavaScript is available.
+accessibility_criteria: |
+  The intervention component must:
+
+  - have a border colour contrast ratio of more than 4.5:1 with its background to be visually distinct
+
+  - always render headings with associated description content, so there are no isolated heading elements inside the component
+shared_accessibility_criteria:
+  - link
+examples:
+  default:

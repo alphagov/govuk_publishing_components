@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Switch environment app helper to use GOVUK_ENVIRONMENT_NAME ([PR #2191](https://github.com/alphagov/govuk_publishing_components/pull/2191)) PATCH
+* Add intervention component ([PR #2196](https://github.com/alphagov/govuk_publishing_components/pull/2196))
 * Fix misaligned crown in heading component properly ([PR #2206](https://github.com/alphagov/govuk_publishing_components/pull/2206)) PATCH
 
 ## 24.18.5
