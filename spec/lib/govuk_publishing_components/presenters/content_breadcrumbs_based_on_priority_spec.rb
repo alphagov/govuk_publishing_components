@@ -183,21 +183,6 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
             expect(described_class.call(content)).to eq(breadcrumbs)
           end
         end
-
-        context "when page is tagged to a brexit taxon" do
-          let(:content) { send(tagged_to_taxons, [brexit_individuals_taxon]) }
-
-          it "adds custom dimension tracking" do
-            breadcrumbs = breadcrumb_for(content, brexit_individuals_taxon)
-
-            breadcrumbs[:path] = "/guidance/brexit-guidance-for-individuals"
-            breadcrumbs[:tracking_action] = "superBreadcrumb Brexitcitizen"
-            breadcrumbs[:tracking_dimension] = "Brexitcitizen"
-            breadcrumbs[:tracking_dimension_enabled] = true
-            breadcrumbs[:tracking_dimension_index] = 111
-            expect(described_class.call(content)).to eq(breadcrumbs)
-          end
-        end
       end
     end
   end
