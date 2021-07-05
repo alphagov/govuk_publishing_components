@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Update LUX to activate when usage cookies are accepted ([PR #2154](https://github.com/alphagov/govuk_publishing_components/pull/2154)) PATCH
+* Add custom dimension to the page view data for pages with the Brexit superbreadcrumb. And remove the CD from superbreadcrumb clicks.
 
 ## 24.18.0
 
