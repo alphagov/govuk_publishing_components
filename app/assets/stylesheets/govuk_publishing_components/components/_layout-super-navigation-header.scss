@@ -1,12 +1,12 @@
-.gem-c-super-navigation-header__logotype-crown {
+.gem-c-layout-super-navigation-header__logotype-crown {
   top: -2px;
 }
 
-.gem-c-super-navigation-header {
+.gem-c-layout-super-navigation-header {
   background: govuk-colour("black");
 }
 
-.gem-c-super-navigation-header__header-logo {
+.gem-c-layout-super-navigation-header__header-logo {
   padding-top: 13px;
   padding-bottom: 14px;
 
@@ -16,14 +16,14 @@
   }
 }
 
-.gem-c-super-navigation-header__content {
+.gem-c-layout-super-navigation-header__content {
   @include govuk-media-query($from: "desktop") {
     display: block;
     float: right;
   }
 }
 
-.gem-c-super-navigation-header__items {
+.gem-c-layout-super-navigation-header__items {
   list-style: none;
   margin: 0;
   padding: 0 0 govuk-spacing(1) 0;
@@ -33,7 +33,7 @@
   }
 }
 
-.gem-c-super-navigation-header__item {
+.gem-c-layout-super-navigation-header__item {
   margin-right: 0;
   padding: govuk-spacing(1) 0;
 
@@ -43,7 +43,7 @@
   }
 }
 
-.gem-c-super-navigation-header__item-link {
+.gem-c-layout-super-navigation-header__item-link {
   display: block;
   padding: govuk-spacing(3) 0;
 
@@ -54,11 +54,11 @@
 }
 
 // Special search link
-.gem-c-super-navigation-header__item--search {
+.gem-c-layout-super-navigation-header__item--search {
   border-bottom: 0;
 }
 
-.gem-c-super-navigation-header__item-link--search {
+.gem-c-layout-super-navigation-header__item-link--search {
   @include govuk-media-query($from: "desktop") {
     background-color: $govuk-link-colour;
     display: inherit;
@@ -70,13 +70,13 @@
   }
 }
 
-.gem-c-super-navigation-header__item-link-text--search {
+.gem-c-layout-super-navigation-header__item-link-text--search {
   @include govuk-media-query($from: "desktop") {
     display: none;
   }
 }
 
-.gem-c-super-navigation-header__item-link-icon--search {
+.gem-c-layout-super-navigation-header__item-link-icon--search {
   display: none;
 
   @include govuk-media-query($from: "desktop") {
@@ -86,7 +86,7 @@
   }
 }
 
-.gem-c-super-navigation-header__menu-button {
+.gem-c-layout-super-navigation-header__menu-button {
   font-size: 19px;
   font-weight: bold;
   line-height: 1.3;
@@ -96,7 +96,7 @@
   top: 0;
 }
 
-.js-enabled .gem-c-super-navigation-header__items {
+.js-enabled .gem-c-layout-super-navigation-header__items {
   display: none;
 
   @include govuk-media-query($from: "desktop") {
@@ -104,6 +104,6 @@
   }
 }
 
-.js-enabled .gem-c-super-navigation-header__items--open {
+.js-enabled .gem-c-layout-super-navigation-header__items--open {
   display: block;
 }

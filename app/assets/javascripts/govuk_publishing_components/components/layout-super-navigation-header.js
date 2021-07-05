@@ -22,7 +22,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     var buttonText = document.createTextNode(menuText)
 
     var button = document.createElement('button')
-    button.className = 'govuk-header__menu-button gem-c-super-navigation-header__menu-button'
+    button.className = 'govuk-header__menu-button gem-c-layout-super-navigation-header__menu-button'
     button.setAttribute('aria-controls', 'navigation')
     button.setAttribute('aria-label', 'Show navigation menu')
     button.setAttribute('aria-expanded', false)
@@ -37,16 +37,16 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.status = this.$button.getAttribute('aria-expanded') === 'true' ? 'open' : 'closed'
   }
 
-  SuperNavigationToggle.prototype.handleOpen = function () {
-    this.$menu.className = _removeClass(this.$menu.className, 'gem-c-super-navigation-header__items--open')
+  SuperNavigationToggle.prototype.closeMenu = function () {
+    this.$menu.className = _removeClass(this.$menu.className, 'gem-c-layout-super-navigation-header__items--open')
 
     this.$button.className = _removeClass(this.$button.className, 'govuk-header__menu-button--open')
     this.$button.setAttribute('aria-expanded', false)
     this.$button.setAttribute('aria-label', 'Show navigation menu')
   }
 
-  SuperNavigationToggle.prototype.handleClose = function () {
-    this.$menu.className += ' gem-c-super-navigation-header__items--open'
+  SuperNavigationToggle.prototype.openMenu = function () {
+    this.$menu.className += ' gem-c-layout-super-navigation-header__items--open'
 
     this.$button.setAttribute('aria-expanded', true)
     this.$button.setAttribute('aria-label', 'Hide navigation menu')
@@ -56,8 +56,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   SuperNavigationToggle.prototype.handleToggle = function (event) {
     if (event) event.preventDefault()
 
-    if (this.status === 'open') this.handleOpen()
-    if (this.status === 'closed') this.handleClose()
+    if (this.status === 'open') this.closeMenu()
+    if (this.status === 'closed') this.openMenu()
 
     this.syncStatus()
   }
