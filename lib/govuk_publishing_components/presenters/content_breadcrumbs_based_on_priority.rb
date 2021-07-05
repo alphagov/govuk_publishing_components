@@ -86,11 +86,11 @@ module GovukPublishingComponents
 
       def tracking_action
         action = %w[superBreadcrumb]
-        action << page_name_for_tracking
+        action << brexit_audience
         action.compact.join(" ")
       end
 
-      def page_name_for_tracking
+      def brexit_audience
         {
           PRIORITY_TAXONS[:brexit_business] => "Brexitbusiness",
           PRIORITY_TAXONS[:brexit_individuals] => "Brexitcitizen",
