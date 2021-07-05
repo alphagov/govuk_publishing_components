@@ -39,7 +39,16 @@ module GovukPublishingComponents
           tracking_category: "breadcrumbClicked",
           tracking_action: tracking_action,
           tracking_label: content_item["base_path"],
-        }.merge(custom_dimension_tracking)
+          tracking_dimension_enabled: false,
+        }
+      end
+
+      def brexit_audience
+        {
+          PRIORITY_TAXONS[:brexit_business] => "Brexitbusiness",
+          PRIORITY_TAXONS[:brexit_individuals] => "Brexitcitizen",
+          PRIORITY_TAXONS[:brexit_taxon] => "Brexitbusinessandcitizen",
+        }[taxon["content_id"]]
       end
 
     private
@@ -79,36 +88,14 @@ module GovukPublishingComponents
         [PRIORITY_TAXONS[:brexit_business], PRIORITY_TAXONS[:brexit_individuals]]
       end
 
-      def brexit_taxons
-        brexit_child_taxons << PRIORITY_TAXONS[:brexit_taxon]
-      end
-
       def preferred_priority_taxon
         query_parameters["priority-taxon"] if query_parameters
       end
 
       def tracking_action
         action = %w[superBreadcrumb]
-        action << page_name_for_tracking
+        action << brexit_audience
         action.compact.join(" ")
-      end
-
-      def custom_dimension_tracking
-        tracking = { tracking_dimension_enabled: false }
-        if brexit_taxons.include?(taxon["content_id"])
-          tracking[:tracking_dimension_enabled] = true
-          tracking[:tracking_dimension] = page_name_for_tracking
-          tracking[:tracking_dimension_index] = 111
-        end
-        tracking
-      end
-
-      def page_name_for_tracking
-        {
-          PRIORITY_TAXONS[:brexit_business] => "Brexitbusiness",
-          PRIORITY_TAXONS[:brexit_individuals] => "Brexitcitizen",
-          PRIORITY_TAXONS[:brexit_taxon] => "Brexitbusinessandcitizen",
-        }[taxon["content_id"]]
       end
 
       def tagged_to_both_brexit_child_taxons?

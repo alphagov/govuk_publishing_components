@@ -330,6 +330,34 @@ describe "Meta tags", type: :view do
     assert_select "meta[name='govuk:taxon-ids']", 0
   end
 
+  it "renders the brexit audience metatag for content items tagged to brexit" do
+    content_item = {
+      links: {
+        taxons: [
+          {
+            title: "Brexit: business guidance",
+            content_id: "634fd193-8039-4a70-a059-919c34ff4bfc",
+            base_path: "/brexit/business-guidance",
+            document_type: "detailed_guide",
+            links: {
+              parent_taxons: [
+                {
+                  title: "Brexit",
+                  content_id: "d6c2de5d-ef90-45d1-82d4-5f2438369eea",
+                  base_path: "/brexit",
+                  document_type: "taxon",
+                },
+              ],
+            },
+          },
+        ],
+      },
+    }
+
+    render_component(content_item: example_document_for("detailed_guide", "detailed_guide").merge(content_item))
+    assert_meta_tag("govuk:brexit-audience", "Brexitbusiness")
+  end
+
   it "renders the has-content-history tag as true when the content has history" do
     content_item = {
       public_updated_at: Time.parse("2017-01-01"),

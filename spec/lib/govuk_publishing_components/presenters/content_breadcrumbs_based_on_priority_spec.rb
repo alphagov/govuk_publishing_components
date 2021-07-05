@@ -96,8 +96,9 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
         context "with brexit taxon" do
           let(:payload) { [brexit_taxon] }
 
-          it "returns the worker taxon" do
+          it "returns the brexit taxon" do
             expect(subject.taxon).to eq(brexit_taxon)
+            expect(subject.brexit_audience).to eq("Brexitbusinessandcitizen")
           end
         end
 
@@ -109,11 +110,12 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
           end
         end
 
-        context "with brexit_taxon taxon and brexit_individuals taxon" do
+        context "with brexit_taxon and brexit_individuals taxon" do
           let(:payload) { [brexit_taxon, brexit_individuals_taxon] }
 
           it "returns the brexit_individuals taxon" do
             expect(subject.taxon).to eq(brexit_individuals_taxon)
+            expect(subject.brexit_audience).to eq("Brexitcitizen")
           end
         end
 
@@ -122,6 +124,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
 
           it "returns the brexit_business taxon" do
             expect(subject.taxon).to eq(brexit_business_taxon)
+            expect(subject.brexit_audience).to eq("Brexitbusiness")
           end
         end
 
@@ -130,6 +133,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
 
           it "returns the brexit_taxon taxon" do
             expect(subject.taxon).to eq(brexit_taxon)
+            expect(subject.brexit_audience).to eq("Brexitbusinessandcitizen")
           end
         end
 
@@ -180,21 +184,6 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
             breadcrumbs[:path] = url_override
             breadcrumbs[:tracking_action] = "superBreadcrumb"
 
-            expect(described_class.call(content)).to eq(breadcrumbs)
-          end
-        end
-
-        context "when page is tagged to a brexit taxon" do
-          let(:content) { send(tagged_to_taxons, [brexit_individuals_taxon]) }
-
-          it "adds custom dimension tracking" do
-            breadcrumbs = breadcrumb_for(content, brexit_individuals_taxon)
-
-            breadcrumbs[:path] = "/guidance/brexit-guidance-for-individuals"
-            breadcrumbs[:tracking_action] = "superBreadcrumb Brexitcitizen"
-            breadcrumbs[:tracking_dimension] = "Brexitcitizen"
-            breadcrumbs[:tracking_dimension_enabled] = true
-            breadcrumbs[:tracking_dimension_index] = 111
             expect(described_class.call(content)).to eq(breadcrumbs)
           end
         end

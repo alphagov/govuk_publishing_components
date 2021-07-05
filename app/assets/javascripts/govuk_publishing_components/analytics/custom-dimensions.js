@@ -63,6 +63,7 @@
       'taxon-ids': { dimension: 59, defaultValue: 'other' },
       'content-has-history': { dimension: 39, defaultValue: 'false' },
       'publishing-application': { dimension: 89 },
+      'brexit-audience': { dimension: 111 },
       stepnavs: { dimension: 96 },
       'relevant-result-shown': { dimension: 83 },
       'spelling-suggestion': { dimension: 81 }
