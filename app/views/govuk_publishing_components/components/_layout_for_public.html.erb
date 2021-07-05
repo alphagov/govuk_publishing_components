@@ -39,6 +39,7 @@
     <meta charset="utf-8" />
     <title><%= title %></title>
 
+    <%= javascript_include_tag "govuk_publishing_components/vendor/lux/lux-measurer", { async: true } %>
     <%= javascript_include_tag "govuk_publishing_components/rum-loader", { async: true } %>
 
     <%= csrf_meta_tags %>

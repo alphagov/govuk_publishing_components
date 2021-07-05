@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update LUX to activate when usage cookies are accepted ([PR #2154](https://github.com/alphagov/govuk_publishing_components/pull/2154)) PATCH
+
 ## 24.18.0
 
 * Add margin bottom to radio component ([PR #2175](https://github.com/alphagov/govuk_publishing_components/pull/2175))

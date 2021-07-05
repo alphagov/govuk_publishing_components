@@ -115,48 +115,64 @@ describe "Layout for public", type: :view do
     assert_select ".govuk-header__link--homepage[href='https://example.com/jam']"
   end
 
-  it "contains real user metrics loader script" do
+  it "contains real user metrics loader script and LUX measurer script" do
     visit "/public"
+
+    assert page.has_selector?("html > head > script[src*='lux/lux-measurer']", visible: :all)
     assert page.has_selector?("html > head > script[src*='rum-loader']", visible: :all)
   end
 
-  it "does not contain real user metrics scripts before cookie banner interacted with" do
+  it "does not contain LUX submission script when the page loads" do
+    Capybara.current_driver = Capybara.javascript_driver
+
+    visit "/public"
+
+    assert page.has_no_selector?("html > head > script[src*='lux/lux-reporter']", visible: :all)
+  end
+
+  it "only contains LUX submission script after usage cookies have been allowed" do
     Capybara.current_driver = Capybara.javascript_driver
 
     visit "/public"
 
     assert page.has_selector?("html > head > script[src*='rum-loader']", visible: :all)
-    assert page.has_no_selector?("html > head > script[src*='lux/lux']", visible: :all)
-    assert page.has_no_selector?("html > head > script[src*='lux/lux-polyfill']", visible: :all)
+    assert page.has_selector?("html > head > script[src*='lux/lux-measurer']", visible: :all)
+
+    assert page.has_no_selector?("html > head > script[src*='lux/lux-reporter']", visible: :all)
+
+    click_button "Accept additional cookies"
+
+    assert page.has_selector?("html > head > script[src*='lux/lux-reporter']", visible: :all)
   end
 
-  it "does not contain real user metrics scripts on the page where cookies are accepted" do
+  it "contains real user metrics scripts on the page after usage cookies have been allowed" do
     Capybara.current_driver = Capybara.javascript_driver
 
     visit "/public"
 
     click_button "Accept additional cookies"
 
+    visit "/public"
+
     assert page.has_selector?("html > head > script[src*='rum-loader']", visible: :all)
-    assert page.has_no_selector?("html > head > script[src*='lux/lux']", visible: :all)
-    assert page.has_no_selector?("html > head > script[src*='lux/lux-polyfill']", visible: :all)
+    assert page.has_selector?("html > head > script[src*='lux/lux-reporter']", visible: :all)
+    assert page.has_selector?("html > head > script[src*='lux/lux-measurer']", visible: :all)
   end
 
-  it "contains real user metrics scripts on page after cookies opted in" do
+  it "does not contain real user metrics scripts after usage cookies have not been allowed" do
     Capybara.current_driver = Capybara.javascript_driver
 
     visit "/public"
 
-    click_button "Accept additional cookies"
-
-    visit "/public"
+    click_button "Reject additional cookies"
 
     assert page.has_selector?("html > head > script[src*='rum-loader']", visible: :all)
-    assert page.has_selector?("html > head > script[src*='lux/lux']", visible: :all)
-    assert page.has_selector?("html > head > script[src*='lux/lux-polyfill']", visible: :all)
+    assert page.has_selector?("html > head > script[src*='lux/lux-measurer']", visible: :all)
+
+    assert page.has_no_selector?("html > head > script[src*='lux/lux-reporter']", visible: :all)
   end
 
-  it "does not contain real user metrics scripts on page after cookies opted out" do
+  it "does not contain real user metrics scripts on page after usage cookies have not been allowed" do
     Capybara.current_driver = Capybara.javascript_driver
 
     visit "/public"
@@ -166,7 +182,8 @@ describe "Layout for public", type: :view do
     visit "/public"
 
     assert page.has_selector?("html > head > script[src*='rum-loader']", visible: :all)
-    assert page.has_no_selector?("html > head > script[src*='lux/lux']", visible: :all)
-    assert page.has_no_selector?("html > head > script[src*='lux/lux-polyfill']", visible: :all)
+    assert page.has_selector?("html > head > script[src*='lux/lux-measurer']", visible: :all)
+
+    assert page.has_no_selector?("html > head > script[src*='lux/lux-reporter']", visible: :all)
   end
 end
