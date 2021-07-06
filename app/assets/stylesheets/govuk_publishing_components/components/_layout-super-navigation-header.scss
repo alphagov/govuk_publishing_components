@@ -72,7 +72,7 @@
 
 .gem-c-layout-super-navigation-header__item-link-text--search {
   @include govuk-media-query($from: "desktop") {
-    display: none;
+    @include govuk-visually-hidden;
   }
 }
 
