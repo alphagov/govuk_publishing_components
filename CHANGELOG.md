@@ -7,14 +7,14 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 24.18.2
 
-* Fix misaligned crown in heading component ([PR #2134](https://github.com/alphagov/govuk_publishing_components/pull/2134))
+* Fix misaligned crown in heading component ([PR #2134](https://github.com/alphagov/govuk_publishing_components/pull/2134)) PATCH
 
 ## 24.18.1
 
 * Update LUX to activate when usage cookies are accepted ([PR #2154](https://github.com/alphagov/govuk_publishing_components/pull/2154)) PATCH
-* Add custom dimension to the page view data for pages with the Brexit superbreadcrumb. And remove the CD from superbreadcrumb clicks.
+* Add custom dimension to the page view data for pages with the Brexit superbreadcrumb. And remove the custom dimension from superbreadcrumb clicks. ([PR #2186](https://github.com/alphagov/govuk_publishing_components/pull/2186))
 
 ## 24.18.0
 
