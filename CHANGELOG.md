@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 24.18.3
 
 * Use correct locale key for the character count component ([PR #2189](https://github.com/alphagov/govuk_publishing_components/pull/2189))
 
