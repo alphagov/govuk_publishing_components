@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add Welsh translations for topics, transition and tabs ([PR #2193](https://github.com/alphagov/govuk_publishing_components/pull/2193))
+
 ## 24.18.3
 
 * Use correct locale key for the character count component ([PR #2189](https://github.com/alphagov/govuk_publishing_components/pull/2189))
