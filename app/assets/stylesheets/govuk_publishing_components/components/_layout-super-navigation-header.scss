@@ -67,6 +67,10 @@
     &:hover {
       background-color: $govuk-link-hover-colour;
     }
+
+    &:focus {
+      background-color: $govuk-focus-colour;
+    }
   }
 }
 
