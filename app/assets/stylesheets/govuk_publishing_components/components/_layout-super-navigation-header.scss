@@ -96,8 +96,13 @@
   line-height: 1.3;
   border-left: 1px solid govuk-colour("mid-grey");
   border-right: 1px solid govuk-colour("mid-grey");
-  padding: 18px govuk-spacing(4);
+  padding: 16px govuk-spacing(4) 17px govuk-spacing(4);
   top: 0;
+
+  &:focus {
+    border-left-color: $govuk-focus-colour;
+    border-right-color: $govuk-focus-colour;
+  }
 }
 
 .js-enabled .gem-c-layout-super-navigation-header__items {
