@@ -45,7 +45,7 @@ describe "BrexitCta", type: :view do
     welsh_content_items.each do |item|
       I18n.with_locale(:cy) { render_component({ content_item: item }) }
       assert_select ".gem-c-contextual-sidebar__brexit-heading", text: "Brexit"
-      assert_link_with_text_in(".gem-c-contextual-sidebar__brexit-text", "/brexit.cy", "Gwiriwch beth sydd angen i chi ei wneud")
+      assert_link_with_text_in(".gem-c-contextual-sidebar__brexit-text", "/brexit.cy", "Cael rhestr bersonol o gamau gweithredu")
     end
   end
 end

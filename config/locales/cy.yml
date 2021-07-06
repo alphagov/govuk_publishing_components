@@ -114,14 +114,14 @@ cy:
       related_guides:
       statistical_data_sets:
       topical_events:
-      topics:
+      topics: Archwilio’r pwnc
       transition:
+        link_path: "/brexit.cy"
+        link_text: Cael rhestr bersonol o gamau gweithredu
+        title: Brexit
         hub_page_link_path:
         hub_page_link_text:
-        hub_page_title:
-        link_path: "/brexit.cy"
-        link_text: Gwiriwch beth sydd angen i chi ei wneud
-        title: Brexit
+        hub_page_title: Gwiriwr Brexit
       world_locations:
     search_box:
       input_title:
@@ -154,4 +154,4 @@ cy:
       delete:
       edit:
     tabs:
-      contents:
+      contents: Cynnwys
