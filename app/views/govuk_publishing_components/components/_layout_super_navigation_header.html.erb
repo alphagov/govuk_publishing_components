@@ -3,69 +3,69 @@
 - label: Topics
   href: /browse
   description: Find information and services
-  link_sections:
-    - - label: Benefits
-        href: /browse/benefits
-      - label: Births, death, marriages and care
-        href: /browse/births-deaths-marriages
-      - label: Brexit
-        href: /brexit
-      - label: Business and self-employed
-        href: /browse/business
-      - label: Childcare and parenting
-        href: /browse/childcare-parenting
-      - label: Citizenship and living in the UK
-        href: /browse/citizenship
-      - label: Coronavirus (COVID‑19)
-        href: /coronavirus
-      - label: Crime, justice and the law
-        href: /browse/justice
-      - label: Disabled people
-        href: /browse/disabilities
-    - - label: Driving and transport
-        href: /browse/driving
-      - label: Education and learning
-        href: /browse/education
-      - label: Employing people
-        href: /browse/employing-people
-      - label: Environment and countryside
-        href: /browse/environment-countryside
-      - label: Housing and local services
-        href: /browse/housing-local-services
-      - label: Money and tax
-        href: /browse/tax
-      - label: Passports, travel and living abroad
-        href: /browse/abroad
-      - label: Visas and immigration
-        href: /browse/visas-immigration
-      - label: Working, jobs and pensions
-        href: /browse/working
+  menu_contents:
+    - label: Benefits
+      href: /browse/benefits
+    - label: Births, death, marriages and care
+      href: /browse/births-deaths-marriages
+    - label: Brexit
+      href: /brexit
+    - label: Business and self-employed
+      href: /browse/business
+    - label: Childcare and parenting
+      href: /browse/childcare-parenting
+    - label: Citizenship and living in the UK
+      href: /browse/citizenship
+    - label: Coronavirus (COVID‑19)
+      href: /coronavirus
+    - label: Crime, justice and the law
+      href: /browse/justice
+    - label: Disabled people
+      href: /browse/disabilities
+    - label: Driving and transport
+      href: /browse/driving
+    - label: Education and learning
+      href: /browse/education
+    - label: Employing people
+      href: /browse/employing-people
+    - label: Environment and countryside
+      href: /browse/environment-countryside
+    - label: Housing and local services
+      href: /browse/housing-local-services
+    - label: Money and tax
+      href: /browse/tax
+    - label: Passports, travel and living abroad
+      href: /browse/abroad
+    - label: Visas and immigration
+      href: /browse/visas-immigration
+    - label: Working, jobs and pensions
+      href: /browse/working
 - label: Departments
   href: /government/organisations
 - label: Government activity
   href: /search/news-and-communications
   description: Find out what the government is doing
-  link_sections:
-    - - label: News
-        href: /search/news-and-communications
-        description: News stories, speeches, letters and notices
-      - label: Guidance and regulation
-        href: /search/guidance-and-regulation
-        description: Detailed guidance, regulations and rules
-      - label: Research and statistics
-        href: /search/research-and-statistics
-        description: Reports, analysis and official statistics
-    - - label: Policy papers and consultation
-        href: /search/policy-papers-and-consultations
-        description: Consultations and strategy
-      - label: Transparency
-        href: /search/transparency-and-freedom-of-information-releases
-        description: Government data, freedom of information releases and corporate reports
+  menu_contents:
+    - label: News
+      href: /search/news-and-communications
+      description: News stories, speeches, letters and notices
+    - label: Guidance and regulation
+      href: /search/guidance-and-regulation
+      description: Detailed guidance, regulations and rules
+    - label: Research and statistics
+      href: /search/research-and-statistics
+      description: Reports, analysis and official statistics
+    - label: Policy papers and consultation
+      href: /search/policy-papers-and-consultations
+      description: Consultations and strategy
+    - label: Transparency
+      href: /search/transparency-and-freedom-of-information-releases
+      description: Government data, freedom of information releases and corporate reports
   footer_links:
-    - - label: How government works
-        href: /government/how-government-works
-    - - label: Get involved
-        href: /government/get-involved
+    - label: How government works
+      href: /government/how-government-works
+    - label: Get involved
+      href: /government/get-involved
 ")
 
 logo_link = "https://www.gov.uk/"
@@ -117,6 +117,33 @@ search_text = "Search GOV.UK"
             <a class="govuk-header__link gem-c-layout-super-navigation-header__item-link" href="<%= link["href"] %>">
               <%= link["label"] %>
             </a>
+            <% if link["menu_contents"].present? or link["footer_links"].present? %>
+              <div class="gem-c-layout-super-navigation-header__dropdown-menu">
+                <% if link["menu_contents"].present? %>
+                  <ul class="govuk-list">
+                    <% link["menu_contents"].each do | item | %>
+                      <li class="gem-c-layout-super-navigation-header__dropdown-list-item">
+                        <a class="govuk-link gem-c-layout-super-navigation-header__dropdown-list-item-link" href="<%= item["href"] %>">
+                          <%= item["label"] %>
+                        </a>
+                        <%= tag.p item["description"], class: "govuk-body-s gem-c-layout-super-navigation-header__dropdown-list-item-description" if item["description"].present? %>
+                      </li>
+                    <% end %>
+                  </ul>
+                <% end %>
+                <% if link["footer_links"].present? %>
+                  <ul class="govuk-list">
+                    <% link["footer_links"].each do | item | %>
+                      <li class="gem-c-layout-super-navigation-header__dropdown-list-item">
+                        <a class="govuk-link gem-c-layout-super-navigation-header__dropdown-list-item-link" href="<%= item["href"] %>">
+                          <%= item["label"] %>
+                        </a>
+                      </li>
+                    <% end %>
+                  </ul>
+                <% end %>
+              </div>
+            <% end %>
           </li>
         <% end %>
         <li class="govuk-header__navigation-item gem-c-layout-super-navigation-header__item gem-c-layout-super-navigation-header__item--search">
