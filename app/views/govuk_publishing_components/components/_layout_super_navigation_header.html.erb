@@ -1,80 +1,13 @@
 <%
-  navigation_links = YAML::load("
-- label: Topics
-  href: /browse
-  description: Find information and services
-  link_sections:
-    - - label: Benefits
-        href: /browse/benefits
-      - label: Births, death, marriages and care
-        href: /browse/births-deaths-marriages
-      - label: Brexit
-        href: /brexit
-      - label: Business and self-employed
-        href: /browse/business
-      - label: Childcare and parenting
-        href: /browse/childcare-parenting
-      - label: Citizenship and living in the UK
-        href: /browse/citizenship
-      - label: Coronavirus (COVID‑19)
-        href: /coronavirus
-      - label: Crime, justice and the law
-        href: /browse/justice
-      - label: Disabled people
-        href: /browse/disabilities
-    - - label: Driving and transport
-        href: /browse/driving
-      - label: Education and learning
-        href: /browse/education
-      - label: Employing people
-        href: /browse/employing-people
-      - label: Environment and countryside
-        href: /browse/environment-countryside
-      - label: Housing and local services
-        href: /browse/housing-local-services
-      - label: Money and tax
-        href: /browse/tax
-      - label: Passports, travel and living abroad
-        href: /browse/abroad
-      - label: Visas and immigration
-        href: /browse/visas-immigration
-      - label: Working, jobs and pensions
-        href: /browse/working
-- label: Departments
-  href: /government/organisations
-- label: Government activity
-  href: /search/news-and-communications
-  description: Find out what the government is doing
-  link_sections:
-    - - label: News
-        href: /search/news-and-communications
-        description: News stories, speeches, letters and notices
-      - label: Guidance and regulation
-        href: /search/guidance-and-regulation
-        description: Detailed guidance, regulations and rules
-      - label: Research and statistics
-        href: /search/research-and-statistics
-        description: Reports, analysis and official statistics
-    - - label: Policy papers and consultation
-        href: /search/policy-papers-and-consultations
-        description: Consultations and strategy
-      - label: Transparency
-        href: /search/transparency-and-freedom-of-information-releases
-        description: Government data, freedom of information releases and corporate reports
-  footer_links:
-    - - label: How government works
-        href: /government/how-government-works
-    - - label: Get involved
-        href: /government/get-involved
-")
-
 logo_link = "https://www.gov.uk/"
-logo_link_title = "Go to the GOV.UK homepage"
-logo_text = "GOV.UK"
-navigation_menu_heading = "Navigation menu"
-search_text = "Search GOV.UK"
+logo_link_title = t("components.layout_super_navigation_header.logo_link_title")
+logo_text = t("components.layout_super_navigation_header.logo_text")
+navigation_links = t("components.layout_super_navigation_header.navigation_links")
+navigation_menu_heading = t("components.layout_super_navigation_header.navigation_menu_heading")
+popular_links = t("components.layout_super_navigation_header.popular_links")
+popular_links_heading = t("components.layout_super_navigation_header.popular_links_heading")
+search_text= t("components.layout_super_navigation_header.search_text")
 %>
-
 <header role="banner" class="gem-c-layout-super-navigation-header">
   <div class="gem-c-layout-super-navigation-header__container govuk-width-container govuk-clearfix">
     <div class="gem-c-layout-super-navigation-header__header-logo">
@@ -122,9 +55,36 @@ search_text = "Search GOV.UK"
       <ul id="super-navigation-menu" class="gem-c-layout-super-navigation-header__items">
         <% navigation_links.each do | link | %>
           <li class="govuk-header__navigation-item gem-c-layout-super-navigation-header__item">
-            <a class="govuk-header__link gem-c-layout-super-navigation-header__item-link" href="<%= link["href"] %>">
-              <%= link["label"] %>
+            <a class="govuk-header__link gem-c-layout-super-navigation-header__item-link" href="<%= link[:href] %>">
+              <%= link[:label] %>
             </a>
+            <% if link[:menu_contents].present? or link[:footer_links].present? %>
+              <div class="gem-c-layout-super-navigation-header__dropdown-menu">
+                <% if link[:menu_contents].present? %>
+                  <ul class="govuk-list">
+                    <% link[:menu_contents].each do | item | %>
+                      <li class="gem-c-layout-super-navigation-header__dropdown-list-item">
+                        <a class="govuk-link gem-c-layout-super-navigation-header__dropdown-list-item-link" href="<%= item[:href] %>">
+                          <%= item[:label] %>
+                        </a>
+                        <%= tag.p item[:description], class: "govuk-body-s gem-c-layout-super-navigation-header__dropdown-list-item-description" if item[:description].present? %>
+                      </li>
+                    <% end %>
+                  </ul>
+                <% end %>
+                <% if link[:footer_links].present? %>
+                  <ul class="govuk-list">
+                    <% link[:footer_links].each do | item | %>
+                      <li class="gem-c-layout-super-navigation-header__dropdown-list-item">
+                        <a class="govuk-link gem-c-layout-super-navigation-header__dropdown-list-item-link" href="<%= item[:href] %>">
+                          <%= item[:label] %>
+                        </a>
+                      </li>
+                    <% end %>
+                  </ul>
+                <% end %>
+              </div>
+            <% end %>
           </li>
         <% end %>
         <li class="govuk-header__navigation-item gem-c-layout-super-navigation-header__item gem-c-layout-super-navigation-header__item--search">
@@ -135,6 +95,25 @@ search_text = "Search GOV.UK"
               <line x1="15.8668" y1="16.3587" x2="25.4475" y2="25.9393" stroke="currentColor" stroke-width="3" />
             </svg>
           </a>
+          <div class="gem-c-layout-super-navigation-header__dropdown-menu">
+            <form id="search" action="/search" method="get" role="search" aria-label="Site-wide">
+              <%= render "govuk_publishing_components/components/search", {
+                inline_label: false,
+                label_text: raw("<h2 class=\"govuk-heading-m\">#{search_text}</h2>"),
+                size: "large",
+              } %>
+            </form>
+            <h2 class="govuk-heading-m"><%= popular_links_heading %></h2>
+            <ul class="govuk-list">
+              <% popular_links.each do | popular_link | %>
+                <li class="gem-c-layout-super-navigation-header__dropdown-list-item">
+                  <a class="govuk-link gem-c-layout-super-navigation-header__dropdown-list-item-link" href="<%= popular_link[:href] %>">
+                    <%= popular_link[:label] %>
+                  </a>
+                </li>
+              <% end %>
+            </ul>
+          </div>
         </li>
       </ul>
     </nav>
