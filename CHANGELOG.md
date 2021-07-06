@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Use correct locale key for the character count component ([PR #2189](https://github.com/alphagov/govuk_publishing_components/pull/2189))
+
 ## 24.18.2
 
 * Fix misaligned crown in heading component ([PR #2134](https://github.com/alphagov/govuk_publishing_components/pull/2134)) PATCH
