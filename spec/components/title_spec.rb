@@ -21,11 +21,6 @@ describe "Title", type: :view do
     assert_select ".govuk-caption-xl", text: "Format"
   end
 
-  it "title context link appears" do
-    render_component(title: "Hello World", context: { text: "Format", href: "/format", data: { tracking: true } })
-    assert_select ".gem-c-title__context-link[href='/format'][data-tracking]", text: "Format"
-  end
-
   it "applies context language if supplied to a context string" do
     render_component(title: "Bonjour Monde", context: "hello", context_locale: "en")
     assert_select ".govuk-caption-xl[lang='en']"
@@ -82,7 +77,7 @@ describe "Title", type: :view do
   end
 
   it "applies context language if supplied to a context link" do
-    render_component(title: "Bonjour", context: { text: "Format", href: "/format" }, context_locale: "en")
+    render_component(title: "Bonjour", context: "Format", context_locale: "en")
     assert_select ".govuk-caption-xl[lang='en']"
   end
 end
