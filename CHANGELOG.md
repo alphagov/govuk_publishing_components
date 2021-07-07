@@ -9,6 +9,7 @@
 
 ## 24.18.4
 
+* Change tracking on details component ([PR #2195](https://github.com/alphagov/govuk_publishing_components/pull/2195))
 * Add Welsh translations for topics, transition and tabs ([PR #2193](https://github.com/alphagov/govuk_publishing_components/pull/2193))
 * Add custom dimension for pages displaying the Brexit superbreadcrumb ([PR #2197](https://github.com/alphagov/govuk_publishing_components/pull/2197))
 

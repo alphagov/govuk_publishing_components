@@ -14,8 +14,8 @@ describe('Details component', function () {
     spyOn(GOVUK.Modules, 'GemTrackClick').and.callFake(function () { this.start = function () {} })
 
     FIXTURE =
-      '<details class="gem-c-details govuk-details govuk-!-margin-bottom-3" data-track-category="track-category" data-track-action="track-action" data-track-label="track-label" data-module="gem-details">' +
-        '<summary class="govuk-details__summary" data-details-track-click="">' +
+      '<details class="gem-c-details govuk-details" data-module="gem-details">' +
+        '<summary class="govuk-details__summary" data-track-category="track-category" data-track-action="track-action" data-track-label="track-label" data-details-track-click="">' +
         '<span>Toggle text</span>' +
         '</summary>' +
       '</details>'
@@ -39,9 +39,9 @@ describe('Details component', function () {
   })
 
   it('does not fire an event if track category and track action are not present', function () {
-    $('.gem-c-details').attr('data-track-action', null)
-    $('.gem-c-details').attr('data-track-category', null)
-    $('.gem-c-details').attr('data-track-label', null)
+    $('.gem-c-details .govuk-details__summary').attr('data-track-action', null)
+    $('.gem-c-details .govuk-details__summary').attr('data-track-category', null)
+    $('.gem-c-details .govuk-details__summary').attr('data-track-label', null)
 
     loadDetailsComponent()
 
@@ -51,7 +51,7 @@ describe('Details component', function () {
   })
 
   it('tracks open state by default if no track label provided', function () {
-    $('.gem-c-details').attr('data-track-label', null)
+    $('.gem-c-details .govuk-details__summary').attr('data-track-label', null)
     loadDetailsComponent()
 
     $('.govuk-details__summary').click()
@@ -60,7 +60,7 @@ describe('Details component', function () {
   })
 
   it('tracks closed state by default if no track label provided', function () {
-    $('.gem-c-details').attr('data-track-label', null)
+    $('.gem-c-details .govuk-details__summary').attr('data-track-label', null)
     $('.gem-c-details').attr('open', true)
     loadDetailsComponent()
 
@@ -70,10 +70,10 @@ describe('Details component', function () {
   })
 
   it('allows custom track options', function () {
-    $('.gem-c-details').attr('data-track-action', 'track-action')
-    $('.gem-c-details').attr('data-track-category', 'track-category')
-    $('.gem-c-details').attr('data-track-options', '{"value":"track-value"}')
-    $('.gem-c-details').attr('data-track-label', null)
+    $('.gem-c-details .govuk-details__summary').attr('data-track-action', 'track-action')
+    $('.gem-c-details .govuk-details__summary').attr('data-track-category', 'track-category')
+    $('.gem-c-details .govuk-details__summary').attr('data-track-options', '{"value":"track-value"}')
+    $('.gem-c-details .govuk-details__summary').attr('data-track-label', null)
 
     loadDetailsComponent()
 
