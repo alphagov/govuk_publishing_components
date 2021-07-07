@@ -1,0 +1,20 @@
+.gem-c-column-list {
+  columns: 1;
+
+  @include govuk-media-query($from: tablet) {
+    columns: 2;
+  }
+
+  @include govuk-media-query($from: desktop) {
+    columns: 3;
+  }
+}
+
+.gem-c-column-list__item {
+  display: inline-block;
+  width: 100%;
+}
+
+.gem-c-column-list__heading {
+  margin-bottom: govuk-spacing(1);
+}

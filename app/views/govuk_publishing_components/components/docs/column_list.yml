@@ -1,0 +1,218 @@
+name: Column list
+description: The column list component can be used to display a column of content items.
+body: |
+  The markup for this component makes use of the unordered list `columns` attribute. This allows it to be ingested like a typical list by screen readers but allowing sighted users to see an organised column layout.
+
+  The original intent of this component was to account for the topics collections on the homepages of both [GOV.UK](https://gov.uk) and [data.gov.uk](https://data.gov.uk).
+accessibility_criteria: |
+  The column list component must:
+  
+    - include clear identification of what the intent of the column list is eg: a heading
+    - state how many items are in the list
+  
+  The items in a column list must:
+
+    - include appropriate text spacing, as per the guidance in [WCAG 1.4.12](https://www.w3.org/TR/WCAG21/#text-spacing)
+    - be navigable via screen readers, either via typical screen reader navigation or via screen reader heading navigation
+
+  Links within items in a column list must:
+
+    - accept focus
+    - be focusable with a keyboard
+    - be usable with a keyboard
+    - indicate when they have focus
+    - change in appearance when touched (in the touch-down state)
+    - change in appearance when hovered
+    - be usable with touch
+    - be usable with voice commands
+    - have visible text
+    - have meaningful text
+examples:
+  default:
+    data:
+      items:
+        - heading: "Business and economy"
+          text: "Small businesses, industry, imports, exports and trade"
+          href: "#business-and-economy"
+        - heading: "Crime and justice"
+          text: "Courts, police, prison, offenders, borders and immigration"
+          href: "#crime-and-justice"
+        - heading: "Defence"
+          text: "Armed forces, health and safety, search and rescue"
+          href: "#defence"
+        - heading: "Education"
+          text: "Students, training, qualifications and the National Curriculum"
+          href: "#education"
+        - heading: "Environment"
+          text: "Weather, flooding, rivers, air quality, geology and agriculture"
+          href: "#environment"
+  example_of_managed_columns:
+    description: The browser will always try to display list items in a column lists in such a way that each column contains as close to the same number of items as possible. In the below example, the number of items provided is such that the browser will only use 2 columns instead of 1.
+    data:
+      items:
+        - heading: "Business and economy"
+          text: "Small businesses, industry, imports, exports and trade"
+          href: "#business-and-economy"
+        - heading: "Crime and justice"
+          text: "Courts, police, prison, offenders, borders and immigration"
+          href: "#crime-and-justice"
+        - heading: "Defence"
+          text: "Armed forces, health and safety, search and rescue"
+          href: "#defence"
+        - heading: "Education"
+          text: "Students, training, qualifications and the National Curriculum"
+          href: "#education"
+  only_one_item:
+    data:
+      items:
+        - heading: "A lonely list item"
+          text: "Floating through the vast expanse, hoping that they'll find romance"
+          href: "#all-alone"
+  one_item_with_an_extreme_heading_length:
+    data:
+      items:
+        - heading: "Business and economy"
+          text: "Small businesses, industry, imports, exports and trade"
+          href: "#business-and-economy"
+        - heading: "Crime and justice"
+          text: "Courts, police, prison, offenders, borders and immigration"
+          href: "#crime-and-justice"
+        - heading: "Defence"
+          text: "Armed forces, health and safety, search and rescue"
+          href: "#defence"
+        - heading: "Education in the United Kingdom is a devolved matter with each of the countries of the United Kingdom having separate systems under separate governments: the UK Government is responsible for England; whilst the Scottish Government, the Welsh Government and the Northern Ireland Executive are responsible for Scotland, Wales and Northern Ireland, respectively"
+          text: "Students, training, qualifications and the National Curriculum"
+          href: "#education"
+        - heading: "Environment"
+          text: "Weather, flooding, rivers, air quality, geology and agriculture"
+          href: "#environment"
+  one_item_with_an_extreme_description_length:
+    data:
+      items:
+        - heading: "Business and economy"
+          text: "Small businesses, industry, imports, exports and trade"
+          href: "#business-and-economy"
+        - heading: "Crime and justice"
+          text: "Courts, police, prison, offenders, borders and immigration"
+          href: "#crime-and-justice"
+        - heading: "Defence"
+          text: "During the 1920s and 1930s, British civil servants and politicians, looking back at the performance of the state during the First World War, concluded that there was a need for greater co-ordination between the three services that made up the armed forces of the United Kingdom—the Royal Navy, the British Army and the Royal Air Force. The formation of a united ministry of defence was rejected by David Lloyd George's coalition government in 1921; but the Chiefs of Staff Committee was formed in 1923, for the purposes of inter-service co-ordination. As rearmament became a concern during the 1930s, Stanley Baldwin created the position of Minister for Co-ordination of Defence. Lord Chatfield held the post until the fall of Neville Chamberlain's government in 1940; his success was limited by his lack of control over the existing Service departments and his limited political influence."
+          href: "#defence"
+        - heading: "Education"
+          text: "Students, training, qualifications and the National Curriculum"
+          href: "#education"
+        - heading: "Environment"
+          text: "Weather, flooding, rivers, air quality, geology and agriculture"
+          href: "#environment"
+  items_without_descriptions:
+    data:
+      items:
+        - heading: "Business and economy"
+          href: "#business-and-economy"
+        - heading: "Crime and justice"
+          href: "#crime-and-justice"
+        - heading: "Defence"
+          href: "#defence"
+        - heading: "Education"
+          href: "#education"
+        - heading: "Environment"
+          href: "#environment"
+  items_without_hrefs:
+    description: Currently, this component requires that item headings are links, however if a href is not passed then the href in the link defaults to the page that the user is currently on. This is strongly discouraged as it can disorient the user, who will have expected a link to take them somewhere and find themselves on the same page. 
+    data:
+      items:
+        - heading: "Business and economy"
+          text: "Small businesses, industry, imports, exports and trade"
+        - heading: "Crime and justice"
+          text: "Courts, police, prison, offenders, borders and immigration"
+        - heading: "Defence"
+          text: "Armed forces, health and safety, search and rescue"
+        - heading: "Education"
+          text: "Students, training, qualifications and the National Curriculum"
+        - heading: "Environment"
+          text: "Weather, flooding, rivers, air quality, geology and agriculture"
+  several_extreme_examples_together:
+    data:
+      items:
+        - heading: "Item 1"
+          text: "A nice, normal item"
+          href: "#"
+        - heading: "Item 2"
+          href: "#"
+        - heading: "Item 3 has a really long title it just seems to go on for ever and ever and ever and ever and ever and ever and ever and ever and ever and ever and ever and ever and ever"
+          text: "But it has a normal description"
+          href: "#"
+        - heading: "Item 4"
+          text: "Item 4 has a really long description. This one also goes on for ever and ever and ever and ever and ever and ever and ever and ever and ever and ever and ever and ever and ever and ever and ever and ever"
+          href: "#"
+        - heading: "Item 5"
+          text: "This item has no href, which defaults to the page the user is currently on"
+        - heading: "item 6"
+          text: "There are many of item 6"
+          href: "#"
+        - heading: "item 6"
+          text: "There are many of item 6"
+          href: "#"
+        - heading: "item 6"
+          text: "There are many of item 6"
+          href: "#"
+        - heading: "item 6"
+          text: "There are many of item 6"
+          href: "#"
+        - heading: "item 6"
+          text: "There are many of item 6"
+          href: "#"
+        - heading: "item 6"
+          text: "There are many of item 6"
+          href: "#"
+        - heading: "item 6"
+          text: "There are many of item 6"
+          href: "#"
+        - heading: "item 6"
+          text: "There are many of item 6"
+          href: "#"
+        - heading: "item 6"
+          text: "There are many of item 6"
+          href: "#"
+        - heading: "item 6"
+          text: "There are many of item 6"
+          href: "#"
+        - heading: "item 6"
+          text: "There are many of item 6"
+          href: "#"
+        - heading: "item 6"
+          text: "There are many of item 6"
+          href: "#"
+        - heading: "item 6"
+          text: "There are many of item 6"
+          href: "#"
+        - heading: "item 6"
+          text: "There are many of item 6"
+          href: "#"
+        - heading: "item 6"
+          text: "There are many of item 6"
+          href: "#"
+        - heading: "item 6"
+          text: "There are many of item 6"
+          href: "#"
+        - heading: "item 6"
+          text: "There are many of item 6"
+          href: "#"
+        - heading: "item 6"
+          text: "There are many of item 6"
+          href: "#"
+        - heading: "item 6"
+          text: "There are many of item 6"
+          href: "#"
+        - heading: "item 6"
+          text: "There are many of item 6"
+          href: "#"
+        - heading: "item 6"
+          text: "There are many of item 6"
+          href: "#"
+        - heading: "item 6"
+          text: "There are many of item 6"
+          href: "#"
+        - heading: "item 6"
+          text: "There are many of item 6"
+          href: "#"
