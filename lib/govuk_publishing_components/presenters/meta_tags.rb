@@ -21,7 +21,11 @@ module GovukPublishingComponents
         meta_tags = add_political_tags(meta_tags)
         meta_tags = add_taxonomy_tags(meta_tags)
         meta_tags = add_step_by_step_tags(meta_tags)
-        add_brexit_tags(meta_tags)
+        add_brexit_tags("govuk:brexit-audience", meta_tags)
+      end
+
+      def brexit_priority_breadcrumb_tag
+        add_brexit_tags("govuk:brexit-superbreadcrumb")
       end
 
     private
@@ -112,14 +116,14 @@ module GovukPublishingComponents
         meta_tags
       end
 
-      def add_brexit_tags(meta_tags)
+      def add_brexit_tags(tag_key, meta_tags = {})
         links = content_item[:links]
         taxons = links[:taxons] unless links.nil?
 
         return meta_tags if taxons.blank?
         return meta_tags unless tagged_to_priority_taxon?
 
-        meta_tags["govuk:brexit-audience"] = brexit_audience if brexit_audience.present?
+        meta_tags[tag_key] = brexit_audience if brexit_audience.present?
 
         meta_tags
       end

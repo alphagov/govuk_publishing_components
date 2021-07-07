@@ -12,9 +12,9 @@
                inverse: inverse,
                collapse_on_mobile: collapse_on_mobile %>
   <% end %>
-
-  <%= render(
-        'govuk_publishing_components/components/step_by_step_nav_header', breadcrumb_selector.priority_breadcrumbs
-      ) if breadcrumb_selector.priority_breadcrumbs
-  %>
+  <% if breadcrumb_selector.priority_breadcrumbs %>
+    <%= render 'govuk_publishing_components/components/step_by_step_nav_header', breadcrumb_selector.priority_breadcrumbs %>
+    <% meta_tag = GovukPublishingComponents::Presenters::MetaTags.new(content_item, local_assigns, request).brexit_priority_breadcrumb_tag %>
+    <meta name="<%= meta_tag.keys.first %>" content="<%= meta_tag.values.first %>">
+  <% end %>
 </div>
