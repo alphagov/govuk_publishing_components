@@ -1,7 +1,7 @@
 name: Form checkboxes
 description: Let users select one or more options with checkboxes.
 body: |
-  If there is more than one checkbox they are rendered in a list. If there is only one, the markup is simplified to a single div and a heading attribute is not required.
+  If there is more than one checkbox they are rendered in a list. If there is only one, the markup is simplified to a single div and a heading attribute is not required. A `[]` needs to be appended to the name for Rails to treat the checkbox value as an array, otherwise only the last selected item is captured.
 govuk_frontend_components:
   - checkboxes
 accessibility_criteria: |
@@ -25,7 +25,7 @@ examples:
   with_multiple_checkboxes:
     description: When more than one checkbox is shown they are wrapped in a fieldset element, which requires a legend. This must be supplied to the component using the heading option.
     data:
-      name: "favourite_colour"
+      name: "favourite_colour[]"
       heading: "What is your favourite colour?"
       items:
         - label: "Red"
@@ -36,7 +36,7 @@ examples:
           value: "blue"
   with_small_checkboxes:
     data:
-      name: "favourite_small_synonym"
+      name: "favourite_small_synonym[]"
       heading: "What is your favourite synonym for small?"
       small: true
       items:
@@ -55,7 +55,7 @@ examples:
   with_custom_hint_text:
     description: Hint text defaults to 'Select all that apply' but can be overridden with this option. Note that a hint (and a heading) is only displayed if there is more than one checkbox.
     data:
-      name: "favourite_skittle"
+      name: "favourite_skittle[]"
       heading: "What is your favourite skittle?"
       hint_text: "Taste the rainbow"
       items:
@@ -71,7 +71,7 @@ examples:
       The description text can only render text and not govspeak specific syntax.
       This is a pattern that is used across GOV.UK where a question is followed by a description.
     data:
-      name: "favourite_skittle"
+      name: "favourite_skittle[]"
       heading: "Choose your favourite skittles"
       description: |
         Skittles consist of hard sugar shells imprinted with the letter "S".
@@ -91,7 +91,7 @@ examples:
       The description text can only render text and not govspeak specific syntax.
       This is a pattern that is used across GOV.UK where a question is followed by a description.
     data:
-      name: "favourite_skittle"
+      name: "favourite_skittle[]"
       heading: "Choose your favourite skittles"
       is_page_heading: true
       description: |
@@ -112,7 +112,7 @@ examples:
       A caption can only be used with a page heading. If a heading is not provided the caption will not render.
       The pattern is used across GOV.UK to show a high-level section that this page question falls into.
     data:
-      name: "favourite_skittle"
+      name: "favourite_skittle[]"
       heading: "Choose your favourite skittles"
       heading_caption: "Question 3 of 9"
       is_page_heading: true
@@ -126,7 +126,7 @@ examples:
   without_hint_text:
     description: Hint text can be removed entirely with this option. Note that this option can be combined with the visually_hide_heading option.
     data:
-      name: "favourite_skittle"
+      name: "favourite_skittle[]"
       heading: "What is your favourite skittle?"
       no_hint_text: true
       items:
@@ -137,7 +137,7 @@ examples:
   with_a_hidden_heading:
     description: If the heading/legend on the checkboxes is not required, it can be visually hidden using this option. It will still be visible to screen readers.
     data:
-      name: "favourite_colour"
+      name: "favourite_colour[]"
       heading: "What is your favourite colour?"
       visually_hide_heading: true
       items:
@@ -150,7 +150,7 @@ examples:
   with_a_custom_id_attribute:
     description: Note that if an id is not given one is generated automatically. In either case, the id is applied to the parent element of the checkboxes, and each checkbox is given the same id with an incremented number at the end, e.g. the checkboxes below have ids of potatoes-0 and potatoes-1.
     data:
-      name: "potatoes"
+      name: "potatoes[]"
       id: "potatoes"
       heading: "What kind of potatoes do you like?"
       items:
@@ -161,7 +161,7 @@ examples:
   with_custom_ids_on_individal_checkboxes:
     description: Individual checkboxes can be given specific ids if required. Note that the general id option can still be used, but the individual ids will override the general one if it is given.
     data:
-      name: "carrots"
+      name: "carrots[]"
       id: "carrots"
       heading: "What kind of carrots do you like?"
       items:
@@ -173,7 +173,7 @@ examples:
   with_legend_as_page_heading:
     description: Since the legend/heading is required, if the checkboxes are alone on a page it makes sense to use this element as the H1 on the page rather than duplicate text.
     data:
-      name: "favourite_colour"
+      name: "favourite_colour[]"
       heading: "What is your favourite colour?"
       is_page_heading: true
       items:
@@ -185,11 +185,11 @@ examples:
           value: "blue"
   with_custom_heading_size:
     description: |
-      This allows the size of the legend to be changed. Valid options are s, m, l, xl, defaulting to m if no option is passed. 
+      This allows the size of the legend to be changed. Valid options are s, m, l, xl, defaulting to m if no option is passed.
 
       If the is_page_heading option is true and heading_size is not set, the text size will be xl.
     data:
-      name: "favourite_colour"
+      name: "favourite_colour[]"
       heading: "What is your favourite colour?"
       heading_size: "s"
       items:
@@ -235,7 +235,7 @@ examples:
   with_aria_controls_attributes:
     description: Aria controls attributes are applied to the checkboxes only if Javascript is enabled.
     data:
-      name: "aria_controls"
+      name: "aria_controls[]"
       heading: "What areas are you interested in?"
       items:
         - label: "Farming and the environment"
@@ -246,7 +246,7 @@ examples:
           controls: "js-live-results"
   checkboxes_with_individual_hints:
     data:
-      name: "nationality"
+      name: "nationality[]"
       heading: "What is your nationality?"
       hint_text: "If you have dual nationality, select all options that are relevant to you."
       items:
@@ -260,7 +260,7 @@ examples:
           hint: "anything other than the above"
   checkbox_items_with_error:
     data:
-      name: "nationality"
+      name: "nationality[]"
       heading: "What is your nationality?"
       error: "Select if you are British, Irish or a citizen of a different country"
       hint_text: "If you have dual nationality, select all options that are relevant to you."
@@ -281,7 +281,7 @@ examples:
 
       This behaviour should be doubled by similar checks on the backend.
     data:
-      name: "nationality-exclusive"
+      name: "nationality-exclusive[]"
       heading: "What kind of expertise can you offer?"
       hint_text: "Select the types of support you can offer."
       items:
@@ -301,7 +301,7 @@ examples:
 
       Note that if you do insert HTML, this may cause accessibility violations if the additional elements have different name attributes to the checkboxes. No styling will be applied to the inserted content by the component.
     data:
-      name: "contactingme"
+      name: "contactingme[]"
       id: "contactingme"
       heading: "How would you like to be contacted?"
       hint_text: "Please select all options that are relevant to you."
@@ -317,7 +317,7 @@ examples:
           conditional: <div class="govuk-form-group"><label class="govuk-label" for="contact-by-text">Mobile phone number</label><input class="govuk-input govuk-!-width-one-third" id="contact-by-text" name="contactingme" type="tel"></div>
   checkbox_items_with_conditional_reveal_checked:
     data:
-      name: "contacting-checked"
+      name: "contacting-checked[]"
       id: "contacting-checked"
       heading: "How would you like to be contacted?"
       hint_text: "Please select all options that are relevant to you."
@@ -334,7 +334,7 @@ examples:
           conditional: <div class="govuk-form-group"><label class="govuk-label" for="contact-by-text">Mobile phone number</label><input class="govuk-input govuk-!-width-one-third" id="contact-by-text" name="contactingme" type="tel"></div>
   checkbox_items_with_checked_items:
     data:
-      name: "nationality"
+      name: "nationality[]"
       heading: "What is your nationality?"
       hint_text: "If you have dual nationality, select all options that are relevant to you."
       items:
@@ -347,7 +347,7 @@ examples:
           value: "other"
   checkbox_items_with_nested_checkboxes:
     data:
-      name: "favourite_colour"
+      name: "favourite_colour[]"
       heading: "What is your favourite colour?"
       items:
         - label: "Red"
