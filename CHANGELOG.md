@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add Welsh translations for topics, transition and tabs ([PR #2193](https://github.com/alphagov/govuk_publishing_components/pull/2193))
+* Add custom dimension for pages displaying the Brexit superbreadcrumb ([PR #2197](https://github.com/alphagov/govuk_publishing_components/pull/2197))
 
 ## 24.18.3
 
@@ -22,7 +23,7 @@
 ## 24.18.1
 
 * Update LUX to activate when usage cookies are accepted ([PR #2154](https://github.com/alphagov/govuk_publishing_components/pull/2154)) PATCH
-* Add custom dimension to the page view data for pages with the Brexit superbreadcrumb. And remove the custom dimension from superbreadcrumb clicks. ([PR #2186](https://github.com/alphagov/govuk_publishing_components/pull/2186))
+* Add custom dimension to the page view data for pages tagged to brexit taxons. And remove the custom dimension from superbreadcrumb clicks. ([PR #2186](https://github.com/alphagov/govuk_publishing_components/pull/2186))
 
 ## 24.18.0
 
