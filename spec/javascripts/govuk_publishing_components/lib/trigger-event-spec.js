@@ -8,6 +8,9 @@ describe('The trigger event code', function () {
       if (((event || {}).detail || {}).test === true) {
         obj.secondCalledFunction()
       }
+      if (event.keyCode === 13) {
+        obj.secondCalledFunction()
+      }
     },
     secondCalledFunction: function () {}
   }
@@ -33,6 +36,13 @@ describe('The trigger event code', function () {
   it('creates and triggers a custom event with parameters', function () {
     element[0].addEventListener('click', obj.calledFunction)
     window.GOVUK.triggerEvent(element[0], 'click', { detail: { test: true } })
+    expect(obj.calledFunction).toHaveBeenCalled()
+    expect(obj.secondCalledFunction).toHaveBeenCalled()
+  })
+
+  it('creates and triggers a custom event with a keyCode', function () {
+    element[0].addEventListener('keyup', obj.calledFunction)
+    window.GOVUK.triggerEvent(element[0], 'keyup', { keyCode: 13 })
     expect(obj.calledFunction).toHaveBeenCalled()
     expect(obj.secondCalledFunction).toHaveBeenCalled()
   })
