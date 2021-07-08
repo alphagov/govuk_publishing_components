@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 24.18.4
 
 * Add Welsh translations for topics, transition and tabs ([PR #2193](https://github.com/alphagov/govuk_publishing_components/pull/2193))
 * Add custom dimension for pages displaying the Brexit superbreadcrumb ([PR #2197](https://github.com/alphagov/govuk_publishing_components/pull/2197))
@@ -920,7 +920,7 @@ Note - this is version 23.0.0 due to a previously yanked version using 22.0.0; t
 
 * Increase notice border size ([#1254](https://github.com/alphagov/govuk_publishing_components/pull/1254))
 
-## 21.19.0
+## 21.19.0
 
 * Add print icons ([#1251](https://github.com/alphagov/govuk_publishing_components/pull/1251))
 
