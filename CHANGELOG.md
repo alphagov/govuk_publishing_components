@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add scroll tracking to welsh brexit child taxon pages ([PR #2201](https://github.com/alphagov/govuk_publishing_components/pull/2201))
+
 ## 24.18.4
 
 * Add Welsh translations for topics, transition and tabs ([PR #2193](https://github.com/alphagov/govuk_publishing_components/pull/2193))
