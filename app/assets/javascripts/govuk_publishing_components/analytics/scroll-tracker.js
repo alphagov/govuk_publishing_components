@@ -206,7 +206,21 @@
       ['Percent', 80],
       ['Percent', 100]
     ],
+    '/guidance/brexit-guidance-for-businesses.cy': [
+      ['Percent', 20],
+      ['Percent', 40],
+      ['Percent', 60],
+      ['Percent', 80],
+      ['Percent', 100]
+    ],
     '/guidance/brexit-guidance-for-individuals-and-families': [
+      ['Percent', 20],
+      ['Percent', 40],
+      ['Percent', 60],
+      ['Percent', 80],
+      ['Percent', 100]
+    ],
+    '/guidance/brexit-guidance-for-individuals-and-families.cy': [
       ['Percent', 20],
       ['Percent', 40],
       ['Percent', 60],
