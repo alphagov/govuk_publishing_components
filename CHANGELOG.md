@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add scroll tracking to welsh brexit child taxon pages ([PR #2201](https://github.com/alphagov/govuk_publishing_components/pull/2201))
+* Fix arrow size on Brexit variation of action link ([PR #2203](https://github.com/alphagov/govuk_publishing_components/pull/2203))
 
 ## 24.18.4
 
