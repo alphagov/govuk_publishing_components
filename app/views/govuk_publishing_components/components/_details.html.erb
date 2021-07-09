@@ -6,15 +6,18 @@
   css_classes = %w(gem-c-details govuk-details)
   css_classes << (shared_helper.get_margin_bottom)
 
+  details_data_attributes = {}
+  details_data_attributes[:module] = 'govuk-details gem-details'
+
   data_attributes ||= {}
-  data_attributes[:module] = 'govuk-details gem-details'
+  data_attributes[:details_track_click] = ''
 %>
-<%= tag.details class: css_classes, data: data_attributes, open: open do %>
-  <summary class="govuk-details__summary" data-details-track-click>
+<%= tag.details class: css_classes, data: details_data_attributes, open: open do %>
+  <%= tag.summary class: "govuk-details__summary", data: data_attributes do %>
     <span class="govuk-details__summary-text">
       <%= title %>
     </span>
-  </summary>
+  <% end %>
   <div class="govuk-details__text">
     <%= yield %>
   </div>

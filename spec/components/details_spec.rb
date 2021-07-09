@@ -42,9 +42,9 @@ describe "Details", type: :view do
       },
     )
 
-    assert_select '.govuk-details[data-track-category="track-category"]'
-    assert_select '.govuk-details[data-track-action="track-action"]'
-    assert_select '.govuk-details[data-track-label="track-label"]'
+    assert_select '.govuk-details .govuk-details__summary[data-track-category="track-category"]'
+    assert_select '.govuk-details .govuk-details__summary[data-track-action="track-action"]'
+    assert_select '.govuk-details .govuk-details__summary[data-track-label="track-label"]'
   end
 
   it "defaults to the initial bottom margin if an incorrect value is passed" do
