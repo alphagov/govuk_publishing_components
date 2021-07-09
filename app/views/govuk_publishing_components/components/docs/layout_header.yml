@@ -105,7 +105,10 @@ examples:
   with_search_bar:
     data:
       search: true
-
+  with_custom_logo_link:
+    description: The header logo links to root by default. This option allows us to override that in certain instances.
+    data:
+      logo_link: "/account/home"
 accessibility_criteria: |
   The component must:
 
