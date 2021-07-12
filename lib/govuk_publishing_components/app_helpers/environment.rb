@@ -1,19 +1,14 @@
 module GovukPublishingComponents
   module AppHelpers
     class Environment
-      GOVUK_ENVIRONMENTS = {
-        "production" => "production",
-        "staging" => "staging",
-        "integration-blue-aws" => "integration",
-      }.freeze
+      GOVUK_ENVIRONMENTS = %w[integration staging production].freeze
 
       # The "acceptance environment" we're in - not the same as Rails env.
-      #
-      # Can be "production", "staging", "integration", or "development"
+      # Can be "production", "staging", "integration", "development" or "example" (if running on Heroku)
       def self.current_acceptance_environment
         return "example" if ENV["HEROKU"]
 
-        GOVUK_ENVIRONMENTS.fetch(ENV["ERRBIT_ENVIRONMENT_NAME"], "development")
+        GOVUK_ENVIRONMENTS.include?(ENV["GOVUK_ENVIRONMENT_NAME"]) ? ENV["GOVUK_ENVIRONMENT_NAME"] : "development"
       end
     end
   end
