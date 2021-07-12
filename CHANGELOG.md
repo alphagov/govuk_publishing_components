@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix misaligned crown in heading component properly ([PR #2206](https://github.com/alphagov/govuk_publishing_components/pull/2206)) PATCH
+
 ## 24.18.5
 
 * Add scroll tracking to welsh brexit child taxon pages ([PR #2201](https://github.com/alphagov/govuk_publishing_components/pull/2201))
