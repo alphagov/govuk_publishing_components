@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add Layout super navigation header component ([PR #2179](https://github.com/alphagov/govuk_publishing_components/pull/2179))
+
 ## 24.20.0
 
 * Add inverse option for govspeak ([PR #2207](https://github.com/alphagov/govuk_publishing_components/pull/2207))
