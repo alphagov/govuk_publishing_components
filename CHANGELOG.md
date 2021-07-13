@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Expand trigger event script options ([PR #2199](https://github.com/alphagov/govuk_publishing_components/pull/2199))
+
 ## 24.19.0
 
 * Switch environment app helper to use GOVUK_ENVIRONMENT_NAME ([PR #2191](https://github.com/alphagov/govuk_publishing_components/pull/2191)) PATCH
