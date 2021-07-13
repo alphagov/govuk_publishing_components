@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    govuk_publishing_components (24.18.5)
+    govuk_publishing_components (24.19.0)
       govuk_app_config
       kramdown
       plek
@@ -98,7 +98,7 @@ GEM
     execjs (2.7.0)
     faker (2.17.0)
       i18n (>= 1.6, < 2)
-    faraday (1.5.0)
+    faraday (1.5.1)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
       faraday-excon (~> 1.1)
@@ -113,7 +113,7 @@ GEM
     faraday-excon (1.1.0)
     faraday-httpclient (1.0.1)
     faraday-net_http (1.0.1)
-    faraday-net_http_persistent (1.1.0)
+    faraday-net_http_persistent (1.2.0)
     faraday-patron (1.0.0)
     ffi (1.15.0)
     gds-api-adapters (71.9.0)
