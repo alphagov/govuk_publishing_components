@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 24.20.0
 
 * Add inverse option for govspeak ([PR #2207](https://github.com/alphagov/govuk_publishing_components/pull/2207))
 * Expand trigger event script options ([PR #2199](https://github.com/alphagov/govuk_publishing_components/pull/2199))
