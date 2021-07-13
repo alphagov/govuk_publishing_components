@@ -25,6 +25,15 @@ examples:
       block: |
         <h2>This is a title</h2>
           <p>This is some body text with <a href="https://example.com">a link</a>.</p>
+  inverted:
+    description: This option currently supports basic inversion of only headings, paragraphs and links.
+    data:
+      inverse: true
+      block: |
+        <h2>This is a title</h2>
+        <p>This is some body text with <a href="https://example.com">a link</a>.</p>
+    context:
+      dark_background: true
   heading_levels:
     data:
       block: |

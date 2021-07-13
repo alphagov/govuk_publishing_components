@@ -12,6 +12,15 @@ describe "Govspeak", type: :view do
     assert_select ".gem-c-govspeak h1", text: "content"
   end
 
+  it "renders inverse content correctly" do
+    render_component(
+      inverse: true,
+      content: "<h2>inverse</h2>".html_safe,
+    )
+
+    assert_select ".gem-c-govspeak.gem-c-govspeak--inverse h2", text: "inverse"
+  end
+
   it "renders right to left content correctly" do
     render_component(
       direction: "rtl",

@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add inverse option for govspeak ([PR #2207](https://github.com/alphagov/govuk_publishing_components/pull/2207))
 * Expand trigger event script options ([PR #2199](https://github.com/alphagov/govuk_publishing_components/pull/2199))
 
 ## 24.19.0

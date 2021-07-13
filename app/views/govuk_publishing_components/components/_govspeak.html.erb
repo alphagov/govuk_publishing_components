@@ -1,10 +1,12 @@
 <%
+  inverse ||= false
   direction_class = "direction-#{direction}" if local_assigns.include?(:direction)
   disable_youtube_expansions = local_assigns.fetch(:disable_youtube_expansions) if local_assigns.include?(:disable_youtube_expansions)
 
   classes = []
   classes << direction_class if direction_class
   classes << "disable-youtube" if disable_youtube_expansions
+  classes << "gem-c-govspeak--inverse" if inverse
 %>
 
 <div class="gem-c-govspeak govuk-govspeak <%= classes.join(" ") %>" data-module="govspeak">

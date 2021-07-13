@@ -99,3 +99,12 @@
     font-weight: inherit;
   }
 }
+
+.gem-c-govspeak--inverse {
+  color: govuk-colour('white');
+
+  a {
+    @include govuk-link-common;
+    @include govuk-link-style-inverse;
+  }
+}
