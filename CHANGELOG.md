@@ -6,8 +6,8 @@
 - Don't include changes that are purely internal. The CHANGELOG should be a
   useful summary for people upgrading their application, not a replication
   of the commit log.
-  
-## Unreleased
+
+## 24.19.0
 
 * Switch environment app helper to use GOVUK_ENVIRONMENT_NAME ([PR #2191](https://github.com/alphagov/govuk_publishing_components/pull/2191)) PATCH
 * Add intervention component ([PR #2196](https://github.com/alphagov/govuk_publishing_components/pull/2196))
