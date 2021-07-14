@@ -168,6 +168,25 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
         end
       end
 
+      describe "#priority_brexit_taxon" do
+        let(:brexit_taxons) { [brexit_taxon, brexit_business_taxon] }
+        let(:payload) { brexit_taxons }
+        let(:content) { directly_tagged_to_taxons(payload) }
+        subject { described_class.new(content) }
+
+        it "returns the highest priority brexit taxon" do
+          expect(subject.priority_brexit_taxon).to eq(brexit_business_taxon)
+        end
+
+        context "with brexit taxons and a coronavirus taxon" do
+          let(:payload) { brexit_taxons << education_taxon }
+
+          it "returns the brexit taxon" do
+            expect(subject.priority_brexit_taxon).to eq(brexit_business_taxon)
+          end
+        end
+      end
+
       describe ".call" do
         let(:content) { send(tagged_to_taxons, [education_taxon]) }
 
