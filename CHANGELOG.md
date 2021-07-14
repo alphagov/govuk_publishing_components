@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Fix new link styles on document list ([PR #2211](https://github.com/alphagov/govuk_publishing_components/pull/2211))
 * Add Layout super navigation header component ([PR #2179](https://github.com/alphagov/govuk_publishing_components/pull/2179))
 
 ## 24.20.0
