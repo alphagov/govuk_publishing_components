@@ -68,20 +68,20 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
 
   let(:payload) { [education_taxon] }
 
-  describe "#taxon" do
+  describe "#priority_taxon" do
     %w[directly_tagged_to_taxons indirectly_tagged_to_taxons].each do |tagged_to_taxons|
       context tagged_to_taxons do
         subject { described_class.new(send(tagged_to_taxons, payload)) }
 
         it "returns the matching taxon" do
-          expect(subject.taxon).to eq(education_taxon)
+          expect(subject.priority_taxon).to eq(education_taxon)
         end
 
         context "with business taxon" do
           let(:payload) { [business_taxon] }
 
           it "returns the business taxon" do
-            expect(subject.taxon).to eq(business_taxon)
+            expect(subject.priority_taxon).to eq(business_taxon)
           end
         end
 
@@ -89,7 +89,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
           let(:payload) { [worker_taxon] }
 
           it "returns the worker taxon" do
-            expect(subject.taxon).to eq(worker_taxon)
+            expect(subject.priority_taxon).to eq(worker_taxon)
           end
         end
 
@@ -97,7 +97,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
           let(:payload) { [brexit_taxon] }
 
           it "returns the brexit taxon" do
-            expect(subject.taxon).to eq(brexit_taxon)
+            expect(subject.priority_taxon).to eq(brexit_taxon)
             expect(subject.brexit_audience).to eq("Brexitbusinessandcitizen")
           end
         end
@@ -106,7 +106,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
           let(:payload) { [education_taxon, business_taxon] }
 
           it "returns the education taxon" do
-            expect(subject.taxon).to eq(education_taxon)
+            expect(subject.priority_taxon).to eq(education_taxon)
           end
         end
 
@@ -114,7 +114,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
           let(:payload) { [brexit_taxon, brexit_individuals_taxon] }
 
           it "returns the brexit_individuals taxon" do
-            expect(subject.taxon).to eq(brexit_individuals_taxon)
+            expect(subject.priority_taxon).to eq(brexit_individuals_taxon)
             expect(subject.brexit_audience).to eq("Brexitcitizen")
           end
         end
@@ -123,7 +123,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
           let(:payload) { [brexit_taxon, brexit_business_taxon] }
 
           it "returns the brexit_business taxon" do
-            expect(subject.taxon).to eq(brexit_business_taxon)
+            expect(subject.priority_taxon).to eq(brexit_business_taxon)
             expect(subject.brexit_audience).to eq("Brexitbusiness")
           end
         end
@@ -132,7 +132,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
           let(:payload) { [brexit_taxon, brexit_individuals_taxon, brexit_business_taxon] }
 
           it "returns the brexit_taxon taxon" do
-            expect(subject.taxon).to eq(brexit_taxon)
+            expect(subject.priority_taxon).to eq(brexit_taxon)
             expect(subject.brexit_audience).to eq("Brexitbusinessandcitizen")
           end
         end
@@ -141,7 +141,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
           let(:payload) { [] }
 
           it "returns nil" do
-            expect(subject.taxon).to be_nil
+            expect(subject.priority_taxon).to be_nil
           end
         end
 
@@ -153,7 +153,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
             content_item = send(tagged_to_taxons, payload)
             context_breadcrumb = described_class.new(content_item, query_parameters)
 
-            expect(context_breadcrumb.taxon).to eq(business_taxon)
+            expect(context_breadcrumb.priority_taxon).to eq(business_taxon)
           end
 
           it "returns the default taxon if not tagged to priority taxon" do
@@ -163,7 +163,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
             content_item = send(tagged_to_taxons, payload)
             context_breadcrumb = described_class.new(content_item, query_parameters)
 
-            expect(context_breadcrumb.taxon).to eq(education_taxon)
+            expect(context_breadcrumb.priority_taxon).to eq(education_taxon)
           end
         end
       end

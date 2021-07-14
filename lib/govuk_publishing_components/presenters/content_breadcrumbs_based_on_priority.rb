@@ -25,16 +25,16 @@ module GovukPublishingComponents
         @query_parameters = query_parameters
       end
 
-      def taxon
-        @taxon ||= begin
+      def priority_taxon
+        @priority_taxon ||= begin
           default_taxon = priority_taxons.min_by { |t| PRIORITY_TAXONS.values.index(t["content_id"]) }
           preferred_taxon || default_taxon
         end
       end
 
       def breadcrumbs
-        taxon && {
-          title: taxon["title"],
+        priority_taxon && {
+          title: priority_taxon["title"],
           path: breadcrumb_path,
           tracking_category: "breadcrumbClicked",
           tracking_action: tracking_action,
@@ -48,7 +48,7 @@ module GovukPublishingComponents
           PRIORITY_TAXONS[:brexit_business] => "Brexitbusiness",
           PRIORITY_TAXONS[:brexit_individuals] => "Brexitcitizen",
           PRIORITY_TAXONS[:brexit_taxon] => "Brexitbusinessandcitizen",
-        }[taxon["content_id"]]
+        }[priority_taxon["content_id"]]
       end
 
     private
@@ -104,7 +104,7 @@ module GovukPublishingComponents
       end
 
       def breadcrumb_path
-        taxon.dig("details", "url_override").present? ? taxon.dig("details", "url_override") : taxon["base_path"]
+        priority_taxon.dig("details", "url_override").present? ? priority_taxon.dig("details", "url_override") : priority_taxon["base_path"]
       end
     end
   end

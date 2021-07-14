@@ -129,7 +129,7 @@ module GovukPublishingComponents
       end
 
       def tagged_to_priority_taxon?
-        priority_taxon_helper.taxon.present?
+        priority_taxon_helper.priority_taxon.present?
       end
 
       def priority_taxon_helper
