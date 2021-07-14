@@ -358,6 +358,50 @@ describe "Meta tags", type: :view do
     assert_meta_tag("govuk:brexit-audience", "Brexitbusiness")
   end
 
+  it "does not render the brexit audience metatag for content items tagged to brexit and a priority coronavirus taxon" do
+    content_item = {
+      links: {
+        taxons: [
+          {
+            title: "Brexit: business guidance",
+            content_id: "634fd193-8039-4a70-a059-919c34ff4bfc",
+            base_path: "/brexit/business-guidance",
+            document_type: "detailed_guide",
+            links: {
+              parent_taxons: [
+                {
+                  title: "Brexit",
+                  content_id: "d6c2de5d-ef90-45d1-82d4-5f2438369eea",
+                  base_path: "/brexit",
+                  document_type: "taxon",
+                },
+              ],
+            },
+          },
+          {
+            title: "Work and financial support during coronavirus",
+            content_id: "b7f57213-4b16-446d-8ded-81955d782680",
+            base_path: "/coronavirus-taxon/work-and-financial-support",
+            document_type: "detailed_guide",
+            links: {
+              parent_taxons: [
+                {
+                  title: "Coronavirus (COVID-19)",
+                  content_id: "5b7b9532-a775-4bd2-a3aa-6ce380184b6c",
+                  base_path: "/coronavirus-taxon",
+                  document_type: "taxon",
+                },
+              ],
+            },
+          },
+        ],
+      },
+    }
+
+    render_component(content_item: example_document_for("detailed_guide", "detailed_guide").merge(content_item))
+    assert_no_meta_tag("govuk:brexit-audience")
+  end
+
   it "renders the has-content-history tag as true when the content has history" do
     content_item = {
       public_updated_at: Time.parse("2017-01-01"),
