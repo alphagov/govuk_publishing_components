@@ -41,7 +41,7 @@
               item[:link][:text],
               item[:link][:path],
               data: item[:link][:data_attributes],
-              class: "#{item_classes} gem-c-document-list__item-link",
+              class: "#{item_classes} govuk-link",
               lang: item[:link][:locale].presence,
               rel: rel,
             )
@@ -65,7 +65,7 @@
 
         <% if item[:metadata] %>
           <ul class="gem-c-document-list__item-metadata">
-            <% item[:metadata].compact.each do |item_metadata_key, item_metadata_value| %> 
+            <% item[:metadata].compact.each do |item_metadata_key, item_metadata_value| %>
               <% if !item_metadata_key.to_s.eql?("locale") %>
                 <% lang = item[:metadata][:locale].present? && item[:metadata][:locale][item_metadata_key].present? ? item[:metadata][:locale][item_metadata_key] : nil %>
 
@@ -101,7 +101,7 @@
                       part[:link][:text],
                       part[:link][:path],
                       data: part[:link][:data_attributes],
-                      class: "gem-c-document-list-child__heading #{brand_helper.color_class} gem-c-document-list-child__link",
+                      class: "gem-c-document-list-child__heading #{brand_helper.color_class} govuk-link gem-c-document-list-child__link",
                     )
                   else
                     content_tag(

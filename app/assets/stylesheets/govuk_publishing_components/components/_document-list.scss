@@ -6,7 +6,6 @@
 }
 
 .gem-c-document-list__item {
-  overflow: hidden;
   margin-bottom: govuk-spacing(5);
   padding-top: govuk-spacing(2);
   border-top: 1px solid $govuk-border-colour;
@@ -16,11 +15,6 @@
 .gem-c-document-list__item-title {
   @include govuk-font($size: 19, $weight: bold);
   display: inline-block;
-}
-
-.gem-c-document-list__item-link {
-  @include govuk-link-common;
-  @include govuk-link-style-default;
 }
 
 .gem-c-document-list--no-underline {
@@ -156,18 +150,22 @@
 }
 
 .gem-c-document-list-child__link {
-  @include govuk-link-common;
-  @include govuk-link-style-default;
   text-decoration: none;
 
   &:hover {
     text-decoration: underline;
+    text-underline-offset: .1em;
+    @include govuk-link-hover-decoration;
+  }
+
+  &:focus {
+    text-decoration: none;
   }
 }
 
 .gem-c-document-list-child__description {
   @include govuk-text-colour;
-  margin-top: 0;
+  margin-top: govuk-spacing(1);
   margin-bottom: govuk-spacing(1);
 
   @include govuk-media-query($until: tablet) {

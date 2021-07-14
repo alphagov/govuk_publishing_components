@@ -494,7 +494,7 @@ describe "Document list", type: :view do
       ],
     )
 
-    link = ".gem-c-document-list__item-link"
+    link = ".govuk-link"
 
     assert_select "#{link}[href=\"https://www.actionfraud.police.uk/contact-us\"][rel=\"external\"]", text: "Report Fraud"
     assert_select "#{link}[href=\"/contact-child-benefit-office\"]:not([rel])", text: "Child Benefit"
