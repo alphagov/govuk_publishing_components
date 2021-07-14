@@ -97,8 +97,11 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
           let(:payload) { [brexit_taxon] }
 
           it "returns the brexit taxon" do
-            expect(subject.priority_taxon).to eq(brexit_taxon)
-            expect(subject.brexit_audience).to eq("Brexitbusinessandcitizen")
+            priority_taxon = subject.priority_taxon
+            brexit_audience = subject.brexit_audience(priority_taxon)
+
+            expect(priority_taxon).to eq(brexit_taxon)
+            expect(brexit_audience).to eq("Brexitbusinessandcitizen")
           end
         end
 
@@ -114,8 +117,11 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
           let(:payload) { [brexit_taxon, brexit_individuals_taxon] }
 
           it "returns the brexit_individuals taxon" do
-            expect(subject.priority_taxon).to eq(brexit_individuals_taxon)
-            expect(subject.brexit_audience).to eq("Brexitcitizen")
+            priority_taxon = subject.priority_taxon
+            brexit_audience = subject.brexit_audience(priority_taxon)
+
+            expect(priority_taxon).to eq(brexit_individuals_taxon)
+            expect(brexit_audience).to eq("Brexitcitizen")
           end
         end
 
@@ -123,8 +129,11 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
           let(:payload) { [brexit_taxon, brexit_business_taxon] }
 
           it "returns the brexit_business taxon" do
-            expect(subject.priority_taxon).to eq(brexit_business_taxon)
-            expect(subject.brexit_audience).to eq("Brexitbusiness")
+            priority_taxon = subject.priority_taxon
+            brexit_audience = subject.brexit_audience(priority_taxon)
+
+            expect(priority_taxon).to eq(brexit_business_taxon)
+            expect(brexit_audience).to eq("Brexitbusiness")
           end
         end
 
@@ -132,8 +141,11 @@ RSpec.describe GovukPublishingComponents::Presenters::ContentBreadcrumbsBasedOnP
           let(:payload) { [brexit_taxon, brexit_individuals_taxon, brexit_business_taxon] }
 
           it "returns the brexit_taxon taxon" do
-            expect(subject.priority_taxon).to eq(brexit_taxon)
-            expect(subject.brexit_audience).to eq("Brexitbusinessandcitizen")
+            priority_taxon = subject.priority_taxon
+            brexit_audience = subject.brexit_audience(priority_taxon)
+
+            expect(priority_taxon).to eq(brexit_taxon)
+            expect(brexit_audience).to eq("Brexitbusinessandcitizen")
           end
         end
 

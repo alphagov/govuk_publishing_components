@@ -54,12 +54,12 @@ module GovukPublishingComponents
         }
       end
 
-      def brexit_audience
+      def brexit_audience(taxon)
         {
           PRIORITY_TAXONS[:brexit_business] => "Brexitbusiness",
           PRIORITY_TAXONS[:brexit_individuals] => "Brexitcitizen",
           PRIORITY_TAXONS[:brexit_taxon] => "Brexitbusinessandcitizen",
-        }[priority_taxon["content_id"]]
+        }[taxon["content_id"]]
       end
 
     private
@@ -113,7 +113,7 @@ module GovukPublishingComponents
 
       def tracking_action
         action = %w[superBreadcrumb]
-        action << brexit_audience
+        action << brexit_audience(priority_taxon)
         action.compact.join(" ")
       end
 

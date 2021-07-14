@@ -123,8 +123,11 @@ module GovukPublishingComponents
         return meta_tags if taxons.blank?
         return meta_tags unless tagged_to_priority_taxon?
 
-        meta_tags[tag_key] = brexit_audience if brexit_audience.present?
+        taxon =
+          tag_key == "govuk:brexit-audience" ? priority_brexit_taxon : priority_taxon
 
+        brexit_audience = priority_taxon_helper.brexit_audience(taxon)
+        meta_tags[tag_key] = brexit_audience if brexit_audience.present?
         meta_tags
       end
 
@@ -136,8 +139,12 @@ module GovukPublishingComponents
         @priority_taxon_helper ||= ContentBreadcrumbsBasedOnPriority.new(content_item.deep_stringify_keys, request.query_parameters)
       end
 
-      def brexit_audience
-        priority_taxon_helper.brexit_audience
+      def priority_taxon
+        priority_taxon_helper.priority_taxon
+      end
+
+      def priority_brexit_taxon
+        priority_taxon_helper.priority_brexit_taxon
       end
 
       def has_content_history?

@@ -358,7 +358,7 @@ describe "Meta tags", type: :view do
     assert_meta_tag("govuk:brexit-audience", "Brexitbusiness")
   end
 
-  it "does not render the brexit audience metatag for content items tagged to brexit and a priority coronavirus taxon" do
+  it "renders the brexit audience metatag for content items tagged to brexit and a priority coronavirus taxon" do
     content_item = {
       links: {
         taxons: [
@@ -399,7 +399,7 @@ describe "Meta tags", type: :view do
     }
 
     render_component(content_item: example_document_for("detailed_guide", "detailed_guide").merge(content_item))
-    assert_no_meta_tag("govuk:brexit-audience")
+    assert_meta_tag("govuk:brexit-audience", "Brexitbusiness")
   end
 
   it "renders the has-content-history tag as true when the content has history" do
