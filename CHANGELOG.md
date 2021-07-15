@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Fix new link styles on document list ([PR #2211](https://github.com/alphagov/govuk_publishing_components/pull/2211))
+* Make sure custom dimension 112 is sent for all pages tagged to Brexit ([PR #2212](https://github.com/alphagov/govuk_publishing_components/pull/2212))
 
 ## 24.20.0
 
