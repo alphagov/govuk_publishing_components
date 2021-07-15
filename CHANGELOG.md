@@ -10,10 +10,10 @@
 ## Unreleased
 
 * Fix new link styles on document list ([PR #2211](https://github.com/alphagov/govuk_publishing_components/pull/2211))
-* Add Layout super navigation header component ([PR #2179](https://github.com/alphagov/govuk_publishing_components/pull/2179))
 
 ## 24.20.0
 
+* Add Layout super navigation header component ([PR #2179](https://github.com/alphagov/govuk_publishing_components/pull/2179))
 * Add inverse option for govspeak ([PR #2207](https://github.com/alphagov/govuk_publishing_components/pull/2207))
 * Expand trigger event script options ([PR #2199](https://github.com/alphagov/govuk_publishing_components/pull/2199))
 
