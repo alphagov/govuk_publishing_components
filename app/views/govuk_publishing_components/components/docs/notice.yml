@@ -50,3 +50,18 @@ examples:
       title: 'This publication was withdrawn on 30 September 2015'
       description_govspeak: <p>This document is no longer current. We published a new version on 30 September 2015.</p>
       lang: 'en'
+  with_banner_title:
+    description: |
+      By default, the notice component renders with a banner title of "Important" if `show_banner_title` is `true`.
+    data:
+      title: 'This publication was withdrawn on 30 September 2015'
+      description_govspeak: <p>This document is no longer current. We published a new version on 30 September 2015.</p>
+      show_banner_title: true
+  with_custom_banner_title:
+    description: |
+      The default banner title can be overruled by specifying a `banner_title` option.
+    data:
+      title: 'This publication was withdrawn on 30 September 2015'
+      description_govspeak: <p>This document is no longer current. We published a new version on 30 September 2015.</p>
+      show_banner_title: true
+      banner_title: "Information"

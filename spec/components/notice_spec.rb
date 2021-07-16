@@ -86,4 +86,21 @@ describe "Notice", type: :view do
     render_component(title: "Your settings have been saved")
     assert_select ".gem-c-notice[lang=en]", false
   end
+
+  it "displays without a banner title by default" do
+    render_component(title: "Your settings have been saved")
+    assert_select ".gem-c-notice .govuk-notification-banner__title", false
+  end
+
+  it "displays with a banner title of 'Important' by default when show_banner_title is true" do
+    render_component(title: "Your settings have been saved", show_banner_title: true, description_text: "Duplicate, added in error")
+    assert_select ".gem-c-notice h2.govuk-notification-banner__title", text: "Important"
+    assert_select "h3.gem-c-notice__title", text: "Your settings have been saved"
+  end
+
+  it "can display with a custom banner title if required" do
+    render_component(title: "Your settings have been saved", show_banner_title: true, banner_title: "Notice", description_text: "Duplicate, added in error")
+    assert_select ".gem-c-notice h2.govuk-notification-banner__title", text: "Notice"
+    assert_select "h3.gem-c-notice__title", text: "Your settings have been saved"
+  end
 end
