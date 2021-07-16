@@ -8,29 +8,35 @@
   local_assigns[:margin_bottom] ||= 8
   local_assigns[:margin_bottom] = 8 if local_assigns[:margin_bottom] > 9
 
+  banner_title ||= t("components.notice.banner_title")
+  banner_title_id ||= "govuk-notification-banner-title-#{SecureRandom.hex(4)}"
+  show_banner_title ||= false
+  heading_level = show_banner_title ? "h3" : "h2"
+
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
-  css_classes = %w[gem-c-notice]
+  css_classes = %w[govuk-notification-banner gem-c-notice]
   css_classes << (shared_helper.get_margin_bottom)
 
-  aria_attributes = aria_live ? {label: 'Notice', live: 'polite'} : {label: 'Notice'}
+  aria_attributes = {label: 'Notice'}
+  aria_attributes[:live] = 'polite' if aria_live
+  aria_attributes[:labelledby] = banner_title_id if show_banner_title
 
   description_present = description.present? || description_text.present? || description_govspeak.present?
 %>
 <% if title || description_present %>
   <%= tag.section class: css_classes, aria: aria_attributes, lang: lang, role: "region" do %>
-    <% if title %>
-      <% if description_present %>
-        <%= tag.h2 title, class: "gem-c-notice__title" %>
-      <% else %>
-        <%= tag.span title, class: "gem-c-notice__title" %>
-      <% end %>
+    <%= tag.div class: "govuk-notification-banner__header" do %>
+      <%= tag.h2 banner_title, class: "govuk-notification-banner__title", id: banner_title_id %>
+    <% end if show_banner_title %>
+    <%= tag.div class: "govuk-notification-banner__content" do %>
+      <%= content_tag(heading_level, title, class: "gem-c-notice__title govuk-notification-banner__heading") if description_present && title %>
+      <%= tag.span title, class: "gem-c-notice__title govuk-notification-banner__heading" if !description_present && title %>
+      <%= tag.p description_text, class: "gem-c-notice__description" if description_text %>
+
+      <%= description if description %>
+
+      <%= render 'govuk_publishing_components/components/govspeak', content: description_govspeak if description_govspeak %>
     <% end %>
-
-    <%= tag.p description_text, class: "gem-c-notice__description" if description_text %>
-
-    <%= description if description %>
-
-    <%= render 'govuk_publishing_components/components/govspeak', content: description_govspeak if description_govspeak %>
   <% end %>
 <% end %>
