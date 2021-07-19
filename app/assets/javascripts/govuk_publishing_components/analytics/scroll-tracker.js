@@ -233,6 +233,50 @@
       ['Percent', 60],
       ['Percent', 80],
       ['Percent', 100]
+    ],
+    '/guidance/red-amber-and-green-list-rules-for-entering-england': [
+      ['Heading', 'Stay up-to-date'],
+      ['Heading', 'Red list of countries and territories'],
+      ['Heading', 'Amber list of countries and territories'],
+      ['Heading', 'Amber list rules if you are fully UK vaccinated'],
+      ['Heading', 'Amber list rules if you are not fully UK vaccinated'],
+      ['Heading', 'Green list countries and territories'],
+      ['Heading', 'Green list rules'],
+      ['Heading', 'Ireland, the UK, the Channel Islands and the Isle of Man'],
+      ['Heading', 'Transit stops in amber or red list countries'],
+      ['Heading', 'Job and medical exemptions'],
+      ['Heading', 'Travelling abroad from England'],
+      ['Heading', 'Demonstrating your COVID-19 vaccination status when travelling abroad'],
+      ['Heading', 'Foreign, Commonwealth & Development Office travel advice']
+    ],
+    '/guidance/travel-abroad-from-england-during-coronavirus-covid-19': [
+      ['Heading', 'Before you travel abroad'],
+      ['Heading', '1. Check the rules for the country you’re going to'],
+      ['Heading', '2. Find out what you need to do when you return'],
+      ['Heading', '3. Book any COVID-19 tests or quarantine hotel packages you need for your return'],
+      ['Heading', 'Before you return'],
+      ['Heading', 'After you return'],
+      ['Heading', 'Travelling with children'],
+      ['Heading', 'Ireland, the UK, the Channel Islands and the Isle of Man'],
+      ['Heading', 'Exemptions for work, medical or compassionate reasons']
+    ],
+    '/guidance/travel-to-england-from-another-country-during-coronavirus-covid-19': [
+      ['Heading', 'Before you travel'],
+      ['Heading', '1. Check the rules for the country you’re coming from or have travelled through'],
+      ['Heading', '2. Book any COVID-19 tests or quarantine hotel packages you need for your arrival'],
+      ['Heading', '3. Get tested and complete documents'],
+      ['Heading', 'When you arrive in England'],
+      ['Heading', 'Leaving England'],
+      ['Heading', 'Travelling with children'],
+      ['Heading', 'Ireland, the UK, the Channel Islands and the Isle of Man'],
+      ['Heading', 'Exemptions for work, medical or compassionate reasons']
+    ],
+    '/find-travel-test-provider': [
+      ['Percent', 20],
+      ['Percent', 40],
+      ['Percent', 60],
+      ['Percent', 80],
+      ['Percent', 100]
     ]
   }
 
