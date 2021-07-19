@@ -5,7 +5,6 @@ Rails.application.config.assets.precompile += %w[
   component_guide/accessibility-test.js
   component_guide/application.js
   component_guide/filter-components.js
-  component_guide/visual-regression.js
   component_guide/print.css
   govuk_publishing_components/rum-loader.js
   govuk_publishing_components/vendor/lux/lux-reporter.js

@@ -22,7 +22,6 @@ src_files:
   - assets/govuk_publishing_components/analytics.js
 
   # Use some of the assets from the component guide for testing
-  - assets/component_guide/visual-regression.js
   - assets/component_guide/accessibility-test.js
   - assets/component_guide/filter-components.js
 
