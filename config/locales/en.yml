@@ -90,88 +90,92 @@ en:
     layout_super_navigation_header:
       logo_link_title: Go to the GOV.UK homepage
       logo_text: GOV.UK
-      navigation_menu_heading: Navigation menu
-      search_text: Search GOV.UK
-      popular_links_heading: Popular on GOV.UK
-      popular_links:
-        - label: 'Coronavirus (COVID-19): rules'
-          href: /guidance/covid-19-coronavirus-restrictions-what-you-can-and-cannot-do
-        - label: 'Brexit: check what you need to do'
-          href: /brexit
-        - label: Sign in to your personal tax account
-          href: /personal-tax-account
-        - label: Find a job
-          href: /find-a-job
-        - label: Sign in to your Universal Credit account
-          href: /sign-in-universal-credit
+      menu_toggle_label:
+        hide: Hide %{label} menu
+        show: Show %{label} menu
       navigation_links:
-        - label: Topics
-          href: /browse
-          description: Find information and services
-          show: true
-          menu_contents:
-            - label: Benefits
-              href: /browse/benefits
-            - label: Births, death, marriages and care
-              href: /browse/births-deaths-marriages
-            - label: Brexit
-              href: /brexit
-            - label: Business and self-employed
-              href: /browse/business
-            - label: Childcare and parenting
-              href: /browse/childcare-parenting
-            - label: Citizenship and living in the UK
-              href: /browse/citizenship
-            - label: Coronavirus (COVID‑19)
-              href: /coronavirus
-            - label: Crime, justice and the law
-              href: /browse/justice
-            - label: Disabled people
-              href: /browse/disabilities
-            - label: Driving and transport
-              href: /browse/driving
-            - label: Education and learning
-              href: /browse/education
-            - label: Employing people
-              href: /browse/employing-people
-            - label: Environment and countryside
-              href: /browse/environment-countryside
-            - label: Housing and local services
-              href: /browse/housing-local-services
-            - label: Money and tax
-              href: /browse/tax
-            - label: Passports, travel and living abroad
-              href: /browse/abroad
-            - label: Visas and immigration
-              href: /browse/visas-immigration
-            - label: Working, jobs and pensions
-              href: /browse/working
-        - label: Departments
-          href: /government/organisations
-        - label: Government activity
-          href: /search/news-and-communications
-          description: Find out what the government is doing
-          menu_contents:
-            - label: News
-              href: /search/news-and-communications
-              description: News stories, speeches, letters and notices
-            - label: Guidance and regulation
-              href: /search/guidance-and-regulation
-              description: Detailed guidance, regulations and rules
-            - label: Research and statistics
-              href: /search/research-and-statistics
-              description: Reports, analysis and official statistics
-            - label: Policy papers and consultation
-              href: /search/policy-papers-and-consultations
-              description: Consultations and strategy
-            - label: Transparency
-              href: /search/transparency-and-freedom-of-information-releases
-              description: Government data, freedom of information releases and corporate reports
-          footer_links:
-            - label: How government works
-              href: /government/how-government-works
-            - label: Get involved
-              href: /government/get-involved
+      - label: Topics
+        href: "/browse"
+        description: Find help, guidance, and services
+        menu_contents:
+        - label: Benefits
+          href: "/browse/benefits"
+        - label: Births, death, marriages and care
+          href: "/browse/births-deaths-marriages"
+        - label: Brexit
+          href: "/brexit"
+        - label: Business and self-employed
+          href: "/browse/business"
+        - label: Childcare and parenting
+          href: "/browse/childcare-parenting"
+        - label: Citizenship and living in the UK
+          href: "/browse/citizenship"
+        - label: Coronavirus (COVID‑19)
+          href: "/coronavirus"
+        - label: Crime, justice and the law
+          href: "/browse/justice"
+        - label: Disabled people
+          href: "/browse/disabilities"
+        - label: Driving and transport
+          href: "/browse/driving"
+        - label: Education and learning
+          href: "/browse/education"
+        - label: Employing people
+          href: "/browse/employing-people"
+        - label: Environment and countryside
+          href: "/browse/environment-countryside"
+        - label: Housing and local services
+          href: "/browse/housing-local-services"
+        - label: Money and tax
+          href: "/browse/tax"
+        - label: Passports, travel and living abroad
+          href: "/browse/abroad"
+        - label: Visas and immigration
+          href: "/browse/visas-immigration"
+        - label: Working, jobs and pensions
+          href: "/browse/working"
+      - label: Departments
+        href: "/government/organisations"
+      - label: Government activity
+        href: "/search/news-and-communications"
+        description: Find out what the government is doing and how to get involved
+        menu_contents:
+        - label: News
+          href: "/search/news-and-communications"
+          description: News stories, speeches, letters and notices
+        - label: Guidance and regulation
+          href: "/search/guidance-and-regulation"
+          description: Detailed guidance, regulations and rules
+        - label: Research and statistics
+          href: "/search/research-and-statistics"
+          description: Reports, analysis and official statistics
+        - label: Policy papers and consultation
+          href: "/search/policy-papers-and-consultations"
+          description: Consultations and strategy
+        - label: Transparency
+          href: "/search/transparency-and-freedom-of-information-releases"
+          description: Government data, freedom of information releases and corporate reports
+        footer_links:
+        - label: How government works
+          href: "/government/how-government-works"
+        - label: Get involved
+          href: "/government/get-involved"
+      navigation_menu_heading: Navigation menu
+      navigation_search_heading: Search and popular pages
+      navigation_search_subheading: Search
+      popular_links:
+      - label: 'Coronavirus (COVID-19): rules'
+        href: "/guidance/covid-19-coronavirus-restrictions-what-you-can-and-cannot-do"
+      - label: 'Brexit: check what you need to do'
+        href: "/brexit"
+      - label: Sign in to your personal tax account
+        href: "/personal-tax-account"
+      - label: Find a job
+        href: "/find-a-job"
+      - label: Sign in to your Universal Credit account
+        href: "/sign-in-universal-credit"
+      popular_links_heading: Popular on GOV.UK
+      search_text: Search GOV.UK
     metadata:
       from: From
       history: History
@@ -211,12 +215,12 @@ en:
       topical_events: Topical event
       topics: Explore the topic
       transition:
-        link_path: "/brexit"
-        link_text: Check what you need to do
-        title: Brexit
         hub_page_link_path: "/transition-check/questions"
         hub_page_link_text: Get a personalised list of actions
         hub_page_title: Brexit checker
+        link_path: "/brexit"
+        link_text: Check what you need to do
+        title: Brexit
       world_locations: World locations
     search_box:
       input_title: Search
