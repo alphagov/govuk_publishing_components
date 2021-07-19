@@ -33,18 +33,6 @@ examples:
       context: Publication
       context_locale: en
       title: My page title
-  with_context_link:
-    description: |
-      It’s unclear if links in the context of a title are useful and are being clicked by users. Data attributes are included to track this behaviour.
-
-      Context links are used on [topic pages](https://www.gov.uk/topic/business-tax/vat) where there is also a breadcrumb.
-    data:
-      context:
-        text: Publication
-        href: '/link'
-        data:
-          some_tracking_parameter: 'tracking-param'
-      title: My page title
   long_title_with_context:
     data:
       context: Publication

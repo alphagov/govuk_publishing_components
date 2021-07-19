@@ -3,9 +3,6 @@
 
   context ||= false
   context_locale ||= false
-  context_text = context.is_a?(Hash) ? context[:text] : context
-  context_href = context.is_a?(Hash) ? context[:href] : false
-  context_data = context.is_a?(Hash) ? context[:data] : false
 
   inverse ||= false
   local_assigns[:margin_top] ||= 8
@@ -24,7 +21,7 @@
 <%= content_tag(:div, class: classes) do %>
   <% if context %>
     <span class="govuk-caption-xl gem-c-title__context" <%= "lang=#{context_locale}" if context_locale.present? %>>
-      <%= context_href ? link_to(context_text, context_href, class: 'gem-c-title__context-link govuk-link', data: context_data) : context_text %>
+      <%= context %>
     </span>
   <% end %>
   <h1 class="<%= heading_classes.join(" ") %>">
