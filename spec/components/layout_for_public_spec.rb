@@ -59,6 +59,20 @@ describe "Layout for public", type: :view do
     assert_select ".gem-c-layout-for-public .gem-c-feedback", false
   end
 
+  it "can omit the footer navigation" do
+    render_component(omit_footer_navigation: true)
+
+    assert_select ".gem-c-layout-for-public .govuk-footer__navigation", false
+    assert_select ".gem-c-layout-for-public .govuk-footer__section-break", false
+  end
+
+  it "does not omit the footer navigation if `omit_footer_navigation` is `false`" do
+    render_component(omit_footer_navigation: false)
+
+    assert_select ".gem-c-layout-for-public .govuk-footer__navigation", true
+    assert_select ".gem-c-layout-for-public .govuk-footer__section-break", true
+  end
+
   it "can add a product name in the header" do
     render_component(product_name: "Account")
 

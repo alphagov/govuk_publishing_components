@@ -31,6 +31,10 @@ examples:
     description: This allows the feedback form to be omitted
     data:
       omit_feedback_form: true
+  omit_footer_navigation:
+    description: This allows the footer navigation to be omitted
+    data:
+      omit_footer_navigation: true
   navigation:
     description: Passes the navigation through to the [header component](/component-guide/layout_header/).
     data:

@@ -7,6 +7,7 @@
   logo_link ||= "/"
   navigation_items ||= []
   omit_feedback_form ||= false
+  omit_footer_navigation ||= false
   omit_header ||= false
   product_name ||= nil
   show_explore_header ||= false
@@ -122,7 +123,7 @@
     <% unless local_assigns[:hide_footer_links] %>
       <%= render "govuk_publishing_components/components/layout_footer", {
         with_border: true,
-        navigation: layout_helper.footer_navigation,
+        navigation: omit_footer_navigation ? nil : layout_helper.footer_navigation,
         meta: layout_helper.footer_meta,
       } %>
     <% end %>
