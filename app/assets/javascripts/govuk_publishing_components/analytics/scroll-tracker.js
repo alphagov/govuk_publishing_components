@@ -5,21 +5,17 @@
 
   window.GOVUK = window.GOVUK || {}
 
+  var percentages = [
+    ['Percent', 20],
+    ['Percent', 40],
+    ['Percent', 60],
+    ['Percent', 80],
+    ['Percent', 100]
+  ]
+
   var CONFIG = {
-    '/brexit': [
-      ['Percent', 20],
-      ['Percent', 40],
-      ['Percent', 60],
-      ['Percent', 80],
-      ['Percent', 100]
-    ],
-    '/guidance/coronavirus-covid-19-information-for-the-public': [
-      ['Percent', 20],
-      ['Percent', 40],
-      ['Percent', 60],
-      ['Percent', 80],
-      ['Percent', 100]
-    ],
+    '/brexit': percentages,
+    '/guidance/coronavirus-covid-19-information-for-the-public': percentages,
     '/government/publications/the-essential-trustee-what-you-need-to-know-cc3/the-essential-trustee-what-you-need-to-know-what-you-need-to-do': [
       ['Heading', '1. About this guidance'],
       ['Heading', '2. Trustees’ duties at a glance'],
@@ -151,89 +147,61 @@
     '/wood-packaging-import-export': [
       ['Heading', 'Export solid wood packaging']
     ],
-    '/guidance/answers-to-the-most-common-topics-asked-about-by-the-public-for-the-coronavirus-press-conference': [
-      ['Percent', 20],
-      ['Percent', 40],
-      ['Percent', 60],
-      ['Percent', 80],
-      ['Percent', 100]
-    ],
-    '/coronavirus': [
-      ['Percent', 20],
-      ['Percent', 40],
-      ['Percent', 60],
-      ['Percent', 80],
-      ['Percent', 100]
-    ],
-    '/coronavirus/education-and-childcare': [
-      ['Percent', 20],
-      ['Percent', 40],
-      ['Percent', 60],
-      ['Percent', 80],
-      ['Percent', 100]
-    ],
-    '/coronavirus/worker-support': [
-      ['Percent', 20],
-      ['Percent', 40],
-      ['Percent', 60],
-      ['Percent', 80],
-      ['Percent', 100]
-    ],
-    '/coronavirus/business-support': [
-      ['Percent', 20],
-      ['Percent', 40],
-      ['Percent', 60],
-      ['Percent', 80],
-      ['Percent', 100]
-    ],
-    '/get-coronavirus-test': [
-      ['Percent', 20],
-      ['Percent', 40],
-      ['Percent', 60],
-      ['Percent', 80],
-      ['Percent', 100]
-    ],
+    '/guidance/answers-to-the-most-common-topics-asked-about-by-the-public-for-the-coronavirus-press-conference': percentages,
+    '/coronavirus': percentages,
+    '/coronavirus/education-and-childcare': percentages,
+    '/coronavirus/worker-support': percentages,
+    '/coronavirus/business-support': percentages,
+    '/get-coronavirus-test': percentages,
     '/next-steps-for-your-business/results': [
       ['Heading', 'Things you need to do next'],
       ['Heading', 'Rules to follow'],
       ['Heading', 'Good to know'],
       ['Heading', 'Change your answers']
     ],
-    '/guidance/brexit-guidance-for-businesses': [
-      ['Percent', 20],
-      ['Percent', 40],
-      ['Percent', 60],
-      ['Percent', 80],
-      ['Percent', 100]
+    '/guidance/brexit-guidance-for-businesses': percentages,
+    '/guidance/brexit-guidance-for-businesses.cy': percentages,
+    '/guidance/brexit-guidance-for-individuals-and-families': percentages,
+    '/guidance/brexit-guidance-for-individuals-and-families.cy': percentages,
+    '/guidance/import-and-export-goods-using-preference-agreements': percentages,
+    '/guidance/red-amber-and-green-list-rules-for-entering-england': [
+      ['Heading', 'Stay up-to-date'],
+      ['Heading', 'Red list of countries and territories'],
+      ['Heading', 'Amber list of countries and territories'],
+      ['Heading', 'Amber list rules if you are fully UK vaccinated'],
+      ['Heading', 'Amber list rules if you are not fully UK vaccinated'],
+      ['Heading', 'Green list countries and territories'],
+      ['Heading', 'Green list rules'],
+      ['Heading', 'Ireland, the UK, the Channel Islands and the Isle of Man'],
+      ['Heading', 'Transit stops in amber or red list countries'],
+      ['Heading', 'Job and medical exemptions'],
+      ['Heading', 'Travelling abroad from England'],
+      ['Heading', 'Demonstrating your COVID-19 vaccination status when travelling abroad'],
+      ['Heading', 'Foreign, Commonwealth & Development Office travel advice']
     ],
-    '/guidance/brexit-guidance-for-businesses.cy': [
-      ['Percent', 20],
-      ['Percent', 40],
-      ['Percent', 60],
-      ['Percent', 80],
-      ['Percent', 100]
+    '/guidance/travel-abroad-from-england-during-coronavirus-covid-19': [
+      ['Heading', 'Before you travel abroad'],
+      ['Heading', '1. Check the rules for the country you’re going to'],
+      ['Heading', '2. Find out what you need to do when you return'],
+      ['Heading', '3. Book any COVID-19 tests or quarantine hotel packages you need for your return'],
+      ['Heading', 'Before you return'],
+      ['Heading', 'After you return'],
+      ['Heading', 'Travelling with children'],
+      ['Heading', 'Ireland, the UK, the Channel Islands and the Isle of Man'],
+      ['Heading', 'Exemptions for work, medical or compassionate reasons']
     ],
-    '/guidance/brexit-guidance-for-individuals-and-families': [
-      ['Percent', 20],
-      ['Percent', 40],
-      ['Percent', 60],
-      ['Percent', 80],
-      ['Percent', 100]
+    '/guidance/travel-to-england-from-another-country-during-coronavirus-covid-19': [
+      ['Heading', 'Before you travel'],
+      ['Heading', '1. Check the rules for the country you’re coming from or have travelled through'],
+      ['Heading', '2. Book any COVID-19 tests or quarantine hotel packages you need for your arrival'],
+      ['Heading', '3. Get tested and complete documents'],
+      ['Heading', 'When you arrive in England'],
+      ['Heading', 'Leaving England'],
+      ['Heading', 'Travelling with children'],
+      ['Heading', 'Ireland, the UK, the Channel Islands and the Isle of Man'],
+      ['Heading', 'Exemptions for work, medical or compassionate reasons']
     ],
-    '/guidance/brexit-guidance-for-individuals-and-families.cy': [
-      ['Percent', 20],
-      ['Percent', 40],
-      ['Percent', 60],
-      ['Percent', 80],
-      ['Percent', 100]
-    ],
-    '/guidance/import-and-export-goods-using-preference-agreements': [
-      ['Percent', 20],
-      ['Percent', 40],
-      ['Percent', 60],
-      ['Percent', 80],
-      ['Percent', 100]
-    ]
+    '/find-travel-test-provider': percentages
   }
 
   function ScrollTracker (sitewideConfig) {
