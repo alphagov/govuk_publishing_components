@@ -1,16 +1,18 @@
 .gem-c-intervention {
   @include govuk-text-colour;
-  @include govuk-responsive-padding(4);
-  @include govuk-responsive-margin(4, "bottom");
+  @include govuk-responsive-padding(6, "left");
+  @include govuk-responsive-padding(6, "right");
+  @include govuk-responsive-padding(4, "top");
+  @include govuk-responsive-padding(4, "bottom");
+  @include govuk-responsive-margin(6, "bottom");
   background-color: govuk-colour("light-grey", $legacy: "grey-4");
-}
 
-.gem-c-intervention__title {
-  @include govuk-font(24, $weight: bold);
-  margin-top: 0;
-  @include govuk-responsive-margin(4, "bottom");
-}
+  .gem-c-intervention__title {
+    @include govuk-responsive-margin(0);
+    @include govuk-responsive-padding(4, "bottom");
+  }
 
-.gem-c-intervention__paragraph {
-  @include govuk-font(19);
+  .govuk-body:last-of-type {
+    @include govuk-responsive-margin(0, "bottom");
+  }
 }

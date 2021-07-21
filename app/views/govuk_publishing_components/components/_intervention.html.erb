@@ -1,15 +1,33 @@
-<%= tag.section class: "gem-c-intervention", role: "region" do %>
-  <h2 class="gem-c-intervention__title">
-    <a class="govuk-link" href="/next-steps-for-your-business">
-      <%= t("components.intervention.title") %>
-    </a>
+<%
+  data_attributes ||= {}
+  data_attributes[:module] = 'intervention'
+%>
+
+<%= tag.section class: "gem-c-intervention", role: "region", data: data_attributes do %>
+  <h2 class="gem-c-intervention__title govuk-heading-s">
+    <a class="govuk-link" href="/next-steps-for-your-business"
+      data-module="gem-track-click"
+      data-track-category="interventionBanner"
+      data-track-action="interventionClicked"
+      data-track-dimension="<%= t("components.intervention.title") %>"
+      data-track-dimension-index="29"
+      data-track-label="/next-steps-for-your-business">
+      <%= t("components.intervention.title") %></a>
   </h2>
 
-  <p class="gem-c-intervention__paragraph">
+  <p class="govuk-body">
     <%= t("components.intervention.description") %>
   </p>
 
-  <p class="gem-c-intervention__paragraph">
-    <%= t("components.intervention.dismiss_html") %>
+  <p class="govuk-body">
+    <a class="govuk-link" href="?hide-intervention=true"
+      data-module="gem-track-click"
+      data-track-category="interventionBanner"
+      data-track-action="interventionDismissed"
+      data-track-label="?hide-intervention=true"
+      data-track-dimension="<%= t("components.intervention.dismiss_link_text") %>"
+      data-track-dimension-index="29">
+      <%= t("components.intervention.dismiss_link_text") %></a>
+    <%= t("components.intervention.dismiss_post_link") %>
   </p>
 <% end %>
