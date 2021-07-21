@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 24.21.0
 
 * Add scroll tracking to travel advice pages ([PR #2217](https://github.com/alphagov/govuk_publishing_components/pull/2217))
 * Fix new link styles on document list ([PR #2211](https://github.com/alphagov/govuk_publishing_components/pull/2211))
