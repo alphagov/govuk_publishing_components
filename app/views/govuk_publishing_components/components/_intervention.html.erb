@@ -1,8 +1,11 @@
 <%= tag.section class: "gem-c-intervention", role: "region" do %>
   <h2 class="gem-c-intervention__title">
-    <a class="govuk-link" href="/next-steps-for-your-business">
-      <%= t("components.intervention.title") %>
-    </a>
+    <a class="govuk-link" href="/next-steps-for-your-business"
+      data-track-category="interventionBanner"
+      data-track-action="interventionClicked"
+      data-track-label="/next-steps-for-your-business"
+      data-track-options="{'dimension29':'<%= t("components.intervention.title") %>'}">
+      <%= t("components.intervention.title") %></a>
   </h2>
 
   <p class="gem-c-intervention__paragraph">
@@ -10,6 +13,12 @@
   </p>
 
   <p class="gem-c-intervention__paragraph">
-    <%= t("components.intervention.dismiss_html") %>
+    <a class="govuk-link" href="?hide-intervention=true"
+      data-track-category="interventionBanner"
+      data-track-action="interventionDismissed"
+      data-track-label="?hide-intervention=true"
+      data-track-options="{'dimension29':'<%= t("components.intervention.dismiss_link_text") %>'}">
+      <%= t("components.intervention.dismiss_link_text") %></a>
+    <%= t("components.intervention.dismiss_post_link") %>
   </p>
 <% end %>
