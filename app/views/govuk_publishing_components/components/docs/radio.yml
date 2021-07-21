@@ -107,17 +107,6 @@ examples:
         text: "Green"
       - value: "blue"
         text: "Blue"
-  with_page_heading:
-    description: This adds a H1 element containing the text supplied.
-    data:
-      name: "radio-group-heading"
-      heading: "Is it raining?"
-      is_page_heading: true
-      items:
-      - value: "yes"
-        text: "Yes"
-      - value: "no"
-        text: "No"
   with_page_header_and_caption:
     description: |
       If a caption text is provided with a page heading, it will be displayed above the heading.
@@ -127,7 +116,7 @@ examples:
       name: "radio-group-heading"
       heading: "Is it snowing?"
       heading_caption: "Question 3 of 9"
-      is_page_heading: true
+      heading_level: 1
       items:
         - value: "yes"
           text: "Yes"
@@ -137,7 +126,7 @@ examples:
     data:
       name: "radio-group-heading"
       heading: "Is it snowing?"
-      is_page_heading: true
+      heading_level: 1
       hint: "Sleet or hail doesn’t count."
       items:
       - value: "yes"
@@ -179,7 +168,7 @@ examples:
     data:
       name: "radio-group-description"
       heading: "What is your favourite colour?"
-      is_page_heading: true
+      heading_level: 1
       description: |
         Skittles consist of hard sugar shells imprinted with the letter "S".
         The interior consists mainly of sugar, corn syrup, and hydrogenated
@@ -196,7 +185,7 @@ examples:
     description: |
       This allows the size of the legend to be changed. Valid options are s, m, l, xl, defaulting to m if no option is passed.
 
-      If the is_page_heading option is true and heading_size is not set, the text size will be xl.
+      If heading_level is 1 and heading_size is not set, the text size will be xl.
     data:
       name: "radio-group-description"
       heading: "What is your favourite colour?"
