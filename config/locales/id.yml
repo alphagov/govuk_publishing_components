@@ -82,11 +82,13 @@ id:
     layout_super_navigation_header:
       logo_link_title:
       logo_text:
-      navigation_menu_heading:
-      search_text:
-      popular_links_heading:
-      popular_links:
       navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from:
       history:

@@ -4,6 +4,8 @@ logo_link_title = t("components.layout_super_navigation_header.logo_link_title")
 logo_text = t("components.layout_super_navigation_header.logo_text")
 navigation_links = t("components.layout_super_navigation_header.navigation_links")
 navigation_menu_heading = t("components.layout_super_navigation_header.navigation_menu_heading")
+navigation_search_heading = t("components.layout_super_navigation_header.navigation_search_heading")
+navigation_search_subheading = t("components.layout_super_navigation_header.navigation_search_subheading")
 popular_links = t("components.layout_super_navigation_header.popular_links")
 popular_links_heading = t("components.layout_super_navigation_header.popular_links_heading")
 search_text= t("components.layout_super_navigation_header.search_text")
@@ -46,20 +48,41 @@ search_text= t("components.layout_super_navigation_header.search_text")
     <nav
       aria-labelledby="super-navigation-menu-heading"
       class="gem-c-layout-super-navigation-header__content"
-      data-module="super-navigation-toggle"
-      data-text-for-button="Menu"
-      data-text-for-show-menu="Show navigation menu"
-      data-text-for-hide-menu="Hide navigation menu"
+      data-module="super-navigation-mega-menu"
+      data-text-for-generic-button="Toggle section"
+      data-text-for-show-generic="Show section"
+      data-text-for-hide-generic="Hide section"
     >
       <h2 id="super-navigation-menu-heading" class="govuk-visually-hidden"><%= navigation_menu_heading %></h2>
-      <ul id="super-navigation-menu" class="gem-c-layout-super-navigation-header__items">
-        <% navigation_links.each do | link | %>
-          <li class="govuk-header__navigation-item gem-c-layout-super-navigation-header__item">
-            <a class="govuk-header__link gem-c-layout-super-navigation-header__item-link" href="<%= link[:href] %>">
+      <ul
+        id="super-navigation-menu"
+        class="gem-c-layout-super-navigation-header__navigation-items"
+        data-toggle-group="top"
+        data-toggle-modifier="navigation"
+        data-text-for-button="Menu"
+        data-text-for-show="Show navigation menu"
+        data-text-for-hide="Hide navigation menu"
+      >
+        <% navigation_links.each_with_index do | link, index | %>
+          <%
+            unique_id = SecureRandom.hex(4)
+            li_classes = %w(gem-c-layout-super-navigation-header__navigation-item)
+            li_classes << "gem-c-layout-super-navigation-header__navigation-item--with-children" if link[:menu_contents].present? or link[:footer_links].present?
+          %>
+          <%= tag.li class: li_classes do %>
+            <a class="govuk-header__link gem-c-layout-super-navigation-header__navigation-item-link" href="<%= link[:href] %>">
               <%= link[:label] %>
             </a>
             <% if link[:menu_contents].present? or link[:footer_links].present? %>
-              <div class="gem-c-layout-super-navigation-header__dropdown-menu">
+              <div
+                class="gem-c-layout-super-navigation-header__navigation-dropdown-menu"
+                id="super-navigation-menu__section-<%= unique_id %>"
+                data-toggle-group="second"
+                data-toggle-modifier="<%= unique_id %>"
+                data-text-for-button="<%= link[:label] %>"
+                data-text-for-show="Show <%= link[:label] %> section"
+                data-text-for-hide="Hide <%= link[:label] %> section"
+              >
                 <% if link[:menu_contents].present? %>
                   <ul class="govuk-list">
                     <% link[:menu_contents].each do | item | %>
@@ -85,37 +108,49 @@ search_text= t("components.layout_super_navigation_header.search_text")
                 <% end %>
               </div>
             <% end %>
-          </li>
+          <% end %>
         <% end %>
-        <li class="govuk-header__navigation-item gem-c-layout-super-navigation-header__item gem-c-layout-super-navigation-header__item--search">
-          <a class="govuk-header__link gem-c-layout-super-navigation-header__item-link gem-c-layout-super-navigation-header__item-link--search" href="/search">
-            <span class="gem-c-layout-super-navigation-header__item-link-text--search"><%= search_text %></span>
-            <svg class="gem-c-layout-super-navigation-header__item-link-icon--search" width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      </ul>
+      <h2 id="super-search-menu-heading" class="govuk-visually-hidden"><%= navigation_search_heading %></h2>
+      <div
+        id="super-search-menu"
+        class="gem-c-layout-super-navigation-header__search-items gem-c-layout-super-navigation-header__search-dropdown-menu"
+        data-toggle-group="top"
+        data-toggle-modifier="search"
+        data-text-for-button="Search"
+        data-text-for-show="Show search menu"
+        data-text-for-hide="Hide search menu"
+      >
+        <h3 class="govuk-visually-hidden"><%= navigation_search_subheading %></h3>
+        <div class="gem-c-layout-super-navigation-header__search-item">
+          <a class="govuk-header__link gem-c-layout-super-navigation-header__search-item-link" href="/search">
+            <span class="gem-c-layout-super-navigation-header__search-item-link-text"><%= search_text %></span>
+            <svg class="gem-c-layout-super-navigation-header__search-item-link-icon" width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
               <circle cx="10.0161" cy="10.0161" r="8.51613" stroke="currentColor" stroke-width="3" />
               <line x1="15.8668" y1="16.3587" x2="25.4475" y2="25.9393" stroke="currentColor" stroke-width="3" />
             </svg>
           </a>
-          <div class="gem-c-layout-super-navigation-header__dropdown-menu">
-            <form id="search" action="/search" method="get" role="search" aria-label="Site-wide">
-              <%= render "govuk_publishing_components/components/search", {
-                inline_label: false,
-                label_text: raw("<h2 class=\"govuk-heading-m\">#{search_text}</h2>"),
-                size: "large",
-              } %>
-            </form>
-            <h2 class="govuk-heading-m"><%= popular_links_heading %></h2>
-            <ul class="govuk-list">
-              <% popular_links.each do | popular_link | %>
-                <li class="gem-c-layout-super-navigation-header__dropdown-list-item">
-                  <a class="govuk-link gem-c-layout-super-navigation-header__dropdown-list-item-link" href="<%= popular_link[:href] %>">
-                    <%= popular_link[:label] %>
-                  </a>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-        </li>
-      </ul>
+        </div>
+        <div class="gem-c-layout-super-navigation-header__search-and-popular">
+          <form id="search" action="/search" method="get" role="search" aria-label="Site-wide">
+            <%= render "govuk_publishing_components/components/search", {
+              inline_label: false,
+              label_text: search_text,
+              size: "large",
+            } %>
+          </form>
+          <h3 class="govuk-heading-m"><%= popular_links_heading %></h3>
+          <ul class="govuk-list">
+            <% popular_links.each do | popular_link | %>
+              <li class="gem-c-layout-super-navigation-header__dropdown-list-item">
+                <a class="govuk-link gem-c-layout-super-navigation-header__dropdown-list-item-link" href="<%= popular_link[:href] %>">
+                  <%= popular_link[:label] %>
+                </a>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
     </nav>
   </div>
 </header>
