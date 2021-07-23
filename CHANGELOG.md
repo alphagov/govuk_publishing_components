@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix issue metatag component error when priority_brexit_taxon isn't available. ([PR #2227](https://github.com/alphagov/govuk_publishing_components/pull/2227))
+
 ## 24.21.0
 
 * Add scroll tracking to travel advice pages ([PR #2217](https://github.com/alphagov/govuk_publishing_components/pull/2217))
