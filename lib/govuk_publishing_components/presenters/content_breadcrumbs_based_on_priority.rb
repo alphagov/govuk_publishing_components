@@ -55,6 +55,8 @@ module GovukPublishingComponents
       end
 
       def brexit_audience(taxon)
+        return nil unless taxon
+
         {
           PRIORITY_TAXONS[:brexit_business] => "Brexitbusiness",
           PRIORITY_TAXONS[:brexit_individuals] => "Brexitcitizen",
