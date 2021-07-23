@@ -7,9 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 24.21.1
 
-* Fix issue metatag component error when priority_brexit_taxon isn't available. ([PR #2227](https://github.com/alphagov/govuk_publishing_components/pull/2227))
+* Fix issue where metatag component throws an error when priority_brexit_taxon isn't available. ([PR #2227](https://github.com/alphagov/govuk_publishing_components/pull/2227))
 
 ## 24.21.0
 
