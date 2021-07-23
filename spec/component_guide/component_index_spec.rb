@@ -75,15 +75,9 @@ describe "Component guide index" do
 @import 'govuk_publishing_components/components/title';"
 
     expected_print_sass = "@import 'govuk_publishing_components/govuk_frontend_support';
-@import 'govuk_publishing_components/components/print/back-link';
 @import 'govuk_publishing_components/components/print/button';
-@import 'govuk_publishing_components/components/print/feedback';
 @import 'govuk_publishing_components/components/print/govspeak';
-@import 'govuk_publishing_components/components/print/layout-footer';
-@import 'govuk_publishing_components/components/print/layout-header';
 @import 'govuk_publishing_components/components/print/layout-super-navigation-header';
-@import 'govuk_publishing_components/components/print/search';
-@import 'govuk_publishing_components/components/print/skip-link';
 @import 'govuk_publishing_components/components/print/step-by-step-nav';
 @import 'govuk_publishing_components/components/print/step-by-step-nav-header';
 @import 'govuk_publishing_components/components/print/title';"

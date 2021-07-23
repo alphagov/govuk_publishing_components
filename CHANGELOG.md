@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Delete empty print stylesheets ([PR #2225](https://github.com/alphagov/govuk_publishing_components/pull/2225))
+
 ## 24.21.1
 
 * Fix issue where metatag component throws an error when priority_brexit_taxon isn't available. ([PR #2227](https://github.com/alphagov/govuk_publishing_components/pull/2227))
