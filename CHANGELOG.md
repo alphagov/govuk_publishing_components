@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+# Unreleased
+
+* Fix cookie banner issue (IE10) ([PR #2231](https://github.com/alphagov/govuk_publishing_components/pull/2231))
+
 # 25.2.3
 
 * Fix final issues with tracking on super nav header ([PR #2256](https://github.com/alphagov/govuk_publishing_components/pull/2256))

@@ -1,9 +1,10 @@
 @import "govuk/components/cookie-banner/cookie-banner";
 $govuk-cookie-banner-background: govuk-colour("light-grey", "grey-4");
 
-.js-enabled {
-  .gem-c-cookie-banner {
-    display: none; // shown with JS, always on for non-JS
+.gem-c-cookie-banner[hidden] {
+  display: block; // shown with JS, always on for non-JS
+  .js-enabled & {
+    display: none;
   }
 }
 
@@ -14,9 +15,13 @@ $govuk-cookie-banner-background: govuk-colour("light-grey", "grey-4");
 // can't be used without js so implement there
 .gem-c-cookie-banner .gem-c-button {
   display: none;
+
+  .js-enabled & {
+    display: block;
+  }
 }
 
-.gem-c-cookie-banner__confirmation {
+.gem-c-cookie-banner__confirmation[hidden] {
   display: none;
   position: relative;
   padding: govuk-spacing(1);
