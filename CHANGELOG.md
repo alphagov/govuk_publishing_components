@@ -12,7 +12,7 @@
 * BREAKING: Remove ability to link contextual text on titles ([PR #2192](https://github.com/alphagov/govuk_publishing_components/pull/2192))
 * Delete empty print stylesheets ([PR #2225](https://github.com/alphagov/govuk_publishing_components/pull/2225))
 * BREAKING: Remove is_page_heading parameter from radio component ([PR #2061](https://github.com/alphagov/govuk_publishing_components/pull/2061))
-
+* Intervention: add tracking code and design tweaks ([PR #2224](https://github.com/alphagov/govuk_publishing_components/pull/2224))
 
 ## 24.21.1
 
