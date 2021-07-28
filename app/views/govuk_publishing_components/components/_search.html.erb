@@ -4,6 +4,7 @@
   aria_controls ||= nil
   button_text ||= t("components.search_box.search_button")
   id ||= "search-main-" + SecureRandom.hex(4)
+  label_size ||= nil
   label_text ||= t("components.search_box.label")
   name ||= "q"
   no_border ||= false
@@ -12,6 +13,13 @@
 
   data_attributes ||= {}
   data_attributes[:module] = 'gem-track-click'
+
+  label_classes = []
+  if (["xl", "l", "m", "s"].include?(label_size))
+    label_classes << "govuk-label govuk-label--#{label_size}"
+  else
+    label_classes << "gem-c-search__label"
+  end
 
   classes = %w[gem-c-search govuk-!-display-none-print]
   classes << (shared_helper.get_margin_top)
@@ -23,13 +31,13 @@
   else
     classes << "gem-c-search--on-white"
   end
-  classes << "gem-c-search--separate-label" if local_assigns.include?(:inline_label)
+  classes << "gem-c-search--separate-label" if local_assigns.include?(:inline_label) or local_assigns.include?(:label_size)
 %>
 
 <div class="<%= classes.join(" ") %>" data-module="gem-toggle-input-class-on-focus">
-  <label for="<%= id %>" class="gem-c-search__label">
+  <%= tag.label({ for: id, class: label_classes }) do %>
     <%= label_text %>
-  </label>
+  <% end %>
   <div class="gem-c-search__item-wrapper">
     <%= tag.input(
       aria: {

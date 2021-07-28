@@ -64,3 +64,8 @@ examples:
       This is visually hidden text -- to check for changes use a screen reader or inspect the button element.
     data:
       button_text: "Search absolutely everywhere"
+  with_set_label_size:
+    description: |
+      Allows the label text size to be set to `xl`, `l`, `m`, or `s`. If this is set, then `inline_label` is automatically set to `false`.
+    data:
+      label_size: "xl"

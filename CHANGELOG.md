@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Convert a tags to buttons on load in header-navigation js ([PR #2235](https://github.com/alphagov/govuk_publishing_components/pull/2235))
+* Allow label sizes for search component label ([PR #2236](https://github.com/alphagov/govuk_publishing_components/pull/2236)) MINOR
 
 ## 25.0.0
 
