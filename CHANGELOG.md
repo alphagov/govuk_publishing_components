@@ -9,6 +9,8 @@
 
 ## Unreleased
 
+* BREAKING: Remove ability to link contextual text on titles ([PR #2192](https://github.com/alphagov/govuk_publishing_components/pull/2192))
+
 * Delete empty print stylesheets ([PR #2225](https://github.com/alphagov/govuk_publishing_components/pull/2225))
 
 ## 24.21.1
@@ -18,7 +20,7 @@
 ## 24.21.0
 
 * Add scroll tracking to travel advice pages ([PR #2217](https://github.com/alphagov/govuk_publishing_components/pull/2217))
-* Fix new link styles on document list ([PR #2211](https://github.com/alphagov/govuk_publishing_components/pull/2211))
+
 * Make sure custom dimension 112 is sent for all pages tagged to Brexit ([PR #2212](https://github.com/alphagov/govuk_publishing_components/pull/2212))
 * Allow the public layout to render without the footer navigation ([PR #2218](https://github.com/alphagov/govuk_publishing_components/pull/2218))
 
