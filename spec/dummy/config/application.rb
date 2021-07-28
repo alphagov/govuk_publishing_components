@@ -24,5 +24,9 @@ module Dummy
     # -- all .rb files in that directory are automatically loaded.
     config.i18n.default_locale = :en
     config.i18n.fallbacks = [I18n.default_locale]
+
+    # Use current Rails version defaults, this isn't a normal app so we don't
+    # need to be delicate about upgrading.
+    config.load_defaults Rails::VERSION::STRING.to_f
   end
 end
