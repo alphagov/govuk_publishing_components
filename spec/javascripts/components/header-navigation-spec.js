@@ -21,9 +21,9 @@ describe('The header navigation', function () {
           '<div class="govuk-header__container govuk-width-container">' +
             '<div class="govuk-grid-row">' +
               '<div class="govuk-grid-column-full govuk-grid-column-one-third-from-desktop gem-c-layout-header__search">' +
-                '<button class="search-toggle js-header-toggle" data-search-toggle-for="search" data-show-text="Show search" data-hide-text="Hide search">' +
-                  'Show search' +
-                '</button>' +
+                '<a class="search-toggle js-header-toggle" data-search-toggle-for="search" href="/search" data-button-text="Show search" data-show-text="Show search" data-hide-text="Hide search">' +
+                  'Search on GOV.UK' +
+                '</a>' +
                 '<form action="/search" class="gem-c-layout-header__search-form govuk-clearfix" id="search" method="get" role="search">' +
                   '<div class="gem-c-search govuk-!-display-none-print  govuk-!-margin-bottom-0 gem-c-search--no-border gem-c-search--on-white" data-module="gem-toggle-input-class-on-focus">' +
                     '<label for="site-search-text" class="gem-c-search__label">' +
@@ -105,6 +105,15 @@ describe('The header navigation', function () {
 
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('headerClicked', 'searchClosed', Object({ label: 'none' }))
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('headerClicked', 'searchClosed', Object({ label: 'none' }))
+    })
+
+    xit('coverts a link to a button on load', function () {
+      var searchButton = element.find('.search-toggle')[0]
+
+      expect(searchButton.tagName).toEqual('BUTTON')
+      expect(searchButton.innerText).toEqual('Show search')
+      expect(searchButton.getAttribute('href')).toBeNull()
+      expect(searchButton.getAttribute('data-search-toggle-for')).toEqual('search')
     })
   })
 })
