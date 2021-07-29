@@ -30,27 +30,21 @@
         var moduleNames = element.data('module').split(' ')
 
         for (var j = 0, k = moduleNames.length; j < k; j++) {
-          var module
           var moduleName = camelCaseAndCapitalise(moduleNames[j])
           var started = element.data(moduleNames[j] + '-module-started')
 
-          if ( // GOV.UK Publishing & Legacy Modules
-            typeof GOVUK.Modules[moduleName] === 'function' &&
-            !GOVUK.Modules[moduleName].prototype.init &&
-            !started
-          ) {
-            module = new GOVUK.Modules[moduleName]()
-            module.start(element)
-            element.data(moduleNames[j] + '-module-started', true)
-          }
+          if (typeof GOVUK.Modules[moduleName] === 'function' && !started) {
+            // GOV.UK Legacy Modules using jQuery
+            if (!GOVUK.Modules[moduleName].prototype.init) {
+              new GOVUK.Modules[moduleName]().start(element)
+              element.data(moduleNames[j] + '-module-started', true)
+            }
 
-          if ( // GOV.UK Frontend Modules
-            typeof GOVUK.Modules[moduleName] === 'function' &&
-            GOVUK.Modules[moduleName].prototype.init &&
-            !started
-          ) {
-            module = new GOVUK.Modules[moduleName](element[0]).init()
-            element.data(moduleNames[j] + '-module-started', true)
+            // Vanilla JavaScript GOV.UK Modules and GOV.UK Frontend Modules
+            if (GOVUK.Modules[moduleName].prototype.init) {
+              new GOVUK.Modules[moduleName](element[0]).init()
+              element.data(moduleNames[j] + '-module-started', true)
+            }
           }
         }
       }
