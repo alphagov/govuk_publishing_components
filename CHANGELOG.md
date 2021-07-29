@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Convert a tags to buttons on load in header-navigation js ([PR #2235](https://github.com/alphagov/govuk_publishing_components/pull/2235))
+
 ## 25.0.0
 
 * **BREAKING:** Remove ability to link contextual text on titles ([PR #2192](https://github.com/alphagov/govuk_publishing_components/pull/2192))
@@ -17,7 +21,6 @@
 
   You must make the following changes when you migrate to this release:
   - Replace `em()` calls with `govuk-em()`
-
 
 * **BREAKING:** Group tracking scripts in `govuk_publishing_components/analytics` ([PR #2117](https://github.com/alphagov/govuk_publishing_components/pull/2117))
 

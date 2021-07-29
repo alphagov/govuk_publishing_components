@@ -7,12 +7,41 @@
 
   if (document.querySelectorAll && document.addEventListener) {
     var els = document.querySelectorAll('.js-header-toggle')
-    var i
-    var _i
-    for (i = 0, _i = els.length; i < _i; i++) {
-      els[i].addEventListener('click', function (e) {
+    for (var i = 0; i < els.length; i++) {
+      // Reassign current index to bypass rules in Chrome and Firefox around indexed property setting
+      var thisEl = els[i]
+
+      // If the element is an a tag, convert it to a button
+      // This is to target instances where we want to change behaviour between a js and a no-js view eg: the search button on the mobile menu for some government pages. On no-js it's just a link to /search
+      // This swaps a link for no-js to a button, making it interactable. Using a link for interactivity is poor accessibility as it's a misuse of the link tag and can be confusing to assistive tech users
+
+      if (thisEl.tagName === 'A') {
+        var attributes = thisEl.attributes
+        var button = document.createElement('button')
+
+        for (var k = 0; k < attributes.length; k++) {
+          var thisAttr = attributes[k].name
+
+          if (thisAttr === 'href') {
+            if (button.getAttribute('data-search-toggle-for')) {
+              continue
+            } else {
+              button.setAttribute('data-search-toggle-for', thisEl.getAttribute('href').substr(1))
+            }
+          } else if (thisAttr !== 'data-button-text') {
+            button.setAttribute(thisAttr, thisEl.getAttribute(thisAttr))
+          }
+        }
+
+        button.innerText = thisEl.getAttribute('data-button-text') || thisEl.innerText
+
+        thisEl.parentNode.replaceChild(button, thisEl)
+        thisEl = button
+      }
+
+      thisEl.addEventListener('click', function (e) {
         e.preventDefault()
-        var target = this.getAttribute('href') ? document.getElementById(this.getAttribute('href').substr(1)) : document.getElementById(this.getAttribute('data-search-toggle-for'))
+        var target = document.getElementById(this.getAttribute('data-search-toggle-for'))
         var targetClass = target.getAttribute('class') || ''
         var sourceClass = this.getAttribute('class') || ''
         var isSearchToggle = sourceClass.match('search-toggle')
