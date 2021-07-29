@@ -1,11 +1,13 @@
 <%
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+
   options ||= []
   id ||= false
   label ||= false
   full_width ||= false
   name ||= id
   is_page_heading ||= false
-  heading_size = false unless ['s', 'm', 'l', 'xl'].include?(heading_size)
+  heading_size = false unless shared_helper.valid_heading_size?(heading_size)
   error_message ||= nil
   error_id ||= nil
 

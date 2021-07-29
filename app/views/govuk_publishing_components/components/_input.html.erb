@@ -23,7 +23,7 @@
   hint_id = "hint-#{SecureRandom.hex(4)}"
   error_id = "error-#{SecureRandom.hex(4)}"
   search_icon ||= nil
-  heading_size = false unless ['s', 'm', 'l', 'xl'].include?(heading_size)
+  heading_size = false unless shared_helper.valid_heading_size?(heading_size)
   heading_level ||= nil
   prefix ||= nil
   suffix ||= nil

@@ -31,10 +31,14 @@ module GovukPublishingComponents
         "span"
       end
 
+      def valid_heading_size?(size)
+        %w[xl l m s].include?(size)
+      end
+
       def get_heading_size(option, fallback)
         govuk_class = "govuk-heading-"
 
-        if %w[xl l m s].include? option
+        if valid_heading_size?(option)
           "#{govuk_class}#{option}"
         else
           "#{govuk_class}#{fallback}"

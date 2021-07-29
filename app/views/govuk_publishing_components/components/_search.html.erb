@@ -15,7 +15,7 @@
   data_attributes[:module] = 'gem-track-click'
 
   label_classes = []
-  if (["xl", "l", "m", "s"].include?(label_size))
+  if (shared_helper.valid_heading_size?(label_size))
     label_classes << "govuk-label govuk-label--#{label_size}"
   else
     label_classes << "gem-c-search__label"

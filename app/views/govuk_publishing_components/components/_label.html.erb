@@ -1,8 +1,10 @@
 <%
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+
   hint_text ||= ""
   is_radio_label ||= false
   bold ||= false
-  heading_size = false unless ["s", "m", "l", "xl"].include?(heading_size)
+  heading_size = false unless shared_helper.valid_heading_size?(heading_size)
   is_page_heading ||= false
 
   css_classes = %w[gem-c-label govuk-label]
