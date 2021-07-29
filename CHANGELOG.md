@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 25.0.0
 
 * **BREAKING:** Remove ability to link contextual text on titles ([PR #2192](https://github.com/alphagov/govuk_publishing_components/pull/2192))
 * Delete empty print stylesheets ([PR #2225](https://github.com/alphagov/govuk_publishing_components/pull/2225))
