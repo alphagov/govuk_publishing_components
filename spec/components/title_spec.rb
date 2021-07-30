@@ -18,7 +18,22 @@ describe "Title", type: :view do
 
   it "title context appears" do
     render_component(title: "Hello World", context: "Format")
-    assert_select ".govuk-caption-xl", text: "Format"
+    assert_select ".gem-c-title > .gem-c-title__context", text: "Format"
+  end
+
+  it "renders no title context inside" do
+    render_component(title: "Hello World", context: "Format")
+    assert_select ".gem-c-title__text > .gem-c-title__context", false, text: "Format"
+  end
+
+  it "title context appears inside" do
+    render_component(title: "Hello World", context: "Format", context_inside: true)
+    assert_select ".gem-c-title__text > .gem-c-title__context", text: "Format"
+  end
+
+  it "renders no title context adjacent to title" do
+    render_component(title: "Hello World", context: "Format", context_inside: true)
+    assert_select ".gem-c-title > .gem-c-title__context", false, text: "Format"
   end
 
   it "applies context language if supplied to a context string" do
@@ -27,7 +42,7 @@ describe "Title", type: :view do
   end
 
   it "applies title length if supplied" do
-    render_component(title: "Hello World", context: "format", average_title_length: "long")
+    render_component(title: "Hello World", average_title_length: "long")
     assert_select ".gem-c-title .govuk-heading-l", text: "Hello World"
   end
 

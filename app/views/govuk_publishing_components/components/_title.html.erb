@@ -3,6 +3,7 @@
 
   context ||= false
   context_locale ||= false
+  context_inside ||= false
 
   inverse ||= false
   local_assigns[:margin_top] ||= 8
@@ -18,13 +19,22 @@
   heading_classes = %w[gem-c-title__text]
   heading_classes << (average_title_length.present? ? 'govuk-heading-l' : 'govuk-heading-xl')
 %>
+
+<% @context_block = capture do %>
+  <span class="govuk-caption-xl gem-c-title__context" <%= "lang=#{context_locale}" if context_locale.present? %>>
+    <%= context %>
+  </span>
+<% end %>
+
 <%= content_tag(:div, class: classes) do %>
-  <% if context %>
-    <span class="govuk-caption-xl gem-c-title__context" <%= "lang=#{context_locale}" if context_locale.present? %>>
-      <%= context %>
-    </span>
+  <% if context && !context_inside %>
+    <%= @context_block %>
   <% end %>
+  
   <h1 class="<%= heading_classes.join(" ") %>">
+    <% if context && context_inside %>
+      <%= @context_block %>
+    <% end %>
     <%= title %>
   </h1>
 <% end %>
