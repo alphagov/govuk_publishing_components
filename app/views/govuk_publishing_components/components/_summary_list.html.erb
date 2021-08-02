@@ -1,7 +1,7 @@
 <%
   local_assigns[:heading_level] ||= 3
-  heading_size = 'm' unless ['s', 'm', 'l', 'xl'].include?(heading_size)
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+  heading_size = "m" unless shared_helper.valid_heading_size?(heading_size)
 
   id ||= nil
   title ||= nil

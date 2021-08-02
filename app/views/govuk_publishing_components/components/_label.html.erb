@@ -1,16 +1,18 @@
 <%
-  hint_text ||= ''
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+
+  hint_text ||= ""
   is_radio_label ||= false
   bold ||= false
-  heading_size = false unless ['s', 'm', 'l', 'xl'].include?(heading_size)
+  heading_size = false unless shared_helper.valid_heading_size?(heading_size)
   is_page_heading ||= false
 
-  css_classes = %w( gem-c-label govuk-label )
+  css_classes = %w[gem-c-label govuk-label]
   css_classes << "govuk-label--s" if bold
   css_classes << "govuk-radios__label" if is_radio_label
   css_classes << "govuk-label--#{heading_size}" if heading_size
 
-  hint_text_css_classes = %w( govuk-hint )
+  hint_text_css_classes = %w[govuk-hint]
   hint_text_css_classes << "govuk-radios__hint" if is_radio_label
 %>
 

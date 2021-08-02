@@ -15,12 +15,12 @@
   heading_classes = %w(govuk-fieldset__heading)
   heading_classes << "gem-c-radio__heading-text" if heading_level == 'h1'
 
-  if ['s', 'm', 'l', 'xl'].include?(heading_size)
+  if (shared_helper.valid_heading_size?(heading_size))
     size = heading_size
-  elsif heading_level == 'h1'
-    size = 'xl'
+  elsif heading_level == "h1"
+    size = "xl"
   else
-    size = 'm'
+    size = "m"
   end
 
   description ||= nil

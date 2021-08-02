@@ -5,7 +5,7 @@
   describedby ||= nil
   role ||= nil
   heading_level ||= nil
-  heading_size = false unless ['s', 'm', 'l', 'xl'].include?(heading_size)
+  heading_size = false unless shared_helper.valid_heading_size?(heading_size)
   error_message ||= nil
   error_id ||= nil
   id ||= nil
