@@ -7,6 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+* Add new analytics tags for the super navigation header ([PR #2243](https://github.com/alphagov/govuk_publishing_components/pull/2243))
+
 ## 25.1.0
 
 * Convert a tags to buttons on load in header-navigation js ([PR #2235](https://github.com/alphagov/govuk_publishing_components/pull/2235))
