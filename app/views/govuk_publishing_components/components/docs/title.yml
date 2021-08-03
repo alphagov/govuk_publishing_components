@@ -24,6 +24,13 @@ examples:
     data:
       context: Publication
       title: My page title
+  with_context_inside:
+    description: |
+      If the context should be considered part of the page heading, you can nest the context within the <code><h1></code>.
+    data:
+      context: Publication
+      title: My page title
+      context_inside: true
   with_context_language_labelled:
     description: |
       Sometimes this component appears on a page that has been translated. The title will naturally be supplied in the required language but the context string may fall back to the default. In these instances we need to label the language so the page remains semantic and screenreaders can handle the switch.
