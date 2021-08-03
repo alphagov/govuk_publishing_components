@@ -1,10 +1,8 @@
-.gem-c-notice {
-  @include govuk-text-colour;
-  @include govuk-responsive-padding(4);
-  @include govuk-responsive-margin(8, "bottom");
+@import "govuk/components/notification-banner/notification-banner";
 
+.gem-c-notice {
+  @include govuk-responsive-margin(8, "bottom");
   clear: both;
-  border: $govuk-border-width solid govuk-colour("blue");
 
   .govuk-govspeak {
     p:last-child {
@@ -18,22 +16,9 @@
 }
 
 .gem-c-notice__title {
-  @include govuk-font(24, $weight: bold);
-  margin-top: 0;
-  @include govuk-responsive-margin(4, "bottom");
-
-  &:last-child {
-    margin-bottom: 0;
-  }
-
   a {
     @include govuk-link-common;
     @include govuk-link-style-default;
     @include govuk-link-print-friendly;
   }
-}
-
-.gem-c-notice__description {
-  @include govuk-font(19);
-  margin: 0;
 }

@@ -183,6 +183,8 @@ en:
       toggle_more: "+ %{number} more"
     modal_dialogue:
       close_modal: Close modal dialogue
+    notice:
+      banner_title: Important
     organisation_schema:
       all_content_search_description: Find all content from %{organisation}
     previous_and_next_navigation:
