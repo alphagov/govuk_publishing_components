@@ -1,0 +1,30 @@
+<% page_is ||= nil %>
+
+<nav aria-label="Account management" class="gem-c-account-layout-nav">
+  <ul class="gem-c-account-layout-menu">
+    <li class="gem-c-account-layout-menu__item <%= "gem-c-account-layout-menu__item--current" if page_is == "your-account" %>">
+      <%= link_to(
+        t("components.account_layout.navigation.menu_bar.account.link_text"),
+        "#{Plek.find('account-manager')}",
+        class: 'gem-c-account-layout-menu__link govuk-link govuk-link--no-visited-state',
+        'aria-current': page_is == "your-account" ? "page" : nil,
+      ) %>
+    </li>
+    <li class="gem-c-account-layout-menu__item <%= "gem-c-account-layout-menu__item--current" if page_is == "manage" %>">
+      <%= link_to(
+        t("components.account_layout.navigation.menu_bar.manage.link_text"),
+        "#{Plek.find('account-manager')}/account/manage",
+        class: 'gem-c-account-layout-menu__link govuk-link govuk-link--no-visited-state',
+        'aria-current': page_is == "manage" ? "page" : nil,
+      ) %>
+    </li>
+    <li class="gem-c-account-layout-menu__item <%= "gem-c-account-layout-menu__item--current" if page_is == "security" %>">
+      <%= link_to(
+        t("components.account_layout.navigation.menu_bar.security.link_text"),
+        "#{Plek.find('account-manager')}/account/security",
+        class: 'gem-c-account-layout-menu__link govuk-link govuk-link--no-visited-state',
+        'aria-current': page_is == "security" ? "page" : nil,
+      ) %>
+    </li>
+  </ul>
+</nav>

@@ -1,0 +1,45 @@
+<%
+  location ||= nil
+  hide_feedback_footer ||= false
+  hide_account_navigation ||= false
+  hide_phase_banner ||= false
+%>
+<% message = capture do %>
+  <%= t("components.account_layout.feedback.banners.phase_intro") %>
+  <a class="govuk-link" href=<%= "#{Plek.find('account-manager')}/feedback" %>><%= t("components.account_layout.feedback.banners.phase_link") %></a>
+  <%= t("components.account_layout.feedback.banners.phase_outro") %>
+<% end %>
+
+<div class="gem-c-account-layout">
+  <%= render "govuk_publishing_components/components/phase_banner", {
+    phase: "alpha",
+    message: message
+  } unless hide_phase_banner %>
+
+  <div class="govuk-grid-row govuk-main-wrapper">
+    <%= tag.div(class: 'govuk-grid-column-one-third') do %>
+      <%= render "govuk_publishing_components/components/account_layout/account-navigation", { page_is: location } %>
+    <% end unless hide_account_navigation %>
+
+    <div class="govuk-grid-column-two-thirds">
+      <%= before_main if local_assigns.include?(:before_main) %>
+      <main role="main" id="content">
+        <%= yield %>
+      </main>
+    </div>
+  </div>
+  <%= tag.div(class: "gem-c-account-layout-feedback-footer") do %>
+    <%= render "govuk_publishing_components/components/heading", {
+      text: t("components.account_layout.feedback.banners.title"),
+      heading_level: 2,
+      font_size: "m",
+      margin_bottom: 4,
+    } %>
+
+    <p class="govuk-body govuk-!-margin-bottom-0">
+      <%= t("components.account_layout.feedback.banners.footer_intro") %>
+      <a href="<%= "#{Plek.find('account-manager')}/feedback" %>" class="govuk-link"><%= t("components.account_layout.feedback.banners.footer_link") %></a>
+      <%= t("components.account_layout.feedback.banners.footer_outro") %>
+    </p>
+  <% end unless hide_feedback_footer %>
+</div>

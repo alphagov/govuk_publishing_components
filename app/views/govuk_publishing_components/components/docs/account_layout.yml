@@ -1,0 +1,50 @@
+name: Account layout
+description: |
+  A content wrapper for GOVUK Account pages.
+
+  This wrapper has no control over markup, which is passed in to the component pre-generated.
+  The component adds page furniture (e.g. a phase banner, account navigation, feedback prompt) before and after the content that is passed into the component.
+accessibility_criteria: |
+  - Headings must be part of a correct heading structure for the page
+  - If a page includes more than one navigation landmark, each should have a unique label
+  - The current item in the navigation landmark must be correctly indicated with the `aria-current` attribute
+shared_accessibility_criteria:
+  - link
+accessibility_excluded_rules:
+  - duplicate-id # IDs will be duplicated in component examples list
+  - landmark-main-is-top-level # The main element can not be top level in the examples
+  - landmark-no-duplicate-main # The main element has to be duplicated in the examples
+  - landmark-unique # aria-label attributes will be duplicated in component examples list
+display_html: true
+examples:
+  default:
+    data:
+      block: |
+        <h2 class="govuk-heading-l">This is a title</h2>
+        <p class="govuk-body">This is some body text with <a href="https://example.com">a link</a>.</p>
+  without_feedback_footer:
+    data:
+      hide_feedback_footer: true
+      block: |
+        <h2 class="govuk-heading-l">This is a title</h2>
+        <p class="govuk-body">This is some body text with <a href="https://example.com">a link</a>.</p>
+  with_current_account_navigation:
+    description: "Valid options are currently `your-account`, `manage`, and `security`"
+    data:
+      location: "manage"
+      block: |
+        <h2 class="govuk-heading-l">This is a title</h2>
+        <p class="govuk-body">This is some body text with <a href="https://example.com">a link</a>.</p>
+  without_account_navigation:
+    data:
+      hide_account_navigation: true
+      block: |
+        <h2 class="govuk-heading-l">This is a title</h2>
+        <p class="govuk-body">This is some body text with <a href="https://example.com">a link</a>.</p>
+  with_content_before_main:
+    data:
+      before_main: |
+        <a href="#" class="govuk-link govuk-body">I am a navigational element that should not be part of `main`</a>
+      block: |
+        <h1 class="govuk-heading-l">This is a title</h1>
+        <p class="govuk-body">This is some content inside main with <a href="https://example.com">a link</a>.</p>

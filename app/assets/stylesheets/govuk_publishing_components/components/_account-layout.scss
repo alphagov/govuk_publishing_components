@@ -1,0 +1,57 @@
+.account .gem-c-layout-for-public__global-banner-wrapper {
+  // TODO: this is a localised fix for the issue described here https://github.com/alphagov/govuk_publishing_components/issues/2159
+  // this rule should be removed if/when the bug is fixed
+  margin-top: 0;
+}
+
+.gem-c-account-layout-menu {
+  margin: 0 0 govuk-spacing(6) 0;
+  padding: 0;
+
+  @include govuk-media-query($from: desktop) {
+    margin-right: govuk-spacing(4);
+  }
+}
+
+// Used to determine width of blue location indicator in navigation mention
+$_current-indicator-width: 4px;
+
+.gem-c-account-layout-menu__item {
+  list-style-type: none;
+  padding: 12px 0;
+
+  @include govuk-media-query($from: tablet) {
+    margin: 0 0 govuk-spacing(4);
+    padding: govuk-spacing(1) 0;
+  }
+}
+
+.gem-c-account-layout-menu__item--current {
+  margin-left: -(govuk-spacing(2) + $_current-indicator-width);
+  padding-left: govuk-spacing(2);
+  border-left: $_current-indicator-width solid govuk-colour("blue");
+
+  .gem-c-account-layout-menu__link {
+    text-decoration: none;
+  }
+}
+
+.gem-c-account-layout-menu__link {
+  @include govuk-font(19, $weight: "bold");
+
+  &:not(:focus):hover {
+    color: $govuk-link-colour;
+  }
+}
+
+.gem-c-account-layout-feedback-footer {
+  margin-bottom: govuk-spacing(4);
+  padding: govuk-spacing(3);
+  background: govuk-colour("light-grey");
+
+  @include govuk-media-query($from: tablet) {
+    padding: govuk-spacing(6);
+    margin-top: govuk-spacing(2);
+    margin-bottom: govuk-spacing(8);
+  }
+}
