@@ -10,6 +10,7 @@
 # Unreleased
 
 * Add hover style for govspeak mc button ([PR #2239](https://github.com/alphagov/govuk_publishing_components/pull/2239))
+* Load Youtube video instantly when cookies are accepted ([PR #2241](https://github.com/alphagov/govuk_publishing_components/pull/2241))
 
 ## 25.1.0
 

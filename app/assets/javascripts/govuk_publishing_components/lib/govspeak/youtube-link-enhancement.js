@@ -9,9 +9,15 @@
 
   YoutubeLinkEnhancement.prototype.init = function () {
     if (!this.campaignCookiesAllowed()) {
+      this.startModule = this.startModule.bind(this)
+      window.addEventListener('cookie-consent', this.startModule)
       return
     }
+    this.startModule()
+  }
 
+  YoutubeLinkEnhancement.prototype.startModule = function () {
+    window.removeEventListener('cookie-consent', this.startModule)
     var $youtubeLinks = this.$element.querySelectorAll('a[href*="youtube.com"], a[href*="youtu.be"]')
 
     if ($youtubeLinks.length > 0) {
