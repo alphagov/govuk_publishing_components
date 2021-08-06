@@ -96,7 +96,7 @@ en:
       navigation_links:
       - label: Topics
         href: "/browse"
-        description: Find help, guidance, and services
+        description: Find information and services
         menu_contents:
         - label: Benefits
           href: "/browse/benefits"
@@ -138,7 +138,7 @@ en:
         href: "/government/organisations"
       - label: Government activity
         href: "/search/news-and-communications"
-        description: Find out what the government is doing and how to get involved
+        description: Find out what the government is doing
         menu_contents:
         - label: News
           href: "/search/news-and-communications"
@@ -154,7 +154,7 @@ en:
           description: Consultations and strategy
         - label: Transparency
           href: "/search/transparency-and-freedom-of-information-releases"
-          description: Government data, freedom of information releases and corporate reports
+          description: Government data, Freedom of Information releases and corporate reports
         footer_links:
         - label: How government works
           href: "/government/how-government-works"
@@ -164,7 +164,7 @@ en:
       navigation_search_heading: Search and popular pages
       navigation_search_subheading: Search
       popular_links:
-      - label: 'Coronavirus (COVID-19): rules'
+      - label: 'Coronavirus (COVID-19): guidance'
         href: "/guidance/covid-19-coronavirus-restrictions-what-you-can-and-cannot-do"
       - label: 'Brexit: check what you need to do'
         href: "/brexit"
