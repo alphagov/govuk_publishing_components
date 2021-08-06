@@ -279,6 +279,11 @@
     padding: govuk-spacing(2);
     background-color: govuk-colour("white");
 
+    &:hover {
+      background-color: govuk-colour("light-grey");
+      color: $govuk-link-hover-colour;
+    }
+
     &:focus {
       @include govuk-focused-text;
       background-color: $govuk-focus-colour;

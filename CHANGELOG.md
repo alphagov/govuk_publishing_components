@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+# Unreleased
+
+* Add hover style for govspeak mc button ([PR #2239](https://github.com/alphagov/govuk_publishing_components/pull/2239))
+
 ## 25.1.0
 
 * Convert a tags to buttons on load in header-navigation js ([PR #2235](https://github.com/alphagov/govuk_publishing_components/pull/2235))
