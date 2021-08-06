@@ -1,8 +1,185 @@
 $search-icon-size: 20px;
 
+@mixin chevron($colour) {
+  border-bottom: .2rem solid govuk-colour($colour);
+  border-right: .2rem solid govuk-colour($colour);
+  content: " ";
+  display: inline-block;
+  height: .5rem;
+  margin: 0 .5em 0 .15em;
+  transform: translateY(-35%) rotate(45deg);
+  vertical-align: middle;
+  width: .5rem;
+}
+
+%top-level-navigation-link-base {
+  background: none;
+  @include govuk-font($size: 24, $weight: bold, $line-height: 20px);
+  border: 0;
+  box-sizing: border-box;
+  display: block;
+  margin: 0;
+  padding: govuk-spacing(6) govuk-spacing(3);
+  position: relative;
+  text-decoration: none;
+
+  &,
+  &:visited {
+    color: govuk-colour("blue"); // FIXME: contrast against govuk-colour("light-grey") not high enough
+  }
+
+  &:focus {
+    background: $govuk-focus-colour;
+    border-color: $govuk-focus-text-colour;
+    border-top-color: $govuk-focus-colour;
+    color: $govuk-focus-text-colour;
+    outline: 3px solid transparent;
+    box-shadow: none;
+    z-index: 1;
+  }
+
+  @include govuk-media-query($from: "tablet") {
+    padding: govuk-spacing(6);
+  }
+
+  @include govuk-media-query($from: "desktop") {
+    @include govuk-font($size: 16, $weight: false, $line-height: 20px);
+    display: inherit;
+    height: govuk-spacing(9);
+    padding: govuk-spacing(4);
+
+    &:after {
+      background: govuk-colour("black");
+      bottom: 0;
+      content: " ";
+      display: block;
+      height: govuk-spacing(1);
+      left: govuk-spacing(4);
+      position: absolute;
+      right: govuk-spacing(4);
+    }
+
+    &:hover {
+      background: govuk-colour("black");
+      color: govuk-colour("mid-grey");
+
+      &:after {
+        background-color: govuk-colour("mid-grey");
+      }
+    }
+
+    &:focus {
+      @include govuk-focused-text;
+      box-shadow: none;
+
+      &:after {
+        background-color: $govuk-focus-text-colour;
+      }
+    }
+
+    &,
+    &:visited {
+      color: govuk-colour("white");
+    }
+  }
+}
+
+%toggle-base {
+  @extend %top-level-navigation-link-base;
+  @include govuk-font($size: 16, $weight: false, $line-height: 20px);
+  border-radius: 0;
+  cursor: pointer;
+  padding: govuk-spacing(4);
+  right: 0;
+  top: 0;
+
+  @include govuk-media-query($from: "desktop") {
+    border: none;
+  }
+}
+
+%top-level-navigation-toggle-base {
+  @extend %toggle-base;
+  border-top: 1px solid govuk-colour("black");
+  height: govuk-spacing(9);
+
+  &:focus {
+    border-color: $govuk-focus-colour;
+  }
+
+  &:hover {
+    border-color: govuk-colour("black");
+  }
+
+  &.gem-c-layout-super-navigation-header__open-button {
+    border-left-color: govuk-colour("black");
+    border-right-color: govuk-colour("black");
+
+    &,
+    &:hover {
+      background: govuk-colour("light-grey");
+      color: govuk-colour("light-grey");
+    }
+
+    &:focus {
+      color: $govuk-focus-colour;
+      background: $govuk-focus-colour;
+    }
+
+    &:before,
+    &:after {
+      $width: 1.2rem;
+      $height: .2rem;
+
+      border: none;
+      content: " ";
+      display: block;
+      margin: 0;
+      width: $width;
+      height: $height;
+      background: govuk-colour("black");
+      transform-origin: center;
+      position: absolute;
+      top: calc(50% - #{$height / 2});
+      left: calc(50% - #{$width / 2});
+    }
+
+    &:before {
+      transform: rotate(45deg);
+    }
+
+    &:after {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+%search-icon {
+  height: $search-icon-size;
+  pointer-events: none;
+  width: $search-icon-size;
+}
+
+// Header layout - black bar and logo.
 .gem-c-layout-super-navigation-header {
   background: govuk-colour("black");
   position: relative;
+
+  .lte-ie8 & {
+    height: govuk-spacing(9);
+  }
+
+  [hidden] {
+    display: none;
+  }
+}
+
+.gem-c-layout-super-navigation-header__container {
+  position: relative;
+
+  @include govuk-media-query($from: "desktop") {
+    position: static;
+  }
 }
 
 .gem-c-layout-super-navigation-header__header-logo {
@@ -23,92 +200,111 @@ $search-icon-size: 20px;
   }
 }
 
-.gem-c-layout-super-navigation-header__items {
+// Top level navigation and search.
+.gem-c-layout-super-navigation-header__navigation-items,
+.gem-c-layout-super-navigation-header__search-items {
+  background: govuk-colour("light-grey");
+  display: block;
   list-style: none;
-  margin: 0;
-  padding: 0 0 govuk-spacing(1) 0;
+  margin: 0 (0 - govuk-spacing(3));
+  padding: 0;
+
+  @include govuk-media-query($from: "tablet") {
+    margin: 0 (0 - govuk-spacing(6));
+  }
 
   @include govuk-media-query($from: "desktop") {
+    background: none;
+    float: left;
     padding: 0;
+    margin: 0;
   }
 }
 
-.gem-c-layout-super-navigation-header__item {
+.gem-c-layout-super-navigation-header__navigation-items {
+  .js-enabled & {
+    padding: 0 0 govuk-spacing(9) 0;
+
+    @include govuk-media-query($from: "desktop") {
+      padding: 0;
+    }
+  }
+}
+
+.gem-c-layout-super-navigation-header__navigation-item,
+.gem-c-layout-super-navigation-header__search-item {
   margin-right: 0;
-  padding: govuk-spacing(1) 0;
+  padding: 0;
 
   @include govuk-media-query($from: "desktop") {
+    border-bottom: none;
     float: left;
     padding: 0;
   }
 }
 
-.gem-c-layout-super-navigation-header__item-link {
-  display: block;
-  padding: govuk-spacing(3) 0;
-  position: relative;
-
-  @include govuk-media-query($from: "desktop") {
-    padding: govuk-spacing(4);
-    width: auto;
+.gem-c-layout-super-navigation-header__navigation-item {
+  &:after {
+    background-color: $govuk-border-colour;
+    content: " ";
+    display: block;
+    height: 1px;
+    left: 0;
+    right: 0;
+    position: absolute;
   }
 
-  &:focus {
-    z-index: 1;
-  }
-}
-
-// Special search link
-.gem-c-layout-super-navigation-header__item--search {
-  border-bottom: 0;
-}
-
-.gem-c-layout-super-navigation-header__item-link--search {
   @include govuk-media-query($from: "desktop") {
-    background-color: $govuk-link-colour;
-    display: inherit;
-    width: govuk-spacing(4);
-
-    &:hover {
-      background-color: $govuk-link-hover-colour;
-    }
-
-    &:focus {
-      background-color: $govuk-focus-colour;
+    &:after {
+      content: none;
     }
   }
 }
 
-.gem-c-layout-super-navigation-header__item-link-text--search {
+// Top level navigation links.
+.gem-c-layout-super-navigation-header__navigation-item-link {
+  @extend %top-level-navigation-link-base;
+
+  .js-enabled & {
+    @include govuk-media-query($until: "desktop") {
+      padding: govuk-spacing(6) govuk-spacing(3) govuk-spacing(6) govuk-spacing(9);
+    }
+
+    @include govuk-media-query($until: "tablet") {
+      padding-left: govuk-spacing(7);
+    }
+  }
+}
+
+// Search link and dropdown.
+.gem-c-layout-super-navigation-header__search-item-link {
+  @extend %top-level-navigation-link-base;
+
+  @include govuk-media-query($from: "desktop") {
+    background: $govuk-link-colour;
+    margin-left: 0;
+
+    &:focus:hover:after,
+    &:after {
+      content: none;
+    }
+
+    &:hover:after {
+      content: " ";
+      left: 0;
+      right: 0;
+    }
+  }
+}
+
+.gem-c-layout-super-navigation-header__search-item-link-text {
   @include govuk-media-query($from: "desktop") {
     @include govuk-visually-hidden;
   }
 }
 
-.gem-c-layout-super-navigation-header__item-link-icon--search {
-  display: none;
-
-  @include govuk-media-query($from: "desktop") {
-    display: block;
-    height: $search-icon-size;
-    width: $search-icon-size;
-  }
-}
-
-.gem-c-layout-super-navigation-header__menu-button {
-  @include govuk-font($size: 19, $weight: bold, $line-height: 20px);
-  border-left: 1px solid govuk-colour("mid-grey");
-  border-right: 1px solid govuk-colour("mid-grey");
-  padding: govuk-spacing(4);
-  top: 0;
-
-  &:focus {
-    border-left-color: $govuk-focus-colour;
-    border-right-color: $govuk-focus-colour;
-  }
-}
-
-.js-enabled .gem-c-layout-super-navigation-header__items {
+.gem-c-layout-super-navigation-header__search-item-link-icon {
+  @extend %search-icon;
   display: none;
 
   @include govuk-media-query($from: "desktop") {
@@ -116,10 +312,353 @@ $search-icon-size: 20px;
   }
 }
 
-.js-enabled .gem-c-layout-super-navigation-header__items--open {
+.gem-c-layout-super-navigation-header__search-toggle-button-link-icon {
+  @extend %search-icon;
   display: block;
 }
 
-.gem-c-layout-super-navigation-header__dropdown-menu {
+// Search and popular content dropdown.
+.gem-c-layout-super-navigation-header__search-and-popular {
   display: none;
+  padding-bottom: govuk-spacing(4);
+  padding-top: govuk-spacing(4);
+
+  .js-enabled & {
+    display: block;
+  }
+}
+
+// Styles for top level navigation toggle button.
+.gem-c-layout-super-navigation-header__navigation-top-toggle-button {
+  @extend %top-level-navigation-toggle-base;
+  border-left: 1px solid govuk-colour("mid-grey");
+  color: govuk-colour("white");
+  position: absolute;
+  right: 45px;
+
+  @include govuk-media-query($from: 360px) {
+    &:before {
+      @include chevron("white");
+    }
+  }
+
+  &:focus {
+    &:before {
+      border-color: $govuk-focus-text-colour;
+    }
+  }
+
+  @include govuk-media-query(360px) {
+    right: 60px;
+  }
+
+  @include govuk-media-query($from: "desktop") {
+    display: none;
+  }
+}
+
+// styles for search toggle button
+.gem-c-layout-super-navigation-header__search-toggle-button {
+  @extend %top-level-navigation-toggle-base;
+  border-top: 1px solid transparent;
+  border-left: 1px solid govuk-colour("mid-grey");
+  color: govuk-colour("white");
+  position: absolute;
+  right: (0 - govuk-spacing(3));
+
+  @include govuk-media-query($from: 360px) {
+    right: 0;
+  }
+
+  @include govuk-media-query($from: "desktop") {
+    background-color: $govuk-link-colour;
+    border-left: 0;
+    height: govuk-spacing(9);
+    margin-left: govuk-spacing(3);
+    padding: govuk-spacing(4);
+    position: relative;
+    float: right;
+
+    &:not(.gem-c-layout-super-navigation-header__open-button):hover {
+      background: none;
+      color: govuk-colour("light-grey");
+
+      &:after {
+        content: " ";
+        left: 0;
+        right: 0;
+      }
+    }
+
+    &:focus:hover:after,
+    &:after {
+      content: none;
+    }
+
+    &.gem-c-layout-super-navigation-header__open-button {
+      border-top-color: govuk-colour("black");
+
+      &:hover:after {
+        content: " ";
+      }
+    }
+  }
+}
+
+// styles for second level navigation toggle buttons
+.gem-c-layout-super-navigation-header__navigation-second-toggle-button {
+  @extend %toggle-base;
+  @include govuk-font($size: 24, $weight: false, $line-height: 20px);
+  border: 0;
+  margin: 0;
+  padding: govuk-spacing(6) govuk-spacing(3);
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  width: 100%;
+
+  &:before {
+    @include chevron("black");
+  }
+
+  &,
+  &:visited {
+    color: $govuk-link-colour;// FIXME: contrast against govuk-colour("light-grey") not high enough
+
+    @include govuk-media-query($from: "desktop") {
+      color: govuk-colour("white");
+    }
+  }
+
+  @include govuk-media-query($from: "tablet") {
+    padding: govuk-spacing(6);
+  }
+
+  @include govuk-media-query($from: "desktop") {
+    @include govuk-font($size: 16, $weight: false, $line-height: 20px);
+    border-top: 1px solid transparent;
+    color: govuk-colour("white");
+    height: govuk-spacing(9);
+    padding: govuk-spacing(4);
+    position: relative;
+
+    &:before {
+      border-color: govuk-colour("white");
+    }
+
+    &:hover {
+      color: govuk-colour("mid-grey");
+
+      &:after {
+        background-color: govuk-colour("mid-grey");
+      }
+
+      &:before {
+        border-color: govuk-colour("mid-grey");
+      }
+    }
+
+    &:focus {
+      color: $govuk-focus-text-colour;
+      // border-color: $govuk-focus-text-colour;
+
+      &:after {
+        background-color: $govuk-focus-text-colour;
+      }
+
+      &:before {
+        border-color: $govuk-focus-text-colour;
+      }
+    }
+  }
+
+  &.gem-c-layout-super-navigation-header__open-button {
+    border-top-color: govuk-colour("black");
+
+    &:focus {
+      border-top-color: $govuk-focus-colour;
+    }
+
+    &:before {
+      transform: translateY(20%) rotate(225deg);
+    }
+
+    @include govuk-media-query($from: "desktop") {
+      background-color: govuk-colour("light-grey");
+      color: $govuk-link-colour;
+
+      &:after {
+        background: $govuk-link-colour;
+      }
+
+      &:before {
+        border-color: $govuk-link-colour;
+      }
+
+      &:focus {
+        background-color: $govuk-focus-colour;
+        color: $govuk-focus-text-colour;
+
+        &:after {
+          background-color: $govuk-focus-text-colour;
+        }
+
+        &:before {
+          border-color: $govuk-focus-text-colour;
+        }
+      }
+
+      &:active {
+        background-color: govuk-colour("light-grey");
+        color: $govuk-link-colour;
+
+        &:before {
+          border-color: $govuk-link-colour;
+        }
+      }
+    }
+  }
+}
+
+// Dropdown menu.
+.gem-c-layout-super-navigation-header__navigation-dropdown-menu {
+  background: govuk-colour("white");
+
+  @include govuk-media-query($from: "desktop") {
+    background: govuk-colour("light-grey");
+    left: 0;
+    position: absolute;
+    right: 0;
+  }
+}
+
+// Dropdown menu description.
+.gem-c-layout-super-navigation-header__menu-description {
+  display: none;
+
+  @include govuk-media-query($from: "desktop") {
+    display: block;
+    padding: govuk-spacing(7) 0 govuk-spacing(7) 0;
+  }
+}
+
+// Dropdown menu items.
+.gem-c-layout-super-navigation-header__dropdown-list-item {
+  @include govuk-media-query($from: "desktop") {
+    padding: govuk-spacing(2) 0;
+  }
+}
+
+// Navigation menu items.
+.gem-c-layout-super-navigation-header__navigation-second-items {
+  margin: 0 auto;
+  padding: govuk-spacing(2) 0 govuk-spacing(6) 0;
+
+  @include govuk-media-query($from: "desktop") {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: (0 - govuk-spacing(3));
+    margin-right: (0 - govuk-spacing(3));
+    padding: govuk-spacing(6) 0 govuk-spacing(8) 0;
+
+    & > li {
+      box-sizing: border-box;
+      margin-bottom: 0;
+      padding-left: govuk-spacing(3);
+      padding-right: govuk-spacing(3);
+      width: 50%;
+    }
+  }
+}
+
+.gem-c-layout-super-navigation-header__navigation-second-item-link {
+  display: inline-block;
+  padding: govuk-spacing(2) 0;
+
+  @include govuk-media-query($from: "desktop") {
+    display: inline;
+    font-weight: bold;
+    padding: 0;
+  }
+}
+
+.gem-c-layout-super-navigation-header__navigation-second-item-link--with-description {
+  @include govuk-font($size: 19, $weight: bold);
+  margin-bottom: 0;
+  padding-bottom: govuk-spacing(1);
+}
+
+// Dropdown menu footer links.
+.gem-c-layout-super-navigation-header__navigation-second-footer {
+  border-top: 1px solid govuk-colour("mid-grey");
+}
+
+.gem-c-layout-super-navigation-header__navigation-second-footer-list {
+  list-style: none;
+  padding-bottom: govuk-spacing(8);
+  padding-top: govuk-spacing(4);
+
+  @include govuk-grid-column($width: "two-thirds", $float: right, $at: "desktop");
+
+  @include govuk-media-query($from: "desktop") {
+    padding: govuk-spacing(7) 0 govuk-spacing(8) 0;
+  }
+}
+
+.gem-c-layout-super-navigation-header__navigation-second-footer-item {
+  @include govuk-media-query($from: "desktop") {
+    box-sizing: border-box;
+    float: left;
+    width: 50%;
+    padding: 0 govuk-spacing(3);
+  }
+}
+
+.gem-c-layout-super-navigation-header__navigation-second-footer-link {
+  @include govuk-font($size: 19, $weight: bold);
+  display: inline-block;
+  margin: govuk-spacing(1) 0;
+  padding: govuk-spacing(2) 0;
+
+  @include govuk-media-query($from: "desktop") {
+    display: inline;
+    font-weight: bold;
+    padding: 0;
+  }
+}
+
+// Search dropdown.
+.gem-c-layout-super-navigation-header__search-items {
+  background: govuk-colour("light-grey");
+  margin: 0 (0 - govuk-spacing(3));
+
+  @include govuk-media-query($from: "tablet") {
+    margin: 0 (0 - govuk-spacing(6));
+  }
+
+  @include govuk-media-query($from: "desktop") {
+    margin: 0;
+
+    .js-enabled & {
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 60px;
+    }
+  }
+}
+
+.gem-c-layout-super-navigation-header__search-form {
+  padding: govuk-spacing(3) 0 govuk-spacing(6) 0;
+}
+
+// Popular links.
+.gem-c-layout-super-navigation-header__popular-link {
+  padding: govuk-spacing(2) 0;
+  display: inline-block;
+
+  @include govuk-media-query($from: "desktop") {
+    margin: govuk-spacing(1) 0;
+    padding: 0;
+  }
 }

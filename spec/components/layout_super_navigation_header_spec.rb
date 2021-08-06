@@ -16,22 +16,73 @@ describe "Super navigation header", type: :view do
 
     assert_select ".gem-c-layout-super-navigation-header__content[aria-labelledby]", count: 1
 
-    label = "##{assert_select('.gem-c-layout-super-navigation-header__content[aria-labelledby]').first['aria-labelledby']}"
+    label_id = "##{assert_select('.gem-c-layout-super-navigation-header__content[aria-labelledby]').first['aria-labelledby']}"
 
-    assert_select label, count: 1
+    assert_select label_id, count: 1
+  end
+
+  it "has `aria-labelledby` attributes correctly linked to elements that exist" do
+    render_component({})
+
+    label_ids = assert_select("[aria-labelledby]").map do |node|
+      node["aria-labelledby"]
+    end
+
+    label_ids.each do |label_id|
+      assert_select "##{label_id}", count: 1
+    end
+  end
+
+  it "has `aria-controls` attributes correctly linked to elements that exist" do
+    render_component({})
+
+    control_ids = assert_select("[aria-controls]").map do |button|
+      button["aria-controls"]
+    end
+
+    control_ids.each do |control_id|
+      assert_select "##{control_id}", count: 1
+    end
+  end
+
+  it "has buttons that have the three required attributes for the menu toggles to work" do
+    render_component({})
+
+    menu_buttons = assert_select("button[aria-controls][data-toggle-desktop-group][data-toggle-mobile-group]")
+    all_buttons = assert_select("button")
+
+    # There is a search submit button - so the correct number of menu buttons
+    # should be the total number of buttons in the navigation minus one.
+    expect(menu_buttons.count).to eq(all_buttons.count - 1)
+  end
+
+  it "has all of the toggle buttons hidden" do
+    render_component({})
+
+    all_toggle_buttons = assert_select("button[type='button']")
+
+    assert_select "button[type='button'][hidden]", count: all_toggle_buttons.count
   end
 
   it "renders the menu list with links in it" do
     render_component({})
 
-    assert_select ".gem-c-layout-super-navigation-header__items", count: 1
-    assert_select ".gem-c-layout-super-navigation-header__items .gem-c-layout-super-navigation-header__item", count: 4
-    assert_select ".gem-c-layout-super-navigation-header__items .gem-c-layout-super-navigation-header__item .gem-c-layout-super-navigation-header__item-link", count: 4
+    assert_select ".gem-c-layout-super-navigation-header__navigation-items", count: 1
+    assert_select ".gem-c-layout-super-navigation-header__navigation-items .gem-c-layout-super-navigation-header__navigation-item", count: 3
+    assert_select ".gem-c-layout-super-navigation-header__navigation-items .gem-c-layout-super-navigation-header__navigation-item .gem-c-layout-super-navigation-header__navigation-item-link", count: 3
+  end
+
+  it "renders the search menu with links in it" do
+    render_component({})
+
+    assert_select ".gem-c-layout-super-navigation-header__search-items", count: 1
+    assert_select ".gem-c-layout-super-navigation-header__search-items .gem-c-layout-super-navigation-header__search-item", count: 1
+    assert_select ".gem-c-layout-super-navigation-header__search-items .gem-c-layout-super-navigation-header__search-item .gem-c-layout-super-navigation-header__search-item-link", count: 1
   end
 
   it "has only one search link in the menu" do
     render_component({})
 
-    assert_select ".gem-c-layout-super-navigation-header__item--search", count: 1
+    assert_select ".gem-c-layout-super-navigation-header__search-item", count: 1
   end
 end
