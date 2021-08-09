@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+# Unreleased
+
+* Add link tracking to super navigation header ([PR #2249](https://github.com/alphagov/govuk_publishing_components/pull/2249))
+
 # 25.2.0
 
 * Add analytics tags to super navigation header ([PR # 2244](https://github.com/alphagov/govuk_publishing_components/pull/2244))
