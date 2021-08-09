@@ -11,10 +11,10 @@
 
 * Add link tracking to super navigation header ([PR #2249](https://github.com/alphagov/govuk_publishing_components/pull/2249))
 * Fix typos in super navigation link tracking ([PR #2251](https://github.com/alphagov/govuk_publishing_components/pull/2251))
-
+* Update super navigation styles to avoid `govuk-layout` clashes ([PR #2250](https://github.com/alphagov/govuk_publishing_components/pull/2250))
 # 25.2.0
 
-* Add analytics tags to super navigation header ([PR # 2244](https://github.com/alphagov/govuk_publishing_components/pull/2244))
+* Add analytics tags to super navigation header ([PR #2244](https://github.com/alphagov/govuk_publishing_components/pull/2244))
 * Update copy for Explore Super Menu Header ([PR #2247](https://github.com/alphagov/govuk_publishing_components/pull/2247))
 * Add hover style for govspeak mc button ([PR #2239](https://github.com/alphagov/govuk_publishing_components/pull/2239))
 * Load Youtube video instantly when cookies are accepted ([PR #2241](https://github.com/alphagov/govuk_publishing_components/pull/2241))
