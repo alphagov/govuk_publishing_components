@@ -21,8 +21,11 @@ show_navigation_menu_text = t("components.layout_super_navigation_header.menu_to
     <div class="gem-c-layout-super-navigation-header__header-logo">
       <a class="govuk-header__link govuk-header__link--homepage"
         data-module="gem-track-click"
-        data-track-action="homeHeader"
-        data-track-category="homeLinkClicked"
+        data-track-action="logoLink"
+        data-track-category="headerClicked"
+        data-track-label="<%= logo_link %>"
+        data-track-dimension="<%= logo_text %>"
+        data-track-dimension-index="29"
         href="<%= logo_link %>"
         id="logo"
         title="<%= logo_link_title %>">
@@ -68,6 +71,7 @@ show_navigation_menu_text = t("components.layout_super_navigation_header.menu_to
         data-text-for-show="<%= show_navigation_menu_text %>"
         data-toggle-desktop-group="hidden"
         data-toggle-mobile-group="top"
+        data-tracking-key="menu"
         hidden
         id="super-navigation-menu-toggle"
         type="button"
@@ -81,9 +85,9 @@ show_navigation_menu_text = t("components.layout_super_navigation_header.menu_to
             li_classes = %w[gem-c-layout-super-navigation-header__navigation-item]
             li_classes << "gem-c-layout-super-navigation-header__navigation-item--with-children" if has_children
             unique_id = SecureRandom.hex(4)
-
             show_menu_text = t("components.layout_super_navigation_header.menu_toggle_label.show", :label => link[:label])
             hide_menu_text = t("components.layout_super_navigation_header.menu_toggle_label.hide", :label => link[:label])
+            tracking_label = link[:label].downcase.gsub(/\s+/, "")
           %>
           <%= tag.li class: li_classes do %>
             <a class="gem-c-layout-super-navigation-header__navigation-item-link" href="<%= link[:href] %>">
@@ -99,6 +103,7 @@ show_navigation_menu_text = t("components.layout_super_navigation_header.menu_to
                 data-text-for-show="<%= show_menu_text %>"
                 data-toggle-desktop-group="top"
                 data-toggle-mobile-group="second"
+                data-tracking-key="<%= tracking_label %>"
                 hidden
                 id="super-navigation-menu__section-<%= unique_id %>-toggle"
                 type="button"
@@ -172,6 +177,7 @@ show_navigation_menu_text = t("components.layout_super_navigation_header.menu_to
         data-text-for-show="<%= show_search_menu_text %>"
         data-toggle-mobile-group="top"
         data-toggle-desktop-group="top"
+        data-tracking-key="search"
         hidden
         id="super-search-menu-toggle"
         type="button"
@@ -257,6 +263,13 @@ show_navigation_menu_text = t("components.layout_super_navigation_header.menu_to
                   label_size: "m",
                   label_text: search_text,
                   size: "large",
+                  data_attributes: {
+                    track_category: "headerClicked",
+                    track_action: "searchSubmitted",
+                    track_label: "/search/all",
+                    track_dimension: t("components.search_box.label"),
+                    track_dimension_index: 29,
+                  },
                 } %>
               </form>
             </div>
@@ -267,7 +280,14 @@ show_navigation_menu_text = t("components.layout_super_navigation_header.menu_to
               <ul class="govuk-list">
                 <% popular_links.each do | popular_link | %>
                   <li class="gem-c-layout-super-navigation-header__popular-item">
-                    <a class="govuk-link gem-c-layout-super-navigation-header__popular-link" href="<%= popular_link[:href] %>">
+                    <a class="govuk-link gem-c-layout-super-navigation-header__popular-link"
+                      href="<%= popular_link[:href] %>"
+                      data-module="gem-track-click"
+                      data-track-action="popularLink"
+                      data-track-category="headerClicked"
+                      data-track-label="<%= popular_link[:href] %>"
+                      data-track-dimension="<%= popular_link[:label] %>"
+                      data-track-dimension-index="29">
                       <%= popular_link[:label] %>
                     </a>
                   </li>

@@ -9,6 +9,7 @@
 
 # Unreleased
 
+* Add analytics tags to super navigation header ([PR # 2244](https://github.com/alphagov/govuk_publishing_components/pull/2244))
 * Update copy for Explore Super Menu Header ([PR #2247](https://github.com/alphagov/govuk_publishing_components/pull/2247))
 * Add hover style for govspeak mc button ([PR #2239](https://github.com/alphagov/govuk_publishing_components/pull/2239))
 * Load Youtube video instantly when cookies are accepted ([PR #2241](https://github.com/alphagov/govuk_publishing_components/pull/2241))

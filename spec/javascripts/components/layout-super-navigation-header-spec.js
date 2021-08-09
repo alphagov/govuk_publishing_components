@@ -31,6 +31,7 @@ describe('The super header navigation', function () {
           'data-text-for-show="Show navigation menu" ' +
           'data-toggle-desktop-group="hidden" ' +
           'data-toggle-mobile-group="top" ' +
+          'data-tracking-key="testing" ' +
           'hidden ' +
           'id="super-navigation-menu-toggle" ' +
           'type="button" ' +
@@ -663,6 +664,8 @@ describe('The super header navigation', function () {
 
     var $element = document.querySelector('[data-module="super-navigation-mega-menu"]')
     thisModule = new GOVUK.Modules.SuperNavigationMegaMenu($element)
+
+    spyOn(GOVUK.analytics, 'trackEvent')
   })
 
   afterEach(function () {
@@ -735,8 +738,10 @@ describe('The super header navigation', function () {
           expect($button).toHaveAttr('aria-label', hideLabel)
         })
 
-        it('updates the button’s visual state', function () {
-          expect($button).toHaveClass('gem-c-layout-super-navigation-header__open-button')
+        it('triggers the correct google analytics custom event', function () {
+          expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('headerClicked', 'testingOpened', {
+            label: 'none'
+          })
         })
       })
 
@@ -769,12 +774,11 @@ describe('The super header navigation', function () {
           expect($button).toHaveAttr('aria-label', 'Show navigation menu')
         })
 
-        it('updates the button’s visual state', function () {
-          expect($button).toHaveClass('gem-c-layout-super-navigation-header__open-button')
-
+        it('triggers the correct google analytics custom event', function () {
           $button.click()
-
-          expect($button).not.toHaveClass('gem-c-layout-super-navigation-header__open-button')
+          expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('headerClicked', 'testingClosed', {
+            label: 'none'
+          })
         })
       })
 
