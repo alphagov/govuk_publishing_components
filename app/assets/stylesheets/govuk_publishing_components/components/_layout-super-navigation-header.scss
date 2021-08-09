@@ -1,15 +1,15 @@
 $search-icon-size: 20px;
 
 @mixin chevron($colour) {
-  border-bottom: .2rem solid govuk-colour($colour);
-  border-right: .2rem solid govuk-colour($colour);
+  border-bottom: 3px solid govuk-colour($colour);
+  border-right: 3px solid govuk-colour($colour);
   content: " ";
   display: inline-block;
-  height: .5rem;
-  margin: 0 .5em 0 .15em;
+  height: 8px;
+  margin: 0 8px 0 2px;
   transform: translateY(-35%) rotate(45deg);
   vertical-align: middle;
-  width: .5rem;
+  width: 8px;
 }
 
 %top-level-navigation-link-base {
@@ -24,8 +24,9 @@ $search-icon-size: 20px;
   text-decoration: none;
 
   &,
+  &:link,
   &:visited {
-    color: govuk-colour("blue"); // FIXME: contrast against govuk-colour("light-grey") not high enough
+    color: $govuk-link-colour;
   }
 
   &:focus {
@@ -44,6 +45,7 @@ $search-icon-size: 20px;
 
   @include govuk-media-query($from: "desktop") {
     @include govuk-font($size: 16, $weight: false, $line-height: 20px);
+    color: govuk-colour("white");
     display: inherit;
     height: govuk-spacing(9);
     padding: govuk-spacing(4);
@@ -107,10 +109,6 @@ $search-icon-size: 20px;
     border-color: $govuk-focus-colour;
   }
 
-  &:hover {
-    border-color: govuk-colour("black");
-  }
-
   &.gem-c-layout-super-navigation-header__open-button {
     border-left-color: govuk-colour("black");
     border-right-color: govuk-colour("black");
@@ -128,8 +126,8 @@ $search-icon-size: 20px;
 
     &:before,
     &:after {
-      $width: 1.2rem;
-      $height: .2rem;
+      $width: govuk-spacing(4);
+      $height: 4px;
 
       border: none;
       content: " ";
@@ -265,6 +263,30 @@ $search-icon-size: 20px;
 .gem-c-layout-super-navigation-header__navigation-item-link {
   @extend %top-level-navigation-link-base;
 
+  &,
+  &:link, // 👈 required to override govuk-template
+  &:visited {
+    color: $govuk-link-colour;
+
+    &:hover {
+      color: govuk-colour("mid-grey");
+    }
+
+    &:focus {
+      color: $govuk-focus-text-colour;
+    }
+
+    @include govuk-media-query($from: "desktop") {
+      color: govuk-colour("white");
+    }
+  }
+
+  // This :link:focus selector is required to override the `govuk-template`
+  // defaults.
+  &:link:focus {
+    color: $govuk-focus-text-colour;
+  }
+
   .js-enabled & {
     @include govuk-media-query($until: "desktop") {
       padding: govuk-spacing(6) govuk-spacing(3) govuk-spacing(6) govuk-spacing(9);
@@ -365,6 +387,10 @@ $search-icon-size: 20px;
   color: govuk-colour("white");
   position: absolute;
   right: (0 - govuk-spacing(3));
+
+  &:hover {
+    border-color: govuk-colour("black");
+  }
 
   @include govuk-media-query($from: 360px) {
     right: 0;
