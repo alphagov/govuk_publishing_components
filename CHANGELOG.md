@@ -10,6 +10,7 @@
 # Unreleased
 
 * Add link tracking to super navigation header ([PR #2249](https://github.com/alphagov/govuk_publishing_components/pull/2249))
+* Fix typos in super navigation link tracking ([PR #2251](https://github.com/alphagov/govuk_publishing_components/pull/2251))
 
 # 25.2.0
 
