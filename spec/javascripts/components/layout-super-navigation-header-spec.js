@@ -743,10 +743,6 @@ describe('The super header navigation', function () {
             label: 'none'
           })
         })
-
-        xit('updates the button’s state', function () {
-          expect($button).toHaveClass('govuk-header__menu-button--open')
-        })
       })
 
       describe('updates correctly when clicked twice', function () {
