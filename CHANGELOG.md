@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+# Unreleased
+
+* Fix final issues with tracking on super nav header ([PR #2256](https://github.com/alphagov/govuk_publishing_components/pull/2256))
+
 # 25.2.2
 
 * Fix typo in tracking module on super navigation header ([PR #2253](https://github.com/alphagov/govuk_publishing_components/pull/2253))

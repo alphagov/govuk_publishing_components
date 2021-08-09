@@ -90,9 +90,17 @@ show_navigation_menu_text = t("components.layout_super_navigation_header.menu_to
             tracking_label = link[:label].downcase.gsub(/\s+/, "")
           %>
           <%= tag.li class: li_classes do %>
-            <a class="gem-c-layout-super-navigation-header__navigation-item-link" href="<%= link[:href] %>">
-              <%= link[:label] %>
-            </a>
+            <%= link_to link[:label], link[:href], {
+              class: "gem-c-layout-super-navigation-header__navigation-item-link",
+              data: {
+                module: "gem-track-click",
+                track_action: "#{tracking_label}Link",
+                track_category: "headerClicked",
+                track_label: link[:href],
+                track_dimension: link[:label],
+                track_dimension_index: "29",
+              }
+            } %>
             <% if has_children %>
               <button
                 aria-controls="super-navigation-menu__section-<%= unique_id %>"
