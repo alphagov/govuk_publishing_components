@@ -134,7 +134,17 @@ show_navigation_menu_text = t("components.layout_super_navigation_header.menu_to
                                 link_classes << "gem-c-layout-super-navigation-header__navigation-second-item-link--with-description" if has_description
                               %>
                               <li class="gem-c-layout-super-navigation-header__dropdown-list-item">
-                                <%= link_to item[:label], item[:href], { class: link_classes } %>
+                                <%= link_to item[:label], item[:href], {
+                                  class: link_classes,
+                                  data: {
+                                    module: "gem-track-lick",
+                                    track_action: "#{tracking_label}Link",
+                                    track_cateogry: "headerClicked",
+                                    track_label: item[:href],
+                                    track_dimension: item[:label],
+                                    track_dimension_index: "29",
+                                  }
+                                } %>
                                 <%= tag.p item[:description], class: "govuk-body govuk-!-margin-0" if has_description %>
                               </li>
                             <% end %>
@@ -150,9 +160,20 @@ show_navigation_menu_text = t("components.layout_super_navigation_header.menu_to
                             <ul class="gem-c-layout-super-navigation-header__navigation-second-footer-list">
                               <% link[:footer_links].each do | item | %>
                                 <li class="gem-c-layout-super-navigation-header__navigation-second-footer-item">
-                                  <a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-footer-link" href="<%= item[:href] %>">
-                                    <%= item[:label] %>
-                                  </a>
+                                  <%= link_to item[:label], item[:href], {
+                                    class: [
+                                      "govuk-link",
+                                      "gem-c-layout-super-navigation-header__navigation-second-footer-link",
+                                    ],
+                                    data: {
+                                      module: "gem-track-lick",
+                                      track_action: "#{tracking_label}Link",
+                                      track_cateogry: "footerClicked",
+                                      track_label: item[:href],
+                                      track_dimension: item[:label],
+                                      track_dimension_index: "29",
+                                    }
+                                  } %>
                                 </li>
                               <% end %>
                             </ul>
