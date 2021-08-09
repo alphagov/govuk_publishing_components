@@ -361,11 +361,12 @@ module GovukPublishingComponents
         ],
       }.freeze
 
-      attr_reader :footer_navigation, :footer_meta
+      attr_reader :footer_navigation, :footer_meta, :cookie_banner_data
 
       def initialize(local_assigns)
         @footer_navigation = local_assigns[:footer_navigation] || FOOTER_NAV
         @footer_meta = local_assigns[:footer_meta] || FOOTER_META
+        @cookie_banner_data = local_assigns[:cookie_banner_data] || {}
       end
     end
   end

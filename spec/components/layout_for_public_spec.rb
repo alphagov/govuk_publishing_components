@@ -200,4 +200,59 @@ describe "Layout for public", type: :view do
 
     assert page.has_no_selector?("html > head > script[src*='lux/lux-reporter']", visible: :all)
   end
+
+  it "account layout renders with a phase banner by default" do
+    render_component({ show_account_layout: true })
+
+    assert_select ".gem-c-layout-for-public .gem-c-phase-banner"
+  end
+
+  it "account layout renders with an account nav by default" do
+    render_component({ show_account_layout: true })
+
+    assert_select ".gem-c-layout-for-public .gem-c-layout-for-public-account-nav"
+  end
+
+  it "account layout renders with a feedback prompt by default" do
+    render_component({ show_account_layout: true })
+
+    assert_select ".gem-c-layout-for-public .gem-c-layout-for-public-account-feedback-footer h2", text: "Help improve GOV.UK accounts"
+  end
+
+  it "indicates the active account navigation item if the location parameter is passed" do
+    render_component({ show_account_layout: true, account_nav_location: "manage" })
+
+    assert_select ".gem-c-layout-for-public-account-nav li.gem-c-layout-for-public-account-menu__item.gem-c-layout-for-public-account-menu__item--current a[aria-current=page]", text: "Manage your account"
+  end
+
+  it "can accept custom cookie banner content" do
+    render_component({
+      cookie_banner_data: {
+        title: "Can we use cookies to collect information about how you use GOV.UK?",
+        text: "Cookies help us see where we can make improvements to GOV.UK.",
+        confirmation_message: "You have accepted cookies.",
+        cookie_preferences_href: "https://www.gov.uk/government/publications/govuk-accounts-trial-full-privacy-notice-and-accessibility-statement",
+        services_cookies: {
+          yes: {
+            text: "Yes",
+            data_attributes: {
+              "track-category": "cookieBanner",
+            },
+          },
+          no: {
+            text: "No",
+            data_attributes: {
+              "track-category": "cookieBanner",
+            },
+          },
+          cookie_preferences: {
+            text: "How GOV.UK accounts use cookies",
+            href: "https://www.gov.uk/government/publications/govuk-accounts-trial-full-privacy-notice-and-accessibility-statement",
+          },
+        },
+      },
+    })
+
+    assert_select ".gem-c-cookie-banner__message .govuk-cookie-banner__heading", text: "Can we use cookies to collect information about how you use GOV.UK?"
+  end
 end

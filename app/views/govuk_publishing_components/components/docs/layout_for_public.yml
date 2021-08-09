@@ -61,3 +61,62 @@ examples:
     data:
       emergency_banner: <div class="govuk-!-padding-top-3 govuk-!-padding-bottom-3">This is the emergency banner slot</div>
       global_bar: <div class="govuk-!-padding-top-5 govuk-!-padding-bottom-3">This is the global bar slot</div>
+  with_account_layout_enabled:
+    description: Adds account layout wrapper around the content passed in to the component
+    data:
+      show_account_layout: true
+      block: |
+        <h2 class="govuk-heading-l">This is a title</h2>
+        <p class="govuk-body">This is some body text with <a href="https://example.com">a link</a>.
+  with_account_layout_but_without_account_feedback_footer:
+    description: The account layout renders with an account-specific feedback banner by default. This flag allows this banner to be omitted.
+    data:
+      show_account_layout: true
+      omit_account_feedback_footer: true
+      block: |
+        <h2 class="govuk-heading-l">This is a title</h2>
+        <p class="govuk-body">This is some body text with <a href="https://example.com">a link</a>.</p>
+  with_current_account_navigation:
+    description: "The account layout renders with an account-specific nav to help users navigate different areas of their account. This flag is here to allow control over which option in the nav is highlighted as `current`. Valid options are currently `your-account`, `manage`, and `security`."
+    data:
+      show_account_layout: true
+      account_nav_location: "manage"
+      block: |
+        <h2 class="govuk-heading-l">This is a title</h2>
+        <p class="govuk-body">This is a page under the "Manage your account" section, so we must highlight "Manage your account" in the account navigation.</p>
+  with_account_layout_but_without_account_navigation:
+    description: The account layout renders with account navigation by default, this hides it.
+    data:
+      show_account_layout: true
+      omit_account_navigation: true
+      block: |
+        <h2 class="govuk-heading-l">This is a title</h2>
+        <p class="govuk-body">This is some body text with <a href="https://example.com">a link</a>.</p>
+  with_account_layout_but_without_account_phase_banner:
+    description: The account layout renders with a phase banner by default, this hides it.
+    data:
+      show_account_layout: true
+      omit_account_phase_banner: true
+      block: |
+        <h2 class="govuk-heading-l">This is a title</h2>
+        <p class="govuk-body">This is some body text with <a href="https://example.com">a link</a>.</p>
+  with_custom_cookie_banner:
+    description: Passes content through to the [cookie banner component](/component-guide/cookie_banner/).
+    data:
+      cookie_banner_data:
+        title: Can we use cookies to collect information about how you use GOV.UK?
+        text: Cookies help us see where we can make improvements to GOV.UK.
+        confirmation_message: You have accepted cookies.
+        cookie_preferences_href: https://www.gov.uk/government/publications/govuk-accounts-trial-full-privacy-notice-and-accessibility-statement
+        services_cookies:
+          yes:
+            text: Yes
+            data_attributes:
+              track_category: cookieBanner
+          no:
+            text: No
+            data_attributes:
+              track-category: cookieBanner
+          cookie_preferences:
+            text: How GOV.UK accounts use cookies
+            href: https://www.gov.uk/government/publications/govuk-accounts-trial-full-privacy-notice-and-accessibility-statement

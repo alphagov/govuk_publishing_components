@@ -1,0 +1,29 @@
+<div class="govuk-width-container">
+  <% message = capture do %>
+    <%= t("components.layout_for_public.account_layout.feedback.banners.phase_intro") %>
+    <a class="govuk-link" href=<%= "#{Plek.find('account-manager')}/feedback" %>>
+      <%= t("components.layout_for_public.account_layout.feedback.banners.phase_link") %>
+    </a>
+    <%= t("components.layout_for_public.account_layout.feedback.banners.phase_outro") %>
+  <% end %>
+
+  <%= render "govuk_publishing_components/components/phase_banner", {
+    phase: "alpha",
+    message: message
+  } unless omit_account_phase_banner %>
+
+  <div class="govuk-grid-row govuk-main-wrapper">
+    <%= tag.div(class: 'govuk-grid-column-one-third') do %>
+      <%= render "govuk_publishing_components/components/layout_for_public/account-navigation", { page_is: account_nav_location} %>
+    <% end unless omit_account_navigation %>
+
+    <div class="govuk-grid-column-two-thirds">
+      <div id="wrapper">
+        <%= yield :before_content %>
+        <main role="main" id="content">
+          <%= yield %>
+        </main>
+      </div>
+    </div>
+  </div>
+</div>
