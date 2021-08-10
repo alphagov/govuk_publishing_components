@@ -1,11 +1,13 @@
-<button
+<a
   class="search-toggle js-header-toggle"
   data-search-toggle-for="search"
+  data-button-text="<%= t("components.layout_header.show_hide_button") %>"
   data-show-text="<%= t("components.layout_header.show_button") %>"
   data-hide-text="<%= t("components.layout_header.hide_button") %>"
+  href="/search"
 >
-  <%= t("components.layout_header.show_button") %>
-</button>
+  <%= t("components.layout_header.search_button") %>
+</a>
 <form
   action="/search"
   class="gem-c-layout-header__search-form govuk-clearfix"
