@@ -353,6 +353,9 @@ module GovukPublishingComponents
           {
             href: "/cymraeg",
             text: "Rhestr o Wasanaethau Cymraeg",
+            attributes: {
+              lang: "cy",
+            },
           },
           {
             href: "/government/organisations/government-digital-service",
