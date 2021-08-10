@@ -7,6 +7,11 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+# Unreleased
+
+* Fix search button on mobile ([PR #2259](https://github.com/alphagov/govuk_publishing_components/pull/2259))
+
+
 # 25.2.3
 
 * Fix final issues with tracking on super nav header ([PR #2256](https://github.com/alphagov/govuk_publishing_components/pull/2256))
