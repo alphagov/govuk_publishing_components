@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+# Unreleased
+
+* GOVUK.Modules.start can accept DOM elements ([PR #2260](https://github.com/alphagov/govuk_publishing_components/pull/2260))
+
 # 25.3.1
 
 * Fix track click link tracking ([PR #2265](https://github.com/alphagov/govuk_publishing_components/pull/2265))
