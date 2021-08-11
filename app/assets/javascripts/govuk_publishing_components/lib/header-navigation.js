@@ -47,16 +47,17 @@
         var isSearchToggle = sourceClass.match('search-toggle')
         var showText = this.getAttribute('data-show-text') || 'Show search'
         var hideText = this.getAttribute('data-hide-text') || 'Hide search'
+        var buttonName = this.getAttribute('data-button-name') || 'menu'
 
         if (targetClass.indexOf('js-visible') !== -1) {
           target.setAttribute('class', targetClass.replace(/(^|\s)js-visible(\s|$)/, ''))
           if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
-            window.GOVUK.analytics.trackEvent('headerClicked', 'menuClosed', { label: 'none' })
+            window.GOVUK.analytics.trackEvent('headerClicked', buttonName + 'Closed', { label: 'none' })
           }
         } else {
           target.setAttribute('class', targetClass + ' js-visible')
           if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
-            window.GOVUK.analytics.trackEvent('headerClicked', 'menuOpened', { label: 'none' })
+            window.GOVUK.analytics.trackEvent('headerClicked', buttonName + 'Opened', { label: 'none' })
           }
         }
         if (sourceClass.indexOf('js-visible') !== -1) {
@@ -84,13 +85,14 @@
     var element = $menuToggleButtons[j]
 
     element.addEventListener('click', function (event) {
+      var buttonName = event.target.getAttribute('data-button-name') || 'menu'
       var expanded = event.target.getAttribute('aria-expanded')
 
       if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
         if (expanded === 'true') {
-          window.GOVUK.analytics.trackEvent('headerClicked', 'menuClosed', { label: 'none' })
+          window.GOVUK.analytics.trackEvent('headerClicked', buttonName + 'Closed', { label: 'none' })
         } else {
-          window.GOVUK.analytics.trackEvent('headerClicked', 'menuOpened', { label: 'none' })
+          window.GOVUK.analytics.trackEvent('headerClicked', buttonName + 'Opened', { label: 'none' })
         }
       }
     })
