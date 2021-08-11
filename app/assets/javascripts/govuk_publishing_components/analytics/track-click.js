@@ -19,9 +19,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   GemTrackClick.prototype.handleClick = function (target) {
     var options = { transport: 'beacon' }
+    var linkText
 
     // if clicked element hasn't got the right attributes, look for a parent that matches
     if (!target.hasAttribute('data-track-category') && !target.hasAttribute('data-track-action')) {
+      linkText = target.textContent || target.innerText
       target = target.closest('[data-track-category][data-track-action]')
     }
 
@@ -34,9 +36,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       var dimensionIndex = target.getAttribute('data-track-dimension-index')
       var extraOptions = target.getAttribute('data-track-options')
 
-      if (label) {
-        options.label = label
-      }
+      options.label = label ? label : linkText
 
       if (value) {
         options.value = value
