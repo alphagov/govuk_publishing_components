@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-# Unreleased
+# 25.3.1
 
 * Fix track click link tracking ([PR #2265](https://github.com/alphagov/govuk_publishing_components/pull/2265))
 * Add language tag for Welsh link in public layout template ([PR #2258](https://github.com/alphagov/govuk_publishing_components/pull/2258))
