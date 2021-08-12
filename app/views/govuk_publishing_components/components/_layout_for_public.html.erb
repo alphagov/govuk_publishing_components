@@ -14,6 +14,12 @@
   show_search = local_assigns.include?(:show_search) ? local_assigns[:show_search] : true
   title ||= "GOV.UK - The best place to find government services and information"
 
+  show_account_layout ||= false
+  account_nav_location ||= nil
+  omit_account_feedback_footer ||= false
+  omit_account_navigation ||= false
+  omit_account_phase_banner ||= false
+
 # This is a hack - but it's the only way I can find to not have two blue bars on
 # constrained width layouts.
 #
@@ -74,7 +80,7 @@
       href: "#content"
     } %>
 
-    <%= render "govuk_publishing_components/components/cookie_banner" %>
+    <%= render "govuk_publishing_components/components/cookie_banner", layout_helper.cookie_banner_data %>
 
     <% unless omit_header %>
       <% if show_explore_header %>
@@ -107,14 +113,27 @@
       <% end %>
     <% end %>
 
-    <div id="wrapper" class="<%= "govuk-width-container" unless full_width %>">
-      <%= yield :before_content %>
-      <main class="govuk-main-wrapper" id="content">
+    <% if show_account_layout %>
+      <%= render "govuk_publishing_components/components/layout_for_public/account-layout", {
+        omit_account_phase_banner: omit_account_phase_banner,
+        omit_account_navigation: omit_account_navigation,
+        account_nav_location: account_nav_location,
+      } do %>
+        <%= yield :before_content %>
         <%= yield %>
-      </main>
-    </div>
+      <% end %>
+    <% else %>
+      <div id="wrapper" class="<%= "govuk-width-container" unless full_width %>">
+        <%= yield :before_content %>
+        <main class="govuk-main-wrapper" id="content">
+          <%= yield %>
+        </main>
+      </div>
+    <% end %>
 
-    <% unless omit_feedback_form %>
+    <% if show_account_layout && !omit_account_feedback_footer %>
+      <%= render "govuk_publishing_components/components/layout_for_public/account-feedback-footer" %>
+    <% elsif !omit_feedback_form %>
       <div class="govuk-width-container">
         <%= render "govuk_publishing_components/components/feedback" %>
       </div>

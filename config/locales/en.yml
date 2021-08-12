@@ -81,6 +81,27 @@ en:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
       licence_html: All content is available under the <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated
       support_links: Support links
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            footer_intro: We’re trialling GOV.UK accounts.
+            footer_link: Give feedback
+            footer_outro: on your experience so we can make them better.
+            phase_intro: We’re trialling GOV.UK accounts - your
+            phase_link: feedback
+            phase_outro: will help us improve them.
+            title: Help improve GOV.UK accounts
+        navigation:
+          destroy_user_session: Sign out
+          menu_bar:
+            account:
+              link_text: Your account
+            manage:
+              link_text: Manage your account
+            security:
+              link_text: Security and privacy
+          user_root_path: Account
     layout_header:
       hide_button: Hide search
       menu: Menu

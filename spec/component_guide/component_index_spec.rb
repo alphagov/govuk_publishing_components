@@ -56,6 +56,7 @@ describe "Component guide index" do
 @import 'govuk_publishing_components/components/error-summary';
 @import 'govuk_publishing_components/components/feedback';
 @import 'govuk_publishing_components/components/govspeak';
+@import 'govuk_publishing_components/components/heading';
 @import 'govuk_publishing_components/components/hint';
 @import 'govuk_publishing_components/components/input';
 @import 'govuk_publishing_components/components/label';
@@ -64,6 +65,7 @@ describe "Component guide index" do
 @import 'govuk_publishing_components/components/layout-for-public';
 @import 'govuk_publishing_components/components/layout-header';
 @import 'govuk_publishing_components/components/layout-super-navigation-header';
+@import 'govuk_publishing_components/components/phase-banner';
 @import 'govuk_publishing_components/components/print-link';
 @import 'govuk_publishing_components/components/related-navigation';
 @import 'govuk_publishing_components/components/search';
