@@ -1,3 +1,3 @@
 module GovukPublishingComponents
-  VERSION = "25.2.3".freeze
+  VERSION = "25.3.0".freeze
 end
