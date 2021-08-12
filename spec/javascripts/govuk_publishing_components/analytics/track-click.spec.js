@@ -124,11 +124,11 @@ describe('A click tracker', function () {
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('cat2', 'action2', { label: 'label2', transport: 'beacon' })
   })
 
-  it('tracks all links in a trackable container and uses the link text as the label if no label is specified', function () {
+  it('tracks all links in a trackable container and uses the link URL as the label if no label is specified', function () {
     element = $(
       '<div data-module="gem-track-click" data-track-category="cat1" data-track-action="action1">' +
-        '<a class="first" href="#">Link 1</a>' +
-        '<a class="second" href="#" ' +
+        '<a class="first" href="#link1">Link 1</a>' +
+        '<a class="second" href="#link2" ' +
           'data-track-category="cat2"' +
           'data-track-action="action2"' +
           'data-track-label="label2">' +
@@ -140,7 +140,7 @@ describe('A click tracker', function () {
     new GOVUK.Modules.GemTrackClick().start(element)
 
     element.find('a.first')[0].click()
-    expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('cat1', 'action1', { label: 'Link 1', transport: 'beacon' })
+    expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('cat1', 'action1', { label: '#link1', transport: 'beacon' })
 
     element.find('a.second')[0].click()
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('cat2', 'action2', { label: 'label2', transport: 'beacon' })
@@ -149,8 +149,8 @@ describe('A click tracker', function () {
   it('tracks only clicks on links when configured', function () {
     element = $(
       '<div data-module="gem-track-click" data-track-category="cat1" data-track-action="action1" data-track-links-only>' +
-        '<a class="first" href="#">Link 1</a>' +
-        '<a class="second" href="#" ' +
+        '<a class="first" href="#link1">Link 1</a>' +
+        '<a class="second" href="#link2" ' +
           'data-track-category="cat2"' +
           'data-track-action="action2"' +
           'data-track-label="label2">' +
@@ -166,7 +166,7 @@ describe('A click tracker', function () {
     expect(GOVUK.analytics.trackEvent).not.toHaveBeenCalled()
 
     element.find('a.first')[0].click()
-    expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('cat1', 'action1', { label: 'Link 1', transport: 'beacon' })
+    expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('cat1', 'action1', { label: '#link1', transport: 'beacon' })
 
     element.find('a.second')[0].click()
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('cat2', 'action2', { label: 'label2', transport: 'beacon' })

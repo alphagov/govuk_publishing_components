@@ -24,24 +24,26 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   GemTrackClick.prototype.handleClick = function (target) {
     var options = { transport: 'beacon' }
-    var linkText
+    var linkUrl
 
     // if clicked element hasn't got the right attributes, look for a parent that matches
     if (!target.hasAttribute('data-track-category') && !target.hasAttribute('data-track-action')) {
-      linkText = target.textContent || target.innerText
+      linkUrl = target.getAttribute('href')
       target = target.closest('[data-track-category][data-track-action]')
     }
 
     if (target) {
       var category = target.getAttribute('data-track-category')
       var action = target.getAttribute('data-track-action')
-      var label = target.getAttribute('data-track-label')
+      var label = target.getAttribute('data-track-label') || linkUrl
       var value = target.getAttribute('data-track-value')
       var dimension = target.getAttribute('data-track-dimension')
       var dimensionIndex = target.getAttribute('data-track-dimension-index')
       var extraOptions = target.getAttribute('data-track-options')
 
-      options.label = label || linkText
+      if (label) {
+        options.label = label
+      }
 
       if (value) {
         options.value = value
