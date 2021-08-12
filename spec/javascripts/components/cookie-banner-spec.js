@@ -14,7 +14,7 @@ describe('Cookie banner', function () {
     container = document.createElement('div')
 
     container.innerHTML =
-    '<div id="global-cookie-message" class="gem-c-cookie-banner govuk-clearfix" data-module="cookie-banner" role="region" aria-label="cookie banner" data-nosnippet="" hidden>' +
+    '<div id="global-cookie-message" class="gem-c-cookie-banner govuk-clearfix" data-module="cookie-banner" role="region" aria-label="cookie banner" data-nosnippet="" style="display: block;">' +
       '<div class="govuk-cookie-banner js-banner-wrapper" role="region" aria-label="Cookies on GOV.UK">' +
         '<div class="gem-c-cookie-banner__message govuk-cookie-banner__message govuk-width-container govuk-body">' +
           '<div class="govuk-grid-row">' +
@@ -28,13 +28,13 @@ describe('Cookie banner', function () {
             '</div>' +
           '</div>' +
           '<div class="govuk-button-group">' +
-            '<button class="gem-c-button govuk-button" type="submit" data-module="gem-track-click" data-accept-cookies="true" data-track-category="cookieBanner" data-track-action="Cookie banner accepted" data-cookie-types="all">Accept additional cookies</button>' +
-            '<button class="gem-c-button govuk-button" type="submit" data-module="gem-track-click" data-reject-cookies="true" data-track-category="cookieBanner" data-track-action="Cookie banner rejected">Reject additional cookies</button>' +
+            '<button class="gem-c-button govuk-button" type="submit" data-module="gem-track-click" data-accept-cookies="true" data-track-category="cookieBanner" data-track-action="Cookie banner accepted" data-cookie-types="all" style="display: block;">Accept additional cookies</button>' +
+            '<button class="gem-c-button govuk-button" type="submit" data-module="gem-track-click" data-reject-cookies="true" data-track-category="cookieBanner" data-track-action="Cookie banner rejected" style="display: block;">Reject additional cookies</button>' +
             '<a class="govuk-link" href="/help/cookies">View cookies</a>' +
           '</div>' +
         '</div>' +
       '</div>' +
-      '<div class="gem-c-cookie-banner__confirmation govuk-width-container" tabindex="-1" hidden>' +
+      '<div class="gem-c-cookie-banner__confirmation govuk-width-container" tabindex="-1" hidden="">' +
         '<p class="gem-c-cookie-banner__confirmation-message" role="alert">You can <a class="govuk-link" href="/help/cookies" data-module="gem-track-click" data-track-category="cookieBanner" data-track-action="Cookie banner settings clicked from confirmation">change your cookie settings</a> at any time.</p>' +
         '<div class="govuk-button-group">' +
           '<button class="gem-c-cookie-banner__hide-button govuk-button" data-hide-cookie-banner="true" data-module="gem-track-click" data-track-category="cookieBanner" data-track-action="Hide cookie banner">Hide this message</button>' +
@@ -88,7 +88,7 @@ describe('Cookie banner', function () {
     var element = document.querySelector('[data-module="cookie-banner"]')
     new GOVUK.Modules.CookieBanner(element).init()
 
-    expect((element).hasAttribute('hidden')).toEqual(true)
+    expect(element).toBeHidden()
   })
 
   it('sets a default consent cookie', function () {
@@ -182,7 +182,7 @@ describe('Cookie banner', function () {
     var link = document.querySelector('button[data-hide-cookie-banner="true"]')
     link.dispatchEvent(new window.Event('click'))
 
-    expect((element).hasAttribute('hidden')).toEqual(true)
+    expect(element).toBeHidden()
     expect(GOVUK.getCookie('cookies_preferences_set')).toBeTruthy()
   })
 
@@ -201,7 +201,7 @@ describe('Cookie banner', function () {
     it('should hide the cookie banner', function () {
       var element = document.querySelector('[data-module="cookie-banner"]')
       new GOVUK.Modules.CookieBanner(element).init()
-      expect((element).hasAttribute('hidden')).toEqual(true)
+      expect(element).toBeHidden()
     })
   })
 })

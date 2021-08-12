@@ -11,6 +11,7 @@
 
 * Fix track click link tracking ([PR #2265](https://github.com/alphagov/govuk_publishing_components/pull/2265))
 * Add language tag for Welsh link in public layout template ([PR #2258](https://github.com/alphagov/govuk_publishing_components/pull/2258))
+* Revert "Fix cookie banner issue (IE10)" ([PR #2267](https://github.com/alphagov/govuk_publishing_components/pull/2267))
 
 # 25.3.0
 
