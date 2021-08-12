@@ -29,7 +29,7 @@
   css_classes = %w(gem-c-cookie-banner govuk-clearfix)
   css_classes << "gem-c-cookie-banner--services" if services_cookies
 %>
-<div id="<%= id %>" class="<%= css_classes.join(' ') %>" data-module="cookie-banner" role="region" aria-label="cookie banner" data-nosnippet hidden>
+<div id="<%= id %>" class="<%= css_classes.join(' ') %>" data-module="cookie-banner" role="region" aria-label="cookie banner" data-nosnippet>
   <div class="govuk-cookie-banner js-banner-wrapper" role="region" aria-label="<%= title %>">
     <div class="gem-c-cookie-banner__message govuk-cookie-banner__message govuk-width-container">
       <div class="govuk-grid-row">
