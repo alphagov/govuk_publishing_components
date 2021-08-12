@@ -9,19 +9,26 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   GemTrackClick.prototype.start = function ($module) {
     this.$module = $module[0]
     this.$module.handleClick = this.handleClick.bind(this)
+    var trackLinksOnly = this.$module.hasAttribute('data-track-links-only')
 
     var that = this
     // add a listener to the whole element
     this.$module.addEventListener('click', function (e) {
-      that.$module.handleClick(e.target)
+      if (!trackLinksOnly) {
+        that.$module.handleClick(e.target)
+      } else if (trackLinksOnly && e.target.tagName === 'A') {
+        that.$module.handleClick(e.target)
+      }
     })
   }
 
   GemTrackClick.prototype.handleClick = function (target) {
     var options = { transport: 'beacon' }
+    var linkText
 
     // if clicked element hasn't got the right attributes, look for a parent that matches
     if (!target.hasAttribute('data-track-category') && !target.hasAttribute('data-track-action')) {
+      linkText = target.textContent || target.innerText
       target = target.closest('[data-track-category][data-track-action]')
     }
 
@@ -34,9 +41,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       var dimensionIndex = target.getAttribute('data-track-dimension-index')
       var extraOptions = target.getAttribute('data-track-options')
 
-      if (label) {
-        options.label = label
-      }
+      options.label = label || linkText
 
       if (value) {
         options.value = value

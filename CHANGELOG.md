@@ -9,6 +9,7 @@
 
 # Unreleased
 
+* Extend track click script ([PR #2263](https://github.com/alphagov/govuk_publishing_components/pull/2263))
 * Fix cookie banner issue (IE10) ([PR #2231](https://github.com/alphagov/govuk_publishing_components/pull/2231))
 * Extend layout for public with account components ([PR #2255](https://github.com/alphagov/govuk_publishing_components/pull/2255))
 
