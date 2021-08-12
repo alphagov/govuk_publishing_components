@@ -7,11 +7,12 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-# Unreleased
+# 25.3.0
 
 * Extend track click script ([PR #2263](https://github.com/alphagov/govuk_publishing_components/pull/2263))
 * Fix cookie banner issue (IE10) ([PR #2231](https://github.com/alphagov/govuk_publishing_components/pull/2231))
 * Extend layout for public with account components ([PR #2255](https://github.com/alphagov/govuk_publishing_components/pull/2255))
+* Update search toggle tracking ([PR #2262](https://github.com/alphagov/govuk_publishing_components/pull/2262))
 
 # 25.2.3
 
