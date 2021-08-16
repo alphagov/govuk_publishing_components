@@ -57,6 +57,13 @@ describe('GOVUK Modules', function () {
     container.remove()
   })
 
+  it('can find a module with a DOM element input', function () {
+    var container = $('<div data-module="container-module"></div>')
+
+    expect(GOVUK.modules.find(container[0]).length).toBe(1)
+    expect(GOVUK.modules.find(container).eq(0).data('module')).toBe('container-module')
+  })
+
   describe('when modules exist', function () {
     var container
     var callbackLegacyModule
