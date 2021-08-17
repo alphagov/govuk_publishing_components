@@ -4,7 +4,7 @@ module GovukPublishingComponents
       include ActionView::Helpers
       include ActionView::Context
 
-      attr_reader :href, :href_data_attributes, :extra_links, :large, :extra_links_no_indent, :heading_text, :metadata, :lang
+      attr_reader :href, :href_data_attributes, :extra_links, :large, :extra_links_no_indent, :heading_text, :metadata, :lang, :image_loading
 
       def initialize(local_assigns)
         @href = local_assigns[:href]
@@ -12,6 +12,7 @@ module GovukPublishingComponents
         @extra_links = local_assigns[:extra_links] || []
         @image_src = local_assigns[:image_src]
         @image_alt = local_assigns[:image_alt] || ""
+        @image_loading = local_assigns[:image_loading] || "auto"
         @context = local_assigns[:context]
         @description = local_assigns[:description]
         @large = local_assigns[:large]
@@ -35,7 +36,7 @@ module GovukPublishingComponents
       def image
         if @image_src
           content_tag(:figure, class: "gem-c-image-card__image-wrapper") do
-            image_tag(@image_src, class: "gem-c-image-card__image", alt: @image_alt)
+            image_tag(@image_src, class: "gem-c-image-card__image", alt: @image_alt, loading: @image_loading)
           end
         end
       end

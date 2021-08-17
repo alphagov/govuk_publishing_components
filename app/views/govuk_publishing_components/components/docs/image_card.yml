@@ -35,6 +35,15 @@ examples:
       image_alt: "some meaningful alt text please"
       heading_text: "I am not a heading"
       heading_level: 0
+  with_lazy_loading:
+    description: The image can have an attribute of lazy loading. Defaults to auto if not passed.
+    data:
+      href: "/really-not-a-page"
+      image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
+      image_alt: "some meaningful alt text please"
+      image_loading: "lazy"
+      heading_text: "I am not a heading"
+      heading_level: 0
   with_different_link_size:
     description: |
       Set a different font size for the link. Uses the [GOV.UK Frontend heading sizes](https://design-system.service.gov.uk/styles/typography/#headings) but defaults to 19px for legacy reasons. Valid options are `xl`, `l`, `m` and `s`.
