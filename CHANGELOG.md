@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+# Unreleased
+
+* Fix `line-height` on step-by-step nav header ([PR #2273](https://github.com/alphagov/govuk_publishing_components/pull/2273))
+
 # 25.4.0
 
 * Add lazy loading to image card ([PR #2270](https://github.com/alphagov/govuk_publishing_components/pull/2270))
