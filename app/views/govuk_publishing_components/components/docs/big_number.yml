@@ -1,0 +1,50 @@
+name: Big number
+description: A big number, with a label if needed, for visualising quantitative values such as the number of government departments or historical prime ministers.
+body: |
+  This component requires at least a non-falsey `number` attribute value passed to it, otherwise it will not render.
+accessibility_criteria: |
+  This component must:
+
+  - communicate number value and label (if present) in a single dictation when read with a screen reader
+  - convey the meaning of the number shown
+shared_accessibility_criteria:
+- link
+examples:
+  default:
+    data:
+      number: 119
+  with_labels:
+    description: Labels for numbers are given inline styling but stacked using pseudo elements with display block. This is to bypass an issue with NVDA where block level elements are dictated separately.
+    data:
+      number: 119
+      label: Open consultations
+  passing_extra_symbols:
+    description: "In some cases, we want to communicate more than just the flat numeric value eg: 400+, 90%, -20, 1M etc. This is why we allow values to be passed as flat strings."
+    data:
+      number: "400+"
+      label: Other agencies and public bodies
+  with_link:
+    data:
+      number: 23
+      label: Ministerial departments
+      href: "/government/organisations#ministerial_departments"
+  with_link_but_no_label:
+    description: Numbers that are links are underlined unless a label is provided, in which case the label is given the underline.
+    data:
+      number: 23
+      href: "/government/organisations#ministerial_departments"
+  with_data_attributes:
+    description: |
+      These data attributes will only be present if a `href` attribute is present.
+      
+      This will also not automatically apply a `gem-track-click` module attribute if the data attributes pertain to click tracking. Remember to apply this outside the component call in a surrounding element, if using.
+    data:
+      number: 23
+      label: Ministerial departments
+      href: "/government/organisations#ministerial_departments"
+      data_attributes:
+        track-category: homepageClicked
+        track-action: departmentsLink
+        track-label: "/government/organisations#ministerial_departments"
+        track-dimension: 23 Ministerial departments
+        track-dimension-index: 29
