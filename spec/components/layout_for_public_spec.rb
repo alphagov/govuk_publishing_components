@@ -255,4 +255,10 @@ describe "Layout for public", type: :view do
 
     assert_select ".gem-c-cookie-banner__message .govuk-cookie-banner__heading", text: "Can we use cookies to collect information about how you use GOV.UK?"
   end
+
+  it "displays as draft watermark" do
+    render_component({ draft_watermark: true })
+
+    assert_select ".gem-c-layout-for-public.govuk-template__body.draft"
+  end
 end
