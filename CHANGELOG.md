@@ -10,6 +10,7 @@
 # Unreleased
 
 * Fix `line-height` on step-by-step nav header ([PR #2273](https://github.com/alphagov/govuk_publishing_components/pull/2273))
+* Enable draft on public layout ([PR #2274](https://github.com/alphagov/govuk_publishing_components/pull/2274))
 
 # 25.4.0
 
