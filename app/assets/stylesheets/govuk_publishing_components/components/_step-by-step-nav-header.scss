@@ -1,5 +1,7 @@
 .gem-c-step-nav-header {
+  @include govuk-font(24, $weight: bold);
   @include govuk-text-colour;
+
   position: relative;
   padding: 10px;
   background: govuk-colour("light-grey", $legacy: "grey-4");
@@ -14,8 +16,4 @@
 .gem-c-step-nav-header__part-of {
   @include govuk-font(19, $weight: bold);
   display: block;
-}
-
-.gem-c-step-nav-header__title {
-  @include govuk-font(24, $weight: bold, $line-height: 1);
 }
