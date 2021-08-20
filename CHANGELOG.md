@@ -7,11 +7,12 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-# Unreleased
+# 25.5.0
 
 * Restore underline on image card header link ([PR #2277](https://github.com/alphagov/govuk_publishing_components/pull/2277))
 * Fix `line-height` on step-by-step nav header ([PR #2273](https://github.com/alphagov/govuk_publishing_components/pull/2273))
 * Enable draft on public layout ([PR #2274](https://github.com/alphagov/govuk_publishing_components/pull/2274))
+* Bump `govuk-frontend` from 3.12.0 to 3.13.0 ([PR #2164](https://github.com/alphagov/govuk_publishing_components/pull/2164))
 
 # 25.4.0
 
