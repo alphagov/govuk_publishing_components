@@ -9,6 +9,7 @@
 
 # Unreleased
 
+* Restore underline on image card header link ([PR #2277](https://github.com/alphagov/govuk_publishing_components/pull/2277))
 * Fix `line-height` on step-by-step nav header ([PR #2273](https://github.com/alphagov/govuk_publishing_components/pull/2273))
 * Enable draft on public layout ([PR #2274](https://github.com/alphagov/govuk_publishing_components/pull/2274))
 
