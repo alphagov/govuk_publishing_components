@@ -269,7 +269,11 @@ $search-icon-size: 20px;
     color: $govuk-link-colour;
 
     &:hover {
-      color: govuk-colour("mid-grey");
+      color: $govuk-link-hover-colour;
+
+      @include govuk-media-query($from: "desktop") {
+        color: govuk-colour("mid-grey");
+      }
     }
 
     &:focus {
