@@ -155,10 +155,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       }
 
       this.$module.style.marginBottom = '0'
-
-      window.removeEventListener('resize', this.resizeHandler, { passive: true })
-
-      this.lastWindowSize = this.windowSize()
     }
 
     // Hide the navigation toggle button and show the navigation submenu:
@@ -166,10 +162,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       this.$navigationToggle.setAttribute('hidden', 'hidden')
       this.$navigationMenu.removeAttribute('hidden')
 
-      window.addEventListener('resize', this.resizeHandler, { passive: true })
-
-      this.lastWindowSize = this.windowSize()
+      this.resizeHandler()
     }
+
+    this.lastWindowSize = this.windowSize()
   }
 
   SuperNavigationMegaMenu.prototype.buttonHandler = function (event) {
