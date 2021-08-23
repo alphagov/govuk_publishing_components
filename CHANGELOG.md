@@ -7,46 +7,50 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-# 25.5.0
+## Unreleased
+
+* Fix navigation header layout error that occurs when resizing browser window ([PR #2281](https://github.com/alphagov/govuk_publishing_components/pull/2281))
+
+## 25.5.0
 
 * Restore underline on image card header link ([PR #2277](https://github.com/alphagov/govuk_publishing_components/pull/2277))
 * Fix `line-height` on step-by-step nav header ([PR #2273](https://github.com/alphagov/govuk_publishing_components/pull/2273))
 * Enable draft on public layout ([PR #2274](https://github.com/alphagov/govuk_publishing_components/pull/2274))
 * Bump `govuk-frontend` from 3.12.0 to 3.13.0 ([PR #2164](https://github.com/alphagov/govuk_publishing_components/pull/2164))
 
-# 25.4.0
+## 25.4.0
 
 * Add lazy loading to image card ([PR #2270](https://github.com/alphagov/govuk_publishing_components/pull/2270))
 * GOVUK.Modules.start can accept DOM elements ([PR #2260](https://github.com/alphagov/govuk_publishing_components/pull/2260))
 
-# 25.3.1
+## 25.3.1
 
 * Fix track click link tracking ([PR #2265](https://github.com/alphagov/govuk_publishing_components/pull/2265))
 * Add language tag for Welsh link in public layout template ([PR #2258](https://github.com/alphagov/govuk_publishing_components/pull/2258))
 * Revert "Fix cookie banner issue (IE10)" ([PR #2267](https://github.com/alphagov/govuk_publishing_components/pull/2267))
 
-# 25.3.0
+## 25.3.0
 
 * Extend track click script ([PR #2263](https://github.com/alphagov/govuk_publishing_components/pull/2263))
 * Fix cookie banner issue (IE10) ([PR #2231](https://github.com/alphagov/govuk_publishing_components/pull/2231))
 * Extend layout for public with account components ([PR #2255](https://github.com/alphagov/govuk_publishing_components/pull/2255))
 * Update search toggle tracking ([PR #2262](https://github.com/alphagov/govuk_publishing_components/pull/2262))
 
-# 25.2.3
+## 25.2.3
 
 * Fix final issues with tracking on super nav header ([PR #2256](https://github.com/alphagov/govuk_publishing_components/pull/2256))
 
-# 25.2.2
+## 25.2.2
 
 * Fix typo in tracking module on super navigation header ([PR #2253](https://github.com/alphagov/govuk_publishing_components/pull/2253))
 
-# 25.2.1
+## 25.2.1
 
 * Add link tracking to super navigation header ([PR #2249](https://github.com/alphagov/govuk_publishing_components/pull/2249))
 * Fix typos in super navigation link tracking ([PR #2251](https://github.com/alphagov/govuk_publishing_components/pull/2251))
 * Update super navigation styles to avoid `govuk-layout` clashes ([PR #2250](https://github.com/alphagov/govuk_publishing_components/pull/2250))
 
-# 25.2.0
+## 25.2.0
 
 * Add analytics tags to super navigation header ([PR #2244](https://github.com/alphagov/govuk_publishing_components/pull/2244))
 * Update copy for Explore Super Menu Header ([PR #2247](https://github.com/alphagov/govuk_publishing_components/pull/2247))
