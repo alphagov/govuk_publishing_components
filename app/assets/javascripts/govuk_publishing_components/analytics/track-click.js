@@ -10,14 +10,20 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.$module = $module[0]
     this.$module.handleClick = this.handleClick.bind(this)
     var trackLinksOnly = this.$module.hasAttribute('data-track-links-only')
+    var limitToElementClass = this.$module.getAttribute('data-limit-to-element-class')
 
     var that = this
     // add a listener to the whole element
     this.$module.addEventListener('click', function (e) {
+      var target = e.target
       if (!trackLinksOnly) {
-        that.$module.handleClick(e.target)
-      } else if (trackLinksOnly && e.target.tagName === 'A') {
-        that.$module.handleClick(e.target)
+        that.$module.handleClick(target)
+      } else if (trackLinksOnly && target.tagName === 'A') {
+        if (!limitToElementClass) {
+          that.$module.handleClick(target)
+        } else if (limitToElementClass && target.closest('.' + limitToElementClass)) {
+          that.$module.handleClick(target)
+        }
       }
     })
   }
