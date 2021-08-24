@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    govuk_publishing_components (25.5.0)
+    govuk_publishing_components (25.6.0)
       govuk_app_config
       kramdown
       plek
