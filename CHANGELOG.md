@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 25.6.0
 
 * Add element tracking to track click ([PR #2283](https://github.com/alphagov/govuk_publishing_components/pull/2283))
 * Fix navigation header layout error that occurs when resizing browser window ([PR #2281](https://github.com/alphagov/govuk_publishing_components/pull/2281))
