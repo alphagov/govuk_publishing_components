@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Fix navigation header layout error that occurs when resizing browser window ([PR #2281](https://github.com/alphagov/govuk_publishing_components/pull/2281))
+* Fix navigation header search toggle focus hover states ([PR #2284](https://github.com/alphagov/govuk_publishing_components/pull/2284))
 
 ## 25.5.0
 
