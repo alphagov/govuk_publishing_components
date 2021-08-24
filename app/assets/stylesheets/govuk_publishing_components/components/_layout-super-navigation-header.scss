@@ -269,7 +269,11 @@ $search-icon-size: 20px;
     color: $govuk-link-colour;
 
     &:hover {
-      color: govuk-colour("mid-grey");
+      color: $govuk-link-hover-colour;
+
+      @include govuk-media-query($from: "desktop") {
+        color: govuk-colour("mid-grey");
+      }
     }
 
     &:focus {
@@ -358,6 +362,10 @@ $search-icon-size: 20px;
   position: absolute;
   right: 45px;
 
+  &.gem-c-layout-super-navigation-header__open-button {
+    border-top-color: govuk-colour("black");
+  }
+
   @include govuk-media-query($from: 360px) {
     &:before {
       @include chevron("white");
@@ -388,12 +396,16 @@ $search-icon-size: 20px;
   position: absolute;
   right: (0 - govuk-spacing(3));
 
-  &:hover {
-    border-color: govuk-colour("black");
+  &.gem-c-layout-super-navigation-header__open-button {
+    border-top-color: govuk-colour("black");
   }
 
   @include govuk-media-query($from: 360px) {
     right: 0;
+  }
+
+  &:focus:hover {
+    border-top-color: govuk-colour("black");
   }
 
   @include govuk-media-query($from: "desktop") {
@@ -406,8 +418,8 @@ $search-icon-size: 20px;
     float: right;
 
     &:not(.gem-c-layout-super-navigation-header__open-button):hover {
-      background: none;
-      color: govuk-colour("light-grey");
+      background: govuk-colour("black");
+      color: govuk-colour("mid-grey");
 
       &:after {
         content: " ";
@@ -422,8 +434,6 @@ $search-icon-size: 20px;
     }
 
     &.gem-c-layout-super-navigation-header__open-button {
-      border-top-color: govuk-colour("black");
-
       &:hover:after {
         content: " ";
       }
@@ -486,7 +496,6 @@ $search-icon-size: 20px;
 
     &:focus {
       color: $govuk-focus-text-colour;
-      // border-color: $govuk-focus-text-colour;
 
       &:after {
         background-color: $govuk-focus-text-colour;
@@ -500,10 +509,6 @@ $search-icon-size: 20px;
 
   &.gem-c-layout-super-navigation-header__open-button {
     border-top-color: govuk-colour("black");
-
-    &:focus {
-      border-top-color: $govuk-focus-colour;
-    }
 
     &:before {
       transform: translateY(20%) rotate(225deg);
