@@ -1,6 +1,6 @@
 # Analytics
 
-The gem now contains the GOV.UK analytics code from `static`, originally from `govuk_frontend_toolkit`. It is not included with the JS from the gem as it is not intended for wider use yet.
+The gem now contains the GOV.UK analytics code from `static`, originally from `govuk_frontend_toolkit`.
 
 The following documentation is included from the original for reference only.
 

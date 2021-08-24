@@ -172,6 +172,38 @@ describe('A click tracker', function () {
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('cat2', 'action2', { label: 'label2', transport: 'beacon' })
   })
 
+  it('tracks only clicks on links within a given element when configured', function () {
+    element = $(
+      '<div data-module="gem-track-click" data-track-category="cat1" data-track-action="action1" data-track-links-only data-limit-to-element-class="testBox">' +
+        '<div class="testBox">' +
+          '<a class="first" href="#link1">Link 1</a>' +
+          '<a class="second" href="#link2" ' +
+            'data-track-category="cat2"' +
+            'data-track-action="action2"' +
+            'data-track-label="label2">' +
+            'Link 2' +
+          '</a>' +
+        '</div>' +
+        '<a class="third" href="#link3">Link 3</a>' +
+        '<span class="nothing"></span>' +
+      '</div>'
+    )
+
+    new GOVUK.Modules.GemTrackClick().start(element)
+
+    element.find('.nothing')[0].click()
+    expect(GOVUK.analytics.trackEvent).not.toHaveBeenCalled()
+
+    element.find('a.third')[0].click()
+    expect(GOVUK.analytics.trackEvent).not.toHaveBeenCalled()
+
+    element.find('a.first')[0].click()
+    expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('cat1', 'action1', { label: '#link1', transport: 'beacon' })
+
+    element.find('a.second')[0].click()
+    expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('cat2', 'action2', { label: 'label2', transport: 'beacon' })
+  })
+
   it('tracks a click correctly when event target is a child element of trackable element', function () {
     element = $(
       '<div data-module="gem-track-click">' +
