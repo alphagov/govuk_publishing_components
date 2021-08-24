@@ -396,16 +396,23 @@ $search-icon-size: 20px;
   position: absolute;
   right: (0 - govuk-spacing(3));
 
-  &.gem-c-layout-super-navigation-header__open-button {
-    border-top-color: govuk-colour("black");
+  &:after {
+    background-color: $govuk-link-colour;
+    content: " ";
+    left: 0;
+    right: 0;
+  }
+
+  &:not(.gem-c-layout-super-navigation-header__open-button):focus {
+    &:hover,
+    &:after {
+      background-color: $govuk-focus-colour;
+      border-top-color: $govuk-focus-colour;
+    }
   }
 
   @include govuk-media-query($from: 360px) {
     right: 0;
-  }
-
-  &:focus:hover {
-    border-top-color: govuk-colour("black");
   }
 
   @include govuk-media-query($from: "desktop") {
@@ -417,23 +424,9 @@ $search-icon-size: 20px;
     position: relative;
     float: right;
 
-    &:not(.gem-c-layout-super-navigation-header__open-button):hover {
-      background: govuk-colour("black");
-      color: govuk-colour("mid-grey");
-
-      &:after {
-        content: " ";
-        left: 0;
-        right: 0;
-      }
-    }
-
-    &:focus:hover:after,
-    &:after {
-      content: none;
-    }
-
     &.gem-c-layout-super-navigation-header__open-button {
+      border-top-color: govuk-colour("black");
+
       &:hover:after {
         content: " ";
       }
