@@ -127,6 +127,10 @@
     margin-bottom: govuk-spacing(1);
   }
 
+  .gem-c-image-card__list-item--text {
+    color: govuk-colour("dark-grey", $legacy: "grey-1");
+  }
+
   .gem-c-image-card__list-item-link {
     line-height: 1.35em;
   }

@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add text list to image card ([PR #2286](https://github.com/alphagov/govuk_publishing_components/pull/2286))
+
 ## 25.6.0
 
 * Add element tracking to track click ([PR #2283](https://github.com/alphagov/govuk_publishing_components/pull/2283))

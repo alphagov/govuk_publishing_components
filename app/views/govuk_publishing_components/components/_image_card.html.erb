@@ -47,12 +47,16 @@
       <% if card_helper.extra_links.any? %>
         <ul class="gem-c-image-card__list <%= "gem-c-image-card__list--indented" if not card_helper.extra_links_no_indent %>">
           <% card_helper.extra_links.each do |link| %>
-            <li class="gem-c-image-card__list-item">
-              <%= link_to link[:text], link[:href],
-                class: extra_link_classes,
-                data: link[:data_attributes]
-              %>
-            </li>
+            <li class="gem-c-image-card__list-item <%= "gem-c-image-card__list-item--text" if not link[:href].present? %>">
+              <% if link[:href].present? %>
+                <%= link_to link[:text], link[:href],
+                  class: extra_link_classes,
+                  data: link[:data_attributes]
+                %>
+              <% else %>
+                <%= link[:text] %>
+              <% end %>  
+            </li>    
           <% end %>
         </ul>
       <% end %>

@@ -80,6 +80,12 @@ describe "ImageCard", type: :view do
     assert_select ".gem-c-image-card__list.gem-c-image-card__list--indented", false
   end
 
+  it "renders extra links without links and just as a text list" do
+    render_component(href: "#", extra_links: [{ text: "text1" }], extra_links_no_indent: true)
+    assert_select ".gem-c-image-card__list"
+    assert_select ".gem-c-image-card__list-item.gem-c-image-card__list-item--text"
+  end
+
   it "renders extra links without a main link" do
     render_component(extra_links: [{ href: "/1", text: "link1" }])
     assert_select ".gem-c-image-card__title a", false
