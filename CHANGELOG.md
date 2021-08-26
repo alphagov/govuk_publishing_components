@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 25.7.0
 
 * Add text list to image card ([PR #2286](https://github.com/alphagov/govuk_publishing_components/pull/2286))
 
