@@ -48,6 +48,10 @@ examples:
       - text: Hidden on desktop
         href: "item-3"
         show_only_in_collapsed_menu: true
+  navigation_default:
+    description: Passes the default navigation through to the [header component](/component-guide/layout_header/).
+    data:
+      show_default_header_navigation_items: true
   with_global_banner:
     description: This allows the HTML for the global banner to be added to the page. This is only the slot for the global banner - the markup for the banner needs to be passed in.
     data:

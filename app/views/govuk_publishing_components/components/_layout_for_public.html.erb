@@ -20,6 +20,11 @@
   omit_account_feedback_footer ||= false
   omit_account_navigation ||= false
   omit_account_phase_banner ||= false
+  show_default_header_navigation_items ||= false
+  search_left ||= false
+
+  navigation_items = layout_helper.header_navigation if show_default_header_navigation_items
+  search_left = true if show_default_header_navigation_items
 
 # This is a hack - but it's the only way I can find to not have two blue bars on
 # constrained width layouts.
@@ -93,6 +98,7 @@
           search: show_search,
           logo_link: logo_link,
           navigation_items: navigation_items,
+          search_left: search_left,
           product_name: product_name,
 
           # The (blue) bottom border needs to be underneath the emergency banner -

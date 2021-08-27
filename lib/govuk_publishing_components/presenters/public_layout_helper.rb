@@ -1,6 +1,86 @@
 module GovukPublishingComponents
   module Presenters
     class PublicLayoutHelper
+      HEADER_NAV = [
+        {
+          href: "/government/organisations",
+          text: "Departments",
+          data: {
+            track_category: "headerClicked",
+            track_action: "departmentsLink",
+            track_label: "/government/organisations",
+            track_dimension: "Departments",
+            track_dimension_index: "29",
+          },
+        },
+        {
+          href: "/world",
+          text: "Worldwide",
+          data: {
+            track_category: "headerClicked",
+            track_action: "worldwideLink",
+            track_label: "/world",
+            track_dimension: "Worldwide",
+            track_dimension_index: "29",
+          },
+        },
+        {
+          href: "/government/how-government-works",
+          text: "How government works",
+          data: {
+            track_category: "headerClicked",
+            track_action: "governmentactivityLink",
+            track_label: "/government/how-government-works",
+            track_dimension: "How government works",
+            track_dimension_index: "29",
+          },
+        },
+        {
+          href: "/government/get-involved",
+          text: "Get involved",
+          data: {
+            track_category: "headerClicked",
+            track_action: "governmentactivityLink",
+            track_label: "/government/get-involved",
+            track_dimension: "Get involved",
+            track_dimension_index: "29",
+          },
+        },
+        {
+          href: CGI.escapeHTML("/search/policy-papers-and-consultations?content_store_document_type[]=open_consultations&content_store_document_type[]=closed_consultations"),
+          text: "Consultations",
+          data: {
+            track_category: "headerClicked",
+            track_action: "governmentactivityLink",
+            track_label: CGI.escapeHTML("/search/policy-papers-and-consultations?content_store_document_type[]=open_consultations&content_store_document_type[]=closed_consultations"),
+            track_dimension: "Consultations",
+            track_dimension_index: "29",
+          },
+        },
+        {
+          href: "/search/research-and-statistics",
+          text: "Statistics",
+          data: {
+            track_category: "headerClicked",
+            track_action: "governmentactivityLink",
+            track_label: "/search/research-and-statistics",
+            track_dimension: "Statistics",
+            track_dimension_index: "29",
+          },
+        },
+        {
+          href: "/search/news-and-communications",
+          text: "News and communications",
+          data: {
+            track_category: "headerClicked",
+            track_action: "governmentactivityLink",
+            track_label: "/search/news-and-communications",
+            track_dimension: "News and communications",
+            track_dimension_index: "29",
+          },
+        },
+      ].freeze
+
       FOOTER_NAV = [
         {
           title: "Coronavirus (COVID-19)",
@@ -364,9 +444,10 @@ module GovukPublishingComponents
         ],
       }.freeze
 
-      attr_reader :footer_navigation, :footer_meta, :cookie_banner_data
+      attr_reader :header_navigation, :footer_navigation, :footer_meta, :cookie_banner_data
 
       def initialize(local_assigns)
+        @header_navigation = local_assigns[:header_navigation] || HEADER_NAV
         @footer_navigation = local_assigns[:footer_navigation] || FOOTER_NAV
         @footer_meta = local_assigns[:footer_meta] || FOOTER_META
         @cookie_banner_data = local_assigns[:cookie_banner_data] || {}
