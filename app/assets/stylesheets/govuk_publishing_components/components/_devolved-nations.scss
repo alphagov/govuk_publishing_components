@@ -1,0 +1,10 @@
+.gem-c-devolved-nations {
+  background: govuk-colour("light-grey");
+  margin-bottom: govuk-spacing(3);
+  padding: govuk-spacing(3);
+
+  @include govuk-media-query($from: desktop) {
+    margin-bottom: govuk-spacing(8);
+    padding: govuk-spacing(4) govuk-spacing(6);
+  }
+}

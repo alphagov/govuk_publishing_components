@@ -46,6 +46,12 @@ en:
       - We’d like to set additional cookies to understand how you use GOV.UK, remember your settings and improve government services.
       - We also use cookies set by other sites to help us deliver content from their services.
       title: Cookies on GOV.UK
+    devolved_nations:
+      applies_to: Applies to  
+      england: England
+      northern_ireland: Northern Ireland
+      scotland: Scotland
+      wales: Wales
     feedback:
       close: Close
       dont_include_personal_info: Don’t include personal or financial information like your National Insurance number or credit card details.
