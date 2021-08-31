@@ -9,7 +9,7 @@
 
     <p class="govuk-body govuk-!-margin-bottom-0">
       <%= t("components.layout_for_public.account_layout.feedback.banners.footer_intro") %>
-      <a href="<%= "#{Plek.find('account-manager')}/feedback" %>" class="govuk-link">
+      <a href="<%= GovukPersonalisation::Urls.feedback %>" class="govuk-link">
         <%= t("components.layout_for_public.account_layout.feedback.banners.footer_link") %>
       </a>
       <%= t("components.layout_for_public.account_layout.feedback.banners.footer_outro") %>

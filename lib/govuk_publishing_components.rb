@@ -1,6 +1,7 @@
 require "active_support"
 require "action_controller"
 require "action_view"
+require "govuk_personalisation"
 require "govuk_publishing_components/config"
 require "govuk_publishing_components/engine"
 require "govuk_publishing_components/presenters/shared_helper"
