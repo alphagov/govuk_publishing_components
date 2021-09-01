@@ -12,6 +12,7 @@ updates:
   - dependency-name: gds-sso
   - dependency-name: govspeak
   - dependency-name: govuk_app_config
+  - dependency-name: govuk_personalisation
   - dependency-name: govuk_publishing_components
   - dependency-name: govuk_schemas
   - dependency-name: govuk_sidekiq

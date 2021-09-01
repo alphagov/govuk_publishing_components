@@ -7,6 +7,13 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* **BREAKING:** Add a dependency on govuk_personalisation, and use it to generate account URLs in the account layout ([PR #2289](https://github.com/alphagov/govuk_publishing_components/pull/2289))
+
+  You must make the following changes when you migrate to this release:
+  - Upgrade to Rails 6
+
 ## 25.7.0
 
 * Add text list to image card ([PR #2286](https://github.com/alphagov/govuk_publishing_components/pull/2286))

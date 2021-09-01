@@ -1,7 +1,7 @@
 <div class="govuk-width-container">
   <% message = capture do %>
     <%= t("components.layout_for_public.account_layout.feedback.banners.phase_intro") %>
-    <a class="govuk-link" href=<%= "#{Plek.find('account-manager')}/feedback" %>>
+    <a class="govuk-link" href=<%= GovukPersonalisation::Urls.feedback %>>
       <%= t("components.layout_for_public.account_layout.feedback.banners.phase_link") %>
     </a>
     <%= t("components.layout_for_public.account_layout.feedback.banners.phase_outro") %>
