@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 26.0.0
 
 * **BREAKING:** Add a dependency on govuk_personalisation, and use it to generate account URLs in the account layout ([PR #2289](https://github.com/alphagov/govuk_publishing_components/pull/2289))
 
