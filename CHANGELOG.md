@@ -12,6 +12,7 @@
 * Create devolved nations component ([PR #2280](https://github.com/alphagov/govuk_publishing_components/pull/2280))
 * Fix document list children ([PR #2296](https://github.com/alphagov/govuk_publishing_components/pull/2296))
 * Reset margins for govspeak images ([PR #2297](https://github.com/alphagov/govuk_publishing_components/pull/2297))
+* Fix global banner wrapper in public layout ([PR #2294](https://github.com/alphagov/govuk_publishing_components/pull/2294))
 
 ## 26.0.0
 
