@@ -107,6 +107,8 @@
 
 .gem-c-document-list__children {
   margin-bottom: 0;
+  padding-left: 0;
+  list-style-type: none;
 
   @include govuk-media-query($from: desktop) {
     margin-left: govuk-spacing(4);
