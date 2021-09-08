@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Create devolved nations component ([PR #2280](https://github.com/alphagov/govuk_publishing_components/pull/2280))
+
 ## 26.0.0
 
 * **BREAKING:** Add a dependency on govuk_personalisation, and use it to generate account URLs in the account layout ([PR #2289](https://github.com/alphagov/govuk_publishing_components/pull/2289))

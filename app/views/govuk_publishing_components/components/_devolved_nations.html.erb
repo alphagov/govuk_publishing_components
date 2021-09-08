@@ -1,0 +1,23 @@
+<%
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+  devolved_nations_helper = GovukPublishingComponents::Presenters::DevolvedNationsHelper.new(local_assigns)
+
+  applies_to ||= t('components.devolved_nations.applies_to')
+  heading_level ||= 2
+%>
+
+<% if national_applicability.any? { |k,v| v[:applicable] == true } %>
+  <%= tag.section class: "gem-c-devolved-nations" do %>
+    <%= content_tag(shared_helper.get_heading_level, class: "govuk-heading-s govuk-!-margin-bottom-0") do %>
+      <%= applies_to %> <%= devolved_nations_helper.applicable_nations_title_text %>
+    <% end %>
+
+    <% if devolved_nations_helper.nations_with_urls.any? %>
+      <%= content_tag :ul, class: "govuk-list govuk-!-margin-top-1 govuk-!-margin-bottom-0" do -%>
+        <% devolved_nations_helper.nations_with_urls.each do |k, v| %>
+          <%= content_tag(:li, link_to("Guidance for #{t("components.devolved_nations.#{k}")}", v[:alternative_url], class: "govuk-link")) %>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>
