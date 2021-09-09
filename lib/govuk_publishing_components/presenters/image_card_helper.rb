@@ -4,12 +4,12 @@ module GovukPublishingComponents
       include ActionView::Helpers
       include ActionView::Context
 
-      attr_reader :href, :href_data_attributes, :extra_links, :large, :extra_links_no_indent, :heading_text, :metadata, :lang, :image_loading
+      attr_reader :href, :href_data_attributes, :extra_details, :large, :extra_details_no_indent, :heading_text, :metadata, :lang, :image_loading
 
       def initialize(local_assigns)
         @href = local_assigns[:href]
         @href_data_attributes = local_assigns[:href_data_attributes]
-        @extra_links = local_assigns[:extra_links] || []
+        @extra_details = local_assigns[:extra_details] || []
         @image_src = local_assigns[:image_src]
         @image_alt = local_assigns[:image_alt] || ""
         @image_loading = local_assigns[:image_loading] || "auto"
@@ -17,7 +17,7 @@ module GovukPublishingComponents
         @description = local_assigns[:description]
         @large = local_assigns[:large]
         @heading_text = local_assigns[:heading_text]
-        @extra_links_no_indent = local_assigns[:extra_links_no_indent]
+        @extra_details_no_indent = local_assigns[:extra_details_no_indent]
         @metadata = local_assigns[:metadata]
         @lang = local_assigns[:lang]
       end
@@ -25,8 +25,8 @@ module GovukPublishingComponents
       def is_tracking?
         return true if @href_data_attributes
 
-        if @extra_links
-          @extra_links.each do |link|
+        if @extra_details
+          @extra_details.each do |link|
             return true if link[:data_attributes]
           end
         end

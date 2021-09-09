@@ -66,14 +66,14 @@ examples:
         text: "Press release"
       heading_text: "Government does things"
       description: "Following a thorough review of existing procedure, a government body has today announced that further work is necessary."
-  with_extra_links:
+  with_extra_details:
     data:
       href: "/a-page-no-just-kidding"
       image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
       image_alt: "some meaningful alt text please"
       heading_text: "Some more links"
       description: "Greater transparency across government is at the heart of our commitment to let you hold politicians and public bodies to account."
-      extra_links: [
+      extra_details: [
         {
           text: "Single departmental plans",
           href: "/1"
@@ -87,7 +87,7 @@ examples:
           href: "/3"
         },
       ]
-  extra_links_without_indent:
+  extra_details_without_indent:
     description: Don't indent the extra links. Used for links to people pages.
     data:
       href: "/government/people/"
@@ -96,21 +96,21 @@ examples:
       context:
         text: "The Rt Hon"
       heading_text: "John Whiskers MP"
-      extra_links: [
+      extra_details: [
         {
           text: "Minister for Cats",
           href: "/government/ministers/"
         }
       ]
-      extra_links_no_indent: true
-  extra_links_with_no_links:
-    description: If `extra_links` are passed to the component without `href` attributes, they are displayed as a simple text list.
+      extra_details_no_indent: true
+  extra_details_with_no_links:
+    description: If `extra_details` are passed to the component without `href` attributes, they are displayed as a simple text list.
     data:
       href: "/government/people/"
       image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
       image_alt: "some meaningful alt text please"
       heading_text: "John Whiskers MP"
-      extra_links: [
+      extra_details: [
         {
           text: "Conservative 2010 to 2016",
         },
@@ -118,14 +118,14 @@ examples:
           text: "Labour 2007 to 2010",
         }
       ]
-      extra_links_no_indent: true
-  extra_links_with_no_main_link:
+      extra_details_no_indent: true
+  extra_details_with_no_main_link:
     description: If extra links are included, the main link is not needed. Note that in this configuration the image is not a link as no link has been supplied.
     data:
       image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
       image_alt: "some meaningful alt text please"
       heading_text: "John Whiskers MP"
-      extra_links: [
+      extra_details: [
         {
           text: "Minister for Cats",
           href: "/government/ministers/"
@@ -145,7 +145,7 @@ examples:
       image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
       image_alt: "some meaningful alt text please"
       description: Here are some links to more information about the thing you are reading about.
-      extra_links: [
+      extra_details: [
         {
           text: "More information",
           href: "/1"
@@ -174,7 +174,7 @@ examples:
       image_alt: "some meaningful alt text please"
       heading_text: "Something relating to this"
       description: "Public reform committee consultation vote department interior minister referendum."
-      extra_links: [
+      extra_details: [
         {
           text: "Something",
           href: "/1"
@@ -210,7 +210,7 @@ examples:
       image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
       image_alt: "some meaningful alt text please"
       heading_text: "A link with tracking"
-      extra_links: [
+      extra_details: [
         {
           text: "Another link with tracking",
           href: "/1",
@@ -235,13 +235,13 @@ examples:
         text: "The Rt Hon"
       heading_text: "John Whiskers MP"
       metadata: "Unpaid"
-      extra_links: [
+      extra_details: [
         {
           text: "Minister for Cats",
           href: "/government/ministers/"
         }
       ]
-      extra_links_no_indent: true
+      extra_details_no_indent: true
   with_lang:
     description: |
       Pass through an appropriate `lang` to set a HTML lang attribute for the component.

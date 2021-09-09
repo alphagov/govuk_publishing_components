@@ -23,7 +23,7 @@
   extra_link_classes << brand_helper.color_class
 
 %>
-<% if card_helper.href || card_helper.extra_links.any? %>
+<% if card_helper.href || card_helper.extra_details.any? %>
   <div class="<%= classes %> <%= brand_helper.brand_class %>"
     <%= "data-module=gem-track-click" if card_helper.is_tracking? %>
     <%= "lang=#{card_helper.lang}" if card_helper.lang %>>
@@ -44,9 +44,9 @@
         <%= card_helper.context %>
       </div>
       <%= card_helper.description %>
-      <% if card_helper.extra_links.any? %>
-        <ul class="gem-c-image-card__list <%= "gem-c-image-card__list--indented" if not card_helper.extra_links_no_indent %>">
-          <% card_helper.extra_links.each do |link| %>
+      <% if card_helper.extra_details.any? %>
+        <ul class="gem-c-image-card__list <%= "gem-c-image-card__list--indented" if not card_helper.extra_details_no_indent %>">
+          <% card_helper.extra_details.each do |link| %>
             <li class="gem-c-image-card__list-item <%= "gem-c-image-card__list-item--text" if not link[:href].present? %>">
               <% if link[:href].present? %>
                 <%= link_to link[:text], link[:href],

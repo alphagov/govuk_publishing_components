@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* **BREAKING:** Rename extra_links to extra_details (image card) ([PR #2300](https://github.com/alphagov/govuk_publishing_components/pull/2300))
 * Create devolved nations component ([PR #2280](https://github.com/alphagov/govuk_publishing_components/pull/2280))
 * Fix document list children ([PR #2296](https://github.com/alphagov/govuk_publishing_components/pull/2296))
 * Reset margins for govspeak images ([PR #2297](https://github.com/alphagov/govuk_publishing_components/pull/2297))

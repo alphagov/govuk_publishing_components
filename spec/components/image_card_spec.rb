@@ -68,38 +68,38 @@ describe "ImageCard", type: :view do
     assert_select ".gem-c-image-card .gem-c-image-card__context span[aria-hidden=true]", text: "—"
   end
 
-  it "renders extra links" do
-    render_component(href: "#", extra_links: [{ href: "/1", text: "link1" }, { href: "/2", text: "link2" }])
+  it "renders extra details" do
+    render_component(href: "#", extra_details: [{ href: "/1", text: "link1" }, { href: "/2", text: "link2" }])
     assert_select ".gem-c-image-card__list .gem-c-image-card__list-item a[href='/1']", text: "link1"
     assert_select ".gem-c-image-card__list .gem-c-image-card__list-item a[href='/2']", text: "link2"
   end
 
-  it "renders extra links without indent" do
-    render_component(href: "#", extra_links: [{ href: "/1", text: "link1" }], extra_links_no_indent: true)
+  it "renders extra details without indent" do
+    render_component(href: "#", extra_details: [{ href: "/1", text: "link1" }], extra_details_no_indent: true)
     assert_select ".gem-c-image-card__list"
     assert_select ".gem-c-image-card__list.gem-c-image-card__list--indented", false
   end
 
-  it "renders extra links without links and just as a text list" do
-    render_component(href: "#", extra_links: [{ text: "text1" }], extra_links_no_indent: true)
+  it "renders extra details without links and just as a text list" do
+    render_component(href: "#", extra_details: [{ text: "text1" }], extra_details_no_indent: true)
     assert_select ".gem-c-image-card__list"
     assert_select ".gem-c-image-card__list-item.gem-c-image-card__list-item--text"
   end
 
-  it "renders extra links without a main link" do
-    render_component(extra_links: [{ href: "/1", text: "link1" }])
+  it "renders extra details without a main link" do
+    render_component(extra_details: [{ href: "/1", text: "link1" }])
     assert_select ".gem-c-image-card__title a", false
   end
 
   it "applies branding" do
-    render_component(href: "#", heading_text: "test", extra_links: [{ href: "/1", text: "link1" }], brand: "attorney-generals-office")
+    render_component(href: "#", heading_text: "test", extra_details: [{ href: "/1", text: "link1" }], brand: "attorney-generals-office")
     assert_select ".gem-c-image-card.brand--attorney-generals-office"
     assert_select ".gem-c-image-card__title-link.brand__color"
     assert_select ".gem-c-image-card__list-item .brand__color"
   end
 
   it "labels a no-image version" do
-    render_component(href: "#", heading_text: "test", extra_links: [{ href: "/1", text: "link1" }], brand: "attorney-generals-office")
+    render_component(href: "#", heading_text: "test", extra_details: [{ href: "/1", text: "link1" }], brand: "attorney-generals-office")
     assert_select ".gem-c-image-card--no-image"
   end
 
@@ -114,8 +114,8 @@ describe "ImageCard", type: :view do
     assert_select ".gem-c-image-card__title-link[data-track-category='cat']"
   end
 
-  it "applies tracking attributes for extra links" do
-    render_component(href: "#", extra_links: [{ href: "/", text: "1", data_attributes: { track_category: "cat" } }])
+  it "applies tracking attributes for extra details" do
+    render_component(href: "#", extra_details: [{ href: "/", text: "1", data_attributes: { track_category: "cat" } }])
     assert_select ".gem-c-image-card[data-module='gem-track-click']"
     assert_select ".gem-c-image-card__list-item a[data-track-category='cat']"
   end
