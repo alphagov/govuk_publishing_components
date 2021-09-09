@@ -431,6 +431,26 @@ $search-icon-size: 20px;
         content: " ";
       }
     }
+
+    // To avoid the 'sticky hover' problem, we need to stop the hover state on
+    // touch screen devices.
+    //
+    // One solution is to use `@media(hover: hover)`. This turns on the hover
+    // state only for devices that aren't touchscreen, but means that browsers
+    // that don't support this media query won't get a hover state at all.
+    //
+    // To get around this, we do the opposite - we turn off the hover state for
+    // for touchscreen devices.
+    @media (hover: none), (pointer: coarse) {
+      &:not(:focus):hover {
+        background-color: $govuk-link-colour;
+        color: govuk-colour("white");
+
+        &:after {
+          background-color: $govuk-link-colour;
+        }
+      }
+    }
   }
 }
 
