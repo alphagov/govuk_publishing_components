@@ -1,0 +1,35 @@
+<%
+  id ||= "autocomplete-#{SecureRandom.hex(4)}"
+  label ||= nil
+  data_attributes ||= nil
+  options ||= []
+  selected_option ||= nil
+  multiple ||= false
+
+  classes = %w(gem-c-accessible-autocomplete govuk-form-group)
+%>
+<% if label && options.any? %>
+  <%= tag.div class: classes, data: { module: "accessible-autocomplete" } do %>
+    <%=
+      render "govuk_publishing_components/components/label", {
+        html_for: id
+      }.merge(label.symbolize_keys)
+    %>
+
+    <% if multiple %>
+      <span class="govuk-hint gem-c-autocomplete__multiselect-instructions">
+        <%= t('components.autocomplete.multiselect') %>
+      </span>
+    <% end %>
+
+    <%=
+      select_tag(
+        id,
+        options_for_select(options, selected_option),
+        multiple: multiple,
+        class: "govuk-select",
+        data: data_attributes
+      )
+    %>
+  <% end %>
+<% end %>

@@ -11,6 +11,8 @@ en:
       this_section_visually_hidden: " this section"
     article_schema:
       scoped_search_description: Search within %{title}
+    autocomplete:
+      multiselect: To select multiple items in a list, hold down Ctrl (PC) or Cmd (Mac) key.
     attachment:
       opendocument_html: This file is in an <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a> format
       order_a_copy: Order a copy
@@ -47,7 +49,7 @@ en:
       - We also use cookies set by other sites to help us deliver content from their services.
       title: Cookies on GOV.UK
     devolved_nations:
-      applies_to: Applies to  
+      applies_to: Applies to
       england: England
       northern_ireland: Northern Ireland
       scotland: Scotland

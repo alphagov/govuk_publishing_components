@@ -27,7 +27,8 @@
     "axe-core": "^3.5.4",
     "govuk-frontend": "^3.13.0",
     "jquery": "1.12.4",
-    "sortablejs": "^1.13.0"
+    "sortablejs": "^1.13.0",
+    "accessible-autocomplete": "git://github.com/alphagov/accessible-autocomplete.git#add-multiselect-support"
   },
   "devDependencies": {
     "standardx": "^7.0.0",
