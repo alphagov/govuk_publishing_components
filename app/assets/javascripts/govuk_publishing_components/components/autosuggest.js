@@ -8,7 +8,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 (function (Modules) {
   'use strict'
 
-  Modules.AccessibleAutocomplete = function () {
+  Modules.AutoSuggest = function () {
     var $selectElem
 
     this.start = function ($element) {
@@ -53,15 +53,15 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           $selectElem.change()
         }
 
-        // used to clear the autocomplete when clicking on a facet tag in finder-frontend
-        // very brittle but menu visibility is determined by autocomplete after this function is called
-        // setting autocomplete val to '' causes menu to appear, we don't want that, this solves it
+        // used to clear the autosuggest when clicking on a facet tag in finder-frontend
+        // very brittle but menu visibility is determined by autosuggest after this function is called
+        // setting autosuggest val to '' causes menu to appear, we don't want that, this solves it
         // ideally will rewrite autocomplete to have better hooks in future
         if (removeDropDown) {
-          $selectElem.closest('.gem-c-accessible-autocomplete').addClass('gem-c-accessible-autocomplete--hide-menu')
+          $selectElem.closest('.gem-c-accessible-autosuggest').addClass('gem-c-accessible-autosuggest--hide-menu')
           setTimeout(function () {
-            $('.autocomplete__menu').remove() // this element is recreated every time the user starts typing
-            $selectElem.closest('.gem-c-accessible-autocomplete').removeClass('gem-c-accessible-autocomplete--hide-menu')
+            $('.autosuggest__menu').remove() // this element is recreated every time the user starts typing
+            $selectElem.closest('.gem-c-accessible-autosuggest').removeClass('gem-c-accessible-autosuggest--hide-menu')
           }, 100)
         }
       }

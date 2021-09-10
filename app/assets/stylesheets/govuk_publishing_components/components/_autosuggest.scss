@@ -1,15 +1,17 @@
 @import url(asset-path("accessible-autocomplete/dist/accessible-autocomplete.min.css"));
 
-.gem-c-accessible-autocomplete {
-  .autocomplete__input {
+// TODO: removed unused classes related to options
+
+.gem-c-accessible-autosuggest {
+  .autosuggest__input {
     z-index: 1;
   }
 
-  .autocomplete__dropdown-arrow-down {
+  .autosuggest__dropdown-arrow-down {
     z-index: 0;
   }
 
-  .autocomplete__option {
+  .autosuggest__option {
     @include govuk-font(19);
   }
 
@@ -19,11 +21,11 @@
     height: auto;
   }
 
-  .js-enabled & .gem-c-autocomplete__multiselect-instructions {
+  .js-enabled & .gem-c-autosuggest__multiselect-instructions {
     display: none;
   }
 
-  .autocomplete__list .autocomplete__option {
+  .autosuggest__list .autosuggest__option {
     padding: 5px 6px;
 
     &:before {
@@ -34,8 +36,8 @@
   }
 }
 
-.gem-c-accessible-autocomplete--hide-menu {
-  .autocomplete__menu {
+.gem-c-accessible-autosuggest--hide-menu {
+  .autosuggest__menu {
     display: none;
   }
 }

@@ -469,9 +469,10 @@ accepts@~1.3.7:
     mime-types "~2.1.24"
     negotiator "0.6.2"
 
-"accessible-autocomplete@git://github.com/alphagov/accessible-autocomplete.git#add-multiselect-support":
-  version "1.6.2"
-  resolved "git://github.com/alphagov/accessible-autocomplete.git#3523dd9fffc70cbd9f6f555f75863c33a709f49e"
+accessible-autocomplete@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/accessible-autocomplete/-/accessible-autocomplete-2.0.3.tgz#3ed8d529b227b77e99ab509eec5d2c8d1b8bea8b"
+  integrity sha512-bUswBs/mDH17dUFRAJMTtcGafJ++w1YLPPFjdfJj3lnuBsLpByAw2gmr8qxXX8oc7tzoKS3Ay5FKOPM+WMBxIw==
   dependencies:
     preact "^8.3.1"
 

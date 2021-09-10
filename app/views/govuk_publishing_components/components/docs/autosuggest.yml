@@ -1,0 +1,33 @@
+name: Autosuggest
+description: An autosuggest component, built to be accessible.
+body: |
+  This component adds automatic suggestions to an input field, fetching the suggestions via ajax calls defined separately.
+
+  [TODO: specify backend rules]
+
+  This component uses the [Accessible Autocomplete](https://github.com/alphagov/accessible-autocomplete) code to create an accessible autosuggest element. This component doesn't retain the auto-complete functionality: it can only be used with an input element and requires a suggestion backend.
+
+  [TODO: fix examples -- add backend URL as an option]
+
+accessibility_criteria: |
+  [Accessibility acceptance criteria](https://github.com/alphagov/accessible-autocomplete/blob/master/accessibility-criteria.md)
+examples:
+  default:
+    data:
+      id: 'autosuggest'
+      label:
+        text: 'Countries'
+      source: 'https://example.com/autosuggest-backend/countries'
+  with_tracking_enabled:
+    description: |
+     This example shows tracking enabled on an autosuggest. Tracking will be enabled automatically when `track_category` and `track_action` are specified in `data_attributes`.
+    data:
+      id: 'tracking-enabled-autosuggest'
+      label:
+        text: 'Countries'
+      source: 'https://example.com/autosuggest-backend/countries'
+      data_attributes:
+        track_category: 'chosen_category'
+        track_action: 'chosen_action'
+        track_option:
+          custom_dimension: 'your_custom_dimension'

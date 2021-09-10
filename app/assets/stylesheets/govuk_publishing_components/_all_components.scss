@@ -11,11 +11,11 @@ $govuk-new-link-styles: true;
 @import "govuk/components/all";
 
 // components
-@import "components/accessible-autocomplete";
 @import "components/accordion";
 @import "components/action-link";
 @import "components/attachment";
 @import "components/attachment-link";
+@import "components/autosuggest";
 @import "components/back-link";
 @import "components/breadcrumbs";
 @import "components/button";
