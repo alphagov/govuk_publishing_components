@@ -1,0 +1,35 @@
+<%
+  href ||= nil
+  number ||= nil
+  label ||= nil
+  href ||= nil
+  data_attributes ||= nil
+  classes = ["gem-c-big-number__value"]
+  
+  if label.nil? && href
+    classes << "gem-c-big-number__value--decorated"
+  end
+%>
+<% if number %>
+  <% big_number_value = capture do %>
+    <%= tag.span class: classes do %>
+      <%= number %>
+    <% end %>
+
+    <% unless label.nil? %>
+      <% # add a virtual space here to handle screen readers printing dictations without a space between the number and the label %>
+      <span class="govuk-visually-hidden">&nbsp;</span>
+      <span class="gem-c-big-number__label">
+        <%= label %>
+      </span>
+    <% end %>
+  <% end %>
+  
+  <%= tag.div class: "gem-c-big-number" do %>
+    <% unless href.nil? %>
+      <%= link_to big_number_value, href, class: "govuk-link gem-c-big-number__link", data: data_attributes %>
+    <% else %>
+      <%= big_number_value %>
+    <% end %>
+  <% end %>
+<% end %>
