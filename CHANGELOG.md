@@ -10,6 +10,7 @@
 # Unreleased
 
 * Add big number component ([PR #2278](https://github.com/alphagov/govuk_publishing_components/pull/2278))
+* Add missing `govuk-template` class to public layout ([PR #2307](https://github.com/alphagov/govuk_publishing_components/pull/2307))
 
 ## 27.0.0
 

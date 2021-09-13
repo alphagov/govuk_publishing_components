@@ -5,6 +5,18 @@ describe "Layout for public", type: :view do
     "layout_for_public"
   end
 
+  it "renders html document with 'en' as default lang" do
+    render_component({})
+
+    assert_select "html.govuk-template[lang=en]"
+  end
+
+  it "renders html document with custom lang" do
+    render_component(html_lang: "cy")
+
+    assert_select "html.govuk-template[lang=cy]"
+  end
+
   it "adds a default <title> tag" do
     render_component({})
 
