@@ -134,7 +134,7 @@ show_navigation_menu_text = t("components.layout_super_navigation_header.menu_to
                     </div>
                     <% if link[:menu_contents].present? %>
                       <div class="govuk-grid-column-two-thirds-from-desktop">
-                          <ul class="govuk-list gem-c-layout-super-navigation-header__navigation-second-items">
+                          <ul class="govuk-list gem-c-layout-super-navigation-header__navigation-second-items gem-c-layout-super-navigation-header__navigation-second-items--<%= link[:label].parameterize %>">
                             <% link[:menu_contents].each do | item | %>
                               <%
                                 has_description = item[:description].present?
