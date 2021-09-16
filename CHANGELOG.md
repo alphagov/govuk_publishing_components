@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add new scroll tracking ([PR #2305](https://github.com/alphagov/govuk_publishing_components/pull/2305))
 * Update crown fallback image ([PR #2313](https://github.com/alphagov/govuk_publishing_components/pull/2313)) PATCH
 * Remove heading and use strong in step nav header ([PR #2311](https://github.com/alphagov/govuk_publishing_components/pull/2311))
 
