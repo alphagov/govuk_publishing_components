@@ -12,7 +12,7 @@ Javascript modules can be specified in markup using `data-` attributes:
 </div>
 ```
 
-Modules can be found and started by including `govuk/modules.js` and running:
+Modules are found and started in [dependencies.js](https://github.com/alphagov/govuk_publishing_components/blob/master/app/assets/javascripts/govuk_publishing_components/dependencies.js) by including `govuk/modules.js` and running the following. This is called by [static](https://github.com/alphagov/static/blob/main/app/assets/javascripts/application.js#L1) once for all applications on GOV.UK.
 
 ```javascript
 $(document).ready(function(){
@@ -23,6 +23,8 @@ $(document).ready(function(){
 This will attempt to find and start all modules in the page. For the example above it will look for a module at `GOVUK.Modules.SomeModule`. Note the value of the data attribute has been converted to _PascalCase_.
 
 The module will be instantiated and then its `init` or `start` method called. The HTML element with the `data-module` attribute is passed as the first argument to the module. This limits modules to acting only within their containing elements.
+
+These function names are not reserved words, but a way of differentiating between modules that accept a jQuery object (`start`) and modules that accept a JS HTML node (`init`). We are removing jQuery from GOV.UK and eventually all modules will use an `init` method.
 
 ```javascript
 module = new GOVUK.Modules.SomeModule(element)
@@ -69,8 +71,7 @@ This functionality runs like this:
 
 ### Module structure
 
-A module must add its constructor to `GOVUK.Modules` and it must have a `start` method.
-The simplest module looks like:
+A module must add its constructor to `GOVUK.Modules` and it must have an `init` method. The simplest module looks like:
 
 ```javascript
 (function(Modules) {
@@ -139,4 +140,23 @@ Keep modules flexible by moving configuration to data attributes on the module�
 
 #### Include Jasmine specs
 
-Modules should have their own tests, whether they’re being included with the GOV.UK Publishing Components or are app specific.
+Modules should have their own tests, whether they’re being included with the GOV.UK Publishing Components or are app specific. These tests run as part of our build process using a headless version of Chrome, which means it runs the browser without initialising the GUI.
+
+You can run the Jasmine tests in the components gem using this command:
+
+```
+bundle exec rake app:jasmine:ci
+```
+
+You can run the Jasmine tests in an application using this command:
+
+```
+bundle exec rake jasmine:ci
+```
+
+The tests can also be run in a normal Chrome window, by removing `:ci` from the end of the previous commands, and opening http://localhost:8888 in your browser. This is useful because:
+
+- console.log() commands will be visible in the browser console for debugging purposes
+- individual tests or groups of tests can be run by clicking on the name of that test or group
+
+If you are testing JavaScript changes it is recommended that the Jasmine tests are also run in Internet Explorer 11. This can be achieved using Browserstack.
