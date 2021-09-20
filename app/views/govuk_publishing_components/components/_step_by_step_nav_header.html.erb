@@ -19,17 +19,17 @@
     tracking_options ||= ({ dimension96: tracking_id }).to_json
   end
 
-  local_assigns[:margin_bottom] ||= 0
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
-  classes = "gem-c-step-nav-header #{shared_helper.get_margin_bottom}"
+  classes = %w(gem-c-step-nav-header)
+  classes << shared_helper.get_margin_bottom if local_assigns[:margin_bottom]
 %>
 <% if title %>
   <script type="application/ld+json">
     <%= raw JSON.pretty_generate(breadcrumb_presenter.structured_data) %>
   </script>
 
-  <h2 class="<%= classes %>" data-module="gem-track-click">
-    <span class="gem-c-step-nav-header__part-of">Part of</span>
+  <%= tag.div class: classes, data: { module: "gem-track-click" } do %>
+    <strong class="gem-c-step-nav-header__part-of">Part of</strong>
     <% if path %>
       <a href="<%= path %>"
         class="gem-c-step-nav-header__title govuk-link"
@@ -51,5 +51,5 @@
         <%= title %>
       </span>
     <% end %>
-  </h2>
+  <% end %>
 <% end %>

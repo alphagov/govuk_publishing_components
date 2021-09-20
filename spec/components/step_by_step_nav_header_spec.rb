@@ -51,12 +51,6 @@ describe "Step by step navigation header", type: :view do
     assert_select "#{link}[data-track-dimension-index='29']"
   end
 
-  it "defaults to no margin bottom" do
-    render_component(title: "This is my title")
-
-    assert_select '.gem-c-step-nav-header.govuk-\!-margin-bottom-0'
-  end
-
   it "adds a margin bottom" do
     render_component(title: "This is my title", margin_bottom: 9)
 
