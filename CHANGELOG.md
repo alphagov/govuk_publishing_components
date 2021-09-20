@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update crown fallback image ([PR #2313](https://github.com/alphagov/govuk_publishing_components/pull/2313)) PATCH
+
 ## 27.1.0
 
 * Add big number component ([PR #2278](https://github.com/alphagov/govuk_publishing_components/pull/2278))
