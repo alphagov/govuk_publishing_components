@@ -1,5 +1,5 @@
 /* eslint-env jquery */
-/* global accessibleAutocomplete */
+/* global search */
 // = require accessible-autocomplete/dist/accessible-autocomplete.min.js
 
 window.GOVUK = window.GOVUK || {}
@@ -8,7 +8,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 (function (Modules) {
   'use strict'
 
-  Modules.AutoSuggest = function () {
+  Modules.Search = function () {
     var $selectElem
 
     this.start = function ($element) {
@@ -58,10 +58,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         // setting autosuggest val to '' causes menu to appear, we don't want that, this solves it
         // ideally will rewrite autocomplete to have better hooks in future
         if (removeDropDown) {
-          $selectElem.closest('.gem-c-accessible-autosuggest').addClass('gem-c-accessible-autosuggest--hide-menu')
+          $selectElem.closest('.gem-c-search').addClass('gem-c-search--hide-menu')
           setTimeout(function () {
             $('.autosuggest__menu').remove() // this element is recreated every time the user starts typing
-            $selectElem.closest('.gem-c-accessible-autosuggest').removeClass('gem-c-accessible-autosuggest--hide-menu')
+            $selectElem.closest('.gem-c-search').removeClass('gem-c-search--hide-menu')
           }, 100)
         }
       }

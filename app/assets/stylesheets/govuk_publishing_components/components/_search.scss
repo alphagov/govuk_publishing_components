@@ -1,3 +1,5 @@
+@import url(asset-path("accessible-autocomplete/dist/accessible-autocomplete.min.css"));
+
 $input-size: 40px;
 $large-input-size: 50px;
 
@@ -283,6 +285,43 @@ $large-input-size: 50px;
   @include govuk-media-query($until: tablet) {
     .js-enabled & {
       display: block;
+    }
+  }
+  .autosuggest__input {
+    z-index: 1;
+  }
+
+  .autosuggest__dropdown-arrow-down {
+    z-index: 0;
+  }
+
+  .autosuggest__option {
+    @include govuk-font(19);
+  }
+
+  // needed as frontend doesn't currently support select multiples
+  // hopefully will in future and this can be removed
+  .govuk-select[multiple] {
+    height: auto;
+  }
+
+  .js-enabled & .gem-c-autosuggest__multiselect-instructions {
+    display: none;
+  }
+
+  .autosuggest__list .autosuggest__option {
+    padding: 5px 6px;
+
+    &:before {
+      position: relative;
+      top: 3px;
+      padding-top: 2px;
+    }
+  }
+
+  &--hide-menu {
+    .autosuggest__menu {
+      display: none;
     }
   }
 }

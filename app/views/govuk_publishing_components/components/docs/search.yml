@@ -69,3 +69,9 @@ examples:
       Allows the label text size to be set to `xl`, `l`, `m`, or `s`. If this is set, then `inline_label` is automatically set to `false`.
     data:
       label_size: "xl"
+  with_automatic_suggestions:
+    description: |
+      The search box may display search suggestions as the user is typing
+      and let the user select one suggestion before submitting the form
+    data:
+      autosuggest_url: "https://example.com/suggest/country-names"
