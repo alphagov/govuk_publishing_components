@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Update crown fallback image ([PR #2313](https://github.com/alphagov/govuk_publishing_components/pull/2313)) PATCH
+* Remove heading and use strong in step nav header ([PR #2311](https://github.com/alphagov/govuk_publishing_components/pull/2311))
 
 ## 27.1.0
 
@@ -17,7 +18,6 @@
 * Add missing `govuk-template` class to public layout ([PR #2307](https://github.com/alphagov/govuk_publishing_components/pull/2307))
 * Fix sticky hover on search button in navigation header([PR #2304](https://github.com/alphagov/govuk_publishing_components/pull/2304))
 * Reorder the navigation lists vertically ([PR #2303](https://github.com/alphagov/govuk_publishing_components/pull/2303))
-* Remove heading and use strong in step nav header ([PR #2311](https://github.com/alphagov/govuk_publishing_components/pull/2311))
 
 ## 27.0.0
 
