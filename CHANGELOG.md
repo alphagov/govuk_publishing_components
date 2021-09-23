@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Allow custom logo link in navigation header ([PR #2320](https://github.com/alphagov/govuk_publishing_components/pull/2320)) MINOR
+
 ## 27.2.0
 
 * Add new scroll tracking ([PR #2305](https://github.com/alphagov/govuk_publishing_components/pull/2305))

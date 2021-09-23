@@ -85,4 +85,28 @@ describe "Super navigation header", type: :view do
 
     assert_select ".gem-c-layout-super-navigation-header__search-item", count: 1
   end
+
+  it "has the correct default crown logo link" do
+    render_component({})
+
+    assert_select "a.govuk-header__link--homepage[href='https://www.gov.uk/']", count: 1
+  end
+
+  it "allows a custom crown logo link" do
+    render_component({
+      logo_link: "https://www.example.com/",
+    })
+
+    assert_select "a.govuk-header__link--homepage[href='https://www.example.com/']", count: 1
+  end
+
+  it "allows a custom crown logo link and custom title" do
+    render_component({
+      logo_link: "https://www.example.com/",
+      logo_link_title: "Go to example",
+    })
+
+    assert_select "a.govuk-header__link--homepage[href='https://www.example.com/']", count: 1
+    assert_select "a.govuk-header__link--homepage[title='Go to example']", count: 1
+  end
 end
