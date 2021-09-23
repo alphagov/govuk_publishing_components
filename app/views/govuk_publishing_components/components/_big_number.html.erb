@@ -12,7 +12,7 @@
 %>
 <% if number %>
   <% big_number_value = capture do %>
-    <%= tag.span class: classes do %>
+    <%= tag.span class: classes, data: href ? nil : data_attributes do %>
       <%= number %>
     <% end %>
 

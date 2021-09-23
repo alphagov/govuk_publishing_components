@@ -35,7 +35,7 @@ examples:
       href: "/government/organisations#ministerial_departments"
   with_data_attributes:
     description: |
-      These data attributes will only be present if a `href` attribute is present.
+      If a `href` attribute is present, data attributes will apply to the `span` containing the number value (see below).
       
       This will also not automatically apply a `gem-track-click` module attribute if the data attributes pertain to click tracking. Remember to apply this outside the component call in a surrounding element, if using.
     data:
@@ -48,3 +48,9 @@ examples:
         track-label: "/government/organisations#ministerial_departments"
         track-dimension: 23 Ministerial departments
         track-dimension-index: 29
+  with_data_attributes_but_no_link:
+    data:
+      number: 23
+      label: Ministerial departments
+      data_attributes:
+        department-count: true

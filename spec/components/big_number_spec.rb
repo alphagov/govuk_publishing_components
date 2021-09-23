@@ -44,6 +44,29 @@ describe "Big number", type: :view do
     assert_select ".gem-c-big-number__value.gem-c-big-number__value--decorated"
   end
 
+  it "adds data attributes to the rendered link if a href attribute is present" do
+    render_component({
+      number: 500,
+      href: "/tests",
+      data_attributes: {
+        my_cool_attribute: "cool",
+      },
+    })
+
+    assert_select ".gem-c-big-number__link[data-my-cool-attribute='cool']"
+  end
+
+  it "adds data attributes to the span containing the number value if a href attribute is not present" do
+    render_component({
+      number: 500,
+      data_attributes: {
+        my_cool_attribute: "cool",
+      },
+    })
+
+    assert_select ".gem-c-big-number__value[data-my-cool-attribute='cool']"
+  end
+
   # The space mentioned in the below test is to handle screen readers printing dictations without a space between the number and the label
   # We don't want this to get removed accidentally, hence the following test
   it "ensures that a visually hidden space is included for screen readers when a label is present" do
