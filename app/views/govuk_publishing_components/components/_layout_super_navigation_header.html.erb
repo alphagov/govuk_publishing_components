@@ -1,20 +1,19 @@
 <%
-logo_link = "https://www.gov.uk/"
-logo_link_title = t("components.layout_super_navigation_header.logo_link_title")
-logo_text = t("components.layout_super_navigation_header.logo_text")
-navigation_links = t("components.layout_super_navigation_header.navigation_links")
-navigation_menu_heading = t("components.layout_super_navigation_header.navigation_menu_heading")
-navigation_search_heading = t("components.layout_super_navigation_header.navigation_search_heading")
-navigation_search_subheading = t("components.layout_super_navigation_header.navigation_search_subheading")
-popular_links = t("components.layout_super_navigation_header.popular_links")
-popular_links_heading = t("components.layout_super_navigation_header.popular_links_heading")
-search_text = t("components.layout_super_navigation_header.search_text")
+  logo_link ||= "https://www.gov.uk/"
+  logo_link_title ||= t("components.layout_super_navigation_header.logo_link_title")
+  logo_text = t("components.layout_super_navigation_header.logo_text")
+  navigation_links = t("components.layout_super_navigation_header.navigation_links")
+  navigation_menu_heading = t("components.layout_super_navigation_header.navigation_menu_heading")
+  navigation_search_heading = t("components.layout_super_navigation_header.navigation_search_heading")
+  navigation_search_subheading = t("components.layout_super_navigation_header.navigation_search_subheading")
+  popular_links = t("components.layout_super_navigation_header.popular_links")
+  popular_links_heading = t("components.layout_super_navigation_header.popular_links_heading")
+  search_text = t("components.layout_super_navigation_header.search_text")
 
-hide_search_menu_text = t("components.layout_super_navigation_header.menu_toggle_label.hide", :label => "search")
-show_search_menu_text = t("components.layout_super_navigation_header.menu_toggle_label.show", :label => "search")
-hide_navigation_menu_text = t("components.layout_super_navigation_header.menu_toggle_label.hide", :label => "navigation")
-show_navigation_menu_text = t("components.layout_super_navigation_header.menu_toggle_label.show", :label => "navigation")
-
+  hide_search_menu_text = t("components.layout_super_navigation_header.menu_toggle_label.hide", :label => "search")
+  show_search_menu_text = t("components.layout_super_navigation_header.menu_toggle_label.show", :label => "search")
+  hide_navigation_menu_text = t("components.layout_super_navigation_header.menu_toggle_label.hide", :label => "navigation")
+  show_navigation_menu_text = t("components.layout_super_navigation_header.menu_toggle_label.show", :label => "navigation")
 %>
 <header role="banner" class="gem-c-layout-super-navigation-header">
   <div class="gem-c-layout-super-navigation-header__container govuk-width-container govuk-clearfix">

@@ -20,3 +20,8 @@ accessibility_excluded_rules:
   - landmark-no-duplicate-banner # banners will be duplicated in component examples list
 examples:
   default:
+  with_custom_logo_link:
+    description: The header logo links to root by default. This option allows us to override that in certain instances. Remember to change the title, as the default is "Go to the GOV.UK homepage".
+    data:
+      logo_link: "https://www.example.com"
+      logo_link_title: "Go to example"
