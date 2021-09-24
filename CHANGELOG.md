@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Allow custom logo link in navigation header ([PR #2320](https://github.com/alphagov/govuk_publishing_components/pull/2320)) MINOR
+* Allow data attributes to be applied to big numbers when no link is present ([PR #2321](https://github.com/alphagov/govuk_publishing_components/pull/2321))
 
 ## 27.2.0
 
