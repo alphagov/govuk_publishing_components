@@ -48,8 +48,10 @@ en:
       title: Cookies on GOV.UK
     devolved_nations:
       applies_to: Applies to
+      connectors:
+        last_word: " and "
+        two_words: " and "
       england: England
-      last_word_connector: " and "
       northern_ireland: Northern Ireland
       scotland: Scotland
       wales: Wales
