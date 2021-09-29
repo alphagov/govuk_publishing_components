@@ -45,8 +45,10 @@ it:
       title:
     devolved_nations:
       applies_to:
+      connectors:
+        last_word:
+        two_words:
       england:
-      last_word_connector:
       northern_ireland:
       scotland:
       wales:
