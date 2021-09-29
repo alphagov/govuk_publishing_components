@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 27.3.1
 
 + Correctly translate the connector word in the Devolved Nations component ([PR #2326](https://github.com/alphagov/govuk_publishing_components/pull/2326))
 
