@@ -12,7 +12,7 @@ module GovukPublishingComponents
           .select { |_, v| v[:applicable] == true }
           .map { |k, _| I18n.t("components.devolved_nations.#{k}") }
           .sort
-          .to_sentence(last_word_connector: " and ")
+          .to_sentence(last_word_connector: t("components.devolved_nations.last_word_connector"))
       end
 
       def nations_with_urls
