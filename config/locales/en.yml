@@ -49,6 +49,7 @@ en:
     devolved_nations:
       applies_to: Applies to
       england: England
+      last_word_connector: " and "
       northern_ireland: Northern Ireland
       scotland: Scotland
       wales: Wales

@@ -46,6 +46,7 @@ sk:
     devolved_nations:
       applies_to:
       england:
+      last_word_connector:
       northern_ireland:
       scotland:
       wales:
