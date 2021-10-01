@@ -78,6 +78,11 @@ examples:
       light_text: true
     context:
       dark_background: true
+  blue_arrow:
+    data:
+      text: Find out how to stay safe and help prevent the spread
+      href: "/something"
+      blue_arrow: true
   simple_arrow:
     data:
       text: Getting financial help and keeping your business safe
