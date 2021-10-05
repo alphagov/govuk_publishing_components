@@ -16,12 +16,21 @@ accessibility_criteria: |
 
   * have a role of banner at the root of the component (<header>) (ARIA 1.1)
 accessibility_excluded_rules:
-  - landmark-banner-is-top-level # The header element can not be top level in the examples
-  - landmark-no-duplicate-banner # banners will be duplicated in component examples list
+   # The header element can not be top level in the examples.
+  - landmark-banner-is-top-level
+  # Banners will be duplicated in component examples list.
+  - duplicate-id
+  - duplicate-id-active
+  - duplicate-id-aria
+  - landmark-no-duplicate-banner
+  - landmark-unique
 examples:
   default:
   with_custom_logo_link:
-    description: The header logo links to root by default. This option allows us to override that in certain instances. Remember to change the title, as the default is "Go to the GOV.UK homepage".
+    description: |
+      The header logo links to root by default. This option allows us to override that in certain instances.
+
+      Remember to update the title, as the default is "Go to the GOV.UK homepage".
     data:
       logo_link: "https://www.example.com"
       logo_link_title: "Go to example"
