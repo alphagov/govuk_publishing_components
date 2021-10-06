@@ -11,6 +11,7 @@
 
 * Increase size of action link blue arrow ([PR #2343](https://github.com/alphagov/govuk_publishing_components/pull/2343))
 * Remove scroll tracking on pages ([PR #2339](https://github.com/alphagov/govuk_publishing_components/pull/2339))
+* Accept cookie consent from Digital Identity query parameter ([PR #2340](https://github.com/alphagov/govuk_publishing_components/pull/2340))
 
 ## 27.4.0
 
