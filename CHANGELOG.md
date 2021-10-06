@@ -7,10 +7,6 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
-
-* Raise argument error on image card component ([PR #2335](https://github.com/alphagov/govuk_publishing_components/pull/2335))
-
 ## 27.4.0
 
 * Add blue arrow option to action link ([PR #2330](https://github.com/alphagov/govuk_publishing_components/pull/2330))
