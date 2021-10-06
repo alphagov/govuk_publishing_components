@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove scroll tracking on pages ([PR #2339](https://github.com/alphagov/govuk_publishing_components/pull/2339))
+
 ## 27.4.0
 
 * Add blue arrow option to action link ([PR #2330](https://github.com/alphagov/govuk_publishing_components/pull/2330))
