@@ -14,14 +14,13 @@
   heading_link_classes = %w[
     gem-c-image-card__title-link
     govuk-link
-  ] 
+  ]
   heading_link_classes << brand_helper.color_class
   extra_link_classes = %w[
     gem-c-image-card__list-item-link
     govuk-link
   ]
   extra_link_classes << brand_helper.color_class
-
 %>
 <% if card_helper.href || card_helper.extra_details.any? %>
   <div class="<%= classes %> <%= brand_helper.brand_class %>"
@@ -55,8 +54,8 @@
                 %>
               <% else %>
                 <%= link[:text] %>
-              <% end %>  
-            </li>    
+              <% end %>
+            </li>
           <% end %>
         </ul>
       <% end %>
@@ -66,4 +65,6 @@
     </div>
     <%= card_helper.image %>
   </div>
+<% else %>
+  <% raise ArgumentError, "The image_card component needs an `href` or `extra_details` in order to render." %>
 <% end %>
