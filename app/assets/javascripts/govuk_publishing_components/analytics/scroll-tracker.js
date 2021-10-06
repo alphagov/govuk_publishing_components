@@ -15,7 +15,6 @@
 
   var CONFIG = {
     '/brexit': percentages,
-    '/guidance/coronavirus-covid-19-information-for-the-public': percentages,
     '/government/publications/the-essential-trustee-what-you-need-to-know-cc3/the-essential-trustee-what-you-need-to-know-what-you-need-to-do': [
       ['Heading', '1. About this guidance'],
       ['Heading', '2. Trustees’ duties at a glance'],
@@ -147,7 +146,6 @@
     '/wood-packaging-import-export': [
       ['Heading', 'Export solid wood packaging']
     ],
-    '/guidance/answers-to-the-most-common-topics-asked-about-by-the-public-for-the-coronavirus-press-conference': percentages,
     '/coronavirus': percentages,
     '/coronavirus/education-and-childcare': percentages,
     '/coronavirus/worker-support': percentages,
@@ -164,21 +162,6 @@
     '/guidance/brexit-guidance-for-individuals-and-families': percentages,
     '/guidance/brexit-guidance-for-individuals-and-families.cy': percentages,
     '/guidance/import-and-export-goods-using-preference-agreements': percentages,
-    '/guidance/red-amber-and-green-list-rules-for-entering-england': [
-      ['Heading', 'Stay up-to-date'],
-      ['Heading', 'Red list of countries and territories'],
-      ['Heading', 'Amber list of countries and territories'],
-      ['Heading', 'Amber list rules if you are fully UK vaccinated'],
-      ['Heading', 'Amber list rules if you are not fully UK vaccinated'],
-      ['Heading', 'Green list countries and territories'],
-      ['Heading', 'Green list rules'],
-      ['Heading', 'Ireland, the UK, the Channel Islands and the Isle of Man'],
-      ['Heading', 'Transit stops in amber or red list countries'],
-      ['Heading', 'Job and medical exemptions'],
-      ['Heading', 'Travelling abroad from England'],
-      ['Heading', 'Demonstrating your COVID-19 vaccination status when travelling abroad'],
-      ['Heading', 'Foreign, Commonwealth & Development Office travel advice']
-    ],
     '/guidance/travel-abroad-from-england-during-coronavirus-covid-19': [
       ['Heading', 'Before you travel abroad'],
       ['Heading', '1. Check the rules for the country you’re going to'],
