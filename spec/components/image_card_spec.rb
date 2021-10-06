@@ -5,10 +5,8 @@ describe "ImageCard", type: :view do
     "image_card"
   end
 
-  it "fails to render when no link or extra details are given" do
-    assert_raises do
-      render_component({})
-    end
+  it "renders nothing when no link provided" do
+    assert_empty render_component({})
   end
 
   it "shows an image" do
