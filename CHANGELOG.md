@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Pass cookie consent to Digital Identity via query parameter ([PR #2344](https://github.com/alphagov/govuk_publishing_components/pull/2344))
+
 ## 27.5.0
 
 * Increase size of action link blue arrow ([PR #2343](https://github.com/alphagov/govuk_publishing_components/pull/2343))
