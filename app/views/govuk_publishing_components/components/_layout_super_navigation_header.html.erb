@@ -101,7 +101,7 @@
             tracking_label = link[:label].downcase.gsub(/\s+/, "")
           %>
           <%= tag.li class: li_classes do %>
-            <div class="gem-c-layout-super-navigation-header__navigation-item-wrapper">
+            <div class="gem-c-layout-super-navigation-header__navigation-toggle-wrapper">
               <%= link_to link[:label], link[:href], {
                 class: "gem-c-layout-super-navigation-header__navigation-item-link",
                 data: {
@@ -127,9 +127,7 @@
                   hidden
                   id="super-navigation-menu__section-<%= unique_id %>-toggle"
                   type="button"
-                >
-                  <%= link[:label] %>
-                </button>
+                ><%= link[:label] %></button>
               </div>
               <div
                 hidden
