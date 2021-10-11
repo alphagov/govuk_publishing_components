@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 27.5.0
 
 * Increase size of action link blue arrow ([PR #2343](https://github.com/alphagov/govuk_publishing_components/pull/2343))
 * Remove scroll tracking on pages ([PR #2339](https://github.com/alphagov/govuk_publishing_components/pull/2339))
