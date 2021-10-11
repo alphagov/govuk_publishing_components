@@ -81,6 +81,13 @@
         type="button"
       >
         Menu
+        <span
+          aria-hidden="true"
+          class="gem-c-layout-super-navigation-header__navigation-top-toggle-close-icon"
+          focusable="false"
+        >
+          &times;
+        </span>
       </button>
       <ul id="super-navigation-menu" class="gem-c-layout-super-navigation-header__navigation-items">
         <% navigation_links.each_with_index do | link, index | %>
@@ -94,34 +101,36 @@
             tracking_label = link[:label].downcase.gsub(/\s+/, "")
           %>
           <%= tag.li class: li_classes do %>
-            <%= link_to link[:label], link[:href], {
-              class: "gem-c-layout-super-navigation-header__navigation-item-link",
-              data: {
-                module: "gem-track-click",
-                track_action: "#{tracking_label}Link",
-                track_category: "headerClicked",
-                track_label: link[:href],
-                track_dimension: link[:label],
-                track_dimension_index: "29",
-              }
-            } %>
-            <% if has_children %>
-              <button
-                aria-controls="super-navigation-menu__section-<%= unique_id %>"
-                aria-expanded="false"
-                aria-label="<%= show_menu_text %>"
-                class="gem-c-layout-super-navigation-header__navigation-second-toggle-button"
-                data-text-for-hide="<%= hide_menu_text %>"
-                data-text-for-show="<%= show_menu_text %>"
-                data-toggle-desktop-group="top"
-                data-toggle-mobile-group="second"
-                data-tracking-key="<%= tracking_label %>"
-                hidden
-                id="super-navigation-menu__section-<%= unique_id %>-toggle"
-                type="button"
-              >
-                <%= link[:label] %>
-              </button>
+            <div class="gem-c-layout-super-navigation-header__navigation-item-wrapper">
+              <%= link_to link[:label], link[:href], {
+                class: "gem-c-layout-super-navigation-header__navigation-item-link",
+                data: {
+                  module: "gem-track-click",
+                  track_action: "#{tracking_label}Link",
+                  track_category: "headerClicked",
+                  track_label: link[:href],
+                  track_dimension: link[:label],
+                  track_dimension_index: "29",
+                }
+              } %>
+              <% if has_children %>
+                <button
+                  aria-controls="super-navigation-menu__section-<%= unique_id %>"
+                  aria-expanded="false"
+                  aria-label="<%= show_menu_text %>"
+                  class="gem-c-layout-super-navigation-header__navigation-second-toggle-button"
+                  data-text-for-hide="<%= hide_menu_text %>"
+                  data-text-for-show="<%= show_menu_text %>"
+                  data-toggle-desktop-group="top"
+                  data-toggle-mobile-group="second"
+                  data-tracking-key="<%= tracking_label %>"
+                  hidden
+                  id="super-navigation-menu__section-<%= unique_id %>-toggle"
+                  type="button"
+                >
+                  <%= link[:label] %>
+                </button>
+              </div>
               <div
                 hidden
                 class="gem-c-layout-super-navigation-header__navigation-dropdown-menu"
@@ -157,7 +166,7 @@
                                     track_dimension_index: "29",
                                   }
                                 } %>
-                                <%= tag.p item[:description], class: "govuk-body govuk-!-margin-0" if has_description %>
+                                <%= tag.p item[:description], class: "govuk-body govuk-!-margin-0 govuk-!-margin-top-1" if has_description %>
                               </li>
                             <% end %>
                           </ul>
@@ -223,6 +232,13 @@
             classes: %w[gem-c-layout-super-navigation-header__search-toggle-button-link-icon],
           }
         %>
+        <span
+          aria-hidden="true"
+          class="gem-c-layout-super-navigation-header__navigation-top-toggle-close-icon"
+          focusable="false"
+        >
+          &times;
+        </span>
       </button>
 
       <div id="super-search-menu" class="gem-c-layout-super-navigation-header__search-items">
