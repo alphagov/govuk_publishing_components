@@ -2,15 +2,14 @@
 ;(function (global) {
   'use strict'
 
-  var $ = global.jQuery
   var GOVUK = global.GOVUK || {}
 
   // Only show the first {n} items in a list, documentation is in the README.md
   var PrimaryList = function (el, selector) {
-    this.$el = $(el)
-    this.$extraLinks = this.$el.find('li:not(' + selector + ')')
+    this.el = el
+    this.extraLinks = this.el.querySelectorAll('li:not(' + selector + ')')
     // only hide more than one extra link
-    if (this.$extraLinks.length > 1) {
+    if (this.extraLinks.length > 1) {
       this.addToggleLink()
       this.hideExtraLinks()
     }
@@ -18,29 +17,35 @@
 
   PrimaryList.prototype = {
     toggleText: function () {
-      if (this.$extraLinks.length > 1) {
-        return '+' + this.$extraLinks.length + ' others'
+      if (this.extraLinks.length > 1) {
+        return '+' + this.extraLinks.length + ' others'
       } else {
-        return '+' + this.$extraLinks.length + ' other'
+        return '+' + this.extraLinks.length + ' other'
       }
     },
     addToggleLink: function () {
-      this.$toggleLink = $('<a href="#">' + this.toggleText() + '</a>')
-      this.$toggleLink.click($.proxy(this.toggleLinks, this))
-      this.$toggleLink.insertAfter(this.$el)
+      this.toggleLink = document.createElement('a')
+      this.toggleLink.href = '#'
+      this.toggleLink.setAttribute('aria-expanded', 'false')
+      this.toggleLink.innerText = this.toggleText()
+
+      this.el.parentNode.insertBefore(this.toggleLink, this.el.nextSibling)
+      this.toggleLink.addEventListener('click', this.toggleLinks.bind(this))
     },
     toggleLinks: function (e) {
       e.preventDefault()
-      this.$toggleLink.remove()
+      this.toggleLink.remove()
       this.showExtraLinks()
     },
     hideExtraLinks: function () {
-      this.$extraLinks.addClass('visuallyhidden')
-      $(window).trigger('govuk.pageSizeChanged')
+      for (var i = 0; i < this.extraLinks.length; i++) {
+        this.extraLinks[i].className = 'primary-links--display-none'
+      }
     },
     showExtraLinks: function () {
-      this.$extraLinks.removeClass('visuallyhidden')
-      $(window).trigger('govuk.pageSizeChanged')
+      for (var i = 0; i < this.extraLinks.length; i++) {
+        this.extraLinks[i].className = ''
+      }
     }
   }
 
@@ -48,7 +53,18 @@
 
   GOVUK.primaryLinks = {
     init: function (selector) {
-      $(selector).parent().each(function (i, el) {
+      var allListItems = document.querySelectorAll(selector)
+      var AllLists = []
+
+      for (var i = 0; i < allListItems.length; i++) {
+        var parent = allListItems[i].parentNode
+
+        if (AllLists.indexOf(parent) < 0) {
+          AllLists.push(parent)
+        }
+      }
+
+      AllLists.forEach(function (el, i) {
         new GOVUK.PrimaryList(el, selector) // eslint-disable-line no-new
       })
     }
