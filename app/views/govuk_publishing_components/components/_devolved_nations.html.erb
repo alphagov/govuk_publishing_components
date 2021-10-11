@@ -2,7 +2,7 @@
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   devolved_nations_helper = GovukPublishingComponents::Presenters::DevolvedNationsHelper.new(local_assigns)
 
-  applies_to ||= t('components.devolved_nations.applies_to')
+  applies_to ||= t("components.devolved_nations.applies_to")
   heading_level ||= 2
 %>
 
@@ -15,7 +15,7 @@
     <% if devolved_nations_helper.nations_with_urls.any? %>
       <%= content_tag :ul, class: "govuk-list govuk-!-margin-top-1 govuk-!-margin-bottom-0" do -%>
         <% devolved_nations_helper.nations_with_urls.each do |k, v| %>
-          <%= content_tag(:li, link_to("Guidance for #{t("components.devolved_nations.#{k}")}", v[:alternative_url], class: "govuk-link")) %>
+          <%= content_tag(:li, link_to(devolved_nations_helper.alternative_content_text(k), v[:alternative_url], class: "govuk-link")) %>
         <% end %>
       <% end %>
     <% end %>

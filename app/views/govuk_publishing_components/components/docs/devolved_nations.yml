@@ -1,18 +1,18 @@
 name: Devolved Nations (experimental)
-description: A banner for linking to guidance for other nations.
+description: A banner for linking to alternative content for other nations.
 body: |
-  The component replaces uses of the important metadata component for guidance for other nations.
+  The component replaces uses of the important metadata component for alternative content for other nations.
 
   The component can display:
 
-  * nations that the guidance relates to
+  * nations that the alternative content relates to
   * a list of alternative URLs where applicable
 shared_accessibility_criteria:
   - link
 accessibility_criteria: |
   The component must:
 
-  - Provide context for link text to highlight guidance is available.
+  - Provide context for link text to highlight alternative content is available.
 examples:
   default:
     data:
@@ -35,18 +35,8 @@ examples:
           applicable: true
         wales:
           applicable: true
-  applies_to_one_nation_individual_guidance_available:
-    data:
-      national_applicability:
-        england:
-          applicable: true
-        scotland:
-          applicable: false
-          alternative_url: /
-        wales:
-          applicable: false
-          alternative_url: /
-  applies_to_one_nation_individual_guidance_available:
+  applies_to_one_nation_individual_publication_available:
+    description: If no content type, or an invalid type, is specified then the default alternative content type is displayed as "Publication" e.g. "Publication for Northern Ireland"
     data:
       national_applicability:
         england:
@@ -60,7 +50,7 @@ examples:
         wales:
           applicable: false
           alternative_url: /
-  applies_to_three_nations_individual_guidance_available:
+  applies_to_three_nations_individual_publication_available:
     data:
       national_applicability:
         england:
@@ -72,8 +62,28 @@ examples:
           applicable: true
         wales:
           applicable: true
+  applies_to_one_nation_individual_consultation_available:
+    description: Specify alternative type for the content e.g. Consultation
+    data:
+      national_applicability:
+        england:
+          applicable: true
+        northern_ireland:
+          applicable: false
+          alternative_url: /
+      type: consultation
+  applies_to_one_nation_individual_guidance_available:
+    description: Specify alternative type for the content e.g. Guidance
+    data:
+      national_applicability:
+        england:
+          applicable: true
+        northern_ireland:
+          applicable: false
+          alternative_url: /
+      type: detailed_guide
   specific_heading level:
-    description: Use a different heading level for the main link title. Defaults to H2 if not passed.
+    description: Use a different heading level for the main link title. Defaults to `H2` if not passed.
     data:
       heading_level: 3
       national_applicability:
