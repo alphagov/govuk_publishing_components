@@ -51,6 +51,11 @@ en:
       connectors:
         last_word: " and "
         two_words: " and "
+      type:
+        consultation: Consultation for %{nation}
+        detailed_guide: Guidance for %{nation} 
+        guidance: Guidance for %{nation}
+        publication: Publication for %{nation}
       england: England
       northern_ireland: Northern Ireland
       scotland: Scotland

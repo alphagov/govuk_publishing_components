@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update devolved nations component to accept type property ([PR #2337](https://github.com/alphagov/govuk_publishing_components/pull/2337))
+
 ## 27.6.0
 
 * Pass cookie consent to Digital Identity via query parameter ([PR #2344](https://github.com/alphagov/govuk_publishing_components/pull/2344))

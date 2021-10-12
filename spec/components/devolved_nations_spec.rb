@@ -47,7 +47,7 @@ describe "Devolved Nations", type: :view do
     assert_select ".gem-c-devolved-nations > h2", text: "Applies to England, Scotland and Wales"
   end
 
-  it "renders a devolved nations component, which applies to one nation, with individual guidance available, correctly" do
+  it "renders a devolved nations component, which applies to one nation, with individual publication available, correctly" do
     render_component(
       national_applicability: {
         england: {
@@ -55,25 +55,25 @@ describe "Devolved Nations", type: :view do
         },
         northern_ireland: {
           applicable: false,
-          alternative_url: "/guidance-northern-ireland",
+          alternative_url: "/publication-northern-ireland",
         },
         scotland: {
           applicable: false,
-          alternative_url: "/guidance-scotland",
+          alternative_url: "/publication-scotland",
         },
         wales: {
           applicable: false,
-          alternative_url: "/guidance-wales",
+          alternative_url: "/publication-wales",
         },
       },
     )
     assert_select ".gem-c-devolved-nations > h2", text: "Applies to England"
-    assert_select ".gem-c-devolved-nations > ul > li:nth-child(1) > [href='/guidance-northern-ireland']", text: "Guidance for Northern Ireland"
-    assert_select ".gem-c-devolved-nations > ul > li:nth-child(2) > [href='/guidance-scotland']", text: "Guidance for Scotland"
-    assert_select ".gem-c-devolved-nations > ul > li:nth-child(3) > [href='/guidance-wales']", text: "Guidance for Wales"
+    assert_select ".gem-c-devolved-nations > ul > li:nth-child(1) > [href='/publication-northern-ireland']", text: "Publication for Northern Ireland"
+    assert_select ".gem-c-devolved-nations > ul > li:nth-child(2) > [href='/publication-scotland']", text: "Publication for Scotland"
+    assert_select ".gem-c-devolved-nations > ul > li:nth-child(3) > [href='/publication-wales']", text: "Publication for Wales"
   end
 
-  it "renders a devolved nations component, which applies to three nations, with individual guidance available, correctly" do
+  it "renders a devolved nations component, which applies to three nations, with individual publication available, correctly" do
     render_component(
       national_applicability: {
         england: {
@@ -81,7 +81,7 @@ describe "Devolved Nations", type: :view do
         },
         northern_ireland: {
           applicable: false,
-          alternative_url: "/guidance-northern-ireland",
+          alternative_url: "/publication-northern-ireland",
         },
         scotland: {
           applicable: true,
@@ -92,7 +92,58 @@ describe "Devolved Nations", type: :view do
       },
     )
     assert_select ".gem-c-devolved-nations > h2", text: "Applies to England, Scotland and Wales"
+    assert_select ".gem-c-devolved-nations > ul > li:nth-child(1) > [href='/publication-northern-ireland']", text: "Publication for Northern Ireland"
+  end
+
+  it "renders a devolved nations component, which applies to one nation, with individual consultation available, correctly" do
+    render_component(
+      national_applicability: {
+        england: {
+          applicable: true,
+        },
+        northern_ireland: {
+          applicable: false,
+          alternative_url: "/consultation-northern-ireland",
+        },
+      },
+      type: "consultation",
+    )
+    assert_select ".gem-c-devolved-nations > h2", text: "Applies to England"
+    assert_select ".gem-c-devolved-nations > ul > li:nth-child(1) > [href='/consultation-northern-ireland']", text: "Consultation for Northern Ireland"
+  end
+
+  it "renders a devolved nations component, which applies to one nation, with individual guidance available, correctly" do
+    render_component(
+      national_applicability: {
+        england: {
+          applicable: true,
+        },
+        northern_ireland: {
+          applicable: false,
+          alternative_url: "/guidance-northern-ireland",
+        },
+      },
+      type: "detailed_guide",
+    )
+    assert_select ".gem-c-devolved-nations > h2", text: "Applies to England"
     assert_select ".gem-c-devolved-nations > ul > li:nth-child(1) > [href='/guidance-northern-ireland']", text: "Guidance for Northern Ireland"
+  end
+
+  it "renders a devolved nations component, which applies to one nation, with individual pubilcation available, when invalid type provided, correctly" do
+    render_component(
+      national_applicability: {
+        england: {
+          applicable: true,
+        },
+        northern_ireland: {
+          applicable: false,
+          alternative_url: "/publication-northern-ireland",
+        },
+      },
+      type: "invalid_type",
+    )
+    assert_select ".gem-c-devolved-nations > h2", text: "Applies to England"
+    assert_select ".gem-c-devolved-nations > ul > li:nth-child(1) > [href='/publication-northern-ireland']", text: "Publication for Northern Ireland"
   end
 
   it "renders a devolved nations component with different heading levels" do
