@@ -31,7 +31,7 @@ examples:
       name: "address"
       type: "email"
   numeric_input:
-    description: If input is set to `type="number"` we set the component up as described in the [Design System guidance](https://design-system.service.gov.uk/components/text-input/#numbers) adding `inputmode` and `pattern`. These values can be overridden if necessary.
+    description: If input is set to `type="number"` we set the component up as described in the [GOV.UK Design System guidance](https://design-system.service.gov.uk/components/text-input/#numbers) adding `inputmode` and `pattern`. These values can be overridden if necessary.
     data:
       label:
         text: "Account number"
