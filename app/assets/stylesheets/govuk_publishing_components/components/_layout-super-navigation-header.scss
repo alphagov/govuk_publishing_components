@@ -115,8 +115,8 @@ $chevron-indent-spacing: 7px;
 // Header layout - black bar and logo.
 .gem-c-layout-super-navigation-header {
   background: govuk-colour("black");
-  position: relative;
   border-top: 1px solid govuk-colour("black");
+  position: relative;
   top: -1px;
 
   .lte-ie8 & {
@@ -138,8 +138,8 @@ $chevron-indent-spacing: 7px;
 
 .gem-c-layout-super-navigation-header__header-logo {
   height: govuk-spacing(6);
-  padding-top: govuk-spacing(3);
   padding-bottom: govuk-spacing(3);
+  padding-top: govuk-spacing(3);
 
   @include govuk-media-query($from: "desktop") {
     display: block;
@@ -210,6 +210,7 @@ $chevron-indent-spacing: 7px;
     float: left;
     margin: 0;
     padding: 0;
+    position: static;
   }
 }
 
@@ -234,6 +235,11 @@ $chevron-indent-spacing: 7px;
   font-size: govuk-px-to-rem(19px);
   font-weight: bold;
   margin: govuk-spacing(3) 0;
+
+  @include govuk-media-query($from: "desktop") {
+    display: block;
+    margin: 0;
+  }
 
   &:hover {
     @include govuk-link-hover-decoration;
@@ -273,7 +279,6 @@ $chevron-indent-spacing: 7px;
 
     @include govuk-media-query($from: "desktop") {
       color: govuk-colour("white");
-      display: block;
       float: left;
       font-size: 16px;
       font-size: govuk-px-to-rem(16px);
@@ -282,10 +287,14 @@ $chevron-indent-spacing: 7px;
       position: relative;
       text-decoration: none;
 
+      &:before {
+        @include chevron(govuk-colour("white"), true);
+      }
+
       &:hover {
         color: govuk-colour("mid-grey");
 
-        &:before {
+        &:after {
           background: govuk-colour("mid-grey");
         }
       }
@@ -295,7 +304,7 @@ $chevron-indent-spacing: 7px;
         box-shadow: none;
         color: $govuk-focus-text-colour;
 
-        &:before {
+        &:after {
           background: $govuk-focus-text-colour;
         }
       }
@@ -303,12 +312,17 @@ $chevron-indent-spacing: 7px;
       &:focus:not(:focus-visible) {
         color: govuk-colour("white");
 
-        &:before {
+        &:hover {
+          color: govuk-colour("white");
+          text-decoration: none;
+        }
+
+        &:after {
           background: none;
         }
       }
 
-      &:before {
+      &:after {
         background: none;
         bottom: 0;
         content: " ";
@@ -316,6 +330,7 @@ $chevron-indent-spacing: 7px;
         left: govuk-spacing(4);
         position: absolute;
         right: govuk-spacing(4);
+        top: auto;
       }
     }
   }
@@ -363,11 +378,83 @@ $chevron-indent-spacing: 7px;
     }
   }
 
+  @include govuk-media-query($from: "desktop") {
+    &:after {
+      background: none;
+      bottom: 0;
+      content: " ";
+      height: govuk-spacing(1);
+      left: govuk-spacing(4);
+      position: absolute;
+      right: govuk-spacing(4);
+      top: auto;
+    }
+
+    &,
+    &:focus:not(:focus-visible) {
+      color: govuk-colour("white");
+      float: left;
+      font-size: 16px;
+      font-size: govuk-px-to-rem(16px);
+      height: govuk-spacing(9);
+      padding: govuk-spacing(4);
+      position: relative;
+      text-decoration: none;
+
+      &:before {
+        @include chevron(govuk-colour("white"), true);
+      }
+    }
+
+    &:hover,
+    &:focus:not(:focus-visible):hover {
+      color: govuk-colour("mid-grey");
+      text-decoration: none;
+
+      &:after {
+        background: govuk-colour("mid-grey");
+      }
+
+      &:before {
+        @include chevron(govuk-colour("mid-grey"), true);
+      }
+    }
+
+    &:focus,
+    &:focus-visible {
+      color: $govuk-focus-text-colour;
+
+      &:after {
+        background: $govuk-focus-text-colour;
+      }
+
+      &:before {
+        @include chevron($govuk-focus-text-colour, true);
+      }
+    }
+  }
+
   &.gem-c-layout-super-navigation-header__open-button {
     &,
     &:focus:not(:focus-visible) {
       &:before {
-        transform: translateY(0) rotate(225deg)
+        transform: translateY(0) rotate(225deg);
+      }
+    }
+
+    @include govuk-media-query($from: "desktop") {
+      &,
+      &:focus:not(:focus-visible) {
+        background: govuk-colour("light-grey");
+        color: $govuk-link-colour;
+
+        &:before {
+          @include chevron($govuk-link-colour, true);
+        }
+
+        &:after {
+          background-color: $govuk-link-colour;
+        }
       }
     }
   }
@@ -432,11 +519,11 @@ $chevron-indent-spacing: 7px;
 
 // Styles for top level navigation toggle button.
 .gem-c-layout-super-navigation-header__navigation-top-toggle-button {
-  box-sizing: border-box;
   @include govuk-font($size: 19, $weight: "bold", $line-height: 20px);
   background: govuk-colour("black");
-  border: 0;
   border-left: 1px solid govuk-colour("white");
+  border: 0;
+  box-sizing: border-box;
   color: govuk-colour("white");
   cursor: pointer;
   height: govuk-spacing(9);
@@ -474,8 +561,8 @@ $chevron-indent-spacing: 7px;
   &,
   &:focus:not(:focus-visible) {
     background: none;
-    box-shadow: none;
     border-color: govuk-colour("white");
+    box-shadow: none;
     color: govuk-colour("white");
 
     @include govuk-media-query($from: 360px) {
@@ -539,13 +626,36 @@ $chevron-indent-spacing: 7px;
 
   &:focus:not(:focus-visible) {
     background: none;
-    box-shadow: none;
     border-color: govuk-colour("white");
+    box-shadow: none;
     color: govuk-colour("white");
   }
 
   @include govuk-media-query($from: 360px) {
     right: 0;
+  }
+
+  @include govuk-media-query($from: "desktop") {
+    &,
+    &:focus:not(:focus-visible) {
+      background: $govuk-brand-colour;
+      border-bottom: govuk-spacing(1) solid $govuk-brand-colour;
+      border-left: none;
+      position: relative;
+    }
+
+    &:hover {
+      background: govuk-colour("black");
+      border-bottom-color: govuk-colour("mid-grey");
+      color: govuk-colour("mid-grey");
+    }
+
+    &:focus,
+    &:focus-visible {
+      @include govuk-focused-text;
+      box-shadow: none;
+      border-bottom-color: $govuk-focus-colour;
+    }
   }
 
   // Open button modifier
@@ -567,13 +677,8 @@ $chevron-indent-spacing: 7px;
     &,
     &:focus:not(:focus-visible) {
       background: govuk-colour("light-grey");
+      border-bottom-color: govuk-colour("light-grey");
       color: govuk-colour("light-grey");
-
-      @include govuk-media-query($from: 360px) {
-        &:before {
-          @include chevron(govuk-colour("light-grey"));
-        }
-      }
     }
   }
 }
@@ -605,6 +710,7 @@ $chevron-indent-spacing: 7px;
     left: 0;
     position: absolute;
     right: 0;
+    top: govuk-spacing(9);
   }
 }
 
@@ -625,6 +731,7 @@ $chevron-indent-spacing: 7px;
   position: relative;
 
   @include govuk-media-query($from: "desktop") {
+    margin: 0;
     padding: govuk-spacing(2) 0;
   }
 }
@@ -679,8 +786,8 @@ $chevron-indent-spacing: 7px;
 
 .gem-c-layout-super-navigation-header__navigation-second-item-link--with-description {
   @include govuk-font($size: 19, $weight: bold);
-  margin-top: govuk-spacing(2);
   margin-bottom: 0;
+  margin-top: govuk-spacing(2);
 }
 
 // Dropdown menu footer links.
@@ -707,8 +814,8 @@ $chevron-indent-spacing: 7px;
   @include govuk-media-query($from: "desktop") {
     box-sizing: border-box;
     float: left;
-    width: 50%;
     padding: 0 govuk-spacing(3);
+    width: 50%;
   }
 }
 
