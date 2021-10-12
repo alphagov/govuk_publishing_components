@@ -11,7 +11,7 @@ accessibility_criteria: |
   - be focusable with a keyboard
   - be usable with a keyboard
   - indicate when they have focus
-  - change in appearance when touched (in the touch-down state)
+  - change in appearance when active (in the active state)
   - be usable with touch
   - have label with a touch area similar to the input
   - be usable with [voice commands](https://www.w3.org/WAI/perspectives/voice.html)
@@ -53,7 +53,7 @@ examples:
       - value: "govuk-verify"
         text: "Use GOV.UK Verify"
   with_bold:
-    description: 'Used to provide better contrast between long labels and hint text, Note that the `:or` option [is documented as a string due to a bug](https://github.com/alphagov/govuk_publishing_components/issues/102)'
+    description: Used to provide better contrast between long labels and hint text, Note that the `:or` option [is documented as a string due to a bug](https://github.com/alphagov/govuk_publishing_components/issues/102)
     data:
       name: "radio-group-bold"
       items:
@@ -66,7 +66,7 @@ examples:
         hint_text: "You'll have an account if you've already proved your identity with a certified company, such as the Post Office."
         bold: true
   with_bottom_margin:
-    description: "The component accepts a number for margin bottom from 0 to 9 (0px to 60px) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to a margin bottom of 30px (6)."
+    description: The component accepts a number for margin bottom from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to a margin bottom of `30px` (`6`).
     data:
       name: "radio-group"
       margin_bottom: 9
@@ -85,16 +85,50 @@ examples:
         text: "Use Government Gateway"
       - value: "govuk-verify"
         text: "Use GOV.UK Verify"
-  with_heading:
-    description: This adds a legend element containing the text supplied.
+  with_legend:
+    description: |
+      Legend text is automatically wrapped inside a `h2`. To render the text without it, `heading_level` must be set to `0`.
     data:
-      name: "radio-group-heading"
-      heading: "Are you hungry?"
+      name: "radio-group-legend"
+      heading: "What's it to do with?"
+      heading_level: 0
       items:
       - value: "yes"
         text: "Yes"
       - value: "no"
         text: "No"
+  with_heading:
+    description: |
+      By default, text supplied for the `legend` is wrapped inside a `h2`. 
+      
+      The font size of this heading can be changed using the `heading_size` option. Valid options are `s`, `m`, `l`, `xl`, defaulting to `m` if no option is passed.
+    data:
+      name: "radio-group-description"
+      heading: "What is your favourite colour?"
+      heading_size: "s"
+      items:
+      - value: "red"
+        text: "Red"
+      - value: "green"
+        text: "Green"
+      - value: "blue"
+        text: "Blue"
+  with_different_heading_level:
+    description: |
+      By default, text supplied for the `legend` is wrapped inside a `h2`. This can be changed using the `heading_level` option.
+        
+      If `heading_level` is `1` and `heading_size` is not set, the text size will be `xl`.
+    data:
+      name: "radio-group-description"
+      heading: "What is your favourite colour?"
+      heading_level: 1
+      items:
+      - value: "red"
+        text: "Red"
+      - value: "green"
+        text: "Green"
+      - value: "blue"
+        text: "Blue"
   with_heading_and_hint:
     data:
       name: "radio-group-heading"
@@ -109,9 +143,9 @@ examples:
         text: "Blue"
   with_page_header_and_caption:
     description: |
-      If a caption text is provided with a page heading, it will be displayed above the heading.
-      A caption can only be used with a page heading. If a heading is not provided the caption will not render.
-      The pattern is used across GOV.UK to show a high-level section that this page question falls into.
+      A caption can be added using the `heading_caption` option. Captions will only be displayed if text for the heading option is present.
+      
+      The pattern is used across GOV.UK to show a high-level section that this page belongs to.
     data:
       name: "radio-group-heading"
       heading: "Is it snowing?"
@@ -181,35 +215,6 @@ examples:
         text: "Green"
       - value: "blue"
         text: "Blue"
-  with_custom_heading_size:
-    description: |
-      This allows the size of the legend to be changed. Valid options are s, m, l, xl, defaulting to m if no option is passed.
-
-      If heading_level is 1 and heading_size is not set, the text size will be xl.
-    data:
-      name: "radio-group-description"
-      heading: "What is your favourite colour?"
-      heading_size: "s"
-      items:
-      - value: "red"
-        text: "Red"
-      - value: "green"
-        text: "Green"
-      - value: "blue"
-        text: "Blue"
-  with_custom_heading_level:
-    description: This allows the heading level to be changed. Heading level will default to `h2` if nothing is passed.
-    data:
-      name: "radio-group-description"
-      heading: "What is your favourite colour?"
-      heading_level: 3
-      items:
-      - value: "red"
-        text: "Red"
-      - value: "green"
-        text: "Green"
-      - value: "blue"
-        text: "Blue"
   with_hint_text_on_radios:
     data:
       name: "radio-group-hint-text"
@@ -248,7 +253,7 @@ examples:
       - value: "govuk-verify"
         text: "Use GOV.UK Verify"
   with_or_divider:
-    description: "See [related service manual gudiance for this pattern](https://www.gov.uk/service-manual/design/writing-for-user-interfaces#ask-questions-that-users-can-understand)"
+    description: "See [related service manual guidance for this pattern](https://www.gov.uk/service-manual/design/writing-for-user-interfaces#ask-questions-that-users-can-understand)"
     data:
       name: "radio-group-or-divider"
       items:

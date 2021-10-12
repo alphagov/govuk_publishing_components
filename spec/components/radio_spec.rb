@@ -148,6 +148,23 @@ describe "Radio", type: :view do
     assert_select "legend h1", "What is your favourite skittle?"
   end
 
+  it "renders radio-group with a legend" do
+    render_component(
+      name: "radio-group-legend",
+      heading: "What is your favourite smartie?",
+      heading_level: 0,
+      heading_size: "l",
+      items: [
+        { label: "Red", value: "red" },
+        { label: "Blue", value: "blue" },
+      ],
+    )
+    assert_select ".govuk-radios"
+    assert_select "legend", "What is your favourite smartie?"
+    assert_select "legend span.govuk-fieldset__heading", true
+    assert_select "legend h2", false
+  end
+
   it "renders radio-group with a page heading caption" do
     render_component(
       name: "favourite-skittle",
