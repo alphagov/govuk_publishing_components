@@ -1,22 +1,27 @@
 /* global describe it expect beforeEach spyOn */
 
-var $ = window.jQuery
-
 describe('primary-links', function () {
   'use strict'
   var GOVUK = window.GOVUK
 
-  var shortList, mediumList
+  var shortList, mediumList, container
 
   beforeEach(function () {
-    shortList = $('<ul><li class="primary">one</li><li>two</li></ul>')
-    mediumList = $('<ul><li class="primary">one</li><li>two</li><li>three</li></ul>')
+    shortList = document.createElement('ul')
+    mediumList = document.createElement('ul')
+    container = document.createElement('div')
+
+    shortList.innerHTML = '<li class="primary">one</li><li>two</li>'
+    mediumList.innerHTML = '<li class="primary">one</li><li>two</li><li>three</li>'
+
+    container.appendChild(shortList)
+    container.appendChild(mediumList)
   })
 
   it('visually hides extra links', function () {
     new GOVUK.PrimaryList(mediumList, '.primary') // eslint-disable-line no-new
 
-    expect(mediumList.find('.visuallyhidden').length).toBe(2)
+    expect(mediumList.querySelectorAll('.primary-links--display-none').length).toBe(2)
   })
 
   it('creates appropriate toggle text', function () {
@@ -28,10 +33,9 @@ describe('primary-links', function () {
   })
 
   it('add a toggle link', function () {
-    var container = $('<div>').append(mediumList)
     new GOVUK.PrimaryList(mediumList, '.primary') // eslint-disable-line no-new
 
-    expect(container.find('a').length).toBe(1)
+    expect(container.querySelectorAll('a').length).toBe(1)
   })
 
   it('show extra links when toggled', function () {
@@ -49,7 +53,7 @@ describe('primary-links', function () {
     new GOVUK.PrimaryList(shortList, '.primary') // eslint-disable-line no-new
     new GOVUK.PrimaryList(mediumList, '.primary') // eslint-disable-line no-new
 
-    expect(shortList.find('.visuallyhidden').length).toBe(0)
-    expect(mediumList.find('.visuallyhidden').length).toBe(2)
+    expect(shortList.querySelectorAll('.primary-links--display-none').length).toBe(0)
+    expect(mediumList.querySelectorAll('.primary-links--display-none').length).toBe(2)
   })
 })
