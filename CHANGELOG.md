@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 27.6.0
 
 * Pass cookie consent to Digital Identity via query parameter ([PR #2344](https://github.com/alphagov/govuk_publishing_components/pull/2344))
 * Add explicit-cross-domain-links to account manage & security links ([PR #2347](https://github.com/alphagov/govuk_publishing_components/pull/2347))
