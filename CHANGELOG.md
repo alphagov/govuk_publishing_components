@@ -9,6 +9,7 @@
 
 ## 27.7.0
 
+* Remove unneeded scroll tracking ([PR #2354](https://github.com/alphagov/govuk_publishing_components/pull/2354))
 * Update devolved nations component to accept type property ([PR #2337](https://github.com/alphagov/govuk_publishing_components/pull/2337))
 
 ## 27.6.0
