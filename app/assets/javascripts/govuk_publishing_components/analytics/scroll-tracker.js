@@ -58,13 +58,6 @@
     '/guidance/foreign-travel-insurance': [
       ['Heading', 'What your travel insurance policy should cover']
     ],
-    '/guidance/social-security-contributions-for-uk-and-eu-workers-if-the-uk-leaves-the-eu-with-no-deal': [
-      ['Heading', 'UK employers'],
-      ['Heading', 'UK employees and self-employed']
-    ],
-    '/guidance/student-finance-arrangements-in-a-no-deal-scenario': [
-      ['Heading', 'Other overseas study placements']
-    ],
     '/guidance/living-in-france': [
       ['Heading', 'Passports and travel']
     ],
@@ -73,12 +66,6 @@
     ],
     '/guidance/healthcare-for-eu-and-efta-citizens-visiting-the-uk': [
       ['Heading', 'Travel insurance']
-    ],
-    '/guidance/driving-in-the-eu-after-brexit': [
-      ['Heading', 'GB stickers and number plates']
-    ],
-    '/guidance/driving-in-the-eu-after-brexit#insurance-for-your-vehicle-caravan-or-trailer': [
-      ['Heading', 'Trailer registration']
     ],
     '/driving-abroad': [
       ['Heading', 'Check your insurance if you’re taking your own vehicle']
@@ -89,56 +76,14 @@
     '/driving-abroad/international-driving-permit': [
       ['Heading', 'Check which IDP you need']
     ],
-    '/guidance/driving-in-the-eu-after-brexit#gb-stickers-and-number-plates': [
-      ['Heading', 'GB stickers and number plates']
-    ],
     '/guidance/guidance-for-suppliers-of-cattle-sheep-and-goat-ear-tags': [
       ['Heading', 'Tagging information for livestock keepers']
-    ],
-    '/guidance/wine-trade-regulations': [
-      ['Heading', 'Rules for transporting wine into the UK']
-    ],
-    '/guidance/the-chemicals-sector-and-preparing-for-eu-exit': [
-      ['Heading', 'Energy and climate']
     ],
     '/guidance/how-to-move-goods-between-or-through-common-transit-countries-including-the-eu': [
       ['Heading', 'Start moving your goods']
     ],
     '/guidance/ecmt-international-road-haulage-permits': [
       ['Heading', 'Apply for permits']
-    ],
-    '/guidance/prepare-to-drive-in-the-eu-after-brexit-lorry-and-goods-vehicle-drivers': [
-      ['Heading', 'Driver CPC for lorry drivers']
-    ],
-    '/guidance/run-international-bus-or-coach-services-after-brexit': [
-      ['Heading', 'Run regular international services']
-    ],
-    '/guidance/vehicle-type-approval-if-theres-no-brexit-deal': [
-      ['Heading', 'Existing vehicle and component type-approvals']
-    ],
-    '/guidance/the-retail-sector-and-preparing-for-eu-exit': [
-      ['Heading', 'Importing and exporting']
-    ],
-    '/guidance/the-consumer-goods-sector-and-preparing-for-eu-exit': [
-      ['Heading', 'Importing and exporting']
-    ],
-    '/government/publications/banking-insurance-and-other-financial-services-if-theres-no-brexit-deal/banking-insurance-and-other-financial-services-if-theres-no-brexit-deal-information-for-financial-services-institutions': [
-      ['Heading', '3. Action taken by the UK']
-    ],
-    '/government/publications/further-guidance-note-on-the-regulation-of-medicines-medical-devices-and-clinical-trials-if-theres-no-brexit-deal/further-guidance-note-on-the-regulation-of-medicines-medical-devices-and-clinical-trials-if-theres-no-brexit-deal': [
-      ['Heading', '1.4 Orphan medicines']
-    ],
-    '/guidance/check-temporary-rates-of-customs-duty-on-imports-after-eu-exit': [
-      ['Heading', 'Tariff-rate quotas (TRQ)']
-    ],
-    '/guidance/construction-products-regulation-if-there-is-no-brexit-deal': [
-      ['Heading', 'UK manufacturers exporting to the EU']
-    ],
-    '/guidance/european-and-domestic-funding-after-brexit': [
-      ['Heading', 'What you need to do']
-    ],
-    '/guidance/guidance-on-substantial-amendments-to-a-clinical-trial-if-the-uk-leaves-the-eu-with-no-deal': [
-      ['Heading', 'Investigational medicinal product (IMP) certification and importation']
     ],
     '/taking-goods-out-uk-temporarily/get-an-ata-carnet': [
       ['Heading', 'Using an ATA Carnet']
