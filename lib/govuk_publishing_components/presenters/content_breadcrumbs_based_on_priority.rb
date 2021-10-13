@@ -4,17 +4,11 @@ module GovukPublishingComponents
       # keys are labels, values are the content_ids for the matching taxons
       # Where multiple matching taxons are present, the top most one is the highest priority
       #   and the bottom one the lowest priority
-      BREXIT_TAXONS = {
+      PRIORITY_TAXONS = {
         brexit_business: "634fd193-8039-4a70-a059-919c34ff4bfc",
         brexit_individuals: "614b2e65-56ac-4f8d-bb9c-d1a14167ba25",
         brexit_taxon: "d6c2de5d-ef90-45d1-82d4-5f2438369eea",
       }.freeze
-
-      PRIORITY_TAXONS = {
-        education_coronavirus: "272308f4-05c8-4d0d-abc7-b7c2e3ccd249",
-        worker_coronavirus: "b7f57213-4b16-446d-8ded-81955d782680",
-        business_coronavirus: "65666cdf-b177-4d79-9687-b9c32805e450",
-      }.merge(BREXIT_TAXONS).freeze
 
       # Returns the highest priority taxon that has a content_id matching those in PRIORITY_TAXONS
       def self.call(content_item, query_parameters = nil)
@@ -37,9 +31,9 @@ module GovukPublishingComponents
 
       def priority_brexit_taxon
         if tagged_to_both_brexit_child_taxons?
-          priority_brexit_taxons.find { |t| t["content_id"] == BREXIT_TAXONS[:brexit_taxon] }
+          priority_taxons.find { |t| t["content_id"] == PRIORITY_TAXONS[:brexit_taxon] }
         else
-          priority_brexit_taxons.min_by { |t| BREXIT_TAXONS.values.index(t["content_id"]) }
+          priority_taxons.min_by { |t| PRIORITY_TAXONS.values.index(t["content_id"]) }
         end
       end
 
@@ -83,10 +77,6 @@ module GovukPublishingComponents
         end
       end
 
-      def priority_brexit_taxons
-        priority_taxons.select { |t| priority_brexit_taxon?(t) }
-      end
-
       def taxon_tree(taxons)
         return [] if taxons.blank?
 
@@ -95,10 +85,6 @@ module GovukPublishingComponents
 
       def priority_taxon?(taxon)
         PRIORITY_TAXONS.values.include?(taxon["content_id"])
-      end
-
-      def priority_brexit_taxon?(taxon)
-        BREXIT_TAXONS.values.include?(taxon["content_id"])
       end
 
       def brexit_child_taxon?(taxon)
