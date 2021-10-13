@@ -94,13 +94,19 @@
 
 .gem-c-action-link--blue-arrow {
   &:before {
-    width: 45px;
-    height: 35px;
+    width: 36px;
+    height: 28px;
     background: image-url("govuk_publishing_components/action-link-arrow--blue.png");
     background: image-url("govuk_publishing_components/action-link-arrow--blue.svg"), linear-gradient(transparent, transparent);
     background-repeat: no-repeat;
-    background-size: 35px auto;
+    background-size: 28px auto;
     background-position: 0 0;
+
+    @include govuk-media-query($from: tablet) {
+      width: 45px;
+      height: 35px;
+      background-size: 35px auto;
+    }
   }
 }
 
