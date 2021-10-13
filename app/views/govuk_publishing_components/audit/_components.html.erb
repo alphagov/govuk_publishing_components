@@ -1,4 +1,4 @@
-<% if @applications_found %>
+<% if @other_applications %>
   <%= render "govuk_publishing_components/components/heading", {
     text: "Components",
     font_size: "l",
@@ -101,7 +101,7 @@
     }
   %>
 
-  <% if @applications_found %>
+  <% if @other_applications %>
     <% components_by_application = capture do %>
       <% if @components[:components_by_application].any? %>
         <dl class="govuk-summary-list">

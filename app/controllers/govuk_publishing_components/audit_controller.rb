@@ -31,9 +31,14 @@ module GovukPublishingComponents
 
       gem_path = Gem.loaded_specs["govuk_publishing_components"].full_gem_path
       gem_path = Dir.pwd if ENV["MAIN_COMPONENT_GUIDE"]
+      host_dir = File.expand_path("..")
+      path = File.expand_path("..", gem_path)
+
+      @in_application = false
+      @in_application = true unless path.to_s == host_dir.to_s
 
       components = AuditComponents.new(gem_path, false)
-      applications = analyse_applications(File.expand_path("..", gem_path), application_dirs)
+      applications = analyse_applications(host_dir, application_dirs)
       compared_data = AuditComparer.new(components.data, applications, false)
 
       @applications = compared_data.applications_data || []
@@ -44,14 +49,17 @@ module GovukPublishingComponents
 
     def analyse_applications(path, application_dirs)
       results = []
-      @applications_found = false
+      applications_found = 0
 
       application_dirs.each do |application|
         application_path = [path, application].join("/")
         app = AuditApplications.new(application_path, application)
-        @applications_found = true if app.data[:application_found]
+        applications_found += 1 if app.data[:application_found]
         results << app.data
       end
+
+      @other_applications = false
+      @other_applications = true if applications_found > 1
 
       results
     end
