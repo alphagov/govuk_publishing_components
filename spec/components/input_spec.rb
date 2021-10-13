@@ -254,4 +254,14 @@ describe "Input", type: :view do
     assert_select ".govuk-input__wrapper .gem-c-input[name=lead-times]"
     assert_select ".govuk-input__wrapper .govuk-input__suffix[aria-hidden=true]", text: "days"
   end
+
+  it "renders input with search icon" do
+    render_component(
+      label: { text: "Search the internet" },
+      name: "search-box",
+      search_icon: true,
+    )
+    assert_select ".gem-c-input--with-search-icon"
+    assert_select ".gem-c-input__search-icon"
+  end
 end

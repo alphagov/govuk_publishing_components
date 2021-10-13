@@ -11,6 +11,7 @@
 
 * Make action link blue arrow smaller on mobile ([PR #2353](https://github.com/alphagov/govuk_publishing_components/pull/2353))
 * Remove unneeded scroll tracking ([PR #2354](https://github.com/alphagov/govuk_publishing_components/pull/2354))
+* Update CSS for input component (`with_search_icon` variation) ([PR #2355](https://github.com/alphagov/govuk_publishing_components/pull/2355))
 
 ## 27.7.0
 
