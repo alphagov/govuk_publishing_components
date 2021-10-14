@@ -70,3 +70,9 @@ updates:
   - dependency-name: jquery
     versions:
     - ">= 3.a, < 4"
+- package-ecosystem: "github-actions"
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "03:00"
+  open-pull-requests-limit: 10
