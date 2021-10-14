@@ -31,7 +31,7 @@
   css_classes = %w(gem-c-input govuk-input)
   css_classes << "govuk-input--error" if has_error
   css_classes << "govuk-input--width-#{width}" if [2, 3, 4, 5, 10, 20, 30].include?(width)
-  css_classes << "gem-c-input--search-icon" if search_icon
+  css_classes << "gem-c-input--with-search-icon" if search_icon
   form_group_css_classes = %w(govuk-form-group)
   form_group_css_classes << "govuk-form-group--error" if has_error && !grouped
 
@@ -120,6 +120,7 @@
       <%= input_tag %><%= tag.span suffix, class: "govuk-input__suffix", aria: { hidden: true } %>
     <% end %>
   <% else %>
+    <%= tag.span class: "gem-c-input__search-icon" if search_icon %>
     <%= input_tag %>
   <% end %>
 <% end %>
