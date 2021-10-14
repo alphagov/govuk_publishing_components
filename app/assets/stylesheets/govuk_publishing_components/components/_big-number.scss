@@ -38,4 +38,12 @@
       @include govuk-link-hover-decoration;
     }
   }
+
+  &:focus,
+  &:focus:hover {
+    .gem-c-big-number__label,
+    .gem-c-big-number__value--decorated {
+      text-decoration: none;
+    }
+  }
 }

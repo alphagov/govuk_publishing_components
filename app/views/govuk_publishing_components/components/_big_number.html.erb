@@ -4,6 +4,7 @@
   label ||= nil
   href ||= nil
   data_attributes ||= nil
+  aria ||= nil
   classes = ["gem-c-big-number__value"]
   
   if label.nil? && href
@@ -25,7 +26,7 @@
     <% end %>
   <% end %>
   
-  <%= tag.div class: "gem-c-big-number" do %>
+  <%= tag.div class: "gem-c-big-number", aria: aria do %>
     <% unless href.nil? %>
       <%= link_to big_number_value, href, class: "govuk-link gem-c-big-number__link", data: data_attributes %>
     <% else %>
