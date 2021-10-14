@@ -29,11 +29,11 @@ All information is determined by the auditing code performing regular expression
 
 The auditing knows what to show based on two values - `@in_application` and `@other_applications`. They determine whether the auditing page includes the tab for 'Applications', and whether the 'Components by application' section of the 'Components' tab is shown.
 
-                               | Remote/local application | Gem running remotely | Gem running locally
------------------------------- | ------------------------ | -------------------- | -------------------
-`@in_application`              | true                     | false                | false
-`@other_applications`          | false                    | false                | true
-Applications tab               | Shows info for this app  | Not shown            | Shows info for all apps
-Components by application      | Not shown                | Not shown            | Shown
+|                                | Remote/local application | Gem running remotely | Gem running locally     |
+| ------------------------------ | ------------------------ | -------------------- | ----------------------- |
+| `@in_application`              | true                     | false                | false                   |
+| `@other_applications`          | false                    | false                | true                    |
+| Applications tab               | Shows info for this app  | Not shown            | Shows info for all apps |
+| Components by application      | Not shown                | Not shown            | Shown                   |
 
 Note that the combination of true/true for both `@in_application` and `@other_applications` shouldn't be possible - if the gem is inside an application, it can't access other applications.
