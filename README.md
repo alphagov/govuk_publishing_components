@@ -47,6 +47,7 @@ bin/rake app:jasmine:ci
 - [Code documentation on rubydoc.info](http://www.rubydoc.info/gems/govuk_publishing_components)
 - [Component conventions](docs/component_conventions.md)
 - [Component principles](docs/component_principles.md)
+- [Component auditing](docs/auditing.md)
 
 ## Licence
 

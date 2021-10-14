@@ -10,7 +10,7 @@
   <%= render "components" %>
 <% end %>
 
-<% if @applications_found %>
+<% if @in_application or @other_applications %>
   <%= render "govuk_publishing_components/components/tabs", {
     tabs: [
       {
