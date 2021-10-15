@@ -42,26 +42,11 @@ describe "ContextualBreadcrumbs", type: :view do
     content_item
   end
 
-  def tag_to_priority_coronavirus(content_item)
-    content_item["links"]["taxons"][1]["title"] = "Coronavirus Education"
-    content_item["links"]["taxons"][1]["content_id"] = "272308f4-05c8-4d0d-abc7-b7c2e3ccd249"
-    content_item
-  end
-
   it "renders the brexit-superbreadcrumb meta tag on content tagged to brexit" do
     content_item = example_document_for("guide", "guide")
     content_item = tag_to_brexit(content_item)
     render_component(content_item: content_item)
     assert_select "meta[name='govuk:brexit-superbreadcrumb'][content='Brexitbusiness']"
-  end
-
-  it "does not render the brexit-superbreadcrumb meta tag on content tagged to brexit AND a priority coronavirus taxon" do
-    content_item = example_document_for("guide", "guide")
-    content_item = tag_to_brexit(content_item)
-    content_item["links"]["taxons"] << {}
-    content_item = tag_to_priority_coronavirus(content_item)
-    render_component(content_item: content_item)
-    assert_select "meta[name='govuk:brexit-superbreadcrumb'][content='Brexitbusiness']", count: 0
   end
 
   it "renders breadcrumbs that collapse on mobile by default" do
