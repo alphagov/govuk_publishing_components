@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 27.8.0
 
 * Remove Coronavirus priority taxons ([PR #2357](https://github.com/alphagov/govuk_publishing_components/pull/2357))
 * Add `margin_bottom` spacing to list component ([PR #2363](https://github.com/alphagov/govuk_publishing_components/pull/2363))
