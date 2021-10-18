@@ -62,3 +62,11 @@ examples:
     data:
       id: 'super-fantastic-chocolate-list'
       <<: *default-example-data
+  with_margin:
+    description: |
+      Sets the margin on the bottom of the list element.
+
+      The component accepts a number for margin bottom from 0 to 9 (0px to 60px) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having a 20px margin.
+    data:
+      margin_bottom: 9
+      <<: *default-example-data

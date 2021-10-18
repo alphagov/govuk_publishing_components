@@ -118,4 +118,47 @@ describe "List", type: :view do
     assert_select "ul.govuk-list li a[data-track-action='action']"
     assert_select "ul.govuk-list li a[data-track-label='Test item']"
   end
+
+  it "adds margin" do
+    render_component(
+      margin_bottom: 7,
+      items: [
+        "<a href='https://example.com/'>Test item</a>",
+        "<a href='https://example.com/'>Another test item</a>",
+      ],
+    )
+    assert_select '.gem-c-list.govuk-\!-margin-bottom-7'
+  end
+
+  it "defaults to no bottom margin if an incorrect value is passed" do
+    render_component(
+      margin_bottom: 20,
+      items: [
+        "<a href='https://example.com/'>Test item</a>",
+        "<a href='https://example.com/'>Another test item</a>",
+      ],
+    )
+    assert_select "[class='^=govuk-\!-margin-bottom-']", false
+  end
+
+  it "has no margin class added by default" do
+    render_component(
+      items: [
+        "<a href='https://example.com/'>Test item</a>",
+        "<a href='https://example.com/'>Another test item</a>",
+      ],
+    )
+    assert_select "[class='^=govuk-\!-margin-bottom-']", false
+  end
+
+  it "has no margin class added if `margin_bottom` set to 4" do
+    render_component(
+      margin_bottom: 4,
+      items: [
+        "<a href='https://example.com/'>Test item</a>",
+        "<a href='https://example.com/'>Another test item</a>",
+      ],
+    )
+    assert_select "[class='^=govuk-\!-margin-bottom-']", false
+  end
 end

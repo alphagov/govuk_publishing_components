@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Remove Coronavirus priority taxons ([PR #2357](https://github.com/alphagov/govuk_publishing_components/pull/2357))
+* Add `margin_bottom` spacing to list component ([PR #2363](https://github.com/alphagov/govuk_publishing_components/pull/2363))
 * Fix auditing bug and add documentation ([PR #2351](https://github.com/alphagov/govuk_publishing_components/pull/2351))
 * Make action link blue arrow smaller on mobile ([PR #2353](https://github.com/alphagov/govuk_publishing_components/pull/2353))
 * Remove unneeded scroll tracking ([PR #2354](https://github.com/alphagov/govuk_publishing_components/pull/2354))
