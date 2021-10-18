@@ -15,6 +15,7 @@
 * Remove unneeded scroll tracking ([PR #2354](https://github.com/alphagov/govuk_publishing_components/pull/2354))
 * Update CSS for input component (`with_search_icon` variation) ([PR #2355](https://github.com/alphagov/govuk_publishing_components/pull/2355))
 * Fix focus state and update API for the big number ([PR #2359](https://github.com/alphagov/govuk_publishing_components/pull/2359))
+* Add legend examples for radio input ([PR #2333](https://github.com/alphagov/govuk_publishing_components/pull/2333))
 
 ## 27.7.0
 
