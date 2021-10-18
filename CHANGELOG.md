@@ -308,6 +308,8 @@
 * Fix IE11 `initCustomEvent` error ([PR #2079](https://github.com/alphagov/govuk_publishing_components/pull/2079))
 * If present, use the url_override field in breadcrumbs ([PR #2093](https://github.com/alphagov/govuk_publishing_components/pull/2093))
 
+* Keep docs in line with incoming change in govspeak ([PR #2064](https://github.com/alphagov/govuk_publishing_components/pull/2064))
+
 ## 24.10.3
 
 * Remove phase banner restrictions ([PR #2057](https://github.com/alphagov/govuk_publishing_components/pull/2057))

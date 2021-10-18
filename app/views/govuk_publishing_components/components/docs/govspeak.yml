@@ -439,16 +439,16 @@ examples:
   statistic_headlines:
     data:
       block: |
-        <aside class="stat-headline">
+        <div class="stat-headline">
           <p><em>£6bn</em>
           Total Departmental Expenditure Limit (<abbr title="Departmental Expenditure Limit">DEL</abbr>) in financial year 2015 to 2016</p>
-        </aside>
+        </div>
         <p>This includes £5.8 billion Resource <abbr title="Departmental Expenditure Limit">DEL</abbr> and £0.2 billion Capital <abbr title="Departmental Expenditure Limit">DEL</abbr>. In addition, <abbr title="Department for Work and Pensions">DWP</abbr> Annually Managed Expenditure (<abbr title="Annually Managed Expenditure">AME</abbr>) in financial year 2015 to 2016 is £170.5 billion, as forecast by the Office for Budget Responsibility.</p>
-        <aside class="stat-headline">
+        <div class="stat-headline">
           <p>UK employment rate
           <em>74.1%</em>
           between October and December 2015</p>
-        </aside>
+        </div>
   specialist_content:
     data:
       block: |
