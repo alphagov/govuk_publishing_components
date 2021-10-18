@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix organisation logo size when printing ([PR #2371](https://github.com/alphagov/govuk_publishing_components/pull/2371)) PATCH
+
 ## 27.8.0
 
 * Remove Coronavirus priority taxons ([PR #2357](https://github.com/alphagov/govuk_publishing_components/pull/2357))
