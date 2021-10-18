@@ -56,6 +56,20 @@ describe "Big number", type: :view do
     assert_select ".gem-c-big-number__link[data-my-cool-attribute='cool']"
   end
 
+  it "adds aria attributes to the big number if that attribute is present" do
+    render_component({
+      number: 500,
+      href: "/tests",
+      aria: {
+        hidden: true,
+        live: "polite",
+      },
+    })
+
+    assert_select ".gem-c-big-number[aria-hidden='true']"
+    assert_select ".gem-c-big-number[aria-live='polite']"
+  end
+
   it "adds data attributes to the span containing the number value if a href attribute is not present" do
     render_component({
       number: 500,

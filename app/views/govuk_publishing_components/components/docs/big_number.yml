@@ -54,3 +54,10 @@ examples:
       label: Ministerial departments
       data_attributes:
         department-count: true
+  with_aria_attributes:
+    description: Aria attributes are applied to the whole component instance
+    data:
+      number: 23
+      label: Ministerial departments
+      aria:
+        hidden: true
