@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 27.8.1
 
 * Add cross domain linking to main GA property ([PR #2378](https://github.com/alphagov/govuk_publishing_components/pull/2378))
 * Fix organisation logo size when printing ([PR #2371](https://github.com/alphagov/govuk_publishing_components/pull/2371)) PATCH
