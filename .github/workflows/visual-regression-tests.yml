@@ -16,15 +16,7 @@ jobs:
       - uses: actions/setup-node@v2.4.1
         with:
           node-version: "12"
-      - name: Get Yarn cache directory path
-        id: yarn-cache-directory-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - name: Check for cached Yarn dependencies
-        uses: actions/cache@v2
-        with:
-          path: ${{ steps.yarn-cache-directory-path.outputs.dir }}
-          key: yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: yarn-
+          cache: yarn
       - run: yarn install --frozen-lockfile
       - uses: percy/exec-action@v0.3.1
         with:
