@@ -93,15 +93,17 @@ $large-input-size: 50px;
   padding: 0;
   width: $input-size;
   height: $input-size;
-  background-image: image-url("govuk_publishing_components/search-button.png");
-  background-repeat: no-repeat;
-  background-position: 2px 50%;
   text-indent: -5000px;
   overflow: hidden;
 
-  @include govuk-device-pixel-ratio {
-    background-size: 52.5px auto;
-    background-position: 115% 50%;
+  .gem-c-search__icon {
+    display: block;
+    height: 20px;
+    pointer-events: none;
+    width: 20px;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
   }
 
   &:focus {
@@ -222,11 +224,10 @@ $large-input-size: 50px;
   .gem-c-search__submit {
     width: $large-input-size;
     height: $large-input-size;
-    background-position: 8px 50%;
 
-    @include govuk-device-pixel-ratio {
-      background-size: 60px auto;
-      background-position: 160% 50%;
+    .gem-c-search__icon {
+      left: 15px;
+      bottom: 15px;
     }
   }
 }
