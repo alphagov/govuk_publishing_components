@@ -36,11 +36,20 @@
       fieldsObject = { cookieDomain: fieldsObject }
     }
 
+    function setLinkedDomains () {
+      var domains = window.GOVUK.analyticsVars.primaryLinkedDomains
+      if (domains && domains.length > 0) {
+        sendToGa('require', 'linker')
+        sendToGa('linker:autoLink', domains)
+      }
+    }
+
     configureProfile()
     anonymizeIp()
     disableAdFeatures()
     stripTitlePII()
     stripLocationPII()
+    setLinkedDomains()
   }
 
   GoogleAnalyticsUniversalTracker.load = function () {
