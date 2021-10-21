@@ -31,9 +31,21 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       return
     }
 
+    this.trackType = this.$module.getAttribute('data-track-type')
+    var trackHeadings = this.$module.getAttribute('data-track-headings')
+    if (trackHeadings) {
+      try {
+        this.config.trackHeadings = JSON.parse(trackHeadings)
+      } catch (e) {
+        // if there's a problem with the config, don't start the tracker
+        console.error('Scroll tracker configuration error: ' + e.message, window.location)
+        window.GOVUK.analyticsVars.scrollTrackerStarted = false
+        return
+      }
+    }
+
     window.GOVUK.analyticsVars.scrollTrackerStarted = true
 
-    this.trackType = this.$module.getAttribute('data-track-type')
     if (this.trackType === 'headings') {
       this.track = new AutoScrollTracker.Heading(this.config)
     } else {
@@ -145,15 +157,24 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   // check heading is inside allowed elements, generally ignores everything outside of page content
   AutoScrollTracker.Heading.prototype.findAllowedHeadings = function () {
-    var headings = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
     var headingsFound = []
+    var headings = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6']
+    var trackHeadings = this.config.trackHeadings
 
+    // this is a loop that only happens once as we currently only have one
+    // allowed element for headings to be in - 'main'
     for (var h = 0; h < this.config.allowHeadingsInside.length; h++) {
       var insideElements = document.querySelectorAll(this.config.allowHeadingsInside[h])
       for (var e = 0; e < insideElements.length; e++) {
         var found = insideElements[e].querySelectorAll(headings)
         for (var f = 0; f < found.length; f++) {
-          headingsFound.push(found[f])
+          if (trackHeadings) {
+            if (trackHeadings.includes(found[f].textContent.trim())) {
+              headingsFound.push(found[f])
+            }
+          } else {
+            headingsFound.push(found[f])
+          }
         }
       }
     }
