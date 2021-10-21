@@ -85,6 +85,19 @@ $large-input-size: 50px;
   }
 }
 
+@mixin icon-positioning($container-size) {
+  $icon-dimension: 20px;
+  $icon-position: ($container-size - $icon-dimension) / 2;
+
+  display: block;
+  pointer-events: none;
+  position: absolute;
+  height: $icon-dimension;
+  width: $icon-dimension;
+  top: $icon-position;
+  left: $icon-position;
+}
+
 .gem-c-search__submit {
   border: 0;
   cursor: pointer;
@@ -97,13 +110,7 @@ $large-input-size: 50px;
   overflow: hidden;
 
   .gem-c-search__icon {
-    display: block;
-    height: 20px;
-    pointer-events: none;
-    width: 20px;
-    position: absolute;
-    left: 10px;
-    bottom: 10px;
+    @include icon-positioning($input-size);
   }
 
   &:focus {
@@ -226,8 +233,7 @@ $large-input-size: 50px;
     height: $large-input-size;
 
     .gem-c-search__icon {
-      left: 15px;
-      bottom: 15px;
+      @include icon-positioning($large-input-size);
     }
   }
 }
