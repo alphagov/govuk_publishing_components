@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Replace search icon PNG with SVG ([PR # 2377](https://github.com/alphagov/govuk_publishing_components/pull/2377))
 * Interventions: make more generic ([PR #2329](https://github.com/alphagov/govuk_publishing_components/pull/2329/))
 
 ## 27.8.1

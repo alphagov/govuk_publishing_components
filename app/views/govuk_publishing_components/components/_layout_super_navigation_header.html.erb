@@ -213,30 +213,10 @@
         <span class="govuk-visually-hidden">
           <%= search_text %>
         </span>
-        <svg
-          class="gem-c-layout-super-navigation-header__search-toggle-button-link-icon"
-          width="27"
-          height="27"
-          viewBox="0 0 27 27"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true"
-          focusable="false"
-        >
-          <circle
-            cx="10.0161"
-            cy="10.0161"
-            r="8.51613"
-            stroke="currentColor"
-            stroke-width="3" />
-          <line
-            x1="15.8668"
-            y1="16.3587"
-            x2="25.4475"
-            y2="25.9393"
-            stroke="currentColor"
-            stroke-width="3" />
-        </svg>
+        <%=
+          render "govuk_publishing_components/components/search/search_icon",
+            classes: %W[gem-c-layout-super-navigation-header__search-toggle-button-link-icon]
+        %>
       </button>
 
       <div id="super-search-menu" class="gem-c-layout-super-navigation-header__search-items">

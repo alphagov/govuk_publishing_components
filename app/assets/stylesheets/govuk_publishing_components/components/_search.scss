@@ -85,6 +85,19 @@ $large-input-size: 50px;
   }
 }
 
+@mixin icon-positioning($container-size) {
+  $icon-dimension: 20px;
+  $icon-position: ($container-size - $icon-dimension) / 2;
+
+  display: block;
+  pointer-events: none;
+  position: absolute;
+  height: $icon-dimension;
+  width: $icon-dimension;
+  top: $icon-position;
+  left: $icon-position;
+}
+
 .gem-c-search__submit {
   border: 0;
   cursor: pointer;
@@ -93,15 +106,11 @@ $large-input-size: 50px;
   padding: 0;
   width: $input-size;
   height: $input-size;
-  background-image: image-url("govuk_publishing_components/search-button.png");
-  background-repeat: no-repeat;
-  background-position: 2px 50%;
   text-indent: -5000px;
   overflow: hidden;
 
-  @include govuk-device-pixel-ratio {
-    background-size: 52.5px auto;
-    background-position: 115% 50%;
+  .gem-c-search__icon {
+    @include icon-positioning($input-size);
   }
 
   &:focus {
@@ -222,11 +231,9 @@ $large-input-size: 50px;
   .gem-c-search__submit {
     width: $large-input-size;
     height: $large-input-size;
-    background-position: 8px 50%;
 
-    @include govuk-device-pixel-ratio {
-      background-size: 60px auto;
-      background-position: 160% 50%;
+    .gem-c-search__icon {
+      @include icon-positioning($large-input-size);
     }
   }
 }
