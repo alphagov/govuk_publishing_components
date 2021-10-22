@@ -3,4 +3,12 @@
 
 require_relative "config/application"
 
+module Rails
+  def self.root
+    Pathname.new(Dir.pwd.to_s.sub("/spec/dummy", ""))
+  end
+end
+
+Rails.application.config.root = Rails.root
+
 Rails.application.load_tasks

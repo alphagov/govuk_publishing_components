@@ -7,6 +7,7 @@ PATH
       kramdown
       plek
       rails (>= 6)
+      rails_translation_manager
       rouge
       sprockets (< 4)
 
@@ -243,6 +244,10 @@ GEM
     rails-i18n (6.0.0)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 7)
+    rails_translation_manager (1.0.0)
+      activesupport
+      i18n-tasks
+      rails-i18n
     railties (6.1.4.1)
       actionpack (= 6.1.4.1)
       activesupport (= 6.1.4.1)

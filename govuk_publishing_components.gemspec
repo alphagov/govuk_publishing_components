@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency "kramdown"
   s.add_dependency "plek"
   s.add_dependency "rails", ">= 6"
+  s.add_dependency "rails_translation_manager"
   s.add_dependency "rouge"
   s.add_dependency "sprockets", "< 4"
 

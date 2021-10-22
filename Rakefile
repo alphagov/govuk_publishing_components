@@ -6,6 +6,9 @@ APP_RAKEFILE = File.expand_path("spec/dummy/Rakefile", __dir__)
 load "rails/tasks/engine.rake"
 load "rails/tasks/statistics.rake"
 
+rails_translation_manager = Gem::Specification.find_by_name("rails_translation_manager").gem_dir
+load "#{rails_translation_manager}/lib/tasks/translation.rake"
+
 require "bundler/gem_tasks"
 
 RuboCop::RakeTask.new
