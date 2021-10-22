@@ -1,33 +1,46 @@
 <%
+  dismiss_text ||= false
+  suggestion_link_text ||= false
+  suggestion_link_url ||= false
+  suggestion_text ||= nil
+
   data_attributes ||= {}
   data_attributes[:module] = 'intervention'
+  suggestion_data_attributes ||= {}
+  dismiss_data_attributes ||= {}
+
+  aria_attributes ||= {}
+  aria_attributes[:label] = 'Intervention'
+
+  local_assigns[:query_string] ||= request.query_string
+
+  intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new(local_assigns)
+  dismiss_href = intervention_helper.dismiss_link
 %>
+<% if suggestion_text or (suggestion_link_text and suggestion_link_text) %>
+  <%= tag.section class: "gem-c-intervention", role: "region", aria: aria_attributes, data: data_attributes do %>
+    <p class="govuk-body">
+      <%= tag.span suggestion_text, class: "gem-c-intervention__textwrapper" if suggestion_text %>
+      <% if suggestion_link_text and suggestion_link_url %>
+        <%= tag.a suggestion_link_text, class: "govuk-link gem-c-intervention__suggestion-link", href: suggestion_link_url, data: suggestion_data_attributes %>
 
-<%= tag.section class: "gem-c-intervention", role: "region", data: data_attributes do %>
-  <h2 class="gem-c-intervention__title govuk-heading-s">
-    <a class="govuk-link" href="/next-steps-for-your-business"
-      data-module="gem-track-click"
-      data-track-category="interventionBanner"
-      data-track-action="interventionClicked"
-      data-track-dimension="<%= t("components.intervention.title") %>"
-      data-track-dimension-index="29"
-      data-track-label="/next-steps-for-your-business">
-      <%= t("components.intervention.title") %></a>
-  </h2>
+      <% end %>
+    </p>
 
-  <p class="govuk-body">
-    <%= t("components.intervention.description") %>
-  </p>
-
-  <p class="govuk-body">
-    <a class="govuk-link" href="?hide-intervention=true"
-      data-module="gem-track-click"
-      data-track-category="interventionBanner"
-      data-track-action="interventionDismissed"
-      data-track-label="?hide-intervention=true"
-      data-track-dimension="<%= t("components.intervention.dismiss_link_text") %>"
-      data-track-dimension-index="29">
-      <%= t("components.intervention.dismiss_link_text") %></a>
-    <%= t("components.intervention.dismiss_post_link") %>
-  </p>
+    <% if dismiss_text %>
+      <p class="govuk-body">
+        <%= tag.a class: "govuk-link gem-c-intervention__dismiss", href: dismiss_href, data: dismiss_data_attributes do %>
+          <svg class="gem-c-intervention__dismiss-icon"
+            width="19" height="19" viewBox="0 0 19 19"
+            aria-hidden="true"
+            fill="none" stroke="currentColor">
+            <path d="M0.499997 9.5C0.499997 4.52944 4.52944 0.499999 9.5 0.499999C14.4706 0.5 18.5 4.52944 18.5 9.5C18.5 14.4706 14.4706 18.5 9.5 18.5C4.52943 18.5 0.499997 14.4706 0.499997 9.5Z"/>
+            <path d="M13.3477 5.4209L9.67383 9.09473L6 5.4209"/>
+            <path d="M6 13.4209L9.67383 9.74707L13.3477 13.4209"/>
+          </svg>
+          <%= dismiss_text %>
+        <% end %>
+      </p>
+    <% end %>
+  <% end %>
 <% end %>

@@ -8,6 +8,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   Intervention.prototype.init = function () {
     if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
+      // Send a tracking event when this component is shown
       window.GOVUK.analytics.trackEvent('interventionBanner', 'interventionShown')
     }
   }
