@@ -62,17 +62,6 @@ examples:
       margin_bottom: 0
     context:
       dark_background: true
-  in_html_publication_with_context_link:
-    description: Page titles are used in HTML Publications ([see example](https://www.gov.uk/government/publications/fees-for-civil-and-family-courts/court-fees-for-the-high-court-county-court-and-family-court))
-    data:
-      context:
-        text: Publication
-        href: '/link'
-      title: HTML publication page title
-      inverse: true
-      margin_bottom: 0
-    context:
-      dark_background: true
   using_design_system_template:
     description: |
       This option allows the removal of top margin from the component so that it works within a [Design System page template](https://design-system.service.gov.uk/styles/page-template/default/index.html), where spacing above the title is already provided by padding on the wrapping div.
