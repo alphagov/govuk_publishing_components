@@ -2,12 +2,12 @@
 /* global GOVUK */
 
 describe('The intervention component', function () {
-  var FIXTURE = "<section class='gem-c-intervention' data-module='intervention'></section>"
+  var FIXTURE = '<section></section>'
 
   beforeEach(function () {
     spyOn(GOVUK.analytics, 'trackEvent')
     window.setFixtures(FIXTURE)
-    var element = document.querySelector('[data-module="gem-intervention"]')
+    var element = document.querySelector('.gem-c-intervention')
     new GOVUK.Modules.Intervention(element).init()
   })
 
@@ -17,7 +17,8 @@ describe('The intervention component', function () {
     }
   })
 
-  it('triggers a tracking event when the component is displayed', function () {
-    expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('interventionBanner', 'interventionShown')
+  it('triggers a tracking event when the banner is shown', function () {
+    expect(GOVUK.analytics.trackEvent)
+      .toHaveBeenCalledWith('interventionBanner', 'interventionShown')
   })
 })
