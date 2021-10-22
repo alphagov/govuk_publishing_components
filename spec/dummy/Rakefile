@@ -5,10 +5,14 @@ require_relative "config/application"
 
 module Rails
   def self.root
-    Pathname.new(Dir.pwd.to_s.sub("/spec/dummy", ""))
+    if caller[0].include? "rails_translation_manager"
+      overridden_root = Pathname.new(Dir.pwd.to_s.sub("/spec/dummy", ""))
+      Rails.application.config.root = overridden_root
+      overridden_root
+    else
+      Pathname.new(Dir.pwd)
+    end
   end
 end
-
-Rails.application.config.root = Rails.root
 
 Rails.application.load_tasks
