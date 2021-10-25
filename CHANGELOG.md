@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 27.8.2
 
 * Replace search icon PNG with SVG ([PR # 2377](https://github.com/alphagov/govuk_publishing_components/pull/2377))
 * Interventions: make more generic ([PR #2329](https://github.com/alphagov/govuk_publishing_components/pull/2329/))
