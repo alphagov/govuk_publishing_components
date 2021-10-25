@@ -94,13 +94,9 @@ en:
       account_layout:
         feedback:
           banners:
-            footer_intro: We’re trialling GOV.UK accounts.
-            footer_link: Give feedback
-            footer_outro: on your experience so we can make them better.
             phase_intro: We’re trialling GOV.UK accounts - your
             phase_link: feedback
             phase_outro: will help us improve them.
-            title: Help improve GOV.UK accounts
         navigation:
           destroy_user_session: Sign out
           menu_bar:

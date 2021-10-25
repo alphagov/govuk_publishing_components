@@ -17,7 +17,6 @@
 
   show_account_layout ||= false
   account_nav_location ||= nil
-  omit_account_feedback_footer ||= false
   omit_account_navigation ||= false
   omit_account_phase_banner ||= false
 
@@ -136,9 +135,7 @@
       </div>
     <% end %>
 
-    <% if show_account_layout && !omit_account_feedback_footer %>
-      <%= render "govuk_publishing_components/components/layout_for_public/account-feedback-footer" %>
-    <% elsif !omit_feedback_form %>
+    <% unless omit_feedback_form %>
       <div class="govuk-width-container">
         <%= render "govuk_publishing_components/components/feedback" %>
       </div>

@@ -56,7 +56,6 @@ describe "Component guide index" do
 @import 'govuk_publishing_components/components/error-summary';
 @import 'govuk_publishing_components/components/feedback';
 @import 'govuk_publishing_components/components/govspeak';
-@import 'govuk_publishing_components/components/heading';
 @import 'govuk_publishing_components/components/hint';
 @import 'govuk_publishing_components/components/input';
 @import 'govuk_publishing_components/components/label';

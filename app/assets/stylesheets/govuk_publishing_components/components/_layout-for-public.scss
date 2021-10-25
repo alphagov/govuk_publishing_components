@@ -52,15 +52,3 @@ $current-indicator-width: 4px;
     color: $govuk-link-colour;
   }
 }
-
-.gem-c-layout-for-public-account-feedback-footer {
-  margin-bottom: govuk-spacing(4);
-  padding: govuk-spacing(3);
-  background: govuk-colour("light-grey");
-
-  @include govuk-media-query($from: tablet) {
-    padding: govuk-spacing(6);
-    margin-top: govuk-spacing(2);
-    margin-bottom: govuk-spacing(8);
-  }
-}

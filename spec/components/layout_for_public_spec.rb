@@ -225,12 +225,6 @@ describe "Layout for public", type: :view do
     assert_select ".gem-c-layout-for-public .gem-c-layout-for-public-account-nav"
   end
 
-  it "account layout renders with a feedback prompt by default" do
-    render_component({ show_account_layout: true })
-
-    assert_select ".gem-c-layout-for-public .gem-c-layout-for-public-account-feedback-footer h2", text: "Help improve GOV.UK accounts"
-  end
-
   it "indicates the active account navigation item if the location parameter is passed" do
     render_component({ show_account_layout: true, account_nav_location: "manage" })
 
