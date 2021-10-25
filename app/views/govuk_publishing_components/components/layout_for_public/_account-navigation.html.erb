@@ -19,14 +19,5 @@
         data: { module: "explicit-cross-domain-links" },
       ) %>
     </li>
-    <li class="gem-c-layout-for-public-account-menu__item <%= "gem-c-layout-for-public-account-menu__item--current" if page_is == "security" %>">
-      <%= link_to(
-        t("components.layout_for_public.account_layout.navigation.menu_bar.security.link_text"),
-        GovukPersonalisation::Urls.security,
-        class: 'gem-c-layout-for-public-account-menu__link govuk-link govuk-link--no-visited-state',
-        'aria-current': page_is == "security" ? "page" : nil,
-        data: { module: "explicit-cross-domain-links" },
-      ) %>
-    </li>
   </ul>
 </nav>
