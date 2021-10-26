@@ -112,6 +112,27 @@ $chevron-indent-spacing: 7px;
   }
 }
 
+@mixin make-selectable-area-bigger {
+  background: none;
+  bottom: 0;
+  content: " ";
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+@mixin pseudo-underline {
+  background: none;
+  bottom: 0;
+  content: " ";
+  height: govuk-spacing(1);
+  left: govuk-spacing(4);
+  position: absolute;
+  right: govuk-spacing(4);
+  top: auto;
+}
+
 // Header layout - black bar and logo.
 .gem-c-layout-super-navigation-header {
   background: govuk-colour("black");
@@ -268,13 +289,7 @@ $chevron-indent-spacing: 7px;
     }
 
     &:after {
-      background: none;
-      bottom: 0;
-      content: " ";
-      left: 0;
-      position: absolute;
-      right: 0;
-      top: 0;
+      @include make-selectable-area-bigger;
     }
 
     @include govuk-media-query($from: "desktop") {
@@ -323,25 +338,13 @@ $chevron-indent-spacing: 7px;
       }
 
       &:after {
-        background: none;
-        bottom: 0;
-        content: " ";
-        height: govuk-spacing(1);
-        left: govuk-spacing(4);
-        position: absolute;
-        right: govuk-spacing(4);
-        top: auto;
+        @include pseudo-underline;
       }
     }
   }
 
   &:after {
-    bottom: 0;
-    content: " ";
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
+    @include make-selectable-area-bigger;
   }
 }
 
@@ -380,14 +383,7 @@ $chevron-indent-spacing: 7px;
 
   @include govuk-media-query($from: "desktop") {
     &:after {
-      background: none;
-      bottom: 0;
-      content: " ";
-      height: govuk-spacing(1);
-      left: govuk-spacing(4);
-      position: absolute;
-      right: govuk-spacing(4);
-      top: auto;
+      @include pseudo-underline;
     }
 
     &,
@@ -770,12 +766,7 @@ $chevron-indent-spacing: 7px;
 
 .gem-c-layout-super-navigation-header__navigation-second-item-link {
   &:after {
-    bottom: 0;
-    content: " ";
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
+    @include make-selectable-area-bigger;
   }
 
   @include govuk-media-query($from: "desktop") {
@@ -825,12 +816,7 @@ $chevron-indent-spacing: 7px;
   margin: govuk-spacing(1) 0;
 
   &:after {
-    bottom: 0;
-    content: " ";
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
+    @include make-selectable-area-bigger;
   }
 
   @include govuk-media-query($from: "desktop") {
