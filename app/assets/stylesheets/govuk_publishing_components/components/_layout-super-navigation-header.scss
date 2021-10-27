@@ -450,6 +450,20 @@ $chevron-indent-spacing: 7px;
           background-color: $govuk-link-colour;
         }
       }
+
+      &:focus,
+      &:focus-visible {
+        background-color: $govuk-focus-colour;
+        color: $govuk-focus-text-colour;
+
+        &:before {
+          @include chevron($govuk-focus-text-colour, true);
+        }
+
+        &:after {
+          background: $govuk-focus-text-colour;
+        }
+      }
     }
   }
 }
