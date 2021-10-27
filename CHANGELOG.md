@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update account template phase banner to match DI one ([PR #2386](https://github.com/alphagov/govuk_publishing_components/pull/2386))
+
 ## 27.9.0
 
 * Tidy up account layout template for DI launch ([PR #2380](https://github.com/alphagov/govuk_publishing_components/pull/2380))
