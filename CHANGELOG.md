@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Tidy up account layout template for DI launch ([PR #2380](https://github.com/alphagov/govuk_publishing_components/pull/2380))
+
 ## 27.8.2
 
 * Replace search icon PNG with SVG ([PR # 2377](https://github.com/alphagov/govuk_publishing_components/pull/2377))

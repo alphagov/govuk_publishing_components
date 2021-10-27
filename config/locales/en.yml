@@ -53,7 +53,7 @@ en:
         two_words: " and "
       type:
         consultation: Consultation for %{nation}
-        detailed_guide: Guidance for %{nation} 
+        detailed_guide: Guidance for %{nation}
         guidance: Guidance for %{nation}
         publication: Publication for %{nation}
       england: England
@@ -94,13 +94,9 @@ en:
       account_layout:
         feedback:
           banners:
-            footer_intro: We’re trialling GOV.UK accounts.
-            footer_link: Give feedback
-            footer_outro: on your experience so we can make them better.
             phase_intro: We’re trialling GOV.UK accounts - your
             phase_link: feedback
             phase_outro: will help us improve them.
-            title: Help improve GOV.UK accounts
         navigation:
           destroy_user_session: Sign out
           menu_bar:
@@ -108,8 +104,6 @@ en:
               link_text: Your account
             manage:
               link_text: Manage your account
-            security:
-              link_text: Security and privacy
           user_root_path: Account
     layout_header:
       hide_button: Hide search
