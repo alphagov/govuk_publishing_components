@@ -133,6 +133,26 @@ $chevron-indent-spacing: 7px;
   top: auto;
 }
 
+@mixin focus-and-focus-visible {
+  &:focus {
+    @content;
+  }
+
+  &:focus-visible {
+    @content;
+  }
+}
+
+@mixin focus-not-focus-visible {
+  & {
+    @content;
+  }
+
+  &:focus:not(:focus-visible) {
+    @content;
+  }
+}
+
 // Header layout - black bar and logo.
 .gem-c-layout-super-navigation-header {
   background: govuk-colour("black");
@@ -268,8 +288,7 @@ $chevron-indent-spacing: 7px;
   &,
   &:link,
   &:visited {
-    &:focus,
-    &:focus-visible {
+    @include focus-and-focus-visible {
       @include govuk-focused-text;
     }
 
@@ -292,14 +311,12 @@ $chevron-indent-spacing: 7px;
     }
 
     @include govuk-media-query($from: "desktop") {
-      color: govuk-colour("white");
       float: left;
       font-size: 16px;
       font-size: govuk-px-to-rem(16px);
       height: govuk-spacing(4);
       padding: govuk-spacing(4);
       position: relative;
-      text-decoration: none;
 
       &:before {
         @include chevron(govuk-colour("white"), true);
@@ -313,8 +330,8 @@ $chevron-indent-spacing: 7px;
         }
       }
 
-      &:focus,
-      &:focus-visible {
+      // stylelint-disable max-nesting-depth
+      @include focus-and-focus-visible {
         box-shadow: none;
         color: $govuk-focus-text-colour;
 
@@ -323,11 +340,14 @@ $chevron-indent-spacing: 7px;
         }
       }
 
-      &:focus:not(:focus-visible),
-      &:focus:not(:focus-visible):hover {
-        color: govuk-colour("white");
-        text-decoration: none;
+      @include focus-not-focus-visible {
+        &,
+        &:hover {
+          color: govuk-colour("white");
+          text-decoration: none;
+        }
       }
+      // stylelint-enable max-nesting-depth
 
       &:focus:not(:focus-visible) {
         &:after {
@@ -359,17 +379,17 @@ $chevron-indent-spacing: 7px;
   cursor: pointer;
   padding: 0;
 
-  &,
-  &:focus:not(:focus-visible) {
+  @include focus-not-focus-visible {
     &:before {
       @include chevron($govuk-link-colour);
     }
   }
 
-  &:hover,
-  &:focus:not(:focus-visible):hover {
-    &:before {
-      @include chevron($govuk-link-hover-colour, true);
+  @include focus-not-focus-visible {
+    &:hover {
+      &:before {
+        @include chevron($govuk-link-hover-colour, true);
+      }
     }
   }
 
@@ -384,8 +404,7 @@ $chevron-indent-spacing: 7px;
       @include pseudo-underline;
     }
 
-    &,
-    &:focus:not(:focus-visible) {
+    @include focus-not-focus-visible {
       color: govuk-colour("white");
       float: left;
       font-size: 16px;
@@ -399,23 +418,22 @@ $chevron-indent-spacing: 7px;
         @include chevron(govuk-colour("white"), true);
       }
     }
+    @include focus-not-focus-visible {
+      &:hover {
+        color: govuk-colour("mid-grey");
+        text-decoration: none;
 
-    &:hover,
-    &:focus:not(:focus-visible):hover {
-      color: govuk-colour("mid-grey");
-      text-decoration: none;
+        &:after {
+          background: govuk-colour("mid-grey");
+        }
 
-      &:after {
-        background: govuk-colour("mid-grey");
-      }
-
-      &:before {
-        @include chevron(govuk-colour("mid-grey"), true);
+        &:before {
+          @include chevron(govuk-colour("mid-grey"), true);
+        }
       }
     }
 
-    &:focus,
-    &:focus-visible {
+    @include focus-and-focus-visible {
       color: $govuk-focus-text-colour;
 
       &:after {
@@ -429,16 +447,14 @@ $chevron-indent-spacing: 7px;
   }
 
   &.gem-c-layout-super-navigation-header__open-button {
-    &,
-    &:focus:not(:focus-visible) {
+    @include focus-not-focus-visible {
       &:before {
         transform: translateY(0) rotate(225deg);
       }
     }
 
     @include govuk-media-query($from: "desktop") {
-      &,
-      &:focus:not(:focus-visible) {
+      @include focus-not-focus-visible {
         background: govuk-colour("light-grey");
         color: $govuk-link-colour;
 
@@ -451,8 +467,7 @@ $chevron-indent-spacing: 7px;
         }
       }
 
-      &:focus,
-      &:focus-visible {
+      @include focus-and-focus-visible {
         background-color: $govuk-focus-colour;
         color: $govuk-focus-text-colour;
 
@@ -550,8 +565,7 @@ $chevron-indent-spacing: 7px;
     }
   }
 
-  &:focus,
-  &:focus-visible {
+  @include focus-and-focus-visible {
     @include govuk-focused-text;
     border-color: $govuk-focus-colour;
     box-shadow: none;
@@ -566,8 +580,7 @@ $chevron-indent-spacing: 7px;
 
   // Undoes the :focus styles *only* for browsers that support :focus-visible.
   // See https://www.tpgi.com/focus-visible-and-backwards-compatibility/
-  &,
-  &:focus:not(:focus-visible) {
+  @include focus-not-focus-visible {
     background: none;
     border-color: govuk-colour("white");
     box-shadow: none;
@@ -582,8 +595,7 @@ $chevron-indent-spacing: 7px;
 
   // Open button modifier
   &.gem-c-layout-super-navigation-header__open-button {
-    &:focus,
-    &:focus-visible {
+    @include focus-and-focus-visible {
       @include govuk-focused-text;
       border-color: $govuk-focus-colour;
       box-shadow: none;
@@ -596,8 +608,7 @@ $chevron-indent-spacing: 7px;
       }
     }
 
-    &,
-    &:focus:not(:focus-visible) {
+    @include focus-not-focus-visible {
       background: govuk-colour("light-grey");
       color: govuk-colour("light-grey");
 
@@ -625,8 +636,7 @@ $chevron-indent-spacing: 7px;
   top: 0;
   width: govuk-spacing(9);
 
-  &:focus,
-  &:focus-visible {
+  @include focus-and-focus-visible {
     @include govuk-focused-text;
     border-color: $govuk-focus-colour;
     box-shadow: none;
@@ -644,8 +654,7 @@ $chevron-indent-spacing: 7px;
   }
 
   @include govuk-media-query($from: "desktop") {
-    &,
-    &:focus:not(:focus-visible) {
+    @include focus-not-focus-visible {
       background: $govuk-brand-colour;
       border-bottom: govuk-spacing(1) solid $govuk-brand-colour;
       border-left: none;
@@ -658,8 +667,7 @@ $chevron-indent-spacing: 7px;
       color: govuk-colour("mid-grey");
     }
 
-    &:focus,
-    &:focus-visible {
+    @include focus-and-focus-visible {
       @include govuk-focused-text;
       border-bottom-color: $govuk-focus-colour;
       box-shadow: none;
@@ -668,8 +676,7 @@ $chevron-indent-spacing: 7px;
 
   // Open button modifier
   &.gem-c-layout-super-navigation-header__open-button {
-    &:focus,
-    &:focus-visible {
+    @include focus-and-focus-visible {
       @include govuk-focused-text;
       border-color: $govuk-focus-colour;
       box-shadow: none;
@@ -682,8 +689,7 @@ $chevron-indent-spacing: 7px;
       }
     }
 
-    &,
-    &:focus:not(:focus-visible) {
+    @include focus-not-focus-visible {
       background: govuk-colour("light-grey");
       border-bottom-color: govuk-colour("light-grey");
       color: govuk-colour("light-grey");
