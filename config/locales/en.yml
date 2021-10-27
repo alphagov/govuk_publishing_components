@@ -94,9 +94,9 @@ en:
       account_layout:
         feedback:
           banners:
-            phase_intro: We’re trialling GOV.UK accounts - your
+            phase_intro: This is a new service – your
             phase_link: feedback
-            phase_outro: will help us improve them.
+            phase_outro: will help us to improve it.
         navigation:
           destroy_user_session: Sign out
           menu_bar:
