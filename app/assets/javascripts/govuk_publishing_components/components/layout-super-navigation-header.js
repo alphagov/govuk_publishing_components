@@ -124,24 +124,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
     this.hiddenButtons = this.$module.querySelectorAll('button[hidden]')
 
-    this.lastWindowSize = undefined
+    this.lastWindowSize = null
   }
 
   SuperNavigationMegaMenu.prototype.windowSize = windowSize
-
-  // Resizes the space needed for the dropdown menu so that it doesn't overlap
-  // with the page content. As this is an event that needs to be added and
-  // removed it can't be be bound to `this` because that changes the fingerprint
-  // of the function, and makes it unable to be removed with
-  // `removeEventListener`.
-  SuperNavigationMegaMenu.prototype.resizeHandler = function () {
-    var $module = document.querySelector('[data-module="super-navigation-mega-menu"]')
-    var $openButton = $module.querySelector('[aria-expanded="true"][data-toggle-desktop-group="top"]')
-    var $openMenu = $openButton ? $module.querySelector('#' + $openButton.getAttribute('aria-controls')) : null
-    var margin = $openMenu && windowSize() === 'desktop' ? $openMenu.offsetHeight : 0
-
-    $module.style.marginBottom = margin + 'px'
-  }
 
   SuperNavigationMegaMenu.prototype.updateStates = function () {
     if (this.windowSize() === 'mobile' && this.lastWindowSize !== 'mobile') {
@@ -161,8 +147,21 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     if (this.windowSize() === 'desktop' && this.lastWindowSize !== 'desktop') {
       this.$navigationToggle.setAttribute('hidden', 'hidden')
       this.$navigationMenu.removeAttribute('hidden')
+    }
 
-      this.resizeHandler()
+    // The dropdown menu height is only needed when in desktop mode as this is
+    // when the dropdown menu is using `absolute` positioning. This requires
+    // JavaScript to work out the height and make space for the dropdown menu.
+    if (windowSize() === 'desktop') {
+      // Check whether any of the dropdown menus are open.
+      var $openButton = this.$module.querySelector('[aria-expanded="true"][data-toggle-desktop-group="top"]')
+      // Gets the open dropdown menu
+      var $openMenu = $openButton ? this.$module.querySelector('#' + $openButton.getAttribute('aria-controls')) : null
+      // If there is an open dropdown menu, get the height of the dropdown menu.
+      var margin = $openMenu ? $openMenu.offsetHeight : 0
+
+      // Make space for the dropdown menu.
+      this.$module.style.marginBottom = margin + 'px'
     }
 
     this.lastWindowSize = this.windowSize()
@@ -231,30 +230,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
     this.lastWindowSize = this.windowSize()
 
-    // The menu needs to be updated when the window is resized - specifically,
-    // the top level navigation toggle needs to be shown or hidden.
-    //     Using `matchMedia` to listen for both resize events means that this
-    // will only fire when the media query is matched so is more efficient. The
-    // fallback is the `window.resize` event with a check to make sure that it
-    // only does things when moving from mobile to desktop view.
-    var setupResizeListener = function () {
-      window.addEventListener('resize', this.updateStates.bind(this), { passive: true })
-    }.bind(this)
-
-    if (typeof window.matchMedia === 'function') {
-      // Internet Explorer 11 supports `matchMedia`, but doesn't support
-      // the `change` event[1] - so we try it, and then fail back to using
-      // `window.resize`.
-      // [1]: https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList/onchange
-      try {
-        window.matchMedia('screen and (min-width:' + SETTINGS.breakpoint.desktop + 'px)')
-          .addEventListener('change', this.updateStates.bind(this))
-      } catch (error) {
-        setupResizeListener()
-      }
-    } else {
-      setupResizeListener()
-    }
+    // The menu needs to be updated when the window is resized to make sure that
+    // the space needed for the dropdown menu is correct.
+    window.addEventListener('resize', this.updateStates.bind(this), { passive: true })
   }
 
   Modules.SuperNavigationMegaMenu = SuperNavigationMegaMenu
