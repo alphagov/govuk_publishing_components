@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 27.9.1
 
 * Update account template phase banner to match DI one ([PR #2386](https://github.com/alphagov/govuk_publishing_components/pull/2386))
 * Update navigation header focus states ([PR #2319](https://github.com/alphagov/govuk_publishing_components/pull/2319)) MINOR
