@@ -109,10 +109,4 @@ describe "Super navigation header", type: :view do
     assert_select "a.govuk-header__link--homepage[href='https://www.example.com/']", count: 1
     assert_select "a.govuk-header__link--homepage[title='Go to example']", count: 1
   end
-
-  it "doesn't have the initialised class before the JavaScript is run" do
-    render_component({})
-
-    assert_select ".js-module-initialised[data-module=\"super-navigation-mega-menu\"]", false
-  end
 end

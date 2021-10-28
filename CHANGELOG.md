@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Revert "Fix layout jank when on slow connection" ([PR #2390](https://github.com/alphagov/govuk_publishing_components/pull/2390))
+
 ## 27.9.1
 
 * Update account template phase banner to match DI one ([PR #2386](https://github.com/alphagov/govuk_publishing_components/pull/2386))

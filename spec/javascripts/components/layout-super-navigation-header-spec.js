@@ -676,18 +676,6 @@ describe('The super header navigation', function () {
     document.body.removeChild(container)
   })
 
-  describe('on both small and large screens', function () {
-    beforeEach(function () {
-      thisModule.init()
-    })
-
-    it('has the initialised class once the JavaScript has run', function () {
-      var $module = document.querySelector('[data-module="super-navigation-mega-menu"]')
-
-      expect($module).toHaveClass('js-module-initialised')
-    })
-  })
-
   describe('on small screens', function () {
     beforeEach(function () {
       // `windowSize` returns `'mobile'` or `'desktop'` depending on the screen

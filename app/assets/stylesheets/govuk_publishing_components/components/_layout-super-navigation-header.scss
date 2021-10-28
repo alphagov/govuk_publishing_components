@@ -225,7 +225,7 @@ $chevron-indent-spacing: 7px;
     display: inline-block;
   }
 
-  .js-module-initialised & {
+  .js-enabled & {
     padding: 0 0 govuk-spacing(9) 0;
 
     @include govuk-media-query($from: "desktop") {
@@ -367,7 +367,7 @@ $chevron-indent-spacing: 7px;
 }
 
 .gem-c-layout-super-navigation-header__navigation-item-link {
-  .js-module-initialised & {
+  .js-enabled & {
     margin-left: govuk-spacing(4);
   }
 }
@@ -535,7 +535,7 @@ $chevron-indent-spacing: 7px;
   padding-bottom: govuk-spacing(4);
   padding-top: govuk-spacing(4);
 
-  .js-module-initialised & {
+  .js-enabled & {
     display: block;
   }
 }
@@ -856,7 +856,7 @@ $chevron-indent-spacing: 7px;
   @include govuk-media-query($from: "desktop") {
     margin: 0;
 
-    .js-module-initialised & {
+    .js-enabled & {
       left: 0;
       position: absolute;
       right: 0;
