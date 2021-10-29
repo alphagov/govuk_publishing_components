@@ -233,6 +233,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     // The menu needs to be updated when the window is resized to make sure that
     // the space needed for the dropdown menu is correct.
     window.addEventListener('resize', this.updateStates.bind(this), { passive: true })
+
+    this.$module.classList.add('js-module-initialised')
   }
 
   Modules.SuperNavigationMegaMenu = SuperNavigationMegaMenu

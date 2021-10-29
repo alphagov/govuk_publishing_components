@@ -314,7 +314,7 @@ $search-icon-size: 20px;
 }
 
 .gem-c-layout-super-navigation-header__navigation-items {
-  .js-enabled & {
+  .js-module-initialised & {
     padding: 0 0 govuk-spacing(9) 0;
 
     @include govuk-media-query($from: "desktop") {
@@ -385,7 +385,7 @@ $search-icon-size: 20px;
     color: $govuk-focus-text-colour;
   }
 
-  .js-enabled & {
+  .js-module-initialised & {
     @include govuk-media-query($until: "desktop") {
       padding: govuk-spacing(6) govuk-spacing(3) govuk-spacing(6) govuk-spacing(9);
     }
@@ -443,7 +443,7 @@ $search-icon-size: 20px;
   padding-bottom: govuk-spacing(4);
   padding-top: govuk-spacing(4);
 
-  .js-enabled & {
+  .js-module-initialised & {
     display: block;
   }
 }
@@ -787,7 +787,7 @@ $search-icon-size: 20px;
   @include govuk-media-query($from: "desktop") {
     margin: 0;
 
-    .js-enabled & {
+    .js-module-initialised & {
       left: 0;
       position: absolute;
       right: 0;
