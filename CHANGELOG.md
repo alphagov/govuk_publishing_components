@@ -11,6 +11,7 @@
 
 * Revert "Update navigation header focus states" ([PR #2395](https://github.com/alphagov/govuk_publishing_components/pull/2395))
 * Revert Revert "Fix layout jank when on slow connection" ([PR #2394](https://github.com/alphagov/govuk_publishing_components/pull/2394))
+* Add option to render `layout_for_public` footer without a top border ([PR #2393](https://github.com/alphagov/govuk_publishing_components/pull/2393))
 
 ## 27.9.2
 
