@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 27.10.1
 
 * Amend account layout phase banner link ([PR #2397](https://github.com/alphagov/govuk_publishing_components/pull/2397))
 
