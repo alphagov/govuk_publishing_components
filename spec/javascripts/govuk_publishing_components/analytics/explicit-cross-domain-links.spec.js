@@ -47,8 +47,14 @@ describe('Explicit cross-domain linker', function () {
       element = $('<a href="/somewhere">')
     })
 
-    it('modifies the link href to append cookie_consent parameter "not-engaged" if cookie preferences are not set', function () {
+    it('modifies the link href to append cookie_consent parameter "not-engaged" if cookies_preferences_set cookie is "false"', function () {
       GOVUK.cookie('cookies_preferences_set', 'false')
+      explicitCrossDomainLinks.start(element)
+      expect(element.attr('href')).toEqual('/somewhere?cookie_consent=not-engaged')
+    })
+
+    it('modifies the link href to append cookie_consent parameter "not-engaged" if cookies_preferences_set cookie is not set', function () {
+      GOVUK.cookie('cookies_preferences_set', null)
       explicitCrossDomainLinks.start(element)
       expect(element.attr('href')).toEqual('/somewhere?cookie_consent=not-engaged')
     })
@@ -97,8 +103,14 @@ describe('Explicit cross-domain linker', function () {
              '</form>')
     })
 
-    it('modifies the form action to append cookie_consent parameter "not-engaged" if cookie preferences are not set', function () {
+    it('modifies the form action to append cookie_consent parameter "not-engaged" if cookies_preferences_set cookie is "false"', function () {
       GOVUK.cookie('cookies_preferences_set', 'false')
+      explicitCrossDomainLinks.start(element)
+      expect(element.attr('action')).toEqual('/somewhere?cookie_consent=not-engaged')
+    })
+
+    it('modifies the form action to append cookie_consent parameter "not-engaged" if cookies_preferences_set cookie is not set', function () {
+      GOVUK.cookie('cookies_preferences_set', null)
       explicitCrossDomainLinks.start(element)
       expect(element.attr('action')).toEqual('/somewhere?cookie_consent=not-engaged')
     })
