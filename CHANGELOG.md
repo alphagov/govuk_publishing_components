@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Amend account layout phase banner link ([PR #2397](https://github.com/alphagov/govuk_publishing_components/pull/2397))
+
 ## 27.10.0
 
 * Revert "Update navigation header focus states" ([PR #2395](https://github.com/alphagov/govuk_publishing_components/pull/2395))

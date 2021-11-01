@@ -94,9 +94,7 @@ en:
       account_layout:
         feedback:
           banners:
-            phase_intro: This is a new service – your
-            phase_link: feedback
-            phase_outro: will help us to improve it.
+            phase_banner_html: This is a new service – your <a class="govuk-link" href="https://signin.account.gov.uk/contact-us?supportType=PUBLIC">feedback</a> will help us to improve it.
         navigation:
           destroy_user_session: Sign out
           menu_bar:
