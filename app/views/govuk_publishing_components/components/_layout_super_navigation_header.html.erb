@@ -81,6 +81,13 @@
         type="button"
       >
         Menu
+        <span
+          aria-hidden="true"
+          class="gem-c-layout-super-navigation-header__navigation-top-toggle-close-icon"
+          focusable="false"
+        >
+          &times;
+        </span>
       </button>
       <ul id="super-navigation-menu" class="gem-c-layout-super-navigation-header__navigation-items">
         <% navigation_links.each_with_index do | link, index | %>
@@ -94,34 +101,38 @@
             tracking_label = link[:label].downcase.gsub(/\s+/, "")
           %>
           <%= tag.li class: li_classes do %>
-            <%= link_to link[:label], link[:href], {
-              class: "gem-c-layout-super-navigation-header__navigation-item-link",
-              data: {
-                module: "gem-track-click",
-                track_action: "#{tracking_label}Link",
-                track_category: "headerClicked",
-                track_label: link[:href],
-                track_dimension: link[:label],
-                track_dimension_index: "29",
-              }
-            } %>
+            <div class="gem-c-layout-super-navigation-header__navigation-toggle-wrapper govuk-clearfix">
+              <%= link_to link[:label], link[:href], {
+                class: "gem-c-layout-super-navigation-header__navigation-item-link",
+                data: {
+                  module: "gem-track-click",
+                  track_action: "#{tracking_label}Link",
+                  track_category: "headerClicked",
+                  track_label: link[:href],
+                  track_dimension: link[:label],
+                  track_dimension_index: "29",
+                }
+              } %>
+              <%= content_tag(:button, link[:label], {
+                aria: {
+                  controls: "super-navigation-menu__section-#{unique_id}",
+                  expanded: false,
+                  label: show_menu_text,
+                },
+                class: "gem-c-layout-super-navigation-header__navigation-second-toggle-button",
+                data: {
+                  text_for_hide: hide_menu_text,
+                  text_for_show: show_menu_text,
+                  toggle_desktop_group: "top",
+                  toggle_mobile_group: "second",
+                  tracking_key: tracking_label,
+                },
+                hidden: true,
+                id: "super-navigation-menu__section-#{unique_id}-toggle",
+                type: "button",
+              }) if has_children %>
+            </div>
             <% if has_children %>
-              <button
-                aria-controls="super-navigation-menu__section-<%= unique_id %>"
-                aria-expanded="false"
-                aria-label="<%= show_menu_text %>"
-                class="gem-c-layout-super-navigation-header__navigation-second-toggle-button"
-                data-text-for-hide="<%= hide_menu_text %>"
-                data-text-for-show="<%= show_menu_text %>"
-                data-toggle-desktop-group="top"
-                data-toggle-mobile-group="second"
-                data-tracking-key="<%= tracking_label %>"
-                hidden
-                id="super-navigation-menu__section-<%= unique_id %>-toggle"
-                type="button"
-              >
-                <%= link[:label] %>
-              </button>
               <div
                 hidden
                 class="gem-c-layout-super-navigation-header__navigation-dropdown-menu"
@@ -157,7 +168,7 @@
                                     track_dimension_index: "29",
                                   }
                                 } %>
-                                <%= tag.p item[:description], class: "govuk-body govuk-!-margin-0" if has_description %>
+                                <%= tag.p item[:description], class: "govuk-body govuk-!-margin-0 govuk-!-margin-top-1" if has_description %>
                               </li>
                             <% end %>
                           </ul>
@@ -219,9 +230,17 @@
           <%= search_text %>
         </span>
         <%=
-          render "govuk_publishing_components/components/search/search_icon",
-            classes: %W[gem-c-layout-super-navigation-header__search-toggle-button-link-icon]
+          render "govuk_publishing_components/components/search/search_icon", {
+            classes: %w[gem-c-layout-super-navigation-header__search-toggle-button-link-icon],
+          }
         %>
+        <span
+          aria-hidden="true"
+          class="gem-c-layout-super-navigation-header__navigation-top-toggle-close-icon"
+          focusable="false"
+        >
+          &times;
+        </span>
       </button>
 
       <div id="super-search-menu" class="gem-c-layout-super-navigation-header__search-items">
@@ -248,14 +267,16 @@
                 cy="10.0161"
                 r="8.51613"
                 stroke="currentColor"
-                stroke-width="3" />
+                stroke-width="3"
+              />
               <line
                 x1="15.8668"
                 y1="16.3587"
                 x2="25.4475"
                 y2="25.9393"
                 stroke="currentColor"
-                stroke-width="3" />
+                stroke-width="3"
+              />
             </svg>
           </a>
         </div>
@@ -293,16 +314,20 @@
               <ul class="govuk-list">
                 <% popular_links.each do | popular_link | %>
                   <li class="gem-c-layout-super-navigation-header__popular-item">
-                    <a class="govuk-link gem-c-layout-super-navigation-header__popular-link"
-                      href="<%= popular_link[:href] %>"
-                      data-module="gem-track-click"
-                      data-track-action="popularLink"
-                      data-track-category="headerClicked"
-                      data-track-label="<%= popular_link[:href] %>"
-                      data-track-dimension="<%= popular_link[:label] %>"
-                      data-track-dimension-index="29">
-                      <%= popular_link[:label] %>
-                    </a>
+                    <%= link_to popular_link[:label], popular_link[:href], {
+                      class: [
+                        "govuk-link",
+                        "gem-c-layout-super-navigation-header__popular-link",
+                      ],
+                      data: {
+                        module: "gem-track-click",
+                        track_action: "popularLink",
+                        track_category: "headerClicked",
+                        track_label: popular_link[:href],
+                        track_dimension: popular_link[:label],
+                        track_dimension_index: "29",
+                      }
+                    } %>
                   </li>
                 <% end %>
               </ul>
