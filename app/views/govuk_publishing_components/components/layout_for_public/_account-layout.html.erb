@@ -1,15 +1,7 @@
 <div class="govuk-width-container">
-  <% message = capture do %>
-    <%= t("components.layout_for_public.account_layout.feedback.banners.phase_intro") %>
-    <a class="govuk-link" href=<%= GovukPersonalisation::Urls.feedback %>>
-      <%= t("components.layout_for_public.account_layout.feedback.banners.phase_link") %>
-    </a>
-    <%= t("components.layout_for_public.account_layout.feedback.banners.phase_outro") %>
-  <% end %>
-
   <%= render "govuk_publishing_components/components/phase_banner", {
     phase: "beta",
-    message: message
+    message: sanitize(t("components.layout_for_public.account_layout.feedback.banners.phase_banner_html"))
   } unless omit_account_phase_banner %>
 
   <div class="govuk-grid-row govuk-main-wrapper">
