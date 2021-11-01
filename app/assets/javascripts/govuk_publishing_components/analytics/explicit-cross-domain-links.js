@@ -14,7 +14,7 @@
       // If engaged and rejected, append only ?cookie-consent=reject
       // If engaged and accepted usage, append ?_ga=clientid if available and cookie-consent=accept
 
-      if (cookieBannerEngaged === 'false') {
+      if (cookieBannerEngaged !== 'true') {
         this.decorate(element, 'cookie_consent=not-engaged')
         return
       }
