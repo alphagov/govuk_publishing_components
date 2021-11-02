@@ -35,6 +35,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "jasmine_selenium_runner", "~> 3.0.0"
   s.add_development_dependency "percy-capybara", "~> 4.0", ">= 4.0.2"
   s.add_development_dependency "pry-byebug"
+  s.add_development_dependency "rails_translation_manager"
   s.add_development_dependency "rake"
   s.add_development_dependency "rspec-rails", "~> 5.0"
   s.add_development_dependency "rubocop-govuk"
