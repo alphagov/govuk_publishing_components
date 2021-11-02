@@ -1,4 +1,7 @@
-<% user_organisation ||= nil %>
+<%
+  warn('DEPRECATION WARNING: admin_analytics component is deprecated and will be removed in a future major release of govuk_publishing_components')
+  user_organisation ||= nil
+%>
 
 <script class="analytics">
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
