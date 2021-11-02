@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update navigation header focus states (take two) ([PR #2401](https://github.com/alphagov/govuk_publishing_components/pull/2401))
+
 ## 27.10.2
 
 * Raise deprecation warnings on unused components: `admin_analytics`, `government_navigation`, `highlight_boxes` and `taxonomy_list` ([PR #2362](https://github.com/alphagov/govuk_publishing_components/pull/2362))
