@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Raise deprecation warnings on unused components: `admin_analytics`, `government_navigation`, `highlight_boxes` and `taxonomy_list` ([PR #2362](https://github.com/alphagov/govuk_publishing_components/pull/2362))
 * Adjust cookie_consent parameter conditions ([PR #2399](https://github.com/alphagov/govuk_publishing_components/pull/2399))
 
 ## 27.10.1
