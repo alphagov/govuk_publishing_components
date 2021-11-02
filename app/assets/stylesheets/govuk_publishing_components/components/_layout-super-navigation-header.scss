@@ -271,7 +271,9 @@ $chevron-indent-spacing: 7px;
 
   display: inline-block;
   font-size: 19px;
-  font-size: govuk-px-to-rem(19px);
+  @if $govuk-typography-use-rem {
+    font-size: govuk-px-to-rem(19px);
+  }
   font-weight: bold;
   margin: govuk-spacing(3) 0;
 
@@ -312,7 +314,13 @@ $chevron-indent-spacing: 7px;
     @include govuk-media-query($from: "desktop") {
       float: left;
       font-size: 16px;
-      font-size: govuk-px-to-rem(16px);
+
+      // stylelint-disable max-nesting-depth
+      @if $govuk-typography-use-rem {
+        font-size: govuk-px-to-rem(16px);
+      }
+      // stylelint-enable max-nesting-depth
+
       height: govuk-spacing(4);
       padding: govuk-spacing(4);
       position: relative;
@@ -408,7 +416,9 @@ $chevron-indent-spacing: 7px;
       color: govuk-colour("white");
       float: left;
       font-size: 16px;
-      font-size: govuk-px-to-rem(16px);
+      @if $govuk-typography-use-rem {
+        font-size: govuk-px-to-rem(16px);
+      }
       height: govuk-spacing(9);
       padding: govuk-spacing(4);
       position: relative;
