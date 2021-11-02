@@ -11,6 +11,7 @@
 
 * Add underlines to mobile menu links on super navigation no-js view ([PR #2404](https://github.com/alphagov/govuk_publishing_components/pull/2404))
 * Add black border to the bottom of the closed header search button ([PR #2405](https://github.com/alphagov/govuk_publishing_components/pull/2405))
+* Fix font size on super navigation header ([PR #2407](https://github.com/alphagov/govuk_publishing_components/pull/2407))
 
 ## 27.10.3
 
