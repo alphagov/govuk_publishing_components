@@ -268,7 +268,6 @@ $chevron-indent-spacing: 7px;
 .gem-c-layout-super-navigation-header__navigation-second-toggle-button {
   @include govuk-link-common;
   @include govuk-link-style-no-visited-state;
-  @include govuk-link-style-no-underline;
 
   display: inline-block;
   font-size: 19px;
@@ -369,6 +368,7 @@ $chevron-indent-spacing: 7px;
 .gem-c-layout-super-navigation-header__navigation-item-link {
   .js-module-initialised & {
     margin-left: govuk-spacing(4);
+    @include govuk-link-style-no-underline;
   }
 }
 
@@ -480,6 +480,10 @@ $chevron-indent-spacing: 7px;
         }
       }
     }
+  }
+
+  .js-module-initialised & {
+    @include govuk-link-style-no-underline;
   }
 }
 
