@@ -660,14 +660,14 @@ $chevron-indent-spacing: 7px;
   @include govuk-media-query($from: "desktop") {
     @include focus-not-focus-visible {
       background: $govuk-brand-colour;
-      border-bottom: govuk-spacing(1) solid $govuk-brand-colour;
+      border-bottom: 1px solid govuk-colour("black");
       border-left: none;
       position: relative;
     }
 
     &:hover {
       background: govuk-colour("black");
-      border-bottom-color: govuk-colour("mid-grey");
+      border-bottom: govuk-spacing(1) solid govuk-colour("mid-grey");
       color: govuk-colour("mid-grey");
     }
 
