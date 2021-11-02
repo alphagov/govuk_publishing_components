@@ -96,6 +96,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.$module.showConfirmationMessage()
     this.$module.cookieBannerConfirmationMessage.focus()
     window.GOVUK.cookie('cookies_preferences_set', 'true', { days: 365 })
+    window.GOVUK.setDefaultConsentCookie()
   }
 
   CookieBanner.prototype.showConfirmationMessage = function () {
