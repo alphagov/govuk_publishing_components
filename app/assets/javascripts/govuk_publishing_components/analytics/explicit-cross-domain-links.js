@@ -19,7 +19,7 @@
         return
       }
       var cookieConsent = GOVUK.getConsentCookie()
-      if (cookieConsent.usage === false) {
+      if (cookieConsent && cookieConsent.usage === false) {
         this.decorate(element, 'cookie_consent=reject')
         return
       }
