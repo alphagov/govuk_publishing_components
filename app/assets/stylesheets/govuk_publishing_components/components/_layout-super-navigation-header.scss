@@ -697,7 +697,7 @@ $chevron-indent-spacing: 7px;
 
     @include focus-not-focus-visible {
       background: $govuk-brand-colour;
-      border-bottom: 1px solid govuk-colour("black");
+      border-bottom: 1px solid govuk-colour("dark-blue");
       border-left: none;
       position: relative;
     }
