@@ -173,6 +173,19 @@ describe('Cookie banner', function () {
     expect(confirmationMessage).toBeVisible()
   })
 
+  it('set cookies_preferences_set cookie, and re-set cookies_policy expiration date when rejecting cookies', function () {
+    spyOn(GOVUK, 'setCookie').and.callThrough()
+    var element = document.querySelector('[data-module="cookie-banner"]')
+    new GOVUK.Modules.CookieBanner(element).init()
+
+    var rejectCookiesButton = document.querySelector('[data-reject-cookies]')
+
+    rejectCookiesButton.click()
+
+    expect(GOVUK.setCookie).toHaveBeenCalledWith('cookies_policy', DEFAULT_COOKIE_CONSENT, { days: 365 })
+    expect(GOVUK.setCookie).toHaveBeenCalledWith('cookies_preferences_set', 'true', { days: 365 })
+  })
+
   it('should hide when pressing the "hide" link', function () {
     spyOn(GOVUK, 'setCookie').and.callThrough()
 
