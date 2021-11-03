@@ -157,13 +157,14 @@ en:
           href: "/browse/visas-immigration"
         - label: Working, jobs and pensions
           href: "/browse/working"
-      - label: Departments
-        href: "/government/organisations"
       - label: Government activity
         href: "/search/news-and-communications"
-        description: Find out what the government is doing
+        description: Search for a department and find out what the government is doing
         menu_contents: # If adding or removing items, remember to update the
                        # `columns` in the layout-super-navigation-header SCSS.
+        - label: Departments
+          href: "/government/organisations"
+          description: Departments, agencies and public bodies
         - label: News
           href: "/search/news-and-communications"
           description: News stories, speeches, letters and notices

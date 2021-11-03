@@ -147,8 +147,8 @@
                         </p>
                       <% end %>
                     </div>
-                    <% if link[:menu_contents].present? %>
-                      <div class="govuk-grid-column-two-thirds-from-desktop">
+                    <div class="govuk-grid-column-two-thirds-from-desktop">
+                      <% if link[:menu_contents].present? %>
                           <ul class="govuk-list gem-c-layout-super-navigation-header__navigation-second-items gem-c-layout-super-navigation-header__navigation-second-items--<%= link[:label].parameterize %>">
                             <% link[:menu_contents].each do | item | %>
                               <%
@@ -172,39 +172,32 @@
                               </li>
                             <% end %>
                           </ul>
-                      </div>
-                    <% end %>
-                  </div>
-                  <% if link[:footer_links].present? %>
-                    <div class="govuk-grid-row">
-                      <div class="govuk-grid-column-full">
-                        <div class="gem-c-layout-super-navigation-header__navigation-second-footer">
-                          <div class="govuk-grid-row">
-                            <ul class="gem-c-layout-super-navigation-header__navigation-second-footer-list">
-                              <% link[:footer_links].each do | item | %>
-                                <li class="gem-c-layout-super-navigation-header__navigation-second-footer-item">
-                                  <%= link_to item[:label], item[:href], {
-                                    class: [
-                                      "govuk-link",
-                                      "gem-c-layout-super-navigation-header__navigation-second-footer-link",
-                                    ],
-                                    data: {
-                                      module: "gem-track-click",
-                                      track_action: "#{tracking_label}Link",
-                                      track_category: "headerClicked",
-                                      track_label: item[:href],
-                                      track_dimension: item[:label],
-                                      track_dimension_index: "29",
-                                    }
-                                  } %>
-                                </li>
-                              <% end %>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
+                      <% end %>
+                      <% if link[:footer_links].present? %>
+                        <hr class="gem-c-layout-super-navigation-header__navigation-second-footer-break govuk-section-break govuk-section-break--visible">
+                        <ul class="gem-c-layout-super-navigation-header__navigation-second-footer-list">
+                          <% link[:footer_links].each do | item | %>
+                            <li class="gem-c-layout-super-navigation-header__navigation-second-footer-item">
+                              <%= link_to item[:label], item[:href], {
+                                class: [
+                                  "govuk-link",
+                                  "gem-c-layout-super-navigation-header__navigation-second-footer-link",
+                                ],
+                                data: {
+                                  module: "gem-track-click",
+                                  track_action: "#{tracking_label}Link",
+                                  track_category: "headerClicked",
+                                  track_label: item[:href],
+                                  track_dimension: item[:label],
+                                  track_dimension_index: "29",
+                                }
+                              } %>
+                            </li>
+                          <% end %>
+                        </ul>
+                      <% end %>
                     </div>
-                  <% end %>
+                  </div>
                 </div>
               </div>
             <% end %>
