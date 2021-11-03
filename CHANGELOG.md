@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update the design of the mobile menu button on the super navigation ([PR #2382](https://github.com/alphagov/govuk_publishing_components/pull/2382))
+
 ## 27.10.5
 
 * Prevent `cookies_policy` cookie related issues ([PR #2406](https://github.com/alphagov/govuk_publishing_components/pull/2406))
