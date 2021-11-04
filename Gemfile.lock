@@ -150,7 +150,7 @@ GEM
     http-accept (1.7.0)
     http-cookie (1.0.4)
       domain_name (~> 0.5)
-    i18n (1.8.10)
+    i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     i18n-coverage (0.2.0)
     i18n-tasks (0.9.34)
@@ -244,7 +244,7 @@ GEM
     rails-i18n (6.0.0)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 7)
-    rails_translation_manager (1.0.0)
+    rails_translation_manager (1.1.0)
       activesupport
       i18n-tasks
       rails-i18n
@@ -256,7 +256,7 @@ GEM
       thor (~> 1.0)
     rainbow (3.0.0)
     raindrops (0.19.2)
-    rake (13.0.3)
+    rake (13.0.6)
     regexp_parser (2.1.1)
     request_store (1.5.0)
       rack (>= 1.4)
@@ -342,7 +342,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     statsd-ruby (1.5.0)
-    terminal-table (3.0.1)
+    terminal-table (3.0.2)
       unicode-display_width (>= 1.1.1, < 3)
     thor (1.1.0)
     tilt (2.0.10)
@@ -385,7 +385,6 @@ DEPENDENCIES
   govuk_schemas (~> 4.0)
   govuk_test (~> 2)
   i18n-coverage
-  i18n-tasks
   jasmine (~> 3.10.0)
   jasmine_selenium_runner (~> 3.0.0)
   percy-capybara (~> 4.0, >= 4.0.2)
