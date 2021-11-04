@@ -577,6 +577,10 @@ $chevron-indent-spacing: 7px;
   top: 0;
   z-index: 10;
 
+  @include govuk-media-query($from: 360px) {
+    right: (govuk-spacing(9) - 1px);
+  }
+
   @include focus-and-focus-visible {
     @include govuk-focused-text;
     box-shadow: none;
@@ -677,6 +681,10 @@ $chevron-indent-spacing: 7px;
   right: (0 - govuk-spacing(3));
   top: 0;
   width: govuk-spacing(9);
+
+  @include govuk-media-query($from: 360px) {
+    right: 0;
+  }
 
   @include focus-and-focus-visible {
     @include govuk-focused-text;

@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Update the design of the mobile menu button on the super navigation ([PR #2382](https://github.com/alphagov/govuk_publishing_components/pull/2382))
+* Add page margin back when screen size allows ([PR #2418](https://github.com/alphagov/govuk_publishing_components/pull/2418))
 
 ## 27.10.5
 
