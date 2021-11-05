@@ -258,6 +258,9 @@ en:
       hide_password: Hide password
       show: Show
       show_password: Show password
+    single_page_notification_button:
+      subscribe_text: Get emails about this page
+      unsubscribe_text: Stop getting emails about this page
     skip_link:
       text: Skip to main content
     step_by_step_nav:

@@ -1,0 +1,22 @@
+name: Single page notification button
+description: A link that subscribes the user to email notifications to a page
+body: |
+  By default, the component displays with the "Get emails about this page" state. The component does not render without the `base_path` parameter.
+
+  The `base_path` is necessary for [checking if an email subscription is active on page load](https://github.com/alphagov/account-api/blob/main/docs/api.md#get-apipersonalisationcheck-email-subscriptiontopic_slug) and the creation/deletion of an email notification subscription.
+
+  When the button is clicked, the `base_path` is submitted to an endpoint which proceeds to check the user's authentication status and whether they are already subscribed to the page or not. Depending on these factors, they will be routed accordingly.
+accessibility_criteria: |
+  - The bell icon must be presentational and ignored by screen readers.
+shared_accessibility_criteria:
+  - link
+examples:
+  default:
+    description: By default this component prompts the user to subscribe to email notifications to this page. The component uses JavaScript to check if the user has already subscribed to email notifications on the current page. If yes, the state of the component updates accordingly.
+    data:
+      base_path: '/current-page-path'
+  already_subscribed:
+    description: If the user has already subscribed to email notifications about the current page, display the "Stop getting emails about this page" state.
+    data:
+      base_path: '/current-page-path'
+      already_subscribed: true
