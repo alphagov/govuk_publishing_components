@@ -92,6 +92,7 @@ GEM
     crack (0.4.5)
       rexml
     crass (1.0.6)
+    csv (3.2.1)
     diff-lcs (1.4.4)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
@@ -244,8 +245,9 @@ GEM
     rails-i18n (6.0.0)
       i18n (>= 0.7, < 2)
       railties (>= 6.0.0, < 7)
-    rails_translation_manager (1.1.0)
+    rails_translation_manager (1.1.2)
       activesupport
+      csv (~> 3.2)
       i18n-tasks
       rails-i18n
     railties (6.1.4.1)
