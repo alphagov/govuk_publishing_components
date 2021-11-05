@@ -23,6 +23,7 @@ updates:
   - dependency-name: factory_bot_rails
   - dependency-name: jasmine
   - dependency-name: rails
+  - dependency-name: rails_translation_manager
   - dependency-name: rspec-rails
   - dependency-name: sass-rails
   - dependency-name: sassc-rails
