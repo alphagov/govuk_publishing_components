@@ -1,5 +1,5 @@
 name: Single page notification button
-description: A link that subscribes the user to email notifications to a page
+description: A button that subscribes the user to email notifications to a page
 body: |
   By default, the component displays with the "Get emails about this page" state. The component does not render without the `base_path` parameter.
 
@@ -8,11 +8,9 @@ body: |
   When the button is clicked, the `base_path` is submitted to an endpoint which proceeds to check the user's authentication status and whether they are already subscribed to the page or not. Depending on these factors, they will be routed accordingly.
 accessibility_criteria: |
   - The bell icon must be presentational and ignored by screen readers.
-shared_accessibility_criteria:
-  - link
 examples:
   default:
-    description: By default this component prompts the user to subscribe to email notifications to this page. The component uses JavaScript to check if the user has already subscribed to email notifications on the current page. If yes, the state of the component updates accordingly.
+    description: By default this component prompts the user to subscribe to email notifications to this page.
     data:
       base_path: '/current-page-path'
   already_subscribed:
@@ -20,3 +18,9 @@ examples:
     data:
       base_path: '/current-page-path'
       already_subscribed: true
+  with_data_attributes:
+    description: The component accepts data attributes (for example, for analytics)
+    data:
+      base_path: '/current-page-path'
+      data_attributes:
+        category: fancyButtons

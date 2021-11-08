@@ -1,17 +1,10 @@
 .gem-c-single-page-notification-button__submit {
-  position: relative;
   padding: govuk-spacing(2);
-  text-decoration: none;
   margin: govuk-spacing(0);
-  box-shadow: inset 0 0 0 1px transparent;
   border: 1px solid $govuk-border-colour;
   color: $govuk-link-colour;
   cursor: pointer;
   background: none;
-
-  &:active {
-    top: 2px;
-  }
 
   &:focus {
     @include govuk-focused-text;
@@ -22,6 +15,11 @@
 
   &:hover {
     background-color: govuk-colour("light-grey");
+    color: $govuk-link-hover-colour;
+
+    &:focus {
+      color: $govuk-text-colour;
+    }
   }
 }
 

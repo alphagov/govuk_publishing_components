@@ -25,4 +25,9 @@ describe "Single page notification button", type: :view do
     render_component({ base_path: "/the-current-page", already_subscribed: true })
     assert_select ".gem-c-single-page-notification-button", text: "Stop getting emails about this page"
   end
+
+  it "has data attributes if data_attributes is specified" do
+    render_component({ base_path: "/the-current-page", data_attributes: { action: "kaboom!" } })
+    assert_select ".gem-c-single-page-notification-button[data-action='kaboom!']"
+  end
 end
