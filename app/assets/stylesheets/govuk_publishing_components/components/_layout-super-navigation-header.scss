@@ -228,24 +228,18 @@ $chevron-indent-spacing: 7px;
   @include govuk-media-query($from: "desktop") {
     display: inline-block;
   }
-
-  .js-module-initialised & {
-    padding: 0 0 govuk-spacing(9) 0;
-
-    @include govuk-media-query($from: "desktop") {
-      padding: 0;
-    }
-  }
 }
 
 .gem-c-layout-super-navigation-header__navigation-item,
 .gem-c-layout-super-navigation-header__search-item {
   display: block;
-  margin: 0 govuk-spacing(3);
+  margin: 0;
+  padding: govuk-spacing(2) govuk-spacing(3);
   position: relative;
 
   @include govuk-media-query($from: "tablet") {
     margin: 0 govuk-spacing(6);
+    padding: govuk-spacing(2) 0;
   }
 
   @include govuk-media-query($from: "desktop") {
@@ -261,8 +255,15 @@ $chevron-indent-spacing: 7px;
 .gem-c-layout-super-navigation-header__navigation-item {
   border-bottom: 1px solid $govuk-border-colour;
 
+  .js-module-initialised & {
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
   @include govuk-media-query($from: "desktop") {
     border-bottom: 0;
+    padding: 0;
   }
 }
 
@@ -279,7 +280,7 @@ $chevron-indent-spacing: 7px;
     font-size: govuk-px-to-rem(19px);
   }
   font-weight: bold;
-  margin: govuk-spacing(3) 0;
+  margin: govuk-spacing(3) 0 govuk-spacing(3) 0;
 
   @include govuk-media-query($from: "desktop") {
     display: block;

@@ -7,6 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+* Add more spacing in the navigation header mobile layout ([PR #2421](https://github.com/alphagov/govuk_publishing_components/pull/2421 ))
+
 ## 27.11.0
 
 * Bump `govuk-frontend` from 3.13.0 to 3.14.0 ([PR #2334](https://github.com/alphagov/govuk_publishing_components/pull/2334 ))
