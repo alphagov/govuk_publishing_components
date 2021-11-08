@@ -30,4 +30,14 @@ describe "Single page notification button", type: :view do
     render_component({ base_path: "/the-current-page", data_attributes: { action: "kaboom!" } })
     assert_select ".gem-c-single-page-notification-button[data-action='kaboom!']"
   end
+
+  it "sets a default bottom margin" do
+    render_component({ base_path: "/the-current-page" })
+    assert_select '.gem-c-single-page-notification-button.govuk-\!-margin-bottom-3'
+  end
+
+  it "adds bottom margin if margin_bottom is specified" do
+    render_component({ base_path: "/the-current-page", margin_bottom: 9 })
+    assert_select '.gem-c-single-page-notification-button.govuk-\!-margin-bottom-9'
+  end
 end

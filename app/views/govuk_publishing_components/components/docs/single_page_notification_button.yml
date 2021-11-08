@@ -24,3 +24,9 @@ examples:
       base_path: '/current-page-path'
       data_attributes:
         category: fancyButtons
+  with_margin_bottom:
+    description: |
+      The component accepts a number for margin bottom from 0 to 9 (0px to 60px) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having a margin bottom of 15px.
+    data:
+      base_path: '/current-page-path'
+      margin_bottom: 5

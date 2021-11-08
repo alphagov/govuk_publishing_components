@@ -8,7 +8,7 @@
 
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   wrapper_classes = %w(gem-c-single-page-notification-button govuk-!-display-none-print)
-  wrapper_classes << (shared_helper.get_margin_bottom)
+  wrapper_classes << shared_helper.get_margin_bottom
   classes = "govuk-body-s gem-c-single-page-notification-button__submit"
 %>
 <% button_text = capture do %>
