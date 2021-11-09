@@ -1,3 +1,5 @@
+@import "mixins/prefixed-transform";
+
 $gem-c-accordion-border-width: 3px;
 $gem-c-accordion-bottom-border-width: 1px;
 
@@ -69,6 +71,7 @@ $gem-c-accordion-bottom-border-width: 1px;
     }
 
     &:after {
+      @include prefixed-transform($rotate: -45deg);
       content: "";
       display: block;
       box-sizing: border-box;
@@ -78,7 +81,6 @@ $gem-c-accordion-bottom-border-width: 1px;
       height: govuk-em(6, 14);
       border-top: govuk-em(2, 14) solid;
       border-right: govuk-em(2, 14) solid;
-      transform: rotate(-45deg);
       left: govuk-em(6, 14);
       bottom: govuk-em(5, 14);
 
@@ -111,7 +113,7 @@ $gem-c-accordion-bottom-border-width: 1px;
 
   // Rotate icon to create "Down" version
   .gem-c-accordion-nav__chevron--down {
-    transform: rotate(180deg);
+    @include prefixed-transform($rotate: 180deg);
   }
 
   .gem-c-accordion__section-heading {
@@ -296,12 +298,12 @@ $gem-c-accordion-bottom-border-width: 1px;
 
     // Reduce Chevron size
     .gem-c-accordion-nav__chevron {
+      @include prefixed-transform($scale: .875);
       width: govuk-em(20, 14);
       height: govuk-em(20, 14);
       margin-left: govuk-em(5, 14);
       border: govuk-em(1, 14) solid;
       border-radius: govuk-em(100, 14);
-      transform: scale(.875);
 
       &:after {
         width: govuk-em(6, 14);
@@ -314,7 +316,7 @@ $gem-c-accordion-bottom-border-width: 1px;
     }
 
     .gem-c-accordion-nav__chevron--down {
-      transform: scale(.875) rotate(180deg);
+      @include prefixed-transform($rotate: 180deg, $scale: .875);
     }
 
     .gem-c-accordion__section-summary {

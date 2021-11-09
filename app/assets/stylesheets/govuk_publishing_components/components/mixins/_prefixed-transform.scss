@@ -1,0 +1,5 @@
+@mixin prefixed-transform($translateY: 0, $rotate: 0, $scale: 1) {
+  -webkit-transform: translateY($translateY) rotate($rotate) scale($scale);
+  -ms-transform: translateY($translateY) rotate($rotate) scale($scale);
+  transform: translateY($translateY) rotate($rotate) scale($scale);
+}

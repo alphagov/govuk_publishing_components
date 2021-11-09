@@ -1,3 +1,5 @@
+@import "mixins/prefixed-transform";
+
 /// Set grid row or column value using the fraction unit.
 ///
 /// @param {Integer} $number - number of fractions that the grid row or column
@@ -106,13 +108,13 @@ $search-width-or-height: $black-bar-height;
     border-bottom-color: $colour;
     border-right-color: $colour;
   } @else {
+    @include prefixed-transform($rotate: 45deg, $translateY: -35%);
     border-bottom: 3px solid $colour;
     border-right: 3px solid $colour;
     content: " ";
     display: inline-block;
     height: 8px;
     margin: 0 8px 0 2px;
-    transform: translateY(-35%) rotate(45deg);
     vertical-align: middle;
     width: 8px;
   }
@@ -478,7 +480,7 @@ $search-width-or-height: $black-bar-height;
   &.gem-c-layout-super-navigation-header__open-button {
     @include focus-not-focus-visible {
       &:before {
-        transform: translateY(0) rotate(225deg);
+        @include prefixed-transform($rotate: 225deg, $translateY: 0);
       }
     }
 
@@ -668,7 +670,7 @@ $search-width-or-height: $black-bar-height;
         @include govuk-media-query($from: 360px) {
           &:before {
             @include chevron(govuk-colour("black"), true);
-            transform: translateY(0) rotate(225deg);
+            @include prefixed-transform($rotate: 225deg, $translateY: 0);
           }
         }
       }
@@ -684,7 +686,7 @@ $search-width-or-height: $black-bar-height;
         @include govuk-media-query($from: 360px) {
           &:before {
             @include chevron(govuk-colour("black"));
-            transform: translateY(0) rotate(225deg);
+            @include prefixed-transform($rotate: 225deg, $translateY: 0);
           }
         }
       }

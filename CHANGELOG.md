@@ -8,8 +8,10 @@
   of the commit log.
 
 ## Unreleased
+
 * Add more spacing in the navigation header mobile layout ([PR #2421](https://github.com/alphagov/govuk_publishing_components/pull/2421 ))
 * Adjust navigation header black bar height ([PR #2422](https://github.com/alphagov/govuk_publishing_components/pull/2422 ))
+* Fix chevron rotation for the super navigation header and accordion components on IE9 ([PR #2429](https://github.com/alphagov/govuk_publishing_components/pull/2429))
 
 ## 27.11.0
 
