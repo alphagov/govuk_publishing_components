@@ -264,4 +264,22 @@ describe "Input", type: :view do
     assert_select ".gem-c-input--with-search-icon"
     assert_select ".gem-c-input__search-icon"
   end
+
+  it "renders input with an `enterkeyhint` attribute" do
+    render_component(
+      name: "with-enterkeyhint-attribute",
+      enterkeyhint: "search",
+    )
+
+    assert_select ".govuk-input[enterkeyhint='search']"
+  end
+
+  it "doesn't add tje `enterkeyhint` attribute if not an appropriate value" do
+    render_component(
+      name: "without-enterkeyhint-attribute",
+      enterkeyhint: "chocolate",
+    )
+
+    assert_no_selector ".govuk-input[enterkeyhint='chocolate']"
+  end
 end
