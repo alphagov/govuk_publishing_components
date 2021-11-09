@@ -32,10 +32,9 @@ module GovukPublishingComponents
       gem_path = Gem.loaded_specs["govuk_publishing_components"].full_gem_path
       gem_path = Dir.pwd if ENV["MAIN_COMPONENT_GUIDE"]
       host_dir = File.expand_path("..")
-      path = File.expand_path("..", gem_path)
 
       @in_application = false
-      @in_application = true unless path.to_s == host_dir.to_s
+      @in_application = true unless ENV["MAIN_COMPONENT_GUIDE"]
 
       components = AuditComponents.new(gem_path, false)
       applications = analyse_applications(host_dir, application_dirs)
