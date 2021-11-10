@@ -1,10 +1,9 @@
 <% shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns) %>
-<% cta_helper = GovukPublishingComponents::Presenters::BrexitCtaHelper.new(content_item) %>
 <%
-  title = t(cta_helper.title_key)
-  link_text = t(cta_helper.link_text_key)
-  link_path = t(cta_helper.link_path_key)
-  lang = shared_helper.t_locale(cta_helper.title_key)
+  title = t("components.related_navigation.transition.title")
+  link_text = t("components.related_navigation.transition.link_text")
+  link_path = t("components.related_navigation.transition.link_path")
+  lang = shared_helper.t_locale("components.related_navigation.transition.title")
 %>
 
 <% data_attributes = {
