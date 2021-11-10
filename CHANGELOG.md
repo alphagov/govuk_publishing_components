@@ -12,6 +12,7 @@
 * Add more spacing in the navigation header mobile layout ([PR #2421](https://github.com/alphagov/govuk_publishing_components/pull/2421 ))
 * Adjust navigation header black bar height ([PR #2422](https://github.com/alphagov/govuk_publishing_components/pull/2422 ))
 * Fix chevron rotation for the super navigation header and accordion components on IE9 ([PR #2429](https://github.com/alphagov/govuk_publishing_components/pull/2429))
+* Add `enterkeyhint` attribute to input and search ([PR #2426](https://github.com/alphagov/govuk_publishing_components/pull/2426 ))
 
 ## 27.11.0
 

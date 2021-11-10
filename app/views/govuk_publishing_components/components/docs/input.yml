@@ -170,3 +170,13 @@ examples:
       name: "lead-times"
       width: 10
       suffix: "days"
+  with_enterhintkey_attribute:
+    description: |
+      To help users with virtual keyboards this changes the "enter" key to be a word that's more descriptive of the action.
+
+      Must be one of `enter`, `done`, `go`, `next`, `previous`, `search`, or `send`. See the [list of values and descriptions on MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/enterkeyhint#values).
+    data:
+      label:
+        text: "Given name"
+      name: given-name
+      enterkeyhint: "next"

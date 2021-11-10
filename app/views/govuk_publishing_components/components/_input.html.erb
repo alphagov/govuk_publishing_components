@@ -1,13 +1,16 @@
 <%
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
-  id ||= "input-#{SecureRandom.hex(4)}"
-  value ||= nil
-  type ||= "text"
-  describedby ||= nil
+  autocomplete ||= nil
   controls ||= nil
   data ||= nil
-  autocomplete ||= nil
+  describedby ||= nil
+  enterkeyhint ||= nil
+  id ||= "input-#{SecureRandom.hex(4)}"
+  type ||= "text"
+  value ||= nil
+  inputmode ||= nil
+  pattern ||= nil
 
   label ||= nil
   hint ||= nil
@@ -32,6 +35,7 @@
   css_classes << "govuk-input--error" if has_error
   css_classes << "govuk-input--width-#{width}" if [2, 3, 4, 5, 10, 20, 30].include?(width)
   css_classes << "gem-c-input--with-search-icon" if search_icon
+
   form_group_css_classes = %w(govuk-form-group)
   form_group_css_classes << "govuk-form-group--error" if has_error && !grouped
 
@@ -44,14 +48,21 @@
     aria_described_by = aria_described_by.join(" ")
   end
 
+  checked_enterkeyhint = enterkeyhint if [
+    "done",
+    "enter",
+    "go",
+    "next",
+    "previous",
+    "search",
+    "send",
+  ].include?(enterkeyhint)
+
   if type == "number"
     type = "text"
     inputmode = "numeric"
     pattern = "[0-9]*"
   end
-
-  inputmode ||= nil
-  pattern ||= nil
 %>
 
 <%= content_tag :div, class: form_group_css_classes do %>
@@ -87,24 +98,26 @@
     } %>
   <% end %>
 
-  <% input_tag = tag.input name: name,
-    value: value,
-    class: css_classes,
-    id: id,
-    type: type,
-    data: data,
-    autocomplete: autocomplete,
-    tabindex: tabindex,
-    autofocus: autofocus,
-    readonly: readonly,
-    maxlength: maxlength,
-    inputmode: inputmode,
-    pattern: pattern,
+  <% input_tag = tag.input({
     aria: {
       describedby: aria_described_by,
       controls: controls
-    }
-  %>
+    },
+    autocomplete: autocomplete,
+    autofocus: autofocus,
+    class: css_classes,
+    data: data,
+    enterkeyhint: checked_enterkeyhint,
+    id: id,
+    inputmode: inputmode,
+    maxlength: maxlength,
+    name: name,
+    pattern: pattern,
+    readonly: readonly,
+    tabindex: tabindex,
+    type: type,
+    value: value,
+  }) %>
 
   <% if prefix && suffix %>
     <%= tag.div class: "govuk-input__wrapper" do %>

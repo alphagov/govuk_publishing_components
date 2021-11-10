@@ -118,4 +118,10 @@ describe "Search", type: :view do
     assert_no_selector ".govuk-label"
     assert_select ".gem-c-search__label", text: "Search on GOV.UK"
   end
+
+  it "renders with `enterkeyhint` attributes on both input and button by default" do
+    render_component({})
+    assert_select "input[enterkeyhint='search']", count: 1
+    assert_select "button[enterkeyhint='search']", count: 1
+  end
 end
