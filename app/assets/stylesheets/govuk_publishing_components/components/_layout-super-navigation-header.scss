@@ -98,6 +98,8 @@
 
 $icon-size: 20px;
 $chevron-indent-spacing: 7px;
+$black-bar-height: 50px;
+$search-width-or-height: $black-bar-height;
 
 @mixin chevron($colour, $update: false) {
   @if ($update == true) {
@@ -131,9 +133,9 @@ $chevron-indent-spacing: 7px;
   bottom: 0;
   content: " ";
   height: govuk-spacing(1);
-  left: govuk-spacing(4);
+  left: govuk-spacing(3);
   position: absolute;
-  right: govuk-spacing(4);
+  right: govuk-spacing(3);
   top: auto;
 }
 
@@ -165,7 +167,7 @@ $chevron-indent-spacing: 7px;
   position: relative;
 
   .lte-ie8 & {
-    height: govuk-spacing(9);
+    height: $black-bar-height;
   }
 
   [hidden] {
@@ -183,8 +185,8 @@ $chevron-indent-spacing: 7px;
 
 .gem-c-layout-super-navigation-header__header-logo {
   height: govuk-spacing(6);
-  padding-bottom: govuk-spacing(3);
-  padding-top: govuk-spacing(3);
+  padding-bottom: govuk-spacing(2);
+  padding-top: govuk-spacing(2);
 
   @include govuk-media-query($from: "desktop") {
     display: block;
@@ -327,7 +329,7 @@ $chevron-indent-spacing: 7px;
       // stylelint-enable max-nesting-depth
 
       height: govuk-spacing(4);
-      padding: govuk-spacing(4);
+      padding: govuk-spacing(3);
       position: relative;
 
       &:before {
@@ -344,28 +346,40 @@ $chevron-indent-spacing: 7px;
 
       // stylelint-disable max-nesting-depth
       @include focus-and-focus-visible {
-        box-shadow: none;
-        color: $govuk-focus-text-colour;
+        &,
+        &:hover {
+          box-shadow: none;
+          color: $govuk-focus-text-colour;
 
-        &:after {
-          background: $govuk-focus-text-colour;
+          &:after {
+            background: $govuk-focus-text-colour;
+          }
         }
       }
 
       @include focus-not-focus-visible {
         &,
         &:hover {
-          color: govuk-colour("white");
           text-decoration: none;
         }
-      }
-      // stylelint-enable max-nesting-depth
 
-      &:focus:not(:focus-visible) {
+        & {
+          color: govuk-colour("white");
+        }
+
+        &:hover {
+          color: govuk-colour("mid-grey");
+
+          &:after {
+            background: govuk-colour("mid-grey");
+          }
+        }
+
         &:after {
           background: none;
         }
       }
+      // stylelint-enable max-nesting-depth
 
       &:after {
         @include pseudo-underline;
@@ -424,8 +438,8 @@ $chevron-indent-spacing: 7px;
       @if $govuk-typography-use-rem {
         font-size: govuk-px-to-rem(16px);
       }
-      height: govuk-spacing(9);
-      padding: govuk-spacing(4);
+      height: $black-bar-height;
+      padding: govuk-spacing(3);
       position: relative;
       text-decoration: none;
 
@@ -510,7 +524,7 @@ $chevron-indent-spacing: 7px;
       background: $govuk-brand-colour;
 
       &:hover {
-        background: none;
+        background: govuk-colour("black");
 
         &:before {
           left: 0;
@@ -523,6 +537,30 @@ $chevron-indent-spacing: 7px;
 
         &:before {
           content: none;
+        }
+      }
+
+      &:after {
+        left: 0;
+        right: 0;
+      }
+
+      @include focus-not-focus-visible {
+        background: $govuk-link-colour;
+
+        &:hover {
+          background: govuk-colour("black");
+        }
+      }
+
+      @include focus-and-focus-visible {
+        &:hover {
+          background: $govuk-focus-colour;
+        }
+
+        &:after,
+        &:hover:after {
+          background: $govuk-focus-colour;
         }
       }
     }
@@ -575,10 +613,10 @@ $chevron-indent-spacing: 7px;
   box-sizing: border-box;
   color: govuk-colour("white");
   cursor: pointer;
-  height: govuk-spacing(9);
+  height: $black-bar-height;
   padding: 0;
   position: absolute;
-  right: ((govuk-spacing(9) - govuk-spacing(3)) - 1px); // width of the search button (60px) - 15px - 1px to create an overlap between buttons and stop the border appearing to hang off the buttons when they're focused/open
+  right: (($search-width-or-height - govuk-spacing(3)) - 1px); // width of the search button (50px) - 15px - 1px to create an overlap between buttons and stop the border appearing to hang off the buttons when they're focused/open
   top: 0;
   z-index: 10;
 
@@ -659,7 +697,7 @@ $chevron-indent-spacing: 7px;
   display: inline-block;
   border-left: 1px solid govuk-colour("white");
   border-right: 1px solid govuk-colour("white");
-  margin: govuk-spacing(2) 0;
+  margin: 0;
   padding: govuk-spacing(2) govuk-spacing(4);
 
   @include govuk-media-query($from: 360px) {
@@ -676,12 +714,12 @@ $chevron-indent-spacing: 7px;
   border: 0;
   color: govuk-colour("white");
   cursor: pointer;
-  height: govuk-spacing(9);
-  padding: govuk-spacing(4);
+  height: $search-width-or-height;
+  padding: govuk-spacing(3);
   position: absolute;
   right: (0 - govuk-spacing(3));
   top: 0;
-  width: govuk-spacing(9);
+  width: $search-width-or-height;
 
   @include focus-and-focus-visible {
     @include govuk-focused-text;
@@ -750,7 +788,7 @@ $chevron-indent-spacing: 7px;
   font-weight: normal;
   left: 0;
   line-height: 22px;
-  padding: govuk-spacing(4) 0;
+  padding: govuk-spacing(3) 0;
   pointer-events: none;
   position: absolute;
   right: 0;
@@ -770,7 +808,6 @@ $chevron-indent-spacing: 7px;
     left: 0;
     position: absolute;
     right: 0;
-    top: govuk-spacing(9);
   }
 }
 
