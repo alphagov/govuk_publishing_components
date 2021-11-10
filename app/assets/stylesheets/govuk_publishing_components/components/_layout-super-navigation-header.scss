@@ -109,8 +109,8 @@ $search-width-or-height: $black-bar-height;
     border-right-color: $colour;
   } @else {
     @include prefixed-transform($rotate: 45deg, $translateY: -35%);
-    border-bottom: 3px solid $colour;
-    border-right: 3px solid $colour;
+    border-bottom: 2px solid $colour;
+    border-right: 2px solid $colour;
     content: " ";
     display: inline-block;
     height: 8px;
