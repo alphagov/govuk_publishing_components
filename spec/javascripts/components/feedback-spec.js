@@ -5,7 +5,7 @@ describe('Feedback component', function () {
   var FIXTURE =
   '<div class="gem-c-feedback">' +
     '<div class="gem-c-feedback__prompt js-prompt" tabindex="-1">' +
-      '<div class="js-prompt-questions">' +
+      '<div class="js-prompt-questions" hidden>' +
         '<h3 class="gem-c-feedback__is-useful-question">Is this page useful?</h3>' +
         '<ul class="gem-c-feedback__option-list">' +
           '<li class="gem-c-feedback__option-list-item gem-c-feedback__option-list-item--useful">' +
@@ -25,46 +25,46 @@ describe('Feedback component', function () {
           '</li>' +
         '</ul>' +
       '</div>' +
-      '<div class="gem-c-feedback__prompt-success js-prompt-success js-hidden" tabindex="-1">' +
+      '<div class="gem-c-feedback__prompt-success js-prompt-success" tabindex="-1" hidden>' +
         'Thanks for your feedback.' +
       '</div>' +
     '</div>' +
 
-    '<form action="/contact/govuk/page_improvements" id="something-is-wrong" class="gem-c-feedback__form js-feedback-form js-hidden" data-track-category="Onsite Feedback" data-track-action="GOV.UK Send Form">' +
+    '<form action="/contact/govuk/page_improvements" id="something-is-wrong" class="gem-c-feedback__form js-feedback-form" data-track-category="Onsite Feedback" data-track-action="GOV.UK Send Form" hidden>' +
       '<button class="govuk-button govuk-button--secondary gem-c-feedback__close gem-c-feedback__js-show js-close-form" data-track-category="Onsite Feedback" data-track-action="GOV.UK Close Form" aria-controls="something-is-wrong">Close</button>' +
       '<div class="grid-row">' +
         '<div class="column-two-thirds" id="survey-wrapper">' +
-          '<div class="gem-c-feedback__error-summary js-hidden js-errors" tabindex="-1"></div>' +
+          '<div class="gem-c-feedback__error-summary js-errors" tabindex="-1" hidden></div>' +
 
           '<input type="hidden" name="url" value="http://example.com/path/to/page">' +
 
           '<h2 class="gem-c-feedback__form-heading">Help us improve GOV.UK</h2>' +
           '<p class="gem-c-feedback__form-paragraph">Don\'t include personal or financial information like your National Insurance number or credit card details.</p>' +
 
-          '<div class="gem-c-label">' +
-            '<label class="gem-c-label__text" for="input-29a3904f">' +
+          '<div class="gem-c-textarea">' +
+            '<label class="gem-c-label__text" for="textarea-a19ef216">' +
               'What were you doing?' +
             '</label>' +
+            '<textarea name="what_doing" class="govuk-textarea" id="textarea-a19ef216" rows="2"></textarea>' +
           '</div>' +
-          '<input class="gem-c-input " id="input-29a3904f" name="what_doing" type="text">' +
 
-          '<div class="gem-c-label">' +
-            '<label class="gem-c-label__text" for="input-3ad718b1">' +
+          '<div class="gem-c-textarea">' +
+            '<label class="gem-c-label__text" for="textarea-da67721e">' +
               'What went wrong?' +
             '</label>' +
+            '<textarea name="what_wrong" class="govuk-textarea" id="textarea-da67721e" rows="2"></textarea>' +
           '</div>' +
-          '<input class="gem-c-input " id="input-3ad718b1" name="what_wrong" type="text">' +
 
           '<input class="gem-c-feedback__submit" type="submit" value="Submit">' +
         '</div>' +
       '</div>' +
     '</form>' +
 
-    '<form action="/contact/govuk/email-survey-signup" id="page-is-not-useful" class="gem-c-feedback__form js-feedback-form js-hidden" data-track-category="yesNoFeedbackForm" data-track-action="Send Form">' +
-      '<button class="govuk-button govuk-button--secondary gem-c-feedback__close js-close-form" data-track-category="yesNoFeedbackForm" data-track-action="ffFormClose" aria-controls="page-is-not-useful">Close</button>' +
+    '<form action="/contact/govuk/email-survey-signup" id="page-is-not-useful" class="gem-c-feedback__form js-feedback-form" data-track-category="yesNoFeedbackForm" data-track-action="Send Form">' +
+      '<button class="govuk-button govuk-button--secondary gem-c-feedback__close js-close-form" data-track-category="yesNoFeedbackForm" data-track-action="ffFormClose" aria-controls="page-is-not-useful" hidden>Close</button>' +
       '<div class="grid-row">' +
         '<div class="column-two-thirds">' +
-          '<div class="gem-c-feedback__error-summary js-hidden js-errors" tabindex="-1"></div>' +
+          '<div class="gem-c-feedback__error-summary js-errors" tabindex="-1" hidden></div>' +
           '<input name="email_survey_signup[survey_source]" type="hidden" value="a_source">' +
           '<input name="email_survey_signup[survey_id]" type="hidden" value="an_id">' +
 
@@ -76,7 +76,7 @@ describe('Feedback component', function () {
               'Email address' +
             '</label>' +
           '</div>' +
-          '<input class="gem-c-input " id="input-111111" name="email_survey_signup[email_address]" type="text">' +
+          '<input class="gem-c-input govuk-input" id="input-111111" name="email_survey_signup[email_address]" type="text">' +
 
           '<input class="gem-c-feedback__submit" type="submit" value="Send me the survey">' +
         '</div>' +
@@ -98,21 +98,14 @@ describe('Feedback component', function () {
   it('hides the forms', function () {
     loadFeedbackComponent()
 
-    expect($('.gem-c-feedback .js-feedback-form')).toHaveClass('js-hidden')
+    expect($('.gem-c-feedback .js-feedback-form').prop('hidden')).toBe(true)
   })
 
   it('shows the prompt', function () {
     loadFeedbackComponent()
 
-    expect($('.gem-c-feedback .js-prompt')).not.toHaveClass('js-hidden')
-    expect($('.gem-c-feedback .js-prompt-questions')).not.toHaveClass('js-hidden')
-  })
-
-  it('conveys that the feedback forms are hidden', function () {
-    loadFeedbackComponent()
-
-    expect($('.js-feedback-form#something-is-wrong').attr('aria-hidden')).toBe('true')
-    expect($('.js-feedback-form#page-is-not-useful').attr('aria-hidden')).toBe('true')
+    expect($('.gem-c-feedback .js-prompt').prop('hidden')).toBe(false)
+    expect($('.gem-c-feedback .js-prompt-questions').prop('hidden')).toBe(false)
   })
 
   it('conveys that the form is not expanded', function () {
@@ -159,7 +152,7 @@ describe('Feedback component', function () {
 
       var $success = $('.js-prompt-success')
 
-      expect($success).not.toHaveClass('js-hidden')
+      expect(($success).prop('hidden')).toBe(false)
       expect($success).toHaveText('Thanks for your feedback.')
     })
 
@@ -167,7 +160,7 @@ describe('Feedback component', function () {
       loadFeedbackComponent()
       $('.js-page-is-useful')[0].click()
 
-      expect($('.js-prompt-questions')).toHaveClass('js-hidden')
+      expect($('.js-prompt-questions').prop('hidden')).toBe(true)
     })
 
     it('triggers a Google Analytics event', function () {
@@ -183,21 +176,14 @@ describe('Feedback component', function () {
       loadFeedbackComponent()
       $('.js-page-is-not-useful')[0].click()
 
-      expect($('.gem-c-feedback .js-feedback-form#page-is-not-useful')).not.toHaveClass('js-hidden')
+      expect($('.gem-c-feedback .js-feedback-form#page-is-not-useful').prop('hidden')).toBe(false)
     })
 
     it('hides the prompt', function () {
       loadFeedbackComponent()
       $('.js-page-is-not-useful')[0].click()
 
-      expect($('.gem-c-feedback .js-prompt')).toHaveClass('js-hidden')
-    })
-
-    it('conveys that the form is now visible', function () {
-      loadFeedbackComponent()
-      $('.js-page-is-not-useful')[0].click()
-
-      expect($('.js-feedback-form#page-is-not-useful').attr('aria-hidden')).toBe('false')
+      expect($('.gem-c-feedback .js-prompt').prop('hidden')).toBe(true)
     })
 
     it('conveys that the form is now expanded', function () {
@@ -230,21 +216,14 @@ describe('Feedback component', function () {
       loadFeedbackComponent()
       $('.js-something-is-wrong')[0].click()
 
-      expect($('.gem-c-feedback .js-feedback-form#something-is-wrong')).not.toHaveClass('js-hidden')
+      expect($('.gem-c-feedback .js-feedback-form#something-is-wrong').prop('hidden')).toBe(false)
     })
 
     it('hides the prompt', function () {
       loadFeedbackComponent()
       $('.js-something-is-wrong')[0].click()
 
-      expect($('.gem-c-feedback .js-prompt')).toHaveClass('js-hidden')
-    })
-
-    it('conveys that the form is now visible', function () {
-      loadFeedbackComponent()
-      $('.js-something-is-wrong')[0].click()
-
-      expect($('.js-feedback-form').attr('aria-hidden')).toBe('false')
+      expect($('.gem-c-feedback .js-prompt').prop('hidden')).toBe(true)
     })
 
     it('conveys that the form is now expanded', function () {
@@ -257,7 +236,7 @@ describe('Feedback component', function () {
 
     it('focusses the first field in the form', function () {
       loadFeedbackComponent()
-      var $input = $('#something-is-wrong .gem-c-input')[0]
+      var $input = $('#something-is-wrong .govuk-textarea')[0]
       spyOn($input, 'focus')
       $('.js-something-is-wrong')[0].click()
 
@@ -280,18 +259,12 @@ describe('Feedback component', function () {
     })
 
     it('hides the form', function () {
-      expect($('.gem-c-feedback #something-is-wrong')).toHaveClass('js-hidden')
+      expect($('.gem-c-feedback #something-is-wrong').prop('hidden')).toBe(true)
     })
 
     it('shows the prompt', function () {
-      expect($('.gem-c-feedback .js-prompt')).not.toHaveClass('js-hidden')
+      expect($('.gem-c-feedback .js-prompt').prop('hidden')).toBe(false)
       expect(document.activeElement).toBe($('.js-something-is-wrong').get(0))
-    })
-
-    it('conveys that the feedback form is hidden', function () {
-      loadFeedbackComponent()
-
-      expect($('#something-is-wrong.js-feedback-form').attr('aria-hidden')).toBe('true')
     })
 
     it('conveys that the form is not expanded', function () {
@@ -316,18 +289,12 @@ describe('Feedback component', function () {
     })
 
     it('hides the form', function () {
-      expect($('.gem-c-feedback #page-is-not-useful')).toHaveClass('js-hidden')
+      expect($('.gem-c-feedback #page-is-not-useful').prop('hidden')).toBe(true)
     })
 
     it('shows the prompt', function () {
-      expect($('.gem-c-feedback .js-prompt')).not.toHaveClass('js-hidden')
+      expect($('.gem-c-feedback .js-prompt').prop('hidden')).toBe(false)
       expect(document.activeElement).toBe($('.js-page-is-not-useful').get(0))
-    })
-
-    it('conveys that the feedback form is hidden', function () {
-      loadFeedbackComponent()
-
-      expect($('#page-is-not-useful.js-feedback-form').attr('aria-hidden')).toBe('true')
     })
 
     it('conveys that the form is not expanded', function () {
@@ -400,7 +367,7 @@ describe('Feedback component', function () {
 
         var $success = $('.js-prompt-success')
 
-        expect($success).not.toHaveClass('js-hidden')
+        expect(($success).prop('hidden')).toBe(false)
         expect($success).toHaveText('Thanks for your feedback.')
       })
 
@@ -427,7 +394,7 @@ describe('Feedback component', function () {
           responseText: '{}'
         })
 
-        expect($('#something-is-wrong')).toHaveClass('js-hidden')
+        expect($('#something-is-wrong').prop('hidden')).toBe(true)
       })
 
       it('hides the links to show the feedback form', function () {
@@ -440,7 +407,7 @@ describe('Feedback component', function () {
           responseText: '{}'
         })
 
-        expect($('.js-prompt-questions')).toHaveClass('js-hidden')
+        expect($('.js-prompt-questions').prop('hidden')).toBe(true)
       })
     })
 
@@ -494,7 +461,7 @@ describe('Feedback component', function () {
 
         var $prompt = $('.js-prompt-success')
 
-        expect($prompt).not.toHaveClass('js-hidden')
+        expect(($prompt).prop('hidden')).toBe(false)
         expect($prompt).toHaveText('Thanks for your feedback.')
       })
 
@@ -521,7 +488,7 @@ describe('Feedback component', function () {
           responseText: '{}'
         })
 
-        expect($('.js-feedback-form')).toHaveClass('js-hidden')
+        expect($('.js-feedback-form').prop('hidden')).toBe(true)
       })
 
       it('hides the links to show the feedback form', function () {
@@ -534,7 +501,7 @@ describe('Feedback component', function () {
           responseText: '{}'
         })
 
-        expect($('.js-prompt-questions')).toHaveClass('js-hidden')
+        expect($('.js-prompt-questions').prop('hidden')).toBe(true)
       })
     })
 

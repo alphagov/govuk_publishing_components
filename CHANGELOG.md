@@ -9,6 +9,9 @@
 
 ## Unreleased
 
+* **BREAKING:** Update feedback component to fix accessibility issues ([PR #2435](https://github.com/alphagov/govuk_publishing_components/pull/2435))
+  You must make the following changes when you migrate to this release:
+  - Upgrade `static` to the latest version before you upgrade your application
 * Remove duplicate link in menu header ([PR #2547](https://github.com/alphagov/govuk_publishing_components/pull/2547))
 
 ## 27.20.0

@@ -73,6 +73,7 @@ describe "Component guide index" do
 @import 'govuk_publishing_components/components/step-by-step-nav-header';
 @import 'govuk_publishing_components/components/step-by-step-nav-related';
 @import 'govuk_publishing_components/components/tabs';
+@import 'govuk_publishing_components/components/textarea';
 @import 'govuk_publishing_components/components/title';"
 
     expected_print_sass = "@import 'govuk_publishing_components/govuk_frontend_support';
@@ -81,6 +82,7 @@ describe "Component guide index" do
 @import 'govuk_publishing_components/components/print/layout-super-navigation-header';
 @import 'govuk_publishing_components/components/print/step-by-step-nav';
 @import 'govuk_publishing_components/components/print/step-by-step-nav-header';
+@import 'govuk_publishing_components/components/print/textarea';
 @import 'govuk_publishing_components/components/print/title';"
 
     expect(page).to have_selector(".component-doc-h2", text: "Gem components used by this app (17)")

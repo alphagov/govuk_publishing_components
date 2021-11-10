@@ -6,6 +6,12 @@
     margin-top: govuk-spacing(9);
     border-bottom: 1px solid govuk-colour("white");
   }
+
+  // Scoped to the feedback component temporarily
+  [hidden] {
+    // stylelint-disable-next-line declaration-no-important
+    display: none !important;
+  }
 }
 
 .gem-c-feedback__prompt-questions {
@@ -237,39 +243,4 @@
   &:focus {
     outline: $govuk-focus-width solid $govuk-focus-colour;
   }
-}
-
-// hide without js
-// show with js, unless also has the js-hidden class
-.gem-c-feedback__js-show,
-.gem-c-feedback__prompt-success,
-.gem-c-feedback__prompt-questions,
-.gem-c-feedback__error-summary {
-  display: none;
-
-  .js-enabled & {
-    display: block;
-
-    &.js-hidden {
-      display: none;
-    }
-  }
-}
-
-// maintain table display for prompt and prompt-questions
-.js-enabled .gem-c-feedback__prompt {
-  @include govuk-media-query($from: tablet) {
-    display: table;
-  }
-}
-
-.js-enabled .gem-c-feedback__prompt-questions {
-  @include govuk-media-query($from: tablet) {
-    display: table-cell;
-  }
-}
-
-// show the default feedback form without js
-.js-enabled .gem-c-feedback__form.js-hidden {
-  display: none;
 }

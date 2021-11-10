@@ -25,10 +25,16 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.setInitialAriaAttributes()
     this.setHiddenValues()
 
+    this.prompt.hidden = false
+    for (var k = 0; k < this.promptQuestions.length; k++) {
+      this.promptQuestions[k].hidden = false
+    }
+    this.surveyForm.hidden = true
+
     for (var j = 0; j < this.toggleForms.length; j++) {
       this.toggleForms[j].addEventListener('click', function (e) {
         e.preventDefault()
-        var el = e.target
+        var el = e.target.closest('button')
         this.toggleForm(el.getAttribute('aria-controls'))
         this.trackEvent(this.getTrackEventParams(el))
         this.updateAriaAttributes(el)
@@ -36,6 +42,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
 
     for (var i = 0; i < this.closeForms.length; i++) {
+      this.closeForms[i].hidden = false
       this.closeForms[i].addEventListener('click', function (e) {
         e.preventDefault()
         var el = e.target
@@ -89,7 +96,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
               this.showFormSuccess(xhr.message)
               this.revealInitialPrompt()
               this.setInitialAriaAttributes()
-              this.activeForm.classList.toggle(this.jshiddenClass)
+              this.activeForm.hidden ? this.activeForm.hidden = false : this.activeForm.hidden = true
             } else {
               this.showError(xhr)
               this.enableSubmitFormButton($form)
@@ -114,9 +121,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   Feedback.prototype.setInitialAriaAttributes = function () {
-    for (var i = 0; i < this.forms.length; i++) {
-      this.forms[i].setAttribute('aria-hidden', true)
-    }
     this.pageIsNotUsefulButton.setAttribute('aria-expanded', false)
     this.somethingIsWrongButton.setAttribute('aria-expanded', false)
   }
@@ -168,20 +172,16 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   Feedback.prototype.updateAriaAttributes = function (linkClicked) {
     linkClicked.setAttribute('aria-expanded', true)
-    var controls = linkClicked.getAttribute('aria-controls')
-    var ariaControls = document.querySelector('#' + controls)
-    ariaControls.setAttribute('aria-hidden', false)
   }
 
   Feedback.prototype.toggleForm = function (formId) {
     this.activeForm = this.$module.querySelector('#' + formId)
-    this.activeForm.classList.toggle(this.jshiddenClass)
-    this.prompt.classList.toggle(this.jshiddenClass)
+    this.activeForm.hidden ? this.activeForm.hidden = false : this.activeForm.hidden = true
+    this.prompt.hidden ? this.prompt.hidden = false : this.prompt.hidden = true
 
-    var formIsVisible = !this.activeForm.classList.contains(this.jshiddenClass)
-
-    if (formIsVisible) {
-      this.activeForm.querySelector('.gem-c-input').focus()
+    if (!this.activeForm.hidden) {
+      this.activeForm.querySelectorAll('.gem-c-textarea .govuk-textarea, .gem-c-input.govuk-input')[0]
+        .focus()
     } else {
       this.activeForm = false
     }
@@ -223,20 +223,20 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
     var $errors = this.activeForm.querySelector('.js-errors')
     $errors.innerHTML = error
-    $errors.classList.remove(this.jshiddenClass)
+    $errors.hidden = false
     $errors.focus()
   }
 
   Feedback.prototype.showFormSuccess = function () {
     for (var i = 0; i < this.promptQuestions.length; i++) {
-      this.promptQuestions[i].classList.add(this.jshiddenClass)
+      this.promptQuestions[i].hidden = true
     }
-    this.promptSuccessMessage.classList.remove(this.jshiddenClass)
+    this.promptSuccessMessage.hidden = false
     this.promptSuccessMessage.focus()
   }
 
   Feedback.prototype.revealInitialPrompt = function () {
-    this.prompt.classList.remove(this.jshiddenClass)
+    this.prompt.hidden = false
     this.prompt.focus()
   }
 
