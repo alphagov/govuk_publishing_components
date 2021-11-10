@@ -13,6 +13,7 @@
 * Adjust navigation header black bar height ([PR #2422](https://github.com/alphagov/govuk_publishing_components/pull/2422 ))
 * Fix chevron rotation for the super navigation header and accordion components on IE9 ([PR #2429](https://github.com/alphagov/govuk_publishing_components/pull/2429))
 * Add `enterkeyhint` attribute to input and search ([PR #2426](https://github.com/alphagov/govuk_publishing_components/pull/2426 ))
+* Retire the Brexit checker part of the Brexit call to action ([PR #2432](https://github.com/alphagov/govuk_publishing_components/pull/2432)) (patch change)
 * Reduce the weight of super navigation header chevrons ([PR #2436](https://github.com/alphagov/govuk_publishing_components/pull/2436))
 
 ## 27.11.0
