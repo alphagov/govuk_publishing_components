@@ -179,6 +179,17 @@ module GovukPublishingComponents
           4ca8698b-4a24-45ff-baea-7633cc24b679
           ed73581f-9bf8-48b5-bb66-935581a255e3
           15f1c594-af1d-4f16-97cc-ad4d12017509
+        ] + brexit_hub_pages
+      end
+
+      # we don't want to show the standard Brexit sidebar nav on
+      # https://www.gov.uk/guidance/brexit-guidance-for-individuals-and-families or
+      # https://www.gov.uk/guidance/brexit-guidance-for-businesses
+      # as it might result in circular journeys
+      def brexit_hub_pages
+        %w[
+          91cd6143-69d5-4f27-99ff-a52fb0d51c78
+          6555e0bf-c270-4cf9-a0c5-d20b95fab7f1
         ]
       end
 
