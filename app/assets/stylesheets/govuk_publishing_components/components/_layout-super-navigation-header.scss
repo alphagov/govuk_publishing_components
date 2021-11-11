@@ -657,12 +657,20 @@ $search-width-or-height: $black-bar-height;
     }
   }
 
+  &:after {
+    @include pseudo-underline;
+  }
+
   // Open button modifier
   &.gem-c-layout-super-navigation-header__open-button {
     // stylelint-disable max-nesting-depth
     @include focus-and-focus-visible {
       @include govuk-focused-text;
       box-shadow: none;
+
+      &:after {
+        background-color: $govuk-focus-colour;
+      }
 
       .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
         color: govuk-colour("black");
@@ -680,13 +688,17 @@ $search-width-or-height: $black-bar-height;
     @include focus-not-focus-visible {
       background: govuk-colour("light-grey");
 
+      &:after {
+        background-color: $govuk-link-colour;
+      }
+
       .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
-        color: govuk-colour("black");
+        color: $govuk-link-colour;
         border-color: govuk-colour("light-grey");
 
         @include govuk-media-query($from: 360px) {
           &:before {
-            @include chevron(govuk-colour("black"));
+            @include chevron($govuk-link-colour);
             @include prefixed-transform($rotate: 225deg, $translateY: 0);
           }
         }
