@@ -14,6 +14,7 @@
   classes = %w(gem-c-metadata)
   classes << "direction-#{direction}" if local_assigns.include?(:direction)
   classes << "gem-c-metadata--inverse" if inverse
+  base_path ||= nil
 %>
 <%= content_tag :div, class: classes, data: { module: "gem-toggle" } do %>
   <dl data-module="gem-track-click">
@@ -66,4 +67,5 @@
       <% end %>
     <% end %>
   </dl>
+  <%= render 'govuk_publishing_components/components/single_page_notification_button', base_path: base_path if local_assigns.include?(:see_updates_link) && local_assigns.include?(:include_notification_button) %>
 <% end %>

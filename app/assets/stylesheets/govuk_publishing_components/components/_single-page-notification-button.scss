@@ -1,10 +1,15 @@
+// prevent float related alignment issues in rtl mode
+.direction-rtl .gem-c-single-page-notification-button {
+  clear: both;
+}
+
 .gem-c-single-page-notification-button__submit {
   padding: govuk-spacing(2);
   margin: govuk-spacing(0);
   border: 1px solid $govuk-border-colour;
   color: $govuk-link-colour;
   cursor: pointer;
-  background: none;
+  background-color: govuk-colour("white");
 
   &:focus {
     @include govuk-focused-text;

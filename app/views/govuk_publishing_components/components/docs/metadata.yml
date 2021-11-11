@@ -357,3 +357,13 @@ examples:
         Applies to: England, Scotland, and Wales (see detailed guidance for <a href="http://www.dardni.gov.uk/news-dard-pa022-a-13-new-procedure-for" rel="external">Northern Ireland</a>)
     context:
       dark_background: true
+  with_single_page_notification_button:
+    description: |
+      The component can render with a single page email notification button which allows the user to subscribe to email notifications about the current page. The button should only appear on pages with an update history (therefore it has been set to appear only if `see_updates_link` is true).
+
+      In the initial stages, there is a requirement to control which pages the button appears on – hence the presence of an additional `include_notification_button` flag.
+    data:
+      last_updated: "10 September 2015"
+      base_path: "/current-page"
+      include_notification_button: true
+      see_updates_link: true

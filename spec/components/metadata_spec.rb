@@ -200,6 +200,25 @@ describe "Metadata", type: :view do
     assert_select ".gem-c-metadata.gem-c-metadata--inverse"
   end
 
+  it "can render the component with a single page notification button, when see_updates_link is true and base_path is present" do
+    render_component(from: "<a href='/link'>Department</a>", include_notification_button: true, see_updates_link: true, base_path: "/current-page")
+
+    assert_select ".gem-c-metadata .gem-c-single-page-notification-button"
+    assert_select ".gem-c-metadata .gem-c-single-page-notification-button input[type='hidden'][value='/current-page']"
+  end
+
+  it "does not render a single page notification button when see_updates_link is not true" do
+    render_component(from: "<a href='/link'>Department</a>", include_notification_button: true, base_path: "/current-page")
+
+    assert_select ".gem-c-metadata .gem-c-single-page-notification-button", false
+  end
+
+  it "does not render a single page notification button when base_path is not present" do
+    render_component(from: "<a href='/link'>Department</a>", include_notification_button: true, see_updates_link: true)
+
+    assert_select ".gem-c-metadata .gem-c-single-page-notification-button", false
+  end
+
   def assert_truncation(length, limit)
     assert_select ".gem-c-metadata__toggle-items", count: 1
     assert_select ".gem-c-metadata__definition > a", count: limit
