@@ -284,7 +284,7 @@ $search-width-or-height: $black-bar-height;
     font-size: govuk-px-to-rem(19px);
   }
   font-weight: bold;
-  margin: govuk-spacing(3) 0 govuk-spacing(3) 0;
+  margin: govuk-spacing(3) 0;
 
   @include govuk-media-query($from: "desktop") {
     display: block;
@@ -839,19 +839,18 @@ $search-width-or-height: $black-bar-height;
 // Dropdown menu items.
 .gem-c-layout-super-navigation-header__dropdown-list-item {
   box-sizing: border-box;
-  margin: 0 0 0 $chevron-indent-spacing;
   padding: 0 0 govuk-spacing(4) 0;
   position: relative;
-
-  @include govuk-media-query($from: "desktop") {
-    margin: 0;
-  }
 }
 
 // Navigation menu items.
 .gem-c-layout-super-navigation-header__navigation-second-items {
   margin: 0;
   padding: govuk-spacing(6) govuk-spacing(4);
+
+  & > li {
+    margin: 0;
+  }
 
   @include govuk-media-query($from: "desktop") {
     margin: 0 (0 - govuk-spacing(3));
@@ -878,7 +877,7 @@ $search-width-or-height: $black-bar-height;
 
     & > li {
       box-sizing: border-box;
-      padding-bottom: govuk-spacing(6);
+      padding-bottom: govuk-spacing(4);
     }
   }
 }
@@ -920,21 +919,22 @@ $search-width-or-height: $black-bar-height;
 
 .gem-c-layout-super-navigation-header__navigation-second-footer-list {
   list-style: none;
-  padding: 0 0 govuk-spacing(8) 0;
+  padding: 0 0 govuk-spacing(8) govuk-spacing(4);
 
   @include govuk-media-query($from: "desktop") {
-    padding: govuk-spacing(6) 0 govuk-spacing(7) 0;
     @include columns(2, 2, "li");
     @include columns-children(2, 2, "li");
+    margin: 0 (0 - govuk-spacing(3));
+    padding: govuk-spacing(6) 0 govuk-spacing(7) 0;
   }
 }
 
 .gem-c-layout-super-navigation-header__navigation-second-footer-item {
-  padding: govuk-spacing(2) 0 govuk-spacing(2) $chevron-indent-spacing;
+  padding: govuk-spacing(2) 0;
   position: relative;
 
   @include govuk-media-query($from: "desktop") {
-    padding: 0;
+    padding: 0 govuk-spacing(3);
   }
 }
 
@@ -996,7 +996,7 @@ $search-width-or-height: $black-bar-height;
 // Popular links.
 .gem-c-layout-super-navigation-header__popular-item {
   position: relative;
-  padding: govuk-spacing(1) 0 govuk-spacing(1) 0;
+  padding: govuk-spacing(1) 0;
 }
 
 .gem-c-layout-super-navigation-header__popular-link {
@@ -1015,5 +1015,13 @@ $search-width-or-height: $black-bar-height;
     &:after {
       content: none;
     }
+  }
+}
+
+// To be used with .govuk-width-container - we only need the margins from
+// desktop onwards.
+.gem-c-layout-super-navigation-header__width-container {
+  @include govuk-media-query($until: "desktop") {
+    margin: 0;
   }
 }
