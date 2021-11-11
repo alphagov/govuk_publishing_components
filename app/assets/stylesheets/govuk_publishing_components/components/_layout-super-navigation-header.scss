@@ -847,7 +847,7 @@ $search-width-or-height: $black-bar-height;
 
     & > li {
       box-sizing: border-box;
-      margin: 0 govuk-spacing(3) govuk-spacing(2) govuk-spacing(3);
+      margin: 0 govuk-spacing(3);
     }
   }
 }
@@ -870,7 +870,7 @@ $search-width-or-height: $black-bar-height;
 
     & > li,
     & > li:first-child {
-      margin-bottom: govuk-spacing(4);
+      margin-bottom: govuk-spacing(2);
     }
 
     @supports (display: grid) {
