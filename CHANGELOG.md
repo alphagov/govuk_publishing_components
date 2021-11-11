@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 27.11.1
 
 * Add more spacing in the navigation header mobile layout ([PR #2421](https://github.com/alphagov/govuk_publishing_components/pull/2421 ))
 * Adjust navigation header black bar height ([PR #2422](https://github.com/alphagov/govuk_publishing_components/pull/2422 ))
