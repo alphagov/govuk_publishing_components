@@ -33,6 +33,7 @@ require "govuk_publishing_components/presenters/intervention_helper"
 require "govuk_publishing_components/presenters/organisation_logo_helper"
 require "govuk_publishing_components/presenters/highlight_boxes_helper"
 require "govuk_publishing_components/presenters/taxonomy_list_helper"
+require "govuk_publishing_components/presenters/single_page_notification_button_helper"
 
 require "govuk_publishing_components/app_helpers/taxon_breadcrumbs"
 require "govuk_publishing_components/app_helpers/table_helper"

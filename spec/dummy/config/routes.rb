@@ -19,4 +19,6 @@ Rails.application.routes.draw do
   get "error-summary", to: "welcome#errorsummary"
   get "tabsexample", to: "welcome#tabsexample"
   get "table", to: "welcome#table"
+  # we fake this URL to prevent the Single Page notification button from causing an error in the component guide
+  get "/api/personalisation/check-email-subscription", to: proc { [404, {}, [""]] }
 end
