@@ -12,8 +12,9 @@
 * Tweak to sidebar navigation on Brexit hub pages ([PR #2449](https://github.com/alphagov/govuk_publishing_components/pull/2449))
 * Add an explicit margin zero to the super navigation mobile menu button ([PR #2445](https://github.com/alphagov/govuk_publishing_components/pull/2445))
 * Remove brexit as a topic from the super navigation header ([PR #2446](https://github.com/alphagov/govuk_publishing_components/pull/2446))
-* Update the pseudo underline mixin and it's usage on the super navigation header ([PR #2439](https://github.com/alphagov/govuk_publishing_components/pull/2439))
+* Update the pseudo underline mixin and its usage on the super navigation header ([PR #2439](https://github.com/alphagov/govuk_publishing_components/pull/2439))
 * Fix layout glitch seen when scrollbar is permanently visible ([PR #2444](https://github.com/alphagov/govuk_publishing_components/pull/2444 ))
+* Add draggable=false to links disguised as buttons ([PR #2448](https://github.com/alphagov/govuk_publishing_components/pull/2448))
 
 ## 27.12.0
 

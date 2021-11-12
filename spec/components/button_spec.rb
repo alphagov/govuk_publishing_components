@@ -34,6 +34,14 @@ describe "Button", type: :view do
     assert_select ".govuk-button[type=button]"
   end
 
+  it "renders with draggable=false if a href is included" do
+    render_component(text: "Not draggable")
+    assert_select "a.govuk-button[draggable=false]", false
+
+    render_component(text: "Not draggable", href: "#")
+    assert_select "a.govuk-button[draggable=false]"
+  end
+
   it "renders start now button" do
     render_component(text: "Start now", href: "#", start: true)
     assert_select ".govuk-button[href='#']", text: /Start now/

@@ -66,6 +66,7 @@ module GovukPublishingComponents
         options[:name] = name if name.present? && value.present?
         options[:value] = value if name.present? && value.present?
         options[:aria] = { label: aria_label } if aria_label
+        options[:draggable] = false if link?
         options
       end
 
