@@ -855,8 +855,8 @@ $search-width-or-height: $black-bar-height;
 
 .gem-c-layout-super-navigation-header__navigation-second-items--topics {
   @include govuk-media-query($from: "desktop") {
-    @include columns(18, 2, "li");
-    @include columns-children(18, 2, "li");
+    @include columns(17, 2, "li");
+    @include columns-children(17, 2, "li");
   }
 }
 
