@@ -11,6 +11,7 @@
 
 * Add an explicit margin zero to the super navigation mobile menu button ([PR #2445](https://github.com/alphagov/govuk_publishing_components/pull/2445))
 * Remove brexit as a topic from the super navigation header ([PR #2446](https://github.com/alphagov/govuk_publishing_components/pull/2446))
+* Update the pseudo underline mixin and it's usage on the super navigation header ([PR #2439](https://github.com/alphagov/govuk_publishing_components/pull/2439))
 
 ## 27.12.0
 
@@ -20,7 +21,6 @@
 * Add `enterkeyhint` attribute to input and search ([PR #2426](https://github.com/alphagov/govuk_publishing_components/pull/2426 ))
 * Retire the Brexit checker part of the Brexit call to action ([PR #2432](https://github.com/alphagov/govuk_publishing_components/pull/2432)) (patch change)
 * Reduce the weight of super navigation header chevrons ([PR #2436](https://github.com/alphagov/govuk_publishing_components/pull/2436))
-* Update the pseudo underline mixin and it's usage on the super navigation header ([PR #2439](https://github.com/alphagov/govuk_publishing_components/pull/2439))
 
 ## 27.11.0
 

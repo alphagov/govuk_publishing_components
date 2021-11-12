@@ -480,7 +480,7 @@ $search-width-or-height: $black-bar-height;
   &.gem-c-layout-super-navigation-header__open-button {
     @include focus-not-focus-visible {
       &:before {
-        @include prefixed-transform($rotate: 225deg, $translateY: 0);
+        @include prefixed-transform($rotate: 225deg, $translateY: 1px);
       }
     }
 
@@ -679,7 +679,7 @@ $search-width-or-height: $black-bar-height;
         @include govuk-media-query($from: 360px) {
           &:before {
             @include chevron(govuk-colour("black"), true);
-            @include prefixed-transform($rotate: 225deg, $translateY: 0);
+            @include prefixed-transform($rotate: 225deg, $translateY: 1px);
           }
         }
       }
@@ -699,7 +699,7 @@ $search-width-or-height: $black-bar-height;
         @include govuk-media-query($from: 360px) {
           &:before {
             @include chevron($govuk-link-colour);
-            @include prefixed-transform($rotate: 225deg, $translateY: 0);
+            @include prefixed-transform($rotate: 225deg, $translateY: 1px);
           }
         }
       }
