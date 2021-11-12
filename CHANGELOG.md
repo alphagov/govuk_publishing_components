@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add an explicit margin zero to the super navigation mobile menu button ([PR #2445](https://github.com/alphagov/govuk_publishing_components/pull/2445))
+* Remove brexit as a topic from the super navigation header ([PR #2446](https://github.com/alphagov/govuk_publishing_components/pull/2446))
 
 ## 27.12.0
 
