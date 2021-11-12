@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add an explicit margin zero to the super navigation mobile menu button ([PR #2445](https://github.com/alphagov/govuk_publishing_components/pull/2445))
+
 ## 27.12.0
 
 * Add more spacing in the navigation header mobile layout ([PR #2421](https://github.com/alphagov/govuk_publishing_components/pull/2421 ))
