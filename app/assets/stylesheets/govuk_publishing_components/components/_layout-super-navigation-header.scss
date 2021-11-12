@@ -617,6 +617,7 @@ $search-width-or-height: $black-bar-height;
   cursor: pointer;
   height: $black-bar-height;
   padding: 0;
+  margin: 0;
   position: absolute;
   right: (($search-width-or-height - govuk-spacing(3)) - 1px); // width of the search button (50px) - 15px - 1px to create an overlap between buttons and stop the border appearing to hang off the buttons when they're focused/open
   top: 0;
