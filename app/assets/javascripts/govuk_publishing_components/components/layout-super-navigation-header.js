@@ -102,7 +102,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   // either `desktop` or `mobile` so it can be interpolated to access the
   // `data-toggle-{desktop|mobile}-group` attribute.
   var windowSize = function () {
-    return window.innerWidth >= SETTINGS.breakpoint.desktop ? 'desktop' : 'mobile'
+    return document.documentElement.clientWidth >= SETTINGS.breakpoint.desktop ? 'desktop' : 'mobile'
   }
 
   function SuperNavigationMegaMenu ($module) {
