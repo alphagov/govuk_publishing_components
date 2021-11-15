@@ -11,9 +11,11 @@
   direction_class = ""
   direction_class = " direction-#{direction}" if local_assigns.include?(:direction)
 
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   classes = %w(gem-c-metadata)
   classes << "direction-#{direction}" if local_assigns.include?(:direction)
   classes << "gem-c-metadata--inverse" if inverse
+  classes << shared_helper.get_margin_bottom if local_assigns[:margin_bottom]
 %>
 <%= content_tag :div, class: classes, data: { module: "gem-toggle" } do %>
   <dl data-module="gem-track-click">
