@@ -111,10 +111,10 @@ module GovukPublishingComponents
       def show_brexit_related_links?
         # If tagged directly to /brexit or /world/brexit
         # Or if tagged to a taxon which has /brexit as a parent
-        # And is not the brexit checker start page
-        brexit_start_page_content_id = "58d093a1-787d-4f36-a568-86da23a7b884"
-        page_content_id = content_item["content_id"]
-        tagged_to_brexit? && (page_content_id != brexit_start_page_content_id)
+        # And is not the brexit hub pages
+        return false if brexit_hub_pages.include?(content_item["content_id"])
+
+        tagged_to_brexit?
       end
 
       def brexit_cta_document_exceptions
