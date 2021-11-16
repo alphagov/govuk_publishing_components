@@ -811,12 +811,6 @@ examples:
         <div class="place">
           <p>This is a place</p>
         </div>
-  summary:
-    data:
-      block: |
-        <div class="summary">
-          <p>This is a summary</p>
-        </div>
   buttons:
     data:
       block: |
