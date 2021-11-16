@@ -2,7 +2,7 @@
   margin-bottom: govuk-spacing(3);
 
   @include govuk-media-query($from: tablet) {
-    margin-bottom: govuk-spacing(6) * 1.5;
+    margin-bottom: govuk-spacing(7);
   }
 }
 
@@ -10,7 +10,7 @@
   margin-top: govuk-spacing(3);
 
   @include govuk-media-query($from: tablet) {
-    margin-top: govuk-spacing(6) * 1.5;
+    margin-top: govuk-spacing(7);
   }
 }
 

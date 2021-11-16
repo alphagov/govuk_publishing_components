@@ -200,6 +200,12 @@ describe "Metadata", type: :view do
     assert_select ".gem-c-metadata.gem-c-metadata--inverse"
   end
 
+  it "applies a custom margin-bottom class if margin_bottom is specified" do
+    render_component(from: "<a href='/link'>Department</a>", margin_bottom: 2)
+
+    assert_select '.gem-c-metadata.govuk-\!-margin-bottom-2'
+  end
+
   def assert_truncation(length, limit)
     assert_select ".gem-c-metadata__toggle-items", count: 1
     assert_select ".gem-c-metadata__definition > a", count: limit
