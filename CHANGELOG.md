@@ -9,7 +9,7 @@
 
 ## Unreleased
 
-* Add `margin_bottom` option to the metadata component ([PR #2450](https://github.com/alphagov/govuk_publishing_components/pull/2450))
+* Add `margin_bottom` option to the metadata component and update margin mixins to use the standard GOVUK spacing scale ([PR #2450](https://github.com/alphagov/govuk_publishing_components/pull/2450))
 * Tweak to sidebar navigation on Brexit hub pages ([PR #2449](https://github.com/alphagov/govuk_publishing_components/pull/2449))
 * Add an explicit margin zero to the super navigation mobile menu button ([PR #2445](https://github.com/alphagov/govuk_publishing_components/pull/2445))
 * Remove brexit as a topic from the super navigation header ([PR #2446](https://github.com/alphagov/govuk_publishing_components/pull/2446))
