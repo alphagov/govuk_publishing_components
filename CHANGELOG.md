@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 27.13.0
 
 * Add brand colour for Department for Levelling Up, Housing and Communities (DLUHC) ([PR #2454](https://github.com/alphagov/govuk_publishing_components/pull/2454))
 * Add `margin_bottom` option to the metadata component and update margin mixins to use the standard GOVUK spacing scale ([PR #2450](https://github.com/alphagov/govuk_publishing_components/pull/2450))
