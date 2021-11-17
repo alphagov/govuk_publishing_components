@@ -17,6 +17,7 @@
 * Fix layout glitch seen when scrollbar is permanently visible ([PR #2444](https://github.com/alphagov/govuk_publishing_components/pull/2444 ))
 * Add draggable=false to links disguised as buttons ([PR #2448](https://github.com/alphagov/govuk_publishing_components/pull/2448))
 * Remove summary styling from govspeak ([PR #2447](https://github.com/alphagov/govuk_publishing_components/pull/2447))
+* Update "Government activity" dropdown menu layout ([PR #2442](https://github.com/alphagov/govuk_publishing_components/pull/2442 ))
 
 ## 27.12.0
 

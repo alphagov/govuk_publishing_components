@@ -177,7 +177,7 @@ en:
           description: Consultations and strategy
         - label: Transparency
           href: "/search/transparency-and-freedom-of-information-releases"
-          description: Government data, Freedom of Information releases and corporate reports
+          description: Data, Freedom of Information releases and corporate reports
         footer_links:
         - label: How government works
           href: "/government/how-government-works"

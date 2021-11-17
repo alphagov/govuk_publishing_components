@@ -133,7 +133,7 @@
                 class="gem-c-layout-super-navigation-header__navigation-dropdown-menu"
                 id="super-navigation-menu__section-<%= unique_id %>"
               >
-                <div class="govuk-width-container">
+                <div class="govuk-width-container gem-c-layout-super-navigation-header__width-container">
                   <div class="govuk-grid-row">
                     <div class="govuk-grid-column-one-third-from-desktop">
                       <% if link[:description].present? %>
@@ -163,7 +163,7 @@
                                     track_dimension_index: "29",
                                   }
                                 } %>
-                                <%= tag.p item[:description], class: "govuk-body govuk-!-margin-0 govuk-!-margin-top-1" if has_description %>
+                                <%= tag.p item[:description], class: "gem-c-layout-super-navigation-header__navigation-second-item-description" if has_description %>
                               </li>
                             <% end %>
                           </ul>
