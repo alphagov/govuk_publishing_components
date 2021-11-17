@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add brand colour for Department for Levelling Up, Housing and Communities (DLUHC) ([PR #2454](https://github.com/alphagov/govuk_publishing_components/pull/2454))
 * Add `margin_bottom` option to the metadata component and update margin mixins to use the standard GOVUK spacing scale ([PR #2450](https://github.com/alphagov/govuk_publishing_components/pull/2450))
 * Tweak to sidebar navigation on Brexit hub pages ([PR #2449](https://github.com/alphagov/govuk_publishing_components/pull/2449))
 * Add an explicit margin zero to the super navigation mobile menu button ([PR #2445](https://github.com/alphagov/govuk_publishing_components/pull/2445))
