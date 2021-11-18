@@ -3,7 +3,7 @@
 // = require govuk/components/checkboxes/checkboxes.js
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {}
-window.GOVUK.Modules.GovukCheckboxes = window.GOVUKFrontend;
+window.GOVUK.Modules.GovukCheckboxes = window.GOVUKFrontend.Checkboxes;
 
 (function (Modules) {
   function GemCheckboxes ($module) {
