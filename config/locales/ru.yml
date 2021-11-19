@@ -83,14 +83,6 @@ ru:
       what_doing: Что вы делали?
       what_wrong: Что пошло не так?
       'yes': Да
-    government_navigation:
-      consultations: Консультации
-      departments: Отделы
-      get-involved: Принимать участие
-      how-government-works: Как работает правительство
-      news_and_communications: Новости и коммуникация
-      statistics: Статистика
-      worldwide: По всему миру
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Авторское право Британского содружества наций</a>
       licence_html: Все содержимое доступно на <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license"> Открытой государственной лицензии v3.0</a>, если не указано иное

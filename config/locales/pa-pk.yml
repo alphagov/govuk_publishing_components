@@ -75,14 +75,6 @@ pa-pk:
       what_doing: تُسی کیہ کر رئے سو
       what_wrong: کیہ غلط ہویا اے
       'yes': جی ہاں
-    government_navigation:
-      consultations: مشورے
-      departments: محکمے
-      get-involved: تُسی شامل ہو جاؤ
-      how-government-works: کہ حکومت کس طراں کم کر دی اے
-      news_and_communications: خبراں تے رابطے
-      statistics: حساب کتاب
-      worldwide: ساری دُنیا اُتے
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/ information-management/re-using-public-sector-information/copyright-and-re-use/ /crown-copyright/">© کاپی کراؤن رائٹ</a>
       licence_html: سارا مواد ایندے تھلے موجود اے <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">اوپن گورنمنٹ لائسنس v3.0</a>, ایہ قبول کر لو جیڑا ایس توں علاوہ اے

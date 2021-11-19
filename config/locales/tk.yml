@@ -80,14 +80,6 @@ tk:
       what_doing: Näme edýärdiňiz?
       what_wrong: Näme nädogry boldy?
       'yes': Hawa
-    government_navigation:
-      consultations: Maslahatlar
-      departments: Bölümler
-      get-involved: Goşulyş
-      how-government-works: Hökümet nähili işleýär
-      news_and_communications: Habarlar we aragatnaşyk
-      statistics: Statistika
-      worldwide: Bütin dünýä
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown awtorlyk hukugy</a>
       licence_html: Ähli mazmun <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Açyk hökümet ygtyýarnamasy v3.0-da görkezilen</a>, eger başgaça bellenilmedik bolsa

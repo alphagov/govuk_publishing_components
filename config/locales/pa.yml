@@ -79,14 +79,6 @@ pa:
       what_doing: ਤੁਸੀਂ ਕੀ ਕਰ ਰਹੇ ਸੀ?
       what_wrong: ਕੀ ਗਲਤ ਹੋਇਆ?
       'yes': ਹਾਂ
-    government_navigation:
-      consultations: ਸਲਾਹ ਮਸ਼ਵਰੇ
-      departments: ਵਿਭਾਗ
-      get-involved: ਸ਼ਾਮਲ ਕਰੋ
-      how-government-works: ਸਰਕਾਰ ਕਿਵੇਂ ਕੰਮ ਕਰਦੀ ਹੈ
-      news_and_communications: ਖ਼ਬਰਾਂ ਅਤੇ ਸੰਚਾਰ
-      statistics: ਅੰਕੜੇ
-      worldwide: ਦੁਨੀਆ ਭਰ ਵਿੱਚ
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© ਕ੍ਰਾਊਨ ਕਾਪੀਰਾਈਟ</a>
       licence_html: ਸਾਰੀ ਸਮਗਰੀ <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">ਓਪਨ ਗਵਰਨਮੈਂਟ ਲਾਇਸੈਂਸ v3.0</a>, ਦੇ ਅਧੀਨ ਸਾਰੀ ਸਮਗਰੀ ਉਪਲਬਧ ਹੈ ਸਿਵਾਏ ਇਸਦੇ ਜਿੱਥੇ ਹੋਰ ਨਹੀਂ ਕਿਹਾ ਗਿਆ ਹੈ

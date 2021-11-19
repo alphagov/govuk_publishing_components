@@ -83,14 +83,6 @@ lv:
       what_doing: Ko jūs darījāt?
       what_wrong: Kādas problēmas radās?
       'yes': Jā
-    government_navigation:
-      consultations: Konsultācijas
-      departments: Departamenti
-      get-involved: Iesaistīties
-      how-government-works: Kā darbojas valdība
-      news_and_communications: Ziņas un saziņa
-      statistics: Statistika
-      worldwide: Visā pasaulē
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Britu sadraudzības autortiesības</a>
       licence_html: Viss saturs, kas ir pieejams saskaņā ar <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">valsts izsniegto atklāto licenci v3.0</a>, izņemot, ja norādīts citādi

@@ -80,14 +80,6 @@ tr:
       what_doing: Ne yapmaktaydınız?
       what_wrong: Nasıl bir sorun oldu?
       'yes': Evet
-    government_navigation:
-      consultations: Danışmalar
-      departments: Müdürlükler
-      get-involved: Katılım sağlayın
-      how-government-works: Devlet nasıl çalışır
-      news_and_communications: Haber ve iletiler
-      statistics: İstatistikler
-      worldwide: Dünya geneli
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
       licence_html: Aksi ifade edilmedikçe tüm içeriğe <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a> adresinden erişilebilir
