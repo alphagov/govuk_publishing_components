@@ -69,6 +69,14 @@ examples:
       Allows the label text size to be set to `xl`, `l`, `m`, or `s`. If this is set, then `inline_label` is automatically set to `false`.
     data:
       label_size: "xl"
+  wrap_label_inside_a_heading:
+    description: |
+      Puts the label inside a heading; heading level defaults to 2 if not set.
+
+      (The size of the label can still be set with `label_size` to appear more like a heading.)
+    data:
+      wrap_label_in_a_heading: true
+      heading_level: 1
   with_margin_bottom:
     description: |
       Allows the spacing at the bottom of the component to be adjusted.

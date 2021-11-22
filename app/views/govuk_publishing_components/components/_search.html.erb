@@ -1,9 +1,11 @@
 <%
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+  heading_helper = GovukPublishingComponents::Presenters::HeadingHelper.new(local_assigns)
 
   aria_controls ||= nil
   button_text ||= t("components.search_box.search_button")
   id ||= "search-main-" + SecureRandom.hex(4)
+  wrap_label_in_a_heading ||= false
   label_margin_bottom ||= nil
   label_size ||= nil
   label_text ||= t("components.search_box.label")
@@ -34,11 +36,23 @@
     label_classes << "gem-c-search__label"
   end
   label_classes << "govuk-!-margin-bottom-#{label_margin_bottom}" if [*1..9].include?(label_margin_bottom) and local_assigns.include?(:inline_label)
+
+  tag_label = capture do
+    tag.label({ for: id, class: label_classes }) do
+      label_text
+    end
+  end
 %>
 
 <div class="<%= classes.join(" ") %>" data-module="gem-toggle-input-class-on-focus">
-  <%= tag.label({ for: id, class: label_classes }) do %>
-    <%= label_text %>
+  <% if wrap_label_in_a_heading %>
+    <%= content_tag(shared_helper.get_heading_level, {
+      class: "govuk-!-margin-0",
+    }) do %>
+      <%= tag_label %>
+    <% end %>
+  <% else %>
+    <%= tag_label %>
   <% end %>
   <div class="gem-c-search__item-wrapper">
     <%= tag.input(

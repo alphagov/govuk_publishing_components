@@ -156,4 +156,19 @@ describe "Search", type: :view do
     })
     assert_select "label[class^='govuk-\!-margin-bottom-']", count: 0
   end
+
+  it "wraps the label in a heading level 2 by default" do
+    render_component({
+      wrap_label_in_a_heading: true,
+    })
+    assert_select 'h2.govuk-\!-margin-0 > label', count: 1
+  end
+
+  it "wraps the label in the set heading level" do
+    render_component({
+      wrap_label_in_a_heading: true,
+      heading_level: 6,
+    })
+    assert_select 'h6.govuk-\!-margin-0 > label', count: 1
+  end
 end
