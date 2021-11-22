@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove redundant API value from big number component ([PR #2459](https://github.com/alphagov/govuk_publishing_components/pull/2459))
+
 ## 27.14.0
 
 * Get single page notification button from personalisation API on load ([PR #2443](https://github.com/alphagov/govuk_publishing_components/pull/2443))
