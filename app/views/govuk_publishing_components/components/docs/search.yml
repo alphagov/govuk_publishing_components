@@ -76,3 +76,13 @@ examples:
       This accepts a number from 0 to 9 (0px to 60px) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having no margin bottom.
     data:
       margin_bottom: 9
+  with_margin_bottom_for_the_label:
+    description: |
+      Allows the spacing between the label and the input be adjusted.
+
+      Requires `inline_label` to be false.
+
+      This accepts a number from 0 to 9 (0px to 60px) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having no margin bottom.
+    data:
+      label_margin_bottom: 9
+      inline_label: false

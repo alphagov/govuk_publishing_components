@@ -8,6 +8,7 @@ describe "Search", type: :view do
   it "renders a search box with default options" do
     render_component({})
     assert_select ".gem-c-search.gem-c-search--on-white"
+    assert_select "label[class^='govuk-\!-margin-bottom-']", count: 0
   end
 
   it "renders a search box for a dark background" do
@@ -123,5 +124,36 @@ describe "Search", type: :view do
     render_component({})
     assert_select "input[enterkeyhint='search']", count: 1
     assert_select "button[enterkeyhint='search']", count: 1
+  end
+
+  it "has the correct label margin" do
+    render_component({
+      inline_label: false,
+      label_margin_bottom: 9,
+    })
+    assert_select 'label.govuk-\!-margin-bottom-9', count: 1
+  end
+
+  it "doesn't set a margin override if label_margin_bottom set to 0" do
+    render_component({
+      inline_label: false,
+      label_margin_bottom: 0,
+    })
+    assert_select 'label.govuk-\!-margin-bottom-0', count: 0
+  end
+
+  it "defaults to no bottom margin if an incorrect value is passed" do
+    render_component({
+      inline_label: false,
+      margin_bottom: 20,
+    })
+    assert_select "label[class^='govuk-\!-margin-bottom-']", count: 0
+  end
+
+  it "defaults to no bottom margin if inline_label is not passed" do
+    render_component({
+      margin_bottom: 2,
+    })
+    assert_select "label[class^='govuk-\!-margin-bottom-']", count: 0
   end
 end
