@@ -69,3 +69,10 @@ examples:
       Allows the label text size to be set to `xl`, `l`, `m`, or `s`. If this is set, then `inline_label` is automatically set to `false`.
     data:
       label_size: "xl"
+  with_margin_bottom:
+    description: |
+      Allows the spacing at the bottom of the component to be adjusted.
+
+      This accepts a number from 0 to 9 (0px to 60px) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having no margin bottom.
+    data:
+      margin_bottom: 9
