@@ -845,6 +845,7 @@ $search-width-or-height: $black-bar-height;
 
 // Navigation menu items.
 .gem-c-layout-super-navigation-header__navigation-second-items {
+  list-style: none;
   margin: 0;
   padding: govuk-spacing(6) govuk-spacing(4);
 
