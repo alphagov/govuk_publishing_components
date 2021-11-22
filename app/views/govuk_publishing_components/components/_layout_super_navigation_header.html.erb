@@ -144,7 +144,7 @@
                     </div>
                     <div class="govuk-grid-column-two-thirds-from-desktop">
                       <% if link[:menu_contents].present? %>
-                          <ul class="govuk-list gem-c-layout-super-navigation-header__navigation-second-items gem-c-layout-super-navigation-header__navigation-second-items--<%= link[:label].parameterize %>">
+                          <ul class="gem-c-layout-super-navigation-header__navigation-second-items gem-c-layout-super-navigation-header__navigation-second-items--<%= link[:label].parameterize %>">
                             <% link[:menu_contents].each do | item | %>
                               <%
                                 has_description = item[:description].present?
