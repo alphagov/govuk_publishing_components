@@ -16,14 +16,28 @@
 
   intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new(local_assigns)
   dismiss_href = intervention_helper.dismiss_link
+
+  suggestion_tag_options = {
+    class: "govuk-link gem-c-intervention__suggestion-link",
+    href: suggestion_link_url,
+    data: suggestion_data_attributes,
+  }
+
+  new_tab ||= false
+  if new_tab
+    target = "_blank"
+    rel = "noopener noreferrer"
+    rel << " external" unless suggestion_link_url && suggestion_link_url.start_with?("/", "https://gov.uk", "https://www.gov.uk")
+
+    suggestion_tag_options.merge!({ target: target, rel: rel })
+  end
 %>
 <% if suggestion_text or (suggestion_link_text and suggestion_link_text) %>
   <%= tag.section class: "gem-c-intervention", role: "region", aria: aria_attributes, data: data_attributes do %>
     <p class="govuk-body">
       <%= tag.span suggestion_text, class: "gem-c-intervention__textwrapper" if suggestion_text %>
       <% if suggestion_link_text and suggestion_link_url %>
-        <%= tag.a suggestion_link_text, class: "govuk-link gem-c-intervention__suggestion-link", href: suggestion_link_url, data: suggestion_data_attributes %>
-
+        <%= tag.a suggestion_link_text, suggestion_tag_options %>
       <% end %>
     </p>
 
