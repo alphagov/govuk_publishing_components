@@ -10,12 +10,18 @@
 
       var cookieBannerEngaged = GOVUK.cookie('cookies_preferences_set')
 
-      // If not engaged, append only ?cookie-consent=not-engaged
-      // If engaged and rejected, append only ?cookie-consent=reject
-      // If engaged and accepted usage, append ?_ga=clientid if available and cookie-consent=accept
+      // If not engaged, append only ?cookie_consent=not-engaged
+      // If engaged and rejected, append only ?cookie_consent=reject
+      // If engaged and accepted usage, append ?_ga=clientid if available and cookie_consent=accept
 
       if (cookieBannerEngaged !== 'true') {
         this.decorate(element, 'cookie_consent=not-engaged')
+        this.start = this.start.bind(this, $module)
+
+        // if the user has not engaged with the cookie banner yet, listen for the cookie consent accept/reject events
+        // re-start the module if cookies are accepted or rejected on the current page – setting cookie preferences does not reload the page
+        window.addEventListener('cookie-consent', this.start)
+        window.addEventListener('cookie-reject', this.start)
         return
       }
       var cookieConsent = GOVUK.getConsentCookie()
@@ -50,6 +56,8 @@
     this.decorate = function (element, param) {
       var attribute = 'href'
       var attributeValue = element.getAttribute(attribute)
+      var cookieConsentParameterPattern = /cookie_consent=[^&]*/
+      var paramIsCookieConsent = param.match(cookieConsentParameterPattern)
 
       if (!attributeValue) {
         attribute = 'action'
@@ -58,13 +66,21 @@
 
       if (!attributeValue) { return }
 
-      if (attributeValue.includes('?')) {
-        attributeValue += '&' + param
-        element.setAttribute(attribute, attributeValue)
+      var attributeHasCookieConsent = attributeValue.match(cookieConsentParameterPattern)
+
+      if (attributeHasCookieConsent && paramIsCookieConsent) {
+        // if the decorate function has received a cookie_consent parameter, but the target element already has a cookie_consent parameter, replace the existing parameter with the new value
+        attributeValue = attributeValue.replace(cookieConsentParameterPattern, param)
       } else {
-        attributeValue += '?' + param
-        element.setAttribute(attribute, attributeValue)
+        // otherwise, simply append the parameter to the target element href query string
+        if (attributeValue.includes('?')) {
+          attributeValue += '&' + param
+        } else {
+          attributeValue += '?' + param
+        }
       }
+
+      element.setAttribute(attribute, attributeValue)
     }
   }
 
