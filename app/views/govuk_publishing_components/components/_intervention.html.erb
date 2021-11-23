@@ -24,12 +24,15 @@
   }
 
   new_tab ||= false
-  if new_tab
+  if new_tab && (suggestion_link_text && suggestion_link_text)
     target = "_blank"
     rel = "noopener noreferrer"
     rel << " external" unless suggestion_link_url && suggestion_link_url.start_with?("/", "https://gov.uk", "https://www.gov.uk")
 
     suggestion_tag_options.merge!({ target: target, rel: rel })
+
+    accessible_text = I18n.t("components.intervention.accessible_link_text_suffix")
+    suggestion_link_text << accessible_text unless suggestion_link_text.include?(accessible_text)
   end
 %>
 <% if suggestion_text || (suggestion_link_text && suggestion_link_text) %>

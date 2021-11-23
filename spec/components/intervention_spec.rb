@@ -103,5 +103,25 @@ describe "Intervention", type: :view do
 
       assert_select "a[target='_blank']", false
     end
+
+    it "appends accesible link text" do
+      render_component(
+        suggestion_link_text: "Travel abroad",
+        suggestion_link_url: "/travel-abroad",
+        new_tab: true,
+      )
+
+      assert_select ".gem-c-intervention", text: "Travel abroad (opens in a new tab)"
+    end
+
+    it "doesn't append accessible link text if link text is already included" do
+      render_component(
+        suggestion_link_text: "Travel abroad (opens in a new tab) guidance",
+        suggestion_link_url: "/travel-abroad",
+        new_tab: true,
+      )
+
+      assert_select ".gem-c-intervention", text: "Travel abroad (opens in a new tab) guidance"
+    end
   end
 end
