@@ -35,12 +35,12 @@ describe "subscription links", type: :view do
 
   it "defaults to the initial bottom margin if an incorrect value is passed" do
     render_component(email_signup_link: "email-signup", feed_link: "singapore.atom", margin_bottom: 20)
-    assert_select "[class='^=govuk-\!-margin-bottom-']", false
+    assert_select "[class^='govuk-\!-margin-bottom-']", false
   end
 
   it "has no margin class added by default" do
     render_component(email_signup_link: "email-signup", feed_link: "singapore.atom")
-    assert_select "[class='^=govuk-\!-margin-bottom-']", false
+    assert_select "[class^='govuk-\!-margin-bottom-']", false
   end
 
   it "renders custom texts" do

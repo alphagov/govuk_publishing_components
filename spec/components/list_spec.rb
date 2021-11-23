@@ -138,7 +138,7 @@ describe "List", type: :view do
         "<a href='https://example.com/'>Another test item</a>",
       ],
     )
-    assert_select "[class='^=govuk-\!-margin-bottom-']", false
+    assert_select "[class^='govuk-\!-margin-bottom-']", false
   end
 
   it "has no margin class added by default" do
@@ -148,7 +148,7 @@ describe "List", type: :view do
         "<a href='https://example.com/'>Another test item</a>",
       ],
     )
-    assert_select "[class='^=govuk-\!-margin-bottom-']", false
+    assert_select "[class^='govuk-\!-margin-bottom-']", false
   end
 
   it "has no margin class added if `margin_bottom` set to 4" do
@@ -159,6 +159,6 @@ describe "List", type: :view do
         "<a href='https://example.com/'>Another test item</a>",
       ],
     )
-    assert_select "[class='^=govuk-\!-margin-bottom-']", false
+    assert_select "[class^='govuk-\!-margin-bottom-']", false
   end
 end

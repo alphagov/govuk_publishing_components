@@ -68,7 +68,7 @@ describe "Title", type: :view do
 
   it "ignores an invalid margin bottom" do
     render_component(title: "Margin wat", margin_bottom: 17)
-    assert_select "[class='^=govuk-\!-margin-bottom-']", false
+    assert_select "[class^='govuk-\!-margin-bottom-']", false
   end
 
   it "has a default margin top of 8" do
@@ -88,7 +88,7 @@ describe "Title", type: :view do
 
   it "ignores an invalid margin top" do
     render_component(title: "Margin wat", margin_top: 17)
-    assert_select "[class='^=govuk-\!-margin-top-']", false
+    assert_select "[class^='govuk-\!-margin-top-']", false
   end
 
   it "applies context language if supplied to a context link" do
