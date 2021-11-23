@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update search component ([PR #2462](https://github.com/alphagov/govuk_publishing_components/pull/2462))
+
 ## 27.14.1
 
 * Remove redundant API value from big number component ([PR #2459](https://github.com/alphagov/govuk_publishing_components/pull/2459))
