@@ -81,12 +81,12 @@ describe "Heading", type: :view do
 
   it "defaults to no bottom margin if an incorrect value is passed" do
     render_component(text: "Margin wat", margin_bottom: 20)
-    assert_select "[class='^=govuk-\!-margin-bottom-']", false
+    assert_select "[class^='govuk-\!-margin-bottom-']", false
   end
 
   it "has no margin class added by default" do
     render_component(text: "No margin")
-    assert_select "[class='^=govuk-\!-margin-bottom-']", false
+    assert_select "[class^='govuk-\!-margin-bottom-']", false
   end
 
   it "adds border 1" do
