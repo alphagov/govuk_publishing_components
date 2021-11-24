@@ -11,6 +11,7 @@
 
 * Update search component ([PR #2462](https://github.com/alphagov/govuk_publishing_components/pull/2462))
 * Fix link to Crown Copyright in footer ([PR #2475](https://github.com/alphagov/govuk_publishing_components/pull/2475))
+* Fix single page notification button data attributes for tracking ([PR #2471](https://github.com/alphagov/govuk_publishing_components/pull/2471))
 
 ## 27.14.1
 
