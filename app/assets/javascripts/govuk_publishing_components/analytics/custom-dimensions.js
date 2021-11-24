@@ -1,4 +1,4 @@
-/* global GOVUK, $ */
+/* global GOVUK */
 
 (function () {
   'use strict'
@@ -7,11 +7,11 @@
 
   CustomDimensions.getAndExtendDefaultTrackingOptions = function (extraOptions) {
     var trackingOptions = this.customDimensions()
-    return $.extend(trackingOptions, extraOptions)
+    return this.extend(trackingOptions, extraOptions)
   }
 
   CustomDimensions.customDimensions = function () {
-    var dimensions = $.extend(
+    var dimensions = this.extend(
       {},
       customDimensionsFromBrowser(),
       customDimensionsFromMetaTags(),
@@ -19,9 +19,28 @@
       abTestCustomDimensions()
     )
 
-    return $.each(dimensions, function (key, value) {
-      dimensions[key] = new GOVUK.Analytics.PIISafe(String(value))
-    })
+    for (var key in dimensions) {
+      dimensions[key] = new GOVUK.Analytics.PIISafe(String(dimensions[key]))
+    }
+    return dimensions
+  }
+
+  CustomDimensions.extend = function (out) {
+    out = out || {}
+
+    for (var i = 1; i < arguments.length; i++) {
+      if (!arguments[i]) {
+        continue
+      }
+
+      for (var key in arguments[i]) {
+        if (Object.prototype.hasOwnProperty.call(arguments[i], key)) {
+          out[key] = arguments[i][key]
+        }
+      }
+    }
+
+    return out
   }
 
   function customDimensionsFromBrowser () {
@@ -70,52 +89,59 @@
       'spelling-suggestion': { dimension: 81 }
     }
 
-    var $metas = $('meta[name^="govuk:"]')
+    var metas = document.querySelectorAll("meta[name^='govuk']")
     var customDimensions = {}
     var tags = {}
 
-    $metas.each(function () {
-      var $meta = $(this)
-      var key = $meta.attr('name').split('govuk:')[1]
-
-      var dimension = dimensionMappings[key]
+    for (var i = 0; i < metas.length; i++) {
+      var meta = metas[i]
+      var metaKey = meta.getAttribute('name').split('govuk:')[1]
+      var dimension = dimensionMappings[metaKey]
       if (dimension) {
-        tags[key] = $meta.attr('content')
+        tags[metaKey] = meta.getAttribute('content')
       }
-    })
+    }
 
-    $.each(dimensionMappings, function (key, dimension) {
-      var value = tags[key] || dimension.defaultValue
+    for (var key in dimensionMappings) {
+      var value = tags[key] || dimensionMappings[key].defaultValue
       if (typeof value !== 'undefined') {
-        customDimensions['dimension' + dimension.dimension] = value
+        customDimensions['dimension' + dimensionMappings[key].dimension] = value
       }
-    })
+    }
 
     return customDimensions
   }
 
   function customDimensionsFromDom () {
+    var mainLang = document.getElementById('content')
+    if (mainLang) {
+      mainLang = mainLang.getAttribute('lang')
+    }
+    var globalBar = document.querySelector('[data-module="global-bar"]') || false
+    if (globalBar) {
+      globalBar = globalBar.style.display !== 'none'
+    }
     return {
       dimension26: GOVUK.PageContent.getNumberOfSections(),
       dimension27: GOVUK.PageContent.getNumberOfLinks(),
-      dimension23: $('main[id="content"]').attr('lang') || 'unknown',
-      dimension38: $('[data-module="global-bar"]').is(':visible') && 'Global Banner viewed'
+      dimension23: mainLang || 'unknown',
+      dimension38: globalBar && 'Global Banner viewed'
     }
   }
 
   function abTestCustomDimensions () {
-    var $abMetas = $('meta[name^="govuk:ab-test"]')
+    var abMetas = document.querySelectorAll("meta[name^='govuk:ab-test']")
     var customDimensions = {}
 
-    $abMetas.each(function () {
-      var $meta = $(this)
-      var dimension = parseInt($meta.data('analytics-dimension'))
-      var testNameAndBucket = $meta.attr('content')
+    for (var i = 0; i < abMetas.length; i++) {
+      var meta = abMetas[i]
+      var dimension = parseInt(meta.getAttribute('data-analytics-dimension'))
+      var testNameAndBucket = meta.getAttribute('content')
 
       if (dimension) {
         customDimensions['dimension' + dimension] = testNameAndBucket
       }
-    })
+    }
 
     return customDimensions
   }
