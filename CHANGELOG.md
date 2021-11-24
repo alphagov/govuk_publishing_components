@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Update search component ([PR #2462](https://github.com/alphagov/govuk_publishing_components/pull/2462))
+* Fix link to Crown Copyright in footer ([PR #2475](https://github.com/alphagov/govuk_publishing_components/pull/2475))
 
 ## 27.14.1
 
