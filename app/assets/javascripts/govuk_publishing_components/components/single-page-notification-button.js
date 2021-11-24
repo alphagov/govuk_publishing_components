@@ -26,9 +26,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           var html = document.createElement('div')
           html.innerHTML = newButton
           // test that the html returned contains the button component; if yes, swap the button for the updated version
-          var responseHasButton = html.querySelector('form.gem-c-single-page-notification-button .gem-c-single-page-notification-button__submit')
-          if (responseHasButton) {
-            this.$module.outerHTML = newButton
+          var responseButtonContainer = html.querySelector('form.gem-c-single-page-notification-button')
+          if (responseButtonContainer) {
+            this.$module.parentNode.replaceChild(responseButtonContainer, this.$module)
           }
         }
       }

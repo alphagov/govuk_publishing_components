@@ -31,22 +31,24 @@ describe "Single page notification button", type: :view do
     assert_select ".gem-c-single-page-notification-button[data-custom-attribute='kaboom!']"
   end
 
-  it "sets a default bottom margin" do
+  it "sets a default bottom margin to its wrapper" do
     render_component({ base_path: "/the-current-page" })
-    assert_select '.gem-c-single-page-notification-button.govuk-\!-margin-bottom-3'
+    assert_select 'div.govuk-\!-margin-bottom-3 .gem-c-single-page-notification-button'
   end
 
-  it "adds bottom margin if margin_bottom is specified" do
+  it "adds bottom margin to its wrapper if margin_bottom is specified" do
     render_component({ base_path: "/the-current-page", margin_bottom: 9 })
-    assert_select '.gem-c-single-page-notification-button.govuk-\!-margin-bottom-9'
+    assert_select 'div.govuk-\!-margin-bottom-9 .gem-c-single-page-notification-button'
   end
 
   it "has a data-module attribute for JavaScript, if the js-enhancement flag is present" do
     render_component({ base_path: "/the-current-page", js_enhancement: true })
-    dom = Nokogiri::HTML(rendered)
-    form_data_module = dom.xpath("//form")[0].attr("data-module")
+    assert_select ".gem-c-single-page-notification-button[data-module='single-page-notification-button']"
+  end
 
-    expect(form_data_module).to include("single-page-notification-button")
+  it "does not have a data-module attribute if the js-enhancement flag is not present" do
+    render_component({ base_path: "/the-current-page" })
+    assert_select ".gem-c-single-page-notification-button[data-module='single-page-notification-button']", false
   end
 
   it "has correct attributes for tracking by default" do
