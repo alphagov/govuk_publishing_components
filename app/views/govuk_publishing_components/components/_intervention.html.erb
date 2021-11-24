@@ -35,7 +35,7 @@
     suggestion_link_text << accessible_text unless suggestion_link_text.include?(accessible_text)
   end
 %>
-<% if suggestion_text || (suggestion_link_text && suggestion_link_text) %>
+<% if suggestion_text || (suggestion_link_text && suggestion_link_url) %>
   <%= tag.section class: "gem-c-intervention", role: "region", aria: aria_attributes, data: data_attributes do %>
     <p class="govuk-body">
       <%= tag.span suggestion_text, class: "gem-c-intervention__textwrapper" if suggestion_text %>
