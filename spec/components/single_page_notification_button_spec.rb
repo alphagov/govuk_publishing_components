@@ -51,42 +51,42 @@ describe "Single page notification button", type: :view do
 
   it "has correct attributes for tracking by default" do
     render_component({ base_path: "/the-current-page" })
-    assert_select ".gem-c-single-page-notification-button[data-category='Single-page-notification-button'][data-action='Subscribe-button'][data-label='/the-current-page']"
+    assert_select ".gem-c-single-page-notification-button[data-track-category='Single-page-notification-button'][data-track-action='Subscribe-button'][data-track-label='/the-current-page']"
   end
 
   it "has correct attributes for tracking when already_subscribed is true" do
     render_component({ base_path: "/the-current-page", already_subscribed: true })
 
-    assert_select ".gem-c-single-page-notification-button[data-category='Single-page-notification-button'][data-action='Unsubscribe-button'][data-label='/the-current-page']"
+    assert_select ".gem-c-single-page-notification-button[data-track-category='Single-page-notification-button'][data-track-action='Unsubscribe-button'][data-track-label='/the-current-page']"
   end
 
-  it "has the correct default data-action for tracking when button_location is top" do
+  it "has the correct default data-track-action for tracking when button_location is top" do
     render_component({ base_path: "/the-current-page", button_location: "top" })
 
-    assert_select ".gem-c-single-page-notification-button[data-action='Subscribe-button-top']"
+    assert_select ".gem-c-single-page-notification-button[data-track-action='Subscribe-button-top']"
   end
 
-  it "has the correct data-action for tracking when button_location is top and already_subscribed is true" do
+  it "has the correct data-track-action for tracking when button_location is top and already_subscribed is true" do
     render_component({ base_path: "/the-current-page", button_location: "top", already_subscribed: true })
 
-    assert_select ".gem-c-single-page-notification-button[data-action='Unsubscribe-button-top']"
+    assert_select ".gem-c-single-page-notification-button[data-track-action='Unsubscribe-button-top']"
   end
 
-  it "has the correct default data-action for tracking when button_location is bottom" do
+  it "has the correct default data-track-action for tracking when button_location is bottom" do
     render_component({ base_path: "/the-current-page", button_location: "bottom" })
 
-    assert_select ".gem-c-single-page-notification-button[data-action='Subscribe-button-bottom']"
+    assert_select ".gem-c-single-page-notification-button[data-track-action='Subscribe-button-bottom']"
   end
 
-  it "has the correct data-action for tracking when button_location is bottom and already_subscribed is true" do
+  it "has the correct data-track-action for tracking when button_location is bottom and already_subscribed is true" do
     render_component({ base_path: "/the-current-page", button_location: "bottom", already_subscribed: true })
 
-    assert_select ".gem-c-single-page-notification-button[data-action='Unsubscribe-button-bottom']"
+    assert_select ".gem-c-single-page-notification-button[data-track-action='Unsubscribe-button-bottom']"
   end
 
-  it "has the correct data-action for tracking when button_location has an invalid value" do
+  it "has the correct data-track-action for tracking when button_location has an invalid value" do
     render_component({ base_path: "/the-current-page", button_location: "this is unacceptable" })
 
-    assert_select ".gem-c-single-page-notification-button[data-action='Subscribe-button']"
+    assert_select ".gem-c-single-page-notification-button[data-track-action='Subscribe-button']"
   end
 end
