@@ -1,5 +1,5 @@
 // https://developers.google.com/analytics/devguides/collection/analyticsjs/enhanced-ecommerce
-/* global GOVUK, $, ga */
+/* global GOVUK, ga */
 
 (function () {
   'use strict'
@@ -12,25 +12,25 @@
     this.init = function (element) {
       // Limiting to 100 characters to avoid noise from extra longs search queries
       // and to stop the size of the payload going over 8k limit.
-      var searchQuery = GOVUK.analytics.stripPII(element.attr('data-search-query')).substring(0, 100).toLowerCase()
-      var ecommerceRows = element.find('[data-ecommerce-row]')
-      var startPosition = parseInt(element.data('ecommerce-start-index'), 10)
-      var listTitle = element.data('list-title') || DEFAULT_LIST_TITLE
-      var variant = element.data('ecommerce-variant')
-      var trackClickLabel = element.data('track-click-label') || DEFAULT_TRACK_CLICK_LABEL
+      var searchQuery = GOVUK.analytics.stripPII(element.getAttribute('data-search-query')).substring(0, 100).toLowerCase()
+      var ecommerceRows = element.querySelectorAll('[data-ecommerce-row]')
+      var startPosition = parseInt(element.getAttribute('data-ecommerce-start-index'), 10)
+      var listTitle = element.getAttribute('data-list-title') || DEFAULT_LIST_TITLE
+      var variant = element.getAttribute('data-ecommerce-variant') || undefined
+      var trackClickLabel = element.getAttribute('data-track-click-label') || DEFAULT_TRACK_CLICK_LABEL
 
-      ecommerceRows.each(function (index, ecommerceRow) {
-        var $ecommerceRow = $(ecommerceRow)
-        var listSubheading = $ecommerceRow.data('ecommerce-subheading') || undefined
-        var contentId = $ecommerceRow.attr('data-ecommerce-content-id')
-        var path = $ecommerceRow.attr('data-ecommerce-path')
+      for (var i = 0; i < ecommerceRows.length; i++) {
+        var ecommerceRow = ecommerceRows[i]
+        var listSubheading = ecommerceRow.getAttribute('data-ecommerce-subheading') || undefined
+        var contentId = ecommerceRow.getAttribute('data-ecommerce-content-id') || undefined
+        var path = ecommerceRow.getAttribute('data-ecommerce-path')
 
-        var indexOverride = $ecommerceRow.attr('data-ecommerce-index')
-        index = indexOverride ? parseInt(indexOverride, 10) - 1 : index
+        var indexOverride = ecommerceRow.getAttribute('data-ecommerce-index')
+        var index = indexOverride ? parseInt(indexOverride, 10) - 1 : i
 
         addImpression(contentId, path, index + startPosition, searchQuery, listTitle, listSubheading, variant)
-        trackProductOnClick($ecommerceRow, contentId, path, index + startPosition, searchQuery, listTitle, listSubheading, variant, trackClickLabel)
-      })
+        trackProductOnClick(ecommerceRow, contentId, path, index + startPosition, searchQuery, listTitle, listSubheading, variant, trackClickLabel)
+      }
     }
 
     function constructData (contentId, path, position, listTitle, listSubheading, searchQuery, variant) {
@@ -67,7 +67,7 @@
     }
 
     function trackProductOnClick (row, contentId, path, position, searchQuery, listTitle, listSubheading, variant, trackClickLabel) {
-      row.click(function () {
+      row.addEventListener('click', function () {
         if (contentId || path) {
           var clickData = constructData(contentId, path, position, listTitle, listSubheading, searchQuery, variant)
           ga('ec:addProduct', clickData)
@@ -82,18 +82,18 @@
   }
 
   Ecommerce.ecLoaded = false
-  Ecommerce.start = function (element) {
+  Ecommerce.start = function (elements) {
     if (!window.ga) { return }
-    element = element || $('[data-analytics-ecommerce]')
-    if (element.length > 0) {
+    elements = elements || document.querySelectorAll('[data-analytics-ecommerce]')
+    if (elements.length > 0) {
       if (!Ecommerce.ecLoaded) {
         ga('require', 'ec')
         Ecommerce.ecLoaded = true
       }
-      element.each(function (index) {
+      for (var i = 0; i < elements.length; i++) {
         var ecommerce = new Ecommerce()
-        ecommerce.init($(this))
-      })
+        ecommerce.init(elements[i])
+      }
     }
   }
 
