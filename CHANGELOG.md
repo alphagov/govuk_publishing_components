@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 27.14.2
 
 * Update search component ([PR #2462](https://github.com/alphagov/govuk_publishing_components/pull/2462))
 * Fix link to Crown Copyright in footer ([PR #2475](https://github.com/alphagov/govuk_publishing_components/pull/2475))
