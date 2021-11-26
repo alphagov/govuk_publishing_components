@@ -11,6 +11,7 @@
 
   .autocomplete__option {
     @include govuk-font(19);
+    min-height: 1.3em; // this ensures a blank item has a height
   }
 
   .autocomplete__list .autocomplete__option {
