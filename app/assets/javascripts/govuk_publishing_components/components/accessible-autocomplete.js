@@ -25,11 +25,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       configOptions.onConfirm = this.onConfirm
 
       new accessibleAutocomplete.enhanceSelectElement(configOptions) // eslint-disable-line no-new, new-cap
-      // attach the onConfirm function to data attr, to call it in finder-frontend when clearing facet tags
-      $selectElem.data('onconfirm', this.onConfirm)
     }
 
-    this.onConfirm = function (label, value, removeDropDown) {
+    this.onConfirm = function (label) {
       function escapeHTML (str) {
         return new window.Option(str).innerHTML
       }
@@ -47,22 +45,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
         if (typeof value !== 'undefined') {
           var $option = $selectElem.find('option[value=\'' + value + '\']')
-          // if removeDropDown we are clearing the selection from outside the component
-          var selectState = typeof removeDropDown === 'undefined'
-          $option.prop('selected', selectState)
-          $selectElem.change()
-        }
-
-        // used to clear the autocomplete when clicking on a facet tag in finder-frontend
-        // very brittle but menu visibility is determined by autocomplete after this function is called
-        // setting autocomplete val to '' causes menu to appear, we don't want that, this solves it
-        // ideally will rewrite autocomplete to have better hooks in future
-        if (removeDropDown) {
-          $selectElem.closest('.gem-c-accessible-autocomplete').addClass('gem-c-accessible-autocomplete--hide-menu')
-          setTimeout(function () {
-            $('.autocomplete__menu').remove() // this element is recreated every time the user starts typing
-            $selectElem.closest('.gem-c-accessible-autocomplete').removeClass('gem-c-accessible-autocomplete--hide-menu')
-          }, 100)
         }
       }
     }
