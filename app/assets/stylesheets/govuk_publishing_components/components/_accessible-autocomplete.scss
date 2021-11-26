@@ -1,0 +1,31 @@
+@import url(asset-path("accessible-autocomplete/dist/accessible-autocomplete.min.css"));
+
+.gem-c-accessible-autocomplete {
+  .autocomplete__input {
+    z-index: 1;
+  }
+
+  .autocomplete__dropdown-arrow-down {
+    z-index: 0;
+  }
+
+  .autocomplete__option {
+    @include govuk-font(19);
+  }
+
+  .autocomplete__list .autocomplete__option {
+    padding: 5px 6px;
+
+    &:before {
+      position: relative;
+      top: 3px;
+      padding-top: 2px;
+    }
+  }
+}
+
+.gem-c-accessible-autocomplete--hide-menu {
+  .autocomplete__menu {
+    display: none;
+  }
+}

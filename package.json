@@ -24,6 +24,7 @@
     "extends": "stylelint-config-gds/scss"
   },
   "dependencies": {
+    "accessible-autocomplete": "git://github.com/alphagov/accessible-autocomplete.git",
     "axe-core": "^3.5.4",
     "govuk-frontend": "^3.14.0",
     "jquery": "1.12.4",
