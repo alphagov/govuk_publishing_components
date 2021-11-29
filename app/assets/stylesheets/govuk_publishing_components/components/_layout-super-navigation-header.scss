@@ -102,6 +102,7 @@ $icon-size: 20px;
 $chevron-indent-spacing: 7px;
 $black-bar-height: 50px;
 $search-width-or-height: $black-bar-height;
+$pseudo-underline-height: 3px;
 
 @mixin chevron($colour, $update: false) {
   @if ($update == true) {
@@ -134,7 +135,7 @@ $search-width-or-height: $black-bar-height;
   background: none;
   bottom: 0;
   content: " ";
-  height: 3px;
+  height: $pseudo-underline-height;
   left: govuk-spacing(3);
   position: absolute;
   right: govuk-spacing(3);
@@ -762,7 +763,7 @@ $search-width-or-height: $black-bar-height;
 
     &:hover {
       background: govuk-colour("black");
-      border-bottom: govuk-spacing(1) solid govuk-colour("mid-grey");
+      border-bottom: $pseudo-underline-height solid govuk-colour("mid-grey");
       color: govuk-colour("mid-grey");
     }
 
