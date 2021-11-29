@@ -37,6 +37,7 @@ govuk_frontend_components:
 examples:
   default:
     data:
+      heading: How do you want to sign in?
       name: "radio-group"
       items:
       - value: "government-gateway"
@@ -45,6 +46,7 @@ examples:
         text: "Use GOV.UK Verify"
   with_small_radios:
     data:
+      heading: How do you want to sign in?
       name: "radio-group"
       small: true
       items:
@@ -55,6 +57,7 @@ examples:
   with_bold:
     description: Used to provide better contrast between long labels and hint text, Note that the `:or` option [is documented as a string due to a bug](https://github.com/alphagov/govuk_publishing_components/issues/102)
     data:
+      heading: How do you want to sign in?
       name: "radio-group-bold"
       items:
       - value: "government-gateway"
@@ -68,6 +71,7 @@ examples:
   with_bottom_margin:
     description: The component accepts a number for margin bottom from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to a margin bottom of `30px` (`6`).
     data:
+      heading: How do you want to sign in?
       name: "radio-group"
       margin_bottom: 9
       items:
@@ -77,6 +81,7 @@ examples:
         text: "Use GOV.UK Verify"
   with_hint_on_form_group:
     data:
+      heading: How do you want to sign in?
       name: "radio-group-error"
       id_prefix: "hint"
       hint: "You’ll need to prove your identity using one of the following methods"
@@ -99,8 +104,8 @@ examples:
         text: "No"
   with_heading:
     description: |
-      By default, text supplied for the `legend` is wrapped inside a `h2`. 
-      
+      By default, text supplied for the `legend` is wrapped inside a `h2`.
+
       The font size of this heading can be changed using the `heading_size` option. Valid options are `s`, `m`, `l`, `xl`, defaulting to `m` if no option is passed.
     data:
       name: "radio-group-description"
@@ -116,7 +121,7 @@ examples:
   with_different_heading_level:
     description: |
       By default, text supplied for the `legend` is wrapped inside a `h2`. This can be changed using the `heading_level` option.
-        
+
       If `heading_level` is `1` and `heading_size` is not set, the text size will be `xl`.
     data:
       name: "radio-group-description"
@@ -144,7 +149,7 @@ examples:
   with_page_header_and_caption:
     description: |
       A caption can be added using the `heading_caption` option. Captions will only be displayed if text for the heading option is present.
-      
+
       The pattern is used across GOV.UK to show a high-level section that this page belongs to.
     data:
       name: "radio-group-heading"
@@ -217,6 +222,7 @@ examples:
         text: "Blue"
   with_hint_text_on_radios:
     data:
+      heading: How do you want to sign in?
       name: "radio-group-hint-text"
       items:
       - value: "government-gateway"
@@ -227,6 +233,7 @@ examples:
         text: "Use GOV.UK Verify"
   with_checked_option:
     data:
+      heading: How do you want to sign in?
       name: "radio-group-checked"
       items:
       - value: "government-gateway"
@@ -236,15 +243,17 @@ examples:
         checked: true
   with_data_attributes:
     data:
+      heading: How do you want to sign in?
       name: "radio-group-data-attributes"
       items:
-      - value: "cool-button"
-        text: "Best button in town"
-        data_attributes: { "contextual-guidance": "cool-buttons-guidance" }
-      - value: "no-data-attributes-button"
-        text: "Worst button in town"
+      - value: "government-gateway"
+        text: "Use Government Gateway"
+      - value: "govuk-verify"
+        text: "Use GOV.UK Verify"
+        data_attributes: { "contextual-guidance": "government-gateway" }
   with_custom_id_prefix:
     data:
+      heading: How do you want to sign in?
       id_prefix: 'custom'
       name: "radio-custom-id-prefix"
       items:
@@ -255,6 +264,7 @@ examples:
   with_or_divider:
     description: "See [related service manual guidance for this pattern](https://www.gov.uk/service-manual/design/writing-for-user-interfaces#ask-questions-that-users-can-understand)"
     data:
+      heading: How do you want to sign in?
       name: "radio-group-or-divider"
       items:
       - value: "government-gateway"
@@ -267,6 +277,7 @@ examples:
   extreme:
     description: 'Note that the `:or` option [is documented as a string due to a bug](https://github.com/alphagov/govuk_publishing_components/issues/102)'
     data:
+      heading: How do you want to sign in?
       id_prefix: 'extreme'
       name: "radio-custom-extreme"
       items:
@@ -289,6 +300,7 @@ examples:
         bold: true
   with_error_on_form_group:
     data:
+      heading: How do you want to sign in?
       name: "radio-group-error"
       id_prefix: "error"
       error_message: "Please select one option"
@@ -300,6 +312,7 @@ examples:
   with_error_and_hint_on_form_group:
     description: ""
     data:
+      heading: How do you want to sign in?
       name: "radio-group-error"
       id_prefix: "error"
       error_message: "Please select one option"
@@ -311,6 +324,7 @@ examples:
         text: "Use GOV.UK Verify"
   with_error_items_on_form_group:
     data:
+      heading: How do you want to sign in?
       name: "radio-group-error"
       id_prefix: "error"
       error_items:
@@ -325,6 +339,7 @@ examples:
         text: "Use GOV.UK Verify"
   conditional:
     data:
+      heading: How do you want to sign in?
       name: "radio-group-conditional"
       id_prefix: "conditional"
       items:
@@ -336,6 +351,7 @@ examples:
         conditional: "You’ll need to prove your identity using GOV.UK Verify"
   conditional_checked:
     data:
+      heading: How do you want to sign in?
       name: "radio-group-conditional"
       id_prefix: "conditional-checked"
       items:
@@ -348,6 +364,7 @@ examples:
         conditional: "You’ll need to prove your identity using GOV.UK Verify"
   tracking-url:
     data:
+      heading: How do you want to sign in?
       name: "radio-group-tracking-url"
       id_prefix: "tracking-url"
       items:
@@ -360,15 +377,17 @@ examples:
   inline:
     description: "When providing few options, radio buttons should be inline rather than stacked. We recommend this for two small options like yes and no, on and off"
     data:
+      heading: Have you changed your name?
       name: "inline-radios"
       inline: true
       items:
-        - value: "on"
-          text: "On"
-        - value: "off"
-          text: "Off"
+        - value: "yes"
+          text: "Yes"
+        - value: "no"
+          text: "No"
   with_custom_id_attribute:
     data:
+      heading: How do you want to sign in?
       name: "radio-group"
       id: "radio-group"
       items:
