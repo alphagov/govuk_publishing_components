@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update search toggle / link hover state underline thickness ([PR #2484](https://github.com/alphagov/govuk_publishing_components/pull/2484))
+
 ## 27.14.2
 
 * Update Start button so info text is associated ([PR #2476](https://github.com/alphagov/govuk_publishing_components/pull/2476))
