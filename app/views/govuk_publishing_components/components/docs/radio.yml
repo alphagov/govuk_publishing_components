@@ -54,8 +54,8 @@ examples:
         text: "Use Government Gateway"
       - value: "govuk-verify"
         text: "Use GOV.UK Verify"
-  with_bold:
-    description: Used to provide better contrast between long labels and hint text, Note that the `:or` option [is documented as a string due to a bug](https://github.com/alphagov/govuk_publishing_components/issues/102)
+  with_bold_labels:
+    description: Used to provide better contrast between long labels and hint text.
     data:
       heading: How do you want to sign in?
       name: "radio-group-bold"
@@ -68,7 +68,7 @@ examples:
         text: "Use GOV.UK Verify"
         hint_text: "You'll have an account if you've already proved your identity with a certified company, such as the Post Office."
         bold: true
-  with_bottom_margin:
+  with_custom_bottom_margin:
     description: The component accepts a number for margin bottom from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to a margin bottom of `30px` (`6`).
     data:
       heading: How do you want to sign in?
@@ -102,7 +102,7 @@ examples:
         text: "Yes"
       - value: "no"
         text: "No"
-  with_heading:
+  with_custom_heading_size:
     description: |
       By default, text supplied for the `legend` is wrapped inside a `h2`.
 
@@ -118,7 +118,7 @@ examples:
         text: "Green"
       - value: "blue"
         text: "Blue"
-  with_different_heading_level:
+  with_custom_heading_level:
     description: |
       By default, text supplied for the `legend` is wrapped inside a `h2`. This can be changed using the `heading_level` option.
 
@@ -146,7 +146,7 @@ examples:
         text: "Green"
       - value: "blue"
         text: "Blue"
-  with_page_header_and_caption:
+  with_page_heading_and_caption:
     description: |
       A caption can be added using the `heading_caption` option. Captions will only be displayed if text for the heading option is present.
 
@@ -172,7 +172,7 @@ examples:
         text: "Yes"
       - value: "no"
         text: "No"
-  with_description_only:
+  with_description:
     data:
       name: "radio-group-description"
       heading: "What is your favourite colour?"
