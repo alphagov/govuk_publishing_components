@@ -134,18 +134,6 @@ examples:
         text: "Green"
       - value: "blue"
         text: "Blue"
-  with_heading_and_hint:
-    data:
-      name: "radio-group-heading"
-      heading: "What is your favourite colour?"
-      hint: "If your favourite is not below, pick the colour closest to it."
-      items:
-      - value: "red"
-        text: "Red"
-      - value: "green"
-        text: "Green"
-      - value: "blue"
-        text: "Blue"
   with_page_heading_and_caption:
     description: |
       A caption can be added using the `heading_caption` option. Captions will only be displayed if text for the heading option is present.
