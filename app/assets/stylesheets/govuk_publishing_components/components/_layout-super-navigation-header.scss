@@ -136,9 +136,9 @@ $pseudo-underline-height: 3px;
   bottom: 0;
   content: "";
   height: $pseudo-underline-height;
-  left: govuk-spacing(3);
+  left: govuk-spacing(5);
   position: absolute;
-  right: govuk-spacing(3);
+  right: govuk-spacing(6);
   top: auto;
 }
 
@@ -442,7 +442,7 @@ $pseudo-underline-height: 3px;
         font-size: govuk-px-to-rem(16px);
       }
       height: $black-bar-height;
-      padding: govuk-spacing(3);
+      padding: govuk-spacing(3) govuk-spacing(6) govuk-spacing(3) govuk-spacing(5);
       position: relative;
       text-decoration: none;
 
