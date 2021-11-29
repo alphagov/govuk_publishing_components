@@ -1,61 +1,65 @@
 /* eslint-env jquery */
 /* global accessibleAutocomplete */
 // = require accessible-autocomplete/dist/accessible-autocomplete.min.js
-
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
-  'use strict'
+  function AccessibleAutocomplete ($module) {
+    this.$module = $module
+    this.selectElem = this.$module.querySelector('select')
+  }
 
-  Modules.AccessibleAutocomplete = function () {
-    var $selectElem
-
-    this.start = function ($element) {
-      $selectElem = $element.find('select')
-
-      var configOptions = {
-        selectElement: document.getElementById($selectElem.attr('id')),
-        showAllValues: true,
-        confirmOnBlur: true,
-        preserveNullOptions: true, // https://github.com/alphagov/accessible-autocomplete#null-options
-        defaultValue: ''
-      }
-
-      configOptions.onConfirm = this.onConfirm
-
-      new accessibleAutocomplete.enhanceSelectElement(configOptions) // eslint-disable-line no-new, new-cap
+  AccessibleAutocomplete.prototype.init = function () {
+    var configOptions = {
+      selectElement: document.getElementById(this.selectElem.getAttribute('id')),
+      autoselect: true,
+      confirmOnBlur: true,
+      preserveNullOptions: true, // https://github.com/alphagov/accessible-autocomplete#null-options
+      defaultValue: '',
+      govukModule: this // attach this instance of the module so we can access it in onConfirm
     }
 
-    this.onConfirm = function (label) {
-      function escapeHTML (str) {
-        return new window.Option(str).innerHTML
-      }
+    configOptions.onConfirm = this.onConfirm
+    new accessibleAutocomplete.enhanceSelectElement(configOptions) // eslint-disable-line no-new, new-cap
+  }
 
-      if ($selectElem.data('track-category') !== undefined && $selectElem.data('track-action') !== undefined) {
-        track($selectElem.data('track-category'), $selectElem.data('track-action'), label, $selectElem.data('track-options'))
-      }
-      // This is to compensate for the fact that the accessible-autocomplete library will not
-      // update the hidden select if the onConfirm function is supplied
-      // https://github.com/alphagov/accessible-autocomplete/issues/322
-      if (typeof label !== 'undefined') {
-        if (typeof value === 'undefined') {
-          value = $selectElem.children('option').filter(function () { return $(this).html() === escapeHTML(label) }).val()
-        }
-
-        if (typeof value !== 'undefined') {
-          var $option = $selectElem.find('option[value=\'' + value + '\']')
-        }
-      }
+  // custom onConfirm function because will likely need future expansion e.g. tracking
+  // the accessible-autocomplete doesn't update the hidden select if an onConfirm function is supplied
+  // https://github.com/alphagov/accessible-autocomplete/issues/322
+  // also it doesn't update either way if the user chooses something then deletes it
+  AccessibleAutocomplete.prototype.onConfirm = function () {
+    if (!this.govukModule.autoCompleteInput) {
+      this.govukModule.autoCompleteInput = this.govukModule.$module.querySelector('.autocomplete__input')
     }
+    var label = this.govukModule.autoCompleteInput.value
 
-    function track (category, action, label, options) {
-      if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
-        options = options || {}
-        options.label = label
+    if (typeof label !== 'undefined') {
+      var options = this.selectElement.querySelectorAll('option')
 
-        window.GOVUK.analytics.trackEvent(category, action, options)
+      for (var i = 0; i < options.length; i++) {
+        var text = options[i].textContent
+        if (text === label) {
+          this.govukModule.setSelectOption(options[i])
+          break
+        }
       }
+    } else {
+      this.govukModule.clearSelect()
     }
   }
+
+  AccessibleAutocomplete.prototype.setSelectOption = function (option) {
+    var value = option.value
+    this.selectElem.value = value
+  }
+
+  AccessibleAutocomplete.prototype.clearSelect = function () {
+    var empty = this.selectElem.querySelector('option[value=""]')
+    if (empty) {
+      empty.setAttribute('selected', true)
+    }
+  }
+
+  Modules.AccessibleAutocomplete = AccessibleAutocomplete
 })(window.GOVUK.Modules)

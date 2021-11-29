@@ -6,13 +6,13 @@ describe('An accessible autocomplete component', function () {
 
   function loadAutocompleteComponent () {
     window.setFixtures(html)
-    var autocomplete = new GOVUK.Modules.AccessibleAutocomplete()
-    autocomplete.start($('.gem-c-accessible-autocomplete'))
+    var autocomplete = new GOVUK.Modules.AccessibleAutocomplete($('.gem-c-accessible-autocomplete')[0])
+    autocomplete.init()
   }
 
   var html =
-    '<div class="gem-c-accessible-autocomplete" data-module="accessible-autocomplete">' +
-      '<select id="test" class="govuk-select" data-track-category="category" data-track-action="action">' +
+    '<div class="gem-c-accessible-autocomplete">' +
+      '<select id="test" class="govuk-select">' +
         '<option value=""></option>' +
         '<option value="mo">Moose</option>' +
         '<option value="de">Deer</option>' +
@@ -69,58 +69,6 @@ describe('An accessible autocomplete component', function () {
 
     it('the input is cleared', function () {
       expect($('select').val()).toEqual('')
-    })
-  })
-
-  describe('triggers a Google Analytics event', function () {
-    beforeEach(function (done) {
-      GOVUK.analytics = {
-        trackEvent: function () {
-        }
-      }
-      spyOn(GOVUK.analytics, 'trackEvent')
-
-      loadAutocompleteComponent()
-
-      $('.autocomplete__input').val('Moose').click().focus().trigger(
-        $.Event('keypress', { which: 13, key: 13, keyCode: 13 })
-      ).blur()
-
-      testAsyncWithDeferredReturnValue().done(function () {
-        done()
-      })
-    })
-
-    it('when a valid option is chosen', function () {
-      expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('category', 'action', Object({ label: 'Moose' }))
-    })
-  })
-
-  describe('triggers a Google Analytics event', function () {
-    beforeEach(function (done) {
-      GOVUK.analytics = {
-        trackEvent: function () {
-        }
-      }
-      spyOn(GOVUK.analytics, 'trackEvent')
-
-      loadAutocompleteComponent()
-
-      $('.autocomplete__input').val('Deer').click().focus().trigger(
-        $.Event('keypress', { which: 13, key: 13, keyCode: 13 })
-      ).blur()
-
-      $('.autocomplete__input').val('').click().focus().trigger(
-        $.Event('keypress', { which: 13, key: 13, keyCode: 13 })
-      ).blur()
-
-      testAsyncWithDeferredReturnValue().done(function () {
-        done()
-      })
-    })
-
-    it('when an input is cleared', function () {
-      expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('category', 'action', Object({ label: '' }))
     })
   })
 })

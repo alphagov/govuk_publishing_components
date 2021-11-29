@@ -27,16 +27,3 @@ examples:
         text: 'Countries'
       options: [['', ''], ['France', 'fr'], ['Germany', 'de'], ['Sweden', 'se'], ['Switzerland', 'ch'], ['United Kingdom', 'gb'], ['United States', 'us']]
       selected_option: ['United Kingdom', 'gb']
-  with_tracking_enabled:
-    description: |
-     This example shows tracking enabled on an autocomplete. Tracking will be enabled automatically when `track_category` and `track_action` are specified in `data_attributes`.
-    data:
-      id: 'tracking-enabled-autocomplete'
-      label:
-        text: 'Countries'
-      options: [['', ''], ['France', 'fr'], ['Germany', 'de'], ['Sweden', 'se'], ['Switzerland', 'ch'], ['United Kingdom', 'gb'], ['United States', 'us']]
-      data_attributes:
-        track_category: 'chosen_category'
-        track_action: 'chosen_action'
-        track_option:
-          custom_dimension: 'your_custom_dimension'
