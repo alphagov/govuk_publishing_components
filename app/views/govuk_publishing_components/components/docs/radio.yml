@@ -352,7 +352,7 @@ examples:
   conditional_checked:
     data:
       heading: How do you want to sign in?
-      name: "radio-group-conditional"
+      name: "radio-group-conditional-checked"
       id_prefix: "conditional-checked"
       items:
       - value: "government-gateway"
