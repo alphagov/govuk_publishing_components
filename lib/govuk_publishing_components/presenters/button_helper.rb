@@ -11,6 +11,7 @@ module GovukPublishingComponents
                   :rel,
                   :data_attributes,
                   :margin_bottom,
+                  :id,
                   :inline_layout,
                   :target,
                   :type,
@@ -49,16 +50,39 @@ module GovukPublishingComponents
         @value = local_assigns[:value]
         @classes = local_assigns[:classes]
         @aria_label = local_assigns[:aria_label]
+        @info_text_id = "info-text-id-#{SecureRandom.hex(4)}"
+        @button_id = "button-id-#{SecureRandom.hex(4)}"
       end
 
       def link?
         href.present?
       end
 
+      def info_text?
+        info_text.present?
+      end
+
+      def aria_labelledby
+        if info_text?
+          text = "#{@button_id} "
+          text << @info_text_id
+          text
+        end
+      end
+
+      def info_text_options
+        options = { class: info_text_classes }
+        options[:aria] = { hidden: true } if info_text?
+        options[:id] = @info_text_id if info_text?
+        options
+      end
+
       def html_options
         options = { class: css_classes }
         options[:role] = "button" if link?
         options[:type] = button_type
+        options[:id] = @button_id if info_text?
+        options[:aria] = { labelledby: aria_labelledby }
         options[:rel] = rel if rel
         options[:data] = data_attributes if data_attributes
         options[:title] = title if title
