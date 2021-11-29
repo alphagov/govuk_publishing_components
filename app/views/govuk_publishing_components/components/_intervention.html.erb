@@ -32,8 +32,7 @@
 
     suggestion_tag_options.merge!({ target: target, rel: rel })
 
-    accessible_text = I18n.t("components.intervention.accessible_link_text_suffix")
-    suggestion_link_text << accessible_text unless suggestion_link_text.include?(accessible_text)
+    suggestion_link_text = intervention_helper.accessible_text
   end
 %>
 <% if suggestion_text || (suggestion_link_text && suggestion_link_url) %>

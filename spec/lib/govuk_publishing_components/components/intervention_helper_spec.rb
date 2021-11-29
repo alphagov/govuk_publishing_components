@@ -40,6 +40,21 @@ RSpec.describe GovukPublishingComponents::Presenters::InterventionHelper do
         expect(security_attrs).to eql("noopener noreferrer external")
       end
     end
+
+    describe ".accessible_link_text" do
+      it "appends text to make new tab link accessible" do
+        intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new({ suggestion_link_text: "Text", suggestion_link_url: "/path-to-page" })
+        link_text = intervention_helper.accessible_text
+
+        expect(link_text).to eq("Text (opens in a new tab)")
+      end
+
+      it "doesn't append text if link text is already accessible" do
+        intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new({ suggestion_link_text: "Travel abroad (opens in a new tab) guidance", suggestion_link_url: "/path-to-page" })
+        link_text = intervention_helper.accessible_text
+
+        expect(link_text).to eq("Travel abroad (opens in a new tab) guidance")
+      end
     end
   end
 end
