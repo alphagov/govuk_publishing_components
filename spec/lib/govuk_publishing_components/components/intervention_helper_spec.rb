@@ -25,11 +25,13 @@ RSpec.describe GovukPublishingComponents::Presenters::InterventionHelper do
       end
     end
 
-    it "returns the default query string if the one passed is empty" do
-      existing_query_string = ""
-      intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new({ query_string: existing_query_string })
-      new_query_string = intervention_helper.dismiss_link
-      expect(new_query_string).to eql("?hide-intervention=true")
+    describe ".security_attr" do
+      it "returns default security attributes for new tab links" do
+        intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new({ suggestion_link_text: "Text", suggestion_link_url: "/path-to-page" })
+        security_attrs = intervention_helper.security_attr
+
+        expect(security_attrs).to eql("noopener noreferrer")
+      end
     end
   end
 end
