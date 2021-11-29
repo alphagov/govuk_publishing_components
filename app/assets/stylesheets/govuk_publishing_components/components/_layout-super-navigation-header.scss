@@ -112,7 +112,7 @@ $pseudo-underline-height: 3px;
     @include prefixed-transform($rotate: 45deg, $translateY: -35%);
     border-bottom: 2px solid $colour;
     border-right: 2px solid $colour;
-    content: " ";
+    content: "";
     display: inline-block;
     height: 8px;
     margin: 0 8px 0 2px;
@@ -124,7 +124,7 @@ $pseudo-underline-height: 3px;
 @mixin make-selectable-area-bigger {
   background: none;
   bottom: 0;
-  content: " ";
+  content: "";
   left: 0;
   position: absolute;
   right: 0;
@@ -134,7 +134,7 @@ $pseudo-underline-height: 3px;
 @mixin pseudo-underline {
   background: none;
   bottom: 0;
-  content: " ";
+  content: "";
   height: $pseudo-underline-height;
   left: govuk-spacing(3);
   position: absolute;

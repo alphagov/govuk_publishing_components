@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Update search toggle / link hover state underline thickness ([PR #2484](https://github.com/alphagov/govuk_publishing_components/pull/2484))
+* Remove whitespace from pseudo-element content ([PR #2482](https://github.com/alphagov/govuk_publishing_components/pull/2482))
 
 ## 27.14.2
 
