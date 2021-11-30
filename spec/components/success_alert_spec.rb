@@ -23,4 +23,10 @@ describe "Success Alert", type: :view do
     assert_select ".gem-c-success-alert", aria: { labelledby: "Bar" }
     assert_select ".govuk-notification-banner__title", id: "Bar"
   end
+
+  it "applies a custom margin-bottom class when margin_bottom is specified" do
+    render_component(message: "Foo", margin_bottom: 5)
+
+    assert_select '.gem-c-success-alert.govuk-\!-margin-bottom-5'
+  end
 end
