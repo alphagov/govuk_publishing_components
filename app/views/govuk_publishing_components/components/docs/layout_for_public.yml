@@ -69,7 +69,7 @@ examples:
         <h2 class="govuk-heading-l">This is a title</h2>
         <p class="govuk-body">This is some body text with <a href="https://example.com">a link</a>.
   with_current_account_navigation:
-    description: "The account layout renders with an account-specific nav to help users navigate different areas of their account. This flag is here to allow control over which option in the nav is highlighted as `current`. Valid options are currently `your-account`, `manage`, and `security`."
+    description: "The account layout renders with an account-specific nav to help users navigate different areas of their account. This flag is here to allow control over which option in the nav is highlighted as `current`. Valid options are currently `your-account` and `manage`."
     data:
       show_account_layout: true
       account_nav_location: "manage"
