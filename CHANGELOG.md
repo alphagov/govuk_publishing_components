@@ -7,15 +7,15 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 27.15.0
 
+* Update Start button so info text is associated ([PR #2476](https://github.com/alphagov/govuk_publishing_components/pull/2476))
 * Remove whitespace from pseudo-element content ([PR #2482](https://github.com/alphagov/govuk_publishing_components/pull/2482))
 * Update navigation header toggle button spacing ([PR #2483](https://github.com/alphagov/govuk_publishing_components/pull/2483))
 * Update search toggle / link hover state underline thickness ([PR #2484](https://github.com/alphagov/govuk_publishing_components/pull/2484))
 
 ## 27.14.2
 
-* Update Start button so info text is associated ([PR #2476](https://github.com/alphagov/govuk_publishing_components/pull/2476))
 * Update search component ([PR #2462](https://github.com/alphagov/govuk_publishing_components/pull/2462))
 * Fix link to Crown Copyright in footer ([PR #2475](https://github.com/alphagov/govuk_publishing_components/pull/2475))
 * Fix single page notification button data attributes for tracking ([PR #2471](https://github.com/alphagov/govuk_publishing_components/pull/2471))
