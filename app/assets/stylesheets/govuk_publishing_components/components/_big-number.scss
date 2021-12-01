@@ -1,13 +1,25 @@
 .gem-c-big-number {
   margin-bottom: govuk-spacing(3);
+  font-family: $govuk-font-family;
 }
 
 .gem-c-big-number__value {
-  @include govuk-font($size: 80, $weight: bold);
+  font-size: 80px;
+  font-weight: 700;
+  line-height: 1;
+
+  @if $govuk-typography-use-rem {
+    font-size: govuk-px-to-rem(80px);
+  }
 }
 
 .gem-c-big-number__label {
-  @include govuk-font($size: 16, $weight: bold, $line-height: 2);
+  font-size: 16px;
+  font-weight: 700;
+
+  @if $govuk-typography-use-rem {
+    font-size: govuk-px-to-rem(16px);
+  }
 
   // This pseudo element is to bypass an issue with NVDA where block level elements are dictated separately.
   // What's happening here is that the label and the number technically have an inline relationship but appear to have a block relationship thanks to this element
