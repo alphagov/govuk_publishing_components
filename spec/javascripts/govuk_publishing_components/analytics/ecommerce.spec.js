@@ -44,7 +44,7 @@ describe('Ecommerce reporter for results pages', function () {
       '</div>'
     )
 
-    ecommerce.init(element)
+    ecommerce.init(element[0])
     expect(window.ga).not.toHaveBeenCalled()
   })
 
@@ -55,7 +55,7 @@ describe('Ecommerce reporter for results pages', function () {
       '</div>'
     )
 
-    ecommerce.init(element)
+    ecommerce.init(element[0])
 
     expect(window.ga).toHaveBeenCalledWith('ec:addImpression', {
       id: 'AAAA-1111',
@@ -73,7 +73,7 @@ describe('Ecommerce reporter for results pages', function () {
       '</div>'
     )
 
-    ecommerce.init(element)
+    ecommerce.init(element[0])
 
     expect(window.ga).toHaveBeenCalledWith('ec:addImpression', {
       id: 'AAAA-1111',
@@ -91,7 +91,7 @@ describe('Ecommerce reporter for results pages', function () {
       '</div>'
     )
 
-    ecommerce.init(element)
+    ecommerce.init(element[0])
 
     expect(window.ga).toHaveBeenCalledWith('ec:addImpression', {
       id: 'AAAA-1111',
@@ -110,7 +110,7 @@ describe('Ecommerce reporter for results pages', function () {
       '</div>'
     )
 
-    ecommerce.init(element)
+    ecommerce.init(element[0])
 
     expect(window.ga).toHaveBeenCalledWith('ec:addImpression', {
       name: '/path/to/page',
@@ -158,7 +158,7 @@ describe('Ecommerce reporter for results pages', function () {
       '</div>'
     )
 
-    ecommerce.init(element)
+    ecommerce.init(element[0])
 
     expect(window.ga).toHaveBeenCalledWith('ec:addImpression', {
       name: '/path/to/page',
@@ -175,7 +175,7 @@ describe('Ecommerce reporter for results pages', function () {
       '</div>'
     )
 
-    ecommerce.init(element)
+    ecommerce.init(element[0])
 
     expect(window.ga).toHaveBeenCalledWith('ec:addImpression', {
       id: 'AAAA-1111',
@@ -193,7 +193,7 @@ describe('Ecommerce reporter for results pages', function () {
       '</div>'
     )
 
-    ecommerce.init(element)
+    ecommerce.init(element[0])
     element.find('[data-ecommerce-row]').click()
 
     expect(window.ga).toHaveBeenCalledWith('ec:setAction', 'click', { list: 'Non-default title' })
@@ -214,7 +214,7 @@ describe('Ecommerce reporter for results pages', function () {
       '</div>'
     )
 
-    ecommerce.init(element)
+    ecommerce.init(element[0])
 
     expect(window.ga).toHaveBeenCalledWith('ec:addImpression', {
       id: 'AAAA-1111',
@@ -239,7 +239,7 @@ describe('Ecommerce reporter for results pages', function () {
       '</div>'
     )
 
-    ecommerce.init(element)
+    ecommerce.init(element[0])
 
     expect(window.ga).toHaveBeenCalledWith('ec:addImpression', {
       id: 'AAAA-1111',
@@ -259,7 +259,7 @@ describe('Ecommerce reporter for results pages', function () {
       '</div>'
     )
 
-    ecommerce.init(element)
+    ecommerce.init(element[0])
 
     expect(window.ga).toHaveBeenCalledWith('ec:addImpression', {
       id: 'AAAA-1111',
@@ -281,7 +281,7 @@ describe('Ecommerce reporter for results pages', function () {
       '</div>'
     )
 
-    ecommerce.init(element)
+    ecommerce.init(element[0])
 
     expect(window.ga).toHaveBeenCalledWith('ec:addImpression', {
       id: 'AAAA-1111',
@@ -299,8 +299,8 @@ describe('Ecommerce reporter for results pages', function () {
       '</div>'
     )
 
-    ecommerce.init(element)
-    element.find('[data-ecommerce-row]').click()
+    ecommerce.init(element[0])
+    element.find('[data-ecommerce-row]')[0].click()
 
     expect(window.ga).toHaveBeenCalledWith('ec:addProduct', {
       id: 'AAAA-1111',
@@ -343,8 +343,8 @@ describe('Ecommerce reporter for results pages', function () {
       '</div>'
     )
 
-    ecommerce.init(element)
-    element.find('[data-ecommerce-row]').click()
+    ecommerce.init(element[0])
+    element.find('[data-ecommerce-row]')[0].click()
 
     expect(window.ga).toHaveBeenCalledWith('ec:addProduct', {
       id: 'AAAA-1111',
