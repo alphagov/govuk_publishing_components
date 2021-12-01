@@ -38,6 +38,17 @@ examples:
       suggestion_link_text: "You can now apply for a permit online."
       suggestion_link_url: "/permit"
 
+  open_suggestion_link_in_new_tab:
+    description: |
+      When sending users to another online task, you don't want to completely hijack
+      their original flow on GOV.UK. Adding the option to open links in a new tab helps to address this.
+      Link text should tell the user that the link opens in a new tab.
+      Note: "(opens in a new tab)" is added to link text if the phrase isn't included.
+    data:
+      suggestion_link_text: "You can now apply for a permit online"
+      suggestion_link_url: "www.google.com/permit"
+      new_tab: true
+
   with_data_attributes:
     description: |
       This example shows the use of `suggestion_data_attributes` and

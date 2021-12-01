@@ -3,6 +3,7 @@
   suggestion_link_text ||= false
   suggestion_link_url ||= false
   suggestion_text ||= nil
+  new_tab ||= false
 
   data_attributes ||= {}
   data_attributes[:module] = 'intervention'
@@ -13,17 +14,33 @@
   aria_attributes[:label] = 'Intervention'
 
   local_assigns[:query_string] ||= request.query_string
+  local_assigns[:suggestion_link_text] = suggestion_link_text
+  local_assigns[:suggestion_link_url] = suggestion_link_url
 
   intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new(local_assigns)
   dismiss_href = intervention_helper.dismiss_link
+
+  suggestion_tag_options = {
+    class: "govuk-link gem-c-intervention__suggestion-link",
+    href: suggestion_link_url,
+    data: suggestion_data_attributes,
+  }
+
+  if new_tab && (suggestion_link_text && suggestion_link_url)
+    target = "_blank"
+    rel = intervention_helper.security_attr
+
+    suggestion_tag_options.merge!({ target: target, rel: rel })
+
+    suggestion_link_text = intervention_helper.accessible_text
+  end
 %>
-<% if suggestion_text or (suggestion_link_text and suggestion_link_text) %>
+<% if suggestion_text || (suggestion_link_text && suggestion_link_url) %>
   <%= tag.section class: "gem-c-intervention", role: "region", aria: aria_attributes, data: data_attributes do %>
     <p class="govuk-body">
       <%= tag.span suggestion_text, class: "gem-c-intervention__textwrapper" if suggestion_text %>
-      <% if suggestion_link_text and suggestion_link_url %>
-        <%= tag.a suggestion_link_text, class: "govuk-link gem-c-intervention__suggestion-link", href: suggestion_link_url, data: suggestion_data_attributes %>
-
+      <% if suggestion_link_text && suggestion_link_url %>
+        <%= tag.a suggestion_link_text, suggestion_tag_options %>
       <% end %>
     </p>
 

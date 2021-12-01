@@ -63,4 +63,65 @@ describe "Intervention", type: :view do
   it "doesn't render anything if no parameter is passed" do
     assert_empty render_component({})
   end
+
+  describe "new tab" do
+    it "renders with target=_'blank' with new_tab option" do
+      render_component(
+        suggestion_link_text: "Travel abroad",
+        suggestion_link_url: "/travel-abroad",
+        new_tab: true,
+      )
+
+      assert_select "a[target='_blank']"
+    end
+
+    it "renders with security attributes" do
+      render_component(
+        suggestion_link_text: "Travel abroad",
+        suggestion_link_url: "/travel-abroad",
+        new_tab: true,
+      )
+
+      assert_select "a[rel='noopener noreferrer']"
+    end
+
+    it "renders with security attributes for external links" do
+      render_component(
+        suggestion_link_text: "Travel abroad",
+        suggestion_link_url: "https://https://www.nationalarchives.gov.uk/",
+        new_tab: true,
+      )
+
+      assert_select "a[rel='noopener noreferrer external']"
+    end
+
+    it "renders no target attribute without the new_tab option" do
+      render_component(
+        suggestion_link_text: "Travel abroad",
+        suggestion_link_url: "/travel-abroad",
+      )
+
+      assert_select "a[target='_blank']", false
+    end
+
+    it "appends accesible link text" do
+      render_component(
+        suggestion_link_text: "Travel abroad",
+        suggestion_link_url: "/travel-abroad",
+        new_tab: true,
+      )
+
+      assert_select ".gem-c-intervention", text: "Travel abroad (opens in a new tab)"
+    end
+
+    it "doesn't append accessible link text if link text is already included" do
+      render_component(
+        suggestion_link_text: "Travel abroad (opens in a new tab) guidance",
+        suggestion_link_url: "/travel-abroad",
+        new_tab: true,
+      )
+
+      assert_select ".gem-c-intervention", text: "Travel abroad (opens in a new tab) guidance"
+    end
+  end
 end
