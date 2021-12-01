@@ -1,204 +1,164 @@
----
 zh-hk:
-  common:
-    translations:
   components:
-    accordion:
-      hide:
-      hide_all:
-      show:
-      show_all:
-      this_section_visually_hidden:
-    article_schema:
-      scoped_search_description:
     attachment:
-      opendocument_html:
-      order_a_copy:
       page:
-        one:
-        other:
-      reference:
-      request_format_cta:
-      request_format_details_html:
-      request_format_text:
+        one: 1 頁
+        other: "%{count} 頁"
+      opendocument_html: 此文檔為 <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
+        target=%{target} class='govuk-link'>OpenDocument</a> 格式
+      order_a_copy: 索取副本
+      reference: 'Ref: %{reference}'
+      request_format_cta: 索取可讀取之格式。
+      request_format_details_html: 如您使用輔助技術（例如螢幕閱讀器），並需要本文件之無障礙格式版本，請寄電子郵件至 <a href='mailto:%{alternative_format_contact_email}'
+        target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>。請告知我們您需要的格式。這將在您說明需要使用何種輔助技術時有助於我們。
+      request_format_text: 此文檔或許不適合輔助技術使用者。
+    accordion:
+      hide: 隱藏
+      hide_all: 隱藏所有部份
+      show: 顯示
+      show_all: 顯示所有部份
+      this_section_visually_hidden: 此部份
+    article_schema:
+      scoped_search_description: 在 %{title} 搜尋
     back_link:
-      back:
+      back: 返回
     character_count:
-      body:
+      body: 您最多可輸入 %{number} %{type}
       type:
-        characters:
-        words:
+        characters: 字元
+        words: 字彙
     checkboxes:
-      or:
+      or: 或
     contents_list:
-      contents:
+      contents: 內容
     contextual_sidebar:
-      pretitle:
+      pretitle: 一部份
     cookie_banner:
       buttons:
-        accept_cookies:
-        reject_cookies:
-      confirmation_message:
-      confirmation_message_link:
-      hide:
+        accept_cookies: 接受額外 cookies
+        reject_cookies: 拒絕額外 cookies
+      confirmation_message: 您可隨時 %{link} 。
+      confirmation_message_link: 更改您的 cookie 設定
+      hide: 隱藏此一訊息
       text:
-      title:
-    devolved_nations:
-      applies_to:
-      connectors:
-        last_word:
-        two_words:
-      england:
-      northern_ireland:
-      scotland:
-      wales:
+      - 我們使用部份基本 cookies 讓此一網站運作。
+      - 我們希望設定更多 cookies 了解您使用 GOV.UK 的方式，請記下您的設定並改善政府服務。
+      - 我們亦使用其他網站設定之 cookies 協助我們提供來自他們的服務的內容。
+      title: 在 GOV.UK 的 Cookies
     feedback:
-      close:
-      dont_include_personal_info:
-      email_address:
-      help_us_improve_govuk:
-      is_not_useful:
-      is_this_page_useful:
-      is_useful:
-      maybe:
-      more_about_visit:
-      'no':
-      send:
-      send_me_survey:
-      something_wrong:
-      thank_you_for_feedback:
-      what_doing:
-      what_wrong:
-      'yes':
+      close: 關閉
+      dont_include_personal_info: 切勿加入諸如您的國民保險編號或信用卡詳情等個人或財務資訊。
+      email_address: 電子郵件地址
+      help_us_improve_govuk: 協助我們改善 GOV.UK
+      is_not_useful: 這一頁面無用處
+      is_this_page_useful: 這一頁面是否有用？
+      is_useful: 這一頁面有用處
+      maybe: 有可能
+      more_about_visit: 為協助我們改善 GOV.UK，我們想要了解您今日訪問網站的情況。我們將向您寄出轉往回饋意見表格的連結。這將僅耗時 2
+        分鐘時間填寫。請不用擔心，我們不會向您寄出垃圾郵件或向任何其他人透露您的電子郵件地址。
+      'no': 否
+      send: 寄出
+      send_me_survey: 請給我寄出調查問卷
+      something_wrong: 報告本頁面的問題
+      thank_you_for_feedback: 感謝您的回饋意見
+      what_doing: 您剛才在做什麼？
+      what_wrong: 出現什麼錯誤？
+      'yes': 是
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
+      consultations: 諮詢
+      departments: 部門
+      get-involved: 參與其中
+      how-government-works: 政府如何運作
+      news_and_communications: 新聞及通訊
+      statistics: 統計數據
+      worldwide: 全球範圍
     layout_footer:
-      copyright_html:
-      licence_html:
-      support_links:
-    layout_for_public:
-      account_layout:
-        feedback:
-          banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
-        navigation:
-          destroy_user_session:
-          menu_bar:
-            account:
-              link_text:
-            manage:
-              link_text:
-            security:
-              link_text:
-          user_root_path:
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
+        Crown 版權所有</a>
+      licence_html: 除另有說明者外，所有內容均可在 <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+        rel="license">Open Government Licence v3.0</a>獲取。
+      support_links: 支援連結
     layout_header:
-      hide_button:
-      menu:
-      search_button:
-      show_button:
-      top_level:
-    layout_super_navigation_header:
-      logo_link_title:
-      logo_text:
-      menu_toggle_label:
-        hide:
-        show:
-      navigation_links:
-      navigation_menu_heading:
-      navigation_search_heading:
-      navigation_search_subheading:
-      popular_links:
-      popular_links_heading:
-      search_text:
+      hide_button: 隱藏搜尋項
+      menu: 選單
+      search_button: 搜尋 GOV.UK
+      show_button: 顯示搜尋項
+      top_level: 最高級別
     metadata:
-      from:
-      history:
-      last_updated:
-      part_of:
-      published:
-      see_all_updates:
-      toggle_less:
-      toggle_more:
+      from: 來自
+      history: 過往記錄
+      last_updated: 最近更新
+      part_of: 部份
+      published: 已發佈
+      see_all_updates: 查閱所有更新項
+      toggle_less: 顯示更少內容
+      toggle_more: "+ %{number} more"
     modal_dialogue:
-      close_modal:
-    notice:
-      banner_title:
+      close_modal: 關閉互動視窗對話
     organisation_schema:
-      all_content_search_description:
+      all_content_search_description: 從 %{organisation} 獲得更多內容
     previous_and_next_navigation:
-      pagination:
+      pagination: 分頁
     print_link:
-      text:
+      text: 列印本頁面
     radio:
-      or:
+      or: 或
     related_footer_navigation:
-      collections:
-      policies:
-      statistical_data_sets:
-      topical_events:
+      collections: 收集
+      policies: 政策
+      statistical_data_sets: 統計資料組
+      topical_events: 專題活動
     related_navigation:
-      collections:
-      external_links:
-      policies:
-      publishers:
-      related_contacts:
-      related_content:
-      related_external_links:
-      related_guides:
-      statistical_data_sets:
-      topical_events:
-      topics:
+      collections: 系列
+      external_links: 網上其他地方
+      policies: 政策
+      publishers: 發佈者
+      related_contacts: 其他聯絡人
+      related_content: 相關內容
+      related_external_links: 網上其他地方
+      related_guides: 詳細指引
+      statistical_data_sets: 統計資料組
+      topical_events: 專題活動
+      topics: 了解專題
       transition:
-        link_path:
-        link_text:
-        title:
-      world_locations:
+        hub_page_link_path: "/transition-check/questions"
+        hub_page_link_text: 獲得一份個人化行動列表
+        hub_page_title: 英國脫歐核查
+        link_path: "/brexit"
+        link_text: 查看您需要做的事
+        title: 英國脫歐
+      world_locations: 全世界之地點
     search_box:
-      input_title:
-      label:
-      search_button:
+      input_title: 搜尋
+      label: 搜尋 GOV.UK
+      search_button: 搜尋
     show_password:
-      announce_hide:
-      announce_show:
-      hide:
-      hide_password:
-      show:
-      show_password:
+      announce_hide: 您的密碼已隱藏
+      announce_show: 您的密碼已顯示
+      hide: 隱藏
+      hide_password: 隱藏密碼
+      show: 顯示
+      show_password: 顯示密碼
     skip_link:
-      text:
+      text: 跳過主要內容
     step_by_step_nav:
-      hide:
-      hide_all:
-      show:
-      show_all:
+      hide: 隱藏
+      hide_all: 隱藏所有步驟
+      show: 顯示
+      show_all: 顯示所有步驟
     step_by_step_nav_related:
-      part_of:
+      part_of: 部份
     subscription_links:
-      email_signup_link_text:
-      feed_link_label:
-      feed_link_text:
-      subscriptions:
+      email_signup_link_text: 獲取電子郵件
+      feed_link_label: 複製這一 URL 並貼上您的內容閱讀工具
+      feed_link_text: 訂閱內容
+      subscriptions: 訂閱項
     success_alert:
-      success:
+      success: 成功
     summary_list:
-      delete:
-      edit:
+      delete: 刪除
+      edit: 變更
     tabs:
-      contents:
+      contents: 內容
+  common:
+    translations: 譯文

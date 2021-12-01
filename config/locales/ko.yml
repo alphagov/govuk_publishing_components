@@ -1,4 +1,3 @@
----
 ko:
   common:
     translations:
@@ -43,15 +42,6 @@ ko:
       hide:
       text:
       title:
-    devolved_nations:
-      applies_to:
-      connectors:
-        last_word:
-        two_words:
-      england:
-      northern_ireland:
-      scotland:
-      wales:
     feedback:
       close:
       dont_include_personal_info:
@@ -78,55 +68,16 @@ ko:
       news_and_communications:
       statistics:
       worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
     layout_footer:
       copyright_html:
       licence_html:
       support_links:
-    layout_for_public:
-      account_layout:
-        feedback:
-          banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
-        navigation:
-          destroy_user_session:
-          menu_bar:
-            account:
-              link_text:
-            manage:
-              link_text:
-            security:
-              link_text:
-          user_root_path:
     layout_header:
       hide_button:
       menu:
       search_button:
       show_button:
       top_level:
-    layout_super_navigation_header:
-      logo_link_title:
-      logo_text:
-      menu_toggle_label:
-        hide:
-        show:
-      navigation_links:
-      navigation_menu_heading:
-      navigation_search_heading:
-      navigation_search_subheading:
-      popular_links:
-      popular_links_heading:
-      search_text:
     metadata:
       from:
       history:
@@ -138,8 +89,6 @@ ko:
       toggle_more:
     modal_dialogue:
       close_modal:
-    notice:
-      banner_title:
     organisation_schema:
       all_content_search_description:
     previous_and_next_navigation:
@@ -166,6 +115,9 @@ ko:
       topical_events:
       topics:
       transition:
+        hub_page_link_path:
+        hub_page_link_text:
+        hub_page_title:
         link_path:
         link_text:
         title:

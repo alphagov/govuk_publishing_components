@@ -1,204 +1,177 @@
----
 kk:
-  common:
-    translations:
   components:
-    accordion:
-      hide:
-      hide_all:
-      show:
-      show_all:
-      this_section_visually_hidden:
-    article_schema:
-      scoped_search_description:
     attachment:
-      opendocument_html:
-      order_a_copy:
       page:
-        one:
-        other:
-      reference:
-      request_format_cta:
-      request_format_details_html:
-      request_format_text:
+        one: 1 бет
+        other: "%{count} бет"
+      opendocument_html: Бұл файл <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
+        target=%{target} class='govuk-link'>OpenDocument</a> пішімінде
+      order_a_copy: Көшірмесіне тапсырыс беру
+      reference: 'Сілтеме: %{reference}'
+      request_format_cta: Қолжетімді пішімді сұраңыз.
+      request_format_details_html: Егер сіз көмекші технологияны қолдансаңыз (мысалы,
+        экран оқу құралы) және сізге осы құжаттың қолжетімді пішімдегі нұсқасы қажет
+        болса,<a href='mailto:%{alternative_format_contact_email}' target='_blank'
+        class='govuk-link'>%{alternative_format_contact_email}</a> мекенжайына электрондық
+        хат жіберіңіз. Сізге қандай пішім қажет екенін айтыңыз. Қандай көмекші технологияларды
+        қолданатыныңызды айтсаңыз, бұл бізге көмектеседі.
+      request_format_text: Бұл файл көмекші технология қолданушыларына сәйкес келмеуі
+        мүмкін.
+    accordion:
+      hide: Жасыру
+      hide_all: Барлық бөлімдерді жасыру
+      show: Көрсету
+      show_all: Барлық бөлімдерді көрсету
+      this_section_visually_hidden: " бұл бөлім"
+    article_schema:
+      scoped_search_description: "%{title} ішінен іздеу"
     back_link:
-      back:
+      back: Артқа
     character_count:
-      body:
+      body: Ең көбі %{number} %{type} енгізе аласыз
       type:
-        characters:
-        words:
+        characters: таңба
+        words: сөз
     checkboxes:
-      or:
+      or: немесе
     contents_list:
-      contents:
+      contents: Мазмұны
     contextual_sidebar:
-      pretitle:
+      pretitle: Сондай-ақ бөлігі
     cookie_banner:
       buttons:
-        accept_cookies:
-        reject_cookies:
-      confirmation_message:
-      confirmation_message_link:
-      hide:
+        accept_cookies: Қосымша cookie файлдарын қабылдау
+        reject_cookies: Қосымша cookie файлдарынан бас тарту
+      confirmation_message: Кез келген уақытта %{link}.
+      confirmation_message_link: cookie параметрлерін өзгерте аласыз
+      hide: Бұл хабарламаны жасыру
       text:
-      title:
-    devolved_nations:
-      applies_to:
-      connectors:
-        last_word:
-        two_words:
-      england:
-      northern_ireland:
-      scotland:
-      wales:
+      - Бұл веб-сайттың жұмыс істеуі үшін кейбір маңызды cookie файлдарын қолданамыз.
+      - Біз GOV.UK қалай қолданылатынын түсіну
+      - параметрлерді есте сақтау және мемлекеттік қызметтерді жақсарту үшін қосымша
+        cookie файлдарын орнатқымыз келеді.
+      - Біз басқа сайттар орнатқан cookie файлдарын олардың қызметтерінен мазмұнды
+        жеткізуге көмектесу үшін қолданамыз.
+      title: GOV.UK веб-сайтындағы cookie файлдары
     feedback:
-      close:
-      dont_include_personal_info:
-      email_address:
-      help_us_improve_govuk:
-      is_not_useful:
-      is_this_page_useful:
-      is_useful:
-      maybe:
-      more_about_visit:
-      'no':
-      send:
-      send_me_survey:
-      something_wrong:
-      thank_you_for_feedback:
-      what_doing:
-      what_wrong:
-      'yes':
+      close: Жабу
+      dont_include_personal_info: Ұлттық сақтандыру нөмірі немесе несие картасының
+        деректемелері сияқты жеке немесе қаржылық ақпаратты қамтымаңыз.
+      email_address: Электрондық пошта мекенжайы
+      help_us_improve_govuk: Бізге GOV.UK веб-сайтын жақсартуға көмектесіңіз
+      is_not_useful: бұл бет пайдалы емес
+      is_this_page_useful: Бұл бет пайдалы ма?
+      is_useful: бұл бет пайдалы
+      maybe: Мүмкін
+      more_about_visit: Бізге GOV.UK веб-сайтын жақсартуға көмектесу үшін, сіздің
+        бүгінгі веб-сайтқа кіруіңіз туралы көбірек білгіміз келеді. Біз сізге кері
+        байланыс формасына сілтеме жібереміз. Толтыруға бар болғаны 2 минут кетеді.
+        Біз сізге спам жібермейміз немесе электрондық пошта мекенжайын ешкіммен бөліспейміз,
+        уайымдамаңыз.
+      'no': Жоқ
+      send: Жіберу
+      send_me_survey: Маған сауалнаманы жіберіңіз
+      something_wrong: Осы бетке қатысты мәселе туралы хабарлаңыз
+      thank_you_for_feedback: Кері байланысыңызға рақмет
+      what_doing: Сіз не істеп жатыр едіңіз?
+      what_wrong: Не дұрыс болмады?
+      'yes': Иә
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
+      consultations: Кеңестер
+      departments: Бөлімдер
+      get-involved: Қатысыңыз
+      how-government-works: Мемлекет қалай жұмыс істейді
+      news_and_communications: Жаңалықтар мен байланыстар
+      statistics: Статистика
+      worldwide: Бүкіл әлем бойынша
     layout_footer:
-      copyright_html:
-      licence_html:
-      support_links:
-    layout_for_public:
-      account_layout:
-        feedback:
-          banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
-        navigation:
-          destroy_user_session:
-          menu_bar:
-            account:
-              link_text:
-            manage:
-              link_text:
-            security:
-              link_text:
-          user_root_path:
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
+        Crown авторлық құқығы</a>
+      licence_html: Барлық мазмұн <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+        rel="license">Ашық мемлекеттік лицензиясы v3.0</a> (басқаша жазылғанды қоспағанда)
+        сайтында қолжетімді
+      support_links: Қолдау сілтемелері
     layout_header:
-      hide_button:
-      menu:
-      search_button:
-      show_button:
-      top_level:
-    layout_super_navigation_header:
-      logo_link_title:
-      logo_text:
-      menu_toggle_label:
-        hide:
-        show:
-      navigation_links:
-      navigation_menu_heading:
-      navigation_search_heading:
-      navigation_search_subheading:
-      popular_links:
-      popular_links_heading:
-      search_text:
+      hide_button: Іздеуді жасыру
+      menu: Мәзір
+      search_button: GOV.UK веб-сайтында іздеу
+      show_button: Іздеуді көрсету
+      top_level: Жоғары деңгей
     metadata:
-      from:
-      history:
-      last_updated:
-      part_of:
-      published:
-      see_all_updates:
-      toggle_less:
-      toggle_more:
+      from: Кімнен
+      history: Журнал
+      last_updated: Соңғы рет жаңартылды
+      part_of: Бөлігі
+      published: Жарияланды
+      see_all_updates: Барлық жаңартуларды қарау
+      toggle_less: Азырақ көрсету
+      toggle_more: "+ %{number} көп"
     modal_dialogue:
-      close_modal:
-    notice:
-      banner_title:
+      close_modal: Жабық модальды диалог
     organisation_schema:
-      all_content_search_description:
+      all_content_search_description: "%{organisation} ішіндегі барлық мазмұнды табу"
     previous_and_next_navigation:
-      pagination:
+      pagination: Беттеу
     print_link:
-      text:
+      text: Осы бетті басып шығару
     radio:
-      or:
+      or: немесе
     related_footer_navigation:
-      collections:
-      policies:
-      statistical_data_sets:
-      topical_events:
+      collections: Топтамалар
+      policies: Саясаттар
+      statistical_data_sets: Статистикалық деректер жиындары
+      topical_events: Тақырыптық оқиғалар
     related_navigation:
-      collections:
-      external_links:
-      policies:
-      publishers:
-      related_contacts:
-      related_content:
-      related_external_links:
-      related_guides:
-      statistical_data_sets:
-      topical_events:
-      topics:
+      collections: Топтама
+      external_links: Желіде басқа жерде
+      policies: Саясат
+      publishers: Жариялаған
+      related_contacts: Басқа контактілер
+      related_content: Қатысты мазмұн
+      related_external_links: Желіде басқа жерде
+      related_guides: Егжей-тегжейлі нұсқаулық
+      statistical_data_sets: Статистикалық деректер жиыны
+      topical_events: Тақырыптық оқиға
+      topics: Тақырыпты зерттеу
       transition:
-        link_path:
-        link_text:
-        title:
-      world_locations:
+        hub_page_link_path: "/transition-check/questions"
+        hub_page_link_text: Әрекеттердің жеке тізімін алу
+        hub_page_title: Brexit тексеру құралы
+        link_path: "/brexit"
+        link_text: Не істеу керек екенін қараңыз
+        title: Brexit
+      world_locations: Әлемдегі орындар
     search_box:
-      input_title:
-      label:
-      search_button:
+      input_title: Іздеу
+      label: GOV.UK веб-сайтында іздеу
+      search_button: Іздеу
     show_password:
-      announce_hide:
-      announce_show:
-      hide:
-      hide_password:
-      show:
-      show_password:
+      announce_hide: Құпиясөзіңіз жасырылған
+      announce_show: Құпиясөзіңіз көрсетілген
+      hide: Жасыру
+      hide_password: Құпиясөзді жасыру
+      show: Көрсету
+      show_password: Құпиясөзді көрсету
     skip_link:
-      text:
+      text: Негізгі мазмұнға өту
     step_by_step_nav:
-      hide:
-      hide_all:
-      show:
-      show_all:
+      hide: Жасыру
+      hide_all: Барлық қадамдарды жасыру
+      show: Көрсету
+      show_all: Барлық қадамдарды көрсету
     step_by_step_nav_related:
-      part_of:
+      part_of: Бөлігі
     subscription_links:
-      email_signup_link_text:
-      feed_link_label:
-      feed_link_text:
-      subscriptions:
+      email_signup_link_text: Электрондық хаттарды алу
+      feed_link_label: Осы URL мекенжайын арна оқу құралына көшіріп қойыңыз
+      feed_link_text: Арнаға жазылу
+      subscriptions: Жазылымдар
     success_alert:
-      success:
+      success: Сәтті орындалды
     summary_list:
-      delete:
-      edit:
+      delete: Жою
+      edit: Өзгерту
     tabs:
-      contents:
+      contents: Мазмұны
+  common:
+    translations: Аудармалар

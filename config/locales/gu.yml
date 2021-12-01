@@ -1,204 +1,175 @@
----
 gu:
-  common:
-    translations:
   components:
-    accordion:
-      hide:
-      hide_all:
-      show:
-      show_all:
-      this_section_visually_hidden:
-    article_schema:
-      scoped_search_description:
     attachment:
-      opendocument_html:
-      order_a_copy:
       page:
-        one:
-        other:
-      reference:
-      request_format_cta:
-      request_format_details_html:
-      request_format_text:
+        one: 1 પૃષ્ઠ
+        other: "%{count} પૃષ્ઠો"
+      opendocument_html: આ ફાઇલ એક<a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
+        target=%{target} class='govuk-link'>ઓપન ડૉક્યુમેન્ટ</a> ફોરમેટમાં છે
+      order_a_copy: એક નકલ મંગાવી લો
+      reference: સંદર્ભ:%{reference}
+      request_format_cta: કોઈ એક્સેસિબલ ફોરમેટ માટે વિનંતી કરો.
+      request_format_details_html: જો તમે સહાયક ટેક્નોલૉજીનો (જેવી કે સ્ક્રીન રીડર)
+        ઉપયોગ કરતાં હોવ અને તમને આ દસ્તાવેજની આવૃત્તિ વધુ એક્સેસિબલ ફોરમેટ માટે જોઈતી
+        હોય, તો કૃપા કરીને <a href='mailto:%{alternative_format_contact_email}' target='_blank'
+        class='govuk-link'>%{alternative_format_contact_email}</a>.કૃપા કરીને અમને
+        જણાવો કે તમને કયા ફોર્મેટની જરૂર છે. જો તમે કહો કે તમે કઈ સહાયક તકનીકનો ઉપયોગ
+        કરો છો તો તે અમને મદદ કરશે.
+      request_format_text: આ ફાઇલ સહાયક ટેક્નોલૉજીના યુઝર્સ માટે કદાચ અનુકૂળ નહીં
+        હોય.
+    accordion:
+      hide: હાઇડ કરો
+      hide_all: તમામ સેક્શન હાઈડ કરો
+      show: દર્શાવો
+      show_all: તમામ સેક્શન દર્શાવો
+      this_section_visually_hidden: " આ સેક્શન"
+    article_schema:
+      scoped_search_description: "%{title}માં શોધો"
     back_link:
-      back:
+      back: પાછળ
     character_count:
-      body:
+      body: તમે %{number} %{type} સુધી દાખલ કરી શકો છો
       type:
-        characters:
-        words:
+        characters: અક્ષરો
+        words: શબ્દો
     checkboxes:
-      or:
+      or: અથવા
     contents_list:
-      contents:
+      contents: સામગ્રી
     contextual_sidebar:
-      pretitle:
+      pretitle: નો પણ ભાગ
     cookie_banner:
       buttons:
-        accept_cookies:
-        reject_cookies:
-      confirmation_message:
-      confirmation_message_link:
-      hide:
+        accept_cookies: અતિરિક્ત કુકીઝ સ્વીકારો
+        reject_cookies: અતિરિક્ત કુકીઝને નકારો
+      confirmation_message: તમે કોઈ પણ સમયે %{link} કરી શકો છો.
+      confirmation_message_link: તમારું કુકી સેટિંગ્સ બદલો
+      hide: આ સંદેશને હાઈડ કરો
       text:
-      title:
-    devolved_nations:
-      applies_to:
-      connectors:
-        last_word:
-        two_words:
-      england:
-      northern_ireland:
-      scotland:
-      wales:
+      - આ વેબસાઇટ કામ કરે તે માટે અમે કેટલીક આવશ્યક કુકીઝ વાપરીએ છીએ.
+      - તમે GOV.UKનો ઉપયોગ કેવી રીતે કરો છો
+      - તે સમજવા માટે
+      - તમારી સેટિંગ્સ યાદ રાખવા માટે અને સરકારી સેવાઓમાં સુધારો કરવા માટે અમે અતિરિક્ત
+        કુકીઝ સેટ કરવા માંગીએ છીએ.”
+      title: GOV.UK પર કુકીઝ
     feedback:
-      close:
-      dont_include_personal_info:
-      email_address:
-      help_us_improve_govuk:
-      is_not_useful:
-      is_this_page_useful:
-      is_useful:
-      maybe:
-      more_about_visit:
-      'no':
-      send:
-      send_me_survey:
-      something_wrong:
-      thank_you_for_feedback:
-      what_doing:
-      what_wrong:
-      'yes':
+      close: બંધ કરો
+      dont_include_personal_info: તમારો રાષ્ટ્રીય વીમા નંબર અથવા ક્રેડિટ કાર્ડ વિગતો
+        જેવી વ્યક્તિગત કે નાણાંકીય માહિતી તેમાં સામેલ કરશો નહીં.
+      email_address: ઈમેલ એડ્રેસ
+      help_us_improve_govuk: GOV.UK માં સુધારો કરવા અમારી મદદ કરો
+      is_not_useful: આ પૃષ્ઠ ઉપયોગી નથી
+      is_this_page_useful: શું આ પૃષ્ઠ ઉપયોગી છે?
+      is_useful: આ પૃષ્ઠ ઉપયોગી છે
+      maybe: કદાચ
+      more_about_visit: GOV.UK માં સુધારો કરવામાં અમને મદદ થાય, તે માટે અમે તમારી
+        આજની મુલાકાત વિશે વધુ જાણવા ઇચ્છીએ છીએ.અમે તમને ફીડબૅક ફોર્મની લિન્ક મોકલીશું.તે
+        ભરવા માટે તમને માત્ર 2 મિનિટ લાગશે. ચિંતા ના કરશો, અમે તમને સ્પામ મોકલીશું
+        નહીં કે તમારો ઈમેલ એડ્રેસ કોઇની સાથે શેર કરીશું નહીં.
+      'no': ના
+      send: સેન્ડ કરો
+      send_me_survey: મને સર્વે મોકલો
+      something_wrong: આ પૃષ્ઠ સાથે સમસ્યા જણાવો
+      thank_you_for_feedback: તમારા ફીડબૅક બદલ તમારો આભાર
+      what_doing: તમે શું કરી રહ્યા હતા?
+      what_wrong: શું ગરબડ થઈ?
+      'yes': હા
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
+      consultations: પરામર્શ
+      departments: વિભાગો
+      get-involved: સામેલ કરો
+      how-government-works: સરકાર કેવી રીતે કામ કરે છે
+      news_and_communications: સમાચાર અને સંદેશાવ્યવહાર
+      statistics: આંકડા
+      worldwide: વિશ્વવ્યાપી
     layout_footer:
-      copyright_html:
-      licence_html:
-      support_links:
-    layout_for_public:
-      account_layout:
-        feedback:
-          banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
-        navigation:
-          destroy_user_session:
-          menu_bar:
-            account:
-              link_text:
-            manage:
-              link_text:
-            security:
-              link_text:
-          user_root_path:
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
+        ક્રાઉન કૉપીરાઇટ</a>
+      licence_html: તમામ સામગ્રી<a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+        rel="license"> ઓપન ગવર્નમેંટ લાઇસન્સ v3.0</a>હેઠળ ઉપલબ્ધ છે, સિવાય કે અન્યથા
+        જણાવેલ હોય
+      support_links: સપોર્ટ લિંક્સ
     layout_header:
-      hide_button:
-      menu:
-      search_button:
-      show_button:
-      top_level:
-    layout_super_navigation_header:
-      logo_link_title:
-      logo_text:
-      menu_toggle_label:
-        hide:
-        show:
-      navigation_links:
-      navigation_menu_heading:
-      navigation_search_heading:
-      navigation_search_subheading:
-      popular_links:
-      popular_links_heading:
-      search_text:
+      hide_button: સર્ચને હાઈડ કરો
+      menu: મેનૂ
+      search_button: GOV.UK શોધો
+      show_button: સર્ચ બતાવો
+      top_level: ઉચ્ચ સ્તર
     metadata:
-      from:
-      history:
-      last_updated:
-      part_of:
-      published:
-      see_all_updates:
-      toggle_less:
-      toggle_more:
+      from: થી
+      history: હિસ્ટરી
+      last_updated: છેલ્લે અપડેટ કરવામાં આવ્યું
+      part_of: નો ભાગ
+      published: પ્રકાશિત
+      see_all_updates: તમામ અપડેટ્સ જુઓ
+      toggle_less: થોડા ઓછા દર્શાવો
+      toggle_more: "+ %{number} વધુ"
     modal_dialogue:
-      close_modal:
-    notice:
-      banner_title:
+      close_modal: મોડલ ડાયલોગ બંધ કરો
     organisation_schema:
-      all_content_search_description:
+      all_content_search_description: "%{organisation} થી તમામ સામગ્રી શોધો"
     previous_and_next_navigation:
-      pagination:
+      pagination: પૃષ્ઠ ક્રમાંકન
     print_link:
-      text:
+      text: આ પૃષ્ઠ પ્રિન્ટ કરો
     radio:
-      or:
+      or: અથવા
     related_footer_navigation:
-      collections:
-      policies:
-      statistical_data_sets:
-      topical_events:
+      collections: સંગ્રહો
+      policies: નીતિઓ
+      statistical_data_sets: આંકડાકીય ડેટા સેટ્સ
+      topical_events: પ્રસંગોચિત ઘટનાઓ
     related_navigation:
-      collections:
-      external_links:
-      policies:
-      publishers:
-      related_contacts:
-      related_content:
-      related_external_links:
-      related_guides:
-      statistical_data_sets:
-      topical_events:
-      topics:
+      collections: સંગ્રહ
+      external_links: વેબ પર અન્ય સ્થાને
+      policies: નીતિ
+      publishers: દ્વારા પ્રકાશિત
+      related_contacts: અન્ય સંપર્કો
+      related_content: સંબંધિત સામગ્રી
+      related_external_links: વેબ પર અન્ય સ્થાને
+      related_guides: વિગતવાર માર્ગદર્શન
+      statistical_data_sets: આંકડાકીય ડેટા સેટ
+      topical_events: પ્રસંગોચિત ઘટના
+      topics: વિષય એક્સ્પ્લોર કરો
       transition:
-        link_path:
-        link_text:
-        title:
-      world_locations:
+        hub_page_link_path: "/transition-check/questions"
+        hub_page_link_text: ક્રિયાઓની વ્યક્તિગત યાદી મેળવો
+        hub_page_title: બ્રેક્ઝિટ ચેકર
+        link_path: "/brexit"
+        link_text: તમારે શું કરવું પડશે તે તપાસો
+        title: બ્રેક્ઝિટ
+      world_locations: વૈશ્વિક લોકેશન્સ
     search_box:
-      input_title:
-      label:
-      search_button:
+      input_title: શોધો
+      label: GOV.UK પર શોધો
+      search_button: શોધો
     show_password:
-      announce_hide:
-      announce_show:
-      hide:
-      hide_password:
-      show:
-      show_password:
+      announce_hide: તમારો પાસવર્ડ હાઈડ કરેલ છે
+      announce_show: તમારો પાસવર્ડ દર્શાવ્યો છે
+      hide: હાઈડ
+      hide_password: પાસવર્ડ હાઈડ કરો
+      show: દર્શાવો
+      show_password: પાસવર્ડ દર્શાવો
     skip_link:
-      text:
+      text: મુખ્ય સામગ્રી પર જાઓ
     step_by_step_nav:
-      hide:
-      hide_all:
-      show:
-      show_all:
+      hide: હાઈડ કરો
+      hide_all: તમામ સ્ટેપ્સ હાઈડ કરો
+      show: દર્શાવો
+      show_all: તમામ સ્ટેપ્સ દર્શાવો
     step_by_step_nav_related:
-      part_of:
+      part_of: નો ભાગ
     subscription_links:
-      email_signup_link_text:
-      feed_link_label:
-      feed_link_text:
-      subscriptions:
+      email_signup_link_text: ઈમેલ્સ મેળવો
+      feed_link_label: આ URL કૉપી કરીને તમારા ફીડ રીડરમાં પેસ્ટ કરો
+      feed_link_text: ફીડ માટે સબ્સ્ક્રાઈબ કરો
+      subscriptions: સબ્સ્ક્રિપ્શન
     success_alert:
-      success:
+      success: સફળતા
     summary_list:
-      delete:
-      edit:
+      delete: ડિલીટ કરો
+      edit: બદલો
     tabs:
-      contents:
+      contents: સામગ્રી
+  common:
+    translations: અનુવાદ

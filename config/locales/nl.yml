@@ -1,204 +1,175 @@
----
 nl:
-  common:
-    translations:
   components:
-    accordion:
-      hide:
-      hide_all:
-      show:
-      show_all:
-      this_section_visually_hidden:
-    article_schema:
-      scoped_search_description:
     attachment:
-      opendocument_html:
-      order_a_copy:
       page:
-        one:
-        other:
-      reference:
-      request_format_cta:
-      request_format_details_html:
-      request_format_text:
+        one: 1 pagina
+        other: "%{count} pagina's"
+      opendocument_html: Dit bestand is in een <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
+        target=%{target} class='govuk-link'>OpenDocument</a> formaat
+      order_a_copy: Een kopie bestellen
+      reference: 'Ref: %{reference}'
+      request_format_cta: Vraag een toegankelijk formaat aan.
+      request_format_details_html: Als u ondersteunende technologie gebruikt (zoals
+        een schermlezer) en een versie van dit document nodig hebt in een meer toegankelijk
+        formaat, stuur dan een <a href='mailto:%{alternative_format_contact_email}'
+        target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>.
+        Vertel ons welk formaat u nodig heeft. Het zal ons helpen als u ons vertelt
+        welke ondersteunende technologie u gebruikt.
+      request_format_text: Dit bestand is mogelijk niet geschikt voor gebruikers van
+        ondersteunende technologie.
+    accordion:
+      hide: Verberg
+      hide_all: Verberg alle secties
+      show: Toon
+      show_all: Toon alle secties
+      this_section_visually_hidden: " deze sectie"
+    article_schema:
+      scoped_search_description: Zoeken in %{title}
     back_link:
-      back:
+      back: Terug
     character_count:
-      body:
+      body: U kunt maximaal %{number} %{type}
       type:
-        characters:
-        words:
+        characters: karakters
+        words: woorden
     checkboxes:
-      or:
+      or: of
     contents_list:
-      contents:
+      contents: Inhoud
     contextual_sidebar:
-      pretitle:
+      pretitle: Ook een deel van
     cookie_banner:
       buttons:
-        accept_cookies:
-        reject_cookies:
-      confirmation_message:
-      confirmation_message_link:
-      hide:
+        accept_cookies: Accepteer extra cookies
+        reject_cookies: Weiger extra cookies
+      confirmation_message: U kunt %{link} op elk gewenst moment
+      confirmation_message_link: uw cookie-instellingen wijzigen
+      hide: Deze melding verbergen
       text:
-      title:
-    devolved_nations:
-      applies_to:
-      connectors:
-        last_word:
-        two_words:
-      england:
-      northern_ireland:
-      scotland:
-      wales:
+      - We gebruiken een aantal essentiële cookies om deze website te laten werken.
+      - We willen graag extra cookies plaatsen om te begrijpen hoe u GOV.UK gebruikt
+      - uw instellingen te onthouden en overheidsdiensten te verbeteren.
+      - We gebruiken ook cookies die door andere sites worden geplaatst om ons te
+        helpen inhoud van hun diensten te leveren.
+      title: Cookies op GOV.UK
     feedback:
-      close:
-      dont_include_personal_info:
-      email_address:
-      help_us_improve_govuk:
-      is_not_useful:
-      is_this_page_useful:
-      is_useful:
-      maybe:
-      more_about_visit:
-      'no':
-      send:
-      send_me_survey:
-      something_wrong:
-      thank_you_for_feedback:
-      what_doing:
-      what_wrong:
-      'yes':
+      close: Sluiten
+      dont_include_personal_info: Vermeld geen persoonlijke of financiële informatie
+        zoals uw burgerservicenummer of creditcardgegevens.
+      email_address: Email adres
+      help_us_improve_govuk: Help ons GOV.UK te verbeteren
+      is_not_useful: deze pagina is niet bruikbaar
+      is_this_page_useful: Is deze pagina nuttig?
+      is_useful: deze pagina is nuttig
+      maybe: Misschien
+      more_about_visit: Om ons te helpen GOV.UK te verbeteren, willen we graag meer
+        weten over uw bezoek van vandaag. We sturen u een link naar een feedbackformulier.
+        Het duurt slechts 2 minuten om het in te vullen. Maak je geen zorgen, we sturen
+        je geen spam en delen je e-mailadres met niemand.
+      'no': Nee
+      send: Stuur
+      send_me_survey: Stuur mij de enquête
+      something_wrong: Meld een probleem met deze pagina
+      thank_you_for_feedback: Dank u voor uw feedback
+      what_doing: Wat was u aan het doen?
+      what_wrong: Wat ging er mis?
+      'yes': Ja
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
+      consultations: Raadplegingen
+      departments: Afdelingen
+      get-involved: Betrokken raken
+      how-government-works: Hoe de overheid werkt
+      news_and_communications: Nieuws en communicatie
+      statistics: Statistieken
+      worldwide: Wereldwijd
     layout_footer:
-      copyright_html:
-      licence_html:
-      support_links:
-    layout_for_public:
-      account_layout:
-        feedback:
-          banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
-        navigation:
-          destroy_user_session:
-          menu_bar:
-            account:
-              link_text:
-            manage:
-              link_text:
-            security:
-              link_text:
-          user_root_path:
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
+        Crown copyright</a>
+      licence_html: Alle inhoud is beschikbaar onder de <a class="govuk-footer__link"
+        href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+        rel="license">Open Overheidslicentie v3.0</a>, behalve waar anders vermeld
+      support_links: Links ondersteunen
     layout_header:
-      hide_button:
-      menu:
-      search_button:
-      show_button:
-      top_level:
-    layout_super_navigation_header:
-      logo_link_title:
-      logo_text:
-      menu_toggle_label:
-        hide:
-        show:
-      navigation_links:
-      navigation_menu_heading:
-      navigation_search_heading:
-      navigation_search_subheading:
-      popular_links:
-      popular_links_heading:
-      search_text:
+      hide_button: Zoeken verbergen
+      menu: Menu
+      search_button: Zoeken in GOV.UK
+      show_button: Zoekopdracht tonen
+      top_level: Top niveau
     metadata:
-      from:
-      history:
-      last_updated:
-      part_of:
-      published:
-      see_all_updates:
-      toggle_less:
-      toggle_more:
+      from: Van
+      history: Geschiedenis
+      last_updated: Laatst bijgewerkt
+      part_of: Deel van
+      published: Gepubliceerd
+      see_all_updates: Bekijk alle updates
+      toggle_less: Toon minder
+      toggle_more: "+ %{number} meer"
     modal_dialogue:
-      close_modal:
-    notice:
-      banner_title:
+      close_modal: Modale dialoog sluiten
     organisation_schema:
-      all_content_search_description:
+      all_content_search_description: Zoek alle inhoud van %{organisation}
     previous_and_next_navigation:
-      pagination:
+      pagination: Paginering
     print_link:
-      text:
+      text: Deze pagina afdrukken
     radio:
-      or:
+      or: of
     related_footer_navigation:
-      collections:
-      policies:
-      statistical_data_sets:
-      topical_events:
+      collections: Collecties
+      policies: Beleid
+      statistical_data_sets: Statistische gegevens
+      topical_events: Actuele gebeurtenissen
     related_navigation:
-      collections:
-      external_links:
-      policies:
-      publishers:
-      related_contacts:
-      related_content:
-      related_external_links:
-      related_guides:
-      statistical_data_sets:
-      topical_events:
-      topics:
+      collections: Collectie
+      external_links: Elders op het web
+      policies: Beleid
+      publishers: Gepubliceerd door
+      related_contacts: Andere contacten
+      related_content: Verwante inhoud
+      related_external_links: Elders op het web
+      related_guides: Gedetailleerde richtsnoeren
+      statistical_data_sets: Statistische gegevens
+      topical_events: Actueel evenement
+      topics: Verken het onderwerp
       transition:
-        link_path:
-        link_text:
-        title:
-      world_locations:
+        hub_page_link_path: "/transition-check/questions"
+        hub_page_link_text: Ontvang een gepersonaliseerde lijst van acties
+        hub_page_title: Brexit-checker
+        link_path: "/brexit"
+        link_text: Controleer wat u moet doen
+        title: Brexit
+      world_locations: Locaties in de wereld
     search_box:
-      input_title:
-      label:
-      search_button:
+      input_title: Zoeken
+      label: Zoeken op GOV.UK
+      search_button: Zoeken
     show_password:
-      announce_hide:
-      announce_show:
-      hide:
-      hide_password:
-      show:
-      show_password:
+      announce_hide: Uw wachtwoord is verborgen
+      announce_show: Uw wachtwoord wordt getoond
+      hide: Verberg
+      hide_password: Verberg wachtwoord
+      show: Toon
+      show_password: Wachtwoord tonen
     skip_link:
-      text:
+      text: Naar hoofdinhoud gaan
     step_by_step_nav:
-      hide:
-      hide_all:
-      show:
-      show_all:
+      hide: Verberg
+      hide_all: Verberg alle stappen
+      show: Toon
+      show_all: Toon alle stappen
     step_by_step_nav_related:
-      part_of:
+      part_of: Onderdeel van
     subscription_links:
-      email_signup_link_text:
-      feed_link_label:
-      feed_link_text:
-      subscriptions:
+      email_signup_link_text: Ontvang e-mails
+      feed_link_label: Kopieer en plak deze URL in je feed reader
+      feed_link_text: Abonneren op feed
+      subscriptions: Inschrijvingen
     success_alert:
-      success:
+      success: Succes
     summary_list:
-      delete:
-      edit:
+      delete: Verwijderen
+      edit: Wijzig
     tabs:
-      contents:
+      contents: Inhoud
+  common:
+    translations: Vertalingen

@@ -1,204 +1,179 @@
----
 be:
-  common:
-    translations:
   components:
-    accordion:
-      hide:
-      hide_all:
-      show:
-      show_all:
-      this_section_visually_hidden:
-    article_schema:
-      scoped_search_description:
     attachment:
-      opendocument_html:
-      order_a_copy:
       page:
-        one:
-        other:
-      reference:
-      request_format_cta:
-      request_format_details_html:
-      request_format_text:
+        one: 1 старонка
+        few:
+        many:
+        other: "%{count} старонкi"
+      opendocument_html: Гэты файл у <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
+        target=%{target} class='govuk-link'>OpenDocument</a> фармаце
+      order_a_copy: Замовіць копію
+      reference: 'Спасылка: %{reference}'
+      request_format_cta: Запрасіць файл у іншым фармаце.
+      request_format_details_html: Калі вы выкарыстоўваеце дапаможных тэхналогіi (такiя
+        як экранны дыктар) i патрэбна версiя гэтага дакумента  ў больш даступным фармаце,
+        напішыце, калі ласка  на электронную пошту <a href='mailto:%{alternative_format_contact_email}'
+        target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>.
+        Калі ласка, паведаміце нам, які фармат вам патрэбен. Нам будзе лягчэй, калі вы паведаміце, якія
+        дапаможныя тэхналогіi вы выкарыстоўваеце.
+      request_format_text: Гэты файл можа быць непрыдатным для карыстальнікаў дапаможных
+        тэхналогій.
+    accordion:
+      hide: Схаваць
+      hide_all: Схаваць усе секцыi
+      show: Паказаць
+      show_all: Паказаць усе секцыi
+      this_section_visually_hidden: " гэта секцыя"
+    article_schema:
+      scoped_search_description: Шукаць сярод %{title}
     back_link:
-      back:
+      back: Назад
     character_count:
-      body:
+      body: Вы можаце ўвесці да %{number} %{type}
       type:
-        characters:
-        words:
+        characters: знакаў
+        words: словаў
     checkboxes:
-      or:
+      or: або
     contents_list:
-      contents:
+      contents: Змест
     contextual_sidebar:
-      pretitle:
+      pretitle: Таксама з'яўляецца часткай
     cookie_banner:
       buttons:
-        accept_cookies:
-        reject_cookies:
-      confirmation_message:
-      confirmation_message_link:
-      hide:
+        accept_cookies: Прыняць дадатковыя файлы cookie
+        reject_cookies: Адхіліць дадатковыя файлы cookie
+      confirmation_message: Вы можаце %{link} у любы час.
+      confirmation_message_link: змяніць налады файлаў cookie
+      hide: Схаваць гэта паведамленне
       text:
-      title:
-    devolved_nations:
-      applies_to:
-      connectors:
-        last_word:
-        two_words:
-      england:
-      northern_ireland:
-      scotland:
-      wales:
+      - Мы выкарыстоўваем некаторыя асноўныя файлы cookie для забеспячэння працы гэтага
+        сайта.
+      - Мы хацелі б наладзіць дадатковыя файлы cookie
+      - каб зразумець
+      - як вы скарыстаеце GOV.UK
+      - запомніць вашы налады і палепшыць дзяржаўныя паслугі.
+      - Мы таксама выкарыстаем файлы cookie
+      - наладжаныя іншымі сайтамі
+      - каб дапамагчы нам дастаўляць кантэнт з іх сэрвісаў.
+      title: Файлы cookie на GOV.UK
     feedback:
-      close:
-      dont_include_personal_info:
-      email_address:
-      help_us_improve_govuk:
-      is_not_useful:
-      is_this_page_useful:
-      is_useful:
-      maybe:
-      more_about_visit:
-      'no':
-      send:
-      send_me_survey:
-      something_wrong:
-      thank_you_for_feedback:
-      what_doing:
-      what_wrong:
-      'yes':
+      close: Зачынiць
+      dont_include_personal_info: Не ўключайце асабістай ці фінансавай інфармацыі,
+        напрыклад, нумар дзяржаўнага страхавання ці дадзеныя крэдытнай карты.
+      email_address: Адрас электроннай пошты
+      help_us_improve_govuk: Дапамажыце нам палепшыць GOV.UK
+      is_not_useful: гэтая старонка не з'яўляецца карыснай
+      is_this_page_useful: З'яўляецца лi гэтая старонка карыснай?
+      is_useful: гэтая старонка з'яўляецца карыснай
+      maybe: Магчыма
+      more_about_visit: Каб дапамагчы нам палепшыць GOV.UK, мы хацелі б даведацца
+        больш пра ваша сённяшняе наведанне. Мы адправім вам спасылку на форму зваротнай
+        сувязі. Яе запаўненне зойме ўсяго 2 хвіліны. Не турбуйцеся, мы не будзем рассылаць
+        вам спам ці перадаваць ваш адрас электроннай пошты чужым асобам.
+      'no': Не
+      send: Адправiць
+      send_me_survey: Адпраўце мне апытанне
+      something_wrong: Паведаміць пра праблему на гэтай старонцы
+      thank_you_for_feedback: Дзякуй за ваш водгук
+      what_doing: Што вы рабiлi?
+      what_wrong: Што пайшло не так?
+      'yes': Так
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
+      consultations: Кансультацыі
+      departments: Аддзелы
+      get-involved: Удзельнiчаць
+      how-government-works: Як працуе ўрад
+      news_and_communications: Навiны i паведамленні
+      worldwide: Ва ўсім свеце
     layout_footer:
-      copyright_html:
-      licence_html:
-      support_links:
-    layout_for_public:
-      account_layout:
-        feedback:
-          banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
-        navigation:
-          destroy_user_session:
-          menu_bar:
-            account:
-              link_text:
-            manage:
-              link_text:
-            security:
-              link_text:
-          user_root_path:
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
+        Crown copyright</a>
+      licence_html: Увесь змест даступны <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+        rel="license">Open Government Licence v3.0</a>, калі не паказана іншае
+      support_links: Дапаможныя спасылкі
     layout_header:
-      hide_button:
-      menu:
-      search_button:
-      show_button:
-      top_level:
-    layout_super_navigation_header:
-      logo_link_title:
-      logo_text:
-      menu_toggle_label:
-        hide:
-        show:
-      navigation_links:
-      navigation_menu_heading:
-      navigation_search_heading:
-      navigation_search_subheading:
-      popular_links:
-      popular_links_heading:
-      search_text:
+      hide_button: Схаваць вынікі пошуку
+      menu: Меню
+      search_button: Шукаць GOV.UK
+      show_button: Паказаць вынікі пошуку
+      top_level: Верхні ўзровень
     metadata:
-      from:
-      history:
-      last_updated:
-      part_of:
-      published:
-      see_all_updates:
-      toggle_less:
-      toggle_more:
+      from: З
+      history: Гiсторыя
+      last_updated: Апошняе абнаўленне
+      part_of: Частка
+      published: Апублікаваны
+      see_all_updates: Паглядзець усе абнаўленні
+      toggle_less: Паказаць меньш
+      toggle_more: "+ %{number} болей"
     modal_dialogue:
-      close_modal:
-    notice:
-      banner_title:
+      close_modal: Зачыніць мадальны дыялог
     organisation_schema:
-      all_content_search_description:
+      all_content_search_description: Шукаць увесь змест з %{organisation}
     previous_and_next_navigation:
-      pagination:
+      pagination: Месцаванне старонак
     print_link:
-      text:
+      text: Надрукаваць гэтую странiцу
     radio:
-      or:
+      or: або
     related_footer_navigation:
-      collections:
-      policies:
-      statistical_data_sets:
-      topical_events:
+      collections: Серыi
+      policies: Напрамкі дзейнасці
+      statistical_data_sets: Статыстычныя дадзеныя
+      topical_events: Актуальныя падзеі
     related_navigation:
-      collections:
-      external_links:
-      policies:
-      publishers:
-      related_contacts:
-      related_content:
-      related_external_links:
-      related_guides:
-      statistical_data_sets:
-      topical_events:
-      topics:
+      collections: Серыя
+      external_links: У іншых месцах у Інтэрнэце
+      policies: Напрамак дзейнасці
+      publishers: Апублікавана
+      related_contacts: Другiя кантакты
+      related_content: Звязаны змест
+      related_external_links: У іншых месцах у Інтэрнэце
+      related_guides: Падрабязнае кіраўніцтва
+      statistical_data_sets: Статыстычныя дадзеныя
+      topical_events: Актуальная падзея
+      topics: Вывучыць тэму
       transition:
-        link_path:
-        link_text:
-        title:
-      world_locations:
+        hub_page_link_path: "/transition-check/questions"
+        hub_page_link_text: Атрымайце персанальны спіс дзеянняў
+        hub_page_title: Праверка Брэкзiт
+        link_path: "/brexit"
+        link_text: Праверце, што вам трэба зрабіць
+        title: Брэкзiт
+      world_locations: Мы ў свеце
     search_box:
-      input_title:
-      label:
-      search_button:
+      input_title: Пошук
+      label: Шукаць на GOV.UK
+      search_button: Пошук
     show_password:
-      announce_hide:
-      announce_show:
-      hide:
-      hide_password:
-      show:
-      show_password:
+      announce_hide: Ваш пароль схаваны
+      announce_show: Ваш пароль адлюстроўваецца
+      hide: Схаваць
+      hide_password: Схаваць пароль
+      show: Паказаць
+      show_password: Адлюстраваць пароль
     skip_link:
-      text:
+      text: Перайсці да асноўнага зместу
     step_by_step_nav:
-      hide:
-      hide_all:
-      show:
-      show_all:
+      hide: Схаваць
+      hide_all: Схаваць усе этапы
+      show: Паказаць
+      show_all: Паказаць усе этапы
     step_by_step_nav_related:
-      part_of:
+      part_of: Частка
     subscription_links:
-      email_signup_link_text:
-      feed_link_label:
-      feed_link_text:
-      subscriptions:
+      email_signup_link_text: Атрымваць электронныя лісты
+      feed_link_label: Скапіруйце і ўстаўце гэты URL-адрас у свой iнфармацыйны журнал
+      feed_link_text: Падпісацца на канал
+      subscriptions: Падпіскi
     success_alert:
-      success:
+      success: Поспех
     summary_list:
-      delete:
-      edit:
+      delete: Выдаліць
+      edit: Змянiць
     tabs:
-      contents:
+      contents: Змест
+  common:
+    translations: Пераклады

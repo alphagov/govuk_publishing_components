@@ -1,204 +1,177 @@
----
 sr:
-  common:
-    translations:
   components:
-    accordion:
-      hide:
-      hide_all:
-      show:
-      show_all:
-      this_section_visually_hidden:
-    article_schema:
-      scoped_search_description:
     attachment:
-      opendocument_html:
-      order_a_copy:
       page:
-        one:
-        other:
-      reference:
-      request_format_cta:
-      request_format_details_html:
-      request_format_text:
+        one: 1 stranica
+        few:
+        many:
+        other: "%{count} str."
+      opendocument_html: Ova datoteka je u formatu <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
+        target=%{target} class='govuk-link'>OpenDocument</a>
+      order_a_copy: Zatražite primerak
+      reference: 'Ref: %{reference}'
+      request_format_cta: Zatražite format kom možete da pristupite.
+      request_format_details_html: Ako koristite pomoćnu tehnologiju (na primer čitač
+        ekrana) i potrebna vam je verzija dokumenta u pristupačnijem formatu, pošaljite
+        e-poruku na <a href='mailto:%{alternative_format_contact_email}' target='_blank'
+        class='govuk-link'>%{alternative_format_contact_email}</a>. Recite nam koji
+        vam format treba. Bilo bi od pomoći da znamo koju vrstu pomoćne tehnologije
+        koristite.
+      request_format_text: Ova datoteka možda nije pogodna za korisnike pomoćne tehnologije.
+    accordion:
+      hide: Sakrij
+      hide_all: Sakrij sve odeljke
+      show: Prikaži
+      show_all: Prikaži sve odeljke
+      this_section_visually_hidden: " ovaj odeljak"
+    article_schema:
+      scoped_search_description: Pretražite u okviru %{title}
     back_link:
-      back:
+      back: Nazad
     character_count:
-      body:
+      body: Možete da unesete najviše %{number} %{type}
       type:
-        characters:
-        words:
+        characters: znakova
+        words: reči
     checkboxes:
-      or:
+      or: ili
     contents_list:
-      contents:
+      contents: Sadržaj
     contextual_sidebar:
-      pretitle:
+      pretitle: Takođe pripada
     cookie_banner:
       buttons:
-        accept_cookies:
-        reject_cookies:
-      confirmation_message:
-      confirmation_message_link:
-      hide:
+        accept_cookies: Prihvati dodatne kolačiće
+        reject_cookies: Odbaci dodatne kolačiće
+      confirmation_message: U svakom trenutku možete da %{link}.
+      confirmation_message_link: promenite podešavanja kolačića
+      hide: Sakrij ovu poruku
       text:
-      title:
-    devolved_nations:
-      applies_to:
-      connectors:
-        last_word:
-        two_words:
-      england:
-      northern_ireland:
-      scotland:
-      wales:
+      - Koristimo osnovne kolačiće za funkcionisanje ovog veb-sajta.
+      - Želimo da podesimo dodatne kolačiće da bismo razumeli način na koji koristite
+        GOV.UK
+      - upamtili vaša podešavanja i poboljšali usluge vlade.
+      - Koristimo i kolačiće koje postavljaju drugi sajtovi kako bismo mogli da pružamo
+        sadržaj iz njihovih usluga.
+      title: Kolačići na sajtu GOV.UK
     feedback:
-      close:
-      dont_include_personal_info:
-      email_address:
-      help_us_improve_govuk:
-      is_not_useful:
-      is_this_page_useful:
-      is_useful:
-      maybe:
-      more_about_visit:
-      'no':
-      send:
-      send_me_survey:
-      something_wrong:
-      thank_you_for_feedback:
-      what_doing:
-      what_wrong:
-      'yes':
+      close: Zatvori
+      dont_include_personal_info: Nemojte navoditi lični ili finansijske podatke,
+        na primer svoj broj osiguranja ili podatke o kreditnoj kartici.
+      email_address: E-adresa
+      help_us_improve_govuk: Pomozite nam da poboljšamo GOV.UK
+      is_not_useful: ova stranica nije korisna
+      is_this_page_useful: Da li je ova stranica bila korisna?
+      is_useful: ova stranica je korisna
+      maybe: Možda
+      more_about_visit: Hteli bismo da čujemo više o vašoj današnjoj poseti kako bismo
+        poboljšali GOV.UK. Poslaćemo vam vezu do obrasca za povratne informacije.
+        Trebaće vam samo 2 minuta da ga popunite. Ne brinite, nećemo vam slati neželjenu
+        poštu i nećemo nikome otkriti vašu e-adresu.
+      'no': Ne
+      send: Pošalji
+      send_me_survey: Pošalji mi anketu
+      something_wrong: Prijavite problem sa ovom stranicom
+      thank_you_for_feedback: Hvala vam na povratnim informacijama
+      what_doing: Šta ste radili?
+      what_wrong: Koji problem se javio?
+      'yes': Da
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
+      consultations: Konsultacije
+      departments: Ministarstva
+      get-involved: Uključite se
+      how-government-works: Kako funkcioniše vlada
+      news_and_communications: Vesti i komunikacija
+      statistics: Statistika
+      worldwide: Globalno
     layout_footer:
-      copyright_html:
-      licence_html:
-      support_links:
-    layout_for_public:
-      account_layout:
-        feedback:
-          banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
-        navigation:
-          destroy_user_session:
-          menu_bar:
-            account:
-              link_text:
-            manage:
-              link_text:
-            security:
-              link_text:
-          user_root_path:
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
+        Crown copyright</a>
+      licence_html: Sav sadržaj je dostupan pod licencom <a class="govuk-footer__link"
+        href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+        rel="license">Open Government Licence v3.0</a>, izuzev ako je drugačije naznačeno
+      support_links: Veze do podrške
     layout_header:
-      hide_button:
-      menu:
-      search_button:
-      show_button:
-      top_level:
-    layout_super_navigation_header:
-      logo_link_title:
-      logo_text:
-      menu_toggle_label:
-        hide:
-        show:
-      navigation_links:
-      navigation_menu_heading:
-      navigation_search_heading:
-      navigation_search_subheading:
-      popular_links:
-      popular_links_heading:
-      search_text:
+      hide_button: Sakrij pretragu
+      menu: Meni
+      search_button: Pretražite GOV.UK
+      show_button: Prikaži pretragu
+      top_level: Najviši nivo
     metadata:
-      from:
-      history:
-      last_updated:
-      part_of:
-      published:
-      see_all_updates:
-      toggle_less:
-      toggle_more:
+      from: Od
+      history: Istorija
+      last_updated: Poslednje ažuriranje
+      part_of: Deo
+      published: Objavljeno
+      see_all_updates: Pogledajte sva ažuriranja
+      toggle_less: Prikaži manje
+      toggle_more: još %{number}
     modal_dialogue:
-      close_modal:
-    notice:
-      banner_title:
+      close_modal: Zatvori modalni dijalog
     organisation_schema:
-      all_content_search_description:
+      all_content_search_description: Pronađite sav sadržaj organizacije %{organisation}
     previous_and_next_navigation:
-      pagination:
+      pagination: Broj stranice
     print_link:
-      text:
+      text: Odštampaj ovu stranicu
     radio:
-      or:
+      or: ili
     related_footer_navigation:
-      collections:
-      policies:
-      statistical_data_sets:
-      topical_events:
+      collections: Kolekcije
+      policies: Politike
+      statistical_data_sets: Setovi statističkih podataka
+      topical_events: Događaji po temama
     related_navigation:
-      collections:
-      external_links:
-      policies:
-      publishers:
-      related_contacts:
-      related_content:
-      related_external_links:
-      related_guides:
-      statistical_data_sets:
-      topical_events:
-      topics:
+      collections: Kolekcija
+      external_links: Na drugim mestima na vebu
+      policies: Politika
+      publishers: Objavljuje
+      related_contacts: Drugi kontakti
+      related_content: Povezani sadržaj
+      related_external_links: Na drugim mestima na vebu
+      related_guides: Detaljna uputstva
+      statistical_data_sets: Set statističkih podataka
+      topical_events: Događaj po temi
+      topics: Istražite temu
       transition:
-        link_path:
-        link_text:
-        title:
-      world_locations:
+        hub_page_link_path: "/transition-check/questions"
+        hub_page_link_text: Preuzmite personalizovanu listu postupaka
+        hub_page_title: Kontrolna lista za Bregzit
+        link_path: "/brexit"
+        link_text: Proverite šta treba da uradite
+        title: Bregzit
+      world_locations: Globalne lokacije
     search_box:
-      input_title:
-      label:
-      search_button:
+      input_title: Pretraži
+      label: Pretraži na GOV.UK
+      search_button: Pretraži
     show_password:
-      announce_hide:
-      announce_show:
-      hide:
-      hide_password:
-      show:
-      show_password:
+      announce_hide: Lozinka je sakrivena
+      announce_show: Lozinka je prikazana
+      hide: Sakrij
+      hide_password: Sakrij lozinku
+      show: Prikaži
+      show_password: Prikaži lozinku
     skip_link:
-      text:
+      text: Preskoči na glavni sadržaj
     step_by_step_nav:
-      hide:
-      hide_all:
-      show:
-      show_all:
+      hide: Sakrij
+      hide_all: Sakrij sve korake
+      show: Prikaži
+      show_all: Prikaži sve korake
     step_by_step_nav_related:
-      part_of:
+      part_of: Deo
     subscription_links:
-      email_signup_link_text:
-      feed_link_label:
-      feed_link_text:
-      subscriptions:
+      email_signup_link_text: Želim da dobijam e-poruke
+      feed_link_label: Kopirajte i nalepite ovaj URL u svoj čitač fida
+      feed_link_text: Pretplatite se na fid
+      subscriptions: Pretplate
     success_alert:
-      success:
+      success: Uspešno
     summary_list:
-      delete:
-      edit:
+      delete: Izbriši
+      edit: Promena
     tabs:
-      contents:
+      contents: Sadržaj
+  common:
+    translations: Prevodi

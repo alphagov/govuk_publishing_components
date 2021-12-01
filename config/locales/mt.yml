@@ -1,204 +1,178 @@
----
 mt:
-  common:
-    translations:
   components:
-    accordion:
-      hide:
-      hide_all:
-      show:
-      show_all:
-      this_section_visually_hidden:
-    article_schema:
-      scoped_search_description:
     attachment:
-      opendocument_html:
-      order_a_copy:
       page:
-        one:
-        other:
-      reference:
-      request_format_cta:
-      request_format_details_html:
-      request_format_text:
+        one: 1 paġna
+        few:
+        many:
+        other: "%{count} paġni"
+      opendocument_html: Dan il-fajl jinsab f' <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
+        target=%{target} class='govuk-link'>Dokument Miftuħ</a> format
+      order_a_copy: Ordna kopja
+      reference: 'Ref: %{reference}'
+      request_format_cta: Itlob format aċċessibbli.
+      request_format_details_html: Jekk tuża teknoloġija assistiva (bħal qarrej tal-iskrin)
+        u għandek bżonn verżjoni ta' dan id-dokument b'format iktar aċċessibbli, jekk
+        jogħġbok ibgħat imejl <a href='mailto:%{alternative_format_contact_email}'
+        target='_blank'  class='govuk-link'>%{alternative_format_contact_email}</a>.Jekk
+        jogħġbok għidilna liema format għandek bżonn. Dan jgħinna jekk tgħid liema
+        teknoloġija ta 'għajnuna tuża.
+      request_format_text: Dan il-fajl jista' jkun li mżhuwiex adattat għal utenti
+        ta' teknoloġija assistiva.
+    accordion:
+      hide: Aħbi
+      hide_all: Aħbi s-sezzjonijiet kollha
+      show: Uri
+      show_all: Uri s-sezzjonijiet kollha
+      this_section_visually_hidden: " din is-sezzjoni"
+    article_schema:
+      scoped_search_description: Fittix fil- %{title}
     back_link:
-      back:
+      back: Lura
     character_count:
-      body:
+      body: Tista' ddaħħal sa %{number} %{type}
       type:
-        characters:
-        words:
+        characters: karattri
+        words: kliem
     checkboxes:
-      or:
+      or: jew
     contents_list:
-      contents:
+      contents: Kontenut
     contextual_sidebar:
-      pretitle:
+      pretitle: Parti wkoll minn
     cookie_banner:
       buttons:
-        accept_cookies:
-        reject_cookies:
-      confirmation_message:
-      confirmation_message_link:
-      hide:
+        accept_cookies: Aċċetta cookies addizzjonali
+        reject_cookies: Irrifjuta cookies addizzjonali
+      confirmation_message: Tista' %{link} kull ħin.
+      confirmation_message_link: Ibdel is-settings tal-cookie tiegħek
+      hide: Aħbi dan il-messaġġ
       text:
-      title:
-    devolved_nations:
-      applies_to:
-      connectors:
-        last_word:
-        two_words:
-      england:
-      northern_ireland:
-      scotland:
-      wales:
+      - Aħna nużaw xi cookies essenzjali biex inħaddmu din il-websajt.
+      - Nixtiequ nżidu cookies addizzjonali biex nifhmu kif inti tuża'  GOV.UK
+      - niftakru s- settings tiegħek u ntejbu s-servizzi tal-gvern.
+      - Aħna nużaw ukoll cookies li jiġu ssettjati minn websajts oħrajn biex jgħinuna
+        nxandru kontenut mis-servizzi tagħhom.
+      title: Cookies fuq GOV.UK
     feedback:
-      close:
-      dont_include_personal_info:
-      email_address:
-      help_us_improve_govuk:
-      is_not_useful:
-      is_this_page_useful:
-      is_useful:
-      maybe:
-      more_about_visit:
-      'no':
-      send:
-      send_me_survey:
-      something_wrong:
-      thank_you_for_feedback:
-      what_doing:
-      what_wrong:
-      'yes':
+      close: Agħlaq
+      dont_include_personal_info: Tinkludix informazzjoni personali jew finanzjarja
+        bħan-numru tal-Assigurazzjoni Nazzjonali tiegħek jew id-dettalji tal-karta
+        tal-kreditu.
+      email_address: Indirizz tal-imejl
+      help_us_improve_govuk: Għinna ntejbu GOV.UK
+      is_not_useful: din il-paġna m'hijiex utli
+      is_this_page_useful: din il-paġna hija utli?
+      is_useful: din il-paġna utli
+      maybe: Forsi
+      more_about_visit: Biex tgħinna ntejbu  GOV.UK, nixtiequ nkunu nafu iktar dwar
+        il-vista tiegħek ta' llum. Ser nibgħatulek link b'formola għall-feedback.  Din
+        ser tieħu biss 2 minuti biex timliha. Tinkwetax għax m'aħniex ser nibgħatulek
+        spam jew nibgħatu l-indirizz tal-imejl tiegħek lil ħaddieħor.
+      'no': Le
+      send: Ibgħat
+      send_me_survey: Ibgħatli l-istħarriġ
+      something_wrong: Irrapporta problema b'din il-paġna
+      thank_you_for_feedback: Grazzi tal-feedback tiegħek
+      what_doing: X'kont qed tagħmel?
+      what_wrong: X'mar ħażin?
+      'yes': Iva
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
+      consultations: Konsultazzjonijiet
+      departments: Dipartimenti
+      get-involved: Involvi ruħek
+      how-government-works: Kif jaħdem il-gvern
+      news_and_communications: Aħbarijiet u komunikazzjonijiet
+      statistics: Statistiċi
+      worldwide: Madwar id-dinja
     layout_footer:
-      copyright_html:
-      licence_html:
-      support_links:
-    layout_for_public:
-      account_layout:
-        feedback:
-          banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
-        navigation:
-          destroy_user_session:
-          menu_bar:
-            account:
-              link_text:
-            manage:
-              link_text:
-            security:
-              link_text:
-          user_root_path:
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
+        Crown copyright</a>
+      licence_html: Il-kontenut huwa kollu disponibbli taħt <a class="govuk-footer__link"
+        href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+        rel="license">Liċenzja ta' Gvern miftuħ v3.0</a>, except where otherwise stated
+      support_links: Links ta' għajnuna
     layout_header:
-      hide_button:
-      menu:
-      search_button:
-      show_button:
-      top_level:
-    layout_super_navigation_header:
-      logo_link_title:
-      logo_text:
-      menu_toggle_label:
-        hide:
-        show:
-      navigation_links:
-      navigation_menu_heading:
-      navigation_search_heading:
-      navigation_search_subheading:
-      popular_links:
-      popular_links_heading:
-      search_text:
+      hide_button: Aħbi t-tfittxija
+      menu: Menu
+      search_button: Fittex f'GOV.UK
+      show_button: Uri t-tfittxija
+      top_level: Livell ta' fuq nett
     metadata:
-      from:
-      history:
-      last_updated:
-      part_of:
-      published:
-      see_all_updates:
-      toggle_less:
-      toggle_more:
+      from: Minn
+      history: Storja
+      last_updated: Aġġornat l-aħħar
+      part_of: Parti minn
+      published: Ippubblikat
+      see_all_updates: Ara l-aġġornamenti kollha
+      toggle_less: Ara inqas
+      toggle_more: "+ %{number}"
     modal_dialogue:
-      close_modal:
-    notice:
-      banner_title:
+      close_modal: Agħlaq id-djalogu modali
     organisation_schema:
-      all_content_search_description:
+      all_content_search_description: Sib il-kontenut kollu mingħand %{organisation}
     previous_and_next_navigation:
-      pagination:
+      pagination: Paġinazzjoni
     print_link:
-      text:
+      text: Stampa din il-paġna
     radio:
-      or:
+      or: jew
     related_footer_navigation:
-      collections:
-      policies:
-      statistical_data_sets:
-      topical_events:
+      collections: Kollezzjonijiet
+      policies: Politiki
+      statistical_data_sets: Settijiet tad-dejta bl-istatistiċi
+      topical_events: Avvenimenti topiċi
     related_navigation:
-      collections:
-      external_links:
-      policies:
-      publishers:
-      related_contacts:
-      related_content:
-      related_external_links:
-      related_guides:
-      statistical_data_sets:
-      topical_events:
-      topics:
+      collections: Kollezzjoni
+      external_links: X'imkien ieħor fuq l-internet
+      policies: Politika
+      publishers: Ippubblikata minn
+      related_contacts: Kuntatti oħra
+      related_content: Kontenut relatat
+      related_external_links: X'imkien ieħor fuq l-internet
+      related_guides: Gwida dettaljata
+      statistical_data_sets: Sett tad-dejta bl-istatistiċi
+      topical_events: Avveniment topiku
+      topics: Esplora s-suġġett
       transition:
-        link_path:
-        link_text:
-        title:
-      world_locations:
+        hub_page_link_path: "/transition-check/questions"
+        hub_page_link_text: Ġib lista personalizzata ta' azzjonijiet
+        hub_page_title: Brexit checker
+        link_path: "/brexit"
+        link_text: Iċċekkja x'għandek bżonn tagħmel
+        title: Brexit
+      world_locations: Postijiet fid-dinja
     search_box:
-      input_title:
-      label:
-      search_button:
+      input_title: Fittex
+      label: Fittex fuq GOV.UK
+      search_button: Fittex
     show_password:
-      announce_hide:
-      announce_show:
-      hide:
-      hide_password:
-      show:
-      show_password:
+      announce_hide: Il-password tiegħek hija moħbija
+      announce_show: Il-password tiegħek qed tidher
+      hide: Aħbi
+      hide_password: Aħbi l-password
+      show: Uri
+      show_password: Uri l-password
     skip_link:
-      text:
+      text: Aqbeż għall-kontenut prinċipali
     step_by_step_nav:
-      hide:
-      hide_all:
-      show:
-      show_all:
+      hide: Aħbi
+      hide_all: Aħbi l-passi kollha
+      show: Uri
+      show_all: Uri l-passi kollha
     step_by_step_nav_related:
-      part_of:
+      part_of: Parti minn
     subscription_links:
-      email_signup_link_text:
-      feed_link_label:
-      feed_link_text:
-      subscriptions:
+      email_signup_link_text: Ġib l-imejls
+      feed_link_label: Ikkopja u ippejstja dan l-URL fil-qarrej tal-feed tiegħek
+      feed_link_text: Abbona għall-feed
+      subscriptions: Abbonamenti
     success_alert:
-      success:
+      success: Suċċess
     summary_list:
-      delete:
-      edit:
+      delete: Ħassar
+      edit: Biddel
     tabs:
-      contents:
+      contents: Werrej
+  common:
+    translations: Traduzzjonijiet

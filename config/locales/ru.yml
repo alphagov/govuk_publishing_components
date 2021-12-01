@@ -1,204 +1,180 @@
----
 ru:
-  common:
-    translations:
   components:
-    accordion:
-      hide:
-      hide_all:
-      show:
-      show_all:
-      this_section_visually_hidden:
-    article_schema:
-      scoped_search_description:
     attachment:
-      opendocument_html:
-      order_a_copy:
       page:
-        one:
-        other:
-      reference:
-      request_format_cta:
-      request_format_details_html:
-      request_format_text:
+        one: 1 страница
+        few:
+        many:
+        other: "%{count} страниц"
+      opendocument_html: Файл находится в <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
+        target=%{target} class='govuk-link'>формате</a> OpenDocument
+      order_a_copy: Заказать копию
+      reference: 'Ссылка: %{reference}'
+      request_format_cta: Запросить в доступном формате.
+      request_format_details_html: "Если вы используете вспомогательные технологии
+        (например, программу чтения с экрана), \nи вам нужна версия этого документа
+        в более доступном формате, отправьте \nписьмо по адресу электронной почты
+        <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>.
+        В нем укажите, какой формат вам нужен. Хорошо было бы, если бы вы также указали,
+        какие вспомогательные технологии вы используете."
+      request_format_text: "Данный документ может быть не доступен лицам, использующим
+        \nвспомогательные технологии."
+    accordion:
+      hide: Скрыть
+      hide_all: Скрыть все секции
+      show: Показать
+      show_all: Показать все секции
+      this_section_visually_hidden: 'данная секция '
+    article_schema:
+      scoped_search_description: Искать в %{title}
     back_link:
-      back:
+      back: Назад
     character_count:
-      body:
+      body: Вы можете ввести до %{number} %{type}
       type:
-        characters:
-        words:
+        characters: символов
+        words: слов
     checkboxes:
-      or:
+      or: или
     contents_list:
-      contents:
+      contents: Содержание
     contextual_sidebar:
-      pretitle:
+      pretitle: Также является частью
     cookie_banner:
       buttons:
-        accept_cookies:
-        reject_cookies:
-      confirmation_message:
-      confirmation_message_link:
-      hide:
+        accept_cookies: Принять дополнительные файлы "cookie"
+        reject_cookies: Отклонить дополнительные файлы "cookie"
+      confirmation_message: Вы можете %{link} в любое время.
+      confirmation_message_link: изменить настройки файлов "cookie"
+      hide: Скрыть это сообщение
       text:
-      title:
-    devolved_nations:
-      applies_to:
-      connectors:
-        last_word:
-        two_words:
-      england:
-      northern_ireland:
-      scotland:
-      wales:
+      - Мы используем некоторые важные файлы cookie для работы данного сайта. Мы хотели
+        бы установить дополнительные файлы cookie
+      - чтобы понимать
+      - как вы используете GOV.UK
+      - запоминать ваш настройки и улучшать государственные услуги. Мы также используем
+        файлы cookie
+      - установленные другими сайтами
+      - чтобы поставлять контент из их услуг.
+      title: Файлы "cookie" на GOV.UK
     feedback:
-      close:
-      dont_include_personal_info:
-      email_address:
-      help_us_improve_govuk:
-      is_not_useful:
-      is_this_page_useful:
-      is_useful:
-      maybe:
-      more_about_visit:
-      'no':
-      send:
-      send_me_survey:
-      something_wrong:
-      thank_you_for_feedback:
-      what_doing:
-      what_wrong:
-      'yes':
+      close: Закрыть
+      dont_include_personal_info: Не указывайте личную или финансовую информацию,
+        например номер национального страхования или данные кредитной карты.
+      email_address: Адрес электронной почты
+      help_us_improve_govuk: Помогите нам сделать GOV.UK лучше
+      is_not_useful: эта страница бесполезна
+      is_this_page_useful: Эта страница полезна?
+      is_useful: эта страница полезна
+      maybe: Может
+      more_about_visit: Чтобы улучшить GOV.UK, мы хотели бы узнать больше о вашем
+        сегодняшнем визите. Мы отправим вам ссылку на форму обратной связи. Заполнение
+        займет всего 2 минуты. Мы не будем рассылать вам спам или сообщать кому-либо
+        ваш адрес электронной почты.
+      'no': Нет
+      send: Отправить
+      send_me_survey: Отправить мне опрос
+      something_wrong: Сообщить о проблеме со страницей
+      thank_you_for_feedback: Спасибо за отзыв
+      what_doing: Что вы делали?
+      what_wrong: Что пошло не так?
+      'yes': Да
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
+      consultations: Консультации
+      departments: Отделы
+      get-involved: Принимать участие
+      how-government-works: Как работает правительство
+      news_and_communications: Новости и коммуникация
+      statistics: Статистика
+      worldwide: По всему миру
     layout_footer:
-      copyright_html:
-      licence_html:
-      support_links:
-    layout_for_public:
-      account_layout:
-        feedback:
-          banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
-        navigation:
-          destroy_user_session:
-          menu_bar:
-            account:
-              link_text:
-            manage:
-              link_text:
-            security:
-              link_text:
-          user_root_path:
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
+        Авторское право Британского содружества наций</a>
+      licence_html: Все содержимое доступно на <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+        rel="license"> Открытой государственной лицензии v3.0</a>, если не указано
+        иное
+      support_links: Ссылки поддержки
     layout_header:
-      hide_button:
-      menu:
-      search_button:
-      show_button:
-      top_level:
-    layout_super_navigation_header:
-      logo_link_title:
-      logo_text:
-      menu_toggle_label:
-        hide:
-        show:
-      navigation_links:
-      navigation_menu_heading:
-      navigation_search_heading:
-      navigation_search_subheading:
-      popular_links:
-      popular_links_heading:
-      search_text:
+      hide_button: Скрыть поиск
+      menu: Меню
+      search_button: Поиск на GOV.UK
+      show_button: Показать поиск
+      top_level: Высший уровень
     metadata:
-      from:
-      history:
-      last_updated:
-      part_of:
-      published:
-      see_all_updates:
-      toggle_less:
-      toggle_more:
+      from: Из
+      history: История
+      last_updated: Последнее обновление
+      part_of: Является частью
+      published: Опубликовано
+      see_all_updates: Посмотреть все обновления
+      toggle_less: Показать меньше
+      toggle_more: "+ %{number} больше"
     modal_dialogue:
-      close_modal:
-    notice:
-      banner_title:
+      close_modal: Закрыть модальное диалоговое окно
     organisation_schema:
-      all_content_search_description:
+      all_content_search_description: Найти весь контент от %{organization}
     previous_and_next_navigation:
-      pagination:
+      pagination: Разбивка
     print_link:
-      text:
+      text: Распечатать эту страницу
     radio:
-      or:
+      or: или
     related_footer_navigation:
-      collections:
-      policies:
-      statistical_data_sets:
-      topical_events:
+      collections: Коллекции
+      policies: Политики
+      statistical_data_sets: Наборы статистических данных
+      topical_events: Актуальные события
     related_navigation:
-      collections:
-      external_links:
-      policies:
-      publishers:
-      related_contacts:
-      related_content:
-      related_external_links:
-      related_guides:
-      statistical_data_sets:
-      topical_events:
-      topics:
+      collections: Коллекция
+      external_links: В другом месте в сети
+      policies: Политика
+      publishers: Опубликовано
+      related_contacts: Другие контактные данные
+      related_content: Сопутствующий контент
+      related_external_links: В другом месте в сети
+      related_guides: Подробное руководство
+      statistical_data_sets: Наборы статистических данных
+      topical_events: Актуальные события
+      topics: Изучить событие
       transition:
-        link_path:
-        link_text:
-        title:
-      world_locations:
+        hub_page_link_path: "/transition-check/questions"
+        hub_page_link_text: Получите персональный список действий
+        hub_page_title: Проверка Брексита
+        link_path: "/brexit"
+        link_text: Проверьте, что вам нужно сделать
+        title: Брексит
+      world_locations: Места нахождения по миру
     search_box:
-      input_title:
-      label:
-      search_button:
+      input_title: Поиск
+      label: Поиск на GOV.UK
+      search_button: Поиск
     show_password:
-      announce_hide:
-      announce_show:
-      hide:
-      hide_password:
-      show:
-      show_password:
+      announce_hide: Ваш пароль скрыт
+      announce_show: Ваш пароль показан
+      hide: Скрыть
+      hide_password: Скрыть пароль
+      show: Показать
+      show_password: Показать пароль
     skip_link:
-      text:
+      text: Перейти к основному контенту
     step_by_step_nav:
-      hide:
-      hide_all:
-      show:
-      show_all:
+      hide: Скрыть
+      hide_all: Скрыть все шаги
+      show: Показать
+      show_all: Показать все шаги
     step_by_step_nav_related:
-      part_of:
+      part_of: Является частью
     subscription_links:
-      email_signup_link_text:
-      feed_link_label:
-      feed_link_text:
-      subscriptions:
+      email_signup_link_text: Получить электронное письмо
+      feed_link_label: Скопируйте и вставьте этот URL в программу чтения лент
+      feed_link_text: Подписаться на ленту
+      subscriptions: Подписки
     success_alert:
-      success:
+      success: Успешно
     summary_list:
-      delete:
-      edit:
+      delete: Удалить
+      edit: Изменить
     tabs:
-      contents:
+      contents: Содержание
+  common:
+    translations: Переводы

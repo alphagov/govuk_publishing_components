@@ -1,204 +1,177 @@
----
 az:
   common:
-    translations:
+    translations: Tərcümələr
   components:
     accordion:
-      hide:
-      hide_all:
-      show:
-      show_all:
-      this_section_visually_hidden:
+      hide: Gizlət
+      hide_all: Bütün bölmələri gizlət
+      show: Göstər
+      show_all: Bütün bölmələri göstər
+      this_section_visually_hidden: " bu bölmə"
     article_schema:
-      scoped_search_description:
+      scoped_search_description: "%{title} üzrə axtar"
     attachment:
-      opendocument_html:
-      order_a_copy:
+      opendocument_html: Bu fayl <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
+        target=%{target} class='govuk-link'>OpenDocument</a> formatındadır
+      order_a_copy: Surətini sifariş edin
       page:
-        one:
-        other:
-      reference:
-      request_format_cta:
-      request_format_details_html:
-      request_format_text:
+        one: 1 səhifə
+        other: "%{count} səhifə"
+      reference: 'İst: %{reference}'
+      request_format_cta: İstifadə edilə bilən format tələb edin.
+      request_format_details_html: Köməkçi texnologiyalardan (ekran oxuyucusu kimi)
+        istifadə edirsinizsə və sizə bu sənədin daha rahat istifadə edilə bilən formatda
+        olan versiyası lazımdırsa, aşağıdakı ünvana e-məktubla müraciət edin <a href='mailto:%{alternative_format_contact_email}'
+        target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>.
+        Sizə hansı formatın lazım olduğunu bizə söyləyin. Hansı köməkçi texnologiyadan
+        istifadə etdiyinizi bildirməyiniz bizə kömək edəcək.
+      request_format_text: Bu fayl köməkçi texnologiya istifadəçiləri üçün uyğun olmaya
+        bilər.
     back_link:
-      back:
+      back: Geriyə
     character_count:
-      body:
+      body: "%{number} %{type} qədər"
       type:
-        characters:
-        words:
+        characters: simvol
+        words: söz
     checkboxes:
-      or:
+      or: və ya
     contents_list:
-      contents:
+      contents: Məzmun daxil edə bilərsiniz
     contextual_sidebar:
-      pretitle:
+      pretitle: Həmçinin bir hissəsini
     cookie_banner:
       buttons:
-        accept_cookies:
-        reject_cookies:
-      confirmation_message:
-      confirmation_message_link:
-      hide:
+        accept_cookies: Əlavə kukilər qəbul edin
+        reject_cookies: Əlavə kukilərdən imtina edin
+      confirmation_message: İstənilən vaxt %{link}.
+      confirmation_message_link: Kuki parametrlərinizi dəyişdirin
+      hide: Bu mesajı gizlət
       text:
-      title:
-    devolved_nations:
-      applies_to:
-      connectors:
-        last_word:
-        two_words:
-      england:
-      northern_ireland:
-      scotland:
-      wales:
+      - Biz bu vebsaytın işləməsini təmin etmək üçün bəzi zəruri kukilərdən istifadə
+        edirik.
+      - Biz GOV.UK-dən necə istifadə etdiyinizi anlamaq
+      - parametrlərinizi yadda saxlamaq və hökumət xidmətlərini təkmilləşdirmək üçün
+        əlavə kukilər yerləşdirmək istərdik.
+      - Biz həmçinin digər saytların xidmətlərindən məzmun göndərməyimizə kömək etmək
+        üçün həmin saytlar tərəfindən yerləşdirilmiş kukilərdən istifadə edirik.
+      title: GOV.UK-dəki kukilər
     feedback:
-      close:
-      dont_include_personal_info:
-      email_address:
-      help_us_improve_govuk:
-      is_not_useful:
-      is_this_page_useful:
-      is_useful:
-      maybe:
-      more_about_visit:
-      'no':
-      send:
-      send_me_survey:
-      something_wrong:
-      thank_you_for_feedback:
-      what_doing:
-      what_wrong:
-      'yes':
+      close: Bağla
+      dont_include_personal_info: Sosial sığorta nömrəniz və ya kredit kartınızın
+        məlumatları kimi şəxsi və ya maliyyə məlumatları daxil etməyin.
+      email_address: E-poçt ünvanı
+      help_us_improve_govuk: Bizə GOV.UK-i təkmilləşdirməkdə kömək edin
+      is_not_useful: bu səhifə faydalı deyildir
+      is_this_page_useful: Bu səhifə faydalıdır?
+      is_useful: bu səhifə faydalıdır
+      maybe: Ola bilər
+      more_about_visit: GOV.UK təkmilləşdirməkdə bizə kömək etməyiniz üçün, biz bugünkü
+        baş çəkməyinizlə bağlı daha çox şey bilmək istərdik. Biz sizə rəy forması
+        üçün keçidi göndərəcəyik. Onun doldurulması yalnız 2 dəqiqə çəkəcək. Narahat
+        olmayın, biz sizə spam göndərməyəcəyik və ya e-poçt ünvanınızı heç kimlə paylaşmayacağıq.
+      'no': Xeyr
+      send: Göndər
+      send_me_survey: Mənə sorğu göndər
+      something_wrong: Bu səhifə ilə bağlı problemi bildirin
+      thank_you_for_feedback: Rəyinizə görə təşəkkür edirik
+      what_doing: Nə edirdiniz?
+      what_wrong: Hansı yanlışlıq oldu?
+      'yes': Bəli
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
+      consultations: Məsləhətləşmələr
+      departments: Departamnetlər
+      get-involved: Qatılın
+      how-government-works: Hökumət necə işləyir
+      news_and_communications: Yeniliklər və məlumatlar
+      statistics: Statistika
+      worldwide: Dünya üzrə
     layout_footer:
-      copyright_html:
-      licence_html:
-      support_links:
-    layout_for_public:
-      account_layout:
-        feedback:
-          banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
-        navigation:
-          destroy_user_session:
-          menu_bar:
-            account:
-              link_text:
-            manage:
-              link_text:
-            security:
-              link_text:
-          user_root_path:
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">Â©
+        Crown copyright</a>
+      licence_html: Bütün məzmunlar <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+        rel="license">v3.0 Açıq dövlət lisenziyasına əsasən mövcuddur</a>(başqa cür
+        nəzərdə tutulmuş hallar istisna olmaqla)
+      support_links: Dəstək keçidləri
     layout_header:
-      hide_button:
-      menu:
-      search_button:
-      show_button:
-      top_level:
-    layout_super_navigation_header:
-      logo_link_title:
-      logo_text:
-      menu_toggle_label:
-        hide:
-        show:
-      navigation_links:
-      navigation_menu_heading:
-      navigation_search_heading:
-      navigation_search_subheading:
-      popular_links:
-      popular_links_heading:
-      search_text:
+      hide_button: Axtarışı gizlət
+      menu: Menyu
+      search_button: GOV.UK-də axtarış
+      show_button: Axtarışı göstər
+      top_level: Yüksək səviyyəli
     metadata:
-      from:
-      history:
-      last_updated:
-      part_of:
-      published:
-      see_all_updates:
-      toggle_less:
-      toggle_more:
+      from: "...dan (dən)"
+      history: Tarix
+      last_updated: Son yenilənmə
+      part_of: Hissə
+      published: Dərc edilib
+      see_all_updates: Bütün yeniləmələrə baxın
+      toggle_less: Daha azını göstər
+      toggle_more: "+ %{number} daha çox"
     modal_dialogue:
-      close_modal:
-    notice:
-      banner_title:
+      close_modal: Modal dialoqu bağla
     organisation_schema:
-      all_content_search_description:
+      all_content_search_description: "%{organisation}-dan bütün məzmunu tap"
     previous_and_next_navigation:
-      pagination:
+      pagination: Səhifələrə bölmə
     print_link:
-      text:
+      text: Bu səhifəni çap et
     radio:
-      or:
+      or: və ya
     related_footer_navigation:
-      collections:
-      policies:
-      statistical_data_sets:
-      topical_events:
+      collections: Yığımlar
+      policies: Siyasətlər
+      statistical_data_sets: Statistik məlumat paketləri
+      topical_events: Aktual tədbirlər
     related_navigation:
-      collections:
-      external_links:
-      policies:
-      publishers:
-      related_contacts:
-      related_content:
-      related_external_links:
-      related_guides:
-      statistical_data_sets:
-      topical_events:
-      topics:
+      collections: Yığım
+      external_links: İnternetdə başqa yerdə
+      policies: Siyasət
+      publishers: Dərc edilib
+      related_contacts: Digər kontaktlar
+      related_content: Əlaqədar məzmun
+      related_external_links: İnternetdə başqa yerdə
+      related_guides: Təfərrüatlı göstəriş
+      statistical_data_sets: Statistik məlumat paketi
+      topical_events: Aktual tədbir
+      topics: Mövzunu araşdırın
       transition:
-        link_path:
-        link_text:
-        title:
-      world_locations:
+        hub_page_link_path: "/transition-check/questions"
+        hub_page_link_text: Fəaliyyətlər üzrə fərdi siyahı əldə edin
+        hub_page_title: Brexit yoxlayıcısı
+        link_path: "/brexit"
+        link_text: Nələri etməli olduğunuzu yoxlayın
+        title: Brexit
+      world_locations: Dünya üzrə yerləri
     search_box:
-      input_title:
-      label:
-      search_button:
+      input_title: Axtar
+      label: GOV.UK-də axtar
+      search_button: Axtar
     show_password:
-      announce_hide:
-      announce_show:
-      hide:
-      hide_password:
-      show:
-      show_password:
+      announce_hide: Şifrəniz gizlədilib
+      announce_show: Şifrəniz göstərilir
+      hide: Gizlət
+      hide_password: Şifrəni gizlət
+      show: Göstər
+      show_password: Şifrəni göstər
     skip_link:
-      text:
+      text: Əsas məzmuna keçin
     step_by_step_nav:
-      hide:
-      hide_all:
-      show:
-      show_all:
+      hide: Gizlət
+      hide_all: Bütün addımları gizlət
+      show: Göstər
+      show_all: Bütün addımları göstər
     step_by_step_nav_related:
-      part_of:
+      part_of: Hissə
     subscription_links:
-      email_signup_link_text:
-      feed_link_label:
-      feed_link_text:
-      subscriptions:
+      email_signup_link_text: E-məktublar alın
+      feed_link_label: Bu URL-i veb-kanal oxuyucunuza daxil edin
+      feed_link_text: Veb-kanala abunə olun
+      subscriptions: Abunəliklər
     success_alert:
-      success:
+      success: Uğurlu
     summary_list:
-      delete:
-      edit:
+      delete: Sil
+      edit: Dəyiş
     tabs:
-      contents:
+      contents: Məzmunlar

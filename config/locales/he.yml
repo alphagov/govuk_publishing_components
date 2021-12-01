@@ -1,204 +1,171 @@
----
 he:
-  common:
-    translations:
   components:
-    accordion:
-      hide:
-      hide_all:
-      show:
-      show_all:
-      this_section_visually_hidden:
-    article_schema:
-      scoped_search_description:
     attachment:
-      opendocument_html:
-      order_a_copy:
       page:
-        one:
-        other:
-      reference:
-      request_format_cta:
-      request_format_details_html:
-      request_format_text:
+        one: דף 1
+        other: "%{count} דפים"
+      opendocument_html: קובץ זה נמצא ב <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
+        target=%{target} class='govuk-link'>OpenDocument</a> פורמט
+      order_a_copy: הזמן עותק
+      reference: 'הפניה: %{reference}'
+      request_format_cta: בקש פורמט נגיש.
+      request_format_details_html: אם אתה משתמש בטכנולוגיה מסייעת (כגון קורא מסך)
+        וזקוק לגרסה של מסמך זה בפורמט נגיש יותר, שלח דואר אלקטרוני ל <a href='mailto:%{alternative_format_contact_email}'
+        target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>.
+        אנא ספר לנו איזה פורמט אתה צריך. זה יעזור לנו אם תגיד באיזו טכנולוגיה מסייעת
+        אתה משתמש.
+      request_format_text: ייתכן שקובץ זה אינו מתאים למשתמשי טכנולוגיה מסייעת.
+    accordion:
+      hide: הסתר
+      hide_all: הסתר כל המקטעים
+      show: הצג
+      show_all: הצג כל המקטעים
+      this_section_visually_hidden: מקטע זה
+    article_schema:
+      scoped_search_description: חפש בתוך %{title}
     back_link:
-      back:
+      back: חזור
     character_count:
-      body:
+      body: תוכל להזין עד% {number}% {type}
       type:
-        characters:
-        words:
+        characters: תווים
+        words: מילים
     checkboxes:
-      or:
+      or: או
     contents_list:
-      contents:
+      contents: תוכן
     contextual_sidebar:
-      pretitle:
+      pretitle: גם חלק של
     cookie_banner:
       buttons:
-        accept_cookies:
-        reject_cookies:
-      confirmation_message:
-      confirmation_message_link:
-      hide:
+        accept_cookies: קבל עוגיות נוספות
+        reject_cookies: דחה עוגיות נוספות
+      confirmation_message: אתה יכול %{link} בכל עת.
+      confirmation_message_link: שנה את הגדרות העוגיות שלך
+      hide: הסתר את ההודעה הזו
       text:
-      title:
-    devolved_nations:
-      applies_to:
-      connectors:
-        last_word:
-        two_words:
-      england:
-      northern_ireland:
-      scotland:
-      wales:
+      - אנו משתמשים בכמה עוגיות חיוניות כדי לגרום לאתר זה לפעול.
+      - ברצוננו להגדיר קובצי עוגיות נוספים כדי להבין כיצד אתה משתמש ב- GOV.UK
+      - לזכור את ההגדרות שלך ולשפר את השירותים הממשלתיים.
+      - 'אנו משתמשים גם בקובצי עוגיות שהוגדרו על ידי אתרים אחרים שיעזרו לנו להעביר
+        תוכן משירותיהם. '
+      title: עוגיות ב- GOV.UK
     feedback:
-      close:
-      dont_include_personal_info:
-      email_address:
-      help_us_improve_govuk:
-      is_not_useful:
-      is_this_page_useful:
-      is_useful:
-      maybe:
-      more_about_visit:
-      'no':
-      send:
-      send_me_survey:
-      something_wrong:
-      thank_you_for_feedback:
-      what_doing:
-      what_wrong:
-      'yes':
+      close: סגור
+      dont_include_personal_info: 'אל תכלול מידע אישי או פיננסי כמו מספר הביטוח הלאומי
+        שלך או פרטי כרטיס האשראי שלך. '
+      email_address: כתובת דואר אלקטרוני
+      help_us_improve_govuk: עזור לנו לשפר את GOV.UK
+      is_not_useful: דף זה אינו שימושי
+      is_this_page_useful: האם דף זה שימושי?
+      is_useful: דף זה שימושי
+      maybe: אולי
+      more_about_visit: כדי לעזור לנו לשפר את GOV.UK, ברצוננו לדעת עוד על הביקור שלך
+        היום. אנו נשלח לך קישור לטופס משוב. ייקח רק 2 דקות למלא. אל תדאג לא נשלח לך
+        דואר זבל או נשתף את כתובת דואר אלקטרוני שלך עם אף אחד.
+      'no': לא
+      send: שלח
+      send_me_survey: שלח לי את הסקר
+      something_wrong: דווח על בעיה בדף זה
+      thank_you_for_feedback: תודה על המשוב
+      what_doing: מה אתה עושה?
+      what_wrong: מה השתבש?
+      'yes': כן
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
+      consultations: דיונים
+      departments: מחלקות
+      get-involved: להתערב
+      how-government-works: איך הממשלה פועלת
+      news_and_communications: חדשות ותקשורת
+      statistics: סטטיסטיקה
+      worldwide: ברחבי העולם
     layout_footer:
-      copyright_html:
-      licence_html:
-      support_links:
-    layout_for_public:
-      account_layout:
-        feedback:
-          banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
-        navigation:
-          destroy_user_session:
-          menu_bar:
-            account:
-              link_text:
-            manage:
-              link_text:
-            security:
-              link_text:
-          user_root_path:
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
+        Crown copyright</a>
+      licence_html: כל התוכן זמין תחת <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+        rel="license">פתוח רישיון ממשלתי v3.0</a>, אלא אם מצוין אחרת
+      support_links: תומך בקישורים
     layout_header:
-      hide_button:
-      menu:
-      search_button:
-      show_button:
-      top_level:
-    layout_super_navigation_header:
-      logo_link_title:
-      logo_text:
-      menu_toggle_label:
-        hide:
-        show:
-      navigation_links:
-      navigation_menu_heading:
-      navigation_search_heading:
-      navigation_search_subheading:
-      popular_links:
-      popular_links_heading:
-      search_text:
+      hide_button: הסתר חיפוש
+      menu: תפריט
+      search_button: חפש GOV.UK
+      show_button: הצג חיפוש
+      top_level: רמה עליונה
     metadata:
-      from:
-      history:
-      last_updated:
-      part_of:
-      published:
-      see_all_updates:
-      toggle_less:
-      toggle_more:
+      from: מ-
+      history: היסטוריה
+      last_updated: עדכון אחרון
+      part_of: חלק של
+      published: פורסם
+      see_all_updates: ראה כל העדכונים
+      toggle_less: הצג פחות
+      toggle_more: " + %{number} עוד"
     modal_dialogue:
-      close_modal:
-    notice:
-      banner_title:
+      close_modal: סגור דיאלוג מודאלי
     organisation_schema:
-      all_content_search_description:
+      all_content_search_description: מצא את כל התוכן של %{organization}
     previous_and_next_navigation:
-      pagination:
+      pagination: חלוקה לעמודים
     print_link:
-      text:
+      text: הדפס עמוד זה
     radio:
-      or:
+      or: או
     related_footer_navigation:
-      collections:
-      policies:
-      statistical_data_sets:
-      topical_events:
+      collections: אוספים
+      policies: מדיניות
+      statistical_data_sets: מערכי נתונים סטטיסטיים
+      topical_events: אירועים אקטואליים
     related_navigation:
-      collections:
-      external_links:
-      policies:
-      publishers:
-      related_contacts:
-      related_content:
-      related_external_links:
-      related_guides:
-      statistical_data_sets:
-      topical_events:
-      topics:
+      collections: אוסף
+      external_links: במקומות אחרים ברשת
+      policies: מדיניות
+      publishers: פורסם על-ידי
+      related_contacts: אנשי קשר אחרים
+      related_content: תוכן קשור
+      related_external_links: במקומות אחרים ברשת
+      related_guides: הדרכה מפורטת
+      statistical_data_sets: מערך נתונים סטטיסטיים
+      topical_events: אירוע אקטואלי
+      topics: סייר את הנושא
       transition:
-        link_path:
-        link_text:
-        title:
-      world_locations:
+        hub_page_link_path: "/transition-check/questions"
+        hub_page_link_text: קבל רשימת פעולות מותאמת אישית
+        hub_page_title: בודק ברקזיט
+        link_path: "/brexit"
+        link_text: בדוק מה אתה צריך לעשות
+        title: " ברקזיט"
+      world_locations: מיקומים גלובאליים
     search_box:
-      input_title:
-      label:
-      search_button:
+      input_title: 'חפש '
+      label: 'חפש ב- GOV.UK '
+      search_button: חפש
     show_password:
-      announce_hide:
-      announce_show:
-      hide:
-      hide_password:
-      show:
-      show_password:
+      announce_hide: הסיסמה שלך מוסתרת
+      announce_show: הסיסמה שלך מוצגת
+      hide: הסתר
+      hide_password: הסתר סיסמה
+      show: הצג
+      show_password: הצג סיסמה
     skip_link:
-      text:
+      text: דלג לתוכן הראשי
     step_by_step_nav:
-      hide:
-      hide_all:
-      show:
-      show_all:
+      hide: הסתר
+      hide_all: הסתר את כל השלבים
+      show: הצג
+      show_all: הצג את כל השלבים
     step_by_step_nav_related:
-      part_of:
+      part_of: חלק של
     subscription_links:
-      email_signup_link_text:
-      feed_link_label:
-      feed_link_text:
-      subscriptions:
+      email_signup_link_text: קבל הודעות דואר אלקטרוני
+      feed_link_label: העתק והדבק URL זו בקורא הזנות שלך
+      feed_link_text: הירשם להזנה
+      subscriptions: מנויים
     success_alert:
-      success:
+      success: הצלחה
     summary_list:
-      delete:
-      edit:
+      delete: מחק
+      edit: שנה
     tabs:
-      contents:
+      contents: תוכן
+  common:
+    translations: תרגומים

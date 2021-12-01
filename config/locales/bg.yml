@@ -1,204 +1,177 @@
----
 bg:
-  common:
-    translations:
   components:
-    accordion:
-      hide:
-      hide_all:
-      show:
-      show_all:
-      this_section_visually_hidden:
-    article_schema:
-      scoped_search_description:
     attachment:
-      opendocument_html:
-      order_a_copy:
       page:
-        one:
-        other:
-      reference:
-      request_format_cta:
-      request_format_details_html:
-      request_format_text:
+        one: 1-ва страница
+        other: "%{count} страници"
+      opendocument_html: Този файл е във <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
+        target=%{target} class='govuk-link'>формат OpenDocument</a>
+      order_a_copy: Поръчайте копие
+      reference: 'Реф: %{reference}'
+      request_format_cta: Поискайте достъпен формат.
+      request_format_details_html: Ако използвате помощна технология (например екранен
+        четец) и се нуждаете от версия на този документ в по-достъпен формат, моля,
+        изпратете имейл до <a href='mailto:%{alternative_format_contact_email}' target='_blank'
+        class='govuk-link'>%{alternative_format_contact_email}</a>. Моля, посочете
+        ни какъв формат ви е необходим. Ще ни улесните, ако посочите какви помощни
+        технологии използвате.
+      request_format_text: Този файл може да не е подходящ за потребители на помощни
+        технологии.
+    accordion:
+      hide: Скриване
+      hide_all: Скриване на всички раздели
+      show: Показване
+      show_all: Показване на всички раздели
+      this_section_visually_hidden: " този раздел"
+    article_schema:
+      scoped_search_description: Търсене в %{title}
     back_link:
-      back:
+      back: Назад
     character_count:
-      body:
+      body: Можете да въвеждате до %{number} %{type}
       type:
-        characters:
-        words:
+        characters: символа
+        words: думи
     checkboxes:
-      or:
+      or: или
     contents_list:
-      contents:
+      contents: Съдържание
     contextual_sidebar:
-      pretitle:
+      pretitle: Също част от
     cookie_banner:
       buttons:
-        accept_cookies:
-        reject_cookies:
-      confirmation_message:
-      confirmation_message_link:
-      hide:
+        accept_cookies: Приемане на допълнителни бисквитки
+        reject_cookies: Отказване от допълнителни бисквитки
+      confirmation_message: Можете да %{link} по всяко време.
+      confirmation_message_link: Промяна на настройките за бисквитките
+      hide: Скриване на това съобщение
       text:
-      title:
-    devolved_nations:
-      applies_to:
-      connectors:
-        last_word:
-        two_words:
-      england:
-      northern_ireland:
-      scotland:
-      wales:
+      - Използваме някои основни бисквитки
+      - за да работи този уебсайт.
+      - Бихме искали да зададем допълнителни „бисквитки“
+      - за да разберем как използвате GOV.UK
+      - да запомним настройките ви и да подобрим правителствените услуги
+      - Използваме също и бисквитки
+      - зададени от други сайтове
+      - за да ни помогнат да предоставим съдържание от техните услуги.
+      title: Бисквитки на GOV.UK
     feedback:
-      close:
-      dont_include_personal_info:
-      email_address:
-      help_us_improve_govuk:
-      is_not_useful:
-      is_this_page_useful:
-      is_useful:
-      maybe:
-      more_about_visit:
-      'no':
-      send:
-      send_me_survey:
-      something_wrong:
-      thank_you_for_feedback:
-      what_doing:
-      what_wrong:
-      'yes':
+      close: Затваряне
+      dont_include_personal_info: Не включвайте лична или финансова информация, като
+        например номера на националната си застраховка или данни за кредитна карта.
+      email_address: Имейл адреси
+      help_us_improve_govuk: Помогнете ни да подобрим GOV.UK
+      is_not_useful: тази страница не е полезна
+      is_this_page_useful: Полезна ли ви беше тази страница?
+      is_useful: тази страница е полезна
+      maybe: Може би
+      more_about_visit: За да ни помогнете да подобрим GOV.UK, бихме искали да узнаем
+        повече за днешното ви посещение. Ще ви изпратим линк към формуляр за обратна
+        връзка. Попълването на формуляра ще отнеме само 2 минути. Не се притеснявайте,
+        че няма да ви изпратим спам и няма да споделяме с никого имейл адреса ви.
+      'no': Не
+      send: Изпращане
+      send_me_survey: Изпратете ми анкетата
+      something_wrong: Докладване на проблем с тази страница
+      thank_you_for_feedback: Благодарим ви за обратната връзка
+      what_doing: Какво правихте?
+      what_wrong: Какво се обърка?
+      'yes': Да
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
+      consultations: Консултации
+      departments: Министерства
+      get-involved: Вземете участие
+      how-government-works: Как работи правителството
+      news_and_communications: Новини и съобщения
+      statistics: Статистика
+      worldwide: По целия свят
     layout_footer:
-      copyright_html:
-      licence_html:
-      support_links:
-    layout_for_public:
-      account_layout:
-        feedback:
-          banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
-        navigation:
-          destroy_user_session:
-          menu_bar:
-            account:
-              link_text:
-            manage:
-              link_text:
-            security:
-              link_text:
-          user_root_path:
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
+        Crown copyright</a>
+      licence_html: Цялото съдържание е налично на <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+        rel="license">Open Government Licence v3.0</a>, освен ако не е посочено друго
+      support_links: Помощни линкове
     layout_header:
-      hide_button:
-      menu:
-      search_button:
-      show_button:
-      top_level:
-    layout_super_navigation_header:
-      logo_link_title:
-      logo_text:
-      menu_toggle_label:
-        hide:
-        show:
-      navigation_links:
-      navigation_menu_heading:
-      navigation_search_heading:
-      navigation_search_subheading:
-      popular_links:
-      popular_links_heading:
-      search_text:
+      hide_button: Скриване на търсенето
+      menu: Меню
+      search_button: Търсене в GOV.UK
+      show_button: Показване на търсенето
+      top_level: Първо ниво
     metadata:
-      from:
-      history:
-      last_updated:
-      part_of:
-      published:
-      see_all_updates:
-      toggle_less:
-      toggle_more:
+      from: От
+      history: История
+      last_updated: Последно актуализирани
+      part_of: Част от
+      published: Публикуван
+      see_all_updates: Вижте всички актуализации
+      toggle_less: Показване на по-малко
+      toggle_more: "+ %{number} повече"
     modal_dialogue:
-      close_modal:
-    notice:
-      banner_title:
+      close_modal: Затваряне на модалния диалог
     organisation_schema:
-      all_content_search_description:
+      all_content_search_description: Намиране на цялото съдържание от %{organisation}
     previous_and_next_navigation:
-      pagination:
+      pagination: Страниране
     print_link:
-      text:
+      text: Отпечатване на страницата
     radio:
-      or:
+      or: или
     related_footer_navigation:
-      collections:
-      policies:
-      statistical_data_sets:
-      topical_events:
+      collections: Събирания
+      policies: Политики
+      statistical_data_sets: Набори от статистически данни
+      topical_events: Тематични събития
     related_navigation:
-      collections:
-      external_links:
-      policies:
-      publishers:
-      related_contacts:
-      related_content:
-      related_external_links:
-      related_guides:
-      statistical_data_sets:
-      topical_events:
-      topics:
+      collections: Събиране
+      external_links: На други места в интернет
+      policies: Политика
+      publishers: Публикувано от
+      related_contacts: Други контакти
+      related_content: Подобно съдържание
+      related_external_links: На други места в интернет
+      related_guides: Подробна насока
+      statistical_data_sets: Набор от статистически данни
+      topical_events: Тематично събитие
+      topics: Разглеждане на темата
       transition:
-        link_path:
-        link_text:
-        title:
-      world_locations:
+        hub_page_link_path: "/transition-check/questions"
+        hub_page_link_text: Получаване на персонализиран списък с действия
+        hub_page_title: Проверка за Брекзит
+        link_path: "/brexit"
+        link_text: Проверете какво трябва да направите
+        title: Брекзит
+      world_locations: Местоположения по света
     search_box:
-      input_title:
-      label:
-      search_button:
+      input_title: Търсене
+      label: Търсене в GOV.UK
+      search_button: Търсене
     show_password:
-      announce_hide:
-      announce_show:
-      hide:
-      hide_password:
-      show:
-      show_password:
+      announce_hide: Вашата парола е скрита
+      announce_show: Вашата парола е видима
+      hide: Скриване
+      hide_password: Скриване на паролата
+      show: Показване
+      show_password: Показване на паролата
     skip_link:
-      text:
+      text: Към основното съдържание
     step_by_step_nav:
-      hide:
-      hide_all:
-      show:
-      show_all:
+      hide: Скриване
+      hide_all: Скриване на всички стъпки
+      show: Показване
+      show_all: Показване на всички стъпки
     step_by_step_nav_related:
-      part_of:
+      part_of: Част от
     subscription_links:
-      email_signup_link_text:
-      feed_link_label:
-      feed_link_text:
-      subscriptions:
+      email_signup_link_text: Получаване на имейли
+      feed_link_label: Копирайте и поставете този URL адрес в четеца си за канали
+      feed_link_text: Абонирайте се за канал
+      subscriptions: Абонаменти
     success_alert:
-      success:
+      success: Успешно
     summary_list:
-      delete:
-      edit:
+      delete: Изтриване
+      edit: Промяна
     tabs:
-      contents:
+      contents: Съдържание
+  common:
+    translations: Translations

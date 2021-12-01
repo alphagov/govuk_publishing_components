@@ -1,204 +1,177 @@
----
 vi:
   common:
-    translations:
+    translations: Bản dịch
   components:
     accordion:
-      hide:
-      hide_all:
-      show:
-      show_all:
-      this_section_visually_hidden:
+      hide: Ẩn
+      hide_all: Ẩn tất cả các phần
+      show: Hiển thị
+      show_all: Hiển thị tất cả các phần
+      this_section_visually_hidden: " phần này"
     article_schema:
-      scoped_search_description:
+      scoped_search_description: Tìm kiếm trong %{title}
     attachment:
-      opendocument_html:
-      order_a_copy:
+      opendocument_html: Tệp này có định dạng <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
+        target=%{target} class='govuk-link'>OpenDocument</a>
+      order_a_copy: Đặt hàng một bản sao
       page:
-        one:
-        other:
-      reference:
-      request_format_cta:
-      request_format_details_html:
-      request_format_text:
+        one: 1 trang
+        other: "%{count} trang"
+      reference: 'Tham khảo: %{reference}'
+      request_format_cta: Yêu cầu một định dạng có thể truy cập.
+      request_format_details_html: Nếu bạn sử dụng công nghệ hỗ trợ (chẳng hạn như
+        trình đọc màn hình) và cần phiên bản của tài liệu này ở định dạng dễ truy
+        cập hơn, vui lòng gửi email tới <a href='mailto:%{alternative_format_contact_email}'
+        target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>.
+        Vui lòng cho chúng tôi biết bạn cần định dạng nào. Vui lòng cho biết bạn sử
+        dụng công nghệ hỗ trợ nào.
+      request_format_text: Tệp này có thể không phù hợp với người dùng công nghệ hỗ
+        trợ.
     back_link:
-      back:
+      back: Quay lại
     character_count:
-      body:
+      body: Bạn có thể nhập tối đa %{number} %{type}
       type:
-        characters:
-        words:
+        characters: ký tự
+        words: từ
     checkboxes:
-      or:
+      or: hoặc
     contents_list:
-      contents:
+      contents: Mục lục
     contextual_sidebar:
-      pretitle:
+      pretitle: Cũng là một phần của
     cookie_banner:
       buttons:
-        accept_cookies:
-        reject_cookies:
-      confirmation_message:
-      confirmation_message_link:
-      hide:
+        accept_cookies: Chấp nhận các cookie bổ sung
+        reject_cookies: Từ chối các cookie bổ sung
+      confirmation_message: Bạn có thể %{link} bất kỳ lúc nào.
+      confirmation_message_link: thay đổi cài đặt cookie của bạn
+      hide: Ẩn thông báo này
       text:
-      title:
-    devolved_nations:
-      applies_to:
-      connectors:
-        last_word:
-        two_words:
-      england:
-      northern_ireland:
-      scotland:
-      wales:
+      - Chúng tôi sử dụng một số cookie cần thiết để vận hành trang web này.
+      - Chúng tôi muốn đặt các cookie bổ sung để hiểu cách bạn sử dụng GOV.UK
+      - ghi nhớ cài đặt của bạn và cải thiện các dịch vụ của chính phủ.
+      - Chúng tôi cũng sử dụng cookie do các trang web khác đặt để giúp chúng tôi
+        cung cấp nội dung từ các dịch vụ của họ.
+      title: Cookie trên GOV.UK
     feedback:
-      close:
-      dont_include_personal_info:
-      email_address:
-      help_us_improve_govuk:
-      is_not_useful:
-      is_this_page_useful:
-      is_useful:
-      maybe:
-      more_about_visit:
-      'no':
-      send:
-      send_me_survey:
-      something_wrong:
-      thank_you_for_feedback:
-      what_doing:
-      what_wrong:
-      'yes':
+      close: Đóng
+      dont_include_personal_info: Không bao gồm thông tin cá nhân hoặc thông tin tài
+        chính như số Bảo hiểm Quốc gia hoặc chi tiết thẻ tín dụng của bạn.
+      email_address: Địa chỉ email
+      help_us_improve_govuk: Giúp chúng tôi cải thiện GOV.UK
+      is_not_useful: trang này không hữu ích
+      is_this_page_useful: Trang này có hữu ích không?
+      is_useful: trang này hữu ích
+      maybe: Có lẽ
+      more_about_visit: Để giúp chúng tôi cải thiện GOV.UK, vui lòng cho biết thêm
+        về trải nghiệm truy cập của bạn hôm nay. Chúng tôi sẽ gửi cho bạn một liên
+        kết đến biểu mẫu phản hồi. Sẽ chỉ mất 2 phút để điền. Đừng lo lắng, chúng
+        tôi sẽ không gửi spam cho bạn hay chia sẻ địa chỉ email của bạn với bất kỳ
+        ai.
+      'no': Không
+      send: Gửi
+      send_me_survey: Gửi cho tôi bài khảo sát
+      something_wrong: Báo cáo sự cố với trang này
+      thank_you_for_feedback: Cảm ơn phản hồi của bạn
+      what_doing: Bạn đang làm gì?
+      what_wrong: Sự cố gì đã xảy ra?
+      'yes': Có
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
+      consultations: Tham vấn
+      departments: Phòng ban
+      get-involved: Tham gia
+      how-government-works: Cách hoạt động của chính phủ
+      news_and_communications: Tin tức và thông tin liên lạc
+      statistics: Thống kê
+      worldwide: Trên toàn thế giới
     layout_footer:
-      copyright_html:
-      licence_html:
-      support_links:
-    layout_for_public:
-      account_layout:
-        feedback:
-          banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
-        navigation:
-          destroy_user_session:
-          menu_bar:
-            account:
-              link_text:
-            manage:
-              link_text:
-            security:
-              link_text:
-          user_root_path:
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
+        Bản quyền Crown</a>
+      licence_html: Tất cả nội dung đều có sẵn theo <a class="govuk-footer__link"
+        href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+        rel="license">Giấy phép Chính phủ Mở pb3.0</a>, trừ khi có quy định khác
+      support_links: Liên kết hỗ trợ
     layout_header:
-      hide_button:
-      menu:
-      search_button:
-      show_button:
-      top_level:
-    layout_super_navigation_header:
-      logo_link_title:
-      logo_text:
-      menu_toggle_label:
-        hide:
-        show:
-      navigation_links:
-      navigation_menu_heading:
-      navigation_search_heading:
-      navigation_search_subheading:
-      popular_links:
-      popular_links_heading:
-      search_text:
+      hide_button: Ẩn tìm kiếm
+      menu: Menu
+      search_button: Tìm kiếm trên GOV.UK
+      show_button: Hiển thị tìm kiếm
+      top_level: Mức cao nhất
     metadata:
-      from:
-      history:
-      last_updated:
-      part_of:
-      published:
-      see_all_updates:
-      toggle_less:
-      toggle_more:
+      from: Từ
+      history: Lịch sử
+      last_updated: Lần cập nhật gần đây nhất
+      part_of: Một phần của
+      published: Đã xuất bản
+      see_all_updates: Xem tất cả nội dung cập nhật
+      toggle_less: Ẩn bớt
+      toggle_more: "+ thêm %{number}"
     modal_dialogue:
-      close_modal:
-    notice:
-      banner_title:
+      close_modal: Đóng đối thoại phương thức
     organisation_schema:
-      all_content_search_description:
+      all_content_search_description: Tìm tất cả nội dung từ %{organisation}
     previous_and_next_navigation:
-      pagination:
+      pagination: Phân trang
     print_link:
-      text:
+      text: In trang này
     radio:
-      or:
+      or: hoặc
     related_footer_navigation:
-      collections:
-      policies:
-      statistical_data_sets:
-      topical_events:
+      collections: Bộ sưu tập
+      policies: Chính sách
+      statistical_data_sets: Bộ dữ liệu thống kê
+      topical_events: Sự kiện chuyên đề
     related_navigation:
-      collections:
-      external_links:
-      policies:
-      publishers:
-      related_contacts:
-      related_content:
-      related_external_links:
-      related_guides:
-      statistical_data_sets:
-      topical_events:
-      topics:
+      collections: Bộ sưu tập
+      external_links: Ở vị trí khác trên web
+      policies: Chính sách
+      publishers: Xuất bản bởi
+      related_contacts: Các liên hệ khác
+      related_content: Nội dung liên quan
+      related_external_links: Ở vị trí khác trên web
+      related_guides: Hướng dẫn chi tiết
+      statistical_data_sets: Bộ dữ liệu thống kê
+      topical_events: Sự kiện chuyên đề
+      topics: Khám phá chủ đề
       transition:
-        link_path:
-        link_text:
-        title:
-      world_locations:
+        hub_page_link_path: "/transition-check/questions"
+        hub_page_link_text: Nhận danh sách các hành động được cá nhân hóa
+        hub_page_title: Công cụ kiểm tra Brexit
+        link_path: "/brexit"
+        link_text: Kiểm tra những gì bạn cần làm
+        title: Brexit
+      world_locations: Các vị trí trên thế giới
     search_box:
-      input_title:
-      label:
-      search_button:
+      input_title: Tìm kiếm
+      label: Tìm kiếm trên GOV.UK
+      search_button: Tìm kiếm
     show_password:
-      announce_hide:
-      announce_show:
-      hide:
-      hide_password:
-      show:
-      show_password:
+      announce_hide: Mật khẩu của bạn bị ẩn
+      announce_show: Mật khẩu của bạn được hiển thị
+      hide: Ẩn
+      hide_password: Ẩn mật khẩu
+      show: Hiển thị
+      show_password: Hiển thị mật khẩu
     skip_link:
-      text:
+      text: Chuyển đến nội dung chính
     step_by_step_nav:
-      hide:
-      hide_all:
-      show:
-      show_all:
+      hide: Ẩn
+      hide_all: Ẩn tất cả các bước
+      show: Hiển thị
+      show_all: Hiển thị tất cả các bước
     step_by_step_nav_related:
-      part_of:
+      part_of: Một phần của
     subscription_links:
-      email_signup_link_text:
-      feed_link_label:
-      feed_link_text:
-      subscriptions:
+      email_signup_link_text: Nhận email
+      feed_link_label: Sao chép và dán URL này vào trình đọc nguồn cấp dữ liệu của
+        bạn
+      feed_link_text: Đăng ký nguồn cấp dữ liệu
+      subscriptions: Đăng ký
     success_alert:
-      success:
+      success: Thành công
     summary_list:
-      delete:
-      edit:
+      delete: Xóa
+      edit: Thay đổi
     tabs:
-      contents:
+      contents: Mục lục

@@ -1,204 +1,177 @@
----
 sq:
-  common:
-    translations:
   components:
-    accordion:
-      hide:
-      hide_all:
-      show:
-      show_all:
-      this_section_visually_hidden:
-    article_schema:
-      scoped_search_description:
     attachment:
-      opendocument_html:
-      order_a_copy:
       page:
-        one:
-        other:
-      reference:
-      request_format_cta:
-      request_format_details_html:
-      request_format_text:
+        one: 1 faqe
+        other: "%{count} faqet"
+      opendocument_html: Ky skedar është në një <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
+        target=%{target} class='govuk-link'>format</a> OpenDocument
+      order_a_copy: Porosit një kopje
+      reference: 'Ref: %{reference}'
+      request_format_cta: Kërkoni një format të arritshëm.
+      request_format_details_html: Nëse përdorni teknologji ndihmëse (si lexuesi i
+        ekranit) dhe keni nevojë për një version të këtij dokumenti në një format
+        më të arritshëm, ju lutemi dërgoni email <a href='mailto:%{alternative_format_contact_email}'
+        target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>.
+        Ju lutemi na tregoni se çfarë formati ju nevojitet. Do të na ndihmojë nëse
+        thoni çfarë teknologjie ndihmëse përdorni.
+      request_format_text: Ky skedar mund të mos jetë i përshtatshëm për përdoruesit
+        e teknologjisë ndihmëse.
+    accordion:
+      hide: Fshih
+      hide_all: Fshih të gjitha seksionet
+      show: Shfaq
+      show_all: Shfaq të gjitha seksionet
+      this_section_visually_hidden: " këtë seksion"
+    article_schema:
+      scoped_search_description: Kërko brenda %{title}
     back_link:
-      back:
+      back: Prapa
     character_count:
-      body:
+      body: Mund të futni deri në %{number} %{type}
       type:
-        characters:
-        words:
+        characters: karaktere
+        words: fjalë
     checkboxes:
-      or:
+      or: ose
     contents_list:
-      contents:
+      contents: Përmbajtje
     contextual_sidebar:
-      pretitle:
+      pretitle: Gjithashtu pjesë e
     cookie_banner:
       buttons:
-        accept_cookies:
-        reject_cookies:
-      confirmation_message:
-      confirmation_message_link:
-      hide:
+        accept_cookies: Pranoni cookie shtesë
+        reject_cookies: Refuzoni cookie shtesë
+      confirmation_message: Ju mund të %{link} në çdo kohë.
+      confirmation_message_link: ndryshoni cilësimet tuaja të cookies
+      hide: Fshih këtë mesazh
       text:
-      title:
-    devolved_nations:
-      applies_to:
-      connectors:
-        last_word:
-        two_words:
-      england:
-      northern_ireland:
-      scotland:
-      wales:
+      - Ne përdorim disa cookie thelbësore për ta bërë këtë faqe interneti të funksionojë.
+      - Ne do të donim të vendosnim cookie shtesë për të kuptuar se si përdorni GOV.UK
+      - mbani mend cilësimet tuaja dhe përmirësoni shërbimet qeveritare.
+      - Ne gjithashtu përdorim cookie të vendosur nga faqe të tjera për të na ndihmuar
+        të ofrojmë përmbajtje nga shërbimet e tyre.
+      title: Cookies në GOV.UK
     feedback:
-      close:
-      dont_include_personal_info:
-      email_address:
-      help_us_improve_govuk:
-      is_not_useful:
-      is_this_page_useful:
-      is_useful:
-      maybe:
-      more_about_visit:
-      'no':
-      send:
-      send_me_survey:
-      something_wrong:
-      thank_you_for_feedback:
-      what_doing:
-      what_wrong:
-      'yes':
+      close: Mbyll
+      dont_include_personal_info: Mos përfshini informacione personale ose financiare
+        si numri juaj i Sigurimit Kombëtar ose detajet e kartës së kreditit.
+      email_address: Adresa e emailit
+      help_us_improve_govuk: Na ndihmoni të përmirësojmë GOV.UK
+      is_not_useful: kjo faqe nuk është e dobishme
+      is_this_page_useful: A është e dobishme kjo faqe?
+      is_useful: kjo faqe është e dobishme
+      maybe: Ndoshta
+      more_about_visit: Për të na ndihmuar të përmirësojmë GOV.UK, ne do të donim
+        të dinim më shumë për vizitën tuaj sot. Ne do t'ju dërgojmë një lidhje me
+        një formë reagimi. Do të duhen vetëm 2 minuta për tu plotësuar. Mos u shqetësoni
+        se nuk do t'ju dërgojmë spam ose nuk do të ndajmë adresën tuaj të postës elektronike
+        me askënd.
+      'no': Jo
+      send: Dërgo
+      send_me_survey: Më dërgoni sondazhin
+      something_wrong: Raportoni një problem me këtë faqe
+      thank_you_for_feedback: Faleminderit për reagimin tuaj
+      what_doing: Cfare po bënit?
+      what_wrong: Çfarë shkoi keq?
+      'yes': Po
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
+      consultations: Konsultimet
+      departments: Departamentet
+      get-involved: Përfshihu
+      how-government-works: Si funksionon qeveria
+      news_and_communications: Lajme dhe komunikime
+      statistics: Statistika
+      worldwide: Botërore
     layout_footer:
-      copyright_html:
-      licence_html:
-      support_links:
-    layout_for_public:
-      account_layout:
-        feedback:
-          banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
-        navigation:
-          destroy_user_session:
-          menu_bar:
-            account:
-              link_text:
-            manage:
-              link_text:
-            security:
-              link_text:
-          user_root_path:
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
+        Crown e drejta e autorit</a>
+      licence_html: E gjithë përmbajtja është në dispozicion nën <a class="govuk-footer__link"
+        href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+        rel="license">Licencën e Qeverisë së Hapur v3.0</a>, përveç rasteve kur thuhet
+        ndryshe
+      support_links: Lidhjet mbështetëse
     layout_header:
-      hide_button:
-      menu:
-      search_button:
-      show_button:
-      top_level:
-    layout_super_navigation_header:
-      logo_link_title:
-      logo_text:
-      menu_toggle_label:
-        hide:
-        show:
-      navigation_links:
-      navigation_menu_heading:
-      navigation_search_heading:
-      navigation_search_subheading:
-      popular_links:
-      popular_links_heading:
-      search_text:
+      hide_button: Fshih kërkimin
+      menu: Menuja
+      search_button: Kërko GOV.UK
+      show_button: Shfaq kërkimin
+      top_level: Niveli më i lartë
     metadata:
-      from:
-      history:
-      last_updated:
-      part_of:
-      published:
-      see_all_updates:
-      toggle_less:
-      toggle_more:
+      from: Nga
+      history: Historia
+      last_updated: Përditësuar së fundmi
+      part_of: Pjesë e
+      published: Publikuar
+      see_all_updates: Shih të gjitha përditësimet
+      toggle_less: Shfaq më pak
+      toggle_more: "+ %{number} më tepër"
     modal_dialogue:
-      close_modal:
-    notice:
-      banner_title:
+      close_modal: Mbyll dialogun modal
     organisation_schema:
-      all_content_search_description:
+      all_content_search_description: Gjeni të gjithë përmbajtjen nga %{organisation}
     previous_and_next_navigation:
-      pagination:
+      pagination: Numërtimi
     print_link:
-      text:
+      text: Printo këtë faqe
     radio:
-      or:
+      or: ose
     related_footer_navigation:
-      collections:
-      policies:
-      statistical_data_sets:
-      topical_events:
+      collections: Koleksionet
+      policies: Politikat
+      statistical_data_sets: Grupet e të dhënave statistikore
+      topical_events: Ngjarjet aktuale
     related_navigation:
-      collections:
-      external_links:
-      policies:
-      publishers:
-      related_contacts:
-      related_content:
-      related_external_links:
-      related_guides:
-      statistical_data_sets:
-      topical_events:
-      topics:
+      collections: Koleksioni
+      external_links: Diku tjetër në internet
+      policies: Politika
+      publishers: Publikuar nga
+      related_contacts: Kontakte të tjera
+      related_content: Përmbajtje të ngjashme
+      related_external_links: Diku tjetër në internet
+      related_guides: Udhëzime të hollësishme
+      statistical_data_sets: Grupi i të dhënave statistikore
+      topical_events: Ngjarje aktuale
+      topics: Eksploroni temën
       transition:
-        link_path:
-        link_text:
-        title:
-      world_locations:
+        hub_page_link_path: "/transition-check/questions"
+        hub_page_link_text: Merrni një listë të personalizuar të veprimeve
+        hub_page_title: Kontrolluesi i Brexit
+        link_path: "/brexit"
+        link_text: Kontrolloni se çfarë duhet të bëni
+        title: Brexit
+      world_locations: Vendndodhjet globale
     search_box:
-      input_title:
-      label:
-      search_button:
+      input_title: Kërko
+      label: Kërko në GOV.UK
+      search_button: Kërko
     show_password:
-      announce_hide:
-      announce_show:
-      hide:
-      hide_password:
-      show:
-      show_password:
+      announce_hide: Fjalëkalimi juaj është fshehur
+      announce_show: Fjalëkalimi juaj është treguar
+      hide: Fshih
+      hide_password: Fshih fjalëkalimin
+      show: Shfaq
+      show_password: Shfaq fjalëkalimin
     skip_link:
-      text:
+      text: Kaloni në përmbajtjen kryesore
     step_by_step_nav:
-      hide:
-      hide_all:
-      show:
-      show_all:
+      hide: Fshih
+      hide_all: Fshih të gjithë hapat
+      show: Shfaq
+      show_all: Shfaq të gjithë hapat
     step_by_step_nav_related:
-      part_of:
+      part_of: Pjesë e
     subscription_links:
-      email_signup_link_text:
-      feed_link_label:
-      feed_link_text:
-      subscriptions:
+      email_signup_link_text: Merr emaile
+      feed_link_label: Kopjoni dhe ngjisni këtë URL në lexuesin tuaj të njoftimeve
+      feed_link_text: Abonohu në njoftime
+      subscriptions: Abonimet
     success_alert:
-      success:
+      success: Sukses
     summary_list:
-      delete:
-      edit:
+      delete: Fshij
+      edit: Ndrysho
     tabs:
-      contents:
+      contents: Përmbajtje
+  common:
+    translations: Përkthimet

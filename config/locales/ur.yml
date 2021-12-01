@@ -1,204 +1,176 @@
----
 ur:
-  common:
-    translations:
   components:
-    accordion:
-      hide:
-      hide_all:
-      show:
-      show_all:
-      this_section_visually_hidden:
-    article_schema:
-      scoped_search_description:
     attachment:
-      opendocument_html:
-      order_a_copy:
       page:
-        one:
-        other:
-      reference:
-      request_format_cta:
-      request_format_details_html:
-      request_format_text:
+        one: 1 صفحہ
+        other: "%{count} صفحات"
+      opendocument_html: یہ فائل <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
+        target=%{target} class='govuk-link'>OpenDocument</a> فارمیٹ میں ہے
+      order_a_copy: نقل کی درخواست کریں
+      reference: 'حوالہ: %{reference}'
+      request_format_cta: قابل رسائی فارمیٹ کی درخواست دیں۔
+      request_format_details_html: اگر آپ کوئی معاونتی ٹیکنالوجی (جیسے کہ پڑھنے والے
+        کی اسکرین) استعمال کرتے ہیں اور مزید قابل رسائی فارمیٹ میں اس دستاویز کا ورژن
+        درکار ہے، تو براہ کرم <a href='mailto:%{alternative_format_contact_email}'
+        target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>
+        پر ای میل کریں براہ کرم ہمیں آگاہ کریں کہ آپ کو کون سا فارمیٹ درکار ہے۔ اگر
+        آپ بتائیں کہ آپ کون سی معاونتی ٹیکنالوجی استعمال کرتے ہیں تو ہمیں اس سے مدد
+        ملے گی۔
+      request_format_text: ہو سکتا ہے کہ یہ فائل معاونتی ٹیکنالوجی کے صارفین کے لیے
+        موزوں نہ ہو۔
+    accordion:
+      hide: پوشیدہ کریں
+      hide_all: تمام سیکشنز کو پوشیدہ کریں
+      show: دکھائی
+      show_all: تمام سیکشنز دکھائیں
+      this_section_visually_hidden: " یہ سیکشن"
+    article_schema:
+      scoped_search_description: "%{title} کے اندر تلاش کریں"
     back_link:
-      back:
+      back: پیچھے
     character_count:
-      body:
+      body: آپ %{number} %{type} تک درج کر سکتے ہیں
       type:
-        characters:
-        words:
+        characters: حروف
+        words: الفاظ
     checkboxes:
-      or:
+      or: یا
     contents_list:
-      contents:
+      contents: مشمولات
     contextual_sidebar:
-      pretitle:
+      pretitle: درج ذیل کا بھی حصہ
     cookie_banner:
       buttons:
-        accept_cookies:
-        reject_cookies:
-      confirmation_message:
-      confirmation_message_link:
-      hide:
+        accept_cookies: اضافی کوکیز کو قبول کریں
+        reject_cookies: اضافی کوکیز کو مسترد کریں
+      confirmation_message: آپ کسی بھی وقت %{link} کر سکتے ہیں۔
+      confirmation_message_link: اپنی کوکی کی ترتیبات تبدیل کریں
+      hide: اس پیغام کو پوشیدہ کریں
       text:
-      title:
-    devolved_nations:
-      applies_to:
-      connectors:
-        last_word:
-        two_words:
-      england:
-      northern_ireland:
-      scotland:
-      wales:
+      - ہم اس ویب سائٹ کو چلانے کے لیے کچھ ضروری کوکیز استعمال کرتے ہیں۔، ہم اس بات
+        کو سمجھنے کے لیے کچھ اضافی کوکیز سیٹ کرنا چاہیں گے کہ آپ GOV.UK کو کیسے سمجھتے
+        ہیں، اپنی ترتیبات یاد رکھیں اور حکومتی سروسز کو بہتر بنائیں۔، ہم دیگر سائٹس
+        سے مواد کی ترسیل کرنے کے لیے دیگر سائٹس کی جانب سے سیٹ کی گئی کوکیز بھی استعمال
+        کرتے ہیں۔
+      title: GOV.UK پر کوکیز
     feedback:
-      close:
-      dont_include_personal_info:
-      email_address:
-      help_us_improve_govuk:
-      is_not_useful:
-      is_this_page_useful:
-      is_useful:
-      maybe:
-      more_about_visit:
-      'no':
-      send:
-      send_me_survey:
-      something_wrong:
-      thank_you_for_feedback:
-      what_doing:
-      what_wrong:
-      'yes':
+      close: بند کریں
+      dont_include_personal_info: اپنے قومی انشورنس نمبر یا کریڈٹ کارڈ کی تفصیلات
+        کی جیسی ذاتی یا مالی معلومات استعمال نہ کریں۔
+      email_address: ای میل ایڈریس
+      help_us_improve_govuk: GOV.UK کو بہتر بنانے میں  ہماری مدد کریں
+      is_not_useful: یہ صفحہ مددگار نہیں ہے
+      is_this_page_useful: کیا یہ صفحہ مددگار ہے؟
+      is_useful: یہ صفحہ مددگار ہے
+      maybe: شاید
+      more_about_visit: GOV.UK کو بہتر بنانے میں  ہماری مدد کریں، ہمیں آپ کے آج کے
+        دورے کے بارے میں مزید جاننا چاہیں گے۔ ہم فیڈبیک کے فارم پر آپ کو لنک بھیجیں
+        گے۔ اسے پر کرنے میں صرف 2 منٹ لگیں گے۔ فکر نہ کریں ہم آپ کو اسپام نہیں بھیجیں
+        گے یا کسی کے ساتھ آپ کا ای میل ایڈریس شیئر نہیں کریں گے۔
+      'no': نہیں
+      send: بھیجیں
+      send_me_survey: مجھے سروے بھیجیں
+      something_wrong: اس صفحے کے ساتھ درپیش مسئلہ رپورٹ کریں
+      thank_you_for_feedback: آپ کے فیڈبیک کا شکریہ
+      what_doing: آپ کیا کر رہے تھے؟
+      what_wrong: کیا غلط ہوا؟
+      'yes': جی ہاں
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
+      consultations: مشاورتیں
+      departments: محکمے
+      get-involved: شامل ہوں
+      how-government-works: حکومت کیسے کام کرتی ہے
+      news_and_communications: خبریں اور مواصلات
+      statistics: شماریات
+      worldwide: دنیا بھر میں
     layout_footer:
-      copyright_html:
-      licence_html:
-      support_links:
-    layout_for_public:
-      account_layout:
-        feedback:
-          banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
-        navigation:
-          destroy_user_session:
-          menu_bar:
-            account:
-              link_text:
-            manage:
-              link_text:
-            security:
-              link_text:
-          user_root_path:
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
+        Crown کاپی رائٹ</a>
+      licence_html: سوائے ان کے جنہیں بصورت دیگر بیان کیا گیا ہے، <a class="govuk-footer__link"
+        href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+        rel="license">Open Government Licence v3.0</a> کے تحت تمام مواد دستیاب ہے
+      support_links: معاونتی لنکس
     layout_header:
-      hide_button:
-      menu:
-      search_button:
-      show_button:
-      top_level:
-    layout_super_navigation_header:
-      logo_link_title:
-      logo_text:
-      menu_toggle_label:
-        hide:
-        show:
-      navigation_links:
-      navigation_menu_heading:
-      navigation_search_heading:
-      navigation_search_subheading:
-      popular_links:
-      popular_links_heading:
-      search_text:
+      hide_button: تلاش کو پوشیدہ کریں
+      menu: مینو
+      search_button: GOV.UK پر تلاش کریں
+      show_button: تلاش دکھائیں
+      top_level: اعلیٰ درجہ
     metadata:
-      from:
-      history:
-      last_updated:
-      part_of:
-      published:
-      see_all_updates:
-      toggle_less:
-      toggle_more:
+      from: از
+      history: ہسٹری
+      last_updated: آخری بار اپ ڈیٹ کردہ
+      part_of: حصہ از
+      published: شائع کردہ
+      see_all_updates: تمام اپ ڈیٹس دیکھیں
+      toggle_less: کم دکھائیں
+      toggle_more: "+ %{number} مزید"
     modal_dialogue:
-      close_modal:
-    notice:
-      banner_title:
+      close_modal: محدود موڈل ڈائیلاگ
     organisation_schema:
-      all_content_search_description:
+      all_content_search_description: "%{organisation} کا تمام مواد تلاش کریں"
     previous_and_next_navigation:
-      pagination:
+      pagination: صفحہ بندی
     print_link:
-      text:
+      text: اس صفحے کا پرنٹ لیں
     radio:
-      or:
+      or: یا
     related_footer_navigation:
-      collections:
-      policies:
-      statistical_data_sets:
-      topical_events:
+      collections: کلیکشنز
+      policies: پالیسیاں
+      statistical_data_sets: پالیسیاں
+      topical_events: موضوعاتی ایونٹس
     related_navigation:
-      collections:
-      external_links:
-      policies:
-      publishers:
-      related_contacts:
-      related_content:
-      related_external_links:
-      related_guides:
-      statistical_data_sets:
-      topical_events:
-      topics:
+      collections: کلیکشن
+      external_links: ویب میں کہیں اور
+      policies: پالیسی
+      publishers: شائع کردہ از
+      related_contacts: دیگر رابطے
+      related_content: متعلقہ مواد
+      related_external_links: ویب میں کہیں اور
+      related_guides: حذف کردہ رہنمائی
+      statistical_data_sets: شماریاتی ڈیٹا سیٹ
+      topical_events: موضوعاتی ایونٹ
+      topics: موضوع کے بارے میں مزید جانیں
       transition:
-        link_path:
-        link_text:
-        title:
-      world_locations:
+        hub_page_link_path: "/transition-check/questions"
+        hub_page_link_text: کارروائیوں کی شخصی کردہ فہرست حاصل کریں
+        hub_page_title: Brexit چیکر
+        link_path: "/brexit"
+        link_text: پڑتال کریں کہ آپ کو کیا کرنے کی ضرورت ہے
+        title: Brexit
+      world_locations: عالمی مقامات
     search_box:
-      input_title:
-      label:
-      search_button:
+      input_title: تلاش
+      label: GOV.UK پر تلاش کریں
+      search_button: تلاش
     show_password:
-      announce_hide:
-      announce_show:
-      hide:
-      hide_password:
-      show:
-      show_password:
+      announce_hide: آپ کا پاس ورڈ پوشیدہ ہے
+      announce_show: آپ کا پاس ورڈ دکھائی دے رہا ہے
+      hide: پوشیدہ کریں
+      hide_password: پاس ورڈ کو پوشیدہ کریں
+      show: دکھائیں
+      show_password: پاس ورڈ دکھائیں
     skip_link:
-      text:
+      text: مرکزی مواد پر جائیں
     step_by_step_nav:
-      hide:
-      hide_all:
-      show:
-      show_all:
+      hide: پوشیدہ کریں
+      hide_all: تمام مراحل کو پوشیدہ کریں
+      show: دکھائیں
+      show_all: تمام مراحل دکھائیں
     step_by_step_nav_related:
-      part_of:
+      part_of: حصہ از
     subscription_links:
-      email_signup_link_text:
-      feed_link_label:
-      feed_link_text:
-      subscriptions:
+      email_signup_link_text: ای میلز حاصل کریں
+      feed_link_label: اپنے فیڈ کے ریڈر میں یہ URL کاپی اور پیسٹ کریں
+      feed_link_text: فیڈ پر سبسکرائب کریں
+      subscriptions: سبسکرپشنز
     success_alert:
-      success:
+      success: کامیابی
     summary_list:
-      delete:
-      edit:
+      delete: حذف کریں
+      edit: تبدیل کریں
     tabs:
-      contents:
+      contents: مشمولات
+  common:
+    translations: تراجم

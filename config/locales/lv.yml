@@ -1,204 +1,178 @@
----
 lv:
-  common:
-    translations:
   components:
-    accordion:
-      hide:
-      hide_all:
-      show:
-      show_all:
-      this_section_visually_hidden:
-    article_schema:
-      scoped_search_description:
     attachment:
-      opendocument_html:
-      order_a_copy:
       page:
-        one:
-        other:
-      reference:
-      request_format_cta:
-      request_format_details_html:
-      request_format_text:
+        one: 1 lapa
+        other: "%{count} lapas"
+      opendocument_html: Šis fails ir <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
+        target=%{target} class='govuk-link'>OpenDocument</a> formātā
+      order_a_copy: Pasūtīt kopiju
+      reference: 'Ref.: %{reference}'
+      request_format_cta: Pieprasīt pieejamu formātu.
+      request_format_details_html: Ja jūs izmantojat palīgtehnoloģijas (piemēram,
+        ekrāna lasītāju) un jums ir nepieciešama šī dokumenta versija pieejamākā formātā,
+        nosūtiet e-pasta ziņojumu uz <a href='mailto:%{alternative_format_contact_email}'
+        target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>.
+        Pastāstiet, kas jums ir nepieciešams. Mums būs vieglāk jums palīdzēt, ja zināsim,
+        kādas palīgtehnoloģijas jūs izmantojat.
+      request_format_text: Šis fails var nebūt piemērots palīgtehnoloģiju lietotājiem.
+    accordion:
+      hide: Paslēpt
+      hide_all: Paslēpt visas sadaļas
+      show: Rādīt
+      show_all: Rādīt visas sadaļas
+      this_section_visually_hidden: " šī sadaļa"
+    article_schema:
+      scoped_search_description: Meklēt %{title}
     back_link:
-      back:
+      back: Atpakaļ
     character_count:
-      body:
+      body: 'Varat ievadīt ne vairā kā: %{number} %{type} '
       type:
-        characters:
-        words:
+        characters: rakstzīmes
+        words: vārdi
     checkboxes:
-      or:
+      or: vai
     contents_list:
-      contents:
+      contents: Saturs
     contextual_sidebar:
-      pretitle:
+      pretitle: Arī daļa no
     cookie_banner:
       buttons:
-        accept_cookies:
-        reject_cookies:
-      confirmation_message:
-      confirmation_message_link:
-      hide:
+        accept_cookies: Piekrist papildu sīkfailiem
+        reject_cookies: Noraidīt papildu sīkfailus
+      confirmation_message: Varat %{link} jebkurā laikā.
+      confirmation_message_link: mainīt sīkfailu iestatījumus
+      hide: Paslēpt šo ziņojumu
       text:
-      title:
-    devolved_nations:
-      applies_to:
-      connectors:
-        last_word:
-        two_words:
-      england:
-      northern_ireland:
-      scotland:
-      wales:
+      - Mēs izmantojam vairākus būtiskos sīkfailus
+      - lai šī tīmekļa vietne varētu darboties.
+      - Mēs vēlamies iestatīt papildu sīkfailus
+      - lai saprastu
+      - kā jūs lietojat GOV.UK
+      - saglabātu jūsu iestatījumus un uzlabotu valdības pakalpojumus.
+      - Mēs arī izmantojam citu vietņu iestatītos sīkfailus
+      - lai nodrošinātu viņu pakalpojumu saturu.
+      title: Sīkfaili vietnē GOV.UK
     feedback:
-      close:
-      dont_include_personal_info:
-      email_address:
-      help_us_improve_govuk:
-      is_not_useful:
-      is_this_page_useful:
-      is_useful:
-      maybe:
-      more_about_visit:
-      'no':
-      send:
-      send_me_survey:
-      something_wrong:
-      thank_you_for_feedback:
-      what_doing:
-      what_wrong:
-      'yes':
+      close: Aizvērt
+      dont_include_personal_info: Neiekļaujiet savus personas vai finanšu datus, piemēram,
+        valsts apdrošināšanas numuru vai kredītkaršu informāciju.
+      email_address: E-pasta adrese
+      help_us_improve_govuk: Palīdziet mums uzlabot GOV.UK
+      is_not_useful: šī lapa nav noderīga
+      is_this_page_useful: Vai šī lapa ir noderīga?
+      is_useful: šī lapa ir noderīga
+      maybe: Varbūt
+      more_about_visit: Lai palīdzētu mums uzlabot GOV.UK, mēs vēlētos uzzināt vairāk
+        par jūsu šodienas apmeklējumu. Mēs nosūtīsim jums saiti uz atsauksmju veidlap.
+        Tās aizpildīšana aizņems tikai 2 minūtes. Mēs nesūtīsim jums surogātpastu
+        un neizpaudīsim jūsu e-pasta adresi citiem.
+      'no': Nē
+      send: Nosūtīt
+      send_me_survey: Nostīt man aptauju
+      something_wrong: Ziņot par problēmu ar šo lapu
+      thank_you_for_feedback: Pateicamies par atsauksmēm
+      what_doing: Ko jūs darījāt?
+      what_wrong: Kādas problēmas radās?
+      'yes': Jā
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
+      consultations: Konsultācijas
+      departments: Departamenti
+      get-involved: Iesaistīties
+      how-government-works: Kā darbojas valdība
+      news_and_communications: Ziņas un saziņa
+      statistics: Statistika
+      worldwide: Visā pasaulē
     layout_footer:
-      copyright_html:
-      licence_html:
-      support_links:
-    layout_for_public:
-      account_layout:
-        feedback:
-          banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
-        navigation:
-          destroy_user_session:
-          menu_bar:
-            account:
-              link_text:
-            manage:
-              link_text:
-            security:
-              link_text:
-          user_root_path:
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
+        Britu sadraudzības autortiesības</a>
+      licence_html: Viss saturs, kas ir pieejams saskaņā ar <a class="govuk-footer__link"
+        href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+        rel="license">valsts izsniegto atklāto licenci v3.0</a>, izņemot, ja norādīts
+        citādi
+      support_links: Atbalsta saites
     layout_header:
-      hide_button:
-      menu:
-      search_button:
-      show_button:
-      top_level:
-    layout_super_navigation_header:
-      logo_link_title:
-      logo_text:
-      menu_toggle_label:
-        hide:
-        show:
-      navigation_links:
-      navigation_menu_heading:
-      navigation_search_heading:
-      navigation_search_subheading:
-      popular_links:
-      popular_links_heading:
-      search_text:
+      hide_button: Paslēpt meklēšanu
+      menu: Izvēlne
+      search_button: Meklēt GOV.UK
+      show_button: Rādīt meklēšanu
+      top_level: Augšējais līmenis
     metadata:
-      from:
-      history:
-      last_updated:
-      part_of:
-      published:
-      see_all_updates:
-      toggle_less:
-      toggle_more:
+      from: 'No'
+      history: Vēsture
+      last_updated: Pēdējoreiz atjaunināts
+      part_of: Daļa no
+      published: Publicēts
+      see_all_updates: Skatīt visus atjauninājumus
+      toggle_less: Rādīt mazāk
+      toggle_more: "+ %{number} vairāk"
     modal_dialogue:
-      close_modal:
-    notice:
-      banner_title:
+      close_modal: Aizvērt modālo dialogu
     organisation_schema:
-      all_content_search_description:
+      all_content_search_description: Meklēt visu saturu no %{organisation}
     previous_and_next_navigation:
-      pagination:
+      pagination: Numerācija
     print_link:
-      text:
+      text: Drukāt šo lapu
     radio:
-      or:
+      or: vai
     related_footer_navigation:
-      collections:
-      policies:
-      statistical_data_sets:
-      topical_events:
+      collections: Sērijas
+      policies: Politikas
+      statistical_data_sets: Statistikas datu kopas
+      topical_events: Aktuāli notikumi
     related_navigation:
-      collections:
-      external_links:
-      policies:
-      publishers:
-      related_contacts:
-      related_content:
-      related_external_links:
-      related_guides:
-      statistical_data_sets:
-      topical_events:
-      topics:
+      collections: Sērija
+      external_links: Citur tīmeklī
+      policies: Politika
+      publishers: Publicēja
+      related_contacts: Citas kontaktpersonas
+      related_content: Saistītais saturs
+      related_external_links: Citur tīmeklī
+      related_guides: Detalizētas vadlīnijas
+      statistical_data_sets: Statistikas datu kopa
+      topical_events: Aktuāls notikums
+      topics: Izpētīt tēmu
       transition:
-        link_path:
-        link_text:
-        title:
-      world_locations:
+        hub_page_link_path: "/transition-check/questions"
+        hub_page_link_text: Saņemt personalizētu uzdevumu sarakstu
+        hub_page_title: Brexit kontrolsaraksts
+        link_path: "/brexit"
+        link_text: Noskaidrojiet, kas jums jāpaveic
+        title: Brexit
+      world_locations: Atrašanās vietas pasaulē
     search_box:
-      input_title:
-      label:
-      search_button:
+      input_title: Meklēt
+      label: Meklēt GOV.UK
+      search_button: Meklēt
     show_password:
-      announce_hide:
-      announce_show:
-      hide:
-      hide_password:
-      show:
-      show_password:
+      announce_hide: Jūsu parole ir paslēpta
+      announce_show: Jūsu parole ir redzama
+      hide: Paslēpt
+      hide_password: Paslēpt paroli
+      show: Rādīt
+      show_password: Rādīt paroli
     skip_link:
-      text:
+      text: Izlaist un pāriet uz galveno saturu
     step_by_step_nav:
-      hide:
-      hide_all:
-      show:
-      show_all:
+      hide: Paslēpt
+      hide_all: Paslēpt visas darbības
+      show: Rādīt
+      show_all: Rādīt visas darbības
     step_by_step_nav_related:
-      part_of:
+      part_of: Daļa no
     subscription_links:
-      email_signup_link_text:
-      feed_link_label:
-      feed_link_text:
-      subscriptions:
+      email_signup_link_text: Saņemt e-pasta ziņojumus
+      feed_link_label: Kopējiet un ielīmējiet šo URL savā plūsmas lasītājā
+      feed_link_text: Abonēt plūsmu
+      subscriptions: Abonementi
     success_alert:
-      success:
+      success: Izdevās
     summary_list:
-      delete:
-      edit:
+      delete: Dzēst
+      edit: Mainīt
     tabs:
-      contents:
+      contents: Saturs
+  common:
+    translations: Tulkojumi

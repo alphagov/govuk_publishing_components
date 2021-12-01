@@ -1,204 +1,178 @@
----
 id:
   common:
-    translations:
+    translations: Terjemahan
   components:
     accordion:
-      hide:
-      hide_all:
-      show:
-      show_all:
-      this_section_visually_hidden:
+      hide: Sembunyikan
+      hide_all: Sembunyikan semua bagian
+      show: Tampilkan
+      show_all: Tampilkan semua bagian
+      this_section_visually_hidden: " bagian ini"
     article_schema:
-      scoped_search_description:
+      scoped_search_description: Cari dalam %{title}
     attachment:
-      opendocument_html:
-      order_a_copy:
+      opendocument_html: File ini berformat <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
+        target=%{target} class='govuk-link'>OpenDocument</a>
+      order_a_copy: Pesan salinan
       page:
-        one:
-        other:
-      reference:
-      request_format_cta:
-      request_format_details_html:
-      request_format_text:
+        one: 1 halaman
+        other: "%{count} halaman"
+      reference: 'Ref: %{reference}'
+      request_format_cta: Minta format yang dapat diakses.
+      request_format_details_html: Jika menggunakan bantuan teknologi (seperti pembaca
+        layar) dan membutuhkan versi dokumen ini dalam format yang lebih dapat diakses,
+        silakan kirim email ke <a href='mailto:%{alternative_format_contact_email}'
+        target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>.
+        Silakan beri tahu kami format yang dibutuhkan. Ini akan membantu kami jika
+        Anda mengatakan teknologi bantuan apa yang Anda gunakan.
+      request_format_text: File ini mungkin tidak sesuai untuk pengguna teknologi
+        bantuan.
     back_link:
-      back:
+      back: Kembali
     character_count:
-      body:
+      body: Anda dapat memasukkan hingga %{number} %{type}
       type:
-        characters:
-        words:
+        characters: karakter
+        words: kata
     checkboxes:
-      or:
+      or: atau
     contents_list:
-      contents:
+      contents: Konten
     contextual_sidebar:
-      pretitle:
+      pretitle: Juga bagian dari
     cookie_banner:
       buttons:
-        accept_cookies:
-        reject_cookies:
-      confirmation_message:
-      confirmation_message_link:
-      hide:
+        accept_cookies: Terima cookie tambahan
+        reject_cookies: Tolak cookie tambahan
+      confirmation_message: Anda dapat menautkan %{link} kapan saja.
+      confirmation_message_link: ubah pengaturan cookie Anda
+      hide: Sembunyikan pesan ini
       text:
-      title:
-    devolved_nations:
-      applies_to:
-      connectors:
-        last_word:
-        two_words:
-      england:
-      northern_ireland:
-      scotland:
-      wales:
+      - Kami menggunakan beberapa cookie yang sangat dibutuhkan untuk membuat situs
+        web ini berfungsi.
+      - Kami ingin mengatur cookie tambahan untuk memahami cara Anda menggunakan situs
+        GOV.UK
+      - mengingat pengaturan Anda
+      - dan meningkatkan layanan pemerintah.
+      - Kami juga menggunakan cookie yang diatur oleh situs lain untuk membantu kami
+        memberi konten dari layanan mereka.
+      title: Cookie di situs GOV.UK
     feedback:
-      close:
-      dont_include_personal_info:
-      email_address:
-      help_us_improve_govuk:
-      is_not_useful:
-      is_this_page_useful:
-      is_useful:
-      maybe:
-      more_about_visit:
-      'no':
-      send:
-      send_me_survey:
-      something_wrong:
-      thank_you_for_feedback:
-      what_doing:
-      what_wrong:
-      'yes':
+      close: Tutup
+      dont_include_personal_info: Jangan masukkan informasi pribadi atau keuangan
+        seperti nomor Asuransi Nasional atau detail kartu kredit Anda.
+      email_address: Alamat email
+      help_us_improve_govuk: Bantu kami meningkatkan situs GOV.UK
+      is_not_useful: halaman ini tidak bermanfaat
+      is_this_page_useful: Apakah halaman ini bermanfaat?
+      is_useful: halaman ini bermanfaat
+      maybe: Mungkin
+      more_about_visit: Untuk membantu kami meningkatkan situs GOV.UK, kami ingin
+        tahu lebih banyak tentang kunjungan Anda hari ini. Kami akan mengirimi Anda
+        tautan ke formulir umpan balik. Hanya butuh waktu 2 menit untuk mengisinya.
+        Jangan khawatir karena kami tidak akan mengirimi Anda spam atau membagikan
+        alamat email Anda kepada siapa pun.
+      'no': Tidak
+      send: Kirim
+      send_me_survey: Kirimi saya surveinya
+      something_wrong: Laporkan masalah dengan halaman ini
+      thank_you_for_feedback: Terima kasih untuk umpan balik Anda
+      what_doing: Apa yang Anda lakukan?
+      what_wrong: Apa yang salah?
+      'yes': Ya
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
+      consultations: Konsultasi
+      departments: Departemen
+      get-involved: Ikut terlibat
+      how-government-works: Cara kerja pemerintah
+      news_and_communications: Berita dan komunikasi
+      statistics: Statistik
+      worldwide: Dunia
     layout_footer:
-      copyright_html:
-      licence_html:
-      support_links:
-    layout_for_public:
-      account_layout:
-        feedback:
-          banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
-        navigation:
-          destroy_user_session:
-          menu_bar:
-            account:
-              link_text:
-            manage:
-              link_text:
-            security:
-              link_text:
-          user_root_path:
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">Hak
+        Cipta © Crown</a>
+      licence_html: Semu konten tersedia sesuai <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+        rel="license">Lisensi Terbuka Pemerintah v3.0</a>, kecuali dinyatakan berbeda
+      support_links: Tautan dukungan
     layout_header:
-      hide_button:
-      menu:
-      search_button:
-      show_button:
-      top_level:
-    layout_super_navigation_header:
-      logo_link_title:
-      logo_text:
-      menu_toggle_label:
-        hide:
-        show:
-      navigation_links:
-      navigation_menu_heading:
-      navigation_search_heading:
-      navigation_search_subheading:
-      popular_links:
-      popular_links_heading:
-      search_text:
+      hide_button: Sembunyikan pencarian
+      menu: Menu
+      search_button: Cari di GOV.UK
+      show_button: Tampilkan pencarian
+      top_level: Level teratas
     metadata:
-      from:
-      history:
-      last_updated:
-      part_of:
-      published:
-      see_all_updates:
-      toggle_less:
-      toggle_more:
+      from: Dari
+      history: Riwayat
+      last_updated: Terakhir diperbarui
+      part_of: Bagian dari
+      published: Diterbitkan
+      see_all_updates: Lihat semua pembaruan
+      toggle_less: Lihat lebih sedikit
+      toggle_more: "+ %{number} lagi"
     modal_dialogue:
-      close_modal:
-    notice:
-      banner_title:
+      close_modal: Tutup dialog
     organisation_schema:
-      all_content_search_description:
+      all_content_search_description: Temukan semua konten dari %{organisation}
     previous_and_next_navigation:
-      pagination:
+      pagination: Paginasi
     print_link:
-      text:
+      text: Cetak halaman ini
     radio:
-      or:
+      or: atau
     related_footer_navigation:
-      collections:
-      policies:
-      statistical_data_sets:
-      topical_events:
+      collections: Koleksi
+      policies: Kebijakan
+      statistical_data_sets: Set data statistik
+      topical_events: Acara berdasar topik
     related_navigation:
-      collections:
-      external_links:
-      policies:
-      publishers:
-      related_contacts:
-      related_content:
-      related_external_links:
-      related_guides:
-      statistical_data_sets:
-      topical_events:
-      topics:
+      collections: Koleksi
+      external_links: Di tempat lain di web
+      policies: Kebijakan
+      publishers: Diterbitkan oleh
+      related_contacts: Kontak lain
+      related_content: Konten terkait
+      related_external_links: Di tempat lain di web
+      related_guides: Panduan terperinci
+      statistical_data_sets: Set data statistik
+      topical_events: Acara berdasar topik
+      topics: Jelajahi topik
       transition:
-        link_path:
-        link_text:
-        title:
-      world_locations:
+        hub_page_link_path: "/transition-check/questions"
+        hub_page_link_text: Dapatkan daftar tindakan terpersonalisasi
+        hub_page_title: Brexit checker
+        link_path: "/brexit"
+        link_text: Periksa apa yang Anda harus lakukan
+        title: Brexit
+      world_locations: Lokasi dunia
     search_box:
-      input_title:
-      label:
-      search_button:
+      input_title: Cari
+      label: Cari di GOV.UK
+      search_button: Cari
     show_password:
-      announce_hide:
-      announce_show:
-      hide:
-      hide_password:
-      show:
-      show_password:
+      announce_hide: Kata sandi Anda tersembunyi
+      announce_show: Kata sandi Anda tampak
+      hide: Sembunyikan
+      hide_password: Sembunyikan kata sandi
+      show: Tampilkan
+      show_password: Tampilkan kata sandi
     skip_link:
-      text:
+      text: Lewatkan ke konten utama
     step_by_step_nav:
-      hide:
-      hide_all:
-      show:
-      show_all:
+      hide: Sembunyikan
+      hide_all: Sembunyikan semua langkah
+      show: Tampilkan
+      show_all: Tampilkan semua langkah
     step_by_step_nav_related:
-      part_of:
+      part_of: Bagian dari
     subscription_links:
-      email_signup_link_text:
-      feed_link_label:
-      feed_link_text:
-      subscriptions:
+      email_signup_link_text: Dapatkan email
+      feed_link_label: Salin dan rekat URL ini ke pembaca feed Anda
+      feed_link_text: Berlangganan feed
+      subscriptions: Langganan
     success_alert:
-      success:
+      success: Sukses
     summary_list:
-      delete:
-      edit:
+      delete: Hapus
+      edit: Ubah
     tabs:
-      contents:
+      contents: Konten

@@ -1,204 +1,175 @@
----
 fi:
-  common:
-    translations:
   components:
-    accordion:
-      hide:
-      hide_all:
-      show:
-      show_all:
-      this_section_visually_hidden:
-    article_schema:
-      scoped_search_description:
     attachment:
-      opendocument_html:
-      order_a_copy:
       page:
-        one:
-        other:
-      reference:
-      request_format_cta:
-      request_format_details_html:
-      request_format_text:
+        one: 1 sivu
+        other: "%{count} pages"
+      opendocument_html: Tämä tiedosto on <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
+        target=%{target} class='govuk-link'> OpenDocument</a> muodossa
+      order_a_copy: Tilaa kopio
+      reference: 'Viite: %{reference}'
+      request_format_cta: Pyydä helppokäyttöistä muotoa.
+      request_format_details_html: Jos käytät apuvälinetekniikkaa (kuten näytönlukuohjelmaa)
+        ja tarvitset tämän asiakirjan version helppokäyttöisemmään muotoon, lähetä
+        sähköpostia osoitteeseen <a href='mailto:%{alternative_format_contact_email}'
+        target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>.
+        Kerro meille, missä muodossa tarvitset. Se auttaa meitä, jos sanot, mitä apuvälineteknologiaa
+        käytät.
+      request_format_text: Tämä tiedosto ei ehkä sovellu apuvälineen käyttäjille.
+    accordion:
+      hide: Piilottaa
+      hide_all: Piilota kaikki osiot
+      show: Näytä
+      show_all: Näytä kaikki osiot
+      this_section_visually_hidden: " Tämä jakso"
+    article_schema:
+      scoped_search_description: Haku sisällä %{title}
     back_link:
-      back:
+      back: Takaisin
     character_count:
-      body:
+      body: Voit syöttää enintään %{number} %{type}
       type:
-        characters:
-        words:
+        characters: merkkejä
+        words: sanoja
     checkboxes:
-      or:
+      or: tai
     contents_list:
-      contents:
+      contents: Sisällys
     contextual_sidebar:
-      pretitle:
+      pretitle: Myös osa
     cookie_banner:
       buttons:
-        accept_cookies:
-        reject_cookies:
-      confirmation_message:
-      confirmation_message_link:
-      hide:
+        accept_cookies: Hyväksy lisäevästeet
+        reject_cookies: Hylkää lisäevästeet
+      confirmation_message: Voit %{link} milloin tahansa.
+      confirmation_message_link: muuta evästeasetuksia
+      hide: Piilota tämä viesti
       text:
-      title:
-    devolved_nations:
-      applies_to:
-      connectors:
-        last_word:
-        two_words:
-      england:
-      northern_ireland:
-      scotland:
-      wales:
+      - Käytämme joitain välttämättömiä evästeitä saadaksemme tämän sivuston toimimaan.
+      - Haluamme asettaa lisäevästeitä ymmärtääksemme
+      - miten käytät GOV.UK -sivustoa
+      - muistaa asetuksesi ja parantaa valtion palveluita.
+      - Käytämme myös muita sivustoja
+      - 'jotka auttavat meitä toimittamaan sisältöä alkaen heidän palveluistaan. '
+      title: Evästeet sivustolla GOV.UK
     feedback:
-      close:
-      dont_include_personal_info:
-      email_address:
-      help_us_improve_govuk:
-      is_not_useful:
-      is_this_page_useful:
-      is_useful:
-      maybe:
-      more_about_visit:
-      'no':
-      send:
-      send_me_survey:
-      something_wrong:
-      thank_you_for_feedback:
-      what_doing:
-      what_wrong:
-      'yes':
+      close: Kiinni
+      dont_include_personal_info: Älä ilmoita henkilökohtaisia tai taloudellisia tietoja,
+        kuten sosiaaliturvatunnusta tai luottokorttitietoja.
+      email_address: Sähköpostiosoite
+      help_us_improve_govuk: Auta meitä parantamaan GOV.UK
+      is_not_useful: tämä sivu ei ole hyödyllinen
+      is_this_page_useful: Onko tämä sivu hyödyllinen?
+      is_useful: tämä sivu on hyödyllinen
+      maybe: Ehkä
+      more_about_visit: Auttaaksemme meitä parantamaan GOV.UK:ta haluaisimme tietää
+        lisää tämänpäiväisestä vierailustasi. Lähetämme sinulle linkin palautelomakkeeseen.
+        Sen täyttäminen vie vain 2 minuuttia. Älä huoli, emme lähetä sinulle roskapostia
+        tai jaa sähköpostiosoitettasi kenenkään kanssa.
+      'no': Ei
+      send: Lähettää
+      send_me_survey: Lähetä kysely minulle
+      something_wrong: Ilmoita tämän sivun ongelmasta
+      thank_you_for_feedback: Kiitos palautteesta
+      what_doing: Mitä olit tekemässä?
+      what_wrong: Mikä meni vikaan?
+      'yes': Kyllä
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
+      consultations: Konsultaatiot
+      departments: Osastot
+      get-involved: Tule mukaan
+      how-government-works: Miten hallitus toimii
+      news_and_communications: Uutiset ja viestintä
+      statistics: Tilastot
+      worldwide: Maailmanlaajuinen
     layout_footer:
-      copyright_html:
-      licence_html:
-      support_links:
-    layout_for_public:
-      account_layout:
-        feedback:
-          banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
-        navigation:
-          destroy_user_session:
-          menu_bar:
-            account:
-              link_text:
-            manage:
-              link_text:
-            security:
-              link_text:
-          user_root_path:
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
+        Kruunun tekijänoikeus</a>
+      licence_html: Kaikki sisältö on saatavilla osoitteessa <a class="govuk-footer__link"
+        href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+        rel="license">Avoimen hallinnon lisenssi v3.0</a>, ellei toisin mainita
+      support_links: Tukilinkit
     layout_header:
-      hide_button:
-      menu:
-      search_button:
-      show_button:
-      top_level:
-    layout_super_navigation_header:
-      logo_link_title:
-      logo_text:
-      menu_toggle_label:
-        hide:
-        show:
-      navigation_links:
-      navigation_menu_heading:
-      navigation_search_heading:
-      navigation_search_subheading:
-      popular_links:
-      popular_links_heading:
-      search_text:
+      hide_button: Piilota haku
+      menu: Valikko
+      search_button: Hae osoitteesta GOV.UK
+      show_button: Näytä haku
+      top_level: Huipputaso
     metadata:
-      from:
-      history:
-      last_updated:
-      part_of:
-      published:
-      see_all_updates:
-      toggle_less:
-      toggle_more:
+      from: Alkaen
+      history: Historia
+      last_updated: Viimeksi päivitetty
+      part_of: Osa
+      published: Julkaistu
+      see_all_updates: Katso kaikki palvelut
+      toggle_less: Näytä vähemmän
+      toggle_more: "+ %{number} lisää"
     modal_dialogue:
-      close_modal:
-    notice:
-      banner_title:
+      close_modal: Sulje modaalinen vuoropuhelu
     organisation_schema:
-      all_content_search_description:
+      all_content_search_description: Etsi kaikki sisältö alkaen %{organisation}
     previous_and_next_navigation:
-      pagination:
+      pagination: Sivunumerointi
     print_link:
-      text:
+      text: Tulosta tämä sivu
     radio:
-      or:
+      or: tai
     related_footer_navigation:
-      collections:
-      policies:
-      statistical_data_sets:
-      topical_events:
+      collections: Kokoelmat
+      policies: Käytännöt
+      statistical_data_sets: Tilastolliset tietojoukot
+      topical_events: Ajankohtaisia tapahtumia
     related_navigation:
-      collections:
-      external_links:
-      policies:
-      publishers:
-      related_contacts:
-      related_content:
-      related_external_links:
-      related_guides:
-      statistical_data_sets:
-      topical_events:
-      topics:
+      collections: Kokoelma
+      external_links: Muualla verkossa
+      policies: Käytäntö
+      publishers: Julkaissut
+      related_contacts: Muut yhteystiedot
+      related_content: Samankaltaista sisältöä
+      related_external_links: Muualla verkossa
+      related_guides: Yksityiskohtaiset ohjeet
+      statistical_data_sets: Tilastollinen tietojoukko
+      topical_events: Ajankohtainen tapahtuma
+      topics: Tutustu aiheeseen
       transition:
-        link_path:
-        link_text:
-        title:
-      world_locations:
+        hub_page_link_path: "/transition-check/questions"
+        hub_page_link_text: Hanki henkilökohtainen luettelo toiminnoista
+        hub_page_title: Brexitin tarkistaja
+        link_path: "/brexit"
+        link_text: Tarkista, mitä sinun on tehtävä
+        title: Brexit
+      world_locations: Maailman sijainnit
     search_box:
-      input_title:
-      label:
-      search_button:
+      input_title: Hae
+      label: Hae osoitteesta GOV.UK
+      search_button: Hae
     show_password:
-      announce_hide:
-      announce_show:
-      hide:
-      hide_password:
-      show:
-      show_password:
+      announce_hide: Salasanasi on piilotettu
+      announce_show: Salasanasi näytetään
+      hide: Piilottaa
+      hide_password: Piilota salasana
+      show: Näytä
+      show_password: Näytä salasana
     skip_link:
-      text:
+      text: Siirry pääsisältöön
     step_by_step_nav:
-      hide:
-      hide_all:
-      show:
-      show_all:
+      hide: Piilottaa
+      hide_all: Piilota kaikki vaiheet
+      show: Näytä
+      show_all: Näytä kaikki vaiheet
     step_by_step_nav_related:
-      part_of:
+      part_of: Osa
     subscription_links:
-      email_signup_link_text:
-      feed_link_label:
-      feed_link_text:
-      subscriptions:
+      email_signup_link_text: Hanki sähköpostit
+      feed_link_label: Kopioi ja liitä tämä URL osoite syötteenlukijaasi
+      feed_link_text: Tilaa syöte
+      subscriptions: Tilaukset
     success_alert:
-      success:
+      success: Menestys
     summary_list:
-      delete:
-      edit:
+      delete: Poistaa
+      edit: Muuttaa
     tabs:
-      contents:
+      contents: Sisällys
+  common:
+    translations: Käännökset

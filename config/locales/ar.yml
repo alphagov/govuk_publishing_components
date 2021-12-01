@@ -1,204 +1,178 @@
----
 ar:
-  common:
-    translations:
   components:
-    accordion:
-      hide:
-      hide_all:
-      show:
-      show_all:
-      this_section_visually_hidden:
-    article_schema:
-      scoped_search_description:
     attachment:
-      opendocument_html:
-      order_a_copy:
       page:
-        one:
-        other:
-      reference:
-      request_format_cta:
-      request_format_details_html:
-      request_format_text:
+        zero:
+        one: 1 صفحة
+        two:
+        few:
+        many:
+        other: "%{count} صفحات"
+      opendocument_html: هذا الملف بتنسيق <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
+        target=%{target} class='govuk-link'>OpenDocument</a>
+      order_a_copy: طلب نسخة
+      reference: 'مرجع: %{reference}'
+      request_format_cta: طلب تنسيق يمكن الاطلاع عليه.
+      request_format_details_html: إذا كنت تستخدم تكنولوجيا مساعِدة (مثل قارئ للشاشة)
+        وتحتاج إلى إصدار من هذا المستند بتنسيق يسهل الاطلاع عليه، فيُرجى التواصل عبر
+        البريد الإلكتروني <a href='mailto:%{alternative_format_contact_email}' target='_blank'
+        class='govuk-link'>%{alternative_format_contact_email}</a>. من فضلك أخبرنا
+        بالتنسيق الذي تحتاجه. إذا أخبرتنا بالتكنولوجيا المساعدة التي تستخدمها، فهذا
+        سيساعدنا.
+      request_format_text: قد لا يكون هذا الملف مناسبًا لمستخدمي التكنولوجيا المساعدة.
+    accordion:
+      hide: إخفاء
+      hide_all: إخفاء كل الأقسام
+      show: إظهار
+      show_all: إظهار كل الأقسام
+      this_section_visually_hidden: " هذا القسم"
+    article_schema:
+      scoped_search_description: البحث في %{title}
     back_link:
-      back:
+      back: عودة
     character_count:
-      body:
+      body: يمكنك إدخال عدد حتى %{number} %{type}
       type:
-        characters:
-        words:
+        characters: أحرف
+        words: كلمات
     checkboxes:
-      or:
+      or: أو
     contents_list:
-      contents:
+      contents: المحتويات
     contextual_sidebar:
-      pretitle:
+      pretitle: جزء أيضًا من
     cookie_banner:
       buttons:
-        accept_cookies:
-        reject_cookies:
-      confirmation_message:
-      confirmation_message_link:
-      hide:
+        accept_cookies: قبول ملفات تعريف الارتباط الإضافية
+        reject_cookies: رفض ملفات تعريف الارتباط الإضافية
+      confirmation_message: يمكنك %{link} في أي وقت.
+      confirmation_message_link: قم بتغيير إعدادات ملفات تعريف الارتباط الخاصة بك
+      hide: إخفاء هذه الرسالة
       text:
-      title:
-    devolved_nations:
-      applies_to:
-      connectors:
-        last_word:
-        two_words:
-      england:
-      northern_ireland:
-      scotland:
-      wales:
+      - نحن نستخدم بعض ملفات تعريف الارتباط الأساسية لجعل هذا الموقع يعمل.
+      - نود تعيين ملفات تعريف ارتباط إضافية لفهم كيفية استخدامك لـموقع GOV.UK، ولتذكر
+        إعداداتك، ولتحسين الخدمات الحكومية.
+      - كما نستخدم أيضًا ملفات تعريف الارتباط التي تم تعيينها بواسطة مواقع أخرى لمساعدتنا
+        في تقديم المحتوى المقدم من خدماتها.
+      title: ملفات تعريف الارتباط على GOV.UK
     feedback:
-      close:
-      dont_include_personal_info:
-      email_address:
-      help_us_improve_govuk:
-      is_not_useful:
-      is_this_page_useful:
-      is_useful:
-      maybe:
-      more_about_visit:
-      'no':
-      send:
-      send_me_survey:
-      something_wrong:
-      thank_you_for_feedback:
-      what_doing:
-      what_wrong:
-      'yes':
+      close: إغلاق
+      dont_include_personal_info: لا تقم بتضمين معلومات شخصية أو مالية مثل رقم التأمين
+        الوطني أو تفاصيل بطاقة الائتمان الخاصة بك.
+      email_address: عنوان البريد الإلكتروني
+      help_us_improve_govuk: ساعدنا في تحسين GOV.UK
+      is_not_useful: هذه الصفحة ليست مفيدة
+      is_this_page_useful: هل هذه الصفحة مفيدة؟
+      is_useful: هذه الصفحة مفيدة
+      maybe: ربما
+      more_about_visit: لمساعدتنا في تحسين GOV.UK، نود معرفة المزيد عن زيارتك اليوم.
+        سنرسل لك ارتباطًا إلى نموذج التعليقات. ستستغرق تعبئة البيانات دقيقتين فقط.
+        لا تقلق، لن نرسل لك بريدًا عشوائيًا أو نشارك عنوان بريدك الإلكتروني مع أي
+        شخص.
+      'no': لا
+      send: إرسال
+      send_me_survey: أرسل لي الاستبيان
+      something_wrong: أبلغ عن مشكلة في هذه الصفحة
+      thank_you_for_feedback: نشكرك على ملاحظاتك
+      what_doing: ماذا كنت تفعل؟
+      what_wrong: ما الخطأ الذي وقع؟
+      'yes': نعم ‏  ‏
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
+      consultations: استشارات
+      departments: الأقسام
+      get-involved: شارك
+      how-government-works: كيف تعمل الحكومة
+      news_and_communications: الأخبار والاتصالات
+      statistics: إحصائيات
+      worldwide: في جميع أنحاء العالم
     layout_footer:
-      copyright_html:
-      licence_html:
-      support_links:
-    layout_for_public:
-      account_layout:
-        feedback:
-          banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
-        navigation:
-          destroy_user_session:
-          menu_bar:
-            account:
-              link_text:
-            manage:
-              link_text:
-            security:
-              link_text:
-          user_root_path:
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
+        حقوق نشر التاج الملكي</a>
+      licence_html: كل المحتوى متاح بموجب <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+        rel="license">الترخيص الحكومي المفتوح (الإصدار v3.0)</a>، ما لم ينص على خلاف
+        ذلك
+      support_links: روابط الدعم
     layout_header:
-      hide_button:
-      menu:
-      search_button:
-      show_button:
-      top_level:
-    layout_super_navigation_header:
-      logo_link_title:
-      logo_text:
-      menu_toggle_label:
-        hide:
-        show:
-      navigation_links:
-      navigation_menu_heading:
-      navigation_search_heading:
-      navigation_search_subheading:
-      popular_links:
-      popular_links_heading:
-      search_text:
+      hide_button: إخفاء البحث
+      menu: القائمة
+      search_button: البحث في GOV.UK
+      show_button: إظهار البحث
+      top_level: أفضل مستوى
     metadata:
-      from:
-      history:
-      last_updated:
-      part_of:
-      published:
-      see_all_updates:
-      toggle_less:
-      toggle_more:
+      from: من
+      history: المحفوظات
+      last_updated: التحديث الأخير
+      part_of: جزء من
+      published: منشورة
+      see_all_updates: اطلع على كل التحديثات
+      toggle_less: عرض أقل
+      toggle_more: زيادة بمقدار + %{number}
     modal_dialogue:
-      close_modal:
-    notice:
-      banner_title:
+      close_modal: إغلاق مربع الحوار المشروط
     organisation_schema:
-      all_content_search_description:
+      all_content_search_description: العثور عن كل المحتوى من %{organisation}
     previous_and_next_navigation:
-      pagination:
+      pagination: ترقيم الصفحات
     print_link:
-      text:
+      text: طباعة هذه الصفحة
     radio:
-      or:
+      or: أو
     related_footer_navigation:
-      collections:
-      policies:
-      statistical_data_sets:
-      topical_events:
+      collections: المجموعات
+      policies: سياسات
+      statistical_data_sets: مجموعات بيانات إحصائية
+      topical_events: أحداث موضوعية
     related_navigation:
-      collections:
-      external_links:
-      policies:
-      publishers:
-      related_contacts:
-      related_content:
-      related_external_links:
-      related_guides:
-      statistical_data_sets:
-      topical_events:
-      topics:
+      collections: مجموعة
+      external_links: في مكان آخر على الويب
+      policies: سياسة
+      publishers: جهة النشر
+      related_contacts: جهات اتصال أخرى
+      related_content: المحتوى ذو الصلة
+      related_external_links: في مكان آخر على الويب
+      related_guides: توجيهات تفصيلية
+      statistical_data_sets: مجموعة بيانات إحصائية
+      topical_events: حدث موضوعي
+      topics: استكشف الموضوع
       transition:
-        link_path:
-        link_text:
-        title:
-      world_locations:
+        hub_page_link_path: "/transition-check/questions"
+        hub_page_link_text: احصل على قائمة مخصصة للإجراءات
+        hub_page_title: أداة التحقق الخاصة ببرِيكْسِت
+        link_path: "/brexit"
+        link_text: تحقق مما تحتاج إلى القيام به
+        title: برِيكْسِت
+      world_locations: المواقع العالمية
     search_box:
-      input_title:
-      label:
-      search_button:
+      input_title: بحث
+      label: بحث على GOV.UK
+      search_button: بحث
     show_password:
-      announce_hide:
-      announce_show:
-      hide:
-      hide_password:
-      show:
-      show_password:
+      announce_hide: كلمة مرورك مخفيَّة
+      announce_show: كلمة مرورك معروضة
+      hide: إخفاء
+      hide_password: إخفاء كلمة المرور
+      show: إظهار
+      show_password: إظهار كلمة المرور
     skip_link:
-      text:
+      text: تخطي إلى المحتوى الرئيسي
     step_by_step_nav:
-      hide:
-      hide_all:
-      show:
-      show_all:
+      hide: إخفاء
+      hide_all: إخفاء كل الخطوات
+      show: إظهار
+      show_all: عرض كل الخطوات
     step_by_step_nav_related:
-      part_of:
+      part_of: جزء من
     subscription_links:
-      email_signup_link_text:
-      feed_link_label:
-      feed_link_text:
-      subscriptions:
+      email_signup_link_text: احصل على رسائل البريد الإلكتروني
+      feed_link_label: انسخ والصق عنوان URL هذا في قارئ الموجز الخاص بك
+      feed_link_text: اشترك في التغذية
+      subscriptions: الاشتراكات
     success_alert:
-      success:
+      success: نجاح
     summary_list:
-      delete:
-      edit:
+      delete: حذف
+      edit: تغيير
     tabs:
-      contents:
+      contents: المحتويات
+  common:
+    translations: الترجمات

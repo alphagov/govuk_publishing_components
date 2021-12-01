@@ -1,204 +1,175 @@
----
 it:
-  common:
-    translations:
   components:
-    accordion:
-      hide:
-      hide_all:
-      show:
-      show_all:
-      this_section_visually_hidden:
-    article_schema:
-      scoped_search_description:
     attachment:
-      opendocument_html:
-      order_a_copy:
       page:
-        one:
-        other:
-      reference:
-      request_format_cta:
-      request_format_details_html:
-      request_format_text:
+        one: 1 pagina
+        other: "%{count} pagine"
+      opendocument_html: Questo file è un <a href=’https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation’
+        target=%{target} class=’govuk-link’>Documento Aperto</a> format
+      order_a_copy: Ordina una copia
+      reference: 'Rif: %{reference}'
+      request_format_cta: Richiedi un formato accessibile.
+      request_format_details_html: Se utilizzi una tecnologia assistiva (come uno
+        screen reader) e hai necessità di una versione di questo documento in un formato
+        più accessibile, invia un’e-mail all’indirizzo<a href='mailto:%{alternative_format_contact_email}'
+        target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>.
+        Comunicaci quale formato ti serve. Se ci comunichi quale tecnologia assistiva
+        usi ci sarà di aiuto.
+      request_format_text: Questo file potrebbe non essere adatto per utenti di tecnologia
+        assistiva.
+    accordion:
+      hide: Nascondi
+      hide_all: Nascondi tutte le sezioni
+      show: Mostra
+      show_all: Mostra tutte le sezioni
+      this_section_visually_hidden: " questa sezione"
+    article_schema:
+      scoped_search_description: Cerca in %{title}
     back_link:
-      back:
+      back: Indietro
     character_count:
-      body:
+      body: Puoi inserire fino a %{number} %{type}
       type:
-        characters:
-        words:
+        characters: caratteri
+        words: parole
     checkboxes:
-      or:
+      or: o
     contents_list:
-      contents:
+      contents: Contenuti
     contextual_sidebar:
-      pretitle:
+      pretitle: Anche parte di
     cookie_banner:
       buttons:
-        accept_cookies:
-        reject_cookies:
-      confirmation_message:
-      confirmation_message_link:
-      hide:
+        accept_cookies: Accetta cookie aggiuntivi
+        reject_cookies: Rifiuta cookie aggiuntivi
+      confirmation_message: Puoi %{link} in qualsiasi momento.
+      confirmation_message_link: modifica le tue impostazioni per i cookie
+      hide: Nascondi questo messaggio
       text:
-      title:
-    devolved_nations:
-      applies_to:
-      connectors:
-        last_word:
-        two_words:
-      england:
-      northern_ireland:
-      scotland:
-      wales:
+      - Utilizziamo alcuni cookie essenziali per far funzionare questo sito web.
+      - Vorremmo impostare cookie aggiuntivi per capire come usi GOV.UK
+      - ricordare le tue impostazioni e migliorare i servizi governativi.
+      - Inoltre utilizziamo cookie impostati da altri siti per aiutarci a fornire
+        contenuti dai loro servizi.
+      title: Cookie su GOV.UK
     feedback:
-      close:
-      dont_include_personal_info:
-      email_address:
-      help_us_improve_govuk:
-      is_not_useful:
-      is_this_page_useful:
-      is_useful:
-      maybe:
-      more_about_visit:
-      'no':
-      send:
-      send_me_survey:
-      something_wrong:
-      thank_you_for_feedback:
-      what_doing:
-      what_wrong:
-      'yes':
+      close: Chiudi
+      dont_include_personal_info: Non includere informazioni personali o finanziarie
+        come il numero di previdenza sociale o i dettagli della carta di credito.
+      email_address: Indirizzo e-mail
+      help_us_improve_govuk: Aiutaci a migliorare GOV.UK
+      is_not_useful: questa pagina non è utile
+      is_this_page_useful: È utile questa pagina?
+      is_useful: questa pagina è utile
+      maybe: Forse
+      more_about_visit: Per aiutarci a migliorare GOV.UK, vorremmo sapere di più sulla
+        tua visita di oggi. Ti invieremo un link a un modulo di feedback. Saranno
+        necessari solo 2 minuti per compilarlo. Non preoccuparti, non ti invieremo
+        spam né condivideremo il tuo indirizzo e-mail con nessuno.
+      'no': 'No'
+      send: Invia
+      send_me_survey: Inviami il sondaggio
+      something_wrong: Segnala un problema con questa pagina
+      thank_you_for_feedback: Grazie per il tuo feedback
+      what_doing: Cosa stavi facendo?
+      what_wrong: Cosa è andato storto?
+      'yes': Sì
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
+      consultations: Consultazioni
+      departments: Dipartimenti
+      get-involved: Mettiti in gioco
+      how-government-works: Come funziona il governo
+      news_and_communications: Notizie e comunicazioni
+      statistics: Statistiche
+      worldwide: In tutto il mondo
     layout_footer:
-      copyright_html:
-      licence_html:
-      support_links:
-    layout_for_public:
-      account_layout:
-        feedback:
-          banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
-        navigation:
-          destroy_user_session:
-          menu_bar:
-            account:
-              link_text:
-            manage:
-              link_text:
-            security:
-              link_text:
-          user_root_path:
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
+        Crown copyright</a>
+      licence_html: Tutto il contenuto è disponibile sotto la <a class=”govuk-footer__link”
+        href=”https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/”
+        rel=”license”>Open Government Licence v3.0</a>, tranne dove diversamente indicato
+      support_links: Link di supporto
     layout_header:
-      hide_button:
-      menu:
-      search_button:
-      show_button:
-      top_level:
-    layout_super_navigation_header:
-      logo_link_title:
-      logo_text:
-      menu_toggle_label:
-        hide:
-        show:
-      navigation_links:
-      navigation_menu_heading:
-      navigation_search_heading:
-      navigation_search_subheading:
-      popular_links:
-      popular_links_heading:
-      search_text:
+      hide_button: Nascondi ricerca
+      menu: Menu
+      search_button: Cerca GOV.UK
+      show_button: Mostra ricerca
+      top_level: Livello superiore
     metadata:
-      from:
-      history:
-      last_updated:
-      part_of:
-      published:
-      see_all_updates:
-      toggle_less:
-      toggle_more:
+      from: Da
+      history: Cronologia
+      last_updated: Ultimo aggiornamento
+      part_of: Parte di
+      published: Pubblicato
+      see_all_updates: Vedi tutti gli aggiornamenti
+      toggle_less: Mostra meno
+      toggle_more: "+ %{number} più"
     modal_dialogue:
-      close_modal:
-    notice:
-      banner_title:
+      close_modal: Chiudi dialogo modale
     organisation_schema:
-      all_content_search_description:
+      all_content_search_description: Trova tutto il contenuto da %{organisation}
     previous_and_next_navigation:
-      pagination:
+      pagination: Impaginazione
     print_link:
-      text:
+      text: Stampa questa pagina
     radio:
-      or:
+      or: o
     related_footer_navigation:
-      collections:
-      policies:
-      statistical_data_sets:
-      topical_events:
+      collections: Raccolte
+      policies: Informative
+      statistical_data_sets: Set di dati statistici
+      topical_events: Eventi di attualità
     related_navigation:
-      collections:
-      external_links:
-      policies:
-      publishers:
-      related_contacts:
-      related_content:
-      related_external_links:
-      related_guides:
-      statistical_data_sets:
-      topical_events:
-      topics:
+      collections: Raccolta
+      external_links: Altrove sul web
+      policies: Informativa
+      publishers: Pubblicata da
+      related_contacts: Altri contatti
+      related_content: Contenuto correlato
+      related_external_links: Altrove sul web
+      related_guides: Guida dettagliata
+      statistical_data_sets: Set di dati statistici
+      topical_events: Evento di attualità
+      topics: Esplora l'argomento
       transition:
-        link_path:
-        link_text:
-        title:
-      world_locations:
+        hub_page_link_path: "/transition-check/questions"
+        hub_page_link_text: Ricevi un elenco di azioni personalizzato
+        hub_page_title: Controllore della Brexit
+        link_path: "/brexit"
+        link_text: Controlla cosa devi fare
+        title: Brexit
+      world_locations: Località del mondo
     search_box:
-      input_title:
-      label:
-      search_button:
+      input_title: Cerca
+      label: Cerca su GOV.UK
+      search_button: Cerca
     show_password:
-      announce_hide:
-      announce_show:
-      hide:
-      hide_password:
-      show:
-      show_password:
+      announce_hide: La tua password è nascosta
+      announce_show: La tua password è mostrata
+      hide: Nascondi
+      hide_password: Nascondi password
+      show: Mostra
+      show_password: Mostra password
     skip_link:
-      text:
+      text: Passa al contenuto principale
     step_by_step_nav:
-      hide:
-      hide_all:
-      show:
-      show_all:
+      hide: Nascondi
+      hide_all: Nascondi tutti i passaggi
+      show: Mostra
+      show_all: Mostra tutti i passaggi
     step_by_step_nav_related:
-      part_of:
+      part_of: Parte di
     subscription_links:
-      email_signup_link_text:
-      feed_link_label:
-      feed_link_text:
-      subscriptions:
+      email_signup_link_text: Ricevi e-mail
+      feed_link_label: Copia e incolla questo URL nel tuo lettore di feed
+      feed_link_text: Iscriviti al feed
+      subscriptions: Abbonamenti
     success_alert:
-      success:
+      success: Successo
     summary_list:
-      delete:
-      edit:
+      delete: Cancella
+      edit: Modifica
     tabs:
-      contents:
+      contents: Contenuti
+  common:
+    translations: Traduzioni

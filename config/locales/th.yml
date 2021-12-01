@@ -1,204 +1,171 @@
----
 th:
   common:
-    translations:
+    translations: ข้อความแปล
   components:
     accordion:
-      hide:
-      hide_all:
-      show:
-      show_all:
-      this_section_visually_hidden:
+      hide: ซ่อน
+      hide_all: ซ่อนทุกส่วน
+      show: แสดง
+      show_all: แสดงส่วนทั้งหมด
+      this_section_visually_hidden: " ส่วนนี้"
     article_schema:
-      scoped_search_description:
+      scoped_search_description: ค้นหาใน %{title}
     attachment:
-      opendocument_html:
-      order_a_copy:
+      opendocument_html: ไฟล์นี้อยู่ในรูปแบบ <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
+        target=%{target} class='govuk-link'>OpenDocument</a>
+      order_a_copy: สั่งซื้อสำเนา
       page:
-        one:
-        other:
-      reference:
-      request_format_cta:
-      request_format_details_html:
-      request_format_text:
+        one: 1 หน้า
+        other: "%{count} หน้า"
+      reference: 'อ้างอิง: %{reference}'
+      request_format_cta: ขอรูปแบบไฟล์ที่สามารถเข้าถึงได้
+      request_format_details_html: หากคุณใช้เทคโนโลยีอำนวยความสะดวก (เช่น โปรแกรมอ่านหน้าจอ)
+        และต้องการเอกสารนี้ในฉบับที่เป็นรูปแบบไฟล์ที่ช่วยให้สามารถเข้าถึงได้ง่ายขึ้น
+        โปรดส่งอีเมลไปที่ <a href='mailto:%{alternative_format_contact_email}' target='_blank'
+        class='govuk-link'>%{alternative_format_contact_email}</a> โปรดบอกเราว่าคุณต้องการรูปแบบไฟล์แบบใด
+        จะเป็นการช่วยเราอย่างมาก หากคุณบอกว่าคุณใช้เทคโนโลยีเพื่อการช่วยเหลือแบบใด
+      request_format_text: ไฟล์นี้อาจไม่เหมาะสำหรับผู้ใช้เทคโนโลยีเพื่อการช่วยเหลือ
     back_link:
-      back:
+      back: กลับ
     character_count:
-      body:
+      body: คุณสามารถใส่ได้สูงสุด %{number} %{type}
       type:
-        characters:
-        words:
+        characters: ตัวอักษร
+        words: คำ
     checkboxes:
-      or:
+      or: หรือ
     contents_list:
-      contents:
+      contents: เนื้อหา
     contextual_sidebar:
-      pretitle:
+      pretitle: และเป็นส่วนหนึ่งของ
     cookie_banner:
       buttons:
-        accept_cookies:
-        reject_cookies:
-      confirmation_message:
-      confirmation_message_link:
-      hide:
+        accept_cookies: ยอมรับคุกกี้เพิ่มเติม
+        reject_cookies: ปฏิเสธคุกกี้เพิ่มเติม
+      confirmation_message: คุณสามารถ %{link} เมื่อใดก็ได้
+      confirmation_message_link: เปลี่ยนการตั้งค่าคุกกี้ของคุณ
+      hide: ซ่อนข้อความนี้
       text:
-      title:
-    devolved_nations:
-      applies_to:
-      connectors:
-        last_word:
-        two_words:
-      england:
-      northern_ireland:
-      scotland:
-      wales:
+      - เราใช้คุกกี้ที่จำเป็นบางอย่างเพื่อทำให้เว็บไซต์นี้ทำงานได้
+      - เราต้องการกำหนดคุกกี้เพิ่มเติม เพื่อทำความเข้าใจว่าคุณใช้ GOV.UK อย่างไร จดจำการตั้งค่าของคุณ
+        และปรับปรุงบริการของรัฐบาล
+      - และเรายังใช้คุกกี้ที่กำหนดโดยเว็บไซต์อื่นๆ เพื่อช่วยเราในการส่งมอบเนื้อหาจากบริการของพวกเขา
+      title: คุกกี้ใน GOV.UK
     feedback:
-      close:
-      dont_include_personal_info:
-      email_address:
-      help_us_improve_govuk:
-      is_not_useful:
-      is_this_page_useful:
-      is_useful:
-      maybe:
-      more_about_visit:
-      'no':
-      send:
-      send_me_survey:
-      something_wrong:
-      thank_you_for_feedback:
-      what_doing:
-      what_wrong:
-      'yes':
+      close: ปิด
+      dont_include_personal_info: อย่าใส่ข้อมูลส่วนบุคคลหรือข้อมูลทางการเงิน เช่น
+        หมายเลขประกันสังคม (National Insurance) หรือรายละเอียดบัตรเครดิต
+      email_address: ที่อยู่อีเมล
+      help_us_improve_govuk: ช่วยเราปรับปรุง GOV.UK
+      is_not_useful: หน้านี้ไม่มีประโยชน์
+      is_this_page_useful: หน้านี้มีประโยชน์หรือไม่
+      is_useful: หน้านี้มีประโยชน์
+      maybe: อาจใช่
+      more_about_visit: เพื่อช่วยเราปรับปรุง GOV.UK เราต้องการทราบข้อมูลเพิ่มเติมเกี่ยวกับการเยี่ยมชมของคุณในวันนี้
+        เราจะส่งลิงก์แบบฟอร์มข้อเสนอแนะให้คุณ จะใช้เวลาเพียง 2 นาทีในการกรอกข้อมูล
+        โปรดอย่ากังวล เราจะไม่ส่งสแปมหรือแชร์ที่อยู่อีเมลของคุณให้กับใคร
+      'no': ไม่
+      send: ส่ง
+      send_me_survey: ส่งแบบสำรวจให้ฉัน
+      something_wrong: รายงานปัญหาของหน้านี้
+      thank_you_for_feedback: ขอขอบคุณสำหรับข้อเสนอแนะของคุณ!
+      what_doing: คุณทำอะไรอยู่ในขณะนั้น
+      what_wrong: มีสิ่งใดผิดปกติ
+      'yes': ใช่
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
+      consultations: การให้คำปรึกษา
+      departments: หน่วยงานราชการ
+      get-involved: เข้ามีส่วนร่วม
+      how-government-works: รัฐบาลทำงานอย่างไร
+      news_and_communications: ข่าวสารและการสื่อสาร
+      statistics: สถิติ
+      worldwide: ทั่วโลก
     layout_footer:
-      copyright_html:
-      licence_html:
-      support_links:
-    layout_for_public:
-      account_layout:
-        feedback:
-          banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
-        navigation:
-          destroy_user_session:
-          menu_bar:
-            account:
-              link_text:
-            manage:
-              link_text:
-            security:
-              link_text:
-          user_root_path:
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">ลิขสิทธิ์
+        © Crown</a>
+      licence_html: เนื้อหาทั้งหมดอยู่ภายใต้สัญญาอนุญาต <a class="govuk-footer__link"
+        href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+        rel="license">Open Government License v3.0</a> ยกเว้นจะระบุไว้เป็นอย่างอื่น
+      support_links: ลิงค์สนับสนุน
     layout_header:
-      hide_button:
-      menu:
-      search_button:
-      show_button:
-      top_level:
-    layout_super_navigation_header:
-      logo_link_title:
-      logo_text:
-      menu_toggle_label:
-        hide:
-        show:
-      navigation_links:
-      navigation_menu_heading:
-      navigation_search_heading:
-      navigation_search_subheading:
-      popular_links:
-      popular_links_heading:
-      search_text:
+      hide_button: ซ่อนการค้นหา
+      menu: Menu (เมนู)
+      search_button: ค้นหา GOV.UK
+      show_button: แสดงการค้นหา
+      top_level: ระดับสูงสุด
     metadata:
-      from:
-      history:
-      last_updated:
-      part_of:
-      published:
-      see_all_updates:
-      toggle_less:
-      toggle_more:
+      from: จาก
+      history: ประวัติ
+      last_updated: อัปเดตล่าสุด
+      part_of: ส่วนหนึ่งของ
+      published: เผยแพร่แล้ว
+      see_all_updates: ดูอัปเดตทั้งหมด
+      toggle_less: แสดงน้อยลง
+      toggle_more: เพิ่มเติม + %{number} รายการ
     modal_dialogue:
-      close_modal:
-    notice:
-      banner_title:
+      close_modal: ปิดการสนทนาโมดอล
     organisation_schema:
-      all_content_search_description:
+      all_content_search_description: ค้นหาเนื้อหาทั้งหมดจาก %{organisation}
     previous_and_next_navigation:
-      pagination:
+      pagination: การแบ่งหน้า
     print_link:
-      text:
+      text: พิมพ์หน้านี้
     radio:
-      or:
+      or: หรือ
     related_footer_navigation:
-      collections:
-      policies:
-      statistical_data_sets:
-      topical_events:
+      collections: คอลเล็กชั่น
+      policies: นโยบาย
+      statistical_data_sets: ชุดข้อมูลสถิติ
+      topical_events: เหตุการณ์เฉพาะที่
     related_navigation:
-      collections:
-      external_links:
-      policies:
-      publishers:
-      related_contacts:
-      related_content:
-      related_external_links:
-      related_guides:
-      statistical_data_sets:
-      topical_events:
-      topics:
+      collections: คอลเล็กชั่น
+      external_links: ที่อื่นในเว็บ
+      policies: นโยบาย
+      publishers: เผยแพร่โดย
+      related_contacts: ผู้ติดต่ออื่นๆ
+      related_content: เนื้อหาที่เกี่ยวข้อง
+      related_external_links: ที่อื่นในเว็บ
+      related_guides: คำแนะนำโดยละเอียด
+      statistical_data_sets: ชุดข้อมูลสถิติ
+      topical_events: เหตุการณ์เฉพาะที่
+      topics: สำรวจหัวข้อ
       transition:
-        link_path:
-        link_text:
-        title:
-      world_locations:
+        hub_page_link_path: "/transition-check/questions"
+        hub_page_link_text: รับรายการการดำเนินการส่วนบุคคล
+        hub_page_title: ตัวช่วยตรวจสอบ Brexit
+        link_path: "/brexit"
+        link_text: ตรวจสอบสิ่งที่คุณต้องทำ
+        title: Brexit
+      world_locations: สถานที่ทั่วโลก
     search_box:
-      input_title:
-      label:
-      search_button:
+      input_title: ค้นหา
+      label: ค้นหาใน GOV.UK
+      search_button: ค้นหา
     show_password:
-      announce_hide:
-      announce_show:
-      hide:
-      hide_password:
-      show:
-      show_password:
+      announce_hide: รหัสผ่านของคุณถูกซ่อน
+      announce_show: รหัสผ่านของคุณถูกแสดง
+      hide: ซ่อน
+      hide_password: ซ่อนรหัสผ่าน
+      show: แสดง
+      show_password: แสดงรหัสผ่าน
     skip_link:
-      text:
+      text: ข้ามไปที่เนื้อหาหลัก
     step_by_step_nav:
-      hide:
-      hide_all:
-      show:
-      show_all:
+      hide: ซ่อน
+      hide_all: ซ่อนขั้นตอนทั้งหมด
+      show: แสดง
+      show_all: แสดงขั้นตอนทั้งหมด
     step_by_step_nav_related:
-      part_of:
+      part_of: ส่วนหนึ่งของ
     subscription_links:
-      email_signup_link_text:
-      feed_link_label:
-      feed_link_text:
-      subscriptions:
+      email_signup_link_text: รับอีเมล
+      feed_link_label: คัดลอกและวาง URL นี้ในโปรแกรมอ่านฟีดข่าวของคุณ
+      feed_link_text: สมัครรับข้อมูลฟีดข่าว
+      subscriptions: การสมัครใช้บริการ
     success_alert:
-      success:
+      success: สำเร็จ
     summary_list:
-      delete:
-      edit:
+      delete: ลบ
+      edit: เปลี่ยน
     tabs:
-      contents:
+      contents: เนื้อหา

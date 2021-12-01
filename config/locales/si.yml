@@ -1,204 +1,175 @@
----
 si:
-  common:
-    translations:
   components:
-    accordion:
-      hide:
-      hide_all:
-      show:
-      show_all:
-      this_section_visually_hidden:
-    article_schema:
-      scoped_search_description:
     attachment:
-      opendocument_html:
-      order_a_copy:
       page:
-        one:
-        other:
-      reference:
-      request_format_cta:
-      request_format_details_html:
-      request_format_text:
+        one: පිටු 1ක්
+        other: පිටු %{count}ක්
+      opendocument_html: මෙම ගොනුව <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
+        target=%{target} class='govuk-link'>විවෘතලේඛන</a> ආකෘතියේ ඇත
+      order_a_copy: පිටපතක් ඇණවුම් කරන්න
+      reference: 'යොමුව: %{reference}'
+      request_format_cta: පිවිසිය හැකි ආකෘතියක් ඉල්ලන්න.
+      request_format_details_html: ඔබේ ආධාරක තාක්ෂණය (තිර කියවන්නා වැනි) භාවිතා කරන්නේ
+        නම් සහ මෙම ලේඛනයේ වඩාත් පිවිසිය හැකි ආකෘතියක අනුවාදයක් අවශ්‍ය නම්, කරුණාකර
+        <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>
+        වෙත විද්‍යුත් තැපෑලක් යවන්න. කරුණාකර ඔබට අවශ්ය ආකෘතිය කුමක්දැයි අපට කියන්න.
+        ඔබ භාවිතා කරන ආධාරක තාක්ෂණය කුමක්දැයි ඔබ පැවසුවහොත් එය අපට උපකාරී වනු ඇත.
+      request_format_text: මෙම ගොනුව ආධාරක තාක්ෂණය භාවිතා කරන්නන් සඳහා සුදුසු නොවිය
+        හැක.
+    accordion:
+      hide: සඟවන්න
+      hide_all: සියලුම කොටස් සඟවන්න
+      show: පෙන්වන්න
+      show_all: සියලු කොටස් පෙන්වන්න
+      this_section_visually_hidden: " මෙම කොටස"
+    article_schema:
+      scoped_search_description: "%{title} තුළ සොයන්න"
     back_link:
-      back:
+      back: ආපසු
     character_count:
-      body:
+      body: ඔබට %{type} %{number} ක් දක්වා ඇතුළත් කළ හැකිය
       type:
-        characters:
-        words:
+        characters: අක්ෂර
+        words: වචන
     checkboxes:
-      or:
+      or: හෝ
     contents_list:
-      contents:
+      contents: අන්තර්ගත
     contextual_sidebar:
-      pretitle:
+      pretitle: කොටසක් ද වේ
     cookie_banner:
       buttons:
-        accept_cookies:
-        reject_cookies:
-      confirmation_message:
-      confirmation_message_link:
-      hide:
+        accept_cookies: අතිරේක කුකීස් පිළිගන්න
+        reject_cookies: අතිරේක කුකීස් ප්‍රතික්ෂේප කරන්න
+      confirmation_message: ඔබට ඕනෑම වේලාවක %{link} කළ හැකිය.
+      confirmation_message_link: ඔබගේ කුකී සැකසුම් වෙනස් කරන්න
+      hide: මෙම පණිවිඩය සඟවන්න
       text:
-      title:
-    devolved_nations:
-      applies_to:
-      connectors:
-        last_word:
-        two_words:
-      england:
-      northern_ireland:
-      scotland:
-      wales:
+      - මෙම වෙබ් අඩවිය ක්රියාත්මක කිරීම සඳහා අපි අත්යවශ්ය කුකීස් කිහිපයක් භාවිතා කරමු.”
+      - "“ඔබ GOV.UK භාවිතා කරන ආකාරය තේරුම් ගැනීමට අතිරේක කුකීස් ද සැකසීමට අපි කැමතියි"
+      - ඔබේ සැකසුම් රජයේ සේවාවන් වැඩි දියුණු කරන බව මතක තබා ගන්න.”
+      - "“වෙනත් වෙබ් අඩවි විසින් ඒවායේ සේවා අන්තර්ගතයන් අපට බෙදාහැරීමට උපකාරී වීම
+        සඳහා ඔවුන් විසින් සකසා ඇති කුකිස්ද අපි භාවිතා කරමු.”"
+      title: GOV.UK මත කුකීස්
     feedback:
-      close:
-      dont_include_personal_info:
-      email_address:
-      help_us_improve_govuk:
-      is_not_useful:
-      is_this_page_useful:
-      is_useful:
-      maybe:
-      more_about_visit:
-      'no':
-      send:
-      send_me_survey:
-      something_wrong:
-      thank_you_for_feedback:
-      what_doing:
-      what_wrong:
-      'yes':
+      close: වසන්න
+      dont_include_personal_info: ඔබේ ජාතික රක්ෂණ අංකය හෝ ක්රෙඩිට් කාඩ්පත් විස්තර
+        වැනි පෞද්ගලික හෝ මූල්ය තොරතුරු ඇතුළත් නොකරන්න.
+      email_address: විද්යුත් තැපෑල් ලිපිනය
+      help_us_improve_govuk: GOV.UK වැඩි දියුණු කිරීමට අපට උපකාරී වන්න
+      is_not_useful: මෙම පිටුව ප්රයෝජනවත් නැත
+      is_this_page_useful: මෙම පිටුව ප්රයෝජනවත් ද?
+      is_useful: මෙම පිටුව ප්රයෝජනවත් ය
+      maybe: සමහර විට
+      more_about_visit: GOV.UK වැඩි දියුණු කිරීම සඳහා අපට උදව් කිරීමට, අපි අද ඔබගේ
+        පිවිසීම ගැන වැඩි විස්තර දැන ගැනීමට කැමතියි. අපි ඔබට ප්රතිපෝෂණ ආකෘතියක් වෙත
+        සබැඳියක් එවන්නෙමු. එය පිරවීම සඳහා විනාඩි 2 ක් ගතවනු ඇත. කරදර වෙන්න එපා අපි
+        ඔබට අයාචිත තැපැල් යවන්නේ ද නැතහොත් කිසිවෙකු සමඟ ඔබගේ විද්‍යුත් තැපෑල් ලිපිනය
+        බෙදාගන්නේ ද නැත.
+      'no': එපා
+      send: යවන්න
+      send_me_survey: මට සමීක්ෂණය එවන්න
+      something_wrong: මෙම පිටුවේ ගැටළුවක් ඇති බව වාර්තා කරන්න
+      thank_you_for_feedback: ඔබගේ ප්‍රතිපෝෂණය සඳහා ඔබට ස්තූතියි
+      what_doing: ඔබ කුමක් ද කරමින් සිටියේ?
+      what_wrong: වැරදුණේ කුමක්ද?
+      'yes': ඔව්
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
+      consultations: උපදේශන
+      departments: දෙපාර්තමේන්තු
+      get-involved: සම්බන්ධ වන්න
+      how-government-works: රජය ක්රියා කරන ආකාරය
+      news_and_communications: පුවත් සහ සන්නිවේදනයන්
+      statistics: සංඛ්‍යාලේඛන
+      worldwide: ලෝක ව්යාප්ත
     layout_footer:
-      copyright_html:
-      licence_html:
-      support_links:
-    layout_for_public:
-      account_layout:
-        feedback:
-          banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
-        navigation:
-          destroy_user_session:
-          menu_bar:
-            account:
-              link_text:
-            manage:
-              link_text:
-            security:
-              link_text:
-          user_root_path:
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
+        රාජ්‍ය කතුහිමිකම</a>
+      licence_html: සියලු අන්තගතයන් වෙනත් ආකාරයකින් සඳහන් කර තිබුණොත් මිසක <a class="govuk-footer__link"
+        href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+        rel="license">රජයේ විවෘත බලපත්‍ර v3.0</a>, යටතේ ලබා ගත හැකිය
+      support_links: සහාය සබැඳි
     layout_header:
-      hide_button:
-      menu:
-      search_button:
-      show_button:
-      top_level:
-    layout_super_navigation_header:
-      logo_link_title:
-      logo_text:
-      menu_toggle_label:
-        hide:
-        show:
-      navigation_links:
-      navigation_menu_heading:
-      navigation_search_heading:
-      navigation_search_subheading:
-      popular_links:
-      popular_links_heading:
-      search_text:
+      hide_button: සෙවීම සඟවන්න
+      menu: මෙනුව
+      search_button: GOV.UK තුළ සොයන්න
+      show_button: සෙවීම පෙන්වන්න
+      top_level: ඉහළ මට්ටම
     metadata:
-      from:
-      history:
-      last_updated:
-      part_of:
-      published:
-      see_all_updates:
-      toggle_less:
-      toggle_more:
+      from: සිට
+      history: ඉතිහාසය
+      last_updated: අවසන් වරට යාවත්කාලීන කළේ
+      part_of: කොටසක්
+      published: පළ කළේ
+      see_all_updates: සියලුම යාවත්කාලීනයන් බලන්න
+      toggle_less: අඩුවෙන් පෙන්වන්න
+      toggle_more: තවත් + %{number}
     modal_dialogue:
-      close_modal:
-    notice:
-      banner_title:
+      close_modal: ආදර්ශ සංවාදය වසන්න
     organisation_schema:
-      all_content_search_description:
+      all_content_search_description: "%{organisation} වෙතින් සියලුම අන්තර්ගතය සෝයන්න"
     previous_and_next_navigation:
-      pagination:
+      pagination: පිටු අංකය
     print_link:
-      text:
+      text: මෙම පිටුව මුද්රණය කරන්න
     radio:
-      or:
+      or: හෝ
     related_footer_navigation:
-      collections:
-      policies:
-      statistical_data_sets:
-      topical_events:
+      collections: එකතු
+      policies: ප්රතිපත්ති
+      statistical_data_sets: සංඛ්යාලේඛන දත්ත කට්ටල
+      topical_events: කාලෝචිත සිදුවීම්
     related_navigation:
-      collections:
-      external_links:
-      policies:
-      publishers:
-      related_contacts:
-      related_content:
-      related_external_links:
-      related_guides:
-      statistical_data_sets:
-      topical_events:
-      topics:
+      collections: එකතුව
+      external_links: වෙබ් හි වෙනත් තැනක
+      policies: ප්රතිපත්තිය
+      publishers: විසින් පළ කරන ලදී
+      related_contacts: වෙනත් සබඳතා
+      related_content: සම්බන්ධිත අන්තර්ගතය
+      related_external_links: වෙබ් හි වෙනත් තැනක
+      related_guides: විස්තරාත්මක මඟපෙන්වීම
+      statistical_data_sets: සංඛ්යාලේඛන දත්ත කට්ටලය
+      topical_events: කාලෝචිත සිදුවීම
+      topics: මාතෘකාව ගවේෂණය කරන්න
       transition:
-        link_path:
-        link_text:
-        title:
-      world_locations:
+        hub_page_link_path: "/transition-check/questions"
+        hub_page_link_text: පුද්ගලාරෝපිත ක්රියා ලැයිස්තුවක් ලබා ගන්න
+        hub_page_title: බ්රෙක්සිට් පරීක්ෂක
+        link_path: "/brexit"
+        link_text: ඔබ කළ යුතු දේ පරීක්ෂා කරන්න
+        title: බ්රෙක්සිට්
+      world_locations: ලෝක ස්ථාන
     search_box:
-      input_title:
-      label:
-      search_button:
+      input_title: සොයන්න
+      label: GOV.UK මත සොයන්න
+      search_button: සොයන්න
     show_password:
-      announce_hide:
-      announce_show:
-      hide:
-      hide_password:
-      show:
-      show_password:
+      announce_hide: ඔබගේ මුරපදය සඟවා ඇත
+      announce_show: ඔබගේ මුරපදය පෙන්වා ඇත
+      hide: සඟවන්න
+      hide_password: රහස්වචනය සඟවන්න
+      show: පෙන්වන්න
+      show_password: මුරපදය පෙන්වන්න
     skip_link:
-      text:
+      text: ප්රධාන අන්තර්ගතයට මඟහරින්න
     step_by_step_nav:
-      hide:
-      hide_all:
-      show:
-      show_all:
+      hide: සඟවන්න
+      hide_all: සියලු පියවර සඟවන්න
+      show: පෙන්වන්න
+      show_all: සියලු පියවර පෙන්වන්න
     step_by_step_nav_related:
-      part_of:
+      part_of: කොටසක්
     subscription_links:
-      email_signup_link_text:
-      feed_link_label:
-      feed_link_text:
-      subscriptions:
+      email_signup_link_text: විද්‍යුත් තැපෑල් ලබා ගන්න
+      feed_link_label: මෙම URL එක පිටපත් කර ඔබේ පෝෂණ කියවන්නා තුළ අලවන්න
+      feed_link_text: පෝෂණය කිරීමට දායක වන්න
+      subscriptions: දායකත්වයන්
     success_alert:
-      success:
+      success: සාර්ථකයි
     summary_list:
-      delete:
-      edit:
+      delete: මකන්න
+      edit: වෙනස් කරන්න
     tabs:
-      contents:
+      contents: අන්තර්ගත
+  common:
+    translations: පරිවර්තන

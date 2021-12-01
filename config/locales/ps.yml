@@ -1,204 +1,175 @@
----
 ps:
-  common:
-    translations:
   components:
-    accordion:
-      hide:
-      hide_all:
-      show:
-      show_all:
-      this_section_visually_hidden:
-    article_schema:
-      scoped_search_description:
     attachment:
-      opendocument_html:
-      order_a_copy:
       page:
-        one:
-        other:
-      reference:
-      request_format_cta:
-      request_format_details_html:
-      request_format_text:
+        one: 1 پاڼه
+        other: "%{count} پاڼې"
+      opendocument_html: 'دا فایل په <a href = ''https: //www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation''
+        target =% {target} class = ''govuk-link کې دی ''> د OpenDocument </a> ب .ه'
+      order_a_copy: یوه کاپي وغواړئ
+      reference: حواله:%{reference}
+      request_format_cta: د لاسرسي وړ پاڼه غوښتنه وکړئ.
+      request_format_details_html: که تاسو مرستندویه ټیکنالوژي کاروئ (لکه د سکرین
+        لوستونکی) او په ډیر لاسرسي پاڼه کې د دې سند نسخې ته اړتیا لرئ، مهرباني وکړئ
+        بریښنالیک وکړئ <a href='mailto:%{alternative_format_contact_email}' target='_blank'
+        class='govuk-link'>%{alternative_format_contact_email}</a>. مهرباني وکړئ موږ
+        ته ووایاست چې کوم شکل ته اړتیا لرئ. دا به زموږ سره مرسته وکړي که تاسو ووایاست
+        کوم مرستندویه ټیکنالوژي تاسو کاروئ.
+      request_format_text: دا فایل ممکن د مرستندویه ټیکنالوژۍ کاروونکو لپاره مناسب
+        نه وي.
+    accordion:
+      hide: پټول
+      hide_all: ټولې برخې پټې کړئ
+      show: ښودل
+      show_all: ټولې برخې وښایاست
+      this_section_visually_hidden: " دا برخه"
+    article_schema:
+      scoped_search_description: په%{title} کې لټون
     back_link:
-      back:
+      back: بیرته
     character_count:
-      body:
+      body: تاسو کولی شئ تر %{number} %{type} پورې دننه شئ
       type:
-        characters:
-        words:
+        characters: کرکټرونه
+        words: ټکي
     checkboxes:
-      or:
+      or: یا
     contents_list:
-      contents:
+      contents: منځپانګې
     contextual_sidebar:
-      pretitle:
+      pretitle: هم برخه
     cookie_banner:
       buttons:
-        accept_cookies:
-        reject_cookies:
-      confirmation_message:
-      confirmation_message_link:
-      hide:
+        accept_cookies: اضافي کوکیز ومنئ
+        reject_cookies: اضافي کوکیز رد کړئ
+      confirmation_message: تاسو کولی شئ په هر وخت کې %{link}.
+      confirmation_message_link: خپل د کوکي تنظیمات بدل کړئ
+      hide: دا پیغام پټ کړئ
       text:
-      title:
-    devolved_nations:
-      applies_to:
-      connectors:
-        last_word:
-        two_words:
-      england:
-      northern_ireland:
-      scotland:
-      wales:
+      - موږ د دې ویب پاڼې کار کولو لپاره ځینې اړین کوکیز کاروو. ، موږ غواړو اضافي
+        کوکیز تنظیم کړو ترڅو پوه شو چې تاسو څنګه GOV.UK کاروئ ، خپل ترتیبات په یاد
+        ولرئ او دولتي خدمات ښه کړئ. ، موږ د کوکیز څخه هم ګټه اخلو. نور سایټونه چې
+        موږ سره د دوی خدماتو څخه مینځپانګې رسولو کې مرسته کوي.
+      title: په GOV.UK کې کوکیز
     feedback:
-      close:
-      dont_include_personal_info:
-      email_address:
-      help_us_improve_govuk:
-      is_not_useful:
-      is_this_page_useful:
-      is_useful:
-      maybe:
-      more_about_visit:
-      'no':
-      send:
-      send_me_survey:
-      something_wrong:
-      thank_you_for_feedback:
-      what_doing:
-      what_wrong:
-      'yes':
+      close: تړل
+      dont_include_personal_info: شخصي یا مالي معلومات شامل نکړئ لکه ستاسو د ملي بیمې
+        شمیره یا د کریډیټ کارت توضیحات.
+      email_address: بریښنالیک
+      help_us_improve_govuk: د GOV.UK ښه کولو کې زموږ سره مرسته وکړئ
+      is_not_useful: دا پاڼه ګټوره نه ده
+      is_this_page_useful: ایا دا پاڼه ګټوره ده؟
+      is_useful: دا پا isه ګټوره ده
+      maybe: امکان لری
+      more_about_visit: د GOV.UK ښه کولو کې زموږ سره د مرستې لپاره ، موږ غواړو نن
+        ورځ ستاسو لیدنې په اړه نور معلومات ترلاسه کړو. موږ به تاسو ته د فیډبیک فورم
+        ته لینک واستوو. دا به ډکولو کې یوازې 2 دقیقې وخت ونیسي. اندیښنه مه کوئ موږ
+        به تاسو ته سپیم ونه لیږو یا ستاسو بریښنالیک آدرس له هیچا سره نه شریکوو.
+      'no': نه
+      send: لیږل
+      send_me_survey: سروې راته ولیږه
+      something_wrong: د دې پاڼې سره ستونزه راپور کړئ
+      thank_you_for_feedback: ستاسو له نظر څخه مننه
+      what_doing: ته څه کوې؟
+      what_wrong: څه غلط شول؟
+      'yes': هو
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
+      consultations: مشورې
+      departments: څانګې
+      get-involved: ورګډ شه
+      how-government-works: حکومت څنګه کار کوي
+      news_and_communications: خبرونه او مخابرات
+      statistics: احصایه
+      worldwide: په ټوله نړۍ کې
     layout_footer:
-      copyright_html:
-      licence_html:
-      support_links:
-    layout_for_public:
-      account_layout:
-        feedback:
-          banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
-        navigation:
-          destroy_user_session:
-          menu_bar:
-            account:
-              link_text:
-            manage:
-              link_text:
-            security:
-              link_text:
-          user_root_path:
+      copyright_html: <a class = "govuk-footer__link govuk-footer__copyright-logo"
+        href = "http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use
+        /crown-copyright/"> rown د تاج کاپي حق </a>
+      licence_html: ټول مینځپانګه د <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
+        rel="license"> لاندې خلاصې دي د حکومت جواز v3.0 </a> ، پرته لدې چیرې چې بل
+        ډول ویل شوي
+      support_links: د ملاتړ لینکونه
     layout_header:
-      hide_button:
-      menu:
-      search_button:
-      show_button:
-      top_level:
-    layout_super_navigation_header:
-      logo_link_title:
-      logo_text:
-      menu_toggle_label:
-        hide:
-        show:
-      navigation_links:
-      navigation_menu_heading:
-      navigation_search_heading:
-      navigation_search_subheading:
-      popular_links:
-      popular_links_heading:
-      search_text:
+      hide_button: لټون پټ کړئ
+      menu: مینو
+      search_button: د GOV.UK لټون وکړئ
+      show_button: لټون ښکاره کړئ
+      top_level: لوړ رتبه
     metadata:
-      from:
-      history:
-      last_updated:
-      part_of:
-      published:
-      see_all_updates:
-      toggle_less:
-      toggle_more:
+      from: له
+      history: تاریخ
+      last_updated: وروستی تازه شوی
+      part_of: برخه
+      published: خپور شوی
+      see_all_updates: ټول تازه معلومات وګورئ
+      toggle_less: لږ ښودل
+      toggle_more: " + %{number} نور"
     modal_dialogue:
-      close_modal:
-    notice:
-      banner_title:
+      close_modal: موډل ډیالوګ بند کړئ
     organisation_schema:
-      all_content_search_description:
+      all_content_search_description: له%{organization} څخه ټوله مینځپانګه ومومئ
     previous_and_next_navigation:
-      pagination:
+      pagination: مخینه
     print_link:
-      text:
+      text: دا پاڼه چاپ کړئ
     radio:
-      or:
+      or: یا
     related_footer_navigation:
-      collections:
-      policies:
-      statistical_data_sets:
-      topical_events:
+      collections: ټولګه
+      policies: پالیسۍ
+      statistical_data_sets: د احصایوي معلوماتو سیټونه
+      topical_events: موضوعي پیښې
     related_navigation:
-      collections:
-      external_links:
-      policies:
-      publishers:
-      related_contacts:
-      related_content:
-      related_external_links:
-      related_guides:
-      statistical_data_sets:
-      topical_events:
-      topics:
+      collections: ټولګه
+      external_links: په ویب کې بل چیرې
+      policies: پالیسي
+      publishers: لخوا خپور شوی
+      related_contacts: نورې اړیکې
+      related_content: اړونده مینځپانګه
+      related_external_links: په ویب کې بل چیرې
+      related_guides: تفصيلي لارښود
+      statistical_data_sets: د احصایوي معلوماتو سیټ
+      topical_events: موضوعي پیښه
+      topics: موضوع وپلټئ
       transition:
-        link_path:
-        link_text:
-        title:
-      world_locations:
+        hub_page_link_path: "/transition-check/questions"
+        hub_page_link_text: د کړنو شخصي لیست ترلاسه کړئ
+        hub_page_title: د بریکسیت چیکر
+        link_path: "/brexit"
+        link_text: وګورئ چې تاسو څه کولو ته اړتیا لرئ
+        title: بریکسیټ
+      world_locations: د نړۍ موقعیتونه
     search_box:
-      input_title:
-      label:
-      search_button:
+      input_title: لټون
+      label: په GOV.UK کې لټون وکړئ
+      search_button: لټون
     show_password:
-      announce_hide:
-      announce_show:
-      hide:
-      hide_password:
-      show:
-      show_password:
+      announce_hide: ستاسو رمز پټ دی
+      announce_show: ستاسو رمز ښودل شوی
+      hide: پټول
+      hide_password: پټنوم پټ کړئ
+      show: ښودل
+      show_password: پاسورډ ښکاره کړئ
     skip_link:
-      text:
+      text: اصلي مینځپانګې ته لاړشئ
     step_by_step_nav:
-      hide:
-      hide_all:
-      show:
-      show_all:
+      hide: پټول
+      hide_all: ټول ګامونه پټ کړئ
+      show: ښودل
+      show_all: ټول ګامونه وښایاست
     step_by_step_nav_related:
-      part_of:
+      part_of: برخه
     subscription_links:
-      email_signup_link_text:
-      feed_link_label:
-      feed_link_text:
-      subscriptions:
+      email_signup_link_text: بریښنالیکونه ترلاسه کړئ
+      feed_link_label: دا URL خپل فیډ لوستونکي کې کاپي او پیسټ کړئ
+      feed_link_text: فیډ کې ګډون وکړئ
+      subscriptions: ګډون
     success_alert:
-      success:
+      success: بریالیتوب
     summary_list:
-      delete:
-      edit:
+      delete: ړنګول
+      edit: بدلون
     tabs:
-      contents:
+      contents: منځپانګې
+  common:
+    translations: ژباړې
