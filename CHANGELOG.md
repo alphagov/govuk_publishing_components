@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove use of govuk-font from the big number component ([PR #2493](https://github.com/alphagov/govuk_publishing_components/pull/2493))
+
 ## 27.15.0
 
 * Update Start button so info text is associated ([PR #2476](https://github.com/alphagov/govuk_publishing_components/pull/2476))
