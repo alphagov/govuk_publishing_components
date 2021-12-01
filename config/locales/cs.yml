@@ -39,7 +39,7 @@ cs:
       buttons:
         accept_cookies: Přijmout další soubory cookie
         reject_cookies: Odmítnutí dalších souborů cookie
-      confirmation_message: Kdykoli můžete %{link}.
+      confirmation_message_html: Kdykoli můžete %{link}.
       confirmation_message_link: Změna nastavení souborů cookie
       hide: Skrýt tuto zprávu
       text:

@@ -38,7 +38,7 @@ tk:
       buttons:
         accept_cookies: Goşmaça kukileri kabul et
         reject_cookies: Goşmaça kukileri ret et
-      confirmation_message: Islendik wagt %{link} edip bilersiňiz.
+      confirmation_message_html: Islendik wagt %{link} edip bilersiňiz.
       confirmation_message_link: kukiler sazlamalaryňyzy üýtgediň
       hide: Bu habary gizle
       text:

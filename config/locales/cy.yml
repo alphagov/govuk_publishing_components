@@ -42,7 +42,7 @@ cy:
       buttons:
         accept_cookies: Derbyn cwcis ychwanegol
         reject_cookies: Gwrthod cwcis ychwanegol
-      confirmation_message: Gallwch %{link} unrhyw bryd.
+      confirmation_message_html: Gallwch %{link} unrhyw bryd.
       confirmation_message_link: newid eich gosodiadau cwcis
       hide: Cuddio'r neges hon
       text:

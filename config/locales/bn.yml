@@ -38,7 +38,7 @@ bn:
       buttons:
         accept_cookies: অতিরিক্ত কুকিজ গ্রহণ করুন
         reject_cookies: অতিরিক্ত কুকিজ প্রত্যাখ্যান করুন
-      confirmation_message: আপনি যেকোনো সময় %{link} করতে পারেন।
+      confirmation_message_html: আপনি যেকোনো সময় %{link} করতে পারেন।
       confirmation_message_link: আপনার কুকি সেটিংস পরিবর্তন করুন
       hide: এই মেসেজটি লুকিয়ে রাখুন
       text:

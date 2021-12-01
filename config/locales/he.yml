@@ -38,7 +38,7 @@ he:
       buttons:
         accept_cookies: קבל עוגיות נוספות
         reject_cookies: דחה עוגיות נוספות
-      confirmation_message: אתה יכול %{link} בכל עת.
+      confirmation_message_html: אתה יכול %{link} בכל עת.
       confirmation_message_link: שנה את הגדרות העוגיות שלך
       hide: הסתר את ההודעה הזו
       text:

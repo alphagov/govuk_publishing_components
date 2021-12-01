@@ -39,7 +39,7 @@ ro:
       buttons:
         accept_cookies: Acceptați cookie-urile suplimentare
         reject_cookies: Respingeți cookie-urile suplimentare
-      confirmation_message: Puteți să %{link} în orice moment.
+      confirmation_message_html: Puteți să %{link} în orice moment.
       confirmation_message_link: modificați setările pentru cookie-uri
       hide: Ascundeți acest mesaj
       text:

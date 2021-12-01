@@ -38,7 +38,7 @@ sw:
       buttons:
         accept_cookies: Kubali vidakuzi vya ziada
         reject_cookies: Kataa vidakuzi vya ziada
-      confirmation_message: Unaweza %{link} wakati wowote.
+      confirmation_message_html: Unaweza %{link} wakati wowote.
       confirmation_message_link: badilisha mipangilio yako ya vidakuzi
       hide: Ficha ujumbe huu
       text:

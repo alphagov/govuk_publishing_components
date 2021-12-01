@@ -38,7 +38,7 @@ sv:
       buttons:
         accept_cookies: Acceptera fler cookies
         reject_cookies: Avvisa fler cookies
-      confirmation_message: Du kan %{link} när som helst.
+      confirmation_message_html: Du kan %{link} när som helst.
       confirmation_message_link: ändra dina cookie-inställningar
       hide: Dölj det här meddelandet
       text:

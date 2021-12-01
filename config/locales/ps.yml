@@ -38,7 +38,7 @@ ps:
       buttons:
         accept_cookies: اضافي کوکیز ومنئ
         reject_cookies: اضافي کوکیز رد کړئ
-      confirmation_message: تاسو کولی شئ په هر وخت کې %{link}.
+      confirmation_message_html: تاسو کولی شئ په هر وخت کې %{link}.
       confirmation_message_link: خپل د کوکي تنظیمات بدل کړئ
       hide: دا پیغام پټ کړئ
       text:

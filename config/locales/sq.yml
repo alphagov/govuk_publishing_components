@@ -38,7 +38,7 @@ sq:
       buttons:
         accept_cookies: Pranoni cookie shtesë
         reject_cookies: Refuzoni cookie shtesë
-      confirmation_message: Ju mund të %{link} në çdo kohë.
+      confirmation_message_html: Ju mund të %{link} në çdo kohë.
       confirmation_message_link: ndryshoni cilësimet tuaja të cookies
       hide: Fshih këtë mesazh
       text:

@@ -38,7 +38,7 @@ zh:
       buttons:
         accept_cookies: 接受额外cookies
         reject_cookies: 拒绝额外cookies
-      confirmation_message: 您可以随时 %{link}。
+      confirmation_message_html: 您可以随时 %{link}。
       confirmation_message_link: 更改您的cookie设置
       hide: 隐藏此消息
       text:

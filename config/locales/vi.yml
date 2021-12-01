@@ -38,7 +38,7 @@ vi:
       buttons:
         accept_cookies: Chấp nhận các cookie bổ sung
         reject_cookies: Từ chối các cookie bổ sung
-      confirmation_message: Bạn có thể %{link} bất kỳ lúc nào.
+      confirmation_message_html: Bạn có thể %{link} bất kỳ lúc nào.
       confirmation_message_link: thay đổi cài đặt cookie của bạn
       hide: Ẩn thông báo này
       text:

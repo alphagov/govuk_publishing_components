@@ -40,7 +40,7 @@ hr:
       buttons:
         accept_cookies: Prihvatite dodatne kolačiće
         reject_cookies: Odbijte dodatne kolačiće
-      confirmation_message: Možete %{link} u bilo kojem trenutku.
+      confirmation_message_html: Možete %{link} u bilo kojem trenutku.
       confirmation_message_link: promijenite postavke kolačića
       hide: Sakrij ovu poruku
       text:

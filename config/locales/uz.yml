@@ -38,7 +38,7 @@ uz:
       buttons:
         accept_cookies: cookie қўшимча файлларини қабул қилиш
         reject_cookies: cookie қўшимча файлларини бекор қилиш
-      confirmation_message: Сиз %{link} исталган вақтда қилишингиз мумкин.
+      confirmation_message_html: Сиз %{link} исталган вақтда қилишингиз мумкин.
       confirmation_message_link: cookie файлларини созламаларини ўзгариши
       hide: Ушбу хабарни яшириш
       text:

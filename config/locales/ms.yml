@@ -38,7 +38,7 @@ ms:
       buttons:
         accept_cookies: Terima kuki tambahan
         reject_cookies: Tolak kuki tambahan
-      confirmation_message: Anda boleh %{link} pada bila-bila masa.
+      confirmation_message_html: Anda boleh %{link} pada bila-bila masa.
       confirmation_message_link: ubah tetapan kuki anda
       hide: Sorok mesej ini
       text:

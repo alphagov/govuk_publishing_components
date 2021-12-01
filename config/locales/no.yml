@@ -38,7 +38,7 @@
       buttons:
         accept_cookies: Godta ytterligere informasjonskapsler
         reject_cookies: Avvis ytterligere informasjonskapsler
-      confirmation_message: Du kan %{link} når som helst.
+      confirmation_message_html: Du kan %{link} når som helst.
       confirmation_message_link: endre innstillingene for informasjonskapsler
       hide: Skjul denne meldingen
       text:

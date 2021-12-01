@@ -40,7 +40,7 @@ ru:
       buttons:
         accept_cookies: Принять дополнительные файлы "cookie"
         reject_cookies: Отклонить дополнительные файлы "cookie"
-      confirmation_message: Вы можете %{link} в любое время.
+      confirmation_message_html: Вы можете %{link} в любое время.
       confirmation_message_link: изменить настройки файлов "cookie"
       hide: Скрыть это сообщение
       text:

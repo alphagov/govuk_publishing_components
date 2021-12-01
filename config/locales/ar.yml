@@ -42,7 +42,7 @@ ar:
       buttons:
         accept_cookies: قبول ملفات تعريف الارتباط الإضافية
         reject_cookies: رفض ملفات تعريف الارتباط الإضافية
-      confirmation_message: يمكنك %{link} في أي وقت.
+      confirmation_message_html: يمكنك %{link} في أي وقت.
       confirmation_message_link: قم بتغيير إعدادات ملفات تعريف الارتباط الخاصة بك
       hide: إخفاء هذه الرسالة
       text:

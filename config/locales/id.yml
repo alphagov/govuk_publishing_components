@@ -38,7 +38,7 @@ id:
       buttons:
         accept_cookies: Terima cookie tambahan
         reject_cookies: Tolak cookie tambahan
-      confirmation_message: Anda dapat menautkan %{link} kapan saja.
+      confirmation_message_html: Anda dapat menautkan %{link} kapan saja.
       confirmation_message_link: ubah pengaturan cookie Anda
       hide: Sembunyikan pesan ini
       text:

@@ -38,7 +38,7 @@ ko:
       buttons:
         accept_cookies:
         reject_cookies:
-      confirmation_message:
+      confirmation_message_html:
       confirmation_message_link:
       hide:
       text:

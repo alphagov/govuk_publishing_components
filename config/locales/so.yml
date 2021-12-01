@@ -38,7 +38,7 @@ so:
       buttons:
         accept_cookies: Aqbalida xogkaydin dheeraad ah
         reject_cookies: Diidida xogkaydin dheeraad ah
-      confirmation_message: Waxaad gali karta %{link} wakhti kasta.
+      confirmation_message_html: Waxaad gali karta %{link} wakhti kasta.
       confirmation_message_link: badel cookie settings kaaga
       hide: Qari fariintan
       text:

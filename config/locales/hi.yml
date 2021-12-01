@@ -38,7 +38,7 @@ hi:
       buttons:
         accept_cookies: अतिरिक्त कुकीज़ मंज़ूर करें
         reject_cookies: अतिरिक्त कुकीज़ नामंज़ूर करें
-      confirmation_message: आप कभी भी %{link} कर सकते हैं।
+      confirmation_message_html: आप कभी भी %{link} कर सकते हैं।
       confirmation_message_link: अपनी कुकी सेटिंग बदलें
       hide: यह संदेश छिपाएं
       text:

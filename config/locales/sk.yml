@@ -39,7 +39,7 @@ sk:
       buttons:
         accept_cookies: Prijať ďalšie súbory cookie
         reject_cookies: Odmietnuť ďalšie súbory cookie
-      confirmation_message: Kedykoľvek môžete %{link}.
+      confirmation_message_html: Kedykoľvek môžete %{link}.
       confirmation_message_link: zmeniť nastavenia súborov cookie
       hide: Skryť túto správu
       text:

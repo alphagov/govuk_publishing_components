@@ -38,7 +38,7 @@ et:
       buttons:
         accept_cookies: Nõustu täiendavate küpsistega
         reject_cookies: Keeldu täiendavatest küpsistest
-      confirmation_message: Saate %{link} igal ajal.
+      confirmation_message_html: Saate %{link} igal ajal.
       confirmation_message_link: muuda oma küpsiste seadeid
       hide: Peida see sõnum
       text:

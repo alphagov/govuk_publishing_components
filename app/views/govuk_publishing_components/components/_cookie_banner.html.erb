@@ -14,7 +14,7 @@
   text = raw(text)
 
   cookie_preferences_href ||= "/help/cookies"
-  confirmation_message ||= raw(t("components.cookie_banner.confirmation_message",
+  confirmation_message ||= raw(t("components.cookie_banner.confirmation_message_html",
                                 link: link_to(
                                   t("components.cookie_banner.confirmation_message_link"),
                                   cookie_preferences_href,

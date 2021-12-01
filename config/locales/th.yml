@@ -38,7 +38,7 @@ th:
       buttons:
         accept_cookies: ยอมรับคุกกี้เพิ่มเติม
         reject_cookies: ปฏิเสธคุกกี้เพิ่มเติม
-      confirmation_message: คุณสามารถ %{link} เมื่อใดก็ได้
+      confirmation_message_html: คุณสามารถ %{link} เมื่อใดก็ได้
       confirmation_message_link: เปลี่ยนการตั้งค่าคุกกี้ของคุณ
       hide: ซ่อนข้อความนี้
       text:

@@ -38,7 +38,7 @@ bg:
       buttons:
         accept_cookies: Приемане на допълнителни бисквитки
         reject_cookies: Отказване от допълнителни бисквитки
-      confirmation_message: Можете да %{link} по всяко време.
+      confirmation_message_html: Можете да %{link} по всяко време.
       confirmation_message_link: Промяна на настройките за бисквитките
       hide: Скриване на това съобщение
       text:

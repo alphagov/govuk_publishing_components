@@ -41,7 +41,7 @@ dr:
       buttons:
         accept_cookies: کوکی هایی اضافی را بپذیرید
         reject_cookies: کوکی هایی اضافی را رد نمایید
-      confirmation_message: در هر زمان میتوانید %{link} کنید.
+      confirmation_message_html: در هر زمان میتوانید %{link} کنید.
       confirmation_message_link: تنظیمات کوکی خودرا تغییر دهید
       hide: این پیام را مخفی نمایید
       text:

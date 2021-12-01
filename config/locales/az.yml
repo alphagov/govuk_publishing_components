@@ -38,7 +38,7 @@ az:
       buttons:
         accept_cookies: Əlavə kukilər qəbul edin
         reject_cookies: Əlavə kukilərdən imtina edin
-      confirmation_message: İstənilən vaxt %{link}.
+      confirmation_message_html: İstənilən vaxt %{link}.
       confirmation_message_link: Kuki parametrlərinizi dəyişdirin
       hide: Bu mesajı gizlət
       text:

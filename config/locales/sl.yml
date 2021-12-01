@@ -42,7 +42,7 @@ sl:
       buttons:
         accept_cookies: Sprejmi dodatne piškotke
         reject_cookies: Zavrni dodatne piškotke
-      confirmation_message: Kadar koli lahko %{link}.
+      confirmation_message_html: Kadar koli lahko %{link}.
       confirmation_message_link: spremenite nastavitve piškotkov
       hide: Skrijte to sporočilo
       text:

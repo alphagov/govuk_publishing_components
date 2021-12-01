@@ -38,7 +38,7 @@ gu:
       buttons:
         accept_cookies: અતિરિક્ત કુકીઝ સ્વીકારો
         reject_cookies: અતિરિક્ત કુકીઝને નકારો
-      confirmation_message: તમે કોઈ પણ સમયે %{link} કરી શકો છો.
+      confirmation_message_html: તમે કોઈ પણ સમયે %{link} કરી શકો છો.
       confirmation_message_link: તમારું કુકી સેટિંગ્સ બદલો
       hide: આ સંદેશને હાઈડ કરો
       text:

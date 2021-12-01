@@ -38,7 +38,7 @@ pt:
       buttons:
         accept_cookies: Aceitar cookies adicionais
         reject_cookies: Rejeitar cookies adicionais
-      confirmation_message: Pode %{link} a qualquer momento.
+      confirmation_message_html: Pode %{link} a qualquer momento.
       confirmation_message_link: alterar as suas definições de cookies
       hide: Ocultar esta mensagem
       text:

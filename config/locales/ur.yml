@@ -38,7 +38,7 @@ ur:
       buttons:
         accept_cookies: اضافی کوکیز کو قبول کریں
         reject_cookies: اضافی کوکیز کو مسترد کریں
-      confirmation_message: آپ کسی بھی وقت %{link} کر سکتے ہیں۔
+      confirmation_message_html: آپ کسی بھی وقت %{link} کر سکتے ہیں۔
       confirmation_message_link: اپنی کوکی کی ترتیبات تبدیل کریں
       hide: اس پیغام کو پوشیدہ کریں
       text:

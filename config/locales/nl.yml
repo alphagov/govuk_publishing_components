@@ -38,7 +38,7 @@ nl:
       buttons:
         accept_cookies: Accepteer extra cookies
         reject_cookies: Weiger extra cookies
-      confirmation_message: U kunt %{link} op elk gewenst moment
+      confirmation_message_html: U kunt %{link} op elk gewenst moment
       confirmation_message_link: uw cookie-instellingen wijzigen
       hide: Deze melding verbergen
       text:

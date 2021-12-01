@@ -38,7 +38,7 @@ fi:
       buttons:
         accept_cookies: Hyväksy lisäevästeet
         reject_cookies: Hylkää lisäevästeet
-      confirmation_message: Voit %{link} milloin tahansa.
+      confirmation_message_html: Voit %{link} milloin tahansa.
       confirmation_message_link: muuta evästeasetuksia
       hide: Piilota tämä viesti
       text:

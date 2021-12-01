@@ -38,7 +38,7 @@ is:
       buttons:
         accept_cookies: Samþykkja aðrar vafrakökur
         reject_cookies: Hafna öðrum vafrakökum
-      confirmation_message: Þú getur %{link} hvenær sem er.
+      confirmation_message_html: Þú getur %{link} hvenær sem er.
       confirmation_message_link: breyta vafraköku stillingunum þínum
       hide: Fela þessi skilaboð
       text:

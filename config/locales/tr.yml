@@ -38,7 +38,7 @@ tr:
       buttons:
         accept_cookies: Ek çerezleri kabul et
         reject_cookies: Ek çerezleri reddet
-      confirmation_message: İstediğiniz zaman %{link} yapabilirsiniz.
+      confirmation_message_html: İstediğiniz zaman %{link} yapabilirsiniz.
       confirmation_message_link: çerez ayarlarınızı değiştirin
       hide: Bu mesajı gizle
       text:

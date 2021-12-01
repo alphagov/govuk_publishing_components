@@ -38,7 +38,7 @@ es-419:
       buttons:
         accept_cookies: Aceptar cookies adicionales
         reject_cookies: Rechazar cookies adicionales
-      confirmation_message: Puede %{link} en cualquier momento.
+      confirmation_message_html: Puede %{link} en cualquier momento.
       confirmation_message_link: cambiar la configuración de cookies
       hide: Ocultar este mensaje
       text:

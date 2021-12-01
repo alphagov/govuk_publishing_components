@@ -38,7 +38,7 @@ ja:
       buttons:
         accept_cookies: 追加のCookieを受け入れる
         reject_cookies: 追加のCookieを拒否する
-      confirmation_message: いつでも ％{link} できます。
+      confirmation_message_html: いつでも ％{link} できます。
       confirmation_message_link: Cookieの設定を変更する
       hide: このメッセージを非表示にする
       text:

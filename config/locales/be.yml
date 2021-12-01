@@ -40,7 +40,7 @@ be:
       buttons:
         accept_cookies: Прыняць дадатковыя файлы cookie
         reject_cookies: Адхіліць дадатковыя файлы cookie
-      confirmation_message: Вы можаце %{link} у любы час.
+      confirmation_message_html: Вы можаце %{link} у любы час.
       confirmation_message_link: змяніць налады файлаў cookie
       hide: Схаваць гэта паведамленне
       text:

@@ -38,7 +38,7 @@ fr:
       buttons:
         accept_cookies: Accepter des cookies supplémentaires
         reject_cookies: Refuser des cookies supplémentaires
-      confirmation_message: Vous pouvez %{link} à tout moment.
+      confirmation_message_html: Vous pouvez %{link} à tout moment.
       confirmation_message_link: modifier vos paramètres de cookies
       hide: Masquer ce message
       text:

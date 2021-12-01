@@ -38,7 +38,7 @@ si:
       buttons:
         accept_cookies: අතිරේක කුකීස් පිළිගන්න
         reject_cookies: අතිරේක කුකීස් ප්‍රතික්ෂේප කරන්න
-      confirmation_message: ඔබට ඕනෑම වේලාවක %{link} කළ හැකිය.
+      confirmation_message_html: ඔබට ඕනෑම වේලාවක %{link} කළ හැකිය.
       confirmation_message_link: ඔබගේ කුකී සැකසුම් වෙනස් කරන්න
       hide: මෙම පණිවිඩය සඟවන්න
       text:

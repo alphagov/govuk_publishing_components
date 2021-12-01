@@ -38,7 +38,7 @@ da:
       buttons:
         accept_cookies: Accepter yderligere cookies
         reject_cookies: Afvise yderligere cookies
-      confirmation_message: Du kan %{link} når som helst.
+      confirmation_message_html: Du kan %{link} når som helst.
       confirmation_message_link: ændre dine cookie-indstillinger
       hide: Skjul denne meddelelse
       text:

@@ -38,7 +38,7 @@ kk:
       buttons:
         accept_cookies: Қосымша cookie файлдарын қабылдау
         reject_cookies: Қосымша cookie файлдарынан бас тарту
-      confirmation_message: Кез келген уақытта %{link}.
+      confirmation_message_html: Кез келген уақытта %{link}.
       confirmation_message_link: cookie параметрлерін өзгерте аласыз
       hide: Бұл хабарламаны жасыру
       text:

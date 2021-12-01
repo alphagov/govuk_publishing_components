@@ -38,7 +38,7 @@ hu:
       buttons:
         accept_cookies: További sütik elfogadása
         reject_cookies: További sütik elutasítása
-      confirmation_message: 'Ön bármikor megteheti a következőt: %{link}.'
+      confirmation_message_html: 'Ön bármikor megteheti a következőt: %{link}.'
       confirmation_message_link: változtassa meg sütibeállításait
       hide: Üzenet elrejtése
       text:

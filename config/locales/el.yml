@@ -38,7 +38,7 @@ el:
       buttons:
         accept_cookies: Αποδοχή επιπλέον cookies
         reject_cookies: Απόρριψη επιπλέον cookies
-      confirmation_message: Μπορείτε %{link} ανά πάσα στιγμή.
+      confirmation_message_html: Μπορείτε %{link} ανά πάσα στιγμή.
       confirmation_message_link: αλλάξτε τις ρυθμίσεις cookies
       hide: Απόκρυψη αυτού του μηνύματος
       text:
