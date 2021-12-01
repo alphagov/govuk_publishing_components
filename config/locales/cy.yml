@@ -127,7 +127,7 @@ cy:
         hub_page_link_path: "/transition-check/questions"
         hub_page_link_text: Mynnwch restr o gamau gweithredu personol i chi
         hub_page_title: Gwirydd Brexit
-        link_path: "/brexit"
+        link_path: "/brexit.cy"
         link_text: Gwiriwch beth mae angen i chi wneud
         title: Brexit
       world_locations: Lleoliadau byd-eang
