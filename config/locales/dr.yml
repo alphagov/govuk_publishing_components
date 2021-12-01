@@ -1,19 +1,8 @@
+---
 dr:
+  common:
+    translations: ترجمه ها
   components:
-    attachment:
-      page:
-        one: صفحهء 1
-        other: "%{count} صفحات"
-      opendocument_html: این فایل در یک فارمت<a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link'>سند باز </a> است
-      order_a_copy: یک نسخه سفارش دهید
-      reference: "%{reference}:مرجع"
-      request_format_cta: یک فارمت قابل دسترس را درخواست کنید.
-      request_format_details_html: |-
-        اگر از تکنالوژی کمکی(مانند صفحه خوان) استفاده مینمایید و به نسخهء از این سند در یک فارمت که بیشتر قابل دسترس باشد ضرورت دارید، لطفاً ایمل نمایید<a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>.
-        لطفاً بگویید به چه فارمتی نیاز دارید.
-        به ما کمک خواهد کرد اگر بگویید که از چه تکنالوژی کمکی استفاده مینمایید
-      request_format_text: این فایل ممکن است برای کاربران تکنالوژی کمکی مناسب نباشد.
     accordion:
       hide: مخفی کردن
       hide_all: مخفی کردن همه بخش ها
@@ -22,6 +11,19 @@ dr:
       this_section_visually_hidden: " این بخش"
     article_schema:
       scoped_search_description: جستجو در %{title}
+    attachment:
+      opendocument_html: این فایل در یک فارمت<a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>سند باز </a> است
+      order_a_copy: یک نسخه سفارش دهید
+      page:
+        one: صفحهء 1
+        other: "%{count} صفحات"
+      reference: "%{reference}:مرجع"
+      request_format_cta: یک فارمت قابل دسترس را درخواست کنید.
+      request_format_details_html: |-
+        اگر از تکنالوژی کمکی(مانند صفحه خوان) استفاده مینمایید و به نسخهء از این سند در یک فارمت که بیشتر قابل دسترس باشد ضرورت دارید، لطفاً ایمل نمایید<a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>.
+        لطفاً بگویید به چه فارمتی نیاز دارید.
+        به ما کمک خواهد کرد اگر بگویید که از چه تکنالوژی کمکی استفاده مینمایید
+      request_format_text: این فایل ممکن است برای کاربران تکنالوژی کمکی مناسب نباشد.
     back_link:
       back: برگشت
     character_count:
@@ -44,25 +46,19 @@ dr:
       hide: این پیام را مخفی نمایید
       text:
       - ما از برخی کوکی هایی ضروری برای اینکه این ویبسایت کار نماید استفاده میکنیم.
-      - ما میخواهیم کوکی هایی بیشتری را برای درک نحوهء استفاده شما از GOV.UK تنظیم
-        نماییم، تنظمیات خودرا به خاطر داشته باشد وخدمات دولتی را بهبود بخشید.
-      - 'ما همچنان از کوکی های آماده شده توسط دیگر ویبسایت ها که میتواند مارا در ارایٔه
-        مطالب از خدمات آنها کمک مینماید استفاده مینماییم. '
+      - ما میخواهیم کوکی هایی بیشتری را برای درک نحوهء استفاده شما از GOV.UK تنظیم نماییم، تنظمیات خودرا به خاطر داشته باشد وخدمات دولتی را بهبود بخشید.
+      - 'ما همچنان از کوکی های آماده شده توسط دیگر ویبسایت ها که میتواند مارا در ارایٔه مطالب از خدمات آنها کمک مینماید استفاده مینماییم. '
       title: کوکی ها در GOV.UK
     feedback:
       close: بسته نمایید
-      dont_include_personal_info: اطلاعات شخصی یا مالی مانند شماره بیمه ملی یا مشخصات  کریدت
-        کارت خودرا اینجا قرار ندهید.
+      dont_include_personal_info: اطلاعات شخصی یا مالی مانند شماره بیمه ملی یا مشخصات  کریدت کارت خودرا اینجا قرار ندهید.
       email_address: ایمل آدرس
       help_us_improve_govuk: به ما در بهبود GOV.UK همکاری نمایید
       is_not_useful: این صفحه مفید نیست
       is_this_page_useful: آیا این صفحه مفی است؟
       is_useful: این صفحه مفید است
       maybe: شاید
-      more_about_visit: برای همکاری با ما در بهبود GOV.UK، میخواهیم در مورد بازدید
-        امزور شما از این صفحه بیشتر بدانیم.ما یک لنکی از فورم فیدبک را برای شما ارسال
-        مینماییم.خانه پری فورم فیدبک فقط 2 دقیقه طول میکشد. نگران نباشید ما برای شما
-        پیام های غیر مرتبط ارسال نمی نماییم و نه هم ایمل آدرس شما را با کسی شریک میسازیم.
+      more_about_visit: برای همکاری با ما در بهبود GOV.UK، میخواهیم در مورد بازدید امزور شما از این صفحه بیشتر بدانیم.ما یک لنکی از فورم فیدبک را برای شما ارسال مینماییم.خانه پری فورم فیدبک فقط 2 دقیقه طول میکشد. نگران نباشید ما برای شما پیام های غیر مرتبط ارسال نمی نماییم و نه هم ایمل آدرس شما را با کسی شریک میسازیم.
       'no': نخیر
       send: ارسال نمایید
       send_me_survey: نظر سنجی را ارسال نمایید
@@ -80,11 +76,8 @@ dr:
       statistics: آمار
       worldwide: در سرتاسر جهان
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
-        Crown copyright</a>
-      licence_html: همه محتویات در<a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-        rel="license">Open Government Licence v3.0</a>, موجود است، مگر در مواردی که
-        خلاف آن ذکر شده باشد.
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
+      licence_html: همه محتویات در<a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, موجود است، مگر در مواردی که خلاف آن ذکر شده باشد.
       support_links: لنک های حمایوی
     layout_header:
       hide_button: بخش جستجو را مخفی نمایید
@@ -168,5 +161,3 @@ dr:
       edit: تغییر دادن
     tabs:
       contents: محتویات
-  common:
-    translations: ترجمه ها

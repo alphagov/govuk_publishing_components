@@ -1,21 +1,8 @@
+---
 sv:
+  common:
+    translations: Översättningar
   components:
-    attachment:
-      page:
-        one: 1 sida
-        other: "%{count} sidor"
-      opendocument_html: Den här filen är i ett <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link'>OpenDocument</a> format
-      order_a_copy: Beställ en kopia
-      reference: 'Ref: %{reference}'
-      request_format_cta: Begär ett tillgängligt format.
-      request_format_details_html: Om du använder hjälpmedel (t.ex. en skärmläsare)
-        och behöver en version av det här dokumentet i ett mer lättillgängligt format,
-        skicka ett e-postmeddelande <a href='mailto:%{alternative_format_contact_email}'
-        target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>.
-        Berätta för oss vilket format du behöver. Det underlättar för oss om du berättar
-        vilken hjälpmedelsteknik du använder.
-      request_format_text: Den här filen kanske inte är lämplig för användare av hjälpmedel.
     accordion:
       hide: Dölj
       hide_all: Dölj alla avsnitt
@@ -24,6 +11,16 @@ sv:
       this_section_visually_hidden: " detta avsnitt"
     article_schema:
       scoped_search_description: Sök inom %{title}
+    attachment:
+      opendocument_html: Den här filen är i ett <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a> format
+      order_a_copy: Beställ en kopia
+      page:
+        one: 1 sida
+        other: "%{count} sidor"
+      reference: 'Ref: %{reference}'
+      request_format_cta: Begär ett tillgängligt format.
+      request_format_details_html: Om du använder hjälpmedel (t.ex. en skärmläsare) och behöver en version av det här dokumentet i ett mer lättillgängligt format, skicka ett e-postmeddelande <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Berätta för oss vilket format du behöver. Det underlättar för oss om du berättar vilken hjälpmedelsteknik du använder.
+      request_format_text: Den här filen kanske inte är lämplig för användare av hjälpmedel.
     back_link:
       back: Tillbaka till
     character_count:
@@ -48,23 +45,18 @@ sv:
       - Vi använder vissa viktiga cookies för att den här webbplatsen ska fungera.
       - Vi vill ställa in ytterligare cookies för att förstå hur du använder GOV.UK
       - komma ihåg dina inställningar och förbättra myndighetstjänsterna.
-      - Vi använder också cookies som ställs in av andra webbplatser för att hjälpa
-        oss att leverera innehåll från deras tjänster.
+      - Vi använder också cookies som ställs in av andra webbplatser för att hjälpa oss att leverera innehåll från deras tjänster.
       title: Cookies på GOV.UK
     feedback:
       close: Stäng
-      dont_include_personal_info: Ange inte personlig eller finansiell information,
-        t.ex. ditt försäkringsnummer eller kreditkortsuppgifter.
+      dont_include_personal_info: Ange inte personlig eller finansiell information, t.ex. ditt försäkringsnummer eller kreditkortsuppgifter.
       email_address: E-postadress
       help_us_improve_govuk: Hjälp oss att förbättra GOV.UK
       is_not_useful: Den här sidan är inte användbar
       is_this_page_useful: Är den här sidan användbar?
       is_useful: Den här sidan är användbar
       maybe: Kanske
-      more_about_visit: För att hjälpa oss att förbättra GOV.UK skulle vi vilja veta
-        mer om ditt besök idag. Vi skickar dig en länk till ett feedbackformulär.
-        Det tar bara 2 minuter att fylla i. Oroa dig inte, vi kommer inte att skicka
-        skräppost till dig eller dela din e-postadress med någon.
+      more_about_visit: För att hjälpa oss att förbättra GOV.UK skulle vi vilja veta mer om ditt besök idag. Vi skickar dig en länk till ett feedbackformulär. Det tar bara 2 minuter att fylla i. Oroa dig inte, vi kommer inte att skicka skräppost till dig eller dela din e-postadress med någon.
       'no': Nej
       send: Skicka
       send_me_survey: Skicka mig enkäten
@@ -82,11 +74,8 @@ sv:
       statistics: Statistik
       worldwide: Globalt
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
-        Crown copyright</a>
-      licence_html: Allt innehåll är tillgängligt enligt <a class="govuk-footer__link"
-        href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-        rel="license">Open Government Licence v3.0</a>, om inget annat anges
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
+      licence_html: Allt innehåll är tillgängligt enligt <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, om inget annat anges
       support_links: Supportlänkar
     layout_header:
       hide_button: Dölj sökning
@@ -170,5 +159,3 @@ sv:
       edit: Ändra
     tabs:
       contents: Innehåll
-  common:
-    translations: Översättningar

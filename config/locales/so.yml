@@ -1,22 +1,8 @@
+---
 so:
+  common:
+    translations: Turjumaanada
   components:
-    attachment:
-      page:
-        one: 1 boga
-        other: "%{count} bogaga"
-      opendocument_html: Faylkani waxa kujira <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link'>OpenDocument</a> format
-      order_a_copy: Dalbo nuqul
-      reference: 'Tixraac: %{reference}'
-      request_format_cta: Codso nidaam la gali karo.
-      request_format_details_html: Hadii aad isticmaalayso tiknoolajiyad ku caawinaysa
-        (sida akhriyaha shaashada) oo aad u baahantahay qayb dhokumantigan ah oo leh
-        nooc la heli karo oo badan, fadlan iimayl u dir<a href='mailto:%{alternative_format_contact_email}'
-        target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>.
-        Fadlan noo sheeg nooca qaabka aad u baahantahay. Waxay naga caawinaysaa hadii
-        aad dhahdo waa maxay tiknoolajiyada aad isticmaasho.
-      request_format_text: Faylkani waxa laga yaabaa inaanu ku haboonayn isticmaalayaasha
-        tiknoolajiyada caawinta.
     accordion:
       hide: Qari
       hide_all: Qari dhamaan qaybaha
@@ -25,6 +11,16 @@ so:
       this_section_visually_hidden: " Qaybtan"
     article_schema:
       scoped_search_description: Baadh waxyaabaha ku jira %{title}
+    attachment:
+      opendocument_html: Faylkani waxa kujira <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a> format
+      order_a_copy: Dalbo nuqul
+      page:
+        one: 1 boga
+        other: "%{count} bogaga"
+      reference: 'Tixraac: %{reference}'
+      request_format_cta: Codso nidaam la gali karo.
+      request_format_details_html: Hadii aad isticmaalayso tiknoolajiyad ku caawinaysa (sida akhriyaha shaashada) oo aad u baahantahay qayb dhokumantigan ah oo leh nooc la heli karo oo badan, fadlan iimayl u dir<a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Fadlan noo sheeg nooca qaabka aad u baahantahay. Waxay naga caawinaysaa hadii aad dhahdo waa maxay tiknoolajiyada aad isticmaasho.
+      request_format_text: Faylkani waxa laga yaabaa inaanu ku haboonayn isticmaalayaasha tiknoolajiyada caawinta.
     back_link:
       back: Kunoqo
     character_count:
@@ -47,28 +43,20 @@ so:
       hide: Qari fariintan
       text:
       - Waxaan isticmaalkaa xogkaydin muhiim ah si websaaytkan uu u shaqeeyo.
-      - Waxaan jeclaan lahayn inaan dejino xog kaydino dheeraad ah si aan u fahanto
-        sida loo isticmaalo GOV.UK
+      - Waxaan jeclaan lahayn inaan dejino xog kaydino dheeraad ah si aan u fahanto sida loo isticmaalo GOV.UK
       - xasuuso waxyaabaha aad galisay oo hagaaji adeegyada dawlada.
-      - Waxaan sidoo kale isticmaalnaa xogkaydin ay dejiyeen meelo kale si ay kuu
-        caawiyaan meelaha kale oo aan anaguna si dhibyar ugu adeegno waxyaabaha ka
-        yimaada adeegooda.
+      - Waxaan sidoo kale isticmaalnaa xogkaydin ay dejiyeen meelo kale si ay kuu caawiyaan meelaha kale oo aan anaguna si dhibyar ugu adeegno waxyaabaha ka yimaada adeegooda.
       title: Xog kaydinta GOV.UK
     feedback:
       close: Xidhan
-      dont_include_personal_info: Oo aanay kujirin macluumaadka shaqsiyadeed ama maaliyadeed
-        sida lambarka Caymiska Qaranka ama faah-faahinta kiridhit kaadhka.
+      dont_include_personal_info: Oo aanay kujirin macluumaadka shaqsiyadeed ama maaliyadeed sida lambarka Caymiska Qaranka ama faah-faahinta kiridhit kaadhka.
       email_address: Cinwaanka iimaylka
       help_us_improve_govuk: Naga caawi sidii aan u wanaajin lahayn GOV.UK
       is_not_useful: Bogani faa'ido maleh
       is_this_page_useful: Bogani faa'ido malaha miyaa?
       is_useful: Bogani faa'ido ayuu leeyahay
       maybe: Laga yaabaa
-      more_about_visit: Si aad nooga caawiso inaan hagaajino GOV.UK, waxaan jeclaan
-        lahaa inaan waxbadan ka ogaado booqashadaada maanta. Waxaan kuusoo diri doonaa
-        linkiga foomka warcelinta. Waxay kaliya qaadanaysaa 2 daqiiqo si loo buuxiyo,
-        Ha warwarin kuumma soo diri doono been abuur ama lama wadaagi doono iimaylkaaga
-        cid kale.
+      more_about_visit: Si aad nooga caawiso inaan hagaajino GOV.UK, waxaan jeclaan lahaa inaan waxbadan ka ogaado booqashadaada maanta. Waxaan kuusoo diri doonaa linkiga foomka warcelinta. Waxay kaliya qaadanaysaa 2 daqiiqo si loo buuxiyo, Ha warwarin kuumma soo diri doono been abuur ama lama wadaagi doono iimaylkaaga cid kale.
       'no': Maya
       send: Dir
       send_me_survey: Ii dir aniga xog ururinta
@@ -86,11 +74,8 @@ so:
       statistics: Xisaabaadka
       worldwide: Dunidoo dhan
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
-        Crown copyright</a>
-      licence_html: Dhamaan qaybaha waxa laga heli karaa <a class="govuk-footer__link"
-        href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-        rel="license">Open Government Licence v3.0</a>, except where otherwise stated
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
+      licence_html: Dhamaan qaybaha waxa laga heli karaa <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated
       support_links: Linkiyada caawinta
     layout_header:
       hide_button: Qari baadhista
@@ -174,5 +159,3 @@ so:
       edit: Badal
     tabs:
       contents: Waxyaabaha uu ka koobanyahay
-  common:
-    translations: Turjumaanada

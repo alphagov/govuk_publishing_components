@@ -1,24 +1,8 @@
+---
 hr:
+  common:
+    translations: Prijevodi
   components:
-    attachment:
-      page:
-        one: 1 stranica
-        few:
-        many:
-        other: "%{count} stranice"
-      opendocument_html: Ova datoteka je u <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link '>OpenDocument</a> formatu
-      order_a_copy: Naručite kopiju
-      reference: 'Referenca: %{reference}'
-      request_format_cta: Zatražite pristupačan format.
-      request_format_details_html: Ako koristite pomoćnu tehnologiju (poput čitača
-        zaslona) i trebate verziju ovog dokumenta u pristupačnijem formatu, pošaljite
-        e-poruku na <a href = 'mailto:%{alternative_format_contact_email}' target
-        = '_ blank' class = 'govuk-link '>%{alternative_format_contact_email} </a>.
-        Recite nam koji format vam je potreban. Pomoći će nam ako kažete koju pomoćnu
-        tehnologiju koristite.
-      request_format_text: Ova datoteka možda nije prikladna za korisnike pomoćne
-        tehnologije.
     accordion:
       hide: Sakrij
       hide_all: Sakrij sve odjeljke
@@ -27,6 +11,18 @@ hr:
       this_section_visually_hidden: " ovaj odjeljak"
     article_schema:
       scoped_search_description: Traži unutar %{title}
+    attachment:
+      opendocument_html: Ova datoteka je u <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link '>OpenDocument</a> formatu
+      order_a_copy: Naručite kopiju
+      page:
+        few:
+        many:
+        one: 1 stranica
+        other: "%{count} stranice"
+      reference: 'Referenca: %{reference}'
+      request_format_cta: Zatražite pristupačan format.
+      request_format_details_html: Ako koristite pomoćnu tehnologiju (poput čitača zaslona) i trebate verziju ovog dokumenta u pristupačnijem formatu, pošaljite e-poruku na <a href = 'mailto:%{alternative_format_contact_email}' target = '_ blank' class = 'govuk-link '>%{alternative_format_contact_email} </a>. Recite nam koji format vam je potreban. Pomoći će nam ako kažete koju pomoćnu tehnologiju koristite.
+      request_format_text: Ova datoteka možda nije prikladna za korisnike pomoćne tehnologije.
     back_link:
       back: Nazad
     character_count:
@@ -49,26 +45,20 @@ hr:
       hide: Sakrij ovu poruku
       text:
       - Koristimo neke bitne kolačiće za funkcioniranje ove web stranice.
-      - Željeli bismo postaviti dodatne kolačiće kako bismo razumjeli kako koristite
-        GOV.UK
+      - Željeli bismo postaviti dodatne kolačiće kako bismo razumjeli kako koristite GOV.UK
       - zapamtili vaše postavke i poboljšali državne usluge.
-      - 'Također koristimo kolačiće koje postavlja druge web stranice koje će nam
-        pomoći isporučiti sadržaj s njihovih usluga. '
+      - 'Također koristimo kolačiće koje postavlja druge web stranice koje će nam pomoći isporučiti sadržaj s njihovih usluga. '
       title: Kolačići na GOV.UK
     feedback:
       close: Zatvori
-      dont_include_personal_info: Nemojte uključivati osobne ili financijske podatke
-        kao što su broj vašeg nacionalnog osiguranja ili podaci o kreditnoj kartici.
+      dont_include_personal_info: Nemojte uključivati osobne ili financijske podatke kao što su broj vašeg nacionalnog osiguranja ili podaci o kreditnoj kartici.
       email_address: Email adresa
       help_us_improve_govuk: Pomozite nam poboljšati GOV.UK
       is_not_useful: ova stranica nije korisna
       is_this_page_useful: Je li ova stranica korisna?
       is_useful: ova stranica je korisna
       maybe: Možda
-      more_about_visit: Kako bismo nam pomogli poboljšati GOV.UK, željeli bismo znati
-        više o vašem današnjem posjetu. Poslat ćemo vam vezu do obrasca za povratne
-        informacije. Popunjavanje će potrajati samo 2 minute. Ne brinite, nećemo vam
-        slati neželjenu poštu ili nikome dijeliti vašu e -adresu.
+      more_about_visit: Kako bismo nam pomogli poboljšati GOV.UK, željeli bismo znati više o vašem današnjem posjetu. Poslat ćemo vam vezu do obrasca za povratne informacije. Popunjavanje će potrajati samo 2 minute. Ne brinite, nećemo vam slati neželjenu poštu ili nikome dijeliti vašu e -adresu.
       'no': Ne
       send: Pošalji
       send_me_survey: Pošaljite mi anketu
@@ -86,10 +76,8 @@ hr:
       statistics: Statistika
       worldwide: U cijelom svijetu
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
-        Crown copyright</a>
-      licence_html: Sav sadržaj dostupan je pod <a class="govuk-footer__link"href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"rel="license">Otvorena
-        Državna licenca v3.0</a>, osim ako nije drugačije navedeno
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
+      licence_html: Sav sadržaj dostupan je pod <a class="govuk-footer__link"href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"rel="license">Otvorena Državna licenca v3.0</a>, osim ako nije drugačije navedeno
       support_links: Linkovi za podršku
     layout_header:
       hide_button: Sakrij pretraživanje
@@ -173,5 +161,3 @@ hr:
       edit: Promijeniti
     tabs:
       contents: Sadržaj
-  common:
-    translations: Prijevodi

@@ -1,3 +1,4 @@
+---
 az:
   common:
     translations: Tərcümələr
@@ -11,22 +12,15 @@ az:
     article_schema:
       scoped_search_description: "%{title} üzrə axtar"
     attachment:
-      opendocument_html: Bu fayl <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link'>OpenDocument</a> formatındadır
+      opendocument_html: Bu fayl <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a> formatındadır
       order_a_copy: Surətini sifariş edin
       page:
         one: 1 səhifə
         other: "%{count} səhifə"
       reference: 'İst: %{reference}'
       request_format_cta: İstifadə edilə bilən format tələb edin.
-      request_format_details_html: Köməkçi texnologiyalardan (ekran oxuyucusu kimi)
-        istifadə edirsinizsə və sizə bu sənədin daha rahat istifadə edilə bilən formatda
-        olan versiyası lazımdırsa, aşağıdakı ünvana e-məktubla müraciət edin <a href='mailto:%{alternative_format_contact_email}'
-        target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>.
-        Sizə hansı formatın lazım olduğunu bizə söyləyin. Hansı köməkçi texnologiyadan
-        istifadə etdiyinizi bildirməyiniz bizə kömək edəcək.
-      request_format_text: Bu fayl köməkçi texnologiya istifadəçiləri üçün uyğun olmaya
-        bilər.
+      request_format_details_html: Köməkçi texnologiyalardan (ekran oxuyucusu kimi) istifadə edirsinizsə və sizə bu sənədin daha rahat istifadə edilə bilən formatda olan versiyası lazımdırsa, aşağıdakı ünvana e-məktubla müraciət edin <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Sizə hansı formatın lazım olduğunu bizə söyləyin. Hansı köməkçi texnologiyadan istifadə etdiyinizi bildirməyiniz bizə kömək edəcək.
+      request_format_text: Bu fayl köməkçi texnologiya istifadəçiləri üçün uyğun olmaya bilər.
     back_link:
       back: Geriyə
     character_count:
@@ -48,28 +42,21 @@ az:
       confirmation_message_link: Kuki parametrlərinizi dəyişdirin
       hide: Bu mesajı gizlət
       text:
-      - Biz bu vebsaytın işləməsini təmin etmək üçün bəzi zəruri kukilərdən istifadə
-        edirik.
+      - Biz bu vebsaytın işləməsini təmin etmək üçün bəzi zəruri kukilərdən istifadə edirik.
       - Biz GOV.UK-dən necə istifadə etdiyinizi anlamaq
-      - parametrlərinizi yadda saxlamaq və hökumət xidmətlərini təkmilləşdirmək üçün
-        əlavə kukilər yerləşdirmək istərdik.
-      - Biz həmçinin digər saytların xidmətlərindən məzmun göndərməyimizə kömək etmək
-        üçün həmin saytlar tərəfindən yerləşdirilmiş kukilərdən istifadə edirik.
+      - parametrlərinizi yadda saxlamaq və hökumət xidmətlərini təkmilləşdirmək üçün əlavə kukilər yerləşdirmək istərdik.
+      - Biz həmçinin digər saytların xidmətlərindən məzmun göndərməyimizə kömək etmək üçün həmin saytlar tərəfindən yerləşdirilmiş kukilərdən istifadə edirik.
       title: GOV.UK-dəki kukilər
     feedback:
       close: Bağla
-      dont_include_personal_info: Sosial sığorta nömrəniz və ya kredit kartınızın
-        məlumatları kimi şəxsi və ya maliyyə məlumatları daxil etməyin.
+      dont_include_personal_info: Sosial sığorta nömrəniz və ya kredit kartınızın məlumatları kimi şəxsi və ya maliyyə məlumatları daxil etməyin.
       email_address: E-poçt ünvanı
       help_us_improve_govuk: Bizə GOV.UK-i təkmilləşdirməkdə kömək edin
       is_not_useful: bu səhifə faydalı deyildir
       is_this_page_useful: Bu səhifə faydalıdır?
       is_useful: bu səhifə faydalıdır
       maybe: Ola bilər
-      more_about_visit: GOV.UK təkmilləşdirməkdə bizə kömək etməyiniz üçün, biz bugünkü
-        baş çəkməyinizlə bağlı daha çox şey bilmək istərdik. Biz sizə rəy forması
-        üçün keçidi göndərəcəyik. Onun doldurulması yalnız 2 dəqiqə çəkəcək. Narahat
-        olmayın, biz sizə spam göndərməyəcəyik və ya e-poçt ünvanınızı heç kimlə paylaşmayacağıq.
+      more_about_visit: GOV.UK təkmilləşdirməkdə bizə kömək etməyiniz üçün, biz bugünkü baş çəkməyinizlə bağlı daha çox şey bilmək istərdik. Biz sizə rəy forması üçün keçidi göndərəcəyik. Onun doldurulması yalnız 2 dəqiqə çəkəcək. Narahat olmayın, biz sizə spam göndərməyəcəyik və ya e-poçt ünvanınızı heç kimlə paylaşmayacağıq.
       'no': Xeyr
       send: Göndər
       send_me_survey: Mənə sorğu göndər
@@ -87,11 +74,8 @@ az:
       statistics: Statistika
       worldwide: Dünya üzrə
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">Â©
-        Crown copyright</a>
-      licence_html: Bütün məzmunlar <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-        rel="license">v3.0 Açıq dövlət lisenziyasına əsasən mövcuddur</a>(başqa cür
-        nəzərdə tutulmuş hallar istisna olmaqla)
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">Â© Crown copyright</a>
+      licence_html: Bütün məzmunlar <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">v3.0 Açıq dövlət lisenziyasına əsasən mövcuddur</a>(başqa cür nəzərdə tutulmuş hallar istisna olmaqla)
       support_links: Dəstək keçidləri
     layout_header:
       hide_button: Axtarışı gizlət

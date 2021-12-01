@@ -1,3 +1,4 @@
+---
 th:
   common:
     translations: ข้อความแปล
@@ -11,19 +12,14 @@ th:
     article_schema:
       scoped_search_description: ค้นหาใน %{title}
     attachment:
-      opendocument_html: ไฟล์นี้อยู่ในรูปแบบ <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link'>OpenDocument</a>
+      opendocument_html: ไฟล์นี้อยู่ในรูปแบบ <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a>
       order_a_copy: สั่งซื้อสำเนา
       page:
         one: 1 หน้า
         other: "%{count} หน้า"
       reference: 'อ้างอิง: %{reference}'
       request_format_cta: ขอรูปแบบไฟล์ที่สามารถเข้าถึงได้
-      request_format_details_html: หากคุณใช้เทคโนโลยีอำนวยความสะดวก (เช่น โปรแกรมอ่านหน้าจอ)
-        และต้องการเอกสารนี้ในฉบับที่เป็นรูปแบบไฟล์ที่ช่วยให้สามารถเข้าถึงได้ง่ายขึ้น
-        โปรดส่งอีเมลไปที่ <a href='mailto:%{alternative_format_contact_email}' target='_blank'
-        class='govuk-link'>%{alternative_format_contact_email}</a> โปรดบอกเราว่าคุณต้องการรูปแบบไฟล์แบบใด
-        จะเป็นการช่วยเราอย่างมาก หากคุณบอกว่าคุณใช้เทคโนโลยีเพื่อการช่วยเหลือแบบใด
+      request_format_details_html: หากคุณใช้เทคโนโลยีอำนวยความสะดวก (เช่น โปรแกรมอ่านหน้าจอ) และต้องการเอกสารนี้ในฉบับที่เป็นรูปแบบไฟล์ที่ช่วยให้สามารถเข้าถึงได้ง่ายขึ้น โปรดส่งอีเมลไปที่ <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a> โปรดบอกเราว่าคุณต้องการรูปแบบไฟล์แบบใด จะเป็นการช่วยเราอย่างมาก หากคุณบอกว่าคุณใช้เทคโนโลยีเพื่อการช่วยเหลือแบบใด
       request_format_text: ไฟล์นี้อาจไม่เหมาะสำหรับผู้ใช้เทคโนโลยีเพื่อการช่วยเหลือ
     back_link:
       back: กลับ
@@ -47,23 +43,19 @@ th:
       hide: ซ่อนข้อความนี้
       text:
       - เราใช้คุกกี้ที่จำเป็นบางอย่างเพื่อทำให้เว็บไซต์นี้ทำงานได้
-      - เราต้องการกำหนดคุกกี้เพิ่มเติม เพื่อทำความเข้าใจว่าคุณใช้ GOV.UK อย่างไร จดจำการตั้งค่าของคุณ
-        และปรับปรุงบริการของรัฐบาล
+      - เราต้องการกำหนดคุกกี้เพิ่มเติม เพื่อทำความเข้าใจว่าคุณใช้ GOV.UK อย่างไร จดจำการตั้งค่าของคุณ และปรับปรุงบริการของรัฐบาล
       - และเรายังใช้คุกกี้ที่กำหนดโดยเว็บไซต์อื่นๆ เพื่อช่วยเราในการส่งมอบเนื้อหาจากบริการของพวกเขา
       title: คุกกี้ใน GOV.UK
     feedback:
       close: ปิด
-      dont_include_personal_info: อย่าใส่ข้อมูลส่วนบุคคลหรือข้อมูลทางการเงิน เช่น
-        หมายเลขประกันสังคม (National Insurance) หรือรายละเอียดบัตรเครดิต
+      dont_include_personal_info: อย่าใส่ข้อมูลส่วนบุคคลหรือข้อมูลทางการเงิน เช่น หมายเลขประกันสังคม (National Insurance) หรือรายละเอียดบัตรเครดิต
       email_address: ที่อยู่อีเมล
       help_us_improve_govuk: ช่วยเราปรับปรุง GOV.UK
       is_not_useful: หน้านี้ไม่มีประโยชน์
       is_this_page_useful: หน้านี้มีประโยชน์หรือไม่
       is_useful: หน้านี้มีประโยชน์
       maybe: อาจใช่
-      more_about_visit: เพื่อช่วยเราปรับปรุง GOV.UK เราต้องการทราบข้อมูลเพิ่มเติมเกี่ยวกับการเยี่ยมชมของคุณในวันนี้
-        เราจะส่งลิงก์แบบฟอร์มข้อเสนอแนะให้คุณ จะใช้เวลาเพียง 2 นาทีในการกรอกข้อมูล
-        โปรดอย่ากังวล เราจะไม่ส่งสแปมหรือแชร์ที่อยู่อีเมลของคุณให้กับใคร
+      more_about_visit: เพื่อช่วยเราปรับปรุง GOV.UK เราต้องการทราบข้อมูลเพิ่มเติมเกี่ยวกับการเยี่ยมชมของคุณในวันนี้ เราจะส่งลิงก์แบบฟอร์มข้อเสนอแนะให้คุณ จะใช้เวลาเพียง 2 นาทีในการกรอกข้อมูล โปรดอย่ากังวล เราจะไม่ส่งสแปมหรือแชร์ที่อยู่อีเมลของคุณให้กับใคร
       'no': ไม่
       send: ส่ง
       send_me_survey: ส่งแบบสำรวจให้ฉัน
@@ -81,11 +73,8 @@ th:
       statistics: สถิติ
       worldwide: ทั่วโลก
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">ลิขสิทธิ์
-        © Crown</a>
-      licence_html: เนื้อหาทั้งหมดอยู่ภายใต้สัญญาอนุญาต <a class="govuk-footer__link"
-        href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-        rel="license">Open Government License v3.0</a> ยกเว้นจะระบุไว้เป็นอย่างอื่น
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">ลิขสิทธิ์ © Crown</a>
+      licence_html: เนื้อหาทั้งหมดอยู่ภายใต้สัญญาอนุญาต <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government License v3.0</a> ยกเว้นจะระบุไว้เป็นอย่างอื่น
       support_links: ลิงค์สนับสนุน
     layout_header:
       hide_button: ซ่อนการค้นหา

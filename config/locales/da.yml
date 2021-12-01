@@ -1,21 +1,8 @@
+---
 da:
+  common:
+    translations: Oversættelser
   components:
-    attachment:
-      page:
-        one: 1 side
-        other: "%{count} sider"
-      opendocument_html: Denne fil er i en <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link'>OpenDocument</a> format
-      order_a_copy: Bestil et eksemplar
-      reference: 'Henvisning: %{reference}'
-      request_format_cta: Anmod om et tilgængeligt format.
-      request_format_details_html: Hvis du bruger hjælpemidler (f.eks. en skærmlæser)
-        og har brug for en version af dette dokument i et mere tilgængeligt format,
-        bedes du sende en e-mail til <a href='mailto:%{alternative_format_contact_email}'
-        target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>.
-        Venligst fortæl os, hvilket format du har brug for. Det vil hjælpe os, hvis
-        du fortæller os, hvilken hjælpeteknologi du bruger.
-      request_format_text: Denne fil er muligvis ikke egnet til brugere af hjælpeteknologi.
     accordion:
       hide: Skjul
       hide_all: Skjul alle sektioner
@@ -24,6 +11,16 @@ da:
       this_section_visually_hidden: " denne sektion"
     article_schema:
       scoped_search_description: Søg i %{title}
+    attachment:
+      opendocument_html: Denne fil er i en <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a> format
+      order_a_copy: Bestil et eksemplar
+      page:
+        one: 1 side
+        other: "%{count} sider"
+      reference: 'Henvisning: %{reference}'
+      request_format_cta: Anmod om et tilgængeligt format.
+      request_format_details_html: Hvis du bruger hjælpemidler (f.eks. en skærmlæser) og har brug for en version af dette dokument i et mere tilgængeligt format, bedes du sende en e-mail til <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Venligst fortæl os, hvilket format du har brug for. Det vil hjælpe os, hvis du fortæller os, hvilken hjælpeteknologi du bruger.
+      request_format_text: Denne fil er muligvis ikke egnet til brugere af hjælpeteknologi.
     back_link:
       back: Tilbage
     character_count:
@@ -49,23 +46,18 @@ da:
       - Vi vil gerne indstille yderligere cookies for at forstå
       - hvordan du bruger GOV.UK
       - huske dine indstillinger og forbedre offentlige tjenester.
-      - Vi bruger også cookies fra andre websteder for at hjælpe os med at levere
-        indhold fra deres tjenester.
+      - Vi bruger også cookies fra andre websteder for at hjælpe os med at levere indhold fra deres tjenester.
       title: Cookies på GOV.UK
     feedback:
       close: Luk
-      dont_include_personal_info: Do not include personal or financial information
-        such as your national insurance number or credit card information.
+      dont_include_personal_info: Do not include personal or financial information such as your national insurance number or credit card information.
       email_address: E-mail-adresse
       help_us_improve_govuk: Hjælp os med at forbedre GOV.UK
       is_not_useful: denne side er ikke nyttig
       is_this_page_useful: Er denne side nyttig?
       is_useful: denne side er nyttig
       maybe: Måske
-      more_about_visit: To help us improve GOV.UK, we’d like to know more about your
-        visit today. Vi sender dig et link til en feedbackformular. Det tager kun
-        2 minutter at udfylde det. Bare rolig, vi sender dig ikke spam og deler ikke
-        din e-mailadresse med nogen.
+      more_about_visit: To help us improve GOV.UK, we’d like to know more about your visit today. Vi sender dig et link til en feedbackformular. Det tager kun 2 minutter at udfylde det. Bare rolig, vi sender dig ikke spam og deler ikke din e-mailadresse med nogen.
       'no': Nej
       send: Sende
       send_me_survey: Send mig undersøgelsen
@@ -83,11 +75,8 @@ da:
       statistics: Statistik
       worldwide: Verdensomspændende
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
-        Krown copyright</a>
-      licence_html: Alt indhold er tilgængeligt i henhold til <a class="govuk-footer__link"
-        href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-        rel="license">åben Forvaltning Licens v3.0</a>, medmindre andet er angivet.
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Krown copyright</a>
+      licence_html: Alt indhold er tilgængeligt i henhold til <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">åben Forvaltning Licens v3.0</a>, medmindre andet er angivet.
       support_links: Støtte links
     layout_header:
       hide_button: Skjul søgning
@@ -171,5 +160,3 @@ da:
       edit: Ændre
     tabs:
       contents: Indhold
-  common:
-    translations: Oversættelser

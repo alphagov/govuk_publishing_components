@@ -1,21 +1,8 @@
+---
 is:
+  common:
+    translations: Þýðingar
   components:
-    attachment:
-      page:
-        one: 1 síða
-        other: "%{count} síður"
-      opendocument_html: Þessi skrá er á <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link'>OpnaSkjal</a> sniði
-      order_a_copy: Panta eintak
-      reference: 'Tilv: %{reference}'
-      request_format_cta: Óska eftir aðgengilegu sniði.
-      request_format_details_html: Ef þú notast við stoðtækni (eins og skjálesara)
-        og þarft útgáfu af þessu skjali á aðgengilegra sniði, sendu þá vinsamlegast
-        tölvupóst á <a href='mailto:%{alternative_format_contact_email}' target='_blank'
-        class='govuk-link'>%{alternative_format_contact_email}</a>. Vinsamlegast segðu
-        okkur hvaða snið þú þarft. Það hjálpar okkur ef þú tekur fram hvaða stoðtækni
-        þú notast við.
-      request_format_text: Þessi skrá gæti ekki hentað þeim sem notast við stoðtækni.
     accordion:
       hide: Fela
       hide_all: Fela alla hluta
@@ -24,6 +11,16 @@ is:
       this_section_visually_hidden: " þessi hluti"
     article_schema:
       scoped_search_description: Leita innan %{title}
+    attachment:
+      opendocument_html: Þessi skrá er á <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpnaSkjal</a> sniði
+      order_a_copy: Panta eintak
+      page:
+        one: 1 síða
+        other: "%{count} síður"
+      reference: 'Tilv: %{reference}'
+      request_format_cta: Óska eftir aðgengilegu sniði.
+      request_format_details_html: Ef þú notast við stoðtækni (eins og skjálesara) og þarft útgáfu af þessu skjali á aðgengilegra sniði, sendu þá vinsamlegast tölvupóst á <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Vinsamlegast segðu okkur hvaða snið þú þarft. Það hjálpar okkur ef þú tekur fram hvaða stoðtækni þú notast við.
+      request_format_text: Þessi skrá gæti ekki hentað þeim sem notast við stoðtækni.
     back_link:
       back: Til baka
     character_count:
@@ -48,23 +45,18 @@ is:
       - Við notum nokkrar nauðsynlegar vafrakökur til að tryggja virkni síðunnar.
       - Við viljum setja fleiri vafrakökur til að átta okkur á hvernig þú notar GOV.UK
       - muna stillingarnar þínar og bæta opinbera þjónustu
-      - Við notum líka vafrakökur af öðrum síðum til að auðvelda okkur að birta efni
-        frá þeim.
+      - Við notum líka vafrakökur af öðrum síðum til að auðvelda okkur að birta efni frá þeim.
       title: Vafrakökur á GOV.UK
     feedback:
       close: Loka
-      dont_include_personal_info: Ekki láta persónulegar eða fjárhagslegar upplýsingar
-        eins og Tryggingarnúmer eða kreditkorta upplýsingar fylgja með.
+      dont_include_personal_info: Ekki láta persónulegar eða fjárhagslegar upplýsingar eins og Tryggingarnúmer eða kreditkorta upplýsingar fylgja með.
       email_address: Tölvupóstfang
       help_us_improve_govuk: Hjálpaðu okkur að bæta GOV.UK
       is_not_useful: þessi síða er ekki gagnleg
       is_this_page_useful: Ef þessi síða gagnleg?
       is_useful: þess síða er gagnleg
       maybe: Kannski
-      more_about_visit: Við viljum vita meira um heimsókn þína hingað í dag til að
-        hjálpa okkur að bæta GOV.UK. Við munum senda þér hlekk á skjal fyrir endurgjöf.
-        Það mun bara taka 2 mínútur að fylla það út. Hafðu engar áhyggjur við munum
-        ekki senda þér ruslpóst eða deila tölvupóstfanginu þínu með neinum.
+      more_about_visit: Við viljum vita meira um heimsókn þína hingað í dag til að hjálpa okkur að bæta GOV.UK. Við munum senda þér hlekk á skjal fyrir endurgjöf. Það mun bara taka 2 mínútur að fylla það út. Hafðu engar áhyggjur við munum ekki senda þér ruslpóst eða deila tölvupóstfanginu þínu með neinum.
       'no': Nei
       send: Senda
       send_me_survey: Sendið mér könnunina
@@ -82,11 +74,8 @@ is:
       statistics: Tölfræði
       worldwide: Úti um allan heim
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
-        höfunarréttur Krúnunnar</a>
-      licence_html: Allt efni er aðgengilegt samkvæmt <a class="govuk-footer__link"
-        href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-        rel="license">Open Government Licence v3.0</a>, nema annað sé tekið fram
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© höfunarréttur Krúnunnar</a>
+      licence_html: Allt efni er aðgengilegt samkvæmt <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, nema annað sé tekið fram
       support_links: Stuðningshlekkir
     layout_header:
       hide_button: Fela leit
@@ -170,5 +159,3 @@ is:
       edit: Breyta
     tabs:
       contents: Efni
-  common:
-    translations: Þýðingar

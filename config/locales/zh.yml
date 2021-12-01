@@ -1,3 +1,4 @@
+---
 zh:
   common:
     translations: 翻译
@@ -11,16 +12,14 @@ zh:
     article_schema:
       scoped_search_description: 在 %{title} 内搜索
     attachment:
-      opendocument_html: 本文件是 <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link'>开放式文本</a> 格式
+      opendocument_html: 本文件是 <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>开放式文本</a> 格式
       order_a_copy: 订购副本
       page:
         one: 1页
         other: "%{count} 页"
       reference: 参考号：%{reference}
       request_format_cta: 申请可访问格式。
-      request_format_details_html: '如果您使用辅助技术（如屏幕阅读器），并需要更易于访问的格式，请发送电子邮件 <a href=''mailto:%{alternative_format_contact_email}''
-        target=''_blank'' class=''govuk-link''>%{alternative_format_contact_email}</a>。请告诉我们您需要什么格式。如果您能说出自己使用的辅助技术，这对我们很有帮助。  '
+      request_format_details_html: '如果您使用辅助技术（如屏幕阅读器），并需要更易于访问的格式，请发送电子邮件 <a href=''mailto:%{alternative_format_contact_email}'' target=''_blank'' class=''govuk-link''>%{alternative_format_contact_email}</a>。请告诉我们您需要什么格式。如果您能说出自己使用的辅助技术，这对我们很有帮助。  '
       request_format_text: 此文件可能不适合辅助技术用户使用。
     back_link:
       back: 向后
@@ -74,10 +73,8 @@ zh:
       statistics: 统计数据
       worldwide: 全世界
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
-        Crown版权所有</a>
-      licence_html: 除另有说明外，所有内容均可在 <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-        rel="license">开放政府许可证第3.0版</a>获取
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown版权所有</a>
+      licence_html: 除另有说明外，所有内容均可在 <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">开放政府许可证第3.0版</a>获取
       support_links: 支持链接
     layout_header:
       hide_button: 隐藏搜索

@@ -1,26 +1,8 @@
+---
 cy:
+  common:
+    translations: Cyfieithiadau
   components:
-    attachment:
-      page:
-        zero:
-        one: 1 dudalen
-        two:
-        few:
-        many:
-        other: "%{count} o dudalennau"
-      opendocument_html: Mae'r ffeil hon mewn fformat <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link'>Dogfen Agored</a>
-      order_a_copy: Archebu copi
-      reference: 'Cyfeirnod: %{reference}'
-      request_format_cta: Gwneud cais am fformat hygyrch.
-      request_format_details_html: Os ydych chi'n defnyddio technoleg gynorthwyol
-        (er enghraifft, rhaglen darllen sgrin) a bod angen fersiwn o'r ddogfen hon
-        arnoch mewn fformat mwy hygyrch, e-bostiwch <a href='mailto:%{alternative_format_contact_email}'
-        target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>.
-        Rhowch wybod i ni pa fformat sydd ei angen arnoch. Bydd yn ein helpu ni os
-        byddwch chi'n dweud pa dechnoleg gynorthwyol rydych chi'n ei defnyddio.
-      request_format_text: Efallai na fydd y ffeil hon yn addas ar gyfer defnyddwyr
-        technoleg gynorthwyol.
     accordion:
       hide: Cuddio
       hide_all: Cuddio pob adran
@@ -29,6 +11,20 @@ cy:
       this_section_visually_hidden: " yr adran hon"
     article_schema:
       scoped_search_description: Chwilio o fewn %{title}
+    attachment:
+      opendocument_html: Mae'r ffeil hon mewn fformat <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>Dogfen Agored</a>
+      order_a_copy: Archebu copi
+      page:
+        few:
+        many:
+        one: 1 dudalen
+        other: "%{count} o dudalennau"
+        two:
+        zero:
+      reference: 'Cyfeirnod: %{reference}'
+      request_format_cta: Gwneud cais am fformat hygyrch.
+      request_format_details_html: Os ydych chi'n defnyddio technoleg gynorthwyol (er enghraifft, rhaglen darllen sgrin) a bod angen fersiwn o'r ddogfen hon arnoch mewn fformat mwy hygyrch, e-bostiwch <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Rhowch wybod i ni pa fformat sydd ei angen arnoch. Bydd yn ein helpu ni os byddwch chi'n dweud pa dechnoleg gynorthwyol rydych chi'n ei defnyddio.
+      request_format_text: Efallai na fydd y ffeil hon yn addas ar gyfer defnyddwyr technoleg gynorthwyol.
     back_link:
       back: Nôl
     character_count:
@@ -53,23 +49,18 @@ cy:
       - Rydyn ni'n defnyddio rhai cwcis hanfodol i wneud i'r wefan hon weithio.
       - Fe hoffen ni osod cwcis ychwanegol i ddeall sut rydych chi'n defnyddio GOV.UK
       - i gofio'ch gosodiadau ac i wella gwasanaethau'r llywodraeth.
-      - Rydyn ni hefyd yn defnyddio cwcis sy'n cael eu gosod gan wefannau eraill i'n
-        helpu i gyflwyno cynnwys o'u gwasanaethau nhw.
+      - Rydyn ni hefyd yn defnyddio cwcis sy'n cael eu gosod gan wefannau eraill i'n helpu i gyflwyno cynnwys o'u gwasanaethau nhw.
       title: Cwcis ar GOV.UK
     feedback:
       close: Cau
-      dont_include_personal_info: Peidiwch â chynnwys gwybodaeth bersonol neu ariannol
-        fel eich rhif Yswiriant Gwladol neu rif cerdyn credyd.
+      dont_include_personal_info: Peidiwch â chynnwys gwybodaeth bersonol neu ariannol fel eich rhif Yswiriant Gwladol neu rif cerdyn credyd.
       email_address: Cyfeiriad e-bost
       help_us_improve_govuk: Helpwch ni i wella GOV.UK
       is_not_useful: nid yw'r dudalen hon yn ddefnyddiol
       is_this_page_useful: A yw'r dudalen hon yn ddefnyddiol?
       is_useful: mae'r dudalen hon yn ddefnyddiol
       maybe: Efallai
-      more_about_visit: I'n helpu i wella GOV.UK, fe hoffen ni wybod mwy am eich ymweliad
-        heddiw. Byddwn ni'n anfon dolen atoch chi i ffurflen adborth. Dim ond 2 funud
-        fydd ei angen i'w llenwi. Peidiwch â phoeni, fyddwn ni ddim yn anfon sbam
-        atoch chi nac yn rhannu eich cyfeiriad e-bost gydag unrhyw un.
+      more_about_visit: I'n helpu i wella GOV.UK, fe hoffen ni wybod mwy am eich ymweliad heddiw. Byddwn ni'n anfon dolen atoch chi i ffurflen adborth. Dim ond 2 funud fydd ei angen i'w llenwi. Peidiwch â phoeni, fyddwn ni ddim yn anfon sbam atoch chi nac yn rhannu eich cyfeiriad e-bost gydag unrhyw un.
       'no': Na
       send: Anfon
       send_me_survey: Anfon yr arolwg ataf i
@@ -87,12 +78,8 @@ cy:
       statistics: Ystadegau
       worldwide: Byd-eang
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
-        Hawlfraint y Goron</a>
-      licence_html: Mae'r holl gynnwys ar gael o dan <a class="govuk-footer__link"
-        href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-        rel="license">Drwydded Agored y Llywodraeth v3.0</a>, ac eithrio ble nodir
-        yn wahanol
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Hawlfraint y Goron</a>
+      licence_html: Mae'r holl gynnwys ar gael o dan <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Drwydded Agored y Llywodraeth v3.0</a>, ac eithrio ble nodir yn wahanol
       support_links: Dolenni cefnogi
     layout_header:
       hide_button: Cuddio'r chwiliad
@@ -176,5 +163,3 @@ cy:
       edit: Newid
     tabs:
       contents: Cynnwys
-  common:
-    translations: Cyfieithiadau

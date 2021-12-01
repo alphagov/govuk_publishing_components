@@ -1,3 +1,4 @@
+---
 ja:
   common:
     translations: 翻訳
@@ -11,16 +12,14 @@ ja:
     article_schema:
       scoped_search_description: "％{title}内で検索"
     attachment:
-      opendocument_html: このファイルは、<a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link'>OpenDocument</a> 形式です
+      opendocument_html: このファイルは、<a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a> 形式です
       order_a_copy: コピーを注文する
       page:
         one: 1ページ
         other: "％{count}ページ"
       reference: 参照：%{reference}
       request_format_cta: アクセス可能なフォーマットをリクエストしてください。
-      request_format_details_html: 支援技術（スクリーンリーダーなど）を使用していて、このドキュメントのよりアクセスしやすい形式のバージョンが必要な場合は、<a
-        href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>。必要なフォーマットを教えてください。使用している支援技術を教えていただければ助かります。
+      request_format_details_html: 支援技術（スクリーンリーダーなど）を使用していて、このドキュメントのよりアクセスしやすい形式のバージョンが必要な場合は、<a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>。必要なフォーマットを教えてください。使用している支援技術を教えていただければ助かります。
       request_format_text: このファイルは、支援技術のユーザーには適していない可能性があります。
     back_link:
       back: 戻る
@@ -72,10 +71,8 @@ ja:
       statistics: 統計
       worldwide: 全世界
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
-        Crown copyright</a>
-      licence_html: 特に明記されていない限り、すべてのコンテンツは <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-        rel="license">Open Government Licence v3.0</a>でご利用いただけます。
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
+      licence_html: 特に明記されていない限り、すべてのコンテンツは <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>でご利用いただけます。
       support_links: サポートリンク
     layout_header:
       hide_button: 検索を非表示

@@ -1,24 +1,8 @@
+---
 gd:
+  common:
+    translations: Aistriúchán
   components:
-    attachment:
-      page:
-        one: 1 leathanach
-        two:
-        few:
-        other: "%{count} leathanaigh"
-      opendocument_html: Is í formáid na ndoiciméad sin <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link'>OpenDocument</a>
-      order_a_copy: Coinnigh cóip
-      reference: 'Tagairt: %{reference}'
-      request_format_cta: Is féidir leat formáid inrochtana a iarraidh.
-      request_format_details_html: Má tá an doiciméad seo bunaithe ar theicneolaíocht
-        chúnta (cosúil le léitheoir scáileáin) agus má theastaíonn leagan níos inrochtana
-        den doiciméad seo uait, seol ríomhphost chuig <a href='mailto:%{alternative_format_contact_email}'
-        target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>.
-        Inis dúinn cén fhormáid atá uait. Le cuidiú linn, is féidir leat a rá linn
-        freisin na teicneolaíochtaí a úsáidtear chun cabhrú leat.
-      request_format_text: B’fhéidir nach mbeidh an comhad seo oiriúnach d’úsáideoirí
-        feistí cúnta.
     accordion:
       hide: Cheilt
       hide_all: Scrios gach cuid
@@ -27,6 +11,18 @@ gd:
       this_section_visually_hidden: " An chuid seo"
     article_schema:
       scoped_search_description: Cuardaigh %{title}
+    attachment:
+      opendocument_html: Is í formáid na ndoiciméad sin <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a>
+      order_a_copy: Coinnigh cóip
+      page:
+        few:
+        one: 1 leathanach
+        other: "%{count} leathanaigh"
+        two:
+      reference: 'Tagairt: %{reference}'
+      request_format_cta: Is féidir leat formáid inrochtana a iarraidh.
+      request_format_details_html: Má tá an doiciméad seo bunaithe ar theicneolaíocht chúnta (cosúil le léitheoir scáileáin) agus má theastaíonn leagan níos inrochtana den doiciméad seo uait, seol ríomhphost chuig <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Inis dúinn cén fhormáid atá uait. Le cuidiú linn, is féidir leat a rá linn freisin na teicneolaíochtaí a úsáidtear chun cabhrú leat.
+      request_format_text: B’fhéidir nach mbeidh an comhad seo oiriúnach d’úsáideoirí feistí cúnta.
     back_link:
       back: filleadh
     character_count:
@@ -48,29 +44,21 @@ gd:
       confirmation_message_link: Athraigh do chuid socruithe fianán
       hide: Folaigh an teachtaireacht seo
       text:
-      - Úsáidimid fianáin áirithe atá riachtanach le haghaidh gnáthoibriú an láithreáin
-        ghréasáin seo
-      - Ba mhaith linn fianáin bhreise a shocrú chun tuiscint a fháil ar an gcaoi
-        a n-úsáideann tú GOV.UK
+      - Úsáidimid fianáin áirithe atá riachtanach le haghaidh gnáthoibriú an láithreáin ghréasáin seo
+      - Ba mhaith linn fianáin bhreise a shocrú chun tuiscint a fháil ar an gcaoi a n-úsáideann tú GOV.UK
       - cuimhnigh ar do chuid socruithe agus seirbhísí rialtais a fheabhsú
-      - Úsáidimid láithreáin ghréasáin eile freisin Na fianáin a leagtar síos cabhrú
-        linn ábhar a sholáthar óna gcuid seirbhísí.
+      - Úsáidimid láithreáin ghréasáin eile freisin Na fianáin a leagtar síos cabhrú linn ábhar a sholáthar óna gcuid seirbhísí.
       title: Fianáin ar GOV.UK
     feedback:
       close: Dúnadh
-      dont_include_personal_info: Ná cuir aon fhaisnéis phearsanta nó airgeadais san
-        áireamh, mar d’uimhir Árachais Náisiúnta nó sonraí cárta creidmheasa.
+      dont_include_personal_info: Ná cuir aon fhaisnéis phearsanta nó airgeadais san áireamh, mar d’uimhir Árachais Náisiúnta nó sonraí cárta creidmheasa.
       email_address: seoladh ríomhphoist
       help_us_improve_govuk: Cuidigh linn GOV.UK a fheabhsú
       is_not_useful: Tá an leathanach seo gan úsáid
       is_this_page_useful: An bhfuil an leathanach seo úsáideach?
       is_useful: Tá an leathanach seo úsáideach
       maybe: B’fhéidir
-      more_about_visit: Le cuidiú linn GOV.UK a dhéanamh níos fearr, tá súil againn
-        níos mó a chloisteáil faoi do chuairt inniu. Seolfaimid nasc chuig an bhfoirm
-        aiseolais chugat. Ní thógann sé ach 2 nóiméad an fhoirm seo a líonadh. Ná
-        bíodh imní ort, ní sheolfaimid spam chugat ná ní roinnfimid do sheoladh ríomhphoist
-        le tríú páirtithe.
+      more_about_visit: Le cuidiú linn GOV.UK a dhéanamh níos fearr, tá súil againn níos mó a chloisteáil faoi do chuairt inniu. Seolfaimid nasc chuig an bhfoirm aiseolais chugat. Ní thógann sé ach 2 nóiméad an fhoirm seo a líonadh. Ná bíodh imní ort, ní sheolfaimid spam chugat ná ní roinnfimid do sheoladh ríomhphoist le tríú páirtithe.
       'no': Ná
       send: seol
       send_me_survey: Seol fiosrúchán chugam
@@ -88,11 +76,8 @@ gd:
       statistics: Sonraí staidrimh
       worldwide: Sa domhan ar fad
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
-        Crown copyright</a>
-      licence_html: Tá an t-ábhar go léir ar fáil faoi <a class="govuk-footer__link"
-        href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-        rel="license">Oibriú saor in aisce v3.0</a>, mura luaitear a mhalairt
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
+      licence_html: Tá an t-ábhar go léir ar fáil faoi <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Oibriú saor in aisce v3.0</a>, mura luaitear a mhalairt
       support_links: Nasc tacaíochta
     layout_header:
       hide_button: Folaigh cuardach
@@ -176,5 +161,3 @@ gd:
       edit: A mhodhnú
     tabs:
       contents: Clár ábhair
-  common:
-    translations: Aistriúchán

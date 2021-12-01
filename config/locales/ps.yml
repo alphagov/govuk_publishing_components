@@ -1,22 +1,8 @@
+---
 ps:
+  common:
+    translations: ژباړې
   components:
-    attachment:
-      page:
-        one: 1 پاڼه
-        other: "%{count} پاڼې"
-      opendocument_html: 'دا فایل په <a href = ''https: //www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation''
-        target =% {target} class = ''govuk-link کې دی ''> د OpenDocument </a> ب .ه'
-      order_a_copy: یوه کاپي وغواړئ
-      reference: حواله:%{reference}
-      request_format_cta: د لاسرسي وړ پاڼه غوښتنه وکړئ.
-      request_format_details_html: که تاسو مرستندویه ټیکنالوژي کاروئ (لکه د سکرین
-        لوستونکی) او په ډیر لاسرسي پاڼه کې د دې سند نسخې ته اړتیا لرئ، مهرباني وکړئ
-        بریښنالیک وکړئ <a href='mailto:%{alternative_format_contact_email}' target='_blank'
-        class='govuk-link'>%{alternative_format_contact_email}</a>. مهرباني وکړئ موږ
-        ته ووایاست چې کوم شکل ته اړتیا لرئ. دا به زموږ سره مرسته وکړي که تاسو ووایاست
-        کوم مرستندویه ټیکنالوژي تاسو کاروئ.
-      request_format_text: دا فایل ممکن د مرستندویه ټیکنالوژۍ کاروونکو لپاره مناسب
-        نه وي.
     accordion:
       hide: پټول
       hide_all: ټولې برخې پټې کړئ
@@ -25,6 +11,16 @@ ps:
       this_section_visually_hidden: " دا برخه"
     article_schema:
       scoped_search_description: په%{title} کې لټون
+    attachment:
+      opendocument_html: 'دا فایل په <a href = ''https: //www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'' target =% {target} class = ''govuk-link کې دی ''> د OpenDocument </a> ب .ه'
+      order_a_copy: یوه کاپي وغواړئ
+      page:
+        one: 1 پاڼه
+        other: "%{count} پاڼې"
+      reference: حواله:%{reference}
+      request_format_cta: د لاسرسي وړ پاڼه غوښتنه وکړئ.
+      request_format_details_html: که تاسو مرستندویه ټیکنالوژي کاروئ (لکه د سکرین لوستونکی) او په ډیر لاسرسي پاڼه کې د دې سند نسخې ته اړتیا لرئ، مهرباني وکړئ بریښنالیک وکړئ <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. مهرباني وکړئ موږ ته ووایاست چې کوم شکل ته اړتیا لرئ. دا به زموږ سره مرسته وکړي که تاسو ووایاست کوم مرستندویه ټیکنالوژي تاسو کاروئ.
+      request_format_text: دا فایل ممکن د مرستندویه ټیکنالوژۍ کاروونکو لپاره مناسب نه وي.
     back_link:
       back: بیرته
     character_count:
@@ -46,25 +42,18 @@ ps:
       confirmation_message_link: خپل د کوکي تنظیمات بدل کړئ
       hide: دا پیغام پټ کړئ
       text:
-      - موږ د دې ویب پاڼې کار کولو لپاره ځینې اړین کوکیز کاروو. ، موږ غواړو اضافي
-        کوکیز تنظیم کړو ترڅو پوه شو چې تاسو څنګه GOV.UK کاروئ ، خپل ترتیبات په یاد
-        ولرئ او دولتي خدمات ښه کړئ. ، موږ د کوکیز څخه هم ګټه اخلو. نور سایټونه چې
-        موږ سره د دوی خدماتو څخه مینځپانګې رسولو کې مرسته کوي.
+      - موږ د دې ویب پاڼې کار کولو لپاره ځینې اړین کوکیز کاروو. ، موږ غواړو اضافي کوکیز تنظیم کړو ترڅو پوه شو چې تاسو څنګه GOV.UK کاروئ ، خپل ترتیبات په یاد ولرئ او دولتي خدمات ښه کړئ. ، موږ د کوکیز څخه هم ګټه اخلو. نور سایټونه چې موږ سره د دوی خدماتو څخه مینځپانګې رسولو کې مرسته کوي.
       title: په GOV.UK کې کوکیز
     feedback:
       close: تړل
-      dont_include_personal_info: شخصي یا مالي معلومات شامل نکړئ لکه ستاسو د ملي بیمې
-        شمیره یا د کریډیټ کارت توضیحات.
+      dont_include_personal_info: شخصي یا مالي معلومات شامل نکړئ لکه ستاسو د ملي بیمې شمیره یا د کریډیټ کارت توضیحات.
       email_address: بریښنالیک
       help_us_improve_govuk: د GOV.UK ښه کولو کې زموږ سره مرسته وکړئ
       is_not_useful: دا پاڼه ګټوره نه ده
       is_this_page_useful: ایا دا پاڼه ګټوره ده؟
       is_useful: دا پا isه ګټوره ده
       maybe: امکان لری
-      more_about_visit: د GOV.UK ښه کولو کې زموږ سره د مرستې لپاره ، موږ غواړو نن
-        ورځ ستاسو لیدنې په اړه نور معلومات ترلاسه کړو. موږ به تاسو ته د فیډبیک فورم
-        ته لینک واستوو. دا به ډکولو کې یوازې 2 دقیقې وخت ونیسي. اندیښنه مه کوئ موږ
-        به تاسو ته سپیم ونه لیږو یا ستاسو بریښنالیک آدرس له هیچا سره نه شریکوو.
+      more_about_visit: د GOV.UK ښه کولو کې زموږ سره د مرستې لپاره ، موږ غواړو نن ورځ ستاسو لیدنې په اړه نور معلومات ترلاسه کړو. موږ به تاسو ته د فیډبیک فورم ته لینک واستوو. دا به ډکولو کې یوازې 2 دقیقې وخت ونیسي. اندیښنه مه کوئ موږ به تاسو ته سپیم ونه لیږو یا ستاسو بریښنالیک آدرس له هیچا سره نه شریکوو.
       'no': نه
       send: لیږل
       send_me_survey: سروې راته ولیږه
@@ -82,12 +71,8 @@ ps:
       statistics: احصایه
       worldwide: په ټوله نړۍ کې
     layout_footer:
-      copyright_html: <a class = "govuk-footer__link govuk-footer__copyright-logo"
-        href = "http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use
-        /crown-copyright/"> rown د تاج کاپي حق </a>
-      licence_html: ټول مینځپانګه د <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-        rel="license"> لاندې خلاصې دي د حکومت جواز v3.0 </a> ، پرته لدې چیرې چې بل
-        ډول ویل شوي
+      copyright_html: <a class = "govuk-footer__link govuk-footer__copyright-logo" href = "http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use /crown-copyright/"> rown د تاج کاپي حق </a>
+      licence_html: ټول مینځپانګه د <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license"> لاندې خلاصې دي د حکومت جواز v3.0 </a> ، پرته لدې چیرې چې بل ډول ویل شوي
       support_links: د ملاتړ لینکونه
     layout_header:
       hide_button: لټون پټ کړئ
@@ -171,5 +156,3 @@ ps:
       edit: بدلون
     tabs:
       contents: منځپانګې
-  common:
-    translations: ژباړې

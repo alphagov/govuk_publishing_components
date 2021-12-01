@@ -1,24 +1,8 @@
+---
 be:
+  common:
+    translations: Пераклады
   components:
-    attachment:
-      page:
-        one: 1 старонка
-        few:
-        many:
-        other: "%{count} старонкi"
-      opendocument_html: Гэты файл у <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link'>OpenDocument</a> фармаце
-      order_a_copy: Замовіць копію
-      reference: 'Спасылка: %{reference}'
-      request_format_cta: Запрасіць файл у іншым фармаце.
-      request_format_details_html: Калі вы выкарыстоўваеце дапаможных тэхналогіi (такiя
-        як экранны дыктар) i патрэбна версiя гэтага дакумента  ў больш даступным фармаце,
-        напішыце, калі ласка  на электронную пошту <a href='mailto:%{alternative_format_contact_email}'
-        target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>.
-        Калі ласка, паведаміце нам, які фармат вам патрэбен. Нам будзе лягчэй, калі вы паведаміце, якія
-        дапаможныя тэхналогіi вы выкарыстоўваеце.
-      request_format_text: Гэты файл можа быць непрыдатным для карыстальнікаў дапаможных
-        тэхналогій.
     accordion:
       hide: Схаваць
       hide_all: Схаваць усе секцыi
@@ -27,6 +11,18 @@ be:
       this_section_visually_hidden: " гэта секцыя"
     article_schema:
       scoped_search_description: Шукаць сярод %{title}
+    attachment:
+      opendocument_html: Гэты файл у <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a> фармаце
+      order_a_copy: Замовіць копію
+      page:
+        few:
+        many:
+        one: 1 старонка
+        other: "%{count} старонкi"
+      reference: 'Спасылка: %{reference}'
+      request_format_cta: Запрасіць файл у іншым фармаце.
+      request_format_details_html: Калі вы выкарыстоўваеце дапаможных тэхналогіi (такiя як экранны дыктар) i патрэбна версiя гэтага дакумента  ў больш даступным фармаце, напішыце, калі ласка  на электронную пошту <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Калі ласка, паведаміце нам, які фармат вам патрэбен. Нам будзе лягчэй, калі вы паведаміце, якія дапаможныя тэхналогіi вы выкарыстоўваеце.
+      request_format_text: Гэты файл можа быць непрыдатным для карыстальнікаў дапаможных тэхналогій.
     back_link:
       back: Назад
     character_count:
@@ -48,8 +44,7 @@ be:
       confirmation_message_link: змяніць налады файлаў cookie
       hide: Схаваць гэта паведамленне
       text:
-      - Мы выкарыстоўваем некаторыя асноўныя файлы cookie для забеспячэння працы гэтага
-        сайта.
+      - Мы выкарыстоўваем некаторыя асноўныя файлы cookie для забеспячэння працы гэтага сайта.
       - Мы хацелі б наладзіць дадатковыя файлы cookie
       - каб зразумець
       - як вы скарыстаеце GOV.UK
@@ -60,18 +55,14 @@ be:
       title: Файлы cookie на GOV.UK
     feedback:
       close: Зачынiць
-      dont_include_personal_info: Не ўключайце асабістай ці фінансавай інфармацыі,
-        напрыклад, нумар дзяржаўнага страхавання ці дадзеныя крэдытнай карты.
+      dont_include_personal_info: Не ўключайце асабістай ці фінансавай інфармацыі, напрыклад, нумар дзяржаўнага страхавання ці дадзеныя крэдытнай карты.
       email_address: Адрас электроннай пошты
       help_us_improve_govuk: Дапамажыце нам палепшыць GOV.UK
       is_not_useful: гэтая старонка не з'яўляецца карыснай
       is_this_page_useful: З'яўляецца лi гэтая старонка карыснай?
       is_useful: гэтая старонка з'яўляецца карыснай
       maybe: Магчыма
-      more_about_visit: Каб дапамагчы нам палепшыць GOV.UK, мы хацелі б даведацца
-        больш пра ваша сённяшняе наведанне. Мы адправім вам спасылку на форму зваротнай
-        сувязі. Яе запаўненне зойме ўсяго 2 хвіліны. Не турбуйцеся, мы не будзем рассылаць
-        вам спам ці перадаваць ваш адрас электроннай пошты чужым асобам.
+      more_about_visit: Каб дапамагчы нам палепшыць GOV.UK, мы хацелі б даведацца больш пра ваша сённяшняе наведанне. Мы адправім вам спасылку на форму зваротнай сувязі. Яе запаўненне зойме ўсяго 2 хвіліны. Не турбуйцеся, мы не будзем рассылаць вам спам ці перадаваць ваш адрас электроннай пошты чужым асобам.
       'no': Не
       send: Адправiць
       send_me_survey: Адпраўце мне апытанне
@@ -88,10 +79,8 @@ be:
       news_and_communications: Навiны i паведамленні
       worldwide: Ва ўсім свеце
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
-        Crown copyright</a>
-      licence_html: Увесь змест даступны <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-        rel="license">Open Government Licence v3.0</a>, калі не паказана іншае
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
+      licence_html: Увесь змест даступны <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, калі не паказана іншае
       support_links: Дапаможныя спасылкі
     layout_header:
       hide_button: Схаваць вынікі пошуку
@@ -175,5 +164,3 @@ be:
       edit: Змянiць
     tabs:
       contents: Змест
-  common:
-    translations: Пераклады

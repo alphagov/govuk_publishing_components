@@ -1,3 +1,4 @@
+---
 fa:
   common:
     translations: ترجمه
@@ -11,20 +12,14 @@ fa:
     article_schema:
       scoped_search_description: جستجو در %{title}
     attachment:
-      opendocument_html: این فایل یک قالب <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link'>OpenDocument (سند باز)</a> است
+      opendocument_html: این فایل یک قالب <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument (سند باز)</a> است
       order_a_copy: سفارش یک نسخه کپی
       page:
         one: 1 صفحه
         other: "%{count} صفحه"
       reference: 'مرجع: %{reference}'
       request_format_cta: درخواست یک قالب با قابلیت دسترسی بهتر.
-      request_format_details_html: اگر از فناوری‌های کمکی (از قبیل صفحه‌خوان) استفاده
-        می‌کنید و به نسخه‌ای از این سند در قالبی با قابلیت دسترسی بیشتر نیاز دارید،
-        لطفاً به آدرس <a href='mailto:%{alternative_format_contact_email}' target='_blank'
-        class='govuk-link'>%{alternative_format_contact_email}</a> ایمیل بزنید. لطفاً
-        به ما بگویید که به چه قالبی نیاز دارید. اگر بگویید که از چه فناوری کمکی استفاده
-        می‌کنید، بهتر خواهد بود و به ما کمک خواهد کرد.
+      request_format_details_html: اگر از فناوری‌های کمکی (از قبیل صفحه‌خوان) استفاده می‌کنید و به نسخه‌ای از این سند در قالبی با قابلیت دسترسی بیشتر نیاز دارید، لطفاً به آدرس <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a> ایمیل بزنید. لطفاً به ما بگویید که به چه قالبی نیاز دارید. اگر بگویید که از چه فناوری کمکی استفاده می‌کنید، بهتر خواهد بود و به ما کمک خواهد کرد.
       request_format_text: این فایل ممکن است برای کاربران فناوری‌های کمکی مناسب نباشد.
     back_link:
       back: برگشت
@@ -48,26 +43,19 @@ fa:
       hide: مخفی کردن این پیام
       text:
       - ما برای عملکرد صحیح این وب‌سایت، از برخی کوکی‌های ضروری استفاده می‌کنیم.
-      - ما برای درک نحوه استفاده شما از GOV.UK می‌خواهیم چند کوکی اضافی را تنظیم کنیم،
-        تنظیمات خود را به خاطر بسپارید و خدمات دولت را بهبود ببخشید.
-      - ما همچنین از کوکی‌های تنظیم شده توسط سایت‌‍های دیگر برای اینکه بتوانیم محتوا
-        را از خدمات آنها ارائه کنیم، کمک می‌گیریم.
+      - ما برای درک نحوه استفاده شما از GOV.UK می‌خواهیم چند کوکی اضافی را تنظیم کنیم، تنظیمات خود را به خاطر بسپارید و خدمات دولت را بهبود ببخشید.
+      - ما همچنین از کوکی‌های تنظیم شده توسط سایت‌‍های دیگر برای اینکه بتوانیم محتوا را از خدمات آنها ارائه کنیم، کمک می‌گیریم.
       title: کوکی‌ها در GOV.UK
     feedback:
       close: بستن
-      dont_include_personal_info: شامل اطلاعات شخصی یا مالی شما از جمله شماره بیمه
-        ملی یا جزئیات کارت اعتباری شما نمی‌شود.
+      dont_include_personal_info: شامل اطلاعات شخصی یا مالی شما از جمله شماره بیمه ملی یا جزئیات کارت اعتباری شما نمی‌شود.
       email_address: آدرس ایمیل
       help_us_improve_govuk: به ما کمک کنید تا GOV.UK را بهبود ببخشیم
       is_not_useful: این صفحه مفید نیست
       is_this_page_useful: آیا این صفحه مفید است؟
       is_useful: این صفحه مفید است
       maybe: شاید
-      more_about_visit: برای کمک به اینکه بتوانیم GOV.UK را بهبود ببخشیم، می‌خواهیم
-        اطلاعات بیشتری درباره مراجعه امروز شما داشته باشیم. ما یک لینک را که مربوط
-        به فرم بازخورد است، برای شما ارسال خواهیم کرد. پر کردن این فرم تنها 2 دقیقه
-        طول خواهد کشید. نگران نباشید ما هرزنامه برای شما ارسال نمی‌کنیم و آدرس ایمیل
-        شما را با هیچ‌کس به اشتراک نمی‌گذاریم.
+      more_about_visit: برای کمک به اینکه بتوانیم GOV.UK را بهبود ببخشیم، می‌خواهیم اطلاعات بیشتری درباره مراجعه امروز شما داشته باشیم. ما یک لینک را که مربوط به فرم بازخورد است، برای شما ارسال خواهیم کرد. پر کردن این فرم تنها 2 دقیقه طول خواهد کشید. نگران نباشید ما هرزنامه برای شما ارسال نمی‌کنیم و آدرس ایمیل شما را با هیچ‌کس به اشتراک نمی‌گذاریم.
       'no': خیر
       send: ارسال
       send_me_survey: نظرسنجی را برای من ارسال کن
@@ -85,11 +73,8 @@ fa:
       statistics: آمار
       worldwide: جهانی
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">کپی‌رایت
-        © Crown</a>
-      licence_html: تمام محتوا تحت <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-        rel="license">مجوز دولت باز نسخه 3.0</a> در دسترس است، مگر در مواردی که خلاف
-        آن بیان شده باشد
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">کپی‌رایت © Crown</a>
+      licence_html: تمام محتوا تحت <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">مجوز دولت باز نسخه 3.0</a> در دسترس است، مگر در مواردی که خلاف آن بیان شده باشد
       support_links: لینک‌های پشتیبان
     layout_header:
       hide_button: مخفی کردن جستجو

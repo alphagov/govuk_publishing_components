@@ -1,22 +1,8 @@
+---
 pa-pk:
+  common:
+    translations: ترجمے
   components:
-    attachment:
-      page:
-        one: پہلا ورق
-        other: ورقے {count}%
-      opendocument_html: ایہ فائل اِک  <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link'>دستاویز کھولو</a>ایہ شکل
-      order_a_copy: اَک نقل لئی آکھو
-      reference: حوالہ:{reference}%
-      request_format_cta: اک طریقے تک پوہنچن لئی اِک درخواست دیو۔
-      request_format_details_html: اگر تُسی مدد گار ٹیکنالوجی نوں استعمال کردے او
-        )  جیوں اک سکرین ریڈر( تے تہانوں ایس دستاویز دا ترجمہ چائی دا اے جہیڑا کہ
-        ہور پہنچن والی شکل وچ اے، تے برائے مہربانی  ایندے تےای میل کرو <a href='mailto:%{alternative_format_contact_email}'
-        target='_blank class='govuk-link'>%{alternative_format_contact_email}</a>.
-        برائے مہربانی تہانوں جس شکل دی لوڑ اے اوندے بارے سانوں دسو۔اے ساڈے لئی مدد
-        گار ہوؤئے گا کہ تُسی کس مدد گار ٹیکنالوجی نوں استعمال کر رئے آو۔
-      request_format_text: ہو سکدا اے کہ مدد گار ٹیکنالوجی استعمال کرن والیاں واسطے
-        چنگی نئیں۔
     accordion:
       hide: چھپاؤ
       hide_all: سارے حصے چھپاؤ
@@ -25,6 +11,16 @@ pa-pk:
       this_section_visually_hidden: " اِک حصہ"
     article_schema:
       scoped_search_description: ایندے وچ لَبو {title}%
+    attachment:
+      opendocument_html: ایہ فائل اِک  <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>دستاویز کھولو</a>ایہ شکل
+      order_a_copy: اَک نقل لئی آکھو
+      page:
+        one: پہلا ورق
+        other: ورقے {count}%
+      reference: حوالہ:{reference}%
+      request_format_cta: اک طریقے تک پوہنچن لئی اِک درخواست دیو۔
+      request_format_details_html: اگر تُسی مدد گار ٹیکنالوجی نوں استعمال کردے او )  جیوں اک سکرین ریڈر( تے تہانوں ایس دستاویز دا ترجمہ چائی دا اے جہیڑا کہ ہور پہنچن والی شکل وچ اے، تے برائے مہربانی  ایندے تےای میل کرو <a href='mailto:%{alternative_format_contact_email}' target='_blank class='govuk-link'>%{alternative_format_contact_email}</a>. برائے مہربانی تہانوں جس شکل دی لوڑ اے اوندے بارے سانوں دسو۔اے ساڈے لئی مدد گار ہوؤئے گا کہ تُسی کس مدد گار ٹیکنالوجی نوں استعمال کر رئے آو۔
+      request_format_text: ہو سکدا اے کہ مدد گار ٹیکنالوجی استعمال کرن والیاں واسطے چنگی نئیں۔
     back_link:
       back: پچھے
     character_count:
@@ -45,26 +41,18 @@ pa-pk:
       confirmation_message: تُسی کسے وی وقت {link}% جوڑ سکدے او
       confirmation_message_link: اپنی کوکیز دی ترتیب نوں بدلو
       hide: ایس پیغام نوں چُھپا لو
-      text: '"] ایس ویب سائٹ نوں کم کرن لئی اسی کُج ضروری کوکیزدا استعمال کرنیں آں۔"
-        GOV.UK  دے استعمال نوں سجھن لئی اسی اضافی کوکیز لگانا چاواں گے تے تُسی حکومت
-        دیاں خدمات نوں بہتر کرن لئی اپنی ترتیباں نوں یاد رکھو۔"، اسی دوسریاں خدمتاں
-        نوں تہاڈے تک پہنچان دی مدد لئی کوکیز نوں وی استعمال کراں گے"['
+      text: '"] ایس ویب سائٹ نوں کم کرن لئی اسی کُج ضروری کوکیزدا استعمال کرنیں آں۔" GOV.UK  دے استعمال نوں سجھن لئی اسی اضافی کوکیز لگانا چاواں گے تے تُسی حکومت دیاں خدمات نوں بہتر کرن لئی اپنی ترتیباں نوں یاد رکھو۔"، اسی دوسریاں خدمتاں نوں تہاڈے تک پہنچان دی مدد لئی کوکیز نوں وی استعمال کراں گے"['
       title: 'GOV.UK تے کوکیز '
     feedback:
       close: بند کرو
-      dont_include_personal_info: اپنے نیشنل انشورنس نمبر یا کریڈٹ کارڈ بارےاپنیاں
-        ذاتی یا مالی تفصیلاں نوں شامل ناں کرو۔
+      dont_include_personal_info: اپنے نیشنل انشورنس نمبر یا کریڈٹ کارڈ بارےاپنیاں ذاتی یا مالی تفصیلاں نوں شامل ناں کرو۔
       email_address: ای میل ایڈریس
       help_us_improve_govuk: GOV.UK نوں بہتر کرن لئی ساڈی مدد کرو
       is_not_useful: ایہ ورقہ فائدہ مند نئیں
       is_this_page_useful: کیہ ایہ ورقہ فائدہ مند اے؟
       is_useful: ایہ ورقہ فائدہ مند اے
       maybe: ہوسکدا اے
-      more_about_visit: GOV.UK  نوں بہتر کرن لئی ساڈی مدد کرو، اج دی تہاڈی مُلاقات
-        نوں جانن لئی اسی ہور جاننا چاہندے آں۔ اسی تہانوں اک فارم دا لنک بھیجاں گے
-        جندے وچ تُسی اپنی صلاح دیو گے۔ اہنوں بھرن لئی دو منٹ لگن گے۔ ایس گل توں پریشان
-        نئی ہونا کہ اسی تہانوں سپیم بھیجاں گے یا تہاڈا ایمیل ایڈریس کسے ہور نوں دیاں
-        گے۔
+      more_about_visit: GOV.UK  نوں بہتر کرن لئی ساڈی مدد کرو، اج دی تہاڈی مُلاقات نوں جانن لئی اسی ہور جاننا چاہندے آں۔ اسی تہانوں اک فارم دا لنک بھیجاں گے جندے وچ تُسی اپنی صلاح دیو گے۔ اہنوں بھرن لئی دو منٹ لگن گے۔ ایس گل توں پریشان نئی ہونا کہ اسی تہانوں سپیم بھیجاں گے یا تہاڈا ایمیل ایڈریس کسے ہور نوں دیاں گے۔
       'no': جئی نیئں
       send: بھیجو
       send_me_survey: مینوں سروے بھیجو
@@ -82,12 +70,8 @@ pa-pk:
       statistics: حساب کتاب
       worldwide: ساری دُنیا اُتے
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/
-        information-management/re-using-public-sector-information/copyright-and-re-use/
-        /crown-copyright/">© کاپی کراؤن رائٹ</a>
-      licence_html: سارا مواد ایندے تھلے موجود اے <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-        rel="license">اوپن گورنمنٹ لائسنس v3.0</a>, ایہ قبول کر لو جیڑا ایس توں علاوہ
-        اے
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/ information-management/re-using-public-sector-information/copyright-and-re-use/ /crown-copyright/">© کاپی کراؤن رائٹ</a>
+      licence_html: سارا مواد ایندے تھلے موجود اے <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">اوپن گورنمنٹ لائسنس v3.0</a>, ایہ قبول کر لو جیڑا ایس توں علاوہ اے
       support_links: مدد کرن والے لنک
     layout_header:
       hide_button: کھوج نوں چھپاؤ
@@ -171,5 +155,3 @@ pa-pk:
       edit: بدل دیو
     tabs:
       contents: ایہ سارا مواد
-  common:
-    translations: ترجمے

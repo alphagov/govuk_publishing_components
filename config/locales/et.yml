@@ -1,20 +1,8 @@
+---
 et:
+  common:
+    translations: Tõlked
   components:
-    attachment:
-      page:
-        one: 1 leht
-        other: "%{count} lehte"
-      opendocument_html: See fail on <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link'>OpenDocument</a> vormingus
-      order_a_copy: Telli koopia
-      reference: 'Viide: %{reference}'
-      request_format_cta: Taotlege juurdepääsetavat vormingut.
-      request_format_details_html: Kui kasutate hõlbustustehnoloogiat (nt ekraanilugerit)
-        ja vajate seda dokumenti juurdepääsetavamas vormingus, saatke e-kiri aadressil
-        <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>.
-        Palun öelge meile, millist vormingut vajate. See aitab meid, kui ütlete, millist
-        hõlbustustehnoloogiat kasutate.
-      request_format_text: See fail ei pruugi hõlbustustehnoloogia kasutajatele sobida.
     accordion:
       hide: Peida
       hide_all: Peida kõik jaotised
@@ -23,6 +11,16 @@ et:
       this_section_visually_hidden: " see jaotis"
     article_schema:
       scoped_search_description: Otsi %{title} piires
+    attachment:
+      opendocument_html: See fail on <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a> vormingus
+      order_a_copy: Telli koopia
+      page:
+        one: 1 leht
+        other: "%{count} lehte"
+      reference: 'Viide: %{reference}'
+      request_format_cta: Taotlege juurdepääsetavat vormingut.
+      request_format_details_html: Kui kasutate hõlbustustehnoloogiat (nt ekraanilugerit) ja vajate seda dokumenti juurdepääsetavamas vormingus, saatke e-kiri aadressil <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Palun öelge meile, millist vormingut vajate. See aitab meid, kui ütlete, millist hõlbustustehnoloogiat kasutate.
+      request_format_text: See fail ei pruugi hõlbustustehnoloogia kasutajatele sobida.
     back_link:
       back: Tagasi
     character_count:
@@ -54,18 +52,14 @@ et:
       title: Küpsised saidil GOV.UK
     feedback:
       close: Sulge
-      dont_include_personal_info: Ärge lisage isiklikku ega finantsteavet, näiteks
-        oma isikukoodi ega krediitkaardi andmeid.
+      dont_include_personal_info: Ärge lisage isiklikku ega finantsteavet, näiteks oma isikukoodi ega krediitkaardi andmeid.
       email_address: E-posti aadress
       help_us_improve_govuk: Aidake meil saiti GOV.UK täiustada
       is_not_useful: sellest lehest pole kasu
       is_this_page_useful: Kas sellest lehest on kasu?
       is_useful: sellest lehest on kasu
       maybe: Võib-olla
-      more_about_visit: Saidi GOV.UK täiustamiseks sooviksime teie tänasest külastusest
-        rohkem teada saada. Saadame teile tagasiside vormi lingi. Täitmiseks kulub
-        vaid 2 minutit. Ärge muretsege, me ei saada teile rämpsposti ega jaga teie
-        e-posti aadressi kellegagi.
+      more_about_visit: Saidi GOV.UK täiustamiseks sooviksime teie tänasest külastusest rohkem teada saada. Saadame teile tagasiside vormi lingi. Täitmiseks kulub vaid 2 minutit. Ärge muretsege, me ei saada teile rämpsposti ega jaga teie e-posti aadressi kellegagi.
       'no': Ei
       send: Saada
       send_me_survey: Saada mulle küsitlus
@@ -83,10 +77,8 @@ et:
       statistics: Statistika
       worldwide: Kogu maailmas
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
-        Crowni autoriõigus</a>
-      licence_html: Kogu sise on saadaval <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-        rel="license">Open Government Licence v3.0</a> all, kui pole märgitud teisiti
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crowni autoriõigus</a>
+      licence_html: Kogu sise on saadaval <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a> all, kui pole märgitud teisiti
       support_links: Tugiteenuste lingid
     layout_header:
       hide_button: Peida otsing
@@ -170,5 +162,3 @@ et:
       edit: Muuda
     tabs:
       contents: Sisu
-  common:
-    translations: Tõlked

@@ -1,22 +1,8 @@
+---
 it:
+  common:
+    translations: Traduzioni
   components:
-    attachment:
-      page:
-        one: 1 pagina
-        other: "%{count} pagine"
-      opendocument_html: Questo file è un <a href=’https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation’
-        target=%{target} class=’govuk-link’>Documento Aperto</a> format
-      order_a_copy: Ordina una copia
-      reference: 'Rif: %{reference}'
-      request_format_cta: Richiedi un formato accessibile.
-      request_format_details_html: Se utilizzi una tecnologia assistiva (come uno
-        screen reader) e hai necessità di una versione di questo documento in un formato
-        più accessibile, invia un’e-mail all’indirizzo<a href='mailto:%{alternative_format_contact_email}'
-        target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>.
-        Comunicaci quale formato ti serve. Se ci comunichi quale tecnologia assistiva
-        usi ci sarà di aiuto.
-      request_format_text: Questo file potrebbe non essere adatto per utenti di tecnologia
-        assistiva.
     accordion:
       hide: Nascondi
       hide_all: Nascondi tutte le sezioni
@@ -25,6 +11,16 @@ it:
       this_section_visually_hidden: " questa sezione"
     article_schema:
       scoped_search_description: Cerca in %{title}
+    attachment:
+      opendocument_html: Questo file è un <a href=’https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation’ target=%{target} class=’govuk-link’>Documento Aperto</a> format
+      order_a_copy: Ordina una copia
+      page:
+        one: 1 pagina
+        other: "%{count} pagine"
+      reference: 'Rif: %{reference}'
+      request_format_cta: Richiedi un formato accessibile.
+      request_format_details_html: Se utilizzi una tecnologia assistiva (come uno screen reader) e hai necessità di una versione di questo documento in un formato più accessibile, invia un’e-mail all’indirizzo<a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Comunicaci quale formato ti serve. Se ci comunichi quale tecnologia assistiva usi ci sarà di aiuto.
+      request_format_text: Questo file potrebbe non essere adatto per utenti di tecnologia assistiva.
     back_link:
       back: Indietro
     character_count:
@@ -49,23 +45,18 @@ it:
       - Utilizziamo alcuni cookie essenziali per far funzionare questo sito web.
       - Vorremmo impostare cookie aggiuntivi per capire come usi GOV.UK
       - ricordare le tue impostazioni e migliorare i servizi governativi.
-      - Inoltre utilizziamo cookie impostati da altri siti per aiutarci a fornire
-        contenuti dai loro servizi.
+      - Inoltre utilizziamo cookie impostati da altri siti per aiutarci a fornire contenuti dai loro servizi.
       title: Cookie su GOV.UK
     feedback:
       close: Chiudi
-      dont_include_personal_info: Non includere informazioni personali o finanziarie
-        come il numero di previdenza sociale o i dettagli della carta di credito.
+      dont_include_personal_info: Non includere informazioni personali o finanziarie come il numero di previdenza sociale o i dettagli della carta di credito.
       email_address: Indirizzo e-mail
       help_us_improve_govuk: Aiutaci a migliorare GOV.UK
       is_not_useful: questa pagina non è utile
       is_this_page_useful: È utile questa pagina?
       is_useful: questa pagina è utile
       maybe: Forse
-      more_about_visit: Per aiutarci a migliorare GOV.UK, vorremmo sapere di più sulla
-        tua visita di oggi. Ti invieremo un link a un modulo di feedback. Saranno
-        necessari solo 2 minuti per compilarlo. Non preoccuparti, non ti invieremo
-        spam né condivideremo il tuo indirizzo e-mail con nessuno.
+      more_about_visit: Per aiutarci a migliorare GOV.UK, vorremmo sapere di più sulla tua visita di oggi. Ti invieremo un link a un modulo di feedback. Saranno necessari solo 2 minuti per compilarlo. Non preoccuparti, non ti invieremo spam né condivideremo il tuo indirizzo e-mail con nessuno.
       'no': 'No'
       send: Invia
       send_me_survey: Inviami il sondaggio
@@ -83,11 +74,8 @@ it:
       statistics: Statistiche
       worldwide: In tutto il mondo
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
-        Crown copyright</a>
-      licence_html: Tutto il contenuto è disponibile sotto la <a class=”govuk-footer__link”
-        href=”https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/”
-        rel=”license”>Open Government Licence v3.0</a>, tranne dove diversamente indicato
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
+      licence_html: Tutto il contenuto è disponibile sotto la <a class=”govuk-footer__link” href=”https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/” rel=”license”>Open Government Licence v3.0</a>, tranne dove diversamente indicato
       support_links: Link di supporto
     layout_header:
       hide_button: Nascondi ricerca
@@ -171,5 +159,3 @@ it:
       edit: Modifica
     tabs:
       contents: Contenuti
-  common:
-    translations: Traduzioni

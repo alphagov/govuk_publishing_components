@@ -1,22 +1,8 @@
+---
 hi:
+  common:
+    translations: अनुवादन
   components:
-    attachment:
-      page:
-        one: 1 पेज
-        other: "%{count} पेज"
-      opendocument_html: यह फाइल एक <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link'>ओपनडॉक्यूमेंट</a> प्रारूप में है
-      order_a_copy: एक प्रति ऑर्डर करें
-      reference: 'संदर्भ: %{reference}'
-      request_format_cta: एक सुलभ प्रारूप का अनुरोध करें।
-      request_format_details_html: अगर आप सहायक तकनीक (जैसे स्क्रीन रीडर) का उपयोग
-        करते हैं और इस दस्तावेज़ के अधिक सुलभ प्रारूप वाले संस्करण की ज़रूरत है, तो
-        कृपया <a href='mailto:%{alternative_format_contact_email}' target='_blank'
-        class='govuk-link'>%{alternative_format_contact_email}</a> पर ईमेल करें। कृपया
-        हमें बताएं कि आपको कौन सा प्रारूप चाहिए। अगर आप बताते हैं कि आप किस सहायक
-        तकनीक का उपयोग करते हैं, तो हमें मदद मिलेगी।
-      request_format_text: यह फाइल शायद सहायक तकनीक के उपयोगकर्ताओं के लिए उपयुक्त
-        न हो।
     accordion:
       hide: छिपाएं
       hide_all: सभी अनुभाग छुपाएं
@@ -25,6 +11,16 @@ hi:
       this_section_visually_hidden: " यह अनुभाग"
     article_schema:
       scoped_search_description: "%{title} में खोजें"
+    attachment:
+      opendocument_html: यह फाइल एक <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>ओपनडॉक्यूमेंट</a> प्रारूप में है
+      order_a_copy: एक प्रति ऑर्डर करें
+      page:
+        one: 1 पेज
+        other: "%{count} पेज"
+      reference: 'संदर्भ: %{reference}'
+      request_format_cta: एक सुलभ प्रारूप का अनुरोध करें।
+      request_format_details_html: अगर आप सहायक तकनीक (जैसे स्क्रीन रीडर) का उपयोग करते हैं और इस दस्तावेज़ के अधिक सुलभ प्रारूप वाले संस्करण की ज़रूरत है, तो कृपया <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a> पर ईमेल करें। कृपया हमें बताएं कि आपको कौन सा प्रारूप चाहिए। अगर आप बताते हैं कि आप किस सहायक तकनीक का उपयोग करते हैं, तो हमें मदद मिलेगी।
+      request_format_text: यह फाइल शायद सहायक तकनीक के उपयोगकर्ताओं के लिए उपयुक्त न हो।
     back_link:
       back: वापस
     character_count:
@@ -47,26 +43,20 @@ hi:
       hide: यह संदेश छिपाएं
       text:
       - हम इस वेबसाइट के कामों में कुछ आवश्यक कुकीज़ का इस्तेमाल करते हैं।
-      - हम यह समझने के लिए कुछ अतिरिक्त कुकीज़ सेट करना चाहेंगे कि आप GOV.UK का इस्तेमाल
-        कैसे करते हैं
+      - हम यह समझने के लिए कुछ अतिरिक्त कुकीज़ सेट करना चाहेंगे कि आप GOV.UK का इस्तेमाल कैसे करते हैं
       - अपनी सेटिंग्स याद रखें और सरकारी सेवाओं में सुधार करें।
-      - अन्य साइटों द्वारा सेट कुकीज़ का भी उपयोग करते हैं ताकि उनकी सेवाओं से सामग्री
-        वितरित करने में हमें मदद मिलें।
+      - अन्य साइटों द्वारा सेट कुकीज़ का भी उपयोग करते हैं ताकि उनकी सेवाओं से सामग्री वितरित करने में हमें मदद मिलें।
       title: GOV.UK पर कुकीज़
     feedback:
       close: बंद करे
-      dont_include_personal_info: अपनी राष्ट्रीय बीमा संख्या या क्रेडिट कार्ड विवरण
-        जैसी व्यक्तिगत या वित्तीय जानकारी शामिल न करें।
+      dont_include_personal_info: अपनी राष्ट्रीय बीमा संख्या या क्रेडिट कार्ड विवरण जैसी व्यक्तिगत या वित्तीय जानकारी शामिल न करें।
       email_address: ईमेल पता
       help_us_improve_govuk: GOV.UK को बेहतर बनाने में हमारी सहायता करें
       is_not_useful: यह पेज उपयोगी नहीं है
       is_this_page_useful: क्या यह पेज उपयोगी है?
       is_useful: यह पेज उपयोगी है
       maybe: शायद
-      more_about_visit: हमें GOV.UK को बेहतर बनाने में मदद करने के लिए, हम आज आपकी
-        यात्रा के बारे में और जानना चाहेंगे। हम आपको फीडबैक प्रपत्र का लिंक भेजेंगे।
-        इसे भरने में बस 2 मिनट का वक्त लगेगा। चिंता न करें हम आपको स्पैम नहीं भेजेंगे
-        या आपका ईमेल पता किसी के भी साथ साझा नहीं करेंगे।
+      more_about_visit: हमें GOV.UK को बेहतर बनाने में मदद करने के लिए, हम आज आपकी यात्रा के बारे में और जानना चाहेंगे। हम आपको फीडबैक प्रपत्र का लिंक भेजेंगे। इसे भरने में बस 2 मिनट का वक्त लगेगा। चिंता न करें हम आपको स्पैम नहीं भेजेंगे या आपका ईमेल पता किसी के भी साथ साझा नहीं करेंगे।
       'no': नहीं
       send: भेजें
       send_me_survey: मुझे सर्वे भेजें
@@ -84,11 +74,8 @@ hi:
       statistics: सांख्यिकी
       worldwide: विश्वव्यापी
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
-        क्राउन कॉपीराइट</a>
-      licence_html: सभी सामग्री <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-        rel="license">ओपन गवर्नमेंट लाइसेंस v3.0</a> के तहत उपलब्ध है, अन्यथा दर्शाए
-        गए को छोड़कर
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© क्राउन कॉपीराइट</a>
+      licence_html: सभी सामग्री <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">ओपन गवर्नमेंट लाइसेंस v3.0</a> के तहत उपलब्ध है, अन्यथा दर्शाए गए को छोड़कर
       support_links: सहायता लिंक
     layout_header:
       hide_button: खोज छिपाएं
@@ -172,5 +159,3 @@ hi:
       edit: बदलें
     tabs:
       contents: विषय-वस्तु
-  common:
-    translations: अनुवादन

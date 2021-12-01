@@ -1,22 +1,8 @@
+---
 uz:
+  common:
+    translations: Таржималар
   components:
-    attachment:
-      page:
-        one: 1 саҳифа
-        other: "%{count} саҳифа"
-      opendocument_html: Ушбу файл <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link'>да OpenDocument</a> форматда тақдим этилган
-      order_a_copy: Нусхага буюртма бериш
-      reference: 'Ҳавола:  %{reference}'
-      request_format_cta: Мақбул форматни олишга сўров.
-      request_format_details_html: Агар сиз ёрдамчи технологияларни (масалан, экрандан
-        ўқиш воститаларини) жалб қилсангиз ва сизга ушбу ҳужжатнинг версияси анча
-        эришимли форматда зарур бўлса, қуйидаги электрон почта орқали юборинг <a href='mailto:%{alternative_format_contact_email}'
-        target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>.
-        Сизга қандай формат кераклигини хабар қилинг. Сиз қайси ёрдамчи технологиялардан
-        фойдаланаётганлигингизни билишимиз зарур.
-      request_format_text: Ушбу файл ёрдамчи технологиялардан фойдаланаётган шахслар
-        учун мос келмаслиги мумкин.
     accordion:
       hide: Яшириш
       hide_all: Бўлимларни барчасини яшириш
@@ -25,6 +11,16 @@ uz:
       this_section_visually_hidden: " ушбу бўлим"
     article_schema:
       scoped_search_description: "%{title} да излаш"
+    attachment:
+      opendocument_html: Ушбу файл <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>да OpenDocument</a> форматда тақдим этилган
+      order_a_copy: Нусхага буюртма бериш
+      page:
+        one: 1 саҳифа
+        other: "%{count} саҳифа"
+      reference: 'Ҳавола:  %{reference}'
+      request_format_cta: Мақбул форматни олишга сўров.
+      request_format_details_html: Агар сиз ёрдамчи технологияларни (масалан, экрандан ўқиш воститаларини) жалб қилсангиз ва сизга ушбу ҳужжатнинг версияси анча эришимли форматда зарур бўлса, қуйидаги электрон почта орқали юборинг <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Сизга қандай формат кераклигини хабар қилинг. Сиз қайси ёрдамчи технологиялардан фойдаланаётганлигингизни билишимиз зарур.
+      request_format_text: Ушбу файл ёрдамчи технологиялардан фойдаланаётган шахслар учун мос келмаслиги мумкин.
     back_link:
       back: Орқага
     character_count:
@@ -48,27 +44,21 @@ uz:
       text:
       - Биз ушбу веб-сайтни ишини таъминлаш учун cookieнинг муайян файлларини қўллаймиз.
       - Сиз қай тарзда GOV.UKдан фойдаланаётганлигингизни тушуниш
-      - сизнинг созламаларингизни эслаб қолиш ва давлат хизматларини кўрсатиш жараёнини
-        такомиллаштириш учун
+      - сизнинг созламаларингизни эслаб қолиш ва давлат хизматларини кўрсатиш жараёнини такомиллаштириш учун
       - биз cookieнинг қўшимча файлларини ўрнатиш истагидамиз.
       - Биз бошқа сайтлар томонидан ўрнатилган cookie файлларидан ҳам фойдаланамиз
       - улар уларнинг сервисларидан контентни олишда ёрдам беради.
       title: GOV.UKда cookie файллари
     feedback:
       close: Ёпиш
-      dont_include_personal_info: Шахсий ёки молиявий маълумотларни, масалан, давлат
-        суғуртаси рақами ёки кредит карта маълумотларини, кўрсатиш керак эмас.
+      dont_include_personal_info: Шахсий ёки молиявий маълумотларни, масалан, давлат суғуртаси рақами ёки кредит карта маълумотларини, кўрсатиш керак эмас.
       email_address: Электрон почта манзили
       help_us_improve_govuk: GOV.UKни такомиллаштиришда бизга ёрдам беринг
       is_not_useful: ушбу саҳифадаги маълумот фойдали ҳисобланмайди
       is_this_page_useful: Ушбу саҳифадаги маълумот фойдалими?
       is_useful: ушбу саҳифадаги маълумот фойдали ҳисобланади
       maybe: Балки
-      more_about_visit: GOV.UKни такомиллаштиришда бизга ёрдам беринг, биз бугун сизнинг
-        ташрифингиз ҳақида кўпроқ билиб олишни истардик. Биз сизга қайта алоқа шаклига
-        ҳаволани юборамиз. Маълумотларни киритиш атиги 2 минутни банд қилади. Ҳавотир
-        олманг, биз сизга спамни тарқатмаймиз ёки сизнинг электрон почта манзилингизни
-        ошкор қилмаймиз.
+      more_about_visit: GOV.UKни такомиллаштиришда бизга ёрдам беринг, биз бугун сизнинг ташрифингиз ҳақида кўпроқ билиб олишни истардик. Биз сизга қайта алоқа шаклига ҳаволани юборамиз. Маълумотларни киритиш атиги 2 минутни банд қилади. Ҳавотир олманг, биз сизга спамни тарқатмаймиз ёки сизнинг электрон почта манзилингизни ошкор қилмаймиз.
       'no': Йўқ
       send: Жўнатиш
       send_me_survey: Менга қисқача маълумот жўнатиш
@@ -86,11 +76,8 @@ uz:
       statistics: Статистик маълумотлар
       worldwide: Бутун дунё бўйлаб
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
-        Британия миллатлар ҳамдўстлигининг муаллифлик ҳуқуқи</a>
-      licence_html: Бутун таркиб <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-        rel="license">“Очиқ давлат лицензияси, версия 3.0” дастурида эришимли</a>,
-        агар бошқаси кўрсатилмаган бўлса
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Британия миллатлар ҳамдўстлигининг муаллифлик ҳуқуқи</a>
+      licence_html: Бутун таркиб <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">“Очиқ давлат лицензияси, версия 3.0” дастурида эришимли</a>, агар бошқаси кўрсатилмаган бўлса
       support_links: Қўллаб-қувватлашга ҳавола
     layout_header:
       hide_button: Излашни яшириш
@@ -174,5 +161,3 @@ uz:
       edit: Ўзгартириш
     tabs:
       contents: Мундарижа
-  common:
-    translations: Таржималар

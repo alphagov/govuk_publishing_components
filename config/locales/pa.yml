@@ -1,22 +1,8 @@
+---
 pa:
+  common:
+    translations: ਅਨੁਵਾਦ
   components:
-    attachment:
-      page:
-        one: 1 ਪੰਨਾ
-        other: "%{count} ਪੰਨੇ"
-      opendocument_html: ਇਹ ਫਾਈਲ ਇੱਕ  <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link'>OpenDocument</a> ਫਾਰਮੈਟ ਵਿੱਚ ਹੈ
-      order_a_copy: ਇੱਕ ਕਾਪੀ ਆਰਡਰ ਕਰੋ
-      reference: 'ਹਵਾਲਾ: %{reference}'
-      request_format_cta: ਇੱਕ ਪਹੁੰਚਯੋਗ ਫਾਰਮੈਟ ਦੀ ਬੇਨਤੀ ਕਰੋ।
-      request_format_details_html: ਜੇ ਤੁਸੀਂ ਸਹਾਇਕ ਤਕਨਾਲੋਜੀ (ਜਿਵੇਂ ਕਿ ਸਕ੍ਰੀਨ ਰੀਡਰ)
-        ਦੀ ਵਰਤੋਂ ਕਰਦੇ ਹੋ ਅਤੇ ਇਸ ਦਸਤਾਵੇਜ਼ ਦੇ ਵਧੇਰੇ ਪਹੁੰਚਯੋਗ ਫਾਰਮੈਟ ਵਿੱਚ ਵਰਜਨ ਦੀ ਜ਼ਰੂਰਤ
-        ਹੈ, ਤਾਂ ਕਿਰਪਾ ਕਰਕੇ <a href='mailto:%{alternative_format_contact_email}' target='_blank'
-        class='govuk-link'>%{alternative_format_contact_email}</a> ਤੇ ਈਮੇਲ ਕਰੋ। ਕਿਰਪਾ
-        ਕਰਕੇ ਸਾਨੂੰ ਦੱਸੋ ਕਿ ਤੁਹਾਨੂੰ ਕਿਸ ਫਾਰਮੈਟ ਦੀ ਜ਼ਰੂਰਤ ਹੈ। ਇਹ ਸਾਡੀ ਸਹਾਇਤਾ ਕਰੇਗਾ ਜੇ
-        ਤੁਸੀਂ ਕਹੋ ਕਿ ਤੁਸੀਂ ਕਿਹੜੀ ਸਹਾਇਕ ਤਕਨਾਲੋਜੀ ਦੀ ਵਰਤੋਂ ਕਰਦੇ ਹੋ।
-      request_format_text: ਇਹ ਫਾਈਲ ਸਹਾਇਕ ਤਕਨਾਲੋਜੀ ਦੇ ਉਪਯੋਗਕਰਤਾਵਾਂ ਲਈ ਢੁਕਵੀਂ ਨਹੀਂ ਹੋ
-        ਸਕਦੀ।
     accordion:
       hide: ਓਹਲੇ
       hide_all: ਸਾਰੇ ਭਾਗ ਲੁਕਾਓ
@@ -25,6 +11,16 @@ pa:
       this_section_visually_hidden: " ਇਹ ਭਾਗ"
     article_schema:
       scoped_search_description: "%{title} ਦੇ ਅੰਦਰ ਖੋਜ ਕਰੋ"
+    attachment:
+      opendocument_html: ਇਹ ਫਾਈਲ ਇੱਕ  <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a> ਫਾਰਮੈਟ ਵਿੱਚ ਹੈ
+      order_a_copy: ਇੱਕ ਕਾਪੀ ਆਰਡਰ ਕਰੋ
+      page:
+        one: 1 ਪੰਨਾ
+        other: "%{count} ਪੰਨੇ"
+      reference: 'ਹਵਾਲਾ: %{reference}'
+      request_format_cta: ਇੱਕ ਪਹੁੰਚਯੋਗ ਫਾਰਮੈਟ ਦੀ ਬੇਨਤੀ ਕਰੋ।
+      request_format_details_html: ਜੇ ਤੁਸੀਂ ਸਹਾਇਕ ਤਕਨਾਲੋਜੀ (ਜਿਵੇਂ ਕਿ ਸਕ੍ਰੀਨ ਰੀਡਰ) ਦੀ ਵਰਤੋਂ ਕਰਦੇ ਹੋ ਅਤੇ ਇਸ ਦਸਤਾਵੇਜ਼ ਦੇ ਵਧੇਰੇ ਪਹੁੰਚਯੋਗ ਫਾਰਮੈਟ ਵਿੱਚ ਵਰਜਨ ਦੀ ਜ਼ਰੂਰਤ ਹੈ, ਤਾਂ ਕਿਰਪਾ ਕਰਕੇ <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a> ਤੇ ਈਮੇਲ ਕਰੋ। ਕਿਰਪਾ ਕਰਕੇ ਸਾਨੂੰ ਦੱਸੋ ਕਿ ਤੁਹਾਨੂੰ ਕਿਸ ਫਾਰਮੈਟ ਦੀ ਜ਼ਰੂਰਤ ਹੈ। ਇਹ ਸਾਡੀ ਸਹਾਇਤਾ ਕਰੇਗਾ ਜੇ ਤੁਸੀਂ ਕਹੋ ਕਿ ਤੁਸੀਂ ਕਿਹੜੀ ਸਹਾਇਕ ਤਕਨਾਲੋਜੀ ਦੀ ਵਰਤੋਂ ਕਰਦੇ ਹੋ।
+      request_format_text: ਇਹ ਫਾਈਲ ਸਹਾਇਕ ਤਕਨਾਲੋਜੀ ਦੇ ਉਪਯੋਗਕਰਤਾਵਾਂ ਲਈ ਢੁਕਵੀਂ ਨਹੀਂ ਹੋ ਸਕਦੀ।
     back_link:
       back: ਵਾਪਸ
     character_count:
@@ -48,25 +44,19 @@ pa:
       text:
       - ਅਸੀਂ ਇਸ ਵੈਬਸਾਈਟ ਨੂੰ ਕੰਮ ਕਰਨ ਲਈ ਕੁਝ ਜ਼ਰੂਰੀ ਕੂਕੀਜ਼ ਦੀ ਵਰਤੋਂ ਕਰਦੇ ਹਾਂ।
       - ਅਸੀਂ ਇਹ ਸਮਝਣ ਲਈ ਕਿ ਤੁਸੀਂ GOV.UK ਦੀ ਵਰਤੋਂ ਕਿਵੇਂ ਕਰਦੇ ਹੋ
-      - ਆਪਣੀਆਂ ਸੈਟਿੰਗਾਂ ਨੂੰ ਯਾਦ ਰੱਖੋ ਅਤੇ ਸਰਕਾਰੀ ਸੇਵਾਵਾਂ ਨੂੰ ਬਿਹਤਰ ਬਣਾਉਣ ਲਈ ਅਤਿਰਿਕਤ
-        ਕੂਕੀਜ਼ ਸੈਟ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹਾਂ।
-      - ਅਸੀਂ ਹੋਰ ਸਾਈਟਾਂ ਦੁਆਰਾ ਉਹਨਾਂ ਦੀਆਂ ਸੇਵਾਵਾਂ ਤੋਂ ਸਮਗਰੀ ਪ੍ਰਦਾਨ ਕਰਨ ਵਿੱਚ ਸਾਡੀ ਸਹਾਇਤਾ
-        ਕਰਨ ਲਈ ਨਿਰਧਾਰਤ ਕੂਕੀਜ਼ ਦੀ ਵਰਤੋਂ ਵੀ ਕਰਦੇ ਹਾਂ।
+      - ਆਪਣੀਆਂ ਸੈਟਿੰਗਾਂ ਨੂੰ ਯਾਦ ਰੱਖੋ ਅਤੇ ਸਰਕਾਰੀ ਸੇਵਾਵਾਂ ਨੂੰ ਬਿਹਤਰ ਬਣਾਉਣ ਲਈ ਅਤਿਰਿਕਤ ਕੂਕੀਜ਼ ਸੈਟ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹਾਂ।
+      - ਅਸੀਂ ਹੋਰ ਸਾਈਟਾਂ ਦੁਆਰਾ ਉਹਨਾਂ ਦੀਆਂ ਸੇਵਾਵਾਂ ਤੋਂ ਸਮਗਰੀ ਪ੍ਰਦਾਨ ਕਰਨ ਵਿੱਚ ਸਾਡੀ ਸਹਾਇਤਾ ਕਰਨ ਲਈ ਨਿਰਧਾਰਤ ਕੂਕੀਜ਼ ਦੀ ਵਰਤੋਂ ਵੀ ਕਰਦੇ ਹਾਂ।
       title: GOV.UK ਤੇ ਕੂਕੀਜ਼
     feedback:
       close: ਬੰਦ ਕਰੋ
-      dont_include_personal_info: ਨਿੱਜੀ ਜਾਂ ਵਿੱਤੀ ਜਾਣਕਾਰੀ ਜਿਵੇਂ ਕਿ ਤੁਹਾਡਾ ਰਾਸ਼ਟਰੀ
-        ਬੀਮਾ ਨੰਬਰ ਜਾਂ ਕ੍ਰੈਡਿਟ ਕਾਰਡ ਦੇ ਵੇਰਵੇ ਸ਼ਾਮਲ ਨਾ ਕਰੋ.
+      dont_include_personal_info: ਨਿੱਜੀ ਜਾਂ ਵਿੱਤੀ ਜਾਣਕਾਰੀ ਜਿਵੇਂ ਕਿ ਤੁਹਾਡਾ ਰਾਸ਼ਟਰੀ ਬੀਮਾ ਨੰਬਰ ਜਾਂ ਕ੍ਰੈਡਿਟ ਕਾਰਡ ਦੇ ਵੇਰਵੇ ਸ਼ਾਮਲ ਨਾ ਕਰੋ.
       email_address: ਈਮੇਲ ਖਾਤਾ
       help_us_improve_govuk: GOV.UK ਨੂੰ ਬਿਹਤਰ ਬਣਾਉਣ ਵਿੱਚ ਸਾਡੀ ਸਹਾਇਤਾ ਕਰੋ
       is_not_useful: ਇਹ ਪੰਨਾ ਲਾਭਦਾਇਕ ਨਹੀਂ ਹੈ
       is_this_page_useful: ਕੀ ਇਹ ਪੰਨਾ ਲਾਭਦਾਇਕ ਹੈ?
       is_useful: ਇਹ ਪੰਨਾ ਲਾਭਦਾਇਕ ਹੈ
       maybe: ਸ਼ਾਇਦ
-      more_about_visit: GOV.UK ਨੂੰ ਬਿਹਤਰ ਬਣਾਉਣ ਵਿੱਚ ਸਾਡੀ ਮਦਦ ਕਰਨ ਲਈ, ਅਸੀਂ ਅੱਜ ਤੁਹਾਡੀ
-        ਮੁਲਾਕਾਤ ਬਾਰੇ ਹੋਰ ਜਾਣਨਾ ਚਾਹਾਂਗੇ। ਅਸੀਂ ਤੁਹਾਨੂੰ ਇੱਕ ਫੀਡਬੈਕ ਫਾਰਮ ਦਾ ਲਿੰਕ ਭੇਜਾਂਗੇ।
-        ਇਸ ਨੂੰ ਭਰਨ ਵਿੱਚ ਸਿਰਫ 2 ਮਿੰਟ ਲੱਗਣਗੇ। ਚਿੰਤਾ ਨਾ ਕਰੋ ਅਸੀਂ ਤੁਹਾਨੂੰ ਸਪੈਮ ਨਹੀਂ ਭੇਜਾਂਗੇ
-        ਜਾਂ ਤੁਹਾਡਾ ਈਮੇਲ ਪਤਾ ਕਿਸੇ ਨਾਲ ਸਾਂਝਾ ਨਹੀਂ ਕਰਾਂਗੇ।
+      more_about_visit: GOV.UK ਨੂੰ ਬਿਹਤਰ ਬਣਾਉਣ ਵਿੱਚ ਸਾਡੀ ਮਦਦ ਕਰਨ ਲਈ, ਅਸੀਂ ਅੱਜ ਤੁਹਾਡੀ ਮੁਲਾਕਾਤ ਬਾਰੇ ਹੋਰ ਜਾਣਨਾ ਚਾਹਾਂਗੇ। ਅਸੀਂ ਤੁਹਾਨੂੰ ਇੱਕ ਫੀਡਬੈਕ ਫਾਰਮ ਦਾ ਲਿੰਕ ਭੇਜਾਂਗੇ। ਇਸ ਨੂੰ ਭਰਨ ਵਿੱਚ ਸਿਰਫ 2 ਮਿੰਟ ਲੱਗਣਗੇ। ਚਿੰਤਾ ਨਾ ਕਰੋ ਅਸੀਂ ਤੁਹਾਨੂੰ ਸਪੈਮ ਨਹੀਂ ਭੇਜਾਂਗੇ ਜਾਂ ਤੁਹਾਡਾ ਈਮੇਲ ਪਤਾ ਕਿਸੇ ਨਾਲ ਸਾਂਝਾ ਨਹੀਂ ਕਰਾਂਗੇ।
       'no': ਨਹੀਂ
       send: ਭੇਜੋ
       send_me_survey: ਮੈਨੂੰ ਸਰਵੇਖਣ ਭੇਜੋ
@@ -84,11 +74,8 @@ pa:
       statistics: ਅੰਕੜੇ
       worldwide: ਦੁਨੀਆ ਭਰ ਵਿੱਚ
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
-        ਕ੍ਰਾਊਨ ਕਾਪੀਰਾਈਟ</a>
-      licence_html: ਸਾਰੀ ਸਮਗਰੀ <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-        rel="license">ਓਪਨ ਗਵਰਨਮੈਂਟ ਲਾਇਸੈਂਸ v3.0</a>, ਦੇ ਅਧੀਨ ਸਾਰੀ ਸਮਗਰੀ ਉਪਲਬਧ ਹੈ ਸਿਵਾਏ
-        ਇਸਦੇ ਜਿੱਥੇ ਹੋਰ ਨਹੀਂ ਕਿਹਾ ਗਿਆ ਹੈ
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© ਕ੍ਰਾਊਨ ਕਾਪੀਰਾਈਟ</a>
+      licence_html: ਸਾਰੀ ਸਮਗਰੀ <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">ਓਪਨ ਗਵਰਨਮੈਂਟ ਲਾਇਸੈਂਸ v3.0</a>, ਦੇ ਅਧੀਨ ਸਾਰੀ ਸਮਗਰੀ ਉਪਲਬਧ ਹੈ ਸਿਵਾਏ ਇਸਦੇ ਜਿੱਥੇ ਹੋਰ ਨਹੀਂ ਕਿਹਾ ਗਿਆ ਹੈ
       support_links: ਸਪੋਰਟ ਲਿੰਕ
     layout_header:
       hide_button: ਖੋਜ ਲੁਕਾਓ
@@ -172,5 +159,3 @@ pa:
       edit: ਬਦਲੋ
     tabs:
       contents: ਸਮਗਰੀ
-  common:
-    translations: ਅਨੁਵਾਦ

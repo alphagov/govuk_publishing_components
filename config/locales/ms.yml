@@ -1,3 +1,4 @@
+---
 ms:
   common:
     translations: Terjemahan
@@ -11,22 +12,15 @@ ms:
     article_schema:
       scoped_search_description: Cari dalam %{title}
     attachment:
-      opendocument_html: Fail ini terdapat dalam format <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link'>OpenDocument</a>
+      opendocument_html: Fail ini terdapat dalam format <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a>
       order_a_copy: Pesan satu salinan
       page:
         one: 1 halaman
         other: "%{count} halaman"
       reference: 'Ruj: %{reference}'
       request_format_cta: Minta format yang boleh diakses.
-      request_format_details_html: Jika anda menggunakan teknologi bantu (seperti
-        pembaca skrin) dan memerlukan versi dokumen ini dalam format yang lebih mudah
-        diakses, sila hantarkan e-mel kepada <a href='mailto:%{alternative_format_contact_email}'
-        target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>.
-        Sila beritahu kami format yang anda perlukan. Lebih mudah bagi kami jika anda
-        memberitahu teknologi bantu apa yang anda gunakan.
-      request_format_text: Fail ini mungkin tidak sesuai untuk pengguna teknologi
-        bantu.
+      request_format_details_html: Jika anda menggunakan teknologi bantu (seperti pembaca skrin) dan memerlukan versi dokumen ini dalam format yang lebih mudah diakses, sila hantarkan e-mel kepada <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Sila beritahu kami format yang anda perlukan. Lebih mudah bagi kami jika anda memberitahu teknologi bantu apa yang anda gunakan.
+      request_format_text: Fail ini mungkin tidak sesuai untuk pengguna teknologi bantu.
     back_link:
       back: Kembali
     character_count:
@@ -51,24 +45,18 @@ ms:
       - Kami menggunakan beberapa kuki penting untuk menjadikan laman web ini berfungsi.
       - Kami ingin menetapkan kuki tambahan untuk memahami cara anda menggunakan GOV.UK
       - mengingati tetapan anda dan meningkatkan perkhidmatan kerajaan.
-      - Kami juga menggunakan kuki yang ditetapkan oleh laman web lain untuk membantu
-        kami menyampaikan kandungan daripada perkhidmatan mereka.
+      - Kami juga menggunakan kuki yang ditetapkan oleh laman web lain untuk membantu kami menyampaikan kandungan daripada perkhidmatan mereka.
       title: Kuki di GOV.UK
     feedback:
       close: Tutup
-      dont_include_personal_info: Jangan sertakan maklumat peribadi atau kewangan
-        seperti nombor Insurans Nasional atau maklumat kad kredit anda.
+      dont_include_personal_info: Jangan sertakan maklumat peribadi atau kewangan seperti nombor Insurans Nasional atau maklumat kad kredit anda.
       email_address: Alamat e-mel
       help_us_improve_govuk: Bantu kami meningkatkan GOV.UK
       is_not_useful: halaman ini tidak berguna
       is_this_page_useful: Adakah halaman ini berguna?
       is_useful: halaman ini berguna
       maybe: Mungkin
-      more_about_visit: Untuk membantu kami meningkatkan GOV.UK, kami ingin mengetahui
-        lebih lanjut tentang lawatan anda hari ini. Kami akan menghantar pautan ke
-        borang maklum balas kepada anda. Hanya perlu 2 minit untuk diisi. Jangan risau
-        kami tidak akan menghantar spam atau berkongsi alamat e-mel anda dengan sesiapa
-        sahaja.
+      more_about_visit: Untuk membantu kami meningkatkan GOV.UK, kami ingin mengetahui lebih lanjut tentang lawatan anda hari ini. Kami akan menghantar pautan ke borang maklum balas kepada anda. Hanya perlu 2 minit untuk diisi. Jangan risau kami tidak akan menghantar spam atau berkongsi alamat e-mel anda dengan sesiapa sahaja.
       'no': Tidak
       send: Hantar
       send_me_survey: Hantarkan tinjauan kepada saya
@@ -86,11 +74,8 @@ ms:
       statistics: Statistik
       worldwide: Di seluruh dunia
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
-        Crown copyright</a>
-      licence_html: Semua kandungan tersedia di bawah <a class="govuk-footer__link"
-        href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-        rel="license"> Lesen Terbuka Kerajaan v3.0 </a>, kecuali jika dinyatakan sebaliknya
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
+      licence_html: Semua kandungan tersedia di bawah <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license"> Lesen Terbuka Kerajaan v3.0 </a>, kecuali jika dinyatakan sebaliknya
       support_links: Pautan sokongan
     layout_header:
       hide_button: Sorok carian

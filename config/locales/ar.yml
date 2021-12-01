@@ -1,25 +1,8 @@
+---
 ar:
+  common:
+    translations: الترجمات
   components:
-    attachment:
-      page:
-        zero:
-        one: 1 صفحة
-        two:
-        few:
-        many:
-        other: "%{count} صفحات"
-      opendocument_html: هذا الملف بتنسيق <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link'>OpenDocument</a>
-      order_a_copy: طلب نسخة
-      reference: 'مرجع: %{reference}'
-      request_format_cta: طلب تنسيق يمكن الاطلاع عليه.
-      request_format_details_html: إذا كنت تستخدم تكنولوجيا مساعِدة (مثل قارئ للشاشة)
-        وتحتاج إلى إصدار من هذا المستند بتنسيق يسهل الاطلاع عليه، فيُرجى التواصل عبر
-        البريد الإلكتروني <a href='mailto:%{alternative_format_contact_email}' target='_blank'
-        class='govuk-link'>%{alternative_format_contact_email}</a>. من فضلك أخبرنا
-        بالتنسيق الذي تحتاجه. إذا أخبرتنا بالتكنولوجيا المساعدة التي تستخدمها، فهذا
-        سيساعدنا.
-      request_format_text: قد لا يكون هذا الملف مناسبًا لمستخدمي التكنولوجيا المساعدة.
     accordion:
       hide: إخفاء
       hide_all: إخفاء كل الأقسام
@@ -28,6 +11,20 @@ ar:
       this_section_visually_hidden: " هذا القسم"
     article_schema:
       scoped_search_description: البحث في %{title}
+    attachment:
+      opendocument_html: هذا الملف بتنسيق <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a>
+      order_a_copy: طلب نسخة
+      page:
+        few:
+        many:
+        one: 1 صفحة
+        other: "%{count} صفحات"
+        two:
+        zero:
+      reference: 'مرجع: %{reference}'
+      request_format_cta: طلب تنسيق يمكن الاطلاع عليه.
+      request_format_details_html: إذا كنت تستخدم تكنولوجيا مساعِدة (مثل قارئ للشاشة) وتحتاج إلى إصدار من هذا المستند بتنسيق يسهل الاطلاع عليه، فيُرجى التواصل عبر البريد الإلكتروني <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. من فضلك أخبرنا بالتنسيق الذي تحتاجه. إذا أخبرتنا بالتكنولوجيا المساعدة التي تستخدمها، فهذا سيساعدنا.
+      request_format_text: قد لا يكون هذا الملف مناسبًا لمستخدمي التكنولوجيا المساعدة.
     back_link:
       back: عودة
     character_count:
@@ -50,25 +47,19 @@ ar:
       hide: إخفاء هذه الرسالة
       text:
       - نحن نستخدم بعض ملفات تعريف الارتباط الأساسية لجعل هذا الموقع يعمل.
-      - نود تعيين ملفات تعريف ارتباط إضافية لفهم كيفية استخدامك لـموقع GOV.UK، ولتذكر
-        إعداداتك، ولتحسين الخدمات الحكومية.
-      - كما نستخدم أيضًا ملفات تعريف الارتباط التي تم تعيينها بواسطة مواقع أخرى لمساعدتنا
-        في تقديم المحتوى المقدم من خدماتها.
+      - نود تعيين ملفات تعريف ارتباط إضافية لفهم كيفية استخدامك لـموقع GOV.UK، ولتذكر إعداداتك، ولتحسين الخدمات الحكومية.
+      - كما نستخدم أيضًا ملفات تعريف الارتباط التي تم تعيينها بواسطة مواقع أخرى لمساعدتنا في تقديم المحتوى المقدم من خدماتها.
       title: ملفات تعريف الارتباط على GOV.UK
     feedback:
       close: إغلاق
-      dont_include_personal_info: لا تقم بتضمين معلومات شخصية أو مالية مثل رقم التأمين
-        الوطني أو تفاصيل بطاقة الائتمان الخاصة بك.
+      dont_include_personal_info: لا تقم بتضمين معلومات شخصية أو مالية مثل رقم التأمين الوطني أو تفاصيل بطاقة الائتمان الخاصة بك.
       email_address: عنوان البريد الإلكتروني
       help_us_improve_govuk: ساعدنا في تحسين GOV.UK
       is_not_useful: هذه الصفحة ليست مفيدة
       is_this_page_useful: هل هذه الصفحة مفيدة؟
       is_useful: هذه الصفحة مفيدة
       maybe: ربما
-      more_about_visit: لمساعدتنا في تحسين GOV.UK، نود معرفة المزيد عن زيارتك اليوم.
-        سنرسل لك ارتباطًا إلى نموذج التعليقات. ستستغرق تعبئة البيانات دقيقتين فقط.
-        لا تقلق، لن نرسل لك بريدًا عشوائيًا أو نشارك عنوان بريدك الإلكتروني مع أي
-        شخص.
+      more_about_visit: لمساعدتنا في تحسين GOV.UK، نود معرفة المزيد عن زيارتك اليوم. سنرسل لك ارتباطًا إلى نموذج التعليقات. ستستغرق تعبئة البيانات دقيقتين فقط. لا تقلق، لن نرسل لك بريدًا عشوائيًا أو نشارك عنوان بريدك الإلكتروني مع أي شخص.
       'no': لا
       send: إرسال
       send_me_survey: أرسل لي الاستبيان
@@ -86,11 +77,8 @@ ar:
       statistics: إحصائيات
       worldwide: في جميع أنحاء العالم
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
-        حقوق نشر التاج الملكي</a>
-      licence_html: كل المحتوى متاح بموجب <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-        rel="license">الترخيص الحكومي المفتوح (الإصدار v3.0)</a>، ما لم ينص على خلاف
-        ذلك
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© حقوق نشر التاج الملكي</a>
+      licence_html: كل المحتوى متاح بموجب <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">الترخيص الحكومي المفتوح (الإصدار v3.0)</a>، ما لم ينص على خلاف ذلك
       support_links: روابط الدعم
     layout_header:
       hide_button: إخفاء البحث
@@ -174,5 +162,3 @@ ar:
       edit: تغيير
     tabs:
       contents: المحتويات
-  common:
-    translations: الترجمات

@@ -1,22 +1,8 @@
+---
 el:
+  common:
+    translations: Μεταφράσεις
   components:
-    attachment:
-      page:
-        one: 1 σελίδα
-        other: "%{count} σελίδες"
-      opendocument_html: Αυτό το αρχείο είναι σε μορφή <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link'>OpenDocument</a>
-      order_a_copy: Παραγγείλετε ένα αντίγραφο
-      reference: 'Αναφ.: %{reference}'
-      request_format_cta: Ζητήστε μια προσβάσιμη μορφή.
-      request_format_details_html: Εάν χρησιμοποιείτε βοηθητική τεχνολογία (όπως ένα
-        πρόγραμμα ανάγνωσης οθόνης) και χρειάζεστε μια έκδοση αυτού του εγγράφου σε
-        πιο προσβάσιμη μορφή, στείλτε email στην διεύθυνση <a href='mailto:%{alternative_format_contact_email}'
-        target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>.
-        Πείτε μας τι μορφή χρειάζεστε. Θα μας βοηθήσει αν πείτε ποια βοηθητική τεχνολογία
-        χρησιμοποιείτε.
-      request_format_text: Αυτό το αρχείο ενδέχεται να μην είναι κατάλληλο για χρήστες
-        βοηθητικής τεχνολογίας.
     accordion:
       hide: Απόκρυψη
       hide_all: Απόκρυψη όλων των ενοτήτων
@@ -25,6 +11,16 @@ el:
       this_section_visually_hidden: " αυτή η ενότητα"
     article_schema:
       scoped_search_description: Αναζήτηση εντός %{title}
+    attachment:
+      opendocument_html: Αυτό το αρχείο είναι σε μορφή <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a>
+      order_a_copy: Παραγγείλετε ένα αντίγραφο
+      page:
+        one: 1 σελίδα
+        other: "%{count} σελίδες"
+      reference: 'Αναφ.: %{reference}'
+      request_format_cta: Ζητήστε μια προσβάσιμη μορφή.
+      request_format_details_html: Εάν χρησιμοποιείτε βοηθητική τεχνολογία (όπως ένα πρόγραμμα ανάγνωσης οθόνης) και χρειάζεστε μια έκδοση αυτού του εγγράφου σε πιο προσβάσιμη μορφή, στείλτε email στην διεύθυνση <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Πείτε μας τι μορφή χρειάζεστε. Θα μας βοηθήσει αν πείτε ποια βοηθητική τεχνολογία χρησιμοποιείτε.
+      request_format_text: Αυτό το αρχείο ενδέχεται να μην είναι κατάλληλο για χρήστες βοηθητικής τεχνολογίας.
     back_link:
       back: Πίσω
     character_count:
@@ -47,28 +43,20 @@ el:
       hide: Απόκρυψη αυτού του μηνύματος
       text:
       - Χρησιμοποιούμε μερικά βασικά cookies για να λειτουργήσει αυτός ο ιστότοπος.
-      - Θα θέλαμε να ορίσουμε επιπλέον cookies για να κατανοήσουμε πώς χρησιμοποιείτε
-        το GOV.UK
+      - Θα θέλαμε να ορίσουμε επιπλέον cookies για να κατανοήσουμε πώς χρησιμοποιείτε το GOV.UK
       - να θυμόμαστε τις ρυθμίσεις σας και να βελτιώσουμε τις κρατικές υπηρεσίες.
-      - Χρησιμοποιούμε επίσης cookies που έχουν οριστεί από άλλους ιστότοπους για
-        να μας βοηθήσουν να παραδώσουμε περιεχόμενο από τις υπηρεσίες τους.
+      - Χρησιμοποιούμε επίσης cookies που έχουν οριστεί από άλλους ιστότοπους για να μας βοηθήσουν να παραδώσουμε περιεχόμενο από τις υπηρεσίες τους.
       title: Cookies στο GOV.UK
     feedback:
       close: Κλείσε
-      dont_include_personal_info: Μην συμπεριλαμβάνετε προσωπικά ή οικονομικά στοιχεία,
-        όπως τον αριθμό της Εθνικής σας Ασφάλισης ή τα στοιχεία της πιστωτικής σας
-        κάρτας.
+      dont_include_personal_info: Μην συμπεριλαμβάνετε προσωπικά ή οικονομικά στοιχεία, όπως τον αριθμό της Εθνικής σας Ασφάλισης ή τα στοιχεία της πιστωτικής σας κάρτας.
       email_address: Διεύθυνση email
       help_us_improve_govuk: Βοηθήστε μας να βελτιώσουμε το GOV.UK
       is_not_useful: αυτή η σελίδα δεν είναι χρήσιμη
       is_this_page_useful: Είναι χρήσιμη αυτή η σελίδα;
       is_useful: αυτή η σελίδα είναι χρήσιμη
       maybe: Ίσως
-      more_about_visit: Για να μας βοηθήσετε να βελτιώσουμε το GOV.UK, θα θέλαμε να
-        μάθουμε περισσότερα για τη σημερινή σας επίσκεψη. Θα σας στείλουμε έναν σύνδεσμο
-        σε μια φόρμα σχολίων. Θα χρειαστούν μόνο 2 λεπτά για να συμπληρωθεί. Μην ανησυχείτε
-        δεν θα σας στείλουμε ανεπιθύμητα μηνύματα και δεν θα κοινοποιήσουμε τη διεύθυνση
-        email σας σε κανέναν.
+      more_about_visit: Για να μας βοηθήσετε να βελτιώσουμε το GOV.UK, θα θέλαμε να μάθουμε περισσότερα για τη σημερινή σας επίσκεψη. Θα σας στείλουμε έναν σύνδεσμο σε μια φόρμα σχολίων. Θα χρειαστούν μόνο 2 λεπτά για να συμπληρωθεί. Μην ανησυχείτε δεν θα σας στείλουμε ανεπιθύμητα μηνύματα και δεν θα κοινοποιήσουμε τη διεύθυνση email σας σε κανέναν.
       'no': Όχι
       send: Αποστολή
       send_me_survey: Στείλτε μου την έρευνα
@@ -86,11 +74,8 @@ el:
       statistics: Στατιστική
       worldwide: Παγκόσμιο
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
-        Πνευματικά δικαιώματα Crown</a>
-      licence_html: Όλο το περιεχόμενο είναι διαθέσιμο βάσει της <a class="govuk-footer__link"
-        href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-        rel="license">Άδειας Ανοικτής Κυβέρνησης v3.0</a> , εκτός εάν αναφέρεται διαφορετικά
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Πνευματικά δικαιώματα Crown</a>
+      licence_html: Όλο το περιεχόμενο είναι διαθέσιμο βάσει της <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Άδειας Ανοικτής Κυβέρνησης v3.0</a> , εκτός εάν αναφέρεται διαφορετικά
       support_links: Σύνδεσμοι υποστήριξης
     layout_header:
       hide_button: Απόκρυψη αναζήτησης
@@ -110,8 +95,7 @@ el:
     modal_dialogue:
       close_modal: Κλείσιμο παράθυρου διαλόγου
     organisation_schema:
-      all_content_search_description: Εύρεση όλου του περιεχομένου από τον οργανισμό
-        %{Organization}
+      all_content_search_description: Εύρεση όλου του περιεχομένου από τον οργανισμό %{Organization}
     previous_and_next_navigation:
       pagination: Σελιδοποίηση
     print_link:
@@ -165,8 +149,7 @@ el:
       part_of: Μέρος του
     subscription_links:
       email_signup_link_text: Λάβετε email
-      feed_link_label: Αντιγράψτε και επικολλήστε αυτό το URL στο πρόγραμμα ανάγνωσης
-        ροής
+      feed_link_label: Αντιγράψτε και επικολλήστε αυτό το URL στο πρόγραμμα ανάγνωσης ροής
       feed_link_text: Εγγραφείτε στη ροή
       subscriptions: Συνδρομές
     success_alert:
@@ -176,5 +159,3 @@ el:
       edit: Αλλαγή
     tabs:
       contents: Περιεχόμενα
-  common:
-    translations: Μεταφράσεις

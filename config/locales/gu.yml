@@ -1,22 +1,8 @@
+---
 gu:
+  common:
+    translations: અનુવાદ
   components:
-    attachment:
-      page:
-        one: 1 પૃષ્ઠ
-        other: "%{count} પૃષ્ઠો"
-      opendocument_html: આ ફાઇલ એક<a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link'>ઓપન ડૉક્યુમેન્ટ</a> ફોરમેટમાં છે
-      order_a_copy: એક નકલ મંગાવી લો
-      reference: સંદર્ભ:%{reference}
-      request_format_cta: કોઈ એક્સેસિબલ ફોરમેટ માટે વિનંતી કરો.
-      request_format_details_html: જો તમે સહાયક ટેક્નોલૉજીનો (જેવી કે સ્ક્રીન રીડર)
-        ઉપયોગ કરતાં હોવ અને તમને આ દસ્તાવેજની આવૃત્તિ વધુ એક્સેસિબલ ફોરમેટ માટે જોઈતી
-        હોય, તો કૃપા કરીને <a href='mailto:%{alternative_format_contact_email}' target='_blank'
-        class='govuk-link'>%{alternative_format_contact_email}</a>.કૃપા કરીને અમને
-        જણાવો કે તમને કયા ફોર્મેટની જરૂર છે. જો તમે કહો કે તમે કઈ સહાયક તકનીકનો ઉપયોગ
-        કરો છો તો તે અમને મદદ કરશે.
-      request_format_text: આ ફાઇલ સહાયક ટેક્નોલૉજીના યુઝર્સ માટે કદાચ અનુકૂળ નહીં
-        હોય.
     accordion:
       hide: હાઇડ કરો
       hide_all: તમામ સેક્શન હાઈડ કરો
@@ -25,6 +11,16 @@ gu:
       this_section_visually_hidden: " આ સેક્શન"
     article_schema:
       scoped_search_description: "%{title}માં શોધો"
+    attachment:
+      opendocument_html: આ ફાઇલ એક<a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>ઓપન ડૉક્યુમેન્ટ</a> ફોરમેટમાં છે
+      order_a_copy: એક નકલ મંગાવી લો
+      page:
+        one: 1 પૃષ્ઠ
+        other: "%{count} પૃષ્ઠો"
+      reference: સંદર્ભ:%{reference}
+      request_format_cta: કોઈ એક્સેસિબલ ફોરમેટ માટે વિનંતી કરો.
+      request_format_details_html: જો તમે સહાયક ટેક્નોલૉજીનો (જેવી કે સ્ક્રીન રીડર) ઉપયોગ કરતાં હોવ અને તમને આ દસ્તાવેજની આવૃત્તિ વધુ એક્સેસિબલ ફોરમેટ માટે જોઈતી હોય, તો કૃપા કરીને <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>.કૃપા કરીને અમને જણાવો કે તમને કયા ફોર્મેટની જરૂર છે. જો તમે કહો કે તમે કઈ સહાયક તકનીકનો ઉપયોગ કરો છો તો તે અમને મદદ કરશે.
+      request_format_text: આ ફાઇલ સહાયક ટેક્નોલૉજીના યુઝર્સ માટે કદાચ અનુકૂળ નહીં હોય.
     back_link:
       back: પાછળ
     character_count:
@@ -49,23 +45,18 @@ gu:
       - આ વેબસાઇટ કામ કરે તે માટે અમે કેટલીક આવશ્યક કુકીઝ વાપરીએ છીએ.
       - તમે GOV.UKનો ઉપયોગ કેવી રીતે કરો છો
       - તે સમજવા માટે
-      - તમારી સેટિંગ્સ યાદ રાખવા માટે અને સરકારી સેવાઓમાં સુધારો કરવા માટે અમે અતિરિક્ત
-        કુકીઝ સેટ કરવા માંગીએ છીએ.”
+      - તમારી સેટિંગ્સ યાદ રાખવા માટે અને સરકારી સેવાઓમાં સુધારો કરવા માટે અમે અતિરિક્ત કુકીઝ સેટ કરવા માંગીએ છીએ.”
       title: GOV.UK પર કુકીઝ
     feedback:
       close: બંધ કરો
-      dont_include_personal_info: તમારો રાષ્ટ્રીય વીમા નંબર અથવા ક્રેડિટ કાર્ડ વિગતો
-        જેવી વ્યક્તિગત કે નાણાંકીય માહિતી તેમાં સામેલ કરશો નહીં.
+      dont_include_personal_info: તમારો રાષ્ટ્રીય વીમા નંબર અથવા ક્રેડિટ કાર્ડ વિગતો જેવી વ્યક્તિગત કે નાણાંકીય માહિતી તેમાં સામેલ કરશો નહીં.
       email_address: ઈમેલ એડ્રેસ
       help_us_improve_govuk: GOV.UK માં સુધારો કરવા અમારી મદદ કરો
       is_not_useful: આ પૃષ્ઠ ઉપયોગી નથી
       is_this_page_useful: શું આ પૃષ્ઠ ઉપયોગી છે?
       is_useful: આ પૃષ્ઠ ઉપયોગી છે
       maybe: કદાચ
-      more_about_visit: GOV.UK માં સુધારો કરવામાં અમને મદદ થાય, તે માટે અમે તમારી
-        આજની મુલાકાત વિશે વધુ જાણવા ઇચ્છીએ છીએ.અમે તમને ફીડબૅક ફોર્મની લિન્ક મોકલીશું.તે
-        ભરવા માટે તમને માત્ર 2 મિનિટ લાગશે. ચિંતા ના કરશો, અમે તમને સ્પામ મોકલીશું
-        નહીં કે તમારો ઈમેલ એડ્રેસ કોઇની સાથે શેર કરીશું નહીં.
+      more_about_visit: GOV.UK માં સુધારો કરવામાં અમને મદદ થાય, તે માટે અમે તમારી આજની મુલાકાત વિશે વધુ જાણવા ઇચ્છીએ છીએ.અમે તમને ફીડબૅક ફોર્મની લિન્ક મોકલીશું.તે ભરવા માટે તમને માત્ર 2 મિનિટ લાગશે. ચિંતા ના કરશો, અમે તમને સ્પામ મોકલીશું નહીં કે તમારો ઈમેલ એડ્રેસ કોઇની સાથે શેર કરીશું નહીં.
       'no': ના
       send: સેન્ડ કરો
       send_me_survey: મને સર્વે મોકલો
@@ -83,11 +74,8 @@ gu:
       statistics: આંકડા
       worldwide: વિશ્વવ્યાપી
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
-        ક્રાઉન કૉપીરાઇટ</a>
-      licence_html: તમામ સામગ્રી<a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-        rel="license"> ઓપન ગવર્નમેંટ લાઇસન્સ v3.0</a>હેઠળ ઉપલબ્ધ છે, સિવાય કે અન્યથા
-        જણાવેલ હોય
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© ક્રાઉન કૉપીરાઇટ</a>
+      licence_html: તમામ સામગ્રી<a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license"> ઓપન ગવર્નમેંટ લાઇસન્સ v3.0</a>હેઠળ ઉપલબ્ધ છે, સિવાય કે અન્યથા જણાવેલ હોય
       support_links: સપોર્ટ લિંક્સ
     layout_header:
       hide_button: સર્ચને હાઈડ કરો
@@ -171,5 +159,3 @@ gu:
       edit: બદલો
     tabs:
       contents: સામગ્રી
-  common:
-    translations: અનુવાદ

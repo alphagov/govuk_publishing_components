@@ -1,23 +1,8 @@
+---
 ur:
+  common:
+    translations: تراجم
   components:
-    attachment:
-      page:
-        one: 1 صفحہ
-        other: "%{count} صفحات"
-      opendocument_html: یہ فائل <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link'>OpenDocument</a> فارمیٹ میں ہے
-      order_a_copy: نقل کی درخواست کریں
-      reference: 'حوالہ: %{reference}'
-      request_format_cta: قابل رسائی فارمیٹ کی درخواست دیں۔
-      request_format_details_html: اگر آپ کوئی معاونتی ٹیکنالوجی (جیسے کہ پڑھنے والے
-        کی اسکرین) استعمال کرتے ہیں اور مزید قابل رسائی فارمیٹ میں اس دستاویز کا ورژن
-        درکار ہے، تو براہ کرم <a href='mailto:%{alternative_format_contact_email}'
-        target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>
-        پر ای میل کریں براہ کرم ہمیں آگاہ کریں کہ آپ کو کون سا فارمیٹ درکار ہے۔ اگر
-        آپ بتائیں کہ آپ کون سی معاونتی ٹیکنالوجی استعمال کرتے ہیں تو ہمیں اس سے مدد
-        ملے گی۔
-      request_format_text: ہو سکتا ہے کہ یہ فائل معاونتی ٹیکنالوجی کے صارفین کے لیے
-        موزوں نہ ہو۔
     accordion:
       hide: پوشیدہ کریں
       hide_all: تمام سیکشنز کو پوشیدہ کریں
@@ -26,6 +11,16 @@ ur:
       this_section_visually_hidden: " یہ سیکشن"
     article_schema:
       scoped_search_description: "%{title} کے اندر تلاش کریں"
+    attachment:
+      opendocument_html: یہ فائل <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a> فارمیٹ میں ہے
+      order_a_copy: نقل کی درخواست کریں
+      page:
+        one: 1 صفحہ
+        other: "%{count} صفحات"
+      reference: 'حوالہ: %{reference}'
+      request_format_cta: قابل رسائی فارمیٹ کی درخواست دیں۔
+      request_format_details_html: اگر آپ کوئی معاونتی ٹیکنالوجی (جیسے کہ پڑھنے والے کی اسکرین) استعمال کرتے ہیں اور مزید قابل رسائی فارمیٹ میں اس دستاویز کا ورژن درکار ہے، تو براہ کرم <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a> پر ای میل کریں براہ کرم ہمیں آگاہ کریں کہ آپ کو کون سا فارمیٹ درکار ہے۔ اگر آپ بتائیں کہ آپ کون سی معاونتی ٹیکنالوجی استعمال کرتے ہیں تو ہمیں اس سے مدد ملے گی۔
+      request_format_text: ہو سکتا ہے کہ یہ فائل معاونتی ٹیکنالوجی کے صارفین کے لیے موزوں نہ ہو۔
     back_link:
       back: پیچھے
     character_count:
@@ -47,26 +42,18 @@ ur:
       confirmation_message_link: اپنی کوکی کی ترتیبات تبدیل کریں
       hide: اس پیغام کو پوشیدہ کریں
       text:
-      - ہم اس ویب سائٹ کو چلانے کے لیے کچھ ضروری کوکیز استعمال کرتے ہیں۔، ہم اس بات
-        کو سمجھنے کے لیے کچھ اضافی کوکیز سیٹ کرنا چاہیں گے کہ آپ GOV.UK کو کیسے سمجھتے
-        ہیں، اپنی ترتیبات یاد رکھیں اور حکومتی سروسز کو بہتر بنائیں۔، ہم دیگر سائٹس
-        سے مواد کی ترسیل کرنے کے لیے دیگر سائٹس کی جانب سے سیٹ کی گئی کوکیز بھی استعمال
-        کرتے ہیں۔
+      - ہم اس ویب سائٹ کو چلانے کے لیے کچھ ضروری کوکیز استعمال کرتے ہیں۔، ہم اس بات کو سمجھنے کے لیے کچھ اضافی کوکیز سیٹ کرنا چاہیں گے کہ آپ GOV.UK کو کیسے سمجھتے ہیں، اپنی ترتیبات یاد رکھیں اور حکومتی سروسز کو بہتر بنائیں۔، ہم دیگر سائٹس سے مواد کی ترسیل کرنے کے لیے دیگر سائٹس کی جانب سے سیٹ کی گئی کوکیز بھی استعمال کرتے ہیں۔
       title: GOV.UK پر کوکیز
     feedback:
       close: بند کریں
-      dont_include_personal_info: اپنے قومی انشورنس نمبر یا کریڈٹ کارڈ کی تفصیلات
-        کی جیسی ذاتی یا مالی معلومات استعمال نہ کریں۔
+      dont_include_personal_info: اپنے قومی انشورنس نمبر یا کریڈٹ کارڈ کی تفصیلات کی جیسی ذاتی یا مالی معلومات استعمال نہ کریں۔
       email_address: ای میل ایڈریس
       help_us_improve_govuk: GOV.UK کو بہتر بنانے میں  ہماری مدد کریں
       is_not_useful: یہ صفحہ مددگار نہیں ہے
       is_this_page_useful: کیا یہ صفحہ مددگار ہے؟
       is_useful: یہ صفحہ مددگار ہے
       maybe: شاید
-      more_about_visit: GOV.UK کو بہتر بنانے میں  ہماری مدد کریں، ہمیں آپ کے آج کے
-        دورے کے بارے میں مزید جاننا چاہیں گے۔ ہم فیڈبیک کے فارم پر آپ کو لنک بھیجیں
-        گے۔ اسے پر کرنے میں صرف 2 منٹ لگیں گے۔ فکر نہ کریں ہم آپ کو اسپام نہیں بھیجیں
-        گے یا کسی کے ساتھ آپ کا ای میل ایڈریس شیئر نہیں کریں گے۔
+      more_about_visit: GOV.UK کو بہتر بنانے میں  ہماری مدد کریں، ہمیں آپ کے آج کے دورے کے بارے میں مزید جاننا چاہیں گے۔ ہم فیڈبیک کے فارم پر آپ کو لنک بھیجیں گے۔ اسے پر کرنے میں صرف 2 منٹ لگیں گے۔ فکر نہ کریں ہم آپ کو اسپام نہیں بھیجیں گے یا کسی کے ساتھ آپ کا ای میل ایڈریس شیئر نہیں کریں گے۔
       'no': نہیں
       send: بھیجیں
       send_me_survey: مجھے سروے بھیجیں
@@ -84,11 +71,8 @@ ur:
       statistics: شماریات
       worldwide: دنیا بھر میں
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
-        Crown کاپی رائٹ</a>
-      licence_html: سوائے ان کے جنہیں بصورت دیگر بیان کیا گیا ہے، <a class="govuk-footer__link"
-        href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-        rel="license">Open Government Licence v3.0</a> کے تحت تمام مواد دستیاب ہے
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown کاپی رائٹ</a>
+      licence_html: سوائے ان کے جنہیں بصورت دیگر بیان کیا گیا ہے، <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a> کے تحت تمام مواد دستیاب ہے
       support_links: معاونتی لنکس
     layout_header:
       hide_button: تلاش کو پوشیدہ کریں
@@ -172,5 +156,3 @@ ur:
       edit: تبدیل کریں
     tabs:
       contents: مشمولات
-  common:
-    translations: تراجم

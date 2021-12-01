@@ -1,21 +1,8 @@
+---
 si:
+  common:
+    translations: පරිවර්තන
   components:
-    attachment:
-      page:
-        one: පිටු 1ක්
-        other: පිටු %{count}ක්
-      opendocument_html: මෙම ගොනුව <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link'>විවෘතලේඛන</a> ආකෘතියේ ඇත
-      order_a_copy: පිටපතක් ඇණවුම් කරන්න
-      reference: 'යොමුව: %{reference}'
-      request_format_cta: පිවිසිය හැකි ආකෘතියක් ඉල්ලන්න.
-      request_format_details_html: ඔබේ ආධාරක තාක්ෂණය (තිර කියවන්නා වැනි) භාවිතා කරන්නේ
-        නම් සහ මෙම ලේඛනයේ වඩාත් පිවිසිය හැකි ආකෘතියක අනුවාදයක් අවශ්‍ය නම්, කරුණාකර
-        <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>
-        වෙත විද්‍යුත් තැපෑලක් යවන්න. කරුණාකර ඔබට අවශ්ය ආකෘතිය කුමක්දැයි අපට කියන්න.
-        ඔබ භාවිතා කරන ආධාරක තාක්ෂණය කුමක්දැයි ඔබ පැවසුවහොත් එය අපට උපකාරී වනු ඇත.
-      request_format_text: මෙම ගොනුව ආධාරක තාක්ෂණය භාවිතා කරන්නන් සඳහා සුදුසු නොවිය
-        හැක.
     accordion:
       hide: සඟවන්න
       hide_all: සියලුම කොටස් සඟවන්න
@@ -24,6 +11,16 @@ si:
       this_section_visually_hidden: " මෙම කොටස"
     article_schema:
       scoped_search_description: "%{title} තුළ සොයන්න"
+    attachment:
+      opendocument_html: මෙම ගොනුව <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>විවෘතලේඛන</a> ආකෘතියේ ඇත
+      order_a_copy: පිටපතක් ඇණවුම් කරන්න
+      page:
+        one: පිටු 1ක්
+        other: පිටු %{count}ක්
+      reference: 'යොමුව: %{reference}'
+      request_format_cta: පිවිසිය හැකි ආකෘතියක් ඉල්ලන්න.
+      request_format_details_html: ඔබේ ආධාරක තාක්ෂණය (තිර කියවන්නා වැනි) භාවිතා කරන්නේ නම් සහ මෙම ලේඛනයේ වඩාත් පිවිසිය හැකි ආකෘතියක අනුවාදයක් අවශ්‍ය නම්, කරුණාකර <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a> වෙත විද්‍යුත් තැපෑලක් යවන්න. කරුණාකර ඔබට අවශ්ය ආකෘතිය කුමක්දැයි අපට කියන්න. ඔබ භාවිතා කරන ආධාරක තාක්ෂණය කුමක්දැයි ඔබ පැවසුවහොත් එය අපට උපකාරී වනු ඇත.
+      request_format_text: මෙම ගොනුව ආධාරක තාක්ෂණය භාවිතා කරන්නන් සඳහා සුදුසු නොවිය හැක.
     back_link:
       back: ආපසු
     character_count:
@@ -48,24 +45,18 @@ si:
       - මෙම වෙබ් අඩවිය ක්රියාත්මක කිරීම සඳහා අපි අත්යවශ්ය කුකීස් කිහිපයක් භාවිතා කරමු.”
       - "“ඔබ GOV.UK භාවිතා කරන ආකාරය තේරුම් ගැනීමට අතිරේක කුකීස් ද සැකසීමට අපි කැමතියි"
       - ඔබේ සැකසුම් රජයේ සේවාවන් වැඩි දියුණු කරන බව මතක තබා ගන්න.”
-      - "“වෙනත් වෙබ් අඩවි විසින් ඒවායේ සේවා අන්තර්ගතයන් අපට බෙදාහැරීමට උපකාරී වීම
-        සඳහා ඔවුන් විසින් සකසා ඇති කුකිස්ද අපි භාවිතා කරමු.”"
+      - "“වෙනත් වෙබ් අඩවි විසින් ඒවායේ සේවා අන්තර්ගතයන් අපට බෙදාහැරීමට උපකාරී වීම සඳහා ඔවුන් විසින් සකසා ඇති කුකිස්ද අපි භාවිතා කරමු.”"
       title: GOV.UK මත කුකීස්
     feedback:
       close: වසන්න
-      dont_include_personal_info: ඔබේ ජාතික රක්ෂණ අංකය හෝ ක්රෙඩිට් කාඩ්පත් විස්තර
-        වැනි පෞද්ගලික හෝ මූල්ය තොරතුරු ඇතුළත් නොකරන්න.
+      dont_include_personal_info: ඔබේ ජාතික රක්ෂණ අංකය හෝ ක්රෙඩිට් කාඩ්පත් විස්තර වැනි පෞද්ගලික හෝ මූල්ය තොරතුරු ඇතුළත් නොකරන්න.
       email_address: විද්යුත් තැපෑල් ලිපිනය
       help_us_improve_govuk: GOV.UK වැඩි දියුණු කිරීමට අපට උපකාරී වන්න
       is_not_useful: මෙම පිටුව ප්රයෝජනවත් නැත
       is_this_page_useful: මෙම පිටුව ප්රයෝජනවත් ද?
       is_useful: මෙම පිටුව ප්රයෝජනවත් ය
       maybe: සමහර විට
-      more_about_visit: GOV.UK වැඩි දියුණු කිරීම සඳහා අපට උදව් කිරීමට, අපි අද ඔබගේ
-        පිවිසීම ගැන වැඩි විස්තර දැන ගැනීමට කැමතියි. අපි ඔබට ප්රතිපෝෂණ ආකෘතියක් වෙත
-        සබැඳියක් එවන්නෙමු. එය පිරවීම සඳහා විනාඩි 2 ක් ගතවනු ඇත. කරදර වෙන්න එපා අපි
-        ඔබට අයාචිත තැපැල් යවන්නේ ද නැතහොත් කිසිවෙකු සමඟ ඔබගේ විද්‍යුත් තැපෑල් ලිපිනය
-        බෙදාගන්නේ ද නැත.
+      more_about_visit: GOV.UK වැඩි දියුණු කිරීම සඳහා අපට උදව් කිරීමට, අපි අද ඔබගේ පිවිසීම ගැන වැඩි විස්තර දැන ගැනීමට කැමතියි. අපි ඔබට ප්රතිපෝෂණ ආකෘතියක් වෙත සබැඳියක් එවන්නෙමු. එය පිරවීම සඳහා විනාඩි 2 ක් ගතවනු ඇත. කරදර වෙන්න එපා අපි ඔබට අයාචිත තැපැල් යවන්නේ ද නැතහොත් කිසිවෙකු සමඟ ඔබගේ විද්‍යුත් තැපෑල් ලිපිනය බෙදාගන්නේ ද නැත.
       'no': එපා
       send: යවන්න
       send_me_survey: මට සමීක්ෂණය එවන්න
@@ -83,11 +74,8 @@ si:
       statistics: සංඛ්‍යාලේඛන
       worldwide: ලෝක ව්යාප්ත
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
-        රාජ්‍ය කතුහිමිකම</a>
-      licence_html: සියලු අන්තගතයන් වෙනත් ආකාරයකින් සඳහන් කර තිබුණොත් මිසක <a class="govuk-footer__link"
-        href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-        rel="license">රජයේ විවෘත බලපත්‍ර v3.0</a>, යටතේ ලබා ගත හැකිය
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© රාජ්‍ය කතුහිමිකම</a>
+      licence_html: සියලු අන්තගතයන් වෙනත් ආකාරයකින් සඳහන් කර තිබුණොත් මිසක <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">රජයේ විවෘත බලපත්‍ර v3.0</a>, යටතේ ලබා ගත හැකිය
       support_links: සහාය සබැඳි
     layout_header:
       hide_button: සෙවීම සඟවන්න
@@ -171,5 +159,3 @@ si:
       edit: වෙනස් කරන්න
     tabs:
       contents: අන්තර්ගත
-  common:
-    translations: පරිවර්තන

@@ -51,14 +51,14 @@ en:
       connectors:
         last_word: " and "
         two_words: " and "
+      england: England
+      northern_ireland: Northern Ireland
+      scotland: Scotland
       type:
         consultation: Consultation for %{nation}
         detailed_guide: Guidance for %{nation}
         guidance: Guidance for %{nation}
         publication: Publication for %{nation}
-      england: England
-      northern_ireland: Northern Ireland
-      scotland: Scotland
       wales: Wales
     feedback:
       close: Close
@@ -119,8 +119,7 @@ en:
       - label: Topics
         href: "/browse"
         description: Find information and services
-        menu_contents: # If adding or removing items, remember to update the
-                       # `columns` in the layout-super-navigation-header SCSS.
+        menu_contents:
         - label: Benefits
           href: "/browse/benefits"
         - label: Births, death, marriages and care
@@ -158,8 +157,7 @@ en:
       - label: Government activity
         href: "/search/news-and-communications"
         description: Search for a department and find out what the government is doing
-        menu_contents: # If adding or removing items, remember to update the
-                       # `columns` in the layout-super-navigation-header SCSS.
+        menu_contents:
         - label: Departments
           href: "/government/organisations"
           description: Departments, agencies and public bodies

@@ -1,3 +1,4 @@
+---
 ka:
   common:
     translations: თარგმანები
@@ -11,22 +12,15 @@ ka:
     article_schema:
       scoped_search_description: ძებნა %{title}
     attachment:
-      opendocument_html: ეს ფაილი არის <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link'>OpenDocument</a> ფორმატში
+      opendocument_html: ეს ფაილი არის <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a> ფორმატში
       order_a_copy: ასლის შეკვეთა
       page:
         one: 1 გვერი
         other: "%{count} გვერდები"
       reference: 'მითითება: %{reference}'
       request_format_cta: ხელმისაწვდომი ფორმატის მოთხოვნა.
-      request_format_details_html: თუ იყენებთ დამხმარე ტექნოლოგიას (როგორიც ეკრანის
-        წამკითხველია) და გჭირდებათ ამ დოკუმენტის ვერსია უფრო მოსახერხებელ ფორმატში,
-        გთხოვთ დაუკავშირდით ელ.ფოსტით <a href='mailto:%{alternative_format_contact_email}'
-        target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>.
-        გთხოვთ, გვითხარით რა ფორმატი გჭირდებათ. თუ გვეტვყით რომელ დამხმარე ტექნოლოგიას
-        იყენებთ ძალიან დაგვეხმარებით.
-      request_format_text: ეს ფაილი შესაძლოა არ იყოს შესაფერისი დამხმარე ტექნოლოგიის
-        მომხმარებლებისთვის.
+      request_format_details_html: თუ იყენებთ დამხმარე ტექნოლოგიას (როგორიც ეკრანის წამკითხველია) და გჭირდებათ ამ დოკუმენტის ვერსია უფრო მოსახერხებელ ფორმატში, გთხოვთ დაუკავშირდით ელ.ფოსტით <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. გთხოვთ, გვითხარით რა ფორმატი გჭირდებათ. თუ გვეტვყით რომელ დამხმარე ტექნოლოგიას იყენებთ ძალიან დაგვეხმარებით.
+      request_format_text: ეს ფაილი შესაძლოა არ იყოს შესაფერისი დამხმარე ტექნოლოგიის მომხმარებლებისთვის.
     back_link:
       back: უკან
     character_count:
@@ -58,18 +52,14 @@ ka:
       title: ქუქი ფაილები GOV.UK-ზე
     feedback:
       close: ჩახურვა
-      dont_include_personal_info: არ შეიყვანოთ პირადი ან ფინანსური ინფორმაცია, როგორიცაა
-        თქვენი ეროვნული დაზღვევის ნომერი ან საკრედიტო ბარათის დეტალები.
+      dont_include_personal_info: არ შეიყვანოთ პირადი ან ფინანსური ინფორმაცია, როგორიცაა თქვენი ეროვნული დაზღვევის ნომერი ან საკრედიტო ბარათის დეტალები.
       email_address: ელექტრონული მისამართი
       help_us_improve_govuk: დაგვეხმარეთ გავაუმჯობესოთ GOV.UK
       is_not_useful: ეს გვერდი არ არის სასარგებლო
       is_this_page_useful: ეს გვერდი სასარგებლო იყო თქვენთვის?
       is_useful: ეს გვერდი სასარგებლოა
       maybe: შესაძლოა
-      more_about_visit: იმისათვის, რომ დაგვეხმაროთ გავაუმჯობესოთ GOV.UK, ჩვენ გვსურს
-        ვიცოდეთ მეტი თქვენი ვიზიტის შესახებ დღეს. ჩვენ გამოგიგზავნით ფიდბეკის ფორმის
-        ბმულს. მის შევსებას 2 წუთი დასჭირდება. არ იდარდოთ, ჩვენ არ გამოგიგზავნით სპამს
-        ან გავუზიარებთ თქვენს ელექტრონულ მისამართს სხვას.
+      more_about_visit: იმისათვის, რომ დაგვეხმაროთ გავაუმჯობესოთ GOV.UK, ჩვენ გვსურს ვიცოდეთ მეტი თქვენი ვიზიტის შესახებ დღეს. ჩვენ გამოგიგზავნით ფიდბეკის ფორმის ბმულს. მის შევსებას 2 წუთი დასჭირდება. არ იდარდოთ, ჩვენ არ გამოგიგზავნით სპამს ან გავუზიარებთ თქვენს ელექტრონულ მისამართს სხვას.
       'no': არა
       send: გაგზავნა
       send_me_survey: გამომიგზავნეთ კითხვარი
@@ -87,10 +77,8 @@ ka:
       statistics: სტატისტიკა
       worldwide: მსოფლიო
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
-        გვირგვინის ქოფირაითი</a>
-      licence_html: ყველა მასალა ხელმისაწვდომია <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-        rel="license">Open Government Licence v3.0</a>, გარდა სხვა განცხადებებისა
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© გვირგვინის ქოფირაითი</a>
+      licence_html: ყველა მასალა ხელმისაწვდომია <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, გარდა სხვა განცხადებებისა
       support_links: დამხმარე ბმულები
     layout_header:
       hide_button: ძიების დაფარვა

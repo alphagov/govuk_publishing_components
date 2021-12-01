@@ -1,22 +1,8 @@
+---
 sw:
+  common:
+    translations: Tafsiri
   components:
-    attachment:
-      page:
-        one: Ukurasa mmoja (1)
-        other: Kurasa %{count}
-      opendocument_html: Faili hii ni ya muundo wa <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link'>OpenDocument</a>
-      order_a_copy: Agiza nakala
-      reference: 'Marejeleo: %{reference}'
-      request_format_cta: Omba muundo unaoweza kutumika.
-      request_format_details_html: Ikiwa unatumia vifaa vya usaidizi(kama vile kisoma
-        skrini) na unahitaji toleo la hati hii katika muundo unaoweza kutumika zaidi,
-        tafadhali tuma barua pepe katika <a href='mailto:%{alternative_format_contact_email}'
-        target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>.
-        Tafadhali tuambie muundo unaohitaji. Itatusaidia ikiwa utatufahamisha kifaa
-        cha usaidizi unachotumia.
-      request_format_text: Faili hii huenda haitumiki kwa watumiaji wanaotumia vifaa
-        vya usaidizi.
     accordion:
       hide: Ficha
       hide_all: Ficha sehemu zote
@@ -25,6 +11,16 @@ sw:
       this_section_visually_hidden: " sehemu hii"
     article_schema:
       scoped_search_description: Tafuta ndani ya %{title}
+    attachment:
+      opendocument_html: Faili hii ni ya muundo wa <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a>
+      order_a_copy: Agiza nakala
+      page:
+        one: Ukurasa mmoja (1)
+        other: Kurasa %{count}
+      reference: 'Marejeleo: %{reference}'
+      request_format_cta: Omba muundo unaoweza kutumika.
+      request_format_details_html: Ikiwa unatumia vifaa vya usaidizi(kama vile kisoma skrini) na unahitaji toleo la hati hii katika muundo unaoweza kutumika zaidi, tafadhali tuma barua pepe katika <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Tafadhali tuambie muundo unaohitaji. Itatusaidia ikiwa utatufahamisha kifaa cha usaidizi unachotumia.
+      request_format_text: Faili hii huenda haitumiki kwa watumiaji wanaotumia vifaa vya usaidizi.
     back_link:
       back: Rudi nyuma
     character_count:
@@ -47,26 +43,20 @@ sw:
       hide: Ficha ujumbe huu
       text:
       - Tunatumia vidakuzi muhimu ili kufanya tovuti hii ifanye kazi.
-      - Tungependa kuweka vidakuzi vya ziada ili kuelewa jinsi unavyotumia tovuti
-        ya GOV.UK
+      - Tungependa kuweka vidakuzi vya ziada ili kuelewa jinsi unavyotumia tovuti ya GOV.UK
       - kumbuka mipangilio yako na uboreshe huduma za serikali.
-      - Tunatumia pia vidakuzi vilivyowekwa na tovuti zingine ili kutusaidia kutoa
-        maudhui kutoka kwenye huduma zao.
+      - Tunatumia pia vidakuzi vilivyowekwa na tovuti zingine ili kutusaidia kutoa maudhui kutoka kwenye huduma zao.
       title: Vidakuzi kwenye tovuti ya GOV.UK
     feedback:
       close: Funga
-      dont_include_personal_info: Usiweke maelezo ya kibinafsi au ya fedha kama vile
-        nambari yako ya Bima ya Kitaifa au maelezo ya kadi yako ya mikopo.
+      dont_include_personal_info: Usiweke maelezo ya kibinafsi au ya fedha kama vile nambari yako ya Bima ya Kitaifa au maelezo ya kadi yako ya mikopo.
       email_address: Anwani ya barua pepe
       help_us_improve_govuk: Tusaidie kuboresha tovuti ya GOV.UK
       is_not_useful: ukurasa huu si muhimu
       is_this_page_useful: Je, ukurasa huu ni muhimu?
       is_useful: ukurasa huu ni muhimu
       maybe: Huenda
-      more_about_visit: Ili kutusaidia kuboresha tovuti ya GOV.UK, tungependa kupata
-        maelezo zaidi kuhusu hali ya huduma uliyopata leo. Tutakutumia kiungo cha
-        kuelekeza kwenye fomu ya maoni. Itachukua dakika 2 tu kujaza. Usijali, hatutakutumia
-        barua taka au kushiriki anwani yako ya barua pepe na mtu yeyote.
+      more_about_visit: Ili kutusaidia kuboresha tovuti ya GOV.UK, tungependa kupata maelezo zaidi kuhusu hali ya huduma uliyopata leo. Tutakutumia kiungo cha kuelekeza kwenye fomu ya maoni. Itachukua dakika 2 tu kujaza. Usijali, hatutakutumia barua taka au kushiriki anwani yako ya barua pepe na mtu yeyote.
       'no': Hapana
       send: Tuma
       send_me_survey: Nitumie utafiti
@@ -84,11 +74,8 @@ sw:
       statistics: Takwimu
       worldwide: Kimataifa
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
-        Hakimiliki ya Crown</a>
-      licence_html: Maudhui yote yanapatikana chini ya <a class="govuk-footer__link"
-        href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-        rel="license">Open Government Licence v3.0</a>, isipokuwa ibainishwe vinginevyo
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Hakimiliki ya Crown</a>
+      licence_html: Maudhui yote yanapatikana chini ya <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, isipokuwa ibainishwe vinginevyo
       support_links: Viungo vya ziada
     layout_header:
       hide_button: Ficha utafutaji
@@ -172,5 +159,3 @@ sw:
       edit: Badilisha
     tabs:
       contents: Maudhui
-  common:
-    translations: Tafsiri

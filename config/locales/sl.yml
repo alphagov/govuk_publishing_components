@@ -1,20 +1,8 @@
+---
 sl:
+  common:
+    translations: Prevodi
   components:
-    attachment:
-      page:
-        one: 1 stran
-        two:
-        few:
-        other: "%{count} strani"
-      opendocument_html: Dokument je formata <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link'>Odpri dokument</a>
-      order_a_copy: Naročite izvod
-      reference: 'Referenca: % (reference}'
-      request_format_cta: Zahtevajte dostopen format.
-      request_format_details_html: |-
-        Če uporabljate podporno tehnologijo (na primer bralnik zaslona) in potrebujete
-        različico tega dokumenta v bolj dostopni obliki, pošljite e -pošto na <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Prosimo, povejte nam, kateri format potrebujete. V pomoč nam bo, če nam poveste, katero podporno tehnologijo uporabljate.
-      request_format_text: Ta datoteka morda ni primerna za uporabnike podporne tehnologije.
     accordion:
       hide: Skrij
       hide_all: Skrij vse razdelke
@@ -23,6 +11,20 @@ sl:
       this_section_visually_hidden: " ta razdelek"
     article_schema:
       scoped_search_description: Išči znotraj %{title}
+    attachment:
+      opendocument_html: Dokument je formata <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>Odpri dokument</a>
+      order_a_copy: Naročite izvod
+      page:
+        few:
+        one: 1 stran
+        other: "%{count} strani"
+        two:
+      reference: 'Referenca: % (reference}'
+      request_format_cta: Zahtevajte dostopen format.
+      request_format_details_html: |-
+        Če uporabljate podporno tehnologijo (na primer bralnik zaslona) in potrebujete
+        različico tega dokumenta v bolj dostopni obliki, pošljite e -pošto na <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Prosimo, povejte nam, kateri format potrebujete. V pomoč nam bo, če nam poveste, katero podporno tehnologijo uporabljate.
+      request_format_text: Ta datoteka morda ni primerna za uporabnike podporne tehnologije.
     back_link:
       back: Nazaj
     character_count:
@@ -54,18 +56,14 @@ sl:
       title: Piškotki na GOV.UK
     feedback:
       close: Zapri
-      dont_include_personal_info: Ne vključujte osebnih ali finančnih podatkov, na
-        primer številke zavarovanja ali podatkov o kreditni kartici.
+      dont_include_personal_info: Ne vključujte osebnih ali finančnih podatkov, na primer številke zavarovanja ali podatkov o kreditni kartici.
       email_address: E-poštni naslov
       help_us_improve_govuk: Pomagajte nam izboljšati GOV.UK
       is_not_useful: ta stran ni uporabna
       is_this_page_useful: Je ta stran uporabna?
       is_useful: Ta stran je uporabna
       maybe: Morda
-      more_about_visit: Radi bi izboljšali GOV.UK, zato bi radi izvedeli več o vašem
-        današnjem obisku. Poslali vam bomo povezavo do obrazca za povratne informacije.
-        Za izpolnitev potrebujete le 2 minuti. Ne skrbite, ne bomo vam pošiljali neželene
-        pošte, niti vašega e-poštnega naslova delili z nikomer.
+      more_about_visit: Radi bi izboljšali GOV.UK, zato bi radi izvedeli več o vašem današnjem obisku. Poslali vam bomo povezavo do obrazca za povratne informacije. Za izpolnitev potrebujete le 2 minuti. Ne skrbite, ne bomo vam pošiljali neželene pošte, niti vašega e-poštnega naslova delili z nikomer.
       'no': Ne
       send: Pošlji
       send_me_survey: Pošlji mi raziskavo
@@ -83,10 +81,8 @@ sl:
       statistics: Statistika
       worldwide: Po svetu
     layout_footer:
-      copyright_html: <a class="govnu-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
-        Avtorske pravice krone</a>
-      licence_html: Vsa vsebina je na voljo na <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-        rel="license">Odprto vladno dovoljenje v3.0</a>, razen kjer je zapisano drugače
+      copyright_html: <a class="govnu-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Avtorske pravice krone</a>
+      licence_html: Vsa vsebina je na voljo na <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Odprto vladno dovoljenje v3.0</a>, razen kjer je zapisano drugače
       support_links: Podporne povezave
     layout_header:
       hide_button: Skrij iskanje
@@ -170,5 +166,3 @@ sl:
       edit: Spremeni
     tabs:
       contents: Vsebina
-  common:
-    translations: Prevodi

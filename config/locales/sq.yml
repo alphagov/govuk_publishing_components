@@ -1,22 +1,8 @@
+---
 sq:
+  common:
+    translations: Përkthimet
   components:
-    attachment:
-      page:
-        one: 1 faqe
-        other: "%{count} faqet"
-      opendocument_html: Ky skedar është në një <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link'>format</a> OpenDocument
-      order_a_copy: Porosit një kopje
-      reference: 'Ref: %{reference}'
-      request_format_cta: Kërkoni një format të arritshëm.
-      request_format_details_html: Nëse përdorni teknologji ndihmëse (si lexuesi i
-        ekranit) dhe keni nevojë për një version të këtij dokumenti në një format
-        më të arritshëm, ju lutemi dërgoni email <a href='mailto:%{alternative_format_contact_email}'
-        target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>.
-        Ju lutemi na tregoni se çfarë formati ju nevojitet. Do të na ndihmojë nëse
-        thoni çfarë teknologjie ndihmëse përdorni.
-      request_format_text: Ky skedar mund të mos jetë i përshtatshëm për përdoruesit
-        e teknologjisë ndihmëse.
     accordion:
       hide: Fshih
       hide_all: Fshih të gjitha seksionet
@@ -25,6 +11,16 @@ sq:
       this_section_visually_hidden: " këtë seksion"
     article_schema:
       scoped_search_description: Kërko brenda %{title}
+    attachment:
+      opendocument_html: Ky skedar është në një <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>format</a> OpenDocument
+      order_a_copy: Porosit një kopje
+      page:
+        one: 1 faqe
+        other: "%{count} faqet"
+      reference: 'Ref: %{reference}'
+      request_format_cta: Kërkoni një format të arritshëm.
+      request_format_details_html: Nëse përdorni teknologji ndihmëse (si lexuesi i ekranit) dhe keni nevojë për një version të këtij dokumenti në një format më të arritshëm, ju lutemi dërgoni email <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Ju lutemi na tregoni se çfarë formati ju nevojitet. Do të na ndihmojë nëse thoni çfarë teknologjie ndihmëse përdorni.
+      request_format_text: Ky skedar mund të mos jetë i përshtatshëm për përdoruesit e teknologjisë ndihmëse.
     back_link:
       back: Prapa
     character_count:
@@ -49,24 +45,18 @@ sq:
       - Ne përdorim disa cookie thelbësore për ta bërë këtë faqe interneti të funksionojë.
       - Ne do të donim të vendosnim cookie shtesë për të kuptuar se si përdorni GOV.UK
       - mbani mend cilësimet tuaja dhe përmirësoni shërbimet qeveritare.
-      - Ne gjithashtu përdorim cookie të vendosur nga faqe të tjera për të na ndihmuar
-        të ofrojmë përmbajtje nga shërbimet e tyre.
+      - Ne gjithashtu përdorim cookie të vendosur nga faqe të tjera për të na ndihmuar të ofrojmë përmbajtje nga shërbimet e tyre.
       title: Cookies në GOV.UK
     feedback:
       close: Mbyll
-      dont_include_personal_info: Mos përfshini informacione personale ose financiare
-        si numri juaj i Sigurimit Kombëtar ose detajet e kartës së kreditit.
+      dont_include_personal_info: Mos përfshini informacione personale ose financiare si numri juaj i Sigurimit Kombëtar ose detajet e kartës së kreditit.
       email_address: Adresa e emailit
       help_us_improve_govuk: Na ndihmoni të përmirësojmë GOV.UK
       is_not_useful: kjo faqe nuk është e dobishme
       is_this_page_useful: A është e dobishme kjo faqe?
       is_useful: kjo faqe është e dobishme
       maybe: Ndoshta
-      more_about_visit: Për të na ndihmuar të përmirësojmë GOV.UK, ne do të donim
-        të dinim më shumë për vizitën tuaj sot. Ne do t'ju dërgojmë një lidhje me
-        një formë reagimi. Do të duhen vetëm 2 minuta për tu plotësuar. Mos u shqetësoni
-        se nuk do t'ju dërgojmë spam ose nuk do të ndajmë adresën tuaj të postës elektronike
-        me askënd.
+      more_about_visit: Për të na ndihmuar të përmirësojmë GOV.UK, ne do të donim të dinim më shumë për vizitën tuaj sot. Ne do t'ju dërgojmë një lidhje me një formë reagimi. Do të duhen vetëm 2 minuta për tu plotësuar. Mos u shqetësoni se nuk do t'ju dërgojmë spam ose nuk do të ndajmë adresën tuaj të postës elektronike me askënd.
       'no': Jo
       send: Dërgo
       send_me_survey: Më dërgoni sondazhin
@@ -84,12 +74,8 @@ sq:
       statistics: Statistika
       worldwide: Botërore
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
-        Crown e drejta e autorit</a>
-      licence_html: E gjithë përmbajtja është në dispozicion nën <a class="govuk-footer__link"
-        href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-        rel="license">Licencën e Qeverisë së Hapur v3.0</a>, përveç rasteve kur thuhet
-        ndryshe
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown e drejta e autorit</a>
+      licence_html: E gjithë përmbajtja është në dispozicion nën <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Licencën e Qeverisë së Hapur v3.0</a>, përveç rasteve kur thuhet ndryshe
       support_links: Lidhjet mbështetëse
     layout_header:
       hide_button: Fshih kërkimin
@@ -173,5 +159,3 @@ sq:
       edit: Ndrysho
     tabs:
       contents: Përmbajtje
-  common:
-    translations: Përkthimet

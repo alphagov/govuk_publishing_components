@@ -1,21 +1,8 @@
+---
 'no':
+  common:
+    translations: Oversettelser
   components:
-    attachment:
-      page:
-        one: 1 side
-        other: "%{count} sider"
-      opendocument_html: Denne filen er i <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link'>OpenDocument</a>-format
-      order_a_copy: Bestill en kopi
-      reference: 'Ref: %{reference}'
-      request_format_cta: Be om et tilgjengelig format.
-      request_format_details_html: Hvis du bruker hjelpemiddel (for eksempel en skjermleser)
-        og trenger en versjon av dette dokumentet i et mer tilgjengelig format, kan
-        du sende en e-post til <a href='mailto:%{alternative_format_contact_email}'
-        target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>.
-        Fortell oss hvilket format du trenger. Det vil hjelpe oss hvis du forteller
-        hvilken hjelpeteknologi du bruker.
-      request_format_text: Denne filen er muligens ikke egnet for brukere av hjelpeteknologi.
     accordion:
       hide: Skjul
       hide_all: Skjul alle seksjoner
@@ -24,6 +11,16 @@
       this_section_visually_hidden: " denne seksjonen"
     article_schema:
       scoped_search_description: Søk i %{title}
+    attachment:
+      opendocument_html: Denne filen er i <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a>-format
+      order_a_copy: Bestill en kopi
+      page:
+        one: 1 side
+        other: "%{count} sider"
+      reference: 'Ref: %{reference}'
+      request_format_cta: Be om et tilgjengelig format.
+      request_format_details_html: Hvis du bruker hjelpemiddel (for eksempel en skjermleser) og trenger en versjon av dette dokumentet i et mer tilgjengelig format, kan du sende en e-post til <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Fortell oss hvilket format du trenger. Det vil hjelpe oss hvis du forteller hvilken hjelpeteknologi du bruker.
+      request_format_text: Denne filen er muligens ikke egnet for brukere av hjelpeteknologi.
     back_link:
       back: Tilbake
     character_count:
@@ -45,28 +42,21 @@
       confirmation_message_link: endre innstillingene for informasjonskapsler
       hide: Skjul denne meldingen
       text:
-      - Vi bruker noen viktige informasjonskapsler for å få dette nettstedet til å
-        fungere.
-      - Vi vil gjerne sette flere informasjonskapsler for å forstå hvordan du bruker
-        GOV.UK
+      - Vi bruker noen viktige informasjonskapsler for å få dette nettstedet til å fungere.
+      - Vi vil gjerne sette flere informasjonskapsler for å forstå hvordan du bruker GOV.UK
       - huske innstillingene dine og forbedre de offentlige tjenestene.
-      - 'Vi bruker også informasjonskapsler satt av andre nettsteder for å hjelpe
-        oss med å levere innhold fra tjenestene deres. '
+      - 'Vi bruker også informasjonskapsler satt av andre nettsteder for å hjelpe oss med å levere innhold fra tjenestene deres. '
       title: Informasjonskapsler på GOV.UK
     feedback:
       close: Lukk
-      dont_include_personal_info: Ikke inkluder personlig eller finansiell informasjon,
-        for eksempel ditt National Insurance-nummer eller kredittkortinformasjon.
+      dont_include_personal_info: Ikke inkluder personlig eller finansiell informasjon, for eksempel ditt National Insurance-nummer eller kredittkortinformasjon.
       email_address: E-postadresse
       help_us_improve_govuk: Hjelp oss med å forbedre GOV.UK
       is_not_useful: denne siden er ikke nyttig
       is_this_page_useful: Er denne siden nyttig?
       is_useful: denne siden er nyttig
       maybe: Kanskje
-      more_about_visit: For å hjelpe oss med å forbedre GOV.UK, vil vi gjerne vite
-        mer om besøket ditt i dag. Vi sender deg en lenke til et tilbakemeldingsskjema.
-        Det tar bare 2 minutter å fylle ut. Vi sender deg ikke spam og deler ikke
-        e-postadressen din med noen.
+      more_about_visit: For å hjelpe oss med å forbedre GOV.UK, vil vi gjerne vite mer om besøket ditt i dag. Vi sender deg en lenke til et tilbakemeldingsskjema. Det tar bare 2 minutter å fylle ut. Vi sender deg ikke spam og deler ikke e-postadressen din med noen.
       'no': Nei
       send: Sende
       send_me_survey: Send meg undersøkelsen
@@ -84,11 +74,8 @@
       statistics: Statistikk
       worldwide: Verdensomspennende
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
-        Crown copyright</a>
-      licence_html: Alt innhold er tilgjengelig under<a class="govuk-footer__link"
-        href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-        rel="license">Open Government Licence v3.0</a>, med mindre annet er angitt
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
+      licence_html: Alt innhold er tilgjengelig under<a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, med mindre annet er angitt
       support_links: Støttelenker
     layout_header:
       hide_button: Skjul søk
@@ -172,5 +159,3 @@
       edit: Endring
     tabs:
       contents: Innhold
-  common:
-    translations: Oversettelser

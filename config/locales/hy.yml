@@ -1,19 +1,8 @@
+---
 hy:
+  common:
+    translations: Թարգմանություններ
   components:
-    attachment:
-      page:
-        one: 1 էջ
-        other: "%{count} էջ"
-      opendocument_html: Այս ֆայլը <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link'>Բացել փաստաթուղթը</a> ձևաչափով է
-      order_a_copy: Պատվիրել պատճենը
-      reference: Հղում՝ %{reference}
-      request_format_cta: 'Նշեք համապատասխան ձևաչափ:'
-      request_format_details_html: |-
-        Եթե ​​օգտվում եք օժանդակ տեխնոլոգիայից (ինչպես օրինակ՝ էկրանի ընթերցիչ), և ձեզ անհրաժեշտ է
-        այս փաստաթղթի ավելի հասանելի ձևաչափով տարբերակը, ուղարկեք էլ․ նամակ <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a> հասցեին։ Խնդրում ենք նշել, թե ինչ ձևաչափով եք ցանկանում ստանալ փաստաթուղթը: Մեզ կօգնի նաև, եթե նշեք՝ ինչ օժանդակ տեխնոլոգիայից եք օգտվում:
-      request_format_text: 'Այս ֆայլը կարող է համապատասխան չլինել օժանդակ տեխնոլոգիայից
-        օգտվողների համար:'
     accordion:
       hide: Թաքցնել
       hide_all: Թաքցնել բոլոր բաժինները
@@ -22,6 +11,18 @@ hy:
       this_section_visually_hidden: " այս բաժինը"
     article_schema:
       scoped_search_description: Որոնել %{title}-ի թեմայի շուրջ
+    attachment:
+      opendocument_html: Այս ֆայլը <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>Բացել փաստաթուղթը</a> ձևաչափով է
+      order_a_copy: Պատվիրել պատճենը
+      page:
+        one: 1 էջ
+        other: "%{count} էջ"
+      reference: Հղում՝ %{reference}
+      request_format_cta: 'Նշեք համապատասխան ձևաչափ:'
+      request_format_details_html: |-
+        Եթե ​​օգտվում եք օժանդակ տեխնոլոգիայից (ինչպես օրինակ՝ էկրանի ընթերցիչ), և ձեզ անհրաժեշտ է
+        այս փաստաթղթի ավելի հասանելի ձևաչափով տարբերակը, ուղարկեք էլ․ նամակ <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a> հասցեին։ Խնդրում ենք նշել, թե ինչ ձևաչափով եք ցանկանում ստանալ փաստաթուղթը: Մեզ կօգնի նաև, եթե նշեք՝ ինչ օժանդակ տեխնոլոգիայից եք օգտվում:
+      request_format_text: 'Այս ֆայլը կարող է համապատասխան չլինել օժանդակ տեխնոլոգիայից օգտվողների համար:'
     back_link:
       back: Հետ
     character_count:
@@ -48,23 +49,18 @@ hy:
       - որպեսզի հասկանանք
       - թե ինչպես եք օգտվում GOV.UK կայքից
       - 'պահպանենք ձեր կարգավորումները և բարելավենք կառավարական ​​ծառայությունները:'
-      - 'Մենք նաև օգտագործում ենք այլ կայքերի կողմից սահմանված քուքիներ իրենց ծառայությունների
-        բովանդակությունը փոխանցելու հարցում որպես օգնություն:'
+      - 'Մենք նաև օգտագործում ենք այլ կայքերի կողմից սահմանված քուքիներ իրենց ծառայությունների բովանդակությունը փոխանցելու հարցում որպես օգնություն:'
       title: Քուքիներ GOV.UK կայքում
     feedback:
       close: Փակ
-      dont_include_personal_info: 'Մի՛ նշեք անձնական կամ ֆինանսական տվյալներ, ինչպես
-        օրինակ՝ ձեր Ազգային ապահովագրության համարը կամ կրեդիտային քարտի տվյալները:'
+      dont_include_personal_info: 'Մի՛ նշեք անձնական կամ ֆինանսական տվյալներ, ինչպես օրինակ՝ ձեր Ազգային ապահովագրության համարը կամ կրեդիտային քարտի տվյալները:'
       email_address: Էլ․ փոստի հասցե
       help_us_improve_govuk: Օգնեք մեզ կատարելագործոլ GOV.UK կայքը
       is_not_useful: այս էջն օգտակար չէ
       is_this_page_useful: 'Ի՞նչ եք կարծում, այս էջն օգտակա՞ր է:'
       is_useful: այս էջն օգտակար է
       maybe: Հնարավոր է
-      more_about_visit: 'GOV.UK կայքը կատարելագործելու հարցում մեզ օգնելու համար կցանկանայինք
-        իմանալ ավելին ձեր այսօրվա այցի մասին: Մենք կուղարկենք ձեզ հետադարձ կապի ձևաթուղթը։
-        Լրացնելու համար ձեզնից կպահանջվի ընդամենը 2 րոպե: Մի՛ անհանգստացեք, ձեզ ոչ
-        մի սպամ չենք ուղարկի կամ էլ․ փոստի հասցեն որևէ մեկին չենք տրամադրի:'
+      more_about_visit: 'GOV.UK կայքը կատարելագործելու հարցում մեզ օգնելու համար կցանկանայինք իմանալ ավելին ձեր այսօրվա այցի մասին: Մենք կուղարկենք ձեզ հետադարձ կապի ձևաթուղթը։ Լրացնելու համար ձեզնից կպահանջվի ընդամենը 2 րոպե: Մի՛ անհանգստացեք, ձեզ ոչ մի սպամ չենք ուղարկի կամ էլ․ փոստի հասցեն որևէ մեկին չենք տրամադրի:'
       'no': Ոչ
       send: Ուղարկեք
       send_me_survey: Ուղարկեք ինձ հարցումը
@@ -82,12 +78,8 @@ hy:
       statistics: Վիճակագրություն
       worldwide: Ամբողջ աշխարհում
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
-        Crown copyright</a>
-      licence_html: Ողջ բովանդակությունը հասանելի է <a class="govuk-footer__link"
-        href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-        rel="license">Open Government Licence v3.0 հրապարակումների սերվերում</a>,
-        բացառությամբ այլ դեպքերի
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
+      licence_html: Ողջ բովանդակությունը հասանելի է <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0 հրապարակումների սերվերում</a>, բացառությամբ այլ դեպքերի
       support_links: Օգտակար հղումներ
     layout_header:
       hide_button: Թաքցնել որոնման դաշտը
@@ -171,5 +163,3 @@ hy:
       edit: Փոխել
     tabs:
       contents: Բովանդակություն
-  common:
-    translations: Թարգմանություններ

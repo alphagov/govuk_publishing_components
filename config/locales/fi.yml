@@ -1,21 +1,8 @@
+---
 fi:
+  common:
+    translations: Käännökset
   components:
-    attachment:
-      page:
-        one: 1 sivu
-        other: "%{count} pages"
-      opendocument_html: Tämä tiedosto on <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link'> OpenDocument</a> muodossa
-      order_a_copy: Tilaa kopio
-      reference: 'Viite: %{reference}'
-      request_format_cta: Pyydä helppokäyttöistä muotoa.
-      request_format_details_html: Jos käytät apuvälinetekniikkaa (kuten näytönlukuohjelmaa)
-        ja tarvitset tämän asiakirjan version helppokäyttöisemmään muotoon, lähetä
-        sähköpostia osoitteeseen <a href='mailto:%{alternative_format_contact_email}'
-        target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>.
-        Kerro meille, missä muodossa tarvitset. Se auttaa meitä, jos sanot, mitä apuvälineteknologiaa
-        käytät.
-      request_format_text: Tämä tiedosto ei ehkä sovellu apuvälineen käyttäjille.
     accordion:
       hide: Piilottaa
       hide_all: Piilota kaikki osiot
@@ -24,6 +11,16 @@ fi:
       this_section_visually_hidden: " Tämä jakso"
     article_schema:
       scoped_search_description: Haku sisällä %{title}
+    attachment:
+      opendocument_html: Tämä tiedosto on <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'> OpenDocument</a> muodossa
+      order_a_copy: Tilaa kopio
+      page:
+        one: 1 sivu
+        other: "%{count} pages"
+      reference: 'Viite: %{reference}'
+      request_format_cta: Pyydä helppokäyttöistä muotoa.
+      request_format_details_html: Jos käytät apuvälinetekniikkaa (kuten näytönlukuohjelmaa) ja tarvitset tämän asiakirjan version helppokäyttöisemmään muotoon, lähetä sähköpostia osoitteeseen <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Kerro meille, missä muodossa tarvitset. Se auttaa meitä, jos sanot, mitä apuvälineteknologiaa käytät.
+      request_format_text: Tämä tiedosto ei ehkä sovellu apuvälineen käyttäjille.
     back_link:
       back: Takaisin
     character_count:
@@ -54,18 +51,14 @@ fi:
       title: Evästeet sivustolla GOV.UK
     feedback:
       close: Kiinni
-      dont_include_personal_info: Älä ilmoita henkilökohtaisia tai taloudellisia tietoja,
-        kuten sosiaaliturvatunnusta tai luottokorttitietoja.
+      dont_include_personal_info: Älä ilmoita henkilökohtaisia tai taloudellisia tietoja, kuten sosiaaliturvatunnusta tai luottokorttitietoja.
       email_address: Sähköpostiosoite
       help_us_improve_govuk: Auta meitä parantamaan GOV.UK
       is_not_useful: tämä sivu ei ole hyödyllinen
       is_this_page_useful: Onko tämä sivu hyödyllinen?
       is_useful: tämä sivu on hyödyllinen
       maybe: Ehkä
-      more_about_visit: Auttaaksemme meitä parantamaan GOV.UK:ta haluaisimme tietää
-        lisää tämänpäiväisestä vierailustasi. Lähetämme sinulle linkin palautelomakkeeseen.
-        Sen täyttäminen vie vain 2 minuuttia. Älä huoli, emme lähetä sinulle roskapostia
-        tai jaa sähköpostiosoitettasi kenenkään kanssa.
+      more_about_visit: Auttaaksemme meitä parantamaan GOV.UK:ta haluaisimme tietää lisää tämänpäiväisestä vierailustasi. Lähetämme sinulle linkin palautelomakkeeseen. Sen täyttäminen vie vain 2 minuuttia. Älä huoli, emme lähetä sinulle roskapostia tai jaa sähköpostiosoitettasi kenenkään kanssa.
       'no': Ei
       send: Lähettää
       send_me_survey: Lähetä kysely minulle
@@ -83,11 +76,8 @@ fi:
       statistics: Tilastot
       worldwide: Maailmanlaajuinen
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
-        Kruunun tekijänoikeus</a>
-      licence_html: Kaikki sisältö on saatavilla osoitteessa <a class="govuk-footer__link"
-        href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-        rel="license">Avoimen hallinnon lisenssi v3.0</a>, ellei toisin mainita
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Kruunun tekijänoikeus</a>
+      licence_html: Kaikki sisältö on saatavilla osoitteessa <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Avoimen hallinnon lisenssi v3.0</a>, ellei toisin mainita
       support_links: Tukilinkit
     layout_header:
       hide_button: Piilota haku
@@ -171,5 +161,3 @@ fi:
       edit: Muuttaa
     tabs:
       contents: Sisällys
-  common:
-    translations: Käännökset

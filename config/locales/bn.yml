@@ -1,22 +1,8 @@
+---
 bn:
+  common:
+    translations: অনুবাদসমূহ
   components:
-    attachment:
-      page:
-        one: 1 পেজ
-        other: "%{count} পেজ"
-      opendocument_html: এই নথিটি একটি <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link'>OpenDocument</a> ফরম্যাট।
-      order_a_copy: একটি অনুলিপির অর্ডার করুন
-      reference: 'সুত্র: %{reference}'
-      request_format_cta: একটি প্রবেশযোগ্য ফরম্যাটের অনুরোধ করুন।
-      request_format_details_html: আপনি যদি সহায়তামূলক প্রযুক্তি (যেমন স্ক্রিন রিডার)
-        ব্যবহার করেন এবং এই নথির একটি সংস্করণ আরও ভালোভাবে ব্যবহার করার ফরম্যাটে প্রয়োজন
-        হয়, তবে অনুগ্রহ করে <a href='mailto:%{alternative_format_contact_email}' target='_blank'
-        class='govuk-link'>%{alternative_format_contact_email}</a>-এ ইমেইল করুন। আপনার
-        কোন ফরম্যাট প্রয়োজন অনুগ্রহ করে তা আমাদেরকে জানান। আপনি কোন সহায়তামূলক প্রযুক্তি
-        ব্যবহার করেন তা জানালে আমাদের জন্য সহায়ক হবে।
-      request_format_text: এই নথিটি সহায়তামূলক প্রযুক্তি ব্যবহারকারীগণের জন্য উপযুক্ত
-        নাও হতে পারে।
     accordion:
       hide: লুকিয়ে রাখুন
       hide_all: সকল অংশ লুকিয়ে রাখুন
@@ -25,6 +11,16 @@ bn:
       this_section_visually_hidden: " এই অংশ"
     article_schema:
       scoped_search_description: "%{title}-এর মধ্যে অনুসন্ধান করুন"
+    attachment:
+      opendocument_html: এই নথিটি একটি <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a> ফরম্যাট।
+      order_a_copy: একটি অনুলিপির অর্ডার করুন
+      page:
+        one: 1 পেজ
+        other: "%{count} পেজ"
+      reference: 'সুত্র: %{reference}'
+      request_format_cta: একটি প্রবেশযোগ্য ফরম্যাটের অনুরোধ করুন।
+      request_format_details_html: আপনি যদি সহায়তামূলক প্রযুক্তি (যেমন স্ক্রিন রিডার) ব্যবহার করেন এবং এই নথির একটি সংস্করণ আরও ভালোভাবে ব্যবহার করার ফরম্যাটে প্রয়োজন হয়, তবে অনুগ্রহ করে <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>-এ ইমেইল করুন। আপনার কোন ফরম্যাট প্রয়োজন অনুগ্রহ করে তা আমাদেরকে জানান। আপনি কোন সহায়তামূলক প্রযুক্তি ব্যবহার করেন তা জানালে আমাদের জন্য সহায়ক হবে।
+      request_format_text: এই নথিটি সহায়তামূলক প্রযুক্তি ব্যবহারকারীগণের জন্য উপযুক্ত নাও হতে পারে।
     back_link:
       back: ফিরে যান
     character_count:
@@ -48,25 +44,20 @@ bn:
       text:
       - "“এই ওয়েবসাইটটি যেন কাজ করে সেজন্য আমরা কিছু প্রয়োজনীয় কুকি ব্যবহার করি”"
       - "“আপনি কিভাবে GOV.UK ব্যবহার করেন তা বুঝতে"
-      - আপনার সেটিংস স্মরণ রাখতে এবং সরকারি পরিষেবা উন্নত করতে আমরা অতিরিক্ত কুকি
-        সেট করতে চাই”
+      - আপনার সেটিংস স্মরণ রাখতে এবং সরকারি পরিষেবা উন্নত করতে আমরা অতিরিক্ত কুকি সেট করতে চাই”
       - "“আমরা অন্যান্য সাইটের কুকিজও ব্যবহার করি"
       - যা আমাদেরকে তাদের পরিষেবাসমূহের বিষয়বস্তু সরবরাহ করতে সাহায্য করে।”
       title: GOV.UK-তে কুকিজ
     feedback:
       close: বন্ধ করুন
-      dont_include_personal_info: আপনার জাতীয় বিমা নম্বর বা ক্রেডিট কার্ডের তথ্যের
-        মতো ব্যক্তিগত বা আর্থিক তথ্য অন্তর্ভুক্ত করবেন না।
+      dont_include_personal_info: আপনার জাতীয় বিমা নম্বর বা ক্রেডিট কার্ডের তথ্যের মতো ব্যক্তিগত বা আর্থিক তথ্য অন্তর্ভুক্ত করবেন না।
       email_address: ইমেইল ঠিকানা
       help_us_improve_govuk: GOV.UK উন্নত করতে আমাদেরকে সহায়তা করুন
       is_not_useful: এই পেজটি সহায়ক নয়
       is_this_page_useful: এই পেজটি কি সহায়ক?
       is_useful: এই পেজটি সহায়ক
       maybe: হতে পারে
-      more_about_visit: GOV.UK-কে উন্নত করতে সহায়তা করার জন্য, আমরা আজ আপনার ভিজিট
-        সম্পর্কে জানতে চাই। আমরা একটি ফিডব্যাক ফর্মে আপনাকে একটি লিংক পাঠাবো। এটি
-        পূরণ করতে মাত্র 2 মিনিট সময় লাগবে। উদ্বিগ্ন হবেন না, আমরা আপনাকে স্প্যাম পাঠাবো
-        না বা আপনার ইমেইল ঠিকানা কারো সাথে শেয়ার করবো না।
+      more_about_visit: GOV.UK-কে উন্নত করতে সহায়তা করার জন্য, আমরা আজ আপনার ভিজিট সম্পর্কে জানতে চাই। আমরা একটি ফিডব্যাক ফর্মে আপনাকে একটি লিংক পাঠাবো। এটি পূরণ করতে মাত্র 2 মিনিট সময় লাগবে। উদ্বিগ্ন হবেন না, আমরা আপনাকে স্প্যাম পাঠাবো না বা আপনার ইমেইল ঠিকানা কারো সাথে শেয়ার করবো না।
       'no': না
       send: পাঠান
       send_me_survey: আমাকে সমীক্ষাটি পাঠান
@@ -84,11 +75,8 @@ bn:
       statistics: পরিসংখ্যান
       worldwide: বিশ্বব্যাপী
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">©
-        ক্রাউন কপিরাইট</a>
-      licence_html: শুধুমাত্র অন্যভাবে বর্ণিত থাকা ছাড়া, সকল তথ্য <a class="govuk-footer__link"
-        href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-        rel="license">ওপেন গভর্নমেন্ট লাইসেন্স v3.0</a>-এর অধীনে উপলভ্য
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© ক্রাউন কপিরাইট</a>
+      licence_html: শুধুমাত্র অন্যভাবে বর্ণিত থাকা ছাড়া, সকল তথ্য <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">ওপেন গভর্নমেন্ট লাইসেন্স v3.0</a>-এর অধীনে উপলভ্য
       support_links: সহায়তার লিংক
     layout_header:
       hide_button: অনুসন্ধান লুকিয়ে রাখুন
@@ -108,8 +96,7 @@ bn:
     modal_dialogue:
       close_modal: ক্লোজ মোডাল ডায়ালগ
     organisation_schema:
-      all_content_search_description: "%{organisation}-এর সকল বিষয়বস্তু খুঁজে বের
-        করুন"
+      all_content_search_description: "%{organisation}-এর সকল বিষয়বস্তু খুঁজে বের করুন"
     previous_and_next_navigation:
       pagination: পেজিনেশন
     print_link:
@@ -173,5 +160,3 @@ bn:
       edit: পরিবর্তন
     tabs:
       contents: বিষয়সূচী
-  common:
-    translations: অনুবাদসমূহ

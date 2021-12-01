@@ -1,3 +1,4 @@
+---
 id:
   common:
     translations: Terjemahan
@@ -11,22 +12,15 @@ id:
     article_schema:
       scoped_search_description: Cari dalam %{title}
     attachment:
-      opendocument_html: File ini berformat <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation'
-        target=%{target} class='govuk-link'>OpenDocument</a>
+      opendocument_html: File ini berformat <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a>
       order_a_copy: Pesan salinan
       page:
         one: 1 halaman
         other: "%{count} halaman"
       reference: 'Ref: %{reference}'
       request_format_cta: Minta format yang dapat diakses.
-      request_format_details_html: Jika menggunakan bantuan teknologi (seperti pembaca
-        layar) dan membutuhkan versi dokumen ini dalam format yang lebih dapat diakses,
-        silakan kirim email ke <a href='mailto:%{alternative_format_contact_email}'
-        target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>.
-        Silakan beri tahu kami format yang dibutuhkan. Ini akan membantu kami jika
-        Anda mengatakan teknologi bantuan apa yang Anda gunakan.
-      request_format_text: File ini mungkin tidak sesuai untuk pengguna teknologi
-        bantuan.
+      request_format_details_html: Jika menggunakan bantuan teknologi (seperti pembaca layar) dan membutuhkan versi dokumen ini dalam format yang lebih dapat diakses, silakan kirim email ke <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Silakan beri tahu kami format yang dibutuhkan. Ini akan membantu kami jika Anda mengatakan teknologi bantuan apa yang Anda gunakan.
+      request_format_text: File ini mungkin tidak sesuai untuk pengguna teknologi bantuan.
     back_link:
       back: Kembali
     character_count:
@@ -48,30 +42,22 @@ id:
       confirmation_message_link: ubah pengaturan cookie Anda
       hide: Sembunyikan pesan ini
       text:
-      - Kami menggunakan beberapa cookie yang sangat dibutuhkan untuk membuat situs
-        web ini berfungsi.
-      - Kami ingin mengatur cookie tambahan untuk memahami cara Anda menggunakan situs
-        GOV.UK
+      - Kami menggunakan beberapa cookie yang sangat dibutuhkan untuk membuat situs web ini berfungsi.
+      - Kami ingin mengatur cookie tambahan untuk memahami cara Anda menggunakan situs GOV.UK
       - mengingat pengaturan Anda
       - dan meningkatkan layanan pemerintah.
-      - Kami juga menggunakan cookie yang diatur oleh situs lain untuk membantu kami
-        memberi konten dari layanan mereka.
+      - Kami juga menggunakan cookie yang diatur oleh situs lain untuk membantu kami memberi konten dari layanan mereka.
       title: Cookie di situs GOV.UK
     feedback:
       close: Tutup
-      dont_include_personal_info: Jangan masukkan informasi pribadi atau keuangan
-        seperti nomor Asuransi Nasional atau detail kartu kredit Anda.
+      dont_include_personal_info: Jangan masukkan informasi pribadi atau keuangan seperti nomor Asuransi Nasional atau detail kartu kredit Anda.
       email_address: Alamat email
       help_us_improve_govuk: Bantu kami meningkatkan situs GOV.UK
       is_not_useful: halaman ini tidak bermanfaat
       is_this_page_useful: Apakah halaman ini bermanfaat?
       is_useful: halaman ini bermanfaat
       maybe: Mungkin
-      more_about_visit: Untuk membantu kami meningkatkan situs GOV.UK, kami ingin
-        tahu lebih banyak tentang kunjungan Anda hari ini. Kami akan mengirimi Anda
-        tautan ke formulir umpan balik. Hanya butuh waktu 2 menit untuk mengisinya.
-        Jangan khawatir karena kami tidak akan mengirimi Anda spam atau membagikan
-        alamat email Anda kepada siapa pun.
+      more_about_visit: Untuk membantu kami meningkatkan situs GOV.UK, kami ingin tahu lebih banyak tentang kunjungan Anda hari ini. Kami akan mengirimi Anda tautan ke formulir umpan balik. Hanya butuh waktu 2 menit untuk mengisinya. Jangan khawatir karena kami tidak akan mengirimi Anda spam atau membagikan alamat email Anda kepada siapa pun.
       'no': Tidak
       send: Kirim
       send_me_survey: Kirimi saya surveinya
@@ -89,10 +75,8 @@ id:
       statistics: Statistik
       worldwide: Dunia
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">Hak
-        Cipta © Crown</a>
-      licence_html: Semu konten tersedia sesuai <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
-        rel="license">Lisensi Terbuka Pemerintah v3.0</a>, kecuali dinyatakan berbeda
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">Hak Cipta © Crown</a>
+      licence_html: Semu konten tersedia sesuai <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Lisensi Terbuka Pemerintah v3.0</a>, kecuali dinyatakan berbeda
       support_links: Tautan dukungan
     layout_header:
       hide_button: Sembunyikan pencarian
