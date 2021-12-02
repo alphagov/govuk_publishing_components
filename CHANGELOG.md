@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Use the correct mixins for applying font in the big number component ([PR #2494](https://github.com/alphagov/govuk_publishing_components/pull/2494))
 * Remove use of govuk-font from the big number component ([PR #2493](https://github.com/alphagov/govuk_publishing_components/pull/2493))
 
 ## 27.15.0

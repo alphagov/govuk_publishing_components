@@ -1,11 +1,12 @@
 .gem-c-big-number {
   margin-bottom: govuk-spacing(3);
-  font-family: $govuk-font-family;
+  @include govuk-typography-common;
+  @include govuk-text-colour;
 }
 
 .gem-c-big-number__value {
   font-size: 80px;
-  font-weight: 700;
+  @include govuk-typography-weight-bold;
   line-height: 1;
 
   @if $govuk-typography-use-rem {
@@ -15,7 +16,7 @@
 
 .gem-c-big-number__label {
   font-size: 16px;
-  font-weight: 700;
+  @include govuk-typography-weight-bold;
 
   @if $govuk-typography-use-rem {
     font-size: govuk-px-to-rem(16px);
