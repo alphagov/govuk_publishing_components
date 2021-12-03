@@ -96,13 +96,11 @@ en:
           banners:
             phase_banner_html: This is a new service – your <a class="govuk-link" href="https://signin.account.gov.uk/contact-us?supportType=PUBLIC">feedback</a> will help us to improve it.
         navigation:
-          destroy_user_session: Sign out
           menu_bar:
             account:
               link_text: Your account
             manage:
               link_text: Manage your account
-          user_root_path: Account
     layout_header:
       hide_button: Hide search
       menu: Menu
