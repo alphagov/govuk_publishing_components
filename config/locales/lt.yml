@@ -52,6 +52,20 @@ lt:
       - Taip pat naudojame kitų interneto svetainių nustatytus slapukus
       - kad galėtume teikti jų paslaugų turinį.
       title: GOV.UK slapukai
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: Uždaryti
       dont_include_personal_info: Nenurodykite savo asmeninės ar finansinės informacijos, tokios kaip jūsų valstybinio draudimo numeris arba kredito kortelės duomenys.
@@ -82,12 +96,36 @@ lt:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
       licence_html: Visą turinį rasite <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, nebent nurodyta kitaip
       support_links: Palaikymo nuorodos
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: Slėpti paiešką
       menu: Meniu
       search_button: Ieškoti GOV.UK
       show_button: Rodyti paiešką
       top_level: Aukščiausias lygis
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: Nuo
       history: Istorija
@@ -99,6 +137,8 @@ lt:
       toggle_more: "+% {number} daugiau"
     modal_dialogue:
       close_modal: Uždaryti modalinį dialogo langą
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: Rasti visą turinį iš %{organisation}
     previous_and_next_navigation:
@@ -143,6 +183,9 @@ lt:
       hide_password: Slėpti slaptažodį
       show: Rodyti
       show_password: Rodyti slaptažodį
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: Praleisti ir pereiti prie pagrindinio turinio
     step_by_step_nav:

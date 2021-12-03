@@ -47,6 +47,20 @@ so:
       - xasuuso waxyaabaha aad galisay oo hagaaji adeegyada dawlada.
       - Waxaan sidoo kale isticmaalnaa xogkaydin ay dejiyeen meelo kale si ay kuu caawiyaan meelaha kale oo aan anaguna si dhibyar ugu adeegno waxyaabaha ka yimaada adeegooda.
       title: Xog kaydinta GOV.UK
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: Xidhan
       dont_include_personal_info: Oo aanay kujirin macluumaadka shaqsiyadeed ama maaliyadeed sida lambarka Caymiska Qaranka ama faah-faahinta kiridhit kaadhka.
@@ -77,12 +91,36 @@ so:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
       licence_html: Dhamaan qaybaha waxa laga heli karaa <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated
       support_links: Linkiyada caawinta
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: Qari baadhista
       menu: Manyuu
       search_button: Baadh GOV.UK
       show_button: Muuji baadhista
       top_level: Heerka sare
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: Laga bilaabo
       history: Taariikhda
@@ -94,6 +132,8 @@ so:
       toggle_more: "+ %{number} badan"
     modal_dialogue:
       close_modal: Kusoo dhawoow wada hadal dhex dhexaad ah
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: Raadi dhamaan waxyaabaha uu ka koobanyahay %{organisation}
     previous_and_next_navigation:
@@ -138,6 +178,9 @@ so:
       hide_password: Qari fure sireedka
       show: Muuji
       show_password: Muuji furesireedka
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: Iska dhaaf meelaha muhiimka ah
     step_by_step_nav:

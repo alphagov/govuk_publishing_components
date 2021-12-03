@@ -46,6 +46,20 @@ zh-hk:
       - 我們希望設定更多 cookies 了解您使用 GOV.UK 的方式，請記下您的設定並改善政府服務。
       - 我們亦使用其他網站設定之 cookies 協助我們提供來自他們的服務的內容。
       title: 在 GOV.UK 的 Cookies
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: 關閉
       dont_include_personal_info: 切勿加入諸如您的國民保險編號或信用卡詳情等個人或財務資訊。
@@ -76,12 +90,36 @@ zh-hk:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown 版權所有</a>
       licence_html: 除另有說明者外，所有內容均可在 <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>獲取。
       support_links: 支援連結
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: 隱藏搜尋項
       menu: 選單
       search_button: 搜尋 GOV.UK
       show_button: 顯示搜尋項
       top_level: 最高級別
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: 來自
       history: 過往記錄
@@ -93,6 +131,8 @@ zh-hk:
       toggle_more: "+ %{number} more"
     modal_dialogue:
       close_modal: 關閉互動視窗對話
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: 從 %{organisation} 獲得更多內容
     previous_and_next_navigation:
@@ -137,6 +177,9 @@ zh-hk:
       hide_password: 隱藏密碼
       show: 顯示
       show_password: 顯示密碼
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: 跳過主要內容
     step_by_step_nav:

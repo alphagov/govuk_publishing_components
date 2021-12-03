@@ -46,6 +46,20 @@ zh:
       - 我们希望设置额外的cookie，以了解您如何使用GOV.UK，记住您的设置，并改善政府服务。
       - 我们也使用其他网站设置的cookie，以帮助我们提供其服务的内容。
       title: GOV.UK上的Cookies
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: 关闭
       dont_include_personal_info: 不要包含个人或财务信息，比如您的国家保险号或信用卡信息。
@@ -76,12 +90,36 @@ zh:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown版权所有</a>
       licence_html: 除另有说明外，所有内容均可在 <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">开放政府许可证第3.0版</a>获取
       support_links: 支持链接
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: 隐藏搜索
       menu: 菜单
       search_button: 搜索GOV.UK
       show_button: 显示搜索
       top_level: 最高级
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: 从
       history: 历史
@@ -93,6 +131,8 @@ zh:
       toggle_more: "+ %{number}更多"
     modal_dialogue:
       close_modal: 关闭模态对话
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: 查找 %{organisation} 的全部内容
     previous_and_next_navigation:
@@ -137,6 +177,9 @@ zh:
       hide_password: 隐藏密码
       show: 显示
       show_password: 显示密码
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: 跳过主要内容
     step_by_step_nav:

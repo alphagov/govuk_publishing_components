@@ -50,6 +50,20 @@ et:
       - kasutame ka teiste saitide seadistatud küpsiseid
       - mis aitavad meil nende teenuste sisu edastada.
       title: Küpsised saidil GOV.UK
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: Sulge
       dont_include_personal_info: Ärge lisage isiklikku ega finantsteavet, näiteks oma isikukoodi ega krediitkaardi andmeid.
@@ -80,12 +94,36 @@ et:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crowni autoriõigus</a>
       licence_html: Kogu sise on saadaval <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a> all, kui pole märgitud teisiti
       support_links: Tugiteenuste lingid
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: Peida otsing
       menu: Menüü
       search_button: Otsi saidilt GOV.UK
       show_button: Kuva otsing
       top_level: Kõrgeim tase
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: Alates
       history: Ajalugu
@@ -97,6 +135,8 @@ et:
       toggle_more: "+ %{number} veel"
     modal_dialogue:
       close_modal: Sule modaalne dialoog
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: Leidke kogu ettevõtte %{organization} sisu
     previous_and_next_navigation:
@@ -141,6 +181,9 @@ et:
       hide_password: Peida parool
       show: Kuva
       show_password: Kuva parool
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: Mine põhisisu juurde
     step_by_step_nav:

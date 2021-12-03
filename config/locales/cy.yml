@@ -51,6 +51,20 @@ cy:
       - i gofio'ch gosodiadau ac i wella gwasanaethau'r llywodraeth.
       - Rydyn ni hefyd yn defnyddio cwcis sy'n cael eu gosod gan wefannau eraill i'n helpu i gyflwyno cynnwys o'u gwasanaethau nhw.
       title: Cwcis ar GOV.UK
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: Cau
       dont_include_personal_info: Peidiwch â chynnwys gwybodaeth bersonol neu ariannol fel eich rhif Yswiriant Gwladol neu rif cerdyn credyd.
@@ -81,12 +95,36 @@ cy:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Hawlfraint y Goron</a>
       licence_html: Mae'r holl gynnwys ar gael o dan <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Drwydded Agored y Llywodraeth v3.0</a>, ac eithrio ble nodir yn wahanol
       support_links: Dolenni cefnogi
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: Cuddio'r chwiliad
       menu: Dewislen
       search_button: Chwilio GOV.UK
       show_button: Dangos y chwiliad
       top_level: Lefel uchaf
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: Gan
       history: Hanes
@@ -98,6 +136,8 @@ cy:
       toggle_more: "+ %{number} arall"
     modal_dialogue:
       close_modal: Cau'r ddeialog foddol
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: Dod o hyd i'r holl gynnwys gan %{organisation}
     previous_and_next_navigation:
@@ -142,6 +182,9 @@ cy:
       hide_password: Cuddio'r cyfrinair
       show: Dangos
       show_password: Dangos y cyfrinair
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: Neidio i'r prif gynnwys
     step_by_step_nav:

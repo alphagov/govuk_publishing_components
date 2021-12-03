@@ -51,6 +51,20 @@ bg:
       - зададени от други сайтове
       - за да ни помогнат да предоставим съдържание от техните услуги.
       title: Бисквитки на GOV.UK
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: Затваряне
       dont_include_personal_info: Не включвайте лична или финансова информация, като например номера на националната си застраховка или данни за кредитна карта.
@@ -81,12 +95,36 @@ bg:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
       licence_html: Цялото съдържание е налично на <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, освен ако не е посочено друго
       support_links: Помощни линкове
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: Скриване на търсенето
       menu: Меню
       search_button: Търсене в GOV.UK
       show_button: Показване на търсенето
       top_level: Първо ниво
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: От
       history: История
@@ -98,6 +136,8 @@ bg:
       toggle_more: "+ %{number} повече"
     modal_dialogue:
       close_modal: Затваряне на модалния диалог
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: Намиране на цялото съдържание от %{organisation}
     previous_and_next_navigation:
@@ -142,6 +182,9 @@ bg:
       hide_password: Скриване на паролата
       show: Показване
       show_password: Показване на паролата
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: Към основното съдържание
     step_by_step_nav:

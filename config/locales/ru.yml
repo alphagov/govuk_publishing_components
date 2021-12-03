@@ -51,6 +51,20 @@ ru:
       - установленные другими сайтами
       - чтобы поставлять контент из их услуг.
       title: Файлы "cookie" на GOV.UK
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: Закрыть
       dont_include_personal_info: Не указывайте личную или финансовую информацию, например номер национального страхования или данные кредитной карты.
@@ -81,12 +95,36 @@ ru:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Авторское право Британского содружества наций</a>
       licence_html: Все содержимое доступно на <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license"> Открытой государственной лицензии v3.0</a>, если не указано иное
       support_links: Ссылки поддержки
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: Скрыть поиск
       menu: Меню
       search_button: Поиск на GOV.UK
       show_button: Показать поиск
       top_level: Высший уровень
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: Из
       history: История
@@ -98,6 +136,8 @@ ru:
       toggle_more: "+ %{number} больше"
     modal_dialogue:
       close_modal: Закрыть модальное диалоговое окно
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: Найти весь контент от %{organization}
     previous_and_next_navigation:
@@ -142,6 +182,9 @@ ru:
       hide_password: Скрыть пароль
       show: Показать
       show_password: Показать пароль
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: Перейти к основному контенту
     step_by_step_nav:

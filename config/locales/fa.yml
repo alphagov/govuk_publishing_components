@@ -46,6 +46,20 @@ fa:
       - ما برای درک نحوه استفاده شما از GOV.UK می‌خواهیم چند کوکی اضافی را تنظیم کنیم، تنظیمات خود را به خاطر بسپارید و خدمات دولت را بهبود ببخشید.
       - ما همچنین از کوکی‌های تنظیم شده توسط سایت‌‍های دیگر برای اینکه بتوانیم محتوا را از خدمات آنها ارائه کنیم، کمک می‌گیریم.
       title: کوکی‌ها در GOV.UK
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: بستن
       dont_include_personal_info: شامل اطلاعات شخصی یا مالی شما از جمله شماره بیمه ملی یا جزئیات کارت اعتباری شما نمی‌شود.
@@ -76,12 +90,36 @@ fa:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">کپی‌رایت © Crown</a>
       licence_html: تمام محتوا تحت <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">مجوز دولت باز نسخه 3.0</a> در دسترس است، مگر در مواردی که خلاف آن بیان شده باشد
       support_links: لینک‌های پشتیبان
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: مخفی کردن جستجو
       menu: منو
       search_button: جستجو در GOV.UK
       show_button: نمایش جستجو
       top_level: سطح بالا
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: از
       history: تاریخچه
@@ -93,6 +131,8 @@ fa:
       toggle_more: "+ %{number} بیشتر"
     modal_dialogue:
       close_modal: بستن گفتگوی مودال
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: یافتن تمام محتوا از %{organisation}
     previous_and_next_navigation:
@@ -137,6 +177,9 @@ fa:
       hide_password: مخفی کردن رمز عبور
       show: نمایش
       show_password: نمایش رمز عبور
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: رفتن به محتوای اصلی
     step_by_step_nav:

@@ -49,6 +49,20 @@ gd:
       - cuimhnigh ar do chuid socruithe agus seirbhísí rialtais a fheabhsú
       - Úsáidimid láithreáin ghréasáin eile freisin Na fianáin a leagtar síos cabhrú linn ábhar a sholáthar óna gcuid seirbhísí.
       title: Fianáin ar GOV.UK
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: Dúnadh
       dont_include_personal_info: Ná cuir aon fhaisnéis phearsanta nó airgeadais san áireamh, mar d’uimhir Árachais Náisiúnta nó sonraí cárta creidmheasa.
@@ -79,12 +93,36 @@ gd:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
       licence_html: Tá an t-ábhar go léir ar fáil faoi <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Oibriú saor in aisce v3.0</a>, mura luaitear a mhalairt
       support_links: Nasc tacaíochta
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: Folaigh cuardach
       menu: Biachlár
       search_button: Cuardaigh GOV.UK
       show_button: Taispeáin cuardach
       top_level: Tús an taighde
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: De
       history: Stairiúil
@@ -96,6 +134,8 @@ gd:
       toggle_more: " + %{number} níos mó"
     modal_dialogue:
       close_modal: Dún an dialóg módúil
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: Faigh gach rud ó %{organisation}
     previous_and_next_navigation:
@@ -140,6 +180,9 @@ gd:
       hide_password: Folaigh pasfhocal
       show: Taispeántas
       show_password: Taispeáin pasfhocal
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: Scipeáil chuig an bpríomhábhar
     step_by_step_nav:

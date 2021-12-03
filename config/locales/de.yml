@@ -51,6 +51,20 @@ de:
       - die von anderen Webseiten gesetzt werden
       - um uns bei der Bereitstellung von Inhalten aus deren Diensten zu unterstützen.
       title: Cookies auf GOV.UK
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: Schließen
       dont_include_personal_info: Geben Sie keine personenbezogenen oder Finanzdaten wie Ihre Sozialversicherungsnummer oder Kreditkartendaten an.
@@ -81,12 +95,36 @@ de:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
       licence_html: Alle Inhalte stehen unter der <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, sofern nicht anders angegeben.
       support_links: Links zur Unterstützung
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: Suche ausblenden
       menu: Menü
       search_button: GOV.UK durchsuchen
       show_button: Suche anzeigen
       top_level: Oberste Ebene
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: Von
       history: Geschichte
@@ -98,6 +136,8 @@ de:
       toggle_more: "+ %{number} weitere"
     modal_dialogue:
       close_modal: Dialog schließen
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: Alle Inhalte von %{organisation} finden
     previous_and_next_navigation:
@@ -142,6 +182,9 @@ de:
       hide_password: Passwort ausblenden
       show: Anzeigen
       show_password: Passwort anzeigen
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: Zum Hauptinhalt springen
     step_by_step_nav:

@@ -47,6 +47,20 @@ fr:
       - mémoriser vos paramètres et améliorer les services gouvernementaux.
       - Nous utilisons également des cookies mis en place par d'autres sites pour nous aider à proposer le contenu de leurs services.
       title: Cookies sur GOV.UK
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: Fermer
       dont_include_personal_info: Ne pas ajouter des informations personnelles ou financières comme le numéro de votre assurance nationale ou les détails de votre carte de crédit.
@@ -77,12 +91,36 @@ fr:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Copyright de la Couronne</a>
       licence_html: L'ensemble du contenu est disponible en vertu de la <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, sauf indication contraire.
       support_links: Liens d'assistance
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: Masquer la recherche
       menu: Menu
       search_button: Rechercher sur GOV.UK
       show_button: Afficher la recherche
       top_level: Niveau supérieur
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: De
       history: Historique
@@ -94,6 +132,8 @@ fr:
       toggle_more: "+ %{number} plus"
     modal_dialogue:
       close_modal: Fermer le dialogue modal
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: Rechercher tout le contenu de %{organisation}
     previous_and_next_navigation:
@@ -138,6 +178,9 @@ fr:
       hide_password: Masquer le mot de passe
       show: Afficher
       show_password: Afficher le mot de passe
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: Passer au contenu principal
     step_by_step_nav:

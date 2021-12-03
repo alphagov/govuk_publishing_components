@@ -47,6 +47,20 @@ az:
       - parametrlərinizi yadda saxlamaq və hökumət xidmətlərini təkmilləşdirmək üçün əlavə kukilər yerləşdirmək istərdik.
       - Biz həmçinin digər saytların xidmətlərindən məzmun göndərməyimizə kömək etmək üçün həmin saytlar tərəfindən yerləşdirilmiş kukilərdən istifadə edirik.
       title: GOV.UK-dəki kukilər
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: Bağla
       dont_include_personal_info: Sosial sığorta nömrəniz və ya kredit kartınızın məlumatları kimi şəxsi və ya maliyyə məlumatları daxil etməyin.
@@ -77,12 +91,36 @@ az:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">Â© Crown copyright</a>
       licence_html: Bütün məzmunlar <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">v3.0 Açıq dövlət lisenziyasına əsasən mövcuddur</a>(başqa cür nəzərdə tutulmuş hallar istisna olmaqla)
       support_links: Dəstək keçidləri
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: Axtarışı gizlət
       menu: Menyu
       search_button: GOV.UK-də axtarış
       show_button: Axtarışı göstər
       top_level: Yüksək səviyyəli
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: "...dan (dən)"
       history: Tarix
@@ -94,6 +132,8 @@ az:
       toggle_more: "+ %{number} daha çox"
     modal_dialogue:
       close_modal: Modal dialoqu bağla
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: "%{organisation}-dan bütün məzmunu tap"
     previous_and_next_navigation:
@@ -138,6 +178,9 @@ az:
       hide_password: Şifrəni gizlət
       show: Göstər
       show_password: Şifrəni göstər
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: Əsas məzmuna keçin
     step_by_step_nav:

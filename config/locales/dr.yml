@@ -49,6 +49,20 @@ dr:
       - ما میخواهیم کوکی هایی بیشتری را برای درک نحوهء استفاده شما از GOV.UK تنظیم نماییم، تنظمیات خودرا به خاطر داشته باشد وخدمات دولتی را بهبود بخشید.
       - 'ما همچنان از کوکی های آماده شده توسط دیگر ویبسایت ها که میتواند مارا در ارایٔه مطالب از خدمات آنها کمک مینماید استفاده مینماییم. '
       title: کوکی ها در GOV.UK
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: بسته نمایید
       dont_include_personal_info: اطلاعات شخصی یا مالی مانند شماره بیمه ملی یا مشخصات  کریدت کارت خودرا اینجا قرار ندهید.
@@ -79,12 +93,36 @@ dr:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
       licence_html: همه محتویات در<a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, موجود است، مگر در مواردی که خلاف آن ذکر شده باشد.
       support_links: لنک های حمایوی
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: بخش جستجو را مخفی نمایید
       menu: فهرست
       search_button: GOV.UK را جستجو نمایید
       show_button: جستجو را نمایش دهید
       top_level: سطح بالا
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: از
       history: پیشینهء جستجو
@@ -96,6 +134,8 @@ dr:
       toggle_more: "+ %{number} بیشتر"
     modal_dialogue:
       close_modal: دیالوگ کیفی را بسته نمایید
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: تمام محتویات را از اینجا بدست بیاورید %{organisation}
     previous_and_next_navigation:
@@ -140,6 +180,9 @@ dr:
       hide_password: رمز عبور را مخفی نمایید
       show: نمایش دهید
       show_password: رمز عبور را نمایش دهید
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: رفتن به محتوایی اصلی
     step_by_step_nav:

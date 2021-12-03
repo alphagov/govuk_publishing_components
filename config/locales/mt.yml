@@ -49,6 +49,20 @@ mt:
       - niftakru s- settings tiegħek u ntejbu s-servizzi tal-gvern.
       - Aħna nużaw ukoll cookies li jiġu ssettjati minn websajts oħrajn biex jgħinuna nxandru kontenut mis-servizzi tagħhom.
       title: Cookies fuq GOV.UK
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: Agħlaq
       dont_include_personal_info: Tinkludix informazzjoni personali jew finanzjarja bħan-numru tal-Assigurazzjoni Nazzjonali tiegħek jew id-dettalji tal-karta tal-kreditu.
@@ -79,12 +93,36 @@ mt:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
       licence_html: Il-kontenut huwa kollu disponibbli taħt <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Liċenzja ta' Gvern miftuħ v3.0</a>, except where otherwise stated
       support_links: Links ta' għajnuna
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: Aħbi t-tfittxija
       menu: Menu
       search_button: Fittex f'GOV.UK
       show_button: Uri t-tfittxija
       top_level: Livell ta' fuq nett
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: Minn
       history: Storja
@@ -96,6 +134,8 @@ mt:
       toggle_more: "+ %{number}"
     modal_dialogue:
       close_modal: Agħlaq id-djalogu modali
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: Sib il-kontenut kollu mingħand %{organisation}
     previous_and_next_navigation:
@@ -140,6 +180,9 @@ mt:
       hide_password: Aħbi l-password
       show: Uri
       show_password: Uri l-password
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: Aqbeż għall-kontenut prinċipali
     step_by_step_nav:

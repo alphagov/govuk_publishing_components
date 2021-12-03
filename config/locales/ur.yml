@@ -44,6 +44,20 @@ ur:
       text:
       - ہم اس ویب سائٹ کو چلانے کے لیے کچھ ضروری کوکیز استعمال کرتے ہیں۔، ہم اس بات کو سمجھنے کے لیے کچھ اضافی کوکیز سیٹ کرنا چاہیں گے کہ آپ GOV.UK کو کیسے سمجھتے ہیں، اپنی ترتیبات یاد رکھیں اور حکومتی سروسز کو بہتر بنائیں۔، ہم دیگر سائٹس سے مواد کی ترسیل کرنے کے لیے دیگر سائٹس کی جانب سے سیٹ کی گئی کوکیز بھی استعمال کرتے ہیں۔
       title: GOV.UK پر کوکیز
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: بند کریں
       dont_include_personal_info: اپنے قومی انشورنس نمبر یا کریڈٹ کارڈ کی تفصیلات کی جیسی ذاتی یا مالی معلومات استعمال نہ کریں۔
@@ -74,12 +88,36 @@ ur:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown کاپی رائٹ</a>
       licence_html: سوائے ان کے جنہیں بصورت دیگر بیان کیا گیا ہے، <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a> کے تحت تمام مواد دستیاب ہے
       support_links: معاونتی لنکس
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: تلاش کو پوشیدہ کریں
       menu: مینو
       search_button: GOV.UK پر تلاش کریں
       show_button: تلاش دکھائیں
       top_level: اعلیٰ درجہ
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: از
       history: ہسٹری
@@ -91,6 +129,8 @@ ur:
       toggle_more: "+ %{number} مزید"
     modal_dialogue:
       close_modal: محدود موڈل ڈائیلاگ
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: "%{organisation} کا تمام مواد تلاش کریں"
     previous_and_next_navigation:
@@ -135,6 +175,9 @@ ur:
       hide_password: پاس ورڈ کو پوشیدہ کریں
       show: دکھائیں
       show_password: پاس ورڈ دکھائیں
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: مرکزی مواد پر جائیں
     step_by_step_nav:

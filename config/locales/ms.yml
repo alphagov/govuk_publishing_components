@@ -47,6 +47,20 @@ ms:
       - mengingati tetapan anda dan meningkatkan perkhidmatan kerajaan.
       - Kami juga menggunakan kuki yang ditetapkan oleh laman web lain untuk membantu kami menyampaikan kandungan daripada perkhidmatan mereka.
       title: Kuki di GOV.UK
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: Tutup
       dont_include_personal_info: Jangan sertakan maklumat peribadi atau kewangan seperti nombor Insurans Nasional atau maklumat kad kredit anda.
@@ -77,12 +91,36 @@ ms:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
       licence_html: Semua kandungan tersedia di bawah <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license"> Lesen Terbuka Kerajaan v3.0 </a>, kecuali jika dinyatakan sebaliknya
       support_links: Pautan sokongan
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: Sorok carian
       menu: Menu
       search_button: Cari GOV.UK
       show_button: Tunjuk carian
       top_level: Aras teratas
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: Daripada
       history: Sejarah
@@ -94,6 +132,8 @@ ms:
       toggle_more: "+ %{number} lagi"
     modal_dialogue:
       close_modal: Tutup dialog mod
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: Cari semua kandungan dari %{organisation}
     previous_and_next_navigation:
@@ -138,6 +178,9 @@ ms:
       hide_password: Sorok kata laluan
       show: Tunjuk
       show_password: Tunjuk kata laluan
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: Langkau ke kandungan utama
     step_by_step_nav:

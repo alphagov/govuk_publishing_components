@@ -47,6 +47,20 @@ sv:
       - komma ihåg dina inställningar och förbättra myndighetstjänsterna.
       - Vi använder också cookies som ställs in av andra webbplatser för att hjälpa oss att leverera innehåll från deras tjänster.
       title: Cookies på GOV.UK
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: Stäng
       dont_include_personal_info: Ange inte personlig eller finansiell information, t.ex. ditt försäkringsnummer eller kreditkortsuppgifter.
@@ -77,12 +91,36 @@ sv:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
       licence_html: Allt innehåll är tillgängligt enligt <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, om inget annat anges
       support_links: Supportlänkar
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: Dölj sökning
       menu: Meny
       search_button: Sök på GOV.UK
       show_button: Visa sökning
       top_level: Högsta nivå
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: Från
       history: Historia
@@ -94,6 +132,8 @@ sv:
       toggle_more: "+ %{number} mer"
     modal_dialogue:
       close_modal: Stäng den modala dialogen
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: Hitta allt innehåll från %{organisation}
     previous_and_next_navigation:
@@ -138,6 +178,9 @@ sv:
       hide_password: Dölj lösenordet
       show: Visa
       show_password: Visa lösenordet
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: Hoppa till huvudinnehållet
     step_by_step_nav:

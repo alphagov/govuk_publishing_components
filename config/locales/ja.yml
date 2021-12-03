@@ -44,6 +44,20 @@ ja:
       text:
       - "「このウェブサイトを機能させるためにいくつかの重要なCookieを使用しています。」、「GOV.UKの使用方法を理解し、設定を記憶し、政府サービスを改善するために、追加のCookieを設定したいと思います。」、「他のサイトは、サービスからコンテンツを配信するのに役立ちます。」"
       title: GOV.UKのCookie
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: 閉じる
       dont_include_personal_info: 国民保険番号やクレジットカードの詳細などの個人情報や財務情報は含めないでください。
@@ -74,12 +88,36 @@ ja:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
       licence_html: 特に明記されていない限り、すべてのコンテンツは <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>でご利用いただけます。
       support_links: サポートリンク
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: 検索を非表示
       menu: メニュー
       search_button: GOV.UKを検索
       show_button: 検索を表示
       top_level: 最上位レベル
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: から
       history: 歴史
@@ -91,6 +129,8 @@ ja:
       toggle_more: さらに ％{number}
     modal_dialogue:
       close_modal: 特殊ウインドウを閉じる
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: "％{organisation} からすべてのコンテンツを検索"
     previous_and_next_navigation:
@@ -135,6 +175,9 @@ ja:
       hide_password: パスワードを非表示にする
       show: 表示
       show_password: パスワードを表示する
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: 主要コンテンツに移動
     step_by_step_nav:

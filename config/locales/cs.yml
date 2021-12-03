@@ -52,6 +52,20 @@ cs:
       - Používáme také soubory cookie nastavené jinými weby
       - které nám pomáhají poskytovat obsah z jejich služeb.
       title: Soubory cookie na GOV.UK
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: Zavřít
       dont_include_personal_info: Neuvádějte osobní nebo finanční údaje, jako je číslo národního pojištění nebo údaje o kreditní kartě.
@@ -82,12 +96,36 @@ cs:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
       licence_html: Veškerý obsah je k dispozici pod <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, pokud není uvedeno jinak
       support_links: Odkazy na podporu
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: Skrýt vyhledávání
       menu: Nabídka
       search_button: Vyhledávání na GOV.UK
       show_button: Zobrazit vyhledávání
       top_level: Nejvyšší úroveň
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: 'Komu I:'
       history: Historie
@@ -99,6 +137,8 @@ cs:
       toggle_more: "+ %{number} více"
     modal_dialogue:
       close_modal: Zavření modálního dialogu
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: Najít veškerý obsah z %{organisation}
     previous_and_next_navigation:
@@ -143,6 +183,9 @@ cs:
       hide_password: Skrýt heslo
       show: Zobrazit
       show_password: Zobrazit heslo
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: Přeskočit na hlavní obsah
     step_by_step_nav:

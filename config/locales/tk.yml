@@ -48,6 +48,20 @@ tk:
       - Şeýle hem
       - öz hyzmatlaryndan mazmun ibermäge kömek edýän beýleki internet sahypalary üçin kukileri ulanýarys.
       title: Kukiler GOV.UK-da
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: Ýapyk
       dont_include_personal_info: Milli ätiýaçlandyryş belgiňiz ýa-da töleg kartlaryňyza degişli maglumatlaryňyz ýaly şahsy ýa-da maliýe maglumatlary goşmaň.
@@ -78,12 +92,36 @@ tk:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown awtorlyk hukugy</a>
       licence_html: Ähli mazmun <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Açyk hökümet ygtyýarnamasy v3.0-da görkezilen</a>, eger başgaça bellenilmedik bolsa
       support_links: Goldaw baglanyşyklary
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: Gözlegi gizle
       menu: Menýu
       search_button: GOV.UK gözle
       show_button: Gözlegi görkez
       top_level: Ýokary dereje
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: "-dan"
       history: Taryh
@@ -95,6 +133,8 @@ tk:
       toggle_more: "+ %{number} köpeltmek üçin"
     modal_dialogue:
       close_modal: Modal gepleşikleri tamamlamak
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: Ähli mazmunyny %{organisation}-dan tapyň
     previous_and_next_navigation:
@@ -139,6 +179,9 @@ tk:
       hide_password: Açar sözi gizle
       show: Görkez
       show_password: Açar sözi görkez
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: Esasy mazmuna geçiň
     step_by_step_nav:

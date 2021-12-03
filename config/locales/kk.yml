@@ -47,6 +47,20 @@ kk:
       - параметрлерді есте сақтау және мемлекеттік қызметтерді жақсарту үшін қосымша cookie файлдарын орнатқымыз келеді.
       - Біз басқа сайттар орнатқан cookie файлдарын олардың қызметтерінен мазмұнды жеткізуге көмектесу үшін қолданамыз.
       title: GOV.UK веб-сайтындағы cookie файлдары
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: Жабу
       dont_include_personal_info: Ұлттық сақтандыру нөмірі немесе несие картасының деректемелері сияқты жеке немесе қаржылық ақпаратты қамтымаңыз.
@@ -77,12 +91,36 @@ kk:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown авторлық құқығы</a>
       licence_html: Барлық мазмұн <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Ашық мемлекеттік лицензиясы v3.0</a> (басқаша жазылғанды қоспағанда) сайтында қолжетімді
       support_links: Қолдау сілтемелері
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: Іздеуді жасыру
       menu: Мәзір
       search_button: GOV.UK веб-сайтында іздеу
       show_button: Іздеуді көрсету
       top_level: Жоғары деңгей
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: Кімнен
       history: Журнал
@@ -94,6 +132,8 @@ kk:
       toggle_more: "+ %{number} көп"
     modal_dialogue:
       close_modal: Жабық модальды диалог
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: "%{organisation} ішіндегі барлық мазмұнды табу"
     previous_and_next_navigation:
@@ -138,6 +178,9 @@ kk:
       hide_password: Құпиясөзді жасыру
       show: Көрсету
       show_password: Құпиясөзді көрсету
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: Негізгі мазмұнға өту
     step_by_step_nav:

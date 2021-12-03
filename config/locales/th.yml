@@ -46,6 +46,20 @@ th:
       - เราต้องการกำหนดคุกกี้เพิ่มเติม เพื่อทำความเข้าใจว่าคุณใช้ GOV.UK อย่างไร จดจำการตั้งค่าของคุณ และปรับปรุงบริการของรัฐบาล
       - และเรายังใช้คุกกี้ที่กำหนดโดยเว็บไซต์อื่นๆ เพื่อช่วยเราในการส่งมอบเนื้อหาจากบริการของพวกเขา
       title: คุกกี้ใน GOV.UK
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: ปิด
       dont_include_personal_info: อย่าใส่ข้อมูลส่วนบุคคลหรือข้อมูลทางการเงิน เช่น หมายเลขประกันสังคม (National Insurance) หรือรายละเอียดบัตรเครดิต
@@ -76,12 +90,36 @@ th:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">ลิขสิทธิ์ © Crown</a>
       licence_html: เนื้อหาทั้งหมดอยู่ภายใต้สัญญาอนุญาต <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government License v3.0</a> ยกเว้นจะระบุไว้เป็นอย่างอื่น
       support_links: ลิงค์สนับสนุน
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: ซ่อนการค้นหา
       menu: Menu (เมนู)
       search_button: ค้นหา GOV.UK
       show_button: แสดงการค้นหา
       top_level: ระดับสูงสุด
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: จาก
       history: ประวัติ
@@ -93,6 +131,8 @@ th:
       toggle_more: เพิ่มเติม + %{number} รายการ
     modal_dialogue:
       close_modal: ปิดการสนทนาโมดอล
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: ค้นหาเนื้อหาทั้งหมดจาก %{organisation}
     previous_and_next_navigation:
@@ -137,6 +177,9 @@ th:
       hide_password: ซ่อนรหัสผ่าน
       show: แสดง
       show_password: แสดงรหัสผ่าน
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: ข้ามไปที่เนื้อหาหลัก
     step_by_step_nav:

@@ -53,6 +53,20 @@ be:
       - наладжаныя іншымі сайтамі
       - каб дапамагчы нам дастаўляць кантэнт з іх сэрвісаў.
       title: Файлы cookie на GOV.UK
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: Зачынiць
       dont_include_personal_info: Не ўключайце асабістай ці фінансавай інфармацыі, напрыклад, нумар дзяржаўнага страхавання ці дадзеныя крэдытнай карты.
@@ -77,17 +91,42 @@ be:
       get-involved: Удзельнiчаць
       how-government-works: Як працуе ўрад
       news_and_communications: Навiны i паведамленні
+      statistics:
       worldwide: Ва ўсім свеце
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
       licence_html: Увесь змест даступны <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, калі не паказана іншае
       support_links: Дапаможныя спасылкі
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: Схаваць вынікі пошуку
       menu: Меню
       search_button: Шукаць GOV.UK
       show_button: Паказаць вынікі пошуку
       top_level: Верхні ўзровень
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: З
       history: Гiсторыя
@@ -99,6 +138,8 @@ be:
       toggle_more: "+ %{number} болей"
     modal_dialogue:
       close_modal: Зачыніць мадальны дыялог
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: Шукаць увесь змест з %{organisation}
     previous_and_next_navigation:
@@ -143,6 +184,9 @@ be:
       hide_password: Схаваць пароль
       show: Паказаць
       show_password: Адлюстраваць пароль
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: Перайсці да асноўнага зместу
     step_by_step_nav:

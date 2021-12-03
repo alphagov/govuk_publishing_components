@@ -52,6 +52,20 @@ sk:
       - "„Používame aj súbory cookie nastavené inými stránkami"
       - aby sme mohli poskytovať obsah z ich služieb.“
       title: Súbory cookie na GOV.UK
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: Zatvoriť
       dont_include_personal_info: Neuvádzajte osobné ani finančné údaje, ako je číslo vášho národného poistenia alebo údaje o kreditnej karte.
@@ -82,12 +96,36 @@ sk:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Korunné autorské práva</a>
       licence_html: Všetok obsah je k dispozícii pod <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">licenciou Open Government Licence v3.0</a>, okrem prípadov, keď je uvedené inak
       support_links: Podporné odkazy
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: Skryť vyhľadávanie
       menu: Menu
       search_button: Vyhľadávanie na GOV.UK
       show_button: Zobraziť vyhľadávanie
       top_level: Najvyššia úroveň
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: Od
       history: História
@@ -99,6 +137,8 @@ sk:
       toggle_more: "+ %{number} viac"
     modal_dialogue:
       close_modal: Zavrieť modálny dialóg
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: Nájsť všetok obsah z %{organisation}
     previous_and_next_navigation:
@@ -143,6 +183,9 @@ sk:
       hide_password: Skryť heslo
       show: Zobraziť
       show_password: Zobraziť heslo
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: Prejsť na hlavný obsah
     step_by_step_nav:

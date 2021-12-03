@@ -47,6 +47,20 @@ pa:
       - ਆਪਣੀਆਂ ਸੈਟਿੰਗਾਂ ਨੂੰ ਯਾਦ ਰੱਖੋ ਅਤੇ ਸਰਕਾਰੀ ਸੇਵਾਵਾਂ ਨੂੰ ਬਿਹਤਰ ਬਣਾਉਣ ਲਈ ਅਤਿਰਿਕਤ ਕੂਕੀਜ਼ ਸੈਟ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹਾਂ।
       - ਅਸੀਂ ਹੋਰ ਸਾਈਟਾਂ ਦੁਆਰਾ ਉਹਨਾਂ ਦੀਆਂ ਸੇਵਾਵਾਂ ਤੋਂ ਸਮਗਰੀ ਪ੍ਰਦਾਨ ਕਰਨ ਵਿੱਚ ਸਾਡੀ ਸਹਾਇਤਾ ਕਰਨ ਲਈ ਨਿਰਧਾਰਤ ਕੂਕੀਜ਼ ਦੀ ਵਰਤੋਂ ਵੀ ਕਰਦੇ ਹਾਂ।
       title: GOV.UK ਤੇ ਕੂਕੀਜ਼
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: ਬੰਦ ਕਰੋ
       dont_include_personal_info: ਨਿੱਜੀ ਜਾਂ ਵਿੱਤੀ ਜਾਣਕਾਰੀ ਜਿਵੇਂ ਕਿ ਤੁਹਾਡਾ ਰਾਸ਼ਟਰੀ ਬੀਮਾ ਨੰਬਰ ਜਾਂ ਕ੍ਰੈਡਿਟ ਕਾਰਡ ਦੇ ਵੇਰਵੇ ਸ਼ਾਮਲ ਨਾ ਕਰੋ.
@@ -77,12 +91,36 @@ pa:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© ਕ੍ਰਾਊਨ ਕਾਪੀਰਾਈਟ</a>
       licence_html: ਸਾਰੀ ਸਮਗਰੀ <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">ਓਪਨ ਗਵਰਨਮੈਂਟ ਲਾਇਸੈਂਸ v3.0</a>, ਦੇ ਅਧੀਨ ਸਾਰੀ ਸਮਗਰੀ ਉਪਲਬਧ ਹੈ ਸਿਵਾਏ ਇਸਦੇ ਜਿੱਥੇ ਹੋਰ ਨਹੀਂ ਕਿਹਾ ਗਿਆ ਹੈ
       support_links: ਸਪੋਰਟ ਲਿੰਕ
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: ਖੋਜ ਲੁਕਾਓ
       menu: ਮੇਨੂ
       search_button: GOV.UK ਦੀ ਖੋਜ ਕਰੋ
       show_button: ਖੋਜ ਦਿਖਾਓ
       top_level: ਉੱਚ ਪੱਧਰ
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: ਤੋਂ
       history: ਇਤਿਹਾਸ
@@ -94,6 +132,8 @@ pa:
       toggle_more: "+ %{number} ਹੋਰ"
     modal_dialogue:
       close_modal: ਮਾਡਲ ਸੰਵਾਦ ਬੰਦ ਕਰੋ
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: "%{organisation} ਤੋਂ ਸਾਰੀ ਸਮਗਰੀ ਲੱਭੋ"
     previous_and_next_navigation:
@@ -138,6 +178,9 @@ pa:
       hide_password: ਪਾਸਵਰਡ ਲੁਕਾਓ
       show: ਦਿਖਾਉ
       show_password: ਪਾਸਵਰਡ ਦਿਖਾਓ
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: ਮੁੱਖ ਸਮੱਗਰੀ ਤੇ ਜਾਓ
     step_by_step_nav:

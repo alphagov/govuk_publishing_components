@@ -47,6 +47,20 @@ vi:
       - ghi nhớ cài đặt của bạn và cải thiện các dịch vụ của chính phủ.
       - Chúng tôi cũng sử dụng cookie do các trang web khác đặt để giúp chúng tôi cung cấp nội dung từ các dịch vụ của họ.
       title: Cookie trên GOV.UK
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: Đóng
       dont_include_personal_info: Không bao gồm thông tin cá nhân hoặc thông tin tài chính như số Bảo hiểm Quốc gia hoặc chi tiết thẻ tín dụng của bạn.
@@ -77,12 +91,36 @@ vi:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Bản quyền Crown</a>
       licence_html: Tất cả nội dung đều có sẵn theo <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Giấy phép Chính phủ Mở pb3.0</a>, trừ khi có quy định khác
       support_links: Liên kết hỗ trợ
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: Ẩn tìm kiếm
       menu: Menu
       search_button: Tìm kiếm trên GOV.UK
       show_button: Hiển thị tìm kiếm
       top_level: Mức cao nhất
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: Từ
       history: Lịch sử
@@ -94,6 +132,8 @@ vi:
       toggle_more: "+ thêm %{number}"
     modal_dialogue:
       close_modal: Đóng đối thoại phương thức
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: Tìm tất cả nội dung từ %{organisation}
     previous_and_next_navigation:
@@ -138,6 +178,9 @@ vi:
       hide_password: Ẩn mật khẩu
       show: Hiển thị
       show_password: Hiển thị mật khẩu
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: Chuyển đến nội dung chính
     step_by_step_nav:

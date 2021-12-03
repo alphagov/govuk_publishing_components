@@ -51,6 +51,20 @@ pl:
       - Używamy również plików cookie innych witryn
       - dzięki którym dostarczamy treści z ich serwisów.
       title: Pliki cookies na GOV.UK
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: Zamknij
       dont_include_personal_info: Nie podawaj informacji osobistych ani finansowych, takich jak numer ubezpieczenia społecznego czy dane karty kredytowej.
@@ -81,12 +95,36 @@ pl:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Właścicielem praw autorskich jest Korona</a>
       licence_html: Cała zawartość objęta jest licencją <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, chyba że zaznaczono inaczej
       support_links: Linki pomocnicze
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: Ukryj wyszukiwanie
       menu: Menu
       search_button: Szukaj w GOV.UK
       show_button: Pokaż wyszukiwanie
       top_level: Najwyższy poziom
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: Od
       history: Historia
@@ -98,6 +136,8 @@ pl:
       toggle_more: "+ %{number} więcej"
     modal_dialogue:
       close_modal: Zamknij okno modalne
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: Znajdź całą zawartość od %{organizacja}
     previous_and_next_navigation:
@@ -142,6 +182,9 @@ pl:
       hide_password: Ukryj hasło
       show: Pokaż
       show_password: Pokaż hasło
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: Przejdź do głównej treści
     step_by_step_nav:

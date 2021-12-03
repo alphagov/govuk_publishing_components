@@ -48,6 +48,20 @@ da:
       - huske dine indstillinger og forbedre offentlige tjenester.
       - Vi bruger også cookies fra andre websteder for at hjælpe os med at levere indhold fra deres tjenester.
       title: Cookies på GOV.UK
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: Luk
       dont_include_personal_info: Do not include personal or financial information such as your national insurance number or credit card information.
@@ -78,12 +92,36 @@ da:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Krown copyright</a>
       licence_html: Alt indhold er tilgængeligt i henhold til <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">åben Forvaltning Licens v3.0</a>, medmindre andet er angivet.
       support_links: Støtte links
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: Skjul søgning
       menu: Menu
       search_button: Søg i GOV.UK
       show_button: Vis søgning
       top_level: Øverste niveau
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: Fra
       history: Historie
@@ -95,6 +133,8 @@ da:
       toggle_more: "+ %{number} mere"
     modal_dialogue:
       close_modal: Luk den modale dialog
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: Find alt indhold fra %{organisation}
     previous_and_next_navigation:
@@ -139,6 +179,9 @@ da:
       hide_password: skjul adgangskode
       show: Vise
       show_password: Skjul adgangskode
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: spring til hovedindholdet
     step_by_step_nav:

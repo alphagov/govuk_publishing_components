@@ -43,6 +43,20 @@ ko:
       hide:
       text:
       title:
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close:
       dont_include_personal_info:
@@ -73,12 +87,36 @@ ko:
       copyright_html:
       licence_html:
       support_links:
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button:
       menu:
       search_button:
       show_button:
       top_level:
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from:
       history:
@@ -90,6 +128,8 @@ ko:
       toggle_more:
     modal_dialogue:
       close_modal:
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description:
     previous_and_next_navigation:
@@ -134,6 +174,9 @@ ko:
       hide_password:
       show:
       show_password:
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text:
     step_by_step_nav:

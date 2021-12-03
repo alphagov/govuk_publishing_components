@@ -47,6 +47,20 @@ sw:
       - kumbuka mipangilio yako na uboreshe huduma za serikali.
       - Tunatumia pia vidakuzi vilivyowekwa na tovuti zingine ili kutusaidia kutoa maudhui kutoka kwenye huduma zao.
       title: Vidakuzi kwenye tovuti ya GOV.UK
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: Funga
       dont_include_personal_info: Usiweke maelezo ya kibinafsi au ya fedha kama vile nambari yako ya Bima ya Kitaifa au maelezo ya kadi yako ya mikopo.
@@ -77,12 +91,36 @@ sw:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Hakimiliki ya Crown</a>
       licence_html: Maudhui yote yanapatikana chini ya <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, isipokuwa ibainishwe vinginevyo
       support_links: Viungo vya ziada
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: Ficha utafutaji
       menu: Menyu
       search_button: Tafuta tovuti ya GOV.UK
       show_button: Onyesha utafutaji
       top_level: Kiwango cha juu
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: Kuanzia
       history: Kumbukumbu
@@ -94,6 +132,8 @@ sw:
       toggle_more: "+ %{number} zaidi"
     modal_dialogue:
       close_modal: Funga dirisha ibukizi
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: Tafuta maudhui yote kutoka %{organisation}
     previous_and_next_navigation:
@@ -138,6 +178,9 @@ sw:
       hide_password: Ficha nenosiri
       show: Onyesha
       show_password: Onyesha nenosiri
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: Nenda kwenye maudhui makuu
     step_by_step_nav:

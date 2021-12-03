@@ -51,6 +51,20 @@ hy:
       - 'պահպանենք ձեր կարգավորումները և բարելավենք կառավարական ​​ծառայությունները:'
       - 'Մենք նաև օգտագործում ենք այլ կայքերի կողմից սահմանված քուքիներ իրենց ծառայությունների բովանդակությունը փոխանցելու հարցում որպես օգնություն:'
       title: Քուքիներ GOV.UK կայքում
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: Փակ
       dont_include_personal_info: 'Մի՛ նշեք անձնական կամ ֆինանսական տվյալներ, ինչպես օրինակ՝ ձեր Ազգային ապահովագրության համարը կամ կրեդիտային քարտի տվյալները:'
@@ -81,12 +95,36 @@ hy:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
       licence_html: Ողջ բովանդակությունը հասանելի է <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0 հրապարակումների սերվերում</a>, բացառությամբ այլ դեպքերի
       support_links: Օգտակար հղումներ
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: Թաքցնել որոնման դաշտը
       menu: Մենյու
       search_button: Որոնել GOV.UK կայքը
       show_button: Ցուցադրել որոնումը
       top_level: Բարձր մակարդակ
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: Ումից՝
       history: Պատմություն
@@ -98,6 +136,8 @@ hy:
       toggle_more: "+ %{number} հատ ավել"
     modal_dialogue:
       close_modal: Փակել մոդալ պատուհանը
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: Գտնել %{organisation} ողջ բովանդակությունը
     previous_and_next_navigation:
@@ -142,6 +182,9 @@ hy:
       hide_password: Թաքցնել գաղտնաբառը
       show: Ցուցադրել
       show_password: Ցույց տալ գաղտնաբառը
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: Անցնել հիմնական բովանդակությանը
     step_by_step_nav:

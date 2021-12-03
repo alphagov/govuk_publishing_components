@@ -47,6 +47,20 @@ el:
       - να θυμόμαστε τις ρυθμίσεις σας και να βελτιώσουμε τις κρατικές υπηρεσίες.
       - Χρησιμοποιούμε επίσης cookies που έχουν οριστεί από άλλους ιστότοπους για να μας βοηθήσουν να παραδώσουμε περιεχόμενο από τις υπηρεσίες τους.
       title: Cookies στο GOV.UK
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: Κλείσε
       dont_include_personal_info: Μην συμπεριλαμβάνετε προσωπικά ή οικονομικά στοιχεία, όπως τον αριθμό της Εθνικής σας Ασφάλισης ή τα στοιχεία της πιστωτικής σας κάρτας.
@@ -77,12 +91,36 @@ el:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Πνευματικά δικαιώματα Crown</a>
       licence_html: Όλο το περιεχόμενο είναι διαθέσιμο βάσει της <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Άδειας Ανοικτής Κυβέρνησης v3.0</a> , εκτός εάν αναφέρεται διαφορετικά
       support_links: Σύνδεσμοι υποστήριξης
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: Απόκρυψη αναζήτησης
       menu: Μενού
       search_button: Αναζήτηση στο GOV.UK
       show_button: Εμφάνιση αναζήτησης
       top_level: Κορυφαίο επίπεδο
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: Από
       history: Ιστορικό
@@ -94,6 +132,8 @@ el:
       toggle_more: "+ %{number} ακόμη"
     modal_dialogue:
       close_modal: Κλείσιμο παράθυρου διαλόγου
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: Εύρεση όλου του περιεχομένου από τον οργανισμό %{Organization}
     previous_and_next_navigation:
@@ -138,6 +178,9 @@ el:
       hide_password: Απόκρυψη κωδικού πρόσβασης
       show: Εμφάνιση
       show_password: Εμφάνιση κωδικού πρόσβασης
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: Μετάβαση στο κύριο περιεχόμενο
     step_by_step_nav:

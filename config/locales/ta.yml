@@ -48,6 +48,20 @@ ta:
       - "“மற்ற இணையத் தளங்களில்"
       - அவர்கள் சேவைகளிலிருந்து உள்ளடக்கத்தை நாங்கள் அளிக்க உதவுவதற்கு அமைக்கப்பட்ட குக்கீஸ்களையும் நாங்கள் பயன்படுத்துகிறோம்.”
       title: GOV.UK குக்கீஸ்கள்
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: மூடு
       dont_include_personal_info: உங்கள் தேசிய காப்பீட்டு எண் அல்லது கடன் அட்டை விபரங்கள் போன்ற தனிப்பட்ட அல்லது நிதிசார் விபரங்களைச் சேர்க்க வேண்டாம்.
@@ -78,12 +92,36 @@ ta:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown காப்புரிமை</a>
       licence_html: வேறுவகையில் குறிப்பிடப்படாதவரை அனைத்து உள்ளடக்கமும் <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>-ன்கீழ் கிடைக்கிறது.
       support_links: உதவி இணைப்புகள்
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: தேடலை மறை
       menu: மெனு
       search_button: GOV.UK-யில் தேடுக
       show_button: தேடலைக் காட்டு
       top_level: முதன்மை நிலை
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: இதிலிருந்து
       history: வரலாறு
@@ -95,6 +133,8 @@ ta:
       toggle_more: மேலும் + %{number}
     modal_dialogue:
       close_modal: மாதிரி உரையாடலை மூடு
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: "%{organisation}-லிருந்து அனைத்து உள்ளடக்கத்தையும் கண்டறி"
     previous_and_next_navigation:
@@ -139,6 +179,9 @@ ta:
       hide_password: கடவுச்சொல்லை மறை
       show: காட்டு
       show_password: கடவுச்சொல்லைக் காட்டு
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: பிரதான உள்ளடக்கத்துக்குச் செல்
     step_by_step_nav:

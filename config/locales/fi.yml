@@ -49,6 +49,20 @@ fi:
       - Käytämme myös muita sivustoja
       - 'jotka auttavat meitä toimittamaan sisältöä alkaen heidän palveluistaan. '
       title: Evästeet sivustolla GOV.UK
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: Kiinni
       dont_include_personal_info: Älä ilmoita henkilökohtaisia tai taloudellisia tietoja, kuten sosiaaliturvatunnusta tai luottokorttitietoja.
@@ -79,12 +93,36 @@ fi:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Kruunun tekijänoikeus</a>
       licence_html: Kaikki sisältö on saatavilla osoitteessa <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Avoimen hallinnon lisenssi v3.0</a>, ellei toisin mainita
       support_links: Tukilinkit
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: Piilota haku
       menu: Valikko
       search_button: Hae osoitteesta GOV.UK
       show_button: Näytä haku
       top_level: Huipputaso
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: Alkaen
       history: Historia
@@ -96,6 +134,8 @@ fi:
       toggle_more: "+ %{number} lisää"
     modal_dialogue:
       close_modal: Sulje modaalinen vuoropuhelu
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: Etsi kaikki sisältö alkaen %{organisation}
     previous_and_next_navigation:
@@ -140,6 +180,9 @@ fi:
       hide_password: Piilota salasana
       show: Näytä
       show_password: Näytä salasana
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: Siirry pääsisältöön
     step_by_step_nav:

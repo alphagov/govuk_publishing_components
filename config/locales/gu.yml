@@ -47,6 +47,20 @@ gu:
       - તે સમજવા માટે
       - તમારી સેટિંગ્સ યાદ રાખવા માટે અને સરકારી સેવાઓમાં સુધારો કરવા માટે અમે અતિરિક્ત કુકીઝ સેટ કરવા માંગીએ છીએ.”
       title: GOV.UK પર કુકીઝ
+    devolved_nations:
+      applies_to:
+      connectors:
+        last_word:
+        two_words:
+      england:
+      northern_ireland:
+      scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
+      wales:
     feedback:
       close: બંધ કરો
       dont_include_personal_info: તમારો રાષ્ટ્રીય વીમા નંબર અથવા ક્રેડિટ કાર્ડ વિગતો જેવી વ્યક્તિગત કે નાણાંકીય માહિતી તેમાં સામેલ કરશો નહીં.
@@ -77,12 +91,36 @@ gu:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© ક્રાઉન કૉપીરાઇટ</a>
       licence_html: તમામ સામગ્રી<a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license"> ઓપન ગવર્નમેંટ લાઇસન્સ v3.0</a>હેઠળ ઉપલબ્ધ છે, સિવાય કે અન્યથા જણાવેલ હોય
       support_links: સપોર્ટ લિંક્સ
+    layout_for_public:
+      account_layout:
+        feedback:
+          banners:
+            phase_banner_html:
+        navigation:
+          menu_bar:
+            account:
+              link_text:
+            manage:
+              link_text:
     layout_header:
       hide_button: સર્ચને હાઈડ કરો
       menu: મેનૂ
       search_button: GOV.UK શોધો
       show_button: સર્ચ બતાવો
       top_level: ઉચ્ચ સ્તર
+    layout_super_navigation_header:
+      logo_link_title:
+      logo_text:
+      menu_toggle_label:
+        hide:
+        show:
+      navigation_links:
+      navigation_menu_heading:
+      navigation_search_heading:
+      navigation_search_subheading:
+      popular_links:
+      popular_links_heading:
+      search_text:
     metadata:
       from: થી
       history: હિસ્ટરી
@@ -94,6 +132,8 @@ gu:
       toggle_more: "+ %{number} વધુ"
     modal_dialogue:
       close_modal: મોડલ ડાયલોગ બંધ કરો
+    notice:
+      banner_title:
     organisation_schema:
       all_content_search_description: "%{organisation} થી તમામ સામગ્રી શોધો"
     previous_and_next_navigation:
@@ -138,6 +178,9 @@ gu:
       hide_password: પાસવર્ડ હાઈડ કરો
       show: દર્શાવો
       show_password: પાસવર્ડ દર્શાવો
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text: મુખ્ય સામગ્રી પર જાઓ
     step_by_step_nav:
