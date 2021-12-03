@@ -1,9 +1,7 @@
-name: Accessible autocomplete
+name: Accessible autocomplete (experimental)
 description: An autocomplete component, built to be accessible.
 body: |
-  This component uses the [Accessible Autocomplete](https://github.com/alphagov/accessible-autocomplete) code to create an accessible autocomplete element. The autocomplete is created with the `showAllValues`
-  option set to `true` and the `confirmOnBlur` option set to `false` (see [Autocomplete examples](https://alphagov.github.io/accessible-autocomplete/examples) here). It also depends upon the
-  [label component](https://github.com/component-guide/label).
+  This component uses the [Accessible Autocomplete](https://github.com/alphagov/accessible-autocomplete) code to progressively enhance a hidden select element (see [Autocomplete examples](https://alphagov.github.io/accessible-autocomplete/examples) here). It depends upon the [label component](https://github.com/component-guide/label).
 
   If Javascript is disabled, the component appears as a select box, so the user can still select an option.
 accessibility_criteria: |

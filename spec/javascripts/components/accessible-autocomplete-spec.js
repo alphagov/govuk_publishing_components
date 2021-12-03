@@ -2,11 +2,14 @@
 /* global GOVUK */
 
 describe('An accessible autocomplete component', function () {
-  'use strict'
+  var fixture, select
 
   function loadAutocompleteComponent () {
-    window.setFixtures(html)
-    var autocomplete = new GOVUK.Modules.AccessibleAutocomplete($('.gem-c-accessible-autocomplete')[0])
+    fixture = document.createElement('div')
+    document.body.appendChild(fixture)
+    fixture.innerHTML = html
+    select = fixture.querySelector('select')
+    var autocomplete = new GOVUK.Modules.AccessibleAutocomplete(fixture.querySelector('.gem-c-accessible-autocomplete'))
     autocomplete.init()
   }
 
@@ -26,20 +29,28 @@ describe('An accessible autocomplete component', function () {
 
     setTimeout(function () {
       deferred.resolve()
-    }, 500)
+    }, 1)
 
     return deferred.promise()
   }
 
+  afterEach(function () {
+    fixture.remove()
+  })
+
   describe('updates the hidden select when', function () {
     beforeEach(function (done) {
       loadAutocompleteComponent()
+      var input = fixture.querySelector('.autocomplete__input')
+      input.value = 'Moose'
 
       // the autocomplete is complex enough that all of these
       // events are necessary to simulate user input
-      $('.autocomplete__input').val('Moose').click().focus().trigger(
-        $.Event('keypress', { which: 13, key: 13, keyCode: 13 })
-      ).blur()
+      // need to use triggerEvent as direct e.g. .click() doesn't work headless
+      window.GOVUK.triggerEvent(input, 'focus')
+      window.GOVUK.triggerEvent(input, 'keyup')
+      window.GOVUK.triggerEvent(input, 'click')
+      window.GOVUK.triggerEvent(input, 'blur')
 
       testAsyncWithDeferredReturnValue().done(function () {
         done()
@@ -47,7 +58,7 @@ describe('An accessible autocomplete component', function () {
     })
 
     it('an option is selected', function () {
-      expect($('select').val()).toEqual('mo')
+      expect(select.value).toEqual('mo')
     })
   })
 
@@ -55,12 +66,16 @@ describe('An accessible autocomplete component', function () {
     beforeEach(function (done) {
       loadAutocompleteComponent()
 
-      $('select').val('de').change()
-      $('.autocomplete__input').val('Deer')
+      var input = fixture.querySelector('.autocomplete__input')
+      input.value = 'Deer'
+      select.value = 'de'
+      window.GOVUK.triggerEvent(select, 'change')
 
-      $('.autocomplete__input').val('').click().focus().trigger(
-        $.Event('keypress', { which: 13, key: 13, keyCode: 13 })
-      ).blur()
+      input.value = ''
+      window.GOVUK.triggerEvent(input, 'focus')
+      window.GOVUK.triggerEvent(input, 'keyup')
+      window.GOVUK.triggerEvent(input, 'click')
+      window.GOVUK.triggerEvent(input, 'blur')
 
       testAsyncWithDeferredReturnValue().done(function () {
         done()
@@ -68,7 +83,7 @@ describe('An accessible autocomplete component', function () {
     })
 
     it('the input is cleared', function () {
-      expect($('select').val()).toEqual('')
+      expect(select.value).toEqual('')
     })
   })
 })

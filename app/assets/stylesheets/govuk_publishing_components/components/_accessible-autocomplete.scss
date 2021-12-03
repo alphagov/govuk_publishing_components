@@ -5,10 +5,6 @@
     z-index: 1;
   }
 
-  .autocomplete__dropdown-arrow-down {
-    z-index: 0;
-  }
-
   .autocomplete__option {
     @include govuk-font(19);
     min-height: 1.3em; // this ensures a blank item has a height
@@ -22,11 +18,5 @@
       top: 3px;
       padding-top: 2px;
     }
-  }
-}
-
-.gem-c-accessible-autocomplete--hide-menu {
-  .autocomplete__menu {
-    display: none;
   }
 }
