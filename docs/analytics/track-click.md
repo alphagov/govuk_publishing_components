@@ -14,6 +14,8 @@ Basic use:
 </a>
 ```
 
+**NOTE:**  According to [Google Analytics Help](https://support.google.com/analytics/answer/1033068), event label is optional, but recommended.
+
 Advanced use. Adds a custom dimension of `dimension29` with a value of `dimension-value`, and a `value` of `9`.
 
 ```html
