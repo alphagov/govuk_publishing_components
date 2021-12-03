@@ -37,3 +37,9 @@ examples:
         orci. Proin semper porttitor ipsum, vel maximus justo rutrum vel.
         Morbi volutpat facilisis libero. Donec posuere eget odio non egestas.
         Nullam sed neque quis turpis.
+  with_custom_margin_bottom:
+    description: |
+      The component accepts a number for margin bottom from 0 to 9 (0px to 60px) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). The default margins for the component are inherited from the [notification-banner](https://github.com/alphagov/govuk-frontend/blob/main/package/govuk/components/notification-banner/_index.scss) styles defined in the Design System.
+    data:
+      message: Message to alert the user to a successful action goes here
+      margin_bottom: 3

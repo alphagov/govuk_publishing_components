@@ -1,9 +1,12 @@
 <%
   description ||= nil
   title_id ||= "govuk-notification-banner-title-#{SecureRandom.hex(4)}"
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+  classes = %w(gem-c-success-alert govuk-notification-banner govuk-notification-banner--success)
+  classes << shared_helper.get_margin_bottom if local_assigns[:margin_bottom]
 %>
 
-<%= tag.div class: "gem-c-success-alert govuk-notification-banner govuk-notification-banner--success",
+<%= tag.div class: classes,
   role: "alert",
   tabindex: "-1",
   aria: {
