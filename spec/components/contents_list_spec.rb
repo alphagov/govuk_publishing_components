@@ -138,6 +138,7 @@ describe "Contents list", type: :view do
   end
 
   it "adds a lang attribute to the title if falling back to English" do
+    I18n.stub(:translate).with("components.#{component_name}.contents", anything).and_return("en")
     I18n.with_locale(:ru) { render_component(contents: contents_list) }
     assert_select ".gem-c-contents-list__title[lang=\"en\"]"
   end
