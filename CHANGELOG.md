@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Remove jQuery from custom dimensions ([PR #2473](https://github.com/alphagov/govuk_publishing_components/pull/2473))
 * Use the correct mixins for applying font in the big number component ([PR #2494](https://github.com/alphagov/govuk_publishing_components/pull/2494))
 * Remove use of govuk-font from the big number component ([PR #2493](https://github.com/alphagov/govuk_publishing_components/pull/2493))
 * Add `margin_bottom` option to success alert ([PR #2492](https://github.com/alphagov/govuk_publishing_components/pull/2492))
