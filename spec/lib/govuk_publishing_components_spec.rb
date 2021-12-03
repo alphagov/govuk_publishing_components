@@ -26,7 +26,7 @@ describe GovukPublishingComponents do
         href: "./",
       )
 
-      expect(rendered).to match(/Yn ôl/)
+      expect(rendered).to match(/Nôl/)
     end
   end
 end
