@@ -1,48 +1,56 @@
 ---
 pl:
   common:
-    translations:
+    translations: Tłumaczenia
   components:
     accordion:
-      hide:
-      hide_all:
-      show:
-      show_all:
-      this_section_visually_hidden:
+      hide: Ukryj
+      hide_all: Ukryj wszystkie części
+      show: Pokaż
+      show_all: Pokaż wszystkie części
+      this_section_visually_hidden: " ta część"
     article_schema:
-      scoped_search_description:
+      scoped_search_description: Szukaj w %{title}
     attachment:
-      opendocument_html:
-      order_a_copy:
+      opendocument_html: Ten plik jest w formacie <a href="https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation" target=%{target} class="govuk-link">OpenDocument</a>
+      order_a_copy: Zamów kopię
       page:
-        one:
-        other:
-      reference:
-      request_format_cta:
-      request_format_details_html:
-      request_format_text:
+        few:
+        many:
+        one: 1 strona
+        other: "%{count} strony"
+      reference: 'Odnośnik: %{reference}'
+      request_format_cta: Poproś o inny format.
+      request_format_details_html: Jeśli korzystasz z technologii wspomagającej (np. czytnika ekranu) i potrzebujesz innej wersji tego dokumentu w bardziej dostępnym formacie, prosimy o przesłanie wiadomości e-mail na adres <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Powiedz nam, jakiego formatu potrzebujesz i poinformuj z jakiej technologii wspomagającej korzystasz.
+      request_format_text: Ten plik może nie być odpowiedni dla użytkowników korzystających z technologii wspomagających.
     back_link:
-      back:
+      back: Wstecz
     character_count:
-      body:
+      body: Można wprowadzić maksymalnie %{number} %{type}
       type:
-        characters:
-        words:
+        characters: znaków
+        words: słów
     checkboxes:
-      or:
+      or: lub
     contents_list:
-      contents:
+      contents: Zawartość
     contextual_sidebar:
-      pretitle:
+      pretitle: Także w ramach
     cookie_banner:
       buttons:
-        accept_cookies:
-        reject_cookies:
-      confirmation_message:
-      confirmation_message_link:
-      hide:
+        accept_cookies: Zaakceptuj dodatkowe pliki cookie
+        reject_cookies: Odrzuć dodatkowe pliki cookie
+      confirmation_message_html: Możesz %{link} w każdej chwili.
+      confirmation_message_link: zmień ustawienia plików cookie
+      hide: Ukryj tę wiadomość
       text:
-      title:
+      - Niektóre pliki cookie są niezbędne
+      - aby umożliwić działanie tej strony.
+      - Niektóre pliki cookie pomogą nam zrozumieć w jaki sposób korzystasz z GOV.UK
+      - zapamiętać Twoje ustawienia i ulepszyć usługi rządowe.
+      - Używamy również plików cookie innych witryn
+      - dzięki którym dostarczamy treści z ich serwisów.
+      title: Pliki cookies na GOV.UK
     devolved_nations:
       applies_to:
       connectors:
@@ -51,69 +59,59 @@ pl:
       england:
       northern_ireland:
       scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
       wales:
     feedback:
-      close:
-      dont_include_personal_info:
-      email_address:
-      help_us_improve_govuk:
-      is_not_useful:
-      is_this_page_useful:
-      is_useful:
-      maybe:
-      more_about_visit:
-      'no':
-      send:
-      send_me_survey:
-      something_wrong:
-      thank_you_for_feedback:
-      what_doing:
-      what_wrong:
-      'yes':
+      close: Zamknij
+      dont_include_personal_info: Nie podawaj informacji osobistych ani finansowych, takich jak numer ubezpieczenia społecznego czy dane karty kredytowej.
+      email_address: Adres e-mail
+      help_us_improve_govuk: Pomóż nam ulepszyć GOV.UK
+      is_not_useful: ta strona nie jest pomocna
+      is_this_page_useful: Czy ta strona jest pomocna?
+      is_useful: ta strona jest pomocna
+      maybe: Może
+      more_about_visit: Aby pomóc nam w ulepszaniu GOV.UK, chcielibyśmy dowiedzieć się więcej o Twojej dzisiejszej wizycie. Wyślemy Ci link do formularza zwrotnego. Wypełnienie go zajmie Ci tylko 2 minuty. Nie martw się, nie wyślemy Ci spamu, ani nie udostępnimy nikomu Twojego adresu e-mail.
+      'no': Nie
+      send: Wyślij
+      send_me_survey: Wyślij ankietę
+      something_wrong: Zgłoś problem ze stroną
+      thank_you_for_feedback: Dziękujemy za opinię
+      what_doing: Co robiłeś?
+      what_wrong: Co poszło nie tak?
+      'yes': Tak
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
+      consultations: Konsultacje
+      departments: Departamenty
+      get-involved: Weź udział
+      how-government-works: Jak funkcjonuje rząd
+      news_and_communications: Wiadomości i komunikaty
+      statistics: Statystyki
+      worldwide: Na świecie
     layout_footer:
-      copyright_html:
-      licence_html:
-      support_links:
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Właścicielem praw autorskich jest Korona</a>
+      licence_html: Cała zawartość objęta jest licencją <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, chyba że zaznaczono inaczej
+      support_links: Linki pomocnicze
     layout_for_public:
       account_layout:
         feedback:
           banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
+            phase_banner_html:
         navigation:
-          destroy_user_session:
           menu_bar:
             account:
               link_text:
             manage:
               link_text:
-            security:
-              link_text:
-          user_root_path:
     layout_header:
-      hide_button:
-      menu:
-      search_button:
-      show_button:
-      top_level:
+      hide_button: Ukryj wyszukiwanie
+      menu: Menu
+      search_button: Szukaj w GOV.UK
+      show_button: Pokaż wyszukiwanie
+      top_level: Najwyższy poziom
     layout_super_navigation_header:
       logo_link_title:
       logo_text:
@@ -128,77 +126,83 @@ pl:
       popular_links_heading:
       search_text:
     metadata:
-      from:
-      history:
-      last_updated:
-      part_of:
-      published:
-      see_all_updates:
-      toggle_less:
-      toggle_more:
+      from: Od
+      history: Historia
+      last_updated: Ostatnio zaktualizowano
+      part_of: Część
+      published: Opublikowano
+      see_all_updates: Zobacz wszystkie aktualizacje
+      toggle_less: Pokaż mniej
+      toggle_more: "+ %{number} więcej"
     modal_dialogue:
-      close_modal:
+      close_modal: Zamknij okno modalne
     notice:
       banner_title:
     organisation_schema:
-      all_content_search_description:
+      all_content_search_description: Znajdź całą zawartość od %{organizacja}
     previous_and_next_navigation:
-      pagination:
+      pagination: Numeracja stron
     print_link:
-      text:
+      text: Wydrukuj tę stronę
     radio:
-      or:
+      or: lub
     related_footer_navigation:
-      collections:
-      policies:
-      statistical_data_sets:
-      topical_events:
+      collections: Serie
+      policies: Polityki
+      statistical_data_sets: Zestawy danych statystycznych
+      topical_events: Wydarzenia tematyczne
     related_navigation:
-      collections:
-      external_links:
-      policies:
-      publishers:
-      related_contacts:
-      related_content:
-      related_external_links:
-      related_guides:
-      statistical_data_sets:
-      topical_events:
-      topics:
+      collections: Seria
+      external_links: W innych miejscach w sieci
+      policies: Polityka
+      publishers: Opublikowano przez
+      related_contacts: Inne kontakty
+      related_content: Powiązane treści
+      related_external_links: W innych miejscach w sieci
+      related_guides: Szczegółowe wytyczne
+      statistical_data_sets: Zestaw danych statystycznych
+      topical_events: Wydarzenie tematyczne
+      topics: Zbadaj temat
       transition:
-        link_path:
-        link_text:
-        title:
-      world_locations:
+        hub_page_link_path: "/transition-check/questions"
+        hub_page_link_text: Uzyskaj spersonalizowaną listę zadań
+        hub_page_title: Brexit checker
+        link_path: "/brexit"
+        link_text: Sprawdź, co musisz zrobić
+        title: Brexit
+      world_locations: Miejsca na świecie
     search_box:
-      input_title:
-      label:
-      search_button:
+      input_title: Szukaj
+      label: Szukaj na GOV.UK
+      search_button: Szukaj
     show_password:
-      announce_hide:
-      announce_show:
-      hide:
-      hide_password:
-      show:
-      show_password:
+      announce_hide: Twoje hasło jest ukryte
+      announce_show: Twoje hasło jest wyświetlane
+      hide: Ukryj
+      hide_password: Ukryj hasło
+      show: Pokaż
+      show_password: Pokaż hasło
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
-      text:
+      text: Przejdź do głównej treści
     step_by_step_nav:
-      hide:
-      hide_all:
-      show:
-      show_all:
+      hide: Ukryj
+      hide_all: Ukryj wszystkie kroki
+      show: Pokaż
+      show_all: Pokaż wszystkie kroki
     step_by_step_nav_related:
-      part_of:
+      part_of: Część
     subscription_links:
-      email_signup_link_text:
-      feed_link_label:
-      feed_link_text:
-      subscriptions:
+      email_signup_link_text: Otrzymuj wiadomości e-mail
+      feed_link_label: Skopiuj i wklej ten adres URL do swojego czytnika kanałów
+      feed_link_text: Subskrybuj kanał
+      subscriptions: Subskrypcje
     success_alert:
-      success:
+      success: Powodzenie
     summary_list:
-      delete:
-      edit:
+      delete: Usuń
+      edit: Zmień
     tabs:
-      contents:
+      contents: Zawartość

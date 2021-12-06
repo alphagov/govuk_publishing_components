@@ -1,48 +1,57 @@
 ---
 sk:
   common:
-    translations:
+    translations: Preklady
   components:
     accordion:
-      hide:
-      hide_all:
-      show:
-      show_all:
-      this_section_visually_hidden:
+      hide: Skryť
+      hide_all: Skryť všetky sekcie
+      show: Zobraziť
+      show_all: Zobraziť všetky časti
+      this_section_visually_hidden: " táto časť"
     article_schema:
-      scoped_search_description:
+      scoped_search_description: Vyhľadávanie v %{title}
     attachment:
-      opendocument_html:
-      order_a_copy:
+      opendocument_html: Tento súbor je vo formáte <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a>
+      order_a_copy: Objednať kópiu
       page:
-        one:
-        other:
-      reference:
-      request_format_cta:
-      request_format_details_html:
-      request_format_text:
+        few:
+        one: 1 strana
+        other: "%{count} strán"
+      reference: 'Odkaz: %{reference}'
+      request_format_cta: Vyžiadajte si prístupný formát.
+      request_format_details_html: Ak používate asistenčnú technológiu (napríklad čítačku obrazovky) a potrebujete verziu tohto dokumentu v prístupnejšom formáte, napíšte nám <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Povedzte nám, aký formát potrebujete. Pomôže nám, ak poviete, akú asistenčnú technológiu používate.
+      request_format_text: Tento súbor nemusí byť vhodný pre používateľov asistenčných technológií.
     back_link:
-      back:
+      back: Späť
     character_count:
-      body:
+      body: Môžete zadať až %{number} %{type}
       type:
-        characters:
-        words:
+        characters: znakov
+        words: slov
     checkboxes:
-      or:
+      or: alebo
     contents_list:
-      contents:
+      contents: Obsah
     contextual_sidebar:
-      pretitle:
+      pretitle: Tiež je súčasťou
     cookie_banner:
       buttons:
-        accept_cookies:
-        reject_cookies:
-      confirmation_message:
-      confirmation_message_link:
-      hide:
+        accept_cookies: Prijať ďalšie súbory cookie
+        reject_cookies: Odmietnuť ďalšie súbory cookie
+      confirmation_message_html: Kedykoľvek môžete %{link}.
+      confirmation_message_link: zmeniť nastavenia súborov cookie
+      hide: Skryť túto správu
       text:
-      title:
+      - "„Používame niektoré základné súbory cookie"
+      - aby táto webová stránka fungovala.“
+      - "„Radi by sme nastavili ďalšie súbory cookie"
+      - aby sme pochopili
+      - ako používate GOV.UK
+      - zapamätali si vaše nastavenia a zlepšili vládne služby.“
+      - "„Používame aj súbory cookie nastavené inými stránkami"
+      - aby sme mohli poskytovať obsah z ich služieb.“
+      title: Súbory cookie na GOV.UK
     devolved_nations:
       applies_to:
       connectors:
@@ -51,69 +60,59 @@ sk:
       england:
       northern_ireland:
       scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
       wales:
     feedback:
-      close:
-      dont_include_personal_info:
-      email_address:
-      help_us_improve_govuk:
-      is_not_useful:
-      is_this_page_useful:
-      is_useful:
-      maybe:
-      more_about_visit:
-      'no':
-      send:
-      send_me_survey:
-      something_wrong:
-      thank_you_for_feedback:
-      what_doing:
-      what_wrong:
-      'yes':
+      close: Zatvoriť
+      dont_include_personal_info: Neuvádzajte osobné ani finančné údaje, ako je číslo vášho národného poistenia alebo údaje o kreditnej karte.
+      email_address: E-mailová adresa
+      help_us_improve_govuk: Pomôžte nám zlepšiť GOV.UK
+      is_not_useful: táto stránka nie je užitočná
+      is_this_page_useful: Je táto stránka užitočná?
+      is_useful: táto stránka je užitočná
+      maybe: Možno
+      more_about_visit: Radi by sme sa dozvedeli viac o vašej dnešnej návšteve, aby sme nám pomohli zlepšiť GOV.UK. Pošleme vám odkaz na formulár spätnej väzby. Jeho vyplnenie vám zaberie len 2 minúty. Nebojte sa, nebudeme vám posielať spam ani nebudeme s nikým zdieľať vašu e-mailovú adresu.
+      'no': Nie
+      send: Odoslať
+      send_me_survey: Pošlite mi prieskum
+      something_wrong: Nahlásiť problém s touto stránkou
+      thank_you_for_feedback: Ďakujeme za vašu spätnú väzbu
+      what_doing: Čo ste robili?
+      what_wrong: Čo sa pokazilo?
+      'yes': Áno
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
+      consultations: Konzultácie
+      departments: Oddelenia
+      get-involved: Zapojiť sa
+      how-government-works: Ako funguje vláda
+      news_and_communications: Novinky a komunikácia
+      statistics: Štatistiky
+      worldwide: Celosvetovo
     layout_footer:
-      copyright_html:
-      licence_html:
-      support_links:
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Korunné autorské práva</a>
+      licence_html: Všetok obsah je k dispozícii pod <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">licenciou Open Government Licence v3.0</a>, okrem prípadov, keď je uvedené inak
+      support_links: Podporné odkazy
     layout_for_public:
       account_layout:
         feedback:
           banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
+            phase_banner_html:
         navigation:
-          destroy_user_session:
           menu_bar:
             account:
               link_text:
             manage:
               link_text:
-            security:
-              link_text:
-          user_root_path:
     layout_header:
-      hide_button:
-      menu:
-      search_button:
-      show_button:
-      top_level:
+      hide_button: Skryť vyhľadávanie
+      menu: Menu
+      search_button: Vyhľadávanie na GOV.UK
+      show_button: Zobraziť vyhľadávanie
+      top_level: Najvyššia úroveň
     layout_super_navigation_header:
       logo_link_title:
       logo_text:
@@ -128,77 +127,83 @@ sk:
       popular_links_heading:
       search_text:
     metadata:
-      from:
-      history:
-      last_updated:
-      part_of:
-      published:
-      see_all_updates:
-      toggle_less:
-      toggle_more:
+      from: Od
+      history: História
+      last_updated: Posledná aktualizácia
+      part_of: Časť
+      published: Zverejnené na
+      see_all_updates: Zobraziť všetky aktualizácie
+      toggle_less: Zobraziť menej
+      toggle_more: "+ %{number} viac"
     modal_dialogue:
-      close_modal:
+      close_modal: Zavrieť modálny dialóg
     notice:
       banner_title:
     organisation_schema:
-      all_content_search_description:
+      all_content_search_description: Nájsť všetok obsah z %{organisation}
     previous_and_next_navigation:
-      pagination:
+      pagination: Stránkovanie
     print_link:
-      text:
+      text: Vytlačiť túto stránku
     radio:
-      or:
+      or: alebo
     related_footer_navigation:
-      collections:
-      policies:
-      statistical_data_sets:
-      topical_events:
+      collections: Zbierky
+      policies: Politiky
+      statistical_data_sets: Súbory štatistických údajov
+      topical_events: Aktuálne podujatia
     related_navigation:
-      collections:
-      external_links:
-      policies:
-      publishers:
-      related_contacts:
-      related_content:
-      related_external_links:
-      related_guides:
-      statistical_data_sets:
-      topical_events:
-      topics:
+      collections: Zbierka
+      external_links: Na inom mieste na webe
+      policies: Politika
+      publishers: Vydal
+      related_contacts: Ďalšie kontakty
+      related_content: Súvisiaci obsah
+      related_external_links: Na inom mieste na webe
+      related_guides: Podrobné usmernenie
+      statistical_data_sets: Súbor štatistických údajov
+      topical_events: Aktuálne podujatie
+      topics: Preskúmať tému
       transition:
-        link_path:
-        link_text:
-        title:
-      world_locations:
+        hub_page_link_path: "/transition-check/questions"
+        hub_page_link_text: Získajte personalizovaný zoznam akcií
+        hub_page_title: Kontrola brexitu
+        link_path: "/brexit"
+        link_text: Skontrolujte, čo je potrebné urobiť
+        title: Brexit
+      world_locations: Svetové lokality
     search_box:
-      input_title:
-      label:
-      search_button:
+      input_title: Vyhľadávanie
+      label: Vyhľadávanie na GOV.UK
+      search_button: Vyhľadávanie
     show_password:
-      announce_hide:
-      announce_show:
-      hide:
-      hide_password:
-      show:
-      show_password:
+      announce_hide: Vaše heslo je skryté
+      announce_show: Vaše heslo sa zobrazuje.
+      hide: Skryť
+      hide_password: Skryť heslo
+      show: Zobraziť
+      show_password: Zobraziť heslo
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
-      text:
+      text: Prejsť na hlavný obsah
     step_by_step_nav:
-      hide:
-      hide_all:
-      show:
-      show_all:
+      hide: Skryť
+      hide_all: Skryť všetky kroky
+      show: Zobraziť
+      show_all: Zobraziť všetky kroky
     step_by_step_nav_related:
-      part_of:
+      part_of: Časť
     subscription_links:
-      email_signup_link_text:
-      feed_link_label:
-      feed_link_text:
-      subscriptions:
+      email_signup_link_text: Dostávať e-maily
+      feed_link_label: Skopírujte a vložte túto adresu URL do čítačky
+      feed_link_text: Prihlásiť sa k odberu
+      subscriptions: Predplatné
     success_alert:
-      success:
+      success: Úspešne
     summary_list:
-      delete:
-      edit:
+      delete: Odstrániť
+      edit: Zmeniť
     tabs:
-      contents:
+      contents: Obsah

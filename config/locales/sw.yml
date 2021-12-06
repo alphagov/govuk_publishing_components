@@ -1,48 +1,52 @@
 ---
 sw:
   common:
-    translations:
+    translations: Tafsiri
   components:
     accordion:
-      hide:
-      hide_all:
-      show:
-      show_all:
-      this_section_visually_hidden:
+      hide: Ficha
+      hide_all: Ficha sehemu zote
+      show: Onyesha
+      show_all: Onyesha sehemu zote
+      this_section_visually_hidden: " sehemu hii"
     article_schema:
-      scoped_search_description:
+      scoped_search_description: Tafuta ndani ya %{title}
     attachment:
-      opendocument_html:
-      order_a_copy:
+      opendocument_html: Faili hii ni ya muundo wa <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a>
+      order_a_copy: Agiza nakala
       page:
-        one:
-        other:
-      reference:
-      request_format_cta:
-      request_format_details_html:
-      request_format_text:
+        one: Ukurasa mmoja (1)
+        other: Kurasa %{count}
+      reference: 'Marejeleo: %{reference}'
+      request_format_cta: Omba muundo unaoweza kutumika.
+      request_format_details_html: Ikiwa unatumia vifaa vya usaidizi(kama vile kisoma skrini) na unahitaji toleo la hati hii katika muundo unaoweza kutumika zaidi, tafadhali tuma barua pepe katika <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Tafadhali tuambie muundo unaohitaji. Itatusaidia ikiwa utatufahamisha kifaa cha usaidizi unachotumia.
+      request_format_text: Faili hii huenda haitumiki kwa watumiaji wanaotumia vifaa vya usaidizi.
     back_link:
-      back:
+      back: Rudi nyuma
     character_count:
-      body:
+      body: Unaweza kuweka hadi %{number} %{type}
       type:
-        characters:
-        words:
+        characters: herufi
+        words: maneno
     checkboxes:
-      or:
+      or: au
     contents_list:
-      contents:
+      contents: Maudhui
     contextual_sidebar:
-      pretitle:
+      pretitle: Pia ni sehemu ya
     cookie_banner:
       buttons:
-        accept_cookies:
-        reject_cookies:
-      confirmation_message:
-      confirmation_message_link:
-      hide:
+        accept_cookies: Kubali vidakuzi vya ziada
+        reject_cookies: Kataa vidakuzi vya ziada
+      confirmation_message_html: Unaweza %{link} wakati wowote.
+      confirmation_message_link: badilisha mipangilio yako ya vidakuzi
+      hide: Ficha ujumbe huu
       text:
-      title:
+      - Tunatumia vidakuzi muhimu ili kufanya tovuti hii ifanye kazi.
+      - Tungependa kuweka vidakuzi vya ziada ili kuelewa jinsi unavyotumia tovuti ya GOV.UK
+      - kumbuka mipangilio yako na uboreshe huduma za serikali.
+      - Tunatumia pia vidakuzi vilivyowekwa na tovuti zingine ili kutusaidia kutoa maudhui kutoka kwenye huduma zao.
+      title: Vidakuzi kwenye tovuti ya GOV.UK
     devolved_nations:
       applies_to:
       connectors:
@@ -51,69 +55,59 @@ sw:
       england:
       northern_ireland:
       scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
       wales:
     feedback:
-      close:
-      dont_include_personal_info:
-      email_address:
-      help_us_improve_govuk:
-      is_not_useful:
-      is_this_page_useful:
-      is_useful:
-      maybe:
-      more_about_visit:
-      'no':
-      send:
-      send_me_survey:
-      something_wrong:
-      thank_you_for_feedback:
-      what_doing:
-      what_wrong:
-      'yes':
+      close: Funga
+      dont_include_personal_info: Usiweke maelezo ya kibinafsi au ya fedha kama vile nambari yako ya Bima ya Kitaifa au maelezo ya kadi yako ya mikopo.
+      email_address: Anwani ya barua pepe
+      help_us_improve_govuk: Tusaidie kuboresha tovuti ya GOV.UK
+      is_not_useful: ukurasa huu si muhimu
+      is_this_page_useful: Je, ukurasa huu ni muhimu?
+      is_useful: ukurasa huu ni muhimu
+      maybe: Huenda
+      more_about_visit: Ili kutusaidia kuboresha tovuti ya GOV.UK, tungependa kupata maelezo zaidi kuhusu hali ya huduma uliyopata leo. Tutakutumia kiungo cha kuelekeza kwenye fomu ya maoni. Itachukua dakika 2 tu kujaza. Usijali, hatutakutumia barua taka au kushiriki anwani yako ya barua pepe na mtu yeyote.
+      'no': Hapana
+      send: Tuma
+      send_me_survey: Nitumie utafiti
+      something_wrong: Ripoti tatizo unalokumbana nalo kwenye ukurasa huu
+      thank_you_for_feedback: Asante kwa maoni yako
+      what_doing: Ulikuwa unafanya nini?
+      what_wrong: Tatizo lipi lililotokea?
+      'yes': Ndiyo
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
+      consultations: Mashauriano
+      departments: Idara
+      get-involved: Shiriki
+      how-government-works: Jinsi serikali hufanya kazi
+      news_and_communications: Habari na mawasiliano
+      statistics: Takwimu
+      worldwide: Kimataifa
     layout_footer:
-      copyright_html:
-      licence_html:
-      support_links:
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Hakimiliki ya Crown</a>
+      licence_html: Maudhui yote yanapatikana chini ya <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, isipokuwa ibainishwe vinginevyo
+      support_links: Viungo vya ziada
     layout_for_public:
       account_layout:
         feedback:
           banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
+            phase_banner_html:
         navigation:
-          destroy_user_session:
           menu_bar:
             account:
               link_text:
             manage:
               link_text:
-            security:
-              link_text:
-          user_root_path:
     layout_header:
-      hide_button:
-      menu:
-      search_button:
-      show_button:
-      top_level:
+      hide_button: Ficha utafutaji
+      menu: Menyu
+      search_button: Tafuta tovuti ya GOV.UK
+      show_button: Onyesha utafutaji
+      top_level: Kiwango cha juu
     layout_super_navigation_header:
       logo_link_title:
       logo_text:
@@ -128,77 +122,83 @@ sw:
       popular_links_heading:
       search_text:
     metadata:
-      from:
-      history:
-      last_updated:
-      part_of:
-      published:
-      see_all_updates:
-      toggle_less:
-      toggle_more:
+      from: Kuanzia
+      history: Kumbukumbu
+      last_updated: Ilisasishwa mara ya mwisho
+      part_of: Sehemu ya
+      published: Ilichapishwa
+      see_all_updates: Angalia taarifa zote
+      toggle_less: Onyesha chache
+      toggle_more: "+ %{number} zaidi"
     modal_dialogue:
-      close_modal:
+      close_modal: Funga dirisha ibukizi
     notice:
       banner_title:
     organisation_schema:
-      all_content_search_description:
+      all_content_search_description: Tafuta maudhui yote kutoka %{organisation}
     previous_and_next_navigation:
-      pagination:
+      pagination: Nambari za kurasa
     print_link:
-      text:
+      text: Chapisha ukurasa huu
     radio:
-      or:
+      or: au
     related_footer_navigation:
-      collections:
-      policies:
-      statistical_data_sets:
-      topical_events:
+      collections: Mikusanyiko
+      policies: Sera
+      statistical_data_sets: Vikundi vya data ya takwimu
+      topical_events: Matukio yanayohusiana na mada
     related_navigation:
-      collections:
-      external_links:
-      policies:
-      publishers:
-      related_contacts:
-      related_content:
-      related_external_links:
-      related_guides:
-      statistical_data_sets:
-      topical_events:
-      topics:
+      collections: Mkusanyiko
+      external_links: Mahali pengine kwenye wavuti
+      policies: Sera
+      publishers: Imechapishwa na
+      related_contacts: Anwani zingine
+      related_content: Maudhui yanayohusiana
+      related_external_links: Mahali pengine kwenye wavuti
+      related_guides: Mwongozo wa kina
+      statistical_data_sets: Kikundi cha data ya takwimu
+      topical_events: Tukio linalohusiana na mada
+      topics: Pitia mada
       transition:
-        link_path:
-        link_text:
-        title:
-      world_locations:
+        hub_page_link_path: "/transition-check/questions"
+        hub_page_link_text: Pata orodha ya hatua za kuchukua zinazokufaa
+        hub_page_title: Kiteuzi cha Brexit
+        link_path: "/brexit"
+        link_text: Angalia unachopaswa kufanya
+        title: Brexit
+      world_locations: Maeneo ya kimataifa
     search_box:
-      input_title:
-      label:
-      search_button:
+      input_title: Tafuta
+      label: Tafuta kwenye tovuti ya GOV.UK
+      search_button: Tafuta
     show_password:
-      announce_hide:
-      announce_show:
-      hide:
-      hide_password:
-      show:
-      show_password:
+      announce_hide: Nenosiri lako limefichwa
+      announce_show: Nenosiri lako limeonyeshwa
+      hide: Ficha
+      hide_password: Ficha nenosiri
+      show: Onyesha
+      show_password: Onyesha nenosiri
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
-      text:
+      text: Nenda kwenye maudhui makuu
     step_by_step_nav:
-      hide:
-      hide_all:
-      show:
-      show_all:
+      hide: Ficha
+      hide_all: Ficha hatua zote
+      show: Onyesha
+      show_all: Onyesha hatua zote
     step_by_step_nav_related:
-      part_of:
+      part_of: Sehemu ya
     subscription_links:
-      email_signup_link_text:
-      feed_link_label:
-      feed_link_text:
-      subscriptions:
+      email_signup_link_text: Pata barua pepe
+      feed_link_label: Nakili na ubandike URL hii kwenye kisoma mipasho chako
+      feed_link_text: Jisajili ili upokee mipasho
+      subscriptions: Usajili
     success_alert:
-      success:
+      success: Umefaulu
     summary_list:
-      delete:
-      edit:
+      delete: Futa
+      edit: Badilisha
     tabs:
-      contents:
+      contents: Maudhui

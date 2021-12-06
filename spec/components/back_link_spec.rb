@@ -18,7 +18,7 @@ describe "Back Link", type: :view do
 
   it "can render in welsh" do
     I18n.with_locale(:cy) { render_component(href: "/back-me") }
-    assert_select '.govuk-back-link[href="/back-me"]', text: "Yn ôl"
+    assert_select '.govuk-back-link[href="/back-me"]', text: "Nôl"
   end
 
   it "renders a back link with data attributes" do

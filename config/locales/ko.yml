@@ -38,7 +38,7 @@ ko:
       buttons:
         accept_cookies:
         reject_cookies:
-      confirmation_message:
+      confirmation_message_html:
       confirmation_message_link:
       hide:
       text:
@@ -51,6 +51,11 @@ ko:
       england:
       northern_ireland:
       scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
       wales:
     feedback:
       close:
@@ -78,11 +83,6 @@ ko:
       news_and_communications:
       statistics:
       worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
     layout_footer:
       copyright_html:
       licence_html:
@@ -91,23 +91,13 @@ ko:
       account_layout:
         feedback:
           banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
+            phase_banner_html:
         navigation:
-          destroy_user_session:
           menu_bar:
             account:
               link_text:
             manage:
               link_text:
-            security:
-              link_text:
-          user_root_path:
     layout_header:
       hide_button:
       menu:
@@ -166,6 +156,9 @@ ko:
       topical_events:
       topics:
       transition:
+        hub_page_link_path:
+        hub_page_link_text:
+        hub_page_title:
         link_path:
         link_text:
         title:
@@ -181,6 +174,9 @@ ko:
       hide_password:
       show:
       show_password:
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
       text:
     step_by_step_nav:

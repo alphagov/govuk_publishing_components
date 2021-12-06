@@ -1,48 +1,51 @@
 ---
 zh:
   common:
-    translations:
+    translations: 翻译
   components:
     accordion:
-      hide:
-      hide_all:
-      show:
-      show_all:
-      this_section_visually_hidden:
+      hide: 隐藏
+      hide_all: 隐藏所有小节
+      show: 显示
+      show_all: 显示所有小节
+      this_section_visually_hidden: " 本小节"
     article_schema:
-      scoped_search_description:
+      scoped_search_description: 在 %{title} 内搜索
     attachment:
-      opendocument_html:
-      order_a_copy:
+      opendocument_html: 本文件是 <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>开放式文本</a> 格式
+      order_a_copy: 订购副本
       page:
-        one:
-        other:
-      reference:
-      request_format_cta:
-      request_format_details_html:
-      request_format_text:
+        one: 1页
+        other: "%{count} 页"
+      reference: 参考号：%{reference}
+      request_format_cta: 申请可访问格式。
+      request_format_details_html: '如果您使用辅助技术（如屏幕阅读器），并需要更易于访问的格式，请发送电子邮件 <a href=''mailto:%{alternative_format_contact_email}'' target=''_blank'' class=''govuk-link''>%{alternative_format_contact_email}</a>。请告诉我们您需要什么格式。如果您能说出自己使用的辅助技术，这对我们很有帮助。  '
+      request_format_text: 此文件可能不适合辅助技术用户使用。
     back_link:
-      back:
+      back: 向后
     character_count:
-      body:
+      body: 您最多可以输入 %{number} 个 %{type}
       type:
-        characters:
-        words:
+        characters: 字符
+        words: 单词
     checkboxes:
-      or:
+      or: 或
     contents_list:
-      contents:
+      contents: 目录
     contextual_sidebar:
-      pretitle:
+      pretitle: 也是部分
     cookie_banner:
       buttons:
-        accept_cookies:
-        reject_cookies:
-      confirmation_message:
-      confirmation_message_link:
-      hide:
+        accept_cookies: 接受额外cookies
+        reject_cookies: 拒绝额外cookies
+      confirmation_message_html: 您可以随时 %{link}。
+      confirmation_message_link: 更改您的cookie设置
+      hide: 隐藏此消息
       text:
-      title:
+      - 我们使用一些基本的cookie以使本网站运作。
+      - 我们希望设置额外的cookie，以了解您如何使用GOV.UK，记住您的设置，并改善政府服务。
+      - 我们也使用其他网站设置的cookie，以帮助我们提供其服务的内容。
+      title: GOV.UK上的Cookies
     devolved_nations:
       applies_to:
       connectors:
@@ -51,69 +54,59 @@ zh:
       england:
       northern_ireland:
       scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
       wales:
     feedback:
-      close:
-      dont_include_personal_info:
-      email_address:
-      help_us_improve_govuk:
-      is_not_useful:
-      is_this_page_useful:
-      is_useful:
-      maybe:
-      more_about_visit:
-      'no':
-      send:
-      send_me_survey:
-      something_wrong:
-      thank_you_for_feedback:
-      what_doing:
-      what_wrong:
-      'yes':
+      close: 关闭
+      dont_include_personal_info: 不要包含个人或财务信息，比如您的国家保险号或信用卡信息。
+      email_address: 电子邮箱地址
+      help_us_improve_govuk: 帮助我们改善GOV.UK
+      is_not_useful: 这个页面没有用
+      is_this_page_useful: 这个页面有用吗？
+      is_useful: 这个页面很有用
+      maybe: 可能
+      more_about_visit: 为了帮助我们改进GOV.UK，我们想了解更多关于您今天访问的信息。我们会给您发一个反馈表格的链接。只需2分钟即可填完。别担心，我们不会给您发垃圾邮件或将您的电子邮件地址分享给任何人。
+      'no': 否
+      send: 发送
+      send_me_survey: 将调查表发给我
+      something_wrong: 报告此页面的问题
+      thank_you_for_feedback: 非常感谢您的反馈
+      what_doing: 您在干什么？
+      what_wrong: 发生了哪些错误？
+      'yes': 是
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
+      consultations: 咨询
+      departments: 部门
+      get-involved: 参与
+      how-government-works: 政府如何运营
+      news_and_communications: 新闻和通讯
+      statistics: 统计数据
+      worldwide: 全世界
     layout_footer:
-      copyright_html:
-      licence_html:
-      support_links:
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown版权所有</a>
+      licence_html: 除另有说明外，所有内容均可在 <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">开放政府许可证第3.0版</a>获取
+      support_links: 支持链接
     layout_for_public:
       account_layout:
         feedback:
           banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
+            phase_banner_html:
         navigation:
-          destroy_user_session:
           menu_bar:
             account:
               link_text:
             manage:
               link_text:
-            security:
-              link_text:
-          user_root_path:
     layout_header:
-      hide_button:
-      menu:
-      search_button:
-      show_button:
-      top_level:
+      hide_button: 隐藏搜索
+      menu: 菜单
+      search_button: 搜索GOV.UK
+      show_button: 显示搜索
+      top_level: 最高级
     layout_super_navigation_header:
       logo_link_title:
       logo_text:
@@ -128,77 +121,83 @@ zh:
       popular_links_heading:
       search_text:
     metadata:
-      from:
-      history:
-      last_updated:
-      part_of:
-      published:
-      see_all_updates:
-      toggle_less:
-      toggle_more:
+      from: 从
+      history: 历史
+      last_updated: 上次更新
+      part_of: 一部分
+      published: 已发布
+      see_all_updates: 查看全部更新
+      toggle_less: 显示更少
+      toggle_more: "+ %{number}更多"
     modal_dialogue:
-      close_modal:
+      close_modal: 关闭模态对话
     notice:
       banner_title:
     organisation_schema:
-      all_content_search_description:
+      all_content_search_description: 查找 %{organisation} 的全部内容
     previous_and_next_navigation:
-      pagination:
+      pagination: 分页
     print_link:
-      text:
+      text: 打印本页面
     radio:
-      or:
+      or: 或
     related_footer_navigation:
-      collections:
-      policies:
-      statistical_data_sets:
-      topical_events:
+      collections: 待整理
+      policies: 策略
+      statistical_data_sets: 统计数据集
+      topical_events: 局部事件
     related_navigation:
-      collections:
-      external_links:
-      policies:
-      publishers:
-      related_contacts:
-      related_content:
-      related_external_links:
-      related_guides:
-      statistical_data_sets:
-      topical_events:
-      topics:
+      collections: 待整理
+      external_links: 网页上的其它地方
+      policies: 策略
+      publishers: 发布者
+      related_contacts: 其他联系人
+      related_content: 相关内容
+      related_external_links: 网页上的其它地方
+      related_guides: 详细指南
+      statistical_data_sets: 统计数据集
+      topical_events: 局部事件
+      topics: 探索本主题
       transition:
-        link_path:
-        link_text:
-        title:
-      world_locations:
+        hub_page_link_path: "/transition-check/questions"
+        hub_page_link_text: 获得个性化的操作列表
+        hub_page_title: 英国脱欧检查程序
+        link_path: "/brexit"
+        link_text: 检查您需要做的事情
+        title: 英国脱欧
+      world_locations: 世界地点
     search_box:
-      input_title:
-      label:
-      search_button:
+      input_title: 搜索
+      label: 搜索GOV.UK
+      search_button: 搜索
     show_password:
-      announce_hide:
-      announce_show:
-      hide:
-      hide_password:
-      show:
-      show_password:
+      announce_hide: 您的密码已隐藏
+      announce_show: 您的密码已显示
+      hide: 隐藏
+      hide_password: 隐藏密码
+      show: 显示
+      show_password: 显示密码
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
-      text:
+      text: 跳过主要内容
     step_by_step_nav:
-      hide:
-      hide_all:
-      show:
-      show_all:
+      hide: 隐藏
+      hide_all: 隐藏全部步骤
+      show: 显示
+      show_all: 显示全部步骤
     step_by_step_nav_related:
-      part_of:
+      part_of: 一部分
     subscription_links:
-      email_signup_link_text:
-      feed_link_label:
-      feed_link_text:
-      subscriptions:
+      email_signup_link_text: 获取电子邮件
+      feed_link_label: 将此URL复制并粘贴到推送阅读器
+      feed_link_text: 订阅推送
+      subscriptions: 订阅
     success_alert:
-      success:
+      success: 成功
     summary_list:
-      delete:
-      edit:
+      delete: 删除
+      edit: 更改
     tabs:
-      contents:
+      contents: 目录

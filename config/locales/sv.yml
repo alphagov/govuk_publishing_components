@@ -1,48 +1,52 @@
 ---
 sv:
   common:
-    translations:
+    translations: Översättningar
   components:
     accordion:
-      hide:
-      hide_all:
-      show:
-      show_all:
-      this_section_visually_hidden:
+      hide: Dölj
+      hide_all: Dölj alla avsnitt
+      show: Visa
+      show_all: Visa alla avsnitt
+      this_section_visually_hidden: " detta avsnitt"
     article_schema:
-      scoped_search_description:
+      scoped_search_description: Sök inom %{title}
     attachment:
-      opendocument_html:
-      order_a_copy:
+      opendocument_html: Den här filen är i ett <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a> format
+      order_a_copy: Beställ en kopia
       page:
-        one:
-        other:
-      reference:
-      request_format_cta:
-      request_format_details_html:
-      request_format_text:
+        one: 1 sida
+        other: "%{count} sidor"
+      reference: 'Ref: %{reference}'
+      request_format_cta: Begär ett tillgängligt format.
+      request_format_details_html: Om du använder hjälpmedel (t.ex. en skärmläsare) och behöver en version av det här dokumentet i ett mer lättillgängligt format, skicka ett e-postmeddelande <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Berätta för oss vilket format du behöver. Det underlättar för oss om du berättar vilken hjälpmedelsteknik du använder.
+      request_format_text: Den här filen kanske inte är lämplig för användare av hjälpmedel.
     back_link:
-      back:
+      back: Tillbaka till
     character_count:
-      body:
+      body: Du kan ange upp till %{number} %{type}
       type:
-        characters:
-        words:
+        characters: tecken
+        words: ord
     checkboxes:
-      or:
+      or: eller
     contents_list:
-      contents:
+      contents: Innehåll
     contextual_sidebar:
-      pretitle:
+      pretitle: Också en del av
     cookie_banner:
       buttons:
-        accept_cookies:
-        reject_cookies:
-      confirmation_message:
-      confirmation_message_link:
-      hide:
+        accept_cookies: Acceptera fler cookies
+        reject_cookies: Avvisa fler cookies
+      confirmation_message_html: Du kan %{link} när som helst.
+      confirmation_message_link: ändra dina cookie-inställningar
+      hide: Dölj det här meddelandet
       text:
-      title:
+      - Vi använder vissa viktiga cookies för att den här webbplatsen ska fungera.
+      - Vi vill ställa in ytterligare cookies för att förstå hur du använder GOV.UK
+      - komma ihåg dina inställningar och förbättra myndighetstjänsterna.
+      - Vi använder också cookies som ställs in av andra webbplatser för att hjälpa oss att leverera innehåll från deras tjänster.
+      title: Cookies på GOV.UK
     devolved_nations:
       applies_to:
       connectors:
@@ -51,69 +55,59 @@ sv:
       england:
       northern_ireland:
       scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
       wales:
     feedback:
-      close:
-      dont_include_personal_info:
-      email_address:
-      help_us_improve_govuk:
-      is_not_useful:
-      is_this_page_useful:
-      is_useful:
-      maybe:
-      more_about_visit:
-      'no':
-      send:
-      send_me_survey:
-      something_wrong:
-      thank_you_for_feedback:
-      what_doing:
-      what_wrong:
-      'yes':
+      close: Stäng
+      dont_include_personal_info: Ange inte personlig eller finansiell information, t.ex. ditt försäkringsnummer eller kreditkortsuppgifter.
+      email_address: E-postadress
+      help_us_improve_govuk: Hjälp oss att förbättra GOV.UK
+      is_not_useful: Den här sidan är inte användbar
+      is_this_page_useful: Är den här sidan användbar?
+      is_useful: Den här sidan är användbar
+      maybe: Kanske
+      more_about_visit: För att hjälpa oss att förbättra GOV.UK skulle vi vilja veta mer om ditt besök idag. Vi skickar dig en länk till ett feedbackformulär. Det tar bara 2 minuter att fylla i. Oroa dig inte, vi kommer inte att skicka skräppost till dig eller dela din e-postadress med någon.
+      'no': Nej
+      send: Skicka
+      send_me_survey: Skicka mig enkäten
+      something_wrong: Rapportera ett problem med den här sidan
+      thank_you_for_feedback: Tack för din feedback
+      what_doing: Vad gjorde du?
+      what_wrong: Vad gick fel?
+      'yes': Ja
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
+      consultations: Samråd
+      departments: Avdelningar
+      get-involved: Bli engagerad
+      how-government-works: Hur regeringen fungerar
+      news_and_communications: Nyheter och kommunikation
+      statistics: Statistik
+      worldwide: Globalt
     layout_footer:
-      copyright_html:
-      licence_html:
-      support_links:
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
+      licence_html: Allt innehåll är tillgängligt enligt <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, om inget annat anges
+      support_links: Supportlänkar
     layout_for_public:
       account_layout:
         feedback:
           banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
+            phase_banner_html:
         navigation:
-          destroy_user_session:
           menu_bar:
             account:
               link_text:
             manage:
               link_text:
-            security:
-              link_text:
-          user_root_path:
     layout_header:
-      hide_button:
-      menu:
-      search_button:
-      show_button:
-      top_level:
+      hide_button: Dölj sökning
+      menu: Meny
+      search_button: Sök på GOV.UK
+      show_button: Visa sökning
+      top_level: Högsta nivå
     layout_super_navigation_header:
       logo_link_title:
       logo_text:
@@ -128,77 +122,83 @@ sv:
       popular_links_heading:
       search_text:
     metadata:
-      from:
-      history:
-      last_updated:
-      part_of:
-      published:
-      see_all_updates:
-      toggle_less:
-      toggle_more:
+      from: Från
+      history: Historia
+      last_updated: Senast uppdaterad
+      part_of: Del av
+      published: Publicerad
+      see_all_updates: Se alla uppdateringar
+      toggle_less: Visa färre
+      toggle_more: "+ %{number} mer"
     modal_dialogue:
-      close_modal:
+      close_modal: Stäng den modala dialogen
     notice:
       banner_title:
     organisation_schema:
-      all_content_search_description:
+      all_content_search_description: Hitta allt innehåll från %{organisation}
     previous_and_next_navigation:
-      pagination:
+      pagination: Paginering
     print_link:
-      text:
+      text: Skriv ut den här sidan
     radio:
-      or:
+      or: eller
     related_footer_navigation:
-      collections:
-      policies:
-      statistical_data_sets:
-      topical_events:
+      collections: Samlingar
+      policies: Policys
+      statistical_data_sets: Statistiska datamängder
+      topical_events: Aktuella evenemang
     related_navigation:
-      collections:
-      external_links:
-      policies:
-      publishers:
-      related_contacts:
-      related_content:
-      related_external_links:
-      related_guides:
-      statistical_data_sets:
-      topical_events:
-      topics:
+      collections: Samling
+      external_links: På andra ställen på webben
+      policies: Policy
+      publishers: Publicerad av
+      related_contacts: Andra kontakter
+      related_content: Relaterat innehåll
+      related_external_links: På andra ställen på webben
+      related_guides: Detaljerad vägledning
+      statistical_data_sets: Statistiska uppgifter
+      topical_events: Aktuell händelse
+      topics: Utforska ämnet
       transition:
-        link_path:
-        link_text:
-        title:
-      world_locations:
+        hub_page_link_path: "/transition-check/questions"
+        hub_page_link_text: Få en personlig åtgärdslista
+        hub_page_title: Brexit-kontroll
+        link_path: "/brexit"
+        link_text: Kontrollera vad du behöver göra
+        title: Brexit
+      world_locations: Platser i världen
     search_box:
-      input_title:
-      label:
-      search_button:
+      input_title: Sök på
+      label: Sök på GOV.UK
+      search_button: Sök på
     show_password:
-      announce_hide:
-      announce_show:
-      hide:
-      hide_password:
-      show:
-      show_password:
+      announce_hide: Ditt lösenord är dolt
+      announce_show: Ditt lösenord visas
+      hide: Dölj
+      hide_password: Dölj lösenordet
+      show: Visa
+      show_password: Visa lösenordet
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
-      text:
+      text: Hoppa till huvudinnehållet
     step_by_step_nav:
-      hide:
-      hide_all:
-      show:
-      show_all:
+      hide: Dölj
+      hide_all: Dölj alla steg
+      show: Visa
+      show_all: Visa alla steg
     step_by_step_nav_related:
-      part_of:
+      part_of: Del av
     subscription_links:
-      email_signup_link_text:
-      feed_link_label:
-      feed_link_text:
-      subscriptions:
+      email_signup_link_text: Få e-postmeddelanden
+      feed_link_label: Kopiera och klistra in den här webbadressen i din feed-läsare
+      feed_link_text: Prenumerera på feed
+      subscriptions: Prenumerationer
     success_alert:
-      success:
+      success: Framgång
     summary_list:
-      delete:
-      edit:
+      delete: Ta bort
+      edit: Ändra
     tabs:
-      contents:
+      contents: Innehåll

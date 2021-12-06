@@ -38,7 +38,7 @@ en:
       buttons:
         accept_cookies: Accept additional cookies
         reject_cookies: Reject additional cookies
-      confirmation_message: You can %{link} at any time.
+      confirmation_message_html: You can %{link} at any time.
       confirmation_message_link: change your cookie settings
       hide: Hide this message
       text:
@@ -51,14 +51,14 @@ en:
       connectors:
         last_word: " and "
         two_words: " and "
+      england: England
+      northern_ireland: Northern Ireland
+      scotland: Scotland
       type:
         consultation: Consultation for %{nation}
         detailed_guide: Guidance for %{nation}
         guidance: Guidance for %{nation}
         publication: Publication for %{nation}
-      england: England
-      northern_ireland: Northern Ireland
-      scotland: Scotland
       wales: Wales
     feedback:
       close: Close
@@ -98,13 +98,11 @@ en:
           banners:
             phase_banner_html: This is a new service – your <a class="govuk-link" href="https://signin.account.gov.uk/contact-us?supportType=PUBLIC">feedback</a> will help us to improve it.
         navigation:
-          destroy_user_session: Sign out
           menu_bar:
             account:
               link_text: Your account
             manage:
               link_text: Manage your account
-          user_root_path: Account
     layout_header:
       hide_button: Hide search
       menu: Menu
@@ -121,8 +119,7 @@ en:
       - label: Topics
         href: "/browse"
         description: Find information and services
-        menu_contents: # If adding or removing items, remember to update the
-                       # `columns` in the layout-super-navigation-header SCSS.
+        menu_contents:
         - label: Benefits
           href: "/browse/benefits"
         - label: Births, death, marriages and care
@@ -160,8 +157,7 @@ en:
       - label: Government activity
         href: "/search/news-and-communications"
         description: Search for a department and find out what the government is doing
-        menu_contents: # If adding or removing items, remember to update the
-                       # `columns` in the layout-super-navigation-header SCSS.
+        menu_contents:
         - label: Departments
           href: "/government/organisations"
           description: Departments, agencies and public bodies
@@ -240,6 +236,9 @@ en:
       topical_events: Topical event
       topics: Explore the topic
       transition:
+        hub_page_link_path:
+        hub_page_link_text:
+        hub_page_title:
         link_path: "/brexit"
         link_text: Check what you need to do
         title: Brexit

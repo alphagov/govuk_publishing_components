@@ -1,48 +1,52 @@
 ---
 ms:
   common:
-    translations:
+    translations: Terjemahan
   components:
     accordion:
-      hide:
-      hide_all:
-      show:
-      show_all:
-      this_section_visually_hidden:
+      hide: Sorok
+      hide_all: Sorok semua bahagian
+      show: Tunjuk
+      show_all: Tunjuk semua bahagian
+      this_section_visually_hidden: " bahagian ini"
     article_schema:
-      scoped_search_description:
+      scoped_search_description: Cari dalam %{title}
     attachment:
-      opendocument_html:
-      order_a_copy:
+      opendocument_html: Fail ini terdapat dalam format <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a>
+      order_a_copy: Pesan satu salinan
       page:
-        one:
-        other:
-      reference:
-      request_format_cta:
-      request_format_details_html:
-      request_format_text:
+        one: 1 halaman
+        other: "%{count} halaman"
+      reference: 'Ruj: %{reference}'
+      request_format_cta: Minta format yang boleh diakses.
+      request_format_details_html: Jika anda menggunakan teknologi bantu (seperti pembaca skrin) dan memerlukan versi dokumen ini dalam format yang lebih mudah diakses, sila hantarkan e-mel kepada <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Sila beritahu kami format yang anda perlukan. Lebih mudah bagi kami jika anda memberitahu teknologi bantu apa yang anda gunakan.
+      request_format_text: Fail ini mungkin tidak sesuai untuk pengguna teknologi bantu.
     back_link:
-      back:
+      back: Kembali
     character_count:
-      body:
+      body: Anda boleh memasukkan sehingga %{number} %{type}
       type:
-        characters:
-        words:
+        characters: aksara
+        words: perkataan
     checkboxes:
-      or:
+      or: atau
     contents_list:
-      contents:
+      contents: Kandungan
     contextual_sidebar:
-      pretitle:
+      pretitle: Juga sebahagian daripada
     cookie_banner:
       buttons:
-        accept_cookies:
-        reject_cookies:
-      confirmation_message:
-      confirmation_message_link:
-      hide:
+        accept_cookies: Terima kuki tambahan
+        reject_cookies: Tolak kuki tambahan
+      confirmation_message_html: Anda boleh %{link} pada bila-bila masa.
+      confirmation_message_link: ubah tetapan kuki anda
+      hide: Sorok mesej ini
       text:
-      title:
+      - Kami menggunakan beberapa kuki penting untuk menjadikan laman web ini berfungsi.
+      - Kami ingin menetapkan kuki tambahan untuk memahami cara anda menggunakan GOV.UK
+      - mengingati tetapan anda dan meningkatkan perkhidmatan kerajaan.
+      - Kami juga menggunakan kuki yang ditetapkan oleh laman web lain untuk membantu kami menyampaikan kandungan daripada perkhidmatan mereka.
+      title: Kuki di GOV.UK
     devolved_nations:
       applies_to:
       connectors:
@@ -51,69 +55,59 @@ ms:
       england:
       northern_ireland:
       scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
       wales:
     feedback:
-      close:
-      dont_include_personal_info:
-      email_address:
-      help_us_improve_govuk:
-      is_not_useful:
-      is_this_page_useful:
-      is_useful:
-      maybe:
-      more_about_visit:
-      'no':
-      send:
-      send_me_survey:
-      something_wrong:
-      thank_you_for_feedback:
-      what_doing:
-      what_wrong:
-      'yes':
+      close: Tutup
+      dont_include_personal_info: Jangan sertakan maklumat peribadi atau kewangan seperti nombor Insurans Nasional atau maklumat kad kredit anda.
+      email_address: Alamat e-mel
+      help_us_improve_govuk: Bantu kami meningkatkan GOV.UK
+      is_not_useful: halaman ini tidak berguna
+      is_this_page_useful: Adakah halaman ini berguna?
+      is_useful: halaman ini berguna
+      maybe: Mungkin
+      more_about_visit: Untuk membantu kami meningkatkan GOV.UK, kami ingin mengetahui lebih lanjut tentang lawatan anda hari ini. Kami akan menghantar pautan ke borang maklum balas kepada anda. Hanya perlu 2 minit untuk diisi. Jangan risau kami tidak akan menghantar spam atau berkongsi alamat e-mel anda dengan sesiapa sahaja.
+      'no': Tidak
+      send: Hantar
+      send_me_survey: Hantarkan tinjauan kepada saya
+      something_wrong: Laporkan masalah dengan halaman ini
+      thank_you_for_feedback: Terima kasih atas maklum balas anda
+      what_doing: Apa yang anda buat?
+      what_wrong: Apa yang salah?
+      'yes': Ya
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
+      consultations: Rundingan
+      departments: Jabatan
+      get-involved: Melibatkan diri
+      how-government-works: Bagaimana kerajaan berfungsi
+      news_and_communications: Berita dan komunikasi
+      statistics: Statistik
+      worldwide: Di seluruh dunia
     layout_footer:
-      copyright_html:
-      licence_html:
-      support_links:
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
+      licence_html: Semua kandungan tersedia di bawah <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license"> Lesen Terbuka Kerajaan v3.0 </a>, kecuali jika dinyatakan sebaliknya
+      support_links: Pautan sokongan
     layout_for_public:
       account_layout:
         feedback:
           banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
+            phase_banner_html:
         navigation:
-          destroy_user_session:
           menu_bar:
             account:
               link_text:
             manage:
               link_text:
-            security:
-              link_text:
-          user_root_path:
     layout_header:
-      hide_button:
-      menu:
-      search_button:
-      show_button:
-      top_level:
+      hide_button: Sorok carian
+      menu: Menu
+      search_button: Cari GOV.UK
+      show_button: Tunjuk carian
+      top_level: Aras teratas
     layout_super_navigation_header:
       logo_link_title:
       logo_text:
@@ -128,77 +122,83 @@ ms:
       popular_links_heading:
       search_text:
     metadata:
-      from:
-      history:
-      last_updated:
-      part_of:
-      published:
-      see_all_updates:
-      toggle_less:
-      toggle_more:
+      from: Daripada
+      history: Sejarah
+      last_updated: Kali terakhir dikemas kini
+      part_of: Sebahagian daripada
+      published: Diterbitkan
+      see_all_updates: Lihat semua kemas kini
+      toggle_less: Tunjuk sedikit
+      toggle_more: "+ %{number} lagi"
     modal_dialogue:
-      close_modal:
+      close_modal: Tutup dialog mod
     notice:
       banner_title:
     organisation_schema:
-      all_content_search_description:
+      all_content_search_description: Cari semua kandungan dari %{organisation}
     previous_and_next_navigation:
-      pagination:
+      pagination: Penomboran
     print_link:
-      text:
+      text: Cetak halaman ini
     radio:
-      or:
+      or: atau
     related_footer_navigation:
-      collections:
-      policies:
-      statistical_data_sets:
-      topical_events:
+      collections: Koleksi
+      policies: Dasar
+      statistical_data_sets: Set data statistik
+      topical_events: Acara berdasarkan tajuk
     related_navigation:
-      collections:
-      external_links:
-      policies:
-      publishers:
-      related_contacts:
-      related_content:
-      related_external_links:
-      related_guides:
-      statistical_data_sets:
-      topical_events:
-      topics:
+      collections: Koleksi
+      external_links: Di tempat lain di laman web
+      policies: Dasar
+      publishers: Diterbitkan oleh
+      related_contacts: Nombor hubungan lain
+      related_content: Kandungan yang berkaitan
+      related_external_links: Di tempat lain di laman web
+      related_guides: Panduan terperinci
+      statistical_data_sets: Set data statistik
+      topical_events: Acara berdasarkan tajuk
+      topics: Terokai tajuk
       transition:
-        link_path:
-        link_text:
-        title:
-      world_locations:
+        hub_page_link_path: "/transition-check/questions"
+        hub_page_link_text: Dapatkan senarai tindakan khusus untuk anda
+        hub_page_title: Penyemak Brexit
+        link_path: "/brexit"
+        link_text: Periksa apa yang perlu anda lakukan
+        title: Brexit
+      world_locations: Lokasi dunia
     search_box:
-      input_title:
-      label:
-      search_button:
+      input_title: Carian
+      label: Carian di GOV.UK
+      search_button: Carian
     show_password:
-      announce_hide:
-      announce_show:
-      hide:
-      hide_password:
-      show:
-      show_password:
+      announce_hide: Kata laluan anda disorokkan
+      announce_show: Kata laluan anda ditunjukkan
+      hide: Sorok
+      hide_password: Sorok kata laluan
+      show: Tunjuk
+      show_password: Tunjuk kata laluan
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
-      text:
+      text: Langkau ke kandungan utama
     step_by_step_nav:
-      hide:
-      hide_all:
-      show:
-      show_all:
+      hide: Sorok
+      hide_all: Sorok semua langkah
+      show: Tunjuk
+      show_all: Tunjuk semua langkah
     step_by_step_nav_related:
-      part_of:
+      part_of: Sebahagian daripada
     subscription_links:
-      email_signup_link_text:
-      feed_link_label:
-      feed_link_text:
-      subscriptions:
+      email_signup_link_text: Dapatkan e-mel
+      feed_link_label: Salin dan tampal URL ini ke pembacaan langsung anda
+      feed_link_text: Langgani siaran maklumat
+      subscriptions: Langganan
     success_alert:
-      success:
+      success: Berjaya
     summary_list:
-      delete:
-      edit:
+      delete: Padam
+      edit: Ubah
     tabs:
-      contents:
+      contents: Kandungan

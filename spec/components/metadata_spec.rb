@@ -173,9 +173,9 @@ describe "Metadata", type: :view do
       render_component(other: {
         "Industry": links,
       })
-    end
 
-    assert_truncation(links.length, 5)
+      assert_truncation(links.length, 5)
+    end
   end
 
   it "short lists of metadata are not truncated for other" do
@@ -210,7 +210,7 @@ describe "Metadata", type: :view do
     assert_select ".gem-c-metadata__toggle-items", count: 1
     assert_select ".gem-c-metadata__definition > a", count: limit
     assert_select ".gem-c-metadata__definition .gem-c-metadata__toggle-items a", count: length - limit
-    assert_select "a[href=\"#\"]", text: "+ #{length - limit} more"
+    assert_select "a[href=\"#\"]", text: t("components.metadata.toggle_more", number: length - limit)
   end
 
   def assert_no_truncation(length)

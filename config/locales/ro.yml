@@ -1,48 +1,53 @@
 ---
 ro:
   common:
-    translations:
+    translations: Traduceri
   components:
     accordion:
-      hide:
-      hide_all:
-      show:
-      show_all:
-      this_section_visually_hidden:
+      hide: Ascundeți
+      hide_all: Ascundeți toate secțiunile
+      show: Afișați
+      show_all: Afișați toate secțiunile
+      this_section_visually_hidden: " această secțiune"
     article_schema:
-      scoped_search_description:
+      scoped_search_description: Căutați în %{title}
     attachment:
-      opendocument_html:
-      order_a_copy:
+      opendocument_html: Acest fișier este în format <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a>
+      order_a_copy: Comandați o copie
       page:
-        one:
-        other:
-      reference:
-      request_format_cta:
-      request_format_details_html:
-      request_format_text:
+        few:
+        one: 1 pagină
+        other: "%{count} pagini"
+      reference: 'Referință: %{reference}'
+      request_format_cta: Solicitați un format accesibil.
+      request_format_details_html: Dacă folosiți tehnologia de asistență (precum un cititor de ecran) și aveți nevoie de o versiune a acestui document într-un format mai accesibil, trimiteți un e-mail la <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Spuneți-ne de ce format aveți nevoie. Ne va ajuta dacă ne spuneți ce tehnologie de asistență folosiți.
+      request_format_text: Este posibil ca acest fișier să nu fie potrivit pentru utilizatorii de tehnologie de asistență.
     back_link:
-      back:
+      back: Înapoi
     character_count:
-      body:
+      body: Puteți introduce cel mult %{number} %{type}
       type:
-        characters:
-        words:
+        characters: caractere
+        words: cuvinte
     checkboxes:
-      or:
+      or: sau
     contents_list:
-      contents:
+      contents: Conținut
     contextual_sidebar:
-      pretitle:
+      pretitle: Face parte și din
     cookie_banner:
       buttons:
-        accept_cookies:
-        reject_cookies:
-      confirmation_message:
-      confirmation_message_link:
-      hide:
+        accept_cookies: Acceptați cookie-urile suplimentare
+        reject_cookies: Respingeți cookie-urile suplimentare
+      confirmation_message_html: Puteți să %{link} în orice moment.
+      confirmation_message_link: modificați setările pentru cookie-uri
+      hide: Ascundeți acest mesaj
       text:
-      title:
+      - Utilizăm unele cookie-uri esențiale pentru ca acest website să poată funcționa.
+      - Dorim să setăm cookie-uri suplimentare ca să înțelegem cum utilizați GOV.UK
+      - să ținem minte setările dvs. și să îmbunătățim serviciile guvernamentale.
+      - Folosim și cookie-uri setate de alte site-uri pentru a ne ajuta să livrăm conținut din serviciile acestora.
+      title: Cookie-uri pe GOV.UK
     devolved_nations:
       applies_to:
       connectors:
@@ -51,69 +56,59 @@ ro:
       england:
       northern_ireland:
       scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
       wales:
     feedback:
-      close:
-      dont_include_personal_info:
-      email_address:
-      help_us_improve_govuk:
-      is_not_useful:
-      is_this_page_useful:
-      is_useful:
-      maybe:
-      more_about_visit:
-      'no':
-      send:
-      send_me_survey:
-      something_wrong:
-      thank_you_for_feedback:
-      what_doing:
-      what_wrong:
-      'yes':
+      close: Închideți
+      dont_include_personal_info: Nu includeți informații cu caracter personal sau financiar, precum numărul de asigurări sociale sau datele cardului de credit.
+      email_address: Adresa de e-mail
+      help_us_improve_govuk: Ajutați-ne să îmbunătățim GOV.UK
+      is_not_useful: această pagină nu este utilă
+      is_this_page_useful: Este această pagină utilă?
+      is_useful: această pagină este utilă
+      maybe: Poate
+      more_about_visit: Pentru a ne ajuta să îmbunătățim GOV.UK, am vrea să știm mai multe despre vizita dvs. de astăzi. Vă vom trimite un link către un formular de feedback. Completarea lui va dura doar 2 minute. Nu vă faceți griji, nu vă vom trimite spam și nu vom trimite adresa dvs. de e-mail nimănui.
+      'no': Nu
+      send: Trimiteți
+      send_me_survey: Trimiteți-mi chestionarul
+      something_wrong: Raportați o problemă cu această pagină
+      thank_you_for_feedback: Mulțumim pentru feedback
+      what_doing: Ce făceați?
+      what_wrong: Ce eroare a survenit?
+      'yes': Da
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
+      consultations: Consultații
+      departments: Departamente
+      get-involved: Implicați-vă
+      how-government-works: Cum funcționează guvernul
+      news_and_communications: Știri și comunicări
+      statistics: Statistici
+      worldwide: Global
     layout_footer:
-      copyright_html:
-      licence_html:
-      support_links:
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
+      licence_html: Tot conținutul este disponibil conform <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, cu excepția cazurilor în care s-a specificat altceva
+      support_links: Linkuri către asistență
     layout_for_public:
       account_layout:
         feedback:
           banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
+            phase_banner_html:
         navigation:
-          destroy_user_session:
           menu_bar:
             account:
               link_text:
             manage:
               link_text:
-            security:
-              link_text:
-          user_root_path:
     layout_header:
-      hide_button:
-      menu:
-      search_button:
-      show_button:
-      top_level:
+      hide_button: Ascundeți căutarea
+      menu: Meniu
+      search_button: Căutați pe GOV.UK
+      show_button: Afișați căutarea
+      top_level: Nivel superior
     layout_super_navigation_header:
       logo_link_title:
       logo_text:
@@ -128,77 +123,83 @@ ro:
       popular_links_heading:
       search_text:
     metadata:
-      from:
-      history:
-      last_updated:
-      part_of:
-      published:
-      see_all_updates:
-      toggle_less:
-      toggle_more:
+      from: De la
+      history: Istoric
+      last_updated: Ultima actualizare
+      part_of: Parte din
+      published: Publicat
+      see_all_updates: Vedeți toate actualizările
+      toggle_less: Afișați mai puține
+      toggle_more: "+ încă %{number}"
     modal_dialogue:
-      close_modal:
+      close_modal: Închideți dialogul modal
     notice:
       banner_title:
     organisation_schema:
-      all_content_search_description:
+      all_content_search_description: Găsiți tot conținutul de la %{organisation}
     previous_and_next_navigation:
-      pagination:
+      pagination: Paginație
     print_link:
-      text:
+      text: Imprimați această pagină
     radio:
-      or:
+      or: sau
     related_footer_navigation:
-      collections:
-      policies:
-      statistical_data_sets:
-      topical_events:
+      collections: Colecții
+      policies: Politici
+      statistical_data_sets: Seturi de date statistice
+      topical_events: Evenimente pe anumite teme
     related_navigation:
-      collections:
-      external_links:
-      policies:
-      publishers:
-      related_contacts:
-      related_content:
-      related_external_links:
-      related_guides:
-      statistical_data_sets:
-      topical_events:
-      topics:
+      collections: Colecție
+      external_links: Altundeva pe web
+      policies: Politică
+      publishers: Publicat de
+      related_contacts: Alte persoane de contact
+      related_content: Conținut asociat
+      related_external_links: Altundeva pe web
+      related_guides: Îndrumări detaliate
+      statistical_data_sets: Set de date statistice
+      topical_events: Eveniment pe o temă dată
+      topics: Explorați tema
       transition:
-        link_path:
-        link_text:
-        title:
-      world_locations:
+        hub_page_link_path: "/transition-check/questions"
+        hub_page_link_text: Descărcați o listă de acțiuni personalizate
+        hub_page_title: Verificator Brexit
+        link_path: "/brexit"
+        link_text: Verificați ce trebuie să faceți
+        title: Brexit
+      world_locations: Locații pe glob
     search_box:
-      input_title:
-      label:
-      search_button:
+      input_title: Căutați
+      label: Căutați pe GOV.UK
+      search_button: Căutați
     show_password:
-      announce_hide:
-      announce_show:
-      hide:
-      hide_password:
-      show:
-      show_password:
+      announce_hide: Parola dvs. este ascunsă
+      announce_show: Parola dvs. este afișată
+      hide: Ascundeți
+      hide_password: Ascundeți parola
+      show: Afișați
+      show_password: Afișați parola
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
-      text:
+      text: Accesați direct conținutul principal
     step_by_step_nav:
-      hide:
-      hide_all:
-      show:
-      show_all:
+      hide: Ascundeți
+      hide_all: Ascundeți toți pașii
+      show: Afișați
+      show_all: Afișați toți pașii
     step_by_step_nav_related:
-      part_of:
+      part_of: Parte din
     subscription_links:
-      email_signup_link_text:
-      feed_link_label:
-      feed_link_text:
-      subscriptions:
+      email_signup_link_text: Primiți e-mailuri
+      feed_link_label: Copiați și inserați această adresă URL în cititorul de fluxuri
+      feed_link_text: Abonați-vă la flux
+      subscriptions: Abonamente
     success_alert:
-      success:
+      success: Succes
     summary_list:
-      delete:
-      edit:
+      delete: Ștergeți
+      edit: Modificați
     tabs:
-      contents:
+      contents: Conținut

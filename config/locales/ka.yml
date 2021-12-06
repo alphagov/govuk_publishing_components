@@ -1,48 +1,55 @@
 ---
 ka:
   common:
-    translations:
+    translations: თარგმანები
   components:
     accordion:
-      hide:
-      hide_all:
-      show:
-      show_all:
-      this_section_visually_hidden:
+      hide: დამალვა
+      hide_all: ყველა სექციის დამალვა
+      show: ჩვენება
+      show_all: ყველა სექციის ჩვენება
+      this_section_visually_hidden: " ეს სექცია"
     article_schema:
-      scoped_search_description:
+      scoped_search_description: ძებნა %{title}
     attachment:
-      opendocument_html:
-      order_a_copy:
+      opendocument_html: ეს ფაილი არის <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a> ფორმატში
+      order_a_copy: ასლის შეკვეთა
       page:
-        one:
-        other:
-      reference:
-      request_format_cta:
-      request_format_details_html:
-      request_format_text:
+        one: 1 გვერი
+        other: "%{count} გვერდები"
+      reference: 'მითითება: %{reference}'
+      request_format_cta: ხელმისაწვდომი ფორმატის მოთხოვნა.
+      request_format_details_html: თუ იყენებთ დამხმარე ტექნოლოგიას (როგორიც ეკრანის წამკითხველია) და გჭირდებათ ამ დოკუმენტის ვერსია უფრო მოსახერხებელ ფორმატში, გთხოვთ დაუკავშირდით ელ.ფოსტით <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. გთხოვთ, გვითხარით რა ფორმატი გჭირდებათ. თუ გვეტვყით რომელ დამხმარე ტექნოლოგიას იყენებთ ძალიან დაგვეხმარებით.
+      request_format_text: ეს ფაილი შესაძლოა არ იყოს შესაფერისი დამხმარე ტექნოლოგიის მომხმარებლებისთვის.
     back_link:
-      back:
+      back: უკან
     character_count:
-      body:
+      body: თქვენ შეგიძლიათ შეიყვანოთ %{number} %{type}
       type:
-        characters:
-        words:
+        characters: სიმბოლოები
+        words: სიტყვები
     checkboxes:
-      or:
+      or: ან
     contents_list:
-      contents:
+      contents: შინაარსი
     contextual_sidebar:
-      pretitle:
+      pretitle: ასევე ნაწილი
     cookie_banner:
       buttons:
-        accept_cookies:
-        reject_cookies:
-      confirmation_message:
-      confirmation_message_link:
-      hide:
+        accept_cookies: დამატებითი ქუქი ფაილების დადასტურება
+        reject_cookies: დამატებითი ქუქი ფაილების უარყოფა
+      confirmation_message_html: თქვენ შეგიძლიათ %{link} ნებისმიერ დროს.
+      confirmation_message_link: შეცვალეთ თქვენი ქუქი პარამეტრები
+      hide: დაფარეთ ეს მესიჯი
       text:
-      title:
+      - ჩვენ ვიყენებთ რამოდენიმე აუცილებელ ქუქი -ჩანაწერს
+      - რათა ამ ვებგვერდმა იმუშაოს.
+      - ჩვენ გვსურს დამატებითი ქუქი -ფაილების დაყენება იმის გასაგებად
+      - თუ როგორ იყენებთ GOV.UK-ს
+      - დაიმახსოვრეთ თქვენი პარამეტრები და გააუმჯობესეთ სამთავრობო მომსახურება.
+      - ჩვენ ასევე ვიყენებთ ქუქი -ფაილებს სხვა საიტებისგან
+      - რომლებიც დაგვეხმარება მათი სერვისებიდან შინაარსის მიწოდებაში.
+      title: ქუქი ფაილები GOV.UK-ზე
     devolved_nations:
       applies_to:
       connectors:
@@ -51,69 +58,59 @@ ka:
       england:
       northern_ireland:
       scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
       wales:
     feedback:
-      close:
-      dont_include_personal_info:
-      email_address:
-      help_us_improve_govuk:
-      is_not_useful:
-      is_this_page_useful:
-      is_useful:
-      maybe:
-      more_about_visit:
-      'no':
-      send:
-      send_me_survey:
-      something_wrong:
-      thank_you_for_feedback:
-      what_doing:
-      what_wrong:
-      'yes':
+      close: ჩახურვა
+      dont_include_personal_info: არ შეიყვანოთ პირადი ან ფინანსური ინფორმაცია, როგორიცაა თქვენი ეროვნული დაზღვევის ნომერი ან საკრედიტო ბარათის დეტალები.
+      email_address: ელექტრონული მისამართი
+      help_us_improve_govuk: დაგვეხმარეთ გავაუმჯობესოთ GOV.UK
+      is_not_useful: ეს გვერდი არ არის სასარგებლო
+      is_this_page_useful: ეს გვერდი სასარგებლო იყო თქვენთვის?
+      is_useful: ეს გვერდი სასარგებლოა
+      maybe: შესაძლოა
+      more_about_visit: იმისათვის, რომ დაგვეხმაროთ გავაუმჯობესოთ GOV.UK, ჩვენ გვსურს ვიცოდეთ მეტი თქვენი ვიზიტის შესახებ დღეს. ჩვენ გამოგიგზავნით ფიდბეკის ფორმის ბმულს. მის შევსებას 2 წუთი დასჭირდება. არ იდარდოთ, ჩვენ არ გამოგიგზავნით სპამს ან გავუზიარებთ თქვენს ელექტრონულ მისამართს სხვას.
+      'no': არა
+      send: გაგზავნა
+      send_me_survey: გამომიგზავნეთ კითხვარი
+      something_wrong: პრობლემის შესახებ შეტყობინება გვერდთან დაკავშირებით
+      thank_you_for_feedback: გმადლობთ თქვენი უკუკავშირისთვის
+      what_doing: რას აკეთებდით?
+      what_wrong: რა მოხდა არასწორად?
+      'yes': დიახ
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
+      consultations: კონსულტაციები
+      departments: დეპარტამენტები
+      get-involved: ჩართულობა
+      how-government-works: როგორ მუშაობს სახელმწიფო
+      news_and_communications: სიახლეები და კომუნიკაციები
+      statistics: სტატისტიკა
+      worldwide: მსოფლიო
     layout_footer:
-      copyright_html:
-      licence_html:
-      support_links:
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© გვირგვინის ქოფირაითი</a>
+      licence_html: ყველა მასალა ხელმისაწვდომია <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, გარდა სხვა განცხადებებისა
+      support_links: დამხმარე ბმულები
     layout_for_public:
       account_layout:
         feedback:
           banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
+            phase_banner_html:
         navigation:
-          destroy_user_session:
           menu_bar:
             account:
               link_text:
             manage:
               link_text:
-            security:
-              link_text:
-          user_root_path:
     layout_header:
-      hide_button:
-      menu:
-      search_button:
-      show_button:
-      top_level:
+      hide_button: ძიების დაფარვა
+      menu: მენიუ
+      search_button: GOV.UK ძებნა
+      show_button: ძებნის ჩვენება
+      top_level: ტოპ დონე
     layout_super_navigation_header:
       logo_link_title:
       logo_text:
@@ -128,77 +125,83 @@ ka:
       popular_links_heading:
       search_text:
     metadata:
-      from:
-      history:
-      last_updated:
-      part_of:
-      published:
-      see_all_updates:
-      toggle_less:
-      toggle_more:
+      from: დან
+      history: ისტორია
+      last_updated: ბოლო განახლება
+      part_of: ნაწილი
+      published: პუბლიკაცია
+      see_all_updates: ყველა განახლების ნახვა
+      toggle_less: ნაკლების ჩვენება
+      toggle_more: "+ %{number} more"
     modal_dialogue:
-      close_modal:
+      close_modal: მოდალური დიალოგის გამორთვა
     notice:
       banner_title:
     organisation_schema:
-      all_content_search_description:
+      all_content_search_description: ყველა მასალის ნახვა %{organisation}-დან
     previous_and_next_navigation:
-      pagination:
+      pagination: პაგინაცია
     print_link:
-      text:
+      text: ამ გვერდის ბეჭდვა
     radio:
-      or:
+      or: ან
     related_footer_navigation:
-      collections:
-      policies:
-      statistical_data_sets:
-      topical_events:
+      collections: კოლექციები
+      policies: კანონები
+      statistical_data_sets: სტატისტიკური მონაცემების ნაკრები
+      topical_events: ტოპ მოვლენები
     related_navigation:
-      collections:
-      external_links:
-      policies:
-      publishers:
-      related_contacts:
-      related_content:
-      related_external_links:
-      related_guides:
-      statistical_data_sets:
-      topical_events:
-      topics:
+      collections: კოლექცია
+      external_links: ნებისმიერ სხვა ადგილას ვებში
+      policies: პოლიტიკა
+      publishers: გამოქვეყნებულია
+      related_contacts: სხვა კონტაქტები
+      related_content: მსგავსი კონტენტი
+      related_external_links: ნებისმიერ სხვა ადგილას ვებში
+      related_guides: დეტალური სახელმძღვანელო
+      statistical_data_sets: სტატისტიკური მონაცემების ნაკრები
+      topical_events: ტოპ მოვლენები
+      topics: თემის გამოკვლევა
       transition:
-        link_path:
-        link_text:
-        title:
-      world_locations:
+        hub_page_link_path: "/transition-check/questions"
+        hub_page_link_text: მოქმედებების პერსონალიზირებული სიის მიღება
+        hub_page_title: ბრექსითის შემოწმება
+        link_path: "/brexit"
+        link_text: შეამოწმეთ თუ რა უნდა გააკეთოთ
+        title: ბრექსითის შემოწმება
+      world_locations: მსოფლიო ლოკაციები
     search_box:
-      input_title:
-      label:
-      search_button:
+      input_title: ძიება
+      label: ძიება GOV.UK-ზე
+      search_button: ძიება
     show_password:
-      announce_hide:
-      announce_show:
-      hide:
-      hide_password:
-      show:
-      show_password:
+      announce_hide: თქვენი პაროლი დაფარულია
+      announce_show: თქვენი პაროლი ჩანს
+      hide: დაფარვა
+      hide_password: პაროლის დაფარვა
+      show: ჩვენება
+      show_password: პაროლის ჩვენება
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
-      text:
+      text: მთავარ კონტენტზე გადასვლა
     step_by_step_nav:
-      hide:
-      hide_all:
-      show:
-      show_all:
+      hide: დაფარვა
+      hide_all: ყველა ნაბიჯის დაფარვა
+      show: ჩვენება
+      show_all: ყველა ნაბიჯის ჩვენება
     step_by_step_nav_related:
-      part_of:
+      part_of: ნაწილი
     subscription_links:
-      email_signup_link_text:
-      feed_link_label:
-      feed_link_text:
-      subscriptions:
+      email_signup_link_text: ელ. წერილების მიღება
+      feed_link_label: ამ URL-ის დაკოპირება და ჩასმა თქვენი ველის წამკითხველში
+      feed_link_text: ველის გამოწერა
+      subscriptions: გამოწერები
     success_alert:
-      success:
+      success: წარმატება
     summary_list:
-      delete:
-      edit:
+      delete: წაშლა
+      edit: შეცვლა
     tabs:
-      contents:
+      contents: შინაარსი

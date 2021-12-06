@@ -1,48 +1,48 @@
 ---
 pa-pk:
   common:
-    translations:
+    translations: ترجمے
   components:
     accordion:
-      hide:
-      hide_all:
-      show:
-      show_all:
-      this_section_visually_hidden:
+      hide: چھپاؤ
+      hide_all: سارے حصے چھپاؤ
+      show: وکھاؤ
+      show_all: سارے حصے وکھاؤ
+      this_section_visually_hidden: " اِک حصہ"
     article_schema:
-      scoped_search_description:
+      scoped_search_description: ایندے وچ لَبو {title}%
     attachment:
-      opendocument_html:
-      order_a_copy:
+      opendocument_html: ایہ فائل اِک  <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>دستاویز کھولو</a>ایہ شکل
+      order_a_copy: اَک نقل لئی آکھو
       page:
-        one:
-        other:
-      reference:
-      request_format_cta:
-      request_format_details_html:
-      request_format_text:
+        one: پہلا ورق
+        other: ورقے {count}%
+      reference: حوالہ:{reference}%
+      request_format_cta: اک طریقے تک پوہنچن لئی اِک درخواست دیو۔
+      request_format_details_html: اگر تُسی مدد گار ٹیکنالوجی نوں استعمال کردے او )  جیوں اک سکرین ریڈر( تے تہانوں ایس دستاویز دا ترجمہ چائی دا اے جہیڑا کہ ہور پہنچن والی شکل وچ اے، تے برائے مہربانی  ایندے تےای میل کرو <a href='mailto:%{alternative_format_contact_email}' target='_blank class='govuk-link'>%{alternative_format_contact_email}</a>. برائے مہربانی تہانوں جس شکل دی لوڑ اے اوندے بارے سانوں دسو۔اے ساڈے لئی مدد گار ہوؤئے گا کہ تُسی کس مدد گار ٹیکنالوجی نوں استعمال کر رئے آو۔
+      request_format_text: ہو سکدا اے کہ مدد گار ٹیکنالوجی استعمال کرن والیاں واسطے چنگی نئیں۔
     back_link:
-      back:
+      back: پچھے
     character_count:
-      body:
+      body: تُسی ایتھوں تک داخل کر سک دے او {number} %{type}%
       type:
-        characters:
-        words:
+        characters: کردار
+        words: الفاظ
     checkboxes:
-      or:
+      or: یا
     contents_list:
-      contents:
+      contents: لکھائی
     contextual_sidebar:
-      pretitle:
+      pretitle: ایہ وی اک حصہ اے
     cookie_banner:
       buttons:
-        accept_cookies:
-        reject_cookies:
-      confirmation_message:
-      confirmation_message_link:
-      hide:
-      text:
-      title:
+        accept_cookies: اضافی کوکیز قبول کر دا اے
+        reject_cookies: اضافی کوکیز نوں رَد کرنا
+      confirmation_message_html: تُسی کسے وی وقت {link}% جوڑ سکدے او
+      confirmation_message_link: اپنی کوکیز دی ترتیب نوں بدلو
+      hide: ایس پیغام نوں چُھپا لو
+      text: '"] ایس ویب سائٹ نوں کم کرن لئی اسی کُج ضروری کوکیزدا استعمال کرنیں آں۔" GOV.UK  دے استعمال نوں سجھن لئی اسی اضافی کوکیز لگانا چاواں گے تے تُسی حکومت دیاں خدمات نوں بہتر کرن لئی اپنی ترتیباں نوں یاد رکھو۔"، اسی دوسریاں خدمتاں نوں تہاڈے تک پہنچان دی مدد لئی کوکیز نوں وی استعمال کراں گے"['
+      title: 'GOV.UK تے کوکیز '
     devolved_nations:
       applies_to:
       connectors:
@@ -51,69 +51,59 @@ pa-pk:
       england:
       northern_ireland:
       scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
       wales:
     feedback:
-      close:
-      dont_include_personal_info:
-      email_address:
-      help_us_improve_govuk:
-      is_not_useful:
-      is_this_page_useful:
-      is_useful:
-      maybe:
-      more_about_visit:
-      'no':
-      send:
-      send_me_survey:
-      something_wrong:
-      thank_you_for_feedback:
-      what_doing:
-      what_wrong:
-      'yes':
+      close: بند کرو
+      dont_include_personal_info: اپنے نیشنل انشورنس نمبر یا کریڈٹ کارڈ بارےاپنیاں ذاتی یا مالی تفصیلاں نوں شامل ناں کرو۔
+      email_address: ای میل ایڈریس
+      help_us_improve_govuk: GOV.UK نوں بہتر کرن لئی ساڈی مدد کرو
+      is_not_useful: ایہ ورقہ فائدہ مند نئیں
+      is_this_page_useful: کیہ ایہ ورقہ فائدہ مند اے؟
+      is_useful: ایہ ورقہ فائدہ مند اے
+      maybe: ہوسکدا اے
+      more_about_visit: GOV.UK  نوں بہتر کرن لئی ساڈی مدد کرو، اج دی تہاڈی مُلاقات نوں جانن لئی اسی ہور جاننا چاہندے آں۔ اسی تہانوں اک فارم دا لنک بھیجاں گے جندے وچ تُسی اپنی صلاح دیو گے۔ اہنوں بھرن لئی دو منٹ لگن گے۔ ایس گل توں پریشان نئی ہونا کہ اسی تہانوں سپیم بھیجاں گے یا تہاڈا ایمیل ایڈریس کسے ہور نوں دیاں گے۔
+      'no': جئی نیئں
+      send: بھیجو
+      send_me_survey: مینوں سروے بھیجو
+      something_wrong: ایس ورقے دے مسئلے دی خبر دیو
+      thank_you_for_feedback: تہاڈی صلاح دا شکریہ
+      what_doing: تُسی کیہ کر رئے سو
+      what_wrong: کیہ غلط ہویا اے
+      'yes': جی ہاں
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
+      consultations: مشورے
+      departments: محکمے
+      get-involved: تُسی شامل ہو جاؤ
+      how-government-works: کہ حکومت کس طراں کم کر دی اے
+      news_and_communications: خبراں تے رابطے
+      statistics: حساب کتاب
+      worldwide: ساری دُنیا اُتے
     layout_footer:
-      copyright_html:
-      licence_html:
-      support_links:
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/ information-management/re-using-public-sector-information/copyright-and-re-use/ /crown-copyright/">© کاپی کراؤن رائٹ</a>
+      licence_html: سارا مواد ایندے تھلے موجود اے <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">اوپن گورنمنٹ لائسنس v3.0</a>, ایہ قبول کر لو جیڑا ایس توں علاوہ اے
+      support_links: مدد کرن والے لنک
     layout_for_public:
       account_layout:
         feedback:
           banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
+            phase_banner_html:
         navigation:
-          destroy_user_session:
           menu_bar:
             account:
               link_text:
             manage:
               link_text:
-            security:
-              link_text:
-          user_root_path:
     layout_header:
-      hide_button:
-      menu:
-      search_button:
-      show_button:
-      top_level:
+      hide_button: کھوج نوں چھپاؤ
+      menu: فہرست
+      search_button: GOV.UK دی تلاش کرو
+      show_button: اپنی تلاش دکھاؤ
+      top_level: اوچی تھاں دی
     layout_super_navigation_header:
       logo_link_title:
       logo_text:
@@ -128,77 +118,83 @@ pa-pk:
       popular_links_heading:
       search_text:
     metadata:
-      from:
-      history:
-      last_updated:
-      part_of:
-      published:
-      see_all_updates:
-      toggle_less:
-      toggle_more:
+      from: ایتھوں
+      history: پچھلا کم
+      last_updated: آخری دفعہ کدوں نویں گل دسی سی
+      part_of: ایندا حصہ
+      published: شائع کیتا گیا
+      see_all_updates: ساریاں نویاں چیزاں دیکھو
+      toggle_less: کُج گھٹ دکھاؤ
+      toggle_more: ہور {number}%+
     modal_dialogue:
-      close_modal:
+      close_modal: موڈیل ڈائیلاگ نوں بند کرو
     notice:
       banner_title:
     organisation_schema:
-      all_content_search_description:
+      all_content_search_description: "%{organisation} توں سارا مواد تلاش کرو"
     previous_and_next_navigation:
-      pagination:
+      pagination: ورقہ بندی
     print_link:
-      text:
+      text: ایس ورقے نوں پرنٹ کرو
     radio:
-      or:
+      or: یا
     related_footer_navigation:
-      collections:
-      policies:
-      statistical_data_sets:
-      topical_events:
+      collections: مجموعے
+      policies: کام دا طریقہ
+      statistical_data_sets: حساب کتاب دے سیٹ
+      topical_events: مضمون سے حساب نال وقوعے
     related_navigation:
-      collections:
-      external_links:
-      policies:
-      publishers:
-      related_contacts:
-      related_content:
-      related_external_links:
-      related_guides:
-      statistical_data_sets:
-      topical_events:
-      topics:
+      collections: مجموعہ
+      external_links: ویب تے کسے وی ہور تھاں تے
+      policies: طریقہ کار
+      publishers: ایتھوں شائع ہویا
+      related_contacts: دوجے رابطے
+      related_content: متعلقہ مواد
+      related_external_links: ویب تے کسے وی ہور تھاں تے
+      related_guides: تفصیلی رہنمائی
+      statistical_data_sets: حساب کتاب دے سیٹ
+      topical_events: مضمون سے حساب نال وقوعے
+      topics: مضمون دی کھوج کرو
       transition:
-        link_path:
-        link_text:
-        title:
-      world_locations:
+        hub_page_link_path: "/transition-check/questions"
+        hub_page_link_text: کم کرن لئی اک ذاتی فہرست حاصل کرو
+        hub_page_title: brexitنوں دیکھن والا
+        link_path: "/brexit"
+        link_text: دیکھو جو تہانوں کرن دی لوڑ اے
+        title: Brexit
+      world_locations: دُنیا دیاں تھاواں
     search_box:
-      input_title:
-      label:
-      search_button:
+      input_title: کھوج
+      label: GOV.UK اُتے کھوج کرو
+      search_button: کھوج
     show_password:
-      announce_hide:
-      announce_show:
-      hide:
-      hide_password:
-      show:
-      show_password:
+      announce_hide: تہاڈا پاس ورڈ لُکیا ہویا اے
+      announce_show: تہاڈا پاس ورڈ دکھائی دِتا اے
+      hide: لُکاؤ
+      hide_password: پاس ورڈ لُکاؤ
+      show: دکھاؤ
+      show_password: پاس ورڈ وکھاؤ
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
-      text:
+      text: وڈے مواد ک جاؤ
     step_by_step_nav:
-      hide:
-      hide_all:
-      show:
-      show_all:
+      hide: لکاؤ
+      hide_all: اپنے سارے اقدام لُکاؤ
+      show: وکھاؤ
+      show_all: اپنے سارے اقدام وکھاؤ
     step_by_step_nav_related:
-      part_of:
+      part_of: ایس دا حصہ
     subscription_links:
-      email_signup_link_text:
-      feed_link_label:
-      feed_link_text:
-      subscriptions:
+      email_signup_link_text: ای میلز حاصل کرو
+      feed_link_label: ایس یو آر ایل نوں اپنے فیڈ ریڈر وچ کاپی  تے پیسٹ کرو
+      feed_link_text: فیڈ  نوں سبسکرائب کرو
+      subscriptions: سبسکرپشنز
     success_alert:
-      success:
+      success: کامیابی
     summary_list:
-      delete:
-      edit:
+      delete: مٹا دیو
+      edit: بدل دیو
     tabs:
-      contents:
+      contents: ایہ سارا مواد

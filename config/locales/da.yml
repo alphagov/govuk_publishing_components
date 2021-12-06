@@ -1,48 +1,53 @@
 ---
 da:
   common:
-    translations:
+    translations: Oversættelser
   components:
     accordion:
-      hide:
-      hide_all:
-      show:
-      show_all:
-      this_section_visually_hidden:
+      hide: Skjul
+      hide_all: Skjul alle sektioner
+      show: vise
+      show_all: Vise alle sektioner
+      this_section_visually_hidden: " denne sektion"
     article_schema:
-      scoped_search_description:
+      scoped_search_description: Søg i %{title}
     attachment:
-      opendocument_html:
-      order_a_copy:
+      opendocument_html: Denne fil er i en <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a> format
+      order_a_copy: Bestil et eksemplar
       page:
-        one:
-        other:
-      reference:
-      request_format_cta:
-      request_format_details_html:
-      request_format_text:
+        one: 1 side
+        other: "%{count} sider"
+      reference: 'Henvisning: %{reference}'
+      request_format_cta: Anmod om et tilgængeligt format.
+      request_format_details_html: Hvis du bruger hjælpemidler (f.eks. en skærmlæser) og har brug for en version af dette dokument i et mere tilgængeligt format, bedes du sende en e-mail til <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Venligst fortæl os, hvilket format du har brug for. Det vil hjælpe os, hvis du fortæller os, hvilken hjælpeteknologi du bruger.
+      request_format_text: Denne fil er muligvis ikke egnet til brugere af hjælpeteknologi.
     back_link:
-      back:
+      back: Tilbage
     character_count:
-      body:
+      body: Du kan indtaste op til %{number} %{type}
       type:
-        characters:
-        words:
+        characters: Tegn
+        words: ord
     checkboxes:
-      or:
+      or: eller
     contents_list:
-      contents:
+      contents: Indhold
     contextual_sidebar:
-      pretitle:
+      pretitle: Også en del af
     cookie_banner:
       buttons:
-        accept_cookies:
-        reject_cookies:
-      confirmation_message:
-      confirmation_message_link:
-      hide:
+        accept_cookies: Accepter yderligere cookies
+        reject_cookies: Afvise yderligere cookies
+      confirmation_message_html: Du kan %{link} når som helst.
+      confirmation_message_link: ændre dine cookie-indstillinger
+      hide: Skjul denne meddelelse
       text:
-      title:
+      - Vi bruger nogle vigtige cookies for at få dette websted til at fungere.
+      - Vi vil gerne indstille yderligere cookies for at forstå
+      - hvordan du bruger GOV.UK
+      - huske dine indstillinger og forbedre offentlige tjenester.
+      - Vi bruger også cookies fra andre websteder for at hjælpe os med at levere indhold fra deres tjenester.
+      title: Cookies på GOV.UK
     devolved_nations:
       applies_to:
       connectors:
@@ -51,69 +56,59 @@ da:
       england:
       northern_ireland:
       scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
       wales:
     feedback:
-      close:
-      dont_include_personal_info:
-      email_address:
-      help_us_improve_govuk:
-      is_not_useful:
-      is_this_page_useful:
-      is_useful:
-      maybe:
-      more_about_visit:
-      'no':
-      send:
-      send_me_survey:
-      something_wrong:
-      thank_you_for_feedback:
-      what_doing:
-      what_wrong:
-      'yes':
+      close: Luk
+      dont_include_personal_info: Do not include personal or financial information such as your national insurance number or credit card information.
+      email_address: E-mail-adresse
+      help_us_improve_govuk: Hjælp os med at forbedre GOV.UK
+      is_not_useful: denne side er ikke nyttig
+      is_this_page_useful: Er denne side nyttig?
+      is_useful: denne side er nyttig
+      maybe: Måske
+      more_about_visit: To help us improve GOV.UK, we’d like to know more about your visit today. Vi sender dig et link til en feedbackformular. Det tager kun 2 minutter at udfylde det. Bare rolig, vi sender dig ikke spam og deler ikke din e-mailadresse med nogen.
+      'no': Nej
+      send: Sende
+      send_me_survey: Send mig undersøgelsen
+      something_wrong: Anmeld et problem med denne side
+      thank_you_for_feedback: Tak for din feedback
+      what_doing: Hvad lavede du?
+      what_wrong: Hvad gik galt?
+      'yes': ja
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
+      consultations: Konsultationer
+      departments: Afdelinger
+      get-involved: Bliv involveret
+      how-government-works: Hvordan regeringen fungerer
+      news_and_communications: nyheder og kommunikation
+      statistics: Statistik
+      worldwide: Verdensomspændende
     layout_footer:
-      copyright_html:
-      licence_html:
-      support_links:
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Krown copyright</a>
+      licence_html: Alt indhold er tilgængeligt i henhold til <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">åben Forvaltning Licens v3.0</a>, medmindre andet er angivet.
+      support_links: Støtte links
     layout_for_public:
       account_layout:
         feedback:
           banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
+            phase_banner_html:
         navigation:
-          destroy_user_session:
           menu_bar:
             account:
               link_text:
             manage:
               link_text:
-            security:
-              link_text:
-          user_root_path:
     layout_header:
-      hide_button:
-      menu:
-      search_button:
-      show_button:
-      top_level:
+      hide_button: Skjul søgning
+      menu: Menu
+      search_button: Søg i GOV.UK
+      show_button: Vis søgning
+      top_level: Øverste niveau
     layout_super_navigation_header:
       logo_link_title:
       logo_text:
@@ -128,77 +123,83 @@ da:
       popular_links_heading:
       search_text:
     metadata:
-      from:
-      history:
-      last_updated:
-      part_of:
-      published:
-      see_all_updates:
-      toggle_less:
-      toggle_more:
+      from: Fra
+      history: Historie
+      last_updated: Sidst opdateret
+      part_of: del af
+      published: offentliggjort
+      see_all_updates: se alle opdateringer
+      toggle_less: Vis færre
+      toggle_more: "+ %{number} mere"
     modal_dialogue:
-      close_modal:
+      close_modal: Luk den modale dialog
     notice:
       banner_title:
     organisation_schema:
-      all_content_search_description:
+      all_content_search_description: Find alt indhold fra %{organisation}
     previous_and_next_navigation:
-      pagination:
+      pagination: Paginering
     print_link:
-      text:
+      text: Udskriv denne side
     radio:
-      or:
+      or: eller
     related_footer_navigation:
-      collections:
-      policies:
-      statistical_data_sets:
-      topical_events:
+      collections: Indsamlinger
+      policies: Politikker
+      statistical_data_sets: Statistiske datasæt
+      topical_events: Aktuelle begivenheder
     related_navigation:
-      collections:
-      external_links:
-      policies:
-      publishers:
-      related_contacts:
-      related_content:
-      related_external_links:
-      related_guides:
-      statistical_data_sets:
-      topical_events:
-      topics:
+      collections: Indsamling
+      external_links: Andre steder på nettet
+      policies: Politik
+      publishers: offentliggjort
+      related_contacts: Andre kontakter
+      related_content: Relateret indhold
+      related_external_links: Andre steder på nettet
+      related_guides: Detaljeret vejledning
+      statistical_data_sets: Statistisk datasæt
+      topical_events: Aktuelle begivenheder
+      topics: Udforsk emnet
       transition:
-        link_path:
-        link_text:
-        title:
-      world_locations:
+        hub_page_link_path: "/transition-check/questions"
+        hub_page_link_text: Få en personlig liste over handlinger
+        hub_page_title: Brexit checker
+        link_path: "/brexit"
+        link_text: Tjek hvad du skal gøre
+        title: Brexit
+      world_locations: Verden Placeringer
     search_box:
-      input_title:
-      label:
-      search_button:
+      input_title: Søge
+      label: Søg i GOV.UK
+      search_button: Søge
     show_password:
-      announce_hide:
-      announce_show:
-      hide:
-      hide_password:
-      show:
-      show_password:
+      announce_hide: Din adgangskode er skjult
+      announce_show: Din adgangskode vises
+      hide: Skjul
+      hide_password: skjul adgangskode
+      show: Vise
+      show_password: Skjul adgangskode
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
-      text:
+      text: spring til hovedindholdet
     step_by_step_nav:
-      hide:
-      hide_all:
-      show:
-      show_all:
+      hide: Skjul
+      hide_all: Skjul alle trin
+      show: Vise
+      show_all: Vis alle trin
     step_by_step_nav_related:
-      part_of:
+      part_of: del af
     subscription_links:
-      email_signup_link_text:
-      feed_link_label:
-      feed_link_text:
-      subscriptions:
+      email_signup_link_text: Få e-mails
+      feed_link_label: Kopier og indsæt denne URL-adresse i din feedlæser
+      feed_link_text: Abonner på feed
+      subscriptions: Abonnementer
     success_alert:
-      success:
+      success: Succes
     summary_list:
-      delete:
-      edit:
+      delete: Slet
+      edit: Ændre
     tabs:
-      contents:
+      contents: Indhold

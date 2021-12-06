@@ -1,48 +1,55 @@
 ---
 et:
   common:
-    translations:
+    translations: Tõlked
   components:
     accordion:
-      hide:
-      hide_all:
-      show:
-      show_all:
-      this_section_visually_hidden:
+      hide: Peida
+      hide_all: Peida kõik jaotised
+      show: Kuva
+      show_all: Kuva kõik jaotised
+      this_section_visually_hidden: " see jaotis"
     article_schema:
-      scoped_search_description:
+      scoped_search_description: Otsi %{title} piires
     attachment:
-      opendocument_html:
-      order_a_copy:
+      opendocument_html: See fail on <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a> vormingus
+      order_a_copy: Telli koopia
       page:
-        one:
-        other:
-      reference:
-      request_format_cta:
-      request_format_details_html:
-      request_format_text:
+        one: 1 leht
+        other: "%{count} lehte"
+      reference: 'Viide: %{reference}'
+      request_format_cta: Taotlege juurdepääsetavat vormingut.
+      request_format_details_html: Kui kasutate hõlbustustehnoloogiat (nt ekraanilugerit) ja vajate seda dokumenti juurdepääsetavamas vormingus, saatke e-kiri aadressil <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Palun öelge meile, millist vormingut vajate. See aitab meid, kui ütlete, millist hõlbustustehnoloogiat kasutate.
+      request_format_text: See fail ei pruugi hõlbustustehnoloogia kasutajatele sobida.
     back_link:
-      back:
+      back: Tagasi
     character_count:
-      body:
+      body: Saate sisestada kuni %{number} %{type}
       type:
-        characters:
-        words:
+        characters: tähemärki
+        words: sõnu
     checkboxes:
-      or:
+      or: või
     contents_list:
-      contents: Sisukord
+      contents: Sisu
     contextual_sidebar:
-      pretitle:
+      pretitle: Samuti osa
     cookie_banner:
       buttons:
-        accept_cookies:
-        reject_cookies:
-      confirmation_message:
-      confirmation_message_link:
-      hide:
+        accept_cookies: Nõustu täiendavate küpsistega
+        reject_cookies: Keeldu täiendavatest küpsistest
+      confirmation_message_html: Saate %{link} igal ajal.
+      confirmation_message_link: muuda oma küpsiste seadeid
+      hide: Peida see sõnum
       text:
-      title:
+      - Kasutame selle veebisaidi toimimiseks mõningaid olulisi küpsiseid.
+      - Soovime seadistada täiendavaid küpsiseid
+      - et mõista
+      - kuidas te saiti GOV.UK kasutate
+      - sätete meeldejätmiseks ja riigiteenuste täiustamiseks.
+      - kasutame ka teiste saitide seadistatud küpsiseid
+      - mis aitavad meil nende teenuste sisu edastada.
+      title: Küpsised saidil GOV.UK
     devolved_nations:
       applies_to:
       connectors:
@@ -51,69 +58,59 @@ et:
       england:
       northern_ireland:
       scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
       wales:
     feedback:
-      close:
-      dont_include_personal_info:
-      email_address:
-      help_us_improve_govuk:
-      is_not_useful:
-      is_this_page_useful:
-      is_useful:
-      maybe:
-      more_about_visit:
-      'no':
-      send:
-      send_me_survey:
-      something_wrong:
-      thank_you_for_feedback:
-      what_doing:
-      what_wrong:
-      'yes':
+      close: Sulge
+      dont_include_personal_info: Ärge lisage isiklikku ega finantsteavet, näiteks oma isikukoodi ega krediitkaardi andmeid.
+      email_address: E-posti aadress
+      help_us_improve_govuk: Aidake meil saiti GOV.UK täiustada
+      is_not_useful: sellest lehest pole kasu
+      is_this_page_useful: Kas sellest lehest on kasu?
+      is_useful: sellest lehest on kasu
+      maybe: Võib-olla
+      more_about_visit: Saidi GOV.UK täiustamiseks sooviksime teie tänasest külastusest rohkem teada saada. Saadame teile tagasiside vormi lingi. Täitmiseks kulub vaid 2 minutit. Ärge muretsege, me ei saada teile rämpsposti ega jaga teie e-posti aadressi kellegagi.
+      'no': Ei
+      send: Saada
+      send_me_survey: Saada mulle küsitlus
+      something_wrong: Teata selle lehe probleemist
+      thank_you_for_feedback: Tänan tagasiside eest
+      what_doing: Mida te tegite?
+      what_wrong: Mis läks valesti?
+      'yes': Jah
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
+      consultations: Konsultatsioonid
+      departments: Osakonnad
+      get-involved: Osalemine
+      how-government-works: Kuidas valitsus töötab
+      news_and_communications: Uudised ja teabevahetus
+      statistics: Statistika
+      worldwide: Kogu maailmas
     layout_footer:
-      copyright_html:
-      licence_html:
-      support_links:
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crowni autoriõigus</a>
+      licence_html: Kogu sise on saadaval <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a> all, kui pole märgitud teisiti
+      support_links: Tugiteenuste lingid
     layout_for_public:
       account_layout:
         feedback:
           banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
+            phase_banner_html:
         navigation:
-          destroy_user_session:
           menu_bar:
             account:
               link_text:
             manage:
               link_text:
-            security:
-              link_text:
-          user_root_path:
     layout_header:
-      hide_button:
-      menu:
-      search_button:
-      show_button:
-      top_level:
+      hide_button: Peida otsing
+      menu: Menüü
+      search_button: Otsi saidilt GOV.UK
+      show_button: Kuva otsing
+      top_level: Kõrgeim tase
     layout_super_navigation_header:
       logo_link_title:
       logo_text:
@@ -128,77 +125,83 @@ et:
       popular_links_heading:
       search_text:
     metadata:
-      from:
-      history:
-      last_updated:
-      part_of:
-      published:
-      see_all_updates:
-      toggle_less:
-      toggle_more:
+      from: Alates
+      history: Ajalugu
+      last_updated: Viimati värskendatud
+      part_of: Osa
+      published: Avaldatud
+      see_all_updates: Vt kõiki värskendusi
+      toggle_less: Kuva vähem
+      toggle_more: "+ %{number} veel"
     modal_dialogue:
-      close_modal:
+      close_modal: Sule modaalne dialoog
     notice:
       banner_title:
     organisation_schema:
-      all_content_search_description:
+      all_content_search_description: Leidke kogu ettevõtte %{organization} sisu
     previous_and_next_navigation:
-      pagination:
+      pagination: Lehekülgede jaotus
     print_link:
-      text:
+      text: Prindi see leht
     radio:
-      or:
+      or: või
     related_footer_navigation:
-      collections:
-      policies:
-      statistical_data_sets:
-      topical_events:
+      collections: Kogud
+      policies: Eeskirjad
+      statistical_data_sets: Statistilised andmekogumid
+      topical_events: Teemakohased sündmused
     related_navigation:
-      collections:
-      external_links:
-      policies:
-      publishers:
-      related_contacts:
-      related_content:
-      related_external_links:
-      related_guides:
-      statistical_data_sets:
-      topical_events:
-      topics:
+      collections: Kogu
+      external_links: Mujal võrgus
+      policies: Eeskirjad
+      publishers: Avaldaja
+      related_contacts: Muud kontaktid
+      related_content: Seotud sisu
+      related_external_links: Mujal võrgus
+      related_guides: Üksikasjalikud juhised
+      statistical_data_sets: Statistiline andmekogum
+      topical_events: Teemakohane sündmus
+      topics: Uuri teemat
       transition:
-        link_path:
-        link_text:
-        title:
-      world_locations:
+        hub_page_link_path: "/transition-check/questions"
+        hub_page_link_text: Hangi isikupärastatud toimingute loend
+        hub_page_title: Brexiti kontrollitööriist
+        link_path: "/brexit"
+        link_text: Kontrollige, mida peate tegema
+        title: Brexit
+      world_locations: Maailma asukohad
     search_box:
-      input_title:
-      label:
-      search_button:
+      input_title: Otsing
+      label: Otsige saidilt GOV.UK
+      search_button: Otsing
     show_password:
-      announce_hide:
-      announce_show:
-      hide:
-      hide_password:
-      show:
-      show_password:
+      announce_hide: Teie parool on peidetud
+      announce_show: Teie parooli kuvatakse
+      hide: Peida
+      hide_password: Peida parool
+      show: Kuva
+      show_password: Kuva parool
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
-      text:
+      text: Mine põhisisu juurde
     step_by_step_nav:
-      hide:
-      hide_all:
-      show:
-      show_all:
+      hide: Peida
+      hide_all: Peida kõik sammud
+      show: Kuva
+      show_all: Kuva kõik sammud
     step_by_step_nav_related:
-      part_of:
+      part_of: Osa
     subscription_links:
-      email_signup_link_text:
-      feed_link_label:
-      feed_link_text:
-      subscriptions:
+      email_signup_link_text: Hangi e-kirju
+      feed_link_label: Kopeerige ja kleepige see URL oma voo lugerisse
+      feed_link_text: Telli voog
+      subscriptions: Tellimused
     success_alert:
-      success:
+      success: Õnnestus
     summary_list:
-      delete:
-      edit:
+      delete: Kustuta
+      edit: Muuda
     tabs:
-      contents:
+      contents: Sisu

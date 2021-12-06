@@ -1,48 +1,52 @@
 ---
 hi:
   common:
-    translations:
+    translations: अनुवादन
   components:
     accordion:
-      hide:
-      hide_all:
-      show:
-      show_all:
-      this_section_visually_hidden:
+      hide: छिपाएं
+      hide_all: सभी अनुभाग छुपाएं
+      show: दिखाएं
+      show_all: सभी अनुभाग दिखाएं
+      this_section_visually_hidden: " यह अनुभाग"
     article_schema:
-      scoped_search_description:
+      scoped_search_description: "%{title} में खोजें"
     attachment:
-      opendocument_html:
-      order_a_copy:
+      opendocument_html: यह फाइल एक <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>ओपनडॉक्यूमेंट</a> प्रारूप में है
+      order_a_copy: एक प्रति ऑर्डर करें
       page:
-        one:
-        other:
-      reference:
-      request_format_cta:
-      request_format_details_html:
-      request_format_text:
+        one: 1 पेज
+        other: "%{count} पेज"
+      reference: 'संदर्भ: %{reference}'
+      request_format_cta: एक सुलभ प्रारूप का अनुरोध करें।
+      request_format_details_html: अगर आप सहायक तकनीक (जैसे स्क्रीन रीडर) का उपयोग करते हैं और इस दस्तावेज़ के अधिक सुलभ प्रारूप वाले संस्करण की ज़रूरत है, तो कृपया <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a> पर ईमेल करें। कृपया हमें बताएं कि आपको कौन सा प्रारूप चाहिए। अगर आप बताते हैं कि आप किस सहायक तकनीक का उपयोग करते हैं, तो हमें मदद मिलेगी।
+      request_format_text: यह फाइल शायद सहायक तकनीक के उपयोगकर्ताओं के लिए उपयुक्त न हो।
     back_link:
-      back:
+      back: वापस
     character_count:
-      body:
+      body: आप %{number} %{type} तक दर्ज कर सकते हैं
       type:
-        characters:
-        words:
+        characters: अक्षर
+        words: शब्द
     checkboxes:
-      or:
+      or: या
     contents_list:
-      contents:
+      contents: विषय-वस्तु
     contextual_sidebar:
-      pretitle:
+      pretitle: साथ ही इसका भाग
     cookie_banner:
       buttons:
-        accept_cookies:
-        reject_cookies:
-      confirmation_message:
-      confirmation_message_link:
-      hide:
+        accept_cookies: अतिरिक्त कुकीज़ मंज़ूर करें
+        reject_cookies: अतिरिक्त कुकीज़ नामंज़ूर करें
+      confirmation_message_html: आप कभी भी %{link} कर सकते हैं।
+      confirmation_message_link: अपनी कुकी सेटिंग बदलें
+      hide: यह संदेश छिपाएं
       text:
-      title:
+      - हम इस वेबसाइट के कामों में कुछ आवश्यक कुकीज़ का इस्तेमाल करते हैं।
+      - हम यह समझने के लिए कुछ अतिरिक्त कुकीज़ सेट करना चाहेंगे कि आप GOV.UK का इस्तेमाल कैसे करते हैं
+      - अपनी सेटिंग्स याद रखें और सरकारी सेवाओं में सुधार करें।
+      - अन्य साइटों द्वारा सेट कुकीज़ का भी उपयोग करते हैं ताकि उनकी सेवाओं से सामग्री वितरित करने में हमें मदद मिलें।
+      title: GOV.UK पर कुकीज़
     devolved_nations:
       applies_to:
       connectors:
@@ -51,69 +55,59 @@ hi:
       england:
       northern_ireland:
       scotland:
+      type:
+        consultation:
+        detailed_guide:
+        guidance:
+        publication:
       wales:
     feedback:
-      close:
-      dont_include_personal_info:
-      email_address:
-      help_us_improve_govuk:
-      is_not_useful:
-      is_this_page_useful:
-      is_useful:
-      maybe:
-      more_about_visit:
-      'no':
-      send:
-      send_me_survey:
-      something_wrong:
-      thank_you_for_feedback:
-      what_doing:
-      what_wrong:
-      'yes':
+      close: बंद करे
+      dont_include_personal_info: अपनी राष्ट्रीय बीमा संख्या या क्रेडिट कार्ड विवरण जैसी व्यक्तिगत या वित्तीय जानकारी शामिल न करें।
+      email_address: ईमेल पता
+      help_us_improve_govuk: GOV.UK को बेहतर बनाने में हमारी सहायता करें
+      is_not_useful: यह पेज उपयोगी नहीं है
+      is_this_page_useful: क्या यह पेज उपयोगी है?
+      is_useful: यह पेज उपयोगी है
+      maybe: शायद
+      more_about_visit: हमें GOV.UK को बेहतर बनाने में मदद करने के लिए, हम आज आपकी यात्रा के बारे में और जानना चाहेंगे। हम आपको फीडबैक प्रपत्र का लिंक भेजेंगे। इसे भरने में बस 2 मिनट का वक्त लगेगा। चिंता न करें हम आपको स्पैम नहीं भेजेंगे या आपका ईमेल पता किसी के भी साथ साझा नहीं करेंगे।
+      'no': नहीं
+      send: भेजें
+      send_me_survey: मुझे सर्वे भेजें
+      something_wrong: इस पेज से समस्या की शिकायत करें
+      thank_you_for_feedback: आपके फीडबैक के लिए धन्यवाद
+      what_doing: आप क्या कर रहे थे?
+      what_wrong: क्या गलत हुआ?
+      'yes': हां
     government_navigation:
-      consultations:
-      departments:
-      get-involved:
-      how-government-works:
-      news_and_communications:
-      statistics:
-      worldwide:
-    intervention:
-      description:
-      dismiss_link_text:
-      dismiss_post_link:
-      title:
+      consultations: परामर्श
+      departments: विभाग
+      get-involved: शामिल हों
+      how-government-works: सरकार कैसे काम करती है
+      news_and_communications: खबर और संचार
+      statistics: सांख्यिकी
+      worldwide: विश्वव्यापी
     layout_footer:
-      copyright_html:
-      licence_html:
-      support_links:
+      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© क्राउन कॉपीराइट</a>
+      licence_html: सभी सामग्री <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">ओपन गवर्नमेंट लाइसेंस v3.0</a> के तहत उपलब्ध है, अन्यथा दर्शाए गए को छोड़कर
+      support_links: सहायता लिंक
     layout_for_public:
       account_layout:
         feedback:
           banners:
-            footer_intro:
-            footer_link:
-            footer_outro:
-            phase_intro:
-            phase_link:
-            phase_outro:
-            title:
+            phase_banner_html:
         navigation:
-          destroy_user_session:
           menu_bar:
             account:
               link_text:
             manage:
               link_text:
-            security:
-              link_text:
-          user_root_path:
     layout_header:
-      hide_button:
-      menu:
-      search_button:
-      show_button:
-      top_level:
+      hide_button: खोज छिपाएं
+      menu: मेनु
+      search_button: GOV.UK खोजें
+      show_button: खोज दिखाएं
+      top_level: शीर्ष स्तर
     layout_super_navigation_header:
       logo_link_title:
       logo_text:
@@ -128,77 +122,83 @@ hi:
       popular_links_heading:
       search_text:
     metadata:
-      from:
-      history:
-      last_updated:
-      part_of:
-      published:
-      see_all_updates:
-      toggle_less:
-      toggle_more:
+      from: से
+      history: इतिहास
+      last_updated: आखरी अपडेट
+      part_of: का भाग
+      published: प्रकाशित
+      see_all_updates: सभी अपडेट देखें
+      toggle_less: कम दिखाएं
+      toggle_more: "+ %{number} और"
     modal_dialogue:
-      close_modal:
+      close_modal: मॉडल संवाद बंद करें
     notice:
       banner_title:
     organisation_schema:
-      all_content_search_description:
+      all_content_search_description: "%{organization} से सभी सामग्री खोजें"
     previous_and_next_navigation:
-      pagination:
+      pagination: पृष्ठांकन
     print_link:
-      text:
+      text: यह पेज प्रिंट करें
     radio:
-      or:
+      or: या
     related_footer_navigation:
-      collections:
-      policies:
-      statistical_data_sets:
-      topical_events:
+      collections: श्रृंखलाएं
+      policies: नीतियां
+      statistical_data_sets: सांख्यिकीय आंकड़े का समूह
+      topical_events: सामयिक आयोजन
     related_navigation:
-      collections:
-      external_links:
-      policies:
-      publishers:
-      related_contacts:
-      related_content:
-      related_external_links:
-      related_guides:
-      statistical_data_sets:
-      topical_events:
-      topics:
+      collections: श्रृंखला
+      external_links: वेब पर कहीं और
+      policies: नीति
+      publishers: प्रकाशक
+      related_contacts: अन्य संपर्क
+      related_content: संपर्क सामग्री
+      related_external_links: वेब पर कहीं और
+      related_guides: विस्तृत मार्गदर्शन
+      statistical_data_sets: सांख्यिकीय आंकड़े का समूह
+      topical_events: सामयिक आयोजन
+      topics: विषय खोजें
       transition:
-        link_path:
-        link_text:
-        title:
-      world_locations:
+        hub_page_link_path: "/transition-check/questions"
+        hub_page_link_text: कार्रवाइयों की पर्सनलाइज़ लिस्ट पाएं
+        hub_page_title: ब्रेक्सिट चेकर
+        link_path: "/brexit"
+        link_text: जांचें कि आपको क्या करना है
+        title: ब्रेक्सिट
+      world_locations: वैश्विक स्थान
     search_box:
-      input_title:
-      label:
-      search_button:
+      input_title: खोजें
+      label: GOV.UK खोजें
+      search_button: खोजें
     show_password:
-      announce_hide:
-      announce_show:
-      hide:
-      hide_password:
-      show:
-      show_password:
+      announce_hide: आपका पासवर्ड छिपा है
+      announce_show: आपका पासवर्ड प्रदर्शित है
+      hide: छिपाएं
+      hide_password: पासवर्ड छिपाएं
+      show: दिखाएं
+      show_password: पासवर्ड दिखाएं
+    single_page_notification_button:
+      subscribe_text:
+      unsubscribe_text:
     skip_link:
-      text:
+      text: मुख्य विषयवस्तु पर जाएं
     step_by_step_nav:
-      hide:
-      hide_all:
-      show:
-      show_all:
+      hide: छिपाएं
+      hide_all: सभी चरण छुपाएं
+      show: दिखाएं
+      show_all: सभी चरण दिखाएं
     step_by_step_nav_related:
-      part_of:
+      part_of: का भाग
     subscription_links:
-      email_signup_link_text:
-      feed_link_label:
-      feed_link_text:
-      subscriptions:
+      email_signup_link_text: ईमेल प्राप्त करें
+      feed_link_label: इस URL को अपने फीड रीडर में कॉपी और पेस्ट करें
+      feed_link_text: फीड के लिए सब्स्क्राइब करें
+      subscriptions: सब्स्क्रिप्शन
     success_alert:
-      success:
+      success: सफल
     summary_list:
-      delete:
-      edit:
+      delete: हटाएं
+      edit: बदलें
     tabs:
-      contents:
+      contents: विषय-वस्तु
