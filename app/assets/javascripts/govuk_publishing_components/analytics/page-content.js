@@ -42,8 +42,6 @@
           $('a[data-track-category="navGridLeafLinkClicked"]').length
       case isNavigationAccordionPage():
         return $('a[data-track-category="navAccordionLinkClicked"]').length
-      case isNavigationLeafPage():
-        return $('a[data-track-category="navLeafLinkClicked"]').length
       case isDocumentCollectionPage():
         return $('.document-collection .group-document-list li a').length
       case isMainstreamBrowsePage():
@@ -55,10 +53,12 @@
       case isPolicyAreaPage():
         return $('section.document-block a').length +
           $('section .collection-list h2 a').length
-      case isWhitehallFinderPage():
-        return $('.document-list .document-row h3 a').length
       case isFinderPage():
         return $('.finder-frontend-content li.document a').length
+      case isWhitehallFinderPage():
+        return $('.document-list .document-row h3 a').length
+      case isNavigationLeafPage():
+        return $('a[data-track-category="navLeafLinkClicked"]').length
       default:
         // It's a content page, not a "finding" page, count related links
         return $('a[data-track-category="relatedLinkClicked"]').length
