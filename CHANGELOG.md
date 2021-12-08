@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Alter use of pseudo-underline mixin to allow for different button sizes ([#2501](https://github.com/alphagov/govuk_publishing_components/pull/2501))
+
 ## 27.16.0
 
 * Remove jQuery from custom dimensions ([PR #2473](https://github.com/alphagov/govuk_publishing_components/pull/2473))

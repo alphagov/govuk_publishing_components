@@ -131,14 +131,14 @@ $pseudo-underline-height: 3px;
   top: 0;
 }
 
-@mixin pseudo-underline {
+@mixin pseudo-underline($left: govuk-spacing(4), $right: govuk-spacing(4)) {
   background: none;
   bottom: 0;
   content: "";
   height: $pseudo-underline-height;
-  left: govuk-spacing(5);
+  left: $left;
   position: absolute;
-  right: govuk-spacing(6);
+  right: $right;
   top: auto;
 }
 
@@ -385,7 +385,7 @@ $pseudo-underline-height: 3px;
       // stylelint-enable max-nesting-depth
 
       &:after {
-        @include pseudo-underline;
+        @include pseudo-underline($left: govuk-spacing(5), $right: govuk-spacing(6));
       }
     }
   }
@@ -431,7 +431,7 @@ $pseudo-underline-height: 3px;
 
   @include govuk-media-query($from: "desktop") {
     &:after {
-      @include pseudo-underline;
+      @include pseudo-underline($left: govuk-spacing(5), $right: govuk-spacing(6));
     }
 
     @include focus-not-focus-visible {
