@@ -69,8 +69,6 @@ This functionality runs like this:
 - if cookies have been consented, the module calls the rest of its code and carries on as normal
 - if cookies have not been consented, the listener is created and calls the rest of the module when the `cookie-consent` event is fired by the cookie banner
 
-If a module has functionality which is dependent on rejecting cookies, that module should listen for the `cookie-reject` event. This event is fired by the cookie banner when the user rejects cookies.
-
 ### Module structure
 
 A module must add its constructor to `GOVUK.Modules` and it must have an `init` method. The simplest module looks like:
