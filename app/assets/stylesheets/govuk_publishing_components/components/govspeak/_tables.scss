@@ -14,7 +14,7 @@
     margin: govuk-spacing(6) 0;
     overflow-x: auto;
     width: 100%;
-    @include govuk-font($size: 14);
+    @include govuk-font($size: 19);
 
     caption {
       text-align: left;
@@ -24,12 +24,16 @@
     th,
     td {
       vertical-align: top;
-      padding: govuk-spacing(2) govuk-spacing(2) govuk-spacing(2) 0;
-      border-bottom: solid 1px govuk-colour("mid-grey", $legacy: "grey-2");
+      padding: govuk-spacing(2) govuk-spacing(4) govuk-spacing(2) 0;
+      border-bottom: 1px solid govuk-colour("mid-grey", $legacy: "grey-2");
+
+      &:last-child {
+        padding: govuk-spacing(2) 0 govuk-spacing(2) 0;
+      }
     }
 
     th {
-      @include govuk-font($size: 14, $weight: bold);
+      @include govuk-font($size: 19, $weight: bold);
       text-align: left;
       color: $govuk-text-colour;
     }
