@@ -6,7 +6,7 @@ describe('Single page notification component', function () {
 
   beforeEach(function () {
     FIXTURE =
-      '<form class="gem-c-single-page-notification-button old-button-for-test" action="/email/subscriptions/single-page/new" method="POST" data-module="single-page-notification-button">' +
+      '<form class="gem-c-single-page-notification-button old-button-for-test js-personalisation-enhancement" action="/email/subscriptions/single-page/new" method="POST" data-module="single-page-notification-button">' +
         '<input type="hidden" name="base_path" value="/current-page-path">' +
         '<button class="gem-c-single-page-notification-button__submit" type="submit">Get emails about this page</button>' +
     '</form>'
@@ -27,7 +27,7 @@ describe('Single page notification component', function () {
 
   it('includes button_location in the call to the personalisation API when button_location is specified', function () {
     FIXTURE =
-      '<form class="gem-c-single-page-notification-button old-button-for-test" action="/email/subscriptions/single-page/new" method="POST" data-module="single-page-notification-button" data-button-location="top">' +
+      '<form class="gem-c-single-page-notification-button old-button-for-test js-personalisation-enhancement" action="/email/subscriptions/single-page/new" method="POST" data-module="single-page-notification-button" data-button-location="top">' +
         '<input type="hidden" name="base_path" value="/current-page-path">' +
         '<button class="gem-c-single-page-notification-button__submit" type="submit">Get emails about this page</button>' +
       '</form>'
@@ -62,7 +62,7 @@ describe('Single page notification component', function () {
       responseText: responseText
     })
 
-    var button = document.querySelector('form.gem-c-single-page-notification-button.old-button-for-test button')
+    var button = document.querySelector('form.gem-c-single-page-notification-button.old-button-for-test.gem-c-single-page-notification-button--visible button')
     expect(button).toHaveText('Get emails about this page')
     expect(GOVUK.Modules.SinglePageNotificationButton.prototype.responseIsJSON(responseText)).toBe(false)
   })
@@ -77,7 +77,7 @@ describe('Single page notification component', function () {
       responseText: responseText
     })
 
-    var button = document.querySelector('form.gem-c-single-page-notification-button.old-button-for-test button')
+    var button = document.querySelector('form.gem-c-single-page-notification-button.old-button-for-test.gem-c-single-page-notification-button--visible button')
     expect(button).toHaveText('Get emails about this page')
     expect(GOVUK.Modules.SinglePageNotificationButton.prototype.responseIsJSON(responseText)).toBe(false)
   })
@@ -91,8 +91,18 @@ describe('Single page notification component', function () {
       responseText: ''
     })
 
-    var button = document.querySelector('form.gem-c-single-page-notification-button.old-button-for-test button')
+    var button = document.querySelector('form.gem-c-single-page-notification-button.old-button-for-test.gem-c-single-page-notification-button--visible button')
     expect(button).toHaveText('Get emails about this page')
+  })
+
+  it('should remain unchanged if xhr times out', function () {
+    jasmine.clock().install()
+    initButton()
+    jasmine.Ajax.requests.mostRecent().responseTimeout()
+
+    var button = document.querySelector('form.gem-c-single-page-notification-button.old-button-for-test.gem-c-single-page-notification-button--visible button')
+    expect(button).toHaveText('Get emails about this page')
+    jasmine.clock().uninstall()
   })
 
   function initButton () {

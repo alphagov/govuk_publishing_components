@@ -41,13 +41,14 @@ describe "Single page notification button", type: :view do
     assert_select 'div.govuk-\!-margin-bottom-9 .gem-c-single-page-notification-button'
   end
 
-  it "has a data-module attribute for JavaScript, if the js-enhancement flag is present" do
+  it "has a js-enhancement class and a data-module attribute if the js-enhancement flag is present" do
     render_component({ base_path: "/the-current-page", js_enhancement: true })
-    assert_select ".gem-c-single-page-notification-button[data-module='single-page-notification-button']"
+    assert_select ".gem-c-single-page-notification-button.js-personalisation-enhancement[data-module='single-page-notification-button']"
   end
 
-  it "does not have a data-module attribute if the js-enhancement flag is not present" do
+  it "does not have a js-enhancement class and a data-module attribute if the js-enhancement flag is not present" do
     render_component({ base_path: "/the-current-page" })
+    assert_select ".gem-c-single-page-notification-button.js-personalisation-enhancement", false
     assert_select ".gem-c-single-page-notification-button[data-module='single-page-notification-button']", false
   end
 
