@@ -42,28 +42,37 @@ describe('Explicit cross-domain linker', function () {
     delete window.gaplugins
   })
 
-  describe('links', function () {
+  describe('when a cross-domain link is clicked', function () {
     beforeEach(function () {
-      element = $('<a href="/somewhere">')
+      element = $('<a href="#">')
     })
 
     it('modifies the link href to append cookie_consent parameter "not-engaged" if cookies_preferences_set cookie is "false"', function () {
       GOVUK.cookie('cookies_preferences_set', 'false')
       explicitCrossDomainLinks.start(element)
-      expect(element.attr('href')).toEqual('/somewhere?cookie_consent=not-engaged')
+      expect(element.attr('href')).toEqual('#')
+      window.GOVUK.triggerEvent(element[0], 'click')
+      expect(element.attr('href')).toEqual('#?cookie_consent=not-engaged')
+      expect(window.location.href).toContain('?cookie_consent=not-engaged')
     })
 
     it('modifies the link href to append cookie_consent parameter "not-engaged" if cookies_preferences_set cookie is not set', function () {
       GOVUK.cookie('cookies_preferences_set', null)
       explicitCrossDomainLinks.start(element)
-      expect(element.attr('href')).toEqual('/somewhere?cookie_consent=not-engaged')
+      expect(element.attr('href')).toEqual('#')
+      window.GOVUK.triggerEvent(element[0], 'click')
+      expect(element.attr('href')).toEqual('#?cookie_consent=not-engaged')
+      expect(window.location.href).toContain('?cookie_consent=not-engaged')
     })
 
     it('modifies the link href to append cookie_consent parameter "reject" if usage cookies have been rejected', function () {
       GOVUK.cookie('cookies_preferences_set', 'true')
       GOVUK.setConsentCookie({ usage: false })
       explicitCrossDomainLinks.start(element)
-      expect(element.attr('href')).toEqual('/somewhere?cookie_consent=reject')
+      expect(element.attr('href')).toEqual('#')
+      window.GOVUK.triggerEvent(element[0], 'click')
+      expect(element.attr('href')).toEqual('#?cookie_consent=reject')
+      expect(window.location.href).toContain('?cookie_consent=reject')
     })
 
     describe('user has accepted cookies', function () {
@@ -73,16 +82,23 @@ describe('Explicit cross-domain linker', function () {
         trackers = [{ ga_mock: 'foobar' }]
 
         explicitCrossDomainLinks.start(element)
+        expect(element.attr('href')).toEqual('#')
+        window.GOVUK.triggerEvent(element[0], 'click')
 
-        expect(element.attr('href')).toEqual('/somewhere?cookie_consent=accept&_ga=abc123')
+        expect(element.attr('href')).toEqual('#?cookie_consent=accept&_ga=abc123')
+        expect(window.location.href).toContain('?cookie_consent=accept&_ga=abc123')
       })
 
       it('modifies the link href to only append cookie_consent "accept" if there are no trackers', function () {
         GOVUK.cookie('cookies_preferences_set', 'true')
         GOVUK.setConsentCookie({ usage: true })
         trackers = []
+
         explicitCrossDomainLinks.start(element)
-        expect(element.attr('href')).toEqual('/somewhere?cookie_consent=accept')
+        expect(element.attr('href')).toEqual('#')
+        window.GOVUK.triggerEvent(element[0], 'click')
+        expect(element.attr('href')).toEqual('#?cookie_consent=accept')
+        expect(window.location.href).toContain('?cookie_consent=accept')
       })
 
       it('modifies the link href to only append cookie_consent "accept" if ga is not initalised on window', function () {
@@ -90,34 +106,15 @@ describe('Explicit cross-domain linker', function () {
         GOVUK.setConsentCookie({ usage: true })
         window.ga = undefined
         explicitCrossDomainLinks.start(element)
-        expect(element.attr('href')).toEqual('/somewhere?cookie_consent=accept')
-      })
-    })
-
-    describe('user has interacted with the cookie banner on the current page', function () {
-      beforeEach(function () {
-        GOVUK.cookie('cookies_preferences_set', null)
-        explicitCrossDomainLinks.start(element)
-        GOVUK.cookie('cookies_preferences_set', 'true')
-      })
-      it('modifies the link href to append cookie_consent parameter "accept" if the cookie-consent event was fired', function () {
-        GOVUK.setConsentCookie({ usage: true })
-        window.ga = undefined
-        window.GOVUK.triggerEvent(window, 'cookie-consent')
-
-        expect(element.attr('href')).toEqual('/somewhere?cookie_consent=accept')
-      })
-
-      it('modifies the link href to append cookie_consent parameter "reject" if the cookie-reject event was fired', function () {
-        GOVUK.setConsentCookie({ usage: false })
-        window.GOVUK.triggerEvent(window, 'cookie-reject')
-
-        expect(element.attr('href')).toEqual('/somewhere?cookie_consent=reject')
+        expect(element.attr('href')).toEqual('#')
+        window.GOVUK.triggerEvent(element[0], 'click')
+        expect(element.attr('href')).toEqual('#?cookie_consent=accept')
+        expect(window.location.href).toContain('?cookie_consent=accept')
       })
     })
   })
 
-  describe('forms', function () {
+  describe('when a cross-domain form is submitted', function () {
     beforeEach(function () {
       element = $('<form method="POST" action="/somewhere">' +
                '<input type="hidden" name="key" value="value" />' +
@@ -128,12 +125,17 @@ describe('Explicit cross-domain linker', function () {
     it('modifies the form action to append cookie_consent parameter "not-engaged" if cookies_preferences_set cookie is "false"', function () {
       GOVUK.cookie('cookies_preferences_set', 'false')
       explicitCrossDomainLinks.start(element)
+      expect(element.attr('action')).toEqual('/somewhere')
+      window.GOVUK.triggerEvent(element[0], 'submit')
+
       expect(element.attr('action')).toEqual('/somewhere?cookie_consent=not-engaged')
     })
 
     it('modifies the form action to append cookie_consent parameter "not-engaged" if cookies_preferences_set cookie is not set', function () {
       GOVUK.cookie('cookies_preferences_set', null)
       explicitCrossDomainLinks.start(element)
+      expect(element.attr('action')).toEqual('/somewhere')
+      window.GOVUK.triggerEvent(element[0], 'submit')
       expect(element.attr('action')).toEqual('/somewhere?cookie_consent=not-engaged')
     })
 
@@ -141,6 +143,8 @@ describe('Explicit cross-domain linker', function () {
       GOVUK.cookie('cookies_preferences_set', 'true')
       GOVUK.setConsentCookie({ usage: false })
       explicitCrossDomainLinks.start(element)
+      expect(element.attr('action')).toEqual('/somewhere')
+      window.GOVUK.triggerEvent(element[0], 'submit')
       expect(element.attr('action')).toEqual('/somewhere?cookie_consent=reject')
     })
 
@@ -150,6 +154,8 @@ describe('Explicit cross-domain linker', function () {
         GOVUK.setConsentCookie({ usage: true })
         trackers = [{ ga_mock: 'foobar' }]
         explicitCrossDomainLinks.start(element)
+        expect(element.attr('action')).toEqual('/somewhere')
+        window.GOVUK.triggerEvent(element[0], 'submit')
         expect(element.attr('action')).toEqual('/somewhere?cookie_consent=accept&_ga=abc123')
       })
 
@@ -158,6 +164,8 @@ describe('Explicit cross-domain linker', function () {
         GOVUK.setConsentCookie({ usage: true })
         trackers = []
         explicitCrossDomainLinks.start(element)
+        expect(element.attr('action')).toEqual('/somewhere')
+        window.GOVUK.triggerEvent(element[0], 'submit')
         expect(element.attr('action')).toEqual('/somewhere?cookie_consent=accept')
       })
 
@@ -166,29 +174,9 @@ describe('Explicit cross-domain linker', function () {
         GOVUK.setConsentCookie({ usage: true })
         window.ga = undefined
         explicitCrossDomainLinks.start(element)
+        expect(element.attr('action')).toEqual('/somewhere')
+        window.GOVUK.triggerEvent(element[0], 'submit')
         expect(element.attr('action')).toEqual('/somewhere?cookie_consent=accept')
-      })
-    })
-
-    describe('user has interacted with the cookie banner on the current page', function () {
-      beforeEach(function () {
-        GOVUK.cookie('cookies_preferences_set', null)
-        explicitCrossDomainLinks.start(element)
-        GOVUK.cookie('cookies_preferences_set', 'true')
-      })
-      it('modifies the form action to append cookie_consent parameter "accept" if the cookie-consent event was fired', function () {
-        GOVUK.setConsentCookie({ usage: true })
-        window.ga = undefined
-        window.GOVUK.triggerEvent(window, 'cookie-consent')
-
-        expect(element.attr('action')).toEqual('/somewhere?cookie_consent=accept')
-      })
-
-      it('modifies the form action to append cookie_consent parameter "reject" if the cookie-reject event was fired', function () {
-        GOVUK.setConsentCookie({ usage: false })
-        window.GOVUK.triggerEvent(window, 'cookie-reject')
-
-        expect(element.attr('action')).toEqual('/somewhere?cookie_consent=reject')
       })
     })
   })

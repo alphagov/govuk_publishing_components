@@ -140,20 +140,6 @@ describe('GOVUK Modules', function () {
       }
       GOVUK.Modules.TestCookieDependencyModule = TestCookieDependencyModule
 
-      // GOV.UK Frontend Module that depends on rejected cookies to start
-      function TestCookieRejectDependencyModule (element) {
-        this.element = element
-      }
-      TestCookieRejectDependencyModule.prototype.init = function () {
-        this.startModule = this.startModule.bind(this)
-        window.addEventListener('cookie-reject', this.startModule)
-      }
-      TestCookieRejectDependencyModule.prototype.startModule = function () {
-        window.removeEventListener('cookie-reject', this.startModule)
-        callbackFrontendModule(this.element)
-      }
-      GOVUK.Modules.TestCookieRejectDependencyModule = TestCookieRejectDependencyModule
-
       container = $('<div></div>')
     })
 
@@ -165,7 +151,6 @@ describe('GOVUK Modules', function () {
       delete GOVUK.Modules.GovukTestAlertPublishingAndFrontendModule
       delete GOVUK.Modules.TestAlertPublishingAndFrontendModule
       delete GOVUK.Modules.TestCookieDependencyModule
-      delete GOVUK.Modules.TestCookieRejectDependencyModule
 
       container.remove()
     })
@@ -240,17 +225,6 @@ describe('GOVUK Modules', function () {
       GOVUK.modules.start(container)
       expect(callbackFrontendModule.calls.count()).toBe(0)
       window.GOVUK.triggerEvent(window, 'cookie-consent')
-      expect(callbackFrontendModule.calls.count()).toBe(1)
-    })
-
-    it('starts delayed modules once cookies have been rejected', function () {
-      var module = $('<div data-module="test-cookie-reject-dependency-module"></div>')
-      container.append(module)
-      $('body').append(container)
-
-      GOVUK.modules.start(container)
-      expect(callbackFrontendModule.calls.count()).toBe(0)
-      window.GOVUK.triggerEvent(window, 'cookie-reject')
       expect(callbackFrontendModule.calls.count()).toBe(1)
     })
 

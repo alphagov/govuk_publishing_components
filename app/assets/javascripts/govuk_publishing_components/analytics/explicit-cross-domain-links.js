@@ -6,33 +6,57 @@
 
   GOVUK.Modules.ExplicitCrossDomainLinks = function () {
     this.start = function ($module) {
-      var element = $module[0]
+      this.element = $module[0]
+      this.attribute = 'href'
+      this.attributeValue = this.element.getAttribute(this.attribute)
+      this.eventType = 'click'
+      if (!this.attributeValue) {
+        this.attribute = 'action'
+        this.attributeValue = this.element.getAttribute(this.attribute)
+        this.eventType = 'submit'
+      }
 
+      this.handleEvent = this.handleEvent.bind(this)
+      this.handleCookiesAccepted = this.handleCookiesAccepted.bind(this)
+      // Listens for the 'submit' event if the element is a form, and the 'click' event if it is a link
+      this.element.addEventListener(this.eventType, this.handleEvent)
+    }
+
+    this.handleEvent = function (e) {
+      //  prevent default: we want the link href and/or form action to be decorated before we navigate away
+      e.preventDefault()
       var cookieBannerEngaged = GOVUK.cookie('cookies_preferences_set')
-
-      // If not engaged, append only ?cookie_consent=not-engaged
-      // If engaged and rejected, append only ?cookie_consent=reject
-      // If engaged and accepted usage, append ?_ga=clientid if available and cookie_consent=accept
+      var cookieConsent = GOVUK.getConsentCookie()
 
       if (cookieBannerEngaged !== 'true') {
-        this.decorate(element, 'cookie_consent=not-engaged')
-        this.start = this.start.bind(this, $module)
-
-        // if the user has not engaged with the cookie banner yet, listen for the cookie consent accept/reject events
-        // re-start the module if cookies are accepted or rejected on the current page – setting cookie preferences does not reload the page
-        window.addEventListener('cookie-consent', this.start)
-        window.addEventListener('cookie-reject', this.start)
-        return
-      }
-      var cookieConsent = GOVUK.getConsentCookie()
-      if (cookieConsent && cookieConsent.usage === false) {
-        this.decorate(element, 'cookie_consent=reject')
-        return
+        // If not engaged, append only ?cookie_consent=not-engaged
+        this.decorate(this.element, 'cookie_consent=not-engaged', this.attribute)
+      } else if (cookieConsent && cookieConsent.usage === true) {
+        this.handleCookiesAccepted()
+      } else {
+        this.decorate(this.element, 'cookie_consent=reject', this.attribute)
       }
 
-      this.decorate(element, 'cookie_consent=accept')
+      // remove the event listener to avoid an infinite loop
+      this.element.removeEventListener(this.eventType, this.handleEvent)
 
-      if (!global.ga) { return }
+      // if the element is a form, submit it. If it is a link, click it
+      if (this.eventType === 'submit') {
+        this.element.submit()
+      } else {
+        this.element.click()
+      }
+    }
+
+    this.handleCookiesAccepted = function () {
+      // If the cookie banner was engaged and usage cookie accepted, append ?_ga=clientid if available and cookie_consent=accept
+      var element = this.element
+      var attribute = this.attribute
+      this.decorate(element, 'cookie_consent=accept', attribute)
+
+      if (!global.ga) {
+        return
+      }
 
       global.ga(function () {
         var trackers = global.ga.getAll()
@@ -40,44 +64,21 @@
         if (!trackers.length) { return }
 
         var linker = new global.gaplugins.Linker(trackers[0])
+        var attrValue = element.getAttribute(attribute)
 
-        var attrAction = element.getAttribute('action')
-        if (attrAction) {
-          element.setAttribute('action', linker.decorate(attrAction))
-        }
-
-        var attrHref = element.getAttribute('href')
-        if (attrHref) {
-          element.href = linker.decorate(attrHref)
-        }
+        element.setAttribute(attribute, linker.decorate(attrValue))
       })
     }
 
-    this.decorate = function (element, param) {
-      var attribute = 'href'
+    this.decorate = function (element, param, attribute) {
       var attributeValue = element.getAttribute(attribute)
-      var cookieConsentParameterPattern = /cookie_consent=[^&]*/
-      var paramIsCookieConsent = param.match(cookieConsentParameterPattern)
-
-      if (!attributeValue) {
-        attribute = 'action'
-        attributeValue = element.getAttribute(attribute)
-      }
 
       if (!attributeValue) { return }
 
-      var attributeHasCookieConsent = attributeValue.match(cookieConsentParameterPattern)
-
-      if (attributeHasCookieConsent && paramIsCookieConsent) {
-        // if the decorate function has received a cookie_consent parameter, but the target element already has a cookie_consent parameter, replace the existing parameter with the new value
-        attributeValue = attributeValue.replace(cookieConsentParameterPattern, param)
+      if (attributeValue.includes('?')) {
+        attributeValue += '&' + param
       } else {
-        // otherwise, simply append the parameter to the target element href query string
-        if (attributeValue.includes('?')) {
-          attributeValue += '&' + param
-        } else {
-          attributeValue += '?' + param
-        }
+        attributeValue += '?' + param
       }
 
       element.setAttribute(attribute, attributeValue)
