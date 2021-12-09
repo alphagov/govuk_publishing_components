@@ -15,12 +15,7 @@
 }
 
 .gem-c-big-number__label {
-  font-size: 16px;
-  @include govuk-typography-weight-bold;
-
-  @if $govuk-typography-use-rem {
-    font-size: govuk-px-to-rem(16px);
-  }
+  @include govuk-font($size: 19, $weight: bold);
 
   // This pseudo element is to bypass an issue with NVDA where block level elements are dictated separately.
   // What's happening here is that the label and the number technically have an inline relationship but appear to have a block relationship thanks to this element
