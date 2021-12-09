@@ -13,6 +13,7 @@
 * Re-work explicit-cross-domain-links.js ([PR #2502](https://github.com/alphagov/govuk_publishing_components/pull/2502))
 * Update govspeak table styles ([PR #2470](https://github.com/alphagov/govuk_publishing_components/pull/2470))
 * Increase big number label size ([PR #2506](https://github.com/alphagov/govuk_publishing_components/pull/2506))
+* Fix typo in menu([#2503](https://github.com/alphagov/govuk_publishing_components/pull/2503))
 
 ## 27.16.0
 
