@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix font for menu paragraphs [#2509](https://github.com/alphagov/govuk_publishing_components/pull/2509)
+
 ## 27.17.0
 
 * Alter use of pseudo-underline mixin to allow for different button sizes ([PR #2501](https://github.com/alphagov/govuk_publishing_components/pull/2501))

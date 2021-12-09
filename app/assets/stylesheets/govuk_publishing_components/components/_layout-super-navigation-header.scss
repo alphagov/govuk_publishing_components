@@ -963,6 +963,7 @@ $pseudo-underline-height: 3px;
 }
 
 .gem-c-layout-super-navigation-header__navigation-second-item-description {
+  @include govuk-typography-common;
   font-size: 16px;
   @if $govuk-typography-use-rem {
     font-size: govuk-px-to-rem(16px);
