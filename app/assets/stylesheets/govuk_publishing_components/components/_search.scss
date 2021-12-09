@@ -1,6 +1,25 @@
 $input-size: 40px;
 $large-input-size: 50px;
 
+@mixin large-mode {
+  .gem-c-search__label {
+    @include govuk-font($size: 19, $line-height: $large-input-size);
+  }
+
+  .gem-c-search__input[type="search"] {
+    height: $large-input-size;
+  }
+
+  .gem-c-search__submit {
+    width: $large-input-size;
+    height: $large-input-size;
+
+    .gem-c-search__icon {
+      @include icon-positioning($large-input-size);
+    }
+  }
+}
+
 .gem-c-search {
   position: relative;
   margin-bottom: 30px;
@@ -220,21 +239,12 @@ $large-input-size: 50px;
 }
 
 .gem-c-search--large {
-  .gem-c-search__label {
-    @include govuk-font($size: 19, $line-height: $large-input-size);
-  }
+  @include large-mode;
+}
 
-  .gem-c-search__input[type="search"] {
-    height: $large-input-size;
-  }
-
-  .gem-c-search__submit {
-    width: $large-input-size;
-    height: $large-input-size;
-
-    .gem-c-search__icon {
-      @include icon-positioning($large-input-size);
-    }
+.gem-c-search--large-on-mobile {
+  @include govuk-media-query($until: "tablet") {
+    @include large-mode;
   }
 }
 
