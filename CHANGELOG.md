@@ -11,6 +11,7 @@
 
 * Alter use of pseudo-underline mixin to allow for different button sizes ([#2501](https://github.com/alphagov/govuk_publishing_components/pull/2501))
 * Re-work explicit-cross-domain-links.js ([PR #2502](https://github.com/alphagov/govuk_publishing_components/pull/2502))
+* Update govspeak table styles ([PR #2470](https://github.com/alphagov/govuk_publishing_components/pull/2470))
 
 ## 27.16.0
 
