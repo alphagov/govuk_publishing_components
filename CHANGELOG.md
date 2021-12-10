@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Fix font for menu paragraphs [#2509](https://github.com/alphagov/govuk_publishing_components/pull/2509)
+* Add large mode on mobile only to search component ([PR #2510](https://github.com/alphagov/govuk_publishing_components/pull/2510))
 
 ## 27.17.0
 
