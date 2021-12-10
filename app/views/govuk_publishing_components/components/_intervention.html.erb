@@ -3,7 +3,9 @@
   suggestion_link_text ||= false
   suggestion_link_url ||= false
   suggestion_text ||= nil
+  hide ||= false
   new_tab ||= false
+
 
   data_attributes ||= {}
   data_attributes[:module] = 'intervention'
@@ -34,9 +36,16 @@
 
     suggestion_link_text = intervention_helper.accessible_text
   end
+
+  section_options = {
+    class: "gem-c-intervention",
+    role: "region", aria: aria_attributes,
+    data: data_attributes,
+  }
+  section_options.merge!({ hidden: true }) if hide
 %>
 <% if suggestion_text || (suggestion_link_text && suggestion_link_url) %>
-  <%= tag.section class: "gem-c-intervention", role: "region", aria: aria_attributes, data: data_attributes do %>
+  <%= tag.section section_options do %>
     <p class="govuk-body">
       <%= tag.span suggestion_text, class: "gem-c-intervention__textwrapper" if suggestion_text %>
       <% if suggestion_link_text && suggestion_link_url %>

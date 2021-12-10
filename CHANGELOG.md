@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleaased
+
+* Add flag to hide Intervention Banner component [#2516](https://github.com/alphagov/govuk_publishing_components/pull/2516)
+
 ## 27.18.0
 
 * Remove jQuery from page-content ([PR #2505](https://github.com/alphagov/govuk_publishing_components/pull/2505))

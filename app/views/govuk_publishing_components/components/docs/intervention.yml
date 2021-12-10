@@ -38,6 +38,15 @@ examples:
       suggestion_link_text: "You can now apply for a permit online."
       suggestion_link_url: "/permit"
 
+  with_hide:
+    description: |
+      This example is for when we want to hide by default and display to the user based on some logic,
+      either in the backend or with Javascript.
+    data:
+      suggestion_link_text: "You may be invited to fill in a questionnaire"
+      suggestion_link_url: "/questionnaire"
+      hide: true
+
   open_suggestion_link_in_new_tab:
     description: |
       When sending users to another online task, you don't want to completely hijack
