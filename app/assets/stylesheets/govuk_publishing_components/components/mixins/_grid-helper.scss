@@ -1,0 +1,141 @@
+/// Set grid row or column value using the fraction unit.
+///
+/// @param {Integer} $number - number of fractions that the grid row or column
+///   needs to be divided into.
+/// @returns {String} - the value
+///
+/// @example scss - Five fractions will return `1fr 1fr 1fr 1fr 1fr`.
+///  .container {
+///    grid-template-rows: fractions(5);
+///  }
+///
+@function fractions($number) {
+  $fractions: "1fr";
+
+  @for $i from 1 to $number {
+    $fractions: $fractions + " 1fr";
+  }
+
+  @return unquote($fractions);
+}
+
+/// Arrange items into columns
+///
+/// The items can flow from horizontally or vertically.
+///
+/// @param {Integer} $items - number of items that need to be arranged
+/// @param {Integer} $columns - number of columns required
+/// @param {String} $selector - (optional) the inner element to be targeted.
+/// @param {String} $direction - (optional) the flow of the items in the grid:
+///   * `row` goes from the left to right, top to bottom one row at a time
+///   * `column` goes from the top to bottom, left to right one column at a time
+///
+/// @example scss - A 7 item 2 column layout going left to right, top to bottom.
+///  .container {
+///    @include columns($items: 7, $columns: 2);
+///  }
+///
+/// @example scss - A 9 item 3 column layout that has `div`s as the inner
+///   elements.
+///  .container {
+///    @include columns($items: 9, $columns: 3, $selector:"div");
+///  }
+///
+/// @example scss - A 16 item 2 column layout going from top to bottom
+///   elements.
+///  .container {
+///    @include columns($items: 9, $columns: 3, $flow:"column");
+///  }
+///
+@mixin columns($items, $columns, $selector: "*", $flow: row) {
+  $rows: ceil($items / $columns);
+
+  display: -ms-grid;
+  display: grid;
+  grid-auto-flow: $flow;
+  -ms-grid-columns: fractions($columns);
+  grid-template-columns: fractions($columns);
+  -ms-grid-rows: fractions($rows);
+  grid-template-rows: fractions($rows);
+
+  // Internet Explorer 10-11 require each element to be placed in the grid -
+  // the `grid-auto-flow` property isn't supported. This means that both the
+  // column and row needs to be set for every child element.
+  @if $flow == "row" {
+    $grid: ();
+    $counter: 0;
+
+    @for $row from 1 through $rows {
+      $this-row: ();
+
+      @for $column from 1 through $columns {
+        $counter: $counter + 1;
+
+        // stylelint-disable max-nesting-depth
+        @if $counter <= $items {
+          $this-row: append($this-row, $counter);
+        }
+        // stylelint-enable max-nesting-depth
+      }
+
+      $grid: append($grid, $this-row, "comma");
+    }
+
+    @for $row-count from 1 through length($grid) {
+      $this-column: nth($grid, $row-count);
+
+      @for $item-index from 1 through length($this-column) {
+        $this-item: nth($this-column, $item-index);
+
+        & > #{$selector}:nth-child(#{$this-item}) {
+          -ms-grid-column: $item-index;
+          -ms-grid-row: $row-count;
+        }
+      }
+    }
+  }
+
+  @if $flow == "column" {
+    // This creates a list of lists to represent the columns and rows; for
+    // example, a 7 item 2 column list would create this:
+    //   [
+    //     [1, 2, 3, 4 ] // column one
+    //     [5, 6, 7] // column two
+    //   ]
+    $grid: ();
+    $counter: 0;
+
+    @for $column from 1 through $columns {
+      $this-row: ();
+
+      @for $row from 1 through $rows {
+        $counter: $counter + 1;
+
+        // stylelint-disable max-nesting-depth
+        @if $counter <= $items {
+          $this-row: append($this-row, $counter);
+        }
+        // stylelint-enable max-nesting-depth
+      }
+
+      $grid: append($grid, $this-row, "comma");
+    }
+
+    // Now we can loop through the list of lists to create the rules needed for
+    // the older grid syntax; fist looping through the list to get the number
+    // needed for the column, then looping again to get the number for the grid
+    // row:
+    @for $column_index from 1 through length($grid) {
+      $this-row: nth($grid, $column_index);
+
+      @for $item-index from 1 through length($this-row) {
+        $this-item: nth($this-row, $item-index);
+
+        & > #{$selector}:nth-child(#{$this-item}) {
+          -ms-grid-column: $column_index;
+          -ms-grid-row: $item-index;
+        }
+      }
+    }
+  }
+}
