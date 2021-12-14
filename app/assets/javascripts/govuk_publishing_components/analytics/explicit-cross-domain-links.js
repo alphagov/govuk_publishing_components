@@ -75,7 +75,7 @@
 
       if (!attributeValue) { return }
 
-      if (attributeValue.includes('?')) {
+      if (attributeValue.indexOf('?') !== -1) {
         attributeValue += '&' + param
       } else {
         attributeValue += '?' + param
