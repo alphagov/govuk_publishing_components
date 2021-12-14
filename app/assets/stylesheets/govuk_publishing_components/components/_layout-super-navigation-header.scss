@@ -1,102 +1,5 @@
 @import "mixins/prefixed-transform";
-
-/// Set grid row or column value using the fraction unit.
-///
-/// @param {Integer} $number - number of fractions that the grid row or column
-///   needs to be divided into.
-/// @returns {String} - the value
-///
-/// @example scss - Five fractions will return `1fr 1fr 1fr 1fr 1fr`.
-///  .container {
-///    grid-template-rows: fractions(5);
-///  }
-///
-@function fractions($number) {
-  $fractions: "1fr";
-
-  @for $i from 1 to $number {
-    $fractions: $fractions + " 1fr";
-  }
-
-  @return unquote($fractions);
-}
-
-/// Arrange items into vertical columns
-///
-/// @param {Integer} $items - number of items that need to be arranged
-/// @param {Integer} $columns - number of columns required
-/// @param {String} $selector - (optional) the inner element to be targeted.
-///
-/// @example scss - A 7 item 2 column layout.
-///  .container {
-///    @include columns(7, 2);
-///  }
-
-/// @example scss - A 9 item 3 column layout that has `div`s as the inner
-///   elements.
-///  .container {
-///    @include columns(9, 3, "div");
-///  }
-///
-@mixin columns($items, $columns, $selector: "*") {
-  $rows: ceil($items / $columns);
-
-  display: -ms-grid;
-  display: grid;
-  grid-auto-flow: column;
-  -ms-grid-columns: fractions($columns);
-  grid-template-columns: fractions($columns);
-  -ms-grid-rows: fractions($rows);
-  grid-template-rows: fractions($rows);
-}
-
-@mixin columns-children($items, $columns, $selector: "*") {
-  $rows: ceil($items / $columns);
-
-  // Internet Explorer 10-11 require each element to be placed in the grid -
-  // the `grid-auto-flow` property isn't supported. This means that both the
-  // column and row needs to be set for every element.
-
-  // This creates a list of lists to represent the columns and rows; for
-  // example, a 7 item 2 column list would create this:
-  //   [
-  //     [1, 2, 3, 4 ] // column one
-  //     [5, 6, 7] // column two
-  //   ]
-  $grid: ();
-  $counter: 0;
-
-  @for $column from 1 through $columns {
-    $this-row: ();
-
-    @for $row from 1 through $rows {
-      $counter: $counter + 1;
-
-      @if $counter <= $items {
-        $this-row: append($this-row, $counter);
-      }
-    }
-
-    $grid: append($grid, $this-row, "comma");
-  }
-
-  // Now we can loop through the list of lists to create the rules needed for
-  // the older grid syntax; fist looping through the list to get the number
-  // needed for the column, then looping again to get the number for the grid
-  // row:
-  @for $column_index from 1 through length($grid) {
-    $this-row: nth($grid, $column_index);
-
-    @for $item-index from 1 through length($this-row) {
-      $this-item: nth($this-row, $item-index);
-
-      & > #{$selector}:nth-child(#{$this-item}) {
-        -ms-grid-column: $column_index;
-        -ms-grid-row: $item-index;
-      }
-    }
-  }
-}
+@import "mixins/grid-helper";
 
 $icon-size: 20px;
 $chevron-indent-spacing: 7px;
@@ -866,15 +769,13 @@ $pseudo-underline-height: 3px;
 
 .gem-c-layout-super-navigation-header__navigation-second-items--topics {
   @include govuk-media-query($from: "desktop") {
-    @include columns(17, 2, "li");
-    @include columns-children(17, 2, "li");
+    @include columns($items: 17, $columns: 2, $selector: "li", $flow: column);
   }
 }
 
 .gem-c-layout-super-navigation-header__navigation-second-items--government-activity {
   @include govuk-media-query($from: "desktop") {
-    @include columns(6, 2, "li");
-    @include columns-children(6, 2, "li");
+    @include columns($items: 6, $columns: 2, $selector: "li", $flow: column);
     padding-bottom: 0;
 
     & > li {
@@ -924,8 +825,7 @@ $pseudo-underline-height: 3px;
   padding: 0 0 govuk-spacing(8) govuk-spacing(4);
 
   @include govuk-media-query($from: "desktop") {
-    @include columns(2, 2, "li");
-    @include columns-children(2, 2, "li");
+    @include columns($items: 2, $columns: 2, $selector: "li");
     margin: 0 (0 - govuk-spacing(3));
     padding: govuk-spacing(6) 0 govuk-spacing(7) 0;
   }
