@@ -185,15 +185,17 @@ en:
       navigation_search_heading: Search and popular pages
       navigation_search_subheading: Search
       popular_links:
-      - label: 'Coronavirus (COVID-19): guidance'
-        href: "/guidance/covid-19-coronavirus-restrictions-what-you-can-and-cannot-do"
+      - label: 'Coronavirus (COVID-19)'
+        href: "/coronavirus"
       - label: 'Brexit: check what you need to do'
         href: "/brexit"
       - label: Sign in to your personal tax account
         href: "/personal-tax-account"
       - label: Find a job
         href: "/find-a-job"
-      - label: Sign in to your Universal Credit account
+      - label: 'Personal tax account: sign in'
+        href: "/personal-tax-account"
+      - label: 'Universal Credit account: sign in'
         href: "/sign-in-universal-credit"
       popular_links_heading: Popular on GOV.UK
       search_text: Search GOV.UK
