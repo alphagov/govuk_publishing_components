@@ -1,4 +1,4 @@
-/* global GOVUK, $ */
+/* global GOVUK */
 
 (function () {
   'use strict'
@@ -8,17 +8,17 @@
   PageContent.getNumberOfSections = function () {
     switch (true) {
       case isNavigationGridPage():
-        return 1 + $('.parent-topic-contents').length
+        return 1 + document.querySelectorAll('.parent-topic-contents').length
       case isNavigationAccordionPage():
-        return $('[data-track-count="accordionSection"]').length
+        return document.querySelectorAll('[data-track-count="accordionSection"]').length
       case isDocumentCollectionPage():
-        return $('.document-collection .group-title').length
+        return document.querySelectorAll('.document-collection .group-title').length
       case isMainstreamBrowsePage():
-        return $('#subsection ul:visible').length || $('#section ul').length
+        return countVisible(document.querySelectorAll('#subsection ul')) || document.querySelectorAll('#section ul').length
       case isTopicPage():
-        return $('.topics-page nav.index-list').length
+        return document.querySelectorAll('.topics-page nav.index-list').length
       case isPolicyAreaPage():
-        return $('.topic section h1.label').length
+        return document.querySelectorAll('.topic section h1.label').length
       case isFinderPage():
       case isWhitehallFinderPage():
       case isNavigationLeafPage():
@@ -28,8 +28,8 @@
         return 1
       default:
         // It's a content page, not a "finding" page
-        var sidebarSections = $('[data-track-count="sidebarRelatedItemSection"]').length
-        var sidebarTaxons = $('[data-track-count="sidebarTaxonSection"]').length
+        var sidebarSections = document.querySelectorAll('[data-track-count="sidebarRelatedItemSection"]').length
+        var sidebarTaxons = document.querySelectorAll('[data-track-count="sidebarTaxonSection"]').length
 
         return sidebarSections || sidebarTaxons
     }
@@ -38,92 +38,101 @@
   PageContent.getNumberOfLinks = function () {
     switch (true) {
       case isNavigationGridPage():
-        return $('a[data-track-category="navGridLinkClicked"]').length +
-          $('a[data-track-category="navGridLeafLinkClicked"]').length
+        return document.querySelectorAll('a[data-track-category="navGridLinkClicked"]').length +
+          document.querySelectorAll('a[data-track-category="navGridLeafLinkClicked"]').length
       case isNavigationAccordionPage():
-        return $('a[data-track-category="navAccordionLinkClicked"]').length
-      case isNavigationLeafPage():
-        return $('a[data-track-category="navLeafLinkClicked"]').length
+        return document.querySelectorAll('a[data-track-category="navAccordionLinkClicked"]').length
       case isDocumentCollectionPage():
-        return $('.document-collection .group-document-list li a').length
+        return document.querySelectorAll('.document-collection .group-document-list li a').length
       case isMainstreamBrowsePage():
-        return $('#subsection ul a:visible').length ||
-          $('#section ul a').length
+        return countVisible(document.querySelectorAll('#subsection ul a')) || document.querySelectorAll('#section ul a').length
       case isTopicPage():
-        return $('.topics-page .index-list ul a').length ||
-          $('.topics-page .topics ul a').length
+        return document.querySelectorAll('.topics-page .index-list ul a').length ||
+          document.querySelectorAll('.topics-page .topics ul a').length
       case isPolicyAreaPage():
-        return $('section.document-block a').length +
-          $('section .collection-list h2 a').length
-      case isWhitehallFinderPage():
-        return $('.document-list .document-row h3 a').length
+        return document.querySelectorAll('section.document-block a').length +
+          document.querySelectorAll('section .collection-list h2 a').length
       case isFinderPage():
-        return $('.finder-frontend-content li.document a').length
+        return document.querySelectorAll('.finder-frontend-content li.document a').length
+      case isWhitehallFinderPage():
+        return document.querySelectorAll('.document-list .document-row h3 a').length
+      case isNavigationLeafPage():
+        return document.querySelectorAll('a[data-track-category="navLeafLinkClicked"]').length
       default:
         // It's a content page, not a "finding" page, count related links
-        return $('a[data-track-category="relatedLinkClicked"]').length
+        return document.querySelectorAll('a[data-track-category="relatedLinkClicked"]').length
     }
   }
 
-  function getRenderingApplication () {
-    return $('meta[name="govuk:rendering-application"]').attr('content')
-  };
+  var metaApplicationSelector = 'meta[name="govuk:rendering-application"]'
+  var metaFormatSelector = 'meta[name="govuk:format"]'
+  var metaNavigationTypeSelector = 'meta[name="govuk:navigation-page-type"]'
 
-  function getFormat () {
-    return $('meta[name="govuk:format"]').attr('content')
-  };
-
-  function getNavigationPageType () {
-    return $('meta[name="govuk:navigation-page-type"]').attr('content')
-  };
+  function getMetaAttribute (selector) {
+    var element = document.querySelector(selector)
+    if (element) {
+      return element.getAttribute('content')
+    }
+  }
 
   function isNavigationGridPage () {
-    return getRenderingApplication() === 'collections' &&
-      getFormat() === 'taxon' &&
-      getNavigationPageType() === 'grid'
-  };
+    return getMetaAttribute(metaApplicationSelector) === 'collections' &&
+      getMetaAttribute(metaFormatSelector) === 'taxon' &&
+      getMetaAttribute(metaNavigationTypeSelector) === 'grid'
+  }
 
   function isNavigationAccordionPage () {
-    return getRenderingApplication() === 'collections' &&
-      getFormat() === 'taxon' &&
-      getNavigationPageType() === 'accordion'
-  };
+    return getMetaAttribute(metaApplicationSelector) === 'collections' &&
+      getMetaAttribute(metaFormatSelector) === 'taxon' &&
+      getMetaAttribute(metaNavigationTypeSelector) === 'accordion'
+  }
 
   function isNavigationLeafPage () {
-    return getRenderingApplication() === 'collections' &&
-      getFormat() === 'taxon' &&
-      getNavigationPageType() === 'leaf'
-  };
+    return getMetaAttribute(metaApplicationSelector) === 'collections' &&
+      getMetaAttribute(metaFormatSelector) === 'taxon' &&
+      getMetaAttribute(metaNavigationTypeSelector) === 'leaf'
+  }
 
   function isMainstreamBrowsePage () {
-    return getRenderingApplication() === 'collections' &&
-      getFormat() === 'mainstream_browse_page'
-  };
+    return getMetaAttribute(metaApplicationSelector) === 'collections' &&
+      getMetaAttribute(metaFormatSelector) === 'mainstream_browse_page'
+  }
 
   function isTopicPage () {
-    return getRenderingApplication() === 'collections' &&
-      getFormat() === 'topic'
-  };
+    return getMetaAttribute(metaApplicationSelector) === 'collections' &&
+      getMetaAttribute(metaFormatSelector) === 'topic'
+  }
 
   function isPolicyAreaPage () {
-    return getRenderingApplication() === 'whitehall' &&
-      getFormat() === 'placeholder_policy_area'
-  };
+    return getMetaAttribute(metaApplicationSelector) === 'whitehall' &&
+      getMetaAttribute(metaFormatSelector) === 'placeholder_policy_area'
+  }
 
   function isDocumentCollectionPage () {
-    return getRenderingApplication() === 'government-frontend' &&
-      getFormat() === 'document_collection'
-  };
+    return getMetaAttribute(metaApplicationSelector) === 'government-frontend' &&
+      getMetaAttribute(metaFormatSelector) === 'document_collection'
+  }
 
   function isFinderPage () {
-    return getRenderingApplication() === 'finder-frontend' &&
-      getFormat() === 'finder'
-  };
+    return getMetaAttribute(metaApplicationSelector) === 'finder-frontend' &&
+      getMetaAttribute(metaFormatSelector) === 'finder'
+  }
 
   function isWhitehallFinderPage () {
-    return getRenderingApplication() === 'whitehall' &&
-      getFormat() === 'finder'
-  };
+    return getMetaAttribute(metaApplicationSelector) === 'whitehall' &&
+      getMetaAttribute(metaFormatSelector) === 'finder'
+  }
+
+  function countVisible (elements) {
+    var count = 0
+    for (var i = 0; i < elements.length; i++) {
+      var style = window.getComputedStyle(elements[i])
+      if (!(style.display === 'none' || style.visibility === 'hidden')) {
+        count++
+      }
+    }
+    return count
+  }
 
   GOVUK.PageContent = PageContent
 })()
