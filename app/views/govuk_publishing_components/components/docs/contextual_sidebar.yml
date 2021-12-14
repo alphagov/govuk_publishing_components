@@ -86,33 +86,6 @@ examples:
                       - text: The Highway Code
                         href: "/guidance/the-highway-code"
                     optional: false
-  with_brexit_cta:
-    description: For documents tagged with certain taxons defined in `brexit_cta_taxon_allow_list` we show a custom Brexit call to action element.
-    data:
-      content_item:
-        title: "Transport news story"
-        content_id: "3c402d90-fe77-49b9-a8aa-1800d4fc2b3d"
-        locale: "en"
-        links:
-          ordered_related_items:
-          - title: Find an apprenticeship
-            base_path: /apply-apprenticeship
-          - title: Training and study at work
-            base_path: /training-study-work-your-rights
-          - title: Careers helpline for teenagers
-            base_path: /careers-helpline-for-teenagers
-          document_collections:
-          - title: Recruit an apprentice (formerly apprenticeship vacancies)
-            base_path: /government/collections/apprenticeship-vacancies
-            document_type: document_collection
-          - title: The future of jobs and skills
-            base_path: /government/collections/the-future-of-jobs-and-skills
-            document_type: document_collection
-          taxons:
-            - content_id: "2f8b848d-23c8-4f42-a41a-df1f81c64d0f"
-              title: "Exporting"
-              phase: "live"
-
   with_ukraine_cta:
     description: For documents tagged to the Ukraine topical event we show a custom 'Ukraine Invasion' call to action element.
     data:

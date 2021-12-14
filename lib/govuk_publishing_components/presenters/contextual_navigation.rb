@@ -108,51 +108,6 @@ module GovukPublishingComponents
         false
       end
 
-      def brexit_cta_taxon_allow_list
-        # Overseas businesses: exporting to the UK
-        # Exporting goods and services
-        # Exporting
-        # Manufacturing, wholesaling, importing and exporting medicines
-        # Importing goods and services
-        # Importing
-        # Manufacturing, wholesaling, importing and exporting medicines
-        %w[
-          2f8b848d-23c8-4f42-a41a-df1f81c64d0f
-          8af13fba-d969-4d87-a02e-2e71783d47be
-          efa9782b-a3d0-4ca0-9c92-3b89748175b7
-          f441e630-2bba-4bbd-8c1b-22ae61cc00c2
-          4788b4b8-2642-47ca-bfc2-bd7e8705a1da
-          d74faafc-781d-4087-8e0c-be4216180059
-          f441e630-2bba-4bbd-8c1b-22ae61cc00c2
-        ]
-      end
-
-      def brexit_cta_taxon_allow_list?
-        taxons = content_item.dig("links", "taxons").to_a
-        taxons.each do |taxon|
-          if brexit_cta_taxon_allow_list.include?(taxon["content_id"]) || parent_taxon_include?(taxon, brexit_cta_taxon_allow_list)
-            return true
-          end
-        end
-        false
-      end
-
-      def parent_taxon_include?(taxon, taxon_list)
-        if taxon.present?
-          if taxon.dig("links", "parent_taxons").to_a.any? { |taxon_item| taxon_list.include?(taxon_item["content_id"]) }
-            return true
-          end
-
-          taxon.dig("links", "parent_taxons").to_a.any? { |taxon_item| parent_taxon_include?(taxon_item, taxon_list) }
-        else
-          false
-        end
-      end
-
-      def show_brexit_cta?
-        brexit_cta_taxon_allow_list?
-      end
-
       def content_tagged_to_current_step_by_step?
         # TODO: remove indirection here
         step_nav_helper.show_header?
