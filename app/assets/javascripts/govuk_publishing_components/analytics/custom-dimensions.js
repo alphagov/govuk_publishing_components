@@ -7,11 +7,11 @@
 
   CustomDimensions.getAndExtendDefaultTrackingOptions = function (extraOptions) {
     var trackingOptions = this.customDimensions()
-    return this.extend(trackingOptions, extraOptions)
+    return GOVUK.extendObject(trackingOptions, extraOptions)
   }
 
   CustomDimensions.customDimensions = function () {
-    var dimensions = this.extend(
+    var dimensions = GOVUK.extendObject(
       {},
       customDimensionsFromBrowser(),
       customDimensionsFromMetaTags(),
@@ -23,24 +23,6 @@
       dimensions[key] = new GOVUK.Analytics.PIISafe(String(dimensions[key]))
     }
     return dimensions
-  }
-
-  CustomDimensions.extend = function (out) {
-    out = out || {}
-
-    for (var i = 1; i < arguments.length; i++) {
-      if (!arguments[i]) {
-        continue
-      }
-
-      for (var key in arguments[i]) {
-        if (Object.prototype.hasOwnProperty.call(arguments[i], key)) {
-          out[key] = arguments[i][key]
-        }
-      }
-    }
-
-    return out
   }
 
   function customDimensionsFromBrowser () {
