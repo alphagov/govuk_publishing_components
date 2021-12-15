@@ -7,17 +7,16 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 27.18.0
 
 * Remove jQuery from page-content ([PR #2505](https://github.com/alphagov/govuk_publishing_components/pull/2505))
-* Replace use of `includes()` in `explicit-cross-domain-links.js` with `indexOf()` alternative [#2515](https://github.com/alphagov/govuk_publishing_components/pull/2515)
-* Fix font for menu paragraphs [#2509](https://github.com/alphagov/govuk_publishing_components/pull/2509)
+* Replace use of `includes()` in `explicit-cross-domain-links.js` with `indexOf()` alternative [PR #2515](https://github.com/alphagov/govuk_publishing_components/pull/2515)
+* Fix font for menu paragraphs [PR #2509](https://github.com/alphagov/govuk_publishing_components/pull/2509)
 * Add large mode on mobile only to search component ([PR #2510](https://github.com/alphagov/govuk_publishing_components/pull/2510))
 * Port the grid_helper sass mixin to the components gem ([PR #2517](https://github.com/alphagov/govuk_publishing_components/pull/2517))
 * Update super nav popular links ([PR #2519](https://github.com/alphagov/govuk_publishing_components/pull/2519))
 * Fix single page notification button flash of unpersonalised content ([PR #2512](https://github.com/alphagov/govuk_publishing_components/pull/2512))
-Add missing class for slimmer header ([PR #2521](https://github.com/alphagov/govuk_publishing_components/pull/2521))
-
+* Add missing class for slimmer header ([PR #2521](https://github.com/alphagov/govuk_publishing_components/pull/2521))
 
 ## 27.17.0
 
