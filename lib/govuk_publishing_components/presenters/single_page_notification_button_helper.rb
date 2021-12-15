@@ -1,7 +1,7 @@
 module GovukPublishingComponents
   module Presenters
     class SinglePageNotificationButtonHelper
-      attr_reader :already_subscribed, :data_attributes, :base_path, :js_enhancement, :button_type, :button_location
+      attr_reader :already_subscribed, :data_attributes, :base_path, :js_enhancement, :button_type, :button_location, :classes
 
       def initialize(local_assigns)
         @local_assigns = local_assigns
@@ -11,6 +11,8 @@ module GovukPublishingComponents
         @base_path = @local_assigns[:base_path] || nil
         @button_location = button_location_is_valid? ? @local_assigns[:button_location] : nil
         @button_type = @local_assigns[:already_subscribed] ? "Unsubscribe" : "Subscribe"
+        @classes = %w[gem-c-single-page-notification-button]
+        @classes << "js-personalisation-enhancement" if js_enhancement
       end
 
       def data
