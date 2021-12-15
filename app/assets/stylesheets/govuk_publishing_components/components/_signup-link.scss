@@ -1,0 +1,34 @@
+.gem-c-signup-link__link {
+  @include govuk-font($size: 19);
+}
+
+.gem-c-signup-link__inner {
+  position: relative;
+}
+
+.gem-c-signup-link__icon {
+  position: absolute;
+
+  @include govuk-media-query($from: tablet) {
+    top: 2px;
+  }
+}
+
+.gem-c-signup-link__title {
+  margin-bottom: govuk-spacing(2);
+  margin-left: govuk-spacing(5);
+}
+
+.gem-c-signup-link--with-background-and-border {
+  padding: govuk-spacing(6);
+  background-color: govuk-colour("light-grey");
+  border: 1px solid $govuk-border-colour;
+}
+
+.gem-c-signup-link--link-only .gem-c-signup-link__link {
+  display: inline-block;
+  vertical-align: top;
+  font-weight: bold;
+  margin-left: govuk-spacing(5);
+  margin-bottom: 0;
+}
