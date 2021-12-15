@@ -16,6 +16,8 @@
 * Port the grid_helper sass mixin to the components gem ([PR #2517](https://github.com/alphagov/govuk_publishing_components/pull/2517))
 * Update super nav popular links ([PR #2519](https://github.com/alphagov/govuk_publishing_components/pull/2519))
 * Fix single page notification button flash of unpersonalised content ([PR #2512](https://github.com/alphagov/govuk_publishing_components/pull/2512))
+Add missing class for slimmer header ([PR #2521](https://github.com/alphagov/govuk_publishing_components/pull/2521))
+
 
 ## 27.17.0
 
