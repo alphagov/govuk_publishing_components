@@ -100,7 +100,13 @@
 
 .gem-c-image-card__context,
 .gem-c-image-card__metadata {
-  @include govuk-font(14);
+  @include govuk-font($size: false);
+  font-size: 16px;
+
+  @if $govuk-typography-use-rem {
+    font-size: govuk-px-to-rem(16px);
+  }
+
   margin: 0 0 (govuk-spacing(3) / 2);
   color: govuk-colour("dark-grey", $legacy: "grey-1");
 
@@ -110,13 +116,13 @@
 }
 
 .gem-c-image-card__description {
-  @include govuk-font($size: 16);
+  @include govuk-font($size: 19);
   padding-top: (govuk-spacing(3) / 2);
   word-wrap: break-word;
 }
 
 .gem-c-image-card__list {
-  @include govuk-font($size: 16);
+  @include govuk-font($size: 19);
   position: relative;
   z-index: 2;
   padding: (govuk-spacing(3) / 2) 0 0 0;
