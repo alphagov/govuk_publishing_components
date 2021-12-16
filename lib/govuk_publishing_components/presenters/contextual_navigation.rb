@@ -315,6 +315,22 @@ module GovukPublishingComponents
           !brexit_cta_exception?
       end
 
+      def show_covid_booster_cta?
+        !covid_booster_cta_document_type_exempt?
+      end
+
+      def covid_booster_cta_document_type_exempt?
+        covid_booster_cta_document_type_exceptions.include?(content_item["document_type"])
+      end
+
+      def covid_booster_cta_document_type_exceptions
+        %w[
+          simple_smart_answer
+          smart_answer
+          step_by_step_nav
+        ]
+      end
+
       def step_by_step_count
         step_nav_helper.step_navs.count
       end
