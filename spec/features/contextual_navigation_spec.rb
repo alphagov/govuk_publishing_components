@@ -532,14 +532,14 @@ describe "Contextual navigation" do
 
   def and_i_see_the_brexit_call_to_action
     within ".gem-c-contextual-sidebar" do
-      expect(page).to have_selector(".gem-c-contextual-sidebar__brexit-cta")
-      expect(page).to have_css(".gem-c-contextual-sidebar__brexit-heading", text: I18n.t("components.related_navigation.transition.title"))
+      expect(page).to have_selector(".gem-c-contextual-sidebar__cta.gem-c-contextual-sidebar__cta--brexit")
+      expect(page).to have_css(".gem-c-contextual-sidebar__heading", text: I18n.t("components.related_navigation.transition.title"))
     end
   end
 
   def and_i_do_not_see_the_brexit_call_to_action
     within ".gem-c-contextual-sidebar" do
-      expect(page).not_to have_selector(".gem-c-contextual-sidebar__brexit-cta")
+      expect(page).not_to have_selector(".gem-c-contextual-sidebar__cta.gem-c-contextual-sidebar__cta--brexit")
     end
   end
 

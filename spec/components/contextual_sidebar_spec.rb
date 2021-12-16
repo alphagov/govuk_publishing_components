@@ -46,7 +46,7 @@ describe "Contextual sidebar", type: :view do
       },
     }
     render_component(content_item: content_item)
-    assert_select ".gem-c-contextual-sidebar__brexit-cta"
+    assert_select ".gem-c-contextual-sidebar__cta.gem-c-contextual-sidebar__cta--brexit"
   end
 
   it "does not render Brexit CTA when we have a document id exception" do
@@ -65,7 +65,7 @@ describe "Contextual sidebar", type: :view do
       },
     }
     render_component(content_item: content_item)
-    assert_select ".gem-c-contextual-sidebar__brexit-cta", 0
+    assert_select ".gem-c-contextual-sidebar__cta.gem-c-contextual-sidebar__cta--brexit", 0
   end
 
   it "does not render Brexit CTA when we have a document type exception" do
@@ -85,7 +85,7 @@ describe "Contextual sidebar", type: :view do
       },
     }
     render_component(content_item: content_item)
-    assert_select ".gem-c-contextual-sidebar__brexit-cta", 0
+    assert_select ".gem-c-contextual-sidebar__cta.gem-c-contextual-sidebar__cta--brexit", 0
   end
 
   it "does not render Brexit CTA when we have a taxon exception" do
@@ -112,7 +112,7 @@ describe "Contextual sidebar", type: :view do
       },
     }
     render_component(content_item: content_item)
-    assert_select ".gem-c-contextual-sidebar__brexit-cta", 0
+    assert_select ".gem-c-contextual-sidebar__cta.gem-c-contextual-sidebar__cta--brexit", 0
   end
 
   it "does not render Brexit CTA when locale is not 'en' or 'cy'" do
@@ -139,6 +139,6 @@ describe "Contextual sidebar", type: :view do
       },
     }
     render_component(content_item: content_item)
-    assert_select ".gem-c-contextual-sidebar__brexit-cta", 0
+    assert_select ".gem-c-contextual-sidebar__cta.gem-c-contextual-sidebar__cta--brexit", 0
   end
 end
