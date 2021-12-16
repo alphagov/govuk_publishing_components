@@ -45,11 +45,11 @@
   }
 
   .gem-c-image-card__image-wrapper {
-    @include govuk-grid-column($width: one-third, $at: mobile);
+    @include govuk-grid-column($width: one-half, $at: mobile);
   }
 
   .gem-c-image-card__text-wrapper {
-    @include govuk-grid-column($width: two-thirds, $at: mobile);
+    @include govuk-grid-column($width: one-half, $at: mobile);
   }
 }
 
@@ -160,7 +160,7 @@
 
 .gem-c-image-card--large {
   .gem-c-image-card__image-wrapper {
-    @include govuk-grid-column($width: two-thirds, $at: tablet);
+    @include govuk-grid-column($width: one-half, $at: tablet);
 
     margin-bottom: govuk-spacing(2);
     float: none;
@@ -175,7 +175,7 @@
   }
 
   .gem-c-image-card__text-wrapper {
-    @include govuk-grid-column($width: one-third, $at: tablet);
+    @include govuk-grid-column($width: one-half, $at: tablet);
 
     padding: 0;
     overflow: hidden;
