@@ -33,5 +33,28 @@ RSpec.describe GovukPublishingComponents::Presenters::ContextualNavigation do
 
       expect(described_class.new(content_item, request).show_covid_booster_cta?).to be true
     end
+
+    it "returns false for content tagged to the Death taxons" do
+      content_item = {
+        "title" => "Some Content",
+        "document_type" => "guidance",
+        "links" => {
+          "taxons" => [
+            {
+              "content_id" => "ac7b8472-5d09-4679-9551-87847b0ac827",
+              "locale" => "en",
+              "title" => "Death",
+              "base_path" => "/taxon",
+              "phase" => "live",
+              "links" => {
+                "parent_taxons" => [],
+              },
+            },
+          ],
+        },
+      }
+
+      expect(described_class.new(content_item, request).show_covid_booster_cta?).to be false
+    end
   end
 end

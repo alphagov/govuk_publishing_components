@@ -316,7 +316,8 @@ module GovukPublishingComponents
       end
 
       def show_covid_booster_cta?
-        !covid_booster_cta_document_type_exempt?
+        !covid_booster_cta_document_type_exempt? &&
+          !covid_booster_cta_taxon_exception_list?
       end
 
       def covid_booster_cta_document_type_exempt?
@@ -328,6 +329,27 @@ module GovukPublishingComponents
           simple_smart_answer
           smart_answer
           step_by_step_nav
+        ]
+      end
+
+      def covid_booster_cta_taxon_exception_list?
+        taxons = content_item.dig("links", "taxons").to_a
+        taxons.each do |taxon|
+          if covid_booster_cta_taxon_exception_list.include?(taxon["content_id"]) || parent_taxon_include?(taxon, covid_booster_cta_taxon_exception_list)
+            return true
+          end
+        end
+        false
+      end
+
+      def covid_booster_cta_taxon_exception_list
+        # Welfare > Death and benefits
+        # Life circumstances > Death and bereavement
+        # Life circumstances > Death registration disclosure
+        %w[
+          ac7b8472-5d09-4679-9551-87847b0ac827
+          0fffa994-b76d-4539-8bf9-2a6c6751580d
+          de978199-11e8-49b9-965e-4fa6a7ae79a8
         ]
       end
 
