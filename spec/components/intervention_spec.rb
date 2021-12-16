@@ -64,6 +64,18 @@ describe "Intervention", type: :view do
     assert_empty render_component({})
   end
 
+  describe "hide" do
+    it "hides the banner if specified" do
+      render_component(
+        suggestion_link_text: "Travel abroad",
+        suggestion_link_url: "/travel-abroad",
+        hide: true,
+      )
+
+      assert_select ".gem-c-intervention[hidden]"
+    end
+  end
+
   describe "new tab" do
     it "renders with target=_'blank' with new_tab option" do
       render_component(
