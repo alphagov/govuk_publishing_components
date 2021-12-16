@@ -231,3 +231,30 @@ examples:
                 parent_taxons:
                   - content_id: "a4038b29-b332-4f13-98b1-1c9709e216bc"
                     title: "Transport"
+  with_covid_and_other_related_links:
+    data:
+      content_item:
+        title: "A content item"
+        links:
+          taxons:
+            - content_id: "test"
+              title: "Not Covid"
+              phase: "live"
+              links:
+                parent_taxons:
+                  - content_id: "fake-covid-taxon"
+                    title: "Covid"
+          ordered_related_items:
+          - title: Find an apprenticeship
+            base_path: /apply-apprenticeship
+          - title: Training and study at work
+            base_path: /training-study-work-your-rights
+          - title: Careers helpline for teenagers
+            base_path: /careers-helpline-for-teenagers
+          document_collections:
+          - title: Recruit an apprentice (formerly apprenticeship vacancies)
+            base_path: /government/collections/apprenticeship-vacancies
+            document_type: document_collection
+          - title: The future of jobs and skills
+            base_path: /government/collections/the-future-of-jobs-and-skills
+            document_type: document_collection
