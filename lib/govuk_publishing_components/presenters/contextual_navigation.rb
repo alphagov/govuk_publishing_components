@@ -108,6 +108,22 @@ module GovukPublishingComponents
         false
       end
 
+      def tagged_to_covid?
+        taxons = content_item.dig("links", "taxons").to_a
+        covid_taxon = "fake-covid-taxon"
+        world_covid_taxon = "fake-world-covid-taxon"
+
+        taxons.each do |taxon|
+          if taxon["content_id"].eql?(covid_taxon) ||
+              taxon["content_id"].eql?(world_covid_taxon) ||
+              taxon.dig("links", "parent_taxons").to_a.any? { |taxon_item| taxon_item["content_id"].eql?(covid_taxon) }
+            return true
+          end
+        end
+
+        false
+      end
+
       def show_brexit_related_links?
         # If tagged directly to /brexit or /world/brexit
         # Or if tagged to a taxon which has /brexit as a parent
@@ -115,6 +131,15 @@ module GovukPublishingComponents
         return false if brexit_hub_pages.include?(content_item["content_id"])
 
         tagged_to_brexit?
+      end
+
+      def show_covid_related_links?
+        # If tagged directly to /covid or /world/covid
+        # Or if tagged to a taxon which has /covid as a parent
+        # And is not the covid hub pages
+        return false if covid_hub_pages.include?(content_item["content_id"])
+
+        tagged_to_covid?
       end
 
       def brexit_cta_document_exceptions
@@ -182,6 +207,12 @@ module GovukPublishingComponents
         ] + brexit_hub_pages
       end
 
+      def covid_cta_document_exceptions
+        %w[
+          fake-covid-document-exception
+        ] + covid_hub_pages
+      end
+
       # we don't want to show the standard Brexit sidebar nav on
       # https://www.gov.uk/guidance/brexit-guidance-for-individuals-and-families or
       # https://www.gov.uk/guidance/brexit-guidance-for-businesses
@@ -193,8 +224,18 @@ module GovukPublishingComponents
         ]
       end
 
+      def covid_hub_pages
+        %w[
+          fake-covid-hub-page
+        ]
+      end
+
       def brexit_cta_document_exception?
         brexit_cta_document_exceptions.include?(content_item["content_id"])
+      end
+
+      def covid_cta_document_exception?
+        covid_cta_document_exceptions.include?(content_item["content_id"])
       end
 
       def brexit_cta_document_type_exceptions
@@ -210,8 +251,17 @@ module GovukPublishingComponents
         ]
       end
 
+      def covid_cta_document_type_exceptions
+        %w[
+        ]
+      end
+
       def brexit_cta_document_type_exception?
         brexit_cta_document_type_exceptions.include?(content_item["document_type"])
+      end
+
+      def covid_cta_document_type_exception?
+        covid_cta_document_type_exceptions.include?(content_item["document_type"])
       end
 
       def brexit_cta_taxon_allow_list
@@ -251,6 +301,11 @@ module GovukPublishingComponents
         ]
       end
 
+      def covid_cta_taxon_allow_list
+        %w[
+        ]
+      end
+
       def brexit_cta_taxon_allow_list?
         taxons = content_item.dig("links", "taxons").to_a
         taxons.each do |taxon|
@@ -261,7 +316,21 @@ module GovukPublishingComponents
         false
       end
 
+      def covid_cta_taxon_allow_list?
+        taxons = content_item.dig("links", "taxons").to_a
+        taxons.each do |taxon|
+          if covid_cta_taxon_allow_list.include?(taxon["content_id"]) || parent_taxon_include?(taxon, covid_cta_taxon_allow_list)
+            return true
+          end
+        end
+        false
+      end
+
       def brexit_cta_lang_allow_list?
+        %w[en cy].include?(content_item["locale"])
+      end
+
+      def covid_cta_lang_allow_list?
         %w[en cy].include?(content_item["locale"])
       end
 
@@ -292,10 +361,25 @@ module GovukPublishingComponents
         ]
       end
 
+      def covid_cta_taxon_exception_list
+        %w[
+        ]
+      end
+
       def brexit_cta_taxon_exception_list?
         taxons = content_item.dig("links", "taxons").to_a
         taxons.each do |taxon|
           if brexit_cta_taxon_exception_list.include?(taxon["content_id"]) || parent_taxon_include?(taxon, brexit_cta_taxon_exception_list)
+            return true
+          end
+        end
+        false
+      end
+
+      def covid_cta_taxon_exception_list?
+        taxons = content_item.dig("links", "taxons").to_a
+        taxons.each do |taxon|
+          if covid_cta_taxon_exception_list.include?(taxon["content_id"]) || parent_taxon_include?(taxon, covid_cta_taxon_exception_list)
             return true
           end
         end
@@ -308,11 +392,24 @@ module GovukPublishingComponents
           brexit_cta_taxon_exception_list?
       end
 
+      def covid_cta_exception?
+        covid_cta_document_exception? ||
+          covid_cta_document_type_exception? ||
+          covid_cta_taxon_exception_list?
+      end
+
       def show_brexit_cta?
         brexit_cta_taxon_allow_list? &&
           brexit_cta_lang_allow_list? &&
           step_by_step_count.zero? &&
           !brexit_cta_exception?
+      end
+
+      def show_covid_cta?
+        covid_cta_taxon_allow_list? &&
+          covid_cta_lang_allow_list? &&
+          step_by_step_count.zero? &&
+          !covid_cta_exception?
       end
 
       def step_by_step_count
