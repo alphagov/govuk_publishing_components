@@ -7,9 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleaased
+## Unreleased
 
 * Add flag to hide Intervention Banner component [#2516](https://github.com/alphagov/govuk_publishing_components/pull/2516)
+* Image card component design and API updates [PR #2530](https://github.com/alphagov/govuk_publishing_components/pull/2530)
 
 ## 27.18.0
 
