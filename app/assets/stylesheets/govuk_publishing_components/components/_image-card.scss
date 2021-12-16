@@ -56,6 +56,10 @@
 .gem-c-image-card__image {
   display: block;
   max-width: 100%;
+  border-top: 1px solid $govuk-border-colour;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
 }
 
 .gem-c-image-card__title {
