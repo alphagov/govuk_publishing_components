@@ -27,4 +27,8 @@
   <% if navigation.show_brexit_cta? || navigation.show_brexit_related_links? %>
     <%= render 'govuk_publishing_components/components/contextual_sidebar/brexit_cta', content_item: content_item %>
   <% end %>
+
+  <% if navigation.show_covid_booster_cta? %>
+    <%= render 'govuk_publishing_components/components/contextual_sidebar/covid_cta', content_item: content_item %>
+  <% end %>
 </div>

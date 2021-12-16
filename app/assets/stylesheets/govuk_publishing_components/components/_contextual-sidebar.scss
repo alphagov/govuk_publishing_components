@@ -1,31 +1,36 @@
 $transition-campaign-red: #ff003b;
+$covid-colour: $govuk-link-colour;
 
-.gem-c-contextual-sidebar__brexit-related-links {
+.gem-c-contextual-sidebar__related-links {
   border-top: 2px solid $govuk-brand-colour;
 }
 
-.gem-c-contextual-sidebar__brexit-heading {
+.gem-c-contextual-sidebar__heading {
   margin-top: govuk-spacing(3);
   margin-bottom: govuk-spacing(2);
+  color: $govuk-text-colour;
 }
 
-.gem-c-contextual-sidebar__brexit-cta {
+.gem-c-contextual-sidebar__text {
+  @include govuk-font(16);
+  margin-bottom: govuk-spacing(1);
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: govuk-spacing(2);
+  }
+}
+
+.gem-c-contextual-sidebar__cta {
   margin-bottom: govuk-spacing(6);
   background-color: govuk-colour('light-grey', $legacy: 'grey-4');
-  border-top: 2px solid $transition-campaign-red;
   display: block;
   padding: 0 govuk-spacing(3) govuk-spacing(3);
   text-decoration: none;
+}
 
-  .gem-c-contextual-sidebar__brexit-heading {
-    color: $govuk-text-colour;
-  }
+.gem-c-contextual-sidebar__cta--brexit {
+  border-top: 2px solid $transition-campaign-red;
+}
 
-  .gem-c-contextual-sidebar__brexit-text {
-    @include govuk-font(16);
-    margin-bottom: govuk-spacing(1);
-    @include govuk-media-query($from: tablet) {
-      margin-bottom: govuk-spacing(2);
-    }
-  }
+.gem-c-contextual-sidebar__cta--covid {
+  border-top: 2px solid $covid-colour;
 }
