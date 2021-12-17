@@ -446,7 +446,7 @@ describe "Contextual navigation" do
   end
 
   def and_i_see_the_other_step_by_step_as_an_also_part_of_list
-    within ".gem-c-step-nav-related:last-child" do
+    within ".gem-c-step-nav-related:last-of-type" do
       expect(page).to have_content("Also part of")
       expect(page).to have_content("PRIMARY STEP BY STEP - NOT INTERACTING WITH")
       expect(page).not_to have_content("PRIMARY STEP BY STEP - INTERACTING WITH")
@@ -454,7 +454,7 @@ describe "Contextual navigation" do
   end
 
   def and_i_dont_see_the_secondary_step_by_step_in_the_also_part_of_list
-    within ".gem-c-step-nav-related:last-child" do
+    within ".gem-c-step-nav-related:last-of-type" do
       expect(page).not_to have_content("SECONDARY STEP BY STEP")
     end
   end
