@@ -45,17 +45,21 @@
   }
 
   .gem-c-image-card__image-wrapper {
-    @include govuk-grid-column($width: one-third, $at: mobile);
+    @include govuk-grid-column($width: one-half, $at: mobile);
   }
 
   .gem-c-image-card__text-wrapper {
-    @include govuk-grid-column($width: two-thirds, $at: mobile);
+    @include govuk-grid-column($width: one-half, $at: mobile);
   }
 }
 
 .gem-c-image-card__image {
   display: block;
   max-width: 100%;
+  border-top: 1px solid $govuk-border-colour;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
 }
 
 .gem-c-image-card__title {
@@ -100,7 +104,13 @@
 
 .gem-c-image-card__context,
 .gem-c-image-card__metadata {
-  @include govuk-font(14);
+  @include govuk-font($size: false);
+  font-size: 16px;
+
+  @if $govuk-typography-use-rem {
+    font-size: govuk-px-to-rem(16px);
+  }
+
   margin: 0 0 (govuk-spacing(3) / 2);
   color: govuk-colour("dark-grey", $legacy: "grey-1");
 
@@ -110,13 +120,13 @@
 }
 
 .gem-c-image-card__description {
-  @include govuk-font($size: 16);
+  @include govuk-font($size: 19);
   padding-top: (govuk-spacing(3) / 2);
   word-wrap: break-word;
 }
 
 .gem-c-image-card__list {
-  @include govuk-font($size: 16);
+  @include govuk-font($size: 19);
   position: relative;
   z-index: 2;
   padding: (govuk-spacing(3) / 2) 0 0 0;
@@ -160,7 +170,7 @@
 
 .gem-c-image-card--large {
   .gem-c-image-card__image-wrapper {
-    @include govuk-grid-column($width: two-thirds, $at: tablet);
+    @include govuk-grid-column($width: one-half, $at: tablet);
 
     margin-bottom: govuk-spacing(2);
     float: none;
@@ -175,7 +185,7 @@
   }
 
   .gem-c-image-card__text-wrapper {
-    @include govuk-grid-column($width: one-third, $at: tablet);
+    @include govuk-grid-column($width: one-half, $at: tablet);
 
     padding: 0;
     overflow: hidden;

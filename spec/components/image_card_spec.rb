@@ -139,4 +139,20 @@ describe "ImageCard", type: :view do
     render_component(href: "#", image_src: "/moo.jpg", image_alt: "some meaningful alt text")
     assert_select ".gem-c-image-card__image[loading='auto']"
   end
+
+  it "applies the sizes attribute to image if specified" do
+    render_component(href: "#", image_src: "/moo.jpg", image_alt: "some meaningful alt text", sizes: "100vw, 300vw")
+    assert_select ".gem-c-image-card__image[sizes='100vw, 300vw']"
+  end
+  it "applies the srcset attribute to image if specified" do
+    render_component(
+      href: "#",
+      image_src: "/moo.jpg",
+      image_alt: "some meaningful alt text",
+      srcset: {
+        "my-image.jpg": "600w",
+      },
+    )
+    assert_select ".gem-c-image-card__image[srcset='/images/my-image.jpg 600w']"
+  end
 end

@@ -253,3 +253,32 @@ examples:
       image_alt: "some meaningful alt text please"
       heading_text: Yr hyn rydym ni'n ei wneud
       lang: cy
+  with_sizes_attribute:
+    description: |
+      `sizes` is an attribute that makes use of html's native responsive images functionality.
+
+      [Read more about responsive images](https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)
+    data:
+      href: "/not-a-page"
+      image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
+      image_alt: "some meaningful alt text please"
+      heading_text: "News headline"
+      sizes: "(max-width: 640px) 100vw, (max-width: 1020px) 33vw, 300px"
+  with_srcset:
+    description: |
+      `srcset` is another responsive images attribute (see `sizes` section above for info on how responsive images work).
+
+      `srcset` strings typically pull from the `asset/images` directory of a repo so use this as a starting point when writing paths for your `srcset` image keys.
+
+      Note that the below example will appear to render incorrectly as we don't want to include `srcset` example images in our component guide as this will get served to frontend apps, adding weight to the user to download.
+    data:
+      href: "/not-a-page"
+      image_src: "/assets/govuk_publishing_components/image-card-srcset/afghan-image-promo.jpg"
+      image_alt: "some meaningful alt text please"
+      heading_text: "News headline"
+      srcset:
+        /assets/govuk_publishing_components/image-card-srcset/cop26.jpg: 610w
+        /assets/govuk_publishing_components/image-card-srcset/cop26-480.jpg: 480w
+        /assets/govuk_publishing_components/image-card-srcset/cop26-320.jpg: 320w
+        /assets/govuk_publishing_components/image-card-srcset/cop26-240.jpg: 240w
+        /assets/govuk_publishing_components/image-card-srcset/cop26-170.jpg: 170w

@@ -13,6 +13,9 @@ module GovukPublishingComponents
         @image_src = local_assigns[:image_src]
         @image_alt = local_assigns[:image_alt] || ""
         @image_loading = local_assigns[:image_loading] || "auto"
+        @srcset = local_assigns[:srcset] || nil
+        @sizes = local_assigns[:sizes] || nil
+        @image_loading = local_assigns[:image_loading] || "auto"
         @context = local_assigns[:context]
         @description = local_assigns[:description]
         @large = local_assigns[:large]
@@ -36,7 +39,14 @@ module GovukPublishingComponents
       def image
         if @image_src
           content_tag(:figure, class: "gem-c-image-card__image-wrapper") do
-            image_tag(@image_src, class: "gem-c-image-card__image", alt: @image_alt, loading: @image_loading)
+            image_tag(
+              @image_src,
+              class: "gem-c-image-card__image",
+              alt: @image_alt,
+              loading: @image_loading,
+              sizes: @sizes,
+              srcset: @srcset,
+            )
           end
         end
       end
