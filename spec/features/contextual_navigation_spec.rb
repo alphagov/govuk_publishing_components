@@ -58,6 +58,7 @@ describe "Contextual navigation" do
     given_theres_a_travel_advice_page
     and_i_visit_that_page
     then_i_see_parent_breadcrumbs
+    and_i_see_the_covid_booster_call_to_action
   end
 
   scenario "The page has curated related items" do
@@ -526,6 +527,13 @@ describe "Contextual navigation" do
 
   def then_i_see_the_brexit_individuals_contextual_breadcrumbs
     and_i_see_the_brexit_contextual_breadcrumbs(brexit_individuals_taxon)
+  end
+
+  def and_i_see_the_covid_booster_call_to_action
+    within ".gem-c-contextual-sidebar" do
+      expect(page).to have_selector(".gem-c-contextual-sidebar__cta.gem-c-contextual-sidebar__cta--covid")
+      expect(page).to have_css(".gem-c-contextual-sidebar__heading", text: I18n.t("components.related_navigation.covid_booster.title"))
+    end
   end
 
   def and_i_do_not_see_the_brexit_call_to_action
