@@ -5,7 +5,6 @@ describe "Contextual navigation" do
     given_theres_a_page_with_brexit_taxon
     and_i_visit_that_page
     and_i_see_the_brexit_contextual_breadcrumbs
-    and_i_see_the_brexit_call_to_action
   end
 
   scenario "There is a page tagged to the brexit business child taxon" do
@@ -94,7 +93,6 @@ describe "Contextual navigation" do
     then_i_see_the_step_by_step
     and_the_step_by_step_header
     and_i_do_not_see_the_brexit_contextual_breadcrumbs
-    and_i_see_the_brexit_call_to_action
   end
 
   scenario "It's a HTML Publication with a parent with breadcrumbs" do
@@ -528,13 +526,6 @@ describe "Contextual navigation" do
 
   def then_i_see_the_brexit_individuals_contextual_breadcrumbs
     and_i_see_the_brexit_contextual_breadcrumbs(brexit_individuals_taxon)
-  end
-
-  def and_i_see_the_brexit_call_to_action
-    within ".gem-c-contextual-sidebar" do
-      expect(page).to have_selector(".gem-c-contextual-sidebar__cta.gem-c-contextual-sidebar__cta--brexit")
-      expect(page).to have_css(".gem-c-contextual-sidebar__heading", text: I18n.t("components.related_navigation.transition.title"))
-    end
   end
 
   def and_i_do_not_see_the_brexit_call_to_action
