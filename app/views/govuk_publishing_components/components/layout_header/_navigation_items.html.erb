@@ -1,17 +1,17 @@
 <% navigation_aria_label ||= "Top level" %>
 
 <% if navigation_items.any? %>
-  <button
-    aria-controls="navigation"
-    aria-label="Show or hide Top Level Navigation"
-    class="govuk-header__menu-button govuk-js-header-toggle gem-c-header__menu-button govuk-!-display-none-print"
-    type="button"
-    data-button-name="menu"
-  >
-    <%= t("components.layout_header.menu") %>
-  </button>
-  <%= tag.nav class: "gem-c-header__nav", aria: { label: navigation_aria_label } do %>
-    <ul id="navigation" class="govuk-header__navigation govuk-header__navigation--end">
+  <%= tag.nav class: "gem-c-header__nav govuk-header__navigation govuk-header__navigation--end", aria: { label: navigation_aria_label } do %>
+    <button
+      aria-controls="navigation"
+      aria-label="Show or hide Top Level Navigation"
+      class="govuk-header__menu-button govuk-js-header-toggle gem-c-header__menu-button govuk-!-display-none-print"
+      type="button"
+      data-button-name="menu"
+    >
+      <%= t("components.layout_header.menu") %>
+    </button>
+    <ul id="navigation" class="govuk-header__navigation-list">
       <% navigation_items.each_with_index do |item, index| %>
         <%
           li_classes = %w(govuk-header__navigation-item)

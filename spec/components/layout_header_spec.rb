@@ -58,6 +58,7 @@ describe "Layout header", type: :view do
 
     render_component(environment: "staging", navigation_items: navigation_items)
 
+    assert_select ".govuk-header__navigation .govuk-header__menu-button", text: "Menu"
     assert_select ".govuk-header__navigation-item.govuk-header__navigation-item--active", text: "Foo"
     assert_select ".govuk-header__navigation-item", text: "Bar"
     assert_select ".govuk-header__navigation-item.govuk-header__navigation-item--collapsed-menu-only", text: "Hello"
