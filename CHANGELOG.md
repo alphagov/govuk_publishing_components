@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 27.19.0
 
 * Fix `help-notice` spacing in `call-to-action` ([PR #2536](https://github.com/alphagov/govuk_publishing_components/pull/2536))
 * Add COVID CTA to contextual sidebar component ([PR #2535](https://github.com/alphagov/govuk_publishing_components/pull/2535))
