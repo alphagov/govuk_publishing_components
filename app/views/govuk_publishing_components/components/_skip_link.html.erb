@@ -2,4 +2,4 @@
   href ||= '#main-content'
   text ||= t('components.skip_link.text')
 %>
-<%= link_to(text, href, class: "gem-c-skip-link govuk-skip-link govuk-!-display-none-print") %>
+<%= link_to(text, href, class: "gem-c-skip-link govuk-skip-link govuk-!-display-none-print", data: { module: "govuk-skip-link" }) %>
