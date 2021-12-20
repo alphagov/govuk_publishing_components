@@ -34,4 +34,11 @@
       margin-left: 1em;
     }
   }
+
+  // Prevent excessive spacing when placed in a call-to-action block
+  .call-to-action {
+    .help-notice:first-child {
+      margin-top: 0;
+    }
+  }
 }
