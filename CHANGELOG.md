@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Fix `help-notice` spacing in `call-to-action` ([PR #2536](https://github.com/alphagov/govuk_publishing_components/pull/2536))
+* Add COVID CTA to contextual sidebar component ([PR #2535](https://github.com/alphagov/govuk_publishing_components/pull/2535))
 * Add flag to hide Intervention Banner component [#2516](https://github.com/alphagov/govuk_publishing_components/pull/2516)
 * Image card component design and API updates [PR #2530](https://github.com/alphagov/govuk_publishing_components/pull/2530)
 

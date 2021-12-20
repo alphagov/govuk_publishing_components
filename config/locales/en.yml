@@ -244,6 +244,10 @@ en:
         link_path: "/brexit"
         link_text: Check what you need to do
         title: Brexit
+      covid_booster:
+        link_path: "https://www.nhs.uk/conditions/coronavirus-covid-19/coronavirus-vaccination/"
+        link_text: Book your coronavirus vaccination and booster dose on the NHS website
+        title: COVID-19 vaccinations
       world_locations: World locations
     search_box:
       input_title: Search

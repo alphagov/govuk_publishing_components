@@ -11,6 +11,8 @@ body: |
 
   It must always be used [with the contextual breadcrumbs component][contextual_breadcrumbs].
 
+  The COVID CTA will displayed on all pages except for a few exemptions documented below.
+
   [preview]: /contextual-navigation
   [step-by-step]: /component-guide/step_by_step_nav
   [related_navigation]: /component-guide/related_navigation
@@ -86,69 +88,6 @@ examples:
                       - text: The Highway Code
                         href: "/guidance/the-highway-code"
                     optional: false
-  with_brexit_and_other_related_links:
-    data:
-      content_item:
-        title: "A content item"
-        links:
-          taxons:
-            - content_id: "test"
-              title: "Not Brexit"
-              phase: "live"
-              links:
-                parent_taxons:
-                  - content_id: "d6c2de5d-ef90-45d1-82d4-5f2438369eea"
-                    title: "Brexit"
-          ordered_related_items:
-          - title: Find an apprenticeship
-            base_path: /apply-apprenticeship
-          - title: Training and study at work
-            base_path: /training-study-work-your-rights
-          - title: Careers helpline for teenagers
-            base_path: /careers-helpline-for-teenagers
-          document_collections:
-          - title: Recruit an apprentice (formerly apprenticeship vacancies)
-            base_path: /government/collections/apprenticeship-vacancies
-            document_type: document_collection
-          - title: The future of jobs and skills
-            base_path: /government/collections/the-future-of-jobs-and-skills
-            document_type: document_collection
-  with_brexit_related_links_and_step_by_steps:
-    data:
-      content_item:
-        title: "A content item"
-        links:
-          taxons:
-            - content_id: "d6c2de5d-ef90-45d1-82d4-5f2438369eea"
-              title: "Brexit"
-              phase: "live"
-          part_of_step_navs:
-            - title: "Choosing a micropig or micropug: step by step"
-              base_path: "/micropigs-vs-micropugs"
-              details:
-                step_by_step_nav:
-                  title: 'Stay in the UK after it leaves the EU (''settled status''): step by step'
-                  steps:
-                  - title: Check if you need to apply to the EU Settlement Scheme
-                    contents:
-                    - type: paragraph
-                      text: 'You may need to apply to the EU Settlement Scheme to continue living
-                        in the UK. '
-                    - type: list
-                      contents:
-                      - text: Check if you need to apply
-                        href: "/settled-status-eu-citizens-families/eligibility"
-                    optional: false
-                  - title: Find out what status you’ll get
-                    contents:
-                    - type: paragraph
-                      text: You’ll get settled or pre-settled status depending on how long you’ve
-                        been living in the UK. This might affect when you choose to apply.
-                    - type: list
-                      contents:
-                      - text: Find out what you’ll get
-                        href: "/settled-status-eu-citizens-families/what-settled-and-presettled-status-means"
-                    optional: false
   with_brexit_cta:
     description: For documents tagged with certain taxons defined in `brexit_cta_taxon_allow_list` we show a custom Brexit call to action element.
     data:
@@ -172,16 +111,39 @@ examples:
             base_path: /government/collections/the-future-of-jobs-and-skills
             document_type: document_collection
           taxons:
-            - content_id: "a4038b29-b332-4f13-98b1-1c9709e216bc"
-              title: "Transport"
+            - content_id: "2f8b848d-23c8-4f42-a41a-df1f81c64d0f"
+              title: "Exporting"
               phase: "live"
-  with_brexit_cta_document_exception:
-    description: Illustrates an exception to showing the custom Brexit call to action element as defined in `brexit_cta_document_type_exceptions`.
+  with_covid_cta_taxon_exception:
+    description: The COVID Booster call to action element is not displayed on content tagged to taxons in `covid_booster_cta_taxon_exception_list`.
     data:
       content_item:
-        title: "30 creative teams awarded up to £100,000 each for Festival UK* 2022 R&D project"
-        content_id: "c3752802-f091-43a9-ba90-33568fccf391"
-        locale: "en"
+        title: "A content item"
+        links:
+          taxons:
+            - content_id: ac7b8472-5d09-4679-9551-87847b0ac827
+              title: "Not Covid"
+              phase: "live"
+          ordered_related_items:
+          - title: Find an apprenticeship
+            base_path: /apply-apprenticeship
+          - title: Training and study at work
+            base_path: /training-study-work-your-rights
+          - title: Careers helpline for teenagers
+            base_path: /careers-helpline-for-teenagers
+          document_collections:
+          - title: Recruit an apprentice (formerly apprenticeship vacancies)
+            base_path: /government/collections/apprenticeship-vacancies
+            document_type: document_collection
+          - title: The future of jobs and skills
+            base_path: /government/collections/the-future-of-jobs-and-skills
+            document_type: document_collection
+  with_covid_cta_document_type_exception:
+    description: Illustrates an exception to showing the custom COVID Booster call to action element as defined in `covid_booster_cta_document_type_exceptions`.
+    data:
+      content_item:
+        title: "A content item"
+        document_type: smart_answer
         links:
           ordered_related_items:
           - title: Find an apprenticeship
@@ -197,37 +159,3 @@ examples:
           - title: The future of jobs and skills
             base_path: /government/collections/the-future-of-jobs-and-skills
             document_type: document_collection
-          taxons:
-            - content_id: "e2ca2f1a-0ff3-43ce-b813-16645ff27904"
-              title: "Society and culture"
-              phase: "live"
-  with_brexit_cta_taxon_exception:
-    description: Illustrates an exception to showing the custom Brexit call to action element as defined in `brexit_cta_taxon_exception_list`.
-    data:
-      content_item:
-        title: "Local transport news story"
-        content_id: "5c82db20-7631-11e4-a3cb-005056011aef"
-        locale: "en"
-        links:
-          ordered_related_items:
-          - title: Find an apprenticeship
-            base_path: /apply-apprenticeship
-          - title: Training and study at work
-            base_path: /training-study-work-your-rights
-          - title: Careers helpline for teenagers
-            base_path: /careers-helpline-for-teenagers
-          document_collections:
-          - title: Recruit an apprentice (formerly apprenticeship vacancies)
-            base_path: /government/collections/apprenticeship-vacancies
-            document_type: document_collection
-          - title: The future of jobs and skills
-            base_path: /government/collections/the-future-of-jobs-and-skills
-            document_type: document_collection
-          taxons:
-            - content_id: "3b4d6319-fcef-4637-b35a-e3df76321894"
-              title: "Local transport"
-              phase: "live"
-              links:
-                parent_taxons:
-                  - content_id: "a4038b29-b332-4f13-98b1-1c9709e216bc"
-                    title: "Transport"
