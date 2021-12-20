@@ -10,6 +10,6 @@
     text = raw(errors.join("<br />"))
   end
 %>
-<%= tag.span id: id, class: css_classes do %>
+<%= tag.p id: id, class: css_classes do %>
   <span class="govuk-visually-hidden">Error:</span> <%= text %>
 <% end %>
