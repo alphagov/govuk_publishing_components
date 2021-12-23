@@ -1,36 +1,36 @@
+//= require ../vendor/polyfills/closest.js
 ;(function (global) {
   'use strict'
 
-  var $ = global.jQuery
   var GOVUK = global.GOVUK || {}
 
   GOVUK.analyticsPlugins = GOVUK.analyticsPlugins || {}
   GOVUK.analyticsPlugins.mailtoLinkTracker = function () {
-    var mailtoLinkSelector = 'a[href^="mailto:"]'
+    document.querySelector('body').addEventListener('click', function (event) {
+      var element = event.target
+      if (element.tagName !== 'A') {
+        element = element.closest('a')
+      }
 
-    $('body').on('click', mailtoLinkSelector, trackClickEvent)
+      if (!element) {
+        return
+      }
 
-    function trackClickEvent (evt) {
-      var $link = getLinkFromEvent(evt)
+      var href = element.getAttribute('href')
+      if (href.substring(0, 7) === 'mailto:') {
+        trackClickEvent(element, href)
+      }
+    })
+
+    function trackClickEvent (element, href) {
       var options = { transport: 'beacon' }
-      var href = $link.attr('href')
-      var linkText = $.trim($link.text())
+      var linkText = element.textContent
 
       if (linkText) {
-        options.label = linkText
+        options.label = linkText.trim()
       }
 
       GOVUK.analytics.trackEvent('Mailto Link Clicked', href, options)
-    }
-
-    function getLinkFromEvent (evt) {
-      var $target = $(evt.target)
-
-      if (!$target.is('a')) {
-        $target = $target.parents('a')
-      }
-
-      return $target
     }
   }
 

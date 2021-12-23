@@ -32,15 +32,19 @@ describe('GOVUK.analyticsPlugins.mailtoLinkTracker', function () {
   })
 
   it('listens to click events on mailto links', function () {
-    $('.mailto-links a').each(function () {
-      $(this).trigger('click')
+    var links = document.querySelectorAll('.mailto-links a')
+    for (var i = 0; i < links.length; i++) {
+      GOVUK.triggerEvent(links[i], 'click')
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalled()
       GOVUK.analytics.trackEvent.calls.reset()
-    })
+    }
   })
 
   it('tracks mailto addresses and link text', function () {
-    $('.mailto-links a').trigger('click')
+    var links = document.querySelectorAll('.mailto-links a')
+    for (var i = 0; i < links.length; i++) {
+      GOVUK.triggerEvent(links[i], 'click')
+    }
 
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith(
       'Mailto Link Clicked', 'mailto:name1@email.com', { transport: 'beacon' })
@@ -50,7 +54,10 @@ describe('GOVUK.analyticsPlugins.mailtoLinkTracker', function () {
   })
 
   it('listens to click events on elements within mailto links', function () {
-    $('.mailto-links a img').trigger('click')
+    var links = document.querySelectorAll('.mailto-links a img')
+    for (var i = 0; i < links.length; i++) {
+      GOVUK.triggerEvent(links[i], 'click')
+    }
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith(
       'Mailto Link Clicked', 'mailto:name3@email.com', { transport: 'beacon' })
   })
