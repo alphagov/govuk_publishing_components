@@ -1,0 +1,39 @@
+name: Signup link
+description: Renders a box with a link to sign up for email notifications
+accessibility_criteria: |
+  - the component must use the correct heading level for the page
+  - text should have a text contrast ratio higher than 4.5:1 against the background colour to meet WCAG AA
+  - the icon must not be focusable or shown to screenreaders
+shared_accessibility_criteria:
+  - link
+examples:
+  default:
+    data:
+      heading: 'Sign up for email notifications'
+      link_text: 'Click right here to sign up!!'
+      link_href: '/this-signs-you-up'
+  with_background_and_border:
+    data:
+      heading: 'Sign up for email notifications'
+      link_text: 'Click right here to sign up!!'
+      link_href: '/this-signs-you-up'
+      background: true
+  link_only:
+    description: If no heading text is passed through, a more compact, link only version is rendered.
+    data:
+      link_text: 'Click right here to sign up!!'
+      link_href: '/this-signs-you-up'
+  with_custom_margin_bottom:
+    description: The component accepts a number for margin bottom from 0 to 9 (0px to 60px) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having no margin bottom.
+    data:
+      heading: 'Sign up for email notifications'
+      link_text: 'Click right here to sign up!!'
+      link_href: '/this-signs-you-up'
+      margin_bottom: 8
+  with_custom_heading_level:
+    description: Override default heading level by passing through `heading_level` parameter (defaults to `h3`).
+    data:
+      heading: 'Sign up for email notifications'
+      link_text: 'Click right here to sign up!!'
+      link_href: '/this-signs-you-up'
+      heading_level: 1

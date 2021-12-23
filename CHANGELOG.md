@@ -16,6 +16,7 @@
 
 ## 27.18.0
 
+* Add signup link component ([PR #2525](https://github.com/alphagov/govuk_publishing_components/pull/2525))
 * Remove jQuery from page-content ([PR #2505](https://github.com/alphagov/govuk_publishing_components/pull/2505))
 * Replace use of `includes()` in `explicit-cross-domain-links.js` with `indexOf()` alternative [PR #2515](https://github.com/alphagov/govuk_publishing_components/pull/2515)
 * Fix font for menu paragraphs [PR #2509](https://github.com/alphagov/govuk_publishing_components/pull/2509)
