@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 27.20.0
+
+* Add signup link component ([PR #2525](https://github.com/alphagov/govuk_publishing_components/pull/2525))
+
 ## 27.19.0
 
 * Fix `help-notice` spacing in `call-to-action` ([PR #2536](https://github.com/alphagov/govuk_publishing_components/pull/2536))
@@ -16,7 +20,6 @@
 
 ## 27.18.0
 
-* Add signup link component ([PR #2525](https://github.com/alphagov/govuk_publishing_components/pull/2525))
 * Remove jQuery from page-content ([PR #2505](https://github.com/alphagov/govuk_publishing_components/pull/2505))
 * Replace use of `includes()` in `explicit-cross-domain-links.js` with `indexOf()` alternative [PR #2515](https://github.com/alphagov/govuk_publishing_components/pull/2515)
 * Fix font for menu paragraphs [PR #2509](https://github.com/alphagov/govuk_publishing_components/pull/2509)
