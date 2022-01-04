@@ -126,8 +126,7 @@
       ['Heading', 'Travelling with children'],
       ['Heading', 'Ireland, the UK, the Channel Islands and the Isle of Man'],
       ['Heading', 'Exemptions for work, medical or compassionate reasons']
-    ],
-    '/find-travel-test-provider': percentages
+    ]
   }
 
   function ScrollTracker (sitewideConfig) {
