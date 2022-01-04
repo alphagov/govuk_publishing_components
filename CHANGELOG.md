@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove duplicate link in menu header ([PR #2547](https://github.com/alphagov/govuk_publishing_components/pull/2547))
+
 ## 27.20.0
 
 * Add signup link component ([PR #2525](https://github.com/alphagov/govuk_publishing_components/pull/2525))
