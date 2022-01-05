@@ -3,10 +3,10 @@
 %>
 
 <div class="gem-c-feedback__prompt gem-c-feedback__js-show js-prompt" tabindex="-1">
-  <div class="gem-c-feedback__prompt-questions js-prompt-questions">
+  <div class="gem-c-feedback__prompt-questions js-prompt-questions" hidden>
     <h2 class="gem-c-feedback__prompt-question"><%= t("components.feedback.is_this_page_useful") %></h2>
     <!-- Maybe button exists only to try and capture clicks by bots -->
-    <button data-track-category="yesNoFeedbackForm" data-track-action="ffMaybeClick" aria-expanded="false" style="display: none" hidden="hidden" aria-hidden="true">
+    <button data-track-category="yesNoFeedbackForm" data-track-action="ffMaybeClick" aria-expanded="false" hidden>
       <%= t("components.feedback.maybe") %>
     </button>
     
@@ -23,10 +23,10 @@
       </li>
     </ul>
   </div>
-  <div class="gem-c-feedback__prompt-questions gem-c-feedback__prompt-success js-prompt-success js-hidden" role="alert">
+  <div class="gem-c-feedback__prompt-questions gem-c-feedback__prompt-success js-prompt-success" role="alert" hidden>
     <%= t("components.feedback.thank_you_for_feedback") %>
   </div>
-  <div class="gem-c-feedback__prompt-questions gem-c-feedback__prompt-questions--something-is-wrong js-prompt-questions">
+  <div class="gem-c-feedback__prompt-questions gem-c-feedback__prompt-questions--something-is-wrong js-prompt-questions" hidden>
     <button class="govuk-button gem-c-feedback__prompt-link js-toggle-form js-something-is-wrong" data-track-category="Onsite Feedback" data-track-action="GOV-UK Open Form" aria-controls="something-is-wrong" aria-expanded="false">
       <%= t("components.feedback.something_wrong") %>
     </button>

@@ -1,6 +1,6 @@
 <form action="/contact/govuk/email-survey-signup"
   id="page-is-not-useful"
-  class="gem-c-feedback__form gem-c-feedback__form--email gem-c-feedback__js-show js-feedback-form js-hidden"
+  class="gem-c-feedback__form gem-c-feedback__form--email gem-c-feedback__js-show js-feedback-form"
   data-track-category="yesNoFeedbackForm"
   data-track-action="Send Form"
   method="post">
@@ -9,13 +9,14 @@
     data-track-category="yesNoFeedbackForm"
     data-track-action="ffFormClose"
     aria-controls="page-is-not-useful"
-    aria-expanded="true">
+    aria-expanded="true"
+    hidden>
     <%= t("components.feedback.close") %>
   </button>
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds" id="survey-wrapper">
-      <div class="gem-c-feedback__error-summary js-hidden js-errors" tabindex="-1"></div>
+      <div class="gem-c-feedback__error-summary js-errors" tabindex="-1" hidden></div>
 
       <input name="email_survey_signup[survey_id]" type="hidden" value="footer_satisfaction_survey">
       <input name="email_survey_signup[survey_source]" type="hidden" value="<%= path_without_pii %>">

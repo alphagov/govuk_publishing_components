@@ -1,9 +1,10 @@
 <form action="/contact/govuk/problem_reports"
   id="something-is-wrong"
-  class="gem-c-feedback__form js-feedback-form js-hidden"
+  class="gem-c-feedback__form js-feedback-form"
   data-track-category="Onsite Feedback"
   data-track-action="GOV.UK Send Form"
-  method="post">
+  method="post"
+  hidden>
   <button
     class="govuk-button govuk-button--secondary gem-c-feedback__close gem-c-feedback__js-show js-close-form"
     data-track-category="Onsite Feedback"
@@ -15,26 +16,28 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <div class="gem-c-feedback__error-summary gem-c-feedback__js-show js-hidden js-errors" tabindex="-1"></div>
+      <div class="gem-c-feedback__error-summary gem-c-feedback__js-show js-errors" tabindex="-1" hidden></div>
 
       <input type="hidden" name="url" value="<%= url_without_pii %>">
 
       <h3 class="gem-c-feedback__form-heading"><%= t("components.feedback.help_us_improve_govuk") %></h3>
       <p id="feedback_explanation" class="gem-c-feedback__form-paragraph"><%= t("components.feedback.dont_include_personal_info") %></p>
 
-      <%= render "govuk_publishing_components/components/input", {
+      <%= render "govuk_publishing_components/components/textarea", {
         label: {
           text: t("components.feedback.what_doing")
         },
         name: "what_doing",
+        rows: 3,
         describedby: "feedback_explanation"
       } %>
 
-      <%= render "govuk_publishing_components/components/input", {
+      <%= render "govuk_publishing_components/components/textarea", {
         label: {
           text: t("components.feedback.what_wrong")
         },
-        name: "what_wrong"
+        name: "what_wrong",
+        rows: 3
       } %>
 
       <%= render "govuk_publishing_components/components/button", {

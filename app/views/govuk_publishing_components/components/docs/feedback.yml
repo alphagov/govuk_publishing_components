@@ -5,6 +5,11 @@ body: |
 
   This component uses JavaScript for expanding and collapsing and also for submitting form responses. This code is not compatible with Internet Explorer, so IE11 and down do not use JavaScript to submit the forms, instead falling back to a normal form submission.
 accessibility_criteria: |
+  The form must:
+
+  * be functional and accessible with JavaScript disabled
+  * be usable and accessible with stylesheets disabled
+
   Form elements in the component must:
 
   * accept focus
