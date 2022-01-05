@@ -7,19 +7,19 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 28.0.0
 
+* **BREAKING:** Update feedback component to fix accessibility issues ([PR #2435](https://github.com/alphagov/govuk_publishing_components/pull/2435))
+  You must make the following changes when you migrate to this release:
+  - Upgrade `static` to the latest version before you upgrade your application
+* **BREAKING:** Remove deprecated components: `admin_analytics`, `government_navigation`, `highlight_boxes` and `taxonomy_list` ([PR #2458](https://github.com/alphagov/govuk_publishing_components/pull/2458))
 * Remove scroll tracking from government-frontend ([PR #2548](https://github.com/alphagov/govuk_publishing_components/pull/2548))
 * Remove scroll tracking from frontend ([PR #2546](https://github.com/alphagov/govuk_publishing_components/pull/2546))
 * Remove scroll tracking from collections ([PR #2543](https://github.com/alphagov/govuk_publishing_components/pull/2543))
 * Remove jQuery from Google Analytics Universal Tracker ([PR #2540](https://github.com/alphagov/govuk_publishing_components/pull/2540))
 * Remove jQuery from external link tracker ([PR #2538](https://github.com/alphagov/govuk_publishing_components/pull/2538))
 * Remove jQuery from download link tracker ([PR #2534](https://github.com/alphagov/govuk_publishing_components/pull/2534))
-* **BREAKING:** Update feedback component to fix accessibility issues ([PR #2435](https://github.com/alphagov/govuk_publishing_components/pull/2435))
-  You must make the following changes when you migrate to this release:
-  - Upgrade `static` to the latest version before you upgrade your application
 * Remove duplicate link in menu header ([PR #2547](https://github.com/alphagov/govuk_publishing_components/pull/2547))
-* **BREAKING:** Remove deprecated components: `admin_analytics`, `government_navigation`, `highlight_boxes` and `taxonomy_list` ([PR #2458](https://github.com/alphagov/govuk_publishing_components/pull/2458))
 
 ## 27.20.0
 
