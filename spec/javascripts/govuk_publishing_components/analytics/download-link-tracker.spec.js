@@ -38,25 +38,31 @@ describe('GOVUK.analyticsPlugins.downloadLinkTracker', function () {
 
   it('listens to clicks on links that match the selector', function () {
     $('.download-links a').each(function () {
-      $(this).trigger('click')
+      GOVUK.triggerEvent($(this)[0], 'click')
       expect(GOVUK.analytics.trackEvent).toHaveBeenCalled()
       GOVUK.analytics.trackEvent.calls.reset()
     })
 
     $('.normal-links a').each(function () {
-      $(this).trigger('click')
+      GOVUK.triggerEvent($(this)[0], 'click')
       expect(GOVUK.analytics.trackEvent).not.toHaveBeenCalled()
       GOVUK.analytics.trackEvent.calls.reset()
     })
   })
 
   it('listens to click events on elements within download links', function () {
-    $('.download-links a img').trigger('click')
+    var links = document.querySelectorAll('.download-links a img')
+    for (var i = 0; i < links.length; i++) {
+      GOVUK.triggerEvent(links[i], 'click')
+    }
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('Download Link Clicked', '/an/image/link.png', { transport: 'beacon' })
   })
 
   it('tracks a download link as an event with link text as the label', function () {
-    $('.download-links a').trigger('click')
+    var links = document.querySelectorAll('.download-links a')
+    for (var i = 0; i < links.length; i++) {
+      GOVUK.triggerEvent(links[i], 'click')
+    }
 
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith(
       'Download Link Clicked', '/one.pdf', { label: 'PDF', transport: 'beacon' })

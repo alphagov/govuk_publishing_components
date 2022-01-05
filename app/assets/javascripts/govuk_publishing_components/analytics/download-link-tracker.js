@@ -1,39 +1,44 @@
 ;(function (global) {
   'use strict'
 
-  var $ = global.jQuery
   var GOVUK = global.GOVUK || {}
 
   GOVUK.analyticsPlugins = GOVUK.analyticsPlugins || {}
   GOVUK.analyticsPlugins.downloadLinkTracker = function (options) {
     options = options || {}
     var downloadLinkSelector = options.selector
+    var selectors = downloadLinkSelector.split(',')
 
     if (downloadLinkSelector) {
-      $('body').on('click', downloadLinkSelector, trackDownload)
+      document.querySelector('body').addEventListener('click', function (event) {
+        var element = event.target
+        if (element.tagName !== 'A') {
+          element = element.closest('a')
+        }
+
+        if (!element) {
+          return
+        }
+
+        for (var i = 0; i < selectors.length; i++) {
+          if (element.matches(selectors[i].trim())) {
+            trackDownload(element)
+            break
+          }
+        }
+      })
     }
 
-    function trackDownload (evt) {
-      var $link = getLinkFromEvent(evt)
-      var href = $link.attr('href')
+    function trackDownload (element) {
+      var href = element.getAttribute('href')
       var evtOptions = { transport: 'beacon' }
-      var linkText = $.trim($link.text())
+      var linkText = element.textContent.trim()
 
       if (linkText) {
         evtOptions.label = linkText
       }
 
       GOVUK.analytics.trackEvent('Download Link Clicked', href, evtOptions)
-    }
-
-    function getLinkFromEvent (evt) {
-      var $target = $(evt.target)
-
-      if (!$target.is('a')) {
-        $target = $target.parents('a')
-      }
-
-      return $target
     }
   }
 

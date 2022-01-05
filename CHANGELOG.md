@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Remove jQuery from download link tracker ([PR #2534](https://github.com/alphagov/govuk_publishing_components/pull/2534))
 * **BREAKING:** Update feedback component to fix accessibility issues ([PR #2435](https://github.com/alphagov/govuk_publishing_components/pull/2435))
   You must make the following changes when you migrate to this release:
   - Upgrade `static` to the latest version before you upgrade your application
