@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Tweak metadata component "See all updates" interaction ([PR #2552](https://github.com/alphagov/govuk_publishing_components/pull/2552))
+
 ## 28.0.0
 
 * **BREAKING:** Update feedback component to fix accessibility issues ([PR #2435](https://github.com/alphagov/govuk_publishing_components/pull/2435))
