@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Remove scroll tracking from government-frontend ([PR #2548](https://github.com/alphagov/govuk_publishing_components/pull/2548))
 * Remove scroll tracking from frontend ([PR #2546](https://github.com/alphagov/govuk_publishing_components/pull/2546))
 * Remove scroll tracking from collections ([PR #2543](https://github.com/alphagov/govuk_publishing_components/pull/2543))
 * Remove jQuery from Google Analytics Universal Tracker ([PR #2540](https://github.com/alphagov/govuk_publishing_components/pull/2540))
