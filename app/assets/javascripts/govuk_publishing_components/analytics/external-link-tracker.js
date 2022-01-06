@@ -1,49 +1,63 @@
+// = require govuk/vendor/polyfills/Element/prototype/closest.js
 ;(function (global) {
   'use strict'
 
-  var $ = global.jQuery
   var GOVUK = global.GOVUK || {}
 
   GOVUK.analyticsPlugins = GOVUK.analyticsPlugins || {}
   GOVUK.analyticsPlugins.externalLinkTracker = function (options) {
     options = options || {}
-    var externalLinkUploadCustomDimension = options.externalLinkUploadCustomDimension
+    GOVUK.analyticsPlugins.externalLinkTracker.options = options
+    document.querySelector('body').addEventListener('click', GOVUK.analyticsPlugins.externalLinkTracker.handleClick)
+  }
+
+  GOVUK.analyticsPlugins.externalLinkTracker.handleClick = function (event) {
+    var element = event.target
+    if (element.tagName !== 'A') {
+      element = element.closest('a')
+    }
+
+    if (!element) {
+      return
+    }
+
+    if (GOVUK.analyticsPlugins.externalLinkTracker.isExternalLink(element.getAttribute('href'))) {
+      GOVUK.analyticsPlugins.externalLinkTracker.trackClickEvent(element)
+    }
+  }
+
+  GOVUK.analyticsPlugins.externalLinkTracker.isExternalLink = function (href) {
+    if (!href) {
+      return false
+    }
+
     var currentHost = GOVUK.analyticsPlugins.externalLinkTracker.getHostname()
-    var externalLinkSelector = 'a[href^="http"]:not(a[href*="' + currentHost + '"])'
-    $('body').on('click', externalLinkSelector, trackClickEvent)
+    if (href.substring(0, 4) === 'http' && href.indexOf(currentHost) === -1) {
+      return true
+    }
+  }
 
-    function trackClickEvent (evt) {
-      var $link = getLinkFromEvent(evt)
-      var options = { transport: 'beacon' }
-      var href = $link.attr('href')
-      var linkText = $.trim($link.text())
+  GOVUK.analyticsPlugins.externalLinkTracker.trackClickEvent = function (element) {
+    var options = { transport: 'beacon' }
+    var href = element.getAttribute('href')
+    var linkText = element.textContent.trim()
 
-      if (linkText) {
-        options.label = linkText
-      }
-
-      if (externalLinkUploadCustomDimension !== undefined) {
-        // This custom dimension will be used to duplicate the url information
-        // that we normally send in an "event action". This will be used to join
-        // up with a scheduled custom upload called "External Link Status".
-        // We can only join uploads on custom dimensions, not on `event actions`
-        // where we normally add the url info.
-        var externalLinkToJoinUploadOn = href
-
-        GOVUK.analytics.setDimension(externalLinkUploadCustomDimension, externalLinkToJoinUploadOn)
-      }
-      GOVUK.analytics.trackEvent('External Link Clicked', href, options)
+    if (linkText) {
+      options.label = linkText
     }
 
-    function getLinkFromEvent (evt) {
-      var $target = $(evt.target)
+    var externalLinkUploadCustomDimension = GOVUK.analyticsPlugins.externalLinkTracker.options.externalLinkUploadCustomDimension
+    if (externalLinkUploadCustomDimension !== undefined) {
+      // This custom dimension will be used to duplicate the url information
+      // that we normally send in an "event action". This will be used to join
+      // up with a scheduled custom upload called "External Link Status".
+      // We can only join uploads on custom dimensions, not on `event actions`
+      // where we normally add the url info.
+      var externalLinkToJoinUploadOn = href
 
-      if (!$target.is('a')) {
-        $target = $target.parents('a')
-      }
-
-      return $target
+      GOVUK.analytics.setDimension(externalLinkUploadCustomDimension, externalLinkToJoinUploadOn)
     }
+    GOVUK.analytics.trackEvent('External Link Clicked', href, options)
   }
 
   GOVUK.analyticsPlugins.externalLinkTracker.getHostname = function () {
