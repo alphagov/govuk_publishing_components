@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Remove jQuery from Google Analytics Universal Tracker ([PR #2540](https://github.com/alphagov/govuk_publishing_components/pull/2540))
 * Remove jQuery from external link tracker ([PR #2538](https://github.com/alphagov/govuk_publishing_components/pull/2538))
 * Remove jQuery from download link tracker ([PR #2534](https://github.com/alphagov/govuk_publishing_components/pull/2534))
 * **BREAKING:** Update feedback component to fix accessibility issues ([PR #2435](https://github.com/alphagov/govuk_publishing_components/pull/2435))

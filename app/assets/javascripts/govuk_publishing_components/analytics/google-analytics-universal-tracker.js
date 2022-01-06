@@ -1,7 +1,6 @@
 ;(function (global) {
   'use strict'
 
-  var $ = global.jQuery
   var GOVUK = global.GOVUK || {}
   var pii
 
@@ -78,7 +77,7 @@
     // Set an options object for the pageview (e.g. transport, sessionControl)
     // https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#transport
     if (typeof options === 'object') {
-      pageviewObject = $.extend(pageviewObject || {}, options)
+      pageviewObject = GOVUK.extendObject(pageviewObject || {}, options)
 
       // trackerName is optional
       if (typeof options.trackerName === 'string') {
@@ -87,10 +86,24 @@
       }
     }
 
-    if (!$.isEmptyObject(pageviewObject)) {
-      sendToGa(trackerName + 'send', 'pageview', pageviewObject)
-    } else {
+    function isEmptyObject (obj) {
+      if (typeof obj === 'undefined') {
+        return true
+      }
+
+      for (var prop in obj) {
+        if (Object.prototype.hasOwnProperty.call(obj, prop)) {
+          return false
+        }
+      }
+
+      return JSON.stringify(obj) === JSON.stringify({})
+    }
+
+    if (isEmptyObject(pageviewObject)) {
       sendToGa(trackerName + 'send', 'pageview')
+    } else {
+      sendToGa(trackerName + 'send', 'pageview', pageviewObject)
     }
   }
 
@@ -135,7 +148,7 @@
     }
 
     if (typeof options === 'object') {
-      $.extend(evt, options)
+      evt = GOVUK.extendObject(evt, options)
     }
 
     sendToGa(trackerName + 'send', evt)
@@ -156,7 +169,7 @@
       socialTarget: target
     }
 
-    $.extend(trackingOptions, options)
+    trackingOptions = GOVUK.extendObject(trackingOptions, options)
 
     sendToGa('send', trackingOptions)
   }
