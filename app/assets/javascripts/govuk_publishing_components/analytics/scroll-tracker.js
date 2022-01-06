@@ -5,14 +5,6 @@
 
   window.GOVUK = window.GOVUK || {}
 
-  var percentages = [
-    ['Percent', 20],
-    ['Percent', 40],
-    ['Percent', 60],
-    ['Percent', 80],
-    ['Percent', 100]
-  ]
-
   var CONFIG = {}
 
   function ScrollTracker (sitewideConfig) {
