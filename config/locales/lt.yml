@@ -84,14 +84,6 @@ lt:
       what_doing: Ką darėte?
       what_wrong: Kas nutiko?
       'yes': Taip
-    government_navigation:
-      consultations: Konsultacijos
-      departments: Skyriai
-      get-involved: Įsitraukite
-      how-government-works: Kaip dirba valdžia
-      news_and_communications: Naujienos ir pranešimai
-      statistics: Statistika
-      worldwide: Visame pasaulyje
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
       licence_html: Visą turinį rasite <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, nebent nurodyta kitaip

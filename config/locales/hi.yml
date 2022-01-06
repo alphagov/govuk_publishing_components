@@ -79,14 +79,6 @@ hi:
       what_doing: आप क्या कर रहे थे?
       what_wrong: क्या गलत हुआ?
       'yes': हां
-    government_navigation:
-      consultations: परामर्श
-      departments: विभाग
-      get-involved: शामिल हों
-      how-government-works: सरकार कैसे काम करती है
-      news_and_communications: खबर और संचार
-      statistics: सांख्यिकी
-      worldwide: विश्वव्यापी
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© क्राउन कॉपीराइट</a>
       licence_html: सभी सामग्री <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">ओपन गवर्नमेंट लाइसेंस v3.0</a> के तहत उपलब्ध है, अन्यथा दर्शाए गए को छोड़कर

@@ -81,14 +81,6 @@ fi:
       what_doing: Mitä olit tekemässä?
       what_wrong: Mikä meni vikaan?
       'yes': Kyllä
-    government_navigation:
-      consultations: Konsultaatiot
-      departments: Osastot
-      get-involved: Tule mukaan
-      how-government-works: Miten hallitus toimii
-      news_and_communications: Uutiset ja viestintä
-      statistics: Tilastot
-      worldwide: Maailmanlaajuinen
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Kruunun tekijänoikeus</a>
       licence_html: Kaikki sisältö on saatavilla osoitteessa <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Avoimen hallinnon lisenssi v3.0</a>, ellei toisin mainita

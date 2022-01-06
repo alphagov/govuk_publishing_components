@@ -82,14 +82,6 @@ ka:
       what_doing: რას აკეთებდით?
       what_wrong: რა მოხდა არასწორად?
       'yes': დიახ
-    government_navigation:
-      consultations: კონსულტაციები
-      departments: დეპარტამენტები
-      get-involved: ჩართულობა
-      how-government-works: როგორ მუშაობს სახელმწიფო
-      news_and_communications: სიახლეები და კომუნიკაციები
-      statistics: სტატისტიკა
-      worldwide: მსოფლიო
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© გვირგვინის ქოფირაითი</a>
       licence_html: ყველა მასალა ხელმისაწვდომია <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, გარდა სხვა განცხადებებისა

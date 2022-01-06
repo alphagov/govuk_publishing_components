@@ -83,14 +83,6 @@ pl:
       what_doing: Co robiłeś?
       what_wrong: Co poszło nie tak?
       'yes': Tak
-    government_navigation:
-      consultations: Konsultacje
-      departments: Departamenty
-      get-involved: Weź udział
-      how-government-works: Jak funkcjonuje rząd
-      news_and_communications: Wiadomości i komunikaty
-      statistics: Statystyki
-      worldwide: Na świecie
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Właścicielem praw autorskich jest Korona</a>
       licence_html: Cała zawartość objęta jest licencją <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, chyba że zaznaczono inaczej

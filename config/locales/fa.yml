@@ -78,14 +78,6 @@ fa:
       what_doing: داشتید چه کار می‌کردید؟
       what_wrong: چه مشکلی پیش آمد؟
       'yes': بله
-    government_navigation:
-      consultations: مشاوره‌ها
-      departments: اداره‌ها
-      get-involved: مشارکت کنید
-      how-government-works: نحوه عملکرد دولت
-      news_and_communications: اخبار و ارتباطات
-      statistics: آمار
-      worldwide: جهانی
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">کپی‌رایت © Crown</a>
       licence_html: تمام محتوا تحت <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">مجوز دولت باز نسخه 3.0</a> در دسترس است، مگر در مواردی که خلاف آن بیان شده باشد

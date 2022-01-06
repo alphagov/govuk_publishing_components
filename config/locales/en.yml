@@ -78,14 +78,6 @@ en:
       what_doing: What were you doing?
       what_wrong: What went wrong?
       'yes': 'Yes'
-    government_navigation:
-      consultations: Consultations
-      departments: Departments
-      get-involved: Get involved
-      how-government-works: How government works
-      news_and_communications: News and communications
-      statistics: Statistics
-      worldwide: Worldwide
     intervention:
       accessible_link_text_suffix: " (opens in a new tab)"
     layout_footer:

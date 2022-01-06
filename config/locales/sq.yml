@@ -79,14 +79,6 @@ sq:
       what_doing: Cfare po bënit?
       what_wrong: Çfarë shkoi keq?
       'yes': Po
-    government_navigation:
-      consultations: Konsultimet
-      departments: Departamentet
-      get-involved: Përfshihu
-      how-government-works: Si funksionon qeveria
-      news_and_communications: Lajme dhe komunikime
-      statistics: Statistika
-      worldwide: Botërore
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown e drejta e autorit</a>
       licence_html: E gjithë përmbajtja është në dispozicion nën <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Licencën e Qeverisë së Hapur v3.0</a>, përveç rasteve kur thuhet ndryshe

@@ -14,7 +14,6 @@ describe "visual regression test runner Percy", visual_regression: true do
     skip_non_visible_components = %w[
       /component-guide/meta_tags/preview
       /component-guide/machine_readable_metadata/preview
-      /component-guide/admin_analytics/preview
       /component-guide/google_tag_manager_script/preview
       /component-guide/layout_for_admin/preview
     ]

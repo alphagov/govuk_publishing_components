@@ -80,14 +80,6 @@ id:
       what_doing: Apa yang Anda lakukan?
       what_wrong: Apa yang salah?
       'yes': Ya
-    government_navigation:
-      consultations: Konsultasi
-      departments: Departemen
-      get-involved: Ikut terlibat
-      how-government-works: Cara kerja pemerintah
-      news_and_communications: Berita dan komunikasi
-      statistics: Statistik
-      worldwide: Dunia
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">Hak Cipta © Crown</a>
       licence_html: Semu konten tersedia sesuai <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Lisensi Terbuka Pemerintah v3.0</a>, kecuali dinyatakan berbeda

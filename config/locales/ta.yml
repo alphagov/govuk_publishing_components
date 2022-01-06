@@ -80,14 +80,6 @@ ta:
       what_doing: நீங்கள் என்ன செய்து கொண்டிருந்தீர்கள்?
       what_wrong: என்ன தவறு நடந்தது?
       'yes': ஆம்
-    government_navigation:
-      consultations: கலந்தாய்வுகள்
-      departments: துறைகள்
-      get-involved: ஈடுபடுங்கள்
-      how-government-works: அரசு எவ்வாறு இயங்குகிறது
-      news_and_communications: செய்தி மற்றும் செய்தித் தொடர்பு
-      statistics: புள்ளியியல்
-      worldwide: உலகம் முழுவதும்
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown காப்புரிமை</a>
       licence_html: வேறுவகையில் குறிப்பிடப்படாதவரை அனைத்து உள்ளடக்கமும் <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>-ன்கீழ் கிடைக்கிறது.

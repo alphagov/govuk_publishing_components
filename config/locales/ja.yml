@@ -76,14 +76,6 @@ ja:
       what_doing: 何をしましたか？
       what_wrong: どのような不具合ですか？
       'yes': はい
-    government_navigation:
-      consultations: 相談
-      departments: 部門
-      get-involved: 参加する
-      how-government-works: 政府のしくみ
-      news_and_communications: ニュースと通信
-      statistics: 統計
-      worldwide: 全世界
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
       licence_html: 特に明記されていない限り、すべてのコンテンツは <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>でご利用いただけます。

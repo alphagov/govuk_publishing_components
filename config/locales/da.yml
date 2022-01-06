@@ -80,14 +80,6 @@ da:
       what_doing: Hvad lavede du?
       what_wrong: Hvad gik galt?
       'yes': ja
-    government_navigation:
-      consultations: Konsultationer
-      departments: Afdelinger
-      get-involved: Bliv involveret
-      how-government-works: Hvordan regeringen fungerer
-      news_and_communications: nyheder og kommunikation
-      statistics: Statistik
-      worldwide: Verdensomspændende
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Krown copyright</a>
       licence_html: Alt indhold er tilgængeligt i henhold til <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">åben Forvaltning Licens v3.0</a>, medmindre andet er angivet.

@@ -82,14 +82,6 @@ ar:
       what_doing: ماذا كنت تفعل؟
       what_wrong: ما الخطأ الذي وقع؟
       'yes': نعم ‏  ‏
-    government_navigation:
-      consultations: استشارات
-      departments: الأقسام
-      get-involved: شارك
-      how-government-works: كيف تعمل الحكومة
-      news_and_communications: الأخبار والاتصالات
-      statistics: إحصائيات
-      worldwide: في جميع أنحاء العالم
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© حقوق نشر التاج الملكي</a>
       licence_html: كل المحتوى متاح بموجب <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">الترخيص الحكومي المفتوح (الإصدار v3.0)</a>، ما لم ينص على خلاف ذلك

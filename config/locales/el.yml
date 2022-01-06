@@ -79,14 +79,6 @@ el:
       what_doing: Τι κάνατε;
       what_wrong: Τι πήγε στραβά;
       'yes': Ναι
-    government_navigation:
-      consultations: Διαβουλεύσεις
-      departments: Τμήματα
-      get-involved: Συμμετέχετε
-      how-government-works: Πώς λειτουργεί η κυβέρνηση
-      news_and_communications: Ειδήσεις και επικοινωνία
-      statistics: Στατιστική
-      worldwide: Παγκόσμιο
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Πνευματικά δικαιώματα Crown</a>
       licence_html: Όλο το περιεχόμενο είναι διαθέσιμο βάσει της <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Άδειας Ανοικτής Κυβέρνησης v3.0</a> , εκτός εάν αναφέρεται διαφορετικά

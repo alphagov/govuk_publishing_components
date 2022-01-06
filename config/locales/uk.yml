@@ -86,14 +86,6 @@ uk:
       what_doing: Що ви робили?
       what_wrong: Що пішло не так?
       'yes': Так
-    government_navigation:
-      consultations: Консультації
-      departments: Відділи
-      get-involved: Взяти участь
-      how-government-works: Як працює уряд
-      news_and_communications: Новини та комунікації
-      statistics: Статистика
-      worldwide: Світова
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
       licence_html: Весь вміст доступний за <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Відкритою державною ліцензією v3.0</a>, якщо не зазначено інше

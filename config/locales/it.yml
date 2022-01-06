@@ -79,14 +79,6 @@ it:
       what_doing: Cosa stavi facendo?
       what_wrong: Cosa è andato storto?
       'yes': Sì
-    government_navigation:
-      consultations: Consultazioni
-      departments: Dipartimenti
-      get-involved: Mettiti in gioco
-      how-government-works: Come funziona il governo
-      news_and_communications: Notizie e comunicazioni
-      statistics: Statistiche
-      worldwide: In tutto il mondo
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
       licence_html: Tutto il contenuto è disponibile sotto la <a class=”govuk-footer__link” href=”https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/” rel=”license”>Open Government Licence v3.0</a>, tranne dove diversamente indicato

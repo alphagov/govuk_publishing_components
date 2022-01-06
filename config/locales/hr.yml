@@ -81,14 +81,6 @@ hr:
       what_doing: Šta ste radili?
       what_wrong: Što je pošlo po zlu?
       'yes': Da
-    government_navigation:
-      consultations: Konzultacije
-      departments: Odjeli
-      get-involved: Uključi se
-      how-government-works: Kako vlada funkcionira
-      news_and_communications: Vijesti i komunikacije
-      statistics: Statistika
-      worldwide: U cijelom svijetu
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
       licence_html: Sav sadržaj dostupan je pod <a class="govuk-footer__link"href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"rel="license">Otvorena Državna licenca v3.0</a>, osim ako nije drugačije navedeno
