@@ -14,7 +14,6 @@
   ]
 
   var CONFIG = {
-    '/brexit': percentages,
     '/government/publications/the-essential-trustee-what-you-need-to-know-cc3/the-essential-trustee-what-you-need-to-know-what-you-need-to-do': [
       ['Heading', '1. About this guidance'],
       ['Heading', '2. Trustees’ duties at a glance'],
@@ -91,7 +90,6 @@
     '/wood-packaging-import-export': [
       ['Heading', 'Export solid wood packaging']
     ],
-    '/coronavirus': percentages,
     '/coronavirus/education-and-childcare': percentages,
     '/coronavirus/worker-support': percentages,
     '/coronavirus/business-support': percentages,
