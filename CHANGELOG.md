@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix a bug in the scroll tracker ([PR #2554](https://github.com/alphagov/govuk_publishing_components/pull/2554))
+
 ## 28.2.0
 
 * Remove almost the last of the miscellaneous jQuery ([PR #2556](https://github.com/alphagov/govuk_publishing_components/pull/2556))
