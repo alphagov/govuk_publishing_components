@@ -11,7 +11,14 @@ describe('The metadata component', function () {
 
   describe('when the "See all updates" link is clicked', function () {
     it('clicks the target if target exists and is not already expanded', function () {
-      var FIXTURE = '<div data-module="metadata"><a href="#toggle-me" class="js-see-all-updates-link"></a></div><div id="toggle-me" data-module="gem-toggle"><a data-controls="target" data-expanded aria-expanded="false"></a><div id="target" class="js-hidden">Target</div></div>'
+      var FIXTURE =
+        '<div data-module="metadata">' +
+          '<a href="#toggle-me" class="js-see-all-updates-link"></a>' +
+        '</div>' +
+        '<div id="toggle-me" data-module="gem-toggle">' +
+          '<a data-controls="target" data-expanded aria-expanded="false"></a>' +
+          '<div id="target" class="js-hidden">Target</div>' +
+        '</div>'
       window.setFixtures(FIXTURE)
       element = document.querySelector('[data-module="metadata"]')
       target = document.querySelector('#toggle-me')
