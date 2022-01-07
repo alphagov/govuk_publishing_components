@@ -1,4 +1,4 @@
-/* global GOVUK, $, ga */
+/* global GOVUK, ga */
 
 (function () {
   'use strict'
@@ -20,7 +20,7 @@
     ga(function (tracker) {
       this.gaClientId = tracker.get('clientId')
 
-      $(window).trigger('gaClientSet')
+      GOVUK.triggerEvent(window, 'gaClientSet')
 
       // Start up ecommerce tracking
       GOVUK.Ecommerce.start()
@@ -49,7 +49,7 @@
     // Add the cookie banner status as a custom dimension
     var cookieBannerShown = !this.getCookie('seen_cookie_message')
     var cookieBannerDimension = { dimension100: cookieBannerShown ? cookieBannerShown.toString() : 'false' }
-    $.extend(options, cookieBannerDimension)
+    options = GOVUK.extendObject(options, cookieBannerDimension)
 
     var trackingOptions = GOVUK.CustomDimensions.getAndExtendDefaultTrackingOptions(options)
     this.analytics.trackPageview(path, title, trackingOptions)
@@ -83,7 +83,7 @@
 
     var cookieOptions = getOptionsFromCookie()
 
-    $.extend(cookieOptions, options)
+    cookieOptions = GOVUK.extendObject(cookieOptions, options)
 
     this.setCookie('analytics_next_page_call', cookieOptions)
   }
