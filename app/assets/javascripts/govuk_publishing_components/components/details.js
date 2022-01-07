@@ -15,8 +15,8 @@ window.GOVUK.Modules.GovukDetails = window.GOVUKFrontend;
 
   GemDetails.prototype.init = function () {
     if (this.customTrackLabel) { // If a custom label has been provided, we can simply call the tracking module
-      var trackDetails = new window.GOVUK.Modules.GemTrackClick()
-      trackDetails.start($(this.$summary))
+      var trackDetails = new window.GOVUK.Modules.GemTrackClick(this.$summary)
+      trackDetails.init()
     } else if (this.detailsClick) { // If no custom label is set, we use the open/close status as the label
       this.detailsClick.addEventListener('click', function (event) {
         this.trackDefault(this.$summary)

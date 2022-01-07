@@ -4,6 +4,13 @@ describe('A click tracker', function () {
   var GOVUK = window.GOVUK
   var element
 
+  function initModule (element, click) {
+    new GOVUK.Modules.GemTrackClick(element).init()
+    if (click) {
+      GOVUK.triggerEvent(element, 'click')
+    }
+  }
+
   beforeEach(function () {
     spyOn(GOVUK.analytics, 'trackEvent')
   })
@@ -20,9 +27,7 @@ describe('A click tracker', function () {
       '<div data-module="gem-track-click" data-track-category="category" data-track-action="action" data-track-label="Foo">Bar</div>'
     )
 
-    new GOVUK.Modules.GemTrackClick().start(element)
-    element[0].click()
-
+    initModule(element[0], true)
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('category', 'action', { label: 'Foo', transport: 'beacon' })
   })
 
@@ -31,9 +36,7 @@ describe('A click tracker', function () {
       '<a data-module="gem-track-click" data-track-category="category" data-track-action="1" data-track-label="/" data-track-dimension="dimension-value" data-track-dimension-index="29" href="#">Home</a>'
     )
 
-    new GOVUK.Modules.GemTrackClick().start(element)
-    element[0].click()
-
+    initModule(element[0], true)
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith(
       'category',
       '1',
@@ -46,9 +49,7 @@ describe('A click tracker', function () {
       '<div data-module="gem-track-click" data-track-category="category" data-track-action="action" data-track-label="Foo" data-track-dimension-index="29">Bar</div>'
     )
 
-    new GOVUK.Modules.GemTrackClick().start(element)
-    element[0].click()
-
+    initModule(element[0], true)
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('category', 'action', { label: 'Foo', transport: 'beacon' })
   })
 
@@ -57,9 +58,7 @@ describe('A click tracker', function () {
       '<div data-module="gem-track-click" data-track-category="category" data-track-action="action" data-track-label="Foo" data-track-dimension="Home">Bar!</div>'
     )
 
-    new GOVUK.Modules.GemTrackClick().start(element)
-    element[0].click()
-
+    initModule(element[0], true)
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('category', 'action', { label: 'Foo', transport: 'beacon' })
   })
 
@@ -68,9 +67,7 @@ describe('A click tracker', function () {
       '<a data-module="gem-track-click" data-track-category="category" data-track-action="1" data-track-label="/" data-track-value="9" href="#">Home</a>'
     )
 
-    new GOVUK.Modules.GemTrackClick().start(element)
-    element[0].click()
-
+    initModule(element[0], true)
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith(
       'category',
       '1',
@@ -83,9 +80,7 @@ describe('A click tracker', function () {
       "<a data-module='gem-track-click' data-track-category='category' data-track-action='1' data-track-label='/' data-track-options='{\"dimension28\": \"foo\", \"dimension29\": \"bar\"}' href='#'>Home</a>"
     )
 
-    new GOVUK.Modules.GemTrackClick().start(element)
-    element[0].click()
-
+    initModule(element[0], true)
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith(
       'category',
       '1',
@@ -112,7 +107,7 @@ describe('A click tracker', function () {
       '</div>'
     )
 
-    new GOVUK.Modules.GemTrackClick().start(element)
+    initModule(element[0], false)
 
     element.find('.nothing')[0].click()
     expect(GOVUK.analytics.trackEvent).not.toHaveBeenCalled()
@@ -137,7 +132,7 @@ describe('A click tracker', function () {
       '</div>'
     )
 
-    new GOVUK.Modules.GemTrackClick().start(element)
+    initModule(element[0], false)
 
     element.find('a.first')[0].click()
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('cat1', 'action1', { label: '#link1', transport: 'beacon' })
@@ -160,7 +155,7 @@ describe('A click tracker', function () {
       '</div>'
     )
 
-    new GOVUK.Modules.GemTrackClick().start(element)
+    initModule(element[0], false)
 
     element.find('.nothing')[0].click()
     expect(GOVUK.analytics.trackEvent).not.toHaveBeenCalled()
@@ -189,7 +184,7 @@ describe('A click tracker', function () {
       '</div>'
     )
 
-    new GOVUK.Modules.GemTrackClick().start(element)
+    initModule(element[0], false)
 
     element.find('.nothing')[0].click()
     expect(GOVUK.analytics.trackEvent).not.toHaveBeenCalled()
@@ -216,7 +211,7 @@ describe('A click tracker', function () {
       '</div>'
     )
 
-    new GOVUK.Modules.GemTrackClick().start(element)
+    initModule(element[0], false)
 
     element.find('.child-of-link')[0].click()
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('parent-category', 'parent-action', { label: 'parent-label', transport: 'beacon' })
