@@ -30,7 +30,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "govuk_schemas", "~> 4.0"
   s.add_development_dependency "govuk_test", "~> 2"
   s.add_development_dependency "i18n-coverage"
-  s.add_development_dependency "jasmine", "~> 3.99.0"
+  s.add_development_dependency "jasmine", "~> 3.10.0"
   s.add_development_dependency "jasmine_selenium_runner", "~> 3.0.0"
   s.add_development_dependency "percy-capybara", "~> 4.0", ">= 4.0.2"
   s.add_development_dependency "pry-byebug"
