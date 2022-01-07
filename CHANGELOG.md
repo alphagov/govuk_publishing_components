@@ -13,6 +13,7 @@
 * Remove jQuery from static analytics ([PR #2526](https://github.com/alphagov/govuk_publishing_components/pull/2526))
 * Remove unused scrolltracker ([PR #2551](https://github.com/alphagov/govuk_publishing_components/pull/2551))
 * Tweak metadata component "See all updates" interaction ([PR #2552](https://github.com/alphagov/govuk_publishing_components/pull/2552))
+* Make metadata component "See all updates" link href less generic ([PR #2558](https://github.com/alphagov/govuk_publishing_components/pull/2558))
 
 ## 28.0.0
 
