@@ -17,6 +17,11 @@
       }
 
       var href = element.getAttribute('href')
+
+      if (!href) {
+        return
+      }
+
       if (href.substring(0, 7) === 'mailto:') {
         trackClickEvent(element, href)
       }

@@ -13,6 +13,7 @@ describe('GOVUK.analyticsPlugins.mailtoLinkTracker', function () {
         '<a href="mailto:name1@email.com"></a>' +
         '<a href="mailto:name2@email.com">The link for a mailto</a>' +
         '<a href="mailto:name3@email.com"><img src="/img" /></a>' +
+        '<a>Link without a href</a>' +
       '</div>'
     )
 
@@ -35,8 +36,12 @@ describe('GOVUK.analyticsPlugins.mailtoLinkTracker', function () {
     var links = document.querySelectorAll('.mailto-links a')
     for (var i = 0; i < links.length; i++) {
       GOVUK.triggerEvent(links[i], 'click')
-      expect(GOVUK.analytics.trackEvent).toHaveBeenCalled()
-      GOVUK.analytics.trackEvent.calls.reset()
+      if (links[i].getAttribute('href')) {
+        expect(GOVUK.analytics.trackEvent).toHaveBeenCalled()
+        GOVUK.analytics.trackEvent.calls.reset()
+      } else {
+        expect(GOVUK.analytics.trackEvent).not.toHaveBeenCalled()
+      }
     }
   })
 
