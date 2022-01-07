@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Remove unused scrolltracker ([PR #2551](https://github.com/alphagov/govuk_publishing_components/pull/2551))
 * Tweak metadata component "See all updates" interaction ([PR #2552](https://github.com/alphagov/govuk_publishing_components/pull/2552))
 
 ## 28.0.0

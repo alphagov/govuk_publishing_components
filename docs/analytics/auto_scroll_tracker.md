@@ -2,10 +2,6 @@
 
 The analytics code includes the ability to add scroll tracking to specified pages for users who have consented to cookies.
 
-There are currently two scroll tracking scripts in the gem. You should use AutoScrollTracker. The previous one, ScrollTracker, has been deprecated by the introduction of AutoScrollTracker and should now be considered legacy.
-
-AutoScrollTracker has been written to address problems with ScrollTracker, but the scroll tracking handled by ScrollTracker has yet to be transferred to AutoScrollTracker.
-
 ## AutoScrollTracker
 
 AutoScrollTracker is a GOVUK.Module and can be initialised by adding the relevant code to a template. Since scroll tracking is only required once on a page, it should be initialised using a meta tag in the HEAD element, like this.
@@ -63,12 +59,3 @@ Operation:
 - Headings are tracked only when the whole of the heading is visible in the viewport.
 - Headings are only tracked if they are inside the 'main' element, in order to avoid tracking headings in e.g. the cookie banner, the footer (this has been written to be extendable in future if other elements/classes are required)
 - Hidden headings are not tracked, unless they become visible (e.g. if inside an accordion that is opened).
-
-## ScrollTracker (deprecated, legacy approach)
-
-ScrollTracker should not be used for new scroll tracking requirements as it has several limitations.
-
-- To track a URL, it must be added to the ScrollTracker script itself (in the config section). This adds page weight for every page on GOV.UK.
-- To track headings, the text of headings must be added to the config as well. This adds further page weight and is inherently brittle - no mechanism exists for maintaining this config if the text of headings is changed.
-
-ScrollTracker is still being used for some scroll tracking, although eventually all scroll tracking should be migrated to AutoScrollTracker if possible.
