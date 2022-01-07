@@ -164,13 +164,13 @@ GEM
       rails-i18n
       rainbow (>= 2.2.2, < 4.0)
       terminal-table (>= 1.5.1)
-    jasmine (3.10.0)
-      jasmine-core (~> 3.10.0)
+    jasmine (3.99.0)
+      jasmine-core (= 3.99.0)
       phantomjs
       rack (>= 2.1.4)
       rake
       webrick
-    jasmine-core (3.10.0)
+    jasmine-core (3.99.0)
     jasmine_selenium_runner (3.0.0)
       jasmine (~> 3.0)
       selenium-webdriver (~> 3.8)
@@ -386,7 +386,7 @@ DEPENDENCIES
   govuk_schemas (~> 4.0)
   govuk_test (~> 2)
   i18n-coverage
-  jasmine (~> 3.10.0)
+  jasmine (~> 3.99.0)
   jasmine_selenium_runner (~> 3.0.0)
   percy-capybara (~> 4.0, >= 4.0.2)
   pry-byebug
