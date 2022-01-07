@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Bump `govuk-frontend` from 3.14.0 to 4.0.0 ([PR #2355](https://github.com/alphagov/govuk_publishing_components/pull/2533))
 * Change JavaScript modules from start to init ([PR #2605](https://github.com/alphagov/govuk_publishing_components/pull/2605))
 * Share icons line-height ([PR #2602](https://github.com/alphagov/govuk_publishing_components/pull/2602))
 * Update conditional reveal ([PR #2602](https://github.com/alphagov/govuk_publishing_components/pull/2612))
