@@ -9,7 +9,6 @@ describe('An auto event tracker', function () {
     element
 
   beforeEach(function () {
-    tracker = new GOVUK.Modules.AutoTrackEvent()
     spyOn(GOVUK.analytics, 'trackEvent')
   })
 
@@ -28,7 +27,8 @@ describe('An auto event tracker', function () {
       '</div>'
     )
 
-    tracker.start(element)
+    tracker = new GOVUK.Modules.AutoTrackEvent(element[0])
+    tracker.init()
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith(
       'category', 'action', { nonInteraction: 1 })
   })
@@ -44,7 +44,8 @@ describe('An auto event tracker', function () {
       '</div>'
     )
 
-    tracker.start(element)
+    tracker = new GOVUK.Modules.AutoTrackEvent(element[0])
+    tracker.init()
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith(
       'category', 'action', { label: 'label', value: 10, nonInteraction: 1 })
   })

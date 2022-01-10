@@ -1,30 +1,30 @@
-;(function (global) {
-  'use strict'
+window.GOVUK = window.GOVUK || {}
+window.GOVUK.Modules = window.GOVUK.Modules || {};
 
-  var GOVUK = global.GOVUK || {}
-  GOVUK.Modules = GOVUK.Modules || {}
+(function (Modules) {
+  function AutoTrackEvent ($module) {
+    this.$module = $module
+  }
 
-  GOVUK.Modules.AutoTrackEvent = function () {
-    this.start = function (element) {
-      var options = { nonInteraction: 1 } // automatic events shouldn't affect bounce rate
-      var category = element.data('track-category')
-      var action = element.data('track-action')
-      var label = element.data('track-label')
-      var value = element.data('track-value')
+  AutoTrackEvent.prototype.init = function () {
+    var options = { nonInteraction: 1 } // automatic events shouldn't affect bounce rate
+    var category = this.$module.getAttribute('data-track-category')
+    var action = this.$module.getAttribute('data-track-action')
+    var label = this.$module.getAttribute('data-track-label')
+    var value = parseInt(this.$module.getAttribute('data-track-value'))
 
-      if (typeof label === 'string') {
-        options.label = label
-      }
+    if (typeof label === 'string') {
+      options.label = label
+    }
 
-      if (value || value === 0) {
-        options.value = value
-      }
+    if (value || value === 0) {
+      options.value = value
+    }
 
-      if (GOVUK.analytics && GOVUK.analytics.trackEvent) {
-        GOVUK.analytics.trackEvent(category, action, options)
-      }
+    if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
+      window.GOVUK.analytics.trackEvent(category, action, options)
     }
   }
 
-  global.GOVUK = GOVUK
-})(window)
+  Modules.AutoTrackEvent = AutoTrackEvent
+})(window.GOVUK.Modules)
