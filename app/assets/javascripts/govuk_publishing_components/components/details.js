@@ -1,4 +1,3 @@
-/* eslint-env jquery */
 // = require govuk/components/details/details.js
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {}
