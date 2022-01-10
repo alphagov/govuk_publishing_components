@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 28.1.0
 
 * Remove jQuery from mailto-link-tracker ([PR #2542](https://github.com/alphagov/govuk_publishing_components/pull/2542))
 * Remove jQuery from static analytics ([PR #2526](https://github.com/alphagov/govuk_publishing_components/pull/2526))
