@@ -34,7 +34,7 @@ describe "Input", type: :view do
   end
 
   # https://design-system.service.gov.uk/components/text-input/#numbers
-  it "renders inputs with type number as per Design System guidance" do
+  it "renders inputs with type number as per GOV.UK Design System guidance" do
     render_component(
       name: "account-number",
       type: "number",

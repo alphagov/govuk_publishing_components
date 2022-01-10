@@ -145,4 +145,10 @@
     margin-bottom: $govuk-gutter;
     border-top: 1px solid $govuk-border-colour;
   }
+
+  code {
+    padding: 0 5px;
+    color: govuk-colour("red");
+    background-color: govuk-colour("light-grey");
+  }
 }

@@ -3,33 +3,34 @@ description: The accordion component lets users show and hide sections of relate
 govuk_frontend_components:
   - accordion
 body: |
-  This component is based on the [design system accordion component](https://design-system.service.gov.uk/components/accordion/)
-  and is currently experimental because more research is needed to validate it.  If using this component, [please feed back any research findings to the Design System team](https://design-system.service.gov.uk/components/accordion/#next-steps).
+  This component is based on the [GOV.UK Design System accordion component](https://design-system.service.gov.uk/components/accordion/)
+  and is currently experimental because more research is needed to validate it.  If using this component, [please feed back any research findings to the Design System team](https://design-system.service.gov.uk/get-in-touch/).
 
 accessibility_criteria: |
   The accordion must:
 
     * accept focus
     * be usable with a keyboard
-    * the controls must change in appearance when keyboard focus moves to it
-    * the controls must indicate when the mouse is hovered over it
+    * allow the controls to change in appearance when keyboard focus moves to it
+    * allow the controls to indicate when users hover their cursor over it
     * be usable with touch
     * be usable with voice commands
     * have visible text
     * indicate to users that each section can be expanded and collapsed
-    * inform the user when a step has been expanded or collapsed
+    * tell the user when a step has been expanded or collapsed
     * be readable when only the [text of the page is zoomed in](https://support.mozilla.org/en-US/kb/font-size-and-zoom-increase-size-of-web-pages#w_how-to-only-change-the-size-of-the-text)
-    * zoom in up to 300% without the text spilling off the screen
-    * pass colour contrast
-    * the accordion header button element has aria-controls set to the ID of the element containing the accordion panel content.
-    * section content must have aria-label / aria-labelledby with a value that refers to the button that controls display of the content.
+    * zoom in up to 300% [without the text spilling off the screen](https://www.w3.org/WAI/WCAG21/Understanding/reflow.html)
+    * pass [colour contrast](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html)
+    * be readable should a [user change colours](https://support.mozilla.org/en-US/kb/change-fonts-and-colors-websites-use)
+    * associate panel content with the control that opens it using the `aria-controls` attribute
+    * have `aria-label` / `aria-labelledby` on section content with a value that refers to the button that controls display of the content
 
-  Section headings must use a button element:
+  Section headings must use a button element so that users:
 
-    * so that sections can be toggled with the space and enter keys
-    * so that sections can't be opened in a new tab or window
+    * can toggle sections with the space and enter keys
+    * cannot open sections in a new tab or window
 
-  When JavaScript is unavailable the component must:
+  When CSS and / or JavaScript is unavailable, the component must:
 
   * be fully expanded
   * not be marked as expandable
@@ -57,9 +58,9 @@ examples:
             html: <p class="govuk-body">This is the content for How people read.</p>
   with_supplied_identification:
     description: |
-      An `id` is optional as it's automatically generated, but it can be supplied if a specific `id` is required.
+      An `id` for an individual accordion is optional as it's automatically generated, but it can be supplied if a specific `id` is required.
 
-      The `id` must be **unique** across the domain of your service - this is because as the open / closed state of individual instances of the accordion persists across page loads using `localStorage`.
+      The `id` must be unique across the domain of your service. This is because the open or closed state of individual instances of the accordion uses `localStorage` to persist across page loads.
 
       Used as an `id` in the HTML for the accordion as a whole, and also as a prefix for the `id`s of the section contents and the buttons that open them, so that those `id`s can be the target of `aria-labelledby` and `aria-control` attributes.
     data:
@@ -182,11 +183,11 @@ examples:
               </ul>'
   with_data_attributes:
     description: |
-      Adds custom data attributes to the accordion to each section. Accepts an hash, so multiple attributes can be added.
+      Adds custom data attributes to each section of the accordion. Accepts a hash, so multiple attributes can be added.
 
       The `data_attributes` hash is for the outermost element in the accordion.
 
-      Each item can also have a `data_attributes` hash. This is placed on the `button` that triggers the opening and closing - useful for differentiating between each section of the accordion.
+      Each item can also have a `data_attributes` hash. These `data_attributes` are placed on the `button` that triggers the opening and closing - useful for differentiating between each section of the accordion.
 
     data:
       data_attributes:
@@ -240,7 +241,7 @@ examples:
             html: <p class="govuk-body">This is the content for How people read.</p>
   with_margin_bottom:
     description: |
-      The component accepts a number for margin bottom from 0 to 9 (0px to 60px) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having a margin bottom of 30px.
+      The component accepts a number for margin bottom from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having a margin bottom of `30px`.
     data:
       margin_bottom: 0
       items:
@@ -254,7 +255,7 @@ examples:
             html: <p class="govuk-body">This is the content for Writing well for specialists.</p>
   with_section_open:
     description: |
-      Adding `expanded: true` to the item will mean the section will default to being open, rather than closed. Once a user has opened or closed a section, the state of each section will be remembered - this can override a section's default.
+      Adding `expanded: true` to the item will mean the section defaults to being open, rather than closed. Once a user opens or closes a section, the state of each section is remembered.
     data:
       items:
         - heading:
@@ -276,13 +277,18 @@ examples:
             html: <p class="govuk-body">This is the content for How people read.</p>
   with_the_anchor_link_navigation:
     description: |
-      Some apps require custom ids per accordion section heading for linking between those specific sections, sometimes across multiple pages. An example of this is on manuals pages where multiple manuals will each include large sets of accordions and will reference between specific sections for ease of access to that content. [Live example](https://www.gov.uk/guidance/how-to-publish-on-gov-uk/creating-and-updating-pages#associations).
+      Some apps require custom `id`s per accordion section heading. Custom `id`s allow you to link section headings, sometimes across multiple pages. 
+      
+      For example on [guidance pages for Content Designers, referred to as "manuals",](https://www.gov.uk/guidance/how-to-publish-on-gov-uk/creating-and-updating-pages#associations) each manual includes multiple sets of accordions and will reference between specific sections to easily access content.
 
-      This feature automatically opens accordions when an anchor link is clicked within another accordion that links to either the id of an accordion section heading or an id within the content of an accordion. This will also automatically navigate to and open accordions on page load using the same rules.
+      Using the same rules, custom `id`s automatically open accordions when users click within another accordion that links to either 
 
-      This feature won't be used if the `anchor_navigation` flag isn't passed as true to mitigate performance risk from event listeners on a large number of links.
+      * the `id` of an accordion section heading 
+      * an `id` within the content of an accordion (this will also automatically navigate to and open accordions on page load)
 
-      Unlike with the accordion-wide custom id attribute, any ids passed to accordion headings as part of this feature aren't stored in `localStorage` so don't need to be unique across your domain, but **should still be unique in the context of the page**.
+      This feature will only be used if the `anchor_navigation` flag is passed as `true`. This mitigates performance risk from event listeners on a large number of links.
+
+      Unlike with the accordion-wide custom `id` attribute, any `id`s passed to accordion headings as part of this are not stored in `localStorage`. `id`s do not need to be unique across your domain, but should still be unique in the context of the page.
     data:
       anchor_navigation: true
       items:
@@ -305,7 +311,7 @@ examples:
             html: <p class="govuk-body">This is the content for How people read.</p>
   condensed_layout:
     description: |
-      This is for when a smaller accordion is required. Since smaller screens trigger a single column layout, this modifier only makes the accordion smaller when viewed on large screens.
+      This layout is for when a smaller accordion is required. Since smaller screens trigger a single column layout, this modifier only makes the accordion smaller when viewed on large screens.
     data:
       condensed: true
       items:
