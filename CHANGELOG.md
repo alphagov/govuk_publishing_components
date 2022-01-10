@@ -13,6 +13,7 @@
 * Remove jQuery from static analytics ([PR #2526](https://github.com/alphagov/govuk_publishing_components/pull/2526))
 * Remove unused scrolltracker ([PR #2551](https://github.com/alphagov/govuk_publishing_components/pull/2551))
 * Tweak metadata component "See all updates" interaction ([PR #2552](https://github.com/alphagov/govuk_publishing_components/pull/2552))
+* Change accordion language ([PR #2338](https://github.com/alphagov/govuk_publishing_components/pull/2338))
 
 ## 28.0.0
 
@@ -192,7 +193,6 @@
 * Pass cookie consent to Digital Identity via query parameter ([PR #2344](https://github.com/alphagov/govuk_publishing_components/pull/2344))
 * Add explicit-cross-domain-links to account manage & security links ([PR #2347](https://github.com/alphagov/govuk_publishing_components/pull/2347))
 * update primaryLinks js module ([#2348](https://github.com/alphagov/govuk_publishing_components/pull/2348))
-* Change accordion language ([PR #2338](https://github.com/alphagov/govuk_publishing_components/pull/2338))
 
 ## 27.5.0
 
