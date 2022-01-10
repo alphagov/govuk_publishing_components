@@ -3,7 +3,6 @@ description: A link with a print icon to help users print the current page
 body: |
   This component renders two different outputs depending on whether a `href` is specified. By default, when no `href` is given, the component renders as a button and triggers a print action via JavaScript. In this case the component is hidden in environments where JavaScript is disabled and can be used as a progressive enhancement. When a `href` is specified the component renders as an anchor tag and navigates to that `href` without JavaScript, suitable for applications which have paths that trigger a print event on load.
 accessibility_criteria: |
-  - The print icon must be presentational and ignored by screen readers.
 shared_accessibility_criteria:
   - link
 examples:
