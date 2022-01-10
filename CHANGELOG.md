@@ -11,6 +11,7 @@
 
 * Make metadata component "See all updates" link href less generic ([PR #2562](https://github.com/alphagov/govuk_publishing_components/pull/2562))
 * Update feedback component to add "display none" to "maybe" (spam prevention) button ([PR #2568](https://github.com/alphagov/govuk_publishing_components/pull/2568))
+* Apply margin bottom helper to big number component ([PR #2566](https://github.com/alphagov/govuk_publishing_components/pull/2566))
 
 ## 28.1.0
 

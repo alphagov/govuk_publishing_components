@@ -81,6 +81,15 @@ describe "Big number", type: :view do
     assert_select ".gem-c-big-number__value[data-my-cool-attribute='cool']"
   end
 
+  it "sets a custom margin bottom if the margin_bottom attribute is present" do
+    render_component({
+      number: 500,
+      margin_bottom: 5,
+    })
+
+    assert_select '.gem-c-big-number.govuk-\!-margin-bottom-5'
+  end
+
   # The space mentioned in the below test is to handle screen readers printing dictations without a space between the number and the label
   # We don't want this to get removed accidentally, hence the following test
   it "ensures that a visually hidden space is included for screen readers when a label is present" do
