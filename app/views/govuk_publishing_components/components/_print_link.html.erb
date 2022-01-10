@@ -4,7 +4,7 @@
   data_attributes ||= {}
   require_js ||= href.nil?
   margin_top ||= 3
-  margin_bottom ||= 3
+  margin_bottom ||= 0
 
   data_attributes[:module] = require_js ? "print-link" : "button"
 
@@ -18,9 +18,9 @@
   wrapper_classes << (shared_helper.get_margin_top)
   wrapper_classes << (shared_helper.get_margin_bottom)
 
-  classes = %w[govuk-link]
-  classes << "govuk-body-s gem-c-print-link__button" if href.nil?
-  classes << "gem-c-print-link__link govuk-link--no-visited-state" if href.present?
+  classes = %w[]
+  classes << "govuk-button govuk-button--secondary" if href.nil?
+  classes << "govuk-link govuk-link--no-visited-state" if href.present?
 %>
 
 <%= tag.div class: wrapper_classes do %>
@@ -36,7 +36,6 @@
       class: classes,
       rel: "alternate",
       data: data_attributes,
-      role: "button"
     ) %>
   <% end %>
 <% end %>
