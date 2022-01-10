@@ -1,5 +1,3 @@
-/* global $ */
-
 ;(function (global) {
   'use strict'
 
@@ -15,15 +13,21 @@
   var STATE_PATTERN = /state=.[^&]+/g
 
   function shouldStripDates () {
-    return ($('meta[name="govuk:static-analytics:strip-dates"]').length > 0)
+    var metas = document.querySelectorAll('meta[name="govuk:static-analytics:strip-dates"]')
+    return metas.length > 0
   }
 
   function shouldStripPostcodes () {
-    return ($('meta[name="govuk:static-analytics:strip-postcodes"]').length > 0)
+    var metas = document.querySelectorAll('meta[name="govuk:static-analytics:strip-postcodes"]')
+    return metas.length > 0
   }
 
   function queryStringParametersToStrip () {
-    var value = $('meta[name="govuk:static-analytics:strip-query-string-parameters"]').attr('content')
+    var meta = document.querySelector('meta[name="govuk:static-analytics:strip-query-string-parameters"]')
+    var value = false
+    if (meta) {
+      value = meta.getAttribute('content')
+    }
     var parameters = []
 
     if (value) {
