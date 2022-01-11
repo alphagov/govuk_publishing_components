@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Make metadata component "See all updates" link href less generic ([PR #2562](https://github.com/alphagov/govuk_publishing_components/pull/2562))
+
 ## 28.1.0
 
 * Remove jQuery from mailto-link-tracker ([PR #2542](https://github.com/alphagov/govuk_publishing_components/pull/2542))
