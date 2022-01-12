@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 28.2.0
 
 * Make metadata component "See all updates" link href less generic ([PR #2562](https://github.com/alphagov/govuk_publishing_components/pull/2562))
 * Update feedback component to add "display none" to "maybe" (spam prevention) button ([PR #2568](https://github.com/alphagov/govuk_publishing_components/pull/2568))
