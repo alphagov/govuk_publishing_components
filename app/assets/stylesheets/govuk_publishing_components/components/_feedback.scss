@@ -141,9 +141,9 @@
   }
 }
 
-.gem-c-feedback__option-list-item:first-child {
+.gem-c-feedback__option-list-item:last-child {
   @include govuk-media-query($from: mobile) {
-    margin-right: govuk-spacing(4);
+    margin-left: govuk-spacing(4);
   }
 }
 
