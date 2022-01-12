@@ -1,18 +1,24 @@
 <%
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+
   number ||= nil
   label ||= nil
   href ||= nil
   data_attributes ||= nil
   aria ||= nil
-  classes = ["gem-c-big-number__value"]
+  classes = ["gem-c-big-number"]
+  classes << shared_helper.get_margin_bottom
+
+  value_classes = ["gem-c-big-number__value"]
   
   if label.nil? && href
-    classes << "gem-c-big-number__value--decorated"
+    value_classes << "gem-c-big-number__value--decorated"
   end
+
 %>
 <% if number %>
   <% big_number_value = capture do %>
-    <%= tag.span class: classes, data: href ? nil : data_attributes do %>
+    <%= tag.span class: value_classes, data: href ? nil : data_attributes do %>
       <%= number %>
     <% end %>
 
@@ -25,7 +31,7 @@
     <% end %>
   <% end %>
   
-  <%= tag.div class: "gem-c-big-number", aria: aria do %>
+  <%= tag.div class: classes, aria: aria do %>
     <% unless href.nil? %>
       <%= link_to big_number_value, href, class: "govuk-link gem-c-big-number__link", data: data_attributes %>
     <% else %>
