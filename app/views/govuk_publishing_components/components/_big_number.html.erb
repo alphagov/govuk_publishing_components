@@ -1,7 +1,8 @@
 <%
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+  big_number_helper = GovukPublishingComponents::Presenters::BigNumberHelper.new(local_assigns)
 
-  number ||= nil
+  number ||= false
   label ||= nil
   href ||= nil
   data_attributes ||= nil
@@ -9,17 +10,20 @@
   classes = ["gem-c-big-number"]
   classes << shared_helper.get_margin_bottom
 
-  value_classes = ["gem-c-big-number__value"]
-  
-  if label.nil? && href
-    value_classes << "gem-c-big-number__value--decorated"
-  end
-
+  value_classes = big_number_helper.value_classes
 %>
 <% if number %>
   <% big_number_value = capture do %>
     <%= tag.span class: value_classes, data: href ? nil : data_attributes do %>
-      <%= number %>
+      <%
+        # The below check is to account for small symbols awkwardly sitting above the baseline in our typeface and adjust them to sit at the baseline for the purpose of visual harmony
+        # Currently the only small symbol used with big numbers are pluses so they are specifically applied in the below code
+      %>
+      <% if big_number_helper.number_has_plus_suffix? %>
+        <%= number[0...-1] %><%= tag.span "+", class: "gem-c-big-number__suffix" %>
+      <% else %>
+        <%= number %>
+      <% end %>
     <% end %>
 
     <% unless label.nil? %>
