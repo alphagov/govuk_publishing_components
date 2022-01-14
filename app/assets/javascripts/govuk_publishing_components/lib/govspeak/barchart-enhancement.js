@@ -2,7 +2,7 @@
 
 window.GOVUK = window.GOVUK || {};
 
-(function (GOVUK, $) {
+(function (GOVUK) {
   'use strict'
 
   var BarchartEnhancement = function ($element) {
@@ -30,4 +30,4 @@ window.GOVUK = window.GOVUK || {};
   }
 
   GOVUK.GovspeakBarchartEnhancement = BarchartEnhancement
-}(window.GOVUK, window.jQuery))
+}(window.GOVUK))

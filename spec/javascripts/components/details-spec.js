@@ -11,7 +11,7 @@ describe('Details component', function () {
 
   beforeEach(function () {
     spyOn(GOVUK.analytics, 'trackEvent')
-    spyOn(GOVUK.Modules, 'GemTrackClick').and.callFake(function () { this.start = function () {} })
+    spyOn(GOVUK.Modules, 'GemTrackClick').and.callFake(function () { this.init = function () {} })
 
     FIXTURE =
       '<details class="gem-c-details govuk-details" data-module="gem-details">' +

@@ -4,10 +4,11 @@ window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
-  function GemTrackClick () { }
+  function GemTrackClick ($module) {
+    this.$module = $module
+  }
 
-  GemTrackClick.prototype.start = function ($module) {
-    this.$module = $module[0]
+  GemTrackClick.prototype.init = function () {
     this.$module.handleClick = this.handleClick.bind(this)
     var trackLinksOnly = this.$module.hasAttribute('data-track-links-only')
     var limitToElementClass = this.$module.getAttribute('data-limit-to-element-class')
