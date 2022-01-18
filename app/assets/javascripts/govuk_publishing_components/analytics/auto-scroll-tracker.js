@@ -199,7 +199,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
     for (var i = 0; i < this.config.percentages.length; i++) {
       var percent = this.config.percentages[i]
-      var pos = (pageHeight / 100) * percent
+      // subtract 1 pixel to solve a bug where 100% can't be reached in some cases
+      var pos = ((pageHeight / 100) * percent) - 1
       var alreadySeen = false
       if (trackedNodes.length) {
         alreadySeen = trackedNodes[i].alreadySeen
