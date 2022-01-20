@@ -550,7 +550,7 @@ $pseudo-underline-height: 3px;
     box-shadow: none;
 
     .gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner {
-      border-color: govuk-colour("white");
+      border-color: govuk-colour("mid-grey");
       color: govuk-colour("white");
 
       @include govuk-media-query($from: 360px) {
