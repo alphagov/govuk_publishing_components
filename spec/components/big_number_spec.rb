@@ -100,4 +100,13 @@ describe "Big number", type: :view do
 
     assert_select ".govuk-visually-hidden", count: 1
   end
+
+  it "converts a plus into a sub element if a number attribute is passed that ends with a plus symbol" do
+    render_component({
+      number: "400+",
+      label: "test runs",
+    })
+
+    assert_select ".gem-c-big-number__suffix", count: 1
+  end
 end

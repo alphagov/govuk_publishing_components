@@ -1,12 +1,11 @@
 .gem-c-big-number {
   margin-bottom: govuk-spacing(3);
-  @include govuk-typography-common;
   @include govuk-text-colour;
 }
 
 .gem-c-big-number__value {
+  @include govuk-font($size: false, $weight: bold);
   font-size: 80px;
-  @include govuk-typography-weight-bold;
   line-height: 1;
 
   @if $govuk-typography-use-rem {
@@ -54,4 +53,8 @@
       text-decoration: none;
     }
   }
+}
+
+.gem-c-big-number__suffix {
+  vertical-align: middle;
 }
