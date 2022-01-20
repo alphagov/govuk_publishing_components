@@ -23,6 +23,12 @@
       <h3 class="gem-c-feedback__form-heading"><%= t("components.feedback.help_us_improve_govuk") %></h3>
       <p id="feedback_explanation" class="gem-c-feedback__form-paragraph"><%= t("components.feedback.dont_include_personal_info") %></p>
 
+      <% # Added for spam bots only %>
+      <div class="govuk-visually-hidden" aria-hidden="true">
+        <label for="feedback_maybe">This field is for robots only. Please leave blank</label>
+        <input id="feedback_maybe" type="text" pattern=".{0}" tabindex="-1" autocomplete="off" >
+      </div>
+
       <%= render "govuk_publishing_components/components/textarea", {
         label: {
           text: t("components.feedback.what_doing")
@@ -46,3 +52,23 @@
     </div>
   </div>
 </form>
+
+<%
+  # I've added the following script inline in case of a scenario where a bot is able to parse the page, 
+  # without downloading any of the external scripts. 
+  # This seems to be a more reliable way to make sure the script is executed.
+%>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var input = document.querySelector("#feedback_maybe"),
+      form = document.querySelector("#something-is-wrong")
+
+    form.addEventListener("submit", spamCapture);
+
+    function spamCapture(e) {
+      if (input.value.length !== 0) return;
+      e.preventDefault();
+    }
+  });
+</script>
