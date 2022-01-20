@@ -12,6 +12,8 @@
 * Fix a bug in the scroll tracker ([PR #2554](https://github.com/alphagov/govuk_publishing_components/pull/2554))
 * Add check to big number to convert plus suffixes to subscript elements ([PR #2570](https://github.com/alphagov/govuk_publishing_components/pull/2570))
 * Update feedback component to resolve spam problem ([PR #2574](https://github.com/alphagov/govuk_publishing_components/pull/2574))
+=======
+* Add pipes between buttons on super nav header ([PR #2575](https://github.com/alphagov/govuk_publishing_components/pull/2575))
 
 ## 28.2.0
 
