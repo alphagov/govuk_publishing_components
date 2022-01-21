@@ -108,24 +108,28 @@
                   track_dimension_index: "29",
                 }
               } %>
-              <%= content_tag(:button, link[:label], {
-                aria: {
-                  controls: "super-navigation-menu__section-#{unique_id}",
-                  expanded: false,
-                  label: show_menu_text,
-                },
-                class: "gem-c-layout-super-navigation-header__navigation-second-toggle-button",
-                data: {
-                  text_for_hide: hide_menu_text,
-                  text_for_show: show_menu_text,
-                  toggle_desktop_group: "top",
-                  toggle_mobile_group: "second",
-                  tracking_key: tracking_label,
-                },
-                hidden: true,
-                id: "super-navigation-menu__section-#{unique_id}-toggle",
-                type: "button",
-              }) if has_children %>
+              <% if has_children %>
+                <%= content_tag(:button, {
+                  aria: {
+                    controls: "super-navigation-menu__section-#{unique_id}",
+                    expanded: false,
+                    label: show_menu_text,
+                  },
+                  class: "gem-c-layout-super-navigation-header__navigation-second-toggle-button",
+                  data: {
+                    text_for_hide: hide_menu_text,
+                    text_for_show: show_menu_text,
+                    toggle_desktop_group: "top",
+                    toggle_mobile_group: "second",
+                    tracking_key: tracking_label,
+                  },
+                  hidden: true,
+                  id: "super-navigation-menu__section-#{unique_id}-toggle",
+                  type: "button",
+                }) do %>
+                  <%= tag.span link[:label], class: "gem-c-layout-super-navigation-header__navigation-second-toggle-button-inner" %>
+                <% end %>
+              <% end %>
             </div>
             <% if has_children %>
               <div
