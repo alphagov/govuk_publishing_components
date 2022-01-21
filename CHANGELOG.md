@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 28.3.0
 
 * Fix a bug in the scroll tracker ([PR #2554](https://github.com/alphagov/govuk_publishing_components/pull/2554))
 * Add check to big number to convert plus suffixes to subscript elements ([PR #2570](https://github.com/alphagov/govuk_publishing_components/pull/2570))
