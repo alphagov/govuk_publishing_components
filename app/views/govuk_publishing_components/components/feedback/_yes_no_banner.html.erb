@@ -1,17 +1,23 @@
-<%
-  contact_govuk_path = "/contact/govuk"
-%>
-
 <div class="gem-c-feedback__prompt gem-c-feedback__js-show js-prompt" tabindex="-1">
   <div class="gem-c-feedback__prompt-questions js-prompt-questions" hidden>
     <h2 class="gem-c-feedback__prompt-question"><%= t("components.feedback.is_this_page_useful") %></h2>
     
     <ul class="gem-c-feedback__option-list">
-      <li class="gem-c-feedback__option-list-item" style="display: none" hidden="hidden">
-        <!-- Maybe button exists only to try and capture clicks by bots -->
-        <button data-track-category="yesNoFeedbackForm" data-track-action="ffMaybeClick" aria-expanded="false" style="display: none" hidden="hidden" aria-hidden="true">
+      <li class="gem-c-feedback__option-list-item govuk-visually-hidden" style="display: none" hidden>
+        <% # Maybe button exists only to try and capture clicks by bots %>
+        <%= link_to "/contact/govuk", {
+          class: 'gem-c-feedback__prompt-link',
+          data: {
+            'track-category' => 'yesNoFeedbackForm',
+            'track-action' => 'ffMaybeClick'
+          },
+          role: 'button',
+          style: 'display: none',
+          hidden: 'hidden',
+          'aria-hidden': 'true',
+        } do %>
           <%= t("components.feedback.maybe") %>
-        </button>
+        <% end %>
       </li>
       <li class="gem-c-feedback__option-list-item">
         <button class="govuk-button gem-c-feedback__prompt-link js-page-is-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffYesClick">
