@@ -1,5 +1,4 @@
 $transition-campaign-red: #ff003b;
-$covid-colour: $govuk-link-colour;
 
 .gem-c-contextual-sidebar__related-links {
   border-top: 2px solid $govuk-brand-colour;
@@ -29,8 +28,4 @@ $covid-colour: $govuk-link-colour;
 
 .gem-c-contextual-sidebar__cta--brexit {
   border-top: 2px solid $transition-campaign-red;
-}
-
-.gem-c-contextual-sidebar__cta--covid {
-  border-top: 2px solid $covid-colour;
 }
