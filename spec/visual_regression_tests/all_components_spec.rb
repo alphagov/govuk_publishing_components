@@ -1,5 +1,5 @@
 require "rails_helper"
-require "percy"
+require "percy/capybara"
 require "uri"
 
 describe "visual regression test runner Percy", visual_regression: true do
@@ -41,7 +41,7 @@ describe "visual regression test runner Percy", visual_regression: true do
 
       page.find(:css, "body > #wrapper", wait: 10)
 
-      Percy.snapshot(page, name: name)
+      page.percy_snapshot(name)
     end
 
     travel_back

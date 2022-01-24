@@ -30,9 +30,9 @@
     "sortablejs": "^1.13.0"
   },
   "devDependencies": {
+    "@percy/cli": "^1.0.0-beta.73",
     "standardx": "^7.0.0",
     "stylelint": "^13.8.0",
-    "stylelint-config-gds": "^0.1.0",
-    "@percy/agent": "^0.28.6"
+    "stylelint-config-gds": "^0.1.0"
   }
 }

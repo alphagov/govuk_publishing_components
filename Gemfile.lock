@@ -206,7 +206,8 @@ GEM
     parallel (1.21.0)
     parser (3.0.3.2)
       ast (~> 2.4.1)
-    percy-capybara (4.3.3)
+    percy-capybara (5.0.0)
+      capybara (>= 3)
     phantomjs (2.1.1.0)
     plek (4.0.0)
     pry (0.13.1)
@@ -388,7 +389,7 @@ DEPENDENCIES
   i18n-coverage
   jasmine (~> 3.10.0)
   jasmine_selenium_runner (~> 3.0.0)
-  percy-capybara (~> 4.0, >= 4.0.2)
+  percy-capybara (~> 5.0.0)
   pry-byebug
   rails_translation_manager
   rake
