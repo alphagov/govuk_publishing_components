@@ -11,8 +11,6 @@ body: |
 
   It must always be used [with the contextual breadcrumbs component][contextual_breadcrumbs].
 
-  The COVID CTA will displayed on all pages except for a few exemptions documented below.
-
   [preview]: /contextual-navigation
   [step-by-step]: /component-guide/step_by_step_nav
   [related_navigation]: /component-guide/related_navigation
@@ -114,48 +112,3 @@ examples:
             - content_id: "2f8b848d-23c8-4f42-a41a-df1f81c64d0f"
               title: "Exporting"
               phase: "live"
-  with_covid_cta_taxon_exception:
-    description: The COVID Booster call to action element is not displayed on content tagged to taxons in `covid_booster_cta_taxon_exception_list`.
-    data:
-      content_item:
-        title: "A content item"
-        links:
-          taxons:
-            - content_id: ac7b8472-5d09-4679-9551-87847b0ac827
-              title: "Not Covid"
-              phase: "live"
-          ordered_related_items:
-          - title: Find an apprenticeship
-            base_path: /apply-apprenticeship
-          - title: Training and study at work
-            base_path: /training-study-work-your-rights
-          - title: Careers helpline for teenagers
-            base_path: /careers-helpline-for-teenagers
-          document_collections:
-          - title: Recruit an apprentice (formerly apprenticeship vacancies)
-            base_path: /government/collections/apprenticeship-vacancies
-            document_type: document_collection
-          - title: The future of jobs and skills
-            base_path: /government/collections/the-future-of-jobs-and-skills
-            document_type: document_collection
-  with_covid_cta_document_type_exception:
-    description: Illustrates an exception to showing the custom COVID Booster call to action element as defined in `covid_booster_cta_document_type_exceptions`.
-    data:
-      content_item:
-        title: "A content item"
-        document_type: smart_answer
-        links:
-          ordered_related_items:
-          - title: Find an apprenticeship
-            base_path: /apply-apprenticeship
-          - title: Training and study at work
-            base_path: /training-study-work-your-rights
-          - title: Careers helpline for teenagers
-            base_path: /careers-helpline-for-teenagers
-          document_collections:
-          - title: Recruit an apprentice (formerly apprenticeship vacancies)
-            base_path: /government/collections/apprenticeship-vacancies
-            document_type: document_collection
-          - title: The future of jobs and skills
-            base_path: /government/collections/the-future-of-jobs-and-skills
-            document_type: document_collection
