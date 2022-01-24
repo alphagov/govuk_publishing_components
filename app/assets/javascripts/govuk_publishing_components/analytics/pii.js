@@ -12,6 +12,9 @@
   var UNLOCK_TOKEN_PATTERN = /unlock_token=[a-zA-Z0-9-]+/g
   var STATE_PATTERN = /state=.[^&]+/g
 
+  // specific URL parameters to be redacted from smart answer URLs
+  var VACCINATION_STATUS_PATTERN = /vaccination_status=.[^&]+/g
+
   function shouldStripDates () {
     var metas = document.querySelectorAll('meta[name="govuk:static-analytics:strip-dates"]')
     return metas.length > 0
@@ -19,6 +22,11 @@
 
   function shouldStripPostcodes () {
     var metas = document.querySelectorAll('meta[name="govuk:static-analytics:strip-postcodes"]')
+    return metas.length > 0
+  }
+
+  function shouldStripVaccinationStatus () {
+    var metas = document.querySelectorAll('meta[name="govuk:static-analytics:strip-vaccination-status"]')
     return metas.length > 0
   }
 
@@ -43,6 +51,7 @@
   var pii = function () {
     this.stripDatePII = shouldStripDates()
     this.stripPostcodePII = shouldStripPostcodes()
+    this.stripVaccinationStatusPII = shouldStripVaccinationStatus()
     this.queryStringParametersToStrip = queryStringParametersToStrip()
   }
 
@@ -70,6 +79,9 @@
     }
     if (this.stripPostcodePII === true) {
       stripped = stripped.replace(POSTCODE_PATTERN, '[postcode]')
+    }
+    if (this.stripVaccinationStatusPII === true) {
+      stripped = stripped.replace(VACCINATION_STATUS_PATTERN, 'vaccination_status=[vaccination_status]')
     }
     return stripped
   }

@@ -419,6 +419,31 @@ describe "Meta tags", type: :view do
     assert_no_meta_tag("govuk:static-analytics:strip-postcodes")
   end
 
+  it "renders the govuk:static-analytics:strip-vaccination-status tag if the content item is a 'smart-answer'" do
+    render_component(content_item: { document_type: "smart_answer" })
+    assert_meta_tag("govuk:static-analytics:strip-vaccination-status", "true")
+  end
+
+  it "renders the govuk:static-analytics:strip-vaccination-status tag if the content item is a 'finder'" do
+    render_component(content_item: { document_type: "finder" })
+    assert_meta_tag("govuk:static-analytics:strip-vaccination-status", "true")
+  end
+
+  it "doesn't render the govuk:static-analytics:strip-vaccination-status tag if the document_type isn't relevant" do
+    render_component(content_item: { document_type: "guidance" })
+    assert_no_meta_tag("govuk:static-analytics:strip-vaccination-status")
+  end
+
+  it "renders the govuk:static-analytics:strip-vaccination-status tag if explicitly told to even if it wouldn't otherwise" do
+    render_component(content_item: { document_type: "guidance" }, strip_vaccination_status_pii: true)
+    assert_meta_tag("govuk:static-analytics:strip-vaccination-status", "true")
+  end
+
+  it "doesn't render the govuk:static-analytics:strip-vaccination-status tag if explicitly told not to even if it would otherwise" do
+    render_component(content_item: { document_type: "smart_answer" }, strip_vaccination_status_pii: false)
+    assert_no_meta_tag("govuk:static-analytics:strip-vaccination-status")
+  end
+
   def assert_political_status_for(political, current, expected_political_status)
     render_component(content_item: { details: { political: political, government: { current: current, slug: "government" } } })
     assert_meta_tag("govuk:political-status", expected_political_status)

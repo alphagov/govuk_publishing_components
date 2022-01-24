@@ -41,6 +41,7 @@ module GovukPublishingComponents
         meta_tags["govuk:content-has-history"] = "true" if has_content_history?
         meta_tags["govuk:static-analytics:strip-dates"] = "true" if should_strip_dates_pii?(content_item, local_assigns)
         meta_tags["govuk:static-analytics:strip-postcodes"] = "true" if should_strip_postcode_pii?(content_item, local_assigns)
+        meta_tags["govuk:static-analytics:strip-vaccination-status"] = "true" if should_strip_vaccination_status_pii?(content_item, local_assigns)
 
         meta_tags
       end
@@ -186,6 +187,15 @@ module GovukPublishingComponents
 
         formats_that_might_include_postcodes = %w[smart_answer finder]
         formats_that_might_include_postcodes.include?(content_item[:document_type])
+      end
+
+      def should_strip_vaccination_status_pii?(content_item, local_assigns)
+        # allow override if we explicitly want to strip pii (or not) regardless of
+        # document_type
+        return local_assigns[:strip_vaccination_status_pii] if local_assigns.key?(:strip_vaccination_status_pii)
+
+        formats_that_might_include_vaccination_status = %w[smart_answer finder]
+        formats_that_might_include_vaccination_status.include?(content_item[:document_type])
       end
     end
   end

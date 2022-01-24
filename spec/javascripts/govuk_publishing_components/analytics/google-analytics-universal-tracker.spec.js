@@ -18,6 +18,7 @@ describe('GOVUK.GoogleAnalyticsUniversalTracker', function () {
     addGoogleAnalyticsSpy()
     pageWantsDatesStripped()
     pageWantsPostcodesStripped()
+    pageWantsVaccinationStatusStripped()
 
     universal = new GOVUK.GoogleAnalyticsUniversalTracker('id', {
       cookieDomain: 'cookie-domain.com',
@@ -28,6 +29,7 @@ describe('GOVUK.GoogleAnalyticsUniversalTracker', function () {
   afterEach(function () {
     $('head').find('meta[name="govuk:static-analytics:strip-dates"]').remove()
     $('head').find('meta[name="govuk:static-analytics:strip-postcodes"]').remove()
+    $('head').find('meta[name="govuk:static-analytics:strip-vaccination-status"]').remove()
     $('[src="https://www.google-analytics.com/analytics.js"]').remove()
 
     if (GOVUK.analytics.trackEvent.calls) {
@@ -212,11 +214,11 @@ describe('GOVUK.GoogleAnalyticsUniversalTracker', function () {
 
   describe('when tracking all events', function () {
     beforeAll(function () {
-      window.history.replaceState(null, null, '?address=an.email@digital.cabinet-office.gov.uk&postcode=sw11wa&date=2019-01-01')
+      window.history.replaceState(null, null, '?address=an.email@digital.cabinet-office.gov.uk&postcode=sw11wa&date=2019-01-01&vaccination_status=fully-vaccinated')
     })
 
     afterAll(function () {
-      var href = window.location.href.replace('?address=an.email@digital.cabinet-office.gov.uk&postcode=sw11wa&date=2019-01-01', '')
+      var href = window.location.href.replace('?address=an.email@digital.cabinet-office.gov.uk&postcode=sw11wa&date=2019-01-01&vaccination_status=fully-vaccinated', '')
       window.history.replaceState(null, null, href)
     })
 
@@ -224,6 +226,7 @@ describe('GOVUK.GoogleAnalyticsUniversalTracker', function () {
       expect(window.ga.calls.mostRecent().args[2]).toContain('address=[email]')
       expect(window.ga.calls.mostRecent().args[2]).toContain('postcode=[postcode]')
       expect(window.ga.calls.mostRecent().args[2]).toContain('date=[date]')
+      expect(window.ga.calls.mostRecent().args[2]).toContain('vaccination_status=[vaccination_status]')
     })
 
     it('removes any pii from the title', function () {
@@ -248,11 +251,11 @@ describe('GOVUK.GoogleAnalyticsUniversalTracker', function () {
     var callIndex
 
     beforeAll(function () {
-      window.history.replaceState(null, null, '?address=an.email@digital.cabinet-office.gov.uk&postcode=sw11wa&date=2019-01-01')
+      window.history.replaceState(null, null, '?address=an.email@digital.cabinet-office.gov.uk&postcode=sw11wa&date=2019-01-01&vaccination_status=fully-vaccinated')
     })
 
     afterAll(function () {
-      var href = window.location.href.replace('?address=an.email@digital.cabinet-office.gov.uk&postcode=sw11wa&date=2019-01-01', '')
+      var href = window.location.href.replace('?address=an.email@digital.cabinet-office.gov.uk&postcode=sw11wa&date=2019-01-01&vaccination_status=fully-vaccinated', '')
       window.history.replaceState(null, null, href)
     })
 
@@ -284,6 +287,7 @@ describe('GOVUK.GoogleAnalyticsUniversalTracker', function () {
       addGoogleAnalyticsSpy()
       pageWantsDatesStripped()
       pageWantsPostcodesStripped()
+      pageWantsVaccinationStatusStripped()
 
       universal = new GOVUK.GoogleAnalyticsUniversalTracker('id', {
         cookieDomain: 'cookie-domain.com',
@@ -291,7 +295,7 @@ describe('GOVUK.GoogleAnalyticsUniversalTracker', function () {
       })
 
       expect(window.ga.calls.allArgs()).toContain(['set', 'title', 'With [email] [date] and [postcode] in it'])
-      expect(window.ga.calls.argsFor(4)[2]).toContain('?address=[email]&postcode=[postcode]&date=[date]')
+      expect(window.ga.calls.argsFor(4)[2]).toContain('?address=[email]&postcode=[postcode]&date=[date]&vaccination_status=[vaccination_status]')
 
       $('title').html(title)
     })
@@ -349,5 +353,9 @@ describe('GOVUK.GoogleAnalyticsUniversalTracker', function () {
 
   function pageWantsPostcodesStripped () {
     $('head').append('<meta name="govuk:static-analytics:strip-postcodes" value="does not matter" />')
+  }
+
+  function pageWantsVaccinationStatusStripped () {
+    $('head').append('<meta name="govuk:static-analytics:strip-vaccination-status" value="does not matter" />')
   }
 })

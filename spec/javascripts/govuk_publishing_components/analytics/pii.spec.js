@@ -71,6 +71,7 @@ describe('GOVUK.PII', function () {
     beforeEach(function () {
       pageWantsDatesStripped()
       pageWantsPostcodesStripped()
+      pageWantsVaccinationStatusStripped()
       pii = new GOVUK.Pii()
     })
 
@@ -182,9 +183,23 @@ describe('GOVUK.PII', function () {
     })
   })
 
+  describe('when there is a a govuk:static-analytics:strip-vaccination-status meta tag present', function () {
+    beforeEach(function () {
+      pageWantsVaccinationStatusStripped()
+      pii = new GOVUK.Pii()
+    })
+
+    it('observes the meta tag and strips out vaccination_status', function () {
+      expect(pii.stripVaccinationStatusPII).toEqual(true)
+      var string = pii.stripPII('gov.uk/thing?vaccination_status=fully-vaccinated')
+      expect(string).toEqual('gov.uk/thing?vaccination_status=[vaccination_status]')
+    })
+  })
+
   function resetHead () {
     $('head').find('meta[name="govuk:static-analytics:strip-postcodes"]').remove()
     $('head').find('meta[name="govuk:static-analytics:strip-dates"]').remove()
+    $('head').find('meta[name="govuk:static-analytics:strip-vaccination-status"]').remove()
     $('head').find('meta[name="govuk:static-analytics:strip-query-string-parameters"]').remove()
   }
 
@@ -194,6 +209,10 @@ describe('GOVUK.PII', function () {
 
   function pageWantsPostcodesStripped () {
     $('head').append('<meta name="govuk:static-analytics:strip-postcodes" value="does not matter" />')
+  }
+
+  function pageWantsVaccinationStatusStripped () {
+    $('head').append('<meta name="govuk:static-analytics:strip-vaccination-status" value="does not matter" />')
   }
 
   function pageWantsQueryStringParametersStripped (parameters) {
