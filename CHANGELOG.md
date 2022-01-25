@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 28.4.0
 
 - Remove COVID CTA from contextual sidebar component (PR [#2584](https://github.com/alphagov/govuk_publishing_components/pull/2584))
 
