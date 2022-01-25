@@ -25,7 +25,7 @@
   css_classes << "govuk-textarea--error" if has_error
   form_group_css_classes = %w(gem-c-textarea govuk-form-group)
   form_group_css_classes << "govuk-form-group--error" if has_error
-  form_group_css_classes << (shared_helper.get_margin_bottom)
+  form_group_css_classes << shared_helper.get_margin_bottom
 
   aria_described_by ||= nil
   if hint || has_error || describedby

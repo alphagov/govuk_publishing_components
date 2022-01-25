@@ -18,8 +18,8 @@
   data_attributes[:module] = 'gem-track-click'
 
   classes = %w[gem-c-search govuk-!-display-none-print]
-  classes << (shared_helper.get_margin_top)
-  classes << (shared_helper.get_margin_bottom) if local_assigns[:margin_bottom]
+  classes << shared_helper.get_margin_top
+  classes << shared_helper.get_margin_bottom if local_assigns[:margin_bottom]
   classes << "gem-c-search--large" if size == "large"
   classes << "gem-c-search--large-on-mobile" if size == "large-mobile"
   classes << "gem-c-search--no-border" if no_border

@@ -14,7 +14,7 @@
   classes << "govuk-list--spaced" if extra_spacing
   # Setting the  `margin_bottom` to 4 is the same as the default margin - so we
   # can omit the override class. To do this we leave out `4` from the array:
-  classes << (shared_helper.get_margin_bottom) if [0,1,2,3,5,6,7,8,9].include?(local_assigns[:margin_bottom])
+  classes << shared_helper.get_margin_bottom if [0,1,2,3,5,6,7,8,9].include?(local_assigns[:margin_bottom])
 
   # Default list type is unordered list.
   list_tag = "ul"
