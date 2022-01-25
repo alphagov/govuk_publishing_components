@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+- Remove COVID CTA from contextual sidebar component (PR [#2584](https://github.com/alphagov/govuk_publishing_components/pull/2584))
+
 ## 28.3.0
 
 * Fix a bug in the scroll tracker ([PR #2554](https://github.com/alphagov/govuk_publishing_components/pull/2554))
