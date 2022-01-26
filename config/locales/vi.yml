@@ -15,7 +15,6 @@ vi:
       opendocument_html: Tệp này có định dạng <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a>
       order_a_copy: Đặt hàng một bản sao
       page:
-        one: 1 trang
         other: "%{count} trang"
       reference: 'Tham khảo: %{reference}'
       request_format_cta: Yêu cầu một định dạng có thể truy cập.

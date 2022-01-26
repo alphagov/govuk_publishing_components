@@ -15,7 +15,6 @@ zh-hk:
       opendocument_html: 此文檔為 <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a> 格式
       order_a_copy: 索取副本
       page:
-        one: 1 頁
         other: "%{count} 頁"
       reference: 'Ref: %{reference}'
       request_format_cta: 索取可讀取之格式。

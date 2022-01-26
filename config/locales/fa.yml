@@ -15,7 +15,6 @@ fa:
       opendocument_html: این فایل یک قالب <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument (سند باز)</a> است
       order_a_copy: سفارش یک نسخه کپی
       page:
-        one: 1 صفحه
         other: "%{count} صفحه"
       reference: 'مرجع: %{reference}'
       request_format_cta: درخواست یک قالب با قابلیت دسترسی بهتر.

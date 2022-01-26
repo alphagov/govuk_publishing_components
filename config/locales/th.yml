@@ -15,7 +15,6 @@ th:
       opendocument_html: ไฟล์นี้อยู่ในรูปแบบ <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a>
       order_a_copy: สั่งซื้อสำเนา
       page:
-        one: 1 หน้า
         other: "%{count} หน้า"
       reference: 'อ้างอิง: %{reference}'
       request_format_cta: ขอรูปแบบไฟล์ที่สามารถเข้าถึงได้

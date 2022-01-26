@@ -15,7 +15,6 @@ ja:
       opendocument_html: このファイルは、<a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a> 形式です
       order_a_copy: コピーを注文する
       page:
-        one: 1ページ
         other: "％{count}ページ"
       reference: 参照：%{reference}
       request_format_cta: アクセス可能なフォーマットをリクエストしてください。

@@ -15,7 +15,6 @@ id:
       opendocument_html: File ini berformat <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a>
       order_a_copy: Pesan salinan
       page:
-        one: 1 halaman
         other: "%{count} halaman"
       reference: 'Ref: %{reference}'
       request_format_cta: Minta format yang dapat diakses.

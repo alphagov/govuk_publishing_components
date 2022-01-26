@@ -15,7 +15,6 @@ ms:
       opendocument_html: Fail ini terdapat dalam format <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a>
       order_a_copy: Pesan satu salinan
       page:
-        one: 1 halaman
         other: "%{count} halaman"
       reference: 'Ruj: %{reference}'
       request_format_cta: Minta format yang boleh diakses.

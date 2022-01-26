@@ -16,7 +16,6 @@ sr:
       order_a_copy: Zatražite primerak
       page:
         few:
-        many:
         one: 1 stranica
         other: "%{count} str."
       reference: 'Ref: %{reference}'
