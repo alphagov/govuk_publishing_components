@@ -76,6 +76,8 @@ ja:
       what_doing: 何をしましたか？
       what_wrong: どのような不具合ですか？
       'yes': はい
+    intervention:
+      accessible_link_text_suffix:
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
       licence_html: 特に明記されていない限り、すべてのコンテンツは <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>でご利用いただけます。

@@ -76,6 +76,8 @@ ps:
       what_doing: ته څه کوې؟
       what_wrong: څه غلط شول؟
       'yes': هو
+    intervention:
+      accessible_link_text_suffix:
     layout_footer:
       copyright_html: <a class = "govuk-footer__link govuk-footer__copyright-logo" href = "http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use /crown-copyright/"> rown د تاج کاپي حق </a>
       licence_html: ټول مینځپانګه د <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license"> لاندې خلاصې دي د حکومت جواز v3.0 </a> ، پرته لدې چیرې چې بل ډول ویل شوي

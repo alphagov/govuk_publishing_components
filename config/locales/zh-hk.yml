@@ -78,6 +78,8 @@ zh-hk:
       what_doing: 您剛才在做什麼？
       what_wrong: 出現什麼錯誤？
       'yes': 是
+    intervention:
+      accessible_link_text_suffix:
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown 版權所有</a>
       licence_html: 除另有說明者外，所有內容均可在 <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>獲取。

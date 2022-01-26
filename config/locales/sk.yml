@@ -84,6 +84,8 @@ sk:
       what_doing: Čo ste robili?
       what_wrong: Čo sa pokazilo?
       'yes': Áno
+    intervention:
+      accessible_link_text_suffix:
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Korunné autorské práva</a>
       licence_html: Všetok obsah je k dispozícii pod <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">licenciou Open Government Licence v3.0</a>, okrem prípadov, keď je uvedené inak

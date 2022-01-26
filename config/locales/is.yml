@@ -79,6 +79,8 @@ is:
       what_doing: Hvað varstu að gera?
       what_wrong: Hvað fór úrskeiðis?
       'yes': Já
+    intervention:
+      accessible_link_text_suffix:
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© höfunarréttur Krúnunnar</a>
       licence_html: Allt efni er aðgengilegt samkvæmt <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, nema annað sé tekið fram

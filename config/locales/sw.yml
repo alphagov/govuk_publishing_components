@@ -79,6 +79,8 @@ sw:
       what_doing: Ulikuwa unafanya nini?
       what_wrong: Tatizo lipi lililotokea?
       'yes': Ndiyo
+    intervention:
+      accessible_link_text_suffix:
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Hakimiliki ya Crown</a>
       licence_html: Maudhui yote yanapatikana chini ya <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, isipokuwa ibainishwe vinginevyo

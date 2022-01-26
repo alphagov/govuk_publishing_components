@@ -79,6 +79,8 @@ kk:
       what_doing: Сіз не істеп жатыр едіңіз?
       what_wrong: Не дұрыс болмады?
       'yes': Иә
+    intervention:
+      accessible_link_text_suffix:
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown авторлық құқығы</a>
       licence_html: Барлық мазмұн <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Ашық мемлекеттік лицензиясы v3.0</a> (басқаша жазылғанды қоспағанда) сайтында қолжетімді
