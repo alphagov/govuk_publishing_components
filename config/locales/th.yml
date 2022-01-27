@@ -15,7 +15,6 @@ th:
       opendocument_html: ไฟล์นี้อยู่ในรูปแบบ <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a>
       order_a_copy: สั่งซื้อสำเนา
       page:
-        one: 1 หน้า
         other: "%{count} หน้า"
       reference: 'อ้างอิง: %{reference}'
       request_format_cta: ขอรูปแบบไฟล์ที่สามารถเข้าถึงได้
@@ -78,6 +77,8 @@ th:
       what_doing: คุณทำอะไรอยู่ในขณะนั้น
       what_wrong: มีสิ่งใดผิดปกติ
       'yes': ใช่
+    intervention:
+      accessible_link_text_suffix:
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">ลิขสิทธิ์ © Crown</a>
       licence_html: เนื้อหาทั้งหมดอยู่ภายใต้สัญญาอนุญาต <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government License v3.0</a> ยกเว้นจะระบุไว้เป็นอย่างอื่น

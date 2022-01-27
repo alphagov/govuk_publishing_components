@@ -15,7 +15,6 @@ az:
       opendocument_html: Bu fayl <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a> formatındadır
       order_a_copy: Surətini sifariş edin
       page:
-        one: 1 səhifə
         other: "%{count} səhifə"
       reference: 'İst: %{reference}'
       request_format_cta: İstifadə edilə bilən format tələb edin.
@@ -79,6 +78,8 @@ az:
       what_doing: Nə edirdiniz?
       what_wrong: Hansı yanlışlıq oldu?
       'yes': Bəli
+    intervention:
+      accessible_link_text_suffix:
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">Â© Crown copyright</a>
       licence_html: Bütün məzmunlar <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">v3.0 Açıq dövlət lisenziyasına əsasən mövcuddur</a>(başqa cür nəzərdə tutulmuş hallar istisna olmaqla)

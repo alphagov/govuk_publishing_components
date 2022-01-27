@@ -76,6 +76,8 @@ ur:
       what_doing: آپ کیا کر رہے تھے؟
       what_wrong: کیا غلط ہوا؟
       'yes': جی ہاں
+    intervention:
+      accessible_link_text_suffix:
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown کاپی رائٹ</a>
       licence_html: سوائے ان کے جنہیں بصورت دیگر بیان کیا گیا ہے، <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a> کے تحت تمام مواد دستیاب ہے

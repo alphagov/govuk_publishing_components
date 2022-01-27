@@ -83,6 +83,8 @@ bg:
       what_doing: Какво правихте?
       what_wrong: Какво се обърка?
       'yes': Да
+    intervention:
+      accessible_link_text_suffix:
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
       licence_html: Цялото съдържание е налично на <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, освен ако не е посочено друго

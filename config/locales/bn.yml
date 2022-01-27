@@ -80,6 +80,8 @@ bn:
       what_doing: আপনি কী করছিলেন?
       what_wrong: কী ভুল হয়েছিল?
       'yes': হ্যাঁ
+    intervention:
+      accessible_link_text_suffix:
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© ক্রাউন কপিরাইট</a>
       licence_html: শুধুমাত্র অন্যভাবে বর্ণিত থাকা ছাড়া, সকল তথ্য <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">ওপেন গভর্নমেন্ট লাইসেন্স v3.0</a>-এর অধীনে উপলভ্য

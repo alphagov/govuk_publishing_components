@@ -15,7 +15,6 @@ vi:
       opendocument_html: Tệp này có định dạng <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a>
       order_a_copy: Đặt hàng một bản sao
       page:
-        one: 1 trang
         other: "%{count} trang"
       reference: 'Tham khảo: %{reference}'
       request_format_cta: Yêu cầu một định dạng có thể truy cập.
@@ -79,6 +78,8 @@ vi:
       what_doing: Bạn đang làm gì?
       what_wrong: Sự cố gì đã xảy ra?
       'yes': Có
+    intervention:
+      accessible_link_text_suffix:
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Bản quyền Crown</a>
       licence_html: Tất cả nội dung đều có sẵn theo <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Giấy phép Chính phủ Mở pb3.0</a>, trừ khi có quy định khác

@@ -15,7 +15,6 @@ ko:
       opendocument_html:
       order_a_copy:
       page:
-        one:
         other:
       reference:
       request_format_cta:
@@ -75,6 +74,8 @@ ko:
       what_doing:
       what_wrong:
       'yes':
+    intervention:
+      accessible_link_text_suffix:
     layout_footer:
       copyright_html:
       licence_html:

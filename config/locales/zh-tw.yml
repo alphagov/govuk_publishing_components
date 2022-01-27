@@ -15,7 +15,6 @@ zh-tw:
       opendocument_html: 本檔案於 <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>開放文件</a> 格式
       order_a_copy: 預定副本
       page:
-        one: 一頁
         other: "%{count} 頁面"
       reference: 參考：%{reference}
       request_format_cta: 請求可參閱格式。
@@ -78,6 +77,8 @@ zh-tw:
       what_doing: 你做了什麼？
       what_wrong: 哪出錯了？
       'yes': 是的
+    intervention:
+      accessible_link_text_suffix:
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
       licence_html: 所有內容都具 <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">英國政府開放授權v3.0</a>，除非另有說明

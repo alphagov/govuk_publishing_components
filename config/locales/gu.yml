@@ -79,6 +79,8 @@ gu:
       what_doing: તમે શું કરી રહ્યા હતા?
       what_wrong: શું ગરબડ થઈ?
       'yes': હા
+    intervention:
+      accessible_link_text_suffix:
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© ક્રાઉન કૉપીરાઇટ</a>
       licence_html: તમામ સામગ્રી<a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license"> ઓપન ગવર્નમેંટ લાઇસન્સ v3.0</a>હેઠળ ઉપલબ્ધ છે, સિવાય કે અન્યથા જણાવેલ હોય

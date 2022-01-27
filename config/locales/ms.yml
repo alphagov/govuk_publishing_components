@@ -15,7 +15,6 @@ ms:
       opendocument_html: Fail ini terdapat dalam format <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a>
       order_a_copy: Pesan satu salinan
       page:
-        one: 1 halaman
         other: "%{count} halaman"
       reference: 'Ruj: %{reference}'
       request_format_cta: Minta format yang boleh diakses.
@@ -79,6 +78,8 @@ ms:
       what_doing: Apa yang anda buat?
       what_wrong: Apa yang salah?
       'yes': Ya
+    intervention:
+      accessible_link_text_suffix:
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
       licence_html: Semua kandungan tersedia di bawah <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license"> Lesen Terbuka Kerajaan v3.0 </a>, kecuali jika dinyatakan sebaliknya
