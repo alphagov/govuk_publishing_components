@@ -16,7 +16,7 @@
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
   css_classes = %w[govuk-notification-banner gem-c-notice]
-  css_classes << (shared_helper.get_margin_bottom)
+  css_classes << shared_helper.get_margin_bottom
 
   aria_attributes = {label: 'Notice'}
   aria_attributes[:live] = 'polite' if aria_live

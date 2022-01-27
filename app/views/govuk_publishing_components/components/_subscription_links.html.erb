@@ -9,7 +9,7 @@
   local_assigns[:margin_bottom] = 0 if local_assigns[:margin_bottom] > 9
 
   css_classes = %w( gem-c-subscription-links govuk-!-display-none-print )
-  css_classes << (shared_helper.get_margin_bottom) unless local_assigns[:margin_bottom] == 0
+  css_classes << shared_helper.get_margin_bottom unless local_assigns[:margin_bottom] == 0
   css_classes << brand_helper.brand_class
   css_classes << "gem-c-subscription-links--with-feed-box" if sl_helper.feed_link_box_value
 

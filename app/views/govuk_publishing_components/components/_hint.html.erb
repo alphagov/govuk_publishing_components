@@ -3,7 +3,7 @@
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
   css_classes = %w( gem-c-hint govuk-hint )
-  css_classes << (shared_helper.get_margin_bottom)
+  css_classes << shared_helper.get_margin_bottom
 %>
 
 <%= tag.div id: id, class: css_classes do %>

@@ -10,7 +10,7 @@
   classes << heading_helper.classes
   classes << brand_helper.brand_class
   classes << brand_helper.border_color_class
-  classes << (shared_helper.get_margin_bottom) if [*0..9].include?(local_assigns[:margin_bottom])
+  classes << shared_helper.get_margin_bottom if [*0..9].include?(local_assigns[:margin_bottom])
 %>
 <%= content_tag(shared_helper.get_heading_level, text,
   class: classes,
