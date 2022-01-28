@@ -186,6 +186,24 @@ describe "Select", type: :view do
     assert_select ".gem-c-select [data-another-attribute=test1][data-second-item=item1][data-option=option1]"
   end
 
+  it "renders a select box with a hint" do
+    render_component(
+      id: "mydropdown",
+      label: "attributes",
+      hint: "this is a hint",
+      hint_id: "hint_id",
+      options: [
+        {
+          value: 1,
+          text: "One",
+        },
+      ],
+    )
+
+    assert_select ".gem-c-select .govuk-hint", "this is a hint"
+    assert_select ".gem-c-select .govuk-select[aria-describedby='hint_id']"
+  end
+
   it "renders a select box in an error state" do
     render_component(
       id: "mydropdown",
@@ -220,6 +238,25 @@ describe "Select", type: :view do
 
     assert_select ".gem-c-error-message.govuk-error-message", false
     assert_select ".govuk-select.govuk-select--error[aria-describedby=error_id]"
+  end
+
+  it "applies aria-describedby if a hint and an error are present" do
+    render_component(
+      id: "mydropdown",
+      label: "attributes",
+      hint: "this is a hint",
+      hint_id: "hint_id",
+      error_id: "error_id",
+      options: [
+        {
+          value: 1,
+          text: "One",
+        },
+      ],
+    )
+
+    assert_select ".gem-c-select .govuk-hint", "this is a hint"
+    assert_select ".gem-c-select .govuk-select[aria-describedby='error_id hint_id']"
   end
 
   it "renders a select box full width" do

@@ -10,11 +10,22 @@
   heading_size = false unless shared_helper.valid_heading_size?(heading_size)
   error_message ||= nil
   error_id ||= nil
+  hint ||= nil
+  hint_id ||= nil
+
+  describedby = %w[]
 
   if error_message || error_id
     error_id = "error-#{SecureRandom.hex(4)}" unless error_id
-    aria_describedby = { describedby: error_id }
+    describedby << error_id
   end
+
+  if hint
+    hint_id = "hint-#{SecureRandom.hex(4)}" unless hint_id
+    describedby << hint_id
+  end
+
+  aria_describedby = { describedby: describedby } if describedby
 
   css_classes = %w(govuk-form-group gem-c-select)
   css_classes << "govuk-form-group--error" if error_message
@@ -35,6 +46,13 @@
       <%= tag.h1 label_tag(id, label, class: label_classes), class: "gem-c-title__text" %>
     <% else %>
       <%= label_tag(id, label, class: label_classes) %>
+    <% end %>
+
+    <% if hint %>
+      <%= render "govuk_publishing_components/components/hint", {
+        id: hint_id,
+        text: hint
+      } %>
     <% end %>
 
     <% if error_message %>
