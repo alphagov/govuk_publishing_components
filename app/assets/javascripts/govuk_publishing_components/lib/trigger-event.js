@@ -1,3 +1,4 @@
+// see https://github.com/alphagov/govuk_publishing_components/blob/main/docs/lib/trigger_event.md
 (function (root) {
   'use strict'
   window.GOVUK = window.GOVUK || {}
