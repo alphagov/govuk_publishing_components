@@ -18,8 +18,8 @@ The namespace indicates where a component lives. A single page on GOV.UK could r
 
 | Type | Location | Example | Description |
 | -- | -- | -- | -- |
-| Template | `app/views/components` | `_my-comp.html.erb` | [Template logic and markup](#template) |
-| Documentation | `app/views/components/docs` | `my-comp.yml` | [Describes the component](#write-documentation) |
+| Template | `app/views/components` | `_my_comp.html.erb` | [Template logic and markup](#template) |
+| Documentation | `app/views/components/docs` | `my_comp.yml` | [Describes the component](#write-documentation) |
 | Styles | `app/assets/stylesheets/components` | `_my-comp.scss` | [Component styles](#styles) |
 | Print styles | `app/assets/stylesheets/components/print` | `_my-comp.scss` | [Component styles](#styles) |
 | Images | `app/assets/images/govuk_publishing_components` | `my-comp.png` | [Images](#images) |
@@ -36,7 +36,7 @@ If complex logic is required this should be handled using a [helper](#helpers).
 
 Example:
 
-```ruby
+```erb
 <%
   options ||= []
   id ||= false
@@ -61,7 +61,7 @@ Components should not have an option to include arbitrary classes as this could 
 
 ## Write documentation
 
-Each component is represented with a single `.yml` file. eg `lead-paragraph.yml`
+Each component is represented with a single `.yml` file. eg `lead_paragraph.yml`
 
 The `.yml` file must have:
 
@@ -107,7 +107,7 @@ examples:
 
 Some components can accept a block as an argument:
 
-```ruby
+```erb
 <%= render "my-accepts-block-component", { param: value }, do %>
   <span>Some text</span>
 <% end %>
@@ -129,7 +129,7 @@ examples:
 
 If a component is only visible, or behaves differently, in a certain context the examples for it can be embedded within HTML using the embed option:
 
-```ruby
+```erb
 <button class="trigger-for-component">Click me</button>
 <%= render "my-hidden-by-default-component", { param: value } %>
 ```
@@ -241,7 +241,7 @@ A standard for options to control this spacing has [not been decided upon yet](h
 
 All stylesheets must be linted according to [the style rules](https://github.com/alphagov/govuk-lint/blob/master/configs/scss_lint/gds-sass-styleguide.yml) in [govuk-lint](https://github.com/alphagov/govuk-lint).
 
-```
+```sh
 # Lint Sass in your application components using govuk-lint
 bundle exec govuk-lint-sass app/assets/stylesheets/components
 ```
@@ -250,7 +250,7 @@ bundle exec govuk-lint-sass app/assets/stylesheets/components
 
 Images must be listed in `config/initializers/assets.rb` and can be referred to in Sass as follows.
 
-```
+```scss
 background-image: image-url("govuk_publishing_components/search-button.png");
 ```
 
