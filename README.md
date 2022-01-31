@@ -27,7 +27,7 @@ bundle exec rake
 
 To run JavaScript tests (only):
 
-```
+```sh
 # run JS tests in browser
 bin/rake app:jasmine
 

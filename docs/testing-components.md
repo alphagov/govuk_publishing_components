@@ -27,7 +27,7 @@ Sometimes you will have a component that will throw an error due to it being in 
 
 For this case you can add `accessibility_excluded_rules` to your components' documentation yml file with the rules you want to exclude. These rules can be found in brackets in the error messages displayed.
 
-For an example of this check [test/.../docs/test-component-with-duplicate-ids.yml](spec/dummy/app/views/components/docs/test-component-with-duplicate-ids.yml)
+For an example of this check [test-component-with-duplicate-ids.yml](../spec/dummy/app/views/components/docs/test-component-with-duplicate-ids.yml)
 
 
 ## Visual regression testing

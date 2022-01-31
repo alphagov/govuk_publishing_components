@@ -5,12 +5,12 @@
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'govuk_publishing_components'
+gem "govuk_publishing_components"
 ```
 
 And then execute:
-```bash
-$ bundle
+```sh
+bundle
 ```
 
 ## 2. Mount the component guide
@@ -22,11 +22,11 @@ Mount the component guide in your application:
 mount GovukPublishingComponents::Engine, at: "/component-guide" if Rails.env.development?
 ```
 
-If your application was government-frontend the component guide would be at:
+If your application was `government-frontend` the component guide would be at:
 
 http://government-frontend.dev.gov.uk/component-guide
 
-An example guide this gem created for government-frontend:
+An example guide this gem created for `government-frontend`:
 
 https://government-frontend.herokuapp.com/component-guide
 
@@ -61,10 +61,10 @@ For example:
 
 ```scss
 // supporting sass
-@import 'govuk_publishing_components/govuk_frontend_support';
-@import 'govuk_publishing_components/component_support';
+@import "govuk_publishing_components/govuk_frontend_support";
+@import "govuk_publishing_components/component_support";
 // component specific sass
-@import 'govuk_publishing_components/components/_back-link';
+@import "govuk_publishing_components/components/back-link";
 ```
 
 If you load the component guide in the application the suggested Sass for it has been generated for you. Click the 'Suggested imports for this application' link, then copy and paste the output into your `application.scss` file. Remember to also copy the suggested print Sass into your application's `print.scss` file.
@@ -87,7 +87,7 @@ And for print styles
 
 If your application doesn't use Slimmer/Static:
 
-```js
+```ruby
 # application.js
 //= require govuk_publishing_components/dependencies
 //= require govuk_publishing_components/lib
@@ -96,7 +96,7 @@ If your application doesn't use Slimmer/Static:
 
 If your application does use Slimmer/Static:
 
-```js
+```ruby
 # application.js
 //= require govuk_publishing_components/lib
 //= require govuk_publishing_components/components/button
@@ -106,7 +106,7 @@ If your application does use Slimmer/Static:
 
 If your application doesn't use Slimmer/Static:
 
-```js
+```ruby
 # application.js
 //= require govuk_publishing_components/dependencies
 //= require govuk_publishing_components/all_components
@@ -114,7 +114,7 @@ If your application doesn't use Slimmer/Static:
 
 If your application does use Slimmer/Static:
 
-```js
+```ruby
 # application.js
 //= require govuk_publishing_components/all_components
 ```
