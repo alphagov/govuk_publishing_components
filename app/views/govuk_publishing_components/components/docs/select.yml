@@ -42,6 +42,18 @@ examples:
         selected: true
       - text: 'Option three'
         value: 'option3'
+  with_hint:
+    description: When a hint is included the `aria-describedby` attribute of the select is included to point to the hint. When an error and a hint are present, that attribute includes the IDs of both the hint and the error.
+    data:
+      id: 'dropdown2-1'
+      label: 'Choose your preferred thing'
+      hint_text: 'You might need some more information here'
+      hint_id: 'optional-hint-id'
+      options:
+      - text: 'Something'
+        value: 'option1'
+      - text: 'Something else'
+        value: 'option2'
   with_tracking:
     description: 'Tracking can be enabled on the select component by passing a minimum of data_track_category and data_track_action. Other tracking attributes are optional. Note: tracking events do not currently fire within the component guide.'
     data:
