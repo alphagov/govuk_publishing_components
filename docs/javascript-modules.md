@@ -12,7 +12,7 @@ Javascript modules can be specified in markup using `data-` attributes:
 </div>
 ```
 
-Modules are found and started in [dependencies.js](https://github.com/alphagov/govuk_publishing_components/blob/master/app/assets/javascripts/govuk_publishing_components/dependencies.js) by including `govuk/modules.js` and running the following. This is called by [static](https://github.com/alphagov/static/blob/main/app/assets/javascripts/application.js#L1) once for all applications on GOV.UK.
+Modules are found and started in [dependencies.js](https://github.com/alphagov/govuk_publishing_components/blob/master/app/assets/javascripts/govuk_publishing_components/dependencies.js) by including `./modules.js` and running the following. This is called by [static](https://github.com/alphagov/static/blob/main/app/assets/javascripts/application.js#L1) once for all applications on GOV.UK.
 
 ```javascript
 $(document).ready(function(){
@@ -107,9 +107,9 @@ Make it clear where a javascript module will be applying behaviour:
 Beginning with a set of event listeners clearly indicates the module’s intentions.
 
 ```js
-SomeModule.prototype.start = function($element) {
-  $element.on('click', '.js-toggle', toggle)
-  $element.on('click', '.js-cancel', cancel)
+SomeModule.prototype.init = function () {
+  this.$module.addEventListener('focus', this.handleFocus.bind(this))
+  this.$module.addEventListener('click', this.handleClick.bind(this))
 }
 ```
 
@@ -144,13 +144,13 @@ Modules should have their own tests, whether they’re being included with the G
 
 You can run the Jasmine tests in the components gem using this command:
 
-```
+```sh
 bundle exec rake app:jasmine:ci
 ```
 
 You can run the Jasmine tests in an application using this command:
 
-```
+```sh
 bundle exec rake jasmine:ci
 ```
 
@@ -159,4 +159,4 @@ The tests can also be run in a normal Chrome window, by removing `:ci` from the 
 - console.log() commands will be visible in the browser console for debugging purposes
 - individual tests or groups of tests can be run by clicking on the name of that test or group
 
-If you are testing JavaScript changes it is recommended that the Jasmine tests are also run in Internet Explorer 11. This can be achieved using Browserstack.
+If you are testing JavaScript changes it is recommended that the Jasmine tests are also run in Internet Explorer 11. This can be achieved using BrowserStack.
