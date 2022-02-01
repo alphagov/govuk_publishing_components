@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 28.5.0
 
 * Add select component hint ([PR #2594](https://github.com/alphagov/govuk_publishing_components/pull/2594))
 * Add name attribute to hidden spam input in feedback component ([PR #2586](https://github.com/alphagov/govuk_publishing_components/pull/2586))
