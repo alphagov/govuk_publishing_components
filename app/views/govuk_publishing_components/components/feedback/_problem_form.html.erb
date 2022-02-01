@@ -25,8 +25,8 @@
 
       <% # Added for spam bots only %>
       <div class="govuk-visually-hidden" aria-hidden="true">
-        <label for="feedback_maybe">This field is for robots only. Please leave blank</label>
-        <input id="feedback_maybe" type="text" pattern=".{0}" tabindex="-1" autocomplete="off" >
+        <label for="giraffe">This field is for robots only. Please leave blank</label>
+        <input id="giraffe" name="giraffe" type="text" pattern=".{0}" tabindex="-1" autocomplete="off">
       </div>
 
       <%= render "govuk_publishing_components/components/textarea", {
@@ -61,7 +61,7 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    var input = document.querySelector("#feedback_maybe"),
+    var input = document.querySelector("#giraffe"),
       form = document.querySelector("#something-is-wrong")
 
     form.addEventListener("submit", spamCapture);
