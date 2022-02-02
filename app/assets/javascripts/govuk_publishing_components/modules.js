@@ -1,49 +1,46 @@
 ;(function (global) {
   'use strict'
 
-  var $ = global.jQuery
   var GOVUK = global.GOVUK || {}
   GOVUK.Modules = GOVUK.Modules || {}
 
   GOVUK.modules = {
     find: function (container) {
-      container = $(container || document)
+      container = container || document
 
       var modules
       var moduleSelector = '[data-module]'
 
-      modules = container.find(moduleSelector)
-
-      // Container could be a module too
-      if (container.is(moduleSelector)) {
-        modules = modules.add(container)
+      modules = container.querySelectorAll(moduleSelector)
+      var modulesArray = []
+      // convert nodelist of modules to array
+      for (var i = 0; i < modules.length; i++) {
+        modulesArray.push(modules[i])
       }
 
-      return modules
+      // Container could be a module too
+      if (container !== document && container.getAttribute('data-module')) {
+        modulesArray.push(container)
+      }
+      return modulesArray
     },
 
     start: function (container) {
       var modules = this.find(container)
 
       for (var i = 0, l = modules.length; i < l; i++) {
-        var element = $(modules[i])
-        var moduleNames = element.data('module').split(' ')
+        var element = modules[i]
+        var moduleNames = element.getAttribute('data-module').split(' ')
 
         for (var j = 0, k = moduleNames.length; j < k; j++) {
           var moduleName = camelCaseAndCapitalise(moduleNames[j])
-          var started = element.data(moduleNames[j] + '-module-started')
+          var started = element.getAttribute('data-' + moduleNames[j] + '-module-started')
 
           if (typeof GOVUK.Modules[moduleName] === 'function' && !started) {
-            // GOV.UK Legacy Modules using jQuery
-            if (!GOVUK.Modules[moduleName].prototype.init) {
-              new GOVUK.Modules[moduleName]().start(element)
-              element.data(moduleNames[j] + '-module-started', true)
-            }
-
             // Vanilla JavaScript GOV.UK Modules and GOV.UK Frontend Modules
             if (GOVUK.Modules[moduleName].prototype.init) {
-              new GOVUK.Modules[moduleName](element[0]).init()
-              element.data(moduleNames[j] + '-module-started', true)
+              new GOVUK.Modules[moduleName](element).init()
+              element.setAttribute('data-' + moduleNames[j] + '-module-started', true)
             }
           }
         }
