@@ -114,7 +114,7 @@ GEM
       rest-client (~> 2.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
-    govuk_app_config (4.2.0)
+    govuk_app_config (4.3.0)
       logstasher (>= 1.2.2, < 2.2.0)
       puma (~> 5.0)
       sentry-rails (~> 4.5.0)
