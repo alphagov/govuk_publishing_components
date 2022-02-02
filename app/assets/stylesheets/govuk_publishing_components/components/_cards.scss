@@ -1,11 +1,16 @@
 @import "mixins/grid-helper";
 @import "mixins/prefixed-transform";
 
-.homepage-services-and-info__list {
+.gem-c-cards__heading {
+  margin: 0 0 govuk-spacing(6) 0;
+}
+
+.gem-c-cards__list {
   @include columns($items: 16, $columns: 1, $selector: "li");
   list-style: none;
-  margin: 0 govuk-spacing(-3);
   padding: 0;
+  // Remove the outermost left and right margin from the internal margin of the list items.
+  margin: 0 govuk-spacing(-3);
 
   @include govuk-media-query($from: "tablet") {
     @include columns($items: 16, $columns: 2, $selector: "li");
@@ -14,34 +19,22 @@
   @include govuk-media-query($from: "desktop") {
     @include columns($items: 16, $columns: 3, $selector: "li");
   }
-
-  .homepage-section__government-activity & {
-    @include columns($items: 6, $columns: 1, $selector: "li");
-    margin-bottom: govuk-spacing(4);
-
-    @include govuk-media-query($from: "tablet") {
-      @include columns($items: 6, $columns: 2, $selector: "li");
-      margin-bottom: 0;
-    }
-  }
 }
 
-.chevron-card {
+.gem-c-cards__list-item {
   border-top: 1px solid $govuk-border-colour;
+  // We use grid to split the container into column widths, so manage the horizontal spacing with
+  // internal margins.
   margin: 0 govuk-spacing(3);
-  padding: govuk-spacing(1) 0 govuk-spacing(4) 0;
-}
-
-.chevron-card__wrapper {
-  padding: govuk-spacing(2) govuk-spacing(6) govuk-spacing(2) 0;
+  padding: govuk-spacing(3) 0 govuk-spacing(6) 0;
   position: relative;
 }
 
-.chevron-card__description {
-  margin: 0 govuk-spacing(-6) 0 0;
+.gem-c-cards__sub-heading {
+  margin: 0 govuk-spacing(6) govuk-spacing(2) 0;
 }
 
-.chevron-card__link {
+.gem-c-cards__link {
   &:after {
     bottom: 0;
     content: "";
@@ -63,7 +56,7 @@
     height: $dimension;
     position: absolute;
     right: govuk-spacing(1);
-    top: govuk-spacing(3);
+    top: govuk-spacing(4);
     @include prefixed-transform($rotate: 45deg);
     width: $dimension;
   }
@@ -79,4 +72,8 @@
       border-color: $govuk-focus-text-colour;
     }
   }
+}
+
+.gem-c-cards__description {
+  margin: 0;
 }
