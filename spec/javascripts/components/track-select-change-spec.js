@@ -23,8 +23,8 @@ describe('Track select change', function () {
         '</select>'
       )
 
-      tracker = new GOVUK.Modules.TrackSelectChange()
-      tracker.start($element)
+      tracker = new GOVUK.Modules.TrackSelectChange($element[0])
+      tracker.init()
     })
 
     it('tracks when the selected value is changed', function () {
@@ -60,8 +60,8 @@ describe('Track select change', function () {
         '</select>'
       )
 
-      tracker = new GOVUK.Modules.TrackSelectChange()
-      tracker.start($element)
+      tracker = new GOVUK.Modules.TrackSelectChange($element[0])
+      tracker.init()
     })
 
     it('includes extra options when present on the select', function () {

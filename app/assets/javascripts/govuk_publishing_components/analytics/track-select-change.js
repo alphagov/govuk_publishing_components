@@ -2,10 +2,11 @@ window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
-  function TrackSelectChange () { }
+  function TrackSelectChange ($module) {
+    this.$module = $module
+  }
 
-  TrackSelectChange.prototype.start = function ($module) {
-    this.$module = $module[0]
+  TrackSelectChange.prototype.init = function ($module) {
     this.$module.trackChange = this.trackChange.bind(this)
     this.$module.fireTrackingChange = this.fireTrackingChange.bind(this)
     this.$module.addEventListener('change', this.trackChange)
