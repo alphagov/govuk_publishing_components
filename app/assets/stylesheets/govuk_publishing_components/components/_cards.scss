@@ -1,0 +1,82 @@
+@import "mixins/grid-helper";
+@import "mixins/prefixed-transform";
+
+.homepage-services-and-info__list {
+  @include columns($items: 16, $columns: 1, $selector: "li");
+  list-style: none;
+  margin: 0 govuk-spacing(-3);
+  padding: 0;
+
+  @include govuk-media-query($from: "tablet") {
+    @include columns($items: 16, $columns: 2, $selector: "li");
+  }
+
+  @include govuk-media-query($from: "desktop") {
+    @include columns($items: 16, $columns: 3, $selector: "li");
+  }
+
+  .homepage-section__government-activity & {
+    @include columns($items: 6, $columns: 1, $selector: "li");
+    margin-bottom: govuk-spacing(4);
+
+    @include govuk-media-query($from: "tablet") {
+      @include columns($items: 6, $columns: 2, $selector: "li");
+      margin-bottom: 0;
+    }
+  }
+}
+
+.chevron-card {
+  border-top: 1px solid $govuk-border-colour;
+  margin: 0 govuk-spacing(3);
+  padding: govuk-spacing(1) 0 govuk-spacing(4) 0;
+}
+
+.chevron-card__wrapper {
+  padding: govuk-spacing(2) govuk-spacing(6) govuk-spacing(2) 0;
+  position: relative;
+}
+
+.chevron-card__description {
+  margin: 0 govuk-spacing(-6) 0 0;
+}
+
+.chevron-card__link {
+  &:after {
+    bottom: 0;
+    content: "";
+    display: block;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  &:before {
+    $dimension: 7px;
+    $width: 3px;
+
+    border-right: $width solid $govuk-brand-colour;
+    border-top: $width solid $govuk-brand-colour;
+    content: "";
+    display: block;
+    height: $dimension;
+    position: absolute;
+    right: govuk-spacing(1);
+    top: govuk-spacing(3);
+    @include prefixed-transform($rotate: 45deg);
+    width: $dimension;
+  }
+
+  &:hover {
+    &:before {
+      border-color: $govuk-link-hover-colour;
+    }
+  }
+
+  &:focus {
+    &:before {
+      border-color: $govuk-focus-text-colour;
+    }
+  }
+}
