@@ -96,7 +96,7 @@ examples:
         }
       ]
   with_a_different_heading_level:
-    description: Steps have a H2 by default, but this can be changed. The heading level does not change any styling.
+    description: Steps have a `h2` by default, but this can be changed. The heading level does not change any styling.
     data:
       heading_level: 3
       steps: [
@@ -164,7 +164,7 @@ examples:
       ]
   remember_last_opened_step:
     description: |
-      If steps are opened their IDs are added to an array in sessionStorage, so that if the user returns to this page in the same session, those steps will be opened on page load. This option can technically be used together with the option to open a step by default, but this is not recommended as it could confuse users.
+      If steps are opened their IDs are added to an array in `sessionStorage`, so that if the user returns to this page in the same session, those steps will be opened on page load. This option can technically be used together with the option to open a step by default, but this is not recommended as it could confuse users.
     data:
       remember_last_step: true
       steps: [
@@ -192,9 +192,9 @@ examples:
       Links can have the following attributes:
 
       - style, an attribute on the parent list that controls its appearance. Defaults to optional but can be set to 'choice' (adds indent and bullets to the list)
-      - context, an optional text field to show some extra information after the link, usually a monetary value
-      - active, whether to make the link highlighted (to indicate the current page)
-      - highlight_step, a general option to highlight the step. Usually the active link would be in the active step, but in some circumstances there might be an active step but no highlighted link.
+      - `context`, an optional text field to show some extra information after the link, usually a monetary value
+      - `active`, whether to make the link highlighted (to indicate the current page)
+      - `highlight_step`, a general option to highlight the step. Usually the active link would be in the active step, but in some circumstances there might be an active step but no highlighted link.
     data:
       highlight_step: 2
       show_step: 2
@@ -338,11 +338,11 @@ examples:
 
       If a link is in a step by step navigation more than once and the user is on that page, the backend doesn't know which link to highlight, so it highlights both of them.
 
-      JavaScript is included in the component to solve this. It uses sessionStorage to capture the data-position attribute of non-external links when clicked, and then uses this value to decide which link to highlight after the new page loads. It uses the value of the tracking_id option to uniquely identify the current step nav in the session (if this is not passed to the component this may result in other step navs having the wrong link highlighted).
+      JavaScript is included in the component to solve this. It uses `sessionStorage` to capture the data-position attribute of non-external links when clicked, and then uses this value to decide which link to highlight after the new page loads. It uses the value of the `tracking_id` option to uniquely identify the current step nav in the session (if this is not passed to the component this may result in other step navs having the wrong link highlighted).
 
-      If a user has not clicked a link (i.e. has visited the page without first clicking on a step by step navigation) only the first duplicate link will be highlighted. If that link is not in the active step, the JS makes the highlighted link's parent the active step. If there is no active step, the first active link will be highlighted (but there should always be an active step).
+      If a user has not clicked a link (i.e. has visited the page without first clicking on a step by step navigation) only the first duplicate link will be highlighted. If that link is not in the active step, the JavaScript makes the highlighted link's parent the active step. If there is no active step, the first active link will be highlighted (but there should always be an active step).
 
-      The example below will show all non-external links highlighted if JS is disabled. In the real world no more than two or three links are likely to be highlighted at once.
+      The example below will show all non-external links highlighted if JavaScript is disabled. In the real world no more than two or three links are likely to be highlighted at once.
 
       Changes to the active step and highlighted link are also applied on click, if the user clicks one of the other links that is to the same page (they are amended by the component to be jump links to the top of the page). Open this example using the 'preview' link and try clicking on the 'internal' links to see how it behaves.
     data:
@@ -417,15 +417,15 @@ examples:
 
       The solution is to track the step by step journey the user is on.
 
-      This has been achieved by adding a query string to all of the internal links in the step by step that contains the content_id of the step by step.
+      This has been achieved by adding a query string to all of the internal links in the step by step that contains the `content_id` of the step by step.
 
-      For example, if the step by step contains a link to [/check-uk-visa](/check-uk-visa), the component will renders the link as [/check-uk-visa?step-by-step-nav=d8f3c2e0-d544-4664-9616-ab71323e4d18](/check-uk-visa?step-by-step-nav=d8f3c2e0-d544-4664-9616-ab71323e4d18)
+      For example, if the step by step contains a link to [/check-uk-visa](/check-uk-visa), the component will render the link as [/check-uk-visa?step-by-step-nav=d8f3c2e0-d544-4664-9616-ab71323e4d18](/check-uk-visa?step-by-step-nav=d8f3c2e0-d544-4664-9616-ab71323e4d18)
 
       As long as the user follows the links in the step by step (and not the inline links in the content), the component will know which step by step journey the user is on.
 
-      If the content item is part of multiple step by steps, the component fetches the content_id of the `active` step by step from the query string and expands that one. The other step by steps that the content item is part of are displayed as a list of titles under an "Also part of" heading.
+      If the content item is part of multiple step by steps, the component fetches the `content_id` of the `active` step by step from the query string and expands that one. The other step by steps that the content item is part of are displayed as a list of titles under an "Also part of" heading.
 
-      Additionally, if content designers have chosen to "hide" a step by step on a content page, but we can see that the user is following a step by step journey (the content_id of the step by step is in the querystring), the step by step will still be displayed and expanded in the sidebar, and the other step by steps that the content item is part of, but content designers have chosen to hide will also be displayed as a list of titles under an "Also part of heading".
+      Additionally, if content designers have chosen to "hide" a step by step on a content page, but we can see that the user is following a step by step journey (the `content_id` of the step by step is in the querystring), the step by step will still be displayed and expanded in the sidebar, and the other step by steps that the content item is part of, but content designers have chosen to hide will also be displayed as a list of titles under an "Also part of heading".
 
       In both cases, we never show more than 5 step by steps in the list.
 
@@ -523,7 +523,7 @@ examples:
     description: |
       Steps can be optional. This is controlled by two parameters, 'optional' and 'logic'.
 
-      - Optional steps used to have a dotted line down the side but this was removed as it confused users. In some cases we may still need to record if a step is optional, so if this parameter is applied, GA tracking events will have 'optional' appended to the end of the eventLabel.
+      - Optional steps used to have a dotted line down the side but this was removed as it confused users. In some cases we may still need to record if a step is optional, so if this parameter is applied, Google Analytics tracking events will have 'optional' appended to the end of the eventLabel.
       - Logic will change the number next to a step to the word 'and' or the word 'or'.
 
       If a step is optional this should be conveyed by the text within that step.
