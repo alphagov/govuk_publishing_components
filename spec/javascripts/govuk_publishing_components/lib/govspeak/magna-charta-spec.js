@@ -119,7 +119,8 @@ describe('Magna charta', function () {
     beforeEach(function () {
       element = $('<div/>').attr('id', 'test-magna-charta').html(single)
       $('body').append(element)
-      magna = new GOVUK.Modules.MagnaCharta().start(element.find('#single')[0], { returnReference: true })
+      magna = new GOVUK.Modules.MagnaCharta(element.find('#single')[0], { returnReference: true })
+      magna.init()
       graph = element.find('.mc-chart')
       graphContainer = element.find('.mc-chart-container')
       table = element.find('table')
@@ -202,7 +203,8 @@ describe('Magna charta', function () {
     beforeEach(function () {
       element = $('<div/>').attr('id', 'test-magna-charta').html(multiple2)
       $('body').append(element)
-      magna = new GOVUK.Modules.MagnaCharta().start(element.find('#multiple2')[0], { returnReference: true })
+      magna = new GOVUK.Modules.MagnaCharta(element.find('#multiple2')[0], { returnReference: true })
+      magna.init()
       graph = element.find('.mc-chart')
       table = element.find('table')
     })
@@ -221,7 +223,8 @@ describe('Magna charta', function () {
     beforeEach(function () {
       element = $('<div/>').attr('id', 'test-magna-charta').html(multiple3)
       $('body').append(element)
-      magna = new GOVUK.Modules.MagnaCharta().start(element.find('#multiple3')[0], { returnReference: true })
+      magna = new GOVUK.Modules.MagnaCharta(element.find('#multiple3')[0], { returnReference: true })
+      magna.init()
       graph = element.find('.mc-chart')
       table = element.find('table')
     })
@@ -240,7 +243,8 @@ describe('Magna charta', function () {
     beforeEach(function () {
       element = $('<div/>').attr('id', 'test-magna-charta').html(multiple)
       $('body').append(element)
-      magna = new GOVUK.Modules.MagnaCharta().start(element.find('#multiple')[0], { returnReference: true })
+      magna = new GOVUK.Modules.MagnaCharta(element.find('#multiple')[0], { returnReference: true })
+      magna.init()
       graph = element.find('.mc-chart')
       table = element.find('table')
     })
@@ -297,10 +301,11 @@ describe('Magna charta', function () {
     beforeEach(function () {
       element = $('<div/>').attr('id', 'test-magna-charta').html(negative2)
       $('body').append(element)
-      magna = new GOVUK.Modules.MagnaCharta().start(element.find('#negative2')[0], {
+      magna = new GOVUK.Modules.MagnaCharta(element.find('#negative2')[0], {
         applyOnInit: false,
         returnReference: true
       })
+      magna.init()
       graph = element.find('.mc-chart')
       graphContainer = element.find('.mc-chart-container')
       table = element.find('table')
@@ -326,7 +331,8 @@ describe('Magna charta', function () {
     beforeEach(function () {
       element = $('<div/>').attr('id', 'test-magna-charta').html(negative)
       $('body').append(element)
-      magna = new GOVUK.Modules.MagnaCharta().start(element.find('#negative')[0], { returnReference: true })
+      magna = new GOVUK.Modules.MagnaCharta(element.find('#negative')[0], { returnReference: true })
+      magna.init()
       graph = element.find('.mc-chart')
       table = element.find('table')
     })
@@ -371,7 +377,8 @@ describe('Magna charta', function () {
     beforeEach(function () {
       element = $('<div/>').attr('id', 'test-magna-charta').html(outdentAll)
       $('body').append(element)
-      magna = new GOVUK.Modules.MagnaCharta().start(element.find('#outdent-all')[0], { returnReference: true })
+      magna = new GOVUK.Modules.MagnaCharta(element.find('#outdent-all')[0], { returnReference: true })
+      magna.init()
       graph = element.find('.mc-chart')
       table = element.find('table')
     })
@@ -391,7 +398,8 @@ describe('Magna charta', function () {
     beforeEach(function () {
       element = $('<div/>').attr('id', 'test-magna-charta').html(single)
       $('body').append(element)
-      magna = new GOVUK.Modules.MagnaCharta().start(element.find('#single')[0], { returnReference: true })
+      magna = new GOVUK.Modules.MagnaCharta(element.find('#single')[0], { returnReference: true })
+      magna.init()
       graph = element.find('.mc-chart')
       table = element.find('table')
     })

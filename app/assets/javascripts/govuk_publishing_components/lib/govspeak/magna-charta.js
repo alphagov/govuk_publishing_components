@@ -4,10 +4,8 @@ window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
-  function MagnaCharta () { }
-
-  MagnaCharta.prototype.start = function ($module, options) {
-    this.$module = $module[0]
+  function MagnaCharta ($module, options) {
+    this.$table = $module
     this.options = {
       outOf: 65,
       applyOnInit: true,
@@ -22,13 +20,13 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
 
     for (var k in options) this.options[k] = options[k]
+  }
+
+  MagnaCharta.prototype.init = function () {
     this.detectIEVersion()
 
     // Magna Charta doesn't work in IE7 or less - so plain tables are shown to those browsers
     this.ENABLED = !(this.ie && this.ie < 8)
-
-    // store a reference to the table in the object
-    this.$table = $module
 
     // a container around the graph element so that it can be targeted by screen readers, allowing us to inform screen reader users that the graph isn't accessible
     this.$graphContainer = document.createElement('div')
@@ -47,7 +45,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.$graph.classList.add('mc-chart')
 
     // get the id of the current chart within the page so that it can be used during the generation of the toggleLink
-    this.chartId = this.getChartId($module)
+    this.chartId = this.getChartId()
 
     // set the stacked option based on
     // giving the table a class of mc-stacked
@@ -458,12 +456,12 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
   }
 
-  MagnaCharta.prototype.getChartId = function (module) {
+  MagnaCharta.prototype.getChartId = function () {
     var allCharts = document.querySelectorAll('table.js-barchart-table')
     var id = null
 
     for (var i = 0; i < allCharts.length; i++) {
-      if (allCharts[i] === module) {
+      if (allCharts[i] === this.$table) {
         id = i
       }
     }

@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Change JavaScript modules from start to init ([PR #2605](https://github.com/alphagov/govuk_publishing_components/pull/2605))
+
 ## 28.5.0
 
 * Add select component hint ([PR #2594](https://github.com/alphagov/govuk_publishing_components/pull/2594))

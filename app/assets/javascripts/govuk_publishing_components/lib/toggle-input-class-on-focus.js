@@ -7,10 +7,11 @@ window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
-  function GemToggleInputClassOnFocus () { }
+  function GemToggleInputClassOnFocus ($module) {
+    this.$module = $module
+  }
 
-  GemToggleInputClassOnFocus.prototype.start = function ($module) {
-    this.$module = $module[0]
+  GemToggleInputClassOnFocus.prototype.init = function () {
     this.toggleTarget = this.$module.querySelector('.js-class-toggle')
     this.$module.addFocusClass = this.addFocusClass.bind(this)
     this.$module.removeFocusClassFromEmptyInput = this.removeFocusClassFromEmptyInput.bind(this)

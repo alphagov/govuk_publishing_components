@@ -87,10 +87,11 @@ window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
-  function GemToggle () { }
+  function GemToggle ($module) {
+    this.$module = $module
+  }
 
-  GemToggle.prototype.start = function ($module) {
-    this.$module = $module[0]
+  GemToggle.prototype.init = function () {
     this.$module.toggleTrigger = this.$module.querySelector('[data-controls][data-expanded]')
 
     if (this.$module.toggleTrigger) {

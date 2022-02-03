@@ -24,7 +24,8 @@ window.GOVUK = window.GOVUK || {};
 
     for (var i = 0; i < $barcharts.length; i++) {
       var $table = $barcharts[i]
-      new GOVUK.Modules.MagnaCharta().start($table, { toggleText: 'Change between chart and table' })
+      var magna = new GOVUK.Modules.MagnaCharta($table, { toggleText: 'Change between chart and table' })
+      magna.init()
       $table.className = $table.className + ' js-barchart-table-init'
     }
   }

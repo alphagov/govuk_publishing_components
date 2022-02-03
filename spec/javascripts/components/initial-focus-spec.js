@@ -7,8 +7,8 @@ describe('Initial focus script', function () {
   var FIXTURE
 
   function loadInitialFocusScript () {
-    var initialFocus = new GOVUK.Modules.InitialFocus()
-    initialFocus.start($('[data-module=initial-focus]'))
+    var initialFocus = new GOVUK.Modules.InitialFocus($('[data-module=initial-focus]')[0])
+    initialFocus.init()
   }
 
   beforeEach(function () {
