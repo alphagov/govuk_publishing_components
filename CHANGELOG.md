@@ -14,6 +14,7 @@
 * Change JavaScript modules from start to init ([PR #2605](https://github.com/alphagov/govuk_publishing_components/pull/2605))
 * Share icons line-height ([PR #2602](https://github.com/alphagov/govuk_publishing_components/pull/2602))
 * Update conditional reveal ([PR #2602](https://github.com/alphagov/govuk_publishing_components/pull/2612))
+* Update Accordion design ([PR #2581](https://github.com/alphagov/govuk_publishing_components/pull/2581))
 
 ## 28.5.0
 
