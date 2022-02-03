@@ -23,6 +23,8 @@ describe('GOVUK.GoogleAnalyticsUniversalTracker', function () {
       cookieDomain: 'cookie-domain.com',
       siteSpeedSampleRate: 100
     })
+
+    GOVUK.analytics.setDimension = GOVUK.analytics.setDimension || {}
   })
 
   afterEach(function () {

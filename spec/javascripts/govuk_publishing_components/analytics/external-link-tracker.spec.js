@@ -22,6 +22,7 @@ describe('GOVUK.analyticsPlugins.externalLinkTracker', function () {
 
     $('html').on('click', function (evt) { evt.preventDefault() })
     $('body').append($links)
+    GOVUK.analytics.setDimension = GOVUK.analytics.setDimension || {}
 
     spyOn(GOVUK.analyticsPlugins.externalLinkTracker, 'getHostname').and.returnValue('fake-hostname.com')
     spyOn(GOVUK.analytics, 'trackEvent')

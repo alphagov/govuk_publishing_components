@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Migrate cross domain tracking script from static ([PR #2607](https://github.com/alphagov/govuk_publishing_components/pull/2607))
+
 ## 28.9.1
 
 * Update the list of popular links in the super navigation header ([#2660](https://github.com/alphagov/govuk_publishing_components/pull/2660))
