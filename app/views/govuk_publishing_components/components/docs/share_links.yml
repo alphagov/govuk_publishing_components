@@ -125,7 +125,7 @@ examples:
         },
         {
           href: '/email-share-link',
-          text: 'Share on email to someone you know',
+          text: 'Email',
           icon: 'email'
         },
         {
