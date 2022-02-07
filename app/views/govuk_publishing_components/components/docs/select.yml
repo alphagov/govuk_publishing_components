@@ -47,7 +47,7 @@ examples:
     data:
       id: 'dropdown2-1'
       label: 'Choose your preferred thing'
-      hint_text: 'You might need some more information here'
+      hint: 'You might need some more information here'
       hint_id: 'optional-hint-id'
       options:
       - text: 'Something'
