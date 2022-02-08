@@ -1,67 +1,39 @@
 <%
-  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
-
-  options ||= []
+  # select_helper.css_classes generates "gem-c-select"
   id ||= false
   label ||= false
-  full_width ||= false
   name ||= id
   is_page_heading ||= false
+
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   heading_size = false unless shared_helper.valid_heading_size?(heading_size)
-  error_message ||= nil
-  error_id ||= nil
-  hint ||= nil
-  hint_id ||= nil
+  select_helper = GovukPublishingComponents::Presenters::SelectHelper.new(local_assigns)
 
-  describedby = %w[]
-
-  if error_message || error_id
-    error_id = "error-#{SecureRandom.hex(4)}" unless error_id
-    describedby << error_id
-  end
-
-  if hint
-    hint_id = "hint-#{SecureRandom.hex(4)}" unless hint_id
-    describedby << hint_id
-  end
-
-  aria_describedby = { describedby: describedby } if describedby
-
-  css_classes = %w(govuk-form-group gem-c-select)
-  css_classes << "govuk-form-group--error" if error_message
-
-  select_classes = %w(govuk-select)
-  select_classes << "gem-c-select__select--full-width" if full_width
-  select_classes << "govuk-select--error" if error_id
-
-  label_classes = %w(govuk-label)
-  label_classes << "govuk-label--#{heading_size}" if heading_size
-
-  select_helper = GovukPublishingComponents::Presenters::SelectHelper.new(options)
+  aria_describedby = { describedby: select_helper.describedby }
   data_module = { module: "track-select-change" } unless select_helper.data_tracking?.eql?(false)
 %>
-<% if options.any? && id && label %>
-  <%= content_tag :div, class: css_classes do %>
+<% if select_helper.options.any? && id && label %>
+  <%= content_tag :div, class: select_helper.css_classes do %>
     <% if is_page_heading %>
-      <%= tag.h1 label_tag(id, label, class: label_classes), class: "gem-c-title__text" %>
+      <%= tag.h1 label_tag(id, label, class: select_helper.label_classes), class: "gem-c-title__text" %>
     <% else %>
-      <%= label_tag(id, label, class: label_classes) %>
+      <%= label_tag(id, label, class: select_helper.label_classes) %>
     <% end %>
 
-    <% if hint %>
+    <% if select_helper.hint %>
       <%= render "govuk_publishing_components/components/hint", {
-        id: hint_id,
+        id: select_helper.hint_id,
         text: hint
       } %>
     <% end %>
 
-    <% if error_message %>
+    <% if select_helper.error_message %>
       <%= render "govuk_publishing_components/components/error_message", {
-        id: error_id,
-        text: error_message
+        id: select_helper.error_id,
+        text: select_helper.error_message
       } %>
     <% end %>
 
-    <%= select_tag name, options_for_select(select_helper.option_markup, select_helper.selected_option), id: id, class: select_classes, data: data_module, aria: aria_describedby %>
+    <%= select_tag name, options_for_select(select_helper.option_markup, select_helper.selected_option), id: id, class: select_helper.select_classes, data: data_module, aria: aria_describedby %>
   <% end %>
 <% end %>
