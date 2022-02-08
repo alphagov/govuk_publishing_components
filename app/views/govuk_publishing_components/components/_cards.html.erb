@@ -2,6 +2,7 @@
   heading ||= nil
   items ||= nil
   sub_heading_level ||= 3
+  two_column_layout ||= false
   local_assigns ||= nil
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 %>
@@ -12,7 +13,7 @@
         <%= heading %>
       <% end %>
     <% end %>
-    <ul class="gem-c-cards__list">
+    <ul class="gem-c-cards__list<% if two_column_layout %> gem-c-cards__list--two-column-desktop<% end %>">
       <% items.each do |item| %>
         <li class="gem-c-cards__list-item">
           <%= content_tag("h#{sub_heading_level}", class: "gem-c-cards__sub-heading govuk-heading-s") do %>

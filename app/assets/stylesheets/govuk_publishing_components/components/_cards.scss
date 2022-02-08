@@ -21,6 +21,16 @@
   }
 }
 
+.gem-c-cards__list--two-column-desktop {
+  @include columns($items: 6, $columns: 1, $selector: "li");
+  margin-bottom: govuk-spacing(4);
+
+  @include govuk-media-query($from: "desktop") {
+    @include columns($items: 6, $columns: 2, $selector: "li");
+    margin-bottom: 0;
+  }
+}
+
 .gem-c-cards__list-item {
   border-top: 1px solid $govuk-border-colour;
   // We use grid to split the container into column widths, so manage the horizontal spacing with
