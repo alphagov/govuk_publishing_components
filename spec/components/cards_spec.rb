@@ -88,6 +88,22 @@ describe "Cards", type: :view do
     assert_select "ul.gem-c-cards__list", count: 1
   end
 
+  it "renders two column list" do
+    test_data = {
+      two_column_layout: true,
+      items: [
+        {
+          link: {
+            text: "Benefits",
+            path: "http://www.gov.uk",
+          },
+        },
+      ],
+    }
+    render_component(test_data)
+    assert_select "ul.gem-c-cards__list.gem-c-cards__list--two-column-desktop", count: 1
+  end
+
   it "renders a list item" do
     test_data = {
       items: [
