@@ -313,13 +313,13 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
       return !!(data.spiedEvents[jasmine.spiedEventsKey(selector, eventName)])
     },
 
-    wasTriggeredWith: function (selector, eventName, expectedArgs, util, customEqualityTesters) {
+    wasTriggeredWith: function (selector, eventName, expectedArgs, util) {
       var actualArgs = jasmine.jQuery.events.args(selector, eventName).slice(1)
 
       if (Object.prototype.toString.call(expectedArgs) !== '[object Array]')
         actualArgs = actualArgs[0]
 
-      return util.equals(expectedArgs, actualArgs, customEqualityTesters)
+      return util.equals(expectedArgs, actualArgs)
     },
 
     wasPrevented: function (selector, eventName) {
@@ -632,11 +632,11 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         }
       },
 
-      toHaveBeenTriggeredOnAndWith: function (j$, customEqualityTesters) {
+      toHaveBeenTriggeredOnAndWith: function (j$) {
         return {
           compare: function (actual, selector, expectedArgs) {
             var wasTriggered = jasmine.jQuery.events.wasTriggered(selector, actual)
-              , result = { pass: wasTriggered && jasmine.jQuery.events.wasTriggeredWith(selector, actual, expectedArgs, j$, customEqualityTesters) }
+              , result = { pass: wasTriggered && jasmine.jQuery.events.wasTriggeredWith(selector, actual, expectedArgs, j$) }
 
               if (wasTriggered) {
                 var actualArgs = jasmine.jQuery.events.args(selector, actual, expectedArgs)[1]
