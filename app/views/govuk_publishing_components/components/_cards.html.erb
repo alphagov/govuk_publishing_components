@@ -1,86 +1,33 @@
-<div class="gem-c-cards">
-  <h2 class="gem-c-cards__heading govuk-heading-m">Topics</h2>
-  <ul class="gem-c-cards__list">
-    <li class="gem-c-cards__list-item">
-      <h3 class="gem-c-cards__sub-heading govuk-heading-s ">
-        <a class="govuk-link gem-c-cards__link" href="/browse/benefits">
-          Benefits
-        </a>
-      </h3>
-      <p class="govuk-body govuk-!-margin-0">Includes eligibility, appeals, tax credits and Universal Credit</p>
-    </li>
-    <li class="gem-c-cards__list-item">
-      <h3 class="gem-c-cards__sub-heading govuk-heading-s ">
-        <a class="govuk-link gem-c-cards__link" href="/browse/benefits">
-          Births, deaths, marriages and&nbsp;care
-        </a>
-      </h3>
-      <p class="govuk-body govuk-!-margin-0">Parenting, civil partnerships, divorce and Lasting Power of Attorney</p>
-    </li>
-    <li class="gem-c-cards__list-item">
-      <h3 class="gem-c-cards__sub-heading govuk-heading-s ">
-        <a class="govuk-link gem-c-cards__link" href="/browse/benefits">
-          Business and self-employed
-        </a>
-      </h3>
-      <p class="govuk-body govuk-!-margin-0">Tools and guidance for businesses</p>
-    </li>
-    <li class="gem-c-cards__list-item">
-      <h3 class="gem-c-cards__sub-heading govuk-heading-s ">
-        <a class="govuk-link gem-c-cards__link" href="/browse/benefits">
-          Childcare and parenting
-        </a>
-      </h3>
-      <p class="govuk-body govuk-!-margin-0">Includes giving birth, fostering, adopting, benefits for children, childcare and schools</p>
-    </li>
-    <li class="gem-c-cards__list-item">
-      <h3 class="gem-c-cards__sub-heading govuk-heading-s ">
-        <a class="govuk-link gem-c-cards__link" href="/browse/benefits">
-          Citizenship and living in the&nbsp;UK
-        </a>
-      </h3>
-      <p class="govuk-body govuk-!-margin-0">Voting, community participation, life in the UK, international projects</p>
-    </li>
-    <li class="gem-c-cards__list-item">
-      <h3 class="gem-c-cards__sub-heading govuk-heading-s ">
-        <a class="govuk-link gem-c-cards__link" href="/browse/benefits">
-          Crime, justice and the&nbsp;law
-        </a>
-      </h3>
-      <p class="govuk-body govuk-!-margin-0">Legal processes, courts and the police</p>
-    </li>
-    <li class="gem-c-cards__list-item">
-      <h3 class="gem-c-cards__sub-heading govuk-heading-s ">
-        <a class="govuk-link gem-c-cards__link" href="/browse/benefits">
-          Benefits
-        </a>
-      </h3>
-      <p class="govuk-body govuk-!-margin-0">Includes eligibility, appeals, tax credits and Universal Credit</p>
-    </li>
-    <li class="gem-c-cards__list-item">
-      <h3 class="gem-c-cards__sub-heading govuk-heading-s ">
-        <a class="govuk-link gem-c-cards__link" href="/browse/benefits">
-          Benefits
-        </a>
-      </h3>
-      <p class="govuk-body govuk-!-margin-0">Includes eligibility, appeals, tax credits and Universal Credit</p>
-    </li>
-    <li class="gem-c-cards__list-item">
-      <h3 class="gem-c-cards__sub-heading govuk-heading-s ">
-        <a class="govuk-link gem-c-cards__link" href="/browse/benefits">
-          Benefits
-        </a>
-      </h3>
-      <p class="govuk-body govuk-!-margin-0">Includes eligibility, appeals, tax credits and Universal Credit</p>
-    </li>
-    <li class="gem-c-cards__list-item">
-      <h3 class="gem-c-cards__sub-heading govuk-heading-s ">
-        <a class="govuk-link gem-c-cards__link" href="/browse/benefits">
-          Benefits
-        </a>
-      </h3>
-      <p class="govuk-body govuk-!-margin-0">Includes eligibility, appeals, tax credits and Universal Credit</p>
-    </li>
-  </ul>
-</div>
+<%
+  heading ||= nil
+  items ||= nil
+  sub_heading_level = sub_heading_level || 3
+  local_assigns ||= nil
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+%>
+<% if items.present? %>
+  <div class="gem-c-cards">
+    <% if heading %>
+      <%= content_tag(shared_helper.get_heading_level, class: "gem-c-cards__heading govuk-heading-m") do %>
+        <%= heading %>
+      <% end %>
+    <% end %>
+    <ul class="gem-c-cards__list">
+      <% items.each do |item| %>
+        <li class="gem-c-cards__list-item">
+          <%= content_tag("h#{sub_heading_level}", class: "gem-c-cards__sub-heading govuk-heading-s") do %>
 
+          <a class="govuk-link gem-c-cards__link" href="<%= item[:link][:path]%>">
+              <%= item[:link][:text] %>
+          </a>
+          <% end %>
+
+          <% if item[:description] %>
+            <p class="govuk-body gem-c-cards__description"><%= item[:description] %></p>
+          <% end %>
+
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
