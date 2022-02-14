@@ -36,4 +36,9 @@ task lint: %i[rubocop environment] do
   sh "yarn run lint"
 end
 
-task default: [:lint, :spec, "app:jasmine:ci"]
+desc "Jasmine"
+task :jasmine do
+  sh "yarn run jasmine"
+end
+
+task default: %i[lint spec jasmine]
