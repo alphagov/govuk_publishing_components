@@ -1,7 +1,18 @@
 <%
   id ||= "inset-text-#{SecureRandom.hex(4)}"
+  margin_top ||= 6
+  margin_bottom ||= 6
+
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new({
+    margin_top: margin_top,
+    margin_bottom: margin_bottom
+  })
+
+  classes = %w[gem-c-inset-text govuk-inset-text]
+  classes << shared_helper.get_margin_top
+  classes << shared_helper.get_margin_bottom
 %>
-<%= tag.div id: id, class: "gem-c-inset-text govuk-inset-text" do %>
+<%= tag.div id: id, class: classes do %>
   <% if defined? text %>
     <%= text %>
   <% elsif block_given? %>
