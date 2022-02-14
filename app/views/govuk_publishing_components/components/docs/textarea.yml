@@ -83,7 +83,7 @@ examples:
         text: "How about a hint below?"
       name: "more-elements"
       block: |
-        <span class="govuk-hint">Here's a hint</span>
+        <div class="govuk-hint">Here's a hint</div>
   with_maxlength:
     data:
       label:
