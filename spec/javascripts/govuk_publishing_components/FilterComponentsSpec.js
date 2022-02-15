@@ -2,19 +2,20 @@
 
 var FilterComponents = window.GOVUK.FilterComponents
 
+var form, list
+
 function addFormInput () {
-  var form = document.createElement('form')
+  form = document.createElement('form')
   form.setAttribute('data-module', 'filter-components')
   document.body.appendChild(form)
 };
 
 function removeFormInput () {
-  var form = document.querySelector('form')
   document.body.removeChild(form)
 }
 
 function addComponents () {
-  var list = document.createElement('ul')
+  list = document.createElement('ul')
   list.classList.add('component-list')
 
   // Set up accordion component
@@ -43,6 +44,10 @@ function addComponents () {
   document.body.appendChild(list)
 };
 
+function removeComponents () {
+  document.body.removeChild(list)
+}
+
 describe('FilterComponents', function () {
   beforeAll(function () {
     addFormInput()
@@ -51,6 +56,7 @@ describe('FilterComponents', function () {
 
   afterAll(function () {
     removeFormInput()
+    removeComponents()
   })
 
   it('hides all components that do not match search criteria', function () {
