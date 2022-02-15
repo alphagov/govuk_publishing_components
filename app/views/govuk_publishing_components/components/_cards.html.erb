@@ -21,12 +21,31 @@
         if !link[:path].present?
           raise ArgumentError, "The cards component requires a href for all the links"
         end
-        <li class="gem-c-cards__list-item">
-          <%= content_tag("h#{sub_heading_level}", class: "gem-c-cards__sub-heading govuk-heading-s") do %>
 
-          <a class="govuk-link gem-c-cards__link" href="<%= item[:link][:path]%>">
-              <%= item[:link][:text] %>
-          </a>
+        data_attributes ||= nil
+        attributes = link[:tracking_attributes] || nil
+
+        if attributes && attributes[:track_category] && attributes[:track_action]
+          data_attributes = {
+            track_action: attributes[:track_action],
+            track_category: attributes[:track_category],
+            track_dimension_index: attributes[:track_dimension_index],
+            track_dimension: link[:text],
+            track_label: link[:path],
+          }
+        end
+
+        link = capture do
+           link_to(link[:text], link[:path], {
+             class: "govuk-link gem-c-cards__link",
+             data: data_attributes,
+           })
+        end %>
+
+        <li class="gem-c-cards__list-item">
+
+          <%= content_tag("h#{sub_heading_level}", class: "gem-c-cards__sub-heading govuk-heading-s") do %>
+            <%= link %>
           <% end %>
 
           <% if item[:description] %>
