@@ -140,6 +140,10 @@ describe('A stepnav module', function () {
     }
   })
 
+  function clickShowHideAll () {
+    $element.find('.js-step-controls-button').click()
+  }
+
   it('has a class of gem-c-step-nav--active to indicate the js has loaded', function () {
     expect($element).toHaveClass('gem-c-step-nav--active')
   })
@@ -182,9 +186,9 @@ describe('A stepnav module', function () {
   })
 
   it('adds a show/hide element to each step', function () {
-    var $stepHeader = $element.find('.gem-c-step-nav__header')
-    expect($stepHeader).toContainElement('.gem-c-step-nav__toggle-link')
-    $stepHeader.find('.gem-c-step-nav__toggle-link').each(function () {
+    var $stepHeader = $element.find('.js-toggle-panel')
+    expect($stepHeader).toContainElement('.gem-c-step-nav__toggle-link-focus')
+    $stepHeader.find('.gem-c-step-nav__toggle-link-focus').each(function () {
       expect($(this)).toHaveText('Show')
       // It generates a chevron SVG icon for visual affordance
       expect($(this).find('.gem-c-step-nav__chevron')).toExist()
@@ -211,7 +215,7 @@ describe('A stepnav module', function () {
     })
 
     it('changes all the "show" elements to say "hide"', function () {
-      $element.find('.gem-c-step-nav__toggle-link').each(function () {
+      $element.find('.js-toggle-link-text').each(function () {
         expect($(this)).toHaveText('Hide')
       })
     })
@@ -237,7 +241,7 @@ describe('A stepnav module', function () {
     })
 
     it('changes all the "hide" elements to say "show"', function () {
-      $element.find('.gem-c-step-nav__toggle-link').each(function () {
+      $element.find('.js-toggle-link-text').each(function () {
         expect($(this)).toHaveText('Show')
       })
     })
@@ -450,7 +454,7 @@ describe('A stepnav module', function () {
 
     it('sets the show/hide link text to "hide"', function () {
       var $step1 = $element.find('#topic-step-one')
-      expect($step1.find('.js-toggle-link')).toHaveText('Hide')
+      expect($step1.find('.js-toggle-link-text')).toHaveText('Hide')
     })
 
     it('sets the show all/hide all button text correctly', function () {
@@ -917,8 +921,4 @@ describe('A stepnav module', function () {
       })
     })
   })
-
-  function clickShowHideAll () {
-    $element.find('.js-step-controls-button').click()
-  }
 })
