@@ -1,4 +1,6 @@
-ruby File.read(".ruby-version").strip unless ENV["RBENV_VERSION"]
+# Specify the ruby version so Heroku can host the app
+# But not in CI, since we test the gem against multiple ruby versions
+ruby File.read(".ruby-version").strip unless ENV["CI"]
 
 source "https://rubygems.org"
 
