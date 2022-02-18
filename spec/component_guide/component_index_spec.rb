@@ -47,6 +47,7 @@ describe "Component guide index" do
     visit "/component-guide"
     expected_main_sass = "@import 'govuk_publishing_components/govuk_frontend_support';
 @import 'govuk_publishing_components/component_support';
+@import 'govuk_publishing_components/components/accordion';
 @import 'govuk_publishing_components/components/back-link';
 @import 'govuk_publishing_components/components/breadcrumbs';
 @import 'govuk_publishing_components/components/button';
@@ -77,6 +78,7 @@ describe "Component guide index" do
 @import 'govuk_publishing_components/components/title';"
 
     expected_print_sass = "@import 'govuk_publishing_components/govuk_frontend_support';
+@import 'govuk_publishing_components/components/print/accordion';
 @import 'govuk_publishing_components/components/print/button';
 @import 'govuk_publishing_components/components/print/govspeak';
 @import 'govuk_publishing_components/components/print/layout-super-navigation-header';
@@ -85,7 +87,7 @@ describe "Component guide index" do
 @import 'govuk_publishing_components/components/print/textarea';
 @import 'govuk_publishing_components/components/print/title';"
 
-    expect(page).to have_selector(".component-doc-h2", text: "Gem components used by this app (17)")
+    expect(page).to have_selector(".component-doc-h2", text: "Gem components used by this app (18)")
     expect(page).to have_selector(".govuk-details__summary-text", text: "Suggested imports for this application")
 
     expect(page.find(:css, 'textarea[name="main-sass"]', visible: false).value).to eq(expected_main_sass)
@@ -95,6 +97,7 @@ describe "Component guide index" do
   it "includes suggested js for the application" do
     visit "/component-guide"
     expected_main_js = "//= require govuk_publishing_components/lib
+//= require govuk_publishing_components/components/accordion
 //= require govuk_publishing_components/components/button
 //= require govuk_publishing_components/components/cookie-banner
 //= require govuk_publishing_components/components/error-summary

@@ -28,6 +28,10 @@ class WelcomeController < ApplicationController
     render "tabs_example", layout: "dummy_admin_layout"
   end
 
+  def accordionexample
+    render "accordion_example", layout: "dummy_admin_layout"
+  end
+
   def errorsummary
     render "error_summary", layout: "dummy_admin_layout"
   end

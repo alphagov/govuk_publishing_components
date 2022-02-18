@@ -6,34 +6,23 @@
 @import "../accordion";
 
 // Open all of the accordion sections.
-.gem-c-accordion__section-content {
+.govuk-accordion__section-content {
   display: block !important; // stylelint-disable-line declaration-no-important
 }
 
 // Change the colour from the blue link colour to black.
-.gem-c-accordion__section-button {
+.govuk-accordion__section-button {
   color: govuk-colour("black") !important; // stylelint-disable-line declaration-no-important
 }
 
-// Removing spacing
-.gem-c-accordion__section-header {
-  padding-bottom: govuk-spacing(1);
-}
-
 // Change the summary subheading size.
-.gem-c-accordion__section-summary {
+.govuk-accordion__section-summary {
   @include govuk-typography-common;
   @include govuk-typography-responsive($size: 16, $important: true);
 }
 
-// Hide the unusable "Show all sections" button and the "Chevron" icons.
-.gem-c-accordion__open-all,
-.gem-c-accordion__icon,
-.gem-c-accordion__toggle-link {
-  display: none !important; // stylelint-disable-line declaration-no-important
-}
-
-// Hide all hidden content
-.gem-c-accordion .govuk-visually-hidden {
+// Hide the unusable "Open all" button and the "+" icons.
+.govuk-accordion__open-all,
+.govuk-accordion__icon {
   display: none !important; // stylelint-disable-line declaration-no-important
 }
