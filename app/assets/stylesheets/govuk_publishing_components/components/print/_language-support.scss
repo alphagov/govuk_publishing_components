@@ -1,0 +1,19 @@
+// Targeting rtl languages 
+
+main[lang="ar"], // Arabic
+main[lang="arc"], // Aramaic
+main[lang="ckb"], // Kurdish (Sorani)
+main[lang="fa"], // Divehi
+main[lang="ha"], // Persian
+main[lang="he"], // Hausa
+main[lang="ar"], // Hebrew
+main[lang="khw"], // Khowar
+main[lang="ks"], // Kashmiri
+main[lang="ps"], // Pashto
+main[lang="sd"], // Sindhi
+main[lang="ur"], // Urdu
+main[lang="uz_AF"], // Uzbeki Afghanistan
+main[lang="yi"] { // Yiddish
+  direction: rtl;
+  text-align: start;
+}
