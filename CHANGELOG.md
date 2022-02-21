@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 28.6.0
 
 * Add margin top and margin bottom to inset text ([PR #2616](https://github.com/alphagov/govuk_publishing_components/pull/2616))
 * Bump `govuk-frontend` from 3.14.0 to 4.0.0 ([PR #2355](https://github.com/alphagov/govuk_publishing_components/pull/2533))
