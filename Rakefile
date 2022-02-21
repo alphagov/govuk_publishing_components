@@ -38,6 +38,8 @@ end
 
 desc "Jasmine"
 task :jasmine do
+  Rake::Task["app:assets:clobber"].invoke
+  Rake::Task["app:assets:precompile"].invoke
   sh "yarn run jasmine"
 end
 
