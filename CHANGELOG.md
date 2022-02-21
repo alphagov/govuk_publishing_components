@@ -15,6 +15,7 @@
 * Share icons line-height ([PR #2602](https://github.com/alphagov/govuk_publishing_components/pull/2602))
 * Update conditional reveal ([PR #2602](https://github.com/alphagov/govuk_publishing_components/pull/2612))
 * Update Accordion design ([PR #2581](https://github.com/alphagov/govuk_publishing_components/pull/2581))
+* Update step-by-step design ([PR #2601](https://github.com/alphagov/govuk_publishing_components/pull/2601))
 
 ## 28.5.0
 
