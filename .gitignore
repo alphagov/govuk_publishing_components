@@ -10,3 +10,4 @@ tmp/failures.txt
 node_modules
 yarn-error.log
 coverage
+Gemfile.lock
