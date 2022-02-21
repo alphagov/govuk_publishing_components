@@ -6,28 +6,42 @@
 }
 
 .gem-c-cards__list {
-  @include columns($items: 16, $columns: 1, $selector: "li");
   list-style: none;
   padding: 0;
   // Remove the outermost left and right margin from the internal margin of the list items.
   margin: 0 govuk-spacing(-3);
 
+  display: grid;
+  grid-auto-flow: row;
+  // Use CSS grid to calculate the number of rows
+  grid-template-rows: auto;
+  // Use the tallest cell in the grid to set the height for all rows
+  grid-auto-rows: fractions(1);
+  grid-template-columns: fractions(1);
+
   @include govuk-media-query($from: "tablet") {
-    @include columns($items: 16, $columns: 2, $selector: "li");
+    grid-template-columns: fractions(2);
   }
 
   @include govuk-media-query($from: "desktop") {
-    @include columns($items: 16, $columns: 3, $selector: "li");
+    // Note that browsers that don't support CSS grid display the component as one column on all
+    // breakpoints
+    grid-template-columns: fractions(3);
+
+    // For browsers that don't support CSS grid, constrain the width to 50% to improve usability
+    // especially for screen magnifier users
+    width: 50%;
+
+    // Reset the width for browsers that support CSS grid
+    @supports (display: grid) {
+      width: initial;
+    }
   }
 }
 
 .gem-c-cards__list--two-column-desktop {
-  @include columns($items: 6, $columns: 1, $selector: "li");
-  margin-bottom: govuk-spacing(4);
-
   @include govuk-media-query($from: "desktop") {
-    @include columns($items: 6, $columns: 2, $selector: "li");
-    margin-bottom: 0;
+    grid-template-columns: fractions(2);
   }
 }
 
