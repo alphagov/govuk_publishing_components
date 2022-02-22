@@ -6,7 +6,7 @@ PATH
       govuk_personalisation (>= 0.7.0)
       kramdown
       plek
-      rails (~> 6)
+      rails (>= 6, < 8)
       rouge
       sprockets (< 4)
 
