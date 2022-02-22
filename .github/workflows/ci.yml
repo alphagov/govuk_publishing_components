@@ -16,9 +16,6 @@ jobs:
     # Make it available at ../govuk-content-schemas, which is where govuk_schemas expects it to be
     - run: git clone -b deployed-to-production --single-branch https://github.com/alphagov/govuk-content-schemas ../govuk-content-schemas
 
-    - uses: browser-actions/setup-chrome@latest
-    - run: chrome --version
-
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
