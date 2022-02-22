@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove `header-navigation.js` ([PR #2632](https://github.com/alphagov/govuk_publishing_components/pull/2632))
+
 ## 28.6.0
 
 * Add margin top and margin bottom to inset text ([PR #2616](https://github.com/alphagov/govuk_publishing_components/pull/2616))
@@ -24,7 +28,7 @@
 
 ## 28.4.0
 
-- Remove COVID CTA from contextual sidebar component ([PR #2584](https://github.com/alphagov/govuk_publishing_components/pull/2584))
+* Remove COVID CTA from contextual sidebar component ([PR #2584](https://github.com/alphagov/govuk_publishing_components/pull/2584))
 
 ## 28.3.0
 
