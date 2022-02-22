@@ -6,7 +6,7 @@
     "lint:js": "standardx 'app/assets/javascripts/**/*.js' 'spec/javascripts/**/*.js'",
     "lint:scss": "stylelint app/assets/stylesheets/",
     "lint": "yarn run lint:js && yarn run lint:scss",
-    "jasmine": "yarn run jasmine-browser-runner runSpecs"
+    "jasmine": "PATH=~/.webdrivers:$PATH yarn run jasmine-browser-runner runSpecs"
   },
   "standardx": {
     "ignore": [
