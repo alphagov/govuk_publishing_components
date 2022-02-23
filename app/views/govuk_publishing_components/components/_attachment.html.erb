@@ -83,7 +83,9 @@
       <% end %>
     <% end %>
 
-    <% if attachment.alternative_format_contact_email %>
+    <% if attachment.display_accessible_format_request_form_link? %>
+      <%= link_to "Request an accessible format of this document", "/contact/govuk/request-accessible-format?content_id=#{attachment.owning_document_content_id}&attachment_id=#{attachment.attachment_id}", class: "govuk-link" %>
+    <% elsif attachment.alternative_format_contact_email %>
       <%= tag.p t("components.attachment.request_format_text"), class: "gem-c-attachment__metadata" %>
       <%= render "govuk_publishing_components/components/details", {
         title: t("components.attachment.request_format_cta")
