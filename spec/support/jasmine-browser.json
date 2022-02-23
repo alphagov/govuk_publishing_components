@@ -1,8 +1,12 @@
 {
   "srcDir": "spec/dummy/public/assets",
   "srcFiles": [
-    "**/*.js",
-    "!express/**/*.js"
+    "govuk_publishing_components/dependencies-*.js",
+    "govuk_publishing_components/all_components-*.js",
+    "govuk_publishing_components/modules-*.js",
+    "govuk_publishing_components/analytics-*.js",
+    "component_guide/accessibility-test-*.js",
+    "component_guide/filter-components-*.js"
   ],
   "specDir": "spec/javascripts",
   "specFiles": [
