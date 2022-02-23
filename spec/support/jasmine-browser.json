@@ -22,7 +22,7 @@
   "env": {
     "stopSpecOnExpectationFailure": false,
     "stopOnSpecFailure": false,
-    "random": false
+    "random": true
   },
   "browser": "headlessChrome"
 }
