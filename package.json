@@ -7,7 +7,7 @@
     "lint:scss": "stylelint app/assets/stylesheets/",
     "lint": "yarn run lint:js && yarn run lint:scss",
     "jasmine:prepare": "bundle exec rake app:assets:precompile",
-    "jasmine:ci": "yarn run jasmine:prepare && PATH=~/.webdrivers:$PATH yarn run jasmine-browser-runner runSpecs",
+    "jasmine:ci": "yarn run jasmine:prepare && bundle exec rake app:webdrivers:chromedriver:update && PATH=~/.webdrivers:$PATH yarn run jasmine-browser-runner runSpecs",
     "jasmine:browser": "yarn run jasmine:prepare && yarn run jasmine-browser-runner"
   },
   "standardx": {
