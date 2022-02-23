@@ -8,6 +8,9 @@
     "component_guide/accessibility-test-*.js",
     "component_guide/filter-components-*.js"
   ],
+  "cssFiles": [
+    "component_guide/application-*.css"
+  ],
   "specDir": "spec/javascripts",
   "specFiles": [
     "**/*[sS]pec.js"
