@@ -11,8 +11,6 @@ unless ENV["HEROKU"]
   # We need to load govuk_test before jasmine_selenium runner so webdrivers is
   # initialised.
   require "govuk_test"
-  require "jasmine"
-  require "jasmine_selenium_runner"
 end
 
 require "govuk_publishing_components"

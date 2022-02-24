@@ -10,6 +10,7 @@ Rails.application.config.assets.precompile += %w[
   govuk_publishing_components/vendor/lux/lux-reporter.js
   govuk_publishing_components/vendor/lux/lux-measurer.js
   govuk_publishing_components/all_components.js
+  govuk_publishing_components/dependencies.js
   govuk_publishing_components/ie.js
   govuk_publishing_components/modules.js
   govuk_publishing_components/vendor/modernizr.js

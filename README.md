@@ -29,10 +29,10 @@ To run JavaScript tests (only):
 
 ```sh
 # run JS tests in browser
-bin/rake app:jasmine
+yarn run jasmine:browser
 
 # run JS tests on command line
-bin/rake app:jasmine:ci
+yarn run jasmine:ci
 ```
 
 ### Further documentation

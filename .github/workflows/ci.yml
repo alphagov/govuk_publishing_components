@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "All matrix tests have passed 🚀"
-  
+
   release:
     needs: test
     runs-on: ubuntu-latest

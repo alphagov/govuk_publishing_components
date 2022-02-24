@@ -1,0 +1,23 @@
+{
+  "srcDir": "spec/dummy/public/assets",
+  "srcFiles": [
+    "govuk_publishing_components/dependencies-*.js",
+    "govuk_publishing_components/all_components-*.js",
+    "govuk_publishing_components/modules-*.js",
+    "govuk_publishing_components/analytics-*.js",
+    "component_guide/accessibility-test-*.js",
+    "component_guide/filter-components-*.js"
+  ],
+  "cssFiles": [
+    "component_guide/application-*.css"
+  ],
+  "specDir": "spec/javascripts",
+  "specFiles": [
+    "**/*[sS]pec.js"
+  ],
+  "helpers": [
+    "helpers/*.js",
+    "vendor/*.js"
+  ],
+  "browser": "headlessChrome"
+}
