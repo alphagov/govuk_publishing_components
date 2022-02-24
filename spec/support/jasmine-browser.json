@@ -19,10 +19,5 @@
     "helpers/*.js",
     "vendor/*.js"
   ],
-  "env": {
-    "stopSpecOnExpectationFailure": false,
-    "stopOnSpecFailure": false,
-    "random": true
-  },
   "browser": "headlessChrome"
 }
