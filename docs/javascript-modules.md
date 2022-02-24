@@ -145,7 +145,7 @@ Modules should have their own tests, whether they’re being included with the G
 You can run the Jasmine tests in the components gem using this command:
 
 ```sh
-bundle exec rake app:jasmine:ci
+yarn run jasmine:ci
 ```
 
 You can run the Jasmine tests in an application using this command:
