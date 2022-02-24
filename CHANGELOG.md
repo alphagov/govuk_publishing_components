@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Update real user metrics LUX.js to v300 ([PR #2637](https://github.com/alphagov/govuk_publishing_components/pull/2637))
 * Remove `header-navigation.js` ([PR #2632](https://github.com/alphagov/govuk_publishing_components/pull/2632))
 
 ## 28.6.0
