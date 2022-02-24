@@ -21,7 +21,6 @@ updates:
   - dependency-name: plek
   - dependency-name: scss_lint-govuk
   - dependency-name: factory_bot_rails
-  - dependency-name: jasmine
   - dependency-name: rails
   - dependency-name: rails_translation_manager
   - dependency-name: rspec-rails
@@ -61,6 +60,8 @@ updates:
   - dependency-name: miller-columns-element
   - dependency-name: paste-html-to-govspeak
   - dependency-name: govuk-frontend
+  - dependency-name: jasmine-browser-runner
+  - dependency-name: jasmine-core
   ignore:
   - dependency-name: jquery
     versions:
