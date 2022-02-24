@@ -76,6 +76,17 @@ examples:
         content_type: application/pdf
         file_size: 20000
         alternative_format_contact_email: defra.helpline@defra.gsi.gov.uk
+  with_link_to_request_accessible_format_form:
+    data:
+      attachment:
+        title: "Department for Transport information asset register"
+        url: https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/747661/department-for-transport-information-asset-register.csv
+        filename: department-for-transport-information-asset-register.csv
+        content_type: application/pdf
+        file_size: 20000
+        owning_document_content_id: 456_abc
+        attachment_id: 123
+        alternative_format_contact_email: alternative.formats@education.gov.uk
   with_data_attributes:
     data:
       attachment:
