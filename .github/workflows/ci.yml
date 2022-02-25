@@ -21,7 +21,7 @@ jobs:
         ruby-version: ${{ matrix.ruby }}
         bundler-cache: true
         cache-version: 1
-    - uses: actions/setup-node@v2
+    - uses: actions/setup-node@v3.0.0
       with:
         node-version: lts/* # use the latest LTS release
         cache: yarn
