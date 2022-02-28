@@ -39,7 +39,7 @@
   label_classes << "govuk-!-margin-bottom-#{label_margin_bottom}" if [*1..9].include?(label_margin_bottom) and local_assigns.include?(:inline_label)
 
   tag_label = capture do
-    tag.label({ for: id, class: label_classes }) do
+    tag.label(for: id, class: label_classes) do
       label_text
     end
   end
@@ -47,9 +47,7 @@
 
 <div class="<%= classes.join(" ") %>" data-module="gem-toggle-input-class-on-focus">
   <% if wrap_label_in_a_heading %>
-    <%= content_tag(shared_helper.get_heading_level, {
-      class: "govuk-!-margin-0",
-    }) do %>
+    <%= content_tag(shared_helper.get_heading_level, class: "govuk-!-margin-0") do %>
       <%= tag_label %>
     <% end %>
   <% else %>

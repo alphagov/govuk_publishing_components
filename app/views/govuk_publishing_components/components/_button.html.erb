@@ -21,11 +21,11 @@
 %>
 
 <% if button.link? %>
-  <%= link_to button_text, button.href, button.html_options %>
+  <%= link_to button_text, button.href, **button.html_options %>
 <% else %>
-  <%= content_tag :button, button_text, button.html_options %>
+  <%= content_tag :button, button_text, **button.html_options %>
 <% end %>
 
 <% if button.info_text %>
-  <%= tag.span button.info_text, button.info_text_options %>
+  <%= tag.span button.info_text, **button.info_text_options %>
 <% end %>
