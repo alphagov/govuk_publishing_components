@@ -7,12 +7,9 @@
  * See docs/real-user-metrics.md for more information.
  */
 
-
 /* ! Remember to keep these settings at the end of this file when updating LUX:
  *
  *  * `LUX.customerid = 47044334` to let LUX know who this is
- *  * `LUX.beaconMode = "simple"` to fire the beacon as an image, which is now
- *    allowed by the content security policy.
  *  * `LUX.debug = false` turns debugging on and off. Left set to false - and
  *    kept in the file so it's easier to remember that this can be turned on.
  *
@@ -22,33 +19,143 @@
 *  * `LUX.samplerate = 1` to set sample rate to 1% of users.
  */
 
-var LUX_t_start = Date.now(),
-    LUX = window.LUX || {};
-LUX = (function () {
+(function () {
+  "use strict";
+
+  function now() {
+    return Date.now ? Date.now() : +new Date();
+  }
+
+  var LUX_t_start = now();
+
+  function fromObject(obj) {
+    var autoMode = getProperty(obj, "auto", true);
+    return {
+      auto: autoMode,
+      beaconUrl: getProperty(obj, "beaconUrl", "https://lux.speedcurve.com/lux/"),
+      customerid: getProperty(obj, "customerid", undefined),
+      debug: getProperty(obj, "debug", false),
+      errorBeaconUrl: getProperty(obj, "errorBeaconUrl", "https://lux.speedcurve.com/error/"),
+      jspagelabel: getProperty(obj, "jspagelabel", undefined),
+      label: getProperty(obj, "label", undefined),
+      maxErrors: getProperty(obj, "maxErrors", 5),
+      maxMeasureTime: getProperty(obj, "maxMeasureTime", 60000),
+      measureUntil: getProperty(obj, "measureUntil", "onload"),
+      samplerate: getProperty(obj, "samplerate", 100),
+      sendBeaconOnPageHidden: getProperty(obj, "sendBeaconOnPageHidden", autoMode),
+      trackErrors: getProperty(obj, "trackErrors", true),
+    };
+  }
+  function getProperty(obj, key, defaultValue) {
+    if (typeof obj[key] !== "undefined") {
+      return obj[key];
+    }
+    return defaultValue;
+  }
+
+  var LogEvent = {
+    // Internal events
+    EvaluationStart: 1,
+    EvaluationEnd: 2,
+    InitCalled: 3,
+    MarkCalled: 4,
+    MeasureCalled: 5,
+    AddDataCalled: 6,
+    SendCalled: 7,
+    ForceSampleCalled: 8,
+    // Data collection events
+    SessionIsSampled: 21,
+    SessionIsNotSampled: 22,
+    MainBeaconSent: 23,
+    UserTimingBeaconSent: 24,
+    InteractionBeaconSent: 25,
+    CustomDataBeaconSent: 26,
+    // Errors
+    PerformanceObserverError: 51,
+    InputEventPermissionError: 52,
+    InnerHtmlAccessError: 53,
+    EventTargetAccessError: 54,
+    CookieReadError: 55,
+    CookieSetError: 56,
+    PageLabelEvaluationError: 57,
+    // Browser support messages
+    NavTimingNotSupported: 71,
+    PaintTimingNotSupported: 72,
+  };
+  var Logger = (function () {
+    function Logger() {
+      this.events = [];
+    }
+    Logger.prototype.logEvent = function (event, args) {
+      if (args === void 0) {
+        args = [];
+      }
+      this.events.push([new Date(), event, args]);
+    };
+    Logger.prototype.getEvents = function () {
+      return this.events;
+    };
+    return Logger;
+  })();
+
+  var Flags = {
+    InitCalled: 1 << 0,
+    NavTimingNotSupported: 1 << 1,
+    UserTimingNotSupported: 1 << 2,
+    VisibilityStateNotVisible: 1 << 3,
+    BeaconSentFromUnloadHandler: 1 << 4,
+    BeaconSentAfterTimeout: 1 << 5,
+    PageLabelFromDocumentTitle: 1 << 6,
+    PageLabelFromLabelProp: 1 << 7,
+    PageLabelFromGlobalVariable: 1 << 8,
+  };
+  function addFlag(flags, flag) {
+    return flags | flag;
+  }
+
+  var LUX = window.LUX || {};
+  LUX = (function () {
     // -------------------------------------------------------------------------
     // Settings
     // -------------------------------------------------------------------------
     // Set the sample rate to 1% to avoid all events being sent.
-    LUX.samplerate = 1
+    LUX.samplerate = 1;
     // -------------------------------------------------------------------------
     /// End
     // -------------------------------------------------------------------------
 
-    var e = [];
-    pe("lux.js evaluation start.");
-    var t = "216",
-      n = 0;
-    function r(e) {
-      n++,
+    var SCRIPT_VERSION = "300";
+    var logger = new Logger();
+    var userConfig = fromObject(LUX);
+    logger.logEvent(LogEvent.EvaluationStart, [SCRIPT_VERSION]);
+    // Log JS errors.
+    var nErrors = 0;
+    function errorHandler(e) {
+      if (!userConfig.trackErrors) {
+        return;
+      }
+      nErrors++;
+      if (
         e &&
-          void 0 !== e.filename &&
-          void 0 !== e.message &&
-          (-1 !== e.filename.indexOf("/lux.js?") ||
-            -1 !== e.message.indexOf("LUX") ||
-            (n <= 5 && W())) &&
-          (new Image().src =
-            "https://lux.speedcurve.com/error/?v=216&id=" +
-            J() +
+        "undefined" !== typeof e.filename &&
+        "undefined" !== typeof e.message
+      ) {
+        // it is a valid error object
+        if (
+          -1 !== e.filename.indexOf("/lux.js?") ||
+          -1 !== e.message.indexOf("LUX") || // Always send LUX errors.
+          (nErrors <= userConfig.maxErrors &&
+            "function" === typeof _sample &&
+            _sample())
+        ) {
+          // Sample & limit other errors.
+          // Send the error beacon.
+          new Image().src =
+            userConfig.errorBeaconUrl +
+            "?v=" +
+            SCRIPT_VERSION +
+            "&id=" +
+            getCustomerId() +
             "&fn=" +
             encodeURIComponent(e.filename) +
             "&ln=" +
@@ -58,966 +165,1744 @@ LUX = (function () {
             "&msg=" +
             encodeURIComponent(e.message) +
             "&l=" +
-            encodeURIComponent(ge()) +
-            (V() ? "&ct=" + V() : ""));
+            encodeURIComponent(_getPageLabel()) +
+            (connectionType() ? "&ct=" + connectionType() : "") +
+            "&HN=" +
+            encodeURIComponent(document.location.hostname) +
+            "&PN=" +
+            encodeURIComponent(document.location.pathname);
+        }
+      }
     }
-    window.addEventListener("error", r);
-    var i = ("object" == typeof window.LUX_al ? window.LUX_al : []).slice();
-    if ("function" == typeof PerformanceObserver) {
-      var a = new PerformanceObserver(function (e) {
-        e.getEntries().forEach(function (e) {
-          ("longtask" === e.entryType && -1 !== i.indexOf(e)) || i.push(e);
+    window.addEventListener("error", errorHandler);
+    // Initialize performance observer
+    // Note: This code was later added to the LUX snippet. In the snippet we ONLY collect
+    //       Long Task entries because that is the only entry type that can not be buffered.
+    //       We _copy_ any Long Tasks collected by the snippet and ignore it after that.
+    var gaSnippetLongTasks =
+      typeof window.LUX_al === "object" ? window.LUX_al : [];
+    var gaPerfEntries = gaSnippetLongTasks.slice(); // array of Long Tasks (prefer the array from the snippet)
+    if (typeof PerformanceObserver === "function") {
+      var perfObserver = new PerformanceObserver(function (list) {
+        // Keep an array of perf objects to process later.
+        list.getEntries().forEach(function (entry) {
+          // Only record long tasks that weren't already recorded by the PerformanceObserver in the snippet
+          if (
+            entry.entryType !== "longtask" ||
+            gaPerfEntries.indexOf(entry) === -1
+          ) {
+            gaPerfEntries.push(entry);
+          }
         });
       });
       try {
-        "function" == typeof PerformanceLongTaskTiming &&
-          a.observe({ type: "longtask", buffered: !0 }),
-          "function" == typeof LargestContentfulPaint &&
-            a.observe({ type: "largest-contentful-paint", buffered: !0 }),
-          "function" == typeof PerformanceElementTiming &&
-            a.observe({ type: "element", buffered: !0 }),
-          "function" == typeof PerformancePaintTiming && a.observe({ type: "paint", buffered: !0 }),
-          "function" == typeof LayoutShift && a.observe({ type: "layout-shift", buffered: !0 });
-      } catch (e) {
-        pe("Long Tasks error.");
-      }
-    } else pe("Long Tasks not supported.");
-    var o,
-      s = 0,
-      u = void 0 !== LUX.gaMarks ? LUX.gaMarks : [],
-      c = void 0 !== LUX.gaMeasures ? LUX.gaMeasures : [],
-      d = {},
-      f = {},
-      m = 0,
-      l = 0,
-      v = 0,
-      g = 0,
-      p = 1,
-      h = "LUX_start",
-      y = "LUX_end",
-      E = me(),
-      T = le(E),
-      L = window.performance,
-      b = 2e3,
-      w = void 0 !== LUX.beaconMode ? LUX.beaconMode : "autoupdate",
-      U = void 0 !== LUX.beaconUrl ? LUX.beaconUrl : "https://lux.speedcurve.com/lux/",
-      X = void 0 !== LUX.samplerate ? LUX.samplerate : 100;
-    pe(
-      "Sample rate = " +
-        X +
-        "%. " +
-        (W()
-          ? "This session IS being sampled."
-          : "This session is NOT being sampled. The data will NOT show up in your LUX dashboards. Call LUX.forceSample() and try again.")
-    );
-    var S,
-      k = void 0 === LUX.auto || LUX.auto,
-      M = LUX.ns ? LUX.ns : Date.now ? Date.now() : +new Date(),
-      B = 0;
-    L && L.timing && L.timing.navigationStart
-      ? ((M = L.timing.navigationStart), (B = LUX.ns ? LUX.ns - M : 0))
-      : (pe("Nav Timing is not supported."), (s |= 2));
-    var N = ["click", "mousedown", "keydown", "touchstart", "pointerdown"],
-      x = { passive: !0, capture: !0 };
-    function C(e) {
-      S ||
-        ((S = Math.round(e)),
-        N.forEach(function (e) {
-          removeEventListener(e, I, x);
-        }));
-    }
-    function I(e) {
-      var t = !1;
-      try {
-        t = e.cancelable;
-      } catch (e) {
-        return void pe("Permission error accessing input event.");
-      }
-      if (t) {
-        var n = D(!0),
-          r = e.timeStamp;
-        if ((r > 152e7 && (n = Number(new Date())), r > n)) return;
-        var i = n - r;
-        "pointerdown" == e.type
-          ? (function (e, t) {
-              function n() {
-                C(e), i();
-              }
-              function r() {
-                i();
-              }
-              function i() {
-                window.removeEventListener("pointerup", n, x),
-                  window.removeEventListener("pointercancel", r, x);
-              }
-              window.addEventListener("pointerup", n, x),
-                window.addEventListener("pointercancel", r, x);
-            })(i)
-          : C(i);
-      }
-    }
-    function D(e) {
-      var t = (Date.now ? Date.now() : +new Date()) - M,
-        n = _(h);
-      return n && !e ? t - n.startTime : L && L.now ? L.now() : t;
-    }
-    function j(e) {
-      if ((pe("Enter LUX.mark(), name = " + e), L)) {
-        if (L.mark) return L.mark(e);
-        if (L.webkitMark) return L.webkitMark(e);
-      }
-      (s |= 4), u.push({ name: e, entryType: "mark", startTime: D(), duration: 0 });
-    }
-    function _(e) {
-      return (function (e, t) {
-        if (t)
-          for (var n = t.length - 1; n >= 0; n--) {
-            var r = t[n];
-            if (e === r.name) return r;
-          }
-        return;
-      })(e, P());
-    }
-    function P() {
-      if (L) {
-        if (L.getEntriesByType) return L.getEntriesByType("mark");
-        if (L.webkitGetEntriesByType) return L.webkitGetEntriesByType("mark");
-      }
-      return u;
-    }
-    function O() {
-      var e = {},
-        t = _(h),
-        n = P();
-      n &&
-        n.forEach(function (n) {
-          var r = n.name,
-            i = r !== h && t ? t.startTime : 0,
-            a = Math.round(n.startTime - i);
-          a < 0 || (void 0 === e[r] ? (e[r] = a) : (e[r] = Math.max(a, e[r])));
-        });
-      var r = (function () {
-        if (L) {
-          if (L.getEntriesByType) return L.getEntriesByType("measure");
-          if (L.webkitGetEntriesByType) return L.webkitGetEntriesByType("measure");
+        if (typeof PerformanceLongTaskTiming === "function") {
+          perfObserver.observe({ type: "longtask", buffered: true });
         }
-        return c;
-      })();
-      r &&
-        r.forEach(function (n) {
-          if (!(t && n.startTime < t.startTime)) {
-            var r = n.name,
-              i = Math.round(n.duration);
-            void 0 === e[r] ? (e[r] = i) : (e[r] = Math.max(i, e[r]));
-          }
+        if (typeof LargestContentfulPaint === "function") {
+          perfObserver.observe({
+            type: "largest-contentful-paint",
+            buffered: true,
+          });
+        }
+        if (typeof PerformanceElementTiming === "function") {
+          perfObserver.observe({ type: "element", buffered: true });
+        }
+        if (typeof PerformancePaintTiming === "function") {
+          perfObserver.observe({ type: "paint", buffered: true });
+        }
+        if (typeof LayoutShift === "function") {
+          perfObserver.observe({ type: "layout-shift", buffered: true });
+        }
+      } catch (e) {
+        logger.logEvent(LogEvent.PerformanceObserverError, [e]);
+      }
+    }
+    // Bitmask of flags for this session & page
+    var gFlags = 0;
+    // array of marks where each element is a hash
+    var gaMarks = typeof LUX.gaMarks !== "undefined" ? LUX.gaMarks : [];
+    // array of measures where each element is a hash
+    var gaMeasures =
+      typeof LUX.gaMeasures !== "undefined" ? LUX.gaMeasures : [];
+    var ghIx = {}; // hash for Interaction Metrics (scroll, click, keyboard)
+    var ghData = {}; // hash for data that is specific to the customer (eg, userid, conversion info)
+    var gbLuxSent = 0; // have we sent the LUX data? (avoid sending twice in unload)
+    var gbNavSent = 0; // have we sent the Nav Timing beacon yet? (avoid sending twice for SPA)
+    var gbIxSent = 0; // have we sent the IX data? (avoid sending twice for SPA)
+    var gbFirstPV = 1; // this is the first page view (vs. a SPA "soft nav")
+    var gStartMark = "LUX_start"; // the name of the mark that corresponds to "navigationStart" for SPA
+    var gEndMark = "LUX_end"; // the name of the mark that corresponds to "loadEventStart" for SPA
+    var gSessionTimeout = 30 * 60; // number of seconds after which we consider a session to have "timed out" (used for calculating bouncerate)
+    var gSyncId = createSyncId(); // if we send multiple beacons, use this to sync them (eg, LUX & IX) (also called "luxid")
+    var gUid = refreshUniqueId(gSyncId); // cookie for this session ("Unique ID")
+    var gCustomerDataTimeout; // setTimeout timer for sending a Customer Data beacon after onload
+    var perf = window.performance;
+    var gMaxQuerystring = 8190; // split the beacon querystring if it gets longer than this
+    if (_sample()) {
+      logger.logEvent(LogEvent.SessionIsSampled, [userConfig.samplerate]);
+    } else {
+      logger.logEvent(LogEvent.SessionIsNotSampled, [userConfig.samplerate]);
+    }
+    // Get a timestamp as close to navigationStart as possible.
+    var _navigationStart = LUX.ns ? LUX.ns : now(); // create a _navigationStart
+    var gLuxSnippetStart = 0;
+    if (perf && perf.timing && perf.timing.navigationStart) {
+      _navigationStart = perf.timing.navigationStart;
+      // Record when the LUX snippet was evaluated relative to navigationStart.
+      gLuxSnippetStart = LUX.ns ? LUX.ns - _navigationStart : 0;
+    } else {
+      logger.logEvent(LogEvent.NavTimingNotSupported);
+      gFlags = addFlag(gFlags, Flags.NavTimingNotSupported);
+    }
+    ////////////////////// FID BEGIN
+    // FIRST INPUT DELAY (FID)
+    // The basic idea behind FID is to attach various input event listeners and measure the time
+    // between when the event happens and when the handler executes. That is FID.
+    var gFirstInputDelay; // this is FID
+    var gaEventTypes = [
+      "click",
+      "mousedown",
+      "keydown",
+      "touchstart",
+      "pointerdown",
+    ]; // NOTE: does NOT include scroll!
+    var ghListenerOptions = { passive: true, capture: true };
+    // Record the FIRST input delay.
+    function recordDelay(delay) {
+      if (!gFirstInputDelay) {
+        gFirstInputDelay = Math.round(delay); // milliseconds
+        // remove event listeners
+        gaEventTypes.forEach(function (eventType) {
+          removeEventListener(eventType, onInput, ghListenerOptions);
         });
-      var i = [];
-      return (
-        Object.keys(e).forEach(function (t) {
-          i.push(t + "|" + e[t]);
-        }),
-        i.join(",")
+      }
+    }
+    // Pointer events are special. Ignore scrolling by looking for pointercancel
+    // events because FID does not include scrolling nor pinch/zooming.
+    function onPointerDown(delay) {
+      function onPointerUp() {
+        recordDelay(delay);
+        removeListeners();
+      }
+      // Do NOT record FID - this is a scroll.
+      function onPointerCancel() {
+        removeListeners();
+      }
+      function removeListeners() {
+        window.removeEventListener("pointerup", onPointerUp, ghListenerOptions);
+        window.removeEventListener(
+          "pointercancel",
+          onPointerCancel,
+          ghListenerOptions
+        );
+      }
+      window.addEventListener("pointerup", onPointerUp, ghListenerOptions);
+      window.addEventListener(
+        "pointercancel",
+        onPointerCancel,
+        ghListenerOptions
       );
     }
-    function H() {
-      if ("function" != typeof PerformanceLongTaskTiming) return "";
-      var e = "",
-        t = {},
-        n = {};
-      if (i.length)
-        for (
-          var r = _(h),
-            a = r ? r.startTime : 0,
-            o = r ? _(y).startTime : L.timing.loadEventEnd - L.timing.navigationStart,
-            s = 0;
-          s < i.length;
-          s++
+    // Record FID as the delta between when the event happened and when the
+    // listener was able to execute.
+    function onInput(evt) {
+      var bCancelable = false;
+      try {
+        // Seeing "Permission denied" errors, so do a simple try-catch.
+        bCancelable = evt.cancelable;
+      } catch (e) {
+        // bail - no need to return anything
+        logger.logEvent(LogEvent.InputEventPermissionError);
+        return;
+      }
+      if (bCancelable) {
+        var now_1 = _now(true);
+        var eventTimeStamp = evt.timeStamp;
+        if (eventTimeStamp > 1520000000) {
+          // If the event timeStamp is an epoch time instead of a time relative to NavigationStart,
+          // then compare it to Date.now() instead of performance.now().
+          now_1 = Number(new Date());
+        }
+        if (eventTimeStamp > now_1) {
+          // If there is a race condition and eventTimeStamp happened after
+          // this code was executed, something is wrong. Bail.
+          return;
+        }
+        var delay = now_1 - eventTimeStamp;
+        if ("pointerdown" == evt.type) {
+          // special case
+          onPointerDown(delay);
+        } else {
+          recordDelay(delay);
+        }
+      }
+    }
+    // Attach event listener to input events.
+    gaEventTypes.forEach(function (eventType) {
+      window.addEventListener(eventType, onInput, ghListenerOptions);
+    });
+    ////////////////////// FID END
+    /**
+     * Returns the time elapsed (in ms) since navigationStart. For SPAs, returns
+     * the time elapsed since the last LUX.init call.
+     *
+     * When `absolute = true` the time is always relative to navigationStart, even
+     * in SPAs.
+     */
+    function _now(absolute) {
+      var currentTimestamp = Date.now ? Date.now() : +new Date();
+      var msSinceNavigationStart = currentTimestamp - _navigationStart;
+      var startMark = _getMark(gStartMark);
+      // For SPA page views, we use our internal mark as a reference point
+      if (startMark && !absolute) {
+        return msSinceNavigationStart - startMark.startTime;
+      }
+      // For "regular" page views, we can use performance.now() if it's available...
+      if (perf && perf.now) {
+        return perf.now();
+      }
+      // ... or we can use navigationStart as a reference point
+      return msSinceNavigationStart;
+    }
+    // set a mark
+    // NOTE: It's possible to set multiple marks with the same name.
+    function _mark(name) {
+      logger.logEvent(LogEvent.MarkCalled, [name]);
+      if (perf) {
+        if (perf.mark) {
+          return perf.mark(name);
+        } else if (perf.webkitMark) {
+          return perf.webkitMark(name);
+        }
+      }
+      gFlags = addFlag(gFlags, Flags.UserTimingNotSupported);
+      // Shim
+      var entry = {
+        name: name,
+        detail: null,
+        entryType: "mark",
+        startTime: _now(),
+        duration: 0,
+      };
+      gaMarks.push(entry);
+      return entry;
+    }
+    // compute a measurement (delta)
+    function _measure(name, startMarkName, endMarkName) {
+      logger.logEvent(LogEvent.MeasureCalled, [
+        name,
+        startMarkName,
+        endMarkName,
+      ]);
+      if ("undefined" === typeof startMarkName && _getMark(gStartMark)) {
+        // If a start mark is not specified, but the user has called _init() to set a new start,
+        // then use the new start base time (similar to navigationStart) as the start mark.
+        startMarkName = gStartMark;
+      }
+      if (perf) {
+        if (perf.measure) {
+          // IE 11 does not handle null and undefined correctly
+          if (startMarkName) {
+            if (endMarkName) {
+              return perf.measure(name, startMarkName, endMarkName);
+            } else {
+              return perf.measure(name, startMarkName);
+            }
+          } else {
+            return perf.measure(name);
+          }
+        } else if (perf.webkitMeasure) {
+          return perf.webkitMeasure(name, startMarkName, endMarkName);
+        }
+      }
+      // shim:
+      var startTime = 0,
+        endTime = _now();
+      if (startMarkName) {
+        var startMark = _getMark(startMarkName);
+        if (startMark) {
+          startTime = startMark.startTime;
+        } else if (perf && perf.timing && perf.timing[startMarkName]) {
+          // the mark name can also be a property from Navigation Timing
+          startTime = perf.timing[startMarkName] - perf.timing.navigationStart;
+        } else {
+          throw new DOMException(
+            "Failed to execute 'measure' on 'Performance': The mark '".concat(
+              startMarkName,
+              "' does not exist"
+            )
+          );
+        }
+      }
+      if (endMarkName) {
+        var endMark = _getMark(endMarkName);
+        if (endMark) {
+          endTime = endMark.startTime;
+        } else if (perf && perf.timing && perf.timing[endMarkName]) {
+          // the mark name can also be a property from Navigation Timing
+          endTime = perf.timing[endMarkName] - perf.timing.navigationStart;
+        } else {
+          throw new DOMException(
+            "Failed to execute 'measure' on 'Performance': The mark '".concat(
+              endMarkName,
+              "' does not exist"
+            )
+          );
+        }
+      }
+      // Shim
+      var entry = {
+        name: name,
+        detail: null,
+        entryType: "measure",
+        startTime: startTime,
+        duration: endTime - startTime,
+      };
+      gaMeasures.push(entry);
+      return entry;
+    }
+    // Return THE LAST mark that matches the name.
+    function _getMark(name) {
+      return _getM(name, _getMarks());
+    }
+    function _getM(name, aItems) {
+      if (aItems) {
+        for (var i = aItems.length - 1; i >= 0; i--) {
+          var m = aItems[i];
+          if (name === m.name) {
+            return m;
+          }
+        }
+      }
+      return undefined;
+    }
+    // Return an array of marks.
+    function _getMarks() {
+      if (perf) {
+        if (perf.getEntriesByType) {
+          return perf.getEntriesByType("mark");
+        } else if (perf.webkitGetEntriesByType) {
+          return perf.webkitGetEntriesByType("mark");
+        }
+      }
+      return gaMarks;
+    }
+    // Return an array of measures.
+    function _getMeasures() {
+      if (perf) {
+        if (perf.getEntriesByType) {
+          return perf.getEntriesByType("measure");
+        } else if (perf.webkitGetEntriesByType) {
+          return perf.webkitGetEntriesByType("measure");
+        }
+      }
+      return gaMeasures;
+    }
+    // Return a string of User Timing Metrics formatted for beacon querystring.
+    function userTimingValues() {
+      // The User Timing spec allows for there to be multiple marks with the same name,
+      // and multiple measures with the same name. But we can only send back one value
+      // for a name, so we always take the MAX value. We do this by first creating a
+      // hash that has the max value for each name.
+      var hUT = {};
+      var startMark = _getMark(gStartMark);
+      var endMark = _getMark(gEndMark);
+      // marks
+      var aMarks = _getMarks();
+      if (aMarks) {
+        aMarks.forEach(function (m) {
+          if (m === startMark || m === endMark) {
+            // Don't include the internal marks in the beacon
+            return;
+          }
+          var name = m.name;
+          // For user timing values taken in a SPA page load, we need to adjust them
+          // so that they're zeroed against the last LUX.init() call. We zero every
+          // UT value except for the internal LUX start mark.
+          var tZero =
+            name !== gStartMark && startMark ? startMark.startTime : 0;
+          var markTime = Math.round(m.startTime - tZero);
+          if (markTime < 0) {
+            // Exclude marks that were taken before the current SPA page view
+            return;
+          }
+          if (typeof hUT[name] === "undefined") {
+            hUT[name] = markTime;
+          } else {
+            hUT[name] = Math.max(markTime, hUT[name]);
+          }
+        });
+      }
+      // measures
+      var aMeasures = _getMeasures();
+      if (aMeasures) {
+        aMeasures.forEach(function (m) {
+          if (startMark && m.startTime < startMark.startTime) {
+            // Exclude measures that were taken before the current SPA page view
+            return;
+          }
+          var name = m.name;
+          var measureTime = Math.round(m.duration);
+          if (typeof hUT[name] === "undefined") {
+            hUT[name] = measureTime;
+          } else {
+            hUT[name] = Math.max(measureTime, hUT[name]);
+          }
+        });
+      }
+      // OK. hUT is now a hash (associative array) whose keys are the names of the
+      // marks & measures, and the value is the max value. Here we create a tuple
+      // for each name|value pair and then join them.
+      var aUT = [];
+      var aNames = Object.keys(hUT);
+      aNames.forEach(function (name) {
+        aUT.push(name + "|" + hUT[name]);
+      });
+      return aUT.join(",");
+    }
+    // Return a string of Element Timing Metrics formatted for beacon querystring.
+    function elementTimingValues() {
+      var aET = [];
+      if (gaPerfEntries.length) {
+        for (var i = 0; i < gaPerfEntries.length; i++) {
+          var pe = gaPerfEntries[i];
+          if ("element" === pe.entryType && pe.identifier && pe.startTime) {
+            aET.push(pe.identifier + "|" + Math.round(pe.startTime));
+          }
+        }
+      }
+      return aET.join(",");
+    }
+    // Return a string of CPU times formatted for beacon querystring.
+    function cpuTimes() {
+      if ("function" !== typeof PerformanceLongTaskTiming) {
+        // Do not return any CPU metrics if Long Tasks API is not supported.
+        return "";
+      }
+      var sCPU = "";
+      var hCPU = {};
+      var hCPUDetails = {}; // TODO - Could remove this later after large totals go away.
+      // Add up totals for each "type" of long task
+      if (gaPerfEntries.length) {
+        // Long Task start times are relative to NavigationStart which is "0".
+        // But if it is a SPA then the relative start time is gStartMark.
+        var startMark = _getMark(gStartMark);
+        var tZero = startMark ? startMark.startTime : 0;
+        // Do not include Long Tasks that start after the page is done.
+        // For full page loads, "done" is loadEventEnd.
+        var tEnd = perf.timing.loadEventEnd - perf.timing.navigationStart;
+        if (startMark) {
+          // For SPA page loads (determined by the presence of a start mark), "done" is gEndMark.
+          var endMark = _getMark(gEndMark);
+          if (endMark) {
+            tEnd = endMark.startTime;
+          }
+        }
+        for (var i = 0; i < gaPerfEntries.length; i++) {
+          var p = gaPerfEntries[i];
+          if ("longtask" !== p.entryType) {
+            continue;
+          }
+          var dur = Math.round(p.duration);
+          if (p.startTime < tZero) {
+            // In a SPA it is possible that we were in the middle of a Long Task when
+            // LUX.init() was called. If so, only include the duration after tZero.
+            dur -= tZero - p.startTime;
+          } else if (p.startTime >= tEnd) {
+            // In a SPA it is possible that a Long Task started after loadEventEnd but before our
+            // callback from setTimeout(200) happened. Do not include anything that started after tEnd.
+            continue;
+          }
+          var type = p.attribution[0].name; // TODO - is there ever more than 1 attribution???
+          if (!hCPU[type]) {
+            // initialize this category
+            hCPU[type] = 0;
+            hCPUDetails[type] = "";
+          }
+          hCPU[type] += dur;
+          // Send back the raw startTime and duration, as well as the adjusted duration.
+          hCPUDetails[type] += "," + Math.round(p.startTime) + "|" + dur;
+        }
+      }
+      // TODO - Add more types if/when they become available.
+      var jsType = "undefined" !== typeof hCPU["script"] ? "script" : "unknown"; // spec changed from "script" to "unknown" Nov 2018
+      if ("undefined" === typeof hCPU[jsType]) {
+        // Initialize default values for pages that have *no Long Tasks*.
+        hCPU[jsType] = 0;
+        hCPUDetails[jsType] = "";
+      }
+      var hStats = cpuStats(hCPUDetails[jsType]);
+      var sStats =
+        ",n|" +
+        hStats["count"] +
+        ",d|" +
+        hStats["median"] +
+        ",x|" +
+        hStats["max"] +
+        (0 === hStats["fci"] ? "" : ",i|" + hStats["fci"]); // only add FCI if it is non-zero
+      sCPU += "s|" + hCPU[jsType] + sStats + hCPUDetails[jsType];
+      return sCPU;
+    }
+    // Return a hash of "stats" about the CPU details incl. count, max, and median.
+    function cpuStats(sDetails) {
+      // tuples of starttime|duration, eg: ,456|250,789|250,1012|250
+      var max = 0;
+      var fci = getFcp(); // FCI is beginning of 5 second window of no Long Tasks _after_ first contentful paint
+      // If FCP is 0 then that means FCP is not supported.
+      // If FCP is not supported then we can NOT calculate a valid FCI.
+      // Thus, leave FCI = 0 and exclude it from the beacon above.
+      var bFoundFci = 0 === fci ? true : false;
+      var aValues = [];
+      var aTuples = sDetails.split(",");
+      for (var i = 0; i < aTuples.length; i++) {
+        var aTuple = aTuples[i].split("|");
+        if (aTuple.length === 2) {
+          var start = parseInt(aTuple[0]);
+          var dur = parseInt(aTuple[1]);
+          aValues.push(dur);
+          max = dur > max ? dur : max;
+          // FCI
+          if (!bFoundFci && start > fci) {
+            // should always be true (assumes Long Tasks are in chrono order)
+            if (start - fci > 5000) {
+              // More than 5 seconds of inactivity!
+              // FCI is the previous value we set (eg, FCI or the _end_ of the previous Long Task)
+              bFoundFci = true;
+            } else {
+              // Less than 5 seconds of inactivity
+              fci = start + dur; // FCI is now the end of this Long Task
+            }
+          }
+        }
+      }
+      var count = aValues.length;
+      var median = arrayMedian(aValues);
+      return { count: count, median: median, max: max, fci: fci };
+    }
+    function calculateDCLS() {
+      if ("function" !== typeof LayoutShift) {
+        return false;
+      }
+      var DCLS = 0;
+      for (var i = 0; i < gaPerfEntries.length; i++) {
+        var p = gaPerfEntries[i];
+        if ("layout-shift" !== p.entryType || p.hadRecentInput) {
+          continue;
+        }
+        DCLS += p.value;
+      }
+      // The DCL column in Redshift is REAL (FLOAT4) which stores a maximum
+      // of 6 significant digits.
+      return DCLS.toFixed(6);
+    }
+    // Return the median value from an array of integers.
+    function arrayMedian(aValues) {
+      if (0 === aValues.length) {
+        return 0;
+      }
+      var half = Math.floor(aValues.length / 2);
+      aValues.sort(function (a, b) {
+        return a - b;
+      });
+      if (aValues.length % 2) {
+        // Return the middle value.
+        return aValues[half];
+      } else {
+        // Return the average of the two middle values.
+        return Math.round((aValues[half - 1] + aValues[half]) / 2.0);
+      }
+    }
+    // Track how long it took lux.js to load via Resource Timing.
+    function selfLoading() {
+      var sLuxjs = "";
+      if (perf && perf.getEntriesByName) {
+        // Get the lux script URL (including querystring params).
+        var luxScript = getScriptElement("/js/lux.js");
+        if (luxScript) {
+          var aResources = perf.getEntriesByName(luxScript.src);
+          if (aResources && aResources.length) {
+            var r = aResources[0];
+            // DO NOT USE DURATION!!!!!
+            // See https://www.stevesouders.com/blog/2014/11/25/serious-confusion-with-resource-timing/
+            var dns = Math.round(r.domainLookupEnd - r.domainLookupStart);
+            var tcp = Math.round(r.connectEnd - r.connectStart); // includes ssl negotiation
+            var fb = Math.round(r.responseStart - r.requestStart); // first byte
+            var content = Math.round(r.responseEnd - r.responseStart);
+            var networkDuration = dns + tcp + fb + content;
+            var parseEval = LUX_t_end - LUX_t_start;
+            var transferSize = r.encodedBodySize ? r.encodedBodySize : 0;
+            // Instead of a delimiter use a 1-letter abbreviation as a separator.
+            sLuxjs =
+              "d" +
+              dns +
+              "t" +
+              tcp +
+              "f" +
+              fb +
+              "c" +
+              content +
+              "n" +
+              networkDuration +
+              "e" +
+              parseEval +
+              "r" +
+              userConfig.samplerate + // sample rate
+              (transferSize ? "x" + transferSize : "") +
+              (gLuxSnippetStart ? "l" + gLuxSnippetStart : "") +
+              "s" +
+              (LUX_t_start - _navigationStart) + // when lux.js started getting evaluated relative to navigationStart
+              "";
+          }
+        }
+      }
+      return sLuxjs;
+    }
+    // _clearIx
+    function _clearIx() {
+      ghIx = {};
+    }
+    // Return a string of Interaction Metrics formatted for beacon querystring.
+    function ixValues() {
+      var aIx = [];
+      for (var key in ghIx) {
+        aIx.push(key + "|" + ghIx[key]);
+      }
+      return aIx.join(",");
+    }
+    // _addData()
+    function _addData(name, value) {
+      logger.logEvent(LogEvent.AddDataCalled, [name, value]);
+      var typeN = typeof name;
+      var typeV = typeof value;
+      if (
+        "string" === typeN &&
+        ("string" === typeV || "number" === typeV || "boolean" === typeV)
+      ) {
+        ghData[name] = value;
+      }
+      if (gbLuxSent) {
+        // This is special: We want to allow customers to call LUX.addData()
+        // _after_ window.onload. So we have to send a Customer Data beacon that
+        // includes the new customer data.
+        // Do setTimeout so that if there are multiple back-to-back addData calls
+        // we get them all in one beacon.
+        if (gCustomerDataTimeout) {
+          // Cancel the timer for any previous beacons so that if they have not
+          // yet been sent we can combine all the data in a new beacon.
+          clearTimeout(gCustomerDataTimeout);
+        }
+        gCustomerDataTimeout = window.setTimeout(_sendCustomerData, 100);
+      }
+    }
+    // _sample()
+    // Return true if beacons for this page should be sampled.
+    function _sample() {
+      if (
+        "undefined" === typeof gUid ||
+        "undefined" === typeof userConfig.samplerate
+      ) {
+        return false; // bail
+      }
+      var nThis = ("" + gUid).substr(-2); // number for THIS page - from 00 to 99
+      return parseInt(nThis) < userConfig.samplerate;
+    }
+    // Return a string of Customer Data formatted for beacon querystring.
+    function customerDataValues() {
+      var aData = [];
+      for (var key in ghData) {
+        var value = "" + ghData[key]; // convert to string (eg for ints and booleans)
+        // strip delimiters (instead of escaping)
+        key = key.replace(/,/g, "").replace(/\|/g, "");
+        value = value.replace(/,/g, "").replace(/\|/g, "");
+        aData.push(key + "|" + value);
+      }
+      return encodeURIComponent(aData.join(","));
+    }
+    // _init()
+    // Use this function in Single Page Apps to reset things.
+    // This function should ONLY be called within a SPA!
+    // Otherwise, you might clear marks & measures that were set by a shim.
+    function _init() {
+      // Some customers (incorrectly) call LUX.init on the very first page load of a SPA. This would
+      // cause some first-page-only data (like paint metrics) to be lost. To prevent this, we silently
+      // bail from this function when we detect an unnecessary LUX.init call.
+      var endMark = _getMark(gEndMark);
+      if (!endMark) {
+        return;
+      }
+      logger.logEvent(LogEvent.InitCalled);
+      // Clear all interactions from the previous "page".
+      _clearIx();
+      // Since we actively disable IX handlers, we re-add them each time.
+      _removeIxHandlers();
+      _addIxHandlers();
+      // Reset a bunch of flags.
+      gbNavSent = 0;
+      gbLuxSent = 0;
+      gbIxSent = 0;
+      gbFirstPV = 0;
+      gSyncId = createSyncId();
+      gUid = refreshUniqueId(gSyncId);
+      gaPerfEntries.splice(0); // clear out the array of performance entries (do NOT redefine gaPerfEntries!)
+      nErrors = 0;
+      // Clear flags then set the flag that init was called (ie, this is a SPA).
+      gFlags = 0;
+      gFlags = addFlag(gFlags, Flags.InitCalled);
+      // Mark the "navigationStart" for this SPA page.
+      _mark(gStartMark);
+    }
+    // Return the number of blocking (synchronous) external scripts in the page.
+    function blockingScripts() {
+      var lastViewportElem = lastViewportElement();
+      if (!lastViewportElem) {
+        // If we can not find the last DOM element in the viewport,
+        // use the old technique of just counting sync scripts.
+        return syncScripts();
+      }
+      // Find all the synchronous scripts that are ABOVE the last DOM element in the
+      // viewport. (If they are BELOW then they do not block rendering of initial viewport.)
+      var aElems = document.getElementsByTagName("script");
+      var num = 0;
+      for (var i = 0, len = aElems.length; i < len; i++) {
+        var e = aElems[i];
+        if (
+          e.src &&
+          !e.async &&
+          !e.defer &&
+          0 !== (e.compareDocumentPosition(lastViewportElem) & 4)
         ) {
-          var u = i[s];
-          if ("longtask" === u.entryType) {
-            var c = Math.round(u.duration);
-            if (u.startTime < a) c -= a - u.startTime;
-            else if (u.startTime >= o) continue;
-            var d = u.attribution[0].name;
-            t[d] || ((t[d] = 0), (n[d] = "")),
-              (t[d] += c),
-              (n[d] += "," + Math.round(u.startTime) + "|" + c);
+          // If the script has a SRC and async is false and it occurs BEFORE the last viewport element,
+          // then increment the counter.
+          num++;
+        }
+      }
+      return num;
+    }
+    // Return the number of blocking (synchronous) external scripts in the page.
+    function blockingStylesheets() {
+      var nBlocking = 0;
+      var aElems = document.getElementsByTagName("link");
+      for (var i = 0, len = aElems.length; i < len; i++) {
+        var e = aElems[i];
+        if (e.href && "stylesheet" === e.rel && 0 !== e.href.indexOf("data:")) {
+          if (
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            e.onloadcssdefined ||
+            "print" === e.media ||
+            "style" === e.as ||
+            ("function" === typeof e.onload && "all" === e.media)
+          );
+          else {
+            nBlocking++;
           }
         }
-      var f = void 0 !== t.script ? "script" : "unknown";
-      void 0 === t[f] && ((t[f] = 0), (n[f] = ""));
-      var m = (function (e) {
-          for (var t = 0, n = A(), r = 0 === n, i = [], a = e.split(","), o = 0; o < a.length; o++) {
-            var s = a[o].split("|");
-            if (2 === s.length) {
-              var u = parseInt(s[0]),
-                c = parseInt(s[1]);
-              i.push(c), (t = c > t ? c : t), !r && u > n && (u - n > 5e3 ? (r = !0) : (n = u + c));
-            }
-          }
-          var d = i.length,
-            f = (function (e) {
-              if (0 === e.length) return 0;
-              var t = Math.floor(e.length / 2);
-              return (
-                e.sort(function (e, t) {
-                  return e - t;
-                }),
-                e.length % 2 ? e[t] : Math.round((e[t - 1] + e[t]) / 2)
-              );
-            })(i);
-          return { count: d, median: f, max: t, fci: n };
-        })(n[f]),
-        l = ",n|" + m.count + ",d|" + m.median + ",x|" + m.max + (0 === m.fci ? "" : ",i|" + m.fci);
-      return (e += "s|" + t[f] + l + n[f]);
-    }
-    function R() {
-      var e = [];
-      for (var t in d) e.push(t + "|" + d[t]);
-      return e.join(",");
-    }
-    function W() {
-      if (void 0 === T || void 0 === X) return !1;
-      var e = ("" + T).substr(-2);
-      return parseInt(e) < X;
-    }
-    function F() {
-      var e = [];
-      for (var t in f) {
-        var n = "" + f[t];
-        (t = t.replace(/,/g, "").replace(/\|/g, "")),
-          (n = n.replace(/,/g, "").replace(/\|/g, "")),
-          e.push(t + "|" + n);
       }
-      return encodeURIComponent(e.join(","));
+      return nBlocking;
     }
-    function G() {
-      var e = Z();
-      if (!e)
-        return (function () {
-          for (
-            var e = document.getElementsByTagName("script"), t = 0, n = 0, r = e.length;
-            n < r;
-            n++
-          ) {
-            var i = e[n];
-            !i.src || i.async || i.defer || t++;
-          }
-          return t;
-        })();
-      for (var t = document.getElementsByTagName("script"), n = 0, r = 0, i = t.length; r < i; r++) {
-        var a = t[r];
-        !a.src || a.async || a.defer || 0 == (4 & a.compareDocumentPosition(e)) || n++;
+    // Return the number of synchronous external scripts in the page.
+    function syncScripts() {
+      var aElems = document.getElementsByTagName("script");
+      var num = 0;
+      for (var i = 0, len = aElems.length; i < len; i++) {
+        var e = aElems[i];
+        if (e.src && !e.async && !e.defer) {
+          // If the script has a SRC and async is false, then increment the counter.
+          num++;
+        }
       }
-      return n;
+      return num;
     }
-    function q(e) {
-      for (var t = document.getElementsByTagName(e), n = 0, r = 0, i = t.length; r < i; r++) {
-        var a = t[r];
+    // Return the number of external scripts in the page.
+    function numScripts() {
+      var aElems = document.getElementsByTagName("script");
+      var num = 0;
+      for (var i = 0, len = aElems.length; i < len; i++) {
+        var e = aElems[i];
+        if (e.src) {
+          num++;
+        }
+      }
+      return num;
+    }
+    // Return the number of stylesheets in the page.
+    function numStylesheets() {
+      var aElems = document.getElementsByTagName("link");
+      var num = 0;
+      for (var i = 0, len = aElems.length; i < len; i++) {
+        var e = aElems[i];
+        if (e.href && "stylesheet" == e.rel) {
+          num++;
+        }
+      }
+      return num;
+    }
+    function inlineTagSize(tagName) {
+      var aElems = document.getElementsByTagName(tagName);
+      var size = 0;
+      for (var i = 0, len = aElems.length; i < len; i++) {
+        var e = aElems[i];
         try {
-          n += a.innerHTML.length;
-        } catch (a) {
-          return pe("Error accessing inline element innerHTML."), -1;
+          size += e.innerHTML.length;
+        } catch (e) {
+          // It seems like IE throws an error when accessing the innerHTML property
+          logger.logEvent(LogEvent.InnerHtmlAccessError);
+          return -1;
         }
       }
-      return n;
+      return size;
     }
-    function z() {
-      var e = "",
-        t = M;
-      if (_(h) && _(y)) {
-        var n = Math.round(_(h).startTime);
-        e = (t += n) + "fs0ls" + (u = Math.round(_(y).startTime) - n) + "le" + u;
-      } else if (L && L.timing) {
-        var r = L.timing,
-          a = (function () {
-            if (L && L.timing) {
-              var e,
-                t = L.timing,
-                n = t.navigationStart;
-              if (n) {
-                if (
-                  L &&
-                  L.getEntriesByType &&
-                  L.getEntriesByType("paint") &&
-                  L.getEntriesByType("paint").length
-                )
-                  for (var r = L.getEntriesByType("paint"), i = 0; i < r.length; i++) {
-                    var a = r[i];
-                    if ("first-paint" === a.name) {
-                      e = Math.round(a.startTime);
-                      break;
-                    }
-                  }
-                else if (window.chrome && "function" == typeof window.chrome.loadTimes) {
-                  var o = window.chrome.loadTimes();
-                  o && (e = Math.round(1e3 * o.firstPaintTime - n));
-                } else t.msFirstPaint && (e = Math.round(t.msFirstPaint - n));
-                if (e > 0) return e;
-              }
-            }
-            return pe("Paint Timing not supported."), null;
-          })(),
-          o = A(),
-          s = (function () {
-            if (i.length)
-              for (var e = i.length - 1; e >= 0; e--) {
-                var t = i[e];
-                if ("largest-contentful-paint" === t.entryType) return Math.round(t.startTime);
-              }
-            return 0;
-          })();
-        e =
-          t +
-          (r.redirectStart ? "rs" + (r.redirectStart - t) : "") +
-          (r.redirectEnd ? "re" + (r.redirectEnd - t) : "") +
-          (r.fetchStart ? "fs" + (r.fetchStart - t) : "") +
-          (r.domainLookupStart ? "ds" + (r.domainLookupStart - t) : "") +
-          (r.domainLookupEnd ? "de" + (r.domainLookupEnd - t) : "") +
-          (r.connectStart ? "cs" + (r.connectStart - t) : "") +
-          (r.secureConnectionStart ? "sc" + (r.secureConnectionStart - t) : "") +
-          (r.connectEnd ? "ce" + (r.connectEnd - t) : "") +
-          (r.requestStart ? "qs" + (r.requestStart - t) : "") +
-          (r.responseStart ? "bs" + (r.responseStart - t) : "") +
-          (r.responseEnd ? "be" + (r.responseEnd - t) : "") +
-          (r.domLoading ? "ol" + (r.domLoading - t) : "") +
-          (r.domInteractive ? "oi" + (r.domInteractive - t) : "") +
-          (r.domContentLoadedEventStart ? "os" + (r.domContentLoadedEventStart - t) : "") +
-          (r.domContentLoadedEventEnd ? "oe" + (r.domContentLoadedEventEnd - t) : "") +
-          (r.domComplete ? "oc" + (r.domComplete - t) : "") +
-          (r.loadEventStart ? "ls" + (r.loadEventStart - t) : "") +
-          (r.loadEventEnd ? "le" + (r.loadEventEnd - t) : "") +
-          (a ? "sr" + a : "") +
-          (o ? "fc" + o : "") +
-          (s ? "lc" + s : "");
-      } else if (_(y)) {
-        var u;
-        e = t + "fs0ls" + (u = Math.round(_(y).startTime)) + "le" + u;
+    function getNavTiming() {
+      var s = "";
+      var ns = _navigationStart;
+      var startMark = _getMark(gStartMark);
+      var endMark = _getMark(gEndMark);
+      if (startMark && endMark) {
+        // This is a SPA page view, so send the SPA marks & measures instead of Nav Timing.
+        var start = Math.round(startMark.startTime); // the start mark is "zero"
+        ns += start; // "navigationStart" for a SPA is the real navigationStart plus the start mark
+        var end = Math.round(endMark.startTime) - start; // delta from start mark
+        s =
+          ns +
+          "fs" +
+          0 + // fetchStart is the same as navigationStart for a SPA
+          "ls" +
+          end +
+          "le" +
+          end +
+          "";
+      } else if (perf && perf.timing) {
+        // Return the real Nav Timing metrics because this is the "main" page view (not a SPA)
+        var t = perf.timing;
+        var startRender = getStartRender(); // first paint
+        var fcp = getFcp(); // first contentful paint
+        var lcp = getLcp(); // largest contentful paint
+        s =
+          ns +
+          (t.redirectStart ? "rs" + (t.redirectStart - ns) : "") +
+          (t.redirectEnd ? "re" + (t.redirectEnd - ns) : "") +
+          (t.fetchStart ? "fs" + (t.fetchStart - ns) : "") +
+          (t.domainLookupStart ? "ds" + (t.domainLookupStart - ns) : "") +
+          (t.domainLookupEnd ? "de" + (t.domainLookupEnd - ns) : "") +
+          (t.connectStart ? "cs" + (t.connectStart - ns) : "") +
+          (t.secureConnectionStart
+            ? "sc" + (t.secureConnectionStart - ns)
+            : "") +
+          (t.connectEnd ? "ce" + (t.connectEnd - ns) : "") +
+          (t.requestStart ? "qs" + (t.requestStart - ns) : "") + // reQuest start
+          (t.responseStart ? "bs" + (t.responseStart - ns) : "") + // body start
+          (t.responseEnd ? "be" + (t.responseEnd - ns) : "") +
+          (t.domLoading ? "ol" + (t.domLoading - ns) : "") +
+          (t.domInteractive ? "oi" + (t.domInteractive - ns) : "") +
+          (t.domContentLoadedEventStart
+            ? "os" + (t.domContentLoadedEventStart - ns)
+            : "") +
+          (t.domContentLoadedEventEnd
+            ? "oe" + (t.domContentLoadedEventEnd - ns)
+            : "") +
+          (t.domComplete ? "oc" + (t.domComplete - ns) : "") +
+          (t.loadEventStart ? "ls" + (t.loadEventStart - ns) : "") +
+          (t.loadEventEnd ? "le" + (t.loadEventEnd - ns) : "") +
+          (startRender ? "sr" + startRender : "") +
+          (fcp ? "fc" + fcp : "") +
+          (lcp ? "lc" + lcp : "") +
+          "";
+      } else if (endMark) {
+        // This is a "main" page view that does NOT support Navigation Timing - strange.
+        var end = Math.round(endMark.startTime);
+        s =
+          ns +
+          "fs" +
+          0 + // fetchStart is the same as navigationStart
+          "ls" +
+          end +
+          "le" +
+          end +
+          "";
       }
-      return e;
+      return s;
     }
-    function A() {
-      if (L && L.getEntriesByType && L.getEntriesByType("paint"))
-        for (var e = L.getEntriesByType("paint"), t = 0; t < e.length; t++) {
-          var n = e[t];
-          if ("first-contentful-paint" === n.name) return Math.round(n.startTime);
+    // Return First Contentful Paint or zero if not supported.
+    function getFcp() {
+      if (
+        perf &&
+        perf.getEntriesByType &&
+        perf.getEntriesByType("paint").length
+      ) {
+        for (
+          var arr = perf.getEntriesByType("paint"), i = 0;
+          i < arr.length;
+          i++
+        ) {
+          var ppt = arr[i]; // PerformancePaintTiming object
+          if ("first-contentful-paint" === ppt.name) {
+            return Math.round(ppt.startTime);
+          }
         }
+      }
       return 0;
     }
-    function J() {
-      if (void 0 !== LUX.customerid) return LUX.customerid;
-      var e = Y("/js/lux.js");
-      return e
-        ? ((LUX.customerid = (function (e, t) {
-            for (var n = e.split("?")[1].split("&"), r = 0, i = n.length; r < i; r++) {
-              var a = n[r].split("=");
-              if (t === a[0]) return a[1];
-            }
-            return;
-          })(e.src, "id")),
-          LUX.customerid)
-        : "";
+    // Return Largest Contentful Paint or zero if not supported.
+    function getLcp() {
+      if (gaPerfEntries.length) {
+        // Find the *LAST* LCP per https://web.dev/largest-contentful-paint
+        for (var i = gaPerfEntries.length - 1; i >= 0; i--) {
+          var pe = gaPerfEntries[i];
+          if ("largest-contentful-paint" === pe.entryType) {
+            return Math.round(pe.startTime);
+          }
+        }
+      }
+      return 0;
     }
-    function Y(e) {
-      for (var t = document.getElementsByTagName("script"), n = 0, r = t.length; n < r; n++) {
-        var i = t[n];
-        if (i.src && -1 !== i.src.indexOf(e)) return i;
+    // Return best guess at Start Render time (in ms).
+    // Mostly works on just Chrome and IE.
+    // Return null if not supported.
+    function getStartRender() {
+      if (perf && perf.timing) {
+        var t = perf.timing;
+        var ns = t.navigationStart;
+        var startRender = void 0;
+        if (ns) {
+          if (
+            perf &&
+            perf.getEntriesByType &&
+            perf.getEntriesByType("paint").length
+          ) {
+            // If Paint Timing API is supported, use it.
+            for (
+              var arr = perf.getEntriesByType("paint"), i = 0;
+              i < arr.length;
+              i++
+            ) {
+              var ppt = arr[i]; // PerformancePaintTiming object
+              if ("first-paint" === ppt.name) {
+                startRender = Math.round(ppt.startTime);
+                break;
+              }
+            }
+          } else if (
+            window.chrome &&
+            "function" === typeof window.chrome.loadTimes
+          ) {
+            // If chrome, get first paint time from `chrome.loadTimes`. Need extra error handling.
+            var loadTimes = window.chrome.loadTimes();
+            if (loadTimes) {
+              startRender = Math.round(loadTimes.firstPaintTime * 1000 - ns);
+            }
+          } else if (t.msFirstPaint) {
+            // If IE/Edge, use the prefixed `msFirstPaint` property (see http://msdn.microsoft.com/ff974719).
+            startRender = Math.round(t.msFirstPaint - ns);
+          }
+          if (startRender) {
+            return startRender;
+          }
+        }
+      }
+      logger.logEvent(LogEvent.PaintTimingNotSupported);
+      return null;
+    }
+    function getCustomerId() {
+      if (typeof LUX.customerid !== "undefined") {
+        // Return the id explicitly set in the JavaScript variable.
+        return LUX.customerid;
+      }
+      // Extract the id of the lux.js script element.
+      var luxScript = getScriptElement("/js/lux.js");
+      if (luxScript) {
+        LUX.customerid = getQuerystringParam(luxScript.src, "id");
+        return LUX.customerid;
+      }
+      return "";
+    }
+    // Return the SCRIPT DOM element whose SRC contains the URL snippet.
+    // This is used to find the LUX script element.
+    function getScriptElement(urlsnippet) {
+      var aScripts = document.getElementsByTagName("script");
+      for (var i = 0, len = aScripts.length; i < len; i++) {
+        var script = aScripts[i];
+        if (script.src && -1 !== script.src.indexOf(urlsnippet)) {
+          return script;
+        }
       }
       return null;
     }
-    function K(e) {
-      var t = 0;
-      if (e.parentNode) for (; (e = e.parentNode); ) t++;
-      return t;
-    }
-    function Q() {
-      if (L && L.getEntriesByType) {
-        var e = performance.getEntriesByType("navigation");
-        if (e && e.length > 0 && e[0].encodedBodySize) return e[0].encodedBodySize;
+    function getQuerystringParam(url, name) {
+      var qs = url.split("?")[1];
+      var aTuples = qs.split("&");
+      for (var i = 0, len = aTuples.length; i < len; i++) {
+        var tuple = aTuples[i];
+        var aTuple = tuple.split("=");
+        var key = aTuple[0];
+        if (name === key) {
+          return aTuple[1];
+        }
       }
-      return 0;
+      return undefined;
     }
-    function V() {
-      var e = navigator.connection,
-        t = "";
+    function avgDomDepth() {
+      var aElems = document.getElementsByTagName("*");
+      var i = aElems.length;
+      var totalParents = 0;
+      while (i--) {
+        totalParents += numParents(aElems[i]);
+      }
+      var average = Math.round(totalParents / aElems.length);
+      return average;
+    }
+    function numParents(elem) {
+      var n = 0;
+      if (elem.parentNode) {
+        while ((elem = elem.parentNode)) {
+          n++;
+        }
+      }
+      return n;
+    }
+    function docHeight(doc) {
+      var body = doc.body,
+        docelem = doc.documentElement;
+      var height = Math.max(
+        body ? body.scrollHeight : 0,
+        body ? body.offsetHeight : 0,
+        docelem ? docelem.clientHeight : 0,
+        docelem ? docelem.scrollHeight : 0,
+        docelem ? docelem.offsetHeight : 0
+      );
+      return height;
+    }
+    function docWidth(doc) {
+      var body = doc.body,
+        docelem = doc.documentElement;
+      var width = Math.max(
+        body ? body.scrollWidth : 0,
+        body ? body.offsetWidth : 0,
+        docelem ? docelem.clientWidth : 0,
+        docelem ? docelem.scrollWidth : 0,
+        docelem ? docelem.offsetWidth : 0
+      );
+      return width;
+    }
+    // Return the main HTML document transfer size (in bytes).
+    function docSize() {
+      if (
+        perf &&
+        perf.getEntriesByType &&
+        perf.getEntriesByType("navigation").length
+      ) {
+        var aEntries = performance.getEntriesByType("navigation");
+        if (aEntries && aEntries.length > 0 && aEntries[0]["encodedBodySize"]) {
+          return aEntries[0]["encodedBodySize"];
+        }
+      }
+      return 0; // ERROR - NOT FOUND
+    }
+    // Return the navigation type. 0 = normal, 1 = reload, etc.
+    // Return empty string if not available.
+    function navigationType() {
+      if (
+        perf &&
+        perf.navigation &&
+        "undefined" != typeof perf.navigation.type
+      ) {
+        return perf.navigation.type;
+      }
+      return "";
+    }
+    // Return the connection type based on Network Information API.
+    // Note this API is in flux.
+    function connectionType() {
+      var c = navigator.connection;
+      var connType = "";
+      if (c && c.effectiveType) {
+        connType = c.effectiveType;
+        if ("slow-2g" === connType) {
+          connType = "Slow 2G";
+        } else if (
+          "2g" === connType ||
+          "3g" === connType ||
+          "4g" === connType ||
+          "5g" === connType
+        ) {
+          connType = connType.toUpperCase();
+        } else {
+          connType = connType.charAt(0).toUpperCase() + connType.slice(1);
+        }
+      }
+      return connType;
+    }
+    // Return an array of image elements that are in the top viewport.
+    function imagesATF() {
+      var aImages = document.getElementsByTagName("img");
+      var aImagesAtf = [];
+      if (aImages) {
+        for (var i = 0, len = aImages.length; i < len; i++) {
+          var image = aImages[i];
+          if (inViewport(image)) {
+            aImagesAtf.push(image);
+          }
+        }
+      }
+      return aImagesAtf;
+    }
+    // Return the last element in the viewport.
+    function lastViewportElement(parent) {
+      if (!parent) {
+        // We call this function recursively passing in the parent element,
+        // but if no parent then start with BODY.
+        parent = document.body;
+      }
+      var lastChildInViewport;
+      if (parent) {
+        // Got errors that parent was null so testing again here.
+        // Find the last child that is in the viewport.
+        // Elements are listed in DOM order.
+        var aChildren = parent.children;
+        if (aChildren) {
+          for (var i = 0, len = aChildren.length; i < len; i++) {
+            var child = aChildren[i];
+            if (inViewport(child)) {
+              // The children are in DOM order, so we just have to
+              // save the LAST child that was in the viewport.
+              lastChildInViewport = child;
+            }
+          }
+        }
+      }
+      if (lastChildInViewport) {
+        // See if this last child has any children in the viewport.
+        return lastViewportElement(lastChildInViewport);
+      } else {
+        // If NONE of the children are in the viewport, return the parent.
+        // This assumes that the parent is in the viewport because it was passed in.
+        return parent;
+      }
+    }
+    // Return true if the element is in the viewport.
+    function inViewport(e) {
+      var vh = document.documentElement.clientHeight;
+      var vw = document.documentElement.clientWidth;
+      // Return true if the top-left corner is in the viewport and it has width & height.
+      var lt = findPos(e);
       return (
-        e &&
-          e.effectiveType &&
-          (t =
-            "slow-2g" === (t = e.effectiveType)
-              ? "Slow 2G"
-              : "2g" === t || "3g" === t || "4g" === t || "5g" === t
-              ? t.toUpperCase()
-              : t.charAt(0).toUpperCase() + t.slice(1)),
-        t
+        lt[0] >= 0 &&
+        lt[1] >= 0 &&
+        lt[0] < vw &&
+        lt[1] < vh &&
+        e.offsetWidth > 0 &&
+        e.offsetHeight > 0
       );
     }
-    function Z(e) {
-      var t;
-      if ((e || (e = document.body), e)) {
-        var n = e.children;
-        if (n)
-          for (var r = 0, i = n.length; r < i; r++) {
-            var a = n[r];
-            $(a) && (t = a);
-          }
+    // Return an array containing the top & left coordinates of the element.
+    // from http://www.quirksmode.org/js/findpos.html
+    function findPos(e) {
+      var curleft = 0;
+      var curtop = 0;
+      while (e) {
+        curleft += e.offsetLeft;
+        curtop += e.offsetTop;
+        e = e.offsetParent;
       }
-      return t ? Z(t) : e;
+      return [curleft, curtop];
     }
-    function $(e) {
-      var t = document.documentElement.clientHeight,
-        n = document.documentElement.clientWidth,
-        r = (function (e) {
-          var t = 0,
-            n = 0;
-          for (; e; ) (t += e.offsetLeft), (n += e.offsetTop), (e = e.offsetParent);
-          return [t, n];
-        })(e);
-      return (
-        r[0] >= 0 && r[1] >= 0 && r[0] < n && r[1] < t && e.offsetWidth > 0 && e.offsetHeight > 0
-      );
+    // Mark the load time of the current page. Intended to be used in SPAs where it is not desirable to
+    // send the beacon as soon as the page has finished loading.
+    function _markLoadTime() {
+      _mark(gEndMark);
     }
-    function ee() {
-      pe("Enter LUX.send().");
-      var e = J();
-      if (e && E && W() && !m) {
-        j(y);
-        var t = O(),
-          r = (function () {
-            var e = [];
-            if (i.length)
-              for (var t = 0; t < i.length; t++) {
-                var n = i[t];
-                "element" === n.entryType &&
-                  n.identifier &&
-                  n.startTime &&
-                  e.push(n.identifier + "|" + Math.round(n.startTime));
-              }
-            return e.join(",");
-          })(),
-          a = F(),
-          o = "";
-        v || (o = R());
-        var u = H(),
-          c = (function () {
-            if ("function" != typeof LayoutShift) return !1;
-            for (var e = 0, t = 0; t < i.length; t++) {
-              var n = i[t];
-              "layout-shift" !== n.entryType || n.hadRecentInput || (e += n.value);
-            }
-            return e.toFixed(6);
-          })(),
-          d = (function () {
-            var e = "";
-            if (L && L.getEntriesByName) {
-              var t = Y("/js/lux.js");
-              if (t) {
-                var n = L.getEntriesByName(t.src);
-                if (n && n.length) {
-                  var r = n[0],
-                    i = Math.round(r.domainLookupEnd - r.domainLookupStart),
-                    a = Math.round(r.connectEnd - r.connectStart),
-                    o = Math.round(r.responseStart - r.requestStart),
-                    s = Math.round(r.responseEnd - r.responseStart),
-                    u = i + a + o + s,
-                    c = LUX_t_end - LUX_t_start,
-                    d = r.encodedBodySize ? r.encodedBodySize : 0;
-                  e =
-                    "d" +
-                    i +
-                    "t" +
-                    a +
-                    "f" +
-                    o +
-                    "c" +
-                    s +
-                    "n" +
-                    u +
-                    "e" +
-                    c +
-                    "r" +
-                    X +
-                    (d ? "x" + d : "") +
-                    (B ? "l" + B : "") +
-                    "s" +
-                    (LUX_t_start - M);
-                }
-              }
-            }
-            return e;
-          })();
-        document.visibilityState && "visible" !== document.visibilityState && (s |= 8);
-        var f,
-          g,
-          h,
-          w =
-            U +
-            "?v=" +
-            "216&id=" +
-            e +
-            "&sid=" +
-            E +
-            "&uid=" +
-            T +
-            (a ? "&CD=" + a : "") +
-            "&l=" +
-            encodeURIComponent(ge()),
-          k = q("script"),
-          N = q("style"),
-          x =
-            (l ? "" : "&NT=" + z()) +
-            (p ? "&LJS=" + d : "") +
-            "&PS=ns" +
-            (function () {
-              for (
-                var e = document.getElementsByTagName("script"), t = 0, n = 0, r = e.length;
-                n < r;
-                n++
-              )
-                e[n].src && t++;
-              return t;
-            })() +
-            "bs" +
-            G() +
-            (k > -1 ? "is" + k : "") +
-            "ss" +
-            (function () {
-              for (
-                var e = document.getElementsByTagName("link"), t = 0, n = 0, r = e.length;
-                n < r;
-                n++
-              ) {
-                var i = e[n];
-                i.href && "stylesheet" == i.rel && t++;
-              }
-              return t;
-            })() +
-            "bc" +
-            (function () {
-              for (
-                var e = 0, t = document.getElementsByTagName("link"), n = 0, r = t.length;
-                n < r;
-                n++
-              ) {
-                var i = t[n];
-                i.href &&
-                  "stylesheet" === i.rel &&
-                  0 !== i.href.indexOf("data:") &&
-                  (i.onloadcssdefined ||
-                    "print" === i.media ||
-                    "style" === i.as ||
-                    ("function" == typeof i.onload && "all" === i.media) ||
-                    e++);
-              }
-              return e;
-            })() +
-            (N > -1 ? "ic" + N : "") +
-            "ia" +
-            (function () {
-              var e = document.getElementsByTagName("img"),
-                t = [];
-              if (e)
-                for (var n = 0, r = e.length; n < r; n++) {
-                  var i = e[n];
-                  $(i) && t.push(i);
-                }
-              return t;
-            })().length +
-            "it" +
-            document.getElementsByTagName("img").length +
-            "dd" +
-            (function () {
-              for (var e = document.getElementsByTagName("*"), t = e.length, n = 0; t--; )
-                n += K(e[t]);
-              return Math.round(n / e.length);
-            })() +
-            "nd" +
-            document.getElementsByTagName("*").length +
-            "vh" +
-            document.documentElement.clientHeight +
-            "vw" +
-            document.documentElement.clientWidth +
-            "dh" +
-            ((f = document),
-            (g = f.body),
-            (h = f.documentElement),
-            Math.max(
-              g ? g.scrollHeight : 0,
-              g ? g.offsetHeight : 0,
-              h ? h.clientHeight : 0,
-              h ? h.scrollHeight : 0,
-              h ? h.offsetHeight : 0
-            ) + "dw") +
-            (function (e) {
-              var t = e.body,
-                n = e.documentElement;
-              return Math.max(
-                t ? t.scrollWidth : 0,
-                t ? t.offsetWidth : 0,
-                n ? n.clientWidth : 0,
-                n ? n.scrollWidth : 0,
-                n ? n.offsetWidth : 0
-              );
-            })(document) +
-            (Q() ? "ds" + Q() : "") +
-            (V() ? "ct" + V() + "_" : "") +
-            "er" +
-            n +
-            "nt" +
-            (L && L.navigation && void 0 !== L.navigation.type ? L.navigation.type : "") +
-            (navigator.deviceMemory ? "dm" + Math.round(navigator.deviceMemory) : "") +
-            (o ? "&IX=" + o : "") +
-            (S ? "&FID=" + S : "") +
-            (u ? "&CPU=" + u : "") +
-            (s ? "&fl=" + s : "") +
-            (r ? "&ET=" + r : "") +
-            "&HN=" +
-            encodeURIComponent(document.location.hostname) +
-            (!1 !== c ? "&CLS=" + c : ""),
-          C = "";
-        if (t) {
-          var I = w.length + x.length;
-          if (I + t.length <= b) x += "&UT=" + t;
-          else {
-            var D = b - I,
-              _ = t.lastIndexOf(",", D);
-            (x += "&UT=" + t.substring(0, _)), (C = t.substring(_ + 1));
-          }
-        }
-        var P = w + x;
-        pe("Sending main LUX beacon: " + P), re(P), (m = 1), (l = 1), (v = o ? 1 : 0);
-        for (var A = b - w.length; C; ) {
-          var Z = "";
-          if (C.length <= A) (Z = C), (C = "");
-          else {
-            var ee = C.lastIndexOf(",", A);
-            -1 === ee && (ee = C.indexOf(",")),
-              -1 === ee ? ((Z = C), (C = "")) : ((Z = C.substring(0, ee)), (C = C.substring(ee + 1)));
-          }
-          var te = w + "&UT=" + Z;
-          pe("Sending extra User Timing beacon: " + te), re(te);
-        }
-      }
-    }
-    function te() {
-      var e = J();
-      if (e && E && W() && !v && m) {
-        var t = R();
-        if (t) {
-          var n = F(),
-            r =
-              "?v=216&id=" +
-              e +
-              "&sid=" +
-              E +
-              "&uid=" +
-              T +
-              (n ? "&CD=" + n : "") +
-              "&l=" +
-              encodeURIComponent(ge()) +
-              "&IX=" +
-              t +
-              (S ? "&FID=" + S : "") +
-              "&HN=" +
-              encodeURIComponent(document.location.hostname),
-            i = U + r;
-          pe("Sending Interaction Metrics beacon: " + i), re(i), (v = 1);
-        }
-      }
-    }
-    function ne() {
-      var e = J();
-      if (e && E && W() && m) {
-        var t = F();
-        if (t) {
-          var n =
-              "?v=216&id=" +
-              e +
-              "&sid=" +
-              E +
-              "&uid=" +
-              T +
-              "&CD=" +
-              t +
-              "&l=" +
-              encodeURIComponent(ge()) +
-              "&HN=" +
-              encodeURIComponent(document.location.hostname),
-            r = U + n;
-          pe("Sending late Customer Data beacon: " + r), re(r);
-        }
-      }
-    }
-    function re(e) {
-      if ("simple" !== LUX.beaconMode)
-        return (function (e) {
-          var t = document.createElement("script");
-          (t.async = !0), (t.src = e);
-          var n = document.getElementsByTagName("script");
-          n.length
-            ? n[0].parentNode.insertBefore(t, n[0])
-            : ((n = document.getElementsByTagName("head")).length ||
-                (n = document.getElementsByTagName("body")).length) &&
-              n[0].appendChild(t);
-        })(e);
-      new Image().src = e;
-    }
-    function ie(e) {
-      if (e.id) return e.id;
-      for (var t, n = e; n.parentNode && n.parentNode.tagName; ) {
-        if ((n = n.parentNode).hasAttribute("data-sctrack")) return n.getAttribute("data-sctrack");
-        n.id && !t && (t = n.id);
-      }
-      var r = "INPUT" === e.tagName && "submit" === e.type,
-        i = "BUTTON" === e.tagName,
-        a = "A" === e.tagName;
-      return r && e.value ? e.value : (i || a) && e.innerText ? e.innerText : t || "";
-    }
-    function ae() {
-      void 0 === d.s && (d.s = Math.round(D()));
-    }
-    function oe(e) {
-      if ((fe(), void 0 === d.k)) {
-        if (((d.k = Math.round(D())), e && e.target)) {
-          var t = ie(e.target);
-          t && (d.ki = t);
-        }
-        te();
-      }
-    }
-    function se(e) {
-      if ((fe(), void 0 === d.c)) {
-        d.c = Math.round(D());
-        var t = null;
-        try {
-          e && e.target && (t = e.target);
-        } catch (e) {
-          pe("Error accessing event target."), (t = null);
-        }
-        if (t) {
-          e.clientX && ((d.cx = e.clientX), (d.cy = e.clientY));
-          var n = ie(e.target);
-          n && (d.ci = n);
-        }
-        te();
-      }
-    }
-    function ue(e, t) {
-      window.addEventListener
-        ? window.addEventListener(e, t, !1)
-        : window.attachEvent && window.attachEvent("on" + e, t);
-    }
-    function ce(e, t) {
-      window.removeEventListener
-        ? window.removeEventListener(e, t, !1)
-        : window.detachEvent && window.detachEvent("on" + e, t);
-    }
-    function de() {
-      ue("scroll", ae), ue("keypress", oe), ue("mousedown", se);
-    }
-    function fe() {
-      ce("scroll", ae), ce("keypress", oe), ce("mousedown", se);
-    }
-    function me(e) {
-      var t, n;
-      return e
-        ? Number(new Date()) + "00000"
-        : Number(new Date()) +
-            "" +
-            ((t = parseInt(1e5 * Math.random())), ((n = "00000") + t).slice(-n.length));
-    }
-    function le(e) {
-      var t = (function (e) {
-        try {
-          for (var t = document.cookie.split(";"), n = 0; n < t.length; n++) {
-            var r = t[n].split("=");
-            if (e === r[0].trim()) return unescape(r[1]);
-          }
-        } catch (e) {
-          pe("Error accessing document.cookie.");
-        }
+    // Beacon back the LUX data.
+    function _sendLux() {
+      logger.logEvent(LogEvent.SendCalled);
+      var customerid = getCustomerId();
+      if (
+        !customerid ||
+        !gSyncId ||
+        !validDomain() ||
+        !_sample() || // OUTSIDE the sampled range
+        gbLuxSent // LUX data already sent
+      ) {
         return;
-      })("lux_uid");
-      if (!t || t.length < 11) t = e;
-      else {
-        var n = parseInt(t.substring(0, 10));
-        Number(new Date()) / 1e3 - n > 86400 && (t = e);
       }
-      return ve(t), t;
-    }
-    function ve(e) {
-      return (
-        (function (e, t, n) {
-          try {
-            document.cookie =
-              e + "=" + escape(t) + (n ? "; max-age=" + n : "") + "; path=/; SameSite=Lax";
-          } catch (e) {
-            pe("Error setting document.cookie.");
-          }
-        })("lux_uid", e, 1800),
-        e
-      );
-    }
-    function ge() {
-      if (void 0 !== LUX.label) return LUX.label;
-      if (void 0 !== LUX.jspagelabel) {
-        var e = Function('"use strict"; return ' + LUX.jspagelabel);
-        try {
-          var t = e();
-          if (t) return t;
-        } catch (e) {
-          console.log("Error evaluating customer settings LUX page label:", e);
+      var startMark = _getMark(gStartMark);
+      var endMark = _getMark(gEndMark);
+      if (!startMark || (endMark && endMark.startTime < startMark.startTime)) {
+        // Record the synthetic loadEventStart time for this page, unless it was already recorded
+        // with LUX.markLoadTime()
+        _markLoadTime();
+      }
+      var sUT = userTimingValues(); // User Timing data
+      var sET = elementTimingValues(); // Element Timing data
+      var sCustomerData = customerDataValues(); // customer data
+      var sIx = ""; // Interaction Metrics
+      if (!gbIxSent) {
+        // It is possible for the IX beacon to be sent BEFORE the "main" window.onload LUX beacon.
+        // Make sure we do not send the IX data twice.
+        sIx = ixValues();
+      }
+      var sCPU = cpuTimes();
+      var DCLS = calculateDCLS();
+      var sLuxjs = selfLoading();
+      if (document.visibilityState && "visible" !== document.visibilityState) {
+        gFlags = addFlag(gFlags, Flags.VisibilityStateNotVisible);
+      }
+      // We want ALL beacons to have ALL the data used for query filters (geo, pagelabel, browser, & customerdata).
+      // So we create a base URL that has all the necessary information:
+      var baseUrl =
+        userConfig.beaconUrl +
+        "?v=" +
+        SCRIPT_VERSION +
+        "&id=" +
+        customerid +
+        "&sid=" +
+        gSyncId +
+        "&uid=" +
+        gUid +
+        (sCustomerData ? "&CD=" + sCustomerData : "") +
+        "&l=" +
+        encodeURIComponent(_getPageLabel());
+      var is = inlineTagSize("script");
+      var ic = inlineTagSize("style");
+      var querystring =
+        // only send Nav Timing and lux.js metrics on initial pageload (not for SPA page views)
+        (gbNavSent ? "" : "&NT=" + getNavTiming()) +
+        (gbFirstPV ? "&LJS=" + sLuxjs : "") +
+        // Page Stats
+        "&PS=ns" +
+        numScripts() +
+        "bs" +
+        blockingScripts() +
+        (is > -1 ? "is" + is : "") +
+        "ss" +
+        numStylesheets() +
+        "bc" +
+        blockingStylesheets() +
+        (ic > -1 ? "ic" + ic : "") +
+        "ia" +
+        imagesATF().length +
+        "it" +
+        document.getElementsByTagName("img").length + // total number of images
+        "dd" +
+        avgDomDepth() +
+        "nd" +
+        document.getElementsByTagName("*").length + // numdomelements
+        "vh" +
+        document.documentElement.clientHeight + // see http://www.quirksmode.org/mobile/viewports.html
+        "vw" +
+        document.documentElement.clientWidth +
+        "dh" +
+        docHeight(document) +
+        "dw" +
+        docWidth(document) +
+        (docSize() ? "ds" + docSize() : "") + // document HTTP transfer size (bytes)
+        (connectionType() ? "ct" + connectionType() + "_" : "") + // delimit with "_" since values can be non-numeric so need a way to extract with regex in VCL
+        "er" +
+        nErrors +
+        "nt" +
+        navigationType() + // reload
+        (navigator.deviceMemory
+          ? "dm" + Math.round(navigator.deviceMemory)
+          : "") + // device memory (GB)
+        (sIx ? "&IX=" + sIx : "") +
+        (gFirstInputDelay ? "&FID=" + gFirstInputDelay : "") +
+        (sCPU ? "&CPU=" + sCPU : "") +
+        (gFlags ? "&fl=" + gFlags : "") +
+        (sET ? "&ET=" + sET : "") + // element timing
+        "&HN=" +
+        encodeURIComponent(document.location.hostname) +
+        (DCLS !== false ? "&CLS=" + DCLS : "") +
+        "&PN=" +
+        encodeURIComponent(document.location.pathname);
+      // User Timing marks & measures
+      var sUT_remainder = "";
+      if (sUT) {
+        var curLen = baseUrl.length + querystring.length;
+        if (curLen + sUT.length <= gMaxQuerystring) {
+          // Add all User Timing
+          querystring += "&UT=" + sUT;
+        } else {
+          // Only add a substring of User Timing
+          var avail_1 = gMaxQuerystring - curLen; // how much room is left in the querystring
+          var iComma = sUT.lastIndexOf(",", avail_1); // as many UT tuples as possible
+          querystring += "&UT=" + sUT.substring(0, iComma);
+          sUT_remainder = sUT.substring(iComma + 1);
         }
       }
+      // Send the MAIN LUX beacon.
+      var mainBeaconUrl = baseUrl + querystring;
+      logger.logEvent(LogEvent.MainBeaconSent, [mainBeaconUrl]);
+      _sendBeacon(mainBeaconUrl);
+      // Set some states.
+      gbLuxSent = 1;
+      gbNavSent = 1;
+      gbIxSent = sIx ? 1 : 0;
+      // Send other beacons for JUST User Timing.
+      var avail = gMaxQuerystring - baseUrl.length;
+      while (sUT_remainder) {
+        var sUT_cur = "";
+        if (sUT_remainder.length <= avail) {
+          // We can fit ALL the remaining UT params.
+          sUT_cur = sUT_remainder;
+          sUT_remainder = "";
+        } else {
+          // We have to take a subset of the remaining UT params.
+          var iComma = sUT_remainder.lastIndexOf(",", avail); // as many UT tuples as possible
+          if (-1 === iComma) {
+            // Trouble: we have SO LITTLE available space we can not fit the first UT tuple.
+            // Try it anyway but find it by searching from the front.
+            iComma = sUT_remainder.indexOf(",");
+          }
+          if (-1 === iComma) {
+            // The is only one UT tuple left, but it is bigger than the available space.
+            // Take the whole tuple even tho it is too big.
+            sUT_cur = sUT_remainder;
+            sUT_remainder = "";
+          } else {
+            sUT_cur = sUT_remainder.substring(0, iComma);
+            sUT_remainder = sUT_remainder.substring(iComma + 1);
+          }
+        }
+        var utBeaconUrl = baseUrl + "&UT=" + sUT_cur;
+        logger.logEvent(LogEvent.UserTimingBeaconSent, [utBeaconUrl]);
+        _sendBeacon(utBeaconUrl);
+      }
+    }
+    // Beacon back the IX data separately (need to sync with LUX beacon on the backend).
+    function _sendIx() {
+      var customerid = getCustomerId();
+      if (
+        !customerid ||
+        !gSyncId ||
+        !validDomain() ||
+        !_sample() || // OUTSIDE the sampled range
+        gbIxSent || // IX data already sent
+        !gbLuxSent // LUX has NOT been sent yet, so wait to include it there
+      ) {
+        return;
+      }
+      var sIx = ixValues(); // Interaction Metrics
+      if (sIx) {
+        var sCustomerData = customerDataValues(); // customer data
+        var querystring =
+          "?v=" +
+          SCRIPT_VERSION +
+          "&id=" +
+          customerid +
+          "&sid=" +
+          gSyncId +
+          "&uid=" +
+          gUid +
+          (sCustomerData ? "&CD=" + sCustomerData : "") +
+          "&l=" +
+          encodeURIComponent(_getPageLabel()) +
+          "&IX=" +
+          sIx +
+          (gFirstInputDelay ? "&FID=" + gFirstInputDelay : "") +
+          "&HN=" +
+          encodeURIComponent(document.location.hostname) +
+          "&PN=" +
+          encodeURIComponent(document.location.pathname);
+        var beaconUrl = userConfig.beaconUrl + querystring;
+        logger.logEvent(LogEvent.InteractionBeaconSent, [beaconUrl]);
+        _sendBeacon(beaconUrl);
+        gbIxSent = 1;
+      }
+    }
+    // Beacon back customer data that is recorded _after_ the main beacon was sent
+    // (i.e., customer data after window.onload).
+    function _sendCustomerData() {
+      var customerid = getCustomerId();
+      if (
+        !customerid ||
+        !gSyncId ||
+        !validDomain() ||
+        !_sample() || // OUTSIDE the sampled range
+        !gbLuxSent // LUX has NOT been sent yet, so wait to include it there
+      ) {
+        return;
+      }
+      var sCustomerData = customerDataValues(); // customer data
+      if (sCustomerData) {
+        var querystring =
+          "?v=" +
+          SCRIPT_VERSION +
+          "&id=" +
+          customerid +
+          "&sid=" +
+          gSyncId +
+          "&uid=" +
+          gUid +
+          "&CD=" +
+          sCustomerData +
+          "&l=" +
+          encodeURIComponent(_getPageLabel()) +
+          "&HN=" +
+          encodeURIComponent(document.location.hostname) +
+          "&PN=" +
+          encodeURIComponent(document.location.pathname);
+        var beaconUrl = userConfig.beaconUrl + querystring;
+        logger.logEvent(LogEvent.CustomDataBeaconSent, [beaconUrl]);
+        _sendBeacon(beaconUrl);
+      }
+    }
+    function _sendBeacon(url) {
+      new Image().src = url;
+    }
+    // INTERACTION METRICS
+    // Register event handlers to detect Interaction Metrics.
+    // We only need to detect the FIRST of each event, after which we remove the handler for that event..
+    // Each event handler is a standalone function so we can reference that function in removeListener.
+    // If the event(s) happen before LUX finishes, then the IX metric(s) is(are) sent with LUX.
+    // Most of the time, however, IX happens *after* LUX, so we send a separate IX beacon but
+    // only beacon back the first interaction that happens.
+    /**
+     * Get the interaction attribution name for an element
+     *
+     * @param {HTMLElement} el
+     * @returns string
+     */
+    function interactionAttributionForElement(el) {
+      // Default to using the element's own ID if it has one
+      if (el.id) {
+        return el.id;
+      }
+      // The next preference is to find an ancestor with the "data-sctrack" attribute
+      var ancestor = el;
+      // We also store the first ancestor ID that we find, so we can use it as
+      // a fallback later.
+      var ancestorId;
+      while (ancestor.parentNode && ancestor.parentNode.tagName) {
+        ancestor = ancestor.parentNode;
+        if (ancestor.hasAttribute("data-sctrack")) {
+          return ancestor.getAttribute("data-sctrack");
+        }
+        if (ancestor.id && !ancestorId) {
+          ancestorId = ancestor.id;
+        }
+      }
+      // The next preference is to use the text content of a button or link
+      var isSubmitInput = el.tagName === "INPUT" && el.type === "submit";
+      var isButton = el.tagName === "BUTTON";
+      var isLink = el.tagName === "A";
+      if (isSubmitInput && el.value) {
+        return el.value;
+      }
+      if ((isButton || isLink) && el.innerText) {
+        return el.innerText;
+      }
+      // The next preference is to use the first ancestor ID
+      if (ancestorId) {
+        return ancestorId;
+      }
+      // No suitable attribute was found
+      return "";
+    }
+    function _scrollHandler() {
+      // Leave handlers IN PLACE so we can track which ID is clicked/keyed.
+      // _removeIxHandlers();
+      if ("undefined" === typeof ghIx["s"]) {
+        ghIx["s"] = Math.round(_now());
+        // _sendIx(); // wait for key or click to send the IX beacon
+      }
+    }
+    function _keyHandler(e) {
+      _removeIxHandlers();
+      if ("undefined" === typeof ghIx["k"]) {
+        ghIx["k"] = Math.round(_now());
+        if (e && e.target) {
+          var trackId = interactionAttributionForElement(e.target);
+          if (trackId) {
+            ghIx["ki"] = trackId;
+          }
+        }
+        _sendIx();
+      }
+    }
+    function _clickHandler(e) {
+      _removeIxHandlers();
+      if ("undefined" === typeof ghIx["c"]) {
+        ghIx["c"] = Math.round(_now());
+        var target = null;
+        try {
+          // Seeing "Permission denied" errors, so do a simple try-catch.
+          if (e && e.target) {
+            target = e.target;
+          }
+        } catch (e) {
+          logger.logEvent(LogEvent.EventTargetAccessError);
+          target = null;
+        }
+        if (target) {
+          if (e.clientX) {
+            // Save the x&y of the mouse click.
+            ghIx["cx"] = e.clientX;
+            ghIx["cy"] = e.clientY;
+          }
+          var trackId = interactionAttributionForElement(e.target);
+          if (trackId) {
+            ghIx["ci"] = trackId;
+          }
+        }
+        _sendIx();
+      }
+    }
+    // Wrapper to support older browsers (<= IE8)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    function addListener(type, callback, useCapture) {
+      if (useCapture === void 0) {
+        useCapture = false;
+      }
+      if (window.addEventListener) {
+        window.addEventListener(type, callback, useCapture);
+      } else if (window.attachEvent) {
+        window.attachEvent("on" + type, callback);
+      }
+    }
+    // Wrapper to support older browsers (<= IE8)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    function removeListener(type, callback, useCapture) {
+      if (useCapture === void 0) {
+        useCapture = false;
+      }
+      if (window.removeEventListener) {
+        window.removeEventListener(type, callback, useCapture);
+      } else if (window.detachEvent) {
+        window.detachEvent("on" + type, callback);
+      }
+    }
+    function _addUnloadHandlers() {
+      var onunload = function () {
+        gFlags = addFlag(gFlags, Flags.BeaconSentFromUnloadHandler);
+        _sendLux();
+        _sendIx();
+      };
+      // As well as visibilitychange, we also listen for pagehide. This is really only for browsers
+      // with buggy visibilitychange implementations. For much older browsers that don't support
+      // pagehide, we use unload and beforeunload.
+      if ("onpagehide" in self) {
+        addListener("pagehide", onunload, true);
+      } else {
+        addListener("unload", onunload, true);
+        addListener("beforeunload", onunload, true);
+      }
+      addListener(
+        "visibilitychange",
+        function () {
+          if (document.visibilityState === "hidden") {
+            onunload();
+          }
+        },
+        true
+      );
+    }
+    function _addIxHandlers() {
+      addListener("scroll", _scrollHandler);
+      addListener("keypress", _keyHandler);
+      addListener("mousedown", _clickHandler);
+    }
+    function _removeIxHandlers() {
+      removeListener("scroll", _scrollHandler);
+      removeListener("keypress", _keyHandler);
+      removeListener("mousedown", _clickHandler);
+    }
+    // This is a big number (epoch ms . random) that is used to matchup a LUX beacon with a separate IX beacon
+    // (because they get sent at different times). Each "page view" (including SPA) should have a
+    // unique gSyncId.
+    function createSyncId(inSampleBucket) {
+      if (inSampleBucket === void 0) {
+        inSampleBucket = false;
+      }
+      if (inSampleBucket) {
+        // "00" matches all sample rates
+        return "".concat(Number(new Date()), "00000");
+      }
+      return ""
+        .concat(Number(new Date()))
+        .concat(_padLeft(String(Math.round(100000 * Math.random())), "00000"));
+    }
+    // Unique ID (also known as Session ID)
+    // We use this to track all the page views in a single user session.
+    // If there is NOT a UID then set it to the new value (which is the same as the "sync ID" for this page).
+    // Refresh its expiration date and return its value.
+    function refreshUniqueId(newValue) {
+      var uid = _getCookie("lux_uid");
+      if (!uid || uid.length < 11) {
+        uid = newValue;
+      } else {
+        // Prevent sessions lasting more than 24 hours.
+        // The first 10 characters of uid is the epoch time when the session started.
+        var uidStart = parseInt(uid.substring(0, 10));
+        var now_2 = Number(new Date()) / 1000; // in seconds
+        if (now_2 - uidStart > 24 * 60 * 60) {
+          // older than 24 hours - reset to new value
+          uid = newValue;
+        }
+      }
+      setUniqueId(uid);
+      return uid;
+    }
+    function setUniqueId(uid) {
+      _setCookie("lux_uid", uid, gSessionTimeout);
+      return uid;
+    }
+    // We use gUid (session ID) to do sampling. We make this available to customers so
+    // they can do sampling (A/B testing) using the same session ID.
+    function _getUniqueId() {
+      return gUid;
+    }
+    // Return the current page label.
+    function _getPageLabel() {
+      if (typeof LUX.label !== "undefined") {
+        gFlags = addFlag(gFlags, Flags.PageLabelFromLabelProp);
+        return LUX.label;
+      } else if (typeof LUX.jspagelabel !== "undefined") {
+        var evaluateJsPageLabel = Function(
+          '"use strict"; return '.concat(LUX.jspagelabel)
+        );
+        try {
+          var label = evaluateJsPageLabel();
+          if (label) {
+            gFlags = addFlag(gFlags, Flags.PageLabelFromGlobalVariable);
+            return label;
+          }
+        } catch (e) {
+          logger.logEvent(LogEvent.PageLabelEvaluationError, [
+            LUX.jspagelabel,
+            e,
+          ]);
+        }
+      }
+      // default to document.title
+      gFlags = addFlag(gFlags, Flags.PageLabelFromDocumentTitle);
       return document.title;
     }
-    function pe(t) {
-      e.push(t), LUX.debug && console.log("LUX: " + t);
+    // Return true if the hostname of the current page is one of the listed domains.
+    function validDomain() {
+      // Our signup process is such that a customer almost always deploys lux.js BEFORE we
+      // enable LUX for their account. In which case, the list of domains is empty and no
+      // beacons will be sent. Further, that version of lux.js will be cached at the CDN
+      // and browser for a week. Instead, do the domain validation on the backend in VCL.
+      return true;
     }
-    N.forEach(function (e) {
-      window.addEventListener(e, I, x);
-    }),
-      k &&
-        ("complete" == document.readyState
-          ? ee()
-          : ue("load", function () {
-              setTimeout(ee, 200);
-            }),
-        ue("beforeunload", ee),
-        ue("unload", ee),
-        ue("beforeunload", te),
-        ue("unload", te)),
-      de();
-    var he = {
-      mark: j,
-      measure: function (e, t, n) {
-        if ((pe("Enter LUX.measure(), name = " + e), void 0 === t && _(h) && (t = h), L)) {
-          if (L.measure) return t ? (n ? L.measure(e, t, n) : L.measure(e, t)) : L.measure(e);
-          if (L.webkitMeasure) return L.webkitMeasure(e, t, n);
-        }
-        var r = 0,
-          i = D();
-        if (t) {
-          var a = _(t);
-          if (a) r = a.startTime;
-          else {
-            if (!(L && L.timing && L.timing[t])) return;
-            r = L.timing[t] - L.timing.navigationStart;
+    function _getCookie(name) {
+      try {
+        // Seeing "Permission denied" errors, so do a simple try-catch.
+        var aTuples = document.cookie.split(";");
+        for (var i = 0; i < aTuples.length; i++) {
+          var aTuple = aTuples[i].split("=");
+          if (name === aTuple[0].trim()) {
+            // cookie name starts with " " if not first
+            return unescape(aTuple[1]);
           }
         }
-        if (n) {
-          var o = _(n);
-          if (o) i = o.startTime;
-          else {
-            if (!(L && L.timing && L.timing[n])) return;
-            i = L.timing[n] - L.timing.navigationStart;
-          }
-        }
-        c.push({ name: e, entryType: "measure", startTime: r, duration: i - r });
-      },
-      init: function () {
-        pe("Enter LUX.init()."),
-          (d = {}),
-          fe(),
-          de(),
-          (l = 0),
-          (m = 0),
-          (v = 0),
-          (p = 0),
-          (E = me()),
-          (T = le(E)),
-          i.splice(0),
-          (s = 0),
-          (s |= 1),
-          j(h);
-      },
-      send: ee,
-      addData: function (e, t) {
-        pe("Enter LUX.addData(), name = " + e + ", value = " + t);
-        var n = typeof t;
-        "string" !== typeof e || ("string" !== n && "number" !== n && "boolean" !== n) || (f[e] = t),
-          m && (o && clearTimeout(o), (o = setTimeout(ne, 100)));
-      },
-      getSessionId: function () {
-        return T;
-      },
-      getDebug: function () {
-        return e;
-      },
-      forceSample: function () {
-        ve(me(!0)), console.log("Sampling has been turned on for this session.");
-      },
-      doUpdate: function (e, n) {
-        if (e && t < e && document.body && !g) {
-          pe("Updating cached version of lux.js from 216 to " + e + "."), (g = 1);
-          var r = Y("/js/lux.js");
-          if (r)
-            if ("function" == typeof fetch) fetch(r.src, { cache: "reload" });
-            else {
-              var i = document.createElement("iframe");
-              (i.style.display = "none"),
-                (i.id = "LUX_update_iframe"),
-                (i.src =
-                  "//cdn.speedcurve.com/luxupdate.php?src=" +
-                  encodeURIComponent(r.src) +
-                  (n ? "&tw=" + n : "")),
-                document.body.appendChild(i);
-            }
-        }
-      },
-      cmd: function (e) {
-        var t = e.shift();
-        "function" == typeof he[t] && he[t].apply(he, e);
-      },
-      beaconMode: w,
-      beaconUrl: U,
-      samplerate: X,
-      auto: k,
-      label: void 0 !== LUX.label ? LUX.label : void 0,
-      jspagelabel: void 0 !== LUX.jspagelabel ? LUX.jspagelabel : void 0,
-      version: t,
-      ae: [],
-      al: [],
-      debug: !!LUX.debug,
+      } catch (e) {
+        logger.logEvent(LogEvent.CookieReadError);
+      }
+      return undefined;
+    }
+    function _setCookie(name, value, seconds) {
+      try {
+        document.cookie =
+          name +
+          "=" +
+          escape(value) +
+          (seconds ? "; max-age=" + seconds : "") +
+          "; path=/; SameSite=Lax";
+      } catch (e) {
+        logger.logEvent(LogEvent.CookieSetError);
+      }
+    }
+    // "padding" MUST be the length of the resulting string, eg, "0000" if you want a result of length 4.
+    function _padLeft(str, padding) {
+      return (padding + str).slice(-padding.length);
+    }
+    // Set "LUX.auto=false" to disable send results automatically and
+    // instead you must call LUX.send() explicitly.
+    if (userConfig.auto) {
+      if (document.readyState === "complete") {
+        // If onload has already passed, send the beacon now.
+        _sendLux();
+      } else {
+        // Ow, send the beacon slightly after window.onload.
+        addListener("load", function () {
+          setTimeout(_sendLux, 200);
+        });
+      }
+    }
+    // Add the unload handlers for auto mode, or when LUX.measureUntil is "pagehidden"
+    if (userConfig.sendBeaconOnPageHidden) {
+      _addUnloadHandlers();
+    }
+    // Regardless of userConfig.auto, we need to register the IX handlers immediately.
+    _addIxHandlers();
+    // This is the public API.
+    var _LUX = userConfig;
+    // Functions
+    _LUX.mark = _mark;
+    _LUX.measure = _measure;
+    _LUX.init = _init;
+    _LUX.markLoadTime = _markLoadTime;
+    _LUX.send = _sendLux;
+    _LUX.addData = _addData;
+    _LUX.getSessionId = _getUniqueId; // so customers can do their own sampling
+    _LUX.getDebug = function () {
+      return logger.getEvents();
     };
-    return (
-      LUX.ac &&
-        LUX.ac.length &&
-        LUX.ac.forEach(function (e) {
-          var t = e.shift();
-          "function" == typeof he[t] && he[t].apply(he, e);
-        }),
-      void 0 !== window.LUX_ae &&
-        window.LUX_ae.forEach(function (e) {
-          r(e);
-        }),
-      pe("lux.js evaluation end."),
-      he
-    );
+    _LUX.forceSample = function () {
+      logger.logEvent(LogEvent.ForceSampleCalled);
+      setUniqueId(createSyncId(true));
+    };
+    _LUX.doUpdate = function () {
+      // Deprecated, intentionally empty.
+    };
+    _LUX.cmd = _runCommand;
+    // Public properties
+    _LUX.version = SCRIPT_VERSION;
+    // "Private" properties
+    _LUX.ae = []; // array for error handler (ignored)
+    _LUX.al = []; // array for Long Tasks (ignored)
+    /**
+     * Run a command from the command queue
+     */
+    function _runCommand(_a) {
+      var fn = _a[0],
+        args = _a.slice(1);
+      if (typeof _LUX[fn] === "function") {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        _LUX[fn].apply(_LUX, args);
+      }
+    }
+    // Process the command queue
+    if (LUX.ac && LUX.ac.length) {
+      LUX.ac.forEach(_runCommand);
+    }
+    // process the error events that happened before lux.js got loaded
+    if (typeof window.LUX_ae !== "undefined") {
+      window.LUX_ae.forEach(errorHandler);
+    }
+    logger.logEvent(LogEvent.EvaluationEnd);
+    return _LUX;
   })();
-  var LUX_t_end = Date.now();
+  window.LUX = LUX;
+  var LUX_t_end = now();
 
-// -----------------------------------------------------------------------------
-// More settings
-// -----------------------------------------------------------------------------
-//
-// This ID usually appended to the end of the lux.js as a query string when
-// using the SpeedCurve hosted version - but we have to include it here as this
-// is self hosted.
-LUX.customerid = 47044334;
+  // ---------------------------------------------------------------------------
+  // More settings
+  // ---------------------------------------------------------------------------
+  //
+  // This ID usually appended to the end of the lux.js as a query string when
+  // using the SpeedCurve hosted version - but we have to include it here as
+  // this is self hosted.
+  LUX.customerid = 47044334;
 
-// Turn on the image-based beacon, rather than have a remote JavaScript file
-// fetched and executed.
-LUX.beaconMode = "simple";
+  // Setting debug to `true` shows what happening as it happens. Running
+  // `LUX.getDebug()` in the browser's console will show the history of what's
+  // happened.
+  // LUX.debug = true;
 
-// Setting debug to `true` shows what happening as it happens. Running
-// `LUX.getDebug()` in the browser's console will show the history of what's
-// happened.
-LUX.debug = false;
+  // Forces sampling - useful for when used with `debug = true`
+  // LUX.forceSample()
 
-// Forces sampling - useful for when used with `debug = true`
-// LUX.forceSample()
-
-// -----------------------------------------------------------------------------
-// End of more settings
-// -----------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------
+  // End of more settings
+  // ---------------------------------------------------------------------------
+})();
