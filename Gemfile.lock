@@ -375,5 +375,8 @@ DEPENDENCIES
   webmock (~> 3.8.3)
   yard
 
+RUBY VERSION
+   ruby 2.7.5p203
+
 BUNDLED WITH
    1.17.3
