@@ -144,73 +144,63 @@ describe "Layout for public", type: :view do
   it "contains real user metrics loader script and LUX measurer script" do
     visit "/public"
 
-    assert page.has_selector?("html > head > script[src*='lux/lux-measurer']", visible: :all)
-    assert page.has_selector?("html > head > script[src*='rum-loader']", visible: :all)
+    assert page.has_selector?("html > head > script[src*='lux/lux-measurer']", visible: :hidden)
+    assert page.has_selector?("html > head > script[src*='rum-loader']", visible: :hidden)
   end
 
-  it "does not contain LUX submission script when the page loads" do
-    Capybara.current_driver = Capybara.javascript_driver
-
+  it "does not contain LUX submission script when the page loads", js: true do
     visit "/public"
 
-    assert page.has_no_selector?("html > head > script[src*='lux/lux-reporter']", visible: :all)
+    assert page.has_no_selector?("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
   end
 
-  it "only contains LUX submission script after usage cookies have been allowed" do
-    Capybara.current_driver = Capybara.javascript_driver
-
+  it "only contains LUX submission script after usage cookies have been allowed", js: true do
     visit "/public"
 
-    assert page.has_selector?("html > head > script[src*='rum-loader']", visible: :all)
-    assert page.has_selector?("html > head > script[src*='lux/lux-measurer']", visible: :all)
+    assert page.has_selector?("html > head > script[src*='rum-loader']", visible: :hidden)
+    assert page.has_selector?("html > head > script[src*='lux/lux-measurer']", visible: :hidden)
 
-    assert page.has_no_selector?("html > head > script[src*='lux/lux-reporter']", visible: :all)
+    assert page.has_no_selector?("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
 
     click_button "Accept additional cookies"
 
-    assert page.has_selector?("html > head > script[src*='lux/lux-reporter']", visible: :all)
+    assert page.has_selector?("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
   end
 
-  it "contains real user metrics scripts on the page after usage cookies have been allowed" do
-    Capybara.current_driver = Capybara.javascript_driver
-
+  it "contains real user metrics scripts on the page after usage cookies have been allowed", js: true do
     visit "/public"
 
     click_button "Accept additional cookies"
 
     visit "/public"
 
-    assert page.has_selector?("html > head > script[src*='rum-loader']", visible: :all)
-    assert page.has_selector?("html > head > script[src*='lux/lux-reporter']", visible: :all)
-    assert page.has_selector?("html > head > script[src*='lux/lux-measurer']", visible: :all)
+    assert page.has_selector?("html > head > script[src*='rum-loader']", visible: :hidden)
+    assert page.has_selector?("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
+    assert page.has_selector?("html > head > script[src*='lux/lux-measurer']", visible: :hidden)
   end
 
-  it "does not contain real user metrics scripts after usage cookies have not been allowed" do
-    Capybara.current_driver = Capybara.javascript_driver
-
+  it "does not contain real user metrics scripts after usage cookies have not been allowed", js: true do
     visit "/public"
 
     click_button "Reject additional cookies"
 
-    assert page.has_selector?("html > head > script[src*='rum-loader']", visible: :all)
-    assert page.has_selector?("html > head > script[src*='lux/lux-measurer']", visible: :all)
+    assert page.has_selector?("html > head > script[src*='rum-loader']", visible: :hidden)
+    assert page.has_selector?("html > head > script[src*='lux/lux-measurer']", visible: :hidden)
 
-    assert page.has_no_selector?("html > head > script[src*='lux/lux-reporter']", visible: :all)
+    assert page.has_no_selector?("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
   end
 
-  it "does not contain real user metrics scripts on page after usage cookies have not been allowed" do
-    Capybara.current_driver = Capybara.javascript_driver
-
+  it "does not contain real user metrics scripts on page after usage cookies have not been allowed", js: true do
     visit "/public"
 
     click_button "Reject additional cookies"
 
     visit "/public"
 
-    assert page.has_selector?("html > head > script[src*='rum-loader']", visible: :all)
-    assert page.has_selector?("html > head > script[src*='lux/lux-measurer']", visible: :all)
+    assert page.has_selector?("html > head > script[src*='rum-loader']", visible: :hidden)
+    assert page.has_selector?("html > head > script[src*='lux/lux-measurer']", visible: :hidden)
 
-    assert page.has_no_selector?("html > head > script[src*='lux/lux-reporter']", visible: :all)
+    assert page.has_no_selector?("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
   end
 
   it "account layout renders with a phase banner by default" do
