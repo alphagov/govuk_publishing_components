@@ -87,21 +87,22 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           var params = new FormData($form)
           params = new URLSearchParams(params).toString()
 
-          xhr.open('POST', url, true)
-          xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
-
-          xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
+          this.done = function () {
+            if (xhr.status === 200) {
               this.trackEvent(this.getTrackEventParams($form))
               this.showFormSuccess(xhr.message)
               this.revealInitialPrompt()
               this.setInitialAriaAttributes()
-              this.activeForm.hidden ? this.activeForm.hidden = false : this.activeForm.hidden = true
+              this.activeForm.hidden = true
             } else {
               this.showError(xhr)
               this.enableSubmitFormButton($form)
             }
           }.bind(this)
+
+          xhr.addEventListener('loadend', this.done)
+          xhr.open('POST', url, true)
+          xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
 
           this.disableSubmitFormButton($form)
           xhr.send(params)
