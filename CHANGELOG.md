@@ -12,6 +12,7 @@
 * Update real user metrics LUX.js to v300 ([PR #2637](https://github.com/alphagov/govuk_publishing_components/pull/2637))
 * Remove `header-navigation.js` ([PR #2632](https://github.com/alphagov/govuk_publishing_components/pull/2632))
 * Add support for Rails 7; add support for Ruby 3.0 and 3.1; and drop support for Ruby 2.6 ([PR #2642](https://github.com/alphagov/govuk_publishing_components/pull/2642))
+* Hide feedback component error summary on submission ([PR #2557](https://github.com/alphagov/govuk_publishing_components/pull/2557))
 
 ## 28.6.0
 
