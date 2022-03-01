@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Allow attachments to display link to accessible format request form [PR #2636](https://github.com/alphagov/govuk_publishing_components/pull/2636)
+* Improve custom dimensions code ([PR #2646](https://github.com/alphagov/govuk_publishing_components/pull/2646))
 
 ## 28.7.1
 

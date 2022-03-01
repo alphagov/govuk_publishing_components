@@ -165,6 +165,17 @@ describe('Page content', function () {
       createMetaTags('format', 'mainstream_browse_page')
     })
 
+    it('gets the number of sections in the browse root', function () {
+      var parent = createDummyElement('div', false, 'root')
+
+      for (var i = 1; i <= 3; i++) {
+        createDummyElement('ul', false, false, false, false, parent)
+      }
+
+      var result = window.GOVUK.PageContent.getNumberOfSections()
+      expect(result).toEqual(3)
+    })
+
     it('gets the number of sections when there is a browse section', function () {
       var parent = createDummyElement('div', false, 'section')
 
@@ -190,6 +201,21 @@ describe('Page content', function () {
 
       var result = window.GOVUK.PageContent.getNumberOfSections()
       expect(result).toEqual(3)
+    })
+
+    it('gets the number of links in the browse root', function () {
+      var parent = createDummyElement('div', false, 'section')
+      var child
+
+      for (var i = 1; i <= 2; i++) {
+        child = createDummyElement('ul', false, false, false, false, parent)
+        for (var x = 1; x <= 4; x++) {
+          createDummyElement('a', false, false, false, false, child)
+        }
+      }
+
+      var result = window.GOVUK.PageContent.getNumberOfLinks()
+      expect(result).toEqual(8)
     })
 
     it('gets the number of links when there is a browse section', function () {
