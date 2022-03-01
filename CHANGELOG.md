@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## ## 28.7.0
 
 * Update real user metrics LUX.js to v300 ([PR #2637](https://github.com/alphagov/govuk_publishing_components/pull/2637))
 * Remove `header-navigation.js` ([PR #2632](https://github.com/alphagov/govuk_publishing_components/pull/2632))
