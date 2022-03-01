@@ -98,7 +98,7 @@
     } %>
   <% end %>
 
-  <% input_tag = tag.input({
+  <% input_tag = tag.input(
     aria: {
       describedby: aria_described_by,
       controls: controls
@@ -116,8 +116,8 @@
     readonly: readonly,
     tabindex: tabindex,
     type: type,
-    value: value,
-  }) %>
+    value: value
+  ) %>
 
   <% if prefix && suffix %>
     <%= tag.div class: "govuk-input__wrapper" do %>

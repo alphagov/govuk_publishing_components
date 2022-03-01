@@ -45,11 +45,11 @@
   section_options.merge!({ hidden: true }) if hide
 %>
 <% if suggestion_text || (suggestion_link_text && suggestion_link_url) %>
-  <%= tag.section section_options do %>
+  <%= tag.section **section_options do %>
     <p class="govuk-body">
       <%= tag.span suggestion_text, class: "gem-c-intervention__textwrapper" if suggestion_text %>
       <% if suggestion_link_text && suggestion_link_url %>
-        <%= tag.a suggestion_link_text, suggestion_tag_options %>
+        <%= tag.a suggestion_link_text, **suggestion_tag_options %>
       <% end %>
     </p>
 

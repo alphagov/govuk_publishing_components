@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.description = "A gem to document components in GOV.UK frontend applications"
   s.homepage    = "https://github.com/alphagov/govuk_publishing_components"
   s.license     = "MIT"
-  s.required_ruby_version = ">= 2.6"
+  s.required_ruby_version = ">= 2.7"
 
   s.files = Dir["{node_modules/govuk-frontend,node_modules/axe-core,node_modules/jquery,node_modules/sortablejs,app,config,db,lib}/**/*", "LICENCE.md", "README.md"]
 
@@ -20,7 +20,8 @@ Gem::Specification.new do |s|
   s.add_dependency "govuk_personalisation", ">= 0.7.0"
   s.add_dependency "kramdown"
   s.add_dependency "plek"
-  s.add_dependency "rails", ">= 6", "< 8"
+  s.add_dependency "psych", ">= 4"
+  s.add_dependency "rails", ">= 6"
   s.add_dependency "rouge"
   s.add_dependency "sprockets", "< 4"
 
