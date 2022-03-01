@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 28.7.1
+
+* Re-release of 28.7.0 with the missing node dependencies restored. ([PR #2648](https://github.com/alphagov/govuk_publishing_components/pull/2648))
+
 ## 28.7.0 - Yanked due to missing node dependencies
 
 * Update real user metrics LUX.js to v300 ([PR #2637](https://github.com/alphagov/govuk_publishing_components/pull/2637))
