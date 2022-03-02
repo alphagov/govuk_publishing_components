@@ -45,7 +45,7 @@ module GovukPublishingComponents
     end
 
     def parse_documentation(file)
-      { id: File.basename(file, ".yml") }.merge(YAML.unsafe_load_file(file)).with_indifferent_access
+      { id: File.basename(file, ".yml") }.merge(YAML.load_file(file)).with_indifferent_access
     end
 
     def app_documentation_directory

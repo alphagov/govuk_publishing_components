@@ -13,7 +13,7 @@ describe "All components" do
       end
 
       it "has the correct documentation" do
-        yaml = YAML.unsafe_load_file(yaml_file)
+        yaml = YAML.load_file(yaml_file)
 
         expect(yaml["name"]).not_to be_nil
         expect(yaml["description"]).not_to be_nil
