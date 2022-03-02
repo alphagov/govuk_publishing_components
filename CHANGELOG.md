@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 28.8.0
 
 * Allow attachments to display link to accessible format request form [PR #2636](https://github.com/alphagov/govuk_publishing_components/pull/2636)
 * Improve custom dimensions code ([PR #2646](https://github.com/alphagov/govuk_publishing_components/pull/2646))
