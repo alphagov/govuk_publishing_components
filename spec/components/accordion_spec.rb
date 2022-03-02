@@ -5,10 +5,6 @@ describe "Accordion", type: :view do
     "accordion"
   end
 
-  def given_i_visit_a_page_with_the_tabs_component
-    visit "/accordionexample"
-  end
-
   it "does not render anything if no data is passed" do
     test_data = {}
     assert_empty render_component(test_data)
@@ -289,27 +285,5 @@ describe "Accordion", type: :view do
     assert_select "#thanks-nunjucks-heading-1", count: 1
     assert_select "#thanks-nunjucks-summary-1", count: 1
     assert_select "#thanks-nunjucks-content-1", count: 1
-  end
-
-  def given_i_visit_a_page_with_the_accordion_component
-    visit "/accordionexample"
-  end
-
-  def then_the_accordion_load
-    expect(page).to have_css(".gem-c-accordion--active")
-  end
-
-  def then_the_accordion_opens_when_clicked
-    find("#writing-well-for-the-web").click
-    expect(page).to have_css(".govuk-accordion__section.govuk-accordion__section--expanded")
-    find("#writing-well-for-the-web").click
-  end
-
-  def then_the_accordion_has_data_attributes
-    assert_select ".gem-c-accordion[data-show-text='Show']"
-    assert_select ".gem-c-accordion[data-hide-text='Hide']"
-    assert_select ".gem-c-accordion[data-show-all-text='Show all sections']"
-    assert_select ".gem-c-accordion[data-hide-all-text='Hide all sections']"
-    assert_select ".gem-c-accordion[data-this-section-visually-hidden=' this section']"
   end
 end
