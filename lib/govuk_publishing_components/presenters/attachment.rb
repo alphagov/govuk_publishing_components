@@ -1,6 +1,16 @@
 module GovukPublishingComponents
   module Presenters
     class Attachment
+      # DfE, DWP, DHSC, HMRC, DVSA and PHE are taking part in a pilot to use a form
+      # rather than direct email for users to request accessible formats. When the pilot
+      # scheme is rolled out further this can be removed.
+      EMAILS_IN_ACCESSIBLE_FORMAT_REQUEST_PILOT = %w[alternative.formats@education.gov.uk
+                                                     accessible.formats@dwp.gov.uk
+                                                     publications@dhsc.gov.uk
+                                                     different.format@hmrc.gov.uk
+                                                     gov.uk.publishing@dvsa.gov.uk
+                                                     publications@phe.gov.uk].freeze
+
       delegate :opendocument?, :document?, :spreadsheet?, to: :content_type
 
       attr_reader :attachment_data
@@ -8,6 +18,7 @@ module GovukPublishingComponents
       # Expects a hash of attachment data
       # * title and url are required
       # * content_type, filename, file_size, number of pages, alternative_format_contact_email can be provided
+      # * attachment_id and owning_document_content_id are required to use the accessible format request form
       def initialize(attachment_data)
         @attachment_data = attachment_data.with_indifferent_access
       end
@@ -47,6 +58,14 @@ module GovukPublishingComponents
         attachment_data[:alternative_format_contact_email]
       end
 
+      def attachment_id
+        attachment_data[:attachment_id]
+      end
+
+      def owning_document_content_id
+        attachment_data[:owning_document_content_id]
+      end
+
       def reference
         reference = []
         reference << "ISBN #{attachment_data[:isbn]}" if attachment_data[:isbn].present?
@@ -69,6 +88,10 @@ module GovukPublishingComponents
 
       def is_official_document
         attachment_data[:command_paper_number].present? || attachment_data[:hoc_paper_number].present? || attachment_data[:unnumbered_command_paper].eql?(true) || attachment_data[:unnumbered_hoc_paper].eql?(true)
+      end
+
+      def display_accessible_format_request_form_link?
+        EMAILS_IN_ACCESSIBLE_FORMAT_REQUEST_PILOT.include?(alternative_format_contact_email) && owning_document_content_id.present? && attachment_id.present?
       end
 
       class SupportedContentType

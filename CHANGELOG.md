@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Allow attachments to display link to accessible format request form [PR #2636](https://github.com/alphagov/govuk_publishing_components/pull/2636)
+
 ## 28.7.1
 
 * Re-release of 28.7.0 with the missing node dependencies restored. ([PR #2648](https://github.com/alphagov/govuk_publishing_components/pull/2648))
