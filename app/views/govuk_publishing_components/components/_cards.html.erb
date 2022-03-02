@@ -18,7 +18,12 @@
       <% end %>
     <% end %>
     <%= content_tag 'ul', class: ul_classes do %>
-      <% items.each do |item| %>
+      <% items.each do |item|
+        link = item[:link]
+
+        if !link[:path].present?
+          raise ArgumentError, "The cards component requires a href for all the links"
+        end
         <li class="gem-c-cards__list-item">
           <%= content_tag("h#{sub_heading_level}", class: "gem-c-cards__sub-heading govuk-heading-s") do %>
 

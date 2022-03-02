@@ -148,7 +148,23 @@ describe "Cards", type: :view do
       ],
     }
     render_component(test_data)
-    assert_select '.govuk-link.gem-c-cards__link[href="http://www.gov.uk"]', text: "Benefits"
+    assert_select ".govuk-link.gem-c-cards__link[href='http://www.gov.uk']", text: "Benefits"
+  end
+
+  it "throws an error if a link doesn't have a href" do
+    test_data = {
+      items: [
+        {
+          link: {
+            text: "Benefits",
+            path: "",
+          },
+        },
+      ],
+    }
+    assert_raises do
+      render_component(test_data)
+    end
   end
 
   it "renders a description" do
