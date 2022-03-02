@@ -14,7 +14,7 @@
       case isDocumentCollectionPage():
         return document.querySelectorAll('.document-collection .group-title').length
       case isMainstreamBrowsePage():
-        return countVisible(document.querySelectorAll('#subsection ul')) || document.querySelectorAll('#section ul').length
+        return countVisible(document.querySelectorAll('#subsection ul')) || document.querySelectorAll('#section ul').length || document.querySelectorAll('#root ul').length
       case isTopicPage():
         return document.querySelectorAll('.topics-page nav.index-list').length
       case isPolicyAreaPage():
@@ -45,7 +45,7 @@
       case isDocumentCollectionPage():
         return document.querySelectorAll('.document-collection .group-document-list li a').length
       case isMainstreamBrowsePage():
-        return countVisible(document.querySelectorAll('#subsection ul a')) || document.querySelectorAll('#section ul a').length
+        return countVisible(document.querySelectorAll('#subsection ul a')) || document.querySelectorAll('#section ul a').length || document.querySelectorAll('#root ul a').length
       case isTopicPage():
         return document.querySelectorAll('.topics-page .index-list ul a').length ||
           document.querySelectorAll('.topics-page .topics ul a').length
@@ -71,7 +71,7 @@
   function getMetaAttribute (selector) {
     var element = document.querySelector(selector)
     if (element) {
-      return element.getAttribute('content')
+      return element.getAttribute('content').toLowerCase()
     }
   }
 
