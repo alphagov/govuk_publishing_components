@@ -9,7 +9,7 @@ jobs:
   visual-regression-test-components:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true # Also runs `bundle install`
