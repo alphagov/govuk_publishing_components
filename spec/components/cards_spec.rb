@@ -183,4 +183,45 @@ describe "Cards", type: :view do
     assert_select "p.govuk-body.gem-c-cards__description", text: "Includes eligibility, appeals, tax credits and Universal Credit"
   end
 
+  it "renders tracking attributes" do
+    test_data = {
+      items: [
+        {
+          link: {
+            text: "Benefits",
+            path: "http://www.gov.uk",
+            tracking_attributes: {
+              track_action: "some_action",
+              track_category: "homepageClicked",
+              track_dimension_index: 29,
+            },
+          },
+        },
+      ],
+    }
+    render_component(test_data)
+    assert_select ".govuk-link.gem-c-cards__link[data-track-label='http://www.gov.uk']", count: 1
+    assert_select ".govuk-link.gem-c-cards__link[data-track-action='some_action']", count: 1
+    assert_select ".govuk-link.gem-c-cards__link[data-track-category='homepageClicked']", count: 1
+    assert_select ".govuk-link.gem-c-cards__link[data-track-dimension-index='29']", count: 1
+  end
+
+  it "doesn't render any tracking attributes if the required attributes are not set" do
+    test_data = {
+      items: [
+        {
+          link: {
+            text: "Benefits",
+            path: "http://www.gov.uk",
+            tracking_attributes: {
+              # This omits action and category which are required
+              track_dimension_index: 29,
+            },
+          },
+        },
+      ],
+    }
+    render_component(test_data)
+    assert_select ".govuk-link.gem-c-cards__link[data-track-dimension-index='1']", count: 0
+  end
 end

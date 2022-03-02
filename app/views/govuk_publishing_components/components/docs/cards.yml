@@ -116,3 +116,24 @@ examples:
             text: Benefits
             path: http://www.gov.uk
           description: Includes eligibility, appeals, tax credits and Universal Credit
+  with_tracking_attributes:
+    description: |
+      Tracking can be enabled on the cards component by passing a minimum of data_track_category and data_track_action. Other tracking attributes are optional. Note: tracking events do not currently fire within the component guide.
+    data:
+      items:
+        - link:
+            text: Benefits
+            path: http://www.gov.uk
+            tracking_attributes:
+              track_action: track_action
+              track_category: homepageClicked
+              track_dimension_index: 29
+          description: Includes eligibility, appeals, tax credits and Universal Credit
+        - link:
+            text: Births, deaths, marriages and&nbsp;care
+            path: http://www.gov.uk
+            tracking_attributes:
+              track_action: track_action
+              track_category: homepageClicked
+              track_dimension_index: 29
+          description: Parenting, civil partnerships, divorce and Lasting Power of Attorney
