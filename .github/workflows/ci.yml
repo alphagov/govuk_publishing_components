@@ -49,6 +49,10 @@ jobs:
     - uses: ruby/setup-ruby@v1
       with:
         rubygems: latest
+    - uses: actions/setup-node@v3.0.0
+      with:
+        node-version: lts/* # use the latest LTS release
+    - run: yarn install
     - env:
         GEM_HOST_API_KEY: ${{ secrets.ALPHAGOV_RUBYGEMS_API_KEY }}
       run: |
