@@ -13,6 +13,7 @@
 * Remove `header-navigation.js` ([PR #2632](https://github.com/alphagov/govuk_publishing_components/pull/2632))
 * Add support for Rails 7; add support for Ruby 3.0 and 3.1; and drop support for Ruby 2.6 ([PR #2642](https://github.com/alphagov/govuk_publishing_components/pull/2642))
 * Hide feedback component error summary on submission ([PR #2557](https://github.com/alphagov/govuk_publishing_components/pull/2557))
+* Update accordion tests ([PR #2647](https://github.com/alphagov/govuk_publishing_components/pull/2647))
 
 ## 28.6.0
 
