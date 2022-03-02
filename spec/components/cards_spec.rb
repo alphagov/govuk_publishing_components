@@ -9,23 +9,6 @@ describe "Cards", type: :view do
     assert_empty render_component({})
   end
 
-
-  it "renders list heading" do
-    test_data = {
-      heading: "Topics",
-      items: [
-        {
-          link: {
-            text: "Benefits",
-            path: "http://www.gov.uk",
-          },
-        },
-      ],
-    }
-    render_component(test_data)
-    assert_select ".gem-c-cards__heading.govuk-heading-m", text: "Topics"
-  end
-
   it "renders list heading using default heading level" do
     test_data = {
       heading: "Topics",
@@ -59,22 +42,7 @@ describe "Cards", type: :view do
     assert_select "h3.gem-c-cards__heading.govuk-heading-m", count: 1
   end
 
-  it "renders list" do
-    test_data = {
-      items: [
-        {
-          link: {
-            text: "Benefits",
-            path: "http://www.gov.uk",
-          },
-        },
-      ],
-    }
-    render_component(test_data)
-    assert_select "ul.gem-c-cards__list", count: 1
-  end
-
-  it "renders two column list" do
+  it "renders two column list variant" do
     test_data = {
       two_column_layout: true,
       items: [
@@ -88,21 +56,6 @@ describe "Cards", type: :view do
     }
     render_component(test_data)
     assert_select "ul.gem-c-cards__list.gem-c-cards__list--two-column-desktop", count: 1
-  end
-
-  it "renders a list item" do
-    test_data = {
-      items: [
-        {
-          link: {
-            text: "Benefits",
-            path: "http://www.gov.uk",
-          },
-        },
-      ],
-    }
-    render_component(test_data)
-    assert_select ".gem-c-cards__list-item", text: "Benefits"
   end
 
   it "renders sub-heading using default heading level" do
@@ -134,21 +87,6 @@ describe "Cards", type: :view do
     }
     render_component(test_data)
     assert_select "h4.gem-c-cards__sub-heading.govuk-heading-s", text: "Benefits"
-  end
-
-  it "renders a link with href" do
-    test_data = {
-      items: [
-        {
-          link: {
-            text: "Benefits",
-            path: "http://www.gov.uk",
-          },
-        },
-      ],
-    }
-    render_component(test_data)
-    assert_select ".govuk-link.gem-c-cards__link[href='http://www.gov.uk']", text: "Benefits"
   end
 
   it "throws an error if a link doesn't have a href" do
