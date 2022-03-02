@@ -45,7 +45,10 @@ module GovukPublishingComponents
     end
 
     def parse_documentation(file)
-      { id: File.basename(file, ".yml") }.merge(YAML.unsafe_load_file(file)).with_indifferent_access
+      # Psych 4's YAML.unsafe_load_file === Psych 3's YAML.load_file
+      # but until we drop support for Ruby 2.7 and Ruby 3.0, we need to support both major versions of Psych
+      yaml = YAML.respond_to?(:unsafe_load_file) ? YAML.unsafe_load_file(file) : YAML.load_file(file)
+      { id: File.basename(file, ".yml") }.merge(yaml).with_indifferent_access
     end
 
     def app_documentation_directory

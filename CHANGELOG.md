@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 28.8.1
+
+* Drop dependency `psych >= 4` that was breaking downstream apps [PR #2655](https://github.com/alphagov/govuk_publishing_components/pull/2655)
+
 ## 28.8.0
 
 * Allow attachments to display link to accessible format request form [PR #2636](https://github.com/alphagov/govuk_publishing_components/pull/2636)

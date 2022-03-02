@@ -13,7 +13,9 @@ describe "All components" do
       end
 
       it "has the correct documentation" do
-        yaml = YAML.unsafe_load_file(yaml_file)
+        # Psych 4's YAML.unsafe_load_file === Psych 3's YAML.load_file
+        # but until we drop support for Ruby 2.7 and Ruby 3.0, we need to support both major versions of Psych
+        yaml = YAML.respond_to?(:unsafe_load_file) ? YAML.unsafe_load_file(yaml_file) : YAML.load_file(yaml_file)
 
         expect(yaml["name"]).not_to be_nil
         expect(yaml["description"]).not_to be_nil

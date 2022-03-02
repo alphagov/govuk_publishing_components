@@ -1,12 +1,11 @@
 PATH
   remote: .
   specs:
-    govuk_publishing_components (28.8.0)
+    govuk_publishing_components (28.8.1)
       govuk_app_config
       govuk_personalisation (>= 0.7.0)
       kramdown
       plek
-      psych (>= 4)
       rails (>= 6)
       rouge
       sprockets (< 4)
@@ -215,8 +214,6 @@ GEM
     pry-byebug (3.9.0)
       byebug (~> 11.0)
       pry (~> 0.13.0)
-    psych (4.0.3)
-      stringio
     public_suffix (4.0.6)
     puma (5.6.2)
       nio4r (~> 2.0)
@@ -346,7 +343,6 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     statsd-ruby (1.5.0)
-    stringio (3.0.1)
     strscan (3.0.1)
     terminal-table (3.0.2)
       unicode-display_width (>= 1.1.1, < 3)
