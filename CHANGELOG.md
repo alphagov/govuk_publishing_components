@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add 'Invasion of Ukraine' CTA to pages tagged to the topical event ([PR #2657](https://github.com/alphagov/govuk_publishing_components/pull/2657))
+
 ## 28.8.1
 
 * Drop dependency `psych >= 4` that was breaking downstream apps [PR #2655](https://github.com/alphagov/govuk_publishing_components/pull/2655)
