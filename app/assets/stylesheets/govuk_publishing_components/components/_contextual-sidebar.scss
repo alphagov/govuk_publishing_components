@@ -19,6 +19,7 @@ $transition-campaign-red: #ff003b;
 }
 
 .gem-c-contextual-sidebar__cta {
+  border-top: 2px solid $govuk-brand-colour;
   margin-bottom: govuk-spacing(6);
   background-color: govuk-colour('light-grey', $legacy: 'grey-4');
   display: block;
