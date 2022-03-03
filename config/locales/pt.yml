@@ -160,6 +160,10 @@ pt:
         link_path: "/brexit"
         link_text: Verifique o que precisa de fazer
         title: Brexit
+      ukraine:
+        link_path:
+        link_text:
+        title:
       world_locations: Locais mundiais
     search_box:
       input_title: Pesquisar

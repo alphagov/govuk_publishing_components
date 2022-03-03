@@ -161,6 +161,10 @@ ro:
         link_path: "/brexit"
         link_text: Verificați ce trebuie să faceți
         title: Brexit
+      ukraine:
+        link_path:
+        link_text:
+        title:
       world_locations: Locații pe glob
     search_box:
       input_title: Căutați

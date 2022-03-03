@@ -159,6 +159,10 @@ ms:
         link_path: "/brexit"
         link_text: Periksa apa yang perlu anda lakukan
         title: Brexit
+      ukraine:
+        link_path:
+        link_text:
+        title:
       world_locations: Lokasi dunia
     search_box:
       input_title: Carian

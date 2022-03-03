@@ -164,6 +164,10 @@ hy:
         link_path: "/brexit"
         link_text: Իմացեք, թե ինչ պետք է անեք
         title: Brexit
+      ukraine:
+        link_path:
+        link_text:
+        title:
       world_locations: Գտնվելու վայրերը
     search_box:
       input_title: Որոնում

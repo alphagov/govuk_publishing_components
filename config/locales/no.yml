@@ -160,6 +160,10 @@
         link_path: "/brexit"
         link_text: Sjekk hva du må gjøre
         title: Brexit
+      ukraine:
+        link_path:
+        link_text:
+        title:
       world_locations: Steder i verden
     search_box:
       input_title: Søk
