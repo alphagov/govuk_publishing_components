@@ -1,6 +1,6 @@
 name: Summary list
 description: Use the summary list to summarise information, for example, a user’s responses at the end of a form.
-body:  This component extends the [Summary list component in the Design System](https://design-system.service.gov.uk/components/summary-list/) allowing the rendering of multiple groups of lists, and actions at the group level.
+body:  This component extends the [Summary list component in the GOV.UK Design System](https://design-system.service.gov.uk/components/summary-list/) allowing the rendering of multiple groups of lists, and actions at the group level.
 accessibility_criteria: |
   Action links in the component must:
 
@@ -102,18 +102,13 @@ examples:
       heading_level: 2
       heading_size: l
 
-  with_edit_on_individual_items:
+  with_edit_on_some_individual_items:
     description: For all links shown in the component, see the <a href="/component-guide/summary_list/with_customised_links">with customised links example</a> for guidance.
     data:
       title: "Title, summary and body"
       items:
       - field: "Title"
         value: "Ethical standards for public service providers"
-        edit:
-          href: "edit-title"
-          text: "Edit"
-          data_attributes:
-            gtm: "edit-title"
       - field: "Summary"
         value: "Find out more about our reviews on the subject of ethical standards for public service providers, including our 2014 report, 2015 guidance and 2018 follow-up publication."
         edit:

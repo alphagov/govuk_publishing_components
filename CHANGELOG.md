@@ -10,6 +10,7 @@
 ## 28.9.0
 
 * Add 'Invasion of Ukraine' CTA to pages tagged to the topical event ([PR #2657](https://github.com/alphagov/govuk_publishing_components/pull/2657))
+* Update summary list ([PR #2622](https://github.com/alphagov/govuk_publishing_components/pull/2622))
 
 ## 28.8.1
 

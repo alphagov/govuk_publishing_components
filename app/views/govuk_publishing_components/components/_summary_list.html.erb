@@ -32,12 +32,10 @@
 
       <% if delete.any? %>
         <% delete_main_link = capture do %>
-          <%
-            delete_section_link_text = delete[:link_text] || t("components.summary_list.delete")
-          %>
+          <% delete_section_link_text = delete[:link_text] || t("components.summary_list.delete") %>
           <%= link_to delete.fetch(:href),
-                    class: "govuk-link gem-link--destructive",
-                    data: delete.fetch(:data_attributes, {}) do %>
+                class: "govuk-link gem-link--destructive",
+                data: delete.fetch(:data_attributes, {}) do %>
             <%= delete_section_link_text %><%= tag.span " #{title}", class: "govuk-visually-hidden" unless delete[:link_text_no_enhance] -%>
           <% end %>
         <% end %>
@@ -62,39 +60,46 @@
           <%= delete_main_link %>
         <% end %>
       <% end %>
-
     <% end %>
 
+    <% any_body_actions = items.detect { |item| item.has_key?("edit") || item.has_key?("delete") } %>
     <% if items.any? %>
       <%= tag.dl class: "govuk-summary-list" do %>
         <% items.each do |item| %>
-          <%= tag.div class: "govuk-summary-list__row" do %>
+          <%
+            item_body_actions = (item.fetch(:edit, {}).any? || item.fetch(:delete, {}).any?)
+
+            if any_body_actions.present? && !item_body_actions.present?
+              classes = "govuk-summary-list__row govuk-summary-list__row--no-actions"
+            else
+              classes = "govuk-summary-list__row"
+            end
+          %>
+          <%= tag.div class: classes do %>
 
             <%= tag.dt item[:field], class: "govuk-summary-list__key" %>
             <%= tag.dd item[:value], class: "govuk-summary-list__value" %>
 
             <% if item.fetch(:edit, {}).any? %>
               <% edit_link = capture do %>
-                <%
-                  edit_link_text = item[:edit][:link_text] || t("components.summary_list.edit")
-                %>
+                <% edit_link_text = item[:edit][:link_text] || t("components.summary_list.edit") %>
                 <%= link_to item[:edit].fetch(:href),
-                            class: "govuk-link",
-                            data: item[:edit].fetch(:data_attributes, {}) do %>
-                  <%= edit_link_text %><%= tag.span " #{item[:field]}", class: "govuk-visually-hidden" unless item[:edit][:link_text_no_enhance] -%>
+                  class: "govuk-link",
+                  data: item[:edit].fetch(:data_attributes, {}) do %>
+                  <%= edit_link_text %>
+                  <%= tag.span " #{item[:field]}", class: "govuk-visually-hidden" unless item[:edit][:link_text_no_enhance] -%>
                 <% end %>
               <% end %>
             <% end %>
 
             <% if item.fetch(:delete, {}).any? %>
               <% delete_link = capture do %>
-                <%
-                  delete_link_text = item[:delete][:link_text] || t("components.summary_list.delete")
-                %>
+                <% delete_link_text = item[:delete][:link_text] || t("components.summary_list.delete") %>
                 <%= link_to item[:delete].fetch(:href),
-                            class: "govuk-link gem-link--destructive",
-                            data: item[:delete].fetch(:data_attributes, {}) do %>
-                  <%= delete_link_text %><%= tag.span " #{item[:field]}", class: "govuk-visually-hidden" unless item[:delete][:link_text_no_enhance] -%>
+                      class: "govuk-link gem-link--destructive",
+                      data: item[:delete].fetch(:data_attributes, {}) do %>
+                  <%= delete_link_text %>
+                  <%= tag.span " #{item[:field]}", class: "govuk-visually-hidden" unless item[:delete][:link_text_no_enhance] -%>
                 <% end %>
               <% end %>
             <% end %>
@@ -115,17 +120,17 @@
                 <% end %>
               <% end %>
             <% else %>
+            <% if edit_link || delete_link %>
               <%= tag.dd class: "govuk-summary-list__actions" do %>
                 <%= edit_link %>
                 <%= delete_link %>
               <% end %>
             <% end %>
-
           <% end %>
         <% end %>
       <% end %>
     <% end %>
-
-    <%= tag.div block, class: "gem-c-summary__block" if block %>
   <% end %>
+    <%= tag.div block, class: "gem-c-summary__block" if block %>
+    <% end %>
 <% end %>
