@@ -1,0 +1,62 @@
+<%
+  heading ||= nil
+  items ||= nil
+  sub_heading_level ||= 3
+  two_column_layout ||= false
+  local_assigns ||= nil
+
+  ul_classes = %w[gem-c-cards__list]
+  ul_classes << 'gem-c-cards__list--two-column-desktop' if two_column_layout
+
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+%>
+<% if items.present? %>
+  <div class="gem-c-cards">
+    <% if heading %>
+      <%= content_tag(shared_helper.get_heading_level, class: "gem-c-cards__heading govuk-heading-m") do %>
+        <%= heading %>
+      <% end %>
+    <% end %>
+    <%= content_tag 'ul', class: ul_classes do %>
+      <%
+        items.each do |item|
+        link = item[:link]
+
+        if !link[:path].present?
+          raise ArgumentError, "The cards component requires a href for all the links"
+        end
+
+        data_attributes = nil
+        attributes = link[:tracking_attributes].presence
+
+        if attributes && attributes[:track_category] && attributes[:track_action]
+          data_attributes = {
+            track_action: attributes[:track_action],
+            track_category: attributes[:track_category],
+            track_dimension_index: attributes[:track_dimension_index],
+            track_dimension: link[:text],
+            track_label: link[:path],
+          }
+        end
+
+        link = capture do
+           link_to(link[:text], link[:path], {
+             class: "govuk-link gem-c-cards__link",
+             data: data_attributes,
+           })
+        end
+      %>
+
+        <li class="gem-c-cards__list-item">
+          <%= content_tag("h#{sub_heading_level}", class: "gem-c-cards__sub-heading govuk-heading-s") do %>
+            <%= link %>
+          <% end %>
+
+          <% if item[:description] %>
+            <p class="govuk-body gem-c-cards__description"><%= item[:description] %></p>
+          <% end %>
+        </li>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
