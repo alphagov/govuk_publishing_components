@@ -30,7 +30,6 @@ describe "Contextual navigation" do
     and_i_visit_that_page
     then_i_see_the_step_by_step
     and_the_step_by_step_header
-    and_i_do_not_see_the_brexit_call_to_action
   end
 
   scenario "There's more than one step by step" do
@@ -554,12 +553,6 @@ describe "Contextual navigation" do
 
   def then_i_see_the_brexit_individuals_contextual_breadcrumbs
     and_i_see_the_brexit_contextual_breadcrumbs(brexit_individuals_taxon)
-  end
-
-  def and_i_do_not_see_the_brexit_call_to_action
-    within ".gem-c-contextual-sidebar" do
-      expect(page).not_to have_selector(".gem-c-contextual-sidebar__cta.gem-c-contextual-sidebar__cta--brexit")
-    end
   end
 
   def then_i_see_the_step_by_step_breadcrumbs
