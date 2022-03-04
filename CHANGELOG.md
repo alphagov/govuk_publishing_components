@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove Brexit call to action from contextual sidebar ([#2518](https://github.com/alphagov/govuk_publishing_components/pull/2518))
+
 ## 28.9.0
 
 * Add 'Invasion of Ukraine' CTA to pages tagged to the topical event ([PR #2657](https://github.com/alphagov/govuk_publishing_components/pull/2657))
