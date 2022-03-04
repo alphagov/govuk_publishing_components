@@ -166,6 +166,10 @@ be:
         link_path: "/brexit"
         link_text: Праверце, што вам трэба зрабіць
         title: Брэкзiт
+      ukraine:
+        link_path:
+        link_text:
+        title:
       world_locations: Мы ў свеце
     search_box:
       input_title: Пошук

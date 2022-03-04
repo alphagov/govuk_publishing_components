@@ -180,6 +180,34 @@ describe "Contextual navigation" do
     and_i_dont_see_the_secondary_step_by_step_in_the_also_part_of_list
   end
 
+  scenario "There is a page tagged to the 'Russian invasion of Ukraine: UK government response' topical event" do
+    given_theres_a_page_tagged_to_the_ukraine_topical_event
+    and_i_visit_that_page
+    then_i_see_the_ukraine_call_to_action
+  end
+
+  def given_theres_a_page_tagged_to_the_ukraine_topical_event
+    content_store_has_random_item(
+      schema: "news_article",
+      links: {
+        "topical_events" => [{
+          "content_id" => "bfa79635-ffda-4b5d-8266-a9cd3a03649c",
+          "title" => "Russian invasion of Ukraine: UK government response",
+          "locale" => "en",
+          "base_path" => "/government/topical-events/russian-invasion-of-ukraine-uk-government-response",
+          "document_type" => "topical_event",
+        }],
+      },
+    )
+  end
+
+  def then_i_see_the_ukraine_call_to_action
+    within ".gem-c-contextual-sidebar__cta" do
+      expect(page).to have_content("Invasion of Ukraine")
+      expect(page).to have_link("Find out about the UK’s response")
+    end
+  end
+
   include GdsApi::TestHelpers::ContentStore
 
   def given_theres_a_page_with_a_step_by_step

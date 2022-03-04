@@ -167,6 +167,10 @@ sl:
         link_path: "/brexit"
         link_text: Preverite, kaj morate storiti
         title: Brexit
+      ukraine:
+        link_path:
+        link_text:
+        title:
       world_locations: Lokacije po svetu
     search_box:
       input_title: Iskanje

@@ -166,6 +166,22 @@ module GovukPublishingComponents
         step_nav_helper.show_also_part_of_step_nav?
       end
 
+      def content_tagged_to_ukraine_topical_event?
+        ukraine_topical_event_id = "bfa79635-ffda-4b5d-8266-a9cd3a03649c"
+        topical_events = content_item.dig("links", "topical_events").to_a
+        topical_events.each do |topical_event|
+          if topical_event["content_id"].eql?(ukraine_topical_event_id)
+            return true
+          end
+        end
+
+        false
+      end
+
+      def show_ukraine_cta?
+        content_tagged_to_ukraine_topical_event?
+      end
+
       def breadcrumbs_based_on_ancestors
         ContentBreadcrumbsBasedOnAncestors.call(content_item)
       end

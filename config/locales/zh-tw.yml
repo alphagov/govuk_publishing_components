@@ -158,6 +158,10 @@ zh-tw:
         link_path: "/brexit"
         link_text: 確認你需要：
         title: 脫歐
+      ukraine:
+        link_path:
+        link_text:
+        title:
       world_locations: 世界地點
     search_box:
       input_title: 搜尋

@@ -160,6 +160,10 @@ nl:
         link_path: "/brexit"
         link_text: Controleer wat u moet doen
         title: Brexit
+      ukraine:
+        link_path:
+        link_text:
+        title:
       world_locations: Locaties in de wereld
     search_box:
       input_title: Zoeken

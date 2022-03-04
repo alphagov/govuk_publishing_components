@@ -165,6 +165,10 @@ lt:
         link_path: "/brexit"
         link_text: Pažiūrėkite, ką turite daryti
         title: "„Brexitas“ "
+      ukraine:
+        link_path:
+        link_text:
+        title:
       world_locations: Pasaulio vietos
     search_box:
       input_title: Ieškoti

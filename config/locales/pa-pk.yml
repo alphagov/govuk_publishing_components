@@ -156,6 +156,10 @@ pa-pk:
         link_path: "/brexit"
         link_text: دیکھو جو تہانوں کرن دی لوڑ اے
         title: Brexit
+      ukraine:
+        link_path:
+        link_text:
+        title:
       world_locations: دُنیا دیاں تھاواں
     search_box:
       input_title: کھوج

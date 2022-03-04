@@ -158,6 +158,10 @@ fa:
         link_path: "/brexit"
         link_text: آنچه را باید انجام دهید، بررسی کنید
         title: برگزیت
+      ukraine:
+        link_path:
+        link_text:
+        title:
       world_locations: مکان‌های جهانی
     search_box:
       input_title: جستجو

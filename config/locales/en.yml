@@ -234,6 +234,10 @@ en:
         link_path: "/brexit"
         link_text: Check what you need to do
         title: Brexit
+      ukraine:
+        link_path: "/government/topical-events/russian-invasion-of-ukraine-uk-government-response"
+        link_text: Find out about the UK’s response
+        title: Invasion of Ukraine
       world_locations: World locations
     search_box:
       input_title: Search

@@ -161,6 +161,10 @@ ta:
         link_path: "/brexit"
         link_text: நீங்கள் செய்யவேண்டியது என்ன என்று பாருங்கள்
         title: பிரெக்சிட்
+      ukraine:
+        link_path:
+        link_text:
+        title:
       world_locations: உலக இருப்பிடங்கள்
     search_box:
       input_title: தேடு

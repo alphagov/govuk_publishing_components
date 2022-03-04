@@ -156,6 +156,10 @@ ja:
         link_path: "/brexit"
         link_text: あなたがする必要があることを確認してください
         title: Brexit
+      ukraine:
+        link_path:
+        link_text:
+        title:
       world_locations: 世界の場所
     search_box:
       input_title: 検索

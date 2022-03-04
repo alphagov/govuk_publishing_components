@@ -112,3 +112,21 @@ examples:
             - content_id: "2f8b848d-23c8-4f42-a41a-df1f81c64d0f"
               title: "Exporting"
               phase: "live"
+
+  with_ukraine_cta:
+    description: For documents tagged to the Ukraine topical event we show a custom 'Ukraine Invasion' call to action element.
+    data:
+      content_item:
+        title: "UK forces arrive to reinforce NATO’s eastern flank"
+        content_id: "a342fd46-d801-4c1e-9d8f-f41fba6da563"
+        locale: "en"
+        links:
+          ordered_related_items:
+          - title: Protecting the UK and promoting a Global Britain
+            base_path: "/government/collections/protecting-the-uk-and-promoting-a-global-britain"
+            locale: "en"
+          topical_events:
+            - content_id: "bfa79635-ffda-4b5d-8266-a9cd3a03649c"
+              title: "Russian invasion of Ukraine: UK government response"
+              base_path: "/government/topical-events/russian-invasion-of-ukraine-uk-government-response"
+              locale: "en"

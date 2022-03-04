@@ -165,6 +165,10 @@ cs:
         link_path: "/brexit"
         link_text: Zkontrolujte, co je třeba udělat
         title: Brexit
+      ukraine:
+        link_path:
+        link_text:
+        title:
       world_locations: Místa ve světě
     search_box:
       input_title: Vyhledávání

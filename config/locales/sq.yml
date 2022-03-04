@@ -160,6 +160,10 @@ sq:
         link_path: "/brexit"
         link_text: Kontrolloni se çfarë duhet të bëni
         title: Brexit
+      ukraine:
+        link_path:
+        link_text:
+        title:
       world_locations: Vendndodhjet globale
     search_box:
       input_title: Kërko

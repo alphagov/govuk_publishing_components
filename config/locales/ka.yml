@@ -163,6 +163,10 @@ ka:
         link_path: "/brexit"
         link_text: შეამოწმეთ თუ რა უნდა გააკეთოთ
         title: ბრექსითის შემოწმება
+      ukraine:
+        link_path:
+        link_text:
+        title:
       world_locations: მსოფლიო ლოკაციები
     search_box:
       input_title: ძიება

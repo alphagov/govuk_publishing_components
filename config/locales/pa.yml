@@ -160,6 +160,10 @@ pa:
         link_path: "/brexit"
         link_text: ਜਾਂਚ ਕਰੋ ਕਿ ਤੁਹਾਨੂੰ ਕੀ ਕਰਨ ਦੀ ਜ਼ਰੂਰਤ ਹੈ
         title: ਬ੍ਰੈਕਸਿਟ
+      ukraine:
+        link_path:
+        link_text:
+        title:
       world_locations: ਵਿਸ਼ਵ ਸਥਾਨ
     search_box:
       input_title: ਖੋਜ
