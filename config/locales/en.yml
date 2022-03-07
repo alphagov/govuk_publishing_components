@@ -177,10 +177,10 @@ en:
       navigation_search_heading: Search and popular pages
       navigation_search_subheading: Search
       popular_links:
+      - label: 'Invasion of Ukraine'
+        href: "/government/topical-events/russian-invasion-of-ukraine-uk-government-response"
       - label: 'Coronavirus (COVID-19)'
         href: "/coronavirus"
-      - label: 'Brexit: check what you need to do'
-        href: "/brexit"
       - label: Find a job
         href: "/find-a-job"
       - label: 'Personal tax account: sign in'
