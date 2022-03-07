@@ -18,3 +18,5 @@
 //= require ./analytics/explicit-cross-domain-links
 //= require ./analytics/track-click
 //= require ./analytics/track-select-change
+
+//= require ./analytics/gtm-tracking
