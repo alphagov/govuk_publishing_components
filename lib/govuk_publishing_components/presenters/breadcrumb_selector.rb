@@ -17,18 +17,7 @@ module GovukPublishingComponents
         best_match_option[:step_by_step]
       end
 
-      def priority_breadcrumbs
-        return if hide_priority_breadcrumb?
-        return parent_item_navigation.priority_breadcrumbs if content_item_navigation.html_publication_with_parent?
-
-        content_item_navigation.priority_breadcrumbs
-      end
-
     private
-
-      def hide_priority_breadcrumb?
-        content_item_navigation.content_tagged_to_current_step_by_step? && content_item_navigation.tagged_to_brexit?
-      end
 
       def best_match_option
         return content_item_options unless content_item_navigation.html_publication_with_parent?
