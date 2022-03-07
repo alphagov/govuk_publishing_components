@@ -21,3 +21,4 @@
 //= require ./analytics/track-click
 //= require ./analytics/track-select-change
 //= require ./analytics/cross-domain-tracking
+//= require ./analytics/gtm-tracking
