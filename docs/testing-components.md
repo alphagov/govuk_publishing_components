@@ -1,5 +1,42 @@
 # Testing components
 
+## Tests directory structure
+Tests are stored in the [spec](../spec) directory with the Ruby tests written using RSpec and JavaScript tests written using Jasmine.
+
+As per Rails convention, most of the directories within the `spec` directory contain Ruby [unit tests](#unit-testing) with the directories matching those within the `app` directory. Code that is stored in the `lib` directory has corresponding tests in the `spec/lib` directory.
+
+Directories within `spec` that don’t contain Ruby unit tests are as follows:
+
+ - `dummy` - contains a generic frontend application to test the gem with;
+ - `dummy_gem` - required to test the [component auditing](auditing.md);
+ - `features` - contains [feature tests](#feature-testing), which test that a user can accomplish a task by interacting with a component;
+ - `javascripts` - contains unit tests for [JavaScript files](#javascript-modules), configuration and helper files for Jasmine;
+ - `support` - contains helper files for shared test methods and logic;
+ - `visual_regression_tests` - contains the [visual regression test runner](#visual-regression-testing).
+
+## Unit testing
+
+The purpose of these tests is to test individual units of the system in isolation. They are intended to provide exhaustive tests of the code paths through a particular class or view through its public interface. As per the test pyramid approach to software testing, these should provide the greatest volume of tests for the library.
+
+Characteristics of unit tests:
+
+- they should be concerned with the logic within the class/view being tested, and not test logic defined elsewhere;
+- they may mock dependent objects and/or assert that particular external methods are called;
+- they should test all code paths through a class/view;
+- they should follow the conventions of [RSpec Rails view tests](https://relishapp.com/rspec/rspec-rails/v/3-9/docs/view-specs/view-spec).
+
+## Feature testing
+
+The purpose of these tests is to assert that a user can accomplish a task through interacting with components (for example switching a tab or opening an accordion section).
+
+This type of test provides a high level functional test and helps to validate that a user can use a component to complete the tasks they use it for. This makes these tests some of the most valuable of the application, however they are slower than other tests to run and can be difficult to debug. Therefore they are not intended to exhaustively test all the scenarios that can occur as part of a distinct feature.
+
+Characteristics of feature tests:
+
+- they should navigate the application through the web interface with a minimal amount of set-up and direct visiting of links, for example most navigation should be achieved by user clicking;
+- they may mock and/or assert that particular API calls are made to external
+  services;
+
 ## Accessibility testing
 
 If you create a component in the application, you can run accessibility tests against it.
