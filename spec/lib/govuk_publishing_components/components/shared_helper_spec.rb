@@ -57,6 +57,164 @@ RSpec.describe GovukPublishingComponents::Presenters::SharedHelper do
       }.to raise_error(ArgumentError, "Passed classes must be prefixed with `js-`")
     end
 
+    it "sets data attributes" do
+      attributes = {
+        example_attribute: 14,
+      }
+      expected_attributes = {
+        example_attribute: 14,
+      }
+      shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(data: attributes)
+      expect(shared_helper.get_data_attributes).to eql(expected_attributes)
+    end
+
+    it "sets default GTM attributes" do
+      local_assigns = {
+        gtm: true,
+      }
+      expected_attributes = {
+        gtm_attributes: {
+          event_name: "n/a",
+          event_of_interest: false,
+          privacy: false,
+          component: {
+            category: "n/a",
+            main_type: "n/a",
+            sub_type: "n/a",
+            variant: "n/a",
+            sup: "n/a",
+            text: "n/a",
+            url: "n/a",
+            value: "n/a",
+            position: "n/a",
+            action: "n/a",
+            section: "n/a",
+            heading: "n/a",
+            accessible_asset: "n/a",
+          },
+        },
+      }
+      shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+      expect(shared_helper.get_data_attributes).to eql(expected_attributes)
+    end
+
+    it "accepts given GTM attributes" do
+      local_assigns = {
+        gtm: true,
+        data: {
+          gtm_attributes: {
+            event_name: "this component",
+          },
+        },
+      }
+      expected_attributes = {
+        gtm_attributes: {
+          event_name: "this component",
+          event_of_interest: false,
+          privacy: false,
+          component: {
+            category: "n/a",
+            main_type: "n/a",
+            sub_type: "n/a",
+            variant: "n/a",
+            sup: "n/a",
+            text: "n/a",
+            url: "n/a",
+            value: "n/a",
+            position: "n/a",
+            action: "n/a",
+            section: "n/a",
+            heading: "n/a",
+            accessible_asset: "n/a",
+          },
+        },
+      }
+      shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+      expect(shared_helper.get_data_attributes).to eql(expected_attributes)
+    end
+
+    it "allows both data attributes and gtm attributes" do
+      local_assigns = {
+        gtm: true,
+        data: {
+          attribute1: "1",
+          attribute2: "2",
+          gtm_attributes: {
+            event_name: "this component",
+            component: {
+              category: "this category",
+            },
+          },
+        },
+      }
+      expected_attributes = {
+        attribute1: "1",
+        attribute2: "2",
+        gtm_attributes: {
+          event_name: "this component",
+          event_of_interest: false,
+          privacy: false,
+          component: {
+            category: "this category",
+            main_type: "n/a",
+            sub_type: "n/a",
+            variant: "n/a",
+            sup: "n/a",
+            text: "n/a",
+            url: "n/a",
+            value: "n/a",
+            position: "n/a",
+            action: "n/a",
+            section: "n/a",
+            heading: "n/a",
+            accessible_asset: "n/a",
+          },
+        },
+      }
+      shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+      expect(shared_helper.get_data_attributes).to eql(expected_attributes)
+    end
+
+    it "allows gtm attributes to be overridden if passed with data attributes" do
+      local_assigns = {
+        gtm: true,
+        data: {
+          attribute1: "1",
+          gtm_attributes: {
+            event_name: "test",
+            component: {
+              category: "navigation",
+            },
+          },
+        },
+      }
+      expected_attributes = {
+        attribute1: "1",
+        gtm_attributes: {
+          event_name: "test",
+          event_of_interest: false,
+          privacy: false,
+          component: {
+            category: "navigation",
+            main_type: "n/a",
+            sub_type: "n/a",
+            variant: "n/a",
+            sup: "n/a",
+            text: "n/a",
+            url: "n/a",
+            value: "n/a",
+            position: "n/a",
+            action: "n/a",
+            section: "n/a",
+            heading: "n/a",
+            accessible_asset: "n/a",
+          },
+        },
+      }
+      shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+      expect(shared_helper.get_data_attributes).to eql(expected_attributes)
+    end
+
     it "returns nil if given locale is same as page locale" do
       default_locale = I18n.locale
       shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new({})

@@ -45,6 +45,40 @@ module GovukPublishingComponents
         end
       end
 
+      def get_data_attributes
+        has_gtm = @options[:gtm] || false
+        data_attributes = @options[:data] || {}
+
+        return data_attributes unless has_gtm
+
+        not_available = "n/a"
+        gtm_attributes = {
+          event_name: not_available,
+          event_of_interest: false,
+          privacy: false,
+          component: {
+            category: not_available,
+            main_type: not_available,
+            sub_type: not_available,
+            variant: not_available,
+            sup: not_available,
+            text: not_available,
+            url: not_available,
+            value: not_available,
+            position: not_available,
+            action: not_available,
+            section: not_available,
+            heading: not_available,
+            accessible_asset: not_available,
+          },
+        }
+        data_attributes[:gtm_attributes] ||= {}
+        data_attributes[:gtm_attributes].deep_merge!(gtm_attributes) do |_key, passed_val, default_val|
+          passed_val || default_val
+        end
+        data_attributes
+      end
+
       def t_locale(content, options = {})
         # Check if the content string has a translation
         content_translation_available = translation_present?(content)
