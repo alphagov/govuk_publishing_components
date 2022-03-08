@@ -102,7 +102,7 @@ describe "Summary list", type: :view do
     )
     assert_select ".govuk-summary-list__key", text: "Title"
     assert_select ".govuk-summary-list__value", text: "Ethical standards for public service providers"
-    assert_select 'dd.govuk-summary-list__actions .govuk-link[href="#edit-title"][data-gtm="edit-title"]', text: "Change Title"
+    assert_select 'dd.govuk-summary-list__actions .govuk-link[href="#edit-title"][data-gtm="edit-title"]', text: /Change\s*Title\s*/
   end
 
   it "renders items with only the delete action" do
@@ -122,7 +122,7 @@ describe "Summary list", type: :view do
     )
     assert_select ".govuk-summary-list__key", text: "Title"
     assert_select ".govuk-summary-list__value", text: "Ethical standards for public service providers"
-    assert_select 'dd.govuk-summary-list__actions .govuk-link.gem-link--destructive[href="#delete-title"][data-gtm="delete-title"]', text: "Delete Title"
+    assert_select 'dd.govuk-summary-list__actions .govuk-link.gem-link--destructive[href="#delete-title"][data-gtm="delete-title"]', text: /\s*Delete\s*Title\s*/
   end
 
   it "renders items with both the edit and the delete action" do
@@ -142,8 +142,8 @@ describe "Summary list", type: :view do
     )
     assert_select ".govuk-summary-list__key", text: "Title"
     assert_select ".govuk-summary-list__value", text: "Ethical standards for public service providers"
-    assert_select 'li.govuk-summary-list__actions-list-item .govuk-link[href="#edit-title"]', text: "Change Title"
-    assert_select 'li.govuk-summary-list__actions-list-item .govuk-link.gem-link--destructive[href="#delete-title"]', text: "Delete Title"
+    assert_select 'li.govuk-summary-list__actions-list-item .govuk-link[href="#edit-title"]', text: /\s*Change\s*Title\s*/
+    assert_select 'li.govuk-summary-list__actions-list-item .govuk-link.gem-link--destructive[href="#delete-title"]', text: /\s*Delete\s*Title\s*/
   end
 
   it "renders items with custom text for edit and delete action" do
@@ -163,8 +163,8 @@ describe "Summary list", type: :view do
         },
       ],
     )
-    assert_select '.govuk-summary-list__actions-list-item .govuk-link[href="#edit-title"]', text: "Edit Title"
-    assert_select '.govuk-summary-list__actions-list-item .govuk-link.gem-link--destructive[href="#delete-title"]', text: "Remove Title"
+    assert_select '.govuk-summary-list__actions-list-item .govuk-link[href="#edit-title"]', text: /\s*Edit\s*Title\s*/
+    assert_select '.govuk-summary-list__actions-list-item .govuk-link.gem-link--destructive[href="#delete-title"]', text: /\s*Remove\s*Title\s*/
   end
 
   it "renders the edit action on section" do
@@ -180,7 +180,7 @@ describe "Summary list", type: :view do
         href: "edit-title",
       },
     )
-    assert_select 'div.govuk-summary-list__actions-list .govuk-link[href="edit-title"]', text: "Change Title"
+    assert_select 'div.govuk-summary-list__actions-list .govuk-link[href="edit-title"]', text: /\s*Change\s*Title\s*/
   end
 
   it "renders the delete action on section" do
@@ -196,7 +196,7 @@ describe "Summary list", type: :view do
         href: "delete-title",
       },
     )
-    assert_select 'div.govuk-summary-list__actions-list .govuk-link[href="delete-title"]', text: "Delete Title"
+    assert_select 'div.govuk-summary-list__actions-list .govuk-link[href="delete-title"]', text: /\s*Delete\s*Title\s*/
   end
 
   it "renders the edit and delete actions on section" do
@@ -221,8 +221,8 @@ describe "Summary list", type: :view do
         },
       },
     )
-    assert_select 'ul.govuk-summary-list__actions-list .govuk-summary-list__actions-list-item .govuk-link[href="edit-title"][data-gtm="edit-title"]', text: "Change Title"
-    assert_select 'ul.govuk-summary-list__actions-list .govuk-summary-list__actions-list-item .govuk-link[href="delete-title"][data-gtm="delete-title"]', text: "Delete Title"
+    assert_select 'ul.govuk-summary-list__actions-list .govuk-summary-list__actions-list-item .govuk-link[href="edit-title"][data-gtm="edit-title"]', text: /\s*Change\s*Title\s*/
+    assert_select 'ul.govuk-summary-list__actions-list .govuk-summary-list__actions-list-item .govuk-link[href="delete-title"][data-gtm="delete-title"]', text: /\s*Delete\s*Title\s*/
   end
 
   it "renders the edit and delete actions on section with custom text" do
@@ -243,8 +243,8 @@ describe "Summary list", type: :view do
         link_text: "Destroy",
       },
     )
-    assert_select 'ul.govuk-summary-list__actions-list .govuk-summary-list__actions-list-item .govuk-link[href="edit-title"]', text: "Edit Title"
-    assert_select 'ul.govuk-summary-list__actions-list .govuk-summary-list__actions-list-item .govuk-link[href="delete-title"]', text: "Destroy Title"
+    assert_select 'ul.govuk-summary-list__actions-list .govuk-summary-list__actions-list-item .govuk-link[href="edit-title"]', text: /\s*Edit\s*Title\s*/
+    assert_select 'ul.govuk-summary-list__actions-list .govuk-summary-list__actions-list-item .govuk-link[href="delete-title"]', text: /\s*Destroy\s*Title\s*/
   end
 
   it "renders all links without visually hidden extra text if specified" do
@@ -283,14 +283,14 @@ describe "Summary list", type: :view do
         },
       ],
     )
-    assert_select '.govuk-summary-list__actions-list .govuk-link[href="edit-something"]', text: "Change"
-    assert_select '.govuk-summary-list__actions-list .govuk-link[href="delete-something"]', text: "Delete"
+    assert_select '.govuk-summary-list__actions-list .govuk-link[href="edit-something"]', text: /\s*Change\s*/
+    assert_select '.govuk-summary-list__actions-list .govuk-link[href="delete-something"]', text: /\s*Delete\s*/
 
-    assert_select '.govuk-summary-list__row .govuk-summary-list__actions .govuk-link[href="#edit-item-1-title"]', text: "Change"
-    assert_select '.govuk-summary-list__row .govuk-summary-list__actions .govuk-link.gem-link--destructive[href="#delete-item-1-title"]', text: "Delete"
+    assert_select '.govuk-summary-list__row .govuk-summary-list__actions .govuk-link[href="#edit-item-1-title"]', text: /\s*Change\s*/
+    assert_select '.govuk-summary-list__row .govuk-summary-list__actions .govuk-link.gem-link--destructive[href="#delete-item-1-title"]', text: /\s*Delete\s*/
 
-    assert_select '.govuk-summary-list__row .govuk-summary-list__actions .govuk-link[href="#edit-item-2-title"]', text: "Change Item 2"
-    assert_select '.govuk-summary-list__row .govuk-summary-list__actions .govuk-link.gem-link--destructive[href="#delete-item-2-title"]', text: "Delete Item 2"
+    assert_select '.govuk-summary-list__row .govuk-summary-list__actions .govuk-link[href="#edit-item-2-title"]', text: /\s*Change\s*Item\s*2\s*/
+    assert_select '.govuk-summary-list__row .govuk-summary-list__actions .govuk-link.gem-link--destructive[href="#delete-item-2-title"]', text: /\s*Delete\s*Item\s*2\s*/
   end
 
   it "renders the wider dt layout" do
