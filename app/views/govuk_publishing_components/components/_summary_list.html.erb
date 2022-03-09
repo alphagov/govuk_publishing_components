@@ -120,17 +120,18 @@
                 <% end %>
               <% end %>
             <% else %>
-            <% if edit_link || delete_link %>
-              <%= tag.dd class: "govuk-summary-list__actions" do %>
-                <%= edit_link %>
-                <%= delete_link %>
+              <% if edit_link || delete_link %>
+                <%= tag.dd class: "govuk-summary-list__actions" do %>
+                  <%= edit_link %>
+                  <%= delete_link %>
+                <% end %>
               <% end %>
             <% end %>
           <% end %>
         <% end %>
       <% end %>
     <% end %>
-  <% end %>
+
     <%= tag.div block, class: "gem-c-summary__block" if block %>
     <% end %>
 <% end %>
