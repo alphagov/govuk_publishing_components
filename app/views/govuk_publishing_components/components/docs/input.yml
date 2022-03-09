@@ -24,12 +24,19 @@ examples:
         text: "What is your name?"
       name: "name"
   specific_input_type:
-    description: By default the input will be type="text". This parameter accepts an alternative, e.g. "search" or "email". No validation is done on this input.
+    description: By default the input will be `type="text"`. This parameter accepts an alternative, e.g. `search` or `email`. `spellcheck="false"` is the default this can be changed by passing a `true` value. Consider adding `autocomplete`. No validation is done on this input.
     data:
       label:
         text: "What is your email address?"
       name: "address"
       type: "email"
+  with_autocomplete:
+    data:
+      label:
+        text: "Automatically complete the field with a user's email address (in supporting browsers)"
+      name: "name"
+      type: "email"
+      autocomplete: "email"
   numeric_input:
     description: If input is set to `type="number"` we set the component up as described in the [GOV.UK Design System guidance](https://design-system.service.gov.uk/components/text-input/#numbers) adding `inputmode` and `pattern`. These values can be overridden if necessary.
     data:
@@ -46,11 +53,11 @@ examples:
       id: "hasid"
   with_aria_attributes:
     description: |
-      The component accepts two possible aria attributes: aria-describedby and aria-controls.
+      The component accepts two possible aria attributes: `aria-describedby` and `aria-controls`.
 
-      [aria-describedby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-describedby_attribute) is used to indicate the ID of the element that describes the input. This will be overridden in the event of an error, where the error will be used for the describedby attribute value. This example uses the ID of the main container for demonstration purposes as there aren't any useful elements with IDs in the component guide. In real use this would be passed the ID of an element that correctly described the input.
+      [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-describedby_attribute) is used to indicate the `ID` of the element that describes the input. This will be overridden in the event of an error, where the error will be used for the `describedby` attribute value. This example uses the `ID` of the main container for demonstration purposes as there aren't any useful elements with `IDs` in the component guide. In real use this would be passed the `ID` of an element that correctly described the input.
 
-      aria-controls allows the addition of an aria-controls attribute, for use in places like the finders where the page is updated dynamically after value changes to the input.
+      `aria-controls` allows the addition of an `aria-controls` attribute, for use in places like the finders where the page is updated dynamically after value changes to the input.
     data:
       label:
         text: "This is an example only and may not work with a screen reader"
@@ -104,13 +111,6 @@ examples:
       name: "name"
       value: "You can't type more"
       maxlength: 10
-  with_autocomplete:
-    data:
-      label:
-        text: "Automatically complete the field with a user's email address (in supporting browsers)"
-      name: "name"
-      type: "email"
-      autocomplete: "email"
   with_custom_width:
     data:
       label:
@@ -119,17 +119,20 @@ examples:
       name: "name"
       width: 10
   with_search_icon:
+    description: |
+        Adds a search icon, [spellcheck](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/spellcheck) can also be added to indicate that the element should be, if possible, checked for spelling errors.
     data:
       label:
         text: "Search the internet"
       name: "search-box"
       type: "search"
       search_icon: true
+      spellcheck: true
   with_label_as_heading:
     description: |
-      Wraps the label in a heading tag. Valid options are 1 to 6. To adjust the size of the label/heading, use the `heading_size` option. Valid options are 's', 'm', 'l' and 'xl'.
+      Wraps the label in a heading tag. Valid options are `1` to `6`. To adjust the size of the label/heading, use the `heading_size` option. Valid options are `s`, `m`, `l` and `xl`.
 
-      Based on the [heading/label pattern](https://design-system.service.gov.uk/patterns/question-pages/) in the Design System.
+      Based on the [heading/label pattern](https://design-system.service.gov.uk/patterns/question-pages/) in the GOV.UK Design System.
     data:
       label:
         text: "This is a heading 1 and a label"

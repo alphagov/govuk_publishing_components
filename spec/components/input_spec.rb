@@ -31,6 +31,7 @@ describe "Input", type: :view do
 
     assert_select ".govuk-input[type='email']"
     assert_select ".govuk-input[name='email-address']"
+    assert_select ".govuk-input[spellcheck='false']"
   end
 
   # https://design-system.service.gov.uk/components/text-input/#numbers
@@ -41,6 +42,7 @@ describe "Input", type: :view do
     )
 
     assert_select ".govuk-input[type='text'][pattern='[0-9]*'][inputmode='numeric']"
+    assert_select ".govuk-input[spellcheck='false']"
   end
 
   it "renders an input with a given id" do
@@ -93,6 +95,7 @@ describe "Input", type: :view do
     )
 
     assert_select ".govuk-input[autocomplete='name']"
+    assert_select ".govuk-input[spellcheck='false']"
   end
 
   it "renders input with a data attributes" do
