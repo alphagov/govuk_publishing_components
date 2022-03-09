@@ -7,6 +7,7 @@
   describedby ||= nil
   enterkeyhint ||= nil
   id ||= "input-#{SecureRandom.hex(4)}"
+  spellcheck ||= "false"
   type ||= "text"
   value ||= nil
   inputmode ||= nil
@@ -63,6 +64,7 @@
     inputmode = "numeric"
     pattern = "[0-9]*"
   end
+
 %>
 
 <%= content_tag :div, class: form_group_css_classes do %>
@@ -114,6 +116,7 @@
     name: name,
     pattern: pattern,
     readonly: readonly,
+    spellcheck: spellcheck,
     tabindex: tabindex,
     type: type,
     value: value

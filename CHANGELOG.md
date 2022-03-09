@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Remove Brexit call to action from contextual sidebar ([#2518](https://github.com/alphagov/govuk_publishing_components/pull/2518))
+* Add spellcheck to input [PR #2654](https://github.com/alphagov/govuk_publishing_components/pull/2654)
 
 ## 28.9.0
 
