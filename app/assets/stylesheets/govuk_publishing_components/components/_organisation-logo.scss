@@ -55,13 +55,13 @@
 .gem-c-organisation-logo__name {
   position: relative;
   top: 3px;
-  font-family: "HelveticaNeue", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
+  font-family: HelveticaNeue, "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
 .gem-c-organisation-logo__link {
   @include govuk-link-common;
   @include govuk-link-style-text;
-  font-family: "HelveticaNeue", "Helvetica Neue", "Arial", "Helvetica", sans-serif;
+  font-family: HelveticaNeue, "Helvetica Neue", Arial, Helvetica, sans-serif;
 
   &:hover {
     color: $govuk-link-hover-colour;
