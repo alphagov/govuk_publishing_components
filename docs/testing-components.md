@@ -68,6 +68,13 @@ For an example of this check [test-component-with-duplicate-ids.yml](../spec/dum
 
 ## Visual regression testing
 
-Visual regression tests are run on each pull request using a third-party tool called [Percy](https://percy.io). This isn't a mandatory check, so any changes that are highlighted by Percy won't prevent a pull request from being merged in.
+Visual regression tests are run on each pull request using a third-party tool called [Percy](https://percy.io) using a [GitHub Action workflow][1]. This isn't a mandatory check, so any changes that are highlighted by Percy won't prevent a pull request from being merged in.
 
 The screenshots are public, so they can be checked without logging in. A BrowserStack account is needed to approve or reject any changes. It's the responsibility of the person reviewing the pull request code to approve any visual changes that Percy highlights.
+
+Relevant Percy setup documentation:
+
+ * [Using Percy with Rails and Capybara](https://docs.percy.io/docs/capybara)
+ * [Running Percy in a GitHub Action](https://docs.percy.io/docs/github-actions)
+
+[1]: https://github.com/alphagov/govuk_publishing_components/blob/e455358c8a031403c6b5b0670f891c922919a3ca/.github/workflows/visual-regression-tests.yml
