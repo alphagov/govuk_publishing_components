@@ -40,7 +40,7 @@
 }
 
 .gem-c-summary-list--wide-title {
-  @include govuk-media-query($from: 'tablet') {
+  @include govuk-media-query($from: "tablet") {
     .govuk-summary-list__key {
       width: 60%;
     }
