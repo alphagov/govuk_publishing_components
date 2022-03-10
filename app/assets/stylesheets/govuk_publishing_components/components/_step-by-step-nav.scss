@@ -3,7 +3,7 @@ $number-circle-size: 30px;
 $number-circle-size-large: 35px;
 $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
 
-@mixin step-nav-vertical-line ($line-style: solid) {
+@mixin step-nav-vertical-line($line-style: solid) {
   content: "";
   position: absolute;
   z-index: 2;
