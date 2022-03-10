@@ -34,8 +34,7 @@ This type of test provides a high level functional test and helps to validate th
 Characteristics of feature tests:
 
 - they should navigate the application through the web interface with a minimal amount of set-up and direct visiting of links, for example most navigation should be achieved by user clicking;
-- they may mock and/or assert that particular API calls are made to external
-  services;
+- they may mock and/or assert that particular API calls are made to external services.
 
 ## Accessibility testing
 
