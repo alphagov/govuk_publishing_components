@@ -76,7 +76,7 @@ $large-input-size: 50px;
   padding: govuk-em(6, 16);
   border: $govuk-border-width-form-element solid $govuk-input-border-colour;
   background: govuk-colour("white");
-  border-radius: 0; //otherwise iphones apply an automatic border radius
+  border-radius: 0; // otherwise iphones apply an automatic border radius
   box-sizing: border-box;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -160,7 +160,7 @@ $large-input-size: 50px;
   background: govuk-colour("white");
 }
 
-//general class applied to search input and button wrapper
+// general class applied to search input and button wrapper
 .gem-c-search__item {
   position: relative;
   display: table-cell;
