@@ -3,10 +3,10 @@
 @import "components/helpers/govuk-frontend-settings";
 @import "govuk/base";
 
-@import 'components/mixins/margins';
+@import "components/mixins/margins";
 // TODO: remove this focus override when govuk_template is no longer used
-@import 'components/mixins/govuk-template-link-focus-override';
-@import 'components/mixins/css3';
+@import "components/mixins/govuk-template-link-focus-override";
+@import "components/mixins/css3";
 
 $gem-secondary-button-colour: #00823b;
 $gem-secondary-button-hover-colour: darken($gem-secondary-button-colour, 5%);
