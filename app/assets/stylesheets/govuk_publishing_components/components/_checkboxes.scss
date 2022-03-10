@@ -1,7 +1,7 @@
 @import "govuk/components/checkboxes/checkboxes";
 
 .govuk-checkboxes--nested {
-  margin-left: -(govuk-spacing(4) + 2px); //22px
+  margin-left: -(govuk-spacing(4) + 2px); // 22px
   box-sizing: border-box;
   border-left-style: solid;
   border-left-width: 4px;
@@ -17,7 +17,7 @@
 
 .govuk-checkboxes__conditional {
   margin-top: govuk-spacing(2);
-  margin-left: -(govuk-spacing(4) + 2px); //22px
+  margin-left: -(govuk-spacing(4) + 2px); // 22px
 }
 
 .gem-c-checkboxes__list {
