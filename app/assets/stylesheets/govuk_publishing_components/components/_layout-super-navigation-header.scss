@@ -9,7 +9,7 @@ $pseudo-underline-height: 3px;
 $button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
 
 @mixin chevron($colour, $update: false) {
-  @if ($update == true) {
+  @if $update == true {
     border-bottom-color: $colour;
     border-right-color: $colour;
   } @else {
