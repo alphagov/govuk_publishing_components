@@ -13,8 +13,6 @@ module GovukPublishingComponents
         frontend
         government-frontend
         govspeak-preview
-        govuk-account-manager-prototype
-        govuk-coronavirus-vulnerable-people-form
         info-frontend
         licence-finder
         manuals-frontend
