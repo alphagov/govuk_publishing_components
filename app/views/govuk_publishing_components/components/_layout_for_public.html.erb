@@ -51,7 +51,13 @@
     <title><%= title %></title>
 
     <%= javascript_include_tag "govuk_publishing_components/vendor/lux/lux-measurer", { async: true } %>
-    <%= javascript_include_tag "govuk_publishing_components/rum-loader", { async: true } %>
+    <%= javascript_include_tag "govuk_publishing_components/rum-loader",
+      {
+        async: true,
+        data: {
+          "lux-reporter-script": path_to_javascript("govuk_publishing_components/vendor/lux/lux-reporter")
+        }
+      } %>
 
     <%= csrf_meta_tags %>
 
