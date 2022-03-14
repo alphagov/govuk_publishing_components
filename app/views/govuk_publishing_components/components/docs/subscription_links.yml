@@ -11,7 +11,7 @@ accessibility_criteria: |
   - be usable with touch
   - be recognised by screen readers as a button
   - announce to screen readers whether they are expanded or collapsed
-  - show hidden elements by default when Javascript is disabled
+  - show hidden elements by default when JavaScript is disabled
 shared_accessibility_criteria:
   - link
 examples:

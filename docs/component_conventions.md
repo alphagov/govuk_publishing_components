@@ -23,9 +23,9 @@ The namespace indicates where a component lives. A single page on GOV.UK could r
 | Styles | `app/assets/stylesheets/components` | `_my-comp.scss` | [Component styles](#styles) |
 | Print styles | `app/assets/stylesheets/components/print` | `_my-comp.scss` | [Component styles](#styles) |
 | Images | `app/assets/images/govuk_publishing_components` | `my-comp.png` | [Images](#images) |
-| Scripts | `app/assets/javascripts/components` | `my-comp.js` | [Javascript enhancements](#javascript) |
+| Scripts | `app/assets/javascripts/components` | `my-comp.js` | [JavaScript enhancements](#javascript) |
 | Tests | `test/components` | `my_comp_test.rb` | [Unit tests](#tests) |
-| Javascript tests | `spec/components` | `my_comp_spec.rb` | [Unit tests](#tests) |
+| JavaScript tests | `spec/components` | `my_comp_spec.rb` | [Unit tests](#tests) |
 | Helpers | `lib/govuk_publishing_components/presenters` | `my_comp_helper.rb` | [Helpers](#helpers) |
 
 ## Template
@@ -256,7 +256,7 @@ background-image: image-url("govuk_publishing_components/search-button.png");
 
 SVGs can also be used for images, ideally inline in templates and compressed.
 
-## Javascript
+## JavaScript
 
 Follow the [GOV.UK Frontend JS conventions](https://github.com/alphagov/govuk-frontend/blob/master/docs/contributing/coding-standards/js.md).
 
@@ -264,13 +264,13 @@ Scripts should use the [module pattern](https://github.com/alphagov/govuk_publis
 
 Most components should have an option to include arbitrary data attributes (see the [checkboxes component](https://components.publishing.service.gov.uk/component-guide/checkboxes/checkboxes_with_data_attributes) for example). These can be used for many purposes including tracking (see the [select component](https://components.publishing.service.gov.uk/component-guide/select/with_tracking) for [example code](https://github.com/alphagov/govuk_publishing_components/blob/master/app/assets/javascripts/govuk_publishing_components/components/select.js)) but specific tracking should only be added to a component where there is a real need for it.
 
-Some [common Javascript modules](https://github.com/alphagov/govuk_publishing_components/tree/master/app/assets/javascripts/govuk_publishing_components/lib) are available. If new functionality is required, consider adding it as a common module.
+Some [common JavaScript modules](https://github.com/alphagov/govuk_publishing_components/tree/master/app/assets/javascripts/govuk_publishing_components/lib) are available. If new functionality is required, consider adding it as a common module.
 
 ## Tests
 
 Component tests should include a check that the component doesn't fail if no data is passed.
 
-Javascript tests should be included if the component has any Javascript that is unique to it. Use of existing Javascript modules should be covered by existing tests.
+JavaScript tests should be included if the component has any JavaScript that is unique to it. Use of existing JavaScript modules should be covered by existing tests.
 
 [Read further guidance on testing components](/docs/testing-components.md).
 

@@ -1708,7 +1708,7 @@ Note - this is version 23.0.0 due to a previously yanked version using 22.0.0; t
 ## 17.6.1
 
 * Fix confirmation message being read to screenreaders ([PR #952](https://github.com/alphagov/govuk_publishing_components/pull/952))
-* Hide 'Accept Cookies' button when Javascript not available ([PR #948](https://github.com/alphagov/govuk_publishing_components/pull/948))
+* Hide 'Accept Cookies' button when JavaScript not available ([PR #948](https://github.com/alphagov/govuk_publishing_components/pull/948))
 
 ## 17.6.0
 
@@ -1843,7 +1843,7 @@ Note - this is version 23.0.0 due to a previously yanked version using 22.0.0; t
 
 ## 16.15.0
 
-* Update cookie-banner behaviour without Javascript ([PR #843](https://github.com/alphagov/govuk_publishing_components/pull/843))
+* Update cookie-banner behaviour without JavaScript ([PR #843](https://github.com/alphagov/govuk_publishing_components/pull/843))
 
 ## 16.14.1
 
@@ -2161,7 +2161,7 @@ Note - this is version 23.0.0 due to a previously yanked version using 22.0.0; t
 
 * Add option to send the `user_organisation` in admin analytics component ([PR #577](https://github.com/alphagov/govuk_publishing_components/pull/577))
 * Add a bottom margin to the error-alert component ([PR #578](https://github.com/alphagov/govuk_publishing_components/pull/578))
-* Update the way we include Javascript and Stylesheets in the admin layout
+* Update the way we include JavaScript and Stylesheets in the admin layout
   component. Make sure to follow the [installation instructions](docs/install-and-use.md) ([PR #571](https://github.com/alphagov/govuk_publishing_components/pull/571)) if your using the admin layout component.
 * Fix background colour for focused buttons ([PR #579](https://github.com/alphagov/govuk_publishing_components/pull/579))
 
@@ -2648,7 +2648,7 @@ Your tests are likely to need updating as well.
 
 * Restore 'referer' field to feedback component form submission ([PR #232](https://github.com/alphagov/govuk_publishing_components/pull/232))
 * Create single breadrumb and sidebar contextual navigation components. Not a breaking change, but you can drop `govuk_navigation_helpers` as a dependency now.
-* You can now add require a single Javascript to include all components, just like CSS.
+* You can now add require a single JavaScript to include all components, just like CSS.
 
 Replace all individual includes with:
 

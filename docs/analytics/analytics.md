@@ -97,13 +97,13 @@ GOVUK.analytics.trackPageview('/path', 'Title', {
 Argument | Description
 ---------|------------
 `category` (required) | Typically the object that was interacted with, eg "JavaScript error"
-`action` (required) | The type of interaction, eg a Javascript error message
+`action` (required) | The type of interaction, eg a JavaScript error message
 `options` (optional) | Optional parameters to further describe event
 
 Option | Description
 -------|------------
 `page`  | Useful for sending the URL when `window.location` has been updated using JavaScript since the Analytics tracking object was created
-`label` | Useful for categorising events, eg Javascript error source
+`label` | Useful for categorising events, eg JavaScript error source
 `value` | Values must be non-negative. Useful to pass counts, eg error happened 5 times
 `nonInteraction` | Defaults to false. When set the event will not affect bounce rate
 

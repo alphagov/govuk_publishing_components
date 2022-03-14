@@ -233,7 +233,7 @@ examples:
             }
           }
   with_aria_controls_attributes:
-    description: Aria controls attributes are applied to the checkboxes only if Javascript is enabled.
+    description: Aria controls attributes are applied to the checkboxes only if JavaScript is enabled.
     data:
       name: "aria_controls[]"
       heading: "What areas are you interested in?"

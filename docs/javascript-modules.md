@@ -4,7 +4,7 @@ GOV.UK Publishing Components inherits a module pattern that makes it easy to wri
 
 ### Usage
 
-Javascript modules can be specified in markup using `data-` attributes:
+JavaScript modules can be specified in markup using `data-` attributes:
 
 ```html
 <div data-module="some-module">

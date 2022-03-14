@@ -102,7 +102,7 @@ If your application does use Slimmer/Static:
 //= require govuk_publishing_components/components/button
 ```
 
-### Import all Javascript (deprecated, will be removed in a later version)
+### Import all JavaScript (deprecated, will be removed in a later version)
 
 If your application doesn't use Slimmer/Static:
 
