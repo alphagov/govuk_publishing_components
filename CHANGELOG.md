@@ -12,6 +12,7 @@
 * Update the list of popular links in the super navigation header ([#2660](https://github.com/alphagov/govuk_publishing_components/pull/2660))
 * Remove Brexit call to action from contextual sidebar ([#2518](https://github.com/alphagov/govuk_publishing_components/pull/2518))
 * Add spellcheck to input [PR #2654](https://github.com/alphagov/govuk_publishing_components/pull/2654)
+* Increase font-size of previous_and_next_navigation, improve important icon ([PR #2659](https://github.com/alphagov/govuk_publishing_components/pull/2659))
 
 ## 28.9.0
 

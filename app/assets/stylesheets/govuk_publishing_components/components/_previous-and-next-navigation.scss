@@ -9,7 +9,7 @@
 }
 
 .gem-c-pagination__item {
-  @include govuk-font($size: 16, $line-height: (20 / 16));
+  @include govuk-font($size: 19);
   list-style: none;
 
   &:first-child {
