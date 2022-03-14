@@ -1,5 +1,5 @@
-(function() {
-  var parsedCookie = (function() {
+(function () {
+  var parsedCookie = (function () {
     try {
       var cookies = document.cookie.split(';')
 
@@ -18,7 +18,7 @@
     return {}
   })()
 
-  var insertScript = function() {
+  var insertScript = function () {
     var marker = document.querySelector('script[data-lux-reporter-script]')
 
     if (!marker) {
@@ -37,7 +37,7 @@
   if (parsedCookie.usage === true) {
     insertScript()
   } else {
-    window.addEventListener('cookie-consent', function() {
+    window.addEventListener('cookie-consent', function () {
       insertScript()
     })
   }
