@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency "plek"
   s.add_dependency "rails", ">= 6"
   s.add_dependency "rouge"
-  s.add_dependency "sprockets", "< 4"
+  s.add_dependency "sprockets"
 
   s.add_development_dependency "capybara", "~> 3.25"
   s.add_development_dependency "faker", ">= 2.11"
