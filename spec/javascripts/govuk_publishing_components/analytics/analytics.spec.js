@@ -22,6 +22,8 @@ describe('GOVUK.Analytics', function () {
       cookieDomain: '.www.gov.uk',
       siteSpeedSampleRate: 100
     })
+
+    GOVUK.analytics.setDimension = GOVUK.analytics.setDimension || {}
   })
 
   afterEach(function () {
