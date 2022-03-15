@@ -9,7 +9,6 @@
   classes << "gem-c-lead-paragraph--inverse" if inverse
   classes << custom_margin_bottom_class if local_assigns[:margin_bottom]
 %>
-
 <% if text.present? %>
   <%= content_tag :p, text, class: classes %>
 <% end %>
