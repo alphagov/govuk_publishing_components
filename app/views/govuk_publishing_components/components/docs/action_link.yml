@@ -18,6 +18,19 @@ examples:
       href: "/page"
       data:
         attr_test: "hasDataAttribute"
+  with_gtm_attributes:
+    description: |
+      Given the GTM `true` parameter, the component will automatically apply a `data-gtm-attributes` parameter, containing information about the component for tracking purposes.
+
+      These attributes are populated with data from the component, but can also be overridden by passing new values.
+    data:
+      text: "Example"
+      href: "/page"
+      gtm: true
+      data:
+        attr1: "test 1"
+        gtm_attributes:
+          event_name: override
   with_js_classes:
     description: Use `js-` prefixed classes only as interaction hooks – to query and operate on elements via JavaScript. Classes are added to the link itself.
     data:

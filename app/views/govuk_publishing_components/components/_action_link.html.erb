@@ -1,7 +1,4 @@
 <%
-  local_assigns[:margin_bottom] ||= 0
-  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
-
   text ||= false
   nowrap_text ||= false
   href ||= false
@@ -17,9 +14,23 @@
   nhs_icon ||= false
   brexit_icon ||= false
   transparent_icon ||= false
-  data ||= nil
   classes ||= nil
   font_size ||= nil
+
+  local_assigns[:margin_bottom] ||= 0
+  local_assigns[:data] ||= {}
+  local_assigns[:data][:gtm_attributes] ||= {}
+  local_assigns[:data][:gtm_attributes][:event_name] ||= 'action_link'
+  local_assigns[:data][:gtm_attributes][:component] ||= {}
+  local_assigns[:data][:gtm_attributes][:component][:category] ||= 'navigation'
+  local_assigns[:data][:gtm_attributes][:component][:main_type] ||= 'action link'
+  local_assigns[:data][:gtm_attributes][:component][:comp_text] ||= text
+  local_assigns[:data][:gtm_attributes][:component][:comp_url] ||= href
+  local_assigns[:data][:gtm_attributes][:component][:comp_action] ||= 'click'
+  local_assigns[:data][:gtm_attributes][:component][:comp_accessible_asset] ||= false
+
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+  data = shared_helper.get_data_attributes
 
   css_classes = %w(gem-c-action-link)
   css_classes << "gem-c-action-link--light-text" if light_text
