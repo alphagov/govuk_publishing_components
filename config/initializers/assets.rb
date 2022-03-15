@@ -56,3 +56,9 @@ Rails.application.config.assets.paths += %W[
   #{__dir__}/../../node_modules/govuk-frontend/
   #{__dir__}/../../node_modules/
 ]
+
+# Disable concurency otherwise the assets will be compiled in a random order
+# resulting in failures where, for example, a mixin is called but not yet compiled
+Rails.application.config.assets.configure do |environment|
+  environment.export_concurrent = false
+end
