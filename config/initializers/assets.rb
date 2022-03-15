@@ -1,6 +1,10 @@
 return unless Rails.application.config.respond_to?(:assets)
 
 # GOV.UK Publishing Components assets
+Rails.application.config.assets.precompile = %w[
+  manifest.js
+]
+
 Rails.application.config.assets.precompile += %w[
   component_guide/accessibility-test.js
   component_guide/application.js
