@@ -7,6 +7,14 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* **BREAKING:** Update sprockets to 4 ([PR #2684](https://github.com/alphagov/govuk_publishing_components/pull/2684))
+
+  You must make the following changes when you migrate to this release:
+  - Update your application to latest sprockets version (by running `bundle update sprockets`)
+  - Create and configure `app/assets/config/manifest.js`; you can use the following [`manifest.js`](https://github.com/alphagov/govuk_publishing_components/blob/d40bd06c871b6a197aa244250d6fb2744eda3a49/spec/dummy/app/assets/config/manifest.js) or refer to the [migration docs to sprockets 4](https://github.com/rails/sprockets/blob/master/UPGRADING.md);
+
 ## 28.9.1
 
 * Update the list of popular links in the super navigation header ([#2660](https://github.com/alphagov/govuk_publishing_components/pull/2660))
