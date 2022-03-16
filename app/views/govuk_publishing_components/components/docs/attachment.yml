@@ -86,7 +86,7 @@ examples:
         file_size: 20000
         owning_document_content_id: 456_abc
         attachment_id: 123
-        alternative_format_contact_email: alternative.formats@education.gov.uk
+        alternative_format_contact_email: govuk_publishing_components@example.com
   with_data_attributes:
     data:
       attachment:

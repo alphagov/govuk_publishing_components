@@ -1,15 +1,11 @@
 module GovukPublishingComponents
   module Presenters
     class Attachment
-      # DfE, DWP, DHSC, HMRC, DVSA and PHE are taking part in a pilot to use a form
+      # Various departments are taking part in a pilot to use a form
       # rather than direct email for users to request accessible formats. When the pilot
       # scheme is rolled out further this can be removed.
-      EMAILS_IN_ACCESSIBLE_FORMAT_REQUEST_PILOT = %w[alternative.formats@education.gov.uk
-                                                     accessible.formats@dwp.gov.uk
-                                                     publications@dhsc.gov.uk
-                                                     different.format@hmrc.gov.uk
-                                                     gov.uk.publishing@dvsa.gov.uk
-                                                     publications@phe.gov.uk].freeze
+      # Currently the pilot is paused so there are no participants.
+      EMAILS_IN_ACCESSIBLE_FORMAT_REQUEST_PILOT = %w[govuk_publishing_components@example.com].freeze
 
       delegate :opendocument?, :document?, :spreadsheet?, to: :content_type
 

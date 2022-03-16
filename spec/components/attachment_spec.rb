@@ -94,7 +94,7 @@ describe "Attachment", type: :view do
         attachment_id: "123",
         owning_document_content_id: "abc_456",
         content_type: "application/vnd.oasis.opendocument.spreadsheet",
-        alternative_format_contact_email: "alternative.formats@education.gov.uk",
+        alternative_format_contact_email: "govuk_publishing_components@example.com",
       },
     )
     assert_select "a[href='/contact/govuk/request-accessible-format?content_id=abc_456&attachment_id=123']", text: "Request an accessible format of this document"
