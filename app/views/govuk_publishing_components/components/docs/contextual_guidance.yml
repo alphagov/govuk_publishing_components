@@ -15,7 +15,7 @@ shared_accessibility_criteria:
   - link
 examples:
   default:
-    description: Reveals a contextul guidance on the side overflowing the container
+    description: Reveals a contextual guidance on the side overflowing the container
     data:
       html_for: news-title
       title: Writing a news title

@@ -124,7 +124,7 @@ examples:
         - label: "Blue"
           value: "blue"
   without_hint_text:
-    description: Hint text can be removed entirely with this option. Note that this option can be combined with the visually_hide_heading option.
+    description: Hint text can be removed entirely with this option. Note that this option can be combined with the `visually_hide_heading` option.
     data:
       name: "favourite_skittle[]"
       heading: "What is your favourite skittle?"
@@ -148,7 +148,7 @@ examples:
         - label: "Blue"
           value: "blue"
   with_a_custom_id_attribute:
-    description: Note that if an id is not given one is generated automatically. In either case, the id is applied to the parent element of the checkboxes, and each checkbox is given the same id with an incremented number at the end, e.g. the checkboxes below have ids of potatoes-0 and potatoes-1.
+    description: Note that if an `id` is not given one is generated automatically. In either case, the `id` is applied to the parent element of the checkboxes, and each checkbox is given the same `id` with an incremented number at the end, e.g. the checkboxes below have ids of `potatoes-0` and `potatoes-1`.
     data:
       name: "potatoes[]"
       id: "potatoes"
@@ -185,9 +185,9 @@ examples:
           value: "blue"
   with_custom_heading_size:
     description: |
-      This allows the size of the legend to be changed. Valid options are s, m, l, xl, defaulting to m if no option is passed.
+      This allows the size of the legend to be changed. Valid options are `s`, `m`, `l`, `xl`, defaulting to m if no option is passed.
 
-      If the is_page_heading option is true and heading_size is not set, the text size will be xl.
+      If the `is_page_heading` option is `true` and `heading_size` is not set, the text size will be `xl`.
     data:
       name: "favourite_colour[]"
       heading: "What is your favourite colour?"

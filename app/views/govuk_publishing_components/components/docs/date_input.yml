@@ -14,7 +14,7 @@ accessibility_criteria: |
 
   Labels use the [label component](/component-guide/label).
 
-  Avoid using autofocus and tabindex unless you have user research to support this behaviour.
+  Avoid using [`autofocus`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/autofocus) and `tabindex` unless you have user research to support this behaviour.
 govuk_frontend_components:
   - date-input
 examples:

@@ -14,7 +14,7 @@ accessibility_criteria: |
 
   Labels use the [label component](/component-guide/label).
 
-  Avoid using autofocus and tabindex unless you have user research to support this behaviour.
+  Avoid using `autofocus` and `tabindex` unless you have user research to support this behaviour.
 govuk_frontend_components:
   - text-input
 examples:
@@ -45,7 +45,7 @@ examples:
       name: "account-number"
       type: "number"
   with_an_identifier:
-    description: Give the input a specific ID.
+    description: Give the input a specific `ID`.
     data:
       label:
         text: "Has an id"
@@ -120,7 +120,7 @@ examples:
       width: 10
   with_search_icon:
     description: |
-        Adds a search icon, [spellcheck](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/spellcheck) can also be added to indicate that the element should be, if possible, checked for spelling errors.
+        Adds a search icon, [`spellcheck`](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/spellcheck) can also be added to indicate that the element should be, if possible, checked for spelling errors.
     data:
       label:
         text: "Search the internet"

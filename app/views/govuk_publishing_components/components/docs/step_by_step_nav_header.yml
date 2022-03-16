@@ -7,7 +7,7 @@ accessibility_criteria: |
 
   An earlier version of the component did not use a heading element &ndash; this failed WCAG 2.1 Success Criterion 1.3.1 ("Information, structure, and relationships conveyed through presentation can be programmatically determined or are available in text.")
 
-  An early version of the component contained a hidden skip link for keyboard and screen reader users, that jumped to the step by step navigation component in the sidebar (similiar to the 'skip to content' link at the top of all GOV.UK pages). User testing suggested that rather than helping users it confused them, so this has been removed.
+  An early version of the component contained a hidden skip link for keyboard and screen reader users, that jumped to the step by step navigation component in the sidebar (similar to the 'skip to content' link at the top of all GOV.UK pages). User testing suggested that rather than helping users it confused them, so this has been removed.
 shared_accessibility_criteria:
   - link
 examples:
@@ -24,12 +24,12 @@ examples:
       path: /childcare-parenting/pregnancy-and-birth
   with_margin_bottom:
     description: |
-      The component accepts a number for margin bottom from 0 to 9 (0px to 60px) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having a margin bottom of 30px.
+      The component accepts a number for margin bottom from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having a margin bottom of `30px`.
     data:
       title: 'Learn to practice flexible spacing: step by step'
       margin_bottom: 9
   with_unique_tracking:
-    description: In order to identify the step by step navigation the component is part of, we need to track a unique ID of the navigation in Google Analytics. This ID should be the same across all pages that are linked from and are part of that navigation. Its value is included in any tracking events, specifically in dimension96. It refers to the ID of the step nav that the component links to.
+    description: In order to identify the step by step navigation the component is part of, we need to track a unique `ID` of the navigation in Google Analytics. This `ID` should be the same across all pages that are linked from and are part of that navigation. Its value is included in any tracking events, specifically in dimension96. It refers to the `ID` of the step nav that the component links to.
     data:
       title: 'With a tracking id'
       path: '#'

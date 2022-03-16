@@ -3,7 +3,7 @@ description: Used at the top of the page, to summarise a unsuccessful user actio
 accessibility_criteria: |
   - should be focused on page load, to ensure the message is noticed by
     assistive tech
-  - Should have a role of ‘alert’ to communicate that is a important and
+  - Should have a role of `alert` to communicate that is a important and
     time sensitive message
 examples:
   default:

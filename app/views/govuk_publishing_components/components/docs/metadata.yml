@@ -359,7 +359,7 @@ examples:
       dark_background: true
   with_custom_margin_bottom:
     description: |
-      The component accepts a number for margin bottom from 0 to 9 (0px to 60px) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to the `margin-bottom` values defined in the [responsive-bottom-margin mixin](https://github.com/alphagov/govuk_publishing_components/blob/master/app/assets/stylesheets/govuk_publishing_components/components/mixins/_margins.scss#L1)
+      The component accepts a number for margin bottom from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to the `margin-bottom` values defined in the [responsive-bottom-margin mixin](https://github.com/alphagov/govuk_publishing_components/blob/master/app/assets/stylesheets/govuk_publishing_components/components/mixins/_margins.scss#L1)
     data:
       first_published: 14 June 2014
       last_updated: 10 September 2015

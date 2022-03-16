@@ -83,7 +83,7 @@ examples:
           alternative_url: /
       type: detailed_guide
   specific_heading level:
-    description: Use a different heading level for the main link title. Defaults to `H2` if not passed.
+    description: Use a different heading level for the main link title. Defaults to `h2` if not passed.
     data:
       heading_level: 3
       national_applicability:

@@ -47,7 +47,7 @@ examples:
       average_title_length: long
   with_margin_bottom:
     description: |
-      The component accepts a number for margin bottom from 0 to 9 (0px to 60px) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having a margin bottom of 50px.
+      The component accepts a number for margin bottom from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having a margin bottom of 50px.
 
       This margin is responsive at certain sizes, see the link above for more detail. Note also that the component has a (responsive) top margin set as well, which cannot be modified.
     data:

@@ -1,7 +1,7 @@
 name: Subscription links
 description: Links to ‘Get emails’ and ‘Subscribe to feed’
 body: |
-  <strong>NOTE: This component includes a h2 heading by default but can be suppressed by using `hide_heading` option (see below)<strong>
+  <strong>NOTE: This component includes a `h2` heading by default but can be suppressed by using `hide_heading` option (see below)<strong>
 accessibility_criteria: |
   Icons in subscription links must be presentational and ignored by screen readers.
 
@@ -20,7 +20,7 @@ examples:
       email_signup_link: '/foreign-travel-advice/singapore/email-signup'
       feed_link: '/foreign-travel-advice/singapore.atom'
   with_margin:
-    description: The component accepts a number for margin bottom from 0 to 9 (0px to 60px) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having no margin bottom, although some margin is supplied by the links themselves (so that when they stack on mobile there is space between them).
+    description: The component accepts a number for margin bottom from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having no margin bottom, although some margin is supplied by the links themselves (so that when they stack on mobile there is space between them).
     data:
       email_signup_link: '/foreign-travel-advice/singapore/email-signup'
       feed_link: '/foreign-travel-advice/singapore.atom'

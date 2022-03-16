@@ -25,7 +25,7 @@ examples:
       content_item:
         title: "A content item"
   inverse:
-    description: Passes the 'inverse' option to the breadcrumbs, if shown.
+    description: Passes the `inverse` option to the breadcrumbs, if shown.
     data:
       content_item:
         title: "Another content item"

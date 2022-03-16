@@ -4,7 +4,7 @@ body: |
   A search box with label and attached submit button. The component must be used within an HTML form.
   The search input has a name="q" attribute and a customisable ID and NAME.
 
-  It can be used on white or on govuk-blue using the on_govuk_blue option.
+  It can be used on white or on govuk-blue using the `on_govuk_blue` option.
 
   Markup such as heading tags can be included in the label using the label_text option. Styling is not included in the component for heading tags in labels, however this is what the search results page does.
 accessibility_criteria: |
@@ -74,7 +74,7 @@ examples:
       label_size: "xl"
   wrap_label_inside_a_heading:
     description: |
-      Puts the label inside a heading; heading level defaults to 2 if not set.
+      Puts the label inside a heading; heading level defaults to `2` if not set.
 
       (The size of the label can still be set with `label_size` to appear more like a heading.)
     data:
@@ -84,7 +84,7 @@ examples:
     description: |
       Allows the spacing at the bottom of the component to be adjusted.
 
-      This accepts a number from 0 to 9 (0px to 60px) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having no margin bottom.
+      This accepts a number from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having no margin bottom.
     data:
       margin_bottom: 9
   with_margin_bottom_for_the_label:
@@ -93,7 +93,7 @@ examples:
 
       Requires `inline_label` to be false.
 
-      This accepts a number from 0 to 9 (0px to 60px) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having no margin bottom.
+      This accepts a number from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having no margin bottom.
     data:
       label_margin_bottom: 9
       inline_label: false

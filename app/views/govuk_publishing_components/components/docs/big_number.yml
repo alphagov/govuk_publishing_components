@@ -19,7 +19,7 @@ examples:
       number: 119
       label: Open consultations
   passing_extra_symbols:
-    description: "In some cases, we want to communicate more than just the flat numeric value eg: 400+, 90%, -20, 1M etc. This is why we allow values to be passed as flat strings."
+    description: "In some cases, we want to communicate more than just the flat numeric value eg: `400+`, `90%`, `-20`, `1M` etc. This is why we allow values to be passed as flat strings."
     data:
       number: "400+"
       label: Other agencies and public bodies
@@ -35,7 +35,7 @@ examples:
       href: "/government/organisations#ministerial_departments"
   with_data_attributes:
     description: |
-      If a `href` attribute is present, data attributes will apply to the `span` containing the number value (see below).
+      If a `href` attribute is present, `data_attributes` will apply to the `span` containing the number value (see below).
       
       This will also not automatically apply a `gem-track-click` module attribute if the data attributes pertain to click tracking. Remember to apply this outside the component call in a surrounding element, if using.
     data:
@@ -62,7 +62,7 @@ examples:
       aria:
         hidden: true
   with_bottom_margin:
-    description: The component accepts a number for margin bottom from 0 to 9 (0px to 60px) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). The default big number margin bottom is 15px (govuk spacing 3).
+    description: The component accepts a number for margin bottom from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). The default big number margin bottom is `15px` (`govuk-spacing(3)`).
     data:
       number: 119
       label: Open consultations

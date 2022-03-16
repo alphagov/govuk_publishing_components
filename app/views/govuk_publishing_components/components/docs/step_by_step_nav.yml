@@ -22,7 +22,7 @@ accessibility_criteria: |
   - inform the user which step the current page is in
   - be readable when only the text of the page is zoomed - achieved for the numbers and logic elements by their text being wrapped in several elements that give them a white background and ensure the text when zoomed expands to the left, not to the right, where it would obscure the step titles
 
-  The show/hide all button only needs to list the first panel id in the aria-controls attribute, rather than all of them.
+  The show/hide all button only needs to list the first panel `id` in the `aria-controls` attribute, rather than all of them.
 
   Step headings must use a button element:
 

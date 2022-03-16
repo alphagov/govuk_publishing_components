@@ -12,13 +12,14 @@
 * Migrate cross domain tracking script from static ([PR #2607](https://github.com/alphagov/govuk_publishing_components/pull/2607))
 * Update card tracking ([PR #2679](https://github.com/alphagov/govuk_publishing_components/pull/2679))
 * Remove accessible format request pilot emails from attachment ([PR #2687](https://github.com/alphagov/govuk_publishing_components/pull/2687))
+* Update docs ([PR #2683](https://github.com/alphagov/govuk_publishing_components/pull/2683))
 
 ## 28.9.1
 
 * Update the list of popular links in the super navigation header ([#2660](https://github.com/alphagov/govuk_publishing_components/pull/2660))
 * Remove Brexit call to action from contextual sidebar ([#2518](https://github.com/alphagov/govuk_publishing_components/pull/2518))
 * Add spellcheck to input [PR #2654](https://github.com/alphagov/govuk_publishing_components/pull/2654)
-* Increase font-size of previous_and_next_navigation, improve important icon ([PR #2659](https://github.com/alphagov/govuk_publishing_components/pull/2659))
+* Increase font-size of `previous_and_next_navigation`, improve important icon ([PR #2659](https://github.com/alphagov/govuk_publishing_components/pull/2659))
 
 ## 28.9.0
 

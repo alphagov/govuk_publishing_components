@@ -3,7 +3,7 @@ description: A notice to convey and highlight information
 body: |
   The notice component replaces the notice and withdrawal notice patterns on GOV.UK.
 
-  The component accepts either a simple string description_text parameter that it wraps in a paragraph, or a description_govspeak parameter that is rendered through govspeak for more complex HTML layout.
+  The component accepts either a simple string `description_text` parameter that it wraps in a paragraph, or a `description_govspeak` parameter that is rendered through govspeak for more complex HTML layout.
 accessibility_criteria: |
   The notice must:
 
@@ -45,7 +45,7 @@ examples:
   with_locale:
     description: |
       Passing a lang value allows the content of the notice to be labelled as being a different language from surrounding content.
-      The lang attribute must be set to a [valid BCP47 string](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang#Language_tag_syntax). A valid code can be the two or three letter language code - for example, English is en or eng, Korean is ko or kor - but if in doubt please check.
+      The lang attribute must be set to a [valid BCP47 string](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang#Language_tag_syntax). A valid code can be the two or three letter language code - for example, English is `en` or `eng`, Korean is `ko` or `kor` - but if in doubt please check.
     data:
       title: 'This publication was withdrawn on 30 September 2015'
       description_govspeak: <p>This document is no longer current. We published a new version on 30 September 2015.</p>

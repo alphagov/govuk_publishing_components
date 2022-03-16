@@ -3,7 +3,7 @@ description: The fieldset element is used to group several controls within a web
 body: |
   [Using the fieldset and legend elements](https://accessibility.blog.gov.uk/2016/07/22/using-the-fieldset-and-legend-elements/)
 
-  You can use the 'text' property or pass 'text' as a block.
+  You can use the `text` property or pass `text` as a block.
 accessibility_criteria: |
   - must give inputs within the fieldset context with legend text
 examples:
@@ -29,7 +29,7 @@ examples:
           <input type="radio" id="passport-no" name="default">
           <label for="passport-no">No</label>
   with_heading:
-    description: Make the legend different sizes. Valid options are 's', 'm', 'l' and 'xl'.
+    description: Make the legend different sizes. Valid options are `s`, `m`, `l` and `xl`.
     data:
       legend_text: 'Do you have a driving license?'
       heading_level: 2
@@ -42,7 +42,7 @@ examples:
           <input type="radio" id="level-no" name="default">
           <label for="level-no">No</label>
   with_custom_legend_size:
-    description: Make the legend different sizes. Valid options are 's', 'm', 'l' and 'xl'.
+    description: Make the legend different sizes. Valid options are `s`, `m`, `l` and `xl`.
     data:
       legend_text: 'Do you have a driving license?'
       heading_size: 'l'
@@ -54,7 +54,7 @@ examples:
           <input type="radio" id="size-no" name="default">
           <label for="size-no">No</label>
   with_error_message:
-    description: The component also accepts an error_id, or generates one automatically.
+    description: The component also accepts an `error_id`, or generates one automatically.
     data:
       legend_text: 'Do you have a passport?'
       error_message: 'Please choose an option'

@@ -319,7 +319,7 @@ Call the shared helper to provide a margin bottom class:
 classes << shared_helper.get_margin_bottom
 ```
 
-The component will accept a number for `margin_bottom` from 0 to 9 (0px to 60px) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to a margin bottom of 15px (3). If you require a different default value, change the code as shown.
+The component will accept a number for `margin_bottom` from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to a margin bottom of 15px (3). If you require a different default value, change the code as shown.
 
 ```erb
 local_assigns[:margin_bottom] ||= 0 # this will be the default
