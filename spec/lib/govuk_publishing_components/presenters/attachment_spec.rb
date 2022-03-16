@@ -229,7 +229,7 @@ RSpec.describe GovukPublishingComponents::Presenters::Attachment do
       attachment = described_class.new(
         attachment_id: "123",
         owning_document_content_id: "456",
-        alternative_format_contact_email: "alternative.formats@education.gov.uk",
+        alternative_format_contact_email: "govuk_publishing_components@example.com",
       )
       expect(attachment.display_accessible_format_request_form_link?).to be true
     end
@@ -237,7 +237,7 @@ RSpec.describe GovukPublishingComponents::Presenters::Attachment do
     it "returns false if the attachment id is not provided" do
       attachment = described_class.new(
         owning_document_content_id: "456",
-        alternative_format_contact_email: "alternative.formats@education.gov.uk",
+        alternative_format_contact_email: "govuk_publishing_components@example.com",
       )
       expect(attachment.display_accessible_format_request_form_link?).to be false
     end
@@ -245,7 +245,7 @@ RSpec.describe GovukPublishingComponents::Presenters::Attachment do
     it "returns false if the owning document content id is not provided" do
       attachment = described_class.new(
         attachment_id: "123",
-        alternative_format_contact_email: "alternative.formats@education.gov.uk",
+        alternative_format_contact_email: "govuk_publishing_components@example.com",
       )
       expect(attachment.display_accessible_format_request_form_link?).to be false
     end
@@ -254,7 +254,7 @@ RSpec.describe GovukPublishingComponents::Presenters::Attachment do
       attachment = described_class.new(
         attachment_id: "123",
         owning_document_content_id: "456",
-        alternative_format_contact_email: "alternative.formats@organisation_not_in_pilot.gov.uk",
+        alternative_format_contact_email: "invalid@example.com",
       )
       expect(attachment.display_accessible_format_request_form_link?).to be false
     end
