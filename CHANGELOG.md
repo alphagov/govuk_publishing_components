@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Migrate cross domain tracking script from static ([PR #2607](https://github.com/alphagov/govuk_publishing_components/pull/2607))
+* Update card tracking ([PR #2679](https://github.com/alphagov/govuk_publishing_components/pull/2679))
 
 ## 28.9.1
 
