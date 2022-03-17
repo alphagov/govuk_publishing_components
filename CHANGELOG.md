@@ -7,11 +7,11 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 28.9.2
 
 * Migrate cross domain tracking script from static ([PR #2607](https://github.com/alphagov/govuk_publishing_components/pull/2607))
 * Update card tracking ([PR #2679](https://github.com/alphagov/govuk_publishing_components/pull/2679))
-* Remove accessible format request pilot emails from attachment ([PR](https://github.com/alphagov/govuk_publishing_components/pull/2687))
+* Remove accessible format request pilot emails from attachment ([PR #2687](https://github.com/alphagov/govuk_publishing_components/pull/2687))
 
 ## 28.9.1
 
