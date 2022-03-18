@@ -1,10 +1,22 @@
 return unless Rails.application.config.respond_to?(:assets)
 
+# In Sprockets 4, it is expected that applications will prefer to use
+# a manifest.js to define which assets should be prcompiled rather
+# than the using Rails.application.config.assets.precompile array.
+#
+# We are currently using assets.precompile array rather than a
+# govuk_publishing_components_manifest.js for Sprockets backwards
+# compatibility with version 3 and an easier installation process
+#
+# Once we drop Sprockets 3 we may want to consider moving these
+# directives to a manifest file.
+
 # GOV.UK Publishing Components assets
 Rails.application.config.assets.precompile += %w[
   component_guide/accessibility-test.js
   component_guide/application.js
   component_guide/filter-components.js
+  component_guide/application.css
   component_guide/print.css
   govuk_publishing_components/rum-loader.js
   govuk_publishing_components/vendor/lux/lux-reporter.js

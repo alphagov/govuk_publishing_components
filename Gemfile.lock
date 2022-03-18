@@ -8,7 +8,7 @@ PATH
       plek
       rails (>= 6)
       rouge
-      sprockets (< 4)
+      sprockets (>= 3)
 
 GEM
   remote: https://rubygems.org/
