@@ -1,7 +1,5 @@
-(function() {
-  var scriptSrc = '<%= path_to_javascript("govuk_publishing_components/vendor/lux/lux-reporter") %>'
-
-  var parsedCookie = (function() {
+(function () {
+  var parsedCookie = (function () {
     try {
       var cookies = document.cookie.split(';')
 
@@ -20,11 +18,16 @@
     return {}
   })()
 
-  var insertScript = function(source) {
-    var marker = document.getElementsByTagName('script')[0]
+  var insertScript = function () {
+    var marker = document.querySelector('script[data-lux-reporter-script]')
+
+    if (!marker) {
+      console.error("Failed to configure real-user-monitoring because couldn't the lux-reporter script path wasn't available")
+      return
+    }
 
     var script = document.createElement('script')
-    script.src = source
+    script.src = marker.getAttribute('data-lux-reporter-script')
     script.async = true
     script.defer = true
 
@@ -32,10 +35,10 @@
   }
 
   if (parsedCookie.usage === true) {
-    insertScript(scriptSrc)
+    insertScript()
   } else {
-    window.addEventListener('cookie-consent', function() {
-      insertScript(scriptSrc)
+    window.addEventListener('cookie-consent', function () {
+      insertScript()
     })
   }
 })()

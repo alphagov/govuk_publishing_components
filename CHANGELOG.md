@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Use a data attribute to specify RUM (real user monitoring) script location ([PR #2682](https://github.com/alphagov/govuk_publishing_components/pull/2682))
+
 ## 28.9.2
 
 * Migrate cross domain tracking script from static ([PR #2607](https://github.com/alphagov/govuk_publishing_components/pull/2607))
