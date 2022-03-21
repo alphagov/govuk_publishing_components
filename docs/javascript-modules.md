@@ -22,9 +22,9 @@ $(document).ready(function(){
 
 This will attempt to find and start all modules in the page. For the example above it will look for a module at `GOVUK.Modules.SomeModule`. Note the value of the data attribute has been converted to _PascalCase_.
 
-The module will be instantiated and then its `init` or `start` method called. The HTML element with the `data-module` attribute is passed as the first argument to the module. This limits modules to acting only within their containing elements.
+The module will be instantiated and then its `init` method called. The HTML element with the `data-module` attribute is passed as the first argument to the module. This limits modules to acting only within their containing elements.
 
-These function names are not reserved words, but a way of differentiating between modules that accept a jQuery object (`start`) and modules that accept a JS HTML node (`init`). We are removing jQuery from GOV.UK and eventually all modules will use an `init` method.
+This function name is not a reserved word, but was used to differentiate between modules that accept a jQuery object (`start`) and modules that accept a JS HTML node (`init`). We are removing jQuery from GOV.UK and eventually all modules will use an `init` method.
 
 ```javascript
 module = new GOVUK.Modules.SomeModule(element)
