@@ -1,12 +1,31 @@
+<%
+  total_components = components.length
+  components_with_stylesheet = 0
+  components_with_print_stylesheet = 0
+  components_with_javascript = 0
+  components_with_test = 0
+  components_with_javascript_test = 0
+  components_with_helper = 0
+
+  components.each do |component|
+    components_with_stylesheet += 1 if component[:stylesheet]
+    components_with_print_stylesheet += 1 if component[:print_stylesheet]
+    components_with_javascript += 1 if component[:javascript]
+    components_with_test += 1 if component[:tests]
+    components_with_javascript_test += 1 if component[:js_tests]
+    components_with_helper += 1 if component[:helper]
+  end
+%>
 <table class="govuk-table">
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header sticky-table-header">Component</th>
-      <th scope="col" class="govuk-table__header sticky-table-header">Stylesheet</th>
-      <th scope="col" class="govuk-table__header sticky-table-header">Print stylesheet</th>
-      <th scope="col" class="govuk-table__header sticky-table-header">JS</th>
-      <th scope="col" class="govuk-table__header sticky-table-header">Test</th>
-      <th scope="col" class="govuk-table__header sticky-table-header">JS test</th>
+      <th scope="col" class="govuk-table__header sticky-table-header">Component (<%= total_components %>)</th>
+      <th scope="col" class="govuk-table__header sticky-table-header">Stylesheet (<%= components_with_stylesheet %>)</th>
+      <th scope="col" class="govuk-table__header sticky-table-header">Print stylesheet (<%= components_with_print_stylesheet %>)</th>
+      <th scope="col" class="govuk-table__header sticky-table-header">JS (<%= components_with_javascript %>)</th>
+      <th scope="col" class="govuk-table__header sticky-table-header">Test (<%= components_with_test %>)</th>
+      <th scope="col" class="govuk-table__header sticky-table-header">JS test (<%= components_with_javascript_test %>)</th>
+      <th scope="col" class="govuk-table__header sticky-table-header">Helper (<%= components_with_helper %>)</th>
     </tr>
   </thead>
   <tbody class="govuk-table__body">
@@ -37,6 +56,11 @@
         </td>
         <td class="govuk-table__cell">
           <% if component[:js_tests] %>
+            <strong class="govuk-tag govuk-tag--green">Yes</strong>
+          <% end %>
+        </td>
+        <td class="govuk-table__cell">
+          <% if component[:helper] %>
             <strong class="govuk-tag govuk-tag--green">Yes</strong>
           <% end %>
         </td>

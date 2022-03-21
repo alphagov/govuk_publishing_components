@@ -38,6 +38,9 @@ describe "Auditing the components in the gem" do
       component_js_tests: [
         "test component",
       ],
+      component_helpers: [
+        "test component",
+      ],
       components_containing_components: [
         {
           component: "test component containing other component",
@@ -56,6 +59,7 @@ describe "Auditing the components in the gem" do
           javascript: true,
           tests: true,
           js_tests: true,
+          helper: true,
         },
         {
           name: "test component containing other component",
@@ -65,6 +69,7 @@ describe "Auditing the components in the gem" do
           javascript: nil,
           tests: nil,
           js_tests: nil,
+          helper: nil,
         },
       ],
     }
@@ -95,6 +100,9 @@ describe "Auditing the components in the gem" do
         "test component",
       ],
       component_js_tests: [
+        "test component",
+      ],
+      component_helpers: [
         "test component",
       ],
       components_containing_components: [

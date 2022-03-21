@@ -19,6 +19,7 @@ module GovukPublishingComponents
       javascripts_path = "app/assets/javascripts/govuk_publishing_components/components"
       tests_path = "spec/components"
       js_tests_path = "spec/javascripts/components"
+      helpers_path = "lib/govuk_publishing_components/presenters"
 
       templates = Dir["#{path}/#{templates_path}/*.erb"]
       stylesheets = Dir["#{path}/#{stylesheets_path}/*.scss"]
@@ -26,6 +27,7 @@ module GovukPublishingComponents
       javascripts = Dir["#{path}/#{javascripts_path}/*.js"]
       tests = Dir["#{path}/#{tests_path}/*.rb"]
       js_tests = Dir["#{path}/#{js_tests_path}/*.js"]
+      helpers = Dir["#{path}/#{helpers_path}/*_helper.rb"]
 
       @templates_full_path = "#{path}/#{templates_path}/"
 
@@ -35,6 +37,7 @@ module GovukPublishingComponents
       @component_javascripts = find_files(javascripts, [path, javascripts_path].join("/"))
       @component_tests = find_files(tests, [path, tests_path].join("/"))
       @component_js_tests = find_files(js_tests, [path, js_tests_path].join("/"))
+      @component_helpers = find_files(helpers, [path, helpers_path].join("/"))
 
       {
         gem_found: true,
@@ -44,6 +47,7 @@ module GovukPublishingComponents
         component_javascripts: @component_javascripts,
         component_tests: @component_tests,
         component_js_tests: @component_js_tests,
+        component_helpers: @component_helpers,
         components_containing_components: find_all_partials_in(templates),
         component_listing: list_all_component_details,
       }
@@ -61,6 +65,7 @@ module GovukPublishingComponents
         .gsub(".js", "")
         .gsub("spec", "")
         .gsub(".rb", "")
+        .gsub("helper", "")
         .strip
     end
 
@@ -142,6 +147,7 @@ module GovukPublishingComponents
           javascript: check_component_has("javascript", component),
           tests: check_component_has("test", component),
           js_tests: check_component_has("js_test", component),
+          helper: check_component_has("helper", component),
         }
       end
 
@@ -154,6 +160,7 @@ module GovukPublishingComponents
       look_in = @component_javascripts if a_thing == "javascript"
       look_in = @component_tests if a_thing == "test"
       look_in = @component_js_tests if a_thing == "js_test"
+      look_in = @component_helpers if a_thing == "helper"
 
       true if look_in.include?(component)
     end
