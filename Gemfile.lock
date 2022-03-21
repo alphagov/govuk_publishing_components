@@ -121,7 +121,7 @@ GEM
       rest-client (~> 2.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
-    govuk_app_config (4.4.1)
+    govuk_app_config (4.4.3)
       logstasher (>= 1.2.2, < 2.2.0)
       prometheus_exporter (~> 2.0.2)
       puma (~> 5.0)
@@ -167,7 +167,7 @@ GEM
     logstasher (2.1.5)
       activesupport (>= 5.2)
       request_store
-    loofah (2.14.0)
+    loofah (2.15.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
