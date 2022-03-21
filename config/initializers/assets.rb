@@ -15,3 +15,10 @@ Rails.application.config.assets.paths += %W[
   #{__dir__}/../../node_modules/govuk-frontend/
   #{__dir__}/../../node_modules/
 ]
+
+# We've experienced segmentation faults when pre-compiling assets with libsass.
+# Disabling Sprockets 4's export_concurrent setting seems to resolve the issues
+# see: https://github.com/rails/sprockets/issues/633
+Rails.application.config.assets.configure do |env|
+  env.export_concurrent = false if env.respond_to?(:export_concurrent=)
+end
