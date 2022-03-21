@@ -27,7 +27,7 @@ examples:
         test_attribute: "testing"
   with_margin_bottom:
     description: |
-      The component accepts a number for margin bottom from 0 to 9 (0px to 60px) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having a margin bottom of 15px.
+      The component accepts a number for margin bottom from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having a margin bottom of 15px.
     data:
       base_path: '/current-page-path'
       margin_bottom: 5
@@ -41,7 +41,7 @@ examples:
     description: |
       When there is more than one button on a page, we should specify their location so that Analytics can differentiate between them.
 
-      The location should have one of two values: "top" or "bottom".
+      The location should have one of two values: `top` or `bottom`.
 
       When this parameter is passed, its value is reflected in the `data-action` attribute (i.e "Unsubscribe-button-top"). When the flag is not present, `data-action` defaults to "Subscribe-button" or "Unsubscribe-button", depending on the state of the button.
     data:

@@ -254,7 +254,7 @@ examples:
     context:
       right_to_left: true
   with_parts:
-    description: Display child items, such as parts of guides or travel advice. Child items accept the same paramaters as parent items.
+    description: Display child items, such as parts of guides or travel advice. Child items accept the same parameters as parent items.
     data:
       items:
       - link:
@@ -285,7 +285,7 @@ examples:
 
       Locales can be set separately for the document link text and individual metadata items. To set link text locale, pass a locale attribute along with the link object. To set metadata locale, pass a locale attribute containing a parallel object to your metadata (depending on which metadata have translations and which need a lang attribute to specify that they are in a different language).
 
-      The lang attribute must be set to a [valid BCP47 string](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang#Language_tag_syntax). A valid code can be the two or three letter language code - for example, English is en or eng, Korean is ko or kor - but if in doubt please check.
+      The lang attribute must be set to a [valid BCP47 string](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang#Language_tag_syntax). A valid code can be the two or three letter language code - for example, English is `en` or `eng`, Korean is `ko` or `kor` - but if in doubt please check.
     data:
       items:
       - link:

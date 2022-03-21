@@ -27,7 +27,7 @@ examples:
     description: |
       Set a different font size for the heading. Uses the [GOV.UK Frontend heading sizes](https://design-system.service.gov.uk/styles/typography/#headings) but defaults to 27px for legacy reasons. Valid options are `xl`, `l`, `m` and `s`.
 
-      This option is not tied to the heading_level option in order to give flexibility.
+      This option is not tied to the `heading_level` option in order to give flexibility.
     data:
       text: 'One big heading'
       font_size: "xl"
@@ -46,7 +46,7 @@ examples:
       text: 'Padded'
       padding: true
   with_margin:
-    description: The component accepts a number for margin bottom from 0 to 9 (0px to 60px) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having no margin bottom.
+    description: The component accepts a number for margin bottom from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having no margin bottom.
     data:
       text: 'Really big bottom margin'
       margin_bottom: 9
@@ -59,7 +59,7 @@ examples:
       text: 'Consultation description'
       mobile_top_margin: true
   with_border:
-    description: A top border can be applied to the component of different thicknesses. Accepted values are 1 (1px), 2 (2px) and 5 (5px). Note that this works best with padding applied.
+    description: A top border can be applied to the component of different thicknesses. Accepted values are `1` (`1px`), `2` (`2px`) and `5` (`5px`). Note that this works best with padding applied.
     data:
       text: 'With a border'
       padding: true
@@ -81,7 +81,7 @@ examples:
     description: |
       The component is used on translated pages that don’t have a translation for the text strings. This means that it could display the fallback English string if the translate method can’t find an appropriate translation. This makes sure that the lang can be set to ensure that browsers understand which parts of the page are in each language.
 
-      The lang attribute must be set to a [valid BCP47 string](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang#Language_tag_syntax). A valid code can be the two or three letter language code - for example, English is en or eng, Korean is ko or kor - but if in doubt please check.
+      The lang attribute must be set to a [valid BCP47 string](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang#Language_tag_syntax). A valid code can be the two or three letter language code - for example, English is `en` or `eng`, Korean is `ko` or `kor` - but if in doubt please check.
     data:
       text: "Ein gweinidogion"
       lang: "cy"

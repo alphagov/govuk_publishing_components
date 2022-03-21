@@ -19,7 +19,7 @@ accessibility_criteria: |
   * indicate when they have focus
   * be recognisable as form input elements
   * have correctly associated labels
-  * be of the appropriate type for their use, e.g. password inputs should be of type 'password'
+  * be of the appropriate type for their use, e.g. password inputs should be of type `password`
 shared_accessibility_criteria:
   - link
 examples:
