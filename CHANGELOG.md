@@ -18,6 +18,7 @@
 * Update card tracking ([PR #2679](https://github.com/alphagov/govuk_publishing_components/pull/2679))
 * Remove accessible format request pilot emails from attachment ([PR #2687](https://github.com/alphagov/govuk_publishing_components/pull/2687))
 * Update docs ([PR #2683](https://github.com/alphagov/govuk_publishing_components/pull/2683))
+* Add border to search icon when JS disabled ([PR #2686](https://github.com/alphagov/govuk_publishing_components/pull/2686))
 
 ## 28.9.1
 
