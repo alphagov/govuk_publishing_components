@@ -474,6 +474,7 @@ $button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
   &:visited {
     @include govuk-media-query($from: "desktop") {
       background: $govuk-brand-colour;
+      border-bottom: 1px solid govuk-colour("dark-blue");
 
       &:hover {
         background: govuk-colour("black");
