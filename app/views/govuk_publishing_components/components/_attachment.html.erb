@@ -1,5 +1,5 @@
 <%
-  attachment = GovukPublishingComponents::Presenters::Attachment.new(attachment)
+  attachment = GovukPublishingComponents::Presenters::AttachmentHelper.new(attachment)
   target ||= "_self"
   hide_opendocument_metadata ||= false
   hide_order_copy_link ||= false

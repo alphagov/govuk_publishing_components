@@ -1,6 +1,6 @@
 require "spec_helper"
 
-RSpec.describe GovukPublishingComponents::Presenters::Attachment do
+RSpec.describe GovukPublishingComponents::Presenters::AttachmentHelper do
   it "supports a hash with string keys" do
     attachment = described_class.new("title" => "test", "url" => "test")
     expect(attachment.title).to eq("test")
