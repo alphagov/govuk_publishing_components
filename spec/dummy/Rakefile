@@ -3,14 +3,4 @@
 
 require_relative "config/application"
 
-module Rails
-  def self.root
-    if caller.first.include? "rails_translation_manager"
-      Pathname.new(Dir.pwd.to_s.sub("/spec/dummy", ""))
-    else
-      Pathname.new(Dir.pwd)
-    end
-  end
-end
-
 Rails.application.load_tasks

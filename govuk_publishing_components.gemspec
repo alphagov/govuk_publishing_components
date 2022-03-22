@@ -32,7 +32,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "i18n-coverage"
   s.add_development_dependency "percy-capybara", "~> 5.0.0"
   s.add_development_dependency "pry-byebug"
-  s.add_development_dependency "rails_translation_manager"
+  s.add_development_dependency "rails_translation_manager", ">= 1.5"
   s.add_development_dependency "rake"
   s.add_development_dependency "rspec-rails", "~> 5.0"
   s.add_development_dependency "rubocop-govuk"
