@@ -20,8 +20,8 @@
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header sticky-table-header">Component (<%= total_components %>)</th>
-      <th scope="col" class="govuk-table__header sticky-table-header">Stylesheet (<%= components_with_stylesheet %>)</th>
-      <th scope="col" class="govuk-table__header sticky-table-header">Print stylesheet (<%= components_with_print_stylesheet %>)</th>
+      <th scope="col" class="govuk-table__header sticky-table-header">CSS (<%= components_with_stylesheet %>)</th>
+      <th scope="col" class="govuk-table__header sticky-table-header">Print CSS (<%= components_with_print_stylesheet %>)</th>
       <th scope="col" class="govuk-table__header sticky-table-header">JS (<%= components_with_javascript %>)</th>
       <th scope="col" class="govuk-table__header sticky-table-header">Test (<%= components_with_test %>)</th>
       <th scope="col" class="govuk-table__header sticky-table-header">JS test (<%= components_with_javascript_test %>)</th>
@@ -36,32 +36,44 @@
         </th>
         <td class="govuk-table__cell">
           <% if component[:stylesheet] %>
-            <strong class="govuk-tag govuk-tag--green">Yes</strong>
+            <strong class="govuk-tag govuk-tag--green">
+              <a href="<%= component[:stylesheet] %>" class="govuk-link">Yes</a>
+            </strong>
           <% end %>
         </td>
         <td class="govuk-table__cell">
           <% if component[:print_stylesheet] %>
-            <strong class="govuk-tag govuk-tag--green">Yes</strong>
+            <strong class="govuk-tag govuk-tag--green">
+              <a href="<%= component[:print_stylesheet] %>" class="govuk-link">Yes</a>
+            </strong>
           <% end %>
         </td>
         <td class="govuk-table__cell">
           <% if component[:javascript] %>
-            <strong class="govuk-tag govuk-tag--green">Yes</strong>
+            <strong class="govuk-tag govuk-tag--green">
+              <a href="<%= component[:javascript] %>" class="govuk-link">Yes</a>
+            </strong>
           <% end %>
         </td>
         <td class="govuk-table__cell">
           <% if component[:tests] %>
-            <strong class="govuk-tag govuk-tag--green">Yes</strong>
+            <strong class="govuk-tag govuk-tag--green">
+              <a href="<%= component[:tests] %>" class="govuk-link">Yes</a>
+            </strong>
           <% end %>
         </td>
         <td class="govuk-table__cell">
           <% if component[:js_tests] %>
-            <strong class="govuk-tag govuk-tag--green">Yes</strong>
+            <strong class="govuk-tag govuk-tag--green">
+              <a href="<%= component[:js_tests] %>" class="govuk-link">Yes</a>
+            </strong>
           <% end %>
         </td>
         <td class="govuk-table__cell">
           <% if component[:helper] %>
-            <strong class="govuk-tag govuk-tag--green">Yes</strong>
+            <strong class="govuk-tag govuk-tag--green">
+              <a href="<%= component[:helper] %>" class="govuk-link">Yes</a>
+            </strong>
           <% end %>
         </td>
       </tr>

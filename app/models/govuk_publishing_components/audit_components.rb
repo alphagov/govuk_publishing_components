@@ -162,7 +162,25 @@ module GovukPublishingComponents
       look_in = @component_js_tests if a_thing == "js_test"
       look_in = @component_helpers if a_thing == "helper"
 
-      true if look_in.include?(component)
+      if look_in.include?(component)
+        return get_asset_link(a_thing, component)
+      end
+
+      false
+    end
+
+    def get_asset_link(a_thing, component)
+      url = "https://github.com/alphagov"
+      repo = "govuk_publishing_components"
+      link = nil
+      link = "#{url}/#{repo}/#{blob}/#{@stylesheets_path}/_#{component.gsub(' ', '-')}.scss" if a_thing == "stylesheet"
+      link = "#{url}/#{repo}/#{blob}/#{@print_stylesheets_path}/_#{component.gsub(' ', '-')}.scss" if a_thing == "print_stylesheet"
+      link = "#{url}/#{repo}/#{blob}/#{@javascripts_path}/#{component.gsub(' ', '-')}.js" if a_thing == "javascript"
+      link = "#{url}/#{repo}/#{blob}/#{@tests_path}/#{component.gsub(' ', '_')}_spec.rb" if a_thing == "test"
+      link = "#{url}/#{repo}/#{blob}/#{@js_tests_path}/#{component.gsub(' ', '-')}-spec.js" if a_thing == "js_test"
+      link = "#{url}/#{repo}/#{blob}/#{@helpers_path}/#{component.gsub(' ', '_')}_helper.rb" if a_thing == "helper"
+
+      link
     end
   end
 end
