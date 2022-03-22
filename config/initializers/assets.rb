@@ -1,50 +1,13 @@
 return unless Rails.application.config.respond_to?(:assets)
 
-# GOV.UK Publishing Components assets
-Rails.application.config.assets.precompile += %w[
-  component_guide/accessibility-test.js
-  component_guide/application.js
-  component_guide/filter-components.js
-  component_guide/print.css
-  govuk_publishing_components/rum-loader.js
-  govuk_publishing_components/vendor/lux/lux-reporter.js
-  govuk_publishing_components/vendor/lux/lux-measurer.js
-  govuk_publishing_components/all_components.js
-  govuk_publishing_components/dependencies.js
-  govuk_publishing_components/ie.js
-  govuk_publishing_components/modules.js
-  govuk_publishing_components/vendor/modernizr.js
-  govuk_publishing_components/analytics.js
-  govuk_publishing_components/component_guide.css
-  govuk_publishing_components/favicon-development.png
-  govuk_publishing_components/favicon-example.png
-  govuk_publishing_components/favicon-integration.png
-  govuk_publishing_components/favicon-production.png
-  govuk_publishing_components/favicon-staging.png
-  govuk_publishing_components/govuk-logo.png
-  govuk_publishing_components/govuk-schema-placeholder-1x1.png
-  govuk_publishing_components/govuk-schema-placeholder-4x3.png
-  govuk_publishing_components/govuk-schema-placeholder-16x9.png
-  govuk_publishing_components/search-button.png
-  govuk_publishing_components/icon-file-download.svg
-  govuk_publishing_components/icon-important.svg
-  govuk_publishing_components/crests/*.png
-  govuk_publishing_components/take-action-amber.svg
-  govuk_publishing_components/take-action-green.svg
-  govuk_publishing_components/take-action-red.svg
-]
-
-# GOV.UK Frontend assets
-Rails.application.config.assets.precompile += %w[
-  govuk-logotype-crown.png
-  favicon.ico
-  govuk-opengraph-image.png
-  govuk-mask-icon.svg
-  govuk-apple-touch-icon-180x180.png
-  govuk-apple-touch-icon-167x167.png
-  govuk-apple-touch-icon-152x152.png
-  govuk-apple-touch-icon.png
-]
+# Include the govuk_publishing_components manifest into list of assets to
+# be pre-compiled. This allows that the same Sprockets manifest to be used 0
+# with Sprockets 3 and 4 without applications needing to manually require it.
+#
+# In future we may want applications to link directly to this from their
+# manifest file as the use of `config.assets.precompile` is discouraged
+# from version 4: https://github.com/rails/sprockets/blob/58cca17aa447fcee17703e4ab4dbfaab630e7ed4/UPGRADING.md
+Rails.application.config.assets.precompile += %w[govuk_publishing_components_manifest.js]
 
 Rails.application.config.assets.paths += %W[
   #{__dir__}/../../node_modules/govuk-frontend/govuk/assets/images
@@ -52,3 +15,10 @@ Rails.application.config.assets.paths += %W[
   #{__dir__}/../../node_modules/govuk-frontend/
   #{__dir__}/../../node_modules/
 ]
+
+# We've experienced segmentation faults when pre-compiling assets with libsass.
+# Disabling Sprockets 4's export_concurrent setting seems to resolve the issues
+# see: https://github.com/rails/sprockets/issues/633
+Rails.application.config.assets.configure do |env|
+  env.export_concurrent = false if env.respond_to?(:export_concurrent=)
+end

@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency "plek"
   s.add_dependency "rails", ">= 6"
   s.add_dependency "rouge"
-  s.add_dependency "sprockets", "< 4"
+  s.add_dependency "sprockets", ">= 3"
 
   s.add_development_dependency "capybara", "~> 3.25"
   s.add_development_dependency "faker", ">= 2.11"
@@ -32,7 +32,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "i18n-coverage"
   s.add_development_dependency "percy-capybara", "~> 5.0.0"
   s.add_development_dependency "pry-byebug"
-  s.add_development_dependency "rails_translation_manager"
+  s.add_development_dependency "rails_translation_manager", ">= 1.5"
   s.add_development_dependency "rake"
   s.add_development_dependency "rspec-rails", "~> 5.0"
   s.add_development_dependency "rubocop-govuk"
