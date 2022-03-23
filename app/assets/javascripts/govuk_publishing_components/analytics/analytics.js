@@ -3,7 +3,7 @@
 
   var GOVUK = global.GOVUK || {}
   // For usage and initialisation see:
-  // https://github.com/alphagov/govuk_frontend_toolkit/blob/master/docs/analytics.md#create-an-analytics-tracker
+  // https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics/analytics.md
 
   var Analytics = function (config) {
     this.pii = new GOVUK.Pii()

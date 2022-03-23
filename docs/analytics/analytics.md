@@ -279,7 +279,7 @@ to strip postcodes at initialize time as follows:
 Any value other than the JS literal `true` will leave the analytics module
 configured not to strip.
 
-#### Avoding false positives
+#### Avoiding false positives
 
 Sometimes you will have data you want to send to analytics that looks like PII
 and would be stripped out.  For example on GOV.UK the content_ids that belong
@@ -297,3 +297,6 @@ analytics tracker without attempting to strip PII from it.  For example:
   GOVUK.analytics.setDimension(1, new GOVUK.Analytics.PIISafe('this-is-not-an@email-address-but-it-looks-like-one'));
   GOVUK.analytics.trackEvent('report title clicked', new GOVUK.Analytics.PIISafe('this report title looks like it contains a P0 5TC ode but it does not really'));
 ````
+#### Tooling
+
+[Omnibug](https://chrome.google.com/webstore/detail/omnibug/bknpehncffejahipecakbfkomebjmokl?hl=en) is a useful extension to easily capture and review the events being sent to Google Analytics.
