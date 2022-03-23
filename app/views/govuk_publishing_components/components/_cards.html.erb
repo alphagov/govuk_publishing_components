@@ -19,7 +19,7 @@
       <% end %>
     <% end %>    
 
-    <%= content_tag('ul', class: ul_classes) do %>
+    <%= content_tag('ul', class: ul_classes, "data-track-count": "cardList" ) do %>
       <%
         items.each do |item|
         link = item[:link]
@@ -33,7 +33,8 @@
             <%= 
               link_to link[:text], link[:path], 
               class: "govuk-link gem-c-cards__link", 
-              data: link[:data_attributes] 
+              data: link[:data_attributes],
+              "data-track-count": "cardLink"
             %>
           <% end %>
           <% if item[:description] %>
