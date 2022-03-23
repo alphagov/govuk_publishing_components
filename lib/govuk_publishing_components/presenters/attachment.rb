@@ -4,8 +4,9 @@ module GovukPublishingComponents
       # Various departments are taking part in a pilot to use a form
       # rather than direct email for users to request accessible formats. When the pilot
       # scheme is rolled out further this can be removed.
-      # Currently the pilot is paused so there are no participants.
-      EMAILS_IN_ACCESSIBLE_FORMAT_REQUEST_PILOT = %w[govuk_publishing_components@example.com].freeze
+      # Currently the HMRC are participating in the pilot.
+      EMAILS_IN_ACCESSIBLE_FORMAT_REQUEST_PILOT = %w[govuk_publishing_components@example.com
+                                                     different.format@hmrc.gov.uk].freeze
 
       delegate :opendocument?, :document?, :spreadsheet?, to: :content_type
 
