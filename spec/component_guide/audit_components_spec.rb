@@ -105,15 +105,7 @@ describe "Auditing the components in the gem" do
       component_helpers: [
         "test component",
       ],
-      components_containing_components: [
-        {
-          component: "test component containing other component",
-          link: "/component-guide/test_component_containing_other_component",
-          sub_components: [
-            "test component",
-          ],
-        },
-      ],
+      components_containing_components: [],
       component_listing: [],
     }
 
