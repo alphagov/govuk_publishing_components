@@ -4,6 +4,4 @@
 // that are provided by Slimmer in public frontend applications.
 // = require ./modules.js
 
-document.addEventListener('DOMContentLoaded', function () {
-  window.GOVUK.modules.start()
-})
+window.GOVUK.modules.start()
