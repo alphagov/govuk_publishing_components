@@ -58,16 +58,6 @@ updates:
   - dependency-name: govuk-frontend
   - dependency-name: jasmine-browser-runner
   - dependency-name: jasmine-core
-  ignore:
-  - dependency-name: jquery
-    versions:
-    - "> 1.12.4"
-  - dependency-name: jquery
-    versions:
-    - ">= 3.4.a, < 3.5"
-  - dependency-name: jquery
-    versions:
-    - ">= 3.a, < 4"
 - package-ecosystem: "github-actions"
   directory: "/"
   schedule:

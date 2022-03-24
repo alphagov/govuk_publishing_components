@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* **BREAKING:** Remove all jQuery from the components gem ([PR #2613](https://github.com/alphagov/govuk_publishing_components/pull/2613))
 * Add compatibility with Sprockets 4, see [Sprockets documentation](https://github.com/rails/sprockets/blob/master/UPGRADING.md) on how to upgrade your Rails app ([PR #2691](https://github.com/alphagov/govuk_publishing_components/pull/2691))
 * Use a data attribute to specify RUM (real user monitoring) script location ([PR #2682](https://github.com/alphagov/govuk_publishing_components/pull/2682))
 
