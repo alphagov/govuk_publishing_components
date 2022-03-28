@@ -13,6 +13,8 @@
         return document.querySelectorAll('[data-track-count="accordionSection"]').length
       case isDocumentCollectionPage():
         return document.querySelectorAll('.document-collection .group-title').length
+      case isNewBrowsePage():
+        return document.querySelectorAll('[data-track-count="cardList"]').length
       case isMainstreamBrowsePage():
         return countVisible(document.querySelectorAll('#subsection ul')) || document.querySelectorAll('#section ul').length || document.querySelectorAll('#root ul').length
       case isTopicPage():
@@ -44,6 +46,8 @@
         return document.querySelectorAll('a[data-track-category="navAccordionLinkClicked"]').length
       case isDocumentCollectionPage():
         return document.querySelectorAll('.document-collection .group-document-list li a').length
+      case isNewBrowsePage():
+        return document.querySelectorAll('[data-track-count="cardLink"]').length
       case isMainstreamBrowsePage():
         return countVisible(document.querySelectorAll('#subsection ul a')) || document.querySelectorAll('#section ul a').length || document.querySelectorAll('#root ul a').length
       case isTopicPage():
@@ -67,6 +71,7 @@
   var metaApplicationSelector = 'meta[name="govuk:rendering-application"]'
   var metaFormatSelector = 'meta[name="govuk:format"]'
   var metaNavigationTypeSelector = 'meta[name="govuk:navigation-page-type"]'
+  var metaSectionSelector = 'meta[name="govuk:section"]'
 
   function getMetaAttribute (selector) {
     var element = document.querySelector(selector)
@@ -91,6 +96,12 @@
     return getMetaAttribute(metaApplicationSelector) === 'collections' &&
       getMetaAttribute(metaFormatSelector) === 'taxon' &&
       getMetaAttribute(metaNavigationTypeSelector) === 'leaf'
+  }
+
+  function isNewBrowsePage () {
+    return getMetaAttribute(metaApplicationSelector) === 'collections' &&
+      getMetaAttribute(metaSectionSelector) === 'new_browse_page' &&
+      getMetaAttribute(metaFormatSelector) === 'mainstream_browse_page'
   }
 
   function isMainstreamBrowsePage () {
