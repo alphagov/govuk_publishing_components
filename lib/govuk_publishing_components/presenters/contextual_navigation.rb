@@ -33,10 +33,6 @@ module GovukPublishingComponents
         @taxon_breadcrumbs ||= ContentBreadcrumbsBasedOnTaxons.call(content_item)
       end
 
-      def priority_breadcrumbs
-        @priority_breadcrumbs ||= ContentBreadcrumbsBasedOnPriority.call(content_item, query_parameters)
-      end
-
       def topic_breadcrumbs
         @topic_breadcrumbs ||= ContentBreadcrumbsBasedOnTopic.call(content_item)
       end
@@ -90,22 +86,6 @@ module GovukPublishingComponents
 
       def content_has_a_topic?
         content_item.dig("links", "topics").present?
-      end
-
-      def tagged_to_brexit?
-        taxons = content_item.dig("links", "taxons").to_a
-        brexit_taxon = "d6c2de5d-ef90-45d1-82d4-5f2438369eea"
-        world_brexit_taxon = "d4c4d91d-fbe7-4eff-bd57-189138c626c9"
-
-        taxons.each do |taxon|
-          if taxon["content_id"].eql?(brexit_taxon) ||
-              taxon["content_id"].eql?(world_brexit_taxon) ||
-              taxon.dig("links", "parent_taxons").to_a.any? { |taxon_item| taxon_item["content_id"].eql?(brexit_taxon) }
-            return true
-          end
-        end
-
-        false
       end
 
       def content_tagged_to_current_step_by_step?

@@ -36,19 +36,6 @@ describe "ContextualBreadcrumbs", type: :view do
     content_item
   end
 
-  def tag_to_brexit(content_item)
-    content_item["links"]["taxons"][0]["title"] = "Brexit: business guidance"
-    content_item["links"]["taxons"][0]["content_id"] = "634fd193-8039-4a70-a059-919c34ff4bfc"
-    content_item
-  end
-
-  it "renders the brexit-superbreadcrumb meta tag on content tagged to brexit" do
-    content_item = example_document_for("guide", "guide")
-    content_item = tag_to_brexit(content_item)
-    render_component(content_item: content_item)
-    assert_select "meta[name='govuk:brexit-superbreadcrumb'][content='Brexitbusiness']"
-  end
-
   it "renders breadcrumbs that collapse on mobile by default" do
     content_item = example_document_for("guide", "guide")
     content_item = remove_mainstream_browse(content_item)

@@ -20,12 +20,7 @@ module GovukPublishingComponents
         meta_tags = add_organisation_tags(meta_tags)
         meta_tags = add_political_tags(meta_tags)
         meta_tags = add_taxonomy_tags(meta_tags)
-        meta_tags = add_step_by_step_tags(meta_tags)
-        add_brexit_tags("govuk:brexit-audience", meta_tags)
-      end
-
-      def brexit_priority_breadcrumb_tag
-        add_brexit_tags("govuk:brexit-superbreadcrumb")
+        add_step_by_step_tags(meta_tags)
       end
 
     private
@@ -114,37 +109,6 @@ module GovukPublishingComponents
         end
 
         meta_tags
-      end
-
-      def add_brexit_tags(tag_key, meta_tags = {})
-        links = content_item[:links]
-        taxons = links[:taxons] unless links.nil?
-
-        return meta_tags if taxons.blank?
-        return meta_tags unless tagged_to_priority_taxon?
-
-        taxon =
-          tag_key == "govuk:brexit-audience" ? priority_brexit_taxon : priority_taxon
-
-        brexit_audience = priority_taxon_helper.brexit_audience(taxon)
-        meta_tags[tag_key] = brexit_audience if brexit_audience.present?
-        meta_tags
-      end
-
-      def tagged_to_priority_taxon?
-        priority_taxon_helper.priority_taxon.present?
-      end
-
-      def priority_taxon_helper
-        @priority_taxon_helper ||= ContentBreadcrumbsBasedOnPriority.new(content_item.deep_stringify_keys, request.query_parameters)
-      end
-
-      def priority_taxon
-        priority_taxon_helper.priority_taxon
-      end
-
-      def priority_brexit_taxon
-        priority_taxon_helper.priority_brexit_taxon
       end
 
       def has_content_history?

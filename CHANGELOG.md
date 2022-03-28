@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove "priority breadcrumbs" ([#2666](https://github.com/alphagov/govuk_publishing_components/pull/2666))
+
 ## 29.0.1
 
 * Add HMRC email to attachment accessible format request pilot([PR #2695](https://github.com/alphagov/govuk_publishing_components/pull/2695))
