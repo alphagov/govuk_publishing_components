@@ -6,6 +6,7 @@
   items ||= []
   anchor_navigation ||= false
   track_show_all_clicks ||= false
+  track_sections ||= false
 
   accordion_classes = %w(gem-c-accordion govuk-accordion)
   accordion_classes << (shared_helper.get_margin_bottom)
@@ -24,6 +25,7 @@
   data_attributes[:module] = 'govuk-accordion gem-accordion'
   data_attributes[:anchor_navigation] = anchor_navigation
   data_attributes[:track_show_all_clicks] = track_show_all_clicks
+  data_attributes[:track_sections] = track_sections
 
   translations.each do |key, translation|
     locales[key] = shared_helper.t_locale(translation)

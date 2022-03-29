@@ -14,6 +14,8 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
     this.sectionHeaderClass = 'govuk-accordion__section-header'
     this.sectionInnerContent = 'govuk-accordion__section-content'
     this.showAllControls = 'govuk-accordion__show-all'
+    this.sectionButton = 'govuk-accordion__section-button'
+    this.headingText = 'govuk-accordion__section-heading-text'
 
     // Translated component content and language attribute pulled from data attributes
     this.$module.actions = {}
@@ -38,6 +40,10 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
     // Feature flag for "Show all sections" GA click event tracking
     if (this.$module.getAttribute('data-track-show-all-clicks') === 'true') {
       this.addAccordionOpenAllTracking()
+    }
+    // Feature flag for each section GA click event tracking
+    if (this.$module.getAttribute('data-track-sections') === 'true') {
+      this.addEventListenerSections()
     }
   }
 
@@ -107,6 +113,26 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
         window.GOVUK.analytics.trackEvent('pageElementInteraction', action, options)
       }
     })
+  }
+
+  GemAccordion.prototype.addEventListenerSections = function () {
+    var sections = this.$module.querySelectorAll('.' + this.sectionButton)
+    nodeListForEach(sections, function (section) {
+      section.addEventListener('click', this.addAccordionSectionTracking.bind(this, section))
+    }.bind(this))
+  }
+
+  // If the Accordion's sections are opened on click, then pass them to the GA event tracking
+  GemAccordion.prototype.addAccordionSectionTracking = function (section) {
+    var expanded = section.getAttribute('aria-expanded') === 'false'
+    var label = section.querySelector('.' + this.headingText).textContent
+    var action = expanded ? 'accordionOpened' : 'accordionClosed'
+    var options = { transport: 'beacon', label: label }
+
+    if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
+      window.GOVUK.analytics.trackEvent('pageElementInteraction', action, options)
+      console.log('pageElementInteraction', action, options)
+    }
   }
 
   Modules.GemAccordion = GemAccordion

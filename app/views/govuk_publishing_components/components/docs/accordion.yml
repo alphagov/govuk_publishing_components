@@ -325,3 +325,21 @@ examples:
             text: Writing well for specialists
           content:
             html: <p class="govuk-body" id="anchor-nav-test">This is content for accordion 2 of 2</p>
+  with_track_sections:
+    description: |
+      To switch on Google Analytics for each section, on click, pass `track_sections: true` the values passed on open will be
+      `Event Action: accordionOpened` / `accordionClosed` `Event Category: pageElementInteraction` and the `Event Label` being the heading text.
+      
+      (`track_show_all_clicks: true` can be added to track the "Show all sections" button as well, if required)
+    data:
+      track_sections: true
+      items:
+        - heading:
+            text: Writing well for the web
+            id: writing-well-for-the-web
+          content:
+            html: <p class="govuk-body">This is content for accordion 1 of 2</p><p class="govuk-body">This content contains a <a href="#anchor-nav-test" class="govuk-link">link</a></p>
+        - heading:
+            text: Writing well for specialists
+          content:
+            html: <p class="govuk-body" id="anchor-nav-test">This is content for accordion 2 of 2</p>
