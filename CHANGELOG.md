@@ -7,9 +7,13 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove the last traces of jQuery ([PR #2702](https://github.com/alphagov/govuk_publishing_components/pull/2702))
+
 ## 29.1.0
 
-* Remove "priority breadcrumbs" ([#2666](https://github.com/alphagov/govuk_publishing_components/pull/2666))
+* Remove "priority breadcrumbs" ([PR #2666](https://github.com/alphagov/govuk_publishing_components/pull/2666))
 
 ## 29.0.1
 

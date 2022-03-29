@@ -36,7 +36,7 @@ describe "Auditing the components in applications" do
         "app/views/layouts/dummy_admin_layout.html.erb",
       ],
       jquery_references: [
-        "app/assets/javascripts/application.js",
+        "app/assets/javascripts/some-jquery.js",
       ],
     }
 

@@ -15,9 +15,9 @@ JavaScript modules can be specified in markup using `data-` attributes:
 Modules are found and started in [dependencies.js](https://github.com/alphagov/govuk_publishing_components/blob/master/app/assets/javascripts/govuk_publishing_components/dependencies.js) by including `./modules.js` and running the following. This is called by [static](https://github.com/alphagov/static/blob/main/app/assets/javascripts/application.js#L1) once for all applications on GOV.UK.
 
 ```javascript
-$(document).ready(function(){
+document.addEventListener('DOMContentLoaded', function () {
   GOVUK.modules.start()
-});
+})
 ```
 
 This will attempt to find and start all modules in the page. For the example above it will look for a module at `GOVUK.Modules.SomeModule`. Note the value of the data attribute has been converted to _PascalCase_.
@@ -34,7 +34,7 @@ module.init()
 Running `GOVUK.modules.start()` multiple times will have no additional affect. When a module is started a flag is set on the element using the data attribute `module-started`. `data-module-started` is a reserved attribute. It can however be called with an element as the first argument, to allow modules to be started in dynamically loaded content:
 
 ```javascript
-var $container = $('.dynamic-content')
+var $container = document.querySelector('.dynamic-content')
 GOVUK.modules.start($container)
 ```
 
