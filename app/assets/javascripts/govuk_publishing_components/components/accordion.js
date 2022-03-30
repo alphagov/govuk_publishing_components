@@ -13,6 +13,7 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
     this.sectionClassExpanded = 'govuk-accordion__section--expanded'
     this.sectionHeaderClass = 'govuk-accordion__section-header'
     this.sectionInnerContent = 'govuk-accordion__section-content'
+    this.showAllControls = 'govuk-accordion__show-all'
 
     // Translated component content and language attribute pulled from data attributes
     this.$module.actions = {}
@@ -32,6 +33,10 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
     if (this.$module.getAttribute('data-anchor-navigation') === 'true') {
       this.openByAnchorOnLoad()
       this.addEventListenersForAnchors()
+    }
+    // Feature flag for "Show all sections" GA click event tracking
+    if (this.$module.getAttribute('data-track-show-all-clicks') === 'true') {
+      this.addAccordionOpenAllTracking()
     }
   }
 
@@ -88,6 +93,19 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
     } else if (this.$module.actions.locale) {
       return this.$module.actions.locale
     }
+  }
+
+  // To track the Accordion's "Show all sections" / "Hide all sections" button click events and pass them to the GA event tracking
+  GemAccordion.prototype.addAccordionOpenAllTracking = function () {
+    this.$module.querySelector('.' + this.showAllControls).addEventListener('click', function (event) {
+      var expanded = event.target.getAttribute('aria-expanded') === 'true'
+      var label = expanded ? 'Show all sections' : 'Hide all sections'
+      var action = expanded ? 'accordionOpened' : 'accordionClosed'
+      var options = { transport: 'beacon', label: label }
+      if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
+        window.GOVUK.analytics.trackEvent('pageElementInteraction', action, options)
+      }
+    })
   }
 
   Modules.GemAccordion = GemAccordion
