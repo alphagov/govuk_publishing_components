@@ -1,2 +1,7 @@
 @import "mixins/prefixed-transform";
 @import "govuk/components/accordion/accordion";
+
+// Prevent elements inside the button from receiving click events
+.gem-c-accordion__show-all > * {
+  pointer-events: none;
+}

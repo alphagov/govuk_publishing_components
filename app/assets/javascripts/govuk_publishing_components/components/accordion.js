@@ -28,6 +28,7 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
   GemAccordion.prototype.init = function () {
     // Indicate that JavaScript has worked
     this.$module.classList.add('gem-c-accordion--active')
+    this.$module.querySelector('.' + this.showAllControls).classList.add('gem-c-accordion__show-all')
 
     // Feature flag for anchor tag navigation used on manuals
     if (this.$module.getAttribute('data-anchor-navigation') === 'true') {
