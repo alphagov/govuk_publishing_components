@@ -271,26 +271,6 @@
     text-align: left;
   }
 
-  .mc-toggle-button {
-    border: 1px solid $govuk-border-colour;
-    color: $govuk-link-colour;
-    cursor: pointer;
-    margin: govuk-spacing(0);
-    padding: govuk-spacing(2);
-    background-color: govuk-colour("white");
-
-    &:hover {
-      background-color: govuk-colour("light-grey");
-      color: $govuk-link-hover-colour;
-    }
-
-    &:focus {
-      @include govuk-focused-text;
-      background-color: $govuk-focus-colour;
-      border-color: transparent;
-    }
-  }
-
   // Hides the original table
   .mc-hidden,
   .mc-hidden caption {
