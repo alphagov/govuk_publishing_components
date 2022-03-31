@@ -380,22 +380,22 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  capybara (~> 3.25)
-  faker (>= 2.11)
+  capybara
+  faker
   gds-api-adapters
   govuk_publishing_components!
-  govuk_schemas (~> 4.0)
-  govuk_test (~> 3)
+  govuk_schemas
+  govuk_test
   i18n-coverage
-  percy-capybara (~> 5.0.0)
+  percy-capybara
   pry-byebug
-  rails_translation_manager (>= 1.5)
+  rails_translation_manager
   rake
-  rspec-rails (~> 5.0)
+  rspec-rails
   rubocop-govuk
-  sassc-rails (~> 2)
-  uglifier (>= 4.1.0)
-  webmock (~> 3.8.3)
+  sassc-rails
+  uglifier
+  webmock
   yard
 
 RUBY VERSION
