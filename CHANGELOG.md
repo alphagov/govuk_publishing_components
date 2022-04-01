@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Remove HMRC email from attachment for accessible format request pilot([PR #2710](https://github.com/alphagov/govuk_publishing_components/pull/2710))
 * Remove the last traces of jQuery ([PR #2702](https://github.com/alphagov/govuk_publishing_components/pull/2702))
 * Add tracking on the accordion ([#2693](https://github.com/alphagov/govuk_publishing_components/pull/2693))
 
