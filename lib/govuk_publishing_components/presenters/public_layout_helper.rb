@@ -3,40 +3,6 @@ module GovukPublishingComponents
     class PublicLayoutHelper
       FOOTER_NAV = [
         {
-          title: "Coronavirus (COVID-19)",
-          columns: 2,
-          items: [
-            {
-              href: "/coronavirus",
-              text: "Coronavirus (COVID-19): guidance and support",
-              attributes: {
-                data: {
-                  track_category: "footerClicked",
-                  track_action: "coronavirusLinks",
-                  track_label: "Coronavirus (COVID-19): guidance and support",
-                },
-              },
-            },
-          ],
-        },
-        {
-          title: "Brexit",
-          columns: 1,
-          items: [
-            {
-              href: "/brexit",
-              text: "Check what you need to do",
-              attributes: {
-                data: {
-                  track_category: "footerClicked",
-                  track_action: "transitionLinks",
-                  track_label: "Check what you need to do",
-                },
-              },
-            },
-          ],
-        },
-        {
           title: "Services and information",
           columns: 2,
           items: [

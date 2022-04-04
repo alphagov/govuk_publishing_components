@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove Coronavirus and Brexit footers ([PR #2685](https://github.com/alphagov/govuk_publishing_components/pull/2685))
+
 ## 29.2.0
 
 * Remove HMRC email from attachment for accessible format request pilot ([PR #2710](https://github.com/alphagov/govuk_publishing_components/pull/2710))
