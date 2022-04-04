@@ -134,11 +134,11 @@ GEM
       rails (>= 6, < 8)
     govuk_schemas (4.3.0)
       json-schema (~> 2.8.0)
-    govuk_test (3.0.0)
+    govuk_test (3.0.1)
       brakeman (>= 5.0.2)
-      capybara
+      capybara (>= 3.36)
       puma
-      selenium-webdriver (>= 3.142)
+      selenium-webdriver (>= 4.0)
     hashdiff (1.0.1)
     highline (2.0.3)
     http-accept (1.7.0)
@@ -215,7 +215,7 @@ GEM
       byebug (~> 11.0)
       pry (~> 0.13.0)
     public_suffix (4.0.6)
-    puma (5.6.2)
+    puma (5.6.4)
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.3)
