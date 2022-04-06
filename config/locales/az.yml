@@ -83,6 +83,7 @@ az:
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">Â© Crown copyright</a>
       licence_html: Bütün məzmunlar <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">v3.0 Açıq dövlət lisenziyasına əsasən mövcuddur</a>(başqa cür nəzərdə tutulmuş hallar istisna olmaqla)
+      navigation_links:
       support_links: Dəstək keçidləri
     layout_for_public:
       account_layout:

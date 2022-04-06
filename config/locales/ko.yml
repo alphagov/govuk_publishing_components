@@ -79,6 +79,7 @@ ko:
     layout_footer:
       copyright_html:
       licence_html:
+      navigation_links:
       support_links:
     layout_for_public:
       account_layout:

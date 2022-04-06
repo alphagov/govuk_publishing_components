@@ -88,6 +88,7 @@ lv:
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Britu sadraudzības autortiesības</a>
       licence_html: Viss saturs, kas ir pieejams saskaņā ar <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">valsts izsniegto atklāto licenci v3.0</a>, izņemot, ja norādīts citādi
+      navigation_links:
       support_links: Atbalsta saites
     layout_for_public:
       account_layout:
