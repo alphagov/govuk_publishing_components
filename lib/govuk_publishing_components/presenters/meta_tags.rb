@@ -1,6 +1,8 @@
 module GovukPublishingComponents
   module Presenters
     class MetaTags
+      FORMATS_THAT_MIGHT_INCLUDE_POSTCODES = %w[smart_answer finder local_transaction place special_route transaction].freeze
+
       attr_reader :content_item, :details, :links, :local_assigns, :request
 
       def initialize(content_item, local_assigns, request)
@@ -148,8 +150,7 @@ module GovukPublishingComponents
         # document_type
         return local_assigns[:strip_postcode_pii] if local_assigns.key?(:strip_postcode_pii)
 
-        formats_that_might_include_postcodes = %w[smart_answer finder]
-        formats_that_might_include_postcodes.include?(content_item[:document_type])
+        FORMATS_THAT_MIGHT_INCLUDE_POSTCODES.include?(content_item[:document_type])
       end
     end
   end

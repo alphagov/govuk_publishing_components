@@ -366,14 +366,12 @@ describe "Meta tags", type: :view do
     assert_no_meta_tag("govuk:static-analytics:strip-dates")
   end
 
-  it "renders the static-analytics:strip-postcodes tag if the content item is a 'smart-answer'" do
-    render_component(content_item: { document_type: "smart_answer" })
-    assert_meta_tag("govuk:static-analytics:strip-postcodes", "true")
-  end
-
-  it "renders the static-analytics:strip-postcodes tag if the content item is a 'finder'" do
-    render_component(content_item: { document_type: "finder" })
-    assert_meta_tag("govuk:static-analytics:strip-postcodes", "true")
+  it "renders the static-analytics:strip-postcodes tag if the document_type is relevant" do
+    formats_that_might_include_postcodes = GovukPublishingComponents::Presenters::MetaTags::FORMATS_THAT_MIGHT_INCLUDE_POSTCODES
+    formats_that_might_include_postcodes.each do |format|
+      render_component(content_item: { document_type: format })
+      assert_meta_tag("govuk:static-analytics:strip-postcodes", "true")
+    end
   end
 
   it "doesn't render the static-analytics:strip-postcodes tag if the document_type isn't relevant" do
@@ -387,8 +385,11 @@ describe "Meta tags", type: :view do
   end
 
   it "doesn't render the static-analytics:strip-postcodes tag if explicitly told not to even if it would otherwise" do
-    render_component(content_item: { document_type: "smart_answer" }, strip_postcode_pii: false)
-    assert_no_meta_tag("govuk:static-analytics:strip-postcodes")
+    formats_that_might_include_postcodes = GovukPublishingComponents::Presenters::MetaTags::FORMATS_THAT_MIGHT_INCLUDE_POSTCODES
+    formats_that_might_include_postcodes.each do |format|
+      render_component(content_item: { document_type: format }, strip_postcode_pii: false)
+      assert_no_meta_tag("govuk:static-analytics:strip-postcodes")
+    end
   end
 
   def assert_political_status_for(political, current, expected_political_status)
