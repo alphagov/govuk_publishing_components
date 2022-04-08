@@ -33,6 +33,7 @@ module GovukPublishingComponents
         meta_tags["govuk:schema-name"] = content_item[:schema_name] if content_item[:schema_name]
         meta_tags["govuk:content-id"] = content_item[:content_id] if content_item[:content_id]
         meta_tags["govuk:navigation-page-type"] = content_item[:navigation_page_type] if content_item[:navigation_page_type]
+        meta_tags["govuk:navigation-list-type"] = content_item[:navigation_list_type] if content_item[:navigation_list_type]
         meta_tags["govuk:section"] = content_item[:section] if content_item[:section]
         meta_tags["govuk:withdrawn"] = "withdrawn" if content_item[:withdrawn_notice].present?
         meta_tags["govuk:content-has-history"] = "true" if has_content_history?

@@ -38,6 +38,7 @@ describe('custom dimensions', function () {
       'rendering-application': { dimension: 20, testValue: 'test-20' },
       'search-autocomplete-status': { dimension: 21, testValue: 'test-21' },
       'navigation-legacy': { dimension: 30, defaultValue: 'none', testValue: 'test-30' },
+      'navigation-list-type': { dimension: 31, defaultValue: 'none', testValue: 'test-31' },
       'navigation-page-type': { dimension: 32, defaultValue: 'none', testValue: 'test-32' },
       'taxon-slug': { dimension: 56, defaultValue: 'other', testValue: 'test-56' },
       'taxon-id': { dimension: 57, defaultValue: 'other', testValue: 'test-57' },
