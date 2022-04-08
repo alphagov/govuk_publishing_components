@@ -148,7 +148,7 @@ module GovukPublishingComponents
         # document_type
         return local_assigns[:strip_postcode_pii] if local_assigns.key?(:strip_postcode_pii)
 
-        formats_that_might_include_postcodes = %w[smart_answer finder]
+        formats_that_might_include_postcodes = %w[finder local_transaction place smart_answer special_route transaction]
         formats_that_might_include_postcodes.include?(content_item[:document_type])
       end
     end
