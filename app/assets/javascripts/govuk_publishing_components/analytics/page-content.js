@@ -13,6 +13,10 @@
         return document.querySelectorAll('[data-track-count="accordionSection"]').length
       case isDocumentCollectionPage():
         return document.querySelectorAll('.document-collection .group-title').length
+      case isNewBrowsePageLevelTwo():
+        // if there are no accordion sections on the browse level 2 page
+        // then it is a default page with only one section
+        return document.querySelectorAll('[data-track-count="accordionSection"]').length || 1
       case isNewBrowsePage():
         return document.querySelectorAll('[data-track-count="cardList"]').length
       case isMainstreamBrowsePage():
@@ -46,6 +50,8 @@
         return document.querySelectorAll('a[data-track-category="navAccordionLinkClicked"]').length
       case isDocumentCollectionPage():
         return document.querySelectorAll('.document-collection .group-document-list li a').length
+      case isNewBrowsePageLevelTwo():
+        return document.querySelectorAll('[data-track-count="contentLink"]').length
       case isNewBrowsePage():
         return document.querySelectorAll('[data-track-count="cardLink"]').length
       case isMainstreamBrowsePage():
@@ -96,6 +102,11 @@
     return getMetaAttribute(metaApplicationSelector) === 'collections' &&
       getMetaAttribute(metaFormatSelector) === 'taxon' &&
       getMetaAttribute(metaNavigationTypeSelector) === 'leaf'
+  }
+
+  function isNewBrowsePageLevelTwo () {
+    return getMetaAttribute(metaApplicationSelector) === 'collections' &&
+      getMetaAttribute(metaNavigationTypeSelector) === 'browse level 2'
   }
 
   function isNewBrowsePage () {
