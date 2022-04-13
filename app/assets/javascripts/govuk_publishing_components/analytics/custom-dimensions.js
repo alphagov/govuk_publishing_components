@@ -57,6 +57,7 @@
       'rendering-application': { dimension: 20 },
       'search-autocomplete-status': { dimension: 21 },
       'navigation-legacy': { dimension: 30, defaultValue: 'none' },
+      'navigation-list-type': { dimension: 31, defaultValue: 'none' },
       'navigation-page-type': { dimension: 32, defaultValue: 'none' },
       'taxon-slug': { dimension: 56, defaultValue: 'other' },
       'taxon-id': { dimension: 57, defaultValue: 'other' },
