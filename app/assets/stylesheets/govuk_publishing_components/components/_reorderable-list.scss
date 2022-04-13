@@ -19,12 +19,12 @@
 }
 
 .gem-c-reorderable-list__item--chosen {
-  background-color: govuk-colour('light-grey');
+  background-color: govuk-colour("light-grey");
   outline: 2px dotted $govuk-border-colour;
 }
 
 .gem-c-reorderable-list__item--drag {
-  background-color: govuk-colour('white');
+  background-color: govuk-colour("white");
   list-style-type: none;
 
   .gem-c-reorderable-list__actions {

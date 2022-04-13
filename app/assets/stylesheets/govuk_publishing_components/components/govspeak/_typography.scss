@@ -101,7 +101,7 @@
 }
 
 .gem-c-govspeak--inverse {
-  color: govuk-colour('white');
+  color: govuk-colour("white");
 
   a {
     @include govuk-link-common;
