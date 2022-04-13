@@ -177,8 +177,8 @@ en:
       navigation_search_heading: Search and popular pages
       navigation_search_subheading: Search
       popular_links:
-      - label: 'Invasion of Ukraine'
-        href: "/government/topical-events/russian-invasion-of-ukraine-uk-government-response"
+      - label: 'Moving to the UK from Ukraine'
+        href: "/guidance/move-to-the-uk-if-youre-from-ukraine"
       - label: 'Coronavirus (COVID-19)'
         href: "/coronavirus"
       - label: Find a job
