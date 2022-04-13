@@ -12,6 +12,7 @@
 * Update the list of popular links in the super navigation header #2728 ([PR #2728](https://github.com/alphagov/govuk_publishing_components/pull/2728))
 * Remove tracking on load from intervention ([PR #2725](https://github.com/alphagov/govuk_publishing_components/pull/2725))
 * Strip postcodes from more document types in meta_tags component #2720 ([PR #2720](https://github.com/alphagov/govuk_publishing_components/pull/2720))
+* Add new custom dimension for new browse page template analytics #2722 ([PR #2722](https://github.com/alphagov/govuk_publishing_components/pull/2722))
 
 ## 29.3.0
 
