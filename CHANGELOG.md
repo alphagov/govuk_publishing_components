@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Strip postcodes from more document types in meta_tags component #2720 ([PR #2720](https://github.com/alphagov/govuk_publishing_components/pull/2720))
+
 ## 29.3.0
 
 * Remove Coronavirus and Brexit footers ([PR #2685](https://github.com/alphagov/govuk_publishing_components/pull/2685))
