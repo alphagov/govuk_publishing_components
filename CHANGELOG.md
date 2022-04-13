@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 29.4.0
 
 * Update the list of popular links in the super navigation header #2728 ([PR #2728](https://github.com/alphagov/govuk_publishing_components/pull/2728))
 * Remove tracking on load from intervention ([PR #2725](https://github.com/alphagov/govuk_publishing_components/pull/2725))
