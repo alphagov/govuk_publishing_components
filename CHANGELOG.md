@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+- Add DFE, DWP and DVSA emails to attachment accessible format request pilot([PR #2736] (https://github.com/alphagov/govuk_publishing_components/pull/2736))
+
 ## 29.4.0
 
 * Update the list of popular links in the super navigation header #2728 ([PR #2728](https://github.com/alphagov/govuk_publishing_components/pull/2728))
