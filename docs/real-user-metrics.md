@@ -28,17 +28,9 @@ Because of this the customer ID needs to be set at the end of the `lux.js` file:
 LUX.customerid = 47044334
 ```
 
-### Beacon mode
+### Sending information
 
-LUX has two methods of sending information which involves loading a file from a remote server. The default is to fetch a JavaScript file; and the other method is to load an image.
-
-The [content security policy in `govuk_app_config`][csp-govuk-app-config] allows only images to be loaded from `lux.speedcurve.com`. When this CSP is enforced it will mean that the JavaScript method will be blocked and LUX will stop working.
-
-Setting the beacon mode to `"simple"` turns the non-default image method on:
-
-```javascript
-LUX.beaconMode = 'simple'
-```
+LUX needs the [content security policy in `govuk_app_config`][csp-govuk-app-config] to be configured to allow communication to LUX servers. [Documentation](https://support.speedcurve.com/docs/add-rum-to-your-csp) is provided on how to configure this.
 
 ### Sample rate
 
