@@ -83,6 +83,59 @@ en:
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/">© Crown copyright</a>
       licence_html: All content is available under the <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated
+      navigation_links:
+      - title: Topics
+        menu_contents:
+        - text: Benefits
+          href: "/browse/benefits"
+        - text: Births, death, marriages and care
+          href: "/browse/births-deaths-marriages"
+        - text: Business and self-employed
+          href: "/browse/business"
+        - text: Childcare and parenting
+          href: "/browse/childcare-parenting"
+        - text: Citizenship and living in the UK
+          href: "/browse/citizenship"
+        - text: Crime, justice and the law
+          href: "/browse/justice"
+        - text: Disabled people
+          href: "/browse/disabilities"
+        - text: Driving and transport
+          href: "/browse/driving"
+        - text: Education and learning
+          href: "/browse/education"
+        - text: Employing people
+          href: "/browse/employing-people"
+        - text: Environment and countryside
+          href: "/browse/environment-countryside"
+        - text: Housing and local services
+          href: "/browse/housing-local-services"
+        - text: Money and tax
+          href: "/browse/tax"
+        - text: Passports, travel and living abroad
+          href: "/browse/abroad"
+        - text: Visas and immigration
+          href: "/browse/visas-immigration"
+        - text: Working, jobs and pensions
+          href: "/browse/working"
+      - title: Government activity
+        menu_contents:
+        - text: Departments
+          href: "/government/organisations"
+        - text: News
+          href: "/search/news-and-communications"
+        - text: Guidance and regulation
+          href: "/search/guidance-and-regulation"
+        - text: Research and statistics
+          href: "/search/research-and-statistics"
+        - text: Policy papers and consultations
+          href: "/search/policy-papers-and-consultations"
+        - text: Transparency
+          href: "/search/transparency-and-freedom-of-information-releases"
+        - text: How government works
+          href: "/government/how-government-works"
+        - text: Get involved
+          href: "/government/get-involved"
       support_links: Support links
     layout_for_public:
       account_layout:

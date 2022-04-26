@@ -80,6 +80,7 @@ pa-pk:
     layout_footer:
       copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/ information-management/re-using-public-sector-information/copyright-and-re-use/ /crown-copyright/">© کاپی کراؤن رائٹ</a>
       licence_html: سارا مواد ایندے تھلے موجود اے <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">اوپن گورنمنٹ لائسنس v3.0</a>, ایہ قبول کر لو جیڑا ایس توں علاوہ اے
+      navigation_links:
       support_links: مدد کرن والے لنک
     layout_for_public:
       account_layout:
