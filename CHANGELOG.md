@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Updated link for the Ukraine Invasion Call To Action #2739 ([PR #2739](https://github.com/alphagov/govuk_publishing_components/pull/2739))
 * Use locale files to generate header links in public_layout instead of constant in public_layout_helper #2719 ([PR #2719](https://github.com/alphagov/govuk_publishing_components/pull/2719))
 
 ## 29.5.0
