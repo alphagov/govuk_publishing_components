@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix JS bug in MagnaCharta for stacked charts ([PR #2731](https://github.com/alphagov/govuk_publishing_components/pull/2731))
+
 ## 29.6.0
 
 * Updated link for the Ukraine Invasion Call To Action #2739 ([PR #2739](https://github.com/alphagov/govuk_publishing_components/pull/2739))

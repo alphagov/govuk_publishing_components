@@ -115,6 +115,16 @@ describe('Magna charta', function () {
       '</tbody>' +
     '</table>'
 
+  var noHeader =
+    '<table id="noHeader" class="mc-stacked">' +
+      '<caption>No Table Header</caption>' +
+      '<tbody>' +
+        '<tr><td>Testing One</td><td>5</td><td>6</td><td>11</td></tr>' +
+        '<tr><td>Testing Two</td><td>6</td><td>2</td><td>8</td></tr>' +
+        '<tr><td>Testing Three</td><td>3</td><td>9</td><td>12</td></tr>' +
+      '</tbody>' +
+    '</table>'
+
   describe('creating a graph of a single table', function () {
     beforeEach(function () {
       element = $('<div/>').attr('id', 'test-magna-charta').html(single)
@@ -391,6 +401,26 @@ describe('Magna charta', function () {
       graph.find('.mc-bar-cell span').each(function (i, item) {
         expect(item.style.marginLeft).toBe('100%')
       })
+    })
+  })
+
+  describe('creating a graph of a table missing header elements', function () {
+    beforeEach(function () {
+      element = $('<div/>').attr('id', 'test-magna-charta').html(noHeader)
+      $('body').append(element)
+      magna = new GOVUK.Modules.MagnaCharta(element.find('#noHeader')[0], { returnReference: true })
+      magna.init()
+      graph = element.find('.mc-chart')
+      table = element.find('table')
+    })
+
+    afterEach(function () {
+      $('body').find('#test-magna-charta').remove()
+    })
+
+    it('marks a chart as not enabled and does not create a chart', function () {
+      expect(magna.ENABLED).toBe(false)
+      expect(graph.length).toBe(0)
     })
   })
 

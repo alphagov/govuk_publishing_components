@@ -51,6 +51,16 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     // giving the table a class of mc-stacked
     this.options.stacked = this.$table.classList.contains('mc-stacked')
 
+    // stacked charts require tables to use the th element in the table header
+    // if the th element is not included, then the ENABLED flag is set to false
+    // this will stop the chart and toggleLink from being rendered
+    if (this.options.stacked) {
+      var allTheTHsInTableHead = this.$table.querySelectorAll('thead th')
+      if (allTheTHsInTableHead.length === 0) {
+        this.ENABLED = false
+      }
+    }
+
     // set the negative option based on
     // giving the table a class of mc-negative
     this.options.negative = this.$table.classList.contains('mc-negative')
@@ -106,12 +116,16 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   MagnaCharta.prototype.apply = function () {
     if (this.ENABLED) {
-      this.constructChart()
-      this.addClassesToHeader()
-      this.applyWidths()
-      this.insert()
-      this.$table.classList.add('mc-hidden')
-      this.applyOutdent()
+      try {
+        this.constructChart()
+        this.addClassesToHeader()
+        this.applyWidths()
+        this.insert()
+        this.$table.classList.add('mc-hidden')
+        this.applyOutdent()
+      } catch (error) {
+        console.error('MagnaCharta error:', error)
+      }
     }
   }
 
