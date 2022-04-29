@@ -11,8 +11,7 @@
 
 * Auditing enhancements ([PR #2428](https://github.com/alphagov/govuk_publishing_components/pull/2428))
 * Fix JS bug in MagnaCharta for stacked charts ([PR #2731](https://github.com/alphagov/govuk_publishing_components/pull/2731))
-* Remove coronavirus topic from menu bar ([PR #2745
-](https://github.com/alphagov/govuk_publishing_components/pull/2745))
+* Remove coronavirus topic from menu bar ([PR #2745](https://github.com/alphagov/govuk_publishing_components/pull/2745))
 
 ## 29.6.0
 
@@ -21,7 +20,7 @@
 
 ## 29.5.0
 
-- Add DFE, DWP and DVSA emails to attachment accessible format request pilot([PR #2736] (https://github.com/alphagov/govuk_publishing_components/pull/2736))
+- Add DFE, DWP and DVSA emails to attachment accessible format request pilot ([PR #2736](https://github.com/alphagov/govuk_publishing_components/pull/2736))
 
 ## 29.4.0
 
@@ -38,15 +37,15 @@
 
 * Remove HMRC email from attachment for accessible format request pilot ([PR #2710](https://github.com/alphagov/govuk_publishing_components/pull/2710))
 * Remove the last traces of jQuery ([PR #2702](https://github.com/alphagov/govuk_publishing_components/pull/2702))
-* Add tracking on the accordion ([#2693](https://github.com/alphagov/govuk_publishing_components/pull/2693))
+* Add tracking on the accordion ([PR #2693](https://github.com/alphagov/govuk_publishing_components/pull/2693))
 
 ## 29.1.0
 
-* Remove "priority breadcrumbs" ([#2666](https://github.com/alphagov/govuk_publishing_components/pull/2666))
+* Remove "priority breadcrumbs" ([PR #2666](https://github.com/alphagov/govuk_publishing_components/pull/2666))
 
 ## 29.0.1
 
-* Add HMRC email to attachment accessible format request pilot([PR #2695](https://github.com/alphagov/govuk_publishing_components/pull/2695))
+* Add HMRC email to attachment accessible format request pilot ([PR #2695](https://github.com/alphagov/govuk_publishing_components/pull/2695))
 
 ## 29.0.0
 
@@ -65,9 +64,9 @@
 
 ## 28.9.1
 
-* Update the list of popular links in the super navigation header ([#2660](https://github.com/alphagov/govuk_publishing_components/pull/2660))
-* Remove Brexit call to action from contextual sidebar ([#2518](https://github.com/alphagov/govuk_publishing_components/pull/2518))
-* Add spellcheck to input [PR #2654](https://github.com/alphagov/govuk_publishing_components/pull/2654)
+* Update the list of popular links in the super navigation header ([PR #2660](https://github.com/alphagov/govuk_publishing_components/pull/2660))
+* Remove Brexit call to action from contextual sidebar ([PR #2518](https://github.com/alphagov/govuk_publishing_components/pull/2518))
+* Add spellcheck to input ([PR #2654](https://github.com/alphagov/govuk_publishing_components/pull/2654))
 * Increase font-size of `previous_and_next_navigation`, improve important icon ([PR #2659](https://github.com/alphagov/govuk_publishing_components/pull/2659))
 
 ## 28.9.0
@@ -77,12 +76,12 @@
 
 ## 28.8.1
 
-* Drop dependency `psych >= 4` that was breaking downstream apps [PR #2655](https://github.com/alphagov/govuk_publishing_components/pull/2655)
+* Drop dependency `psych >= 4` that was breaking downstream apps ([PR #2655](https://github.com/alphagov/govuk_publishing_components/pull/2655))
 
 ## 28.8.0
 
 * Add cards component ([PR #2624](https://github.com/alphagov/govuk_publishing_components/pull/2624))
-* Allow attachments to display link to accessible format request form [PR #2636](https://github.com/alphagov/govuk_publishing_components/pull/2636)
+* Allow attachments to display link to accessible format request form ([PR #2636](https://github.com/alphagov/govuk_publishing_components/pull/2636))
 * Improve custom dimensions code ([PR #2646](https://github.com/alphagov/govuk_publishing_components/pull/2646))
 * Increase font size on Attachment ([PR #2650](https://github.com/alphagov/govuk_publishing_components/pull/2650))
 
@@ -122,7 +121,6 @@
 * Fix a bug in the scroll tracker ([PR #2554](https://github.com/alphagov/govuk_publishing_components/pull/2554))
 * Add check to big number to convert plus suffixes to subscript elements ([PR #2570](https://github.com/alphagov/govuk_publishing_components/pull/2570))
 * Update feedback component to resolve spam problem ([PR #2574](https://github.com/alphagov/govuk_publishing_components/pull/2574))
-=======
 * Add pipes between buttons on super nav header ([PR #2575](https://github.com/alphagov/govuk_publishing_components/pull/2575))
 
 ## 28.2.0
@@ -163,14 +161,14 @@
 
 * Fix `help-notice` spacing in `call-to-action` ([PR #2536](https://github.com/alphagov/govuk_publishing_components/pull/2536))
 * Add COVID CTA to contextual sidebar component ([PR #2535](https://github.com/alphagov/govuk_publishing_components/pull/2535))
-* Add flag to hide Intervention Banner component [#2516](https://github.com/alphagov/govuk_publishing_components/pull/2516)
-* Image card component design and API updates [PR #2530](https://github.com/alphagov/govuk_publishing_components/pull/2530)
+* Add flag to hide Intervention Banner component ([PR #2516](https://github.com/alphagov/govuk_publishing_components/pull/2516))
+* Image card component design and API updates ([PR #2530](https://github.com/alphagov/govuk_publishing_components/pull/2530))
 
 ## 27.18.0
 
 * Remove jQuery from page-content ([PR #2505](https://github.com/alphagov/govuk_publishing_components/pull/2505))
-* Replace use of `includes()` in `explicit-cross-domain-links.js` with `indexOf()` alternative [PR #2515](https://github.com/alphagov/govuk_publishing_components/pull/2515)
-* Fix font for menu paragraphs [PR #2509](https://github.com/alphagov/govuk_publishing_components/pull/2509)
+* Replace use of `includes()` in `explicit-cross-domain-links.js` with `indexOf()` alternative ([PR #2515](https://github.com/alphagov/govuk_publishing_components/pull/2515))
+* Fix font for menu paragraphs ([PR #2509](https://github.com/alphagov/govuk_publishing_components/pull/2509))
 * Add large mode on mobile only to search component ([PR #2510](https://github.com/alphagov/govuk_publishing_components/pull/2510))
 * Port the grid_helper sass mixin to the components gem ([PR #2517](https://github.com/alphagov/govuk_publishing_components/pull/2517))
 * Update super nav popular links ([PR #2519](https://github.com/alphagov/govuk_publishing_components/pull/2519))
