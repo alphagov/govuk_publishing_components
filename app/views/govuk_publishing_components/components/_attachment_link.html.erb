@@ -1,5 +1,5 @@
 <%
-  attachment = GovukPublishingComponents::Presenters::Attachment.new(attachment)
+  attachment = GovukPublishingComponents::Presenters::AttachmentHelper.new(attachment)
   target ||= nil
   data_attributes ||= {}
   attributes = []

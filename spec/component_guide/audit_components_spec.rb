@@ -38,6 +38,9 @@ describe "Auditing the components in the gem" do
       component_js_tests: [
         "test component",
       ],
+      component_helpers: [
+        "test component",
+      ],
       components_containing_components: [
         {
           component: "test component containing other component",
@@ -51,20 +54,22 @@ describe "Auditing the components in the gem" do
         {
           name: "test component",
           link: "/component-guide/test_component",
-          stylesheet: true,
-          print_stylesheet: true,
-          javascript: true,
-          tests: true,
-          js_tests: true,
+          stylesheet: "https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/stylesheets/govuk_publishing_components/components/_test-component.scss",
+          print_stylesheet: "https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/stylesheets/govuk_publishing_components/components/print/_test-component.scss",
+          javascript: "https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/javascripts/govuk_publishing_components/components/test-component.js",
+          tests: "https://github.com/alphagov/govuk_publishing_components/blob/main/spec/components/test_component_spec.rb",
+          js_tests: "https://github.com/alphagov/govuk_publishing_components/blob/main/spec/javascripts/components/test-component-spec.js",
+          helper: "https://github.com/alphagov/govuk_publishing_components/blob/main/lib/govuk_publishing_components/presenters/test_component_helper.rb",
         },
         {
           name: "test component containing other component",
           link: "/component-guide/test_component_containing_other_component",
-          stylesheet: nil,
-          print_stylesheet: nil,
-          javascript: nil,
-          tests: nil,
-          js_tests: nil,
+          stylesheet: false,
+          print_stylesheet: false,
+          javascript: false,
+          tests: false,
+          js_tests: false,
+          helper: false,
         },
       ],
     }
@@ -97,15 +102,10 @@ describe "Auditing the components in the gem" do
       component_js_tests: [
         "test component",
       ],
-      components_containing_components: [
-        {
-          component: "test component containing other component",
-          link: "/component-guide/test_component_containing_other_component",
-          sub_components: [
-            "test component",
-          ],
-        },
+      component_helpers: [
+        "test component",
       ],
+      components_containing_components: [],
       component_listing: [],
     }
 

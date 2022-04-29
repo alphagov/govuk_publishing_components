@@ -1,6 +1,6 @@
 <% if @other_applications %>
   <%= render "govuk_publishing_components/components/heading", {
-    text: "Components",
+    text: "Components in the gem",
     font_size: "l",
     margin_bottom: 6,
   } %>
@@ -10,52 +10,7 @@
   <% component_items = [] %>
 
   <% component_files = capture do %>
-    <table class="govuk-table">
-      <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header sticky-table-header">Component</th>
-          <th scope="col" class="govuk-table__header sticky-table-header">Stylesheet</th>
-          <th scope="col" class="govuk-table__header sticky-table-header">Print stylesheet</th>
-          <th scope="col" class="govuk-table__header sticky-table-header">JS</th>
-          <th scope="col" class="govuk-table__header sticky-table-header">Test</th>
-          <th scope="col" class="govuk-table__header sticky-table-header">JS test</th>
-        </tr>
-      </thead>
-      <tbody class="govuk-table__body">
-        <% @components[:component_listing].each do |component| %>
-          <tr class="govuk-table__row">
-            <th scope="row" class="govuk-table__header">
-              <a href="<%= component[:link] %>" class="govuk-link"><%= component[:name] %></a>
-            </th>
-            <td class="govuk-table__cell">
-              <% if component[:stylesheet] %>
-                <strong class="govuk-tag govuk-tag--green">Yes</strong>
-              <% end %>
-            </td>
-            <td class="govuk-table__cell">
-              <% if component[:print_stylesheet] %>
-                <strong class="govuk-tag govuk-tag--green">Yes</strong>
-              <% end %>
-            </td>
-            <td class="govuk-table__cell">
-              <% if component[:javascript] %>
-                <strong class="govuk-tag govuk-tag--green">Yes</strong>
-              <% end %>
-            </td>
-            <td class="govuk-table__cell">
-              <% if component[:tests] %>
-                <strong class="govuk-tag govuk-tag--green">Yes</strong>
-              <% end %>
-            </td>
-            <td class="govuk-table__cell">
-              <% if component[:js_tests] %>
-                <strong class="govuk-tag govuk-tag--green">Yes</strong>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+    <%= render partial: "component_contents", locals: { components: @components[:component_listing] } %>
   <% end %>
 
   <%
