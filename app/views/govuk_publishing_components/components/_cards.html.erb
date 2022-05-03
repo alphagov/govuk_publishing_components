@@ -31,17 +31,19 @@
         end
       %>
         <li class="gem-c-cards__list-item">
-          <%= content_tag("h#{sub_heading_level}", class: "gem-c-cards__sub-heading govuk-heading-s") do %>
-            <%= 
-              link_to link[:text], link[:path], 
-              class: "govuk-link gem-c-cards__link", 
-              data: link[:data_attributes],
-              "data-track-count": "cardLink"
-            %>
-          <% end %>
-          <% if item[:description] %>
-            <p class="govuk-body gem-c-cards__description"><%= item[:description] %></p>
-          <% end %>
+          <div class="gem-c-cards__list-item-wrapper">
+            <%= content_tag("h#{sub_heading_level}", class: "gem-c-cards__sub-heading govuk-heading-s") do %>
+              <%=
+                link_to link[:text], link[:path],
+                class: "govuk-link gem-c-cards__link",
+                data: link[:data_attributes],
+                "data-track-count": "cardLink"
+              %>
+            <% end %>
+            <% if item[:description] %>
+              <p class="govuk-body gem-c-cards__description"><%= item[:description] %></p>
+            <% end %>
+          </div>
         </li>
       <% end %>
     <% end %>
