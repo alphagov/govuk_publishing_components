@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 29.7.0
 
 * Auditing enhancements ([PR #2428](https://github.com/alphagov/govuk_publishing_components/pull/2428))
 * Fix JS bug in MagnaCharta for stacked charts ([PR #2731](https://github.com/alphagov/govuk_publishing_components/pull/2731))

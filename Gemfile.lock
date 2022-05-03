@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    govuk_publishing_components (29.6.0)
+    govuk_publishing_components (29.7.0)
       govuk_app_config
       govuk_personalisation (>= 0.7.0)
       kramdown
@@ -320,13 +320,13 @@ GEM
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
-    sentry-rails (5.2.1)
+    sentry-rails (5.3.0)
       railties (>= 5.0)
-      sentry-ruby-core (~> 5.2.1)
-    sentry-ruby (5.2.1)
+      sentry-ruby-core (~> 5.3.0)
+    sentry-ruby (5.3.0)
       concurrent-ruby (~> 1.0, >= 1.0.2)
-      sentry-ruby-core (= 5.2.1)
-    sentry-ruby-core (5.2.1)
+      sentry-ruby-core (= 5.3.0)
+    sentry-ruby-core (5.3.0)
       concurrent-ruby
     sprockets (4.0.3)
       concurrent-ruby (~> 1.0)
