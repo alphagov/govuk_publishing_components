@@ -12,6 +12,7 @@
 * Auditing enhancements ([PR #2428](https://github.com/alphagov/govuk_publishing_components/pull/2428))
 * Fix JS bug in MagnaCharta for stacked charts ([PR #2731](https://github.com/alphagov/govuk_publishing_components/pull/2731))
 * Remove coronavirus topic from menu bar ([PR #2745](https://github.com/alphagov/govuk_publishing_components/pull/2745))
+* Realign list of topics in navigation header ([PR #2750](https://github.com/alphagov/govuk_publishing_components/pull/2750))
 
 ## 29.6.0
 
