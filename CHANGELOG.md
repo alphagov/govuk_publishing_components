@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+Add wrapper to the component card to ensure link spacing ([PR #2753](https://github.com/alphagov/govuk_publishing_components/pull/2753))
+
 ## 29.7.0
 
 * Auditing enhancements ([PR #2428](https://github.com/alphagov/govuk_publishing_components/pull/2428))
