@@ -9,25 +9,28 @@ describe "Comparing data from an application with the components" do
       "component one",
       "component two",
       "component three",
+      "component four",
     ],
     component_stylesheets: [
       "component one",
       "component two",
       "component three",
+      "component four",
     ],
     component_print_stylesheets: [
       "component two",
     ],
     component_javascripts: [
       "component one",
+      "component four",
     ],
     component_tests: [],
     component_js_tests: [],
     components_containing_components: [
       {
-        component: "component one",
+        component: "component three",
         sub_components: [
-          "component three",
+          "component four",
         ],
       },
     ],
@@ -91,6 +94,7 @@ describe "Comparing data from an application with the components" do
             location: "templates",
             components: [
               "component one",
+              "component three",
               "component that does not exist",
             ],
           },
@@ -99,7 +103,7 @@ describe "Comparing data from an application with the components" do
             components: [
               "component one",
               "component two",
-              "component four",
+              "component three",
             ],
           },
           {
@@ -127,14 +131,15 @@ describe "Comparing data from an application with the components" do
       {
         name: "Dummy application",
         application_found: true,
+        uses_static: false,
         summary: [
           {
             name: "Components in templates",
-            value: "component one, component that does not exist, component three",
+            value: "component four, component one, component that does not exist, component three",
           },
           {
             name: "Components in stylesheets",
-            value: "component one, component two, component four",
+            value: "component one, component two, component three",
           },
           {
             name: "Components in print stylesheets",
@@ -156,11 +161,11 @@ describe "Comparing data from an application with the components" do
           },
           {
             component: "component four",
-            message: "Included in stylesheets but component does not exist",
+            message: "Included in code but not stylesheets",
           },
           {
-            component: "component three",
-            message: "Included in code but not stylesheets",
+            component: "component four",
+            message: "Included in code but not javascripts",
           },
           {
             component: "component one",
@@ -172,6 +177,161 @@ describe "Comparing data from an application with the components" do
           },
         ],
         warning_count: 5,
+        gem_style_references: [],
+        jquery_references: [],
+      },
+    ]
+
+    expect(comparer.applications_data).to match(expected)
+  end
+
+  # if static contains an asset that an application needs, no warning should be raised
+  it "returns a comparison for an application using individual components and takes static into account" do
+    application = [
+      {
+        name: "collections",
+        application_found: true,
+        components_found: [
+          {
+            location: "templates",
+            components: [
+              "component one",
+              "component two",
+              "component four",
+            ],
+          },
+          {
+            location: "stylesheets",
+            components: [
+              "component one",
+            ],
+          },
+          {
+            location: "print_stylesheets",
+            components: [],
+          },
+          {
+            location: "javascripts",
+            components: [],
+          },
+          {
+            location: "ruby",
+            components: [],
+          },
+        ],
+        gem_style_references: [],
+        jquery_references: [],
+      },
+      {
+        name: "static",
+        application_found: true,
+        components_found: [
+          {
+            location: "templates",
+            components: [
+              "component one",
+              "component two",
+            ],
+          },
+          {
+            location: "stylesheets",
+            components: [
+              "component one",
+              "component two",
+            ],
+          },
+          {
+            location: "print_stylesheets",
+            components: [
+              "component two",
+            ],
+          },
+          {
+            location: "javascripts",
+            components: [
+              "component one",
+            ],
+          },
+          {
+            location: "ruby",
+            components: [],
+          },
+        ],
+        gem_style_references: [],
+        jquery_references: [],
+      },
+    ]
+    comparer = GovukPublishingComponents::AuditComparer.new(gem, application, false)
+
+    expected = [
+      {
+        name: "collections",
+        application_found: true,
+        uses_static: true,
+        summary: [
+          {
+            name: "Components in templates",
+            value: "component four, component one, component two",
+          },
+          {
+            name: "Components in stylesheets",
+            value: "component one",
+          },
+          {
+            name: "Components in print stylesheets",
+            value: "",
+          },
+          {
+            name: "Components in javascripts",
+            value: "",
+          },
+          {
+            name: "Components in ruby",
+            value: "",
+          },
+        ],
+        warnings: [
+          {
+            component: "component four",
+            message: "Included in code but not stylesheets",
+          },
+          {
+            component: "component four",
+            message: "Included in code but not javascripts",
+          },
+        ],
+        warning_count: 2,
+        gem_style_references: [],
+        jquery_references: [],
+      },
+      {
+        name: "static",
+        application_found: true,
+        uses_static: false,
+        summary: [
+          {
+            name: "Components in templates",
+            value: "component one, component two",
+          },
+          {
+            name: "Components in stylesheets",
+            value: "component one, component two",
+          },
+          {
+            name: "Components in print stylesheets",
+            value: "component two",
+          },
+          {
+            name: "Components in javascripts",
+            value: "component one",
+          },
+          {
+            name: "Components in ruby",
+            value: "",
+          },
+        ],
+        warnings: [],
+        warning_count: 0,
         gem_style_references: [],
         jquery_references: [],
       },
@@ -226,6 +386,7 @@ describe "Comparing data from an application with the components" do
       {
         name: "Dummy application",
         application_found: true,
+        uses_static: false,
         summary: [],
         warnings: [
           {
@@ -300,10 +461,11 @@ describe "Comparing data from an application with the components" do
       {
         name: "Dummy application",
         application_found: true,
+        uses_static: false,
         summary: [
           {
             name: "Components in templates",
-            value: "component one, component three, component two",
+            value: "component one, component two",
           },
           {
             name: "Components in stylesheets",
@@ -386,10 +548,11 @@ describe "Comparing data from an application with the components" do
       {
         name: "Dummy application",
         application_found: true,
+        uses_static: false,
         summary: [
           {
             name: "Components in templates",
-            value: "component three, component two",
+            value: "component four, component three, component two",
           },
           {
             name: "Components in stylesheets",
@@ -420,6 +583,10 @@ describe "Comparing data from an application with the components" do
             message: "Included in ruby but component does not exist",
           },
           {
+            component: "component four",
+            message: "Included in code but not stylesheets",
+          },
+          {
             component: "component two",
             message: "Included in code but not stylesheets",
           },
@@ -436,7 +603,7 @@ describe "Comparing data from an application with the components" do
             message: "a_made_up_application/app/views/layouts/dummy_admin_layout.html",
           },
         ],
-        warning_count: 5,
+        warning_count: 6,
       },
     ]
 

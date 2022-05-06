@@ -33,6 +33,11 @@
     <% accordion_content = capture do %>
       <% if application[:application_found] %>
         <% github_link = 'https://github.com/alphagov/' + application[:name] + '/blob/main/' %>
+
+        <% if application[:uses_static] %>
+          <p class="govuk-body">This application uses <a href="https://github.com/alphagov/static" class="govuk-link">static</a>, which can contain assets for components used in more than one application. Warnings for missing component assets in this application that are already included in static have been suppressed.</p>
+        <% end %>
+
         <% application[:warnings].each do |warning| %>
           <p class="govuk-body">
             <strong class="govuk-tag">Warn</strong>

@@ -4,6 +4,22 @@ module GovukPublishingComponents
 
     def initialize(gem_data, results, simple)
       if gem_data[:gem_found]
+        @applications_using_static = %w[
+          collections
+          email-alert-frontend
+          feedback
+          finder-frontend
+          frontend
+          government-frontend
+          info-frontend
+          licence-finder
+          manuals-frontend
+          service-manual-frontend
+          smart-answers
+          whitehall
+        ]
+
+        @static_data = find_static(results)
         @gem_data = gem_data
         @applications_data = sort_results(results, simple)
         @gem_data[:components_by_application] = get_components_by_application || []
@@ -11,6 +27,17 @@ module GovukPublishingComponents
     end
 
   private
+
+    # find static to check for global includes, reduce false warnings
+    def find_static(results)
+      results.each do |result|
+        if result[:name] == "static" && result[:application_found] == true
+          return result
+        end
+      end
+
+      false
+    end
 
     def prettify_key(key)
       key.to_s.gsub("_", " ").capitalize
@@ -22,6 +49,7 @@ module GovukPublishingComponents
 
       results.each do |result|
         if result[:application_found]
+          application_uses_static = @applications_using_static.include?(result[:name])
           templates = result[:components_found].find { |c| c[:location] == "templates" }
           stylesheets = result[:components_found].find { |c| c[:location] == "stylesheets" }
           print_stylesheets = result[:components_found].find { |c| c[:location] == "print_stylesheets" }
@@ -70,6 +98,7 @@ module GovukPublishingComponents
           data << {
             name: result[:name],
             application_found: result[:application_found],
+            uses_static: application_uses_static,
             summary: summary,
             warnings: warnings,
             warning_count: warnings.length,
@@ -102,6 +131,7 @@ module GovukPublishingComponents
       }
     end
 
+    # given two groups of components, check the difference
     def find_missing_items(first_group, second_group)
       warnings = []
 
@@ -111,19 +141,34 @@ module GovukPublishingComponents
         second_group.each do |second|
           second_location = second[:location]
           second_location = "code" if %w[templates ruby].include?(second_location)
+          # subtract one group from the other, leaving only those not in both
           in_current = find_missing(second[:components].clone, first[:components].clone)
 
           next if second[:components].include?("all")
 
+          # now we have a list of 'missing' component assets, check the gem to see if that asset exists
           in_current.each do |component|
-            if @gem_data.include?("component_#{second_location}".to_sym) && @gem_data["component_#{second_location}".to_sym].include?(component)
-              warnings << create_warning(component, "Included in #{first_location} but not #{second_location}")
-            end
+            asset_in_gem = @gem_data.include?("component_#{second_location}".to_sym) && @gem_data["component_#{second_location}".to_sym].include?(component)
+            check_static = @static_data && second_location != "code"
+            asset_in_static = asset_already_in_static(second_location, component) if check_static
+            raise_warning = asset_in_gem && !asset_in_static
+
+            # this raises a warning if the asset exists and isn't included either in the application or static
+            # TODO: raise a warning if the asset is in the application and static, as its therefore not needed in the application
+            warnings << create_warning(component, "Included in #{first_location} but not #{second_location}") if raise_warning
           end
         end
       end
 
       warnings
+    end
+
+    def asset_already_in_static(location, component)
+      @static_data[:components_found].each do |component_found|
+        return true if component_found[:location] == location && component_found[:components].include?(component)
+      end
+
+      false
     end
 
     def warn_about_missing_assets(components)

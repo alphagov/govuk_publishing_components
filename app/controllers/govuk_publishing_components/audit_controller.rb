@@ -24,7 +24,8 @@ module GovukPublishingComponents
         static
         travel-advice-publisher
         whitehall
-      ].sort
+      ]
+
       application_dirs = [GovukPublishingComponents::ApplicationHelper.get_application_name_from_path(Rails.root)] unless ENV["MAIN_COMPONENT_GUIDE"]
 
       gem_path = Gem.loaded_specs["govuk_publishing_components"].full_gem_path
