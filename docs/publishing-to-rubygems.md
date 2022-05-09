@@ -2,7 +2,7 @@
 
 Before publishing a new version [check the open and approved pull requests](https://github.com/alphagov/govuk_publishing_components/pulls?q=is%3Apr+is%3Aopen+review%3Aapproved) and reach out to the authors to see if you can get their work published in the same release.
 
-1. Checkout **master** and pull latest changes.
+1. Checkout **main** and pull latest changes.
 
 2. Create and checkout a new branch (`release-[version-number]`).
   The version number is determined by looking at the [current "Unreleased" changes in CHANGELOG](/CHANGELOG.md) and updating the previous release number depending on the kind of entries:
