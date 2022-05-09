@@ -53,9 +53,9 @@ Example:
 
 If a component includes a heading, consider including an option to control the heading level (see the [heading component](https://components.publishing.service.gov.uk/component-guide/heading/specific_heading_level) for example).
 
-Components can use other components within their template, if required (see the [input component](https://github.com/alphagov/govuk_publishing_components/blob/master/app/views/govuk_publishing_components/components/_input.html.erb#L37) for example).
+Components can use other components within their template, if required (see the [input component](https://github.com/alphagov/govuk_publishing_components/blob/main/app/views/govuk_publishing_components/components/_input.html.erb#L37) for example).
 
-Complex components can be split into smaller partials to make them easier to understand and maintain (see the [feedback component](https://github.com/alphagov/govuk_publishing_components/blob/master/app/views/govuk_publishing_components/components/_feedback.html.erb) for example).
+Complex components can be split into smaller partials to make them easier to understand and maintain (see the [feedback component](https://github.com/alphagov/govuk_publishing_components/blob/main/app/views/govuk_publishing_components/components/_feedback.html.erb) for example).
 
 Components should not have an option to include arbitrary classes as this could violate the principle of isolation. If there is a requirement for a styling variation on a component this should be included as an option e.g. `small: true`.
 
@@ -152,7 +152,7 @@ examples:
 
 Markdown listing what this component must do to be accessible.
 
-[Shared accessibility criteria](https://github.com/alphagov/govuk_publishing_components/blob/master/app/models/govuk_publishing_components/shared_accessibility_criteria.rb) can be included in a list as shown. They are pre-written accessibility criteria that can apply to more than one component, created to avoid duplication. For example, links within components should all accept focus, be focusable with a keyboard, etc.
+[Shared accessibility criteria](https://github.com/alphagov/govuk_publishing_components/blob/main/app/models/govuk_publishing_components/shared_accessibility_criteria.rb) can be included in a list as shown. They are pre-written accessibility criteria that can apply to more than one component, created to avoid duplication. For example, links within components should all accept focus, be focusable with a keyboard, etc.
 
 A component can have accessibility criteria, shared accessibility criteria, or both.
 
@@ -186,7 +186,7 @@ The component guide will wrap a `dark_background` context example with a `dark-b
 
 ## Styles
 
-With the exception of namespaces, follow the [GOV.UK Frontend CSS conventions](https://github.com/alphagov/govuk-frontend/blob/master/docs/contributing/coding-standards/css.md), which describes in more detail our approach to namespaces, linting and BEM (block, element, modifier) CSS naming methodology.
+With the exception of namespaces, follow the [GOV.UK Frontend CSS conventions](https://github.com/alphagov/govuk-frontend/blob/main/docs/contributing/coding-standards/css.md), which describes in more detail our approach to namespaces, linting and BEM (block, element, modifier) CSS naming methodology.
 
 Components can rely on classes from GOV.UK Frontend to allow for modification that build on top of the styles from the Design System. This follows the [recommendations for extending](https://design-system.service.gov.uk/get-started/extending-and-modifying-components/#small-modifications-to-components) from the Design System guide.
 
@@ -210,7 +210,7 @@ This makes it clear what the base component is, what the modifier is, and where 
 
 `.block__element--modifier {}`
 
-All CSS selectors should follow the BEM naming convention shown above, explained in [more detail here](https://github.com/alphagov/govuk-frontend/blob/master/docs/contributing/coding-standards/css.md#block-element-modifier-bem).
+All CSS selectors should follow the BEM naming convention shown above, explained in [more detail here](https://github.com/alphagov/govuk-frontend/blob/main/docs/contributing/coding-standards/css.md#block-element-modifier-bem).
 
 Note: to avoid long and complicated class names, we follow the [BEM guidance](http://getbem.com/faq/#css-nested-elements) that classes do not have to reflect the nested nature of the DOM. We also try to avoid nesting classes too deeply so that styles can be overridden if needed.
 
@@ -258,11 +258,11 @@ SVGs can also be used for images, ideally inline in templates and compressed.
 
 ## JavaScript
 
-Follow the [GOV.UK Frontend JS conventions](https://github.com/alphagov/govuk-frontend/blob/master/docs/contributing/coding-standards/js.md).
+Follow the [GOV.UK Frontend JS conventions](https://github.com/alphagov/govuk-frontend/blob/main/docs/contributing/coding-standards/js.md).
 
-Scripts should use the [module pattern](https://github.com/alphagov/govuk_publishing_components/blob/master/docs/javascript-modules.md) and be linted using [StandardJS](https://standardjs.com/).
+Scripts should use the [module pattern](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/javascript-modules.md) and be linted using [StandardJS](https://standardjs.com/).
 
-Most components should have an option to include arbitrary data attributes (see the [checkboxes component](https://components.publishing.service.gov.uk/component-guide/checkboxes/checkboxes_with_data_attributes) for example). These can be used for many purposes including tracking (see the [select component](https://components.publishing.service.gov.uk/component-guide/select/with_tracking) for [example code](https://github.com/alphagov/govuk_publishing_components/blob/master/app/assets/javascripts/govuk_publishing_components/components/select.js)) but specific tracking should only be added to a component where there is a real need for it.
+Most components should have an option to include arbitrary data attributes (see the [checkboxes component](https://components.publishing.service.gov.uk/component-guide/checkboxes/checkboxes_with_data_attributes) for example). These can be used for many purposes including tracking (see the [select component](https://components.publishing.service.gov.uk/component-guide/select/with_tracking) for [example code](https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/javascripts/govuk_publishing_components/components/select.js)) but specific tracking should only be added to a component where there is a real need for it.
 
 Some [common JavaScript modules](https://github.com/alphagov/govuk_publishing_components/tree/master/app/assets/javascripts/govuk_publishing_components/lib) are available. If new functionality is required, consider adding it as a common module.
 
@@ -298,7 +298,7 @@ Code can be called and referred to in the template as follows:
 
 ### Shared helper
 
-There is a [shared helper](https://github.com/alphagov/govuk_publishing_components/blob/master/lib/govuk_publishing_components/presenters/shared_helper.rb) that can provide common functionality to all components. This includes:
+There is a [shared helper](https://github.com/alphagov/govuk_publishing_components/blob/main/lib/govuk_publishing_components/presenters/shared_helper.rb) that can provide common functionality to all components. This includes:
 
 - set margin bottom and top
 - set heading level and heading font size

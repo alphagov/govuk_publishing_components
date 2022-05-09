@@ -65,7 +65,7 @@ examples:
       padding: true
       border_top: 2
   with_branding:
-    description: Organisation [colour branding](https://github.com/alphagov/govuk_publishing_components/blob/master/docs/component_branding.md) can be added to the component as shown, if a top border is included.
+    description: Organisation [colour branding](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/component_branding.md) can be added to the component as shown, if a top border is included.
     data:
       text: 'Branding'
       brand: 'department-for-environment-food-rural-affairs'

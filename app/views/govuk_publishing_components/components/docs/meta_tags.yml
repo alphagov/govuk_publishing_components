@@ -4,9 +4,9 @@ body: |
   This takes a content-store links hash like object which it can then turn into
   the correct analytics identifier metadata tags.
 
-  These are additionally used by the <a href="https://github.com/alphagov/govuk-browser-extension">GOV.UK browser extension</a> to provide details about a given page. 
+  These are additionally used by the <a href="https://github.com/alphagov/govuk-browser-extension">GOV.UK browser extension</a> to provide details about a given page.
 
-  The code which reads the meta tags can be found <a href="https://github.com/alphagov/govuk_publishing_components/blob/master/app/assets/javascripts/govuk_publishing_components/analytics/custom-dimensions.js">in custom-dimensions.js</a>.
+  The code which reads the meta tags can be found <a href="https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/javascripts/govuk_publishing_components/analytics/custom-dimensions.js">in custom-dimensions.js</a>.
 accessibility_criteria: |
   The analytics meta tags component should not be visible to any users.
 display_html: true
@@ -24,7 +24,7 @@ examples:
   with_content_history_tags:
     description: |
       The tags in this object will generate the `content-has-history` tag, set to true. This tag is triggered when either, within `content_item`:
-      
+
       1. `public_updated_at` and `first_public_at` within `details` are both present and they aren't the same value
       2. `change_history` within `details` is present and it has a value of more than 1
 
