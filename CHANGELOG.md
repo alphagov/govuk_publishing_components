@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Expand print link component ([PR #2900](https://github.com/alphagov/govuk_publishing_components/pull/2900))
+* Resolve visual differences in navbar when JS not enabled ([PR #2756](https://github.com/alphagov/govuk_publishing_components/pull/2756))
 
 ## 30.1.0
 
