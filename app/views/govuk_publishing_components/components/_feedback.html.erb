@@ -6,9 +6,13 @@
   email_regex = /[^\s=\/?&]+(?:@|%40)[^\s=\/?&]+/
   url_without_pii = utf_encode(request.original_url.gsub(email_regex, '[email]'))
   path_without_pii = utf_encode(request.fullpath.gsub(email_regex, '[email]'))
+
 %>
 
 <div class="gem-c-feedback govuk-!-display-none-print" data-module="feedback">
+  <%= render "govuk_publishing_components/components/feedback/variant_A" %>
+  <%= render "govuk_publishing_components/components/feedback/variant_B" %>
+  <%= render "govuk_publishing_components/components/feedback/common_steps" %>
   <%= render "govuk_publishing_components/components/feedback/yes_no_banner" %>
   <%= render "govuk_publishing_components/components/feedback/problem_form", url_without_pii: url_without_pii %>
   <%= render "govuk_publishing_components/components/feedback/survey_signup_form", path_without_pii: path_without_pii %>

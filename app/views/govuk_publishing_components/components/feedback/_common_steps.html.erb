@@ -1,0 +1,118 @@
+<%= render "govuk_publishing_components/components/feedback/step", {
+  id: "why_not"
+} do %>
+  <%= render "govuk_publishing_components/components/radio", {
+    heading: "Why was this page not useful?",
+    name: "why_not_useful",
+    items: [
+      {
+        value: "cant_find",
+        text: "I can't find the information"
+      },
+      {
+        value: "cant_understand",
+        text: "The information is hard to understand"
+      },
+      {
+        value: "error",
+        text: "There was an error or something didn't work"
+      },
+      {
+        value: "other",
+        text: "Other"
+      }
+    ]
+  } %>
+<% end %>
+<%= render "govuk_publishing_components/components/feedback/step", {
+  id: "what_wrong"
+} do %>
+  <%= render "govuk_publishing_components/components/radio", {
+    heading: "What went wrong?",
+    name: "what_wrong",
+    items: [
+      {
+        value: "bug",
+        text: "A link, button or video is not working"
+      },
+      {
+        value: "spelling",
+        text: "Spelling mistake"
+      },
+      {
+        value: "a11y",
+        text: "Accessibility issue"
+      },
+      {
+        value: "other",
+        text: "Other"
+      }
+    ]
+  } %>
+<% end %>
+<%= render "govuk_publishing_components/components/feedback/step", {
+  id: "what_doing"
+} do %>
+  <%= render "govuk_publishing_components/components/textarea", {
+    label: {
+      text: "What were you doing?",
+      heading_size: "m"
+    },
+    name: "what_doing",
+    rows: 3,
+    describedby: "feedback_pii_explanation"
+  } %>
+  <%= render "govuk_publishing_components/components/textarea", {
+    label: {
+      text: "What was the issue?",
+      heading_size: "m"
+    },
+    name: "what_wrong",
+    rows: 3
+  } %>
+  <p id="feedback_pii_explanation" class="govuk-body">
+    Don't include personal or financial information like your name, address or credit card.<br>
+    <br>
+    We <b>can't reply</b>, this feedback will be used to help improve the GOV.UK website.
+  </p>
+<% end %>
+<%= render "govuk_publishing_components/components/feedback/step", {
+  id: "use_assistive"
+} do %>
+  <%= render "govuk_publishing_components/components/radio", {
+    heading: "Do you use assistive technology?",
+    hint: "Assistive technology are tools, equipment, or products that can help people with disabilities.",
+    name: "use_assistive",
+    items: [
+      {
+        value: "yes",
+        text: "Yes"
+      },
+      {
+        value: "no",
+        text: "No"
+      }
+    ]
+  } %>
+<% end %>
+<%= render "govuk_publishing_components/components/feedback/step", {
+  id: "which_assistive"
+} do %>
+  <%= render "govuk_publishing_components/components/textarea", {
+    label: {
+      text: "Which assistive technology do you use?",
+      heading_size: "m"
+    },
+    hint: "Please add the technology version if you know it.",
+    name: "assistive_tech",
+    rows: 3
+  } %>
+<% end %>
+<%= render "govuk_publishing_components/components/feedback/step", {
+  id: "thanks",
+  no_continue_or_back: true
+} do %>
+  <h2 class="govuk-heading-m">Thank you for you feedback</h2>
+  <p class="govuk-body">This helps us make improvedments to the GOV.UK website</p>
+  <p class="govuk-body">If you want to continue to help us improve GOV.UK you can <a href="#" class="govuk-link">sign up to take part in user research.</a></p>
+<% end %>

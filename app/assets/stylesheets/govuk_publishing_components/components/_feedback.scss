@@ -244,3 +244,14 @@
     outline: $govuk-focus-width solid $govuk-focus-colour;
   }
 }
+
+.gem-c-feedback__back-link {
+  display: block;
+  margin-top: govuk-spacing(4);
+
+  @include govuk-media-query($from: desktop) {
+    display: inline-block;
+    margin-top: govuk-spacing(2);
+    margin-left: govuk-spacing(3);
+  }
+}

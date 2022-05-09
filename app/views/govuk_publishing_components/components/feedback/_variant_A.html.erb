@@ -1,0 +1,15 @@
+<%= render "govuk_publishing_components/components/feedback/step", {
+  id: "useful_or_not",
+  no_continue_or_back: true,
+  no_details: true
+} do %>
+  <h2 class="gem-c-feedback__form-heading">Give us some feedback</h2>
+  <p class="gem-c-feedback__form-paragraph">You can tell us more on the next page. We use your feedback to improve GOV.UK.</p>
+  <ul class="gem-c-feedback__option-list">
+    <li class="gem-c-feedback__option-list-item">
+      <button class="govuk-button govuk-button--secondary js-feedback-input" data-feedback-input="useful">This page is useful</button>
+    </li>
+    <li class="gem-c-feedback__option-list-item">
+      <button class="govuk-button govuk-button--secondary js-feedback-input" data-feedback-input="not_useful">This page is not useful</button>
+  </ul>
+<% end %>

@@ -1,0 +1,18 @@
+<%
+  no_continue_or_back ||= false
+  no_details ||= false
+%>
+<div id="<%= id %>" class="js-feedback-state" hidden>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <%= yield %>
+      <% unless no_continue_or_back %>
+        <button class="govuk-button js-feedback-input govuk-!-margin-bottom-6" data-feedback-input="continue">Continue</button>
+        <a href="#" class="js-feedback-input govuk-link gem-c-feedback__back-link" data-feedback-input="back" data-prevent-default="true">Back</a>
+      <% end %>
+      <% unless no_details %>
+        <%= render "govuk_publishing_components/components/feedback/feedback_details" %>
+      <% end %>
+    </div>
+  </div>
+</div>

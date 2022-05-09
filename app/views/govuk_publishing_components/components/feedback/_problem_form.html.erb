@@ -1,14 +1,16 @@
 <form action="/contact/govuk/problem_reports"
   id="something-is-wrong"
-  class="gem-c-feedback__form js-feedback-form"
+  class="gem-c-feedback__form js-feedback-form js-feedback-state"
   data-track-category="Onsite Feedback"
   data-track-action="GOV.UK Send Form"
   method="post"
   hidden>
   <button
-    class="govuk-button govuk-button--secondary gem-c-feedback__close gem-c-feedback__js-show js-close-form"
+    class="govuk-button govuk-button--secondary gem-c-feedback__close gem-c-feedback__js-show js-close-form js-feedback-input"
     data-track-category="Onsite Feedback"
     data-track-action="GOV.UK Close Form"
+    data-feedback-input="close"
+    data-prevent-default="true"
     aria-controls="something-is-wrong"
     aria-expanded="true">
     <%= t("components.feedback.close") %>
@@ -47,7 +49,11 @@
       } %>
 
       <%= render "govuk_publishing_components/components/button", {
-        text: t("components.feedback.send")
+        text: t("components.feedback.send"),
+        classes: "js-feedback-input",
+        data_attributes: {
+          "feedback-input": "submit"
+        }
       } %>
     </div>
   </div>

@@ -1,13 +1,15 @@
 <form action="/contact/govuk/email-survey-signup"
   id="page-is-not-useful"
-  class="gem-c-feedback__form gem-c-feedback__form--email gem-c-feedback__js-show js-feedback-form"
+  class="gem-c-feedback__form gem-c-feedback__form--email gem-c-feedback__js-show js-feedback-form js-feedback-state"
   data-track-category="yesNoFeedbackForm"
   data-track-action="Send Form"
   method="post">
   <button
-    class="govuk-button govuk-button--secondary gem-c-feedback__close js-close-form"
+    class="govuk-button govuk-button--secondary gem-c-feedback__close js-close-form js-feedback-input"
     data-track-category="yesNoFeedbackForm"
     data-track-action="ffFormClose"
+    data-feedback-input="close"
+    data-prevent-default="true"
     aria-controls="page-is-not-useful"
     aria-expanded="true"
     hidden>
@@ -35,7 +37,11 @@
       } %>
 
        <%= render "govuk_publishing_components/components/button", {
+        data_attributes: {
+          "feedback-input": "submit"
+        },
         text: t("components.feedback.send_me_survey"),
+        classes: "js-feedback-input",
       } %>
     </div>
   </div>

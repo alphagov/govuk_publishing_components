@@ -1,0 +1,26 @@
+<%= render "govuk_publishing_components/components/feedback/step", {
+  id: "tell_experience",
+  no_continue_or_back: true,
+  no_details: true
+} do %>
+  <h2 class="gem-c-feedback__form-heading">Your feedback helps us improve GOV.UK</h2>
+  <button class="govuk-button govuk-button--secondary js-feedback-input" data-feedback-input="submit">Tell us about your experience</button>
+<% end %>
+<%= render "govuk_publishing_components/components/feedback/step", {
+  id: "useful_or_not_b"
+} do %>
+  <%= render "govuk_publishing_components/components/radio", {
+    heading: "Was this page useful?",
+    name: "useful",
+    items: [
+      {
+        value: "yes",
+        text: "Yes"
+      },
+      {
+        value: "no",
+        text: "No"
+      }
+    ]
+  } %>
+<% end %>
