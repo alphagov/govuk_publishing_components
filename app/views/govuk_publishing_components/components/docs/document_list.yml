@@ -2,7 +2,7 @@ name: Document list
 description: An ordered list of documents including a document type, when updated and a link.
 body: |
   Outputs a list to documents, based on an array of document data. A "document" in this context can be an asset (such as a ODT or other downloadable document) or a web page.
-  
+
   The component can display:
 
   * a document title
@@ -116,7 +116,7 @@ examples:
           public_updated_at: 2017-07-19 15:01:48
           document_type: 'Statutory guidance'
   with_branding:
-    description: Where this component could be used on an organisation page (such as the [Attorney General's Office](https://www.gov.uk/government/organisations/attorney-generals-office)) branding can be applied for link colours and border colours. See the [branding documentation](https://github.com/alphagov/govuk_publishing_components/blob/master/docs/component_branding.md) for more details.
+    description: Where this component could be used on an organisation page (such as the [Attorney General's Office](https://www.gov.uk/government/organisations/attorney-generals-office)) branding can be applied for link colours and border colours. See the [branding documentation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/component_branding.md) for more details.
     data:
       brand: 'attorney-generals-office'
       items:
@@ -308,9 +308,9 @@ examples:
   with_rel_link_attribute:
     description: |
       The [rel attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel) is an option attribute to dictate the relationship between the document being linked to and the current page. This is predominantly used by search engines to help index journeys through a website.
-      
+
       On GOV.UK, this is typically used to dictate an external website being linked to with `rel="external"`, however this component supports:
-      
+
       - external
       - nofollow
       - noopener

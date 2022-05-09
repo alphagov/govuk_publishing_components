@@ -13,7 +13,7 @@
       <% if !@component_doc.accessibility_criteria.present? %>
         <div class="component-violation">
           <h2 class="component-violation__title">This component is not valid</h2>
-          <a class="component-violation__link" href="https://github.com/alphagov/govuk_publishing_components/blob/master/docs/accessibility_acceptance_criteria.md">Please define accessibility acceptance criteria for this component.</a>
+          <a class="component-violation__link" href="https://github.com/alphagov/govuk_publishing_components/blob/main/docs/accessibility_acceptance_criteria.md">Please define accessibility acceptance criteria for this component.</a>
         </div>
       <% end %>
       <%= render 'govuk_publishing_components/components/lead_paragraph', text: @component_doc.description %>

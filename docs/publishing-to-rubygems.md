@@ -15,7 +15,7 @@ Before publishing a new version [check the open and approved pull requests](http
 
   See [Semantic Versioning](https://semver.org/) for more information.
 
-3. Update [`CHANGELOG.md`](/CHANGELOG.md) "Unreleased" heading with the new version number and [review the latest commits](https://github.com/alphagov/govuk_publishing_components/commits/master) to make sure the latest changes are correctly reflected in the [CHANGELOG]((/CHANGELOG.md)).
+3. Update [`CHANGELOG.md`](/CHANGELOG.md) "Unreleased" heading with the new version number and [review the latest commits](https://github.com/alphagov/govuk_publishing_components/commits/main) to make sure the latest changes are correctly reflected in the [CHANGELOG]((/CHANGELOG.md)).
 
 4. Update [`lib/govuk_publishing_components/version.rb`](/lib/govuk_publishing_components/version.rb) version with the new version number.
 

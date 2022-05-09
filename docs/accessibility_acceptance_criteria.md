@@ -30,7 +30,7 @@ In this case it was helpful to create a shared definition of an accessible link 
 
 ### Don't define the solution
 
-Accessibility acceptance criteria are similar to [acceptance criteria in user stories](https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#acceptance-criteria). Good acceptance criteria describe an outcome rather than the solution.  
+Accessibility acceptance criteria are similar to [acceptance criteria in user stories](https://www.gov.uk/service-manual/agile-delivery/writing-user-stories#acceptance-criteria). Good acceptance criteria describe an outcome rather than the solution.
 
 The criteria should give room for interpretation and allow designers and developers to make improvements over time. Ideally if technology or designs change the criteria will still apply.
 
@@ -54,7 +54,7 @@ In code we can use these criteria to write unit tests that prevent regressions. 
 
 ### Accessible autocomplete
 
-At GDS we first used accessibility acceptance criteria when building the [accessible autocomplete](https://github.com/alphagov/accessible-autocomplete). Theodor Vararu, Léonie Watson and Ed Horsford defined the following [autocomplete accessibility criteria](https://github.com/alphagov/accessible-autocomplete/blob/master/accessibility-criteria.md) — the necessary behaviours that an autocomplete needs to meet to be usable by assistive technologies:
+At GDS we first used accessibility acceptance criteria when building the [accessible autocomplete](https://github.com/alphagov/accessible-autocomplete). Theodor Vararu, Léonie Watson and Ed Horsford defined the following [autocomplete accessibility criteria](https://github.com/alphagov/accessible-autocomplete/blob/main/accessibility-criteria.md) — the necessary behaviours that an autocomplete needs to meet to be usable by assistive technologies:
 
 > The field with autocomplete must:
 > 1. Be focusable with a keyboard
