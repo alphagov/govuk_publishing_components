@@ -1,29 +1,11 @@
 <%= render 'govuk_publishing_components/components/title', title: GovukPublishingComponents::Config.component_guide_title, margin_top: 0 %>
 
-<% unless ENV["MAIN_COMPONENT_GUIDE"] %>
-  <p class="govuk-body">
-    <% if @index_audit_summary[:application_found] %>
-      Warnings:
-      <% if @index_audit_summary[:warning_count] > 0 %>
-        <strong class="govuk-tag govuk-tag--red"><%= @index_audit_summary[:warning_count] %></strong>
-      <% else %>
-        <%= @index_audit_summary[:warning_count] %>
-      <% end %>
-      <a href="/component-guide/audit" class="govuk-link">Warning details</a>
-    <% else %>
-      <strong class="govuk-tag govuk-tag--red">Application not found</strong>
-    <% end %>
-  </p>
-<% end %>
-
 <div class="component-markdown">
   <p>Components are packages of template, style, behaviour and documentation that live in your application.</p>
   <p>See the <a href="https://github.com/alphagov/govuk_publishing_components">govuk_publishing_components gem</a> for further details, or <a href="https://docs.publishing.service.gov.uk/manual/components.html#component-guides">a list of all component guides</a>.</p>
   <ul>
     <li>Read about how to <a href="https://github.com/alphagov/govuk_publishing_components/blob/main/docs/publishing-to-rubygems.md">release a new version of the gem</a></li>
-    <% if ENV["MAIN_COMPONENT_GUIDE"] %>
-      <li><a href="/component-guide/audit">View component audits</a></li>
-    <% end %>
+    <li><a href="/component-guide/audit">View component audits</a></li>
   </ul>
 </div>
 

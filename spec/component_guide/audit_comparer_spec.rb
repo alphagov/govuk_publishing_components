@@ -79,7 +79,7 @@ describe "Comparing data from an application with the components" do
         ],
       },
     ]
-    comparer = GovukPublishingComponents::AuditComparer.new(gem_not_found, application, false)
+    comparer = GovukPublishingComponents::AuditComparer.new(gem_not_found, application)
     expected = nil
     expect(comparer.applications_data).to match(expected)
   end
@@ -125,7 +125,7 @@ describe "Comparing data from an application with the components" do
         jquery_references: [],
       },
     ]
-    comparer = GovukPublishingComponents::AuditComparer.new(gem, application, false)
+    comparer = GovukPublishingComponents::AuditComparer.new(gem, application)
 
     expected = [
       {
@@ -261,7 +261,7 @@ describe "Comparing data from an application with the components" do
         jquery_references: [],
       },
     ]
-    comparer = GovukPublishingComponents::AuditComparer.new(gem, application, false)
+    comparer = GovukPublishingComponents::AuditComparer.new(gem, application)
 
     expected = [
       {
@@ -340,85 +340,6 @@ describe "Comparing data from an application with the components" do
     expect(comparer.applications_data).to match(expected)
   end
 
-  it "returns a comparison for an application in simple mode without certain data" do
-    application = [
-      {
-        name: "Dummy application",
-        application_found: true,
-        components_found: [
-          {
-            location: "templates",
-            components: [
-              "component one",
-              "component that does not exist",
-            ],
-          },
-          {
-            location: "stylesheets",
-            components: [
-              "component one",
-              "component two",
-              "component four",
-            ],
-          },
-          {
-            location: "print_stylesheets",
-            components: [],
-          },
-          {
-            location: "javascripts",
-            components: [],
-          },
-          {
-            location: "ruby",
-            components: [
-              "component three",
-            ],
-          },
-        ],
-        gem_style_references: [],
-        jquery_references: [],
-      },
-    ]
-    comparer = GovukPublishingComponents::AuditComparer.new(gem, application, true)
-
-    expected = [
-      {
-        name: "Dummy application",
-        application_found: true,
-        uses_static: false,
-        summary: [],
-        warnings: [
-          {
-            component: "component that does not exist",
-            message: "Included in templates but component does not exist",
-          },
-          {
-            component: "component four",
-            message: "Included in stylesheets but component does not exist",
-          },
-          {
-            component: "component three",
-            message: "Included in code but not stylesheets",
-          },
-          {
-            component: "component one",
-            message: "Included in code but not javascripts",
-          },
-          {
-            component: "component two",
-            message: "Included in stylesheets but not code",
-          },
-        ],
-        warning_count: 5,
-        gem_style_references: [],
-        jquery_references: [],
-      },
-    ]
-
-    expect(comparer.applications_data).to match(expected)
-  end
-
   it "returns a comparison for an application using all components" do
     application = [
       {
@@ -455,7 +376,7 @@ describe "Comparing data from an application with the components" do
         jquery_references: [],
       },
     ]
-    comparer = GovukPublishingComponents::AuditComparer.new(gem, application, false)
+    comparer = GovukPublishingComponents::AuditComparer.new(gem, application)
 
     expected = [
       {
@@ -542,7 +463,7 @@ describe "Comparing data from an application with the components" do
         jquery_references: [],
       },
     ]
-    comparer = GovukPublishingComponents::AuditComparer.new(gem, application, false)
+    comparer = GovukPublishingComponents::AuditComparer.new(gem, application)
 
     expected = [
       {

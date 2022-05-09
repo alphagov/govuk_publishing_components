@@ -37,7 +37,7 @@ module GovukPublishingComponents
 
       components = AuditComponents.new(gem_path, false)
       applications = analyse_applications(host_dir, application_dirs)
-      compared_data = AuditComparer.new(components.data, applications, false)
+      compared_data = AuditComparer.new(components.data, applications)
 
       @applications = compared_data.applications_data || []
       @components = compared_data.gem_data || []

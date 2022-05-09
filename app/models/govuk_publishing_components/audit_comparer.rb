@@ -2,7 +2,7 @@ module GovukPublishingComponents
   class AuditComparer
     attr_reader :applications_data, :gem_data
 
-    def initialize(gem_data, results, simple)
+    def initialize(gem_data, results)
       if gem_data[:gem_found]
         @applications_using_static = %w[
           collections
@@ -21,7 +21,7 @@ module GovukPublishingComponents
 
         @static_data = find_static(results)
         @gem_data = gem_data
-        @applications_data = sort_results(results, simple)
+        @applications_data = sort_results(results)
         @gem_data[:components_by_application] = get_components_by_application || []
       end
     end
@@ -43,8 +43,7 @@ module GovukPublishingComponents
       key.to_s.gsub("_", " ").capitalize
     end
 
-    def sort_results(results, simple)
-      @simple = simple
+    def sort_results(results)
       data = []
 
       results.each do |result|
@@ -69,31 +68,28 @@ module GovukPublishingComponents
           warnings << warn_about_jquery_references(result[:jquery_references])
           warnings = warnings.flatten
 
-          summary = []
-          unless @simple
-            summary = [
-              {
-                name: "Components in templates",
-                value: templates[:components].flatten.uniq.sort.join(", "),
-              },
-              {
-                name: "Components in stylesheets",
-                value: stylesheets[:components].join(", "),
-              },
-              {
-                name: "Components in print stylesheets",
-                value: print_stylesheets[:components].join(", "),
-              },
-              {
-                name: "Components in javascripts",
-                value: javascripts[:components].join(", "),
-              },
-              {
-                name: "Components in ruby",
-                value: ruby[:components].join(", "),
-              },
-            ]
-          end
+          summary = [
+            {
+              name: "Components in templates",
+              value: templates[:components].flatten.uniq.sort.join(", "),
+            },
+            {
+              name: "Components in stylesheets",
+              value: stylesheets[:components].join(", "),
+            },
+            {
+              name: "Components in print stylesheets",
+              value: print_stylesheets[:components].join(", "),
+            },
+            {
+              name: "Components in javascripts",
+              value: javascripts[:components].join(", "),
+            },
+            {
+              name: "Components in ruby",
+              value: ruby[:components].join(", "),
+            },
+          ]
 
           data << {
             name: result[:name],
@@ -231,8 +227,6 @@ module GovukPublishingComponents
     end
 
     def get_components_by_application
-      return [] if @simple
-
       results = []
       found_something = false
 

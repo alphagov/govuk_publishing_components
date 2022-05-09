@@ -22,11 +22,13 @@
   %>
   <% application_items = @applications.map do |application| %>
     <%
-      summary = '<strong class="govuk-tag govuk-tag--red">Application not found</strong>'
+      if @other_applications
+        summary = '<strong class="govuk-tag govuk-tag--red">Application not found</strong>'
 
-      if application[:application_found]
-        summary = "Warnings: 0"
-        summary = "Warnings: <strong class=\"govuk-tag govuk-tag--red\">#{application[:warning_count]}</strong>" if application[:warning_count] > 0
+        if application[:application_found]
+          summary = "Warnings: 0"
+          summary = "Warnings: <strong class=\"govuk-tag govuk-tag--red\">#{application[:warning_count]}</strong>" if application[:warning_count] > 0
+        end
       end
     %>
 
@@ -34,15 +36,19 @@
       <% if application[:application_found] %>
         <% github_link = 'https://github.com/alphagov/' + application[:name] + '/blob/main/' %>
 
-        <% if application[:uses_static] %>
-          <p class="govuk-body">This application uses <a href="https://github.com/alphagov/static" class="govuk-link">static</a>, which can contain assets for components used in more than one application. Warnings for missing component assets in this application that are already included in static have been suppressed.</p>
-        <% end %>
+        <% if @other_applications %>
+          <% if application[:uses_static] %>
+            <p class="govuk-body">This application uses <a href="https://github.com/alphagov/static" class="govuk-link">static</a>, which can contain assets for components used in more than one application. Warnings for missing component assets in this application that are already included in static have been suppressed.</p>
+          <% end %>
 
-        <% application[:warnings].each do |warning| %>
-          <p class="govuk-body">
-            <strong class="govuk-tag">Warn</strong>
-            <strong><%= warning[:component] %></strong> - <%= warning[:message] %>
-          </p>
+          <% application[:warnings].each do |warning| %>
+            <p class="govuk-body">
+              <strong class="govuk-tag">Warn</strong>
+              <strong><%= warning[:component] %></strong> - <%= warning[:message] %>
+            </p>
+          <% end %>
+        <% else %>
+          <p class="govuk-body">More information about this application is available by viewing the component guide from a locally running instance of govuk_publishing_components.</p>
         <% end %>
 
         <%= render "govuk_publishing_components/components/heading", {
