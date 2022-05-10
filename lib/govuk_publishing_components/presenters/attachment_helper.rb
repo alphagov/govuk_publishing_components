@@ -7,7 +7,6 @@ module GovukPublishingComponents
       # Currently DfE, DWP and DVSA are participating in the pilot.
       EMAILS_IN_ACCESSIBLE_FORMAT_REQUEST_PILOT = %w[govuk_publishing_components@example.com
                                                      alternative.formats@education.gov.uk
-                                                     accessible.formats@dwp.gov.uk
                                                      gov.uk.publishing@dvsa.gov.uk].freeze
 
       delegate :opendocument?, :document?, :spreadsheet?, to: :content_type
