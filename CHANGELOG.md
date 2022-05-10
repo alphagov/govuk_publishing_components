@@ -9,7 +9,8 @@
 
 ## Unreleased
 
-Add wrapper to the component card to ensure link spacing ([PR #2753](https://github.com/alphagov/govuk_publishing_components/pull/2753))
+- Add wrapper to the component card to ensure link spacing ([PR #2753](https://github.com/alphagov/govuk_publishing_components/pull/2753))
+- Add new logic for counting links/sections on a second level browse page on page view #2733 ([PR #2733](https://github.com/alphagov/govuk_publishing_components/pull/2733))
 
 ## 29.7.0
 
