@@ -37,7 +37,7 @@
                       <li class="govuk-footer__list-item">
                         <%
                           attributes = {
-                            class: "govuk-footer__link",
+                            class: "govuk-link",
                             data: {
                               "track-category": "footerClicked"
                             }
@@ -64,7 +64,7 @@
             <% meta[:items].each do |item| %>
               <li class="govuk-footer__inline-list-item">
                 <%
-                  attributes = { class: "govuk-footer__link" }.merge(item.fetch(:attributes, {}))
+                  attributes = { class: "govuk-link" }.merge(item.fetch(:attributes, {}))
                   attributes[:rel] = "noopener" if attributes[:target] == "_blank" && !attributes[:rel]
                 %>
                 <%= link_to item[:text], item[:href], attributes %>

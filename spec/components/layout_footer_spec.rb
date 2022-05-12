@@ -23,7 +23,7 @@ describe "Layout footer", type: :view do
       },
     )
 
-    assert_select ".govuk-footer__meta .govuk-footer__link[href='/help']", text: "Help"
+    assert_select ".govuk-footer__meta .govuk-link[href='/help']", text: "Help"
   end
 
   it "renders the footer with navigation with multiple links" do
@@ -47,7 +47,7 @@ describe "Layout footer", type: :view do
     )
 
     assert_select ".govuk-footer__navigation .govuk-footer__heading", text: "Services and information"
-    assert_select ".govuk-footer__navigation .govuk-footer__list--columns-2 .govuk-footer__link[href='/browse/benefits']", text: "Benefits"
+    assert_select ".govuk-footer__navigation .govuk-footer__list--columns-2 .govuk-link[href='/browse/benefits']", text: "Benefits"
   end
 
   it "renders the footer with navigation with one link" do
@@ -68,7 +68,7 @@ describe "Layout footer", type: :view do
 
     assert_select ".govuk-footer__navigation .govuk-footer__list--columns-3", false
     assert_select ".govuk-footer__navigation .govuk-footer__heading", text: "Coronavirus (COVID-19)"
-    assert_select ".govuk-footer__navigation .govuk-footer__link[href='/coronavirus']", text: "Coronavirus (COVID-19): guidance and support"
+    assert_select ".govuk-footer__navigation .govuk-link[href='/coronavirus']", text: "Coronavirus (COVID-19): guidance and support"
   end
 
   it "renders the footer with attributes" do
@@ -89,7 +89,7 @@ describe "Layout footer", type: :view do
     )
 
     assert_select "a" do |link|
-      expect(link.attr("class").to_s).to eq "govuk-footer__link"
+      expect(link.attr("class").to_s).to eq "govuk-link"
       expect(link.attr("title").to_s).to eq "A title"
     end
   end
@@ -112,7 +112,7 @@ describe "Layout footer", type: :view do
     )
 
     assert_select "a" do |link|
-      expect(link.attr("class").to_s).to eq "govuk-footer__link"
+      expect(link.attr("class").to_s).to eq "govuk-link"
       expect(link.attr("target").to_s).to eq "_blank"
       expect(link.attr("rel").to_s).to eq "noopener"
     end
@@ -147,7 +147,7 @@ describe "Layout footer", type: :view do
     )
 
     assert_select ".govuk-footer__meta-item a" do |link|
-      expect(link.attr("class").to_s).to eq "govuk-footer__link"
+      expect(link.attr("class").to_s).to eq "govuk-link"
       expect(link.attr("lang").to_s).to eq "cy"
       expect(link.attr("hreflang").to_s).to eq "cy"
     end
@@ -202,7 +202,7 @@ describe "Layout footer", type: :view do
     )
 
     assert_select ".govuk-footer__meta-item a" do |link|
-      expect(link.attr("class").to_s).to eq "govuk-footer__link"
+      expect(link.attr("class").to_s).to eq "govuk-link"
       expect(link.attr("target").to_s).to eq "_blank"
       expect(link.attr("rel").to_s).to eq "noopener"
     end

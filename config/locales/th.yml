@@ -80,8 +80,8 @@ th:
     intervention:
       accessible_link_text_suffix:
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">ลิขสิทธิ์ © Crown</a>
-      licence_html: เนื้อหาทั้งหมดอยู่ภายใต้สัญญาอนุญาต <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government License v3.0</a> ยกเว้นจะระบุไว้เป็นอย่างอื่น
+      copyright_html: <a class="govuk-link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">ลิขสิทธิ์ © Crown</a>
+      licence_html: เนื้อหาทั้งหมดอยู่ภายใต้สัญญาอนุญาต <a class="govuk-link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government License v3.0</a> ยกเว้นจะระบุไว้เป็นอย่างอื่น
       navigation_links:
       support_links: ลิงค์สนับสนุน
     layout_for_public:

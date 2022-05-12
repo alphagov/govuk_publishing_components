@@ -82,8 +82,8 @@ sq:
     intervention:
       accessible_link_text_suffix:
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown e drejta e autorit</a>
-      licence_html: E gjithë përmbajtja është në dispozicion nën <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Licencën e Qeverisë së Hapur v3.0</a>, përveç rasteve kur thuhet ndryshe
+      copyright_html: <a class="govuk-link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown e drejta e autorit</a>
+      licence_html: E gjithë përmbajtja është në dispozicion nën <a class="govuk-link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Licencën e Qeverisë së Hapur v3.0</a>, përveç rasteve kur thuhet ndryshe
       navigation_links:
       support_links: Lidhjet mbështetëse
     layout_for_public:

@@ -80,8 +80,8 @@ zh:
     intervention:
       accessible_link_text_suffix:
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown版权所有</a>
-      licence_html: 除另有说明外，所有内容均可在 <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">开放政府许可证第3.0版</a>获取
+      copyright_html: <a class="govuk-link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown版权所有</a>
+      licence_html: 除另有说明外，所有内容均可在 <a class="govuk-link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">开放政府许可证第3.0版</a>获取
       navigation_links:
       support_links: 支持链接
     layout_for_public:

@@ -82,8 +82,8 @@ si:
     intervention:
       accessible_link_text_suffix:
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© රාජ්‍ය කතුහිමිකම</a>
-      licence_html: සියලු අන්තගතයන් වෙනත් ආකාරයකින් සඳහන් කර තිබුණොත් මිසක <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">රජයේ විවෘත බලපත්‍ර v3.0</a>, යටතේ ලබා ගත හැකිය
+      copyright_html: <a class="govuk-link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© රාජ්‍ය කතුහිමිකම</a>
+      licence_html: සියලු අන්තගතයන් වෙනත් ආකාරයකින් සඳහන් කර තිබුණොත් මිසක <a class="govuk-link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">රජයේ විවෘත බලපත්‍ර v3.0</a>, යටතේ ලබා ගත හැකිය
       navigation_links:
       support_links: සහාය සබැඳි
     layout_for_public:

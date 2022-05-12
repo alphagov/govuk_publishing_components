@@ -82,8 +82,8 @@ gu:
     intervention:
       accessible_link_text_suffix:
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© ક્રાઉન કૉપીરાઇટ</a>
-      licence_html: તમામ સામગ્રી<a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license"> ઓપન ગવર્નમેંટ લાઇસન્સ v3.0</a>હેઠળ ઉપલબ્ધ છે, સિવાય કે અન્યથા જણાવેલ હોય
+      copyright_html: <a class="govuk-link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© ક્રાઉન કૉપીરાઇટ</a>
+      licence_html: તમામ સામગ્રી<a class="govuk-link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license"> ઓપન ગવર્નમેંટ લાઇસન્સ v3.0</a>હેઠળ ઉપલબ્ધ છે, સિવાય કે અન્યથા જણાવેલ હોય
       navigation_links:
       support_links: સપોર્ટ લિંક્સ
     layout_for_public:

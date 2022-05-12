@@ -83,8 +83,8 @@ ta:
     intervention:
       accessible_link_text_suffix:
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown காப்புரிமை</a>
-      licence_html: வேறுவகையில் குறிப்பிடப்படாதவரை அனைத்து உள்ளடக்கமும் <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>-ன்கீழ் கிடைக்கிறது.
+      copyright_html: <a class="govuk-link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown காப்புரிமை</a>
+      licence_html: வேறுவகையில் குறிப்பிடப்படாதவரை அனைத்து உள்ளடக்கமும் <a class="govuk-link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>-ன்கீழ் கிடைக்கிறது.
       navigation_links:
       support_links: உதவி இணைப்புகள்
     layout_for_public:

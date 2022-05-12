@@ -83,8 +83,8 @@ da:
     intervention:
       accessible_link_text_suffix:
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Krown copyright</a>
-      licence_html: Alt indhold er tilgængeligt i henhold til <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">åben Forvaltning Licens v3.0</a>, medmindre andet er angivet.
+      copyright_html: <a class="govuk-link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Krown copyright</a>
+      licence_html: Alt indhold er tilgængeligt i henhold til <a class="govuk-link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">åben Forvaltning Licens v3.0</a>, medmindre andet er angivet.
       navigation_links:
       support_links: Støtte links
     layout_for_public:

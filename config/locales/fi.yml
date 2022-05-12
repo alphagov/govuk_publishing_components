@@ -84,8 +84,8 @@ fi:
     intervention:
       accessible_link_text_suffix:
     layout_footer:
-      copyright_html: <a class="govuk-footer__link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Kruunun tekijänoikeus</a>
-      licence_html: Kaikki sisältö on saatavilla osoitteessa <a class="govuk-footer__link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Avoimen hallinnon lisenssi v3.0</a>, ellei toisin mainita
+      copyright_html: <a class="govuk-link govuk-footer__copyright-logo" href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Kruunun tekijänoikeus</a>
+      licence_html: Kaikki sisältö on saatavilla osoitteessa <a class="govuk-link" href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Avoimen hallinnon lisenssi v3.0</a>, ellei toisin mainita
       navigation_links:
       support_links: Tukilinkit
     layout_for_public:
