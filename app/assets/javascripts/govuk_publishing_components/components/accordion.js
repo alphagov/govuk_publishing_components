@@ -131,7 +131,6 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
 
     if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
       window.GOVUK.analytics.trackEvent('pageElementInteraction', action, options)
-      console.log('pageElementInteraction', action, options)
     }
   }
 
