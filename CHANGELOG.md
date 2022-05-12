@@ -13,6 +13,7 @@
 * Update analytics logic for new browse page metatags ([PR #2778](https://github.com/alphagov/govuk_publishing_components/pull/2778))
 * Tracking changes for the footer ([PR #2774](https://github.com/alphagov/govuk_publishing_components/pull/2774))
 * Update Ukraine CTA in the contextual sidebar ([PR #2779](https://github.com/alphagov/govuk_publishing_components/pull/2779))
+* Small amends to sitewide menu ([PR #2776](https://github.com/alphagov/govuk_publishing_components/pull/2776))
 
 ## 29.9.0
 
