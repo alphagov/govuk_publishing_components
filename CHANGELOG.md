@@ -11,6 +11,7 @@
 
 - Add wrapper to the component card to ensure link spacing ([PR #2753](https://github.com/alphagov/govuk_publishing_components/pull/2753))
 - Add new logic for counting links/sections on a second level browse page on page view #2733 ([PR #2733](https://github.com/alphagov/govuk_publishing_components/pull/2733))
+* Update cross domain linking script to use init ([PR #2747](https://github.com/alphagov/govuk_publishing_components/pull/2747))
 
 ## 29.7.0
 
@@ -18,7 +19,6 @@
 * Fix JS bug in MagnaCharta for stacked charts ([PR #2731](https://github.com/alphagov/govuk_publishing_components/pull/2731))
 * Remove coronavirus topic from menu bar ([PR #2745](https://github.com/alphagov/govuk_publishing_components/pull/2745))
 * Realign list of topics in navigation header ([PR #2750](https://github.com/alphagov/govuk_publishing_components/pull/2750))
-* Update cross domain linking script to use init ([PR #2747](https://github.com/alphagov/govuk_publishing_components/pull/2747))
 
 ## 29.6.0
 
