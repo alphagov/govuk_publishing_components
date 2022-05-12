@@ -4,7 +4,11 @@
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 [![Stylelint Style Guide](https://img.shields.io/badge/code_style-stylelint-brightgreen.svg)](https://github.com/alphagov/stylelint-config-gds/)
 
-A Ruby gem to document and distribute components for GOV.UK applications. It provides:
+A Ruby gem to document and distribute components for GOV.UK applications. 
+
+It is built on top of the GOV.UK Frontend npm module from the GOV.UK Design System (none of which are part of the GOV.UK Programme but no one outside of GDS needs to know that!)
+
+It provides:
 
 - a shared library of components
 - helpers to generate component payloads
