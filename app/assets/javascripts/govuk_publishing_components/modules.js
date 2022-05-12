@@ -35,7 +35,6 @@
         for (var j = 0, k = moduleNames.length; j < k; j++) {
           var moduleName = camelCaseAndCapitalise(moduleNames[j])
           var started = element.getAttribute('data-' + moduleNames[j] + '-module-started')
-
           if (typeof GOVUK.Modules[moduleName] === 'function' && !started) {
             // Vanilla JavaScript GOV.UK Modules and GOV.UK Frontend Modules
             if (GOVUK.Modules[moduleName].prototype.init) {
