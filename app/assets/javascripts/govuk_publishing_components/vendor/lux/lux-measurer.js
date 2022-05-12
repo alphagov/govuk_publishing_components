@@ -157,3 +157,31 @@ if (
     LongTaskObserver.observe({ type: ["longtask"] });
   } catch (e) {}
 }
+
+// As per RFC 147[1], this adds in monitoring of the type of HTTP protocol that
+// is used when a browser loads a page.
+//
+// The User Timing API (aka window.performance) is used to record the data - to
+// avoid the use of this from breaking the JavaScript for the small number of
+// browsers that don't support it, it's been wrapped in a try/catch block plus a
+// couple of checks to prevent "is not defined" errors.
+//
+// Because the `nextHopProtocol` isn't immediately available - it seems to need
+// a request to be made before it's populated - we need to wait for the
+// `DOMContentReady` event before we can see what the HTTP version is.
+//
+// [1]: https://github.com/alphagov/govuk-rfcs/pull/148
+try {
+  if (typeof performance !== 'undefined') {
+    document.addEventListener('DOMContentLoaded', function () {
+      var getEntriesByType = performance.getEntriesByType('navigation')
+
+      if (getEntriesByType.length > 0) {
+        var httpProtocol = performance.getEntriesByType('navigation')[0].nextHopProtocol
+        LUX.addData("http-protocol", httpProtocol)
+      }
+    })
+  }
+} catch (e) {
+  console.error('Error in LUX reporting the HTTP protocol (' + window.location + '):', e)
+}

@@ -5,6 +5,7 @@
     "govuk_publishing_components/all_components-*.js",
     "govuk_publishing_components/modules-*.js",
     "govuk_publishing_components/analytics-*.js",
+    "govuk_publishing_components/vendor/lux/lux-measurer-*.js",
     "component_guide/accessibility-test-*.js",
     "component_guide/filter-components-*.js"
   ],
