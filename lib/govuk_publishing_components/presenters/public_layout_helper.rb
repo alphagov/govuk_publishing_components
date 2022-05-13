@@ -2,7 +2,7 @@ module GovukPublishingComponents
   module Presenters
     class PublicLayoutHelper
       FOOTER_NAVIGATION_COLUMNS = [2, 1].freeze
-
+      FOOTER_TRACK_ACTIONS = %w[topicsLink governmentActivityLink].freeze
       FOOTER_META = {
         items: [
           {
@@ -46,25 +46,44 @@ module GovukPublishingComponents
       attr_reader :footer_navigation, :footer_meta, :cookie_banner_data
 
       def initialize(local_assigns)
-        @footer_navigation = local_assigns[:footer_navigation] || I18n.t("components.layout_footer.navigation_links").each_with_index.map do |menu, i|
+        @footer_navigation = local_assigns[:footer_navigation] || navigation_link_generation_from_locale(I18n.t("components.layout_footer.navigation_links"))
+        @footer_meta = local_assigns[:footer_meta] || { items: add_data_attributes_to_links(FOOTER_META[:items], "supportLink") }
+        @cookie_banner_data = local_assigns[:cookie_banner_data] || {}
+      end
+
+      def navigation_link_generation_from_locale(links)
+        links.each_with_index.map do |menu, i|
           {
             title: menu[:title],
-            columns: FOOTER_NAVIGATION_COLUMNS[i],
-            items: menu[:menu_contents].map do |item|
-              item.merge({
-                attributes: {
-                  data: {
-                    track_category: "footerClicked",
-                    track_action: "footerLinks",
-                    track_label: item[:text],
-                  },
-                },
-              })
-            end,
+            columns: footer_navigation_columns[i],
+            items: add_data_attributes_to_links(menu[:menu_contents], footer_track_actions[i]),
           }
         end
-        @footer_meta = local_assigns[:footer_meta] || FOOTER_META
-        @cookie_banner_data = local_assigns[:cookie_banner_data] || {}
+      end
+
+      def footer_navigation_columns
+        FOOTER_NAVIGATION_COLUMNS
+      end
+
+      def footer_track_actions
+        FOOTER_TRACK_ACTIONS
+      end
+
+      def generate_data_attribute(link, track_action)
+        {
+          track_category: "footerClicked",
+          track_action: track_action,
+          track_label: link[:href],
+          track_options: {
+            dimension29: link[:text],
+          },
+        }
+      end
+
+      def add_data_attributes_to_links(items, track_action)
+        items.map do |item|
+          item.deep_merge({ attributes: { data: generate_data_attribute(item, track_action) } })
+        end
       end
     end
   end
