@@ -107,20 +107,19 @@
             <% if edit_link && delete_link %>
               <%= tag.dd class: "govuk-summary-list__actions" do %>
                 <%= tag.ul class: "govuk-summary-list__actions-list" do %>
-                  <% if item.fetch(:edit, {}).any? %>
+                  <% if edit_link %>
                     <%= tag.li class: "govuk-summary-list__actions-list-item" do %>
                       <%= edit_link %>
                     <% end %>
                   <% end %>
-                  <% if item.fetch(:delete, {}).any? %>
+                  <% if delete_link %>
                     <%= tag.li class: "govuk-summary-list__actions-list-item" do %>
                       <%= delete_link %>
                     <% end %>
                   <% end %>
                 <% end %>
               <% end %>
-            <% else %>
-            <% if edit_link || delete_link %>
+            <% elsif edit_link || delete_link %>
               <%= tag.dd class: "govuk-summary-list__actions" do %>
                 <%= edit_link %>
                 <%= delete_link %>
@@ -130,7 +129,7 @@
         <% end %>
       <% end %>
     <% end %>
-  <% end %>
+
     <%= tag.div block, class: "gem-c-summary__block" if block %>
     <% end %>
 <% end %>
