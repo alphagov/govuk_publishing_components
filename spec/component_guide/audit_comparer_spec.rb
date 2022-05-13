@@ -299,8 +299,12 @@ describe "Comparing data from an application with the components" do
             component: "component four",
             message: "Included in code but not javascripts",
           },
+          {
+            component: "component one",
+            message: "Included in stylesheets but already included in static",
+          },
         ],
-        warning_count: 2,
+        warning_count: 3,
         gem_style_references: [],
         jquery_references: [],
       },

@@ -32,11 +32,17 @@ module GovukPublishingComponents
     def find_static(results)
       results.each do |result|
         if result[:name] == "static" && result[:application_found] == true
-          return result
+          return clean_static(result)
         end
       end
 
       false
+    end
+
+    # turn static data into an object so locations can be easily referenced
+    # should give object of form { "templates" => [], "stylesheets" => [] }
+    def clean_static(data)
+      Hash[data[:components_found].map { |d| [d[:location], d[:components]] }]
     end
 
     def prettify_key(key)
@@ -66,6 +72,7 @@ module GovukPublishingComponents
           warnings << warn_about_missing_assets(result[:components_found])
           warnings << warn_about_style_overrides(result[:gem_style_references])
           warnings << warn_about_jquery_references(result[:jquery_references])
+          warnings << check_for_assets_already_in_static(result[:components_found]) if @static_data && application_uses_static
           warnings = warnings.flatten
 
           summary = [
@@ -150,7 +157,6 @@ module GovukPublishingComponents
             raise_warning = asset_in_gem && !asset_in_static
 
             # this raises a warning if the asset exists and isn't included either in the application or static
-            # TODO: raise a warning if the asset is in the application and static, as its therefore not needed in the application
             warnings << create_warning(component, "Included in #{first_location} but not #{second_location}") if raise_warning
           end
         end
@@ -160,11 +166,24 @@ module GovukPublishingComponents
     end
 
     def asset_already_in_static(location, component)
-      @static_data[:components_found].each do |component_found|
-        return true if component_found[:location] == location && component_found[:components].include?(component)
-      end
+      return true if @static_data[location].include?(component)
 
       false
+    end
+
+    def check_for_assets_already_in_static(locations)
+      warnings = []
+
+      locations.each do |location|
+        next if location[:location] == "templates" || location[:location] == "ruby"
+
+        location[:components].each do |component|
+          raise_warning = asset_already_in_static(location[:location], component)
+          warnings << create_warning(component, "Included in #{location[:location]} but already included in static") if raise_warning
+        end
+      end
+
+      warnings
     end
 
     def warn_about_missing_assets(components)
