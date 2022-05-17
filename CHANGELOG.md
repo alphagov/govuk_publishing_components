@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update LUX to v301 ([PR #2773](https://github.com/alphagov/govuk_publishing_components/pull/2773))
+
 ## 29.8.0
 
 * Add GTM analytics click tracking ([PR #2760](https://github.com/alphagov/govuk_publishing_components/pull/2760))

@@ -41,6 +41,7 @@
       maxErrors: getProperty(obj, "maxErrors", 5),
       maxMeasureTime: getProperty(obj, "maxMeasureTime", 60000),
       measureUntil: getProperty(obj, "measureUntil", "onload"),
+      minMeasureTime: getProperty(obj, "minMeasureTime", 0),
       samplerate: getProperty(obj, "samplerate", 100),
       sendBeaconOnPageHidden: getProperty(obj, "sendBeaconOnPageHidden", autoMode),
       trackErrors: getProperty(obj, "trackErrors", true),
@@ -63,6 +64,9 @@
     AddDataCalled: 6,
     SendCalled: 7,
     ForceSampleCalled: 8,
+    DataCollectionStart: 9,
+    UnloadHandlerTriggered: 10,
+    OnloadHandlerTriggered: 11,
     // Data collection events
     SessionIsSampled: 21,
     SessionIsNotSampled: 22,
@@ -70,6 +74,10 @@
     UserTimingBeaconSent: 24,
     InteractionBeaconSent: 25,
     CustomDataBeaconSent: 26,
+    // Metric information
+    NavigationStart: 41,
+    PerformanceEntryReceived: 42,
+    PerformanceEntryProcessed: 43,
     // Errors
     PerformanceObserverError: 51,
     InputEventPermissionError: 52,
@@ -82,7 +90,7 @@
     NavTimingNotSupported: 71,
     PaintTimingNotSupported: 72,
   };
-  var Logger = (function () {
+  var Logger = /** @class */ (function () {
     function Logger() {
       this.events = [];
     }
@@ -90,7 +98,7 @@
       if (args === void 0) {
         args = [];
       }
-      this.events.push([new Date(), event, args]);
+      this.events.push([now(), event, args]);
     };
     Logger.prototype.getEvents = function () {
       return this.events;
@@ -113,7 +121,34 @@
     return flags | flag;
   }
 
+  // If the various performance APIs aren't available, we export an empty object to
+  // prevent having to make regular typeof checks.
+  var performance = window.performance || {};
+  var timing = performance.timing || {};
+  /**
+   * Simple wrapper around performance.getEntriesByType to provide fallbacks for
+   * legacy browsers, and work around edge cases where undefined is returned instead
+   * of an empty PerformanceEntryList.
+   */
+  function getEntriesByType(type) {
+    if (typeof performance.getEntriesByType === "function") {
+      var entries = performance.getEntriesByType(type);
+      if (entries && entries.length) {
+        return entries;
+      }
+    } else if (typeof performance.webkitGetEntriesByType === "function") {
+      var entries = performance.webkitGetEntriesByType(type);
+      if (entries && entries.length) {
+        return entries;
+      }
+    }
+    return [];
+  }
+
   var LUX = window.LUX || {};
+  // Get a timestamp as close to navigationStart as possible.
+  var _navigationStart = LUX.ns ? LUX.ns : now();
+  var LUX_t_end = LUX_t_start;
   LUX = (function () {
     // -------------------------------------------------------------------------
     // Settings
@@ -124,7 +159,7 @@
     /// End
     // -------------------------------------------------------------------------
 
-    var SCRIPT_VERSION = "300";
+    var SCRIPT_VERSION = "301";
     var logger = new Logger();
     var userConfig = fromObject(LUX);
     logger.logEvent(LogEvent.EvaluationStart, [SCRIPT_VERSION]);
@@ -137,17 +172,13 @@
       nErrors++;
       if (
         e &&
-        "undefined" !== typeof e.filename &&
-        "undefined" !== typeof e.message
+        typeof e.filename !== "undefined" &&
+        typeof e.message !== "undefined"
       ) {
-        // it is a valid error object
-        if (
-          -1 !== e.filename.indexOf("/lux.js?") ||
-          -1 !== e.message.indexOf("LUX") || // Always send LUX errors.
-          (nErrors <= userConfig.maxErrors &&
-            "function" === typeof _sample &&
-            _sample())
-        ) {
+        // Always send LUX errors
+        var isLuxError =
+          e.filename.indexOf("/lux.js?") > -1 || e.message.indexOf("LUX") > -1;
+        if (isLuxError || (nErrors <= userConfig.maxErrors && _sample())) {
           // Sample & limit other errors.
           // Send the error beacon.
           new Image().src =
@@ -184,8 +215,8 @@
     var gaPerfEntries = gaSnippetLongTasks.slice(); // array of Long Tasks (prefer the array from the snippet)
     if (typeof PerformanceObserver === "function") {
       var perfObserver = new PerformanceObserver(function (list) {
-        // Keep an array of perf objects to process later.
         list.getEntries().forEach(function (entry) {
+          logger.logEvent(LogEvent.PerformanceEntryReceived, [entry]);
           // Only record long tasks that weren't already recorded by the PerformanceObserver in the snippet
           if (
             entry.entryType !== "longtask" ||
@@ -237,24 +268,23 @@
     var gSyncId = createSyncId(); // if we send multiple beacons, use this to sync them (eg, LUX & IX) (also called "luxid")
     var gUid = refreshUniqueId(gSyncId); // cookie for this session ("Unique ID")
     var gCustomerDataTimeout; // setTimeout timer for sending a Customer Data beacon after onload
-    var perf = window.performance;
+    var gMaxMeasureTimeout; // setTimeout timer for sending the beacon after a maximum measurement time
     var gMaxQuerystring = 8190; // split the beacon querystring if it gets longer than this
     if (_sample()) {
       logger.logEvent(LogEvent.SessionIsSampled, [userConfig.samplerate]);
     } else {
       logger.logEvent(LogEvent.SessionIsNotSampled, [userConfig.samplerate]);
     }
-    // Get a timestamp as close to navigationStart as possible.
-    var _navigationStart = LUX.ns ? LUX.ns : now(); // create a _navigationStart
     var gLuxSnippetStart = 0;
-    if (perf && perf.timing && perf.timing.navigationStart) {
-      _navigationStart = perf.timing.navigationStart;
+    if (timing.navigationStart) {
+      _navigationStart = timing.navigationStart;
       // Record when the LUX snippet was evaluated relative to navigationStart.
       gLuxSnippetStart = LUX.ns ? LUX.ns - _navigationStart : 0;
     } else {
       logger.logEvent(LogEvent.NavTimingNotSupported);
       gFlags = addFlag(gFlags, Flags.NavTimingNotSupported);
     }
+    logger.logEvent(LogEvent.NavigationStart, [_navigationStart]);
     ////////////////////// FID BEGIN
     // FIRST INPUT DELAY (FID)
     // The basic idea behind FID is to attach various input event listeners and measure the time
@@ -351,16 +381,15 @@
      * in SPAs.
      */
     function _now(absolute) {
-      var currentTimestamp = Date.now ? Date.now() : +new Date();
-      var msSinceNavigationStart = currentTimestamp - _navigationStart;
+      var msSinceNavigationStart = now() - _navigationStart;
       var startMark = _getMark(gStartMark);
       // For SPA page views, we use our internal mark as a reference point
       if (startMark && !absolute) {
         return msSinceNavigationStart - startMark.startTime;
       }
       // For "regular" page views, we can use performance.now() if it's available...
-      if (perf && perf.now) {
-        return perf.now();
+      if (performance.now) {
+        return performance.now();
       }
       // ... or we can use navigationStart as a reference point
       return msSinceNavigationStart;
@@ -369,12 +398,10 @@
     // NOTE: It's possible to set multiple marks with the same name.
     function _mark(name) {
       logger.logEvent(LogEvent.MarkCalled, [name]);
-      if (perf) {
-        if (perf.mark) {
-          return perf.mark(name);
-        } else if (perf.webkitMark) {
-          return perf.webkitMark(name);
-        }
+      if (performance.mark) {
+        return performance.mark(name);
+      } else if (performance.webkitMark) {
+        return performance.webkitMark(name);
       }
       gFlags = addFlag(gFlags, Flags.UserTimingNotSupported);
       // Shim
@@ -395,26 +422,24 @@
         startMarkName,
         endMarkName,
       ]);
-      if ("undefined" === typeof startMarkName && _getMark(gStartMark)) {
+      if (typeof startMarkName === "undefined" && _getMark(gStartMark)) {
         // If a start mark is not specified, but the user has called _init() to set a new start,
         // then use the new start base time (similar to navigationStart) as the start mark.
         startMarkName = gStartMark;
       }
-      if (perf) {
-        if (perf.measure) {
-          // IE 11 does not handle null and undefined correctly
-          if (startMarkName) {
-            if (endMarkName) {
-              return perf.measure(name, startMarkName, endMarkName);
-            } else {
-              return perf.measure(name, startMarkName);
-            }
+      if (performance.measure) {
+        // IE 11 does not handle null and undefined correctly
+        if (startMarkName) {
+          if (endMarkName) {
+            return performance.measure(name, startMarkName, endMarkName);
           } else {
-            return perf.measure(name);
+            return performance.measure(name, startMarkName);
           }
-        } else if (perf.webkitMeasure) {
-          return perf.webkitMeasure(name, startMarkName, endMarkName);
+        } else {
+          return performance.measure(name);
         }
+      } else if (performance.webkitMeasure) {
+        return performance.webkitMeasure(name, startMarkName, endMarkName);
       }
       // shim:
       var startTime = 0,
@@ -423,9 +448,9 @@
         var startMark = _getMark(startMarkName);
         if (startMark) {
           startTime = startMark.startTime;
-        } else if (perf && perf.timing && perf.timing[startMarkName]) {
+        } else if (timing[startMarkName]) {
           // the mark name can also be a property from Navigation Timing
-          startTime = perf.timing[startMarkName] - perf.timing.navigationStart;
+          startTime = timing[startMarkName] - timing.navigationStart;
         } else {
           throw new DOMException(
             "Failed to execute 'measure' on 'Performance': The mark '".concat(
@@ -439,9 +464,9 @@
         var endMark = _getMark(endMarkName);
         if (endMark) {
           endTime = endMark.startTime;
-        } else if (perf && perf.timing && perf.timing[endMarkName]) {
+        } else if (timing[endMarkName]) {
           // the mark name can also be a property from Navigation Timing
-          endTime = perf.timing[endMarkName] - perf.timing.navigationStart;
+          endTime = timing[endMarkName] - timing.navigationStart;
         } else {
           throw new DOMException(
             "Failed to execute 'measure' on 'Performance': The mark '".concat(
@@ -479,23 +504,17 @@
     }
     // Return an array of marks.
     function _getMarks() {
-      if (perf) {
-        if (perf.getEntriesByType) {
-          return perf.getEntriesByType("mark");
-        } else if (perf.webkitGetEntriesByType) {
-          return perf.webkitGetEntriesByType("mark");
-        }
+      var marks = getEntriesByType("mark");
+      if (marks.length) {
+        return marks;
       }
       return gaMarks;
     }
     // Return an array of measures.
     function _getMeasures() {
-      if (perf) {
-        if (perf.getEntriesByType) {
-          return perf.getEntriesByType("measure");
-        } else if (perf.webkitGetEntriesByType) {
-          return perf.webkitGetEntriesByType("measure");
-        }
+      var measures = getEntriesByType("measure");
+      if (measures.length) {
+        return measures;
       }
       return gaMeasures;
     }
@@ -568,6 +587,7 @@
         for (var i = 0; i < gaPerfEntries.length; i++) {
           var pe = gaPerfEntries[i];
           if ("element" === pe.entryType && pe.identifier && pe.startTime) {
+            logger.logEvent(LogEvent.PerformanceEntryProcessed, [pe]);
             aET.push(pe.identifier + "|" + Math.round(pe.startTime));
           }
         }
@@ -576,7 +596,7 @@
     }
     // Return a string of CPU times formatted for beacon querystring.
     function cpuTimes() {
-      if ("function" !== typeof PerformanceLongTaskTiming) {
+      if (typeof PerformanceLongTaskTiming !== "function") {
         // Do not return any CPU metrics if Long Tasks API is not supported.
         return "";
       }
@@ -591,7 +611,7 @@
         var tZero = startMark ? startMark.startTime : 0;
         // Do not include Long Tasks that start after the page is done.
         // For full page loads, "done" is loadEventEnd.
-        var tEnd = perf.timing.loadEventEnd - perf.timing.navigationStart;
+        var tEnd = timing.loadEventEnd - timing.navigationStart;
         if (startMark) {
           // For SPA page loads (determined by the presence of a start mark), "done" is gEndMark.
           var endMark = _getMark(gEndMark);
@@ -614,6 +634,7 @@
             // callback from setTimeout(200) happened. Do not include anything that started after tEnd.
             continue;
           }
+          logger.logEvent(LogEvent.PerformanceEntryProcessed, [p]);
           var type = p.attribution[0].name; // TODO - is there ever more than 1 attribution???
           if (!hCPU[type]) {
             // initialize this category
@@ -626,8 +647,8 @@
         }
       }
       // TODO - Add more types if/when they become available.
-      var jsType = "undefined" !== typeof hCPU["script"] ? "script" : "unknown"; // spec changed from "script" to "unknown" Nov 2018
-      if ("undefined" === typeof hCPU[jsType]) {
+      var jsType = typeof hCPU["script"] !== "undefined" ? "script" : "unknown"; // spec changed from "script" to "unknown" Nov 2018
+      if (typeof hCPU[jsType] === "undefined") {
         // Initialize default values for pages that have *no Long Tasks*.
         hCPU[jsType] = 0;
         hCPUDetails[jsType] = "";
@@ -681,7 +702,7 @@
       return { count: count, median: median, max: max, fci: fci };
     }
     function calculateDCLS() {
-      if ("function" !== typeof LayoutShift) {
+      if (typeof LayoutShift !== "function") {
         return false;
       }
       var DCLS = 0;
@@ -690,6 +711,7 @@
         if ("layout-shift" !== p.entryType || p.hadRecentInput) {
           continue;
         }
+        logger.logEvent(LogEvent.PerformanceEntryProcessed, [p]);
         DCLS += p.value;
       }
       // The DCL column in Redshift is REAL (FLOAT4) which stores a maximum
@@ -716,11 +738,11 @@
     // Track how long it took lux.js to load via Resource Timing.
     function selfLoading() {
       var sLuxjs = "";
-      if (perf && perf.getEntriesByName) {
+      if (performance.getEntriesByName) {
         // Get the lux script URL (including querystring params).
         var luxScript = getScriptElement("/js/lux.js");
         if (luxScript) {
-          var aResources = perf.getEntriesByName(luxScript.src);
+          var aResources = performance.getEntriesByName(luxScript.src);
           if (aResources && aResources.length) {
             var r = aResources[0];
             // DO NOT USE DURATION!!!!!
@@ -799,8 +821,8 @@
     // Return true if beacons for this page should be sampled.
     function _sample() {
       if (
-        "undefined" === typeof gUid ||
-        "undefined" === typeof userConfig.samplerate
+        typeof gUid === "undefined" ||
+        typeof userConfig.samplerate === "undefined"
       ) {
         return false; // bail
       }
@@ -851,6 +873,8 @@
       gFlags = addFlag(gFlags, Flags.InitCalled);
       // Mark the "navigationStart" for this SPA page.
       _mark(gStartMark);
+      // Reset the maximum measure timeout
+      createMaxMeasureTimeout();
     }
     // Return the number of blocking (synchronous) external scripts in the page.
     function blockingScripts() {
@@ -891,7 +915,7 @@
             e.onloadcssdefined ||
             "print" === e.media ||
             "style" === e.as ||
-            ("function" === typeof e.onload && "all" === e.media)
+            (typeof e.onload === "function" && e.media === "all")
           );
           else {
             nBlocking++;
@@ -971,9 +995,9 @@
           "le" +
           end +
           "";
-      } else if (perf && perf.timing) {
+      } else if (performance.timing) {
         // Return the real Nav Timing metrics because this is the "main" page view (not a SPA)
-        var t = perf.timing;
+        var t = timing;
         var startRender = getStartRender(); // first paint
         var fcp = getFcp(); // first contentful paint
         var lcp = getLcp(); // largest contentful paint
@@ -1024,20 +1048,11 @@
     }
     // Return First Contentful Paint or zero if not supported.
     function getFcp() {
-      if (
-        perf &&
-        perf.getEntriesByType &&
-        perf.getEntriesByType("paint").length
-      ) {
-        for (
-          var arr = perf.getEntriesByType("paint"), i = 0;
-          i < arr.length;
-          i++
-        ) {
-          var ppt = arr[i]; // PerformancePaintTiming object
-          if ("first-contentful-paint" === ppt.name) {
-            return Math.round(ppt.startTime);
-          }
+      var paintEntries = getEntriesByType("paint");
+      for (var i = 0; i < paintEntries.length; i++) {
+        var entry = paintEntries[i];
+        if (entry.name === "first-contentful-paint") {
+          return Math.round(entry.startTime);
         }
       }
       return 0;
@@ -1049,6 +1064,7 @@
         for (var i = gaPerfEntries.length - 1; i >= 0; i--) {
           var pe = gaPerfEntries[i];
           if ("largest-contentful-paint" === pe.entryType) {
+            logger.logEvent(LogEvent.PerformanceEntryProcessed, [pe]);
             return Math.round(pe.startTime);
           }
         }
@@ -1059,31 +1075,24 @@
     // Mostly works on just Chrome and IE.
     // Return null if not supported.
     function getStartRender() {
-      if (perf && perf.timing) {
-        var t = perf.timing;
+      if (performance.timing) {
+        var t = timing;
         var ns = t.navigationStart;
         var startRender = void 0;
         if (ns) {
-          if (
-            perf &&
-            perf.getEntriesByType &&
-            perf.getEntriesByType("paint").length
-          ) {
+          var paintEntries = getEntriesByType("paint");
+          if (paintEntries.length) {
             // If Paint Timing API is supported, use it.
-            for (
-              var arr = perf.getEntriesByType("paint"), i = 0;
-              i < arr.length;
-              i++
-            ) {
-              var ppt = arr[i]; // PerformancePaintTiming object
-              if ("first-paint" === ppt.name) {
-                startRender = Math.round(ppt.startTime);
+            for (var i = 0; i < paintEntries.length; i++) {
+              var entry = paintEntries[i];
+              if (entry.name === "first-paint") {
+                startRender = Math.round(entry.startTime);
                 break;
               }
             }
           } else if (
             window.chrome &&
-            "function" === typeof window.chrome.loadTimes
+            typeof window.chrome.loadTimes === "function"
           ) {
             // If chrome, get first paint time from `chrome.loadTimes`. Need extra error handling.
             var loadTimes = window.chrome.loadTimes();
@@ -1094,9 +1103,9 @@
             // If IE/Edge, use the prefixed `msFirstPaint` property (see http://msdn.microsoft.com/ff974719).
             startRender = Math.round(t.msFirstPaint - ns);
           }
-          if (startRender) {
-            return startRender;
-          }
+        }
+        if (startRender) {
+          return startRender;
         }
       }
       logger.logEvent(LogEvent.PaintTimingNotSupported);
@@ -1185,15 +1194,9 @@
     }
     // Return the main HTML document transfer size (in bytes).
     function docSize() {
-      if (
-        perf &&
-        perf.getEntriesByType &&
-        perf.getEntriesByType("navigation").length
-      ) {
-        var aEntries = performance.getEntriesByType("navigation");
-        if (aEntries && aEntries.length > 0 && aEntries[0]["encodedBodySize"]) {
-          return aEntries[0]["encodedBodySize"];
-        }
+      var aEntries = getEntriesByType("navigation");
+      if (aEntries.length && aEntries[0]["encodedBodySize"]) {
+        return aEntries[0]["encodedBodySize"];
       }
       return 0; // ERROR - NOT FOUND
     }
@@ -1201,11 +1204,10 @@
     // Return empty string if not available.
     function navigationType() {
       if (
-        perf &&
-        perf.navigation &&
-        "undefined" != typeof perf.navigation.type
+        performance.navigation &&
+        typeof performance.navigation.type !== "undefined"
       ) {
-        return perf.navigation.type;
+        return performance.navigation.type;
       }
       return "";
     }
@@ -1310,19 +1312,31 @@
     function _markLoadTime() {
       _mark(gEndMark);
     }
+    function createMaxMeasureTimeout() {
+      clearMaxMeasureTimeout();
+      gMaxMeasureTimeout = window.setTimeout(function () {
+        gFlags = addFlag(gFlags, Flags.BeaconSentAfterTimeout);
+        _sendLux();
+      }, userConfig.maxMeasureTime - _now());
+    }
+    function clearMaxMeasureTimeout() {
+      if (gMaxMeasureTimeout) {
+        clearTimeout(gMaxMeasureTimeout);
+      }
+    }
     // Beacon back the LUX data.
     function _sendLux() {
-      logger.logEvent(LogEvent.SendCalled);
+      clearMaxMeasureTimeout();
       var customerid = getCustomerId();
       if (
         !customerid ||
         !gSyncId ||
-        !validDomain() ||
         !_sample() || // OUTSIDE the sampled range
         gbLuxSent // LUX data already sent
       ) {
         return;
       }
+      logger.logEvent(LogEvent.DataCollectionStart);
       var startMark = _getMark(gStartMark);
       var endMark = _getMark(gEndMark);
       if (!startMark || (endMark && endMark.startTime < startMark.startTime)) {
@@ -1472,7 +1486,6 @@
       if (
         !customerid ||
         !gSyncId ||
-        !validDomain() ||
         !_sample() || // OUTSIDE the sampled range
         gbIxSent || // IX data already sent
         !gbLuxSent // LUX has NOT been sent yet, so wait to include it there
@@ -1514,7 +1527,6 @@
       if (
         !customerid ||
         !gSyncId ||
-        !validDomain() ||
         !_sample() || // OUTSIDE the sampled range
         !gbLuxSent // LUX has NOT been sent yet, so wait to include it there
       ) {
@@ -1599,14 +1611,14 @@
     function _scrollHandler() {
       // Leave handlers IN PLACE so we can track which ID is clicked/keyed.
       // _removeIxHandlers();
-      if ("undefined" === typeof ghIx["s"]) {
+      if (typeof ghIx["s"] === "undefined") {
         ghIx["s"] = Math.round(_now());
         // _sendIx(); // wait for key or click to send the IX beacon
       }
     }
     function _keyHandler(e) {
       _removeIxHandlers();
-      if ("undefined" === typeof ghIx["k"]) {
+      if (typeof ghIx["k"] === "undefined") {
         ghIx["k"] = Math.round(_now());
         if (e && e.target) {
           var trackId = interactionAttributionForElement(e.target);
@@ -1619,7 +1631,7 @@
     }
     function _clickHandler(e) {
       _removeIxHandlers();
-      if ("undefined" === typeof ghIx["c"]) {
+      if (typeof ghIx["c"] === "undefined") {
         ghIx["c"] = Math.round(_now());
         var target = null;
         try {
@@ -1672,6 +1684,7 @@
     function _addUnloadHandlers() {
       var onunload = function () {
         gFlags = addFlag(gFlags, Flags.BeaconSentFromUnloadHandler);
+        logger.logEvent(LogEvent.UnloadHandlerTriggered);
         _sendLux();
         _sendIx();
       };
@@ -1775,14 +1788,6 @@
       gFlags = addFlag(gFlags, Flags.PageLabelFromDocumentTitle);
       return document.title;
     }
-    // Return true if the hostname of the current page is one of the listed domains.
-    function validDomain() {
-      // Our signup process is such that a customer almost always deploys lux.js BEFORE we
-      // enable LUX for their account. In which case, the list of domains is empty and no
-      // beacons will be sent. Further, that version of lux.js will be cached at the CDN
-      // and browser for a week. Instead, do the domain validation on the backend in VCL.
-      return true;
-    }
     function _getCookie(name) {
       try {
         // Seeing "Permission denied" errors, so do a simple try-catch.
@@ -1818,15 +1823,29 @@
     // Set "LUX.auto=false" to disable send results automatically and
     // instead you must call LUX.send() explicitly.
     if (userConfig.auto) {
-      if (document.readyState === "complete") {
-        // If onload has already passed, send the beacon now.
-        _sendLux();
-      } else {
-        // Ow, send the beacon slightly after window.onload.
-        addListener("load", function () {
-          setTimeout(_sendLux, 200);
-        });
-      }
+      var sendBeaconAfterMinimumMeasureTime_1 = function () {
+        var elapsedTime = _now();
+        var timeRemaining = userConfig.minMeasureTime - elapsedTime;
+        if (timeRemaining <= 0) {
+          logger.logEvent(LogEvent.OnloadHandlerTriggered, [
+            elapsedTime,
+            userConfig.minMeasureTime,
+          ]);
+          if (document.readyState === "complete") {
+            // If onload has already passed, send the beacon now.
+            _sendLux();
+          } else {
+            // Ow, send the beacon slightly after window.onload.
+            addListener("load", function () {
+              setTimeout(_sendLux, 200);
+            });
+          }
+        } else {
+          // Try again after the minimum measurement time has elapsed
+          setTimeout(sendBeaconAfterMinimumMeasureTime_1, timeRemaining);
+        }
+      };
+      sendBeaconAfterMinimumMeasureTime_1();
     }
     // Add the unload handlers for auto mode, or when LUX.measureUntil is "pagehidden"
     if (userConfig.sendBeaconOnPageHidden) {
@@ -1834,6 +1853,8 @@
     }
     // Regardless of userConfig.auto, we need to register the IX handlers immediately.
     _addIxHandlers();
+    // Set the maximum measurement timer
+    createMaxMeasureTimeout();
     // This is the public API.
     var _LUX = userConfig;
     // Functions
@@ -1841,7 +1862,10 @@
     _LUX.measure = _measure;
     _LUX.init = _init;
     _LUX.markLoadTime = _markLoadTime;
-    _LUX.send = _sendLux;
+    _LUX.send = function () {
+      logger.logEvent(LogEvent.SendCalled);
+      _sendLux();
+    };
     _LUX.addData = _addData;
     _LUX.getSessionId = _getUniqueId; // so customers can do their own sampling
     _LUX.getDebug = function () {
@@ -1883,7 +1907,7 @@
     return _LUX;
   })();
   window.LUX = LUX;
-  var LUX_t_end = now();
+  LUX_t_end = now();
 
   // ---------------------------------------------------------------------------
   // More settings
