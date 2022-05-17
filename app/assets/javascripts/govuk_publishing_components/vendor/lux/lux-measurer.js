@@ -171,16 +171,25 @@ if (
 // `DOMContentReady` event before we can see what the HTTP version is.
 //
 // [1]: https://github.com/alphagov/govuk-rfcs/pull/148
-try {
-  if (typeof performance !== 'undefined') {
-    document.addEventListener('DOMContentLoaded', function () {
-      var getEntriesByType = performance.getEntriesByType('navigation')
 
-      if (getEntriesByType.length > 0) {
-        var httpProtocol = performance.getEntriesByType('navigation')[0].nextHopProtocol
-        LUX.addData("http-protocol", httpProtocol)
-      }
-    })
+var measureHTTPProtocol = function () {
+  var getEntriesByType = performance.getEntriesByType('navigation')
+
+  if (getEntriesByType.length > 0) {
+    var httpProtocol = JSON.parse(JSON.stringify(performance.getEntriesByType('navigation')[0].nextHopProtocol))
+    LUX.addData("http-protocol", httpProtocol)
+  }
+}
+
+try {
+  if (typeof performance !== 'undefined' && typeof performance.getEntriesByType !== 'undefined') {
+    if (document.readyState === 'complete') {
+      measureHTTPProtocol()
+    } else {
+      window.addEventListener('load', function() {
+        measureHTTPProtocol()
+      })
+    }
   }
 } catch (e) {
   console.error('Error in LUX reporting the HTTP protocol (' + window.location + '):', e)
