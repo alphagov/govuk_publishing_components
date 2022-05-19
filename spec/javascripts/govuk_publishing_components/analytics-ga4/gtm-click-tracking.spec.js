@@ -98,6 +98,50 @@ describe('Google Tag Manager click tracking', function () {
         'test-3-1': 'test 3-1 value',
         'test-3-2': 'test 3-2 value'
       }
+      element.setAttribute('data-gtm-event-name', 'event3-name')
+      element.setAttribute('data-gtm-attributes', JSON.stringify(attributes))
+      element.setAttribute('aria-expanded', 'false')
+      document.body.appendChild(element)
+      new GOVUK.Modules.GtmClickTracking(element).init()
+    })
+
+    it('includes the expanded state in the gtm attributes', function () {
+      element.click()
+
+      var expectedFirst = {
+        event: 'analytics',
+        event_name: 'event3-name',
+        link_url: window.location.href.substring(window.location.origin.length),
+        ui: {
+          'test-3-1': 'test 3-1 value',
+          'test-3-2': 'test 3-2 value',
+          state: 'opened'
+        }
+      }
+      expect(window.dataLayer).toEqual([expectedFirst])
+
+      var expectedSecond = {
+        event: 'analytics',
+        event_name: 'event3-name',
+        link_url: window.location.href.substring(window.location.origin.length),
+        ui: {
+          'test-3-1': 'test 3-1 value',
+          'test-3-2': 'test 3-2 value',
+          state: 'closed'
+        }
+      }
+      element.setAttribute('aria-expanded', 'true')
+      element.click()
+      expect(window.dataLayer).toEqual([expectedFirst, expectedSecond])
+    })
+  })
+
+  describe('doing tracking on an element that contains an expandable element', function () {
+    beforeEach(function () {
+      var attributes = {
+        'test-3-1': 'test 3-1 value',
+        'test-3-2': 'test 3-2 value'
+      }
       element.innerHTML =
         '<div data-gtm-event-name="event3-name"' +
           'data-gtm-attributes=\'' + JSON.stringify(attributes) + '\'' +

@@ -38,10 +38,15 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
   }
 
+  // check either element is expandable or contains expandable element
   GtmClickTracking.prototype.checkExpandedState = function (clicked) {
-    var expanded = clicked.querySelector('[aria-expanded]')
-    if (expanded) {
-      return expanded.getAttribute('aria-expanded')
+    var isExpandable = clicked.getAttribute('aria-expanded')
+    var containsExpandable = clicked.querySelector('[aria-expanded]')
+
+    if (isExpandable) {
+      return isExpandable
+    } else if (containsExpandable) {
+      return containsExpandable.getAttribute('aria-expanded')
     }
   }
 
