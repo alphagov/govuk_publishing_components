@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 29.9.0
 
 * Update LUX to v301 ([PR #2773](https://github.com/alphagov/govuk_publishing_components/pull/2773))
 * Fix http protocol reporting in Safari ([PR #2781](https://github.com/alphagov/govuk_publishing_components/pull/2781))
