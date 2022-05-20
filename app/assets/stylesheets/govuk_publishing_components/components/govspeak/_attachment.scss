@@ -37,7 +37,8 @@
       margin-left: -($thumbnail-width + govuk-spacing(6) - $govuk-border-width);
       padding-bottom: govuk-spacing(3);
 
-      img {
+      img,
+      svg {
         display: block;
         width: $thumbnail-width;
         height: 140px;
@@ -55,6 +56,11 @@
         }
 
         box-shadow: 0 2px 2px rgba(govuk-colour("black"), .4);
+      }
+
+      svg {
+        fill: govuk-colour("mid-grey", $legacy: "grey-3");
+        stroke: govuk-colour("mid-grey", $legacy: "grey-3");
       }
     }
 
