@@ -277,13 +277,13 @@ examples:
             html: <p class="govuk-body">This is the content for How people read.</p>
   with_the_anchor_link_navigation:
     description: |
-      Some apps require custom `id`s per accordion section heading. Custom `id`s allow you to link section headings, sometimes across multiple pages. 
-      
+      Some apps require custom `id`s per accordion section heading. Custom `id`s allow you to link section headings, sometimes across multiple pages.
+
       For example on [guidance pages for Content Designers, referred to as "manuals",](https://www.gov.uk/guidance/how-to-publish-on-gov-uk/creating-and-updating-pages#associations) each manual includes multiple sets of accordions and will reference between specific sections to easily access content.
 
-      Using the same rules, custom `id`s automatically open accordions when users click within another accordion that links to either 
+      Using the same rules, custom `id`s automatically open accordions when users click within another accordion that links to either
 
-      * the `id` of an accordion section heading 
+      * the `id` of an accordion section heading
       * an `id` within the content of an accordion (this will also automatically navigate to and open accordions on page load)
 
       This feature will only be used if the `anchor_navigation` flag is passed as `true`. This mitigates performance risk from event listeners on a large number of links.
@@ -294,13 +294,13 @@ examples:
       items:
         - heading:
             text: Writing well for the web
-            id: writing-well-for-the-web
+            id: writing-well-for-the-web-1
           content:
-            html: <p class="govuk-body">This is content for accordion 1 of 2</p><p class="govuk-body">This content contains a <a href="#anchor-nav-test" class="govuk-link">link</a></p>
+            html: <p class="govuk-body">This is content for accordion 1 of 2</p><p class="govuk-body">This content contains a <a href="#anchor-nav-test-1" class="govuk-link">link</a></p>
         - heading:
             text: Writing well for specialists
           content:
-            html: <p class="govuk-body" id="anchor-nav-test">This is content for accordion 2 of 2</p>
+            html: <p class="govuk-body" id="anchor-nav-test-1">This is content for accordion 2 of 2</p>
         - heading:
             text: Know your audience
           content:
@@ -312,31 +312,31 @@ examples:
   with_track_show_all_clicks:
     description: |
       To switch on Google Analytics for the "Show all sections" button on click, pass `track_show_all_clicks: true` the values passed on open will be
-      `Event Action: accordionOpened` `Event Category: pageElementInteraction` `Event Label: Show all sections` 
+      `Event Action: accordionOpened` `Event Category: pageElementInteraction` `Event Label: Show all sections`
     data:
       track_show_all_clicks: true
       items:
         - heading:
             text: Writing well for the web
-            id: writing-well-for-the-web
+            id: writing-well-for-the-web-2
           content:
-            html: <p class="govuk-body">This is content for accordion 1 of 2</p><p class="govuk-body">This content contains a <a href="#anchor-nav-test" class="govuk-link">link</a></p>
+            html: <p class="govuk-body">This is content for accordion 1 of 2</p>
         - heading:
             text: Writing well for specialists
           content:
-            html: <p class="govuk-body" id="anchor-nav-test">This is content for accordion 2 of 2</p>
+            html: <p class="govuk-body">This is content for accordion 2 of 2</p>
   with_track_sections:
     description: |
       To switch on Google Analytics for each section, on click, pass `track_sections: true` the values passed on open will be
       `Event Action: accordionOpened` / `accordionClosed` `Event Category: pageElementInteraction` and the `Event Label` being the heading text.
-      
+
       (`track_show_all_clicks: true` can be added to track the "Show all sections" button as well, if required)
     data:
       track_sections: true
       items:
         - heading:
             text: Writing well for the web
-            id: writing-well-for-the-web
+            id: writing-well-for-the-web-3
           content:
             html: <p class="govuk-body">This is content for accordion 1 of 2</p><p class="govuk-body">This content contains a <a href="#anchor-nav-test" class="govuk-link">link</a></p>
         - heading:
