@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Update analytics logic for new browse page metatags ([PR #2778](https://github.com/alphagov/govuk_publishing_components/pull/2778))
 * Tracking changes for the footer ([PR #2774](https://github.com/alphagov/govuk_publishing_components/pull/2774))
 
 ## 29.9.0

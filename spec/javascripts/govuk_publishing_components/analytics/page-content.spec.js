@@ -420,6 +420,32 @@ describe('Page content', function () {
     })
   })
 
+  // the template used for the two page types is the same
+  // so testing only one will test both
+  describe('in a browse level 0 or 1 page', function () {
+    beforeEach(function () {
+      createMetaTags('rendering-application', 'collections')
+      createMetaTags('navigation-page-type', 'browse level 0')
+      createMetaTags('format', 'mainstream_browse_page')
+    })
+
+    it('gets the number of card sections', function () {
+      for (var i = 1; i <= 4; i++) {
+        createDummyElement('div', false, false, 'data-track-count', 'cardList')
+      }
+      var result = window.GOVUK.PageContent.getNumberOfSections()
+      expect(result).toEqual(4)
+    })
+
+    it('gets the number of card links', function () {
+      for (var i = 1; i <= 4; i++) {
+        createDummyElement('a', false, false, 'data-track-count', 'cardLink')
+      }
+      var result = window.GOVUK.PageContent.getNumberOfLinks()
+      expect(result).toEqual(4)
+    })
+  })
+
   describe('by default', function () {
     it('gets the number of sidebar sections', function () {
       for (var p = 1; p <= 4; p++) {

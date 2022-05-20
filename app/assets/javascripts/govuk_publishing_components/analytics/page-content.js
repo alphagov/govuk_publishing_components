@@ -15,8 +15,8 @@
         return document.querySelectorAll('.document-collection .group-title').length
       case isNewBrowsePageLevelTwo():
         // if there are no accordion sections on the browse level 2 page
-        // then it is a default page with only one section
-        return document.querySelectorAll('[data-track-count="accordionSection"]').length || 1
+        // then it is a default page with one or two lists
+        return document.querySelectorAll('[data-track-count="accordionSection"]').length || document.querySelectorAll('main .govuk-list').length
       case isNewBrowsePage():
         return document.querySelectorAll('[data-track-count="cardList"]').length
       case isMainstreamBrowsePage():
@@ -77,7 +77,6 @@
   var metaApplicationSelector = 'meta[name="govuk:rendering-application"]'
   var metaFormatSelector = 'meta[name="govuk:format"]'
   var metaNavigationTypeSelector = 'meta[name="govuk:navigation-page-type"]'
-  var metaSectionSelector = 'meta[name="govuk:section"]'
 
   function getMetaAttribute (selector) {
     var element = document.querySelector(selector)
@@ -111,7 +110,8 @@
 
   function isNewBrowsePage () {
     return getMetaAttribute(metaApplicationSelector) === 'collections' &&
-      getMetaAttribute(metaSectionSelector) === 'new_browse_page' &&
+      (getMetaAttribute(metaNavigationTypeSelector) === 'browse level 0' ||
+       getMetaAttribute(metaNavigationTypeSelector) === 'browse level 1') &&
       getMetaAttribute(metaFormatSelector) === 'mainstream_browse_page'
   }
 
