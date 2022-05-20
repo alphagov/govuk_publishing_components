@@ -41,7 +41,7 @@ module GovukPublishingComponents
         end
 
         def row
-          tag.tr class: "govuk-table__row" do
+          tag.tr class: "govuk-table__row js-govuk-table__row" do
             yield(self)
           end
         end
