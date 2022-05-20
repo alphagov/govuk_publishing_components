@@ -189,10 +189,17 @@ examples:
 
       Each item can also have a `data_attributes` hash. These `data_attributes` are placed on the `button` that triggers the opening and closing - useful for differentiating between each section of the accordion.
 
+      Data attributes can also be added to the 'Show/hide all' link using the `data_attributes_show_all` option, primarily where custom tracking is required. These attributes are read from the accordion markup and then added to the link by JavaScript (which is how the link is created).
     data:
       data_attributes:
           gtm: gtm-accordion
           ga: ga-accordion
+      data_attributes_show_all:
+        module: example
+        track-action: click
+        ui:
+          type: test
+          text: something
       items:
         - heading:
             text: Writing well for the web

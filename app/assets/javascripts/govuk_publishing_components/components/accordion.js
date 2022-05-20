@@ -45,6 +45,21 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
     if (this.$module.getAttribute('data-track-sections') === 'true') {
       this.addEventListenerSections()
     }
+
+    // look for data attributes to put onto the 'show/hide all' link
+    var showAllAttributes = this.$module.getAttribute('data-show-all-attributes')
+    if (showAllAttributes) {
+      try {
+        var showAll = this.$module.querySelector('.' + this.showAllControls)
+        var values = JSON.parse(showAllAttributes)
+        var keys = Object.keys(values)
+        for (var i = 0; i < keys.length; i++) {
+          showAll.setAttribute('data-' + keys[i], values[keys[i]])
+        }
+      } catch (e) {
+        console.error('Could not read accordion data attributes error: ' + e.message, window.location)
+      }
+    }
   }
 
   // Navigate to and open accordions with anchored content on page load if a hash is present

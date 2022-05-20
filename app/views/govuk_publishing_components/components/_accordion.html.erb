@@ -27,6 +27,9 @@
   data_attributes[:track_show_all_clicks] = track_show_all_clicks
   data_attributes[:track_sections] = track_sections
 
+  data_attributes_show_all ||= nil
+  data_attributes[:show_all_attributes] = data_attributes_show_all if data_attributes_show_all
+
   translations.each do |key, translation|
     locales[key] = shared_helper.t_locale(translation)
     data_attributes[key] = t(translation)
@@ -47,8 +50,8 @@
   <%= tag.div(class: accordion_classes, id: id, data: data_attributes) do %>
     <% items.each_with_index do |item, i| %>
       <%
-        # The GOVUK Frontend JavaScript for this component 
-        # uses a loop starting at 1 for accessing heading ID values, 
+        # The GOVUK Frontend JavaScript for this component
+        # uses a loop starting at 1 for accessing heading ID values,
         # hence the increment below
         index = i + 1
 
@@ -65,11 +68,10 @@
             content_tag(
               shared_helper.get_heading_level,
               content_tag(
-                'span', 
-                item[:heading][:text], 
+                'span',
+                item[:heading][:text],
                 class: "govuk-accordion__section-button",
                 id: "#{id}-heading-#{index}"
-                
               ),
               class: "govuk-accordion__section-heading",
               id: item[:heading][:id],
