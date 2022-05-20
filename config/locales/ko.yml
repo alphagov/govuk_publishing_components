@@ -157,9 +157,8 @@ ko:
         link_text:
         title:
       ukraine:
-        link_path:
-        link_text:
         title:
+        links:
       world_locations:
     search_box:
       input_title:

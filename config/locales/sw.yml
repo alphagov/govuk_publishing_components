@@ -162,9 +162,8 @@ sw:
         link_text: Angalia unachopaswa kufanya
         title: Brexit
       ukraine:
-        link_path:
-        link_text:
         title:
+        links:
       world_locations: Maeneo ya kimataifa
     search_box:
       input_title: Tafuta

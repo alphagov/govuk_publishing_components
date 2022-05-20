@@ -162,9 +162,8 @@ he:
         link_text: בדוק מה אתה צריך לעשות
         title: " ברקזיט"
       ukraine:
-        link_path:
-        link_text:
         title:
+        links:
       world_locations: מיקומים גלובאליים
     search_box:
       input_title: 'חפש '

@@ -162,9 +162,8 @@ it:
         link_text: Controlla cosa devi fare
         title: Brexit
       ukraine:
-        link_path:
-        link_text:
         title:
+        links:
       world_locations: Località del mondo
     search_box:
       input_title: Cerca

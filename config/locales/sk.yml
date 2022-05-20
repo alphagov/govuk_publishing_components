@@ -167,9 +167,8 @@ sk:
         link_text: Skontrolujte, čo je potrebné urobiť
         title: Brexit
       ukraine:
-        link_path:
-        link_text:
         title:
+        links:
       world_locations: Svetové lokality
     search_box:
       input_title: Vyhľadávanie

@@ -164,9 +164,8 @@ uz:
         link_text: Нима қилиш зарурлигини текшириш
         title: Брексит
       ukraine:
-        link_path:
-        link_text:
         title:
+        links:
       world_locations: Жаҳондаги жойлашиш жойи
     search_box:
       input_title: Излаш

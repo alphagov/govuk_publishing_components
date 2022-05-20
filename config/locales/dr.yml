@@ -164,9 +164,8 @@ dr:
         link_text: بیبینید که چه کاری باید انجام دهید
         title: برکست
       ukraine:
-        link_path:
-        link_text:
         title:
+        links:
       world_locations: موقعیت هایی جهان
     search_box:
       input_title: جستجو نمایید

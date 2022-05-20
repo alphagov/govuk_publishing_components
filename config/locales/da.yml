@@ -163,9 +163,8 @@ da:
         link_text: Tjek hvad du skal gøre
         title: Brexit
       ukraine:
-        link_path:
-        link_text:
         title:
+        links:
       world_locations: Verden Placeringer
     search_box:
       input_title: Søge

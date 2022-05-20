@@ -163,9 +163,8 @@ sr:
         link_text: Proverite šta treba da uradite
         title: Bregzit
       ukraine:
-        link_path:
-        link_text:
         title:
+        links:
       world_locations: Globalne lokacije
     search_box:
       input_title: Pretraži

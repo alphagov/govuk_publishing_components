@@ -163,9 +163,8 @@ tr:
         link_text: Ne yapmaya ihtiyacınız olduğunu kontrol edin
         title: Brexit
       ukraine:
-        link_path:
-        link_text:
         title:
+        links:
       world_locations: Dünya geneli konumlar
     search_box:
       input_title: Ara
