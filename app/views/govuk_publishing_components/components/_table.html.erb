@@ -2,46 +2,68 @@
   caption ||= nil
   head ||= []
   rows ||= []
-  first_cell_is_header ||=false
+  first_cell_is_header ||= false
   caption_classes ||= nil
-  sortable ||=false
+  sortable ||= false
+  filterable ||= false
 %>
 
-<%= GovukPublishingComponents::AppHelpers::TableHelper.helper(self, caption, {
-    sortable: sortable,
-    caption_classes: caption_classes
-  }) do |t| %>
+<% @table = capture do %>
+  <%= GovukPublishingComponents::AppHelpers::TableHelper.helper(self, caption, {
+      sortable: sortable,
+      filterable: filterable,
+      caption_classes: caption_classes
+    }) do |t| %>
 
-  <% if head.any? %>
-    <%= t.head do %>
-      <% head.each_with_index do |item, cellindex| %>
-        <%= t.header item[:text], {
-          format: item[:format],
-          href: item[:href],
-          data_attributes: item[:data_attributes],
-          sort_direction: item[:sort_direction]
-        } %>
+    <% if head.any? %>
+      <%= t.head do %>
+        <% head.each_with_index do |item, cellindex| %>
+          <%= t.header item[:text], {
+            format: item[:format],
+            href: item[:href],
+            data_attributes: item[:data_attributes],
+            sort_direction: item[:sort_direction]
+          } %>
+        <% end %>
       <% end %>
     <% end %>
-  <% end %>
 
-  <%= t.body do %>
-    <% rows.each_with_index do |row, rowindex| %>
-      <%= t.row do %>
-        <% row.each_with_index do |cell, cellindex| %>
-          <% if cellindex == 0 && first_cell_is_header %>
-            <%= t.header cell[:text], {
-              scope: "row",
-              format: cell[:format]
-            } %>
-          <% else %>
-            <%= t.cell cell[:text], {
-              format: cell[:format]
-            } %>
+    <%= t.body do %>
+      <% rows.each_with_index do |row, rowindex| %>
+        <%= t.row do %>
+          <% row.each_with_index do |cell, cellindex| %>
+            <% if cellindex == 0 && first_cell_is_header %>
+              <%= t.header cell[:text], {
+                scope: "row",
+                format: cell[:format]
+              } %>
+            <% else %>
+              <%= t.cell cell[:text], {
+                format: cell[:format]
+              } %>
+            <% end %>
           <% end %>
         <% end %>
       <% end %>
     <% end %>
   <% end %>
+<% end %>
 
+<% if filterable %>
+  <div data-module="table-filter">
+    <div class="js-gem-c-table__filter govuk-!-display-none">
+      <%= render "govuk_publishing_components/components/input", {
+        label: {
+          text: "Search"
+        },
+        name: "filter"
+      } %>
+    </div>
+
+    <%= @table %>
+
+    <p class="govuk-body govuk-!-display-none js-gem-c-table__message"><%= t("components.table.message") %></p>
+  </div>
+<% else %>
+  <%= @table %>
 <% end %>
