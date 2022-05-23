@@ -1,0 +1,50 @@
+name: Emergency banner
+description: A site-wide banner used in the event of an emergency
+body: |
+  There are three types of events that would lead GOV.UK to add an emergency banner to the top of each page on the web site; a notable death, a national emergency or a local emergency.
+
+  See the [opsmanual](https://docs.publishing.service.gov.uk/manual/emergency-publishing.html#adding-emergency-publishing-banners) for information about what the Emergency Banner is and when it should be deployed.
+
+accessibility_criteria: |
+  The links must:
+
+  * be keyboard focusable
+
+examples:
+  default:
+    description: |
+      Death of a notable person
+    data:
+      campaign_class: "notable-death"
+      heading: "His Royal Highness Henry VIII"
+      short_description: "1491 to 1547"
+      link_text: "Override Link Text"
+      link: "https://www.gov.uk/"
+  national_emergency:
+    description: |
+      National emergency (level 1 or category 2)
+    data:
+      campaign_class: "national-emergency"
+      heading: "National emergency"
+      short_description: "This is a level 1 incident"
+      link: "https://www.gov.uk/"
+  local_emergency:
+    description: |
+      Localised large-scale emergency (level 2 or category 1)
+    data:
+      campaign_class: "local-emergency"
+      heading: "Local emergency"
+      short_description: "This is a level 2 incident"
+      link: "https://www.gov.uk/"
+  notable_death_homepage:
+    description: |
+      When presenting any type of emergency banner on homepage the styling is slightly different.
+    data:
+      campaign_class: "notable-death"
+      heading: "His Royal Highness Henry VIII"
+      short_description: "1491 to 1547"
+      link: "https://www.gov.uk/"
+    embed: |
+      <div class="homepage">
+        <%= component %>
+      </div>

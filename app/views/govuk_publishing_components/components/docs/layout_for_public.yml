@@ -55,11 +55,23 @@ examples:
   with_emergency_banner:
     description: This allows the HTML for the emergency banner to be added to the page in the correct place. This is only the slot for the emergency banner - the markup for the banner needs to be passed in.
     data:
-      emergency_banner: <div class="govuk-!-padding-top-3 govuk-!-padding-bottom-3">This is the emergency banner slot</div>
+      emergency_banner:
+        heading: Heading of Notable Death
+        short_description: Short description
+        emergency_type: "notable-death"
+        homepage: true
+        link_href: "/link"
+        link_text: "Link text"
   with_global_and_emergency_banner:
     description: Both global banner and emergency banner should be usable together.
     data:
-      emergency_banner: <div class="govuk-!-padding-top-3 govuk-!-padding-bottom-3">This is the emergency banner slot</div>
+      emergency_banner:
+        heading: Heading of Notable Death
+        short_description: Short description
+        emergency_type: "notable-death"
+        homepage: true
+        link_href: "/link"
+        link_text: "Link text"
       global_bar: <div class="govuk-!-padding-top-5 govuk-!-padding-bottom-3">This is the global bar slot</div>
   with_account_layout_enabled:
     description: Adds account layout wrapper around the content passed in to the component
