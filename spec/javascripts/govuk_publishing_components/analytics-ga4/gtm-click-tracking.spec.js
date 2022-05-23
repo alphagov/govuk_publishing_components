@@ -13,6 +13,25 @@ describe('Google Tag Manager click tracking', function () {
     document.body.removeChild(element)
   })
 
+  describe('configuring tracking incompletely', function () {
+    beforeEach(function () {
+      element.setAttribute('data-gtm-event-name', 'event-name')
+      document.body.appendChild(element)
+      new GOVUK.Modules.GtmClickTracking(element).init()
+    })
+
+    it('does not cause an error', function () {
+      element.click()
+      var expected = {
+        event: 'analytics',
+        event_name: 'event-name',
+        link_url: window.location.href.substring(window.location.origin.length),
+        ui: {}
+      }
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+  })
+
   describe('doing simple tracking on a single element', function () {
     beforeEach(function () {
       element.setAttribute('data-gtm-event-name', 'event-name')
@@ -96,7 +115,8 @@ describe('Google Tag Manager click tracking', function () {
     beforeEach(function () {
       var attributes = {
         'test-3-1': 'test 3-1 value',
-        'test-3-2': 'test 3-2 value'
+        'test-3-2': 'test 3-2 value',
+        text: 'some text'
       }
       element.setAttribute('data-gtm-event-name', 'event3-name')
       element.setAttribute('data-gtm-attributes', JSON.stringify(attributes))
@@ -115,7 +135,8 @@ describe('Google Tag Manager click tracking', function () {
         ui: {
           'test-3-1': 'test 3-1 value',
           'test-3-2': 'test 3-2 value',
-          state: 'opened'
+          state: 'opened',
+          text: 'some text'
         }
       }
       expect(window.dataLayer).toEqual([expectedFirst])
@@ -127,7 +148,8 @@ describe('Google Tag Manager click tracking', function () {
         ui: {
           'test-3-1': 'test 3-1 value',
           'test-3-2': 'test 3-2 value',
-          state: 'closed'
+          state: 'closed',
+          text: 'some text'
         }
       }
       element.setAttribute('aria-expanded', 'true')
@@ -164,7 +186,8 @@ describe('Google Tag Manager click tracking', function () {
         ui: {
           'test-3-1': 'test 3-1 value',
           'test-3-2': 'test 3-2 value',
-          state: 'opened'
+          state: 'opened',
+          text: 'Show'
         }
       }
       expect(window.dataLayer).toEqual([expectedFirst])
@@ -176,10 +199,12 @@ describe('Google Tag Manager click tracking', function () {
         ui: {
           'test-3-1': 'test 3-1 value',
           'test-3-2': 'test 3-2 value',
-          state: 'closed'
+          state: 'closed',
+          text: 'Hide'
         }
       }
       element.querySelector('[aria-expanded]').setAttribute('aria-expanded', 'true')
+      element.querySelector('button').textContent = 'Hide'
       clickOn.click()
       expect(window.dataLayer).toEqual([expectedFirst, expectedSecond])
     })

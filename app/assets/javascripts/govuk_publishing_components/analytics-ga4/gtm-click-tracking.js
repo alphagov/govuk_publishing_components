@@ -1,3 +1,4 @@
+// = require govuk/vendor/polyfills/Element/prototype/closest.js
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
@@ -10,31 +11,35 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   GtmClickTracking.prototype.init = function () {
-    var trackClicksOn = [this.module]
-    if (!this.module.getAttribute(this.trackingTrigger)) {
-      trackClicksOn = this.module.querySelectorAll('[' + this.trackingTrigger + ']')
-    }
-
-    for (var i = 0; i < trackClicksOn.length; i++) {
-      trackClicksOn[i].addEventListener('click', this.trackClick.bind(this))
-    }
+    this.module.addEventListener('click', this.trackClick.bind(this), true) // useCapture must be true
   }
 
   GtmClickTracking.prototype.trackClick = function (event) {
     if (window.dataLayer) {
-      var target = event.currentTarget
-      var data = {
-        event: 'analytics',
-        event_name: target.getAttribute('data-gtm-event-name'),
-        // get entire URL apart from domain
-        link_url: window.location.href.substring(window.location.origin.length),
-        ui: JSON.parse(target.getAttribute('data-gtm-attributes'))
+      var target = this.findTrackingAttributes(event.target)
+      if (target) {
+        var data = {
+          event: 'analytics',
+          event_name: target.getAttribute('data-gtm-event-name'),
+          // get entire URL apart from domain
+          link_url: window.location.href.substring(window.location.origin.length),
+          ui: JSON.parse(target.getAttribute('data-gtm-attributes')) || {}
+        }
+        var ariaExpanded = this.checkExpandedState(target)
+        if (ariaExpanded) {
+          data.ui.state = ariaExpanded === 'false' ? 'opened' : 'closed'
+          data.ui.text = data.ui.text || target.innerText
+        }
+        window.dataLayer.push(data)
       }
-      var ariaExpanded = this.checkExpandedState(target)
-      if (ariaExpanded) {
-        data.ui.state = ariaExpanded === 'false' ? 'opened' : 'closed'
-      }
-      window.dataLayer.push(data)
+    }
+  }
+
+  GtmClickTracking.prototype.findTrackingAttributes = function (clicked) {
+    if (clicked.hasAttribute('[' + this.trackingTrigger + ']')) {
+      return clicked
+    } else {
+      return clicked.closest('[' + this.trackingTrigger + ']')
     }
   }
 
