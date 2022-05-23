@@ -24,7 +24,8 @@ module GovukPublishingComponents
         static
         travel-advice-publisher
         whitehall
-      ].sort
+      ]
+
       application_dirs = [GovukPublishingComponents::ApplicationHelper.get_application_name_from_path(Rails.root)] unless ENV["MAIN_COMPONENT_GUIDE"]
 
       gem_path = Gem.loaded_specs["govuk_publishing_components"].full_gem_path
@@ -36,7 +37,7 @@ module GovukPublishingComponents
 
       components = AuditComponents.new(gem_path, false)
       applications = analyse_applications(host_dir, application_dirs)
-      compared_data = AuditComparer.new(components.data, applications, false)
+      compared_data = AuditComparer.new(components.data, applications)
 
       @applications = compared_data.applications_data || []
       @components = compared_data.gem_data || []
