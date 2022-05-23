@@ -1,0 +1,30 @@
+<%
+  heading ||= ""
+  short_description ||= nil
+  link ||= nil
+  link_text ||= "More information"
+  campaign_class ||= nil
+
+  banner_classes = %w[gem-c-emergency-banner]
+  banner_classes << "gem-c-emergency-banner--#{campaign_class}"
+%>
+
+<%= content_tag('div', class: banner_classes, "aria-label": "emergency banner", "role": "region", "data-nosnippet": true ) do %>
+  <div class="govuk-width-container">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="gem-c-emergency-banner__heading">
+          <%= heading %>
+        </h2>
+        <% if short_description %>
+          <p class="gem-c-emergency-banner__description">
+            <%= short_description %>
+          </p>
+        <% end %>
+        <% if link %>
+          <a href="<%= link %>" class="gem-c-emergency-banner__link govuk-link"><%= link_text %></a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
