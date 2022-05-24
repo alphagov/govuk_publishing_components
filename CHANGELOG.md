@@ -15,6 +15,7 @@
 * Tracking changes for the footer ([PR #2774](https://github.com/alphagov/govuk_publishing_components/pull/2774))
 * Update Ukraine CTA in the contextual sidebar ([PR #2779](https://github.com/alphagov/govuk_publishing_components/pull/2779))
 * Small amends to sitewide menu ([PR #2776](https://github.com/alphagov/govuk_publishing_components/pull/2776))
+* Remove DVSA email from attachment accessible format request pilot([PR #2792](https://github.com/alphagov/govuk_publishing_components/pull/2792))
 
 ## 29.9.0
 
