@@ -162,9 +162,8 @@ hi:
         link_text: जांचें कि आपको क्या करना है
         title: ब्रेक्सिट
       ukraine:
-        link_path:
-        link_text:
         title:
+        links:
       world_locations: वैश्विक स्थान
     search_box:
       input_title: खोजें

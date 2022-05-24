@@ -171,7 +171,9 @@ describe "Contextual navigation" do
   def then_i_see_the_ukraine_call_to_action
     within ".gem-c-contextual-sidebar__cta" do
       expect(page).to have_content("Invasion of Ukraine")
-      expect(page).to have_link("Find out about the UK’s response")
+      within ".gem-c-contextual-sidebar__list" do
+        expect(page).to have_link(href: /.+/)
+      end
     end
   end
 

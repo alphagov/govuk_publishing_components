@@ -165,9 +165,8 @@ ar:
         link_text: تحقق مما تحتاج إلى القيام به
         title: برِيكْسِت
       ukraine:
-        link_path:
-        link_text:
         title:
+        links:
       world_locations: المواقع العالمية
     search_box:
       input_title: بحث

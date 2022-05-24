@@ -160,9 +160,8 @@ th:
         link_text: ตรวจสอบสิ่งที่คุณต้องทำ
         title: Brexit
       ukraine:
-        link_path:
-        link_text:
         title:
+        links:
       world_locations: สถานที่ทั่วโลก
     search_box:
       input_title: ค้นหา

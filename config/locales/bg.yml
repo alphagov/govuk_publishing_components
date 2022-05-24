@@ -166,9 +166,8 @@ bg:
         link_text: Проверете какво трябва да направите
         title: Брекзит
       ukraine:
-        link_path:
-        link_text:
         title:
+        links:
       world_locations: Местоположения по света
     search_box:
       input_title: Търсене

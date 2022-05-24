@@ -164,9 +164,8 @@ gd:
         link_text: Seiceáil cad is gá duit aird a thabhairt air
         title: Brexit
       ukraine:
-        link_path:
-        link_text:
         title:
+        links:
       world_locations: Áit ar domhan
     search_box:
       input_title: Taighde

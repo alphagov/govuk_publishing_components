@@ -286,9 +286,16 @@ en:
         link_text: Check what you need to do
         title: Brexit
       ukraine:
-        link_path: "https://ukstandswithukraine.campaign.gov.uk/"
-        link_text: Find out about the UK’s response
         title: Invasion of Ukraine
+        links:
+        - label: "UK visa support for Ukrainian nationals"
+          href:  "https://www.gov.uk/guidance/support-for-family-members-of-british-nationals-in-ukraine-and-ukrainian-nationals-in-ukraine-and-the-uk"       
+        - label: "Move to the UK if you're coming from Ukraine"
+          href:  "https://www.gov.uk/guidance/move-to-the-uk-if-youre-from-ukraine"
+        - label: "Homes for Ukraine: record your interest"
+          href:  "https://www.gov.uk/register-interest-homes-ukraine"       
+        - label: "Find out about the UK’s response"
+          href:  "https://ukstandswithukraine.campaign.gov.uk/"
       world_locations: World locations
     search_box:
       input_title: Search

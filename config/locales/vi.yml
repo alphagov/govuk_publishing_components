@@ -161,9 +161,8 @@ vi:
         link_text: Kiểm tra những gì bạn cần làm
         title: Brexit
       ukraine:
-        link_path:
-        link_text:
         title:
+        links:
       world_locations: Các vị trí trên thế giới
     search_box:
       input_title: Tìm kiếm
