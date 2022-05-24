@@ -382,10 +382,8 @@ $button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
         }
 
         .gem-c-layout-super-navigation-header__navigation-second-toggle-button-inner {
-          border-color: $button-pipe-colour;
-
           &:before {
-            @include chevron($button-pipe-colour, true);
+            @include chevron(govuk-colour("mid-grey"), true);
           }
         }
       }
@@ -464,7 +462,7 @@ $button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
 .gem-c-layout-super-navigation-header__navigation-second-toggle-button-inner {
   @include govuk-media-query($from: "desktop") {
     display: inline-block;
-    padding: govuk-spacing(2) govuk-spacing(6) govuk-spacing(2) govuk-spacing(5);
+    padding: govuk-spacing(1) govuk-spacing(6) govuk-spacing(1) govuk-spacing(5);
   }
 }
 
@@ -606,10 +604,6 @@ $button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
         }
       }
     }
-  }
-
-  &:after {
-    @include pseudo-underline;
   }
 
   // Open button modifier
@@ -771,6 +765,7 @@ $button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
   background: govuk-colour("light-grey");
 
   @include govuk-media-query($from: "desktop") {
+    border-bottom: 1px govuk-colour("mid-grey") solid;
     left: 0;
     position: absolute;
     right: 0;
