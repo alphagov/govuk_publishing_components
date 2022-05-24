@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add styles for Whitehall SVG icons ([PR #2788](https://github.com/alphagov/govuk_publishing_components/pull/2788))
 * Make auditing check static for missing assets ([PR #2755](https://github.com/alphagov/govuk_publishing_components/pull/2755))
 * Update analytics logic for new browse page metatags ([PR #2778](https://github.com/alphagov/govuk_publishing_components/pull/2778))
 * Tracking changes for the footer ([PR #2774](https://github.com/alphagov/govuk_publishing_components/pull/2774))
