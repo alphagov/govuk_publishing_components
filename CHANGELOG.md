@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* GOVUK Frontend 4.1.0 updates ([PR #2794](https://github.com/alphagov/govuk_publishing_components/pull/2794))
+
 ## 29.10.0
 
 * Add styles for Whitehall SVG icons ([PR #2788](https://github.com/alphagov/govuk_publishing_components/pull/2788))

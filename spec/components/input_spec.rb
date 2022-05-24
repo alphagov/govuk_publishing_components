@@ -41,7 +41,7 @@ describe "Input", type: :view do
       type: "number",
     )
 
-    assert_select ".govuk-input[type='text'][pattern='[0-9]*'][inputmode='numeric']"
+    assert_select ".govuk-input[type='text'][inputmode='numeric']"
     assert_select ".govuk-input[spellcheck='false']"
   end
 
