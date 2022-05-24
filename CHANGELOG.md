@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 29.10.0
 
 * Add styles for Whitehall SVG icons ([PR #2788](https://github.com/alphagov/govuk_publishing_components/pull/2788))
 * Make auditing check static for missing assets ([PR #2755](https://github.com/alphagov/govuk_publishing_components/pull/2755))
