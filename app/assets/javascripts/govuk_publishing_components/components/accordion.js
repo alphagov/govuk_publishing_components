@@ -10,12 +10,13 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
   function GemAccordion ($module) {
     this.$module = $module
     this.sectionClass = 'govuk-accordion__section'
-    this.sectionClassExpanded = 'govuk-accordion__section--expanded'
-    this.sectionHeaderClass = 'govuk-accordion__section-header'
-    this.sectionInnerContent = 'govuk-accordion__section-content'
-    this.showAllControls = 'govuk-accordion__show-all'
-    this.sectionButton = 'govuk-accordion__section-button'
-    this.headingText = 'govuk-accordion__section-heading-text'
+    this.sectionExpandedClass = 'govuk-accordion__section--expanded'
+    this.sectionInnerContentClass = 'govuk-accordion__section-content'
+
+    this.sectionHeader = '.govuk-accordion__section-header'
+    this.showAllControls = '.govuk-accordion__show-all'
+    this.sectionButton = '.govuk-accordion__section-button'
+    this.headingText = '.govuk-accordion__section-heading-text'
 
     // language attribute pulled from data attributes
     this.$module.actions = {}
@@ -25,7 +26,7 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
   GemAccordion.prototype.init = function () {
     // Indicate that JavaScript has worked
     this.$module.classList.add('gem-c-accordion--active')
-    this.$module.querySelector('.' + this.showAllControls).classList.add('gem-c-accordion__show-all')
+    this.$module.querySelector(this.showAllControls).classList.add('gem-c-accordion__show-all')
 
     // Feature flag for anchor tag navigation used on manuals
     if (this.$module.getAttribute('data-anchor-navigation') === 'true') {
@@ -45,7 +46,7 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
     var showAllAttributes = this.$module.getAttribute('data-show-all-attributes')
     if (showAllAttributes) {
       try {
-        var showAll = this.$module.querySelector('.' + this.showAllControls)
+        var showAll = this.$module.querySelector(this.showAllControls)
         var values = JSON.parse(showAllAttributes)
         var keys = Object.keys(values)
         for (var i = 0; i < keys.length; i++) {
@@ -69,7 +70,7 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
   // Add event listeners for links to open accordion sections when navigated to using said anchor links on the page
   // Adding an event listener to all anchor link a tags in an accordion is risky but we circumvent this risk partially by only being a layer of accordion behaviour instead of any sort of change to link behaviour
   GemAccordion.prototype.addEventListenersForAnchors = function () {
-    var links = this.$module.querySelectorAll('.' + this.sectionInnerContent + ' a[href*="#"]')
+    var links = this.$module.querySelectorAll(this.sectionInnerContentClass + ' a[href*="#"]')
 
     nodeListForEach(links, function (link) {
       if (link.pathname === window.location.pathname) {
@@ -82,7 +83,7 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
   GemAccordion.prototype.openForAnchor = function (hash) {
     var target = document.getElementById(hash)
     var $section = this.getContainingSection(target)
-    var $header = $section.querySelector('.' + this.sectionHeaderClass)
+    var $header = $section.querySelector(this.sectionHeader)
     var $expanded = this.getContainingSection($section)
     var $parent = $header.parentElement
 
@@ -90,7 +91,7 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
     // Should the target anchor link be within the same page, open section - navigate normally
     // Should the target anchor link be within a different, closed section, open this section
     // Should the target anchor link be within a different page and different, closed section open this section
-    if ($expanded && (!$parent.classList.contains(this.sectionClassExpanded))) {
+    if ($expanded && (!$parent.classList.contains(this.sectionExpandedClass))) {
       $header.click()
     }
   }
@@ -114,7 +115,7 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
 
   // To track the Accordion's "Show all sections" / "Hide all sections" button click events and pass them to the GA event tracking
   GemAccordion.prototype.addAccordionOpenAllTracking = function () {
-    this.$module.querySelector('.' + this.showAllControls).addEventListener('click', function (event) {
+    this.$module.querySelector(this.showAllControls).addEventListener('click', function (event) {
       var expanded = event.target.getAttribute('aria-expanded') === 'true'
       var label = expanded ? 'Show all sections' : 'Hide all sections'
       var action = expanded ? 'accordionOpened' : 'accordionClosed'
@@ -126,7 +127,7 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
   }
 
   GemAccordion.prototype.addEventListenerSections = function () {
-    var sections = this.$module.querySelectorAll('.' + this.sectionButton)
+    var sections = this.$module.querySelectorAll(this.sectionButton)
     nodeListForEach(sections, function (section) {
       section.addEventListener('click', this.addAccordionSectionTracking.bind(this, section))
     }.bind(this))
@@ -135,7 +136,7 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
   // If the Accordion's sections are opened on click, then pass them to the GA event tracking
   GemAccordion.prototype.addAccordionSectionTracking = function (section) {
     var expanded = section.getAttribute('aria-expanded') === 'false'
-    var label = section.querySelector('.' + this.headingText).textContent
+    var label = section.querySelector(this.headingText).textContent
     var action = expanded ? 'accordionOpened' : 'accordionClosed'
     var options = { transport: 'beacon', label: label }
 
