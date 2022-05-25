@@ -174,6 +174,26 @@ describe "Accordion", type: :view do
     assert_select "[data-gtm='google-tag-manager']", count: 2
   end
 
+  it "data attributes for show all link are present when required" do
+    test_data = {
+      id: "test-for-data-attributes",
+      data_attributes_show_all: {
+        module: "example",
+        track_action: "click",
+      },
+      items: [
+        {
+          heading: { text: "Heading 1" },
+          content: { html: "<p>Content 1.</p>" },
+        },
+      ],
+    }
+
+    render_component(test_data)
+
+    assert_select ".govuk-accordion[data-show-all-attributes='{\"module\":\"example\",\"track_action\":\"click\"}']"
+  end
+
   it '`data-module="govuk-accordion"` attribute is present when no custom data attributes given' do
     test_data = {
       id: "test-for-module-data-attributes",
