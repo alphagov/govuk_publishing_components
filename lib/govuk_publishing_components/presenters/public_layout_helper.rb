@@ -2,7 +2,7 @@ module GovukPublishingComponents
   module Presenters
     class PublicLayoutHelper
       FOOTER_NAVIGATION_COLUMNS = [2, 1].freeze
-      FOOTER_TRACK_ACTIONS = %w[topicsLink governmentActivityLink].freeze
+      FOOTER_TRACK_ACTIONS = %w[topicsLink governmentactivityLink].freeze
       FOOTER_META = {
         items: [
           {
