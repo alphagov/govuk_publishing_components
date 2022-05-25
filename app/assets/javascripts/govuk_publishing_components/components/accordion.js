@@ -17,14 +17,9 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
     this.sectionButton = 'govuk-accordion__section-button'
     this.headingText = 'govuk-accordion__section-heading-text'
 
-    // Translated component content and language attribute pulled from data attributes
+    // language attribute pulled from data attributes
     this.$module.actions = {}
     this.$module.actions.locale = this.$module.getAttribute('data-locale')
-    this.$module.actions.showText = this.$module.getAttribute('data-show-text')
-    this.$module.actions.hideText = this.$module.getAttribute('data-hide-text')
-    this.$module.actions.showAllText = this.$module.getAttribute('data-show-all-text')
-    this.$module.actions.hideAllText = this.$module.getAttribute('data-hide-all-text')
-    this.$module.actions.thisSectionVisuallyHidden = this.$module.getAttribute('data-this-section-visually-hidden')
   }
 
   GemAccordion.prototype.init = function () {
