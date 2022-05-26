@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 29.11.0
 
 * Extend GTM analytics click tracking ([PR #2786](https://github.com/alphagov/govuk_publishing_components/pull/2786))
 * GOVUK Frontend 4.1.0 updates ([PR #2794](https://github.com/alphagov/govuk_publishing_components/pull/2794))
