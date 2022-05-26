@@ -21,7 +21,6 @@ describe "Accordion", js: true, type: :view do
   end
 
   def then_the_accordion_javascript_loads
-    expect(page).to have_css(".gem-c-accordion--active", visible: :visible)
     expect(page).to have_css(".govuk-accordion__show-all", visible: :visible)
     expect(page).not_to have_content("This is the content for Writing well for the web.")
   end
