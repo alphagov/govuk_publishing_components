@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add gem-track-click to specific sections of layout_footer ([PR #2800](https://github.com/alphagov/govuk_publishing_components/pull/2800))
+
 ## 29.11.0
 
 * Extend GTM analytics click tracking ([PR #2786](https://github.com/alphagov/govuk_publishing_components/pull/2786))
