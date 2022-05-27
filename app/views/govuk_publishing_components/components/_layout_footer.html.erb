@@ -6,9 +6,9 @@
   classes << "gem-c-layout-footer--border" if with_border
 %>
 <%= tag.footer class: classes, role: "contentinfo" do %>
-  <div class="govuk-width-container" data-module="gem-track-click">
+  <div class="govuk-width-container">
     <% if navigation.any? %>
-      <div class="govuk-footer__navigation">
+      <div class="govuk-footer__navigation" data-module="gem-track-click" data-track-links-only>
         <% navigation.each do |item| %>
           <% if item[:items] %>
             <%
@@ -60,7 +60,7 @@
       <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
         <% if meta.any? %>
           <h2 class="govuk-visually-hidden"><%= t("components.layout_footer.support_links") %></h2>
-          <ul class="govuk-footer__inline-list govuk-!-display-none-print">
+          <ul class="govuk-footer__inline-list govuk-!-display-none-print" data-module="gem-track-click" data-track-links-only>
             <% meta[:items].each do |item| %>
               <li class="govuk-footer__inline-list-item">
                 <%
