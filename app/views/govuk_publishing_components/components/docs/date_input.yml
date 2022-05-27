@@ -26,6 +26,13 @@ examples:
       component as follows: `custom-name[day]`, `custom-name[month]`, `custom-name[year]`
     data:
       name: "dob"
+  with_autocomplete_for_date_of_birth_fields:
+    description: |
+      Use the `autocomplete_date_of_birth` option when you're asking for the user's date of birth. This supports browsers or tools that can autofill the information on a user's behalf if they've entered it previously.
+
+      Note that the option should only be passed to the component if the date of birth asked for is the date of birth of the person filling the form in and not asked for on behalf of someone else.
+    data:
+      autocomplete_date_of_birth: true
   with_legend:
     data:
       legend_text: "What is your date of birth?"
