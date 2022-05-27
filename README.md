@@ -35,19 +35,30 @@ yarn run jasmine:browser
 yarn run jasmine:ci
 ```
 
-### Further documentation
+### Using the gem
 
 - [Install and use this gem](docs/install-and-use.md)
 - [Use a component in your application](docs/use-components.md)
-- [Generate a new component](docs/generate-a-new-component.md)
-- [Testing a component](docs/testing-components.md)
-- [Move a component from an application to the gem](docs/moving-components-upstream-into-this-gem.md)
+
+### Managing the gem
+
 - [Publish/release a new version of the gem](docs/publishing-to-rubygems.md)
 - [Keep this gem in sync with the Design System](docs/upgrade-govuk-frontend.md)
-- [Code documentation on rubydoc.info](http://www.rubydoc.info/gems/govuk_publishing_components)
+- [Move a component from an application to the gem](docs/moving-components-upstream-into-this-gem.md)
+
+### Making components
+
+- [Generate a new component](docs/generate-a-new-component.md)
 - [Component conventions](docs/component_conventions.md)
 - [Component principles](docs/component_principles.md)
+
+### Further documentation
+
+- [Testing a component](docs/testing-components.md)
 - [Component auditing](docs/auditing.md)
+- [Code documentation on rubydoc.info](http://www.rubydoc.info/gems/govuk_publishing_components)
+
+More documentation can be found in the [docs directory](docs/).
 
 ## Licence
 
