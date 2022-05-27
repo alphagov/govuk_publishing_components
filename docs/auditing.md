@@ -2,6 +2,8 @@
 
 The component guide includes some auditing of components and applications that can provide useful information. It can be found at `/component-guide/audit`.
 
+It is designed to be run locally as it gets information about applications and how they use components from local files. **If your local copy of an application is not up to date the information reported by the auditing may be incorrect**.
+
 ### Purpose
 
 The aim of the auditing is to provide information about our components and how they are used in frontend applications on GOV.UK. This includes warnings about possible problems with how we are using our component individual asset model. This includes:
