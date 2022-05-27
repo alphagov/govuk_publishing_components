@@ -195,11 +195,8 @@ examples:
           gtm: gtm-accordion
           ga: ga-accordion
       data_attributes_show_all:
-        module: example
-        track-action: click
-        ui:
-          type: test
-          text: something
+        gtm-event-name: example
+        gtm-attributes: "{ 'ui': { 'type': 'type value', 'section': 'section value' } }"
       items:
         - heading:
             text: Writing well for the web
