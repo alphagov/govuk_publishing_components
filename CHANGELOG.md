@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add js search to table component ([PR #2803](https://github.com/alphagov/govuk_publishing_components/pull/2803))
+
 ## 29.14.0
 
 * Add White Arrow to Action Link Options ([PR #2851](https://github.com/alphagov/govuk_publishing_components/pull/2851))
