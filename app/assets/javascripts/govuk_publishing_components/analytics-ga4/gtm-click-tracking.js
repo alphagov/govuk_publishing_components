@@ -25,11 +25,25 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           link_url: window.location.href.substring(window.location.origin.length),
           ui: JSON.parse(target.getAttribute('data-gtm-attributes')) || {}
         }
-        var ariaExpanded = this.checkExpandedState(target)
-        if (ariaExpanded) {
-          data.ui.state = ariaExpanded === 'false' ? 'opened' : 'closed'
+        var ariaExpanded = this.getClosestAttribute(target, 'aria-expanded')
+        /*
+          the details component uses an 'open' attribute instead of aria-expanded, so we need to check if we're on a details component.
+          since details deletes the 'open' attribute when closed, we need this boolean, otherwise every element which
+          doesn't contain an 'open' attr would be pushed to gtm as a closed element.
+        */
+        var canHaveOpenAttribute = target.getAttribute('data-module') ? target.getAttribute('data-module').includes('govuk-details') : false
+
+        if (ariaExpanded || canHaveOpenAttribute) {
           data.ui.text = data.ui.text || target.innerText
+
+          if (ariaExpanded) {
+            data.ui.state = (ariaExpanded === 'false') ? 'opened' : 'closed'
+          } else if (canHaveOpenAttribute) {
+            var openAttribute = this.getClosestAttribute(target, 'open')
+            data.ui.state = (openAttribute == null) ? 'opened' : 'closed'
+          }
         }
+
         window.dataLayer.push(data)
       }
     }
@@ -43,15 +57,15 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
   }
 
-  // check either element is expandable or contains expandable element
-  GtmClickTracking.prototype.checkExpandedState = function (clicked) {
-    var isExpandable = clicked.getAttribute('aria-expanded')
-    var containsExpandable = clicked.querySelector('[aria-expanded]')
+  // check if an attribute exists or contains the attribute
+  GtmClickTracking.prototype.getClosestAttribute = function (clicked, attribute) {
+    var isAttributeOnElement = clicked.getAttribute(attribute)
+    var containsAttribute = clicked.querySelector('[' + attribute + ']')
 
-    if (isExpandable) {
-      return isExpandable
-    } else if (containsExpandable) {
-      return containsExpandable.getAttribute('aria-expanded')
+    if (isAttributeOnElement || isAttributeOnElement === '') { // checks for "" as some attribute names can contain no value making them falsy
+      return isAttributeOnElement
+    } else if (containsAttribute) {
+      return containsAttribute.getAttribute(attribute)
     }
   }
 

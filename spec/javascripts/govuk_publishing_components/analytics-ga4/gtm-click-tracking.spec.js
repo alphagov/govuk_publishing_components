@@ -158,6 +158,53 @@ describe('Google Tag Manager click tracking', function () {
     })
   })
 
+  describe('doing tracking on an openable element', function () {
+    beforeEach(function () {
+      var attributes = {
+        'test-3-1': 'test 3-1 value',
+        'test-3-2': 'test 3-2 value',
+        text: 'some text'
+      }
+      element.setAttribute('data-gtm-event-name', 'event3-name')
+      element.setAttribute('data-module', 'govuk-details')
+      element.setAttribute('data-gtm-attributes', JSON.stringify(attributes))
+      document.body.appendChild(element)
+      new GOVUK.Modules.GtmClickTracking(element).init()
+    })
+
+    it('includes the open state in the gtm attributes', function () {
+      element.click()
+
+      var expectedFirst = {
+        event: 'analytics',
+        event_name: 'event3-name',
+        link_url: window.location.href.substring(window.location.origin.length),
+        ui: {
+          'test-3-1': 'test 3-1 value',
+          'test-3-2': 'test 3-2 value',
+          state: 'opened',
+          text: 'some text'
+        }
+      }
+      expect(window.dataLayer).toEqual([expectedFirst])
+
+      var expectedSecond = {
+        event: 'analytics',
+        event_name: 'event3-name',
+        link_url: window.location.href.substring(window.location.origin.length),
+        ui: {
+          'test-3-1': 'test 3-1 value',
+          'test-3-2': 'test 3-2 value',
+          state: 'closed',
+          text: 'some text'
+        }
+      }
+      element.setAttribute('open', '')
+      element.click()
+      expect(window.dataLayer).toEqual([expectedFirst, expectedSecond])
+    })
+  })
+
   describe('doing tracking on an element that contains an expandable element', function () {
     beforeEach(function () {
       var attributes = {
@@ -205,6 +252,58 @@ describe('Google Tag Manager click tracking', function () {
       }
       element.querySelector('[aria-expanded]').setAttribute('aria-expanded', 'true')
       element.querySelector('button').textContent = 'Hide'
+      clickOn.click()
+      expect(window.dataLayer).toEqual([expectedFirst, expectedSecond])
+    })
+  })
+
+  describe('doing tracking on an element that contains an openable element', function () {
+    beforeEach(function () {
+      var attributes = {
+        'test-3-1': 'test 3-1 value',
+        'test-3-2': 'test 3-2 value'
+      }
+      element.innerHTML =
+        '<div data-gtm-event-name="event3-name"' +
+          'data-module="govuk-details"' +
+          'data-gtm-attributes=\'' + JSON.stringify(attributes) + '\'' +
+          'class="clickme"' +
+        '>' +
+          '<div class="nested">Example</div>' +
+        '</div>'
+      document.body.appendChild(element)
+      new GOVUK.Modules.GtmClickTracking(element).init()
+    })
+
+    it('includes the expanded state in the gtm attributes', function () {
+      var clickOn = element.querySelector('.clickme')
+      clickOn.click()
+
+      var expectedFirst = {
+        event: 'analytics',
+        event_name: 'event3-name',
+        link_url: window.location.href.substring(window.location.origin.length),
+        ui: {
+          'test-3-1': 'test 3-1 value',
+          'test-3-2': 'test 3-2 value',
+          state: 'opened',
+          text: 'Example'
+        }
+      }
+      expect(window.dataLayer).toEqual([expectedFirst])
+
+      var expectedSecond = {
+        event: 'analytics',
+        event_name: 'event3-name',
+        link_url: window.location.href.substring(window.location.origin.length),
+        ui: {
+          'test-3-1': 'test 3-1 value',
+          'test-3-2': 'test 3-2 value',
+          state: 'closed',
+          text: 'Example'
+        }
+      }
+      element.querySelector('.nested').setAttribute('open', '')
       clickOn.click()
       expect(window.dataLayer).toEqual([expectedFirst, expectedSecond])
     })
