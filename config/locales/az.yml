@@ -199,5 +199,8 @@ az:
     summary_list:
       delete: Sil
       edit: Dəyiş
+    table:
+      filter_label:
+      message:
     tabs:
       contents: Məzmunlar

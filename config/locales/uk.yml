@@ -207,5 +207,8 @@ uk:
     summary_list:
       delete: Видалити
       edit: Змінити
+    table:
+      filter_label:
+      message:
     tabs:
       contents: Зміст

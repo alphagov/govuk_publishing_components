@@ -200,5 +200,8 @@ kk:
     summary_list:
       delete: Жою
       edit: Өзгерту
+    table:
+      filter_label:
+      message:
     tabs:
       contents: Мазмұны

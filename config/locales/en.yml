@@ -332,5 +332,8 @@ en:
     summary_list:
       delete: Delete
       edit: Change
+    table:
+      filter_label: Search
+      message: That search returned no results.
     tabs:
       contents: Contents

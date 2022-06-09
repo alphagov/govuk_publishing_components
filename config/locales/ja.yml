@@ -196,5 +196,8 @@ ja:
     summary_list:
       delete: 削除
       edit: 変更
+    table:
+      filter_label:
+      message:
     tabs:
       contents: コンテンツ

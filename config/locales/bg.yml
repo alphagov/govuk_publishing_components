@@ -204,5 +204,8 @@ bg:
     summary_list:
       delete: Изтриване
       edit: Промяна
+    table:
+      filter_label:
+      message:
     tabs:
       contents: Съдържание

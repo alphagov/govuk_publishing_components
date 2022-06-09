@@ -198,5 +198,8 @@ fa:
     summary_list:
       delete: حذف
       edit: تغییر
+    table:
+      filter_label:
+      message:
     tabs:
       contents: محتوا

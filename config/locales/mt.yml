@@ -202,5 +202,8 @@ mt:
     summary_list:
       delete: Ħassar
       edit: Biddel
+    table:
+      filter_label:
+      message:
     tabs:
       contents: Werrej

@@ -204,5 +204,8 @@ ru:
     summary_list:
       delete: Удалить
       edit: Изменить
+    table:
+      filter_label:
+      message:
     tabs:
       contents: Содержание

@@ -207,5 +207,8 @@ sl:
     summary_list:
       delete: Izbriši
       edit: Spremeni
+    table:
+      filter_label:
+      message:
     tabs:
       contents: Vsebina
