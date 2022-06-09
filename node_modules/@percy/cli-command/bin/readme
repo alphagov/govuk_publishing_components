@@ -1,0 +1,51 @@
+#!/usr/bin/env node
+
+const fs = require('fs');
+const path = require('path');
+const { formatHelp } = require('@percy/cli-command/dist/help');
+
+const CWD = process.cwd();
+const README = path.join(CWD, 'README.md');
+
+const HELP_USAGE = /^(.*)?(usage:.*)$/gis;
+const CMDS_TMPL = /(<!-- commands -->)(.*)(<!-- commandsstop -->)/is;
+
+async function generateReadmeCommands(pkg) {
+  if (!pkg['@percy/cli']?.commands) return '';
+
+  let sections = [];
+  let toc = [];
+
+  for (let cmdPath of pkg['@percy/cli'].commands) {
+    let { default: command } = require(path.join(CWD, cmdPath));
+    command = { ...command, parent: { name: 'percy' } };
+
+    for (let cmd of [command, ...(command.definition.commands || [])]) {
+      if (!cmd.callback) continue;
+      if (cmd !== command) cmd = { ...cmd, parent: command };
+      if (cmd.parent.parent) cmd.name = `${cmd.parent.name}:${cmd.name}`;
+
+      let title = `\`percy ${cmd.name}\``;
+      let slug = title.slice(1, -1).replace(/\s/g, '-').replace(/:/g, '');
+      toc.push(`* [${title}](#${slug})`);
+
+      let help = await formatHelp(cmd);
+      help = help.replace(HELP_USAGE, '$1```\n$2```');
+      sections.push(`### ${title}\n\n${help}\n`);
+    }
+  }
+
+  return [
+    toc.join('\n'),
+    sections.join('\n')
+  ].join('\n\n');
+}
+
+async function updatePackageReadme() {
+  let pkg = require(path.join(CWD, 'package.json'));
+  let content = fs.readFileSync(README, 'utf8')
+    .replace(CMDS_TMPL, `$1\n${await generateReadmeCommands(pkg)}$3`)
+  fs.writeFileSync(README, content);
+}
+
+updatePackageReadme();
