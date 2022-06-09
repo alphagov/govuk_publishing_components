@@ -204,5 +204,8 @@ pl:
     summary_list:
       delete: Usuń
       edit: Zmień
+    table:
+      filter_label:
+      message:
     tabs:
       contents: Zawartość

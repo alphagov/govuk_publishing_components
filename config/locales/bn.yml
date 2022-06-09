@@ -201,5 +201,8 @@ bn:
     summary_list:
       delete: মুছে ফেলুন
       edit: পরিবর্তন
+    table:
+      filter_label:
+      message:
     tabs:
       contents: বিষয়সূচী

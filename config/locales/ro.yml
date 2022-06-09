@@ -201,5 +201,8 @@ ro:
     summary_list:
       delete: Ștergeți
       edit: Modificați
+    table:
+      filter_label:
+      message:
     tabs:
       contents: Conținut

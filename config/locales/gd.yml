@@ -202,5 +202,8 @@ gd:
     summary_list:
       delete: Scriosadh
       edit: A mhodhnú
+    table:
+      filter_label:
+      message:
     tabs:
       contents: Clár ábhair

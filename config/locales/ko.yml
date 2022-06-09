@@ -195,5 +195,8 @@ ko:
     summary_list:
       delete:
       edit:
+    table:
+      filter_label:
+      message:
     tabs:
       contents:

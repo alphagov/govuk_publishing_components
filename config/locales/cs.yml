@@ -205,5 +205,8 @@ cs:
     summary_list:
       delete: Odstranit
       edit: Změna
+    table:
+      filter_label:
+      message:
     tabs:
       contents: Obsah

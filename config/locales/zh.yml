@@ -198,5 +198,8 @@ zh:
     summary_list:
       delete: 删除
       edit: 更改
+    table:
+      filter_label:
+      message:
     tabs:
       contents: 目录

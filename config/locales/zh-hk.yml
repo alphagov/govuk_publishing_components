@@ -198,5 +198,8 @@ zh-hk:
     summary_list:
       delete: 刪除
       edit: 變更
+    table:
+      filter_label:
+      message:
     tabs:
       contents: 內容

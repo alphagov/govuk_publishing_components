@@ -203,5 +203,8 @@ ka:
     summary_list:
       delete: წაშლა
       edit: შეცვლა
+    table:
+      filter_label:
+      message:
     tabs:
       contents: შინაარსი

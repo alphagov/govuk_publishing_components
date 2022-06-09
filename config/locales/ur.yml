@@ -197,5 +197,8 @@ ur:
     summary_list:
       delete: حذف کریں
       edit: تبدیل کریں
+    table:
+      filter_label:
+      message:
     tabs:
       contents: مشمولات

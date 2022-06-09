@@ -202,5 +202,8 @@ hr:
     summary_list:
       delete: Obriši
       edit: Promijeniti
+    table:
+      filter_label:
+      message:
     tabs:
       contents: Sadržaj
