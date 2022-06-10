@@ -6,10 +6,14 @@
   caption_classes ||= nil
   sortable ||= false
   filterable ||= false
+  label ||= t("components.table.filter_label")
+
+  table_id = "table-id-#{SecureRandom.hex(4)}"
+  filter_count_id = "filter-count-id-#{SecureRandom.hex(4)}"
 %>
 
 <% @table = capture do %>
-  <%= GovukPublishingComponents::AppHelpers::TableHelper.helper(self, caption, {
+  <%= GovukPublishingComponents::AppHelpers::TableHelper.helper(self, caption, table_id, {
       sortable: sortable,
       filterable: filterable,
       caption_classes: caption_classes
@@ -50,19 +54,23 @@
 <% end %>
 
 <% if filterable %>
-  <div data-module="table-filter">
+  <div data-module="table">
     <div class="js-gem-c-table__filter govuk-!-display-none">
       <%= render "govuk_publishing_components/components/input", {
         label: {
-          text: t("components.table.filter_label")
+          text: label
         },
-        name: "filter"
+        name: "filter",
+        controls: table_id,
+        aria_described_by: filter_count_id,
       } %>
+
+      <p id="<%= filter_count_id %>" aria-live="polite" class="js-filter-count govuk-visually-hidden" data-count-text="<%= t("components.table.filter_count") %>"></p>
     </div>
 
     <%= @table %>
 
-    <p class="govuk-body govuk-!-display-none js-gem-c-table__message"><%= t("components.table.message") %></p>
+    <p class="govuk-body govuk-!-display-none js-gem-c-table__message"><%= t("components.table.filter_message") %></p>
   </div>
 <% else %>
   <%= @table %>

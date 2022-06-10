@@ -208,7 +208,8 @@ sl:
       delete: Izbriši
       edit: Spremeni
     table:
+      filter_count:
       filter_label:
-      message:
+      filter_message:
     tabs:
       contents: Vsebina

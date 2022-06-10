@@ -202,7 +202,8 @@ bn:
       delete: মুছে ফেলুন
       edit: পরিবর্তন
     table:
+      filter_count:
       filter_label:
-      message:
+      filter_message:
     tabs:
       contents: বিষয়সূচী

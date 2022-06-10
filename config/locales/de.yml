@@ -205,7 +205,8 @@ de:
       delete: Löschen
       edit: Ändern
     table:
+      filter_count:
       filter_label:
-      message:
+      filter_message:
     tabs:
       contents: Inhalte

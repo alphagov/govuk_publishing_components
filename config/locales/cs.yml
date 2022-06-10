@@ -206,7 +206,8 @@ cs:
       delete: Odstranit
       edit: Změna
     table:
+      filter_count:
       filter_label:
-      message:
+      filter_message:
     tabs:
       contents: Obsah

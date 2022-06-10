@@ -203,7 +203,8 @@ mt:
       delete: Ħassar
       edit: Biddel
     table:
+      filter_count:
       filter_label:
-      message:
+      filter_message:
     tabs:
       contents: Werrej

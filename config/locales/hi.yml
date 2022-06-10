@@ -201,7 +201,8 @@ hi:
       delete: हटाएं
       edit: बदलें
     table:
+      filter_count:
       filter_label:
-      message:
+      filter_message:
     tabs:
       contents: विषय-वस्तु

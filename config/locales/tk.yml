@@ -202,7 +202,8 @@ tk:
       delete: Öçürmek
       edit: Çalyşmak
     table:
+      filter_count:
       filter_label:
-      message:
+      filter_message:
     tabs:
       contents: Mazmuny

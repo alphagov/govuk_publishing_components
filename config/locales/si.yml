@@ -201,7 +201,8 @@ si:
       delete: මකන්න
       edit: වෙනස් කරන්න
     table:
+      filter_count:
       filter_label:
-      message:
+      filter_message:
     tabs:
       contents: අන්තර්ගත
