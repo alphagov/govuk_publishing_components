@@ -149,7 +149,7 @@ describe "Table", type: :view do
       filterable: true,
     )
 
-    assert_select "[data-module='table-filter']"
+    assert_select "[data-module='table']"
     assert_select ".js-gem-c-table__filter"
     assert_select ".js-gem-c-table__message"
   end

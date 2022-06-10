@@ -205,7 +205,8 @@ hy:
       delete: Ջնջել
       edit: Փոխել
     table:
+      filter_count:
       filter_label:
-      message:
+      filter_message:
     tabs:
       contents: Բովանդակություն

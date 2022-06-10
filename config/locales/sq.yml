@@ -201,7 +201,8 @@ sq:
       delete: Fshij
       edit: Ndrysho
     table:
+      filter_count:
       filter_label:
-      message:
+      filter_message:
     tabs:
       contents: Përmbajtje

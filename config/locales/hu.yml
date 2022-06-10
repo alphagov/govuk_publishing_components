@@ -204,7 +204,8 @@ hu:
       delete: Törlés
       edit: Megváltoztatás
     table:
+      filter_count:
       filter_label:
-      message:
+      filter_message:
     tabs:
       contents: Tartalomjegyzék

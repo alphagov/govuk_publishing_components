@@ -201,7 +201,8 @@ fr:
       delete: Supprimer
       edit: Modifier
     table:
+      filter_count:
       filter_label:
-      message:
+      filter_message:
     tabs:
       contents: Contenu

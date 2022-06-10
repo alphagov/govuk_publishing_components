@@ -199,7 +199,8 @@ zh:
       delete: 删除
       edit: 更改
     table:
+      filter_count:
       filter_label:
-      message:
+      filter_message:
     tabs:
       contents: 目录

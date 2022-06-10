@@ -205,7 +205,8 @@ bg:
       delete: Изтриване
       edit: Промяна
     table:
+      filter_count:
       filter_label:
-      message:
+      filter_message:
     tabs:
       contents: Съдържание

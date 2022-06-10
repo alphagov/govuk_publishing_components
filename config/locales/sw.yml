@@ -201,7 +201,8 @@ sw:
       delete: Futa
       edit: Badilisha
     table:
+      filter_count:
       filter_label:
-      message:
+      filter_message:
     tabs:
       contents: Maudhui

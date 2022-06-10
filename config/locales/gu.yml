@@ -201,7 +201,8 @@ gu:
       delete: ડિલીટ કરો
       edit: બદલો
     table:
+      filter_count:
       filter_label:
-      message:
+      filter_message:
     tabs:
       contents: સામગ્રી

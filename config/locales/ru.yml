@@ -205,7 +205,8 @@ ru:
       delete: Удалить
       edit: Изменить
     table:
+      filter_count:
       filter_label:
-      message:
+      filter_message:
     tabs:
       contents: Содержание

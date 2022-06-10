@@ -203,7 +203,8 @@ gd:
       delete: Scriosadh
       edit: A mhodhnú
     table:
+      filter_count:
       filter_label:
-      message:
+      filter_message:
     tabs:
       contents: Clár ábhair
