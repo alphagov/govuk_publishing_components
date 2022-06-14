@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Remove axe-core workaround test ([PR #2882](https://github.com/alphagov/govuk_publishing_components/pull/2882))
+* Move the emergency_banner from static ([PR #2795](https://github.com/alphagov/govuk_publishing_components/pull/2795))
 
 ## 30.0.0
 
