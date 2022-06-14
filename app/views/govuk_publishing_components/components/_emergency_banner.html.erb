@@ -5,6 +5,16 @@
   link_text ||= "More information"
   campaign_class ||= nil
 
+  emergency_banner_helper = GovukPublishingComponents::Presenters::EmergencyBannerHelper.new()
+
+  if !campaign_class
+    raise ArgumentError, "Need to specify an emergency_type"
+  end
+
+  if !emergency_banner_helper.is_a_valid_emergency_type?(campaign_class)
+    raise ArgumentError, "Emergency type #{campaign_class} is not in list of valid emergency types (#{emergency_banner_helper.emergency_types.join(', ')})"
+  end
+
   banner_classes = %w[gem-c-emergency-banner]
   banner_classes << "gem-c-emergency-banner--#{campaign_class}"
 %>
