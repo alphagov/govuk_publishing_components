@@ -158,22 +158,26 @@ describe('Google Tag Manager click tracking', function () {
     })
   })
 
-  describe('doing tracking on an openable element', function () {
+  describe('doing tracking on an details element', function () {
     beforeEach(function () {
       var attributes = {
         'test-3-1': 'test 3-1 value',
         'test-3-2': 'test 3-2 value',
         text: 'some text'
       }
-      element.setAttribute('data-gtm-event-name', 'event3-name')
-      element.setAttribute('data-module', 'govuk-details')
-      element.setAttribute('data-gtm-attributes', JSON.stringify(attributes))
+      element.innerHTML =
+        '<details data-gtm-event-name="event3-name"' +
+          'data-gtm-attributes=\'' + JSON.stringify(attributes) + '\'' +
+          'class="clickme"' +
+        '>' +
+        '</details>'
       document.body.appendChild(element)
       new GOVUK.Modules.GtmClickTracking(element).init()
     })
 
     it('includes the open state in the gtm attributes', function () {
-      element.click()
+      var clickOn = element.querySelector('.clickme')
+      clickOn.click()
 
       var expectedFirst = {
         event: 'analytics',
@@ -199,8 +203,8 @@ describe('Google Tag Manager click tracking', function () {
           text: 'some text'
         }
       }
-      element.setAttribute('open', '')
-      element.click()
+      clickOn.setAttribute('open', '')
+      clickOn.click()
       expect(window.dataLayer).toEqual([expectedFirst, expectedSecond])
     })
   })
@@ -257,7 +261,7 @@ describe('Google Tag Manager click tracking', function () {
     })
   })
 
-  describe('doing tracking on an element that contains an openable element', function () {
+  describe('doing tracking on an element that contains an details element', function () {
     beforeEach(function () {
       var attributes = {
         'test-3-1': 'test 3-1 value',
@@ -265,17 +269,17 @@ describe('Google Tag Manager click tracking', function () {
       }
       element.innerHTML =
         '<div data-gtm-event-name="event3-name"' +
-          'data-module="govuk-details"' +
           'data-gtm-attributes=\'' + JSON.stringify(attributes) + '\'' +
           'class="clickme"' +
         '>' +
-          '<div class="nested">Example</div>' +
+          '<details class="nested">Example</details>' +
         '</div>'
       document.body.appendChild(element)
       new GOVUK.Modules.GtmClickTracking(element).init()
     })
 
-    it('includes the expanded state in the gtm attributes', function () {
+    it('includes the open state in the gtm attributes', function () {
+
       var clickOn = element.querySelector('.clickme')
       clickOn.click()
 
@@ -305,6 +309,7 @@ describe('Google Tag Manager click tracking', function () {
       }
       element.querySelector('.nested').setAttribute('open', '')
       clickOn.click()
+
       expect(window.dataLayer).toEqual([expectedFirst, expectedSecond])
     })
   })
