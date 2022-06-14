@@ -279,7 +279,6 @@ describe('Google Tag Manager click tracking', function () {
     })
 
     it('includes the open state in the gtm attributes', function () {
-
       var clickOn = element.querySelector('.clickme')
       clickOn.click()
 

@@ -31,17 +31,16 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           since details deletes the 'open' attribute when closed, we need this boolean, otherwise every element which
           doesn't contain an 'open' attr would be pushed to gtm as a closed element.
         */
-          var detailsElement = (target.tagName.toLowerCase() === 'details') ? target : target.querySelector('details')
+        var detailsElement = (target.tagName.toLowerCase() === 'details') ? target : target.querySelector('details')
 
-          if (ariaExpanded) {
-            data.ui.text = data.ui.text || target.innerText
-            data.ui.state = (ariaExpanded === 'false') ? 'opened' : 'closed'
-          }
-          else if (detailsElement) {
-            data.ui.text = data.ui.text || detailsElement.textContent
-            var openAttribute = detailsElement.getAttribute('open');
-            data.ui.state = (openAttribute == null) ? 'opened' : 'closed'
-          }
+        if (ariaExpanded) {
+          data.ui.text = data.ui.text || target.innerText
+          data.ui.state = (ariaExpanded === 'false') ? 'opened' : 'closed'
+        } else if (detailsElement) {
+          data.ui.text = data.ui.text || detailsElement.textContent
+          var openAttribute = detailsElement.getAttribute('open')
+          data.ui.state = (openAttribute == null) ? 'opened' : 'closed'
+        }
 
         window.dataLayer.push(data)
       }
