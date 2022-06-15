@@ -13,6 +13,13 @@
             referrer: this.getReferrer(),
             title: this.getTitle(),
             status_code: this.getStatusCode()
+          },
+          publishing: {
+            document_type: this.getMetaContent('format'),
+            publishing_application: this.getMetaContent('publishing-application'),
+            rendering_application: this.getMetaContent('rendering-application'),
+            schema_name: this.getMetaContent('schema-name'),
+            content_id: this.getMetaContent('content-id')
           }
         }
         window.dataLayer.push(data)
@@ -38,6 +45,15 @@
         return window.httpStatusCode
       } else {
         return 200
+      }
+    },
+
+    getMetaContent: function (name) {
+      var tag = document.querySelector('meta[name="govuk:' + name + '"]')
+      if (tag) {
+        return tag.getAttribute('content').toLowerCase()
+      } else {
+        return 'n/a'
       }
     }
   }
