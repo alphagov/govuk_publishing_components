@@ -28,6 +28,19 @@
             themes: this.getMetaContent('themes'),
             taxon_slugs: this.getMetaContent('taxon-slugs'),
             taxon_ids: this.getMetaContent('taxon-ids')
+          },
+          content: {
+            language: this.getLanguage(),
+            history: this.getHistory(),
+            withdrawn: this.getWithDrawn(),
+            first_published_at: this.getMetaContent('first-published-at'),
+            updated_at: this.getMetaContent('updated-at'),
+            public_updated_at: this.getMetaContent('public-updated-at'),
+            publishing_government: this.getMetaContent('publishing-government'),
+            political_status: this.getMetaContent('political-status'),
+            primary_publishing_organisation: this.getMetaContent('primary-publishing-organisation'),
+            organisations: this.getMetaContent('analytics:organisations'),
+            world_locations: this.getMetaContent('analytics:world-locations')
           }
         }
         window.dataLayer.push(data)
@@ -59,10 +72,25 @@
     getMetaContent: function (name) {
       var tag = document.querySelector('meta[name="govuk:' + name + '"]')
       if (tag) {
-        return tag.getAttribute('content').toLowerCase()
+        return tag.getAttribute('content')
       } else {
         return 'n/a'
       }
+    },
+
+    getLanguage: function () {
+      var html = document.querySelector('html')
+      return html.getAttribute('lang') || 'n/a'
+    },
+
+    getHistory: function () {
+      var history = this.getMetaContent('content-has-history')
+      return (history === 'true') ? 'true' : 'false'
+    },
+
+    getWithDrawn: function () {
+      var withdrawn = this.getMetaContent('withdrawn')
+      return (withdrawn === 'withdrawn') ? 'true' : 'false'
     }
   }
 

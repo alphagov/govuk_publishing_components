@@ -30,6 +30,19 @@ describe('Google Tag Manager page view tracking', function () {
         themes: 'n/a',
         taxon_slugs: 'n/a',
         taxon_ids: 'n/a'
+      },
+      content: {
+        language: 'n/a',
+        history: 'false',
+        withdrawn: 'false',
+        first_published_at: 'n/a',
+        updated_at: 'n/a',
+        public_updated_at: 'n/a',
+        publishing_government: 'n/a',
+        political_status: 'n/a',
+        primary_publishing_organisation: 'n/a',
+        organisations: 'n/a',
+        world_locations: 'n/a'
       }
     }
     window.dataLayer = []
@@ -43,6 +56,8 @@ describe('Google Tag Manager page view tracking', function () {
     for (var i = 0; i < metas.length; i++) {
       head.removeChild(metas[i])
     }
+    var html = document.querySelector('html')
+    html.removeAttribute('lang')
   })
 
   function createMetaTags (key, value) {
@@ -143,6 +158,92 @@ describe('Google Tag Manager page view tracking', function () {
       expected.taxonomy[tag.gtmName] = tag.value
     }
 
+    GOVUK.Gtm.sendPageView()
+    expect(window.dataLayer[0]).toEqual(expected)
+  })
+
+  it('returns a pageview with a language', function () {
+    var html = document.querySelector('html')
+    html.setAttribute('lang', 'wakandan')
+    expected.content.language = 'wakandan'
+
+    GOVUK.Gtm.sendPageView()
+    expect(window.dataLayer[0]).toEqual(expected)
+  })
+
+  it('returns a pageview with history', function () {
+    createMetaTags('content-has-history', 'true')
+    expected.content.history = 'true'
+    GOVUK.Gtm.sendPageView()
+    expect(window.dataLayer[0]).toEqual(expected)
+  })
+
+  it('returns a pageview without history', function () {
+    createMetaTags('content-has-history', 'banana')
+    expected.content.history = 'false'
+    GOVUK.Gtm.sendPageView()
+    expect(window.dataLayer[0]).toEqual(expected)
+  })
+
+  it('returns a pageview on a withdrawn page', function () {
+    createMetaTags('withdrawn', 'withdrawn')
+    expected.content.withdrawn = 'true'
+    GOVUK.Gtm.sendPageView()
+    expect(window.dataLayer[0]).toEqual(expected)
+  })
+
+  it('returns a pageview on a page with a first published date', function () {
+    createMetaTags('first-published-at', '2022-03-28T19:11:00.000+00:00')
+    expected.content.first_published_at = '2022-03-28T19:11:00.000+00:00'
+    GOVUK.Gtm.sendPageView()
+    expect(window.dataLayer[0]).toEqual(expected)
+  })
+
+  it('returns a pageview on a page with a last updated date', function () {
+    createMetaTags('updated-at', '2021-03-28T19:11:00.000+00:00')
+    expected.content.updated_at = '2021-03-28T19:11:00.000+00:00'
+    GOVUK.Gtm.sendPageView()
+    expect(window.dataLayer[0]).toEqual(expected)
+  })
+
+  it('returns a pageview on a page with a last public updated date', function () {
+    createMetaTags('public-updated-at', '2020-03-28T19:11:00.000+00:00')
+    expected.content.public_updated_at = '2020-03-28T19:11:00.000+00:00'
+    GOVUK.Gtm.sendPageView()
+    expect(window.dataLayer[0]).toEqual(expected)
+  })
+
+  it('returns a pageview on a page marked with a publishing government', function () {
+    createMetaTags('publishing-government', 'labour')
+    expected.content.publishing_government = 'labour'
+    GOVUK.Gtm.sendPageView()
+    expect(window.dataLayer[0]).toEqual(expected)
+  })
+
+  it('returns a pageview on a page marked with a political status', function () {
+    createMetaTags('political-status', 'ongoing')
+    expected.content.political_status = 'ongoing'
+    GOVUK.Gtm.sendPageView()
+    expect(window.dataLayer[0]).toEqual(expected)
+  })
+
+  it('returns a pageview on a page marked with a primary publishing organisation', function () {
+    createMetaTags('primary-publishing-organisation', 'Home Office')
+    expected.content.primary_publishing_organisation = 'Home Office'
+    GOVUK.Gtm.sendPageView()
+    expect(window.dataLayer[0]).toEqual(expected)
+  })
+
+  it('returns a pageview on a page marked with ids for contributing organisations', function () {
+    createMetaTags('analytics:organisations', 'some organisations')
+    expected.content.organisations = 'some organisations'
+    GOVUK.Gtm.sendPageView()
+    expect(window.dataLayer[0]).toEqual(expected)
+  })
+
+  it('returns a pageview on a page marked with world locations', function () {
+    createMetaTags('analytics:world-locations', 'some world locations')
+    expected.content.world_locations = 'some world locations'
     GOVUK.Gtm.sendPageView()
     expect(window.dataLayer[0]).toEqual(expected)
   })
