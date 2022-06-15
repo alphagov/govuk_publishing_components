@@ -42,7 +42,4 @@ examples:
       heading: "His Royal Highness Henry VIII"
       short_description: "1491 to 1547"
       link: "https://www.gov.uk/"
-    embed: |
-      <div class="homepage">
-        <%= component %>
-      </div>
+      homepage: true

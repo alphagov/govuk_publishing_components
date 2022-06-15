@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Check if primary_publisher nil OR empty in meta_tags ([PR #2829](https://github.com/alphagov/govuk_publishing_components/pull/2829))
+* Move the emergency_banner from static ([PR #2795](https://github.com/alphagov/govuk_publishing_components/pull/2795))
 
 ## 29.12.0
 
