@@ -12,6 +12,7 @@ describe "Emergency Banner", type: :view do
       short_description: options[:short_description],
       link: options[:link],
       link_text: options[:link_text],
+      homepage: options[:homepage],
     }
   end
 
@@ -28,6 +29,13 @@ describe "Emergency Banner", type: :view do
   it "renders banner with local-emergency class" do
     render_component(emergency_banner_attributes({ campaign_class: "local-emergency" }))
     assert_select ".gem-c-emergency-banner--local-emergency"
+  end
+
+  it "renders banner with homepage classes if homepage set" do
+    render_component(emergency_banner_attributes({ campaign_class: "local-emergency", short_description: "short description", homepage: true }))
+    assert_select ".gem-c-emergency-banner--homepage"
+    assert_select ".gem-c-emergency-banner__heading--homepage"
+    assert_select ".gem-c-emergency-banner__description--homepage"
   end
 
   it "renders no link if link not specified" do

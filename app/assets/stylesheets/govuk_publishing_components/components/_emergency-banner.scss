@@ -8,27 +8,27 @@
   @include govuk-media-query($from: tablet) {
     padding: govuk-spacing(6) 0;
   }
+}
 
-  .homepage & {
-    border-bottom: govuk-spacing(1) solid govuk-colour("white");
-    border-top: govuk-spacing(1) solid govuk-colour("white");
-    margin-bottom: (0 - govuk-spacing(2));
-    margin-top: 0;
-    position: relative;
-    z-index: 10;
-  }
+.gem-c-emergency-banner--homepage {
+  border-bottom: govuk-spacing(1) solid govuk-colour("white");
+  border-top: govuk-spacing(1) solid govuk-colour("white");
+  margin-bottom: (0 - govuk-spacing(2));
+  margin-top: 0;
+  position: relative;
+  z-index: 10;
 }
 
 .gem-c-emergency-banner__heading {
   @include govuk-font(24, $weight: bold);
   margin: 0;
+}
 
-  .homepage & {
-    @include govuk-font(48, $weight: bold);
+.gem-c-emergency-banner__heading--homepage {
+  @include govuk-font(48, $weight: bold);
 
-    @include govuk-media-query($from: tablet) {
-      margin-bottom: govuk-spacing(4);
-    }
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: govuk-spacing(4);
   }
 }
 
@@ -41,23 +41,23 @@
   &:last-child {
     margin-bottom: 0;
   }
+}
 
-  .homepage & {
-    margin: govuk-spacing(4) 0;
-  }
+.gem-c-emergency-banner__description--homepage {
+  margin: govuk-spacing(4) 0;
 }
 
 .gem-c-emergency-banner__link {
   @include govuk-font(19);
+}
 
-  &.govuk-link:link,
-  &.govuk-link:visited {
-    color: govuk-colour("white");
-  }
+.gem-c-emergency-banner__link:link,
+.gem-c-emergency-banner__link:visited {
+  color: govuk-colour("white");
+}
 
-  &.govuk-link:focus {
-    color: $govuk-focus-text-colour;
-  }
+.gem-c-emergency-banner__link:focus {
+  color: $govuk-focus-text-colour;
 }
 
 .gem-c-emergency-banner--notable-death {

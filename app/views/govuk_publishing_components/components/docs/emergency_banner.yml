@@ -20,6 +20,7 @@ examples:
       short_description: "1491 to 1547"
       link_text: "Override Link Text"
       link: "https://www.gov.uk/"
+      homepage: true
   national_emergency:
     description: |
       National emergency (level 1 or category 2)
