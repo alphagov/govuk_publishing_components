@@ -20,6 +20,14 @@
             rendering_application: this.getMetaContent('rendering-application'),
             schema_name: this.getMetaContent('schema-name'),
             content_id: this.getMetaContent('content-id')
+          },
+          taxonomy: {
+            section: this.getMetaContent('section'),
+            taxon_slug: this.getMetaContent('taxon-slug'),
+            taxon_id: this.getMetaContent('taxon-id'),
+            themes: this.getMetaContent('themes'),
+            taxon_slugs: this.getMetaContent('taxon-slugs'),
+            taxon_ids: this.getMetaContent('taxon-ids')
           }
         }
         window.dataLayer.push(data)

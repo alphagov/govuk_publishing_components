@@ -22,6 +22,14 @@ describe('Google Tag Manager page view tracking', function () {
         rendering_application: 'n/a',
         schema_name: 'n/a',
         content_id: 'n/a'
+      },
+      taxonomy: {
+        section: 'n/a',
+        taxon_slug: 'n/a',
+        taxon_id: 'n/a',
+        themes: 'n/a',
+        taxon_slugs: 'n/a',
+        taxon_ids: 'n/a'
       }
     }
     window.dataLayer = []
@@ -89,6 +97,50 @@ describe('Google Tag Manager page view tracking', function () {
       var tag = tags[i]
       createMetaTags(tag.tagName, tag.value)
       expected.publishing[tag.gtmName] = tag.value
+    }
+
+    GOVUK.Gtm.sendPageView()
+    expect(window.dataLayer[0]).toEqual(expected)
+  })
+
+  it('returns a page view with specific taxonomy information', function () {
+    var tags = [
+      {
+        gtmName: 'section',
+        tagName: 'section',
+        value: 'this section'
+      },
+      {
+        gtmName: 'taxon_slug',
+        tagName: 'taxon-slug',
+        value: 'this taxon slug'
+      },
+      {
+        gtmName: 'taxon_id',
+        tagName: 'taxon-id',
+        value: 'this taxon id'
+      },
+      {
+        gtmName: 'themes',
+        tagName: 'themes',
+        value: 'this theme'
+      },
+      {
+        gtmName: 'taxon_slugs',
+        tagName: 'taxon-slugs',
+        value: 'this taxon slugs'
+      },
+      {
+        gtmName: 'taxon_ids',
+        tagName: 'taxon-ids',
+        value: 'this taxon ids'
+      }
+    ]
+
+    for (var i = 0; i < tags.length; i++) {
+      var tag = tags[i]
+      createMetaTags(tag.tagName, tag.value)
+      expected.taxonomy[tag.gtmName] = tag.value
     }
 
     GOVUK.Gtm.sendPageView()
