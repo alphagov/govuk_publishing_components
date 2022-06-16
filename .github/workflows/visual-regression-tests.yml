@@ -14,7 +14,7 @@ jobs:
           bundler-cache: true # Also runs `bundle install`
       - uses: actions/setup-node@v3.3.0
         with:
-          node-version: "12"
+          node-version: lts/* # use the latest LTS release
           cache: yarn
       - run: yarn install --frozen-lockfile
       - run: npx percy exec -- bundle exec rspec --tag visual_regression
