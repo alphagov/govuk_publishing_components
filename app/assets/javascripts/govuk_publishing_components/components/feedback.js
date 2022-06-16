@@ -142,6 +142,19 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       '<h2>Sorry, we’re unable to send your message as you haven’t given us any information.</h2>',
       ' <p>Please tell us what you were doing or what went wrong</p>'
     ].join('')
+
+    var honeyPot = document.createElement('input')
+    honeyPot.setAttribute('type', 'hidden')
+    honeyPot.setAttribute('name', 'token')
+    var timer = 0;
+    honeyPot.setAttribute('value', timer)
+
+    var timerUpdater = setInterval( function() {
+        timer = timer + 0.5;
+        honeyPot.setAttribute('value', timer)
+    }, 500);
+    this.somethingIsWrongForm.appendChild(honeyPot)
+
   }
 
   Feedback.prototype.setHiddenValuesNotUsefulForm = function (gaClientId) {
