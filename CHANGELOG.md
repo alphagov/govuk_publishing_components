@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add gem-track-click to specific sections of layout_footer ([PR #2800](https://github.com/alphagov/govuk_publishing_components/pull/2800))
+* Change menubar P elements to use H elements ([PR #2817](https://github.com/alphagov/govuk_publishing_components/pull/2817))
 
 ## 29.11.0
 
