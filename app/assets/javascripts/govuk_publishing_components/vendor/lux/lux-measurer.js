@@ -175,8 +175,8 @@ if (
 var measureHTTPProtocol = function () {
   var getEntriesByType = performance.getEntriesByType('navigation')
 
-  if (getEntriesByType.length > 0) {
-    var httpProtocol = JSON.parse(JSON.stringify(performance.getEntriesByType('navigation')[0].nextHopProtocol))
+  if (typeof getEntriesByType !== 'undefined' && getEntriesByType.length > 0) {
+    var httpProtocol = getEntriesByType[0].nextHopProtocol
     LUX.addData("http-protocol", httpProtocol)
   }
 }

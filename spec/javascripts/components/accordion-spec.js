@@ -51,10 +51,20 @@ describe('Accordion component', function () {
     document.body.removeChild(container)
   })
 
-  it('does something', function () {
-    accordion.setAttribute('data-show-all-attributes', '{"module":"example","track-action":"click"}')
+  it('applies given data attributes to the show/hide all link', function () {
+    var object = {
+      ui: {
+        type: 'type value',
+        section: 'section value'
+      }
+    }
+    var wrappingObject = {
+      'gtm-event-name': 'example',
+      'show-all-attributes': JSON.stringify(object)
+    }
+    accordion.setAttribute('data-show-all-attributes', JSON.stringify(wrappingObject))
     startAccordion()
-    expect(document.querySelector('.govuk-accordion__show-all').getAttribute('data-module')).toEqual('example')
-    expect(document.querySelector('.govuk-accordion__show-all').getAttribute('data-track-action')).toEqual('click')
+    expect(document.querySelector('.govuk-accordion__show-all').getAttribute('data-gtm-event-name')).toEqual('example')
+    expect(document.querySelector('.govuk-accordion__show-all').getAttribute('data-show-all-attributes')).toEqual(JSON.stringify(object))
   })
 })

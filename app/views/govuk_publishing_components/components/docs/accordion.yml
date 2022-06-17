@@ -195,11 +195,8 @@ examples:
           gtm: gtm-accordion
           ga: ga-accordion
       data_attributes_show_all:
-        module: example
-        track-action: click
-        ui:
-          type: test
-          text: something
+        gtm-event-name: example
+        gtm-attributes: "{ 'ui': { 'type': 'type value', 'section': 'section value' } }"
       items:
         - heading:
             text: Writing well for the web
@@ -337,6 +334,8 @@ examples:
       To switch on Google Analytics for each section, on click, pass `track_sections: true` the values passed on open will be
       `Event Action: accordionOpened` / `accordionClosed` `Event Category: pageElementInteraction` and the `Event Label` being the heading text.
 
+      If `track_options` in an item is set, then it is possible to pass a custom dimension when the section is clicked.
+
       (`track_show_all_clicks: true` can be added to track the "Show all sections" button as well, if required)
     data:
       track_sections: true
@@ -346,6 +345,9 @@ examples:
             id: writing-well-for-the-web-3
           content:
             html: <p class="govuk-body">This is content for accordion 1 of 2</p><p class="govuk-body">This content contains a <a href="#anchor-nav-test" class="govuk-link">link</a></p>
+          data_attributes:
+            track_options:
+              dimension114: 1
         - heading:
             text: Writing well for specialists
           content:
