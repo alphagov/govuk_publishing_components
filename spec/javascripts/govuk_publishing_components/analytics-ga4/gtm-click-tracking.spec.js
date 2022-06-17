@@ -158,7 +158,7 @@ describe('Google Tag Manager click tracking', function () {
     })
   })
 
-  describe('doing tracking on an details element', function () {
+  describe('doing tracking on a details element', function () {
     beforeEach(function () {
       var attributes = {
         'test-3-1': 'test 3-1 value',

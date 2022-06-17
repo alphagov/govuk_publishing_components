@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add gem-track-click to specific sections of layout_footer ([PR #2800](https://github.com/alphagov/govuk_publishing_components/pull/2800))
+* Add gtm click tracking for details component
 
 ## 29.11.0
 
