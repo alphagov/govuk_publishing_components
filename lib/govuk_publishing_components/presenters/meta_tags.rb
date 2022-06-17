@@ -39,6 +39,12 @@ module GovukPublishingComponents
         meta_tags["govuk:content-has-history"] = "true" if has_content_history?
         meta_tags["govuk:static-analytics:strip-dates"] = "true" if should_strip_dates_pii?(content_item, local_assigns)
         meta_tags["govuk:static-analytics:strip-postcodes"] = "true" if should_strip_postcode_pii?(content_item, local_assigns)
+        meta_tags["govuk:first-published-at"] = content_item[:first_published_at] if content_item[:first_published_at]
+        meta_tags["govuk:updated-at"] = content_item[:updated_at] if content_item[:updated_at]
+        meta_tags["govuk:public-updated-at"] = content_item[:public_updated_at] if content_item[:public_updated_at]
+        primary_publisher = content_item.dig(:links, :primary_publishing_organisation)
+        primary_publisher = primary_publisher.first[:title] if primary_publisher
+        meta_tags["govuk:primary-publishing-organisation"] = primary_publisher if primary_publisher
 
         meta_tags
       end
