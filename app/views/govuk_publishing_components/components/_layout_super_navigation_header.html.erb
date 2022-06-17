@@ -15,12 +15,11 @@
   hide_navigation_menu_text = t("components.layout_super_navigation_header.menu_toggle_label.hide", :label => "navigation")
   show_navigation_menu_text = t("components.layout_super_navigation_header.menu_toggle_label.show", :label => "navigation")
 %>
-<header role="banner" class="gem-c-layout-super-navigation-header">
+<header role="banner" class="gem-c-layout-super-navigation-header" data-module="gem-track-click" data-track-links-only>
   <div class="gem-c-layout-super-navigation-header__container govuk-width-container govuk-clearfix">
     <div class="gem-c-layout-super-navigation-header__header-logo">
       <a
         class="govuk-header__link govuk-header__link--homepage"
-        data-module="gem-track-click"
         data-track-action="logoLink"
         data-track-category="headerClicked"
         data-track-label="<%= logo_link %>"
@@ -100,7 +99,6 @@
               <%= link_to link[:label], link[:href], {
                 class: "gem-c-layout-super-navigation-header__navigation-item-link",
                 data: {
-                  module: "gem-track-click",
                   track_action: "#{tracking_label}Link",
                   track_category: "headerClicked",
                   track_label: link[:href],
@@ -159,7 +157,6 @@
                                 <%= link_to item[:label], item[:href], {
                                   class: link_classes,
                                   data: {
-                                    module: "gem-track-click",
                                     track_action: "#{tracking_label}Link",
                                     track_category: "headerClicked",
                                     track_label: item[:href],
@@ -183,7 +180,6 @@
                                   "gem-c-layout-super-navigation-header__navigation-second-footer-link",
                                 ],
                                 data: {
-                                  module: "gem-track-click",
                                   track_action: "#{tracking_label}Link",
                                   track_category: "headerClicked",
                                   track_label: item[:href],
@@ -312,7 +308,6 @@
                         "gem-c-layout-super-navigation-header__popular-link",
                       ],
                       data: {
-                        module: "gem-track-click",
                         track_action: "popularLink",
                         track_category: "headerClicked",
                         track_label: popular_link[:href],
