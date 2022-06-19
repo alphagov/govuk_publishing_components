@@ -91,7 +91,7 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
     var $expanded = this.getContainingSection($section)
     var $parent = $header.parentElement
 
-    // manuals-frontend features:
+    // government-frontend features (inherited from manuals-frontend):
     // Should the target anchor link be within the same page, open section - navigate normally
     // Should the target anchor link be within a different, closed section, open this section
     // Should the target anchor link be within a different page and different, closed section open this section

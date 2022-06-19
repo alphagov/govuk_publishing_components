@@ -15,7 +15,6 @@ module GovukPublishingComponents
         govspeak-preview
         info-frontend
         licence-finder
-        manuals-frontend
         release
         search-admin
         service-manual-frontend
