@@ -118,8 +118,8 @@ describe('Google Tag Manager click tracking', function () {
         'test-3-2': 'test 3-2 value',
         text: 'some text'
       }
+      element.classList.add('gem-c-accordion')
       element.setAttribute('data-gtm-event-name', 'event3-name')
-      element.setAttribute('data-module', 'govuk-accordion gem-accordion')
       element.setAttribute('data-gtm-attributes', JSON.stringify(attributes))
       element.setAttribute('aria-expanded', 'false')
       document.body.appendChild(element)
@@ -153,7 +153,6 @@ describe('Google Tag Manager click tracking', function () {
           text: 'some text'
         }
       }
-      element.setAttribute('data-module', 'gem-accordion govuk-accordion')
       element.setAttribute('aria-expanded', 'true')
       element.click()
       expect(window.dataLayer).toEqual([expectedFirst, expectedSecond])
@@ -220,8 +219,7 @@ describe('Google Tag Manager click tracking', function () {
       element.innerHTML =
         '<div data-gtm-event-name="event3-name"' +
           'data-gtm-attributes=\'' + JSON.stringify(attributes) + '\'' +
-          'class="clickme"' +
-          'data-module="govuk-accordion gem-accordion"' +
+          'class="gem-c-accordion"' +
         '>' +
           '<button aria-expanded="false">Show</button>' +
         '</div>'
@@ -230,7 +228,7 @@ describe('Google Tag Manager click tracking', function () {
     })
 
     it('includes the expanded state in the gtm attributes', function () {
-      var clickOn = element.querySelector('.clickme')
+      var clickOn = element.querySelector('.gem-c-accordion')
       clickOn.click()
 
       var expectedFirst = {
@@ -257,7 +255,6 @@ describe('Google Tag Manager click tracking', function () {
           text: 'Hide'
         }
       }
-      clickOn.setAttribute('data-module', 'gem-accordion govuk-accordion')
       element.querySelector('[aria-expanded]').setAttribute('aria-expanded', 'true')
       element.querySelector('button').textContent = 'Hide'
       clickOn.click()
@@ -322,7 +319,7 @@ describe('Google Tag Manager click tracking', function () {
       element.innerHTML = `
       <div data-gtm-event-name="event3-name" class="clickme">
         <div class='content'>Content</div>
-        <div class='accoridon' data-module="govuk-accordion gem-accordion">
+        <div class='accoridon' class='gem-c-accordion'">
           <button aria-expanded="false">Show</button>
         </div>
       </div>`

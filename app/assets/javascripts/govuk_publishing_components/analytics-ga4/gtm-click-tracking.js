@@ -27,7 +27,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         }
 
         // Ensure it only tracks aria-expanded in an accordion element, instead of in any child of the clicked element
-        if (target.closest('[data-module="govuk-accordion gem-accordion"]') || target.closest('[data-module="gem-accordion govuk-accordion"]')) {
+        if (target.closest('.gem-c-accordion')) {
           var ariaExpanded = this.getClosestAttribute(target, 'aria-expanded')
         }
 
