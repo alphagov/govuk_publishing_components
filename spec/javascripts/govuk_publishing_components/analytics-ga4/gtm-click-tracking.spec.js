@@ -119,6 +119,7 @@ describe('Google Tag Manager click tracking', function () {
         text: 'some text'
       }
       element.setAttribute('data-gtm-event-name', 'event3-name')
+      element.setAttribute('data-module', 'govuk-accordion gem-accordion')
       element.setAttribute('data-gtm-attributes', JSON.stringify(attributes))
       element.setAttribute('aria-expanded', 'false')
       document.body.appendChild(element)
@@ -152,6 +153,7 @@ describe('Google Tag Manager click tracking', function () {
           text: 'some text'
         }
       }
+      element.setAttribute('data-module', 'gem-accordion govuk-accordion')
       element.setAttribute('aria-expanded', 'true')
       element.click()
       expect(window.dataLayer).toEqual([expectedFirst, expectedSecond])
@@ -209,7 +211,7 @@ describe('Google Tag Manager click tracking', function () {
     })
   })
 
-  describe('doing tracking on an element that contains an expandable element', function () {
+  describe('doing tracking on an accordion element that contains an expandable element', function () {
     beforeEach(function () {
       var attributes = {
         'test-3-1': 'test 3-1 value',
@@ -219,6 +221,7 @@ describe('Google Tag Manager click tracking', function () {
         '<div data-gtm-event-name="event3-name"' +
           'data-gtm-attributes=\'' + JSON.stringify(attributes) + '\'' +
           'class="clickme"' +
+          'data-module="govuk-accordion gem-accordion"' +
         '>' +
           '<button aria-expanded="false">Show</button>' +
         '</div>'
@@ -254,6 +257,7 @@ describe('Google Tag Manager click tracking', function () {
           text: 'Hide'
         }
       }
+      clickOn.setAttribute('data-module', 'gem-accordion govuk-accordion')
       element.querySelector('[aria-expanded]').setAttribute('aria-expanded', 'true')
       element.querySelector('button').textContent = 'Hide'
       clickOn.click()
@@ -310,6 +314,46 @@ describe('Google Tag Manager click tracking', function () {
       clickOn.click()
 
       expect(window.dataLayer).toEqual([expectedFirst, expectedSecond])
+    })
+  })
+
+  describe('doing tracking on an clicked parent element containing a nested accordion', function () {
+    beforeEach(function () {
+      element.innerHTML = `
+      <div data-gtm-event-name="event3-name" class="clickme">
+        <div class='content'>Content</div>
+        <div class='accoridon' data-module="govuk-accordion gem-accordion">
+          <button aria-expanded="false">Show</button>
+        </div>
+      </div>`
+      document.body.appendChild(element)
+      new GOVUK.Modules.GtmClickTracking(element).init()
+    })
+
+    it('should not track the aria-expanded state', function () {
+      var clickOn = element.querySelector('.clickme')
+      clickOn.click()
+      expect(window.dataLayer[0].ui.state).toEqual(undefined)
+    })
+  })
+
+  describe('doing tracking on an clicked parent element containing a details element', function () {
+    beforeEach(function () {
+      element.innerHTML = `
+      <div data-gtm-event-name="event3-name" class="clickme">
+        <div class='content'>Content</div>
+        <details>
+          Details element
+        </details>
+      </div>`
+      document.body.appendChild(element)
+      new GOVUK.Modules.GtmClickTracking(element).init()
+    })
+
+    it('should not track the open/closed state', function () {
+      var clickOn = element.querySelector('.clickme')
+      clickOn.click()
+      expect(window.dataLayer[0].ui.state).toEqual(undefined)
     })
   })
 })
