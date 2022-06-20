@@ -11,6 +11,7 @@
 
 * Remove accessible format request pilot support ([PR #2826](https://github.com/alphagov/govuk_publishing_components/pull/2826))
 * GTM analytics add page views ([PR #2814](https://github.com/alphagov/govuk_publishing_components/pull/2814))
+* Add id attribute to error alert component ([PR #2825](https://github.com/alphagov/govuk_publishing_components/pull/2825))
 * Add gem-track-click to specific sections of layout_footer ([PR #2800](https://github.com/alphagov/govuk_publishing_components/pull/2800))
 * Change menubar P elements to use H elements ([PR #2817](https://github.com/alphagov/govuk_publishing_components/pull/2817))
 * Add Options to Accordion Section Tracking ([PR #2813](https://github.com/alphagov/govuk_publishing_components/pull/2813))
