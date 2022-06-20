@@ -12,6 +12,7 @@
 * Add gem-track-click to specific sections of layout_footer ([PR #2800](https://github.com/alphagov/govuk_publishing_components/pull/2800))
 * Change menubar P elements to use H elements ([PR #2817](https://github.com/alphagov/govuk_publishing_components/pull/2817))
 * Add Options to Accordion Section Tracking ([PR #2813](https://github.com/alphagov/govuk_publishing_components/pull/2813))
+* Add gtm click tracking for details component ([PR #2811](https://github.com/alphagov/govuk_publishing_components/pull/2811/))
 
 ## 29.11.0
 
