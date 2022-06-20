@@ -86,20 +86,6 @@ describe "Attachment", type: :view do
     assert_select "a[href='mailto:defra.helpline@defra.gsi.gov.uk']"
   end
 
-  it "shows a link to the accesible format request form if the contact email is in the pilot, and an owning document content id and attachment id are provided" do
-    render_component(
-      attachment: {
-        title: "Attachment",
-        url: "attachment",
-        attachment_id: "123",
-        owning_document_content_id: "abc_456",
-        content_type: "application/vnd.oasis.opendocument.spreadsheet",
-        alternative_format_contact_email: "govuk_publishing_components@example.com",
-      },
-    )
-    assert_select "a[href='/contact/govuk/request-accessible-format?content_id=abc_456&attachment_id=123']", text: "Request an accessible format of this document"
-  end
-
   it "does not show opendocument metadata if disabled" do
     render_component(
       attachment: {

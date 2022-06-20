@@ -223,40 +223,4 @@ RSpec.describe GovukPublishingComponents::Presenters::AttachmentHelper do
       expect(attachment.is_official_document).to be false
     end
   end
-
-  describe "#display_accessible_format_request_form_link?" do
-    it "returns true if the attachment id and owning document content id are provided and the alternative email address is in the pilot" do
-      attachment = described_class.new(
-        attachment_id: "123",
-        owning_document_content_id: "456",
-        alternative_format_contact_email: "govuk_publishing_components@example.com",
-      )
-      expect(attachment.display_accessible_format_request_form_link?).to be true
-    end
-
-    it "returns false if the attachment id is not provided" do
-      attachment = described_class.new(
-        owning_document_content_id: "456",
-        alternative_format_contact_email: "govuk_publishing_components@example.com",
-      )
-      expect(attachment.display_accessible_format_request_form_link?).to be false
-    end
-
-    it "returns false if the owning document content id is not provided" do
-      attachment = described_class.new(
-        attachment_id: "123",
-        alternative_format_contact_email: "govuk_publishing_components@example.com",
-      )
-      expect(attachment.display_accessible_format_request_form_link?).to be false
-    end
-
-    it "returns false if the alternative email address is not on the pilot" do
-      attachment = described_class.new(
-        attachment_id: "123",
-        owning_document_content_id: "456",
-        alternative_format_contact_email: "invalid@example.com",
-      )
-      expect(attachment.display_accessible_format_request_form_link?).to be false
-    end
-  end
 end
