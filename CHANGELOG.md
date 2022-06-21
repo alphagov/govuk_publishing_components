@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 29.12.0
 
 * Remove accessible format request pilot support ([PR #2826](https://github.com/alphagov/govuk_publishing_components/pull/2826))
 * GTM analytics add page views ([PR #2814](https://github.com/alphagov/govuk_publishing_components/pull/2814))
