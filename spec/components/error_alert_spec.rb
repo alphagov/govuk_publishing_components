@@ -10,6 +10,11 @@ describe "Error Alert", type: :view do
     assert_select ".gem-c-error-alert__message", text: "Foo"
   end
 
+  it "allows an id to be specified" do
+    render_component(message: "Foo", id: "test-id")
+    assert_select "#test-id .gem-c-error-alert__message", text: "Foo"
+  end
+
   it "allows a block to be given for description" do
     render_component(message: "Foo", description: "Bar")
 

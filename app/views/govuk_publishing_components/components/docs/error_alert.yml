@@ -27,3 +27,7 @@ examples:
       description: A further description
       data_attributes:
         tracking: GTM-123AB
+  with_specified_id_attribute:
+    data:
+      id: test-id
+      message: Message to alert the user to a unsuccessful action goes here
