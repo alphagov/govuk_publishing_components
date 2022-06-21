@@ -118,6 +118,7 @@ describe('Google Tag Manager click tracking', function () {
         'test-3-2': 'test 3-2 value',
         text: 'some text'
       }
+      element.classList.add('gem-c-accordion')
       element.setAttribute('data-gtm-event-name', 'event3-name')
       element.setAttribute('data-gtm-attributes', JSON.stringify(attributes))
       element.setAttribute('aria-expanded', 'false')
@@ -209,7 +210,7 @@ describe('Google Tag Manager click tracking', function () {
     })
   })
 
-  describe('doing tracking on an element that contains an expandable element', function () {
+  describe('doing tracking on an accordion element that contains an expandable element', function () {
     beforeEach(function () {
       var attributes = {
         'test-3-1': 'test 3-1 value',
@@ -218,7 +219,7 @@ describe('Google Tag Manager click tracking', function () {
       element.innerHTML =
         '<div data-gtm-event-name="event3-name"' +
           'data-gtm-attributes=\'' + JSON.stringify(attributes) + '\'' +
-          'class="clickme"' +
+          'class="gem-c-accordion"' +
         '>' +
           '<button aria-expanded="false">Show</button>' +
         '</div>'
@@ -227,7 +228,7 @@ describe('Google Tag Manager click tracking', function () {
     })
 
     it('includes the expanded state in the gtm attributes', function () {
-      var clickOn = element.querySelector('.clickme')
+      var clickOn = element.querySelector('.gem-c-accordion')
       clickOn.click()
 
       var expectedFirst = {
@@ -310,6 +311,46 @@ describe('Google Tag Manager click tracking', function () {
       clickOn.click()
 
       expect(window.dataLayer).toEqual([expectedFirst, expectedSecond])
+    })
+  })
+
+  describe('doing tracking on an clicked parent element containing a nested accordion', function () {
+    beforeEach(function () {
+      element.innerHTML = `
+      <div data-gtm-event-name="event3-name" class="clickme">
+        <div class='content'>Content</div>
+        <div class='accoridon' class='gem-c-accordion'">
+          <button aria-expanded="false">Show</button>
+        </div>
+      </div>`
+      document.body.appendChild(element)
+      new GOVUK.Modules.GtmClickTracking(element).init()
+    })
+
+    it('should not track the aria-expanded state', function () {
+      var clickOn = element.querySelector('.clickme')
+      clickOn.click()
+      expect(window.dataLayer[0].ui.state).toEqual(undefined)
+    })
+  })
+
+  describe('doing tracking on an clicked parent element containing a details element', function () {
+    beforeEach(function () {
+      element.innerHTML = `
+      <div data-gtm-event-name="event3-name" class="clickme">
+        <div class='content'>Content</div>
+        <details>
+          Details element
+        </details>
+      </div>`
+      document.body.appendChild(element)
+      new GOVUK.Modules.GtmClickTracking(element).init()
+    })
+
+    it('should not track the open/closed state', function () {
+      var clickOn = element.querySelector('.clickme')
+      clickOn.click()
+      expect(window.dataLayer[0].ui.state).toEqual(undefined)
     })
   })
 })

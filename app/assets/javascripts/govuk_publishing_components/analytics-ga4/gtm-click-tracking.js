@@ -25,7 +25,12 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           link_url: window.location.href.substring(window.location.origin.length),
           ui: JSON.parse(target.getAttribute('data-gtm-attributes')) || {}
         }
-        var ariaExpanded = this.getClosestAttribute(target, 'aria-expanded')
+
+        // Ensure it only tracks aria-expanded in an accordion element, instead of in any child of the clicked element
+        if (target.closest('.gem-c-accordion')) {
+          var ariaExpanded = this.getClosestAttribute(target, 'aria-expanded')
+        }
+
         /*
           the details component uses an 'open' attribute instead of aria-expanded, so we need to check if we're on a details component.
           since details deletes the 'open' attribute when closed, we need this boolean, otherwise every element which
