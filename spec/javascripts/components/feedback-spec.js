@@ -351,7 +351,10 @@ describe('Feedback component', function () {
           what_doing: ['I was looking for some information about local government.'],
           what_wrong: ['The background should be green.'],
           referrer: ['unknown'],
-          javascript_enabled: ['true']
+          javascript_enabled: ['true'],
+          timer: ['0'],
+          pastes: ['0'],
+          keypresses: ['0']
         })
       })
 
