@@ -76,7 +76,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
     this.somethingIsWrongButton.addEventListener('click', function (e) {
       this.timerFunction = function () {
-        this.timer = this.timer + 0.5
+        this.timer = this.timer + 1
         this.timerHoneyPot.setAttribute('value', this.timer)
       }
       this.timerInterval = setInterval(this.timerFunction.bind(this), 500)
