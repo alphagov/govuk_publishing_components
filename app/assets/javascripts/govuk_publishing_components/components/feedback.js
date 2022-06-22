@@ -79,7 +79,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         this.timer = this.timer + 1
         this.timerHoneyPot.setAttribute('value', this.timer)
       }
-      this.timerInterval = setInterval(this.timerFunction.bind(this), 500)
+      this.timerInterval = setInterval(this.timerFunction.bind(this), 1000)
     }.bind(this))
 
     this.somethingIsWrongForm.addEventListener('paste', function (e) {
