@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Check if primary_publisher nil OR empty in meta_tags ([PR #2829](https://github.com/alphagov/govuk_publishing_components/pull/2829))
+
 ## 29.12.0
 
 * Remove accessible format request pilot support ([PR #2826](https://github.com/alphagov/govuk_publishing_components/pull/2826))

@@ -379,6 +379,43 @@ describe "Meta tags", type: :view do
     assert_no_meta_tag("govuk:static-analytics:strip-postcodes")
   end
 
+  it "renders govuk:primary-publishing-organisation if primary_publishing_organisation" do
+    content_item = {
+      "links": {
+        "primary_publishing_organisation": [
+          {
+            "title": "an organisation",
+          },
+        ],
+      },
+    }
+
+    render_component(content_item: example_document_for("case_study", "case_study").merge(content_item))
+    assert_meta_tag("govuk:primary-publishing-organisation", "an organisation")
+  end
+
+  it "doesn't render govuk:primary-publishing-organisation if primary_publishing_organisation empty array" do
+    content_item = {
+      "links": {
+        "primary_publishing_organisation": [],
+      },
+    }
+
+    render_component(content_item: example_document_for("case_study", "case_study").merge(content_item))
+    assert_no_meta_tag("govuk:primary-publishing-organisation")
+  end
+
+  it "doesn't render govuk:primary-publishing-organisation if primary_publishing_organisation nil" do
+    content_item = {
+      "links": {
+        "primary_publishing_organisation": nil,
+      },
+    }
+
+    render_component(content_item: example_document_for("case_study", "case_study").merge(content_item))
+    assert_no_meta_tag("govuk:primary-publishing-organisation")
+  end
+
   it "renders the static-analytics:strip-postcodes tag if explicitly told to even if it wouldn't otherwise" do
     render_component(content_item: { document_type: "guidance" }, strip_postcode_pii: true)
     assert_meta_tag("govuk:static-analytics:strip-postcodes", "true")

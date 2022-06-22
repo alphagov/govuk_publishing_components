@@ -43,8 +43,8 @@ module GovukPublishingComponents
         meta_tags["govuk:updated-at"] = content_item[:updated_at] if content_item[:updated_at]
         meta_tags["govuk:public-updated-at"] = content_item[:public_updated_at] if content_item[:public_updated_at]
         primary_publisher = content_item.dig(:links, :primary_publishing_organisation)
-        primary_publisher = primary_publisher.first[:title] if primary_publisher
-        meta_tags["govuk:primary-publishing-organisation"] = primary_publisher if primary_publisher
+        primary_publisher = primary_publisher.first[:title] unless primary_publisher.blank?
+        meta_tags["govuk:primary-publishing-organisation"] = primary_publisher unless primary_publisher.blank?
 
         meta_tags
       end
