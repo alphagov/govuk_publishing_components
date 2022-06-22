@@ -74,6 +74,28 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       this.setHiddenValuesNotUsefulForm(gaClientId)
     }.bind(this))
 
+    this.somethingIsWrongButton.addEventListener('click', function (e) {
+      this.timerFunction = function () {
+        this.timer = this.timer + 0.5
+        this.timerHoneyPot.setAttribute('value', this.timer)
+      }
+      this.timerInterval = setInterval(this.timerFunction.bind(this), 500)
+    }.bind(this))
+
+    this.somethingIsWrongForm.addEventListener('paste', function (e) {
+      if (e.target.tagName.toLowerCase() === 'textarea') {
+        this.pastes = this.pastes + 1
+        this.pastesHoneyPot.setAttribute('value', this.pastes)
+      }
+    }.bind(this))
+
+    this.somethingIsWrongForm.addEventListener('keypress', function (e) {
+      if (e.target.tagName.toLowerCase() === 'textarea') {
+        this.keypresses = this.keypresses + 1
+        this.keypressHoneyPot.setAttribute('value', this.keypresses)
+      }
+    }.bind(this))
+
     // much of the JS needed to support sending the form contents via this script is
     // unsupported by IE, even IE11. This check causes IE to not intercept form submits
     // and let them happen normally, which is handled already by the backend
@@ -94,6 +116,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
               this.revealInitialPrompt()
               this.setInitialAriaAttributes()
               this.activeForm.hidden = true
+              clearInterval(this.timerInterval)
             } else {
               this.showError(xhr)
               this.enableSubmitFormButton($form)
@@ -143,18 +166,27 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       ' <p>Please tell us what you were doing or what went wrong</p>'
     ].join('')
 
-    var honeyPot = document.createElement('input')
-    honeyPot.setAttribute('type', 'hidden')
-    honeyPot.setAttribute('name', 'token')
-    var timer = 0;
-    honeyPot.setAttribute('value', timer)
+    this.timer = 0
+    this.pastes = 0
+    this.keypresses = 0
 
-    var timerUpdater = setInterval( function() {
-        timer = timer + 0.5;
-        honeyPot.setAttribute('value', timer)
-    }, 500);
-    this.somethingIsWrongForm.appendChild(honeyPot)
+    this.timerHoneyPot = document.createElement('input')
+    this.timerHoneyPot.setAttribute('type', 'hidden')
+    this.timerHoneyPot.setAttribute('name', 'timer')
+    this.timerHoneyPot.setAttribute('value', this.timer)
+    this.somethingIsWrongForm.appendChild(this.timerHoneyPot)
 
+    this.pastesHoneyPot = document.createElement('input')
+    this.pastesHoneyPot.setAttribute('type', 'hidden')
+    this.pastesHoneyPot.setAttribute('name', 'pastes')
+    this.pastesHoneyPot.setAttribute('value', this.pastes)
+    this.somethingIsWrongForm.appendChild(this.pastesHoneyPot)
+
+    this.keypressHoneyPot = document.createElement('input')
+    this.keypressHoneyPot.setAttribute('type', 'hidden')
+    this.keypressHoneyPot.setAttribute('name', 'keypresses')
+    this.keypressHoneyPot.setAttribute('value', this.keypresses)
+    this.somethingIsWrongForm.appendChild(this.keypressHoneyPot)
   }
 
   Feedback.prototype.setHiddenValuesNotUsefulForm = function (gaClientId) {
@@ -198,6 +230,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         .focus()
     } else {
       this.activeForm = false
+      clearInterval(this.timerInterval)
     }
   }
 
