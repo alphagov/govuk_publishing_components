@@ -13,8 +13,12 @@ describe "Meta tags", type: :view do
     render_component(content_item: example_document_for("case_study", "case_study"))
     assert_meta_tag("govuk:format", "case_study")
     assert_meta_tag("govuk:publishing-app", "whitehall")
+    assert_meta_tag("govuk:rendering-app", "government-frontend")
     assert_meta_tag("govuk:analytics:organisations", "<L2><W4>")
     assert_meta_tag("govuk:analytics:world-locations", "<WL3>")
+    assert_meta_tag("govuk:first-published-at", "2012-12-17T15:45:44.000+00:00")
+    assert_meta_tag("govuk:updated-at", "2018-08-04T10:18:42.566Z")
+    assert_meta_tag("govuk:public-updated-at", "2012-12-17T15:45:44.000+00:00")
   end
 
   it "no meta tags are rendered when there's no trackable data" do
@@ -34,6 +38,7 @@ describe "Meta tags", type: :view do
   it "renders organisation meta tag if current page is organisation" do
     render_component(content_item: example_document_for("organisation", "organisation"))
     assert_meta_tag("govuk:analytics:organisations", "<D1197>")
+    assert_meta_tag("govuk:primary-publishing-organisation", "Department for Exiting the European Union")
   end
 
   it "renders organisations in a meta tag with angle brackets" do
