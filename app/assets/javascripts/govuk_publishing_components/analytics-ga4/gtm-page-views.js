@@ -17,7 +17,7 @@
           publishing: {
             document_type: this.getMetaContent('format'),
             publishing_app: this.getMetaContent('publishing-app'),
-            rendering_application: this.getMetaContent('rendering-application'),
+            rendering_app: this.getMetaContent('rendering-app'),
             schema_name: this.getMetaContent('schema-name'),
             content_id: this.getMetaContent('content-id')
           },
