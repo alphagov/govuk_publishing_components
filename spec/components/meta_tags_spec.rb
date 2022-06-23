@@ -12,7 +12,7 @@ describe "Meta tags", type: :view do
   it "renders with an example case study" do
     render_component(content_item: example_document_for("case_study", "case_study"))
     assert_meta_tag("govuk:format", "case_study")
-    assert_meta_tag("govuk:publishing-application", "whitehall")
+    assert_meta_tag("govuk:publishing-app", "whitehall")
     assert_meta_tag("govuk:analytics:organisations", "<L2><W4>")
     assert_meta_tag("govuk:analytics:world-locations", "<WL3>")
   end

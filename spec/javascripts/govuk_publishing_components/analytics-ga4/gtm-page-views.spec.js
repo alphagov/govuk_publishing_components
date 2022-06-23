@@ -18,7 +18,7 @@ describe('Google Tag Manager page view tracking', function () {
       },
       publishing: {
         document_type: 'n/a',
-        publishing_application: 'n/a',
+        publishing_app: 'n/a',
         rendering_application: 'n/a',
         schema_name: 'n/a',
         content_id: 'n/a'
@@ -87,8 +87,8 @@ describe('Google Tag Manager page view tracking', function () {
         value: 'detailed_guide'
       },
       {
-        gtmName: 'publishing_application',
-        tagName: 'publishing-application',
+        gtmName: 'publishing_app',
+        tagName: 'publishing-app',
         value: 'whitehall'
       },
       {
