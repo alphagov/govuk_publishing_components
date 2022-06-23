@@ -64,7 +64,7 @@
       'taxon-slugs': { dimension: 58, defaultValue: 'other' },
       'taxon-ids': { dimension: 59, defaultValue: 'other' },
       'content-has-history': { dimension: 39, defaultValue: 'false' },
-      'publishing-application': { dimension: 89 },
+      'publishing-app': { dimension: 89 },
       'brexit-audience': { dimension: 112 },
       'brexit-superbreadcrumb': { dimension: 111 },
       stepnavs: { dimension: 96 },

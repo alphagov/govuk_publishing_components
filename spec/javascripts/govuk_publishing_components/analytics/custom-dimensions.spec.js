@@ -45,7 +45,7 @@ describe('custom dimensions', function () {
       'taxon-slugs': { dimension: 58, defaultValue: 'other', testValue: 'test-58' },
       'taxon-ids': { dimension: 59, defaultValue: 'other', testValue: 'test-59' },
       'content-has-history': { dimension: 39, defaultValue: 'false', testValue: 'test-39' },
-      'publishing-application': { dimension: 89, testValue: 'test-89' },
+      'publishing-app': { dimension: 89, testValue: 'test-89' },
       'brexit-audience': { dimension: 112, testValue: 'test-112' },
       'brexit-superbreadcrumb': { dimension: 111, testValue: 'test-111' },
       stepnavs: { dimension: 96, testValue: 'test-96' },
