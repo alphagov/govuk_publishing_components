@@ -765,7 +765,7 @@ describe('Feedback component', function () {
       var $whatDoing = $form.querySelector('[name=what_doing]')
       var $whatWrong = $form.querySelector('[name=what_wrong]')
 
-      var pasteEvent = new ClipboardEvent('paste')
+      var pasteEvent = new window.ClipboardEvent('paste')
 
       $whatDoing.dispatchEvent(pasteEvent)
       $whatWrong.dispatchEvent(pasteEvent)
@@ -779,7 +779,7 @@ describe('Feedback component', function () {
       var $whatDoing = $form.querySelector('[name=what_doing]')
       var $whatWrong = $form.querySelector('[name=what_wrong]')
 
-      var keypressEvent = new KeyboardEvent('keypress')
+      var keypressEvent = new window.KeyboardEvent('keypress')
 
       $whatDoing.dispatchEvent(keypressEvent)
       $whatWrong.dispatchEvent(keypressEvent)
