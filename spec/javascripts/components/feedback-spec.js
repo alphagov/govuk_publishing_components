@@ -738,6 +738,56 @@ describe('Feedback component', function () {
     })
   }
 
+  describe('testing honeypot metadata on the "report a problem" form', function () {
+    beforeEach(function () {
+      jasmine.clock().install()
+      loadFeedbackComponent()
+      $('.js-something-is-wrong')[0].click()
+    })
+
+    afterEach(function () {
+      jasmine.clock().uninstall()
+    })
+
+    it('has an incrementing timer field', function () {
+      var $form = $('.gem-c-feedback #something-is-wrong')
+      var $timer = $form.find('input[name=timer]')
+      expect($timer.val()).toBe('0')
+      jasmine.clock().tick(1000)
+      expect($timer.val()).toBe('1')
+      jasmine.clock().tick(3000)
+      expect($timer.val()).toBe('4')
+    })
+
+    it('has a paste detection field', function () {
+      var $form = document.querySelector('.gem-c-feedback #something-is-wrong')
+      var $pastes = $form.querySelector('input[name=pastes]')
+      var $whatDoing = $form.querySelector('[name=what_doing]')
+      var $whatWrong = $form.querySelector('[name=what_wrong]')
+
+      var pasteEvent = new ClipboardEvent('paste')
+
+      $whatDoing.dispatchEvent(pasteEvent)
+      $whatWrong.dispatchEvent(pasteEvent)
+
+      expect($pastes.value).toBe('2')
+    })
+
+    it('has a keypress detection field', function () {
+      var $form = document.querySelector('.gem-c-feedback #something-is-wrong')
+      var $keypresses = $form.querySelector('input[name=keypresses]')
+      var $whatDoing = $form.querySelector('[name=what_doing]')
+      var $whatWrong = $form.querySelector('[name=what_wrong]')
+
+      var keypressEvent = new KeyboardEvent('keypress')
+
+      $whatDoing.dispatchEvent(keypressEvent)
+      $whatWrong.dispatchEvent(keypressEvent)
+
+      expect($keypresses.value).toBe('2')
+    })
+  })
+
   function loadFeedbackComponent () {
     new GOVUK.Modules.Feedback($('.gem-c-feedback')[0]).init()
   }
