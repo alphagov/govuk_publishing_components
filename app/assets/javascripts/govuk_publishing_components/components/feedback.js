@@ -19,6 +19,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.promptSuccessMessage = this.$module.querySelector('.js-prompt-success')
     this.surveyWrapper = this.$module.querySelector('#survey-wrapper')
     this.jshiddenClass = 'js-hidden'
+    this.whatDoingInput = this.$module.querySelector('[name=what_doing]')
+    this.whatWrongInput = this.$module.querySelector('[name=what_wrong]')
   }
 
   Feedback.prototype.init = function () {
@@ -81,19 +83,20 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       }.bind(this), 1000)
     }.bind(this))
 
-    this.somethingIsWrongForm.addEventListener('paste', function (e) {
-      if (e.target.tagName.toLowerCase() === 'textarea') {
-        this.pastes = this.pastes + 1
-        this.pastesHoneyPot.setAttribute('value', this.pastes)
-      }
-    }.bind(this))
+    this.pasteListener = function () {
+      this.pastes = this.pastes + 1
+      this.pastesHoneyPot.setAttribute('value', this.pastes)
+    }.bind(this)
 
-    this.somethingIsWrongForm.addEventListener('keypress', function (e) {
-      if (e.target.tagName.toLowerCase() === 'textarea') {
-        this.keypresses = this.keypresses + 1
-        this.keypressHoneyPot.setAttribute('value', this.keypresses)
-      }
-    }.bind(this))
+    this.keypressListener = function () {
+      this.keypresses = this.keypresses + 1
+      this.keypressHoneyPot.setAttribute('value', this.keypresses)
+    }.bind(this)
+
+    this.whatDoingInput.addEventListener('paste', this.pasteListener)
+    this.whatWrongInput.addEventListener('paste', this.pasteListener)
+    this.whatDoingInput.addEventListener('keypress', this.keypressListener)
+    this.whatWrongInput.addEventListener('keypress', this.keypressListener)
 
     // much of the JS needed to support sending the form contents via this script is
     // unsupported by IE, even IE11. This check causes IE to not intercept form submits
