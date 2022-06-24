@@ -75,11 +75,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }.bind(this))
 
     this.somethingIsWrongButton.addEventListener('click', function (e) {
-      this.timerFunction = function () {
+      this.timerInterval = setInterval(function () {
         this.timer = this.timer + 1
         this.timerHoneyPot.setAttribute('value', this.timer)
-      }
-      this.timerInterval = setInterval(this.timerFunction.bind(this), 1000)
+      }.bind(this), 1000)
     }.bind(this))
 
     this.somethingIsWrongForm.addEventListener('paste', function (e) {
