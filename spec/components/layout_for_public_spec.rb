@@ -203,24 +203,6 @@ describe "Layout for public", type: :view do
     assert page.has_no_selector?("html > head > script[src*='lux/lux-reporter']", visible: :hidden)
   end
 
-  it "account layout renders with a phase banner by default" do
-    render_component({ show_account_layout: true })
-
-    assert_select ".gem-c-layout-for-public .gem-c-phase-banner"
-  end
-
-  it "account layout renders with an account nav by default" do
-    render_component({ show_account_layout: true })
-
-    assert_select ".gem-c-layout-for-public .gem-c-layout-for-public-account-nav"
-  end
-
-  it "indicates the active account navigation item if the location parameter is passed" do
-    render_component({ show_account_layout: true, account_nav_location: "manage" })
-
-    assert_select ".gem-c-layout-for-public-account-nav li.gem-c-layout-for-public-account-menu__item.gem-c-layout-for-public-account-menu__item--current a[aria-current=page]", text: "Manage your account"
-  end
-
   it "can accept custom cookie banner content" do
     render_component({
       cookie_banner_data: {

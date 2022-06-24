@@ -17,9 +17,6 @@
   title ||= "GOV.UK - The best place to find government services and information"
 
   show_account_layout ||= false
-  account_nav_location ||= nil
-  omit_account_navigation ||= false
-  omit_account_phase_banner ||= false
 
 # This is a hack - but it's the only way I can find to not have two blue bars on
 # constrained width layouts.
@@ -125,11 +122,7 @@
     <% end %>
 
     <% if show_account_layout %>
-      <%= render "govuk_publishing_components/components/layout_for_public/account-layout", {
-        omit_account_phase_banner: omit_account_phase_banner,
-        omit_account_navigation: omit_account_navigation,
-        account_nav_location: account_nav_location,
-      } do %>
+      <%= render "govuk_publishing_components/components/layout_for_public/account-layout" do %>
         <%= yield :before_content %>
         <%= yield %>
       <% end %>
