@@ -26,6 +26,16 @@ describe "Date input", type: :view do
     assert_select ".govuk-input[name='dob[year]'].govuk-input--width-4", 1
   end
 
+  it "renders with autocomplete enabled" do
+    render_component(
+      autocomplete_date_of_birth: true,
+    )
+
+    assert_select ".govuk-input[name='day'][autocomplete='bday-day'].govuk-input--width-2"
+    assert_select ".govuk-input[name='month'][autocomplete='bday-month'].govuk-input--width-2"
+    assert_select ".govuk-input[name='year'][autocomplete='bday-year'].govuk-input--width-4"
+  end
+
   it "renders with legend and fieldset" do
     render_component(
       legend_text: "What is your date of birth?",
