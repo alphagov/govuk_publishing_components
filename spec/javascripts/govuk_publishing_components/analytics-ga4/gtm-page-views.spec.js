@@ -247,4 +247,34 @@ describe('Google Tag Manager page view tracking', function () {
     GOVUK.Gtm.sendPageView()
     expect(window.dataLayer[0]).toEqual(expected)
   })
+
+  it('removes email pii from the title, location and referrer', function () {
+    document.title = 'example@gov.uk'
+    expected.page.title = '[email]'
+
+    spyOnProperty(document, 'referrer', 'get').and.returnValue('https://gov.uk/example@gov.uk')
+    expected.page.referrer = 'https://gov.uk/[email]'
+
+    // We can't spy on location, so instead we use an anchor link to change the URL temporarily
+
+    // Reset the URL so we can build the expected link string
+    const linkForURLMock = document.createElement('a')
+    linkForURLMock.href = '#'
+    linkForURLMock.click()
+    const location = document.location.href
+
+    expected.page.location = location + '[email]'
+
+    // Add email address to the current page location
+    linkForURLMock.href = '#example@gov.uk'
+    linkForURLMock.click()
+
+    GOVUK.Gtm.sendPageView()
+
+    // Reset the page location for other tests
+    linkForURLMock.href = '#'
+    linkForURLMock.click()
+
+    expect(window.dataLayer[0]).toEqual(expected)
+  })
 })

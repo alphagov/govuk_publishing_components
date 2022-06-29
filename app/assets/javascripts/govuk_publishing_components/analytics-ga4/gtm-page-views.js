@@ -1,9 +1,11 @@
+//= require ./pii-remover
 ;(function (global) {
   'use strict'
 
   var GOVUK = global.GOVUK || {}
 
   GOVUK.Gtm = {
+    PiiRemover: new GOVUK.PiiRemover(),
     sendPageView: function () {
       if (window.dataLayer) {
         var data = {
@@ -48,15 +50,15 @@
     },
 
     getLocation: function () {
-      return document.location.href
+      return this.PiiRemover.stripPII(document.location.href)
     },
 
     getReferrer: function () {
-      return document.referrer
+      return this.PiiRemover.stripPII(document.referrer, true)
     },
 
     getTitle: function () {
-      return document.title
+      return this.PiiRemover.stripPII(document.title)
     },
 
     // window.httpStatusCode is set in the source of the error page in static
