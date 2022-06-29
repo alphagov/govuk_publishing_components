@@ -124,6 +124,16 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
       var label = expanded ? 'Show all sections' : 'Hide all sections'
       var action = expanded ? 'accordionOpened' : 'accordionClosed'
       var options = { transport: 'beacon', label: label }
+
+      var extraOptions = event.target && event.target.getAttribute('data-track-options')
+
+      // this uses the same logic as track-click.js handleClick
+      // means we can add a custom dimensions on click
+      if (extraOptions) {
+        extraOptions = JSON.parse(extraOptions)
+        for (var k in extraOptions) options[k] = extraOptions[k]
+      }
+
       if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
         window.GOVUK.analytics.trackEvent('pageElementInteraction', action, options)
       }
