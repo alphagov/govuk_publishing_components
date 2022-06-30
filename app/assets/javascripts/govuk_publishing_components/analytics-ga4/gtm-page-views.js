@@ -1,11 +1,11 @@
-//= require ./pii-remover
 ;(function (global) {
   'use strict'
 
   var GOVUK = global.GOVUK || {}
 
   GOVUK.Gtm = {
-    PIIRemover: new GOVUK.PIIRemover(),
+    PIIRemover: new GOVUK.analyticsGA4.PIIRemover(), // imported in analytics-ga4.js
+
     sendPageView: function () {
       if (window.dataLayer) {
         var data = {

@@ -50,6 +50,18 @@
     this.value = value
   }
 
+  PIIRemover.prototype.stripPII = function (value) {
+    if (typeof value === 'string') {
+      return this.stripPIIFromString(value)
+    } else if (Object.prototype.toString.call(value) === '[object Array]' || Object.prototype.toString.call(value) === '[object Arguments]') {
+      return this.stripPIIFromArray(value)
+    } else if (typeof value === 'object') {
+      return this.stripPIIFromObject(value)
+    } else {
+      return value
+    }
+  }
+
   PIIRemover.prototype.stripPIIWithOverride = function (value, enableDateStripping, enablePostcodeStripping) {
     var oldStripDatePII = this.stripDatePII
     var oldPostcodePII = this.stripPostcodePII
@@ -105,18 +117,6 @@
     return array
   }
 
-  PIIRemover.prototype.stripPII = function (value) {
-    if (typeof value === 'string') {
-      return this.stripPIIFromString(value)
-    } else if (Object.prototype.toString.call(value) === '[object Array]' || Object.prototype.toString.call(value) === '[object Arguments]') {
-      return this.stripPIIFromArray(value)
-    } else if (typeof value === 'object') {
-      return this.stripPIIFromObject(value)
-    } else {
-      return value
-    }
-  }
-
   PIIRemover.prototype.stripQueryStringParameters = function (string) {
     for (var i = 0; i < this.queryStringParametersToStrip.length; i++) {
       var parameter = this.queryStringParametersToStrip[i]
@@ -128,7 +128,8 @@
     return string
   }
 
-  GOVUK.PIIRemover = PIIRemover
+  GOVUK.analyticsGA4 = GOVUK.analyticsGA4 || {}
+  GOVUK.analyticsGA4.PIIRemover = PIIRemover
 
   global.GOVUK = GOVUK
 })(window)
