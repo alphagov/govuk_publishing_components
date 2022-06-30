@@ -50,17 +50,32 @@
     this.value = value
   }
 
-  PiiRemover.prototype.stripPIIFromString = function (string, stripAllOverride) {
+  PiiRemover.prototype.stripPIIWithOverride = function (value, dateIsEnabled, postcodeIsEnabled) {
+    var oldStripDatePII = this.stripDatePII
+    var oldPostcodePII = this.stripPostcodePII
+
+    this.stripDatePII = dateIsEnabled
+    this.stripPostcodePII = postcodeIsEnabled
+
+    var strippedValue = this.stripPII(value)
+
+    this.stripDatePII = oldStripDatePII
+    this.stripPostcodePII = oldPostcodePII
+
+    return strippedValue
+  }
+
+  PiiRemover.prototype.stripPIIFromString = function (string) {
     var stripped = string.replace(EMAIL_PATTERN, '[email]')
     stripped = stripped.replace(RESET_PASSWORD_TOKEN_PATTERN, 'reset_password_token=[reset_password_token]')
     stripped = stripped.replace(UNLOCK_TOKEN_PATTERN, 'unlock_token=[unlock_token]')
     stripped = stripped.replace(STATE_PATTERN, 'state=[state]')
     stripped = this.stripQueryStringParameters(stripped)
 
-    if (this.stripDatePII === true || stripAllOverride === true) {
+    if (this.stripDatePII === true) {
       stripped = stripped.replace(DATE_PATTERN, '[date]')
     }
-    if (this.stripPostcodePII === true || stripAllOverride === true) {
+    if (this.stripPostcodePII) {
       stripped = stripped.replace(POSTCODE_PATTERN, '[postcode]')
     }
     return stripped
