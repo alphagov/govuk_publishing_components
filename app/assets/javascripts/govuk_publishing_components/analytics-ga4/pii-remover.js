@@ -50,12 +50,12 @@
     this.value = value
   }
 
-  PiiRemover.prototype.stripPIIWithOverride = function (value, dateIsEnabled, postcodeIsEnabled) {
+  PiiRemover.prototype.stripPIIWithOverride = function (value, enableDateStripping, enablePostcodeStripping) {
     var oldStripDatePII = this.stripDatePII
     var oldPostcodePII = this.stripPostcodePII
 
-    this.stripDatePII = dateIsEnabled
-    this.stripPostcodePII = postcodeIsEnabled
+    this.stripDatePII = enableDateStripping
+    this.stripPostcodePII = enablePostcodeStripping
 
     var strippedValue = this.stripPII(value)
 
