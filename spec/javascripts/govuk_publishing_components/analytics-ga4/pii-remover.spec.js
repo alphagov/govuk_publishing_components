@@ -1,12 +1,11 @@
 /* eslint-env jasmine, jquery */
 /* global GOVUK */
 
-describe('GOVUK.PIIRemover', function () {
+describe('GOVUK.analyticsGA4.PIIRemover', function () {
   var pii
 
   beforeEach(function () {
-    resetHead()
-    pii = new GOVUK.PIIRemover()
+    pii = new GOVUK.analyticsGA4.PIIRemover()
   })
 
   afterEach(function () {
@@ -71,7 +70,7 @@ describe('GOVUK.PIIRemover', function () {
     beforeEach(function () {
       pageWantsDatesStripped()
       pageWantsPostcodesStripped()
-      pii = new GOVUK.PIIRemover()
+      pii = new GOVUK.analyticsGA4.PIIRemover()
     })
 
     it('strips email addresses, postcodes and dates from strings', function () {
@@ -116,10 +115,10 @@ describe('GOVUK.PIIRemover', function () {
     })
   })
 
-  describe('when there is a a govuk:static-analytics:strip-postcodes meta tag present', function () {
+  describe('when there is a govuk:static-analytics:strip-postcodes meta tag present', function () {
     beforeEach(function () {
       pageWantsPostcodesStripped()
-      pii = new GOVUK.PIIRemover()
+      pii = new GOVUK.analyticsGA4.PIIRemover()
     })
 
     it('observes the meta tag and strips out postcodes', function () {
@@ -136,43 +135,39 @@ describe('GOVUK.PIIRemover', function () {
   })
 
   describe('when there is a govuk:static-analytics:strip-query-string-parameters meta tag present', function () {
-    afterEach(function () {
-      resetHead()
-    })
-
     it('strips specified query strings that are identified in a string', function () {
       pageWantsQueryStringParametersStripped(['strip-parameter-1', 'strip-parameter-2'])
-      pii = new GOVUK.PIIRemover()
+      pii = new GOVUK.analyticsGA4.PIIRemover()
       var string = pii.stripPII('this is a string with a url /test?strip-parameter-1=secret&strip-parameter-2=more-secret')
       expect(string).toEqual('this is a string with a url /test?strip-parameter-1=[strip-parameter-1]&strip-parameter-2=[strip-parameter-2]')
     })
 
     it('can strip query strings with special characters', function () {
       pageWantsQueryStringParametersStripped(['parameter[]'])
-      pii = new GOVUK.PIIRemover()
+      pii = new GOVUK.analyticsGA4.PIIRemover()
       var string = pii.stripPII('/url?parameter[]=secret&parameter[]=more-secret')
       expect(string).toEqual('/url?parameter[]=[parameter[]]&parameter[]=[parameter[]]')
     })
 
     it('matches a URL with a fragment', function () {
       pageWantsQueryStringParametersStripped(['parameter'])
-      pii = new GOVUK.PIIRemover()
+      pii = new GOVUK.analyticsGA4.PIIRemover()
       var string = pii.stripPII('/url?parameter=secret#anchor')
       expect(string).toEqual('/url?parameter=[parameter]#anchor')
     })
 
     it('doesn\'t match params without a query string prefix', function () {
       pageWantsQueryStringParametersStripped(['parameter'])
-      pii = new GOVUK.PIIRemover()
+      pii = new GOVUK.analyticsGA4.PIIRemover()
       var string = pii.stripPII('parameter=secret')
       expect(string).toEqual('parameter=secret')
     })
   })
 
-  describe('when there is a a govuk:static-analytics:strip-dates meta tag present', function () {
+  describe('when there is a govuk:static-analytics:strip-dates meta tag present', function () {
     beforeEach(function () {
       pageWantsDatesStripped()
-      pii = new GOVUK.PIIRemover()
+      pii = new GOVUK.analyticsGA4.PIIRemover()
     })
 
     it('observes the meta tag and strips out dates', function () {
@@ -186,7 +181,7 @@ describe('GOVUK.PIIRemover', function () {
     beforeEach(function () {
       pageWantsDatesStripped()
       pageWantsPostcodesStripped()
-      pii = new GOVUK.PIIRemover()
+      pii = new GOVUK.analyticsGA4.PIIRemover()
     })
 
     it('observes the override and strips out emails', function () {

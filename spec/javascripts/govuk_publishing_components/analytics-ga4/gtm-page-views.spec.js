@@ -258,10 +258,10 @@ describe('Google Tag Manager page view tracking', function () {
     // We can't spy on location, so instead we use an anchor link to change the URL temporarily
 
     // Reset the URL so we can build the expected link string
-    const linkForURLMock = document.createElement('a')
+    var linkForURLMock = document.createElement('a')
     linkForURLMock.href = '#'
     linkForURLMock.click()
-    const location = document.location.href
+    var location = document.location.href
 
     expected.page.location = location + '[email]'
 
