@@ -11,6 +11,7 @@
 
 * Check if primary_publisher nil OR empty in meta_tags ([PR #2829](https://github.com/alphagov/govuk_publishing_components/pull/2829))
 * Add date of birth autocomplete option for date input ([PR #2802](https://github.com/alphagov/govuk_publishing_components/pull/2802))
+* Add personally identifiable information (PII) remover to GTM ([PR #2842](https://github.com/alphagov/govuk_publishing_components/pull/2842))
 
 ## 29.12.0
 
