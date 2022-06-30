@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 29.12.1
 
 * Standardise some analytics attributes ([PR #2831](https://github.com/alphagov/govuk_publishing_components/pull/2831))
 * Check if primary_publisher nil OR empty in meta_tags ([PR #2829](https://github.com/alphagov/govuk_publishing_components/pull/2829))
