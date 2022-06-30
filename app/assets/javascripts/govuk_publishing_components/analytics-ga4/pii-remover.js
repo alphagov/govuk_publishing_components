@@ -75,7 +75,7 @@
     if (this.stripDatePII === true) {
       stripped = stripped.replace(DATE_PATTERN, '[date]')
     }
-    if (this.stripPostcodePII) {
+    if (this.stripPostcodePII === true) {
       stripped = stripped.replace(POSTCODE_PATTERN, '[postcode]')
     }
     return stripped
