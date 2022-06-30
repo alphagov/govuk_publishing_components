@@ -2,8 +2,6 @@
 
 A module exists for stripping out PII from values. It can accept strings, query parameters, arrays or objects. If the value is an array or object, the child values are looped through and then treated as strings.
 
-99% of the code has been taken from the legacy universal analytics PII redaction code.
-
 ## What is redacted
 
 The values that are redacted by default are:
@@ -16,57 +14,7 @@ Additional values that can be redacted are:
 - Dates - `2022-02-22` becomes `[date]`
 - Postcodes - `sw1a 1aa` becomes `[postcode]`
 
-
 These aren't enabled by default due to the higher likelihood of producing false positives.
-
-Query string parameters are redacted if there is presence of a `meta[name="govuk:static-analytics:strip-query-string-parameters"]` meta tag, with comma separated query string parameters keys in its `content` attribute. The usage of this query string PII removal in production is unknown at this time.
-
-
-### Enabling additional redaction
-
-In order to enable additional redaction you can:
-
-#### Add meta tags to your application via the `Meta Tags` publishing component:
-
-##### For query string parameters:
-
-Add this meta tag with your query string parameter keys in the `content` section:
-`<meta name="govuk:static-analytics:strip-query-string-parameters" content="query-string-key-1,query-string-key-2"`
-
-##### For dates and postcodes:
-
-```Ruby
-<%= render "govuk_publishing_components/components/meta_tags", {
-  content_item: null,
-  local_assigns: {
-    strip_dates_pii: true,
-    strip_postcodes_pii: true
-  }
-} %>
-```
-
-The `shouldStripDates()` and `shouldStripPostcodes()` functions in the JavaScript will then check if these values exist in order to strip dates and postcodes.
-
-However, this will redact dates and postcodes from every call of the PIIRemover. In order to apply extra redaction to specific values, you can use the `stripPIIWithOverride()` function
-
-
-#### Using the stripPIIWithOverride() function
-
-You can call this function to manually enable the date or postcode stripping on a specific value:
-
-```JavaScript
-var enableDateStripping = true
-var enablePostCodeStripping = true
-var myRedactedValue = this.PIIRemover.stripPIIWithOverride(myValue, enableDateStripping, enablePostcodeStripping)
-```
-
-### Preventing redaction from running on a value
-
-There is a `PIISafe` class that you can wrap your objects or strings in.
-
-`var myValue = new this.PIIRemover.PIISafe(myValue)`
-
-If `myValue` is then passed through to a `stripPII` function, instead of having its PII redacted, its original value will be returned, bypassing any redaction.
 
 ## Basic use
 ```JavaScript
@@ -98,6 +46,48 @@ var example6 = PIIRemover.stripPII(myQueryString)
 // /test?strip-parameter-1=[strip-parameter-1]&strip-parameter-2=[strip-parameter-2]
 ```
 
-The modifications from the universal analytics PII code are that:
-- It now prevents email addresses prepended with a # having the # removed in redaction. This was changed as a valid test was failing due to the # unexpectedly being caught in the redaction.
-- A function was added to manually override wether dates and postcodes are stripped. This was added because we are only applying the PII to certain values now. In Universal Analytics PII was being applied to every value unless it was set as `PIISafe`. Enabling Dates and Postcodes on UA was also done in a way that applied it to every stripPII calls - you weren't easily able to have some values only strip emails, and some strip email, postcodes and dates.
+## Enabling additional redaction
+
+To enable additional redaction you can add meta tags to your application via the `Meta Tags` publishing component.
+
+### For dates and postcodes:
+
+```Ruby
+<%= render "govuk_publishing_components/components/meta_tags", {
+  content_item: null,
+  local_assigns: {
+    strip_dates_pii: true,
+    strip_postcodes_pii: true
+  }
+} %>
+```
+
+The `shouldStripDates()` and `shouldStripPostcodes()` functions in the JavaScript will then check if these values exist in order to strip dates and postcodes.
+
+However, this will redact dates and postcodes from every call of the PIIRemover. In order to apply extra redaction to specific values, you can use the `stripPIIWithOverride()` function.
+
+### For query string parameters:
+
+Query string parameters are redacted if there is presence of a `meta[name="govuk:static-analytics:strip-query-string-parameters"]` meta tag, with comma separated query string parameters keys in its `content` attribute. The usage of this query string PII removal in production is unknown at this time.
+
+Add this meta tag with your query string parameter keys in the `content` section:
+`<meta name="govuk:static-analytics:strip-query-string-parameters" content="query-string-key-1,query-string-key-2"`
+
+
+## Using the stripPIIWithOverride() function
+
+You can call this function to manually enable the date or postcode stripping on a specific value:
+
+```JavaScript
+var enableDateStripping = true
+var enablePostCodeStripping = true
+var myRedactedValue = this.PIIRemover.stripPIIWithOverride(myValue, enableDateStripping, enablePostcodeStripping)
+```
+
+### Preventing redaction from running on a value
+
+There is a `PIISafe` class that you can wrap your objects or strings in.
+
+`var myValue = new this.PIIRemover.PIISafe(myValue)`
+
+If `myValue` is then passed through to a `stripPII` function, instead of having its PII redacted, its original value will be returned, bypassing any redaction.
