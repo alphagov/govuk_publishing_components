@@ -182,6 +182,34 @@ describe('GOVUK.PiiRemover', function () {
     })
   })
 
+  describe('when the override to strip dates and postcodes is present', function () {
+    beforeEach(function () {
+      pageWantsDatesStripped()
+      pageWantsPostcodesStripped()
+      pii = new GOVUK.PiiRemover()
+    })
+
+    it('observes the override and strips out emails', function () {
+      var string = pii.stripPIIWithOverride('this is an@email.com address, this is a sw1a 1aa postcode, this is a 2019-01-21 date', false, false)
+      expect(string).toEqual('this is [email] address, this is a sw1a 1aa postcode, this is a 2019-01-21 date')
+    })
+
+    it('observes the override and strips out emails and dates', function () {
+      var string = pii.stripPIIWithOverride('this is an@email.com address, this is a sw1a 1aa postcode, this is a 2019-01-21 date', true, false)
+      expect(string).toEqual('this is [email] address, this is a sw1a 1aa postcode, this is a [date] date')
+    })
+
+    it('observes the override and strips out emails and postcodes', function () {
+      var string = pii.stripPIIWithOverride('this is an@email.com address, this is a sw1a 1aa postcode, this is a 2019-01-21 date', false, true)
+      expect(string).toEqual('this is [email] address, this is a [postcode] postcode, this is a 2019-01-21 date')
+    })
+
+    it('observes the override and strips out emails, postcodes and dates', function () {
+      var string = pii.stripPIIWithOverride('this is an@email.com address, this is a sw1a 1aa postcode, this is a 2019-01-21 date', true, true)
+      expect(string).toEqual('this is [email] address, this is a [postcode] postcode, this is a [date] date')
+    })
+  })
+
   function resetHead () {
     $('head').find('meta[name="govuk:static-analytics:strip-postcodes"]').remove()
     $('head').find('meta[name="govuk:static-analytics:strip-dates"]').remove()

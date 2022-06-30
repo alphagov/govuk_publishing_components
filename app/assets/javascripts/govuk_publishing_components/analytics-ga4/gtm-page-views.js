@@ -54,7 +54,7 @@
     },
 
     getReferrer: function () {
-      return this.PiiRemover.stripPII(document.referrer, true)
+      return this.PiiRemover.stripPIIWithOverride(document.referrer, true, true)
     },
 
     getTitle: function () {
