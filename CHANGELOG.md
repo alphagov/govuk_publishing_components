@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Standardise some analytics attributes ([PR #2831](https://github.com/alphagov/govuk_publishing_components/pull/2831))
 * Check if primary_publisher nil OR empty in meta_tags ([PR #2829](https://github.com/alphagov/govuk_publishing_components/pull/2829))
 * Move the emergency_banner from static ([PR #2795](https://github.com/alphagov/govuk_publishing_components/pull/2795))
 * Add date of birth autocomplete option for date input ([PR #2802](https://github.com/alphagov/govuk_publishing_components/pull/2802))
