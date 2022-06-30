@@ -5,7 +5,7 @@
   var GOVUK = global.GOVUK || {}
 
   GOVUK.Gtm = {
-    PiiRemover: new GOVUK.PiiRemover(),
+    PIIRemover: new GOVUK.PIIRemover(),
     sendPageView: function () {
       if (window.dataLayer) {
         var data = {
@@ -50,15 +50,15 @@
     },
 
     getLocation: function () {
-      return this.PiiRemover.stripPII(document.location.href)
+      return this.PIIRemover.stripPII(document.location.href)
     },
 
     getReferrer: function () {
-      return this.PiiRemover.stripPIIWithOverride(document.referrer, true, true)
+      return this.PIIRemover.stripPIIWithOverride(document.referrer, true, true)
     },
 
     getTitle: function () {
-      return this.PiiRemover.stripPII(document.title)
+      return this.PIIRemover.stripPII(document.title)
     },
 
     // window.httpStatusCode is set in the source of the error page in static
