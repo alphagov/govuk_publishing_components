@@ -16,8 +16,8 @@
           },
           publishing: {
             document_type: this.getMetaContent('format'),
-            publishing_application: this.getMetaContent('publishing-application'),
-            rendering_application: this.getMetaContent('rendering-application'),
+            publishing_app: this.getMetaContent('publishing-app'),
+            rendering_app: this.getMetaContent('rendering-app'),
             schema_name: this.getMetaContent('schema-name'),
             content_id: this.getMetaContent('content-id')
           },

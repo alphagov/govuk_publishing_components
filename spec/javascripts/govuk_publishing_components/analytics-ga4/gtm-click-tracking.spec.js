@@ -11,6 +11,7 @@ describe('Google Tag Manager click tracking', function () {
 
   afterEach(function () {
     document.body.removeChild(element)
+    window.location.hash = ''
   })
 
   describe('configuring tracking incompletely', function () {
@@ -50,6 +51,29 @@ describe('Google Tag Manager click tracking', function () {
         event: 'analytics',
         event_name: 'event-name',
         link_url: window.location.href.substring(window.location.origin.length),
+        ui: {
+          'test-1': 'test-1 value',
+          'test-2': 'test-2 value'
+        }
+      }
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('gets the full URL including a hash', function () {
+      var currentUrl = window.location.href.substring(window.location.origin.length)
+      // fix a bug where running the test in a browser more than once left a
+      // dangling # that broke the expected URL - would be (url)##myhash
+      var lastChar = currentUrl.substr(currentUrl.length - 1)
+      if (lastChar === '#') {
+        currentUrl = currentUrl.slice(0, -1)
+      }
+      window.location.hash = 'myhash'
+
+      element.click()
+      var expected = {
+        event: 'analytics',
+        event_name: 'event-name',
+        link_url: currentUrl + '#myhash',
         ui: {
           'test-1': 'test-1 value',
           'test-2': 'test-2 value'
