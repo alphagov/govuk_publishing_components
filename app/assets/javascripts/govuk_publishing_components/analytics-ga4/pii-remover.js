@@ -40,17 +40,17 @@
     return parameters
   }
 
-  var PiiRemover = function () {
+  var PIIRemover = function () {
     this.stripDatePII = shouldStripDates()
     this.stripPostcodePII = shouldStripPostcodes()
     this.queryStringParametersToStrip = queryStringParametersToStrip()
   }
 
-  PiiRemover.prototype.PIISafe = function (value) {
+  PIIRemover.prototype.PIISafe = function (value) {
     this.value = value
   }
 
-  PiiRemover.prototype.stripPIIWithOverride = function (value, enableDateStripping, enablePostcodeStripping) {
+  PIIRemover.prototype.stripPIIWithOverride = function (value, enableDateStripping, enablePostcodeStripping) {
     var oldStripDatePII = this.stripDatePII
     var oldPostcodePII = this.stripPostcodePII
 
@@ -65,7 +65,7 @@
     return strippedValue
   }
 
-  PiiRemover.prototype.stripPIIFromString = function (string) {
+  PIIRemover.prototype.stripPIIFromString = function (string) {
     var stripped = string.replace(EMAIL_PATTERN, '[email]')
     stripped = stripped.replace(RESET_PASSWORD_TOKEN_PATTERN, 'reset_password_token=[reset_password_token]')
     stripped = stripped.replace(UNLOCK_TOKEN_PATTERN, 'unlock_token=[unlock_token]')
@@ -81,7 +81,7 @@
     return stripped
   }
 
-  PiiRemover.prototype.stripPIIFromObject = function (object) {
+  PIIRemover.prototype.stripPIIFromObject = function (object) {
     if (object) {
       if (object instanceof this.PIISafe) {
         return object.value
@@ -96,7 +96,7 @@
     }
   }
 
-  PiiRemover.prototype.stripPIIFromArray = function (array) {
+  PIIRemover.prototype.stripPIIFromArray = function (array) {
     for (var i = 0, l = array.length; i < l; i++) {
       var elem = array[i]
 
@@ -105,7 +105,7 @@
     return array
   }
 
-  PiiRemover.prototype.stripPII = function (value) {
+  PIIRemover.prototype.stripPII = function (value) {
     if (typeof value === 'string') {
       return this.stripPIIFromString(value)
     } else if (Object.prototype.toString.call(value) === '[object Array]' || Object.prototype.toString.call(value) === '[object Arguments]') {
@@ -117,7 +117,7 @@
     }
   }
 
-  PiiRemover.prototype.stripQueryStringParameters = function (string) {
+  PIIRemover.prototype.stripQueryStringParameters = function (string) {
     for (var i = 0; i < this.queryStringParametersToStrip.length; i++) {
       var parameter = this.queryStringParametersToStrip[i]
       var escaped = parameter.replace(ESCAPE_REGEX_PATTERN, '\\$&')
@@ -128,7 +128,7 @@
     return string
   }
 
-  GOVUK.PiiRemover = PiiRemover
+  GOVUK.PIIRemover = PIIRemover
 
   global.GOVUK = GOVUK
 })(window)
