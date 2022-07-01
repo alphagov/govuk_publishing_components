@@ -83,21 +83,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       }.bind(this), 1000)
     }.bind(this))
 
-    this.pasteListener = function () {
-      this.pastes = this.pastes + 1
-      this.pastesHoneyPot.setAttribute('value', this.pastes)
-    }.bind(this)
-
-    this.keypressListener = function () {
-      this.keypresses = this.keypresses + 1
-      this.keypressHoneyPot.setAttribute('value', this.keypresses)
-    }.bind(this)
-
-    this.whatDoingInput.addEventListener('paste', this.pasteListener)
-    this.whatWrongInput.addEventListener('paste', this.pasteListener)
-    this.whatDoingInput.addEventListener('keypress', this.keypressListener)
-    this.whatWrongInput.addEventListener('keypress', this.keypressListener)
-
     // much of the JS needed to support sending the form contents via this script is
     // unsupported by IE, even IE11. This check causes IE to not intercept form submits
     // and let them happen normally, which is handled already by the backend
@@ -169,26 +154,12 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     ].join('')
 
     this.timer = 0
-    this.pastes = 0
-    this.keypresses = 0
 
     this.timerHoneyPot = document.createElement('input')
     this.timerHoneyPot.setAttribute('type', 'hidden')
     this.timerHoneyPot.setAttribute('name', 'timer')
     this.timerHoneyPot.setAttribute('value', this.timer)
     this.somethingIsWrongForm.appendChild(this.timerHoneyPot)
-
-    this.pastesHoneyPot = document.createElement('input')
-    this.pastesHoneyPot.setAttribute('type', 'hidden')
-    this.pastesHoneyPot.setAttribute('name', 'pastes')
-    this.pastesHoneyPot.setAttribute('value', this.pastes)
-    this.somethingIsWrongForm.appendChild(this.pastesHoneyPot)
-
-    this.keypressHoneyPot = document.createElement('input')
-    this.keypressHoneyPot.setAttribute('type', 'hidden')
-    this.keypressHoneyPot.setAttribute('name', 'keypresses')
-    this.keypressHoneyPot.setAttribute('value', this.keypresses)
-    this.somethingIsWrongForm.appendChild(this.keypressHoneyPot)
   }
 
   Feedback.prototype.setHiddenValuesNotUsefulForm = function (gaClientId) {
