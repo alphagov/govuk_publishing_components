@@ -352,9 +352,7 @@ describe('Feedback component', function () {
           what_wrong: ['The background should be green.'],
           referrer: ['unknown'],
           javascript_enabled: ['true'],
-          timer: ['0'],
-          pastes: ['0'],
-          keypresses: ['0']
+          timer: ['0']
         })
       })
 
@@ -757,34 +755,6 @@ describe('Feedback component', function () {
       expect($timer.val()).toBe('1')
       jasmine.clock().tick(3000)
       expect($timer.val()).toBe('4')
-    })
-
-    it('has a paste detection field', function () {
-      var $form = document.querySelector('.gem-c-feedback #something-is-wrong')
-      var $pastes = $form.querySelector('input[name=pastes]')
-      var $whatDoing = $form.querySelector('[name=what_doing]')
-      var $whatWrong = $form.querySelector('[name=what_wrong]')
-
-      var pasteEvent = new window.ClipboardEvent('paste')
-
-      $whatDoing.dispatchEvent(pasteEvent)
-      $whatWrong.dispatchEvent(pasteEvent)
-
-      expect($pastes.value).toBe('2')
-    })
-
-    it('has a keypress detection field', function () {
-      var $form = document.querySelector('.gem-c-feedback #something-is-wrong')
-      var $keypresses = $form.querySelector('input[name=keypresses]')
-      var $whatDoing = $form.querySelector('[name=what_doing]')
-      var $whatWrong = $form.querySelector('[name=what_wrong]')
-
-      var keypressEvent = new window.KeyboardEvent('keypress')
-
-      $whatDoing.dispatchEvent(keypressEvent)
-      $whatWrong.dispatchEvent(keypressEvent)
-
-      expect($keypresses.value).toBe('2')
     })
   })
 
