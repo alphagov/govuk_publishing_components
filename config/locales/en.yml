@@ -234,8 +234,8 @@ en:
         href: "/coronavirus"
       - label: Find a job
         href: "/find-a-job"
-      - label: 'Personal tax account: sign in'
-        href: "/personal-tax-account"
+      - label: 'Check benefits and financial support you can get'
+        href: "/check-benefits-financial-support"
       - label: 'Universal Credit account: sign in'
         href: "/sign-in-universal-credit"
       popular_links_heading: Popular on GOV.UK
