@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add timer field in attempt to reduce spam on feedback component ([PR #2830](https://github.com/alphagov/govuk_publishing_components/pull/2830))
+
 ## 29.12.1
 
 * Standardise some analytics attributes ([PR #2831](https://github.com/alphagov/govuk_publishing_components/pull/2831))
