@@ -351,7 +351,8 @@ describe('Feedback component', function () {
           what_doing: ['I was looking for some information about local government.'],
           what_wrong: ['The background should be green.'],
           referrer: ['unknown'],
-          javascript_enabled: ['true']
+          javascript_enabled: ['true'],
+          timer: ['0']
         })
       })
 
@@ -734,6 +735,28 @@ describe('Feedback component', function () {
       })
     })
   }
+
+  describe('testing honeypot metadata on the "report a problem" form', function () {
+    beforeEach(function () {
+      jasmine.clock().install()
+      loadFeedbackComponent()
+      $('.js-something-is-wrong')[0].click()
+    })
+
+    afterEach(function () {
+      jasmine.clock().uninstall()
+    })
+
+    it('has an incrementing timer field', function () {
+      var $form = $('.gem-c-feedback #something-is-wrong')
+      var $timer = $form.find('input[name=timer]')
+      expect($timer.val()).toBe('0')
+      jasmine.clock().tick(1000)
+      expect($timer.val()).toBe('1')
+      jasmine.clock().tick(3000)
+      expect($timer.val()).toBe('4')
+    })
+  })
 
   function loadFeedbackComponent () {
     new GOVUK.Modules.Feedback($('.gem-c-feedback')[0]).init()

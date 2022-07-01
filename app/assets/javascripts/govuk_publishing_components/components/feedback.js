@@ -19,6 +19,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.promptSuccessMessage = this.$module.querySelector('.js-prompt-success')
     this.surveyWrapper = this.$module.querySelector('#survey-wrapper')
     this.jshiddenClass = 'js-hidden'
+    this.whatDoingInput = this.$module.querySelector('[name=what_doing]')
+    this.whatWrongInput = this.$module.querySelector('[name=what_wrong]')
   }
 
   Feedback.prototype.init = function () {
@@ -74,6 +76,13 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       this.setHiddenValuesNotUsefulForm(gaClientId)
     }.bind(this))
 
+    this.somethingIsWrongButton.addEventListener('click', function (e) {
+      this.timerInterval = setInterval(function () {
+        this.timer = this.timer + 1
+        this.timerHoneyPot.setAttribute('value', this.timer)
+      }.bind(this), 1000)
+    }.bind(this))
+
     // much of the JS needed to support sending the form contents via this script is
     // unsupported by IE, even IE11. This check causes IE to not intercept form submits
     // and let them happen normally, which is handled already by the backend
@@ -94,6 +103,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
               this.revealInitialPrompt()
               this.setInitialAriaAttributes()
               this.activeForm.hidden = true
+              clearInterval(this.timerInterval)
             } else {
               this.showError(xhr)
               this.enableSubmitFormButton($form)
@@ -142,6 +152,14 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       '<h2>Sorry, we’re unable to send your message as you haven’t given us any information.</h2>',
       ' <p>Please tell us what you were doing or what went wrong</p>'
     ].join('')
+
+    this.timer = 0
+
+    this.timerHoneyPot = document.createElement('input')
+    this.timerHoneyPot.setAttribute('type', 'hidden')
+    this.timerHoneyPot.setAttribute('name', 'timer')
+    this.timerHoneyPot.setAttribute('value', this.timer)
+    this.somethingIsWrongForm.appendChild(this.timerHoneyPot)
   }
 
   Feedback.prototype.setHiddenValuesNotUsefulForm = function (gaClientId) {
@@ -185,6 +203,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         .focus()
     } else {
       this.activeForm = false
+      clearInterval(this.timerInterval)
     }
   }
 
