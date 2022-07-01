@@ -40,11 +40,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
         if (ariaExpanded) {
           data.ui.text = data.ui.text || target.innerText
-          data.ui.state = (ariaExpanded === 'false') ? 'opened' : 'closed'
+          data.ui.action = (ariaExpanded === 'false') ? 'opened' : 'closed'
         } else if (detailsElement) {
           data.ui.text = data.ui.text || detailsElement.textContent
           var openAttribute = detailsElement.getAttribute('open')
-          data.ui.state = (openAttribute == null) ? 'opened' : 'closed'
+          data.ui.action = (openAttribute == null) ? 'opened' : 'closed'
         }
 
         window.dataLayer.push(data)

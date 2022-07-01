@@ -160,7 +160,7 @@ describe('Google Tag Manager click tracking', function () {
         ui: {
           'test-3-1': 'test 3-1 value',
           'test-3-2': 'test 3-2 value',
-          state: 'opened',
+          action: 'opened',
           text: 'some text'
         }
       }
@@ -173,7 +173,7 @@ describe('Google Tag Manager click tracking', function () {
         ui: {
           'test-3-1': 'test 3-1 value',
           'test-3-2': 'test 3-2 value',
-          state: 'closed',
+          action: 'closed',
           text: 'some text'
         }
       }
@@ -211,7 +211,7 @@ describe('Google Tag Manager click tracking', function () {
         ui: {
           'test-3-1': 'test 3-1 value',
           'test-3-2': 'test 3-2 value',
-          state: 'opened',
+          action: 'opened',
           text: 'some text'
         }
       }
@@ -224,7 +224,7 @@ describe('Google Tag Manager click tracking', function () {
         ui: {
           'test-3-1': 'test 3-1 value',
           'test-3-2': 'test 3-2 value',
-          state: 'closed',
+          action: 'closed',
           text: 'some text'
         }
       }
@@ -262,7 +262,7 @@ describe('Google Tag Manager click tracking', function () {
         ui: {
           'test-3-1': 'test 3-1 value',
           'test-3-2': 'test 3-2 value',
-          state: 'opened',
+          action: 'opened',
           text: 'Show'
         }
       }
@@ -275,7 +275,7 @@ describe('Google Tag Manager click tracking', function () {
         ui: {
           'test-3-1': 'test 3-1 value',
           'test-3-2': 'test 3-2 value',
-          state: 'closed',
+          action: 'closed',
           text: 'Hide'
         }
       }
@@ -314,7 +314,7 @@ describe('Google Tag Manager click tracking', function () {
         ui: {
           'test-3-1': 'test 3-1 value',
           'test-3-2': 'test 3-2 value',
-          state: 'opened',
+          action: 'opened',
           text: 'Example'
         }
       }
@@ -327,7 +327,7 @@ describe('Google Tag Manager click tracking', function () {
         ui: {
           'test-3-1': 'test 3-1 value',
           'test-3-2': 'test 3-2 value',
-          state: 'closed',
+          action: 'closed',
           text: 'Example'
         }
       }
@@ -354,7 +354,7 @@ describe('Google Tag Manager click tracking', function () {
     it('should not track the aria-expanded state', function () {
       var clickOn = element.querySelector('.clickme')
       clickOn.click()
-      expect(window.dataLayer[0].ui.state).toEqual(undefined)
+      expect(window.dataLayer[0].ui.action).toEqual(undefined)
     })
   })
 
@@ -374,7 +374,7 @@ describe('Google Tag Manager click tracking', function () {
     it('should not track the open/closed state', function () {
       var clickOn = element.querySelector('.clickme')
       clickOn.click()
-      expect(window.dataLayer[0].ui.state).toEqual(undefined)
+      expect(window.dataLayer[0].ui.action).toEqual(undefined)
     })
   })
 })
