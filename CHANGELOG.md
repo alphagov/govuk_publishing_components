@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Update the list of popular links in the super navigation header ([PR #2845](https://github.com/alphagov/govuk_publishing_components/pull/2845))
 * Add timer field in attempt to reduce spam on feedback component ([PR #2830](https://github.com/alphagov/govuk_publishing_components/pull/2830))
 
 ## 29.12.1
