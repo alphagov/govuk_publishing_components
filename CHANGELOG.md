@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add personally identifiable information (PII) remover to GTM ([PR #2842](https://github.com/alphagov/govuk_publishing_components/pull/2842))
+
 ## 29.13.0
 
 * Update the list of popular links in the super navigation header ([PR #2845](https://github.com/alphagov/govuk_publishing_components/pull/2845))
@@ -17,7 +21,6 @@
 * Standardise some analytics attributes ([PR #2831](https://github.com/alphagov/govuk_publishing_components/pull/2831))
 * Check if primary_publisher nil OR empty in meta_tags ([PR #2829](https://github.com/alphagov/govuk_publishing_components/pull/2829))
 * Add date of birth autocomplete option for date input ([PR #2802](https://github.com/alphagov/govuk_publishing_components/pull/2802))
-* Add personally identifiable information (PII) remover to GTM ([PR #2842](https://github.com/alphagov/govuk_publishing_components/pull/2842))
 
 ## 29.12.0
 
