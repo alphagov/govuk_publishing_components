@@ -4,6 +4,8 @@
   var GOVUK = global.GOVUK || {}
 
   GOVUK.Gtm = {
+    PIIRemover: new GOVUK.analyticsGA4.PIIRemover(), // imported in analytics-ga4.js
+
     sendPageView: function () {
       if (window.dataLayer) {
         var data = {
@@ -48,15 +50,15 @@
     },
 
     getLocation: function () {
-      return document.location.href
+      return this.PIIRemover.stripPII(document.location.href)
     },
 
     getReferrer: function () {
-      return document.referrer
+      return this.PIIRemover.stripPIIWithOverride(document.referrer, true, true)
     },
 
     getTitle: function () {
-      return document.title
+      return this.PIIRemover.stripPII(document.title)
     },
 
     // window.httpStatusCode is set in the source of the error page in static
