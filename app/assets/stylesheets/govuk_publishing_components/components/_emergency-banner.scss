@@ -70,5 +70,7 @@
 }
 
 .gem-c-emergency-banner--local-emergency {
-  background-color: govuk-colour("turquoise");
+  // Not using govuk-colour("turquoise") for background colour as
+  // the contrast was too low with white text
+  background-color: #00847d;
 }
