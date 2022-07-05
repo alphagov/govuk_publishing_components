@@ -179,6 +179,7 @@ describe "Comparing data from an application with the components" do
         warning_count: 5,
         gem_style_references: [],
         jquery_references: [],
+        component_locations: nil,
       },
     ]
 
@@ -307,6 +308,7 @@ describe "Comparing data from an application with the components" do
         warning_count: 3,
         gem_style_references: [],
         jquery_references: [],
+        component_locations: nil,
       },
       {
         name: "static",
@@ -338,6 +340,7 @@ describe "Comparing data from an application with the components" do
         warning_count: 0,
         gem_style_references: [],
         jquery_references: [],
+        component_locations: nil,
       },
     ]
 
@@ -418,6 +421,7 @@ describe "Comparing data from an application with the components" do
         warning_count: 1,
         gem_style_references: [],
         jquery_references: [],
+        component_locations: nil,
       },
     ]
 
@@ -473,6 +477,7 @@ describe "Comparing data from an application with the components" do
       {
         name: "Dummy application",
         application_found: true,
+        component_locations: nil,
         uses_static: false,
         summary: [
           {
