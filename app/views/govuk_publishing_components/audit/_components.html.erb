@@ -63,10 +63,28 @@
           <% @components[:components_by_application].each do |component| %>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                <%= component[:component] %> (<%= component[:count] %>)
+                <%= component[:component] %> (<%= pluralize(component[:count], 'use') %>)
               </dt>
               <dd class="govuk-summary-list__value">
-                <%= component[:list] %>
+                <% component[:locations].each do |application| %>
+                  <% github_link = 'https://github.com/alphagov/' + application[:name] + '/blob/main/' %>
+                  <details class="govuk-details govuk-!-margin-bottom-2" data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                      <span class="govuk-details__summary-text">
+                        <%= application[:name] %> (<%= application[:locations].length %>)
+                      </span>
+                    </summary>
+                    <div class="govuk-details__text">
+                      <ul class="govuk-list govuk-list--bullet">
+                        <% application[:locations].each do |location| %>
+                          <li>
+                            <a href="<%= github_link %><%= location %>" class="govuk-link"><%= location %></a>
+                          </li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  </details>
+                <% end %>
               </dd>
             </div>
           <% end %>

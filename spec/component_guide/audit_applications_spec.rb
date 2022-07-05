@@ -38,6 +38,26 @@ describe "Auditing the components in applications" do
       jquery_references: [
         "app/assets/javascripts/some-jquery.js",
       ],
+      component_locations: {
+        accordion: ["app/views/welcome/accordion_example.html.erb"],
+        "back link": ["app/views/welcome/public_example.html.erb"],
+        button: ["lib/test_file_2.erb"],
+        "contextual breadcrumbs": ["app/views/step_nav/show.html.erb", "app/views/welcome/contextual_navigation.html.erb"],
+        "contextual footer": ["app/views/step_nav/show.html.erb", "app/views/welcome/contextual_navigation.html.erb"],
+        "contextual sidebar": ["app/views/step_nav/show.html.erb", "app/views/welcome/contextual_navigation.html.erb"],
+        "error summary": ["app/views/welcome/error_summary.html.erb"],
+        feedback: ["app/views/layouts/application.html.erb"],
+        govspeak: ["app/views/welcome/contextual_navigation.html.erb", "lib/test_file_1.rb"],
+        input: ["app/views/welcome/error_summary.html.erb", "app/views/welcome/error_summary.html.erb"],
+        "layout footer": ["app/views/layouts/dummy_admin_layout.html.erb"],
+        "layout for admin": ["app/views/layouts/dummy_admin_layout.html.erb"],
+        "layout for public": ["app/views/layouts/dummy_public_layout.html.erb"],
+        "layout header": ["app/views/layouts/dummy_admin_layout.html.erb"],
+        "print link": ["lib/test_file_2.erb"],
+        "skip link": ["app/views/layouts/dummy_admin_layout.html.erb"],
+        tabs: ["app/views/welcome/error_summary.html.erb", "app/views/welcome/tabs_example.html.erb"],
+        title: ["app/views/welcome/contextual_navigation.html.erb", "app/views/welcome/error_summary.html.erb", "app/views/welcome/table.html.erb"],
+      },
     }
 
     expect(application.data).to match(expected)
