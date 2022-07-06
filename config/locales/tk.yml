@@ -133,7 +133,9 @@ tk:
     organisation_schema:
       all_content_search_description: Ähli mazmunyny %{organisation}-dan tapyň
     previous_and_next_navigation:
+      next:
       pagination: Sahypa
+      previous:
     print_link:
       text: Bu sahypany çap et
     radio:

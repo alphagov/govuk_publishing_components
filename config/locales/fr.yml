@@ -132,7 +132,9 @@ fr:
     organisation_schema:
       all_content_search_description: Rechercher tout le contenu de %{organisation}
     previous_and_next_navigation:
+      next:
       pagination: Pagination
+      previous:
     print_link:
       text: Imprimer cette page
     radio:

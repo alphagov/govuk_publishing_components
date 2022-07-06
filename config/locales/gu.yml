@@ -132,7 +132,9 @@ gu:
     organisation_schema:
       all_content_search_description: "%{organisation} થી તમામ સામગ્રી શોધો"
     previous_and_next_navigation:
+      next:
       pagination: પૃષ્ઠ ક્રમાંકન
+      previous:
     print_link:
       text: આ પૃષ્ઠ પ્રિન્ટ કરો
     radio:

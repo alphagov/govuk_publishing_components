@@ -136,7 +136,9 @@ cy:
     organisation_schema:
       all_content_search_description: Dod o hyd i'r holl gynnwys gan %{organisation}
     previous_and_next_navigation:
+      next:
       pagination: Tudalennu
+      previous:
     print_link:
       text: Argraffu'r dudalen hon
     radio:

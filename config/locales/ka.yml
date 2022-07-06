@@ -135,7 +135,9 @@ ka:
     organisation_schema:
       all_content_search_description: ყველა მასალის ნახვა %{organisation}-დან
     previous_and_next_navigation:
+      next:
       pagination: პაგინაცია
+      previous:
     print_link:
       text: ამ გვერდის ბეჭდვა
     radio:

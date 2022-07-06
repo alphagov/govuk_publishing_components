@@ -131,7 +131,9 @@ ms:
     organisation_schema:
       all_content_search_description: Cari semua kandungan dari %{organisation}
     previous_and_next_navigation:
+      next:
       pagination: Penomboran
+      previous:
     print_link:
       text: Cetak halaman ini
     radio:

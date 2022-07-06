@@ -133,7 +133,9 @@ bn:
     organisation_schema:
       all_content_search_description: "%{organisation}-এর সকল বিষয়বস্তু খুঁজে বের করুন"
     previous_and_next_navigation:
+      next:
       pagination: পেজিনেশন
+      previous:
     print_link:
       text: এই পৃষ্ঠাটি প্রিন্ট করুন
     radio:

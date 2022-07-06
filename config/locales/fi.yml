@@ -134,7 +134,9 @@ fi:
     organisation_schema:
       all_content_search_description: Etsi kaikki sisältö alkaen %{organisation}
     previous_and_next_navigation:
+      next:
       pagination: Sivunumerointi
+      previous:
     print_link:
       text: Tulosta tämä sivu
     radio:

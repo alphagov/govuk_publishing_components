@@ -133,7 +133,9 @@ da:
     organisation_schema:
       all_content_search_description: Find alt indhold fra %{organisation}
     previous_and_next_navigation:
+      next:
       pagination: Paginering
+      previous:
     print_link:
       text: Udskriv denne side
     radio:

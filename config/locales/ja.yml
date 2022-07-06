@@ -128,7 +128,9 @@ ja:
     organisation_schema:
       all_content_search_description: "％{organisation} からすべてのコンテンツを検索"
     previous_and_next_navigation:
+      next:
       pagination: ページ付け
+      previous:
     print_link:
       text: このページを印刷する
     radio:

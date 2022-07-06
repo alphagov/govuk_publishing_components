@@ -139,7 +139,9 @@ sl:
     organisation_schema:
       all_content_search_description: Oglejte si vse gradivo %{organisation}
     previous_and_next_navigation:
+      next:
       pagination: Oštevilčenje
+      previous:
     print_link:
       text: Natisni to stran
     radio:

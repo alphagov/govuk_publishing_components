@@ -134,7 +134,9 @@ dr:
     organisation_schema:
       all_content_search_description: تمام محتویات را از اینجا بدست بیاورید %{organisation}
     previous_and_next_navigation:
+      next:
       pagination: صفحه گذاری
+      previous:
     print_link:
       text: این صفحه را پرنت نمایید
     radio:

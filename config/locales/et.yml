@@ -135,7 +135,9 @@ et:
     organisation_schema:
       all_content_search_description: Leidke kogu ettevõtte %{organization} sisu
     previous_and_next_navigation:
+      next:
       pagination: Lehekülgede jaotus
+      previous:
     print_link:
       text: Prindi see leht
     radio:

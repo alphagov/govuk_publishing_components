@@ -133,7 +133,9 @@ tr:
     organisation_schema:
       all_content_search_description: "%{organisation} kaynaklı tüm içeriği bul"
     previous_and_next_navigation:
+      next:
       pagination: Sayfa
+      previous:
     print_link:
       text: Bu sayfayı yazdır
     radio:

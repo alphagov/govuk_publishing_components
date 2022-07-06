@@ -136,7 +136,9 @@ de:
     organisation_schema:
       all_content_search_description: Alle Inhalte von %{organisation} finden
     previous_and_next_navigation:
+      next:
       pagination: Seitenzahlen
+      previous:
     print_link:
       text: Diese Seite drucken
     radio:

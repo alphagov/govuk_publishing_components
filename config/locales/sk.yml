@@ -137,7 +137,9 @@ sk:
     organisation_schema:
       all_content_search_description: Nájsť všetok obsah z %{organisation}
     previous_and_next_navigation:
+      next:
       pagination: Stránkovanie
+      previous:
     print_link:
       text: Vytlačiť túto stránku
     radio:

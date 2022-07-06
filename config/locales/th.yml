@@ -130,7 +130,9 @@ th:
     organisation_schema:
       all_content_search_description: ค้นหาเนื้อหาทั้งหมดจาก %{organisation}
     previous_and_next_navigation:
+      next:
       pagination: การแบ่งหน้า
+      previous:
     print_link:
       text: พิมพ์หน้านี้
     radio:

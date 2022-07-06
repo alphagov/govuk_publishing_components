@@ -136,7 +136,9 @@ hy:
     organisation_schema:
       all_content_search_description: Գտնել %{organisation} ողջ բովանդակությունը
     previous_and_next_navigation:
+      next:
       pagination: Էջադրում
+      previous:
     print_link:
       text: Տպել այս էջը
     radio:

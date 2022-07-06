@@ -133,7 +133,9 @@ ro:
     organisation_schema:
       all_content_search_description: Găsiți tot conținutul de la %{organisation}
     previous_and_next_navigation:
+      next:
       pagination: Paginație
+      previous:
     print_link:
       text: Imprimați această pagină
     radio:

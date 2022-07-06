@@ -256,7 +256,9 @@ en:
     organisation_schema:
       all_content_search_description: Find all content from %{organisation}
     previous_and_next_navigation:
+      next: Next
       pagination: Pagination
+      previous: Previous
     print_link:
       text: Print this page
     radio:

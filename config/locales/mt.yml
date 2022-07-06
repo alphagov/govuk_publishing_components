@@ -134,7 +134,9 @@ mt:
     organisation_schema:
       all_content_search_description: Sib il-kontenut kollu mingħand %{organisation}
     previous_and_next_navigation:
+      next:
       pagination: Paġinazzjoni
+      previous:
     print_link:
       text: Stampa din il-paġna
     radio:

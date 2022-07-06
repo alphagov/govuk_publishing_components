@@ -138,7 +138,9 @@ be:
     organisation_schema:
       all_content_search_description: Шукаць увесь змест з %{organisation}
     previous_and_next_navigation:
+      next:
       pagination: Месцаванне старонак
+      previous:
     print_link:
       text: Надрукаваць гэтую странiцу
     radio:

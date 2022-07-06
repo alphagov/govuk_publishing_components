@@ -136,7 +136,9 @@ ru:
     organisation_schema:
       all_content_search_description: Найти весь контент от %{organization}
     previous_and_next_navigation:
+      next:
       pagination: Разбивка
+      previous:
     print_link:
       text: Распечатать эту страницу
     radio:

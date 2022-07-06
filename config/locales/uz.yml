@@ -134,7 +134,9 @@ uz:
     organisation_schema:
       all_content_search_description: "%{organization}  дан бутун контентни топиш"
     previous_and_next_navigation:
+      next:
       pagination: Саҳифаларнинг рақамланиши
+      previous:
     print_link:
       text: Ушбу саҳифани чоп этиш
     radio:

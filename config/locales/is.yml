@@ -132,7 +132,9 @@ is:
     organisation_schema:
       all_content_search_description: Finna allt efni frá %{organisation}
     previous_and_next_navigation:
+      next:
       pagination: Síðuuppsetning
+      previous:
     print_link:
       text: Prenta þessa síðu
     radio:

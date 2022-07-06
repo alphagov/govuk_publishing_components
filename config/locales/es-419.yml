@@ -132,7 +132,9 @@ es-419:
     organisation_schema:
       all_content_search_description: Buscar todo el contenido de %{organisation}
     previous_and_next_navigation:
+      next:
       pagination: Paginación
+      previous:
     print_link:
       text: Imprimir esta página
     radio:

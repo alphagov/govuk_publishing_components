@@ -132,7 +132,9 @@ sw:
     organisation_schema:
       all_content_search_description: Tafuta maudhui yote kutoka %{organisation}
     previous_and_next_navigation:
+      next:
       pagination: Nambari za kurasa
+      previous:
     print_link:
       text: Chapisha ukurasa huu
     radio:
