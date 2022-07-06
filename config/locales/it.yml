@@ -132,7 +132,9 @@ it:
     organisation_schema:
       all_content_search_description: Trova tutto il contenuto da %{organisation}
     previous_and_next_navigation:
+      next:
       pagination: Impaginazione
+      previous:
     print_link:
       text: Stampa questa pagina
     radio:

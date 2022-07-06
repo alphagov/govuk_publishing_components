@@ -132,7 +132,9 @@ sv:
     organisation_schema:
       all_content_search_description: Hitta allt innehåll från %{organisation}
     previous_and_next_navigation:
+      next:
       pagination: Paginering
+      previous:
     print_link:
       text: Skriv ut den här sidan
     radio:

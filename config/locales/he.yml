@@ -132,7 +132,9 @@ he:
     organisation_schema:
       all_content_search_description: מצא את כל התוכן של %{organization}
     previous_and_next_navigation:
+      next:
       pagination: חלוקה לעמודים
+      previous:
     print_link:
       text: הדפס עמוד זה
     radio:

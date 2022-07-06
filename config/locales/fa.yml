@@ -130,7 +130,9 @@ fa:
     organisation_schema:
       all_content_search_description: یافتن تمام محتوا از %{organisation}
     previous_and_next_navigation:
+      next:
       pagination: صفحه‌بندی
+      previous:
     print_link:
       text: چاپ این صفحه
     radio:

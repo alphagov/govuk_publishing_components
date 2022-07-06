@@ -134,7 +134,9 @@ gd:
     organisation_schema:
       all_content_search_description: Faigh gach rud ó %{organisation}
     previous_and_next_navigation:
+      next:
       pagination: Leathanach
+      previous:
     print_link:
       text: priontáil an leathanach seo
     radio:

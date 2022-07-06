@@ -137,7 +137,9 @@ lt:
     organisation_schema:
       all_content_search_description: Rasti visą turinį iš %{organisation}
     previous_and_next_navigation:
+      next:
       pagination: Suskirstymas puslapiais
+      previous:
     print_link:
       text: Spausdinti šį puslapį
     radio:

@@ -132,7 +132,9 @@ hi:
     organisation_schema:
       all_content_search_description: "%{organization} से सभी सामग्री खोजें"
     previous_and_next_navigation:
+      next:
       pagination: पृष्ठांकन
+      previous:
     print_link:
       text: यह पेज प्रिंट करें
     radio:

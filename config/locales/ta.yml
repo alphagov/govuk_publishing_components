@@ -133,7 +133,9 @@ ta:
     organisation_schema:
       all_content_search_description: "%{organisation}-லிருந்து அனைத்து உள்ளடக்கத்தையும் கண்டறி"
     previous_and_next_navigation:
+      next:
       pagination: பக்கமிடுதல்
+      previous:
     print_link:
       text: இந்தப் பக்கத்தை அச்செடு
     radio:

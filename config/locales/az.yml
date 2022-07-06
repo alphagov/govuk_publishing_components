@@ -131,7 +131,9 @@ az:
     organisation_schema:
       all_content_search_description: "%{organisation}-dan bütün məzmunu tap"
     previous_and_next_navigation:
+      next:
       pagination: Səhifələrə bölmə
+      previous:
     print_link:
       text: Bu səhifəni çap et
     radio:

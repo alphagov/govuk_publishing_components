@@ -132,7 +132,9 @@
     organisation_schema:
       all_content_search_description: Finn alt innhold fra %{organization}
     previous_and_next_navigation:
+      next:
       pagination: Paginering
+      previous:
     print_link:
       text: Skriv ut denne siden
     radio:

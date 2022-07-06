@@ -133,7 +133,9 @@ sr:
     organisation_schema:
       all_content_search_description: Pronađite sav sadržaj organizacije %{organisation}
     previous_and_next_navigation:
+      next:
       pagination: Broj stranice
+      previous:
     print_link:
       text: Odštampaj ovu stranicu
     radio:

@@ -139,7 +139,9 @@ uk:
     organisation_schema:
       all_content_search_description: Знайти весь вміст від %{organization}
     previous_and_next_navigation:
+      next:
       pagination: Поділ на сторінки
+      previous:
     print_link:
       text: Роздрукувати цю сторінку
     radio:

@@ -132,7 +132,9 @@ so:
     organisation_schema:
       all_content_search_description: Raadi dhamaan waxyaabaha uu ka koobanyahay %{organisation}
     previous_and_next_navigation:
+      next:
       pagination: Lambar siinta boga
+      previous:
     print_link:
       text: Daabac bogan
     radio:

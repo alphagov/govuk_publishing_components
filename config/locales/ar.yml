@@ -135,7 +135,9 @@ ar:
     organisation_schema:
       all_content_search_description: العثور عن كل المحتوى من %{organisation}
     previous_and_next_navigation:
+      next:
       pagination: ترقيم الصفحات
+      previous:
     print_link:
       text: طباعة هذه الصفحة
     radio:

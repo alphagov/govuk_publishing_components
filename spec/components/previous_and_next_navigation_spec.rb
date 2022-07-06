@@ -16,9 +16,9 @@ describe "Previous and next navigation", type: :view do
       label: "1 of 3",
     })
 
-    assert_select ".gem-c-pagination[role='navigation']"
-    assert_select ".gem-c-pagination__link-title", text: "Previous page"
-    assert_select ".gem-c-pagination__link-label", text: "1 of 3"
+    assert_select ".govuk-pagination[role='navigation']"
+    assert_select ".govuk-pagination__link-title", text: "Previous page"
+    assert_select ".govuk-pagination__link-label", text: "1 of 3"
     assert_link("previous-page")
   end
 
@@ -29,8 +29,8 @@ describe "Previous and next navigation", type: :view do
       label: "2 of 3",
     })
 
-    assert_select ".gem-c-pagination__link-title", text: "Next page"
-    assert_select ".gem-c-pagination__link-label", text: "2 of 3"
+    assert_select ".govuk-pagination__link-title", text: "Next page"
+    assert_select ".govuk-pagination__link-label", text: "2 of 3"
     assert_link("next-page")
   end
 
@@ -48,8 +48,8 @@ describe "Previous and next navigation", type: :view do
       },
     )
 
-    assert_select ".gem-c-pagination__item--previous .gem-c-pagination__link .visually-hidden", text: ":"
-    assert_select ".gem-c-pagination__item--next .gem-c-pagination__link .visually-hidden", text: ":"
+    assert_select ".govuk-pagination__prev .govuk-pagination__link .govuk-visually-hidden", text: ":"
+    assert_select ".govuk-pagination__next .govuk-pagination__link .govuk-visually-hidden", text: ":"
   end
 
   it "does not make a distinction between the navigation text and label text of the links when labels are not present" do
@@ -64,8 +64,8 @@ describe "Previous and next navigation", type: :view do
       },
     )
 
-    assert_select ".gem-c-pagination__item--previous .gem-c-pagination__link .visually-hidden", false
-    assert_select ".gem-c-pagination__item--next .gem-c-pagination__link .visually-hidden", false
+    assert_select ".govuk-pagination__prev .govuk-pagination__link .govuk-visually-hidden", false
+    assert_select ".govuk-pagination__next .govuk-pagination__link .govuk-visually-hidden", false
   end
 
   def assert_link(link)
