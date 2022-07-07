@@ -11,6 +11,7 @@
 
 * Bump govuk-frontend from 4.1.0 to 4.2.0 ([PR #2836](https://github.com/alphagov/govuk_publishing_components/pull/2836))
 * Add personally identifiable information (PII) remover to GTM ([PR #2842](https://github.com/alphagov/govuk_publishing_components/pull/2842))
+* Fix broken preview link for "previous and next navigation" component ([PR #2853](https://github.com/alphagov/govuk_publishing_components/pull/2853))
 
 ## 29.13.0
 

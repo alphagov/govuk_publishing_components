@@ -22,7 +22,7 @@ accessibility_criteria: |
 shared_accessibility_criteria:
   - link
 examples:
-  only_previous:
+  default:
     data:
       previous_page:
         url: previous-page
