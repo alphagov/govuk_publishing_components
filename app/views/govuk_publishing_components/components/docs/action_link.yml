@@ -78,6 +78,14 @@ examples:
       light_text: true
     context:
       dark_background: true
+  white_arrow:
+    data:
+      text: Find out how to stay safe and help prevent the spread
+      href: "/something"
+      white_arrow: true
+      light_text: true
+    context:
+      dark_background: true
   blue_arrow:
     data:
       text: Find out how to stay safe and help prevent the spread
