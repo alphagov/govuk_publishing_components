@@ -8,6 +8,8 @@
     document.querySelector('body').addEventListener('click', GOVUK.analyticsGA4.linkClickTracker.handleClick)
   }
 
+  GOVUK.analyticsGA4.linkClickTracker.internalLinksDomain = 'gov.uk/'
+
   GOVUK.analyticsGA4.linkClickTracker.removeTracker = function () {
     document.querySelector('body').removeEventListener('click', GOVUK.analyticsGA4.linkClickTracker.handleClick)
   }
@@ -70,18 +72,22 @@
   }
 
   GOVUK.analyticsGA4.linkClickTracker.isDownloadLink = function (href) {
-    var assetsDomain = 'assets.publishing.service.gov.uk'
+    var assetsDomain = 'assets.publishing.service.gov.uk/'
     var uploadsPath = '/government/uploads/'
     if (!href) {
       return false
     }
 
-    if (href.substring(0, 4) === 'http' && href.indexOf(assetsDomain) !== -1) {
+    if (this.hrefPointsToDomain(href, assetsDomain)) {
       return true
     }
 
-    var currentHost = GOVUK.analyticsGA4.linkClickTracker.getHostname()
-    if (href.indexOf(currentHost) !== -1 && href.indexOf(uploadsPath) !== -1) {
+    if (this.hrefPointsToDomain(href, this.internalLinksDomain) && href.indexOf(uploadsPath) !== -1) {
+      return true
+    }
+
+    // Checks relative links to the uploadsPath
+    if (this.stringStartsWith(href, uploadsPath)) {
       return true
     }
   }
@@ -91,8 +97,7 @@
       return false
     }
 
-    var currentHost = GOVUK.analyticsGA4.linkClickTracker.getHostname()
-    if (href.substring(0, 4) === 'http' && href.indexOf(currentHost) === -1) {
+    if (!this.hrefPointsToDomain(href, this.internalLinksDomain) && !this.hrefIsRelative(href)) {
       return true
     }
   }
@@ -102,8 +107,28 @@
     window.dataLayer.push(attributes)
   }
 
-  GOVUK.analyticsGA4.linkClickTracker.getHostname = function () {
-    return global.location.hostname
+  GOVUK.analyticsGA4.linkClickTracker.hrefPointsToDomain = function (href, domain) {
+    // If href contains www. remove it so we can compare the href's root domain against the parameter domain, which is a root domain
+    if (href.indexOf('www.' + domain) !== -1) {
+      href = href.replace('www.' + domain, domain)
+    }
+
+    var httpDomain = 'http://' + domain
+    var httpsDomain = 'https://' + domain
+    var schemaRelativeDomain = '//' + domain
+    return this.stringStartsWith(href, domain) ||
+    this.stringStartsWith(href, httpDomain) ||
+    this.stringStartsWith(href, httpsDomain) ||
+    this.stringStartsWith(href, schemaRelativeDomain)
+  }
+
+  GOVUK.analyticsGA4.linkClickTracker.stringStartsWith = function (string, stringToFind) {
+    return string.substring(0, stringToFind.length) === stringToFind
+  }
+
+  GOVUK.analyticsGA4.linkClickTracker.hrefIsRelative = function (href) {
+    // Checks that a link is relative, but is not a schema relative url
+    return this.stringStartsWith(href, '/') && !this.stringStartsWith(href, '//')
   }
 
   global.GOVUK = GOVUK
