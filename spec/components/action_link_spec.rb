@@ -82,6 +82,15 @@ describe "Action link", type: :view do
     assert_select ".gem-c-action-link--blue-arrow"
   end
 
+  it "renders white icon version" do
+    render_component(
+      text: "Get more info",
+      href: "/coronavirus",
+      white_arrow: true,
+    )
+    assert_select ".gem-c-action-link--white-arrow"
+  end
+
   it "renders simple icon version" do
     render_component(
       text: "Get more info",
