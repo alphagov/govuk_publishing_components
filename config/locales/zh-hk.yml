@@ -130,7 +130,9 @@ zh-hk:
     organisation_schema:
       all_content_search_description: 從 %{organisation} 獲得更多內容
     previous_and_next_navigation:
+      next:
       pagination: 分頁
+      previous:
     print_link:
       text: 列印本頁面
     radio:

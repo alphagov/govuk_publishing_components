@@ -132,7 +132,9 @@ sq:
     organisation_schema:
       all_content_search_description: Gjeni të gjithë përmbajtjen nga %{organisation}
     previous_and_next_navigation:
+      next:
       pagination: Numërtimi
+      previous:
     print_link:
       text: Printo këtë faqe
     radio:

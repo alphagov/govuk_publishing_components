@@ -127,7 +127,9 @@ ko:
     organisation_schema:
       all_content_search_description:
     previous_and_next_navigation:
+      next:
       pagination:
+      previous:
     print_link:
       text:
     radio:

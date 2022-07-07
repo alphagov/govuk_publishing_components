@@ -134,7 +134,9 @@ hr:
     organisation_schema:
       all_content_search_description: Pronađi sav sadržaj %{organization}
     previous_and_next_navigation:
+      next:
       pagination: Paginacija
+      previous:
     print_link:
       text: Ispišite ovu stranicu
     radio:

@@ -129,7 +129,9 @@ ps:
     organisation_schema:
       all_content_search_description: له%{organization} څخه ټوله مینځپانګه ومومئ
     previous_and_next_navigation:
+      next:
       pagination: مخینه
+      previous:
     print_link:
       text: دا پاڼه چاپ کړئ
     radio:

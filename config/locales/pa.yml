@@ -132,7 +132,9 @@ pa:
     organisation_schema:
       all_content_search_description: "%{organisation} ਤੋਂ ਸਾਰੀ ਸਮਗਰੀ ਲੱਭੋ"
     previous_and_next_navigation:
+      next:
       pagination: ਪੰਨਾ
+      previous:
     print_link:
       text: ਇਸ ਪੰਨੇ ਨੂੰ ਛਾਪੋ
     radio:

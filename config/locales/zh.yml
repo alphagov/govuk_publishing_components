@@ -130,7 +130,9 @@ zh:
     organisation_schema:
       all_content_search_description: 查找 %{organisation} 的全部内容
     previous_and_next_navigation:
+      next:
       pagination: 分页
+      previous:
     print_link:
       text: 打印本页面
     radio:

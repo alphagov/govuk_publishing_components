@@ -136,7 +136,9 @@ pl:
     organisation_schema:
       all_content_search_description: Znajdź całą zawartość od %{organizacja}
     previous_and_next_navigation:
+      next:
       pagination: Numeracja stron
+      previous:
     print_link:
       text: Wydrukuj tę stronę
     radio:

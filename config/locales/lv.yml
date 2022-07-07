@@ -136,7 +136,9 @@ lv:
     organisation_schema:
       all_content_search_description: Meklēt visu saturu no %{organisation}
     previous_and_next_navigation:
+      next:
       pagination: Numerācija
+      previous:
     print_link:
       text: Drukāt šo lapu
     radio:

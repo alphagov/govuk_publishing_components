@@ -135,7 +135,9 @@ hu:
     organisation_schema:
       all_content_search_description: Keresse meg a(z) %{organisation} szervezet minden tartalmát
     previous_and_next_navigation:
+      next:
       pagination: Lapszámozás
+      previous:
     print_link:
       text: Oldal kinyomtatása
     radio:

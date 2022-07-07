@@ -132,7 +132,9 @@ kk:
     organisation_schema:
       all_content_search_description: "%{organisation} ішіндегі барлық мазмұнды табу"
     previous_and_next_navigation:
+      next:
       pagination: Беттеу
+      previous:
     print_link:
       text: Осы бетті басып шығару
     radio:

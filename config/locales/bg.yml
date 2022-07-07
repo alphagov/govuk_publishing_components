@@ -136,7 +136,9 @@ bg:
     organisation_schema:
       all_content_search_description: Намиране на цялото съдържание от %{organisation}
     previous_and_next_navigation:
+      next:
       pagination: Страниране
+      previous:
     print_link:
       text: Отпечатване на страницата
     radio:

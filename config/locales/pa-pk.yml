@@ -128,7 +128,9 @@ pa-pk:
     organisation_schema:
       all_content_search_description: "%{organisation} توں سارا مواد تلاش کرو"
     previous_and_next_navigation:
+      next:
       pagination: ورقہ بندی
+      previous:
     print_link:
       text: ایس ورقے نوں پرنٹ کرو
     radio:

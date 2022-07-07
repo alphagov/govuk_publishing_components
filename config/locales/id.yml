@@ -132,7 +132,9 @@ id:
     organisation_schema:
       all_content_search_description: Temukan semua konten dari %{organisation}
     previous_and_next_navigation:
+      next:
       pagination: Paginasi
+      previous:
     print_link:
       text: Cetak halaman ini
     radio:

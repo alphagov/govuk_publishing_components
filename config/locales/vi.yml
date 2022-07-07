@@ -131,7 +131,9 @@ vi:
     organisation_schema:
       all_content_search_description: Tìm tất cả nội dung từ %{organisation}
     previous_and_next_navigation:
+      next:
       pagination: Phân trang
+      previous:
     print_link:
       text: In trang này
     radio:

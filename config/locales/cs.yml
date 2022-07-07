@@ -137,7 +137,9 @@ cs:
     organisation_schema:
       all_content_search_description: Najít veškerý obsah z %{organisation}
     previous_and_next_navigation:
+      next:
       pagination: Stránkování
+      previous:
     print_link:
       text: Vytisknout tuto stránku
     radio:

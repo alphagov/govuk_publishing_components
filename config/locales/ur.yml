@@ -129,7 +129,9 @@ ur:
     organisation_schema:
       all_content_search_description: "%{organisation} کا تمام مواد تلاش کریں"
     previous_and_next_navigation:
+      next:
       pagination: صفحہ بندی
+      previous:
     print_link:
       text: اس صفحے کا پرنٹ لیں
     radio:

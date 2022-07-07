@@ -132,7 +132,9 @@ si:
     organisation_schema:
       all_content_search_description: "%{organisation} වෙතින් සියලුම අන්තර්ගතය සෝයන්න"
     previous_and_next_navigation:
+      next:
       pagination: පිටු අංකය
+      previous:
     print_link:
       text: මෙම පිටුව මුද්රණය කරන්න
     radio:
