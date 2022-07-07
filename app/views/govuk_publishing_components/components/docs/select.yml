@@ -55,7 +55,10 @@ examples:
       - text: 'Something else'
         value: 'option2'
   with_tracking:
-    description: 'Tracking can be enabled on the select component by passing a minimum of `data_track_category` and `data_track_action`. Other tracking attributes are optional. Note: tracking events do not currently fire within the component guide.'
+    description: |
+      Tracking can be enabled on the select component by passing a minimum of `data_track_category` and `data_track_action`. Other tracking attributes are optional. Tracking is provided by the [track-select-change](https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/javascripts/govuk_publishing_components/analytics/track-select-change.js) module.
+      
+      Note: tracking events do not fire within the component guide.
     data:
       id: 'dropdown3'
       label: 'With tracking enabled'

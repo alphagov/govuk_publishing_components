@@ -89,6 +89,7 @@ examples:
       start: true
       href: "#"
   with_data_attributes:
+    description: Data attributes can be applied as required. Note that the component does not include built in tracking. If this is required consider using the [track click script](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics/track-click.md).
     data:
       text: "Track this!"
       margin_bottom: true

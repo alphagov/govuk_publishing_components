@@ -8,7 +8,7 @@ shared_accessibility_criteria:
   - link
 examples:
   default:
-    description: This component calls `print()` via the browser's DOM API. By default it relies on JavaScript and is not shown in environments where JavaScript is disabled. The \"link\" here is actually a button tag because this is not a navigation event. 
+    description: This component calls `print()` via the browser's DOM API. By default it relies on JavaScript and is not shown in environments where JavaScript is disabled. The \"link\" here is actually a button tag because this is not a navigation event.
   with_different_text:
     data:
       text: "Print this manual"
@@ -17,6 +17,10 @@ examples:
     data:
       href: "/print"
   with_data_attributes:
+    description: |
+      Data attributes can be passed to the component as shown.
+
+      Note that the component does not include built in tracking. If this is required consider using the [track click script](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics/track-click.md).
     data:
       data_attributes:
         track-category: "printButton"

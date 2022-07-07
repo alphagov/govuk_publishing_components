@@ -23,16 +23,14 @@ examples:
       items:
       - text: Descriptive link to the question with an error 1
         href: '#example-error-1'
-        data_attributes:
-          tracking: GTM-123AA
       - text: Descriptive link to the question with an error 2
         href: '#example-error-2'
-        data_attributes:
-          tracking: GTM-123AB
       - text: Description of error without link
-        data_attributes:
-          tracking: GTM-123AC
   with_data_attributes:
+    description: |
+      The example shown applies a tracking attribute specifically for use by Google Tag Manager in [Content Publisher](https://github.com/alphagov/content-publisher).
+      
+      Other data attributes can also be applied as required. Note that the component does not include built in tracking. If this is required consider using the [track click script](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics/track-click.md).
     data:
       title: Message to alert the user to a problem goes here
       description: Optional description of the errors and how to correct them

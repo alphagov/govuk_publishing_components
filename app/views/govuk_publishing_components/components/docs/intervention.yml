@@ -62,12 +62,13 @@ examples:
     description: |
       This example shows the use of `suggestion_data_attributes` and
       `dismiss_data_attributes` for click tracking.
+
+      Other data attributes can also be applied as required. Note that the component does not include built in tracking. If this is required consider using the [track click script](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics/track-click.md).
     data:
       suggestion_text: "Based on your browsing you might be interested in"
       suggestion_link_text: "Travel abroad: step by step"
       suggestion_link_url: "/travel-abroad"
       suggestion_data_attributes:
-        module: "gem-track-click"
         track-category: "interventionBanner"
         track-action: "interventionClicked"
         track-dimension: "Travel abroad: step by step"
@@ -75,9 +76,8 @@ examples:
         track-label: "clicked suggestion"
       dismiss_text: "Hide this suggestion"
       dismiss_data_attributes:
-        module: "gem-track-click"
         track-category: "interventionBanner"
         track-action: "interventionDismissed"
         track-dimension: "Hide this suggestion"
         track-dimension-index: "29"
-        track-label: "hid the intervention"
+        track-label: "hide the intervention"

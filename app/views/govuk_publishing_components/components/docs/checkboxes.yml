@@ -200,7 +200,7 @@ examples:
         - label: "Blue"
           value: "blue"
   checkboxes_with_data_attributes:
-    description: Data attributes such as tracking can be applied if required. This will fire tracking identical tracking events on check and uncheck. See below to send different events on uncheck.
+    description: Data attributes for tracking can be applied as shown. Custom JavaScript in the component will fire identical tracking events on check and uncheck. See below to send different events on uncheck.
     data:
       name: "With tracking"
       items:
@@ -216,7 +216,7 @@ examples:
             }
           }
   checkboxes_with_data_attributes_and_custom_uncheck_event_category:
-    description: It can send a different tracking event category for an uncheck. This is handled automatically
+    description: Data attributes for tracking can be applied as shown. Custom JavaScript in the component will fire different tracking events on check and uncheck.
     data:
       name: "With tracking and a custom uncheck category"
       items:

@@ -18,4 +18,4 @@ examples:
     data:
       href: '#'
       data_attributes:
-        tracking: GT-1234
+        an_attribute: the value
