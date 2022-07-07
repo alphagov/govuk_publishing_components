@@ -317,4 +317,66 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
       })
     })
   })
+
+  describe('Mailto link tracking', function () {
+    beforeEach(function () {
+      window.dataLayer = []
+      expected = {
+        event: 'analytics',
+        event_name: 'navigation',
+        nav: {
+          type: 'email',
+          text: '',
+          index: 'n/a',
+          'index-total': 'n/a',
+          section: 'n/a',
+          url: '',
+          external: 'true'
+        }
+      }
+
+      $links = $(
+        '<div class="mail-to-links">' +
+            '<a href="mailto:example@gov.uk"> National Archives </a>' +
+            '<span>This is not a mailto link</span>' +
+          '</div>' +
+          '<div class="invalid-links">' +
+            '<a href="https://gov.uk/mailto:example@gov.uk"> mailto:example@gov.uk </a>' +
+          '</div>'
+      )
+
+      $('html').on('click', function (evt) { evt.preventDefault() })
+      $('body').append($links)
+
+      $('html').off()
+      $('body').off()
+      GOVUK.analyticsGA4.linkClickTracker()
+    })
+
+    afterEach(function () {
+      $links.remove()
+      $('html').off()
+      $('body').off()
+    })
+
+    it('detects email events on mailto links', function () {
+      $('.mail-to-links a').each(function () {
+        window.dataLayer = []
+        var $link = $(this)
+        GOVUK.triggerEvent($link[0], 'click')
+
+        expected.nav.url = $link.attr('href')
+        expected.nav.text = $link.text().trim()
+        expect(window.dataLayer[0]).toEqual(expected)
+      })
+    })
+
+    it('ignores email events on non-mailto links', function () {
+      $('.internal-links a').each(function () {
+        window.dataLayer = []
+        GOVUK.triggerEvent($(this)[0], 'click')
+        expect(window.dataLayer).toEqual([])
+      })
+    })
+  })
 })

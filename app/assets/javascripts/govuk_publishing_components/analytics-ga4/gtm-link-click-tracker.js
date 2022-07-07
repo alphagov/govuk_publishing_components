@@ -43,7 +43,7 @@
 
     if (GOVUK.analyticsGA4.linkClickTracker.isMailToLink(href)) {
       attributes = Object.assign({}, DEFAULT_ATTRIBUTES)
-      attributes.nav.type = 'mailto'
+      attributes.nav.type = 'email'
       attributes.nav.external = 'true'
     } else if (GOVUK.analyticsGA4.linkClickTracker.isDownloadLink(href)) {
       attributes = Object.assign({}, DEFAULT_ATTRIBUTES)
