@@ -33,7 +33,7 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
           '</div>' +
           '<div class="internal-links">' +
             '<a href="/some-path">Local link</a>' +
-            '<a href="http://fake-hostname.com/some-path">Another local link</a>' +
+            '<a href="http://www.gov.uk/some-path">Another local link</a>' +
           '</div>'
       )
 
@@ -44,7 +44,7 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
       $('body').off()
       GOVUK.analyticsGA4.linkClickTracker()
 
-      spyOn(GOVUK.analyticsGA4.linkClickTracker, 'getHostname').and.returnValue('fake-hostname.com')
+      spyOn(GOVUK.analyticsGA4.linkClickTracker, 'getHostname').and.returnValue('www.gov.uk')
     })
 
     afterEach(function () {
@@ -117,12 +117,12 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
         '<div class="download-links">' +
           '<a href="http://assets.publishing.service.gov.uk/one.pdf">PDF</a>' +
           '<a href="https://assets.publishing.service.gov.uk/two.xslt">Spreadsheet</a>' +
-          '<a href="https://gov.uk/government/uploads/system/three.doc">Document</a>' +
-          '<a href="https://gov.uk/government/uploads/link.png"><img src="/img" /></a>' +
+          '<a href="https://www.gov.uk/government/uploads/system/three.doc">Document</a>' +
+          '<a href="https://www.gov.uk/government/uploads/link.png"><img src="/img" /></a>' +
         '</div>' +
         '<div class="normal-links">' +
-          '<a href="https://gov.uk/normal-link">Normal link</a>' +
-          '<a href="https://gov.uk/another-link">Another link</a>' +
+          '<a href="https://www.gov.uk/normal-link">Normal link</a>' +
+          '<a href="https://www.gov.uk/another-link">Another link</a>' +
         '</div>'
       )
       $('html').off()
