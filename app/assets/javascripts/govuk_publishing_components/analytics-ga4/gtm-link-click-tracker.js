@@ -6,13 +6,10 @@
 
   GOVUK.analyticsGA4.linkClickTracker = function () {
     document.querySelector('body').addEventListener('click', GOVUK.analyticsGA4.linkClickTracker.handleClick)
+    document.querySelector('body').addEventListener('mousedown', GOVUK.analyticsGA4.linkClickTracker.handleMousedown)
   }
 
   GOVUK.analyticsGA4.linkClickTracker.internalLinksDomain = 'gov.uk/'
-
-  GOVUK.analyticsGA4.linkClickTracker.removeTracker = function () {
-    document.querySelector('body').removeEventListener('click', GOVUK.analyticsGA4.linkClickTracker.handleClick)
-  }
 
   GOVUK.analyticsGA4.linkClickTracker.handleClick = function (event) {
     var element = event.target
@@ -57,6 +54,13 @@
 
     if (attributes) {
       GOVUK.analyticsGA4.linkClickTracker.trackClickEvent(attributes)
+    }
+  }
+
+  GOVUK.analyticsGA4.linkClickTracker.handleMousedown = function (event) {
+    // 1 = middle mouse button
+    if (event.button === 1) {
+      GOVUK.analyticsGA4.linkClickTracker.handleClick(event)
     }
   }
 
