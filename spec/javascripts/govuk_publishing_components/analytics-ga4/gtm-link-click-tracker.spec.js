@@ -63,7 +63,7 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
 
       $('html').off()
       $('body').off()
-      GOVUK.analyticsGA4.linkClickTracker()
+      GOVUK.analyticsGA4.linkClickTracker.trackLinkClicks()
     })
 
     afterEach(function () {
@@ -208,7 +208,7 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
       $('html').on('click', function (evt) { evt.preventDefault() })
       $('body').append($links)
 
-      GOVUK.analyticsGA4.linkClickTracker()
+      GOVUK.analyticsGA4.linkClickTracker.trackLinkClicks()
     })
 
     afterEach(function () {
@@ -350,7 +350,7 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
 
       $('html').off()
       $('body').off()
-      GOVUK.analyticsGA4.linkClickTracker()
+      GOVUK.analyticsGA4.linkClickTracker.trackLinkClicks()
     })
 
     afterEach(function () {

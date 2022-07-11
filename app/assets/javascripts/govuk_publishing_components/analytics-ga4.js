@@ -6,4 +6,4 @@
 //= require ./analytics-ga4/gtm-click-tracking
 
 window.GOVUK.Gtm.sendPageView() // this will need integrating with cookie consent before production
-window.GOVUK.analyticsGA4.linkClickTracker()
+window.GOVUK.analyticsGA4.linkClickTracker.trackLinkClicks()
