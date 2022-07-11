@@ -200,5 +200,9 @@ id:
     summary_list:
       delete: Hapus
       edit: Ubah
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: Konten

@@ -200,5 +200,9 @@ pa:
     summary_list:
       delete: ਮਿਟਾਓ
       edit: ਬਦਲੋ
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: ਸਮਗਰੀ

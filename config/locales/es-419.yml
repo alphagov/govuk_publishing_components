@@ -200,5 +200,9 @@ es-419:
     summary_list:
       delete: Borrar
       edit: Cambiar
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: Contenido

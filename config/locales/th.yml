@@ -198,5 +198,9 @@ th:
     summary_list:
       delete: ลบ
       edit: เปลี่ยน
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: เนื้อหา

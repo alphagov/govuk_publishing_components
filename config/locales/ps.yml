@@ -197,5 +197,9 @@ ps:
     summary_list:
       delete: ړنګول
       edit: بدلون
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: منځپانګې

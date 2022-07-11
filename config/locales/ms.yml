@@ -199,5 +199,9 @@ ms:
     summary_list:
       delete: Padam
       edit: Ubah
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: Kandungan

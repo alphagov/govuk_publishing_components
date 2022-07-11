@@ -143,4 +143,14 @@ describe "Table", type: :view do
 
     assert_select ".govuk-table th:nth-child(3) a.app-table__sort-link[href='/?sort_direction=desc'][data-tracking='UTM-123']"
   end
+
+  it "renders a filterable table with a filter section and a 'no results' message" do
+    render_component(
+      filterable: true,
+    )
+
+    assert_select "[data-module='table']"
+    assert_select ".js-gem-c-table__filter"
+    assert_select ".js-gem-c-table__message"
+  end
 end

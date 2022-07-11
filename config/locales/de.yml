@@ -204,5 +204,9 @@ de:
     summary_list:
       delete: Löschen
       edit: Ändern
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: Inhalte

@@ -198,5 +198,9 @@ zh-tw:
     summary_list:
       delete: 刪除
       edit: 變更
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: 內容

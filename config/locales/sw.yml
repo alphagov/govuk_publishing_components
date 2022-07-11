@@ -200,5 +200,9 @@ sw:
     summary_list:
       delete: Futa
       edit: Badilisha
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: Maudhui

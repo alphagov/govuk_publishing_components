@@ -200,5 +200,9 @@ es:
     summary_list:
       delete: Eliminar
       edit: Cambiar
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: Contenido

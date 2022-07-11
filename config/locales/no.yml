@@ -200,5 +200,9 @@
     summary_list:
       delete: Slett
       edit: Endring
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: Innhold

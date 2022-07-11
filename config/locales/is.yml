@@ -200,5 +200,9 @@ is:
     summary_list:
       delete: Eyða
       edit: Breyta
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: Efni

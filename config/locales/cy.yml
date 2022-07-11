@@ -204,5 +204,9 @@ cy:
     summary_list:
       delete: Dileu
       edit: Newid
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: Cynnwys

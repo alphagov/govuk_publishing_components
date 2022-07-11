@@ -332,5 +332,9 @@ en:
     summary_list:
       delete: Delete
       edit: Change
+    table:
+      filter_count: results for the term entered
+      filter_label: Filter
+      filter_message: There are no matching results
     tabs:
       contents: Contents

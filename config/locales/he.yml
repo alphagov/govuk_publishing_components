@@ -200,5 +200,9 @@ he:
     summary_list:
       delete: מחק
       edit: שנה
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: תוכן

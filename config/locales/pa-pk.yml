@@ -196,5 +196,9 @@ pa-pk:
     summary_list:
       delete: مٹا دیو
       edit: بدل دیو
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: ایہ سارا مواد

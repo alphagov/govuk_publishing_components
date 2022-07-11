@@ -206,5 +206,9 @@ be:
     summary_list:
       delete: Выдаліць
       edit: Змянiць
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: Змест

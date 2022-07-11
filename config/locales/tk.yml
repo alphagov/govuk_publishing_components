@@ -201,5 +201,9 @@ tk:
     summary_list:
       delete: Öçürmek
       edit: Çalyşmak
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: Mazmuny

@@ -203,5 +203,9 @@ et:
     summary_list:
       delete: Kustuta
       edit: Muuda
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: Sisu

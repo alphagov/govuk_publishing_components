@@ -203,5 +203,9 @@ ka:
     summary_list:
       delete: წაშლა
       edit: შეცვლა
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: შინაარსი

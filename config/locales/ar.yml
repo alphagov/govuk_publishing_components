@@ -203,5 +203,9 @@ ar:
     summary_list:
       delete: حذف
       edit: تغيير
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: المحتويات

@@ -205,5 +205,9 @@ sk:
     summary_list:
       delete: Odstrániť
       edit: Zmeniť
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: Obsah

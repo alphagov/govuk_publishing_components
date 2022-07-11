@@ -202,5 +202,9 @@ fi:
     summary_list:
       delete: Poistaa
       edit: Muuttaa
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: Sisällys

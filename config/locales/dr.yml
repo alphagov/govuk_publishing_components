@@ -202,5 +202,9 @@ dr:
     summary_list:
       delete: حذف کردن
       edit: تغییر دادن
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: محتویات

@@ -202,5 +202,9 @@ uz:
     summary_list:
       delete: Ўчириб юбориш
       edit: Ўзгартириш
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: Мундарижа

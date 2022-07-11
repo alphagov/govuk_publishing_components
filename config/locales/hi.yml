@@ -200,5 +200,9 @@ hi:
     summary_list:
       delete: हटाएं
       edit: बदलें
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: विषय-वस्तु

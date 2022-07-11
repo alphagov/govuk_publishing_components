@@ -200,5 +200,9 @@ gu:
     summary_list:
       delete: ડિલીટ કરો
       edit: બદલો
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: સામગ્રી

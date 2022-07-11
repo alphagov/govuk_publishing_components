@@ -198,5 +198,9 @@ fa:
     summary_list:
       delete: حذف
       edit: تغییر
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: محتوا

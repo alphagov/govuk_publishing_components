@@ -205,5 +205,9 @@ lt:
     summary_list:
       delete: Ištrinti
       edit: Keisti
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: Turinys

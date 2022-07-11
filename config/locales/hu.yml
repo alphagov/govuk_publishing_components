@@ -203,5 +203,9 @@ hu:
     summary_list:
       delete: Törlés
       edit: Megváltoztatás
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: Tartalomjegyzék

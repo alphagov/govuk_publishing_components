@@ -204,5 +204,9 @@ ru:
     summary_list:
       delete: Удалить
       edit: Изменить
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: Содержание

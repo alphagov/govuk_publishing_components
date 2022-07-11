@@ -204,5 +204,9 @@ pl:
     summary_list:
       delete: Usuń
       edit: Zmień
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: Zawartość

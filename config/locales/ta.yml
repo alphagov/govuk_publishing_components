@@ -201,5 +201,9 @@ ta:
     summary_list:
       delete: நீக்கு
       edit: மாற்று
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: உள்ளடக்கம்

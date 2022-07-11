@@ -204,5 +204,9 @@ hy:
     summary_list:
       delete: Ջնջել
       edit: Փոխել
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: Բովանդակություն

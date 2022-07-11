@@ -200,5 +200,9 @@ so:
     summary_list:
       delete: Masax
       edit: Badal
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: Waxyaabaha uu ka koobanyahay

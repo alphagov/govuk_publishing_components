@@ -201,5 +201,9 @@ tr:
     summary_list:
       delete: Sil
       edit: Değiştir
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: İçerikler

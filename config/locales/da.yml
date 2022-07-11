@@ -201,5 +201,9 @@ da:
     summary_list:
       delete: Slet
       edit: Ændre
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: Indhold

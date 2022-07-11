@@ -200,5 +200,9 @@ nl:
     summary_list:
       delete: Verwijderen
       edit: Wijzig
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: Inhoud

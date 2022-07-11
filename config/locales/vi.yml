@@ -199,5 +199,9 @@ vi:
     summary_list:
       delete: Xóa
       edit: Thay đổi
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: Mục lục

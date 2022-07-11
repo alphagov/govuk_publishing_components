@@ -200,5 +200,9 @@ sv:
     summary_list:
       delete: Ta bort
       edit: Ändra
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: Innehåll

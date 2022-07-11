@@ -204,5 +204,9 @@ lv:
     summary_list:
       delete: Dzēst
       edit: Mainīt
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: Saturs

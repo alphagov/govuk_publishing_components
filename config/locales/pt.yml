@@ -200,5 +200,9 @@ pt:
     summary_list:
       delete: Apagar
       edit: Alterar
+    table:
+      filter_count:
+      filter_label:
+      filter_message:
     tabs:
       contents: Conteúdos
