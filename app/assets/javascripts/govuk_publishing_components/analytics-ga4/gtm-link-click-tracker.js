@@ -22,7 +22,8 @@
       if (!element) {
         return
       }
-
+      // The link opened in a new tab if it was a middle mouse button click, a ctrl + click, or a command + click
+      var newTab = (event.button === 1 || event.ctrlKey || event.metaKey) ? 'true' : 'false'
       var DEFAULT_ATTRIBUTES = {
         event: 'analytics',
         event_name: 'navigation',
@@ -33,7 +34,8 @@
           'index-total': 'n/a',
           section: 'n/a',
           url: element.getAttribute('href'),
-          external: ''
+          external: '',
+          newTab
         }
       }
       var attributes
