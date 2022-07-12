@@ -106,6 +106,7 @@ module GovukPublishingComponents
             warning_count: warnings.length,
             gem_style_references: result[:gem_style_references],
             jquery_references: result[:jquery_references],
+            component_locations: result[:component_locations],
           }
         else
           data << {
@@ -244,28 +245,33 @@ module GovukPublishingComponents
       (haystack - needle).flatten.sort
     end
 
+    # returns details of component inclusion by applications
     def get_components_by_application
       results = []
       found_something = false
 
       @gem_data[:component_listing].each do |component|
-        found_in_applications = []
+        component_name = component[:name]
+        locations = []
 
         @applications_data.each do |application|
-          next unless application[:application_found]
+          next unless application[:application_found] && application[:component_locations][component_name.to_sym]
 
-          name = application[:name]
+          application_name = application[:name]
           found_something = true
 
-          application[:summary].each do |item|
-            found_in_applications << name if item[:value].include?(component[:name])
-          end
+          locations << {
+            name: application_name,
+            locations: application[:component_locations][component_name.to_sym],
+          }
         end
 
+        locations = locations.flatten
+
         results << {
-          component: component[:name],
-          count: found_in_applications.uniq.length,
-          list: found_in_applications.uniq.join(", "),
+          component: component_name,
+          count: locations.length,
+          locations: locations,
         }
       end
 

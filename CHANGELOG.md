@@ -15,6 +15,7 @@
 
 * Add White Arrow to Action Link Options ([PR #2851](https://github.com/alphagov/govuk_publishing_components/pull/2851))
 * Bump govuk-frontend from 4.1.0 to 4.2.0 ([PR #2836](https://github.com/alphagov/govuk_publishing_components/pull/2836))
+* Add file locations to component audits ([PR #2849](https://github.com/alphagov/govuk_publishing_components/pull/2849))
 * Add personally identifiable information (PII) remover to GTM ([PR #2842](https://github.com/alphagov/govuk_publishing_components/pull/2842))
 * Fix broken preview link for "previous and next navigation" component ([PR #2853](https://github.com/alphagov/govuk_publishing_components/pull/2853))
 * Add extra options for show/hide all sections accordion click ([PR #2840](https://github.com/alphagov/govuk_publishing_components/pull/2840))
