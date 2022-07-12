@@ -10,163 +10,163 @@ accessibility_criteria: |
 examples:
   default:
     data:
-      id: 'dropdown1'
-      label: 'My Dropdown'
+      id: dropdown1
+      label: My Dropdown
       options:
-      - text: 'Option one'
-        value: 'option1'
-      - text: 'Option two'
-        value: 'option2'
-      - text: 'Option three'
-        value: 'option3'
+      - text: Option one
+        value: option1
+      - text: Option two
+        value: option2
+      - text: Option three
+        value: option3
   with_different_id_and_name:
     description: If no name is provided, name defaults to the (required) value of id.
     data:
-      id: 'dropdown1-1'
-      label: 'My Dropdown'
-      name: 'dropdown[1]'
+      id: dropdown1-1
+      label: My Dropdown
+      name: dropdown[1]
       options:
-      - text: 'Option one'
-        value: 'option1'
-      - text: 'Option two'
-        value: 'option2'
+      - text: Option one
+        value: option1
+      - text: Option two
+        value: option2
   with_preselect:
     data:
-      id: 'dropdown2'
-      label: 'Option 2 preselected'
+      id: dropdown2
+      label: Option 2 preselected
       options:
-      - text: 'Option one'
-        value: 'option1'
-      - text: 'Option two'
-        value: 'option2'
+      - text: Option one
+        value: option1
+      - text: Option two
+        value: option2
         selected: true
-      - text: 'Option three'
-        value: 'option3'
+      - text: Option three
+        value: option3
   with_hint:
     description: When a hint is included the `aria-describedby` attribute of the select is included to point to the hint. When an error and a hint are present, that attribute includes the IDs of both the hint and the error.
     data:
-      id: 'dropdown2-1'
-      label: 'Choose your preferred thing'
-      hint: 'You might need some more information here'
-      hint_id: 'optional-hint-id'
+      id: dropdown2-1
+      label: Choose your preferred thing
+      hint: You might need some more information here
+      hint_id: optional-hint-id
       options:
-      - text: 'Something'
-        value: 'option1'
-      - text: 'Something else'
-        value: 'option2'
+      - text: Something
+        value: option1
+      - text: Something else
+        value: option2
   with_tracking:
     description: |
       Tracking can be enabled on the select component by passing a minimum of `data_track_category` and `data_track_action`. Other tracking attributes are optional. Tracking is provided by the [track-select-change](https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/javascripts/govuk_publishing_components/analytics/track-select-change.js) module.
-      
+
       Note: tracking events do not fire within the component guide.
     data:
-      id: 'dropdown3'
-      label: 'With tracking enabled'
+      id: dropdown3
+      label: With tracking enabled
       options:
-      - text: 'Option one'
-        value: 'option1'
+      - text: Option one
+        value: option1
         data_attributes:
-          track_category: 'relatedLinkClicked'
+          track_category: relatedLinkClicked
           track_action: 1.1
-          track_label: '/link-1'
+          track_label: /link-1
           track_options:
             dimension28: 1
-            dimension29: 'Link 1'
-      - text: 'Option two'
-        value: 'option2'
+            dimension29: Link 1
+      - text: Option two
+        value: option2
         data_attributes:
-          track_category: 'relatedLinkClicked'
+          track_category: relatedLinkClicked
           track_action: 1.2
-          track_label: '/link-2'
+          track_label: /link-2
           track_options:
             dimension28: 2
-            dimension29: 'Link 2'
-      - text: 'Option three'
-        value: 'option3'
+            dimension29: Link 2
+      - text: Option three
+        value: option3
         data_attributes:
-          track_category: 'relatedLinkClicked'
+          track_category: relatedLinkClicked
           track_action: 1.3
-          track_label: '/link-3'
+          track_label: /link-3
           track_options:
             dimension28: 3
-            dimension29: 'Link 3'
+            dimension29: Link 3
   with_data_attributes:
     description: Other data attributes can be passed to the component if needed.
     data:
-      id: 'dropdown4'
-      label: 'With data attributes'
+      id: dropdown4
+      label: With data attributes
       options:
-      - text: 'Option one'
-        value: 'option1'
+      - text: Option one
+        value: option1
         data_attributes:
-          another_attribute: "attribute 1"
-          something_else: "attribute 2"
-      - text: 'Option two'
-        value: 'option2'
-      - text: 'Option three'
-        value: 'option3'
+          another_attribute: attribute 1
+          something_else: attribute 2
+      - text: Option two
+        value: option2
+      - text: Option three
+        value: option3
   with_error:
     description: If the user has to select an option, it is recommended that a radio button is used instead of a select, but this is not always possible. Note that `error_id` is optional, if it is not passed one will be generated automatically.
     data:
-      id: 'dropdown4-1'
-      label: 'How will you be travelling to the conference?'
-      error_message: 'Please choose an option'
-      error_id: 'error_id'
+      id: dropdown4-1
+      label: How will you be travelling to the conference?
+      error_message: Please choose an option
+      error_id: error_id
       options:
       - text: ""
         value: ""
-      - text: 'Public transport'
-        value: 'option1'
-      - text: 'Will make own arrangements'
-        value: 'option2'
+      - text: Public transport
+        value: option1
+      - text: Will make own arrangements
+        value: option2
   with_error_id_but_no_message:
     description: For some selects the error message should be rendered separately but an error state is still required (currently required in smart answers). In this scenario an `error_id` can be passed without an `error_message` to highlight the component and set `aria-describedby` correctly.
     data:
-      id: 'dropdown4-2'
-      label: 'What lunch option would you like?'
-      error_id: 'error_id'
+      id: dropdown4-2
+      label: What lunch option would you like?
+      error_id: error_id
       options:
       - text: ""
         value: ""
-      - text: 'Vegetarian'
-        value: 'option1'
-      - text: 'Meat'
-        value: 'option2'
+      - text: Vegetarian
+        value: option1
+      - text: Meat
+        value: option2
   full_width:
     description: Make the select width 100%. This is used for facets in finder-frontend's search.
     data:
-      id: 'dropdown5'
-      label: 'Really wide'
+      id: dropdown5
+      label: Really wide
       full_width: true
       options:
-      - text: 'Option one'
-        value: 'option1'
-      - text: 'Option two'
-        value: 'option2'
-      - text: 'Option three'
-        value: 'option3'
+      - text: Option one
+        value: option1
+      - text: Option two
+        value: option2
+      - text: Option three
+        value: option3
   with_custom_label_size:
     description: Make the label different sizes. Valid options are `s`, `m`, `l` and `xl`.
     data:
-      id: 'dropdown6'
-      label: 'Bigger!'
-      heading_size: 'xl'
+      id: dropdown6
+      label: Bigger!
+      heading_size: xl
       options:
-      - text: 'Option one'
-        value: 'option1'
-      - text: 'Option two'
-        value: 'option2'
-      - text: 'Option three'
-        value: 'option3'
+      - text: Option one
+        value: option1
+      - text: Option two
+        value: option2
+      - text: Option three
+        value: option3
   with_page_heading:
     description: This adds a `h1` element with a label element inside containing the text supplied.
     data:
-      id: 'select-with-heading'
-      label: 'This is a page heading'
-      heading_size: 'xl'
+      id: select-with-heading
+      label: This is a page heading
+      heading_size: xl
       is_page_heading: true
       options:
-      - text: 'Option one'
-        value: 'option1'
-      - text: 'Option two'
-        value: 'option2'
+      - text: Option one
+        value: option1
+      - text: Option two
+        value: option2

@@ -18,260 +18,260 @@ accessibility_criteria: |
 examples:
   default:
     data:
-      name: "favourite_colour_default"
+      name: favourite_colour_default
       items:
-        - label: "Red"
-          value: "red_colour"
+        - label: Red
+          value: red_colour
   with_multiple_checkboxes:
     description: When more than one checkbox is shown they are wrapped in a fieldset element, which requires a legend. This must be supplied to the component using the heading option.
     data:
-      name: "favourite_colour[]"
-      heading: "What is your favourite colour?"
+      name: favourite_colour[]
+      heading: What is your favourite colour?
       items:
-        - label: "Red"
-          value: "red"
-        - label: "Green"
-          value: "green"
-        - label: "Blue"
-          value: "blue"
+        - label: Red
+          value: red
+        - label: Green
+          value: green
+        - label: Blue
+          value: blue
   with_small_checkboxes:
     data:
-      name: "favourite_small_synonym[]"
-      heading: "What is your favourite synonym for small?"
+      name: favourite_small_synonym[]
+      heading: What is your favourite synonym for small?
       small: true
       items:
-        - label: "Tiny"
-          value: "tiny"
-        - label: "Little"
-          value: "little"
+        - label: Tiny
+          value: tiny
+        - label: Little
+          value: little
   with_a_heading_on_one_checkbox:
     description: One checkbox does not require a fieldset and therefore does not require a legend. However, if a heading is supplied, a fieldset will be included in the component and the heading used as the legend, as shown.
     data:
-      name: "agree"
-      heading: "Please tick the box to agree"
+      name: agree
+      heading: Please tick the box to agree
       items:
-        - label: "I agree"
-          value: "agree"
+        - label: I agree
+          value: agree
   with_custom_hint_text:
     description: Hint text defaults to 'Select all that apply' but can be overridden with this option. Note that a hint (and a heading) is only displayed if there is more than one checkbox.
     data:
-      name: "favourite_skittle[]"
-      heading: "What is your favourite skittle?"
-      hint_text: "Taste the rainbow"
+      name: favourite_skittle[]
+      heading: What is your favourite skittle?
+      hint_text: Taste the rainbow
       items:
-        - label: "Red"
-          value: "red"
-        - label: "Green"
-          value: "green"
-        - label: "Blue"
-          value: "blue"
+        - label: Red
+          value: red
+        - label: Green
+          value: green
+        - label: Blue
+          value: blue
   with_description_text:
     description: |
       If a description text is added, it is displayed under the legend but before the hint text.
       The description text can only render text and not govspeak specific syntax.
       This is a pattern that is used across GOV.UK where a question is followed by a description.
     data:
-      name: "favourite_skittle[]"
-      heading: "Choose your favourite skittles"
+      name: favourite_skittle[]
+      heading: Choose your favourite skittles
       description: |
         Skittles consist of hard sugar shells imprinted with the letter "S".
         The interior consists mainly of sugar, corn syrup, and hydrogenated
         palm kernel oil along with fruit juice, citric acid, natural and artificial flavors.
-      hint_text: "Taste the rainbow"
+      hint_text: Taste the rainbow
       items:
-        - label: "Red"
-          value: "red"
-        - label: "Green"
-          value: "green"
-        - label: "Blue"
-          value: "blue"
+        - label: Red
+          value: red
+        - label: Green
+          value: green
+        - label: Blue
+          value: blue
   with_description_text_and_header:
     description: |
       If a description text is added with a page heading, it is displayed under the heading but before the hint text.
       The description text can only render text and not govspeak specific syntax.
       This is a pattern that is used across GOV.UK where a question is followed by a description.
     data:
-      name: "favourite_skittle[]"
-      heading: "Choose your favourite skittles"
+      name: favourite_skittle[]
+      heading: Choose your favourite skittles
       is_page_heading: true
       description: |
         Skittles consist of hard sugar shells imprinted with the letter "S".
         The interior consists mainly of sugar, corn syrup, and hydrogenated
         palm kernel oil along with fruit juice, citric acid, natural and artificial flavors.
-      hint_text: "Taste the rainbow"
+      hint_text: Taste the rainbow
       items:
-        - label: "Red"
-          value: "red"
-        - label: "Green"
-          value: "green"
-        - label: "Blue"
-          value: "blue"
+        - label: Red
+          value: red
+        - label: Green
+          value: green
+        - label: Blue
+          value: blue
   with_page_header_and_caption:
     description: |
       If a caption text is provided with a page heading, it will be displayed above the heading.
       A caption can only be used with a page heading. If a heading is not provided the caption will not render.
       The pattern is used across GOV.UK to show a high-level section that this page question falls into.
     data:
-      name: "favourite_skittle[]"
-      heading: "Choose your favourite skittles"
-      heading_caption: "Question 3 of 9"
+      name: favourite_skittle[]
+      heading: Choose your favourite skittles
+      heading_caption: Question 3 of 9
       is_page_heading: true
       items:
-        - label: "Red"
-          value: "red"
-        - label: "Green"
-          value: "green"
-        - label: "Blue"
-          value: "blue"
+        - label: Red
+          value: red
+        - label: Green
+          value: green
+        - label: Blue
+          value: blue
   without_hint_text:
     description: Hint text can be removed entirely with this option. Note that this option can be combined with the `visually_hide_heading` option.
     data:
-      name: "favourite_skittle[]"
-      heading: "What is your favourite skittle?"
+      name: favourite_skittle[]
+      heading: What is your favourite skittle?
       no_hint_text: true
       items:
-        - label: "Mauve"
-          value: "mauve"
-        - label: "Sunset orange"
-          value: "sunsetorange"
+        - label: Mauve
+          value: mauve
+        - label: Sunset orange
+          value: sunsetorange
   with_a_hidden_heading:
     description: If the heading/legend on the checkboxes is not required, it can be visually hidden using this option. It will still be visible to screen readers.
     data:
-      name: "favourite_colour[]"
-      heading: "What is your favourite colour?"
+      name: favourite_colour[]
+      heading: What is your favourite colour?
       visually_hide_heading: true
       items:
-        - label: "Red"
-          value: "red"
-        - label: "Green"
-          value: "green"
-        - label: "Blue"
-          value: "blue"
+        - label: Red
+          value: red
+        - label: Green
+          value: green
+        - label: Blue
+          value: blue
   with_a_custom_id_attribute:
     description: Note that if an `id` is not given one is generated automatically. In either case, the `id` is applied to the parent element of the checkboxes, and each checkbox is given the same `id` with an incremented number at the end, e.g. the checkboxes below have ids of `potatoes-0` and `potatoes-1`.
     data:
-      name: "potatoes[]"
-      id: "potatoes"
-      heading: "What kind of potatoes do you like?"
+      name: potatoes[]
+      id: potatoes
+      heading: What kind of potatoes do you like?
       items:
-        - label: "Red"
-          value: "red"
-        - label: "Green"
-          value: "green"
+        - label: Red
+          value: red
+        - label: Green
+          value: green
   with_custom_ids_on_individal_checkboxes:
     description: Individual checkboxes can be given specific ids if required. Note that the general id option can still be used, but the individual ids will override the general one if it is given.
     data:
-      name: "carrots[]"
-      id: "carrots"
-      heading: "What kind of carrots do you like?"
+      name: carrots[]
+      id: carrots
+      heading: What kind of carrots do you like?
       items:
-        - label: "Orange"
-          value: "orange"
-          id: "custom-orange-id"
-        - label: "Purple"
-          value: "purple"
+        - label: Orange
+          value: orange
+          id: custom-orange-id
+        - label: Purple
+          value: purple
   with_legend_as_page_heading:
     description: Since the legend/heading is required, if the checkboxes are alone on a page it makes sense to use this element as the H1 on the page rather than duplicate text.
     data:
-      name: "favourite_colour[]"
-      heading: "What is your favourite colour?"
+      name: favourite_colour[]
+      heading: What is your favourite colour?
       is_page_heading: true
       items:
-        - label: "Red"
-          value: "red"
-        - label: "Green"
-          value: "green"
-        - label: "Blue"
-          value: "blue"
+        - label: Red
+          value: red
+        - label: Green
+          value: green
+        - label: Blue
+          value: blue
   with_custom_heading_size:
     description: |
       This allows the size of the legend to be changed. Valid options are `s`, `m`, `l`, `xl`, defaulting to m if no option is passed.
 
       If the `is_page_heading` option is `true` and `heading_size` is not set, the text size will be `xl`.
     data:
-      name: "favourite_colour[]"
-      heading: "What is your favourite colour?"
-      heading_size: "s"
+      name: favourite_colour[]
+      heading: What is your favourite colour?
+      heading_size: s
       items:
-        - label: "Red"
-          value: "red"
-        - label: "Green"
-          value: "green"
-        - label: "Blue"
-          value: "blue"
+        - label: Red
+          value: red
+        - label: Green
+          value: green
+        - label: Blue
+          value: blue
   checkboxes_with_data_attributes:
     description: Data attributes for tracking can be applied as shown. Custom JavaScript in the component will fire identical tracking events on check and uncheck. See below to send different events on uncheck.
     data:
-      name: "With tracking"
+      name: With tracking
       items:
-        - label: "Tracked"
-          value: "tracked"
+        - label: Tracked
+          value: tracked
           data_attributes: {
-            track_category: "checkboxClicked",
-            track_label: "/news-and-communications",
-            track_action: "news",
+            track_category: checkboxClicked,
+            track_label: /news-and-communications,
+            track_action: news,
             track_options: {
               dimension28: 2,
-              dimension29: "Tracked"
+              dimension29: Tracked
             }
           }
   checkboxes_with_data_attributes_and_custom_uncheck_event_category:
     description: Data attributes for tracking can be applied as shown. Custom JavaScript in the component will fire different tracking events on check and uncheck.
     data:
-      name: "With tracking and a custom uncheck category"
+      name: With tracking and a custom uncheck category
       items:
-        - label: "Tracked"
-          value: "tracked"
+        - label: Tracked
+          value: tracked
           data_attributes: {
-            track_category: "checkboxClicked",
-            untrack_category: "checkboxUnchecked",
-            track_label: "/news-and-communications",
-            track_action: "news",
+            track_category: checkboxClicked,
+            untrack_category: checkboxUnchecked,
+            track_label: /news-and-communications,
+            track_action: news,
             track_options: {
               dimension28: 2,
-              dimension29: "Tracked"
+              dimension29: Tracked
             }
           }
   with_aria_controls_attributes:
     description: Aria controls attributes are applied to the checkboxes only if JavaScript is enabled.
     data:
-      name: "aria_controls[]"
-      heading: "What areas are you interested in?"
+      name: aria_controls[]
+      heading: What areas are you interested in?
       items:
-        - label: "Farming and the environment"
-          value: "farming"
-          controls: "js-live-results"
-        - label: "Water recycling"
-          value: "water"
-          controls: "js-live-results"
+        - label: Farming and the environment
+          value: farming
+          controls: js-live-results
+        - label: Water recycling
+          value: water
+          controls: js-live-results
   checkboxes_with_individual_hints:
     data:
-      name: "nationality[]"
-      heading: "What is your nationality?"
-      hint_text: "If you have dual nationality, select all options that are relevant to you."
+      name: nationality[]
+      heading: What is your nationality?
+      hint_text: If you have dual nationality, select all options that are relevant to you.
       items:
-        - label: "British"
-          value: "british"
-          hint: "including English, Scottish, Welsh and Northern Irish"
-        - label: "Irish"
-          value: "irish"
-        - label: "Other"
-          value: "other"
-          hint: "anything other than the above"
+        - label: British
+          value: british
+          hint: including English, Scottish, Welsh and Northern Irish
+        - label: Irish
+          value: irish
+        - label: Other
+          value: other
+          hint: anything other than the above
   checkbox_items_with_error:
     data:
-      name: "nationality[]"
-      heading: "What is your nationality?"
-      error: "Select if you are British, Irish or a citizen of a different country"
-      hint_text: "If you have dual nationality, select all options that are relevant to you."
+      name: nationality[]
+      heading: What is your nationality?
+      error: Select if you are British, Irish or a citizen of a different country
+      hint_text: If you have dual nationality, select all options that are relevant to you.
       items:
-        - label: "British"
-          value: "british"
-          hint: "including English, Scottish, Welsh and Northern Irish"
-        - label: "Irish"
-          value: "irish"
-        - label: "Other"
-          value: "other"
+        - label: British
+          value: british
+          hint: including English, Scottish, Welsh and Northern Irish
+        - label: Irish
+          value: irish
+        - label: Other
+          value: other
   checkbox_with_exclusive_item:
     description: |
       Allows an option to become exclusive, as follows:
@@ -281,19 +281,19 @@ examples:
 
       This behaviour should be doubled by similar checks on the backend.
     data:
-      name: "nationality-exclusive[]"
-      heading: "What kind of expertise can you offer?"
-      hint_text: "Select the types of support you can offer."
+      name: nationality-exclusive[]
+      heading: What kind of expertise can you offer?
+      hint_text: Select the types of support you can offer.
       items:
-        - label: "Medical"
-          value: "medical"
-        - label: "Engineering"
-          value: "engineering"
-        - label: "Other"
-          value: "other"
+        - label: Medical
+          value: medical
+        - label: Engineering
+          value: engineering
+        - label: Other
+          value: other
         - :or
-        - label: "I cannot offer expertise"
-          value: "no-expertise"
+        - label: I cannot offer expertise
+          value: no-expertise
           exclusive: true
   checkbox_items_with_conditional_reveal:
     description: |
@@ -301,73 +301,73 @@ examples:
 
       Note that if you do insert HTML, this may cause accessibility violations if the additional elements have different name attributes to the checkboxes. No styling will be applied to the inserted content by the component.
     data:
-      name: "contactingme[]"
-      id: "contactingme"
-      heading: "How would you like to be contacted?"
-      hint_text: "Please select all options that are relevant to you."
+      name: contactingme[]
+      id: contactingme
+      heading: How would you like to be contacted?
+      hint_text: Please select all options that are relevant to you.
       items:
-        - label: "Email"
-          value: "email"
-          conditional: <div class="govuk-form-group"><label class="govuk-label" for="contact-by-email">Email address</label><input class="govuk-input govuk-!-width-one-third" id="contact-by-email" name="contactingme" type="email"></div>
-        - label: "Phone"
-          value: "phone"
-          conditional: <div class="govuk-form-group"><label class="govuk-label" for="contact-by-phone">Phone number</label><input class="govuk-input govuk-!-width-one-third" id="contact-by-phone" name="contactingme" type="tel"></div>
-        - label: "Text message"
-          value: "text"
-          conditional: <div class="govuk-form-group"><label class="govuk-label" for="contact-by-text">Mobile phone number</label><input class="govuk-input govuk-!-width-one-third" id="contact-by-text" name="contactingme" type="tel"></div>
+        - label: Email
+          value: email
+          conditional: <div class="govuk-form-group"><label class="govuk-label" for="contact-by-email-0">Email address</label><input class="govuk-input govuk-!-width-one-third" id="contact-by-email-0" name="contactingme" type="email"></div>
+        - label: Phone
+          value: phone
+          conditional: <div class="govuk-form-group"><label class="govuk-label" for="contact-by-phone-0">Phone number</label><input class="govuk-input govuk-!-width-one-third" id="contact-by-phone-0" name="contactingme" type="tel"></div>
+        - label: Text message
+          value: text
+          conditional: <div class="govuk-form-group"><label class="govuk-label" for="contact-by-text-0">Mobile phone number</label><input class="govuk-input govuk-!-width-one-third" id="contact-by-text-0" name="contactingme" type="tel"></div>
   checkbox_items_with_conditional_reveal_checked:
     data:
-      name: "contacting-checked[]"
-      id: "contacting-checked"
-      heading: "How would you like to be contacted?"
-      hint_text: "Please select all options that are relevant to you."
+      name: contacting-checked[]
+      id: contacting-checked
+      heading: How would you like to be contacted?
+      hint_text: Please select all options that are relevant to you.
       items:
-        - label: "Email"
-          value: "email"
-          conditional: <div class="govuk-form-group"><label class="govuk-label" for="contact-by-email">Email address</label><input class="govuk-input govuk-!-width-one-third" id="contact-by-email" name="contactingme" type="email"></div>
+        - label: Email
+          value: email
+          conditional: <div class="govuk-form-group"><label class="govuk-label" for="contact-by-email-1">Email address</label><input class="govuk-input govuk-!-width-one-third" id="contact-by-email-1" name="contactingme" type="email"></div>
           checked: true
-        - label: "Phone"
-          value: "phone"
-          conditional: <div class="govuk-form-group"><label class="govuk-label" for="contact-by-phone">Phone number</label><input class="govuk-input govuk-!-width-one-third" id="contact-by-phone" name="contactingme" type="tel"></div>
-        - label: "Text message"
-          value: "text"
-          conditional: <div class="govuk-form-group"><label class="govuk-label" for="contact-by-text">Mobile phone number</label><input class="govuk-input govuk-!-width-one-third" id="contact-by-text" name="contactingme" type="tel"></div>
+        - label: Phone
+          value: phone
+          conditional: <div class="govuk-form-group"><label class="govuk-label" for="contact-by-phone-1">Phone number</label><input class="govuk-input govuk-!-width-one-third" id="contact-by-phone-1" name="contactingme" type="tel"></div>
+        - label: Text message
+          value: text
+          conditional: <div class="govuk-form-group"><label class="govuk-label" for="contact-by-text-1">Mobile phone number</label><input class="govuk-input govuk-!-width-one-third" id="contact-by-text-1" name="contactingme" type="tel"></div>
   checkbox_items_with_checked_items:
     data:
-      name: "nationality[]"
-      heading: "What is your nationality?"
-      hint_text: "If you have dual nationality, select all options that are relevant to you."
+      name: nationality[]
+      heading: What is your nationality?
+      hint_text: If you have dual nationality, select all options that are relevant to you.
       items:
-        - label: "British"
-          value: "british"
+        - label: British
+          value: british
           checked: true
-        - label: "Irish"
-          value: "irish"
-        - label: "Other"
-          value: "other"
+        - label: Irish
+          value: irish
+        - label: Other
+          value: other
   checkbox_items_with_nested_checkboxes:
     data:
-      name: "favourite_colour[]"
-      heading: "What is your favourite colour?"
+      name: favourite_colour[]
+      heading: What is your favourite colour?
       items:
-        - label: "Red"
-          value: "red"
+        - label: Red
+          value: red
           items:
-            - label: "Light Red"
-              value: "light_red"
-            - label: "Dark Red"
-              value: "dark_red"
-        - label: "Blue"
-          value: "blue"
+            - label: Light Red
+              value: light_red
+            - label: Dark Red
+              value: dark_red
+        - label: Blue
+          value: blue
           items:
-            - label: "Light blue"
-              value: "light_blue"
-            - label: "Dark blue"
-              value: "dark_blue"
-        - label: "Other"
-          value: "other"
+            - label: Light blue
+              value: light_blue
+            - label: Dark blue
+              value: dark_blue
+        - label: Other
+          value: other
           items:
-            - label: "Orange"
-              value: "orange"
-            - label: "Puce"
-              value: "puce"
+            - label: Orange
+              value: orange
+            - label: Puce
+              value: puce

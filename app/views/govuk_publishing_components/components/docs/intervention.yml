@@ -20,31 +20,31 @@ shared_accessibility_criteria:
 examples:
   default:
     data:
-      suggestion_text: "You should renew your permit every 6 months."
+      suggestion_text: You should renew your permit every 6 months.
 
   with_suggestion_link:
     data:
-      suggestion_text: "Based on your browsing you might be interested in"
+      suggestion_text: Based on your browsing you might be interested in
       suggestion_link_text: "Travel abroad: step by step"
-      suggestion_link_url: "/travel-abroad"
+      suggestion_link_url: /travel-abroad
 
   with_dismiss_link:
     data:
-      suggestion_text: "You should renew your permit every 6 months."
-      dismiss_text: "Hide this suggestion"
+      suggestion_text: You should renew your permit every 6 months.
+      dismiss_text: Hide this suggestion
 
   with_suggestion_link_only:
     data:
-      suggestion_link_text: "You can now apply for a permit online."
-      suggestion_link_url: "/permit"
+      suggestion_link_text: You can now apply for a permit online.
+      suggestion_link_url: /permit
 
   with_hide:
     description: |
       This example is for when we want to hide by default and display to the user based on some logic,
       either in the backend or with Javascript.
     data:
-      suggestion_link_text: "You may be invited to fill in a questionnaire"
-      suggestion_link_url: "/questionnaire"
+      suggestion_link_text: You may be invited to fill in a questionnaire
+      suggestion_link_url: /questionnaire
       hide: true
 
   open_suggestion_link_in_new_tab:
@@ -54,8 +54,8 @@ examples:
       Link text should tell the user that the link opens in a new tab.
       Note: "(opens in a new tab)" is added to link text if the phrase isn't included.
     data:
-      suggestion_link_text: "You can now apply for a permit online"
-      suggestion_link_url: "www.google.com/permit"
+      suggestion_link_text: You can now apply for a permit online
+      suggestion_link_url: www.google.com/permit
       new_tab: true
 
   with_data_attributes:
@@ -65,19 +65,19 @@ examples:
 
       Other data attributes can also be applied as required. Note that the component does not include built in tracking. If this is required consider using the [track click script](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics/track-click.md).
     data:
-      suggestion_text: "Based on your browsing you might be interested in"
+      suggestion_text: Based on your browsing you might be interested in
       suggestion_link_text: "Travel abroad: step by step"
-      suggestion_link_url: "/travel-abroad"
+      suggestion_link_url: /travel-abroad
       suggestion_data_attributes:
-        track-category: "interventionBanner"
-        track-action: "interventionClicked"
+        track-category: interventionBanner
+        track-action: interventionClicked
         track-dimension: "Travel abroad: step by step"
-        track-dimension-index: "29"
-        track-label: "clicked suggestion"
-      dismiss_text: "Hide this suggestion"
+        track-dimension-index: 29
+        track-label: clicked suggestion
+      dismiss_text: Hide this suggestion
       dismiss_data_attributes:
-        track-category: "interventionBanner"
-        track-action: "interventionDismissed"
-        track-dimension: "Hide this suggestion"
-        track-dimension-index: "29"
-        track-label: "hide the intervention"
+        track-category: interventionBanner
+        track-action: interventionDismissed
+        track-dimension: Hide this suggestion
+        track-dimension-index: 29
+        track-label: hide the intervention

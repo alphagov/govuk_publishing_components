@@ -23,93 +23,93 @@ govuk_frontend_components:
 examples:
   default:
     data:
-      text: "Submit"
+      text: Submit
   link_button:
     data:
-      text: "I'm really a link sssh"
-      href: "#"
+      text: I'm really a link sssh
+      href: '#'
   link_button_target_blank:
     data:
-      text: "I'm really a link sssh"
-      href: "http://www.gov.uk"
-      target: "_blank"
+      text: I'm really a link sssh
+      href: http://www.gov.uk
+      target: _blank
   with_type:
     description: Buttons default to having a type of submit, but in some cases it may be desirable to have a different type.
     data:
-      text: "Button type button"
-      type: "button"
+      text: Button type button
+      type: button
   start_now_button:
     data:
-      text: "Start now"
-      href: "#"
+      text: Start now
+      href: '#'
       start: true
-      rel: "external"
+      rel: external
   secondary_button:
     data:
-      text: "Secondary button"
+      text: Secondary button
       secondary: true
   secondary_quiet_button:
     data:
-      text: "Secondary quiet button"
+      text: Secondary quiet button
       secondary_quiet: true
   secondary_solid_button:
     data:
-      text: "Secondary solid button"
+      text: Secondary solid button
       secondary_solid: true
   destructive_button:
     data:
-      text: "Destructive button"
+      text: Destructive button
       destructive: true
   start_now_button_with_info_text:
     data:
-      text: "Start now"
-      href: "#"
+      text: Start now
+      href: '#'
       start: true
-      info_text: "Sometimes you want to explain where a user is going to."
+      info_text: Sometimes you want to explain where a user is going to.
   with_margin_bottom:
     description: The component accepts a number for margin bottom from `0` to `9` (`0px` to `60px`) using the [GOV.UK Frontend spacing scale](https://design-system.service.gov.uk/styles/spacing/#the-responsive-spacing-scale). It defaults to having no margin bottom.
     data:
-      text: "Submit"
+      text: Submit
       margin_bottom: 6
   start_now_button_with_info_text_and_margin_bottom:
     description: When the component requires margin bottom and has info text, the margin is applied to the info text.
     data:
-      text: "Start now"
-      href: "#"
+      text: Start now
+      href: '#'
       start: true
-      info_text: "Sometimes you want to explain where a user is going to and have a margin bottom"
+      info_text: Sometimes you want to explain where a user is going to and have a margin bottom
       margin_bottom: 6
   extreme_text:
     data:
-      text: "I'm a button with lots of text to test how the component scales at extremes."
-      href: "#"
+      text: I'm a button with lots of text to test how the component scales at extremes.
+      href: '#'
   extreme_text_start_now_button:
     data:
-      text: "I'm a start now button with lots of text to test how the component scales at extremes."
+      text: I'm a start now button with lots of text to test how the component scales at extremes.
       start: true
-      href: "#"
+      href: '#'
   with_data_attributes:
     description: Data attributes can be applied as required. Note that the component does not include built in tracking. If this is required consider using the [track click script](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics/track-click.md).
     data:
-      text: "Track this!"
+      text: Track this!
       margin_bottom: true
       data_attributes: {
-        "module": "cross-domain-tracking",
-        "tracking-code": "GA-123ABC",
-        "tracking-name": "transactionTracker"
+        module: cross-domain-tracking,
+        tracking-code: GA-123ABC,
+        tracking-name: transactionTracker
       }
   with_title_attribute:
     data:
-      text: "Click me"
+      text: Click me
       margin_bottom: true
-      title: "A button to click"
+      title: A button to click
   inline_layout:
     description: Buttons will display adjacent to each other until mobile view, when they will appear on top of each other.
     embed: |
       <button class="gem-c-button govuk-button gem-c-button--inline">First button</button>
       <%= component %>
     data:
-      text: "Second button"
+      text: Second button
       inline_layout: true
   with_name_and_value_set:
     description: |
@@ -117,15 +117,15 @@ examples:
 
       Please note that Internet Explorer 6 and 7 have **breaking bugs** when submitting a form with multiple buttons - this can [change what value is submitted by the button](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Notes). Make sure to check your user needs and browser usage.
     data:
-      text: "This is the button text"
-      value: "this_is_the_value"
-      name: "this_is_the_name"
+      text: This is the button text
+      value: this_is_the_value
+      name: this_is_the_name
   with_js_classes:
     description: Use `js-` prefixed classes only as interaction hooks – to query and operate on elements via JavaScript
     data:
-      text: "Button"
-      classes: "js-selector-1 js-selector-2"
+      text: Button
+      classes: js-selector-1 js-selector-2
   with_aria_label:
     data:
-      text: "Button"
-      aria_label: "Button with custom label"
+      text: Button
+      aria_label: Button with custom label
