@@ -36,8 +36,8 @@ examples:
   with_data_attributes:
     description: |
       If a `href` attribute is present, `data_attributes` will apply to the `span` containing the number value (see below).
-      
-      This will also not automatically apply a `gem-track-click` module attribute if the data attributes pertain to click tracking. Remember to apply this outside the component call in a surrounding element, if using.
+
+      Note that the component does not include built in tracking. If this is required consider using the [track click script](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics/track-click.md).
     data:
       number: 23
       label: Ministerial departments

@@ -37,10 +37,11 @@ examples:
       text: Analytics cookies help us understand how our website is being used.
       confirmation_message: You’ve accepted all cookies. You can `<a class='govuk-link' href='/cookies'>change your cookie settings</a>` at any time.
       services_cookies:
+        # yes and no must be quoted or are converted into booleans in the guide
         "yes":
           text: "Yes"
           data_attributes:
-            "track-category": "cookieBanner"
+            track-category: cookieBanner
         "no":
           text: "No"
           data_attributes:

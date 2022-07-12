@@ -195,7 +195,8 @@ examples:
         text: "Announcement"
       heading_text: "Something has happened nearby possibly"
       description: "Following a news report that something has happened, further details are emerging of the thing that has happened and what that means for you."
-  with_tracking:
+  with_data_attributes:
+    description: Data attributes can be applied as required. Note that the component does not include built in tracking. If this is required consider using the [track click script](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics/track-click.md).
     data:
       href: "/i-am-not-a-valid-link"
       href_data_attributes: {

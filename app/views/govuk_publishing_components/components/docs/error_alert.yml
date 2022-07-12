@@ -22,6 +22,10 @@ examples:
         Morbi volutpat facilisis libero. Donec posuere eget odio non egestas.
         Nullam sed neque quis turpis.
   with_data_attributes:
+    description: |
+      The example shown applies a tracking attribute specifically for use by Google Tag Manager in [Content Publisher](https://github.com/alphagov/content-publisher).
+
+      Other data attributes can also be applied as required. Note that the component does not include built in tracking. If this is required consider using the [track click script](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics/track-click.md).
     data:
       message: Message to alert the user to a unsuccessful action goes here
       description: A further description

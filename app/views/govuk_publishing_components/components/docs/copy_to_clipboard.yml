@@ -11,9 +11,9 @@ examples:
       label: Copy and send this link to someone and they’ll be able to preview your draft on GOV.UK.
       copyable_content: http://www.example.org
       input_data_attributes:
-        "tracking-code": GA-123ABC
+        an_attribute: for the input
       button_text: Copy link
       button_data_attributes:
-        "tracking-code": GA-123ABC
+        another_attribute: for the button
 accessibility_criteria: |
   - should be usable with keyboard

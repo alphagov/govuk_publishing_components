@@ -87,7 +87,12 @@ examples:
         - text: £125
           format: numeric
   with_sortable_head:
-    description: This option allows links to be added to the table headers for sorting. Sorting must be handled server side, it is not done by the component.
+    description: |
+      This option allows links to be added to the table headers for sorting. Sorting must be handled server side, it is not done by the component.
+
+      The example shown applies a tracking attribute specifically for use by Google Tag Manager in [Content Publisher](https://github.com/alphagov/content-publisher).
+
+      Other data attributes can also be applied as required. Note that the component does not include built in tracking. If this is required consider using the [track click script](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics/track-click.md).
     data:
       sortable: true
       head:
