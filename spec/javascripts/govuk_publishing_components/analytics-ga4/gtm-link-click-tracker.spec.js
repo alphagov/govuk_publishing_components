@@ -20,7 +20,8 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
           'index-total': 'n/a',
           section: 'n/a',
           url: '',
-          external: 'true'
+          external: 'true',
+          newTab: 'false'
         }
       }
 
@@ -139,6 +140,48 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
         expect(window.dataLayer).toEqual([])
       })
     })
+
+    it('detects control click events on external links', function () {
+      $('.fully-structured-external-links a').each(function () {
+        window.dataLayer = []
+        var $link = $(this)
+        var clickEvent = new CustomEvent('click', {cancelable: true, bubbles: true})
+        clickEvent.ctrlKey = true
+        $link[0].dispatchEvent(clickEvent)
+        expected.nav.url = $link.attr('href')
+        expected.nav.text = $link.text().trim()
+        expected.nav.newTab = 'true'
+        expect(window.dataLayer[0]).toEqual(expected)
+      })
+    })
+
+    it('detects command click events on external links', function () {
+      $('.fully-structured-external-links a').each(function () {
+        window.dataLayer = []
+        var $link = $(this)
+        var clickEvent = new CustomEvent('click', {cancelable: true, bubbles: true})
+        clickEvent.metaKey = true
+        $link[0].dispatchEvent(clickEvent)
+        expected.nav.url = $link.attr('href')
+        expected.nav.text = $link.text().trim()
+        expected.nav.newTab = 'true'
+        expect(window.dataLayer[0]).toEqual(expected)
+      })
+    })
+
+    it('detects middle mouse click events on external links', function () {
+      $('.fully-structured-external-links a').each(function () {
+        window.dataLayer = []
+        var $link = $(this)
+        var clickEvent = new CustomEvent('mousedown', {cancelable: true, bubbles: true})
+        clickEvent.button = 1
+        $link[0].dispatchEvent(clickEvent)
+        expected.nav.url = $link.attr('href')
+        expected.nav.text = $link.text().trim()
+        expected.nav.newTab = 'true'
+        expect(window.dataLayer[0]).toEqual(expected)
+      })
+    })
   })
 
   describe('Download link tracking', function () {
@@ -154,12 +197,13 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
           'index-total': 'n/a',
           section: 'n/a',
           url: '',
-          external: 'false'
+          external: 'false',
+          newTab: 'false'
         }
       }
 
       $links = $(
-        '<div class="fully-strcutured-download-links">' +
+        '<div class="fully-structured-download-links">' +
           '<a href="https://assets.publishing.service.gov.uk/one.pdf">PDF</a>' +
           '<a href="https://assets.publishing.service.gov.uk/two.xslt">Spreadsheet</a>' +
           '<a href="https://www.gov.uk/government/uploads/system/three.doc">Document</a>' +
@@ -331,7 +375,8 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
           'index-total': 'n/a',
           section: 'n/a',
           url: '',
-          external: 'true'
+          external: 'true',
+          newTab: 'false'
         }
       }
 
@@ -372,7 +417,7 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
     })
 
     it('ignores email events on non-mailto links', function () {
-      $('.internal-links a').each(function () {
+      $('.invalid-links a').each(function () {
         window.dataLayer = []
         GOVUK.triggerEvent($(this)[0], 'click')
         expect(window.dataLayer).toEqual([])
