@@ -145,7 +145,7 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
       $('.fully-structured-external-links a').each(function () {
         window.dataLayer = []
         var $link = $(this)
-        var clickEvent = new CustomEvent('click', {cancelable: true, bubbles: true})
+        var clickEvent = new window.CustomEvent('click', { cancelable: true, bubbles: true })
         clickEvent.ctrlKey = true
         $link[0].dispatchEvent(clickEvent)
         expected.nav.url = $link.attr('href')
@@ -159,7 +159,7 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
       $('.fully-structured-external-links a').each(function () {
         window.dataLayer = []
         var $link = $(this)
-        var clickEvent = new CustomEvent('click', {cancelable: true, bubbles: true})
+        var clickEvent = new window.CustomEvent('click', { cancelable: true, bubbles: true })
         clickEvent.metaKey = true
         $link[0].dispatchEvent(clickEvent)
         expected.nav.url = $link.attr('href')
@@ -173,7 +173,7 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
       $('.fully-structured-external-links a').each(function () {
         window.dataLayer = []
         var $link = $(this)
-        var clickEvent = new CustomEvent('mousedown', {cancelable: true, bubbles: true})
+        var clickEvent = new window.CustomEvent('mousedown', { cancelable: true, bubbles: true })
         clickEvent.button = 1
         $link[0].dispatchEvent(clickEvent)
         expected.nav.url = $link.attr('href')
