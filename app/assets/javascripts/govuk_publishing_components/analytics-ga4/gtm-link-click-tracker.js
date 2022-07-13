@@ -9,6 +9,7 @@
     trackLinkClicks: function () {
       this.internalLinksDomain = 'gov.uk/'
       document.querySelector('body').addEventListener('click', this.handleClick.bind(this))
+      document.querySelector('body').addEventListener('contextmenu', this.handleClick.bind(this))
       document.querySelector('body').addEventListener('mousedown', this.handleMousedown.bind(this))
     },
 
@@ -22,8 +23,10 @@
       if (!element) {
         return
       }
+
+      var linkMethod = this.getClickType(event)
+
       // The link opened in a new tab if it was a middle mouse button click, a ctrl + click, or a command + click
-      var newTab = (event.button === 1 || event.ctrlKey || event.metaKey) ? 'true' : 'false'
       var DEFAULT_ATTRIBUTES = {
         event: 'analytics',
         event_name: 'navigation',
@@ -35,7 +38,7 @@
           section: 'n/a',
           url: element.getAttribute('href'),
           external: '',
-          newTab
+          link_method: linkMethod
         }
       }
       var attributes
@@ -56,6 +59,23 @@
       }
       if (attributes) {
         this.trackClickEvent(attributes)
+      }
+    },
+
+    getClickType: function (event) {
+      switch (event.type) {
+        case 'click':
+          if (event.ctrlKey) {
+            return 'ctrl click'
+          } else if (event.metaKey) {
+            return 'command/win click'
+          } else {
+            return 'primary click'
+          }
+        case 'mousedown':
+          return 'middle click'
+        case 'contextmenu':
+          return 'secondary click'
       }
     },
 

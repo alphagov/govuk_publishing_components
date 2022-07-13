@@ -21,7 +21,7 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
           section: 'n/a',
           url: '',
           external: 'true',
-          newTab: 'false'
+          link_method: 'primary click'
         }
       }
 
@@ -150,7 +150,7 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
         $link[0].dispatchEvent(clickEvent)
         expected.nav.url = $link.attr('href')
         expected.nav.text = $link.text().trim()
-        expected.nav.newTab = 'true'
+        expected.nav.link_method = 'ctrl click'
         expect(window.dataLayer[0]).toEqual(expected)
       })
     })
@@ -164,7 +164,7 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
         $link[0].dispatchEvent(clickEvent)
         expected.nav.url = $link.attr('href')
         expected.nav.text = $link.text().trim()
-        expected.nav.newTab = 'true'
+        expected.nav.link_method = 'command/win click'
         expect(window.dataLayer[0]).toEqual(expected)
       })
     })
@@ -178,7 +178,19 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
         $link[0].dispatchEvent(clickEvent)
         expected.nav.url = $link.attr('href')
         expected.nav.text = $link.text().trim()
-        expected.nav.newTab = 'true'
+        expected.nav.link_method = 'middle click'
+        expect(window.dataLayer[0]).toEqual(expected)
+      })
+    })
+
+    it('detects right click events on external links', function () {
+      $('.fully-structured-external-links a').each(function () {
+        window.dataLayer = []
+        var $link = $(this)
+        GOVUK.triggerEvent($link[0], 'contextmenu')
+        expected.nav.url = $link.attr('href')
+        expected.nav.text = $link.text().trim()
+        expected.nav.link_method = 'secondary click'
         expect(window.dataLayer[0]).toEqual(expected)
       })
     })
@@ -198,7 +210,7 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
           section: 'n/a',
           url: '',
           external: 'false',
-          newTab: 'false'
+          link_method: 'primary click'
         }
       }
 
@@ -376,7 +388,7 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
           section: 'n/a',
           url: '',
           external: 'true',
-          newTab: 'false'
+          link_method: 'primary click'
         }
       }
 
