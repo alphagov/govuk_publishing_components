@@ -1,7 +1,7 @@
 module GovukPublishingComponents
   module AppHelpers
     class TableHelper
-      def self.helper(context, caption = nil, id = nil, opt = {})
+      def self.helper(context, caption = nil, opt = {})
         builder = TableBuilder.new(context.tag)
 
         classes = %w[gem-c-table govuk-table]
@@ -10,7 +10,7 @@ module GovukPublishingComponents
         caption_classes = %w[govuk-table__caption]
         caption_classes << opt[:caption_classes] if opt[:caption_classes]
 
-        context.tag.table class: classes, id: id do
+        context.tag.table class: classes, id: opt[:table_id] do
           context.concat context.tag.caption caption, class: caption_classes
           yield(builder)
         end

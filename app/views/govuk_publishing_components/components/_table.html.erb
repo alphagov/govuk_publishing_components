@@ -13,10 +13,11 @@
 %>
 
 <% @table = capture do %>
-  <%= GovukPublishingComponents::AppHelpers::TableHelper.helper(self, caption, table_id, {
+  <%= GovukPublishingComponents::AppHelpers::TableHelper.helper(self, caption, {
       sortable: sortable,
       filterable: filterable,
-      caption_classes: caption_classes
+      caption_classes: caption_classes, 
+      table_id: table_id
     }) do |t| %>
 
     <% if head.any? %>
