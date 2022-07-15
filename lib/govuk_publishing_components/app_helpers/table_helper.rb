@@ -1,6 +1,8 @@
 module GovukPublishingComponents
   module AppHelpers
     class TableHelper
+      # This is part of the Public API of this gem
+      # Any non-backwards compatible changes to the signature will require a major version change
       def self.helper(context, caption = nil, opt = {})
         builder = TableBuilder.new(context.tag)
 
