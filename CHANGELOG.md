@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Removes additional id argument from table_helper ([PR #2862](https://github.com/alphagov/govuk_publishing_components/pull/2862))
+
 ## 29.15.0
 
 * Add js search to table component ([PR #2803](https://github.com/alphagov/govuk_publishing_components/pull/2803))
