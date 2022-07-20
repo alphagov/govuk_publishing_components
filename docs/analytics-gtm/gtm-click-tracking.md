@@ -1,14 +1,12 @@
 # Google Tag Manager click tracking
 
-This is an experimental script to allow click tracking through Google Tag Manager to be added to any element using data attributes.
+This is a script to allow click tracking through Google Tag Manager to be added to any element using data attributes.
 
 ## Basic use
 
 ```html
 <div data-module="gtm-click-tracking">
-  <div
-    data-gtm-event-name="anything"
-    data-gtm-attributes='{"type":"something","index":0,"index-total":1,"section":"n/a","text":"Click me"}'>
+  <div data-ga4='{"event_name":"select_content", "type":"something", "index":0, "index_total":1, "text":"Click me"}'>
     Click me
   </div>
 </div>
@@ -16,22 +14,26 @@ This is an experimental script to allow click tracking through Google Tag Manage
 
 The module is initialised on the parent element, but tracking only occurs when clicks happen:
 
-- on child elements that have a `data-gtm-event-name` attribute
-- on the parent if it has a `data-gtm-event-name` attribute
+- on child elements that have a valid `data-ga4` attribute
+- on the parent if it has a valid `data-ga4` attribute
 
-The contents of `data-gtm-attributes` are parsed as a JSON object and included in the information passed to GTM. In the example above, the following would be pushed to the dataLayer. Note that the `link_url` attribute is automatically populated with the current page path.
+A valid `data-ga4` attribute is a JSON string that can be parsed into an object, that contains a recognised value for `event_name`. Pushes to the dataLayer that do not include a valid `event_name` attribute will be ignored by Tag Manager.
+
+In the example above, the following would be pushed to the dataLayer. Note that the schema automatically populates empty values, and that attributes not in the schema are ignored.
 
 ```
 {
-  'event': 'analytics',
-  'event_name': 'anything',
-  'link_url': '/government/publications/cheese',
-  'ui': {
+  'event': 'event_data',
+  'event_data': {
+    'event_name': 'select_content',
     'type': 'something',
+    'url': 'n/a',
+    'text': 'Click me',
     'index': '0',
-    'index-total': '1',
+    'index_total': '1',
     'section': 'n/a',
-    'text': 'Click me'
+    'action': 'n/a',
+    'external': 'n/a'
   }
 }
 ```
@@ -46,16 +48,16 @@ This is handled using the following approach.
 <div data-module="gtm-click-tracking">
   <%
     show_all_attributes = {
+      event_name: "select_content",
       type: "accordion",
       index: 0,
-      "index-total": 5,
+      index_total: 5,
       section: "n/a"
     }
   %>
   <%= render 'govuk_publishing_components/components/accordion', {
     data_attributes_show_all: {
-      "gtm-event-name": "select_content",
-      "gtm-attributes": show_all_attributes.to_json
+      "ga4": show_all_attributes.to_json
     },
     items: []
   } %>
@@ -68,22 +70,23 @@ This works as follows.
 - `GtmClickTracking` can now be triggered because the accordion is wrapped in the module and its 'Show/hide all' link has a `gtm-event-name` attribute
 - `GtmClickTracking` checks for the presence of an `aria-expanded` attribute, either on the clicked element or a child of the clicked element
 - if it finds one, it sets the `state` attribute of `ui` to either 'opened' or 'closed' depending on the value of `aria-expanded`
-- if `data-gtm-attributes` does not include `text`, `GtmClickTracking` automatically uses the text of the clicked element
+- if `data-ga4` does not include `text`, `GtmClickTracking` automatically uses the text of the clicked element
 
 When a user clicks 'Show all sections' the following information is pushed to the dataLayer.
 
 ```
 {
-  'event': 'analytics',
-  'event_name': 'select_content',
-  'link_url': '/government/publications/cheese',
-  'ui': {
+  'event': 'event_data',
+  'event_data': {
+    'event_name': 'select_content',
     'type': 'accordion',
+    'url': 'n/a',
+    'text': 'Show all sections',
     'index': '0',
     'index-total': '5',
     'section': 'n/a',
-    'text': 'Show all sections',
-    'state': 'opened'
+    'action': 'opened',
+    'external': 'n/a'
   }
 }
 ```
@@ -92,16 +95,17 @@ When a user clicks 'Hide all sections' the following information is pushed to th
 
 ```
 {
-  'event': 'analytics',
-  'event_name': 'select_content',
-  'link_url': '/government/publications/cheese',
-  'ui': {
+  'event': 'event_data',
+  'event_data': {
+    'event_name': 'select_content',
     'type': 'accordion',
+    'url': 'n/a',
+    'text': 'Hide all sections',
     'index': '0',
     'index-total': '5',
     'section': 'n/a',
-    'text': 'Hide all sections',
-    'state': 'closed'
+    'action': 'closed',
+    'external': 'n/a'
   }
 }
 ```
