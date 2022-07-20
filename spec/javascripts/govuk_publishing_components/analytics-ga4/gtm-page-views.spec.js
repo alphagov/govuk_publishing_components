@@ -14,7 +14,7 @@ describe('Google Tag Manager page view tracking', function () {
         location: document.location.href,
         referrer: document.referrer,
         title: 'This here page',
-        status_code: 200,
+        status_code: '200',
 
         document_type: 'n/a',
         publishing_app: 'n/a',
@@ -71,7 +71,7 @@ describe('Google Tag Manager page view tracking', function () {
 
   it('returns a page view with a specific status code', function () {
     window.httpStatusCode = 404
-    expected.page.status_code = 404
+    expected.page.status_code = '404'
     GOVUK.Gtm.sendPageView()
     expect(window.dataLayer[0]).toEqual(expected)
   })

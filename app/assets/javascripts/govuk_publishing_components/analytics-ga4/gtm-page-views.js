@@ -62,9 +62,9 @@
     // https://github.com/alphagov/static/blob/main/app/views/root/_error_page.html.erb#L32
     getStatusCode: function () {
       if (window.httpStatusCode) {
-        return window.httpStatusCode
+        return window.httpStatusCode.toString()
       } else {
-        return 200
+        return '200'
       }
     },
 
