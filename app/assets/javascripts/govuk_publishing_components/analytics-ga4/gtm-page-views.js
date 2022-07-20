@@ -9,7 +9,7 @@
     sendPageView: function () {
       if (window.dataLayer) {
         var data = {
-          event: 'config_ready',
+          event: 'page_view',
           page: {
             location: this.getLocation(),
             referrer: this.getReferrer(),

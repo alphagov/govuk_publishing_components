@@ -9,7 +9,7 @@ describe('Google Tag Manager page view tracking', function () {
     saved.title = document.title
     document.title = 'This here page'
     expected = {
-      event: 'config_ready',
+      event: 'page_view',
       page: {
         location: document.location.href,
         referrer: document.referrer,
