@@ -12,7 +12,6 @@ describe('Google Tag Manager click tracking', function () {
 
   afterEach(function () {
     document.body.removeChild(element)
-    window.location.hash = ''
   })
 
   describe('configuring tracking without any data', function () {
@@ -44,7 +43,7 @@ describe('Google Tag Manager click tracking', function () {
   describe('doing simple tracking on a single element', function () {
     beforeEach(function () {
       expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
-      expected.event = 'analytics'
+      expected.event = 'event_data'
       expected.event_data.event_name = 'select_content'
       expected.event_data.type = 'tabs'
 
@@ -60,22 +59,6 @@ describe('Google Tag Manager click tracking', function () {
 
     it('pushes gtm attributes to the dataLayer', function () {
       element.click()
-      expected.location = window.location.href.substring(window.location.origin.length)
-      expect(window.dataLayer[0]).toEqual(expected)
-    })
-
-    it('gets the full URL including a hash', function () {
-      var currentUrl = window.location.href.substring(window.location.origin.length)
-      // fix a bug where running the test in a browser more than once left a
-      // dangling # that broke the expected URL - would be (url)##myhash
-      var lastChar = currentUrl.substr(currentUrl.length - 1)
-      if (lastChar === '#') {
-        currentUrl = currentUrl.slice(0, -1)
-      }
-      window.location.hash = 'myhash'
-
-      element.click()
-      expected.location = currentUrl + '#myhash'
       expect(window.dataLayer[0]).toEqual(expected)
     })
 
@@ -91,13 +74,11 @@ describe('Google Tag Manager click tracking', function () {
 
     beforeEach(function () {
       expected1 = new GOVUK.analyticsGA4.Schemas().eventSchema()
-      expected1.event = 'analytics'
-      expected1.location = window.location.href.substring(window.location.origin.length)
+      expected1.event = 'event_data'
       expected1.event_data.event_name = 'event1-name'
 
       expected2 = new GOVUK.analyticsGA4.Schemas().eventSchema()
-      expected2.event = 'analytics'
-      expected2.location = window.location.href.substring(window.location.origin.length)
+      expected2.event = 'event_data'
       expected2.event_data.event_name = 'event2-name'
 
       var attributes1 = {
@@ -146,16 +127,14 @@ describe('Google Tag Manager click tracking', function () {
       element.click()
 
       expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
-      expected.event = 'analytics'
-      expected.location = window.location.href.substring(window.location.origin.length)
+      expected.event = 'event_data'
       expected.event_data.action = 'opened'
       expected.event_data.text = 'some text'
 
       expect(window.dataLayer[0]).toEqual(expected)
 
       expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
-      expected.event = 'analytics'
-      expected.location = window.location.href.substring(window.location.origin.length)
+      expected.event = 'event_data'
       expected.event_data.action = 'closed'
       expected.event_data.text = 'some text'
 
@@ -185,16 +164,14 @@ describe('Google Tag Manager click tracking', function () {
       clickOn.click()
 
       expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
-      expected.event = 'analytics'
-      expected.location = window.location.href.substring(window.location.origin.length)
+      expected.event = 'event_data'
       expected.event_data.action = 'opened'
       expected.event_data.text = 'some text'
 
       expect(window.dataLayer[0]).toEqual(expected)
 
       expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
-      expected.event = 'analytics'
-      expected.location = window.location.href.substring(window.location.origin.length)
+      expected.event = 'event_data'
       expected.event_data.action = 'closed'
       expected.event_data.text = 'some text'
 
@@ -224,8 +201,7 @@ describe('Google Tag Manager click tracking', function () {
       clickOn.click()
 
       expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
-      expected.event = 'analytics'
-      expected.location = window.location.href.substring(window.location.origin.length)
+      expected.event = 'event_data'
       expected.event_data.action = 'opened'
       expected.event_data.event_name = 'event-name'
       expected.event_data.text = 'Show'
@@ -233,8 +209,7 @@ describe('Google Tag Manager click tracking', function () {
       expect(window.dataLayer[0]).toEqual(expected)
 
       expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
-      expected.event = 'analytics'
-      expected.location = window.location.href.substring(window.location.origin.length)
+      expected.event = 'event_data'
       expected.event_data.action = 'closed'
       expected.event_data.event_name = 'event-name'
       expected.event_data.text = 'Hide'
@@ -267,8 +242,7 @@ describe('Google Tag Manager click tracking', function () {
       clickOn.click()
 
       expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
-      expected.event = 'analytics'
-      expected.location = window.location.href.substring(window.location.origin.length)
+      expected.event = 'event_data'
       expected.event_data.action = 'opened'
       expected.event_data.event_name = 'event-name'
       expected.event_data.text = 'Example'
@@ -276,8 +250,7 @@ describe('Google Tag Manager click tracking', function () {
       expect(window.dataLayer[0]).toEqual(expected)
 
       expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
-      expected.event = 'analytics'
-      expected.location = window.location.href.substring(window.location.origin.length)
+      expected.event = 'event_data'
       expected.event_data.action = 'closed'
       expected.event_data.event_name = 'event-name'
       expected.event_data.text = 'Example'

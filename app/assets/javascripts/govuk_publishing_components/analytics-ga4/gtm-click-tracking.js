@@ -29,8 +29,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           return
         }
 
-        schema.event = 'analytics'
-        schema.location = window.location.href.substring(window.location.origin.length)
+        schema.event = 'event_data'
         // get attributes from the data attribute to send to GA
         // only allow it if it already exists in the schema
         for (var property in data) {

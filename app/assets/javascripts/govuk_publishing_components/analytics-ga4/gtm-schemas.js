@@ -10,18 +10,16 @@
   Schemas.prototype.eventSchema = function () {
     return {
       event: this.null,
-      location: this.null,
 
       event_data: {
         event_name: this.null,
         type: this.null,
-        location: this.null,
+        url: this.null,
         text: this.null,
         index: this.null,
         index_total: this.null,
         section: this.null,
         action: this.null,
-        href: this.null,
         external: this.null
       }
     }
