@@ -3,6 +3,7 @@
 describe('Google Tag Manager click tracking', function () {
   var GOVUK = window.GOVUK
   var element
+  var expected
 
   beforeEach(function () {
     window.dataLayer = []
@@ -11,95 +12,89 @@ describe('Google Tag Manager click tracking', function () {
 
   afterEach(function () {
     document.body.removeChild(element)
-    window.location.hash = ''
   })
 
-  describe('configuring tracking incompletely', function () {
+  describe('configuring tracking without any data', function () {
     beforeEach(function () {
-      element.setAttribute('data-gtm-event-name', 'event-name')
+      element.setAttribute('data-ga4', '')
+      document.body.appendChild(element)
+      new GOVUK.Modules.GtmClickTracking(element).init()
+    })
+
+    it('does not cause an error or fire an event', function () {
+      element.click()
+      expect(window.dataLayer[0]).toEqual(undefined)
+    })
+  })
+
+  describe('configuring tracking with incorrect data', function () {
+    beforeEach(function () {
+      element.setAttribute('data-ga4', 'invalid json')
       document.body.appendChild(element)
       new GOVUK.Modules.GtmClickTracking(element).init()
     })
 
     it('does not cause an error', function () {
       element.click()
-      var expected = {
-        event: 'analytics',
-        event_name: 'event-name',
-        link_url: window.location.href.substring(window.location.origin.length),
-        ui: {}
-      }
-      expect(window.dataLayer[0]).toEqual(expected)
+      expect(window.dataLayer[0]).toEqual(undefined)
     })
   })
 
   describe('doing simple tracking on a single element', function () {
     beforeEach(function () {
-      element.setAttribute('data-gtm-event-name', 'event-name')
+      expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
+      expected.event = 'event_data'
+      expected.event_data.event_name = 'select_content'
+      expected.event_data.type = 'tabs'
+
       var attributes = {
-        'test-1': 'test-1 value',
-        'test-2': 'test-2 value'
+        event_name: 'select_content',
+        type: 'tabs',
+        not_a_schema_attribute: 'something'
       }
-      element.setAttribute('data-gtm-attributes', JSON.stringify(attributes))
+      element.setAttribute('data-ga4', JSON.stringify(attributes))
       document.body.appendChild(element)
       new GOVUK.Modules.GtmClickTracking(element).init()
     })
 
     it('pushes gtm attributes to the dataLayer', function () {
       element.click()
-      var expected = {
-        event: 'analytics',
-        event_name: 'event-name',
-        link_url: window.location.href.substring(window.location.origin.length),
-        ui: {
-          'test-1': 'test-1 value',
-          'test-2': 'test-2 value'
-        }
-      }
       expect(window.dataLayer[0]).toEqual(expected)
     })
 
-    it('gets the full URL including a hash', function () {
-      var currentUrl = window.location.href.substring(window.location.origin.length)
-      // fix a bug where running the test in a browser more than once left a
-      // dangling # that broke the expected URL - would be (url)##myhash
-      var lastChar = currentUrl.substr(currentUrl.length - 1)
-      if (lastChar === '#') {
-        currentUrl = currentUrl.slice(0, -1)
-      }
-      window.location.hash = 'myhash'
-
+    it('does not include non-schema data attributes', function () {
       element.click()
-      var expected = {
-        event: 'analytics',
-        event_name: 'event-name',
-        link_url: currentUrl + '#myhash',
-        ui: {
-          'test-1': 'test-1 value',
-          'test-2': 'test-2 value'
-        }
-      }
-      expect(window.dataLayer[0]).toEqual(expected)
+      expect(window.dataLayer[0].not_a_schema_attribute).toEqual(undefined)
     })
   })
 
   describe('doing simple tracking on multiple elements', function () {
+    var expected1
+    var expected2
+
     beforeEach(function () {
+      expected1 = new GOVUK.analyticsGA4.Schemas().eventSchema()
+      expected1.event = 'event_data'
+      expected1.event_data.event_name = 'event1-name'
+
+      expected2 = new GOVUK.analyticsGA4.Schemas().eventSchema()
+      expected2.event = 'event_data'
+      expected2.event_data.event_name = 'event2-name'
+
       var attributes1 = {
-        'test-1-1': 'test 1-1 value',
-        'test-1-2': 'test 1-2 value'
+        event_name: 'event1-name'
       }
       var attributes2 = {
-        'test-2-1': 'test 2-1 value',
-        'test-2-2': 'test 2-2 value'
+        event_name: 'event2-name'
       }
+
       element.innerHTML =
         '<div data-gtm-event-name="event1-name"' +
-          'data-gtm-attributes=\'' + JSON.stringify(attributes1) + '\'' +
+          'data-ga4=\'' + JSON.stringify(attributes1) + '\'' +
           'class="clickme"' +
         '></div>' +
         '<div data-gtm-event-name="event2-name"' +
-          'data-gtm-attributes=\'' + JSON.stringify(attributes2) + '\'' +
+          'data-ga4=\'' + JSON.stringify(attributes2) + '\'' +
           'class="clickme"' +
         '></div>'
       document.body.appendChild(element)
@@ -111,26 +106,7 @@ describe('Google Tag Manager click tracking', function () {
       for (var i = 0; i < clickOn.length; i++) {
         clickOn[i].click()
       }
-      var expected = [
-        {
-          event: 'analytics',
-          event_name: 'event1-name',
-          link_url: window.location.href.substring(window.location.origin.length),
-          ui: {
-            'test-1-1': 'test 1-1 value',
-            'test-1-2': 'test 1-2 value'
-          }
-        },
-        {
-          event: 'analytics',
-          event_name: 'event2-name',
-          link_url: window.location.href.substring(window.location.origin.length),
-          ui: {
-            'test-2-1': 'test 2-1 value',
-            'test-2-2': 'test 2-2 value'
-          }
-        }
-      ]
+      expected = [expected1, expected2]
       expect(window.dataLayer).toEqual(expected)
     })
   })
@@ -138,13 +114,10 @@ describe('Google Tag Manager click tracking', function () {
   describe('doing tracking on an expandable element', function () {
     beforeEach(function () {
       var attributes = {
-        'test-3-1': 'test 3-1 value',
-        'test-3-2': 'test 3-2 value',
         text: 'some text'
       }
       element.classList.add('gem-c-accordion')
-      element.setAttribute('data-gtm-event-name', 'event3-name')
-      element.setAttribute('data-gtm-attributes', JSON.stringify(attributes))
+      element.setAttribute('data-ga4', JSON.stringify(attributes))
       element.setAttribute('aria-expanded', 'false')
       document.body.appendChild(element)
       new GOVUK.Modules.GtmClickTracking(element).init()
@@ -153,46 +126,32 @@ describe('Google Tag Manager click tracking', function () {
     it('includes the expanded state in the gtm attributes', function () {
       element.click()
 
-      var expectedFirst = {
-        event: 'analytics',
-        event_name: 'event3-name',
-        link_url: window.location.href.substring(window.location.origin.length),
-        ui: {
-          'test-3-1': 'test 3-1 value',
-          'test-3-2': 'test 3-2 value',
-          action: 'opened',
-          text: 'some text'
-        }
-      }
-      expect(window.dataLayer).toEqual([expectedFirst])
+      expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
+      expected.event = 'event_data'
+      expected.event_data.action = 'opened'
+      expected.event_data.text = 'some text'
 
-      var expectedSecond = {
-        event: 'analytics',
-        event_name: 'event3-name',
-        link_url: window.location.href.substring(window.location.origin.length),
-        ui: {
-          'test-3-1': 'test 3-1 value',
-          'test-3-2': 'test 3-2 value',
-          action: 'closed',
-          text: 'some text'
-        }
-      }
+      expect(window.dataLayer[0]).toEqual(expected)
+
+      expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
+      expected.event = 'event_data'
+      expected.event_data.action = 'closed'
+      expected.event_data.text = 'some text'
+
       element.setAttribute('aria-expanded', 'true')
       element.click()
-      expect(window.dataLayer).toEqual([expectedFirst, expectedSecond])
+      expect(window.dataLayer[1]).toEqual(expected)
     })
   })
 
   describe('doing tracking on a details element', function () {
     beforeEach(function () {
       var attributes = {
-        'test-3-1': 'test 3-1 value',
-        'test-3-2': 'test 3-2 value',
         text: 'some text'
       }
       element.innerHTML =
         '<details data-gtm-event-name="event3-name"' +
-          'data-gtm-attributes=\'' + JSON.stringify(attributes) + '\'' +
+          'data-ga4=\'' + JSON.stringify(attributes) + '\'' +
           'class="clickme"' +
         '>' +
         '</details>'
@@ -204,45 +163,31 @@ describe('Google Tag Manager click tracking', function () {
       var clickOn = element.querySelector('.clickme')
       clickOn.click()
 
-      var expectedFirst = {
-        event: 'analytics',
-        event_name: 'event3-name',
-        link_url: window.location.href.substring(window.location.origin.length),
-        ui: {
-          'test-3-1': 'test 3-1 value',
-          'test-3-2': 'test 3-2 value',
-          action: 'opened',
-          text: 'some text'
-        }
-      }
-      expect(window.dataLayer).toEqual([expectedFirst])
+      expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
+      expected.event = 'event_data'
+      expected.event_data.action = 'opened'
+      expected.event_data.text = 'some text'
 
-      var expectedSecond = {
-        event: 'analytics',
-        event_name: 'event3-name',
-        link_url: window.location.href.substring(window.location.origin.length),
-        ui: {
-          'test-3-1': 'test 3-1 value',
-          'test-3-2': 'test 3-2 value',
-          action: 'closed',
-          text: 'some text'
-        }
-      }
+      expect(window.dataLayer[0]).toEqual(expected)
+
+      expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
+      expected.event = 'event_data'
+      expected.event_data.action = 'closed'
+      expected.event_data.text = 'some text'
+
       clickOn.setAttribute('open', '')
       clickOn.click()
-      expect(window.dataLayer).toEqual([expectedFirst, expectedSecond])
+      expect(window.dataLayer[1]).toEqual(expected)
     })
   })
 
   describe('doing tracking on an accordion element that contains an expandable element', function () {
     beforeEach(function () {
       var attributes = {
-        'test-3-1': 'test 3-1 value',
-        'test-3-2': 'test 3-2 value'
+        event_name: 'event-name'
       }
       element.innerHTML =
-        '<div data-gtm-event-name="event3-name"' +
-          'data-gtm-attributes=\'' + JSON.stringify(attributes) + '\'' +
+        '<div data-ga4=\'' + JSON.stringify(attributes) + '\'' +
           'class="gem-c-accordion"' +
         '>' +
           '<button aria-expanded="false">Show</button>' +
@@ -255,46 +200,35 @@ describe('Google Tag Manager click tracking', function () {
       var clickOn = element.querySelector('.gem-c-accordion')
       clickOn.click()
 
-      var expectedFirst = {
-        event: 'analytics',
-        event_name: 'event3-name',
-        link_url: window.location.href.substring(window.location.origin.length),
-        ui: {
-          'test-3-1': 'test 3-1 value',
-          'test-3-2': 'test 3-2 value',
-          action: 'opened',
-          text: 'Show'
-        }
-      }
-      expect(window.dataLayer).toEqual([expectedFirst])
+      expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
+      expected.event = 'event_data'
+      expected.event_data.action = 'opened'
+      expected.event_data.event_name = 'event-name'
+      expected.event_data.text = 'Show'
 
-      var expectedSecond = {
-        event: 'analytics',
-        event_name: 'event3-name',
-        link_url: window.location.href.substring(window.location.origin.length),
-        ui: {
-          'test-3-1': 'test 3-1 value',
-          'test-3-2': 'test 3-2 value',
-          action: 'closed',
-          text: 'Hide'
-        }
-      }
+      expect(window.dataLayer[0]).toEqual(expected)
+
+      expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
+      expected.event = 'event_data'
+      expected.event_data.action = 'closed'
+      expected.event_data.event_name = 'event-name'
+      expected.event_data.text = 'Hide'
+
       element.querySelector('[aria-expanded]').setAttribute('aria-expanded', 'true')
       element.querySelector('button').textContent = 'Hide'
       clickOn.click()
-      expect(window.dataLayer).toEqual([expectedFirst, expectedSecond])
+
+      expect(window.dataLayer[1]).toEqual(expected)
     })
   })
 
   describe('doing tracking on an details element summary click', function () {
     beforeEach(function () {
       var attributes = {
-        'test-3-1': 'test 3-1 value',
-        'test-3-2': 'test 3-2 value'
+        event_name: 'event-name'
       }
       element.innerHTML =
-        '<details data-gtm-event-name="event3-name"' +
-          'data-gtm-attributes=\'' + JSON.stringify(attributes) + '\'' +
+        '<details data-ga4=\'' + JSON.stringify(attributes) + '\'' +
           'class="clickme"' +
         '>' +
           '<summary class="nested">Example</summary>' +
@@ -307,46 +241,39 @@ describe('Google Tag Manager click tracking', function () {
       var clickOn = element.querySelector('.nested')
       clickOn.click()
 
-      var expectedFirst = {
-        event: 'analytics',
-        event_name: 'event3-name',
-        link_url: window.location.href.substring(window.location.origin.length),
-        ui: {
-          'test-3-1': 'test 3-1 value',
-          'test-3-2': 'test 3-2 value',
-          action: 'opened',
-          text: 'Example'
-        }
-      }
-      expect(window.dataLayer).toEqual([expectedFirst])
+      expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
+      expected.event = 'event_data'
+      expected.event_data.action = 'opened'
+      expected.event_data.event_name = 'event-name'
+      expected.event_data.text = 'Example'
 
-      var expectedSecond = {
-        event: 'analytics',
-        event_name: 'event3-name',
-        link_url: window.location.href.substring(window.location.origin.length),
-        ui: {
-          'test-3-1': 'test 3-1 value',
-          'test-3-2': 'test 3-2 value',
-          action: 'closed',
-          text: 'Example'
-        }
-      }
+      expect(window.dataLayer[0]).toEqual(expected)
+
+      expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
+      expected.event = 'event_data'
+      expected.event_data.action = 'closed'
+      expected.event_data.event_name = 'event-name'
+      expected.event_data.text = 'Example'
+
       element.setAttribute('open', '')
       clickOn.click()
 
-      expect(window.dataLayer).toEqual([expectedFirst, expectedSecond])
+      expect(window.dataLayer[1]).toEqual(expected)
     })
   })
 
   describe('doing tracking on an clicked parent element containing a nested accordion', function () {
     beforeEach(function () {
-      element.innerHTML = `
-      <div data-gtm-event-name="event3-name" class="clickme">
-        <div class='content'>Content</div>
-        <div class='accoridon' class='gem-c-accordion'">
-          <button aria-expanded="false">Show</button>
-        </div>
-      </div>`
+      var attributes = {
+        event_name: 'event-name'
+      }
+      element.innerHTML =
+        '<div data-ga4=\'' + JSON.stringify(attributes) + '\' class="clickme">' +
+          '<div class="content">Content</div>' +
+          '<div class="gem-c-accordion">' +
+            '<button aria-expanded="false">Show</button>' +
+          '</div>' +
+        '</div>'
       document.body.appendChild(element)
       new GOVUK.Modules.GtmClickTracking(element).init()
     })
@@ -354,19 +281,22 @@ describe('Google Tag Manager click tracking', function () {
     it('should not track the aria-expanded state', function () {
       var clickOn = element.querySelector('.clickme')
       clickOn.click()
-      expect(window.dataLayer[0].ui.action).toEqual(undefined)
+      expect(window.dataLayer[0].event_data.action).toEqual('n/a')
     })
   })
 
   describe('doing tracking on an clicked parent element containing a details element', function () {
     beforeEach(function () {
-      element.innerHTML = `
-      <div data-gtm-event-name="event3-name" class="clickme">
-        <div class='content'>Content</div>
-        <details>
-          Details element
-        </details>
-      </div>`
+      var attributes = {
+        event_name: 'event-name'
+      }
+      element.innerHTML =
+        '<div data-ga4=\'' + JSON.stringify(attributes) + '\' class="clickme">' +
+          '<div class="content">Content</div>' +
+          '<details>' +
+            'Details element' +
+          '</details>' +
+        '</div>'
       document.body.appendChild(element)
       new GOVUK.Modules.GtmClickTracking(element).init()
     })
@@ -374,7 +304,7 @@ describe('Google Tag Manager click tracking', function () {
     it('should not track the open/closed state', function () {
       var clickOn = element.querySelector('.clickme')
       clickOn.click()
-      expect(window.dataLayer[0].ui.action).toEqual(undefined)
+      expect(window.dataLayer[0].event_data.action).toEqual('n/a')
     })
   })
 })

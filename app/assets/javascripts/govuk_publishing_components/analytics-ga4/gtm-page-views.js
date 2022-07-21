@@ -9,29 +9,26 @@
     sendPageView: function () {
       if (window.dataLayer) {
         var data = {
-          event: 'config_ready',
+          event: 'page_view',
           page: {
             location: this.getLocation(),
             referrer: this.getReferrer(),
             title: this.getTitle(),
-            status_code: this.getStatusCode()
-          },
-          publishing: {
+            status_code: this.getStatusCode(),
+
             document_type: this.getMetaContent('format'),
             publishing_app: this.getMetaContent('publishing-app'),
             rendering_app: this.getMetaContent('rendering-app'),
             schema_name: this.getMetaContent('schema-name'),
-            content_id: this.getMetaContent('content-id')
-          },
-          taxonomy: {
+            content_id: this.getMetaContent('content-id'),
+
             section: this.getMetaContent('section'),
             taxon_slug: this.getMetaContent('taxon-slug'),
             taxon_id: this.getMetaContent('taxon-id'),
             themes: this.getMetaContent('themes'),
             taxon_slugs: this.getMetaContent('taxon-slugs'),
-            taxon_ids: this.getMetaContent('taxon-ids')
-          },
-          content: {
+            taxon_ids: this.getMetaContent('taxon-ids'),
+
             language: this.getLanguage(),
             history: this.getHistory(),
             withdrawn: this.getWithDrawn(),
@@ -65,9 +62,9 @@
     // https://github.com/alphagov/static/blob/main/app/views/root/_error_page.html.erb#L32
     getStatusCode: function () {
       if (window.httpStatusCode) {
-        return window.httpStatusCode
+        return window.httpStatusCode.toString()
       } else {
-        return 200
+        return '200'
       }
     },
 

@@ -7,7 +7,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   function GtmClickTracking (module) {
     this.module = module
-    this.trackingTrigger = 'data-gtm-event-name' // elements with this attribute get tracked
+    this.trackingTrigger = 'data-ga4' // elements with this attribute get tracked
   }
 
   GtmClickTracking.prototype.init = function () {
@@ -18,12 +18,24 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     if (window.dataLayer) {
       var target = this.findTrackingAttributes(event.target)
       if (target) {
-        var data = {
-          event: 'analytics',
-          event_name: target.getAttribute('data-gtm-event-name'),
-          // get entire URL apart from domain
-          link_url: window.location.href.substring(window.location.origin.length),
-          ui: JSON.parse(target.getAttribute('data-gtm-attributes')) || {}
+        var schema = new window.GOVUK.analyticsGA4.Schemas().eventSchema()
+
+        try {
+          var data = target.getAttribute(this.trackingTrigger)
+          data = JSON.parse(data)
+        } catch (e) {
+          // if there's a problem with the config, don't start the tracker
+          console.error('GA4 configuration error: ' + e.message, window.location)
+          return
+        }
+
+        schema.event = 'event_data'
+        // get attributes from the data attribute to send to GA
+        // only allow it if it already exists in the schema
+        for (var property in data) {
+          if (schema.event_data[property]) {
+            schema.event_data[property] = data[property]
+          }
         }
 
         // Ensure it only tracks aria-expanded in an accordion element, instead of in any child of the clicked element
@@ -39,15 +51,14 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         var detailsElement = target.closest('details')
 
         if (ariaExpanded) {
-          data.ui.text = data.ui.text || target.innerText
-          data.ui.action = (ariaExpanded === 'false') ? 'opened' : 'closed'
+          schema.event_data.text = data.text || target.innerText
+          schema.event_data.action = (ariaExpanded === 'false') ? 'opened' : 'closed'
         } else if (detailsElement) {
-          data.ui.text = data.ui.text || detailsElement.textContent
+          schema.event_data.text = data.text || detailsElement.textContent
           var openAttribute = detailsElement.getAttribute('open')
-          data.ui.action = (openAttribute == null) ? 'opened' : 'closed'
+          schema.event_data.action = (openAttribute == null) ? 'opened' : 'closed'
         }
-
-        window.dataLayer.push(data)
+        window.dataLayer.push(schema)
       }
     }
   }
