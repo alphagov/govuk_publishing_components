@@ -10,20 +10,12 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
   describe('External link tracking', function () {
     beforeEach(function () {
       window.dataLayer = []
-      expected = {
-        event: 'analytics',
-        event_name: 'navigation',
-        nav: {
-          type: 'generic link',
-          text: '',
-          index: 'n/a',
-          'index-total': 'n/a',
-          section: 'n/a',
-          url: '',
-          external: 'true',
-          link_method: 'primary click'
-        }
-      }
+      expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
+      expected.event = 'analytics'
+      expected.event_data.event_name = 'navigation'
+      expected.event_data.type = 'generic link'
+      expected.event_data.link_method = 'primary click'
+      expected.event_data.external = 'true'
 
       $links = $(
         '<div class="fully-structured-external-links">' +
@@ -79,8 +71,8 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
         var $link = $(this)
         GOVUK.triggerEvent($link[0], 'click')
 
-        expected.nav.url = $link.attr('href')
-        expected.nav.text = $link.text().trim()
+        expected.event_data.url = $link.attr('href')
+        expected.event_data.text = $link.text().trim()
         expect(window.dataLayer[0]).toEqual(expected)
       })
     })
@@ -91,8 +83,8 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
         var $link = $(this)
         GOVUK.triggerEvent($link[0], 'click')
 
-        expected.nav.url = $link.attr('href')
-        expected.nav.text = $link.text().trim()
+        expected.event_data.url = $link.attr('href')
+        expected.event_data.text = $link.text().trim()
         expect(window.dataLayer[0]).toEqual(expected)
       })
     })
@@ -103,8 +95,8 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
         var $link = $(this)
         GOVUK.triggerEvent($link[0], 'click')
 
-        expected.nav.url = $link.attr('href')
-        expected.nav.text = $link.text().trim()
+        expected.event_data.url = $link.attr('href')
+        expected.event_data.text = $link.text().trim()
         expect(window.dataLayer[0]).toEqual(expected)
       })
     })
@@ -115,8 +107,8 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
         var $link = $(this)
         GOVUK.triggerEvent($link[0], 'click')
 
-        expected.nav.url = $link.attr('href')
-        expected.nav.text = $link.text().trim()
+        expected.event_data.url = $link.attr('href')
+        expected.event_data.text = $link.text().trim()
         expect(window.dataLayer[0]).toEqual(expected)
       })
     })
@@ -127,8 +119,8 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
 
       GOVUK.triggerEvent($nestedImage[0], 'click')
 
-      expected.nav.url = $parentLink.attr('href')
-      expected.nav.text = $parentLink.text().trim()
+      expected.event_data.url = $parentLink.attr('href')
+      expected.event_data.text = $parentLink.text().trim()
 
       expect(window.dataLayer[0]).toEqual(expected)
     })
@@ -148,9 +140,9 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
         var clickEvent = new window.CustomEvent('click', { cancelable: true, bubbles: true })
         clickEvent.ctrlKey = true
         $link[0].dispatchEvent(clickEvent)
-        expected.nav.url = $link.attr('href')
-        expected.nav.text = $link.text().trim()
-        expected.nav.link_method = 'ctrl click'
+        expected.event_data.url = $link.attr('href')
+        expected.event_data.text = $link.text().trim()
+        expected.event_data.link_method = 'ctrl click'
         expect(window.dataLayer[0]).toEqual(expected)
       })
     })
@@ -162,9 +154,9 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
         var clickEvent = new window.CustomEvent('click', { cancelable: true, bubbles: true })
         clickEvent.metaKey = true
         $link[0].dispatchEvent(clickEvent)
-        expected.nav.url = $link.attr('href')
-        expected.nav.text = $link.text().trim()
-        expected.nav.link_method = 'command/win click'
+        expected.event_data.url = $link.attr('href')
+        expected.event_data.text = $link.text().trim()
+        expected.event_data.link_method = 'command/win click'
         expect(window.dataLayer[0]).toEqual(expected)
       })
     })
@@ -176,9 +168,9 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
         var clickEvent = new window.CustomEvent('mousedown', { cancelable: true, bubbles: true })
         clickEvent.button = 1
         $link[0].dispatchEvent(clickEvent)
-        expected.nav.url = $link.attr('href')
-        expected.nav.text = $link.text().trim()
-        expected.nav.link_method = 'middle click'
+        expected.event_data.url = $link.attr('href')
+        expected.event_data.text = $link.text().trim()
+        expected.event_data.link_method = 'middle click'
         expect(window.dataLayer[0]).toEqual(expected)
       })
     })
@@ -188,9 +180,9 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
         window.dataLayer = []
         var $link = $(this)
         GOVUK.triggerEvent($link[0], 'contextmenu')
-        expected.nav.url = $link.attr('href')
-        expected.nav.text = $link.text().trim()
-        expected.nav.link_method = 'secondary click'
+        expected.event_data.url = $link.attr('href')
+        expected.event_data.text = $link.text().trim()
+        expected.event_data.link_method = 'secondary click'
         expect(window.dataLayer[0]).toEqual(expected)
       })
     })
@@ -199,20 +191,13 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
   describe('Download link tracking', function () {
     beforeEach(function () {
       window.dataLayer = []
-      expected = {
-        event: 'analytics',
-        event_name: 'navigation',
-        nav: {
-          type: 'download',
-          text: '',
-          index: 'n/a',
-          'index-total': 'n/a',
-          section: 'n/a',
-          url: '',
-          external: 'false',
-          link_method: 'primary click'
-        }
-      }
+
+      expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
+      expected.event = 'analytics'
+      expected.event_data.event_name = 'navigation'
+      expected.event_data.type = 'download'
+      expected.event_data.link_method = 'primary click'
+      expected.event_data.external = 'false'
 
       $links = $(
         '<div class="fully-structured-download-links">' +
@@ -278,10 +263,10 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
         var $link = $(this)
         window.dataLayer = []
         GOVUK.triggerEvent($link[0], 'click')
-        expected.nav.url = $link.attr('href')
-        expected.nav.type = 'download'
-        expected.nav.external = 'false'
-        expected.nav.text = $link.text().trim()
+        expected.event_data.url = $link.attr('href')
+        expected.event_data.type = 'download'
+        expected.event_data.external = 'false'
+        expected.event_data.text = $link.text().trim()
         expect(window.dataLayer[0]).toEqual(expected)
       })
     })
@@ -291,10 +276,10 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
         var $link = $(this)
         window.dataLayer = []
         GOVUK.triggerEvent($link[0], 'click')
-        expected.nav.url = $link.closest('a').attr('href')
-        expected.nav.text = $link.closest('a').text().trim()
-        expected.nav.type = 'download'
-        expected.nav.external = 'false'
+        expected.event_data.url = $link.closest('a').attr('href')
+        expected.event_data.text = $link.closest('a').text().trim()
+        expected.event_data.type = 'download'
+        expected.event_data.external = 'false'
         expect(window.dataLayer[0]).toEqual(expected)
       })
     })
@@ -304,10 +289,10 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
         var $link = $(this)
         window.dataLayer = []
         GOVUK.triggerEvent($link[0], 'click')
-        expected.nav.url = $link.attr('href')
-        expected.nav.type = 'download'
-        expected.nav.external = 'false'
-        expected.nav.text = $link.text().trim()
+        expected.event_data.url = $link.attr('href')
+        expected.event_data.type = 'download'
+        expected.event_data.external = 'false'
+        expected.event_data.text = $link.text().trim()
         expect(window.dataLayer[0]).toEqual(expected)
       })
     })
@@ -317,10 +302,10 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
         var $link = $(this)
         window.dataLayer = []
         GOVUK.triggerEvent($link[0], 'click')
-        expected.nav.url = $link.attr('href')
-        expected.nav.type = 'download'
-        expected.nav.external = 'false'
-        expected.nav.text = $link.text().trim()
+        expected.event_data.url = $link.attr('href')
+        expected.event_data.type = 'download'
+        expected.event_data.external = 'false'
+        expected.event_data.text = $link.text().trim()
         expect(window.dataLayer[0]).toEqual(expected)
       })
     })
@@ -330,10 +315,10 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
         var $link = $(this)
         window.dataLayer = []
         GOVUK.triggerEvent($link[0], 'click')
-        expected.nav.url = $link.attr('href')
-        expected.nav.type = 'download'
-        expected.nav.external = 'false'
-        expected.nav.text = $link.text().trim()
+        expected.event_data.url = $link.attr('href')
+        expected.event_data.type = 'download'
+        expected.event_data.external = 'false'
+        expected.event_data.text = $link.text().trim()
         expect(window.dataLayer[0]).toEqual(expected)
       })
     })
@@ -352,10 +337,10 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
         var $link = $(this)
         window.dataLayer = []
         GOVUK.triggerEvent($link[0], 'click')
-        expected.nav.url = $link.attr('href')
-        expected.nav.text = $link.text().trim()
-        expected.nav.type = 'generic link'
-        expected.nav.external = 'true'
+        expected.event_data.url = $link.attr('href')
+        expected.event_data.text = $link.text().trim()
+        expected.event_data.type = 'generic link'
+        expected.event_data.external = 'true'
         expect(window.dataLayer[0]).toEqual(expected)
       })
     })
@@ -365,10 +350,10 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
         var $link = $(this)
         window.dataLayer = []
         GOVUK.triggerEvent($link[0], 'click')
-        expected.nav.url = $link.attr('href')
-        expected.nav.type = 'download'
-        expected.nav.external = 'false'
-        expected.nav.text = $link.text().trim()
+        expected.event_data.url = $link.attr('href')
+        expected.event_data.type = 'download'
+        expected.event_data.external = 'false'
+        expected.event_data.text = $link.text().trim()
         expect(window.dataLayer[0]).toEqual(expected)
       })
     })
@@ -377,20 +362,12 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
   describe('Mailto link tracking', function () {
     beforeEach(function () {
       window.dataLayer = []
-      expected = {
-        event: 'analytics',
-        event_name: 'navigation',
-        nav: {
-          type: 'email',
-          text: '',
-          index: 'n/a',
-          'index-total': 'n/a',
-          section: 'n/a',
-          url: '',
-          external: 'true',
-          link_method: 'primary click'
-        }
-      }
+      expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
+      expected.event = 'analytics'
+      expected.event_data.event_name = 'navigation'
+      expected.event_data.type = 'email'
+      expected.event_data.link_method = 'primary click'
+      expected.event_data.external = 'true'
 
       $links = $(
         '<div class="mail-to-links">' +
@@ -422,8 +399,8 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
         var $link = $(this)
         GOVUK.triggerEvent($link[0], 'click')
 
-        expected.nav.url = $link.attr('href')
-        expected.nav.text = $link.text().trim()
+        expected.event_data.url = $link.attr('href')
+        expected.event_data.text = $link.text().trim()
         expect(window.dataLayer[0]).toEqual(expected)
       })
     })

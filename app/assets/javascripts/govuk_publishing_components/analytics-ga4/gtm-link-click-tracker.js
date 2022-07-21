@@ -7,7 +7,7 @@
   GOVUK.analyticsGA4.linkClickTracker = {
 
     trackLinkClicks: function () {
-      this.internalLinksDomain = 'gov.uk/'
+      this.internalLinksDomain = 'www.gov.uk/'
       document.querySelector('body').addEventListener('click', this.handleClick.bind(this))
       document.querySelector('body').addEventListener('contextmenu', this.handleClick.bind(this))
       document.querySelector('body').addEventListener('mousedown', this.handleMousedown.bind(this))
@@ -24,41 +24,37 @@
         return
       }
 
-      var linkMethod = this.getClickType(event)
-
-      // The link opened in a new tab if it was a middle mouse button click, a ctrl + click, or a command + click
-      var DEFAULT_ATTRIBUTES = {
-        event: 'analytics',
-        event_name: 'navigation',
-        nav: {
-          type: '',
-          text: element.textContent.trim(),
-          index: 'n/a',
-          'index-total': 'n/a',
-          section: 'n/a',
-          url: element.getAttribute('href'),
-          external: '',
-          link_method: linkMethod
-        }
-      }
-      var attributes
+      var clickData = {}
       var href = element.getAttribute('href')
 
       if (this.isMailToLink(href)) {
-        attributes = Object.assign({}, DEFAULT_ATTRIBUTES)
-        attributes.nav.type = 'email'
-        attributes.nav.external = 'true'
+        clickData.type = 'email'
+        clickData.external = 'true'
       } else if (this.isDownloadLink(href)) {
-        attributes = Object.assign({}, DEFAULT_ATTRIBUTES)
-        attributes.nav.type = 'download'
-        attributes.nav.external = 'false'
+        clickData.type = 'download'
+        clickData.external = 'false'
       } else if (this.isExternalLink(href)) {
-        attributes = Object.assign({}, DEFAULT_ATTRIBUTES)
-        attributes.nav.type = 'generic link'
-        attributes.nav.external = 'true'
+        clickData.type = 'generic link'
+        clickData.external = 'true'
       }
-      if (attributes) {
-        this.trackClickEvent(attributes)
+
+      if (Object.keys(clickData).length > 0) {
+        clickData.event_name = 'navigation'
+        clickData.text = element.textContent.trim()
+        clickData.url = href
+        clickData.link_method = this.getClickType(event)
+
+        var schema = new window.GOVUK.analyticsGA4.Schemas().eventSchema()
+        schema.event = 'analytics'
+
+        for (var key in clickData) {
+          if (schema.event_data[key]) {
+            schema.event_data[key] = clickData[key]
+          }
+        }
+
+        console.log(schema)
+        this.trackClickEvent(schema)
       }
     },
 
@@ -128,17 +124,12 @@
       }
     },
 
-    trackClickEvent: function (attributes) {
+    trackClickEvent: function (schema) {
       window.dataLayer = window.dataLayer || []
-      window.dataLayer.push(attributes)
+      window.dataLayer.push(schema)
     },
 
     hrefPointsToDomain: function (href, domain) {
-      // If href contains www. remove it so we can compare the href's root domain against the parameter domain, which is a root domain
-      if (href.indexOf('www.' + domain) !== -1) {
-        href = href.replace('www.' + domain, domain)
-      }
-
       var httpDomain = 'http://' + domain
       var httpsDomain = 'https://' + domain
       var schemaRelativeDomain = '//' + domain
