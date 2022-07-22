@@ -146,7 +146,7 @@
     },
 
     hrefIsRelative: function (href) {
-      // Checks that a link is relative, but is not a schema relative url
+      // Checks that a link is relative, but is not a protocol relative url
       return this.stringStartsWith(href, '/') && !this.stringStartsWith(href, '//')
     }
 

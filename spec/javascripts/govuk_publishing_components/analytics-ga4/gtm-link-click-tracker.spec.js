@@ -101,7 +101,7 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
       })
     })
 
-    it('listens to external click events on schema relative links', function () {
+    it('listens to external click events on protocol relative links', function () {
       $('.http-less-external-links a').each(function () {
         window.dataLayer = []
         var $link = $(this)
