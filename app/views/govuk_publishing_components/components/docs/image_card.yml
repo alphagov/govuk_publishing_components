@@ -4,6 +4,8 @@ body: |
   An image and links, meant for use for news articles and people. Includes optional paragraph and additional links.
 
   The component is generally to be used within a grid column but has no grid of its own, so the text and the images in the examples below may not always line up. This will normally look tidier, for example [on pages like this](https://www.gov.uk/government/organisations/attorney-generals-office).
+
+  Images should have an aspect ratio of 3:2.
 accessibility_criteria: |
   The component must:
 
