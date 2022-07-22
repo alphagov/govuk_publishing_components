@@ -14,7 +14,7 @@ When one of these listeners are fired, they check if the `event.target` is an `<
 - A `mailto` link - This is an email href that starts with `mailto:`.
 - An `external` link - This is a href that is not on the `www.gov.uk` domain. 
     - To calculate this, it checks if the href starts with `http://www.gov.uk/`, `https://www.gov.uk/`, `//www.gov.uk/`, `www.gov.uk/`, `http://gov.uk/`, `https://gov.uk/`, `//gov.uk`, or `gov.uk/` (NB: `gov.uk/` and `www./` are technically relative links as a href must contain a `/` or http method at the start to be treated as non-relative).
-    - It also checks if a `href` starts with `/` and does not start with `//` to determine if it's a relative link
+    - It also checks if a `href` starts with `/` and does not start with `//` to determine if it's a relative link like `/bank-holidays` , but not a protocol relative link `//google.com`
     - If the `href` does not meet both of these criteria, then it is considered an external link.
 
 ## Basic use
