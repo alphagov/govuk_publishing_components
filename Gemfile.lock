@@ -128,7 +128,7 @@ GEM
     govuk_personalisation (0.12.0)
       plek (>= 1.9.0)
       rails (>= 6, < 8)
-    govuk_schemas (4.3.0)
+    govuk_schemas (4.4.1)
       json-schema (~> 2.8.0)
     govuk_test (3.0.1)
       brakeman (>= 5.0.2)
