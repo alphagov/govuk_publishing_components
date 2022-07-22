@@ -47,13 +47,14 @@
         var schema = new window.GOVUK.analyticsGA4.Schemas().eventSchema()
         schema.event = 'analytics'
 
+        // get attributes from the clickData object to send to GA
+        // only allow it if it already exists in the schema
         for (var key in clickData) {
           if (schema.event_data[key]) {
             schema.event_data[key] = clickData[key]
           }
         }
 
-        console.log(schema)
         this.trackClickEvent(schema)
       }
     },
@@ -104,7 +105,8 @@
         return true
       }
 
-      if (this.hrefPointsToDomain(href, this.internalLinksDomain) && href.indexOf(uploadsPath) !== -1) {
+      var isInternalLink = this.hrefPointsToDomain(href, this.internalLinksDomain) || this.hrefPointsToDomain(href, this.internalLinksDomain.replace('www.', ''))
+      if (isInternalLink && href.indexOf(uploadsPath) !== -1) {
         return true
       }
 
@@ -118,8 +120,8 @@
       if (!href) {
         return false
       }
-
-      if (!this.hrefPointsToDomain(href, this.internalLinksDomain) && !this.hrefIsRelative(href)) {
+      var isInternalLink = this.hrefPointsToDomain(href, this.internalLinksDomain) || this.hrefPointsToDomain(href, this.internalLinksDomain.replace('www.', ''))
+      if (!isInternalLink && !this.hrefIsRelative(href)) {
         return true
       }
     },
