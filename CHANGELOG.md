@@ -11,7 +11,6 @@
 
 * GA4 analytics schema rework ([PR #2864](https://github.com/alphagov/govuk_publishing_components/pull/2864))
 * Change colour palette in graphs to match GSS guidance ([PR #2782](https://github.com/alphagov/govuk_publishing_components/pull/2782))
-* Include width and height size attributes on image card component ([PR #2869](https://github.com/alphagov/govuk_publishing_components/pull/2869))
 
 ## 29.15.1
 

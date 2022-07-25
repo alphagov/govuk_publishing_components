@@ -46,8 +46,6 @@ module GovukPublishingComponents
               loading: @image_loading,
               sizes: @sizes,
               srcset: @srcset,
-              height: 200,
-              width: 300,
             )
           end
         end
