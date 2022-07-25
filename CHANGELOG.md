@@ -10,6 +10,7 @@
 ## Unreleased
 
 * GA4 analytics schema rework ([PR #2864](https://github.com/alphagov/govuk_publishing_components/pull/2864))
+* Change colour palette in graphs to match GSS guidance ([PR #2782](https://github.com/alphagov/govuk_publishing_components/pull/2782))
 
 ## 29.15.1
 

@@ -181,6 +181,11 @@ examples:
           </tbody>
         </table>
   charts:
+    description: |
+      The Government Statistical Service (GSS) guidance recommends [a limit of four categories as best practice for basic data visualisations](https://gss.civilservice.gov.uk/policy-store/data-visualisation-colours-in-charts/#section-5).
+
+      Note that charts which have up to 7 categories, [chart with colours](http://govuk-publishing-components.dev.gov.uk/component-guide/govspeak/chart_with_colours/preview), for example, will display subsequent bars in `#3d3d3d`, `#a285d1` and the 7th bar in the default colour of `#0b0c0c` and will still meet the colour contrast requirements for adjacent colours. 
+      Charts that have 8 or more categories will display additional bars in the default colour and will not meet colour contrast requirements for adjacent colours.
     data:
       block: |
         <table class='js-barchart-table mc-auto-outdent'>
@@ -214,8 +219,6 @@ examples:
               <th scope="col">Grapes</th>
               <th scope="col">Strawberries</th>
               <th scope="col">Plums</th>
-              <th scope="col">Apricots</th>
-              <th scope="col">Pineapples</th>
             </tr>
           </thead>
           <tbody>
@@ -228,8 +231,6 @@ examples:
               <td>24</td>
               <td>10</td>
               <td>62</td>
-              <td>29</td>
-              <td>81</td>
             </tr>
             <tr>
               <td>Numbers outside bar</td>
@@ -238,10 +239,8 @@ examples:
               <td>2</td>
               <td>1</td>
               <td>1</td>
-              <td>3</td>
-              <td>3</td>
-              <td>1</td>
               <td>2</td>
+              <td>1</td>
             </tr>
           </tbody>
         </table>

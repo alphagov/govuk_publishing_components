@@ -25,12 +25,23 @@
   $caption-side: top; // Caption alignment. Top or bottom.
   $key-width: 160px; // Only used by IE. Other browsers get smallest width that fits content
 
+  // The following accessible colour palette has been developed to meet the colour contrast requirements for adjacent colours (as set out in WCAG 2.1)
+  // For charts, the palette should be used instead of the GOV.UK colour palette - https://design-system.service.gov.uk/styles/colour/
+  // https://gss.civilservice.gov.uk/policy-store/data-visualisation-colours-in-charts/#section-5
+
+  $gss-colour-dark-blue: #12436d;
+  $gss-colour-turquoise: #28a197;
+  $gss-colour-dark-pink: #801650;
+  $gss-colour-orange: #f46a25;
+  $gss-colour-dark-grey: #3d3d3d;
+  $gss-colour-plum: #a285d1;
+
   // CHART COLOUR SCHEME
 
   $chart-border: govuk-colour("white"); // Chart border colour
   $key-border: govuk-colour("white"); // Key border colour
-  $bar-colours: govuk-colour("blue"), govuk-colour("turquoise"), govuk-colour("green"), govuk-colour("light-green"), govuk-colour("yellow"), govuk-colour("orange"), govuk-colour("red"), govuk-colour("bright-purple", $legacy: "bright-red");
-  $bar-text-colours: govuk-colour("white"), govuk-colour("black"), govuk-colour("white"), govuk-colour("black"), govuk-colour("black"), govuk-colour("black"), govuk-colour("white"), govuk-colour("white");
+  $bar-colours: $gss-colour-dark-blue, $gss-colour-turquoise, $gss-colour-dark-pink, $gss-colour-orange, $gss-colour-dark-grey, $gss-colour-plum;
+  $bar-text-colours: govuk-colour("white"), govuk-colour("white"), govuk-colour("white"), govuk-colour("black"), govuk-colour("white"), govuk-colour("black");
   $bar-cell-colour: govuk-colour("black");
   $bar-outdented-colour: govuk-colour("black");
 
