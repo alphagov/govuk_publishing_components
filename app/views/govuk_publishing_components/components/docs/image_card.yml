@@ -188,7 +188,7 @@ examples:
     data:
       large: true
       href: "/still-not-a-page"
-      image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/62756/s300_courts-of-justice.JPG"
+      image_src: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/feature/image/91397/s712_SG_Swear_in_1_.jpg"
       image_alt: "some meaningful alt text please"
       context:
         date: 2017-06-14 11:30:00
