@@ -1,3 +1,5 @@
+// = require govuk/vendor/polyfills/Element/prototype/closest.js
+
 ;(function (global) {
   'use strict'
 
@@ -5,9 +7,9 @@
   GOVUK.analyticsGA4 = GOVUK.analyticsGA4 || {}
 
   GOVUK.analyticsGA4.linkClickTracker = {
-
     trackLinkClicks: function () {
       this.internalLinksDomain = 'www.gov.uk/'
+      this.internalLinksDomainWithoutWww = 'gov.uk/'
       document.querySelector('body').addEventListener('click', this.handleClick.bind(this))
       document.querySelector('body').addEventListener('contextmenu', this.handleClick.bind(this))
       document.querySelector('body').addEventListener('mousedown', this.handleMousedown.bind(this))
@@ -26,6 +28,10 @@
 
       var clickData = {}
       var href = element.getAttribute('href')
+
+      if (!href) {
+        return false
+      }
 
       if (this.isMailToLink(href)) {
         clickData.type = 'email'
@@ -84,28 +90,18 @@
     },
 
     isMailToLink: function (href) {
-      if (!href) {
-        return false
-      }
-
-      if (href.length < 7) {
-        return false
-      }
       return href.substring(0, 7) === 'mailto:'
     },
 
     isDownloadLink: function (href) {
       var assetsDomain = 'assets.publishing.service.gov.uk/'
       var uploadsPath = '/government/uploads/'
-      if (!href) {
-        return false
-      }
 
       if (this.hrefPointsToDomain(href, assetsDomain)) {
         return true
       }
 
-      var isInternalLink = this.hrefPointsToDomain(href, this.internalLinksDomain) || this.hrefPointsToDomain(href, this.internalLinksDomain.replace('www.', ''))
+      var isInternalLink = this.hrefPointsToDomain(href, this.internalLinksDomain) || this.hrefPointsToDomain(href, this.internalLinksDomainWithoutWww)
       if (isInternalLink && href.indexOf(uploadsPath) !== -1) {
         return true
       }
@@ -117,18 +113,16 @@
     },
 
     isExternalLink: function (href) {
-      if (!href) {
-        return false
-      }
-      var isInternalLink = this.hrefPointsToDomain(href, this.internalLinksDomain) || this.hrefPointsToDomain(href, this.internalLinksDomain.replace('www.', ''))
+      var isInternalLink = this.hrefPointsToDomain(href, this.internalLinksDomain) || this.hrefPointsToDomain(href, this.internalLinksDomainWithoutWww)
       if (!isInternalLink && !this.hrefIsRelative(href)) {
         return true
       }
     },
 
     trackClickEvent: function (schema) {
-      window.dataLayer = window.dataLayer || []
-      window.dataLayer.push(schema)
+      if (window.dataLayer) {
+        window.dataLayer.push(schema)
+      }
     },
 
     hrefPointsToDomain: function (href, domain) {
@@ -147,9 +141,8 @@
 
     hrefIsRelative: function (href) {
       // Checks that a link is relative, but is not a protocol relative url
-      return this.stringStartsWith(href, '/') && !this.stringStartsWith(href, '//')
+      return href[0] === '/' && href[1] !== '/'
     }
-
   }
 
   global.GOVUK = GOVUK

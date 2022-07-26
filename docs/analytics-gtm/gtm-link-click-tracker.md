@@ -1,6 +1,6 @@
 # Google Tag Manager link click tracker
 
-A module exists for tracking link clicks on GOV.UK.
+A module for tracking link clicks on GOV.UK.
 
 When initialised, the JS adds an event listener to the `<body>` of the page with the following listeners:
 
@@ -19,17 +19,9 @@ When one of these listeners are fired, they check if the `event.target` is an `<
 
 ## Basic use
 
-```
-//= require ./analytics-ga4/gtm-schemas
-//= require ./analytics-ga4/gtm-link-click-tracker
-
-window.GOVUK.analyticsGA4.linkClickTracker.trackLinkClicks()
-```
-
 `<a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/742746/A_quick_guide_to_govt_healthy_eating_update.pdf">A Quick Guide to the Government’s Healthy Eating Recommendations</a>`
 
 In the example above, on a left click of the link, the following would be pushed to the dataLayer, using the `eventSchema` found in `gtm-schemas.js`:
-
 
 ```
 {
