@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* **BREAKING:** Remove the "PrimaryLinks" JS Module and related tests ([PR #2866](https://github.com/alphagov/govuk_publishing_components/pull/2866))
+
 ## 29.15.3
 
 * Update GA4 analytics page view data structure ([PR #2878](https://github.com/alphagov/govuk_publishing_components/pull/2878))

@@ -108,11 +108,3 @@
     @include govuk-link-style-inverse;
   }
 }
-
-// This helper class is for use by the primary links js module
-// We have this custom helper here with a single rule over using the design system helper class govuk-!-display-none
-// because jasmine tests don't like the "!" in the distributed helper class
-
-.primary-links--display-none {
-  display: none;
-}
