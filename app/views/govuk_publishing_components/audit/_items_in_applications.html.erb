@@ -1,0 +1,50 @@
+<% if @other_applications %>
+  <% accordion_content = capture do %>
+    <% if content.any? %>
+      <dl class="govuk-summary-list">
+        <% content.each do |item| %>
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              <%= item[:name] %> (<%= pluralize(item[:count], 'use') %>)
+            </dt>
+            <dd class="govuk-summary-list__value">
+              <% item[:locations].each do |application| %>
+                <% github_link = 'https://github.com/alphagov/' + application[:name] + '/blob/main/' %>
+                <details class="govuk-details govuk-!-margin-bottom-2" data-module="govuk-details">
+                  <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                      <%= application[:name] %> (<%= application[:locations].length %>)
+                    </span>
+                  </summary>
+                  <div class="govuk-details__text">
+                    <ul class="govuk-list govuk-list--bullet">
+                      <% application[:locations].each do |location| %>
+                        <li>
+                          <a href="<%= github_link %><%= location %>" class="govuk-link"><%= location %></a>
+                        </li>
+                      <% end %>
+                    </ul>
+                  </div>
+                </details>
+              <% end %>
+            </dd>
+          </div>
+        <% end %>
+      </dl>
+    <% end %>
+  <% end %>
+
+  <%
+    items << {
+      heading: {
+        text: heading,
+      },
+      summary: {
+        text: summary,
+      },
+      content: {
+        html: accordion_content
+      },
+    }
+  %>
+<% end %>

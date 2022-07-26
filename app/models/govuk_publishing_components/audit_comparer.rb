@@ -22,6 +22,7 @@ module GovukPublishingComponents
         @gem_data = gem_data
         @applications_data = sort_results(results)
         @gem_data[:components_by_application] = get_components_by_application || []
+        @gem_data[:helpers_used_by_applications] = get_helpers_used_by_applications || []
       end
     end
 
@@ -107,6 +108,7 @@ module GovukPublishingComponents
             gem_style_references: result[:gem_style_references],
             jquery_references: result[:jquery_references],
             component_locations: result[:component_locations],
+            helper_references: result[:helper_references],
           }
         else
           data << {
@@ -269,13 +271,43 @@ module GovukPublishingComponents
         locations = locations.flatten
 
         results << {
-          component: component_name,
+          name: component_name,
           count: locations.length,
           locations: locations,
         }
       end
 
       results if found_something
+    end
+
+    # returns data of components gem helpers used in applications
+    def get_helpers_used_by_applications
+      results = []
+
+      @applications_data.each do |application|
+        next unless application[:application_found] && !application[:helper_references].blank?
+
+        application[:helper_references].each do |key, value|
+          location = {
+            name: application[:name],
+            locations: value,
+          }
+
+          match = results.find { |x| x[:name] == key }
+          if match
+            match[:locations] << location
+            match[:count] = match[:count] + 1
+          else
+            results << {
+              name: key,
+              count: 1,
+              locations: [location],
+            }
+          end
+        end
+      end
+
+      results
     end
   end
 end
