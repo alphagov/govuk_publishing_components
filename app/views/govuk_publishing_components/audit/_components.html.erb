@@ -56,56 +56,19 @@
     }
   %>
 
-  <% if @other_applications %>
-    <% components_by_application = capture do %>
-      <% if @components[:components_by_application].any? %>
-        <dl class="govuk-summary-list">
-          <% @components[:components_by_application].each do |component| %>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                <%= component[:component] %> (<%= pluralize(component[:count], 'use') %>)
-              </dt>
-              <dd class="govuk-summary-list__value">
-                <% component[:locations].each do |application| %>
-                  <% github_link = 'https://github.com/alphagov/' + application[:name] + '/blob/main/' %>
-                  <details class="govuk-details govuk-!-margin-bottom-2" data-module="govuk-details">
-                    <summary class="govuk-details__summary">
-                      <span class="govuk-details__summary-text">
-                        <%= application[:name] %> (<%= application[:locations].length %>)
-                      </span>
-                    </summary>
-                    <div class="govuk-details__text">
-                      <ul class="govuk-list govuk-list--bullet">
-                        <% application[:locations].each do |location| %>
-                          <li>
-                            <a href="<%= github_link %><%= location %>" class="govuk-link"><%= location %></a>
-                          </li>
-                        <% end %>
-                      </ul>
-                    </div>
-                  </details>
-                <% end %>
-              </dd>
-            </div>
-          <% end %>
-        </dl>
-      <% end %>
-    <% end %>
+  <%= render 'items_in_applications',
+    heading: 'Components by application',
+    summary: 'Shows which applications use each component',
+    content: @components[:components_by_application],
+    items: component_items
+  %>
 
-    <%
-      component_items << {
-        heading: {
-          text: "Components by application",
-        },
-        summary: {
-          text: "Shows which applications use each component",
-        },
-        content: {
-          html: components_by_application
-        },
-      }
-    %>
-  <% end %>
+  <%= render 'items_in_applications',
+    heading: 'Helpers by application',
+    summary: 'Shows any applications that use helper classes from the components gem',
+    content: @components[:helpers_used_by_applications],
+    items: component_items
+  %>
 
   <%= render "govuk_publishing_components/components/accordion", {
     items: component_items

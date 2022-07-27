@@ -123,6 +123,7 @@ describe "Comparing data from an application with the components" do
         ],
         gem_style_references: [],
         jquery_references: [],
+        helper_references: nil,
       },
     ]
     comparer = GovukPublishingComponents::AuditComparer.new(gem, application)
@@ -180,6 +181,7 @@ describe "Comparing data from an application with the components" do
         gem_style_references: [],
         jquery_references: [],
         component_locations: nil,
+        helper_references: nil,
       },
     ]
 
@@ -309,6 +311,7 @@ describe "Comparing data from an application with the components" do
         gem_style_references: [],
         jquery_references: [],
         component_locations: nil,
+        helper_references: nil,
       },
       {
         name: "static",
@@ -341,6 +344,7 @@ describe "Comparing data from an application with the components" do
         gem_style_references: [],
         jquery_references: [],
         component_locations: nil,
+        helper_references: nil,
       },
     ]
 
@@ -422,6 +426,7 @@ describe "Comparing data from an application with the components" do
         gem_style_references: [],
         jquery_references: [],
         component_locations: nil,
+        helper_references: nil,
       },
     ]
 
@@ -534,9 +539,165 @@ describe "Comparing data from an application with the components" do
           },
         ],
         warning_count: 6,
+        helper_references: nil,
       },
     ]
 
     expect(comparer.applications_data).to match(expected)
+  end
+
+  it "returns a comparison for an application with component and helper references" do
+    application = [
+      {
+        name: "Dummy application",
+        application_found: true,
+        components_found: [
+          {
+            location: "templates",
+            components: [
+              "component one",
+              "component three",
+              "component that does not exist",
+            ],
+          },
+          {
+            location: "stylesheets",
+            components: [
+              "component one",
+              "component two",
+              "component three",
+            ],
+          },
+          {
+            location: "print_stylesheets",
+            components: [],
+          },
+          {
+            location: "javascripts",
+            components: [],
+          },
+          {
+            location: "ruby",
+            components: [
+              "component three",
+            ],
+          },
+        ],
+        gem_style_references: [],
+        jquery_references: [],
+        component_locations: {
+          accordion: ["app/views/welcome/accordion_example.html.erb"],
+        },
+        helper_references: {
+          BrandHelper: ["lib/test_file_3.rb"],
+          ButtonHelper: ["lib/test_file_3.rb"],
+          SharedHelper: ["lib/test_file_3.rb"],
+          TableHelper: ["app/views/welcome/table.html.erb"],
+        },
+      },
+    ]
+
+    gem[:component_listing] = [
+      {
+        name: "accordion",
+      },
+    ]
+
+    comparer = GovukPublishingComponents::AuditComparer.new(gem, application)
+
+    expected = {
+      gem_found: true,
+      name: "govuk_publishing_components",
+      component_code: [
+        "component one",
+        "component two",
+        "component three",
+        "component four",
+      ],
+      component_stylesheets: [
+        "component one",
+        "component two",
+        "component three",
+        "component four",
+      ],
+      component_print_stylesheets: [
+        "component two",
+      ],
+      component_javascripts: [
+        "component one",
+        "component four",
+      ],
+      component_tests: [],
+      component_js_tests: [],
+      components_containing_components: [
+        {
+          component: "component three",
+          sub_components: [
+            "component four",
+          ],
+        },
+      ],
+      component_listing: [
+        {
+          name: "accordion",
+        },
+      ],
+      components_by_application: [
+        {
+          name: "accordion",
+          count: 1,
+          locations: [
+            {
+              name: "Dummy application",
+              locations: ["app/views/welcome/accordion_example.html.erb"],
+            },
+          ],
+        },
+      ],
+      helpers_used_by_applications: [
+        {
+          name: :BrandHelper,
+          count: 1,
+          locations: [
+            {
+              locations: ["lib/test_file_3.rb"],
+              name: "Dummy application",
+            },
+          ],
+        },
+        {
+          name: :ButtonHelper,
+          count: 1,
+          locations: [
+            {
+              locations: ["lib/test_file_3.rb"],
+              name: "Dummy application",
+            },
+          ],
+        },
+        {
+          name: :SharedHelper,
+          count: 1,
+          locations: [
+            {
+              locations: ["lib/test_file_3.rb"],
+              name: "Dummy application",
+            },
+          ],
+        },
+        {
+          name: :TableHelper,
+          count: 1,
+          locations: [
+            {
+              locations: ["app/views/welcome/table.html.erb"],
+              name: "Dummy application",
+            },
+          ],
+        },
+      ],
+    }
+
+    expect(comparer.gem_data).to match(expected)
   end
 end

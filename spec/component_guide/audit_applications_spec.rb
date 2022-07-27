@@ -58,6 +58,12 @@ describe "Auditing the components in applications" do
         tabs: ["app/views/welcome/error_summary.html.erb", "app/views/welcome/tabs_example.html.erb"],
         title: ["app/views/welcome/contextual_navigation.html.erb", "app/views/welcome/error_summary.html.erb", "app/views/welcome/table.html.erb"],
       },
+      helper_references: {
+        BrandHelper: ["lib/test_file_3.rb"],
+        ButtonHelper: ["lib/test_file_3.rb"],
+        SharedHelper: ["lib/test_file_3.rb"],
+        TableHelper: ["app/views/welcome/table.html.erb"],
+      },
     }
 
     expect(application.data).to match(expected)

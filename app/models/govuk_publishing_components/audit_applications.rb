@@ -9,6 +9,7 @@ module GovukPublishingComponents
       @component_locations = {}
       @gem_style_references = []
       @jquery_references = []
+      @helper_references = {}
 
       if application_found
         templates = Dir["#{path}/app/views/**/*.erb"]
@@ -69,6 +70,7 @@ module GovukPublishingComponents
         gem_style_references: @gem_style_references.flatten.uniq.sort,
         jquery_references: @jquery_references.flatten.uniq.sort,
         component_locations: @component_locations,
+        helper_references: @helper_references,
       }
     end
 
@@ -95,6 +97,8 @@ module GovukPublishingComponents
           components_found << find_match(find, src, type)
         end
 
+        get_helper_references(file, src) if %w[ruby templates].include?(type)
+
         if type == "javascripts"
           jquery_references = find_code_references(file, src, /\$\(/)
           @jquery_references << jquery_references if jquery_references
@@ -107,6 +111,20 @@ module GovukPublishingComponents
       end
 
       components_found.flatten.uniq.sort
+    end
+
+    def get_helper_references(file, src)
+      helper_use = find_match(/GovukPublishingComponents::(?:AppHelpers|Presenters)::[a-zA-Z]+/, src, "helper")
+      if helper_use.any?
+        helper_use.each do |helper|
+          class_name = helper.gsub(/GovukPublishingComponents::(AppHelpers)?(Presenters)?::+/, "")
+          helper_sym = class_name.to_sym
+          @helper_references[helper_sym] = [] unless @helper_references[helper_sym]
+          @helper_references[helper_sym] << clean_file_path(file)
+          @helper_references[helper_sym].uniq!
+          @helper_references[helper_sym].sort!
+        end
+      end
     end
 
     # looks for components in the given src of a file
