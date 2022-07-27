@@ -10,7 +10,7 @@ describe('Google Tag Manager page view tracking', function () {
     document.title = 'This here page'
     expected = {
       event: 'page_view',
-      page: {
+      page_view: {
         location: document.location.href,
         referrer: document.referrer,
         title: 'This here page',
@@ -71,7 +71,7 @@ describe('Google Tag Manager page view tracking', function () {
 
   it('returns a page view with a specific status code', function () {
     window.httpStatusCode = 404
-    expected.page.status_code = '404'
+    expected.page_view.status_code = '404'
     GOVUK.Gtm.sendPageView()
     expect(window.dataLayer[0]).toEqual(expected)
   })
@@ -108,7 +108,7 @@ describe('Google Tag Manager page view tracking', function () {
     for (var i = 0; i < tags.length; i++) {
       var tag = tags[i]
       createMetaTags(tag.tagName, tag.value)
-      expected.page[tag.gtmName] = tag.value
+      expected.page_view[tag.gtmName] = tag.value
     }
 
     GOVUK.Gtm.sendPageView()
@@ -152,7 +152,7 @@ describe('Google Tag Manager page view tracking', function () {
     for (var i = 0; i < tags.length; i++) {
       var tag = tags[i]
       createMetaTags(tag.tagName, tag.value)
-      expected.page[tag.gtmName] = tag.value
+      expected.page_view[tag.gtmName] = tag.value
     }
 
     GOVUK.Gtm.sendPageView()
@@ -162,7 +162,7 @@ describe('Google Tag Manager page view tracking', function () {
   it('returns a pageview with a language', function () {
     var html = document.querySelector('html')
     html.setAttribute('lang', 'wakandan')
-    expected.page.language = 'wakandan'
+    expected.page_view.language = 'wakandan'
 
     GOVUK.Gtm.sendPageView()
     expect(window.dataLayer[0]).toEqual(expected)
@@ -170,87 +170,87 @@ describe('Google Tag Manager page view tracking', function () {
 
   it('returns a pageview with history', function () {
     createMetaTags('content-has-history', 'true')
-    expected.page.history = 'true'
+    expected.page_view.history = 'true'
     GOVUK.Gtm.sendPageView()
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
   it('returns a pageview without history', function () {
     createMetaTags('content-has-history', 'banana')
-    expected.page.history = 'false'
+    expected.page_view.history = 'false'
     GOVUK.Gtm.sendPageView()
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
   it('returns a pageview on a withdrawn page', function () {
     createMetaTags('withdrawn', 'withdrawn')
-    expected.page.withdrawn = 'true'
+    expected.page_view.withdrawn = 'true'
     GOVUK.Gtm.sendPageView()
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
   it('returns a pageview on a page with a first published date', function () {
     createMetaTags('first-published-at', '2022-03-28T19:11:00.000+00:00')
-    expected.page.first_published_at = '2022-03-28T19:11:00.000+00:00'
+    expected.page_view.first_published_at = '2022-03-28T19:11:00.000+00:00'
     GOVUK.Gtm.sendPageView()
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
   it('returns a pageview on a page with a last updated date', function () {
     createMetaTags('updated-at', '2021-03-28T19:11:00.000+00:00')
-    expected.page.updated_at = '2021-03-28T19:11:00.000+00:00'
+    expected.page_view.updated_at = '2021-03-28T19:11:00.000+00:00'
     GOVUK.Gtm.sendPageView()
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
   it('returns a pageview on a page with a last public updated date', function () {
     createMetaTags('public-updated-at', '2020-03-28T19:11:00.000+00:00')
-    expected.page.public_updated_at = '2020-03-28T19:11:00.000+00:00'
+    expected.page_view.public_updated_at = '2020-03-28T19:11:00.000+00:00'
     GOVUK.Gtm.sendPageView()
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
   it('returns a pageview on a page marked with a publishing government', function () {
     createMetaTags('publishing-government', 'labour')
-    expected.page.publishing_government = 'labour'
+    expected.page_view.publishing_government = 'labour'
     GOVUK.Gtm.sendPageView()
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
   it('returns a pageview on a page marked with a political status', function () {
     createMetaTags('political-status', 'ongoing')
-    expected.page.political_status = 'ongoing'
+    expected.page_view.political_status = 'ongoing'
     GOVUK.Gtm.sendPageView()
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
   it('returns a pageview on a page marked with a primary publishing organisation', function () {
     createMetaTags('primary-publishing-organisation', 'Home Office')
-    expected.page.primary_publishing_organisation = 'Home Office'
+    expected.page_view.primary_publishing_organisation = 'Home Office'
     GOVUK.Gtm.sendPageView()
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
   it('returns a pageview on a page marked with ids for contributing organisations', function () {
     createMetaTags('analytics:organisations', 'some organisations')
-    expected.page.organisations = 'some organisations'
+    expected.page_view.organisations = 'some organisations'
     GOVUK.Gtm.sendPageView()
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
   it('returns a pageview on a page marked with world locations', function () {
     createMetaTags('analytics:world-locations', 'some world locations')
-    expected.page.world_locations = 'some world locations'
+    expected.page_view.world_locations = 'some world locations'
     GOVUK.Gtm.sendPageView()
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
   it('removes email pii from the title, location and referrer', function () {
     document.title = 'example@gov.uk'
-    expected.page.title = '[email]'
+    expected.page_view.title = '[email]'
 
     spyOnProperty(document, 'referrer', 'get').and.returnValue('https://gov.uk/example@gov.uk')
-    expected.page.referrer = 'https://gov.uk/[email]'
+    expected.page_view.referrer = 'https://gov.uk/[email]'
 
     // We can't spy on location, so instead we use an anchor link to change the URL temporarily
 
@@ -260,7 +260,7 @@ describe('Google Tag Manager page view tracking', function () {
     linkForURLMock.click()
     var location = document.location.href
 
-    expected.page.location = location + '[email]'
+    expected.page_view.location = location + '[email]'
 
     // Add email address to the current page location
     linkForURLMock.href = '#example@gov.uk'
