@@ -10,7 +10,7 @@
       if (window.dataLayer) {
         var data = {
           event: 'page_view',
-          page: {
+          page_view: {
             location: this.getLocation(),
             referrer: this.getReferrer(),
             title: this.getTitle(),

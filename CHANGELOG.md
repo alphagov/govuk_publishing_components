@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update GA4 analytics page view data structure ([PR #2878](https://github.com/alphagov/govuk_publishing_components/pull/2878))
+
 ## 29.15.2
 
 * GA4 analytics schema rework ([PR #2864](https://github.com/alphagov/govuk_publishing_components/pull/2864))
