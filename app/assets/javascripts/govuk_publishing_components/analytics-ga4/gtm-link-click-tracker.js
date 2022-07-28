@@ -10,9 +10,17 @@
     trackLinkClicks: function () {
       this.internalLinksDomain = 'www.gov.uk/'
       this.internalLinksDomainWithoutWww = 'gov.uk/'
-      document.querySelector('body').addEventListener('click', this.handleClick.bind(this))
-      document.querySelector('body').addEventListener('contextmenu', this.handleClick.bind(this))
-      document.querySelector('body').addEventListener('mousedown', this.handleMousedown.bind(this))
+      this.handleClick = this.handleClick.bind(this)
+      this.handleMousedown = this.handleMousedown.bind(this)
+      document.querySelector('body').addEventListener('click', this.handleClick)
+      document.querySelector('body').addEventListener('contextmenu', this.handleClick)
+      document.querySelector('body').addEventListener('mousedown', this.handleMousedown)
+    },
+
+    stopTracking: function (event) {
+      document.querySelector('body').removeEventListener('click', this.handleClick)
+      document.querySelector('body').removeEventListener('contextmenu', this.handleClick)
+      document.querySelector('body').removeEventListener('mousedown', this.handleMousedown)
     },
 
     handleClick: function (event) {

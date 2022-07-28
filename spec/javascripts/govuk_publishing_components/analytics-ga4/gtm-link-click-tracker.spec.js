@@ -6,6 +6,8 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
   var links
   var expected
   var body = document.querySelector('body')
+  var linkClickTracker
+
   describe('External link tracking', function () {
     beforeEach(function () {
       window.dataLayer = []
@@ -52,11 +54,13 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
       body.appendChild(links)
       body.addEventListener('click', function (e) { e.preventDefault() })
 
-      GOVUK.analyticsGA4.linkClickTracker.trackLinkClicks()
+      linkClickTracker = GOVUK.analyticsGA4.linkClickTracker
+      linkClickTracker.trackLinkClicks()
     })
 
     afterEach(function () {
       links.remove()
+      linkClickTracker.stopTracking()
     })
 
     it('detects external click events on well structured external links', function () {
@@ -258,11 +262,13 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
       body.appendChild(links)
       body.addEventListener('click', function (e) { e.preventDefault() })
 
-      GOVUK.analyticsGA4.linkClickTracker.trackLinkClicks()
+      linkClickTracker = GOVUK.analyticsGA4.linkClickTracker
+      linkClickTracker.trackLinkClicks()
     })
 
     afterEach(function () {
       links.remove()
+      linkClickTracker.stopTracking()
     })
 
     it('detects download clicks on fully structured gov.uk download links', function () {
@@ -404,11 +410,13 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
 
       body.appendChild(links)
       body.addEventListener('click', function (e) { e.preventDefault() })
-      GOVUK.analyticsGA4.linkClickTracker.trackLinkClicks()
+      linkClickTracker = GOVUK.analyticsGA4.linkClickTracker
+      linkClickTracker.trackLinkClicks()
     })
 
     afterEach(function () {
       links.remove()
+      linkClickTracker.stopTracking()
     })
 
     it('detects email events on mailto links', function () {
