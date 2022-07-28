@@ -1,12 +1,11 @@
-/* eslint-env jasmine, jquery */
+/* eslint-env jasmine */
 
 describe('GOVUK.analyticsGA4.linkClickTracker', function () {
   'use strict'
   var GOVUK = window.GOVUK
-  var $ = window.jQuery
-  var $links
+  var links
   var expected
-
+  var body = document.querySelector('body')
   describe('External link tracking', function () {
     beforeEach(function () {
       window.dataLayer = []
@@ -16,8 +15,8 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
       expected.event_data.type = 'generic link'
       expected.event_data.link_method = 'primary click'
       expected.event_data.external = 'true'
-
-      $links = $(
+      links = document.createElement('div')
+      links.innerHTML =
         '<div class="fully-structured-external-links">' +
             '<a href="http://www.nationalarchives1.gov.uk"> National Archives </a>' +
             '<a href="https://www.nationalarchives2.gov.uk"></a>' +
@@ -33,7 +32,7 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
             '<a href="nationalarchives2.gov.uk"></a>' +
             '<a href="nationalarchives3.gov.uk/one.pdf">National Archives PDF</a>' +
           '</div>' +
-          '<div class="schema-relative-external-links">' +
+          '<div class="protocol-relative-external-links">' +
             '<a href="//nationalarchives1.gov.uk"> National Archives </a>' +
             '<a href="//nationalarchives2.gov.uk"></a>' +
             '<a href="//nationalarchives3.gov.uk/one.pdf">National Archives PDF</a>' +
@@ -49,142 +48,155 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
             '<a href="gov.uk/some-path">Another local link</a>' +
             '<a href="//gov.uk/some-path">Another local link</a>' +
           '</div>'
-      )
 
-      $('html').on('click', function (evt) { evt.preventDefault() })
-      $('body').append($links)
+      body.appendChild(links)
+      body.addEventListener('click', function (e) { e.preventDefault() })
 
-      $('html').off()
-      $('body').off()
       GOVUK.analyticsGA4.linkClickTracker.trackLinkClicks()
     })
 
     afterEach(function () {
-      $links.remove()
-      $('html').off()
-      $('body').off()
+      links.remove()
     })
 
     it('detects external click events on well structured external links', function () {
-      $('.fully-structured-external-links a').each(function () {
-        window.dataLayer = []
-        var $link = $(this)
-        GOVUK.triggerEvent($link[0], 'click')
+      var linksToTest = document.querySelectorAll('.fully-structured-external-links a')
 
-        expected.event_data.url = $link.attr('href')
-        expected.event_data.text = $link.text().trim()
+      for (var i = 0; i < linksToTest.length; i++) {
+        var link = linksToTest[i]
+        window.dataLayer = []
+        GOVUK.triggerEvent(link, 'click')
+
+        expected.event_data.url = link.getAttribute('href')
+        expected.event_data.text = link.innerText.trim()
         expect(window.dataLayer[0]).toEqual(expected)
-      })
+      }
     })
 
     it('detects external click events on www. missing external links', function () {
-      $('.www-less-external-links a').each(function () {
+      var linksToTest = document.querySelectorAll('.www-less-external-links a')
+      for (var i = 0; i < linksToTest.length; i++) {
         window.dataLayer = []
-        var $link = $(this)
-        GOVUK.triggerEvent($link[0], 'click')
+        var link = linksToTest[i]
+        GOVUK.triggerEvent(link, 'click')
 
-        expected.event_data.url = $link.attr('href')
-        expected.event_data.text = $link.text().trim()
+        expected.event_data.url = link.getAttribute('href')
+        expected.event_data.text = link.innerText.trim()
         expect(window.dataLayer[0]).toEqual(expected)
-      })
+      }
     })
 
     it('detects external click events on missing http/https external links', function () {
-      $('.http-less-external-links a').each(function () {
-        window.dataLayer = []
-        var $link = $(this)
-        GOVUK.triggerEvent($link[0], 'click')
+      var linksToTest = document.querySelectorAll('.http-less-external-links a')
 
-        expected.event_data.url = $link.attr('href')
-        expected.event_data.text = $link.text().trim()
+      for (var i = 0; i < linksToTest.length; i++) {
+        window.dataLayer = []
+        var link = linksToTest[i]
+        GOVUK.triggerEvent(link, 'click')
+
+        expected.event_data.url = link.getAttribute('href')
+        expected.event_data.text = link.innerText.trim()
         expect(window.dataLayer[0]).toEqual(expected)
-      })
+      }
     })
 
     it('listens to external click events on protocol relative links', function () {
-      $('.http-less-external-links a').each(function () {
-        window.dataLayer = []
-        var $link = $(this)
-        GOVUK.triggerEvent($link[0], 'click')
+      var linksToTest = document.querySelectorAll('.protocol-relative-external-links a')
 
-        expected.event_data.url = $link.attr('href')
-        expected.event_data.text = $link.text().trim()
+      for (var i = 0; i < linksToTest.length; i++) {
+        window.dataLayer = []
+        var link = linksToTest[i]
+        GOVUK.triggerEvent(link, 'click')
+
+        expected.event_data.url = link.getAttribute('href')
+        expected.event_data.text = link.innerText.trim()
         expect(window.dataLayer[0]).toEqual(expected)
-      })
+      }
     })
 
     it('listens to external click events on elements within external links', function () {
-      var $nestedImage = $('.nested-link a img')
-      var $parentLink = $nestedImage.closest('a')
+      var nestedImage = document.querySelector('.nested-link a img')
+      var parentLink = nestedImage.closest('a')
 
-      GOVUK.triggerEvent($nestedImage[0], 'click')
+      GOVUK.triggerEvent(nestedImage, 'click')
 
-      expected.event_data.url = $parentLink.attr('href')
-      expected.event_data.text = $parentLink.text().trim()
+      expected.event_data.url = parentLink.getAttribute('href')
+      expected.event_data.text = parentLink.innerText.trim()
 
       expect(window.dataLayer[0]).toEqual(expected)
     })
 
     it('ignores external click events on internal links', function () {
-      $('.internal-links a').each(function () {
+      var linksToTest = document.querySelectorAll('.internal-links a')
+
+      for (var i = 0; i < linksToTest.length; i++) {
+        var link = linksToTest[i]
         window.dataLayer = []
-        GOVUK.triggerEvent($(this)[0], 'click')
+        GOVUK.triggerEvent(link, 'click')
         expect(window.dataLayer).toEqual([])
-      })
+      }
     })
 
     it('detects control click events on external links', function () {
-      $('.fully-structured-external-links a').each(function () {
+      var linksToTest = document.querySelectorAll('.fully-structured-external-links a')
+
+      for (var i = 0; i < linksToTest.length; i++) {
         window.dataLayer = []
-        var $link = $(this)
+        var link = linksToTest[i]
         var clickEvent = new window.CustomEvent('click', { cancelable: true, bubbles: true })
         clickEvent.ctrlKey = true
-        $link[0].dispatchEvent(clickEvent)
-        expected.event_data.url = $link.attr('href')
-        expected.event_data.text = $link.text().trim()
+        link.dispatchEvent(clickEvent)
+        expected.event_data.url = link.getAttribute('href')
+        expected.event_data.text = link.innerText.trim()
         expected.event_data.link_method = 'ctrl click'
         expect(window.dataLayer[0]).toEqual(expected)
-      })
+      }
     })
 
     it('detects command click events on external links', function () {
-      $('.fully-structured-external-links a').each(function () {
+      var linksToTest = document.querySelectorAll('.fully-structured-external-links a')
+
+      for (var i = 0; i < linksToTest.length; i++) {
         window.dataLayer = []
-        var $link = $(this)
+        var link = linksToTest[i]
         var clickEvent = new window.CustomEvent('click', { cancelable: true, bubbles: true })
         clickEvent.metaKey = true
-        $link[0].dispatchEvent(clickEvent)
-        expected.event_data.url = $link.attr('href')
-        expected.event_data.text = $link.text().trim()
+        link.dispatchEvent(clickEvent)
+        expected.event_data.url = link.getAttribute('href')
+        expected.event_data.text = link.innerText.trim()
         expected.event_data.link_method = 'command/win click'
         expect(window.dataLayer[0]).toEqual(expected)
-      })
+      }
     })
 
     it('detects middle mouse click events on external links', function () {
-      $('.fully-structured-external-links a').each(function () {
+      var linksToTest = document.querySelectorAll('.fully-structured-external-links a')
+
+      for (var i = 0; i < linksToTest.length; i++) {
         window.dataLayer = []
-        var $link = $(this)
+        var link = linksToTest[i]
         var clickEvent = new window.CustomEvent('mousedown', { cancelable: true, bubbles: true })
         clickEvent.button = 1
-        $link[0].dispatchEvent(clickEvent)
-        expected.event_data.url = $link.attr('href')
-        expected.event_data.text = $link.text().trim()
+        link.dispatchEvent(clickEvent)
+        expected.event_data.url = link.getAttribute('href')
+        expected.event_data.text = link.innerText.trim()
         expected.event_data.link_method = 'middle click'
         expect(window.dataLayer[0]).toEqual(expected)
-      })
+      }
     })
 
     it('detects right click events on external links', function () {
-      $('.fully-structured-external-links a').each(function () {
+      var linksToTest = document.querySelectorAll('.fully-structured-external-links a')
+
+      for (var i = 0; i < linksToTest.length; i++) {
         window.dataLayer = []
-        var $link = $(this)
-        GOVUK.triggerEvent($link[0], 'contextmenu')
-        expected.event_data.url = $link.attr('href')
-        expected.event_data.text = $link.text().trim()
+        var link = linksToTest[i]
+        GOVUK.triggerEvent(link, 'contextmenu')
+        expected.event_data.url = link.getAttribute('href')
+        expected.event_data.text = link.innerText.trim()
         expected.event_data.link_method = 'secondary click'
         expect(window.dataLayer[0]).toEqual(expected)
-      })
+      }
     })
   })
 
@@ -199,8 +211,8 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
       expected.event_data.link_method = 'primary click'
       expected.event_data.external = 'false'
 
-      $links = $(
-        '<div class="fully-structured-download-links">' +
+      links = document.createElement('div')
+      links.innerHTML = '<div class="fully-structured-download-links">' +
           '<a href="https://assets.publishing.service.gov.uk/one.pdf">PDF</a>' +
           '<a href="https://assets.publishing.service.gov.uk/two.xslt">Spreadsheet</a>' +
           '<a href="https://www.gov.uk/government/uploads/system/three.doc">Document</a>' +
@@ -242,120 +254,131 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
           '<a href="/government/uploads/one.pdf">Relative PDF link</a>' +
           '<a href="/government/uploads/two.xslt">Relative Spreadsheet link</a>' +
         '</div>'
-      )
-      $('html').off()
-      $('body').off()
 
-      $('html').on('click', function (evt) { evt.preventDefault() })
-      $('body').append($links)
+      body.appendChild(links)
+      body.addEventListener('click', function (e) { e.preventDefault() })
 
       GOVUK.analyticsGA4.linkClickTracker.trackLinkClicks()
     })
 
     afterEach(function () {
-      $('html').off()
-      $('body').off()
-      $links.remove()
+      links.remove()
     })
 
     it('detects download clicks on fully structured gov.uk download links', function () {
-      $('.fully-structured-download-links a').each(function () {
-        var $link = $(this)
+      var linksToTest = document.querySelectorAll('.fully-structured-download-links a')
+
+      for (var i = 0; i < linksToTest.length; i++) {
         window.dataLayer = []
-        GOVUK.triggerEvent($link[0], 'click')
-        expected.event_data.url = $link.attr('href')
+        var link = linksToTest[i]
+        GOVUK.triggerEvent(link, 'click')
+        expected.event_data.url = link.getAttribute('href')
         expected.event_data.type = 'download'
         expected.event_data.external = 'false'
-        expected.event_data.text = $link.text().trim()
+        expected.event_data.text = link.innerText.trim()
         expect(window.dataLayer[0]).toEqual(expected)
-      })
+      }
     })
 
     it('listens to download clicks on nested elements in download links', function () {
-      $('.nested-download-links a img').each(function () {
-        var $link = $(this)
+      var linksToTest = document.querySelectorAll('.nested-download-links a img')
+
+      for (var i = 0; i < linksToTest.length; i++) {
         window.dataLayer = []
-        GOVUK.triggerEvent($link[0], 'click')
-        expected.event_data.url = $link.closest('a').attr('href')
-        expected.event_data.text = $link.closest('a').text().trim()
+        var link = linksToTest[i]
+        GOVUK.triggerEvent(link, 'click')
+        expected.event_data.url = link.closest('a').getAttribute('href')
+        expected.event_data.text = link.closest('a').innerText.trim()
         expected.event_data.type = 'download'
         expected.event_data.external = 'false'
         expect(window.dataLayer[0]).toEqual(expected)
-      })
+      }
     })
 
     it('detects download clicks on download links that have http:// in the href', function () {
-      $('.http-download-links a').each(function () {
-        var $link = $(this)
+      var linksToTest = document.querySelectorAll('.http-download-links a')
+
+      for (var i = 0; i < linksToTest.length; i++) {
         window.dataLayer = []
-        GOVUK.triggerEvent($link[0], 'click')
-        expected.event_data.url = $link.attr('href')
+        var link = linksToTest[i]
+        GOVUK.triggerEvent(link, 'click')
+        expected.event_data.url = link.getAttribute('href')
         expected.event_data.type = 'download'
         expected.event_data.external = 'false'
-        expected.event_data.text = $link.text().trim()
+        expected.event_data.text = link.innerText.trim()
         expect(window.dataLayer[0]).toEqual(expected)
-      })
+      }
     })
 
     it('detects download clicks on download links without www. in the href', function () {
-      $('.www-less-download-links a').each(function () {
-        var $link = $(this)
+      var linksToTest = document.querySelectorAll('.www-less-download-links a')
+
+      for (var i = 0; i < linksToTest.length; i++) {
         window.dataLayer = []
-        GOVUK.triggerEvent($link[0], 'click')
-        expected.event_data.url = $link.attr('href')
+        var link = linksToTest[i]
+        GOVUK.triggerEvent(link, 'click')
+        expected.event_data.url = link.getAttribute('href')
         expected.event_data.type = 'download'
         expected.event_data.external = 'false'
-        expected.event_data.text = $link.text().trim()
+        expected.event_data.text = link.innerText.trim()
         expect(window.dataLayer[0]).toEqual(expected)
-      })
+      }
     })
 
     it('detects download clicks on download links without http:// or https:// in the href', function () {
-      $('.http-less-download-links a').each(function () {
-        var $link = $(this)
+      var linksToTest = document.querySelectorAll('.http-less-download-links a')
+
+      for (var i = 0; i < linksToTest.length; i++) {
         window.dataLayer = []
-        GOVUK.triggerEvent($link[0], 'click')
-        expected.event_data.url = $link.attr('href')
+        var link = linksToTest[i]
+        GOVUK.triggerEvent(link, 'click')
+        expected.event_data.url = link.getAttribute('href')
         expected.event_data.type = 'download'
         expected.event_data.external = 'false'
-        expected.event_data.text = $link.text().trim()
+        expected.event_data.text = link.innerText.trim()
         expect(window.dataLayer[0]).toEqual(expected)
-      })
+      }
     })
 
     it('ignores internal links from being treated as download links', function () {
-      $('.internal-links a').each(function () {
-        var $link = $(this)
+      var linksToTest = document.querySelectorAll('.internal-links a')
+
+      for (var i = 0; i < linksToTest.length; i++) {
         window.dataLayer = []
-        GOVUK.triggerEvent($link[0], 'click')
+        var link = linksToTest[i]
+        GOVUK.triggerEvent(link, 'click')
         expect(window.dataLayer).toEqual([])
-      })
+      }
     })
 
     it('treats external files as external links', function () {
-      $('.external-download-links a').each(function () {
-        var $link = $(this)
+      var linksToTest = document.querySelectorAll('.external-download-links a')
+
+      for (var i = 0; i < linksToTest.length; i++) {
         window.dataLayer = []
-        GOVUK.triggerEvent($link[0], 'click')
-        expected.event_data.url = $link.attr('href')
-        expected.event_data.text = $link.text().trim()
+        var link = linksToTest[i]
+        GOVUK.triggerEvent(link, 'click')
+        expected.event_data.url = link.getAttribute('href')
+        expected.event_data.text = link.innerText.trim()
         expected.event_data.type = 'generic link'
         expected.event_data.external = 'true'
         expect(window.dataLayer[0]).toEqual(expected)
-      })
+      }
     })
 
     it('detects download clicks on relative gov.uk download links', function () {
-      $('.relative-download-links a').each(function () {
-        var $link = $(this)
+      var linksToTest = document.querySelectorAll('.relative-download-links a')
+
+      for (var i = 0; i < linksToTest.length; i++) {
         window.dataLayer = []
-        GOVUK.triggerEvent($link[0], 'click')
-        expected.event_data.url = $link.attr('href')
+        var link = linksToTest[i]
+        GOVUK.triggerEvent(link, 'click')
+        expected.event_data.url = link.getAttribute('href')
         expected.event_data.type = 'download'
         expected.event_data.external = 'false'
-        expected.event_data.text = $link.text().trim()
+        expected.event_data.text = link.innerText.trim()
         expect(window.dataLayer[0]).toEqual(expected)
-      })
+      }
     })
   })
 
@@ -369,7 +392,8 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
       expected.event_data.link_method = 'primary click'
       expected.event_data.external = 'true'
 
-      $links = $(
+      links = document.createElement('div')
+      links.innerHTML =
         '<div class="mail-to-links">' +
             '<a href="mailto:example@gov.uk"> National Archives </a>' +
             '<span>This is not a mailto link</span>' +
@@ -377,40 +401,38 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
           '<div class="invalid-links">' +
             '<a href="https://gov.uk/mailto:example@gov.uk"> mailto:example@gov.uk </a>' +
           '</div>'
-      )
 
-      $('html').on('click', function (evt) { evt.preventDefault() })
-      $('body').append($links)
-
-      $('html').off()
-      $('body').off()
+      body.appendChild(links)
+      body.addEventListener('click', function (e) { e.preventDefault() })
       GOVUK.analyticsGA4.linkClickTracker.trackLinkClicks()
     })
 
     afterEach(function () {
-      $links.remove()
-      $('html').off()
-      $('body').off()
+      links.remove()
     })
 
     it('detects email events on mailto links', function () {
-      $('.mail-to-links a').each(function () {
-        window.dataLayer = []
-        var $link = $(this)
-        GOVUK.triggerEvent($link[0], 'click')
+      var linksToTest = document.querySelectorAll('.mail-to-links a')
 
-        expected.event_data.url = $link.attr('href')
-        expected.event_data.text = $link.text().trim()
+      for (var i = 0; i < linksToTest.length; i++) {
+        window.dataLayer = []
+        var link = linksToTest[i]
+        GOVUK.triggerEvent(link, 'click')
+        expected.event_data.url = link.getAttribute('href')
+        expected.event_data.text = link.innerText.trim()
         expect(window.dataLayer[0]).toEqual(expected)
-      })
+      }
     })
 
     it('ignores email events on non-mailto links', function () {
-      $('.invalid-links a').each(function () {
+      var linksToTest = document.querySelectorAll('.invalid-links a')
+
+      for (var i = 0; i < linksToTest.length; i++) {
         window.dataLayer = []
-        GOVUK.triggerEvent($(this)[0], 'click')
+        var link = linksToTest[i]
+        GOVUK.triggerEvent(link, 'click')
         expect(window.dataLayer).toEqual([])
-      })
+      }
     })
   })
 })
