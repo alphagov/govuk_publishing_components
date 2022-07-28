@@ -7,7 +7,9 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
   var expected
   var body = document.querySelector('body')
   var linkClickTracker
-
+  var preventDefault = function (e) {
+    e.preventDefault()
+  }
   describe('External link tracking', function () {
     beforeEach(function () {
       window.dataLayer = []
@@ -52,13 +54,14 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
           '</div>'
 
       body.appendChild(links)
-      body.addEventListener('click', function (e) { e.preventDefault() })
+      body.addEventListener('click', preventDefault)
 
       linkClickTracker = GOVUK.analyticsGA4.linkClickTracker
       linkClickTracker.trackLinkClicks()
     })
 
     afterEach(function () {
+      body.removeEventListener('click', preventDefault)
       links.remove()
       linkClickTracker.stopTracking()
     })
@@ -260,13 +263,14 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
         '</div>'
 
       body.appendChild(links)
-      body.addEventListener('click', function (e) { e.preventDefault() })
+      body.addEventListener('click', preventDefault)
 
       linkClickTracker = GOVUK.analyticsGA4.linkClickTracker
       linkClickTracker.trackLinkClicks()
     })
 
     afterEach(function () {
+      body.removeEventListener('click', preventDefault)
       links.remove()
       linkClickTracker.stopTracking()
     })
@@ -409,12 +413,14 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
           '</div>'
 
       body.appendChild(links)
-      body.addEventListener('click', function (e) { e.preventDefault() })
+      body.addEventListener('click', preventDefault)
+
       linkClickTracker = GOVUK.analyticsGA4.linkClickTracker
       linkClickTracker.trackLinkClicks()
     })
 
     afterEach(function () {
+      body.removeEventListener('click', preventDefault)
       links.remove()
       linkClickTracker.stopTracking()
     })
