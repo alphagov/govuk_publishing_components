@@ -17,7 +17,7 @@
       document.querySelector('body').addEventListener('mousedown', this.handleMousedown)
     },
 
-    stopTracking: function (event) {
+    stopTracking: function () {
       document.querySelector('body').removeEventListener('click', this.handleClick)
       document.querySelector('body').removeEventListener('contextmenu', this.handleClick)
       document.querySelector('body').removeEventListener('mousedown', this.handleMousedown)
