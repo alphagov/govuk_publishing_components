@@ -1230,10 +1230,9 @@ globjoin@^0.1.4:
   resolved "https://registry.yarnpkg.com/globjoin/-/globjoin-0.1.4.tgz#2f4494ac8919e3767c5cbb691e9f463324285d43"
   integrity sha1-L0SUrIkZ43Z8XLtpHp9GMyQoXUM=
 
-govuk-frontend@^4.2.0:
+"govuk-frontend@https://github.com/alphagov/govuk-frontend#39abfccd":
   version "4.2.0"
-  resolved "https://registry.yarnpkg.com/govuk-frontend/-/govuk-frontend-4.2.0.tgz#1248eb8025c5f8aa6a80282e92da4c81263caf0c"
-  integrity sha512-IHbnz5DbnPjuCv4lQvtJGoCNAKAN6byKqmaej8hjd6Y/KTaAuw10npijeqfRJNO4WdDX9a34+n+SC/UmWdjfGQ==
+  resolved "https://github.com/alphagov/govuk-frontend#39abfccd42871b38c548b36c6574711fb25874e2"
 
 graceful-fs@^4.1.15, graceful-fs@^4.1.2:
   version "4.2.6"

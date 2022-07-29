@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "axe-core": "^3.5.4",
-    "govuk-frontend": "^4.2.0",
+    "govuk-frontend": "https://github.com/alphagov/govuk-frontend#39abfccd",
     "sortablejs": "^1.13.0"
   },
   "devDependencies": {
