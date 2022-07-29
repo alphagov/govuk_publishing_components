@@ -1,5 +1,4 @@
 /* eslint-env jasmine */
-/* global HTMLCollection */
 
 var TEST_SELECTOR = '.js-test-a11y'
 
@@ -63,26 +62,6 @@ describe('AccessibilityTest', function () {
       expect(err).toBe(undefined)
       expect(violations).toBe(undefined)
       expect(incompleteWarnings).toBe(undefined)
-      done()
-    })
-  })
-
-  // TODO: Remove when aXe core patched
-  // https://github.com/dequelabs/axe-core/issues/525
-  it('should prevent aXe from erroring when SVG is present by disabling restoreScroll', function (done) {
-    spyOn(window.axe, 'run').and.callThrough()
-    addToDom('<div style="height: 1000px; width: 100px;"></div><svg class="svg" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">' +
-                '<path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>' +
-              '</svg>')
-
-    AccessibilityTest(TEST_SELECTOR, function (err, violations, incompleteWarnings) {
-      expect(err).toBe(undefined)
-
-      // Protect against test failing if PhantomJS updated
-      if (!(document.querySelector('svg').children instanceof HTMLCollection)) {
-        var axeOptions = window.axe.run.calls.argsFor(0)
-        expect(axeOptions.restoreScroll).toBe(undefined)
-      }
       done()
     })
   })
