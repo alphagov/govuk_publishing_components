@@ -58,6 +58,19 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           var openAttribute = detailsElement.getAttribute('open')
           schema.event_data.action = (openAttribute == null) ? 'opened' : 'closed'
         }
+
+        /* If a tab was clicked, grab the href of the clicked tab (usually an anchor # link) */
+        var tabElement = event.target.closest('.gem-c-tabs')
+        if (tabElement) {
+          var aTag = event.target.closest('a')
+          if (aTag) {
+            var href = aTag.getAttribute('href')
+            if (href) {
+              schema.event_data.url = href
+            }
+          }
+        }
+
         window.dataLayer.push(schema)
       }
     }

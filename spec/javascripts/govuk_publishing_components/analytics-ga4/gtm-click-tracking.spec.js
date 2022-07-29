@@ -307,4 +307,40 @@ describe('Google Tag Manager click tracking', function () {
       expect(window.dataLayer[0].event_data.action).toEqual(null)
     })
   })
+
+  describe('doing tracking on tab clicks', function () {
+    beforeEach(function () {
+      var attributes = {
+        event_name: 'event-name'
+      }
+      element.innerHTML =
+        '<div data-ga4=\'' + JSON.stringify(attributes) + '\' class="clickme">' +
+          '<div class="gem-c-tabs">' +
+              '<ul>' +
+              '<li> <a href="#tab-location-1" class="tab-1">Tab 1</a> </li>' +
+              '<li> <a href="#tab-location-2" class="tab-2">Tab 2</a> </li>' +
+              '<li> <p class="random-list-item">Not a link</p> </li>' +
+              '</ul>' +
+          '</div>' +
+        '</div>'
+      document.body.appendChild(element)
+      new GOVUK.Modules.GtmClickTracking(element).init()
+    })
+
+    it('should track tab click url locations', function () {
+      var clickOn = element.querySelector('.tab-1')
+      clickOn.click()
+      expect(window.dataLayer[0].event_data.url).toEqual('#tab-location-1')
+
+      window.dataLayer = []
+      clickOn = element.querySelector('.tab-2')
+      clickOn.click()
+      expect(window.dataLayer[0].event_data.url).toEqual('#tab-location-2')
+
+      window.dataLayer = []
+      clickOn = element.querySelector('.random-list-item')
+      clickOn.click()
+      expect(window.dataLayer[0].event_data.url).toEqual('n/a')
+    })
+  })
 })
