@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove axe-core workaround test ([PR #2882](https://github.com/alphagov/govuk_publishing_components/pull/2882))
+
 ## 30.0.0
 
 * **BREAKING:** Remove the "PrimaryLinks" JS Module and related tests ([PR #2866](https://github.com/alphagov/govuk_publishing_components/pull/2866))
