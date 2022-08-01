@@ -10,9 +10,9 @@
         link_text_classes = %w[govuk-pagination__link-title]
         link_text_classes << "govuk-pagination__link-title--decorated" unless previous_page[:label].present?
       %>
-      <div class="govuk-pagination__prev">
-        <a class="govuk-link govuk-pagination__link" 
-          href="<%= previous_page[:url] %>" 
+      <div class="govuk-pagination__prev" data-module="gem-track-click">
+        <a class="govuk-link govuk-pagination__link"
+          href="<%= previous_page[:url] %>"
           rel="prev"
           data-track-category="contentsClicked"
           data-track-action="previous"
@@ -38,9 +38,9 @@
         link_text_classes = %w[govuk-pagination__link-title]
         link_text_classes << "govuk-pagination__link-title--decorated" unless next_page[:label].present?
       %>
-      <div class="govuk-pagination__next">
-        <a class="govuk-link govuk-pagination__link" 
-          href="<%= next_page[:url] %>" 
+      <div class="govuk-pagination__next" data-module="gem-track-click">
+        <a class="govuk-link govuk-pagination__link"
+          href="<%= next_page[:url] %>"
           rel="next"
           data-track-category="contentsClicked"
           data-track-action="next"
