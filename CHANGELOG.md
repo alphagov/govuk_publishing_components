@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Remove axe-core workaround test ([PR #2882](https://github.com/alphagov/govuk_publishing_components/pull/2882))
+* Re-add tracking to next and previous pagination links ([PR #2885](https://github.com/alphagov/govuk_publishing_components/pull/2885))
 
 ## 30.0.0
 
