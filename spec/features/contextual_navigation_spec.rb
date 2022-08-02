@@ -445,6 +445,7 @@ describe "Contextual navigation" do
 
   def then_i_see_the_topic_breadcrumb
     within ".gem-c-breadcrumbs" do
+      puts page.html
       expect(page).to have_link("Home")
       expect(page).to have_link(topic_item["title"])
     end
