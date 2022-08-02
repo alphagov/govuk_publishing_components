@@ -40,37 +40,49 @@ In the example above, the following would be pushed to the dataLayer. Note that 
 
 ## Advanced use
 
-In some situations we want to track dynamic elements like the 'Show/hide all' links on accordions. This is complicated by the element being created and updated dynamically using separate JavaScript, and the need to track the state of the element when clicked (to record whether it was opened or closed).
+In some scenarios we use components that cannot be modified directly (i.e. unable to place the `data-ga4` attribute on the element as shown in the 'Basic use' section). In these cases, we attach the necessary data attributes for tracking by passing an argument containing our data attributes to the render method.
 
-This is handled using the following approach.
+Many components already accept data attributes in this way (see the [component guide](https://components.publishing.service.gov.uk/component-guide) for examples) but some, like the accordion, are more complicated.
+
+### Overview
+
+To track clicks on the 'Show/hide all sections' accordion link, pass data to the accordion using the `data_attributes_show_all` option as shown.
 
 ```erb
+<%
+  ga4_attributes = {
+    event_name: "select_content",
+    type: "accordion",
+    # other attributes
+  }
+%>
 <div data-module="gtm-click-tracking">
-  <%
-    show_all_attributes = {
-      event_name: "select_content",
-      type: "accordion",
-      index: 0,
-      index_total: 5,
-      section: "n/a"
-    }
-  %>
   <%= render 'govuk_publishing_components/components/accordion', {
     data_attributes_show_all: {
-      "ga4": show_all_attributes.to_json
+      "ga4": ga4_attributes.to_json
     },
     items: []
   } %>
 </div>
 ```
 
-This works as follows.
+### Detailed guide
 
-- data attributes are added to the accordion's 'Show/hide all' link using the `data_attributes_show_all` option in the component
-- `GtmClickTracking` can now be triggered because the accordion is wrapped in the module and its 'Show/hide all' link has a `gtm-event-name` attribute
-- `GtmClickTracking` checks for the presence of an `aria-expanded` attribute, either on the clicked element or a child of the clicked element
-- if it finds one, it sets the `state` attribute of `ui` to either 'opened' or 'closed' depending on the value of `aria-expanded`
-- if `data-ga4` does not include `text`, `GtmClickTracking` automatically uses the text of the clicked element
+In some situations we want to track dynamic elements like the 'Show/hide all sections' links on accordions. This is complicated by the element being created and updated dynamically using JavaScript and the need to track the state of the element when clicked (to record whether it was opened or closed).
+
+It is also complicated by the fact that the JavaScript that creates this element is imported from `govuk-frontend` and therefore can't be modified directly. In order to get attributes onto this link, we have to do the following.
+
+- pass attributes to the accordion for the 'Show/hide all' link using the `data_attributes_show_all` option
+  - this should contain an object with one or many keys, each with a value converted into JSON
+  - this is appended to the main component element as `data-show-all-attributes`
+- the 'Show/hide all' link is created by govuk-frontend JavaScript
+- the accordion JavaScript reads `data-show-all-attributes`
+  - it creates a `data-` attribute on the 'Show/hide all' link for each key in the JSON
+  - in the example above, the result will be `data-ga4="{ "event_name": "select_content", "type": "accordion" }"`
+- wrap the accordion in the click tracking script
+  - tracking will be activated by clicks on elements with a `data-ga4` attribute
+  - it checks for an `aria-expanded` attribute, either on the clicked element or a child of the clicked element, and sets the `action` of the GA data accordingly
+  - the current text of the clicked element is also recorded (this can be overridden to a non-dynamic value by including `text` in the attributes if required)
 
 When a user clicks 'Show all sections' the following information is pushed to the dataLayer.
 
