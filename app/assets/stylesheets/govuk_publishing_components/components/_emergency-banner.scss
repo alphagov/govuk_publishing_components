@@ -1,0 +1,76 @@
+.gem-c-emergency-banner {
+  @include govuk-font(19);
+  background-color: govuk-colour("mid-grey");
+  color: govuk-colour("white");
+  margin-top: 2px;
+  padding: govuk-spacing(3) 0;
+
+  @include govuk-media-query($from: tablet) {
+    padding: govuk-spacing(6) 0;
+  }
+}
+
+.gem-c-emergency-banner--homepage {
+  border-bottom: govuk-spacing(1) solid govuk-colour("white");
+  border-top: govuk-spacing(1) solid govuk-colour("white");
+  margin-bottom: govuk-spacing(-2);
+  margin-top: 0;
+  position: relative;
+  z-index: 10;
+}
+
+.gem-c-emergency-banner__heading {
+  @include govuk-font(24, $weight: bold);
+  margin: 0;
+}
+
+.gem-c-emergency-banner__heading--homepage {
+  @include govuk-font(48, $weight: bold);
+
+  @include govuk-media-query($from: tablet) {
+    margin-bottom: govuk-spacing(4);
+  }
+}
+
+.gem-c-emergency-banner__description {
+  @include govuk-font(19);
+  color: govuk-colour("white");
+  margin-top: 0;
+  margin-bottom: govuk-spacing(4);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.gem-c-emergency-banner__description--homepage {
+  margin: govuk-spacing(4) 0;
+}
+
+.gem-c-emergency-banner__link {
+  @include govuk-font(19);
+}
+
+.gem-c-emergency-banner__link:link,
+.gem-c-emergency-banner__link:visited {
+  color: govuk-colour("white");
+}
+
+.gem-c-emergency-banner__link:focus {
+  @include govuk-focused-text;
+}
+
+.gem-c-emergency-banner--notable-death {
+  background-color: govuk-colour("black");
+}
+
+.gem-c-emergency-banner--national-emergency {
+  // Not using govuk-colour("red") aka #d4351c as that's a slightly different red.
+  background-color: #b10e1e;
+}
+
+.gem-c-emergency-banner--local-emergency {
+  // Not using govuk-colour("turquoise") for background colour as
+  // the contrast was too low with white text
+  background-color: #00847d;
+}
