@@ -98,16 +98,21 @@ window.GOVUK.Modules.GovukCheckboxes = window.GOVUKFrontend.Checkboxes;
   GemCheckboxes.prototype.handleExclusiveCheckboxChange = function (event) {
     var $currentCheckbox = event.target
     var $checkboxes = $currentCheckbox.closest('.govuk-checkboxes')
-    var $exclusiveOption = $checkboxes.querySelector('input[type=checkbox][data-exclusive]')
+    var $exclusiveOptions = $checkboxes.querySelectorAll('input[type=checkbox][data-exclusive]')
     var $nonExclusiveOptions = $checkboxes.querySelectorAll('input[type=checkbox]:not([data-exclusive])')
 
     if ($currentCheckbox.getAttribute('data-exclusive') === 'true' && $currentCheckbox.checked === true) {
       for (var i = 0; i < $nonExclusiveOptions.length; i++) {
         $nonExclusiveOptions[i].checked = false
       }
+      for (var i = 0; i < $exclusiveOptions.length; i++) {
+        if ($currentCheckbox != $exclusiveOptions[i]) {
+          $exclusiveOptions[i].checked = false
+        }
+      }
     } else if ($currentCheckbox.getAttribute('data-exclusive') !== 'true' && $currentCheckbox.checked === true) {
-      if ($exclusiveOption) {
-        $exclusiveOption.checked = false
+      for (var i = 0; i < $exclusiveOptions.length; i++) {
+        $exclusiveOptions[i].checked = false
       }
     }
   }
