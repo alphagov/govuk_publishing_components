@@ -33,7 +33,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         // get attributes from the data attribute to send to GA
         // only allow it if it already exists in the schema
         for (var property in data) {
-          if (schema.event_data[property]) {
+          if (property in schema.event_data) {
             schema.event_data[property] = data[property]
           }
         }

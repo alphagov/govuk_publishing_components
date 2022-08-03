@@ -281,7 +281,7 @@ describe('Google Tag Manager click tracking', function () {
     it('should not track the aria-expanded state', function () {
       var clickOn = element.querySelector('.clickme')
       clickOn.click()
-      expect(window.dataLayer[0].event_data.action).toEqual('n/a')
+      expect(window.dataLayer[0].event_data.action).toEqual(null)
     })
   })
 
@@ -304,7 +304,7 @@ describe('Google Tag Manager click tracking', function () {
     it('should not track the open/closed state', function () {
       var clickOn = element.querySelector('.clickme')
       clickOn.click()
-      expect(window.dataLayer[0].event_data.action).toEqual('n/a')
+      expect(window.dataLayer[0].event_data.action).toEqual(null)
     })
   })
 })
