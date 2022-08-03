@@ -191,21 +191,21 @@ describe('Google Tag Manager page view tracking', function () {
 
   it('returns a pageview on a page with a first published date', function () {
     createMetaTags('first-published-at', '2022-03-28T19:11:00.000+00:00')
-    expected.page_view.first_published_at = '2022-03-28T19:11:00.000+00:00'
+    expected.page_view.first_published_at = '2022-03-28'
     GOVUK.Gtm.sendPageView()
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
   it('returns a pageview on a page with a last updated date', function () {
     createMetaTags('updated-at', '2021-03-28T19:11:00.000+00:00')
-    expected.page_view.updated_at = '2021-03-28T19:11:00.000+00:00'
+    expected.page_view.updated_at = '2021-03-28'
     GOVUK.Gtm.sendPageView()
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
   it('returns a pageview on a page with a last public updated date', function () {
     createMetaTags('public-updated-at', '2020-03-28T19:11:00.000+00:00')
-    expected.page_view.public_updated_at = '2020-03-28T19:11:00.000+00:00'
+    expected.page_view.public_updated_at = '2020-03-28'
     GOVUK.Gtm.sendPageView()
     expect(window.dataLayer[0]).toEqual(expected)
   })

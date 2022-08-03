@@ -32,9 +32,9 @@
             language: this.getLanguage(),
             history: this.getHistory(),
             withdrawn: this.getWithDrawn(),
-            first_published_at: this.getMetaContent('first-published-at'),
-            updated_at: this.getMetaContent('updated-at'),
-            public_updated_at: this.getMetaContent('public-updated-at'),
+            first_published_at: this.stripTimeFrom(this.getMetaContent('first-published-at')),
+            updated_at: this.stripTimeFrom(this.getMetaContent('updated-at')),
+            public_updated_at: this.stripTimeFrom(this.getMetaContent('public-updated-at')),
             publishing_government: this.getMetaContent('publishing-government'),
             political_status: this.getMetaContent('political-status'),
             primary_publishing_organisation: this.getMetaContent('primary-publishing-organisation'),
@@ -90,6 +90,12 @@
     getWithDrawn: function () {
       var withdrawn = this.getMetaContent('withdrawn')
       return (withdrawn === 'withdrawn') ? 'true' : 'false'
+    },
+
+    // return only the date from given timestamps of the form
+    // 2022-03-28T19:11:00.000+00:00
+    stripTimeFrom: function (value) {
+      return value.split('T')[0]
     }
   }
 
