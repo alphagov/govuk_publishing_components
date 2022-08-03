@@ -8,6 +8,7 @@ describe('Google Tag Manager page view tracking', function () {
   beforeEach(function () {
     saved.title = document.title
     document.title = 'This here page'
+    var nullValue = null
     expected = {
       event: 'page_view',
       page_view: {
@@ -16,30 +17,30 @@ describe('Google Tag Manager page view tracking', function () {
         title: 'This here page',
         status_code: '200',
 
-        document_type: 'n/a',
-        publishing_app: 'n/a',
-        rendering_app: 'n/a',
-        schema_name: 'n/a',
-        content_id: 'n/a',
+        document_type: nullValue,
+        publishing_app: nullValue,
+        rendering_app: nullValue,
+        schema_name: nullValue,
+        content_id: nullValue,
 
-        section: 'n/a',
-        taxon_slug: 'n/a',
-        taxon_id: 'n/a',
-        themes: 'n/a',
-        taxon_slugs: 'n/a',
-        taxon_ids: 'n/a',
+        section: nullValue,
+        taxon_slug: nullValue,
+        taxon_id: nullValue,
+        themes: nullValue,
+        taxon_slugs: nullValue,
+        taxon_ids: nullValue,
 
-        language: 'n/a',
+        language: nullValue,
         history: 'false',
         withdrawn: 'false',
-        first_published_at: 'n/a',
-        updated_at: 'n/a',
-        public_updated_at: 'n/a',
-        publishing_government: 'n/a',
-        political_status: 'n/a',
-        primary_publishing_organisation: 'n/a',
-        organisations: 'n/a',
-        world_locations: 'n/a'
+        first_published_at: nullValue,
+        updated_at: nullValue,
+        public_updated_at: nullValue,
+        publishing_government: nullValue,
+        political_status: nullValue,
+        primary_publishing_organisation: nullValue,
+        organisations: nullValue,
+        world_locations: nullValue
       }
     }
     window.dataLayer = []

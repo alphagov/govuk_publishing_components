@@ -5,6 +5,7 @@
 
   GOVUK.Gtm = {
     PIIRemover: new GOVUK.analyticsGA4.PIIRemover(), // imported in analytics-ga4.js
+    nullValue: null,
 
     sendPageView: function () {
       if (window.dataLayer) {
@@ -73,13 +74,13 @@
       if (tag) {
         return tag.getAttribute('content')
       } else {
-        return 'n/a'
+        return this.nullValue
       }
     },
 
     getLanguage: function () {
       var html = document.querySelector('html')
-      return html.getAttribute('lang') || 'n/a'
+      return html.getAttribute('lang') || this.nullValue
     },
 
     getHistory: function () {
@@ -95,7 +96,11 @@
     // return only the date from given timestamps of the form
     // 2022-03-28T19:11:00.000+00:00
     stripTimeFrom: function (value) {
-      return value.split('T')[0]
+      if (value !== null) {
+        return value.split('T')[0]
+      } else {
+        return this.nullValue
+      }
     }
   }
 
