@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Update GA4 schema to use null instead of 'n/a' for undefined values ([PR #2889](https://github.com/alphagov/govuk_publishing_components/pull/2889))
 * Remove times from GA4 analytics page views ([PR #2891](https://github.com/alphagov/govuk_publishing_components/pull/2891))
 * Remove axe-core workaround test ([PR #2882](https://github.com/alphagov/govuk_publishing_components/pull/2882))
 * Move the emergency_banner from static ([PR #2795](https://github.com/alphagov/govuk_publishing_components/pull/2795))

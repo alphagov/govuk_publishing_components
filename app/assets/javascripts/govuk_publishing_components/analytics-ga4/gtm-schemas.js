@@ -4,7 +4,7 @@
   var GOVUK = global.GOVUK || {}
 
   var Schemas = function () {
-    this.null = 'n/a'
+    this.null = null
   }
 
   Schemas.prototype.eventSchema = function () {
