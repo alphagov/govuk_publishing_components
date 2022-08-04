@@ -4,11 +4,11 @@ describe('Google Tag Manager page view tracking', function () {
   var GOVUK = window.GOVUK
   var saved = {}
   var expected
+  var nullValue = null
 
   beforeEach(function () {
     saved.title = document.title
     document.title = 'This here page'
-    var nullValue = null
     expected = {
       event: 'page_view',
       page_view: {
@@ -160,10 +160,37 @@ describe('Google Tag Manager page view tracking', function () {
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
-  it('returns a pageview with a language', function () {
-    var html = document.querySelector('html')
-    html.setAttribute('lang', 'wakandan')
-    expected.page_view.language = 'wakandan'
+  describe('returns a pageview with a language', function () {
+    var content
+
+    beforeEach(function () {
+      content = document.createElement('div')
+      content.setAttribute('id', 'content')
+      document.body.appendChild(content)
+    })
+
+    afterEach(function () {
+      document.body.removeChild(content)
+    })
+
+    it('set correctly', function () {
+      content.setAttribute('lang', 'wakandan')
+      expected.page_view.language = 'wakandan'
+
+      GOVUK.Gtm.sendPageView()
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('set incorrectly', function () {
+      expected.page_view.language = nullValue
+
+      GOVUK.Gtm.sendPageView()
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+  })
+
+  it('returns a pageview without a language', function () {
+    expected.page_view.language = nullValue
 
     GOVUK.Gtm.sendPageView()
     expect(window.dataLayer[0]).toEqual(expected)

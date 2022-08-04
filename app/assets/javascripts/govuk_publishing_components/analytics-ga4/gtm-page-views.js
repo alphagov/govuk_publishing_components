@@ -79,8 +79,12 @@
     },
 
     getLanguage: function () {
-      var html = document.querySelector('html')
-      return html.getAttribute('lang') || this.nullValue
+      var content = document.getElementById('content')
+      if (content) {
+        return content.getAttribute('lang') || this.nullValue
+      } else {
+        return this.nullValue
+      }
     },
 
     getHistory: function () {
