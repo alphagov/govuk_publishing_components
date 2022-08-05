@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 30.1.0
 
 * Fix GA4 analytics language on page views ([PR #2892](https://github.com/alphagov/govuk_publishing_components/pull/2892))
 * Update GA4 schema to use null instead of 'n/a' for undefined values ([PR #2889](https://github.com/alphagov/govuk_publishing_components/pull/2889))
