@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Expand print link component ([PR #2900](https://github.com/alphagov/govuk_publishing_components/pull/2900))
+* Add link click tracking ([PR #2870](https://github.com/alphagov/govuk_publishing_components/pull/2870))
 
 ## 30.1.0
 
