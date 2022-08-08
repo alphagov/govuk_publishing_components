@@ -24,8 +24,7 @@
 
         <%= tag.ul class: cb_helper.list_classes, data: {
           module: ('govuk-checkboxes' if cb_helper.has_conditional),
-          nested: ('true' if cb_helper.has_nested),
-          exclusive: ('true' if cb_helper.has_exclusive)
+          nested: ('true' if cb_helper.has_nested)
         } do %>
           <% cb_helper.items.each_with_index do |item, index| %>
             <% if item === :or %>
