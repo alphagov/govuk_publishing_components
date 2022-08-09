@@ -12,7 +12,7 @@ describe "Print link", type: :view do
     assert_select ".gem-c-print-link.govuk-\\!-margin-top-3"
     assert_select ".gem-c-print-link.govuk-\\!-margin-bottom-3"
     assert_select(
-      "button.gem-c-print-link__button",
+      "button.gem-c-print-link__button[data-module='print-link']",
       text: "Print this page",
     )
   end
@@ -36,7 +36,7 @@ describe "Print link", type: :view do
 
     assert_select ".gem-c-print-link"
     assert_select(
-      'a.gem-c-print-link__link[href="/print"]',
+      'a.gem-c-print-link__link[href="/print"][data-module="button"]',
       text: "Print this page",
     )
   end
@@ -54,5 +54,15 @@ describe "Print link", type: :view do
       "button.gem-c-print-link__button",
       text: "Print this page",
     )
+  end
+
+  it "displays data attributes" do
+    render_component({
+      data_attributes: {
+        snow: "patrol",
+      },
+    })
+
+    assert_select ".gem-c-print-link button[data-snow='patrol']"
   end
 end
