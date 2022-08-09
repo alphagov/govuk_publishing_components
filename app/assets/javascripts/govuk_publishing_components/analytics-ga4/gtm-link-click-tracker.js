@@ -63,9 +63,9 @@
 
         // get attributes from the clickData object to send to GA
         // only allow it if it already exists in the schema
-        for (var key in clickData) {
-          if (schema.event_data[key]) {
-            schema.event_data[key] = clickData[key]
+        for (var property in clickData) {
+          if (property in schema.event_data) {
+            schema.event_data[property] = clickData[property]
           }
         }
 
