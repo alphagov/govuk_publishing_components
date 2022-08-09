@@ -187,7 +187,7 @@ examples:
 
       The `data_attributes` option applies attributes to the outermost element in the accordion. Each item can also have a `data_attributes` hash, which are placed on the `button` that triggers the opening and closing - useful for differentiating between each section of the accordion.
 
-      Data attributes can be added to the 'Show/hide all' link using the `data_attributes_show_all` option, primarily where custom tracking is required. These attributes are read from the accordion markup and then added to the link by JavaScript (which is how the link is created). More details on how this can be used with the GA4 click tracking can be found in the 'Advanced' section of the [click tracking documentation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-gtm/gtm-click-tracking.md).
+      Data attributes can be added to the 'Show/hide all' link using the `data_attributes_show_all` option, primarily where custom tracking is required. These attributes are read from the accordion markup and then added to the link by JavaScript (which is how the link is created). More details on how this can be used with the GA4 click tracking can be found in the 'Advanced' section of the [click tracking documentation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-gtm/gtm-event-click-tracker.md).
 
       If `track_options` within `data_attributes_show_all` is set, then it is possible to pass a custom dimension when 'Show/Hide all' is clicked.
     data:

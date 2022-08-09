@@ -5,7 +5,7 @@ This is a script to allow click tracking through Google Tag Manager to be added 
 ## Basic use
 
 ```html
-<div data-module="gtm-click-tracking">
+<div data-module="gtm-event-click-tracker">
   <div data-ga4='{"event_name":"select_content", "type":"something", "index":0, "index_total":1, "text":"Click me"}'>
     Click me
   </div>
@@ -56,7 +56,7 @@ To track clicks on the 'Show/hide all sections' accordion link, pass data to the
     # other attributes
   }
 %>
-<div data-module="gtm-click-tracking">
+<div data-module="gtm-event-click-tracker">
   <%= render 'govuk_publishing_components/components/accordion', {
     data_attributes_show_all: {
       "ga4": ga4_attributes.to_json
