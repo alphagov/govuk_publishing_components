@@ -65,4 +65,25 @@ describe "Print link", type: :view do
 
     assert_select ".gem-c-print-link button[data-snow='patrol']"
   end
+
+  it "accepts an additional passed data module when rendering as a button" do
+    render_component({
+      data_attributes: {
+        module: "gem-track-click",
+      },
+    })
+
+    assert_select ".gem-c-print-link button[data-module='gem-track-click print-link']"
+  end
+
+  it "accepts an additional passed data module when rendering as a link" do
+    render_component({
+      href: "/print",
+      data_attributes: {
+        module: "gem-track-click",
+      },
+    })
+
+    assert_select ".gem-c-print-link a[data-module='gem-track-click button']"
+  end
 end
