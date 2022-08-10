@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Expand print link component ([PR #2900](https://github.com/alphagov/govuk_publishing_components/pull/2900))
+* **BREAKING:** Rename instances of `gtm-click-tracking`/`GtmClickTracking` to `gtm-event-click-tracker`/`GtmEventClickTracker` ([PR #2901](https://github.com/alphagov/govuk_publishing_components/pull/2901))
 
 ## 30.1.0
 
