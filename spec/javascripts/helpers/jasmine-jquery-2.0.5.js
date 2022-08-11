@@ -2,6 +2,8 @@
 Jasmine-jQuery: a set of jQuery helpers for Jasmine tests.
 
 Version 2.0.5
+WARNING: THIS VERSION CONTAINS LOCAL MODIFICATIONS
+See https://github.com/alphagov/govuk_publishing_components/issues/2902
 
 https://github.com/velesin/jasmine-jquery
 
@@ -280,10 +282,18 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     , handlers:    []
   }
 
+  var argsToArray = function(args) {
+    const arrayOfArgs = []
+    for (let i = 0; i < args.length; i++) {
+      arrayOfArgs.push(args[i])
+    }
+    return arrayOfArgs
+  };
+
   jasmine.jQuery.events = {
     spyOn: function (selector, eventName) {
       var handler = function (e) {
-        data.spiedEvents[jasmine.spiedEventsKey(selector, eventName)] = jasmine.util.argsToArray(arguments)
+        data.spiedEvents[jasmine.spiedEventsKey(selector, eventName)] = argsToArray(arguments)
       }
 
       $(selector).on(eventName, handler)
