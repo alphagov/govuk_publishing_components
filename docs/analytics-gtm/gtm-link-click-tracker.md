@@ -31,10 +31,10 @@ In the example above, on a left click of the link, the following would be pushed
         "type": "download",
         "url": "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/742746/A_quick_guide_to_govt_healthy_eating_update.pdf",
         "text": "A Quick Guide to the Government’s Healthy Eating Recommendations",
-        "index": "n/a",
-        "index_total": "n/a",
-        "section": "n/a",
-        "action": "n/a",
+        "index": null,
+        "index_total": null,
+        "section": null,
+        "action": null,
         "external": "false",
         "link_method": "primary click"
     }

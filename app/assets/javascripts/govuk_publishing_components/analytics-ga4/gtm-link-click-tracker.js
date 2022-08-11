@@ -8,13 +8,15 @@
 
   GOVUK.analyticsGA4.linkClickTracker = {
     trackLinkClicks: function () {
-      this.internalLinksDomain = 'www.gov.uk/'
-      this.internalLinksDomainWithoutWww = 'gov.uk/'
-      this.handleClick = this.handleClick.bind(this)
-      this.handleMousedown = this.handleMousedown.bind(this)
-      document.querySelector('body').addEventListener('click', this.handleClick)
-      document.querySelector('body').addEventListener('contextmenu', this.handleClick)
-      document.querySelector('body').addEventListener('mousedown', this.handleMousedown)
+      if(window.dataLayer) {
+        this.internalLinksDomain = 'www.gov.uk/'
+        this.internalLinksDomainWithoutWww = 'gov.uk/'
+        this.handleClick = this.handleClick.bind(this)
+        this.handleMousedown = this.handleMousedown.bind(this)
+        document.querySelector('body').addEventListener('click', this.handleClick)
+        document.querySelector('body').addEventListener('contextmenu', this.handleClick)
+        document.querySelector('body').addEventListener('mousedown', this.handleMousedown) 
+      }
     },
 
     stopTracking: function () {
@@ -38,7 +40,7 @@
       var href = element.getAttribute('href')
 
       if (!href) {
-        return false
+        return
       }
 
       if (this.isMailToLink(href)) {
@@ -69,7 +71,7 @@
           }
         }
 
-        this.trackClickEvent(schema)
+        window.dataLayer.push(schema)
       }
     },
 
@@ -127,12 +129,6 @@
       }
     },
 
-    trackClickEvent: function (schema) {
-      if (window.dataLayer) {
-        window.dataLayer.push(schema)
-      }
-    },
-
     hrefPointsToDomain: function (href, domain) {
       var httpDomain = 'http://' + domain
       var httpsDomain = 'https://' + domain
@@ -155,3 +151,4 @@
 
   global.GOVUK = GOVUK
 })(window)
+
