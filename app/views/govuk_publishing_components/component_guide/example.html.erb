@@ -7,6 +7,10 @@
 
 <%= render 'govuk_publishing_components/components/title', title: @component_example.name, context: "#{@component_doc.name} example", margin_top: 0 %>
 
+<% code_example = capture do %>
+  <%= render partial: "govuk_publishing_components/component_guide/component_doc/call", locals: { component_doc: @component_doc, example: @component_example } %>
+<% end %>
+
 <div class="component-show">
   <div class="component-doc">
     <div class="component-markdown">
@@ -19,6 +23,6 @@
     <%= render partial: "govuk_publishing_components/component_guide/component_doc/preview", locals: { component_doc: @component_doc, example: @component_example } %>
 
     <h2 class="component-doc-h2">How to call this example</h2>
-    <%= render partial: "govuk_publishing_components/component_guide/component_doc/call", locals: { component_doc: @component_doc, example: @component_example } %>
+    <%= code_example %>
   </div>
 </div>

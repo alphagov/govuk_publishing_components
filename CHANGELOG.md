@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Expand print link component ([PR #2900](https://github.com/alphagov/govuk_publishing_components/pull/2900))
+
 ## 30.1.0
 
 * Fix GA4 analytics language on page views ([PR #2892](https://github.com/alphagov/govuk_publishing_components/pull/2892))

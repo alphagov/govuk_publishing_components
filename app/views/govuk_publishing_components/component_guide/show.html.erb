@@ -74,8 +74,11 @@
           <div class="component-markdown">
             <%= raw(example.html_description) %>
           </div>
+          <% code_example = capture do %>
+            <%= render "govuk_publishing_components/component_guide/component_doc/call", component_doc: @component_doc, example: example %>
+          <% end %>
           <%= render "govuk_publishing_components/component_guide/component_doc/preview", component_doc: @component_doc, example: example %>
-          <%= render "govuk_publishing_components/component_guide/component_doc/call", component_doc: @component_doc, example: example %>
+          <%= code_example %>
         </div>
       <% end %>
     </div>

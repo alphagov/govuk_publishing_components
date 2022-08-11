@@ -6,7 +6,7 @@
   margin_top ||= 3
   margin_bottom ||= 3
 
-  data_attributes[:module] = require_js ? "print-link" : "button"
+  ((data_attributes[:module] ||= "") << " " << (require_js ? "print-link" : "button")).strip!
 
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new({
     margin_top: margin_top,
