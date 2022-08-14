@@ -20,7 +20,8 @@
         index_total: this.null,
         section: this.null,
         action: this.null,
-        external: this.null
+        external: this.null,
+        link_method: this.null
       }
     }
   }

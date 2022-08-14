@@ -8,14 +8,14 @@
 
   GOVUK.analyticsGA4.linkClickTracker = {
     trackLinkClicks: function () {
-      if(window.dataLayer) {
+      if (window.dataLayer) {
         this.internalLinksDomain = 'www.gov.uk/'
         this.internalLinksDomainWithoutWww = 'gov.uk/'
         this.handleClick = this.handleClick.bind(this)
         this.handleMousedown = this.handleMousedown.bind(this)
         document.querySelector('body').addEventListener('click', this.handleClick)
         document.querySelector('body').addEventListener('contextmenu', this.handleClick)
-        document.querySelector('body').addEventListener('mousedown', this.handleMousedown) 
+        document.querySelector('body').addEventListener('mousedown', this.handleMousedown)
       }
     },
 
