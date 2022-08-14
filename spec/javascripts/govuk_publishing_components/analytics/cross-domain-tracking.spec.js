@@ -99,9 +99,7 @@ describe('Cross Domain Tracking', function () {
   })
 
   it('can be configured to track events', function () {
-    GOVUK.analytics = { trackEvent: function () {}, addLinkedTrackerDomain: function () {} }
     spyOn(GOVUK.analytics, 'trackEvent')
-    spyOn(GOVUK.analytics, 'addLinkedTrackerDomain')
 
     var anchorToTest = document.createElement('a')
     anchorToTest.href = 'https://www.gov.uk/browse/citizenship/voting'
@@ -129,9 +127,7 @@ describe('Cross Domain Tracking', function () {
   })
 
   it('adds the linked tracker domain once for multiple cross domain tracking elements', function () {
-    GOVUK.analytics = { trackEvent: function () {}, addLinkedTrackerDomain: function () {} }
     spyOn(GOVUK.analytics, 'trackEvent')
-    spyOn(GOVUK.analytics, 'addLinkedTrackerDomain')
 
     var anchor1 = document.createElement('a')
     anchor1.href = 'https://www.gov.uk/browse/citizenship/surfing'
