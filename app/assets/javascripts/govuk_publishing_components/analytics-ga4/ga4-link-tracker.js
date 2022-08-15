@@ -6,7 +6,7 @@
   var GOVUK = global.GOVUK || {}
   GOVUK.analyticsGA4 = GOVUK.analyticsGA4 || {}
 
-  GOVUK.analyticsGA4.linkClickTracker = {
+  GOVUK.analyticsGA4.linkTracker = {
     trackLinkClicks: function () {
       if (window.dataLayer) {
         this.internalLinksDomain = 'www.gov.uk/'

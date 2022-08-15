@@ -1,12 +1,12 @@
 /* eslint-env jasmine */
 
-describe('GOVUK.analyticsGA4.linkClickTracker', function () {
+describe('GOVUK.analyticsGA4.linkTracker', function () {
   'use strict'
   var GOVUK = window.GOVUK
   var links
   var expected
   var body = document.querySelector('body')
-  var linkClickTracker
+  var linkTracker
   var preventDefault = function (e) {
     e.preventDefault()
   }
@@ -56,14 +56,14 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
       body.appendChild(links)
       body.addEventListener('click', preventDefault)
 
-      linkClickTracker = GOVUK.analyticsGA4.linkClickTracker
-      linkClickTracker.trackLinkClicks()
+      linkTracker = GOVUK.analyticsGA4.linkTracker
+      linkTracker.trackLinkClicks()
     })
 
     afterEach(function () {
       body.removeEventListener('click', preventDefault)
       links.remove()
-      linkClickTracker.stopTracking()
+      linkTracker.stopTracking()
     })
 
     it('detects external click events on well structured external links', function () {
@@ -265,14 +265,14 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
       body.appendChild(links)
       body.addEventListener('click', preventDefault)
 
-      linkClickTracker = GOVUK.analyticsGA4.linkClickTracker
-      linkClickTracker.trackLinkClicks()
+      linkTracker = GOVUK.analyticsGA4.linkTracker
+      linkTracker.trackLinkClicks()
     })
 
     afterEach(function () {
       body.removeEventListener('click', preventDefault)
       links.remove()
-      linkClickTracker.stopTracking()
+      linkTracker.stopTracking()
     })
 
     it('detects download clicks on fully structured gov.uk download links', function () {
@@ -415,14 +415,14 @@ describe('GOVUK.analyticsGA4.linkClickTracker', function () {
       body.appendChild(links)
       body.addEventListener('click', preventDefault)
 
-      linkClickTracker = GOVUK.analyticsGA4.linkClickTracker
-      linkClickTracker.trackLinkClicks()
+      linkTracker = GOVUK.analyticsGA4.linkTracker
+      linkTracker.trackLinkClicks()
     })
 
     afterEach(function () {
       body.removeEventListener('click', preventDefault)
       links.remove()
-      linkClickTracker.stopTracking()
+      linkTracker.stopTracking()
     })
 
     it('detects email events on mailto links', function () {
