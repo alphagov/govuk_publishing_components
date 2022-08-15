@@ -35,7 +35,7 @@ All of the data sent to GTM is based on a common schema.
 
 `page` is defined in the [gtm-page-views script](https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/javascripts/govuk_publishing_components/analytics-ga4/gtm-page-views.js).
 
-`event_data` is defined in the [gtm-schemas script](https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/javascripts/govuk_publishing_components/analytics-ga4/gtm-schemas.js) and used in the [gtm-click-tracking script](https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/javascripts/govuk_publishing_components/analytics-ga4/gtm-click-tracking.js).
+`event_data` is defined in the [gtm-schemas script](https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/javascripts/govuk_publishing_components/analytics-ga4/gtm-schemas.js) and used in the [ga4-event-tracker script](https://github.com/alphagov/govuk_publishing_components/blob/main/app/assets/javascripts/govuk_publishing_components/analytics-ga4/ga4-event-tracker.js).
 
 `search_results` has not been implemented yet.
 
