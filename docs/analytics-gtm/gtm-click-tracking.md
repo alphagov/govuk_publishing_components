@@ -27,13 +27,13 @@ In the example above, the following would be pushed to the dataLayer. Note that 
   'event_data': {
     'event_name': 'select_content',
     'type': 'something',
-    'url': 'n/a',
+    'url': null,
     'text': 'Click me',
     'index': '0',
     'index_total': '1',
-    'section': 'n/a',
-    'action': 'n/a',
-    'external': 'n/a'
+    'section': null,
+    'action': null,
+    'external': null
   }
 }
 ```
@@ -92,13 +92,13 @@ When a user clicks 'Show all sections' the following information is pushed to th
   'event_data': {
     'event_name': 'select_content',
     'type': 'accordion',
-    'url': 'n/a',
+    'url': null,
     'text': 'Show all sections',
     'index': '0',
     'index-total': '5',
-    'section': 'n/a',
+    'section': null,
     'action': 'opened',
-    'external': 'n/a'
+    'external': null
   }
 }
 ```
@@ -111,13 +111,13 @@ When a user clicks 'Hide all sections' the following information is pushed to th
   'event_data': {
     'event_name': 'select_content',
     'type': 'accordion',
-    'url': 'n/a',
+    'url': null,
     'text': 'Hide all sections',
     'index': '0',
     'index-total': '5',
-    'section': 'n/a',
+    'section': null,
     'action': 'closed',
-    'external': 'n/a'
+    'external': null
   }
 }
 ```
