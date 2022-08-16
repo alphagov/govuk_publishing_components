@@ -97,7 +97,7 @@ describe('Accordion component', function () {
       }
     }
     var wrappingObject = {
-      'gtm-event-name': 'example',
+      'custom-data-attr-event-name': 'example',
       'show-all-attributes': JSON.stringify(object),
       'track-options': JSON.stringify({
         dimensionExample: 'Example value'
@@ -105,7 +105,7 @@ describe('Accordion component', function () {
     }
     accordion.setAttribute('data-show-all-attributes', JSON.stringify(wrappingObject))
     startAccordion()
-    expect(document.querySelector('.govuk-accordion__show-all').getAttribute('data-gtm-event-name')).toEqual('example')
+    expect(document.querySelector('.govuk-accordion__show-all').getAttribute('data-custom-data-attr-event-name')).toEqual('example')
     expect(document.querySelector('.govuk-accordion__show-all').getAttribute('data-show-all-attributes')).toEqual(JSON.stringify(object))
     expect(document.querySelector('.govuk-accordion__show-all').getAttribute('data-track-options')).toEqual(JSON.stringify({ dimensionExample: 'Example value' }))
   })

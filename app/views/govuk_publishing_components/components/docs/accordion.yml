@@ -192,11 +192,10 @@ examples:
       If `track_options` within `data_attributes_show_all` is set, then it is possible to pass a custom dimension when 'Show/Hide all' is clicked.
     data:
       data_attributes:
-        gtm: gtm-accordion
-        ga: ga-accordion
+        custom_data_attr: custom-data-attr-accordion
       data_attributes_show_all:
-        gtm-event-name: example
-        gtm-attributes: "{ 'ui': { 'type': 'type value', 'section': 'section value' } }"
+        custom_data_attr-event-name: example
+        custom_data_attr-attributes: "{ 'ui': { 'type': 'type value', 'section': 'section value' } }"
         tracking-options: "{ 'dimension114': 1 }"
       items:
         - heading:
@@ -204,25 +203,25 @@ examples:
           content:
             html: <p class="govuk-body">This is the content for Writing well for the web.</p>
           data_attributes:
-            gtm: gtm-accordion-item-1
+            custom_data_attr: custom-data-attr-accordion-item-1
         - heading:
             text: Writing well for specialists
           content:
             html: <p class="govuk-body">This is the content for Writing well for specialists.</p>
           data_attributes:
-            gtm: gtm-accordion-item-2
+            custom_data_attr: custom-data-attr-accordion-item-2
         - heading:
             text: Know your audience
           content:
             html: <p class="govuk-body">This is the content for Know your audience.</p>
           data_attributes:
-            gtm: gtm-accordion-item-3
+            custom_data_attr: custom-data-attr-accordion-item-3
         - heading:
             text: How people read
           content:
             html: <p class="govuk-body">This is the content for How people read.</p>
           data_attributes:
-            gtm: gtm-accordion-item-4
+            custom_data_attr: custom-data-attr-accordion-item-4
   different_heading_level:
     description: This will alter the level of the heading, not the appearance of the heading.
     data:
