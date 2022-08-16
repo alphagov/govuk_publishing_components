@@ -24,6 +24,7 @@
   end
 
   description ||= nil
+  heading_with_description ||= nil
   hint ||= nil
   error_message ||= nil
   error_items ||= []
@@ -55,6 +56,10 @@
       <%= tag.legend class: legend_classes do %>
         <%= tag.span(heading_caption, class: "govuk-caption-#{size}") if heading_caption.present? %>
         <%= content_tag(heading_level, heading, class: heading_classes) %>
+
+        <% if heading_with_description.present? %>
+          <%= tag.div heading_with_description, class: "govuk-body" %>
+        <% end %>
       <% end %>
     <% end %>
     <% if description.present? %>
