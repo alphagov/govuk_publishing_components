@@ -340,7 +340,7 @@ describe('Google Tag Manager click tracking', function () {
       window.dataLayer = []
       clickOn = element.querySelector('.random-list-item')
       clickOn.click()
-      expect(window.dataLayer[0].event_data.url).toEqual('n/a')
+      expect(window.dataLayer[0].event_data.url).toEqual(null)
     })
   })
 })
