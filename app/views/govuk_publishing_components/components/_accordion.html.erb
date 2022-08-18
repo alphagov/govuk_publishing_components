@@ -22,7 +22,7 @@
   locales = {}
 
   data_attributes ||= {}
-  data_attributes[:module] = 'govuk-accordion gem-accordion'
+  ((data_attributes[:module] ||= "") << " " << "govuk-accordion gem-accordion").strip!
   data_attributes[:anchor_navigation] = anchor_navigation
   data_attributes[:track_show_all_clicks] = track_show_all_clicks
   data_attributes[:track_sections] = track_sections

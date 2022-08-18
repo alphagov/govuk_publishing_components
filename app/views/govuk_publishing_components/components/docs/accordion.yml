@@ -222,6 +222,20 @@ examples:
             html: <p class="govuk-body">This is the content for How people read.</p>
           data_attributes:
             custom_data_attr: custom-data-attr-accordion-item-4
+  with_custom_data_module:
+    description: The component includes its own `data-module` but others can be passed in addition if required, for example to apply tracking to an element. This will be included along with the components own `data-module`.
+    data:
+      data_attributes:
+        module: gem-track-click
+      items:
+        - heading:
+            text: Writing well for the web
+          content:
+            html: <p class="govuk-body">This is the content for Writing well for the web.</p>
+        - heading:
+            text: Writing well for specialists
+          content:
+            html: <p class="govuk-body">This is the content for Writing well for specialists.</p>
   different_heading_level:
     description: This will alter the level of the heading, not the appearance of the heading.
     data:

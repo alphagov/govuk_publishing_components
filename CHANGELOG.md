@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Allow accordion to accept custom data module ([PR #2908](https://github.com/alphagov/govuk_publishing_components/pull/2908))
 * Expand print link component ([PR #2900](https://github.com/alphagov/govuk_publishing_components/pull/2900))
 * Add link click tracking ([PR #2904](https://github.com/alphagov/govuk_publishing_components/pull/2904))
 * Ensure tab clicks grab the tabs href for gtm ([PR #2884](https://github.com/alphagov/govuk_publishing_components/pull/2884))
