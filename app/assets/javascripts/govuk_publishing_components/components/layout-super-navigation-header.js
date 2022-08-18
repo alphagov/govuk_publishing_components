@@ -101,8 +101,16 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   // Returns what screen size the window is currently. Returns a string of
   // either `desktop` or `mobile` so it can be interpolated to access the
   // `data-toggle-{desktop|mobile}-group` attribute.
+  // Uses matchMedia.
   var windowSize = function () {
-    return document.documentElement.clientWidth >= SETTINGS.breakpoint.desktop ? 'desktop' : 'mobile'
+    var viewport = function () {
+      if (typeof window.matchMedia === 'function') {
+        viewport = window.matchMedia('(min-width:' + SETTINGS.breakpoint.desktop + 'px)').matches
+      } else {
+        viewport = document.documentElement.clientWidth >= SETTINGS.breakpoint.desktop
+      }
+    }
+    return viewport ? 'desktop' : 'mobile'
   }
 
   function SuperNavigationMegaMenu ($module) {
