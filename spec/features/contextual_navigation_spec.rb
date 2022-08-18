@@ -444,10 +444,11 @@ describe "Contextual navigation" do
   end
 
   def then_i_see_the_topic_breadcrumb
+    markup = find("//.gem-c-contextual-breadcrumbs")
+    puts markup.native.inner_html
     within ".gem-c-breadcrumbs" do
-      puts page.html
-      expect(page).to have_link("Home")
-      expect(page).to have_link(topic_item["title"])
+      expect(page).to have_link("Home") # this passes
+      expect(page).to have_link(topic_item["title"]) # this is the 'oil and gas' link that occasionally can't be found
     end
   end
 
