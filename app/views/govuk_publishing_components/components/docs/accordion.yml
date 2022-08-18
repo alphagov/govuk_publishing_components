@@ -187,16 +187,15 @@ examples:
 
       The `data_attributes` option applies attributes to the outermost element in the accordion. Each item can also have a `data_attributes` hash, which are placed on the `button` that triggers the opening and closing - useful for differentiating between each section of the accordion.
 
-      Data attributes can be added to the 'Show/hide all' link using the `data_attributes_show_all` option, primarily where custom tracking is required. These attributes are read from the accordion markup and then added to the link by JavaScript (which is how the link is created). More details on how this can be used with the GA4 click tracking can be found in the 'Advanced' section of the [click tracking documentation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-gtm/gtm-click-tracking.md).
+      Data attributes can be added to the 'Show/hide all' link using the `data_attributes_show_all` option, primarily where custom tracking is required. These attributes are read from the accordion markup and then added to the link by JavaScript (which is how the link is created). More details on how this can be used with the GA4 event tracking can be found in the 'Advanced' section of the [event tracking documentation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-gtm/ga4-event-tracker.md).
 
       If `track_options` within `data_attributes_show_all` is set, then it is possible to pass a custom dimension when 'Show/Hide all' is clicked.
     data:
       data_attributes:
-        gtm: gtm-accordion
-        ga: ga-accordion
+        custom_data_attr: custom-data-attr-accordion
       data_attributes_show_all:
-        gtm-event-name: example
-        gtm-attributes: "{ 'ui': { 'type': 'type value', 'section': 'section value' } }"
+        custom_data_attr-event-name: example
+        custom_data_attr-attributes: "{ 'ui': { 'type': 'type value', 'section': 'section value' } }"
         tracking-options: "{ 'dimension114': 1 }"
       items:
         - heading:
@@ -204,25 +203,25 @@ examples:
           content:
             html: <p class="govuk-body">This is the content for Writing well for the web.</p>
           data_attributes:
-            gtm: gtm-accordion-item-1
+            custom_data_attr: custom-data-attr-accordion-item-1
         - heading:
             text: Writing well for specialists
           content:
             html: <p class="govuk-body">This is the content for Writing well for specialists.</p>
           data_attributes:
-            gtm: gtm-accordion-item-2
+            custom_data_attr: custom-data-attr-accordion-item-2
         - heading:
             text: Know your audience
           content:
             html: <p class="govuk-body">This is the content for Know your audience.</p>
           data_attributes:
-            gtm: gtm-accordion-item-3
+            custom_data_attr: custom-data-attr-accordion-item-3
         - heading:
             text: How people read
           content:
             html: <p class="govuk-body">This is the content for How people read.</p>
           data_attributes:
-            gtm: gtm-accordion-item-4
+            custom_data_attr: custom-data-attr-accordion-item-4
   different_heading_level:
     description: This will alter the level of the heading, not the appearance of the heading.
     data:

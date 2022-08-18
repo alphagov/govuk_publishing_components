@@ -1,11 +1,11 @@
-# Google Tag Manager click tracking
+# Google Analytics event tracker
 
-This is a script to allow click tracking through Google Tag Manager to be added to any element using data attributes.
+This is a script to allow event tracking (e.g. clicks) through Google Tag Manager to be added to any element using data attributes.
 
 ## Basic use
 
 ```html
-<div data-module="gtm-click-tracking">
+<div data-module="ga4-event-tracker">
   <div data-ga4='{"event_name":"select_content", "type":"something", "index":0, "index_total":1, "text":"Click me"}'>
     Click me
   </div>
@@ -56,7 +56,7 @@ To track clicks on the 'Show/hide all sections' accordion link, pass data to the
     # other attributes
   }
 %>
-<div data-module="gtm-click-tracking">
+<div data-module="ga4-event-tracker">
   <%= render 'govuk_publishing_components/components/accordion', {
     data_attributes_show_all: {
       "ga4": ga4_attributes.to_json
@@ -79,7 +79,7 @@ It is also complicated by the fact that the JavaScript that creates this element
 - the accordion JavaScript reads `data-show-all-attributes`
   - it creates a `data-` attribute on the 'Show/hide all' link for each key in the JSON
   - in the example above, the result will be `data-ga4="{ "event_name": "select_content", "type": "accordion" }"`
-- wrap the accordion in the click tracking script
+- wrap the accordion in the event tracking script
   - tracking will be activated by clicks on elements with a `data-ga4` attribute
   - it checks for an `aria-expanded` attribute, either on the clicked element or a child of the clicked element, and sets the `action` of the GA data accordingly
   - the current text of the clicked element is also recorded (this can be overridden to a non-dynamic value by including `text` in the attributes if required)

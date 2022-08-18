@@ -40,6 +40,6 @@ describe "Accordion", js: true, type: :view do
     expect(page).to have_selector(".gem-c-accordion[data-show-all-text='Show all sections']", visible: :visible)
     expect(page).to have_selector(".gem-c-accordion[data-hide-all-text='Hide all sections']", visible: :visible)
     expect(page).to have_selector(".gem-c-accordion[data-this-section-visually-hidden=' this section']", visible: :visible)
-    expect(page).to have_selector(".govuk-accordion__section-heading[data-gtm='gtm-accordion-item-1']", visible: :visible)
+    expect(page).to have_selector(".govuk-accordion__section-heading[data-custom-data-attr='custom-data-attr-accordion-item-1']", visible: :visible)
   end
 end
