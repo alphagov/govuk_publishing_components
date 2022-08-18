@@ -444,7 +444,7 @@ describe "Contextual navigation" do
   end
 
   def then_i_see_the_topic_breadcrumb
-    markup = find("//.gem-c-contextual-breadcrumbs")
+    markup = find("//.gem-c-breadcrumbs")
     puts markup.native.inner_html
     within ".gem-c-breadcrumbs" do
       expect(page).to have_link("Home") # this passes
