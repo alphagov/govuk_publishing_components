@@ -2,8 +2,9 @@
   'use strict'
 
   var GOVUK = global.GOVUK || {}
+  GOVUK.analyticsGA4 = GOVUK.analyticsGA4 || {}
 
-  GOVUK.Gtm = {
+  GOVUK.analyticsGA4.pageViewTracker = {
     PIIRemover: new GOVUK.analyticsGA4.PIIRemover(), // imported in analytics-ga4.js
     nullValue: null,
 

@@ -14,6 +14,7 @@
 * Add link click tracking ([PR #2904](https://github.com/alphagov/govuk_publishing_components/pull/2904))
 * Ensure tab clicks grab the tabs href for gtm ([PR #2884](https://github.com/alphagov/govuk_publishing_components/pull/2884))
 * Update gtm naming conventions ([PR #2906](https://github.com/alphagov/govuk_publishing_components/pull/2906))
+* Update sendPageView object location ([PR #2909](https://github.com/alphagov/govuk_publishing_components/pull/2909))
 
 ## 30.1.0
 
