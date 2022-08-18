@@ -16,7 +16,6 @@ hr:
       order_a_copy: Naručite kopiju
       page:
         few:
-        many:
         one: 1 stranica
         other: "%{count} stranice"
       reference: 'Referenca: %{reference}'
