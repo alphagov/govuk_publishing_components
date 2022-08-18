@@ -243,6 +243,23 @@ describe "Accordion", type: :view do
     assert_select "[data-accordion='first']", count: 1
   end
 
+  it "allows a custom data module to be included" do
+    test_data = {
+      id: "test-for-module-data-attributes",
+      data_attributes: {
+        module: "gem-track-click",
+      },
+      items: [
+        {
+          heading: { text: "Heading 1" },
+          content: { html: "<p>Content 1.</p>" },
+        },
+      ],
+    }
+    render_component(test_data)
+    assert_select "[data-module='gem-track-click govuk-accordion gem-accordion']", count: 1
+  end
+
   it "section has class added when expanded flag is present" do
     test_data = {
       id: "test-for-expanded-layout",
