@@ -5,16 +5,16 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 (function (Modules) {
   'use strict'
 
-  function GA4EventTracker (module) {
+  function Ga4EventTracker (module) {
     this.module = module
     this.trackingTrigger = 'data-ga4' // elements with this attribute get tracked
   }
 
-  GA4EventTracker.prototype.init = function () {
+  Ga4EventTracker.prototype.init = function () {
     this.module.addEventListener('click', this.trackClick.bind(this), true) // useCapture must be true
   }
 
-  GA4EventTracker.prototype.trackClick = function (event) {
+  Ga4EventTracker.prototype.trackClick = function (event) {
     if (window.dataLayer) {
       var target = this.findTrackingAttributes(event.target)
       if (target) {
@@ -76,7 +76,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
   }
 
-  GA4EventTracker.prototype.findTrackingAttributes = function (clicked) {
+  Ga4EventTracker.prototype.findTrackingAttributes = function (clicked) {
     if (clicked.hasAttribute('[' + this.trackingTrigger + ']')) {
       return clicked
     } else {
@@ -85,7 +85,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   // check if an attribute exists or contains the attribute
-  GA4EventTracker.prototype.getClosestAttribute = function (clicked, attribute) {
+  Ga4EventTracker.prototype.getClosestAttribute = function (clicked, attribute) {
     var isAttributeOnElement = clicked.getAttribute(attribute)
     var containsAttribute = clicked.querySelector('[' + attribute + ']')
 
@@ -96,5 +96,5 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
   }
 
-  Modules.GA4EventTracker = GA4EventTracker
+  Modules.Ga4EventTracker = Ga4EventTracker
 })(window.GOVUK.Modules)
