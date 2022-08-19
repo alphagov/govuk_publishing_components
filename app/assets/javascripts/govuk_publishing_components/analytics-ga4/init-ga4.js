@@ -1,19 +1,26 @@
-var analyticsGa4Init = function () {
+window.GOVUK = window.GOVUK || {}
+window.GOVUK.analyticsGA4 = window.GOVUK.analyticsGA4 || {}
+
+var initFunction = function () {
   // to be added: digital identity consent mechanism
 
   var consentCookie = window.GOVUK.getConsentCookie()
-  var dummyAnalytics = {}
 
   if (consentCookie && consentCookie.usage) {
-    window.GOVUK.analyticsGA4.pageViewTracker.sendPageView()
-    window.GOVUK.analyticsGA4.linkTracker.trackLinkClicks()
-
+    var analyticsModules = window.GOVUK.analyticsGA4.analyticsModules
+    for (var property in analyticsModules) {
+      var module = analyticsModules[property]
+      if (typeof module.init === 'function') {
+        module.init()
+      }
+    }
     // to be added: attach JS from Google to the DOM and execute
     // to be added: cross domain tracking code
   } else {
-    // clear the analytics object so no code can execute
-    window.GOVUK.analyticsGA4 = dummyAnalytics
+    window.addEventListener('cookie-consent', function () {
+      window.GOVUK.analyticsGA4.init()
+    })
   }
 }
 
-window.GOVUK.analyticsGa4Init = analyticsGa4Init
+window.GOVUK.analyticsGA4.init = initFunction

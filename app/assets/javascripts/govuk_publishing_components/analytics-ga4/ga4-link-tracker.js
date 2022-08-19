@@ -1,13 +1,13 @@
 // = require govuk/vendor/polyfills/Element/prototype/closest.js
+window.GOVUK = window.GOVUK || {}
+window.GOVUK.analyticsGA4 = window.GOVUK.analyticsGA4 || {}
+window.GOVUK.analyticsGA4.analyticsModules = window.GOVUK.analyticsGA4.analyticsModules || {};
 
-;(function (global) {
+(function (analyticsModules) {
   'use strict'
 
-  var GOVUK = global.GOVUK || {}
-  GOVUK.analyticsGA4 = GOVUK.analyticsGA4 || {}
-
-  GOVUK.analyticsGA4.linkTracker = {
-    trackLinkClicks: function () {
+  var Ga4LinkTracker = {
+    init: function () {
       if (window.dataLayer) {
         this.internalLinksDomain = 'www.gov.uk/'
         this.internalLinksDomainWithoutWww = 'gov.uk/'
@@ -167,5 +167,5 @@
     }
   }
 
-  global.GOVUK = GOVUK
-})(window)
+  analyticsModules.Ga4LinkTracker = Ga4LinkTracker
+})(window.GOVUK.analyticsGA4.analyticsModules)

@@ -61,8 +61,8 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
       body.appendChild(links)
       body.addEventListener('click', preventDefault)
 
-      linkTracker = GOVUK.analyticsGA4.linkTracker
-      linkTracker.trackLinkClicks()
+      linkTracker = GOVUK.analyticsGA4.analyticsModules.Ga4LinkTracker
+      linkTracker.init()
     })
 
     afterEach(function () {
@@ -291,8 +291,8 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
       body.appendChild(links)
       body.addEventListener('click', preventDefault)
 
-      linkTracker = GOVUK.analyticsGA4.linkTracker
-      linkTracker.trackLinkClicks()
+      linkTracker = GOVUK.analyticsGA4.analyticsModules.Ga4LinkTracker
+      linkTracker.init()
     })
 
     afterEach(function () {
@@ -463,8 +463,8 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
       body.appendChild(links)
       body.addEventListener('click', preventDefault)
 
-      linkTracker = GOVUK.analyticsGA4.linkTracker
-      linkTracker.trackLinkClicks()
+      linkTracker = GOVUK.analyticsGA4.analyticsModules.Ga4LinkTracker
+      linkTracker.init()
     })
 
     afterEach(function () {
