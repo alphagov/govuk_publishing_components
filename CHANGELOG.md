@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 30.2.1
 
 * Rename GA4EventTracker to Ga4EventTracker ([PR #2911](https://github.com/alphagov/govuk_publishing_components/pull/2911))
 
