@@ -18,7 +18,7 @@ describe('Google Analytics event tracking', function () {
     beforeEach(function () {
       element.setAttribute('data-ga4', '')
       document.body.appendChild(element)
-      new GOVUK.Modules.GA4EventTracker(element).init()
+      new GOVUK.Modules.Ga4EventTracker(element).init()
     })
 
     it('does not cause an error or fire an event', function () {
@@ -31,7 +31,7 @@ describe('Google Analytics event tracking', function () {
     beforeEach(function () {
       element.setAttribute('data-ga4', 'invalid json')
       document.body.appendChild(element)
-      new GOVUK.Modules.GA4EventTracker(element).init()
+      new GOVUK.Modules.Ga4EventTracker(element).init()
     })
 
     it('does not cause an error', function () {
@@ -54,7 +54,7 @@ describe('Google Analytics event tracking', function () {
       }
       element.setAttribute('data-ga4', JSON.stringify(attributes))
       document.body.appendChild(element)
-      new GOVUK.Modules.GA4EventTracker(element).init()
+      new GOVUK.Modules.Ga4EventTracker(element).init()
     })
 
     it('pushes gtm attributes to the dataLayer', function () {
@@ -98,7 +98,7 @@ describe('Google Analytics event tracking', function () {
           'class="clickme"' +
         '></div>'
       document.body.appendChild(element)
-      new GOVUK.Modules.GA4EventTracker(element).init()
+      new GOVUK.Modules.Ga4EventTracker(element).init()
     })
 
     it('pushes gtm attributes to the dataLayer', function () {
@@ -120,7 +120,7 @@ describe('Google Analytics event tracking', function () {
       element.setAttribute('data-ga4', JSON.stringify(attributes))
       element.setAttribute('aria-expanded', 'false')
       document.body.appendChild(element)
-      new GOVUK.Modules.GA4EventTracker(element).init()
+      new GOVUK.Modules.Ga4EventTracker(element).init()
     })
 
     it('includes the expanded state in the gtm attributes', function () {
@@ -156,7 +156,7 @@ describe('Google Analytics event tracking', function () {
         '>' +
         '</details>'
       document.body.appendChild(element)
-      new GOVUK.Modules.GA4EventTracker(element).init()
+      new GOVUK.Modules.Ga4EventTracker(element).init()
     })
 
     it('includes the open state in the gtm attributes', function () {
@@ -193,7 +193,7 @@ describe('Google Analytics event tracking', function () {
           '<button aria-expanded="false">Show</button>' +
         '</div>'
       document.body.appendChild(element)
-      new GOVUK.Modules.GA4EventTracker(element).init()
+      new GOVUK.Modules.Ga4EventTracker(element).init()
     })
 
     it('includes the expanded state in the gtm attributes', function () {
@@ -234,7 +234,7 @@ describe('Google Analytics event tracking', function () {
           '<summary class="nested">Example</summary>' +
         '</details>'
       document.body.appendChild(element)
-      new GOVUK.Modules.GA4EventTracker(element).init()
+      new GOVUK.Modules.Ga4EventTracker(element).init()
     })
 
     it('includes the open state in the gtm attributes', function () {
@@ -275,7 +275,7 @@ describe('Google Analytics event tracking', function () {
           '</div>' +
         '</div>'
       document.body.appendChild(element)
-      new GOVUK.Modules.GA4EventTracker(element).init()
+      new GOVUK.Modules.Ga4EventTracker(element).init()
     })
 
     it('should not track the aria-expanded state', function () {
@@ -298,7 +298,7 @@ describe('Google Analytics event tracking', function () {
           '</details>' +
         '</div>'
       document.body.appendChild(element)
-      new GOVUK.Modules.GA4EventTracker(element).init()
+      new GOVUK.Modules.Ga4EventTracker(element).init()
     })
 
     it('should not track the open/closed state', function () {
@@ -324,7 +324,7 @@ describe('Google Analytics event tracking', function () {
           '</div>' +
         '</div>'
       document.body.appendChild(element)
-      new GOVUK.Modules.GA4EventTracker(element).init()
+      new GOVUK.Modules.Ga4EventTracker(element).init()
     })
 
     it('should track tab click url locations', function () {

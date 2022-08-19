@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Rename GA4EventTracker to Ga4EventTracker ([PR #2911](https://github.com/alphagov/govuk_publishing_components/pull/2911))
+
 ## 30.2.0
 
 * Allow accordion to accept custom data module ([PR #2908](https://github.com/alphagov/govuk_publishing_components/pull/2908))
