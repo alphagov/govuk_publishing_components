@@ -14,7 +14,7 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
     beforeEach(function () {
       window.dataLayer = []
       expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
-      expected.event = 'analytics'
+      expected.event = 'event_data'
       expected.event_data.event_name = 'navigation'
       expected.event_data.type = 'generic link'
       expected.event_data.link_method = 'primary click'
@@ -212,7 +212,7 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
       window.dataLayer = []
 
       expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
-      expected.event = 'analytics'
+      expected.event = 'event_data'
       expected.event_data.event_name = 'navigation'
       expected.event_data.type = 'download'
       expected.event_data.link_method = 'primary click'
@@ -396,7 +396,7 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
     beforeEach(function () {
       window.dataLayer = []
       expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
-      expected.event = 'analytics'
+      expected.event = 'event_data'
       expected.event_data.event_name = 'navigation'
       expected.event_data.type = 'email'
       expected.event_data.link_method = 'primary click'

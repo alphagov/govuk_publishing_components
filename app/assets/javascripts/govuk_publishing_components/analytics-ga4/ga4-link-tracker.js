@@ -61,7 +61,7 @@
         clickData.link_method = this.getClickType(event)
 
         var schema = new window.GOVUK.analyticsGA4.Schemas().eventSchema()
-        schema.event = 'analytics'
+        schema.event = 'event_data'
 
         // get attributes from the clickData object to send to GA
         // only allow it if it already exists in the schema
