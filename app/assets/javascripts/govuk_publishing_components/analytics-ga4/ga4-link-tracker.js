@@ -124,7 +124,7 @@
 
     isExternalLink: function (href) {
       var isInternalLink = this.hrefPointsToDomain(href, this.internalLinksDomain) || this.hrefPointsToDomain(href, this.internalLinksDomainWithoutWww)
-      if (!isInternalLink && !this.hrefIsRelative(href)) {
+      if (!isInternalLink && !this.hrefIsRelative(href) && !this.hrefIsAnchor(href)) {
         return true
       }
     },
@@ -146,6 +146,10 @@
     hrefIsRelative: function (href) {
       // Checks that a link is relative, but is not a protocol relative url
       return href[0] === '/' && href[1] !== '/'
+    },
+
+    hrefIsAnchor: function (href) {
+      return href[0] === '#'
     }
   }
 

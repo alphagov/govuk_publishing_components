@@ -51,6 +51,11 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
               '<a href="https://gov.uk/some-path">Another local link</a>' +
               '<a href="gov.uk/some-path">Another local link</a>' +
               '<a href="//gov.uk/some-path">Another local link</a>' +
+            '</div>' +
+            '<div class="internal-links">' +
+              '<a href="#some-id">Anchor link</a>' +
+              '<a href="#https://www.gov.uk">Another anchor link</a>' +
+              '<a href="#https://www.example.com">Another anchor link</a>' +
             '</div>'
 
       body.appendChild(links)
@@ -135,6 +140,17 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
 
     it('ignores external click events on internal links', function () {
       var linksToTest = document.querySelectorAll('.internal-links a')
+
+      for (var i = 0; i < linksToTest.length; i++) {
+        var link = linksToTest[i]
+        window.dataLayer = []
+        GOVUK.triggerEvent(link, 'click')
+        expect(window.dataLayer).toEqual([])
+      }
+    })
+
+    it('ignores external click events on anchor links', function () {
+      var linksToTest = document.querySelectorAll('.anchor-links a')
 
       for (var i = 0; i < linksToTest.length; i++) {
         var link = linksToTest[i]
