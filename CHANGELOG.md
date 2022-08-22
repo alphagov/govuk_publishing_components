@@ -6,6 +6,9 @@
 - Don't include changes that are purely internal. The CHANGELOG should be a
   useful summary for people upgrading their application, not a replication
   of the commit log.
+  
+## Unreleased
+* Fix bugs with gtm external link tracking ([PR #2916](https://github.com/alphagov/govuk_publishing_components/pull/2916))
 
 ## 30.2.1
 

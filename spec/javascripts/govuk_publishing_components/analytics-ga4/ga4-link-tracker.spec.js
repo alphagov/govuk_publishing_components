@@ -14,7 +14,7 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
     beforeEach(function () {
       window.dataLayer = []
       expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
-      expected.event = 'analytics'
+      expected.event = 'event_data'
       expected.event_data.event_name = 'navigation'
       expected.event_data.type = 'generic link'
       expected.event_data.link_method = 'primary click'
@@ -51,6 +51,11 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
               '<a href="https://gov.uk/some-path">Another local link</a>' +
               '<a href="gov.uk/some-path">Another local link</a>' +
               '<a href="//gov.uk/some-path">Another local link</a>' +
+            '</div>' +
+            '<div class="anchor-links">' +
+              '<a href="#some-id">Anchor link</a>' +
+              '<a href="#https://www.gov.uk">Another anchor link</a>' +
+              '<a href="#https://www.example.com">Another anchor link</a>' +
             '</div>'
 
       body.appendChild(links)
@@ -144,6 +149,17 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
       }
     })
 
+    it('ignores external click events on anchor links', function () {
+      var linksToTest = document.querySelectorAll('.anchor-links a')
+
+      for (var i = 0; i < linksToTest.length; i++) {
+        var link = linksToTest[i]
+        window.dataLayer = []
+        GOVUK.triggerEvent(link, 'click')
+        expect(window.dataLayer).toEqual([])
+      }
+    })
+
     it('detects control click events on external links', function () {
       var linksToTest = document.querySelectorAll('.fully-structured-external-links a')
 
@@ -212,7 +228,7 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
       window.dataLayer = []
 
       expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
-      expected.event = 'analytics'
+      expected.event = 'event_data'
       expected.event_data.event_name = 'navigation'
       expected.event_data.type = 'download'
       expected.event_data.link_method = 'primary click'
@@ -396,7 +412,7 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
     beforeEach(function () {
       window.dataLayer = []
       expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
-      expected.event = 'analytics'
+      expected.event = 'event_data'
       expected.event_data.event_name = 'navigation'
       expected.event_data.type = 'email'
       expected.event_data.link_method = 'primary click'
