@@ -103,3 +103,10 @@ examples:
       name: "described"
       rows: 2
       describedby: "contextual-guidance"
+  with_data_attributes:
+    data:
+      label:
+        text: "This textarea has a data attribute"
+      name: "with_data_attrbutes"
+      data:
+        module: "some-awesome-module-here"
