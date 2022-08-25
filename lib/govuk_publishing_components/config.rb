@@ -15,6 +15,9 @@ module GovukPublishingComponents
     mattr_accessor :application_javascript
     self.application_javascript = "application"
 
+    mattr_accessor :exclude_css_from_static
+    self.exclude_css_from_static = true
+
     def self.component_directory_name
       APP_COMPONENT_DIRECTORY
     end
