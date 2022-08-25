@@ -10,12 +10,15 @@ When initialised, the JS adds an event listener to the `<body>` of the page with
 
 When one of these listeners are fired, they check if the `event.target` is an `<a>` tag with a `href`. If so, it will then check if the link is:
 
-- A `download` link - This is either a href to `assets.publishing.service.gov.uk` or a href on the `www.gov.uk` domain pointing to the `/government/uploads/` path.
+- A `generic download` - This is either a href to `assets.publishing.service.gov.uk` or a href on the `www.gov.uk` domain pointing to the `/government/uploads/` path.
+- A `preview` link - This is either a href to `assets.publishing.service.gov.uk` or a href on the `www.gov.uk` domain pointing to the `/government/uploads/` path which has `/preview` in the URL after the file path.
 - A `mailto` link - This is an email href that starts with `mailto:`.
-- An `external` link - This is a href that is not on the `www.gov.uk` domain. 
+- An `generic link`  - This is a href that is not on the `www.gov.uk` domain.
     - To calculate this, it checks if the href starts with `http://www.gov.uk/`, `https://www.gov.uk/`, `//www.gov.uk/`, `www.gov.uk/`, `http://gov.uk/`, `https://gov.uk/`, `//gov.uk`, or `gov.uk/` (NB: `gov.uk/` and `www./` are technically relative links as a href must contain a `/` or http method at the start to be treated as non-relative).
-    - It also checks if a `href` starts with `/` and does not start with `//` to determine if it's a relative link like `/bank-holidays` , but not a protocol relative link `//google.com`
+    - It also checks if a `href` starts with `/` and does not start with `//` to determine if it's a relative link like `/bank-holidays` , but not a protocol relative link such as `//google.com`.
     - If the `href` does not meet both of these criteria, then it is considered an external link.
+
+Events can either have an `event_name` of `navigation` or `file_download`. Download and preview links will use the `file_download` value, while generic external links and mailto links will use `navigation`.
 
 ## Basic use
 
@@ -25,10 +28,10 @@ In the example above, on a left click of the link, the following would be pushed
 
 ```
 {
-    "event": "analytics",
+    "event": "event_data",
     "event_data": {
-        "event_name": "navigation",
-        "type": "download",
+        "event_name": "file_download",
+        "type": "generic download",
         "url": "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/742746/A_quick_guide_to_govt_healthy_eating_update.pdf",
         "text": "A Quick Guide to the Government’s Healthy Eating Recommendations",
         "index": null,
