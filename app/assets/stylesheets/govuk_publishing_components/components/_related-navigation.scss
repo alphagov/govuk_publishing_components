@@ -1,3 +1,5 @@
+@import "govuk_publishing_components/individual_component_support";
+
 .gem-c-related-navigation {
   @include govuk-text-colour;
   border-top: 2px solid govuk-colour("blue");
