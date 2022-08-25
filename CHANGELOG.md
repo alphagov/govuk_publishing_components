@@ -8,6 +8,8 @@
   of the commit log.
   
 ## Unreleased
+
+* Add links and sections count tracking for Cost of living hub ([PR #2921](https://github.com/alphagov/govuk_publishing_components/pull/2921))
 * Fix bugs with gtm external link tracking ([PR #2916](https://github.com/alphagov/govuk_publishing_components/pull/2916))
 
 ## 30.2.1

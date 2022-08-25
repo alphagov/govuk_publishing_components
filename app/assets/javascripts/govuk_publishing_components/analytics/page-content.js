@@ -17,6 +17,8 @@
         // if there are no accordion sections on the browse level 2 page
         // then it is a default page with one or two lists
         return document.querySelectorAll('[data-track-count="accordionSection"]').length || document.querySelectorAll('main .govuk-list').length
+      case isCostOfLivingHub():
+        return document.querySelectorAll('[data-track-count="accordionSection"]').length
       case isNewBrowsePage():
         return document.querySelectorAll('[data-track-count="cardList"]').length
       case isMainstreamBrowsePage():
@@ -51,6 +53,7 @@
       case isDocumentCollectionPage():
         return document.querySelectorAll('.document-collection .group-document-list li a').length
       case isNewBrowsePageLevelTwo():
+      case isCostOfLivingHub():
         return document.querySelectorAll('[data-track-count="contentLink"]').length
       case isNewBrowsePage():
         return document.querySelectorAll('[data-track-count="cardLink"]').length
@@ -106,6 +109,11 @@
   function isNewBrowsePageLevelTwo () {
     return getMetaAttribute(metaApplicationSelector) === 'collections' &&
       getMetaAttribute(metaNavigationTypeSelector) === 'browse level 2'
+  }
+
+  function isCostOfLivingHub () {
+    return getMetaAttribute(metaApplicationSelector) === 'collections' &&
+      getMetaAttribute(metaNavigationTypeSelector) === 'cost of living hub'
   }
 
   function isNewBrowsePage () {
