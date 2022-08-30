@@ -11,3 +11,7 @@ examples:
   default:
     data:
       gtm_id: GTM-XXXXXXX
+  with_blocklist:
+    data:
+      gtm_id: GTM-XXXXXXX
+      blocklist: "['customPixels', 'customScripts', 'html', 'nonGoogleScripts']"

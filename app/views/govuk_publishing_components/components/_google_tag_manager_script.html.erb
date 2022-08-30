@@ -1,13 +1,19 @@
 <%
   gtm_auth ||= nil
   gtm_preview ||= nil
+  blocklist ||= nil # an array of the form ['customPixels', 'customScripts', 'html', 'nonGoogleScripts']
 
   gtm_attributes = %w(gtm_cookies_win=x)
     gtm_attributes << "gtm_auth=" + gtm_auth if gtm_auth
     gtm_attributes << "gtm_preview=" + gtm_preview if gtm_preview
   gtm_attributes = gtm_attributes.join('&')
 %>
+
 <script>
+<% if blocklist %>
+window.dataLayer = window.dataLayer || []
+window.dataLayer.push({ 'gtm.blocklist' : <%= blocklist %> })
+<% end %>
 var doNotTrack = ( navigator.doNotTrack === '1' || navigator.doNotTrack === 'yes' || navigator.msDoNotTrack === '1' || window.doNotTrack === '1' )
 if (!doNotTrack) {
   (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
