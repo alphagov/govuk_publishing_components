@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 30.3.0
 
 * Remove GOV.UK specific code for handling exclusive checkboxes ([PR #2896](https://github.com/alphagov/govuk_publishing_components/pull/2896))
 * Add links and sections count tracking for Cost of living hub ([PR #2921](https://github.com/alphagov/govuk_publishing_components/pull/2921))
