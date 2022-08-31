@@ -326,8 +326,7 @@ describe "Checkboxes", type: :view do
         { label: "Other", value: "other", exclusive: true },
       ],
     )
-    assert_select ".govuk-checkboxes[data-exclusive=true]"
-    assert_select ".govuk-checkboxes__input[value=other][data-exclusive=true]"
+    assert_select ".govuk-checkboxes__input[value=other][data-behaviour=exclusive]"
     assert_select ".gem-c-checkboxes__divider", text: "or"
   end
 

@@ -6,9 +6,10 @@
 - Don't include changes that are purely internal. The CHANGELOG should be a
   useful summary for people upgrading their application, not a replication
   of the commit log.
-  
+
 ## Unreleased
 
+* Remove GOV.UK specific code for handling exclusive checkboxes ([PR #2896](https://github.com/alphagov/govuk_publishing_components/pull/2896))
 * Add links and sections count tracking for Cost of living hub ([PR #2921](https://github.com/alphagov/govuk_publishing_components/pull/2921))
 * Fix bugs with gtm external link tracking ([PR #2916](https://github.com/alphagov/govuk_publishing_components/pull/2916))
 

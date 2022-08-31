@@ -4,7 +4,7 @@
   id = cb_helper.id
 %>
 
-<%= tag.div id: id, class: cb_helper.css_classes, data: { module: "gem-checkboxes" } do %>
+<%= tag.div id: id, class: cb_helper.css_classes, data: { module: "gem-checkboxes govuk-checkboxes" } do %>
   <% if cb_helper.should_have_fieldset %>
     <% if cb_helper.heading_markup %>
       <%= tag.fieldset class: "govuk-fieldset", "aria-describedby": cb_helper.fieldset_describedby do %>
@@ -24,8 +24,7 @@
 
         <%= tag.ul class: cb_helper.list_classes, data: {
           module: ('govuk-checkboxes' if cb_helper.has_conditional),
-          nested: ('true' if cb_helper.has_nested),
-          exclusive: ('true' if cb_helper.has_exclusive)
+          nested: ('true' if cb_helper.has_nested)
         } do %>
           <% cb_helper.items.each_with_index do |item, index| %>
             <% if item === :or %>

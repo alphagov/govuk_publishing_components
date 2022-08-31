@@ -13,9 +13,9 @@ describe('Checkboxes component', function () {
            '<h1 class="govuk-fieldset__heading">What is your favourite colour?</h1>' +
         '</legend>' +
         '<span id="checkboxes-1ac8e5cf-hint" class="govuk-hint">Select all that apply.</span>' +
-        '<ul class="govuk-checkboxes gem-c-checkboxes__list" data-nested="true" data-exclusive="true">' +
+        '<ul class="govuk-checkboxes gem-c-checkboxes__list" data-nested="true">' +
            '<li class="govuk-checkboxes__item">' +
-              '<input id="checkboxes-1ac8e5cf-0" name="favourite_colour" type="checkbox" value="red" class="govuk-checkboxes__input" data-track-category="choseFavouriteColour" data-track-action="favourite-color" data-track-label="red" data-track-value="1" data-track-options=\'{"dimension28": "wubbalubbadubdub","dimension29": "Pickle Rick"}\'>' +
+              '<input id="checkboxes-1ac8e5cf-0" name="favourite_colour" type="checkbox" value="red" class="govuk-checkboxes__input" data-track-category="choseFavouriteColour" data-track-action="favourite-color" data-track-label="red" data-track-value="1" data-track-options=\'{"dimension28": "wubbalubbadubdub","dimension29": "Pickle Rick"}\' data-test-exclusive>' +
               '<label class="govuk-label govuk-checkboxes__label" for="checkboxes-1ac8e5cf-0">Red</label>' +
               '<ul id="checkboxes-1ac8e5cf-nested-0" class="govuk-checkboxes govuk-checkboxes--nested" data-parent="checkboxes-1ac8e5cf-0">' +
                 '<li class="govuk-checkboxes__item">' +
@@ -29,7 +29,7 @@ describe('Checkboxes component', function () {
               '</ul>' +
            '</li>' +
            '<li class="govuk-checkboxes__item">' +
-              '<input id="checkboxes-1ac8e5cf-1" name="favourite_colour" type="checkbox" value="blue" class="govuk-checkboxes__input" data-track-category="choseFavouriteColour" data-uncheck-track-category="unselectedFavouriteColour" data-track-action="favourite-color" data-track-label="blue" data-track-value="2" data-track-options=\'{"dimension28":"Get schwifty","dimension29":"Squanch"}\'>' +
+              '<input id="checkboxes-1ac8e5cf-1" name="favourite_colour" type="checkbox" value="blue" class="govuk-checkboxes__input" data-track-category="choseFavouriteColour" data-uncheck-track-category="unselectedFavouriteColour" data-track-action="favourite-color" data-track-label="blue" data-track-value="2" data-track-options=\'{"dimension28":"Get schwifty","dimension29":"Squanch"}\' data-test-exclusive>' +
               '<label class="govuk-label govuk-checkboxes__label" for="checkboxes-1ac8e5cf-1">Blue</label>' +
               '<ul id="checkboxes-1ac8e5cf-nested-1" class="govuk-checkboxes govuk-checkboxes--nested" data-parent="checkboxes-1ac8e5cf-1">' +
                 '<li class="govuk-checkboxes__item">' +
@@ -43,7 +43,7 @@ describe('Checkboxes component', function () {
               '</ul>' +
            '</li>' +
            '<li class="govuk-checkboxes__item">' +
-              '<input id="checkboxes-1ac8e5cf-2" name="favourite_colour" type="checkbox" value="other" class="govuk-checkboxes__input" data-exclusive="true">' +
+              '<input id="checkboxes-1ac8e5cf-2" name="favourite_colour" type="checkbox" value="other" class="govuk-checkboxes__input" data-behaviour="exclusive">' +
               '<label class="govuk-label govuk-checkboxes__label" for="checkboxes-1ac8e5cf-2">Other</label>' +
            '</li>' +
         '</ul>' +
@@ -67,8 +67,8 @@ describe('Checkboxes component', function () {
     $parentCheckbox = $parentCheckboxWrapper.find('> .govuk-checkboxes__input')
     $nestedChildren = $parentCheckboxWrapper.find('.govuk-checkboxes--nested .govuk-checkboxes__input')
     $checkboxesWrapper = $('.gem-c-checkboxes')
-    $exclusiveOption = $checkboxesWrapper.find('input[type=checkbox][data-exclusive]')
-    $nonExclusiveOptions = $checkboxesWrapper.find('input[type=checkbox]:not([data-exclusive])')
+    $exclusiveOption = $checkboxesWrapper.find('input[type=checkbox][data-test-exclusive]')
+    $nonExclusiveOptions = $checkboxesWrapper.find('input[type=checkbox][data-behaviour="exclusive"]')
     expectedRedOptions = { label: 'red', value: '1', dimension28: 'wubbalubbadubdub', dimension29: 'Pickle Rick' }
     expectedBlueOptions = { label: 'blue', value: '2', dimension28: 'Get schwifty', dimension29: 'Squanch' }
 

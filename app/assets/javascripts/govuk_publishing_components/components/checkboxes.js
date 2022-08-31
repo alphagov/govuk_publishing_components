@@ -9,7 +9,6 @@ window.GOVUK.Modules.GovukCheckboxes = window.GOVUKFrontend.Checkboxes;
     this.$module = $module
     this.$checkboxes = this.$module.querySelectorAll('input[type=checkbox]')
     this.$nestedCheckboxes = this.$module.querySelectorAll('[data-nested=true] input[type=checkbox]')
-    this.$exclusiveCheckboxes = this.$module.querySelectorAll('[data-exclusive=true] input[type=checkbox]')
   }
 
   GemCheckboxes.prototype.init = function () {
@@ -21,10 +20,6 @@ window.GOVUK.Modules.GovukCheckboxes = window.GOVUKFrontend.Checkboxes;
 
     for (i = 0; i < this.$nestedCheckboxes.length; i++) {
       this.$nestedCheckboxes[i].addEventListener('change', this.handleNestedCheckboxChange.bind(this))
-    }
-
-    for (i = 0; i < this.$exclusiveCheckboxes.length; i++) {
-      this.$exclusiveCheckboxes[i].addEventListener('change', this.handleExclusiveCheckboxChange)
     }
   }
 
@@ -92,23 +87,6 @@ window.GOVUK.Modules.GovukCheckboxes = window.GOVUKFrontend.Checkboxes;
       $parent.checked = true
     } else {
       $parent.checked = false
-    }
-  }
-
-  GemCheckboxes.prototype.handleExclusiveCheckboxChange = function (event) {
-    var $currentCheckbox = event.target
-    var $checkboxes = $currentCheckbox.closest('.govuk-checkboxes')
-    var $exclusiveOption = $checkboxes.querySelector('input[type=checkbox][data-exclusive]')
-    var $nonExclusiveOptions = $checkboxes.querySelectorAll('input[type=checkbox]:not([data-exclusive])')
-
-    if ($currentCheckbox.getAttribute('data-exclusive') === 'true' && $currentCheckbox.checked === true) {
-      for (var i = 0; i < $nonExclusiveOptions.length; i++) {
-        $nonExclusiveOptions[i].checked = false
-      }
-    } else if ($currentCheckbox.getAttribute('data-exclusive') !== 'true' && $currentCheckbox.checked === true) {
-      if ($exclusiveOption) {
-        $exclusiveOption.checked = false
-      }
     }
   }
 
