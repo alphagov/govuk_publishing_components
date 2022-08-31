@@ -13,6 +13,8 @@ module GovukPublishingComponents
         @button_type = @local_assigns[:already_subscribed] ? "Unsubscribe" : "Subscribe"
         @classes = %w[gem-c-single-page-notification-button]
         @classes << "js-personalisation-enhancement" if js_enhancement
+        @button_text_subscribe = custom_button_text_is_valid? ? custom_subscribe_text : default_subscribe_text
+        @button_text_unsubscribe = custom_button_text_is_valid? ? custom_unsubscribe_text : default_unsubscribe_text
       end
 
       def data
@@ -24,8 +26,8 @@ module GovukPublishingComponents
         @data_attributes[:track_category] = "Single-page-notification-button"
         # This attribute is passed through to the personalisation API to ensure when a new button is returned from the API, it has the same button_location
         @data_attributes[:button_location] = button_location
-        @data_attributes[:button_text_subscribe] = button_text_subscribe
-        @data_attributes[:button_text_unsubscribe] = button_text_unsubscribe
+        @data_attributes[:button_text_subscribe] = @button_text_subscribe
+        @data_attributes[:button_text_unsubscribe] = @button_text_unsubscribe
         @data_attributes
       end
 
@@ -34,14 +36,26 @@ module GovukPublishingComponents
       end
 
       def button_text
-        @already_subscribed ? button_text_unsubscribe : button_text_subscribe
+        @already_subscribed ? @button_text_unsubscribe : @button_text_subscribe
       end
 
-      def button_text_subscribe
+      def custom_button_text_is_valid?
+        custom_subscribe_text.present? && custom_unsubscribe_text.present?
+      end
+
+      def custom_subscribe_text
+        @local_assigns.dig(:button_text, :subscribe)
+      end
+
+      def custom_unsubscribe_text
+        @local_assigns.dig(:button_text, :unsubscribe)
+      end
+
+      def default_subscribe_text
         I18n.t("components.single_page_notification_button.subscribe_text")
       end
 
-      def button_text_unsubscribe
+      def default_unsubscribe_text
         I18n.t("components.single_page_notification_button.unsubscribe_text")
       end
     end
