@@ -499,3 +499,7 @@ $code-delete-bg: #fadddd;
   top: 0;
   background: govuk-colour("white");
 }
+
+.component-doc__content-list {
+  margin-top: govuk-spacing(5);
+}
