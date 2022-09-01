@@ -28,7 +28,30 @@
     </div>
   </div>
 
-  <h2 class="component-doc-h2">
+  <% if @component_doc.other_examples.any? %>
+    <div class="component-doc__content-list">
+      <%
+        content_items = [
+          {
+            href: "#default",
+            text: "Default",
+          }
+        ]
+
+        @component_doc.other_examples.each do | example |
+          content_items << {
+            href: "##{example.id}",
+            text: example.name
+          }
+        end
+      %>
+      <%= render "govuk_publishing_components/components/contents_list", {
+        contents: content_items
+      } %>
+    </div>
+  <% end %>
+
+  <h2 class="component-doc-h2" id="default">
     <a href="<%= component_example_path(@component_doc.id, "default") %>" class="govuk-link">How it looks</a>
     <small>(<a href="<%= component_preview_path(@component_doc.id, "default") %>" class="govuk-link">preview</a>)</small>
     <small>(<a href="<%= component_preview_all_path(@component_doc.id) %>" class="govuk-link">preview all</a>)</small>
@@ -65,8 +88,9 @@
   <% if @component_doc.other_examples.any? %>
     <div class="examples">
       <h2 class="component-doc-h2">Other examples</h2>
+
       <% @component_doc.other_examples.each do |example| %>
-        <div class="component-example">
+        <div class="component-example" id="<%= example.id %>">
           <h3 class="example-title">
             <a href="<%= component_example_path(@component_doc.id, example.id) %>" class="govuk-link"><%= example.name %></a>
             <small>(<a href="<%= component_preview_path(@component_doc.id, example.id) %>" class="govuk-link">preview</a>)</small>
