@@ -18,6 +18,16 @@ describe "Component example" do
     end
   end
 
+  it "includes the content list" do
+    visit "/component-guide/test-component"
+
+    within ".component-doc__content-list", match: :first do
+      expect(page).to have_selector(".gem-c-contents-list")
+      expect(page).to have_selector(".gem-c-contents-list .gem-c-contents-list__title", text: "Contents")
+      expect(page).to have_selector(".gem-c-contents-list .gem-c-contents-list__list .gem-c-contents-list__list-item", match: :first, text: "How it looks")
+    end
+  end
+
   it "includes the application stylesheet for an application component" do
     visit "/component-guide/test-component"
 
