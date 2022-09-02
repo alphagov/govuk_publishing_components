@@ -114,7 +114,7 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.11.0)
     execjs (2.8.1)
-    faker (2.22.0)
+    faker (2.23.0)
       i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
     gds-api-adapters (81.0.4)
