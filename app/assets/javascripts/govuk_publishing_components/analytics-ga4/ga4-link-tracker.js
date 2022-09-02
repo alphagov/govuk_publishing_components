@@ -44,18 +44,20 @@
       }
 
       if (this.isMailToLink(href)) {
+        clickData.event_name = 'navigation'
         clickData.type = 'email'
         clickData.external = 'true'
       } else if (this.isDownloadLink(href)) {
-        clickData.type = 'download'
-        clickData.external = 'false'
+        clickData.event_name = 'file_download'
+        clickData.type = this.isPreviewLink(href) ? 'preview' : 'generic download'
+        clickData.external = 'true'
       } else if (this.isExternalLink(href)) {
+        clickData.event_name = 'navigation'
         clickData.type = 'generic link'
         clickData.external = 'true'
       }
 
       if (Object.keys(clickData).length > 0) {
-        clickData.event_name = 'navigation'
         clickData.text = element.textContent.trim()
         clickData.url = href
         clickData.link_method = this.getClickType(event)
@@ -127,6 +129,18 @@
       if (!isInternalLink && !this.hrefIsRelative(href) && !this.hrefIsAnchor(href)) {
         return true
       }
+    },
+
+    isPreviewLink: function (href) {
+      /*  Regex looks for:
+      1. The file extension period (the character '.')
+      2. any alphanumeric characters (so we can match any file type such as jpg, pdf, mp4.)
+      3. the presence of '/preview'.
+      For example, .csv/preview or .mp4/preview will be matched.
+      Regex is used over JS string methods as this should work with anchor links, query string parameters and files that may have 'preview' in their name.
+      */
+      var previewRegex = /\.\w+\/preview/i
+      return previewRegex.test(href)
     },
 
     hrefPointsToDomain: function (href, domain) {

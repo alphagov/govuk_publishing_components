@@ -229,10 +229,10 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
 
       expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
       expected.event = 'event_data'
-      expected.event_data.event_name = 'navigation'
-      expected.event_data.type = 'download'
+      expected.event_data.event_name = 'file_download'
+      expected.event_data.type = 'generic download'
       expected.event_data.link_method = 'primary click'
-      expected.event_data.external = 'false'
+      expected.event_data.external = 'true'
 
       links = document.createElement('div')
       links.innerHTML = '<div class="fully-structured-download-links">' +
@@ -276,6 +276,16 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
           '<div class="relative-download-links">' +
             '<a href="/government/uploads/one.pdf">Relative PDF link</a>' +
             '<a href="/government/uploads/two.xslt">Relative Spreadsheet link</a>' +
+          '</div>' +
+          '<div class="preview-download-links">' +
+            '<a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/444468/moj-hq.csv/preview">Preview link</a>' +
+            '<a href="http://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/444468/moj-hq.csv/preview">Relative Spreadsheet link</a>' +
+            '<a href="assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/444468/moj-hq.csv/preview">Relative Spreadsheet link</a>' +
+          '</div>' +
+          '<div class="not-a-preview-link">' +
+            '<a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/444468/preview.mp4">Preview link</a>' +
+            '<a href="http://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/444468/preview.jpg&preview=false">Relative Spreadsheet link</a>' +
+            '<a href="assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/444468/preview.csv">Relative Spreadsheet link</a>' +
           '</div>'
 
       body.appendChild(links)
@@ -299,8 +309,7 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
         var link = linksToTest[i]
         GOVUK.triggerEvent(link, 'click')
         expected.event_data.url = link.getAttribute('href')
-        expected.event_data.type = 'download'
-        expected.event_data.external = 'false'
+        expected.event_data.type = 'generic download'
         expected.event_data.text = link.innerText.trim()
         expect(window.dataLayer[0]).toEqual(expected)
       }
@@ -315,8 +324,7 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
         GOVUK.triggerEvent(link, 'click')
         expected.event_data.url = link.closest('a').getAttribute('href')
         expected.event_data.text = link.closest('a').innerText.trim()
-        expected.event_data.type = 'download'
-        expected.event_data.external = 'false'
+        expected.event_data.type = 'generic download'
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -329,8 +337,7 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
         var link = linksToTest[i]
         GOVUK.triggerEvent(link, 'click')
         expected.event_data.url = link.getAttribute('href')
-        expected.event_data.type = 'download'
-        expected.event_data.external = 'false'
+        expected.event_data.type = 'generic download'
         expected.event_data.text = link.innerText.trim()
         expect(window.dataLayer[0]).toEqual(expected)
       }
@@ -344,8 +351,7 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
         var link = linksToTest[i]
         GOVUK.triggerEvent(link, 'click')
         expected.event_data.url = link.getAttribute('href')
-        expected.event_data.type = 'download'
-        expected.event_data.external = 'false'
+        expected.event_data.type = 'generic download'
         expected.event_data.text = link.innerText.trim()
         expect(window.dataLayer[0]).toEqual(expected)
       }
@@ -359,8 +365,7 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
         var link = linksToTest[i]
         GOVUK.triggerEvent(link, 'click')
         expected.event_data.url = link.getAttribute('href')
-        expected.event_data.type = 'download'
-        expected.event_data.external = 'false'
+        expected.event_data.type = 'generic download'
         expected.event_data.text = link.innerText.trim()
         expect(window.dataLayer[0]).toEqual(expected)
       }
@@ -384,10 +389,10 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
         window.dataLayer = []
         var link = linksToTest[i]
         GOVUK.triggerEvent(link, 'click')
+        expected.event_data.event_name = 'navigation'
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.text = link.innerText.trim()
         expected.event_data.type = 'generic link'
-        expected.event_data.external = 'true'
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -400,8 +405,35 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
         var link = linksToTest[i]
         GOVUK.triggerEvent(link, 'click')
         expected.event_data.url = link.getAttribute('href')
-        expected.event_data.type = 'download'
-        expected.event_data.external = 'false'
+        expected.event_data.type = 'generic download'
+        expected.event_data.text = link.innerText.trim()
+        expect(window.dataLayer[0]).toEqual(expected)
+      }
+    })
+
+    it('detects preview clicks on gov.uk download preview links', function () {
+      var linksToTest = document.querySelectorAll('.preview-download-links a')
+
+      for (var i = 0; i < linksToTest.length; i++) {
+        window.dataLayer = []
+        var link = linksToTest[i]
+        GOVUK.triggerEvent(link, 'click')
+        expected.event_data.url = link.getAttribute('href')
+        expected.event_data.type = 'preview'
+        expected.event_data.text = link.innerText.trim()
+        expect(window.dataLayer[0]).toEqual(expected)
+      }
+    })
+
+    it('detects files with preview in their filename as download links instead of preview links', function () {
+      var linksToTest = document.querySelectorAll('.not-a-preview-link a')
+
+      for (var i = 0; i < linksToTest.length; i++) {
+        window.dataLayer = []
+        var link = linksToTest[i]
+        GOVUK.triggerEvent(link, 'click')
+        expected.event_data.url = link.getAttribute('href')
+        expected.event_data.type = 'generic download'
         expected.event_data.text = link.innerText.trim()
         expect(window.dataLayer[0]).toEqual(expected)
       }

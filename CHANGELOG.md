@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Modify GTM values for download links in response to analyst review ([PR #2923](https://github.com/alphagov/govuk_publishing_components/pull/2923/))
+
 ## 30.3.0
 
 * Remove GOV.UK specific code for handling exclusive checkboxes ([PR #2896](https://github.com/alphagov/govuk_publishing_components/pull/2896))
