@@ -12,3 +12,10 @@
 .gem-c-layout-footer .govuk-footer__list {
   padding-bottom: govuk-spacing(7);
 }
+
+.gem-c-layout-footer .govuk-footer__list-item:nth-child(odd):last-child {
+  // If there are an uneven number of links in the
+  // footer this ensures the left column has more links than the
+  // the right column.
+  margin-bottom: 20px;
+}

@@ -811,7 +811,7 @@ $button-pipe-colour: darken(govuk-colour("mid-grey"), 20%);
 
 .gem-c-layout-super-navigation-header__navigation-second-items--topics {
   @include govuk-media-query($from: "desktop") {
-    @include columns($items: 16, $columns: 2, $selector: "li", $flow: column);
+    @include columns($items: 17, $columns: 2, $selector: "li", $flow: column);
   }
 }
 
