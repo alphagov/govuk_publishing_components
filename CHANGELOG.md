@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 30.4.0
 
 * Modify GTM values for download links in response to analyst review ([PR #2923](https://github.com/alphagov/govuk_publishing_components/pull/2923/))
 * Add Cost of Living hub links to side wide navbar and footer ([PR #2939](https://github.com/alphagov/govuk_publishing_components/pull/2939))
