@@ -5,7 +5,7 @@ describe "Component example" do
     visit "/component-guide/test-component"
 
     expect(body).to include("How to call this component")
-    expect(page).to have_content('<%= render "components/test-component", { } %>')
+    expect(page).to have_content('<%= render "components/test-component", {} %>')
   end
 
   it "includes the component partial" do
@@ -139,5 +139,12 @@ describe "Component example" do
     visit "/component-guide/test-component-with-no-accessibility-criteria"
     expect(page).to have_selector(".component-violation")
     expect(body).to include("This component is not valid")
+  end
+
+  it "component with hash key is rendered correctly" do
+    visit "/component-guide/test-component-with-hash-key"
+
+    expect(body).to include("How to call this component")
+    expect(page).to have_content('<%= render "components/test-component-with-hash-key", { items: [ { name: "john" }, :or, { name: "smith" } ] } %>')
   end
 end

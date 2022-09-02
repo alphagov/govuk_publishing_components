@@ -1,4 +1,5 @@
 require "rouge"
+require "awesome_print"
 
 module GovukPublishingComponents
   class ComponentExample
@@ -29,8 +30,8 @@ module GovukPublishingComponents
     end
 
     def pretty_data
-      json_key_regex = /"(\w*)":/ # matches quoted keys ending with a colon, i.e. "key":
-      output = JSON.pretty_generate(data).gsub('\\n', "\n    ").gsub(json_key_regex, '\1:')
+      json_key_regex = /"(\w*)"\s*:/ # matches quoted keys ending with a colon, i.e. "key":
+      output = data.awesome_inspect(indent: -2, index: false, plain: true).gsub("=>", ":").gsub(json_key_regex, '\1:')
 
       quoted_string_regex = /"((?:[^"\\]|\\.)*)"/ # matches "some text" - ignores escaped quotes, i.e. \"
       output.gsub(quoted_string_regex) do |group|
