@@ -24,7 +24,6 @@ Gem::Specification.new do |s|
   s.add_dependency "rouge"
   s.add_dependency "sprockets", ">= 3"
 
-  s.add_development_dependency "awesome_print"
   s.add_development_dependency "capybara"
   s.add_development_dependency "faker"
   s.add_development_dependency "gds-api-adapters"
