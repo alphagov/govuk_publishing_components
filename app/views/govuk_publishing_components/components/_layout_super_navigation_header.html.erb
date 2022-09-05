@@ -96,7 +96,7 @@
           %>
           <%= tag.li class: li_classes do %>
             <div class="gem-c-layout-super-navigation-header__navigation-toggle-wrapper govuk-clearfix">
-              <%= link_to link[:label], link[:href], {
+              <%= link_to link[:href], {
                 class: "gem-c-layout-super-navigation-header__navigation-item-link",
                 data: {
                   track_action: "#{tracking_label}Link",
@@ -105,7 +105,11 @@
                   track_dimension: link[:label],
                   track_dimension_index: "29",
                 }
-              } %>
+              } do %>
+                <span class="gem-c-layout-super-navigation-header__navigation-item-link-inner">
+                  <%= link[:label] %>
+                </span>
+              <% end %>
               <% if has_children %>
                 <%= content_tag(:button, {
                   aria: {
