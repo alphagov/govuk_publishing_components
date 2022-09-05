@@ -28,41 +28,42 @@
     </div>
   </div>
 
-  <% if @component_doc.other_examples.any? %>
-    <div class="component-doc__content-list">
-      <%
-        content_items = [
-          {
-            href: "#default",
-            text: "How it looks",
-          }
-        ]
+  <div class="component-doc__content-list">
+    <%
+      content_items = [
+        { href: "#how-it-looks", text: "How it looks" },
+        { href: "#how-to-call-this-component", text: "How to call this component" },
+        ({ href: "#govuk-design-system", text: "GOV.UK Design System" } if @component_doc.govuk_frontend_components.any?),
+        ({ href: "#accessibility-acceptance-criteria", text: "Accessibility acceptance criteria" } if @component_doc.accessibility_criteria.present?),
+        ({
+          href: "#other-examples",
+          text: "Other examples",
+          items: @component_doc.other_examples.map do | example |
+            {
+              href: "##{example.id}",
+              text: example.name
+            }
+          end
+        } if @component_doc.other_examples.any?),
+      ].compact
+    %>
+    <%= render "govuk_publishing_components/components/contents_list", {
+      contents: content_items
+    } %>
+  </div>
 
-        @component_doc.other_examples.each do | example |
-          content_items << {
-            href: "##{example.id}",
-            text: example.name
-          }
-        end
-      %>
-      <%= render "govuk_publishing_components/components/contents_list", {
-        contents: content_items
-      } %>
-    </div>
-  <% end %>
-
-  <h2 class="component-doc-h2" id="default">
+  <h2 class="component-doc-h2" id="how-it-looks">
     <a href="<%= component_example_path(@component_doc.id, "default") %>" class="govuk-link">How it looks</a>
     <small>(<a href="<%= component_preview_path(@component_doc.id, "default") %>" class="govuk-link">preview</a>)</small>
     <small>(<a href="<%= component_preview_all_path(@component_doc.id) %>" class="govuk-link">preview all</a>)</small>
   </h2>
   <%= render "govuk_publishing_components/component_guide/component_doc/preview", component_doc: @component_doc, example: @component_doc.example %>
 
-  <h2 class="component-doc-h2">How to call this component</h2>
+  <h2 class="component-doc-h2" id="how-to-call-this-component">How to call this component</h2>
   <%= render "govuk_publishing_components/component_guide/component_doc/call", component_doc: @component_doc, example: @component_doc.example %>
 
   <% if @component_doc.govuk_frontend_components.any? %>
-    <h2 class="component-doc-h2">GOV.UK Design System</h2>
+    <h2 class="component-doc-h2" id="govuk-design-system">GOV.UK Design System</h2>
     <div class="component-markdown">
       <p>This component incorporates components from the <%= link_to "GOV.UK Design System", "https://design-system.service.gov.uk" %>:</p>
 
@@ -75,7 +76,7 @@
   <% end %>
 
   <% if @component_doc.accessibility_criteria.present? %>
-    <div class="govuk-grid-row component-accessibility-criteria">
+    <div class="govuk-grid-row component-accessibility-criteria" id="accessibility-acceptance-criteria">
       <div class="govuk-grid-column-two-thirds">
         <h2 class="component-doc-h2">Accessibility acceptance criteria</h2>
         <div class="component-markdown">
@@ -87,7 +88,7 @@
 
   <% if @component_doc.other_examples.any? %>
     <div class="examples">
-      <h2 class="component-doc-h2">Other examples</h2>
+      <h2 class="component-doc-h2" id="other-examples">Other examples</h2>
 
       <% @component_doc.other_examples.each do |example| %>
         <div class="component-example" id="<%= example.id %>">
