@@ -5,13 +5,63 @@ describe('Google Analytics event tracking', function () {
   var element
   var expected
 
+  function agreeToCookies () {
+    GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
+  }
+
+  function denyCookies () {
+    GOVUK.setCookie('cookies_policy', '{"essential":false,"settings":false,"usage":false,"campaigns":false}')
+  }
+
   beforeEach(function () {
     window.dataLayer = []
     element = document.createElement('div')
+    agreeToCookies()
   })
 
   afterEach(function () {
     document.body.removeChild(element)
+  })
+
+  describe('when the user has a cookie consent choice', function () {
+    it('starts the module if consent has already been given', function () {
+      agreeToCookies()
+      document.body.appendChild(element)
+      var tracker = new GOVUK.Modules.Ga4EventTracker(element)
+      spyOn(tracker, 'trackClick')
+      tracker.init()
+
+      element.click()
+      expect(tracker.trackClick).toHaveBeenCalled()
+    })
+
+    it('starts the module on the same page as cookie consent is given', function () {
+      denyCookies()
+      document.body.appendChild(element)
+      var tracker = new GOVUK.Modules.Ga4EventTracker(element)
+      spyOn(tracker, 'trackClick')
+      tracker.init()
+
+      element.click()
+      expect(tracker.trackClick).not.toHaveBeenCalled()
+
+      // page has not been reloaded, user consents to cookies
+      window.GOVUK.triggerEvent(window, 'cookie-consent')
+
+      element.click()
+      expect(tracker.trackClick).toHaveBeenCalled()
+    })
+
+    it('does not do anything if consent is not given', function () {
+      denyCookies()
+      document.body.appendChild(element)
+      var tracker = new GOVUK.Modules.Ga4EventTracker(element)
+      spyOn(tracker, 'trackClick')
+      tracker.init()
+
+      element.click()
+      expect(tracker.trackClick).not.toHaveBeenCalled()
+    })
   })
 
   describe('configuring tracking without any data', function () {

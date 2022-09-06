@@ -11,6 +11,18 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   Ga4EventTracker.prototype.init = function () {
+    var consentCookie = window.GOVUK.getConsentCookie()
+
+    if (consentCookie && consentCookie.settings) {
+      this.startModule()
+    } else {
+      this.startModule = this.startModule.bind(this)
+      window.addEventListener('cookie-consent', this.startModule)
+    }
+  }
+
+  // triggered by cookie-consent event, which happens when users consent to cookies
+  Ga4EventTracker.prototype.startModule = function () {
     if (window.dataLayer) {
       this.module.addEventListener('click', this.trackClick.bind(this), true) // useCapture must be true
     }
