@@ -112,8 +112,8 @@ describe('AccessibilityTest', function () {
         id: 'color-contrast',
         problem: 'Elements must have sufficient color contrast',
         html: '<a href="#">Low contrast</a>',
-        selector: 'a[href="\\#"]',
-        helpUrl: 'https://dequeuniversity.com/rules/axe/3.5/color-contrast?application=axeAPI'
+        selector: 'a[href="#"]',
+        helpUrl: 'https://dequeuniversity.com/rules/axe/4.4/color-contrast?application=axeAPI'
       })
 
       expect(violations).toBe(errorMessage)
@@ -136,7 +136,7 @@ describe('AccessibilityTest', function () {
         problem: 'Images must have alternate text',
         html: '<img src="">',
         selector: 'img',
-        helpUrl: 'https://dequeuniversity.com/rules/axe/3.5/image-alt?application=axeAPI'
+        helpUrl: 'https://dequeuniversity.com/rules/axe/4.4/image-alt?application=axeAPI'
       })
 
       expect(violations).toBe(errorMessage)
@@ -150,8 +150,8 @@ describe('AccessibilityTest', function () {
 
     AccessibilityTest(TEST_SELECTOR, function (_err, _violations, pageResults) {
       expect(pageResults.incompleteWarnings[0].summary).toBe('Elements must have sufficient color contrast')
-      expect(pageResults.incompleteWarnings[0].url).toBe('https://dequeuniversity.com/rules/axe/3.5/color-contrast?application=axeAPI')
-      expect(pageResults.incompleteWarnings[0].selectors[0].selector[0]).toBe('a[href="\\#"]')
+      expect(pageResults.incompleteWarnings[0].url).toBe('https://dequeuniversity.com/rules/axe/4.4/color-contrast?application=axeAPI')
+      expect(pageResults.incompleteWarnings[0].selectors[0].selector[0]).toBe('a[href="#"]')
       expect(pageResults.incompleteWarnings[0].selectors[0].reasons[0]).toBe('Element\'s background color could not be determined due to a background image')
       done()
     })
@@ -162,8 +162,8 @@ describe('AccessibilityTest', function () {
 
     AccessibilityTest(TEST_SELECTOR, function (_err, _violations, pageResults) {
       expect(pageResults.violations[0].summary).toBe('Elements must have sufficient color contrast')
-      expect(pageResults.violations[0].url).toBe('https://dequeuniversity.com/rules/axe/3.5/color-contrast?application=axeAPI')
-      expect(pageResults.violations[0].selectors[0].selector[0]).toBe('a[href="\\#"]')
+      expect(pageResults.violations[0].url).toBe('https://dequeuniversity.com/rules/axe/4.4/color-contrast?application=axeAPI')
+      expect(pageResults.violations[0].selectors[0].selector[0]).toBe('a[href="#"]')
       expect(pageResults.violations[0].selectors[0].reasons[0]).toBe('Element has insufficient color contrast of 1.35 (foreground color: #dddddd, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1')
       done()
     })
@@ -182,8 +182,8 @@ describe('AccessibilityTest', function () {
           id: 'color-contrast',
           problem: 'Elements must have sufficient color contrast',
           html: '<a href="#">Low contrast</a>',
-          selector: 'a[href="\\#"]',
-          helpUrl: 'https://dequeuniversity.com/rules/axe/3.5/color-contrast?application=axeAPI'
+          selector: 'a[href="#"]',
+          helpUrl: 'https://dequeuniversity.com/rules/axe/4.4/color-contrast?application=axeAPI'
         }) +
         '\n\n- - -\n\n' +
         renderErrorMessage({
@@ -192,7 +192,7 @@ describe('AccessibilityTest', function () {
           problem: 'Images must have alternate text',
           html: '<img src="">',
           selector: 'img',
-          helpUrl: 'https://dequeuniversity.com/rules/axe/3.5/image-alt?application=axeAPI'
+          helpUrl: 'https://dequeuniversity.com/rules/axe/4.4/image-alt?application=axeAPI'
         })
       )
 
