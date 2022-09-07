@@ -1,4 +1,9 @@
-<% if local_assigns.include?(:next_page) || local_assigns.include?(:previous_page) %>
+<%
+  add_gem_component_stylesheet("previous-and-next-navigation")
+
+  if local_assigns.include?(:next_page) || local_assigns.include?(:previous_page)
+%>
+  
   <nav
     class="govuk-pagination govuk-pagination--block"
     role="navigation"

@@ -1,4 +1,6 @@
 <%-
+  add_gem_component_stylesheet("contents-list")
+
   cl_helper = GovukPublishingComponents::Presenters::ContentsListHelper.new(local_assigns)
   underline_links ||= false
   aria_label ||= t("components.contents_list.contents")

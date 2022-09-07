@@ -1,4 +1,6 @@
 <%
+  add_gem_component_stylesheet("checkboxes")
+
   # cb_helper.css_classes generates "gem-c-checkboxes"
   cb_helper = GovukPublishingComponents::Presenters::CheckboxesHelper.new(local_assigns)
   id = cb_helper.id

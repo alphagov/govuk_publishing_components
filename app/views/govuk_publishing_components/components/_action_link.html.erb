@@ -1,4 +1,6 @@
 <%
+  add_gem_component_stylesheet("action-link")
+
   local_assigns[:margin_bottom] ||= 0
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 

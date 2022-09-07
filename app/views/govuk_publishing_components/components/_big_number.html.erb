@@ -1,4 +1,6 @@
 <%
+  add_gem_component_stylesheet("big-number")
+
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   big_number_helper = GovukPublishingComponents::Presenters::BigNumberHelper.new(local_assigns)
 
@@ -34,7 +36,7 @@
       </span>
     <% end %>
   <% end %>
-  
+
   <%= tag.div class: classes, aria: aria do %>
     <% unless href.nil? %>
       <%= link_to big_number_value, href, class: "govuk-link gem-c-big-number__link", data: data_attributes %>

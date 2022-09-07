@@ -1,4 +1,6 @@
 <%
+  add_gem_component_stylesheet("file-upload")
+
   id ||= "file-upload-#{SecureRandom.hex(4)}"
   value ||= nil
   accept ||= nil

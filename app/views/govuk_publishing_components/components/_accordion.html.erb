@@ -1,4 +1,6 @@
 <%
+  add_gem_component_stylesheet("accordion")
+
   local_assigns[:margin_bottom] ||= 6
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
