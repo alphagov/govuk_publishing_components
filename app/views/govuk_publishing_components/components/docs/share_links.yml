@@ -45,13 +45,24 @@ examples:
     context:
       right_to_left: true
   track_as_sharing_links:
-    description: Where the component is used to allow users to share content on social media, tracking can be added that uses [Social Interactions](https://developers.google.com/analytics/devguides/collection/analyticsjs/social-interactions). If this option is not included, it is assumed the component is simply linking to social media pages and the extra options are omitted from the tracking call.
+    description: Where the component is used to allow users to share content on social media, tracking can be added that uses [Social Interactions](https://developers.google.com/analytics/devguides/collection/analyticsjs/social-interactions) in UA. If this option is not included, it is assumed the component is simply linking to social media pages and the extra options are omitted from the tracking call in UA. In GA4, when this is set to true, a 'share' event is pushed with values defined in the .erb template.
     data:
       track_as_sharing: true
       links: [
         {
           href: 'share',
           text: 'Share on Facebook',
+          icon: 'facebook'
+        }
+      ]
+  track_as_follow_links:
+    description: Where the component is used to allow users to follow us on social media, tracking can be added. When this is set to true, a navigation event is pushed with values defined in the .erb template.
+    data:
+      track_as_follow: true
+      links: [
+        {
+          href: 'follow',
+          text: 'Follow us on Facebook',
           icon: 'facebook'
         }
       ]

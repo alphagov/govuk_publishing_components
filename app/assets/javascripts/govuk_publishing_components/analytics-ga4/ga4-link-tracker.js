@@ -7,10 +7,22 @@
   GOVUK.analyticsGA4 = GOVUK.analyticsGA4 || {}
 
   GOVUK.analyticsGA4.linkTracker = {
-    trackLinkClicks: function () {
+    trackLinkClicks: function (options) {
       if (window.dataLayer) {
-        this.internalLinksDomain = 'www.gov.uk/'
-        this.internalLinksDomainWithoutWww = 'gov.uk/'
+        this.internalDomains = options.internalDomains || []
+        this.internalDomains.push(this.getHostname())
+
+        for (var i = 0; i < this.internalDomains.length; i++) {
+          // Add domains with www. removed, in case site hrefs are marked up without www. included.
+          var internalDomain = this.internalDomains[i]
+          var internalDomainWithoutWww = internalDomain.replace('www.', '')
+          if (internalDomainWithoutWww !== internalDomain) {
+            this.internalDomains.push(internalDomainWithoutWww)
+          }
+        }
+
+        this.internalDownloadPaths = options.internalDownloadPaths || []
+        this.dedicatedDownloadDomains = options.dedicatedDownloadDomains || []
         this.handleClick = this.handleClick.bind(this)
         this.handleMousedown = this.handleMousedown.bind(this)
         document.querySelector('body').addEventListener('click', this.handleClick)
@@ -43,25 +55,41 @@
         return
       }
 
-      if (this.isMailToLink(href)) {
+      var linkAttributes = element.getAttribute('data-ga4-link')
+      if (linkAttributes) {
+        linkAttributes = JSON.parse(linkAttributes)
+        clickData = Object.assign(clickData, linkAttributes)
+
+        if (clickData.index) {
+          clickData.index = parseInt(linkAttributes.index)
+        }
+        if (clickData.index_total) {
+          clickData.index_total = parseInt(linkAttributes.index_total)
+        }
+      } else if (this.isMailToLink(href)) {
         clickData.event_name = 'navigation'
         clickData.type = 'email'
         clickData.external = 'true'
+        clickData.url = href
+        clickData.text = element.textContent.trim()
+        clickData.link_method = this.getClickType(event)
       } else if (this.isDownloadLink(href)) {
         clickData.event_name = 'file_download'
         clickData.type = this.isPreviewLink(href) ? 'preview' : 'generic download'
-        clickData.external = 'true'
+        clickData.external = this.isExternalLink(href) ? 'true' : 'false'
+        clickData.url = href
+        clickData.text = element.textContent.trim()
+        clickData.link_method = this.getClickType(event)
       } else if (this.isExternalLink(href)) {
         clickData.event_name = 'navigation'
         clickData.type = 'generic link'
         clickData.external = 'true'
+        clickData.url = href
+        clickData.text = element.textContent.trim()
+        clickData.link_method = this.getClickType(event)
       }
 
       if (Object.keys(clickData).length > 0) {
-        clickData.text = element.textContent.trim()
-        clickData.url = href
-        clickData.link_method = this.getClickType(event)
-
         var schema = new window.GOVUK.analyticsGA4.Schemas().eventSchema()
         schema.event = 'event_data'
 
@@ -84,6 +112,8 @@
             return 'ctrl click'
           } else if (event.metaKey) {
             return 'command/win click'
+          } else if (event.shiftKey) {
+            return 'shift click'
           } else {
             return 'primary click'
           }
@@ -106,29 +136,34 @@
     },
 
     isDownloadLink: function (href) {
-      var assetsDomain = 'assets.publishing.service.gov.uk/'
-      var uploadsPath = '/government/uploads/'
-
-      if (this.hrefPointsToDomain(href, assetsDomain)) {
-        return true
+      for (var i = 0; i < this.dedicatedDownloadDomains.length; i++) {
+        var downloadDomain = this.dedicatedDownloadDomains[i]
+        if (this.hrefPointsToDomain(href, downloadDomain)) {
+          return true
+        }
       }
 
-      var isInternalLink = this.hrefPointsToDomain(href, this.internalLinksDomain) || this.hrefPointsToDomain(href, this.internalLinksDomainWithoutWww)
-      if (isInternalLink && href.indexOf(uploadsPath) !== -1) {
-        return true
-      }
-
-      // Checks relative links to the uploadsPath
-      if (this.stringStartsWith(href, uploadsPath)) {
+      if (this.isInternalLink(href) && this.hrefPointsToDownloadPath(href)) {
         return true
       }
     },
 
-    isExternalLink: function (href) {
-      var isInternalLink = this.hrefPointsToDomain(href, this.internalLinksDomain) || this.hrefPointsToDomain(href, this.internalLinksDomainWithoutWww)
-      if (!isInternalLink && !this.hrefIsRelative(href) && !this.hrefIsAnchor(href)) {
+    isInternalLink: function (href) {
+      if (this.hrefIsRelative(href) || this.hrefIsAnchor(href)) {
         return true
       }
+      var result = false
+      for (var i = 0; i < this.internalDomains.length; i++) {
+        var internalDomain = this.internalDomains[i]
+        if (this.hrefPointsToDomain(href, internalDomain)) {
+          result = true
+        }
+      }
+      return result
+    },
+
+    isExternalLink: function (href) {
+      return !this.isInternalLink(href)
     },
 
     isPreviewLink: function (href) {
@@ -144,6 +179,7 @@
     },
 
     hrefPointsToDomain: function (href, domain) {
+      domain = domain + '/'
       var httpDomain = 'http://' + domain
       var httpsDomain = 'https://' + domain
       var schemaRelativeDomain = '//' + domain
@@ -151,6 +187,17 @@
       this.stringStartsWith(href, httpDomain) ||
       this.stringStartsWith(href, httpsDomain) ||
       this.stringStartsWith(href, schemaRelativeDomain)
+    },
+
+    hrefPointsToDownloadPath: function (href) {
+      var result = false
+      for (var i = 0; i < this.internalDownloadPaths.length; i++) {
+        var internalDownloadPath = this.internalDownloadPaths[i]
+        if (href.indexOf(internalDownloadPath) !== -1) {
+          result = true
+        }
+      }
+      return result
     },
 
     stringStartsWith: function (string, stringToFind) {
@@ -164,6 +211,10 @@
 
     hrefIsAnchor: function (href) {
       return href[0] === '#'
+    },
+
+    getHostname: function () {
+      return window.location.hostname
     }
   }
 

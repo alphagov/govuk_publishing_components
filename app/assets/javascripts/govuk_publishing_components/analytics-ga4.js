@@ -6,4 +6,4 @@
 //= require ./analytics-ga4/ga4-event-tracker
 
 window.GOVUK.analyticsGA4.pageViewTracker.sendPageView() // this will need integrating with cookie consent before production
-window.GOVUK.analyticsGA4.linkTracker.trackLinkClicks()
+window.GOVUK.analyticsGA4.linkTracker.trackLinkClicks({ internalDownloadPaths: ['/government/uploads/'], dedicatedDownloadDomains: ['assets.publishing.service.gov.uk'] })
