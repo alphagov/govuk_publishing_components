@@ -4,6 +4,4 @@
 //= require ./analytics-ga4/ga4-page-views
 //= require ./analytics-ga4/ga4-link-tracker
 //= require ./analytics-ga4/ga4-event-tracker
-
-window.GOVUK.analyticsGA4.pageViewTracker.sendPageView() // this will need integrating with cookie consent before production
-window.GOVUK.analyticsGA4.linkTracker.trackLinkClicks()
+//= require ./analytics-ga4/init-ga4

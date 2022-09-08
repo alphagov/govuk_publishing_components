@@ -66,14 +66,14 @@ describe('Google Tag Manager page view tracking', function () {
   }
 
   it('returns a standard page view', function () {
-    GOVUK.analyticsGA4.pageViewTracker.sendPageView()
+    GOVUK.analyticsGA4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
   it('returns a page view with a specific status code', function () {
     window.httpStatusCode = 404
     expected.page_view.status_code = '404'
-    GOVUK.analyticsGA4.pageViewTracker.sendPageView()
+    GOVUK.analyticsGA4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
@@ -112,7 +112,7 @@ describe('Google Tag Manager page view tracking', function () {
       expected.page_view[tag.gtmName] = tag.value
     }
 
-    GOVUK.analyticsGA4.pageViewTracker.sendPageView()
+    GOVUK.analyticsGA4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
@@ -156,7 +156,7 @@ describe('Google Tag Manager page view tracking', function () {
       expected.page_view[tag.gtmName] = tag.value
     }
 
-    GOVUK.analyticsGA4.pageViewTracker.sendPageView()
+    GOVUK.analyticsGA4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
@@ -177,14 +177,14 @@ describe('Google Tag Manager page view tracking', function () {
       content.setAttribute('lang', 'wakandan')
       expected.page_view.language = 'wakandan'
 
-      GOVUK.analyticsGA4.pageViewTracker.sendPageView()
+      GOVUK.analyticsGA4.analyticsModules.PageViewTracker.init()
       expect(window.dataLayer[0]).toEqual(expected)
     })
 
     it('set incorrectly', function () {
       expected.page_view.language = nullValue
 
-      GOVUK.analyticsGA4.pageViewTracker.sendPageView()
+      GOVUK.analyticsGA4.analyticsModules.PageViewTracker.init()
       expect(window.dataLayer[0]).toEqual(expected)
     })
   })
@@ -192,84 +192,84 @@ describe('Google Tag Manager page view tracking', function () {
   it('returns a pageview without a language', function () {
     expected.page_view.language = nullValue
 
-    GOVUK.analyticsGA4.pageViewTracker.sendPageView()
+    GOVUK.analyticsGA4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
   it('returns a pageview with history', function () {
     createMetaTags('content-has-history', 'true')
     expected.page_view.history = 'true'
-    GOVUK.analyticsGA4.pageViewTracker.sendPageView()
+    GOVUK.analyticsGA4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
   it('returns a pageview without history', function () {
     createMetaTags('content-has-history', 'banana')
     expected.page_view.history = 'false'
-    GOVUK.analyticsGA4.pageViewTracker.sendPageView()
+    GOVUK.analyticsGA4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
   it('returns a pageview on a withdrawn page', function () {
     createMetaTags('withdrawn', 'withdrawn')
     expected.page_view.withdrawn = 'true'
-    GOVUK.analyticsGA4.pageViewTracker.sendPageView()
+    GOVUK.analyticsGA4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
   it('returns a pageview on a page with a first published date', function () {
     createMetaTags('first-published-at', '2022-03-28T19:11:00.000+00:00')
     expected.page_view.first_published_at = '2022-03-28'
-    GOVUK.analyticsGA4.pageViewTracker.sendPageView()
+    GOVUK.analyticsGA4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
   it('returns a pageview on a page with a last updated date', function () {
     createMetaTags('updated-at', '2021-03-28T19:11:00.000+00:00')
     expected.page_view.updated_at = '2021-03-28'
-    GOVUK.analyticsGA4.pageViewTracker.sendPageView()
+    GOVUK.analyticsGA4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
   it('returns a pageview on a page with a last public updated date', function () {
     createMetaTags('public-updated-at', '2020-03-28T19:11:00.000+00:00')
     expected.page_view.public_updated_at = '2020-03-28'
-    GOVUK.analyticsGA4.pageViewTracker.sendPageView()
+    GOVUK.analyticsGA4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
   it('returns a pageview on a page marked with a publishing government', function () {
     createMetaTags('publishing-government', 'labour')
     expected.page_view.publishing_government = 'labour'
-    GOVUK.analyticsGA4.pageViewTracker.sendPageView()
+    GOVUK.analyticsGA4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
   it('returns a pageview on a page marked with a political status', function () {
     createMetaTags('political-status', 'ongoing')
     expected.page_view.political_status = 'ongoing'
-    GOVUK.analyticsGA4.pageViewTracker.sendPageView()
+    GOVUK.analyticsGA4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
   it('returns a pageview on a page marked with a primary publishing organisation', function () {
     createMetaTags('primary-publishing-organisation', 'Home Office')
     expected.page_view.primary_publishing_organisation = 'Home Office'
-    GOVUK.analyticsGA4.pageViewTracker.sendPageView()
+    GOVUK.analyticsGA4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
   it('returns a pageview on a page marked with ids for contributing organisations', function () {
     createMetaTags('analytics:organisations', 'some organisations')
     expected.page_view.organisations = 'some organisations'
-    GOVUK.analyticsGA4.pageViewTracker.sendPageView()
+    GOVUK.analyticsGA4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
   it('returns a pageview on a page marked with world locations', function () {
     createMetaTags('analytics:world-locations', 'some world locations')
     expected.page_view.world_locations = 'some world locations'
-    GOVUK.analyticsGA4.pageViewTracker.sendPageView()
+    GOVUK.analyticsGA4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
@@ -294,7 +294,7 @@ describe('Google Tag Manager page view tracking', function () {
     linkForURLMock.href = '#example@gov.uk'
     linkForURLMock.click()
 
-    GOVUK.analyticsGA4.pageViewTracker.sendPageView()
+    GOVUK.analyticsGA4.analyticsModules.PageViewTracker.init()
 
     // Reset the page location for other tests
     linkForURLMock.href = '#'

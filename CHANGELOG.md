@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Integrate GA4 analytics code with cookie consent mechanism ([PR #2915](https://github.com/alphagov/govuk_publishing_components/pull/2915))
+
 ## 30.4.1
 
 * Revert addition of `awesome_print` gem ([PR #2943](https://github.com/alphagov/govuk_publishing_components/pull/2943))

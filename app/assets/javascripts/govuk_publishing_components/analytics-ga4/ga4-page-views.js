@@ -1,14 +1,15 @@
-;(function (global) {
+window.GOVUK = window.GOVUK || {}
+window.GOVUK.analyticsGA4 = window.GOVUK.analyticsGA4 || {}
+window.GOVUK.analyticsGA4.analyticsModules = window.GOVUK.analyticsGA4.analyticsModules || {};
+
+(function (analyticsModules) {
   'use strict'
 
-  var GOVUK = global.GOVUK || {}
-  GOVUK.analyticsGA4 = GOVUK.analyticsGA4 || {}
-
-  GOVUK.analyticsGA4.pageViewTracker = {
-    PIIRemover: new GOVUK.analyticsGA4.PIIRemover(), // imported in analytics-ga4.js
+  var PageViewTracker = {
+    PIIRemover: new window.GOVUK.analyticsGA4.PIIRemover(), // imported in analytics-ga4.js
     nullValue: null,
 
-    sendPageView: function () {
+    init: function () {
       if (window.dataLayer) {
         var data = {
           event: 'page_view',
@@ -61,7 +62,7 @@
     },
 
     // window.httpStatusCode is set in the source of the error page in static
-    // https://github.com/alphagov/static/blob/main/app/views/root/_error_page.html.erb#L32
+    // https://github.com/alphagov/static/blob/1c734451f2dd6fc0c7e80beccbdcbfa5aaffd0e4/app/views/root/_error_page.html.erb#L41-L43
     getStatusCode: function () {
       if (window.httpStatusCode) {
         return window.httpStatusCode.toString()
@@ -109,5 +110,5 @@
     }
   }
 
-  global.GOVUK = GOVUK
-})(window)
+  analyticsModules.PageViewTracker = PageViewTracker
+})(window.GOVUK.analyticsGA4.analyticsModules)
