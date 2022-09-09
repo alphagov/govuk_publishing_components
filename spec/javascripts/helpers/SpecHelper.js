@@ -5,6 +5,12 @@ beforeAll(function () {
   window.GOVUK.analyticsVars.gaProperty = "UA-11111111-11"
   window.GOVUK.analyticsVars.gaPropertyCrossDomain = "UA-222222222-2"
   window.GOVUK.analyticsVars.linkedDomains = ['www.gov.uk']
+
+  window.GOVUK.analyticsGA4.vars = window.GOVUK.analyticsGA4.vars || {}
+  window.GOVUK.analyticsGA4.vars.id = 'GTM-test'
+  window.GOVUK.analyticsGA4.vars.auth = 'test'
+  window.GOVUK.analyticsGA4.vars.preview = 'env-test'
+
   delete ga
   window.GOVUK.analyticsInit()
 })

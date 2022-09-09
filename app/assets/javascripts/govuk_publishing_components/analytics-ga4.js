@@ -1,4 +1,5 @@
 // The following modules are imported in a specific order
+//= require ./analytics-ga4/ga4-core
 //= require ./analytics-ga4/ga4-schemas
 //= require ./analytics-ga4/pii-remover
 //= require ./analytics-ga4/ga4-page-views
