@@ -232,16 +232,16 @@ en:
       navigation_search_heading: Search and popular pages
       navigation_search_subheading: Search
       popular_links:
-      - label: 'Moving to the UK from Ukraine'
-        href: "/guidance/move-to-the-uk-if-youre-from-ukraine"
-      - label: 'Coronavirus (COVID-19)'
-        href: "/coronavirus"
-      - label: Find a job
-        href: "/find-a-job"
+      - label: 'Her Majesty Queen Elizabeth II'
+        href: '/government/topical-events/her-majesty-queen-elizabeth-ii'
       - label: 'Check benefits and financial support you can get'
-        href: "/check-benefits-financial-support"
+        href: '/check-benefits-financial-support'
+      - label: 'Limits on energy prices: Energy Price Guarantee'
+        href: '/government/publications/energy-bills-support/energy-bills-support-factsheet-8-september-2022'
+      - label: 'Coronavirus (COVID-19)'
+        href: '/coronavirus'
       - label: 'Universal Credit account: sign in'
-        href: "/sign-in-universal-credit"
+        href: '/sign-in-universal-credit'
       popular_links_heading: Popular on GOV.UK
       search_text: Search GOV.UK
     metadata:
