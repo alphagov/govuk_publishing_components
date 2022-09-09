@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Fix underline on organisation logo component ([PR #2949](https://github.com/alphagov/govuk_publishing_components/pull/2949))
 * Integrate GA4 analytics code with cookie consent mechanism ([PR #2915](https://github.com/alphagov/govuk_publishing_components/pull/2915))
 
 ## 30.4.1
