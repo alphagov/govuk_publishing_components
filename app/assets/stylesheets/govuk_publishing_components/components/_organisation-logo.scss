@@ -37,11 +37,11 @@
 .gem-c-organisation-logo__crest {
   // Default brand colour
   border-left: 2px solid govuk-colour("black");
-  padding-top: 20px;
+  padding-top: 23px;
   padding-left: 6px;
 
   @include govuk-media-query($from: tablet) {
-    padding-top: 25px;
+    padding-top: 28px;
     padding-left: 7px;
   }
 
@@ -53,8 +53,6 @@
 }
 
 .gem-c-organisation-logo__name {
-  position: relative;
-  top: 3px;
   font-family: HelveticaNeue, "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
