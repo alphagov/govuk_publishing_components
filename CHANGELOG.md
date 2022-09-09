@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 30.5.1
+
+* Update popular links for London Bridge ([PR #2952](https://github.com/alphagov/govuk_publishing_components/pull/2952))
+
 ## 30.5.0
 
 * Fix underline on organisation logo component ([PR #2949](https://github.com/alphagov/govuk_publishing_components/pull/2949))
