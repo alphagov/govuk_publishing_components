@@ -58,6 +58,10 @@ describe('Google Tag Manager page view tracking', function () {
     html.removeAttribute('lang')
   })
 
+  afterAll(function () {
+    window.dataLayer = []
+  })
+
   function createMetaTags (key, value) {
     var metatag = document.createElement('meta')
     metatag.setAttribute('name', 'govuk:' + key)

@@ -10,6 +10,11 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
   var preventDefault = function (e) {
     e.preventDefault()
   }
+
+  afterAll(function () {
+    window.dataLayer = []
+  })
+
   describe('External link tracking', function () {
     beforeEach(function () {
       window.dataLayer = []

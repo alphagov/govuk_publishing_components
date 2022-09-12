@@ -12,6 +12,10 @@ describe('Initialising GA4', function () {
     GOVUK.analyticsGA4 = analyticsGA4Save
   })
 
+  afterAll(function () {
+    window.dataLayer = []
+  })
+
   describe('when consent is given', function () {
     var test = {
       functionThatMightBeCalled: function () {}
