@@ -6,6 +6,7 @@ describe('Initialising GA4', function () {
   afterEach(function () {
     GOVUK.analyticsGA4.analyticsModules.Ga4LinkTracker.stopTracking()
     window.dataLayer = []
+    window.removeEventListener('cookie-consent', window.GOVUK.analyticsGA4.init)
   })
 
   describe('when consent is given', function () {
