@@ -3,11 +3,7 @@
 describe('GA4 core', function () {
   var GOVUK = window.GOVUK
 
-  beforeEach(function () {
-    window.dataLayer = []
-  })
-
-  afterAll(function () {
+  afterEach(function () {
     window.dataLayer = []
   })
 
