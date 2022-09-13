@@ -23,6 +23,10 @@ describe('Google Analytics event tracking', function () {
     document.body.removeChild(element)
   })
 
+  afterAll(function () {
+    window.dataLayer = []
+  })
+
   describe('when the user has a cookie consent choice', function () {
     it('starts the module if consent has already been given', function () {
       agreeToCookies()

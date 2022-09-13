@@ -7,6 +7,8 @@ var initFunction = function () {
   var consentCookie = window.GOVUK.getConsentCookie()
 
   if (consentCookie && consentCookie.usage) {
+    window.GOVUK.analyticsGA4.core.load()
+
     var analyticsModules = window.GOVUK.analyticsGA4.analyticsModules
     for (var property in analyticsModules) {
       var module = analyticsModules[property]
@@ -14,7 +16,6 @@ var initFunction = function () {
         module.init()
       }
     }
-    // to be added: attach JS from Google to the DOM and execute
     // to be added: cross domain tracking code
   } else {
     window.addEventListener('cookie-consent', function () {

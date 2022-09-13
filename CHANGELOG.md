@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Use Google snippet for GTM in analytics JavaScript ([PR #2951](https://github.com/alphagov/govuk_publishing_components/pull/2951))
+
 ## 30.5.1
 
 * Update popular links for London Bridge ([PR #2952](https://github.com/alphagov/govuk_publishing_components/pull/2952))
