@@ -2,17 +2,9 @@
 
 describe('Initialising GA4', function () {
   var GOVUK = window.GOVUK
-  var analyticsGA4Save
-
-  beforeEach(function () {
-    analyticsGA4Save = GOVUK.analyticsGA4
-  })
 
   afterEach(function () {
-    GOVUK.analyticsGA4 = analyticsGA4Save
-  })
-
-  afterAll(function () {
+    GOVUK.analyticsGA4.analyticsModules.Ga4LinkTracker.stopTracking()
     window.dataLayer = []
   })
 
