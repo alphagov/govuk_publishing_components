@@ -13,6 +13,10 @@ describe('Google Analytics event tracking', function () {
     GOVUK.setCookie('cookies_policy', '{"essential":false,"settings":false,"usage":false,"campaigns":false}')
   }
 
+  beforeAll(function () {
+    spyOn(GOVUK.analyticsGA4.core, 'getGemVersion').and.returnValue('aVersion')
+  })
+
   beforeEach(function () {
     window.dataLayer = []
     element = document.createElement('div')
@@ -100,6 +104,7 @@ describe('Google Analytics event tracking', function () {
       expected.event = 'event_data'
       expected.event_data.event_name = 'select_content'
       expected.event_data.type = 'tabs'
+      expected.govuk_gem_version = 'aVersion'
 
       var attributes = {
         event_name: 'select_content',
@@ -130,10 +135,12 @@ describe('Google Analytics event tracking', function () {
       expected1 = new GOVUK.analyticsGA4.Schemas().eventSchema()
       expected1.event = 'event_data'
       expected1.event_data.event_name = 'event1-name'
+      expected1.govuk_gem_version = 'aVersion'
 
       expected2 = new GOVUK.analyticsGA4.Schemas().eventSchema()
       expected2.event = 'event_data'
       expected2.event_data.event_name = 'event2-name'
+      expected2.govuk_gem_version = 'aVersion'
 
       var attributes1 = {
         event_name: 'event1-name'
@@ -184,6 +191,7 @@ describe('Google Analytics event tracking', function () {
       expected.event = 'event_data'
       expected.event_data.action = 'opened'
       expected.event_data.text = 'some text'
+      expected.govuk_gem_version = 'aVersion'
 
       expect(window.dataLayer[0]).toEqual(expected)
 
@@ -191,6 +199,7 @@ describe('Google Analytics event tracking', function () {
       expected.event = 'event_data'
       expected.event_data.action = 'closed'
       expected.event_data.text = 'some text'
+      expected.govuk_gem_version = 'aVersion'
 
       element.setAttribute('aria-expanded', 'true')
       element.click()
@@ -221,6 +230,7 @@ describe('Google Analytics event tracking', function () {
       expected.event = 'event_data'
       expected.event_data.action = 'opened'
       expected.event_data.text = 'some text'
+      expected.govuk_gem_version = 'aVersion'
 
       expect(window.dataLayer[0]).toEqual(expected)
 
@@ -228,6 +238,7 @@ describe('Google Analytics event tracking', function () {
       expected.event = 'event_data'
       expected.event_data.action = 'closed'
       expected.event_data.text = 'some text'
+      expected.govuk_gem_version = 'aVersion'
 
       clickOn.setAttribute('open', '')
       clickOn.click()
@@ -259,6 +270,7 @@ describe('Google Analytics event tracking', function () {
       expected.event_data.action = 'opened'
       expected.event_data.event_name = 'event-name'
       expected.event_data.text = 'Show'
+      expected.govuk_gem_version = 'aVersion'
 
       expect(window.dataLayer[0]).toEqual(expected)
 
@@ -267,6 +279,7 @@ describe('Google Analytics event tracking', function () {
       expected.event_data.action = 'closed'
       expected.event_data.event_name = 'event-name'
       expected.event_data.text = 'Hide'
+      expected.govuk_gem_version = 'aVersion'
 
       element.querySelector('[aria-expanded]').setAttribute('aria-expanded', 'true')
       element.querySelector('button').textContent = 'Hide'
@@ -300,6 +313,7 @@ describe('Google Analytics event tracking', function () {
       expected.event_data.action = 'opened'
       expected.event_data.event_name = 'event-name'
       expected.event_data.text = 'Example'
+      expected.govuk_gem_version = 'aVersion'
 
       expect(window.dataLayer[0]).toEqual(expected)
 
@@ -308,6 +322,7 @@ describe('Google Analytics event tracking', function () {
       expected.event_data.action = 'closed'
       expected.event_data.event_name = 'event-name'
       expected.event_data.text = 'Example'
+      expected.govuk_gem_version = 'aVersion'
 
       element.setAttribute('open', '')
       clickOn.click()
