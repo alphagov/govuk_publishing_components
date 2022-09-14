@@ -11,6 +11,10 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
     e.preventDefault()
   }
 
+  beforeAll(function () {
+    spyOn(GOVUK.analyticsGA4.core, 'getGemVersion').and.returnValue('aVersion')
+  })
+
   afterAll(function () {
     window.dataLayer = []
   })
@@ -24,6 +28,7 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
       expected.event_data.type = 'generic link'
       expected.event_data.link_method = 'primary click'
       expected.event_data.external = 'true'
+      expected.govuk_gem_version = 'aVersion'
       links = document.createElement('div')
       links.innerHTML =
           '<div class="fully-structured-external-links">' +
@@ -238,6 +243,7 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
       expected.event_data.type = 'generic download'
       expected.event_data.link_method = 'primary click'
       expected.event_data.external = 'true'
+      expected.govuk_gem_version = 'aVersion'
 
       links = document.createElement('div')
       links.innerHTML = '<div class="fully-structured-download-links">' +
@@ -398,6 +404,7 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.text = link.innerText.trim()
         expected.event_data.type = 'generic link'
+        expected.govuk_gem_version = 'aVersion'
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -487,6 +494,7 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
         GOVUK.triggerEvent(link, 'click')
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.text = link.innerText.trim()
+        expected.govuk_gem_version = 'aVersion'
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })

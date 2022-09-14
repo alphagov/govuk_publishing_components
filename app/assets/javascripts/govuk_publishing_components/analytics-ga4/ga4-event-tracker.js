@@ -84,7 +84,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         }
       }
 
-      window.dataLayer.push(schema)
+      window.GOVUK.analyticsGA4.core.sendData(schema)
     }
   }
 

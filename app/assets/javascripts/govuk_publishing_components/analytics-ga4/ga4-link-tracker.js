@@ -73,7 +73,7 @@ window.GOVUK.analyticsGA4.analyticsModules = window.GOVUK.analyticsGA4.analytics
           }
         }
 
-        window.dataLayer.push(schema)
+        window.GOVUK.analyticsGA4.core.sendData(schema)
       }
     },
 

@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* GA4 analytics add single dataLayer push function ([PR #2960](https://github.com/alphagov/govuk_publishing_components/pull/2960))
+
 ## 30.5.2
 
 * Use Google snippet for GTM in analytics JavaScript ([PR #2951](https://github.com/alphagov/govuk_publishing_components/pull/2951))
