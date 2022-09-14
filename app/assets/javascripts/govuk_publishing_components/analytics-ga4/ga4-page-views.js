@@ -45,7 +45,7 @@ window.GOVUK.analyticsGA4.analyticsModules = window.GOVUK.analyticsGA4.analytics
             world_locations: this.getMetaContent('analytics:world-locations')
           }
         }
-        window.dataLayer.push(data)
+        window.GOVUK.analyticsGA4.core.sendData(data)
       }
     },
 

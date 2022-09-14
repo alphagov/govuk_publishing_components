@@ -6,11 +6,16 @@ describe('Google Tag Manager page view tracking', function () {
   var expected
   var nullValue = null
 
+  beforeAll(function () {
+    spyOn(GOVUK.analyticsGA4.core, 'getGemVersion').and.returnValue('aVersion')
+  })
+
   beforeEach(function () {
     saved.title = document.title
     document.title = 'This here page'
     expected = {
       event: 'page_view',
+      govuk_gem_version: 'aVersion',
       page_view: {
         location: document.location.href,
         referrer: document.referrer,
