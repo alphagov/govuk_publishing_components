@@ -13,6 +13,10 @@ window.GOVUK.analyticsGA4 = window.GOVUK.analyticsGA4 || {};
       'https://www.googletagmanager.com/gtm.js?id='+i+dl+ '&gtm_auth=' + window.GOVUK.analyticsGA4.vars.auth + '&gtm_preview=' + window.GOVUK.analyticsGA4.vars.preview + '&gtm_cookies_win=x';f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer',window.GOVUK.analyticsGA4.vars.id);
       /* eslint-enable */
+    },
+
+    sendData: function (data) {
+      window.dataLayer.push(data)
     }
   }
 
