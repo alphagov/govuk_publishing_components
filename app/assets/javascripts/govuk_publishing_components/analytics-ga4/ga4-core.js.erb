@@ -16,7 +16,12 @@ window.GOVUK.analyticsGA4 = window.GOVUK.analyticsGA4 || {};
     },
 
     sendData: function (data) {
+      data.govuk_gem_version = this.getGemVersion()
       window.dataLayer.push(data)
+    },
+
+    getGemVersion: function () {
+      return '<%= GovukPublishingComponents::VERSION %>'
     }
   }
 

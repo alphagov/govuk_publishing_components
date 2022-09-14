@@ -23,7 +23,11 @@ describe('GA4 core', function () {
     var data = {
       hello: 'I must be going'
     }
+    spyOn(GOVUK.analyticsGA4.core, 'getGemVersion').and.returnValue('aVersion')
     GOVUK.analyticsGA4.core.sendData(data)
-    expect(window.dataLayer[0]).toEqual(data)
+    expect(window.dataLayer[0]).toEqual({
+      hello: 'I must be going',
+      govuk_gem_version: 'aVersion'
+    })
   })
 })
