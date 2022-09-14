@@ -18,9 +18,7 @@ var initFunction = function () {
     }
     // to be added: cross domain tracking code
   } else {
-    window.addEventListener('cookie-consent', function () {
-      window.GOVUK.analyticsGA4.init()
-    })
+    window.addEventListener('cookie-consent', window.GOVUK.analyticsGA4.init)
   }
 }
 
