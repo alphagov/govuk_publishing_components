@@ -412,4 +412,65 @@ describe('Google Analytics event tracking', function () {
       expect(window.dataLayer[0].event_data.url).toEqual(undefined)
     })
   })
+
+  describe('doing tracking on the feedback component', function () {
+    beforeEach(function () {
+      var attributes = {
+        event_name: 'form_submit',
+        type: 'feedback',
+        text: 'Yes',
+        section: 'Is this page useful?'
+      }
+      element.innerHTML =
+        '<div data-module="ga4-event-tracker">' +
+      '</div>'
+
+      var yesButton = document.createElement('button')
+      yesButton.setAttribute('data-ga4', JSON.stringify(attributes))
+      yesButton.id = 'yesButton'
+
+      attributes.text = 'No'
+      var noButton = document.createElement('button')
+      noButton.setAttribute('data-ga4', JSON.stringify(attributes))
+      noButton.id = 'noButton'
+
+      element.appendChild(yesButton)
+      element.appendChild(noButton)
+
+      document.body.appendChild(element)
+      new GOVUK.Modules.Ga4EventTracker(element).init()
+
+      window.dataLayer = []
+    })
+
+    it('should track "Yes" button clicks', function () {
+      expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
+
+      expected.event = 'event_data'
+      expected.event_data.event_name = 'form_submit'
+      expected.event_data.type = 'feedback'
+      expected.event_data.text = 'Yes'
+      expected.event_data.section = 'Is this page useful?'
+      expected.govuk_gem_version = 'aVersion'
+
+      var yesButton = document.querySelector('#yesButton')
+      yesButton.click()
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('should track "No" button clicks', function () {
+      expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
+
+      expected.event = 'event_data'
+      expected.event_data.event_name = 'form_submit'
+      expected.event_data.type = 'feedback'
+      expected.event_data.text = 'No'
+      expected.event_data.section = 'Is this page useful?'
+      expected.govuk_gem_version = 'aVersion'
+
+      var noButton = document.querySelector('#noButton')
+      noButton.click()
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+  })
 })
