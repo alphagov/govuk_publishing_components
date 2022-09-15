@@ -4,6 +4,8 @@ body: |
   An image and links, meant for use for news articles and people. Includes optional paragraph and additional links.
 
   The component is generally to be used within a grid column but has no grid of its own, so the text and the images in the examples below may not always line up. This will normally look tidier, for example [on pages like this](https://www.gov.uk/government/organisations/attorney-generals-office).
+
+  Images should have an aspect ratio of 3:2.
 accessibility_criteria: |
   The component must:
 
@@ -12,6 +14,10 @@ accessibility_criteria: |
   - if the contents of the component are in a different language than the rest of the document, include an appropriate `lang` attribute to correctly identify the language used in the component
 shared_accessibility_criteria:
   - link
+embed: |
+  <div class="govuk-!-width-one-third">
+    <%= component %>
+  </div>
 examples:
   default:
     data:
@@ -195,6 +201,10 @@ examples:
         text: "Announcement"
       heading_text: "Something has happened nearby possibly"
       description: "Following a news report that something has happened, further details are emerging of the thing that has happened and what that means for you."
+    embed: |
+      <div class="govuk-!-width-full">
+        <%= component %>
+      </div>
   with_data_attributes:
     description: Data attributes can be applied as required. Note that the component does not include built in tracking. If this is required consider using the [track click script](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics/track-click.md).
     data:
@@ -283,3 +293,7 @@ examples:
         /assets/govuk_publishing_components/image-card-srcset/cop26-320.jpg: 320w
         /assets/govuk_publishing_components/image-card-srcset/cop26-240.jpg: 240w
         /assets/govuk_publishing_components/image-card-srcset/cop26-170.jpg: 170w
+    embed: |
+      <div class="govuk-!-width-full">
+        <%= component %>
+      </div>
