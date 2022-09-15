@@ -12,6 +12,7 @@ window.GOVUK.analyticsGA4 = window.GOVUK.analyticsGA4 || {};
       j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       'https://www.googletagmanager.com/gtm.js?id='+i+dl+ '&gtm_auth=' + window.GOVUK.analyticsGA4.vars.auth + '&gtm_preview=' + window.GOVUK.analyticsGA4.vars.preview + '&gtm_cookies_win=x';f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer',window.GOVUK.analyticsGA4.vars.id);
+      window.dataLayer.push({ 'gtm.blocklist' : ['customPixels', 'customScripts', 'html', 'nonGoogleScripts'] })
       /* eslint-enable */
     },
 
