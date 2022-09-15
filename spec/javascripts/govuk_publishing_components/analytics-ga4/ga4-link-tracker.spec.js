@@ -218,6 +218,22 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
       }
     })
 
+    it('detects shift click events on external links', function () {
+      var linksToTest = document.querySelectorAll('.fully-structured-external-links a')
+
+      for (var i = 0; i < linksToTest.length; i++) {
+        window.dataLayer = []
+        var link = linksToTest[i]
+        var clickEvent = new window.CustomEvent('click', { cancelable: true, bubbles: true })
+        clickEvent.shiftKey = true
+        link.dispatchEvent(clickEvent)
+        expected.event_data.url = link.getAttribute('href')
+        expected.event_data.text = link.innerText.trim()
+        expected.event_data.link_method = 'shift click'
+        expect(window.dataLayer[0]).toEqual(expected)
+      }
+    })
+
     it('detects right click events on external links', function () {
       var linksToTest = document.querySelectorAll('.fully-structured-external-links a')
 

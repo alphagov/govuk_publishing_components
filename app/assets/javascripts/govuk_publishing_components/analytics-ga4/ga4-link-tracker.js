@@ -84,6 +84,8 @@ window.GOVUK.analyticsGA4.analyticsModules = window.GOVUK.analyticsGA4.analytics
             return 'ctrl click'
           } else if (event.metaKey) {
             return 'command/win click'
+          } else if (event.shiftKey) {
+            return 'shift click'
           } else {
             return 'primary click'
           }
