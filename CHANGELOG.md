@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 30.6.0
 
 * Add GA4 analytics GTM blocklist ([PR #2962](https://github.com/alphagov/govuk_publishing_components/pull/2962))
 * GA4 analytics add single dataLayer push function ([PR #2960](https://github.com/alphagov/govuk_publishing_components/pull/2960))
