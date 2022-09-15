@@ -14,8 +14,8 @@ describe "Intervention", type: :view do
     )
 
     assert_select ".gem-c-intervention", text: /You might be interested in/
-    assert_select ".gem-c-intervention__suggestion-link", text: "Travel abroad"
-    assert_select ".gem-c-intervention__dismiss", text: /Hide this suggestion/
+    assert_select ".gem-c-intervention .govuk-link", text: "Travel abroad"
+    assert_select ".gem-c-intervention .govuk-link", text: /Hide this suggestion/
   end
 
   it "renders the component without dismiss button" do
@@ -26,8 +26,8 @@ describe "Intervention", type: :view do
     )
 
     assert_select ".gem-c-intervention", text: /You might be interested in/
-    assert_select ".gem-c-intervention__suggestion-link", text: "Travel abroad"
-    assert_select ".gem-c-intervention__dismiss", false
+    assert_select ".gem-c-intervention .govuk-body:nth-child(1) .govuk-link", text: "Travel abroad"
+    assert_select ".gem-c-intervention .govuk-body:nth-child(2) .govuk-link", false
   end
 
   it "renders the component without suggestion link" do
@@ -37,8 +37,8 @@ describe "Intervention", type: :view do
     )
 
     assert_select ".gem-c-intervention", text: /You might be interested in/
-    assert_select ".gem-c-intervention__suggestion-link", false
-    assert_select ".gem-c-intervention__dismiss", text: /Hide this suggestion/
+    assert_select ".gem-c-intervention .govuk-body:nth-child(1) .govuk-link", false
+    assert_select ".gem-c-intervention .govuk-body:nth-child(2) .govuk-link", text: /Hide this suggestion/
   end
 
   it "renders the right query string when none exists" do
