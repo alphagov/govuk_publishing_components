@@ -72,7 +72,8 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
       body.addEventListener('click', preventDefault)
 
       linkTracker = GOVUK.analyticsGA4.analyticsModules.Ga4LinkTracker
-      linkTracker.init()
+      // Add gov.uk as an internal domain, as our tests are running from localhost
+      linkTracker.init({ internalDomains: ['www.gov.uk'] })
     })
 
     afterEach(function () {
@@ -318,7 +319,8 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
       body.addEventListener('click', preventDefault)
 
       linkTracker = GOVUK.analyticsGA4.analyticsModules.Ga4LinkTracker
-      linkTracker.init()
+      // Add gov.uk as an internal domain, as our tests are running from localhost
+      linkTracker.init({ internalDomains: ['www.gov.uk'] })
     })
 
     afterEach(function () {
@@ -500,7 +502,8 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
       body.addEventListener('click', preventDefault)
 
       linkTracker = GOVUK.analyticsGA4.analyticsModules.Ga4LinkTracker
-      linkTracker.init()
+      // Add gov.uk as an internal domain, as our tests are running from localhost
+      linkTracker.init({ internalDomains: ['www.gov.uk'] })
     })
 
     afterEach(function () {
@@ -556,7 +559,8 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
       body.addEventListener('click', preventDefault)
 
       linkTracker = GOVUK.analyticsGA4.analyticsModules.Ga4LinkTracker
-      linkTracker.init()
+      // Add gov.uk as an internal domain, as our tests are running from localhost
+      linkTracker.init({ internalDomains: ['www.gov.uk'] })
     })
 
     afterEach(function () {
@@ -603,6 +607,23 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
         expected.event_data.link_method = 'primary click'
         expect(window.dataLayer[0]).toEqual(expected)
       }
+    })
+  })
+  describe('Helper function tracking', function () {
+    beforeEach(function () {
+      window.dataLayer = []
+    })
+
+    afterEach(function () {
+      linkTracker.stopTracking()
+    })
+
+    it('adds "gov.uk" to the internal domain list after "www.gov.uk" was added as an internal domain', function () {
+      linkTracker = GOVUK.analyticsGA4.analyticsModules.Ga4LinkTracker
+      // Add gov.uk as an internal domain, as our tests are running from localhost
+      linkTracker.init({ internalDomains: ['www.gov.uk'] })
+      expect(linkTracker.internalDomains).toContain('www.gov.uk')
+      expect(linkTracker.internalDomains).toContain('gov.uk')
     })
   })
 })
