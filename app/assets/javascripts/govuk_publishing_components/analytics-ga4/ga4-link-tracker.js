@@ -50,7 +50,7 @@ window.GOVUK.analyticsGA4.analyticsModules = window.GOVUK.analyticsGA4.analytics
       } else if (this.isDownloadLink(href)) {
         clickData.event_name = 'file_download'
         clickData.type = this.isPreviewLink(href) ? 'preview' : 'generic download'
-        clickData.external = 'true'
+        clickData.external = this.isExternalLink(href) ? 'true' : 'false'
       } else if (this.isExternalLink(href)) {
         clickData.event_name = 'navigation'
         clickData.type = 'generic link'

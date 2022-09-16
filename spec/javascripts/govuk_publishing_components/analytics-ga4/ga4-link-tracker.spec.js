@@ -258,34 +258,33 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
       expected.event_data.event_name = 'file_download'
       expected.event_data.type = 'generic download'
       expected.event_data.link_method = 'primary click'
-      expected.event_data.external = 'true'
       expected.govuk_gem_version = 'aVersion'
 
       links = document.createElement('div')
       links.innerHTML = '<div class="fully-structured-download-links">' +
-            '<a href="https://assets.publishing.service.gov.uk/one.pdf">PDF</a>' +
-            '<a href="https://assets.publishing.service.gov.uk/two.xslt">Spreadsheet</a>' +
-            '<a href="https://www.gov.uk/government/uploads/system/three.doc">Document</a>' +
+            '<a href="https://assets.publishing.service.gov.uk/one.pdf" external="true">PDF</a>' +
+            '<a href="https://assets.publishing.service.gov.uk/two.xslt" external="true">Spreadsheet</a>' +
+            '<a href="https://www.gov.uk/government/uploads/system/three.doc" external="false">Document</a>' +
           '</div>' +
           '<div class="nested-download-links">' +
-            '<a href="https://www.gov.uk/government/uploads/link.png"><img src="/img" /></a>' +
-            '<a href="https://assets.publishing.service.gov.uk/two.xslt"><div><img src="/img" /></div></a>' +
+            '<a href="https://www.gov.uk/government/uploads/link.png" external="false"><img src="/img" /></a>' +
+            '<a href="https://assets.publishing.service.gov.uk/two.xslt" external="true"><div><img src="/img" /></div></a>' +
           '</div>' +
           '<div class="http-download-links">' +
-            '<a href="http://assets.publishing.service.gov.uk/one.pdf">PDF</a>' +
-            '<a href="http://assets.publishing.service.gov.uk/two.xslt">Spreadsheet</a>' +
-            '<a href="http://www.gov.uk/government/uploads/system/three.doc">Document</a>' +
-            '<a href="http://www.gov.uk/government/uploads/link.png">Image</a>' +
+            '<a href="http://assets.publishing.service.gov.uk/one.pdf" external="true">PDF</a>' +
+            '<a href="http://assets.publishing.service.gov.uk/two.xslt" external="true">Spreadsheet</a>' +
+            '<a href="http://www.gov.uk/government/uploads/system/three.doc" external="false">Document</a>' +
+            '<a href="http://www.gov.uk/government/uploads/link.png" external="false">Image</a>' +
           '</div>' +
           '<div class="www-less-download-links">' +
             '<a href="http://gov.uk/government/uploads/system/three.doc">Document</a>' +
             '<a href="https://gov.uk/government/uploads/link.png">Image</a>' +
           '</div>' +
           '<div class="http-less-download-links">' +
-            '<a href="gov.uk/government/uploads/system/three.doc">Document</a>' +
-            '<a href="www.gov.uk/government/uploads/link.png">Image</a>' +
-            '<a href="assets.publishing.service.gov.uk/one.pdf">PDF</a>' +
-            '<a href="assets.publishing.service.gov.uk/two.xslt">Spreadsheet</a>' +
+            '<a href="gov.uk/government/uploads/system/three.doc" external="false">Document</a>' +
+            '<a href="www.gov.uk/government/uploads/link.png" external="false">Image</a>' +
+            '<a href="assets.publishing.service.gov.uk/one.pdf" external="true">PDF</a>' +
+            '<a href="assets.publishing.service.gov.uk/two.xslt" external="true">Spreadsheet</a>' +
           '</div>' +
           '<div class="internal-links">' +
             '<a href="https://www.gov.uk/normal-link">Normal link</a>' +
@@ -338,6 +337,7 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.type = 'generic download'
         expected.event_data.text = link.innerText.trim()
+        expected.event_data.external = link.getAttribute('external')
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -352,6 +352,7 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
         expected.event_data.url = link.closest('a').getAttribute('href')
         expected.event_data.text = link.closest('a').innerText.trim()
         expected.event_data.type = 'generic download'
+        expected.event_data.external = link.closest('a').getAttribute('external')
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -366,6 +367,7 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.type = 'generic download'
         expected.event_data.text = link.innerText.trim()
+        expected.event_data.external = link.getAttribute('external')
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -380,6 +382,7 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.type = 'generic download'
         expected.event_data.text = link.innerText.trim()
+        expected.event_data.external = 'false'
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -394,6 +397,7 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.type = 'generic download'
         expected.event_data.text = link.innerText.trim()
+        expected.event_data.external = link.getAttribute('external')
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -421,6 +425,7 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
         expected.event_data.text = link.innerText.trim()
         expected.event_data.type = 'generic link'
         expected.govuk_gem_version = 'aVersion'
+        expected.event_data.external = 'true'
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -435,6 +440,7 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.type = 'generic download'
         expected.event_data.text = link.innerText.trim()
+        expected.event_data.external = 'false'
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -449,6 +455,7 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.type = 'preview'
         expected.event_data.text = link.innerText.trim()
+        expected.event_data.external = 'true'
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -463,6 +470,7 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.type = 'generic download'
         expected.event_data.text = link.innerText.trim()
+        expected.event_data.external = 'true'
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
