@@ -9,7 +9,7 @@
     PIIRemover: new GOVUK.analyticsGA4.PIIRemover(),
     DEFAULT_LIST_TITLE: 'Site search results',
 
-    init: function (isNewPageLoad = true) {
+    init: function (isNewPageLoad) {
       if (window.dataLayer) {
         this.searchResultsBlocks = document.querySelectorAll('[data-ga4-ecommerce]')
         this.isNewPageLoad = isNewPageLoad
