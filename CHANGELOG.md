@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add require version ([PR #2965](https://github.com/alphagov/govuk_publishing_components/pull/2965))
+
 ## 30.6.0
 
 * Add GA4 analytics GTM blocklist ([PR #2962](https://github.com/alphagov/govuk_publishing_components/pull/2962))
