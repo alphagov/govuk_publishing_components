@@ -172,6 +172,10 @@ window.GOVUK.analyticsGA4.analyticsModules = window.GOVUK.analyticsGA4.analytics
     },
 
     hrefPointsToDomain: function (href, domain) {
+      if (href.substring(href.length) !== '/') {
+        href = href + '/'
+      }
+
       var httpDomain = 'http://' + domain
       var httpsDomain = 'https://' + domain
       var schemaRelativeDomain = '//' + domain
