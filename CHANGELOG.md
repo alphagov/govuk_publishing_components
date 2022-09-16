@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Refactor ga4-link-tracker and add new features ([PR #2961](https://github.com/alphagov/govuk_publishing_components/pull/2961))
+
 ## 30.7.0
 
 * Change GTM push of unset values from 'null' to 'undefined' ([PR #2971](https://github.com/alphagov/govuk_publishing_components/pull/2971))
