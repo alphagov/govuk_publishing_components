@@ -17,6 +17,7 @@
 * GA4 analytics add single dataLayer push function ([PR #2960](https://github.com/alphagov/govuk_publishing_components/pull/2960))
 * Remove unused classes in intervention component ([PR #2920](https://github.com/alphagov/govuk_publishing_components/pull/2920))
 * Include size attributes on image card component ([PR #2895](https://github.com/alphagov/govuk_publishing_components/pull/2895))
+* Add ecommerce tracking ([PR #2955](https://github.com/alphagov/govuk_publishing_components/pull/2955))
 
 ## 30.5.2
 
