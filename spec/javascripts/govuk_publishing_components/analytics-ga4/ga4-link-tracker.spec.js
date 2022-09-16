@@ -534,4 +534,75 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
       }
     })
   })
+
+  describe('Share and follow link tracking', function () {
+    beforeEach(function () {
+      window.dataLayer = []
+      expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
+      expected.event = 'event_data'
+      expected.govuk_gem_version = 'aVersion'
+
+      links = document.createElement('div')
+      links.innerHTML =
+          '<div class="share-links">' +
+              '<a href="example.com" data-ga4-link=\'' + JSON.stringify({ event_name: 'share', type: 'share this page', index: '1', index_total: '1', text: 'myspace', link_method: '[populated-via-js]' }) + '\'>Share</a>' +
+          '</div>' +
+          '<div class="follow-links">' +
+              '<a href="https://example.com" external="true" data-ga4-link=\'' + JSON.stringify({ event_name: 'navigation', type: 'follow us', index: '1', index_total: '2', text: 'Follow us', url: 'https://example.com', external: '[populated-via-js]', link_method: '[populated-via-js]' }) + '\'>Follow us</a>' +
+              '<a href="https://www.gov.uk" external="false" data-ga4-link=\'' + JSON.stringify({ event_name: 'navigation', type: 'follow us', index: '2', index_total: '2', text: 'Follow me', url: 'https://www.gov.uk', external: '[populated-via-js]', link_method: '[populated-via-js]' }) + '\'>Follow me</a>' +
+          '</div>'
+
+      body.appendChild(links)
+      body.addEventListener('click', preventDefault)
+
+      linkTracker = GOVUK.analyticsGA4.analyticsModules.Ga4LinkTracker
+      linkTracker.init()
+    })
+
+    afterEach(function () {
+      body.removeEventListener('click', preventDefault)
+      links.remove()
+      linkTracker.stopTracking()
+    })
+
+    it('detects clicks on share links', function () {
+      var linksToTest = document.querySelectorAll('.share-links a')
+
+      for (var i = 0; i < linksToTest.length; i++) {
+        window.dataLayer = []
+        var link = linksToTest[i]
+        GOVUK.triggerEvent(link, 'click')
+        var shareLinkAttributes = link.getAttribute('data-ga4-link')
+        shareLinkAttributes = JSON.parse(shareLinkAttributes)
+        expected.event_data.event_name = shareLinkAttributes.event_name
+        expected.event_data.type = shareLinkAttributes.type
+        expected.event_data.text = shareLinkAttributes.text
+        expected.event_data.index = parseInt(shareLinkAttributes.index)
+        expected.event_data.index_total = parseInt(shareLinkAttributes.index_total)
+        expected.event_data.link_method = 'primary click'
+        expect(window.dataLayer[0]).toEqual(expected)
+      }
+    })
+
+    it('detects clicks on follow links', function () {
+      var linksToTest = document.querySelectorAll('.follow-links a')
+
+      for (var i = 0; i < linksToTest.length; i++) {
+        window.dataLayer = []
+        var link = linksToTest[i]
+        GOVUK.triggerEvent(link, 'click')
+        var shareLinkAttributes = link.getAttribute('data-ga4-link')
+        shareLinkAttributes = JSON.parse(shareLinkAttributes)
+        expected.event_data.event_name = shareLinkAttributes.event_name
+        expected.event_data.type = shareLinkAttributes.type
+        expected.event_data.text = link.textContent.trim()
+        expected.event_data.index = parseInt(shareLinkAttributes.index)
+        expected.event_data.index_total = parseInt(shareLinkAttributes.index_total)
+        expected.event_data.url = link.getAttribute('href')
+        expected.event_data.external = link.getAttribute('external')
+        expected.event_data.link_method = 'primary click'
+        expect(window.dataLayer[0]).toEqual(expected)
+      }
+    })
+  })
 })

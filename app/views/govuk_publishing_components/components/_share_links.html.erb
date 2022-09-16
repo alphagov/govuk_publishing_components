@@ -2,6 +2,7 @@
   links ||= []
   title ||= false
   track_as_sharing ||= false
+  track_as_follow ||= false
   stacked ||= false
   columns ||= false
 
@@ -23,7 +24,7 @@
     <% end %>
 
     <ul class="gem-c-share-links__list">
-      <% links.each do |link| %>
+      <% links.each_with_index do |link, index| %>
         <% link_text = capture do %>
           <span class="govuk-visually-hidden">
             <% if link[:hidden_text] %>
@@ -42,6 +43,26 @@
                 'socialNetwork': link[:icon],
                 'socialTarget': link[:href]
               }
+              ga4_link_data = {
+                'event_name': 'share',
+                'type': 'share this page',
+                'index': index + 1,
+                'index_total': links.length,
+                'text': link[:icon],
+                'link_method': '[populated-via-js]'
+              }
+            end
+            if track_as_follow
+              ga4_link_data = {
+                'event_name': 'navigation',
+                'type': 'follow us',
+                'index': index + 1,
+                'index_total': links.length,
+                'text': link[:text],
+                'external': '[populated-via-js]',
+                'url': link[:href],
+                'link_method': '[populated-via-js]'
+              }
             end
           %>
           <%= link_to link[:href],
@@ -50,7 +71,8 @@
             data: {
               'track-category': 'social media',
               'track-action': link[:icon],
-              'track-options': track_options
+              'track-options': track_options,
+              'ga4-link': ga4_link_data
             },
             class: "govuk-link govuk-link--no-underline gem-c-share-links__link #{brand_helper.color_class}" do %>
             <span class="gem-c-share-links__link-icon">

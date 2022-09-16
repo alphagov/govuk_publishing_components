@@ -43,25 +43,51 @@ window.GOVUK.analyticsGA4.analyticsModules = window.GOVUK.analyticsGA4.analytics
         return
       }
 
-      if (this.isMailToLink(href)) {
+      var linkAttributes = element.getAttribute('data-ga4-link')
+      if (linkAttributes) {
+        linkAttributes = JSON.parse(linkAttributes)
+        clickData = Object.assign(clickData, linkAttributes)
+
+        /* Since external links can't be determined in the template, we use _ as a signal
+        for our JavaScript to determine this value. */
+        if (clickData.external === '[populated-via-js]' && clickData.url) {
+          clickData.external = this.isExternalLink(clickData.url) ? 'true' : 'false'
+        }
+
+        if (clickData.link_method === '[populated-via-js]') {
+          clickData.link_method = this.getClickType(event)
+        }
+
+        if (clickData.index) {
+          clickData.index = parseInt(linkAttributes.index)
+        }
+        if (clickData.index_total) {
+          clickData.index_total = parseInt(linkAttributes.index_total)
+        }
+      } else if (this.isMailToLink(href)) {
         clickData.event_name = 'navigation'
         clickData.type = 'email'
         clickData.external = 'true'
+        clickData.url = href
+        clickData.text = element.textContent.trim()
+        clickData.link_method = this.getClickType(event)
       } else if (this.isDownloadLink(href)) {
         clickData.event_name = 'file_download'
         clickData.type = this.isPreviewLink(href) ? 'preview' : 'generic download'
         clickData.external = this.isExternalLink(href) ? 'true' : 'false'
+        clickData.url = href
+        clickData.text = element.textContent.trim()
+        clickData.link_method = this.getClickType(event)
       } else if (this.isExternalLink(href)) {
         clickData.event_name = 'navigation'
         clickData.type = 'generic link'
         clickData.external = 'true'
+        clickData.url = href
+        clickData.text = element.textContent.trim()
+        clickData.link_method = this.getClickType(event)
       }
 
       if (Object.keys(clickData).length > 0) {
-        clickData.text = element.textContent.trim()
-        clickData.url = href
-        clickData.link_method = this.getClickType(event)
-
         var schema = new window.GOVUK.analyticsGA4.Schemas().eventSchema()
         schema.event = 'event_data'
 
