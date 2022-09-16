@@ -19,9 +19,11 @@ window.GOVUK.analyticsGA4.analyticsModules = window.GOVUK.analyticsGA4.analytics
         this.handleClick = this.handleClick.bind(this)
         this.handleMousedown = this.handleMousedown.bind(this)
 
-        document.querySelector('body').addEventListener('click', this.handleClick)
-        document.querySelector('body').addEventListener('contextmenu', this.handleClick)
-        document.querySelector('body').addEventListener('mousedown', this.handleMousedown)
+        if (!this.config.disableListeners) {
+          document.querySelector('body').addEventListener('click', this.handleClick)
+          document.querySelector('body').addEventListener('contextmenu', this.handleClick)
+          document.querySelector('body').addEventListener('mousedown', this.handleMousedown)
+        }
       }
     },
 

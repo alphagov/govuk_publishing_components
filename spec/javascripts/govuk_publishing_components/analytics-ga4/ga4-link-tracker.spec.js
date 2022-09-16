@@ -612,9 +612,15 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
   describe('Helper function tracking', function () {
     beforeEach(function () {
       window.dataLayer = []
+      links = document.createElement('div')
+      links.innerHTML = '<a href="http://www.nationalarchives1.gov.uk" id="clickme"> National Archives </a>'
+      body.appendChild(links)
+      body.addEventListener('click', preventDefault)
     })
 
     afterEach(function () {
+      body.removeEventListener('click', preventDefault)
+      links.remove()
       linkTracker.stopTracking()
     })
 
@@ -624,6 +630,15 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
       linkTracker.init({ internalDomains: ['www.gov.uk'] })
       expect(linkTracker.internalDomains).toContain('www.gov.uk')
       expect(linkTracker.internalDomains).toContain('gov.uk')
+    })
+
+    it('does not detect clicks when disableListeners is true', function () {
+      linkTracker = GOVUK.analyticsGA4.analyticsModules.Ga4LinkTracker
+      // Add gov.uk as an internal domain, as our tests are running from localhost
+      linkTracker.init({ internalDomains: ['www.gov.uk'], disableListeners: true })
+      var link = links.querySelector('#clickme')
+      link.click()
+      expect(window.dataLayer).toEqual([])
     })
   })
 })
