@@ -232,12 +232,12 @@ en:
       navigation_search_heading: Search and popular pages
       navigation_search_subheading: Search
       popular_links:
-      - label: 'Her Majesty Queen Elizabeth II'
-        href: '/government/topical-events/her-majesty-queen-elizabeth-ii'
       - label: 'Check benefits and financial support you can get'
         href: '/check-benefits-financial-support'
       - label: 'Limits on energy prices: Energy Price Guarantee'
         href: '/government/publications/energy-bills-support/energy-bills-support-factsheet-8-september-2022'
+      - label: 'Find a job'
+        href: '/find-a-job'
       - label: 'Coronavirus (COVID-19)'
         href: '/coronavirus'
       - label: 'Universal Credit account: sign in'
@@ -295,11 +295,11 @@ en:
         title: Invasion of Ukraine
         links:
         - label: "UK visa support for Ukrainian nationals"
-          href:  "https://www.gov.uk/guidance/support-for-family-members-of-british-nationals-in-ukraine-and-ukrainian-nationals-in-ukraine-and-the-uk"       
+          href:  "https://www.gov.uk/guidance/support-for-family-members-of-british-nationals-in-ukraine-and-ukrainian-nationals-in-ukraine-and-the-uk"
         - label: "Move to the UK if you're coming from Ukraine"
           href:  "https://www.gov.uk/guidance/move-to-the-uk-if-youre-from-ukraine"
         - label: "Homes for Ukraine: record your interest"
-          href:  "https://www.gov.uk/register-interest-homes-ukraine"       
+          href:  "https://www.gov.uk/register-interest-homes-ukraine"
         - label: "Find out about the UK’s response"
           href:  "https://ukstandswithukraine.campaign.gov.uk/"
       world_locations: World locations
