@@ -441,17 +441,16 @@ describe('Google Analytics event tracking', function () {
       new GOVUK.Modules.Ga4EventTracker(element).init()
 
       window.dataLayer = []
-    })
-
-    it('should track "Yes" button clicks', function () {
       expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
-
       expected.event = 'event_data'
       expected.event_data.event_name = 'form_submit'
       expected.event_data.type = 'feedback'
-      expected.event_data.text = 'Yes'
       expected.event_data.section = 'Is this page useful?'
       expected.govuk_gem_version = 'aVersion'
+    })
+
+    it('should track "Yes" button clicks', function () {
+      expected.event_data.text = 'Yes'
 
       var yesButton = document.querySelector('#yesButton')
       yesButton.click()
@@ -459,14 +458,7 @@ describe('Google Analytics event tracking', function () {
     })
 
     it('should track "No" button clicks', function () {
-      expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
-
-      expected.event = 'event_data'
-      expected.event_data.event_name = 'form_submit'
-      expected.event_data.type = 'feedback'
       expected.event_data.text = 'No'
-      expected.event_data.section = 'Is this page useful?'
-      expected.govuk_gem_version = 'aVersion'
 
       var noButton = document.querySelector('#noButton')
       noButton.click()
