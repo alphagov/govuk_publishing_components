@@ -59,7 +59,7 @@
       }
     },
 
-    populateEcommerceSchema: function (searchResultsBlock, searchResultClicked = false, searchResult = null) {
+    populateEcommerceSchema: function (searchResultsBlock, searchResultClicked, searchResult) {
       // Limiting to 100 characters to avoid noise from extra long search queries and to stop the size of the payload going over 8k limit.
       var searchQuery = this.PIIRemover.stripPII(searchResultsBlock.getAttribute('data-search-query')).substring(0, 100).toLowerCase()
       var variant = searchResultsBlock.getAttribute('data-ecommerce-variant') || undefined
