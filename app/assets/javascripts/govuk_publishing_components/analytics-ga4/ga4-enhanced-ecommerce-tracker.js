@@ -40,7 +40,7 @@
     },
 
     trackSearchResults: function (searchResultsBlock) {
-      var schema = this.populateEcommerceSchema(searchResultsBlock)
+      var schema = this.populateEcommerceSchema(searchResultsBlock, false, null)
 
       this.clearPreviousEcommerceObject()
       window.dataLayer.push(schema)
