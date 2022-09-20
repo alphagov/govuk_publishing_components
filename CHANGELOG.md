@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add ecommerce tracking documentation ([PR #2997](https://github.com/alphagov/govuk_publishing_components/pull/2997))
+* Use section for emergency banner ([PR #2973](https://github.com/alphagov/govuk_publishing_components/pull/2973))
 
 ## 31.0.0
 

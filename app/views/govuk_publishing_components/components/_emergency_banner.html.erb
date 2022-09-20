@@ -28,11 +28,11 @@
 
 %>
 
-<%= content_tag('div', class: banner_classes, "aria-label": "emergency banner", "role": "region", "data-nosnippet": true ) do %>
+<%= content_tag('section', class: banner_classes, "aria-labelledby": "emergency-banner-heading", "data-nosnippet": true ) do %>
   <div class="govuk-width-container">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <%= content_tag('h2', class: heading_classes) do %>
+        <%= content_tag('h2', id: "emergency-banner-heading", class: heading_classes) do %>
           <%= heading %>
         <% end %>
         <% if short_description %>
