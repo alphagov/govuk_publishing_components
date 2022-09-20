@@ -11,6 +11,7 @@
 
 * Change GTM push of unset values from 'null' to 'undefined' ([PR #2971](https://github.com/alphagov/govuk_publishing_components/pull/2971))
 * Add click tracking to Yes/No buttons on feedback component ([PR #2964](https://github.com/alphagov/govuk_publishing_components/pull/2964))
+* Update popular links on search bar ([PR #2972](https://github.com/alphagov/govuk_publishing_components/pull/2972))
 
 ## 30.6.1
 
