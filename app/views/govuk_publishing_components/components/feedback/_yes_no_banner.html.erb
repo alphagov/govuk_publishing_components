@@ -20,12 +20,12 @@
         <% end %>
       </li>
       <li class="gem-c-feedback__option-list-item">
-        <button class="govuk-button gem-c-feedback__prompt-link js-page-is-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffYesClick">
+        <button class="govuk-button gem-c-feedback__prompt-link js-page-is-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffYesClick" data-ga4='{"event_name":"form_submit","type":"feedback","text":"Yes", "section": "Is this page useful?"}'>
           <%= t("components.feedback.yes") %> <span class="govuk-visually-hidden"><%= t("components.feedback.is_useful") %></span>
         </button>
       </li>
       <li class="gem-c-feedback__option-list-item">
-        <button class="govuk-button gem-c-feedback__prompt-link js-toggle-form js-page-is-not-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffNoClick" aria-controls="page-is-not-useful" aria-expanded="false">
+        <button class="govuk-button gem-c-feedback__prompt-link js-toggle-form js-page-is-not-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffNoClick" aria-controls="page-is-not-useful" aria-expanded="false" data-ga4='{"event_name":"form_submit","type":"feedback","text":"No", "section": "Is this page useful?"}'>
           <%= t("components.feedback.no") %> <span class="govuk-visually-hidden"><%= t("components.feedback.is_not_useful") %></span>
         </button>
       </li>
