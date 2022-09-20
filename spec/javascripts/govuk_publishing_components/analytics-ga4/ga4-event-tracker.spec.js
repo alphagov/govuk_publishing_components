@@ -350,7 +350,7 @@ describe('Google Analytics event tracking', function () {
     it('should not track the aria-expanded state', function () {
       var clickOn = element.querySelector('.clickme')
       clickOn.click()
-      expect(window.dataLayer[0].event_data.action).toEqual(null)
+      expect(window.dataLayer[0].event_data.action).toEqual(undefined)
     })
   })
 
@@ -373,7 +373,7 @@ describe('Google Analytics event tracking', function () {
     it('should not track the open/closed state', function () {
       var clickOn = element.querySelector('.clickme')
       clickOn.click()
-      expect(window.dataLayer[0].event_data.action).toEqual(null)
+      expect(window.dataLayer[0].event_data.action).toEqual(undefined)
     })
   })
 
@@ -409,7 +409,7 @@ describe('Google Analytics event tracking', function () {
       window.dataLayer = []
       clickOn = element.querySelector('.random-list-item')
       clickOn.click()
-      expect(window.dataLayer[0].event_data.url).toEqual(null)
+      expect(window.dataLayer[0].event_data.url).toEqual(undefined)
     })
   })
 })

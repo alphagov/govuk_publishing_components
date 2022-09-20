@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Change GTM push of unset values from 'null' to 'undefined' ([PR #2971](https://github.com/alphagov/govuk_publishing_components/pull/2971))
+
 ## 30.6.1
 
 * Add require version ([PR #2965](https://github.com/alphagov/govuk_publishing_components/pull/2965))

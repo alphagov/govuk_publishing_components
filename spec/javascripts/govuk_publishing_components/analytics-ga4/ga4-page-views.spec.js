@@ -4,7 +4,6 @@ describe('Google Tag Manager page view tracking', function () {
   var GOVUK = window.GOVUK
   var saved = {}
   var expected
-  var nullValue = null
 
   beforeAll(function () {
     spyOn(GOVUK.analyticsGA4.core, 'getGemVersion').and.returnValue('aVersion')
@@ -22,30 +21,30 @@ describe('Google Tag Manager page view tracking', function () {
         title: 'This here page',
         status_code: '200',
 
-        document_type: nullValue,
-        publishing_app: nullValue,
-        rendering_app: nullValue,
-        schema_name: nullValue,
-        content_id: nullValue,
+        document_type: undefined,
+        publishing_app: undefined,
+        rendering_app: undefined,
+        schema_name: undefined,
+        content_id: undefined,
 
-        section: nullValue,
-        taxon_slug: nullValue,
-        taxon_id: nullValue,
-        themes: nullValue,
-        taxon_slugs: nullValue,
-        taxon_ids: nullValue,
+        section: undefined,
+        taxon_slug: undefined,
+        taxon_id: undefined,
+        themes: undefined,
+        taxon_slugs: undefined,
+        taxon_ids: undefined,
 
-        language: nullValue,
+        language: undefined,
         history: 'false',
         withdrawn: 'false',
-        first_published_at: nullValue,
-        updated_at: nullValue,
-        public_updated_at: nullValue,
-        publishing_government: nullValue,
-        political_status: nullValue,
-        primary_publishing_organisation: nullValue,
-        organisations: nullValue,
-        world_locations: nullValue
+        first_published_at: undefined,
+        updated_at: undefined,
+        public_updated_at: undefined,
+        publishing_government: undefined,
+        political_status: undefined,
+        primary_publishing_organisation: undefined,
+        organisations: undefined,
+        world_locations: undefined
       }
     }
     window.dataLayer = []
@@ -191,7 +190,7 @@ describe('Google Tag Manager page view tracking', function () {
     })
 
     it('set incorrectly', function () {
-      expected.page_view.language = nullValue
+      expected.page_view.language = undefined
 
       GOVUK.analyticsGA4.analyticsModules.PageViewTracker.init()
       expect(window.dataLayer[0]).toEqual(expected)
@@ -199,7 +198,7 @@ describe('Google Tag Manager page view tracking', function () {
   })
 
   it('returns a pageview without a language', function () {
-    expected.page_view.language = nullValue
+    expected.page_view.language = undefined
 
     GOVUK.analyticsGA4.analyticsModules.PageViewTracker.init()
     expect(window.dataLayer[0]).toEqual(expected)

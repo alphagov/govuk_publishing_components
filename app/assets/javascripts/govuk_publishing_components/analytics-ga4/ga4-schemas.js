@@ -4,24 +4,24 @@
   var GOVUK = global.GOVUK || {}
 
   var Schemas = function () {
-    this.null = null
+    this.undefined = undefined
   }
 
   Schemas.prototype.eventSchema = function () {
     return {
-      event: this.null,
+      event: this.undefined,
 
       event_data: {
-        event_name: this.null,
-        type: this.null,
-        url: this.null,
-        text: this.null,
-        index: this.null,
-        index_total: this.null,
-        section: this.null,
-        action: this.null,
-        external: this.null,
-        link_method: this.null
+        event_name: this.undefined,
+        type: this.undefined,
+        url: this.undefined,
+        text: this.undefined,
+        index: this.undefined,
+        index_total: this.undefined,
+        section: this.undefined,
+        action: this.undefined,
+        external: this.undefined,
+        link_method: this.undefined
       }
     }
   }
