@@ -91,6 +91,26 @@ describe('Cookie helper functions', function () {
       expect(GOVUK.getCookie('analytics_next_page_call')).toBeFalsy()
     })
 
+    it('deletes cookies regardless of subdomains', function () {
+      var date = new Date()
+      date.setTime(date.valueOf() + (365 * 24 * 60 * 60 * 1000))
+
+      GOVUK.setCookie('_ga_VBLT2V3FZR', 'integration', { expires: date.toUTCString(), domain: 'publishing.service.gov.uk', path: '/' })
+      GOVUK.setCookie('_ga_P1DGM6TVYF', 'staging', { expires: date.toUTCString(), domain: 'www.integration.publishing.service.gov.uk', path: '/' })
+      GOVUK.setCookie('_ga_S5RQ7FTGVR', 'production', { expires: date.toUTCString(), domain: '.publishing.service.gov.uk', path: '/' })
+
+      expect(GOVUK.getCookie('_ga_VBLT2V3FZR')).toBe('integration')
+      expect(GOVUK.getCookie('_ga_P1DGM6TVYF')).toBe('staging')
+      expect(GOVUK.getCookie('_ga_S5RQ7FTGVR')).toBe('production')
+
+      GOVUK.setDefaultConsentCookie()
+
+      expect(GOVUK.getConsentCookie().usage).toBe(false)
+      expect(GOVUK.getCookie('_ga_VBLT2V3FZR')).toBeFalsy()
+      expect(GOVUK.getCookie('_ga_P1DGM6TVYF')).toBeFalsy()
+      expect(GOVUK.getCookie('_ga_S5RQ7FTGVR')).toBeFalsy()
+    })
+
     it('can set the consent cookie to approve all cookie categories', function () {
       spyOn(GOVUK, 'setCookie').and.callThrough()
 

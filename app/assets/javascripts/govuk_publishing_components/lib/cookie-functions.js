@@ -30,7 +30,10 @@
     _gid: 'usage',
     _gat: 'usage',
     'JS-Detection': 'usage',
-    TLSversion: 'usage'
+    TLSversion: 'usage',
+    _ga_VBLT2V3FZR: 'usage', // gtag cookie used to persist the session state, integration
+    _ga_P1DGM6TVYF: 'usage', // staging
+    _ga_S5RQ7FTGVR: 'usage' // production
   }
 
   /*
