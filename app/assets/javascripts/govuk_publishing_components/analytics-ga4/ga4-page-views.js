@@ -7,7 +7,7 @@ window.GOVUK.analyticsGA4.analyticsModules = window.GOVUK.analyticsGA4.analytics
 
   var PageViewTracker = {
     PIIRemover: new window.GOVUK.analyticsGA4.PIIRemover(), // imported in analytics-ga4.js
-    nullValue: null,
+    nullValue: undefined,
 
     init: function () {
       if (window.dataLayer) {
@@ -102,7 +102,7 @@ window.GOVUK.analyticsGA4.analyticsModules = window.GOVUK.analyticsGA4.analytics
     // return only the date from given timestamps of the form
     // 2022-03-28T19:11:00.000+00:00
     stripTimeFrom: function (value) {
-      if (value !== null) {
+      if (value !== undefined) {
         return value.split('T')[0]
       } else {
         return this.nullValue
