@@ -548,11 +548,11 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
       links = document.createElement('div')
       links.innerHTML =
           '<div class="share-links">' +
-              '<a href="example.com" data-ga4-link=\'' + JSON.stringify({ event_name: 'share', type: 'share this page', index: '1', index_total: '1', text: 'myspace', link_method: '[populated-via-js]' }) + '\'>Share</a>' +
+              '<a href="example.com" data-ga4-link=\'' + JSON.stringify({ event_name: 'share', type: 'share this page', index: '1', index_total: '1', text: 'myspace', link_method: 'populated-via-js' }) + '\'>Share</a>' +
           '</div>' +
           '<div class="follow-links">' +
-              '<a href="https://example.com" external="true" data-ga4-link=\'' + JSON.stringify({ event_name: 'navigation', type: 'follow us', index: '1', index_total: '2', text: 'Follow us', url: 'https://example.com', external: '[populated-via-js]', link_method: '[populated-via-js]' }) + '\'>Follow us</a>' +
-              '<a href="https://www.gov.uk" external="false" data-ga4-link=\'' + JSON.stringify({ event_name: 'navigation', type: 'follow us', index: '2', index_total: '2', text: 'Follow me', url: 'https://www.gov.uk', external: '[populated-via-js]', link_method: '[populated-via-js]' }) + '\'>Follow me</a>' +
+              '<a href="https://example.com" external="true" data-ga4-link=\'' + JSON.stringify({ event_name: 'navigation', type: 'follow us', index: '1', index_total: '2', text: 'Follow us', url: 'https://example.com', external: 'populated-via-js', link_method: 'populated-via-js' }) + '\'>Follow us</a>' +
+              '<a href="https://www.gov.uk" external="false" data-ga4-link=\'' + JSON.stringify({ event_name: 'navigation', type: 'follow us', index: '2', index_total: '2', text: 'Follow me', url: 'https://www.gov.uk', external: 'populated-via-js', link_method: 'populated-via-js' }) + '\'>Follow me</a>' +
           '</div>'
 
       body.appendChild(links)

@@ -7,19 +7,19 @@ window.GOVUK.analyticsGA4.analyticsModules = window.GOVUK.analyticsGA4.analytics
   'use strict'
 
   var Ga4LinkTracker = {
-    init: function (config = {}) {
+    init: function (config) {
       if (window.dataLayer) {
-        this.config = config
-        this.internalDomains = this.config.internalDomains || []
+        config = config || {}
+        this.internalDomains = config.internalDomains || []
         this.internalDomains.push(this.getHostname())
         this.appendDomainsWithoutWWW(this.internalDomains)
-        this.internalDownloadPaths = this.config.internalDownloadPaths || ['/government/uploads/']
-        this.dedicatedDownloadDomains = this.config.dedicatedDownloadDomains || ['assets.publishing.service.gov.uk']
+        this.internalDownloadPaths = config.internalDownloadPaths || ['/government/uploads/']
+        this.dedicatedDownloadDomains = config.dedicatedDownloadDomains || ['assets.publishing.service.gov.uk']
         this.appendDomainsWithoutWWW(this.dedicatedDownloadDomains)
         this.handleClick = this.handleClick.bind(this)
         this.handleMousedown = this.handleMousedown.bind(this)
 
-        if (!this.config.disableListeners) {
+        if (!config.disableListeners) {
           document.querySelector('body').addEventListener('click', this.handleClick)
           document.querySelector('body').addEventListener('contextmenu', this.handleClick)
           document.querySelector('body').addEventListener('mousedown', this.handleMousedown)
@@ -54,21 +54,22 @@ window.GOVUK.analyticsGA4.analyticsModules = window.GOVUK.analyticsGA4.analytics
       var linkAttributes = element.getAttribute('data-ga4-link')
       if (linkAttributes) {
         linkAttributes = JSON.parse(linkAttributes)
-        clickData = Object.assign(clickData, linkAttributes)
+        clickData = window.GOVUK.extendObject(clickData, linkAttributes)
 
-        /* Since external links can't be determined in the template, we use _ as a signal
+        /* Since external links can't be determined in the template, we use populated-via-js as a signal
         for our JavaScript to determine this value. */
-        if (clickData.external === '[populated-via-js]' && clickData.url) {
+        if (clickData.external === 'populated-via-js' && clickData.url) {
           clickData.external = this.isExternalLink(clickData.url) ? 'true' : 'false'
         }
 
-        if (clickData.link_method === '[populated-via-js]') {
+        if (clickData.link_method === 'populated-via-js') {
           clickData.link_method = this.getClickType(event)
         }
 
         if (clickData.index) {
           clickData.index = parseInt(linkAttributes.index)
         }
+
         if (clickData.index_total) {
           clickData.index_total = parseInt(linkAttributes.index_total)
         }
