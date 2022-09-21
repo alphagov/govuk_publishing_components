@@ -72,7 +72,8 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
       body.addEventListener('click', preventDefault)
 
       linkTracker = GOVUK.analyticsGA4.analyticsModules.Ga4LinkTracker
-      linkTracker.init()
+      // Add gov.uk as an internal domain, as our tests are running from localhost
+      linkTracker.init({ internalDomains: ['www.gov.uk'] })
     })
 
     afterEach(function () {
@@ -218,6 +219,22 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
       }
     })
 
+    it('detects shift click events on external links', function () {
+      var linksToTest = document.querySelectorAll('.fully-structured-external-links a')
+
+      for (var i = 0; i < linksToTest.length; i++) {
+        window.dataLayer = []
+        var link = linksToTest[i]
+        var clickEvent = new window.CustomEvent('click', { cancelable: true, bubbles: true })
+        clickEvent.shiftKey = true
+        link.dispatchEvent(clickEvent)
+        expected.event_data.url = link.getAttribute('href')
+        expected.event_data.text = link.innerText.trim()
+        expected.event_data.link_method = 'shift click'
+        expect(window.dataLayer[0]).toEqual(expected)
+      }
+    })
+
     it('detects right click events on external links', function () {
       var linksToTest = document.querySelectorAll('.fully-structured-external-links a')
 
@@ -242,34 +259,33 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
       expected.event_data.event_name = 'file_download'
       expected.event_data.type = 'generic download'
       expected.event_data.link_method = 'primary click'
-      expected.event_data.external = 'true'
       expected.govuk_gem_version = 'aVersion'
 
       links = document.createElement('div')
       links.innerHTML = '<div class="fully-structured-download-links">' +
-            '<a href="https://assets.publishing.service.gov.uk/one.pdf">PDF</a>' +
-            '<a href="https://assets.publishing.service.gov.uk/two.xslt">Spreadsheet</a>' +
-            '<a href="https://www.gov.uk/government/uploads/system/three.doc">Document</a>' +
+            '<a href="https://assets.publishing.service.gov.uk/one.pdf" external="true">PDF</a>' +
+            '<a href="https://assets.publishing.service.gov.uk/two.xslt" external="true">Spreadsheet</a>' +
+            '<a href="https://www.gov.uk/government/uploads/system/three.doc" external="false">Document</a>' +
           '</div>' +
           '<div class="nested-download-links">' +
-            '<a href="https://www.gov.uk/government/uploads/link.png"><img src="/img" /></a>' +
-            '<a href="https://assets.publishing.service.gov.uk/two.xslt"><div><img src="/img" /></div></a>' +
+            '<a href="https://www.gov.uk/government/uploads/link.png" external="false"><img src="/img" /></a>' +
+            '<a href="https://assets.publishing.service.gov.uk/two.xslt" external="true"><div><img src="/img" /></div></a>' +
           '</div>' +
           '<div class="http-download-links">' +
-            '<a href="http://assets.publishing.service.gov.uk/one.pdf">PDF</a>' +
-            '<a href="http://assets.publishing.service.gov.uk/two.xslt">Spreadsheet</a>' +
-            '<a href="http://www.gov.uk/government/uploads/system/three.doc">Document</a>' +
-            '<a href="http://www.gov.uk/government/uploads/link.png">Image</a>' +
+            '<a href="http://assets.publishing.service.gov.uk/one.pdf" external="true">PDF</a>' +
+            '<a href="http://assets.publishing.service.gov.uk/two.xslt" external="true">Spreadsheet</a>' +
+            '<a href="http://www.gov.uk/government/uploads/system/three.doc" external="false">Document</a>' +
+            '<a href="http://www.gov.uk/government/uploads/link.png" external="false">Image</a>' +
           '</div>' +
           '<div class="www-less-download-links">' +
             '<a href="http://gov.uk/government/uploads/system/three.doc">Document</a>' +
             '<a href="https://gov.uk/government/uploads/link.png">Image</a>' +
           '</div>' +
           '<div class="http-less-download-links">' +
-            '<a href="gov.uk/government/uploads/system/three.doc">Document</a>' +
-            '<a href="www.gov.uk/government/uploads/link.png">Image</a>' +
-            '<a href="assets.publishing.service.gov.uk/one.pdf">PDF</a>' +
-            '<a href="assets.publishing.service.gov.uk/two.xslt">Spreadsheet</a>' +
+            '<a href="gov.uk/government/uploads/system/three.doc" external="false">Document</a>' +
+            '<a href="www.gov.uk/government/uploads/link.png" external="false">Image</a>' +
+            '<a href="assets.publishing.service.gov.uk/one.pdf" external="true">PDF</a>' +
+            '<a href="assets.publishing.service.gov.uk/two.xslt" external="true">Spreadsheet</a>' +
           '</div>' +
           '<div class="internal-links">' +
             '<a href="https://www.gov.uk/normal-link">Normal link</a>' +
@@ -303,7 +319,8 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
       body.addEventListener('click', preventDefault)
 
       linkTracker = GOVUK.analyticsGA4.analyticsModules.Ga4LinkTracker
-      linkTracker.init()
+      // Add gov.uk as an internal domain, as our tests are running from localhost
+      linkTracker.init({ internalDomains: ['www.gov.uk'] })
     })
 
     afterEach(function () {
@@ -322,6 +339,7 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.type = 'generic download'
         expected.event_data.text = link.innerText.trim()
+        expected.event_data.external = link.getAttribute('external')
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -336,6 +354,7 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
         expected.event_data.url = link.closest('a').getAttribute('href')
         expected.event_data.text = link.closest('a').innerText.trim()
         expected.event_data.type = 'generic download'
+        expected.event_data.external = link.closest('a').getAttribute('external')
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -350,6 +369,7 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.type = 'generic download'
         expected.event_data.text = link.innerText.trim()
+        expected.event_data.external = link.getAttribute('external')
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -364,6 +384,7 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.type = 'generic download'
         expected.event_data.text = link.innerText.trim()
+        expected.event_data.external = 'false'
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -378,6 +399,7 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.type = 'generic download'
         expected.event_data.text = link.innerText.trim()
+        expected.event_data.external = link.getAttribute('external')
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -405,6 +427,7 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
         expected.event_data.text = link.innerText.trim()
         expected.event_data.type = 'generic link'
         expected.govuk_gem_version = 'aVersion'
+        expected.event_data.external = 'true'
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -419,6 +442,7 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.type = 'generic download'
         expected.event_data.text = link.innerText.trim()
+        expected.event_data.external = 'false'
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -433,6 +457,7 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.type = 'preview'
         expected.event_data.text = link.innerText.trim()
+        expected.event_data.external = 'true'
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -447,6 +472,7 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.type = 'generic download'
         expected.event_data.text = link.innerText.trim()
+        expected.event_data.external = 'true'
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -476,7 +502,8 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
       body.addEventListener('click', preventDefault)
 
       linkTracker = GOVUK.analyticsGA4.analyticsModules.Ga4LinkTracker
-      linkTracker.init()
+      // Add gov.uk as an internal domain, as our tests are running from localhost
+      linkTracker.init({ internalDomains: ['www.gov.uk'] })
     })
 
     afterEach(function () {
@@ -508,6 +535,110 @@ describe('GOVUK.analyticsGA4.linkTracker', function () {
         GOVUK.triggerEvent(link, 'click')
         expect(window.dataLayer).toEqual([])
       }
+    })
+  })
+
+  describe('Share and follow link tracking', function () {
+    beforeEach(function () {
+      window.dataLayer = []
+      expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
+      expected.event = 'event_data'
+      expected.govuk_gem_version = 'aVersion'
+
+      links = document.createElement('div')
+      links.innerHTML =
+          '<div class="share-links">' +
+              '<a href="example.com" data-ga4-link=\'' + JSON.stringify({ event_name: 'share', type: 'share this page', index: '1', index_total: '1', text: 'myspace', link_method: 'populated-via-js' }) + '\'>Share</a>' +
+          '</div>' +
+          '<div class="follow-links">' +
+              '<a href="https://example.com" external="true" data-ga4-link=\'' + JSON.stringify({ event_name: 'navigation', type: 'follow us', index: '1', index_total: '2', text: 'Follow us', url: 'https://example.com', external: 'populated-via-js', link_method: 'populated-via-js' }) + '\'>Follow us</a>' +
+              '<a href="https://www.gov.uk" external="false" data-ga4-link=\'' + JSON.stringify({ event_name: 'navigation', type: 'follow us', index: '2', index_total: '2', text: 'Follow me', url: 'https://www.gov.uk', external: 'populated-via-js', link_method: 'populated-via-js' }) + '\'>Follow me</a>' +
+          '</div>'
+
+      body.appendChild(links)
+      body.addEventListener('click', preventDefault)
+
+      linkTracker = GOVUK.analyticsGA4.analyticsModules.Ga4LinkTracker
+      // Add gov.uk as an internal domain, as our tests are running from localhost
+      linkTracker.init({ internalDomains: ['www.gov.uk'] })
+    })
+
+    afterEach(function () {
+      body.removeEventListener('click', preventDefault)
+      links.remove()
+      linkTracker.stopTracking()
+    })
+
+    it('detects clicks on share links', function () {
+      var linksToTest = document.querySelectorAll('.share-links a')
+
+      for (var i = 0; i < linksToTest.length; i++) {
+        window.dataLayer = []
+        var link = linksToTest[i]
+        GOVUK.triggerEvent(link, 'click')
+        var shareLinkAttributes = link.getAttribute('data-ga4-link')
+        shareLinkAttributes = JSON.parse(shareLinkAttributes)
+        expected.event_data.event_name = shareLinkAttributes.event_name
+        expected.event_data.type = shareLinkAttributes.type
+        expected.event_data.text = shareLinkAttributes.text
+        expected.event_data.index = parseInt(shareLinkAttributes.index)
+        expected.event_data.index_total = parseInt(shareLinkAttributes.index_total)
+        expected.event_data.link_method = 'primary click'
+        expect(window.dataLayer[0]).toEqual(expected)
+      }
+    })
+
+    it('detects clicks on follow links', function () {
+      var linksToTest = document.querySelectorAll('.follow-links a')
+
+      for (var i = 0; i < linksToTest.length; i++) {
+        window.dataLayer = []
+        var link = linksToTest[i]
+        GOVUK.triggerEvent(link, 'click')
+        var shareLinkAttributes = link.getAttribute('data-ga4-link')
+        shareLinkAttributes = JSON.parse(shareLinkAttributes)
+        expected.event_data.event_name = shareLinkAttributes.event_name
+        expected.event_data.type = shareLinkAttributes.type
+        expected.event_data.text = link.textContent.trim()
+        expected.event_data.index = parseInt(shareLinkAttributes.index)
+        expected.event_data.index_total = parseInt(shareLinkAttributes.index_total)
+        expected.event_data.url = link.getAttribute('href')
+        expected.event_data.external = link.getAttribute('external')
+        expected.event_data.link_method = 'primary click'
+        expect(window.dataLayer[0]).toEqual(expected)
+      }
+    })
+  })
+  describe('Helper function tracking', function () {
+    beforeEach(function () {
+      window.dataLayer = []
+      links = document.createElement('div')
+      links.innerHTML = '<a href="http://www.nationalarchives1.gov.uk" id="clickme"> National Archives </a>'
+      body.appendChild(links)
+      body.addEventListener('click', preventDefault)
+    })
+
+    afterEach(function () {
+      body.removeEventListener('click', preventDefault)
+      links.remove()
+      linkTracker.stopTracking()
+    })
+
+    it('adds "gov.uk" to the internal domain list after "www.gov.uk" was added as an internal domain', function () {
+      linkTracker = GOVUK.analyticsGA4.analyticsModules.Ga4LinkTracker
+      // Add gov.uk as an internal domain, as our tests are running from localhost
+      linkTracker.init({ internalDomains: ['www.gov.uk'] })
+      expect(linkTracker.internalDomains).toContain('www.gov.uk')
+      expect(linkTracker.internalDomains).toContain('gov.uk')
+    })
+
+    it('does not detect clicks when disableListeners is true', function () {
+      linkTracker = GOVUK.analyticsGA4.analyticsModules.Ga4LinkTracker
+      // Add gov.uk as an internal domain, as our tests are running from localhost
+      linkTracker.init({ internalDomains: ['www.gov.uk'], disableListeners: true })
+      var link = links.querySelector('#clickme')
+      link.click()
+      expect(window.dataLayer).toEqual([])
     })
   })
 })

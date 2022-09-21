@@ -7,15 +7,23 @@ window.GOVUK.analyticsGA4.analyticsModules = window.GOVUK.analyticsGA4.analytics
   'use strict'
 
   var Ga4LinkTracker = {
-    init: function () {
+    init: function (config) {
       if (window.dataLayer) {
-        this.internalLinksDomain = 'www.gov.uk/'
-        this.internalLinksDomainWithoutWww = 'gov.uk/'
+        config = config || {}
+        this.internalDomains = config.internalDomains || []
+        this.internalDomains.push(this.getHostname())
+        this.appendDomainsWithoutWWW(this.internalDomains)
+        this.internalDownloadPaths = config.internalDownloadPaths || ['/government/uploads/']
+        this.dedicatedDownloadDomains = config.dedicatedDownloadDomains || ['assets.publishing.service.gov.uk']
+        this.appendDomainsWithoutWWW(this.dedicatedDownloadDomains)
         this.handleClick = this.handleClick.bind(this)
         this.handleMousedown = this.handleMousedown.bind(this)
-        document.querySelector('body').addEventListener('click', this.handleClick)
-        document.querySelector('body').addEventListener('contextmenu', this.handleClick)
-        document.querySelector('body').addEventListener('mousedown', this.handleMousedown)
+
+        if (!config.disableListeners) {
+          document.querySelector('body').addEventListener('click', this.handleClick)
+          document.querySelector('body').addEventListener('contextmenu', this.handleClick)
+          document.querySelector('body').addEventListener('mousedown', this.handleMousedown)
+        }
       }
     },
 
@@ -43,25 +51,52 @@ window.GOVUK.analyticsGA4.analyticsModules = window.GOVUK.analyticsGA4.analytics
         return
       }
 
-      if (this.isMailToLink(href)) {
+      var linkAttributes = element.getAttribute('data-ga4-link')
+      if (linkAttributes) {
+        linkAttributes = JSON.parse(linkAttributes)
+        clickData = window.GOVUK.extendObject(clickData, linkAttributes)
+
+        /* Since external links can't be determined in the template, we use populated-via-js as a signal
+        for our JavaScript to determine this value. */
+        if (clickData.external === 'populated-via-js' && clickData.url) {
+          clickData.external = this.isExternalLink(clickData.url) ? 'true' : 'false'
+        }
+
+        if (clickData.link_method === 'populated-via-js') {
+          clickData.link_method = this.getClickType(event)
+        }
+
+        if (clickData.index) {
+          clickData.index = parseInt(linkAttributes.index)
+        }
+
+        if (clickData.index_total) {
+          clickData.index_total = parseInt(linkAttributes.index_total)
+        }
+      } else if (this.isMailToLink(href)) {
         clickData.event_name = 'navigation'
         clickData.type = 'email'
         clickData.external = 'true'
+        clickData.url = href
+        clickData.text = element.textContent.trim()
+        clickData.link_method = this.getClickType(event)
       } else if (this.isDownloadLink(href)) {
         clickData.event_name = 'file_download'
         clickData.type = this.isPreviewLink(href) ? 'preview' : 'generic download'
-        clickData.external = 'true'
+        clickData.external = this.isExternalLink(href) ? 'true' : 'false'
+        clickData.url = href
+        clickData.text = element.textContent.trim()
+        clickData.link_method = this.getClickType(event)
       } else if (this.isExternalLink(href)) {
         clickData.event_name = 'navigation'
         clickData.type = 'generic link'
         clickData.external = 'true'
+        clickData.url = href
+        clickData.text = element.textContent.trim()
+        clickData.link_method = this.getClickType(event)
       }
 
       if (Object.keys(clickData).length > 0) {
-        clickData.text = element.textContent.trim()
-        clickData.url = href
-        clickData.link_method = this.getClickType(event)
-
         var schema = new window.GOVUK.analyticsGA4.Schemas().eventSchema()
         schema.event = 'event_data'
 
@@ -77,6 +112,17 @@ window.GOVUK.analyticsGA4.analyticsModules = window.GOVUK.analyticsGA4.analytics
       }
     },
 
+    appendDomainsWithoutWWW: function (domainsArrays) {
+      // Add domains with www. removed, in case site hrefs are marked up without www. included.
+      for (var i = 0; i < domainsArrays.length; i++) {
+        var domain = domainsArrays[i]
+        if (this.stringStartsWith(domain, 'www.')) {
+          var domainWithoutWww = domain.replace('www.', '')
+          domainsArrays.push(domainWithoutWww)
+        }
+      }
+    },
+
     getClickType: function (event) {
       switch (event.type) {
         case 'click':
@@ -84,6 +130,8 @@ window.GOVUK.analyticsGA4.analyticsModules = window.GOVUK.analyticsGA4.analytics
             return 'ctrl click'
           } else if (event.metaKey) {
             return 'command/win click'
+          } else if (event.shiftKey) {
+            return 'shift click'
           } else {
             return 'primary click'
           }
@@ -106,29 +154,36 @@ window.GOVUK.analyticsGA4.analyticsModules = window.GOVUK.analyticsGA4.analytics
     },
 
     isDownloadLink: function (href) {
-      var assetsDomain = 'assets.publishing.service.gov.uk/'
-      var uploadsPath = '/government/uploads/'
-
-      if (this.hrefPointsToDomain(href, assetsDomain)) {
+      if (this.isInternalLink(href) && this.hrefPointsToDownloadPath(href)) {
         return true
       }
 
-      var isInternalLink = this.hrefPointsToDomain(href, this.internalLinksDomain) || this.hrefPointsToDomain(href, this.internalLinksDomainWithoutWww)
-      if (isInternalLink && href.indexOf(uploadsPath) !== -1) {
-        return true
+      var result = false
+      for (var i = 0; i < this.dedicatedDownloadDomains.length; i++) {
+        var downloadDomain = this.dedicatedDownloadDomains[i]
+        if (this.hrefPointsToDomain(href, downloadDomain)) {
+          result = true
+        }
       }
+      return result
+    },
 
-      // Checks relative links to the uploadsPath
-      if (this.stringStartsWith(href, uploadsPath)) {
+    isInternalLink: function (href) {
+      if (this.hrefIsRelative(href) || this.hrefIsAnchor(href)) {
         return true
       }
+      var result = false
+      for (var i = 0; i < this.internalDomains.length; i++) {
+        var internalDomain = this.internalDomains[i]
+        if (this.hrefPointsToDomain(href, internalDomain)) {
+          result = true
+        }
+      }
+      return result
     },
 
     isExternalLink: function (href) {
-      var isInternalLink = this.hrefPointsToDomain(href, this.internalLinksDomain) || this.hrefPointsToDomain(href, this.internalLinksDomainWithoutWww)
-      if (!isInternalLink && !this.hrefIsRelative(href) && !this.hrefIsAnchor(href)) {
-        return true
-      }
+      return !this.isInternalLink(href)
     },
 
     isPreviewLink: function (href) {
@@ -144,6 +199,19 @@ window.GOVUK.analyticsGA4.analyticsModules = window.GOVUK.analyticsGA4.analytics
     },
 
     hrefPointsToDomain: function (href, domain) {
+      /* Add a trailing slash to prevent an edge case such
+      as the href www.gov.uk.domain.co.uk being detected as an internal link,
+      if we were checking for 'www.gov.uk' instead of 'www.gov.uk/' */
+      if (domain.substring(domain.length) !== '/') {
+        domain = domain + '/'
+      }
+
+      /* If the href doesn't end in a slash, we add one.
+      This fixes an edge case where the <a href> is exactly `https://www.gov.uk`
+      but these checks would only look for `https://www.gov.uk/` */
+      if (href.substring(href.length) !== '/') {
+        href = href + '/'
+      }
       var httpDomain = 'http://' + domain
       var httpsDomain = 'https://' + domain
       var schemaRelativeDomain = '//' + domain
@@ -151,6 +219,17 @@ window.GOVUK.analyticsGA4.analyticsModules = window.GOVUK.analyticsGA4.analytics
       this.stringStartsWith(href, httpDomain) ||
       this.stringStartsWith(href, httpsDomain) ||
       this.stringStartsWith(href, schemaRelativeDomain)
+    },
+
+    hrefPointsToDownloadPath: function (href) {
+      var result = false
+      for (var i = 0; i < this.internalDownloadPaths.length; i++) {
+        var internalDownloadPath = this.internalDownloadPaths[i]
+        if (href.indexOf(internalDownloadPath) !== -1) {
+          result = true
+        }
+      }
+      return result
     },
 
     stringStartsWith: function (string, stringToFind) {
@@ -164,6 +243,10 @@ window.GOVUK.analyticsGA4.analyticsModules = window.GOVUK.analyticsGA4.analytics
 
     hrefIsAnchor: function (href) {
       return href[0] === '#'
+    },
+
+    getHostname: function () {
+      return window.location.hostname
     }
   }
 
