@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add optional gtag snippet ([PR #2979](https://github.com/alphagov/govuk_publishing_components/pull/2979))
+
 ## 30.7.1
 
 * Add new cookies set by gtag ([PR #2975](https://github.com/alphagov/govuk_publishing_components/pull/2975))

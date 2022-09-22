@@ -8,6 +8,7 @@ describe('GA4 core', function () {
   })
 
   afterEach(function () {
+    window.GOVUK.analyticsGA4.vars.gtag_id = null
     window.dataLayer = []
   })
 
@@ -19,6 +20,15 @@ describe('GA4 core', function () {
     expect(Object.keys(window.dataLayer[0])).toContain('event')
     expect(Object.keys(window.dataLayer[1])).toContain('gtm.blocklist')
     expect(window.dataLayer[1]['gtm.blocklist']).toEqual(['customPixels', 'customScripts', 'html', 'nonGoogleScripts'])
+  })
+
+  it('loads the GTAG snippet', function () {
+    window.GOVUK.analyticsGA4.vars.gtag_id = 'fake'
+    GOVUK.analyticsGA4.core.load()
+
+    expect(window.dataLayer.length).toEqual(2)
+    expect(window.dataLayer[0]).toContain('js')
+    expect(window.dataLayer[1]).toContain('config')
   })
 
   it('pushes data to the dataLayer', function () {
