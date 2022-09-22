@@ -29,8 +29,18 @@ window.GOVUK.analyticsGA4 = window.GOVUK.analyticsGA4 || {};
         var newScript = document.createElement('script')
         var dl = 'dataLayer' != 'dataLayer' ? '&l=' + 'dataLayer' : ''
 
+        var auth = window.GOVUK.analyticsGA4.vars.auth || ''
+        var preview = window.GOVUK.analyticsGA4.vars.preview || ''
+        if (auth) {
+          auth = '&gtm_auth=' + auth
+        }
+        if (preview) {
+          preview = '&gtm_preview=' + preview + '&gtm_cookies_win=x'
+        }
+
         newScript.async = true
-        newScript.src = 'https://www.googletagmanager.com/gtm.js?id=' + window.GOVUK.analyticsGA4.vars.id + dl + '&gtm_auth=' + window.GOVUK.analyticsGA4.vars.auth + '&gtm_preview=' + window.GOVUK.analyticsGA4.vars.preview + '&gtm_cookies_win=x'
+        this.googleSrc = 'https://www.googletagmanager.com/gtm.js?id=' + window.GOVUK.analyticsGA4.vars.id + dl + auth + preview
+        newScript.src = this.googleSrc
         firstScript.parentNode.insertBefore(newScript, firstScript)
         window.dataLayer.push({ 'gtm.blocklist' : ['customPixels', 'customScripts', 'html', 'nonGoogleScripts'] })
       }
