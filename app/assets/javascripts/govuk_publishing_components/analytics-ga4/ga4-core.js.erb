@@ -6,28 +6,33 @@ window.GOVUK.analyticsGA4 = window.GOVUK.analyticsGA4 || {};
 
   var core = {
     load: function () {
-      if (window.GOVUK.analyticsGA4.vars.gtag_id) { // initialise gtag
-        (function (id) {
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', window.GOVUK.analyticsGA4.vars.gtag_id);
-          var firstScript = document.getElementsByTagName('script')[0];
-          var newScript = document.createElement('script');
-          var dl = 'dataLayer' != 'dataLayer' ? '&l=' + 'dataLayer' : '';
-          newScript.async = true;
-          newScript.src = '//www.googletagmanager.com/gtag/js?id=' + id + dl;
-          firstScript.parentNode.insertBefore(newScript, firstScript);
-        })(window.GOVUK.analyticsGA4.vars.gtag_id);
-      } else { // initialise GTM
-        /* eslint-disable */
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl+ '&gtm_auth=' + window.GOVUK.analyticsGA4.vars.auth + '&gtm_preview=' + window.GOVUK.analyticsGA4.vars.preview + '&gtm_cookies_win=x';f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer',window.GOVUK.analyticsGA4.vars.id);
+      if (window.GOVUK.analyticsGA4.vars.gtag_id) {
+        // initialise gtag
+        window.dataLayer = window.dataLayer || []
+        function gtag() { dataLayer.push(arguments) }
+        gtag('js', new Date())
+        gtag('config', window.GOVUK.analyticsGA4.vars.gtag_id)
+
+        var firstScript = document.getElementsByTagName('script')[0]
+        var newScript = document.createElement('script')
+        var dl = 'dataLayer' != 'dataLayer' ? '&l=' + 'dataLayer' : ''
+
+        newScript.async = true
+        newScript.src = '//www.googletagmanager.com/gtag/js?id=' + window.GOVUK.analyticsGA4.vars.gtag_id + dl
+        firstScript.parentNode.insertBefore(newScript, firstScript)
+      } else {
+        // initialise GTM
+        window.dataLayer = window.dataLayer || []
+        window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' })
+
+        var firstScript = document.getElementsByTagName('script')[0]
+        var newScript = document.createElement('script')
+        var dl = 'dataLayer' != 'dataLayer' ? '&l=' + 'dataLayer' : ''
+
+        newScript.async = true
+        newScript.src = 'https://www.googletagmanager.com/gtm.js?id=' + window.GOVUK.analyticsGA4.vars.id + dl + '&gtm_auth=' + window.GOVUK.analyticsGA4.vars.auth + '&gtm_preview=' + window.GOVUK.analyticsGA4.vars.preview + '&gtm_cookies_win=x'
+        firstScript.parentNode.insertBefore(newScript, firstScript)
         window.dataLayer.push({ 'gtm.blocklist' : ['customPixels', 'customScripts', 'html', 'nonGoogleScripts'] })
-        /* eslint-enable */
       }
     },
 
