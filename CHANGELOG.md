@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 30.7.1
 
 * Add new cookies set by gtag ([PR #2975](https://github.com/alphagov/govuk_publishing_components/pull/2975))
 * Refactor ga4-link-tracker and add new features ([PR #2961](https://github.com/alphagov/govuk_publishing_components/pull/2961))
