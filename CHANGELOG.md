@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add new cookies set by gtag ([PR #2975](https://github.com/alphagov/govuk_publishing_components/pull/2975))
 * Refactor ga4-link-tracker and add new features ([PR #2961](https://github.com/alphagov/govuk_publishing_components/pull/2961))
 
 ## 30.7.0
