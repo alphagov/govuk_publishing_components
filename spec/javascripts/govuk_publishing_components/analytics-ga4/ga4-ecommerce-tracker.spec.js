@@ -22,7 +22,6 @@ describe('Google Analytics ecommerce tracking', function () {
     searchResultsParentEl = document.createElement('div')
     searchResultsParentEl.setAttribute('data-ga4-ecommerce', '')
     searchResultsParentEl.setAttribute('data-search-query', 'test-search-query')
-    searchResultsParentEl.setAttribute('data-module', 'ga4-ecommerce-tracker')
     searchResultsParentEl.setAttribute('data-ecommerce-variant', 'test-ecommerce-variant')
     searchResultsParentEl.setAttribute('data-list-title', 'test-list-title')
     searchResultsParentEl.setAttribute('data-ecommerce-start-index', '1')
