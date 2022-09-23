@@ -4,13 +4,13 @@ describe('Initialising GA4', function () {
   var GOVUK = window.GOVUK
 
   beforeEach(function () {
-    window.GOVUK.analyticsGA4.vars = window.GOVUK.analyticsGA4.vars || {}
+    window.GOVUK.analyticsGa4.vars = window.GOVUK.analyticsGa4.vars || {}
   })
 
   afterEach(function () {
-    GOVUK.analyticsGA4.analyticsModules.Ga4LinkTracker.stopTracking()
+    GOVUK.analyticsGa4.analyticsModules.Ga4LinkTracker.stopTracking()
     window.dataLayer = []
-    window.removeEventListener('cookie-consent', window.GOVUK.analyticsGA4.init)
+    window.removeEventListener('cookie-consent', window.GOVUK.analyticsGa4.init)
   })
 
   describe('when consent is given', function () {
@@ -20,35 +20,35 @@ describe('Initialising GA4', function () {
 
     beforeEach(function () {
       spyOn(test, 'functionThatMightBeCalled')
-      GOVUK.analyticsGA4.analyticsModules.Test = function () {}
-      GOVUK.analyticsGA4.analyticsModules.Test.init = function () { test.functionThatMightBeCalled() }
+      GOVUK.analyticsGa4.analyticsModules.Test = function () {}
+      GOVUK.analyticsGa4.analyticsModules.Test.init = function () { test.functionThatMightBeCalled() }
     })
 
     it('calls analytics modules successfully', function () {
-      spyOn(GOVUK.analyticsGA4.analyticsModules.Test, 'init').and.callThrough()
+      spyOn(GOVUK.analyticsGa4.analyticsModules.Test, 'init').and.callThrough()
       GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
-      GOVUK.analyticsGA4.init()
+      GOVUK.analyticsGa4.init()
 
       expect(test.functionThatMightBeCalled).toHaveBeenCalled()
     })
 
     it('does not call analytics modules without a valid init function', function () {
-      GOVUK.analyticsGA4.analyticsModules.Test.init = false
-      spyOn(GOVUK.analyticsGA4.analyticsModules.Test, 'init').and.callThrough()
+      GOVUK.analyticsGa4.analyticsModules.Test.init = false
+      spyOn(GOVUK.analyticsGa4.analyticsModules.Test, 'init').and.callThrough()
 
       GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
-      GOVUK.analyticsGA4.init()
+      GOVUK.analyticsGa4.init()
 
       expect(test.functionThatMightBeCalled).not.toHaveBeenCalled()
     })
 
     it('does not error if no init is found at all', function () {
-      GOVUK.analyticsGA4.analyticsModules.Test = false
+      GOVUK.analyticsGa4.analyticsModules.Test = false
 
       GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
-      GOVUK.analyticsGA4.init()
+      GOVUK.analyticsGa4.init()
 
-      expect(GOVUK.analyticsGA4).not.toEqual({})
+      expect(GOVUK.analyticsGa4).not.toEqual({})
     })
   })
 
@@ -81,7 +81,7 @@ describe('Initialising GA4', function () {
 
     it('do not run if consent is not given', function () {
       GOVUK.setCookie('cookies_policy', '{"essential":false,"settings":false,"usage":false,"campaigns":false}')
-      GOVUK.analyticsGA4.init()
+      GOVUK.analyticsGa4.init()
 
       testModule.init()
       expect(testObject.testFunction).not.toHaveBeenCalled()
@@ -89,7 +89,7 @@ describe('Initialising GA4', function () {
 
     it('run if consent is given', function () {
       GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
-      GOVUK.analyticsGA4.init()
+      GOVUK.analyticsGa4.init()
 
       testModule.init()
       expect(testObject.testFunction).toHaveBeenCalled()

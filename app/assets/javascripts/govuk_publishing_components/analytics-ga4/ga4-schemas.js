@@ -26,8 +26,8 @@
     }
   }
 
-  GOVUK.analyticsGA4 = GOVUK.analyticsGA4 || {}
-  GOVUK.analyticsGA4.Schemas = Schemas
+  GOVUK.analyticsGa4 = GOVUK.analyticsGa4 || {}
+  GOVUK.analyticsGa4.Schemas = Schemas
 
   global.GOVUK = GOVUK
 })(window)

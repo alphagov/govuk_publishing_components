@@ -1,5 +1,5 @@
 window.GOVUK = window.GOVUK || {}
-window.GOVUK.analyticsGA4 = window.GOVUK.analyticsGA4 || {}
+window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {}
 
 var initFunction = function () {
   // to be added: digital identity consent mechanism
@@ -7,9 +7,9 @@ var initFunction = function () {
   var consentCookie = window.GOVUK.getConsentCookie()
 
   if (consentCookie && consentCookie.usage) {
-    window.GOVUK.analyticsGA4.core.load()
+    window.GOVUK.analyticsGa4.core.load()
 
-    var analyticsModules = window.GOVUK.analyticsGA4.analyticsModules
+    var analyticsModules = window.GOVUK.analyticsGa4.analyticsModules
     for (var property in analyticsModules) {
       var module = analyticsModules[property]
       if (typeof module.init === 'function') {
@@ -18,8 +18,8 @@ var initFunction = function () {
     }
     // to be added: cross domain tracking code
   } else {
-    window.addEventListener('cookie-consent', window.GOVUK.analyticsGA4.init)
+    window.addEventListener('cookie-consent', window.GOVUK.analyticsGa4.init)
   }
 }
 
-window.GOVUK.analyticsGA4.init = initFunction
+window.GOVUK.analyticsGa4.init = initFunction

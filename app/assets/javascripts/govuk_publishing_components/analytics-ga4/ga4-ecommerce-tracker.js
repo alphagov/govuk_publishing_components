@@ -3,10 +3,10 @@
   'use strict'
 
   var GOVUK = global.GOVUK || {}
-  GOVUK.analyticsGA4 = GOVUK.analyticsGA4 || {}
+  GOVUK.analyticsGa4 = GOVUK.analyticsGa4 || {}
 
-  GOVUK.analyticsGA4.Ga4EcommerceTracker = {
-    PIIRemover: new GOVUK.analyticsGA4.PIIRemover(),
+  GOVUK.analyticsGa4.Ga4EcommerceTracker = {
+    PIIRemover: new GOVUK.analyticsGa4.PIIRemover(),
     DEFAULT_LIST_TITLE: 'Site search results',
 
     init: function (isNewPageLoad) {
@@ -22,7 +22,7 @@
         hence the pageView object push to the dataLayer. We do not need to send a pageView object on page load as
         this is handled elsewhere. */
         if (!this.isNewPageLoad) {
-          var pageViewTracker = window.GOVUK.analyticsGA4.analyticsModules.PageViewTracker
+          var pageViewTracker = window.GOVUK.analyticsGa4.analyticsModules.PageViewTracker
 
           if (pageViewTracker) {
             pageViewTracker.init()
@@ -90,7 +90,7 @@
         })
 
         ecommerceObject.event_data = {
-          external: GOVUK.analyticsGA4.analyticsModules.Ga4LinkTracker.isExternalLink(searchResult.getAttribute('data-ecommerce-path')) ? 'true' : 'false'
+          external: GOVUK.analyticsGa4.analyticsModules.Ga4LinkTracker.isExternalLink(searchResult.getAttribute('data-ecommerce-path')) ? 'true' : 'false'
         }
       } else {
         for (var i = 0; i < ecommerceRows.length; i++) {

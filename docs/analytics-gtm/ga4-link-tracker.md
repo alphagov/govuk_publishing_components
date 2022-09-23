@@ -31,7 +31,7 @@ Events can either have an `event_name` of `navigation`, `file_download`, or `sha
 ```JavaScript
 //= require ./analytics-ga4/ga4-link-tracker
 
-window.GOVUK.analyticsGA4.linkTracker.init()
+window.GOVUK.analyticsGa4.linkTracker.init()
 ```
 
 Passing a config object with arrays to `init()` is optional, but passing each array enables extra functionality:
@@ -43,7 +43,7 @@ Passing a config object with arrays to `init()` is optional, but passing each ar
 ```JavaScript
 //= require ./analytics-ga4/ga4-link-tracker
 
-window.GOVUK.analyticsGA4.linkTracker.init({
+window.GOVUK.analyticsGa4.linkTracker.init({
     internalDomains: ['www.gov.uk'],
     internalDownloadPaths: ['/government/uploads/', '/downloads/'],
     dedicatedDownloadDomains: ['assets.publishing.service.gov.uk', 'dropbox.com'],
