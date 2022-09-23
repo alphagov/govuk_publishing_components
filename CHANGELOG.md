@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Lint ga4-core ([PR #2982](https://github.com/alphagov/govuk_publishing_components/pull/2982))
+
 ## 30.7.2
 
 * Refactor analytics code snippets ([PR #2980](https://github.com/alphagov/govuk_publishing_components/pull/2980))
