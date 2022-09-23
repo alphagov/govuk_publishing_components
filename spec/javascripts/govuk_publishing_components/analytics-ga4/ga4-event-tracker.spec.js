@@ -116,7 +116,7 @@ describe('Google Analytics event tracking', function () {
       new GOVUK.Modules.Ga4EventTracker(element).init()
     })
 
-    it('pushes gtm attributes to the dataLayer', function () {
+    it('pushes ga4 attributes to the dataLayer', function () {
       element.click()
       expect(window.dataLayer[0]).toEqual(expected)
     })
@@ -162,7 +162,7 @@ describe('Google Analytics event tracking', function () {
       new GOVUK.Modules.Ga4EventTracker(element).init()
     })
 
-    it('pushes gtm attributes to the dataLayer', function () {
+    it('pushes ga4 attributes to the dataLayer', function () {
       var clickOn = element.querySelectorAll('.clickme')
       for (var i = 0; i < clickOn.length; i++) {
         clickOn[i].click()
@@ -184,7 +184,7 @@ describe('Google Analytics event tracking', function () {
       new GOVUK.Modules.Ga4EventTracker(element).init()
     })
 
-    it('includes the expanded state in the gtm attributes', function () {
+    it('includes the expanded state in the ga4 attributes', function () {
       element.click()
 
       expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
@@ -222,7 +222,7 @@ describe('Google Analytics event tracking', function () {
       new GOVUK.Modules.Ga4EventTracker(element).init()
     })
 
-    it('includes the open state in the gtm attributes', function () {
+    it('includes the open state in the ga4 attributes', function () {
       var clickOn = element.querySelector('.clickme')
       clickOn.click()
 
@@ -261,7 +261,7 @@ describe('Google Analytics event tracking', function () {
       new GOVUK.Modules.Ga4EventTracker(element).init()
     })
 
-    it('includes the expanded state in the gtm attributes', function () {
+    it('includes the expanded state in the ga4 attributes', function () {
       var clickOn = element.querySelector('.gem-c-accordion')
       clickOn.click()
 
@@ -304,7 +304,7 @@ describe('Google Analytics event tracking', function () {
       new GOVUK.Modules.Ga4EventTracker(element).init()
     })
 
-    it('includes the open state in the gtm attributes', function () {
+    it('includes the open state in the ga4 attributes', function () {
       var clickOn = element.querySelector('.nested')
       clickOn.click()
 
