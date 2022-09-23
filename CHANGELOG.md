@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 30.7.3
 
 * Lint ga4-core ([PR #2982](https://github.com/alphagov/govuk_publishing_components/pull/2982))
 
