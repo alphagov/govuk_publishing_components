@@ -4,11 +4,12 @@ describe('GA4 core', function () {
   var GOVUK = window.GOVUK
 
   beforeEach(function () {
+    window.GOVUK.analyticsGA4.vars = {}
     window.dataLayer = []
   })
 
   afterEach(function () {
-    window.GOVUK.analyticsGA4.vars.gtag_id = null
+    window.GOVUK.analyticsGA4.vars = null
     window.dataLayer = []
   })
 
@@ -20,6 +21,24 @@ describe('GA4 core', function () {
     expect(Object.keys(window.dataLayer[0])).toContain('event')
     expect(Object.keys(window.dataLayer[1])).toContain('gtm.blocklist')
     expect(window.dataLayer[1]['gtm.blocklist']).toEqual(['customPixels', 'customScripts', 'html', 'nonGoogleScripts'])
+  })
+
+  describe('calls the right URL from Google', function () {
+    it('if all three env vars are present', function () {
+      window.GOVUK.analyticsGA4.vars.id = 'myId'
+      window.GOVUK.analyticsGA4.vars.auth = 'myAuth'
+      window.GOVUK.analyticsGA4.vars.preview = 'myPreview'
+      GOVUK.analyticsGA4.core.load()
+
+      expect(GOVUK.analyticsGA4.core.googleSrc).toEqual('https://www.googletagmanager.com/gtm.js?id=myId&gtm_auth=myAuth&gtm_preview=myPreview&gtm_cookies_win=x')
+    })
+
+    it('if only id is present', function () {
+      window.GOVUK.analyticsGA4.vars.id = 'myId'
+      GOVUK.analyticsGA4.core.load()
+
+      expect(GOVUK.analyticsGA4.core.googleSrc).toEqual('https://www.googletagmanager.com/gtm.js?id=myId')
+    })
   })
 
   it('loads the GTAG snippet', function () {

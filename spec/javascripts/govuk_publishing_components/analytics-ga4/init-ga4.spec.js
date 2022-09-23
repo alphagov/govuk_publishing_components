@@ -3,6 +3,10 @@
 describe('Initialising GA4', function () {
   var GOVUK = window.GOVUK
 
+  beforeEach(function () {
+    window.GOVUK.analyticsGA4.vars = window.GOVUK.analyticsGA4.vars || {}
+  })
+
   afterEach(function () {
     GOVUK.analyticsGA4.analyticsModules.Ga4LinkTracker.stopTracking()
     window.dataLayer = []
