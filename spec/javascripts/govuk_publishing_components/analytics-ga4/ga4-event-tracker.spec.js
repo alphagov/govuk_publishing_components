@@ -150,12 +150,10 @@ describe('Google Analytics event tracking', function () {
       }
 
       element.innerHTML =
-        '<div data-gtm-event-name="event1-name"' +
-          'data-ga4=\'' + JSON.stringify(attributes1) + '\'' +
+        '<div data-ga4=\'' + JSON.stringify(attributes1) + '\'' +
           'class="clickme"' +
         '></div>' +
-        '<div data-gtm-event-name="event2-name"' +
-          'data-ga4=\'' + JSON.stringify(attributes2) + '\'' +
+        '<div data-ga4=\'' + JSON.stringify(attributes2) + '\'' +
           'class="clickme"' +
         '></div>'
       document.body.appendChild(element)
@@ -213,8 +211,7 @@ describe('Google Analytics event tracking', function () {
         text: 'some text'
       }
       element.innerHTML =
-        '<details data-gtm-event-name="event3-name"' +
-          'data-ga4=\'' + JSON.stringify(attributes) + '\'' +
+        '<details data-ga4=\'' + JSON.stringify(attributes) + '\'' +
           'class="clickme"' +
         '>' +
         '</details>'
