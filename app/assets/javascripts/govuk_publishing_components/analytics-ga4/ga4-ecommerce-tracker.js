@@ -5,7 +5,7 @@
   var GOVUK = global.GOVUK || {}
   GOVUK.analyticsGA4 = GOVUK.analyticsGA4 || {}
 
-  GOVUK.analyticsGA4.Ga4EnhancedEcommerceTracker = {
+  GOVUK.analyticsGA4.Ga4EcommerceTracker = {
     PIIRemover: new GOVUK.analyticsGA4.PIIRemover(),
     DEFAULT_LIST_TITLE: 'Site search results',
 

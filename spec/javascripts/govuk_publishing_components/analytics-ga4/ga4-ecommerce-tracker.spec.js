@@ -22,7 +22,7 @@ describe('Google Analytics ecommerce tracking', function () {
     searchResultsParentEl = document.createElement('div')
     searchResultsParentEl.setAttribute('data-ga4-ecommerce', '')
     searchResultsParentEl.setAttribute('data-search-query', 'test-search-query')
-    searchResultsParentEl.setAttribute('data-module', 'ga4-enhanced-ecommerce-tracker')
+    searchResultsParentEl.setAttribute('data-module', 'ga4-ecommerce-tracker')
     searchResultsParentEl.setAttribute('data-ecommerce-variant', 'test-ecommerce-variant')
     searchResultsParentEl.setAttribute('data-list-title', 'test-list-title')
     searchResultsParentEl.setAttribute('data-ecommerce-start-index', '1')
@@ -92,7 +92,7 @@ describe('Google Analytics ecommerce tracking', function () {
 
   describe('on page load', function () {
     it('should push a nullified ecommerce object to the dataLayer', function () {
-      GOVUK.analyticsGA4.Ga4EnhancedEcommerceTracker.init(true)
+      GOVUK.analyticsGA4.Ga4EcommerceTracker.init(true)
 
       expect(window.dataLayer[0].search_results.ecommerce).toBe(null)
     })
@@ -100,7 +100,7 @@ describe('Google Analytics ecommerce tracking', function () {
     it('should get the search query', function () {
       onPageLoadExpected.search_results.term = 'coronavirus'
       searchResultsParentEl.setAttribute('data-search-query', 'coronavirus')
-      GOVUK.analyticsGA4.Ga4EnhancedEcommerceTracker.init(true)
+      GOVUK.analyticsGA4.Ga4EcommerceTracker.init(true)
 
       expect(window.dataLayer[1].search_results.term).toBe(onPageLoadExpected.search_results.term)
     })
@@ -108,7 +108,7 @@ describe('Google Analytics ecommerce tracking', function () {
     it('should remove PII from search query', function () {
       onPageLoadExpected.search_results.term = '[email]'
       searchResultsParentEl.setAttribute('data-search-query', 'email@example.com')
-      GOVUK.analyticsGA4.Ga4EnhancedEcommerceTracker.init(true)
+      GOVUK.analyticsGA4.Ga4EcommerceTracker.init(true)
 
       expect(window.dataLayer[1].search_results.term).toBe(onPageLoadExpected.search_results.term)
     })
@@ -116,7 +116,7 @@ describe('Google Analytics ecommerce tracking', function () {
     it('should get the variant', function () {
       onPageLoadExpected.search_results.sort = 'Relevance'
       searchResultsParentEl.setAttribute('data-ecommerce-variant', 'Relevance')
-      GOVUK.analyticsGA4.Ga4EnhancedEcommerceTracker.init(true)
+      GOVUK.analyticsGA4.Ga4EcommerceTracker.init(true)
 
       expect(window.dataLayer[1].search_results.sort).toBe(onPageLoadExpected.search_results.sort)
     })
@@ -124,19 +124,19 @@ describe('Google Analytics ecommerce tracking', function () {
     it('should set the variant to undefined when the data-ecommerce-variant does not exist', function () {
       onPageLoadExpected.search_results.sort = undefined
       searchResultsParentEl.removeAttribute('data-ecommerce-variant')
-      GOVUK.analyticsGA4.Ga4EnhancedEcommerceTracker.init(true)
+      GOVUK.analyticsGA4.Ga4EcommerceTracker.init(true)
 
       expect(window.dataLayer[1].search_results.sort).toBe(onPageLoadExpected.search_results.sort)
     })
 
     it('should get the number of search results i.e. 12345 search results in this test case', function () {
-      GOVUK.analyticsGA4.Ga4EnhancedEcommerceTracker.init(true)
+      GOVUK.analyticsGA4.Ga4EcommerceTracker.init(true)
 
       expect(window.dataLayer[1].search_results.results).toBe(onPageLoadExpected.search_results.results)
     })
 
     it('should get the item id for each search result', function () {
-      GOVUK.analyticsGA4.Ga4EnhancedEcommerceTracker.init(true)
+      GOVUK.analyticsGA4.Ga4EcommerceTracker.init(true)
 
       var searchResults = window.dataLayer[1].search_results.ecommerce.items
       for (var i = 0; i < searchResults.length; i++) {
@@ -145,7 +145,7 @@ describe('Google Analytics ecommerce tracking', function () {
     })
 
     it('should get the item list name for each search result', function () {
-      GOVUK.analyticsGA4.Ga4EnhancedEcommerceTracker.init(true)
+      GOVUK.analyticsGA4.Ga4EcommerceTracker.init(true)
 
       var searchResults = window.dataLayer[1].search_results.ecommerce.items
       for (var i = 0; i < searchResults.length; i++) {
@@ -159,7 +159,7 @@ describe('Google Analytics ecommerce tracking', function () {
       }
       searchResultsParentEl.removeAttribute('data-list-title')
 
-      GOVUK.analyticsGA4.Ga4EnhancedEcommerceTracker.init(true)
+      GOVUK.analyticsGA4.Ga4EcommerceTracker.init(true)
 
       var searchResults = window.dataLayer[1].search_results.ecommerce.items
       for (var j = 0; j < searchResults.length; j++) {
@@ -168,7 +168,7 @@ describe('Google Analytics ecommerce tracking', function () {
     })
 
     it('should get the index for each search result using the data-ecommerce-index attribute', function () {
-      GOVUK.analyticsGA4.Ga4EnhancedEcommerceTracker.init(true)
+      GOVUK.analyticsGA4.Ga4EcommerceTracker.init(true)
 
       var searchResults = window.dataLayer[1].search_results.ecommerce.items
 
@@ -183,7 +183,7 @@ describe('Google Analytics ecommerce tracking', function () {
         ecommerceRows[i].removeAttribute('data-ecommerce-index')
       }
 
-      GOVUK.analyticsGA4.Ga4EnhancedEcommerceTracker.init(true)
+      GOVUK.analyticsGA4.Ga4EcommerceTracker.init(true)
 
       var searchResults = window.dataLayer[1].search_results.ecommerce.items
       for (var j = 0; j < searchResults.length; j++) {
@@ -194,7 +194,7 @@ describe('Google Analytics ecommerce tracking', function () {
 
   describe('when a new page isn\'t loaded e.g. when the user selects a filter', function () {
     it('should push a nullified ecommerce object to the dataLayer', function () {
-      GOVUK.analyticsGA4.Ga4EnhancedEcommerceTracker.init(false)
+      GOVUK.analyticsGA4.Ga4EcommerceTracker.init(false)
 
       expect(window.dataLayer[1].search_results.ecommerce).toBe(null)
     })
@@ -216,7 +216,7 @@ describe('Google Analytics ecommerce tracking', function () {
         }
       }
 
-      GOVUK.analyticsGA4.Ga4EnhancedEcommerceTracker.init(false)
+      GOVUK.analyticsGA4.Ga4EcommerceTracker.init(false)
 
       expect(window.dataLayer[0].event).toBe(pageViewExpected.event)
       expect(window.dataLayer[0].page_view.location).toBe(pageViewExpected.page_view.location)
@@ -255,13 +255,13 @@ describe('Google Analytics ecommerce tracking', function () {
     })
 
     it('should push a nullified ecommerce object to the dataLayer', function () {
-      GOVUK.analyticsGA4.Ga4EnhancedEcommerceTracker.init(true)
+      GOVUK.analyticsGA4.Ga4EcommerceTracker.init(true)
 
       expect(window.dataLayer[0].search_results.ecommerce).toBe(null)
     })
 
     it('should call the handleClick function', function () {
-      var tracker = GOVUK.analyticsGA4.Ga4EnhancedEcommerceTracker
+      var tracker = GOVUK.analyticsGA4.Ga4EcommerceTracker
 
       spyOn(tracker, 'handleClick')
       tracker.init(true)
@@ -271,14 +271,14 @@ describe('Google Analytics ecommerce tracking', function () {
     })
 
     it('should push 1 search result to the dataLayer (i.e. the clicked search result)', function () {
-      GOVUK.analyticsGA4.Ga4EnhancedEcommerceTracker.init(true)
+      GOVUK.analyticsGA4.Ga4EcommerceTracker.init(true)
 
       resultToBeClicked.click()
       expect(window.dataLayer[3].search_results.ecommerce.items.length).toBe(1)
     })
 
     it('should add the event_data property to the object and set it appropriately', function () {
-      GOVUK.analyticsGA4.Ga4EnhancedEcommerceTracker.init(true)
+      GOVUK.analyticsGA4.Ga4EcommerceTracker.init(true)
 
       resultToBeClicked.click()
       expect(window.dataLayer[3].event_data).not.toBe(null)
@@ -286,7 +286,7 @@ describe('Google Analytics ecommerce tracking', function () {
     })
 
     it('should set the remaining properties appropriately', function () {
-      GOVUK.analyticsGA4.Ga4EnhancedEcommerceTracker.init(true)
+      GOVUK.analyticsGA4.Ga4EcommerceTracker.init(true)
 
       resultToBeClicked.click()
       expect(window.dataLayer[3].event).toBe(onSearchResultClickExpected.event)
