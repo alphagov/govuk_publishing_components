@@ -1,7 +1,7 @@
 // = require govuk/vendor/polyfills/Element/prototype/closest.js
 window.GOVUK = window.GOVUK || {}
-window.GOVUK.analyticsGA4 = window.GOVUK.analyticsGA4 || {}
-window.GOVUK.analyticsGA4.analyticsModules = window.GOVUK.analyticsGA4.analyticsModules || {};
+window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {}
+window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analyticsModules || {};
 
 (function (analyticsModules) {
   'use strict'
@@ -97,7 +97,7 @@ window.GOVUK.analyticsGA4.analyticsModules = window.GOVUK.analyticsGA4.analytics
       }
 
       if (Object.keys(clickData).length > 0) {
-        var schema = new window.GOVUK.analyticsGA4.Schemas().eventSchema()
+        var schema = new window.GOVUK.analyticsGa4.Schemas().eventSchema()
         schema.event = 'event_data'
 
         // get attributes from the clickData object to send to GA
@@ -108,7 +108,7 @@ window.GOVUK.analyticsGA4.analyticsModules = window.GOVUK.analyticsGA4.analytics
           }
         }
 
-        window.GOVUK.analyticsGA4.core.sendData(schema)
+        window.GOVUK.analyticsGa4.core.sendData(schema)
       }
     },
 
@@ -251,4 +251,4 @@ window.GOVUK.analyticsGA4.analyticsModules = window.GOVUK.analyticsGA4.analytics
   }
 
   analyticsModules.Ga4LinkTracker = Ga4LinkTracker
-})(window.GOVUK.analyticsGA4.analyticsModules)
+})(window.GOVUK.analyticsGa4.analyticsModules)

@@ -28,12 +28,12 @@ If the page loads and cookie consent has not been given, an event listener is cr
 
 ## Code structure
 
-It is important that no analytics code runs until cookie consent is given. Code to be initialised as part of cookie consent should be attached to the `window.GOVUK.analyticsGA4.analyticsModules` object and include an `init` function, using the structure shown below.
+It is important that no analytics code runs until cookie consent is given. Code to be initialised as part of cookie consent should be attached to the `window.GOVUK.analyticsGa4.analyticsModules` object and include an `init` function, using the structure shown below.
 
 ```JavaScript
 window.GOVUK = window.GOVUK || {}
-window.GOVUK.analyticsGA4 = window.GOVUK.analyticsGA4 || {}
-window.GOVUK.analyticsGA4.analyticsModules = window.GOVUK.analyticsGA4.analyticsModules || {};
+window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {}
+window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analyticsModules || {};
 
 (function (analyticsModules) {
   'use strict'
@@ -45,7 +45,7 @@ window.GOVUK.analyticsGA4.analyticsModules = window.GOVUK.analyticsGA4.analytics
   }
 
   analyticsModules.ExampleCode = ExampleCode
-})(window.GOVUK.analyticsGA4.analyticsModules)
+})(window.GOVUK.analyticsGa4.analyticsModules)
 ```
 
 When cookie consent is given, `init-ga4.js` looks through the `analyticsModules` object for anything with an `init` function, and executes them if found. This means that analytics code will not be executed unless consent is given, and gives a standard way to add more analytics code without additional initialisation.
