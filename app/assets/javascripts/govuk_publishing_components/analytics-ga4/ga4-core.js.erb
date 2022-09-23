@@ -1,5 +1,3 @@
-// note that because this file is .js.erb it is not linted
-// temporarily rename to .js to check with the linter
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
 
@@ -55,7 +53,7 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
     },
 
     getGemVersion: function () {
-      return '<%= GovukPublishingComponents::VERSION %>'
+      return window.GOVUK.analyticsGA4.vars.gem_version || 'not found'
     }
   }
 
