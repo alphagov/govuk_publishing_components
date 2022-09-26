@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix bug when getting target element from URL hash in accordion component ([PR #2985](https://github.com/alphagov/govuk_publishing_components/pull/2985))
+
 ## 30.7.3
 
 * Lint ga4-core ([PR #2982](https://github.com/alphagov/govuk_publishing_components/pull/2982))

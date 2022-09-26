@@ -59,11 +59,9 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
 
   // Navigate to and open accordions with anchored content on page load if a hash is present
   GemAccordion.prototype.openByAnchorOnLoad = function () {
+    if (!window.location.hash) return
     var splitHash = window.location.hash.split('#')[1]
-
-    if (window.location.hash && document.getElementById(splitHash)) {
-      this.openForAnchor(splitHash)
-    }
+    this.openForAnchor(splitHash)
   }
 
   // Add event listeners for links to open accordion sections when navigated to using said anchor links on the page
@@ -80,7 +78,9 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
 
   // Find the parent accordion section for the given id and open it
   GemAccordion.prototype.openForAnchor = function (hash) {
-    var target = document.getElementById(hash)
+    hash = hash.replace(':', '\\:')
+    var target = this.$module.querySelector('#' + hash)
+    if (!target) return
     var $section = this.getContainingSection(target)
     var $header = $section.querySelector(this.sectionHeader)
     var $expanded = this.getContainingSection($section)

@@ -24,6 +24,7 @@ describe('Accordion component', function () {
             '</button>' +
           '</h2>' +
         '</div>' +
+      '</div>' +
       '<div class="govuk-accordion__section">' +
         '<div class="govuk-accordion__section-header">' +
           '<h2 class="govuk-accordion__section-heading">' +
