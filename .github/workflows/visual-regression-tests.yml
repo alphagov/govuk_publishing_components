@@ -2,7 +2,17 @@ on:
   push:
     branches:
       - main
+    paths-ignore: &ignore-list
+      - ".github/**"
+      - "docs/**"
+      - ".gitignore"
+      - "startup.sh"
+      - "CHANGELOG.md"
+      - "README.md"
+      - "LICENCE.md"
+      - "SUPPORT.md"
   pull_request:
+    paths-ignore: *ignore-list
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref_name || github.run_id }}
