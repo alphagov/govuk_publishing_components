@@ -1,3 +1,5 @@
+name: Visual regression tests
+
 on:
   push:
     branches:
