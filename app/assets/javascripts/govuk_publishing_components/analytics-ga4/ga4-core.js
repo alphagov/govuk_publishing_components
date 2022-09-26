@@ -6,8 +6,9 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
 
   var core = {
     load: function () {
-      var firstScript
-      var newScript
+      var firstScript = document.getElementsByTagName('script')[0]
+      var newScript = document.createElement('script')
+      newScript.async = true
 
       if (window.GOVUK.analyticsGa4.vars.gtag_id) {
         // initialise gtag
@@ -16,19 +17,12 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
         gtag('js', new Date())
         gtag('config', window.GOVUK.analyticsGa4.vars.gtag_id)
 
-        firstScript = document.getElementsByTagName('script')[0]
-        newScript = document.createElement('script')
-
-        newScript.async = true
         newScript.src = '//www.googletagmanager.com/gtag/js?id=' + window.GOVUK.analyticsGa4.vars.gtag_id
         firstScript.parentNode.insertBefore(newScript, firstScript)
       } else {
         // initialise GTM
         window.dataLayer = window.dataLayer || []
         window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' })
-
-        firstScript = document.getElementsByTagName('script')[0]
-        newScript = document.createElement('script')
 
         var auth = window.GOVUK.analyticsGa4.vars.auth || ''
         var preview = window.GOVUK.analyticsGa4.vars.preview || ''
@@ -39,7 +33,6 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
           preview = '&gtm_preview=' + preview + '&gtm_cookies_win=x'
         }
 
-        newScript.async = true
         this.googleSrc = 'https://www.googletagmanager.com/gtm.js?id=' + window.GOVUK.analyticsGa4.vars.id + auth + preview
         newScript.src = this.googleSrc
         firstScript.parentNode.insertBefore(newScript, firstScript)
@@ -53,7 +46,7 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
     },
 
     getGemVersion: function () {
-      return window.GOVUK.analyticsGA4.vars.gem_version || 'not found'
+      return window.GOVUK.analyticsGa4.vars.gem_version || 'not found'
     }
   }
 
