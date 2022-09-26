@@ -4,6 +4,10 @@ on:
       - main
   pull_request:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref_name || github.run_id }}
+  cancel-in-progress: true
+
 jobs:
   visual-regression-test-components:
     runs-on: ubuntu-latest
