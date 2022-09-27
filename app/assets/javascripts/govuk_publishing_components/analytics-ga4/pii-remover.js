@@ -128,8 +128,8 @@
     return string
   }
 
-  GOVUK.analyticsGA4 = GOVUK.analyticsGA4 || {}
-  GOVUK.analyticsGA4.PIIRemover = PIIRemover
+  GOVUK.analyticsGa4 = GOVUK.analyticsGa4 || {}
+  GOVUK.analyticsGa4.PIIRemover = PIIRemover
 
   global.GOVUK = GOVUK
 })(window)

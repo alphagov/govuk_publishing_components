@@ -1,12 +1,12 @@
 window.GOVUK = window.GOVUK || {}
-window.GOVUK.analyticsGA4 = window.GOVUK.analyticsGA4 || {}
-window.GOVUK.analyticsGA4.analyticsModules = window.GOVUK.analyticsGA4.analyticsModules || {};
+window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {}
+window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analyticsModules || {};
 
 (function (analyticsModules) {
   'use strict'
 
   var PageViewTracker = {
-    PIIRemover: new window.GOVUK.analyticsGA4.PIIRemover(), // imported in analytics-ga4.js
+    PIIRemover: new window.GOVUK.analyticsGa4.PIIRemover(), // imported in analytics-ga4.js
     nullValue: undefined,
 
     init: function () {
@@ -45,7 +45,7 @@ window.GOVUK.analyticsGA4.analyticsModules = window.GOVUK.analyticsGA4.analytics
             world_locations: this.getMetaContent('analytics:world-locations')
           }
         }
-        window.GOVUK.analyticsGA4.core.sendData(data)
+        window.GOVUK.analyticsGa4.core.sendData(data)
       }
     },
 
@@ -111,4 +111,4 @@ window.GOVUK.analyticsGA4.analyticsModules = window.GOVUK.analyticsGA4.analytics
   }
 
   analyticsModules.PageViewTracker = PageViewTracker
-})(window.GOVUK.analyticsGA4.analyticsModules)
+})(window.GOVUK.analyticsGa4.analyticsModules)

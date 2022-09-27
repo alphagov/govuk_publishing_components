@@ -14,7 +14,7 @@ describe('Google Analytics event tracking', function () {
   }
 
   beforeAll(function () {
-    spyOn(GOVUK.analyticsGA4.core, 'getGemVersion').and.returnValue('aVersion')
+    spyOn(GOVUK.analyticsGa4.core, 'getGemVersion').and.returnValue('aVersion')
   })
 
   beforeEach(function () {
@@ -100,7 +100,7 @@ describe('Google Analytics event tracking', function () {
 
   describe('doing simple tracking on a single element', function () {
     beforeEach(function () {
-      expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
+      expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
       expected.event = 'event_data'
       expected.event_data.event_name = 'select_content'
       expected.event_data.type = 'tabs'
@@ -116,7 +116,7 @@ describe('Google Analytics event tracking', function () {
       new GOVUK.Modules.Ga4EventTracker(element).init()
     })
 
-    it('pushes gtm attributes to the dataLayer', function () {
+    it('pushes ga4 attributes to the dataLayer', function () {
       element.click()
       expect(window.dataLayer[0]).toEqual(expected)
     })
@@ -132,12 +132,12 @@ describe('Google Analytics event tracking', function () {
     var expected2
 
     beforeEach(function () {
-      expected1 = new GOVUK.analyticsGA4.Schemas().eventSchema()
+      expected1 = new GOVUK.analyticsGa4.Schemas().eventSchema()
       expected1.event = 'event_data'
       expected1.event_data.event_name = 'event1-name'
       expected1.govuk_gem_version = 'aVersion'
 
-      expected2 = new GOVUK.analyticsGA4.Schemas().eventSchema()
+      expected2 = new GOVUK.analyticsGa4.Schemas().eventSchema()
       expected2.event = 'event_data'
       expected2.event_data.event_name = 'event2-name'
       expected2.govuk_gem_version = 'aVersion'
@@ -150,19 +150,17 @@ describe('Google Analytics event tracking', function () {
       }
 
       element.innerHTML =
-        '<div data-gtm-event-name="event1-name"' +
-          'data-ga4=\'' + JSON.stringify(attributes1) + '\'' +
+        '<div data-ga4=\'' + JSON.stringify(attributes1) + '\'' +
           'class="clickme"' +
         '></div>' +
-        '<div data-gtm-event-name="event2-name"' +
-          'data-ga4=\'' + JSON.stringify(attributes2) + '\'' +
+        '<div data-ga4=\'' + JSON.stringify(attributes2) + '\'' +
           'class="clickme"' +
         '></div>'
       document.body.appendChild(element)
       new GOVUK.Modules.Ga4EventTracker(element).init()
     })
 
-    it('pushes gtm attributes to the dataLayer', function () {
+    it('pushes ga4 attributes to the dataLayer', function () {
       var clickOn = element.querySelectorAll('.clickme')
       for (var i = 0; i < clickOn.length; i++) {
         clickOn[i].click()
@@ -184,10 +182,10 @@ describe('Google Analytics event tracking', function () {
       new GOVUK.Modules.Ga4EventTracker(element).init()
     })
 
-    it('includes the expanded state in the gtm attributes', function () {
+    it('includes the expanded state in the ga4 attributes', function () {
       element.click()
 
-      expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
+      expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
       expected.event = 'event_data'
       expected.event_data.action = 'opened'
       expected.event_data.text = 'some text'
@@ -195,7 +193,7 @@ describe('Google Analytics event tracking', function () {
 
       expect(window.dataLayer[0]).toEqual(expected)
 
-      expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
+      expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
       expected.event = 'event_data'
       expected.event_data.action = 'closed'
       expected.event_data.text = 'some text'
@@ -213,8 +211,7 @@ describe('Google Analytics event tracking', function () {
         text: 'some text'
       }
       element.innerHTML =
-        '<details data-gtm-event-name="event3-name"' +
-          'data-ga4=\'' + JSON.stringify(attributes) + '\'' +
+        '<details data-ga4=\'' + JSON.stringify(attributes) + '\'' +
           'class="clickme"' +
         '>' +
         '</details>'
@@ -222,11 +219,11 @@ describe('Google Analytics event tracking', function () {
       new GOVUK.Modules.Ga4EventTracker(element).init()
     })
 
-    it('includes the open state in the gtm attributes', function () {
+    it('includes the open state in the ga4 attributes', function () {
       var clickOn = element.querySelector('.clickme')
       clickOn.click()
 
-      expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
+      expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
       expected.event = 'event_data'
       expected.event_data.action = 'opened'
       expected.event_data.text = 'some text'
@@ -234,7 +231,7 @@ describe('Google Analytics event tracking', function () {
 
       expect(window.dataLayer[0]).toEqual(expected)
 
-      expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
+      expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
       expected.event = 'event_data'
       expected.event_data.action = 'closed'
       expected.event_data.text = 'some text'
@@ -261,11 +258,11 @@ describe('Google Analytics event tracking', function () {
       new GOVUK.Modules.Ga4EventTracker(element).init()
     })
 
-    it('includes the expanded state in the gtm attributes', function () {
+    it('includes the expanded state in the ga4 attributes', function () {
       var clickOn = element.querySelector('.gem-c-accordion')
       clickOn.click()
 
-      expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
+      expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
       expected.event = 'event_data'
       expected.event_data.action = 'opened'
       expected.event_data.event_name = 'event-name'
@@ -274,7 +271,7 @@ describe('Google Analytics event tracking', function () {
 
       expect(window.dataLayer[0]).toEqual(expected)
 
-      expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
+      expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
       expected.event = 'event_data'
       expected.event_data.action = 'closed'
       expected.event_data.event_name = 'event-name'
@@ -304,11 +301,11 @@ describe('Google Analytics event tracking', function () {
       new GOVUK.Modules.Ga4EventTracker(element).init()
     })
 
-    it('includes the open state in the gtm attributes', function () {
+    it('includes the open state in the ga4 attributes', function () {
       var clickOn = element.querySelector('.nested')
       clickOn.click()
 
-      expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
+      expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
       expected.event = 'event_data'
       expected.event_data.action = 'opened'
       expected.event_data.event_name = 'event-name'
@@ -317,7 +314,7 @@ describe('Google Analytics event tracking', function () {
 
       expect(window.dataLayer[0]).toEqual(expected)
 
-      expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
+      expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
       expected.event = 'event_data'
       expected.event_data.action = 'closed'
       expected.event_data.event_name = 'event-name'
@@ -441,7 +438,7 @@ describe('Google Analytics event tracking', function () {
       new GOVUK.Modules.Ga4EventTracker(element).init()
 
       window.dataLayer = []
-      expected = new GOVUK.analyticsGA4.Schemas().eventSchema()
+      expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
       expected.event = 'event_data'
       expected.event_data.event_name = 'form_submit'
       expected.event_data.type = 'feedback'

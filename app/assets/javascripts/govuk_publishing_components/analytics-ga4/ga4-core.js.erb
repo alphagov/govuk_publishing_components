@@ -1,7 +1,7 @@
 // note that because this file is .js.erb it is not linted
 // temporarily rename to .js to check with the linter
 window.GOVUK = window.GOVUK || {}
-window.GOVUK.analyticsGA4 = window.GOVUK.analyticsGA4 || {};
+window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
 
 (function (analytics) {
   'use strict'
@@ -11,18 +11,18 @@ window.GOVUK.analyticsGA4 = window.GOVUK.analyticsGA4 || {};
       var firstScript
       var newScript
 
-      if (window.GOVUK.analyticsGA4.vars.gtag_id) {
+      if (window.GOVUK.analyticsGa4.vars.gtag_id) {
         // initialise gtag
         window.dataLayer = window.dataLayer || []
         var gtag = function () { window.dataLayer.push(arguments) }
         gtag('js', new Date())
-        gtag('config', window.GOVUK.analyticsGA4.vars.gtag_id)
+        gtag('config', window.GOVUK.analyticsGa4.vars.gtag_id)
 
         firstScript = document.getElementsByTagName('script')[0]
         newScript = document.createElement('script')
 
         newScript.async = true
-        newScript.src = '//www.googletagmanager.com/gtag/js?id=' + window.GOVUK.analyticsGA4.vars.gtag_id
+        newScript.src = '//www.googletagmanager.com/gtag/js?id=' + window.GOVUK.analyticsGa4.vars.gtag_id
         firstScript.parentNode.insertBefore(newScript, firstScript)
       } else {
         // initialise GTM
@@ -32,8 +32,8 @@ window.GOVUK.analyticsGA4 = window.GOVUK.analyticsGA4 || {};
         firstScript = document.getElementsByTagName('script')[0]
         newScript = document.createElement('script')
 
-        var auth = window.GOVUK.analyticsGA4.vars.auth || ''
-        var preview = window.GOVUK.analyticsGA4.vars.preview || ''
+        var auth = window.GOVUK.analyticsGa4.vars.auth || ''
+        var preview = window.GOVUK.analyticsGa4.vars.preview || ''
         if (auth) {
           auth = '&gtm_auth=' + auth
         }
@@ -42,7 +42,7 @@ window.GOVUK.analyticsGA4 = window.GOVUK.analyticsGA4 || {};
         }
 
         newScript.async = true
-        this.googleSrc = 'https://www.googletagmanager.com/gtm.js?id=' + window.GOVUK.analyticsGA4.vars.id + auth + preview
+        this.googleSrc = 'https://www.googletagmanager.com/gtm.js?id=' + window.GOVUK.analyticsGa4.vars.id + auth + preview
         newScript.src = this.googleSrc
         firstScript.parentNode.insertBefore(newScript, firstScript)
         window.dataLayer.push({ 'gtm.blocklist': ['customPixels', 'customScripts', 'html', 'nonGoogleScripts'] })
@@ -60,4 +60,4 @@ window.GOVUK.analyticsGA4 = window.GOVUK.analyticsGA4 || {};
   }
 
   analytics.core = core
-})(window.GOVUK.analyticsGA4)
+})(window.GOVUK.analyticsGa4)

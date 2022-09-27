@@ -31,7 +31,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   Ga4EventTracker.prototype.trackClick = function (event) {
     var target = this.findTrackingAttributes(event.target)
     if (target) {
-      var schema = new window.GOVUK.analyticsGA4.Schemas().eventSchema()
+      var schema = new window.GOVUK.analyticsGa4.Schemas().eventSchema()
 
       try {
         var data = target.getAttribute(this.trackingTrigger)
@@ -84,7 +84,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         }
       }
 
-      window.GOVUK.analyticsGA4.core.sendData(schema)
+      window.GOVUK.analyticsGa4.core.sendData(schema)
     }
   }
 
