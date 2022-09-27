@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 31.0.0
 
 * Fix bug when getting target element from URL hash in accordion component ([PR #2985](https://github.com/alphagov/govuk_publishing_components/pull/2985))
 * **BREAKING:** Update GA4 naming conventions ([PR #2987](https://github.com/alphagov/govuk_publishing_components/pull/2987))
