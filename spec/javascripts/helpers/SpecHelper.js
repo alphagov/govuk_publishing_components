@@ -7,9 +7,10 @@ beforeAll(function () {
   window.GOVUK.analyticsVars.linkedDomains = ['www.gov.uk']
 
   window.GOVUK.analyticsGa4.vars = window.GOVUK.analyticsGa4.vars || {}
-  window.GOVUK.analyticsGa4.vars.id = 'GTM-test'
-  window.GOVUK.analyticsGa4.vars.auth = 'test'
-  window.GOVUK.analyticsGa4.vars.preview = 'env-test'
+  window.GOVUK.analyticsGa4.vars.id = 'test-id'
+  window.GOVUK.analyticsGa4.vars.auth = 'test-auth'
+  window.GOVUK.analyticsGa4.vars.preview = 'test-preview'
+  window.GOVUK.analyticsGa4.vars.gem_version = 'gem-version'
 
   delete ga
   window.GOVUK.analyticsInit()

@@ -4,13 +4,17 @@ describe('GA4 core', function () {
   var GOVUK = window.GOVUK
 
   beforeEach(function () {
-    window.GOVUK.analyticsGa4.vars = {}
     window.dataLayer = []
+    window.GOVUK.analyticsGa4.vars = {}
   })
 
   afterEach(function () {
-    window.GOVUK.analyticsGa4.vars = null
     window.dataLayer = []
+    window.GOVUK.analyticsGa4.vars.id = 'test-id'
+    window.GOVUK.analyticsGa4.vars.auth = 'test-auth'
+    window.GOVUK.analyticsGa4.vars.preview = 'test-preview'
+    window.GOVUK.analyticsGa4.vars.gem_version = 'gem-version'
+    window.GOVUK.analyticsGa4.vars.gtag_id = null
   })
 
   it('loads the GTM snippet', function () {
@@ -25,19 +29,19 @@ describe('GA4 core', function () {
 
   describe('calls the right URL from Google', function () {
     it('if all three env vars are present', function () {
-      window.GOVUK.analyticsGa4.vars.id = 'myId'
-      window.GOVUK.analyticsGa4.vars.auth = 'myAuth'
-      window.GOVUK.analyticsGa4.vars.preview = 'myPreview'
+      window.GOVUK.analyticsGa4.vars.id = 'test-id'
+      window.GOVUK.analyticsGa4.vars.auth = 'test-auth'
+      window.GOVUK.analyticsGa4.vars.preview = 'test-preview'
       GOVUK.analyticsGa4.core.load()
 
-      expect(GOVUK.analyticsGa4.core.googleSrc).toEqual('https://www.googletagmanager.com/gtm.js?id=myId&gtm_auth=myAuth&gtm_preview=myPreview&gtm_cookies_win=x')
+      expect(GOVUK.analyticsGa4.core.googleSrc).toEqual('https://www.googletagmanager.com/gtm.js?id=test-id&gtm_auth=test-auth&gtm_preview=test-preview&gtm_cookies_win=x')
     })
 
     it('if only id is present', function () {
-      window.GOVUK.analyticsGa4.vars.id = 'myId'
+      window.GOVUK.analyticsGa4.vars.id = 'test-id'
       GOVUK.analyticsGa4.core.load()
 
-      expect(GOVUK.analyticsGa4.core.googleSrc).toEqual('https://www.googletagmanager.com/gtm.js?id=myId')
+      expect(GOVUK.analyticsGa4.core.googleSrc).toEqual('https://www.googletagmanager.com/gtm.js?id=test-id')
     })
   })
 
