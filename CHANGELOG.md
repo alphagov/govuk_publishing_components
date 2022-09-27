@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Fix bug when getting target element from URL hash in accordion component ([PR #2985](https://github.com/alphagov/govuk_publishing_components/pull/2985))
+* **BREAKING:** Update GA4 naming conventions ([PR #2987](https://github.com/alphagov/govuk_publishing_components/pull/2987))
 
 ## 30.7.3
 
