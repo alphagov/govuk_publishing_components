@@ -1,42 +1,48 @@
 <div class="gem-c-feedback__prompt gem-c-feedback__js-show js-prompt" tabindex="-1">
-  <div class="gem-c-feedback__prompt-questions js-prompt-questions" hidden>
-    <h2 class="gem-c-feedback__prompt-question"><%= t("components.feedback.is_this_page_useful") %></h2>
+  <div class="gem-c-feedback__prompt-content">
+    <div class="gem-c-feedback__prompt-questions js-prompt-questions" hidden>
+      <div class="gem-c-feedback__prompt-question-answer">
+        <h2 class="gem-c-feedback__prompt-question"><%= t("components.feedback.is_this_page_useful") %></h2>
+        <ul class="gem-c-feedback__option-list">
+          <li class="gem-c-feedback__option-list-item govuk-visually-hidden" style="display: none" hidden>
+            <% # Maybe button exists only to try and capture clicks by bots %>
+            <%= link_to "/contact/govuk", {
+              class: 'gem-c-feedback__prompt-link',
+              data: {
+                'track-category' => 'yesNoFeedbackForm',
+                'track-action' => 'ffMaybeClick'
+              },
+              role: 'button',
+              style: 'display: none',
+              hidden: 'hidden',
+              'aria-hidden': 'true',
+            } do %>
+              <%= t("components.feedback.maybe") %>
+            <% end %>
+          </li>
+          <li class="gem-c-feedback__option-list-item">
+            <button class="govuk-button gem-c-feedback__prompt-link js-page-is-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffYesClick" data-ga4='{"event_name":"form_submit","type":"feedback","text":"Yes", "section": "Is this page useful?"}'>
+              <%= t("components.feedback.yes") %> <span class="govuk-visually-hidden"><%= t("components.feedback.is_useful") %></span>
+            </button>
+          </li>
+          <li class="gem-c-feedback__option-list-item">
+            <button class="govuk-button gem-c-feedback__prompt-link js-toggle-form js-page-is-not-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffNoClick" aria-controls="page-is-not-useful" aria-expanded="false" data-ga4='{"event_name":"form_submit","type":"feedback","text":"No", "section": "Is this page useful?"}'>
+              <%= t("components.feedback.no") %> <span class="govuk-visually-hidden"><%= t("components.feedback.is_not_useful") %></span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="gem-c-feedback__prompt-questions gem-c-feedback__prompt-success js-prompt-success" role="alert" hidden>
+      <%= t("components.feedback.thank_you_for_feedback") %>
+    </div>
+
+    <div class="gem-c-feedback__prompt-questions gem-c-feedback__prompt-questions--something-is-wrong js-prompt-questions" hidden>
+      <button class="govuk-button gem-c-feedback__prompt-link js-toggle-form js-something-is-wrong" data-track-category="Onsite Feedback" data-track-action="GOV-UK Open Form" aria-controls="something-is-wrong" aria-expanded="false">
+        <%= t("components.feedback.something_wrong") %>
+      </button>
+    </div>
     
-    <ul class="gem-c-feedback__option-list">
-      <li class="gem-c-feedback__option-list-item govuk-visually-hidden" style="display: none" hidden>
-        <% # Maybe button exists only to try and capture clicks by bots %>
-        <%= link_to "/contact/govuk", {
-          class: 'gem-c-feedback__prompt-link',
-          data: {
-            'track-category' => 'yesNoFeedbackForm',
-            'track-action' => 'ffMaybeClick'
-          },
-          role: 'button',
-          style: 'display: none',
-          hidden: 'hidden',
-          'aria-hidden': 'true',
-        } do %>
-          <%= t("components.feedback.maybe") %>
-        <% end %>
-      </li>
-      <li class="gem-c-feedback__option-list-item">
-        <button class="govuk-button gem-c-feedback__prompt-link js-page-is-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffYesClick" data-ga4='{"event_name":"form_submit","type":"feedback","text":"Yes", "section": "Is this page useful?"}'>
-          <%= t("components.feedback.yes") %> <span class="govuk-visually-hidden"><%= t("components.feedback.is_useful") %></span>
-        </button>
-      </li>
-      <li class="gem-c-feedback__option-list-item">
-        <button class="govuk-button gem-c-feedback__prompt-link js-toggle-form js-page-is-not-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffNoClick" aria-controls="page-is-not-useful" aria-expanded="false" data-ga4='{"event_name":"form_submit","type":"feedback","text":"No", "section": "Is this page useful?"}'>
-          <%= t("components.feedback.no") %> <span class="govuk-visually-hidden"><%= t("components.feedback.is_not_useful") %></span>
-        </button>
-      </li>
-    </ul>
-  </div>
-  <div class="gem-c-feedback__prompt-questions gem-c-feedback__prompt-success js-prompt-success" role="alert" hidden>
-    <%= t("components.feedback.thank_you_for_feedback") %>
-  </div>
-  <div class="gem-c-feedback__prompt-questions gem-c-feedback__prompt-questions--something-is-wrong js-prompt-questions" hidden>
-    <button class="govuk-button gem-c-feedback__prompt-link js-toggle-form js-something-is-wrong" data-track-category="Onsite Feedback" data-track-action="GOV-UK Open Form" aria-controls="something-is-wrong" aria-expanded="false">
-      <%= t("components.feedback.something_wrong") %>
-    </button>
   </div>
 </div>

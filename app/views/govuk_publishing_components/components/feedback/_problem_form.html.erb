@@ -5,14 +5,6 @@
   data-track-action="GOV.UK Send Form"
   method="post"
   hidden>
-  <button
-    class="govuk-button govuk-button--secondary gem-c-feedback__close gem-c-feedback__js-show js-close-form"
-    data-track-category="Onsite Feedback"
-    data-track-action="GOV.UK Close Form"
-    aria-controls="something-is-wrong"
-    aria-expanded="true">
-    <%= t("components.feedback.close") %>
-  </button>
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
@@ -49,6 +41,16 @@
       <%= render "govuk_publishing_components/components/button", {
         text: t("components.feedback.send")
       } %>
+
+    <button
+      class="govuk-button govuk-button--secondary gem-c-feedback__close gem-c-feedback__js-show js-close-form"
+      data-track-category="Onsite Feedback"
+      data-track-action="GOV.UK Close Form"
+      aria-controls="something-is-wrong"
+      aria-expanded="true">
+      <%= t("components.feedback.close") %>
+    </button>
+
     </div>
   </div>
 </form>
