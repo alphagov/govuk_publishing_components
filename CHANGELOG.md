@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add ecommerce tracking documentation ([PR #2997](https://github.com/alphagov/govuk_publishing_components/pull/2997))
+
 ## 31.0.0
 
 * Fix bug when getting target element from URL hash in accordion component ([PR #2985](https://github.com/alphagov/govuk_publishing_components/pull/2985))
