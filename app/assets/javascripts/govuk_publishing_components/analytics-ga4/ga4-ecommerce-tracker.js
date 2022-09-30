@@ -11,6 +11,8 @@
 
     init: function (isNewPageLoad) {
       if (window.dataLayer) {
+        /* The data-ga4-ecommerce attribute may be present on several DOM elements e.g. search results and spelling
+        suggestions, hence why document.querySelectorAll is required */
         this.searchResultsBlocks = document.querySelectorAll('[data-ga4-ecommerce]')
         this.isNewPageLoad = isNewPageLoad
 
