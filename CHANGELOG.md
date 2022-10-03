@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Resolve Plek.current deprecations ([PR #3000](https://github.com/alphagov/govuk_publishing_components/pull/3000))
 * Add ecommerce tracking documentation ([PR #2997](https://github.com/alphagov/govuk_publishing_components/pull/2997))
 * Use section for emergency banner ([PR #2973](https://github.com/alphagov/govuk_publishing_components/pull/2973))
 

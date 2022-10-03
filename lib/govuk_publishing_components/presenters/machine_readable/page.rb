@@ -12,7 +12,7 @@ module GovukPublishingComponents
       end
 
       def canonical_url
-        local_assigns[:canonical_url] || (Plek.current.website_root + content_item["base_path"])
+        local_assigns[:canonical_url] || (Plek.new.website_root + content_item["base_path"])
       end
 
       def body

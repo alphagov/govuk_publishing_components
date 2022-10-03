@@ -50,7 +50,7 @@ module GovukPublishingComponents
           "author" => {
             "@type" => "Organization",
             "name" => publishing_organisation["title"],
-            "url" => Plek.current.website_root + publishing_organisation["base_path"],
+            "url" => Plek.new.website_root + publishing_organisation["base_path"],
           },
         }
       end
