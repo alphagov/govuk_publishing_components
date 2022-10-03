@@ -98,13 +98,22 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     return $menu.querySelectorAll('button[aria-expanded="true"]').length > 0
   }
 
-  // Returns what screen size the window is currently. Returns a string of
-  // either `desktop` or `mobile` so it can be interpolated to access the
+  // Detect the current viewport width. Return the string `desktop` or `mobile` so it can be interpolated to access the
   // `data-toggle-{desktop|mobile}-group` attribute.
+  //
+  // Use `matchedia` which mitigates issues in modern browsers when scrollbars are forced in MacOS (using `document.documentElement.clientWidth`
+  // for viewport width detection has issues in Chrome and Firefox, and `window.innerWidth` has issues in Safari).
+  //
+  //  Fall back to `document.documentElement.clientWidth` for legacy browsers.
   var windowSize = function () {
-    return document.documentElement.clientWidth >= SETTINGS.breakpoint.desktop ? 'desktop' : 'mobile'
+    var viewport = false
+    if (typeof window.matchMedia === 'function') {
+      viewport = window.matchMedia('(min-width:' + SETTINGS.breakpoint.desktop + 'px)').matches
+    } else {
+      viewport = document.documentElement.clientWidth >= SETTINGS.breakpoint.desktop
+    }
+    return viewport ? 'desktop' : 'mobile'
   }
-
   function SuperNavigationMegaMenu ($module) {
     this.$module = $module
     this.$navigationToggle = this.$module.querySelector('#super-navigation-menu-toggle')
