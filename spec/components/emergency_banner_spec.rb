@@ -69,4 +69,12 @@ describe "Emergency Banner", type: :view do
       render_component(emergency_banner_attributes({ campaign_class: "national-emergence" }))
     end
   end
+
+  it "is labelled by the correct id" do
+    render_component(emergency_banner_attributes({ campaign_class: "local-emergency", link_text: "Link Text", link: "https://www.gov.uk" }))
+    # get the id of the header that is used for labelling
+    id = css_select(".gem-c-emergency-banner h2")[0][:id]
+    # check that the aria-labelledby points to that header using the header id
+    assert_select(".gem-c-emergency-banner[aria-labelledby='#{id}']")
+  end
 end
