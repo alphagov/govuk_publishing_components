@@ -123,6 +123,12 @@ describe "Layout for public", type: :view do
     assert_select ".gem-c-layout-for-public__blue-bar"
   end
 
+  it "has blue bar when using the full width layout if specified" do
+    render_component(full_width: true, blue_bar: true)
+
+    assert_select ".gem-c-layout-for-public__blue-bar", false
+  end
+
   it "has no blue bar when using the full width layout" do
     render_component(full_width: true)
 

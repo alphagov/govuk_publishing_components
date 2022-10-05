@@ -21,6 +21,10 @@
   omit_account_navigation ||= false
   omit_account_phase_banner ||= false
 
+  # if blue bar not set, then default behaviour is to hide
+  # when using a full width layout
+  blue_bar ||= !full_width
+
 # This is a hack - but it's the only way I can find to not have two blue bars on
 # constrained width layouts.
 #
@@ -39,7 +43,7 @@
 # height, making the two blue bars overlap and appear as one. The class is added
 # when a) there's content for the emergency or global banner *and* b) when using
 # the contrained width layout.
-  blue_bar_dedupe = !full_width && global_bar.present?
+  blue_bar_dedupe = (blue_bar && global_bar.present?)
   body_css_classes = %w(gem-c-layout-for-public govuk-template__body)
   body_css_classes << "draft" if draft_watermark
 -%>
@@ -112,7 +116,7 @@
 
     <%= raw(emergency_banner) %>
 
-    <% unless full_width %>
+    <% if blue_bar %>
       <div class="gem-c-layout-for-public__blue-bar govuk-width-container"></div>
     <% end %>
 

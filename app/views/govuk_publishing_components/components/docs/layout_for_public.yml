@@ -23,6 +23,13 @@ examples:
       full_width: true
       block: |
         <h1>Page content goes here</h1>
+  full_width_with_blue_bar:
+    description: Full width layout but with the blue bar from the default layout still present.
+    data:
+      full_width: true
+      blue_bar: true
+      block: |
+        <h1>Page content goes here</h1>
   omit_header:
     description: This allows the header to be omitted which is currently used when rendering CSV previews from Whitehall
     data:
