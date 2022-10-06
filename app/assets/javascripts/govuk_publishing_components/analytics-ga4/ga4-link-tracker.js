@@ -97,6 +97,10 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
       }
 
       if (Object.keys(clickData).length > 0) {
+        if (clickData.url) {
+          clickData.url = this.removeCrossDomainParams(clickData.url)
+        }
+
         var schema = new window.GOVUK.analyticsGa4.Schemas().eventSchema()
         schema.event = 'event_data'
 
@@ -236,6 +240,13 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
       return string.substring(0, stringToFind.length) === stringToFind
     },
 
+    stringEndsWith: function (string, stringToFind) {
+      if (stringToFind.length > string.length) {
+        return false
+      }
+      return string.substring(string.length - stringToFind.length, string.length) === stringToFind
+    },
+
     hrefIsRelative: function (href) {
       // Checks that a link is relative, but is not a protocol relative url
       return href[0] === '/' && href[1] !== '/'
@@ -247,6 +258,22 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
 
     getHostname: function () {
       return window.location.hostname
+    },
+
+    removeCrossDomainParams: function (url) {
+      if (url.indexOf('_ga') !== -1 || url.indexOf('_gl') !== -1) {
+        // _ga & _gl are values needed for cross domain tracking, but we don't want them included in our click tracking.
+        url = url.replace(/_ga=([^&]*)/, '')
+        url = url.replace(/_gl=([^&]*)/, '')
+
+        // The following code cleans up inconsistencies such as gov.uk/&&, gov.uk/?&hello=world, gov.uk/?, and gov.uk/&.
+        url = url.replaceAll(/(&&)+/g, '&')
+        url = url.replace('?&', '?')
+        if (this.stringEndsWith(url, '?') || this.stringEndsWith(url, '&')) {
+          url = url.substring(0, url.length - 1)
+        }
+      }
+      return url
     }
   }
 

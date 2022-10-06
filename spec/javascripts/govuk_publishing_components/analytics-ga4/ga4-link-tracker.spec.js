@@ -613,7 +613,6 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
     beforeEach(function () {
       window.dataLayer = []
       links = document.createElement('div')
-      links.innerHTML = '<a href="http://www.nationalarchives1.gov.uk" id="clickme"> National Archives </a>'
       body.appendChild(links)
       body.addEventListener('click', preventDefault)
     })
@@ -636,9 +635,41 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
       linkTracker = GOVUK.analyticsGa4.analyticsModules.Ga4LinkTracker
       // Add gov.uk as an internal domain, as our tests are running from localhost
       linkTracker.init({ internalDomains: ['www.gov.uk'], disableListeners: true })
+      links.innerHTML = '<a href="http://www.nationalarchives1.gov.uk" id="clickme"> National Archives </a>'
       var link = links.querySelector('#clickme')
       link.click()
       expect(window.dataLayer).toEqual([])
+    })
+
+    it('removes _ga and _gl from href query parameters', function () {
+      linkTracker = GOVUK.analyticsGa4.analyticsModules.Ga4LinkTracker
+      linkTracker.init({ internalDomains: ['www.gov.uk'] })
+
+      links.innerHTML = '<div class="query-param-links">' +
+      '<a href="https://nationalarchives.gov.uk/test?_ga=2.179870689.471678113.1662373341-1606126050.1639392506">_ga only link</a>' +
+      '<a href="https://nationalarchives.gov.uk/test?_ga=2.179870689.471678113.1662373341-1606126050.1639392506">_gl only link</a>' +
+      '<a href="https://nationalarchives.gov.uk/test?hello=world&_ga=2.179870689.471678113.1662373341-1606126050.1639392506&_gl=2.179870689.471678113.1662373341-1606126050.1639392506">_ga & _gl link</a>' +
+      '<a href="https://nationalarchives.gov.uk/test?hello=world&_ga=example&another=one&_gl=example&goodbye=true">other query params nested around _ga and _gl</a>' +
+      '<a href="https://nationalarchives.gov.uk/test?_ga=example&_gl=example&search=%26&order=relevance">keep the search query params that contains a &</a>' +
+      '<a href="https://nationalarchives.gov.uk/test?_gaa=example&_gll=example">query params similar to _ga and _gl</a>' +
+
+      '</div>'
+
+      var expectedLinks = [
+        'https://nationalarchives.gov.uk/test',
+        'https://nationalarchives.gov.uk/test',
+        'https://nationalarchives.gov.uk/test?hello=world',
+        'https://nationalarchives.gov.uk/test?hello=world&another=one&goodbye=true',
+        'https://nationalarchives.gov.uk/test?search=%26&order=relevance',
+        'https://nationalarchives.gov.uk/test?_gaa=example&_gll=example']
+
+      var queryParamLinks = document.querySelectorAll('.query-param-links a')
+      for (var i = 0; i < queryParamLinks.length; i++) {
+        window.dataLayer = []
+        var link = queryParamLinks[i]
+        link.click()
+        expect(window.dataLayer[0].event_data.url).toEqual(expectedLinks[i])
+      }
     })
   })
 })
