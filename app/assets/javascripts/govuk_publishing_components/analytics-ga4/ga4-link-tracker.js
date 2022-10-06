@@ -61,8 +61,8 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
           clickData.external = this.isExternalLink(clickData.url) ? 'true' : 'false'
         }
 
-        if (clickData.link_method === 'populated-via-js') {
-          clickData.link_method = this.getClickType(event)
+        if (clickData.method === 'populated-via-js') {
+          clickData.method = this.getClickType(event)
         }
 
         if (clickData.index) {
@@ -78,21 +78,21 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
         clickData.external = 'true'
         clickData.url = href
         clickData.text = element.textContent.trim()
-        clickData.link_method = this.getClickType(event)
+        clickData.method = this.getClickType(event)
       } else if (this.isDownloadLink(href)) {
         clickData.event_name = 'file_download'
         clickData.type = this.isPreviewLink(href) ? 'preview' : 'generic download'
         clickData.external = this.isExternalLink(href) ? 'true' : 'false'
         clickData.url = href
         clickData.text = element.textContent.trim()
-        clickData.link_method = this.getClickType(event)
+        clickData.method = this.getClickType(event)
       } else if (this.isExternalLink(href)) {
         clickData.event_name = 'navigation'
         clickData.type = 'generic link'
         clickData.external = 'true'
         clickData.url = href
         clickData.text = element.textContent.trim()
-        clickData.link_method = this.getClickType(event)
+        clickData.method = this.getClickType(event)
       }
 
       if (Object.keys(clickData).length > 0) {
