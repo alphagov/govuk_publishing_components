@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 31.1.0
 
 * Resolve Plek.current deprecations ([PR #3000](https://github.com/alphagov/govuk_publishing_components/pull/3000))
 * Add ecommerce tracking documentation ([PR #2997](https://github.com/alphagov/govuk_publishing_components/pull/2997))
