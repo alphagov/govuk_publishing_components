@@ -99,6 +99,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
         if (clickData.url) {
           this.removeCrossDomainParams(clickData)
           this.populateLinkDomain(clickData)
+          this.populateLinkPathParts(clickData)
         }
 
         var schema = new window.GOVUK.analyticsGa4.Schemas().eventSchema()
@@ -113,6 +114,51 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
         }
 
         window.GOVUK.analyticsGa4.core.sendData(schema)
+      }
+    },
+
+    populateLinkPathParts: function (clickData) {
+      var href = clickData.url
+      var path = ''
+      if (this.hrefIsRelative(href)) {
+        path = href
+      } else if (this.isMailToLink(href)) {
+        path = href
+      } else {
+        path = href.replace(/^(http:||https:)?(\/\/)([^\/]*)/, '') // eslint-disable-line no-useless-escape
+      }
+
+      if (path === '/' || path.length === 0) {
+        return
+      }
+
+      /* Divide the length into hundreds, to determine how many string "parts" to make.
+      For example a 150 char string length divided by 100 would return 1.5,
+      so we round up, which returns 2, which makes sense as we would need one segment for chars 0-100, and another for chars 100-150 . */
+      var hundreds = Math.ceil(path.length / 100)
+
+      var LIMIT = 5
+
+      if (hundreds > LIMIT) {
+        hundreds = LIMIT // Limit the amount of data we send to 500 chars
+      }
+
+      clickData.link_path_parts = {}
+
+      for (var i = 0; i < LIMIT; i++) {
+        var stringIndex = (i + 1).toString() // Start the GTM index from 1 for analysts benefit
+        clickData.link_path_parts[stringIndex] = undefined // Ensure the object keys are cleared, so link click paths aren't mixed on separate pushes
+      }
+
+      for (i = 0; i < hundreds; i++) {
+        var startIndex = i * 100
+        stringIndex = (i + 1).toString() // Start the GTM index from 1 for analysts benefit
+        // If it's the last index, substring from the start index to the end of the path string. Else, grab the next 100 characaters.
+        if (i === LIMIT) {
+          clickData.link_path_parts[stringIndex] = path.substring(startIndex, href.length)
+        } else {
+          clickData.link_path_parts[stringIndex] = path.substring(startIndex, startIndex + 100)
+        }
       }
     },
 
