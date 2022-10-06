@@ -77,21 +77,21 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
         clickData.type = 'email'
         clickData.external = 'true'
         clickData.url = href
-        clickData.text = element.textContent.trim()
+        clickData.text = this.removeLinesAndExtraSpaces(element.textContent.trim())
         clickData.method = this.getClickType(event)
       } else if (this.isDownloadLink(href)) {
         clickData.event_name = 'file_download'
         clickData.type = this.isPreviewLink(href) ? 'preview' : 'generic download'
         clickData.external = this.isExternalLink(href) ? 'true' : 'false'
         clickData.url = href
-        clickData.text = element.textContent.trim()
+        clickData.text = this.removeLinesAndExtraSpaces(element.textContent.trim())
         clickData.method = this.getClickType(event)
       } else if (this.isExternalLink(href)) {
         clickData.event_name = 'navigation'
         clickData.type = 'generic link'
         clickData.external = 'true'
         clickData.url = href
-        clickData.text = element.textContent.trim()
+        clickData.text = this.removeLinesAndExtraSpaces(element.textContent.trim())
         clickData.method = this.getClickType(event)
       }
 
@@ -187,6 +187,12 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
           domainsArrays.push(domainWithoutWww)
         }
       }
+    },
+
+    removeLinesAndExtraSpaces: function (text) {
+      text = text.replace(/(\r\n|\n|\r)/gm, ' ') // Replace line breaks with 1 space
+      text = text.replace(/\s+/g, ' ') // Replace instances of 2+ spaces with 1 space
+      return text
     },
 
     getClickType: function (event) {

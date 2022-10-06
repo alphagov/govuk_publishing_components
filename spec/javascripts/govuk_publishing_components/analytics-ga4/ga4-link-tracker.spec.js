@@ -719,6 +719,31 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
       }
     })
 
+    it('cleans up link text with multiple lines and spaces', function () {
+      linkTracker = GOVUK.analyticsGa4.analyticsModules.Ga4LinkTracker
+      linkTracker.init({ internalDomains: ['www.gov.uk'] })
+
+      links.innerHTML = '<div class="messy-text">' +
+      '<a href="https://example.com">\nI \nam \non \nmultiple \n\n\n lines</a>' +
+      '<a href="https://www.gov.uk/government/uploads/example.pdf">I     have     lots   of    spaces</a>' +
+      '<a href="mailto:hello@example.com">I     have     lots   of    spaces \n and \n\n many \n\n\n lines</a>' +
+    '</div>'
+
+      var linksToTest = document.querySelectorAll('.messy-text a')
+
+      var expectedText = [
+        'I am on multiple lines',
+        'I have lots of spaces',
+        'I have lots of spaces and many lines'
+      ]
+      for (var i = 0; i < linksToTest.length; i++) {
+        window.dataLayer = []
+        var link = linksToTest[i]
+        GOVUK.triggerEvent(link, 'click')
+        expect(window.dataLayer[0].event_data.text).toEqual(expectedText[i])
+      }
+    })
+
     it('splits hrefs longer than 100 characters into an object of parts', function () {
       linkTracker = GOVUK.analyticsGa4.analyticsModules.Ga4LinkTracker
       linkTracker.init({ internalDomains: ['www.gov.uk'] })
