@@ -21,7 +21,8 @@
         section: this.undefined,
         action: this.undefined,
         external: this.undefined,
-        link_method: this.undefined
+        link_method: this.undefined,
+        link_domain: this.undefined
       }
     }
   }

@@ -44,13 +44,12 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
         return
       }
 
-      var clickData = {}
       var href = element.getAttribute('href')
 
       if (!href) {
         return
       }
-
+      var clickData = {}
       var linkAttributes = element.getAttribute('data-ga4-link')
       if (linkAttributes) {
         linkAttributes = JSON.parse(linkAttributes)
@@ -98,7 +97,8 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
 
       if (Object.keys(clickData).length > 0) {
         if (clickData.url) {
-          clickData.url = this.removeCrossDomainParams(clickData.url)
+          this.removeCrossDomainParams(clickData)
+          this.populateLinkDomain(clickData)
         }
 
         var schema = new window.GOVUK.analyticsGa4.Schemas().eventSchema()
@@ -113,6 +113,22 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
         }
 
         window.GOVUK.analyticsGa4.core.sendData(schema)
+      }
+    },
+
+    populateLinkDomain: function (clickData) {
+      var href = clickData.url
+      // We always want mailto links to have an undefined link_domain
+      if (this.isMailToLink(href)) {
+        return
+      }
+
+      if (this.hrefIsRelative(href)) {
+        clickData.link_domain = this.getProtocol() + '//' + this.getHostname()
+      } else {
+        var domainRegex = /^(http:||https:)?(\/\/)([^\/]*)/ // eslint-disable-line no-useless-escape
+        var domain = domainRegex.exec(href)[0]
+        clickData.link_domain = domain
       }
     },
 
@@ -260,7 +276,12 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
       return window.location.hostname
     },
 
-    removeCrossDomainParams: function (url) {
+    getProtocol: function () {
+      return window.location.protocol
+    },
+
+    removeCrossDomainParams: function (clickData) {
+      var url = clickData.url
       if (url.indexOf('_ga') !== -1 || url.indexOf('_gl') !== -1) {
         // _ga & _gl are values needed for cross domain tracking, but we don't want them included in our click tracking.
         url = url.replace(/_ga=([^&]*)/, '')
@@ -272,8 +293,8 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
         if (this.stringEndsWith(url, '?') || this.stringEndsWith(url, '&')) {
           url = url.substring(0, url.length - 1)
         }
+        clickData.url = url
       }
-      return url
     }
   }
 
