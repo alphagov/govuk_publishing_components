@@ -52,8 +52,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
       var clickData = {}
       var linkAttributes = element.getAttribute('data-ga4-link')
       if (linkAttributes) {
-        linkAttributes = JSON.parse(linkAttributes)
-        clickData = window.GOVUK.extendObject(clickData, linkAttributes)
+        clickData = JSON.parse(linkAttributes)
 
         /* Since external links can't be determined in the template, we use populated-via-js as a signal
         for our JavaScript to determine this value. */
@@ -66,40 +65,40 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
         }
 
         if (clickData.index) {
-          clickData.index = parseInt(linkAttributes.index)
+          clickData.index = parseInt(clickData.index)
         }
 
         if (clickData.index_total) {
-          clickData.index_total = parseInt(linkAttributes.index_total)
+          clickData.index_total = parseInt(clickData.index_total)
         }
       } else if (this.isMailToLink(href)) {
         clickData.event_name = 'navigation'
         clickData.type = 'email'
         clickData.external = 'true'
         clickData.url = href
-        clickData.text = this.removeLinesAndExtraSpaces(element.textContent.trim())
+        clickData.text = this.removeLinesAndExtraSpaces(element.textContent)
         clickData.method = this.getClickType(event)
       } else if (this.isDownloadLink(href)) {
         clickData.event_name = 'file_download'
         clickData.type = this.isPreviewLink(href) ? 'preview' : 'generic download'
         clickData.external = this.isExternalLink(href) ? 'true' : 'false'
         clickData.url = href
-        clickData.text = this.removeLinesAndExtraSpaces(element.textContent.trim())
+        clickData.text = this.removeLinesAndExtraSpaces(element.textContent)
         clickData.method = this.getClickType(event)
       } else if (this.isExternalLink(href)) {
         clickData.event_name = 'navigation'
         clickData.type = 'generic link'
         clickData.external = 'true'
         clickData.url = href
-        clickData.text = this.removeLinesAndExtraSpaces(element.textContent.trim())
+        clickData.text = this.removeLinesAndExtraSpaces(element.textContent)
         clickData.method = this.getClickType(event)
       }
 
       if (Object.keys(clickData).length > 0) {
         if (clickData.url) {
-          this.removeCrossDomainParams(clickData)
-          this.populateLinkDomain(clickData)
-          this.populateLinkPathParts(clickData)
+          clickData.url = this.removeCrossDomainParams(clickData.url)
+          clickData.link_domain = this.populateLinkDomain(clickData.url)
+          clickData.link_path_parts = this.populateLinkPathParts(clickData.url)
         }
 
         var schema = new window.GOVUK.analyticsGa4.Schemas().eventSchema()
@@ -117,14 +116,12 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
       }
     },
 
-    populateLinkPathParts: function (clickData) {
-      var href = clickData.url
+    populateLinkPathParts: function (href) {
       var path = ''
-      if (this.hrefIsRelative(href)) {
-        path = href
-      } else if (this.isMailToLink(href)) {
+      if (this.hrefIsRelative(href) || this.isMailToLink(href)) {
         path = href
       } else {
+        // This regex matches a protocol and domain name at the start of a string such as https://www.gov.uk, http://gov.uk, //gov.uk
         path = href.replace(/^(http:||https:)?(\/\/)([^\/]*)/, '') // eslint-disable-line no-useless-escape
       }
 
@@ -132,49 +129,33 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
         return
       }
 
-      /* Divide the length into hundreds, to determine how many string "parts" to make.
-      For example a 150 char string length divided by 100 would return 1.5,
-      so we round up, which returns 2, which makes sense as we would need one segment for chars 0-100, and another for chars 100-150 . */
-      var hundreds = Math.ceil(path.length / 100)
-
-      var LIMIT = 5
-
-      if (hundreds > LIMIT) {
-        hundreds = LIMIT // Limit the amount of data we send to 500 chars
+      /*
+      This will create an object with 5 keys that are indexes ("1", "2", etc.)
+      The values will be each part of the link path split every 100 characters, or undefined.
+      For example: {"1": "/hello/world/etc...", "2": "/more/path/text...", "3": undefined, "4": undefined, "5": undefined}
+      Undefined values are needed to override the persistent object in GTM so that any values from old pushes are overwritten.
+      */
+      var parts = path.match(/.{1,100}/g)
+      var obj = {}
+      for (var i = 0; i < 5; i++) {
+        obj[(i + 1).toString()] = parts[i]
       }
-
-      clickData.link_path_parts = {}
-
-      for (var i = 0; i < LIMIT; i++) {
-        var stringIndex = (i + 1).toString() // Start the GTM index from 1 for analysts benefit
-        clickData.link_path_parts[stringIndex] = undefined // Ensure the object keys are cleared, so link click paths aren't mixed on separate pushes
-      }
-
-      for (i = 0; i < hundreds; i++) {
-        var startIndex = i * 100
-        stringIndex = (i + 1).toString() // Start the GTM index from 1 for analysts benefit
-        // If it's the last index, substring from the start index to the end of the path string. Else, grab the next 100 characaters.
-        if (i === LIMIT) {
-          clickData.link_path_parts[stringIndex] = path.substring(startIndex, href.length)
-        } else {
-          clickData.link_path_parts[stringIndex] = path.substring(startIndex, startIndex + 100)
-        }
-      }
+      return obj
     },
 
-    populateLinkDomain: function (clickData) {
-      var href = clickData.url
+    populateLinkDomain: function (href) {
       // We always want mailto links to have an undefined link_domain
       if (this.isMailToLink(href)) {
-        return
+        return undefined
       }
 
       if (this.hrefIsRelative(href)) {
-        clickData.link_domain = this.getProtocol() + '//' + this.getHostname()
+        return this.getProtocol() + '//' + this.getHostname()
       } else {
+        // This regex matches a protocol and domain name at the start of a string such as https://www.gov.uk, http://gov.uk, //gov.uk
         var domainRegex = /^(http:||https:)?(\/\/)([^\/]*)/ // eslint-disable-line no-useless-escape
         var domain = domainRegex.exec(href)[0]
-        clickData.link_domain = domain
+        return domain
       }
     },
 
@@ -190,6 +171,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
     },
 
     removeLinesAndExtraSpaces: function (text) {
+      text = text.trim()
       text = text.replace(/(\r\n|\n|\r)/gm, ' ') // Replace line breaks with 1 space
       text = text.replace(/\s+/g, ' ') // Replace instances of 2+ spaces with 1 space
       return text
@@ -309,9 +291,6 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
     },
 
     stringEndsWith: function (string, stringToFind) {
-      if (stringToFind.length > string.length) {
-        return false
-      }
       return string.substring(string.length - stringToFind.length, string.length) === stringToFind
     },
 
@@ -332,21 +311,19 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
       return window.location.protocol
     },
 
-    removeCrossDomainParams: function (clickData) {
-      var url = clickData.url
-      if (url.indexOf('_ga') !== -1 || url.indexOf('_gl') !== -1) {
+    removeCrossDomainParams: function (href) {
+      if (href.indexOf('_ga') !== -1 || href.indexOf('_gl') !== -1) {
         // _ga & _gl are values needed for cross domain tracking, but we don't want them included in our click tracking.
-        url = url.replace(/_ga=([^&]*)/, '')
-        url = url.replace(/_gl=([^&]*)/, '')
+        href = href.replaceAll(/_g[al]=([^&]*)/g, '')
 
         // The following code cleans up inconsistencies such as gov.uk/&&, gov.uk/?&hello=world, gov.uk/?, and gov.uk/&.
-        url = url.replaceAll(/(&&)+/g, '&')
-        url = url.replace('?&', '?')
-        if (this.stringEndsWith(url, '?') || this.stringEndsWith(url, '&')) {
-          url = url.substring(0, url.length - 1)
+        href = href.replaceAll(/(&&)+/g, '&')
+        href = href.replace('?&', '?')
+        if (this.stringEndsWith(href, '?') || this.stringEndsWith(href, '&')) {
+          href = href.substring(0, href.length - 1)
         }
-        clickData.url = url
       }
+      return href
     }
   }
 

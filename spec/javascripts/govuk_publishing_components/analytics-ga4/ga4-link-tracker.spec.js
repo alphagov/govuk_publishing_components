@@ -22,16 +22,19 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
     window.dataLayer = []
   })
 
+  beforeEach(function () {
+    defaultLinkPathParts = {
+      1: undefined,
+      2: undefined,
+      3: undefined,
+      4: undefined,
+      5: undefined
+    }
+  })
+
   describe('External link tracking', function () {
     beforeEach(function () {
       window.dataLayer = []
-      defaultLinkPathParts = {
-        1: undefined,
-        2: undefined,
-        3: undefined,
-        4: undefined,
-        5: undefined
-      }
       expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
       expected.event = 'event_data'
       expected.event_data.event_name = 'navigation'
@@ -40,6 +43,8 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
       expected.event_data.external = 'true'
       expected.govuk_gem_version = 'aVersion'
       links = document.createElement('div')
+      /* The link_domain, external and path attributes exist so we can hardcode what the expected value is for each test.
+      The value differs for each link, so we can't hardcode the expected value inside the test itself. */
       links.innerHTML =
           '<div class="fully-structured-external-links">' +
               '<a href="http://www.nationalarchives.gov.uk/1" link_domain="http://www.nationalarchives.gov.uk" path="/1"> National Archives </a>' +
@@ -47,8 +52,8 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
               '<a href="https://www.nationalarchives.gov.uk/3.pdf" link_domain="https://www.nationalarchives.gov.uk" path="/3.pdf">National Archives PDF</a>' +
             '</div>' +
             '<div class="www-less-external-links">' +
-              '<a href="http://nationalarchives.gov.uk" link_domain="http://nationalarchives.gov.uk"> National Archives </a>' +
-              '<a href="https://nationalarchives.gov.uk" link_domain="https://nationalarchives.gov.uk"></a>' +
+              '<a href="http://nationalarchives.gov.uk/1" path="/1" link_domain="http://nationalarchives.gov.uk"> National Archives </a>' +
+              '<a href="https://nationalarchives.gov.uk/2" path="/2" link_domain="https://nationalarchives.gov.uk"></a>' +
               '<a href="https://nationalarchives.gov.uk/one.pdf" link_domain="https://nationalarchives.gov.uk" path="/one.pdf">National Archives PDF</a>' +
             '</div>' +
             '<div class="protocol-relative-external-links">' +
@@ -271,13 +276,6 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
   describe('Download link tracking', function () {
     beforeEach(function () {
       window.dataLayer = []
-      defaultLinkPathParts = {
-        1: undefined,
-        2: undefined,
-        3: undefined,
-        4: undefined,
-        5: undefined
-      }
       expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
       expected.event = 'event_data'
       expected.event_data.event_name = 'file_download'
@@ -286,45 +284,47 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
       expected.govuk_gem_version = 'aVersion'
 
       links = document.createElement('div')
+      /* The link_domain, external and path attributes exist so we can hardcode what the expected value is for each test.
+      The value differs for each link, so we can't hardcode the expected value inside the test itself. */
       links.innerHTML = '<div class="fully-structured-download-links">' +
-            '<a href="https://assets.publishing.service.gov.uk/one.pdf" path="/one.pdf" external="true" link-domain="https://assets.publishing.service.gov.uk">PDF</a>' +
-            '<a href="https://assets.publishing.service.gov.uk/two.xslt" path="/two.xslt" external="true" link-domain="https://assets.publishing.service.gov.uk">Spreadsheet</a>' +
-            '<a href="https://www.gov.uk/government/uploads/system/three.doc" path="/government/uploads/system/three.doc" external="false" link-domain="https://www.gov.uk">Document</a>' +
+            '<a href="https://assets.publishing.service.gov.uk/one.pdf" path="/one.pdf" external="true" link_domain="https://assets.publishing.service.gov.uk">PDF</a>' +
+            '<a href="https://assets.publishing.service.gov.uk/two.xslt" path="/two.xslt" external="true" link_domain="https://assets.publishing.service.gov.uk">Spreadsheet</a>' +
+            '<a href="https://www.gov.uk/government/uploads/system/three.doc" path="/government/uploads/system/three.doc" external="false" link_domain="https://www.gov.uk">Document</a>' +
           '</div>' +
           '<div class="nested-download-links">' +
-            '<a href="https://www.gov.uk/government/uploads/link.png" path="/government/uploads/link.png" external="false" link-domain="https://www.gov.uk"><img src="/img" /></a>' +
-            '<a href="https://assets.publishing.service.gov.uk/two.xslt" path="/two.xslt" external="true" link-domain="https://assets.publishing.service.gov.uk"><div><img src="/img" /></div></a>' +
+            '<a href="https://www.gov.uk/government/uploads/link.png" path="/government/uploads/link.png" external="false" link_domain="https://www.gov.uk"><img src="/img" /></a>' +
+            '<a href="https://assets.publishing.service.gov.uk/two.xslt" path="/two.xslt" external="true" link_domain="https://assets.publishing.service.gov.uk"><div><img src="/img" /></div></a>' +
           '</div>' +
           '<div class="http-download-links">' +
-            '<a href="http://assets.publishing.service.gov.uk/one.pdf" path="/one.pdf" external="true" link-domain="http://assets.publishing.service.gov.uk">PDF</a>' +
-            '<a href="http://assets.publishing.service.gov.uk/two.xslt" path="/two.xslt" external="true" link-domain="http://assets.publishing.service.gov.uk">Spreadsheet</a>' +
-            '<a href="http://www.gov.uk/government/uploads/system/three.doc" path="/government/uploads/system/three.doc" external="false" link-domain="http://www.gov.uk">Document</a>' +
-            '<a href="http://www.gov.uk/government/uploads/link.png" path="/government/uploads/link.png" external="false" link-domain="http://www.gov.uk">Image</a>' +
+            '<a href="http://assets.publishing.service.gov.uk/one.pdf" path="/one.pdf" external="true" link_domain="http://assets.publishing.service.gov.uk">PDF</a>' +
+            '<a href="http://assets.publishing.service.gov.uk/two.xslt" path="/two.xslt" external="true" link_domain="http://assets.publishing.service.gov.uk">Spreadsheet</a>' +
+            '<a href="http://www.gov.uk/government/uploads/system/three.doc" path="/government/uploads/system/three.doc" external="false" link_domain="http://www.gov.uk">Document</a>' +
+            '<a href="http://www.gov.uk/government/uploads/link.png" path="/government/uploads/link.png" external="false" link_domain="http://www.gov.uk">Image</a>' +
           '</div>' +
           '<div class="www-less-download-links">' +
-            '<a href="http://gov.uk/government/uploads/system/three.doc" link-domain="http://gov.uk" path="/government/uploads/system/three.doc">Document</a>' +
-            '<a href="https://gov.uk/government/uploads/link.png" link-domain="https://gov.uk" path="/government/uploads/link.png">Image</a>' +
+            '<a href="http://gov.uk/government/uploads/system/three.doc" link_domain="http://gov.uk" path="/government/uploads/system/three.doc">Document</a>' +
+            '<a href="https://gov.uk/government/uploads/link.png" link_domain="https://gov.uk" path="/government/uploads/link.png">Image</a>' +
           '</div>' +
           '<div class="internal-links">' +
             '<a href="https://www.gov.uk/normal-link">Normal link</a>' +
             '<a href="https://www.gov.uk/another-link">Another link</a>' +
           '</div>' +
           '<div class="external-download-links">' +
-            '<a href="https://example.com/one.pdf" path="/one.pdf" link-domain="https://example.com">External download link</a>' +
-            '<a href="https://www.nationalarchives.gov.uk/government/uploads/logo.png" path="/government/uploads/logo.png" link-domain="https://www.nationalarchives.gov.uk">External download link with false positive path</a>' +
-            '<a href="https://www.nationalarchives.gov.uk/download&fileName=assets.publishing.service.gov.uk.pdf" path="/download&fileName=assets.publishing.service.gov.uk.pdf" link-domain="https://www.nationalarchives.gov.uk">External PDF link with false positive name</a>' +
+            '<a href="https://example.com/one.pdf" path="/one.pdf" link_domain="https://example.com">External download link</a>' +
+            '<a href="https://www.nationalarchives.gov.uk/government/uploads/logo.png" path="/government/uploads/logo.png" link_domain="https://www.nationalarchives.gov.uk">External download link with false positive path</a>' +
+            '<a href="https://www.nationalarchives.gov.uk/download&fileName=assets.publishing.service.gov.uk.pdf" path="/download&fileName=assets.publishing.service.gov.uk.pdf" link_domain="https://www.nationalarchives.gov.uk">External PDF link with false positive name</a>' +
           '</div>' +
           '<div class="relative-download-links">' +
             '<a href="/government/uploads/one.pdf" path="/government/uploads/one.pdf">Relative PDF link</a>' +
             '<a href="/government/uploads/two.xslt" path="/government/uploads/two.xslt">Relative Spreadsheet link</a>' +
           '</div>' +
           '<div class="preview-download-links">' +
-            '<a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/444468/moj-hq.csv/preview" path="/government/uploads/system/uploads/attachment_data/file/444468/moj-hq.csv/preview" link-domain="https://assets.publishing.service.gov.uk">Preview link</a>' +
-            '<a href="http://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/444468/moj-hq.csv/preview" path="/government/uploads/system/uploads/attachment_data/file/444468/moj-hq.csv/preview" link-domain="http://assets.publishing.service.gov.uk">Relative Spreadsheet link</a>' +
+            '<a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/444468/moj-hq.csv/preview" path="/government/uploads/system/uploads/attachment_data/file/444468/moj-hq.csv/preview" link_domain="https://assets.publishing.service.gov.uk">Preview link</a>' +
+            '<a href="http://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/444468/moj-hq.csv/preview" path="/government/uploads/system/uploads/attachment_data/file/444468/moj-hq.csv/preview" link_domain="http://assets.publishing.service.gov.uk">Relative Spreadsheet link</a>' +
           '</div>' +
           '<div class="not-a-preview-link">' +
-            '<a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/444468/preview.mp4" path="/government/uploads/system/uploads/attachment_data/file/444468/preview.mp4" link-domain="https://assets.publishing.service.gov.uk">Preview link</a>' +
-            '<a href="http://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/444468/preview.jpg&preview=false" path="/government/uploads/system/uploads/attachment_data/file/444468/preview.jpg&preview=false" link-domain="http://assets.publishing.service.gov.uk">Relative Spreadsheet link</a>' +
+            '<a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/444468/preview.mp4" path="/government/uploads/system/uploads/attachment_data/file/444468/preview.mp4" link_domain="https://assets.publishing.service.gov.uk">Preview link</a>' +
+            '<a href="http://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/444468/preview.jpg&preview=false" path="/government/uploads/system/uploads/attachment_data/file/444468/preview.jpg&preview=false" link_domain="http://assets.publishing.service.gov.uk">Relative Spreadsheet link</a>' +
           '</div>'
 
       body.appendChild(links)
@@ -349,7 +349,7 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
         var link = linksToTest[i]
         GOVUK.triggerEvent(link, 'click')
 
-        expected.event_data.link_domain = link.getAttribute('link-domain')
+        expected.event_data.link_domain = link.getAttribute('link_domain')
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.type = 'generic download'
         expected.event_data.text = link.innerText.trim()
@@ -367,7 +367,7 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
         window.dataLayer = []
         var link = linksToTest[i]
         GOVUK.triggerEvent(link, 'click')
-        expected.event_data.link_domain = link.closest('a').getAttribute('link-domain')
+        expected.event_data.link_domain = link.closest('a').getAttribute('link_domain')
         expected.event_data.url = link.closest('a').getAttribute('href')
         expected.event_data.text = link.closest('a').innerText.trim()
         expected.event_data.type = 'generic download'
@@ -385,7 +385,7 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
         window.dataLayer = []
         var link = linksToTest[i]
         GOVUK.triggerEvent(link, 'click')
-        expected.event_data.link_domain = link.getAttribute('link-domain')
+        expected.event_data.link_domain = link.getAttribute('link_domain')
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.type = 'generic download'
         expected.event_data.text = link.innerText.trim()
@@ -403,7 +403,7 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
         window.dataLayer = []
         var link = linksToTest[i]
         GOVUK.triggerEvent(link, 'click')
-        expected.event_data.link_domain = link.getAttribute('link-domain')
+        expected.event_data.link_domain = link.getAttribute('link_domain')
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.type = 'generic download'
         expected.event_data.text = link.innerText.trim()
@@ -433,7 +433,7 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
         var link = linksToTest[i]
         GOVUK.triggerEvent(link, 'click')
 
-        expected.event_data.link_domain = link.getAttribute('link-domain')
+        expected.event_data.link_domain = link.getAttribute('link_domain')
         expected.event_data.event_name = 'navigation'
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.text = link.innerText.trim()
@@ -471,7 +471,7 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
         window.dataLayer = []
         var link = linksToTest[i]
         GOVUK.triggerEvent(link, 'click')
-        expected.event_data.link_domain = link.getAttribute('link-domain')
+        expected.event_data.link_domain = link.getAttribute('link_domain')
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.type = 'preview'
         expected.event_data.text = link.innerText.trim()
@@ -489,7 +489,7 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
         window.dataLayer = []
         var link = linksToTest[i]
         GOVUK.triggerEvent(link, 'click')
-        expected.event_data.link_domain = link.getAttribute('link-domain')
+        expected.event_data.link_domain = link.getAttribute('link_domain')
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.type = 'generic download'
         expected.event_data.text = link.innerText.trim()
@@ -504,13 +504,6 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
   describe('Mailto link tracking', function () {
     beforeEach(function () {
       window.dataLayer = []
-      defaultLinkPathParts = {
-        1: undefined,
-        2: undefined,
-        3: undefined,
-        4: undefined,
-        5: undefined
-      }
       expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
       expected.event = 'event_data'
       expected.event_data.event_name = 'navigation'
@@ -521,11 +514,11 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
       links = document.createElement('div')
       links.innerHTML =
           '<div class="mail-to-links">' +
-              '<a href="mailto:example@gov.uk" path="mailto:example@gov.uk"> National Archives </a>' +
+              '<a href="mailto:example@gov.uk"> National Archives </a>' +
               '<span>This is not a mailto link</span>' +
             '</div>' +
             '<div class="invalid-links">' +
-              '<a href="https://gov.uk/mailto:example@gov.uk" path="mailto:example@gov.uk"> mailto:example@gov.uk </a>' +
+              '<a href="https://gov.uk/mailto:example@gov.uk"> mailto:example@gov.uk </a>' +
             '</div>'
 
       body.appendChild(links)
@@ -552,8 +545,7 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.text = link.innerText.trim()
         expected.govuk_gem_version = 'aVersion'
-        var linkPath = link.getAttribute('path')
-        expected.event_data.link_path_parts = window.GOVUK.extendObject(defaultLinkPathParts, { 1: linkPath })
+        expected.event_data.link_path_parts = window.GOVUK.extendObject(defaultLinkPathParts, { 1: 'mailto:example@gov.uk' })
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -573,25 +565,20 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
   describe('Share and follow link tracking', function () {
     beforeEach(function () {
       window.dataLayer = []
-      defaultLinkPathParts = {
-        1: undefined,
-        2: undefined,
-        3: undefined,
-        4: undefined,
-        5: undefined
-      }
       expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
       expected.event = 'event_data'
       expected.govuk_gem_version = 'aVersion'
 
       links = document.createElement('div')
+      /* The link_domain, external and path attributes exist so we can hardcode what the expected value is for each test.
+      The value differs for each link, so we can't hardcode the expected value inside the test itself. */
       links.innerHTML =
           '<div class="share-links">' +
               '<a href="example.com" data-ga4-link=\'' + JSON.stringify({ event_name: 'share', type: 'share this page', index: '1', index_total: '1', text: 'myspace', method: 'populated-via-js' }) + '\'>Share</a>' +
           '</div>' +
           '<div class="follow-links">' +
-              '<a href="https://example.com" link-domain="https://example.com" external="true" data-ga4-link=\'' + JSON.stringify({ event_name: 'navigation', type: 'follow us', index: '1', index_total: '2', text: 'Follow us', url: 'https://example.com', external: 'populated-via-js', method: 'populated-via-js' }) + '\'>Follow us</a>' +
-              '<a href="https://www.gov.uk" link-domain="https://www.gov.uk" external="false" data-ga4-link=\'' + JSON.stringify({ event_name: 'navigation', type: 'follow us', index: '2', index_total: '2', text: 'Follow me', url: 'https://www.gov.uk', external: 'populated-via-js', method: 'populated-via-js' }) + '\'>Follow me</a>' +
+              '<a href="https://example.com" link_domain="https://example.com" external="true" data-ga4-link=\'' + JSON.stringify({ event_name: 'navigation', type: 'follow us', index: '1', index_total: '2', text: 'Follow us', url: 'https://example.com', external: 'populated-via-js', method: 'populated-via-js' }) + '\'>Follow us</a>' +
+              '<a href="https://www.gov.uk" link_domain="https://www.gov.uk" external="false" data-ga4-link=\'' + JSON.stringify({ event_name: 'navigation', type: 'follow us', index: '2', index_total: '2', text: 'Follow me', url: 'https://www.gov.uk', external: 'populated-via-js', method: 'populated-via-js' }) + '\'>Follow me</a>' +
           '</div>'
 
       body.appendChild(links)
@@ -644,7 +631,7 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.external = link.getAttribute('external')
         expected.event_data.method = 'primary click'
-        expected.event_data.link_domain = link.getAttribute('link-domain')
+        expected.event_data.link_domain = link.getAttribute('link_domain')
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
@@ -652,13 +639,6 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
   describe('Helper function tracking', function () {
     beforeEach(function () {
       window.dataLayer = []
-      defaultLinkPathParts = {
-        1: undefined,
-        2: undefined,
-        3: undefined,
-        4: undefined,
-        5: undefined
-      }
       links = document.createElement('div')
       body.appendChild(links)
       body.addEventListener('click', preventDefault)
@@ -694,7 +674,7 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
 
       links.innerHTML = '<div class="query-param-links">' +
       '<a href="https://nationalarchives.gov.uk/test?_ga=2.179870689.471678113.1662373341-1606126050.1639392506">_ga only link</a>' +
-      '<a href="https://nationalarchives.gov.uk/test?_ga=2.179870689.471678113.1662373341-1606126050.1639392506">_gl only link</a>' +
+      '<a href="https://nationalarchives.gov.uk/test?_gl=2.179870689.471678113.1662373341-1606126050.1639392506">_gl only link</a>' +
       '<a href="https://nationalarchives.gov.uk/test?hello=world&_ga=2.179870689.471678113.1662373341-1606126050.1639392506&_gl=2.179870689.471678113.1662373341-1606126050.1639392506">_ga & _gl link</a>' +
       '<a href="https://nationalarchives.gov.uk/test?hello=world&_ga=example&another=one&_gl=example&goodbye=true">other query params nested around _ga and _gl</a>' +
       '<a href="https://nationalarchives.gov.uk/test?_ga=example&_gl=example&search=%26&order=relevance">keep the search query params that contains a &</a>' +
@@ -804,6 +784,7 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
         window.dataLayer = []
         var link = linksToTest[i]
         GOVUK.triggerEvent(link, 'click')
+        console.log(window.dataLayer)
         var expectedObject = window.GOVUK.extendObject(defaultLinkPathParts, expectedLinkPathParts[i])
         expect(window.dataLayer[0].event_data.link_path_parts).toEqual(expectedObject)
       }
