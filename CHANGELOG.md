@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix axe-core false positives for color-contrast tests ([PR #3007](https://github.com/alphagov/govuk_publishing_components/pull/3007))
+
 ## 31.1.0
 
 * Resolve Plek.current deprecations ([PR #3000](https://github.com/alphagov/govuk_publishing_components/pull/3000))
