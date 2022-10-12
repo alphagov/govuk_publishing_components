@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Move the GTM blocklist code ([PR #3011](https://github.com/alphagov/govuk_publishing_components/pull/3011))
+
 ## 31.1.1
 
 * Update to LUX 302 ([PR #3009](https://github.com/alphagov/govuk_publishing_components/pull/3009))
