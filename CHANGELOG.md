@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Update to LUX 302 ([PR #3009](https://github.com/alphagov/govuk_publishing_components/pull/3009))
 * Fix axe-core false positives for color-contrast tests ([PR #3007](https://github.com/alphagov/govuk_publishing_components/pull/3007))
 
 ## 31.1.0
