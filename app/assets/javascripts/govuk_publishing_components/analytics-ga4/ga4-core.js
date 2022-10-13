@@ -22,6 +22,7 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
       } else {
         // initialise GTM
         window.dataLayer = window.dataLayer || []
+        window.dataLayer.push({ 'gtm.blocklist': ['customPixels', 'customScripts', 'html', 'nonGoogleScripts'] })
         window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' })
 
         var auth = window.GOVUK.analyticsGa4.vars.auth || ''
@@ -36,7 +37,6 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
         this.googleSrc = 'https://www.googletagmanager.com/gtm.js?id=' + window.GOVUK.analyticsGa4.vars.id + auth + preview
         newScript.src = this.googleSrc
         firstScript.parentNode.insertBefore(newScript, firstScript)
-        window.dataLayer.push({ 'gtm.blocklist': ['customPixels', 'customScripts', 'html', 'nonGoogleScripts'] })
       }
     },
 

@@ -21,10 +21,10 @@ describe('GA4 core', function () {
     GOVUK.analyticsGa4.core.load()
 
     expect(window.dataLayer.length).toEqual(2)
-    expect(Object.keys(window.dataLayer[0])).toContain('gtm.start')
-    expect(Object.keys(window.dataLayer[0])).toContain('event')
-    expect(Object.keys(window.dataLayer[1])).toContain('gtm.blocklist')
-    expect(window.dataLayer[1]['gtm.blocklist']).toEqual(['customPixels', 'customScripts', 'html', 'nonGoogleScripts'])
+    expect(Object.keys(window.dataLayer[0])).toContain('gtm.blocklist')
+    expect(Object.keys(window.dataLayer[1])).toContain('gtm.start')
+    expect(Object.keys(window.dataLayer[1])).toContain('event')
+    expect(window.dataLayer[0]['gtm.blocklist']).toEqual(['customPixels', 'customScripts', 'html', 'nonGoogleScripts'])
   })
 
   describe('calls the right URL from Google', function () {
