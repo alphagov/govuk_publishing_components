@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-    paths-ignore: &ignore-list
+    paths-ignore: # Until anchors are supported by GitHub Actions, we have to write this list twice.
       - ".github/**"
       - "docs/**"
       - ".gitignore"
@@ -14,7 +14,15 @@ on:
       - "LICENCE.md"
       - "SUPPORT.md"
   pull_request:
-    paths-ignore: *ignore-list
+    paths-ignore:
+      - ".github/**"
+      - "docs/**"
+      - ".gitignore"
+      - "startup.sh"
+      - "CHANGELOG.md"
+      - "README.md"
+      - "LICENCE.md"
+      - "SUPPORT.md"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref_name || github.run_id }}
