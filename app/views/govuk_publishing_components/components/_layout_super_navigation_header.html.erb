@@ -15,7 +15,7 @@
   hide_navigation_menu_text = t("components.layout_super_navigation_header.menu_toggle_label.hide", :label => "navigation")
   show_navigation_menu_text = t("components.layout_super_navigation_header.menu_toggle_label.show", :label => "navigation")
 %>
-<header role="banner" class="gem-c-layout-super-navigation-header" data-module="gem-track-click" data-track-links-only>
+<header role="banner" class="gem-c-layout-super-navigation-header" data-module="gem-track-click ga4-event-tracker" data-track-links-only>
   <div class="gem-c-layout-super-navigation-header__container govuk-width-container govuk-clearfix">
     <div class="gem-c-layout-super-navigation-header__header-logo">
       <a
@@ -78,6 +78,13 @@
         hidden
         id="super-navigation-menu-toggle"
         type="button"
+        data-ga4="<%= {
+          "event_name": "select_content",
+          "type": "super navigation header",
+          "text": "Menu",
+          "index": 1,
+          "index_total": navigation_links.length + 2
+        }.to_json %>"
       >
         <span class="gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner">
           Menu
@@ -124,6 +131,13 @@
                     toggle_desktop_group: "top",
                     toggle_mobile_group: "second",
                     tracking_key: tracking_label,
+                    ga4: {
+                      event_name: "select_content",
+                      type: "super navigation header",
+                      text: link[:label],
+                      index: index + 2,
+                      index_total: navigation_links.length + 2
+                    }
                   },
                   hidden: true,
                   id: "super-navigation-menu__section-#{unique_id}-toggle",
@@ -217,6 +231,13 @@
         hidden
         id="super-search-menu-toggle"
         type="button"
+       data-ga4="<%= {
+          "event_name": "select_content",
+          "type": "super navigation header",
+          "text": "Search",
+          "index": navigation_links.length + 2,
+          "index_total": navigation_links.length + 2
+        }.to_json %>"
       >
         <span class="govuk-visually-hidden">
           <%= search_text %>
