@@ -44,17 +44,15 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
         return
       }
 
-      var clickData = {}
       var href = element.getAttribute('href')
 
       if (!href) {
         return
       }
-
+      var clickData = {}
       var linkAttributes = element.getAttribute('data-ga4-link')
       if (linkAttributes) {
-        linkAttributes = JSON.parse(linkAttributes)
-        clickData = window.GOVUK.extendObject(clickData, linkAttributes)
+        clickData = JSON.parse(linkAttributes)
 
         /* Since external links can't be determined in the template, we use populated-via-js as a signal
         for our JavaScript to determine this value. */
@@ -62,41 +60,47 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
           clickData.external = this.isExternalLink(clickData.url) ? 'true' : 'false'
         }
 
-        if (clickData.link_method === 'populated-via-js') {
-          clickData.link_method = this.getClickType(event)
+        if (clickData.method === 'populated-via-js') {
+          clickData.method = this.getClickType(event)
         }
 
         if (clickData.index) {
-          clickData.index = parseInt(linkAttributes.index)
+          clickData.index = parseInt(clickData.index)
         }
 
         if (clickData.index_total) {
-          clickData.index_total = parseInt(linkAttributes.index_total)
+          clickData.index_total = parseInt(clickData.index_total)
         }
       } else if (this.isMailToLink(href)) {
         clickData.event_name = 'navigation'
         clickData.type = 'email'
         clickData.external = 'true'
         clickData.url = href
-        clickData.text = element.textContent.trim()
-        clickData.link_method = this.getClickType(event)
+        clickData.text = this.removeLinesAndExtraSpaces(element.textContent)
+        clickData.method = this.getClickType(event)
       } else if (this.isDownloadLink(href)) {
         clickData.event_name = 'file_download'
         clickData.type = this.isPreviewLink(href) ? 'preview' : 'generic download'
         clickData.external = this.isExternalLink(href) ? 'true' : 'false'
         clickData.url = href
-        clickData.text = element.textContent.trim()
-        clickData.link_method = this.getClickType(event)
+        clickData.text = this.removeLinesAndExtraSpaces(element.textContent)
+        clickData.method = this.getClickType(event)
       } else if (this.isExternalLink(href)) {
         clickData.event_name = 'navigation'
         clickData.type = 'generic link'
         clickData.external = 'true'
         clickData.url = href
-        clickData.text = element.textContent.trim()
-        clickData.link_method = this.getClickType(event)
+        clickData.text = this.removeLinesAndExtraSpaces(element.textContent)
+        clickData.method = this.getClickType(event)
       }
 
       if (Object.keys(clickData).length > 0) {
+        if (clickData.url) {
+          clickData.url = this.removeCrossDomainParams(clickData.url)
+          clickData.link_domain = this.populateLinkDomain(clickData.url)
+          clickData.link_path_parts = this.populateLinkPathParts(clickData.url)
+        }
+
         var schema = new window.GOVUK.analyticsGa4.Schemas().eventSchema()
         schema.event = 'event_data'
 
@@ -112,6 +116,49 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
       }
     },
 
+    populateLinkPathParts: function (href) {
+      var path = ''
+      if (this.hrefIsRelative(href) || this.isMailToLink(href)) {
+        path = href
+      } else {
+        // This regex matches a protocol and domain name at the start of a string such as https://www.gov.uk, http://gov.uk, //gov.uk
+        path = href.replace(/^(http:||https:)?(\/\/)([^\/]*)/, '') // eslint-disable-line no-useless-escape
+      }
+
+      if (path === '/' || path.length === 0) {
+        return
+      }
+
+      /*
+      This will create an object with 5 keys that are indexes ("1", "2", etc.)
+      The values will be each part of the link path split every 100 characters, or undefined.
+      For example: {"1": "/hello/world/etc...", "2": "/more/path/text...", "3": undefined, "4": undefined, "5": undefined}
+      Undefined values are needed to override the persistent object in GTM so that any values from old pushes are overwritten.
+      */
+      var parts = path.match(/.{1,100}/g)
+      var obj = {}
+      for (var i = 0; i < 5; i++) {
+        obj[(i + 1).toString()] = parts[i]
+      }
+      return obj
+    },
+
+    populateLinkDomain: function (href) {
+      // We always want mailto links to have an undefined link_domain
+      if (this.isMailToLink(href)) {
+        return undefined
+      }
+
+      if (this.hrefIsRelative(href)) {
+        return this.getProtocol() + '//' + this.getHostname()
+      } else {
+        // This regex matches a protocol and domain name at the start of a string such as https://www.gov.uk, http://gov.uk, //gov.uk
+        var domainRegex = /^(http:||https:)?(\/\/)([^\/]*)/ // eslint-disable-line no-useless-escape
+        var domain = domainRegex.exec(href)[0]
+        return domain
+      }
+    },
+
     appendDomainsWithoutWWW: function (domainsArrays) {
       // Add domains with www. removed, in case site hrefs are marked up without www. included.
       for (var i = 0; i < domainsArrays.length; i++) {
@@ -121,6 +168,13 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
           domainsArrays.push(domainWithoutWww)
         }
       }
+    },
+
+    removeLinesAndExtraSpaces: function (text) {
+      text = text.trim()
+      text = text.replace(/(\r\n|\n|\r)/gm, ' ') // Replace line breaks with 1 space
+      text = text.replace(/\s+/g, ' ') // Replace instances of 2+ spaces with 1 space
+      return text
     },
 
     getClickType: function (event) {
@@ -236,6 +290,10 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
       return string.substring(0, stringToFind.length) === stringToFind
     },
 
+    stringEndsWith: function (string, stringToFind) {
+      return string.substring(string.length - stringToFind.length, string.length) === stringToFind
+    },
+
     hrefIsRelative: function (href) {
       // Checks that a link is relative, but is not a protocol relative url
       return href[0] === '/' && href[1] !== '/'
@@ -247,6 +305,25 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
 
     getHostname: function () {
       return window.location.hostname
+    },
+
+    getProtocol: function () {
+      return window.location.protocol
+    },
+
+    removeCrossDomainParams: function (href) {
+      if (href.indexOf('_ga') !== -1 || href.indexOf('_gl') !== -1) {
+        // _ga & _gl are values needed for cross domain tracking, but we don't want them included in our click tracking.
+        href = href.replaceAll(/_g[al]=([^&]*)/g, '')
+
+        // The following code cleans up inconsistencies such as gov.uk/&&, gov.uk/?&hello=world, gov.uk/?, and gov.uk/&.
+        href = href.replaceAll(/(&&)+/g, '&')
+        href = href.replace('?&', '?')
+        if (this.stringEndsWith(href, '?') || this.stringEndsWith(href, '&')) {
+          href = href.substring(0, href.length - 1)
+        }
+      }
+      return href
     }
   }
 

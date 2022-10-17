@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Move the GTM blocklist code ([PR #3011](https://github.com/alphagov/govuk_publishing_components/pull/3011))
+* Fix issues with GA4 link tracking identified by performance analysts ([PR #3004](https://github.com/alphagov/govuk_publishing_components/pull/3004))
 
 ## 31.1.1
 
