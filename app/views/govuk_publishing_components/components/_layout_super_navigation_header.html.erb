@@ -15,7 +15,7 @@
   hide_navigation_menu_text = t("components.layout_super_navigation_header.menu_toggle_label.hide", :label => "navigation")
   show_navigation_menu_text = t("components.layout_super_navigation_header.menu_toggle_label.show", :label => "navigation")
 %>
-<header role="banner" class="gem-c-layout-super-navigation-header" data-module="gem-track-click ga4-event-tracker" data-track-links-only>
+<header role="banner" class="gem-c-layout-super-navigation-header" data-module="gem-track-click ga4-event-tracker" data-track-links-only data-ga4-expandable>
   <div class="gem-c-layout-super-navigation-header__container govuk-width-container govuk-clearfix">
     <div class="gem-c-layout-super-navigation-header__header-logo">
       <a
@@ -80,10 +80,11 @@
         type="button"
         data-ga4="<%= {
           "event_name": "select_content",
-          "type": "super navigation header",
+          "type": "header menu bar",
           "text": "Menu",
           "index": 1,
-          "index_total": navigation_links.length + 2
+          "index_total": navigation_links.length + 2,
+          "section": "Menu"
         }.to_json %>"
       >
         <span class="gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner">
@@ -133,10 +134,11 @@
                     tracking_key: tracking_label,
                     ga4: {
                       event_name: "select_content",
-                      type: "super navigation header",
+                      type: "header menu bar",
                       text: link[:label],
                       index: index + 2,
-                      index_total: navigation_links.length + 2
+                      index_total: navigation_links.length + 2,
+                      section: link[:label]
                     }
                   },
                   hidden: true,
@@ -231,12 +233,13 @@
         hidden
         id="super-search-menu-toggle"
         type="button"
-       data-ga4="<%= {
+        data-ga4="<%= {
           "event_name": "select_content",
-          "type": "super navigation header",
+          "type": "header menu bar",
           "text": "Search",
           "index": navigation_links.length + 2,
-          "index_total": navigation_links.length + 2
+          "index_total": navigation_links.length + 2,
+          "section": "Search"
         }.to_json %>"
       >
         <span class="govuk-visually-hidden">

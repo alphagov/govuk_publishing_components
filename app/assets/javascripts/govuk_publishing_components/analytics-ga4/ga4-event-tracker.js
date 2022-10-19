@@ -51,8 +51,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         }
       }
 
-      // Ensure it only tracks aria-expanded in an accordion/super navigation header element, instead of in any child of the clicked element
-      if (target.closest('.gem-c-accordion') || target.closest('.gem-c-layout-super-navigation-header')) {
+      /* Ensure it only tracks aria-expanded in an accordion or element with data-ga4-expandable on it. */
+      if (target.closest('.gem-c-accordion') || target.closest('[data-ga4-expandable]')) {
         var ariaExpanded = this.getClosestAttribute(target, 'aria-expanded')
       }
 

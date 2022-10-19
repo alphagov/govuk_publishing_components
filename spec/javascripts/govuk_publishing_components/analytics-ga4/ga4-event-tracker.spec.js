@@ -463,9 +463,9 @@ describe('Google Analytics event tracking', function () {
     })
   })
 
-  describe('doing tracking on the super navigation header', function () {
+  describe('doing tracking on an data-ga4-expandable element', function () {
     beforeEach(function () {
-      element.innerHTML = '<header data-module="ga4-event-tracker" class="gem-c-layout-super-navigation-header"><nav>' +
+      element.innerHTML = '<header data-module="ga4-event-tracker" data-ga4-expandable><nav>' +
       '<button aria-expanded="false">Menu</button>' +
       '<ul><li><button aria-expanded="false"">Topics</button></li>' +
       '<li><button aria-expanded="false">Government activity</button></li></ul>' +
@@ -475,11 +475,11 @@ describe('Google Analytics event tracking', function () {
       new GOVUK.Modules.Ga4EventTracker(element).init()
     })
 
-    it('tracks expanding/collapsing menu sections and search', function () {
+    it('tracks expanding/collapsing sections under the data-ga4-expandable attribute', function () {
       var expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
       expected.event = 'event_data'
       expected.event_data.event_name = 'select_content'
-      expected.event_data.type = 'super navigation header'
+      expected.event_data.type = 'header menu bar'
       expected.govuk_gem_version = 'aVersion'
       var buttons = document.querySelectorAll('button')
       expected.event_data.index_total = buttons.length
@@ -489,8 +489,9 @@ describe('Google Analytics event tracking', function () {
         var button = buttons[i]
         button.setAttribute('data-ga4', JSON.stringify({
           event_name: 'select_content',
-          type: 'super navigation header',
+          type: 'header menu bar',
           text: button.textContent,
+          section: button.textContent,
           index: i + 1,
           index_total: buttons.length
         }))
@@ -498,6 +499,7 @@ describe('Google Analytics event tracking', function () {
         button.click()
         expected.event_data.action = 'opened'
         expected.event_data.text = button.textContent
+        expected.event_data.section = button.textContent
         expected.event_data.index = i + 1
         expect(window.dataLayer[0]).toEqual(expected)
         button.setAttribute('aria-expanded', 'true')
