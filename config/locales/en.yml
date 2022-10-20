@@ -61,7 +61,7 @@ en:
         publication: Publication for %{nation}
       wales: Wales
     feedback:
-      close: Close
+      close: Cancel
       dont_include_personal_info: Don’t include personal or financial information like your National Insurance number or credit card details.
       email_address: Email address
       help_us_improve_govuk: Help us improve GOV.UK

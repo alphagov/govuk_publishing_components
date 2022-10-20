@@ -2,11 +2,20 @@
   background: govuk-colour("white");
   margin-top: govuk-spacing(6);
 
-  @include govuk-media-query($from: tablet) {
+  @include govuk-media-query($from: desktop) {
     margin-top: govuk-spacing(9);
-    border-bottom: 1px solid govuk-colour("white");
   }
 
+  // New design has the box flush with edges of smaller screens
+  // We need to compensate for `govuk-width-container` margins:
+  @include govuk-media-query($until: tablet) {
+    margin-right: govuk-spacing(-3);
+    margin-left: govuk-spacing(-3);
+  }
+  @include govuk-media-query($from: tablet, $until: desktop) {
+    margin-right: govuk-spacing(-6);
+    margin-left: govuk-spacing(-6);
+  }
   // Scoped to the feedback component temporarily
   [hidden] {
     // stylelint-disable-next-line declaration-no-important
@@ -14,92 +23,88 @@
   }
 }
 
-.gem-c-feedback__prompt-questions {
-  text-align: center;
-  border-bottom: 1px solid govuk-colour("white");
-  padding: govuk-spacing(5) govuk-spacing(5) govuk-spacing(5) govuk-spacing(5);
-  box-sizing: border-box;
+.gem-c-feedback__prompt {
+  background-color: govuk-colour("light-grey");
+  color: govuk-colour("black");
+  border-top: 1px solid $govuk-border-colour;
+  outline: 0;
+}
 
+.gem-c-feedback__prompt-content {
+  display: flex;
+  flex-direction: column;
+  padding: 0 govuk-spacing(3);
   @include govuk-media-query($from: tablet) {
-    width: 50%;
-    display: table-cell;
-    text-align: left;
-    border-bottom: 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.gem-c-feedback__prompt-questions {
+  text-align: left;
+  padding: govuk-spacing(4) 0;
+  @include govuk-media-query($from: tablet) {
+    margin: 0 govuk-spacing(3);
   }
 }
 
 .gem-c-feedback__prompt-questions--something-is-wrong {
-  text-align: center;
-
+  border-top: 1px solid $govuk-border-colour;
   @include govuk-media-query($from: tablet) {
-    text-align: right;
-    vertical-align: bottom;
-    float: none;
+    border: 0;
   }
 }
 
-.gem-c-feedback__prompt {
-  @include govuk-clearfix;
-  background-color: govuk-colour("blue");
-  color: govuk-colour("white");
-  outline: 0;
-
-  @include govuk-media-query($from: tablet) {
-    @include govuk-font(16, $weight: bold);
-    display: table;
-    width: 100%;
+.gem-c-feedback__prompt-question-answer {
+  display: flex;
+  align-items: center;
+  @include govuk-media-query($until: mobile) {
+    justify-content: center;
+    flex-wrap: wrap;
   }
 }
 
 .gem-c-feedback__prompt-question,
 .gem-c-feedback__prompt-success {
   @include govuk-font(19, $weight: bold);
-
   @include govuk-media-query($from: tablet) {
     @include govuk-font(16, $weight: bold);
   }
 }
 
 .gem-c-feedback__prompt-question {
-  vertical-align: top;
-  display: inline-block;
-  margin: govuk-spacing(2) govuk-spacing(4);
+  margin: 0;
+  padding-bottom: govuk-spacing(2);
 
   &:focus {
     outline: 0;
   }
-
-  @include govuk-media-query($from: tablet) {
-    margin-left: 0;
-    margin-top: 0;
-    display: block;
-  }
-
-  // This custom media-query is to account for some awkward positioning where the yes and no buttons are too big to sit inline with the prompt question
-  @include govuk-media-query($from: 950px) {
-    display: inline-block;
-    margin-top: govuk-spacing(2);
+  @include govuk-media-query($from: mobile) {
+    padding-bottom: 0;
+    margin-right: govuk-spacing(2);
   }
 }
 
 .gem-c-feedback__prompt-link {
   @include govuk-font(19);
   background: transparent;
-  box-shadow: 0 2px 0 govuk-colour("white");
-  border: 1px govuk-colour("white") solid;
-  min-width: 100%;
+  color: govuk-colour("black");
+  box-shadow: 0 3px 0 govuk-colour("black");
+  border: 1px govuk-colour("black") solid;
+  margin-bottom: 0;
+  width: 100%;
 
   &:hover {
     // backup style for browsers that don't support rgba
-    background: govuk-colour("black");
+    background: govuk-colour("mid-grey");
     background: rgba(govuk-colour("black"), .2);
+    color: govuk-colour("black");
   }
 
-  @include govuk-media-query($from: mobile) {
-    min-width: 100px;
-    margin-bottom: 0;
+  &:active:focus:not(:hover) {
+    background: govuk-colour("yellow");
   }
-
   @include govuk-media-query($from: tablet) {
     @include govuk-font(16);
   }
@@ -108,42 +113,44 @@
 .gem-c-feedback__email-link,
 .gem-c-feedback__prompt-link {
   position: relative;
+
+  &:focus:not(:active):not(:hover) {
+    border-color: govuk-colour("black");
+  }
+
+  &:focus,
+  &:active {
+    color: $govuk-focus-text-colour;
+  }
 }
 
 .gem-c-feedback__prompt-link:link,
 .gem-c-feedback__prompt-link:visited {
-  color: govuk-colour("white");
+  color: govuk-colour("black");
 
-  &:focus {
+  &:focus,
+  &:active {
     color: $govuk-focus-text-colour;
   }
 }
 
 .gem-c-feedback__option-list {
+  display: flex;
   list-style-type: none;
   margin: 0;
   padding: 0;
-  margin-top: govuk-spacing(2);
-
-  @include govuk-media-query($from: mobile) {
-    display: inline-block;
-    margin-right: govuk-spacing(2);
-  }
-
-  @include govuk-media-query($from: tablet) {
-    margin-top: 0;
-  }
 }
 
 .gem-c-feedback__option-list-item {
-  @include govuk-media-query($from: mobile) {
-    display: inline-block;
+  &:last-child {
+    margin-left: govuk-spacing(2);
   }
 }
 
-.gem-c-feedback__option-list-item:last-child {
-  @include govuk-media-query($from: mobile) {
-    margin-left: govuk-spacing(4);
+.gem-c-feedback__option-list-item .gem-c-feedback__prompt-link {
+  min-width: 100px;
+  @include govuk-media-query($until: desktop) {
+    min-width: 80px;
   }
 }
 
@@ -158,7 +165,7 @@
     outline: solid 3px $govuk-focus-colour;
   }
 
-  @include govuk-media-query($from: tablet) {
+  @include govuk-media-query($from: desktop) {
     border-width: $govuk-border-width;
   }
 
@@ -190,11 +197,11 @@
 }
 
 .gem-c-feedback__form {
-  padding: govuk-spacing(3) 0;
-  border-top: govuk-spacing(2) solid govuk-colour("blue");
+  padding: govuk-spacing(3);
+  border-top: 1px solid $govuk-border-colour;
 
   @include govuk-media-query($from: tablet) {
-    padding: govuk-spacing(6) 0;
+    padding: govuk-spacing(6);
   }
 }
 
@@ -217,8 +224,10 @@
 }
 
 .gem-c-feedback__close {
-  float: right;
-  margin: 0 govuk-spacing(1) govuk-spacing(2) 0;
+  margin: 0 govuk-spacing(2);
+  @include govuk-media-query($until: tablet) {
+    margin: govuk-spacing(4) 0 0;
+  }
 }
 
 .gem-c-feedback__email-link {
@@ -228,7 +237,6 @@
   @include govuk-media-query($from: desktop) {
     display: inline-block;
     margin-top: govuk-spacing(2);
-    margin-left: govuk-spacing(3);
   }
 }
 

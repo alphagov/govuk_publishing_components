@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Feedback component visual updates ([PR #2894](https://github.com/alphagov/govuk_publishing_components/pull/2894))
+
 ## 31.1.2
 
 * Move the GTM blocklist code ([PR #3011](https://github.com/alphagov/govuk_publishing_components/pull/3011))
