@@ -9,13 +9,15 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
     PIIRemover: new window.GOVUK.analyticsGa4.PIIRemover(), // imported in analytics-ga4.js
     nullValue: undefined,
 
-    init: function () {
+    init: function (dynamicPageViewData) {
+      dynamicPageViewData = dynamicPageViewData || {}
+
       if (window.dataLayer) {
         var data = {
           event: 'page_view',
           page_view: {
             location: this.getLocation(),
-            referrer: this.getReferrer(),
+            referrer: dynamicPageViewData.referrer || this.getReferrer(),
             title: this.getTitle(),
             status_code: this.getStatusCode(),
 
@@ -42,7 +44,9 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
             political_status: this.getMetaContent('political-status'),
             primary_publishing_organisation: this.getMetaContent('primary-publishing-organisation'),
             organisations: this.getMetaContent('analytics:organisations'),
-            world_locations: this.getMetaContent('analytics:world-locations')
+            world_locations: this.getMetaContent('analytics:world-locations'),
+
+            dynamic: dynamicPageViewData.dynamic || 'false'
           }
         }
         window.GOVUK.analyticsGa4.core.sendData(data)
