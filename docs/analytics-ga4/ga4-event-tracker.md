@@ -81,7 +81,7 @@ It is also complicated by the fact that the JavaScript that creates this element
   - in the example above, the result will be `data-ga4="{ "event_name": "select_content", "type": "accordion" }"`
 - wrap the accordion in the event tracking script
   - tracking will be activated by clicks on elements with a `data-ga4` attribute
-  - it checks for an `aria-expanded` attribute, either on the clicked element or a child of the clicked element, and sets the `action` of the GA data accordingly
+  - it checks for an `aria-expanded` attribute if the clicked element or parent element contains a `data-ga4-expandable` value or the `gem-c-accordion` class. If it detects one of those, it sets the `action` of the GA data accordingly.
   - the current text of the clicked element is also recorded (this can be overridden to a non-dynamic value by including `text` in the attributes if required)
 
 When a user clicks 'Show all sections' the following information is pushed to the dataLayer.

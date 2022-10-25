@@ -10,6 +10,7 @@
 ## 31.2.0
 
 * Feedback component visual updates ([PR #2894](https://github.com/alphagov/govuk_publishing_components/pull/2894))
+* Add tracking to super navigation header dropdowns ([PR #3024](https://github.com/alphagov/govuk_publishing_components/pull/3024))
 
 ## 31.1.2
 
