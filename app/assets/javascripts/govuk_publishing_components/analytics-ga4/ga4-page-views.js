@@ -9,15 +9,15 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
     PIIRemover: new window.GOVUK.analyticsGa4.PIIRemover(), // imported in analytics-ga4.js
     nullValue: undefined,
 
-    init: function (dynamicPageViewData) {
-      dynamicPageViewData = dynamicPageViewData || {}
-
+    init: function (referrer) {
       if (window.dataLayer) {
         var data = {
           event: 'page_view',
           page_view: {
             location: this.getLocation(),
-            referrer: dynamicPageViewData.referrer || this.getReferrer(),
+            /* If the init() function receives a referrer parameter, this indicates that it has been called as a part of an AJAX request and
+            this.getReferrer() will not return the correct value. Therefore we need to rely on the referrer parameter. */
+            referrer: referrer || this.getReferrer(),
             title: this.getTitle(),
             status_code: this.getStatusCode(),
 
@@ -46,7 +46,10 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
             organisations: this.getMetaContent('analytics:organisations'),
             world_locations: this.getMetaContent('analytics:world-locations'),
 
-            dynamic: dynamicPageViewData.dynamic || 'false'
+            /* The existence of a referrer parameter indicates that the page has been dynamically updated via an AJAX request
+            and therefore we can use it to set the dynamic property appropriately. This value is used by PA's to differentiate
+            between fresh page loads and dynamic page updates. */
+            dynamic: referrer ? 'true' : 'false'
           }
         }
         window.GOVUK.analyticsGa4.core.sendData(data)

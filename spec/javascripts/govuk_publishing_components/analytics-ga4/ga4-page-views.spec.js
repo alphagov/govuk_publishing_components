@@ -313,7 +313,7 @@ describe('Google Tag Manager page view tracking', function () {
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
-  describe('correctly sets the referrer and virtual_page_view properties', function () {
+  describe('correctly sets the referrer and dynamic properties', function () {
     it('when not passed a parameter', function () {
       GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
 
@@ -322,31 +322,9 @@ describe('Google Tag Manager page view tracking', function () {
 
     it('when passed a parameter for the referrer', function () {
       expected.page_view.referrer = 'https://gov.uk/referrer'
-      GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init({
-        referrer: 'https://gov.uk/referrer',
-        dynamic: null
-      })
-
-      expect(window.dataLayer[0]).toEqual(expected)
-    })
-
-    it('when passed a parameter for the virtual_page_view', function () {
       expected.page_view.dynamic = 'true'
-      GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init({
-        referrer: null,
-        dynamic: 'true'
-      })
 
-      expect(window.dataLayer[0]).toEqual(expected)
-    })
-
-    it('when passed a parameter for the virtual_page_view and referrer', function () {
-      expected.page_view.referrer = 'https://gov.uk/referrer'
-      expected.page_view.dynamic = 'true'
-      GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init({
-        referrer: 'https://gov.uk/referrer',
-        dynamic: 'true'
-      })
+      GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init('https://gov.uk/referrer')
 
       expect(window.dataLayer[0]).toEqual(expected)
     })

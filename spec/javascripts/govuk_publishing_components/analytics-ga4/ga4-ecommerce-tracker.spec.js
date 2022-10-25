@@ -193,10 +193,7 @@ describe('Google Analytics ecommerce tracking', function () {
 
   describe('when a new page isn\'t loaded e.g. when the user selects a filter', function () {
     it('should push a nullified ecommerce object to the dataLayer', function () {
-      GOVUK.analyticsGa4.Ga4EcommerceTracker.init({
-        referrer: 'test',
-        dynamic: 'true'
-      })
+      GOVUK.analyticsGa4.Ga4EcommerceTracker.init('test')
 
       expect(window.dataLayer[1].search_results.ecommerce).toBe(null)
     })
@@ -218,10 +215,7 @@ describe('Google Analytics ecommerce tracking', function () {
         }
       }
 
-      GOVUK.analyticsGa4.Ga4EcommerceTracker.init({
-        referrer: 'https://gov.uk/',
-        dynamic: 'true'
-      })
+      GOVUK.analyticsGa4.Ga4EcommerceTracker.init('https://gov.uk/')
 
       expect(window.dataLayer[0].event).toBe(pageViewExpected.event)
       expect(window.dataLayer[0].page_view.location).toBe(pageViewExpected.page_view.location)
