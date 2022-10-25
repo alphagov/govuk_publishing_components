@@ -39,25 +39,32 @@
       } %>
 
       <%= render "govuk_publishing_components/components/button", {
-        text: t("components.feedback.send")
+        text: t("components.feedback.send"),
+        data_attributes: {
+          ga4: {
+            event_name: "form_submit",
+            type: "feedback",
+            text: "Send",
+            section: "Help us improve GOV.UK",
+          }
+        }
       } %>
 
-    <button
-      class="govuk-button govuk-button--secondary gem-c-feedback__close gem-c-feedback__js-show js-close-form"
-      data-track-category="Onsite Feedback"
-      data-track-action="GOV.UK Close Form"
-      aria-controls="something-is-wrong"
-      aria-expanded="true">
-      <%= t("components.feedback.close") %>
-    </button>
-
+      <button
+        class="govuk-button govuk-button--secondary gem-c-feedback__close gem-c-feedback__js-show js-close-form"
+        data-track-category="Onsite Feedback"
+        data-track-action="GOV.UK Close Form"
+        aria-controls="something-is-wrong"
+        aria-expanded="true">
+        <%= t("components.feedback.close") %>
+      </button>
     </div>
   </div>
 </form>
 
 <%
-  # I've added the following script inline in case of a scenario where a bot is able to parse the page, 
-  # without downloading any of the external scripts. 
+  # I've added the following script inline in case of a scenario where a bot is able to parse the page,
+  # without downloading any of the external scripts.
   # This seems to be a more reliable way to make sure the script is executed.
 %>
 

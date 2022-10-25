@@ -12,6 +12,7 @@
 * Track clicks on links with child elements ([PR #3042](https://github.com/alphagov/govuk_publishing_components/pull/3042))
 * Fix issue with blue action link arrow svg ([PR #3039](https://github.com/alphagov/govuk_publishing_components/pull/3039))
 * **BREAKING:** Fix referrer bug ([PR #3032](https://github.com/alphagov/govuk_publishing_components/pull/3032))
+* Add GA4 analytics tracking to remaining feedback component buttons ([PR #3036](https://github.com/alphagov/govuk_publishing_components/pull/3036))
 
 ## 31.2.0
 
