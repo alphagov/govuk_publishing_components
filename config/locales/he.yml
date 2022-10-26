@@ -19,7 +19,7 @@ he:
         other: "%{count} דפים"
       reference: 'הפניה: %{reference}'
       request_format_cta: בקש פורמט נגיש.
-      request_format_details_html: אם אתה משתמש בטכנולוגיה מסייעת (כגון קורא מסך) וזקוק לגרסה של מסמך זה בפורמט נגיש יותר, שלח דואר אלקטרוני ל <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. אנא ספר לנו איזה פורמט אתה צריך. זה יעזור לנו אם תגיד באיזו טכנולוגיה מסייעת אתה משתמש.
+      request_format_details_html: אם אתה משתמש בטכנולוגיה מסייעת (כגון קורא מסך) וזקוק לגרסה של מסמך זה בפורמט נגיש יותר, שלח דואר אלקטרוני ל <a href='mailto:%{alternative_format_contact_email}' class='govuk-link'>%{alternative_format_contact_email}</a>. אנא ספר לנו איזה פורמט אתה צריך. זה יעזור לנו אם תגיד באיזו טכנולוגיה מסייעת אתה משתמש.
       request_format_text: ייתכן שקובץ זה אינו מתאים למשתמשי טכנולוגיה מסייעת.
     back_link:
       back: חזור

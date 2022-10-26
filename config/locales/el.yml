@@ -19,7 +19,7 @@ el:
         other: "%{count} σελίδες"
       reference: 'Αναφ.: %{reference}'
       request_format_cta: Ζητήστε μια προσβάσιμη μορφή.
-      request_format_details_html: Εάν χρησιμοποιείτε βοηθητική τεχνολογία (όπως ένα πρόγραμμα ανάγνωσης οθόνης) και χρειάζεστε μια έκδοση αυτού του εγγράφου σε πιο προσβάσιμη μορφή, στείλτε email στην διεύθυνση <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Πείτε μας τι μορφή χρειάζεστε. Θα μας βοηθήσει αν πείτε ποια βοηθητική τεχνολογία χρησιμοποιείτε.
+      request_format_details_html: Εάν χρησιμοποιείτε βοηθητική τεχνολογία (όπως ένα πρόγραμμα ανάγνωσης οθόνης) και χρειάζεστε μια έκδοση αυτού του εγγράφου σε πιο προσβάσιμη μορφή, στείλτε email στην διεύθυνση <a href='mailto:%{alternative_format_contact_email}' class='govuk-link'>%{alternative_format_contact_email}</a>. Πείτε μας τι μορφή χρειάζεστε. Θα μας βοηθήσει αν πείτε ποια βοηθητική τεχνολογία χρησιμοποιείτε.
       request_format_text: Αυτό το αρχείο ενδέχεται να μην είναι κατάλληλο για χρήστες βοηθητικής τεχνολογίας.
     back_link:
       back: Πίσω

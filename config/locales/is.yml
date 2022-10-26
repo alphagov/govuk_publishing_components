@@ -19,7 +19,7 @@ is:
         other: "%{count} síður"
       reference: 'Tilv: %{reference}'
       request_format_cta: Óska eftir aðgengilegu sniði.
-      request_format_details_html: Ef þú notast við stoðtækni (eins og skjálesara) og þarft útgáfu af þessu skjali á aðgengilegra sniði, sendu þá vinsamlegast tölvupóst á <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Vinsamlegast segðu okkur hvaða snið þú þarft. Það hjálpar okkur ef þú tekur fram hvaða stoðtækni þú notast við.
+      request_format_details_html: Ef þú notast við stoðtækni (eins og skjálesara) og þarft útgáfu af þessu skjali á aðgengilegra sniði, sendu þá vinsamlegast tölvupóst á <a href='mailto:%{alternative_format_contact_email}' class='govuk-link'>%{alternative_format_contact_email}</a>. Vinsamlegast segðu okkur hvaða snið þú þarft. Það hjálpar okkur ef þú tekur fram hvaða stoðtækni þú notast við.
       request_format_text: Þessi skrá gæti ekki hentað þeim sem notast við stoðtækni.
     back_link:
       back: Til baka

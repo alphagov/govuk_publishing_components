@@ -19,7 +19,7 @@ pa:
         other: "%{count} ਪੰਨੇ"
       reference: 'ਹਵਾਲਾ: %{reference}'
       request_format_cta: ਇੱਕ ਪਹੁੰਚਯੋਗ ਫਾਰਮੈਟ ਦੀ ਬੇਨਤੀ ਕਰੋ।
-      request_format_details_html: ਜੇ ਤੁਸੀਂ ਸਹਾਇਕ ਤਕਨਾਲੋਜੀ (ਜਿਵੇਂ ਕਿ ਸਕ੍ਰੀਨ ਰੀਡਰ) ਦੀ ਵਰਤੋਂ ਕਰਦੇ ਹੋ ਅਤੇ ਇਸ ਦਸਤਾਵੇਜ਼ ਦੇ ਵਧੇਰੇ ਪਹੁੰਚਯੋਗ ਫਾਰਮੈਟ ਵਿੱਚ ਵਰਜਨ ਦੀ ਜ਼ਰੂਰਤ ਹੈ, ਤਾਂ ਕਿਰਪਾ ਕਰਕੇ <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a> ਤੇ ਈਮੇਲ ਕਰੋ। ਕਿਰਪਾ ਕਰਕੇ ਸਾਨੂੰ ਦੱਸੋ ਕਿ ਤੁਹਾਨੂੰ ਕਿਸ ਫਾਰਮੈਟ ਦੀ ਜ਼ਰੂਰਤ ਹੈ। ਇਹ ਸਾਡੀ ਸਹਾਇਤਾ ਕਰੇਗਾ ਜੇ ਤੁਸੀਂ ਕਹੋ ਕਿ ਤੁਸੀਂ ਕਿਹੜੀ ਸਹਾਇਕ ਤਕਨਾਲੋਜੀ ਦੀ ਵਰਤੋਂ ਕਰਦੇ ਹੋ।
+      request_format_details_html: ਜੇ ਤੁਸੀਂ ਸਹਾਇਕ ਤਕਨਾਲੋਜੀ (ਜਿਵੇਂ ਕਿ ਸਕ੍ਰੀਨ ਰੀਡਰ) ਦੀ ਵਰਤੋਂ ਕਰਦੇ ਹੋ ਅਤੇ ਇਸ ਦਸਤਾਵੇਜ਼ ਦੇ ਵਧੇਰੇ ਪਹੁੰਚਯੋਗ ਫਾਰਮੈਟ ਵਿੱਚ ਵਰਜਨ ਦੀ ਜ਼ਰੂਰਤ ਹੈ, ਤਾਂ ਕਿਰਪਾ ਕਰਕੇ <a href='mailto:%{alternative_format_contact_email}' class='govuk-link'>%{alternative_format_contact_email}</a> ਤੇ ਈਮੇਲ ਕਰੋ। ਕਿਰਪਾ ਕਰਕੇ ਸਾਨੂੰ ਦੱਸੋ ਕਿ ਤੁਹਾਨੂੰ ਕਿਸ ਫਾਰਮੈਟ ਦੀ ਜ਼ਰੂਰਤ ਹੈ। ਇਹ ਸਾਡੀ ਸਹਾਇਤਾ ਕਰੇਗਾ ਜੇ ਤੁਸੀਂ ਕਹੋ ਕਿ ਤੁਸੀਂ ਕਿਹੜੀ ਸਹਾਇਕ ਤਕਨਾਲੋਜੀ ਦੀ ਵਰਤੋਂ ਕਰਦੇ ਹੋ।
       request_format_text: ਇਹ ਫਾਈਲ ਸਹਾਇਕ ਤਕਨਾਲੋਜੀ ਦੇ ਉਪਯੋਗਕਰਤਾਵਾਂ ਲਈ ਢੁਕਵੀਂ ਨਹੀਂ ਹੋ ਸਕਦੀ।
     back_link:
       back: ਵਾਪਸ

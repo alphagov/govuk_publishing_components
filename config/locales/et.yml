@@ -19,7 +19,7 @@ et:
         other: "%{count} lehte"
       reference: 'Viide: %{reference}'
       request_format_cta: Taotlege juurdepääsetavat vormingut.
-      request_format_details_html: Kui kasutate hõlbustustehnoloogiat (nt ekraanilugerit) ja vajate seda dokumenti juurdepääsetavamas vormingus, saatke e-kiri aadressil <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Palun öelge meile, millist vormingut vajate. See aitab meid, kui ütlete, millist hõlbustustehnoloogiat kasutate.
+      request_format_details_html: Kui kasutate hõlbustustehnoloogiat (nt ekraanilugerit) ja vajate seda dokumenti juurdepääsetavamas vormingus, saatke e-kiri aadressil <a href='mailto:%{alternative_format_contact_email}' class='govuk-link'>%{alternative_format_contact_email}</a>. Palun öelge meile, millist vormingut vajate. See aitab meid, kui ütlete, millist hõlbustustehnoloogiat kasutate.
       request_format_text: See fail ei pruugi hõlbustustehnoloogia kasutajatele sobida.
     back_link:
       back: Tagasi

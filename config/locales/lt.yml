@@ -20,7 +20,7 @@ lt:
         other: "%{count} puslapių"
       reference: 'Nuoroda: %{reference}'
       request_format_cta: Prašyti prieinamo formato.
-      request_format_details_html: Jei naudojate pagalbinę technologiją (pvz., ekrano skaitytuvą) ir jums reikia labiau prieinamo šio dokumento formato, susisiekite el. paštu <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Nurodykite, koks formatas jums reikalingas. Taip pat mums pagelbėtų, jei nurodytumėte, kokias pagalbines technologijas naudojate.
+      request_format_details_html: Jei naudojate pagalbinę technologiją (pvz., ekrano skaitytuvą) ir jums reikia labiau prieinamo šio dokumento formato, susisiekite el. paštu <a href='mailto:%{alternative_format_contact_email}' class='govuk-link'>%{alternative_format_contact_email}</a>. Nurodykite, koks formatas jums reikalingas. Taip pat mums pagelbėtų, jei nurodytumėte, kokias pagalbines technologijas naudojate.
       request_format_text: Šis failas gali būti netinkamas pagalbinių technologijų naudotojams.
     back_link:
       back: Atgal

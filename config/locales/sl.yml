@@ -23,7 +23,7 @@ sl:
       request_format_cta: Zahtevajte dostopen format.
       request_format_details_html: |-
         Če uporabljate podporno tehnologijo (na primer bralnik zaslona) in potrebujete
-        različico tega dokumenta v bolj dostopni obliki, pošljite e -pošto na <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Prosimo, povejte nam, kateri format potrebujete. V pomoč nam bo, če nam poveste, katero podporno tehnologijo uporabljate.
+        različico tega dokumenta v bolj dostopni obliki, pošljite e -pošto na <a href='mailto:%{alternative_format_contact_email}' class='govuk-link'>%{alternative_format_contact_email}</a>. Prosimo, povejte nam, kateri format potrebujete. V pomoč nam bo, če nam poveste, katero podporno tehnologijo uporabljate.
       request_format_text: Ta datoteka morda ni primerna za uporabnike podporne tehnologije.
     back_link:
       back: Nazaj

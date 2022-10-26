@@ -19,7 +19,7 @@ bg:
         other: "%{count} страници"
       reference: 'Реф: %{reference}'
       request_format_cta: Поискайте достъпен формат.
-      request_format_details_html: Ако използвате помощна технология (например екранен четец) и се нуждаете от версия на този документ в по-достъпен формат, моля, изпратете имейл до <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Моля, посочете ни какъв формат ви е необходим. Ще ни улесните, ако посочите какви помощни технологии използвате.
+      request_format_details_html: Ако използвате помощна технология (например екранен четец) и се нуждаете от версия на този документ в по-достъпен формат, моля, изпратете имейл до <a href='mailto:%{alternative_format_contact_email}' class='govuk-link'>%{alternative_format_contact_email}</a>. Моля, посочете ни какъв формат ви е необходим. Ще ни улесните, ако посочите какви помощни технологии използвате.
       request_format_text: Този файл може да не е подходящ за потребители на помощни технологии.
     back_link:
       back: Назад

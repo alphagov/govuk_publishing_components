@@ -19,7 +19,7 @@ hu:
         other: "%{count} oldal"
       reference: 'Ref: %{reference}'
       request_format_cta: Kérjen hozzáférhető formátumot.
-      request_format_details_html: 'Ha segítő technológiákat (pl. képernyőolvasót) használ és könnyebben megnyitható formában van szüksége a dokumentumra, akkor kérjük, írjon egy e-mailt a következő címre: <a href=''mailto:%{alternative_format_contact_email}'' target=''_blank'' class=''govuk-link''>%{alternative_format_contact_email}</a>. Kérjük, mondja el, hogy milyen formátumra van szüksége. Ha elmondja, hogy milyen segítő technológiát használ, az is nagy segítség.'
+      request_format_details_html: 'Ha segítő technológiákat (pl. képernyőolvasót) használ és könnyebben megnyitható formában van szüksége a dokumentumra, akkor kérjük, írjon egy e-mailt a következő címre: <a href=''mailto:%{alternative_format_contact_email}'' class=''govuk-link''>%{alternative_format_contact_email}</a>. Kérjük, mondja el, hogy milyen formátumra van szüksége. Ha elmondja, hogy milyen segítő technológiát használ, az is nagy segítség.'
       request_format_text: Elképzelhető, hogy ez a fájl nem megfelelő a segítő technológiák felhasználói számára.
     back_link:
       back: Vissza

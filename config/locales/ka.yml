@@ -19,7 +19,7 @@ ka:
         other: "%{count} გვერდები"
       reference: 'მითითება: %{reference}'
       request_format_cta: ხელმისაწვდომი ფორმატის მოთხოვნა.
-      request_format_details_html: თუ იყენებთ დამხმარე ტექნოლოგიას (როგორიც ეკრანის წამკითხველია) და გჭირდებათ ამ დოკუმენტის ვერსია უფრო მოსახერხებელ ფორმატში, გთხოვთ დაუკავშირდით ელ.ფოსტით <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. გთხოვთ, გვითხარით რა ფორმატი გჭირდებათ. თუ გვეტვყით რომელ დამხმარე ტექნოლოგიას იყენებთ ძალიან დაგვეხმარებით.
+      request_format_details_html: თუ იყენებთ დამხმარე ტექნოლოგიას (როგორიც ეკრანის წამკითხველია) და გჭირდებათ ამ დოკუმენტის ვერსია უფრო მოსახერხებელ ფორმატში, გთხოვთ დაუკავშირდით ელ.ფოსტით <a href='mailto:%{alternative_format_contact_email}' class='govuk-link'>%{alternative_format_contact_email}</a>. გთხოვთ, გვითხარით რა ფორმატი გჭირდებათ. თუ გვეტვყით რომელ დამხმარე ტექნოლოგიას იყენებთ ძალიან დაგვეხმარებით.
       request_format_text: ეს ფაილი შესაძლოა არ იყოს შესაფერისი დამხმარე ტექნოლოგიის მომხმარებლებისთვის.
     back_link:
       back: უკან

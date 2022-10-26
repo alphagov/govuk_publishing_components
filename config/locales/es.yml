@@ -19,7 +19,7 @@ es:
         other: "%{count} páginas"
       reference: 'Ref.: %{reference}'
       request_format_cta: Solicitar un formato accesible.
-      request_format_details_html: Si utiliza tecnología de asistencia (como un lector de pantalla) y necesita una versión de este documento en un formato más accesible, envíe un correo electrónico a <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Díganos qué formato necesita. Nos ayudará si usted dice qué tecnología de asistencia utiliza.
+      request_format_details_html: Si utiliza tecnología de asistencia (como un lector de pantalla) y necesita una versión de este documento en un formato más accesible, envíe un correo electrónico a <a href='mailto:%{alternative_format_contact_email}' class='govuk-link'>%{alternative_format_contact_email}</a>. Díganos qué formato necesita. Nos ayudará si usted dice qué tecnología de asistencia utiliza.
       request_format_text: Es posible que este archivo no sea adecuado para usuarios de tecnología de asistencia.
     back_link:
       back: Atrás

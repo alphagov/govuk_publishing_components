@@ -20,7 +20,7 @@ cs:
         other: "%{count} stránek"
       reference: 'Odkaz: %{reference}'
       request_format_cta: Vyžádejte si přístupný formát.
-      request_format_details_html: Pokud používáte asistivní technologii (např. čtečku obrazovky) a potřebujete verzi tohoto dokumentu v přístupnějším formátu, napište prosím <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Sdělte nám, jaký formát potřebujete. Pomůže nám, když uvedete, jakou asistenční technologii používáte.
+      request_format_details_html: Pokud používáte asistivní technologii (např. čtečku obrazovky) a potřebujete verzi tohoto dokumentu v přístupnějším formátu, napište prosím <a href='mailto:%{alternative_format_contact_email}' class='govuk-link'>%{alternative_format_contact_email}</a>. Sdělte nám, jaký formát potřebujete. Pomůže nám, když uvedete, jakou asistenční technologii používáte.
       request_format_text: Tento soubor nemusí být vhodný pro uživatele asistenčních technologií.
     back_link:
       back: Zadní strana

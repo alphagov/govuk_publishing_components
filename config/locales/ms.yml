@@ -18,7 +18,7 @@ ms:
         other: "%{count} halaman"
       reference: 'Ruj: %{reference}'
       request_format_cta: Minta format yang boleh diakses.
-      request_format_details_html: Jika anda menggunakan teknologi bantu (seperti pembaca skrin) dan memerlukan versi dokumen ini dalam format yang lebih mudah diakses, sila hantarkan e-mel kepada <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Sila beritahu kami format yang anda perlukan. Lebih mudah bagi kami jika anda memberitahu teknologi bantu apa yang anda gunakan.
+      request_format_details_html: Jika anda menggunakan teknologi bantu (seperti pembaca skrin) dan memerlukan versi dokumen ini dalam format yang lebih mudah diakses, sila hantarkan e-mel kepada <a href='mailto:%{alternative_format_contact_email}' class='govuk-link'>%{alternative_format_contact_email}</a>. Sila beritahu kami format yang anda perlukan. Lebih mudah bagi kami jika anda memberitahu teknologi bantu apa yang anda gunakan.
       request_format_text: Fail ini mungkin tidak sesuai untuk pengguna teknologi bantu.
     back_link:
       back: Kembali

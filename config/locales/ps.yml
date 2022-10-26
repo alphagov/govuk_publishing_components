@@ -19,7 +19,7 @@ ps:
         other: "%{count} پاڼې"
       reference: حواله:%{reference}
       request_format_cta: د لاسرسي وړ پاڼه غوښتنه وکړئ.
-      request_format_details_html: که تاسو مرستندویه ټیکنالوژي کاروئ (لکه د سکرین لوستونکی) او په ډیر لاسرسي پاڼه کې د دې سند نسخې ته اړتیا لرئ، مهرباني وکړئ بریښنالیک وکړئ <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. مهرباني وکړئ موږ ته ووایاست چې کوم شکل ته اړتیا لرئ. دا به زموږ سره مرسته وکړي که تاسو ووایاست کوم مرستندویه ټیکنالوژي تاسو کاروئ.
+      request_format_details_html: که تاسو مرستندویه ټیکنالوژي کاروئ (لکه د سکرین لوستونکی) او په ډیر لاسرسي پاڼه کې د دې سند نسخې ته اړتیا لرئ، مهرباني وکړئ بریښنالیک وکړئ <a href='mailto:%{alternative_format_contact_email}' class='govuk-link'>%{alternative_format_contact_email}</a>. مهرباني وکړئ موږ ته ووایاست چې کوم شکل ته اړتیا لرئ. دا به زموږ سره مرسته وکړي که تاسو ووایاست کوم مرستندویه ټیکنالوژي تاسو کاروئ.
       request_format_text: دا فایل ممکن د مرستندویه ټیکنالوژۍ کاروونکو لپاره مناسب نه وي.
     back_link:
       back: بیرته

@@ -19,7 +19,7 @@ sq:
         other: "%{count} faqet"
       reference: 'Ref: %{reference}'
       request_format_cta: Kërkoni një format të arritshëm.
-      request_format_details_html: Nëse përdorni teknologji ndihmëse (si lexuesi i ekranit) dhe keni nevojë për një version të këtij dokumenti në një format më të arritshëm, ju lutemi dërgoni email <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Ju lutemi na tregoni se çfarë formati ju nevojitet. Do të na ndihmojë nëse thoni çfarë teknologjie ndihmëse përdorni.
+      request_format_details_html: Nëse përdorni teknologji ndihmëse (si lexuesi i ekranit) dhe keni nevojë për një version të këtij dokumenti në një format më të arritshëm, ju lutemi dërgoni email <a href='mailto:%{alternative_format_contact_email}' class='govuk-link'>%{alternative_format_contact_email}</a>. Ju lutemi na tregoni se çfarë formati ju nevojitet. Do të na ndihmojë nëse thoni çfarë teknologjie ndihmëse përdorni.
       request_format_text: Ky skedar mund të mos jetë i përshtatshëm për përdoruesit e teknologjisë ndihmëse.
     back_link:
       back: Prapa

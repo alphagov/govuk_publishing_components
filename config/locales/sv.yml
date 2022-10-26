@@ -19,7 +19,7 @@ sv:
         other: "%{count} sidor"
       reference: 'Ref: %{reference}'
       request_format_cta: Begär ett tillgängligt format.
-      request_format_details_html: Om du använder hjälpmedel (t.ex. en skärmläsare) och behöver en version av det här dokumentet i ett mer lättillgängligt format, skicka ett e-postmeddelande <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Berätta för oss vilket format du behöver. Det underlättar för oss om du berättar vilken hjälpmedelsteknik du använder.
+      request_format_details_html: Om du använder hjälpmedel (t.ex. en skärmläsare) och behöver en version av det här dokumentet i ett mer lättillgängligt format, skicka ett e-postmeddelande <a href='mailto:%{alternative_format_contact_email}' class='govuk-link'>%{alternative_format_contact_email}</a>. Berätta för oss vilket format du behöver. Det underlättar för oss om du berättar vilken hjälpmedelsteknik du använder.
       request_format_text: Den här filen kanske inte är lämplig för användare av hjälpmedel.
     back_link:
       back: Tillbaka till

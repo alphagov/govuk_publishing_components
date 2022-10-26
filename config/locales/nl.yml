@@ -19,7 +19,7 @@ nl:
         other: "%{count} pagina's"
       reference: 'Ref: %{reference}'
       request_format_cta: Vraag een toegankelijk formaat aan.
-      request_format_details_html: Als u ondersteunende technologie gebruikt (zoals een schermlezer) en een versie van dit document nodig hebt in een meer toegankelijk formaat, stuur dan een <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Vertel ons welk formaat u nodig heeft. Het zal ons helpen als u ons vertelt welke ondersteunende technologie u gebruikt.
+      request_format_details_html: Als u ondersteunende technologie gebruikt (zoals een schermlezer) en een versie van dit document nodig hebt in een meer toegankelijk formaat, stuur dan een <a href='mailto:%{alternative_format_contact_email}' class='govuk-link'>%{alternative_format_contact_email}</a>. Vertel ons welk formaat u nodig heeft. Het zal ons helpen als u ons vertelt welke ondersteunende technologie u gebruikt.
       request_format_text: Dit bestand is mogelijk niet geschikt voor gebruikers van ondersteunende technologie.
     back_link:
       back: Terug

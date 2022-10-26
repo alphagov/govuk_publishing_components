@@ -20,7 +20,7 @@ dr:
       reference: "%{reference}:مرجع"
       request_format_cta: یک فارمت قابل دسترس را درخواست کنید.
       request_format_details_html: |-
-        اگر از تکنالوژی کمکی(مانند صفحه خوان) استفاده مینمایید و به نسخهء از این سند در یک فارمت که بیشتر قابل دسترس باشد ضرورت دارید، لطفاً ایمل نمایید<a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>.
+        اگر از تکنالوژی کمکی(مانند صفحه خوان) استفاده مینمایید و به نسخهء از این سند در یک فارمت که بیشتر قابل دسترس باشد ضرورت دارید، لطفاً ایمل نمایید<a href='mailto:%{alternative_format_contact_email}' class='govuk-link'>%{alternative_format_contact_email}</a>.
         لطفاً بگویید به چه فارمتی نیاز دارید.
         به ما کمک خواهد کرد اگر بگویید که از چه تکنالوژی کمکی استفاده مینمایید
       request_format_text: این فایل ممکن است برای کاربران تکنالوژی کمکی مناسب نباشد.

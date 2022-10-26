@@ -21,7 +21,7 @@ gd:
         two:
       reference: 'Tagairt: %{reference}'
       request_format_cta: Is féidir leat formáid inrochtana a iarraidh.
-      request_format_details_html: Má tá an doiciméad seo bunaithe ar theicneolaíocht chúnta (cosúil le léitheoir scáileáin) agus má theastaíonn leagan níos inrochtana den doiciméad seo uait, seol ríomhphost chuig <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Inis dúinn cén fhormáid atá uait. Le cuidiú linn, is féidir leat a rá linn freisin na teicneolaíochtaí a úsáidtear chun cabhrú leat.
+      request_format_details_html: Má tá an doiciméad seo bunaithe ar theicneolaíocht chúnta (cosúil le léitheoir scáileáin) agus má theastaíonn leagan níos inrochtana den doiciméad seo uait, seol ríomhphost chuig <a href='mailto:%{alternative_format_contact_email}' class='govuk-link'>%{alternative_format_contact_email}</a>. Inis dúinn cén fhormáid atá uait. Le cuidiú linn, is féidir leat a rá linn freisin na teicneolaíochtaí a úsáidtear chun cabhrú leat.
       request_format_text: B’fhéidir nach mbeidh an comhad seo oiriúnach d’úsáideoirí feistí cúnta.
     back_link:
       back: filleadh

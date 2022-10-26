@@ -20,7 +20,7 @@ ro:
         other: "%{count} pagini"
       reference: 'Referință: %{reference}'
       request_format_cta: Solicitați un format accesibil.
-      request_format_details_html: Dacă folosiți tehnologia de asistență (precum un cititor de ecran) și aveți nevoie de o versiune a acestui document într-un format mai accesibil, trimiteți un e-mail la <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a>. Spuneți-ne de ce format aveți nevoie. Ne va ajuta dacă ne spuneți ce tehnologie de asistență folosiți.
+      request_format_details_html: Dacă folosiți tehnologia de asistență (precum un cititor de ecran) și aveți nevoie de o versiune a acestui document într-un format mai accesibil, trimiteți un e-mail la <a href='mailto:%{alternative_format_contact_email}' class='govuk-link'>%{alternative_format_contact_email}</a>. Spuneți-ne de ce format aveți nevoie. Ne va ajuta dacă ne spuneți ce tehnologie de asistență folosiți.
       request_format_text: Este posibil ca acest fișier să nu fie potrivit pentru utilizatorii de tehnologie de asistență.
     back_link:
       back: Înapoi

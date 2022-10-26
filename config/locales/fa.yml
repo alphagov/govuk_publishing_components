@@ -18,7 +18,7 @@ fa:
         other: "%{count} صفحه"
       reference: 'مرجع: %{reference}'
       request_format_cta: درخواست یک قالب با قابلیت دسترسی بهتر.
-      request_format_details_html: اگر از فناوری‌های کمکی (از قبیل صفحه‌خوان) استفاده می‌کنید و به نسخه‌ای از این سند در قالبی با قابلیت دسترسی بیشتر نیاز دارید، لطفاً به آدرس <a href='mailto:%{alternative_format_contact_email}' target='_blank' class='govuk-link'>%{alternative_format_contact_email}</a> ایمیل بزنید. لطفاً به ما بگویید که به چه قالبی نیاز دارید. اگر بگویید که از چه فناوری کمکی استفاده می‌کنید، بهتر خواهد بود و به ما کمک خواهد کرد.
+      request_format_details_html: اگر از فناوری‌های کمکی (از قبیل صفحه‌خوان) استفاده می‌کنید و به نسخه‌ای از این سند در قالبی با قابلیت دسترسی بیشتر نیاز دارید، لطفاً به آدرس <a href='mailto:%{alternative_format_contact_email}' class='govuk-link'>%{alternative_format_contact_email}</a> ایمیل بزنید. لطفاً به ما بگویید که به چه قالبی نیاز دارید. اگر بگویید که از چه فناوری کمکی استفاده می‌کنید، بهتر خواهد بود و به ما کمک خواهد کرد.
       request_format_text: این فایل ممکن است برای کاربران فناوری‌های کمکی مناسب نباشد.
     back_link:
       back: برگشت
