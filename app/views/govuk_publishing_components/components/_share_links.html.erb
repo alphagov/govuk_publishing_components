@@ -16,6 +16,13 @@
 
   data_attributes ||= {}
   data_attributes[:module] = 'gem-track-click'
+
+  if track_as_sharing
+    ga4_link_category = 'share'
+  elsif track_as_follow
+    ga4_link_category = 'follow'
+  end
+
 %>
 <% if links.any? %>
   <%= tag.div(class: classes, data: data_attributes) do %>
@@ -23,7 +30,7 @@
       <h2 class="gem-c-share-links__title"><%= title %></h2>
     <% end %>
 
-    <ul class="gem-c-share-links__list">
+    <ul class="gem-c-share-links__list" data-ga4-index-total="<%= links.length %>">
       <% links.each_with_index do |link, index| %>
         <% link_text = capture do %>
           <span class="govuk-visually-hidden">
@@ -43,26 +50,6 @@
                 'socialNetwork': link[:icon],
                 'socialTarget': link[:href]
               }
-              ga4_link_data = {
-                'event_name': 'share',
-                'type': 'share this page',
-                'index': index + 1,
-                'index_total': links.length,
-                'text': link[:icon],
-                'method': 'populated-via-js'
-              }
-            end
-            if track_as_follow
-              ga4_link_data = {
-                'event_name': 'navigation',
-                'type': 'follow us',
-                'index': index + 1,
-                'index_total': links.length,
-                'text': link[:text],
-                'external': 'populated-via-js',
-                'url': link[:href],
-                'method': 'populated-via-js'
-              }
             end
           %>
           <%= link_to link[:href],
@@ -72,7 +59,8 @@
               'track-category': 'social media',
               'track-action': link[:icon],
               'track-options': track_options,
-              'ga4-link': ga4_link_data
+              'ga4-link-category': ga4_link_category,
+              'ga4-index': index + 1
             },
             class: "govuk-link govuk-link--no-underline gem-c-share-links__link #{brand_helper.color_class}" do %>
             <span class="gem-c-share-links__link-icon">

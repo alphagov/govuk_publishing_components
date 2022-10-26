@@ -51,12 +51,12 @@ examples:
       links: [
         {
           href: 'share',
-          text: 'Share on Facebook',
+          text: 'Facebook',
           icon: 'facebook'
         },
         {
           href: 'share',
-          text: 'Share on Twitter',
+          text: 'Twitter',
           icon: 'twitter'
         },
       ]
@@ -67,12 +67,14 @@ examples:
       links: [
         {
           href: 'follow',
-          text: 'Follow us on Facebook',
+          text: 'Facebook',
+          hidden_text: 'Follow us on',
           icon: 'facebook'
         },
         {
           href: 'follow',
-          text: 'Follow us on Twitter',
+          hidden_text: 'Follow us on',
+          text: 'Twitter',
           icon: 'twitter'
         },
       ]

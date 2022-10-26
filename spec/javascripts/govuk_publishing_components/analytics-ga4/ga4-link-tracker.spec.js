@@ -573,12 +573,13 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
       /* The link_domain, external and path attributes exist so we can hardcode what the expected value is for each test.
       The value differs for each link, so we can't hardcode the expected value inside the test itself. */
       links.innerHTML =
-          '<div class="share-links">' +
-              '<a href="example.com" data-ga4-link=\'' + JSON.stringify({ event_name: 'share', type: 'share this page', index: '1', index_total: '1', text: 'myspace', method: 'populated-via-js' }) + '\'>Share</a>' +
+          '<div class="share-links" data-ga4-index-total="2">' +
+              '<a href="https://example.com" data-ga4-link-category="share" data-ga4-index="1">Share</a>' +
+              '<a href="https://example.com" data-ga4-link-category="share" data-ga4-index="2">Share 2</a>' +
           '</div>' +
-          '<div class="follow-links">' +
-              '<a href="https://example.com" link_domain="https://example.com" external="true" data-ga4-link=\'' + JSON.stringify({ event_name: 'navigation', type: 'follow us', index: '1', index_total: '2', text: 'Follow us', url: 'https://example.com', external: 'populated-via-js', method: 'populated-via-js' }) + '\'>Follow us</a>' +
-              '<a href="https://www.gov.uk" link_domain="https://www.gov.uk" external="false" data-ga4-link=\'' + JSON.stringify({ event_name: 'navigation', type: 'follow us', index: '2', index_total: '2', text: 'Follow me', url: 'https://www.gov.uk', external: 'populated-via-js', method: 'populated-via-js' }) + '\'>Follow me</a>' +
+          '<div class="follow-links" data-ga4-index-total="2">' +
+              '<a href="https://example.com" link_domain="https://example.com" external="true" data-ga4-index="1" data-ga4-link-category="follow">Follow us</a>' +
+              '<a href="https://www.gov.uk" link_domain="https://www.gov.uk" external="false" data-ga4-index="2" data-ga4-link-category="follow">Follow me</a>' +
           '</div>'
 
       body.appendChild(links)
@@ -596,42 +597,45 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
     })
 
     it('detects clicks on share links', function () {
+      var parentDiv = document.querySelector('.share-links')
       var linksToTest = document.querySelectorAll('.share-links a')
 
       for (var i = 0; i < linksToTest.length; i++) {
         window.dataLayer = []
         var link = linksToTest[i]
         GOVUK.triggerEvent(link, 'click')
-        var shareLinkAttributes = link.getAttribute('data-ga4-link')
-        shareLinkAttributes = JSON.parse(shareLinkAttributes)
-        expected.event_data.event_name = shareLinkAttributes.event_name
-        expected.event_data.type = shareLinkAttributes.type
-        expected.event_data.text = shareLinkAttributes.text
-        expected.event_data.index = parseInt(shareLinkAttributes.index)
-        expected.event_data.index_total = parseInt(shareLinkAttributes.index_total)
+        expected.event_data.event_name = 'share'
+        expected.event_data.type = 'share this page'
+        expected.event_data.text = link.textContent
+        expected.event_data.index = link.getAttribute('data-ga4-index')
+        expected.event_data.index_total = parentDiv.getAttribute('data-ga4-index-total')
         expected.event_data.method = 'primary click'
+        expected.event_data.url = link.getAttribute('href')
+        expected.event_data.external = 'true'
+        expected.event_data.link_domain = 'https://example.com'
+
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })
 
     it('detects clicks on follow links', function () {
+      var parentDiv = document.querySelector('.follow-links')
       var linksToTest = document.querySelectorAll('.follow-links a')
 
       for (var i = 0; i < linksToTest.length; i++) {
         window.dataLayer = []
         var link = linksToTest[i]
         GOVUK.triggerEvent(link, 'click')
-        var shareLinkAttributes = link.getAttribute('data-ga4-link')
-        shareLinkAttributes = JSON.parse(shareLinkAttributes)
-        expected.event_data.event_name = shareLinkAttributes.event_name
-        expected.event_data.type = shareLinkAttributes.type
-        expected.event_data.text = link.textContent.trim()
-        expected.event_data.index = parseInt(shareLinkAttributes.index)
-        expected.event_data.index_total = parseInt(shareLinkAttributes.index_total)
+        expected.event_data.event_name = 'navigation'
+        expected.event_data.type = 'follow us'
+        expected.event_data.text = link.textContent
+        expected.event_data.index = link.getAttribute('data-ga4-index')
+        expected.event_data.index_total = parentDiv.getAttribute('data-ga4-index-total')
+        expected.event_data.method = 'primary click'
         expected.event_data.url = link.getAttribute('href')
         expected.event_data.external = link.getAttribute('external')
-        expected.event_data.method = 'primary click'
         expected.event_data.link_domain = link.getAttribute('link_domain')
+
         expect(window.dataLayer[0]).toEqual(expected)
       }
     })

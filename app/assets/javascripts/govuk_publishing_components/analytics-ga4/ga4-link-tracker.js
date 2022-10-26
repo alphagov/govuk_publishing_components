@@ -50,56 +50,46 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
         return
       }
       var clickData = {}
-      var linkAttributes = element.getAttribute('data-ga4-link')
-      if (linkAttributes) {
-        clickData = JSON.parse(linkAttributes)
 
-        /* Since external links can't be determined in the template, we use populated-via-js as a signal
-        for our JavaScript to determine this value. */
-        if (clickData.external === 'populated-via-js' && clickData.url) {
-          clickData.external = this.isExternalLink(clickData.url) ? 'true' : 'false'
-        }
+      // Some links have a hardcoded category instead of being categorised by their link destination
+      var linkCategory = element.getAttribute('data-ga4-link-category')
+      if (linkCategory) {
+        var linkParent = element.closest('[data-ga4-index-total]')
 
-        if (clickData.method === 'populated-via-js') {
-          clickData.method = this.getClickType(event)
+        if (linkParent) {
+          clickData.index_total = linkParent.getAttribute('data-ga4-index-total')
         }
+        clickData.index = element.getAttribute('data-ga4-index')
+      }
 
-        if (clickData.index) {
-          clickData.index = parseInt(clickData.index)
-        }
-
-        if (clickData.index_total) {
-          clickData.index_total = parseInt(clickData.index_total)
-        }
+      if (linkCategory === 'share') {
+        clickData.event_name = 'share'
+        clickData.type = 'share this page'
+        clickData.external = this.isExternalLink(href) ? 'true' : 'false'
+      } else if (linkCategory === 'follow') {
+        clickData.event_name = 'navigation'
+        clickData.type = 'follow us'
+        clickData.external = this.isExternalLink(href) ? 'true' : 'false'
       } else if (this.isMailToLink(href)) {
         clickData.event_name = 'navigation'
         clickData.type = 'email'
         clickData.external = 'true'
-        clickData.url = href
-        clickData.text = this.removeLinesAndExtraSpaces(element.textContent)
-        clickData.method = this.getClickType(event)
       } else if (this.isDownloadLink(href)) {
         clickData.event_name = 'file_download'
         clickData.type = this.isPreviewLink(href) ? 'preview' : 'generic download'
         clickData.external = this.isExternalLink(href) ? 'true' : 'false'
-        clickData.url = href
-        clickData.text = this.removeLinesAndExtraSpaces(element.textContent)
-        clickData.method = this.getClickType(event)
       } else if (this.isExternalLink(href)) {
         clickData.event_name = 'navigation'
         clickData.type = 'generic link'
         clickData.external = 'true'
-        clickData.url = href
-        clickData.text = this.removeLinesAndExtraSpaces(element.textContent)
-        clickData.method = this.getClickType(event)
       }
 
       if (Object.keys(clickData).length > 0) {
-        if (clickData.url) {
-          clickData.url = this.removeCrossDomainParams(clickData.url)
-          clickData.link_domain = this.populateLinkDomain(clickData.url)
-          clickData.link_path_parts = this.populateLinkPathParts(clickData.url)
-        }
+        clickData.method = this.getClickType(event)
+        clickData.text = this.removeLinesAndExtraSpaces(element.textContent)
+        clickData.url = this.removeCrossDomainParams(href)
+        clickData.link_domain = this.populateLinkDomain(clickData.url)
+        clickData.link_path_parts = this.populateLinkPathParts(clickData.url)
 
         var schema = new window.GOVUK.analyticsGa4.Schemas().eventSchema()
         schema.event = 'event_data'
