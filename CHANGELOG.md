@@ -7,6 +7,11 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix issue with blue action link arrow svg ([PR #3039](https://github.com/alphagov/govuk_publishing_components/pull/3039))
+
+
 ## 31.2.0
 
 * Feedback component visual updates ([PR #2894](https://github.com/alphagov/govuk_publishing_components/pull/2894))
