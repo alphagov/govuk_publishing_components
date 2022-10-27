@@ -20,8 +20,7 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
         "details" => {
           "external_related_links" => [],
         },
-        "links" => {
-        },
+        "links" => {},
       )
 
       expected = {
