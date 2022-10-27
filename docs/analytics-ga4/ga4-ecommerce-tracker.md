@@ -3,7 +3,7 @@
 The ecommerce tracker script tracks search results in finder applications (e.g. search) and sends them to the `dataLayer`. There are 3 scenarios that result in a push to the `dataLayer`:
 
 - on page load
-- the application of filters and/or sorting
+- the application of filters and/or sorting (i.e. a dynamic page update)
 - clicking a search result
 
 ## Basic use
@@ -17,14 +17,24 @@ In `analytics-ga4.js`:
 In `live_search.js` in the `finder-frontend` repository (https://github.com/alphagov/finder-frontend/blob/main/app/assets/javascripts/live_search.js#L129):
 
 ```JavaScript
-GOVUK.analyticsGa4.Ga4EcommerceTracker.init(isNewPage) // isNewPage is a boolean and is used to detect whether a new page has been loaded or not
+GOVUK.analyticsGa4.Ga4EcommerceTracker.init(referrer) 
 ```
+
+The init() function takes a string (`referrer`) as an optional parameter to detect whether dynamic updates have been made to the page via AJAX requests. The presence of the `referrer` parameter is used to determine what is pushed to the dataLayer. If a parameter is not passed, this indicates a fresh page load (e.g. by refreshing the page or using the pagination) and that the page has not been dynamically updated via JS.
 
 Unlike the other GA4 tracking scripts in this repository, ecommerce tracking is not initialised by `init-ga4.js`. Instead, it is initialised by the JS that runs on finder pages (specifically, the `LiveSearch.prototype.Ga4EcommerceTracking()` function). It is called:
 
-On page load - https://github.com/alphagov/finder-frontend/blob/main/app/assets/javascripts/live_search.js#L55
+On page load (where no parameters are passed) e.g.
 
-And whenever search results are updated - https://github.com/alphagov/finder-frontend/blob/main/app/assets/javascripts/live_search.js#L121
+```
+this.Ga4EcommerceTracking()
+```
+
+And whenever search results are updated (where a string parameter is passed) e.g.
+
+```
+this.Ga4EcommerceTracking(this.previousSearchUrl)
+```
 
 Note: ecommerce tracking will only run if there is an element which has the `data-ga4-ecommerce` attribute. If the script can't find an element with this attribute, it will stop running.
 
@@ -32,7 +42,7 @@ Note: ecommerce tracking will only run if there is an element which has the `dat
 
 ### On page load
 
-Upon initialisation, the ecommerce tracker script will first detect whether a new page has been loaded (this is determined by the boolean passed when `Ga4EcommerceTracker.init()` is called). If `true`, this indicates that a new page has been loaded (i.e. the user has conducted a new search or has navigated to a new page using the pagination) and the initial set of search results that is loaded is pushed to the `dataLayer`.
+Upon initialisation, the ecommerce tracker script will first detect whether a new page has been loaded (this is determined by the presence of the `referrer` parameter that `LiveSearch.prototype.Ga4EcommerceTracking()` passes to `Ga4EcommerceTracker.init()`). If `Ga4EcommerceTracker.init()` does *not* receive a parameter, this indicates that a new page has been loaded (i.e. the user has conducted a new search or has navigated to a new page using the pagination) and the initial set of search results that is loaded is pushed to the `dataLayer`.
 
 For example, if a user searches for "tax", the following object will be pushed to the `dataLayer` on page load:
 
@@ -80,7 +90,7 @@ Then if the user applies the "Corporate information" topic filter and sorts by n
 
 `https://www.gov.uk/search/all?keywords=tax&level_one_taxon=a544d48b-1e9e-47fb-b427-7a987c658c14&order=updated-newest`
 
-To track these changes to the URL, a new `pageView` object is sent to the `dataLayer` along with the updated search results so that the user journey can be tracked.
+To track these changes to the URL, a new `page_view` object is sent to the `dataLayer` along with the updated search results so that the user journey can be tracked. In addition to this, PA's also need to be able to differentiate between a dynamic page update and a fresh page load; this is why the `referrer` parameter is passed on dynamic page updates and allows the `page_view.referrer` and `page_view.dynamic` to be set appropriately.
 
 Note: currently, filters that have been applied are not tracked; only the `search_results.ecommerce.items` and `search_result.sort` properties are updated.
 

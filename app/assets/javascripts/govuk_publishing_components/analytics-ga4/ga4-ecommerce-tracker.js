@@ -9,12 +9,17 @@
     PIIRemover: new GOVUK.analyticsGa4.PIIRemover(),
     DEFAULT_LIST_TITLE: 'Site search results',
 
-    init: function (isNewPageLoad) {
+    init: function (referrer) {
       if (window.dataLayer) {
+        /* The referrer parameter is only passed to the init() function as a result of an AJAX request
+        (in live_search.js in the finder-frontend repository). Otherwise it will not be available and this indicates a fresh page load.
+        This is needed to trigger a fresh pageViewTracker push to the dataLayer on dynamic page updates and to prevent multiple
+        click listeners from being applied on this.searchResultsBlocks elements. */
+        var isNewPageLoad = !referrer
+
         /* The data-ga4-ecommerce attribute may be present on several DOM elements e.g. search results and spelling
         suggestions, hence why document.querySelectorAll is required */
         this.searchResultsBlocks = document.querySelectorAll('[data-ga4-ecommerce]')
-        this.isNewPageLoad = isNewPageLoad
 
         if (!this.searchResultsBlocks.length === 0) {
           return
@@ -23,18 +28,18 @@
         /* If the results are updated by JS, the URL of the page will change and this needs to be visible to PA's,
         hence the pageView object push to the dataLayer. We do not need to send a pageView object on page load as
         this is handled elsewhere. */
-        if (!this.isNewPageLoad) {
+        if (referrer) {
           var pageViewTracker = window.GOVUK.analyticsGa4.analyticsModules.PageViewTracker
 
           if (pageViewTracker) {
-            pageViewTracker.init()
+            pageViewTracker.init(referrer)
           }
         }
 
         for (var i = 0; i < this.searchResultsBlocks.length; i++) {
           this.trackSearchResults(this.searchResultsBlocks[i])
 
-          if (this.isNewPageLoad) {
+          if (isNewPageLoad) {
             this.searchResultsBlocks[i].addEventListener('click', this.handleClick.bind(this))
           }
         }

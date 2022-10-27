@@ -10,7 +10,7 @@
 ## Unreleased
 
 * Fix issue with blue action link arrow svg ([PR #3039](https://github.com/alphagov/govuk_publishing_components/pull/3039))
-
+* **BREAKING:** Fix referrer bug ([PR #3032](https://github.com/alphagov/govuk_publishing_components/pull/3032))
 
 ## 31.2.0
 
