@@ -11,6 +11,7 @@
 
 * Fix issue with blue action link arrow svg ([PR #3039](https://github.com/alphagov/govuk_publishing_components/pull/3039))
 * **BREAKING:** Fix referrer bug ([PR #3032](https://github.com/alphagov/govuk_publishing_components/pull/3032))
+* Prevent unnecessary repetition in code when adding link click tracking ([PR #3041](https://github.com/alphagov/govuk_publishing_components/pull/3041))
 
 ## 31.2.0
 
