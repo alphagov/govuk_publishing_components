@@ -19,7 +19,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       var target = e.target
       if (!trackLinksOnly) {
         that.$module.handleClick(target)
-      } else if (trackLinksOnly && target.tagName === 'A') {
+      } else if (trackLinksOnly && target.closest('a')) {
         if (!limitToElementClass) {
           that.$module.handleClick(target)
         } else if (limitToElementClass && target.closest('.' + limitToElementClass)) {
