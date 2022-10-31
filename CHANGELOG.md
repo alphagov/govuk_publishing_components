@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 32.0.0
 
 * Track clicks on links with child elements ([PR #3042](https://github.com/alphagov/govuk_publishing_components/pull/3042))
 * Fix issue with blue action link arrow svg ([PR #3039](https://github.com/alphagov/govuk_publishing_components/pull/3039))
