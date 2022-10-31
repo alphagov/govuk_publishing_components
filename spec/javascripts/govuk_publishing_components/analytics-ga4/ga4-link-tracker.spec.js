@@ -784,7 +784,6 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
         window.dataLayer = []
         var link = linksToTest[i]
         GOVUK.triggerEvent(link, 'click')
-        console.log(window.dataLayer)
         var expectedObject = window.GOVUK.extendObject(defaultLinkPathParts, expectedLinkPathParts[i])
         expect(window.dataLayer[0].event_data.link_path_parts).toEqual(expectedObject)
       }
