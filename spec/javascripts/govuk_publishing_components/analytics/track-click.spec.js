@@ -11,14 +11,18 @@ describe('A click tracker', function () {
     }
   }
 
+  function resetGaCalls () {
+    if (GOVUK.analytics.trackEvent.calls) {
+      GOVUK.analytics.trackEvent.calls.reset()
+    }
+  }
+
   beforeEach(function () {
     spyOn(GOVUK.analytics, 'trackEvent')
   })
 
   afterEach(function () {
-    if (GOVUK.analytics.trackEvent.calls) {
-      GOVUK.analytics.trackEvent.calls.reset()
-    }
+    resetGaCalls()
     element.remove()
   })
 
@@ -111,9 +115,11 @@ describe('A click tracker', function () {
 
     element.find('.nothing')[0].click()
     expect(GOVUK.analytics.trackEvent).not.toHaveBeenCalled()
+    resetGaCalls()
 
     element.find('a.first')[0].click()
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('cat1', 'action1', { label: 'label1', transport: 'beacon' })
+    resetGaCalls()
 
     element.find('a.second')[0].click()
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('cat2', 'action2', { label: 'label2', transport: 'beacon' })
@@ -136,6 +142,7 @@ describe('A click tracker', function () {
 
     element.find('a.first')[0].click()
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('cat1', 'action1', { label: '#link1', transport: 'beacon' })
+    resetGaCalls()
 
     element.find('a.second')[0].click()
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('cat2', 'action2', { label: 'label2', transport: 'beacon' })
@@ -151,6 +158,12 @@ describe('A click tracker', function () {
           'data-track-label="label2">' +
           'Link 2' +
         '</a>' +
+        '<a class="third" href="#link3" ' +
+          'data-track-category="cat3"' +
+          'data-track-action="action3"' +
+          'data-track-label="label3">' +
+          '<span class="third-link-child">Link 2</span>' +
+        '</a>' +
         '<span class="nothing"></span>' +
       '</div>'
     )
@@ -159,12 +172,18 @@ describe('A click tracker', function () {
 
     element.find('.nothing')[0].click()
     expect(GOVUK.analytics.trackEvent).not.toHaveBeenCalled()
+    resetGaCalls()
 
     element.find('a.first')[0].click()
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('cat1', 'action1', { label: '#link1', transport: 'beacon' })
+    resetGaCalls()
 
     element.find('a.second')[0].click()
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('cat2', 'action2', { label: 'label2', transport: 'beacon' })
+    resetGaCalls()
+
+    element.find('a.third .third-link-child')[0].click()
+    expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('cat3', 'action3', { label: 'label3', transport: 'beacon' })
   })
 
   it('tracks only clicks on links within a given element when configured', function () {
@@ -188,12 +207,15 @@ describe('A click tracker', function () {
 
     element.find('.nothing')[0].click()
     expect(GOVUK.analytics.trackEvent).not.toHaveBeenCalled()
+    resetGaCalls()
 
     element.find('a.third')[0].click()
     expect(GOVUK.analytics.trackEvent).not.toHaveBeenCalled()
+    resetGaCalls()
 
     element.find('a.first')[0].click()
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('cat1', 'action1', { label: '#link1', transport: 'beacon' })
+    resetGaCalls()
 
     element.find('a.second')[0].click()
     expect(GOVUK.analytics.trackEvent).toHaveBeenCalledWith('cat2', 'action2', { label: 'label2', transport: 'beacon' })
