@@ -1,7 +1,7 @@
 module GovukPublishingComponents
   module Presenters
     class SinglePageNotificationButtonHelper
-      attr_reader :already_subscribed, :data_attributes, :base_path, :js_enhancement, :button_type, :button_location, :classes
+      attr_reader :already_subscribed, :data_attributes, :base_path, :js_enhancement, :button_type, :button_location, :classes, :skip_account
 
       def initialize(local_assigns)
         @local_assigns = local_assigns
@@ -15,6 +15,7 @@ module GovukPublishingComponents
         @classes << "js-personalisation-enhancement" if js_enhancement
         @button_text_subscribe = custom_button_text_is_valid? ? custom_subscribe_text : default_subscribe_text
         @button_text_unsubscribe = custom_button_text_is_valid? ? custom_unsubscribe_text : default_unsubscribe_text
+        @skip_account = @local_assigns[:skip_account] || nil
       end
 
       def data
@@ -57,6 +58,22 @@ module GovukPublishingComponents
 
       def default_unsubscribe_text
         I18n.t("components.single_page_notification_button.unsubscribe_text")
+      end
+
+      def form_action
+        @skip_account ? email_alert_frontend_endpoint_no_account : email_alert_frontend_endpoint_enforce_account
+      end
+
+      def email_alert_frontend_endpoint_enforce_account
+        "/email/subscriptions/single-page/new"
+      end
+
+      def email_alert_frontend_endpoint_no_account
+        "/email-signup"
+      end
+
+      def skip_account_param
+        "single_page_subscription"
       end
     end
   end

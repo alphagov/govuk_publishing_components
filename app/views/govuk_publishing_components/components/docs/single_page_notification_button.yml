@@ -57,3 +57,10 @@ examples:
       button_text:
         subscribe: 'Subscribe to this page of things'
         unsubscribe: 'Unsubscribe to this page of things'
+  with_skip_account:
+    description: If the skip_account flag is present, the button action will be set to the non GOV.UK account signup endpoint of /email-signup.
+    data:
+      base_path: '/current-page-path'
+      js_enhancement: true
+      skip_account: true
+  

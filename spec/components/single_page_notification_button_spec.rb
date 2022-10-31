@@ -50,6 +50,27 @@ describe "Single page notification button", type: :view do
     assert_select ".gem-c-single-page-notification-button", text: "Stop getting emails about this page"
   end
 
+  it "by defaults sets a form action of '/email/subscriptions/single-page/new'" do
+    local_assigns = {
+      base_path: "/the-current-page",
+    }
+    render_component(local_assigns)
+    assert_select "form[action='/email/subscriptions/single-page/new']"
+    assert_select "input[name='base_path']", value: "/the-current-page"
+  end
+
+  it "sets a form action of '/email-signup' and adds a hidden link param if skip_account is provided" do
+    local_assigns = {
+      base_path: "/the-current-page",
+      skip_account: "true",
+    }
+    render_component(local_assigns)
+    assert_select "form[action='/email-signup']"
+    assert_select "input[name='base_path']", value: "/the-current-page"
+    assert_select "input[name='single_page_subscription']", value: "true"
+    assert_select "input[name='link']", value: "/the-current-page"
+  end
+
   it "has data attributes if data_attributes is specified" do
     render_component({ base_path: "/the-current-page", data_attributes: { custom_attribute: "kaboom!" } })
     assert_select ".gem-c-single-page-notification-button[data-custom-attribute='kaboom!']"
