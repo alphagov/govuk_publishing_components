@@ -124,11 +124,11 @@ GEM
       rest-client (~> 2.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
-    govuk_app_config (4.9.0)
+    govuk_app_config (4.10.1)
       logstasher (~> 2.1)
       plek (~> 4)
       prometheus_exporter (~> 2.0)
-      puma (~> 5.6)
+      puma (>= 5.6, < 7.0)
       rack-proxy (~> 0.7)
       sentry-rails (~> 5.3)
       sentry-ruby (~> 5.3)
@@ -217,7 +217,7 @@ GEM
       byebug (~> 11.0)
       pry (>= 0.13, < 0.15)
     public_suffix (5.0.0)
-    puma (5.6.4)
+    puma (6.0.0)
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.4)
@@ -371,7 +371,7 @@ GEM
       nokogiri (~> 1.8)
     yard (0.9.28)
       webrick (~> 1.7.0)
-    zeitwerk (2.6.1)
+    zeitwerk (2.6.3)
 
 PLATFORMS
   ruby
