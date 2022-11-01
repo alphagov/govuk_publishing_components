@@ -27,7 +27,7 @@
     "extends": "stylelint-config-gds/scss"
   },
   "dependencies": {
-    "axe-core": "^4.4.3",
+    "axe-core": "^4.5.0",
     "govuk-frontend": "^4.3.1",
     "sortablejs": "^1.15.0"
   },
