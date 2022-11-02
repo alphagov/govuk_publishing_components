@@ -24,7 +24,6 @@
     })
 
     var axeOptions = {
-      restoreScroll: true,
       include: [selector],
       rules: axeRules
     }
