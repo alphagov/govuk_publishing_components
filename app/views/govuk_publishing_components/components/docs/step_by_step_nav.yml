@@ -72,6 +72,40 @@ examples:
           ]
         }
       ]
+  with_google_analytics_4_tracking:
+    description: |
+      The ga4_tracking boolean allows you to add Google Analytics 4 (GA4) tracking to your component.
+      Setting this to true will add the `ga4-event-tracker` module to your component. The JavaScript will then add a `data-ga4-event` attribute and `data-ga4-expandable` attribute to the "Show all steps" button, and each clickable Step heading.
+      GA4 will then track these elements when they are expanded or collapsed.
+      `data-ga4-event` contains a JSON with event data relevant to our tracking. `data-ga4-expandable` enables the value of `aria-expanded` to be captured.
+      See the [ga4-event-tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-event-tracker.md) docs for more information.
+    data:
+      ga4_tracking: true
+      steps: [
+        {
+          title: "Do something",
+          contents: [
+            {
+              type: 'paragraph',
+              text: 'This is a paragraph of text.'
+            },
+            {
+              type: 'paragraph',
+              text: 'This is also a paragraph of text that intentionally contains lots of words in order to fill the width of the page successfully to check layout and so forth.'
+            }
+          ],
+        },
+        {
+          title: "Do something thing else",
+          logic: "and",
+          contents: [
+            {
+              type: 'paragraph',
+              text: 'Some more text.'
+            },
+          ]
+        },
+      ]
   with_unique_tracking:
     description: |
       In order to identify the step by step navigation the component is part of, we need to track a unique ID of the navigation in Google Analytics. This ID should be the same across all pages that are linked from and are part of that navigation. Its value is included in any tracking events, specifically in dimension96. It refers to the ID of the step nav page.

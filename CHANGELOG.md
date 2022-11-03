@@ -13,6 +13,7 @@
 * Add the keyboard shim for link buttons ([PR #3027](https://github.com/alphagov/govuk_publishing_components/pull/3027))
 * Remove unused axe-core option from options parameter ([PR #3094](https://github.com/alphagov/govuk_publishing_components/pull/3094))
 * Minor ecommerce tracking refactor ([PR #3098](https://github.com/alphagov/govuk_publishing_components/pull/3098))
+* Add step by step nav GA4 tracking ([PR #3052](https://github.com/alphagov/govuk_publishing_components/pull/3052))
 
 ## 33.0.0
 
@@ -24,7 +25,6 @@
 * Add `aria-controls` and `aria-describedby` attribute options to the button component ([PR #3088](https://github.com/alphagov/govuk_publishing_components/pull/3088))
 * Simplify the way ga4 tracking is added to accordions ([PR #3082](https://github.com/alphagov/govuk_publishing_components/pull/3082))
 * Rename section and themes property names ([PR #3092](https://github.com/alphagov/govuk_publishing_components/pull/3092))
-
 
 ## 32.1.0
 

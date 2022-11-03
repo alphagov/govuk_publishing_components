@@ -253,4 +253,11 @@ describe "step nav", type: :view do
 
     assert_select ".gem-c-step-nav[data-id='harold']"
   end
+
+  it "adds ga4 attributes" do
+    render_component(steps: stepnav, ga4_tracking: true)
+
+    assert_select ".gem-c-step-nav[data-ga4-expandable]"
+    assert_select ".gem-c-step-nav[data-module='gemstepnav ga4-event-tracker']"
+  end
 end
