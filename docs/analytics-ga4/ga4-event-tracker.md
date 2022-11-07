@@ -1,14 +1,14 @@
-# Google Analytics event tracker
+# Google Analytics 4 event tracker
 
-This is a script to allow event tracking (e.g. clicks) through Google Tag Manager to be added to any element using data attributes.
+This script is intended for adding GA4 tracking to interactive elements such as buttons or details elements. It depends upon the main GA4 analytics code to function.
 
 ## Basic use
 
 ```html
 <div data-module="ga4-event-tracker">
-  <div data-ga4='{"event_name":"select_content", "type":"something", "index":0, "index_total":1, "text":"Click me"}'>
+  <button data-ga4='{ "event_name": "select_content", "type": "something", "index": "0", "index_total": "1", "text": "Click me"}'>
     Click me
-  </div>
+  </button>
 </div>
 ```
 
