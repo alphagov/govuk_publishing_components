@@ -1,0 +1,41 @@
+name: Copy PR template to Dependabot PRs
+
+on:
+  pull_request_target:
+    types: [opened]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  copy_pr_template:
+    name: Copy PR template to Dependabot PR
+    runs-on: ubuntu-latest
+    if: github.actor == 'dependabot[bot]'
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Post PR template as a comment
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs')
+
+            const body = [
+              "pull_request_template.md",
+              ".github/pull_request_template.md",
+              "docs/pull_request_template.md",
+            ].
+              filter(path => fs.existsSync(path)).
+              map(path => fs.readFileSync(path)).
+              join("\n")
+
+            if (body !== "") {
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body
+              })
+            }
