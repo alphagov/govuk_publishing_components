@@ -5,6 +5,13 @@ describe('GA4 click tracker', function () {
   var element
   var expected
   var attributes
+  var linkParts = {
+    1: undefined,
+    2: undefined,
+    3: undefined,
+    4: undefined,
+    5: undefined
+  }
 
   function initModule (element, click) {
     new GOVUK.Modules.Ga4LinkTracker(element).init()
@@ -90,6 +97,9 @@ describe('GA4 click tracker', function () {
       expected.event_data.event_name = 'navigation'
       expected.event_data.type = 'a link'
       expected.govuk_gem_version = 'aVersion'
+      expected.event_data.link_path_parts = linkParts
+      expected.event_data.method = 'primary click'
+      expected.event_data.external = 'false'
     })
 
     it('does not track anything without a data-ga4-link attribute', function () {
@@ -105,36 +115,42 @@ describe('GA4 click tracker', function () {
     it('tracks clicks on a single link', function () {
       var link = '#aNormalLink'
       element = document.createElement('a')
-      element.setAttribute('data-ga4', JSON.stringify(attributes))
+      element.setAttribute('data-ga4-link', JSON.stringify(attributes))
       element.setAttribute('href', link)
       var linkText = 'A normal link'
       element.textContent = linkText
       expected.event_data.text = linkText
       expected.event_data.url = link
+      expected.event_data.link_path_parts['1'] = link
 
       initModule(element, true)
       expect(window.dataLayer[0]).toEqual(expected)
     })
 
     it('tracks all links with data-ga4 attributes within a container', function () {
+      var longLink = '#link1-that-is-deliberately-really-long-to-test-the-url-being-split-into-parts-is-this-a-hundred-characters-yet'
       element = document.createElement('div')
       element.innerHTML =
-        '<a class="first" href="#link1">Link 1</a>' +
+        '<a class="first" href="' + longLink + '">Link 1</a>' +
         '<a href="#link2" class="secondWrapper"><span class="second">Link 2</span></a>' +
         '<a href="#link3"><span class="third">Link 3</span></a>' +
         '<span class="nothing"></span>'
 
-      element.querySelector('.first').setAttribute('data-ga4', JSON.stringify(attributes))
-      element.querySelector('.secondWrapper').setAttribute('data-ga4', JSON.stringify(attributes))
+      element.querySelector('.first').setAttribute('data-ga4-link', JSON.stringify(attributes))
+      element.querySelector('.secondWrapper').setAttribute('data-ga4-link', JSON.stringify(attributes))
       initModule(element, false)
 
       expected.event_data.text = 'Link 1'
-      expected.event_data.url = '#link1'
+      expected.event_data.url = longLink
+      expected.event_data.link_path_parts['1'] = '#link1-that-is-deliberately-really-long-to-test-the-url-being-split-into-parts-is-this-a-hundred-cha'
+      expected.event_data.link_path_parts['2'] = 'racters-yet'
       element.querySelector('.first').click()
       expect(window.dataLayer[0]).toEqual(expected)
 
       expected.event_data.text = 'Link 2'
       expected.event_data.url = '#link2'
+      expected.event_data.link_path_parts['1'] = '#link2'
+      expected.event_data.link_path_parts['2'] = undefined
       element.querySelector('.second').click()
       expect(window.dataLayer[1]).toEqual(expected)
 
@@ -157,6 +173,9 @@ describe('GA4 click tracker', function () {
       expected.event_data.event_name = 'navigation'
       expected.event_data.type = 'a link'
       expected.govuk_gem_version = 'aVersion'
+      expected.event_data.link_path_parts = linkParts
+      expected.event_data.method = 'primary click'
+      expected.event_data.external = 'false'
     })
 
     it('tracks only links within a container', function () {
@@ -168,21 +187,24 @@ describe('GA4 click tracker', function () {
         '<span class="nothing"></span>'
 
       element.setAttribute('data-ga4-track-links-only', '')
-      element.setAttribute('data-ga4', JSON.stringify(attributes))
+      element.setAttribute('data-ga4-link', JSON.stringify(attributes))
       initModule(element, false)
 
       expected.event_data.text = 'Link 1'
       expected.event_data.url = '#link1'
+      expected.event_data.link_path_parts['1'] = '#link1'
       element.querySelector('.first').click()
       expect(window.dataLayer[0]).toEqual(expected)
 
       expected.event_data.text = 'Link 2'
       expected.event_data.url = '#link2'
+      expected.event_data.link_path_parts['1'] = '#link2'
       element.querySelector('.second').click()
       expect(window.dataLayer[1]).toEqual(expected)
 
       expected.event_data.text = 'Link 3'
       expected.event_data.url = '#link3'
+      expected.event_data.link_path_parts['1'] = '#link3'
       element.querySelector('.third').click()
       expect(window.dataLayer[2]).toEqual(expected)
 
@@ -202,6 +224,9 @@ describe('GA4 click tracker', function () {
       expected.event_data.event_name = 'navigation'
       expected.event_data.type = 'a link'
       expected.govuk_gem_version = 'aVersion'
+      expected.event_data.link_path_parts = linkParts
+      expected.event_data.method = 'primary click'
+      expected.event_data.external = 'false'
     })
 
     it('tracks only links within the given class', function () {
@@ -216,21 +241,24 @@ describe('GA4 click tracker', function () {
 
       element.setAttribute('data-ga4-track-links-only', '')
       element.setAttribute('data-ga4-limit-to-element-class', 'trackme')
-      element.setAttribute('data-ga4', JSON.stringify(attributes))
+      element.setAttribute('data-ga4-link', JSON.stringify(attributes))
       initModule(element, false)
 
       expected.event_data.text = 'Link 1'
       expected.event_data.url = '#link1'
+      expected.event_data.link_path_parts['1'] = '#link1'
       element.querySelector('.first').click()
       expect(window.dataLayer[0]).toEqual(undefined)
 
       expected.event_data.text = 'Link 2'
       expected.event_data.url = '#link2'
+      expected.event_data.link_path_parts['1'] = '#link2'
       element.querySelector('.second').click()
       expect(window.dataLayer[0]).toEqual(expected)
 
       expected.event_data.text = 'Link 3'
       expected.event_data.url = '#link3'
+      expected.event_data.link_path_parts['1'] = '#link3'
       element.querySelector('.third').click()
       expect(window.dataLayer[1]).toEqual(expected)
 

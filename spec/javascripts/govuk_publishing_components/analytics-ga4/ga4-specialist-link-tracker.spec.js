@@ -574,7 +574,7 @@ describe('A specialist link tracker', function () {
       The value differs for each link, so we can't hardcode the expected value inside the test itself. */
       links.innerHTML =
           '<div class="share-links">' +
-              '<a href="example.com" data-ga4-link=\'' + JSON.stringify({ event_name: 'share', type: 'share this page', index: '1', index_total: '1', text: 'myspace', method: 'populated-via-js' }) + '\'>Share</a>' +
+              '<a href="example.com" data-ga4-link=\'' + JSON.stringify({ event_name: 'share', type: 'share this page', index: '1', index_total: '1', text: 'Share', method: 'populated-via-js' }) + '\'>Share</a>' +
           '</div>' +
           '<div class="follow-links">' +
               '<a href="https://example.com" link_domain="https://example.com" external="true" data-ga4-link=\'' + JSON.stringify({ event_name: 'navigation', type: 'follow us', index: '1', index_total: '2', text: 'Follow us', url: 'https://example.com', external: 'populated-via-js', method: 'populated-via-js' }) + '\'>Follow us</a>' +
@@ -656,16 +656,6 @@ describe('A specialist link tracker', function () {
       linkTracker.init({ internalDomains: ['www.gov.uk'] })
       expect(linkTracker.internalDomains).toContain('www.gov.uk')
       expect(linkTracker.internalDomains).toContain('gov.uk')
-    })
-
-    it('does not detect clicks when disableListeners is true', function () {
-      linkTracker = GOVUK.analyticsGa4.analyticsModules.Ga4SpecialistLinkTracker
-      // Add gov.uk as an internal domain, as our tests are running from localhost
-      linkTracker.init({ internalDomains: ['www.gov.uk'], disableListeners: true })
-      links.innerHTML = '<a href="http://www.nationalarchives1.gov.uk" id="clickme"> National Archives </a>'
-      var link = links.querySelector('#clickme')
-      GOVUK.triggerEvent(link, 'click')
-      expect(window.dataLayer).toEqual([])
     })
 
     it('removes _ga and _gl from href query parameters', function () {

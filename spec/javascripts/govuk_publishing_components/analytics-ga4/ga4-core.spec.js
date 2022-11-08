@@ -65,4 +65,145 @@ describe('GA4 core', function () {
       govuk_gem_version: 'aVersion'
     })
   })
+
+  describe('link tracking functions', function () {
+    describe('find tracking attributes on elements', function () {
+      var element
+      var trigger = 'ga4-trigger'
+
+      beforeEach(function () {
+        element = document.createElement('div')
+        element.setAttribute(trigger, 'something')
+      })
+
+      it('when the element has the attribute', function () {
+        var result = GOVUK.analyticsGa4.core.trackFunctions.findTrackingAttributes(element, trigger)
+        expect(result).toEqual(element)
+      })
+
+      it('when a parent element has the attribute', function () {
+        element.innerHTML = '<div class="clickme">Link</a>'
+        var child = element.querySelector('.clickme')
+        var result = GOVUK.analyticsGa4.core.trackFunctions.findTrackingAttributes(child, trigger)
+        expect(result).toEqual(element)
+      })
+    })
+
+    describe('dealing with long URLs', function () {
+      var path = '/thisstringispreciselyfiftycharactersintotallength'
+      var domains = [
+        'https://www.gov.uk',
+        'http://www.gov.uk',
+        '//www.gov.uk',
+        'https://gov.uk',
+        'http://gov.uk',
+        '//gov.uk'
+      ]
+
+      it('preserves the path as an object for a relative URL', function () {
+        expect(GOVUK.analyticsGa4.core.trackFunctions.populateLinkPathParts(path)).toEqual({
+          1: path,
+          2: undefined,
+          3: undefined,
+          4: undefined,
+          5: undefined
+        })
+      })
+
+      it('preserves a really long path correctly', function () {
+        var href = path + path + path + path + path + path
+        expect(GOVUK.analyticsGa4.core.trackFunctions.populateLinkPathParts(href)).toEqual({
+          1: path + path,
+          2: path + path,
+          3: path + path,
+          4: undefined,
+          5: undefined
+        })
+      })
+
+      it('obeys the limit of 500 characters for really long paths', function () {
+        var href = path + path + path + path + path + path + path + path + path + path + path + path + 'hello!'
+        expect(GOVUK.analyticsGa4.core.trackFunctions.populateLinkPathParts(href)).toEqual({
+          1: path + path,
+          2: path + path,
+          3: path + path,
+          4: path + path,
+          5: path + path
+        })
+      })
+
+      it('preserves only the path as an object when a domain is present for all variants of GOV.UK', function () {
+        var href
+        for (var i = 0; i < domains.length; i++) {
+          href = domains[i] + path
+          expect(GOVUK.analyticsGa4.core.trackFunctions.populateLinkPathParts(href)).toEqual({
+            1: path,
+            2: undefined,
+            3: undefined,
+            4: undefined,
+            5: undefined
+          })
+        }
+      })
+    })
+
+    it('correctly identifies a relative URL', function () {
+      var href = '/relativeURL'
+      expect(GOVUK.analyticsGa4.core.trackFunctions.hrefIsRelative(href)).toEqual(true)
+    })
+
+    it('correctly identifies a non-relative URL', function () {
+      var href = '//notarelativeURL'
+      expect(GOVUK.analyticsGa4.core.trackFunctions.hrefIsRelative(href)).toEqual(false)
+    })
+
+    it('correctly identifies an anchor link', function () {
+      var href = '#link'
+      expect(GOVUK.analyticsGa4.core.trackFunctions.hrefIsAnchor(href)).toEqual(true)
+    })
+
+    it('correctly identifies a non anchor link', function () {
+      var href = '/link'
+      expect(GOVUK.analyticsGa4.core.trackFunctions.hrefIsAnchor(href)).toEqual(false)
+    })
+
+    it('correctly identifies a mailto link', function () {
+      var href = 'mailto:meunlessitsspam'
+      expect(GOVUK.analyticsGa4.core.trackFunctions.isMailToLink(href)).toEqual(true)
+    })
+
+    it('correctly identifies a non mailto link', function () {
+      var href = '/link'
+      expect(GOVUK.analyticsGa4.core.trackFunctions.isMailToLink(href)).toEqual(false)
+    })
+
+    describe('when identifying internal links', function () {
+      it('correctly identifies relative and anchor links as internal', function () {
+        var href = '/something'
+        expect(GOVUK.analyticsGa4.core.trackFunctions.isInternalLink(href)).toEqual(true)
+
+        href = '#something'
+        expect(GOVUK.analyticsGa4.core.trackFunctions.isInternalLink(href)).toEqual(true)
+      })
+
+      it('correctly identifies an absolute link as internal when on the same domain', function () {
+        var href = 'https://notasite.com/something'
+        expect(GOVUK.analyticsGa4.core.trackFunctions.isInternalLink(href, ['notasite.com'])).toEqual(true)
+      })
+    })
+
+    describe('when testing if a link points to a domain', function () {
+      it('can tell if a link points to a domain', function () {
+        var domain = 'www.gov.uk'
+        var href = 'https://www.gov.uk/notarealpage'
+        expect(GOVUK.analyticsGa4.core.trackFunctions.hrefPointsToDomain(href, domain)).toEqual(true)
+      })
+
+      it('can tell if a link doesn\'t point to a domain', function () {
+        var domain = 'www.gov.uk'
+        var href = 'https://www.somethingelse.uk/notarealpage'
+        expect(GOVUK.analyticsGa4.core.trackFunctions.hrefPointsToDomain(href, domain)).toEqual(false)
+      })
+    })
+  })
 })

@@ -55,7 +55,6 @@ Passing a config object with arrays to `init()` is optional, but passing each ar
 - Passing an `internalDomains` array allows you to class domains which aren't the current hostname as internal domains. For example, if you were adding tracking and your hostname was `helpforhouseholds.campaign.gov.uk`, `www.gov.uk` links would be classed as external links, unless you add `www.gov.uk` to this array. The link tracker will automatically add the domain with `www.` removed as well (`gov.uk` in this case,) as sometimes `www.` is omitted from `href` values.
 - Passing an `internalDownloadPaths` array allows you to specify paths which should be classified as paths to a downloads route in your internal domains. If the path exists in an internal `href`, it will be treated as a download link.
 - Passing a `dedicatedDownloadDomains` array allows you to specify domains which will always be classed as a download link. For example, `dropbox.com` could be added to always track dropbox links as download links.
-- Passing `disableListeners: true` prevents click listeners from being added to the page on initilisation. This is useful if you'd like use the link detection features elsewhere without adding extra click listeners to the DOM.
 
 ```JavaScript
 //= require ./analytics-ga4/ga4-link-tracker
@@ -64,7 +63,6 @@ window.GOVUK.analyticsGa4.linkTracker.init({
     internalDomains: ['www.gov.uk'],
     internalDownloadPaths: ['/government/uploads/', '/downloads/'],
     dedicatedDownloadDomains: ['assets.publishing.service.gov.uk', 'dropbox.com'],
-    disableListeners: // true/false
 })
 
 ```
