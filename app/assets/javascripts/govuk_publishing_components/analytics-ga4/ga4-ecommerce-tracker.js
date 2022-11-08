@@ -97,7 +97,7 @@
         })
 
         ecommerceObject.event_data = {
-          external: GOVUK.analyticsGa4.analyticsModules.Ga4LinkTracker.isExternalLink(searchResult.getAttribute('data-ecommerce-path')) ? 'true' : 'false'
+          external: GOVUK.analyticsGa4.analyticsModules.Ga4SpecialistLinkTracker.isExternalLink(searchResult.getAttribute('data-ecommerce-path')) ? 'true' : 'false'
         }
       } else {
         for (var i = 0; i < ecommerceRows.length; i++) {

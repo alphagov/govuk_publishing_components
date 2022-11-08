@@ -6,7 +6,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
 (function (analyticsModules) {
   'use strict'
 
-  var Ga4LinkTracker = {
+  var Ga4SpecialistLinkTracker = {
     init: function (config) {
       if (window.dataLayer) {
         config = config || {}
@@ -327,5 +327,5 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
     }
   }
 
-  analyticsModules.Ga4LinkTracker = Ga4LinkTracker
+  analyticsModules.Ga4SpecialistLinkTracker = Ga4SpecialistLinkTracker
 })(window.GOVUK.analyticsGa4.analyticsModules)

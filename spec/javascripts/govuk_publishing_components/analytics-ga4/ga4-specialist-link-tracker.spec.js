@@ -1,6 +1,6 @@
 /* eslint-env jasmine */
 
-describe('GOVUK.analyticsGa4.linkTracker', function () {
+describe('A specialist link tracker', function () {
   'use strict'
   var GOVUK = window.GOVUK
   var links
@@ -14,8 +14,8 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
 
   beforeAll(function () {
     spyOn(GOVUK.analyticsGa4.core, 'getGemVersion').and.returnValue('aVersion')
-    spyOn(GOVUK.analyticsGa4.analyticsModules.Ga4LinkTracker, 'getHostname').and.returnValue('www.gov.uk')
-    spyOn(GOVUK.analyticsGa4.analyticsModules.Ga4LinkTracker, 'getProtocol').and.returnValue('https:')
+    spyOn(GOVUK.analyticsGa4.analyticsModules.Ga4SpecialistLinkTracker, 'getHostname').and.returnValue('www.gov.uk')
+    spyOn(GOVUK.analyticsGa4.analyticsModules.Ga4SpecialistLinkTracker, 'getProtocol').and.returnValue('https:')
   })
 
   afterAll(function () {
@@ -32,7 +32,7 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
     }
   })
 
-  describe('External link tracking', function () {
+  describe('when tracking external links', function () {
     beforeEach(function () {
       window.dataLayer = []
       expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
@@ -80,7 +80,7 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
       body.appendChild(links)
       body.addEventListener('click', preventDefault)
 
-      linkTracker = GOVUK.analyticsGa4.analyticsModules.Ga4LinkTracker
+      linkTracker = GOVUK.analyticsGa4.analyticsModules.Ga4SpecialistLinkTracker
       // Add gov.uk as an internal domain, as our tests are running from localhost
       linkTracker.init({ internalDomains: ['www.gov.uk'] })
     })
@@ -273,7 +273,7 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
     })
   })
 
-  describe('Download link tracking', function () {
+  describe('when tracking download links', function () {
     beforeEach(function () {
       window.dataLayer = []
       expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
@@ -330,7 +330,7 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
       body.appendChild(links)
       body.addEventListener('click', preventDefault)
 
-      linkTracker = GOVUK.analyticsGa4.analyticsModules.Ga4LinkTracker
+      linkTracker = GOVUK.analyticsGa4.analyticsModules.Ga4SpecialistLinkTracker
       // Add gov.uk as an internal domain, as our tests are running from localhost
       linkTracker.init({ internalDomains: ['www.gov.uk'] })
     })
@@ -501,7 +501,7 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
     })
   })
 
-  describe('Mailto link tracking', function () {
+  describe('when tracking mailto links', function () {
     beforeEach(function () {
       window.dataLayer = []
       expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
@@ -524,7 +524,7 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
       body.appendChild(links)
       body.addEventListener('click', preventDefault)
 
-      linkTracker = GOVUK.analyticsGa4.analyticsModules.Ga4LinkTracker
+      linkTracker = GOVUK.analyticsGa4.analyticsModules.Ga4SpecialistLinkTracker
       // Add gov.uk as an internal domain, as our tests are running from localhost
       linkTracker.init({ internalDomains: ['www.gov.uk'] })
     })
@@ -562,7 +562,7 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
     })
   })
 
-  describe('Share and follow link tracking', function () {
+  describe('when tracking share and follow links', function () {
     beforeEach(function () {
       window.dataLayer = []
       expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
@@ -584,7 +584,7 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
       body.appendChild(links)
       body.addEventListener('click', preventDefault)
 
-      linkTracker = GOVUK.analyticsGa4.analyticsModules.Ga4LinkTracker
+      linkTracker = GOVUK.analyticsGa4.analyticsModules.Ga4SpecialistLinkTracker
       // Add gov.uk as an internal domain, as our tests are running from localhost
       linkTracker.init({ internalDomains: ['www.gov.uk'] })
     })
@@ -636,7 +636,7 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
       }
     })
   })
-  describe('Helper function tracking', function () {
+  describe('when tracking using helper functions', function () {
     beforeEach(function () {
       window.dataLayer = []
       links = document.createElement('div')
@@ -651,7 +651,7 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
     })
 
     it('adds "gov.uk" to the internal domain list after "www.gov.uk" was added as an internal domain', function () {
-      linkTracker = GOVUK.analyticsGa4.analyticsModules.Ga4LinkTracker
+      linkTracker = GOVUK.analyticsGa4.analyticsModules.Ga4SpecialistLinkTracker
       // Add gov.uk as an internal domain, as our tests are running from localhost
       linkTracker.init({ internalDomains: ['www.gov.uk'] })
       expect(linkTracker.internalDomains).toContain('www.gov.uk')
@@ -659,7 +659,7 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
     })
 
     it('does not detect clicks when disableListeners is true', function () {
-      linkTracker = GOVUK.analyticsGa4.analyticsModules.Ga4LinkTracker
+      linkTracker = GOVUK.analyticsGa4.analyticsModules.Ga4SpecialistLinkTracker
       // Add gov.uk as an internal domain, as our tests are running from localhost
       linkTracker.init({ internalDomains: ['www.gov.uk'], disableListeners: true })
       links.innerHTML = '<a href="http://www.nationalarchives1.gov.uk" id="clickme"> National Archives </a>'
@@ -669,7 +669,7 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
     })
 
     it('removes _ga and _gl from href query parameters', function () {
-      linkTracker = GOVUK.analyticsGa4.analyticsModules.Ga4LinkTracker
+      linkTracker = GOVUK.analyticsGa4.analyticsModules.Ga4SpecialistLinkTracker
       linkTracker.init({ internalDomains: ['www.gov.uk'] })
 
       links.innerHTML = '<div class="query-param-links">' +
@@ -700,7 +700,7 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
     })
 
     it('cleans up link text with multiple lines and spaces', function () {
-      linkTracker = GOVUK.analyticsGa4.analyticsModules.Ga4LinkTracker
+      linkTracker = GOVUK.analyticsGa4.analyticsModules.Ga4SpecialistLinkTracker
       linkTracker.init({ internalDomains: ['www.gov.uk'] })
 
       links.innerHTML = '<div class="messy-text">' +
@@ -725,7 +725,7 @@ describe('GOVUK.analyticsGa4.linkTracker', function () {
     })
 
     it('splits hrefs longer than 100 characters into an object of parts', function () {
-      linkTracker = GOVUK.analyticsGa4.analyticsModules.Ga4LinkTracker
+      linkTracker = GOVUK.analyticsGa4.analyticsModules.Ga4SpecialistLinkTracker
       linkTracker.init({ internalDomains: ['www.gov.uk'] })
 
       links.innerHTML = '<div class="long-links">' +

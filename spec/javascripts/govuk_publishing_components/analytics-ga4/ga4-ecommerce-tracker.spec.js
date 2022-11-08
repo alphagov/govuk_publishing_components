@@ -249,8 +249,8 @@ describe('Google Analytics ecommerce tracking', function () {
       }
 
       resultToBeClicked = document.querySelector("[data-ecommerce-path='/foreign-travel-advice']")
-      GOVUK.analyticsGa4.analyticsModules.Ga4LinkTracker.internalLinksDomain = 'www.gov.uk/'
-      GOVUK.analyticsGa4.analyticsModules.Ga4LinkTracker.internalLinksDomainWithoutWww = 'gov.uk/'
+      GOVUK.analyticsGa4.analyticsModules.Ga4SpecialistLinkTracker.internalLinksDomain = 'www.gov.uk/'
+      GOVUK.analyticsGa4.analyticsModules.Ga4SpecialistLinkTracker.internalLinksDomainWithoutWww = 'gov.uk/'
     })
 
     it('should push a nullified ecommerce object to the dataLayer', function () {

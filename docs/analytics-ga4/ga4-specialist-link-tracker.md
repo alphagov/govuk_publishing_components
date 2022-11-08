@@ -1,4 +1,4 @@
-# Google Analytics link tracker
+# Google Analytics Specialist Link Tracker
 
 A module for tracking link clicks on GOV.UK.
 
