@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* **BREAKING** Refactor GA4 analytics event and link trackers ([PR #3057](https://github.com/alphagov/govuk_publishing_components/pull/3057))
 * Share links allow data attributes ([PR #3072](https://github.com/alphagov/govuk_publishing_components/pull/3072))
 * Update to LUX 304 ([PR #3070](https://github.com/alphagov/govuk_publishing_components/pull/3070))
 
