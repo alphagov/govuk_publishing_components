@@ -17,12 +17,12 @@ describe('Feedback component', function () {
                 '</a>' +
               '</li>' +
               '<li class="gem-c-feedback__option-list-item">' +
-                '<button class="govuk-button gem-c-feedback__prompt-link js-page-is-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffYesClick" data-ga4="{"event_name":"form_submit","type":"feedback","text":"Yes", "section": "Is this page useful?"}">' +
+                '<button class="govuk-button gem-c-feedback__prompt-link js-page-is-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffYesClick">' +
                   'Yes <span class="govuk-visually-hidden">this page is useful</span>' +
                 '</button>' +
               '</li>' +
               '<li class="gem-c-feedback__option-list-item">' +
-                '<button class="govuk-button gem-c-feedback__prompt-link js-toggle-form js-page-is-not-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffNoClick" aria-controls="page-is-not-useful" aria-expanded="false" data-ga4="{"event_name":"form_submit","type":"feedback","text":"No", "section": "Is this page useful?"}">' +
+                '<button class="govuk-button gem-c-feedback__prompt-link js-toggle-form js-page-is-not-useful" data-track-category="yesNoFeedbackForm" data-track-action="ffNoClick" aria-controls="page-is-not-useful" aria-expanded="false">' +
                   'No <span class="govuk-visually-hidden">this page is not useful</span>' +
                 '</button>' +
               '</li>' +
