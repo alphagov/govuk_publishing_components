@@ -1,4 +1,4 @@
-// = require govuk/vendor/polyfills/Element/prototype/closest.js
+//= require ../vendor/polyfills/closest.js
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.Modules = window.GOVUK.Modules || {};
 
@@ -7,7 +7,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   function Ga4EventTracker (module) {
     this.module = module
-    this.trackingTrigger = 'data-ga4' // elements with this attribute get tracked
+    this.trackingTrigger = 'data-ga4-event' // elements with this attribute get tracked
   }
 
   Ga4EventTracker.prototype.init = function () {
@@ -29,7 +29,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   Ga4EventTracker.prototype.trackClick = function (event) {
-    var target = this.findTrackingAttributes(event.target)
+    var target = window.GOVUK.analyticsGa4.core.trackFunctions.findTrackingAttributes(event.target, this.trackingTrigger)
     if (target) {
       var schema = new window.GOVUK.analyticsGa4.Schemas().eventSchema()
 
@@ -85,14 +85,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       }
 
       window.GOVUK.analyticsGa4.core.sendData(schema)
-    }
-  }
-
-  Ga4EventTracker.prototype.findTrackingAttributes = function (clicked) {
-    if (clicked.hasAttribute('[' + this.trackingTrigger + ']')) {
-      return clicked
-    } else {
-      return clicked.closest('[' + this.trackingTrigger + ']')
     }
   }
 

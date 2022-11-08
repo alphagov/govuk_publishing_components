@@ -105,7 +105,7 @@ describe('GA4 click tracker', function () {
     it('tracks clicks on a single link', function () {
       var link = '#aNormalLink'
       element = document.createElement('a')
-      element.setAttribute('data-ga4', JSON.stringify(attributes))
+      element.setAttribute('data-ga4-link', JSON.stringify(attributes))
       element.setAttribute('href', link)
       var linkText = 'A normal link'
       element.textContent = linkText
@@ -124,8 +124,8 @@ describe('GA4 click tracker', function () {
         '<a href="#link3"><span class="third">Link 3</span></a>' +
         '<span class="nothing"></span>'
 
-      element.querySelector('.first').setAttribute('data-ga4', JSON.stringify(attributes))
-      element.querySelector('.secondWrapper').setAttribute('data-ga4', JSON.stringify(attributes))
+      element.querySelector('.first').setAttribute('data-ga4-link', JSON.stringify(attributes))
+      element.querySelector('.secondWrapper').setAttribute('data-ga4-link', JSON.stringify(attributes))
       initModule(element, false)
 
       expected.event_data.text = 'Link 1'
@@ -168,7 +168,7 @@ describe('GA4 click tracker', function () {
         '<span class="nothing"></span>'
 
       element.setAttribute('data-ga4-track-links-only', '')
-      element.setAttribute('data-ga4', JSON.stringify(attributes))
+      element.setAttribute('data-ga4-link', JSON.stringify(attributes))
       initModule(element, false)
 
       expected.event_data.text = 'Link 1'
@@ -216,7 +216,7 @@ describe('GA4 click tracker', function () {
 
       element.setAttribute('data-ga4-track-links-only', '')
       element.setAttribute('data-ga4-limit-to-element-class', 'trackme')
-      element.setAttribute('data-ga4', JSON.stringify(attributes))
+      element.setAttribute('data-ga4-link', JSON.stringify(attributes))
       initModule(element, false)
 
       expected.event_data.text = 'Link 1'

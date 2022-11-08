@@ -1,3 +1,4 @@
+//= require ../vendor/polyfills/closest.js
 window.GOVUK = window.GOVUK || {}
 window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
 
@@ -47,6 +48,16 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
 
     getGemVersion: function () {
       return window.GOVUK.analyticsGa4.vars.gem_version || 'not found'
+    },
+
+    trackFunctions: {
+      findTrackingAttributes: function (clicked, trackingTrigger) {
+        if (clicked.hasAttribute('[' + trackingTrigger + ']')) {
+          return clicked
+        } else {
+          return clicked.closest('[' + trackingTrigger + ']')
+        }
+      }
     }
   }
 

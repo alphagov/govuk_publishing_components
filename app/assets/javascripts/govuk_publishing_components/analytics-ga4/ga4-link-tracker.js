@@ -7,7 +7,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   function Ga4LinkTracker (module) {
     this.module = module
-    this.trackingTrigger = 'data-ga4' // elements with this attribute get tracked
+    this.trackingTrigger = 'data-ga4-link' // elements with this attribute get tracked
     this.trackLinksOnly = this.module.hasAttribute('data-ga4-track-links-only')
     this.limitToElementClass = this.module.getAttribute('data-ga4-limit-to-element-class')
   }
@@ -42,7 +42,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   Ga4LinkTracker.prototype.trackClick = function (event) {
-    var target = this.findTrackingAttributes(event.target)
+    var target = window.GOVUK.analyticsGa4.core.trackFunctions.findTrackingAttributes(event.target, this.trackingTrigger)
     if (target) {
       var schema = new window.GOVUK.analyticsGa4.Schemas().eventSchema()
 
@@ -75,15 +75,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       return target
     } else {
       return target.closest('a')
-    }
-  }
-
-  // FIXME duplicated from the event tracker - move to somewhere shared
-  Ga4LinkTracker.prototype.findTrackingAttributes = function (clicked) {
-    if (clicked.hasAttribute('[' + this.trackingTrigger + ']')) {
-      return clicked
-    } else {
-      return clicked.closest('[' + this.trackingTrigger + ']')
     }
   }
 

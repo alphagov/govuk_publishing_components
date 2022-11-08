@@ -74,7 +74,7 @@ describe('Google Analytics event tracking', function () {
 
   describe('configuring tracking without any data', function () {
     beforeEach(function () {
-      element.setAttribute('data-ga4', '')
+      element.setAttribute('data-ga4-event', '')
       document.body.appendChild(element)
       new GOVUK.Modules.Ga4EventTracker(element).init()
     })
@@ -87,7 +87,7 @@ describe('Google Analytics event tracking', function () {
 
   describe('configuring tracking with incorrect data', function () {
     beforeEach(function () {
-      element.setAttribute('data-ga4', 'invalid json')
+      element.setAttribute('data-ga4-event', 'invalid json')
       document.body.appendChild(element)
       new GOVUK.Modules.Ga4EventTracker(element).init()
     })
@@ -111,7 +111,7 @@ describe('Google Analytics event tracking', function () {
         type: 'tabs',
         not_a_schema_attribute: 'something'
       }
-      element.setAttribute('data-ga4', JSON.stringify(attributes))
+      element.setAttribute('data-ga4-event', JSON.stringify(attributes))
       document.body.appendChild(element)
       new GOVUK.Modules.Ga4EventTracker(element).init()
     })
@@ -150,10 +150,10 @@ describe('Google Analytics event tracking', function () {
       }
 
       element.innerHTML =
-        '<div data-ga4=\'' + JSON.stringify(attributes1) + '\'' +
+        '<div data-ga4-event=\'' + JSON.stringify(attributes1) + '\'' +
           'class="clickme"' +
         '></div>' +
-        '<div data-ga4=\'' + JSON.stringify(attributes2) + '\'' +
+        '<div data-ga4-event=\'' + JSON.stringify(attributes2) + '\'' +
           'class="clickme"' +
         '></div>'
       document.body.appendChild(element)
@@ -176,7 +176,7 @@ describe('Google Analytics event tracking', function () {
         text: 'some text'
       }
       element.classList.add('gem-c-accordion')
-      element.setAttribute('data-ga4', JSON.stringify(attributes))
+      element.setAttribute('data-ga4-event', JSON.stringify(attributes))
       element.setAttribute('aria-expanded', 'false')
       document.body.appendChild(element)
       new GOVUK.Modules.Ga4EventTracker(element).init()
@@ -211,7 +211,7 @@ describe('Google Analytics event tracking', function () {
         text: 'some text'
       }
       element.innerHTML =
-        '<details data-ga4=\'' + JSON.stringify(attributes) + '\'' +
+        '<details data-ga4-event=\'' + JSON.stringify(attributes) + '\'' +
           'class="clickme"' +
         '>' +
         '</details>'
@@ -249,7 +249,7 @@ describe('Google Analytics event tracking', function () {
         event_name: 'event-name'
       }
       element.innerHTML =
-        '<div data-ga4=\'' + JSON.stringify(attributes) + '\'' +
+        '<div data-ga4-event=\'' + JSON.stringify(attributes) + '\'' +
           'class="gem-c-accordion"' +
         '>' +
           '<button aria-expanded="false">Show</button>' +
@@ -292,7 +292,7 @@ describe('Google Analytics event tracking', function () {
         event_name: 'event-name'
       }
       element.innerHTML =
-        '<details data-ga4=\'' + JSON.stringify(attributes) + '\'' +
+        '<details data-ga4-event=\'' + JSON.stringify(attributes) + '\'' +
           'class="clickme"' +
         '>' +
           '<summary class="nested">Example</summary>' +
@@ -334,7 +334,7 @@ describe('Google Analytics event tracking', function () {
         event_name: 'event-name'
       }
       element.innerHTML =
-        '<div data-ga4=\'' + JSON.stringify(attributes) + '\' class="clickme">' +
+        '<div data-ga4-event=\'' + JSON.stringify(attributes) + '\' class="clickme">' +
           '<div class="content">Content</div>' +
           '<div class="gem-c-accordion">' +
             '<button aria-expanded="false">Show</button>' +
@@ -357,7 +357,7 @@ describe('Google Analytics event tracking', function () {
         event_name: 'event-name'
       }
       element.innerHTML =
-        '<div data-ga4=\'' + JSON.stringify(attributes) + '\' class="clickme">' +
+        '<div data-ga4-event=\'' + JSON.stringify(attributes) + '\' class="clickme">' +
           '<div class="content">Content</div>' +
           '<details>' +
             'Details element' +
@@ -380,7 +380,7 @@ describe('Google Analytics event tracking', function () {
         event_name: 'event-name'
       }
       element.innerHTML =
-        '<div data-ga4=\'' + JSON.stringify(attributes) + '\' class="clickme">' +
+        '<div data-ga4-event=\'' + JSON.stringify(attributes) + '\' class="clickme">' +
           '<div class="gem-c-tabs">' +
               '<ul>' +
               '<li> <a href="#tab-location-1" class="tab-1">Tab 1</a> </li>' +
@@ -423,12 +423,12 @@ describe('Google Analytics event tracking', function () {
       '</div>'
 
       var yesButton = document.createElement('button')
-      yesButton.setAttribute('data-ga4', JSON.stringify(attributes))
+      yesButton.setAttribute('data-ga4-event', JSON.stringify(attributes))
       yesButton.id = 'yesButton'
 
       attributes.text = 'No'
       var noButton = document.createElement('button')
-      noButton.setAttribute('data-ga4', JSON.stringify(attributes))
+      noButton.setAttribute('data-ga4-event', JSON.stringify(attributes))
       noButton.id = 'noButton'
 
       element.appendChild(yesButton)
@@ -487,7 +487,7 @@ describe('Google Analytics event tracking', function () {
       for (var i = 0; i < buttons.length; i++) {
         window.dataLayer = []
         var button = buttons[i]
-        button.setAttribute('data-ga4', JSON.stringify({
+        button.setAttribute('data-ga4-event', JSON.stringify({
           event_name: 'select_content',
           type: 'header menu bar',
           text: button.textContent,
