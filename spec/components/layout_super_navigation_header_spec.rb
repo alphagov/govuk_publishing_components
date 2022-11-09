@@ -68,7 +68,6 @@ describe "Super navigation header", type: :view do
     render_component({})
 
     assert_select ".gem-c-layout-super-navigation-header__navigation-items", count: 1
-    assert_select ".gem-c-layout-super-navigation-header__navigation-items .gem-c-layout-super-navigation-header__navigation-item", count: 1
   end
 
   it "renders the search menu with links in it" do

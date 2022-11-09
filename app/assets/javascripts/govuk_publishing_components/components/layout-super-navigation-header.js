@@ -92,32 +92,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     return closestPrevious(previousElement, elementType)
   }
 
-  // When moving from one screen size to another (eg mobile to desktop) we need
-  // to find out whether a submenu is open so the parent menu can be kept open.
-  var hasSubMenusOpen = function ($menu) {
-    return $menu.querySelectorAll('button[aria-expanded="true"]').length > 0
-  }
-
-  // Detect the current viewport width. Return the string `desktop` or `mobile` so it can be interpolated to access the
-  // `data-toggle-{desktop|mobile}-group` attribute.
-  //
-  // Use `matchedia` which mitigates issues in modern browsers when scrollbars are forced in MacOS (using `document.documentElement.clientWidth`
-  // for viewport width detection has issues in Chrome and Firefox, and `window.innerWidth` has issues in Safari).
-  //
-  //  Fall back to `document.documentElement.clientWidth` for legacy browsers.
-  var windowSize = function () {
-    var viewport = false
-    if (typeof window.matchMedia === 'function') {
-      viewport = window.matchMedia('(min-width:' + SETTINGS.breakpoint.desktop + 'px)').matches
-    } else {
-      viewport = document.documentElement.clientWidth >= SETTINGS.breakpoint.desktop
-    }
-    return viewport ? 'desktop' : 'mobile'
-  }
   function SuperNavigationMegaMenu ($module) {
     this.$module = $module
-    this.$navigationToggle = this.$module.querySelector('#super-navigation-menu-toggle')
-    this.$navigationMenu = this.$module.querySelector('#super-navigation-menu')
     this.$searchToggle = this.$module.querySelector('#super-search-menu-toggle')
     this.$searchMenu = this.$module.querySelector('#super-search-menu')
 
@@ -132,55 +108,25 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     )
 
     this.hiddenButtons = this.$module.querySelectorAll('button[hidden]')
-
-    this.lastWindowSize = null
   }
 
-  SuperNavigationMegaMenu.prototype.windowSize = windowSize
-
   SuperNavigationMegaMenu.prototype.updateStates = function () {
-    if (this.windowSize() === 'mobile' && this.lastWindowSize !== 'mobile') {
-      this.$navigationToggle.removeAttribute('hidden')
+    // Check whether any of the dropdown menus are open.
+    var $openButton = this.$module.querySelector('[aria-expanded="true"][data-toggle-desktop-group="top"]')
+    // Gets the open dropdown menu
+    var $openMenu = $openButton ? this.$module.querySelector('#' + $openButton.getAttribute('aria-controls')) : null
+    // If there is an open dropdown menu, get the height of the dropdown menu.
+    var margin = $openMenu ? $openMenu.offsetHeight : 0
 
-      // Hides navigation menu unless a submenu is open - this could be common
-      // as the desktop view has the navigation submenu as top level in the
-      // menu.
-      if (!hasSubMenusOpen(this.$navigationMenu)) {
-        hide(this.$navigationToggle, this.$navigationMenu)
-      }
-
-      this.$module.style.marginBottom = '0'
-    }
-
-    // Hide the navigation toggle button and show the navigation submenu:
-    if (this.windowSize() === 'desktop' && this.lastWindowSize !== 'desktop') {
-      this.$navigationToggle.setAttribute('hidden', 'hidden')
-      this.$navigationMenu.removeAttribute('hidden')
-    }
-
-    // The dropdown menu height is only needed when in desktop mode as this is
-    // when the dropdown menu is using `absolute` positioning. This requires
-    // JavaScript to work out the height and make space for the dropdown menu.
-    if (windowSize() === 'desktop') {
-      // Check whether any of the dropdown menus are open.
-      var $openButton = this.$module.querySelector('[aria-expanded="true"][data-toggle-desktop-group="top"]')
-      // Gets the open dropdown menu
-      var $openMenu = $openButton ? this.$module.querySelector('#' + $openButton.getAttribute('aria-controls')) : null
-      // If there is an open dropdown menu, get the height of the dropdown menu.
-      var margin = $openMenu ? $openMenu.offsetHeight : 0
-
-      // Make space for the dropdown menu.
-      this.$module.style.marginBottom = margin + 'px'
-    }
-
-    this.lastWindowSize = this.windowSize()
+    // Make space for the dropdown menu.
+    this.$module.style.marginBottom = margin + 'px'
   }
 
   SuperNavigationMegaMenu.prototype.buttonHandler = function (event) {
     var $target = closestParentIncluding(event.target, 'button')
     var $targetMenu = this.$module.querySelector('#' + $target.getAttribute('aria-controls'))
 
-    var toggleGroupAttribute = 'data-toggle-' + this.windowSize() + '-group'
+    var toggleGroupAttribute = 'data-toggle-desktop-group'
     var toggleGroupName = $target.getAttribute(toggleGroupAttribute)
     var toggleGroupList = this.$module.querySelectorAll('[' + toggleGroupAttribute + '="' + toggleGroupName + '"]')
 
@@ -194,9 +140,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
     toggle($target, $targetMenu)
 
-    if (this.windowSize() === 'desktop') {
-      this.$module.style.marginBottom = $targetMenu.offsetHeight + 'px'
-    }
+    this.$module.style.marginBottom = $targetMenu.offsetHeight + 'px'
   }
 
   SuperNavigationMegaMenu.prototype.init = function () {
@@ -217,6 +161,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       $element.removeAttribute('hidden')
 
       var closestSiblingLink = closestPrevious($element, 'a')
+
       if (closestSiblingLink) {
         closestSiblingLink.setAttribute('hidden', 'hidden')
       }
@@ -236,8 +181,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     //     second level navigation menu
     hide(this.$searchToggle, this.$searchMenu)
     this.updateStates()
-
-    this.lastWindowSize = this.windowSize()
 
     // The menu needs to be updated when the window is resized to make sure that
     // the space needed for the dropdown menu is correct.
