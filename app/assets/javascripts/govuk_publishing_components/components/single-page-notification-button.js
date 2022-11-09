@@ -28,15 +28,31 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
           var responseText = xhr.responseText
-          // if response text exists and is JSON parse-able, parse the response and get the button html
+          // if response text exists and is JSON parse-able, parse the response and update the button html
           if (responseText && this.responseIsJSON(responseText)) {
-            var newButton = JSON.parse(responseText).button_html
-            var html = document.createElement('div')
-            html.innerHTML = newButton
-            // test that the html returned contains the button component; if yes, swap the button for the updated version
-            var responseButtonContainer = html.querySelector('form.gem-c-single-page-notification-button')
-            if (responseButtonContainer) {
-              this.$module.parentNode.replaceChild(responseButtonContainer, this.$module)
+            var active = JSON.parse(responseText).active
+
+            var customSubscribeText = this.$module.getAttribute('data-button-text-subscribe')
+            var customUnsubscribeText = this.$module.getAttribute('data-button-text-unsubscribe')
+            // Only set custom button text if both text items are provided
+            var customText = customSubscribeText && customUnsubscribeText
+
+            // Append '-[button-location]' to the tracking data attribute value if data-button-location is set
+            var optionalButtonLocation = this.$module.getAttribute('data-button-location') ? '-' + this.$module.getAttribute('data-button-location') : ''
+
+            // If response returns active, user has subscribed to notifications
+            if (active === true) {
+              this.$module.setAttribute('data-track-action', 'Unsubscribe-button' + optionalButtonLocation)
+
+              if (customText) {
+                this.$module.querySelector('.gem-c-single-page-notication-button__text').textContent = customUnsubscribeText
+              }
+            } else {
+              this.$module.setAttribute('data-track-action', 'Subscribe-button' + optionalButtonLocation)
+
+              if (customText) {
+                this.$module.querySelector('.gem-c-single-page-notication-button__text').textContent = customSubscribeText
+              }
             }
           }
         }
