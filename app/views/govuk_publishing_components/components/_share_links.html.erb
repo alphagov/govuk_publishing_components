@@ -20,9 +20,11 @@
 <% if links.any? %>
   <%= tag.div(class: classes, data: data_attributes) do %>
     <% if title %>
-      <h2 class="gem-c-share-links__title"><%= title %></h2>
+      <h2 class="govuk-heading-s"><%= title %></h2>
     <% end %>
-
+    <p class="govuk-body-s">
+      <%= t('components.share_links.all_opens_in_new_tab') %>
+    </p>
     <ul class="gem-c-share-links__list">
       <% links.each_with_index do |link, index| %>
         <% link_text = capture do %>
@@ -34,6 +36,9 @@
             <% end %>
           </span>
           <%= link[:text] %>
+          <span class="govuk-visually-hidden">
+            <%= t('components.share_links.opens_in_new_tab') %>
+          </span>
         <% end %>
         <li class="gem-c-share-links__list-item">
           <%

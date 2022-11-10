@@ -168,13 +168,16 @@ cy:
         link_text: Gwiriwch beth mae angen i chi wneud
         title: Brexit
       ukraine:
-        title:
         links:
+        title:
       world_locations: Lleoliadau byd-eang
     search_box:
       input_title: Chwilio
       label: Chwilio ar GOV.UK
       search_button: Chwilio
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: Mae eich cyfrinair wedi'i guddio
       announce_show: Mae eich cyfrinair yn cael ei ddangos

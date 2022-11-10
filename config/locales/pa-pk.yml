@@ -160,13 +160,16 @@ pa-pk:
         link_text: دیکھو جو تہانوں کرن دی لوڑ اے
         title: Brexit
       ukraine:
-        title:
         links:
+        title:
       world_locations: دُنیا دیاں تھاواں
     search_box:
       input_title: کھوج
       label: GOV.UK اُتے کھوج کرو
       search_button: کھوج
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: تہاڈا پاس ورڈ لُکیا ہویا اے
       announce_show: تہاڈا پاس ورڈ دکھائی دِتا اے

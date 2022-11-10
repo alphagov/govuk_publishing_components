@@ -162,13 +162,16 @@ fa:
         link_text: آنچه را باید انجام دهید، بررسی کنید
         title: برگزیت
       ukraine:
-        title:
         links:
+        title:
       world_locations: مکان‌های جهانی
     search_box:
       input_title: جستجو
       label: جستجو در GOV.UK
       search_button: جستجو
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: رمز عبور شما مخفی شده است
       announce_show: رمز عبور شما نمایش داده شده است

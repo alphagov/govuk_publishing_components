@@ -167,13 +167,16 @@ ka:
         link_text: შეამოწმეთ თუ რა უნდა გააკეთოთ
         title: ბრექსითის შემოწმება
       ukraine:
-        title:
         links:
+        title:
       world_locations: მსოფლიო ლოკაციები
     search_box:
       input_title: ძიება
       label: ძიება GOV.UK-ზე
       search_button: ძიება
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: თქვენი პაროლი დაფარულია
       announce_show: თქვენი პაროლი ჩანს

@@ -165,13 +165,16 @@ ta:
         link_text: நீங்கள் செய்யவேண்டியது என்ன என்று பாருங்கள்
         title: பிரெக்சிட்
       ukraine:
-        title:
         links:
+        title:
       world_locations: உலக இருப்பிடங்கள்
     search_box:
       input_title: தேடு
       label: GOV.UK-யில் தேடுக
       search_button: தேடு
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: உங்கள் கடவுச்சொல் மறைக்கப்பட்டுள்ளது
       announce_show: உங்கள் கடவுச்சொல் காட்டப்படுகிறது

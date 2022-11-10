@@ -167,13 +167,16 @@ et:
         link_text: Kontrollige, mida peate tegema
         title: Brexit
       ukraine:
-        title:
         links:
+        title:
       world_locations: Maailma asukohad
     search_box:
       input_title: Otsing
       label: Otsige saidilt GOV.UK
       search_button: Otsing
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: Teie parool on peidetud
       announce_show: Teie parooli kuvatakse

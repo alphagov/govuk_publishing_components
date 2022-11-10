@@ -165,13 +165,16 @@ tr:
         link_text: Ne yapmaya ihtiyacınız olduğunu kontrol edin
         title: Brexit
       ukraine:
-        title:
         links:
+        title:
       world_locations: Dünya geneli konumlar
     search_box:
       input_title: Ara
       label: GOV.UK adresini ara
       search_button: Ara
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: Şifreniz gizli
       announce_show: Şifreniz gösteriliyor

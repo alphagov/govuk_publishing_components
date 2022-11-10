@@ -169,13 +169,16 @@ lt:
         link_text: Pažiūrėkite, ką turite daryti
         title: "„Brexitas“ "
       ukraine:
-        title:
         links:
+        title:
       world_locations: Pasaulio vietos
     search_box:
       input_title: Ieškoti
       label: Ieškoti GOV.UK
       search_button: Ieškoti
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: Jūsų slaptažodis paslėptas
       announce_show: Jūsų slaptažodis rodomas

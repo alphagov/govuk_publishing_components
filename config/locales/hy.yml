@@ -168,13 +168,16 @@ hy:
         link_text: Իմացեք, թե ինչ պետք է անեք
         title: Brexit
       ukraine:
-        title:
         links:
+        title:
       world_locations: Գտնվելու վայրերը
     search_box:
       input_title: Որոնում
       label: Որոնել GOV.UK կայքում
       search_button: Որոնում
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: Ձեր գաղտնաբառը թաքցրած է
       announce_show: Ձեր գաղտնաբառը ցուցադրված է

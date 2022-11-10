@@ -165,13 +165,16 @@ bn:
         link_text: আপনার যা করা প্রয়োজন তা দেখুন
         title: ব্রেক্সিট
       ukraine:
-        title:
         links:
+        title:
       world_locations: বিশ্বের অবস্থানসমূহ
     search_box:
       input_title: খুঁজুন
       label: GOV.UK-এ অনুসন্ধান করুন
       search_button: খুঁজুন
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: আপনার পাসওয়ার্ড লুকানো
       announce_show: আপনার পাসওয়ার্ড দেখানো হয়েছে

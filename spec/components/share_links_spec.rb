@@ -33,7 +33,7 @@ describe "ShareLinks", type: :view do
 
   it "renders a custom title" do
     render_component(links: links, title: "Share this page")
-    assert_select ".gem-c-share-links__title", text: "Share this page"
+    assert_select ".gem-c-share-links .govuk-heading-s", text: "Share this page"
   end
 
   it "renders a share link if only one share link provided" do

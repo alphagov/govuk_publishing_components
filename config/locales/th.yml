@@ -162,13 +162,16 @@ th:
         link_text: ตรวจสอบสิ่งที่คุณต้องทำ
         title: Brexit
       ukraine:
-        title:
         links:
+        title:
       world_locations: สถานที่ทั่วโลก
     search_box:
       input_title: ค้นหา
       label: ค้นหาใน GOV.UK
       search_button: ค้นหา
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: รหัสผ่านของคุณถูกซ่อน
       announce_show: รหัสผ่านของคุณถูกแสดง

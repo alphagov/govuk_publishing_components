@@ -165,13 +165,16 @@ sr:
         link_text: Proverite šta treba da uradite
         title: Bregzit
       ukraine:
-        title:
         links:
+        title:
       world_locations: Globalne lokacije
     search_box:
       input_title: Pretraži
       label: Pretraži na GOV.UK
       search_button: Pretraži
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: Lozinka je sakrivena
       announce_show: Lozinka je prikazana

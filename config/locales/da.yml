@@ -165,13 +165,16 @@ da:
         link_text: Tjek hvad du skal gøre
         title: Brexit
       ukraine:
-        title:
         links:
+        title:
       world_locations: Verden Placeringer
     search_box:
       input_title: Søge
       label: Søg i GOV.UK
       search_button: Søge
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: Din adgangskode er skjult
       announce_show: Din adgangskode vises

@@ -164,13 +164,16 @@ nl:
         link_text: Controleer wat u moet doen
         title: Brexit
       ukraine:
-        title:
         links:
+        title:
       world_locations: Locaties in de wereld
     search_box:
       input_title: Zoeken
       label: Zoeken op GOV.UK
       search_button: Zoeken
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: Uw wachtwoord is verborgen
       announce_show: Uw wachtwoord wordt getoond

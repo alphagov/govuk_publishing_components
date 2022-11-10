@@ -162,13 +162,16 @@ zh:
         link_text: 检查您需要做的事情
         title: 英国脱欧
       ukraine:
-        title:
         links:
+        title:
       world_locations: 世界地点
     search_box:
       input_title: 搜索
       label: 搜索GOV.UK
       search_button: 搜索
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: 您的密码已隐藏
       announce_show: 您的密码已显示

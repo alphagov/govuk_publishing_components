@@ -165,13 +165,16 @@ tk:
         link_text: Näme etmelidigiňizi belläň
         title: Brexit
       ukraine:
-        title:
         links:
+        title:
       world_locations: Dünýä ýerleri
     search_box:
       input_title: Gözlemek
       label: GOV.UK-de gözle
       search_button: Gözlemek
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: Açar sözüňiz gizlenen
       announce_show: Açar sözüňiz görkezilen

@@ -168,13 +168,16 @@ lv:
         link_text: Noskaidrojiet, kas jums jāpaveic
         title: Brexit
       ukraine:
-        title:
         links:
+        title:
       world_locations: Atrašanās vietas pasaulē
     search_box:
       input_title: Meklēt
       label: Meklēt GOV.UK
       search_button: Meklēt
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: Jūsu parole ir paslēpta
       announce_show: Jūsu parole ir redzama

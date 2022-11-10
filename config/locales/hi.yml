@@ -164,13 +164,16 @@ hi:
         link_text: जांचें कि आपको क्या करना है
         title: ब्रेक्सिट
       ukraine:
-        title:
         links:
+        title:
       world_locations: वैश्विक स्थान
     search_box:
       input_title: खोजें
       label: GOV.UK खोजें
       search_button: खोजें
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: आपका पासवर्ड छिपा है
       announce_show: आपका पासवर्ड प्रदर्शित है

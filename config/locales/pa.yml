@@ -164,13 +164,16 @@ pa:
         link_text: ਜਾਂਚ ਕਰੋ ਕਿ ਤੁਹਾਨੂੰ ਕੀ ਕਰਨ ਦੀ ਜ਼ਰੂਰਤ ਹੈ
         title: ਬ੍ਰੈਕਸਿਟ
       ukraine:
-        title:
         links:
+        title:
       world_locations: ਵਿਸ਼ਵ ਸਥਾਨ
     search_box:
       input_title: ਖੋਜ
       label: GOV.UK ਤੇ ਖੋਜ ਕਰੋ
       search_button: ਖੋਜ
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: ਤੁਹਾਡਾ ਪਾਸਵਰਡ ਲੁਕਿਆ ਹੋਇਆ ਹੈ
       announce_show: ਤੁਹਾਡਾ ਪਾਸਵਰਡ ਦਿਖਾਇਆ ਗਿਆ ਹੈ

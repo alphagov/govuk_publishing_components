@@ -169,13 +169,16 @@ cs:
         link_text: Zkontrolujte, co je třeba udělat
         title: Brexit
       ukraine:
-        title:
         links:
+        title:
       world_locations: Místa ve světě
     search_box:
       input_title: Vyhledávání
       label: Vyhledávání na GOV.UK
       search_button: Vyhledávání
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: Vaše heslo je skryté
       announce_show: Zobrazí se vaše heslo

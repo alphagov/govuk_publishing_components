@@ -164,13 +164,16 @@ si:
         link_text: ඔබ කළ යුතු දේ පරීක්ෂා කරන්න
         title: බ්රෙක්සිට්
       ukraine:
-        title:
         links:
+        title:
       world_locations: ලෝක ස්ථාන
     search_box:
       input_title: සොයන්න
       label: GOV.UK මත සොයන්න
       search_button: සොයන්න
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: ඔබගේ මුරපදය සඟවා ඇත
       announce_show: ඔබගේ මුරපදය පෙන්වා ඇත

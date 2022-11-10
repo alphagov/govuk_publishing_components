@@ -164,13 +164,16 @@ is:
         link_text: Athugaðu hvað þú þarft að gera
         title: Brexit
       ukraine:
-        title:
         links:
+        title:
       world_locations: Staðsetningar úti um allan heim
     search_box:
       input_title: Leita
       label: Leita á GOV.UK
       search_button: Leita
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: Lykilorðið þitt er falið
       announce_show: Lykilorðið þitt er sýnt

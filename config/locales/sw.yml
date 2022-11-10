@@ -164,13 +164,16 @@ sw:
         link_text: Angalia unachopaswa kufanya
         title: Brexit
       ukraine:
-        title:
         links:
+        title:
       world_locations: Maeneo ya kimataifa
     search_box:
       input_title: Tafuta
       label: Tafuta kwenye tovuti ya GOV.UK
       search_button: Tafuta
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: Nenosiri lako limefichwa
       announce_show: Nenosiri lako limeonyeshwa

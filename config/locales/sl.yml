@@ -171,13 +171,16 @@ sl:
         link_text: Preverite, kaj morate storiti
         title: Brexit
       ukraine:
-        title:
         links:
+        title:
       world_locations: Lokacije po svetu
     search_box:
       input_title: Iskanje
       label: Iskanje po GOV.UK
       search_button: Iskanje
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: Vaše geslo je skrito
       announce_show: Vaše geslo je prikazano

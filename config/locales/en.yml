@@ -232,16 +232,16 @@ en:
       navigation_search_heading: Search and popular pages
       navigation_search_subheading: Search
       popular_links:
-      - label: 'Check benefits and financial support you can get'
-        href: '/check-benefits-financial-support'
+      - label: Check benefits and financial support you can get
+        href: "/check-benefits-financial-support"
       - label: 'Limits on energy prices: Energy Price Guarantee'
-        href: '/government/publications/energy-bills-support/energy-bills-support-factsheet-8-september-2022'
-      - label: 'Find a job'
-        href: '/find-a-job'
-      - label: 'Coronavirus (COVID-19)'
-        href: '/coronavirus'
+        href: "/government/publications/energy-bills-support/energy-bills-support-factsheet-8-september-2022"
+      - label: Find a job
+        href: "/find-a-job"
+      - label: Coronavirus (COVID-19)
+        href: "/coronavirus"
       - label: 'Universal Credit account: sign in'
-        href: '/sign-in-universal-credit'
+        href: "/sign-in-universal-credit"
       popular_links_heading: Popular on GOV.UK
       search_text: Search GOV.UK
     metadata:
@@ -292,21 +292,24 @@ en:
         link_text: Check what you need to do
         title: Brexit
       ukraine:
-        title: Invasion of Ukraine
         links:
-        - label: "UK visa support for Ukrainian nationals"
-          href:  "https://www.gov.uk/guidance/support-for-family-members-of-british-nationals-in-ukraine-and-ukrainian-nationals-in-ukraine-and-the-uk"
-        - label: "Move to the UK if you're coming from Ukraine"
-          href:  "https://www.gov.uk/guidance/move-to-the-uk-if-youre-from-ukraine"
-        - label: "Homes for Ukraine: record your interest"
-          href:  "https://www.gov.uk/register-interest-homes-ukraine"
-        - label: "Find out about the UK’s response"
-          href:  "https://ukstandswithukraine.campaign.gov.uk/"
+        - label: UK visa support for Ukrainian nationals
+          href: https://www.gov.uk/guidance/support-for-family-members-of-british-nationals-in-ukraine-and-ukrainian-nationals-in-ukraine-and-the-uk
+        - label: Move to the UK if you're coming from Ukraine
+          href: https://www.gov.uk/guidance/move-to-the-uk-if-youre-from-ukraine
+        - label: 'Homes for Ukraine: record your interest'
+          href: https://www.gov.uk/register-interest-homes-ukraine
+        - label: Find out about the UK’s response
+          href: https://ukstandswithukraine.campaign.gov.uk/
+        title: Invasion of Ukraine
       world_locations: World locations
     search_box:
       input_title: Search
       label: Search on GOV.UK
       search_button: Search
+    share_links:
+      all_opens_in_new_tab: Sharing will open the page in a new tab
+      opens_in_new_tab: "(opens in new tab)"
     show_password:
       announce_hide: Your password is hidden
       announce_show: Your password is shown

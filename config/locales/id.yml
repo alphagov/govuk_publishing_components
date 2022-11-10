@@ -164,13 +164,16 @@ id:
         link_text: Periksa apa yang Anda harus lakukan
         title: Brexit
       ukraine:
-        title:
         links:
+        title:
       world_locations: Lokasi dunia
     search_box:
       input_title: Cari
       label: Cari di GOV.UK
       search_button: Cari
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: Kata sandi Anda tersembunyi
       announce_show: Kata sandi Anda tampak

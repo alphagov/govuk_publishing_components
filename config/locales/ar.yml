@@ -167,13 +167,16 @@ ar:
         link_text: تحقق مما تحتاج إلى القيام به
         title: برِيكْسِت
       ukraine:
-        title:
         links:
+        title:
       world_locations: المواقع العالمية
     search_box:
       input_title: بحث
       label: بحث على GOV.UK
       search_button: بحث
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: كلمة مرورك مخفيَّة
       announce_show: كلمة مرورك معروضة

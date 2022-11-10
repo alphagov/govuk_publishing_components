@@ -164,13 +164,16 @@ gu:
         link_text: તમારે શું કરવું પડશે તે તપાસો
         title: બ્રેક્ઝિટ
       ukraine:
-        title:
         links:
+        title:
       world_locations: વૈશ્વિક લોકેશન્સ
     search_box:
       input_title: શોધો
       label: GOV.UK પર શોધો
       search_button: શોધો
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: તમારો પાસવર્ડ હાઈડ કરેલ છે
       announce_show: તમારો પાસવર્ડ દર્શાવ્યો છે
