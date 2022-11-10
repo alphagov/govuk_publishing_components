@@ -162,13 +162,16 @@ zh-hk:
         link_text: 查看您需要做的事
         title: 英國脫歐
       ukraine:
-        title:
         links:
+        title:
       world_locations: 全世界之地點
     search_box:
       input_title: 搜尋
       label: 搜尋 GOV.UK
       search_button: 搜尋
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: 您的密碼已隱藏
       announce_show: 您的密碼已顯示

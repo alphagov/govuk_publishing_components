@@ -160,13 +160,16 @@ ja:
         link_text: あなたがする必要があることを確認してください
         title: Brexit
       ukraine:
-        title:
         links:
+        title:
       world_locations: 世界の場所
     search_box:
       input_title: 検索
       label: GOV.UKで検索
       search_button: 検索
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: パスワードは非表示です
       announce_show: パスワードが表示されています

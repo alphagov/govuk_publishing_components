@@ -166,13 +166,16 @@ fi:
         link_text: Tarkista, mitä sinun on tehtävä
         title: Brexit
       ukraine:
-        title:
         links:
+        title:
       world_locations: Maailman sijainnit
     search_box:
       input_title: Hae
       label: Hae osoitteesta GOV.UK
       search_button: Hae
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: Salasanasi on piilotettu
       announce_show: Salasanasi näytetään

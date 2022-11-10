@@ -168,13 +168,16 @@ ru:
         link_text: Проверьте, что вам нужно сделать
         title: Брексит
       ukraine:
-        title:
         links:
+        title:
       world_locations: Места нахождения по миру
     search_box:
       input_title: Поиск
       label: Поиск на GOV.UK
       search_button: Поиск
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: Ваш пароль скрыт
       announce_show: Ваш пароль показан

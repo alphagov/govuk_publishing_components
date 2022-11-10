@@ -166,13 +166,16 @@ gd:
         link_text: Seiceáil cad is gá duit aird a thabhairt air
         title: Brexit
       ukraine:
-        title:
         links:
+        title:
       world_locations: Áit ar domhan
     search_box:
       input_title: Taighde
       label: Cuardaigh ar GOV.UK
       search_button: Taighde
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: Tá do chuid focal i bhfolach
       announce_show: Taispeántar do chuid focal

@@ -163,13 +163,16 @@ vi:
         link_text: Kiểm tra những gì bạn cần làm
         title: Brexit
       ukraine:
-        title:
         links:
+        title:
       world_locations: Các vị trí trên thế giới
     search_box:
       input_title: Tìm kiếm
       label: Tìm kiếm trên GOV.UK
       search_button: Tìm kiếm
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: Mật khẩu của bạn bị ẩn
       announce_show: Mật khẩu của bạn được hiển thị

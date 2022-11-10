@@ -161,13 +161,16 @@ ps:
         link_text: وګورئ چې تاسو څه کولو ته اړتیا لرئ
         title: بریکسیټ
       ukraine:
-        title:
         links:
+        title:
       world_locations: د نړۍ موقعیتونه
     search_box:
       input_title: لټون
       label: په GOV.UK کې لټون وکړئ
       search_button: لټون
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: ستاسو رمز پټ دی
       announce_show: ستاسو رمز ښودل شوی

@@ -162,13 +162,16 @@ zh-tw:
         link_text: 確認你需要：
         title: 脫歐
       ukraine:
-        title:
         links:
+        title:
       world_locations: 世界地點
     search_box:
       input_title: 搜尋
       label: 在英國政府網站上搜尋
       search_button: 搜尋
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: 隱藏你的密碼
       announce_show: 顯示你的密碼

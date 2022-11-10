@@ -165,13 +165,16 @@ ro:
         link_text: Verificați ce trebuie să faceți
         title: Brexit
       ukraine:
-        title:
         links:
+        title:
       world_locations: Locații pe glob
     search_box:
       input_title: Căutați
       label: Căutați pe GOV.UK
       search_button: Căutați
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: Parola dvs. este ascunsă
       announce_show: Parola dvs. este afișată

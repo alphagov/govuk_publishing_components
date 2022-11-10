@@ -166,13 +166,16 @@ dr:
         link_text: بیبینید که چه کاری باید انجام دهید
         title: برکست
       ukraine:
-        title:
         links:
+        title:
       world_locations: موقعیت هایی جهان
     search_box:
       input_title: جستجو نمایید
       label: در GOV.UK جستجو نمایید
       search_button: جستجو نمایید
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: رمز عبور شما مخفی شده است
       announce_show: رمز عبور شما نشان داده شده است

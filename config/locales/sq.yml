@@ -164,13 +164,16 @@ sq:
         link_text: Kontrolloni se çfarë duhet të bëni
         title: Brexit
       ukraine:
-        title:
         links:
+        title:
       world_locations: Vendndodhjet globale
     search_box:
       input_title: Kërko
       label: Kërko në GOV.UK
       search_button: Kërko
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: Fjalëkalimi juaj është fshehur
       announce_show: Fjalëkalimi juaj është treguar

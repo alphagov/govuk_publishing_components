@@ -170,13 +170,16 @@ be:
         link_text: Праверце, што вам трэба зрабіць
         title: Брэкзiт
       ukraine:
-        title:
         links:
+        title:
       world_locations: Мы ў свеце
     search_box:
       input_title: Пошук
       label: Шукаць на GOV.UK
       search_button: Пошук
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: Ваш пароль схаваны
       announce_show: Ваш пароль адлюстроўваецца

@@ -164,13 +164,16 @@ he:
         link_text: בדוק מה אתה צריך לעשות
         title: " ברקזיט"
       ukraine:
-        title:
         links:
+        title:
       world_locations: מיקומים גלובאליים
     search_box:
       input_title: 'חפש '
       label: 'חפש ב- GOV.UK '
       search_button: חפש
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: הסיסמה שלך מוסתרת
       announce_show: הסיסמה שלך מוצגת

@@ -163,13 +163,16 @@ az:
         link_text: Nələri etməli olduğunuzu yoxlayın
         title: Brexit
       ukraine:
-        title:
         links:
+        title:
       world_locations: Dünya üzrə yerləri
     search_box:
       input_title: Axtar
       label: GOV.UK-də axtar
       search_button: Axtar
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: Şifrəniz gizlədilib
       announce_show: Şifrəniz göstərilir

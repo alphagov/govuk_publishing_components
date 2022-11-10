@@ -163,13 +163,16 @@ ms:
         link_text: Periksa apa yang perlu anda lakukan
         title: Brexit
       ukraine:
-        title:
         links:
+        title:
       world_locations: Lokasi dunia
     search_box:
       input_title: Carian
       label: Carian di GOV.UK
       search_button: Carian
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: Kata laluan anda disorokkan
       announce_show: Kata laluan anda ditunjukkan

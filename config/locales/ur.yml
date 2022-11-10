@@ -161,13 +161,16 @@ ur:
         link_text: پڑتال کریں کہ آپ کو کیا کرنے کی ضرورت ہے
         title: Brexit
       ukraine:
-        title:
         links:
+        title:
       world_locations: عالمی مقامات
     search_box:
       input_title: تلاش
       label: GOV.UK پر تلاش کریں
       search_button: تلاش
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: آپ کا پاس ورڈ پوشیدہ ہے
       announce_show: آپ کا پاس ورڈ دکھائی دے رہا ہے

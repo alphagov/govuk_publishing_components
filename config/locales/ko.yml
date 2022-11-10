@@ -159,13 +159,16 @@ ko:
         link_text:
         title:
       ukraine:
-        title:
         links:
+        title:
       world_locations:
     search_box:
       input_title:
       label:
       search_button:
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide:
       announce_show:

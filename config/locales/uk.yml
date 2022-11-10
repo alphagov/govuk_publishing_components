@@ -171,13 +171,16 @@ uk:
         link_text: Перевірте, що вам потрібно зробити
         title: Brexit
       ukraine:
-        title:
         links:
+        title:
       world_locations: Світові локації
     search_box:
       input_title: Пошук
       label: Пошук на GOV.UK
       search_button: Пошук
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: Ваш пароль приховано
       announce_show: Ваш пароль показано

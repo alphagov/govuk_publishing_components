@@ -164,13 +164,16 @@ it:
         link_text: Controlla cosa devi fare
         title: Brexit
       ukraine:
-        title:
         links:
+        title:
       world_locations: Località del mondo
     search_box:
       input_title: Cerca
       label: Cerca su GOV.UK
       search_button: Cerca
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: La tua password è nascosta
       announce_show: La tua password è mostrata

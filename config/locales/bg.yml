@@ -168,13 +168,16 @@ bg:
         link_text: Проверете какво трябва да направите
         title: Брекзит
       ukraine:
-        title:
         links:
+        title:
       world_locations: Местоположения по света
     search_box:
       input_title: Търсене
       label: Търсене в GOV.UK
       search_button: Търсене
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: Вашата парола е скрита
       announce_show: Вашата парола е видима

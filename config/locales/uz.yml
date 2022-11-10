@@ -166,13 +166,16 @@ uz:
         link_text: Нима қилиш зарурлигини текшириш
         title: Брексит
       ukraine:
-        title:
         links:
+        title:
       world_locations: Жаҳондаги жойлашиш жойи
     search_box:
       input_title: Излаш
       label: GOV.UKда излаш
       search_button: Излаш
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: Сизнинг пароль яширилган
       announce_show: Сизнинг пароль акс эттирилган

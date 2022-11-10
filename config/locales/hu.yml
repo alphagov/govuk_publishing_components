@@ -167,13 +167,16 @@ hu:
         link_text: Nézze meg, hogy mit kell tennie
         title: Brexit
       ukraine:
-        title:
         links:
+        title:
       world_locations: Helyszínek a világban
     search_box:
       input_title: Keresés
       label: Keresés a GOV.UK-n
       search_button: Keresés
+    share_links:
+      all_opens_in_new_tab:
+      opens_in_new_tab:
     show_password:
       announce_hide: A jelszava rejtett
       announce_show: A jelszava látható
