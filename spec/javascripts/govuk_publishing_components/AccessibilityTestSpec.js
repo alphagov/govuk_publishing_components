@@ -84,22 +84,6 @@ describe('AccessibilityTest', function () {
     })
   })
 
-  it('should not scroll the page', function (done) {
-    var bigElement = '<div style="height: 1000px; width: 100px;"></div>'
-
-    addToDom(
-      bigElement + '<a href="#">Low contrast</a>' + bigElement,
-      'a { background: white; color: #ddd }'
-    )
-
-    expect(window.scrollY).toBe(0, 'should start at top of the page')
-
-    AccessibilityTest(TEST_SELECTOR, function () {
-      expect(window.scrollY).toBe(0, 'should end at top of the page')
-      done()
-    })
-  })
-
   it('should throw if there\'s a contrast issue', function (done) {
     addToDom('<a href="#">Low contrast</a>', 'a { background: white; color: #ddd }')
 
