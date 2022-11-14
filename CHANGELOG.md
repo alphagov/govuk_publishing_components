@@ -7,7 +7,8 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 32.1.0
+
 * Calculate viewport width correctly for navbar in Chrome and Firefox when Mac scrollbars are enabled ([PR #3016](https://github.com/alphagov/govuk_publishing_components/pull/3016))
 * Include the words 'opens in new tab' as part of the share link ([PR #3028](https://github.com/alphagov/govuk_publishing_components/pull/3028)) 
 * Delete removed `restoreScroll` Axe API option ([PR #3029](https://github.com/alphagov/govuk_publishing_components/pull/3029))
