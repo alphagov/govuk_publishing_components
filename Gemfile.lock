@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    govuk_publishing_components (32.0.0)
+    govuk_publishing_components (32.1.0)
       govuk_app_config
       govuk_personalisation (>= 0.7.0)
       kramdown
@@ -399,4 +399,4 @@ RUBY VERSION
    ruby 2.7.6
 
 BUNDLED WITH
-   2.3.19
+   2.3.25
