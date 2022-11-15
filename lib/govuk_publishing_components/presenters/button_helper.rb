@@ -24,6 +24,7 @@ module GovukPublishingComponents
                   :value,
                   :classes,
                   :aria_label
+                  :aria_attributes,
 
       def initialize(local_assigns)
         @href = local_assigns[:href]
@@ -50,6 +51,7 @@ module GovukPublishingComponents
         @value = local_assigns[:value]
         @classes = local_assigns[:classes]
         @aria_label = local_assigns[:aria_label]
+        @aria_attributes = local_assigns[:aria_attributes]
         @info_text_id = "info-text-id-#{SecureRandom.hex(4)}"
         @button_id = "button-id-#{SecureRandom.hex(4)}"
       end
@@ -90,6 +92,7 @@ module GovukPublishingComponents
         options[:name] = name if name.present? && value.present?
         options[:value] = value if name.present? && value.present?
         options[:aria] = { label: aria_label } if aria_label
+        options[:aria] = options[:aria].merge(aria_attributes) if aria_attributes
         options[:draggable] = false if link?
         options
       end
