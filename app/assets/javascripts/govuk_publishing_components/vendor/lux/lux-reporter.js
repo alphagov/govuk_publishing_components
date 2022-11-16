@@ -133,11 +133,8 @@
   }
 
   /**
-   * Get the interaction attribution name for an element
-   *
-   * @param {HTMLElement} el
-   * @returns string
-   */
+  * Get the interaction attribution name for an element
+  */
   function interactionAttributionForElement(el) {
     // Our first preference is to use the data-sctrack attribute from anywhere in the tree
     var trackId = getClosestScTrackAttribute(el);
@@ -183,10 +180,10 @@
   // prevent having to make regular typeof checks.
   var performance = window.performance || {};
   var timing = performance.timing || {
-      // If performance.timing isn't available, we attempt to polyfill the navigationStart value.
-      // Our first attempt is from LUX.ns, which is the time that the snippet execution began. If this
-      // is not available, we fall back to the time that the current script execution began.
-      navigationStart: ((_a = window.LUX) === null || _a === void 0 ? void 0 : _a.ns) || scriptStartTime,
+    // If performance.timing isn't available, we attempt to polyfill the navigationStart value.
+    // Our first attempt is from LUX.ns, which is the time that the snippet execution began. If this
+    // is not available, we fall back to the time that the current script execution began.
+    navigationStart: ((_a = window.LUX) === null || _a === void 0 ? void 0 : _a.ns) || scriptStartTime,
   };
   function msSinceNavigationStart() {
     if (performance.now) {
@@ -195,10 +192,10 @@
     return now() - timing.navigationStart;
   }
   /**
-   * Simple wrapper around performance.getEntriesByType to provide fallbacks for
-   * legacy browsers, and work around edge cases where undefined is returned instead
-   * of an empty PerformanceEntryList.
-   */
+  * Simple wrapper around performance.getEntriesByType to provide fallbacks for
+  * legacy browsers, and work around edge cases where undefined is returned instead
+  * of an empty PerformanceEntryList.
+  */
   function getEntriesByType(type) {
     if (typeof performance.getEntriesByType === "function") {
       var entries = performance.getEntriesByType(type);
@@ -210,72 +207,73 @@
   }
 
   var Matching = /** @class */ (function () {
-      function Matching() {
+    function Matching() {
+    }
+    Matching.isMatching = function (pattern, url) {
+      var regexp = Matching.createRegexpFromPattern(pattern);
+      return url.match(regexp) ? true : false;
+    };
+    /**
+    * Converts string pattern to RegExp object
+    * @return RegExp
+    */
+    Matching.createRegexpFromPattern = function (pattern) {
+      var regexp;
+      if (pattern == "/") {
+        regexp = this.getRegexpForHostnameRoot();
       }
-      Matching.isMatching = function (pattern, url) {
-          var regexp = Matching.createRegexpFromPattern(pattern);
-          return url.match(regexp) ? true : false;
-      };
-      /**
-       * Converts string pattern to RegExp object
-       * @return RegExp
-       */
-      Matching.createRegexpFromPattern = function (pattern) {
-          var regexp;
-          if (pattern == "/") {
-              regexp = this.getRegexpForHostnameRoot();
-          }
-          else if (!pattern.includes(Matching.wildcard)) {
-              regexp = this.getRegexpForExactString(pattern);
-          }
-          else if (pattern.charAt(0) == "/") {
-              regexp = this.createRegexpFromPathname(pattern);
-          }
-          else {
-              regexp = this.createRegexpFromPathname(pattern, false);
-          }
-          return regexp;
-      };
-      /**
-       * Converts URL pathname string pattern to RegExp object
-       * Multile wildcards (*) are supported
-       * @return RegExp
-       */
-      Matching.createRegexpFromPathname = function (pattern, anyDomain) {
-          if (anyDomain === void 0) { anyDomain = true; }
-          pattern = this.escapeStringForRegexp(pattern);
-          var expression = "^" +
-              (anyDomain ? Matching.domainExpression : "") +
-              pattern.replaceAll(Matching.wildcard, ".*?") +
-              "$";
-          return new RegExp(expression, "i");
-      };
-      /**
-       * Matches hostname root (e.g. "/", "somedomain.com/", "www.somedomain.co.nz/")
-       * Trailing slash is mandatory
-       * @return RegExp
-       */
-      Matching.getRegexpForHostnameRoot = function () {
-          return new RegExp("^" + Matching.domainExpression + "/$", "i");
-      };
-      /**
-       * Matches exact string (no wildcard provided)
-       * @return RegExp
-       */
-      Matching.getRegexpForExactString = function (string) {
-          return new RegExp("^" + this.escapeStringForRegexp(string) + "/?$", "i");
-      };
-      /**
-       * Escape special symbols in regexp string
-       * @param string
-       */
-      Matching.escapeStringForRegexp = function (string) {
-          // we don't escape * because it's our own special symbol!
-          return string.replace(/[-/\\^$+?.()|[\]{}]/g, "\\$&");
-      };
-      Matching.wildcard = "*";
-      Matching.domainExpression = "[a-zA-Z0-9-.]{1,61}[a-zA-Z0-9]\\.[a-zA-Z]{2,}";
-      return Matching;
+      else if (!pattern.includes(Matching.wildcard)) {
+        regexp = this.getRegexpForExactString(pattern);
+      }
+      else {
+        regexp = this.createRegexpFromPathname(pattern);
+      }
+      return regexp;
+    };
+    /**
+    * Converts URL pathname string pattern to RegExp object
+    * Multile wildcards (*) are supported
+    * @return RegExp
+    */
+    Matching.createRegexpFromPathname = function (pattern) {
+      var anyDomain = pattern.charAt(0) == "/";
+      pattern = this.escapeStringForRegexp(pattern);
+      var expression = "^" +
+      (anyDomain ? Matching.domainExpression : "") +
+      pattern.replaceAll(Matching.wildcard, ".*?") +
+      "$";
+      return new RegExp(expression, "i");
+    };
+    /**
+    * Matches hostname root (e.g. "/", "somedomain.com/", "www.somedomain.co.nz/")
+    * Trailing slash is mandatory
+    * @return RegExp
+    */
+    Matching.getRegexpForHostnameRoot = function () {
+      return new RegExp("^" + Matching.domainExpression + "/$", "i");
+    };
+    /**
+    * Matches exact string (no wildcard provided)
+    * @return RegExp
+    */
+    Matching.getRegexpForExactString = function (string) {
+      var anyDomain = string.charAt(0) == "/";
+      return new RegExp("^" +
+      (anyDomain ? Matching.domainExpression : "") +
+      this.escapeStringForRegexp(string) +
+      "/?$", "i");
+    };
+    /**
+    * Escape special symbols in regexp string
+    * @param string
+    */
+    Matching.escapeStringForRegexp = function (string) {
+      // we don't escape * because it's our own special symbol!
+      return string.replace(/[-/\\^$+?.()|[\]{}]/g, "\\$&");
+    };
+    Matching.wildcard = "*";
+    Matching.domainExpression = "[a-zA-Z0-9-.]{1,61}[a-zA-Z0-9]\\.[a-zA-Z]{2,}";
+    return Matching;
   }());
 
   var LUX = window.LUX || {};
@@ -290,7 +288,7 @@
     /// End
     // -------------------------------------------------------------------------
 
-    var SCRIPT_VERSION = "302";
+    var SCRIPT_VERSION = "304";
     var logger = new Logger();
     var globalConfig = fromObject(LUX);
     logger.logEvent(LogEvent.EvaluationStart, [SCRIPT_VERSION]);
@@ -787,8 +785,8 @@
         ",x|" +
         hStats["max"] +
         (0 === hStats["fci"] ? "" : ",i|" + hStats["fci"]); // only add FCI if it is non-zero
-        sCPU += "s|" + hCPU[jsType] + sStats + hCPUDetails[jsType];
-        return sCPU;
+      sCPU += "s|" + hCPU[jsType] + sStats + hCPUDetails[jsType];
+      return sCPU;
     }
     // Return a hash of "stats" about the CPU details incl. count, max, and median.
     function cpuStats(sDetails) {
@@ -1657,7 +1655,7 @@
       _removeIxHandlers();
       if (typeof ghIx["k"] === "undefined") {
         ghIx["k"] = Math.round(_now());
-        if (e && e.target) {
+        if (e && e.target instanceof Element) {
           var trackId = interactionAttributionForElement(e.target);
           if (trackId) {
             ghIx["ki"] = trackId;
@@ -1670,16 +1668,15 @@
       _removeIxHandlers();
       if (typeof ghIx["c"] === "undefined") {
         ghIx["c"] = Math.round(_now());
-        var target = null;
+        var target = void 0;
         try {
           // Seeing "Permission denied" errors, so do a simple try-catch.
-          if (e && e.target) {
+          if (e && e.target instanceof Element) {
             target = e.target;
           }
         }
         catch (e) {
           logger.logEvent(LogEvent.EventTargetAccessError);
-          target = null;
         }
         if (target) {
           if (e.clientX) {
@@ -1687,7 +1684,7 @@
             ghIx["cx"] = e.clientX;
             ghIx["cy"] = e.clientY;
           }
-          var trackId = interactionAttributionForElement(e.target);
+          var trackId = interactionAttributionForElement(target);
           if (trackId) {
             ghIx["ci"] = trackId;
           }
