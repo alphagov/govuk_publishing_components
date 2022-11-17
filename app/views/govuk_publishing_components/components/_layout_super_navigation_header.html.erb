@@ -102,12 +102,12 @@
           toggle_desktop_group: "top",
           toggle_mobile_group: "top",
           tracking_key: tracking_label,
-          ga4: {
+          ga4_event: {
             event_name: "select_content",
             type: "header menu bar",
             text: link[:label],
-            index: 2,
-            index_total: 3,
+            index: 1,
+            index_total: 2,
             section: link[:label]
           }
         },
@@ -184,12 +184,12 @@
         hidden
         id="super-search-menu-toggle"
         type="button"
-        data-ga4="<%= {
+        data-ga4-event="<%= {
           "event_name": "select_content",
           "type": "header menu bar",
           "text": "Search",
-          "index": 3,
-          "index_total": 3,
+          "index": 2,
+          "index_total": 2,
           "section": "Search"
         }.to_json %>"
       >
