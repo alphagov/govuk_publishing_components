@@ -15,7 +15,7 @@
   classes << brand_helper.brand_class
 
   data_attributes ||= {}
-  data_attributes[:module] = 'gem-track-click'
+  ((data_attributes[:module] ||= "") << " " << "gem-track-click").strip!
 %>
 <% if links.any? %>
   <%= tag.div(class: classes, data: data_attributes) do %>
@@ -70,15 +70,17 @@
               }
             end
           %>
+          <%
+            data_attributes = link[:data_attributes] ||= {}
+            data_attributes[:track_category] = 'social media'
+            data_attributes[:track_action] = link[:icon]
+            data_attributes[:track_options] = track_options
+            data_attributes[:ga4_link] = ga4_link_data
+          %>
           <%= link_to link[:href],
             target: "_blank",
             rel: "noopener noreferrer external",
-            data: {
-              'track-category': 'social media',
-              'track-action': link[:icon],
-              'track-options': track_options,
-              'ga4-link': ga4_link_data
-            },
+            data: data_attributes,
             class: "govuk-link govuk-link--no-underline gem-c-share-links__link #{brand_helper.color_class}" do %>
             <span class="gem-c-share-links__link-icon">
               <% if link[:icon] == 'facebook' %>

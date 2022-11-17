@@ -27,8 +27,8 @@ describe "ShareLinks", type: :view do
 
   it "renders share links correctly" do
     render_component(links: links)
-    assert_select ".gem-c-share-links .gem-c-share-links__link[href=\"/facebook\"]"
-    assert_select ".gem-c-share-links .gem-c-share-links__link[href=\"/twitter\"]"
+    assert_select ".gem-c-share-links .gem-c-share-links__link[href=\"/facebook\"]", /Share.+on.+Facebook.+\(opens.+in.+new.+tab\)/m
+    assert_select ".gem-c-share-links .gem-c-share-links__link[href=\"/twitter\"]", /Tweet.+to.+Twitter.+\(opens.+in.+new.+tab\)/m
   end
 
   it "renders a custom title" do
@@ -42,6 +42,38 @@ describe "ShareLinks", type: :view do
     assert_select ".gem-c-share-links .gem-c-share-links__link[href=\"/twitter\"]",
                   false,
                   "A twitter share link has not been provided so should not have been rendered"
+  end
+
+  it "accepts a passed data module without removing the default" do
+    attributes = {
+      module: "test",
+    }
+    render_component(links: links, data_attributes: attributes)
+    assert_select ".gem-c-share-links[data-module='test gem-track-click']"
+  end
+
+  it "renders data attributes for individual links" do
+    links_with_attributes = [
+      {
+        href: "/facebook",
+        text: "Facebook",
+        icon: "facebook",
+        data_attributes: {
+          test1: "one",
+        },
+      },
+      {
+        href: "/twitter",
+        text: "Twitter",
+        icon: "twitter",
+        data_attributes: {
+          test2: "two",
+        },
+      },
+    ]
+    render_component(links: links_with_attributes)
+    assert_select '.gem-c-share-links__link[data-test1="one"]', /Share.+on.+Facebook.+\(opens.+in.+new.+tab\)/m
+    assert_select '.gem-c-share-links__link[data-test2="two"]', /Share.+on.+Twitter.+\(opens.+in.+new.+tab\)/m
   end
 
   it "adds social interactions tracking" do
