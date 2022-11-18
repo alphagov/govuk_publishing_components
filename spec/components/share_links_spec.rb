@@ -76,10 +76,21 @@ describe "ShareLinks", type: :view do
     assert_select '.gem-c-share-links__link[data-test2="two"]', /Share.+on.+Twitter.+\(opens.+in.+new.+tab\)/m
   end
 
-  it "adds social interactions tracking" do
+  it "adds social interactions tracking for sharing" do
     render_component(links: [links[0]], track_as_sharing: true)
+    assert_select '.gem-c-share-links[data-module="gem-track-click ga4-link-tracker"]'
     assert_select '.gem-c-share-links__link[data-track-category="social media"][data-track-action="facebook"]'
     assert_select '.gem-c-share-links__link[data-track-options=\'{"socialAction":"share","socialNetwork":"facebook","socialTarget":"/facebook"}\']'
+
+    assert_select '.gem-c-share-links__link[data-ga4-link="{\"event_name\":\"share\",\"type\":\"share this page\",\"index\":1,\"index_total\":1,\"text\":\"facebook\"}"]'
+  end
+
+  it "adds social interactions tracking for following" do
+    render_component(links: [links[0]], track_as_follow: true)
+    assert_select '.gem-c-share-links[data-module="gem-track-click ga4-link-tracker"]'
+    assert_select '.gem-c-share-links__link[data-track-category="social media"][data-track-action="facebook"]'
+
+    assert_select '.gem-c-share-links__link[data-ga4-link="{\"event_name\":\"navigation\",\"type\":\"follow us\",\"index\":1,\"index_total\":1,\"text\":\"Facebook\"}"]'
   end
 
   it "adds branding correctly" do

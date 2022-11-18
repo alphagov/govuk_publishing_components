@@ -75,6 +75,9 @@ describe('A specialist link tracker', function () {
               '<a href="#some-id">Anchor link</a>' +
               '<a href="#https://www.gov.uk">Another anchor link</a>' +
               '<a href="#https://www.example.com">Another anchor link</a>' +
+            '</div>' +
+            '<div data-ga4-link="something">' +
+              '<a href="//nationalarchives.gov.uk" class="alreadytracked"> National Archives </a>' +
             '</div>'
 
       body.appendChild(links)
@@ -270,6 +273,11 @@ describe('A specialist link tracker', function () {
         expected.event_data.link_path_parts = window.GOVUK.extendObject(defaultLinkPathParts, { 1: linkPath })
         expect(window.dataLayer[0]).toEqual(expected)
       }
+    })
+
+    it('ignores links that are already being tracked by the other link tracker', function () {
+      links.querySelector('.alreadytracked').click()
+      expect(window.dataLayer).toEqual([])
     })
   })
 
@@ -562,80 +570,6 @@ describe('A specialist link tracker', function () {
     })
   })
 
-  describe('when tracking share and follow links', function () {
-    beforeEach(function () {
-      window.dataLayer = []
-      expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
-      expected.event = 'event_data'
-      expected.govuk_gem_version = 'aVersion'
-
-      links = document.createElement('div')
-      /* The link_domain, external and path attributes exist so we can hardcode what the expected value is for each test.
-      The value differs for each link, so we can't hardcode the expected value inside the test itself. */
-      links.innerHTML =
-          '<div class="share-links">' +
-              '<a href="example.com" data-ga4-link=\'' + JSON.stringify({ event_name: 'share', type: 'share this page', index: '1', index_total: '1', text: 'Share', method: 'populated-via-js' }) + '\'>Share</a>' +
-          '</div>' +
-          '<div class="follow-links">' +
-              '<a href="https://example.com" link_domain="https://example.com" external="true" data-ga4-link=\'' + JSON.stringify({ event_name: 'navigation', type: 'follow us', index: '1', index_total: '2', text: 'Follow us', url: 'https://example.com', external: 'populated-via-js', method: 'populated-via-js' }) + '\'>Follow us</a>' +
-              '<a href="https://www.gov.uk" link_domain="https://www.gov.uk" external="false" data-ga4-link=\'' + JSON.stringify({ event_name: 'navigation', type: 'follow us', index: '2', index_total: '2', text: 'Follow me', url: 'https://www.gov.uk', external: 'populated-via-js', method: 'populated-via-js' }) + '\'>Follow me</a>' +
-          '</div>'
-
-      body.appendChild(links)
-      body.addEventListener('click', preventDefault)
-
-      linkTracker = GOVUK.analyticsGa4.analyticsModules.Ga4SpecialistLinkTracker
-      // Add gov.uk as an internal domain, as our tests are running from localhost
-      linkTracker.init({ internalDomains: ['www.gov.uk'] })
-    })
-
-    afterEach(function () {
-      body.removeEventListener('click', preventDefault)
-      links.remove()
-      linkTracker.stopTracking()
-    })
-
-    it('detects clicks on share links', function () {
-      var linksToTest = document.querySelectorAll('.share-links a')
-
-      for (var i = 0; i < linksToTest.length; i++) {
-        window.dataLayer = []
-        var link = linksToTest[i]
-        GOVUK.triggerEvent(link, 'click')
-        var shareLinkAttributes = link.getAttribute('data-ga4-link')
-        shareLinkAttributes = JSON.parse(shareLinkAttributes)
-        expected.event_data.event_name = shareLinkAttributes.event_name
-        expected.event_data.type = shareLinkAttributes.type
-        expected.event_data.text = shareLinkAttributes.text
-        expected.event_data.index = parseInt(shareLinkAttributes.index)
-        expected.event_data.index_total = parseInt(shareLinkAttributes.index_total)
-        expected.event_data.method = 'primary click'
-        expect(window.dataLayer[0]).toEqual(expected)
-      }
-    })
-
-    it('detects clicks on follow links', function () {
-      var linksToTest = document.querySelectorAll('.follow-links a')
-
-      for (var i = 0; i < linksToTest.length; i++) {
-        window.dataLayer = []
-        var link = linksToTest[i]
-        GOVUK.triggerEvent(link, 'click')
-        var shareLinkAttributes = link.getAttribute('data-ga4-link')
-        shareLinkAttributes = JSON.parse(shareLinkAttributes)
-        expected.event_data.event_name = shareLinkAttributes.event_name
-        expected.event_data.type = shareLinkAttributes.type
-        expected.event_data.text = link.textContent.trim()
-        expected.event_data.index = parseInt(shareLinkAttributes.index)
-        expected.event_data.index_total = parseInt(shareLinkAttributes.index_total)
-        expected.event_data.url = link.getAttribute('href')
-        expected.event_data.external = link.getAttribute('external')
-        expected.event_data.method = 'primary click'
-        expected.event_data.link_domain = link.getAttribute('link_domain')
-        expect(window.dataLayer[0]).toEqual(expected)
-      }
-    })
-  })
   describe('when tracking using helper functions', function () {
     beforeEach(function () {
       window.dataLayer = []

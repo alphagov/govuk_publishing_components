@@ -42,34 +42,18 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
         return
       }
 
+      // don't track this link if it's already being tracked by the other link tracker
+      if (element.closest('[data-ga4-link]')) {
+        return
+      }
+
       var href = element.getAttribute('href')
 
       if (!href) {
         return
       }
       var clickData = {}
-      var linkAttributes = element.getAttribute('data-ga4-link')
-      if (linkAttributes) {
-        clickData = JSON.parse(linkAttributes)
-
-        /* Since external links can't be determined in the template, we use populated-via-js as a signal
-        for our JavaScript to determine this value. */
-        if (clickData.external === 'populated-via-js' && clickData.url) {
-          clickData.external = window.GOVUK.analyticsGa4.core.trackFunctions.isExternalLink(clickData.url, this.internalDomains) ? 'true' : 'false'
-        }
-
-        if (clickData.method === 'populated-via-js') {
-          clickData.method = window.GOVUK.analyticsGa4.core.trackFunctions.getClickType(event)
-        }
-
-        if (clickData.index) {
-          clickData.index = parseInt(clickData.index)
-        }
-
-        if (clickData.index_total) {
-          clickData.index_total = parseInt(clickData.index_total)
-        }
-      } else if (window.GOVUK.analyticsGa4.core.trackFunctions.isMailToLink(href)) {
+      if (window.GOVUK.analyticsGa4.core.trackFunctions.isMailToLink(href)) {
         clickData.event_name = 'navigation'
         clickData.type = 'email'
         clickData.external = 'true'
