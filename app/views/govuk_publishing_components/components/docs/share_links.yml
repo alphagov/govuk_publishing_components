@@ -3,6 +3,8 @@ description: Social media links for linking to or sharing the current page on so
 body: |
   The component will not process a URL into a share link itself. Pass complete share URLs to the component.
 
+  Note that the component automatically appends visually hidden text to the link (default: `Share on <your text> (opens in a new tab)`). Consider this when setting the link text.
+
   Real world examples:
 
     - [News article](https://www.gov.uk/government/news/fast-tracking-uk-innovation-apply-for-business-funding)
@@ -67,6 +69,43 @@ examples:
           },
         },
       ]
+  with_title:
+    data:
+      title: 'Share this page'
+      links: [
+        {
+          href: 'share',
+          text: 'Share on Facebook',
+          hidden_text: '',
+          icon: 'facebook'
+        }
+      ]
+  with_branding:
+    description: Organisation [colour branding](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/component_branding.md) can be added to the component as shown.
+    data:
+      brand: 'attorney-generals-office'
+      links: [
+        {
+          href: 'share',
+          text: 'Follow the Attorney General on Twitter',
+          hidden_text: '',
+          icon: 'twitter'
+        }
+      ]      
+  with_custom_visually_hidden_text:
+    description: |
+      Use this option to specify a visually hidden text for screenreaders to prepend to the link text.
+
+      If omitted, the default text used will be 'Share on'.
+    data:
+      links: [
+        {
+          href: 'share',
+          text: 'Facebook',
+          hidden_text: 'Download from',
+          icon: 'facebook'
+        }
+      ]
   track_as_sharing_links:
     description: Where the component is used to allow users to share content on social media, tracking can be added that uses [Social Interactions](https://developers.google.com/analytics/devguides/collection/analyticsjs/social-interactions) in UA. If this option is not included, it is assumed the component is simply linking to social media pages and the extra options are omitted from the tracking call in UA. In GA4, when this is set to true, a JSON is added to a data-attribute called data-ga4-link, which is detected by ga4-link-tracker.js and pushed to the dataLayer.
     data:
@@ -91,48 +130,15 @@ examples:
         {
           href: 'follow',
           text: 'Follow us on Facebook',
+          hidden_text: '',
           icon: 'facebook'
         },
         {
           href: 'follow',
           text: 'Follow us on Twitter',
+          hidden_text: '',
           icon: 'twitter'
         },
-      ]
-  with_title:
-    data:
-      title: 'Share this page'
-      links: [
-        {
-          href: 'share',
-          text: 'Share on Facebook',
-          icon: 'facebook'
-        }
-      ]
-  with_custom_visually_hidden_text:
-    description: |
-      Use this option to specify a visually hidden text for screenreaders to prepend to the link text.
-
-      If omitted, the default text used will be 'Share on'.
-    data:
-      links: [
-        {
-          href: 'share',
-          text: 'Facebook',
-          hidden_text: 'Download from',
-          icon: 'facebook'
-        }
-      ]
-  with_branding:
-    description: Organisation [colour branding](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/component_branding.md) can be added to the component as shown.
-    data:
-      brand: 'attorney-generals-office'
-      links: [
-        {
-          href: 'share',
-          text: 'Follow the Attorney General on Twitter',
-          icon: 'twitter'
-        }
       ]
   stack_vertically:
     data:

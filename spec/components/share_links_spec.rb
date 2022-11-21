@@ -90,7 +90,7 @@ describe "ShareLinks", type: :view do
     assert_select '.gem-c-share-links[data-module="gem-track-click ga4-link-tracker"]'
     assert_select '.gem-c-share-links__link[data-track-category="social media"][data-track-action="facebook"]'
 
-    assert_select '.gem-c-share-links__link[data-ga4-link="{\"event_name\":\"navigation\",\"type\":\"follow us\",\"index\":1,\"index_total\":1,\"text\":\"Facebook\"}"]'
+    assert_select '.gem-c-share-links__link[data-ga4-link="{\"event_name\":\"navigation\",\"type\":\"follow us\",\"index\":1,\"index_total\":1}"]'
   end
 
   it "adds branding correctly" do

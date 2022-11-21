@@ -70,7 +70,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       }
 
       schema.event = 'event_data'
-      data.text = window.GOVUK.analyticsGa4.core.trackFunctions.removeLinesAndExtraSpaces(event.target.textContent)
+      var text = data.text || event.target.textContent
+      data.text = window.GOVUK.analyticsGa4.core.trackFunctions.removeLinesAndExtraSpaces(text)
       data.url = window.GOVUK.analyticsGa4.core.trackFunctions.removeCrossDomainParams(this.findLink(event.target).getAttribute('href'))
       data.link_domain = window.GOVUK.analyticsGa4.core.trackFunctions.populateLinkDomain(data.url)
       data.link_path_parts = window.GOVUK.analyticsGa4.core.trackFunctions.populateLinkPathParts(data.url)

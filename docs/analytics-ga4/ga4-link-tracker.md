@@ -36,6 +36,19 @@ Specific tracking can be applied to multiple elements within a container, by app
 
 Note that the specific detail of the `data-ga4-link` attribute will depend on the context of the link.
 
+## Basic use (override text)
+
+The text of the link can be overridden by another value if passed in the data attribute, as shown.
+
+```html
+<a
+  href="/link"
+  data-module="ga4-link-tracker"
+  data-ga4-link='{ "event_name": "navigation", "type": "home page", "index": 0, "index_total": 1, "section": "name of section", "text": "This text will be recorded in the GA event" }'>
+    This text will not be recorded
+</a>
+```
+
 ## Track links within content
 
 Where tracking attributes cannot be directly applied to elements, links can be tracked with details applied to the parent. In this configuration the link text and href are automatically determined and included in the event data. This is helpful where page content is not editable, e.g. content comes from the content item or a publishing tool.

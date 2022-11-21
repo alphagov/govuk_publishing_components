@@ -129,6 +129,23 @@ describe('GA4 click tracker', function () {
       expect(window.dataLayer[0]).toEqual(expected)
     })
 
+    it('records the text of the link unless an override value is provided in the data attribute', function () {
+      var link = '#aNormalLink'
+      element = document.createElement('a')
+      var linkText = 'A normal link'
+      var recordText = 'this text should be recorded'
+      element.textContent = linkText
+      attributes.text = recordText
+      element.setAttribute('data-ga4-link', JSON.stringify(attributes))
+      element.setAttribute('href', link)
+      expected.event_data.text = recordText
+      expected.event_data.url = link
+      expected.event_data.link_path_parts['1'] = link
+
+      initModule(element, true)
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
     it('tracks all links with data-ga4 attributes within a container', function () {
       var longLink = '#link1-that-is-deliberately-really-long-to-test-the-url-being-split-into-parts-is-this-a-hundred-characters-yet'
       element = document.createElement('div')
