@@ -181,6 +181,30 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
 
       stringEndsWith: function (string, stringToFind) {
         return string.substring(string.length - stringToFind.length, string.length) === stringToFind
+      },
+
+      populateLinkDomain: function (href) {
+        // We always want mailto links to have an undefined link_domain
+        if (this.isMailToLink(href)) {
+          return undefined
+        }
+
+        if (this.hrefIsRelative(href) || this.hrefIsAnchor(href)) {
+          return this.getProtocol() + '//' + this.getHostname()
+        } else {
+          // This regex matches a protocol and domain name at the start of a string such as https://www.gov.uk, http://gov.uk, //gov.uk
+          var domainRegex = /^(http:||https:)?(\/\/)([^\/]*)/ // eslint-disable-line no-useless-escape
+          var domain = domainRegex.exec(href)[0]
+          return domain
+        }
+      },
+
+      getProtocol: function () {
+        return window.location.protocol
+      },
+
+      getHostname: function () {
+        return window.location.hostname
       }
     }
   }

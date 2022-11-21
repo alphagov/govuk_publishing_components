@@ -5,13 +5,6 @@ describe('GA4 click tracker', function () {
   var element
   var expected
   var attributes
-  var linkParts = {
-    1: undefined,
-    2: undefined,
-    3: undefined,
-    4: undefined,
-    5: undefined
-  }
 
   function initModule (element, click) {
     new GOVUK.Modules.Ga4LinkTracker(element).init()
@@ -30,10 +23,23 @@ describe('GA4 click tracker', function () {
 
   beforeAll(function () {
     spyOn(GOVUK.analyticsGa4.core, 'getGemVersion').and.returnValue('aVersion')
+    spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getHostname').and.returnValue('www.gov.uk')
+    spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getProtocol').and.returnValue('https:')
   })
 
   beforeEach(function () {
     window.dataLayer = []
+    expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
+    expected.event_data.event_name = 'navigation'
+    expected.govuk_gem_version = 'aVersion'
+    expected.event_data.link_domain = 'https://www.gov.uk'
+    expected.event_data.link_path_parts = {
+      1: undefined,
+      2: undefined,
+      3: undefined,
+      4: undefined,
+      5: undefined
+    }
     agreeToCookies()
   })
 
@@ -92,12 +98,8 @@ describe('GA4 click tracker', function () {
         event_name: 'navigation',
         type: 'a link'
       }
-      expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
       expected.event = 'event_data'
-      expected.event_data.event_name = 'navigation'
       expected.event_data.type = 'a link'
-      expected.govuk_gem_version = 'aVersion'
-      expected.event_data.link_path_parts = linkParts
       expected.event_data.method = 'primary click'
       expected.event_data.external = 'false'
     })
@@ -168,12 +170,8 @@ describe('GA4 click tracker', function () {
         event_name: 'navigation',
         type: 'a link'
       }
-      expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
       expected.event = 'event_data'
-      expected.event_data.event_name = 'navigation'
       expected.event_data.type = 'a link'
-      expected.govuk_gem_version = 'aVersion'
-      expected.event_data.link_path_parts = linkParts
       expected.event_data.method = 'primary click'
       expected.event_data.external = 'false'
     })
@@ -219,12 +217,8 @@ describe('GA4 click tracker', function () {
         event_name: 'navigation',
         type: 'a link'
       }
-      expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
       expected.event = 'event_data'
-      expected.event_data.event_name = 'navigation'
       expected.event_data.type = 'a link'
-      expected.govuk_gem_version = 'aVersion'
-      expected.event_data.link_path_parts = linkParts
       expected.event_data.method = 'primary click'
       expected.event_data.external = 'false'
     })

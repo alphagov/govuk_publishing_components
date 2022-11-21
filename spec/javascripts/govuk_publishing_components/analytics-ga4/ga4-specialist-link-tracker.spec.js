@@ -14,8 +14,8 @@ describe('A specialist link tracker', function () {
 
   beforeAll(function () {
     spyOn(GOVUK.analyticsGa4.core, 'getGemVersion').and.returnValue('aVersion')
-    spyOn(GOVUK.analyticsGa4.analyticsModules.Ga4SpecialistLinkTracker, 'getHostname').and.returnValue('www.gov.uk')
-    spyOn(GOVUK.analyticsGa4.analyticsModules.Ga4SpecialistLinkTracker, 'getProtocol').and.returnValue('https:')
+    spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getHostname').and.returnValue('www.gov.uk')
+    spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getProtocol').and.returnValue('https:')
   })
 
   afterAll(function () {

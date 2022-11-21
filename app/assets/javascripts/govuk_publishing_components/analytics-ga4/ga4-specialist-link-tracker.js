@@ -11,7 +11,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
       if (window.dataLayer) {
         config = config || {}
         this.internalDomains = config.internalDomains || []
-        this.internalDomains.push(this.getHostname())
+        this.internalDomains.push(window.GOVUK.analyticsGa4.core.trackFunctions.getHostname())
         this.appendDomainsWithoutWWW(this.internalDomains)
         this.internalDownloadPaths = config.internalDownloadPaths || ['/government/uploads/']
         this.dedicatedDownloadDomains = config.dedicatedDownloadDomains || ['assets.publishing.service.gov.uk']
@@ -74,7 +74,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
         clickData.url = href
         if (clickData.url) {
           clickData.url = window.GOVUK.analyticsGa4.core.trackFunctions.removeCrossDomainParams(clickData.url)
-          clickData.link_domain = this.populateLinkDomain(clickData.url)
+          clickData.link_domain = window.GOVUK.analyticsGa4.core.trackFunctions.populateLinkDomain(clickData.url)
           clickData.link_path_parts = window.GOVUK.analyticsGa4.core.trackFunctions.populateLinkPathParts(clickData.url)
         }
 
@@ -93,22 +93,6 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
         }
 
         window.GOVUK.analyticsGa4.core.sendData(schema)
-      }
-    },
-
-    populateLinkDomain: function (href) {
-      // We always want mailto links to have an undefined link_domain
-      if (window.GOVUK.analyticsGa4.core.trackFunctions.isMailToLink(href)) {
-        return undefined
-      }
-
-      if (window.GOVUK.analyticsGa4.core.trackFunctions.hrefIsRelative(href)) {
-        return this.getProtocol() + '//' + this.getHostname()
-      } else {
-        // This regex matches a protocol and domain name at the start of a string such as https://www.gov.uk, http://gov.uk, //gov.uk
-        var domainRegex = /^(http:||https:)?(\/\/)([^\/]*)/ // eslint-disable-line no-useless-escape
-        var domain = domainRegex.exec(href)[0]
-        return domain
       }
     },
 
@@ -170,14 +154,6 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
 
     stringStartsWith: function (string, stringToFind) {
       return string.substring(0, stringToFind.length) === stringToFind
-    },
-
-    getHostname: function () {
-      return window.location.hostname
-    },
-
-    getProtocol: function () {
-      return window.location.protocol
     }
   }
 

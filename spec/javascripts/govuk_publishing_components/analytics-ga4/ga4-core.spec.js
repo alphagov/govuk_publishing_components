@@ -205,5 +205,36 @@ describe('GA4 core', function () {
         expect(GOVUK.analyticsGa4.core.trackFunctions.hrefPointsToDomain(href, domain)).toEqual(false)
       })
     })
+
+    describe('when populating the link domain', function () {
+      beforeEach(function () {
+        spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getHostname').and.returnValue('www.gov.uk')
+        spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getProtocol').and.returnValue('https:')
+      })
+
+      it('ignores mailto links', function () {
+        var href = 'mailto:meunlessitsspam'
+        expect(GOVUK.analyticsGa4.core.trackFunctions.populateLinkDomain(href)).toEqual(undefined)
+      })
+
+      it('handles relative links and anchor links correctly', function () {
+        var href = '/something'
+        expect(GOVUK.analyticsGa4.core.trackFunctions.populateLinkDomain(href)).toEqual('https://www.gov.uk')
+
+        href = '#something'
+        expect(GOVUK.analyticsGa4.core.trackFunctions.populateLinkDomain(href)).toEqual('https://www.gov.uk')
+      })
+
+      it('handles absolute links correctly', function () {
+        var href = 'https://www.something.com/something'
+        expect(GOVUK.analyticsGa4.core.trackFunctions.populateLinkDomain(href)).toEqual('https://www.something.com')
+
+        href = 'http://www.something.com/something'
+        expect(GOVUK.analyticsGa4.core.trackFunctions.populateLinkDomain(href)).toEqual('http://www.something.com')
+
+        href = '//www.something.com/something'
+        expect(GOVUK.analyticsGa4.core.trackFunctions.populateLinkDomain(href)).toEqual('//www.something.com')
+      })
+    })
   })
 })
