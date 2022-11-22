@@ -285,4 +285,37 @@ describe "Input", type: :view do
 
     assert_no_selector ".govuk-input[enterkeyhint='chocolate']"
   end
+
+  it "renders the input and label with the correct `dir` attribute when the input is set to 'right_to_left: true'" do
+    render_component(
+      name: "rtl-input-text",
+      value: "العربيَّة",
+      right_to_left: true,
+      label: {
+        text: "Some label text that displays right to left",
+      },
+    )
+
+    assert_select ".govuk-input[dir='rtl']"
+    assert_select ".govuk-label[dir='rtl']"
+  end
+
+  it "renders the input and help text (label, hint and error messages) with the correct `dir` attribute when `right_to_left` is set to true and `right_to_left_help` is set to false" do
+    render_component(
+      name: "rtl-input-text",
+      value: "العربيَّة",
+      hint: "Some hint text that is displayed left to right",
+      right_to_left: true,
+      right_to_left_help: false,
+      error_message: "An error message that is displayed left to right",
+      label: {
+        text: "Some label text that displays left to right",
+      },
+    )
+
+    assert_select ".govuk-input[dir='rtl']"
+    assert_no_selector ".govuk-label[dir='rtl']"
+    assert_no_selector ".govuk-hint[dir='rtl']"
+    assert_no_selector ".govuk-error-message[dir='rtl']"
+  end
 end
