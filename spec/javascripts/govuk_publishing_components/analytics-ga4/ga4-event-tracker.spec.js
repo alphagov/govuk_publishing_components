@@ -175,7 +175,7 @@ describe('Google Analytics event tracking', function () {
       var attributes = {
         text: 'some text'
       }
-      element.classList.add('gem-c-accordion')
+      element.setAttribute('data-ga4-expandable', '')
       element.setAttribute('data-ga4-event', JSON.stringify(attributes))
       element.setAttribute('aria-expanded', 'false')
       document.body.appendChild(element)
@@ -250,7 +250,7 @@ describe('Google Analytics event tracking', function () {
       }
       element.innerHTML =
         '<div data-ga4-event=\'' + JSON.stringify(attributes) + '\'' +
-          'class="gem-c-accordion"' +
+          'data-ga4-expandable' +
         '>' +
           '<button aria-expanded="false">Show</button>' +
         '</div>'
@@ -259,7 +259,7 @@ describe('Google Analytics event tracking', function () {
     })
 
     it('includes the expanded state in the ga4 attributes', function () {
-      var clickOn = element.querySelector('.gem-c-accordion')
+      var clickOn = element.querySelector('[data-ga4-expandable]')
       clickOn.click()
 
       expected = new GOVUK.analyticsGa4.Schemas().eventSchema()

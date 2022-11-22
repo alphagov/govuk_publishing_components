@@ -174,7 +174,7 @@ describe "Accordion", type: :view do
     assert_select "[data-gtm='google-tag-manager']", count: 2
   end
 
-  it "data attributes for show all link are present when required" do
+  it "universal analytics data attributes for show all link are present when required" do
     test_data = {
       id: "test-for-data-attributes",
       data_attributes_show_all: {
@@ -192,6 +192,25 @@ describe "Accordion", type: :view do
     render_component(test_data)
 
     assert_select ".govuk-accordion[data-show-all-attributes='{\"module\":\"example\",\"track_action\":\"click\"}']"
+  end
+
+  it "ga4 data attributes are present when required" do
+    test_data = {
+      id: "test-for-data-attributes",
+      ga4_tracking: true,
+      items: [
+        {
+          heading: { text: "Heading 1" },
+          content: { html: "<p>Content 1.</p>" },
+        },
+      ],
+    }
+
+    render_component(test_data)
+
+    assert_select ".govuk-accordion[data-ga4-expandable]"
+    assert_select '.govuk-accordion[data-module="govuk-accordion gem-accordion ga4-event-tracker"]'
+    assert_select '.govuk-accordion__section-heading[data-ga4-event=\'{"event_name":"select_content","type":"accordion","text":"Heading 1","index":1,"index_total":1}\']'
   end
 
   it '`data-module="govuk-accordion"` attribute is present when no custom data attributes given' do
