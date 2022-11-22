@@ -5,12 +5,9 @@
 
 .gem-c-big-number__value {
   @include govuk-font($size: false, $weight: bold);
-  font-size: 80px;
   line-height: 1;
-
-  @if $govuk-typography-use-rem {
-    font-size: govuk-px-to-rem(80px);
-  }
+  font-size: 80px;
+  font-size: govuk-px-to-rem(80px);
 }
 
 .gem-c-big-number__label {

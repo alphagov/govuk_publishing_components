@@ -107,11 +107,7 @@
 .gem-c-image-card__metadata {
   @include govuk-font($size: false);
   font-size: 16px;
-
-  @if $govuk-typography-use-rem {
-    font-size: govuk-px-to-rem(16px);
-  }
-
+  font-size: govuk-px-to-rem(16px);
   margin: 0 0 (govuk-spacing(3) / 2);
   color: govuk-colour("dark-grey", $legacy: "grey-1");
 
