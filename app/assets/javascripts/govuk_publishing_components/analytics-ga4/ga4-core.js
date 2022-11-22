@@ -120,7 +120,8 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
         }
       },
 
-      isInternalLink: function (href, internalDomains) {
+      isInternalLink: function (href) {
+        var internalDomains = window.GOVUK.analyticsGa4.vars.internalDomains
         if (this.hrefIsRelative(href) || this.hrefIsAnchor(href)) {
           return true
         }
@@ -134,8 +135,8 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
         return result
       },
 
-      isExternalLink: function (href, internalDomains) {
-        return !this.isInternalLink(href, internalDomains)
+      isExternalLink: function (href) {
+        return !this.isInternalLink(href)
       },
 
       hrefPointsToDomain: function (href, domain) {
@@ -179,6 +180,10 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
         return href
       },
 
+      stringStartsWith: function (string, stringToFind) {
+        return string.substring(0, stringToFind.length) === stringToFind
+      },
+
       stringEndsWith: function (string, stringToFind) {
         return string.substring(string.length - stringToFind.length, string.length) === stringToFind
       },
@@ -205,6 +210,17 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
 
       getHostname: function () {
         return window.location.hostname
+      },
+
+      appendDomainsWithoutWWW: function (domainsArrays) {
+        // Add domains with www. removed, in case site hrefs are marked up without www. included.
+        for (var i = 0; i < domainsArrays.length; i++) {
+          var domain = domainsArrays[i]
+          if (this.stringStartsWith(domain, 'www.')) {
+            var domainWithoutWww = domain.replace('www.', '')
+            domainsArrays.push(domainWithoutWww)
+          }
+        }
       }
     }
   }

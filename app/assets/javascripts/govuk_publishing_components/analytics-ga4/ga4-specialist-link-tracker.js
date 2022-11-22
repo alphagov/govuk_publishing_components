@@ -10,12 +10,9 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
     init: function (config) {
       if (window.dataLayer) {
         config = config || {}
-        this.internalDomains = config.internalDomains || []
-        this.internalDomains.push(window.GOVUK.analyticsGa4.core.trackFunctions.getHostname())
-        this.appendDomainsWithoutWWW(this.internalDomains)
         this.internalDownloadPaths = config.internalDownloadPaths || ['/government/uploads/']
         this.dedicatedDownloadDomains = config.dedicatedDownloadDomains || ['assets.publishing.service.gov.uk']
-        this.appendDomainsWithoutWWW(this.dedicatedDownloadDomains)
+        window.GOVUK.analyticsGa4.core.trackFunctions.appendDomainsWithoutWWW(this.dedicatedDownloadDomains)
         this.handleClick = this.handleClick.bind(this)
         this.handleMousedown = this.handleMousedown.bind(this)
 
@@ -57,17 +54,14 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
         clickData.event_name = 'navigation'
         clickData.type = 'email'
         clickData.external = 'true'
-        clickData.url = href
       } else if (this.isDownloadLink(href)) {
         clickData.event_name = 'file_download'
         clickData.type = this.isPreviewLink(href) ? 'preview' : 'generic download'
-        clickData.external = window.GOVUK.analyticsGa4.core.trackFunctions.isExternalLink(href, this.internalDomains) ? 'true' : 'false'
-        clickData.url = href
-      } else if (window.GOVUK.analyticsGa4.core.trackFunctions.isExternalLink(href, this.internalDomains)) {
+        clickData.external = window.GOVUK.analyticsGa4.core.trackFunctions.isExternalLink(href) ? 'true' : 'false'
+      } else if (window.GOVUK.analyticsGa4.core.trackFunctions.isExternalLink(href)) {
         clickData.event_name = 'navigation'
         clickData.type = 'generic link'
         clickData.external = 'true'
-        clickData.url = href
       }
 
       if (Object.keys(clickData).length > 0) {
@@ -96,17 +90,6 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
       }
     },
 
-    appendDomainsWithoutWWW: function (domainsArrays) {
-      // Add domains with www. removed, in case site hrefs are marked up without www. included.
-      for (var i = 0; i < domainsArrays.length; i++) {
-        var domain = domainsArrays[i]
-        if (this.stringStartsWith(domain, 'www.')) {
-          var domainWithoutWww = domain.replace('www.', '')
-          domainsArrays.push(domainWithoutWww)
-        }
-      }
-    },
-
     handleMousedown: function (event) {
       // 1 = middle mouse button
       if (event.button === 1) {
@@ -115,7 +98,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
     },
 
     isDownloadLink: function (href) {
-      if (window.GOVUK.analyticsGa4.core.trackFunctions.isInternalLink(href, this.internalDomains) && this.hrefPointsToDownloadPath(href)) {
+      if (window.GOVUK.analyticsGa4.core.trackFunctions.isInternalLink(href) && this.hrefPointsToDownloadPath(href)) {
         return true
       }
 
@@ -150,10 +133,6 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
         }
       }
       return result
-    },
-
-    stringStartsWith: function (string, stringToFind) {
-      return string.substring(0, stringToFind.length) === stringToFind
     }
   }
 

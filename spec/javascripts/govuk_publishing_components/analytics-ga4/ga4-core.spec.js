@@ -2,19 +2,30 @@
 
 describe('GA4 core', function () {
   var GOVUK = window.GOVUK
+  var id
+  var auth
+  var preview
 
   beforeEach(function () {
     window.dataLayer = []
-    window.GOVUK.analyticsGa4.vars = {}
+    id = window.GOVUK.analyticsGa4.vars.id
+    auth = window.GOVUK.analyticsGa4.vars.auth
+    preview = window.GOVUK.analyticsGa4.vars.preview
+
+    window.GOVUK.analyticsGa4.vars.id = undefined
+    window.GOVUK.analyticsGa4.vars.auth = undefined
+    window.GOVUK.analyticsGa4.vars.preview = undefined
   })
 
   afterEach(function () {
     window.dataLayer = []
-    window.GOVUK.analyticsGa4.vars.id = 'test-id'
-    window.GOVUK.analyticsGa4.vars.auth = 'test-auth'
-    window.GOVUK.analyticsGa4.vars.preview = 'test-preview'
-    window.GOVUK.analyticsGa4.vars.gem_version = 'gem-version'
+    window.GOVUK.analyticsGa4.vars.id = id
+    window.GOVUK.analyticsGa4.vars.auth = auth
+    window.GOVUK.analyticsGa4.vars.preview = preview
     window.GOVUK.analyticsGa4.vars.gtag_id = null
+
+    window.GOVUK.analyticsGa4.vars.internalDomains = ['www.gov.uk']
+    window.GOVUK.analyticsGa4.core.trackFunctions.appendDomainsWithoutWWW(window.GOVUK.analyticsGa4.vars.internalDomains)
   })
 
   it('loads the GTM snippet', function () {
@@ -187,8 +198,11 @@ describe('GA4 core', function () {
       })
 
       it('correctly identifies an absolute link as internal when on the same domain', function () {
+        window.GOVUK.analyticsGa4.vars.internalDomains.push('www.notasite.com')
+        window.GOVUK.analyticsGa4.core.trackFunctions.appendDomainsWithoutWWW(window.GOVUK.analyticsGa4.vars.internalDomains)
+
         var href = 'https://notasite.com/something'
-        expect(GOVUK.analyticsGa4.core.trackFunctions.isInternalLink(href, ['notasite.com'])).toEqual(true)
+        expect(GOVUK.analyticsGa4.core.trackFunctions.isInternalLink(href)).toEqual(true)
       })
     })
 
@@ -235,6 +249,13 @@ describe('GA4 core', function () {
         href = '//www.something.com/something'
         expect(GOVUK.analyticsGa4.core.trackFunctions.populateLinkDomain(href)).toEqual('//www.something.com')
       })
+    })
+
+    it('accepts an array of domains and increases it to include variants without www at the start', function () {
+      var domains = ['www.gov.uk']
+      GOVUK.analyticsGa4.core.trackFunctions.appendDomainsWithoutWWW(domains)
+      expect(domains).toContain('www.gov.uk')
+      expect(domains).toContain('gov.uk')
     })
   })
 })

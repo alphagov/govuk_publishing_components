@@ -76,7 +76,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       data.link_domain = window.GOVUK.analyticsGa4.core.trackFunctions.populateLinkDomain(data.url)
       data.link_path_parts = window.GOVUK.analyticsGa4.core.trackFunctions.populateLinkPathParts(data.url)
       data.method = window.GOVUK.analyticsGa4.core.trackFunctions.getClickType(event)
-      data.external = window.GOVUK.analyticsGa4.core.trackFunctions.isExternalLink(data.url, []) ? 'true' : 'false'
+      data.external = window.GOVUK.analyticsGa4.core.trackFunctions.isExternalLink(data.url) ? 'true' : 'false'
 
       // get attributes from the data attribute to send to GA
       // only allow it if it already exists in the schema
