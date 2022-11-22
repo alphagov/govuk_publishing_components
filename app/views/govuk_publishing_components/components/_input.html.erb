@@ -31,6 +31,7 @@
   heading_level ||= nil
   prefix ||= nil
   suffix ||= nil
+  text_direction_rtl ||= false
 
   css_classes = %w(gem-c-input govuk-input)
   css_classes << "govuk-input--error" if has_error
@@ -63,6 +64,8 @@
     type = "text"
     inputmode = "numeric"
   end
+
+  dir_input = text_direction_rtl ? "rtl" : nil
 %>
 
 <%= content_tag :div, class: form_group_css_classes do %>
@@ -107,6 +110,7 @@
     autofocus: autofocus,
     class: css_classes,
     data: data,
+    dir: dir_input,
     enterkeyhint: checked_enterkeyhint,
     id: id,
     inputmode: inputmode,
