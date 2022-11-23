@@ -32,6 +32,7 @@
   prefix ||= nil
   suffix ||= nil
   text_direction_rtl ||= false
+  text_direction_label_ltr ||= false
 
   css_classes = %w(gem-c-input govuk-input)
   css_classes << "govuk-input--error" if has_error
@@ -66,6 +67,7 @@
   end
 
   dir_input = text_direction_rtl ? "rtl" : nil
+  label_rtl = text_direction_label_ltr ? false : text_direction_rtl
 %>
 
 <%= content_tag :div, class: form_group_css_classes do %>
@@ -73,7 +75,8 @@
     <% label_markup = capture do %>
       <%= render "govuk_publishing_components/components/label", {
         html_for: id,
-        heading_size: heading_size
+        heading_size: heading_size,
+        text_direction_rtl: label_rtl
       }.merge(label.symbolize_keys) %>
     <% end %>
 

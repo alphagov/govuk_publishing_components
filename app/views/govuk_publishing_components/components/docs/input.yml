@@ -196,4 +196,4 @@ examples:
       name: rtl-input-text
       value: "العربيَّة"
       text_direction_rtl: true
-      text_direction_label_rtl: false
+      text_direction_label_ltr: true
