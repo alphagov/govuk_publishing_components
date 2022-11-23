@@ -65,3 +65,14 @@ examples:
       text: "Label with an ID"
       id: "id-for-the-label"
       html_for: "id-that-matches-input-6"
+  with_dir_attribute:
+    description: |
+      To allow the correct display of right to left languages.
+
+      When the `right_to_left` parameter is set to `true` any hint text displays in the same text direction as the label.
+    data:
+      text: "العربيَّة"
+      html_for: "id-that-matches-input-7"
+      hint_id: "should-match-aria-describedby-input"
+      hint_text: "Hint text displayed right to left"
+      right_to_left: true

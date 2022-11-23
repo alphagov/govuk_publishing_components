@@ -101,4 +101,17 @@ describe "Label", type: :view do
       text: "Label with ID",
     )
   end
+
+  it "renders label with the correct `dir` attribute" do
+    render_component(
+      text: "العربيَّة",
+      html_for: "id-that-matches-input",
+      hint_id: "should-match-aria-describedby-input",
+      hint_text: "Hint text displayed right to left",
+      right_to_left: true,
+    )
+
+    assert_select ".govuk-label[dir='rtl']"
+    assert_select ".govuk-hint[dir='rtl']"
+  end
 end
