@@ -129,3 +129,13 @@ examples:
     data:
       text: Button
       aria_label: Button with custom label
+  with_aria_controls:
+    description: Used to identify what element(s) the button controls, this can be useful for users with visual impairment. In the example shown, the button controls the page wrapper with ID `wrapper` but it could be another identifying attribute.
+    data:
+      text: Button
+      aria_controls: wrapper
+  with_aria_describedby:
+    description: Can be used to give context to a button, this will be read after aria-label by a screenreader
+    data:
+      text: Button
+      aria_describedby: with_aria_describedby
