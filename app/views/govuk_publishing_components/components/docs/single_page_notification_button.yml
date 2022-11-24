@@ -33,7 +33,8 @@ examples:
       margin_bottom: 5
   with_js_enhancement:
     description: |
-      If the `js-enhancement` flag is present, the component uses JavaScript to check if the user has already subscribed to email notifications on the current page. If yes, the state of the component updates accordingly.
+      If the `js-enhancement` flag is present, the component uses JavaScript to check if the user has already subscribed to email notifications on the current page and accordingly updates its tracking attribute and (optionally) button text.
+
     data:
       base_path: '/current-page-path'
       js_enhancement: true

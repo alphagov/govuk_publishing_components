@@ -24,6 +24,8 @@ module GovukPublishingComponents
         @data_attributes[:track_category] = "Single-page-notification-button"
         # This attribute is passed through to the personalisation API to ensure when a new button is returned from the API, it has the same button_location
         @data_attributes[:button_location] = button_location
+        @data_attributes[:button_text_subscribe] = button_text_subscribe
+        @data_attributes[:button_text_unsubscribe] = button_text_unsubscribe
         @data_attributes
       end
 
@@ -32,7 +34,15 @@ module GovukPublishingComponents
       end
 
       def button_text
-        @already_subscribed ? I18n.t("components.single_page_notification_button.unsubscribe_text") : I18n.t("components.single_page_notification_button.subscribe_text")
+        @already_subscribed ? button_text_unsubscribe : button_text_subscribe
+      end
+
+      def button_text_subscribe
+        I18n.t("components.single_page_notification_button.subscribe_text")
+      end
+
+      def button_text_unsubscribe
+        I18n.t("components.single_page_notification_button.unsubscribe_text")
       end
     end
   end
