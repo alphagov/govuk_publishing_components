@@ -285,4 +285,14 @@ describe "Input", type: :view do
 
     assert_no_selector ".govuk-input[enterkeyhint='chocolate']"
   end
+
+  it "renders input with the correct `dir` attribute" do
+    render_component(
+      name: "rtl-input-text",
+      value: "العربيَّة",
+      text_direction_rtl: true,
+    )
+
+    assert_select ".govuk-input[dir='rtl']"
+  end
 end
