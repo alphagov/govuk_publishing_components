@@ -110,3 +110,17 @@ examples:
       name: "with_data_attrbutes"
       data:
         module: "some-awesome-module-here"
+  with_dir_attribute:
+    description: |
+      To allow the correct display of right to left languages.
+
+      When `text_direction_rtl` is set to true both the textarea and the label are displayed right to left.
+
+      When `text_direction_label_ltr` is set to true the textarea is displayed right to left and the label is displayed left to right
+    data:
+      label:
+        text: "Some input text to be displayed right to left"
+      name: "rtl-textarea-text"
+      value: "العربيَّة"
+      text_direction_rtl: true
+      text_direction_label_ltr: true

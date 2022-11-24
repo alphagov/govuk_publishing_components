@@ -17,6 +17,8 @@
   hint_id = "hint-#{SecureRandom.hex(4)}"
   has_error ||= error_message || error_items.any?
   error_id = "error-#{SecureRandom.hex(4)}"
+  text_direction_rtl ||= false
+  text_direction_label_ltr ||= false
 
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
@@ -35,11 +37,17 @@
     aria_described_by << describedby if describedby
     aria_described_by = aria_described_by.join(" ")
   end
+
+  dir_textarea = text_direction_rtl ? "rtl" : nil
+  label_rtl = text_direction_label_ltr ? false : text_direction_rtl
 %>
 
 <%= content_tag :div, class: form_group_css_classes do %>
   <% if label %>
-    <%= render "govuk_publishing_components/components/label", { html_for: id }.merge(label.symbolize_keys) %>
+    <%= render "govuk_publishing_components/components/label", {
+      html_for: id,
+      text_direction_rtl: label_rtl
+    }.merge(label.symbolize_keys) %>
   <% end %>
 
   <% if hint %>
@@ -59,6 +67,7 @@
 
   <%= tag.textarea name: name,
     class: css_classes,
+    dir: dir_textarea,
     id: id,
     rows: rows,
     maxlength: maxlength,
