@@ -198,4 +198,37 @@ describe "Textarea", type: :view do
       assert_select ".govuk-textarea[aria-describedby='#{error_id}']"
     end
   end
+
+  it "renders the textarea and label with the correct `dir` attribute when the textarea is set to 'right_to_left: true'" do
+    render_component(
+      name: "rtl-textarea-text",
+      value: "العربيَّة",
+      right_to_left: true,
+      label: {
+        text: "Some label text that displays right to left",
+      },
+    )
+
+    assert_select ".govuk-textarea[dir='rtl']"
+    assert_select ".govuk-label[dir='rtl']"
+  end
+
+  it "renders the textarea and help text (label, hint and error messages) with the correct `dir` attribute when `right_to_left` is set to true and `right_to_left_help` is set to false" do
+    render_component(
+      name: "rtl-textarea-text",
+      value: "العربيَّة",
+      hint: "Some hint text that is displayed left to right",
+      right_to_left: true,
+      right_to_left_help: false,
+      error_message: "An error message that is displayed left to right",
+      label: {
+        text: "Some label text that displays left to right",
+      },
+    )
+
+    assert_select ".govuk-textarea[dir='rtl']"
+    assert_no_selector ".govuk-label[dir='rtl']"
+    assert_no_selector ".govuk-hint[dir='rtl']"
+    assert_no_selector ".govuk-error-message[dir='rtl']"
+  end
 end

@@ -17,6 +17,8 @@
   hint_id = "hint-#{SecureRandom.hex(4)}"
   has_error ||= error_message || error_items.any?
   error_id = "error-#{SecureRandom.hex(4)}"
+  right_to_left ||= false
+  right_to_left_help = right_to_left_help.nil? ? right_to_left : right_to_left_help
 
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
@@ -39,13 +41,17 @@
 
 <%= content_tag :div, class: form_group_css_classes do %>
   <% if label %>
-    <%= render "govuk_publishing_components/components/label", { html_for: id }.merge(label.symbolize_keys) %>
+    <%= render "govuk_publishing_components/components/label", {
+      html_for: id,
+      right_to_left: right_to_left_help
+    }.merge(label.symbolize_keys) %>
   <% end %>
 
   <% if hint %>
     <%= render "govuk_publishing_components/components/hint", {
       id: hint_id,
-      text: hint
+      text: hint,
+      right_to_left: right_to_left_help
     } %>
   <% end %>
 
@@ -54,11 +60,13 @@
       id: error_id,
       text: error_message,
       items: error_items,
+      right_to_left: right_to_left_help
     } %>
   <% end %>
 
   <%= tag.textarea name: name,
     class: css_classes,
+    dir: right_to_left ? "rtl" : nil,
     id: id,
     rows: rows,
     maxlength: maxlength,
