@@ -49,3 +49,11 @@ examples:
       base_path: '/current-page-path'
       js_enhancement: true
       button_location: 'top'
+  with_custom_button_text:
+    description: The component accepts custom button text, provided that both subscribe and unsubscribe text is provided.
+    data:
+      base_path: '/current-page-path'
+      js_enhancement: true
+      button_text:
+        subscribe: 'Subscribe to this page of things'
+        unsubscribe: 'Unsubscribe to this page of things'

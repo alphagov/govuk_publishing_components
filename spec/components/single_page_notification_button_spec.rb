@@ -26,6 +26,30 @@ describe "Single page notification button", type: :view do
     assert_select ".gem-c-single-page-notification-button", text: "Stop getting emails about this page"
   end
 
+  it "shows custom subscribe text if button_text:subscribe and button_text:unsubscribe are provided" do
+    local_assigns = {
+      base_path: "/the-current-page",
+      button_text: {
+        subscribe: "Start getting emails about this stuff",
+        unsubscribe: "Stop getting emails about this stuff",
+      },
+    }
+    render_component(local_assigns)
+    assert_select ".gem-c-single-page-notification-button", text: "Start getting emails about this stuff"
+  end
+
+  it "does not show custom text unless both button_text:subscribe and button_text:unsubscribe are provided" do
+    local_assigns = {
+      base_path: "/the-current-page",
+      already_subscribed: true,
+      button_text: {
+        unsubscribe: "Stop getting emails about this stuff",
+      },
+    }
+    render_component(local_assigns)
+    assert_select ".gem-c-single-page-notification-button", text: "Stop getting emails about this page"
+  end
+
   it "has data attributes if data_attributes is specified" do
     render_component({ base_path: "/the-current-page", data_attributes: { custom_attribute: "kaboom!" } })
     assert_select ".gem-c-single-page-notification-button[data-custom-attribute='kaboom!']"
