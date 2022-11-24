@@ -198,4 +198,14 @@ describe "Textarea", type: :view do
       assert_select ".govuk-textarea[aria-describedby='#{error_id}']"
     end
   end
+
+  it "renders textarea with the correct `dir` attribute" do
+    render_component(
+      name: "rtl-textarea-text",
+      value: "العربيَّة",
+      text_direction_rtl: true,
+    )
+
+    assert_select ".govuk-textarea[dir='rtl']"
+  end
 end
