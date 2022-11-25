@@ -54,6 +54,16 @@ When cookie consent is given, `init-ga4.js` looks through the `analyticsModules`
 
 Where analytics code is required as a [GOV.UK JavaScript Module](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/javascript-modules.md), the code structure for the [existing model for deferred loading](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/javascript-modules.md#modules-and-cookie-consent) should be used.
 
+## Link and event tracking
+
+There are several types of user initiated tracking. To distinguish them and simplify the code, we consider them as the following:
+
+- interactions with [links](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-link-tracker.md) where tracking is added using data attributes on specific links
+- interactions with [specialist links](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-specialist-link-tracker.md), e.g. external links, download links, mailto links, where tracking is determined automatically by the content of the link
+- interactions with [buttons or other interactive elements](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-event-tracker.md) e.g. details elements, where tracking is added using data attributes on specific elements
+
+Each type of tracking is handled by a separate script, but some code is shared between them as they do similar things.
+
 ## Data schemas
 
 All of the data sent to GTM is based on a common schema.

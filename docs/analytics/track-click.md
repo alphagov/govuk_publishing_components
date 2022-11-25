@@ -79,8 +79,8 @@ Where tracking attributes cannot be applied to elements, links can be tracked wi
   data-track-category="category"
   data-track-action="action"
   data-track-links-only>
-  <a class="first" href="/link1">This link will be tracked</a>
-  <a class="second" href="/link2">
+  <a href="/link1">This link will be tracked</a>
+  <a href="/link2">
     <span>This link will also be tracked even though it contains child elements</span>
   </a>
   <span>This span will not be tracked</span>
@@ -97,9 +97,9 @@ To apply tracking to links within a specific element within part of a page, use 
   data-track-action="action"
   data-track-links-only
   data-limit-to-element-class="demoBox">
-  <a class="first" href="/link1">This link will not be tracked</a>
+  <a href="/link1">This link will not be tracked</a>
   <div class="demoBox">
-    <a class="second" href="/link2">This link will be tracked</a>
+    <a href="/link2">This link will be tracked</a>
   </div>
 </div>
 ```

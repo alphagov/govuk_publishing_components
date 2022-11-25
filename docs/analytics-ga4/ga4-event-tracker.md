@@ -1,23 +1,23 @@
-# Google Analytics event tracker
+# Google Analytics 4 event tracker
 
-This is a script to allow event tracking (e.g. clicks) through Google Tag Manager to be added to any element using data attributes.
+This script is intended for adding GA4 tracking to interactive elements such as buttons or details elements. It depends upon the main GA4 analytics code to function.
 
 ## Basic use
 
 ```html
 <div data-module="ga4-event-tracker">
-  <div data-ga4='{"event_name":"select_content", "type":"something", "index":0, "index_total":1, "text":"Click me"}'>
+  <button data-ga4-event='{ "event_name": "select_content", "type": "something", "index": "0", "index_total": "1", "text": "Click me"}'>
     Click me
-  </div>
+  </button>
 </div>
 ```
 
 The module is initialised on the parent element, but tracking only occurs when clicks happen:
 
-- on child elements that have a valid `data-ga4` attribute
-- on the parent if it has a valid `data-ga4` attribute
+- on child elements that have a valid `data-ga4-event` attribute
+- on the parent if it has a valid `data-ga4-event` attribute
 
-A valid `data-ga4` attribute is a JSON string that can be parsed into an object, that contains a recognised value for `event_name`. Pushes to the dataLayer that do not include a valid `event_name` attribute will be ignored by Tag Manager.
+A valid `data-ga4-event` attribute is a JSON string that can be parsed into an object, that contains a recognised value for `event_name` (this is added automatically by the event tracker). Pushes to the dataLayer that do not include a valid `event_name` attribute will be ignored by Tag Manager.
 
 In the example above, the following would be pushed to the dataLayer. Note that the schema automatically populates empty values, and that attributes not in the schema are ignored.
 
@@ -40,7 +40,7 @@ In the example above, the following would be pushed to the dataLayer. Note that 
 
 ## Advanced use
 
-In some scenarios we use components that cannot be modified directly (i.e. unable to place the `data-ga4` attribute on the element as shown in the 'Basic use' section). In these cases, we attach the necessary data attributes for tracking by passing an argument containing our data attributes to the render method.
+In some scenarios we use components that cannot be modified directly (i.e. unable to place the `data-ga4-event` attribute on the element as shown in the 'Basic use' section). In these cases, we attach the necessary data attributes for tracking by passing an argument containing our data attributes to the render method.
 
 Many components already accept data attributes in this way (see the [component guide](https://components.publishing.service.gov.uk/component-guide) for examples) but some, like the accordion, are more complicated.
 
@@ -78,9 +78,9 @@ It is also complicated by the fact that the JavaScript that creates this element
 - the 'Show/hide all' link is created by govuk-frontend JavaScript
 - the accordion JavaScript reads `data-show-all-attributes`
   - it creates a `data-` attribute on the 'Show/hide all' link for each key in the JSON
-  - in the example above, the result will be `data-ga4="{ "event_name": "select_content", "type": "accordion" }"`
+  - in the example above, the result will be `data-ga4-event="{ "event_name": "select_content", "type": "accordion" }"`
 - wrap the accordion in the event tracking script
-  - tracking will be activated by clicks on elements with a `data-ga4` attribute
+  - tracking will be activated by clicks on elements with a `data-ga4-event` attribute
   - it checks for an `aria-expanded` attribute if the clicked element or parent element contains a `data-ga4-expandable` value or the `gem-c-accordion` class. If it detects one of those, it sets the `action` of the GA data accordingly.
   - the current text of the clicked element is also recorded (this can be overridden to a non-dynamic value by including `text` in the attributes if required)
 

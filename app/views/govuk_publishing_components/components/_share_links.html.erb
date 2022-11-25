@@ -16,6 +16,7 @@
 
   data_attributes ||= {}
   ((data_attributes[:module] ||= "") << " " << "gem-track-click").strip!
+  data_attributes[:module] << " ga4-link-tracker" if track_as_sharing || track_as_follow
 %>
 <% if links.any? %>
   <%= tag.div(class: classes, data: data_attributes) do %>
@@ -54,7 +55,6 @@
                 'index': index + 1,
                 'index_total': links.length,
                 'text': link[:icon],
-                'method': 'populated-via-js'
               }
             end
             if track_as_follow
@@ -62,11 +62,7 @@
                 'event_name': 'navigation',
                 'type': 'follow us',
                 'index': index + 1,
-                'index_total': links.length,
-                'text': link[:text],
-                'external': 'populated-via-js',
-                'url': link[:href],
-                'method': 'populated-via-js'
+                'index_total': links.length
               }
             end
           %>
