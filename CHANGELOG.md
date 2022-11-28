@@ -21,7 +21,7 @@
 * Add `aria-controls` and `aria-describedby` attribute options to the button component ([PR #3088](https://github.com/alphagov/govuk_publishing_components/pull/3088))
 * Simplify the way ga4 tracking is added to accordions ([PR #3082](https://github.com/alphagov/govuk_publishing_components/pull/3082))
 * Rename section and themes property names ([PR #3092](https://github.com/alphagov/govuk_publishing_components/pull/3092))
-
+* Add `id` attribute option to the label component ([PR #3093](https://github.com/alphagov/govuk_publishing_components/pull/3093))
 
 ## 32.1.0
 
