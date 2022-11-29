@@ -112,7 +112,10 @@ hu:
       menu_toggle_label:
         hide:
         show:
-      navigation_links:
+      navigation_link:
+        href:
+        label:
+      navigation_links_columns:
       navigation_menu_heading:
       navigation_search_heading:
       navigation_search_subheading:
