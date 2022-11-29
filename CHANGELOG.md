@@ -14,8 +14,10 @@
 * Update to LUX 304 ([PR #3070](https://github.com/alphagov/govuk_publishing_components/pull/3070))
 * Set attributes for single page notification button based on Account API response ([PR #3071](https://github.com/alphagov/govuk_publishing_components/pull/3071))
 * Support custom text for the single page notification button component ([PR #2935](https://github.com/alphagov/govuk_publishing_components/pull/2935))
+* Add `aria-controls` and `aria-describedby` attribute options to the button component ([PR #3088](https://github.com/alphagov/govuk_publishing_components/pull/3088))
 * Simplify the way ga4 tracking is added to accordions ([PR #3082](https://github.com/alphagov/govuk_publishing_components/pull/3082))
 * Rename section and themes property names ([PR #3092](https://github.com/alphagov/govuk_publishing_components/pull/3092))
+
 
 ## 32.1.0
 

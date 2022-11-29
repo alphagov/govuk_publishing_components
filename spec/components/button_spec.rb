@@ -231,4 +231,16 @@ describe "Button", type: :view do
 
     assert_select '.gem-c-button[aria-label="Button with custom label"]'
   end
+
+  it "renders with aria-controls" do
+    render_component(text: "Button", aria_controls: "Testing aria-controls")
+
+    assert_select '.gem-c-button[aria-controls="Testing aria-controls"]'
+  end
+
+  it "renders with aria-describedby" do
+    render_component(text: "Button", aria_describedby: "Testing aria-describedby")
+
+    assert_select '.gem-c-button[aria-describedby="Testing aria-describedby"]'
+  end
 end
