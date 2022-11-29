@@ -27,7 +27,7 @@ describe "Button", type: :view do
     assert_select ".govuk-button[type=submit]", text: "Submit"
 
     render_component(text: "Link", href: "#", type: "button")
-    assert_select "a.govuk-button", text: "Link"
+    assert_select "a.govuk-button[data-module=\"govuk-button\"]", text: "Link"
     assert_select "a.govuk-button[type=submit]", false
 
     render_component(text: "Button", type: "button")
@@ -169,7 +169,7 @@ describe "Button", type: :view do
       },
     )
 
-    assert_select "a.govuk-button[data-module='cross-domain-tracking']"
+    assert_select "a.govuk-button[data-module='govuk-button cross-domain-tracking']"
     assert_select "a.govuk-button[data-tracking-code='GA-123ABC']"
     assert_select "a.govuk-button[data-tracking-name='transactionTracker']"
   end
