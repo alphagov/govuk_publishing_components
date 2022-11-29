@@ -29,21 +29,25 @@ describe "Error summary", type: :view do
     )
   end
 
-  it "renders an error summary with title and aria-labelledby set correctly" do
+  it "renders an error summary with title set correctly" do
     render_component(
       id: "error-summary-id",
       title: "Message to alert the user to a problem goes here",
     )
 
-    aria_labelledby_id = ""
-    assert_select(".gem-c-error-summary") do |element|
-      aria_labelledby_id = element.css(".gem-c-error-summary").first.attributes["aria-labelledby"].value
-    end
-
     assert_select ".gem-c-error-summary[id='error-summary-id']"
-    assert_select ".govuk-error-summary__title[id='#{aria_labelledby_id}']", text: "Message to alert the user to a problem goes here"
+    assert_select ".govuk-error-summary__title", text: "Message to alert the user to a problem goes here"
     assert_select ".govuk-error-summary__body p", count: 0
     assert_select ".govuk-error-summary__list", count: 0
+  end
+
+  it "renders the component wrapped in a div with role alert" do
+    render_component(
+      id: "error-summary-id",
+      title: "Message to alert the user to a problem goes here",
+    )
+
+    assert_select ".gem-c-error-summary.govuk-error-summary [role='alert']"
   end
 
   it "renders an error summary with items links" do

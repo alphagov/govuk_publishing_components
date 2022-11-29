@@ -201,9 +201,7 @@ $after-button-padding-left: govuk-spacing(5);
 
   display: inline-block;
   font-size: 19px;
-  @if $govuk-typography-use-rem {
-    font-size: govuk-px-to-rem(19px);
-  }
+  font-size: govuk-px-to-rem(19px);
   font-weight: bold;
   margin: govuk-spacing(3) 0;
 
@@ -242,14 +240,10 @@ $after-button-padding-left: govuk-spacing(5);
     }
 
     @include govuk-media-query($from: "desktop") {
+      // stylelint-disable max-nesting-depth
       float: left;
       font-size: 16px;
-
-      // stylelint-disable max-nesting-depth
-      @if $govuk-typography-use-rem {
-        font-size: govuk-px-to-rem(16px);
-      }
-
+      font-size: govuk-px-to-rem(16px);
       height: govuk-spacing(4);
       position: relative;
 
@@ -394,9 +388,7 @@ $after-button-padding-left: govuk-spacing(5);
       color: govuk-colour("white");
       float: left;
       font-size: 16px;
-      @if $govuk-typography-use-rem {
-        font-size: govuk-px-to-rem(16px);
-      }
+      font-size: govuk-px-to-rem(16px);
       height: $black-bar-height;
       position: relative;
       text-decoration: none;
@@ -604,9 +596,7 @@ $after-button-padding-left: govuk-spacing(5);
   @include govuk-link-style-no-underline;
 
   font-size: 16px;
-  @if $govuk-typography-use-rem {
-    font-size: govuk-px-to-rem(16px);
-  }
+  font-size: govuk-px-to-rem(16px);
   font-weight: 700;
   background: govuk-colour("black");
   border: 0;
@@ -878,9 +868,7 @@ $after-button-padding-left: govuk-spacing(5);
 
 .gem-c-layout-super-navigation-header__navigation-second-item-link {
   font-size: 16px;
-  @if $govuk-typography-use-rem {
-    font-size: govuk-px-to-rem(16px);
-  }
+  font-size: govuk-px-to-rem(16px);
 
   &:after {
     @include make-selectable-area-bigger;
@@ -898,9 +886,7 @@ $after-button-padding-left: govuk-spacing(5);
 
 .gem-c-layout-super-navigation-header__navigation-second-item-link--with-description {
   font-size: 16px;
-  @if $govuk-typography-use-rem {
-    font-size: govuk-px-to-rem(16px);
-  }
+  font-size: govuk-px-to-rem(16px);
   font-weight: bold;
 }
 
@@ -934,9 +920,7 @@ $after-button-padding-left: govuk-spacing(5);
 .gem-c-layout-super-navigation-header__navigation-second-footer-link {
   display: inline-block;
   font-size: 16px;
-  @if $govuk-typography-use-rem {
-    font-size: govuk-px-to-rem(16px);
-  }
+  font-size: govuk-px-to-rem(16px);
   margin: govuk-spacing(1) 0;
 
   &:after {
@@ -956,9 +940,7 @@ $after-button-padding-left: govuk-spacing(5);
 .gem-c-layout-super-navigation-header__navigation-second-item-description {
   @include govuk-typography-common;
   font-size: 16px;
-  @if $govuk-typography-use-rem {
-    font-size: govuk-px-to-rem(16px);
-  }
+  font-size: govuk-px-to-rem(16px);
   font-weight: normal;
   margin: govuk-spacing(1) 0 0 0;
 }
@@ -996,9 +978,7 @@ $after-button-padding-left: govuk-spacing(5);
 .gem-c-layout-super-navigation-header__popular-link {
   display: inline-block;
   font-size: 16px;
-  @if $govuk-typography-use-rem {
-    font-size: govuk-px-to-rem(16px);
-  }
+  font-size: govuk-px-to-rem(16px);
   padding: 0;
 
   &:after {

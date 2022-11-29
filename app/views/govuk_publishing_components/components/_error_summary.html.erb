@@ -4,7 +4,6 @@
   description ||= false
   data_attributes ||= {}
   items ||= []
-  title_id ||= "error-summary-title-#{SecureRandom.hex(4)}"
   if items.empty? && !title
     raise ArgumentError, "The error_summary component needs at least one item or a title in order to render."
   end
@@ -12,33 +11,35 @@
 <%= tag.div(
   class: "gem-c-error-summary govuk-error-summary",
   data: { module: "govuk-error-summary" }.merge(data_attributes),
-  aria: { labelledby: title_id },
-  role: "alert",
   id: id,
 ) do %>
-  <% if title %>
-    <h2 class="govuk-error-summary__title" id="<%= title_id %>">
-      <%= title %>
-    </h2>
-  <% end %>
-  <div class="govuk-error-summary__body">
-    <% if description %>
-      <p><%= description %></p>
+  <%= tag.div(
+    role: "alert",
+  ) do %>
+    <% if title %>
+      <h2 class="govuk-error-summary__title">
+        <%= title %>
+      </h2>
     <% end %>
-    <% if items.present? %>
-      <ul class="govuk-list govuk-error-summary__list">
-        <% items.each_with_index do |item, index| %>
-          <li class="gem-c-error-summary__list-item">
-            <% if item[:href] %>
-              <%= link_to item[:text], item[:href], target: item[:target], data: item[:data_attributes] %>
-            <% else %>
-              <%= tag.span data: item[:data_attributes] do %>
-                <%= item[:text] %>
+    <div class="govuk-error-summary__body">
+      <% if description %>
+        <p><%= description %></p>
+      <% end %>
+      <% if items.present? %>
+        <ul class="govuk-list govuk-error-summary__list">
+          <% items.each_with_index do |item, index| %>
+            <li class="gem-c-error-summary__list-item">
+              <% if item[:href] %>
+                <%= link_to item[:text], item[:href], target: item[:target], data: item[:data_attributes] %>
+              <% else %>
+                <%= tag.span data: item[:data_attributes] do %>
+                  <%= item[:text] %>
+                <% end %>
               <% end %>
-            <% end %>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
-  </div>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  <% end %>
 <% end %>

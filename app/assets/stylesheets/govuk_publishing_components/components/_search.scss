@@ -97,13 +97,6 @@ $large-input-size: 50px;
   }
 }
 
-@include govuk-compatibility(govuk_template) {
-  //  ultra specific rule overrides focus styling from govuk_template
-  #global-header .gem-c-search__input[type="search"]:focus { // stylelint-disable selector-max-id
-    @extend %gem-c-search-input-focus;
-  }
-}
-
 @mixin icon-positioning($container-size) {
   $icon-dimension: 20px;
   $icon-position: ($container-size - $icon-dimension) / 2;

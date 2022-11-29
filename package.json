@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "axe-core": "^4.5.2",
-    "govuk-frontend": "^4.3.1",
+    "govuk-frontend": "^4.4.0",
     "sortablejs": "^1.15.0"
   },
   "devDependencies": {
