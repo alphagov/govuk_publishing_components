@@ -11,653 +11,198 @@ describe('The super header navigation', function () {
     container = document.createElement('div')
     container.className = 'js-enabled'
     container.innerHTML =
-      '<nav ' +
-        'aria-labelledby="super-navigation-menu-heading" ' +
-        'class="gem-c-layout-super-navigation-header__content" ' +
-        'data-module="super-navigation-mega-menu" ' +
-        'data-text-for-generic-button="Toggle section" ' +
-        'data-text-for-show-generic="Show section" ' +
-        'data-text-for-hide-generic="Hide section" ' +
-      '>' +
-        '<h2 id="super-navigation-menu-heading" class="govuk-visually-hidden">' +
-          'Navigation menu ' +
-        '</h2>' +
-        '<button ' +
-          'aria-controls="super-navigation-menu" ' +
-          'aria-expanded="true" ' +
-          'aria-label="Hide navigation menu" ' +
-          'class="gem-c-layout-super-navigation-header__navigation-top-toggle-button" ' +
-          'data-text-for-hide="Hide navigation menu" ' +
-          'data-text-for-show="Show navigation menu" ' +
-          'data-toggle-desktop-group="hidden" ' +
-          'data-toggle-mobile-group="top" ' +
-          'data-tracking-key="testing" ' +
-          'hidden ' +
-          'id="super-navigation-menu-toggle" ' +
-          'type="button" ' +
-        '>' +
-          'Menu ' +
-        '</button>' +
-        '<ul ' +
-          'id="super-navigation-menu" ' +
-          'class="gem-c-layout-super-navigation-header__navigation-items" ' +
-        '>' +
-          '<li ' +
-            'class=" ' +
-              'gem-c-layout-super-navigation-header__navigation-item ' +
-              'gem-c-layout-super-navigation-header__navigation-item--with-children ' +
-            '" ' +
-          '>' +
-            '<a ' +
-              'class=" ' +
-                'govuk-header__link ' +
-                'gem-c-layout-super-navigation-header__navigation-item-link ' +
-              '" ' +
-              'href="/browse" ' +
-            '>' +
-              'Topics ' +
-            '</a>' +
-            '<button ' +
-              'aria-controls="super-navigation-menu__section-1b6ef312" ' +
-              'aria-expanded="false" ' +
-              'aria-label="Show Topics section" ' +
-              'class=" ' +
-                'gem-c-layout-super-navigation-header__navigation-second-toggle-button ' +
-              '" ' +
-              'data-text-for-hide="Hide Topics section" ' +
-              'data-text-for-show="Show Topics section" ' +
-              'data-toggle-desktop-group="top" ' +
-              'data-toggle-mobile-group="second" ' +
-              'hidden ' +
-              'id="super-navigation-menu__section-1b6ef312-toggle" ' +
-              'type="button" ' +
-            '>' +
-              'Topics ' +
-            '</button>' +
-            '<div ' +
-              'hidden ' +
-              'class="gem-c-layout-super-navigation-header__navigation-dropdown-menu" ' +
-              'id="super-navigation-menu__section-1b6ef312" ' +
-            '>' +
-              '<ul class="govuk-list">' +
-                '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
-                  '<a ' +
-                    'class=" ' +
-                      'govuk-link ' +
-                      'gem-c-layout-super-navigation-header__dropdown-list-item-link ' +
-                    '" ' +
-                    'href="/browse/benefits" ' +
-                  '>' +
-                    'Benefits ' +
-                  '</a>' +
-                '</li>' +
-                '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
-                  '<a ' +
-                    'class=" ' +
-                      'govuk-link ' +
-                      'gem-c-layout-super-navigation-header__dropdown-list-item-link ' +
-                    '" ' +
-                    'href="/browse/births-deaths-marriages" ' +
-                  '>' +
-                    'Births, death, marriages and care ' +
-                  '</a>' +
-                '</li>' +
-                '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
-                  '<a ' +
-                    'class=" ' +
-                      'govuk-link ' +
-                      'gem-c-layout-super-navigation-header__dropdown-list-item-link ' +
-                    '" ' +
-                    'href="/brexit" ' +
-                  '>' +
-                    'Brexit ' +
-                  '</a>' +
-                '</li>' +
-                '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
-                  '<a ' +
-                    'class=" ' +
-                      'govuk-link ' +
-                      'gem-c-layout-super-navigation-header__dropdown-list-item-link ' +
-                    '" ' +
-                    'href="/browse/business" ' +
-                  '>' +
-                    'Business and self-employed ' +
-                  '</a>' +
-                '</li>' +
-                '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
-                  '<a ' +
-                    'class=" ' +
-                      'govuk-link ' +
-                      'gem-c-layout-super-navigation-header__dropdown-list-item-link ' +
-                    '" ' +
-                    'href="/browse/childcare-parenting" ' +
-                  '>' +
-                    'Childcare and parenting ' +
-                  '</a>' +
-                '</li>' +
-                '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
-                  '<a ' +
-                    'class=" ' +
-                      'govuk-link ' +
-                      'gem-c-layout-super-navigation-header__dropdown-list-item-link ' +
-                    '" ' +
-                    'href="/browse/citizenship" ' +
-                  '>' +
-                    'Citizenship and living in the UK ' +
-                  '</a>' +
-                '</li>' +
-                '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
-                  '<a ' +
-                    'class=" ' +
-                      'govuk-link ' +
-                      'gem-c-layout-super-navigation-header__dropdown-list-item-link ' +
-                    '" ' +
-                    'href="/coronavirus" ' +
-                  '>' +
-                    'Coronavirus (COVID‑19) ' +
-                  '</a>' +
-                '</li>' +
-                '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
-                  '<a ' +
-                    'class=" ' +
-                      'govuk-link ' +
-                      'gem-c-layout-super-navigation-header__dropdown-list-item-link ' +
-                    '" ' +
-                    'href="/browse/justice" ' +
-                  '>' +
-                    'Crime, justice and the law ' +
-                  '</a>' +
-                '</li>' +
-                '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
-                  '<a ' +
-                    'class=" ' +
-                      'govuk-link ' +
-                      'gem-c-layout-super-navigation-header__dropdown-list-item-link ' +
-                    '" ' +
-                    'href="/browse/disabilities" ' +
-                  '>' +
-                    'Disabled people ' +
-                  '</a>' +
-                '</li>' +
-                '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
-                  '<a ' +
-                    'class=" ' +
-                      'govuk-link ' +
-                      'gem-c-layout-super-navigation-header__dropdown-list-item-link ' +
-                    '" ' +
-                    'href="/browse/driving" ' +
-                  '>' +
-                    'Driving and transport ' +
-                  '</a>' +
-                '</li>' +
-                '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
-                  '<a ' +
-                    'class=" ' +
-                      'govuk-link ' +
-                      'gem-c-layout-super-navigation-header__dropdown-list-item-link ' +
-                    '" ' +
-                    'href="/browse/education" ' +
-                  '>' +
-                    'Education and learning ' +
-                  '</a>' +
-                '</li>' +
-                '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
-                  '<a ' +
-                    'class=" ' +
-                      'govuk-link ' +
-                      'gem-c-layout-super-navigation-header__dropdown-list-item-link ' +
-                    '" ' +
-                    'href="/browse/employing-people" ' +
-                  '>' +
-                    'Employing people ' +
-                  '</a>' +
-                '</li>' +
-                '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
-                  '<a ' +
-                    'class=" ' +
-                      'govuk-link ' +
-                      'gem-c-layout-super-navigation-header__dropdown-list-item-link ' +
-                    '" ' +
-                    'href="/browse/environment-countryside" ' +
-                  '>' +
-                    'Environment and countryside ' +
-                  '</a>' +
-                '</li>' +
-                '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
-                  '<a ' +
-                    'class=" ' +
-                      'govuk-link ' +
-                      'gem-c-layout-super-navigation-header__dropdown-list-item-link ' +
-                    '" ' +
-                    'href="/browse/housing-local-services" ' +
-                  '>' +
-                    'Housing and local services ' +
-                  '</a>' +
-                '</li>' +
-                '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
-                  '<a ' +
-                    'class=" ' +
-                      'govuk-link ' +
-                      'gem-c-layout-super-navigation-header__dropdown-list-item-link ' +
-                    '" ' +
-                    'href="/browse/tax" ' +
-                  '>' +
-                    'Money and tax ' +
-                  '</a>' +
-                '</li>' +
-                '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
-                  '<a ' +
-                    'class=" ' +
-                      'govuk-link ' +
-                      'gem-c-layout-super-navigation-header__dropdown-list-item-link ' +
-                    '" ' +
-                    'href="/browse/abroad" ' +
-                  '>' +
-                    'Passports, travel and living abroad ' +
-                  '</a>' +
-                '</li>' +
-                '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
-                  '<a ' +
-                    'class=" ' +
-                      'govuk-link ' +
-                      'gem-c-layout-super-navigation-header__dropdown-list-item-link ' +
-                    '" ' +
-                    'href="/browse/visas-immigration" ' +
-                  '>' +
-                    'Visas and immigration ' +
-                  '</a>' +
-                '</li>' +
-                '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
-                  '<a ' +
-                    'class=" ' +
-                      'govuk-link ' +
-                      'gem-c-layout-super-navigation-header__dropdown-list-item-link ' +
-                    '" ' +
-                    'href="/browse/working" ' +
-                  '>' +
-                    'Working, jobs and pensions ' +
-                  '</a>' +
-                '</li>' +
-              '</ul>' +
-            '</div>' +
-          '</li>' +
-          '<li class="gem-c-layout-super-navigation-header__navigation-item">' +
-            '<a ' +
-              'class=" ' +
-                'govuk-header__link ' +
-                'gem-c-layout-super-navigation-header__navigation-item-link ' +
-              '" ' +
-              'href="/government/organisations" ' +
-            '>' +
-              'Departments ' +
-            '</a>' +
-          '</li>' +
-          '<li ' +
-            'class=" ' +
-              'gem-c-layout-super-navigation-header__navigation-item ' +
-              'gem-c-layout-super-navigation-header__navigation-item--with-children ' +
-            '" ' +
-          '>' +
-            '<a ' +
-              'class=" ' +
-                'govuk-header__link ' +
-                'gem-c-layout-super-navigation-header__navigation-item-link ' +
-              '" ' +
-              'href="/search/news-and-communications" ' +
-            '>' +
-              'Government activity ' +
-            '</a>' +
-            '<button ' +
-              'aria-controls="super-navigation-menu__section-7e5c3450" ' +
-              'aria-expanded="false" ' +
-              'aria-label="Show Government activity section" ' +
-              'class=" ' +
-                'gem-c-layout-super-navigation-header__navigation-second-toggle-button ' +
-              '" ' +
-              'data-text-for-hide="Hide Government activity section" ' +
-              'data-text-for-show="Show Government activity section" ' +
-              'data-toggle-desktop-group="top" ' +
-              'data-toggle-mobile-group="second" ' +
-              'hidden ' +
-              'id="super-navigation-menu__section-7e5c3450-toggle" ' +
-              'type="button" ' +
-            '>' +
-              'Government activity ' +
-            '</button>' +
-            '<div ' +
-              'hidden ' +
-              'class="gem-c-layout-super-navigation-header__navigation-dropdown-menu" ' +
-              'id="super-navigation-menu__section-7e5c3450" ' +
-            '>' +
-              '<ul class="govuk-list">' +
-                '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
-                  '<a ' +
-                    'class=" ' +
-                      'govuk-link ' +
-                      'gem-c-layout-super-navigation-header__dropdown-list-item-link ' +
-                    '" ' +
-                    'href="/search/news-and-communications" ' +
-                  '>' +
-                    'News ' +
-                  '</a>' +
-                  '<p ' +
-                    'class=" ' +
-                      'govuk-body-s ' +
-                      'gem-c-layout-super-navigation-header__dropdown-list-item-description ' +
-                    '" ' +
-                  '>' +
-                    'News stories, speeches, letters and notices ' +
-                  '</p>' +
-                '</li>' +
-                '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
-                  '<a ' +
-                    'class=" ' +
-                      'govuk-link ' +
-                      'gem-c-layout-super-navigation-header__dropdown-list-item-link ' +
-                    '" ' +
-                    'href="/search/guidance-and-regulation" ' +
-                  '>' +
-                    'Guidance and regulation ' +
-                  '</a>' +
-                  '<p ' +
-                    'class=" ' +
-                      'govuk-body-s ' +
-                      'gem-c-layout-super-navigation-header__dropdown-list-item-description ' +
-                    '" ' +
-                  '>' +
-                    'Detailed guidance, regulations and rules ' +
-                  '</p>' +
-                '</li>' +
-                '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
-                  '<a ' +
-                    'class=" ' +
-                      'govuk-link ' +
-                      'gem-c-layout-super-navigation-header__dropdown-list-item-link ' +
-                    '" ' +
-                    'href="/search/research-and-statistics" ' +
-                  '>' +
-                    'Research and statistics ' +
-                  '</a>' +
-                  '<p ' +
-                    'class=" ' +
-                      'govuk-body-s ' +
-                      'gem-c-layout-super-navigation-header__dropdown-list-item-description ' +
-                    '" ' +
-                  '>' +
-                    'Reports, analysis and official statistics ' +
-                  '</p>' +
-                '</li>' +
-                '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
-                  '<a ' +
-                    'class=" ' +
-                      'govuk-link ' +
-                      'gem-c-layout-super-navigation-header__dropdown-list-item-link ' +
-                    '" ' +
-                    'href="/search/policy-papers-and-consultations" ' +
-                  '>' +
-                    'Policy papers and consultation ' +
-                  '</a>' +
-                  '<p ' +
-                    'class=" ' +
-                      'govuk-body-s ' +
-                      'gem-c-layout-super-navigation-header__dropdown-list-item-description ' +
-                    '" ' +
-                  '>' +
-                    'Consultations and strategy ' +
-                  '</p>' +
-                '</li>' +
-                '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
-                  '<a ' +
-                    'class=" ' +
-                      'govuk-link ' +
-                      'gem-c-layout-super-navigation-header__dropdown-list-item-link ' +
-                    '" ' +
-                    'href="/search/transparency-and-freedom-of-information-releases" ' +
-                  '>' +
-                    'Transparency ' +
-                  '</a>' +
-                  '<p ' +
-                    'class=" ' +
-                      'govuk-body-s ' +
-                      'gem-c-layout-super-navigation-header__dropdown-list-item-description ' +
-                    '" ' +
-                  '>' +
-                    'Government data, freedom of information releases and corporate ' +
-                    'reports ' +
-                  '</p>' +
-                '</li>' +
-              '</ul>' +
-              '<ul class="govuk-list">' +
-                '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
-                  '<a ' +
-                    'class=" ' +
-                      'govuk-link ' +
-                      'gem-c-layout-super-navigation-header__dropdown-list-item-link ' +
-                    '" ' +
-                    'href="/government/how-government-works" ' +
-                  '>' +
-                    'How government works ' +
-                  '</a>' +
-                '</li>' +
-                '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
-                  '<a ' +
-                    'class=" ' +
-                      'govuk-link ' +
-                      'gem-c-layout-super-navigation-header__dropdown-list-item-link ' +
-                    '" ' +
-                    'href="/government/get-involved" ' +
-                  '>' +
-                    'Get involved ' +
-                  '</a>' +
-                '</li>' +
-              '</ul>' +
-            '</div>' +
-          '</li>' +
-        '</ul>' +
-' ' +
-        '<button ' +
-          'aria-controls="super-search-menu" ' +
-          'aria-expanded="true" ' +
-          'aria-label="Hide search menu" ' +
-          'class="gem-c-layout-super-navigation-header__search-toggle-button" ' +
-          'data-text-for-hide="Hide search menu" ' +
-          'data-text-for-show="Show search menu" ' +
-          'data-toggle-mobile-group="top" ' +
-          'data-toggle-desktop-group="top" ' +
-          'hidden ' +
-          'id="super-search-menu-toggle" ' +
-          'type="button" ' +
-        '>' +
-          '<span ' +
-            'class=" ' +
-              'gem-c-layout-super-navigation-header__search-toggle-button-link-text ' +
-            '" ' +
-            '>Search GOV.UK</span ' +
-          '>' +
-          '<svg ' +
-            'class=" ' +
-              'gem-c-layout-super-navigation-header__search-toggle-button-link-icon ' +
-            '" ' +
-            'width="27" ' +
-            'height="27" ' +
-            'viewBox="0 0 27 27" ' +
-            'fill="none" ' +
-            'xmlns="http://www.w3.org/2000/svg" ' +
-            'aria-hidden="true" ' +
-            'focusable="false" ' +
-          '>' +
-            '<circle ' +
-              'cx="10.0161" ' +
-              'cy="10.0161" ' +
-              'r="8.51613" ' +
-              'stroke="currentColor" ' +
-              'stroke-width="3" ' +
-            '></circle>' +
-            '<line ' +
-              'x1="15.8668" ' +
-              'y1="16.3587" ' +
-              'x2="25.4475" ' +
-              'y2="25.9393" ' +
-              'stroke="currentColor" ' +
-              'stroke-width="3" ' +
-            '></line>' +
-          '</svg>' +
-        '</button>' +
-' ' +
-        '<div ' +
-          'id="super-search-menu" ' +
-          'class="gem-c-layout-super-navigation-header__search-items" ' +
-        '>' +
-          '<h3 ' +
-            'class=" ' +
-              'govuk-visually-hidden ' +
-              'gem-c-layout-super-navigation-header__search-subheading ' +
-            '" ' +
-          '>' +
-            'Search ' +
-          '</h3>' +
-          '<div class="gem-c-layout-super-navigation-header__search-item">' +
-            '<a ' +
-              'class=" ' +
-                'govuk-header__link ' +
-                'gem-c-layout-super-navigation-header__search-item-link ' +
-              '" ' +
-              'href="/search" ' +
-            '>' +
-              '<span ' +
-                'class="gem-c-layout-super-navigation-header__search-item-link-text" ' +
-                '>Search GOV.UK</span ' +
-              '>' +
-              '<svg ' +
-                'class="gem-c-layout-super-navigation-header__search-item-link-icon" ' +
-                'width="27" ' +
-                'height="27" ' +
-                'viewBox="0 0 27 27" ' +
-                'fill="none" ' +
-                'xmlns="http://www.w3.org/2000/svg" ' +
-                'aria-hidden="true" ' +
-                'focusable="false" ' +
-              '>' +
-                '<circle ' +
-                  'cx="10.0161" ' +
-                  'cy="10.0161" ' +
-                  'r="8.51613" ' +
-                  'stroke="currentColor" ' +
-                  'stroke-width="3" ' +
-                '></circle>' +
-                '<line ' +
-                  'x1="15.8668" ' +
-                  'y1="16.3587" ' +
-                  'x2="25.4475" ' +
-                  'y2="25.9393" ' +
-                  'stroke="currentColor" ' +
-                  'stroke-width="3" ' +
-                '></line>' +
-              '</svg>' +
-            '</a>' +
-          '</div>' +
-          '<div class="gem-c-layout-super-navigation-header__search-and-popular">' +
-            '<form ' +
-              'id="search" ' +
-              'action="/search" ' +
-              'method="get" ' +
-              'role="search" ' +
-              'aria-label="Site-wide" ' +
-            '>' +
-              '<div ' +
-                'class=" ' +
-                  'gem-c-search ' +
-                  'govuk-!-display-none-print ' +
-                  'gem-c-search--large ' +
-                  'gem-c-search--on-white ' +
-                  'gem-c-search--separate-label ' +
-                '" ' +
-                'data-module="gem-toggle-input-class-on-focus" ' +
-              '>' +
-                '<label for="search-main-5dfcaa4f" class="gem-c-search__label">' +
-                  'Search GOV.UK ' +
-                '</label>' +
-                '<div class="gem-c-search__item-wrapper">' +
-                  '<input ' +
-                    'class="gem-c-search__item gem-c-search__input js-class-toggle" ' +
-                    'id="search-main-5dfcaa4f" ' +
-                    'name="q" ' +
-                    'title="Search" ' +
-                    'type="search" ' +
-                    'value="" ' +
-                  '/>' +
-                  '<div class="gem-c-search__item gem-c-search__submit-wrapper">' +
-                    '<button ' +
-                      'class="gem-c-search__submit" ' +
-                      'type="submit" ' +
-                      'data-module="gem-track-click" ' +
-                    '>' +
-                      'Search ' +
-                    '</button>' +
+      '<nav aria-labelledby="super-navigation-menu-heading" class="gem-c-layout-super-navigation-header__content" data-module="super-navigation-mega-menu">' +
+          '<h2 id="super-navigation-menu-heading" class="govuk-visually-hidden">' +
+              'Navigation menu' +
+          '</h2>' +
+          '<a class="gem-c-layout-super-navigation-header__navigation-item-link" data-track-action="menuLink" data-track-category="headerClicked" data-track-label="/browse" data-track-dimension="Menu" data-track-dimension-index="29" href="/browse" hidden="hidden">' +
+              '<span class="gem-c-layout-super-navigation-header__navigation-item-link-inner">' +
+                  'Menu' +
+              '</span>' +
+          '</a>' +
+          '<button aria-controls="super-navigation-menu__section-eca2a8c8" aria-expanded="false" aria-label="Show Menu menu" class="gem-c-layout-super-navigation-header__navigation-top-toggle-button" data-text-for-hide="Hide Menu menu" data-text-for-show="Show Menu menu" data-toggle-desktop-group="top" data-toggle-mobile-group="second" data-tracking-key="menu" data-ga4="{&quot;event_name&quot;:&quot;select_content&quot;,&quot;type&quot;:&quot;header menu bar&quot;,&quot;text&quot;:&quot;Menu&quot;,&quot;section&quot;:&quot;Menu&quot;}" id="super-navigation-menu__section-eca2a8c8-toggle" type="button">' +
+              '<span class="gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner">Menu</span>' +
+          '</button>' +
+          '<ul id="super-navigation-menu" class="gem-c-layout-super-navigation-header__navigation-items">' +
+              '<li class="gem-c-layout-super-navigation-header__navigation-item">' +
+                  '<!-- this is the nav menu -->' +
+                  '<div hidden="" class="gem-c-layout-super-navigation-header__navigation-dropdown-menu" id="super-navigation-menu__section-eca2a8c8">' +
+                      '<div class="govuk-width-container gem-c-layout-super-navigation-header__width-container">' +
+                          '<div class="govuk-grid-row">' +
+                              '<div class="govuk-grid-column-two-thirds-from-desktop gem-c-layout-super-navigation-header__column--topics">' +
+                                  '<div class="govuk-width-container">' +
+                                      '<h3 class="govuk-heading-m gem-c-layout-super-navigation-header__column-header">' +
+                                          'Topics' +
+                                      '</h3>' +
+                                  '</div>' +
+                                  '<div class="govuk-width-container">' +
+                                      '<ul class="gem-c-layout-super-navigation-header__navigation-second-items gem-c-layout-super-navigation-header__navigation-second-items--topics">' +
+                                          '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
+                                              '<a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link" data-track-action="menuLink" data-track-category="headerClicked" data-track-label="/browse/benefits" data-track-dimension="Benefits" data-track-dimension-index="29" href="/browse/benefits">Benefits</a>' +
+                                          '</li>' +
+                                          '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
+                                              '<a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link" data-track-action="menuLink" data-track-category="headerClicked" data-track-label="/browse/births-deaths-marriages" data-track-dimension="Births, death, marriages and care" data-track-dimension-index="29" href="/browse/births-deaths-marriages">Births, death, marriages and care</a>' +
+                                          '</li>' +
+                                          '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
+                                              '<a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link" data-track-action="menuLink" data-track-category="headerClicked" data-track-label="/browse/business" data-track-dimension="Business and self-employed" data-track-dimension-index="29" href="/browse/business">Business and self-employed</a>' +
+                                          '</li>' +
+                                          '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
+                                              '<a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link" data-track-action="menuLink" data-track-category="headerClicked" data-track-label="/browse/childcare-parenting" data-track-dimension="Childcare and parenting" data-track-dimension-index="29" href="/browse/childcare-parenting">Childcare and parenting</a>' +
+                                          '</li>' +
+                                          '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
+                                              '<a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link" data-track-action="menuLink" data-track-category="headerClicked" data-track-label="/browse/citizenship" data-track-dimension="Citizenship and living in the UK" data-track-dimension-index="29" href="/browse/citizenship">Citizenship and living in the UK</a>' +
+                                          '</li>' +
+                                          '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
+                                              '<a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link" data-track-action="menuLink" data-track-category="headerClicked" data-track-label="/cost-of-living" data-track-dimension="Cost of Living support" data-track-dimension-index="29" href="/cost-of-living">Cost of Living support</a>' +
+                                          '</li>' +
+                                          '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
+                                              '<a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link" data-track-action="menuLink" data-track-category="headerClicked" data-track-label="/browse/justice" data-track-dimension="Crime, justice and the law" data-track-dimension-index="29" href="/browse/justice">Crime, justice and the law</a>' +
+                                          '</li>' +
+                                          '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
+                                              '<a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link" data-track-action="menuLink" data-track-category="headerClicked" data-track-label="/browse/disabilities" data-track-dimension="Disabled people" data-track-dimension-index="29" href="/browse/disabilities">Disabled people</a>' +
+                                          '</li>' +
+                                          '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
+                                              '<a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link" data-track-action="menuLink" data-track-category="headerClicked" data-track-label="/browse/driving" data-track-dimension="Driving and transport" data-track-dimension-index="29" href="/browse/driving">Driving and transport</a>' +
+                                          '</li>' +
+                                          '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
+                                              '<a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link" data-track-action="menuLink" data-track-category="headerClicked" data-track-label="/browse/education" data-track-dimension="Education and learning" data-track-dimension-index="29" href="/browse/education">Education and learning</a>' +
+                                          '</li>' +
+                                          '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
+                                              '<a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link" data-track-action="menuLink" data-track-category="headerClicked" data-track-label="/browse/employing-people" data-track-dimension="Employing people" data-track-dimension-index="29" href="/browse/employing-people">Employing people</a>' +
+                                          '</li>' +
+                                          '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
+                                              '<a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link" data-track-action="menuLink" data-track-category="headerClicked" data-track-label="/browse/environment-countryside" data-track-dimension="Environment and countryside" data-track-dimension-index="29" href="/browse/environment-countryside">Environment and countryside</a>' +
+                                          '</li>' +
+                                          '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
+                                              '<a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link" data-track-action="menuLink" data-track-category="headerClicked" data-track-label="/browse/housing-local-services" data-track-dimension="Housing and local services" data-track-dimension-index="29" href="/browse/housing-local-services">Housing and local services</a>' +
+                                          '</li>' +
+                                          '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
+                                              '<a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link" data-track-action="menuLink" data-track-category="headerClicked" data-track-label="/browse/tax" data-track-dimension="Money and tax" data-track-dimension-index="29" href="/browse/tax">Money and tax</a>' +
+                                          '</li>' +
+                                          '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
+                                              '<a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link" data-track-action="menuLink" data-track-category="headerClicked" data-track-label="/browse/abroad" data-track-dimension="Passports, travel and living abroad" data-track-dimension-index="29" href="/browse/abroad">Passports, travel and living abroad</a>' +
+                                          '</li>' +
+                                          '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
+                                              '<a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link" data-track-action="menuLink" data-track-category="headerClicked" data-track-label="/browse/visas-immigration" data-track-dimension="Visas and immigration" data-track-dimension-index="29" href="/browse/visas-immigration">Visas and immigration</a>' +
+                                          '</li>' +
+                                          '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
+                                              '<a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link" data-track-action="menuLink" data-track-category="headerClicked" data-track-label="/browse/working" data-track-dimension="Working, jobs and pensions" data-track-dimension-index="29" href="/browse/working">Working, jobs and pensions</a>' +
+                                          '</li>' +
+                                      '</ul>' +
+                                  '</div>' +
+                              '</div>' +
+                              '<div class="govuk-grid-column-one-third-from-desktop gem-c-layout-super-navigation-header__column--government-activity">' +
+                                  '<div class="govuk-width-container">' +
+                                      '<h3 class="govuk-heading-m gem-c-layout-super-navigation-header__column-header">' +
+                                          'Government activity' +
+                                      '</h3>' +
+                                  '</div>' +
+                                  '<div class="govuk-width-container">' +
+                                      '<ul class="gem-c-layout-super-navigation-header__navigation-second-items gem-c-layout-super-navigation-header__navigation-second-items--government-activity">' +
+                                          '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
+                                              '<a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link gem-c-layout-super-navigation-header__navigation-second-item-link--with-description" data-track-action="menuLink" data-track-category="headerClicked" data-track-label="/government/organisations" data-track-dimension="Departments" data-track-dimension-index="29" href="/government/organisations">Departments</a>' +
+                                              '<p class="gem-c-layout-super-navigation-header__navigation-second-item-description">Departments, agencies and public bodies</p>' +
+                                          '</li>' +
+                                          '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
+                                              '<a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link gem-c-layout-super-navigation-header__navigation-second-item-link--with-description" data-track-action="menuLink" data-track-category="headerClicked" data-track-label="/search/news-and-communications" data-track-dimension="News" data-track-dimension-index="29" href="/search/news-and-communications">News</a>' +
+                                              '<p class="gem-c-layout-super-navigation-header__navigation-second-item-description">News stories, speeches, letters and notices</p>' +
+                                          '</li>' +
+                                          '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
+                                              '<a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link gem-c-layout-super-navigation-header__navigation-second-item-link--with-description" data-track-action="menuLink" data-track-category="headerClicked" data-track-label="/search/guidance-and-regulation" data-track-dimension="Guidance and regulation" data-track-dimension-index="29" href="/search/guidance-and-regulation">Guidance and regulation</a>' +
+                                              '<p class="gem-c-layout-super-navigation-header__navigation-second-item-description">Detailed guidance, regulations and rules</p>' +
+                                          '</li>' +
+                                          '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
+                                              '<a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link gem-c-layout-super-navigation-header__navigation-second-item-link--with-description" data-track-action="menuLink" data-track-category="headerClicked" data-track-label="/search/policy-papers-and-consultations" data-track-dimension="Policy papers and consultations" data-track-dimension-index="29" href="/search/policy-papers-and-consultations">Policy papers and consultations</a>' +
+                                              '<p class="gem-c-layout-super-navigation-header__navigation-second-item-description">Consultations and strategy</p>' +
+                                          '</li>' +
+                                          '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
+                                              '<a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link gem-c-layout-super-navigation-header__navigation-second-item-link--with-description" data-track-action="menuLink" data-track-category="headerClicked" data-track-label="/search/research-and-statistics" data-track-dimension="Research and statistics" data-track-dimension-index="29" href="/search/research-and-statistics">Research and statistics</a>' +
+                                              '<p class="gem-c-layout-super-navigation-header__navigation-second-item-description">Reports, analysis and official statistics</p>' +
+                                          '</li>' +
+                                          '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
+                                              '<a class="govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link gem-c-layout-super-navigation-header__navigation-second-item-link--with-description" data-track-action="menuLink" data-track-category="headerClicked" data-track-label="/search/transparency-and-freedom-of-information-releases" data-track-dimension="Transparency" data-track-dimension-index="29" href="/search/transparency-and-freedom-of-information-releases">Transparency</a>' +
+                                              '<p class="gem-c-layout-super-navigation-header__navigation-second-item-description">Data, Freedom of Information releases and corporate reports</p>' +
+                                          '</li>' +
+                                      '</ul>' +
+                                  '</div>' +
+                              '</div>' +
+                          '</div>' +
+                      '</div>' +
                   '</div>' +
-                '</div>' +
+              '</li>' +
+          '</ul>' +
+          '<button aria-controls="super-search-menu" aria-expanded="false" aria-label="Show search menu" class="gem-c-layout-super-navigation-header__search-toggle-button" data-text-for-hide="Hide search menu" data-text-for-show="Show search menu" data-toggle-mobile-group="top" data-toggle-desktop-group="top" data-tracking-key="search" id="super-search-menu-toggle" type="button" data-ga4="{&quot;event_name&quot;:&quot;select_content&quot;,&quot;type&quot;:&quot;header menu bar&quot;,&quot;text&quot;:&quot;Search&quot;,&quot;section&quot;:&quot;Search&quot;}">' +
+              '<span class="govuk-visually-hidden">' +
+                  'Search GOV.UK' +
+              '</span>' +
+              '<svg class="gem-c-layout-super-navigation-header__search-toggle-button-link-icon" width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">' +
+                  '<circle cx="12.0161" cy="11.0161" r="8.51613" stroke="currentColor" stroke-width="3"></circle>' +
+                  '<line x1="17.8668" y1="17.3587" x2="26.4475" y2="25.9393" stroke="currentColor" stroke-width="3"></line>' +
+              '</svg>' +
+              '<span aria-hidden="true" class="gem-c-layout-super-navigation-header__navigation-top-toggle-close-icon" focusable="false">' +
+                  '×' +
+              '</span>' +
+          '</button>' +
+          '<div id="super-search-menu" class="gem-c-layout-super-navigation-header__search-items" hidden="hidden">' +
+              '<h3 class="govuk-visually-hidden">' +
+                  'Search' +
+              '</h3>' +
+              '<div class="gem-c-layout-super-navigation-header__search-item">' +
+                  '<a class="gem-c-layout-super-navigation-header__search-item-link" href="/search" hidden="hidden">' +
+                      '<span class="gem-c-layout-super-navigation-header__search-item-link-text">' +
+                          'Search GOV.UK' +
+                      '</span>' +
+                      '<svg class="gem-c-layout-super-navigation-header__search-item-link-icon" width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">' +
+                          '<circle cx="10.0161" cy="10.0161" r="8.51613" stroke="currentColor" stroke-width="3"></circle>' +
+                          '<line x1="15.8668" y1="16.3587" x2="25.4475" y2="25.9393" stroke="currentColor" stroke-width="3"></line>' +
+                      '</svg>' +
+                  '</a>' +
               '</div>' +
-            '</form>' +
-            '<h3 class="govuk-heading-m">Popular on GOV.UK</h3>' +
-            '<ul class="govuk-list">' +
-              '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
-                '<a ' +
-                  'class=" ' +
-                    'govuk-link ' +
-                    'gem-c-layout-super-navigation-header__dropdown-list-item-link ' +
-                  '" ' +
-                  'href="/guidance/covid-19-coronavirus-restrictions-what-you-can-and-cannot-do" ' +
-                '>' +
-                  'Coronavirus (COVID-19): rules ' +
-                '</a>' +
-              '</li>' +
-              '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
-                '<a ' +
-                  'class=" ' +
-                    'govuk-link ' +
-                    'gem-c-layout-super-navigation-header__dropdown-list-item-link ' +
-                  '" ' +
-                  'href="/brexit" ' +
-                '>' +
-                  'Brexit: check what you need to do ' +
-                '</a>' +
-              '</li>' +
-              '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
-                '<a ' +
-                  'class=" ' +
-                    'govuk-link ' +
-                    'gem-c-layout-super-navigation-header__dropdown-list-item-link ' +
-                  '" ' +
-                  'href="/personal-tax-account" ' +
-                '>' +
-                  'Sign in to your personal tax account ' +
-                '</a>' +
-              '</li>' +
-              '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
-                '<a ' +
-                  'class=" ' +
-                    'govuk-link ' +
-                    'gem-c-layout-super-navigation-header__dropdown-list-item-link ' +
-                  '" ' +
-                  'href="/find-a-job" ' +
-                '>' +
-                  'Find a job ' +
-                '</a>' +
-              '</li>' +
-              '<li class="gem-c-layout-super-navigation-header__dropdown-list-item">' +
-                '<a ' +
-                  'class=" ' +
-                    'govuk-link ' +
-                    'gem-c-layout-super-navigation-header__dropdown-list-item-link ' +
-                  '" ' +
-                  'href="/sign-in-universal-credit" ' +
-                '>' +
-                  'Sign in to your Universal Credit account ' +
-                '</a>' +
-              '</li>' +
-            '</ul>' +
+              '<div class="govuk-width-container gem-c-layout-super-navigation-header__search-and-popular">' +
+                  '<div class="govuk-grid-row">' +
+                      '<div class="govuk-grid-column-full">' +
+                          '<form class="gem-c-layout-super-navigation-header__search-form" id="search" action="/search" method="get" role="search" aria-label="Site-wide">' +
+                              '<div class="gem-c-search govuk-!-display-none-print  gem-c-search--large gem-c-search--on-white gem-c-search--separate-label" data-module="gem-toggle-input-class-on-focus">' +
+                                  '<label for="search-main-d6160a6e" class="govuk-label govuk-label--m">Search GOV.UK</label>' +
+                                  '<div class="gem-c-search__item-wrapper">' +
+                                      '<input enterkeyhint="search" class="gem-c-search__item gem-c-search__input js-class-toggle" id="search-main-d6160a6e" name="q" title="Search" type="search" value="">' +
+                                      '<div class="gem-c-search__item gem-c-search__submit-wrapper">' +
+                                          '<button class="gem-c-search__submit" type="submit" data-track-category="headerClicked" data-track-action="searchSubmitted" data-track-label="/search/all" data-track-dimension="Search on GOV.UK" data-track-dimension-index="29" data-module="gem-track-click" enterkeyhint="search">' +
+                                              'Search' +
+                                              '<svg class="gem-c-search__icon" width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">' +
+                                                  '<circle cx="12.0161" cy="11.0161" r="8.51613" stroke="currentColor" stroke-width="3"></circle>' +
+                                                  '<line x1="17.8668" y1="17.3587" x2="26.4475" y2="25.9393" stroke="currentColor" stroke-width="3"></line>' +
+                                              '</svg>' +
+                                          '</button> </div>' +
+                                  '</div>' +
+                              '</div>' +
+                          '</form>' +
+                      '</div>' +
+                  '</div>' +
+                  '<div class="govuk-grid-row">' +
+                      '<div class="govuk-grid-column-full">' +
+                          '<h3 class="govuk-heading-m">Popular on GOV.UK</h3>' +
+                          '<ul class="govuk-list">' +
+                              '<li class="gem-c-layout-super-navigation-header__popular-item">' +
+                                  '<a class="govuk-link gem-c-layout-super-navigation-header__popular-link" data-track-action="popularLink" data-track-category="headerClicked" data-track-label="/check-benefits-financial-support" data-track-dimension="Check benefits and financial support you can get" data-track-dimension-index="29" href="/check-benefits-financial-support">Check benefits and financial support you can get</a>' +
+                              '</li>' +
+                              '<li class="gem-c-layout-super-navigation-header__popular-item">' +
+                                  '<a class="govuk-link gem-c-layout-super-navigation-header__popular-link" data-track-action="popularLink" data-track-category="headerClicked" data-track-label="/government/publications/energy-bills-support/energy-bills-support-factsheet-8-september-2022" data-track-dimension="Limits on energy prices: Energy Price Guarantee" data-track-dimension-index="29" href="/government/publications/energy-bills-support/energy-bills-support-factsheet-8-september-2022">Limits on energy prices: Energy Price Guarantee</a>' +
+                              '</li>' +
+                              '<li class="gem-c-layout-super-navigation-header__popular-item">' +
+                                  '<a class="govuk-link gem-c-layout-super-navigation-header__popular-link" data-track-action="popularLink" data-track-category="headerClicked" data-track-label="/find-a-job" data-track-dimension="Find a job" data-track-dimension-index="29" href="/find-a-job">Find a job</a>' +
+                              '</li>' +
+                              '<li class="gem-c-layout-super-navigation-header__popular-item">' +
+                                  '<a class="govuk-link gem-c-layout-super-navigation-header__popular-link" data-track-action="popularLink" data-track-category="headerClicked" data-track-label="/coronavirus" data-track-dimension="Coronavirus (COVID-19)" data-track-dimension-index="29" href="/coronavirus">Coronavirus (COVID-19)</a>' +
+                              '</li>' +
+                              '<li class="gem-c-layout-super-navigation-header__popular-item">' +
+                                  '<a class="govuk-link gem-c-layout-super-navigation-header__popular-link" data-track-action="popularLink" data-track-category="headerClicked" data-track-label="/sign-in-universal-credit" data-track-dimension="Universal Credit account: sign in" data-track-dimension-index="29" href="/sign-in-universal-credit">Universal Credit account: sign in</a>' +
+                              '</li>' +
+                          '</ul>' +
+                      '</div>' +
+                  '</div>' +
+              '</div>' +
           '</div>' +
-        '</div>' +
       '</nav>'
 
     document.body.appendChild(container)
