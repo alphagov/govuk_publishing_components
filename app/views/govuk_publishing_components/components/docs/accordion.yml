@@ -181,21 +181,33 @@ examples:
                     <a class="govuk-link" href="#">Retiring your service</a>
                   </li>
               </ul>'
+  with_ga4_tracking:
+    description: |
+      Allows you to add GA4 tracking to an accordion. This will add a data module and data-attributes with JSONs to the accordion. See the [ga4-event-tracker documentation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-event-tracker.md) for more information.
+    data:
+      ga4_tracking: true
+      items:
+        - heading:
+            text: Writing well for the web
+          content:
+            html: <p class="govuk-body">This is the content for Writing well for the web.</p>
+        - heading:
+            text: Writing well for specialists
+          content:
+            html: <p class="govuk-body">This is the content for Writing well for specialists.</p>
   with_data_attributes:
     description: |
       Adds custom data attributes to each section of the accordion. Accepts a hash, so multiple attributes can be added.
 
       The `data_attributes` option applies attributes to the outermost element in the accordion. Each item can also have a `data_attributes` hash, which are placed on the `button` that triggers the opening and closing - useful for differentiating between each section of the accordion.
 
-      Data attributes can be added to the 'Show/hide all' link using the `data_attributes_show_all` option, primarily where custom tracking is required. These attributes are read from the accordion markup and then added to the link by JavaScript (which is how the link is created). More details on how this can be used with the GA4 event tracking can be found in the 'Advanced' section of the [event tracking documentation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-event-tracker.md).
+      Data attributes can be added to the 'Show/hide all' link using the `data_attributes_show_all` option, primarily where custom tracking is required. These attributes are read from the accordion markup and then added to the link by JavaScript (which is how the link is created). Currently, this is only used for tracking with Universal Analytics.
 
       If `track_options` within `data_attributes_show_all` is set, then it is possible to pass a custom dimension when 'Show/Hide all' is clicked.
     data:
       data_attributes:
         custom_data_attr: custom-data-attr-accordion
       data_attributes_show_all:
-        custom_data_attr-event-name: example
-        custom_data_attr-attributes: "{ 'ui': { 'type': 'type value', 'section': 'section value' } }"
         tracking-options: "{ 'dimension114': 1 }"
       items:
         - heading:
