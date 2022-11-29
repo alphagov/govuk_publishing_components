@@ -65,6 +65,31 @@
       <h2 id="super-navigation-menu-heading" class="govuk-visually-hidden">
         <%= navigation_menu_heading %>
       </h2>
+
+      <%
+        has_children = (link[:menu_contents].present? or link[:footer_links].present?)
+        li_classes = %w[gem-c-layout-super-navigation-header__navigation-item]
+        li_classes << "gem-c-layout-super-navigation-header__navigation-item--with-children" if has_children
+        unique_id = SecureRandom.hex(4)
+        show_menu_text = t("components.layout_super_navigation_header.menu_toggle_label.show", :label => link[:label])
+        hide_menu_text = t("components.layout_super_navigation_header.menu_toggle_label.hide", :label => link[:label])
+        tracking_label = link[:label].downcase.gsub(/\s+/, "")
+      %>
+
+      <%= link_to link[:href], {
+        class: "gem-c-layout-super-navigation-header__navigation-item-link",
+        data: {
+          track_action: "#{tracking_label}Link",
+          track_category: "headerClicked",
+          track_label: link[:href],
+          track_dimension: link[:label],
+          track_dimension_index: "29",
+        }
+      } do %>
+        <span class="gem-c-layout-super-navigation-header__navigation-item-link-inner">
+          <%= link[:label] %>
+        </span>
+      <% end %>
       <button
         aria-controls="super-navigation-menu"
         aria-expanded="true"
@@ -93,31 +118,8 @@
       </button>
       <ul id="super-navigation-menu" class="gem-c-layout-super-navigation-header__navigation-items">
         <% navigation_links.each_with_index do | link, index | %>
-          <%
-            has_children = (link[:menu_contents].present? or link[:footer_links].present?)
-            li_classes = %w[gem-c-layout-super-navigation-header__navigation-item]
-            li_classes << "gem-c-layout-super-navigation-header__navigation-item--with-children" if has_children
-            unique_id = SecureRandom.hex(4)
-            show_menu_text = t("components.layout_super_navigation_header.menu_toggle_label.show", :label => link[:label])
-            hide_menu_text = t("components.layout_super_navigation_header.menu_toggle_label.hide", :label => link[:label])
-            tracking_label = link[:label].downcase.gsub(/\s+/, "")
-          %>
           <%= tag.li class: li_classes do %>
             <div class="gem-c-layout-super-navigation-header__navigation-toggle-wrapper govuk-clearfix">
-              <%= link_to link[:href], {
-                class: "gem-c-layout-super-navigation-header__navigation-item-link",
-                data: {
-                  track_action: "#{tracking_label}Link",
-                  track_category: "headerClicked",
-                  track_label: link[:href],
-                  track_dimension: link[:label],
-                  track_dimension_index: "29",
-                }
-              } do %>
-                <span class="gem-c-layout-super-navigation-header__navigation-item-link-inner">
-                  <%= link[:label] %>
-                </span>
-              <% end %>
               <% if has_children %>
                 <%= content_tag(:button, {
                   aria: {
