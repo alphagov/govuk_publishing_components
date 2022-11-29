@@ -27,10 +27,10 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
             schema_name: this.getMetaContent('schema-name'),
             content_id: this.getMetaContent('content-id'),
 
-            section: this.getMetaContent('section'),
+            browse_topic: this.getMetaContent('section'),
             taxon_slug: this.getMetaContent('taxon-slug'),
             taxon_id: this.getMetaContent('taxon-id'),
-            themes: this.getMetaContent('themes'),
+            taxonomy_level1: this.getMetaContent('themes'),
             taxon_slugs: this.getMetaContent('taxon-slugs'),
             taxon_ids: this.getMetaContent('taxon-ids'),
 

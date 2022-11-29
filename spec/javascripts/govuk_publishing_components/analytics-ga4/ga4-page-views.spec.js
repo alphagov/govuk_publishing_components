@@ -27,10 +27,10 @@ describe('Google Tag Manager page view tracking', function () {
         schema_name: undefined,
         content_id: undefined,
 
-        section: undefined,
+        browse_topic: undefined,
         taxon_slug: undefined,
         taxon_id: undefined,
-        themes: undefined,
+        taxonomy_level1: undefined,
         taxon_slugs: undefined,
         taxon_ids: undefined,
 
@@ -129,7 +129,7 @@ describe('Google Tag Manager page view tracking', function () {
   it('returns a page view with specific taxonomy information', function () {
     var tags = [
       {
-        gtmName: 'section',
+        gtmName: 'browse_topic',
         tagName: 'section',
         value: 'this section'
       },
@@ -144,7 +144,7 @@ describe('Google Tag Manager page view tracking', function () {
         value: 'this taxon id'
       },
       {
-        gtmName: 'themes',
+        gtmName: 'taxonomy_level1',
         tagName: 'themes',
         value: 'this theme'
       },
