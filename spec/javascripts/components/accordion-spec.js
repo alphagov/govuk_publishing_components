@@ -104,10 +104,19 @@ describe('Accordion component', function () {
         dimensionExample: 'Example value'
       })
     }
+    var ga4Object = {
+      event_name: 'select_content',
+      type: 'accordion',
+      index: 0,
+      index_total: 3
+    }
     accordion.setAttribute('data-show-all-attributes', JSON.stringify(wrappingObject))
+    accordion.setAttribute('data-module', accordion.getAttribute('data-module') + ' ga4-event-tracker')
     startAccordion()
+
     expect(document.querySelector('.govuk-accordion__show-all').getAttribute('data-custom-data-attr-event-name')).toEqual('example')
     expect(document.querySelector('.govuk-accordion__show-all').getAttribute('data-show-all-attributes')).toEqual(JSON.stringify(object))
+    expect(document.querySelector('.govuk-accordion__show-all').getAttribute('data-ga4-event')).toEqual(JSON.stringify(ga4Object))
     expect(document.querySelector('.govuk-accordion__show-all').getAttribute('data-track-options')).toEqual(JSON.stringify({ dimensionExample: 'Example value' }))
   })
 })

@@ -43,9 +43,10 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
 
     // look for data attributes to put onto the 'show/hide all' link
     var showAllAttributes = this.$module.getAttribute('data-show-all-attributes')
+    var showAll
     if (showAllAttributes) {
       try {
-        var showAll = this.$module.querySelector(this.showAllControls)
+        showAll = this.$module.querySelector(this.showAllControls)
         var values = JSON.parse(showAllAttributes)
         var keys = Object.keys(values)
         for (var i = 0; i < keys.length; i++) {
@@ -54,6 +55,16 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
       } catch (e) {
         console.error('Could not read accordion data attributes error: ' + e.message, window.location)
       }
+    }
+
+    // if GA4 is enabled, set attributes on 'show all sections' for tracking using ga4-event-tracker
+    var dataModule = this.$module.getAttribute('data-module')
+    var isGa4Enabled = dataModule ? dataModule.indexOf('ga4-event-tracker') !== -1 : false
+    if (isGa4Enabled) {
+      var indexTotal = this.$module.querySelectorAll('.govuk-accordion__section').length
+      var showAllAttributesGa4 = { event_name: 'select_content', type: 'accordion', index: 0, index_total: indexTotal }
+      showAll = this.$module.querySelector(this.showAllControls)
+      showAll.setAttribute('data-ga4-event', JSON.stringify(showAllAttributesGa4))
     }
   }
 

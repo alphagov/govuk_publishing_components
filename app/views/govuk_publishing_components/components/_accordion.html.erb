@@ -23,10 +23,12 @@
 
   data_attributes ||= {}
   ((data_attributes[:module] ||= "") << " " << "govuk-accordion gem-accordion").strip!
+  ga4_tracking ||= false
+  data_attributes[:module] << " ga4-event-tracker" if ga4_tracking
+  data_attributes[:ga4_expandable] = '' if ga4_tracking
   data_attributes[:anchor_navigation] = anchor_navigation
   data_attributes[:track_show_all_clicks] = track_show_all_clicks
   data_attributes[:track_sections] = track_sections
-
   data_attributes_show_all ||= nil
   data_attributes[:show_all_attributes] = data_attributes_show_all if data_attributes_show_all
 
@@ -56,6 +58,17 @@
         index = i + 1
 
         item[:data_attributes] ||= nil
+
+        if ga4_tracking
+          item[:data_attributes] ||= {}
+          item[:data_attributes][:ga4_event] = {
+            event_name: "select_content",
+            type: "accordion",
+            text: item[:heading][:text],
+            index: index,
+            index_total: items.length
+          }.to_json
+        end
 
         section_classes = %w(govuk-accordion__section)
         section_classes << 'govuk-accordion__section--expanded' if item[:expanded]
