@@ -90,137 +90,100 @@
           <%= link[:label] %>
         </span>
       <% end %>
-      <button
-        aria-controls="super-navigation-menu"
-        aria-expanded="true"
-        aria-label="<%= hide_navigation_menu_text %>"
-        class="gem-c-layout-super-navigation-header__navigation-top-toggle-button"
-        data-text-for-hide="<%= hide_navigation_menu_text %>"
-        data-text-for-show="<%= show_navigation_menu_text %>"
-        data-toggle-desktop-group="hidden"
-        data-toggle-mobile-group="top"
-        data-tracking-key="menu"
+
+      <%= content_tag(:button, {
+        aria: {
+          controls: "super-navigation-menu__section-#{unique_id}",
+          expanded: false,
+          label: show_menu_text,
+        },
+        class: "gem-c-layout-super-navigation-header__navigation-second-toggle-button",
+        data: {
+          text_for_hide: hide_menu_text,
+          text_for_show: show_menu_text,
+          toggle_desktop_group: "top",
+          toggle_mobile_group: "second",
+          tracking_key: tracking_label,
+          ga4: {
+            event_name: "select_content",
+            type: "header menu bar",
+            text: link[:label],
+            index: index + 2,
+            index_total: navigation_links.length + 2,
+            section: link[:label]
+          }
+        },
+        hidden: true,
+        id: "super-navigation-menu__section-#{unique_id}-toggle",
+        type: "button",
+      }) do %>
+        <%= tag.span link[:label], class: "gem-c-layout-super-navigation-header__navigation-second-toggle-button-inner" %>
+      <% end %>
+      <div
         hidden
-        id="super-navigation-menu-toggle"
-        type="button"
-        data-ga4-event="<%= {
-          "event_name": "select_content",
-          "type": "header menu bar",
-          "text": "Menu",
-          "index": 1,
-          "index_total": navigation_links.length + 2,
-          "section": "Menu"
-        }.to_json %>"
+        class="gem-c-layout-super-navigation-header__navigation-dropdown-menu"
+        id="super-navigation-menu__section-<%= unique_id %>"
       >
-        <span class="gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner">
-          Menu
-        </span>
-      </button>
-      <ul id="super-navigation-menu" class="gem-c-layout-super-navigation-header__navigation-items">
-        <% navigation_links.each_with_index do | link, index | %>
-          <%= tag.li class: li_classes do %>
-            <div class="gem-c-layout-super-navigation-header__navigation-toggle-wrapper govuk-clearfix">
-              <% if has_children %>
-                <%= content_tag(:button, {
-                  aria: {
-                    controls: "super-navigation-menu__section-#{unique_id}",
-                    expanded: false,
-                    label: show_menu_text,
-                  },
-                  class: "gem-c-layout-super-navigation-header__navigation-second-toggle-button",
-                  data: {
-                    text_for_hide: hide_menu_text,
-                    text_for_show: show_menu_text,
-                    toggle_desktop_group: "top",
-                    toggle_mobile_group: "second",
-                    tracking_key: tracking_label,
-                    ga4: {
-                      event_name: "select_content",
-                      type: "header menu bar",
-                      text: link[:label],
-                      index: index + 2,
-                      index_total: navigation_links.length + 2,
-                      section: link[:label]
-                    }
-                  },
-                  hidden: true,
-                  id: "super-navigation-menu__section-#{unique_id}-toggle",
-                  type: "button",
-                }) do %>
-                  <%= tag.span link[:label], class: "gem-c-layout-super-navigation-header__navigation-second-toggle-button-inner" %>
-                <% end %>
+        <div class="govuk-width-container gem-c-layout-super-navigation-header__width-container">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-one-third-from-desktop">
+              <% if link[:description].present? %>
+                <h3 class="govuk-body-l gem-c-layout-super-navigation-header__menu-description">
+                  <%= link[:description] %>
+                </h3>
               <% end %>
             </div>
-            <% if has_children %>
-              <div
-                hidden
-                class="gem-c-layout-super-navigation-header__navigation-dropdown-menu"
-                id="super-navigation-menu__section-<%= unique_id %>"
-              >
-                <div class="govuk-width-container gem-c-layout-super-navigation-header__width-container">
-                  <div class="govuk-grid-row">
-                    <div class="govuk-grid-column-one-third-from-desktop">
-                      <% if link[:description].present? %>
-                        <h3 class="govuk-body-l gem-c-layout-super-navigation-header__menu-description">
-                          <%= link[:description] %>
-                        </h3>
-                      <% end %>
-                    </div>
-                    <div class="govuk-grid-column-two-thirds-from-desktop">
-                      <% if link[:menu_contents].present? %>
-                          <ul class="gem-c-layout-super-navigation-header__navigation-second-items gem-c-layout-super-navigation-header__navigation-second-items--<%= link[:label].parameterize %>">
-                            <% link[:menu_contents].each do | item | %>
-                              <%
-                                has_description = item[:description].present?
-                                link_classes = %w[govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link]
-                                link_classes << "gem-c-layout-super-navigation-header__navigation-second-item-link--with-description" if has_description
-                              %>
-                              <li class="gem-c-layout-super-navigation-header__dropdown-list-item">
-                                <%= link_to item[:label], item[:href], {
-                                  class: link_classes,
-                                  data: {
-                                    track_action: "#{tracking_label}Link",
-                                    track_category: "headerClicked",
-                                    track_label: item[:href],
-                                    track_dimension: item[:label],
-                                    track_dimension_index: "29",
-                                  }
-                                } %>
-                                <%= tag.p item[:description], class: "gem-c-layout-super-navigation-header__navigation-second-item-description" if has_description %>
-                              </li>
-                            <% end %>
-                          </ul>
-                      <% end %>
-                      <% if link[:footer_links].present? %>
-                        <hr class="gem-c-layout-super-navigation-header__navigation-second-footer-break govuk-section-break govuk-section-break--visible">
-                        <ul class="gem-c-layout-super-navigation-header__navigation-second-footer-list">
-                          <% link[:footer_links].each do | item | %>
-                            <li class="gem-c-layout-super-navigation-header__navigation-second-footer-item">
-                              <%= link_to item[:label], item[:href], {
-                                class: [
-                                  "govuk-link",
-                                  "gem-c-layout-super-navigation-header__navigation-second-footer-link",
-                                ],
-                                data: {
-                                  track_action: "#{tracking_label}Link",
-                                  track_category: "headerClicked",
-                                  track_label: item[:href],
-                                  track_dimension: item[:label],
-                                  track_dimension_index: "29",
-                                }
-                              } %>
-                            </li>
-                          <% end %>
-                        </ul>
-                      <% end %>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            <% end %>
-          <% end %>
-        <% end %>
-      </ul>
+            <div class="govuk-grid-column-two-thirds-from-desktop">
+              <% if link[:menu_contents].present? %>
+                  <ul class="gem-c-layout-super-navigation-header__navigation-second-items gem-c-layout-super-navigation-header__navigation-second-items--<%= link[:label].parameterize %>">
+                    <% link[:menu_contents].each do | item | %>
+                      <%
+                        has_description = item[:description].present?
+                        link_classes = %w[govuk-link gem-c-layout-super-navigation-header__navigation-second-item-link]
+                        link_classes << "gem-c-layout-super-navigation-header__navigation-second-item-link--with-description" if has_description
+                      %>
+                      <li class="gem-c-layout-super-navigation-header__dropdown-list-item">
+                        <%= link_to item[:label], item[:href], {
+                          class: link_classes,
+                          data: {
+                            track_action: "#{tracking_label}Link",
+                            track_category: "headerClicked",
+                            track_label: item[:href],
+                            track_dimension: item[:label],
+                            track_dimension_index: "29",
+                          }
+                        } %>
+                        <%= tag.p item[:description], class: "gem-c-layout-super-navigation-header__navigation-second-item-description" if has_description %>
+                      </li>
+                    <% end %>
+                  </ul>
+              <% end %>
+              <% if link[:footer_links].present? %>
+                <hr class="gem-c-layout-super-navigation-header__navigation-second-footer-break govuk-section-break govuk-section-break--visible">
+                <ul class="gem-c-layout-super-navigation-header__navigation-second-footer-list">
+                  <% link[:footer_links].each do | item | %>
+                    <li class="gem-c-layout-super-navigation-header__navigation-second-footer-item">
+                      <%= link_to item[:label], item[:href], {
+                        class: [
+                          "govuk-link",
+                          "gem-c-layout-super-navigation-header__navigation-second-footer-link",
+                        ],
+                        data: {
+                          track_action: "#{tracking_label}Link",
+                          track_category: "headerClicked",
+                          track_label: item[:href],
+                          track_dimension: item[:label],
+                          track_dimension_index: "29",
+                        }
+                      } %>
+                    </li>
+                  <% end %>
+                </ul>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <button
         aria-controls="super-search-menu"
