@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add the keyboard shim for link buttons ([PR #3027](https://github.com/alphagov/govuk_publishing_components/pull/3027))
+
 ## 33.0.0
 
 * **BREAKING** Refactor GA4 analytics event and link trackers ([PR #3057](https://github.com/alphagov/govuk_publishing_components/pull/3057))

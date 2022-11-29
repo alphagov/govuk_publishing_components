@@ -38,7 +38,8 @@ module GovukPublishingComponents
           @info_text_classes << margin_class
         end
         @rel = local_assigns[:rel]
-        @data_attributes = local_assigns[:data_attributes]
+        @data_attributes = local_assigns[:data_attributes]&.symbolize_keys || {}
+        @data_attributes[:module] = "govuk-button #{data_attributes[:module]}".strip if link?
         @margin_bottom = local_assigns[:margin_bottom]
         @inline_layout = local_assigns[:inline_layout]
         @target = local_assigns[:target]
