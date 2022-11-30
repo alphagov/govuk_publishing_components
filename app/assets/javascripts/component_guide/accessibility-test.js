@@ -24,7 +24,6 @@
     })
 
     var axeOptions = {
-      include: [selector],
       rules: axeRules
     }
 
