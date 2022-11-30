@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Update to LUX 305 ([PR #3096](https://github.com/alphagov/govuk_publishing_components/pull/3096))
 * Add the keyboard shim for link buttons ([PR #3027](https://github.com/alphagov/govuk_publishing_components/pull/3027))
 
 ## 33.0.0
