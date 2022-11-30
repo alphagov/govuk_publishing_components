@@ -38,6 +38,8 @@
       errorBeaconUrl: getProperty(obj, "errorBeaconUrl", "https://lux.speedcurve.com/error/"),
       jspagelabel: getProperty(obj, "jspagelabel", undefined),
       label: getProperty(obj, "label", undefined),
+      maxBeaconUrlLength: getProperty(obj, "maxBeaconUrlLength", 8190),
+      maxBeaconUTEntries: getProperty(obj, "maxBeaconUTEntries", 20),
       maxErrors: getProperty(obj, "maxErrors", 5),
       maxMeasureTime: getProperty(obj, "maxMeasureTime", 60000),
       measureUntil: getProperty(obj, "measureUntil", "onload"),
@@ -276,6 +278,23 @@
     return Matching;
   }());
 
+  /**
+  * Fit an array of user timing delimited strings into a URL and return both the entries that fit and
+  * the remaining entries that didn't fit.
+  */
+  function fitUserTimingEntries(utValues, config, url) {
+    // Start with the maximum allowed UT entries per beacon
+    var beaconUtValues = utValues.slice(0, config.maxBeaconUTEntries);
+    var remainingUtValues = utValues.slice(config.maxBeaconUTEntries);
+    // Trim UT entries until they fit within the maximum URL length, ensuring at least one UT entry
+    // is included.
+    while ((url + "&UT=" + beaconUtValues.join(",")).length > config.maxBeaconUrlLength &&
+    beaconUtValues.length > 1) {
+      remainingUtValues.unshift(beaconUtValues.pop());
+    }
+    return [beaconUtValues, remainingUtValues];
+  }
+
   var LUX = window.LUX || {};
   var scriptEndTime = scriptStartTime;
   LUX = (function () {
@@ -288,7 +307,7 @@
     /// End
     // -------------------------------------------------------------------------
 
-    var SCRIPT_VERSION = "304";
+    var SCRIPT_VERSION = "305";
     var logger = new Logger();
     var globalConfig = fromObject(LUX);
     logger.logEvent(LogEvent.EvaluationStart, [SCRIPT_VERSION]);
@@ -382,7 +401,6 @@
     var gUid = refreshUniqueId(gSyncId); // cookie for this session ("Unique ID")
     var gCustomerDataTimeout; // setTimeout timer for sending a Customer Data beacon after onload
     var gMaxMeasureTimeout; // setTimeout timer for sending the beacon after a maximum measurement time
-    var gMaxQuerystring = 8190; // split the beacon querystring if it gets longer than this
     if (_sample()) {
       logger.logEvent(LogEvent.SessionIsSampled, [globalConfig.samplerate]);
     }
@@ -701,7 +719,7 @@
         }
         aUT.push(utParts.join("|"));
       }
-      return aUT.join(",");
+      return aUT;
     }
     // Return a string of Element Timing Metrics formatted for beacon querystring.
     function elementTimingValues() {
@@ -1406,8 +1424,28 @@
         clearTimeout(gMaxMeasureTimeout);
       }
     }
+    function _getBeaconUrl() {
+      var queryParams = [
+        "v=" + SCRIPT_VERSION,
+        "id=" + getCustomerId(),
+        "sid=" + gSyncId,
+        "uid=" + gUid,
+        "l=" + encodeURIComponent(_getPageLabel()),
+        "HN=" + encodeURIComponent(document.location.hostname),
+        "PN=" + encodeURIComponent(document.location.pathname),
+      ];
+      if (gFlags) {
+        queryParams.push("fl=" + gFlags);
+      }
+      var customerData = customerDataValues();
+      if (customerData) {
+        queryParams.push("CD=" + customerData);
+      }
+      return globalConfig.beaconUrl + "?" + queryParams.join("&");
+    }
     // Beacon back the LUX data.
     function _sendLux() {
+      var _a;
       clearMaxMeasureTimeout();
       var customerid = getCustomerId();
       if (!customerid ||
@@ -1425,9 +1463,7 @@
         // with LUX.markLoadTime()
         _markLoadTime();
       }
-      var sUT = userTimingValues(); // User Timing data
       var sET = elementTimingValues(); // Element Timing data
-      var sCustomerData = customerDataValues(); // customer data
       var sIx = ""; // Interaction Metrics
       if (!gbIxSent) {
         // It is possible for the IX beacon to be sent BEFORE the "main" window.onload LUX beacon.
@@ -1442,21 +1478,10 @@
       }
       // We want ALL beacons to have ALL the data used for query filters (geo, pagelabel, browser, & customerdata).
       // So we create a base URL that has all the necessary information:
-      var baseUrl = globalConfig.beaconUrl +
-        "?v=" +
-        SCRIPT_VERSION +
-        "&id=" +
-        customerid +
-        "&sid=" +
-        gSyncId +
-        "&uid=" +
-        gUid +
-        (sCustomerData ? "&CD=" + sCustomerData : "") +
-        "&l=" +
-        encodeURIComponent(_getPageLabel());
+      var baseUrl = _getBeaconUrl();
       var is = inlineTagSize("script");
       var ic = inlineTagSize("style");
-      var querystring =
+      var metricsQueryString =
         // only send Nav Timing and lux.js metrics on initial pageload (not for SPA page views)
         (gbNavSent ? "" : "&NT=" + getNavTiming()) +
         (gbFirstPV ? "&LJS=" + sLuxjs : "") +
@@ -1497,31 +1522,15 @@
         (sIx ? "&IX=" + sIx : "") +
         (typeof gFirstInputDelay !== "undefined" ? "&FID=" + gFirstInputDelay : "") +
         (sCPU ? "&CPU=" + sCPU : "") +
-        (gFlags ? "&fl=" + gFlags : "") +
         (sET ? "&ET=" + sET : "") + // element timing
-        "&HN=" +
-        encodeURIComponent(document.location.hostname) +
-        (DCLS !== false ? "&CLS=" + DCLS : "") +
-        "&PN=" +
-        encodeURIComponent(document.location.pathname);
-      // User Timing marks & measures
-      var sUT_remainder = "";
-      if (sUT) {
-        var curLen = baseUrl.length + querystring.length;
-        if (curLen + sUT.length <= gMaxQuerystring) {
-          // Add all User Timing
-          querystring += "&UT=" + sUT;
-        }
-        else {
-          // Only add a substring of User Timing
-          var avail_1 = gMaxQuerystring - curLen; // how much room is left in the querystring
-          var iComma = sUT.lastIndexOf(",", avail_1); // as many UT tuples as possible
-          querystring += "&UT=" + sUT.substring(0, iComma);
-          sUT_remainder = sUT.substring(iComma + 1);
-        }
-      }
+        (DCLS !== false ? "&CLS=" + DCLS : "");
+      // We add the user timing entries last so that we can split them to reduce the URL size if necessary.
+      var utValues = userTimingValues();
+      var _b = fitUserTimingEntries(utValues, globalConfig, baseUrl + metricsQueryString), beaconUtValues = _b[0], remainingUtValues = _b[1];
       // Send the MAIN LUX beacon.
-      var mainBeaconUrl = baseUrl + querystring;
+      var mainBeaconUrl = baseUrl +
+      metricsQueryString +
+      (beaconUtValues.length > 0 ? "&UT=" + beaconUtValues.join(",") : "");
       logger.logEvent(LogEvent.MainBeaconSent, [mainBeaconUrl]);
       _sendBeacon(mainBeaconUrl);
       // Set some states.
@@ -1529,34 +1538,9 @@
       gbNavSent = 1;
       gbIxSent = sIx ? 1 : 0;
       // Send other beacons for JUST User Timing.
-      var avail = gMaxQuerystring - baseUrl.length;
-      while (sUT_remainder) {
-        var sUT_cur = "";
-        if (sUT_remainder.length <= avail) {
-          // We can fit ALL the remaining UT params.
-          sUT_cur = sUT_remainder;
-          sUT_remainder = "";
-        }
-        else {
-          // We have to take a subset of the remaining UT params.
-          var iComma = sUT_remainder.lastIndexOf(",", avail); // as many UT tuples as possible
-          if (-1 === iComma) {
-            // Trouble: we have SO LITTLE available space we can not fit the first UT tuple.
-            // Try it anyway but find it by searching from the front.
-            iComma = sUT_remainder.indexOf(",");
-          }
-          if (-1 === iComma) {
-            // The is only one UT tuple left, but it is bigger than the available space.
-            // Take the whole tuple even tho it is too big.
-            sUT_cur = sUT_remainder;
-            sUT_remainder = "";
-          }
-          else {
-            sUT_cur = sUT_remainder.substring(0, iComma);
-            sUT_remainder = sUT_remainder.substring(iComma + 1);
-          }
-        }
-        var utBeaconUrl = baseUrl + "&UT=" + sUT_cur;
+      while (remainingUtValues.length) {
+        _a = fitUserTimingEntries(remainingUtValues, globalConfig, baseUrl), beaconUtValues = _a[0], remainingUtValues = _a[1];
+        var utBeaconUrl = baseUrl + "&UT=" + beaconUtValues.join(",");
         logger.logEvent(LogEvent.UserTimingBeaconSent, [utBeaconUrl]);
         _sendBeacon(utBeaconUrl);
       }
@@ -1574,26 +1558,10 @@
       }
       var sIx = ixValues(); // Interaction Metrics
       if (sIx) {
-        var sCustomerData = customerDataValues(); // customer data
-        var querystring = "?v=" +
-          SCRIPT_VERSION +
-          "&id=" +
-          customerid +
-          "&sid=" +
-          gSyncId +
-          "&uid=" +
-          gUid +
-          (sCustomerData ? "&CD=" + sCustomerData : "") +
-          "&l=" +
-          encodeURIComponent(_getPageLabel()) +
-          "&IX=" +
-          sIx +
-          (gFirstInputDelay ? "&FID=" + gFirstInputDelay : "") +
-          "&HN=" +
-          encodeURIComponent(document.location.hostname) +
-          "&PN=" +
-          encodeURIComponent(document.location.pathname);
-        var beaconUrl = globalConfig.beaconUrl + querystring;
+        var beaconUrl = _getBeaconUrl() +
+        "&IX=" +
+        sIx +
+        (typeof gFirstInputDelay !== "undefined" ? "&FID=" + gFirstInputDelay : "");
         logger.logEvent(LogEvent.InteractionBeaconSent, [beaconUrl]);
         _sendBeacon(beaconUrl);
         gbIxSent = 1;
@@ -1612,23 +1580,7 @@
       }
       var sCustomerData = customerDataValues(); // customer data
       if (sCustomerData) {
-        var querystring = "?v=" +
-          SCRIPT_VERSION +
-          "&id=" +
-          customerid +
-          "&sid=" +
-          gSyncId +
-          "&uid=" +
-          gUid +
-          "&CD=" +
-          sCustomerData +
-          "&l=" +
-          encodeURIComponent(_getPageLabel()) +
-          "&HN=" +
-          encodeURIComponent(document.location.hostname) +
-          "&PN=" +
-          encodeURIComponent(document.location.pathname);
-        var beaconUrl = globalConfig.beaconUrl + querystring;
+        var beaconUrl = _getBeaconUrl();
         logger.logEvent(LogEvent.CustomDataBeaconSent, [beaconUrl]);
         _sendBeacon(beaconUrl);
       }
