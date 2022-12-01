@@ -15,12 +15,15 @@
   aria_attributes ||= {}
   aria_attributes[:label] = 'Intervention'
 
-  local_assigns[:query_string] ||= request.query_string
-  local_assigns[:suggestion_text] = suggestion_text
-  local_assigns[:suggestion_link_text] = suggestion_link_text
-  local_assigns[:suggestion_link_url] = suggestion_link_url
+  options = {
+    params: request.params,
+    query_string: request.query_string,
+    suggestion_text: suggestion_text,
+    suggestion_link_text: suggestion_link_text,
+    suggestion_link_url: suggestion_link_url,
+  }
 
-  intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new(local_assigns)
+  intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new(options)
   dismiss_href = intervention_helper.dismiss_link
 
   suggestion_tag_options = {
