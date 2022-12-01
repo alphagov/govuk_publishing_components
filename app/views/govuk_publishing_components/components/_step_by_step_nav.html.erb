@@ -15,10 +15,13 @@
   step_number = 0
 
   step_nav_helper = GovukPublishingComponents::Presenters::StepByStepNavHelper.new
+
+  ga4_tracking ||= false
 %>
 <% if steps %>
   <div
-    data-module="gemstepnav"
+    data-module="gemstepnav<% if ga4_tracking %> ga4-event-tracker<% end %>"
+    <%= "data-ga4-expandable" if ga4_tracking %>
     class="gem-c-step-nav js-hidden <% if small %>govuk-!-display-none-print<% end %> <% unless small %>gem-c-step-nav--large<% end %>"
     <%= "data-remember" if remember_last_step %>
     <%= "data-id=#{tracking_id}" if tracking_id %>
