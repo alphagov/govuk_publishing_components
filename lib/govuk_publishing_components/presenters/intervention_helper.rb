@@ -4,6 +4,7 @@ module GovukPublishingComponents
       def initialize(local_assigns)
         @accessible_text_suffix = I18n.t("components.intervention.accessible_link_text_suffix")
         @query_string = local_assigns[:query_string]
+        @suggestion_text = local_assigns[:suggestion_text]
         @suggestion_link_text = local_assigns[:suggestion_link_text]
         @suggestion_link_url = local_assigns[:suggestion_link_url]
       end
@@ -29,9 +30,13 @@ module GovukPublishingComponents
         rel
       end
 
+      def show?
+        @suggestion_text || (@suggestion_link_text && @suggestion_link_url)
+      end
+
     private
 
-      attr_reader :accessible_text_suffix, :query_string, :suggestion_link_text, :suggestion_link_url
+      attr_reader :accessible_text_suffix, :query_string, :suggestion_text, :suggestion_link_text, :suggestion_link_url
     end
   end
 end

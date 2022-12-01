@@ -25,6 +25,14 @@ RSpec.describe GovukPublishingComponents::Presenters::InterventionHelper do
       end
     end
 
+    describe ".show?" do
+      it "returns falsey value when no params are passed" do
+        intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new({})
+
+        expect(intervention_helper.show?).to be_falsey
+      end
+    end
+
     describe ".security_attr" do
       it "returns default security attributes for new tab links" do
         intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new({ suggestion_link_text: "Text", suggestion_link_url: "/path-to-page" })

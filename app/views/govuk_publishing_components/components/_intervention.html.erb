@@ -16,6 +16,7 @@
   aria_attributes[:label] = 'Intervention'
 
   local_assigns[:query_string] ||= request.query_string
+  local_assigns[:suggestion_text] = suggestion_text
   local_assigns[:suggestion_link_text] = suggestion_link_text
   local_assigns[:suggestion_link_url] = suggestion_link_url
 
@@ -44,7 +45,7 @@
   }
   section_options.merge!({ hidden: true }) if hide
 %>
-<% if suggestion_text || (suggestion_link_text && suggestion_link_url) %>
+<% if intervention_helper.show? %>
   <%= tag.section **section_options do %>
     <p class="govuk-body">
       <%= tag.span suggestion_text, class: "gem-c-intervention__textwrapper" if suggestion_text %>
