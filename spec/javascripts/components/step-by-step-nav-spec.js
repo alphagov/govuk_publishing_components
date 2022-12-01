@@ -4,7 +4,7 @@
 describe('A stepnav module', function () {
   'use strict'
 
-  var $element
+  var $element, element
   var html =
     '<div data-module="gemstepnav" class="gem-c-step-nav js-hidden" data-id="unique-id" data-show-text="Show" data-hide-text="Hide" data-show-all-text="Show all steps" data-hide-all-text="Hide all steps">' +
       '<ol class="gem-c-step-nav__steps">' +
@@ -919,6 +919,30 @@ describe('A stepnav module', function () {
         dimension28: expectedstepnavContentCount.toString(),
         dimension96: false
       })
+    })
+  })
+
+  describe('with GA4 tracking enabled', function () {
+    beforeEach(function () {
+      element = document.createElement('div')
+      element.innerHTML = html
+      element.childNodes[0].setAttribute('data-module', 'gemstepnav ga4-event-tracker')
+      element.childNodes[0].setAttribute('data-ga4-expandable', '')
+      new GOVUK.Modules.Gemstepnav(element.childNodes[0]).init()
+    })
+
+    it('adds the "Show all" JSON to the JS generated "show all steps" button', function () {
+      var stepNav = element.childNodes[0]
+      var showAllButton = stepNav.querySelector('button.js-step-controls-button')
+
+      expect(showAllButton.getAttribute('data-ga4-event')).toEqual('{"event_name":"select_content","type":"step by step","index":0,"index_total":3}')
+    })
+
+    it('adds the data-ga4-event attribute to the JS generated step button', function () {
+      var stepNav = element.childNodes[0]
+      var stepButton = stepNav.querySelector('#topic-step-one .js-step-title button')
+
+      expect(stepButton.getAttribute('data-ga4-event')).toEqual('{"event_name":"select_content","type":"step by step","text":"Topic Step One","index":1,"index_total":3}')
     })
   })
 })

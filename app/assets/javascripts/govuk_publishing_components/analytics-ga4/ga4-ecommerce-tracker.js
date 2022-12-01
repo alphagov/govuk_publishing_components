@@ -50,7 +50,7 @@
       var schema = this.populateEcommerceSchema(searchResultsBlock, false, null)
 
       this.clearPreviousEcommerceObject()
-      window.dataLayer.push(schema)
+      GOVUK.analyticsGa4.core.sendData(schema)
     },
 
     handleClick: function (event) {
@@ -62,7 +62,7 @@
         var schema = this.populateEcommerceSchema(searchResultsBlock, true, searchResult)
 
         this.clearPreviousEcommerceObject()
-        window.dataLayer.push(schema)
+        GOVUK.analyticsGa4.core.sendData(schema)
       }
     },
 
@@ -127,7 +127,7 @@
     },
 
     clearPreviousEcommerceObject: function () {
-      window.dataLayer.push({ search_results: { ecommerce: null } })
+      GOVUK.analyticsGa4.core.sendData({ search_results: { ecommerce: null } })
     },
 
     getResultsCount: function (searchResultsBlock) {
