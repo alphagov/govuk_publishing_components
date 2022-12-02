@@ -112,7 +112,7 @@ module GovukPublishingComponents
       def related_world_locations
         content_item_links_for("world_locations")
           .map do |link|
-            slug = WORLD_LOCATION_SPECIAL_CASES[link[:text]] || link[:text].parameterize
+            slug = WORLD_LOCATION_SPECIAL_CASES[link[:text]] || link[:base_path]
             link.merge(path: "/world/#{slug}/news")
           end
       end
