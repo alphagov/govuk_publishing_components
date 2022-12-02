@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Update feedback component tracking ([PR #3099](https://github.com/alphagov/govuk_publishing_components/pull/3099))
 * Update to LUX 305 ([PR #3096](https://github.com/alphagov/govuk_publishing_components/pull/3096))
 * Add the keyboard shim for link buttons ([PR #3027](https://github.com/alphagov/govuk_publishing_components/pull/3027))
 * Remove unused axe-core option from options parameter ([PR #3094](https://github.com/alphagov/govuk_publishing_components/pull/3094))
