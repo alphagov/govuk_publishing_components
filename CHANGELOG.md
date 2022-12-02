@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 33.1.0
 
 * Update feedback component tracking ([PR #3099](https://github.com/alphagov/govuk_publishing_components/pull/3099))
 * Update to LUX 305 ([PR #3096](https://github.com/alphagov/govuk_publishing_components/pull/3096))
