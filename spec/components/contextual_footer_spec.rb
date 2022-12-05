@@ -10,6 +10,7 @@ RSpec.describe "Contextual footer", type: :view do
       # If this item is a part of a step nav or secondary step nav this component might not render
       payload["links"].delete("part_of_step_navs")
       payload["links"].delete("secondary_to_step_navs")
+      payload["links"].delete("world_locations")
       payload
     end
 
