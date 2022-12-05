@@ -160,13 +160,6 @@ bg:
       statistical_data_sets: Набор от статистически данни
       topical_events: Тематично събитие
       topics: Разглеждане на темата
-      transition:
-        hub_page_link_path: "/transition-check/questions"
-        hub_page_link_text: Получаване на персонализиран списък с действия
-        hub_page_title: Проверка за Брекзит
-        link_path: "/brexit"
-        link_text: Проверете какво трябва да направите
-        title: Брекзит
       ukraine:
         links:
         title:

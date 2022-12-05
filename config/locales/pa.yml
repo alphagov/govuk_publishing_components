@@ -156,13 +156,6 @@ pa:
       statistical_data_sets: ਅੰਕੜਾ ਡਾਟਾ ਸੈੱਟ
       topical_events: ਸਤਹੀ ਘਟਨਾ
       topics: ਵਿਸ਼ੇ ਦੀ ਪੜਚੋਲ ਕਰੋ
-      transition:
-        hub_page_link_path: "/transition-check/questions"
-        hub_page_link_text: ਕਾਰਵਾਈਆਂ ਦੀ ਵਿਅਕਤੀਗਤ ਸੂਚੀ ਪ੍ਰਾਪਤ ਕਰੋ
-        hub_page_title: ਬ੍ਰੈਕਸਿਟ ਜਾਂਚਕਰਤਾ
-        link_path: "/brexit"
-        link_text: ਜਾਂਚ ਕਰੋ ਕਿ ਤੁਹਾਨੂੰ ਕੀ ਕਰਨ ਦੀ ਜ਼ਰੂਰਤ ਹੈ
-        title: ਬ੍ਰੈਕਸਿਟ
       ukraine:
         links:
         title:

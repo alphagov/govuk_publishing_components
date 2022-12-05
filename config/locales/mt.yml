@@ -158,13 +158,6 @@ mt:
       statistical_data_sets: Sett tad-dejta bl-istatistiċi
       topical_events: Avveniment topiku
       topics: Esplora s-suġġett
-      transition:
-        hub_page_link_path: "/transition-check/questions"
-        hub_page_link_text: Ġib lista personalizzata ta' azzjonijiet
-        hub_page_title: Brexit checker
-        link_path: "/brexit"
-        link_text: Iċċekkja x'għandek bżonn tagħmel
-        title: Brexit
       ukraine:
         links:
         title:
