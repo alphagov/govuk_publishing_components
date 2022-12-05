@@ -157,13 +157,6 @@ tk:
       statistical_data_sets: Statistiki maglumat toplumy
       topical_events: Möhüm waka
       topics: Mowzugy öwreniň
-      transition:
-        hub_page_link_path: "/transition-check/questions"
-        hub_page_link_text: Hereketleriň şahsylaşdyrylan sanawyny alyň
-        hub_page_title: Brexit barlaýjy
-        link_path: "/brexit"
-        link_text: Näme etmelidigiňizi belläň
-        title: Brexit
       ukraine:
         links:
         title:

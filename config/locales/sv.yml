@@ -156,13 +156,6 @@ sv:
       statistical_data_sets: Statistiska uppgifter
       topical_events: Aktuell händelse
       topics: Utforska ämnet
-      transition:
-        hub_page_link_path: "/transition-check/questions"
-        hub_page_link_text: Få en personlig åtgärdslista
-        hub_page_title: Brexit-kontroll
-        link_path: "/brexit"
-        link_text: Kontrollera vad du behöver göra
-        title: Brexit
       ukraine:
         links:
         title:

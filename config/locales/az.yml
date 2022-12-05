@@ -155,13 +155,6 @@ az:
       statistical_data_sets: Statistik məlumat paketi
       topical_events: Aktual tədbir
       topics: Mövzunu araşdırın
-      transition:
-        hub_page_link_path: "/transition-check/questions"
-        hub_page_link_text: Fəaliyyətlər üzrə fərdi siyahı əldə edin
-        hub_page_title: Brexit yoxlayıcısı
-        link_path: "/brexit"
-        link_text: Nələri etməli olduğunuzu yoxlayın
-        title: Brexit
       ukraine:
         links:
         title:

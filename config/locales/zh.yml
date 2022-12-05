@@ -154,13 +154,6 @@ zh:
       statistical_data_sets: 统计数据集
       topical_events: 局部事件
       topics: 探索本主题
-      transition:
-        hub_page_link_path: "/transition-check/questions"
-        hub_page_link_text: 获得个性化的操作列表
-        hub_page_title: 英国脱欧检查程序
-        link_path: "/brexit"
-        link_text: 检查您需要做的事情
-        title: 英国脱欧
       ukraine:
         links:
         title:

@@ -159,13 +159,6 @@ ka:
       statistical_data_sets: სტატისტიკური მონაცემების ნაკრები
       topical_events: ტოპ მოვლენები
       topics: თემის გამოკვლევა
-      transition:
-        hub_page_link_path: "/transition-check/questions"
-        hub_page_link_text: მოქმედებების პერსონალიზირებული სიის მიღება
-        hub_page_title: ბრექსითის შემოწმება
-        link_path: "/brexit"
-        link_text: შეამოწმეთ თუ რა უნდა გააკეთოთ
-        title: ბრექსითის შემოწმება
       ukraine:
         links:
         title:

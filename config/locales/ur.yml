@@ -153,13 +153,6 @@ ur:
       statistical_data_sets: شماریاتی ڈیٹا سیٹ
       topical_events: موضوعاتی ایونٹ
       topics: موضوع کے بارے میں مزید جانیں
-      transition:
-        hub_page_link_path: "/transition-check/questions"
-        hub_page_link_text: کارروائیوں کی شخصی کردہ فہرست حاصل کریں
-        hub_page_title: Brexit چیکر
-        link_path: "/brexit"
-        link_text: پڑتال کریں کہ آپ کو کیا کرنے کی ضرورت ہے
-        title: Brexit
       ukraine:
         links:
         title:
