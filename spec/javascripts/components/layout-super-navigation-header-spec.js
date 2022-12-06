@@ -709,20 +709,20 @@ describe('The super header navigation', function () {
       })
 
       it('does not have the `hidden` attribute', function () {
-        expect($button).not.toHaveAttr('hidden')
+        expect($button.getAttribute('hidden')).toBe(null)
       })
 
       describe('has the correct ARIA attributes', function () {
         it('has `aria-controls` set to "super-navigation-menu"', function () {
-          expect($button).toHaveAttr('aria-controls', 'super-navigation-menu')
+          expect($button.getAttribute('aria-controls')).toBe('super-navigation-menu')
         })
 
         it('has `aria-label` set to "Show navigation menu"', function () {
-          expect($button).toHaveAttr('aria-label', 'Show navigation menu')
+          expect($button.getAttribute('aria-label')).toBe('Show navigation menu')
         })
 
         it('has `aria-expanded` set to false', function () {
-          expect($button).toHaveAttr('aria-expanded', 'false')
+          expect($button.getAttribute('aria-expanded')).toBe('false')
         })
       })
 
@@ -738,16 +738,16 @@ describe('The super header navigation', function () {
         })
 
         it('opens the menu', function () {
-          expect($menu).not.toHaveAttr('hidden')
+          expect($menu.getAttribute('hidden')).toBe(null)
         })
 
         it('updates the button’s `aria-expanded` attribute to true', function () {
-          expect($button).toHaveAttr('aria-expanded', 'true')
+          expect($button.getAttribute('aria-expanded')).toBe('true')
         })
 
         it('updates the button’s `aria-label`', function () {
           var hideLabel = $button.getAttribute('data-text-for-hide')
-          expect($button).toHaveAttr('aria-label', hideLabel)
+          expect($button.getAttribute('aria-label')).toBe(hideLabel)
         })
 
         it('triggers the correct google analytics custom event', function () {
@@ -769,21 +769,21 @@ describe('The super header navigation', function () {
         })
 
         it('opens and then closes the menu', function () {
-          expect($menu).not.toHaveAttr('hidden')
+          expect($menu.getAttribute('hidden')).toBe(null)
           $button.click()
-          expect($menu).toHaveAttr('hidden')
+          expect($menu.getAttribute('hidden')).toBeTruthy()
         })
 
         it('sets the button’s `aria-expanded` attribute to true, then false', function () {
-          expect($button).toHaveAttr('aria-expanded', 'true')
+          expect($button.getAttribute('aria-expanded')).toBe('true')
           $button.click()
-          expect($button).toHaveAttr('aria-expanded', 'false')
+          expect($button.getAttribute('aria-expanded')).toBe('false')
         })
 
         it('sets the button’s `aria-label` attribute to "Hide navigation menu", then "Show navigation menu"', function () {
-          expect($button).toHaveAttr('aria-label', 'Hide navigation menu')
+          expect($button.getAttribute('aria-label')).toBe('Hide navigation menu')
           $button.click()
-          expect($button).toHaveAttr('aria-label', 'Show navigation menu')
+          expect($button.getAttribute('aria-label')).toBe('Show navigation menu')
         })
 
         it('triggers the correct google analytics custom event', function () {
@@ -800,21 +800,21 @@ describe('The super header navigation', function () {
 
         $button.click()
 
-        expect($searchButton).toHaveAttr('aria-expanded', 'false')
-        expect($searchButton).toHaveAttr('aria-label', 'Show search menu')
-        expect($searchMenu).toHaveAttr('hidden')
+        expect($searchButton.getAttribute('aria-expanded')).toBe('false')
+        expect($searchButton.getAttribute('aria-label')).toBe('Show search menu')
+        expect($searchMenu.getAttribute('hidden')).toBeTruthy()
 
         $searchButton.click()
 
-        expect($searchButton).toHaveAttr('aria-expanded', 'true')
-        expect($searchButton).toHaveAttr('aria-label', 'Hide search menu')
-        expect($searchMenu).not.toHaveAttr('hidden')
+        expect($searchButton.getAttribute('aria-expanded')).toBe('true')
+        expect($searchButton.getAttribute('aria-label')).toBe('Hide search menu')
+        expect($searchMenu.getAttribute('hidden')).toBe(null)
 
         $button.click()
 
-        expect($searchButton).toHaveAttr('aria-expanded', 'false')
-        expect($searchButton).toHaveAttr('aria-label', 'Show search menu')
-        expect($searchMenu).toHaveAttr('hidden')
+        expect($searchButton.getAttribute('aria-expanded')).toBe('false')
+        expect($searchButton.getAttribute('aria-label')).toBe('Show search menu')
+        expect($searchMenu.getAttribute('hidden')).toBeTruthy()
       })
     })
 
@@ -826,20 +826,20 @@ describe('The super header navigation', function () {
       })
 
       it('does not have the `hidden` attribute', function () {
-        expect($button).not.toHaveAttr('hidden')
+        expect($button.getAttribute('hidden')).toBe(null)
       })
 
       describe('has the correct ARIA attributes', function () {
         it('has `aria-controls` set to "super-search-menu"', function () {
-          expect($button).toHaveAttr('aria-controls', 'super-search-menu')
+          expect($button.getAttribute('aria-controls')).toBe('super-search-menu')
         })
 
         it('has `aria-label` set to "Show search menu"', function () {
-          expect($button).toHaveAttr('aria-label', 'Show search menu')
+          expect($button.getAttribute('aria-label')).toBe('Show search menu')
         })
 
         it('has `aria-expanded` set to false', function () {
-          expect($button).toHaveAttr('aria-expanded', 'false')
+          expect($button.getAttribute('aria-expanded')).toBe('false')
         })
       })
 
@@ -855,16 +855,16 @@ describe('The super header navigation', function () {
         })
 
         it('opens the menu', function () {
-          expect($menu).not.toHaveAttr('hidden')
+          expect($menu.getAttribute('hidden')).toBe(null)
         })
 
         it('updates the button’s `aria-expanded` attribute to true', function () {
-          expect($button).toHaveAttr('aria-expanded', 'true')
+          expect($button.getAttribute('aria-expanded')).toBe('true')
         })
 
         it('updates the button’s `aria-label`', function () {
           var hideLabel = $button.getAttribute('data-text-for-hide')
-          expect($button).toHaveAttr('aria-label', hideLabel)
+          expect($button.getAttribute('aria-label')).toBe(hideLabel)
         })
       })
 
@@ -880,21 +880,21 @@ describe('The super header navigation', function () {
         })
 
         it('opens and then closes the menu', function () {
-          expect($menu).not.toHaveAttr('hidden')
+          expect($menu.getAttribute('hidden')).toBe(null)
           $button.click()
-          expect($menu).toHaveAttr('hidden')
+          expect($menu.getAttribute('hidden')).toBeTruthy()
         })
 
         it('sets the button’s `aria-expanded` attribute to true, then false', function () {
-          expect($button).toHaveAttr('aria-expanded', 'true')
+          expect($button.getAttribute('aria-expanded')).toBe('true')
           $button.click()
-          expect($button).toHaveAttr('aria-expanded', 'false')
+          expect($button.getAttribute('aria-expanded')).toBe('false')
         })
 
         it('sets the button’s `aria-label` attribute to "Hide search menu", then "Show search menu"', function () {
-          expect($button).toHaveAttr('aria-label', 'Hide search menu')
+          expect($button.getAttribute('aria-label')).toBe('Hide search menu')
           $button.click()
-          expect($button).toHaveAttr('aria-label', 'Show search menu')
+          expect($button.getAttribute('aria-label')).toBe('Show search menu')
         })
       })
 
@@ -904,21 +904,21 @@ describe('The super header navigation', function () {
 
         $button.click()
 
-        expect($navigationButton).toHaveAttr('aria-expanded', 'false')
-        expect($navigationButton).toHaveAttr('aria-label', 'Show navigation menu')
-        expect($navigationMenu).toHaveAttr('hidden')
+        expect($navigationButton.getAttribute('aria-expanded')).toBe('false')
+        expect($navigationButton.getAttribute('aria-label')).toBe('Show navigation menu')
+        expect($navigationMenu.getAttribute('hidden')).toBeTruthy()
 
         $navigationButton.click()
 
-        expect($navigationButton).toHaveAttr('aria-expanded', 'true')
-        expect($navigationButton).toHaveAttr('aria-label', 'Hide navigation menu')
-        expect($navigationMenu).not.toHaveAttr('hidden')
+        expect($navigationButton.getAttribute('aria-expanded')).toBe('true')
+        expect($navigationButton.getAttribute('aria-label')).toBe('Hide navigation menu')
+        expect($navigationMenu.getAttribute('hidden')).toBe(null)
 
         $button.click()
 
-        expect($navigationButton).toHaveAttr('aria-expanded', 'false')
-        expect($navigationButton).toHaveAttr('aria-label', 'Show navigation menu')
-        expect($navigationMenu).toHaveAttr('hidden')
+        expect($navigationButton.getAttribute('aria-expanded')).toBe('false')
+        expect($navigationButton.getAttribute('aria-label')).toBe('Show navigation menu')
+        expect($navigationMenu.getAttribute('hidden')).toBeTruthy()
       })
     })
   })
@@ -944,7 +944,7 @@ describe('The super header navigation', function () {
       })
 
       it('does have the `hidden` attribute', function () {
-        expect($button).toHaveAttr('hidden')
+        expect($button.getAttribute('hidden')).toBeTruthy()
       })
     })
 
@@ -956,20 +956,20 @@ describe('The super header navigation', function () {
       })
 
       it('does not have the `hidden` attribute', function () {
-        expect($button).not.toHaveAttr('hidden')
+        expect($button.getAttribute('hidden')).toBe(null)
       })
 
       describe('has the correct ARIA attributes', function () {
         it('has `aria-controls` set to "super-search-menu"', function () {
-          expect($button).toHaveAttr('aria-controls', 'super-search-menu')
+          expect($button.getAttribute('aria-controls')).toBe('super-search-menu')
         })
 
         it('has `aria-label` set to "Show search menu"', function () {
-          expect($button).toHaveAttr('aria-label', 'Show search menu')
+          expect($button.getAttribute('aria-label')).toBe('Show search menu')
         })
 
         it('has `aria-expanded` set to false', function () {
-          expect($button).toHaveAttr('aria-expanded', 'false')
+          expect($button.getAttribute('aria-expanded')).toBe('false')
         })
       })
     })
