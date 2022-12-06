@@ -551,14 +551,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         }
       },
 
-      toBeDisabled: function () {
-        return {
-          compare: function (actual, selector) {
-            return { pass: $(actual).is(':disabled') }
-          }
-        }
-      },
-
       toBeFocused: function (selector) {
         return {
           compare: function (actual, selector) {

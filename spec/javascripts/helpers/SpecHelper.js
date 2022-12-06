@@ -36,3 +36,7 @@ afterEach(function () {
 function isElementVisible(element) {
   return !!( element.offsetWidth || element.offsetHeight || element.getClientRects().length)
 }
+
+function isElementDisabled(selector) {
+  return document.querySelector(selector+':disabled') !== null
+}
