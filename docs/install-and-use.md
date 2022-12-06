@@ -40,9 +40,7 @@ Use a config block in an initialiser:
 # config/initializers/govuk_publishing_components.rb
 GovukPublishingComponents.configure do |c|
   c.component_guide_title = "My component guide"
-
   c.application_stylesheet = "custom_stylesheet" # Defaults to "application"
-  c.application_print_stylesheet = "print" # Not included by default
   c.application_javascript = "custom_javascript" # Defaults to "application"
 end
 ```
@@ -67,20 +65,13 @@ For example:
 @import "govuk_publishing_components/components/back-link";
 ```
 
-If you load the component guide in the application the suggested Sass for it has been generated for you. Click the 'Suggested imports for this application' link, then copy and paste the output into your `application.scss` file. Remember to also copy the suggested print Sass into your application's `print.scss` file.
+If you load the component guide in the application the suggested Sass for it has been generated for you. Click the 'Suggested imports for this application' link, then copy and paste the output into your `application.scss` file.
 
 ### Import all Sass (deprecated, will be removed in a later version)
 
 ```scss
 // application.scss
 @import "govuk_publishing_components/all_components";
-```
-
-And for print styles
-
-```scss
-// print.scss
-@import "govuk_publishing_components/all_components_print";
 ```
 
 ### Import JavaScript for individual components

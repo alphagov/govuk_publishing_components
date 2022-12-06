@@ -21,7 +21,7 @@ The namespace indicates where a component lives. A single page on GOV.UK could r
 | Template | `app/views/components` | `_my_comp.html.erb` | [Template logic and markup](#template) |
 | Documentation | `app/views/components/docs` | `my_comp.yml` | [Describes the component](#write-documentation) |
 | Styles | `app/assets/stylesheets/components` | `_my-comp.scss` | [Component styles](#styles) |
-| Print styles | `app/assets/stylesheets/components/print` | `_my-comp.scss` | [Component styles](#styles) |
+| Print styles | Include in screen styles |  | [Print styles](#print-styles) |
 | Images | `app/assets/images/govuk_publishing_components` | `my-comp.png` | [Images](#images) |
 | Scripts | `app/assets/javascripts/components` | `my-comp.js` | [JavaScript enhancements](#javascript) |
 | Tests | `test/components` | `my_comp_test.rb` | [Unit tests](#tests) |
@@ -236,6 +236,20 @@ Visit the links below for more information:
 New components should be built with a bottom margin and no top margin.
 
 A standard for options to control this spacing has [not been decided upon yet](https://github.com/alphagov/govuk_publishing_components/pull/292), although it is likely we will adopt something using the [Design System spacing](https://design-system.service.gov.uk/styles/spacing/).
+
+### Print styles
+
+Print styles should be included in the main stylesheet for a component, using the print media query as shown below.
+
+```Sass
+.gem-c-example {
+  background: red;
+
+  @include govuk-media-query($media-type: print) {
+    background: none;
+  }
+}  
+```
 
 ### Linting
 
