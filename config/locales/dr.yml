@@ -158,13 +158,6 @@ dr:
       statistical_data_sets: مجموعهء داده های آمار
       topical_events: رویداد مرتبط
       topics: موضوع را بیشتر جستجو نمایید
-      transition:
-        hub_page_link_path: "/transition-check/questions"
-        hub_page_link_text: یک لست منحصر به فرد اقدامات را دریافت نمایید
-        hub_page_title: برسی کنندهء برکست
-        link_path: "/brexit"
-        link_text: بیبینید که چه کاری باید انجام دهید
-        title: برکست
       ukraine:
         links:
         title:

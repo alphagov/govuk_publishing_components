@@ -161,13 +161,6 @@ cs:
       statistical_data_sets: Soubor statistických údajů.
       topical_events: Aktuální událost
       topics: Prozkoumat téma
-      transition:
-        hub_page_link_path: "/transition-check/questions"
-        hub_page_link_text: Získejte personalizovaný seznam akcí
-        hub_page_title: Kontrola brexitu
-        link_path: "/brexit"
-        link_text: Zkontrolujte, co je třeba udělat
-        title: Brexit
       ukraine:
         links:
         title:

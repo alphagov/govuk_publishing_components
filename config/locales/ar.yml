@@ -159,13 +159,6 @@ ar:
       statistical_data_sets: مجموعة بيانات إحصائية
       topical_events: حدث موضوعي
       topics: استكشف الموضوع
-      transition:
-        hub_page_link_path: "/transition-check/questions"
-        hub_page_link_text: احصل على قائمة مخصصة للإجراءات
-        hub_page_title: أداة التحقق الخاصة ببرِيكْسِت
-        link_path: "/brexit"
-        link_text: تحقق مما تحتاج إلى القيام به
-        title: برِيكْسِت
       ukraine:
         links:
         title:

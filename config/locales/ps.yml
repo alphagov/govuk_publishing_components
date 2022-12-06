@@ -153,13 +153,6 @@ ps:
       statistical_data_sets: د احصایوي معلوماتو سیټ
       topical_events: موضوعي پیښه
       topics: موضوع وپلټئ
-      transition:
-        hub_page_link_path: "/transition-check/questions"
-        hub_page_link_text: د کړنو شخصي لیست ترلاسه کړئ
-        hub_page_title: د بریکسیت چیکر
-        link_path: "/brexit"
-        link_text: وګورئ چې تاسو څه کولو ته اړتیا لرئ
-        title: بریکسیټ
       ukraine:
         links:
         title:

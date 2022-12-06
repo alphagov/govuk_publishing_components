@@ -154,13 +154,6 @@ zh-hk:
       statistical_data_sets: 統計資料組
       topical_events: 專題活動
       topics: 了解專題
-      transition:
-        hub_page_link_path: "/transition-check/questions"
-        hub_page_link_text: 獲得一份個人化行動列表
-        hub_page_title: 英國脫歐核查
-        link_path: "/brexit"
-        link_text: 查看您需要做的事
-        title: 英國脫歐
       ukraine:
         links:
         title:

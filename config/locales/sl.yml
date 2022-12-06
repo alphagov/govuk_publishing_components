@@ -163,13 +163,6 @@ sl:
       statistical_data_sets: Statistični podatkovni niz
       topical_events: Aktualen dogodek
       topics: Razišči to temo
-      transition:
-        hub_page_link_path: "/transition-check/questions"
-        hub_page_link_text: Prejmite prilagojen seznam dejanj
-        hub_page_title: Prejmite prilagojen seznam dejanja
-        link_path: "/brexit"
-        link_text: Preverite, kaj morate storiti
-        title: Brexit
       ukraine:
         links:
         title:

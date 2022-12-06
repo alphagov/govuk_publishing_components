@@ -1,3 +1,5 @@
+ENV["RAILS_TRANSLATION_MANAGER_LOAD_ALL_PLURAL_RULES"] ||= "true"
+
 require "rails_helper"
 require "rails_translation_manager"
 

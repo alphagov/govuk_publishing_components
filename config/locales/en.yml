@@ -284,13 +284,6 @@ en:
       statistical_data_sets: Statistical data set
       topical_events: Topical event
       topics: Explore the topic
-      transition:
-        hub_page_link_path:
-        hub_page_link_text:
-        hub_page_title:
-        link_path: "/brexit"
-        link_text: Check what you need to do
-        title: Brexit
       ukraine:
         links:
         - label: UK visa support for Ukrainian nationals
