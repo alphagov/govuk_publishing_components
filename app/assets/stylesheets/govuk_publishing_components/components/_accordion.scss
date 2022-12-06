@@ -5,3 +5,31 @@
 .gem-c-accordion__show-all > * {
   pointer-events: none;
 }
+
+// This is in place until a proper fix comes through from GOV.UK Frontend.
+//
+// TODO: Replace with the print styles that will come from GOV.UK Frontend.
+
+@include govuk-media-query($media-type: print) {
+  // Open all of the accordion sections.
+  .govuk-accordion__section-content {
+    display: block !important; // stylelint-disable-line declaration-no-important
+  }
+
+  // Change the colour from the blue link colour to black.
+  .govuk-accordion__section-button {
+    color: govuk-colour("black") !important; // stylelint-disable-line declaration-no-important
+  }
+
+  // Change the summary subheading size.
+  .govuk-accordion__section-summary {
+    @include govuk-typography-common;
+    @include govuk-typography-responsive($size: 16, $important: true);
+  }
+
+  // Hide the unusable "Show all" and "Show" sections.
+  .govuk-accordion__show-all,
+  .govuk-accordion__section-toggle {
+    display: none !important; // stylelint-disable-line declaration-no-important
+  }
+}
