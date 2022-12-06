@@ -137,3 +137,11 @@
     // stylelint-enable selector-no-qualifying-type
   }
 }
+
+@include govuk-media-query($media-type: print) {
+  .gem-c-govspeak-html-publication {
+    .govuk-sticky-element {
+      display: none;
+    }
+  }
+}
