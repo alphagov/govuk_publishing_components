@@ -540,7 +540,7 @@ describe('Feedback component', function () {
         loadFeedbackComponent()
         fillAndSubmitSomethingIsWrongForm()
 
-        expect($('.gem-c-feedback form [type=submit]')).toBeDisabled()
+        expect(window.isElementDisabled('.gem-c-feedback form [type=submit]')).toEqual(true)
 
         jasmine.Ajax.requests.mostRecent().respondWith({
           status: 422,
@@ -548,7 +548,7 @@ describe('Feedback component', function () {
           responseText: '{"errors": {"description": ["can\'t be blank"]}}'
         })
 
-        expect($('.gem-c-feedback form [type=submit]')).not.toBeDisabled()
+        expect(window.isElementDisabled('.gem-c-feedback form [type=submit]')).toEqual(false)
       })
 
       it('retains the feedback the user originally entered', function () {
@@ -611,7 +611,7 @@ describe('Feedback component', function () {
         loadFeedbackComponent()
         fillAndSubmitPageIsNotUsefulForm()
 
-        expect($('.gem-c-feedback form [type=submit]')).toBeDisabled()
+        expect(window.isElementDisabled('.gem-c-feedback form [type=submit]')).toEqual(true)
 
         jasmine.Ajax.requests.mostRecent().respondWith({
           status: 422,
@@ -619,7 +619,7 @@ describe('Feedback component', function () {
           responseText: '{"errors": {"description": ["can\'t be blank"]}}'
         })
 
-        expect($('.gem-c-feedback form [type=submit]')).not.toBeDisabled()
+        expect(window.isElementDisabled('.gem-c-feedback form [type=submit]')).toEqual(false)
       })
 
       it('retains the feedback the user originally entered', function () {
@@ -728,7 +728,7 @@ describe('Feedback component', function () {
       })
 
       it('re-enables the submit button', function () {
-        expect($('.gem-c-feedback form [type=submit]')).not.toBeDisabled()
+        expect(window.isElementDisabled('.gem-c-feedback form [type=submit]')).toEqual(false)
       })
     })
 
