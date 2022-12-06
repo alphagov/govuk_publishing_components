@@ -12,6 +12,12 @@
   }
 }
 
+@include govuk-media-query($media-type: print) {
+  .gem-c-organisation-logo {
+    width: 25%;
+  }
+}
+
 .gem-c-organisation-logo__container {
   text-transform: none;
   text-decoration: none;
