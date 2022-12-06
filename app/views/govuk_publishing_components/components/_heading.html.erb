@@ -1,6 +1,7 @@
 <%
   brand ||= false
   lang = local_assigns[:lang].presence
+  is_anchor = local_assigns[:is_anchor] || false
 
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
   heading_helper = GovukPublishingComponents::Presenters::HeadingHelper.new(local_assigns)
@@ -17,3 +18,9 @@
   id: heading_helper.id,
   lang: lang
 ) %>
+<% if is_anchor %>
+<a href="#<%= heading_helper.id %>">
+  <span aria-hidden="true">#</span>
+  <span class="govuk-visually-hidden">Section titled #{text}</span>
+</a>
+<% end %>

@@ -118,4 +118,12 @@ describe "Heading", type: :view do
     render_component(text: "Inverted", inverse: true)
     assert_select ".gem-c-heading.gem-c-heading--inverse"
   end
+
+  it "augments heading with anchor link" do
+    render_component(text: "Heading", heading_level: 2, id: "heading", is_anchor: true)
+    assert_select "h2#heading"
+    assert_select "h2#heading + a[href='#heading']"
+    assert_select "h2#heading + a[href='#heading'] span[aria-hidden='true']"
+    assert_select "h2#heading + a[href='#heading'] span.govuk-visually-hidden"
+  end
 end

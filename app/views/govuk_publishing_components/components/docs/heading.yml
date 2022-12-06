@@ -85,3 +85,10 @@ examples:
     data:
       text: "Ein gweinidogion"
       lang: "cy"
+  with_anchor:
+    description: |
+      Turns the heading into an anchor link heading, so that users can easily retrieve the link to this specific section.
+    data:
+      text: "Heading"
+      id: "heading"
+      is_anchor: true
