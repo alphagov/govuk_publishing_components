@@ -188,13 +188,18 @@ describe('A stepnav module', function () {
   })
 
   it('adds a show/hide element to each step', function () {
-    var $stepHeader = $element.find('.js-toggle-panel')
-    expect($stepHeader).toContainElement('.gem-c-step-nav__toggle-link-focus')
-    $stepHeader.find('.gem-c-step-nav__toggle-link-focus').each(function () {
-      expect($(this)).toHaveText('Show')
+    var $stepHeaders = $element[0].querySelectorAll('.js-toggle-panel')
+    var $stepNavToggleLinks = $element[0].querySelectorAll('.gem-c-step-nav__toggle-link-focus')
+    
+    for(var i = 0; i < $stepHeaders.length; i ++) {
+      expect($stepHeaders[i].querySelector('.gem-c-step-nav__toggle-link-focus')).not.toBe(null)
+    }
+
+    for(var i = 0; i < $stepNavToggleLinks.length; i ++) {
+      expect($stepNavToggleLinks[i]).toHaveText('Show')
       // It generates a chevron SVG icon for visual affordance
-      expect($(this).find('.gem-c-step-nav__chevron')).toExist()
-    })
+      expect($stepNavToggleLinks[i].querySelector('.gem-c-step-nav__chevron')).not.toBe(null)
+    }
   })
 
   describe('Clicking the "Show all steps" button', function () {
