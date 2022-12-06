@@ -9,3 +9,19 @@
     }
   }
 }
+
+@include govuk-media-query($media-type: print) {
+  .gem-c-textarea {
+    .gem-c-label,
+    .gem-c-error-message,
+    .govuk-hint,
+    .govuk-character-count__message {
+      display: block;
+    }
+
+    .govuk-textarea {
+      width: 400px;
+      height: 40px;
+    }
+  }
+}
