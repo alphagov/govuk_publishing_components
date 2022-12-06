@@ -40,3 +40,7 @@ function isElementVisible(element) {
 function isElementDisabled(selector) {
   return document.querySelector(selector+':disabled') !== null
 }
+
+var isElementHidden = function(element) {
+  return element.style.display === "none" || element.style.visibility === "none" || element.hasAttribute('hidden') || element.getAttribute("type") === "hidden"
+}

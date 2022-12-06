@@ -390,14 +390,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         }
       },
 
-      toBeHidden: function () {
-        return {
-          compare: function (actual) {
-            return { pass: $(actual).is(':hidden') }
-          }
-        }
-      },
-
       toBeSelected: function () {
         return {
           compare: function (actual) {

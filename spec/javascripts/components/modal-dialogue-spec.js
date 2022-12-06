@@ -60,7 +60,7 @@ describe('Modal dialogue component', function () {
       modal.open()
 
       keyPress(modal, 27)
-      expect(modal).toBeHidden()
+      expect(window.isElementHidden(modal)).toEqual(true)
     })
   })
 
@@ -72,7 +72,7 @@ describe('Modal dialogue component', function () {
 
       var modal = document.querySelector('.gem-c-modal-dialogue')
       document.querySelector('.gem-c-modal-dialogue__close-button').click()
-      expect(modal).toBeHidden()
+      expect(window.isElementHidden(modal)).toEqual(true)
     })
   })
 
@@ -122,7 +122,7 @@ describe('Modal dialogue component', function () {
       var modal = document.querySelector('.gem-c-modal-dialogue')
       modal.open()
       modal.close()
-      expect(modal).toBeHidden()
+      expect(window.isElementHidden(modal)).toEqual(true)
     })
   })
 })
