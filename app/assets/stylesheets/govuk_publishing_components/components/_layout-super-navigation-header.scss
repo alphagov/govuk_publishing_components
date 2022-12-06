@@ -999,3 +999,9 @@ $after-button-padding-left: govuk-spacing(5);
     margin: 0;
   }
 }
+
+@include govuk-media-query($media-type: print) {
+  .gem-c-layout-super-navigation-header__content {
+    display: none;
+  }
+}
