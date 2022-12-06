@@ -19,7 +19,7 @@ New components in the gem should be tested with users. Mark all new components a
 Currently components in the gem must be manually created. File naming conventions should follow those in the [component conventions](/docs/component_conventions.md), but a slightly different directory structure is required to avoid conflicts with components in applications.
 
 * Stylesheets go in `app/assets/stylesheets/govuk_publishing_components/components`
-* Print stylesheets go in `app/assets/stylesheets/govuk_publishing_components/components/print`
+* [Print styles](/docs/component_conventions.md#print-styles) should be included in the main stylesheet
 * Scripts go in `app/assets/javascripts/govuk_publishing_components/components`
 * Templates go in `app/views/govuk_publishing_components/components`
 * Documentation goes in `app/views/govuk_publishing_components/components/docs`
