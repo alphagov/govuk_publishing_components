@@ -360,14 +360,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
   beforeEach(function () {
     jasmine.addMatchers({
-      toHaveClass: function () {
-        return {
-          compare: function (actual, className) {
-            return { pass: $(actual).hasClass(className) }
-          }
-        }
-      },
-
       toHaveCss: function () {
         return {
           compare: function (actual, css) {

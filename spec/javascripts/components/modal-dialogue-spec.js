@@ -82,7 +82,7 @@ describe('Modal dialogue component', function () {
       modal.resize('wide')
 
       var dialogBox = modal.querySelector('.gem-c-modal-dialogue__box')
-      expect(dialogBox).toHaveClass('gem-c-modal-dialogue__box--wide')
+      expect(window.isClassOnElement(dialogBox, 'gem-c-modal-dialogue__box--wide')).toEqual(true)
     })
 
     it('should resize the modal to narrow width', function () {
@@ -91,7 +91,7 @@ describe('Modal dialogue component', function () {
       modal.resize('narrow')
 
       var dialogBox = modal.querySelector('.gem-c-modal-dialogue__box')
-      expect(dialogBox).not.toHaveClass('gem-c-modal-dialogue__box--wide')
+      expect(window.isClassOnElement(dialogBox, 'gem-c-modal-dialogue__box--wide')).toEqual(false)
     })
   })
 
