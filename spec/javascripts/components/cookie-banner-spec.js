@@ -64,7 +64,7 @@ describe('Cookie banner', function () {
     var cookieBannerConfirmation = document.querySelector('.gem-c-cookie-banner__confirmation')
 
     expect(element.offsetWidth > 0 || element.offsetHeight > 0).toBeTruthy()
-    expect(cookieBannerMain.offsetWidth > 0 || cookieBannerMain.offsetHeight > 0 ).toBeTruthy()
+    expect(cookieBannerMain.offsetWidth > 0 || cookieBannerMain.offsetHeight > 0).toBeTruthy()
     expect(cookieBannerConfirmation).toBeHidden()
   })
 

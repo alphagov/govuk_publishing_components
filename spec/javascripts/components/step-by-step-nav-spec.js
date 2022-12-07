@@ -173,7 +173,7 @@ describe('A stepnav module', function () {
   it('inserts a button into each step to show/hide content', function () {
     var $titleButtons = $element[0].querySelectorAll('.js-step-title-button')
 
-    for(var i = 0; i < $titleButtons.length; i++) {
+    for (var i = 0; i < $titleButtons.length; i++) {
       expect($titleButtons[i]).toHaveClass('gem-c-step-nav__button--title')
       expect($titleButtons[i].getAttribute('aria-expanded')).toBe('false')
     }
@@ -190,15 +190,15 @@ describe('A stepnav module', function () {
   it('adds a show/hide element to each step', function () {
     var $stepHeaders = $element[0].querySelectorAll('.js-toggle-panel')
     var $stepNavToggleLinks = $element[0].querySelectorAll('.gem-c-step-nav__toggle-link-focus')
-    
-    for(var i = 0; i < $stepHeaders.length; i ++) {
+
+    for (var i = 0; i < $stepHeaders.length; i++) {
       expect($stepHeaders[i].querySelector('.gem-c-step-nav__toggle-link-focus')).not.toBe(null)
     }
 
-    for(var i = 0; i < $stepNavToggleLinks.length; i ++) {
-      expect($stepNavToggleLinks[i]).toHaveText('Show')
+    for (var j = 0; j < $stepNavToggleLinks.length; j++) {
+      expect($stepNavToggleLinks[j]).toHaveText('Show')
       // It generates a chevron SVG icon for visual affordance
-      expect($stepNavToggleLinks[i].querySelector('.gem-c-step-nav__chevron')).not.toBe(null)
+      expect($stepNavToggleLinks[j].querySelector('.gem-c-step-nav__chevron')).not.toBe(null)
     }
   })
 
@@ -218,7 +218,7 @@ describe('A stepnav module', function () {
     })
 
     it('changes the Show/Hide all button text to "Hide all steps"', function () {
-      expect($element.find('.js-step-controls-button')).toContainText('Hide all steps')
+      expect($element[0].querySelector('.js-step-controls-button').textContent).toBe('Hide all steps')
     })
 
     it('changes all the "show" elements to say "hide"', function () {
@@ -244,7 +244,7 @@ describe('A stepnav module', function () {
     })
 
     it('changes the Show/Hide all button text to "Show all steps"', function () {
-      expect($element.find('.js-step-controls-button')).toContainText('Show all steps')
+      expect($element[0].querySelector('.js-step-controls-button').textContent).toBe('Show all steps')
     })
 
     it('changes all the "hide" elements to say "show"', function () {

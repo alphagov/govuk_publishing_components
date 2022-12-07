@@ -575,7 +575,7 @@ describe('Feedback component', function () {
           responseText: '{"errors": {"path": ["can\'t be blank"], "another": ["weird error"]}}'
         })
 
-        expect($('#something-is-wrong .js-errors').html()).toContainText(
+        expect(document.querySelector('#something-is-wrong .js-errors').textContent).toBe(
           'Sorry, we’re unable to receive your message right now. ' +
           'If the problem persists, we have other ways for you to provide ' +
           'feedback on the contact page.'
@@ -645,7 +645,7 @@ describe('Feedback component', function () {
           responseText: '{"errors": {"path": ["can\'t be blank"], "another": ["weird error"]}}'
         })
 
-        expect($('#page-is-not-useful .js-errors').html()).toContainText(
+        expect(document.querySelector('#page-is-not-useful .js-errors').textContent).toBe(
           'Sorry, we’re unable to receive your message right now. ' +
           'If the problem persists, we have other ways for you to provide ' +
           'feedback on the contact page.'
@@ -687,12 +687,12 @@ describe('Feedback component', function () {
       })
 
       it('displays the generic error message in place of the less helpful "email survey sign up failure"', function () {
-        expect($('.gem-c-feedback__error-summary').html()).toContainText(
+        expect(document.querySelector('.gem-c-feedback__error-summary').textContent).toBe(
           'Sorry, we’re unable to receive your message right now. ' +
           'If the problem persists, we have other ways for you to provide ' +
           'feedback on the contact page.'
         )
-        expect($('.gem-c-feedback__error-summary').html()).not.toContainText('email survey sign up failure')
+        expect(document.querySelector('.gem-c-feedback__error-summary').textContent).not.toBe('email survey sign up failure')
       })
     })
 
@@ -715,7 +715,7 @@ describe('Feedback component', function () {
       })
 
       it('displays a generic error message', function () {
-        expect($('.gem-c-feedback__error-summary').html()).toContainText(
+        expect(document.querySelector('.gem-c-feedback__error-summary').textContent).toBe(
           'Sorry, we’re unable to receive your message right now. ' +
           'If the problem persists, we have other ways for you to provide ' +
           'feedback on the contact page.'
@@ -748,7 +748,7 @@ describe('Feedback component', function () {
       })
 
       it('displays a generic error message', function () {
-        expect($('.gem-c-feedback__error-summary').html()).toContainText(
+        expect(document.querySelector('.gem-c-feedback__error-summary').textContent).toBe(
           'Sorry, we’re unable to receive your message right now. ' +
           'If the problem persists, we have other ways for you to provide ' +
           'feedback on the contact page.'
