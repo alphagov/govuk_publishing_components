@@ -15,6 +15,7 @@ az:
       opendocument_html: Bu fayl <a href='https://www.gov.uk/guidance/using-open-document-formats-odf-in-your-organisation' target=%{target} class='govuk-link'>OpenDocument</a> formatındadır
       order_a_copy: Surətini sifariş edin
       page:
+        one:
         other: "%{count} səhifə"
       reference: 'İst: %{reference}'
       request_format_cta: İstifadə edilə bilən format tələb edin.
