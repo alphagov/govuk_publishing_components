@@ -156,7 +156,7 @@ describe('A stepnav module', function () {
     var $showHideAllButton = $element[0].querySelector('.js-step-controls-button')
 
     expect($showHideAllButton).not.toBe(null)
-    expect($showHideAllButton).toHaveText('Show all steps')
+    expect($showHideAllButton.textContent).toEqual('Show all steps')
     // It has an aria-expanded false attribute as all steps are hidden
     expect($showHideAllButton.getAttribute('aria-expanded')).toBe('false')
     // It has an aria-controls attribute that includes all the step_content IDs
@@ -196,7 +196,8 @@ describe('A stepnav module', function () {
     }
 
     for (var j = 0; j < $stepNavToggleLinks.length; j++) {
-      expect($stepNavToggleLinks[j]).toHaveText('Show')
+      expect($stepNavToggleLinks[j].textContent).toEqual('Show')
+
       // It generates a chevron SVG icon for visual affordance
       expect($stepNavToggleLinks[j].querySelector('.gem-c-step-nav__chevron')).not.toBe(null)
     }
@@ -223,7 +224,7 @@ describe('A stepnav module', function () {
 
     it('changes all the "show" elements to say "hide"', function () {
       $element.find('.js-toggle-link-text').each(function () {
-        expect($(this)).toHaveText('Hide')
+        expect($(this).text()).toEqual('Hide')
       })
     })
 
@@ -249,7 +250,7 @@ describe('A stepnav module', function () {
 
     it('changes all the "hide" elements to say "show"', function () {
       $element.find('.js-toggle-link-text').each(function () {
-        expect($(this)).toHaveText('Show')
+        expect($(this).text()).toEqual('Show')
       })
     })
 
@@ -463,12 +464,12 @@ describe('A stepnav module', function () {
 
     it('sets the show/hide link text to "hide"', function () {
       var $step1 = $element.find('#topic-step-one')
-      expect($step1.find('.js-toggle-link-text')).toHaveText('Hide')
+      expect($step1.find('.js-toggle-link-text').text()).toEqual('Hide')
     })
 
     it('sets the show all/hide all button text correctly', function () {
       var $showHideAllButton = $element.find('.js-step-controls-button')
-      expect($showHideAllButton).toHaveText('Show all steps')
+      expect($showHideAllButton.text()).toEqual('Show all steps')
     })
   })
 
@@ -487,7 +488,7 @@ describe('A stepnav module', function () {
 
     it('sets the show all/hide all button text correctly', function () {
       var $showHideAllButton = $element.find('.js-step-controls-button')
-      expect($showHideAllButton).toHaveText('Hide all steps')
+      expect($showHideAllButton.text()).toEqual('Hide all steps')
     })
   })
 

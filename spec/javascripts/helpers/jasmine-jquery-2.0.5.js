@@ -473,21 +473,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
         }
       },
 
-      toHaveText: function () {
-        return {
-          compare: function (actual, text) {
-            var actualText = $(actual).text()
-            var trimmedText = $.trim(actualText)
-
-            if (text && $.isFunction(text.test)) {
-              return { pass: text.test(actualText) || text.test(trimmedText) }
-            } else {
-              return { pass: (actualText == text || trimmedText == text) }
-            }
-          }
-        }
-      },
-
       toContainText: function () {
         return {
           compare: function (actual, text) {

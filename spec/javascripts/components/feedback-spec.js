@@ -172,7 +172,7 @@ describe('Feedback component', function () {
       var $success = $('.js-prompt-success')
 
       expect(($success).prop('hidden')).toBe(false)
-      expect($success).toHaveText('Thank you for your feedback')
+      expect($success.text()).toEqual('Thank you for your feedback')
     })
 
     it('hides the question links', function () {
@@ -390,7 +390,7 @@ describe('Feedback component', function () {
         var $success = $('.js-prompt-success')
 
         expect(($success).prop('hidden')).toBe(false)
-        expect($success).toHaveText('Thank you for your feedback')
+        expect($success.text()).toEqual('Thank you for your feedback')
       })
 
       it('focusses the success message', function () {
@@ -484,7 +484,7 @@ describe('Feedback component', function () {
         var $prompt = $('.js-prompt-success')
 
         expect(($prompt).prop('hidden')).toBe(false)
-        expect($prompt).toHaveText('Thank you for your feedback')
+        expect($prompt.text()).toEqual('Thank you for your feedback')
       })
 
       it('focusses the success message', function () {
