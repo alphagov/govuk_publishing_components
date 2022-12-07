@@ -155,7 +155,7 @@ describe('A stepnav module', function () {
   it('has a show/hide all button', function () {
     var $showHideAllButton = $element[0].querySelector('.js-step-controls-button')
 
-    expect($showHideAllButton).toExist()
+    expect($showHideAllButton).not.toBe(null)
     expect($showHideAllButton).toHaveText('Show all steps')
     // It has an aria-expanded false attribute as all steps are hidden
     expect($showHideAllButton.getAttribute('aria-expanded')).toBe('false')
