@@ -48,3 +48,7 @@ var isElementHidden = function(element) {
 var isClassOnElement = function (element, className) {
     return element.classList.contains(className)
 }
+
+var setFixtures = function(html) {
+  return jasmine.getFixtures().proxyCallTo_('set', arguments)
+}
