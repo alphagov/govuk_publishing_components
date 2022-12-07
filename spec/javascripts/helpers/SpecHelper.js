@@ -44,3 +44,7 @@ function isElementDisabled(selector) {
 var isElementHidden = function(element) {
   return element.style.display === "none" || element.style.visibility === "none" || element.hasAttribute('hidden') || element.getAttribute("type") === "hidden"
 }
+
+var isClassOnElement = function (element, className) {
+    return element.classList.contains(className)
+}

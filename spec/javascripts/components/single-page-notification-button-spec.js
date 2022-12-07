@@ -49,7 +49,7 @@ describe('Single page notification component', function () {
     })
 
     var button = document.querySelector('form.gem-c-single-page-notification-button')
-    expect(button).toHaveClass('gem-c-single-page-notification-button--visible')
+    expect(window.isClassOnElement(button, 'gem-c-single-page-notification-button--visible')).toEqual(true)
   })
 
   it('renders "Subscribe-button" tracking attribute value if "active" in the API response is false', function () {

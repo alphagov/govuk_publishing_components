@@ -684,7 +684,7 @@ describe('The super header navigation', function () {
     it('has the initialised class once the JavaScript has run', function () {
       var $module = document.querySelector('[data-module="super-navigation-mega-menu"]')
 
-      expect($module).toHaveClass('js-module-initialised')
+      expect(window.isClassOnElement($module, 'js-module-initialised')).toEqual(true)
     })
   })
 
