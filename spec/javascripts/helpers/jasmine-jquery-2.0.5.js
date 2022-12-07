@@ -738,10 +738,6 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
     jasmine.getFixtures().proxyCallTo_('appendLoad', arguments)
   }
 
-  window.setFixtures = function (html) {
-    return jasmine.getFixtures().proxyCallTo_('set', arguments)
-  }
-
   window.appendSetFixtures = function () {
     jasmine.getFixtures().proxyCallTo_('appendSet', arguments)
   }
