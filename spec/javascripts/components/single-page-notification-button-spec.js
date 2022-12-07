@@ -115,7 +115,7 @@ describe('Single page notification component', function () {
     })
 
     var button = document.querySelector('form.gem-c-single-page-notification-button')
-    expect(button).toHaveText('Start getting emails about this stuff')
+    expect(button.textContent).toEqual('Start getting emails about this stuff')
   })
 
   it('renders custom unsubscribe button text when API response is received if "data-button-text-subscribe" and "data-button-text-unsubscribe" are set', function () {
@@ -135,7 +135,7 @@ describe('Single page notification component', function () {
     })
 
     var button = document.querySelector('form.gem-c-single-page-notification-button')
-    expect(button).toHaveText('Stop getting emails about this stuff')
+    expect(button.textContent).toEqual('Stop getting emails about this stuff')
   })
 
   it('should remain unchanged if the response is not JSON', function () {
@@ -149,7 +149,7 @@ describe('Single page notification component', function () {
     })
 
     var button = document.querySelector('form.gem-c-single-page-notification-button.gem-c-single-page-notification-button--visible button')
-    expect(button).toHaveText('Get emails about this page')
+    expect(button.textContent).toEqual('Get emails about this page')
     expect(GOVUK.Modules.SinglePageNotificationButton.prototype.responseIsJSON(responseText)).toBe(false)
   })
 
@@ -164,7 +164,7 @@ describe('Single page notification component', function () {
     })
 
     var button = document.querySelector('form.gem-c-single-page-notification-button.gem-c-single-page-notification-button--visible button')
-    expect(button).toHaveText('Get emails about this page')
+    expect(button.textContent).toEqual('Get emails about this page')
     expect(GOVUK.Modules.SinglePageNotificationButton.prototype.responseIsJSON(responseText)).toBe(false)
   })
 
@@ -178,7 +178,7 @@ describe('Single page notification component', function () {
     })
 
     var button = document.querySelector('form.gem-c-single-page-notification-button.gem-c-single-page-notification-button--visible button')
-    expect(button).toHaveText('Get emails about this page')
+    expect(button.textContent).toEqual('Get emails about this page')
   })
 
   it('should remain unchanged if xhr times out', function () {
@@ -187,7 +187,7 @@ describe('Single page notification component', function () {
     jasmine.Ajax.requests.mostRecent().responseTimeout()
 
     var button = document.querySelector('form.gem-c-single-page-notification-button.gem-c-single-page-notification-button--visible button')
-    expect(button).toHaveText('Get emails about this page')
+    expect(button.textContent).toEqual('Get emails about this page')
     jasmine.clock().uninstall()
   })
 
