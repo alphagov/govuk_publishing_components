@@ -63,8 +63,8 @@ describe('Cookie banner', function () {
     var cookieBannerMain = document.querySelector('.js-banner-wrapper')
     var cookieBannerConfirmation = document.querySelector('.gem-c-cookie-banner__confirmation')
 
-    expect(element).toBeVisible()
-    expect(cookieBannerMain).toBeVisible()
+    expect(window.isElementVisible(element)).toBeTruthy()
+    expect(window.isElementVisible(cookieBannerMain)).toBeTruthy()
     expect(cookieBannerConfirmation).toBeHidden()
   })
 
@@ -77,8 +77,8 @@ describe('Cookie banner', function () {
     var cookieBannerMain = document.querySelector('.js-banner-wrapper')
     var cookieBannerConfirmation = document.querySelector('.gem-c-cookie-banner__confirmation')
 
-    expect(element).toBeVisible()
-    expect(cookieBannerMain).toBeVisible()
+    expect(window.isElementVisible(element)).toBeTruthy()
+    expect(window.isElementVisible(cookieBannerMain)).toBeTruthy()
     expect(cookieBannerConfirmation).toBeHidden()
   })
 
@@ -164,13 +164,13 @@ describe('Cookie banner', function () {
     var mainCookieBanner = document.querySelector('.gem-c-cookie-banner__message')
     var confirmationMessage = document.querySelector('.gem-c-cookie-banner__confirmation')
 
-    expect(mainCookieBanner).toBeVisible()
+    expect(window.isElementVisible(mainCookieBanner)).toBeTruthy()
     expect(confirmationMessage).toBeHidden()
 
     acceptCookiesButton.click()
 
     expect(mainCookieBanner).toBeHidden()
-    expect(confirmationMessage).toBeVisible()
+    expect(window.isElementVisible(confirmationMessage)).toBeTruthy()
   })
 
   it('set cookies_preferences_set cookie, and re-set cookies_policy expiration date when rejecting cookies', function () {

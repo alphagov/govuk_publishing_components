@@ -50,7 +50,7 @@ describe('Modal dialogue component', function () {
 
     it('should show the modal dialogue', function () {
       var modal = document.querySelector('.gem-c-modal-dialogue')
-      expect(modal).toBeVisible()
+      expect(window.isElementVisible(modal)).toBeTruthy()
     })
   })
 
@@ -108,7 +108,7 @@ describe('Modal dialogue component', function () {
 
     it('should show the modal dialogue', function () {
       var modal = document.querySelector('.gem-c-modal-dialogue')
-      expect(modal).toBeVisible()
+      expect(window.isElementVisible(modal)).toBeTruthy()
     })
 
     it('should focus the modal dialogue', function () {

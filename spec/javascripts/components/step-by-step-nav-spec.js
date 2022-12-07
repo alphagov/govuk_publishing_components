@@ -153,16 +153,16 @@ describe('A stepnav module', function () {
   })
 
   it('has a show/hide all button', function () {
-    var $showHideAllButton = $element.find('.js-step-controls-button')
+    var $showHideAllButton = $element[0].querySelector('.js-step-controls-button')
 
-    expect($showHideAllButton).toExist()
+    expect($showHideAllButton).not.toBe(null)
     expect($showHideAllButton).toHaveText('Show all steps')
     // It has an aria-expanded false attribute as all steps are hidden
-    expect($showHideAllButton).toHaveAttr('aria-expanded', 'false')
+    expect($showHideAllButton.getAttribute('aria-expanded')).toBe('false')
     // It has an aria-controls attribute that includes all the step_content IDs
-    expect($showHideAllButton).toHaveAttr('aria-controls', 'step-panel-topic-step-one-1')
+    expect($showHideAllButton.getAttribute('aria-controls')).toBe('step-panel-topic-step-one-1')
     // It generates a chevron SVG icon for visual affordance
-    expect($showHideAllButton.find('.gem-c-step-nav__chevron')).toExist()
+    expect($showHideAllButton.querySelector('.gem-c-step-nav__chevron')).not.toBe(null)
   })
 
   it('has no steps which have an shown state', function () {
@@ -171,12 +171,14 @@ describe('A stepnav module', function () {
   })
 
   it('inserts a button into each step to show/hide content', function () {
-    var $titleButton = $element.find('.js-step-title-button')
+    var $titleButtons = $element[0].querySelectorAll('.js-step-title-button')
 
-    expect($titleButton).toHaveClass('gem-c-step-nav__button--title')
-    expect($titleButton).toHaveAttr('aria-expanded', 'false')
-    expect($titleButton[0]).toHaveAttr('aria-controls', 'step-panel-topic-step-one-1')
-    expect($titleButton[1]).toHaveAttr('aria-controls', 'step-panel-topic-step-two-1')
+    for (var i = 0; i < $titleButtons.length; i++) {
+      expect($titleButtons[i]).toHaveClass('gem-c-step-nav__button--title')
+      expect($titleButtons[i].getAttribute('aria-expanded')).toBe('false')
+    }
+    expect($titleButtons[0].getAttribute('aria-controls')).toBe('step-panel-topic-step-one-1')
+    expect($titleButtons[1].getAttribute('aria-controls')).toBe('step-panel-topic-step-two-1')
   })
 
   it('ensures all step content is hidden', function () {
@@ -186,13 +188,18 @@ describe('A stepnav module', function () {
   })
 
   it('adds a show/hide element to each step', function () {
-    var $stepHeader = $element.find('.js-toggle-panel')
-    expect($stepHeader).toContainElement('.gem-c-step-nav__toggle-link-focus')
-    $stepHeader.find('.gem-c-step-nav__toggle-link-focus').each(function () {
-      expect($(this)).toHaveText('Show')
+    var $stepHeaders = $element[0].querySelectorAll('.js-toggle-panel')
+    var $stepNavToggleLinks = $element[0].querySelectorAll('.gem-c-step-nav__toggle-link-focus')
+
+    for (var i = 0; i < $stepHeaders.length; i++) {
+      expect($stepHeaders[i].querySelector('.gem-c-step-nav__toggle-link-focus')).not.toBe(null)
+    }
+
+    for (var j = 0; j < $stepNavToggleLinks.length; j++) {
+      expect($stepNavToggleLinks[j]).toHaveText('Show')
       // It generates a chevron SVG icon for visual affordance
-      expect($(this).find('.gem-c-step-nav__chevron')).toExist()
-    })
+      expect($stepNavToggleLinks[j].querySelector('.gem-c-step-nav__chevron')).not.toBe(null)
+    }
   })
 
   describe('Clicking the "Show all steps" button', function () {
@@ -211,7 +218,7 @@ describe('A stepnav module', function () {
     })
 
     it('changes the Show/Hide all button text to "Hide all steps"', function () {
-      expect($element.find('.js-step-controls-button')).toContainText('Hide all steps')
+      expect($element[0].querySelector('.js-step-controls-button').textContent).toBe('Hide all steps')
     })
 
     it('changes all the "show" elements to say "hide"', function () {
@@ -237,7 +244,7 @@ describe('A stepnav module', function () {
     })
 
     it('changes the Show/Hide all button text to "Show all steps"', function () {
-      expect($element.find('.js-step-controls-button')).toContainText('Show all steps')
+      expect($element[0].querySelector('.js-step-controls-button').textContent).toBe('Show all steps')
     })
 
     it('changes all the "hide" elements to say "show"', function () {
@@ -268,9 +275,9 @@ describe('A stepnav module', function () {
 
     // When a step is open (testing: toggleState, setExpandedState)
     it('has a an aria-expanded attribute and the value is true', function () {
-      var $stepLink = $element.find('.gem-c-step-nav__header .gem-c-step-nav__button--title').first()
+      var $stepLink = $element[0].querySelector('.gem-c-step-nav__header .gem-c-step-nav__button--title')
       $stepLink.click()
-      expect($stepLink).toHaveAttr('aria-expanded', 'true')
+      expect($stepLink.getAttribute('aria-expanded')).toBe('true')
     })
 
     it('triggers a google analytics custom event when clicking on the title', function () {
@@ -327,11 +334,11 @@ describe('A stepnav module', function () {
 
     // When a step is hidden (testing: toggleState, setExpandedState)
     it('has a an aria-expanded attribute and the value is false', function () {
-      var $stepLink = $element.find('.gem-c-step-nav__header .gem-c-step-nav__button--title')
+      var $stepLink = $element[0].querySelector('.gem-c-step-nav__header .gem-c-step-nav__button--title')
       $stepLink.click()
-      expect($stepLink).toHaveAttr('aria-expanded', 'true')
+      expect($stepLink.getAttribute('aria-expanded')).toBe('true')
       $stepLink.click()
-      expect($stepLink).toHaveAttr('aria-expanded', 'false')
+      expect($stepLink.getAttribute('aria-expanded')).toBe('false')
     })
 
     it('triggers a google analytics custom event when clicking on the title', function () {
