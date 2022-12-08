@@ -23,24 +23,6 @@ describe "Auditing the components in the gem" do
         "test component",
         "test component containing other component",
       ],
-      component_stylesheets: [
-        "test component",
-      ],
-      component_print_stylesheets: [
-        "test component",
-      ],
-      component_javascripts: [
-        "test component",
-      ],
-      component_tests: [
-        "test component",
-      ],
-      component_js_tests: [
-        "test component",
-      ],
-      component_helpers: [
-        "test component",
-      ],
       components_containing_components: [
         {
           component: "test component containing other component",
@@ -86,24 +68,6 @@ describe "Auditing the components in the gem" do
       component_code: [
         "test component",
         "test component containing other component",
-      ],
-      component_stylesheets: [
-        "test component",
-      ],
-      component_print_stylesheets: [
-        "test component",
-      ],
-      component_javascripts: [
-        "test component",
-      ],
-      component_tests: [
-        "test component",
-      ],
-      component_js_tests: [
-        "test component",
-      ],
-      component_helpers: [
-        "test component",
       ],
       components_containing_components: [],
       component_listing: [],

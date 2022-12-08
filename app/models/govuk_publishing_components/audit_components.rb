@@ -50,12 +50,6 @@ module GovukPublishingComponents
       {
         gem_found: true,
         component_code: @components,
-        component_stylesheets: @component_stylesheets,
-        component_print_stylesheets: @component_print_stylesheets,
-        component_javascripts: @component_javascripts,
-        component_tests: @component_tests,
-        component_js_tests: @component_js_tests,
-        component_helpers: @component_helpers,
         components_containing_components: find_all_partials_in(templates),
         component_listing: list_all_component_details,
       }
