@@ -60,7 +60,7 @@ describe('Checkboxes component', function () {
   var $nonExclusiveOptions
 
   beforeEach(function () {
-    window.setFixtures(FIXTURE)
+    window.specHelpers.setFixtures(FIXTURE)
     loadCheckboxesComponent()
 
     $parentCheckboxWrapper = $('.govuk-checkboxes--nested:eq(0)').closest('.govuk-checkboxes__item')

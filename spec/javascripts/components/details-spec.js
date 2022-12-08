@@ -20,7 +20,7 @@ describe('Details component', function () {
         '</summary>' +
       '</details>'
 
-    window.setFixtures(FIXTURE)
+    window.specHelpers.setFixtures(FIXTURE)
   })
 
   afterEach(function () {

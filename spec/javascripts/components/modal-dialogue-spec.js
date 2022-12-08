@@ -50,7 +50,7 @@ describe('Modal dialogue component', function () {
 
     it('should show the modal dialogue', function () {
       var modal = document.querySelector('.gem-c-modal-dialogue')
-      expect(window.isElementVisible(modal)).toBeTruthy()
+      expect(window.specHelpers.isElementVisible(modal)).toBeTruthy()
     })
   })
 
@@ -60,7 +60,7 @@ describe('Modal dialogue component', function () {
       modal.open()
 
       keyPress(modal, 27)
-      expect(window.isElementHidden(modal)).toEqual(true)
+      expect(window.specHelpers.isElementHidden(modal)).toEqual(true)
     })
   })
 
@@ -72,7 +72,7 @@ describe('Modal dialogue component', function () {
 
       var modal = document.querySelector('.gem-c-modal-dialogue')
       document.querySelector('.gem-c-modal-dialogue__close-button').click()
-      expect(window.isElementHidden(modal)).toEqual(true)
+      expect(window.specHelpers.isElementHidden(modal)).toEqual(true)
     })
   })
 
@@ -82,7 +82,7 @@ describe('Modal dialogue component', function () {
       modal.resize('wide')
 
       var dialogBox = modal.querySelector('.gem-c-modal-dialogue__box')
-      expect(window.isClassOnElement(dialogBox, 'gem-c-modal-dialogue__box--wide')).toEqual(true)
+      expect(window.specHelpers.isClassOnElement(dialogBox, 'gem-c-modal-dialogue__box--wide')).toEqual(true)
     })
 
     it('should resize the modal to narrow width', function () {
@@ -91,7 +91,7 @@ describe('Modal dialogue component', function () {
       modal.resize('narrow')
 
       var dialogBox = modal.querySelector('.gem-c-modal-dialogue__box')
-      expect(window.isClassOnElement(dialogBox, 'gem-c-modal-dialogue__box--wide')).toEqual(false)
+      expect(window.specHelpers.isClassOnElement(dialogBox, 'gem-c-modal-dialogue__box--wide')).toEqual(false)
     })
   })
 
@@ -108,7 +108,7 @@ describe('Modal dialogue component', function () {
 
     it('should show the modal dialogue', function () {
       var modal = document.querySelector('.gem-c-modal-dialogue')
-      expect(window.isElementVisible(modal)).toBeTruthy()
+      expect(window.specHelpers.isElementVisible(modal)).toBeTruthy()
     })
 
     it('should focus the modal dialogue', function () {
@@ -122,7 +122,7 @@ describe('Modal dialogue component', function () {
       var modal = document.querySelector('.gem-c-modal-dialogue')
       modal.open()
       modal.close()
-      expect(window.isElementHidden(modal)).toEqual(true)
+      expect(window.specHelpers.isElementHidden(modal)).toEqual(true)
     })
   })
 })

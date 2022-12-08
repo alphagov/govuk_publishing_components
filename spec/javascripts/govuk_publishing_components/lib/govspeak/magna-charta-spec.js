@@ -146,19 +146,19 @@ describe('Magna charta', function () {
     })
 
     it('the new chart copies over any other classes', function () {
-      expect(window.isClassOnElement(graph[0], 'no-key')).toEqual(true)
+      expect(window.specHelpers.isClassOnElement(graph[0], 'no-key')).toEqual(true)
     })
 
     it('running toggle switches between chart and table', function () {
       toggle[0].click()
-      expect(window.isClassOnElement(table[0], 'mc-hidden')).toEqual(false)
+      expect(window.specHelpers.isClassOnElement(table[0], 'mc-hidden')).toEqual(false)
 
-      expect(window.isClassOnElement(graphContainer[0], 'mc-hidden')).toEqual(true)
+      expect(window.specHelpers.isClassOnElement(graphContainer[0], 'mc-hidden')).toEqual(true)
 
       // toggle it back
       toggle[0].click()
-      expect(window.isClassOnElement(table[0], 'mc-hidden')).toEqual(true)
-      expect(window.isClassOnElement(graphContainer[0], 'mc-hidden')).toEqual(false)
+      expect(window.specHelpers.isClassOnElement(table[0], 'mc-hidden')).toEqual(true)
+      expect(window.specHelpers.isClassOnElement(graphContainer[0], 'mc-hidden')).toEqual(false)
     })
 
     it('new chart div contains all table bits as divs', function () {
@@ -199,14 +199,14 @@ describe('Magna charta', function () {
 
     it('new chart is inserted into DOM after table', function () {
       var chartContainer = table.next()
-      expect(window.isClassOnElement(chartContainer[0], 'mc-chart-container')).toEqual(true)
+      expect(window.specHelpers.isClassOnElement(chartContainer[0], 'mc-chart-container')).toEqual(true)
 
-      expect(window.isClassOnElement(chartContainer.children(':first')[0], 'mc-chart')).toEqual(true)
+      expect(window.specHelpers.isClassOnElement(chartContainer.children(':first')[0], 'mc-chart')).toEqual(true)
     })
 
     it('bars are given classes to track what number they are', function () {
       graph.find('.mc-bar-cell').each(function (i, item) {
-        expect(window.isClassOnElement($(item)[0], 'mc-bar-1')).toEqual(true)
+        expect(window.specHelpers.isClassOnElement($(item)[0], 'mc-bar-1')).toEqual(true)
       })
     })
   })
@@ -226,7 +226,7 @@ describe('Magna charta', function () {
     })
 
     it('the graph of a multiple table is given a class', function () {
-      expect(window.isClassOnElement(graph[0], 'mc-multiple')).toEqual(true)
+      expect(window.specHelpers.isClassOnElement(graph[0], 'mc-multiple')).toEqual(true)
       expect(magna.options.multiple).toBe(true)
     })
   })
@@ -246,7 +246,7 @@ describe('Magna charta', function () {
     })
 
     it('the graph of a multiple table is given a class', function () {
-      expect(window.isClassOnElement(graph[0], 'mc-multiple')).toEqual(true)
+      expect(window.specHelpers.isClassOnElement(graph[0], 'mc-multiple')).toEqual(true)
       expect(magna.options.multiple).toBe(true)
     })
   })
@@ -279,7 +279,7 @@ describe('Magna charta', function () {
       var head = graph.find('.mc-thead')
       expect(head.find('.mc-stacked-header').length).toBe(1)
       var $tableHeading = head.find('.mc-th').eq(1)
-      expect(window.isClassOnElement($tableHeading[0], 'mc-key-1')).toEqual(true)
+      expect(window.specHelpers.isClassOnElement($tableHeading[0], 'mc-key-1')).toEqual(true)
 
       expect(head.find('.mc-key-header').length).toBe(2)
     })
@@ -299,7 +299,7 @@ describe('Magna charta', function () {
       rows.each(function (_, row) {
         var cells = $(row).find('.mc-bar-cell')
         cells.each(function (i, cell) {
-          expect(window.isClassOnElement($(cell)[0], 'mc-bar-' + (i + 1))).toEqual(true)
+          expect(window.specHelpers.isClassOnElement($(cell)[0], 'mc-bar-' + (i + 1))).toEqual(true)
         })
       })
     })
@@ -330,14 +330,14 @@ describe('Magna charta', function () {
     })
 
     it('doesnt show the chart initially', function () {
-      expect(window.isClassOnElement(table[0], 'mc-hidden')).toEqual(false)
-      expect(window.isClassOnElement(graphContainer[0], 'mc-hidden')).toEqual(true)
+      expect(window.specHelpers.isClassOnElement(table[0], 'mc-hidden')).toEqual(false)
+      expect(window.specHelpers.isClassOnElement(graphContainer[0], 'mc-hidden')).toEqual(true)
     })
 
     it('graph is shown when toggle is called', function () {
       element.find('.mc-toggle-button')[0].click()
-      expect(window.isClassOnElement(table[0], 'mc-hidden')).toEqual(true)
-      expect(window.isClassOnElement(graphContainer[0], 'mc-hidden')).toEqual(false)
+      expect(window.specHelpers.isClassOnElement(table[0], 'mc-hidden')).toEqual(true)
+      expect(window.specHelpers.isClassOnElement(graphContainer[0], 'mc-hidden')).toEqual(false)
     })
   })
 
