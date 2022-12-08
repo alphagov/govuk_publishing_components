@@ -33,22 +33,24 @@ afterEach(function () {
   resetCookies()
 })
 
-function isElementVisible(element) {
-  return !!( element.offsetWidth || element.offsetHeight || element.getClientRects().length)
-}
+var specHelpers = {
+  isElementVisible: function(element) {
+    return !!( element.offsetWidth || element.offsetHeight || element.getClientRects().length)
+  },
 
-function isElementDisabled(selector) {
-  return document.querySelector(selector+':disabled') !== null
-}
+  isElementDisabled: function(selector) {
+    return document.querySelector(selector+':disabled') !== null
+  },
 
-function isElementHidden(element) {
-  return !this.isElementVisible(element)
-}
+  isElementHidden: function(element) {
+    return !this.isElementVisible(element)
+  },
 
-function isClassOnElement(element, className) {
-    return element.classList.contains(className)
-}
+  isClassOnElement: function(element, className) {
+      return element.classList.contains(className)
+  },
 
-function setFixtures(html) {
-  return jasmine.getFixtures().proxyCallTo_('set', arguments)
+  setFixtures: function(html) {
+    return jasmine.getFixtures().proxyCallTo_('set', arguments)
+  }
 }

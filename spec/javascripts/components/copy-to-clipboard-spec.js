@@ -17,7 +17,7 @@ describe('Copy to clipboard component', function () {
         '<input value="https://www.gov.uk" class="gem-c-input govuk-input" type="text" readonly="readonly">' +
         '<button class="gem-c-button govuk-button" type="submit">Copy link</button>' +
       '</div>'
-    window.setFixtures(FIXTURE)
+    window.specHelpers.setFixtures(FIXTURE)
   })
 
   it('calls the Web API when clicked', function () {

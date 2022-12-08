@@ -39,7 +39,7 @@ describe('Table component', function () {
         '<p class="js-gem-c-table__message govuk-!-display-none">That search returns no results.</p>' +
       '</div>'
 
-    window.setFixtures(FIXTURE)
+    window.specHelpers.setFixtures(FIXTURE)
 
     element = document.querySelector('[data-module="table"]')
     filter = document.querySelector('.js-gem-c-table__filter')

@@ -63,9 +63,9 @@ describe('Cookie banner', function () {
     var cookieBannerMain = document.querySelector('.js-banner-wrapper')
     var cookieBannerConfirmation = document.querySelector('.gem-c-cookie-banner__confirmation')
 
-    expect(window.isElementVisible(element)).toBeTruthy()
-    expect(window.isElementVisible(cookieBannerMain)).toBeTruthy()
-    expect(window.isElementHidden(cookieBannerConfirmation)).toEqual(true)
+    expect(window.specHelpers.isElementVisible(element)).toBeTruthy()
+    expect(window.specHelpers.isElementVisible(cookieBannerMain)).toBeTruthy()
+    expect(window.specHelpers.isElementHidden(cookieBannerConfirmation)).toEqual(true)
   })
 
   it('should show the cookie banner when preferences have not been actively set', function () {
@@ -77,9 +77,9 @@ describe('Cookie banner', function () {
     var cookieBannerMain = document.querySelector('.js-banner-wrapper')
     var cookieBannerConfirmation = document.querySelector('.gem-c-cookie-banner__confirmation')
 
-    expect(window.isElementVisible(element)).toBeTruthy()
-    expect(window.isElementVisible(cookieBannerMain)).toBeTruthy()
-    expect(window.isElementHidden(cookieBannerConfirmation)).toEqual(true)
+    expect(window.specHelpers.isElementVisible(element)).toBeTruthy()
+    expect(window.specHelpers.isElementVisible(cookieBannerMain)).toBeTruthy()
+    expect(window.specHelpers.isElementHidden(cookieBannerConfirmation)).toEqual(true)
   })
 
   it('should hide the cookie banner when preferences have been actively set', function () {
@@ -88,7 +88,7 @@ describe('Cookie banner', function () {
     var element = document.querySelector('[data-module="cookie-banner"]')
     new GOVUK.Modules.CookieBanner(element).init()
 
-    expect(window.isElementHidden(element)).toEqual(true)
+    expect(window.specHelpers.isElementHidden(element)).toEqual(true)
   })
 
   it('sets a default consent cookie', function () {
@@ -164,13 +164,13 @@ describe('Cookie banner', function () {
     var mainCookieBanner = document.querySelector('.js-banner-wrapper')
     var confirmationMessage = document.querySelector('.gem-c-cookie-banner__confirmation')
 
-    expect(window.isElementVisible(mainCookieBanner)).toBeTruthy()
-    expect(window.isElementHidden(confirmationMessage)).toEqual(true)
+    expect(window.specHelpers.isElementVisible(mainCookieBanner)).toBeTruthy()
+    expect(window.specHelpers.isElementHidden(confirmationMessage)).toEqual(true)
 
     acceptCookiesButton.click()
 
-    expect(window.isElementHidden(mainCookieBanner)).toEqual(true)
-    expect(window.isElementVisible(confirmationMessage)).toBeTruthy()
+    expect(window.specHelpers.isElementHidden(mainCookieBanner)).toEqual(true)
+    expect(window.specHelpers.isElementVisible(confirmationMessage)).toBeTruthy()
   })
 
   it('set cookies_preferences_set cookie, and re-set cookies_policy expiration date when rejecting cookies', function () {
@@ -195,7 +195,7 @@ describe('Cookie banner', function () {
     var link = document.querySelector('button[data-hide-cookie-banner="true"]')
     link.dispatchEvent(new window.Event('click'))
 
-    expect(window.isElementHidden(element)).toEqual(true)
+    expect(window.specHelpers.isElementHidden(element)).toEqual(true)
     expect(GOVUK.getCookie('cookies_preferences_set')).toBeTruthy()
   })
 
@@ -214,7 +214,7 @@ describe('Cookie banner', function () {
     it('should hide the cookie banner', function () {
       var element = document.querySelector('[data-module="cookie-banner"]')
       new GOVUK.Modules.CookieBanner(element).init()
-      expect(window.isElementHidden(element)).toEqual(true)
+      expect(window.specHelpers.isElementHidden(element)).toEqual(true)
     })
   })
 })

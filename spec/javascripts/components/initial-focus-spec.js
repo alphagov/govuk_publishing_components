@@ -18,7 +18,7 @@ describe('Initial focus script', function () {
         '<div class="gem-c-success-summary__body">A further description</div>' +
       '</div>'
 
-    window.setFixtures(FIXTURE)
+    window.specHelpers.setFixtures(FIXTURE)
   })
 
   it('focus', function () {

@@ -19,7 +19,7 @@ describe('The metadata component', function () {
           '<a data-controls="target" data-expanded aria-expanded="false"></a>' +
           '<div id="target" class="js-hidden">Target</div>' +
         '</div>'
-      window.setFixtures(FIXTURE)
+      window.specHelpers.setFixtures(FIXTURE)
       element = document.querySelector('[data-module="metadata"]')
       target = document.querySelector('#toggle-me')
 
@@ -32,7 +32,7 @@ describe('The metadata component', function () {
 
     it('does not click target if target does not exist', function () {
       var FIXTURE = '<div data-module="metadata"><a href="#toggle-me" class="js-see-all-updates-link"></a></div>'
-      window.setFixtures(FIXTURE)
+      window.specHelpers.setFixtures(FIXTURE)
       element = document.querySelector('[data-module="metadata"]')
 
       init(element)
@@ -45,7 +45,7 @@ describe('The metadata component', function () {
 
     it('does not click target if target is already expanded', function () {
       var FIXTURE = '<div data-module="metadata"><a href="#toggle-me" class="js-see-all-updates-link"></a></div><div id="toggle-me" data-module="gem-toggle"><a aria-expanded="true"></a></div>'
-      window.setFixtures(FIXTURE)
+      window.specHelpers.setFixtures(FIXTURE)
       element = document.querySelector('[data-module="metadata"]')
       target = document.querySelector('#toggle-me')
 

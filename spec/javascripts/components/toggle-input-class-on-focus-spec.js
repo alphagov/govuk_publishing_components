@@ -23,14 +23,14 @@ describe('A toggle class module', function () {
 
     it('applies the focus style on focus and removes it on blur', function () {
       var searchInput = document.querySelector('.js-class-toggle')
-      expect(window.isClassOnElement(searchInput, 'js-class-toggle')).toEqual(true)
-      expect(window.isClassOnElement(searchInput, 'focus')).toEqual(false)
+      expect(window.specHelpers.isClassOnElement(searchInput, 'js-class-toggle')).toEqual(true)
+      expect(window.specHelpers.isClassOnElement(searchInput, 'focus')).toEqual(false)
 
       searchInput.dispatchEvent(new window.Event('focus'))
-      expect(window.isClassOnElement(searchInput, 'focus')).toEqual(true)
+      expect(window.specHelpers.isClassOnElement(searchInput, 'focus')).toEqual(true)
 
       searchInput.dispatchEvent(new window.Event('blur'))
-      expect(window.isClassOnElement(searchInput, 'focus')).toEqual(false)
+      expect(window.specHelpers.isClassOnElement(searchInput, 'focus')).toEqual(false)
     })
   })
 

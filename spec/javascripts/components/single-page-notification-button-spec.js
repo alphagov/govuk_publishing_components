@@ -10,7 +10,7 @@ describe('Single page notification component', function () {
         '<input type="hidden" name="base_path" value="/current-page-path">' +
         '<button class="gem-c-single-page-notification-button__submit" type="submit"><span class="gem-c-single-page-notication-button__text">Get emails about this page</span></button>' +
     '</form>'
-    window.setFixtures(FIXTURE)
+    window.specHelpers.setFixtures(FIXTURE)
     jasmine.Ajax.install()
   })
 
@@ -31,7 +31,7 @@ describe('Single page notification component', function () {
         '<input type="hidden" name="base_path" value="/current-page-path">' +
         '<button class="gem-c-single-page-notification-button__submit" type="submit">Get emails about this page</button>' +
       '</form>'
-    window.setFixtures(FIXTURE)
+    window.specHelpers.setFixtures(FIXTURE)
 
     initButton()
     var request = jasmine.Ajax.requests.mostRecent()
@@ -49,7 +49,7 @@ describe('Single page notification component', function () {
     })
 
     var button = document.querySelector('form.gem-c-single-page-notification-button')
-    expect(window.isClassOnElement(button, 'gem-c-single-page-notification-button--visible')).toEqual(true)
+    expect(window.specHelpers.isClassOnElement(button, 'gem-c-single-page-notification-button--visible')).toEqual(true)
   })
 
   it('renders "Subscribe-button" tracking attribute value if "active" in the API response is false', function () {
@@ -84,7 +84,7 @@ describe('Single page notification component', function () {
         '<input type="hidden" name="base_path" value="/current-page-path">' +
         '<button class="gem-c-single-page-notification-button__submit" type="submit"><span class="gem-c-single-page-notication-button__text">Get emails about this page</span></button>' +
     '</form>'
-    window.setFixtures(FIXTURE)
+    window.specHelpers.setFixtures(FIXTURE)
 
     initButton()
 
@@ -104,7 +104,7 @@ describe('Single page notification component', function () {
       '<input type="hidden" name="base_path" value="/current-page-path">' +
       '<button class="gem-c-single-page-notification-button__submit" type="submit"><span class="gem-c-single-page-notication-button__text">Get emails about this page</span></button>' +
     '</form>'
-    window.setFixtures(FIXTURE)
+    window.specHelpers.setFixtures(FIXTURE)
 
     initButton()
 
@@ -124,7 +124,7 @@ describe('Single page notification component', function () {
       '<input type="hidden" name="base_path" value="/current-page-path">' +
       '<button class="gem-c-single-page-notification-button__submit" type="submit"><span class="gem-c-single-page-notication-button__text">Get emails about this page</span></button>' +
     '</form>'
-    window.setFixtures(FIXTURE)
+    window.specHelpers.setFixtures(FIXTURE)
 
     initButton()
 

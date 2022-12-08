@@ -145,11 +145,11 @@ describe('A stepnav module', function () {
   }
 
   it('has a class of gem-c-step-nav--active to indicate the js has loaded', function () {
-    expect(window.isClassOnElement($element[0], 'gem-c-step-nav--active')).toEqual(true)
+    expect(window.specHelpers.isClassOnElement($element[0], 'gem-c-step-nav--active')).toEqual(true)
   })
 
   it('is not hidden', function () {
-    expect(window.isClassOnElement($element[0], 'js-hidden')).toEqual(false)
+    expect(window.specHelpers.isClassOnElement($element[0], 'js-hidden')).toEqual(false)
   })
 
   it('has a show/hide all button', function () {
@@ -174,7 +174,7 @@ describe('A stepnav module', function () {
     var $titleButtons = $element[0].querySelectorAll('.js-step-title-button')
 
     for (var i = 0; i < $titleButtons.length; i++) {
-      expect(window.isClassOnElement($titleButtons[i], 'gem-c-step-nav__button--title')).toEqual(true)
+      expect(window.specHelpers.isClassOnElement($titleButtons[i], 'gem-c-step-nav__button--title')).toEqual(true)
       expect($titleButtons[i].getAttribute('aria-expanded')).toBe('false')
     }
     expect($titleButtons[0].getAttribute('aria-controls')).toBe('step-panel-topic-step-one-1')
@@ -183,7 +183,7 @@ describe('A stepnav module', function () {
 
   it('ensures all step content is hidden', function () {
     $element.find('.gem-c-step-nav__step').each(function (index, $step) {
-      expect(window.isClassOnElement($step, 'step-is-shown')).toEqual(false)
+      expect(window.specHelpers.isClassOnElement($step, 'step-is-shown')).toEqual(false)
     })
   })
 
@@ -271,7 +271,7 @@ describe('A stepnav module', function () {
       var $stepLink = $element.find('.gem-c-step-nav__header .gem-c-step-nav__button--title').first()
       var $step = $element.find('.gem-c-step-nav__step').first()
       $stepLink.click()
-      expect(window.isClassOnElement($step[0], 'step-is-shown')).toEqual(true)
+      expect(window.specHelpers.isClassOnElement($step[0], 'step-is-shown')).toEqual(true)
     })
 
     // When a step is open (testing: toggleState, setExpandedState)
@@ -328,9 +328,9 @@ describe('A stepnav module', function () {
       var $stepLink = $element.find('.gem-c-step-nav__header .gem-c-step-nav__button--title')
       var $step = $element.find('.gem-c-step-nav__step')
       $stepLink.click()
-      expect(window.isClassOnElement($step[0], 'step-is-shown')).toEqual(true)
+      expect(window.specHelpers.isClassOnElement($step[0], 'step-is-shown')).toEqual(true)
       $stepLink.click()
-      expect(window.isClassOnElement($step[0], 'step-is-shown')).toEqual(false)
+      expect(window.specHelpers.isClassOnElement($step[0], 'step-is-shown')).toEqual(false)
     })
 
     // When a step is hidden (testing: toggleState, setExpandedState)
@@ -447,19 +447,19 @@ describe('A stepnav module', function () {
 
     it('opens the steps it has remembered', function () {
       var $step1 = $element.find('#topic-step-one')
-      expect(window.isClassOnElement($step1[0], 'step-is-shown')).toEqual(true)
+      expect(window.specHelpers.isClassOnElement($step1[0], 'step-is-shown')).toEqual(true)
       var $jsPanel = $step1.find('.js-panel')
-      expect(window.isClassOnElement($jsPanel[0], 'js-hidden')).toEqual(false)
+      expect(window.specHelpers.isClassOnElement($jsPanel[0], 'js-hidden')).toEqual(false)
 
       var $step3 = $element.find('#topic-step-three')
-      expect(window.isClassOnElement($step3[0], 'step-is-shown')).toEqual(true)
+      expect(window.specHelpers.isClassOnElement($step3[0], 'step-is-shown')).toEqual(true)
       $jsPanel = $step3.find('.js-panel')
-      expect(window.isClassOnElement($jsPanel[0], 'js-hidden')).toEqual(false)
+      expect(window.specHelpers.isClassOnElement($jsPanel[0], 'js-hidden')).toEqual(false)
     })
 
     it('leaves the other steps hidden', function () {
       var $step2 = $element.find('#topic-step-two')
-      expect(window.isClassOnElement($step2[0], 'step-is-shown')).toEqual(false)
+      expect(window.specHelpers.isClassOnElement($step2[0], 'step-is-shown')).toEqual(false)
     })
 
     it('sets the show/hide link text to "hide"', function () {
@@ -509,9 +509,9 @@ describe('A stepnav module', function () {
       var $step2 = $element.find('#topic-step-two')
       var $step3 = $element.find('#topic-step-three')
 
-      expect(window.isClassOnElement($step1[0], 'step-is-shown')).toEqual(false)
-      expect(window.isClassOnElement($step2[0], 'step-is-shown')).toEqual(false)
-      expect(window.isClassOnElement($step3[0], 'step-is-shown')).toEqual(false)
+      expect(window.specHelpers.isClassOnElement($step1[0], 'step-is-shown')).toEqual(false)
+      expect(window.specHelpers.isClassOnElement($step2[0], 'step-is-shown')).toEqual(false)
+      expect(window.specHelpers.isClassOnElement($step3[0], 'step-is-shown')).toEqual(false)
 
       $step1.click()
       expect(window.sessionStorage.getItem('unique-id')).toBe('["topic-step-one","topic-step-two","topic-step-three"]') // i.e. unchanged
@@ -527,15 +527,15 @@ describe('A stepnav module', function () {
 
     it('shows the step it\'s supposed to', function () {
       var $openStep = $element.find('#topic-step-two')
-      expect(window.isClassOnElement($openStep[0], 'step-is-shown')).toEqual(true)
+      expect(window.specHelpers.isClassOnElement($openStep[0], 'step-is-shown')).toEqual(true)
     })
 
     it('leaves the other steps closed', function () {
       var $closedStep1 = $element.find('#topic-step-one')
       var $closedStep3 = $element.find('#topic-step-three')
 
-      expect(window.isClassOnElement($closedStep1[0], 'step-is-shown')).toEqual(false)
-      expect(window.isClassOnElement($closedStep3[0], 'step-is-shown')).toEqual(false)
+      expect(window.specHelpers.isClassOnElement($closedStep1[0], 'step-is-shown')).toEqual(false)
+      expect(window.specHelpers.isClassOnElement($closedStep3[0], 'step-is-shown')).toEqual(false)
     })
   })
 
@@ -714,8 +714,8 @@ describe('A stepnav module', function () {
     it('highlights the first active link and its parent step if no sessionStorage value is set', function () {
       expect(window.sessionStorage.getItem('govuk-step-nav-active-link_unique-id')).toBe(null)
       var $active = $element.find('.js-link[data-position="2.1"]')
-      expect(window.isClassOnElement($active.closest('.js-list-item')[0], 'gem-c-step-nav__list-item--active')).toEqual(true)
-      expect(window.isClassOnElement($active.closest('.js-step')[0], 'gem-c-step-nav__step--active')).toEqual(true)
+      expect(window.specHelpers.isClassOnElement($active.closest('.js-list-item')[0], 'gem-c-step-nav__list-item--active')).toEqual(true)
+      expect(window.specHelpers.isClassOnElement($active.closest('.js-step')[0], 'gem-c-step-nav__step--active')).toEqual(true)
       expect($element.find('.gem-c-step-nav__list-item--active').length).toBe(1)
       expect($element.find('.gem-c-step-nav__list-item--active').length).toBe(1)
       expect($element.find('.step-is-shown').length).toBe(1)
@@ -732,8 +732,8 @@ describe('A stepnav module', function () {
       var $firstLink = $element.find('.js-link[data-position="3.4"]')[0]
       $firstLink.click()
       expect(window.sessionStorage.getItem('govuk-step-nav-active-link_unique-id')).toBe('3.4')
-      expect(window.isClassOnElement($firstLink.closest('.js-list-item'), 'gem-c-step-nav__list-item--active')).toEqual(true)
-      expect(window.isClassOnElement($firstLink.closest('.js-step'), 'gem-c-step-nav__step--active')).toEqual(true)
+      expect(window.specHelpers.isClassOnElement($firstLink.closest('.js-list-item'), 'gem-c-step-nav__list-item--active')).toEqual(true)
+      expect(window.specHelpers.isClassOnElement($firstLink.closest('.js-step'), 'gem-c-step-nav__step--active')).toEqual(true)
 
       expect($element.find(('.gem-c-step-nav__list-item--active')).length).toBe(1)
       expect($element.find(('.gem-c-step-nav__step--active')).length).toBe(1)
@@ -741,8 +741,8 @@ describe('A stepnav module', function () {
       var $secondLink = $element.find('.js-link[data-position="3.5"]')[0]
       $secondLink.click()
       expect(window.sessionStorage.getItem('govuk-step-nav-active-link_unique-id')).toBe('3.5')
-      expect(window.isClassOnElement($secondLink.closest('.js-list-item'), 'gem-c-step-nav__list-item--active')).toEqual(true)
-      expect(window.isClassOnElement($secondLink.closest('.js-step'), 'gem-c-step-nav__step--active')).toEqual(true)
+      expect(window.specHelpers.isClassOnElement($secondLink.closest('.js-list-item'), 'gem-c-step-nav__list-item--active')).toEqual(true)
+      expect(window.specHelpers.isClassOnElement($secondLink.closest('.js-step'), 'gem-c-step-nav__step--active')).toEqual(true)
 
       expect($element.find(('.gem-c-step-nav__list-item--active')).length).toBe(1)
       expect($element.find(('.gem-c-step-nav__step--active')).length).toBe(1)
@@ -806,7 +806,7 @@ describe('A stepnav module', function () {
     it('highlights the first active link if no sessionStorage value is set', function () {
       expect(window.sessionStorage.getItem('govuk-step-nav-active-link_unique-id')).toBe(null)
       var $jsLink = $element.find('.js-link[data-position="2.1"]').closest('.js-list-item')[0]
-      expect(window.isClassOnElement($jsLink, 'gem-c-step-nav__list-item--active')).toEqual(true)
+      expect(window.specHelpers.isClassOnElement($jsLink, 'gem-c-step-nav__list-item--active')).toEqual(true)
       expect($element.find(('.gem-c-step-nav__list-item--active')).length).toBe(1)
     })
   })
