@@ -77,3 +77,9 @@ $govuk-cookie-banner-background: govuk-colour("light-grey", "grey-4");
     margin-bottom: - govuk-spacing(2);
   }
 }
+
+@include govuk-media-query($media-type: print) {
+  .gem-c-cookie-banner {
+    display: none !important; // stylelint-disable-line declaration-no-important
+  }
+}
