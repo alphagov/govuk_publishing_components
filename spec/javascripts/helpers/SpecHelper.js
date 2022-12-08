@@ -41,14 +41,14 @@ function isElementDisabled(selector) {
   return document.querySelector(selector+':disabled') !== null
 }
 
-var isElementHidden = function(element) {
-  return element.style.display === "none" || element.style.visibility === "none" || element.hasAttribute('hidden') || element.getAttribute("type") === "hidden"
+function isElementHidden(element) {
+  return !this.isElementVisible(element)
 }
 
-var isClassOnElement = function (element, className) {
+function isClassOnElement(element, className) {
     return element.classList.contains(className)
 }
 
-var setFixtures = function(html) {
+function setFixtures(html) {
   return jasmine.getFixtures().proxyCallTo_('set', arguments)
 }
