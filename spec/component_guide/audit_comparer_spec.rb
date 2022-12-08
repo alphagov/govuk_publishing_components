@@ -34,7 +34,9 @@ describe "Comparing data from an application with the components" do
         ],
       },
     ],
-    component_listing: [],
+    component_listing: {
+      details: [],
+    },
   }
 
   gem_not_found = {
@@ -597,7 +599,7 @@ describe "Comparing data from an application with the components" do
       },
     ]
 
-    gem[:component_listing] = [
+    gem[:component_listing][:details] = [
       {
         name: "accordion",
       },
@@ -637,11 +639,13 @@ describe "Comparing data from an application with the components" do
           ],
         },
       ],
-      component_listing: [
-        {
-          name: "accordion",
-        },
-      ],
+      component_listing: {
+        details: [
+          {
+            name: "accordion",
+          },
+        ],
+      },
       components_by_application: [
         {
           name: "accordion",

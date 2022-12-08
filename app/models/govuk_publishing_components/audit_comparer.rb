@@ -252,7 +252,7 @@ module GovukPublishingComponents
       results = []
       found_something = false
 
-      @gem_data[:component_listing].each do |component|
+      @gem_data[:component_listing][:details].each do |component|
         component_name = component[:name]
         locations = []
 

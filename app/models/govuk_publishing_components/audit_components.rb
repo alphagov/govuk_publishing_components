@@ -142,21 +142,51 @@ module GovukPublishingComponents
       return [] if @simple
 
       all_component_information = []
+      total_count = 0
+      css_count = 0
+      print_css_count = 0
+      javascript_count = 0
+      test_count = 0
+      javascript_test_count = 0
+      helper_count = 0
 
       @components.each do |component|
+        total_count += 1
+        stylesheet = check_component_has("stylesheet", component)
+        css_count += 1 if stylesheet
+        print_stylesheet = check_component_has("print_stylesheet", component)
+        print_css_count += 1 if print_stylesheet
+        javascript = check_component_has("javascript", component)
+        javascript_count += 1 if javascript
+        test = check_component_has("test", component)
+        test_count += 1 if test
+        javascript_test = check_component_has("js_test", component)
+        javascript_test_count += 1 if javascript_test
+        helper = check_component_has("helper", component)
+        helper_count += 1 if helper
+
         all_component_information << {
           name: component,
           link: get_component_link(component),
-          stylesheet: check_component_has("stylesheet", component),
-          print_stylesheet: check_component_has("print_stylesheet", component),
-          javascript: check_component_has("javascript", component),
-          tests: check_component_has("test", component),
-          js_tests: check_component_has("js_test", component),
-          helper: check_component_has("helper", component),
+          stylesheet: stylesheet,
+          print_stylesheet: print_stylesheet,
+          javascript: javascript,
+          tests: test,
+          js_tests: javascript_test,
+          helper: helper,
         }
       end
 
-      all_component_information
+      {
+        total_count: total_count,
+        css_count: css_count,
+        print_css_count: print_css_count,
+        javascript_count: javascript_count,
+        test_count: test_count,
+        javascript_test_count: javascript_test_count,
+        helper_count: helper_count,
+        details: all_component_information,
+      }
     end
 
     def check_component_has(a_thing, component)
