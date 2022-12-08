@@ -2,20 +2,7 @@ module GovukPublishingComponents
   class AuditComponents
     attr_reader :data
 
-    def initialize(path, simple)
-      @data = {
-        gem_found: false,
-      }
-      @data = compile_data(path, simple) if Dir.exist?(path)
-    end
-
-  private
-
-    def compile_data(path, simple)
-      # simple is used to reduce effort (and therefore page load time) required
-      # when loading auditing summary on the main component guide page
-      @simple = simple
-
+    def initialize(path)
       # paths to key file locations
       @templates_path = "app/views/govuk_publishing_components/components"
       @stylesheets_path = "app/assets/stylesheets/govuk_publishing_components/components"
@@ -25,32 +12,41 @@ module GovukPublishingComponents
       @js_tests_path = "spec/javascripts/components"
       @helpers_path = "lib/govuk_publishing_components/presenters"
 
+      @data = {
+        gem_found: false,
+      }
+      @data = compile_data(path) if Dir.exist?(path)
+    end
+
+  private
+
+    def compile_data(path)
       # get all files in key file locations
-      templates = Dir["#{path}/#{@templates_path}/*.erb"]
-      stylesheets = Dir["#{path}/#{@stylesheets_path}/*.scss"]
-      print_stylesheets = Dir["#{path}/#{@print_stylesheets_path}/*.scss"]
-      javascripts = Dir["#{path}/#{@javascripts_path}/*.js"]
-      tests = Dir["#{path}/#{@tests_path}/*.rb"]
-      js_tests = Dir["#{path}/#{@js_tests_path}/*.js"]
-      helpers = Dir["#{path}/#{@helpers_path}/*_helper.rb"]
+      @all_templates = Dir["#{path}/#{@templates_path}/*.erb"]
+      @all_stylesheets = Dir["#{path}/#{@stylesheets_path}/*.scss"]
+      @all_print_stylesheets = Dir["#{path}/#{@print_stylesheets_path}/*.scss"]
+      @all_javascripts = Dir["#{path}/#{@javascripts_path}/*.js"]
+      @all_tests = Dir["#{path}/#{@tests_path}/*.rb"]
+      @all_js_tests = Dir["#{path}/#{@js_tests_path}/*.js"]
+      @all_helpers = Dir["#{path}/#{@helpers_path}/*_helper.rb"]
 
       @templates_full_path = "#{path}/#{@templates_path}/"
 
       # find the cleaned names of components in key file locations
       # i.e. will show that 'component name' has a stylesheet
       # standardised like this to be used later for easier comparison
-      @components = clean_files(templates, [path, @templates_path].join("/"))
-      @component_stylesheets = clean_files(stylesheets, [path, @stylesheets_path].join("/"))
-      @component_print_stylesheets = clean_files(print_stylesheets, [path, @print_stylesheets_path].join("/"))
-      @component_javascripts = clean_files(javascripts, [path, @javascripts_path].join("/"))
-      @component_tests = clean_files(tests, [path, @tests_path].join("/"))
-      @component_js_tests = clean_files(js_tests, [path, @js_tests_path].join("/"))
-      @component_helpers = clean_files(helpers, [path, @helpers_path].join("/"))
+      @components = clean_files(@all_templates, @templates_full_path)
+      @component_stylesheets = clean_files(@all_stylesheets, [path, @stylesheets_path].join("/"))
+      @component_print_stylesheets = clean_files(@all_print_stylesheets, [path, @print_stylesheets_path].join("/"))
+      @component_javascripts = clean_files(@all_javascripts, [path, @javascripts_path].join("/"))
+      @component_tests = clean_files(@all_tests, [path, @tests_path].join("/"))
+      @component_js_tests = clean_files(@all_js_tests, [path, @js_tests_path].join("/"))
+      @component_helpers = clean_files(@all_helpers, [path, @helpers_path].join("/"))
 
       {
         gem_found: true,
         component_code: @components,
-        components_containing_components: find_all_partials_in(templates),
+        components_containing_components: find_all_partials_in(@all_templates),
         component_listing: list_all_component_details,
       }
     end
@@ -85,8 +81,6 @@ module GovukPublishingComponents
     end
 
     def find_all_partials_in(templates)
-      return [] if @simple
-
       components = []
 
       templates.each do |template|
@@ -139,10 +133,7 @@ module GovukPublishingComponents
     end
 
     def list_all_component_details
-      return [] if @simple
-
       all_component_information = []
-      total_count = 0
       css_count = 0
       print_css_count = 0
       javascript_count = 0
@@ -151,7 +142,6 @@ module GovukPublishingComponents
       helper_count = 0
 
       @components.each do |component|
-        total_count += 1
         stylesheet = check_component_has("stylesheet", component)
         css_count += 1 if stylesheet
         print_stylesheet = check_component_has("print_stylesheet", component)
@@ -178,7 +168,7 @@ module GovukPublishingComponents
       end
 
       {
-        total_count: total_count,
+        total_count: @components.length,
         css_count: css_count,
         print_css_count: print_css_count,
         javascript_count: javascript_count,

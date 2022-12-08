@@ -34,7 +34,7 @@ module GovukPublishingComponents
       @in_application = false
       @in_application = true unless ENV["MAIN_COMPONENT_GUIDE"]
 
-      components = AuditComponents.new(gem_path, false)
+      components = AuditComponents.new(gem_path)
       applications = analyse_applications(host_dir, application_dirs)
       compared_data = AuditComparer.new(components.data, applications)
 

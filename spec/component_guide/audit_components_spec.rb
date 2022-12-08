@@ -4,7 +4,7 @@ require_relative "../../app/models/govuk_publishing_components/audit_components"
 describe "Auditing the components in the gem" do
   it "fails gracefully if the gem is not found" do
     path = File.join(File.dirname(__FILE__), "not/a/real/directory")
-    gem = GovukPublishingComponents::AuditComponents.new(path, false)
+    gem = GovukPublishingComponents::AuditComponents.new(path)
 
     expected = {
       gem_found: false,
@@ -15,7 +15,7 @@ describe "Auditing the components in the gem" do
 
   it "returns correct information" do
     path = File.join(File.dirname(__FILE__), "../dummy_gem")
-    gem = GovukPublishingComponents::AuditComponents.new(path, false)
+    gem = GovukPublishingComponents::AuditComponents.new(path)
 
     expected = {
       gem_found: true,
@@ -63,23 +63,6 @@ describe "Auditing the components in the gem" do
           },
         ],
       },
-    }
-
-    expect(gem.data).to match(expected)
-  end
-
-  it "returns a subset of audit information when simple is true" do
-    path = File.join(File.dirname(__FILE__), "../dummy_gem")
-    gem = GovukPublishingComponents::AuditComponents.new(path, true)
-
-    expected = {
-      gem_found: true,
-      component_code: [
-        "test component",
-        "test component containing other component",
-      ],
-      components_containing_components: [],
-      component_listing: [],
     }
 
     expect(gem.data).to match(expected)
