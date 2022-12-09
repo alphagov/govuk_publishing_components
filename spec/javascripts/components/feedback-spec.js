@@ -112,6 +112,8 @@ describe('Feedback component', function () {
     if (GOVUK.analytics.trackEvent.calls) {
       GOVUK.analytics.trackEvent.calls.reset()
     }
+
+    window.specHelpers.removeFixtures()
   })
 
   it('hides the forms', function () {

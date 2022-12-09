@@ -20,6 +20,10 @@ describe('Copy to clipboard component', function () {
     window.specHelpers.setFixtures(FIXTURE)
   })
 
+  afterEach(function () {
+    window.specHelpers.removeFixtures()
+  })
+
   it('calls the Web API when clicked', function () {
     spyOn(document, 'execCommand')
 

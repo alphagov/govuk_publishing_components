@@ -9,6 +9,10 @@ describe('The metadata component', function () {
     spyOn(GOVUK.Modules.GemToggle.prototype, 'toggleOnClick')
   })
 
+  afterEach(function () {
+    window.specHelpers.removeFixtures()
+  })
+
   describe('when the "See all updates" link is clicked', function () {
     it('clicks the target if target exists and is not already expanded', function () {
       var FIXTURE =

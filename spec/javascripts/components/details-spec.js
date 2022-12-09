@@ -27,6 +27,8 @@ describe('Details component', function () {
     if (GOVUK.analytics.trackEvent.calls) {
       GOVUK.analytics.trackEvent.calls.reset()
     }
+
+    window.specHelpers.removeFixtures()
   })
 
   it('uses built in tracking module when provided with a track-label', function () {

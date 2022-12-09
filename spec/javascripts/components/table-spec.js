@@ -54,6 +54,10 @@ describe('Table component', function () {
     table.init()
   })
 
+  afterEach(function () {
+    window.specHelpers.removeFixtures()
+  })
+
   describe('When the component is intialised', function () {
     it('Displays the filter section', function () {
       expect(filter.classList.contains(hiddenClass)).toBe(false)

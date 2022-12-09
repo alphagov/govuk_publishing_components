@@ -55,6 +55,15 @@ var specHelpers = {
   },
 
   setFixtures: function(html) {
-    return jasmine.getFixtures().proxyCallTo_('set', arguments)
+    console.log(html)
+    var container = document.createElement('div')
+    container.id = 'fixture-container'
+    container.innerHTML = html
+    console.log(container)
+    document.body.appendChild(container)
+  },
+
+  removeFixtures: function() {
+    document.body.removeChild(document.getElementById('fixture-container'))
   }
 }

@@ -18,6 +18,10 @@ describe('Single page notification component', function () {
     jasmine.Ajax.uninstall()
   })
 
+  afterAll(function () {
+    window.specHelpers.removeFixtures()
+  })
+
   it('calls the personalisation API on load', function () {
     initButton()
     var request = jasmine.Ajax.requests.mostRecent()
@@ -26,6 +30,7 @@ describe('Single page notification component', function () {
   })
 
   it('includes button_location in the call to the personalisation API when button_location is specified', function () {
+    window.specHelpers.removeFixtures()
     FIXTURE =
       '<form class="gem-c-single-page-notification-button js-personalisation-enhancement" action="/email/subscriptions/single-page/new" method="POST" data-module="single-page-notification-button" data-button-location="top">' +
         '<input type="hidden" name="base_path" value="/current-page-path">' +
@@ -79,6 +84,7 @@ describe('Single page notification component', function () {
   })
 
   it('renders button location as part of the tracking attribute value when API response is received if "data-button-location" is set', function () {
+    window.specHelpers.removeFixtures()
     FIXTURE =
     '<form class="gem-c-single-page-notification-button js-personalisation-enhancement" action="/email/subscriptions/  single-page/new" method="POST" data-module="single-page-notification-button" data-button-location="top">' +
         '<input type="hidden" name="base_path" value="/current-page-path">' +
@@ -99,6 +105,7 @@ describe('Single page notification component', function () {
   })
 
   it('renders custom subscribe button text when API response is received if "data-button-text-subscribe" and "data-button-text-unsubscribe" are set', function () {
+    window.specHelpers.removeFixtures()
     FIXTURE =
     '<form class="gem-c-single-page-notification-button js-personalisation-enhancement" action="/email/subscriptions/  single-page/new" method="POST" data-module="single-page-notification-button" data-button-text-subscribe="Start getting emails about this stuff" data-button-text-unsubscribe="Stop getting emails about this stuff">' +
       '<input type="hidden" name="base_path" value="/current-page-path">' +
@@ -119,6 +126,7 @@ describe('Single page notification component', function () {
   })
 
   it('renders custom unsubscribe button text when API response is received if "data-button-text-subscribe" and "data-button-text-unsubscribe" are set', function () {
+    window.specHelpers.removeFixtures()
     FIXTURE =
     '<form class="gem-c-single-page-notification-button js-personalisation-enhancement" action="/email/subscriptions/  single-page/new" method="POST" data-module="single-page-notification-button" data-button-text-subscribe="Start getting emails about this stuff" data-button-text-unsubscribe="Stop getting emails about this stuff">' +
       '<input type="hidden" name="base_path" value="/current-page-path">' +

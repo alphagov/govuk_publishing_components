@@ -21,6 +21,10 @@ describe('Initial focus script', function () {
     window.specHelpers.setFixtures(FIXTURE)
   })
 
+  afterEach(function () {
+    window.specHelpers.removeFixtures()
+  })
+
   it('focus', function () {
     loadInitialFocusScript()
 

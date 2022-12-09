@@ -79,6 +79,8 @@ describe('Checkboxes component', function () {
     if (GOVUK.analytics.trackEvent.calls) {
       GOVUK.analytics.trackEvent.calls.reset()
     }
+    
+    window.specHelpers.removeFixtures()
   })
 
   it('checking a parent checkbox checks all its children', function () {
