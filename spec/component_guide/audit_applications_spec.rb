@@ -20,7 +20,7 @@ describe "Auditing the components in applications" do
         },
         {
           location: "print_stylesheets",
-          components: %w[all],
+          components: [],
         },
         {
           location: "javascripts",

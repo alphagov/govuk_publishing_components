@@ -38,7 +38,6 @@ describe "Component example" do
     visit "/component-guide/button"
 
     expect(page).not_to have_selector('link[href*="/assets/application.css"]', visible: false)
-    expect(page).not_to have_selector('link[href*="/assets/print.css"]', visible: false)
   end
 
   it "lists examples in a human readable way" do
