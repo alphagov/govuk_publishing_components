@@ -1,1 +1,4 @@
 // this file is needed to test the component auditing
+@include govuk-media-query($media-type: print) {
+  .test {}
+}

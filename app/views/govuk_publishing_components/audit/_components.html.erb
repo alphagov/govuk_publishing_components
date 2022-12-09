@@ -10,7 +10,7 @@
   <% component_items = [] %>
 
   <% component_files = capture do %>
-    <%= render partial: "component_contents", locals: { components: @components[:component_listing] } %>
+    <%= render partial: "component_contents" %>
   <% end %>
 
   <%

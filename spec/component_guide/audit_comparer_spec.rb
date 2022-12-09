@@ -25,7 +25,7 @@ describe "Comparing data from an application with the components" do
       "component four",
     ],
     component_tests: [],
-    component_js_tests: [],
+    component_javascript_tests: [],
     components_containing_components: [
       {
         component: "component three",
@@ -34,9 +34,9 @@ describe "Comparing data from an application with the components" do
         ],
       },
     ],
-    component_listing: {
-      details: [],
-    },
+    component_file_details: [],
+    component_numbers: {},
+    component_listing: {},
   }
 
   gem_not_found = {
@@ -126,6 +126,7 @@ describe "Comparing data from an application with the components" do
         gem_style_references: [],
         jquery_references: [],
         helper_references: nil,
+        component_locations: {},
       },
     ]
     comparer = GovukPublishingComponents::AuditComparer.new(gem, application)
@@ -182,7 +183,7 @@ describe "Comparing data from an application with the components" do
         warning_count: 5,
         gem_style_references: [],
         jquery_references: [],
-        component_locations: nil,
+        component_locations: {},
         helper_references: nil,
       },
     ]
@@ -226,6 +227,7 @@ describe "Comparing data from an application with the components" do
         ],
         gem_style_references: [],
         jquery_references: [],
+        component_locations: {},
       },
       {
         name: "static",
@@ -264,6 +266,7 @@ describe "Comparing data from an application with the components" do
         ],
         gem_style_references: [],
         jquery_references: [],
+        component_locations: {},
       },
     ]
     comparer = GovukPublishingComponents::AuditComparer.new(gem, application)
@@ -312,7 +315,7 @@ describe "Comparing data from an application with the components" do
         warning_count: 3,
         gem_style_references: [],
         jquery_references: [],
-        component_locations: nil,
+        component_locations: {},
         helper_references: nil,
       },
       {
@@ -345,7 +348,7 @@ describe "Comparing data from an application with the components" do
         warning_count: 0,
         gem_style_references: [],
         jquery_references: [],
-        component_locations: nil,
+        component_locations: {},
         helper_references: nil,
       },
     ]
@@ -387,6 +390,7 @@ describe "Comparing data from an application with the components" do
         ],
         gem_style_references: [],
         jquery_references: [],
+        component_locations: {},
       },
     ]
     comparer = GovukPublishingComponents::AuditComparer.new(gem, application)
@@ -427,7 +431,7 @@ describe "Comparing data from an application with the components" do
         warning_count: 1,
         gem_style_references: [],
         jquery_references: [],
-        component_locations: nil,
+        component_locations: {},
         helper_references: nil,
       },
     ]
@@ -476,6 +480,7 @@ describe "Comparing data from an application with the components" do
           "a_made_up_application/app/views/layouts/dummy_admin_layout.html",
         ],
         jquery_references: [],
+        component_locations: {},
       },
     ]
     comparer = GovukPublishingComponents::AuditComparer.new(gem, application)
@@ -484,7 +489,6 @@ describe "Comparing data from an application with the components" do
       {
         name: "Dummy application",
         application_found: true,
-        component_locations: nil,
         uses_static: false,
         summary: [
           {
@@ -542,6 +546,7 @@ describe "Comparing data from an application with the components" do
         ],
         warning_count: 6,
         helper_references: nil,
+        component_locations: {},
       },
     ]
 
@@ -630,7 +635,7 @@ describe "Comparing data from an application with the components" do
         "component four",
       ],
       component_tests: [],
-      component_js_tests: [],
+      component_javascript_tests: [],
       components_containing_components: [
         {
           component: "component three",
@@ -646,18 +651,7 @@ describe "Comparing data from an application with the components" do
           },
         ],
       },
-      components_by_application: [
-        {
-          name: "accordion",
-          count: 1,
-          locations: [
-            {
-              name: "Dummy application",
-              locations: ["app/views/welcome/accordion_example.html.erb"],
-            },
-          ],
-        },
-      ],
+      components_by_application: [],
       helpers_used_by_applications: [
         {
           name: :BrandHelper,
@@ -700,6 +694,8 @@ describe "Comparing data from an application with the components" do
           ],
         },
       ],
+      component_file_details: [],
+      component_numbers: {},
     }
 
     expect(comparer.gem_data).to match(expected)
