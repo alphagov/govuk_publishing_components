@@ -50,6 +50,10 @@ var specHelpers = {
       return element.classList.contains(className)
   },
 
+  wasEventTriggeredOn: function(element, event) {
+    return jasmine.jQuery.events.wasTriggered(element, event)
+  },
+
   setFixtures: function(html) {
     return jasmine.getFixtures().proxyCallTo_('set', arguments)
   }

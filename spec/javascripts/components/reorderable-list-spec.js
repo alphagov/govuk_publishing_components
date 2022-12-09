@@ -140,7 +140,7 @@ describe('Reorderable list component', function () {
     })
 
     it('should trigger a reorder-drag event', function () {
-      expect('reorder-drag').toHaveBeenTriggeredOn(element)
+      expect(window.specHelpers.wasEventTriggeredOn( element, 'reorder-drag')).toEqual(true)
     })
   })
 
@@ -170,7 +170,7 @@ describe('Reorderable list component', function () {
     })
 
     it('should trigger a reorder-move-down event', function () {
-      expect('reorder-move-down').toHaveBeenTriggeredOn(firstItemDownButton)
+      expect(window.specHelpers.wasEventTriggeredOn( firstItemDownButton, 'reorder-move-down')).toEqual(true)
     })
   })
 
@@ -200,7 +200,7 @@ describe('Reorderable list component', function () {
     })
 
     it('should trigger a reorder-move-up event', function () {
-      expect('reorder-move-up').toHaveBeenTriggeredOn(secondItemUpButton)
+      expect(window.specHelpers.wasEventTriggeredOn(secondItemUpButton, 'reorder-move-up'))
     })
   })
 })
