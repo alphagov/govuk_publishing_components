@@ -10,8 +10,7 @@ module GovukPublishingComponents
       @component_docs = component_docs.all
       @gem_component_docs = gem_component_docs.all
       @components_in_use_docs = components_in_use_docs.used_in_this_app
-      @components_in_use_sass = components_in_use_sass(false)
-      @components_in_use_print_sass = components_in_use_sass(true)
+      @components_in_use_sass = components_in_use_sass
       @components_in_use_js = components_in_use_js
     end
 
@@ -44,15 +43,14 @@ module GovukPublishingComponents
       end
     end
 
-    def components_in_use_sass(print_styles)
-      print_path = "print/" if print_styles
+    def components_in_use_sass
       additional_files = "@import 'govuk_publishing_components/govuk_frontend_support';\n"
-      additional_files << "@import 'govuk_publishing_components/component_support';\n" unless print_styles
+      additional_files << "@import 'govuk_publishing_components/component_support';\n"
 
       components = find_all_partials_in(components_in_use)
 
       components.map { |component|
-        "@import 'govuk_publishing_components/components/#{print_path}#{component.gsub('_', '-')}';" if component_has_sass_file(component.gsub("_", "-"), print_styles)
+        "@import 'govuk_publishing_components/components/#{component.gsub('_', '-')}';" if component_has_sass_file(component.gsub("_", "-"))
       }.compact.uniq.sort.join("\n").squeeze("\n").prepend(additional_files)
     end
 
@@ -128,9 +126,8 @@ module GovukPublishingComponents
       extra_components.flatten.uniq.sort
     end
 
-    def component_has_sass_file(component, print_styles)
-      print_path = "print/" if print_styles
-      Pathname.new(@component_gem_path + "/app/assets/stylesheets/govuk_publishing_components/components/#{print_path}_#{component}.scss").exist?
+    def component_has_sass_file(component)
+      Pathname.new(@component_gem_path + "/app/assets/stylesheets/govuk_publishing_components/components/_#{component}.scss").exist?
     end
 
     def component_has_js_file(component)
