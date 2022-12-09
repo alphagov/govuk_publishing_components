@@ -161,7 +161,7 @@ describe('Cookie banner', function () {
     new GOVUK.Modules.CookieBanner(element).init()
 
     var acceptCookiesButton = document.querySelector('[data-accept-cookies]')
-    var mainCookieBanner = document.querySelector('.js-banner-wrapper')
+    var mainCookieBanner = document.querySelector('.gem-c-cookie-banner__message')
     var confirmationMessage = document.querySelector('.gem-c-cookie-banner__confirmation')
 
     expect(window.specHelpers.isElementVisible(mainCookieBanner)).toBeTruthy()
