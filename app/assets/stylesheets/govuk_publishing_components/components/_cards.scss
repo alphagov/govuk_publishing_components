@@ -107,3 +107,22 @@
 .gem-c-cards__description {
   margin: 0 govuk-spacing(-6) 0 0;
 }
+
+@include govuk-media-query($media-type: print) {
+  .gem-c-cards__list {
+    display: block;
+  }
+
+  .gem-c-cards__list-item {
+    padding-bottom: 0;
+  }
+
+  .gem-c-cards__sub-heading {
+    margin-top: govuk-spacing(4);
+    margin-bottom: govuk-spacing(1);
+  }
+
+  .gem-c-cards__link:before {
+    display: none;
+  }
+}

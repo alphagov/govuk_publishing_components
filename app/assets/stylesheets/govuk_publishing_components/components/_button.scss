@@ -100,3 +100,14 @@
     content: none;
   }
 }
+
+@include govuk-media-query($media-type: print) {
+  .gem-c-button {
+    @include govuk-font(14);
+    display: inline-block;
+    padding: govuk-spacing(1);
+    border: solid 1px govuk-colour("black");
+    color: $govuk-text-colour;
+    text-decoration: none;
+  }
+}

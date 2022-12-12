@@ -12,4 +12,3 @@
 //= link govuk_publishing_components/vendor/lux/lux-reporter.js
 //= link govuk_publishing_components/vendor/lux/lux-measurer.js
 //= link component_guide/application.css
-//= link component_guide/print.css

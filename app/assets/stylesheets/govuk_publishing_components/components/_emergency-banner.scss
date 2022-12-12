@@ -74,3 +74,9 @@
   // the contrast was too low with white text
   background-color: #00847d;
 }
+
+@include govuk-media-query($media-type: print) {
+  .gem-c-emergency-banner {
+    display: none;
+  }
+}

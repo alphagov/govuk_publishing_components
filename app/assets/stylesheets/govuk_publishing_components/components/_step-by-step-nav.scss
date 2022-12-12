@@ -532,3 +532,9 @@ $top-border: solid 1px govuk-colour("mid-grey", $legacy: "grey-3");
     content: " \2013\00a0"; // dash followed by &nbsp;
   }
 }
+
+@include govuk-media-query($media-type: print) {
+  .gem-c-step-nav__panel {
+    display: block !important; // stylelint-disable-line declaration-no-important
+  }
+}
