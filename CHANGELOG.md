@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 34.0.0
 
 * **BREAKING** Remove print stylesheets from components ([PR #3110](https://github.com/alphagov/govuk_publishing_components/pull/3110))
 
