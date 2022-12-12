@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Use setAttribute to add GA4 JSONs to step by step nav ([PR #3131](https://github.com/alphagov/govuk_publishing_components/pull/3131))
+
 ## 34.0.0
 
 * **BREAKING** Remove print stylesheets from components ([PR #3110](https://github.com/alphagov/govuk_publishing_components/pull/3110))
