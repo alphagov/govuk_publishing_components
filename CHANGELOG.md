@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Use setAttribute to add GA4 JSONs to step by step nav ([PR #3131](https://github.com/alphagov/govuk_publishing_components/pull/3131))
+* Add `id` attribute option to the label component ([PR #3093](https://github.com/alphagov/govuk_publishing_components/pull/3093))
 
 ## 34.0.0
 
@@ -23,7 +24,6 @@
 * Remove unused axe-core option from options parameter ([PR #3094](https://github.com/alphagov/govuk_publishing_components/pull/3094))
 * Minor ecommerce tracking refactor ([PR #3098](https://github.com/alphagov/govuk_publishing_components/pull/3098))
 * Add step by step nav GA4 tracking ([PR #3052](https://github.com/alphagov/govuk_publishing_components/pull/3052))
-* Add `id` attribute option to the label component ([PR #3093](https://github.com/alphagov/govuk_publishing_components/pull/3093))
 
 ## 33.0.0
 
