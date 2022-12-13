@@ -19,6 +19,7 @@
 * Remove unused axe-core option from options parameter ([PR #3094](https://github.com/alphagov/govuk_publishing_components/pull/3094))
 * Minor ecommerce tracking refactor ([PR #3098](https://github.com/alphagov/govuk_publishing_components/pull/3098))
 * Add step by step nav GA4 tracking ([PR #3052](https://github.com/alphagov/govuk_publishing_components/pull/3052))
+* Add `id` attribute option to the label component ([PR #3093](https://github.com/alphagov/govuk_publishing_components/pull/3093))
 
 ## 33.0.0
 

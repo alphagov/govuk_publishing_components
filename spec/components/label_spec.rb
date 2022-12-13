@@ -88,4 +88,17 @@ describe "Label", type: :view do
     assert_select ".gem-c-label.govuk-label.govuk-radios__label"
     assert_select ".govuk-hint.govuk-radios__hint"
   end
+
+  it "renders label with id" do
+    render_component(
+      text: "Label with ID",
+      id: "test-id",
+      html_for: "label-with-id",
+    )
+
+    assert_select(
+      ".govuk-label[id='test-id'][for='label-with-id']",
+      text: "Label with ID",
+    )
+  end
 end

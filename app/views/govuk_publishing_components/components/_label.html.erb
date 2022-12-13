@@ -2,6 +2,7 @@
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
   hint_text ||= ""
+  id ||= nil
   is_radio_label ||= false
   bold ||= false
   heading_size = false unless shared_helper.valid_heading_size?(heading_size)
@@ -18,10 +19,10 @@
 
 <% if is_page_heading %>
   <%= tag.h1 text, class: "govuk-label-wrapper" do %>
-    <%= tag.label text, for: html_for, class: css_classes %>
+    <%= tag.label text, id: id, for: html_for, class: css_classes %>
   <% end %>
 <% else %>
-  <%= tag.label text, for: html_for, class: css_classes %>
+  <%= tag.label text, id: id, for: html_for, class: css_classes %>
 <% end %>
 
 <% if hint_text.present? %>

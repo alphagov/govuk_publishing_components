@@ -59,3 +59,9 @@ examples:
       html_for: "id-radio"
       hint_id: "id-radio"
       hint_text: "It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+  with_id:
+    description: 
+    data:
+      text: "Label with an ID"
+      id: "id-for-the-label"
+      html_for: "id-that-matches-input-6"
