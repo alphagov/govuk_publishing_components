@@ -56,15 +56,6 @@ describe('GA4 core', function () {
     })
   })
 
-  it('loads the GTAG snippet', function () {
-    window.GOVUK.analyticsGa4.vars.gtag_id = 'fake'
-    GOVUK.analyticsGa4.core.load()
-
-    expect(window.dataLayer.length).toEqual(2)
-    expect(window.dataLayer[0]).toContain('js')
-    expect(window.dataLayer[1]).toContain('config')
-  })
-
   it('pushes data to the dataLayer', function () {
     var data = {
       hello: 'I must be going'
