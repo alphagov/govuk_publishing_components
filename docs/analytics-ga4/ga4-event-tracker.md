@@ -6,7 +6,7 @@ This script is intended for adding GA4 tracking to interactive elements such as 
 
 ```html
 <div data-module="ga4-event-tracker">
-  <button data-ga4-event='{ "event_name": "select_content", "type": "something", "index": "0", "index_total": "1", "text": "Click me"}'>
+  <button data-ga4-event='{ "event_name": "select_content", "type": "something", "index": "0", "index_total": "1" }'>
     Click me
   </button>
 </div>
@@ -37,6 +37,8 @@ In the example above, the following would be pushed to the dataLayer. Note that 
   }
 }
 ```
+
+The value for `text` will be determined based on the text of the element, or a value can be passed to override this in the `data-ga4-event` attribute.
 
 ## Advanced use
 

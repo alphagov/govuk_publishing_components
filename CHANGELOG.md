@@ -11,6 +11,7 @@
 
 * Use setAttribute to add GA4 JSONs to step by step nav ([PR #3131](https://github.com/alphagov/govuk_publishing_components/pull/3131))
 * Add `id` attribute option to the label component ([PR #3093](https://github.com/alphagov/govuk_publishing_components/pull/3093))
+* Make GA4 event tracker automatically get element text ([PR #3137](https://github.com/alphagov/govuk_publishing_components/pull/3137))
 
 ## 34.0.0
 

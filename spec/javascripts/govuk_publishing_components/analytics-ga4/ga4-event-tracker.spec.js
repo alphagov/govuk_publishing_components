@@ -104,6 +104,7 @@ describe('Google Analytics event tracking', function () {
       expected.event = 'event_data'
       expected.event_data.event_name = 'select_content'
       expected.event_data.type = 'tabs'
+      expected.event_data.text = ''
       expected.govuk_gem_version = 'aVersion'
 
       var attributes = {
@@ -127,6 +128,43 @@ describe('Google Analytics event tracking', function () {
     })
   })
 
+  describe('doing tracking on the text of the element', function () {
+    var attributes
+
+    beforeEach(function () {
+      expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
+      expected.event = 'event_data'
+      expected.event_data.event_name = 'select_content'
+      expected.govuk_gem_version = 'aVersion'
+
+      attributes = {
+        event_name: 'select_content'
+      }
+      element.textContent = 'text from the button'
+    })
+
+    it('records the text of the element by default', function () {
+      element.setAttribute('data-ga4-event', JSON.stringify(attributes))
+      document.body.appendChild(element)
+      new GOVUK.Modules.Ga4EventTracker(element).init()
+      expected.event_data.text = 'text from the button'
+
+      element.click()
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
+    it('uses the text from the attributes if provided', function () {
+      attributes.text = 'text from the attributes'
+      element.setAttribute('data-ga4-event', JSON.stringify(attributes))
+      document.body.appendChild(element)
+      new GOVUK.Modules.Ga4EventTracker(element).init()
+      expected.event_data.text = 'text from the attributes'
+
+      element.click()
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+  })
+
   describe('doing simple tracking on multiple elements', function () {
     var expected1
     var expected2
@@ -135,11 +173,13 @@ describe('Google Analytics event tracking', function () {
       expected1 = new GOVUK.analyticsGa4.Schemas().eventSchema()
       expected1.event = 'event_data'
       expected1.event_data.event_name = 'event1-name'
+      expected1.event_data.text = ''
       expected1.govuk_gem_version = 'aVersion'
 
       expected2 = new GOVUK.analyticsGa4.Schemas().eventSchema()
       expected2.event = 'event_data'
       expected2.event_data.event_name = 'event2-name'
+      expected2.event_data.text = ''
       expected2.govuk_gem_version = 'aVersion'
 
       var attributes1 = {

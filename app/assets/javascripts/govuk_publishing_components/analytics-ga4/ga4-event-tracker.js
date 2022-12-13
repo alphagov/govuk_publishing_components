@@ -42,6 +42,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         return
       }
 
+      var text = data.text || event.target.textContent
+      data.text = window.GOVUK.analyticsGa4.core.trackFunctions.removeLinesAndExtraSpaces(text)
       schema.event = 'event_data'
       // get attributes from the data attribute to send to GA
       // only allow it if it already exists in the schema
