@@ -178,7 +178,18 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       var title = thisel.querySelectorAll('.js-step-title')[0]
       var contentId = thisel.querySelectorAll('.js-panel')[0].getAttribute('id')
       var titleText = title.textContent || title.innerText // IE8 fallback
-      var ga4Data = ''
+
+      title.outerHTML =
+        '<span class="js-step-title">' +
+          '<button ' +
+            'class="gem-c-step-nav__button gem-c-step-nav__button--title js-step-title-button" ' +
+            'aria-expanded="false" aria-controls="' + contentId + '"' + '>' +
+              '<span class="gem-c-step-nav____title-text-focus">' +
+                  '<span class="gem-c-step-nav__title-text js-step-title-text">' + titleText + '</span>' +
+                  '<span class="govuk-visually-hidden gem-c-step-nav__section-heading-divider">, </span>' +
+              '</span>' +
+          '</button>' +
+        '</span>'
 
       if (this.$module.isGa4Enabled) {
         var ga4JSON = {
@@ -188,20 +199,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           index: i + 1,
           index_total: this.$module.totalSteps
         }
-        ga4Data = "data-ga4-event='" + JSON.stringify(ga4JSON) + "'" // Construct GA4 data-attributes for ga4-event-tracker.
-      }
 
-      title.outerHTML =
-        '<span class="js-step-title">' +
-          '<button ' +
-            'class="gem-c-step-nav__button gem-c-step-nav__button--title js-step-title-button" ' +
-            'aria-expanded="false" aria-controls="' + contentId + '" ' + ga4Data + '>' +
-              '<span class="gem-c-step-nav____title-text-focus">' +
-                  '<span class="gem-c-step-nav__title-text js-step-title-text">' + titleText + '</span>' +
-                  '<span class="govuk-visually-hidden gem-c-step-nav__section-heading-divider">, </span>' +
-              '</span>' +
-          '</button>' +
-        '</span>'
+        var button = thisel.querySelector('.js-step-title-button')
+        button.setAttribute('data-ga4-event', JSON.stringify(ga4JSON))
+      }
     }
   }
 

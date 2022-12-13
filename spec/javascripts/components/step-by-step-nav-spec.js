@@ -928,6 +928,7 @@ describe('A stepnav module', function () {
       element.innerHTML = html
       element.childNodes[0].setAttribute('data-module', 'gemstepnav ga4-event-tracker')
       element.childNodes[0].setAttribute('data-ga4-expandable', '')
+      element.querySelector('.js-step-title').innerText = "This title's got quotation marks \" in it."
       new GOVUK.Modules.Gemstepnav(element.childNodes[0]).init()
     })
 
@@ -942,7 +943,7 @@ describe('A stepnav module', function () {
       var stepNav = element.childNodes[0]
       var stepButton = stepNav.querySelector('#topic-step-one .js-step-title button')
 
-      expect(stepButton.getAttribute('data-ga4-event')).toEqual('{"event_name":"select_content","type":"step by step","text":"Topic Step One","index":1,"index_total":3}')
+      expect(stepButton.getAttribute('data-ga4-event')).toEqual('{"event_name":"select_content","type":"step by step","text":"This title\'s got quotation marks \\" in it.","index":1,"index_total":3}')
     })
   })
 })
