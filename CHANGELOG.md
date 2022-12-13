@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update component auditing following print style changes ([PR #3128](https://github.com/alphagov/govuk_publishing_components/pull/3128))
+
 ## 34.1.0
 
 * Use setAttribute to add GA4 JSONs to step by step nav ([PR #3131](https://github.com/alphagov/govuk_publishing_components/pull/3131))
