@@ -28,11 +28,11 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
             content_id: this.getMetaContent('content-id'),
 
             browse_topic: this.getMetaContent('section'),
-            taxon_slug: this.getMetaContent('taxon-slug'),
-            taxon_id: this.getMetaContent('taxon-id'),
             taxonomy_level1: this.getMetaContent('themes'),
-            taxon_slugs: this.getMetaContent('taxon-slugs'),
-            taxon_ids: this.getMetaContent('taxon-ids'),
+            taxonomy_main: this.getMetaContent('taxon-slug'),
+            taxonomy_main_id: this.getMetaContent('taxon-id'),
+            taxonomy_all: this.getMetaContent('taxon-slugs'),
+            taxonomy_all_ids: this.getMetaContent('taxon-ids'),
 
             language: this.getLanguage(),
             history: this.getHistory(),

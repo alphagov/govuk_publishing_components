@@ -28,11 +28,11 @@ describe('Google Tag Manager page view tracking', function () {
         content_id: undefined,
 
         browse_topic: undefined,
-        taxon_slug: undefined,
-        taxon_id: undefined,
+        taxonomy_main: undefined,
+        taxonomy_main_id: undefined,
         taxonomy_level1: undefined,
-        taxon_slugs: undefined,
-        taxon_ids: undefined,
+        taxonomy_all: undefined,
+        taxonomy_all_ids: undefined,
 
         language: undefined,
         history: 'false',
@@ -134,12 +134,12 @@ describe('Google Tag Manager page view tracking', function () {
         value: 'this section'
       },
       {
-        gtmName: 'taxon_slug',
+        gtmName: 'taxonomy_main',
         tagName: 'taxon-slug',
         value: 'this taxon slug'
       },
       {
-        gtmName: 'taxon_id',
+        gtmName: 'taxonomy_main_id',
         tagName: 'taxon-id',
         value: 'this taxon id'
       },
@@ -149,12 +149,12 @@ describe('Google Tag Manager page view tracking', function () {
         value: 'this theme'
       },
       {
-        gtmName: 'taxon_slugs',
+        gtmName: 'taxonomy_all',
         tagName: 'taxon-slugs',
         value: 'this taxon slugs'
       },
       {
-        gtmName: 'taxon_ids',
+        gtmName: 'taxonomy_all_ids',
         tagName: 'taxon-ids',
         value: 'this taxon ids'
       }
