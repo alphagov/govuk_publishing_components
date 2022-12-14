@@ -31,8 +31,7 @@
   heading_level ||= nil
   prefix ||= nil
   suffix ||= nil
-  text_direction_rtl ||= false
-  text_direction_label_ltr ||= false
+  right_to_left ||= false
 
   css_classes = %w(gem-c-input govuk-input)
   css_classes << "govuk-input--error" if has_error
@@ -66,17 +65,18 @@
     inputmode = "numeric"
   end
 
-  dir_input = text_direction_rtl ? "rtl" : nil
-  label_rtl = text_direction_label_ltr ? false : text_direction_rtl
+  dir = right_to_left ? "rtl" : nil
 %>
 
 <%= content_tag :div, class: form_group_css_classes do %>
   <% if label %>
+    <% label_rtl = label[:right_to_left] == false ? label[:right_to_left] : right_to_left %>
+
     <% label_markup = capture do %>
       <%= render "govuk_publishing_components/components/label", {
         html_for: id,
         heading_size: heading_size,
-        text_direction_rtl: label_rtl
+        right_to_left: label_rtl
       }.merge(label.symbolize_keys) %>
     <% end %>
 
@@ -113,7 +113,7 @@
     autofocus: autofocus,
     class: css_classes,
     data: data,
-    dir: dir_input,
+    dir: dir,
     enterkeyhint: checked_enterkeyhint,
     id: id,
     inputmode: inputmode,

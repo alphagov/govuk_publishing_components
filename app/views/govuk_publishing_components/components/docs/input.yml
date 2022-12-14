@@ -185,15 +185,17 @@ examples:
       enterkeyhint: "next"
   with_dir_attribute:
     description: |
-      To allow the correct display of right to left languages.
+      Allows the correct display of right to left languages.
 
-      When `text_direction_rtl` is set to true both the input and the label are displayed right to left.
+      By default the input element and the label both display text in a left to right direction.
 
-      When `text_direction_label_ltr` is set to true the textarea is displayed right to left and the label is displayed left to right
+      When the `right_to_left` parameter of the input component is set to `true` both the input and the label display their content in a right to left direction. 
+
+      The direction of the text in the label element can be overridden by setting the `right_to_left` parameter of the label to `false`.
     data:
       label:
-        text: "Some input text to be displayed right to left"
+        text: "Some input text to be displayed right to left with a label displayed left to right"
+        right_to_left: false
       name: rtl-input-text
       value: "العربيَّة"
-      text_direction_rtl: true
-      text_direction_label_ltr: true
+      right_to_left: true
