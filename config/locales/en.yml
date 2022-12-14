@@ -162,10 +162,12 @@ en:
       menu_toggle_label:
         hide: Hide %{label} menu
         show: Show %{label} menu
-      navigation_links:
-      - label: Topics
+      navigation_link:
         href: "/browse"
-        description: Find information and services
+        label: Menu
+      navigation_links_columns:
+      - label: Topics
+        size: 2
         menu_contents:
         - label: Benefits
           href: "/browse/benefits"
@@ -202,8 +204,7 @@ en:
         - label: Working, jobs and pensions
           href: "/browse/working"
       - label: Government activity
-        href: "/search/news-and-communications"
-        description: Search for a department and find out what the government is doing
+        column_size: 1
         menu_contents:
         - label: Departments
           href: "/government/organisations"
@@ -223,11 +224,6 @@ en:
         - label: Transparency
           href: "/search/transparency-and-freedom-of-information-releases"
           description: Data, Freedom of Information releases and corporate reports
-        footer_links:
-        - label: How government works
-          href: "/government/how-government-works"
-        - label: Get involved
-          href: "/government/get-involved"
       navigation_menu_heading: Navigation menu
       navigation_search_heading: Search and popular pages
       navigation_search_subheading: Search

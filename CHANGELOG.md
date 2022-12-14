@@ -13,6 +13,7 @@
 * Add `id` attribute option to the label component ([PR #3093](https://github.com/alphagov/govuk_publishing_components/pull/3093))
 * Make GA4 event tracker automatically get element text ([PR #3137](https://github.com/alphagov/govuk_publishing_components/pull/3137))
 * Rename taxon parameters ([PR #3139](https://github.com/alphagov/govuk_publishing_components/pull/3139))
+* Use one button in navbar ([PR #3058](https://github.com/alphagov/govuk_publishing_components/pull/3058))
 
 ## 34.0.0
 
