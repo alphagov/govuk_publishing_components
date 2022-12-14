@@ -7,7 +7,7 @@
   bold ||= false
   heading_size = false unless shared_helper.valid_heading_size?(heading_size)
   is_page_heading ||= false
-  text_direction_rtl ||= false
+  right_to_left ||= false
 
   css_classes = %w[gem-c-label govuk-label]
   css_classes << "govuk-label--s" if bold
@@ -17,7 +17,7 @@
   hint_text_css_classes = %w[govuk-hint]
   hint_text_css_classes << "govuk-radios__hint" if is_radio_label
 
-  dir = text_direction_rtl ? "rtl" : nil
+  dir = right_to_left ? "rtl" : nil
 %>
 
 <% if is_page_heading %>

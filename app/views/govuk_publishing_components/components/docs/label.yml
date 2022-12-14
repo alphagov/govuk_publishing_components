@@ -71,4 +71,4 @@ examples:
     data:
       text: "العربيَّة"
       html_for: "id-that-matches-input-7"
-      text_direction_rtl: true
+      right_to_left: true

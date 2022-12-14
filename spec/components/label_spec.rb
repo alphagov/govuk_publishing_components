@@ -100,12 +100,13 @@ describe "Label", type: :view do
       ".govuk-label[id='test-id'][for='label-with-id']",
       text: "Label with ID",
     )
+  end
 
   it "renders label with the correct `dir` attribute" do
     render_component(
       text: "العربيَّة",
-      html_for: "id-that-matches-input-6",
-      text_direction_rtl: true,
+      html_for: "id-that-matches-input",
+      right_to_left: true,
     )
 
     assert_select ".govuk-label[dir='rtl']"
