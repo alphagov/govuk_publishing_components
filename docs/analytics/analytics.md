@@ -170,7 +170,7 @@ named tracker, and sessions will persist to the other domain.
 
 Once a service starts sending analytics data to the shared GA property and has configured their system to include `www.gov.uk` in their cross domain linking, we must also configure `www.gov.uk` to include their domain in our cross linker configuration.
 
-Add the domain of the service to [`init.js.erb`](https://github.com/alphagov/static/blob/main/app/assets/javascripts/analytics.js.erb).
+Add the domain of the service to [linked-domains.js](https://github.com/alphagov/govuk_publishing_components/tree/main/app/assets/javascripts/govuk_publishing_components/analytics/linked-domains.js).
 
 Here's an [example of an earlier PR](https://github.com/alphagov/static/pull/1845) to do this.
 

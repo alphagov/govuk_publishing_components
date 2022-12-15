@@ -58,6 +58,7 @@
           "lux-reporter-script": path_to_javascript("govuk_publishing_components/vendor/lux/lux-reporter")
         }
       } %>
+    <%= javascript_include_tag "govuk_publishing_components/load-analytics" %>
 
     <%= csrf_meta_tags %>
 
@@ -77,6 +78,9 @@
 
     <% # The default og:image is added below :head so that scrapers see any custom metatags first, and this is just a fallback %>
     <meta property="og:image" content="<%= asset_path "govuk-opengraph-image.png" %>">
+
+    <% # Used for Google Analytics 4 debugging %>
+    <meta name="govuk:components_gem_version" content="<%= GovukPublishingComponents::VERSION %>" />
 
     <%= yield :head %>
   </head>

@@ -11,6 +11,7 @@
 
 * Add GA4 tracking to related navigation ([PR #3179](https://github.com/alphagov/govuk_publishing_components/pull/3179))
 * Add Youtube Embed Support to the ImageCard Component ([PR #3156](https://github.com/alphagov/govuk_publishing_components/pull/3156))
+* Remove dependency on .js.erb and puppet for loading our analytics ([PR #3145](https://github.com/alphagov/govuk_publishing_components/pull/3145))
 
 ## 34.3.0
 
