@@ -2,63 +2,121 @@ module GovukPublishingComponents
   class AuditComponents
     attr_reader :data
 
-    def initialize(path, simple)
-      @data = {
-        gem_found: false,
-      }
-      @data = compile_data(path, simple) if Dir.exist?(path)
-    end
-
-  private
-
-    def compile_data(path, simple)
-      # simple is used to reduce effort (and therefore page load time) required
-      # when loading auditing summary on the main component guide page
-      @simple = simple
-
+    def initialize(path)
       # paths to key file locations
       @templates_path = "app/views/govuk_publishing_components/components"
       @stylesheets_path = "app/assets/stylesheets/govuk_publishing_components/components"
       @print_stylesheets_path = "app/assets/stylesheets/govuk_publishing_components/components/print"
       @javascripts_path = "app/assets/javascripts/govuk_publishing_components/components"
       @tests_path = "spec/components"
-      @js_tests_path = "spec/javascripts/components"
+      @javascript_tests_path = "spec/javascripts/components"
       @helpers_path = "lib/govuk_publishing_components/presenters"
 
-      # get all files in key file locations
-      templates = Dir["#{path}/#{@templates_path}/*.erb"]
-      stylesheets = Dir["#{path}/#{@stylesheets_path}/*.scss"]
-      print_stylesheets = Dir["#{path}/#{@print_stylesheets_path}/*.scss"]
-      javascripts = Dir["#{path}/#{@javascripts_path}/*.js"]
-      tests = Dir["#{path}/#{@tests_path}/*.rb"]
-      js_tests = Dir["#{path}/#{@js_tests_path}/*.js"]
-      helpers = Dir["#{path}/#{@helpers_path}/*_helper.rb"]
-
+      @all_templates = Dir["#{path}/#{@templates_path}/*.erb"].sort
       @templates_full_path = "#{path}/#{@templates_path}/"
 
-      # find the cleaned names of components in key file locations
-      # i.e. will show that 'component name' has a stylesheet
-      # standardised like this to be used later for easier comparison
-      @components = clean_files(templates, [path, @templates_path].join("/"))
-      @component_stylesheets = clean_files(stylesheets, [path, @stylesheets_path].join("/"))
-      @component_print_stylesheets = clean_files(print_stylesheets, [path, @print_stylesheets_path].join("/"))
-      @component_javascripts = clean_files(javascripts, [path, @javascripts_path].join("/"))
-      @component_tests = clean_files(tests, [path, @tests_path].join("/"))
-      @component_js_tests = clean_files(js_tests, [path, @js_tests_path].join("/"))
-      @component_helpers = clean_files(helpers, [path, @helpers_path].join("/"))
+      @component_numbers = {
+        template: 0,
+        stylesheet: 0,
+        print_stylesheet: 0,
+        javascript: 0,
+        test: 0,
+        javascript_test: 0,
+        helper: 0,
+      }
 
+      @data = {
+        gem_found: false,
+      }
+      @data = compile_data(path) if Dir.exist?(path)
+    end
+
+  private
+
+    def compile_data(path)
       {
         gem_found: true,
-        component_code: @components,
-        component_stylesheets: @component_stylesheets,
-        component_print_stylesheets: @component_print_stylesheets,
-        component_javascripts: @component_javascripts,
-        component_tests: @component_tests,
-        component_js_tests: @component_js_tests,
-        component_helpers: @component_helpers,
-        components_containing_components: find_all_partials_in(templates),
-        component_listing: list_all_component_details,
+        component_code: clean_files(@all_templates, @templates_full_path).sort,
+        components_containing_components: find_all_partials_in(@all_templates),
+        component_file_details: get_component_file_details(path),
+        component_numbers: @component_numbers,
       }
+    end
+
+    def get_component_file_details(path)
+      component_templates = clean_files(@all_templates, @templates_full_path).sort
+      details = []
+      component_templates.each do |component|
+        component_detail = {
+          name: component,
+          link: get_component_link(component),
+        }
+        file_details = [
+          {
+            type: "template",
+            file: "#{[path, @templates_path].join('/')}/_#{component.gsub(' ', '_')}.html.erb",
+          },
+          {
+            type: "stylesheet",
+            file: "#{[path, @stylesheets_path].join('/')}/_#{component.gsub(' ', '-')}.scss",
+          },
+          {
+            type: "print_stylesheet",
+            file: "#{[path, @stylesheets_path].join('/')}/_#{component.gsub(' ', '-')}.scss",
+          },
+          {
+            type: "javascript",
+            file: "#{[path, @javascripts_path].join('/')}/#{component.gsub(' ', '-')}.js",
+          },
+          {
+            type: "test",
+            file: "#{[path, @tests_path].join('/')}/#{component.gsub(' ', '_')}_spec.rb",
+          },
+          {
+            type: "javascript_test",
+            file: "#{[path, @javascript_tests_path].join('/')}/#{component.gsub(' ', '-')}-spec.js",
+          },
+          {
+            type: "helper",
+            file: "#{[path, @helpers_path].join('/')}/#{component.gsub(' ', '_')}_helper.rb",
+          },
+        ]
+        file_details.each do |detail|
+          component_detail = component_detail.merge(get_component_asset_detail(detail, component))
+        end
+
+        details << component_detail
+      end
+
+      details
+    end
+
+    def get_component_asset_detail(detail, component)
+      details = {}
+      type = detail[:type]
+      file = detail[:file]
+      details["#{type}_exists".to_sym] = false
+      if File.file?(file)
+        # we don't have separate print stylesheets anymore
+        # so check the main stylesheet for print styles
+        if type == "print_stylesheet"
+          unless File.foreach(file).grep(/(media-type: print)/).empty?
+            details["#{type}_exists".to_sym] = true
+            @component_numbers[type.to_sym] += 1
+          end
+        else
+          @component_numbers[type.to_sym] += 1
+          details["#{type}_exists".to_sym] = true
+          details["#{type}_lines".to_sym] = count_lines_in(file)
+          details["#{type}_link".to_sym] = get_asset_link(type, component)
+        end
+      end
+
+      details
+    end
+
+    def count_lines_in(file)
+      File.read(file).each_line.count
     end
 
     def clean_files(files, replace)
@@ -91,8 +149,6 @@ module GovukPublishingComponents
     end
 
     def find_all_partials_in(templates)
-      return [] if @simple
-
       components = []
 
       templates.each do |template|
@@ -144,52 +200,17 @@ module GovukPublishingComponents
       end
     end
 
-    def list_all_component_details
-      return [] if @simple
-
-      all_component_information = []
-
-      @components.each do |component|
-        all_component_information << {
-          name: component,
-          link: get_component_link(component),
-          stylesheet: check_component_has("stylesheet", component),
-          print_stylesheet: check_component_has("print_stylesheet", component),
-          javascript: check_component_has("javascript", component),
-          tests: check_component_has("test", component),
-          js_tests: check_component_has("js_test", component),
-          helper: check_component_has("helper", component),
-        }
-      end
-
-      all_component_information
-    end
-
-    def check_component_has(a_thing, component)
-      look_in = @component_stylesheets if a_thing == "stylesheet"
-      look_in = @component_print_stylesheets if a_thing == "print_stylesheet"
-      look_in = @component_javascripts if a_thing == "javascript"
-      look_in = @component_tests if a_thing == "test"
-      look_in = @component_js_tests if a_thing == "js_test"
-      look_in = @component_helpers if a_thing == "helper"
-
-      if look_in.include?(component)
-        return get_asset_link(a_thing, component)
-      end
-
-      false
-    end
-
     def get_asset_link(a_thing, component)
       url = "https://github.com/alphagov"
       repo = "govuk_publishing_components"
       blob = "blob/main"
       link = nil
+      link = "#{url}/#{repo}/#{blob}/#{@templates_path}/_#{component.gsub(' ', '_')}.html.erb" if a_thing == "template"
       link = "#{url}/#{repo}/#{blob}/#{@stylesheets_path}/_#{component.gsub(' ', '-')}.scss" if a_thing == "stylesheet"
       link = "#{url}/#{repo}/#{blob}/#{@print_stylesheets_path}/_#{component.gsub(' ', '-')}.scss" if a_thing == "print_stylesheet"
       link = "#{url}/#{repo}/#{blob}/#{@javascripts_path}/#{component.gsub(' ', '-')}.js" if a_thing == "javascript"
       link = "#{url}/#{repo}/#{blob}/#{@tests_path}/#{component.gsub(' ', '_')}_spec.rb" if a_thing == "test"
-      link = "#{url}/#{repo}/#{blob}/#{@js_tests_path}/#{component.gsub(' ', '-')}-spec.js" if a_thing == "js_test"
+      link = "#{url}/#{repo}/#{blob}/#{@javascript_tests_path}/#{component.gsub(' ', '-')}-spec.js" if a_thing == "javascript_test"
       link = "#{url}/#{repo}/#{blob}/#{@helpers_path}/#{component.gsub(' ', '_')}_helper.rb" if a_thing == "helper"
 
       link
