@@ -57,12 +57,12 @@
 
 .brand--prime-ministers-office-10-downing-street {
   .brand__color {
-    color: govuk-colour("bright-purple");
+    color: govuk-colour("black");
 
     &:link,
     &:visited,
     &:active {
-      color: govuk-colour("bright-purple");
+      color: govuk-colour("black");
     }
 
     &:hover,
