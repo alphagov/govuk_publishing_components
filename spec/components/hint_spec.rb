@@ -28,4 +28,13 @@ describe "Hint", type: :view do
 
     assert_select '.govuk-hint.govuk-\!-margin-bottom-3'
   end
+
+  it "renders the component with the correct `dir` attribute" do
+    render_component(
+      text: "العربيَّة",
+      right_to_left: true,
+    )
+
+    assert_select ".govuk-hint[dir='rtl']"
+  end
 end
