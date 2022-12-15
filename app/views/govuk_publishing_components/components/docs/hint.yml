@@ -19,3 +19,9 @@ examples:
     data:
       text: "You qualify if you were born in the UK before June 1960."
       margin_bottom: 9
+  with_dir_attribute:
+    description: |
+      Allows the correct display of right to left languages.
+    data:
+      text: "العربيَّة"
+      right_to_left: true
