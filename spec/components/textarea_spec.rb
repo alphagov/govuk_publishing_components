@@ -199,13 +199,32 @@ describe "Textarea", type: :view do
     end
   end
 
-  it "renders textarea with the correct `dir` attribute" do
+  it "renders the textarea and label with the correct `dir` attribute when the textarea is set to 'right_to_left: true' and no value is set for the label" do
     render_component(
       name: "rtl-textarea-text",
       value: "العربيَّة",
-      text_direction_rtl: true,
+      right_to_left: true,
+      label: {
+        text: "Some text rendered right to left",
+      },
     )
 
     assert_select ".govuk-textarea[dir='rtl']"
+    assert_select ".govuk-label[dir='rtl']"
+  end
+
+  it "renders the textarea and label with the correct `dir` attribute when the textarea is set to 'right_to_left: true' and the label is set to 'right_to_left: false'" do
+    render_component(
+      name: "rtl-textarea-text",
+      value: "العربيَّة",
+      right_to_left: true,
+      label: {
+        text: "Some text rendered right to left",
+        right_to_left: false,
+      },
+    )
+
+    assert_select ".govuk-textarea[dir='rtl']"
+    assert_no_selector ".govuk-label[dir='rtl']"
   end
 end
