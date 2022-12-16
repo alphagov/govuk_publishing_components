@@ -95,32 +95,24 @@
   margin-bottom: 0;
   width: 100%;
 
-  &:hover {
-    // backup style for browsers that don't support rgba
-    background: govuk-colour("mid-grey");
-    background: rgba(govuk-colour("black"), .2);
-    color: govuk-colour("black");
-  }
-
-  &:active:focus:not(:hover) {
-    background: govuk-colour("yellow");
-  }
   @include govuk-media-query($from: tablet) {
     @include govuk-font(16);
   }
-}
-
-.gem-c-feedback__email-link,
-.gem-c-feedback__prompt-link {
-  position: relative;
-
-  &:focus:not(:active):not(:hover) {
-    border-color: govuk-colour("black");
-  }
 
   &:focus,
+  &:focus:not(:active):not(:hover) {
+    background: govuk-colour("yellow");
+    border-color: govuk-colour("black");
+    box-shadow: 0 5px  0 govuk-colour("black");
+  }
+
   &:active {
-    color: $govuk-focus-text-colour;
+    color: govuk-colour("black");
+  }
+
+  &:hover {
+    background: govuk-colour("mid-grey");
+    color: govuk-colour("black");
   }
 }
 
