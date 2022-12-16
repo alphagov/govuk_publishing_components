@@ -192,10 +192,13 @@ examples:
       When the `right_to_left` parameter of the input component is set to `true` both the input and the label display their content in a right to left direction. 
 
       The direction of the text in the label element can be overridden by setting the `right_to_left` parameter of the label to `false`.
+
+      If hint text is included this will display in the same direction as the label.
     data:
       label:
         text: "Some input text to be displayed right to left with a label displayed left to right"
         right_to_left: false
+      hint: "Some hint text that displays in the same text direction as the label"
       name: rtl-input-text
       value: "العربيَّة"
       right_to_left: true
