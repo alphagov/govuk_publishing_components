@@ -51,9 +51,12 @@
   <% end %>
 
   <% if hint %>
+    <% hint_rtl = label_rtl.nil? ? right_to_left : label_rtl %>
+
     <%= render "govuk_publishing_components/components/hint", {
       id: hint_id,
-      text: hint
+      text: hint,
+      right_to_left: hint_rtl
     } %>
   <% end %>
 

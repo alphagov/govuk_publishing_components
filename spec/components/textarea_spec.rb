@@ -227,4 +227,37 @@ describe "Textarea", type: :view do
     assert_select ".govuk-textarea[dir='rtl']"
     assert_no_selector ".govuk-label[dir='rtl']"
   end
+
+  it "renders hint text with a `dir` attribute which matches the label when the input is set to 'right_to_left: true'" do
+    render_component(
+      name: "rtl-input-text",
+      value: "العربيَّة",
+      right_to_left: true,
+      hint: "Some hint text that is displayed right to left",
+      label: {
+        text: "Some text rendered right to left",
+      },
+    )
+
+    assert_select ".govuk-textarea[dir='rtl']"
+    assert_select ".govuk-label[dir='rtl']"
+    assert_select ".govuk-hint[dir='rtl']"
+  end
+
+  it "renders hint text with a `dir` attribute which matches the label when the input is set to 'right_to_left: false'" do
+    render_component(
+      name: "rtl-input-text",
+      value: "العربيَّة",
+      right_to_left: true,
+      hint: "Some hint text that is displayed left to right",
+      label: {
+        text: "Some text rendered left to right",
+        right_to_left: false,
+      },
+    )
+
+    assert_select ".govuk-textarea[dir='rtl']"
+    assert_no_selector ".govuk-label[dir='rtl']"
+    assert_no_selector ".govuk-hint[dir='rtl']"
+  end
 end
