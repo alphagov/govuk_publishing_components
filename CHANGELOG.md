@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 34.1.1
 
 * Update component auditing following print style changes ([PR #3128](https://github.com/alphagov/govuk_publishing_components/pull/3128))
 * Remove the redundant region role from the cookie banner ([PR #3075](https://github.com/alphagov/govuk_publishing_components/pull/3075))
