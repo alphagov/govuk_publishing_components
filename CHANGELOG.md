@@ -11,6 +11,7 @@
 
 * Update component auditing following print style changes ([PR #3128](https://github.com/alphagov/govuk_publishing_components/pull/3128))
 * Remove the redundant region role from the cookie banner ([PR #3075](https://github.com/alphagov/govuk_publishing_components/pull/3075))
+* Change brand colour for No. 10 to be govuk-black ([PR #3143](https://github.com/alphagov/govuk_publishing_components/pull/3143))
 
 ## 34.1.0
 
