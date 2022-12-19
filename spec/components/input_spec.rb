@@ -347,4 +347,39 @@ describe "Input", type: :view do
     assert_no_selector ".govuk-label[dir='rtl']"
     assert_no_selector ".govuk-hint[dir='rtl']"
   end
+
+  it "renders an error message with a `dir` attribute which matches the label" do
+    render_component(
+      name: "rtl-input-text",
+      value: "العربيَّة",
+      right_to_left: true,
+      error_message: "An error message that displays in the same text direction as the label",
+      label: {
+        text: "Some text rendered left to right",
+      },
+    )
+
+    assert_select ".govuk-error-message[dir='rtl']"
+  end
+
+  it "renders error items with a `dir` attribute which matches the label" do
+    render_component(
+      name: "rtl-input-text",
+      value: "العربيَّة",
+      right_to_left: true,
+      error_items: [
+        {
+          text: "Error item 1",
+        },
+        {
+          text: "Error item 2",
+        },
+      ],
+      label: {
+        text: "Some text rendered left to right",
+      },
+    )
+
+    assert_select ".govuk-error-message[dir='rtl']"
+  end
 end

@@ -100,10 +100,13 @@
   <% end %>
 
   <% if has_error %>
+    <% error_rtl = label_rtl.nil? ? right_to_left : label_rtl %>
+
     <%= render "govuk_publishing_components/components/error_message", {
       id: error_id,
       text: error_message,
       items: error_items,
+      right_to_left: error_rtl
     } %>
   <% end %>
 

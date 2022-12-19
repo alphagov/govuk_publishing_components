@@ -202,3 +202,31 @@ examples:
       name: rtl-input-text
       value: "العربيَّة"
       right_to_left: true
+  with_dir_attribute_and_error:
+    description: |
+      Allows the correct display of error message with right to left languages.
+
+      Where an error message is displayed this will display in the same direction as the label.
+    data:
+      label:
+        text: "Some input text to be displayed right to left with a label displayed left to right"
+      name: "rtl-input-with-error"
+      value: "العربيَّة"
+      error_message: "An error message that displays in the same text direction as the label"
+      right_to_left: true
+  with_dir_attribute_and_error_items:
+    description: |
+      Allows the correct display of error message items with right to left languages.
+
+      Where an error message is displayed this will display in the same direction as the label.
+    data:
+      label:
+        text: "Some textarea text to be displayed right to left with a label displayed right to left"
+      name: "more-detail-error"
+      value: "العربيَّة"
+      right_to_left: true
+      error_items:
+      - text: Descriptive link to the question with an error 1
+        href: '#example-error-1'
+      - text: Descriptive link to the question with an error 2
+        href: '#example-error-2'
