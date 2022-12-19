@@ -15,9 +15,22 @@ examples:
     data:
       text: "Please enter your National Insurance Number"
       id: "error_id"
+  with_dir_attribute:
+    description: Error items are a common pattern where a collection of error is passed with each item having a text attribute of the error
+    data:
+      text: "An error message that displays right to left"
+      id: "error_id_2"
+      right_to_left: true
   with_items:
     description: Error items are a common pattern where a collection of error is passed with each item having a text attribute of the error
     data:
+      items:
+        - text: Error 1
+        - text: Error 2
+  with_items_and_dir_attribute:
+    description: Error items are a common pattern where a collection of error is passed with each item having a text attribute of the error
+    data:
+      right_to_left: true
       items:
         - text: Error 1
         - text: Error 2

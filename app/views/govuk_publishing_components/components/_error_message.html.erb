@@ -4,12 +4,15 @@
   css_classes = %w( gem-c-error-message govuk-error-message )
   css_classes << classes if classes
   items ||= []
+  right_to_left ||= false
 
   if items.any?
     errors = items.map { |item| capture { item[:text] } }
     text = raw(errors.join("<br />"))
   end
+
+  dir = right_to_left ? "rtl" : nil
 %>
-<%= tag.p id: id, class: css_classes do %>
+<%= tag.p id: id, class: css_classes, dir: dir do %>
   <span class="govuk-visually-hidden">Error:</span> <%= text %>
 <% end %>

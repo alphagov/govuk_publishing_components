@@ -26,4 +26,13 @@ describe "Error message", type: :view do
     assert_select("p.govuk-error-message", html: %r{Error where HTML is &lt;strong&gt;escaped&lt;/strong&gt;})
     assert_select("p.govuk-error-message", html: %r{Error where HTML is <strong>maintained</strong>})
   end
+
+  it "renders error message with a value for the `dir` attribute" do
+    render_component(
+      text: "Error:An error message that displays right to left",
+      right_to_left: true,
+    )
+
+    assert_select("p.govuk-error-message[dir='rtl']")
+  end
 end
