@@ -16,9 +16,21 @@ module GovukPublishingComponents
         "UK Mission to the European Union" => "uk-mission-to-the-eu",
       }.freeze
 
+      attr_reader :component_title, :content_item
+
       def initialize(options = {})
         @content_item = options.fetch(:content_item) { raise ArgumentError, "missing argument: content_item" }
         @context = options.fetch(:context, nil)
+        @component_title = get_component_title
+      end
+
+      def total_links
+        count = 0
+        related_navigation.each do |section_title, links|
+          count += links.length
+        end
+
+        count
       end
 
       def related_navigation
@@ -63,6 +75,10 @@ module GovukPublishingComponents
             ],
           )
         end
+      end
+
+      def get_component_title
+        I18n.t("components.related_#{@context}_navigation.related_content", default: I18n.t("components.related_navigation.related_content"))
       end
 
       def section_css_class(css_class, section_title, link: {}, link_is_inline: false)
