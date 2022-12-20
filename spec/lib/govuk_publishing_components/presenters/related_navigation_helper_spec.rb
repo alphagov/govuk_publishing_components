@@ -6,7 +6,7 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
       payload.merge(content_item)
     end
 
-    described_class.new(content_item: example, context: context).related_navigation
+    described_class.new(content_item: example, context: context)#.related_navigation
   end
 
   describe "#related_navigation" do
@@ -35,7 +35,8 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
         "related_external_links" => [],
       }
 
-      expect(nothing).to eq(expected)
+      expect(nothing.total_links).to eq(0)
+      expect(nothing.related_navigation).to eq(expected)
     end
 
     it "extracts and returns the appropriate related links" do
@@ -130,7 +131,8 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
         "statistical_data_sets" => [],
       }
 
-      expect(payload).to eql(expected)
+      expect(payload.total_links).to eql(6)
+      expect(payload.related_navigation).to eql(expected)
     end
 
     it "returns statistical data sets" do
@@ -160,7 +162,8 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
         },
       )
 
-      expect(payload["statistical_data_sets"]).to eql(
+      expect(payload.total_links).to eql(1)
+      expect(payload.related_navigation["statistical_data_sets"]).to eql(
         [{ locale: "en", path: "/related-statistical-data-set", text: "related statistical data set" }],
       )
     end
@@ -202,20 +205,22 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
         },
       )
 
-      expect(payload["topics"]).to eql(
+      expect(payload.total_links).to eql(2)
+      expect(payload.related_navigation["topics"]).to eql(
         [{ locale: "en", text: "Self Assessment", path: "/browse/tax/self-assessment" }],
       )
     end
 
     it "handles ordered related items that aren't tagged to a mainstream browse page" do
       example = GovukSchemas::Example.find("guide", example_name: "single-page-guide")
-      payload = described_class.new(content_item: example).related_navigation
+      payload = described_class.new(content_item: example)
       expected = [
         { locale: "en", text: "Travel abroad", path: "/browse/abroad/travel-abroad" },
         { locale: "en", text: "Arriving in the UK", path: "/browse/visas-immigration/arriving-in-the-uk" },
         { locale: "en", text: "Pets", path: "/topic/animal-welfare/pets" },
       ]
-      expect(payload["topics"]).to eql(expected)
+      expect(payload.total_links).to eql(3)
+      expect(payload.related_navigation["topics"]).to eql(expected)
     end
 
     it "returns an Elsewhere on the web section for external related links" do
