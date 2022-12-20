@@ -103,3 +103,83 @@ examples:
               title: "Russian invasion of Ukraine: UK government response"
               base_path: "/government/topical-events/russian-invasion-of-ukraine-uk-government-response"
               locale: "en"
+  with_ukraine_cta_except_not:
+    data:
+      content_item:
+        title: "UK forces arrive to reinforce NATO’s eastern flank"
+        content_id: "3"
+        locale: "en"
+        links:
+          ordered_related_items:
+          - title: Protecting the UK and promoting a Global Britain
+            base_path: "/government/collections/protecting-the-uk-and-promoting-a-global-britain"
+            locale: "en"
+          topical_events:
+            - content_id: "bfa79635-ffda-4b5d-8266-a9cd3a03649c"
+              title: "Russian invasion of Ukraine: UK government response"
+              base_path: "/government/topical-events/russian-invasion-of-ukraine-uk-government-response"
+              locale: "en"
+  with_ga4_tracking_on_related_navigation:
+    description: Applies Google Analytics 4 tracking to the related navigation variant of the sidebar.
+    data:
+      ga4_tracking: true
+      content_item:
+        links:
+          ordered_related_items:
+          - title: Find an apprenticeship
+            base_path: /apply-apprenticeship
+          - title: Training and study at work
+            base_path: /training-study-work-your-rights
+          - title: Careers helpline for teenagers
+            base_path: /careers-helpline-for-teenagers
+          document_collections:
+          - title: Recruit an apprentice (formerly apprenticeship vacancies)
+            base_path: /government/collections/apprenticeship-vacancies
+            document_type: document_collection
+          - title: The future of jobs and skills
+            base_path: /government/collections/the-future-of-jobs-and-skills
+            document_type: document_collection
+          topical_events:
+            - content_id: "bfa79635-ffda-4b5d-8266-a9cd3a03649c"
+              title: "Russian invasion of Ukraine: UK government response"
+              base_path: "/government/topical-events/russian-invasion-of-ukraine-uk-government-response"
+              locale: "en"
+        details:
+          external_related_links:
+            - url: "http://media.slc.co.uk/sfe/1718/ft/sfe_terms_and_conditions_guide_1718_d.pdf"
+              title: "Student loans: terms and conditions 2017 to 2018 (PDF, 136KB)"
+            - title: The Student Room repaying your student loan
+              url: https://www.thestudentroom.co.uk/content.php?r=5967-Repaying-your-student-loan
+  with_ga4_tracking_on_step_navs:
+    description: Applies Google Analytics 4 tracking to the step by step navigation variant of the sidebar.
+    data:
+      ga4_tracking: true
+      content_item:
+        links:
+          part_of_step_navs:
+            - title: "Learn to paint: step by step"
+              base_path: "/learn-to-paint"
+              details:
+                step_by_step_nav:
+                  title: 'Learn to paint: step by step'
+                  steps:
+                  - title: Get painting equipment
+                    contents:
+                    - type: paragraph
+                      text: You need certain things in order to paint.
+                    - type: list
+                      contents:
+                      - text: Getting paints, brushes and canvas
+                        href: "/get-paints-brushes-canvas"
+                    optional: false
+                  - title: Choose a subject
+                    contents:
+                      - type: list
+                        contents:
+                        - text: Basic shapes and styles
+                          href: "/basic-shapes-and-styles"
+          topical_events:
+            - content_id: "bfa79635-ffda-4b5d-8266-a9cd3a03649c"
+              title: "Russian invasion of Ukraine: UK government response"
+              base_path: "/government/topical-events/russian-invasion-of-ukraine-uk-government-response"
+              locale: "en"
