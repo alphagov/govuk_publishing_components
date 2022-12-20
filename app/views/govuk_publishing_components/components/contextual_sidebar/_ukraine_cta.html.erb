@@ -7,8 +7,18 @@
 <%= tag.div class: "gem-c-contextual-sidebar__cta gem-c-contextual-sidebar__cta--ukraine", data: { module: "gem-track-click" } do %>
   <%= tag.h2 title, class: "gem-c-contextual-sidebar__heading govuk-heading-s" %>
   <%= tag.ul class: "gem-c-contextual-sidebar__list" do %>
-    <% t("components.related_navigation.ukraine.links").each do |link| %>
+    <% t("components.related_navigation.ukraine.links").each_with_index do |link, index| %>
       <%= tag.li class: "gem-c-contextual-sidebar__text govuk-body" do %>
+        <%
+          ga4_attributes = {
+            event_name: "navigation",
+            type: "related content",
+            index: "#{@ga4_tracking_counts.section_index}.#{index + 1}",
+            index_total: link_count,
+            section: title,
+          } if ga4_tracking
+        %>
+        <%= "#{@ga4_tracking_counts.section_index}.#{index + 1} (#{@ga4_tracking_counts.link_count})" %>
         <%= link_to link[:label],
           link[:href],
           class: "govuk-link",
@@ -18,9 +28,10 @@
             "track-label": link[:href],
             "track-dimension": link[:label],
             "track-dimension-index": "29",
+            ga4_link: ga4_attributes,
           },
           lang: lang %>
       <% end %>
     <% end %>
-  <% end %>    
+  <% end %>
 <% end %>
