@@ -2,7 +2,7 @@ module GovukPublishingComponents
   module Presenters
     # @private
     class ContextualNavigation
-      attr_reader :content_item, :request_path, :query_parameters
+      attr_reader :content_item, :request_path, :query_parameters, :show_ukraine_cta, :total_links
 
       # @param content_item A content item hash with strings as keys
       # @param request_path `request.path`
@@ -10,7 +10,31 @@ module GovukPublishingComponents
         @content_item = content_item
         @request_path = simple_smart_answer? ? content_item["base_path"] : request.path
         @query_parameters = request.query_parameters
+        @show_ukraine_cta = content_tagged_to_ukraine_topical_event?
+        @total_links = count_links
       end
+
+      def count_links
+        count = 0
+        @content_item[:links].each do |key, array|
+          count += array.length
+        end
+        if @show_ukraine_cta
+          count += I18n.t("components.related_navigation.ukraine.links").length
+          count -= content_item.dig("links", "topical_events").to_a.length # not shown with ukraine cta
+        end
+
+        count
+      end
+
+      # def total_links
+      #   count = 0
+      #   related_navigation.each do |section_title, links|
+      #     count += links.length
+      #   end
+      #
+      #   count
+      # end
 
       def simple_smart_answer?
         content_item["document_type"] == "simple_smart_answer"
@@ -111,10 +135,6 @@ module GovukPublishingComponents
         end
 
         false
-      end
-
-      def show_ukraine_cta?
-        content_tagged_to_ukraine_topical_event?
       end
 
       def breadcrumbs_based_on_ancestors
