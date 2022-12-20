@@ -1,9 +1,14 @@
-<% related_nav_helper = GovukPublishingComponents::Presenters::RelatedNavigationHelper.new(local_assigns) %>
+<% related_nav_helper ||= GovukPublishingComponents::Presenters::RelatedNavigationHelper.new(local_assigns) %>
 <% shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns) %>
+<%
+  ga4_tracking ||= false
+  @ga4_tracking_counts = OpenStruct.new(section_index: 1, link_count: related_nav_helper.total_links) unless local_assigns[:in_contextual_sidebar]
+%>
 
 <% if related_nav_helper.related_navigation? %>
+  <p>RL counts: <%= @ga4_tracking_counts.inspect %>
   <% random = SecureRandom.hex(4) %>
-  <div class="gem-c-related-navigation">
+  <div class="gem-c-related-navigation" <% if ga4_tracking %>data-module="ga4-link-tracker"<% end %>>
 
     <% if local_assigns[:context] != :footer %>
       <h2 id="related-nav-related_items-<%= random %>"
@@ -15,25 +20,21 @@
             )
           %>
       >
-        <%= t("components.related_#{local_assigns[:context]}_navigation.related_content",
-              default: t('components.related_navigation.related_content')) %>
+        <%= related_nav_helper.component_title %>
       </h2>
     <% end %>
 
-    <% section_index = 0 %>
-
     <% related_nav_helper.related_navigation.each do |section_title, links| %>
       <% next unless links.any? %>
-
-      <% section_index += 1 %>
 
       <%= render 'govuk_publishing_components/components/related_navigation/section',
         related_nav_helper: related_nav_helper,
         shared_helper: shared_helper,
         section_title: section_title,
         links: links,
-        section_index: section_index,
-        random: random %>
+        random: random,
+        ga4_tracking: ga4_tracking %>
+      <% @ga4_tracking_counts.section_index += 1 %>
     <% end %>
   </div>
 <% end %>
