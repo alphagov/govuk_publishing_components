@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## 34.1.2
+
+* Bump govuk-frontend from 4.4.0 to 4.4.1 ([PR #3147](https://github.com/alphagov/govuk_publishing_components/pull/3147))
+
 ## 34.1.1
 
 * Update component auditing following print style changes ([PR #3128](https://github.com/alphagov/govuk_publishing_components/pull/3128))
