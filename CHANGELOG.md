@@ -7,6 +7,11 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Increase space beneath list items on the image_card component ([PR #3153](https://github.com/alphagov/govuk_publishing_components/pull/3153))
+
+
 ## 34.1.2
 
 * Bump govuk-frontend from 4.4.0 to 4.4.1 ([PR #3147](https://github.com/alphagov/govuk_publishing_components/pull/3147))
