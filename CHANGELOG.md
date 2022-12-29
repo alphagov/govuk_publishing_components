@@ -9,8 +9,8 @@
 
 ## Unreleased
 
+* Remove inline styling from feedback component ([PR #3159](https://github.com/alphagov/govuk_publishing_components/pull/3159))
 * Increase space beneath list items on the image_card component ([PR #3153](https://github.com/alphagov/govuk_publishing_components/pull/3153))
-
 
 ## 34.1.2
 
