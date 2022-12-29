@@ -1,6 +1,7 @@
 {
   "name": "govuk_publishing_components",
   "scripts": {},
+  "stack": "heroku-22",
   "env": {
     "GOVUK_APP_DOMAIN": {
       "value": "www.gov.uk"
