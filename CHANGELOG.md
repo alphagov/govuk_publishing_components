@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 34.1.3
 
 * Remove inline styling from feedback component ([PR #3159](https://github.com/alphagov/govuk_publishing_components/pull/3159))
 * Increase space beneath list items on the image_card component ([PR #3153](https://github.com/alphagov/govuk_publishing_components/pull/3153))
