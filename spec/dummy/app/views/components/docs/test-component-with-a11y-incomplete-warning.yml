@@ -1,5 +1,5 @@
 name: Test component with an incomplete accessibility warning
-description: Component link has a background image (a black pixel) meaning aXe can’t determine the colour contrast
+description: Component uses a roledescription for a header and aXe doesn't know if it will be announced to screen readers.
 examples:
   default:
     data: {}

@@ -39,9 +39,9 @@ describe "Component example with automated testing", js: true do
     expect(page).to have_selector(selector_with_error)
 
     within ".component-guide-preview--warning" do
-      expect(page).to have_selector("h3", text: "Elements must have sufficient color contrast")
+      expect(page).to have_selector("h3", text: "aria-roledescription must be on elements with a semantic role (aria-roledescription)")
       expect(page).to have_selector('h3 a[href*="https://dequeuniversity.com"]', text: "(see guidance)")
-      expect(page).to have_text("Element's background color could not be determined due to a background image")
+      expect(page).to have_text("Check that the aria-roledescription is announced by supported screen readers")
     end
   end
 end
