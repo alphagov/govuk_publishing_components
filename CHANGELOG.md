@@ -11,6 +11,7 @@
 
 * Update the list of popular links in the super navigation header ([PR #3167](https://github.com/alphagov/govuk_publishing_components/pull/3167))
 * Replace input search icon data:image with file asset ([PR #3163](https://github.com/alphagov/govuk_publishing_components/pull/3163))
+* Pure CSS approach to numbering Govspeak steps ([PR #3166](https://github.com/alphagov/govuk_publishing_components/pull/3166))
 
 ## 34.1.3
 
