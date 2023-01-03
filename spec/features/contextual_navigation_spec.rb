@@ -258,6 +258,7 @@ describe "Contextual navigation" do
 
   def given_theres_a_browse_page
     content_store_has_random_item(
+      schema: "guide",
       links: {
         "parent" => [top_level_mainstream_browse_page],
         "mainstream_browse_pages" => [example_item("mainstream_browse_page", "root_page")],
@@ -277,6 +278,7 @@ describe "Contextual navigation" do
 
   def given_theres_a_page_with_related_items
     content_store_has_random_item(
+      schema: "guide",
       links: {
         "parent" => [top_level_mainstream_browse_page],
         "ordered_related_items" => [example_item("guide", "guide")],
@@ -297,11 +299,14 @@ describe "Contextual navigation" do
   end
 
   def given_theres_a_browse_page_with_a_topic
-    content_store_has_random_item(links: {
-      "topics" => [topic_item],
-      "mainstream_browse_pages" => [top_level_mainstream_browse_page],
-      "parent" => [top_level_mainstream_browse_page],
-    })
+    content_store_has_random_item(
+      schema: "guide",
+      links: {
+        "topics" => [topic_item],
+        "mainstream_browse_pages" => [top_level_mainstream_browse_page],
+        "parent" => [top_level_mainstream_browse_page],
+      },
+    )
   end
 
   def given_theres_a_page_with_a_topic
