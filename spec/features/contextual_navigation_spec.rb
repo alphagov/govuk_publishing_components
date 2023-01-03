@@ -35,11 +35,13 @@ describe "Contextual navigation" do
     then_i_see_parent_breadcrumbs
   end
 
-  scenario "The page has curated related items" do
-    given_theres_a_page_with_related_items
-    and_i_visit_that_page
-    then_i_see_the_related_links_sidebar
-    and_the_default_breadcrumbs
+  500.times do |i|
+    scenario "The page has curated related items #{i}" do
+      given_theres_a_page_with_related_items
+      and_i_visit_that_page
+      then_i_see_the_related_links_sidebar
+      and_the_default_breadcrumbs
+    end
   end
 
   scenario "The page has a topic" do
