@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Update the list of popular links in the super navigation header ([PR #3167](https://github.com/alphagov/govuk_publishing_components/pull/3167))
 * Replace input search icon data:image with file asset ([PR #3163](https://github.com/alphagov/govuk_publishing_components/pull/3163))
 
 ## 34.1.3
