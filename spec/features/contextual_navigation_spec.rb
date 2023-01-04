@@ -521,7 +521,7 @@ describe "Contextual navigation" do
     expect(page).not_to have_selector(".gem-c-breadcrumbs")
   end
 
-  def content_store_has_random_item(schema: "placeholder", links: {})
+  def content_store_has_random_item(schema: "guide", links: {})
     content_item = random_item(
       schema,
       "base_path" => "/page-with-contextual-navigation",
