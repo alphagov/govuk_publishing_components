@@ -68,7 +68,7 @@
   # This seems to be a more reliable way to make sure the script is executed.
 %>
 
-<script>
+<%= javascript_tag nonce: true do -%>
   document.addEventListener("DOMContentLoaded", function () {
     var input = document.querySelector("#giraffe"),
       form = document.querySelector("#something-is-wrong")
@@ -80,4 +80,4 @@
       e.preventDefault();
     }
   });
-</script>
+<% end -%>
