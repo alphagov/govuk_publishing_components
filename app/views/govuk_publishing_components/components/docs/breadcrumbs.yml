@@ -13,6 +13,7 @@ accessibility_criteria:
 accessibility_excluded_rules:
   - skip-link # This component is creating a reference to #content which is part of the layout
 display_html: true
+uses_component_wrapper_helper: true
 examples:
   default:
     data:
