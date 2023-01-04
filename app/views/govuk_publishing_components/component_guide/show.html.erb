@@ -30,6 +30,17 @@
 
   <div class="component-doc__content-list">
     <%
+      other_examples_links = []
+      other_examples_links << {
+        href: "#standard-options",
+        text: "Standard options"
+      } if @component_doc.uses_component_wrapper_helper?
+      other_examples_links.concat(@component_doc.other_examples.map do | example |
+        {
+          href: "##{example.id}",
+          text: example.name
+        }
+      end)
       content_items = [
         { href: "#how-it-looks", text: "How it looks" },
         { href: "#how-to-call-this-component", text: "How to call this component" },
@@ -38,12 +49,7 @@
         ({
           href: "#other-examples",
           text: "Other examples",
-          items: @component_doc.other_examples.map do | example |
-            {
-              href: "##{example.id}",
-              text: example.name
-            }
-          end
+          items: other_examples_links
         } if @component_doc.other_examples.any?),
       ].compact
     %>
@@ -89,6 +95,15 @@
   <% if @component_doc.other_examples.any? %>
     <div class="examples">
       <h2 class="component-doc-h2" id="other-examples">Other examples</h2>
+
+      <% if @component_doc.uses_component_wrapper_helper? %>
+        <div class="component-example" id="standard-options">
+          <h3 class="example-title">Standard options</h3>
+          <div class="component-markdown">
+            <%= raw(@component_doc.html_component_wrapper_options) %>
+          </div>
+        </div>
+      <% end %>
 
       <% @component_doc.other_examples.each do |example| %>
         <div class="component-example" id="<%= example.id %>">
