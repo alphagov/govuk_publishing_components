@@ -127,7 +127,7 @@ so:
       published: Daabacaada
       see_all_updates: Eeg dhamaan cusboonaysiinaha
       toggle_less: Muuji waxyar
-      toggle_more: "+ %{number} badan"
+      toggle_more: "%{show} %{number} badan"
     modal_dialogue:
       close_modal: Kusoo dhawoow wada hadal dhex dhexaad ah
     notice:

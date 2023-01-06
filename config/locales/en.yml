@@ -248,7 +248,7 @@ en:
       published: Published
       see_all_updates: See all updates
       toggle_less: Show fewer
-      toggle_more: "+ %{number} more"
+      toggle_more: "%{show} %{number} more"
     modal_dialogue:
       close_modal: Close modal dialogue
     notice:

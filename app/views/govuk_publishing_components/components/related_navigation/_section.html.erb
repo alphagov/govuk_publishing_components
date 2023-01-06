@@ -56,8 +56,8 @@
           data-expanded="false"
           data-toggled-text="<%= t("components.metadata.toggle_less") %>">
           <%= t("components.metadata.toggle_more",
-                number: related_nav_helper.remaining_link_count(links),
-                default: "+ #{related_nav_helper.remaining_link_count(links)} more") %>
+            show: t('components.accordion.show'),
+            number: related_nav_helper.remaining_link_count(links)) %>
         </a>
       </li>
 

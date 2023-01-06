@@ -124,7 +124,7 @@ ps:
       published: خپور شوی
       see_all_updates: ټول تازه معلومات وګورئ
       toggle_less: لږ ښودل
-      toggle_more: " + %{number} نور"
+      toggle_more: "%{show} %{number} نور"
     modal_dialogue:
       close_modal: موډل ډیالوګ بند کړئ
     notice:

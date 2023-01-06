@@ -125,7 +125,7 @@ zh-hk:
       published: 已發佈
       see_all_updates: 查閱所有更新項
       toggle_less: 顯示更少內容
-      toggle_more: "+ %{number} more"
+      toggle_more: "%{show} %{number} more"
     modal_dialogue:
       close_modal: 關閉互動視窗對話
     notice:

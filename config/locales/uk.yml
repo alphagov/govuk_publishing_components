@@ -134,7 +134,7 @@ uk:
       published: Опубліковано
       see_all_updates: Переглянути всі оновлення
       toggle_less: Показати менше
-      toggle_more: "+ %{number} більше"
+      toggle_more: "%{show} %{number} більше"
     modal_dialogue:
       close_modal: Закрити модальний діалог
     notice:

@@ -127,7 +127,7 @@ sw:
       published: Ilichapishwa
       see_all_updates: Angalia taarifa zote
       toggle_less: Onyesha chache
-      toggle_more: "+ %{number} zaidi"
+      toggle_more: "%{show} %{number} zaidi"
     modal_dialogue:
       close_modal: Funga dirisha ibukizi
     notice:

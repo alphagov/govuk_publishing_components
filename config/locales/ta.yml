@@ -128,7 +128,7 @@ ta:
       published: வெளியிடப்பட்டது
       see_all_updates: அனைத்து புதுப்பித்தல்களையும் பார்
       toggle_less: குறைவாகக் காட்டு
-      toggle_more: மேலும் + %{number}
+      toggle_more: மேலும் %{show} %{number}
     modal_dialogue:
       close_modal: மாதிரி உரையாடலை மூடு
     notice:

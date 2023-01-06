@@ -127,7 +127,7 @@ nl:
       published: Gepubliceerd
       see_all_updates: Bekijk alle updates
       toggle_less: Toon minder
-      toggle_more: "+ %{number} meer"
+      toggle_more: "%{show} %{number} meer"
     modal_dialogue:
       close_modal: Modale dialoog sluiten
     notice:

@@ -127,7 +127,7 @@ el:
       published: Δημοσιεύθηκε
       see_all_updates: Δείτε όλες τις ενημερώσεις
       toggle_less: Εμφάνιση λιγότερων
-      toggle_more: "+ %{number} ακόμη"
+      toggle_more: "%{show} %{number} ακόμη"
     modal_dialogue:
       close_modal: Κλείσιμο παράθυρου διαλόγου
     notice:

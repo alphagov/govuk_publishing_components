@@ -128,7 +128,7 @@ hr:
       published: Objavljeno
       see_all_updates: Pogledajte sva ažuriranja
       toggle_less: Pokaži manje
-      toggle_more: "+ %{number} more"
+      toggle_more: "%{show} %{number} more"
     modal_dialogue:
       close_modal: Zatvorite modalni dijalog
     notice:

@@ -130,7 +130,7 @@ ka:
       published: პუბლიკაცია
       see_all_updates: ყველა განახლების ნახვა
       toggle_less: ნაკლების ჩვენება
-      toggle_more: "+ %{number} more"
+      toggle_more: "%{show} %{number} more"
     modal_dialogue:
       close_modal: მოდალური დიალოგის გამორთვა
     notice:

@@ -132,7 +132,7 @@ lt:
       published: Publikuota
       see_all_updates: Matyti visą naujausią informaciją
       toggle_less: Rodyti mažiau
-      toggle_more: "+% {number} daugiau"
+      toggle_more: "%{show} %{number} daugiau"
     modal_dialogue:
       close_modal: Uždaryti modalinį dialogo langą
     notice:

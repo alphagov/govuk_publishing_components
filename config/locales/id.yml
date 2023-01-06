@@ -127,7 +127,7 @@ id:
       published: Diterbitkan
       see_all_updates: Lihat semua pembaruan
       toggle_less: Lihat lebih sedikit
-      toggle_more: "+ %{number} lagi"
+      toggle_more: "%{show} %{number} lagi"
     modal_dialogue:
       close_modal: Tutup dialog
     notice:

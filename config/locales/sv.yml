@@ -127,7 +127,7 @@ sv:
       published: Publicerad
       see_all_updates: Se alla uppdateringar
       toggle_less: Visa färre
-      toggle_more: "+ %{number} mer"
+      toggle_more: "%{show} %{number} mer"
     modal_dialogue:
       close_modal: Stäng den modala dialogen
     notice:

@@ -129,7 +129,7 @@ uz:
       published: Нашр қилинган
       see_all_updates: Барча янгиланишларни кўриш
       toggle_less: Камроқ кўрсатиш
-      toggle_more: "+ %{number} кўпроқ"
+      toggle_more: "%{show} %{number} кўпроқ"
     modal_dialogue:
       close_modal: Модал мулоқотни ёпиш
     notice:

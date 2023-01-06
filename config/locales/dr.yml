@@ -129,7 +129,7 @@ dr:
       published: منتشر شده است
       see_all_updates: تمام آپدیت ها را مشاهده نمایید
       toggle_less: کمتر نمایش دهید
-      toggle_more: "+ %{number} بیشتر"
+      toggle_more: "%{show} %{number} بیشتر"
     modal_dialogue:
       close_modal: دیالوگ کیفی را بسته نمایید
     notice:

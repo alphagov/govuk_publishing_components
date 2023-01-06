@@ -128,7 +128,7 @@ tr:
       published: Yayınlanan
       see_all_updates: Tüm güncellemeleri görün
       toggle_less: Daha az göster
-      toggle_more: "+ %{number} daha fazla"
+      toggle_more: "%{show} %{number} daha fazla"
     modal_dialogue:
       close_modal: Model diyaloğu kapat
     notice:

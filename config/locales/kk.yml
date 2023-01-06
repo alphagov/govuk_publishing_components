@@ -127,7 +127,7 @@ kk:
       published: Жарияланды
       see_all_updates: Барлық жаңартуларды қарау
       toggle_less: Азырақ көрсету
-      toggle_more: "+ %{number} көп"
+      toggle_more: "%{show} %{number} көп"
     modal_dialogue:
       close_modal: Жабық модальды диалог
     notice:

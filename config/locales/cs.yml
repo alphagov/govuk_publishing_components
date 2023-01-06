@@ -132,7 +132,7 @@ cs:
       published: Zveřejněno
       see_all_updates: Vidět všechny aktualizace
       toggle_less: Zobrazit méně
-      toggle_more: "+ %{number} více"
+      toggle_more: "%{show} %{number} více"
     modal_dialogue:
       close_modal: Zavření modálního dialogu
     notice:

@@ -127,7 +127,7 @@ is:
       published: Birt
       see_all_updates: Sjá allar uppfærslur
       toggle_less: Sýna færri
-      toggle_more: "+ %{number} fleiri"
+      toggle_more: "%{show} %{number} fleiri"
     modal_dialogue:
       close_modal: Loka glugga
     notice:

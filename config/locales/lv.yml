@@ -131,7 +131,7 @@ lv:
       published: Publicēts
       see_all_updates: Skatīt visus atjauninājumus
       toggle_less: Rādīt mazāk
-      toggle_more: "+ %{number} vairāk"
+      toggle_more: "%{show} %{number} vairāk"
     modal_dialogue:
       close_modal: Aizvērt modālo dialogu
     notice:

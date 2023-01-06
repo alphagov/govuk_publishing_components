@@ -127,7 +127,7 @@ gu:
       published: પ્રકાશિત
       see_all_updates: તમામ અપડેટ્સ જુઓ
       toggle_less: થોડા ઓછા દર્શાવો
-      toggle_more: "+ %{number} વધુ"
+      toggle_more: "%{show} %{number} વધુ"
     modal_dialogue:
       close_modal: મોડલ ડાયલોગ બંધ કરો
     notice:

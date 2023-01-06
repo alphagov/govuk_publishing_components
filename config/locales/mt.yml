@@ -129,7 +129,7 @@ mt:
       published: Ippubblikat
       see_all_updates: Ara l-aġġornamenti kollha
       toggle_less: Ara inqas
-      toggle_more: "+ %{number}"
+      toggle_more: "%{show} %{number}"
     modal_dialogue:
       close_modal: Agħlaq id-djalogu modali
     notice:

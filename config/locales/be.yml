@@ -133,7 +133,7 @@ be:
       published: Апублікаваны
       see_all_updates: Паглядзець усе абнаўленні
       toggle_less: Паказаць меньш
-      toggle_more: "+ %{number} болей"
+      toggle_more: "%{show} %{number} болей"
     modal_dialogue:
       close_modal: Зачыніць мадальны дыялог
     notice:

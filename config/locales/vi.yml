@@ -126,7 +126,7 @@ vi:
       published: Đã xuất bản
       see_all_updates: Xem tất cả nội dung cập nhật
       toggle_less: Ẩn bớt
-      toggle_more: "+ thêm %{number}"
+      toggle_more: "%{show} thêm %{number}"
     modal_dialogue:
       close_modal: Đóng đối thoại phương thức
     notice:

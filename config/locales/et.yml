@@ -130,7 +130,7 @@ et:
       published: Avaldatud
       see_all_updates: Vt kõiki värskendusi
       toggle_less: Kuva vähem
-      toggle_more: "+ %{number} veel"
+      toggle_more: "%{show} %{number} veel"
     modal_dialogue:
       close_modal: Sule modaalne dialoog
     notice:

@@ -128,7 +128,7 @@ bn:
       published: প্রকাশিত হয়েছে
       see_all_updates: সকল আপডেট দেখুন
       toggle_less: অল্প দেখান
-      toggle_more: আরও + %{number}
+      toggle_more: আরও %{show} %{number}
     modal_dialogue:
       close_modal: ক্লোজ মোডাল ডায়ালগ
     notice:

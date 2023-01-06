@@ -129,7 +129,7 @@ fi:
       published: Julkaistu
       see_all_updates: Katso kaikki palvelut
       toggle_less: Näytä vähemmän
-      toggle_more: "+ %{number} lisää"
+      toggle_more: "%{show} %{number} lisää"
     modal_dialogue:
       close_modal: Sulje modaalinen vuoropuhelu
     notice:

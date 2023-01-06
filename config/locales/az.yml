@@ -127,7 +127,7 @@ az:
       published: Dərc edilib
       see_all_updates: Bütün yeniləmələrə baxın
       toggle_less: Daha azını göstər
-      toggle_more: "+ %{number} daha çox"
+      toggle_more: "%{show} %{number} daha çox"
     modal_dialogue:
       close_modal: Modal dialoqu bağla
     notice:

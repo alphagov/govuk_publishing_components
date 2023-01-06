@@ -131,7 +131,7 @@ ru:
       published: Опубликовано
       see_all_updates: Посмотреть все обновления
       toggle_less: Показать меньше
-      toggle_more: "+ %{number} больше"
+      toggle_more: "%{show} %{number} больше"
     modal_dialogue:
       close_modal: Закрыть модальное диалоговое окно
     notice:

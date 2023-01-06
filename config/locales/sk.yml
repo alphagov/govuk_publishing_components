@@ -132,7 +132,7 @@ sk:
       published: Zverejnené na
       see_all_updates: Zobraziť všetky aktualizácie
       toggle_less: Zobraziť menej
-      toggle_more: "+ %{number} viac"
+      toggle_more: "%{show} %{number} viac"
     modal_dialogue:
       close_modal: Zavrieť modálny dialóg
     notice:

@@ -127,7 +127,7 @@ fr:
       published: Publié
       see_all_updates: Afficher toutes les mises à jour
       toggle_less: Afficher moins
-      toggle_more: "+ %{number} plus"
+      toggle_more: "%{show} %{number} plus"
     modal_dialogue:
       close_modal: Fermer le dialogue modal
     notice:

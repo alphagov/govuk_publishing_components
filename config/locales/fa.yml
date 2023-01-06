@@ -126,7 +126,7 @@ fa:
       published: منتشر شده
       see_all_updates: مشاهده تمام بروزرسانی‌ها
       toggle_less: نمایش کمتر
-      toggle_more: "+ %{number} بیشتر"
+      toggle_more: "%{show} %{number} بیشتر"
     modal_dialogue:
       close_modal: بستن گفتگوی مودال
     notice:

@@ -125,7 +125,7 @@ th:
       published: เผยแพร่แล้ว
       see_all_updates: ดูอัปเดตทั้งหมด
       toggle_less: แสดงน้อยลง
-      toggle_more: เพิ่มเติม + %{number} รายการ
+      toggle_more: เพิ่มเติม %{show} %{number} รายการ
     modal_dialogue:
       close_modal: ปิดการสนทนาโมดอล
     notice:

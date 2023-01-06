@@ -128,7 +128,7 @@ tk:
       published: Çap edilen
       see_all_updates: Ähli täzelenmelere serediň
       toggle_less: Azrak görkez
-      toggle_more: "+ %{number} köpeltmek üçin"
+      toggle_more: "%{show} %{number} köpeltmek üçin"
     modal_dialogue:
       close_modal: Modal gepleşikleri tamamlamak
     notice:

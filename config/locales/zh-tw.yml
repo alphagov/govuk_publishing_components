@@ -125,7 +125,7 @@ zh-tw:
       published: 發布
       see_all_updates: 查看所有更新
       toggle_less: 顯示部分
-      toggle_more: "+ %{number}更多"
+      toggle_more: "%{show} %{number}更多"
     modal_dialogue:
       close_modal: 關閉模態對話
     notice:

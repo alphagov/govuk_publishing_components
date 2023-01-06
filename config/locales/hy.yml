@@ -131,7 +131,7 @@ hy:
       published: Հրապարակված
       see_all_updates: Դիտել բոլոր թարմացումները
       toggle_less: Ցույց տալ ավելի քիչ
-      toggle_more: "+ %{number} հատ ավել"
+      toggle_more: "%{show} %{number} հատ ավել"
     modal_dialogue:
       close_modal: Փակել մոդալ պատուհանը
     notice:

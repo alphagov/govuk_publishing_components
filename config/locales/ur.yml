@@ -124,7 +124,7 @@ ur:
       published: شائع کردہ
       see_all_updates: تمام اپ ڈیٹس دیکھیں
       toggle_less: کم دکھائیں
-      toggle_more: "+ %{number} مزید"
+      toggle_more: "%{show} %{number} مزید"
     modal_dialogue:
       close_modal: محدود موڈل ڈائیلاگ
     notice:

@@ -131,7 +131,7 @@ bg:
       published: Публикуван
       see_all_updates: Вижте всички актуализации
       toggle_less: Показване на по-малко
-      toggle_more: "+ %{number} повече"
+      toggle_more: "%{show} %{number} повече"
     modal_dialogue:
       close_modal: Затваряне на модалния диалог
     notice:

@@ -128,7 +128,7 @@ ro:
       published: Publicat
       see_all_updates: Vedeți toate actualizările
       toggle_less: Afișați mai puține
-      toggle_more: "+ încă %{number}"
+      toggle_more: "%{show} încă %{number}"
     modal_dialogue:
       close_modal: Închideți dialogul modal
     notice:

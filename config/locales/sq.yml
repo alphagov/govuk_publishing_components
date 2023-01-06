@@ -127,7 +127,7 @@ sq:
       published: Publikuar
       see_all_updates: Shih të gjitha përditësimet
       toggle_less: Shfaq më pak
-      toggle_more: "+ %{number} më tepër"
+      toggle_more: "%{show} %{number} më tepër"
     modal_dialogue:
       close_modal: Mbyll dialogun modal
     notice:

@@ -129,7 +129,7 @@ gd:
       published: Arna chur suas
       see_all_updates: Féach gach nuashonrú
       toggle_less: Taispeáin níos lú
-      toggle_more: " + %{number} níos mó"
+      toggle_more: "%{show} %{number} níos mó"
     modal_dialogue:
       close_modal: Dún an dialóg módúil
     notice:

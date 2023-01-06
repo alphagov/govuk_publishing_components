@@ -130,7 +130,7 @@ ar:
       published: منشورة
       see_all_updates: اطلع على كل التحديثات
       toggle_less: عرض أقل
-      toggle_more: زيادة بمقدار + %{number}
+      toggle_more: زيادة بمقدار %{show} %{number}
     modal_dialogue:
       close_modal: إغلاق مربع الحوار المشروط
     notice:

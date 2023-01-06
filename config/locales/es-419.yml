@@ -127,7 +127,7 @@ es-419:
       published: Publicado
       see_all_updates: Ver todas las novedades
       toggle_less: Mostrar menos
-      toggle_more: "+ %{number} más"
+      toggle_more: "%{show} %{number} más"
     modal_dialogue:
       close_modal: Cerrar diálogo modal
     notice:

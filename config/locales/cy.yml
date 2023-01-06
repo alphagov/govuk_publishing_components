@@ -131,7 +131,7 @@ cy:
       published: Cyhoeddwyd
       see_all_updates: Gweld pob diweddariad
       toggle_less: Dangos llai
-      toggle_more: "+ %{number} arall"
+      toggle_more: "%{show} %{number} arall"
     modal_dialogue:
       close_modal: Cau'r ddeialog foddol
     notice:

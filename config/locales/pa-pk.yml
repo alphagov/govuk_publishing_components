@@ -123,7 +123,7 @@ pa-pk:
       published: شائع کیتا گیا
       see_all_updates: ساریاں نویاں چیزاں دیکھو
       toggle_less: کُج گھٹ دکھاؤ
-      toggle_more: ہور {number}%+
+      toggle_more: ہور {number}% %{show}
     modal_dialogue:
       close_modal: موڈیل ڈائیلاگ نوں بند کرو
     notice:

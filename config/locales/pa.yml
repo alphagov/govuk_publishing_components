@@ -127,7 +127,7 @@ pa:
       published: ਪ੍ਰਕਾਸ਼ਿਤ
       see_all_updates: ਸਾਰੇ ਅਪਡੇਟਸ ਵੇਖੋ
       toggle_less: ਘੱਟ ਦਿਖਾਉ
-      toggle_more: "+ %{number} ਹੋਰ"
+      toggle_more: "%{show} %{number} ਹੋਰ"
     modal_dialogue:
       close_modal: ਮਾਡਲ ਸੰਵਾਦ ਬੰਦ ਕਰੋ
     notice:

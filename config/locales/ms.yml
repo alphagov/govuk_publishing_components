@@ -126,7 +126,7 @@ ms:
       published: Diterbitkan
       see_all_updates: Lihat semua kemas kini
       toggle_less: Tunjuk sedikit
-      toggle_more: "+ %{number} lagi"
+      toggle_more: "%{show} %{number} lagi"
     modal_dialogue:
       close_modal: Tutup dialog mod
     notice:

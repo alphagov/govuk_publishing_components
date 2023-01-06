@@ -127,7 +127,7 @@
       published: Publisert
       see_all_updates: Se alle oppdateringer
       toggle_less: Vis færre
-      toggle_more: " + %{number} mer"
+      toggle_more: "%{show} %{number} mer"
     modal_dialogue:
       close_modal: Lukk modal dialog
     notice:
