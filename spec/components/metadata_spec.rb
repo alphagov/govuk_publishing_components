@@ -210,7 +210,7 @@ describe "Metadata", type: :view do
     assert_select ".gem-c-metadata__toggle-items", count: 1
     assert_select ".gem-c-metadata__definition > a", count: limit
     assert_select ".gem-c-metadata__definition .gem-c-metadata__toggle-items a", count: length - limit
-    assert_select "a[href=\"#\"]", text: t("components.metadata.toggle_more", number: length - limit)
+    assert_select "a[href=\"#\"]", text: t("components.metadata.toggle_more", show: t("components.accordion.show"), number: length - limit)
   end
 
   def assert_no_truncation(length)
