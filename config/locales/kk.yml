@@ -1,12 +1,14 @@
 ---
 kk:
   common:
+    hide: Жасыру
+    show: Көрсету
+    toggle_less: Азырақ көрсету
+    toggle_more: "%{show} %{number} көп"
     translations: Аудармалар
   components:
     accordion:
-      hide: Жасыру
       hide_all: Барлық бөлімдерді жасыру
-      show: Көрсету
       show_all: Барлық бөлімдерді көрсету
       this_section_visually_hidden: " бұл бөлім"
     article_schema:
@@ -126,8 +128,6 @@ kk:
       part_of: Бөлігі
       published: Жарияланды
       see_all_updates: Барлық жаңартуларды қарау
-      toggle_less: Азырақ көрсету
-      toggle_more: "+ %{number} көп"
     modal_dialogue:
       close_modal: Жабық модальды диалог
     notice:

@@ -1,12 +1,14 @@
 ---
 mt:
   common:
+    hide: Aħbi
+    show: Uri
+    toggle_less: Ara inqas
+    toggle_more: "%{show} %{number}"
     translations: Traduzzjonijiet
   components:
     accordion:
-      hide: Aħbi
       hide_all: Aħbi s-sezzjonijiet kollha
-      show: Uri
       show_all: Uri s-sezzjonijiet kollha
       this_section_visually_hidden: " din is-sezzjoni"
     article_schema:
@@ -128,8 +130,6 @@ mt:
       part_of: Parti minn
       published: Ippubblikat
       see_all_updates: Ara l-aġġornamenti kollha
-      toggle_less: Ara inqas
-      toggle_more: "+ %{number}"
     modal_dialogue:
       close_modal: Agħlaq id-djalogu modali
     notice:

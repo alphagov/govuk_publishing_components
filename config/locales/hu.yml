@@ -1,12 +1,14 @@
 ---
 hu:
   common:
+    hide: Elrejtés
+    show: Megmutatás
+    toggle_less: Kevesebb mutatása
+    toggle_more: "%{show} %{number} több"
     translations: Fordítások
   components:
     accordion:
-      hide: Elrejtés
       hide_all: Minden szekció elrejtése
-      show: Megmutatás
       show_all: Minden szekció megmutatása
       this_section_visually_hidden: " a jelen szekció"
     article_schema:
@@ -129,8 +131,6 @@ hu:
       part_of: 'Része a következőnek:'
       published: Közzététel időpontja
       see_all_updates: Minden frissítés megtekintése
-      toggle_less: Kevesebb mutatása
-      toggle_more: " + %{number} több"
     modal_dialogue:
       close_modal: Modális párbeszédpanel bezárása
     notice:

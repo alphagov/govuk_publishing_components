@@ -1,12 +1,14 @@
 ---
 so:
   common:
+    hide: Qari
+    show: Muuji
+    toggle_less: Muuji waxyar
+    toggle_more: "%{show} %{number} badan"
     translations: Turjumaanada
   components:
     accordion:
-      hide: Qari
       hide_all: Qari dhamaan qaybaha
-      show: Muuji
       show_all: Muuji dhamaan qaybaha
       this_section_visually_hidden: " Qaybtan"
     article_schema:
@@ -126,8 +128,6 @@ so:
       part_of: Ka qeyba
       published: Daabacaada
       see_all_updates: Eeg dhamaan cusboonaysiinaha
-      toggle_less: Muuji waxyar
-      toggle_more: "+ %{number} badan"
     modal_dialogue:
       close_modal: Kusoo dhawoow wada hadal dhex dhexaad ah
     notice:

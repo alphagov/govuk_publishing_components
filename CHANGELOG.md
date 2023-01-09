@@ -11,6 +11,7 @@
 
 * Support Rails Content Security Policy nonce on inline JavaScript ([PR #3173](https://github.com/alphagov/govuk_publishing_components/pull/3173))
 * Restyle subscription link ([PR #3177](https://github.com/alphagov/govuk_publishing_components/pull/3177))
+* Change "+" to "Show" in related navigation and metadata block components ([PR #3038](https://github.com/alphagov/govuk_publishing_components/pull/3038))
 
 ## 34.2.0
 

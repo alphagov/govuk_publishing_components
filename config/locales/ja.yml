@@ -1,12 +1,14 @@
 ---
 ja:
   common:
+    hide: 非表示
+    show: 表示
+    toggle_less: 一部を表示
+    toggle_more: さらに ％{number}
     translations: 翻訳
   components:
     accordion:
-      hide: 非表示
       hide_all: すべてのセクションを非表示
-      show: 表示
       show_all: すべてのセクションを表示
       this_section_visually_hidden: " このセクション"
     article_schema:
@@ -122,8 +124,6 @@ ja:
       part_of: 一部の
       published: 公開済み
       see_all_updates: すべての更新を表示
-      toggle_less: 一部を表示
-      toggle_more: さらに ％{number}
     modal_dialogue:
       close_modal: 特殊ウインドウを閉じる
     notice:

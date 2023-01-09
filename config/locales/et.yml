@@ -1,12 +1,14 @@
 ---
 et:
   common:
+    hide: Peida
+    show: Kuva
+    toggle_less: Kuva vähem
+    toggle_more: "%{show} %{number} veel"
     translations: Tõlked
   components:
     accordion:
-      hide: Peida
       hide_all: Peida kõik jaotised
-      show: Kuva
       show_all: Kuva kõik jaotised
       this_section_visually_hidden: " see jaotis"
     article_schema:
@@ -129,8 +131,6 @@ et:
       part_of: Osa
       published: Avaldatud
       see_all_updates: Vt kõiki värskendusi
-      toggle_less: Kuva vähem
-      toggle_more: "+ %{number} veel"
     modal_dialogue:
       close_modal: Sule modaalne dialoog
     notice:

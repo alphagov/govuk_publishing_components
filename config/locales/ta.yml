@@ -1,12 +1,14 @@
 ---
 ta:
   common:
+    hide: மறை
+    show: காட்டு
+    toggle_less: குறைவாகக் காட்டு
+    toggle_more: மேலும் %{show} %{number}
     translations: மொழிபெயர்ப்புகள்
   components:
     accordion:
-      hide: மறை
       hide_all: அனைத்துப் பிரிவுகளையும் மறை
-      show: காட்டு
       show_all: அனைத்துப் பிரிவுகளையும் காட்டு
       this_section_visually_hidden: " இந்தப் பிரிவு"
     article_schema:
@@ -127,8 +129,6 @@ ta:
       part_of: பகுதி
       published: வெளியிடப்பட்டது
       see_all_updates: அனைத்து புதுப்பித்தல்களையும் பார்
-      toggle_less: குறைவாகக் காட்டு
-      toggle_more: மேலும் + %{number}
     modal_dialogue:
       close_modal: மாதிரி உரையாடலை மூடு
     notice:

@@ -1,12 +1,14 @@
 ---
 lt:
   common:
+    hide: Slėpti
+    show: Rodyti
+    toggle_less: Rodyti mažiau
+    toggle_more: "%{show}% {number} daugiau"
     translations: Vertimai
   components:
     accordion:
-      hide: Slėpti
       hide_all: Slėpti visas skiltis
-      show: Rodyti
       show_all: Rodyti visas skiltis
       this_section_visually_hidden: " ši skiltis"
     article_schema:
@@ -131,8 +133,6 @@ lt:
       part_of: Dalis
       published: Publikuota
       see_all_updates: Matyti visą naujausią informaciją
-      toggle_less: Rodyti mažiau
-      toggle_more: "+% {number} daugiau"
     modal_dialogue:
       close_modal: Uždaryti modalinį dialogo langą
     notice:

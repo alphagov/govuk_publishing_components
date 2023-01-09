@@ -1,12 +1,14 @@
 ---
 pa:
   common:
+    hide: ਓਹਲੇ
+    show: ਦਿਖਾਉ
+    toggle_less: ਘੱਟ ਦਿਖਾਉ
+    toggle_more: "%{show} %{number} ਹੋਰ"
     translations: ਅਨੁਵਾਦ
   components:
     accordion:
-      hide: ਓਹਲੇ
       hide_all: ਸਾਰੇ ਭਾਗ ਲੁਕਾਓ
-      show: ਦਿਖਾਉ
       show_all: ਸਾਰੇ ਭਾਗ ਦਿਖਾਓ
       this_section_visually_hidden: " ਇਹ ਭਾਗ"
     article_schema:
@@ -126,8 +128,6 @@ pa:
       part_of: ਦਾ ਹਿੱਸਾ
       published: ਪ੍ਰਕਾਸ਼ਿਤ
       see_all_updates: ਸਾਰੇ ਅਪਡੇਟਸ ਵੇਖੋ
-      toggle_less: ਘੱਟ ਦਿਖਾਉ
-      toggle_more: "+ %{number} ਹੋਰ"
     modal_dialogue:
       close_modal: ਮਾਡਲ ਸੰਵਾਦ ਬੰਦ ਕਰੋ
     notice:

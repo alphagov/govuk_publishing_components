@@ -1,12 +1,14 @@
 ---
 zh-hk:
   common:
+    hide: 隱藏
+    show: 顯示
+    toggle_less: 顯示更少內容
+    toggle_more: "%{show} %{number} more"
     translations: 譯文
   components:
     accordion:
-      hide: 隱藏
       hide_all: 隱藏所有部份
-      show: 顯示
       show_all: 顯示所有部份
       this_section_visually_hidden: 此部份
     article_schema:
@@ -124,8 +126,6 @@ zh-hk:
       part_of: 部份
       published: 已發佈
       see_all_updates: 查閱所有更新項
-      toggle_less: 顯示更少內容
-      toggle_more: "+ %{number} more"
     modal_dialogue:
       close_modal: 關閉互動視窗對話
     notice:

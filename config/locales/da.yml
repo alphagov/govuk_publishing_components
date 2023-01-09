@@ -1,12 +1,14 @@
 ---
 da:
   common:
+    hide: Skjul
+    show: vise
+    toggle_less: Vis færre
+    toggle_more: "%{show} %{number} mere"
     translations: Oversættelser
   components:
     accordion:
-      hide: Skjul
       hide_all: Skjul alle sektioner
-      show: vise
       show_all: Vise alle sektioner
       this_section_visually_hidden: " denne sektion"
     article_schema:
@@ -127,8 +129,6 @@ da:
       part_of: del af
       published: offentliggjort
       see_all_updates: se alle opdateringer
-      toggle_less: Vis færre
-      toggle_more: "+ %{number} mere"
     modal_dialogue:
       close_modal: Luk den modale dialog
     notice:

@@ -1,12 +1,14 @@
 ---
 'no':
   common:
+    hide: Skjul
+    show: Vis
+    toggle_less: Vis færre
+    toggle_more: "%{show} %{number} mer"
     translations: Oversettelser
   components:
     accordion:
-      hide: Skjul
       hide_all: Skjul alle seksjoner
-      show: Vis
       show_all: Vis alle seksjoner
       this_section_visually_hidden: " denne seksjonen"
     article_schema:
@@ -126,8 +128,6 @@
       part_of: Del av
       published: Publisert
       see_all_updates: Se alle oppdateringer
-      toggle_less: Vis færre
-      toggle_more: " + %{number} mer"
     modal_dialogue:
       close_modal: Lukk modal dialog
     notice:

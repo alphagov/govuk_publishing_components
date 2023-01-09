@@ -1,12 +1,14 @@
 ---
 tr:
   common:
+    hide: Gizle
+    show: Göster
+    toggle_less: Daha az göster
+    toggle_more: "%{show} %{number} daha fazla"
     translations: Tercümeler
   components:
     accordion:
-      hide: Gizle
       hide_all: Tüm bölümleri gizle
-      show: Göster
       show_all: Tüm bölümleri göster
       this_section_visually_hidden: " Bu bölüm"
     article_schema:
@@ -127,8 +129,6 @@ tr:
       part_of: Şunun kısmı
       published: Yayınlanan
       see_all_updates: Tüm güncellemeleri görün
-      toggle_less: Daha az göster
-      toggle_more: "+ %{number} daha fazla"
     modal_dialogue:
       close_modal: Model diyaloğu kapat
     notice:

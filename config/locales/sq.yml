@@ -1,12 +1,14 @@
 ---
 sq:
   common:
+    hide: Fshih
+    show: Shfaq
+    toggle_less: Shfaq më pak
+    toggle_more: "%{show} %{number} më tepër"
     translations: Përkthimet
   components:
     accordion:
-      hide: Fshih
       hide_all: Fshih të gjitha seksionet
-      show: Shfaq
       show_all: Shfaq të gjitha seksionet
       this_section_visually_hidden: " këtë seksion"
     article_schema:
@@ -126,8 +128,6 @@ sq:
       part_of: Pjesë e
       published: Publikuar
       see_all_updates: Shih të gjitha përditësimet
-      toggle_less: Shfaq më pak
-      toggle_more: "+ %{number} më tepër"
     modal_dialogue:
       close_modal: Mbyll dialogun modal
     notice:

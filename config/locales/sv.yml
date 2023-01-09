@@ -1,12 +1,14 @@
 ---
 sv:
   common:
+    hide: Dölj
+    show: Visa
+    toggle_less: Visa färre
+    toggle_more: "%{show} %{number} mer"
     translations: Översättningar
   components:
     accordion:
-      hide: Dölj
       hide_all: Dölj alla avsnitt
-      show: Visa
       show_all: Visa alla avsnitt
       this_section_visually_hidden: " detta avsnitt"
     article_schema:
@@ -126,8 +128,6 @@ sv:
       part_of: Del av
       published: Publicerad
       see_all_updates: Se alla uppdateringar
-      toggle_less: Visa färre
-      toggle_more: "+ %{number} mer"
     modal_dialogue:
       close_modal: Stäng den modala dialogen
     notice:

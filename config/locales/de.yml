@@ -1,12 +1,14 @@
 ---
 de:
   common:
+    hide: Ausblenden
+    show: Anzeigen
+    toggle_less: Weniger anzeigen
+    toggle_more: "%{show} %{number} weitere"
     translations: Übersetzungen
   components:
     accordion:
-      hide: Ausblenden
       hide_all: Alle Rubriken ausblenden
-      show: Anzeigen
       show_all: Alle Rubriken anzeigen
       this_section_visually_hidden: " diese Rubrik"
     article_schema:
@@ -130,8 +132,6 @@ de:
       part_of: Teil von
       published: Veröffentlicht
       see_all_updates: Alle Aktualisierungen ansehen
-      toggle_less: Weniger anzeigen
-      toggle_more: "+ %{number} weitere"
     modal_dialogue:
       close_modal: Dialog schließen
     notice:

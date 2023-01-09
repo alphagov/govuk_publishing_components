@@ -1,12 +1,14 @@
 ---
 th:
   common:
+    hide: ซ่อน
+    show: แสดง
+    toggle_less: แสดงน้อยลง
+    toggle_more: เพิ่มเติม %{show} %{number} รายการ
     translations: ข้อความแปล
   components:
     accordion:
-      hide: ซ่อน
       hide_all: ซ่อนทุกส่วน
-      show: แสดง
       show_all: แสดงส่วนทั้งหมด
       this_section_visually_hidden: " ส่วนนี้"
     article_schema:
@@ -124,8 +126,6 @@ th:
       part_of: ส่วนหนึ่งของ
       published: เผยแพร่แล้ว
       see_all_updates: ดูอัปเดตทั้งหมด
-      toggle_less: แสดงน้อยลง
-      toggle_more: เพิ่มเติม + %{number} รายการ
     modal_dialogue:
       close_modal: ปิดการสนทนาโมดอล
     notice:

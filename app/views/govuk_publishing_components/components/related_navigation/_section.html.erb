@@ -54,10 +54,10 @@
           class="gem-c-related-navigation__toggle"
           data-controls="toggle_<%= section_title %>"
           data-expanded="false"
-          data-toggled-text="<%= t("components.metadata.toggle_less") %>">
-          <%= t("components.metadata.toggle_more",
-                number: related_nav_helper.remaining_link_count(links),
-                default: "+ #{related_nav_helper.remaining_link_count(links)} more") %>
+          data-toggled-text="<%= t("common.toggle_less") %>">
+          <%= t("common.toggle_more",
+            show: t('common.show'),
+            number: related_nav_helper.remaining_link_count(links)) %>
         </a>
       </li>
 

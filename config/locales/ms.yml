@@ -1,12 +1,14 @@
 ---
 ms:
   common:
+    hide: Sorok
+    show: Tunjuk
+    toggle_less: Tunjuk sedikit
+    toggle_more: "%{show} %{number} lagi"
     translations: Terjemahan
   components:
     accordion:
-      hide: Sorok
       hide_all: Sorok semua bahagian
-      show: Tunjuk
       show_all: Tunjuk semua bahagian
       this_section_visually_hidden: " bahagian ini"
     article_schema:
@@ -125,8 +127,6 @@ ms:
       part_of: Sebahagian daripada
       published: Diterbitkan
       see_all_updates: Lihat semua kemas kini
-      toggle_less: Tunjuk sedikit
-      toggle_more: "+ %{number} lagi"
     modal_dialogue:
       close_modal: Tutup dialog mod
     notice:

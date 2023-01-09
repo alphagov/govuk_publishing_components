@@ -1,12 +1,14 @@
 ---
 he:
   common:
+    hide: הסתר
+    show: הצג
+    toggle_less: הצג פחות
+    toggle_more: "%{show} %{number} עוד"
     translations: תרגומים
   components:
     accordion:
-      hide: הסתר
       hide_all: הסתר כל המקטעים
-      show: הצג
       show_all: הצג כל המקטעים
       this_section_visually_hidden: מקטע זה
     article_schema:
@@ -126,8 +128,6 @@ he:
       part_of: חלק של
       published: פורסם
       see_all_updates: ראה כל העדכונים
-      toggle_less: הצג פחות
-      toggle_more: " + %{number} עוד"
     modal_dialogue:
       close_modal: סגור דיאלוג מודאלי
     notice:

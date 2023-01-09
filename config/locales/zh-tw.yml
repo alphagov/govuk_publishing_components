@@ -1,12 +1,14 @@
 ---
 zh-tw:
   common:
+    hide: 隱藏
+    show: 展開
+    toggle_less: 顯示部分
+    toggle_more: "%{show} %{number}更多"
     translations: 翻譯
   components:
     accordion:
-      hide: 隱藏
       hide_all: 隱藏所有區段
-      show: 展開
       show_all: 展開所有區段
       this_section_visually_hidden: " 這個區段"
     article_schema:
@@ -124,8 +126,6 @@ zh-tw:
       part_of: 部分
       published: 發布
       see_all_updates: 查看所有更新
-      toggle_less: 顯示部分
-      toggle_more: "+ %{number}更多"
     modal_dialogue:
       close_modal: 關閉模態對話
     notice:

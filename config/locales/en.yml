@@ -1,12 +1,14 @@
 ---
 en:
   common:
+    hide: Hide
+    show: Show
+    toggle_less: Show fewer
+    toggle_more: "%{show} %{number} more"
     translations: Translations
   components:
     accordion:
-      hide: Hide
       hide_all: Hide all sections
-      show: Show
       show_all: Show all sections
       this_section_visually_hidden: " this section"
     article_schema:
@@ -247,8 +249,6 @@ en:
       part_of: Part of
       published: Published
       see_all_updates: See all updates
-      toggle_less: Show fewer
-      toggle_more: "+ %{number} more"
     modal_dialogue:
       close_modal: Close modal dialogue
     notice:

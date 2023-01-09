@@ -1,12 +1,14 @@
 ---
 uz:
   common:
+    hide: Яшириш
+    show: Кўрсатиш
+    toggle_less: Камроқ кўрсатиш
+    toggle_more: "%{show} %{number} кўпроқ"
     translations: Таржималар
   components:
     accordion:
-      hide: Яшириш
       hide_all: Бўлимларни барчасини яшириш
-      show: Кўрсатиш
       show_all: Бўлимларни барчасини кўрсатиш
       this_section_visually_hidden: " ушбу бўлим"
     article_schema:
@@ -128,8 +130,6 @@ uz:
       part_of: Қисм
       published: Нашр қилинган
       see_all_updates: Барча янгиланишларни кўриш
-      toggle_less: Камроқ кўрсатиш
-      toggle_more: "+ %{number} кўпроқ"
     modal_dialogue:
       close_modal: Модал мулоқотни ёпиш
     notice:

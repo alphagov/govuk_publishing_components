@@ -1,12 +1,14 @@
 ---
 bn:
   common:
+    hide: লুকিয়ে রাখুন
+    show: দেখান
+    toggle_less: অল্প দেখান
+    toggle_more: আরও %{show} %{number}
     translations: অনুবাদসমূহ
   components:
     accordion:
-      hide: লুকিয়ে রাখুন
       hide_all: সকল অংশ লুকিয়ে রাখুন
-      show: দেখান
       show_all: সকল অংশ দেখান
       this_section_visually_hidden: " এই অংশ"
     article_schema:
@@ -127,8 +129,6 @@ bn:
       part_of: এর অংশ
       published: প্রকাশিত হয়েছে
       see_all_updates: সকল আপডেট দেখুন
-      toggle_less: অল্প দেখান
-      toggle_more: আরও + %{number}
     modal_dialogue:
       close_modal: ক্লোজ মোডাল ডায়ালগ
     notice:

@@ -166,7 +166,7 @@ describe "Related navigation", type: :view do
     render_component(content_item: content_item)
 
     assert_select ".gem-c-related-navigation__section-link[href=\"/world/wales/news\"]", text: "Wales"
-    assert_select ".gem-c-related-navigation__link.toggle-wrap", text: "+ 2 more"
+    assert_select ".gem-c-related-navigation__link.toggle-wrap", text: "Show 2 more"
     assert_select "#toggle_world_locations .gem-c-related-navigation__section-link[href=\"/world/mauritius/news\"]", text: "Mauritius"
     assert_select "#toggle_world_locations .gem-c-related-navigation__section-link[href=\"/world/brazil/news\"]", text: "Brazil"
   end

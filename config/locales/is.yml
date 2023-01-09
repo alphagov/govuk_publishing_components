@@ -1,12 +1,14 @@
 ---
 is:
   common:
+    hide: Fela
+    show: Sýna
+    toggle_less: Sýna færri
+    toggle_more: "%{show} %{number} fleiri"
     translations: Þýðingar
   components:
     accordion:
-      hide: Fela
       hide_all: Fela alla hluta
-      show: Sýna
       show_all: Sýna alla hluta
       this_section_visually_hidden: " þessi hluti"
     article_schema:
@@ -126,8 +128,6 @@ is:
       part_of: Hluti af
       published: Birt
       see_all_updates: Sjá allar uppfærslur
-      toggle_less: Sýna færri
-      toggle_more: "+ %{number} fleiri"
     modal_dialogue:
       close_modal: Loka glugga
     notice:

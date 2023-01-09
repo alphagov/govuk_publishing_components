@@ -1,12 +1,14 @@
 ---
 si:
   common:
+    hide: සඟවන්න
+    show: පෙන්වන්න
+    toggle_less: අඩුවෙන් පෙන්වන්න
+    toggle_more: තවත් %{show} %{number}
     translations: පරිවර්තන
   components:
     accordion:
-      hide: සඟවන්න
       hide_all: සියලුම කොටස් සඟවන්න
-      show: පෙන්වන්න
       show_all: සියලු කොටස් පෙන්වන්න
       this_section_visually_hidden: " මෙම කොටස"
     article_schema:
@@ -126,8 +128,6 @@ si:
       part_of: කොටසක්
       published: පළ කළේ
       see_all_updates: සියලුම යාවත්කාලීනයන් බලන්න
-      toggle_less: අඩුවෙන් පෙන්වන්න
-      toggle_more: තවත් + %{number}
     modal_dialogue:
       close_modal: ආදර්ශ සංවාදය වසන්න
     notice:

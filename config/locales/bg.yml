@@ -1,12 +1,14 @@
 ---
 bg:
   common:
+    hide: Скриване
+    show: Показване
+    toggle_less: Показване на по-малко
+    toggle_more: "%{show} %{number} повече"
     translations: Translations
   components:
     accordion:
-      hide: Скриване
       hide_all: Скриване на всички раздели
-      show: Показване
       show_all: Показване на всички раздели
       this_section_visually_hidden: " този раздел"
     article_schema:
@@ -130,8 +132,6 @@ bg:
       part_of: Част от
       published: Публикуван
       see_all_updates: Вижте всички актуализации
-      toggle_less: Показване на по-малко
-      toggle_more: "+ %{number} повече"
     modal_dialogue:
       close_modal: Затваряне на модалния диалог
     notice:

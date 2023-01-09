@@ -1,12 +1,14 @@
 ---
 sl:
   common:
+    hide: Skrij
+    show: Prikaži
+    toggle_less: Pokaži manj
+    toggle_more: "%{show} %{number} več"
     translations: Prevodi
   components:
     accordion:
-      hide: Skrij
       hide_all: Skrij vse razdelke
-      show: Prikaži
       show_all: Prikaži vse razdelke
       this_section_visually_hidden: " ta razdelek"
     article_schema:
@@ -133,8 +135,6 @@ sl:
       part_of: Del
       published: Objavljeno
       see_all_updates: Poglej vse posodobitve
-      toggle_less: Pokaži manj
-      toggle_more: "+ %{number} več"
     modal_dialogue:
       close_modal: Zapri modalno okno
     notice:
