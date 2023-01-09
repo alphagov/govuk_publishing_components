@@ -65,6 +65,10 @@ module GovukPublishingComponents
         end
       end
 
+      def component_title
+        I18n.t("components.related_#{@context}_navigation.related_content", default: I18n.t("components.related_navigation.related_content"))
+      end
+
       def section_css_class(css_class, section_title, link: {}, link_is_inline: false)
         css_classes = [css_class]
         css_classes << "#{css_class}--#{@context}" unless @context.nil?

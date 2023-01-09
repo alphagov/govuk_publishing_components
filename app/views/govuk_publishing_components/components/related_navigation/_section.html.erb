@@ -3,20 +3,23 @@
      aria-labelledby="related-nav-<%= section_title %>-<%= random %>"
      data-module="gem-toggle">
 
-  <% unless section_title === "related_items" %>
+  <% if section_title === "related_items" %>
+   <% heading_text = related_nav_helper.component_title %>
+  <% else %>
     <%=
       heading_class = related_nav_helper.section_css_class("gem-c-related-navigation__sub-heading", section_title)
       heading_data = { 'track-count' => related_nav_helper.section_data_track_count(:related_item_section) }
       heading_id = "related-nav-#{section_title}-#{random}"
       heading_level = related_nav_helper.section_heading_level
+      heading_text = related_nav_helper.construct_section_heading(section_title)
 
       content_tag(heading_level, id: heading_id, class: heading_class, data: heading_data) do
-        related_nav_helper.construct_section_heading(section_title)
+        heading_text
       end
     %>
   <% end %>
 
-  <ul class="gem-c-related-navigation__link-list" data-module="gem-track-click">
+  <ul class="gem-c-related-navigation__link-list">
     <% constructed_link_array = [] %>
 
     <% section_link_limit = related_nav_helper.calculate_section_link_limit(links) %>
@@ -24,6 +27,12 @@
     <% links.each.with_index(1) do |link, index| %>
       <%
         link_class = "govuk-link #{related_nav_helper.section_css_class("govuk-link gem-c-related-navigation__section-link", section_title, link: link, link_is_inline: (index >= section_link_limit))}"
+        ga4_attributes = {
+          event_name: "navigation",
+          type: "related content",
+          index: "#{section_index}.#{index}",
+          section: heading_text,
+        } if ga4_tracking
         link_element = link_to(
           link[:text],
           link[:path],
@@ -37,7 +46,8 @@
             track_options: {
               dimension28: links.length.to_s,
               dimension29: link[:text]
-            }
+            },
+            ga4_link: ga4_attributes,
           }
         )
       %>

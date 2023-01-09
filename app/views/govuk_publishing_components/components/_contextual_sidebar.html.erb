@@ -1,5 +1,9 @@
-<% navigation = GovukPublishingComponents::Presenters::ContextualNavigation.new(content_item, request) %>
-<% shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns) %>
+<%
+  ga4_tracking ||= false
+  request.query_parameters[:ga4_tracking] = ga4_tracking
+  navigation = GovukPublishingComponents::Presenters::ContextualNavigation.new(content_item, request)
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+%>
 
 <div class="gem-c-contextual-sidebar">
   <% if navigation.content_tagged_to_a_reasonable_number_of_step_by_steps? %>
@@ -12,7 +16,7 @@
     <%= render 'govuk_publishing_components/components/step_by_step_nav', navigation.step_nav_helper.sidebar %>
   <% else %>
     <%# Rendering related navigation sidebar because no step by step list %>
-    <%= render 'govuk_publishing_components/components/related_navigation', content_item: content_item, context: :sidebar %>
+    <%= render 'govuk_publishing_components/components/related_navigation', content_item: content_item, context: :sidebar, ga4_tracking: ga4_tracking %>
   <% end %>
 
   <% if navigation.content_tagged_to_other_step_by_steps? %>

@@ -103,3 +103,61 @@ examples:
               title: "Russian invasion of Ukraine: UK government response"
               base_path: "/government/topical-events/russian-invasion-of-ukraine-uk-government-response"
               locale: "en"
+  with_ga4_tracking_on_related_navigation:
+    description: Adds Google Analytics 4 tracking to components within the sidebar. Currently only the Related Navigation and Step by Step navigation components accept this option.
+    data:
+      ga4_tracking: true
+      content_item:
+        title: "UK forces arrive to reinforce NATO’s eastern flank"
+        content_id: "a342fd46-d801-4c1e-9d8f-f41fba6da563"
+        locale: "en"
+        links:
+          ordered_related_items:
+          - title: Find an apprenticeship
+            base_path: /apply-apprenticeship
+          - title: Careers helpline for teenagers
+            base_path: /careers-helpline-for-teenagers
+          document_collections:
+          - title: Recruit an apprentice (formerly apprenticeship vacancies)
+            base_path: /government/collections/apprenticeship-vacancies
+            document_type: document_collection
+          - title: The future of jobs and skills
+            base_path: /government/collections/the-future-of-jobs-and-skills
+            document_type: document_collection
+  with_ga4_tracking_on_step_by_step:
+    description: Adds Google Analytics 4 tracking to components within the sidebar. Currently only the Related Navigation and Step by Step navigation components accept this option.
+    data:
+      ga4_tracking: true
+      content_item:
+        title: "A content item"
+        links:
+          part_of_step_navs:
+            - title: "Learn to drive a car: step by step"
+              base_path: "/micropigs-vs-micropugs"
+              details:
+                step_by_step_nav:
+                  title: 'Stay in the UK after it leaves the EU (''settled status''): step by step'
+                  steps:
+                  - title: Check you're allowed to drive
+                    contents:
+                    - type: paragraph
+                      text: Most people can start learning to drive when they’re 17.
+                    - type: list
+                      contents:
+                      - text: Check what age you can drive
+                        href: "/vehicles-can-drive"
+                    optional: false
+                  - title: Testing the and
+                    logic: and
+                    contents:
+                    - type: paragraph
+                      text: hello hello what's UP
+                  - title: Driving lessons and practice
+                    contents:
+                    - type: paragraph
+                      text: You need a provisional driving licence to take lessons or practice.
+                    - type: list
+                      contents:
+                      - text: The Highway Code
+                        href: "/guidance/the-highway-code"
+                    optional: false
