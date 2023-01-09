@@ -7,7 +7,7 @@
     gtm_attributes << "gtm_preview=" + gtm_preview if gtm_preview
   gtm_attributes = gtm_attributes.join('&')
 %>
-<script>
+<%= javascript_tag nonce: true do -%>
 var doNotTrack = ( navigator.doNotTrack === '1' || navigator.doNotTrack === 'yes' || navigator.msDoNotTrack === '1' || window.doNotTrack === '1' )
 if (!doNotTrack) {
   (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -16,4 +16,4 @@ if (!doNotTrack) {
   'https://www.googletagmanager.com/gtm.js?id='+i+dl+'&<%= raw gtm_attributes %>';f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','<%= gtm_id %>');
 }
-</script>
+<% end -%>
