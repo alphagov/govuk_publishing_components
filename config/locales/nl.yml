@@ -1,12 +1,14 @@
 ---
 nl:
   common:
+    hide: Verberg
+    show: Toon
+    toggle_less: Toon minder
+    toggle_more: "%{show} %{number} meer"
     translations: Vertalingen
   components:
     accordion:
-      hide: Verberg
       hide_all: Verberg alle secties
-      show: Toon
       show_all: Toon alle secties
       this_section_visually_hidden: " deze sectie"
     article_schema:
@@ -126,8 +128,6 @@ nl:
       part_of: Deel van
       published: Gepubliceerd
       see_all_updates: Bekijk alle updates
-      toggle_less: Toon minder
-      toggle_more: "%{show} %{number} meer"
     modal_dialogue:
       close_modal: Modale dialoog sluiten
     notice:

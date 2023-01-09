@@ -1,12 +1,14 @@
 ---
 el:
   common:
+    hide: Απόκρυψη
+    show: Εμφάνιση
+    toggle_less: Εμφάνιση λιγότερων
+    toggle_more: "%{show} %{number} ακόμη"
     translations: Μεταφράσεις
   components:
     accordion:
-      hide: Απόκρυψη
       hide_all: Απόκρυψη όλων των ενοτήτων
-      show: Εμφάνιση
       show_all: Εμφάνιση όλων των ενοτήτων
       this_section_visually_hidden: " αυτή η ενότητα"
     article_schema:
@@ -126,8 +128,6 @@ el:
       part_of: Μέρος του
       published: Δημοσιεύθηκε
       see_all_updates: Δείτε όλες τις ενημερώσεις
-      toggle_less: Εμφάνιση λιγότερων
-      toggle_more: "%{show} %{number} ακόμη"
     modal_dialogue:
       close_modal: Κλείσιμο παράθυρου διαλόγου
     notice:

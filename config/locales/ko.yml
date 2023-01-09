@@ -1,12 +1,14 @@
 ---
 ko:
   common:
+    hide:
+    show:
+    toggle_less:
+    toggle_more:
     translations:
   components:
     accordion:
-      hide:
       hide_all:
-      show:
       show_all:
       this_section_visually_hidden:
     article_schema:
@@ -121,8 +123,6 @@ ko:
       part_of:
       published:
       see_all_updates:
-      toggle_less:
-      toggle_more:
     modal_dialogue:
       close_modal:
     notice:

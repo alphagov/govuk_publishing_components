@@ -1,12 +1,14 @@
 ---
 ru:
   common:
+    hide: Скрыть
+    show: Показать
+    toggle_less: Показать меньше
+    toggle_more: "%{show} %{number} больше"
     translations: Переводы
   components:
     accordion:
-      hide: Скрыть
       hide_all: Скрыть все секции
-      show: Показать
       show_all: Показать все секции
       this_section_visually_hidden: 'данная секция '
     article_schema:
@@ -130,8 +132,6 @@ ru:
       part_of: Является частью
       published: Опубликовано
       see_all_updates: Посмотреть все обновления
-      toggle_less: Показать меньше
-      toggle_more: "%{show} %{number} больше"
     modal_dialogue:
       close_modal: Закрыть модальное диалоговое окно
     notice:

@@ -1,12 +1,14 @@
 ---
 ro:
   common:
+    hide: Ascundeți
+    show: Afișați
+    toggle_less: Afișați mai puține
+    toggle_more: "%{show} încă %{number}"
     translations: Traduceri
   components:
     accordion:
-      hide: Ascundeți
       hide_all: Ascundeți toate secțiunile
-      show: Afișați
       show_all: Afișați toate secțiunile
       this_section_visually_hidden: " această secțiune"
     article_schema:
@@ -127,8 +129,6 @@ ro:
       part_of: Parte din
       published: Publicat
       see_all_updates: Vedeți toate actualizările
-      toggle_less: Afișați mai puține
-      toggle_more: "%{show} încă %{number}"
     modal_dialogue:
       close_modal: Închideți dialogul modal
     notice:

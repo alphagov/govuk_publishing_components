@@ -1,12 +1,14 @@
 ---
 gu:
   common:
+    hide: હાઇડ કરો
+    show: દર્શાવો
+    toggle_less: થોડા ઓછા દર્શાવો
+    toggle_more: "%{show} %{number} વધુ"
     translations: અનુવાદ
   components:
     accordion:
-      hide: હાઇડ કરો
       hide_all: તમામ સેક્શન હાઈડ કરો
-      show: દર્શાવો
       show_all: તમામ સેક્શન દર્શાવો
       this_section_visually_hidden: " આ સેક્શન"
     article_schema:
@@ -126,8 +128,6 @@ gu:
       part_of: નો ભાગ
       published: પ્રકાશિત
       see_all_updates: તમામ અપડેટ્સ જુઓ
-      toggle_less: થોડા ઓછા દર્શાવો
-      toggle_more: "%{show} %{number} વધુ"
     modal_dialogue:
       close_modal: મોડલ ડાયલોગ બંધ કરો
     notice:

@@ -1,12 +1,14 @@
 ---
 tk:
   common:
+    hide: Gizle
+    show: görkez
+    toggle_less: Azrak görkez
+    toggle_more: "%{show} %{number} köpeltmek üçin"
     translations: Terjimeler
   components:
     accordion:
-      hide: Gizle
       hide_all: Ähli bölümleri gizle
-      show: görkez
       show_all: Ähli bölümleri görkez
       this_section_visually_hidden: " Bu bölüm"
     article_schema:
@@ -127,8 +129,6 @@ tk:
       part_of: Bir bölegi
       published: Çap edilen
       see_all_updates: Ähli täzelenmelere serediň
-      toggle_less: Azrak görkez
-      toggle_more: "%{show} %{number} köpeltmek üçin"
     modal_dialogue:
       close_modal: Modal gepleşikleri tamamlamak
     notice:

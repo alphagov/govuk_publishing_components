@@ -1,12 +1,14 @@
 ---
 lv:
   common:
+    hide: Paslēpt
+    show: Rādīt
+    toggle_less: Rādīt mazāk
+    toggle_more: "%{show} %{number} vairāk"
     translations: Tulkojumi
   components:
     accordion:
-      hide: Paslēpt
       hide_all: Paslēpt visas sadaļas
-      show: Rādīt
       show_all: Rādīt visas sadaļas
       this_section_visually_hidden: " šī sadaļa"
     article_schema:
@@ -130,8 +132,6 @@ lv:
       part_of: Daļa no
       published: Publicēts
       see_all_updates: Skatīt visus atjauninājumus
-      toggle_less: Rādīt mazāk
-      toggle_more: "%{show} %{number} vairāk"
     modal_dialogue:
       close_modal: Aizvērt modālo dialogu
     notice:

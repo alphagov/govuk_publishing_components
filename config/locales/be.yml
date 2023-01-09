@@ -1,12 +1,14 @@
 ---
 be:
   common:
+    hide: Схаваць
+    show: Паказаць
+    toggle_less: Паказаць меньш
+    toggle_more: "%{show} %{number} болей"
     translations: Пераклады
   components:
     accordion:
-      hide: Схаваць
       hide_all: Схаваць усе секцыi
-      show: Паказаць
       show_all: Паказаць усе секцыi
       this_section_visually_hidden: " гэта секцыя"
     article_schema:
@@ -132,8 +134,6 @@ be:
       part_of: Частка
       published: Апублікаваны
       see_all_updates: Паглядзець усе абнаўленні
-      toggle_less: Паказаць меньш
-      toggle_more: "%{show} %{number} болей"
     modal_dialogue:
       close_modal: Зачыніць мадальны дыялог
     notice:

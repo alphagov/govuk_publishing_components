@@ -1,12 +1,14 @@
 ---
 ar:
   common:
+    hide: إخفاء
+    show: إظهار
+    toggle_less: عرض أقل
+    toggle_more: زيادة بمقدار %{show} %{number}
     translations: الترجمات
   components:
     accordion:
-      hide: إخفاء
       hide_all: إخفاء كل الأقسام
-      show: إظهار
       show_all: إظهار كل الأقسام
       this_section_visually_hidden: " هذا القسم"
     article_schema:
@@ -129,8 +131,6 @@ ar:
       part_of: جزء من
       published: منشورة
       see_all_updates: اطلع على كل التحديثات
-      toggle_less: عرض أقل
-      toggle_more: زيادة بمقدار %{show} %{number}
     modal_dialogue:
       close_modal: إغلاق مربع الحوار المشروط
     notice:

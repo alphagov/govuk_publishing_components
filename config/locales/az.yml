@@ -1,12 +1,14 @@
 ---
 az:
   common:
+    hide: Gizlət
+    show: Göstər
+    toggle_less: Daha azını göstər
+    toggle_more: "%{show} %{number} daha çox"
     translations: Tərcümələr
   components:
     accordion:
-      hide: Gizlət
       hide_all: Bütün bölmələri gizlət
-      show: Göstər
       show_all: Bütün bölmələri göstər
       this_section_visually_hidden: " bu bölmə"
     article_schema:
@@ -126,8 +128,6 @@ az:
       part_of: Hissə
       published: Dərc edilib
       see_all_updates: Bütün yeniləmələrə baxın
-      toggle_less: Daha azını göstər
-      toggle_more: "%{show} %{number} daha çox"
     modal_dialogue:
       close_modal: Modal dialoqu bağla
     notice:

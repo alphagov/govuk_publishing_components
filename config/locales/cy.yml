@@ -1,12 +1,14 @@
 ---
 cy:
   common:
+    hide: Cuddio
+    show: Dangos
+    toggle_less: Dangos llai
+    toggle_more: "%{show} %{number} arall"
     translations: Cyfieithiadau
   components:
     accordion:
-      hide: Cuddio
       hide_all: Cuddio pob adran
-      show: Dangos
       show_all: Dangos pob adran
       this_section_visually_hidden: " yr adran hon"
     article_schema:
@@ -130,8 +132,6 @@ cy:
       part_of: Rhan o
       published: Cyhoeddwyd
       see_all_updates: Gweld pob diweddariad
-      toggle_less: Dangos llai
-      toggle_more: "%{show} %{number} arall"
     modal_dialogue:
       close_modal: Cau'r ddeialog foddol
     notice:

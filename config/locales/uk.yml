@@ -1,12 +1,14 @@
 ---
 uk:
   common:
+    hide: Приховати
+    show: Показати
+    toggle_less: Показати менше
+    toggle_more: "%{show} %{number} більше"
     translations: Переклади
   components:
     accordion:
-      hide: Приховати
       hide_all: приховати всі розділи
-      show: Показати
       show_all: Показати всі розділи
       this_section_visually_hidden: " цей розділ"
     article_schema:
@@ -133,8 +135,6 @@ uk:
       part_of: Частина
       published: Опубліковано
       see_all_updates: Переглянути всі оновлення
-      toggle_less: Показати менше
-      toggle_more: "%{show} %{number} більше"
     modal_dialogue:
       close_modal: Закрити модальний діалог
     notice:

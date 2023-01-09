@@ -1,12 +1,14 @@
 ---
 fi:
   common:
+    hide: Piilottaa
+    show: Näytä
+    toggle_less: Näytä vähemmän
+    toggle_more: "%{show} %{number} lisää"
     translations: Käännökset
   components:
     accordion:
-      hide: Piilottaa
       hide_all: Piilota kaikki osiot
-      show: Näytä
       show_all: Näytä kaikki osiot
       this_section_visually_hidden: " Tämä jakso"
     article_schema:
@@ -128,8 +130,6 @@ fi:
       part_of: Osa
       published: Julkaistu
       see_all_updates: Katso kaikki palvelut
-      toggle_less: Näytä vähemmän
-      toggle_more: "%{show} %{number} lisää"
     modal_dialogue:
       close_modal: Sulje modaalinen vuoropuhelu
     notice:

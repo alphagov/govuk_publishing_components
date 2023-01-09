@@ -1,12 +1,14 @@
 ---
 ka:
   common:
+    hide: დამალვა
+    show: ჩვენება
+    toggle_less: ნაკლების ჩვენება
+    toggle_more: "%{show} %{number} more"
     translations: თარგმანები
   components:
     accordion:
-      hide: დამალვა
       hide_all: ყველა სექციის დამალვა
-      show: ჩვენება
       show_all: ყველა სექციის ჩვენება
       this_section_visually_hidden: " ეს სექცია"
     article_schema:
@@ -129,8 +131,6 @@ ka:
       part_of: ნაწილი
       published: პუბლიკაცია
       see_all_updates: ყველა განახლების ნახვა
-      toggle_less: ნაკლების ჩვენება
-      toggle_more: "%{show} %{number} more"
     modal_dialogue:
       close_modal: მოდალური დიალოგის გამორთვა
     notice:

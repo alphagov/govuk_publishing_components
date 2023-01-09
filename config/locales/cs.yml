@@ -1,12 +1,14 @@
 ---
 cs:
   common:
+    hide: Skrýt
+    show: Zobrazit
+    toggle_less: Zobrazit méně
+    toggle_more: "%{show} %{number} více"
     translations: Překlady
   components:
     accordion:
-      hide: Skrýt
       hide_all: Skrýt všechny sekce
-      show: Zobrazit
       show_all: Zobrazit všechny sekce
       this_section_visually_hidden: " tento oddíl"
     article_schema:
@@ -131,8 +133,6 @@ cs:
       part_of: Část
       published: Zveřejněno
       see_all_updates: Vidět všechny aktualizace
-      toggle_less: Zobrazit méně
-      toggle_more: "%{show} %{number} více"
     modal_dialogue:
       close_modal: Zavření modálního dialogu
     notice:

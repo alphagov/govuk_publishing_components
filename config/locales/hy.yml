@@ -1,12 +1,14 @@
 ---
 hy:
   common:
+    hide: Թաքցնել
+    show: Ցուցադրել
+    toggle_less: Ցույց տալ ավելի քիչ
+    toggle_more: "%{show} %{number} հատ ավել"
     translations: Թարգմանություններ
   components:
     accordion:
-      hide: Թաքցնել
       hide_all: Թաքցնել բոլոր բաժինները
-      show: Ցուցադրել
       show_all: Ցուցադրել բոլոր բաժինները
       this_section_visually_hidden: " այս բաժինը"
     article_schema:
@@ -130,8 +132,6 @@ hy:
       part_of: Մաս է՝
       published: Հրապարակված
       see_all_updates: Դիտել բոլոր թարմացումները
-      toggle_less: Ցույց տալ ավելի քիչ
-      toggle_more: "%{show} %{number} հատ ավել"
     modal_dialogue:
       close_modal: Փակել մոդալ պատուհանը
     notice:

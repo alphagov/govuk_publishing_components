@@ -1,12 +1,14 @@
 ---
 pa-pk:
   common:
+    hide: چھپاؤ
+    show: وکھاؤ
+    toggle_less: کُج گھٹ دکھاؤ
+    toggle_more: ہور {number}% %{show}
     translations: ترجمے
   components:
     accordion:
-      hide: چھپاؤ
       hide_all: سارے حصے چھپاؤ
-      show: وکھاؤ
       show_all: سارے حصے وکھاؤ
       this_section_visually_hidden: " اِک حصہ"
     article_schema:
@@ -122,8 +124,6 @@ pa-pk:
       part_of: ایندا حصہ
       published: شائع کیتا گیا
       see_all_updates: ساریاں نویاں چیزاں دیکھو
-      toggle_less: کُج گھٹ دکھاؤ
-      toggle_more: ہور {number}% %{show}
     modal_dialogue:
       close_modal: موڈیل ڈائیلاگ نوں بند کرو
     notice:

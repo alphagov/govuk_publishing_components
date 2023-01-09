@@ -1,12 +1,14 @@
 ---
 id:
   common:
+    hide: Sembunyikan
+    show: Tampilkan
+    toggle_less: Lihat lebih sedikit
+    toggle_more: "%{show} %{number} lagi"
     translations: Terjemahan
   components:
     accordion:
-      hide: Sembunyikan
       hide_all: Sembunyikan semua bagian
-      show: Tampilkan
       show_all: Tampilkan semua bagian
       this_section_visually_hidden: " bagian ini"
     article_schema:
@@ -126,8 +128,6 @@ id:
       part_of: Bagian dari
       published: Diterbitkan
       see_all_updates: Lihat semua pembaruan
-      toggle_less: Lihat lebih sedikit
-      toggle_more: "%{show} %{number} lagi"
     modal_dialogue:
       close_modal: Tutup dialog
     notice:

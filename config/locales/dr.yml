@@ -1,12 +1,14 @@
 ---
 dr:
   common:
+    hide: مخفی کردن
+    show: نمایش دادن
+    toggle_less: کمتر نمایش دهید
+    toggle_more: "%{show} %{number} بیشتر"
     translations: ترجمه ها
   components:
     accordion:
-      hide: مخفی کردن
       hide_all: مخفی کردن همه بخش ها
-      show: نمایش دادن
       show_all: نمایش دادن همه بخش ها
       this_section_visually_hidden: " این بخش"
     article_schema:
@@ -128,8 +130,6 @@ dr:
       part_of: بخشی از
       published: منتشر شده است
       see_all_updates: تمام آپدیت ها را مشاهده نمایید
-      toggle_less: کمتر نمایش دهید
-      toggle_more: "%{show} %{number} بیشتر"
     modal_dialogue:
       close_modal: دیالوگ کیفی را بسته نمایید
     notice:

@@ -1,12 +1,14 @@
 ---
 hr:
   common:
+    hide: Sakrij
+    show: Prikaži
+    toggle_less: Pokaži manje
+    toggle_more: "%{show} %{number} more"
     translations: Prijevodi
   components:
     accordion:
-      hide: Sakrij
       hide_all: Sakrij sve odjeljke
-      show: Prikaži
       show_all: Prikaži sve odjeljke
       this_section_visually_hidden: " ovaj odjeljak"
     article_schema:
@@ -127,8 +129,6 @@ hr:
       part_of: Dio
       published: Objavljeno
       see_all_updates: Pogledajte sva ažuriranja
-      toggle_less: Pokaži manje
-      toggle_more: "%{show} %{number} more"
     modal_dialogue:
       close_modal: Zatvorite modalni dijalog
     notice:

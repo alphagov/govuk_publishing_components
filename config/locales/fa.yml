@@ -1,12 +1,14 @@
 ---
 fa:
   common:
+    hide: مخفی کردن
+    show: نمایش
+    toggle_less: نمایش کمتر
+    toggle_more: "%{show} %{number} بیشتر"
     translations: ترجمه
   components:
     accordion:
-      hide: مخفی کردن
       hide_all: مخفی کردن تمام بخش‌ها
-      show: نمایش
       show_all: نمایش تمام بخش‌ها
       this_section_visually_hidden: " این بخش"
     article_schema:
@@ -125,8 +127,6 @@ fa:
       part_of: بخشی از
       published: منتشر شده
       see_all_updates: مشاهده تمام بروزرسانی‌ها
-      toggle_less: نمایش کمتر
-      toggle_more: "%{show} %{number} بیشتر"
     modal_dialogue:
       close_modal: بستن گفتگوی مودال
     notice:

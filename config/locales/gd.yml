@@ -1,12 +1,14 @@
 ---
 gd:
   common:
+    hide: Cheilt
+    show: Taispeántas
+    toggle_less: Taispeáin níos lú
+    toggle_more: "%{show} %{number} níos mó"
     translations: Aistriúchán
   components:
     accordion:
-      hide: Cheilt
       hide_all: Scrios gach cuid
-      show: Taispeántas
       show_all: Taispeáin gach cuid
       this_section_visually_hidden: " An chuid seo"
     article_schema:
@@ -128,8 +130,6 @@ gd:
       part_of: Chuid
       published: Arna chur suas
       see_all_updates: Féach gach nuashonrú
-      toggle_less: Taispeáin níos lú
-      toggle_more: "%{show} %{number} níos mó"
     modal_dialogue:
       close_modal: Dún an dialóg módúil
     notice:

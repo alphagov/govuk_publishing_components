@@ -1,12 +1,14 @@
 ---
 fr:
   common:
+    hide: Masquer
+    show: Afficher
+    toggle_less: Afficher moins
+    toggle_more: "%{show} %{number} plus"
     translations: Traductions
   components:
     accordion:
-      hide: Masquer
       hide_all: Masquer toutes les sections
-      show: Afficher
       show_all: Afficher toutes les sections
       this_section_visually_hidden: " cette section"
     article_schema:
@@ -126,8 +128,6 @@ fr:
       part_of: Fait partie de
       published: Publié
       see_all_updates: Afficher toutes les mises à jour
-      toggle_less: Afficher moins
-      toggle_more: "%{show} %{number} plus"
     modal_dialogue:
       close_modal: Fermer le dialogue modal
     notice:

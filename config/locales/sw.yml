@@ -1,12 +1,14 @@
 ---
 sw:
   common:
+    hide: Ficha
+    show: Onyesha
+    toggle_less: Onyesha chache
+    toggle_more: "%{show} %{number} zaidi"
     translations: Tafsiri
   components:
     accordion:
-      hide: Ficha
       hide_all: Ficha sehemu zote
-      show: Onyesha
       show_all: Onyesha sehemu zote
       this_section_visually_hidden: " sehemu hii"
     article_schema:
@@ -126,8 +128,6 @@ sw:
       part_of: Sehemu ya
       published: Ilichapishwa
       see_all_updates: Angalia taarifa zote
-      toggle_less: Onyesha chache
-      toggle_more: "%{show} %{number} zaidi"
     modal_dialogue:
       close_modal: Funga dirisha ibukizi
     notice:

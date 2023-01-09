@@ -1,12 +1,14 @@
 ---
 ur:
   common:
+    hide: پوشیدہ کریں
+    show: دکھائی
+    toggle_less: کم دکھائیں
+    toggle_more: "%{show} %{number} مزید"
     translations: تراجم
   components:
     accordion:
-      hide: پوشیدہ کریں
       hide_all: تمام سیکشنز کو پوشیدہ کریں
-      show: دکھائی
       show_all: تمام سیکشنز دکھائیں
       this_section_visually_hidden: " یہ سیکشن"
     article_schema:
@@ -123,8 +125,6 @@ ur:
       part_of: حصہ از
       published: شائع کردہ
       see_all_updates: تمام اپ ڈیٹس دیکھیں
-      toggle_less: کم دکھائیں
-      toggle_more: "%{show} %{number} مزید"
     modal_dialogue:
       close_modal: محدود موڈل ڈائیلاگ
     notice:
