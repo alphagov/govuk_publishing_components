@@ -123,7 +123,6 @@
   .gem-c-subscription-links__item--link {
     padding: govuk-spacing(2) govuk-spacing(2) govuk-spacing(2) 0;
     border: 1px solid transparent;
-    border-bottom: 1px solid govuk-colour("dark-grey", $legacy: "grey-1");
 
     &:focus {
       border-bottom-color: transparent;
