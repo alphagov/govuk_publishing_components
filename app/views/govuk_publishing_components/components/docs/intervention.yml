@@ -14,9 +14,10 @@ accessibility_criteria: |
   - have a border colour contrast ratio of more than 4.5:1 with its background to be visually distinct
   - prevent screen readers from announcing the dismiss link icon
 
-
 shared_accessibility_criteria:
   - link
+accessibility_excluded_rules:
+  - landmark-unique # aria-label attributes will be duplicated in component examples list
 examples:
   default:
     data:

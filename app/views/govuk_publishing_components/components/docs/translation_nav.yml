@@ -14,6 +14,8 @@ accessibility_criteria: |
     [Watch a screen reader pronounce text differently based on lang attribute](https://bit.ly/screenreaderpronunciation)
 shared_accessibility_criteria:
   - link
+accessibility_excluded_rules:
+  - landmark-unique # aria-label attributes will be duplicated in component examples list
 examples:
   default:
     data:

@@ -7,6 +7,7 @@ govuk_frontend_components:
   - header
 accessibility_excluded_rules:
   - landmark-banner-is-top-level # The header element can not be top level in the examples
+  - duplicate-id # IDs will be duplicated in component examples list
   - duplicate-id-aria # IDs will be duplicated in component examples list
   - form-field-multiple-labels # Form labels will be ambiguous in component examples list
   - landmark-no-duplicate-banner # banners will be duplicated in component examples list
