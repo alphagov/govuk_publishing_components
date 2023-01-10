@@ -7,6 +7,7 @@
   bold ||= false
   heading_size = false unless shared_helper.valid_heading_size?(heading_size)
   is_page_heading ||= false
+  right_to_left ||= false
 
   css_classes = %w[gem-c-label govuk-label]
   css_classes << "govuk-label--s" if bold
@@ -19,14 +20,14 @@
 
 <% if is_page_heading %>
   <%= tag.h1 text, class: "govuk-label-wrapper" do %>
-    <%= tag.label text, id: id, for: html_for, class: css_classes %>
+    <%= tag.label text, id: id, for: html_for, class: css_classes, dir: right_to_left ? "rtl" : nil %>
   <% end %>
 <% else %>
-  <%= tag.label text, id: id, for: html_for, class: css_classes %>
+  <%= tag.label text, id: id, for: html_for, class: css_classes, dir: right_to_left ? "rtl" : nil %>
 <% end %>
 
 <% if hint_text.present? %>
-  <%= tag.span id: hint_id, class: hint_text_css_classes do %>
+  <%= tag.div id: hint_id, class: hint_text_css_classes, dir: right_to_left ? "rtl" : nil do %>
     <%= hint_text %>
   <% end %>
 <% end %>

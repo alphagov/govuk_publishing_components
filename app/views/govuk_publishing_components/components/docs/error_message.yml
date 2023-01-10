@@ -21,3 +21,16 @@ examples:
       items:
         - text: Error 1
         - text: Error 2
+  with_dir_attribute:
+    description: Allows the correct display of right to left languages
+    data:
+      text: "An error message displayed right to left"
+      id: "error_id_2"
+      right_to_left: true
+  with_items_and_dir_attribute:
+    description: To allow the correct display of right to left languages on error items
+    data:
+      right_to_left: true
+      items:
+        - text: Error 1 displayed right to left
+        - text: Error 2 displayed right to left
