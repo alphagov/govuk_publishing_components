@@ -223,12 +223,16 @@
 }
 
 .gem-c-feedback__email-link {
-  display: block;
+  display: inline-block;
   margin-top: govuk-spacing(4);
 
   @include govuk-media-query($from: desktop) {
-    display: inline-block;
     margin-top: govuk-spacing(2);
+  }
+
+  &:focus,
+  &:active {
+    color: $govuk-focus-text-colour;
   }
 }
 
