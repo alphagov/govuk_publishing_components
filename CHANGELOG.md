@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 34.3.0
 
 * Support Rails Content Security Policy nonce on inline JavaScript ([PR #3173](https://github.com/alphagov/govuk_publishing_components/pull/3173))
 * Restyle subscription link ([PR #3177](https://github.com/alphagov/govuk_publishing_components/pull/3177))
