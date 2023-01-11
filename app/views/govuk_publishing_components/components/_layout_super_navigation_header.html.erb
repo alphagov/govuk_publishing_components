@@ -176,7 +176,7 @@
                                   ga4_link: {
                                       "event_name": "navigation",
                                       "type": "header menu bar",
-                                      "index": '1.' + (column_index + 1).to_s + '.' + (index + 1).to_s,
+                                      "index": "1.#{column_index + 1}.#{index + 1}",
                                       "index_total": navigation_links_length,
                                       "section": column[:label],
                                     }
@@ -317,7 +317,7 @@
                         ga4_link: {
                           "event_name": "navigation",
                           "type": "header menu bar",
-                          "index": '2.2.' + (index + 1).to_s,
+                          "index": "2.2.#{index + 1}",
                           "index_total": navigation_links_length,
                           "section": popular_links_heading,
                         }
