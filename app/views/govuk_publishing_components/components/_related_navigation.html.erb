@@ -1,10 +1,15 @@
-<% related_nav_helper = GovukPublishingComponents::Presenters::RelatedNavigationHelper.new(local_assigns) %>
-<% shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns) %>
+<%
+  related_nav_helper = GovukPublishingComponents::Presenters::RelatedNavigationHelper.new(local_assigns)
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+  ga4_tracking ||= false
+  data = {}
+  data[:module] = "gem-track-click"
+  data[:module] << " ga4-link-tracker" if ga4_tracking
+%>
 
 <% if related_nav_helper.related_navigation? %>
   <% random = SecureRandom.hex(4) %>
-  <div class="gem-c-related-navigation">
-
+  <%= tag.div(class: "gem-c-related-navigation", data: data) do %>
     <% if local_assigns[:context] != :footer %>
       <h2 id="related-nav-related_items-<%= random %>"
           class="gem-c-related-navigation__main-heading"
@@ -33,7 +38,8 @@
         section_title: section_title,
         links: links,
         section_index: section_index,
-        random: random %>
+        random: random,
+        ga4_tracking: ga4_tracking %>
     <% end %>
-  </div>
+  <% end %>
 <% end %>

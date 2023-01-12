@@ -201,10 +201,62 @@ describe "Related navigation", type: :view do
     )
     render_component(content_item: content_item)
 
-    assert_select ".gem-c-related-navigation__nav-section ul[data-module='gem-track-click']"
+    assert_select ".gem-c-related-navigation[data-module='gem-track-click']"
     assert_select ".gem-c-related-navigation__section-link[data-track-category='relatedLinkClicked']"
     assert_select ".gem-c-related-navigation__section-link[data-track-action='1.1 Explore the topic']"
     assert_select ".gem-c-related-navigation__section-link[data-track-label='/apprenticeships']"
+  end
+
+  it "tracks links with GA4" do
+    content_item = {}
+    content_item["links"] = {
+      "ordered_related_items" => [
+        {
+          "base_path" => "/fishing",
+          "title" => "Fishing",
+        },
+        {
+          "base_path" => "/surfing",
+          "title" => "Surfing",
+        },
+      ],
+      "topics" => [
+        {
+          "base_path" => "/skating",
+          "title" => "Skating",
+          "document_type" => "topic",
+        },
+        {
+          "base_path" => "/paragliding",
+          "title" => "Paragliding",
+          "document_type" => "topic",
+        },
+      ],
+    }
+    content_item["details"] = {
+      "external_related_links" => [
+        {
+          "url" => "http://something",
+          "title" => "Travel insurance",
+        },
+        {
+          "url" => "http://somethingelse",
+          "title" => "Extreme sports insurance",
+        },
+      ],
+    }
+
+    render_component(content_item: content_item, ga4_tracking: true)
+
+    assert_select ".gem-c-related-navigation[data-module='gem-track-click ga4-link-tracker']"
+    assert_select ".gem-c-related-navigation__section-link[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"related content\",\"index\":\"1.1\",\"section\":\"Related content\"}']", text: "Fishing"
+    assert_select ".gem-c-related-navigation__section-link[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"related content\",\"index\":\"1.2\",\"section\":\"Related content\"}']", text: "Surfing"
+
+    assert_select ".gem-c-related-navigation__section-link[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"related content\",\"index\":\"2.1\",\"section\":\"Explore the topic\"}']", text: "Skating"
+    assert_select ".gem-c-related-navigation__section-link[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"related content\",\"index\":\"2.2\",\"section\":\"Explore the topic\"}']", text: "Paragliding"
+
+    assert_select ".gem-c-related-navigation__section-link[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"related content\",\"index\":\"3.1\",\"section\":\"Elsewhere on the web\"}']", text: "Travel insurance"
+    assert_select ".gem-c-related-navigation__section-link[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"related content\",\"index\":\"3.2\",\"section\":\"Elsewhere on the web\"}']", text: "Extreme sports insurance"
   end
 
   it "uses lang when locale is set" do

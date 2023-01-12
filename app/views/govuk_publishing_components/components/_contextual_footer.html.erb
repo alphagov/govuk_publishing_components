@@ -1,10 +1,12 @@
 <% navigation = GovukPublishingComponents::Presenters::ContextualNavigation.new(content_item, request) %>
+<% ga4_tracking ||= false %>
 
 <% unless navigation.content_tagged_to_current_step_by_step? %>
   <div class="gem-c-contextual-footer">
     <%# Rendering related navigation because no step by step list %>
     <%= render 'govuk_publishing_components/components/related_navigation',
                content_item: content_item,
+               ga4_tracking: ga4_tracking,
                context: :footer %>
   </div>
 <% end %>
