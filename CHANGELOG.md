@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add Youtube Embed Support to the ImageCard Component ([PR #3156](https://github.com/alphagov/govuk_publishing_components/pull/3156))
+
 ## 34.3.0
 
 * Support Rails Content Security Policy nonce on inline JavaScript ([PR #3173](https://github.com/alphagov/govuk_publishing_components/pull/3173))
