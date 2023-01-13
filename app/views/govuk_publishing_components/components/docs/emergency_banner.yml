@@ -7,7 +7,9 @@ body: |
 
 shared_accessibility_criteria:
   - link
-
+accessibility_excluded_rules:
+  - duplicate-id-aria # IDs will be duplicated in component examples list
+  - landmark-unique # aria-label attributes will be duplicated in component examples list
 examples:
   default:
     description: |
