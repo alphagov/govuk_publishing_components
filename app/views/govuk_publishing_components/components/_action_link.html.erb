@@ -41,9 +41,12 @@
   link_classes << shared_helper.classes if classes
   link_classes << "govuk-link--inverse" if light_text
   link_classes << shared_helper.get_heading_size(font_size, 'm') if font_size
+
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns, request)
+  component_helper.add_class(css_classes.join(" "))
 %>
 <% if text.present? %>
-  <div class="<%= css_classes.join(' ') %>">
+  <%= tag.div(**component_helper.component_attributes) do %>
     <% contents = capture do %>
       <span class="gem-c-action-link__link-wrapper">
         <% main_text = capture do %>
@@ -78,5 +81,5 @@
     <% else %>
       <%= contents %>
     <% end %>
-  </div>
+  <% end %>
 <% end %>
