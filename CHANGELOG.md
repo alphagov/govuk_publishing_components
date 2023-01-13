@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 34.4.1
 
 * Fix bug where analytics tries to init in tests which don't import it ([PR #3185](https://github.com/alphagov/govuk_publishing_components/pull/3185))
 
