@@ -3,8 +3,9 @@
   window.GOVUK = window.GOVUK || {}
   var GOVUK = window.GOVUK || {}
 
-  var YoutubeLinkEnhancement = function ($element) {
+  var YoutubeLinkEnhancement = function ($element, $classOverride) {
     this.$element = $element
+    this.$classOverride = typeof $classOverride !== 'undefined' ? $classOverride : 'gem-c-govspeak__youtube-video'
   }
 
   YoutubeLinkEnhancement.prototype.init = function () {
@@ -70,7 +71,7 @@
     var parentContainer = parentPara.parentNode
 
     var youtubeVideoContainer = document.createElement('div')
-    youtubeVideoContainer.className += 'gem-c-govspeak__youtube-video'
+    youtubeVideoContainer.className += this.$classOverride
     youtubeVideoContainer.innerHTML = '<span id="' + elementId + '" data-video-id="' + id + '"></span>'
 
     options.title = $link.textContent

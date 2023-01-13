@@ -28,6 +28,20 @@ describe('Youtube link enhancement', function () {
       expect(document.querySelectorAll('.gem-c-govspeak p, .gem-c-govspeak a').length).toBe(0)
     })
 
+    it('supports overriding the default class with a custom class', function () {
+      container.innerHTML =
+        '<div class="gem-c-govspeak govuk-govspeak" data-module="govspeak">' +
+          '<p><a href="https://www.youtube.com/watch?v=0XpAtr24uUQ">Agile at GDS</a></p>' +
+        '<div>'
+      document.body.appendChild(container)
+
+      var element = document.querySelector('.gem-c-govspeak')
+      var enhancement = new GOVUK.GovspeakYoutubeLinkEnhancement(element, 'custom-class')
+      enhancement.init()
+
+      expect(document.querySelectorAll('.custom-class').length).toBe(1)
+    })
+
     it('doesn\'t replace non Youtube links', function () {
       container.innerHTML =
         '<div class="gem-c-govspeak govuk-govspeak" data-module="govspeak">' +
