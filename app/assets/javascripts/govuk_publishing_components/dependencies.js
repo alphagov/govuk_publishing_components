@@ -5,16 +5,18 @@
 // = require ./modules.js
 
 document.addEventListener('DOMContentLoaded', function () {
-  window.GOVUK.modules.start()
+  window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {}
+  window.GOVUK.analyticsVars = window.GOVUK.analyticsVars || {}
 
   // if statements ensure these functions don't execute during testing
   if (typeof window.GOVUK.loadAnalytics !== 'undefined') {
-    window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {}
     if (typeof window.GOVUK.analyticsGa4.vars === 'undefined') {
       window.GOVUK.loadAnalytics.loadGa4()
     }
-    if (typeof window.GOVUK.analyticsVars === 'undefined') {
+    if (typeof window.GOVUK.analyticsVars.gaProperty === 'undefined') {
       window.GOVUK.loadAnalytics.loadUa()
     }
   }
+
+  window.GOVUK.modules.start()
 })
