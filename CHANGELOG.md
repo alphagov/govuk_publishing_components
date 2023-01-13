@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix bug where analytics tries to init in tests which don't import it ([PR #3185](https://github.com/alphagov/govuk_publishing_components/pull/3185))
+
 ## 34.4.0
 
 * Add GA4 tracking to related navigation ([PR #3179](https://github.com/alphagov/govuk_publishing_components/pull/3179))
