@@ -1,6 +1,7 @@
 <%
   add_gem_component_stylesheet("intervention")
 
+  name ||= ""
   dismiss_text ||= false
   suggestion_link_text ||= false
   suggestion_link_url ||= false
@@ -10,6 +11,8 @@
 
   data_attributes ||= {}
   suggestion_data_attributes ||= {}
+  data_attributes[:module] = "intervention"
+  data_attributes["intervention-name"] = name
 
   aria_attributes ||= {}
   aria_attributes[:label] = 'Intervention'
@@ -40,8 +43,6 @@
     suggestion_link_text = intervention_helper.accessible_text
   end
 
-  data_attributes[:module] = "intervention"
-
   section_options = {
     class: "gem-c-intervention",
     role: "region", aria: aria_attributes,
@@ -60,7 +61,7 @@
 
     <% if dismiss_text %>
       <p class="govuk-body">
-        <%= tag.a class: "govuk-link gem-c-intervention__dismiss-link", href: dismiss_href do %>
+        <%= tag.a class: "govuk-link js-dismiss-link", href: dismiss_href do %>
           <svg class="gem-c-intervention__dismiss-icon"
             width="19" height="19" viewBox="0 0 19 19"
             aria-hidden="true"

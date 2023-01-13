@@ -4,23 +4,64 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 (function (Modules) {
   function Intervention ($module) {
     this.$module = $module
-    this.$banner = this.$module.querySelector('.gem-c-intervention')
-    this.$closeLink = this.$module.querySelector('.gem-c-intervention__dismiss-link')
+    this.$closeLink = this.$module.querySelector('.js-dismiss-link')
+    this.$campaignName = this.$module.getAttribute('data-intervention-name')
+    this.$campaignCookie = window.GOVUK.cookie('intervention_campaign') || ''
   }
 
   Intervention.prototype.init = function () {
-    this.$module.close = this.handleClose.bind(this)
+    this.$cookieHasCampaign = this.cookieHasCampaign()
 
     if (this.$closeLink) {
+      this.$module.close = this.handleClose.bind(this)
       this.$closeLink.addEventListener('click', this.$module.close)
+    }
+
+    if (this.$cookieHasCampaign) {
+      this.hideBanner()
     }
   }
 
   Intervention.prototype.handleClose = function (event) {
-    if (event) {
-      event.preventDefault()
+    event.preventDefault()
+
+    if (this.$cookieHasCampaign) {
+      this.setCookies()
+    }
+    this.hideBanner()
+  }
+
+  Intervention.prototype.cookieHasCampaign = function () {
+    if (this.$campaignCookie) {
+      return this.cookieValues().includes(this.$campaignName)
+    }
+    return false
+  }
+
+  Intervention.prototype.cookieValues = function () {
+    if (this.$campaignCookie !== null && this.$campaignCookie.length > 0) {
+      return this.$campaignCookie.split(',')
+    }
+  }
+
+  Intervention.prototype.appendCookieValues = function () {
+    return this.$campaignCookie + ',' + this.$campaignName
+  }
+
+  Intervention.prototype.setCookies = function () {
+    if (this.$campaignCookie) {
+      window.GOVUK.setCookie('intervention_campaign', this.appendCookieValues(), { days: 30 })
+    } else {
+      window.GOVUK.setCookie('intervention_campaign', this.$campaignName, { days: 30 })
+    }
+  }
+
+  Intervention.prototype.hideBanner = function () {
+    if (!this.$cookieHasCampaign) {
+      this.setCookies()
     }
 
+    this.$module.hidden = true
     this.$module.style.display = 'none'
   }
 

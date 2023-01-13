@@ -3,8 +3,8 @@ module GovukPublishingComponents
     class InterventionHelper
       def initialize(options = {})
         @accessible_text_suffix = I18n.t("components.intervention.accessible_link_text_suffix")
-        @params = options[:params] || nil
-        @query_string = options[:query_string] || nil
+        @params = options[:params]
+        @query_string = options[:query_string]
         @suggestion_text = options[:suggestion_text]
         @suggestion_link_text = options[:suggestion_link_text]
         @suggestion_link_url = options[:suggestion_link_url]
