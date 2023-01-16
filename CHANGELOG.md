@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 34.4.2
 
 * Load modules after analytics has loaded ([PR #3187](https://github.com/alphagov/govuk_publishing_components/pull/3187))
 
