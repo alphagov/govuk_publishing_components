@@ -44,8 +44,12 @@ cy:
       buttons:
         accept_cookies: Derbyn cwcis ychwanegol
         reject_cookies: Gwrthod cwcis ychwanegol
-      confirmation_message_html: Gallwch %{link} unrhyw bryd.
-      confirmation_message_link: newid eich gosodiadau cwcis
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: Gallwch %{link} unrhyw bryd.
+        link: newid eich gosodiadau cwcis
+        rejected:
       hide: Cuddio'r neges hon
       text:
       - Rydyn ni'n defnyddio rhai cwcis hanfodol i wneud i'r wefan hon weithio.

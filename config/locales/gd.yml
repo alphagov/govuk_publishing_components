@@ -42,8 +42,12 @@ gd:
       buttons:
         accept_cookies: Glac le fianáin bhreise
         reject_cookies: Diúltaigh fianáin bhreise
-      confirmation_message_html: Is féidir leat %{link} ag am ar bith.
-      confirmation_message_link: Athraigh do chuid socruithe fianán
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: Is féidir leat %{link} ag am ar bith.
+        link: Athraigh do chuid socruithe fianán
+        rejected:
       hide: Folaigh an teachtaireacht seo
       text:
       - Úsáidimid fianáin áirithe atá riachtanach le haghaidh gnáthoibriú an láithreáin ghréasáin seo

@@ -40,8 +40,12 @@ uz:
       buttons:
         accept_cookies: cookie қўшимча файлларини қабул қилиш
         reject_cookies: cookie қўшимча файлларини бекор қилиш
-      confirmation_message_html: Сиз %{link} исталган вақтда қилишингиз мумкин.
-      confirmation_message_link: cookie файлларини созламаларини ўзгариши
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: Сиз %{link} исталган вақтда қилишингиз мумкин.
+        link: cookie файлларини созламаларини ўзгариши
+        rejected:
       hide: Ушбу хабарни яшириш
       text:
       - Биз ушбу веб-сайтни ишини таъминлаш учун cookieнинг муайян файлларини қўллаймиз.

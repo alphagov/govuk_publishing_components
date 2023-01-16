@@ -41,8 +41,12 @@ ro:
       buttons:
         accept_cookies: Acceptați cookie-urile suplimentare
         reject_cookies: Respingeți cookie-urile suplimentare
-      confirmation_message_html: Puteți să %{link} în orice moment.
-      confirmation_message_link: modificați setările pentru cookie-uri
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: Puteți să %{link} în orice moment.
+        link: modificați setările pentru cookie-uri
+        rejected:
       hide: Ascundeți acest mesaj
       text:
       - Utilizăm unele cookie-uri esențiale pentru ca acest website să poată funcționa.

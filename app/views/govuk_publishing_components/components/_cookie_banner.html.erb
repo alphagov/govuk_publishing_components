@@ -14,9 +14,9 @@
   text = raw(text)
 
   cookie_preferences_href ||= "/help/cookies"
-  confirmation_message ||= raw(t("components.cookie_banner.confirmation_message_html",
+  confirmation_message ||= raw(t("components.cookie_banner.confirmation_message.html",
                                 link: link_to(
-                                  t("components.cookie_banner.confirmation_message_link"),
+                                  t("components.cookie_banner.confirmation_message.link"),
                                   cookie_preferences_href,
                                   class: "govuk-link",
                                   data: {
@@ -79,13 +79,17 @@
                   "track-action": "Cookie banner rejected",
                 }
             } %>
-            <a class="govuk-link" href="<%= cookie_preferences_href %>">View cookies</a>
+            <a class="govuk-link" href="<%= cookie_preferences_href %>"><%= t("components.cookie_banner.buttons.view_cookies") %></a>
           </div>
         <% end %>
     </div>
   </div>
   <div class="gem-c-cookie-banner__confirmation govuk-width-container" tabindex="-1" hidden>
-    <p class="gem-c-cookie-banner__confirmation-message" role="alert"><%= confirmation_message %></p>
+    <p class="gem-c-cookie-banner__confirmation-message" role="alert">
+      <span class="gem-c-cookie-banner__confirmation-message__accepted" hidden><%= t("components.cookie_banner.confirmation_message.accepted") %>. </span>
+      <span class="gem-c-cookie-banner__confirmation-message__rejected" hidden><%= t("components.cookie_banner.confirmation_message.rejected") %>. </span>
+      <%= confirmation_message %>
+    </p>
     <div class="govuk-button-group">
       <button class="gem-c-cookie-banner__hide-button govuk-button" data-hide-cookie-banner="true" data-module="gem-track-click" data-track-category="cookieBanner" data-track-action="Hide cookie banner"><%= t("components.cookie_banner.hide") %></button>
     </div>

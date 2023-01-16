@@ -40,8 +40,12 @@ tr:
       buttons:
         accept_cookies: Ek çerezleri kabul et
         reject_cookies: Ek çerezleri reddet
-      confirmation_message_html: İstediğiniz zaman %{link} yapabilirsiniz.
-      confirmation_message_link: çerez ayarlarınızı değiştirin
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: İstediğiniz zaman %{link} yapabilirsiniz.
+        link: çerez ayarlarınızı değiştirin
+        rejected:
       hide: Bu mesajı gizle
       text:
       - Bu web sitesini çalıştırmak için bazı gerekli çerezleri kullanıyoruz.

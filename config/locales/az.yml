@@ -40,8 +40,12 @@ az:
       buttons:
         accept_cookies: Əlavə kukilər qəbul edin
         reject_cookies: Əlavə kukilərdən imtina edin
-      confirmation_message_html: İstənilən vaxt %{link}.
-      confirmation_message_link: Kuki parametrlərinizi dəyişdirin
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: İstənilən vaxt %{link}.
+        link: Kuki parametrlərinizi dəyişdirin
+        rejected:
       hide: Bu mesajı gizlət
       text:
       - Biz bu vebsaytın işləməsini təmin etmək üçün bəzi zəruri kukilərdən istifadə edirik.

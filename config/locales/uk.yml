@@ -42,8 +42,12 @@ uk:
       buttons:
         accept_cookies: Прийняти додаткові файли cookie
         reject_cookies: Відхилити додаткові файли cookie
-      confirmation_message_html: Ви можете %{link} у будь -який час.
-      confirmation_message_link: Змініть налаштування файлів cookie
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: Ви можете %{link} у будь -який час.
+        link: Змініть налаштування файлів cookie
+        rejected:
       hide: Приховати це повідомлення
       text:
       - Ми використовуємо деякі важливі файли cookie

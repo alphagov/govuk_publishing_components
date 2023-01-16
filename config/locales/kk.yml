@@ -40,8 +40,12 @@ kk:
       buttons:
         accept_cookies: Қосымша cookie файлдарын қабылдау
         reject_cookies: Қосымша cookie файлдарынан бас тарту
-      confirmation_message_html: Кез келген уақытта %{link}.
-      confirmation_message_link: cookie параметрлерін өзгерте аласыз
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: Кез келген уақытта %{link}.
+        link: cookie параметрлерін өзгерте аласыз
+        rejected:
       hide: Бұл хабарламаны жасыру
       text:
       - Бұл веб-сайттың жұмыс істеуі үшін кейбір маңызды cookie файлдарын қолданамыз.

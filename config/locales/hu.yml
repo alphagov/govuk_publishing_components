@@ -40,8 +40,12 @@ hu:
       buttons:
         accept_cookies: További sütik elfogadása
         reject_cookies: További sütik elutasítása
-      confirmation_message_html: 'Ön bármikor megteheti a következőt: %{link}.'
-      confirmation_message_link: változtassa meg sütibeállításait
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: 'Ön bármikor megteheti a következőt: %{link}.'
+        link: változtassa meg sütibeállításait
+        rejected:
       hide: Üzenet elrejtése
       text:
       - A weboldalunk biztosítása érdekében néhány létfontosságú sütit használunk.

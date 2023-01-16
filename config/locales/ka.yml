@@ -40,8 +40,12 @@ ka:
       buttons:
         accept_cookies: დამატებითი ქუქი ფაილების დადასტურება
         reject_cookies: დამატებითი ქუქი ფაილების უარყოფა
-      confirmation_message_html: თქვენ შეგიძლიათ %{link} ნებისმიერ დროს.
-      confirmation_message_link: შეცვალეთ თქვენი ქუქი პარამეტრები
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: თქვენ შეგიძლიათ %{link} ნებისმიერ დროს.
+        link: შეცვალეთ თქვენი ქუქი პარამეტრები
+        rejected:
       hide: დაფარეთ ეს მესიჯი
       text:
       - ჩვენ ვიყენებთ რამოდენიმე აუცილებელ ქუქი -ჩანაწერს

@@ -40,8 +40,12 @@ pt:
       buttons:
         accept_cookies: Aceitar cookies adicionais
         reject_cookies: Rejeitar cookies adicionais
-      confirmation_message_html: Pode %{link} a qualquer momento.
-      confirmation_message_link: alterar as suas definições de cookies
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: Pode %{link} a qualquer momento.
+        link: alterar as suas definições de cookies
+        rejected:
       hide: Ocultar esta mensagem
       text:
       - Utilizamos alguns cookies essenciais para permitir o funcionamento deste site.

@@ -40,8 +40,12 @@ en:
       buttons:
         accept_cookies: Accept additional cookies
         reject_cookies: Reject additional cookies
-      confirmation_message_html: You can %{link} at any time.
-      confirmation_message_link: change your cookie settings
+        view_cookies: View cookies
+      confirmation_message:
+        accepted: You have accepted additional cookies
+        html: You can %{link} at any time.
+        link: change your cookie settings
+        rejected: You have rejected additional cookies
       hide: Hide this message
       text:
       - We use some essential cookies to make this website work.
@@ -232,7 +236,7 @@ en:
       popular_links:
       - label: Check benefits and financial support you can get
         href: "/check-benefits-financial-support"
-      - label: 'Find out about the Energy Bills Support Scheme'
+      - label: Find out about the Energy Bills Support Scheme
         href: "/guidance/getting-the-energy-bills-support-scheme-discount"
       - label: Find a job
         href: "/find-a-job"

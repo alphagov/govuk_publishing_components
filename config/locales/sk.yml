@@ -41,8 +41,12 @@ sk:
       buttons:
         accept_cookies: Prijať ďalšie súbory cookie
         reject_cookies: Odmietnuť ďalšie súbory cookie
-      confirmation_message_html: Kedykoľvek môžete %{link}.
-      confirmation_message_link: zmeniť nastavenia súborov cookie
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: Kedykoľvek môžete %{link}.
+        link: zmeniť nastavenia súborov cookie
+        rejected:
       hide: Skryť túto správu
       text:
       - "„Používame niektoré základné súbory cookie"

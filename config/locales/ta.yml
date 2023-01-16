@@ -40,8 +40,12 @@ ta:
       buttons:
         accept_cookies: கூடுதல் குக்கீஸ்களை ஏற்கவும்
         reject_cookies: கூடுதல் குக்கீஸ்களை நிராகரி
-      confirmation_message_html: எந்த நேரத்திலும் உங்களால் %{link} முடியும்.
-      confirmation_message_link: உங்கள் குக்கீ அமைப்புகளை மாற்றவும்
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: எந்த நேரத்திலும் உங்களால் %{link} முடியும்.
+        link: உங்கள் குக்கீ அமைப்புகளை மாற்றவும்
+        rejected:
       hide: இந்தச் செய்தியை மறை
       text:
       - "”இந்த இணையத்தளம் செயல்படுவதற்கான சில அத்தியாவசிய குக்கீஸ்களை நாங்கள் பயன்படுத்துகிறோம்.”"

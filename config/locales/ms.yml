@@ -39,8 +39,12 @@ ms:
       buttons:
         accept_cookies: Terima kuki tambahan
         reject_cookies: Tolak kuki tambahan
-      confirmation_message_html: Anda boleh %{link} pada bila-bila masa.
-      confirmation_message_link: ubah tetapan kuki anda
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: Anda boleh %{link} pada bila-bila masa.
+        link: ubah tetapan kuki anda
+        rejected:
       hide: Sorok mesej ini
       text:
       - Kami menggunakan beberapa kuki penting untuk menjadikan laman web ini berfungsi.

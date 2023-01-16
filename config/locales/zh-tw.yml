@@ -39,8 +39,12 @@ zh-tw:
       buttons:
         accept_cookies: 接受額外cookie
         reject_cookies: 拒絕額外cookie
-      confirmation_message_html: 可以隨時 %{link}。
-      confirmation_message_link: 更改你的cookie設定
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: 可以隨時 %{link}。
+        link: 更改你的cookie設定
+        rejected:
       hide: 隱藏此訊息
       text:
       - 我們使用一些必要的 cookie 來正常運作本網站。

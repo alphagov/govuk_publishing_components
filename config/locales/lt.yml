@@ -41,8 +41,12 @@ lt:
       buttons:
         accept_cookies: Priimti papildomus slapukus
         reject_cookies: Atmesti papildomus slapukus
-      confirmation_message_html: Galite %{link} bet kuriuo metu.
-      confirmation_message_link: keisti slapukų nustatymus
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: Galite %{link} bet kuriuo metu.
+        link: keisti slapukų nustatymus
+        rejected:
       hide: Slėpti šį pranešimą
       text:
       - Naudojame kai kuriuos būtinus slapukus

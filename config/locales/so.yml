@@ -40,8 +40,12 @@ so:
       buttons:
         accept_cookies: Aqbalida xogkaydin dheeraad ah
         reject_cookies: Diidida xogkaydin dheeraad ah
-      confirmation_message_html: Waxaad gali karta %{link} wakhti kasta.
-      confirmation_message_link: badel cookie settings kaaga
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: Waxaad gali karta %{link} wakhti kasta.
+        link: badel cookie settings kaaga
+        rejected:
       hide: Qari fariintan
       text:
       - Waxaan isticmaalkaa xogkaydin muhiim ah si websaaytkan uu u shaqeeyo.
