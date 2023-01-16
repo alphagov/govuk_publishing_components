@@ -1,5 +1,6 @@
 window.GOVUK = window.GOVUK || {}
-window.GOVUK.Modules = window.GOVUK.Modules || {};
+window.GOVUK.Modules = window.GOVUK.Modules || {}
+window.GOVUK.analyticsVars = window.GOVUK.analyticsVars || {};
 
 (function (Modules) {
   function AutoScrollTracker ($module) {
