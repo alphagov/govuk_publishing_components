@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Catch errors when modules initialised ([PR #3190](https://github.com/alphagov/govuk_publishing_components/pull/3190))
+
 ## 34.4.2
 
 * Load modules after analytics has loaded ([PR #3187](https://github.com/alphagov/govuk_publishing_components/pull/3187))
