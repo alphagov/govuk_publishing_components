@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Catch errors when modules initialised ([PR #3190](https://github.com/alphagov/govuk_publishing_components/pull/3190))
+* Add translation strings for cookie banner confirmation message ([PR #3191](https://github.com/alphagov/govuk_publishing_components/pull/3191))
 
 ## 34.4.2
 
