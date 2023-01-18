@@ -38,8 +38,13 @@
           if (typeof GOVUK.Modules[moduleName] === 'function' && !started) {
             // Vanilla JavaScript GOV.UK Modules and GOV.UK Frontend Modules
             if (GOVUK.Modules[moduleName].prototype.init) {
-              new GOVUK.Modules[moduleName](element).init()
-              element.setAttribute('data-' + moduleNames[j] + '-module-started', true)
+              try {
+                new GOVUK.Modules[moduleName](element).init()
+                element.setAttribute('data-' + moduleNames[j] + '-module-started', true)
+              } catch (e) {
+                // if there's a problem with the module, catch the error to allow other modules to start
+                console.error('Error starting ' + moduleName + ' component JS: ' + e.message, window.location)
+              }
             }
           }
         }

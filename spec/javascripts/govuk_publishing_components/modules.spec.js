@@ -121,6 +121,16 @@ describe('GOVUK Modules', function () {
       }
       GOVUK.Modules.TestCookieDependencyModule = TestCookieDependencyModule
 
+      // module with a deliberate error in it
+      function TestErrorModule (element) {
+        this.element = element
+      }
+      TestErrorModule.prototype.init = function () {
+        throw new Error('This is a deliberate error')
+        callbackGemFrontendModule(this.element) // eslint-disable-line no-unreachable
+      }
+      GOVUK.Modules.TestErrorModule = TestErrorModule
+
       container = $('<div></div>')
     })
 
@@ -129,6 +139,7 @@ describe('GOVUK Modules', function () {
       delete GOVUK.Modules.GemTestAlertFrontendModule
       delete GOVUK.Modules.TestAlertPublishingAndFrontendModule
       delete GOVUK.Modules.TestCookieDependencyModule
+      delete GOVUK.Modules.TestErrorModule
 
       container.remove()
     })
@@ -208,6 +219,17 @@ describe('GOVUK Modules', function () {
       expect(callbackFrontendModule.calls.count()).toBe(0)
       window.GOVUK.triggerEvent(window, 'cookie-consent')
       expect(callbackFrontendModule.calls.count()).toBe(2)
+    })
+
+    it('detects errors in modules and continues without failing', function () {
+      var module1 = $('<div data-module="test-error-module"></div>')
+      var module2 = $('<div data-module="gem-test-alert-frontend-module"></div>')
+      container.append(module1)
+      container.append(module2)
+      $('body').append(container)
+
+      GOVUK.modules.start(container[0])
+      expect(callbackGemFrontendModule.calls.count()).toBe(1)
     })
   })
 })
