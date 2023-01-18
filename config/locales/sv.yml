@@ -40,8 +40,12 @@ sv:
       buttons:
         accept_cookies: Acceptera fler cookies
         reject_cookies: Avvisa fler cookies
-      confirmation_message_html: Du kan %{link} när som helst.
-      confirmation_message_link: ändra dina cookie-inställningar
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: Du kan %{link} när som helst.
+        link: ändra dina cookie-inställningar
+        rejected:
       hide: Dölj det här meddelandet
       text:
       - Vi använder vissa viktiga cookies för att den här webbplatsen ska fungera.

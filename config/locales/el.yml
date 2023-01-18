@@ -40,8 +40,12 @@ el:
       buttons:
         accept_cookies: Αποδοχή επιπλέον cookies
         reject_cookies: Απόρριψη επιπλέον cookies
-      confirmation_message_html: Μπορείτε %{link} ανά πάσα στιγμή.
-      confirmation_message_link: αλλάξτε τις ρυθμίσεις cookies
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: Μπορείτε %{link} ανά πάσα στιγμή.
+        link: αλλάξτε τις ρυθμίσεις cookies
+        rejected:
       hide: Απόκρυψη αυτού του μηνύματος
       text:
       - Χρησιμοποιούμε μερικά βασικά cookies για να λειτουργήσει αυτός ο ιστότοπος.

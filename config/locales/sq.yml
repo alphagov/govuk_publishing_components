@@ -40,8 +40,12 @@ sq:
       buttons:
         accept_cookies: Pranoni cookie shtesë
         reject_cookies: Refuzoni cookie shtesë
-      confirmation_message_html: Ju mund të %{link} në çdo kohë.
-      confirmation_message_link: ndryshoni cilësimet tuaja të cookies
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: Ju mund të %{link} në çdo kohë.
+        link: ndryshoni cilësimet tuaja të cookies
+        rejected:
       hide: Fshih këtë mesazh
       text:
       - Ne përdorim disa cookie thelbësore për ta bërë këtë faqe interneti të funksionojë.

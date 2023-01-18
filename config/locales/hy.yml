@@ -42,8 +42,12 @@ hy:
       buttons:
         accept_cookies: Ընդունել լրացուցիչ քուքիները
         reject_cookies: Մերժել լրացուցիչ քուքիների ընդունումը
-      confirmation_message_html: 'Դուք կարող եք %{link} ցանկացած պահի:'
-      confirmation_message_link: փոխել ձեր քուքի ֆայլերի կարգավորումները
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: 'Դուք կարող եք %{link} ցանկացած պահի:'
+        link: փոխել ձեր քուքի ֆայլերի կարգավորումները
+        rejected:
       hide: Թաքցնել այս հաղորդագրությունը
       text:
       - 'Մենք օգտագործում ենք որոշ կարևոր քուքիներ` այս կայքն աշխատեցնելու համար:'

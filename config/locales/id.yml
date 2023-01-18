@@ -39,8 +39,12 @@ id:
       buttons:
         accept_cookies: Terima cookie tambahan
         reject_cookies: Tolak cookie tambahan
-      confirmation_message_html: Anda dapat menautkan %{link} kapan saja.
-      confirmation_message_link: ubah pengaturan cookie Anda
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: Anda dapat menautkan %{link} kapan saja.
+        link: ubah pengaturan cookie Anda
+        rejected:
       hide: Sembunyikan pesan ini
       text:
       - Kami menggunakan beberapa cookie yang sangat dibutuhkan untuk membuat situs web ini berfungsi.

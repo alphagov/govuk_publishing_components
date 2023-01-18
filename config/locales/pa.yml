@@ -40,8 +40,12 @@ pa:
       buttons:
         accept_cookies: ਵਾਧੂ ਕੂਕੀਜ਼ ਸਵੀਕਾਰ ਕਰੋ
         reject_cookies: ਵਾਧੂ ਕੂਕੀਜ਼ ਨੂੰ ਅਸਵੀਕਾਰ ਕਰੋ
-      confirmation_message_html: ਤੁਸੀਂ ਕਿਸੇ ਵੀ ਸਮੇਂ %{link} ਕਰ ਸਕਦੇ ਹੋ।
-      confirmation_message_link: ਆਪਣੀ ਕੂਕੀ ਸੈਟਿੰਗਜ਼ ਬਦਲੋ
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: ਤੁਸੀਂ ਕਿਸੇ ਵੀ ਸਮੇਂ %{link} ਕਰ ਸਕਦੇ ਹੋ।
+        link: ਆਪਣੀ ਕੂਕੀ ਸੈਟਿੰਗਜ਼ ਬਦਲੋ
+        rejected:
       hide: ਇਸ ਸੁਨੇਹੇ ਨੂੰ ਲੁਕਾਓ
       text:
       - ਅਸੀਂ ਇਸ ਵੈਬਸਾਈਟ ਨੂੰ ਕੰਮ ਕਰਨ ਲਈ ਕੁਝ ਜ਼ਰੂਰੀ ਕੂਕੀਜ਼ ਦੀ ਵਰਤੋਂ ਕਰਦੇ ਹਾਂ।

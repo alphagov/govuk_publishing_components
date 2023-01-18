@@ -42,8 +42,12 @@ pl:
       buttons:
         accept_cookies: Zaakceptuj dodatkowe pliki cookie
         reject_cookies: Odrzuć dodatkowe pliki cookie
-      confirmation_message_html: Możesz %{link} w każdej chwili.
-      confirmation_message_link: zmień ustawienia plików cookie
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: Możesz %{link} w każdej chwili.
+        link: zmień ustawienia plików cookie
+        rejected:
       hide: Ukryj tę wiadomość
       text:
       - Niektóre pliki cookie są niezbędne

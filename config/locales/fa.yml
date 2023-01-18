@@ -40,8 +40,12 @@ fa:
       buttons:
         accept_cookies: پذیرفتن کوکی‌های اضافی
         reject_cookies: رد کردن کوکی‌های اضافی
-      confirmation_message_html: هر زمان که بخواهید می‌توانید %{link}
-      confirmation_message_link: تنظیمات کوکی خود را تغییر دهید
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: هر زمان که بخواهید می‌توانید %{link}
+        link: تنظیمات کوکی خود را تغییر دهید
+        rejected:
       hide: مخفی کردن این پیام
       text:
       - ما برای عملکرد صحیح این وب‌سایت، از برخی کوکی‌های ضروری استفاده می‌کنیم.

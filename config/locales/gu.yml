@@ -40,8 +40,12 @@ gu:
       buttons:
         accept_cookies: અતિરિક્ત કુકીઝ સ્વીકારો
         reject_cookies: અતિરિક્ત કુકીઝને નકારો
-      confirmation_message_html: તમે કોઈ પણ સમયે %{link} કરી શકો છો.
-      confirmation_message_link: તમારું કુકી સેટિંગ્સ બદલો
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: તમે કોઈ પણ સમયે %{link} કરી શકો છો.
+        link: તમારું કુકી સેટિંગ્સ બદલો
+        rejected:
       hide: આ સંદેશને હાઈડ કરો
       text:
       - આ વેબસાઇટ કામ કરે તે માટે અમે કેટલીક આવશ્યક કુકીઝ વાપરીએ છીએ.

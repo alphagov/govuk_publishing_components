@@ -42,8 +42,12 @@ mt:
       buttons:
         accept_cookies: Aċċetta cookies addizzjonali
         reject_cookies: Irrifjuta cookies addizzjonali
-      confirmation_message_html: Tista' %{link} kull ħin.
-      confirmation_message_link: Ibdel is-settings tal-cookie tiegħek
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: Tista' %{link} kull ħin.
+        link: Ibdel is-settings tal-cookie tiegħek
+        rejected:
       hide: Aħbi dan il-messaġġ
       text:
       - Aħna nużaw xi cookies essenzjali biex inħaddmu din il-websajt.

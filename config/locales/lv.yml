@@ -40,8 +40,12 @@ lv:
       buttons:
         accept_cookies: Piekrist papildu sīkfailiem
         reject_cookies: Noraidīt papildu sīkfailus
-      confirmation_message_html: Varat %{link} jebkurā laikā.
-      confirmation_message_link: mainīt sīkfailu iestatījumus
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: Varat %{link} jebkurā laikā.
+        link: mainīt sīkfailu iestatījumus
+        rejected:
       hide: Paslēpt šo ziņojumu
       text:
       - Mēs izmantojam vairākus būtiskos sīkfailus

@@ -43,8 +43,12 @@ dr:
       buttons:
         accept_cookies: کوکی هایی اضافی را بپذیرید
         reject_cookies: کوکی هایی اضافی را رد نمایید
-      confirmation_message_html: در هر زمان میتوانید %{link} کنید.
-      confirmation_message_link: تنظیمات کوکی خودرا تغییر دهید
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: در هر زمان میتوانید %{link} کنید.
+        link: تنظیمات کوکی خودرا تغییر دهید
+        rejected:
       hide: این پیام را مخفی نمایید
       text:
       - ما از برخی کوکی هایی ضروری برای اینکه این ویبسایت کار نماید استفاده میکنیم.

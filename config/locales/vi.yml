@@ -39,8 +39,12 @@ vi:
       buttons:
         accept_cookies: Chấp nhận các cookie bổ sung
         reject_cookies: Từ chối các cookie bổ sung
-      confirmation_message_html: Bạn có thể %{link} bất kỳ lúc nào.
-      confirmation_message_link: thay đổi cài đặt cookie của bạn
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: Bạn có thể %{link} bất kỳ lúc nào.
+        link: thay đổi cài đặt cookie của bạn
+        rejected:
       hide: Ẩn thông báo này
       text:
       - Chúng tôi sử dụng một số cookie cần thiết để vận hành trang web này.

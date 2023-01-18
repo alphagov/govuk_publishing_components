@@ -40,8 +40,12 @@ sw:
       buttons:
         accept_cookies: Kubali vidakuzi vya ziada
         reject_cookies: Kataa vidakuzi vya ziada
-      confirmation_message_html: Unaweza %{link} wakati wowote.
-      confirmation_message_link: badilisha mipangilio yako ya vidakuzi
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: Unaweza %{link} wakati wowote.
+        link: badilisha mipangilio yako ya vidakuzi
+        rejected:
       hide: Ficha ujumbe huu
       text:
       - Tunatumia vidakuzi muhimu ili kufanya tovuti hii ifanye kazi.

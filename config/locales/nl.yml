@@ -40,8 +40,12 @@ nl:
       buttons:
         accept_cookies: Accepteer extra cookies
         reject_cookies: Weiger extra cookies
-      confirmation_message_html: U kunt %{link} op elk gewenst moment
-      confirmation_message_link: uw cookie-instellingen wijzigen
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: U kunt %{link} op elk gewenst moment
+        link: uw cookie-instellingen wijzigen
+        rejected:
       hide: Deze melding verbergen
       text:
       - We gebruiken een aantal essentiële cookies om deze website te laten werken.

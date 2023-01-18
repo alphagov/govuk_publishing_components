@@ -41,8 +41,12 @@ cs:
       buttons:
         accept_cookies: Přijmout další soubory cookie
         reject_cookies: Odmítnutí dalších souborů cookie
-      confirmation_message_html: Kdykoli můžete %{link}.
-      confirmation_message_link: Změna nastavení souborů cookie
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: Kdykoli můžete %{link}.
+        link: Změna nastavení souborů cookie
+        rejected:
       hide: Skrýt tuto zprávu
       text:
       - Používáme některé základní soubory cookie

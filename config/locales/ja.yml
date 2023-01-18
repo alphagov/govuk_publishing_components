@@ -39,8 +39,12 @@ ja:
       buttons:
         accept_cookies: 追加のCookieを受け入れる
         reject_cookies: 追加のCookieを拒否する
-      confirmation_message_html: いつでも ％{link} できます。
-      confirmation_message_link: Cookieの設定を変更する
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: いつでも ％{link} できます。
+        link: Cookieの設定を変更する
+        rejected:
       hide: このメッセージを非表示にする
       text:
       - "「このウェブサイトを機能させるためにいくつかの重要なCookieを使用しています。」、「GOV.UKの使用方法を理解し、設定を記憶し、政府サービスを改善するために、追加のCookieを設定したいと思います。」、「他のサイトは、サービスからコンテンツを配信するのに役立ちます。」"

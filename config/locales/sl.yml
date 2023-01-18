@@ -44,8 +44,12 @@ sl:
       buttons:
         accept_cookies: Sprejmi dodatne piškotke
         reject_cookies: Zavrni dodatne piškotke
-      confirmation_message_html: Kadar koli lahko %{link}.
-      confirmation_message_link: spremenite nastavitve piškotkov
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: Kadar koli lahko %{link}.
+        link: spremenite nastavitve piškotkov
+        rejected:
       hide: Skrijte to sporočilo
       text:
       - Za delovanje spletne strani uporabljamo nekaj bistvenih piškotkov.

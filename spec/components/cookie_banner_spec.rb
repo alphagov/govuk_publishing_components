@@ -34,7 +34,7 @@ describe "Cookie banner", type: :view do
 
   it "renders a confirmation message" do
     render_component({})
-    assert_select ".gem-c-cookie-banner__confirmation-message", text: "You can change your cookie settings at any time."
+    assert_select ".gem-c-cookie-banner__confirmation-message", text: /You can change your cookie settings at any time./
   end
 
   it "renders a link to the settings page within the confirmation message" do
@@ -59,7 +59,7 @@ describe "Cookie banner", type: :view do
     assert_select ".gem-c-cookie-banner__message .govuk-heading-m", text: "Can we store analytics cookies on your device?"
     assert_select ".govuk-cookie-banner__content", text: "This is some custom text with a link to the cookies page"
     assert_select ".govuk-link[href='/cookies']", text: "cookies page"
-    assert_select ".gem-c-cookie-banner__confirmation-message", text: "You’ve accepted all cookies."
+    assert_select ".gem-c-cookie-banner__confirmation-message", text: /You’ve accepted all cookies./
   end
 
   it "renders with multi paragraph content" do

@@ -35,7 +35,11 @@ describe('Cookie banner', function () {
         '</div>' +
       '</div>' +
       '<div class="gem-c-cookie-banner__confirmation govuk-width-container" tabindex="-1" hidden="">' +
-        '<p class="gem-c-cookie-banner__confirmation-message" role="alert">You can <a class="govuk-link" href="/help/cookies" data-module="gem-track-click" data-track-category="cookieBanner" data-track-action="Cookie banner settings clicked from confirmation">change your cookie settings</a> at any time.</p>' +
+        '<p class="gem-c-cookie-banner__confirmation-message" role="alert">' +
+          '<span class="gem-c-cookie-banner__confirmation-message__accepted" hidden>You have accepted additional cookies. </span>' +
+          '<span class="gem-c-cookie-banner__confirmation-message__rejected" hidden="">You have rejected additional cookies. </span>' +
+          'You can <a class="govuk-link" data-module="gem-track-click" data-track-category="cookieBanner" data-track-action="Cookie banner settings clicked from confirmation" href="/help/cookies">change your cookie settings</a> at any time.' +
+        '</p>' +
         '<div class="govuk-button-group">' +
           '<button class="gem-c-cookie-banner__hide-button govuk-button" data-hide-cookie-banner="true" data-module="gem-track-click" data-track-category="cookieBanner" data-track-action="Hide cookie banner">Hide this message</button>' +
         '</div>' +
@@ -163,6 +167,7 @@ describe('Cookie banner', function () {
     var acceptCookiesButton = document.querySelector('[data-accept-cookies]')
     var mainCookieBanner = document.querySelector('.gem-c-cookie-banner__message')
     var confirmationMessage = document.querySelector('.gem-c-cookie-banner__confirmation')
+    var confirmationMessageText = document.querySelector('.gem-c-cookie-banner__confirmation-message')
 
     expect(mainCookieBanner).toBeVisible()
     expect(confirmationMessage).toBeHidden()
@@ -171,6 +176,26 @@ describe('Cookie banner', function () {
 
     expect(mainCookieBanner).toBeHidden()
     expect(confirmationMessage).toBeVisible()
+    expect(confirmationMessageText.innerText).toContain('You have accepted additional cookies. You can change your cookie settings at any time.')
+  })
+
+  it('shows a confirmation message when cookies have been rejected', function () {
+    var element = document.querySelector('[data-module="cookie-banner"]')
+    new GOVUK.Modules.CookieBanner(element).init()
+
+    var rejectCookiesButton = document.querySelector('[data-reject-cookies]')
+    var mainCookieBanner = document.querySelector('.gem-c-cookie-banner__message')
+    var confirmationMessage = document.querySelector('.gem-c-cookie-banner__confirmation')
+    var confirmationMessageText = document.querySelector('.gem-c-cookie-banner__confirmation-message')
+
+    expect(mainCookieBanner).toBeVisible()
+    expect(confirmationMessage).toBeHidden()
+
+    rejectCookiesButton.click()
+
+    expect(mainCookieBanner).toBeHidden()
+    expect(confirmationMessage).toBeVisible()
+    expect(confirmationMessageText.innerText).toContain('You have rejected additional cookies. You can change your cookie settings at any time.')
   })
 
   it('set cookies_preferences_set cookie, and re-set cookies_policy expiration date when rejecting cookies', function () {

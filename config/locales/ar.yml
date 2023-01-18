@@ -44,8 +44,12 @@ ar:
       buttons:
         accept_cookies: قبول ملفات تعريف الارتباط الإضافية
         reject_cookies: رفض ملفات تعريف الارتباط الإضافية
-      confirmation_message_html: يمكنك %{link} في أي وقت.
-      confirmation_message_link: قم بتغيير إعدادات ملفات تعريف الارتباط الخاصة بك
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: يمكنك %{link} في أي وقت.
+        link: قم بتغيير إعدادات ملفات تعريف الارتباط الخاصة بك
+        rejected:
       hide: إخفاء هذه الرسالة
       text:
       - نحن نستخدم بعض ملفات تعريف الارتباط الأساسية لجعل هذا الموقع يعمل.

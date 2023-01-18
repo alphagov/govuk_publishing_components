@@ -40,8 +40,12 @@ es-419:
       buttons:
         accept_cookies: Aceptar cookies adicionales
         reject_cookies: Rechazar cookies adicionales
-      confirmation_message_html: Puede %{link} en cualquier momento.
-      confirmation_message_link: cambiar la configuración de cookies
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: Puede %{link} en cualquier momento.
+        link: cambiar la configuración de cookies
+        rejected:
       hide: Ocultar este mensaje
       text:
       - Utilizamos algunas cookies esenciales para que este sitio web funcione

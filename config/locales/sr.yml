@@ -41,8 +41,12 @@ sr:
       buttons:
         accept_cookies: Prihvati dodatne kolačiće
         reject_cookies: Odbaci dodatne kolačiće
-      confirmation_message_html: U svakom trenutku možete da %{link}.
-      confirmation_message_link: promenite podešavanja kolačića
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: U svakom trenutku možete da %{link}.
+        link: promenite podešavanja kolačića
+        rejected:
       hide: Sakrij ovu poruku
       text:
       - Koristimo osnovne kolačiće za funkcionisanje ovog veb-sajta.

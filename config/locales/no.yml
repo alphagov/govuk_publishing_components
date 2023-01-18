@@ -40,8 +40,12 @@
       buttons:
         accept_cookies: Godta ytterligere informasjonskapsler
         reject_cookies: Avvis ytterligere informasjonskapsler
-      confirmation_message_html: Du kan %{link} når som helst.
-      confirmation_message_link: endre innstillingene for informasjonskapsler
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: Du kan %{link} når som helst.
+        link: endre innstillingene for informasjonskapsler
+        rejected:
       hide: Skjul denne meldingen
       text:
       - Vi bruker noen viktige informasjonskapsler for å få dette nettstedet til å fungere.

@@ -40,8 +40,12 @@ de:
       buttons:
         accept_cookies: Zusätzliche Cookies akzeptieren
         reject_cookies: Zusätzliche Cookies ablehnen
-      confirmation_message_html: Sie können jederzeit %{link}.
-      confirmation_message_link: Cookie-Einstellungen ändern
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: Sie können jederzeit %{link}.
+        link: Cookie-Einstellungen ändern
+        rejected:
       hide: Diese Meldung ausblenden
       text:
       - Wir verwenden einige essenzielle Cookies

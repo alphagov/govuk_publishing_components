@@ -41,8 +41,12 @@ hr:
       buttons:
         accept_cookies: Prihvatite dodatne kolačiće
         reject_cookies: Odbijte dodatne kolačiće
-      confirmation_message_html: Možete %{link} u bilo kojem trenutku.
-      confirmation_message_link: promijenite postavke kolačića
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: Možete %{link} u bilo kojem trenutku.
+        link: promijenite postavke kolačića
+        rejected:
       hide: Sakrij ovu poruku
       text:
       - Koristimo neke bitne kolačiće za funkcioniranje ove web stranice.

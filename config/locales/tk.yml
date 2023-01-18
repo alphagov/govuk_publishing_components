@@ -40,8 +40,12 @@ tk:
       buttons:
         accept_cookies: Goşmaça kukileri kabul et
         reject_cookies: Goşmaça kukileri ret et
-      confirmation_message_html: Islendik wagt %{link} edip bilersiňiz.
-      confirmation_message_link: kukiler sazlamalaryňyzy üýtgediň
+        view_cookies:
+      confirmation_message:
+        accepted:
+        html: Islendik wagt %{link} edip bilersiňiz.
+        link: kukiler sazlamalaryňyzy üýtgediň
+        rejected:
       hide: Bu habary gizle
       text:
       - Bu internet sahypasyny işletmek üçin käbir möhüm kukileri ulanýarys.
