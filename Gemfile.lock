@@ -122,7 +122,7 @@ GEM
       null_logger
       plek (>= 1.9.0)
       rest-client (~> 2.0)
-    globalid (1.0.0)
+    globalid (1.0.1)
       activesupport (>= 5.0)
     govuk_app_config (4.13.0)
       logstasher (~> 2.1)
