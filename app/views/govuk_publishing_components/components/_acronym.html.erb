@@ -1,7 +1,13 @@
-<% acronym ||= false%>
+<% acronym ||= false %>
+<% explanation ||= false %>
 
 <% if acronym %>
     <div class="gem-c-acronym">
         <%= acronym %>
+        <% if explanation %>
+            <span class="gem-c-acronym__explanation">
+                <%= explanation %>
+            </span>
+        <% end %>
     </div>
 <% end %>

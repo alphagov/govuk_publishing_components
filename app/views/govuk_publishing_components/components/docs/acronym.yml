@@ -4,4 +4,5 @@ examples:
   default:
     data: 
       acronym: WWW
+      explanation: World Wide Web
       
