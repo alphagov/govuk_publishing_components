@@ -15,4 +15,11 @@ describe "Acronym", type: :view do
             acronym: "WWW"
         )
         assert_select '.gem-c-acronym', text: 'WWW'
+
+    it "shows an acronym explanation" do    
+        render_component(
+            acronym: "WWW",
+            explanation: "World Wide Web"
+        )
+        assert_select '.gem-c-acronym__explanation', text: 'World Wide Web'
 end
