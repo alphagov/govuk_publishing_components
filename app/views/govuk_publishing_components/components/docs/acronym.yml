@@ -5,4 +5,8 @@ examples:
     data: 
       acronym: WWW
       explanation: World Wide Web
+  with_explanation:
+    data: 
+      acronym: WWW
+      explanation: World Wide Web
       
