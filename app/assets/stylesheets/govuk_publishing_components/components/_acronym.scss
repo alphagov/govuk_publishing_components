@@ -1,3 +1,11 @@
 .gem-c-acronym {
-    background-color: blue;
+    background-color: silver;
+}
+
+.gem-c-acronym__acronym {
+    @include govuk-font($size: 80, $weight: bold)
+}
+
+.gem-c-acronym__explanation {
+    @include govuk-font($size: 24, $weight: bold)
 }
