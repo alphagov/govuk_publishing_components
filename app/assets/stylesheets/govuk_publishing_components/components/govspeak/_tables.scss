@@ -41,5 +41,17 @@
     td small {
       font-size: 1em;
     }
+
+    .cell-text-left {
+      text-align: left;
+    }
+
+    .cell-text-center {
+      text-align: center;
+    }
+
+    .cell-text-right {
+      text-align: right;
+    }
   }
 }
