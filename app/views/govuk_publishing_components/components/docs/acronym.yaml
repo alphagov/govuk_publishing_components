@@ -1,0 +1,5 @@
+name: Acronym
+description: An acronym component
+examples:
+  default:
+    data: {}
