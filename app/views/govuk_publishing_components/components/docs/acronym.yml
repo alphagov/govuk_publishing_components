@@ -1,5 +1,7 @@
 name: Acronym
 description: An acronym component
+accessibility_criteria: |
+  Accessibility criteria
 examples:
   default:
     data: 
