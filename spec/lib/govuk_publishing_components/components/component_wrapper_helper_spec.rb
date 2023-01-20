@@ -116,5 +116,33 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         helper.add_aria_attribute({ potato: "salad" })
       }.to raise_error(ArgumentError, error)
     end
+
+    it "can collect auditing information about component usage" do
+      helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(component_id: "unique", potato: "potato")
+      allow_any_instance_of(GovukPublishingComponents::Presenters::ComponentWrapperHelper).to(
+        receive(:get_application_name).and_return("test application"),
+      )
+      allow_any_instance_of(Kernel)
+        .to receive(:caller)
+        .and_return([
+          "app/views/govuk_publishing_components/components/_a_component.html.erb",
+          "something else",
+          "app/views/shared/template.html.erb",
+          "another thing",
+        ])
+      d = Time.now
+      expected = {
+        application: "test application",
+        component: "a component",
+        date: d.strftime("%d/%m/%Y %H:%M"),
+        options: {
+          component_id: "unique",
+          potato: "potato",
+        },
+        template: "app/views/shared/template.html.erb",
+        url: "not found",
+      }
+      expect(helper.component_usage_data).to eql(expected)
+    end
   end
 end

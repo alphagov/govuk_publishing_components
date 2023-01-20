@@ -1,8 +1,10 @@
 module GovukPublishingComponents
   module Presenters
     class ComponentWrapperHelper
-      def initialize(options)
+      def initialize(options, request = nil)
         @options = options
+        @request = request
+        @not_found = "not found"
 
         check_id_is_valid(@options[:id]) if @options.include?(:id)
         check_classes_are_valid(@options[:classes]) if @options.include?(:classes)
@@ -35,6 +37,23 @@ module GovukPublishingComponents
       def add_aria_attribute(attributes)
         check_aria_is_valid(attributes)
         extend_object(:aria, attributes)
+      end
+
+      def audit_component
+        File.write("/Users/andysellick/workspace/govuk/collections/tmp/audit.json", "#{component_usage_data.to_json}\n", mode: "a")
+      end
+
+      def component_usage_data
+        url = @request.original_url if @request
+        d = Time.now
+        {
+          component: get_item_from_caller(/(?<=\/_)[a-zA-Z_]*(?=.html.erb)/).gsub("_", " "),
+          application: get_application_name,
+          url: url || @not_found,
+          date: d.strftime("%d/%m/%Y %H:%M"),
+          template: get_item_from_caller(/app\/views\/(?!govuk_publishing_components)[a-zA-Z_\/]+.html.erb/),
+          options: @options,
+        }
       end
 
     private
@@ -72,6 +91,21 @@ module GovukPublishingComponents
               object[key]
             end
         end
+      end
+
+      def get_application_name
+        return Rails.root.to_s.split("/").last if Rails.method_defined? :root
+
+        @not_found
+      end
+
+      def get_item_from_caller(lookfor)
+        caller.each do |file|
+          found = file.match(lookfor)
+          return found.to_s if found
+        end
+
+        @not_found
       end
     end
   end
