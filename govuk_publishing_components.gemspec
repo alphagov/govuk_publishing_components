@@ -17,10 +17,9 @@ Gem::Specification.new do |s|
   s.files = Dir["{node_modules/govuk-frontend,node_modules/axe-core,node_modules/sortablejs,app,config,db,lib}/**/*", "LICENCE.md", "README.md"]
 
   s.add_dependency "govuk_app_config"
-  s.add_dependency "govuk_personalisation", ">= 0.7.0"
+  # s.add_dependency "govuk_personalisation", ">= 0.7.0"
   s.add_dependency "kramdown"
   s.add_dependency "plek"
-  s.add_dependency "rails", ">= 6"
   s.add_dependency "rouge"
   s.add_dependency "sprockets", ">= 3"
 
@@ -33,6 +32,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "percy-capybara"
   s.add_development_dependency "pry-byebug"
   s.add_development_dependency "rails_translation_manager"
+  s.add_development_dependency "rails", ">= 6"
   s.add_development_dependency "rake"
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "rubocop-govuk"

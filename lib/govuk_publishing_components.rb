@@ -1,7 +1,10 @@
 require "active_support"
 require "action_controller"
 require "action_view"
-require "govuk_personalisation"
+begin
+  require "govuk_personalisation"
+rescue LoadError
+end
 require "govuk_publishing_components/config"
 require "govuk_publishing_components/engine"
 require "govuk_publishing_components/version"
