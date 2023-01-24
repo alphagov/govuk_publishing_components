@@ -13,6 +13,7 @@
 * Add translation strings for cookie banner confirmation message ([PR #3191](https://github.com/alphagov/govuk_publishing_components/pull/3191))
 * Add ga4-link-tracker to image card ([PR #3154](https://github.com/alphagov/govuk_publishing_components/pull/3154))
 * Add ga4 tracking to header links ([PR #3152](https://github.com/alphagov/govuk_publishing_components/pull/3152))
+* Ensure our analytics load at the earliest point possible in page load ([PR #3195](https://github.com/alphagov/govuk_publishing_components/pull/3195))
 
 ## 34.4.2
 

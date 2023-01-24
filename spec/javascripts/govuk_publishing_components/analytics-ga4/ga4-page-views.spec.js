@@ -6,7 +6,9 @@ describe('Google Tag Manager page view tracking', function () {
   var expected
 
   beforeAll(function () {
-    spyOn(GOVUK.analyticsGa4.core, 'getGemVersion').and.returnValue('aVersion')
+    window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {}
+    window.GOVUK.analyticsGa4.vars = window.GOVUK.analyticsGa4.vars || {}
+    window.GOVUK.analyticsGa4.vars.gem_version = 'aVersion'
   })
 
   beforeEach(function () {

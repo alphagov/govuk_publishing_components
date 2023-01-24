@@ -28,39 +28,11 @@ describe('GA4 core', function () {
     window.GOVUK.analyticsGa4.core.trackFunctions.appendDomainsWithoutWWW(window.GOVUK.analyticsGa4.vars.internalDomains)
   })
 
-  it('loads the GTM snippet', function () {
-    GOVUK.analyticsGa4.core.load()
-
-    expect(window.dataLayer.length).toEqual(2)
-    expect(Object.keys(window.dataLayer[0])).toContain('gtm.blocklist')
-    expect(Object.keys(window.dataLayer[1])).toContain('gtm.start')
-    expect(Object.keys(window.dataLayer[1])).toContain('event')
-    expect(window.dataLayer[0]['gtm.blocklist']).toEqual(['customPixels', 'customScripts', 'html', 'nonGoogleScripts'])
-  })
-
-  describe('calls the right URL from Google', function () {
-    it('if all three env vars are present', function () {
-      window.GOVUK.analyticsGa4.vars.id = 'test-id'
-      window.GOVUK.analyticsGa4.vars.auth = 'test-auth'
-      window.GOVUK.analyticsGa4.vars.preview = 'test-preview'
-      GOVUK.analyticsGa4.core.load()
-
-      expect(GOVUK.analyticsGa4.core.googleSrc).toEqual('https://www.googletagmanager.com/gtm.js?id=test-id&gtm_auth=test-auth&gtm_preview=test-preview&gtm_cookies_win=x')
-    })
-
-    it('if only id is present', function () {
-      window.GOVUK.analyticsGa4.vars.id = 'test-id'
-      GOVUK.analyticsGa4.core.load()
-
-      expect(GOVUK.analyticsGa4.core.googleSrc).toEqual('https://www.googletagmanager.com/gtm.js?id=test-id')
-    })
-  })
-
   it('pushes data to the dataLayer', function () {
     var data = {
       hello: 'I must be going'
     }
-    spyOn(GOVUK.analyticsGa4.core, 'getGemVersion').and.returnValue('aVersion')
+    window.GOVUK.analyticsGa4.vars.gem_version = 'aVersion'
     GOVUK.analyticsGa4.core.sendData(data)
     expect(window.dataLayer[0]).toEqual({
       hello: 'I must be going',
