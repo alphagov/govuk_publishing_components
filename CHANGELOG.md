@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Change console.error to console.warn as it breaks Smokey tests ([PR #3210](https://github.com/alphagov/govuk_publishing_components/pull/3210))
+
 ## 34.5.0
 
 * Catch errors when modules initialised ([PR #3190](https://github.com/alphagov/govuk_publishing_components/pull/3190))
