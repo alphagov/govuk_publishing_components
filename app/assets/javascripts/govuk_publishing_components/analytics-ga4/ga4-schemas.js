@@ -23,7 +23,8 @@
         external: this.undefined,
         method: this.undefined,
         link_domain: this.undefined,
-        link_path_parts: this.undefined
+        link_path_parts: this.undefined,
+        tool_name: this.undefined
       }
     }
   }
