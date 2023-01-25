@@ -127,7 +127,7 @@ window.GOVUK.loadAnalytics = {
     window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {}
 
     if (typeof window.GOVUK.analyticsGa4.core === 'undefined') {
-      console.error('load-analytics.js: window.GOVUK.analyticsGa4.core was not found - has ./analytics-ga4.js been imported?')
+      console.warn('load-analytics.js: window.GOVUK.analyticsGa4.core was not found - has ./analytics-ga4.js been imported?')
       return
     }
 
@@ -144,7 +144,7 @@ window.GOVUK.loadAnalytics = {
     }
 
     if (!this.environment) {
-      console.error('load-analytics.js: environment for GA4 not recognised - ' + this.environment + ' on ' + currentDomain)
+      console.warn('load-analytics.js: environment for GA4 not recognised - ' + this.environment + ' on ' + currentDomain)
       return
     }
 
