@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Revert load-analytics commits due to Smokey test failure ([PR #3212](https://github.com/alphagov/govuk_publishing_components/pull/3212))
+
 ## 34.5.1
 
 * Change console.error to console.warn as it breaks Smokey tests ([PR #3210](https://github.com/alphagov/govuk_publishing_components/pull/3210))

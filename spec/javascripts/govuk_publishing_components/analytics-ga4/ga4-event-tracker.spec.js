@@ -14,9 +14,7 @@ describe('Google Analytics event tracking', function () {
   }
 
   beforeAll(function () {
-    window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {}
-    window.GOVUK.analyticsGa4.vars = window.GOVUK.analyticsGa4.vars || {}
-    window.GOVUK.analyticsGa4.vars.gem_version = 'aVersion'
+    spyOn(GOVUK.analyticsGa4.core, 'getGemVersion').and.returnValue('aVersion')
   })
 
   beforeEach(function () {

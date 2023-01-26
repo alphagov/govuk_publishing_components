@@ -15,9 +15,7 @@ describe('A specialist link tracker', function () {
   beforeAll(function () {
     window.GOVUK.analyticsGa4.vars.internalDomains = ['www.gov.uk']
     window.GOVUK.analyticsGa4.core.trackFunctions.appendDomainsWithoutWWW(window.GOVUK.analyticsGa4.vars.internalDomains)
-    window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {}
-    window.GOVUK.analyticsGa4.vars = window.GOVUK.analyticsGa4.vars || {}
-    window.GOVUK.analyticsGa4.vars.gem_version = 'aVersion'
+    spyOn(GOVUK.analyticsGa4.core, 'getGemVersion').and.returnValue('aVersion')
     spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getHostname').and.returnValue('www.gov.uk')
     spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getProtocol').and.returnValue('https:')
   })
