@@ -7,3 +7,4 @@
 //= require ./analytics-ga4/ga4-link-tracker
 //= require ./analytics-ga4/ga4-event-tracker
 //= require ./analytics-ga4/ga4-ecommerce-tracker
+//= require ./analytics-ga4/init-ga4

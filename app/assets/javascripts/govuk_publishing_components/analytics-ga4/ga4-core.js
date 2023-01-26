@@ -6,9 +6,37 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
   'use strict'
 
   var core = {
+    load: function () {
+      var firstScript = document.getElementsByTagName('script')[0]
+      var newScript = document.createElement('script')
+      newScript.async = true
+
+      // initialise GTM
+      window.dataLayer = window.dataLayer || []
+      window.dataLayer.push({ 'gtm.blocklist': ['customPixels', 'customScripts', 'html', 'nonGoogleScripts'] })
+      window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' })
+
+      var auth = window.GOVUK.analyticsGa4.vars.auth || ''
+      var preview = window.GOVUK.analyticsGa4.vars.preview || ''
+      if (auth) {
+        auth = '&gtm_auth=' + auth
+      }
+      if (preview) {
+        preview = '&gtm_preview=' + preview + '&gtm_cookies_win=x'
+      }
+
+      this.googleSrc = 'https://www.googletagmanager.com/gtm.js?id=' + window.GOVUK.analyticsGa4.vars.id + auth + preview
+      newScript.src = this.googleSrc
+      firstScript.parentNode.insertBefore(newScript, firstScript)
+    },
+
     sendData: function (data) {
-      data.govuk_gem_version = window.GOVUK.analyticsGa4.vars.gem_version
+      data.govuk_gem_version = this.getGemVersion()
       window.dataLayer.push(data)
+    },
+
+    getGemVersion: function () {
+      return window.GOVUK.analyticsGa4.vars.gem_version || 'not found'
     },
 
     trackFunctions: {
