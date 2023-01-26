@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 34.6.0
 
 * Revert load-analytics commits due to Smokey test failure ([PR #3212](https://github.com/alphagov/govuk_publishing_components/pull/3212))
 
