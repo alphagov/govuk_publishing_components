@@ -91,50 +91,53 @@
             tracking_label = link[:label].downcase.gsub(/\s+/, "")
           %>
 
-          <%= link_to link[:href], {
-            class: "gem-c-layout-super-navigation-header__navigation-item-link",
-            data: {
-              track_action: "#{tracking_label}Link",
-              track_category: "headerClicked",
-              track_label: link[:href],
-              track_dimension: link[:label],
-              track_dimension_index: "29",
-            }
-          } do %>
-            <span class="gem-c-layout-super-navigation-header__navigation-item-link-inner">
-              <%= link[:label] %>
-            </span>
-          <% end %>
+          <div class="govuk-width-container gem-c-layout-super-navigation-header__button-width-container">
+            <div class="gem-c-layout-super-navigation-header__button-container">
+              <%= link_to link[:href], {
+                class: "gem-c-layout-super-navigation-header__navigation-item-link",
+                data: {
+                  track_action: "#{tracking_label}Link",
+                  track_category: "headerClicked",
+                  track_label: link[:href],
+                  track_dimension: link[:label],
+                  track_dimension_index: "29",
+                }
+              } do %>
+                <span class="gem-c-layout-super-navigation-header__navigation-item-link-inner">
+                  <%= link[:label] %>
+                </span>
+              <% end %>
 
-          <%= content_tag(:button, {
-            aria: {
-              controls: "super-navigation-menu-#{unique_id}",
-              expanded: false,
-              label: show_menu_text,
-            },
-            class: "gem-c-layout-super-navigation-header__navigation-top-toggle-button",
-            data: {
-              text_for_hide: hide_menu_text,
-              text_for_show: show_menu_text,
-              toggle_desktop_group: "top",
-              toggle_mobile_group: "top",
-              tracking_key: tracking_label,
-              ga4_event: {
-                event_name: "select_content",
-                type: "header menu bar",
-                text: link[:label],
-                index: 1,
-                index_total: 2,
-                section: link[:label]
-              }
-            },
-            hidden: true,
-            id: "super-navigation-menu-#{unique_id}-toggle",
-            type: "button",
-          }) do %>
-            <%= tag.span link[:label], class: "gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner" %>
-          <% end %>
-            <%= tag.div class: "gem-c-layout-super-navigation-header__navigation-items" do %>
+              <%= content_tag(:button, {
+                aria: {
+                  controls: "super-navigation-menu-#{unique_id}",
+                  expanded: false,
+                  label: show_menu_text,
+                },
+                class: "gem-c-layout-super-navigation-header__navigation-top-toggle-button",
+                data: {
+                  text_for_hide: hide_menu_text,
+                  text_for_show: show_menu_text,
+                  toggle_desktop_group: "top",
+                  toggle_mobile_group: "top",
+                  tracking_key: tracking_label,
+                  ga4_event: {
+                    event_name: "select_content",
+                    type: "header menu bar",
+                    text: link[:label],
+                    index: 1,
+                    index_total: 2,
+                    section: link[:label]
+                  }
+                },
+                hidden: true,
+                id: "super-navigation-menu-#{unique_id}-toggle",
+                type: "button",
+              }) do %>
+                <%= tag.span link[:label], class: "gem-c-layout-super-navigation-header__navigation-top-toggle-button-inner" %>
+              <% end %>
+
+              <%= tag.div class: "gem-c-layout-super-navigation-header__navigation-items" do %>
                 <div
                   id="super-navigation-menu-<%= unique_id %>" hidden
                   class="gem-c-layout-super-navigation-header__navigation-dropdown-menu"
@@ -193,141 +196,143 @@
                     </div>
                   </div>
                 </div>
-            <% end %>
+              <% end %>
 
-          <button
-            aria-controls="super-search-menu"
-            aria-expanded="true"
-            aria-label="<%= hide_search_menu_text %>"
-            class="gem-c-layout-super-navigation-header__search-toggle-button"
-            data-text-for-hide="<%= hide_search_menu_text %>"
-            data-text-for-show="<%= show_search_menu_text %>"
-            data-toggle-mobile-group="top"
-            data-toggle-desktop-group="top"
-            data-tracking-key="search"
-            hidden
-            id="super-search-menu-toggle"
-            type="button"
-            data-ga4-event="<%= {
-              "event_name": "select_content",
-              "type": "header menu bar",
-              "text": "Search",
-              "index": 2,
-              "index_total": 2,
-              "section": "Search"
-            }.to_json %>"
-          >
-            <span class="govuk-visually-hidden">
-              <%= search_text %>
-            </span>
-            <%=
-              render "govuk_publishing_components/components/search/search_icon", {
-                classes: %w[gem-c-layout-super-navigation-header__search-toggle-button-link-icon],
-              }
-            %>
-            <span
-              aria-hidden="true"
-              class="gem-c-layout-super-navigation-header__navigation-top-toggle-close-icon"
-              focusable="false"
-            >
-              &times;
-            </span>
-          </button>
-
-          <div id="super-search-menu" class="gem-c-layout-super-navigation-header__search-items">
-            <h3 class="govuk-visually-hidden">
-              <%= navigation_search_subheading %>
-            </h3>
-            <div class="gem-c-layout-super-navigation-header__search-item">
-              <a class="gem-c-layout-super-navigation-header__search-item-link" href="/search">
+              <button
+                aria-controls="super-search-menu"
+                aria-expanded="true"
+                aria-label="<%= hide_search_menu_text %>"
+                class="gem-c-layout-super-navigation-header__search-toggle-button"
+                data-text-for-hide="<%= hide_search_menu_text %>"
+                data-text-for-show="<%= show_search_menu_text %>"
+                data-toggle-mobile-group="top"
+                data-toggle-desktop-group="top"
+                data-tracking-key="search"
+                hidden
+                id="super-search-menu-toggle"
+                type="button"
+                data-ga4-event="<%= {
+                  "event_name": "select_content",
+                  "type": "header menu bar",
+                  "text": "Search",
+                  "index": 2,
+                  "index_total": 2,
+                  "section": "Search"
+                }.to_json %>"
+              >
                 <span class="govuk-visually-hidden">
                   <%= search_text %>
                 </span>
-                <svg
-                  class="gem-c-layout-super-navigation-header__search-item-link-icon"
-                  width="27"
-                  height="27"
-                  viewBox="0 0 27 27"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+                <%=
+                  render "govuk_publishing_components/components/search/search_icon", {
+                    classes: %w[gem-c-layout-super-navigation-header__search-toggle-button-link-icon],
+                  }
+                %>
+                <span
                   aria-hidden="true"
+                  class="gem-c-layout-super-navigation-header__navigation-top-toggle-close-icon"
                   focusable="false"
                 >
-                  <circle
-                    cx="10.0161"
-                    cy="10.0161"
-                    r="8.51613"
-                    stroke="currentColor"
-                    stroke-width="3"
-                  />
-                  <line
-                    x1="15.8668"
-                    y1="16.3587"
-                    x2="25.4475"
-                    y2="25.9393"
-                    stroke="currentColor"
-                    stroke-width="3"
-                  />
-                </svg>
-              </a>
-            </div>
+                  &times;
+                </span>
+              </button>
 
-            <div class="govuk-width-container gem-c-layout-super-navigation-header__search-and-popular">
-              <div class="govuk-grid-row">
-                <div class="govuk-grid-column-full">
-                  <form
-                    class="gem-c-layout-super-navigation-header__search-form"
-                    id="search"
-                    action="/search"
-                    method="get"
-                    role="search"
-                    aria-label="Site-wide"
-                  >
-                    <%= render "govuk_publishing_components/components/search", {
-                      inline_label: false,
-                      label_size: "m",
-                      label_text: search_text,
-                      size: "large",
-                      data_attributes: {
-                        track_category: "headerClicked",
-                        track_action: "searchSubmitted",
-                        track_label: "/search/all",
-                        track_dimension: t("components.search_box.label"),
-                        track_dimension_index: 29,
-                      },
-                    } %>
-                  </form>
+              <div id="super-search-menu" class="gem-c-layout-super-navigation-header__search-items">
+                <h3 class="govuk-visually-hidden">
+                  <%= navigation_search_subheading %>
+                </h3>
+                <div class="gem-c-layout-super-navigation-header__search-item">
+                  <a class="gem-c-layout-super-navigation-header__search-item-link" href="/search">
+                    <span class="govuk-visually-hidden">
+                      <%= search_text %>
+                    </span>
+                    <svg
+                      class="gem-c-layout-super-navigation-header__search-item-link-icon"
+                      width="27"
+                      height="27"
+                      viewBox="0 0 27 27"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <circle
+                        cx="10.0161"
+                        cy="10.0161"
+                        r="8.51613"
+                        stroke="currentColor"
+                        stroke-width="3"
+                      />
+                      <line
+                        x1="15.8668"
+                        y1="16.3587"
+                        x2="25.4475"
+                        y2="25.9393"
+                        stroke="currentColor"
+                        stroke-width="3"
+                      />
+                    </svg>
+                  </a>
                 </div>
-              </div>
-              <div class="govuk-grid-row">
-                <div class="govuk-grid-column-full">
-                  <h3 class="govuk-heading-m"><%= popular_links_heading %></h3>
-                  <ul class="govuk-list">
-                    <% popular_links.each_with_index do | popular_link, index | %>
-                      <li class="gem-c-layout-super-navigation-header__popular-item">
-                        <%= link_to popular_link[:label], popular_link[:href], {
-                          class: [
-                            "govuk-link",
-                            "gem-c-layout-super-navigation-header__popular-link",
-                          ],
-                          data: {
-                            track_action: "popularLink",
+
+                <div class="govuk-width-container gem-c-layout-super-navigation-header__search-and-popular">
+                  <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-full">
+                      <form
+                        class="gem-c-layout-super-navigation-header__search-form"
+                        id="search"
+                        action="/search"
+                        method="get"
+                        role="search"
+                        aria-label="Site-wide"
+                      >
+                        <%= render "govuk_publishing_components/components/search", {
+                          inline_label: false,
+                          label_size: "m",
+                          label_text: search_text,
+                          size: "large",
+                          data_attributes: {
                             track_category: "headerClicked",
-                            track_label: popular_link[:href],
-                            track_dimension: popular_link[:label],
-                            track_dimension_index: "29",
-                            ga4_link: {
-                              "event_name": "navigation",
-                              "type": "header menu bar",
-                              "index": "2.2.#{index + 1}",
-                              "index_total": navigation_links_length,
-                              "section": popular_links_heading,
-                            }
-                          }
+                            track_action: "searchSubmitted",
+                            track_label: "/search/all",
+                            track_dimension: t("components.search_box.label"),
+                            track_dimension_index: 29,
+                          },
                         } %>
-                      </li>
-                    <% end %>
-                  </ul>
+                      </form>
+                    </div>
+                  </div>
+                  <div class="govuk-grid-row">
+                    <div class="govuk-grid-column-full">
+                      <h3 class="govuk-heading-m"><%= popular_links_heading %></h3>
+                      <ul class="govuk-list">
+                        <% popular_links.each_with_index do | popular_link, index | %>
+                          <li class="gem-c-layout-super-navigation-header__popular-item">
+                            <%= link_to popular_link[:label], popular_link[:href], {
+                              class: [
+                                "govuk-link",
+                                "gem-c-layout-super-navigation-header__popular-link",
+                              ],
+                              data: {
+                                track_action: "popularLink",
+                                track_category: "headerClicked",
+                                track_label: popular_link[:href],
+                                track_dimension: popular_link[:label],
+                                track_dimension_index: "29",
+                                ga4_link: {
+                                  "event_name": "navigation",
+                                  "type": "header menu bar",
+                                  "index": "2.2.#{index + 1}",
+                                  "index_total": navigation_links_length,
+                                  "section": popular_links_heading,
+                                }
+                              }
+                            } %>
+                          </li>
+                        <% end %>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
