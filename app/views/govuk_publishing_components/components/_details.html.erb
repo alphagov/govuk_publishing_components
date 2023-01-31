@@ -11,9 +11,11 @@
 
   data_attributes ||= {}
   data_attributes[:details_track_click] = ''
+
+  summary_aria_attributes ||= {}
 %>
 <%= tag.details class: css_classes, data: details_data_attributes, open: open do %>
-  <%= tag.summary class: "govuk-details__summary", data: data_attributes do %>
+  <%= tag.summary class: "govuk-details__summary", data: data_attributes, aria: summary_aria_attributes do %>
     <span class="govuk-details__summary-text">
       <%= title %>
     </span>
