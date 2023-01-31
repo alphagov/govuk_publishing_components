@@ -5,15 +5,18 @@
 window.GOVUK.loadAnalytics = {
   productionDomains: [
     'www.gov.uk',
-    'www-origin.publishing.service.gov.uk'
+    'www-origin.publishing.service.gov.uk',
+    'assets.publishing.service.gov.uk'
   ],
   stagingDomains: [
     'www.staging.publishing.service.gov.uk',
-    'www-origin.staging.publishing.service.gov.uk'
+    'www-origin.staging.publishing.service.gov.uk',
+    'assets.staging.publishing.service.gov.uk'
   ],
   integrationDomains: [
     'www.integration.publishing.service.gov.uk',
-    'www-origin.integration.publishing.service.gov.uk'
+    'www-origin.integration.publishing.service.gov.uk',
+    'assets.integration.publishing.service.gov.uk'
   ],
   developmentDomains: [
     'localhost', '127.0.0.1', '0.0.0.0'

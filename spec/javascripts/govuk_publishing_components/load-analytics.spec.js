@@ -31,7 +31,8 @@ describe('Analytics loading', function () {
     it('loads GA4 on production domains', function () {
       var domains = [
         'www.gov.uk',
-        'www-origin.publishing.service.gov.uk'
+        'www-origin.publishing.service.gov.uk',
+        'assets.publishing.service.gov.uk'
       ]
 
       for (var i = 0; i < domains.length; i++) {
@@ -45,8 +46,8 @@ describe('Analytics loading', function () {
     it('loads GA4 on staging domains', function () {
       var domains = [
         'www.staging.publishing.service.gov.uk',
-        'www.staging.publishing.service.gov.uk',
-        'www-origin.staging.publishing.service.gov.uk'
+        'www-origin.staging.publishing.service.gov.uk',
+        'assets.staging.publishing.service.gov.uk'
       ]
       for (var i = 0; i < domains.length; i++) {
         window.GOVUK.analyticsGa4.vars = null
@@ -59,8 +60,8 @@ describe('Analytics loading', function () {
     it('loads GA4 on integration domains', function () {
       var domains = [
         'www.integration.publishing.service.gov.uk',
-        'www.integration.publishing.service.gov.uk',
-        'www-origin.integration.publishing.service.gov.uk'
+        'www-origin.integration.publishing.service.gov.uk',
+        'assets.integration.publishing.service.gov.uk'
       ]
 
       for (var i = 0; i < domains.length; i++) {

@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Make links bold at all viewports on navbar menu ([PR #3219](https://github.com/alphagov/govuk_publishing_components/pull/3219))
+* Add our 'assets' domain as a domain that should run our analytics ([PR #3224](https://github.com/alphagov/govuk_publishing_components/pull/3224))
 
 
 ## 34.6.0
