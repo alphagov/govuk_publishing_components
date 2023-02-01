@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add GA4 Form tracker ([PR #3215](https://github.com/alphagov/govuk_publishing_components/pull/3215))
 * Add component wrapper helper ([PR #3171](https://github.com/alphagov/govuk_publishing_components/pull/3171))
 * Add aria attributes to Details component ([PR #3225](https://github.com/alphagov/govuk_publishing_components/pull/3225))
 
