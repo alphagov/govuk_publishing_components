@@ -49,43 +49,34 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
       if (!href) {
         return
       }
-      var clickData = {}
+      var data = {}
       if (window.GOVUK.analyticsGa4.core.trackFunctions.isMailToLink(href)) {
-        clickData.event_name = 'navigation'
-        clickData.type = 'email'
-        clickData.external = 'true'
+        data.event_name = 'navigation'
+        data.type = 'email'
+        data.external = 'true'
       } else if (this.isDownloadLink(href)) {
-        clickData.event_name = 'file_download'
-        clickData.type = this.isPreviewLink(href) ? 'preview' : 'generic download'
-        clickData.external = window.GOVUK.analyticsGa4.core.trackFunctions.isExternalLink(href) ? 'true' : 'false'
+        data.event_name = 'file_download'
+        data.type = this.isPreviewLink(href) ? 'preview' : 'generic download'
+        data.external = window.GOVUK.analyticsGa4.core.trackFunctions.isExternalLink(href) ? 'true' : 'false'
       } else if (window.GOVUK.analyticsGa4.core.trackFunctions.isExternalLink(href)) {
-        clickData.event_name = 'navigation'
-        clickData.type = 'generic link'
-        clickData.external = 'true'
+        data.event_name = 'navigation'
+        data.type = 'generic link'
+        data.external = 'true'
       }
 
-      if (Object.keys(clickData).length > 0) {
-        clickData.url = href
-        if (clickData.url) {
-          clickData.url = window.GOVUK.analyticsGa4.core.trackFunctions.removeCrossDomainParams(clickData.url)
-          clickData.link_domain = window.GOVUK.analyticsGa4.core.trackFunctions.populateLinkDomain(clickData.url)
-          clickData.link_path_parts = window.GOVUK.analyticsGa4.core.trackFunctions.populateLinkPathParts(clickData.url)
+      if (Object.keys(data).length > 0) {
+        data.url = href
+        if (data.url) {
+          data.url = window.GOVUK.analyticsGa4.core.trackFunctions.removeCrossDomainParams(data.url)
+          data.link_domain = window.GOVUK.analyticsGa4.core.trackFunctions.populateLinkDomain(data.url)
+          data.link_path_parts = window.GOVUK.analyticsGa4.core.trackFunctions.populateLinkPathParts(data.url)
         }
 
-        clickData.text = window.GOVUK.analyticsGa4.core.trackFunctions.removeLinesAndExtraSpaces(element.textContent)
-        clickData.method = window.GOVUK.analyticsGa4.core.trackFunctions.getClickType(event)
+        data.text = window.GOVUK.analyticsGa4.core.trackFunctions.removeLinesAndExtraSpaces(element.textContent)
+        data.method = window.GOVUK.analyticsGa4.core.trackFunctions.getClickType(event)
 
-        var schema = new window.GOVUK.analyticsGa4.Schemas().eventSchema()
-        schema.event = 'event_data'
-
-        // get attributes from the clickData object to send to GA
-        // only allow it if it already exists in the schema
-        for (var property in clickData) {
-          if (property in schema.event_data) {
-            schema.event_data[property] = clickData[property]
-          }
-        }
-
+        var schemas = new window.GOVUK.analyticsGa4.Schemas()
+        var schema = schemas.mergeProperties(data, 'event_data')
         window.GOVUK.analyticsGa4.core.sendData(schema)
       }
     },

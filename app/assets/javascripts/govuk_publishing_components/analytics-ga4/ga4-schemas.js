@@ -29,6 +29,19 @@
     }
   }
 
+  // get attributes from the data attribute to send to GA
+  // only allow it if it already exists in the schema
+  Schemas.prototype.mergeProperties = function (data, eventAttribute) {
+    var schema = this.eventSchema()
+    schema.event = eventAttribute
+    for (var property in data) {
+      if (property in schema.event_data) {
+        schema.event_data[property] = data[property]
+      }
+    }
+    return schema
+  }
+
   GOVUK.analyticsGa4 = GOVUK.analyticsGa4 || {}
   GOVUK.analyticsGa4.Schemas = Schemas
 

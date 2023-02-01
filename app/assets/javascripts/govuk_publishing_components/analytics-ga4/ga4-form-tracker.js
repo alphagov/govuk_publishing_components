@@ -30,7 +30,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   Ga4FormTracker.prototype.trackFormSubmit = function (event) {
     var target = window.GOVUK.analyticsGa4.core.trackFunctions.findTrackingAttributes(event.target, this.trackingTrigger)
     if (target) {
-      var schema = new window.GOVUK.analyticsGa4.Schemas().eventSchema()
       try {
         var data = target.getAttribute(this.trackingTrigger)
         data = JSON.parse(data)
@@ -43,14 +42,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       var formInputs = this.getFormInputs()
       var formData = this.getInputValues(formInputs)
       data.text = this.combineGivenAnswers(formData) || 'No answer given'
-      schema.event = 'event_data'
-      // get attributes from the data attribute to send to GA
-      // only allow it if it already exists in the schema
-      for (var property in data) {
-        if (property in schema.event_data) {
-          schema.event_data[property] = data[property]
-        }
-      }
+
+      var schemas = new window.GOVUK.analyticsGa4.Schemas()
+      var schema = schemas.mergeProperties(data, 'event_data')
       window.GOVUK.analyticsGa4.core.sendData(schema)
     }
   }
