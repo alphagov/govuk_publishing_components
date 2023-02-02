@@ -63,4 +63,3 @@ examples:
       base_path: '/current-page-path'
       js_enhancement: true
       skip_account: true
-  

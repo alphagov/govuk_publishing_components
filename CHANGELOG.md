@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Allow single page notification button to skip the govuk-account ([PR #3229](https://github.com/alphagov/govuk_publishing_components/pull/3229))
+
 ## 34.8.1
 
 * Reverts release 34.7.1 concerning related World Location links ([PR #3243](https://github.com/alphagov/govuk_publishing_components/pull/3243))
