@@ -277,6 +277,22 @@ describe "Document list", type: :view do
     assert_select ".gem-c-document-list.gem-c-document-list--no-top-border"
   end
 
+  it "removes the top border from the first list item" do
+    render_component(
+      remove_top_border_from_first_child: true,
+      items: [
+        {
+          link: {
+            text: "Link Title",
+            path: "/link/path",
+          },
+        },
+      ],
+    )
+
+    assert_select ".gem-c-document-list.gem-c-document-list--no-top-border-first-child"
+  end
+
   it "highlights items" do
     render_component(
       items: [

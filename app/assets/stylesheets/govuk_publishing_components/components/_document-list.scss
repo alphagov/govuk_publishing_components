@@ -29,6 +29,12 @@
   }
 }
 
+.gem-c-document-list--no-top-border-first-child {
+  .gem-c-document-list__item:first-child {
+    border-top: none;
+  }
+}
+
 .gem-c-document-list__item-title--context {
   margin-right: govuk-spacing(2);
 
