@@ -146,6 +146,24 @@ describe('GA4 click tracker', function () {
       expect(window.dataLayer[0]).toEqual(expected)
     })
 
+    it('records the href of the link unless an override value is provided in the data attribute', function () {
+      var link = '#randomLink'
+      element = document.createElement('a')
+      element.setAttribute('href', link)
+      var linkOverride = 'https://nationalarchives.gov.uk/test123'
+      attributes.url = linkOverride
+      element.setAttribute('data-ga4-link', JSON.stringify(attributes))
+
+      expected.event_data.url = linkOverride
+      expected.event_data.link_domain = 'https://nationalarchives.gov.uk'
+      expected.event_data.link_path_parts['1'] = '/test123'
+      expected.event_data.external = 'true'
+      expected.event_data.text = ''
+
+      initModule(element, true)
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
     it('tracks all links with data-ga4 attributes within a container', function () {
       var longLink = '#link1-that-is-deliberately-really-long-to-test-the-url-being-split-into-parts-is-this-a-hundred-characters-yet'
       element = document.createElement('div')

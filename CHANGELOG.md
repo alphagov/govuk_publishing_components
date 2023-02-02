@@ -14,6 +14,7 @@
 * Make links bold at all viewports on navbar menu ([PR #3219](https://github.com/alphagov/govuk_publishing_components/pull/3219))
 * Add our 'assets' domain as a domain that should run our analytics ([PR #3224](https://github.com/alphagov/govuk_publishing_components/pull/3224))
 * Add document list component option to remove first item top border ([PR #3221](https://github.com/alphagov/govuk_publishing_components/pull/3221))
+* Allow a tracked ga4 link to be hardcoded via its ga4-link JSON ([PR #3227](https://github.com/alphagov/govuk_publishing_components/pull/3227))
 
 ## 34.6.0
 
