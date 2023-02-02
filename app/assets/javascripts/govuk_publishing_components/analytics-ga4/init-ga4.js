@@ -2,8 +2,6 @@ window.GOVUK = window.GOVUK || {}
 window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {}
 
 var initFunction = function () {
-  // to be added: digital identity consent mechanism
-
   var consentCookie = window.GOVUK.getConsentCookie()
 
   if (consentCookie && consentCookie.usage) {
@@ -16,10 +14,14 @@ var initFunction = function () {
     for (var property in analyticsModules) {
       var module = analyticsModules[property]
       if (typeof module.init === 'function') {
-        module.init()
+        try {
+          module.init()
+        } catch (e) {
+          // if there's a problem with the module, catch the error to allow other modules to start
+          console.warn('Error starting analytics module ' + property + ': ' + e.message, window.location)
+        }
       }
     }
-    // to be added: cross domain tracking code
   } else {
     window.addEventListener('cookie-consent', window.GOVUK.analyticsGa4.init)
   }
