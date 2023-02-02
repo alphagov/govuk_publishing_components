@@ -11,11 +11,13 @@ describe('Initialising GA4', function () {
 
   describe('when consent is given', function () {
     var test = {
-      functionThatMightBeCalled: function () {}
+      functionThatMightBeCalled: function () {},
+      functionThatShouldNotBeCalled: function () {}
     }
 
     beforeEach(function () {
       spyOn(test, 'functionThatMightBeCalled')
+      spyOn(test, 'functionThatShouldNotBeCalled')
       GOVUK.analyticsGa4.analyticsModules.Test = function () {}
       GOVUK.analyticsGa4.analyticsModules.Test.init = function () { test.functionThatMightBeCalled() }
     })
@@ -45,6 +47,27 @@ describe('Initialising GA4', function () {
       GOVUK.analyticsGa4.init()
 
       expect(GOVUK.analyticsGa4).not.toEqual({})
+    })
+
+    it('initialises following modules even if this one errors', function () {
+      // module with a deliberate error in it
+      GOVUK.analyticsGa4.analyticsModules.TestError = function () {}
+      GOVUK.analyticsGa4.analyticsModules.TestError.init = function () {
+        throw new Error('This is a deliberate error')
+        test.functionThatShouldNotBeCalled() // eslint-disable-line no-unreachable
+      }
+
+      GOVUK.analyticsGa4.analyticsModules.TestNotError = function () {}
+      GOVUK.analyticsGa4.analyticsModules.TestNotError.init = function () { test.functionThatMightBeCalled() }
+
+      GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
+      GOVUK.analyticsGa4.init()
+
+      expect(test.functionThatShouldNotBeCalled.calls.count()).toEqual(0)
+      expect(test.functionThatMightBeCalled.calls.count()).toEqual(2)
+
+      delete GOVUK.analyticsGa4.analyticsModules.TestError
+      delete GOVUK.analyticsGa4.analyticsModules.TestNotError
     })
   })
 
