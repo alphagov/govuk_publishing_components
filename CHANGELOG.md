@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 34.7.0
 
 * Add GA4 modules error checking ([PR #3228](https://github.com/alphagov/govuk_publishing_components/pull/3228))
 * Add classes to align text in Govspeak tables ([PR #3217](https://github.com/alphagov/govuk_publishing_components/pull/3217))
