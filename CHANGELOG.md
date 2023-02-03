@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Use base path to form URLs for related World Location links ([PR #3102](https://github.com/alphagov/govuk_publishing_components/pull/3102))
+
 ## 34.7.0
 
 * Add GA4 modules error checking ([PR #3228](https://github.com/alphagov/govuk_publishing_components/pull/3228))
