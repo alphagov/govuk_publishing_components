@@ -153,9 +153,9 @@ en:
         navigation:
           menu_bar:
             account:
-              link_text: Your account
+              link_text: Your GOV.UK One Login
             manage:
-              link_text: Manage your account
+              link_text: Settings
     layout_header:
       hide_button: Hide search
       menu: Menu
