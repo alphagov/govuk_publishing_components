@@ -132,32 +132,23 @@ examples:
         title: "A content item"
         links:
           part_of_step_navs:
-            - title: "Learn to drive a car: step by step"
-              base_path: "/micropigs-vs-micropugs"
+            - title: "What to do when someone dies: step by step"
+              base_path: "/when-someone-dies"
               details:
                 step_by_step_nav:
-                  title: 'Stay in the UK after it leaves the EU (''settled status''): step by step'
+                  title: 'What to do when someone dies: step by step'
                   steps:
-                  - title: Check you're allowed to drive
+                  - title: Register the death
                     contents:
-                    - type: paragraph
-                      text: Most people can start learning to drive when they’re 17.
                     - type: list
                       contents:
-                      - text: Check what age you can drive
-                        href: "/vehicles-can-drive"
+                      - text: Register the death
+                        href: "/after-a-death"
                     optional: false
-                  - title: Testing the and
-                    logic: and
+                  - title: Arrange the funeral
                     contents:
-                    - type: paragraph
-                      text: hello hello what's UP
-                  - title: Driving lessons and practice
-                    contents:
-                    - type: paragraph
-                      text: You need a provisional driving licence to take lessons or practice.
                     - type: list
                       contents:
-                      - text: The Highway Code
-                        href: "/guidance/the-highway-code"
+                      - text: Arrange the funeral
+                        href: "/after-a-death/arrange-the-funeral"
                     optional: false
