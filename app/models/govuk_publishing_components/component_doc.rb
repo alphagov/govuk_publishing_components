@@ -32,6 +32,12 @@ module GovukPublishingComponents
       "#{component[:accessibility_criteria]}\n#{shared_accessibility_criteria.join("\n")}"
     end
 
+    def component_wrapper_options
+      if uses_component_wrapper_helper?
+        ComponentWrapperHelperOptions.description
+      end
+    end
+
     def example
       examples.first
     end
@@ -48,12 +54,20 @@ module GovukPublishingComponents
       component[:display_preview].nil? ? true : component[:display_preview]
     end
 
+    def uses_component_wrapper_helper?
+      component[:uses_component_wrapper_helper]
+    end
+
     def html_body
       markdown_to_html(body) if body.present?
     end
 
     def html_accessibility_criteria
       markdown_to_html(accessibility_criteria) if accessibility_criteria.present?
+    end
+
+    def html_component_wrapper_options
+      markdown_to_html(component_wrapper_options) if component_wrapper_options.present?
     end
 
     def partial_path

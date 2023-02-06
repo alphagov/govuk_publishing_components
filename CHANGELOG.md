@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add component wrapper helper ([PR #3171](https://github.com/alphagov/govuk_publishing_components/pull/3171))
+
 ## 34.7.1
 
 * Use base path to form URLs for related World Location links ([PR #3102](https://github.com/alphagov/govuk_publishing_components/pull/3102))
