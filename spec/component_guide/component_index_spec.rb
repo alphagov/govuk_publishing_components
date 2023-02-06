@@ -52,6 +52,7 @@ describe "Component guide index" do
 @import 'govuk_publishing_components/components/button';
 @import 'govuk_publishing_components/components/contextual-sidebar';
 @import 'govuk_publishing_components/components/cookie-banner';
+@import 'govuk_publishing_components/components/details';
 @import 'govuk_publishing_components/components/error-message';
 @import 'govuk_publishing_components/components/error-summary';
 @import 'govuk_publishing_components/components/feedback';
@@ -64,6 +65,7 @@ describe "Component guide index" do
 @import 'govuk_publishing_components/components/layout-for-public';
 @import 'govuk_publishing_components/components/layout-header';
 @import 'govuk_publishing_components/components/layout-super-navigation-header';
+@import 'govuk_publishing_components/components/notice';
 @import 'govuk_publishing_components/components/phase-banner';
 @import 'govuk_publishing_components/components/print-link';
 @import 'govuk_publishing_components/components/related-navigation';
@@ -76,7 +78,7 @@ describe "Component guide index" do
 @import 'govuk_publishing_components/components/textarea';
 @import 'govuk_publishing_components/components/title';"
 
-    expect(page).to have_selector(".component-doc-h2", text: "Gem components used by this app (18)")
+    expect(page).to have_selector(".component-doc-h2", text: "Gem components used by this app (20)")
     expect(page).to have_selector(".govuk-details__summary-text", text: "Suggested imports for this application")
 
     expect(page.find(:css, 'textarea[name="main-sass"]', visible: false).value).to eq(expected_main_sass)
@@ -88,6 +90,7 @@ describe "Component guide index" do
 //= require govuk_publishing_components/components/accordion
 //= require govuk_publishing_components/components/button
 //= require govuk_publishing_components/components/cookie-banner
+//= require govuk_publishing_components/components/details
 //= require govuk_publishing_components/components/error-summary
 //= require govuk_publishing_components/components/feedback
 //= require govuk_publishing_components/components/govspeak
