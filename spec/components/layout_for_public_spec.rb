@@ -218,7 +218,7 @@ describe "Layout for public", type: :view do
   it "indicates the active account navigation item if the location parameter is passed" do
     render_component({ show_account_layout: true, account_nav_location: "manage" })
 
-    assert_select ".gem-c-layout-for-public-account-nav li.gem-c-layout-for-public-account-menu__item.gem-c-layout-for-public-account-menu__item--current a[aria-current=page]", text: "Manage your account"
+    assert_select ".gem-c-layout-for-public-account-nav li.gem-c-layout-for-public-account-menu__item.gem-c-layout-for-public-account-menu__item--current a[aria-current=page]", text: "Settings"
   end
 
   it "can accept custom cookie banner content" do
