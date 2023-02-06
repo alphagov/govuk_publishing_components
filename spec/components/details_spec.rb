@@ -47,6 +47,17 @@ describe "Details", type: :view do
     assert_select '.govuk-details .govuk-details__summary[data-track-label="track-label"]'
   end
 
+  it "applies aria labels to summary when provided" do
+    render_component(
+      title: "Some title",
+      summary_aria_attributes: {
+        label: "label",
+      },
+    )
+
+    assert_select '.govuk-details .govuk-details__summary[aria-label="label"]'
+  end
+
   it "defaults to the initial bottom margin if an incorrect value is passed" do
     render_component(
       title: "Some title",

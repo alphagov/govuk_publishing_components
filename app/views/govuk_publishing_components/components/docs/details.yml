@@ -36,6 +36,23 @@ examples:
           dimension20: "custom dimension"
       block: |
         We need to know your nationality so we can work out which elections you’re entitled to vote in. If you can’t provide your nationality, you’ll have to send copies of identity documents through the post.
+  with_aria_attributes:
+    description: |
+      Aria attributes can be applied to the summary element of the component.
+    data:
+      title: Works with 2 agencies and public bodies
+      summary_aria_attributes:
+        label: Attorney General's office
+      block: |
+        <ul>
+          <li>Department 1</li>
+          <li>Department 2</li>
+        </ul>
+    embed: |
+      <div>
+        <p class="govuk-body">Attorney General's office</p>
+        <%= component %>
+      </div>
   with_GTM_tracking:
     description: Applies a tracking attribute specifically for use by Google Tag Manager in [Content Publisher](https://github.com/alphagov/content-publisher).
     data:
