@@ -104,7 +104,7 @@ examples:
               base_path: "/government/topical-events/russian-invasion-of-ukraine-uk-government-response"
               locale: "en"
   with_ga4_tracking_on_related_navigation:
-    description: Adds Google Analytics 4 tracking to components within the sidebar. Currently only the Related Navigation and Step by Step navigation components accept this option.
+    description: Adds Google Analytics 4 tracking to components within the sidebar. Currently only the Related Navigation component, Step by Step navigation component and Ukraine CTA accept this option.
     data:
       ga4_tracking: true
       content_item:
@@ -124,8 +124,13 @@ examples:
           - title: The future of jobs and skills
             base_path: /government/collections/the-future-of-jobs-and-skills
             document_type: document_collection
+          topical_events:
+            - content_id: "bfa79635-ffda-4b5d-8266-a9cd3a03649c"
+              title: "Russian invasion of Ukraine: UK government response"
+              base_path: "/government/topical-events/russian-invasion-of-ukraine-uk-government-response"
+              locale: "en"
   with_ga4_tracking_on_step_by_step:
-    description: Adds Google Analytics 4 tracking to components within the sidebar. Currently only the Related Navigation and Step by Step navigation components accept this option.
+    description: Adds Google Analytics 4 tracking to components within the sidebar. Currently only the Related Navigation component, Step by Step navigation component and Ukraine CTA accept this option.
     data:
       ga4_tracking: true
       content_item:
