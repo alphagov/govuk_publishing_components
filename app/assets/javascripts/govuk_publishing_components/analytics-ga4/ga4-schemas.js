@@ -29,8 +29,8 @@
     }
   }
 
-  Schemas.prototype.ecommerceSchema = function (isExternalLink) {
-    var ecommerceObject = {
+  Schemas.prototype.ecommerceSchema = function () {
+    return {
       event: this.undefined,
       search_results: {
         event_name: this.undefined,
@@ -40,15 +40,9 @@
         ecommerce: {
           items: []
         }
-      }
+      },
+      event_data: this.undefined
     }
-
-    if (isExternalLink !== undefined) {
-      ecommerceObject.event_data = {}
-      ecommerceObject.event_data.external = isExternalLink
-    }
-
-    return ecommerceObject
   }
 
   // get attributes from the data attribute to send to GA

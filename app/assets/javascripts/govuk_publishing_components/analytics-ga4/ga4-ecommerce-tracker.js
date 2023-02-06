@@ -54,13 +54,13 @@
     },
 
     handleClick: function (event) {
-      if(event.target.getAttribute("data-ecommerce-path") !== null) {
+      if (event.target.getAttribute('data-ga4-ecommerce-path')) {
         var searchResultsBlock = event.target.closest('[data-ga4-ecommerce]')
 
         var ecommerceSchema = GOVUK.analyticsGa4.core.ecommerceHelperFunctions.populateEcommerceSchema({
-          element: searchResultsBlock, 
-          event: event,
-          resultsId: 'js-result-count'
+          element: searchResultsBlock,
+          resultsId: 'js-result-count',
+          event: event
         })
 
         GOVUK.analyticsGa4.core.ecommerceHelperFunctions.clearEcommerceObject()

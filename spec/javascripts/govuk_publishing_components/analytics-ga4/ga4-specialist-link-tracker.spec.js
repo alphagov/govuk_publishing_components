@@ -80,6 +80,9 @@ describe('A specialist link tracker', function () {
             '</div>' +
             '<div data-ga4-link="something">' +
               '<a href="//nationalarchives.gov.uk" class="alreadytracked"> National Archives </a>' +
+            '</div>' +
+            '<div data-ga4-ecommerce-path="something">' +
+              '<a href="#https://www.example.com" class="resultLink">A search result link</a>' +
             '</div>'
 
       body.appendChild(links)
@@ -278,6 +281,11 @@ describe('A specialist link tracker', function () {
 
     it('ignores links that are already being tracked by the other link tracker', function () {
       links.querySelector('.alreadytracked').click()
+      expect(window.dataLayer).toEqual([])
+    })
+
+    it('ignores links that are already being tracked by the ecommerce and smart answer results trackers', function () {
+      links.querySelector('.resultLink').click()
       expect(window.dataLayer).toEqual([])
     })
   })

@@ -39,8 +39,8 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
         return
       }
 
-      // don't track this link if it's already being tracked by the other link tracker
-      if (element.closest('[data-ga4-link]')) {
+      // don't track this link if it's already being tracked by the another tracker (e.g. the link tracker or ecommerce tracker)
+      if (element.closest('[data-ga4-link]') || element.closest('[data-ga4-ecommerce-path]')) {
         return
       }
 

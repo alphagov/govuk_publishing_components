@@ -28,18 +28,19 @@ describe('Google Analytics ecommerce tracking', function () {
 
     searchResults = document.createElement('div')
     searchResults.innerHTML =
-      '<a data-ecommerce-path="/coronavirus" data-ecommerce-row="1" data-ecommerce-index="1" href="/coronavirus">Coronavirus (COVID-19): guidance and support</a>' +
+      '<a data-ga4-ecommerce-path="/coronavirus" data-ecommerce-row="1" data-ecommerce-index="1" href="/coronavirus">Coronavirus (COVID-19): guidance and support</a>' +
 
-      '<a data-ecommerce-path="/guidance/travel-abroad-from-england-during-coronavirus-covid-19" data-ecommerce-row="1" data-ecommerce-index="2" href="/guidance/travel-abroad">Travel abroad</a>' +
+      '<a data-ga4-ecommerce-path="/guidance/travel-abroad-from-england-during-coronavirus-covid-19" data-ecommerce-row="1" data-ecommerce-index="2" href="/guidance/travel-abroad">Travel abroad</a>' +
 
-      '<a data-ecommerce-path="/guidance/people-with-symptoms-of-a-respiratory-infection-including-covid-19" data-ecommerce-row="1" data-ecommerce-index="3" href="/guidance/people">People</a>' +
+      '<a data-ga4-ecommerce-path="/guidance/people-with-symptoms-of-a-respiratory-infection-including-covid-19" data-ecommerce-row="1" data-ecommerce-index="3" href="/guidance/people">People</a>' +
 
-      '<a data-ecommerce-path="/foreign-travel-advice" onclick="event.preventDefault()" data-ecommerce-row="1" data-ecommerce-index="4" href="/foreign-travel-advice">Foreign travel advice</a>' +
+      '<a data-ga4-ecommerce-path="/foreign-travel-advice" onclick="event.preventDefault()" data-ecommerce-row="1" data-ecommerce-index="4" href="/foreign-travel-advice">Foreign travel advice</a>' +
 
-      '<a data-ecommerce-path="/guidance/living-safely-with-respiratory-infections-including-covid-19" data-ecommerce-row="1" data-ecommerce-index="5" href="/guidance/living-safely">Living safely</a>'
+      '<a data-ga4-ecommerce-path="/guidance/living-safely-with-respiratory-infections-including-covid-19" data-ecommerce-row="1" data-ecommerce-index="5" href="/guidance/living-safely">Living safely</a>'
 
     onPageLoadExpected = {
       event: 'search_results',
+      event_data: undefined,
       search_results: {
         event_name: 'view_item_list',
         term: 'test-search-query',
@@ -248,7 +249,7 @@ describe('Google Analytics ecommerce tracking', function () {
         }
       }
 
-      resultToBeClicked = document.querySelector("[data-ecommerce-path='/foreign-travel-advice']")
+      resultToBeClicked = document.querySelector("[data-ga4-ecommerce-path='/foreign-travel-advice']")
       GOVUK.analyticsGa4.analyticsModules.Ga4SpecialistLinkTracker.internalLinksDomain = 'www.gov.uk/'
       GOVUK.analyticsGa4.analyticsModules.Ga4SpecialistLinkTracker.internalLinksDomainWithoutWww = 'gov.uk/'
     })
