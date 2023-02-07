@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 34.8.0
 
 * Add GA4 Form tracker ([PR #3215](https://github.com/alphagov/govuk_publishing_components/pull/3215))
 * Add component wrapper helper ([PR #3171](https://github.com/alphagov/govuk_publishing_components/pull/3171))
