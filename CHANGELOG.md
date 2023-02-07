@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add component wrapper helper ([PR #3171](https://github.com/alphagov/govuk_publishing_components/pull/3171))
+* Add aria attributes to Details component ([PR #3225](https://github.com/alphagov/govuk_publishing_components/pull/3225))
 
 ## 34.7.1
 
