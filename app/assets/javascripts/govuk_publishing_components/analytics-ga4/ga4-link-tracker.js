@@ -58,8 +58,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   Ga4LinkTracker.prototype.trackClick = function (event) {
     var target = window.GOVUK.analyticsGa4.core.trackFunctions.findTrackingAttributes(event.target, this.trackingTrigger)
     if (target) {
-      var schema = new window.GOVUK.analyticsGa4.Schemas().eventSchema()
-
       try {
         var data = target.getAttribute(this.trackingTrigger)
         data = JSON.parse(data)
@@ -69,7 +67,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         return
       }
 
-      schema.event = 'event_data'
       var text = data.text || event.target.textContent
       data.text = window.GOVUK.analyticsGa4.core.trackFunctions.removeLinesAndExtraSpaces(text)
       var url = data.url || this.findLink(event.target).getAttribute('href')
@@ -79,14 +76,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       data.method = window.GOVUK.analyticsGa4.core.trackFunctions.getClickType(event)
       data.external = window.GOVUK.analyticsGa4.core.trackFunctions.isExternalLink(data.url) ? 'true' : 'false'
 
-      // get attributes from the data attribute to send to GA
-      // only allow it if it already exists in the schema
-      for (var property in data) {
-        if (property in schema.event_data) {
-          schema.event_data[property] = data[property]
-        }
-      }
-
+      var schemas = new window.GOVUK.analyticsGa4.Schemas()
+      var schema = schemas.mergeProperties(data, 'event_data')
       window.GOVUK.analyticsGa4.core.sendData(schema)
     }
   }
