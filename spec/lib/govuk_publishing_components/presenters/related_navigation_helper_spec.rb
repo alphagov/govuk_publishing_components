@@ -110,7 +110,6 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
               "content_id" => "32c1b93d-2553-47c9-bc3c-fc5b513ecc32",
               "title" => "World, ~ (@Location)",
               "locale" => "en",
-              "base_path" => "/world/somewhere",
             },
           ],
         },
@@ -127,7 +126,7 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
         "related_contacts" => [],
         "related_external_links" => [],
         "topical_events" => [{ locale: "en", path: "/related-topical-event", text: "related topical event" }],
-        "world_locations" => [{ locale: "en", path: "/world/somewhere", text: "World, ~ (@Location)" }],
+        "world_locations" => [{ locale: "en", path: "/world/world-location/news", text: "World, ~ (@Location)" }],
         "statistical_data_sets" => [],
       }
 

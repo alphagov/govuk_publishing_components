@@ -71,11 +71,20 @@ describe "Related navigation", type: :view do
 
   it "renders world locations section when passed world location items" do
     content_item = {}
-    content_item["links"] = construct_links("world_locations", "/world/usa", "USA")
+    content_item["links"] = construct_links("world_locations", "/world/usa/news", "USA")
     render_component(content_item: content_item)
 
     assert_select ".gem-c-related-navigation__sub-heading", text: "World locations"
-    assert_select ".gem-c-related-navigation__section-link[href=\"/world/usa\"]", text: "USA"
+    assert_select ".gem-c-related-navigation__section-link[href=\"/world/usa/news\"]", text: "USA"
+  end
+
+  it "renders world locations section when passed special case world location items" do
+    content_item = {}
+    content_item["links"] = construct_links("world_locations", nil, "UK Mission to the European Union")
+    render_component(content_item: content_item)
+
+    assert_select ".gem-c-related-navigation__sub-heading", text: "World locations"
+    assert_select ".gem-c-related-navigation__section-link[href=\"/world/uk-mission-to-the-eu/news\"]", text: "UK Mission to the European Union"
   end
 
   it "renders collection section when passed collection items" do
@@ -152,24 +161,24 @@ describe "Related navigation", type: :view do
   it "adds a show more toggle link to long sections" do
     content_item = { "links" => { "world_locations" => [] } }
     %w[USA Wales Fiji Iceland Sweden Mauritius Brazil].each do |country|
-      content_item["links"]["world_locations"] << { "title" => country, "base_path" => "/world/#{country.downcase}" }
+      content_item["links"]["world_locations"] << { "title" => country }
     end
     render_component(content_item: content_item)
 
-    assert_select ".gem-c-related-navigation__section-link[href=\"/world/wales\"]", text: "Wales"
+    assert_select ".gem-c-related-navigation__section-link[href=\"/world/wales/news\"]", text: "Wales"
     assert_select ".gem-c-related-navigation__link.toggle-wrap", text: "Show 2 more"
-    assert_select "#toggle_world_locations .gem-c-related-navigation__section-link[href=\"/world/mauritius\"]", text: "Mauritius"
-    assert_select "#toggle_world_locations .gem-c-related-navigation__section-link[href=\"/world/brazil\"]", text: "Brazil"
+    assert_select "#toggle_world_locations .gem-c-related-navigation__section-link[href=\"/world/mauritius/news\"]", text: "Mauritius"
+    assert_select "#toggle_world_locations .gem-c-related-navigation__section-link[href=\"/world/brazil/news\"]", text: "Brazil"
   end
 
   it "does not use a Show More for only one link above the max per section" do
     content_item = { "links" => { "world_locations" => [] } }
     %w[USA Wales Fiji Iceland Sweden Mauritius].each do |country|
-      content_item["links"]["world_locations"] << { "title" => country, "base_path" => "/world/#{country.downcase}" }
+      content_item["links"]["world_locations"] << { "title" => country }
     end
     render_component(content_item: content_item)
 
-    assert_select ".gem-c-related-navigation__section-link[href=\"/world/wales\"]", text: "Wales"
+    assert_select ".gem-c-related-navigation__section-link[href=\"/world/wales/news\"]", text: "Wales"
     assert_select ".gem-c-related-navigation__link.toggle-wrap", false, "Progressive disclosure should not display for only 1 link"
   end
 

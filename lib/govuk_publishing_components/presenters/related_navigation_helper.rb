@@ -12,6 +12,9 @@ module GovukPublishingComponents
         world_locations
         statistical_data_sets
       ].freeze
+      WORLD_LOCATION_SPECIAL_CASES = {
+        "UK Mission to the European Union" => "uk-mission-to-the-eu",
+      }.freeze
 
       def initialize(options = {})
         @content_item = options.fetch(:content_item) { raise ArgumentError, "missing argument: content_item" }
@@ -112,6 +115,10 @@ module GovukPublishingComponents
 
       def related_world_locations
         content_item_links_for("world_locations")
+          .map do |link|
+            slug = WORLD_LOCATION_SPECIAL_CASES[link[:text]] || link[:text].parameterize
+            link.merge(path: "/world/#{slug}/news")
+          end
       end
 
       def related_statistical_data_sets
