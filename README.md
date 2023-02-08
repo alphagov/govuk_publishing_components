@@ -39,6 +39,7 @@ yarn run jasmine:ci
 
 - [Install and use this gem](docs/install-and-use.md)
 - [Use a component in your application](docs/use-components.md)
+- [Test a branch of the gem](docs/test-a-branch-of-the-gem.md)
 
 ### Managing the gem
 
