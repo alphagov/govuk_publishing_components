@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update "Account" copy to "GOV.UK One Login" ([PR #3246](https://github.com/alphagov/govuk_publishing_components/pull/3246))
+
 ## 34.9.0
 
 * Allow single page notification button to skip the govuk-account ([PR #3229](https://github.com/alphagov/govuk_publishing_components/pull/3229))
