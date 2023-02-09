@@ -1,0 +1,20 @@
+name: Test component using wrapper
+description: A test component for the dummy app
+body: |
+  An example body with [markdown in it](/component-guide).
+
+  This is a list:
+
+  * list item one
+  * list item two
+accessibility_criteria: |
+  * This is some criteria in a list
+examples:
+  default:
+    data:
+      id: my-id
+      classes: js-test
+      data_attributes:
+        test: attribute-test
+      aria:
+        label: aria-test

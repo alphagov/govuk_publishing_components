@@ -148,4 +148,12 @@ describe "Component example" do
     expect(page).to have_selector(".component-violation")
     expect(body).to include("This component is not valid")
   end
+
+  it "renders a component using the component wrapper helper" do
+    visit "/component-guide/test-component-using-wrapper"
+    expect(page).to have_selector(".js-test")
+    expect(page).to have_selector(".js-test#my-id")
+    expect(page).to have_selector(".js-test[data-test='attribute-test']")
+    expect(page).to have_selector(".js-test[aria-label='aria-test']")
+  end
 end

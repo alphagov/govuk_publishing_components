@@ -1,0 +1,5 @@
+<%
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+%>
+<%= tag.div(**component_helper.all_attributes) do %>
+<% end %>

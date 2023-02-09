@@ -72,6 +72,7 @@ describe "Auditing the components in applications" do
       helper_references: {
         BrandHelper: ["lib/test_file_3.rb"],
         ButtonHelper: ["lib/test_file_3.rb"],
+        ComponentWrapperHelper: ["app/views/components/_test-component-using-wrapper.html.erb"],
         SharedHelper: ["lib/test_file_3.rb"],
         TableHelper: ["app/views/welcome/table.html.erb"],
       },
