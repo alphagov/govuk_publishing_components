@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 34.9.1
 
 * Update Component Guide skip_account to mention GOV.UK One Login ([PR #3247](https://github.com/alphagov/govuk_publishing_components/pull/3247))
 * Update "Account" copy to "GOV.UK One Login" ([PR #3246](https://github.com/alphagov/govuk_publishing_components/pull/3246))
