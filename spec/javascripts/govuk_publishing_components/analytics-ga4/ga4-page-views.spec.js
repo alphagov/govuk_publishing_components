@@ -163,7 +163,58 @@ describe('Google Tag Manager page view tracking', function () {
     for (var i = 0; i < tags.length; i++) {
       var tag = tags[i]
       createMetaTags(tag.tagName, tag.value)
-      expected.page_view[tag.gtmName] = tag.value
+      if (tag.gtmName === 'taxonomy_all_ids' || tag.gtmName === 'taxonomy_all') {
+        expected.page_view[tag.gtmName] = {
+          1: tag.value,
+          2: undefined,
+          3: undefined,
+          4: undefined,
+          5: undefined
+        }
+      } else {
+        expected.page_view[tag.gtmName] = tag.value
+      }
+    }
+
+    GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()
+    expect(window.dataLayer[0]).toEqual(expected)
+  })
+
+  it('splits taxonomy_all and taxonomy_all_ids into five parts', function () {
+    var tags = [
+      {
+        gtmName: 'taxonomy_all',
+        tagName: 'taxon-slugs',
+        value: 'finance-support,premises-rates,company-closure-administration-liquidation-and-insolvency,contract-working-hours,dismissals-redundancies,food-and-farming-industry,producing-distributing-food-food-labelling,recruiting-hiring,recruiting-hiring,redundancies-dismissals,sale-goods-services-data,scientific-research-and-development,self-employed'
+      },
+      {
+        gtmName: 'taxonomy_all_ids',
+        tagName: 'taxon-ids',
+        value: 'ccfc50f5-e193-4dac-9d78-50b3a8bb24c5,68cc0b3c-7f80-4869-9dc7-b2ceef5f4f08,864fe969-7d5a-4251-b8b5-a50d57be943f,23a712ff-23b3-4f5a-83f1-44ac679fe615,a1c6c263-e4ef-4b96-b82f-e070ff157367,e2559668-cf36-47fc-8a77-2e760e12a812,f1126ffb-e352-4129-bb33-8e4dfdbee9ac,c195d3e6-5924-4def-b1c2-24a685a0b210,55e8ea89-9ba8-4439-a703-7d26723a4ec0,a4d954b4-3a64-488c-a0fc-fa91ecb8cf2b,c39ac533-be2c-4460-93ba-e656793568ef,429bf677-b514-4c10-8a89-c0eee4acc7ec,24e91c04-21cb-479a-8f23-df0eaab31788thistextisincluded!!ButThisSentenceIsNotAsItIsOver500Characters.'
+      }
+    ]
+
+    for (var i = 0; i < tags.length; i++) {
+      var tag = tags[i]
+      createMetaTags(tag.tagName, tag.value)
+    }
+
+    // taxonomy_all
+    expected.page_view[tags[0].gtmName] = {
+      1: 'finance-support,premises-rates,company-closure-administration-liquidation-and-insolvency,contract-wo',
+      2: 'rking-hours,dismissals-redundancies,food-and-farming-industry,producing-distributing-food-food-label',
+      3: 'ling,recruiting-hiring,recruiting-hiring,redundancies-dismissals,sale-goods-services-data,scientific',
+      4: '-research-and-development,self-employed',
+      5: undefined
+    }
+
+    // taxonomy_all_ids
+    expected.page_view[tags[1].gtmName] = {
+      1: 'ccfc50f5-e193-4dac-9d78-50b3a8bb24c5,68cc0b3c-7f80-4869-9dc7-b2ceef5f4f08,864fe969-7d5a-4251-b8b5-a5',
+      2: '0d57be943f,23a712ff-23b3-4f5a-83f1-44ac679fe615,a1c6c263-e4ef-4b96-b82f-e070ff157367,e2559668-cf36-4',
+      3: '7fc-8a77-2e760e12a812,f1126ffb-e352-4129-bb33-8e4dfdbee9ac,c195d3e6-5924-4def-b1c2-24a685a0b210,55e8',
+      4: 'ea89-9ba8-4439-a703-7d26723a4ec0,a4d954b4-3a64-488c-a0fc-fa91ecb8cf2b,c39ac533-be2c-4460-93ba-e65679',
+      5: '3568ef,429bf677-b514-4c10-8a89-c0eee4acc7ec,24e91c04-21cb-479a-8f23-df0eaab31788thistextisincluded!!'
     }
 
     GOVUK.analyticsGa4.analyticsModules.PageViewTracker.init()

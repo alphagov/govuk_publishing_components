@@ -11,6 +11,7 @@
 
 * Add GA4 auto tracker ([PR #3240](https://github.com/alphagov/govuk_publishing_components/pull/3240))
 * Add GA4 tracking to contextual sidebar Ukraine CTA ([PR #3236](https://github.com/alphagov/govuk_publishing_components/pull/3236))
+* Use string splitter on taxonomyAll and taxonomyAllIds pageview values ([PR #3249](https://github.com/alphagov/govuk_publishing_components/pull/3249))
 
 ## 34.9.1
 
