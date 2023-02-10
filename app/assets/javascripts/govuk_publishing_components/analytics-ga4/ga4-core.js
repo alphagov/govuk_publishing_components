@@ -192,8 +192,10 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
         } else {
           // This regex matches a protocol and domain name at the start of a string such as https://www.gov.uk, http://gov.uk, //gov.uk
           var domainRegex = /^(http:||https:)?(\/\/)([^\/]*)/ // eslint-disable-line no-useless-escape
-          var domain = domainRegex.exec(href)[0]
-          return domain
+          var domain = domainRegex.exec(href)
+          if (domain) {
+            return domain[0]
+          }
         }
       },
 
