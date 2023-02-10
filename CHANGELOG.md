@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add GA4 auto tracker ([PR #3240](https://github.com/alphagov/govuk_publishing_components/pull/3240))
+
 ## 34.9.1
 
 * Update Component Guide skip_account to mention GOV.UK One Login ([PR #3247](https://github.com/alphagov/govuk_publishing_components/pull/3247))
