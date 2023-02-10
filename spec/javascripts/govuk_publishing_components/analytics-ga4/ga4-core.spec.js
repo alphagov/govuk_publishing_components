@@ -149,24 +149,51 @@ describe('GA4 core', function () {
       })
     })
 
-    it('correctly identifies a relative URL', function () {
-      var href = '/relativeURL'
-      expect(GOVUK.analyticsGa4.core.trackFunctions.hrefIsRelative(href)).toEqual(true)
+    it('correctly identifies relative URLs', function () {
+      var relativeURLs = [
+        'g',
+        './g',
+        'g/',
+        '/g',
+        '?y',
+        'g?y',
+        'g?y/./x',
+        '#s',
+        'g#s',
+        'g#s/./x',
+        'g?y#s',
+        ';x',
+        'g;x',
+        'g;x?y#s',
+        '.',
+        './',
+        '..',
+        '../',
+        '../g',
+        '../..',
+        '../../',
+        '../../g',
+        '']
+
+      for (var i = 0; i < relativeURLs.length; i++) {
+        var href = relativeURLs[i]
+        expect(GOVUK.analyticsGa4.core.trackFunctions.hrefIsRelative(href)).toEqual(true)
+      }
+
+      // When no href is passed
+      expect(GOVUK.analyticsGa4.core.trackFunctions.hrefIsRelative()).toEqual(true)
     })
 
-    it('correctly identifies a non-relative URL', function () {
-      var href = '//notarelativeURL'
-      expect(GOVUK.analyticsGa4.core.trackFunctions.hrefIsRelative(href)).toEqual(false)
-    })
-
-    it('correctly identifies an anchor link', function () {
-      var href = '#link'
-      expect(GOVUK.analyticsGa4.core.trackFunctions.hrefIsAnchor(href)).toEqual(true)
-    })
-
-    it('correctly identifies a non anchor link', function () {
-      var href = '/link'
-      expect(GOVUK.analyticsGa4.core.trackFunctions.hrefIsAnchor(href)).toEqual(false)
+    it('correctly identifies non-relative URLs', function () {
+      var nonRelativeURLs = ['//notarelativeURL',
+        'https://www.gov.uk',
+        'http://gov.uk',
+        'https://www.gov.uk/#anchor',
+        'http://www.gov.uk/path']
+      for (var i = 0; i < nonRelativeURLs.length; i++) {
+        var href = nonRelativeURLs[i]
+        expect(GOVUK.analyticsGa4.core.trackFunctions.hrefIsRelative(href)).toEqual(false)
+      }
     })
 
     it('correctly identifies a mailto link', function () {
