@@ -1,14 +1,23 @@
-<% shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns) %>
-<%
+<% 
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
   title = t("components.related_navigation.ukraine.title")
   lang = shared_helper.t_locale("components.related_navigation.ukraine.title")
+  data_module = "gem-track-click"
+  data_module << " ga4-link-tracker" if ga4_tracking
 %>
-
-<%= tag.div class: "gem-c-contextual-sidebar__cta gem-c-contextual-sidebar__cta--ukraine", data: { module: "gem-track-click" } do %>
+<%= tag.div class: "gem-c-contextual-sidebar__cta gem-c-contextual-sidebar__cta--ukraine", data: { module: data_module } do %>
   <%= tag.h2 title, class: "gem-c-contextual-sidebar__heading govuk-heading-s" %>
   <%= tag.ul class: "gem-c-contextual-sidebar__list" do %>
-    <% t("components.related_navigation.ukraine.links").each do |link| %>
+    <% t("components.related_navigation.ukraine.links").each_with_index do |link, index| %>
       <%= tag.li class: "gem-c-contextual-sidebar__text govuk-body" do %>
+        <%
+          ga4_attributes = {
+            event_name: "navigation",
+            type: "related content",
+            index: "1.#{index + 1}",
+            section: title,
+          } if ga4_tracking
+        %>
         <%= link_to link[:label],
           link[:href],
           class: "govuk-link",
@@ -18,9 +27,10 @@
             "track-label": link[:href],
             "track-dimension": link[:label],
             "track-dimension-index": "29",
+            ga4_link: ga4_attributes,
           },
           lang: lang %>
       <% end %>
     <% end %>
-  <% end %>    
+  <% end %>
 <% end %>
