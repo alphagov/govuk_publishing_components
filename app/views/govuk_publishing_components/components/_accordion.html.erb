@@ -3,55 +3,32 @@
 
   local_assigns[:margin_bottom] ||= 6
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+  accordion_helper = GovukPublishingComponents::Presenters::AccordionHelper.new()
 
   id ||= "default-id-#{SecureRandom.hex(4)}"
   items ||= []
   anchor_navigation ||= false
   track_show_all_clicks ||= false
   track_sections ||= false
-
-  accordion_classes = %w(gem-c-accordion govuk-accordion)
-  accordion_classes << (shared_helper.get_margin_bottom)
-
-  translations = {
-    show_text: "common.show",
-    hide_text: "common.hide",
-    show_all_text: "components.accordion.show_all",
-    hide_all_text: "components.accordion.hide_all",
-    this_section_visually_hidden: "components.accordion.this_section_visually_hidden",
-  }
-
-  locales = {}
-
-  data_attributes ||= {}
-  ((data_attributes[:module] ||= "") << " " << "govuk-accordion gem-accordion").strip!
   ga4_tracking ||= false
-  data_attributes[:module] << " ga4-event-tracker" if ga4_tracking
-  data_attributes[:ga4_expandable] = '' if ga4_tracking
-  data_attributes[:anchor_navigation] = anchor_navigation
-  data_attributes[:track_show_all_clicks] = track_show_all_clicks
-  data_attributes[:track_sections] = track_sections
   data_attributes_show_all ||= nil
-  data_attributes[:show_all_attributes] = data_attributes_show_all if data_attributes_show_all
 
-  translations.each do |key, translation|
-    locales[key] = shared_helper.t_locale(translation)
-    data_attributes[key] = t(translation)
-  end
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.set_id(id)
+  component_helper.add_class("gem-c-accordion govuk-accordion")
+  component_helper.add_class(shared_helper.get_margin_bottom)
 
-  unique_locales = locales.values.uniq
-
-  if unique_locales.length > 1
-    data_attributes[:locale] = locales
-  else
-    if unique_locales[0] != I18n.locale
-      data_attributes[:locale] = unique_locales[0]
-    end
-  end
-
+  component_helper.add_data_attribute({ module: "govuk-accordion gem-accordion" })
+  component_helper.add_data_attribute({ module: "ga4-event-tracker" }) if ga4_tracking
+  component_helper.add_data_attribute({ ga4_expandable: "" }) if ga4_tracking
+  component_helper.add_data_attribute({ anchor_navigation: anchor_navigation }) if anchor_navigation
+  component_helper.add_data_attribute({ track_show_all_clicks: track_show_all_clicks }) if track_show_all_clicks
+  component_helper.add_data_attribute({ track_sections: track_sections }) if track_sections
+  component_helper.add_data_attribute({ show_all_attributes: data_attributes_show_all }) if data_attributes_show_all
+  component_helper.add_data_attribute(accordion_helper.apply_translations)
 %>
 <% if items.any? %>
-  <%= tag.div(class: accordion_classes, id: id, data: data_attributes) do %>
+  <%= tag.div(**component_helper.all_attributes) do %>
     <% items.each_with_index do |item, i| %>
       <%
         # The GOVUK Frontend JavaScript for this component

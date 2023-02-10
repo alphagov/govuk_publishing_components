@@ -34,6 +34,7 @@ accessibility_criteria: |
 
   * be fully expanded
   * not be marked as expandable
+uses_component_wrapper_helper: true  
 shared_accessibility_criteria:
   - link
 examples:
