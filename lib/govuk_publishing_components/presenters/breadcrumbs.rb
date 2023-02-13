@@ -58,6 +58,12 @@ module GovukPublishingComponents
             dimension28: breadcrumbs_length.to_s,
             dimension29: crumb[:title],
           },
+          ga4_link: {
+            event_name: "navigation",
+            type: "breadcrumbs",
+            index: index.to_s,
+            index_total: breadcrumbs_length.to_s,
+          },
         }
 
         is_homepage = crumb[:url] == "/"

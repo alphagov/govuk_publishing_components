@@ -52,7 +52,7 @@ describe "Breadcrumbs", type: :view do
     expect(structured_data["itemListElement"].first["item"]["name"]).to eq("Section 1")
   end
 
-  it "renders all data attributes for tracking" do
+  it "renders all data attributes for universal analytics tracking" do
     render_component(breadcrumbs: [{ title: "Section", url: "/section" }])
 
     expected_tracking_options = {
@@ -60,11 +60,25 @@ describe "Breadcrumbs", type: :view do
       dimension29: "Section",
     }
 
-    assert_select '.gem-c-breadcrumbs[data-module="gem-track-click"]', 1
+    assert_select '.gem-c-breadcrumbs[data-module="gem-track-click ga4-link-tracker"]', 1
     assert_select '.govuk-breadcrumbs__list-item:first-child a[data-track-action="1"]', 1
     assert_select '.govuk-breadcrumbs__list-item:first-child a[data-track-label="/section"]', 1
     assert_select '.govuk-breadcrumbs__list-item:first-child a[data-track-category="breadcrumbClicked"]', 1
     assert_select ".govuk-breadcrumbs__list-item:first-child a[data-track-options='#{expected_tracking_options.to_json}']", 1
+  end
+
+  it "renders all data attributes for google analytics 4 tracking" do
+    render_component(breadcrumbs: [{ title: "Section", url: "/section" }])
+
+    expected_tracking_options = {
+      event_name: "navigation",
+      type: "breadcrumbs",
+      index: "1",
+      index_total: "1",
+    }
+
+    assert_select '.gem-c-breadcrumbs[data-module="gem-track-click ga4-link-tracker"]', 1
+    assert_select ".govuk-breadcrumbs__list-item:first-child a[data-ga4-link='#{expected_tracking_options.to_json}']", 1
   end
 
   it "a link to the homepage has separate tracking data" do
@@ -75,7 +89,7 @@ describe "Breadcrumbs", type: :view do
       dimension29: "Section",
     }
 
-    assert_select '.gem-c-breadcrumbs[data-module="gem-track-click"]', 1
+    assert_select '.gem-c-breadcrumbs[data-module="gem-track-click ga4-link-tracker"]', 1
 
     assert_select '.govuk-breadcrumbs__list-item:nth-child(1) a[data-track-action="1"]', 1
     assert_select '.govuk-breadcrumbs__list-item:nth-child(1) a[data-track-label="/section"]', 1
