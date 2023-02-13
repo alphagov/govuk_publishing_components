@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+* Increase clickable area for links in navbar ([PR #3238](https://github.com/alphagov/govuk_publishing_components/pull/3238))
+
+
 ## 34.10.1
 * Remove the brand colour for Department for Energy Security and Net Zero ([PR #3255](https://github.com/alphagov/govuk_publishing_components/pull/3255))
 

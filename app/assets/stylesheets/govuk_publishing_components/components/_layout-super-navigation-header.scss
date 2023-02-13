@@ -692,31 +692,24 @@ $after-button-padding-left: govuk-spacing(4);
 // Dropdown menu items.
 .gem-c-layout-super-navigation-header__dropdown-list-item {
   box-sizing: border-box;
-  padding: 0 0 govuk-spacing(5) 0;
+  padding: 0 0 govuk-spacing(3) 0;
   position: relative;
+  margin: 0 0 govuk-spacing(2) 0;
   @include govuk-media-query($from: "desktop") {
-    padding: 0 0 govuk-spacing(4) 0;
+    padding: 0 0 govuk-spacing(3) 0;
+    margin: 0 govuk-spacing(3) govuk-spacing(1) govuk-spacing(3);
   }
 }
 
 // Navigation menu items.
 .gem-c-layout-super-navigation-header__navigation-second-items {
-
   list-style: none;
   margin: 0;
   padding: govuk-spacing(3) govuk-spacing(5) govuk-spacing(5) 0;
 
-  & > li {
-    margin: 0;
-  }
-
   @include govuk-media-query($from: "desktop") {
     margin: 0 (0 - govuk-spacing(3)) govuk-spacing(9);
     padding: govuk-spacing(2) 0 0 0;
-
-    & > li {
-      margin: 0 govuk-spacing(3);
-    }
   }
 }
 
@@ -743,11 +736,15 @@ $after-button-padding-left: govuk-spacing(4);
   font-size: govuk-px-to-rem(16px);
   font-weight: bold;
 
+  &:after {
+    @include make-selectable-area-bigger;
+  }
+
   @include govuk-media-query($from: "desktop") {
     padding: 0;
 
     &:after {
-      content: none;
+      @include make-selectable-area-bigger;
     }
   }
 }
@@ -810,12 +807,6 @@ $after-button-padding-left: govuk-spacing(4);
 
   &:after {
     @include make-selectable-area-bigger;
-  }
-
-  @include govuk-media-query($from: "desktop") {
-    &:after {
-      content: none;
-    }
   }
 }
 
