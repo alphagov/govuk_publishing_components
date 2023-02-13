@@ -40,6 +40,12 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
     },
 
     trackFunctions: {
+
+      getDomainRegex: function () {
+        // This regex matches a protocol and domain name at the start of a string such as https://www.gov.uk, http://gov.uk, //gov.uk
+        return /^(http:||https:)?(\/\/)([^\/]*)/ // eslint-disable-line no-useless-escape
+      },
+
       findTrackingAttributes: function (clicked, trackingTrigger) {
         if (clicked.hasAttribute('[' + trackingTrigger + ']')) {
           return clicked
@@ -82,12 +88,10 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
       },
 
       hrefIsRelative: function (href) {
-        // Checks that a link is relative, but is not a protocol relative url
-        return href[0] === '/' && href[1] !== '/'
-      },
+        // Checks that a href is relative by the lack of http:, https:// or // at the start of the href.
+        var domain = this.getDomainRegex().exec(href)
 
-      hrefIsAnchor: function (href) {
-        return href[0] === '#'
+        return !domain
       },
 
       isMailToLink: function (href) {
@@ -115,7 +119,7 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
 
       isInternalLink: function (href) {
         var internalDomains = window.GOVUK.analyticsGa4.vars.internalDomains
-        if (this.hrefIsRelative(href) || this.hrefIsAnchor(href)) {
+        if (this.hrefIsRelative(href)) {
           return true
         }
         var result = false
@@ -187,12 +191,10 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
           return undefined
         }
 
-        if (this.hrefIsRelative(href) || this.hrefIsAnchor(href)) {
+        if (this.hrefIsRelative(href)) {
           return this.getProtocol() + '//' + this.getHostname()
         } else {
-          // This regex matches a protocol and domain name at the start of a string such as https://www.gov.uk, http://gov.uk, //gov.uk
-          var domainRegex = /^(http:||https:)?(\/\/)([^\/]*)/ // eslint-disable-line no-useless-escape
-          var domain = domainRegex.exec(href)
+          var domain = this.getDomainRegex().exec(href)
           if (domain) {
             return domain[0]
           }
