@@ -219,6 +219,98 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
           }
         }
       }
+    },
+
+    ecommerceHelperFunctions: {
+      clearEcommerceObject: function () {
+        window.GOVUK.analyticsGa4.core.sendData({ search_results: { ecommerce: null } })
+      },
+
+      getIndex: function (element, startPosition) {
+        var index = element.getAttribute('data-ecommerce-index')
+
+        if (!index) {
+          return null
+        }
+
+        return parseInt(index) + startPosition - 1
+      },
+
+      getResultCount: function (element, id) {
+        var resultCount = element.querySelector('#' + id).textContent
+
+        if (!resultCount) {
+          return null
+        }
+
+        // In order to extract the number of results from resultCount (which is a string at this point (e.g. '12,345 results')), we remove the comma and
+        // split string at the space character so it can be parsed as an integer
+        resultCount = resultCount.replace(',', '')
+        resultCount = resultCount.split(' ')[0]
+
+        return parseInt(resultCount)
+      },
+
+      populateEcommerceSchema: function (data) {
+        var element = data.element
+        var resultsId = data.resultsId
+        var isClickEvent = data.event !== undefined
+        var isSearchResult = element.getAttribute('data-search-query')
+
+        var ecommerceSchema = new window.GOVUK.analyticsGa4.Schemas().ecommerceSchema()
+        var PIIRemover = new window.GOVUK.analyticsGa4.PIIRemover()
+        var DEFAULT_LIST_TITLE = 'Smart answer results'
+
+        if (isSearchResult) {
+          // Limiting to 100 characters to avoid noise from extra long search queries and to stop the size of the payload going over 8k limit.
+          var searchQuery = PIIRemover.stripPII(element.getAttribute('data-search-query')).substring(0, 100).toLowerCase()
+          var variant = element.getAttribute('data-ecommerce-variant')
+          DEFAULT_LIST_TITLE = 'Site search results'
+        }
+
+        var items = element.querySelectorAll('[data-ga4-ecommerce-path]')
+        var listTitle = element.getAttribute('data-list-title') || DEFAULT_LIST_TITLE
+        var startPosition = parseInt(element.getAttribute('data-ecommerce-start-index'), 10)
+
+        ecommerceSchema.event = 'search_results'
+        ecommerceSchema.search_results.event_name = isClickEvent ? 'select_item' : 'view_item_list'
+        ecommerceSchema.search_results.results = window.GOVUK.analyticsGa4.core.ecommerceHelperFunctions.getResultCount(element, resultsId)
+        ecommerceSchema.search_results.term = searchQuery || undefined
+        ecommerceSchema.search_results.sort = variant || undefined
+
+        if (isClickEvent) {
+          var target = data.event.target
+          ecommerceSchema.search_results.ecommerce.items.push({
+            item_id: target.getAttribute('data-ga4-ecommerce-path'),
+            item_name: target.textContent,
+            item_list_name: listTitle,
+            index: window.GOVUK.analyticsGa4.core.ecommerceHelperFunctions.getIndex(target, startPosition)
+          })
+
+          ecommerceSchema.event_data = {
+            external: window.GOVUK.analyticsGa4.core.trackFunctions.isExternalLink(target.getAttribute('data-ga4-ecommerce-path')) ? 'true' : 'false'
+          }
+        } else {
+          for (var i = 0; i < items.length; i++) {
+            var item = items[i]
+            var path = item.getAttribute('data-ga4-ecommerce-path')
+
+            // If the element does not have a data-ecommerce-index attribute, we set one so that we can use it later when setting the index property
+            // on the ecommerce object.
+            if (!item.getAttribute('data-ecommerce-index')) {
+              item.setAttribute('data-ecommerce-index', i + 1)
+            }
+
+            ecommerceSchema.search_results.ecommerce.items.push({
+              item_id: path,
+              item_list_name: listTitle,
+              index: window.GOVUK.analyticsGa4.core.ecommerceHelperFunctions.getIndex(item, startPosition)
+            })
+          }
+        }
+
+        return ecommerceSchema
+      }
     }
   }
 

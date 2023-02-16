@@ -29,6 +29,22 @@
     }
   }
 
+  Schemas.prototype.ecommerceSchema = function () {
+    return {
+      event: this.undefined,
+      search_results: {
+        event_name: this.undefined,
+        term: this.undefined,
+        sort: this.undefined,
+        results: this.undefined,
+        ecommerce: {
+          items: []
+        }
+      },
+      event_data: this.undefined
+    }
+  }
+
   // get attributes from the data attribute to send to GA
   // only allow it if it already exists in the schema
   Schemas.prototype.mergeProperties = function (data, eventAttribute) {

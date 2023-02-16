@@ -276,4 +276,186 @@ describe('GA4 core', function () {
       expect(domains).toContain('gov.uk')
     })
   })
+
+  describe('ecommerce tracking helper functions', function () {
+    describe('when the clearEcommerceObject function is called', function () {
+      it('sends a nullified ecommerce object to the dataLayer', function () {
+        GOVUK.analyticsGa4.core.ecommerceHelperFunctions.clearEcommerceObject()
+
+        expect(window.dataLayer[0].search_results.ecommerce).toEqual(null)
+      })
+    })
+
+    describe('when the number of results is present in the DOM', function () {
+      var resultCountContainer
+
+      resultCountContainer = document.createElement('span')
+      resultCountContainer.innerHTML = '<span id="results-count">54321 results</span>'
+
+      beforeEach(function () {
+        document.body.appendChild(resultCountContainer)
+      })
+
+      afterEach(function () {
+        document.body.removeChild(resultCountContainer)
+      })
+
+      it('retrieves them and returns a number', function () {
+        expect(GOVUK.analyticsGa4.core.ecommerceHelperFunctions.getResultCount(resultCountContainer, 'results-count')).toEqual(54321)
+        expect(typeof GOVUK.analyticsGa4.core.ecommerceHelperFunctions.getResultCount(resultCountContainer, 'results-count')).toEqual('number')
+      })
+    })
+
+    describe('the correct index of the result is returned', function () {
+      var result1 = document.createElement('div')
+      result1.setAttribute('data-ecommerce-index', '1')
+
+      var result2 = document.createElement('div')
+      result2.setAttribute('data-ecommerce-index', '5')
+
+      var result3 = document.createElement('div')
+      result3.setAttribute('data-ecommerce-index', '123')
+
+      beforeEach(function () {
+        document.body.appendChild(result1)
+        document.body.appendChild(result2)
+        document.body.appendChild(result3)
+      })
+
+      afterEach(function () {
+        document.body.removeChild(result1)
+        document.body.appendChild(result2)
+        document.body.appendChild(result3)
+      })
+
+      it('when the index is 1 and the start position is 1', function () {
+        expect(GOVUK.analyticsGa4.core.ecommerceHelperFunctions.getIndex(result1, 1)).toEqual(1)
+      })
+
+      it('when the index is 1 and the start position is 21', function () {
+        expect(GOVUK.analyticsGa4.core.ecommerceHelperFunctions.getIndex(result1, 21)).toEqual(21)
+      })
+
+      it('when the index is 1 and the start position is 1935', function () {
+        expect(GOVUK.analyticsGa4.core.ecommerceHelperFunctions.getIndex(result1, 3975)).toEqual(3975)
+      })
+
+      it('when the index is 5 and the start position is 1', function () {
+        expect(GOVUK.analyticsGa4.core.ecommerceHelperFunctions.getIndex(result2, 1)).toEqual(5)
+      })
+
+      it('when the index is 5 and the start position is 21', function () {
+        expect(GOVUK.analyticsGa4.core.ecommerceHelperFunctions.getIndex(result2, 21)).toEqual(25)
+      })
+
+      it('when the index is 5 and the start position is 3975', function () {
+        expect(GOVUK.analyticsGa4.core.ecommerceHelperFunctions.getIndex(result2, 3975)).toEqual(3979)
+      })
+
+      it('when the index is 123 and the start position is 1', function () {
+        expect(GOVUK.analyticsGa4.core.ecommerceHelperFunctions.getIndex(result3, 1)).toEqual(123)
+      })
+
+      it('when the index is 123 and the start position is 21', function () {
+        expect(GOVUK.analyticsGa4.core.ecommerceHelperFunctions.getIndex(result3, 21)).toEqual(143)
+      })
+
+      it('when the index is 123 and the start position is 3975', function () {
+        expect(GOVUK.analyticsGa4.core.ecommerceHelperFunctions.getIndex(result3, 3975)).toEqual(4097)
+      })
+    })
+
+    describe('when the populateEcommerceSchema function is called', function () {
+      var resultsParentEl
+      var resultsCount
+      var results
+      var expectedEcommerceObject
+
+      function agreeToCookies () {
+        GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
+      }
+
+      beforeEach(function () {
+        resultsCount = document.createElement('span')
+        resultsCount.id = 'result-count'
+        resultsCount.innerHTML = '5 results'
+
+        resultsParentEl = document.createElement('div')
+        resultsParentEl.setAttribute('data-module', 'ga4-smart-answer-results-tracker')
+        resultsParentEl.setAttribute('data-list-title', 'Smart answer results')
+        resultsParentEl.setAttribute('data-ecommerce-start-index', '1')
+
+        results = document.createElement('div')
+        results.innerHTML = '<a data-ga4-ecommerce-path="https://www.gov.uk/the-warm-home-discount-scheme" href="https://www.gov.uk/the-warm-home-discount-scheme" data-ecommerce-index="1">Check if you’re eligible for the Warm Home Discount scheme</a>' +
+
+        '<a data-ga4-ecommerce-path="/apply-council-tax-reduction" href="/apply-council-tax-reduction" data-ecommerce-index="2">Check if you’re eligible for Council Tax Reduction</a>' +
+
+        '<a data-ga4-ecommerce-path="/budgeting-help-benefits" href="/budgeting-help-benefits" data-ecommerce-index="3" onclick="event.preventDefault()">Check if you’re eligible for a Budgeting Loan</a>' +
+
+        '<a data-ga4-ecommerce-path="https://www.nhs.uk/nhs-services/help-with-health-costs" href="https://www.nhs.uk/nhs-services/help-with-health-costs" data-ecommerce-index="4">Check if you’re eligible for help with health costs on the NHS website</a>' +
+
+        '<a data-ga4-ecommerce-path="https://www.gov.uk/support-for-mortgage-interest" href="https://www.gov.uk/support-for-mortgage-interest" data-ecommerce-index="5">Check if you’re eligible for Support for Mortgage Interest</a>'
+
+        expectedEcommerceObject = {
+          event: 'search_results',
+          event_data: undefined,
+          search_results: {
+            event_name: 'view_item_list',
+            term: undefined,
+            sort: undefined,
+            results: 5,
+            ecommerce: {
+              items: [
+                {
+                  item_id: 'https://www.gov.uk/the-warm-home-discount-scheme',
+                  item_list_name: 'Smart answer results',
+                  index: 1
+                },
+                {
+                  item_id: '/apply-council-tax-reduction',
+                  item_list_name: 'Smart answer results',
+                  index: 2
+                },
+                {
+                  item_id: '/budgeting-help-benefits',
+                  item_list_name: 'Smart answer results',
+                  index: 3
+                },
+                {
+                  item_id: 'https://www.nhs.uk/nhs-services/help-with-health-costs',
+                  item_list_name: 'Smart answer results',
+                  index: 4
+                },
+                {
+                  item_id: 'https://www.gov.uk/support-for-mortgage-interest',
+                  item_list_name: 'Smart answer results',
+                  index: 5
+                }
+              ]
+            }
+          }
+        }
+
+        window.dataLayer = []
+        resultsParentEl.appendChild(results)
+        resultsParentEl.appendChild(resultsCount)
+        document.body.appendChild(resultsParentEl)
+        agreeToCookies()
+      })
+
+      afterEach(function () {
+        window.dataLayer = []
+        document.body.removeChild(resultsParentEl)
+      })
+
+      it('the ecommerce object is built correctly', function () {
+        var builtEcommerceObject = GOVUK.analyticsGa4.core.ecommerceHelperFunctions.populateEcommerceSchema({
+          element: resultsParentEl,
+          resultsId: 'result-count'
+        })
+
+        expect(builtEcommerceObject).toEqual(expectedEcommerceObject)
+      })
+    })
+  })
 })
