@@ -53,20 +53,25 @@ module GovukPublishingComponents
         end
       end
 
-      def construct_section_heading(section_title)
-        unless section_title == "related_items"
+      def construct_section_text(section, underscores_to_spaces)
+        unless section == "related_items"
+          defaults = [I18n.t("components.related_navigation.#{section}")]
+          defaults << section.tr("_", " ") if underscores_to_spaces
+
           I18n.t(
-            "components.related_#{@context}_navigation." + section_title,
-            default: [
-              I18n.t("components.related_navigation.#{section_title}"),
-              section_title.tr("_", " "),
-            ],
+            "components.related_#{@context}_navigation.#{section}",
+            default: defaults,
           )
         end
       end
 
-      def component_title
-        I18n.t("components.related_#{@context}_navigation.related_content", default: I18n.t("components.related_navigation.related_content"))
+      def construct_ga4_section_text(section)
+        # Force English so we can still understand what is being tracked if translated.
+        underscores_to_spaces = true
+        underscores_to_spaces = false if section == "related_content"
+        I18n.with_locale("en") do
+          construct_section_text(section, underscores_to_spaces)
+        end
       end
 
       def section_css_class(css_class, section_title, link: {}, link_is_inline: false)

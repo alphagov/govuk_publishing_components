@@ -4,14 +4,18 @@
      data-module="gem-toggle">
 
   <% if section_title === "related_items" %>
-   <% heading_text = related_nav_helper.component_title %>
+   <%
+      heading_text = related_nav_helper.construct_section_text("related_content", true)
+      ga4_heading_text = related_nav_helper.construct_ga4_section_text("related_content")
+   %>
   <% else %>
     <%=
       heading_class = related_nav_helper.section_css_class("gem-c-related-navigation__sub-heading", section_title)
       heading_data = { 'track-count' => related_nav_helper.section_data_track_count(:related_item_section) }
       heading_id = "related-nav-#{section_title}-#{random}"
       heading_level = related_nav_helper.section_heading_level
-      heading_text = related_nav_helper.construct_section_heading(section_title)
+      heading_text = related_nav_helper.construct_section_text(section_title, true)
+      ga4_heading_text = related_nav_helper.construct_ga4_section_text(section_title)
 
       content_tag(heading_level, id: heading_id, class: heading_class, data: heading_data) do
         heading_text
@@ -31,7 +35,7 @@
           event_name: "navigation",
           type: "related content",
           index: "#{section_index}.#{index}",
-          section: heading_text,
+          section: ga4_heading_text,
         } if ga4_tracking
         link_element = link_to(
           link[:text],
@@ -41,7 +45,7 @@
           lang: shared_helper.t_locale_check(link[:locale]),
           data: {
             track_category: 'relatedLinkClicked',
-            track_action: "#{section_index}.#{index} #{related_nav_helper.construct_section_heading(section_title) || t('components.related_navigation.related_content')}",
+            track_action: "#{section_index}.#{index} #{related_nav_helper.construct_section_text(section_title, true) || t('components.related_navigation.related_content')}",
             track_label: link[:path],
             track_options: {
               dimension28: links.length.to_s,
