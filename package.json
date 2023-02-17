@@ -8,7 +8,8 @@
     "lint": "yarn run lint:js && yarn run lint:scss",
     "jasmine:prepare": "bundle exec rake app:assets:clobber app:assets:precompile",
     "jasmine:ci": "yarn run jasmine:prepare && yarn run jasmine-browser-runner runSpecs",
-    "jasmine:browser": "yarn run jasmine:prepare && yarn run jasmine-browser-runner"
+    "jasmine:browser": "yarn run jasmine:prepare && yarn run jasmine-browser-runner",
+    "build": "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets"
   },
   "standardx": {
     "ignore": [
@@ -28,6 +29,7 @@
   },
   "dependencies": {
     "axe-core": "^4.6.3",
+    "esbuild": "^0.17.8",
     "govuk-frontend": "^4.5.0",
     "sortablejs": "^1.15.0"
   },
