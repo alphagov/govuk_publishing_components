@@ -1,2 +1,2 @@
-web: MAIN_COMPONENT_GUIDE=true bundle exec rackup spec/dummy/config.ru -p $PORT
+web: bundle exec rackup spec/dummy/config.ru --host 0.0.0.0 -p 3212
 js: yarn build --watch
