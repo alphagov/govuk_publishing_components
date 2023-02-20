@@ -67,21 +67,26 @@ describe "Super navigation header", type: :view do
   it "renders the menu list with links in it" do
     render_component({})
 
-    assert_select ".gem-c-layout-super-navigation-header__navigation-items", count: 1
+    assert_select ".gem-c-layout-super-navigation-header__navigation-dropdown-menu .gem-c-layout-super-navigation-header__navigation-items", count: 1
   end
 
   it "renders the search menu with links in it" do
     render_component({})
 
-    assert_select ".gem-c-layout-super-navigation-header__search-items", count: 1
-    assert_select ".gem-c-layout-super-navigation-header__search-items .gem-c-layout-super-navigation-header__search-item", count: 1
-    assert_select ".gem-c-layout-super-navigation-header__search-items .gem-c-layout-super-navigation-header__search-item .gem-c-layout-super-navigation-header__search-item-link", count: 1
+    assert_select "#super-search-menu", count: 1
+    assert_select "#super-search-menu .gem-c-layout-super-navigation-header__search-items", count: 1
   end
 
   it "has only one search link in the menu" do
     render_component({})
 
-    assert_select ".gem-c-layout-super-navigation-header__search-item", count: 1
+    assert_select ".gem-c-layout-super-navigation-header__search-item .gem-c-layout-super-navigation-header__search-item-link", count: 1
+  end
+
+  it "has only one menu link in the menu" do
+    render_component({})
+
+    assert_select ".gem-c-layout-super-navigation-header__navigation-item .gem-c-layout-super-navigation-header__navigation-item-link", count: 1
   end
 
   it "has the correct default crown logo link" do

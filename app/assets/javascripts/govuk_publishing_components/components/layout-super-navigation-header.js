@@ -5,9 +5,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
 (function (Modules) {
   var SETTINGS = {
-    breakpoint: {
-      desktop: 769
-    },
     label: {
       hide: 'data-text-for-hide',
       show: 'data-text-for-show'
@@ -110,18 +107,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.hiddenButtons = this.$module.querySelectorAll('button[hidden]')
   }
 
-  SuperNavigationMegaMenu.prototype.updateStates = function () {
-    // Check whether any of the dropdown menus are open.
-    var $openButton = this.$module.querySelector('[aria-expanded="true"][data-toggle-desktop-group="top"]')
-    // Gets the open dropdown menu
-    var $openMenu = $openButton ? this.$module.querySelector('#' + $openButton.getAttribute('aria-controls')) : null
-    // If there is an open dropdown menu, get the height of the dropdown menu.
-    var margin = $openMenu ? $openMenu.offsetHeight : 0
-
-    // Make space for the dropdown menu.
-    this.$module.style.marginBottom = margin + 'px'
-  }
-
   SuperNavigationMegaMenu.prototype.buttonHandler = function (event) {
     var $target = closestParentIncluding(event.target, 'button')
     var $targetMenu = this.$module.querySelector('#' + $target.getAttribute('aria-controls'))
@@ -139,8 +124,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
 
     toggle($target, $targetMenu)
-
-    this.$module.style.marginBottom = $targetMenu.offsetHeight + 'px'
   }
 
   SuperNavigationMegaMenu.prototype.init = function () {
@@ -180,11 +163,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     //   - On desktop, this means hiding the navigation button, showing the
     //     second level navigation menu
     hide(this.$searchToggle, this.$searchMenu)
-    this.updateStates()
-
-    // The menu needs to be updated when the window is resized to make sure that
-    // the space needed for the dropdown menu is correct.
-    window.addEventListener('resize', this.updateStates.bind(this), { passive: true })
 
     this.$module.classList.add('js-module-initialised')
   }
