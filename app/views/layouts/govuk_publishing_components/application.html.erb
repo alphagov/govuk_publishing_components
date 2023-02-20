@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="<%= "govuk-template" unless @preview %>">
   <head>
+    <%= javascript_include_tag "pizza", defer: true %>.
     <meta charset="utf-8">
     <title>
       <% if @preview %>
