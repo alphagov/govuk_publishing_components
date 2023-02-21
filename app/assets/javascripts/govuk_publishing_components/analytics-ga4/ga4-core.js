@@ -237,7 +237,7 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
       },
 
       getResultCount: function (element, id) {
-        var resultCount = element.querySelector('#' + id).textContent
+        var resultCount = element.querySelector('#' + id)
 
         if (!resultCount) {
           return null
@@ -245,7 +245,7 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
 
         // In order to extract the number of results from resultCount (which is a string at this point (e.g. '12,345 results')), we remove the comma and
         // split string at the space character so it can be parsed as an integer
-        resultCount = resultCount.replace(',', '')
+        resultCount = resultCount.textContent.replace(',', '')
         resultCount = resultCount.split(' ')[0]
 
         return parseInt(resultCount)
