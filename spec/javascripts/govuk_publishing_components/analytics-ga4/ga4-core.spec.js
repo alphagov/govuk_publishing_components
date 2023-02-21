@@ -275,6 +275,44 @@ describe('GA4 core', function () {
       expect(domains).toContain('www.gov.uk')
       expect(domains).toContain('gov.uk')
     })
+
+    describe('when the data-ga4-set-indexes property exists on the module', function () {
+      var module
+
+      beforeEach(function () {
+        module = document.createElement('div')
+        module.setAttribute('data-ga4-link', '{"someData": "blah"}')
+        module.innerHTML = '<a id="example1" href="www.example1.com">Example link 1</a>' +
+        '<a id="example2" href="www.example2.com">Example link 2</a>' +
+        '<a id="example3" href="www.example3.com">Example link 3</a>' +
+        '<a id="example4" href="www.example4.com">Example link 4</a>' +
+        '<a id="example5" href="www.example5.com">Example link 5</a>'
+
+        window.dataLayer = []
+        document.body.appendChild(module)
+        GOVUK.analyticsGa4.core.trackFunctions.setIndexes(module)
+      })
+
+      afterEach(function () {
+        window.dataLayer = []
+        document.body.removeChild(module)
+      })
+
+      it('calculates the index total', function () {
+        var data = JSON.parse(module.getAttribute('data-ga4-link'))
+
+        expect(data.index_total).toEqual(5)
+      })
+
+      it('sets the index of each link', function () {
+        var links = module.querySelectorAll('a')
+
+        for (var i = 0; i < links.length; i++) {
+          var linkIndex = parseInt(links[i].getAttribute('data-ga4-index'))
+          expect(linkIndex).toEqual(i + 1)
+        }
+      })
+    })
   })
 
   describe('ecommerce tracking helper functions', function () {

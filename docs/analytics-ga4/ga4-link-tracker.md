@@ -59,7 +59,8 @@ The `data-ga4-track-links-only` attribute ensures that only link clicks are trac
 <div
   data-module="ga4-link-tracker"
   data-ga4-link='{ "event_name": "navigation", "type": "browse", "section": "name of section" }'
-  data-ga4-track-links-only>
+  data-ga4-track-links-only
+  data-ga4-set-indexes>
   <a href="/link1">This link will be tracked</a>
   <a href="/link2">
     <span>This link will also be tracked even though it contains child elements</span>
@@ -68,7 +69,7 @@ The `data-ga4-track-links-only` attribute ensures that only link clicks are trac
 </div>
 ```
 
-Note that in this configuration specific values such as `index` and `index_total` cannot currently be applied to links.
+Note: the addition of the `data-ga4-set-indexes` data attribute on the parent element will allow the `index` and `index_total` properties to be set.
 
 ## Track links within content within a specific element
 

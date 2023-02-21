@@ -15,6 +15,7 @@
 * Add GA4 tracking to our breadcrumbs ([PR #3257](https://github.com/alphagov/govuk_publishing_components/pull/3257))
 * Make Navbar Menu Relatively Positioned Instead of Absolutely Positioned ([PR #3201](https://github.com/alphagov/govuk_publishing_components/pull/3201))
 * Fix smart answer results tracking ([PR #3261](https://github.com/alphagov/govuk_publishing_components/pull/3261))
+* Add indexing of links using JS ([PR #3262](https://github.com/alphagov/govuk_publishing_components/pull/3262))
 
 ## 34.10.1
 * Remove the brand colour for Department for Energy Security and Net Zero ([PR #3255](https://github.com/alphagov/govuk_publishing_components/pull/3255))

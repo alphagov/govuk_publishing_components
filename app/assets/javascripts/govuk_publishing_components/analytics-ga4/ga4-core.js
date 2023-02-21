@@ -218,6 +218,25 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
             domainsArrays.push(domainWithoutWww)
           }
         }
+      },
+
+      // The index and index_total properties are usually set by the application's templating engine however in instances where this isn't possible,
+      // we use JavaScript to calculate the index_total and append it to data-ga4-link and add an index property to each link
+      setIndexes: function (module) {
+        var links = module.querySelectorAll('a')
+        var totalLinks = 0
+        for (var i = 0; i < links.length; i++) {
+          var link = links[i]
+          // Only index links that are not search results
+          if (!link.getAttribute('data-ga4-ecommerce-path')) {
+            totalLinks++
+            link.setAttribute('data-ga4-index', totalLinks)
+          }
+        }
+
+        var ga4LinkData = JSON.parse(module.getAttribute('data-ga4-link'))
+        ga4LinkData.index_total = totalLinks
+        module.setAttribute('data-ga4-link', JSON.stringify(ga4LinkData))
       }
     },
 
