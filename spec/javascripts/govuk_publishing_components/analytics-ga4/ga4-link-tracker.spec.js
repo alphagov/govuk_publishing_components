@@ -295,4 +295,38 @@ describe('GA4 click tracker', function () {
       expect(window.dataLayer[2]).toEqual(undefined)
     })
   })
+
+  describe('when the data-ga4-set-indexes property exists on the module', function () {
+    it('calls the setIndexes function', function () {
+      element = document.createElement('div')
+      element.innerHTML =
+        '<a href="#link1">Link 1</a>' +
+        '<a href="#link2">Link 2</a>' +
+        '<a href="#link3">Link 3</a>'
+
+      element.setAttribute('data-ga4-set-indexes', '')
+
+      var tracker = new GOVUK.Modules.Ga4LinkTracker(element)
+      spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'setIndexes')
+      tracker.init()
+
+      expect(GOVUK.analyticsGa4.core.trackFunctions.setIndexes).toHaveBeenCalled()
+    })
+  })
+
+  describe('when the data-ga4-set-indexes property does not exist on the module', function () {
+    it('does not call the setIndexes function', function () {
+      element = document.createElement('div')
+      element.innerHTML =
+        '<a href="#link1">Link 1</a>' +
+        '<a href="#link2">Link 2</a>' +
+        '<a href="#link3">Link 3</a>'
+
+      var tracker = new GOVUK.Modules.Ga4LinkTracker(element)
+      spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'setIndexes')
+      tracker.init()
+
+      expect(GOVUK.analyticsGa4.core.trackFunctions.setIndexes).not.toHaveBeenCalled()
+    })
+  })
 })

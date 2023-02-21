@@ -32,6 +32,10 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       this.module.addEventListener('click', this.handleClick)
       this.module.addEventListener('contextmenu', this.handleClick)
       this.module.addEventListener('mousedown', this.handleMousedown)
+
+      if (this.module.hasAttribute('data-ga4-set-indexes')) {
+        window.GOVUK.analyticsGa4.core.trackFunctions.setIndexes(this.module)
+      }
     }
   }
 
@@ -56,6 +60,13 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   Ga4LinkTracker.prototype.trackClick = function (event) {
+    var element = event.target
+
+    // don't track this link if it's already being tracked by the ecommerce tracker
+    if (element.closest('[data-ga4-ecommerce-path]')) {
+      return
+    }
+
     var target = window.GOVUK.analyticsGa4.core.trackFunctions.findTrackingAttributes(event.target, this.trackingTrigger)
     if (target) {
       try {
@@ -75,6 +86,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       data.link_path_parts = window.GOVUK.analyticsGa4.core.trackFunctions.populateLinkPathParts(data.url)
       data.method = window.GOVUK.analyticsGa4.core.trackFunctions.getClickType(event)
       data.external = window.GOVUK.analyticsGa4.core.trackFunctions.isExternalLink(data.url) ? 'true' : 'false'
+      data.index = event.target.getAttribute('data-ga4-index') ? parseInt(event.target.getAttribute('data-ga4-index')) : data.index || undefined
 
       var schemas = new window.GOVUK.analyticsGa4.Schemas()
       var schema = schemas.mergeProperties(data, 'event_data')
