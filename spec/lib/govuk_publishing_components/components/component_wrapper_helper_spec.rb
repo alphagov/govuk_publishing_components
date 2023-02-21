@@ -3,7 +3,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
     it "accepts basic component attributes" do
       args = {
         id: "id",
-        data: {
+        data_attributes: {
           module: "module",
         },
         aria: {
@@ -94,7 +94,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
     end
 
     it "can add data attributes to already passed data attributes" do
-      helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(data: { module: "original-module", other: "other" })
+      helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(data_attributes: { module: "original-module", other: "other" })
       helper.add_data_attribute({ module: "extra-module", another: "another" })
       expect(helper.all_attributes[:data]).to eql({ module: "original-module extra-module", other: "other", another: "another" })
     end

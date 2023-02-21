@@ -25,7 +25,7 @@ uses_component_wrapper_helper: true
 The component wrapper helper accepts the following options.
 
 - `id` - accepts a string for the element ID attribute
-- `data` - accepts a hash of data attributes
+- `data_attributes` - accepts a hash of data attributes
 - `aria` - accepts a hash of aria attributes
 - `classes` - accepts a space separated string of classes, these should not be used for styling and must be prefixed with `js-`
 
@@ -33,11 +33,11 @@ The helper checks that any passed `id` attribute is valid, specifically that it 
 
 ### Data and aria
 
-The `data` and `aria` options must be Ruby hashes of the form that would normally be passed to the `tag` method. For example:
+The `data_attributes` and `aria` options must be Ruby hashes of the form that would normally be passed to the `tag` method. For example:
 
 ```
 <%= render "govuk_publishing_components/components/example", {
-  data: {
+  data_attributes: {
     module: "example-module",
     other_data_attribute: "other",
   },
@@ -91,7 +91,7 @@ This is an example call to this component.
 ```
 <%= render "govuk_publishing_components/components/example", {
   classes: "js-hook",
-  data: {
+  data_attributes: {
     module: "another-module",
     example: "example"
   }

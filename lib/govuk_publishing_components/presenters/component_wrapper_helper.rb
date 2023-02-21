@@ -12,7 +12,7 @@ module GovukPublishingComponents
       def all_attributes
         {
           id: @options[:id],
-          data: @options[:data],
+          data: @options[:data_attributes],
           aria: @options[:aria],
           class: @options[:classes],
         }
@@ -29,7 +29,7 @@ module GovukPublishingComponents
       end
 
       def add_data_attribute(attributes)
-        extend_object(:data, attributes)
+        extend_object(:data_attributes, attributes)
       end
 
       def add_aria_attribute(attributes)

@@ -5,7 +5,7 @@ module GovukPublishingComponents
 This component uses the component wrapper helper. It accepts the following options and applies them to the parent element of the component. See the [component wrapper helper documentation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/component-wrapper-helper.md) for more detail.
 
 - `id` - accepts a string for the element ID attribute
-- `data` - accepts a hash of data attributes
+- `data_attributes` - accepts a hash of data attributes
 - `aria` - accepts a hash of aria attributes
 - `classes` - accepts a space separated string of classes, these should not be used for styling and must be prefixed with `js-`
       "
