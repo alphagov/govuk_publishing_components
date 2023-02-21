@@ -1,3 +1,7 @@
+<%
+  shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+%>
 <div class="some-test-component">
   <h1 class="something-inside-test-component">Test component heading</h1>
 </div>
