@@ -7,6 +7,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   function Ga4FormTracker (module) {
     this.module = module
     this.trackingTrigger = 'data-ga4-form' // elements with this attribute get tracked
+    this.includeTextInputValues = this.module.hasAttribute('data-ga4-form-include-text')
   }
 
   Ga4FormTracker.prototype.init = function () {
@@ -82,8 +83,13 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
         input.answer = labelText
       } else if (inputNodename === 'SELECT' && elem.options[elem.selectedIndex].value) {
         input.answer = elem.options[elem.selectedIndex].text
-      } else if (inputType === 'text' && elem.value) {
-        input.answer = '[REDACTED]'
+      } else if ((inputType === 'text' || inputType === 'search') && elem.value) {
+        if (this.includeTextInputValues) {
+          var PIIRemover = new window.GOVUK.analyticsGa4.PIIRemover()
+          input.answer = PIIRemover.stripPII(elem.value)
+        } else {
+          input.answer = '[REDACTED]'
+        }
       } else if (inputType === 'radio' && elem.checked) {
         input.answer = labelText
       } else {

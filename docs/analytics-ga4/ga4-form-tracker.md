@@ -19,7 +19,7 @@ The data attributes are used as follows:
 - `action` records the text of the form submission button e.g. `Continue`
 - `tool_name` records the overall name of the smart answer e.g. `How do I eat more healthily?`
 
-The script will automatically collect the answer submitted in the `text` field. For questions where multiple answers are possible, these will be comma separated. Where the answer is a text input, the value given is replaced with `[REDACTED]`, to avoid collecting personally identifiable information.
+The script will automatically collect the answer submitted in the `text` field. For questions where multiple answers are possible, these will be comma separated. Where the answer is a text input, the value given is replaced with `[REDACTED]`, to avoid collecting personally identifiable information. If text should not be redacted, add a `data-ga4-form-include-text` attribute to the form.
 
 In the example above, the following would be pushed to the dataLayer. Note that the schema automatically populates empty values, and that attributes not in the schema are ignored.
 
