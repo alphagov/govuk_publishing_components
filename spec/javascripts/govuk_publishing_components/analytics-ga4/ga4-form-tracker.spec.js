@@ -208,4 +208,40 @@ describe('Google Analytics form tracking', function () {
       expect(window.dataLayer[0]).toEqual(expected)
     })
   })
+
+  describe('when tracking a form with text redaction disabled', function () {
+    beforeEach(function () {
+      var attributes = {
+        event_name: 'form_response',
+        type: 'smart answer',
+        section: 'What is the title of this question?',
+        action: 'Continue',
+        tool_name: 'What is the title of this smart answer?'
+      }
+      element.setAttribute('data-ga4-form', JSON.stringify(attributes))
+      element.setAttribute('data-ga4-form-include-text', '')
+      expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
+      expected.event = 'event_data'
+      expected.event_data.event_name = 'form_response'
+      expected.event_data.type = 'smart answer'
+      expected.event_data.section = 'What is the title of this question?'
+      expected.event_data.action = 'Continue'
+      expected.event_data.tool_name = 'What is the title of this smart answer?'
+      expected.govuk_gem_version = 'aVersion'
+      var tracker = new GOVUK.Modules.Ga4FormTracker(element)
+      tracker.init()
+    })
+
+    it('does not redact data from text inputs', function () {
+      element.innerHTML =
+        '<label for="textid">Label for text</label>' +
+        '<input type="text" id="textid" name="test-text" value="test-text-value"/>' +
+        '<label for="searchid">Label for search</label>' +
+        '<input type="search" id="searchid" name="test-search" value="test-search-value"/>'
+      expected.event_data.text = 'test-text-value,test-search-value'
+
+      window.GOVUK.triggerEvent(element, 'submit')
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+  })
 })
