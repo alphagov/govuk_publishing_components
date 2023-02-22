@@ -7,7 +7,12 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Apply GA4 tracking to site header search box ([PR #3269](https://github.com/alphagov/govuk_publishing_components/pull/3269))
+
 ## 34.11.0
+
 * Increase clickable area for links in navbar ([PR #3238](https://github.com/alphagov/govuk_publishing_components/pull/3238))
 * Cover all types of relative hrefs in hrefIsRelative function ([PR #3251](https://github.com/alphagov/govuk_publishing_components/pull/3251))
 * Force English text on our GA4 related navigation section tracking ([PR #3259](https://github.com/alphagov/govuk_publishing_components/pull/3259))
@@ -18,6 +23,7 @@
 * Add indexing of links using JS ([PR #3262](https://github.com/alphagov/govuk_publishing_components/pull/3262))
 
 ## 34.10.1
+
 * Remove the brand colour for Department for Energy Security and Net Zero ([PR #3255](https://github.com/alphagov/govuk_publishing_components/pull/3255))
 
 ## 34.10.0
