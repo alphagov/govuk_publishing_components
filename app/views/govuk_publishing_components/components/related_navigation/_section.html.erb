@@ -63,17 +63,23 @@
     <% end %>
 
     <% if links.length > section_link_limit %>
-      <li class="gem-c-related-navigation__link toggle-wrap">
-        <a href="#"
-          class="gem-c-related-navigation__toggle"
-          data-controls="toggle_<%= section_title %>"
-          data-expanded="false"
-          data-toggled-text="<%= t("common.toggle_less") %>">
+      <%
+        classes = "gem-c-related-navigation__link toggle-wrap"      
+        data_attributes_li = { module: "ga4-event-tracker" } if ga4_tracking
+        data_attributes_link = {
+          controls: "toggle_#{section_title}",
+          expanded: "false",
+          toggled_text: t("common.toggle_less")
+        }
+        data_attributes_link[:ga4_event] = { "event_name": "select_content", "type": "related content" } if ga4_tracking
+      %>
+      <%= tag.li(class: classes, data: data_attributes_li) do %>
+        <%= link_to("#", class: "gem-c-related-navigation__toggle", data: data_attributes_link) do %>
           <%= t("common.toggle_more",
             show: t('common.show'),
-            number: related_nav_helper.remaining_link_count(links)) %>
-        </a>
-      </li>
+            number: related_nav_helper.remaining_link_count(links)) %>        
+        <% end %>
+      <% end %>
 
       <li class="gem-c-related-navigation__link gem-c-related-navigation__link--truncated-links">
         <span id="toggle_<%= section_title %>" class="gem-c-related-navigation__toggle-more js-hidden">
