@@ -86,7 +86,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       } else if ((inputType === 'text' || inputType === 'search') && elem.value) {
         if (this.includeTextInputValues) {
           var PIIRemover = new window.GOVUK.analyticsGa4.PIIRemover()
-          input.answer = PIIRemover.stripPII(elem.value)
+          input.answer = PIIRemover.stripPIIWithOverride(elem.value, true, true)
         } else {
           input.answer = '[REDACTED]'
         }
