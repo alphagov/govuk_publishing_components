@@ -63,9 +63,54 @@
     items: component_items
   %>
 
+  <% helpers_by_component = capture do %>
+    <dl class="govuk-summary-list">
+      <% @components[:helper_usage].each do |helper| %>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            <a href="https://github.com/alphagov/govuk_publishing_components/blob/main/<%= helper[:link] %>" class="govuk-link"><%= helper[:name] %></a> 
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <details class="govuk-details" data-module="govuk-details">
+              <summary class="govuk-details__summary">
+                <span class="govuk-details__summary-text">
+                  Used by <%= helper[:used_by].length %> components
+                </span>
+              </summary>
+              <div class="govuk-details__text">
+                <ul class="govuk-list govuk-list--bullet">
+                  <% helper[:used_by].each do |component| %>
+                    <% github_link = 'https://github.com/alphagov/govuk_publishing_components/tree/main/app/views/govuk_publishing_components/components/' %>                    
+                    <li>
+                      <a href="<%= github_link %><%= component[:link] %>" class="govuk-link"><%= component[:name] %></a>
+                    </li>
+                  <% end %>            
+                </ul>
+              </div>
+            </details>            
+          </dd>
+        </div>
+      <% end %>
+    </dl>
+  <% end %>
+
+  <%
+    component_items << {
+      heading: {
+        text: "Helpers by component",
+      },
+      summary: {
+        text: "Shows which components use common helpers",
+      },
+      content: {
+        html: helpers_by_component
+      },
+    }
+  %>
+
   <%= render 'items_in_applications',
     heading: 'Helpers by application',
-    summary: 'Shows any applications that use helper classes from the components gem',
+    summary: 'Shows any applications that use helpers from the components gem',
     content: @components[:helpers_used_by_applications],
     items: component_items
   %>

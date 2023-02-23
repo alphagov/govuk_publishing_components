@@ -37,7 +37,7 @@ describe "Auditing the components in the gem" do
           name: "test component",
           link: "/component-guide/test_component",
           template_exists: true,
-          template_lines: 3,
+          template_lines: 7,
           template_link: "https://github.com/alphagov/govuk_publishing_components/blob/main/app/views/govuk_publishing_components/components/_test_component.html.erb",
           stylesheet_exists: true,
           stylesheet_lines: 4,
@@ -79,6 +79,42 @@ describe "Auditing the components in the gem" do
         javascript_test: 1,
         helper: 1,
       },
+      helper_usage: [
+        {
+          link: "lib/govuk_publishing_components/app_helpers/brand_helper.rb",
+          match: /(GovukPublishingComponents::AppHelpers::BrandHelper.new)/,
+          name: "Brand helper",
+          used_by: [],
+        },
+        {
+          link: "lib/govuk_publishing_components/presenters/component_wrapper_helper.rb",
+          match: /(GovukPublishingComponents::Presenters::ComponentWrapperHelper.new)/,
+          name: "Component wrapper helper",
+          used_by: [
+            {
+              name: "test component",
+              link: "_test_component.html.erb",
+            },
+          ],
+        },
+        {
+          link: "lib/govuk_publishing_components/presenters/heading_helper.rb",
+          match: /(GovukPublishingComponents::Presenters::HeadingHelper.new)/,
+          name: "Heading helper",
+          used_by: [],
+        },
+        {
+          link: "lib/govuk_publishing_components/presenters/shared_helper.rb",
+          match: /(GovukPublishingComponents::Presenters::SharedHelper.new)/,
+          name: "Shared helper",
+          used_by: [
+            {
+              name: "test component",
+              link: "_test_component.html.erb",
+            },
+          ],
+        },
+      ],
     }
 
     expect(gem.data).to match(expected)

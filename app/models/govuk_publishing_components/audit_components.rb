@@ -34,12 +34,19 @@ module GovukPublishingComponents
   private
 
     def compile_data(path)
+      component_file_details = get_component_file_details(path)
+      helper_usage = get_helper_usage(component_file_details)
+
+      # remove the template file reference as not needed
+      component_file_details.map { |detail| detail.delete(:template_file) }
+
       {
         gem_found: true,
         component_code: clean_files(@all_templates, @templates_full_path).sort,
         components_containing_components: find_all_partials_in(@all_templates),
-        component_file_details: get_component_file_details(path),
+        component_file_details: component_file_details,
         component_numbers: @component_numbers,
+        helper_usage: helper_usage,
       }
     end
 
@@ -96,6 +103,8 @@ module GovukPublishingComponents
       type = detail[:type]
       file = detail[:file]
       details["#{type}_exists".to_sym] = false
+      # save the location of the template to later grep for helper use
+      details["#{type}_file".to_sym] = file if type == "template"
       if File.file?(file)
         # we don't have separate print stylesheets anymore
         # so check the main stylesheet for print styles
@@ -214,6 +223,51 @@ module GovukPublishingComponents
       link = "#{url}/#{repo}/#{blob}/#{@helpers_path}/#{component.gsub(' ', '_')}_helper.rb" if a_thing == "helper"
 
       link
+    end
+
+    def get_helper_usage(components)
+      helpers = [
+        {
+          name: "Brand helper",
+          link: "lib/govuk_publishing_components/app_helpers/brand_helper.rb",
+          match: /(GovukPublishingComponents::AppHelpers::BrandHelper.new)/,
+          used_by: [],
+        },
+        {
+          name: "Component wrapper helper",
+          link: "lib/govuk_publishing_components/presenters/component_wrapper_helper.rb",
+          match: /(GovukPublishingComponents::Presenters::ComponentWrapperHelper.new)/,
+          used_by: [],
+        },
+        {
+          name: "Heading helper",
+          link: "lib/govuk_publishing_components/presenters/heading_helper.rb",
+          match: /(GovukPublishingComponents::Presenters::HeadingHelper.new)/,
+          used_by: [],
+        },
+        {
+          name: "Shared helper",
+          link: "lib/govuk_publishing_components/presenters/shared_helper.rb",
+          match: /(GovukPublishingComponents::Presenters::SharedHelper.new)/,
+          used_by: [],
+        },
+      ]
+
+      components.each do |component|
+        file = component[:template_file]
+        next unless File.file?(file)
+
+        helpers.each do |helper|
+          next unless File.foreach(file).grep(helper[:match]).present?
+
+          helper[:used_by] << {
+            name: component[:name],
+            link: component[:template_file].split("/components/")[1],
+          }
+        end
+      end
+
+      helpers
     end
   end
 end
