@@ -5,16 +5,16 @@
   items ||= nil
   sub_heading_level ||= 3
   two_column_layout ||= false
-  local_assigns ||= nil
-  data_attributes ||= nil
 
   ul_classes = %w[gem-c-cards__list]
   ul_classes << 'gem-c-cards__list--two-column-desktop' if two_column_layout
 
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-cards")
 %>
 <% if items.present? %>
-  <div class="gem-c-cards">
+  <%= tag.div(**component_helper.all_attributes) do %>
     <% if heading %>
       <%= content_tag(shared_helper.get_heading_level, class: "gem-c-cards__heading govuk-heading-m") do %>
         <%= heading %>
@@ -49,5 +49,5 @@
         </li>
       <% end %>
     <% end %>
-  </div>
+  <% end %>
 <% end %>
