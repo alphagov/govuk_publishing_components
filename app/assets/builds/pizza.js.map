@@ -1,7 +1,7 @@
 {
   "version": 3,
   "sources": ["../../javascript/pizza.js"],
-  "sourcesContent": ["// Entry point for the build script in your package.json\n\nconsole.log(\"Hello. Is this building?????\")\n"],
-  "mappings": ";;AAEA,UAAQ,IAAI,8BAA8B;",
+  "sourcesContent": ["// Entry point for the build script in your package.json\n\nconsole.log(\"Hello. Is this building?????\")\n\nconst Pizza = () => \"pizza\";\n\nexport default Pizza;\n"],
+  "mappings": ";AAEA,QAAQ,IAAI,8BAA8B;AAE1C,IAAM,QAAQ,MAAM;AAEpB,IAAO,gBAAQ;",
   "names": []
 }

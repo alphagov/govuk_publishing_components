@@ -32,6 +32,7 @@ module GovukPublishingComponents
     end
 
     def preview
+      Mime::EXTENSION_LOOKUP.each { |m| puts m}
       @component_examples = []
       @component_doc = component_docs.get(params[:component])
       @preview = true

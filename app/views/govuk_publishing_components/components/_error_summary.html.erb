@@ -8,9 +8,10 @@
     raise ArgumentError, "The error_summary component needs at least one item or a title in order to render."
   end
 %>
+
 <%= tag.div(
   class: "gem-c-error-summary govuk-error-summary",
-  data: { module: "govuk-error-summary" }.merge(data_attributes),
+  data: {}.merge(data_attributes),
   id: id,
 ) do %>
   <%= tag.div(
@@ -43,3 +44,35 @@
     </div>
   <% end %>
 <% end %>
+
+<%= javascript_tag nonce: true, type: "module" do -%>
+  // ah OK so this would work but .mjs means the MIME type is wrong!
+  // so it's expecting .js! have to add a new MIME type to config
+  // cannot get this working even though i have added the MIME type
+  
+  import ErrorSummary from "<%= asset_path("govuk-esm/components/error-summary/error-summary.mjs") %>"
+
+  const el = document.querySelector("<%= id %>");
+  const component = new ErrorSummary(el);
+
+  component.init()
+
+  console.log(component)
+<% end -%>
+
+<%= javascript_tag nonce: true, type: "module" do -%>
+  import Pizza from "<%= asset_path('pizza') %>";
+
+  Pizza();
+<% end %>
+
+<%= javascript_tag nonce: true, type: "module" do -%>
+  import ErrorSummary from "<%= asset_path("error-summary-2.js") %>";
+  
+  const el = document.querySelector("<%= id %>");
+  const component = new ErrorSummary(el);
+
+  component.init()
+
+  console.log(component)
+<% end -%>
