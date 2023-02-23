@@ -69,7 +69,7 @@ module GovukPublishingComponents
         # Force English so we can still understand what is being tracked if translated.
         underscores_to_spaces = true
         underscores_to_spaces = false if section == "related_content"
-        I18n.with_locale("en") do
+        I18n.with_locale(:en) do
           construct_section_text(section, underscores_to_spaces)
         end
       end
