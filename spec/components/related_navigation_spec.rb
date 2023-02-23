@@ -167,6 +167,7 @@ describe "Related navigation", type: :view do
 
     assert_select ".gem-c-related-navigation__section-link[href=\"/world/wales/news\"]", text: "Wales"
     assert_select ".gem-c-related-navigation__link.toggle-wrap", text: "Show 2 more"
+    assert_select ".gem-c-related-navigation__link.toggle-wrap[data-module='ga4-event-tracker']", false
     assert_select "#toggle_world_locations .gem-c-related-navigation__section-link[href=\"/world/mauritius/news\"]", text: "Mauritius"
     assert_select "#toggle_world_locations .gem-c-related-navigation__section-link[href=\"/world/brazil/news\"]", text: "Brazil"
   end
@@ -232,19 +233,11 @@ describe "Related navigation", type: :view do
           "document_type" => "topic",
         },
       ],
+      "world_locations" => [],
     }
-    content_item["details"] = {
-      "external_related_links" => [
-        {
-          "url" => "http://something",
-          "title" => "Travel insurance",
-        },
-        {
-          "url" => "http://somethingelse",
-          "title" => "Extreme sports insurance",
-        },
-      ],
-    }
+    %w[USA Wales Fiji Iceland Sweden Mauritius Brazil].each do |country|
+      content_item["links"]["world_locations"] << { "title" => country }
+    end
 
     render_component(content_item: content_item, ga4_tracking: true)
 
@@ -255,8 +248,9 @@ describe "Related navigation", type: :view do
     assert_select ".gem-c-related-navigation__section-link[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"related content\",\"index\":\"2.1\",\"section\":\"Explore the topic\"}']", text: "Skating"
     assert_select ".gem-c-related-navigation__section-link[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"related content\",\"index\":\"2.2\",\"section\":\"Explore the topic\"}']", text: "Paragliding"
 
-    assert_select ".gem-c-related-navigation__section-link[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"related content\",\"index\":\"3.1\",\"section\":\"Elsewhere on the web\"}']", text: "Travel insurance"
-    assert_select ".gem-c-related-navigation__section-link[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"related content\",\"index\":\"3.2\",\"section\":\"Elsewhere on the web\"}']", text: "Extreme sports insurance"
+    assert_select ".gem-c-related-navigation__section-link[href=\"/world/wales/news\"]", text: "Wales"
+    assert_select ".gem-c-related-navigation__link.toggle-wrap[data-module='ga4-event-tracker']"
+    assert_select ".gem-c-related-navigation__toggle[data-ga4-event='{\"event_name\":\"select_content\",\"type\":\"related content\"}']", text: "Show 2 more"
   end
 
   it "uses lang when locale is set" do

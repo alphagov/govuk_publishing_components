@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Apply GA4 tracking to site header search box ([PR #3269](https://github.com/alphagov/govuk_publishing_components/pull/3269))
+* Add GA4 tracking to related navigation component 'show more' link ([PR #3268](https://github.com/alphagov/govuk_publishing_components/pull/3268))
 
 ## 34.11.0
 

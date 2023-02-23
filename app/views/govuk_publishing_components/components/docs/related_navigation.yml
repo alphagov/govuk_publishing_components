@@ -333,3 +333,23 @@ examples:
             - title: UK-China High-Level People to People Dialogue 2017
               base_path: /government/topical-events/uk-china-high-level-people-to-people-dialogue-2017
               document_type: topical_event
+          world_locations:
+            - title: Algeria
+              base_path: /world/algeria/news
+            - title: Austria
+              base_path: /world/austria/news
+            - title: Belarus
+              base_path: /world/belarus/news
+            - title: Belgium
+              base_path: /world/belgium/news
+            - title: Bolivia
+              base_path: /world/bolivia/news
+            - title: Brazil
+              base_path: /world/brazil/news
+            - title: Canada
+              base_path: /world/canada/news
+            - title: Chile
+              base_path: /world/chile/news
+            - title: China
+              base_path: /world/China/news
+ 
