@@ -1,7 +1,10 @@
-<% prioritise_taxon_breadcrumbs ||= false %>
-<% breadcrumb_selector = GovukPublishingComponents::Presenters::BreadcrumbSelector.new(content_item, request, prioritise_taxon_breadcrumbs) %>
-<% inverse ||= false %>
-<% collapse_on_mobile ||= true unless local_assigns[:collapse_on_mobile].eql?(false) %>
+<% 
+  ga4_tracking ||= false
+  prioritise_taxon_breadcrumbs ||= false
+  breadcrumb_selector = GovukPublishingComponents::Presenters::BreadcrumbSelector.new(content_item, request, prioritise_taxon_breadcrumbs, ga4_tracking)
+  inverse ||= false
+  collapse_on_mobile ||= true unless local_assigns[:collapse_on_mobile].eql?(false) 
+%>
 
 <div class="gem-c-contextual-breadcrumbs">
   <% if breadcrumb_selector.step_by_step %>

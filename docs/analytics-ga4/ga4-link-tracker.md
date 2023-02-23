@@ -87,3 +87,14 @@ To apply tracking to links within a specific element within part of a page, use 
   </div>
 </div>
 ```
+
+## Using the link tracker on components
+
+Where possible, link tracking is optional for components in order to provide flexibility where different types of tracking might overlap. To track links within a component (e.g. contextual breadcrumbs), use the `ga4_tracking` option as shown:
+
+```erb
+<%= render 'govuk_publishing_components/components/contextual_breadcrumbs', {
+  ga4_tracking: true,
+  items: []
+} %>
+```

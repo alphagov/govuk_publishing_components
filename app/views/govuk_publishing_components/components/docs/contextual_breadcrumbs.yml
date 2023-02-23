@@ -32,3 +32,16 @@ examples:
       inverse: true
     context:
       dark_background: true
+  with_ga4_tracking:
+    description: |
+      Adds GA4 tracking to the step by step nav header component when it is rendered as a breadcrumb. See the 
+      [ga4-link-tracker documentation](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-link-tracker.md) for more information.
+      Note: tracking on regular breadcrumbs is enabled by default and does not require activating.
+    data:
+      ga4_tracking: true
+      content_item:
+        title: "A content item"
+        links:
+          part_of_step_navs:
+            - title: "Learn to drive a car: step by step"
+              base_path: "/micropigs-vs-micropugs"
