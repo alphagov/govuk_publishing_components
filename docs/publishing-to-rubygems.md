@@ -2,6 +2,8 @@
 
 Before publishing a new version [check the open and approved pull requests](https://github.com/alphagov/govuk_publishing_components/pulls?q=is%3Apr+is%3Aopen+review%3Aapproved) and reach out to the authors to see if you can get their work published in the same release.
 
+You should also post a message to `#govuk-frontenders` on slack to ask if anyone else has a change that they would like to be included in the new version.
+
 1. Checkout **main** and pull latest changes.
 
 2. Create and checkout a new branch (`release-[version-number]`).
