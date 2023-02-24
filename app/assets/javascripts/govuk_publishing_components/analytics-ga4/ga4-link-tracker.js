@@ -87,6 +87,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       data.method = window.GOVUK.analyticsGa4.core.trackFunctions.getClickType(event)
       data.external = window.GOVUK.analyticsGa4.core.trackFunctions.isExternalLink(data.url) ? 'true' : 'false'
       data.index = event.target.getAttribute('data-ga4-index') ? parseInt(event.target.getAttribute('data-ga4-index')) : data.index || undefined
+      data.index = window.GOVUK.analyticsGa4.core.trackFunctions.createIndexObject(data.index)
 
       var schemas = new window.GOVUK.analyticsGa4.Schemas()
       var schema = schemas.mergeProperties(data, 'event_data')
