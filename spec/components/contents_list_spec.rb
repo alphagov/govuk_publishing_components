@@ -121,7 +121,7 @@ describe "Contents list", type: :view do
   end
 
   it "aria label is rendered when supplied" do
-    render_component(contents: contents_list_with_active_item, aria_label: "All pages in this guide")
+    render_component(contents: contents_list_with_active_item, aria: { label: "All pages in this guide" })
     assert_select ".gem-c-contents-list[aria-label=\"All pages in this guide\"]"
   end
 
