@@ -540,7 +540,9 @@ describe('Google Analytics event tracking', function () {
         expected.event_data.action = 'opened'
         expected.event_data.text = button.textContent
         expected.event_data.section = button.textContent
-        expected.event_data.index = i + 1
+        expected.event_data.index = {
+          index_section: i + 1
+        }
         expect(window.dataLayer[0]).toEqual(expected)
         button.setAttribute('aria-expanded', 'true')
         expected.event_data.action = 'closed'
