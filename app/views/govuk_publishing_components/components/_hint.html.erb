@@ -1,4 +1,6 @@
 <%
+  add_gem_component_stylesheet("hint")
+
   id ||= "hint-#{SecureRandom.hex(4)}"
   right_to_left ||= false
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)

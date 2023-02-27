@@ -1,3 +1,5 @@
+@import "govuk_publishing_components/individual_component_support";
+
 .gem-c-subscription-links {
   @include govuk-text-colour;
   @include govuk-font(19, $weight: bold);

@@ -1,3 +1,5 @@
+@import "govuk_publishing_components/individual_component_support";
+
 .gem-c-metadata {
   @include govuk-text-colour;
   @include govuk-font(16);

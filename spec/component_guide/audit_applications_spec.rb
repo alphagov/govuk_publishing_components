@@ -12,7 +12,7 @@ describe "Auditing the components in applications" do
       components_found: [
         {
           location: "templates",
-          components: ["accordion", "back link", "contextual breadcrumbs", "contextual footer", "contextual sidebar", "error summary", "feedback", "govspeak", "input", "layout footer", "layout for admin", "layout for public", "layout header", "skip link", "tabs", "title"],
+          components: ["accordion", "back link", "contextual breadcrumbs", "contextual footer", "contextual sidebar", "details", "error summary", "feedback", "govspeak", "input", "layout footer", "layout for admin", "layout for public", "layout header", "notice", "skip link", "tabs", "title"],
         },
         {
           location: "stylesheets",
@@ -46,6 +46,7 @@ describe "Auditing the components in applications" do
         "contextual footer": ["app/views/step_nav/show.html.erb", "app/views/welcome/contextual_navigation.html.erb"],
         "contextual sidebar": ["app/views/step_nav/show.html.erb", "app/views/welcome/contextual_navigation.html.erb"],
         "error summary": ["app/views/welcome/error_summary.html.erb"],
+        details: ["app/views/welcome/asset_helper.html.erb"],
         feedback: ["app/views/layouts/application.html.erb"],
         govspeak: ["app/views/welcome/contextual_navigation.html.erb", "lib/test_file_1.rb"],
         input: ["app/views/welcome/error_summary.html.erb", "app/views/welcome/error_summary.html.erb"],
@@ -55,8 +56,22 @@ describe "Auditing the components in applications" do
         "layout header": ["app/views/layouts/dummy_admin_layout.html.erb"],
         "print link": ["lib/test_file_2.erb"],
         "skip link": ["app/views/layouts/dummy_admin_layout.html.erb"],
+        notice:
+          [
+            "app/views/welcome/asset_helper.html.erb",
+            "app/views/welcome/asset_helper_with_app_component.html.erb",
+            "app/views/welcome/asset_helper_with_app_view.html.erb",
+          ],
         tabs: ["app/views/welcome/error_summary.html.erb", "app/views/welcome/tabs_example.html.erb"],
-        title: ["app/views/welcome/contextual_navigation.html.erb", "app/views/welcome/error_summary.html.erb", "app/views/welcome/table.html.erb"],
+        title:
+          [
+            "app/views/welcome/asset_helper.html.erb",
+            "app/views/welcome/asset_helper_with_app_component.html.erb",
+            "app/views/welcome/asset_helper_with_app_view.html.erb",
+            "app/views/welcome/contextual_navigation.html.erb",
+            "app/views/welcome/error_summary.html.erb",
+            "app/views/welcome/table.html.erb",
+          ],
       },
       helper_references: {
         BrandHelper: ["lib/test_file_3.rb"],

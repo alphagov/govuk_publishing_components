@@ -1,3 +1,5 @@
+@import "govuk_publishing_components/individual_component_support";
+
 .gem-c-emergency-banner {
   @include govuk-font(19);
   background-color: govuk-colour("mid-grey");

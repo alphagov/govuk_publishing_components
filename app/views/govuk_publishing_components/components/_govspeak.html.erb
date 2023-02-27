@@ -1,4 +1,5 @@
 <%
+  add_gem_component_stylesheet("govspeak")
   inverse ||= false
   direction_class = "direction-#{direction}" if local_assigns.include?(:direction)
   disable_youtube_expansions = local_assigns.fetch(:disable_youtube_expansions) if local_assigns.include?(:disable_youtube_expansions)

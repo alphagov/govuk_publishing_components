@@ -1,4 +1,6 @@
 <%
+  add_gem_component_stylesheet("contextual-sidebar")
+
   ga4_tracking ||= false
   request.query_parameters[:ga4_tracking] = ga4_tracking
   navigation = GovukPublishingComponents::Presenters::ContextualNavigation.new(content_item, request)
