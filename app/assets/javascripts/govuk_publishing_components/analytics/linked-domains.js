@@ -90,7 +90,7 @@ window.GOVUK.analytics.linkedDomains = [
   'paydvlafine.service.gov.uk',
   'payments.service.gov.uk',
   'publish-payment-practices.service.gov.uk',
-  'queens-awards-enterprise.service.gov.uk',
+  'kings-awards-enterprise.service.gov.uk',
   'recruit.manage-apprenticeships.service.gov.uk',
   'register.fluorinated-gas.service.gov.uk',
   'register-trailer.service.gov.uk',
