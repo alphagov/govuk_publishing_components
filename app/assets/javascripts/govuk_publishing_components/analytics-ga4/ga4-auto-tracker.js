@@ -28,13 +28,16 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     if (window.dataLayer) {
       try {
         var data = this.module.getAttribute(this.trackingTrigger)
-        data = JSON.parse(data)
+        data = JSON.parse(data) || {}
       } catch (e) {
         // if there's a problem with the config, don't start the tracker
         console.error('GA4 configuration error: ' + e.message, window.location)
         return
       }
 
+      if (data.index) {
+        data.index = window.GOVUK.analyticsGa4.core.trackFunctions.createIndexObject(data.index)
+      }
       var schemas = new window.GOVUK.analyticsGa4.Schemas()
       var schema = schemas.mergeProperties(data, 'event_data')
 
