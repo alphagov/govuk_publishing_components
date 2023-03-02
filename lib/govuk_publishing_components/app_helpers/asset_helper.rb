@@ -9,6 +9,7 @@ module GovukPublishingComponents
         component_name = filename.sub("_", "").sub(".scss", "")
         "govuk_publishing_components/components/_#{component_name}.css"
       }.freeze
+      private_constant :COMPONENT_CSS_PATHS
 
       # This list includes components already included in Static; taken from
       # https://github.com/alphagov/static/blob/198a598682df40ce4a2c3c286c06244297c18cf0/app/assets/stylesheets/application.scss
@@ -34,6 +35,7 @@ module GovukPublishingComponents
         govuk_publishing_components/components/_layout-header.css
         govuk_publishing_components/components/_layout-super-navigation-header.css
       ].freeze
+      private_constant :STATIC_STYLESHEET_LIST
 
       def add_stylesheet_path(component_path)
         unless is_already_used?(component_path)
