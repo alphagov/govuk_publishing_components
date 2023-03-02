@@ -9,7 +9,7 @@
 
 ## 34.13.0
 
-* Set up individual component CSS loading, **Note:** this change is experimental, it will be used in the `frontend` application first, please do not implement this feature in other applications ([PR #3342](https://github.com/alphagov/govuk_publishing_components/pull/3342))
+* Set up gem so stylesheets can be loaded individually, **Note:** this change is experimental, it will be used in the `frontend` application first, please do not implement this feature in other applications ([PR #3014](https://github.com/alphagov/govuk_publishing_components/pull/3014))
 * Set ga 4 related links locale as :en ([PR #3273](https://github.com/alphagov/govuk_publishing_components/pull/3273))
 
 ## 34.12.0
