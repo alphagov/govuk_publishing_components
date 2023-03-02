@@ -1,14 +1,17 @@
 <%
   add_gem_component_stylesheet("step-by-step-nav-related")
-
+  ga4_tracking ||= false
   links ||= []
   pretitle ||= t("components.step_by_step_nav_related.part_of")
   always_display_as_list ||= false
+  classes = %w(gem-c-step-nav-related)
+  classes << "gem-c-step-nav-related--singular" if links.length == 1
+  data = {}
+  data[:module] = "gem-track-click"
+  data[:module] << " ga4-link-tracker" if ga4_tracking
 %>
 <% if links.any? %>
-  <div
-    class="gem-c-step-nav-related <%= "gem-c-step-nav-related--singular" if links.length == 1 %>"
-    data-module="gem-track-click">
+  <%= tag.div(class: classes, data: data) do %>
     <h2 class="gem-c-step-nav-related__heading">
       <span class="gem-c-step-nav-related__pretitle"><%= pretitle %></span>
       <% if links.length == 1 && !always_display_as_list %>
@@ -19,14 +22,18 @@
             data-track-label="<%= links[0][:href] %>"
             data-track-dimension="<%= links[0][:text] %>"
             data-track-dimension-index="29"
-            data-track-options='{"dimension96" : "<%= links[0][:tracking_id] %>" }'>
+            data-track-options='{"dimension96" : "<%= links[0][:tracking_id] %>" }'
+            <% if ga4_tracking %>
+              data-ga4-link='{"event_name":"navigation", "type":"related content", "index":{"index_link": "1"}, "index_total":"1"}'
+            <% end %>
+          >
             <%= links[0][:text] %>
           </a>
         </h2>
       <% else %>
         </h2>
         <ul class="gem-c-step-nav-related__links">
-          <% links.each do |link| %>
+          <% links.each_with_index do |link, index| %>
             <li class="gem-c-step-nav-related__link-item">
               <a href="<%= link[:href] %>"
                 class="govuk-link"
@@ -35,12 +42,16 @@
                 data-track-label="<%= link[:href] %>"
                 data-track-dimension="<%= link[:text] %>"
                 data-track-dimension-index="29"
-                data-track-options='{"dimension96" : "<%= link[:tracking_id] %>" }'>
+                data-track-options='{"dimension96" : "<%= link[:tracking_id] %>" }'
+                <% if ga4_tracking %>
+                  data-ga4-link='{"event_name":"navigation", "type":"related content", "index":{"index_link": "<%= index + 1 %>"}, "index_total": "<%= links.length %>"}'
+                <% end %>
+              >
                 <%= link[:text] %>
               </a>
             </li>
           <% end %>
         </ul>
       <% end %>
-  </div>
+  <% end %>
 <% end %>

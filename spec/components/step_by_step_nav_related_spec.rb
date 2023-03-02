@@ -111,4 +111,40 @@ describe "Step by step navigation related", type: :view do
     assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__heading .gem-c-step-nav-related__pretitle", text: "Part of"
     assert_select ".gem-c-step-nav-related .gem-c-step-nav-related__links .govuk-link[href='/link1']", text: "Link 1"
   end
+
+  it "adds GA4 data attributes when ga4_tracking is true" do
+    render_component(links: one_link, ga4_tracking: true)
+
+    this_link = ".gem-c-step-nav-related .gem-c-step-nav-related__heading .govuk-link"
+
+    assert_select "#{this_link}[data-ga4-link='{\"event_name\":\"navigation\", \"type\":\"related content\", \"index\":{\"index_link\": \"1\"}, \"index_total\":\"1\"}']"
+  end
+
+  it "does not add GA4 data attributes when ga4_tracking is false" do
+    render_component(links: one_link, ga4_tracking: false)
+
+    this_link = ".gem-c-step-nav-related .gem-c-step-nav-related__heading .govuk-link"
+
+    assert_select "#{this_link}[data-ga4-link='{\"event_name\":\"navigation\", \"type\":\"related content\", \"index\":{\"index_link\": \"1\"}, \"index_total\":\"1\"}']", false
+  end
+
+  it "adds GA4 data attributes on multiple links when ga4_tracking is true" do
+    render_component(links: two_links, ga4_tracking: true)
+
+    link_one = ".gem-c-step-nav-related .gem-c-step-nav-related__links .govuk-link[href='/link1']"
+    link_two = ".gem-c-step-nav-related .gem-c-step-nav-related__links .govuk-link[href='/link2']"
+
+    assert_select "#{link_one}[data-ga4-link='{\"event_name\":\"navigation\", \"type\":\"related content\", \"index\":{\"index_link\": \"1\"}, \"index_total\": \"2\"}']"
+    assert_select "#{link_two}[data-ga4-link='{\"event_name\":\"navigation\", \"type\":\"related content\", \"index\":{\"index_link\": \"2\"}, \"index_total\": \"2\"}']"
+  end
+
+  it "does not add GA4 data attributes on multiple links when ga4_tracking is false" do
+    render_component(links: two_links, ga4_tracking: false)
+
+    link_one = ".gem-c-step-nav-related .gem-c-step-nav-related__links .govuk-link[href='/link1']"
+    link_two = ".gem-c-step-nav-related .gem-c-step-nav-related__links .govuk-link[href='/link2']"
+
+    assert_select "#{link_one}[data-ga4-link='{\"event_name\":\"navigation\", \"type\":\"related content\", \"index\":{\"index_link\": \"1\"}, \"index_total\": \"2\"}']", false
+    assert_select "#{link_two}[data-ga4-link='{\"event_name\":\"navigation\", \"type\":\"related content\", \"index\":{\"index_link\": \"2\"}, \"index_total\": \"2\"}']", false
+  end
 end
