@@ -8,6 +8,7 @@ This component uses the component wrapper helper. It accepts the following optio
 - `data_attributes` - accepts a hash of data attributes
 - `aria` - accepts a hash of aria attributes
 - `classes` - accepts a space separated string of classes, these should not be used for styling and must be prefixed with `js-`
+- `role` - accepts a space separated string of roles
       "
     end
   end
