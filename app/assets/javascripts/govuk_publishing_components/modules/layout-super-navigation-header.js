@@ -29,6 +29,7 @@ var show = function ($button, $menu) {
   $button.classList.add('gem-c-layout-super-navigation-header__open-button')
   $menu.removeAttribute('hidden')
   setLabel($button, 'hide')
+  console.log('showing, module')
 }
 
 var toggle = function ($button, $menu) {
