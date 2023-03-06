@@ -3,11 +3,16 @@
 
   title ||= false
   path ||= false
+  ga4_tracking ||= false
   breadcrumbs = [
     { title: "Home", url: "/" },
     { title: title, url: path }
   ]
   breadcrumb_presenter = GovukPublishingComponents::Presenters::Breadcrumbs.new(breadcrumbs)
+
+  data = {}
+  data[:module] = "gem-track-click"
+  data[:module] << " ga4-link-tracker" if ga4_tracking
 
   tracking_id ||= false
   tracking_category ||= "stepNavHeaderClicked"
@@ -30,7 +35,7 @@
     <%= raw JSON.pretty_generate(breadcrumb_presenter.structured_data) %>
   </script>
 
-  <%= tag.div class: classes, data: { module: "gem-track-click" } do %>
+  <%= tag.div(class: classes, data: data) do %>
     <strong class="gem-c-step-nav-header__part-of">Part of</strong>
     <% if path %>
       <a href="<%= path %>"
@@ -38,6 +43,9 @@
         data-track-category="<%= tracking_category %>"
         data-track-action="<%= tracking_action %>"
         data-track-label="<%= tracking_label %>"
+        <% if ga4_tracking %>
+          data-ga4-link='{"event_name":"navigation", "type":"super breadcrumb", "index":{"index_link": "1"}, "index_total":"1"}'
+        <% end %>
         <% if tracking_dimension_enabled %>
           data-track-dimension="<%= tracking_dimension %>"
           data-track-dimension-index="<%= tracking_dimension_index %>"

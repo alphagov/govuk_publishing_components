@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Change how GA4 index parameter works ([PR #3277](https://github.com/alphagov/govuk_publishing_components/pull/3277))
+* Add GA4 tracking to the super breadcrumb ([PR #3272](https://github.com/alphagov/govuk_publishing_components/pull/3272))
 
 ## 34.13.0
 

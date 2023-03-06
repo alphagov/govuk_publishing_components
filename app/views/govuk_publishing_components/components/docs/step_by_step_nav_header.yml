@@ -51,3 +51,9 @@ examples:
       tracking_action: "customTrackingAction"
       tracking_label: "customTrackingLabel"
       tracking_dimension_enabled: false
+  with_ga4_tracking:
+    description: The ga4_tracking boolean allows you to add Google Analytics 4 (GA4) tracking to your component. Setting this to true will add the `ga4-link-tracker` module to your component. The JavaScript will then add a `data-ga4-link` attribute which contains a JSON object with data relevant to our tracking. See the [ga4-link-tracker docs](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-link-tracker.md) for more information.
+    data:
+      ga4_tracking: true
+      title: 'Learn to drive a motorbike: step by step'
+      path: /learn-to-drive-a-motorbike

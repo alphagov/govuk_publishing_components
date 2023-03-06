@@ -82,12 +82,13 @@ module GovukPublishingComponents
         end
       end
 
-      def header
+      def header(ga4_tracking)
         if show_header?
           {
             title: current_step_nav.title,
             path: current_step_nav.base_path,
             tracking_id: current_step_nav.content_id,
+            ga4_tracking: ga4_tracking,
           }
         else
           {}
