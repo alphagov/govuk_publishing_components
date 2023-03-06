@@ -10,7 +10,7 @@
 <div class="gem-c-contextual-sidebar">
   <% if navigation.content_tagged_to_a_reasonable_number_of_step_by_steps? %>
     <%# Rendering step by step related items because there are a few but not too many of them %>
-    <%= render 'govuk_publishing_components/components/step_by_step_nav_related', links: navigation.step_nav_helper.related_links %>
+    <%= render 'govuk_publishing_components/components/step_by_step_nav_related', links: navigation.step_nav_helper.related_links, ga4_tracking: ga4_tracking %>
   <% end %>
 
   <% if navigation.content_tagged_to_current_step_by_step? %>
@@ -26,7 +26,8 @@
     <%= render 'govuk_publishing_components/components/step_by_step_nav_related', {
       pretitle: t("components.contextual_sidebar.pretitle"),
       links: navigation.step_nav_helper.also_part_of_step_nav,
-      always_display_as_list: true
+      always_display_as_list: true,
+      ga4_tracking: ga4_tracking
     } %>
   <% end %>
 

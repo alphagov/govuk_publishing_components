@@ -157,3 +157,14 @@ examples:
                       - text: Arrange the funeral
                         href: "/after-a-death/arrange-the-funeral"
                     optional: false
+  with_ga4_tracking_on_part_of_step_by_step_heading(s):
+    description: Adds Google Analytics 4 tracking to the "Part of" step by step heading(s) in the sidebar. Currently only the Related Navigation component, Step by Step navigation component and Ukraine CTA accept this option.
+    data:
+      ga4_tracking: true
+      content_item:
+        links:
+          part_of_step_navs:
+            - title: "Choosing a micropig or micropug: step by step"
+              base_path: "/micropigs-vs-micropugs"
+            - title: "Walk your micropig: step by step"
+              base_path: "/porgs-step-by-step"
