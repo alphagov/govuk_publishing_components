@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 34.14.0
 
 * Change how GA4 index parameter works ([PR #3277](https://github.com/alphagov/govuk_publishing_components/pull/3277))
 * Add GA4 tracking to the super breadcrumb ([PR #3272](https://github.com/alphagov/govuk_publishing_components/pull/3272))
