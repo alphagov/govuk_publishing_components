@@ -1,5 +1,9 @@
 <%
+<<<<<<< HEAD
   add_gem_component_stylesheet("step-by-step-nav")
+=======
+  randomId = SecureRandom.hex(4)
+>>>>>>> e37d59fde (convert the step by step to a module)
 
   options = {}
   options[:heading_level] = heading_level ||= 2
@@ -22,6 +26,7 @@
 %>
 <% if steps %>
   <div
+    id="step-by-step-nav-<%= randomId %>"
     data-module="gemstepnav<% if ga4_tracking %> ga4-event-tracker<% end %>"
     <%= "data-ga4-expandable" if ga4_tracking %>
     class="gem-c-step-nav js-hidden <% if small %>govuk-!-display-none-print<% end %> <% unless small %>gem-c-step-nav--large<% end %>"
@@ -118,4 +123,14 @@
       <% end %>
     </ol>
   </div>
+
+  <%= javascript_tag nonce: true, type: "module" do -%>
+      import StepByStepNav from "<%= asset_path('govuk_publishing_components/modules/step-by-step-nav.js') %>";
+
+      const el = document.querySelector("#step-by-step-nav-<%= randomId %>");
+
+      const stepByStepNav = new StepByStepNav(el);
+
+      stepByStepNav.init()
+  <% end -%>
 <% end %>

@@ -1,12 +1,149 @@
-//= require govuk/vendor/polyfills/Element/prototype/classList.js
-//= require ../vendor/polyfills/closest.js
-//= require ../vendor/polyfills/indexOf.js
+// A helper that sends a custom event request to Google Analytics if
+// the GOVUK module is setup
+function StepNavTracker(uniqueId, totalSteps, totalLinks) {
+  this.totalSteps = totalSteps
+  this.totalLinks = totalLinks
+  this.uniqueId = uniqueId
 
-window.GOVUK = window.GOVUK || {}
-window.GOVUK.Modules = window.GOVUK.Modules || {};
+  this.trackClick = function (category, action, options) {
+    // dimension26 records the total number of expand/collapse steps in this step nav
+    // dimension27 records the total number of links in this step nav
+    // dimension28 records the number of links in the step that was shown/hidden (handled in click event)
+    if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
+      options = options || {}
+      options.dimension26 = options.dimension26 || this.totalSteps.toString()
+      options.dimension27 = options.dimension27 || this.totalLinks.toString()
+      options.dimension96 = options.dimension96 || this.uniqueId
+      window.GOVUK.analytics.trackEvent(category, action, options)
+    }
+  }
+}
 
-(function (Modules) {
-  function Gemstepnav ($module) {
+function StepView(stepElement, $module) {
+  this.stepElement = stepElement
+  this.stepContent = this.stepElement.querySelectorAll('.js-panel')[0]
+  this.titleButton = this.stepElement.querySelectorAll('.js-step-title-button')[0]
+  var textElement = this.stepElement.querySelectorAll('.js-step-title-text')[0]
+  this.title = textElement.textContent || textElement.innerText
+  this.title = this.title.replace(/^\s+|\s+$/g, '') // this is 'trim' but supporting IE8
+  this.showText = $module.actions.showText
+  this.hideText = $module.actions.hideText
+  this.upChevronSvg = $module.upChevronSvg
+  this.downChevronSvg = $module.downChevronSvg
+
+  this.show = function () {
+    this.setIsShown(true)
+  }
+
+  this.hide = function () {
+    this.setIsShown(false)
+  }
+
+  this.toggle = function () {
+    this.setIsShown(this.isHidden())
+  }
+
+  this.setIsShown = function (isShown) {
+    var toggleLink = this.stepElement.querySelectorAll('.js-toggle-link')[0]
+    var toggleLinkText = toggleLink.querySelector('.js-toggle-link-text')
+    var stepChevron = toggleLink.querySelector('.js-toggle-link-icon')
+
+    if (isShown) {
+      this.stepElement.classList.add('step-is-shown')
+      this.stepContent.classList.remove('js-hidden')
+      toggleLinkText.innerHTML = this.hideText
+      stepChevron.classList.remove('gem-c-step-nav__chevron--down')
+    } else {
+      this.stepElement.classList.remove('step-is-shown')
+      this.stepContent.classList.add('js-hidden')
+      toggleLinkText.innerHTML = this.showText
+      stepChevron.classList.add('gem-c-step-nav__chevron--down')
+    }
+    this.titleButton.setAttribute('aria-expanded', isShown)
+  }
+
+  this.isShown = function () {
+    return this.stepElement.classList.contains('step-is-shown')
+  }
+
+  this.isHidden = function () {
+    return !this.isShown()
+  }
+
+  this.numberOfContentItems = function () {
+    return this.stepContent.querySelectorAll('.js-link').length
+  }
+}
+
+function StepToggleClick(event, stepView, stepNavTracker, stepIsOptional, stepNavSize) {
+  this.target = event.target
+  this.stepIsOptional = stepIsOptional
+  this.stepNavSize = stepNavSize
+
+  this.trackClick = function () {
+    var trackingOptions = { label: this.trackingLabel(), dimension28: stepView.numberOfContentItems().toString() }
+    stepNavTracker.trackClick('pageElementInteraction', this.trackingAction(), trackingOptions)
+  }
+
+  this.trackingLabel = function () {
+    var clickedNearbyToggle = this.target.closest('.js-step').querySelectorAll('.js-toggle-panel')[0]
+    return clickedNearbyToggle.getAttribute('data-position') + ' - ' + stepView.title + ' - ' + this.locateClickElement() + ': ' + this.stepNavSize + this.isOptional()
+  }
+
+  // returns index of the clicked step in the overall number of steps
+  this.stepIndex = function () { // eslint-disable-line no-unused-vars
+    return this.$module.steps.index(stepView.element) + 1
+  }
+
+  this.trackingAction = function () {
+    return (stepView.isHidden() ? 'stepNavHidden' : 'stepNavShown')
+  }
+
+  this.locateClickElement = function () {
+    if (this.clickedOnIcon()) {
+      return this.iconType() + ' click'
+    } else if (this.clickedOnHeading()) {
+      return 'Heading click'
+    } else {
+      return 'Elsewhere click'
+    }
+  }
+
+  this.clickedOnIcon = function () {
+    return this.target.classList.contains('js-toggle-link')
+  }
+
+  this.clickedOnHeading = function () {
+    return this.target.classList.contains('js-step-title-text')
+  }
+
+  this.iconType = function () {
+    return (stepView.isHidden() ? 'Minus' : 'Plus')
+  }
+
+  this.isOptional = function () {
+    return (this.stepIsOptional ? ' ; optional' : '')
+  }
+}
+
+function ComponentLinkClick(event, stepNavTracker, linkPosition, size) {
+  this.size = size
+  this.target = event.target
+
+  this.trackClick = function () {
+    var trackingOptions = { label: this.target.getAttribute('href') + ' : ' + this.size }
+    var dimension28 = this.target.closest('.gem-c-step-nav__list').getAttribute('data-length')
+
+    if (dimension28) {
+      trackingOptions.dimension28 = dimension28
+    }
+
+    stepNavTracker.trackClick('stepNavLinkClicked', linkPosition, trackingOptions)
+  }
+}
+
+class StepByStepNavigation {
+  constructor($module, actions, rememberShownStep, stepNavSize, sessionStoreLink, activeLinkClass, activeStepClass, activeLinkHref, uniqueId) {
     this.$module = $module
     this.$module.actions = {} // stores text for JS appended elements 'show' and 'hide' on steps, and 'show/hide all' button
     this.$module.rememberShownStep = false
@@ -18,7 +155,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.$module.uniqueId = false
   }
 
-  Gemstepnav.prototype.init = function () {
+  init() {
     // Indicate that js has worked
     this.$module.classList.add('gem-c-step-nav--active')
 
@@ -43,7 +180,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       this.$module.sessionStoreLink = this.$module.sessionStoreLink + '_' + this.$module.uniqueId
     }
 
-    var stepNavTracker = new this.StepNavTracker(this.$module.uniqueId, this.$module.totalSteps, this.$module.totalLinks)
+    var stepNavTracker = new StepNavTracker(this.$module.uniqueId, this.$module.totalSteps, this.$module.totalLinks)
 
     this.getTextForInsertedElements()
     this.addButtonstoSteps()
@@ -59,14 +196,14 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.bindComponentLinkClicks(stepNavTracker)
   }
 
-  Gemstepnav.prototype.getTextForInsertedElements = function () {
+  getTextForInsertedElements() {
     this.$module.actions.showText = this.$module.getAttribute('data-show-text')
     this.$module.actions.hideText = this.$module.getAttribute('data-hide-text')
     this.$module.actions.showAllText = this.$module.getAttribute('data-show-all-text')
     this.$module.actions.hideAllText = this.$module.getAttribute('data-hide-all-text')
   }
 
-  Gemstepnav.prototype.addShowHideAllButton = function () {
+  addShowHideAllButton() {
     var showAll = document.createElement('div')
     var steps = this.$module.querySelectorAll('.gem-c-step-nav__steps')[0]
 
@@ -89,7 +226,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
   }
 
-  Gemstepnav.prototype.addShowHideToggle = function () {
+  addShowHideToggle() {
     for (var i = 0; i < this.$module.stepHeaders.length; i++) {
       var thisel = this.$module.stepHeaders[i]
 
@@ -118,22 +255,22 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
   }
 
-  Gemstepnav.prototype.headerIsOpen = function (stepHeader) {
+  headerIsOpen(stepHeader) {
     return (typeof stepHeader.parentNode.getAttribute('show') !== 'undefined')
   }
 
-  Gemstepnav.prototype.addAriaControlsAttrForShowHideAllButton = function () {
+  addAriaControlsAttrForShowHideAllButton() {
     var ariaControlsValue = this.$module.querySelectorAll('.js-panel')[0].getAttribute('id')
 
     this.$module.showOrHideAllButton.setAttribute('aria-controls', ariaControlsValue)
   }
 
   // called by show all/hide all, sets all steps accordingly
-  Gemstepnav.prototype.setAllStepsShownState = function (isShown) {
+  setAllStepsShownState(isShown) {
     var data = []
 
     for (var i = 0; i < this.$module.steps.length; i++) {
-      var stepView = new this.StepView(this.$module.steps[i], this.$module)
+      var stepView = new StepView(this.$module.steps[i], this.$module)
       stepView.setIsShown(isShown)
 
       if (isShown) {
@@ -149,13 +286,13 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   // called on load, determines whether each step should be open or closed
-  Gemstepnav.prototype.showPreviouslyOpenedSteps = function () {
+  showPreviouslyOpenedSteps() {
     var data = this.loadFromSessionStorage(this.$module.uniqueId) || []
 
     for (var i = 0; i < this.$module.steps.length; i++) {
       var thisel = this.$module.steps[i]
       var id = thisel.getAttribute('id')
-      var stepView = new this.StepView(thisel, this.$module)
+      var stepView = new StepView(thisel, this.$module)
       var shouldBeShown = thisel.hasAttribute('data-show')
 
       // show the step if it has been remembered or if it has the 'data-show' attribute
@@ -172,7 +309,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
   }
 
-  Gemstepnav.prototype.addButtonstoSteps = function () {
+  addButtonstoSteps() {
     for (var i = 0; i < this.$module.steps.length; i++) {
       var thisel = this.$module.steps[i]
       var title = thisel.querySelectorAll('.js-step-title')[0]
@@ -209,17 +346,17 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
   }
 
-  Gemstepnav.prototype.bindToggleForSteps = function (stepNavTracker) {
+  bindToggleForSteps(stepNavTracker) {
     var that = this
     var togglePanels = this.$module.querySelectorAll('.js-toggle-panel')
 
     for (var i = 0; i < togglePanels.length; i++) {
       togglePanels[i].addEventListener('click', function (event) {
-        var stepView = new that.StepView(this.parentNode, that.$module)
+        var stepView = new StepView(this.parentNode, that.$module)
         stepView.toggle()
 
         var stepIsOptional = this.parentNode.hasAttribute('data-optional')
-        var toggleClick = new that.StepToggleClick(event, stepView, stepNavTracker, stepIsOptional, that.$module.stepNavSize)
+        var toggleClick = new StepToggleClick(event, stepView, stepNavTracker, stepIsOptional, that.$module.stepNavSize)
         toggleClick.trackClick()
 
         that.setShowHideAllText()
@@ -230,7 +367,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   // if the step is open, store its id in session store
   // if the step is closed, remove its id from session store
-  Gemstepnav.prototype.rememberStepState = function (step) {
+  rememberStepState(step) {
     if (this.$module.rememberShownStep) {
       var data = JSON.parse(this.loadFromSessionStorage(this.$module.uniqueId)) || []
       var thisstep = step.getAttribute('id')
@@ -249,7 +386,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   // tracking click events on links in step content
-  Gemstepnav.prototype.bindComponentLinkClicks = function (stepNavTracker) {
+  bindComponentLinkClicks(stepNavTracker) {
     var jsLinks = this.$module.querySelectorAll('.js-link')
     var that = this
 
@@ -271,19 +408,19 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
   }
 
-  Gemstepnav.prototype.saveToSessionStorage = function (key, value) {
+  saveToSessionStorage(key, value) {
     window.sessionStorage.setItem(key, value)
   }
 
-  Gemstepnav.prototype.loadFromSessionStorage = function (key, value) {
+  loadFromSessionStorage(key, value) {
     return window.sessionStorage.getItem(key)
   }
 
-  Gemstepnav.prototype.removeFromSessionStorage = function (key) {
+  removeFromSessionStorage(key) {
     window.sessionStorage.removeItem(key)
   }
 
-  Gemstepnav.prototype.setOnlyThisLinkActive = function (clicked) {
+  setOnlyThisLinkActive(clicked) {
     var allActiveLinks = this.$module.querySelectorAll('.' + this.$module.activeLinkClass)
     for (var i = 0; i < allActiveLinks.length; i++) {
       allActiveLinks[i].classList.remove(this.$module.activeLinkClass)
@@ -296,7 +433,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   // if the user clicked on one of those links previously, it will be in the session store
   // this code ensures only that link and its corresponding step have the highlighting
   // otherwise it accepts what the backend has already passed to the component
-  Gemstepnav.prototype.ensureOnlyOneActiveLink = function () {
+  ensureOnlyOneActiveLink() {
     var activeLinks = this.$module.querySelectorAll('.js-list-item.' + this.$module.activeLinkClass)
 
     if (activeLinks.length <= 1) {
@@ -325,7 +462,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.setActiveStepClass()
   }
 
-  Gemstepnav.prototype.removeActiveStateFromAllButCurrent = function (activeLinks, current) {
+  removeActiveStateFromAllButCurrent(activeLinks, current) {
     for (var i = 0; i < activeLinks.length; i++) {
       var thisel = activeLinks[i]
       if (thisel.querySelectorAll('.js-link')[0].getAttribute('data-position').toString() !== current.toString()) {
@@ -338,7 +475,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
   }
 
-  Gemstepnav.prototype.setActiveStepClass = function () {
+  setActiveStepClass() {
     // remove the 'active/open' state from all steps
     var allActiveSteps = this.$module.querySelectorAll('.' + this.$module.activeStepClass)
     for (var i = 0; i < allActiveSteps.length; i++) {
@@ -355,7 +492,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     }
   }
 
-  Gemstepnav.prototype.bindToggleShowHideAllButton = function (stepNavTracker) {
+  bindToggleShowHideAllButton(stepNavTracker) {
     var that = this
 
     this.$module.showOrHideAllButton.addEventListener('click', function (event) {
@@ -375,7 +512,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     })
   }
 
-  Gemstepnav.prototype.setShowHideAllText = function () {
+  setShowHideAllText() {
     var shownSteps = this.$module.querySelectorAll('.step-is-shown').length
     var showAllChevon = this.$module.showOrHideAllButton.querySelector('.js-step-controls-button-icon')
     var showAllButtonText = this.$module.showOrHideAllButton.querySelector('.js-step-controls-button-text')
@@ -390,150 +527,6 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       showAllChevon.classList.add('gem-c-step-nav__chevron--down')
     }
   }
+}
 
-  Gemstepnav.prototype.StepView = function (stepElement, $module) {
-    this.stepElement = stepElement
-    this.stepContent = this.stepElement.querySelectorAll('.js-panel')[0]
-    this.titleButton = this.stepElement.querySelectorAll('.js-step-title-button')[0]
-    var textElement = this.stepElement.querySelectorAll('.js-step-title-text')[0]
-    this.title = textElement.textContent || textElement.innerText
-    this.title = this.title.replace(/^\s+|\s+$/g, '') // this is 'trim' but supporting IE8
-    this.showText = $module.actions.showText
-    this.hideText = $module.actions.hideText
-    this.upChevronSvg = $module.upChevronSvg
-    this.downChevronSvg = $module.downChevronSvg
-
-    this.show = function () {
-      this.setIsShown(true)
-    }
-
-    this.hide = function () {
-      this.setIsShown(false)
-    }
-
-    this.toggle = function () {
-      this.setIsShown(this.isHidden())
-    }
-
-    this.setIsShown = function (isShown) {
-      var toggleLink = this.stepElement.querySelectorAll('.js-toggle-link')[0]
-      var toggleLinkText = toggleLink.querySelector('.js-toggle-link-text')
-      var stepChevron = toggleLink.querySelector('.js-toggle-link-icon')
-
-      if (isShown) {
-        this.stepElement.classList.add('step-is-shown')
-        this.stepContent.classList.remove('js-hidden')
-        toggleLinkText.innerHTML = this.hideText
-        stepChevron.classList.remove('gem-c-step-nav__chevron--down')
-      } else {
-        this.stepElement.classList.remove('step-is-shown')
-        this.stepContent.classList.add('js-hidden')
-        toggleLinkText.innerHTML = this.showText
-        stepChevron.classList.add('gem-c-step-nav__chevron--down')
-      }
-      this.titleButton.setAttribute('aria-expanded', isShown)
-    }
-
-    this.isShown = function () {
-      return this.stepElement.classList.contains('step-is-shown')
-    }
-
-    this.isHidden = function () {
-      return !this.isShown()
-    }
-
-    this.numberOfContentItems = function () {
-      return this.stepContent.querySelectorAll('.js-link').length
-    }
-  }
-
-  Gemstepnav.prototype.StepToggleClick = function (event, stepView, stepNavTracker, stepIsOptional, stepNavSize) {
-    this.target = event.target
-    this.stepIsOptional = stepIsOptional
-    this.stepNavSize = stepNavSize
-
-    this.trackClick = function () {
-      var trackingOptions = { label: this.trackingLabel(), dimension28: stepView.numberOfContentItems().toString() }
-      stepNavTracker.trackClick('pageElementInteraction', this.trackingAction(), trackingOptions)
-    }
-
-    this.trackingLabel = function () {
-      var clickedNearbyToggle = this.target.closest('.js-step').querySelectorAll('.js-toggle-panel')[0]
-      return clickedNearbyToggle.getAttribute('data-position') + ' - ' + stepView.title + ' - ' + this.locateClickElement() + ': ' + this.stepNavSize + this.isOptional()
-    }
-
-    // returns index of the clicked step in the overall number of steps
-    this.stepIndex = function () { // eslint-disable-line no-unused-vars
-      return this.$module.steps.index(stepView.element) + 1
-    }
-
-    this.trackingAction = function () {
-      return (stepView.isHidden() ? 'stepNavHidden' : 'stepNavShown')
-    }
-
-    this.locateClickElement = function () {
-      if (this.clickedOnIcon()) {
-        return this.iconType() + ' click'
-      } else if (this.clickedOnHeading()) {
-        return 'Heading click'
-      } else {
-        return 'Elsewhere click'
-      }
-    }
-
-    this.clickedOnIcon = function () {
-      return this.target.classList.contains('js-toggle-link')
-    }
-
-    this.clickedOnHeading = function () {
-      return this.target.classList.contains('js-step-title-text')
-    }
-
-    this.iconType = function () {
-      return (stepView.isHidden() ? 'Minus' : 'Plus')
-    }
-
-    this.isOptional = function () {
-      return (this.stepIsOptional ? ' ; optional' : '')
-    }
-  }
-
-  Gemstepnav.prototype.ComponentLinkClick = function (event, stepNavTracker, linkPosition, size) {
-    this.size = size
-    this.target = event.target
-
-    this.trackClick = function () {
-      var trackingOptions = { label: this.target.getAttribute('href') + ' : ' + this.size }
-      var dimension28 = this.target.closest('.gem-c-step-nav__list').getAttribute('data-length')
-
-      if (dimension28) {
-        trackingOptions.dimension28 = dimension28
-      }
-
-      stepNavTracker.trackClick('stepNavLinkClicked', linkPosition, trackingOptions)
-    }
-  }
-
-  // A helper that sends a custom event request to Google Analytics if
-  // the GOVUK module is setup
-  Gemstepnav.prototype.StepNavTracker = function (uniqueId, totalSteps, totalLinks) {
-    this.totalSteps = totalSteps
-    this.totalLinks = totalLinks
-    this.uniqueId = uniqueId
-
-    this.trackClick = function (category, action, options) {
-      // dimension26 records the total number of expand/collapse steps in this step nav
-      // dimension27 records the total number of links in this step nav
-      // dimension28 records the number of links in the step that was shown/hidden (handled in click event)
-      if (window.GOVUK.analytics && window.GOVUK.analytics.trackEvent) {
-        options = options || {}
-        options.dimension26 = options.dimension26 || this.totalSteps.toString()
-        options.dimension27 = options.dimension27 || this.totalLinks.toString()
-        options.dimension96 = options.dimension96 || this.uniqueId
-        window.GOVUK.analytics.trackEvent(category, action, options)
-      }
-    }
-  }
-
-  Modules.Gemstepnav = Gemstepnav
-})(window.GOVUK.Modules)
+export default StepByStepNavigation;
