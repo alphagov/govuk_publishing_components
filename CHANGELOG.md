@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Change how GA4 index parameter works ([PR #3277](https://github.com/alphagov/govuk_publishing_components/pull/3277))
+
 ## 34.13.0
 
 * Set up gem so stylesheets can be loaded individually, **Note:** this change is experimental, it will be used in the `frontend` application first, please do not implement this feature in other applications ([PR #3014](https://github.com/alphagov/govuk_publishing_components/pull/3014))

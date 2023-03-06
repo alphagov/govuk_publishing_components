@@ -96,12 +96,18 @@ describe('GA4 click tracker', function () {
     beforeEach(function () {
       attributes = {
         event_name: 'navigation',
-        type: 'a link'
+        type: 'a link',
+        index: {
+          index_link: 1
+        }
       }
       expected.event = 'event_data'
       expected.event_data.type = 'a link'
       expected.event_data.method = 'primary click'
       expected.event_data.external = 'false'
+      expected.event_data.index = {
+        index_link: 1
+      }
     })
 
     it('does not track anything without a data-ga4-link attribute', function () {

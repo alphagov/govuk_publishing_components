@@ -29,7 +29,9 @@ In the example above, the following would be pushed to the dataLayer. Note that 
     'type': 'something',
     'url': null,
     'text': 'Click me',
-    'index': '0',
+    'index': {
+      index_section: '0'
+    },
     'index_total': '1',
     'section': null,
     'action': null,
@@ -83,7 +85,9 @@ When a user clicks 'Show all sections' the following information is pushed to th
     'event_name': 'select_content',
     'type': 'accordion',
     'text': 'Show all sections',
-    'index': '0',
+    'index': {
+      index_section: '0'
+    },
     'index-total': '5',
     'action': 'opened',
   }
@@ -99,7 +103,9 @@ When a user clicks 'Hide all sections' the following information is pushed to th
     'event_name': 'select_content',
     'type': 'accordion',
     'text': 'Hide all sections',
-    'index': '0',
+    'index': {
+      index_section: '0'
+    },
     'index-total': '5',
     'action': 'closed',
   }

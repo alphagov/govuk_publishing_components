@@ -94,12 +94,16 @@ describe('Google Analytics auto tracker', function () {
       expected.event = 'event_data'
       expected.event_data.event_name = 'select_content'
       expected.event_data.type = 'tabs'
+      expected.event_data.index = {
+        index_section: 7
+      }
       expected.govuk_gem_version = 'aVersion'
 
       var attributes = {
         event_name: 'select_content',
         type: 'tabs',
-        not_a_schema_attribute: 'something'
+        not_a_schema_attribute: 'something',
+        index: '7'
       }
       element.setAttribute('data-ga4-auto', JSON.stringify(attributes))
       new GOVUK.Modules.Ga4AutoTracker(element).init()
