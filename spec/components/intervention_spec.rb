@@ -54,10 +54,15 @@ describe "Intervention", type: :view do
     assert_empty render_component({})
   end
 
+  it "doesn't render anything if no suggestion text is provided" do
+    assert_empty render_component(dismiss_text: "Hide this suggestion")
+  end
+
   describe "hide" do
     it "hides the banner if specified" do
       render_component(
-        suggestion_link_text: "Travel abroad",
+        suggestion_text: "Based on your browsing you might be interested in",
+        suggestion_link_text: "Travel abroad: step by step",
         suggestion_link_url: "/travel-abroad",
         hide: true,
       )
@@ -69,7 +74,8 @@ describe "Intervention", type: :view do
   describe "new tab" do
     it "renders with target=_'blank' with new_tab option" do
       render_component(
-        suggestion_link_text: "Travel abroad",
+        suggestion_text: "Based on your browsing you might be interested in",
+        suggestion_link_text: "Travel abroad: step by step",
         suggestion_link_url: "/travel-abroad",
         new_tab: true,
       )
@@ -79,7 +85,8 @@ describe "Intervention", type: :view do
 
     it "renders with security attributes" do
       render_component(
-        suggestion_link_text: "Travel abroad",
+        suggestion_text: "Based on your browsing you might be interested in",
+        suggestion_link_text: "Travel abroad: step by step",
         suggestion_link_url: "/travel-abroad",
         new_tab: true,
       )
@@ -89,7 +96,8 @@ describe "Intervention", type: :view do
 
     it "renders with security attributes for external links" do
       render_component(
-        suggestion_link_text: "Travel abroad",
+        suggestion_text: "Based on your browsing you might be interested in",
+        suggestion_link_text: "Travel back in time",
         suggestion_link_url: "https://https://www.nationalarchives.gov.uk/",
         new_tab: true,
       )
@@ -99,7 +107,8 @@ describe "Intervention", type: :view do
 
     it "renders no target attribute without the new_tab option" do
       render_component(
-        suggestion_link_text: "Travel abroad",
+        suggestion_text: "Based on your browsing you might be interested in",
+        suggestion_link_text: "Travel abroad: step by step",
         suggestion_link_url: "/travel-abroad",
       )
 
@@ -108,22 +117,24 @@ describe "Intervention", type: :view do
 
     it "appends accesible link text" do
       render_component(
+        suggestion_text: "See the world.",
         suggestion_link_text: "Travel abroad",
         suggestion_link_url: "/travel-abroad",
         new_tab: true,
       )
 
-      assert_select ".gem-c-intervention", text: "Travel abroad (opens in a new tab)"
+      assert_select ".gem-c-intervention", text: /See the world.\s+Travel abroad \(opens in a new tab\)/
     end
 
     it "doesn't append accessible link text if link text is already included" do
       render_component(
+        suggestion_text: "See the world.",
         suggestion_link_text: "Travel abroad (opens in a new tab) guidance",
         suggestion_link_url: "/travel-abroad",
         new_tab: true,
       )
 
-      assert_select ".gem-c-intervention", text: "Travel abroad (opens in a new tab) guidance"
+      assert_select ".gem-c-intervention", text: /See the world.\s+Travel abroad \(opens in a new tab\) guidance/
     end
   end
 end
