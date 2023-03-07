@@ -11,19 +11,19 @@ describe "Auditing the components in applications" do
       application_found: true,
       components_found: [
         {
-          location: "templates",
+          location: "template",
           components: ["accordion", "back link", "contextual breadcrumbs", "contextual footer", "contextual sidebar", "details", "error summary", "feedback", "govspeak", "input", "layout footer", "layout for admin", "layout for public", "layout header", "notice", "skip link", "tabs", "title"],
         },
         {
-          location: "stylesheets",
+          location: "stylesheet",
           components: %w[all],
         },
         {
-          location: "print_stylesheets",
+          location: "print_stylesheet",
           components: [],
         },
         {
-          location: "javascripts",
+          location: "javascript",
           components: %w[all],
         },
         {

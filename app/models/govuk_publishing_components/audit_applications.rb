@@ -27,10 +27,10 @@ module GovukPublishingComponents
         @find_all_javascripts = /\/\/ *= require govuk_publishing_components\/all_components/
         find_javascripts = /(?<=require govuk_publishing_components\/components\/)[a-zA-Z_-]+/
 
-        components_in_templates = find_components(templates, find_components, "templates", true) || []
-        components_in_stylesheets = find_components(stylesheets, find_stylesheets, "stylesheets", false) || []
-        components_in_print_stylesheets = find_components(stylesheets, find_print_stylesheets, "print_stylesheets", false) || []
-        components_in_javascripts = find_components(javascripts, find_javascripts, "javascripts", false) || []
+        components_in_templates = find_components(templates, find_components, "template", true) || []
+        components_in_stylesheets = find_components(stylesheets, find_stylesheets, "stylesheet", false) || []
+        components_in_print_stylesheets = find_components(stylesheets, find_print_stylesheets, "print_stylesheet", false) || []
+        components_in_javascripts = find_components(javascripts, find_javascripts, "javascript", false) || []
 
         ruby_paths = %w[/app/helpers/ /app/presenters/ /lib/]
         components_in_ruby = []
@@ -41,19 +41,19 @@ module GovukPublishingComponents
 
         components_found = [
           {
-            location: "templates",
+            location: "template",
             components: components_in_templates,
           },
           {
-            location: "stylesheets",
+            location: "stylesheet",
             components: components_in_stylesheets,
           },
           {
-            location: "print_stylesheets",
+            location: "print_stylesheet",
             components: components_in_print_stylesheets,
           },
           {
-            location: "javascripts",
+            location: "javascript",
             components: components_in_javascripts,
           },
           {
@@ -97,9 +97,9 @@ module GovukPublishingComponents
           components_found << find_match(find, src, type)
         end
 
-        get_helper_references(file, src) if %w[ruby templates].include?(type)
+        get_helper_references(file, src) if %w[ruby template].include?(type)
 
-        if type == "javascripts"
+        if type == "javascript"
           jquery_references = find_code_references(file, src, /\$\(/)
           @jquery_references << jquery_references if jquery_references
         else
@@ -130,9 +130,9 @@ module GovukPublishingComponents
     # looks for components in the given src of a file
     # returns an array of component names or an empty array
     def find_match(find, src, type)
-      return %w[all] if src.match(@find_all_stylesheets) && type == "stylesheets"
-      return %w[all] if src.match(@find_all_print_stylesheets) && type == "print_stylesheets"
-      return %w[all] if src.match(@find_all_javascripts) && type == "javascripts"
+      return %w[all] if src.match(@find_all_stylesheets) && type == "stylesheet"
+      return %w[all] if src.match(@find_all_print_stylesheets) && type == "print_stylesheet"
+      return %w[all] if src.match(@find_all_javascripts) && type == "javascript"
 
       matches = src.scan(find)
       return [] unless matches.any?
