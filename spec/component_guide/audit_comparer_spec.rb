@@ -135,10 +135,6 @@ describe "Comparing data from an application with the components" do
             ],
           },
           {
-            location: "print_stylesheet",
-            components: [],
-          },
-          {
             location: "javascript",
             components: [],
           },
@@ -179,10 +175,6 @@ describe "Comparing data from an application with the components" do
             ],
           },
           {
-            location: "print_stylesheet",
-            components: [],
-          },
-          {
             location: "javascript",
             components: [],
           },
@@ -214,10 +206,6 @@ describe "Comparing data from an application with the components" do
           {
             name: "Components in stylesheets",
             value: "component one, component two, component three",
-          },
-          {
-            name: "Components in print stylesheets",
-            value: "",
           },
           {
             name: "Components in javascripts",
@@ -278,10 +266,6 @@ describe "Comparing data from an application with the components" do
             components: [],
           },
           {
-            location: "print_stylesheet",
-            components: [],
-          },
-          {
             location: "javascript",
             components: [],
           },
@@ -310,10 +294,6 @@ describe "Comparing data from an application with the components" do
           },
           {
             name: "Components in stylesheets",
-            value: "",
-          },
-          {
-            name: "Components in print stylesheets",
             value: "",
           },
           {
@@ -368,10 +348,6 @@ describe "Comparing data from an application with the components" do
             ],
           },
           {
-            location: "print_stylesheet",
-            components: [],
-          },
-          {
             location: "javascript",
             components: [],
           },
@@ -399,12 +375,6 @@ describe "Comparing data from an application with the components" do
             location: "stylesheet",
             components: [
               "component one",
-              "component two",
-            ],
-          },
-          {
-            location: "print_stylesheet",
-            components: [
               "component two",
             ],
           },
@@ -439,10 +409,6 @@ describe "Comparing data from an application with the components" do
           {
             name: "Components in stylesheets",
             value: "component one",
-          },
-          {
-            name: "Components in print stylesheets",
-            value: "",
           },
           {
             name: "Components in javascripts",
@@ -487,10 +453,6 @@ describe "Comparing data from an application with the components" do
             value: "component one, component two",
           },
           {
-            name: "Components in print stylesheets",
-            value: "component two",
-          },
-          {
             name: "Components in javascripts",
             value: "component one",
           },
@@ -529,10 +491,6 @@ describe "Comparing data from an application with the components" do
             components: %w[all],
           },
           {
-            location: "print_stylesheet",
-            components: %w[all],
-          },
-          {
             location: "javascript",
             components: %w[all],
           },
@@ -562,10 +520,6 @@ describe "Comparing data from an application with the components" do
           },
           {
             name: "Components in stylesheets",
-            value: "all",
-          },
-          {
-            name: "Components in print stylesheets",
             value: "all",
           },
           {
@@ -615,10 +569,6 @@ describe "Comparing data from an application with the components" do
             ],
           },
           {
-            location: "print_stylesheet",
-            components: %w[all],
-          },
-          {
             location: "javascript",
             components: %w[all],
           },
@@ -653,10 +603,6 @@ describe "Comparing data from an application with the components" do
           {
             name: "Components in stylesheets",
             value: "component one, component three",
-          },
-          {
-            name: "Components in print stylesheets",
-            value: "all",
           },
           {
             name: "Components in javascripts",
@@ -729,10 +675,6 @@ describe "Comparing data from an application with the components" do
               "component two",
               "component three",
             ],
-          },
-          {
-            location: "print_stylesheet",
-            components: [],
           },
           {
             location: "javascript",

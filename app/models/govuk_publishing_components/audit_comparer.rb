@@ -57,12 +57,10 @@ module GovukPublishingComponents
           application_uses_static = @applications_using_static.include?(result[:name])
           templates = result[:components_found].find { |c| c[:location] == "template" }
           stylesheets = result[:components_found].find { |c| c[:location] == "stylesheet" }
-          print_stylesheets = result[:components_found].find { |c| c[:location] == "print_stylesheet" }
           javascripts = result[:components_found].find { |c| c[:location] == "javascript" }
           ruby = result[:components_found].find { |c| c[:location] == "ruby" }
 
           @all_stylesheets = true if stylesheets[:components].include?("all")
-          @all_print_stylesheets = true if print_stylesheets[:components].include?("all")
           @all_javascripts = true if javascripts[:components].include?("all")
 
           templates[:components] = include_any_components_within_components(templates[:components])
@@ -83,10 +81,6 @@ module GovukPublishingComponents
             {
               name: "Components in stylesheets",
               value: stylesheets[:components].join(", "),
-            },
-            {
-              name: "Components in print stylesheets",
-              value: print_stylesheets[:components].join(", "),
             },
             {
               name: "Components in javascripts",
@@ -209,7 +203,7 @@ module GovukPublishingComponents
           components: code.map { |c| c[:components] }.flatten.uniq.sort,
         },
       ]
-      assets = components.select { |c| c[:location] == "stylesheet" || c[:location] == "print_stylesheet" || c[:location] == "javascript" }
+      assets = components.select { |c| c[:location] == "stylesheet" || c[:location] == "javascript" }
 
       warnings << find_missing_items(code, assets)
       warnings << find_missing_items(assets, code)

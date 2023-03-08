@@ -21,15 +21,11 @@ module GovukPublishingComponents
         @find_all_stylesheets = /@import ["']{1}govuk_publishing_components\/all_components/
         find_stylesheets = /(?<=@import ["']{1}govuk_publishing_components\/components\/)(?!print\/)+[a-zA-Z_-]+(?=['"])/
 
-        @find_all_print_stylesheets = /@import ["']{1}govuk_publishing_components\/all_components_print/
-        find_print_stylesheets = /(?<=@import ["']{1}govuk_publishing_components\/components\/print\/)[a-zA-Z_-]+(?=['"])/
-
         @find_all_javascripts = /\/\/ *= require govuk_publishing_components\/all_components/
         find_javascripts = /(?<=require govuk_publishing_components\/components\/)[a-zA-Z_-]+/
 
         components_in_templates = find_components(templates, find_components, "template", true) || []
         components_in_stylesheets = find_components(stylesheets, find_stylesheets, "stylesheet", false) || []
-        components_in_print_stylesheets = find_components(stylesheets, find_print_stylesheets, "print_stylesheet", false) || []
         components_in_javascripts = find_components(javascripts, find_javascripts, "javascript", false) || []
 
         ruby_paths = %w[/app/helpers/ /app/presenters/ /lib/]
@@ -47,10 +43,6 @@ module GovukPublishingComponents
           {
             location: "stylesheet",
             components: components_in_stylesheets,
-          },
-          {
-            location: "print_stylesheet",
-            components: components_in_print_stylesheets,
           },
           {
             location: "javascript",
@@ -131,7 +123,6 @@ module GovukPublishingComponents
     # returns an array of component names or an empty array
     def find_match(find, src, type)
       return %w[all] if src.match(@find_all_stylesheets) && type == "stylesheet"
-      return %w[all] if src.match(@find_all_print_stylesheets) && type == "print_stylesheet"
       return %w[all] if src.match(@find_all_javascripts) && type == "javascript"
 
       matches = src.scan(find)

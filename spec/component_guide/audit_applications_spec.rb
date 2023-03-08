@@ -19,10 +19,6 @@ describe "Auditing the components in applications" do
           components: %w[all],
         },
         {
-          location: "print_stylesheet",
-          components: [],
-        },
-        {
           location: "javascript",
           components: %w[all],
         },
