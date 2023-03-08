@@ -13,6 +13,7 @@
 * Fix smart answer PII issue ([PR #3291](https://github.com/alphagov/govuk_publishing_components/pull/3291))
 * Update accordion index parameter ([PR #3290](https://github.com/alphagov/govuk_publishing_components/pull/3290))
 * Add GA4 tracking to step by step links ([PR #3289](https://github.com/alphagov/govuk_publishing_components/pull/3289))
+* **BREAKING** Expand use of component wrapper helper ([PR #3254](https://github.com/alphagov/govuk_publishing_components/pull/3254))
 
 ## 34.14.0
 
