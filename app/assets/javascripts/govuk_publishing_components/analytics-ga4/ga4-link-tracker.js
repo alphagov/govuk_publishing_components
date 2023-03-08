@@ -61,6 +61,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   Ga4LinkTracker.prototype.trackClick = function (event) {
     var element = event.target
+    var PIIRemover = new window.GOVUK.analyticsGa4.PIIRemover()
 
     // don't track this link if it's already being tracked by the ecommerce tracker
     if (element.closest('[data-ga4-ecommerce-path]')) {
@@ -81,13 +82,17 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       var text = data.text || event.target.textContent
       data.text = window.GOVUK.analyticsGa4.core.trackFunctions.removeLinesAndExtraSpaces(text)
       var url = data.url || this.findLink(event.target).getAttribute('href')
-      data.url = window.GOVUK.analyticsGa4.core.trackFunctions.removeCrossDomainParams(url)
+      data.url = window.GOVUK.analyticsGa4.core.trackFunctions.removeCrossDomainParams(PIIRemover.stripPII(url))
       data.link_domain = window.GOVUK.analyticsGa4.core.trackFunctions.populateLinkDomain(data.url)
       data.link_path_parts = window.GOVUK.analyticsGa4.core.trackFunctions.populateLinkPathParts(data.url)
       data.method = window.GOVUK.analyticsGa4.core.trackFunctions.getClickType(event)
       data.external = window.GOVUK.analyticsGa4.core.trackFunctions.isExternalLink(data.url) ? 'true' : 'false'
       data.index = event.target.getAttribute('data-ga4-index') ? parseInt(event.target.getAttribute('data-ga4-index')) : data.index || undefined
       data.index = window.GOVUK.analyticsGa4.core.trackFunctions.createIndexObject(data.index)
+
+      if (data.type === 'smart answer' && data.action === 'change response') {
+        data.section = PIIRemover.stripPIIWithOverride(data.section, true, true)
+      }
 
       var schemas = new window.GOVUK.analyticsGa4.Schemas()
       var schema = schemas.mergeProperties(data, 'event_data')

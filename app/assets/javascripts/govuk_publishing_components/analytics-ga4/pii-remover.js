@@ -4,7 +4,8 @@
   var GOVUK = global.GOVUK || {}
   var EMAIL_PATTERN = /[^\s=/?&#]+(?:@|%40)[^\s=/?&]+/g
   var POSTCODE_PATTERN = /\b[A-PR-UWYZ][A-HJ-Z]?[0-9][0-9A-HJKMNPR-Y]?(?:[\s+]|%20)*[0-9](?!refund)[ABD-HJLNPQ-Z]{2,3}\b/gi
-  var DATE_PATTERN = /\d{4}(-?)\d{2}(-?)\d{2}/g
+  var DATE_PATTERN_NUMERIC = /\d{4}(-?)\d{2}(-?)\d{2}/g
+  var DATE_PATTERN_STRING = /\d{1,2}\s(January|February|March|April|May|June|July|August|September|October|November|December)\s\d{4}/g
   var ESCAPE_REGEX_PATTERN = /[|\\{}()[\]^$+*?.]/g
 
   // specific URL parameters to be redacted from accounts URLs
@@ -85,7 +86,8 @@
     stripped = this.stripQueryStringParameters(stripped)
 
     if (this.stripDatePII === true) {
-      stripped = stripped.replace(DATE_PATTERN, '[date]')
+      stripped = stripped.replace(DATE_PATTERN_NUMERIC, '[date]')
+      stripped = stripped.replace(DATE_PATTERN_STRING, '[date]')
     }
     if (this.stripPostcodePII === true) {
       stripped = stripped.replace(POSTCODE_PATTERN, '[postcode]')
