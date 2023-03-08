@@ -62,7 +62,7 @@ window.GOVUK.Modules.GovukAccordion = window.GOVUKFrontend.Accordion;
     var isGa4Enabled = dataModule ? dataModule.indexOf('ga4-event-tracker') !== -1 : false
     if (isGa4Enabled) {
       var indexTotal = this.$module.querySelectorAll('.govuk-accordion__section').length
-      var showAllAttributesGa4 = { event_name: 'select_content', type: 'accordion', index: 0, index_total: indexTotal }
+      var showAllAttributesGa4 = { event_name: 'select_content', type: 'accordion', index: { index_section: 0, index_section_count: indexTotal } }
       showAll = this.$module.querySelector(this.showAllControls)
       showAll.setAttribute('data-ga4-event', JSON.stringify(showAllAttributesGa4))
     }

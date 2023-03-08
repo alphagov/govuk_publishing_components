@@ -67,8 +67,10 @@
             event_name: "select_content",
             type: "accordion",
             text: item[:heading][:text],
-            index: index,
-            index_total: items.length
+            index: {
+              index_section: index,
+              index_section_count: items.length,
+            },
           }.to_json
         end
 
