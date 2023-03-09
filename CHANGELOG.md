@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Fix smart answer PII issue ([PR #3291](https://github.com/alphagov/govuk_publishing_components/pull/3291))
+* Update accordion index parameter ([PR #3290](https://github.com/alphagov/govuk_publishing_components/pull/3290))
 
 ## 34.14.0
 
