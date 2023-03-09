@@ -15,6 +15,7 @@
 * Update accordion index parameter ([PR #3290](https://github.com/alphagov/govuk_publishing_components/pull/3290))
 * Add GA4 tracking to step by step links ([PR #3289](https://github.com/alphagov/govuk_publishing_components/pull/3289))
 * **BREAKING** Expand use of component wrapper helper ([PR #3254](https://github.com/alphagov/govuk_publishing_components/pull/3254))
+* Add ga4 link tracking to footer links ([PR #3295](https://github.com/alphagov/govuk_publishing_components/pull/3295))
 
 ## 34.14.0
 

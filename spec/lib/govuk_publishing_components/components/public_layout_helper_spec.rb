@@ -28,7 +28,7 @@ RSpec.describe GovukPublishingComponents::Presenters::PublicLayoutHelper do
       @plh = GovukPublishingComponents::Presenters::PublicLayoutHelper.new({})
     end
 
-    it "generates correct data tracking attributes from a link and track action" do
+    it "generates correct analytics data tracking attributes from a link and track action" do
       track_action = "track_action"
 
       res = {
@@ -38,9 +38,20 @@ RSpec.describe GovukPublishingComponents::Presenters::PublicLayoutHelper do
         track_options: {
           dimension29: "Help",
         },
+        ga4_link: {
+          event_name: "navigation",
+          index: {
+            index_link: "1",
+            index_section: "1",
+            index_section_count: "5",
+          },
+          "index-total": "35",
+          "section": "Test",
+          "type": "footer",
+        },
       }
 
-      expect(@plh.generate_data_attribute(@input[0][:menu_contents][0], track_action)).to eql(res)
+      expect(@plh.generate_data_attribute(@input[0][:menu_contents][0], track_action, { section: "Test", index_section: "1", index_link: "1" })).to eql(res)
     end
 
     it "adds correct data tracking attributes to each link in a list and keeps existing attributes of links" do
@@ -59,12 +70,23 @@ RSpec.describe GovukPublishingComponents::Presenters::PublicLayoutHelper do
               track_options: {
                 dimension29: "Help",
               },
+              ga4_link: {
+                event_name: "navigation",
+                index: {
+                  index_link: "1",
+                  index_section: "1",
+                  index_section_count: "5",
+                },
+                "index-total": "35",
+                "section": "Test",
+                "type": "footer",
+              },
             },
           },
         },
       ]
 
-      expect(@plh.add_data_attributes_to_links(@input[0][:menu_contents], track_action)).to eql(res)
+      expect(@plh.add_data_attributes_to_links(@input[0][:menu_contents], track_action, { section: "Test", index_section: "1" })).to eql(res)
     end
 
     it "adds column sizing to each list of links and data tracking attributes to each link in that list" do
@@ -85,6 +107,17 @@ RSpec.describe GovukPublishingComponents::Presenters::PublicLayoutHelper do
                   track_options: {
                     dimension29: "Help",
                   },
+                  ga4_link: {
+                    event_name: "navigation",
+                    index: {
+                      index_link: "1",
+                      index_section: "1",
+                      index_section_count: "5",
+                    },
+                    "index-total": "35",
+                    section: "Column 1",
+                    type: "footer",
+                  },
                 },
               },
             },
@@ -104,6 +137,17 @@ RSpec.describe GovukPublishingComponents::Presenters::PublicLayoutHelper do
                   track_label: "/contact",
                   track_options: {
                     dimension29: "contact",
+                  },
+                  ga4_link: {
+                    event_name: "navigation",
+                    index: {
+                      index_link: "1",
+                      index_section: "2",
+                      index_section_count: "5",
+                    },
+                    "index-total": "35",
+                    section: "Column 2",
+                    type: "footer",
                   },
                 },
               },

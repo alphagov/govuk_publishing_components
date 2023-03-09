@@ -207,4 +207,27 @@ describe "Layout footer", type: :view do
       expect(link.attr("rel").to_s).to eq "noopener"
     end
   end
+
+  it "adds ga4-link-tracker to the data-module" do
+    render_component(navigation: [])
+    assert_select ".govuk-footer" do |footer|
+      expect(footer.attr("data-module").to_s).to eq "ga4-link-tracker"
+    end
+  end
+
+  it "adds ga4 tracking to the Open Government Licence link" do
+    render_component(navigation: [], ga4_index_total: "35")
+    assert_select ".govuk-footer__licence-description" do |link_parent|
+      expect(link_parent.attr("data-ga4-track-links-only").to_s).to eq ""
+      expect(link_parent.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","section":"Licence","index":{"index_section":"4","index_link":"1","index_section_count":"5"},"text":"Open Government Licence v3.0","index_total":"35","type":"footer"}'
+    end
+  end
+
+  it "adds ga4 tracking to the Crown Copyright link" do
+    render_component(navigation: [], ga4_index_total: "35")
+    assert_select ".govuk-footer__meta-item[data-ga4-link]" do |link_parent|
+      expect(link_parent.attr("data-ga4-track-links-only").to_s).to eq ""
+      expect(link_parent.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","section":"Copyright","index":{"index_section":"5","index_link":"1","index_section_count":"5"},"text":"© Crown copyright","index_total":"35","type":"footer"}'
+    end
+  end
 end
