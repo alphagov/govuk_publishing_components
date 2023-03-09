@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix smart answer PII issue ([PR #3291](https://github.com/alphagov/govuk_publishing_components/pull/3291))
+
 ## 34.14.0
 
 * Change how GA4 index parameter works ([PR #3277](https://github.com/alphagov/govuk_publishing_components/pull/3277))
