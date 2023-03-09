@@ -75,20 +75,20 @@ module GovukPublishingComponents
 
           summary = [
             {
-              name: "Components in templates",
-              value: templates[:components].flatten.uniq.sort.join(", "),
+              name: "In templates",
+              value: templates[:components],
             },
             {
-              name: "Components in stylesheets",
-              value: stylesheets[:components].join(", "),
+              name: "In stylesheets",
+              value: stylesheets[:components],
             },
             {
-              name: "Components in javascripts",
-              value: javascripts[:components].join(", "),
+              name: "In javascripts",
+              value: javascripts[:components],
             },
             {
-              name: "Components in ruby",
-              value: ruby[:components].join(", "),
+              name: "In ruby",
+              value: ruby[:components],
             },
           ]
 

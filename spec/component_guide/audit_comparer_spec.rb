@@ -200,20 +200,20 @@ describe "Comparing data from an application with the components" do
         uses_static: false,
         summary: [
           {
-            name: "Components in templates",
-            value: "component four, component one, component that does not exist, component three",
+            name: "In templates",
+            value: ["component four", "component one", "component that does not exist", "component three"],
           },
           {
-            name: "Components in stylesheets",
-            value: "component one, component two, component three",
+            name: "In stylesheets",
+            value: ["component one", "component two", "component three"],
           },
           {
-            name: "Components in javascripts",
-            value: "",
+            name: "In javascripts",
+            value: [],
           },
           {
-            name: "Components in ruby",
-            value: "component three",
+            name: "In ruby",
+            value: ["component three"],
           },
         ],
         warnings: [
@@ -289,20 +289,20 @@ describe "Comparing data from an application with the components" do
         uses_static: false,
         summary: [
           {
-            name: "Components in templates",
-            value: "component one",
+            name: "In templates",
+            value: ["component one"],
           },
           {
-            name: "Components in stylesheets",
-            value: "",
+            name: "In stylesheets",
+            value: [],
           },
           {
-            name: "Components in javascripts",
-            value: "",
+            name: "In javascripts",
+            value: [],
           },
           {
-            name: "Components in ruby",
-            value: "",
+            name: "In ruby",
+            value: [],
           },
         ],
         warnings: [
@@ -403,20 +403,20 @@ describe "Comparing data from an application with the components" do
         uses_static: true,
         summary: [
           {
-            name: "Components in templates",
-            value: "component four, component one, component two",
+            name: "In templates",
+            value: ["component four", "component one", "component two"],
           },
           {
-            name: "Components in stylesheets",
-            value: "component one",
+            name: "In stylesheets",
+            value: ["component one"],
           },
           {
-            name: "Components in javascripts",
-            value: "",
+            name: "In javascripts",
+            value: [],
           },
           {
-            name: "Components in ruby",
-            value: "",
+            name: "In ruby",
+            value: [],
           },
         ],
         warnings: [
@@ -445,20 +445,20 @@ describe "Comparing data from an application with the components" do
         uses_static: false,
         summary: [
           {
-            name: "Components in templates",
-            value: "component one, component two",
+            name: "In templates",
+            value: ["component one", "component two"],
           },
           {
-            name: "Components in stylesheets",
-            value: "component one, component two",
+            name: "In stylesheets",
+            value: ["component one", "component two"],
           },
           {
-            name: "Components in javascripts",
-            value: "component one",
+            name: "In javascripts",
+            value: ["component one"],
           },
           {
-            name: "Components in ruby",
-            value: "",
+            name: "In ruby",
+            value: [],
           },
         ],
         warnings: [],
@@ -515,20 +515,20 @@ describe "Comparing data from an application with the components" do
         uses_static: false,
         summary: [
           {
-            name: "Components in templates",
-            value: "component one, component two",
+            name: "In templates",
+            value: ["component one", "component two"],
           },
           {
-            name: "Components in stylesheets",
-            value: "all",
+            name: "In stylesheets",
+            value: %w[all],
           },
           {
-            name: "Components in javascripts",
-            value: "all",
+            name: "In javascripts",
+            value: %w[all],
           },
           {
-            name: "Components in ruby",
-            value: "component that does not exist",
+            name: "In ruby",
+            value: ["component that does not exist"],
           },
         ],
         warnings: [
@@ -597,20 +597,20 @@ describe "Comparing data from an application with the components" do
         uses_static: false,
         summary: [
           {
-            name: "Components in templates",
-            value: "component four, component three, component two",
+            name: "In templates",
+            value: ["component four", "component three", "component two"],
           },
           {
-            name: "Components in stylesheets",
-            value: "component one, component three",
+            name: "In stylesheets",
+            value: ["component one", "component three"],
           },
           {
-            name: "Components in javascripts",
-            value: "all",
+            name: "In javascripts",
+            value: %w[all],
           },
           {
-            name: "Components in ruby",
-            value: "component that does not exist",
+            name: "In ruby",
+            value: ["component that does not exist"],
           },
         ],
         gem_style_references: [
