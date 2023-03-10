@@ -12,6 +12,7 @@
 * Fix component auditing ([PR #3292](https://github.com/alphagov/govuk_publishing_components/pull/3292))
 * Fix smart answer PII issue ([PR #3291](https://github.com/alphagov/govuk_publishing_components/pull/3291))
 * Update accordion index parameter ([PR #3290](https://github.com/alphagov/govuk_publishing_components/pull/3290))
+* Add GA4 tracking to step by step links ([PR #3289](https://github.com/alphagov/govuk_publishing_components/pull/3289))
 
 ## 34.14.0
 

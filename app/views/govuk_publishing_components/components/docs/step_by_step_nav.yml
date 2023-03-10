@@ -79,6 +79,8 @@ examples:
       GA4 will then track these elements when they are expanded or collapsed.
       `data-ga4-event` contains a JSON with event data relevant to our tracking. `data-ga4-expandable` enables the value of `aria-expanded` to be captured.
       See the [ga4-event-tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-event-tracker.md) docs for more information.
+      Links are also tracked with the [ga4-link-tracker](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics-ga4/ga4-link-tracker.md).
+      Therefore the `ga4-link-tracker` data module also exists on these step by step components. Any links will contain a data attribute of `ga4-link`, which contains the relevant tracking data as a JSON.
     data:
       ga4_tracking: true
       steps: [
@@ -92,6 +94,15 @@ examples:
             {
               type: 'paragraph',
               text: 'This is also a paragraph of text that intentionally contains lots of words in order to fill the width of the page successfully to check layout and so forth.'
+            },
+            {
+              type: 'list',
+              contents: [
+                {
+                  href: 'https://www.gov.uk/learn-to-drive-a-car',
+                  text: 'This is a link with GA4 tracking attributes on it.'
+                }
+              ]
             }
           ],
         },
@@ -103,6 +114,15 @@ examples:
               type: 'paragraph',
               text: 'Some more text.'
             },
+            {
+              type: 'list',
+              contents: [
+                {
+                  href: 'https://www.nationalarchives.gov.uk',
+                  text: 'This is another link with GA4 tracking attributes on it.'
+                }
+              ]
+            }
           ]
         },
       ]

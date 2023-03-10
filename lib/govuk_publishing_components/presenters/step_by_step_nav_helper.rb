@@ -46,6 +46,7 @@ module GovukPublishingComponents
                 :li,
                 class: "gem-c-step-nav__list-item js-list-item #{link_active(contents[:active])}",
               ) do
+                @options[:ga4_index_total] = element[:contents].length if @options[:ga4_tracking]
                 create_list_item_content(contents)
               end,
             )
@@ -64,11 +65,26 @@ module GovukPublishingComponents
             concat create_context(link[:context])
           end
 
+          ga4_link_data ||= nil
+          if @options[:ga4_tracking]
+            ga4_link_data = {
+              "event_name": "navigation",
+              "type": "step by step",
+              "index": {
+                "index_section": (@options[:step_index] + 1).to_s,
+                "index_link": @link_index.to_s,
+              },
+              "index_total": @options[:ga4_index_total].to_s,
+              "section": @options[:step_title],
+            }.to_json
+          end
+
           link_to(
             href,
             rel: ("external" if href.start_with?("http")),
             data: {
               position: "#{@options[:step_index] + 1}.#{@link_index}",
+              ga4_link: ga4_link_data,
             },
             class: "gem-c-step-nav__link js-link",
           ) do

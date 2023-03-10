@@ -22,7 +22,7 @@
 %>
 <% if steps %>
   <div
-    data-module="gemstepnav<% if ga4_tracking %> ga4-event-tracker<% end %>"
+    data-module="gemstepnav<% if ga4_tracking %> ga4-event-tracker ga4-link-tracker<% end %>"
     <%= "data-ga4-expandable" if ga4_tracking %>
     class="gem-c-step-nav js-hidden <% if small %>govuk-!-display-none-print<% end %> <% unless small %>gem-c-step-nav--large<% end %>"
     <%= "data-remember" if remember_last_step %>
@@ -77,8 +77,10 @@
             <%
               in_substep = false
               options[:step_nav_content_id] = step_nav_content_id
+              options[:step_title] = step[:title]
               options[:step_index] = step_index
               options[:link_index] = 0
+              options[:ga4_tracking] = ga4_tracking
             %>
             <% step[:contents].each do |element| %>
               <%= step_nav_helper.render_step_nav_element(element, options) %>
