@@ -11,21 +11,6 @@ describe "Comparing data from an application with the components" do
       "component three",
       "component four",
     ],
-    component_stylesheets: [
-      "component one",
-      "component two",
-      "component three",
-      "component four",
-    ],
-    component_print_stylesheets: [
-      "component two",
-    ],
-    component_javascripts: [
-      "component one",
-      "component four",
-    ],
-    component_tests: [],
-    component_javascript_tests: [],
     components_containing_components: [
       {
         component: "component three",
@@ -34,7 +19,92 @@ describe "Comparing data from an application with the components" do
         ],
       },
     ],
-    component_file_details: [],
+    component_file_details: [
+      {
+        name: "component one",
+        link: "",
+        template_exists: true,
+        template_lines: 1,
+        template_link: "",
+        stylesheet_exists: true,
+        stylesheet_lines: 1,
+        stylesheet_link: "",
+        print_stylesheet_exists: false,
+        javascript_exists: true,
+        javascript_lines: 1,
+        javascript_link: "",
+        test_exists: true,
+        test_lines: 1,
+        test_link: "",
+        javascript_test_exists: true,
+        javascript_test_lines: 1,
+        javascript_test_link: "",
+        helper_exists: true,
+      },
+      {
+        name: "component two",
+        link: "",
+        template_exists: true,
+        template_lines: 1,
+        template_link: "",
+        stylesheet_exists: true,
+        stylesheet_lines: 1,
+        stylesheet_link: "",
+        print_stylesheet_exists: true,
+        javascript_exists: false,
+        javascript_lines: 1,
+        javascript_link: "",
+        test_exists: true,
+        test_lines: 1,
+        test_link: "",
+        javascript_test_exists: true,
+        javascript_test_lines: 1,
+        javascript_test_link: "",
+        helper_exists: true,
+      },
+      {
+        name: "component three",
+        link: "",
+        template_exists: true,
+        template_lines: 1,
+        template_link: "",
+        stylesheet_exists: true,
+        stylesheet_lines: 1,
+        stylesheet_link: "",
+        print_stylesheet_exists: false,
+        javascript_exists: false,
+        javascript_lines: 1,
+        javascript_link: "",
+        test_exists: true,
+        test_lines: 1,
+        test_link: "",
+        javascript_test_exists: true,
+        javascript_test_lines: 1,
+        javascript_test_link: "",
+        helper_exists: true,
+      },
+      {
+        name: "component four",
+        link: "",
+        template_exists: true,
+        template_lines: 1,
+        template_link: "",
+        stylesheet_exists: true,
+        stylesheet_lines: 1,
+        stylesheet_link: "",
+        print_stylesheet_exists: false,
+        javascript_exists: true,
+        javascript_lines: 1,
+        javascript_link: "",
+        test_exists: true,
+        test_lines: 1,
+        test_link: "",
+        javascript_test_exists: true,
+        javascript_test_lines: 1,
+        javascript_test_link: "",
+        helper_exists: true,
+      },
+    ],
     component_numbers: {},
     component_listing: {},
   }
@@ -50,14 +120,14 @@ describe "Comparing data from an application with the components" do
         application_found: true,
         components_found: [
           {
-            location: "templates",
+            location: "template",
             components: [
               "component one",
               "component that does not exist",
             ],
           },
           {
-            location: "stylesheets",
+            location: "stylesheet",
             components: [
               "component one",
               "component two",
@@ -65,11 +135,7 @@ describe "Comparing data from an application with the components" do
             ],
           },
           {
-            location: "print_stylesheets",
-            components: [],
-          },
-          {
-            location: "javascripts",
+            location: "javascript",
             components: [],
           },
           {
@@ -93,7 +159,7 @@ describe "Comparing data from an application with the components" do
         application_found: true,
         components_found: [
           {
-            location: "templates",
+            location: "template",
             components: [
               "component one",
               "component three",
@@ -101,7 +167,7 @@ describe "Comparing data from an application with the components" do
             ],
           },
           {
-            location: "stylesheets",
+            location: "stylesheet",
             components: [
               "component one",
               "component two",
@@ -109,11 +175,7 @@ describe "Comparing data from an application with the components" do
             ],
           },
           {
-            location: "print_stylesheets",
-            components: [],
-          },
-          {
-            location: "javascripts",
+            location: "javascript",
             components: [],
           },
           {
@@ -138,49 +200,122 @@ describe "Comparing data from an application with the components" do
         uses_static: false,
         summary: [
           {
-            name: "Components in templates",
-            value: "component four, component one, component that does not exist, component three",
+            name: "In templates",
+            value: ["component four", "component one", "component that does not exist", "component three"],
           },
           {
-            name: "Components in stylesheets",
-            value: "component one, component two, component three",
+            name: "In stylesheets",
+            value: ["component one", "component two", "component three"],
           },
           {
-            name: "Components in print stylesheets",
-            value: "",
+            name: "In javascripts",
+            value: [],
           },
           {
-            name: "Components in javascripts",
-            value: "",
-          },
-          {
-            name: "Components in ruby",
-            value: "component three",
+            name: "In ruby",
+            value: ["component three"],
           },
         ],
         warnings: [
           {
             component: "component that does not exist",
-            message: "Included in templates but component does not exist",
+            message: "Included in template but component does not exist",
           },
           {
             component: "component four",
-            message: "Included in code but not stylesheets",
+            message: "Included in code but not stylesheet",
           },
           {
             component: "component four",
-            message: "Included in code but not javascripts",
+            message: "Included in code but not javascript",
           },
           {
             component: "component one",
-            message: "Included in code but not javascripts",
+            message: "Included in code but not javascript",
           },
           {
             component: "component two",
-            message: "Included in stylesheets but not code",
+            message: "Included in stylesheet but not code",
           },
         ],
         warning_count: 5,
+        gem_style_references: [],
+        jquery_references: [],
+        component_locations: {},
+        helper_references: nil,
+      },
+    ]
+
+    expect(comparer.applications_data).to match(expected)
+  end
+
+  it "returns a comparison for an application using individual components where no assets have been included" do
+    application = [
+      {
+        name: "Dummy application",
+        application_found: true,
+        components_found: [
+          {
+            location: "template",
+            components: [
+              "component one",
+            ],
+          },
+          {
+            location: "stylesheet",
+            components: [],
+          },
+          {
+            location: "javascript",
+            components: [],
+          },
+          {
+            location: "ruby",
+            components: [],
+          },
+        ],
+        gem_style_references: [],
+        jquery_references: [],
+        helper_references: nil,
+        component_locations: {},
+      },
+    ]
+    comparer = GovukPublishingComponents::AuditComparer.new(gem, application)
+
+    expected = [
+      {
+        name: "Dummy application",
+        application_found: true,
+        uses_static: false,
+        summary: [
+          {
+            name: "In templates",
+            value: ["component one"],
+          },
+          {
+            name: "In stylesheets",
+            value: [],
+          },
+          {
+            name: "In javascripts",
+            value: [],
+          },
+          {
+            name: "In ruby",
+            value: [],
+          },
+        ],
+        warnings: [
+          {
+            component: "component one",
+            message: "Included in code but not stylesheet",
+          },
+          {
+            component: "component one",
+            message: "Included in code but not javascript",
+          },
+        ],
+        warning_count: 2,
         gem_style_references: [],
         jquery_references: [],
         component_locations: {},
@@ -199,7 +334,7 @@ describe "Comparing data from an application with the components" do
         application_found: true,
         components_found: [
           {
-            location: "templates",
+            location: "template",
             components: [
               "component one",
               "component two",
@@ -207,17 +342,13 @@ describe "Comparing data from an application with the components" do
             ],
           },
           {
-            location: "stylesheets",
+            location: "stylesheet",
             components: [
               "component one",
             ],
           },
           {
-            location: "print_stylesheets",
-            components: [],
-          },
-          {
-            location: "javascripts",
+            location: "javascript",
             components: [],
           },
           {
@@ -234,27 +365,21 @@ describe "Comparing data from an application with the components" do
         application_found: true,
         components_found: [
           {
-            location: "templates",
+            location: "template",
             components: [
               "component one",
               "component two",
             ],
           },
           {
-            location: "stylesheets",
+            location: "stylesheet",
             components: [
               "component one",
               "component two",
             ],
           },
           {
-            location: "print_stylesheets",
-            components: [
-              "component two",
-            ],
-          },
-          {
-            location: "javascripts",
+            location: "javascript",
             components: [
               "component one",
             ],
@@ -278,38 +403,34 @@ describe "Comparing data from an application with the components" do
         uses_static: true,
         summary: [
           {
-            name: "Components in templates",
-            value: "component four, component one, component two",
+            name: "In templates",
+            value: ["component four", "component one", "component two"],
           },
           {
-            name: "Components in stylesheets",
-            value: "component one",
+            name: "In stylesheets",
+            value: ["component one"],
           },
           {
-            name: "Components in print stylesheets",
-            value: "",
+            name: "In javascripts",
+            value: [],
           },
           {
-            name: "Components in javascripts",
-            value: "",
-          },
-          {
-            name: "Components in ruby",
-            value: "",
+            name: "In ruby",
+            value: [],
           },
         ],
         warnings: [
           {
             component: "component four",
-            message: "Included in code but not stylesheets",
+            message: "Included in code but not stylesheet",
           },
           {
             component: "component four",
-            message: "Included in code but not javascripts",
+            message: "Included in code but not javascript",
           },
           {
             component: "component one",
-            message: "Included in stylesheets but already included in static",
+            message: "Included in stylesheet but already included in static",
           },
         ],
         warning_count: 3,
@@ -324,24 +445,20 @@ describe "Comparing data from an application with the components" do
         uses_static: false,
         summary: [
           {
-            name: "Components in templates",
-            value: "component one, component two",
+            name: "In templates",
+            value: ["component one", "component two"],
           },
           {
-            name: "Components in stylesheets",
-            value: "component one, component two",
+            name: "In stylesheets",
+            value: ["component one", "component two"],
           },
           {
-            name: "Components in print stylesheets",
-            value: "component two",
+            name: "In javascripts",
+            value: ["component one"],
           },
           {
-            name: "Components in javascripts",
-            value: "component one",
-          },
-          {
-            name: "Components in ruby",
-            value: "",
+            name: "In ruby",
+            value: [],
           },
         ],
         warnings: [],
@@ -363,22 +480,18 @@ describe "Comparing data from an application with the components" do
         application_found: true,
         components_found: [
           {
-            location: "templates",
+            location: "template",
             components: [
               "component one",
               "component two",
             ],
           },
           {
-            location: "stylesheets",
+            location: "stylesheet",
             components: %w[all],
           },
           {
-            location: "print_stylesheets",
-            components: %w[all],
-          },
-          {
-            location: "javascripts",
+            location: "javascript",
             components: %w[all],
           },
           {
@@ -402,24 +515,20 @@ describe "Comparing data from an application with the components" do
         uses_static: false,
         summary: [
           {
-            name: "Components in templates",
-            value: "component one, component two",
+            name: "In templates",
+            value: ["component one", "component two"],
           },
           {
-            name: "Components in stylesheets",
-            value: "all",
+            name: "In stylesheets",
+            value: %w[all],
           },
           {
-            name: "Components in print stylesheets",
-            value: "all",
+            name: "In javascripts",
+            value: %w[all],
           },
           {
-            name: "Components in javascripts",
-            value: "all",
-          },
-          {
-            name: "Components in ruby",
-            value: "component that does not exist",
+            name: "In ruby",
+            value: ["component that does not exist"],
           },
         ],
         warnings: [
@@ -446,25 +555,21 @@ describe "Comparing data from an application with the components" do
         application_found: true,
         components_found: [
           {
-            location: "templates",
+            location: "template",
             components: [
               "component two",
               "component three",
             ],
           },
           {
-            location: "stylesheets",
+            location: "stylesheet",
             components: [
               "component one",
               "component three",
             ],
           },
           {
-            location: "print_stylesheets",
-            components: %w[all],
-          },
-          {
-            location: "javascripts",
+            location: "javascript",
             components: %w[all],
           },
           {
@@ -492,24 +597,20 @@ describe "Comparing data from an application with the components" do
         uses_static: false,
         summary: [
           {
-            name: "Components in templates",
-            value: "component four, component three, component two",
+            name: "In templates",
+            value: ["component four", "component three", "component two"],
           },
           {
-            name: "Components in stylesheets",
-            value: "component one, component three",
+            name: "In stylesheets",
+            value: ["component one", "component three"],
           },
           {
-            name: "Components in print stylesheets",
-            value: "all",
+            name: "In javascripts",
+            value: %w[all],
           },
           {
-            name: "Components in javascripts",
-            value: "all",
-          },
-          {
-            name: "Components in ruby",
-            value: "component that does not exist",
+            name: "In ruby",
+            value: ["component that does not exist"],
           },
         ],
         gem_style_references: [
@@ -525,15 +626,15 @@ describe "Comparing data from an application with the components" do
           },
           {
             component: "component four",
-            message: "Included in code but not stylesheets",
+            message: "Included in code but not stylesheet",
           },
           {
             component: "component two",
-            message: "Included in code but not stylesheets",
+            message: "Included in code but not stylesheet",
           },
           {
             component: "component one",
-            message: "Included in stylesheets but not code",
+            message: "Included in stylesheet but not code",
           },
           {
             component: "Possible component style override",
@@ -560,7 +661,7 @@ describe "Comparing data from an application with the components" do
         application_found: true,
         components_found: [
           {
-            location: "templates",
+            location: "template",
             components: [
               "component one",
               "component three",
@@ -568,7 +669,7 @@ describe "Comparing data from an application with the components" do
             ],
           },
           {
-            location: "stylesheets",
+            location: "stylesheet",
             components: [
               "component one",
               "component two",
@@ -576,11 +677,7 @@ describe "Comparing data from an application with the components" do
             ],
           },
           {
-            location: "print_stylesheets",
-            components: [],
-          },
-          {
-            location: "javascripts",
+            location: "javascript",
             components: [],
           },
           {
@@ -621,21 +718,6 @@ describe "Comparing data from an application with the components" do
         "component three",
         "component four",
       ],
-      component_stylesheets: [
-        "component one",
-        "component two",
-        "component three",
-        "component four",
-      ],
-      component_print_stylesheets: [
-        "component two",
-      ],
-      component_javascripts: [
-        "component one",
-        "component four",
-      ],
-      component_tests: [],
-      component_javascript_tests: [],
       components_containing_components: [
         {
           component: "component three",
@@ -694,7 +776,92 @@ describe "Comparing data from an application with the components" do
           ],
         },
       ],
-      component_file_details: [],
+      component_file_details: [
+        {
+          name: "component one",
+          link: "",
+          template_exists: true,
+          template_lines: 1,
+          template_link: "",
+          stylesheet_exists: true,
+          stylesheet_lines: 1,
+          stylesheet_link: "",
+          print_stylesheet_exists: false,
+          javascript_exists: true,
+          javascript_lines: 1,
+          javascript_link: "",
+          test_exists: true,
+          test_lines: 1,
+          test_link: "",
+          javascript_test_exists: true,
+          javascript_test_lines: 1,
+          javascript_test_link: "",
+          helper_exists: true,
+        },
+        {
+          name: "component two",
+          link: "",
+          template_exists: true,
+          template_lines: 1,
+          template_link: "",
+          stylesheet_exists: true,
+          stylesheet_lines: 1,
+          stylesheet_link: "",
+          print_stylesheet_exists: true,
+          javascript_exists: false,
+          javascript_lines: 1,
+          javascript_link: "",
+          test_exists: true,
+          test_lines: 1,
+          test_link: "",
+          javascript_test_exists: true,
+          javascript_test_lines: 1,
+          javascript_test_link: "",
+          helper_exists: true,
+        },
+        {
+          name: "component three",
+          link: "",
+          template_exists: true,
+          template_lines: 1,
+          template_link: "",
+          stylesheet_exists: true,
+          stylesheet_lines: 1,
+          stylesheet_link: "",
+          print_stylesheet_exists: false,
+          javascript_exists: false,
+          javascript_lines: 1,
+          javascript_link: "",
+          test_exists: true,
+          test_lines: 1,
+          test_link: "",
+          javascript_test_exists: true,
+          javascript_test_lines: 1,
+          javascript_test_link: "",
+          helper_exists: true,
+        },
+        {
+          name: "component four",
+          link: "",
+          template_exists: true,
+          template_lines: 1,
+          template_link: "",
+          stylesheet_exists: true,
+          stylesheet_lines: 1,
+          stylesheet_link: "",
+          print_stylesheet_exists: false,
+          javascript_exists: true,
+          javascript_lines: 1,
+          javascript_link: "",
+          test_exists: true,
+          test_lines: 1,
+          test_link: "",
+          javascript_test_exists: true,
+          javascript_test_lines: 1,
+          javascript_test_link: "",
+          helper_exists: true,
+        },
+      ],
       component_numbers: {},
     }
 

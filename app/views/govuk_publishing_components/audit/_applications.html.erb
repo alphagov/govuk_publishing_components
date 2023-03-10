@@ -62,11 +62,11 @@
           <% application[:summary].each do |item| %>
             <div class="govuk-summary-list__row">
               <dt class="govuk-summary-list__key">
-                <%= item[:name] %>
+                <%= item[:name] %> (<%= item[:value].length %>)
               </dt>
               <dd class="govuk-summary-list__value">
                 <% if item[:value].length > 0 %>
-                  <%= item[:value] %>
+                  <%= item[:value].join(", ") %>
                 <% else %>
                   None
                 <% end %>

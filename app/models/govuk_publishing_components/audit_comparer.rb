@@ -40,7 +40,7 @@ module GovukPublishingComponents
     end
 
     # turn static data into an object so locations can be easily referenced
-    # should give object of form { "templates" => [], "stylesheets" => [] }
+    # should give object of form { "template" => [], "stylesheet" => [] }
     def clean_static(data)
       Hash[data[:components_found].map { |d| [d[:location], d[:components]] }]
     end
@@ -55,14 +55,12 @@ module GovukPublishingComponents
       results.each do |result|
         if result[:application_found]
           application_uses_static = @applications_using_static.include?(result[:name])
-          templates = result[:components_found].find { |c| c[:location] == "templates" }
-          stylesheets = result[:components_found].find { |c| c[:location] == "stylesheets" }
-          print_stylesheets = result[:components_found].find { |c| c[:location] == "print_stylesheets" }
-          javascripts = result[:components_found].find { |c| c[:location] == "javascripts" }
+          templates = result[:components_found].find { |c| c[:location] == "template" }
+          stylesheets = result[:components_found].find { |c| c[:location] == "stylesheet" }
+          javascripts = result[:components_found].find { |c| c[:location] == "javascript" }
           ruby = result[:components_found].find { |c| c[:location] == "ruby" }
 
           @all_stylesheets = true if stylesheets[:components].include?("all")
-          @all_print_stylesheets = true if print_stylesheets[:components].include?("all")
           @all_javascripts = true if javascripts[:components].include?("all")
 
           templates[:components] = include_any_components_within_components(templates[:components])
@@ -77,24 +75,20 @@ module GovukPublishingComponents
 
           summary = [
             {
-              name: "Components in templates",
-              value: templates[:components].flatten.uniq.sort.join(", "),
+              name: "In templates",
+              value: templates[:components],
             },
             {
-              name: "Components in stylesheets",
-              value: stylesheets[:components].join(", "),
+              name: "In stylesheets",
+              value: stylesheets[:components],
             },
             {
-              name: "Components in print stylesheets",
-              value: print_stylesheets[:components].join(", "),
+              name: "In javascripts",
+              value: javascripts[:components],
             },
             {
-              name: "Components in javascripts",
-              value: javascripts[:components].join(", "),
-            },
-            {
-              name: "Components in ruby",
-              value: ruby[:components].join(", "),
+              name: "In ruby",
+              value: ruby[:components],
             },
           ]
 
@@ -145,7 +139,7 @@ module GovukPublishingComponents
 
         second_group.each do |second|
           second_location = second[:location]
-          second_location = "code" if %w[templates ruby].include?(second_location)
+          second_location = "code" if %w[template ruby].include?(second_location)
           # subtract one group from the other, leaving only those not in both
           in_current = find_missing(second[:components].clone, first[:components].clone)
 
@@ -153,7 +147,18 @@ module GovukPublishingComponents
 
           # now we have a list of 'missing' component assets, check the gem to see if that asset exists
           in_current.each do |component|
-            asset_in_gem = @gem_data.include?("component_#{second_location}".to_sym) && @gem_data["component_#{second_location}".to_sym].include?(component)
+            component_assets = @gem_data[:component_file_details].select { |c| c[:name] == component }
+            if !component_assets.empty?
+              component_assets = component_assets[0]
+              asset_in_gem = if second_location == "code"
+                               component_assets["template_exists".to_sym]
+                             else
+                               component_assets["#{second_location}_exists".to_sym]
+                             end
+            else
+              asset_in_gem = false
+            end
+
             check_static = @static_data && second_location != "code"
             asset_in_static = asset_already_in_static(second_location, component) if check_static
             raise_warning = asset_in_gem && !asset_in_static
@@ -177,7 +182,7 @@ module GovukPublishingComponents
       warnings = []
 
       locations.each do |location|
-        next if location[:location] == "templates" || location[:location] == "ruby"
+        next if location[:location] == "template" || location[:location] == "ruby"
 
         location[:components].each do |component|
           raise_warning = asset_already_in_static(location[:location], component)
@@ -191,14 +196,14 @@ module GovukPublishingComponents
     def warn_about_missing_assets(components)
       warnings = []
 
-      code = components.select { |c| c[:location] == "templates" || c[:location] == "ruby" }
+      code = components.select { |c| c[:location] == "template" || c[:location] == "ruby" }
       code = [
         {
           location: "code",
           components: code.map { |c| c[:components] }.flatten.uniq.sort,
         },
       ]
-      assets = components.select { |c| c[:location] == "stylesheets" || c[:location] == "print_stylesheets" || c[:location] == "javascripts" }
+      assets = components.select { |c| c[:location] == "stylesheet" || c[:location] == "javascript" }
 
       warnings << find_missing_items(code, assets)
       warnings << find_missing_items(assets, code)
