@@ -124,12 +124,12 @@ describe "Super navigation header", type: :view do
 
     assert_select "header[data-module='gem-track-click ga4-event-tracker ga4-link-tracker']"
     assert_select "a[data-ga4-link]", count: 28
-    assert_select 'a[data-ga4-link=\'{"event_name":"navigation","type":"header menu bar","external":"false","text":"GOV.UK","section":"Logo","index":0,"index_total":28}\']'
-    assert_select 'a[data-ga4-link=\'{"event_name":"navigation","type":"header menu bar","index":"1.1.1","index_total":28,"section":"Topics"}\']'
-    assert_select 'a[data-ga4-link=\'{"event_name":"navigation","type":"header menu bar","index":"1.1.16","index_total":28,"section":"Topics"}\']'
-    assert_select 'a[data-ga4-link=\'{"event_name":"navigation","type":"header menu bar","index":"1.2.1","index_total":28,"section":"Government activity"}\']'
-    assert_select 'a[data-ga4-link=\'{"event_name":"navigation","type":"header menu bar","index":"1.2.6","index_total":28,"section":"Government activity"}\']'
-    assert_select 'a[data-ga4-link=\'{"event_name":"navigation","type":"header menu bar","index":"2.2.1","index_total":28,"section":"Popular on GOV.UK"}\']'
-    assert_select 'a[data-ga4-link=\'{"event_name":"navigation","type":"header menu bar","index":"2.2.5","index_total":28,"section":"Popular on GOV.UK"}\']'
+    assert_select 'a[data-ga4-link=\'{"event_name":"navigation","type":"header menu bar","external":"false","text":"GOV.UK","section":"Logo","index":{"index_section":0},"index_total":28}\']'
+    assert_select 'a[data-ga4-link=\'{"event_name":"navigation","type":"header menu bar","index":{"index_section":1,"index_link":1,"index_section_count":4},"index_total":28,"section":"Topics"}\']'
+    assert_select 'a[data-ga4-link=\'{"event_name":"navigation","type":"header menu bar","index":{"index_section":1,"index_link":16,"index_section_count":4},"index_total":28,"section":"Topics"}\']'
+    assert_select 'a[data-ga4-link=\'{"event_name":"navigation","type":"header menu bar","index":{"index_section":2,"index_link":1,"index_section_count":4},"index_total":28,"section":"Government activity"}\']'
+    assert_select 'a[data-ga4-link=\'{"event_name":"navigation","type":"header menu bar","index":{"index_section":2,"index_link":6,"index_section_count":4},"index_total":28,"section":"Government activity"}\']'
+    assert_select 'a[data-ga4-link=\'{"event_name":"navigation","type":"header menu bar","index":{"index_section":4,"index_link":1,"index_section_count":4},"index_total":28,"section":"Popular on GOV.UK"}\']'
+    assert_select 'a[data-ga4-link=\'{"event_name":"navigation","type":"header menu bar","index":{"index_section":4,"index_link":5,"index_section_count":4},"index_total":28,"section":"Popular on GOV.UK"}\']'
   end
 end
