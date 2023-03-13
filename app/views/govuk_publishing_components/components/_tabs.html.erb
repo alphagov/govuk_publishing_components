@@ -6,15 +6,33 @@
   panel_css_classes = %w(govuk-tabs__panel)
   panel_css_classes << "gem-c-tabs__panel--no-border" if panel_border == false
   panel_css_classes = panel_css_classes.join(" ")
+
+  ga4_tracking ||= false
+  data_module = "govuk-tabs"
+  data_module << " ga4-event-tracker" if ga4_tracking
 %>
 <% if tabs.count > 1 %>
-  <div class="govuk-tabs gem-c-tabs" data-module="govuk-tabs">
+  <div class="govuk-tabs gem-c-tabs" data-module="<%= data_module %>">
     <h2 class="govuk-tabs__title">
       <%= t("components.tabs.contents") %>
     </h2>
     <ul class="govuk-tabs__list">
-      <% tabs.each do |tab| %>
+      <% tabs.each_with_index do |tab, index| %>
       <li class="govuk-tabs__list-item">
+        <%
+          tab[:tab_data_attributes] ||= {}
+          if ga4_tracking
+            tab[:tab_data_attributes][:ga4_event] = {
+              event_name: "select_content",
+              type: "tabs",
+              text: tab[:label],
+              index: {
+                index_section: index + 1,
+                index_section_count: tabs.length,
+              },
+            }
+          end
+        %>
         <%= link_to(tab[:label],
                     "##{tab[:id]}",
                     class: "govuk-tabs__tab",
