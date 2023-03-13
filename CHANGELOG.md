@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add GA4 tracking option to tabs component ([PR #3296](https://github.com/alphagov/govuk_publishing_components/pull/3296))
 * Fix component auditing ([PR #3292](https://github.com/alphagov/govuk_publishing_components/pull/3292))
 * Fix smart answer PII issue ([PR #3291](https://github.com/alphagov/govuk_publishing_components/pull/3291))
 * Update accordion index parameter ([PR #3290](https://github.com/alphagov/govuk_publishing_components/pull/3290))
