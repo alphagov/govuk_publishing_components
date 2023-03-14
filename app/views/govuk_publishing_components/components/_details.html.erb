@@ -1,4 +1,6 @@
 <%
+  id ||= "details-#{SecureRandom.hex(4)}"
+
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
 
   open ||= nil
@@ -14,7 +16,7 @@
 
   summary_aria_attributes ||= {}
 %>
-<%= tag.details class: css_classes, data: details_data_attributes, open: open do %>
+<%= tag.details id: id, class: css_classes, data: details_data_attributes, open: open do %>
   <%= tag.summary class: "govuk-details__summary", data: data_attributes, aria: summary_aria_attributes do %>
     <span class="govuk-details__summary-text">
       <%= title %>
@@ -24,3 +26,16 @@
     <%= yield %>
   </div>
 <% end %>
+
+<%= javascript_tag nonce: true, type: "module" do -%>
+    import Details from "<%= asset_path('govuk-esm/components/details/details.mjs') %>";
+    import GemDetails from "<%= asset_path('govuk_publishing_components/modules/details.js') %>";
+
+    const el = document.querySelector("#<%= id %>");
+
+    const gemDetails = new GemAccordion(el);
+    const details = new Details(el);
+
+    details.init();
+    gemDetails.init();
+<% end -%>
