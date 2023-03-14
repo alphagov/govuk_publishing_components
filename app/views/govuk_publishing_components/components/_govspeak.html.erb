@@ -1,4 +1,6 @@
 <%
+  id ||= "govspeak-#{SecureRandom.hex(4)}"
+
   inverse ||= false
   direction_class = "direction-#{direction}" if local_assigns.include?(:direction)
   disable_youtube_expansions = local_assigns.fetch(:disable_youtube_expansions) if local_assigns.include?(:disable_youtube_expansions)
@@ -9,7 +11,7 @@
   classes << "gem-c-govspeak--inverse" if inverse
 %>
 
-<div class="gem-c-govspeak govuk-govspeak <%= classes.join(" ") %>" data-module="govspeak">
+<div id="<%= id %>" class="gem-c-govspeak govuk-govspeak <%= classes.join(" ") %>" data-module="govspeak">
   <% if local_assigns.include?(:content) %>
     <% if content.html_safe? %>
       <%= content %>
@@ -31,3 +33,13 @@
     <%= yield %>
   <% end %>
 </div>
+
+<%= javascript_tag nonce: true, type: "module" do -%>
+    import Govspeak from "<%= asset_path('govuk_publishing_components/modules/govspeak.js') %>";
+
+    const el = document.querySelector("#<%= id %>");
+
+    const govspeak = new Govspeak(el);
+
+    govspeak.init();
+<% end -%>
