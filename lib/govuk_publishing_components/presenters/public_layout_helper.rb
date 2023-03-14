@@ -69,7 +69,6 @@ module GovukPublishingComponents
         footer_links_count += footer_meta[:items].length
 
         footer_links_count += 2 # Amount of links to add to @footer_links_count. This accounts for the OGL link and Crown Copyright link.
-        footer_links_count
       end
 
       def navigation_link_generation_from_locale(links)
