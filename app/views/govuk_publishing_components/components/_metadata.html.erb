@@ -1,4 +1,6 @@
 <%
+  id ||= "metadata-#{SecureRandom.hex(4)}"
+
   from ||= []
   from = Array(from)
 
@@ -17,7 +19,7 @@
   classes << "gem-c-metadata--inverse" if inverse
   classes << shared_helper.get_margin_bottom if local_assigns[:margin_bottom]
 %>
-<%= content_tag :div, class: classes, data: { module: "gem-toggle metadata" } do %>
+<%= content_tag :div, id: id, class: classes, data: { module: "gem-toggle metadata" } do %>
   <dl data-module="gem-track-click">
     <% if from.any? %>
       <dt class="gem-c-metadata__term"><%= t("components.metadata.from") %>:</dt>
@@ -69,3 +71,13 @@
     <% end %>
   </dl>
 <% end %>
+
+<%= javascript_tag nonce: true, type: "module" do -%>
+    import Metadata from "<%= asset_path('govuk_publishing_components/modules/metadata.js') %>";
+
+    const el = document.querySelector("#<%= id %>");
+
+    const metadata = new Metadata(el);
+
+    metadata.init();
+<% end -%>

@@ -1,4 +1,6 @@
 <%
+  id ||= "image-card-#{SecureRandom.hex(4)}"
+
   sizes ||= false
   brand ||= false
 
@@ -30,7 +32,7 @@
   data_modules << "image-card" if card_helper.youtube_video_id
 %>
 <% if card_helper.href || card_helper.extra_details.any? %>
-  <%= content_tag(:div, class: classes, "data-module": data_modules, lang: card_helper.lang) do %>
+  <%= content_tag(:div, id: id, class: classes, "data-module": data_modules, lang: card_helper.lang) do %>
     <div class="gem-c-image-card__text-wrapper">
       <div class="gem-c-image-card__header-and-context-wrapper">
         <% if card_helper.heading_text %>
@@ -70,4 +72,16 @@
     </div>
     <%= card_helper.media %>
   <% end %>
+<% end %>
+
+<% if card_helper.youtube_video_id %>
+  <%= javascript_tag nonce: true, type: "module" do -%>
+      import ImageCard from "<%= asset_path('govuk_publishing_components/modules/image-card.js') %>";
+
+      const el = document.querySelector("#<%= id %>");
+
+      const imageCard = new ImageCard(el);
+
+      imageCard.init();
+  <% end -%>
 <% end %>

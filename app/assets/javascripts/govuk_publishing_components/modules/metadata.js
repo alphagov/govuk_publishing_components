@@ -1,12 +1,9 @@
-window.GOVUK = window.GOVUK || {}
-window.GOVUK.Modules = window.GOVUK.Modules || {};
-
-(function (Modules) {
-  function Metadata ($module) {
+class Metadata {
+  constructor($module) {
     this.$module = $module
   }
 
-  Metadata.prototype.init = function () {
+  init() {
     var seeAllUpdates = this.$module.querySelector('.js-see-all-updates-link')
 
     if (seeAllUpdates) {
@@ -20,8 +17,8 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           }
         })
       }
-    }
+    }    
   }
+}
 
-  Modules.Metadata = Metadata
-})(window.GOVUK.Modules)
+export default Metadata;
