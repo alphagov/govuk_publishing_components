@@ -158,7 +158,7 @@
         with_border: !omit_footer_border,
         navigation: omit_footer_navigation ? nil : layout_helper.footer_navigation,
         meta: layout_helper.footer_meta,
-        ga4_index_total: layout_helper.get_footer_links_count
+        ga4_index_total: layout_helper.footer_links_count
       } %>
     <% end %>
     <%= javascript_include_tag 'application' %>
