@@ -7,6 +7,7 @@
 //= link_directory ../javascripts/component_guide
 //= link_directory ../javascripts/govuk_publishing_components
 //= link_directory ../javascripts/govuk_publishing_components/modules
+//= link_tree govuk-esm/components/
 
 // Pre-compile these specific files
 //= link govuk_publishing_components/vendor/modernizr.js
