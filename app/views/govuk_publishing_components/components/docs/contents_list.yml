@@ -24,6 +24,7 @@ shared_accessibility_criteria:
   - link
 accessibility_excluded_rules:
   - skip-link # The examples for this component are using references to sections on the page that do not exist in examples
+uses_component_wrapper_helper: true
 examples:
   default:
     data:
@@ -57,18 +58,6 @@ examples:
   active_content_link:
     description: 'An active state allows for "you are here" items in a contents list that spans different pages to avoid linking back to the current page.'
     data:
-      contents:
-        - href: "#first-thing"
-          text: First
-        - href: "#two"
-          text: Second
-          active: true
-        - href: "#third-thing"
-          text: Third thing
-  with_custom_aria_label:
-    description: 'An `aria-label` string should be used to contextualise the navigation for assistive technology. Defaults to `Contents` if `aria-label` is not passed.'
-    data:
-      aria_label: "Pages in this guide"
       contents:
         - href: "#first-thing"
           text: First

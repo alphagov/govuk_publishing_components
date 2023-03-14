@@ -3,30 +3,24 @@
 
   cl_helper = GovukPublishingComponents::Presenters::ContentsListHelper.new(local_assigns)
   underline_links ||= false
-  aria_label ||= t("components.contents_list.contents")
   format_numbers ||= false
   brand ||= false
   brand_helper = GovukPublishingComponents::AppHelpers::BrandHelper.new(brand)
   title_fallback = t("components.contents_list.contents", locale: I18n.locale, fallback: false, default: "en")
   classes = %w[gem-c-contents-list]
-  classes << brand_helper.brand_class
-  link_classes = %w[
-    gem-c-contents-list__link
-    govuk-link
-  ]
+  link_classes = %w[gem-c-contents-list__link govuk-link]
   link_classes << brand_helper.color_class
   link_classes << "govuk-link--no-underline" unless underline_links
+
+  local_assigns[:aria] ||= {}
+  component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
+  component_helper.add_class("gem-c-contents-list #{brand_helper.brand_class}")
+  component_helper.add_data_attribute({ module: "gem-track-click" })
+  component_helper.add_aria_attribute({ label: t("components.contents_list.contents") }) unless local_assigns[:aria][:label]
+  component_helper.add_role("navigation")
 -%>
 <% if cl_helper.contents.any? %>
-  <%= content_tag(
-    :nav,
-    class: classes,
-    "aria-label": aria_label,
-    role: "navigation",
-    data: {
-      module: "gem-track-click"
-    }
-  ) do %>
+  <%= tag.nav(**component_helper.all_attributes) do %>
     <%= content_tag(
       :h2, {class: "gem-c-contents-list__title"}.merge(
         title_fallback == "en" ? {:lang => "en",} : {}

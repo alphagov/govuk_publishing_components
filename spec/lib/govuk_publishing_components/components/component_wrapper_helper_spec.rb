@@ -3,12 +3,13 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
     it "accepts basic component attributes" do
       args = {
         id: "id",
-        data: {
+        data_attributes: {
           module: "module",
         },
         aria: {
           labelledby: "element",
         },
+        role: "navigation",
       }
       component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(args)
       expected = {
@@ -19,7 +20,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
         aria: {
           labelledby: "element",
         },
-        class: nil,
+        role: "navigation",
       }
       expect(component_helper.all_attributes).to eql(expected)
     end
@@ -27,9 +28,6 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
     it "accepts valid class names" do
       component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(classes: "gem-c-component govuk-component")
       expected = {
-        id: nil,
-        data: nil,
-        aria: nil,
         class: "gem-c-component govuk-component",
       }
       expect(component_helper.all_attributes).to eql(expected)
@@ -94,7 +92,7 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
     end
 
     it "can add data attributes to already passed data attributes" do
-      helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(data: { module: "original-module", other: "other" })
+      helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(data_attributes: { module: "original-module", other: "other" })
       helper.add_data_attribute({ module: "extra-module", another: "another" })
       expect(helper.all_attributes[:data]).to eql({ module: "original-module extra-module", other: "other", another: "another" })
     end
@@ -114,6 +112,30 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
       expect {
         helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(aria: { label: "something" })
         helper.add_aria_attribute({ potato: "salad" })
+      }.to raise_error(ArgumentError, error)
+    end
+
+    it "does not accept an invalid role" do
+      error = "Role attribute is not recognised"
+      expect {
+        GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(role: "custarddoughnuts")
+      }.to raise_error(ArgumentError, error)
+
+      expect {
+        GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(role: "navigation custarddoughnuts")
+      }.to raise_error(ArgumentError, error)
+    end
+
+    it "does not accept an invalid role when passed" do
+      error = "Role attribute is not recognised"
+      expect {
+        helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(role: "navigation")
+        helper.add_role("custarddoughnuts")
+      }.to raise_error(ArgumentError, error)
+
+      expect {
+        helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(role: "navigation")
+        helper.add_role("alert custarddoughnuts")
       }.to raise_error(ArgumentError, error)
     end
   end
