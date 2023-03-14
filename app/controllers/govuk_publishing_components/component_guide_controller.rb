@@ -5,6 +5,9 @@ module GovukPublishingComponents
     MATCH_COMPONENTS = /(?<=govuk_publishing_components\/components\/)[\/a-zA-Z_-]+(?=['"])/.freeze
 
     def index
+
+      Sprockets.register_mime_type 'application/javascript', extensions: ['.js', '.mjs'], charset: :unicode
+
       @application_path = Rails.root
       @component_gem_path = Gem.loaded_specs["govuk_publishing_components"].full_gem_path
       @component_docs = component_docs.all
