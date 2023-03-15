@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    govuk_publishing_components (34.14.0)
+    govuk_publishing_components (35.0.0)
       govuk_app_config
       govuk_personalisation (>= 0.7.0)
       kramdown
@@ -263,7 +263,7 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rainbow (3.1.1)
-    raindrops (0.20.0)
+    raindrops (0.20.1)
     rake (13.0.6)
     regexp_parser (2.6.2)
     request_store (1.5.1)
