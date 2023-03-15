@@ -118,7 +118,7 @@ describe('Google Analytics form tracking', function () {
         '<input type="text" id="textid2" name="test-text2"/>' +
         '<label for="textid3">Label</label>' +
         '<input type="text" id="textid3" name="test-text3" value="text 3"/>'
-      expected.event_data.text = '[REDACTED],[REDACTED]'
+      expected.event_data.text = '[REDACTED]'
 
       window.GOVUK.triggerEvent(element, 'submit')
       expect(window.dataLayer[0]).toEqual(expected)

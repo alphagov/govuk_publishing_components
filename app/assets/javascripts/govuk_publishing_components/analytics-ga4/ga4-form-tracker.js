@@ -8,6 +8,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     this.module = module
     this.trackingTrigger = 'data-ga4-form' // elements with this attribute get tracked
     this.includeTextInputValues = this.module.hasAttribute('data-ga4-form-include-text')
+    this.redacted = false
   }
 
   Ga4FormTracker.prototype.init = function () {
@@ -88,7 +89,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           var PIIRemover = new window.GOVUK.analyticsGa4.PIIRemover()
           input.answer = PIIRemover.stripPIIWithOverride(elem.value, true, true)
         } else {
-          input.answer = '[REDACTED]'
+          this.redacted = true
         }
       } else if (inputType === 'radio' && elem.checked) {
         input.answer = labelText
@@ -101,18 +102,19 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   Ga4FormTracker.prototype.combineGivenAnswers = function (data) {
-    var answers = ''
+    var answers = []
     for (var i = 0; i < data.length; i++) {
       var answer = data[i].answer
       if (answer) {
-        answers += answer + ','
+        answers.push(answer)
       }
     }
-    // remove the trailing comma
-    if (answers.length) {
-      answers = answers.slice(0, -1)
-      return answers
+    if (this.redacted) {
+      answers.push('[REDACTED]')
     }
+
+    answers = answers.join(',')
+    return answers
   }
 
   Modules.Ga4FormTracker = Ga4FormTracker
