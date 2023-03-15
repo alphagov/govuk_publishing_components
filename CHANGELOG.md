@@ -7,8 +7,9 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 35.0.0
 
+* Fix redaction bug in GA4 form tracker ([PR #3300](https://github.com/alphagov/govuk_publishing_components/pull/3300))
 * Add GA4 tracking option to tabs component ([PR #3296](https://github.com/alphagov/govuk_publishing_components/pull/3296))
 * Fix component auditing ([PR #3292](https://github.com/alphagov/govuk_publishing_components/pull/3292))
 * Fix smart answer PII issue ([PR #3291](https://github.com/alphagov/govuk_publishing_components/pull/3291))
