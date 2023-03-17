@@ -24,8 +24,8 @@ Four shorthand methods for adding each type of stylesheet to the array:
 
 - `add_gem_component_stylesheet`
 - `add_app_component_stylesheet`
-- `add_view`
 - `add_view_stylesheet`
+- `add_stylesheet_path`
 
 The first three take the name of the Sass file relevant to the component or view:
 
@@ -38,13 +38,13 @@ add_app_component_stylesheet("calendar")
 ```
 
 ```ruby
-add_view("homepage")
+add_view_stylesheet("homepage")
 ```
 
 There is also 1 generic method that takes a file path:
 
 ```ruby
-add_view_stylesheet("views/dir-1/_partial.css")
+add_stylesheet_path("views/dir-1/_partial.css")
 ```
 
 ### Precompiling
@@ -132,10 +132,10 @@ end
 
 **Add the app components and views** to the array. This bit will likely take the most time - and really benefits from a comprehensive list of what pages use which templates (and template variations).
 
-Add the `add_view` and `add_app_component_stylesheet` to the top of each partial template that needs it:
+Add the `add_view_stylesheet` and `add_app_component_stylesheet` to the top of each partial template that needs it:
 
 ```rb
-add_view("homepage")
+add_view_stylesheet("homepage")
 ```
 
 ```rb
