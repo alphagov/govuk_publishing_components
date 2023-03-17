@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Update AssetHelper documentation ([PR #3298](https://github.com/alphagov/govuk_publishing_components/pull/3298))
+
 ## 35.0.0
 
 * Fix redaction bug in GA4 form tracker ([PR #3300](https://github.com/alphagov/govuk_publishing_components/pull/3300))
@@ -16,7 +20,6 @@
 * Update accordion index parameter ([PR #3290](https://github.com/alphagov/govuk_publishing_components/pull/3290))
 * Add GA4 tracking to step by step links ([PR #3289](https://github.com/alphagov/govuk_publishing_components/pull/3289))
 * **BREAKING** Expand use of component wrapper helper ([PR #3254](https://github.com/alphagov/govuk_publishing_components/pull/3254))
-* Update AssetHelper documentation ([PR #3298](https://github.com/alphagov/govuk_publishing_components/pull/3298))
 
 ## 34.14.0
 
