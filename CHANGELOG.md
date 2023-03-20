@@ -11,6 +11,7 @@
 
 * Always require AssetHelpers so gem can operate without Rails ([PR #3309](https://github.com/alphagov/govuk_publishing_components/pull/3309))
 * Update AssetHelper documentation ([PR #3298](https://github.com/alphagov/govuk_publishing_components/pull/3298))
+* Ensure color contrast in code examples meets accessibility requirements ([PR #3311](https://github.com/alphagov/govuk_publishing_components/pull/3311))
 
 ## 35.0.0
 
