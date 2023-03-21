@@ -230,13 +230,19 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
           // Only index links that are not search results
           if (!link.getAttribute('data-ga4-ecommerce-path')) {
             totalLinks++
-            link.setAttribute('data-ga4-index', totalLinks)
+            link.setAttribute('data-ga4-index', '{"index_link": "' + totalLinks + '"}')
           }
         }
 
-        var ga4LinkData = JSON.parse(module.getAttribute('data-ga4-link'))
-        ga4LinkData.index_total = totalLinks
-        module.setAttribute('data-ga4-link', JSON.stringify(ga4LinkData))
+        try {
+          var ga4LinkData = JSON.parse(module.getAttribute('data-ga4-link'))
+          ga4LinkData.index_total = totalLinks
+          module.setAttribute('data-ga4-link', JSON.stringify(ga4LinkData))
+        } catch (e) {
+          // if there's a problem with the config, don't start the tracker
+          console.error('Unable to JSON.parse or JSON.stringify index: ' + e.message, window.location)
+          return
+        }
       },
 
       // index is given as a string of the form 1.2.3 or 1.2
