@@ -207,4 +207,196 @@ describe "Layout footer", type: :view do
       expect(link.attr("rel").to_s).to eq "noopener"
     end
   end
+
+  it "adds ga4-link-tracker to the data-module" do
+    render_component(navigation: [])
+    assert_select ".govuk-footer" do |footer|
+      expect(footer.attr("data-module").to_s).to eq "ga4-link-tracker"
+    end
+  end
+
+  it "adds ga4 tracking to navigation links" do
+    render_component(
+      navigation: [
+        {
+          title: "Section 1",
+          columns: 2,
+          items: [
+            {
+              href: "/link1",
+              text: "Benefits",
+            },
+            {
+              href: "/link2",
+              text: "Births, deaths, marriages and care",
+            },
+          ],
+        },
+        {
+          title: "Section 2",
+          columns: 2,
+          items: [
+            {
+              href: "/link3",
+              text: "Benefits",
+            },
+            {
+              href: "/link4",
+              text: "Births, deaths, marriages and care",
+            },
+          ],
+        },
+      ],
+    )
+
+    # Note that in these tests, the index_total and index_section_count will always be 2 higher than the amount
+    # in the above render_component, due to the OGL and Crown Copyright link always being rendered by default.
+    assert_select ".govuk-footer__link[href='/link1']" do |link|
+      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index":{"index_link":"1","index_section":"1","index_section_count":"4"},"index-total":"6","section":"Section 1"}'
+    end
+
+    assert_select ".govuk-footer__link[href='/link2']" do |link|
+      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index":{"index_link":"2","index_section":"1","index_section_count":"4"},"index-total":"6","section":"Section 1"}'
+    end
+
+    assert_select ".govuk-footer__link[href='/link3']" do |link|
+      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index":{"index_link":"1","index_section":"2","index_section_count":"4"},"index-total":"6","section":"Section 2"}'
+    end
+
+    assert_select ".govuk-footer__link[href='/link4']" do |link|
+      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index":{"index_link":"2","index_section":"2","index_section_count":"4"},"index-total":"6","section":"Section 2"}'
+    end
+  end
+
+  it "adds ga4 tracking to meta links" do
+    render_component(
+      meta: {
+        items: [
+          {
+            href: "/link1",
+            text: "Link 1",
+          },
+          {
+            href: "/link2",
+            text: "Link 2",
+          },
+        ],
+      },
+    )
+
+    # Note that in these tests, the index_total and index_section_count will always be 2 higher than the amount
+    # in the above render_component, due to the OGL and Crown Copyright link always being rendered by default.
+    assert_select ".govuk-footer__link[href='/link1']" do |link|
+      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index":{"index_link":"1","index_section":"1","index_section_count":"3"},"index-total":"4","section":"Support links"}'
+    end
+
+    assert_select ".govuk-footer__link[href='/link2']" do |link|
+      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index":{"index_link":"2","index_section":"1","index_section_count":"3"},"index-total":"4","section":"Support links"}'
+    end
+  end
+
+  it "adds ga4 tracking to the Open Government Licence link with no navigation or meta links" do
+    render_component(navigation: [])
+    assert_select ".govuk-footer__licence-description" do |link_parent|
+      expect(link_parent.attr("data-ga4-track-links-only").to_s).to eq ""
+      expect(link_parent.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","section":"Licence","index":{"index_section":"1","index_link":"1","index_section_count":"2"},"text":"Open Government Licence v3.0","index_total":"2","type":"footer"}'
+    end
+  end
+
+  it "adds ga4 tracking to the Crown Copyright link with no navigation or meta links" do
+    render_component(navigation: [])
+    assert_select ".govuk-footer__meta-item[data-ga4-link]" do |link_parent|
+      expect(link_parent.attr("data-ga4-track-links-only").to_s).to eq ""
+      expect(link_parent.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","section":"Copyright","index":{"index_section":"2","index_link":"1","index_section_count":"2"},"text":"© Crown copyright","index_total":"2","type":"footer"}'
+    end
+  end
+
+  it "adds ga4 tracking to a fully populated footer" do
+    render_component(
+      navigation: [
+        {
+          title: "Section 1",
+          columns: 2,
+          items: [
+            {
+              href: "/link1",
+              text: "Benefits",
+            },
+            {
+              href: "/link2",
+              text: "Births, deaths, marriages and care",
+            },
+          ],
+        },
+        {
+          title: "Section 2",
+          columns: 2,
+          items: [
+            {
+              href: "/link3",
+              text: "Benefits",
+            },
+            {
+              href: "/link4",
+              text: "Births, deaths, marriages and care",
+            },
+          ],
+        },
+      ],
+      meta: {
+        items: [
+          {
+            href: "/link5",
+            text: "Link 5",
+          },
+          {
+            href: "/link6",
+            text: "Link 6",
+          },
+        ],
+      },
+    )
+
+    # Note that in these tests, the index_total and index_section_count will always be 2 higher than the amount
+    # in the above render_component, due to the OGL and Crown Copyright link always being rendered by default.
+
+    # Navigation links
+
+    assert_select ".govuk-footer__link[href='/link1']" do |link|
+      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index":{"index_link":"1","index_section":"1","index_section_count":"5"},"index-total":"8","section":"Section 1"}'
+    end
+
+    assert_select ".govuk-footer__link[href='/link2']" do |link|
+      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index":{"index_link":"2","index_section":"1","index_section_count":"5"},"index-total":"8","section":"Section 1"}'
+    end
+
+    assert_select ".govuk-footer__link[href='/link3']" do |link|
+      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index":{"index_link":"1","index_section":"2","index_section_count":"5"},"index-total":"8","section":"Section 2"}'
+    end
+
+    assert_select ".govuk-footer__link[href='/link4']" do |link|
+      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index":{"index_link":"2","index_section":"2","index_section_count":"5"},"index-total":"8","section":"Section 2"}'
+    end
+
+    # Meta links
+    assert_select ".govuk-footer__link[href='/link5']" do |link|
+      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index":{"index_link":"1","index_section":"3","index_section_count":"5"},"index-total":"8","section":"Support links"}'
+    end
+
+    assert_select ".govuk-footer__link[href='/link6']" do |link|
+      expect(link.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","type":"footer","index":{"index_link":"2","index_section":"3","index_section_count":"5"},"index-total":"8","section":"Support links"}'
+    end
+
+    # OGL link
+    assert_select ".govuk-footer__licence-description" do |link_parent|
+      expect(link_parent.attr("data-ga4-track-links-only").to_s).to eq ""
+      expect(link_parent.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","section":"Licence","index":{"index_section":"4","index_link":"1","index_section_count":"5"},"text":"Open Government Licence v3.0","index_total":"8","type":"footer"}'
+    end
+
+    # Crown Copyright link
+    assert_select ".govuk-footer__meta-item[data-ga4-link]" do |link_parent|
+      expect(link_parent.attr("data-ga4-track-links-only").to_s).to eq ""
+      expect(link_parent.attr("data-ga4-link").to_s).to eq '{"event_name":"navigation","section":"Copyright","index":{"index_section":"5","index_link":"1","index_section_count":"5"},"text":"© Crown copyright","index_total":"8","type":"footer"}'
+    end
+  end
 end

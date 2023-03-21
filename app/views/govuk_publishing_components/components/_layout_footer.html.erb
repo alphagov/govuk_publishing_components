@@ -6,15 +6,16 @@
   with_border ||= false
   classes = %w(gem-c-layout-footer govuk-footer)
   classes << "gem-c-layout-footer--border" if with_border
+  layout_footer_helper = GovukPublishingComponents::Presenters::LayoutFooterHelper.new(navigation, meta)
 %>
-<%= tag.footer class: classes, role: "contentinfo" do %>
+<%= tag.footer class: classes, role: "contentinfo", 'data-module': "ga4-link-tracker" do %>
   <div class="govuk-width-container">
     <% if navigation.any? %>
       <div class="govuk-footer__navigation" data-module="gem-track-click" data-track-links-only>
-        <% navigation.each do |item| %>
-          <% if item[:items] %>
+        <% navigation.each_with_index do |section, ga4_section_index| %>
+          <% if section[:items] %>
             <%
-              case item[:columns]
+              case section[:columns]
               when 2
                 width_class = "govuk-grid-column-two-thirds"
               when 3
@@ -26,25 +27,29 @@
               # If the list has multiple columns and there is only one link.
               # This is to prevent a long link wrapping in a column, which
               # leaves an obvious blank space to the right.
-              single_item_list = (( item[:columns] == 2 || item[:columns] == 3 ) && item[:items].length == 1 )
+              single_item_list = (( section[:columns] == 2 || section[:columns] == 3 ) && section[:items].length == 1 )
 
               list_classes = %w[govuk-footer__list]
-              list_classes << "govuk-footer__list--columns-#{item[:columns]}" if item[:columns] unless single_item_list
+              list_classes << "govuk-footer__list--columns-#{section[:columns]}" if section[:columns] unless single_item_list
             %>
             <div class="<%= width_class %> govuk-!-display-none-print">
-              <h2 class="govuk-footer__heading govuk-heading-m"><%= item[:title] %></h2>
+              <h2 class="govuk-footer__heading govuk-heading-m"><%= section[:title] %></h2>
                 <ul class="<%= list_classes.join(' ') %>">
-                  <% item[:items].each do |item| %>
+                  <% section[:items].each_with_index do |item, index| %>
                     <% if item[:href] && item[:text] %>
                       <li class="govuk-footer__list-item">
                         <%
                           attributes = {
                             class: "govuk-footer__link",
                             data: {
-                              "track-category": "footerClicked"
+                              "track-category": "footerClicked",
                             }
                           }.merge(item.fetch(:attributes, {}))
                           attributes[:rel] = "noopener" if attributes[:target] == "_blank" && !attributes[:rel]
+
+                          unless attributes[:data][:ga4_link]
+                            attributes[:data][:ga4_link] = layout_footer_helper.generate_ga4_link_attribute(index, ga4_section_index, section[:title])
+                          end
                         %>
                         <%= link_to item[:text], item[:href], attributes %>
                       </li>
@@ -63,11 +68,18 @@
         <% if meta.any? %>
           <h2 class="govuk-visually-hidden"><%= t("components.layout_footer.support_links") %></h2>
           <ul class="govuk-footer__inline-list govuk-!-display-none-print" data-module="gem-track-click" data-track-links-only>
-            <% meta[:items].each do |item| %>
+            <% meta[:items].each_with_index do |item, index| %>
               <li class="govuk-footer__inline-list-item">
                 <%
-                  attributes = { class: "govuk-footer__link" }.merge(item.fetch(:attributes, {}))
+                  attributes = {
+                    class: "govuk-footer__link",
+                  }.merge(item.fetch(:attributes, {}))
+                  attributes[:data] ||= {}
                   attributes[:rel] = "noopener" if attributes[:target] == "_blank" && !attributes[:rel]
+
+                  unless attributes[:data][:ga4_link]
+                    attributes[:data][:ga4_link] = layout_footer_helper.generate_ga4_link_attribute(index, navigation.length, "Support links")
+                  end
                 %>
                 <%= link_to item[:text], item[:href], attributes %>
               </li>
@@ -89,6 +101,19 @@
           data-track-label="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/"
           data-track-options='{"dimension29": "Open Government Licence v3.0"}'
           data-track-links-only
+          data-ga4-track-links-only
+          data-ga4-link="<%= {
+            "event_name": "navigation",
+            "section": "Licence",
+            "index": {
+              "index_section": layout_footer_helper.ga4_ogl_link_index_section.to_s,
+              "index_link": "1",
+              "index_section_count": layout_footer_helper.ga4_index_section_count.to_s,
+            },
+            "text": "Open Government Licence v3.0",
+            "index_total": layout_footer_helper.ga4_index_total.to_s,
+            "type": "footer",
+          }.to_json %>"
         >
           <%= t("components.layout_footer.licence_html") %>
         </span>
@@ -102,6 +127,18 @@
         data-track-label="https://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/uk-government-licensing-framework/crown-copyright/"
         data-track-options='{"dimension29": "© Crown copyright"}'
         data-track-links-only
+        data-ga4-link="<%= {
+          "event_name": "navigation",
+          "section": "Copyright",
+          "index": {
+            "index_section": layout_footer_helper.ga4_copyright_link_index_section.to_s,
+            "index_link": "1",
+            "index_section_count": layout_footer_helper.ga4_index_section_count.to_s,
+          },
+          "text": "© Crown copyright",
+          "index_total": layout_footer_helper.ga4_index_total.to_s,
+          "type": "footer",
+        }.to_json %>"
       >
         <%= t("components.layout_footer.copyright_html") %>
       </div>
