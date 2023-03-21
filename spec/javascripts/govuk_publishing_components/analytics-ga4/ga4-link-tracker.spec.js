@@ -335,4 +335,17 @@ describe('GA4 click tracker', function () {
       expect(GOVUK.analyticsGa4.core.trackFunctions.setIndexes).not.toHaveBeenCalled()
     })
   })
+
+  describe('when data-ga4-index exists on a link', function () {
+    it('will be used to set the index property', function () {
+      element = document.createElement('a')
+      element.setAttribute('data-ga4-link', '{"someData": "blah"}')
+      element.setAttribute('data-ga4-index', '{"index_link": "123"}')
+      element.setAttribute('href', '/')
+
+      initModule(element, true)
+
+      expect(window.dataLayer[0].event_data.index).toEqual({"index_link": "123"})
+    })
+  })
 })
