@@ -14,6 +14,7 @@
 * Ensure color contrast in code examples meets accessibility requirements ([PR #3311](https://github.com/alphagov/govuk_publishing_components/pull/3311))
 * Update error summary to use component wrapper helper ([PR #3308](https://github.com/alphagov/govuk_publishing_components/pull/3308))
 * Add GA4 tracking to footer links ([PR #3306](https://github.com/alphagov/govuk_publishing_components/pull/3306))
+* Remove 'Cost of living support' from navbar and footer ([PR #3312](https://github.com/alphagov/govuk_publishing_components/pull/3312))
 
 ## 35.0.0
 

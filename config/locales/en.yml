@@ -102,8 +102,6 @@ en:
           href: "/browse/childcare-parenting"
         - text: Citizenship and living in the UK
           href: "/browse/citizenship"
-        - text: Cost of living support
-          href: "/cost-of-living"
         - text: Crime, justice and the law
           href: "/browse/justice"
         - text: Disabled people
@@ -185,8 +183,6 @@ en:
           href: "/browse/childcare-parenting"
         - label: Citizenship and living in the UK
           href: "/browse/citizenship"
-        - label: Cost of living support
-          href: "/cost-of-living"
         - label: Crime, justice and the law
           href: "/browse/justice"
         - label: Disabled people
