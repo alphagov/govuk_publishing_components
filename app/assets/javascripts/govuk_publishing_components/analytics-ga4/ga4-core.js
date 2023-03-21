@@ -241,7 +241,6 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
         } catch (e) {
           // if there's a problem with the config, don't start the tracker
           console.error('Unable to JSON.parse or JSON.stringify index: ' + e.message, window.location)
-          return
         }
       },
 

@@ -345,7 +345,7 @@ describe('GA4 click tracker', function () {
 
       initModule(element, true)
 
-      expect(window.dataLayer[0].event_data.index).toEqual({"index_link": "123"})
+      expect(window.dataLayer[0].event_data.index).toEqual({ index_link: '123' })
     })
   })
 })

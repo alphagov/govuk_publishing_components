@@ -109,16 +109,15 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
   Ga4LinkTracker.prototype.setIndex = function (indexData, target) {
     var index
-    
-    if(target.getAttribute('data-ga4-index')) {
+
+    if (target.getAttribute('data-ga4-index')) {
       try {
         index = JSON.parse(target.getAttribute('data-ga4-index'))
       } catch (e) {
         console.error('Unable to parse index as JSON: ' + e.message, window.location)
         return
       }
-    }
-    else {
+    } else {
       index = indexData || undefined
     }
 
