@@ -304,12 +304,12 @@ describe('GA4 core', function () {
         expect(data.index_total).toEqual(5)
       })
 
-      it('sets the index of each link', function () {
+      it('sets the index object of each link', function () {
         var links = module.querySelectorAll('a')
 
         for (var i = 0; i < links.length; i++) {
-          var linkIndex = parseInt(links[i].getAttribute('data-ga4-index'))
-          expect(linkIndex).toEqual(i + 1)
+          var linkIndex = links[i].getAttribute('data-ga4-index')
+          expect(linkIndex).toEqual('{"index_link": "' + (i + 1) + '"}')
         }
       })
     })
