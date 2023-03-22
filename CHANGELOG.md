@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 35.1.1
 
 * Remove links and sections count tracking for retired Cost of living hub page ([PR #3315](https://github.com/alphagov/govuk_publishing_components/pull/3315))
 * Update the list of popular links in the super navigation header ([PR #3316](https://github.com/alphagov/govuk_publishing_components/pull/3316))
