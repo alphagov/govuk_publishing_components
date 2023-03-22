@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove links and sections count tracking for retired Cost of living hub page ([PR #3315](https://github.com/alphagov/govuk_publishing_components/pull/3315))
+
 ## 35.1.0
 
 * Always require AssetHelpers so gem can operate without Rails ([PR #3309](https://github.com/alphagov/govuk_publishing_components/pull/3309))
