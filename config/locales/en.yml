@@ -230,8 +230,8 @@ en:
       navigation_search_heading: Search and popular pages
       navigation_search_subheading: Search
       popular_links:
-      - label: Check benefits and financial support you can get
-        href: "/check-benefits-financial-support"
+      - label: Get support with the cost of living
+        href: "/cost-of-living"
       - label: Find out about the Energy Bills Support Scheme
         href: "/guidance/getting-the-energy-bills-support-scheme-discount"
       - label: Find a job
