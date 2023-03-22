@@ -705,7 +705,7 @@ $after-button-padding-left: govuk-spacing(4);
   }
 
   @include govuk-media-query($from: "desktop") {
-    @include columns($items: 17, $columns: 2, $selector: "li", $flow: column);
+    @include columns($items: 16, $columns: 2, $selector: "li", $flow: column);
   }
 }
 
