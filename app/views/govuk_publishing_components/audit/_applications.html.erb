@@ -37,8 +37,24 @@
         <% github_link = 'https://github.com/alphagov/' + application[:name] + '/blob/main/' %>
 
         <% if @other_applications %>
+          <% if application[:uses_individual_asset_model] %>
+            <div class="govuk-warning-text">
+              <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+              <strong class="govuk-warning-text__text">
+                <span class="govuk-warning-text__assistive">Warning</span>
+                  This application uses <a class="govuk-link" href="https://github.com/alphagov/govuk_publishing_components/blob/main/docs/set-up-individual-component-css-loading.md">per page asset loading</a> for components. Warnings about missing stylesheets have been suppressed.
+              </strong>
+            </div>            
+          <% end %>
+
           <% if application[:uses_static] %>
-            <p class="govuk-body">This application uses <a href="https://github.com/alphagov/static" class="govuk-link">static</a>, which can contain assets for components used in more than one application. Warnings for missing component assets in this application that are already included in static have been suppressed.</p>
+            <div class="govuk-warning-text">
+              <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+              <strong class="govuk-warning-text__text">
+                <span class="govuk-warning-text__assistive">Warning</span>
+                  This application uses <a href="https://github.com/alphagov/static" class="govuk-link">static</a>, which can contain assets for components used in more than one application. Warnings for missing component assets in this application that are already included in static have been suppressed.
+              </strong>
+            </div>            
           <% end %>
 
           <% application[:warnings].each do |warning| %>
@@ -67,6 +83,8 @@
               <dd class="govuk-summary-list__value">
                 <% if item[:value].length > 0 %>
                   <%= item[:value].join(", ") %>
+                <% elsif application[:uses_individual_asset_model] && item[:name] == "In stylesheets" %>
+                  Uses per page component asset loading
                 <% else %>
                   None
                 <% end %>
@@ -77,13 +95,13 @@
 
         <% if application[:gem_style_references].any? %>
           <%= render "govuk_publishing_components/components/heading", {
-            text: "Component references",
+            text: "Component references (#{application[:gem_style_references].length})",
             font_size: "m",
             margin_bottom: 4,
             heading_level: 3,
           } %>
 
-          <p class="govuk-body">This shows instances of `gem-c-` classes found in the application. If a reference is found in a stylesheet or in code a warning is created, as this could be a style override or hard coded component markup.</p>
+          <p class="govuk-body">This shows instances of `gem-c-` classes found in the application. This could be a style override or hard coded component markup, which is a violation of our principle of <a href="https://github.com/alphagov/govuk_publishing_components/blob/main/docs/component_principles.md#a-component-is-isolated-when" class="govuk-link">component isolation</a>.</p>
           <ul class="govuk-list govuk-list--bullet">
             <% application[:gem_style_references].each do |ref| %>
               <li>
@@ -95,7 +113,7 @@
 
         <% if application[:jquery_references].any? %>
           <%= render "govuk_publishing_components/components/heading", {
-            text: "jQuery references",
+            text: "jQuery references (#{application[:jquery_references].length})",
             font_size: "m",
             margin_bottom: 4,
             heading_level: 3,

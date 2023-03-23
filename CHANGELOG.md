@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Make auditing aware of new asset loading model ([PR #3318](https://github.com/alphagov/govuk_publishing_components/pull/3318))
+
 ## 35.1.1
 
 * Remove links and sections count tracking for retired Cost of living hub page ([PR #3315](https://github.com/alphagov/govuk_publishing_components/pull/3315))

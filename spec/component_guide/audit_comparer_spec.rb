@@ -243,6 +243,7 @@ describe "Comparing data from an application with the components" do
         jquery_references: [],
         component_locations: {},
         helper_references: nil,
+        uses_individual_asset_model: nil,
       },
     ]
 
@@ -320,6 +321,7 @@ describe "Comparing data from an application with the components" do
         jquery_references: [],
         component_locations: {},
         helper_references: nil,
+        uses_individual_asset_model: nil,
       },
     ]
 
@@ -438,6 +440,7 @@ describe "Comparing data from an application with the components" do
         jquery_references: [],
         component_locations: {},
         helper_references: nil,
+        uses_individual_asset_model: nil,
       },
       {
         name: "static",
@@ -467,6 +470,7 @@ describe "Comparing data from an application with the components" do
         jquery_references: [],
         component_locations: {},
         helper_references: nil,
+        uses_individual_asset_model: nil,
       },
     ]
 
@@ -542,6 +546,7 @@ describe "Comparing data from an application with the components" do
         jquery_references: [],
         component_locations: {},
         helper_references: nil,
+        uses_individual_asset_model: nil,
       },
     ]
 
@@ -648,6 +653,7 @@ describe "Comparing data from an application with the components" do
         warning_count: 6,
         helper_references: nil,
         component_locations: {},
+        uses_individual_asset_model: nil,
       },
     ]
 
