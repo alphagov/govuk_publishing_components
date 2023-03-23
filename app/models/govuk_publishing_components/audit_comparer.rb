@@ -61,9 +61,6 @@ module GovukPublishingComponents
           javascripts = result[:components_found].find { |c| c[:location] == "javascript" }
           ruby = result[:components_found].find { |c| c[:location] == "ruby" }
 
-          @all_stylesheets = true if stylesheets[:components].include?("all")
-          @all_javascripts = true if javascripts[:components].include?("all")
-
           templates[:components] = include_any_components_within_components(templates[:components])
 
           warnings = []
