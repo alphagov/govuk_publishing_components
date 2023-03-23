@@ -54,6 +54,7 @@ module GovukPublishingComponents
 
       results.each do |result|
         if result[:application_found]
+          @current_uses_individual_asset_model = result[:uses_individual_asset_model]
           application_uses_static = @applications_using_static.include?(result[:name])
           templates = result[:components_found].find { |c| c[:location] == "template" }
           stylesheets = result[:components_found].find { |c| c[:location] == "stylesheet" }
@@ -103,6 +104,7 @@ module GovukPublishingComponents
             jquery_references: result[:jquery_references],
             component_locations: result[:component_locations],
             helper_references: result[:helper_references],
+            uses_individual_asset_model: result[:uses_individual_asset_model],
           }
         else
           data << {
@@ -161,7 +163,8 @@ module GovukPublishingComponents
 
             check_static = @static_data && second_location != "code"
             asset_in_static = asset_already_in_static(second_location, component) if check_static
-            raise_warning = asset_in_gem && !asset_in_static
+            suppress_warning = @current_uses_individual_asset_model && second_location == "stylesheet"
+            raise_warning = asset_in_gem && !asset_in_static && !suppress_warning
 
             # this raises a warning if the asset exists and isn't included either in the application or static
             warnings << create_warning(component, "Included in #{first_location} but not #{second_location}") if raise_warning

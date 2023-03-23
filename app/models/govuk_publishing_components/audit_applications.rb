@@ -18,7 +18,9 @@ module GovukPublishingComponents
 
         find_components = /(?<=govuk_publishing_components\/components\/)[a-zA-Z_-]+(?=['"])/
 
-        @find_all_stylesheets = /@import ["']{1}govuk_publishing_components\/all_components/
+        @find_all_stylesheets = /@import ["']{1}govuk_publishing_components\/all_components/ # if using the all stylesheets option
+        @find_individual_asset_model = /render_component_stylesheets/ # if using per page component asset loading
+        @uses_individual_asset_model = false
         find_stylesheets = /(?<=@import ["']{1}govuk_publishing_components\/components\/)(?!print\/)+[a-zA-Z_-]+(?=['"])/
 
         @find_all_javascripts = /\/\/ *= require govuk_publishing_components\/all_components/
@@ -63,6 +65,7 @@ module GovukPublishingComponents
         jquery_references: @jquery_references.flatten.uniq.sort,
         component_locations: @component_locations,
         helper_references: @helper_references,
+        uses_individual_asset_model: @uses_individual_asset_model,
       }
     end
 
@@ -125,6 +128,7 @@ module GovukPublishingComponents
       return %w[all] if src.match(@find_all_stylesheets) && type == "stylesheet"
       return %w[all] if src.match(@find_all_javascripts) && type == "javascript"
 
+      @uses_individual_asset_model = true if src.match(@find_individual_asset_model) && type == "template"
       matches = src.scan(find)
       return [] unless matches.any?
 

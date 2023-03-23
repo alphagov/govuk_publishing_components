@@ -41,6 +41,10 @@
             <p class="govuk-body">This application uses <a href="https://github.com/alphagov/static" class="govuk-link">static</a>, which can contain assets for components used in more than one application. Warnings for missing component assets in this application that are already included in static have been suppressed.</p>
           <% end %>
 
+          <% if application[:uses_individual_asset_model] %>
+            <p class="govuk-body">This application uses per page asset loading for components. Warnings about missing stylesheets have been suppressed.</p>
+          <% end %>
+
           <% application[:warnings].each do |warning| %>
             <p class="govuk-body">
               <strong class="govuk-tag">Warn</strong>
@@ -67,6 +71,8 @@
               <dd class="govuk-summary-list__value">
                 <% if item[:value].length > 0 %>
                   <%= item[:value].join(", ") %>
+                <% elsif application[:uses_individual_asset_model] %>
+                  Uses per page component asset loading
                 <% else %>
                   None
                 <% end %>
