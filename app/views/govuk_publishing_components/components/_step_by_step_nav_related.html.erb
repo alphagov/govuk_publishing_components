@@ -23,8 +23,18 @@
             data-track-dimension="<%= links[0][:text] %>"
             data-track-dimension-index="29"
             data-track-options='{"dimension96" : "<%= links[0][:tracking_id] %>" }'
-            <% if ga4_tracking %>
-              data-ga4-link='{"event_name":"navigation", "type":"related content", "index":{"index_link": "1"}, "index_total":"1"}'
+            <% if ga4_tracking 
+              ga4_attributes = {
+                event_name: "navigation",
+                type: "related content",
+                index:{
+                  "index_link": "1"
+                },
+                index_total: "1",
+                section: "Part of",
+              }.to_json
+            %>
+              data-ga4-link="<%= ga4_attributes %>"
             <% end %>
           >
             <%= links[0][:text] %>
@@ -43,8 +53,18 @@
                 data-track-dimension="<%= link[:text] %>"
                 data-track-dimension-index="29"
                 data-track-options='{"dimension96" : "<%= link[:tracking_id] %>" }'
-                <% if ga4_tracking %>
-                  data-ga4-link='{"event_name":"navigation", "type":"related content", "index":{"index_link": "<%= index + 1 %>"}, "index_total": "<%= links.length %>"}'
+                <% if ga4_tracking 
+                  ga4_attributes = {
+                    event_name: "navigation",
+                    type: "related content",
+                    index:{
+                      "index_link": (index + 1).to_s
+                    },
+                    index_total: (links.length).to_s,
+                    section: "Part of",
+                  }.to_json
+                %>
+                  data-ga4-link="<%= ga4_attributes %>"
                 <% end %>
               >
                 <%= link[:text] %>
