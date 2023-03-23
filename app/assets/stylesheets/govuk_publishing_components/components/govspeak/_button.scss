@@ -24,4 +24,11 @@
   .govuk-button--start {
     @extend .govuk-button--start;
   }
+
+  // Temporary fix for issue where there is no spacing between text
+  // and abbr elements in the govuk-button--start styled links
+
+  .govuk-button--start abbr {
+    padding: 0 .25em;
+  }
 }
