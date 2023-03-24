@@ -2,7 +2,7 @@ module GovukPublishingComponents
   class ComponentGuideController < GovukPublishingComponents::ApplicationController
     append_view_path File.join(Rails.root, "app", "views", GovukPublishingComponents::Config.component_directory_name)
 
-    MATCH_COMPONENTS = /(?<=govuk_publishing_components\/components\/)[\/a-zA-Z_-]+(?=['"])/.freeze
+    MATCH_COMPONENTS = /(?<=govuk_publishing_components\/components\/)[\/a-zA-Z_-]+(?=['"])/
 
     def index
       @application_path = Rails.root
