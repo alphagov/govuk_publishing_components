@@ -87,8 +87,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
       data.link_path_parts = window.GOVUK.analyticsGa4.core.trackFunctions.populateLinkPathParts(data.url)
       data.method = window.GOVUK.analyticsGa4.core.trackFunctions.getClickType(event)
       data.external = window.GOVUK.analyticsGa4.core.trackFunctions.isExternalLink(data.url) ? 'true' : 'false'
-      data.index = event.target.getAttribute('data-ga4-index') ? parseInt(event.target.getAttribute('data-ga4-index')) : data.index || undefined
-      data.index = window.GOVUK.analyticsGa4.core.trackFunctions.createIndexObject(data.index)
+      data.index = this.setIndex(data.index, event.target)
 
       if (data.type === 'smart answer' && data.action === 'change response') {
         data.section = PIIRemover.stripPIIWithOverride(data.section, true, true)
@@ -106,6 +105,23 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     } else {
       return target.closest('a')
     }
+  }
+
+  Ga4LinkTracker.prototype.setIndex = function (indexData, target) {
+    var index
+
+    if (target.getAttribute('data-ga4-index')) {
+      try {
+        index = JSON.parse(target.getAttribute('data-ga4-index'))
+      } catch (e) {
+        console.error('Unable to parse index as JSON: ' + e.message, window.location)
+        return
+      }
+    } else {
+      index = indexData || undefined
+    }
+
+    return window.GOVUK.analyticsGa4.core.trackFunctions.createIndexObject(index)
   }
 
   Modules.Ga4LinkTracker = Ga4LinkTracker
