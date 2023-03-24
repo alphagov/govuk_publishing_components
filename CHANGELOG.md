@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Drop support for Ruby 2.7 ([PR #3310](https://github.com/alphagov/govuk_publishing_components/pull/3310))
 * Always require AssetHelpers so gem can operate without Rails ([PR #3309](https://github.com/alphagov/govuk_publishing_components/pull/3309))
 * Update AssetHelper documentation ([PR #3298](https://github.com/alphagov/govuk_publishing_components/pull/3298))
 
