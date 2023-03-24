@@ -943,7 +943,7 @@ describe('A stepnav module', function () {
       var stepNav = element.childNodes[0]
       var stepButton = stepNav.querySelector('#topic-step-one .js-step-title button')
 
-      expect(stepButton.getAttribute('data-ga4-event')).toEqual('{"event_name":"select_content","type":"step by step","text":"This title\'s got quotation marks \\" in it.","index":1,"index_total":3}')
+      expect(stepButton.getAttribute('data-ga4-event')).toEqual('{"event_name":"select_content","type":"step by step","text":"This title\'s got quotation marks \\" in it.","index":{"index_section":1,"index_section_count":3},"index_total":1}')
     })
   })
 })
