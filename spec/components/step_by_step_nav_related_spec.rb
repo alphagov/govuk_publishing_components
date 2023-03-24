@@ -117,7 +117,15 @@ describe "Step by step navigation related", type: :view do
 
     this_link = ".gem-c-step-nav-related .gem-c-step-nav-related__heading .govuk-link"
 
-    assert_select "#{this_link}[data-ga4-link='{\"event_name\":\"navigation\", \"type\":\"related content\", \"index\":{\"index_link\": \"1\"}, \"index_total\":\"1\"}']"
+    expected = {
+      "event_name": "navigation",
+      "type": "related content",
+      "index": { "index_link": "1" },
+      "index_total": "1",
+      "section": "Part of",
+    }
+
+    assert_select "#{this_link}[data-ga4-link='#{expected.to_json}']"
   end
 
   it "does not add GA4 data attributes when ga4_tracking is false" do
@@ -125,7 +133,15 @@ describe "Step by step navigation related", type: :view do
 
     this_link = ".gem-c-step-nav-related .gem-c-step-nav-related__heading .govuk-link"
 
-    assert_select "#{this_link}[data-ga4-link='{\"event_name\":\"navigation\", \"type\":\"related content\", \"index\":{\"index_link\": \"1\"}, \"index_total\":\"1\"}']", false
+    expected = {
+      "event_name": "navigation",
+      "type": "related content",
+      "index": { "index_link": "1" },
+      "index_total": "1",
+      "section": "Part of",
+    }
+
+    assert_select "#{this_link}[data-ga4-link='#{expected.to_json}']", false
   end
 
   it "adds GA4 data attributes on multiple links when ga4_tracking is true" do
@@ -134,8 +150,24 @@ describe "Step by step navigation related", type: :view do
     link_one = ".gem-c-step-nav-related .gem-c-step-nav-related__links .govuk-link[href='/link1']"
     link_two = ".gem-c-step-nav-related .gem-c-step-nav-related__links .govuk-link[href='/link2']"
 
-    assert_select "#{link_one}[data-ga4-link='{\"event_name\":\"navigation\", \"type\":\"related content\", \"index\":{\"index_link\": \"1\"}, \"index_total\": \"2\"}']"
-    assert_select "#{link_two}[data-ga4-link='{\"event_name\":\"navigation\", \"type\":\"related content\", \"index\":{\"index_link\": \"2\"}, \"index_total\": \"2\"}']"
+    expected_one = {
+      "event_name": "navigation",
+      "type": "related content",
+      "index": { "index_link": "1" },
+      "index_total": "2",
+      "section": "Part of",
+    }
+
+    expected_two = {
+      "event_name": "navigation",
+      "type": "related content",
+      "index": { "index_link": "2" },
+      "index_total": "2",
+      "section": "Part of",
+    }
+
+    assert_select "#{link_one}[data-ga4-link='#{expected_one.to_json}']"
+    assert_select "#{link_two}[data-ga4-link='#{expected_two.to_json}']"
   end
 
   it "does not add GA4 data attributes on multiple links when ga4_tracking is false" do
@@ -144,7 +176,23 @@ describe "Step by step navigation related", type: :view do
     link_one = ".gem-c-step-nav-related .gem-c-step-nav-related__links .govuk-link[href='/link1']"
     link_two = ".gem-c-step-nav-related .gem-c-step-nav-related__links .govuk-link[href='/link2']"
 
-    assert_select "#{link_one}[data-ga4-link='{\"event_name\":\"navigation\", \"type\":\"related content\", \"index\":{\"index_link\": \"1\"}, \"index_total\": \"2\"}']", false
-    assert_select "#{link_two}[data-ga4-link='{\"event_name\":\"navigation\", \"type\":\"related content\", \"index\":{\"index_link\": \"2\"}, \"index_total\": \"2\"}']", false
+    expected_one = {
+      "event_name": "navigation",
+      "type": "related content",
+      "index": { "index_link": "1" },
+      "index_total": "2",
+      "section": "Part of",
+    }
+
+    expected_two = {
+      "event_name": "navigation",
+      "type": "related content",
+      "index": { "index_link": "2" },
+      "index_total": "2",
+      "section": "Part of",
+    }
+
+    assert_select "#{link_one}[data-ga4-link='#{expected_one.to_json}']", false
+    assert_select "#{link_two}[data-ga4-link='#{expected_two.to_json}']", false
   end
 end
