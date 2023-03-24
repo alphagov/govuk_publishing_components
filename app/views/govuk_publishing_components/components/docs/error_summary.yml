@@ -7,6 +7,7 @@ shared_accessibility_criteria:
   - link
 accessibility_excluded_rules:
   - skip-link # This component is creating references to to sections on the page that do not exist in examples
+uses_component_wrapper_helper: true
 examples:
   default:
     data:
@@ -26,18 +27,6 @@ examples:
       - text: Descriptive link to the question with an error 2
         href: '#example-error-2'
       - text: Description of error without link
-  with_data_attributes:
-    description: |
-      The example shown applies a tracking attribute specifically for use by Google Tag Manager in [Content Publisher](https://github.com/alphagov/content-publisher).
-      
-      Other data attributes can also be applied as required. Note that the component does not include built in tracking. If this is required consider using the [track click script](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/analytics/track-click.md).
-    data:
-      title: Message to alert the user to a problem goes here
-      description: Optional description of the errors and how to correct them
-      data_attributes:
-        tracking: GTM-123AB
-      items:
-      - text: Descriptive link to the question with an error 1
   with_custom_target_on_links:
     data:
       title: Message to alert the user to a problem goes here

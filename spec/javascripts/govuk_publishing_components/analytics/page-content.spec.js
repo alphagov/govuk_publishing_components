@@ -446,29 +446,6 @@ describe('Page content', function () {
     })
   })
 
-  describe('in cost of living hub', function () {
-    beforeEach(function () {
-      createMetaTags('rendering-application', 'collections')
-      createMetaTags('navigation-page-type', 'cost of living hub')
-    })
-
-    it('gets the number of accordion sections', function () {
-      for (var i = 1; i <= 4; i++) {
-        createDummyElement('div', false, false, 'data-track-count', 'accordionSection')
-      }
-      var result = window.GOVUK.PageContent.getNumberOfSections()
-      expect(result).toEqual(4)
-    })
-
-    it('gets the number of links', function () {
-      for (var i = 1; i <= 4; i++) {
-        createDummyElement('a', false, false, 'data-track-count', 'contentLink')
-      }
-      var result = window.GOVUK.PageContent.getNumberOfLinks()
-      expect(result).toEqual(4)
-    })
-  })
-
   describe('by default', function () {
     it('gets the number of sidebar sections', function () {
       for (var p = 1; p <= 4; p++) {

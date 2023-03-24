@@ -102,8 +102,6 @@ en:
           href: "/browse/childcare-parenting"
         - text: Citizenship and living in the UK
           href: "/browse/citizenship"
-        - text: Cost of living support
-          href: "/cost-of-living"
         - text: Crime, justice and the law
           href: "/browse/justice"
         - text: Disabled people
@@ -185,8 +183,6 @@ en:
           href: "/browse/childcare-parenting"
         - label: Citizenship and living in the UK
           href: "/browse/citizenship"
-        - label: Cost of living support
-          href: "/cost-of-living"
         - label: Crime, justice and the law
           href: "/browse/justice"
         - label: Disabled people
@@ -234,8 +230,8 @@ en:
       navigation_search_heading: Search and popular pages
       navigation_search_subheading: Search
       popular_links:
-      - label: Check benefits and financial support you can get
-        href: "/check-benefits-financial-support"
+      - label: Get support with the cost of living
+        href: "/cost-of-living"
       - label: Find out about the Energy Bills Support Scheme
         href: "/guidance/getting-the-energy-bills-support-scheme-discount"
       - label: Find a job
