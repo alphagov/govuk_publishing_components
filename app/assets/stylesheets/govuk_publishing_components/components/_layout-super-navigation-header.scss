@@ -2,7 +2,6 @@
 @import "mixins/prefixed-transform";
 @import "mixins/grid-helper";
 
-$icon-size: 20px;
 $chevron-indent-spacing: 7px;
 $black-bar-height: 50px;
 $search-width-or-height: $black-bar-height;
@@ -343,9 +342,9 @@ $after-button-padding-left: govuk-spacing(4);
 
 .gem-c-layout-super-navigation-header__search-item-link-icon,
 .gem-c-layout-super-navigation-header__search-toggle-button-link-icon {
-  height: $icon-size;
+  height: 20px;
   pointer-events: none;
-  width: $icon-size;
+  width: 21px;
 }
 
 // Search and popular content dropdown.
