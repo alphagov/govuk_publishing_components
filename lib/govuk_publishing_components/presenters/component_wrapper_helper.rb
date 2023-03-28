@@ -51,15 +51,15 @@ module GovukPublishingComponents
       def check_id_is_valid(id)
         return if id.blank?
 
-        raise(ArgumentError, "Id cannot start with a number or contain whitespace and can only contain letters, digits, `_` and `-`") unless /^[a-zA-Z][\w:-]*$/.match?(id)
+        raise(ArgumentError, "Id (#{id}) cannot start with a number or contain whitespace and can only contain letters, digits, `_` and `-`") unless /^[a-zA-Z][\w:-]*$/.match?(id)
       end
 
       def check_classes_are_valid(classes)
         return if classes.blank?
 
-        classes = classes.split(" ")
-        unless classes.all? { |c| c.start_with?("js-", "gem-c-", "govuk-", "brand--") }
-          raise(ArgumentError, "Passed classes must be prefixed with `js-`")
+        class_array = classes.split(" ")
+        unless class_array.all? { |c| c.start_with?("js-", "gem-c-", "govuk-", "brand--") }
+          raise(ArgumentError, "Classes (#{classes}) must be prefixed with `js-`")
         end
       end
 
@@ -68,8 +68,12 @@ module GovukPublishingComponents
 
         arias = %w[activedescendant atomic autocomplete busy checked colcount colindex colspan controls current describedby description details disabled dropeffect errormessage expanded flowto grabbed haspopup hidden invalid keyshortcuts label labelledby level live modal multiline multiselectable orientation owns placeholder posinset pressed readonly relevant required roledescription rowcount rowindex rowspan selected setsize sort valuemax valuemin valuenow valuetext]
 
-        unless attributes.all? { |key, _value| arias.include? key.to_s }
-          raise(ArgumentError, "Aria attribute is not recognised")
+        # array keys are immutable so we have to do this to make a copy, in order to
+        # subtract valid aria attributes from invalid in the error message below
+        attributes_keys = attributes.map { |key, _| key.to_s }
+
+        unless attributes_keys.all? { |key| arias.include? key }
+          raise(ArgumentError, "Aria attribute (#{(attributes_keys - arias).join(', ')}) not recognised")
         end
       end
 
@@ -79,7 +83,7 @@ module GovukPublishingComponents
         roles = %w[alert alertdialog application article associationlist associationlistitemkey associationlistitemvalue banner blockquote caption cell code columnheader combobox complementary contentinfo definition deletion dialog directory document emphasis feed figure form group heading img insertion list listitem log main marquee math menu menubar meter navigation none note paragraph presentation region row rowgroup rowheader scrollbar search searchbox separator separator slider spinbutton status strong subscript superscript switch tab table tablist tabpanel term time timer toolbar tooltip tree treegrid treeitem]
         role = role.split(" ") # can have more than one role
         unless role.all? { |r| roles.include? r }
-          raise(ArgumentError, "Role attribute is not recognised")
+          raise(ArgumentError, "Role attribute (#{(role - roles).join(', ')}) is not recognised")
         end
       end
 

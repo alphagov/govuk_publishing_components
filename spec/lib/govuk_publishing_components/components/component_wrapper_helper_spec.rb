@@ -34,9 +34,10 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
     end
 
     it "rejects invalid class names" do
+      classes = "js-okay not-cool-man"
       expect {
-        GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(classes: "js-okay not-cool-man")
-      }.to raise_error(ArgumentError, "Passed classes must be prefixed with `js-`")
+        GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(classes: classes)
+      }.to raise_error(ArgumentError, "Classes (#{classes}) must be prefixed with `js-`")
     end
 
     it "can set an id, overriding a passed value" do
@@ -46,36 +47,22 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
     end
 
     it "does not accept invalid ids" do
-      error = "Id cannot start with a number or contain whitespace and can only contain letters, digits, `_` and `-`"
-      expect {
-        GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(id: "2idstartingwithanumber")
-      }.to raise_error(ArgumentError, error)
-
-      expect {
-        GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(id: "id containing spaces")
-      }.to raise_error(ArgumentError, error)
-
-      expect {
-        GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(id: "idwitha.character")
-      }.to raise_error(ArgumentError, error)
+      ["2idstartingwithanumber", "id containing spaces", "idwitha.character"].each do |id|
+        error = "Id (#{id}) cannot start with a number or contain whitespace and can only contain letters, digits, `_` and `-`"
+        expect {
+          GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(id: id)
+        }.to raise_error(ArgumentError, error)
+      end
     end
 
     it "does not accept invalid ids when passed" do
-      error = "Id cannot start with a number or contain whitespace and can only contain letters, digits, `_` and `-`"
-      expect {
-        helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(id: "original")
-        helper.set_id("2idstartingwithanumber")
-      }.to raise_error(ArgumentError, error)
-
-      expect {
-        helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(id: "original")
-        helper.set_id("id containing spaces")
-      }.to raise_error(ArgumentError, error)
-
-      expect {
-        helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(id: "original")
-        helper.set_id("idwitha.character")
-      }.to raise_error(ArgumentError, error)
+      ["2idstartingwithanumber", "id containing spaces", "idwitha.character"].each do |id|
+        error = "Id (#{id}) cannot start with a number or contain whitespace and can only contain letters, digits, `_` and `-`"
+        expect {
+          helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(id: "original")
+          helper.set_id(id)
+        }.to raise_error(ArgumentError, error)
+      end
     end
 
     it "can add a class to already passed classes" do
@@ -85,10 +72,11 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
     end
 
     it "will error if trying to add an invalid class to already passed classes" do
+      classes = "gem-c-extra something-invalid"
       expect {
         helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(classes: "js-original")
-        helper.add_class("gem-c-extra something-invalid")
-      }.to raise_error(ArgumentError, "Passed classes must be prefixed with `js-`")
+        helper.add_class(classes)
+      }.to raise_error(ArgumentError, "Classes (#{classes}) must be prefixed with `js-`")
     end
 
     it "does not error if passed blank values" do
@@ -124,38 +112,39 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
     end
 
     it "does not accept invalid aria attributes" do
-      error = "Aria attribute is not recognised"
+      invalid_aria = { potato: "salad", label: "something", spoon: "invalid" }
+      error = "Aria attribute (potato, spoon) not recognised"
       expect {
-        GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(aria: { potato: "salad" })
+        GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(aria: invalid_aria)
       }.to raise_error(ArgumentError, error)
 
       expect {
         helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(aria: { label: "something" })
-        helper.add_aria_attribute({ potato: "salad" })
+        helper.add_aria_attribute(invalid_aria)
       }.to raise_error(ArgumentError, error)
     end
 
     it "does not accept an invalid role" do
-      error = "Role attribute is not recognised"
+      error = "Role attribute (custarddoughnuts, moose) is not recognised"
       expect {
-        GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(role: "custarddoughnuts")
+        GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(role: "custarddoughnuts moose")
       }.to raise_error(ArgumentError, error)
 
       expect {
-        GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(role: "navigation custarddoughnuts")
+        GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(role: "navigation custarddoughnuts moose")
       }.to raise_error(ArgumentError, error)
     end
 
     it "does not accept an invalid role when passed" do
-      error = "Role attribute is not recognised"
+      error = "Role attribute (custarddoughnuts, moose) is not recognised"
       expect {
         helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(role: "navigation")
-        helper.add_role("custarddoughnuts")
+        helper.add_role("custarddoughnuts moose")
       }.to raise_error(ArgumentError, error)
 
       expect {
         helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(role: "navigation")
-        helper.add_role("alert custarddoughnuts")
+        helper.add_role("alert custarddoughnuts moose")
       }.to raise_error(ArgumentError, error)
     end
   end
