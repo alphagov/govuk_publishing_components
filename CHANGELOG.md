@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Drop support for Ruby 2.7 ([PR #3310](https://github.com/alphagov/govuk_publishing_components/pull/3310))
 * Make auditing aware of new asset loading model ([PR #3318](https://github.com/alphagov/govuk_publishing_components/pull/3318))
 * Ga4 part of heading tracking fix ([PR #3321](https://github.com/alphagov/govuk_publishing_components/pull/3321))
 * Ga4 fix index ([PR #3313](https://github.com/alphagov/govuk_publishing_components/pull/3313))
