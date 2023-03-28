@@ -111,9 +111,7 @@ Add list of gem components to be precompiled in `config/application.rb` (and the
 module Frontend
   class Application < Rails::Application
     include GovukPublishingComponents::AppHelpers::AssetHelper
-
-   ...
-
+    ...
     config.assets.precompile << get_component_css_paths
 ```
 
@@ -148,17 +146,22 @@ Each stylesheet that is used individually will need an extra `@import` added to 
 @import "govuk_publishing_components/individual_component_support";
 ```
 
-**Hoist the content of the body to the top of the base template in `app/views/layouts/application.html.erb`**. This ensures that all of the components are added to the array before the array is used in the `<head>` of the template.
+**Hoist body content to the top of your layouts**
 
-On line 1:
+This will ensure that all components and views are dicovered, before `render_component_stylesheets` is called, and their respective style sheets added inside the `<head>`. Otherwise, components and view partials added in body content are not rendered in time and associated style sheets are not included.
 
 ```rb
 <% content_for :body do %>
-  <!-- Everything that was between <body> and </body> --->
+  <main id="content">
+    <%= yield %>
+  </main>
 <% end %>
+
+<!DOCTYPE html>
+...
 ```
 
-And then between `<body>` and `</body>`:
+Use `yield` to add body content between `<body>` and `</body>`:
 
 ```rb
 <%= yield :body %>
@@ -167,10 +170,14 @@ And then between `<body>` and `</body>`:
 **Add the stylesheets just before the closing `</head>` tag of the base template**:
 
 ```rb
-<%= stylesheet_link_tag "application.css", integrity: false %>
-<%=
-  render_component_stylesheets
-%>
+  <head>
+    <meta charset="utf-8" />
+    <%= stylesheet_link_tag 'application', :media => "all", integrity: false %>
+    ...
+    <%=
+      render_component_stylesheets
+    %>
+  </head>
 ```
 
 ## Why
