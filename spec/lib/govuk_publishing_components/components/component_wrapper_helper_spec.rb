@@ -91,6 +91,26 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
       }.to raise_error(ArgumentError, "Passed classes must be prefixed with `js-`")
     end
 
+    it "does not error if passed blank values" do
+      component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(
+        id: nil,
+        classes: nil,
+        data_attributes: nil,
+        aria: nil,
+        role: nil,
+      )
+      expect(component_helper.all_attributes).to eql({})
+
+      component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(
+        id: "",
+        classes: "",
+        data_attributes: "",
+        aria: "",
+        role: "",
+      )
+      expect(component_helper.all_attributes).to eql({})
+    end
+
     it "can add data attributes to already passed data attributes" do
       helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(data_attributes: { module: "original-module", other: "other" })
       helper.add_data_attribute({ module: "extra-module", another: "another" })
