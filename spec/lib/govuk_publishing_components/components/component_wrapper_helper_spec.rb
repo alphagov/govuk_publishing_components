@@ -99,6 +99,19 @@ RSpec.describe GovukPublishingComponents::Presenters::ComponentWrapperHelper do
       expect(component_helper.all_attributes).to eql({})
     end
 
+    it "does not accept invalid data attributes" do
+      invalid_data = { module: "ok", xml_something: "notok", "XML_something": "notok", "has space": "notok", "has:colon": "notok", normal: "ok" }
+      error = "Data attributes (xml_something, XML_something, has space, has:colon) cannot contain capitals, spaces or colons, or start with 'xml'"
+      expect {
+        GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(data_attributes: invalid_data)
+      }.to raise_error(ArgumentError, error)
+
+      expect {
+        helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(data_attributes: { module: "something" })
+        helper.add_data_attribute(invalid_data)
+      }.to raise_error(ArgumentError, error)
+    end
+
     it "can add data attributes to already passed data attributes" do
       helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(data_attributes: { module: "original-module", other: "other" })
       helper.add_data_attribute({ module: "extra-module", another: "another" })

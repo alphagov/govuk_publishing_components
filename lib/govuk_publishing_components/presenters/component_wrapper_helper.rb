@@ -5,6 +5,7 @@ module GovukPublishingComponents
         @options = options
 
         check_id_is_valid(@options[:id]) if @options.include?(:id)
+        check_data_attributes_are_valid(@options[:data_attributes]) if @options.include?(:data_attributes)
         check_classes_are_valid(@options[:classes]) if @options.include?(:classes)
         check_aria_is_valid(@options[:aria]) if @options.include?(:aria)
         check_role_is_valid(@options[:role]) if @options.include?(:role)
@@ -33,6 +34,7 @@ module GovukPublishingComponents
       end
 
       def add_data_attribute(attributes)
+        check_data_attributes_are_valid(attributes)
         extend_object(:data_attributes, attributes)
       end
 
@@ -52,6 +54,15 @@ module GovukPublishingComponents
         return if id.blank?
 
         raise(ArgumentError, "Id (#{id}) cannot start with a number or contain whitespace and can only contain letters, digits, `_` and `-`") unless /^[a-zA-Z][\w:-]*$/.match?(id)
+      end
+
+      def check_data_attributes_are_valid(attributes)
+        return if attributes.blank?
+
+        attributes_keys = attributes.map { |key, _| key.to_s }
+        invalid_attributes = attributes_keys.map { |a| a if /^(xml)/.match?(a) || /[A-Z :]+/.match?(a) }.compact
+
+        raise(ArgumentError, "Data attributes (#{invalid_attributes.join(', ')}) cannot contain capitals, spaces or colons, or start with 'xml'") if invalid_attributes.any?
       end
 
       def check_classes_are_valid(classes)
