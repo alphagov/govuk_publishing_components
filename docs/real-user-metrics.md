@@ -83,16 +83,16 @@ The [icinga alert was originally added in this PR](https://github.com/alphagov/g
 
 You will need to download the new script from [the SpeedCurve github repo](https://github.com/SpeedCurve-Metrics/lux.js). This is a private repo and you will need to request access. Matt Hobbs (head of frontend) is our point of contact for this. Once you have access it's worth turning on notifications for this repo in case the icinga alert fails.
 
-The script is written in TypeScript so you will first need to `npm install` and `npm build` to create a JavaScript version of the file (see repo README for details).
+The script is written in TypeScript so you will first need to `npm install` and `npm run build` to create a JavaScript version of the file (see repo README for details).
 
 ### Updating
 
-Updating the reporter is a case of copying and pasting, reformatting, and updating to include the variables mentioned earlier. Try to format the file so that indenting differences don't make reviewing difficult.
+Update `lux-reporter.js` by copying `dist/lux.js` from the SpeedCurve github repo. This is a case of copying and pasting, reformatting, and updating to include the variables mentioned earlier. Try to format the file so that indenting differences don't make reviewing difficult.
 
 Instructions for how to update are in our copy of the file. In summary:
 
 - `customerid` and `samplerate` are the things we need to set (copy them from the current version)
-- the structure of the file sometimes changes so you might need to comb through to find them (`samplerate` is currently on line 157, but might change)
+- the structure of the file sometimes changes so you might need to comb through to find them (`samplerate` is currently around line 443, but might change)
 - `customerid` has to be at the end of the file
 
 ### Testing
