@@ -69,6 +69,50 @@ describe('Initialising GA4', function () {
       delete GOVUK.analyticsGa4.analyticsModules.TestError
       delete GOVUK.analyticsGa4.analyticsModules.TestNotError
     })
+
+    describe('adding attachment link data attributes to elements', function () {
+      var elements = []
+      beforeEach(function () {
+        GOVUK.setCookie('cookies_policy', '{"essential":true,"settings":true,"usage":true,"campaigns":true}')
+        for (var i = 0; i < 5; i++) {
+          elements[i] = document.createElement('div')
+          elements[i].setAttribute('data-ga4-attachment-link', '')
+          document.body.appendChild(elements[i])
+        }
+      })
+
+      afterEach(function () {
+        for (var i = 0; i < 5; i++) {
+          document.body.removeChild(elements[i])
+        }
+      })
+
+      it('adds correct data attributes to each element', function () {
+        GOVUK.analyticsGa4.init()
+
+        for (var i = 0; i < 5; i++) {
+          expect(elements[i].getAttribute('data-module')).toEqual('ga4-link-tracker')
+          expect(elements[i].getAttribute('data-ga4-track-links-only')).toEqual('')
+          expect(elements[i].getAttribute('data-ga4-link')).toEqual(JSON.stringify({ event_name: 'navigation', type: 'html attachment' }))
+        }
+      })
+
+      it('combines data modules if a module already exists', function () {
+        for (var i = 0; i < 5; i++) {
+          elements[i].setAttribute('data-module', 'govspeak')
+          elements[i].setAttribute('data-ga4-link', 'i will be overwritten')
+          elements[i].setAttribute('data-ga4-track-links-only', 'i will be overwritten too')
+        }
+
+        GOVUK.analyticsGa4.init()
+
+        for (i = 0; i < 5; i++) {
+          expect(elements[i].getAttribute('data-module')).toEqual('govspeak ga4-link-tracker')
+          expect(elements[i].getAttribute('data-ga4-track-links-only')).toEqual('')
+          expect(elements[i].getAttribute('data-ga4-link')).toEqual(JSON.stringify({ event_name: 'navigation', type: 'html attachment' }))
+        }
+      })
+    })
   })
 
   describe('Modules depending on cookie consent to run', function () {

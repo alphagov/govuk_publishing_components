@@ -8,6 +8,11 @@ var initFunction = function () {
     window.GOVUK.analyticsGa4.vars.internalDomains = []
     window.GOVUK.analyticsGa4.vars.internalDomains.push(window.GOVUK.analyticsGa4.core.trackFunctions.getHostname())
     window.GOVUK.analyticsGa4.core.trackFunctions.appendDomainsWithoutWWW(window.GOVUK.analyticsGa4.vars.internalDomains)
+    var attachmentLinkData = [
+      { key: 'data-module', value: 'ga4-link-tracker' },
+      { key: 'data-ga4-track-links-only', value: '' },
+      { key: 'data-ga4-link', value: JSON.stringify({ event_name: 'navigation', type: 'html attachment' }) }]
+    window.GOVUK.analyticsGa4.core.trackFunctions.addAttributesToElements('[data-ga4-attachment-link]', attachmentLinkData)
     window.GOVUK.analyticsGa4.core.load()
 
     var analyticsModules = window.GOVUK.analyticsGa4.analyticsModules
