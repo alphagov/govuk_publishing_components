@@ -16,6 +16,7 @@
 * Ga4 part of heading tracking fix ([PR #3321](https://github.com/alphagov/govuk_publishing_components/pull/3321))
 * Ga4 fix index ([PR #3313](https://github.com/alphagov/govuk_publishing_components/pull/3313))
 * Fix search icon cut-off in navbar  ([PR #3322](https://github.com/alphagov/govuk_publishing_components/pull/3322))
+* Update AssetHelper documentation  ([PR #3323](https://github.com/alphagov/govuk_publishing_components/pull/3323))
 
 ## 35.1.1
 
