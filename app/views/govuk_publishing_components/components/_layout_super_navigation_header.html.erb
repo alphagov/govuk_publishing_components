@@ -43,7 +43,9 @@
             "external": "false",
             "text": "GOV.UK",
             "section": "Logo",
-            "index": 0,
+            "index": {
+              "index_section": 0,
+            },
             "index_total": navigation_links_length
           }.to_json %>"
         >
@@ -128,7 +130,9 @@
                   event_name: "select_content",
                   type: "header menu bar",
                   text: link[:label],
-                  index: 1,
+                  index: {
+                    index_section: 1,
+                  },
                   index_total: 2,
                   section: link[:label]
                 }
@@ -159,7 +163,9 @@
                 "event_name": "select_content",
                 "type": "header menu bar",
                 "text": "Search",
-                "index": 2,
+                "index": {
+                  "index_section": 2,
+                },
                 "index_total": 2,
                 "section": "Search"
               }.to_json %>"
@@ -238,7 +244,11 @@
                             ga4_link: {
                               "event_name": "navigation",
                               "type": "header menu bar",
-                              "index": "1.#{column_index + 1}.#{index + 1}",
+                              "index": {
+                                "index_section": column_index + 1,
+                                "index_link": index + 1,
+                                "index_section_count": 4,
+                              },
                               "index_total": navigation_links_length,
                               "section": column[:label],
                             }
@@ -308,7 +318,11 @@
                         ga4_link: {
                           "event_name": "navigation",
                           "type": "header menu bar",
-                          "index": "2.2.#{index + 1}",
+                          "index": {
+                            "index_section": 4,
+                            "index_link": index + 1,
+                            "index_section_count": 4,
+                          },
                           "index_total": navigation_links_length,
                           "section": popular_links_heading,
                         }

@@ -196,8 +196,11 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
           event_name: 'select_content',
           type: 'step by step',
           text: titleText.trim(),
-          index: i + 1,
-          index_total: this.$module.totalSteps
+          index: {
+            index_section: i + 1,
+            index_section_count: this.$module.totalSteps
+          },
+          index_total: thisel.querySelectorAll('a').length
         }
 
         var button = thisel.querySelector('.js-step-title-button')
