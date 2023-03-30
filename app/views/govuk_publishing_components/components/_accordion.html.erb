@@ -37,6 +37,7 @@
         index = i + 1
 
         item[:data_attributes] ||= nil
+        ga4_link_data_attributes ||= nil
 
         if ga4_tracking
           item[:data_attributes] ||= {}
@@ -48,6 +49,24 @@
               index_section: index,
               index_section_count: items.length,
             },
+          }.to_json
+
+          # Data attributes for accordion links. These have been created 
+          # separately from the item[:data_attributes] object in order to 
+          # keep them from colliding with GA4 event tracking and UA tracking 
+          # attributes
+          ga4_link_data_attributes = {}
+          ga4_link_data_attributes[:module] = "ga4-link-tracker"
+          ga4_link_data_attributes[:ga4_tracks_links_only] = ""
+          ga4_link_data_attributes[:ga4_set_indexes] = ""
+          ga4_link_data_attributes[:ga4_link] = {
+            event_name: "navigation",
+            type: "accordion",
+            section: item[:heading][:text],
+            index: {
+              index_section: index.to_s,
+              index_section_count: (items.length).to_s,
+            }
           }.to_json
         end
 
@@ -74,7 +93,13 @@
           %>
           <%= tag.div(item[:summary][:text], id: "#{id}-summary-#{index}", class: summary_classes) if item[:summary].present? %>
         <% end %>
-        <%= tag.div(item[:content][:html], id: "#{id}-content-#{index}", class: "govuk-accordion__section-content", 'aria-labelledby': "#{id}-heading-#{index}") %>
+        <%= tag.div(
+          item[:content][:html], 
+          id: "#{id}-content-#{index}", 
+          class: "govuk-accordion__section-content", 
+          'aria-labelledby': "#{id}-heading-#{index}",
+          data: ga4_link_data_attributes
+        ) %>
       <% end %>
     <% end %>
   <% end %>
