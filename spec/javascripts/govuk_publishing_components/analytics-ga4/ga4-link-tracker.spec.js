@@ -348,4 +348,66 @@ describe('GA4 click tracker', function () {
       expect(window.dataLayer[0].event_data.index).toEqual({ index_link: '123' })
     })
   })
+
+  describe('when data-ga4-index exists on the target element', function () {
+    it('sets the index object to contain index_link only', function () {
+      element = document.createElement('a')
+      element.setAttribute('data-ga4-link', '{"someData": "blah"}')
+      element.setAttribute('data-ga4-index', '{"index_link": "123"}')
+      element.setAttribute('href', '#link1')
+
+      initModule(element, true)
+
+      expect(window.dataLayer[0].event_data.index).toEqual({ index_link: '123' })
+    })
+  })
+
+  describe('when data-ga4-index exists on the target element and index exists on the parent', function () {
+    it('combines both objects into a single index object', function () {
+      element = document.createElement('div')
+      element.setAttribute('data-ga4-track-links-only', '')
+      element.setAttribute('data-ga4-link', '{"index":{"index_section": "1", "index_section_count": "2"}}')
+      element.innerHTML = '<a class="link" href="#link1">Link 1</a>'
+
+      var link = element.querySelector('.link')
+      link.setAttribute('data-ga4-index', '{"index_link": "' + 3 + '"}')
+
+      initModule(element, false)
+      link.click()
+
+      expect(window.dataLayer[0].event_data.index).toEqual({ index_link: '3', index_section: '1', index_section_count: '2' })
+    })
+  })
+
+  describe('when data-ga4-index does not exist on the target element but index exists on the parent', function () {
+    it('does not modify the index object', function () {
+      element = document.createElement('div')
+      element.setAttribute('data-ga4-track-links-only', '')
+      element.setAttribute('data-ga4-link', '{"index":{"index_section": "1", "index_section_count": "2"}}')
+      element.innerHTML = '<a class="link" href="#link1">Link 1</a>'
+
+      var link = element.querySelector('.link')
+
+      initModule(element, false)
+      link.click()
+
+      expect(window.dataLayer[0].event_data.index).toEqual({ index_section: '1', index_section_count: '2' })
+    })
+  })
+
+  describe('if neither data-ga4-index or index exist', function () {
+    it('sets the index property to undefined', function () {
+      element = document.createElement('div')
+      element.setAttribute('data-ga4-track-links-only', '')
+      element.setAttribute('data-ga4-link', '{"someData": "blah"}')
+      element.innerHTML = '<a class="link" href="#link1">Link 1</a>'
+
+      var link = element.querySelector('.link')
+
+      initModule(element, false)
+      link.click()
+
+      expect(window.dataLayer[0].event_data.index).toEqual(undefined)
+    })
+  })
 })

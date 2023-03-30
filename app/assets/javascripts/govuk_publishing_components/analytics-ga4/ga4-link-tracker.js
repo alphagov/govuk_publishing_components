@@ -113,6 +113,14 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
     if (target.getAttribute('data-ga4-index')) {
       try {
         index = JSON.parse(target.getAttribute('data-ga4-index'))
+
+        // Check whether the index object already exists on a parent element, as is the case with tracking accordion links.
+        // If true, combine data-ga4-index with the index object
+        if (typeof indexData === 'object') {
+          for (var i = 0; i < Object.keys(indexData).length; i++) {
+            index[Object.keys(indexData)[i]] = indexData[Object.keys(indexData)[i]]
+          }
+        }
       } catch (e) {
         console.error('Unable to parse index as JSON: ' + e.message, window.location)
         return
