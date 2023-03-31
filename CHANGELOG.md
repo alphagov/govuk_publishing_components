@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 35.2.0
 
 * Update to Lux 307 ([PR #3329](https://github.com/alphagov/govuk_publishing_components/pull/3329))
 * Drop support for Ruby 2.7 ([PR #3310](https://github.com/alphagov/govuk_publishing_components/pull/3310))
