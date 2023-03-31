@@ -63,8 +63,8 @@
             type: "accordion",
             section: item[:heading][:text],
             index: {
-              index_section: index.to_s,
-              index_section_count: (items.length).to_s,
+              index_section: index,
+              index_section_count: (items.length),
             }
           }.to_json
         end
