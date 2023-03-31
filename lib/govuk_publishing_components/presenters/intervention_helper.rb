@@ -2,6 +2,8 @@ module GovukPublishingComponents
   module Presenters
     class InterventionHelper
       def initialize(options = {})
+        @name = options[:name]
+        @dismiss_text = options[:dismiss_text]
         @accessible_text_suffix = I18n.t("components.intervention.accessible_link_text_suffix")
         @params = options[:params]
         @query_string = options[:query_string]
@@ -33,6 +35,7 @@ module GovukPublishingComponents
 
       def show?
         return false if params["hide-intervention"] == "true"
+        return false if @dismiss_text && @name.blank?
 
         @suggestion_text || (@suggestion_link_text && @suggestion_link_url)
       end

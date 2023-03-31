@@ -7,6 +7,7 @@ describe "Intervention", type: :view do
 
   it "renders the component" do
     render_component(
+      name: "test-campaign",
       suggestion_text: "You might be interested in",
       suggestion_link_text: "Travel abroad",
       suggestion_link_url: "/travel-abroad",
@@ -32,6 +33,7 @@ describe "Intervention", type: :view do
 
   it "renders the component without suggestion link" do
     render_component(
+      name: "test-campaign",
       suggestion_text: "You might be interested in",
       dismiss_text: "Hide this suggestion",
     )
@@ -43,6 +45,7 @@ describe "Intervention", type: :view do
 
   it "renders the right query string when none exists" do
     render_component(
+      name: "test-campaign",
       suggestion_text: "You might be interested in",
       dismiss_text: "Hide this suggestion",
     )
@@ -56,6 +59,13 @@ describe "Intervention", type: :view do
 
   it "doesn't render anything if no suggestion text is provided" do
     assert_empty render_component(dismiss_text: "Hide this suggestion")
+  end
+
+  it "doesn't render anything if a dismiss link is given but without a name for the campaign" do
+    assert_empty render_component(
+      suggestion_text: "You might be interested in",
+      dismiss_text: "Hide this suggestion",
+    )
   end
 
   describe "hide" do

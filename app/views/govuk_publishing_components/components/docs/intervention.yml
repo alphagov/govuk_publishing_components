@@ -33,6 +33,9 @@ examples:
       suggestion_link_url: /travel-abroad
 
   with_dismiss_link:
+    description: | 
+      Name is required in order to set a cookie. The name value should be distinct to the campaign for the banner, 
+      so that other banners using this component are not hidden by accident.
     data:
       suggestion_text: You should renew your permit every 6 months.
       dismiss_text: Hide this suggestion
