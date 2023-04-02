@@ -12,6 +12,10 @@ module GovukPublishingComponents
         @attachment_data = attachment_data.with_indifferent_access
       end
 
+      def thumbnail_url
+        @attachment_data[:thumbnail_url]
+      end
+
       def title
         attachment_data.fetch(:title)
       end

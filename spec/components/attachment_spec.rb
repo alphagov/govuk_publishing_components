@@ -129,6 +129,24 @@ describe "Attachment", type: :view do
     assert_select ".gem-c-attachment__metadata:nth-of-type(1)", text: "Ref: ISBN 978-1-5286-1173-2, 2259, Cd. 67"
   end
 
+  it "shows PDF thumbnails previews for PDF attachments" do
+    render_component(
+      attachment: {
+        title: "The government financial reporting review",
+        url: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/791567/the_government_financial_reporting_review_web.pdf",
+        filename: "department-for-transport-information-asset-register.csv",
+        content_type: "application/pdf",
+        file_size: 20_000,
+        number_of_pages: 7,
+        isbn: "978-1-5286-1173-2",
+        unique_reference: "2259",
+        command_paper_number: "Cd. 67",
+        thumbnail_url: "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/791567/thumbnail_the_government_financial_reporting_review_web.pdf.png",
+      },
+    )
+    rendered.should include("https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/791567/thumbnail_the_government_financial_reporting_review_web.pdf.png")
+  end
+
   it "shows unnumbered details on the second metadata line if marked so" do
     render_component(
       attachment: {
