@@ -22,7 +22,7 @@
 %>
 <% if steps %>
   <div
-    data-module="gemstepnav<% if ga4_tracking %> ga4-event-tracker ga4-link-tracker<% end %>"
+    data-module="gemstepnav<% if ga4_tracking %> ga4-event-tracker<% end %>"
     <%= "data-ga4-expandable" if ga4_tracking %>
     class="gem-c-step-nav js-hidden <% if small %>govuk-!-display-none-print<% end %> <% unless small %>gem-c-step-nav--large<% end %>"
     <%= "data-remember" if remember_last_step %>
@@ -73,7 +73,23 @@
             <% end %>
           </div>
 
-          <div class="gem-c-step-nav__panel js-panel" id="step-panel-<%= id %>-<%= step_index + 1 %>">
+          <%
+            ga4_link_data = {}
+
+            if ga4_tracking
+              ga4_link_data = {
+                "module": "ga4-link-tracker",
+                "ga4-track-links-only": "",
+                "ga4-set-indexes": "",
+                "ga4-link": {
+                  "event_name": "navigation",
+                  "type": "step by step"
+                }
+              }
+            end
+          %>
+
+          <%= tag.div(class: "gem-c-step-nav__panel js-panel", id: "step-panel-#{id}-#{step_index + 1}", data: ga4_link_data) do %>
             <%
               in_substep = false
               options[:step_nav_content_id] = step_nav_content_id
@@ -91,7 +107,7 @@
                 end
               %>
             <% end %>
-          </div>
+          <% end %>
 
         </li>
       <% end %>
