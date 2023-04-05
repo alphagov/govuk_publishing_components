@@ -309,7 +309,7 @@ describe('GA4 core', function () {
 
         for (var i = 0; i < links.length; i++) {
           var linkIndex = links[i].getAttribute('data-ga4-index')
-          expect(linkIndex).toEqual('{"index_link": "' + (i + 1) + '"}')
+          expect(linkIndex).toEqual('{"index_link": ' + (i + 1) + '}')
         }
       })
     })

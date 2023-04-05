@@ -230,7 +230,7 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
           // Only index links that are not search results
           if (!link.getAttribute('data-ga4-ecommerce-path')) {
             totalLinks++
-            link.setAttribute('data-ga4-index', '{"index_link": "' + totalLinks + '"}')
+            link.setAttribute('data-ga4-index', '{"index_link": ' + totalLinks + '}')
           }
         }
 

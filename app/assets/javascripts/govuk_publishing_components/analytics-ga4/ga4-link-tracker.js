@@ -108,20 +108,22 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
   }
 
   Ga4LinkTracker.prototype.setIndex = function (indexData, target) {
-    var index
+    var index = window.GOVUK.analyticsGa4.core.trackFunctions.createIndexObject(indexData)
 
     if (target.getAttribute('data-ga4-index')) {
       try {
-        index = JSON.parse(target.getAttribute('data-ga4-index'))
+        var indexLink = JSON.parse(target.getAttribute('data-ga4-index'))
+
+        // Check whether the index object already exists on a parent element, as is the case with tracking accordion links.
+        // If true, combine data-ga4-index with the index object. Otherwise, just return indexLink
+        index = index ? window.GOVUK.extendObject(index, indexLink) : indexLink
       } catch (e) {
         console.error('Unable to parse index as JSON: ' + e.message, window.location)
         return
       }
-    } else {
-      index = indexData || undefined
     }
 
-    return window.GOVUK.analyticsGa4.core.trackFunctions.createIndexObject(index)
+    return index
   }
 
   Modules.Ga4LinkTracker = Ga4LinkTracker
