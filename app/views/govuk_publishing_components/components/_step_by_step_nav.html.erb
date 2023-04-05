@@ -83,8 +83,12 @@
                 "ga4-set-indexes": "",
                 "ga4-link": {
                   "event_name": "navigation",
-                  "type": "step by step"
-                }
+                  "type": "step by step",
+                  "index": {
+                    "index_section": step_index + 1
+                  },
+                  "section": step[:title]
+                }.to_json
               }
             end
           %>
