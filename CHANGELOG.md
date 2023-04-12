@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Make Cookie Banner Implementation More Like Design System Implementation [(PR #3325)](https://github.com/alphagov/govuk_publishing_components/pull/3325)
+
 ## 35.3.2
 
 * Fix GA4 index_total parameter in various places ([PR #3358](https://github.com/alphagov/govuk_publishing_components/pull/3358))
