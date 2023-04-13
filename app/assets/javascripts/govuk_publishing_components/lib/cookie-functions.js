@@ -17,6 +17,7 @@
     cookie_preferences_set: 'essential',
     cookies_preferences_set: 'essential',
     '_email-alert-frontend_session': 'essential',
+    intervention_campaign: 'essential',
     licensing_session: 'essential',
     govuk_contact_referrer: 'essential',
     multivariatetest_cohort_coronavirus_extremely_vulnerable_rate_limit: 'essential',

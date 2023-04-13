@@ -8,9 +8,10 @@ RSpec.describe GovukPublishingComponents::Presenters::InterventionHelper do
         expect(default_dismiss_link).to eql("?hide-intervention=true")
       end
 
-      it "adds the dismiss query string parameter" do
-        existing_query_string = "?a=b"
-        intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new({ query_string: existing_query_string })
+      it "appends the dismiss query string parameter" do
+        query_string = "?a=b"
+
+        intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new(query_string: query_string)
         new_query_string = intervention_helper.dismiss_link
 
         expect(new_query_string).to eql("?a=b&hide-intervention=true")
@@ -18,23 +19,54 @@ RSpec.describe GovukPublishingComponents::Presenters::InterventionHelper do
 
       it "returns the default query string if the one passed is empty" do
         existing_query_string = ""
-        intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new({ query_string: existing_query_string })
+        request = Rack::Utils.parse_nested_query(existing_query_string)
+
+        intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new(request: request)
         new_query_string = intervention_helper.dismiss_link
 
         expect(new_query_string).to eql("?hide-intervention=true")
       end
     end
 
+    describe ".show?" do
+      it "returns falsey value when no banner data args are passed" do
+        intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new({ params: {} })
+
+        expect(intervention_helper.show?).to be_falsey
+      end
+
+      it "returns falsey value when only some of required params are passed" do
+        intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new({ suggestion_link_text: "Text", params: {} })
+
+        expect(intervention_helper.show?).to be_falsey
+      end
+
+      it "returns falsey value when required params and hide query param is passed" do
+        params = {
+          "hide-intervention" => "true",
+        }
+        intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new({ suggestion_link_text: "Text", suggestion_link_url: "/path-to-page", params: params })
+
+        expect(intervention_helper.show?).to be_falsey
+      end
+
+      it "returns true when required params are passed" do
+        intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new({ suggestion_link_text: "Text", suggestion_link_url: "/path-to-page", params: {} })
+
+        expect(intervention_helper.show?).to be_truthy
+      end
+    end
+
     describe ".security_attr" do
       it "returns default security attributes for new tab links" do
-        intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new({ suggestion_link_text: "Text", suggestion_link_url: "/path-to-page" })
+        intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new({ suggestion_link_text: "Text", suggestion_link_url: "/path-to-page", params: {} })
         security_attrs = intervention_helper.security_attr
 
         expect(security_attrs).to eql("noopener noreferrer")
       end
 
       it "returns appends external attribute for new tab external links" do
-        intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new({ suggestion_link_text: "Text", suggestion_link_url: "https://www.nationalarchives.gov.uk" })
+        intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new({ suggestion_link_text: "Text", suggestion_link_url: "https://www.nationalarchives.gov.uk", params: {} })
         security_attrs = intervention_helper.security_attr
 
         expect(security_attrs).to eql("noopener noreferrer external")
@@ -43,14 +75,14 @@ RSpec.describe GovukPublishingComponents::Presenters::InterventionHelper do
 
     describe ".accessible_link_text" do
       it "appends text to make new tab link accessible" do
-        intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new({ suggestion_link_text: "Text", suggestion_link_url: "/path-to-page" })
+        intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new({ suggestion_link_text: "Text", suggestion_link_url: "/path-to-page", params: {} })
         link_text = intervention_helper.accessible_text
 
         expect(link_text).to eq("Text (opens in a new tab)")
       end
 
       it "doesn't append text if link text is already accessible" do
-        intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new({ suggestion_link_text: "Travel abroad (opens in a new tab) guidance", suggestion_link_url: "/path-to-page" })
+        intervention_helper = GovukPublishingComponents::Presenters::InterventionHelper.new({ suggestion_link_text: "Travel abroad (opens in a new tab) guidance", suggestion_link_url: "/path-to-page", params: {} })
         link_text = intervention_helper.accessible_text
 
         expect(link_text).to eq("Travel abroad (opens in a new tab) guidance")

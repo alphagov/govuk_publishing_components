@@ -6,7 +6,10 @@ body: |
   that would be useful to them. This component would be used to add this personalised content and would
   indicate to the user that this is not normally part of the page, but has been added for them specifically.
 
-  The dismiss link points to the current URL with the "hide-intervention" query string parameter set to "true". The backend should check for this string in order to render the same page without the intervention.
+  The dismiss link works without Javascript by pointing to the current URL with the "hide-intervention" 
+  query string parameter set to "true". It's progressively enhanced and sets a cookie to remember that 
+  the user has dismissed the banner before. The cookie requires a "name" parameter, the value of which 
+  is stored in the cookie to distinguish which campaign banner the user has dismissed.
 
 accessibility_criteria: |
   The intervention component must:
@@ -30,20 +33,20 @@ examples:
       suggestion_link_url: /travel-abroad
 
   with_dismiss_link:
+    description: | 
+      Name is required in order to set a cookie. The name value should be distinct to the campaign for the banner, 
+      so that other banners using this component are not hidden by accident.
     data:
       suggestion_text: You should renew your permit every 6 months.
       dismiss_text: Hide this suggestion
-
-  with_suggestion_link_only:
-    data:
-      suggestion_link_text: You can now apply for a permit online.
-      suggestion_link_url: /permit
+      name: campaign-name
 
   with_hide:
     description: |
       This example is for when we want to hide by default and display to the user based on some logic,
       either in the backend or with Javascript.
     data:
+      suggestion_text: You should renew your permit every 6 months.
       suggestion_link_text: You may be invited to fill in a questionnaire
       suggestion_link_url: /questionnaire
       hide: true
@@ -55,6 +58,7 @@ examples:
       Link text should tell the user that the link opens in a new tab.
       Note: "(opens in a new tab)" is added to link text if the phrase isn't included.
     data:
+      suggestion_text: You should renew your permit every 6 months.
       suggestion_link_text: You can now apply for a permit online
       suggestion_link_url: www.google.com/permit
       new_tab: true
@@ -76,6 +80,7 @@ examples:
         track-dimension-index: 29
         track-label: clicked suggestion
       dismiss_text: Hide this suggestion
+      name: another-campaign-name
       dismiss_data_attributes:
         track-category: interventionBanner
         track-action: interventionDismissed
