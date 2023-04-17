@@ -30,7 +30,6 @@
     <% end %>
 
     <% section_index = 0 %>
-
     <% related_nav_helper.related_navigation.each do |section_title, links| %>
       <% next unless links.any? %>
 
@@ -42,6 +41,7 @@
         section_title: section_title,
         links: links,
         section_index: section_index,
+        section_count: related_nav_helper.index_section_count,
         random: random,
         ga4_tracking: ga4_tracking %>
     <% end %>

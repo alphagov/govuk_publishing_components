@@ -24,17 +24,23 @@
   <% end %>
 
   <ul class="gem-c-related-navigation__link-list">
-    <% constructed_link_array = [] %>
-
-    <% section_link_limit = related_nav_helper.calculate_section_link_limit(links) %>
-
+    <% 
+      constructed_link_array = []
+      section_link_limit = related_nav_helper.calculate_section_link_limit(links)
+      index_total = links.length
+    %>
     <% links.each.with_index(1) do |link, index| %>
       <%
         link_class = "govuk-link #{related_nav_helper.section_css_class("govuk-link gem-c-related-navigation__section-link", section_title, link: link, link_is_inline: (index >= section_link_limit))}"
         ga4_attributes = {
           event_name: "navigation",
           type: "related content",
-          index: "#{section_index}.#{index}",
+          index: {
+            index_section: "#{section_index}",
+            index_link: "#{index}",
+            index_section_count: "#{section_count}",
+          },
+          index_total: "#{index_total}",
           section: ga4_heading_text,
         } if ga4_tracking
         link_element = link_to(

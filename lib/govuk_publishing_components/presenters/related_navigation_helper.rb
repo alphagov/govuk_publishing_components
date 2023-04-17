@@ -16,12 +16,16 @@ module GovukPublishingComponents
         "UK Mission to the European Union" => "uk-mission-to-the-eu",
       }.freeze
 
+      attr_reader :related_navigation, :index_section_count
+
       def initialize(options = {})
         @content_item = options.fetch(:content_item) { raise ArgumentError, "missing argument: content_item" }
         @context = options.fetch(:context, nil)
+        @related_navigation = related_navigation_contents
+        @index_section_count = section_count
       end
 
-      def related_navigation
+      def related_navigation_contents
         case @context.try(:to_sym)
         when :sidebar
           {
@@ -51,6 +55,10 @@ module GovukPublishingComponents
             "related_contacts" => related_contacts,
           }
         end
+      end
+
+      def section_count
+        @related_navigation.select { |_, links| links.any? }.length
       end
 
       def construct_section_text(section, underscores_to_spaces)
