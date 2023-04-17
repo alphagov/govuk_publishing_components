@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 35.3.0
 
 * Add data attributes to attachment links using JS [(PR #3330)](https://github.com/alphagov/govuk_publishing_components/pull/3330)
 * Ga4 accordion link tracking ([PR #3328](https://github.com/alphagov/govuk_publishing_components/pull/3328))
