@@ -11,6 +11,7 @@
 
 * Add data attributes to attachment links using JS [(PR #3330)](https://github.com/alphagov/govuk_publishing_components/pull/3330)
 * Ga4 accordion link tracking ([PR #3328](https://github.com/alphagov/govuk_publishing_components/pull/3328))
+* Fix GA4 Step Nav link tracking bug ([PR #3334](https://github.com/alphagov/govuk_publishing_components/pull/3334))
 
 ## 35.2.0
 

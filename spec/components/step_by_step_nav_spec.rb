@@ -258,7 +258,7 @@ describe "step nav", type: :view do
     render_component(steps: stepnav, ga4_tracking: true)
 
     assert_select ".gem-c-step-nav[data-ga4-expandable]"
-    assert_select ".gem-c-step-nav[data-module='gemstepnav ga4-event-tracker ga4-link-tracker']"
+    assert_select ".gem-c-step-nav[data-module='gemstepnav ga4-event-tracker']"
   end
 
   it "adds ga4 link attributes when there is one section per step" do
@@ -296,22 +296,28 @@ describe "step nav", type: :view do
     expected = {
       "event_name": "navigation",
       "type": "step by step",
-      "index": { "index_section": "1", "index_link": "1" },
-      "index_total": "1",
+      "index": { "index_section": 1 },
       "section": "Step 1",
-    }
+    }.to_json
 
-    assert_select "#{step1} .gem-c-step-nav__link[href='/link1'][data-ga4-link='#{expected.to_json}']"
+    assert_select "#step-panel-step-1-1" do |step_panel|
+      expect(step_panel.attr("data-ga4-link").to_s).to eq expected
+      expect(step_panel.attr("data-ga4-track-links-only").to_s).to eq ""
+      expect(step_panel.attr("data-ga4-set-indexes").to_s).to eq ""
+    end
 
     expected = {
       "event_name": "navigation",
       "type": "step by step",
-      "index": { "index_section": "2", "index_link": "1" },
-      "index_total": "1",
+      "index": { "index_section": 2 },
       "section": "Step 2",
-    }
+    }.to_json
 
-    assert_select ".gem-c-step-nav__step:nth-of-type(2) .gem-c-step-nav__link[href='/link2'][data-ga4-link='#{expected.to_json}']"
+    assert_select "#step-panel-step-2-2" do |step_panel|
+      expect(step_panel.attr("data-ga4-link").to_s).to eq expected
+      expect(step_panel.attr("data-ga4-track-links-only").to_s).to eq ""
+      expect(step_panel.attr("data-ga4-set-indexes").to_s).to eq ""
+    end
   end
 
   it "adds ga4 link attributes when there are variable sections per step" do
@@ -320,20 +326,40 @@ describe "step nav", type: :view do
     expected = {
       "event_name": "navigation",
       "type": "step by step",
-      "index": { "index_section": "1", "index_link": "1" },
-      "index_total": "2",
+      "index": { "index_section": 1 },
       "section": "Step 1",
-    }
+    }.to_json
 
-    assert_select "#{step1} .gem-c-step-nav__link[href='/link1'][data-ga4-link='#{expected.to_json}']"
+    assert_select "#step-panel-step-1-1" do |step_panel|
+      expect(step_panel.attr("data-ga4-link").to_s).to eq expected
+      expect(step_panel.attr("data-ga4-track-links-only").to_s).to eq ""
+      expect(step_panel.attr("data-ga4-set-indexes").to_s).to eq ""
+    end
 
     expected = {
       "event_name": "navigation",
       "type": "step by step",
-      "index": { "index_section": "3", "index_link": "1" },
-      "index_total": "2",
+      "index": { "index_section": 2 },
+      "section": "Step 1 and",
+    }.to_json
+
+    assert_select "#step-panel-step-1-and-2" do |step_panel|
+      expect(step_panel.attr("data-ga4-link").to_s).to eq expected
+      expect(step_panel.attr("data-ga4-track-links-only").to_s).to eq ""
+      expect(step_panel.attr("data-ga4-set-indexes").to_s).to eq ""
+    end
+
+    expected = {
+      "event_name": "navigation",
+      "type": "step by step",
+      "index": { "index_section": 3 },
       "section": "Step 2",
-    }
-    assert_select "#{step2} .gem-c-step-nav__link[href='/link5'][data-ga4-link='#{expected.to_json}']"
+    }.to_json
+
+    assert_select "#step-panel-step-2-3" do |step_panel|
+      expect(step_panel.attr("data-ga4-link").to_s).to eq expected
+      expect(step_panel.attr("data-ga4-track-links-only").to_s).to eq ""
+      expect(step_panel.attr("data-ga4-set-indexes").to_s).to eq ""
+    end
   end
 end
