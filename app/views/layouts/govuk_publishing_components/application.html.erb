@@ -18,6 +18,7 @@
 
     <%= stylesheet_link_tag "component_guide/application", media: "all" %>
     <%= yield :application_stylesheet %>
+    <%= render_component_stylesheets %>
 
     <%= javascript_include_tag "govuk_publishing_components/vendor/modernizr" %>
     <%= yield :extra_headers %>
