@@ -9,11 +9,12 @@
 
 ## Unreleased
 
-* Add brand colour for DSIT [(PR #3349)](https://github.com/alphagov/govuk_publishing_components/pull/3349)
+* Add brand colour for DSIT ([PR #3349](https://github.com/alphagov/govuk_publishing_components/pull/3349))
+* Update GA4 index parameter on related navigation ([PR #3346](https://github.com/alphagov/govuk_publishing_components/pull/3346))
 
 ## 35.3.0
 
-* Add data attributes to attachment links using JS [(PR #3330)](https://github.com/alphagov/govuk_publishing_components/pull/3330)
+* Add data attributes to attachment links using JS ([PR #3330](https://github.com/alphagov/govuk_publishing_components/pull/3330))
 * Ga4 accordion link tracking ([PR #3328](https://github.com/alphagov/govuk_publishing_components/pull/3328))
 * Fix GA4 Step Nav link tracking bug ([PR #3334](https://github.com/alphagov/govuk_publishing_components/pull/3334))
 
@@ -26,8 +27,8 @@
 * Make auditing aware of new asset loading model ([PR #3318](https://github.com/alphagov/govuk_publishing_components/pull/3318))
 * Ga4 part of heading tracking fix ([PR #3321](https://github.com/alphagov/govuk_publishing_components/pull/3321))
 * Ga4 fix index ([PR #3313](https://github.com/alphagov/govuk_publishing_components/pull/3313))
-* Fix search icon cut-off in navbar  ([PR #3322](https://github.com/alphagov/govuk_publishing_components/pull/3322))
-* Update AssetHelper documentation  ([PR #3323](https://github.com/alphagov/govuk_publishing_components/pull/3323))
+* Fix search icon cut-off in navbar ([PR #3322](https://github.com/alphagov/govuk_publishing_components/pull/3322))
+* Update AssetHelper documentation ([PR #3323](https://github.com/alphagov/govuk_publishing_components/pull/3323))
 
 ## 35.1.1
 
