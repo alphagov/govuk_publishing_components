@@ -5,6 +5,9 @@
   request.query_parameters[:ga4_tracking] = ga4_tracking
   navigation = GovukPublishingComponents::Presenters::ContextualNavigation.new(content_item, request)
   shared_helper = GovukPublishingComponents::Presenters::SharedHelper.new(local_assigns)
+  show_ukraine_cta = navigation.show_ukraine_cta?
+  ga4_tracking_counts = OpenStruct.new(index_section_count: 0)
+  ga4_tracking_counts.index_section_count = 1 if show_ukraine_cta
 %>
 
 <div class="gem-c-contextual-sidebar">
@@ -18,7 +21,7 @@
     <%= render 'govuk_publishing_components/components/step_by_step_nav', navigation.step_nav_helper.sidebar %>
   <% else %>
     <%# Rendering related navigation sidebar because no step by step list %>
-    <%= render 'govuk_publishing_components/components/related_navigation', content_item: content_item, context: :sidebar, ga4_tracking: ga4_tracking %>
+    <%= render 'govuk_publishing_components/components/related_navigation', content_item: content_item, context: :sidebar, ga4_tracking: ga4_tracking, ga4_tracking_counts: ga4_tracking_counts %>
   <% end %>
 
   <% if navigation.content_tagged_to_other_step_by_steps? %>
@@ -31,7 +34,7 @@
     } %>
   <% end %>
 
-  <% if navigation.show_ukraine_cta? %>
-    <%= render 'govuk_publishing_components/components/contextual_sidebar/ukraine_cta', content_item: content_item, ga4_tracking: ga4_tracking %>
+  <% if show_ukraine_cta %>
+    <%= render 'govuk_publishing_components/components/contextual_sidebar/ukraine_cta', content_item: content_item, ga4_tracking: ga4_tracking, ga4_tracking_counts: ga4_tracking_counts %>
   <% end %>
 </div>

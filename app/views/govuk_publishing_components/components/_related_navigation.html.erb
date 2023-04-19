@@ -5,12 +5,11 @@
   data = {}
   data[:module] = "gem-track-click"
   data[:module] << " ga4-link-tracker" if ga4_tracking
-%>
+  ga4_tracking_counts ||= OpenStruct.new(index_section_count: 0)
+  ga4_tracking_counts.index_section_count += related_nav_helper.index_section_count
 
-<%
   add_gem_component_stylesheet("related-navigation")
 %>
-
 <% if related_nav_helper.related_navigation? %>
   <% random = SecureRandom.hex(4) %>
   <%= tag.div(class: "gem-c-related-navigation", data: data) do %>
@@ -30,7 +29,6 @@
     <% end %>
 
     <% section_index = 0 %>
-
     <% related_nav_helper.related_navigation.each do |section_title, links| %>
       <% next unless links.any? %>
 
@@ -42,6 +40,7 @@
         section_title: section_title,
         links: links,
         section_index: section_index,
+        section_count: ga4_tracking_counts.index_section_count,
         random: random,
         ga4_tracking: ga4_tracking %>
     <% end %>
