@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Add brand colour for DSIT [(PR #3349)](https://github.com/alphagov/govuk_publishing_components/pull/3349)
+
 ## 35.3.0
 
 * Add data attributes to attachment links using JS [(PR #3330)](https://github.com/alphagov/govuk_publishing_components/pull/3330)

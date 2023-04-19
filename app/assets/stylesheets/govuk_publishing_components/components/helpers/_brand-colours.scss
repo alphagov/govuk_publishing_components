@@ -87,3 +87,12 @@
     border-color: govuk-colour("black");
   }
 }
+
+// new colour for DSIT for use until govuk-frontend#3523 has been released
+
+.brand--department-for-science-innovation-and-technology {
+  &.brand__border-color,
+  .brand__border-color {
+    border-color: #045f71;
+  }
+}
