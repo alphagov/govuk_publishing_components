@@ -17,7 +17,6 @@ module GovukPublishingComponents
         licence-finder
         release
         search-admin
-        service-manual-frontend
         signon
         smart-answers
         static
