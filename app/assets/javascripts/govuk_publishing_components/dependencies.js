@@ -1,5 +1,7 @@
 /* eslint-env */
 
+// = require @alphagov/consent-api/client/src/consent.js
+
 // This adds in javascript that initialises components and dependencies
 // that are provided by Slimmer in public frontend applications.
 // = require ./modules.js
