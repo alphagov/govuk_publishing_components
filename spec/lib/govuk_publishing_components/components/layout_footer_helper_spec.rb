@@ -63,7 +63,7 @@ RSpec.describe GovukPublishingComponents::Presenters::LayoutFooterHelper do
           "index_section": "1",
           "index_section_count": "4",
         },
-        "index-total": "5",
+        "index_total": "5",
         "section": "Test",
       }
 

@@ -38,7 +38,7 @@ module GovukPublishingComponents
             "index_section": (index_section + 1).to_s,
             "index_section_count": @ga4_index_section_count.to_s,
           },
-          "index-total": @ga4_index_total.to_s,
+          "index_total": @ga4_index_total.to_s,
           "section": section,
         }
       end
