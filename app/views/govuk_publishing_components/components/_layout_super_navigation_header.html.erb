@@ -16,12 +16,6 @@
   show_search_menu_text = t("components.layout_super_navigation_header.menu_toggle_label.show", :label => "search")
   hide_navigation_menu_text = t("components.layout_super_navigation_header.menu_toggle_label.hide", :label => "navigation")
   show_navigation_menu_text = t("components.layout_super_navigation_header.menu_toggle_label.show", :label => "navigation")
-
-  navigation_links_length = 1 # GOVUK Logo makes this start from 1
-  navigation_links_columns.each do | column |
-    navigation_links_length = navigation_links_length + column[:menu_contents].length
-  end
-  navigation_links_length = navigation_links_length + popular_links.length
 %>
 <header role="banner" class="gem-c-layout-super-navigation-header" data-module="gem-track-click ga4-event-tracker ga4-link-tracker" data-track-links-only data-ga4-expandable>
   <div class="gem-c-layout-super-navigation-header__container govuk-clearfix">
@@ -46,7 +40,7 @@
             "index": {
               "index_section": 0,
             },
-            "index_total": navigation_links_length
+            "index_total": 1
           }.to_json %>"
         >
           <span class="govuk-header__logotype">
@@ -225,6 +219,7 @@
                   <%= column[:label] %>
                 </h3>
                 <ul class="gem-c-layout-super-navigation-header__navigation-second-items gem-c-layout-super-navigation-header__navigation-second-items--<%= column[:label].downcase.sub(" ", "-") %>">
+                  <% index_total = column[:menu_contents].length %>
                   <% column[:menu_contents].each_with_index do | item, index | %>
                       <%
                         has_description = item[:description].present?
@@ -249,7 +244,7 @@
                                 "index_link": index + 1,
                                 "index_section_count": 4,
                               },
-                              "index_total": navigation_links_length,
+                              "index_total": index_total,
                               "section": column[:label],
                             }
                           }
@@ -302,6 +297,7 @@
             <div class="govuk-grid-column-full">
               <h3 class="govuk-heading-m"><%= popular_links_heading %></h3>
               <ul class="govuk-list">
+                <% index_total = popular_links.length %>
                 <% popular_links.each_with_index do | popular_link, index | %>
                   <li class="gem-c-layout-super-navigation-header__popular-item">
                     <%= link_to popular_link[:label], popular_link[:href], {
@@ -323,7 +319,7 @@
                             "index_link": index + 1,
                             "index_section_count": 4,
                           },
-                          "index_total": navigation_links_length,
+                          "index_total": index_total,
                           "section": popular_links_heading,
                         }
                       }
