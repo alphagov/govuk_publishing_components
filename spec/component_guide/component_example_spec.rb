@@ -31,13 +31,13 @@ describe "Component example" do
   it "includes the application stylesheet for an application component" do
     visit "/component-guide/test-component"
 
-    expect(page).to have_selector('link[href*="/assets/application.css"]', visible: false)
+    expect(page).to have_selector('link[href^="/assets/application-"][rel="stylesheet"]', visible: false)
   end
 
   it "doesn't include the application stylesheet for a gem component" do
     visit "/component-guide/button"
 
-    expect(page).not_to have_selector('link[href*="/assets/application.css"]', visible: false)
+    expect(page).not_to have_selector('link[href^="/assets/application-"][rel="stylesheet"]', visible: false)
   end
 
   it "lists examples in a human readable way" do
