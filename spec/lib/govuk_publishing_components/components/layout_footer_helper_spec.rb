@@ -29,7 +29,6 @@ RSpec.describe GovukPublishingComponents::Presenters::LayoutFooterHelper do
     it "generates correct counts for ga4 tracking" do
       footer_helper = GovukPublishingComponents::Presenters::LayoutFooterHelper.new(@navigation, @meta)
 
-      expect(footer_helper.ga4_index_total).to eql(5)
       expect(footer_helper.ga4_index_section_count).to eql(4)
       expect(footer_helper.ga4_ogl_link_index_section).to eql(3)
       expect(footer_helper.ga4_copyright_link_index_section).to eql(4)
@@ -46,7 +45,6 @@ RSpec.describe GovukPublishingComponents::Presenters::LayoutFooterHelper do
 
       footer_helper = GovukPublishingComponents::Presenters::LayoutFooterHelper.new(@navigation, @meta)
 
-      expect(footer_helper.ga4_index_total).to eql(6)
       expect(footer_helper.ga4_index_section_count).to eql(5)
       expect(footer_helper.ga4_ogl_link_index_section).to eql(4)
       expect(footer_helper.ga4_copyright_link_index_section).to eql(5)
@@ -67,7 +65,7 @@ RSpec.describe GovukPublishingComponents::Presenters::LayoutFooterHelper do
         "section": "Test",
       }
 
-      expect(footer_helper.generate_ga4_link_attribute(0, 0, "Test")).to eql(expected)
+      expect(footer_helper.generate_ga4_link_attribute(0, 0, "Test", 5)).to eql(expected)
     end
   end
 end

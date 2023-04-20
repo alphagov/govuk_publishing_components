@@ -35,6 +35,7 @@
             <div class="<%= width_class %> govuk-!-display-none-print">
               <h2 class="govuk-footer__heading govuk-heading-m"><%= section[:title] %></h2>
                 <ul class="<%= list_classes.join(' ') %>">
+                  <% index_total = section[:items].length %>
                   <% section[:items].each_with_index do |item, index| %>
                     <% if item[:href] && item[:text] %>
                       <li class="govuk-footer__list-item">
@@ -48,7 +49,7 @@
                           attributes[:rel] = "noopener" if attributes[:target] == "_blank" && !attributes[:rel]
 
                           unless attributes[:data][:ga4_link]
-                            attributes[:data][:ga4_link] = layout_footer_helper.generate_ga4_link_attribute(index, ga4_section_index, section[:title])
+                            attributes[:data][:ga4_link] = layout_footer_helper.generate_ga4_link_attribute(index, ga4_section_index, section[:title], index_total)
                           end
                         %>
                         <%= link_to item[:text], item[:href], attributes %>
@@ -68,6 +69,7 @@
         <% if meta.any? %>
           <h2 class="govuk-visually-hidden"><%= t("components.layout_footer.support_links") %></h2>
           <ul class="govuk-footer__inline-list govuk-!-display-none-print" data-module="gem-track-click" data-track-links-only>
+            <% index_total = meta[:items].length %>
             <% meta[:items].each_with_index do |item, index| %>
               <li class="govuk-footer__inline-list-item">
                 <%
@@ -78,7 +80,7 @@
                   attributes[:rel] = "noopener" if attributes[:target] == "_blank" && !attributes[:rel]
 
                   unless attributes[:data][:ga4_link]
-                    attributes[:data][:ga4_link] = layout_footer_helper.generate_ga4_link_attribute(index, navigation.length, "Support links")
+                    attributes[:data][:ga4_link] = layout_footer_helper.generate_ga4_link_attribute(index, navigation.length, "Support links", index_total)
                   end
                 %>
                 <%= link_to item[:text], item[:href], attributes %>
@@ -111,7 +113,7 @@
               "index_section_count": layout_footer_helper.ga4_index_section_count.to_s,
             },
             "text": "Open Government Licence v3.0",
-            "index_total": layout_footer_helper.ga4_index_total.to_s,
+            "index_total": "1",
             "type": "footer",
           }.to_json %>"
         >
@@ -136,7 +138,7 @@
             "index_section_count": layout_footer_helper.ga4_index_section_count.to_s,
           },
           "text": "© Crown copyright",
-          "index_total": layout_footer_helper.ga4_index_total.to_s,
+          "index_total": "1",
           "type": "footer",
         }.to_json %>"
       >
