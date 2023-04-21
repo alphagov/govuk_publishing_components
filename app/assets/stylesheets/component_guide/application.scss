@@ -1,6 +1,42 @@
 // This file contains the styles for the Component Guide.
 
-@import "govuk_publishing_components/all_components";
+// feature flag for accessible link styles
+$govuk-new-link-styles: true;
+
+@import "govuk_publishing_components/govuk_frontend_support";
+@import "govuk_publishing_components/component_support";
+
+// Import the same stylesheets used in static
+// https://github.com/alphagov/static/blob/198a598682df40ce4a2c3c286c06244297c18cf0/app/assets/stylesheets/application.scss
+// Although the component guide does not use static, we still need to import the same stylesheets used in static
+// to avoid any rendering issues
+// By following the same approach as frontend rendering applications,
+// we ensure that stylesheets are loaded in the expected order and components render correctly
+@import "govuk_publishing_components/components/breadcrumbs";
+@import "govuk_publishing_components/components/button";
+@import "govuk_publishing_components/components/error-message";
+@import "govuk_publishing_components/components/heading";
+@import "govuk_publishing_components/components/hint";
+@import "govuk_publishing_components/components/input";
+@import "govuk_publishing_components/components/label";
+@import "govuk_publishing_components/components/search";
+@import "govuk_publishing_components/components/skip-link";
+@import "govuk_publishing_components/components/textarea";
+@import "govuk_publishing_components/components/title";
+
+@import "govuk_publishing_components/components/cookie-banner";
+@import "govuk_publishing_components/components/feedback";
+@import "govuk_publishing_components/components/layout-footer";
+@import "govuk_publishing_components/components/layout-for-public";
+@import "govuk_publishing_components/components/layout-header";
+@import "govuk_publishing_components/components/layout-super-navigation-header";
+
+// Imported to ensure inverse-header component examples render correctly
+// this helps avoid any issues with visual regressions tests
+@import "govuk_publishing_components/components/lead-paragraph";
+
+// Include required helpers
+@import "../../stylesheets/govuk_publishing_components/components/helpers/markdown-typography";
 
 $gem-guide-border-width: 1px;
 
