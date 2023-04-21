@@ -42,7 +42,9 @@
                 tabindex: "-1",
                 "aria-hidden": true,
                 data: data_attributes do %>
-      <% if attachment.document? %>
+      <% if attachment.thumbnail_url %>
+        <% image_tag(attachment.thumbnail_url, alt: "") %>
+      <% elsif attachment.document? %>
         <%= render "govuk_publishing_components/components/attachment/thumbnail_document" %>
       <% elsif attachment.spreadsheet? %>
         <%= render "govuk_publishing_components/components/attachment/thumbnail_spreadsheet" %>
