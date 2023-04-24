@@ -7,6 +7,8 @@
 
   GOVUK.analyticsGa4.Ga4FinderTracker = {
     trackChangeEvent: function (eventTarget, changeEventMetadata) {
+      var PIIRemover = new window.GOVUK.analyticsGa4.PIIRemover()
+
       changeEventMetadata = changeEventMetadata.split(' ')
       var changeType = changeEventMetadata[0]
 
@@ -15,7 +17,7 @@
 
       var wasFilterRemoved = false
 
-      var schema = new window.GOVUK.analyticsGa4.Schemas()
+      var schema = new GOVUK.analyticsGa4.Schemas().eventSchema()
       schema.event = 'event_data'
       schema.event_data.type = 'finder'
 
@@ -63,6 +65,11 @@
           break
 
         case 'update-keyword':
+          schema.event_data.event_name = 'search'
+          schema.event_data.url = window.location.href
+          schema.event_data.text = PIIRemover.stripPIIWithOverride(elementValue, true, true)
+          schema.event_data.section = 'Search'
+          schema.event_data.action = 'search'
           break
 
         case 'clear-all-filters':
