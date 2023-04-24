@@ -16,7 +16,7 @@ module GovukPublishingComponents
         @ga4_index_section_count += 2
 
         @ga4_ogl_link_index_section = footer_navigation_section.length + @amount_of_meta_sections + 1
-        @ga4_copyright_link_index_section = footer_navigation_section.length + @amount_of_meta_sections + 2
+        @ga4_copyright_link_index_section = @ga4_ogl_link_index_section + 1
       end
 
       def generate_ga4_link_attribute(index_link, index_section, section, index_total)
