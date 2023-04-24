@@ -24,7 +24,7 @@
       if (elementType === 'checkbox') {
         var checkboxId = eventTarget.id
 
-        // The "value" for a checkbox is the label text that the user sees beside the checkbox.
+        // The "value" we need for a checkbox is the label text that the user sees beside the checkbox.
         elementValue = document.querySelector("label[for='" + checkboxId + "']").textContent
 
         if (eventTarget.checked === false) {
@@ -33,14 +33,13 @@
           wasFilterRemoved = true
         }
       } else if (elementType === 'select') {
-        // The value of a <select> is the ID of the <option>, so we need to grab the human friendly label.
-        console.log(eventTarget)
+        // The value of a <select> is the value attribute of the selected <option>, which is a hyphenated key. We need to grab the human readable label instead for tracking.
         elementValue = eventTarget.querySelector("option[value='" + eventTarget.value + "']").textContent
         var defaultValue = eventTarget.querySelector('option:first-of-type').textContent
         console.log('Default value:', defaultValue)
 
         if (elementValue === defaultValue) {
-          // <select> elements being reverted to their first option (i.e. their default value) counts as a "removed filter".
+          // <select> elements being reverted to their first option (i.e. their default value) count as a "removed filter". (This will be used on the filter <select>s but not the sort by <select>, as you can't "remove" the sort by filter.)
           console.log('Filter was removed because it matches a select default value')
           wasFilterRemoved = true
         }
@@ -48,7 +47,7 @@
         elementValue = eventTarget.value
         if (elementValue === '') {
           console.log('Filter was removed because the value is an empty string')
-          // Custom date filters being reset to an empty text box counts as a "removed filter".
+          // If our custom date filters are reset, they become an empty text box, so we count this as a "removed filter". This boolean won't be used for the keyword search box, as deleting the keyword isn't considered removing a filter.
           wasFilterRemoved = true
         }
       }
