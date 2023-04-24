@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Fix GA4 index_total parameter in various places ([PR #3358](https://github.com/alphagov/govuk_publishing_components/pull/3358))
+
 ## 35.3.1
 
 * Add brand colour for DSIT ([PR #3349](https://github.com/alphagov/govuk_publishing_components/pull/3349))
