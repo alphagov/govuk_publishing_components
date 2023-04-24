@@ -34,6 +34,7 @@
         }
       } else if (elementType === 'select') {
         // The value of a <select> is the ID of the <option>, so we need to grab the human friendly label.
+        console.log(eventTarget)
         elementValue = eventTarget.querySelector("option[value='" + eventTarget.value + "']").textContent
         var defaultValue = eventTarget.querySelector('option:first-of-type').textContent
         console.log('Default value:', defaultValue)
@@ -77,7 +78,7 @@
           break
 
         case 'update-sort':
-          console.log('TODO: Add GA4 schema for "sort by updated" event with value "Clear all filters"')
+          console.log('TODO: Add GA4 schema for "sort by updated" event with value', elementValue)
           break
 
         default:
