@@ -101,7 +101,7 @@ describe('GA4 finder change tracker', function () {
     expect(window.dataLayer[0]).toEqual(expected)
   })
 
-  it('creates the correct GA4 object for adding a <select> filter', function () {
+  it('creates the correct GA4 object for adding/removing a <select> filter', function () {
     inputParent = document.createElement('div')
     inputParent.setAttribute('data-ga4-change-category', 'update-filter select')
     inputParent.setAttribute('data-ga4-section', 'Your favourite chocolate')
@@ -137,6 +137,15 @@ describe('GA4 finder change tracker', function () {
     expected.event_data.index = index
 
     expect(window.dataLayer[0]).toEqual(expected)
+
+    input.value = 'all-types'
+    window.GOVUK.triggerEvent(input, 'change')
+
+    expected.event_data.action = 'remove'
+    expected.event_data.index = undefined
+    expected.event_data.text = 'All types of chocolate (default)'
+
+    expect(window.dataLayer[1]).toEqual(expected)
   })
 
   it('creates the correct GA4 object for adding/removing a text filter', function () {
