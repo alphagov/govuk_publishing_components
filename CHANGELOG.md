@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 35.3.2
 
 * Fix GA4 index_total parameter in various places ([PR #3358](https://github.com/alphagov/govuk_publishing_components/pull/3358))
 
