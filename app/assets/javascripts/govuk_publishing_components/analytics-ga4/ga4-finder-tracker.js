@@ -57,6 +57,8 @@
         }
       }
 
+      schema.event_data.text = PIIRemover.stripPIIWithOverride(elementValue, true, true)
+
       switch (changeType) {
         case 'update-filter':
           schema.event_data.event_name = 'select_content'
@@ -80,7 +82,9 @@
           break
 
         case 'clear-all-filters':
-          console.log('TODO: Add GA4 schema for "clear all filters" event with value "Clear all filters"')
+          schema.event_data.event_name = 'select_content'
+          schema.event_data.action = 'remove'
+          schema.event_data.text = 'Clear all filters'
           break
 
         case 'update-sort':
@@ -91,7 +95,6 @@
           break
       }
 
-      schema.event_data.text = PIIRemover.stripPIIWithOverride(elementValue, true, true)
       window.GOVUK.analyticsGa4.core.sendData(schema)
     },
 
