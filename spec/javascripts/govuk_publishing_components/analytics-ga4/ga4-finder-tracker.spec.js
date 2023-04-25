@@ -138,4 +138,29 @@ describe('GA4 finder change tracker', function () {
 
     expect(window.dataLayer[0]).toEqual(expected)
   })
+
+  it('creates the correct GA4 object for adding a text filter', function () {
+    inputParent = document.createElement('div')
+    inputParent.setAttribute('data-ga4-change-category', 'update-filter text')
+    inputParent.setAttribute('data-ga4-section', 'Your favourite chocolate')
+    var index = { index_section: 2, index_section_count: 2 }
+    inputParent.setAttribute('data-ga4-index', JSON.stringify(index))
+
+    input = document.createElement('input')
+    input.setAttribute('type', 'text')
+    input.value = "Here is an email that should not get redacted email@example.com"
+
+    inputParent.appendChild(input)
+    form.appendChild(inputParent)
+
+    window.GOVUK.triggerEvent(input, 'change')
+
+    expected.event_data.event_name = 'select_content'
+    expected.event_data.section = 'Your favourite chocolate'
+    expected.event_data.text = 'Here is an email that should not get redacted email@example.com'
+    expected.event_data.action = 'search'
+    expected.event_data.index = index
+
+    expect(window.dataLayer[0]).toEqual(expected)
+  })
 })
