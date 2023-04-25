@@ -6,6 +6,17 @@
   GOVUK.analyticsGa4 = GOVUK.analyticsGa4 || {}
 
   GOVUK.analyticsGa4.Ga4FinderTracker = {
+
+    setFilterIndexes: function () {
+      var filterContainer = document.querySelector('[data-ga4-filter-container]')
+      var filterSections = filterContainer.querySelectorAll('[data-ga4-section]')
+
+      for (var i = 0; i < filterSections.length; i++) {
+        var section = filterSections[i]
+        section.setAttribute('data-ga4-index', JSON.stringify({ index_section: i + 1, index_section_count: filterSections.length }))
+      }
+    },
+
     trackChangeEvent: function (eventTarget, changeEventMetadata) {
       var PIIRemover = new window.GOVUK.analyticsGa4.PIIRemover()
 
@@ -27,46 +38,42 @@
         // The "value" we need for a checkbox is the label text that the user sees beside the checkbox.
         elementValue = document.querySelector("label[for='" + checkboxId + "']").textContent
 
-        if (eventTarget.checked === false) {
-          // Checkbox unchecked = filter was removed
-          console.log('Filter was removed because it was unchecked')
-          wasFilterRemoved = true
-        }
+        // If the checkbox unchecked is unchecked, the filter was removed.
+        wasFilterRemoved = !eventTarget.checked
       } else if (elementType === 'select') {
         // The value of a <select> is the value attribute of the selected <option>, which is a hyphenated key. We need to grab the human readable label instead for tracking.
         elementValue = eventTarget.querySelector("option[value='" + eventTarget.value + "']").textContent
         var defaultValue = eventTarget.querySelector('option:first-of-type').textContent
-        console.log('Default value:', defaultValue)
 
         if (elementValue === defaultValue) {
           // <select> elements being reverted to their first option (i.e. their default value) count as a "removed filter". (This will be used on the filter <select>s but not the sort by <select>, as you can't "remove" the sort by filter.)
-          console.log('Filter was removed because it matches a select default value')
           wasFilterRemoved = true
         }
       } else if (elementType === 'text') {
         elementValue = eventTarget.value
         if (elementValue === '') {
-          console.log('Filter was removed because the value is an empty string')
           // If our custom date filters are reset, they become an empty text box, so we count this as a "removed filter". This boolean won't be used for the keyword search box, as deleting the keyword isn't considered removing a filter.
           wasFilterRemoved = true
         }
       }
 
-      console.log('Change type is', changeType)
-
       switch (changeType) {
         case 'update-filter':
-          console.log('Was the filter removed?', wasFilterRemoved)
+          schema.event_data.event_name = 'select_content'
+
+          var section = eventTarget.closest('[data-ga4-section]')
+          schema.event_data.section = section ? section.getAttribute('data-ga4-section') : undefined
+
           if (wasFilterRemoved) {
-            console.log('TODO: Add GA4 schema for "filter removed" event with value', elementValue)
+            schema.event_data.action = 'remove'
           } else {
-            console.log('TODO: Add GA4 schema for "filter added event" with value', elementValue)
+            schema.event_data.action = elementType === 'text' ? 'search' : 'select'
+            schema.event_data.index = this.getSectionIndex(section)
           }
           break
 
         case 'update-keyword':
           schema.event_data.event_name = 'search'
-          schema.event_data.text = PIIRemover.stripPIIWithOverride(elementValue, true, true)
           schema.event_data.url = window.location.pathname
           schema.event_data.section = 'Search'
           schema.event_data.action = 'search'
@@ -84,7 +91,18 @@
           break
       }
 
+      schema.event_data.text = PIIRemover.stripPIIWithOverride(elementValue, true, true)
       window.GOVUK.analyticsGa4.core.sendData(schema)
+    },
+
+    getSectionIndex: function (sectionElement) {
+      try {
+        var index = sectionElement.getAttribute('data-ga4-index')
+        index = JSON.parse(index)
+        return index
+      } catch (e) {
+        console.error('GA4 configuration error: ' + e.message, window.location)
+      }
     }
   }
 
