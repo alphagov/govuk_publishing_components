@@ -9,6 +9,11 @@
 
     setFilterIndexes: function () {
       var filterContainer = document.querySelector('[data-ga4-filter-container]')
+
+      if (!filterContainer) {
+        return
+      }
+
       var filterSections = filterContainer.querySelectorAll('[data-ga4-section]')
 
       for (var i = 0; i < filterSections.length; i++) {
