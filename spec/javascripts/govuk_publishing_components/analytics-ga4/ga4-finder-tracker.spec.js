@@ -6,6 +6,7 @@ describe('GA4 finder change tracker', function () {
   var inputParent
   var input
   var label
+  var label2
   var option1
   var option2
   var expected
@@ -105,6 +106,59 @@ describe('GA4 finder change tracker', function () {
 
     expected.event_data.action = 'remove'
     expected.event_data.index = undefined
+
+    expect(window.dataLayer[1]).toEqual(expected)
+  })
+
+  it('creates the correct GA4 object for adding/removing a radio filter', function () {
+    inputParent = document.createElement('div')
+    inputParent.setAttribute('data-ga4-change-category', 'update-filter radio')
+    inputParent.setAttribute('data-ga4-section', 'Your favourite chocolate')
+    var index = { index_section: 1, index_section_count: 1 }
+    inputParent.setAttribute('data-ga4-index', JSON.stringify(index))
+
+    option1 = document.createElement('input')
+    option1.setAttribute('type', 'radio')
+    option1.id = 'radio1'
+    option1.setAttribute('name', 'chocolates')
+    label = document.createElement('label')
+    label.setAttribute('for', 'radio1')
+    label.innerText = 'All types of chocolate (default)'
+
+    option2 = document.createElement('input')
+    option2.setAttribute('type', 'radio')
+    option2.setAttribute('name', 'chocolates')
+    option2.id = 'radio2'
+    label2 = document.createElement('label')
+    label2.setAttribute('for', 'radio2')
+    label2.innerText = 'Belgian chocolate'
+
+    inputParent.appendChild(option1)
+    inputParent.appendChild(label)
+    inputParent.appendChild(option2)
+    inputParent.appendChild(label2)
+    form.appendChild(inputParent)
+
+    option1.checked = false
+    option2.checked = true
+
+    window.GOVUK.triggerEvent(option2, 'change')
+
+    expected.event_data.event_name = 'select_content'
+    expected.event_data.section = 'Your favourite chocolate'
+    expected.event_data.text = 'Belgian chocolate'
+    expected.event_data.action = 'select'
+    expected.event_data.index = index
+
+    expect(window.dataLayer[0]).toEqual(expected)
+
+    option1.checked = true
+    option2.checked = false
+    window.GOVUK.triggerEvent(option1, 'change')
+
+    expected.event_data.action = 'remove'
+    expected.event_data.index = undefined
+    expected.event_data.text = 'All types of chocolate (default)'
 
     expect(window.dataLayer[1]).toEqual(expected)
   })
