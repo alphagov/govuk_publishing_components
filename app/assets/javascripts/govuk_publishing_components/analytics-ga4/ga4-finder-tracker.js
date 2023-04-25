@@ -30,8 +30,11 @@
 
       var elementType = changeEventMetadata[1]
       var elementValue = ''
+      var defaultValue
 
       var wasFilterRemoved = false
+
+      var section = eventTarget.closest('[data-ga4-section]')
 
       var schema = new GOVUK.analyticsGa4.Schemas().eventSchema()
       schema.event = 'event_data'
@@ -45,10 +48,21 @@
 
         // If the checkbox unchecked is unchecked, the filter was removed.
         wasFilterRemoved = !eventTarget.checked
+      } else if (elementType === 'radio') {
+        var radioId = eventTarget.id
+
+        // The "value" we need for a radio is the label text that the user sees beside the checkbox.
+        elementValue = document.querySelector("label[for='" + radioId + "']").textContent
+        defaultValue = section.querySelector('input[type=radio]:first-of-type')
+
+        if (eventTarget.id === defaultValue.id) {
+          // Radio elements being reverted to their first option (i.e. their default value) count as a "removed filter".
+          wasFilterRemoved = true
+        }
       } else if (elementType === 'select') {
         // The value of a <select> is the value attribute of the selected <option>, which is a hyphenated key. We need to grab the human readable label instead for tracking.
         elementValue = eventTarget.querySelector("option[value='" + eventTarget.value + "']").textContent
-        var defaultValue = eventTarget.querySelector('option:first-of-type').textContent
+        defaultValue = eventTarget.querySelector('option:first-of-type').textContent
 
         if (elementValue === defaultValue) {
           // <select> elements being reverted to their first option (i.e. their default value) count as a "removed filter". (This will be used on the filter <select>s but not the sort by <select>, as you can't "remove" the sort by filter.)
@@ -68,8 +82,9 @@
         case 'update-filter':
           schema.event_data.event_name = 'select_content'
 
-          var section = eventTarget.closest('[data-ga4-section]')
-          schema.event_data.section = section ? section.getAttribute('data-ga4-section') : undefined
+          if (section) {
+            schema.event_data.section = section.getAttribute('data-ga4-section')
+          }
 
           if (wasFilterRemoved) {
             schema.event_data.action = 'remove'
