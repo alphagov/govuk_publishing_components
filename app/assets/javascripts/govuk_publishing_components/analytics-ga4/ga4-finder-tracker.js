@@ -68,6 +68,7 @@
 
           if (wasFilterRemoved) {
             schema.event_data.action = 'remove'
+            schema.event_data.text = elementType === 'text' ? undefined : elementValue
           } else {
             schema.event_data.action = elementType === 'text' ? 'search' : 'select'
             schema.event_data.index = this.getSectionIndex(section)
