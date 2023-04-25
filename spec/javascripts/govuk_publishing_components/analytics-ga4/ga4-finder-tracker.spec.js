@@ -201,4 +201,32 @@ describe('GA4 finder change tracker', function () {
 
     expect(window.dataLayer[0]).toEqual(expected)
   })
+
+  it('creates the correct GA4 object for changing the sort selection', function () {
+    inputParent = document.createElement('div')
+    inputParent.setAttribute('data-ga4-change-category', 'update-sort select')
+    var index = { index_section: 1, index_section_count: 1 }
+    inputParent.setAttribute('data-ga4-index', JSON.stringify(index))
+
+    input = document.createElement('select')
+    input.setAttribute('name', 'sort')
+    input.id = 'sort'
+
+    option1 = document.createElement('option')
+    option1.value = 'most-viewed'
+    option1.innerText = 'Most viewed'
+    input.appendChild(option1)
+
+    inputParent.appendChild(input)
+    form.appendChild(inputParent)
+
+    window.GOVUK.triggerEvent(input, 'change')
+
+    expected.event_data.event_name = 'select_content'
+    expected.event_data.section = 'Sort by'
+    expected.event_data.text = 'Most viewed'
+    expected.event_data.action = 'sort'
+
+    expect(window.dataLayer[0]).toEqual(expected)
+  })
 })
