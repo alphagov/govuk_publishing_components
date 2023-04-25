@@ -6,6 +6,8 @@ describe('GA4 finder change tracker', function () {
   var inputParent
   var input
   var label
+  var option1
+  var option2
   var expected
 
   function agreeToCookies () {
@@ -93,6 +95,44 @@ describe('GA4 finder change tracker', function () {
     expected.event_data.event_name = 'select_content'
     expected.event_data.section = 'Your favourite chocolate'
     expected.event_data.text = 'All types of chocolate'
+    expected.event_data.action = 'select'
+    expected.event_data.index = index
+
+    expect(window.dataLayer[0]).toEqual(expected)
+  })
+
+  it('creates the correct GA4 object for adding a <select> filter', function () {
+    inputParent = document.createElement('div')
+    inputParent.setAttribute('data-ga4-change-category', 'update-filter select')
+    inputParent.setAttribute('data-ga4-section', 'Your favourite chocolate')
+    var index = { index_section: 5, index_section_count: 15 }
+    inputParent.setAttribute('data-ga4-index', JSON.stringify(index))
+
+    input = document.createElement('select')
+    input.setAttribute('name', 'chocolates')
+    input.id = 'chocolates'
+
+    // This is the first/default option, so "adding a filter" means selecting any <option> other than this one.
+    option1 = document.createElement('option')
+    option1.value = 'all-types'
+    option1.innerText = 'All types of chocolate (default)'
+    input.appendChild(option1)
+
+    option2 = document.createElement('option')
+    option2.setAttribute('value', 'belgian-chocolate')
+    option2.innerText = 'Belgian chocolate'
+    input.appendChild(option2)
+
+    input.value = 'belgian-chocolate'
+
+    inputParent.appendChild(input)
+    form.appendChild(inputParent)
+
+    window.GOVUK.triggerEvent(input, 'change')
+
+    expected.event_data.event_name = 'select_content'
+    expected.event_data.section = 'Your favourite chocolate'
+    expected.event_data.text = 'Belgian chocolate'
     expected.event_data.action = 'select'
     expected.event_data.index = index
 
