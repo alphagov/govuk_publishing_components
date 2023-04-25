@@ -229,4 +229,24 @@ describe('GA4 finder change tracker', function () {
 
     expect(window.dataLayer[0]).toEqual(expected)
   })
+
+  it('sets the correct indexes', function () {
+    form.setAttribute('data-ga4-filter-container', '')
+
+    for (var i = 0; i < 5; i++) {
+      var div = document.createElement('div')
+      div.setAttribute('data-ga4-section', '')
+      form.appendChild(div)
+    }
+
+    // Grabs each data-ga4-section element within a data-ga4-filter-container, and sets the appropriate indexes.
+    window.GOVUK.analyticsGa4.Ga4FinderTracker.setFilterIndexes()
+
+    var divs = form.querySelectorAll('[data-ga4-section]')
+
+    for (i = 0; i < divs.length; i++) {
+      var expectedIndexObject = { index_section: i + 1, index_section_count: divs.length }
+      expect(divs[i].getAttribute('data-ga4-index')).toEqual(JSON.stringify(expectedIndexObject))
+    }
+  })
 })
