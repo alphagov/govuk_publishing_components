@@ -3,6 +3,9 @@
 describe('GA4 finder change tracker', function () {
   var GOVUK = window.GOVUK
   var form
+  var inputParent
+  var input
+  var label
   var expected
 
   function agreeToCookies () {
@@ -28,6 +31,11 @@ describe('GA4 finder change tracker', function () {
       }
     })
 
+    expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
+    expected.govuk_gem_version = 'aVersion'
+    expected.event = 'event_data'
+    expected.event_data.type = 'finder'
+
     agreeToCookies()
   })
 
@@ -40,28 +48,54 @@ describe('GA4 finder change tracker', function () {
   })
 
   it('creates the correct GA4 object for a search box keyword update', function () {
-    var searchBoxParent = document.createElement('div')
-    searchBoxParent.setAttribute('data-ga4-change-category', 'update-keyword text')
+    inputParent = document.createElement('div')
+    inputParent.setAttribute('data-ga4-change-category', 'update-keyword text')
 
-    var searchBox = document.createElement('input')
-    searchBox.setAttribute('type', 'search')
-    searchBox.value = 'Hello world my postcode is SW1A 0AA. My birthday is 1970-01-01. My email is email@example.com'
+    input = document.createElement('input')
+    input.setAttribute('type', 'search')
+    input.value = 'Hello world my postcode is SW1A 0AA. My birthday is 1970-01-01. My email is email@example.com'
 
-    searchBoxParent.appendChild(searchBox)
-    form.appendChild(searchBoxParent)
+    inputParent.appendChild(input)
+    form.appendChild(inputParent)
 
-    window.GOVUK.triggerEvent(searchBox, 'change')
+    window.GOVUK.triggerEvent(input, 'change')
 
-    expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
-    expected.govuk_gem_version = 'aVersion'
-    expected.event = 'event_data'
     expected.event_data.event_name = 'search'
-    expected.event_data.type = 'finder'
     expected.event_data.url = window.location.pathname
     expected.event_data.text = 'Hello world my postcode is [postcode]. My birthday is [date]. My email is [email]'
     expected.event_data.section = 'Search'
     expected.event_data.action = 'search'
-    console.log(window.dataLayer)
+
+    expect(window.dataLayer[0]).toEqual(expected)
+  })
+
+  it('creates the correct GA4 object for adding a checkbox filter', function () {
+    inputParent = document.createElement('div')
+    inputParent.setAttribute('data-ga4-change-category', 'update-filter checkbox')
+    inputParent.setAttribute('data-ga4-section', 'Your favourite chocolate')
+    var index = { index_section: 1, index_section_count: 1 }
+    inputParent.setAttribute('data-ga4-index', JSON.stringify(index))
+
+    input = document.createElement('input')
+    input.setAttribute('type', 'checkbox')
+    input.id = 'checkbox'
+    input.checked = true
+    label = document.createElement('label')
+    label.setAttribute('for', 'checkbox')
+    label.innerText = 'All types of chocolate'
+
+    inputParent.appendChild(input)
+    inputParent.appendChild(label)
+    form.appendChild(inputParent)
+
+    window.GOVUK.triggerEvent(input, 'change')
+
+    expected.event_data.event_name = 'select_content'
+    expected.event_data.section = 'Your favourite chocolate'
+    expected.event_data.text = 'All types of chocolate'
+    expected.event_data.action = 'select'
+    expected.event_data.index = index
+
     expect(window.dataLayer[0]).toEqual(expected)
   })
 })
