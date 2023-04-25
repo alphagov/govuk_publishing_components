@@ -189,4 +189,16 @@ describe('GA4 finder change tracker', function () {
 
     expect(window.dataLayer[1]).toEqual(expected)
   })
+
+  it('creates the correct GA4 object for clearing all filters', function () {
+    form.setAttribute('data-ga4-change-category', 'clear-all-filters')
+
+    window.GOVUK.triggerEvent(form, 'change')
+
+    expected.event_data.event_name = 'select_content'
+    expected.event_data.action = 'remove'
+    expected.event_data.text = 'Clear all filters'
+
+    expect(window.dataLayer[0]).toEqual(expected)
+  })
 })
