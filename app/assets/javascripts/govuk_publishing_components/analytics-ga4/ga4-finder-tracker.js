@@ -89,7 +89,9 @@
           break
 
         case 'update-sort':
-          console.log('TODO: Add GA4 schema for "sort by updated" event with value', elementValue)
+          schema.event_data.event_name = 'select_content'
+          schema.event_data.action = 'sort'
+          schema.event_data.section = 'Sort by'
           break
 
         default:
