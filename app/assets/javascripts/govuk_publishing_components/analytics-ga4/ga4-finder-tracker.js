@@ -57,7 +57,7 @@
         }
       }
 
-      schema.event_data.text = PIIRemover.stripPIIWithOverride(elementValue, true, true)
+      schema.event_data.text = elementValue
 
       switch (changeType) {
         case 'update-filter':
@@ -79,6 +79,7 @@
           schema.event_data.url = window.location.pathname
           schema.event_data.section = 'Search'
           schema.event_data.action = 'search'
+          schema.event_data.text = PIIRemover.stripPIIWithOverride(schema.event_data.text, true, true)
           break
 
         case 'clear-all-filters':
