@@ -57,7 +57,7 @@ describe('GA4 finder change tracker', function () {
     expected.event = 'event_data'
     expected.event_data.event_name = 'search'
     expected.event_data.type = 'finder'
-    expected.event_data.url = window.location.href
+    expected.event_data.url = window.location.pathname
     expected.event_data.text = 'Hello world my postcode is [postcode]. My birthday is [date]. My email is [email]'
     expected.event_data.section = 'Search'
     expected.event_data.action = 'search'

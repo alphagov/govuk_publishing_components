@@ -66,8 +66,8 @@
 
         case 'update-keyword':
           schema.event_data.event_name = 'search'
-          schema.event_data.url = window.location.href
           schema.event_data.text = PIIRemover.stripPIIWithOverride(elementValue, true, true)
+          schema.event_data.url = window.location.pathname
           schema.event_data.section = 'Search'
           schema.event_data.action = 'search'
           break
