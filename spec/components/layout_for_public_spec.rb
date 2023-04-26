@@ -249,7 +249,7 @@ describe "Layout for public", type: :view do
       },
     })
 
-    assert_select ".gem-c-cookie-banner__message .govuk-cookie-banner__heading", text: "Can we use cookies to collect information about how you use GOV.UK?"
+    assert_select ".govuk-cookie-banner__heading.govuk-heading-m", text: "Can we use cookies to collect information about how you use GOV.UK?"
   end
 
   it "displays as draft watermark" do

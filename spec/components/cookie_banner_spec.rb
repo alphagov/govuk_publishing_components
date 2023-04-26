@@ -46,7 +46,7 @@ describe "Cookie banner", type: :view do
   it "renders a hide link within the confirmation banner" do
     render_component({})
 
-    assert_select ".gem-c-cookie-banner__confirmation .gem-c-cookie-banner__hide-button", text: "Hide this message"
+    assert_select ".govuk-button-group .gem-c-cookie-banner__hide-button", text: "Hide this message"
     assert_select '.gem-c-cookie-banner__hide-button[data-module=gem-track-click][data-track-category=cookieBanner][data-track-action="Hide cookie banner"]'
   end
 
@@ -56,8 +56,8 @@ describe "Cookie banner", type: :view do
       text: sanitize("This is some custom text with a link to the <a href='/cookies' class='govuk-link'>cookies page</a>"),
       confirmation_message: "You’ve accepted all cookies.",
     )
-    assert_select ".gem-c-cookie-banner__message .govuk-heading-m", text: "Can we store analytics cookies on your device?"
-    assert_select ".govuk-cookie-banner__content", text: "This is some custom text with a link to the cookies page"
+    assert_select ".govuk-cookie-banner__heading.govuk-heading-m", text: "Can we store analytics cookies on your device?"
+    assert_select ".gem-c-cookie-banner__content", text: "This is some custom text with a link to the cookies page"
     assert_select ".govuk-link[href='/cookies']", text: "cookies page"
     assert_select ".gem-c-cookie-banner__confirmation-message", text: /You’ve accepted all cookies./
   end

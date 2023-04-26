@@ -1,15 +1,18 @@
 @import "govuk_publishing_components/individual_component_support";
 @import "govuk/components/cookie-banner/cookie-banner";
-$govuk-cookie-banner-background: govuk-colour("light-grey", "grey-4");
+
+.gem-c-cookie-banner .govuk-button-group[hidden] {
+  display: none;
+}
+
+.govuk-cookie-banner .govuk-cookie-banner__heading[hidden] {
+  display: none;
+}
 
 .js-enabled {
   .gem-c-cookie-banner {
     display: none; // shown with JS, always on for non-JS
   }
-}
-
-.gem-c-cookie-banner {
-  background-color: $govuk-cookie-banner-background;
 }
 
 // can't be used without js so implement there
@@ -18,64 +21,10 @@ $govuk-cookie-banner-background: govuk-colour("light-grey", "grey-4");
 }
 
 .gem-c-cookie-banner__confirmation {
-  display: none;
-  position: relative;
-  padding: govuk-spacing(1);
-
   // This element is focused using JavaScript so that it's being read out by screen readers
   // for this reason we don't want to show the default outline or emphasise it visually using `govuk-focused-text`
   &:focus {
     outline: none;
-  }
-}
-
-.gem-c-cookie-banner__confirmation-message,
-.gem-c-cookie-banner__hide-button {
-  display: block;
-
-  @include govuk-media-query($from: desktop) {
-    display: inline-block;
-  }
-}
-
-.gem-c-cookie-banner__confirmation-message {
-  margin-right: govuk-spacing(4);
-
-  @include govuk-media-query($from: desktop) {
-    max-width: 90%;
-    margin-bottom: 0;
-  }
-}
-
-// Override style from design system so we can have consistent
-// padding on the the banner and the confirmation
-
-.govuk-cookie-banner {
-  padding-top: 0;
-}
-
-// Override the styles from govuk_template
-// stylelint-disable selector-max-id
-.gem-c-cookie-banner#global-cookie-message {
-  background-color: $govuk-cookie-banner-background;
-  padding: govuk-spacing(3) 0 0 0;
-  box-sizing: border-box;
-
-  .gem-c-cookie-banner__message,
-  .gem-c-cookie-banner__buttons,
-  .gem-c-cookie-banner__confirmation,
-  .gem-c-cookie-banner__confirmation-message {
-    @include govuk-font($size: 19);
-  }
-
-  p {
-    @include govuk-font($size: 19);
-    margin: 0 0 govuk-spacing(2) 0;
-  }
-
-  .gem-c-cookie-banner__message,
-  .gem-c-cookie-banner__confirmation {
-    margin-bottom: - govuk-spacing(2);
   }
 }
 

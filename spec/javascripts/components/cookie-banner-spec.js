@@ -14,37 +14,32 @@ describe('Cookie banner', function () {
     container = document.createElement('div')
 
     container.innerHTML =
-    '<div id="global-cookie-message" class="gem-c-cookie-banner govuk-clearfix" data-module="cookie-banner" role="region" aria-label="cookie banner" data-nosnippet="" style="display: block;">' +
-      '<div class="govuk-cookie-banner js-banner-wrapper" role="region" aria-label="Cookies on GOV.UK">' +
-        '<div class="gem-c-cookie-banner__message govuk-cookie-banner__message govuk-width-container govuk-body">' +
-          '<div class="govuk-grid-row">' +
-            '<div class="govuk-grid-column-two-thirds">' +
-              '<h2 class="govuk-cookie-banner__heading govuk-heading-m">Cookies on GOV.UK</h2>' +
-              '<div class="govuk-cookie-banner__content">' +
-                '<p class="govuk-body">We use some essential cookies to make this website work</p>' +
-                '<p class="govuk-body">We\'d like to set additional cookies to understand how you use GOV.UK, remember your settings and improve government services.</p>' +
-                '<p class="govuk-body">We also use cookies set by other sites to help us deliver content from their services.</p>' +
+      '<div id="global-cookie-message" class="gem-c-cookie-banner govuk-clearfix govuk-cookie-banner js-banner-wrapper" data-module="cookie-banner" data-nosnippet="" role="region" aria-label="Cookies on GOV.UK">' +
+          '<div class="govuk-cookie-banner__message govuk-width-container">' +
+              '<div class="govuk-grid-row">' +
+                  '<div class="govuk-grid-column-two-thirds">' +
+                      '<h2 class="govuk-cookie-banner__heading govuk-heading-m">Cookies on GOV.UK</h2>' +
+                      '<div tabindex="-1" class="govuk-cookie-banner__content gem-c-cookie-banner__confirmation">' +
+                          '<span class="gem-c-cookie-banner__content">' +
+                              '<p class="govuk-body">We use some essential cookies to make this website work.</p>' +
+                              '<p class="govuk-body">We’d like to set additional cookies to understand how you use GOV.UK, remember your settings and improve government services.</p>' +
+                              '<p class="govuk-body">We also use cookies set by other sites to help us deliver content from their services.</p>' +
+                          '</span>' +
+                          '<p class="gem-c-cookie-banner__confirmation-message--accepted govuk-body" hidden="">You have accepted additional cookies. <span class="gem-c-cookie-banner__confirmation-message">You can <a class="govuk-link" data-module="gem-track-click" data-track-category="cookieBanner" data-track-action="Cookie banner settings clicked from confirmation" href="/help/cookies">change your cookie settings</a> at any time.</span></p>' +
+                          '<p class="gem-c-cookie-banner__confirmation-message--rejected govuk-body" hidden="">You have rejected additional cookies. <span class="gem-c-cookie-banner__confirmation-message">You can <a class="govuk-link" data-module="gem-track-click" data-track-category="cookieBanner" data-track-action="Cookie banner settings clicked from confirmation" href="/help/cookies">change your cookie settings</a> at any time.</span></p>' +
+                      '</div>' +
+                  '</div>' +
               '</div>' +
-            '</div>' +
+              '<div class="js-confirmation-buttons govuk-button-group">' +
+                  '<button class="gem-c-button govuk-button" type="submit" data-module="gem-track-click" data-accept-cookies="true" data-track-category="cookieBanner" data-track-action="Cookie banner accepted" data-cookie-types="all" style="display: block;">Accept additional cookies</button>' +
+                  '<button class="gem-c-button govuk-button" type="submit" data-module="gem-track-click" data-reject-cookies="true" data-track-category="cookieBanner" data-track-action="Cookie banner rejected" style="display: block;">Reject additional cookies</button>' +
+                  '<a class="govuk-link" href="/help/cookies">View cookies</a>' +
+              '</div>' +
+              '<div hidden="" class="js-hide-button govuk-button-group">' +
+                  '<button class="gem-c-cookie-banner__hide-button govuk-button" data-hide-cookie-banner="true" data-module="gem-track-click" data-track-category="cookieBanner" data-track-action="Hide cookie banner">Hide this message</button>' +
+              '</div>' +
           '</div>' +
-          '<div class="govuk-button-group">' +
-            '<button class="gem-c-button govuk-button" type="submit" data-module="gem-track-click" data-accept-cookies="true" data-track-category="cookieBanner" data-track-action="Cookie banner accepted" data-cookie-types="all" style="display: block;">Accept additional cookies</button>' +
-            '<button class="gem-c-button govuk-button" type="submit" data-module="gem-track-click" data-reject-cookies="true" data-track-category="cookieBanner" data-track-action="Cookie banner rejected" style="display: block;">Reject additional cookies</button>' +
-            '<a class="govuk-link" href="/help/cookies">View cookies</a>' +
-          '</div>' +
-        '</div>' +
-      '</div>' +
-      '<div class="gem-c-cookie-banner__confirmation govuk-width-container" tabindex="-1" hidden="">' +
-        '<p class="gem-c-cookie-banner__confirmation-message" role="alert">' +
-          '<span class="gem-c-cookie-banner__confirmation-message__accepted" hidden>You have accepted additional cookies. </span>' +
-          '<span class="gem-c-cookie-banner__confirmation-message__rejected" hidden="">You have rejected additional cookies. </span>' +
-          'You can <a class="govuk-link" data-module="gem-track-click" data-track-category="cookieBanner" data-track-action="Cookie banner settings clicked from confirmation" href="/help/cookies">change your cookie settings</a> at any time.' +
-        '</p>' +
-        '<div class="govuk-button-group">' +
-          '<button class="gem-c-cookie-banner__hide-button govuk-button" data-hide-cookie-banner="true" data-module="gem-track-click" data-track-category="cookieBanner" data-track-action="Hide cookie banner">Hide this message</button>' +
-        '</div>' +
-      '</div>' +
-    '</div>'
+      '</div>'
 
     document.body.appendChild(container)
     // set and store consent for all as a basis of comparison
@@ -65,11 +60,13 @@ describe('Cookie banner', function () {
     new GOVUK.Modules.CookieBanner(element).init()
 
     var cookieBannerMain = document.querySelector('.js-banner-wrapper')
-    var cookieBannerConfirmation = document.querySelector('.gem-c-cookie-banner__confirmation')
+    var cookieBannerConfirmationAccept = document.querySelector('.gem-c-cookie-banner__confirmation-message--accepted')
+    var cookieBannerConfirmationReject = document.querySelector('.gem-c-cookie-banner__confirmation-message--rejected')
 
     expect(element).toBeVisible()
     expect(cookieBannerMain).toBeVisible()
-    expect(cookieBannerConfirmation).toBeHidden()
+    expect(cookieBannerConfirmationAccept).toBeHidden()
+    expect(cookieBannerConfirmationReject).toBeHidden()
   })
 
   it('should show the cookie banner when preferences have not been actively set', function () {
@@ -79,11 +76,13 @@ describe('Cookie banner', function () {
     new GOVUK.Modules.CookieBanner(element).init()
 
     var cookieBannerMain = document.querySelector('.js-banner-wrapper')
-    var cookieBannerConfirmation = document.querySelector('.gem-c-cookie-banner__confirmation')
+    var cookieBannerConfirmationAccept = document.querySelector('.gem-c-cookie-banner__confirmation-message--accepted')
+    var cookieBannerConfirmationReject = document.querySelector('.gem-c-cookie-banner__confirmation-message--rejected')
 
     expect(element).toBeVisible()
     expect(cookieBannerMain).toBeVisible()
-    expect(cookieBannerConfirmation).toBeHidden()
+    expect(cookieBannerConfirmationAccept).toBeHidden()
+    expect(cookieBannerConfirmationReject).toBeHidden()
   })
 
   it('should hide the cookie banner when preferences have been actively set', function () {
@@ -165,18 +164,14 @@ describe('Cookie banner', function () {
     new GOVUK.Modules.CookieBanner(element).init()
 
     var acceptCookiesButton = document.querySelector('[data-accept-cookies]')
-    var mainCookieBanner = document.querySelector('.gem-c-cookie-banner__message')
-    var confirmationMessage = document.querySelector('.gem-c-cookie-banner__confirmation')
-    var confirmationMessageText = document.querySelector('.gem-c-cookie-banner__confirmation-message')
+    var confirmationMessageAccepted = document.querySelector('.gem-c-cookie-banner__confirmation-message--accepted')
 
-    expect(mainCookieBanner).toBeVisible()
-    expect(confirmationMessage).toBeHidden()
+    expect(confirmationMessageAccepted).toBeHidden()
 
     acceptCookiesButton.click()
 
-    expect(mainCookieBanner).toBeHidden()
-    expect(confirmationMessage).toBeVisible()
-    expect(confirmationMessageText.innerText).toContain('You have accepted additional cookies. You can change your cookie settings at any time.')
+    expect(confirmationMessageAccepted).toBeVisible()
+    expect(confirmationMessageAccepted.innerText).toContain('You have accepted additional cookies. You can change your cookie settings at any time.')
   })
 
   it('shows a confirmation message when cookies have been rejected', function () {
@@ -184,18 +179,28 @@ describe('Cookie banner', function () {
     new GOVUK.Modules.CookieBanner(element).init()
 
     var rejectCookiesButton = document.querySelector('[data-reject-cookies]')
-    var mainCookieBanner = document.querySelector('.gem-c-cookie-banner__message')
-    var confirmationMessage = document.querySelector('.gem-c-cookie-banner__confirmation')
-    var confirmationMessageText = document.querySelector('.gem-c-cookie-banner__confirmation-message')
+    var confirmationMessageRejected = document.querySelector('.gem-c-cookie-banner__confirmation-message--rejected')
 
-    expect(mainCookieBanner).toBeVisible()
-    expect(confirmationMessage).toBeHidden()
+    expect(confirmationMessageRejected).toBeHidden()
 
     rejectCookiesButton.click()
 
-    expect(mainCookieBanner).toBeHidden()
-    expect(confirmationMessage).toBeVisible()
-    expect(confirmationMessageText.innerText).toContain('You have rejected additional cookies. You can change your cookie settings at any time.')
+    expect(confirmationMessageRejected).toBeVisible()
+    expect(confirmationMessageRejected.innerText).toContain('You have rejected additional cookies. You can change your cookie settings at any time.')
+  })
+
+  it('set focus to the confirmation message after clicking button', function () {
+    var element = document.querySelector('[data-module="cookie-banner"]')
+    new GOVUK.Modules.CookieBanner(element).init()
+
+    var rejectCookiesButton = document.querySelector('[data-reject-cookies]')
+    var confirmationMessage = document.querySelector('.gem-c-cookie-banner__confirmation')
+
+    rejectCookiesButton.click()
+
+    var focusedElement = document.activeElement
+
+    expect(focusedElement.className).toBe(confirmationMessage.className)
   })
 
   it('set cookies_preferences_set cookie, and re-set cookies_policy expiration date when rejecting cookies', function () {
