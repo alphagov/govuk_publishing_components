@@ -46,7 +46,7 @@
         // The "value" we need for a checkbox is the label text that the user sees beside the checkbox.
         elementValue = document.querySelector("label[for='" + checkboxId + "']").textContent
 
-        // If the checkbox unchecked is unchecked, the filter was removed.
+        // If the checkbox is unchecked, the filter was removed.
         wasFilterRemoved = !eventTarget.checked
       } else if (elementType === 'radio') {
         var radioId = eventTarget.id
