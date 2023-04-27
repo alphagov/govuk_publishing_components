@@ -20,7 +20,7 @@
   classes << shared_helper.get_margin_bottom if local_assigns[:margin_bottom]
 %>
 <%= content_tag :div, class: classes, data: { module: "gem-toggle metadata" } do %>
-  <dl data-module="gem-track-click">
+  <dl class="gem-c-metadata__list" data-module="gem-track-click">
     <% if from.any? %>
       <dt class="gem-c-metadata__term"><%= t("components.metadata.from") %>:</dt>
       <dd class="gem-c-metadata__definition">

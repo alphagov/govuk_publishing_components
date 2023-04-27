@@ -23,7 +23,9 @@
 }
 
 .gem-c-metadata--inverse {
+  background-color: govuk-colour("blue");
   color: govuk-colour("white");
+  padding: govuk-spacing(2);
 
   a:link,
   a:active,
@@ -33,6 +35,14 @@
 
   a:focus {
     color: govuk-colour("black");
+  }
+
+  .gem-c-metadata__list {
+    margin: govuk-spacing(2);
+
+    @include govuk-media-query($from: tablet) {
+      margin: govuk-spacing(3);
+    }
   }
 }
 
