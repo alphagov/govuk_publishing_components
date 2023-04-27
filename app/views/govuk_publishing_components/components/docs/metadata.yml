@@ -12,7 +12,7 @@ shared_accessibility_criteria:
 accessibility_excluded_rules:
   - skip-link # This component is creating a reference to sections of the page that are not part of the examples.
 examples:
-  from_only:
+  default:
     data:
       from: <a href='/government/organisations/ministry-of-defence'>Ministry of Defence</a>
   part_of_only:
