@@ -27,14 +27,8 @@
   color: govuk-colour("white");
   padding: govuk-spacing(2);
 
-  a:link,
-  a:active,
-  a:visited {
-    color: govuk-colour("white");
-  }
-
-  a:focus {
-    color: govuk-colour("black");
+  a {
+    @include govuk-link-style-inverse;
   }
 
   .gem-c-metadata__list {
