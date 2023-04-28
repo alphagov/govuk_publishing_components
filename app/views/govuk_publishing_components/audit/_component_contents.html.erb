@@ -2,22 +2,26 @@
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header sticky-table-header">Component</th>
-      <th scope="col" class="govuk-table__header sticky-table-header">Template (<%= @components[:component_numbers][:template] %>)</th>
-      <th scope="col" class="govuk-table__header sticky-table-header">CSS (<%= @components[:component_numbers][:stylesheet] %>)</th>
-      <th scope="col" class="govuk-table__header sticky-table-header">Print styles (<%= @components[:component_numbers][:print_stylesheet] %>)</th>
-      <th scope="col" class="govuk-table__header sticky-table-header">JS (<%= @components[:component_numbers][:javascript] %>)</th>
-      <th scope="col" class="govuk-table__header sticky-table-header">Test (<%= @components[:component_numbers][:test] %>)</th>
-      <th scope="col" class="govuk-table__header sticky-table-header">JS test (<%= @components[:component_numbers][:javascript_test] %>)</th>
-      <th scope="col" class="govuk-table__header sticky-table-header">Helper (<%= @components[:component_numbers][:helper] %>)</th>
+      <th scope="col" class="govuk-table__header sticky-table-header">Template (<%= passed_components[:component_numbers][:template] %>)</th>
+      <th scope="col" class="govuk-table__header sticky-table-header">CSS (<%= passed_components[:component_numbers][:stylesheet] %>)</th>
+      <th scope="col" class="govuk-table__header sticky-table-header">Print styles (<%= passed_components[:component_numbers][:print_stylesheet] %>)</th>
+      <th scope="col" class="govuk-table__header sticky-table-header">JS (<%= passed_components[:component_numbers][:javascript] %>)</th>
+      <th scope="col" class="govuk-table__header sticky-table-header">Test (<%= passed_components[:component_numbers][:test] %>)</th>
+      <th scope="col" class="govuk-table__header sticky-table-header">JS test (<%= passed_components[:component_numbers][:javascript_test] %>)</th>
+      <th scope="col" class="govuk-table__header sticky-table-header">Helper (<%= passed_components[:component_numbers][:helper] %>)</th>
     </tr>
   </thead>
   <tbody class="govuk-table__body">
-    <% @components[:component_file_details].each do |component| %>
+    <% passed_components[:component_file_details].each do |component| %>
       <tr class="govuk-table__row">
         <th scope="row" class="govuk-table__header">
-          <a href="<%= component[:link] %>" class="govuk-link">
+          <% if component[:link] %>
+            <a href="<%= component[:link] %>" class="govuk-link">
+              <%= component[:name] %>
+            </a>
+          <% else %>
             <%= component[:name] %>
-          </a>
+          <% end %>
         </th>
         <td class="govuk-table__cell">
           <% if component[:template_exists] %>

@@ -127,6 +127,18 @@
             <% end %>
           </ul>
         <% end %>
+
+        <% application_components = application[:application_components] %>
+        <% if application_components.any? %>
+          <%= render "govuk_publishing_components/components/heading", {
+            text: "Application components (#{application_components[:component_file_details].length})",
+            font_size: "m",
+            margin_bottom: 4,
+            heading_level: 3,
+          } %>
+          <p class="govuk-body">This is a list of components found in this application. Note that some components may appear to be missing files due to inconsistencies in directory structure and naming conventions.</p>
+          <%= render "component_contents", passed_components: application_components %>
+        <% end %>        
       <% else %>
         <p class="govuk-body">This application was not found. This could be because you do not have this repository checked out locally.</p>
       <% end %>
@@ -141,7 +153,7 @@
           text: sanitize(summary)
         },
         content: {
-          html: sanitize(accordion_content)
+          html: accordion_content
         },
       }
     %>

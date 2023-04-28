@@ -102,6 +102,7 @@ module GovukPublishingComponents
             component_locations: result[:component_locations],
             helper_references: result[:helper_references],
             uses_individual_asset_model: result[:uses_individual_asset_model],
+            application_components: result[:application_components],
           }
         else
           data << {
