@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 35.3.3
 
 * Make Cookie Banner Implementation More Like Design System Implementation [(PR #3325)](https://github.com/alphagov/govuk_publishing_components/pull/3325)
 * Remove capitalisation on GA4 action property value [PR #3367](https://github.com/alphagov/govuk_publishing_components/pull/3367)
