@@ -11,6 +11,7 @@
 
 * Make Cookie Banner Implementation More Like Design System Implementation [(PR #3325)](https://github.com/alphagov/govuk_publishing_components/pull/3325)
 * Remove capitalisation on GA4 action property value [PR #3367](https://github.com/alphagov/govuk_publishing_components/pull/3367)
+* Add Welsh translation for `all_opens_in_new_tab` ([PR #3370](https://github.com/alphagov/govuk_publishing_components/pull/3370))
 
 ## 35.3.2
 
