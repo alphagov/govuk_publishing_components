@@ -62,12 +62,6 @@ describe "Auditing the components in the gem" do
           template_exists: true,
           template_lines: 3,
           template_link: "https://github.com/alphagov/govuk_publishing_components/blob/main/app/views/govuk_publishing_components/components/_test_component_containing_other_component.html.erb",
-          stylesheet_exists: false,
-          print_stylesheet_exists: false,
-          javascript_exists: false,
-          test_exists: false,
-          javascript_test_exists: false,
-          helper_exists: false,
         },
       ],
       component_numbers: {

@@ -244,6 +244,7 @@ describe "Comparing data from an application with the components" do
         component_locations: {},
         helper_references: nil,
         uses_individual_asset_model: nil,
+        application_components: nil,
       },
     ]
 
@@ -322,6 +323,7 @@ describe "Comparing data from an application with the components" do
         component_locations: {},
         helper_references: nil,
         uses_individual_asset_model: nil,
+        application_components: nil,
       },
     ]
 
@@ -441,6 +443,7 @@ describe "Comparing data from an application with the components" do
         component_locations: {},
         helper_references: nil,
         uses_individual_asset_model: nil,
+        application_components: nil,
       },
       {
         name: "static",
@@ -471,6 +474,7 @@ describe "Comparing data from an application with the components" do
         component_locations: {},
         helper_references: nil,
         uses_individual_asset_model: nil,
+        application_components: nil,
       },
     ]
 
@@ -547,6 +551,7 @@ describe "Comparing data from an application with the components" do
         component_locations: {},
         helper_references: nil,
         uses_individual_asset_model: nil,
+        application_components: nil,
       },
     ]
 
@@ -654,6 +659,7 @@ describe "Comparing data from an application with the components" do
         helper_references: nil,
         component_locations: {},
         uses_individual_asset_model: nil,
+        application_components: nil,
       },
     ]
 
