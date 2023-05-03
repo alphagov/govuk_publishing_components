@@ -72,7 +72,7 @@ describe "Breadcrumbs", type: :view do
 
     expected_tracking_options = {
       event_name: "navigation",
-      type: "breadcrumbs",
+      type: "breadcrumb",
       index: {
         index_link: "1",
       },
