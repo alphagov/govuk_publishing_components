@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Rename type breadcrumbs to breadcrumb [(PR #3373)](https://github.com/alphagov/govuk_publishing_components/pull/3373)
+
 ## 35.3.3
 
 * Make Cookie Banner Implementation More Like Design System Implementation [(PR #3325)](https://github.com/alphagov/govuk_publishing_components/pull/3325)
