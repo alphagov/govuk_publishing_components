@@ -28,7 +28,7 @@ describe "Component guide index" do
   it "loads a component from the dummy app" do
     visit "/component-guide"
     expect(body).to include("A test component for the dummy app")
-    expect(page).to have_selector('a[href="/component-guide/test-component"]', text: "Test component")
+    expect(page).to have_selector('a[href="/component-guide/test_component"]', text: "Test component")
   end
 
   it "includes component guide styles and scripts" do
@@ -105,7 +105,7 @@ describe "Component guide index" do
   end
 
   it "creates a page for the component" do
-    visit "/component-guide/test-component"
+    visit "/component-guide/test_component"
     expect(body).to include("A test component for the dummy app")
   end
 end
