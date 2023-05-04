@@ -12,6 +12,7 @@
 * Add missing background colour style for metadata block inverse option [(PR #3365)](https://github.com/alphagov/govuk_publishing_components/pull/3365)
 * Fix some GA4 index bugs ([PR #3375](https://github.com/alphagov/govuk_publishing_components/pull/3375))
 * Rename type breadcrumbs to breadcrumb ([PR #3373](https://github.com/alphagov/govuk_publishing_components/pull/3373))
+* Update AssetHelper documentation ([PR #3378](https://github.com/alphagov/govuk_publishing_components/pull/3378))
 
 ## 35.3.3
 
