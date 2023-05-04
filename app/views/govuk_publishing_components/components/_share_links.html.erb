@@ -54,7 +54,9 @@
               ga4_link_data = {
                 'event_name': 'share',
                 'type': 'share this page',
-                'index': index + 1,
+                'index': {
+                  'index_link': index + 1,
+                },
                 'index_total': links.length,
                 'text': link[:icon],
               }
@@ -63,7 +65,9 @@
               ga4_link_data = {
                 'event_name': 'navigation',
                 'type': 'follow us',
-                'index': index + 1,
+                'index': {
+                  'index_link': index + 1,
+                },
                 'index_total': links.length
               }
             end
