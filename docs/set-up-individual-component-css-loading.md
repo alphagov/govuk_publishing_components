@@ -49,18 +49,7 @@ add_stylesheet_path("views/dir-1/_partial.css")
 
 ### Precompiling
 
-The stylesheets need to be added to the rendering applications list of assets to precompile. The `get_component_css_paths` method is available from the AssetHelper module in GovukPublishingComponents.
-
-```ruby
-#config/application.rb
-module Frontend
-  class Application < Rails::Application
-    include GovukPublishingComponents::AppHelpers::AssetHelper
-    ...
-    config.assets.precompile << get_component_css_paths
-```
-
-Stylesheets for components in the gem are automatically generated, any app component and view stylesheets should be added to the application's `manifest.js`.
+Gem component stylesheets are automatically precompiled. Application component and view stylesheets should be added to the application's manifest file to be precompiled, included and served.
 
 ### Known problems
 
@@ -97,22 +86,19 @@ The increased cache size in NGINX is large enough for the loading of individual 
 
 ### Step by step changes to the rendering application
 
-**Set up the stylesheets to be precompiled**. Add any app components and views in `app/assets/config/manifest.js` (and then remove them from `app/assets/stylesheets/application.scss`).
+**Set up the stylesheets to be precompiled**. Add any app components and views in `app/assets/config/manifest.js`.
 
-```js
-//= link components/_calendar.css
-//= link views/_homepage.css
+```diff
++  //= link components/_calendar.css
++  //= link views/_homepage.css
 ```
 
-Add list of gem components to be precompiled in `config/application.rb` (and then all gem component `@import`s can also be removed from `app/assets/stylesheets/application.scss`):
+Remove gem component imports from `app/assets/stylesheets/application.scss`:
 
-```ruby
-#config/application.rb
-module Frontend
-  class Application < Rails::Application
-    include GovukPublishingComponents::AppHelpers::AssetHelper
-    ...
-    config.assets.precompile << get_component_css_paths
+```diff
+- @import "govuk_publishing_components/components/accordion";
+- @import "govuk_publishing_components/components/action-link";
+- @import "govuk_publishing_components/components/big-number";
 ```
 
 #### Using the publishing components gem without the `static` rendering app
@@ -148,7 +134,7 @@ Each stylesheet that is used individually will need an extra `@import` added to 
 
 **Hoist body content to the top of your layouts**
 
-This will ensure that all components and views are dicovered, before `render_component_stylesheets` is called, and their respective style sheets added inside the `<head>`. Otherwise, components and view partials added in body content are not rendered in time and associated style sheets are not included.
+This will ensure that all components and views are discovered, before `render_component_stylesheets` is called, and their respective stylesheets added inside the `<head>`. Otherwise, components and view partials added in body content are not rendered in time and associated stylesheets are not included.
 
 ```rb
 <% content_for :body do %>
