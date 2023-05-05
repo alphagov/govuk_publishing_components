@@ -1,6 +1,6 @@
 <% if @other_applications %>
   <%= render "govuk_publishing_components/components/heading", {
-    text: "Components in the gem",
+    text: "Components",
     font_size: "l",
     margin_bottom: 6,
   } %>
@@ -57,8 +57,8 @@
   %>
 
   <%= render 'items_in_applications',
-    heading: 'Components by application',
-    summary: 'Shows which applications use each component',
+    heading: 'Gem components used by applications',
+    summary: 'Shows which applications use gem components',
     content: @components[:components_by_application],
     items: component_items
   %>
@@ -97,10 +97,10 @@
   <%
     component_items << {
       heading: {
-        text: "Helpers by component",
+        text: "Helpers used by gem components",
       },
       summary: {
-        text: "Shows which components use common helpers",
+        text: "Shows which gem components use common helpers",
       },
       content: {
         html: helpers_by_component
@@ -109,7 +109,7 @@
   %>
 
   <%= render 'items_in_applications',
-    heading: 'Helpers by application',
+    heading: 'Gem helpers used by applications',
     summary: 'Shows any applications that use helpers from the components gem',
     content: @components[:helpers_used_by_applications],
     items: component_items
