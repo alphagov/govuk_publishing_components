@@ -137,7 +137,7 @@
             heading_level: 3,
           } %>
           <p class="govuk-body">This is a list of components found in this application. Note that some components may appear to be missing files due to inconsistencies in directory structure and naming conventions.</p>
-          <%= render "component_contents", passed_components: application_components %>
+          <%= render "component_contents", passed_components: application_components, show_application_name: false %>
         <% end %>        
       <% else %>
         <p class="govuk-body">This application was not found. This could be because you do not have this repository checked out locally.</p>

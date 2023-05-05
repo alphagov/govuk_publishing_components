@@ -79,7 +79,7 @@ module GovukPublishingComponents
         component_locations: @component_locations,
         helper_references: @helper_references,
         uses_individual_asset_model: @uses_individual_asset_model,
-        application_components: application_components,
+        application_components: application_components || [],
       }
     end
 

@@ -10,7 +10,8 @@
   <% component_items = [] %>
 
   <% component_files = capture do %>
-    <%= render "component_contents", passed_components: @components %>
+    <div id="component-controls"></div>
+    <%= render "component_contents", passed_components: @components, show_application_name: true %>
   <% end %>
 
   <%

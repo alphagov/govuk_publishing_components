@@ -35,6 +35,7 @@ describe "Auditing the components in the gem" do
       component_file_details: [
         {
           name: "test component",
+          application: "govuk_publishing_components",
           link: "/component-guide/test_component",
           template_exists: true,
           template_lines: 7,
@@ -58,6 +59,7 @@ describe "Auditing the components in the gem" do
         },
         {
           name: "test component containing other component",
+          application: "govuk_publishing_components",
           link: "/component-guide/test_component_containing_other_component",
           template_exists: true,
           template_lines: 3,

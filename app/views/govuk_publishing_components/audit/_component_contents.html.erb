@@ -2,13 +2,48 @@
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header sticky-table-header">Component</th>
-      <th scope="col" class="govuk-table__header sticky-table-header">Template (<%= passed_components[:component_numbers][:template] %>)</th>
-      <th scope="col" class="govuk-table__header sticky-table-header">CSS (<%= passed_components[:component_numbers][:stylesheet] %>)</th>
-      <th scope="col" class="govuk-table__header sticky-table-header">Print styles (<%= passed_components[:component_numbers][:print_stylesheet] %>)</th>
-      <th scope="col" class="govuk-table__header sticky-table-header">JS (<%= passed_components[:component_numbers][:javascript] %>)</th>
-      <th scope="col" class="govuk-table__header sticky-table-header">Test (<%= passed_components[:component_numbers][:test] %>)</th>
-      <th scope="col" class="govuk-table__header sticky-table-header">JS test (<%= passed_components[:component_numbers][:javascript_test] %>)</th>
-      <th scope="col" class="govuk-table__header sticky-table-header">Helper (<%= passed_components[:component_numbers][:helper] %>)</th>
+      <th scope="col" class="govuk-table__header sticky-table-header">
+        Template
+        <% unless show_application_name %>
+          <span class="component__count" data-component-type="template"><%= passed_components[:component_numbers][:template] %></span>
+        <% end %>
+      </th>
+      <th scope="col" class="govuk-table__header sticky-table-header">
+        CSS 
+        <% unless show_application_name %>
+          <span class="component__count" data-component-type="stylesheet"><%= passed_components[:component_numbers][:stylesheet] %></span>
+        <% end %>
+      </th>
+      <th scope="col" class="govuk-table__header sticky-table-header">
+        Print styles
+        <% unless show_application_name %>
+          <span class="component__count" data-component-type="print_stylesheet"><%= passed_components[:component_numbers][:print_stylesheet] %></span>
+        <% end %>
+      </th>
+      <th scope="col" class="govuk-table__header sticky-table-header">
+        JS 
+        <% unless show_application_name %>
+          <span class="component__count" data-component-type="javascript"><%= passed_components[:component_numbers][:javascript] %></span>
+        <% end %>
+      </th>
+      <th scope="col" class="govuk-table__header sticky-table-header">
+        Test 
+        <% unless show_application_name %>
+          <span class="component__count" data-component-type="test"><%= passed_components[:component_numbers][:test] %></span>
+        <% end %>
+      </th>
+      <th scope="col" class="govuk-table__header sticky-table-header">
+        JS test
+        <% unless show_application_name %>
+          <span class="component__count" data-component-type="javascript_test"><%= passed_components[:component_numbers][:javascript_test] %></span>
+        <% end %>
+      </th>
+      <th scope="col" class="govuk-table__header sticky-table-header">
+        Helper
+        <% unless show_application_name %>
+          <span class="component__count" data-component-type="helper"><%= passed_components[:component_numbers][:helper] %></span>
+        <% end %>
+      </th>
     </tr>
   </thead>
   <tbody class="govuk-table__body">
@@ -21,6 +56,11 @@
             </a>
           <% else %>
             <%= component[:name] %>
+          <% end %>
+          <% if show_application_name %>
+            <span class="component__application-name">
+              <%= component[:application] %>
+            </span>
           <% end %>
         </th>
         <td class="govuk-table__cell">

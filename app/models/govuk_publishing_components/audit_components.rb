@@ -57,6 +57,7 @@ module GovukPublishingComponents
       component_templates.each do |component|
         component_detail = {}
         component_detail[:name] = component
+        component_detail[:application] = @application_name
         component_detail[:link] = get_component_link(component) unless @auditing_an_application
         file_details = [
           {

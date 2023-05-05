@@ -537,3 +537,19 @@ $code-delete-bg: #fadddd;
 .component-doc__content-list {
   margin-top: govuk-spacing(5);
 }
+
+.component__application-name {
+  display: block;
+  @include govuk-font($size: 16);
+  font-weight: normal;
+}
+
+.component__count {
+  &:before {
+    content: "(";
+  }
+
+  &:after {
+    content: ")";
+  }
+}
