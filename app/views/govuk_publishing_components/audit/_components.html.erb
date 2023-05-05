@@ -10,8 +10,9 @@
   <% component_items = [] %>
 
   <% component_files = capture do %>
-    <div id="component-controls"></div>
-    <%= render "component_contents", passed_components: @components, show_application_name: true %>
+    <div data-module="audit-filter">
+      <%= render "component_contents", passed_components: @components, show_application_name: true %>
+    </div>
   <% end %>
 
   <%
