@@ -129,6 +129,30 @@ describe "Layout for public", type: :view do
     assert_select ".gem-c-layout-for-public__blue-bar", false
   end
 
+  it "renders the blue bar if `blue_bar` is `true`" do
+    render_component(blue_bar: true)
+
+    assert_select ".gem-c-layout-for-public__blue-bar"
+  end
+
+  it "renders the blue bar if `full_width` is true and `blue_bar` is true" do
+    render_component(full_width: true, blue_bar: true)
+
+    assert_select ".gem-c-layout-for-public__blue-bar"
+  end
+
+  it "renders the blue bar with a background if valid background specified" do
+    render_component(blue_bar: true, full_width: true, blue_bar_background_colour: "browse")
+
+    assert_select ".gem-c-layout-for-public__blue-bar-wrapper--browse .gem-c-layout-for-public__blue-bar"
+  end
+
+  it "does not render the blue bar with a background if an invalid background specified" do
+    render_component(blue_bar: true, full_width: true, blue_bar_background_colour: "invalid")
+
+    assert page.has_no_selector? ".gem-c-layout-for-public__blue-bar-wrapper--invalid"
+  end
+
   it "has the default logo link when no logo_link is specified" do
     render_component({})
 
