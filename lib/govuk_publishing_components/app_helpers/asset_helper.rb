@@ -72,6 +72,10 @@ module GovukPublishingComponents
         COMPONENT_CSS_PATHS
       end
 
+      def application_stylesheet_in_use?
+        GovukPublishingComponents::Config.application_stylesheet.presence
+      end
+
     private
 
       def is_already_used?(component)

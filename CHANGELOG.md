@@ -13,6 +13,7 @@
 * Fix some GA4 index bugs ([PR #3375](https://github.com/alphagov/govuk_publishing_components/pull/3375))
 * Rename type breadcrumbs to breadcrumb ([PR #3373](https://github.com/alphagov/govuk_publishing_components/pull/3373))
 * Update AssetHelper documentation ([PR #3378](https://github.com/alphagov/govuk_publishing_components/pull/3378))
+* Fix component guide previews for application components ([PR #3347](https://github.com/alphagov/govuk_publishing_components/pull/3347))
 
 ## 35.3.3
 
