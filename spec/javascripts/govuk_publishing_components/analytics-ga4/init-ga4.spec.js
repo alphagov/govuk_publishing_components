@@ -93,7 +93,7 @@ describe('Initialising GA4', function () {
         for (var i = 0; i < 5; i++) {
           expect(elements[i].getAttribute('data-module')).toEqual('ga4-link-tracker')
           expect(elements[i].getAttribute('data-ga4-track-links-only')).toEqual('')
-          expect(elements[i].getAttribute('data-ga4-link')).toEqual(JSON.stringify({ event_name: 'navigation', type: 'html attachment' }))
+          expect(elements[i].getAttribute('data-ga4-link')).toEqual(JSON.stringify({ event_name: 'navigation', type: 'attachment' }))
         }
       })
 
@@ -109,7 +109,7 @@ describe('Initialising GA4', function () {
         for (i = 0; i < 5; i++) {
           expect(elements[i].getAttribute('data-module')).toEqual('govspeak ga4-link-tracker')
           expect(elements[i].getAttribute('data-ga4-track-links-only')).toEqual('')
-          expect(elements[i].getAttribute('data-ga4-link')).toEqual(JSON.stringify({ event_name: 'navigation', type: 'html attachment' }))
+          expect(elements[i].getAttribute('data-ga4-link')).toEqual(JSON.stringify({ event_name: 'navigation', type: 'attachment' }))
         }
       })
     })

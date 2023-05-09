@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Conditionally set GA4 type in related navigation ([PR #3390](https://github.com/alphagov/govuk_publishing_components/pull/3390))
+* Change type 'html attachment' to just 'attachment' ([PR #3382](https://github.com/alphagov/govuk_publishing_components/pull/3382))
 
 ## 35.3.4
 
