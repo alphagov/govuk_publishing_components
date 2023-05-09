@@ -17,8 +17,8 @@ describe "Organisation logo", type: :view do
   end
 
   it "adds branding to the wrapping container" do
-    render_component(organisation: { name: "Branded", brand: "department-for-international-trade" })
-    assert_select ".gem-c-organisation-logo.brand--department-for-international-trade", text: "Branded"
+    render_component(organisation: { name: "Branded", brand: "department-for-business-and-trade" })
+    assert_select ".gem-c-organisation-logo.brand--department-for-business-and-trade", text: "Branded"
   end
 
   it "includes a link when a URL is provided" do
