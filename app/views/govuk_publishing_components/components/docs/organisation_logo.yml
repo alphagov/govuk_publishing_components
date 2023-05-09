@@ -41,13 +41,13 @@ examples:
         url: '/government/organisations/department-for-business-innovation-skills'
         brand: 'department-for-business-innovation-skills'
         crest: 'bis'
-  department_for_international_trade:
+  department_for_business_and_trade:
     data:
       organisation:
-        name: 'Department for<br>International Trade'
-        url: '/government/organisations/department-for-international-trade'
-        brand: 'department-for-international-trade'
-        crest: 'dit'
+        name: 'Department for<br>Business &amp; Trade'
+        url: '/government/organisations/department-for-business-and-trade'
+        brand: 'department-for-business-and-trade'
+        crest: 'dbt'
   executive_office:
     data:
       organisation:
