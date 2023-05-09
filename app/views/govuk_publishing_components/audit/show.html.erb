@@ -1,5 +1,9 @@
-<% content_for :title, "Component audit" %>
+<% 
+  add_gem_component_stylesheet("table")
+  add_gem_component_stylesheet("select")
+%>
 
+<% content_for :title, "Component audit" %>
 <%= render 'govuk_publishing_components/components/title', title: "Components audit", margin_top: 0; %>
 
 <% applications = capture do %>

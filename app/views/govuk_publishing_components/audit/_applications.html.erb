@@ -38,23 +38,15 @@
 
         <% if @other_applications %>
           <% if application[:uses_individual_asset_model] %>
-            <div class="govuk-warning-text">
-              <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-              <strong class="govuk-warning-text__text">
-                <span class="govuk-warning-text__assistive">Warning</span>
-                  This application uses <a class="govuk-link" href="https://github.com/alphagov/govuk_publishing_components/blob/main/docs/set-up-individual-component-css-loading.md">per page asset loading</a> for components. Warnings about missing stylesheets have been suppressed.
-              </strong>
-            </div>            
+            <%= render "govuk_publishing_components/components/warning_text", {
+              text: raw("This application uses <a class=\"govuk-link\" href=\"https://github.com/alphagov/govuk_publishing_components/blob/main/docs/set-up-individual-component-css-loading.md\">per page asset loading</a> for components. Warnings about missing stylesheets have been suppressed.")
+            } %>
           <% end %>
 
           <% if application[:uses_static] %>
-            <div class="govuk-warning-text">
-              <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-              <strong class="govuk-warning-text__text">
-                <span class="govuk-warning-text__assistive">Warning</span>
-                  This application uses <a href="https://github.com/alphagov/static" class="govuk-link">static</a>, which can contain assets for components used in more than one application. Warnings for missing component assets in this application that are already included in static have been suppressed.
-              </strong>
-            </div>            
+            <%= render "govuk_publishing_components/components/warning_text", {
+              text: raw("This application uses <a href=\"https://github.com/alphagov/static\" class=\"govuk-link\">static</a>, which can contain assets for components used in more than one application. Warnings for missing component assets in this application that are already included in static have been suppressed.")
+            } %>
           <% end %>
 
           <% application[:warnings].each do |warning| %>
@@ -74,24 +66,28 @@
           heading_level: 3,
         } %>
 
-        <dl class="govuk-summary-list">
-          <% application[:summary].each do |item| %>
-            <div class="govuk-summary-list__row">
-              <dt class="govuk-summary-list__key">
-                <%= item[:name] %> (<%= item[:value].length %>)
-              </dt>
-              <dd class="govuk-summary-list__value">
-                <% if item[:value].length > 0 %>
-                  <%= item[:value].join(", ") %>
-                <% elsif application[:uses_individual_asset_model] && item[:name] == "In stylesheets" %>
-                  Uses per page component asset loading
-                <% else %>
-                  None
-                <% end %>
-              </dd>
-            </div>
+        <% items = [] %>
+        <% application[:summary].each do |item| %>
+          <% content = capture do %>
+            <% if item[:value].length > 0 %>
+              <%= item[:value].join(", ") %>
+            <% elsif application[:uses_individual_asset_model] && item[:name] == "In stylesheets" %>
+              Uses per page component asset loading
+            <% else %>
+              None
+            <% end %>
           <% end %>
-        </dl>
+          <% 
+            items << {
+              field: "#{item[:name]} (#{item[:value].length})",
+              value: content
+            }
+          %>
+        <% end %>
+
+        <%= render "govuk_publishing_components/components/summary_list", {
+          items: items
+        } %>
 
         <% if application[:gem_style_references].any? %>
           <%= render "govuk_publishing_components/components/heading", {
@@ -129,7 +125,7 @@
         <% end %>
 
         <% application_components = application[:application_components] %>
-        <% if application_components.any? %>
+        <% if application_components[:component_file_details].any? %>
           <%= render "govuk_publishing_components/components/heading", {
             text: "Application components (#{application_components[:component_file_details].length})",
             font_size: "m",
