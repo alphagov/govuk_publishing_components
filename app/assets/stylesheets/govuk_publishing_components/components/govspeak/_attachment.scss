@@ -44,17 +44,6 @@
         height: 140px;
         background: govuk-colour("white");
         outline: $govuk-border-width solid transparentize(govuk-colour("black"), .9);
-
-        @include govuk-if-ie8 {
-          // IE8 incorrectly asserts the "max-width: 100%" rule to be 0
-          // because of the collapsed width on its floating container
-          // Reset the max-width so that thumbnails render at the specified
-          // width above.
-          // http://www.456bereastreet.com/archive/201202/using_max-width_on_images_can_make_them_disappear_in_ie8/
-          max-width: none;
-          border: $govuk-border-width solid govuk-colour("mid-grey", $legacy: "grey-3");
-        }
-
         box-shadow: 0 2px 2px rgba(govuk-colour("black"), .4);
       }
 

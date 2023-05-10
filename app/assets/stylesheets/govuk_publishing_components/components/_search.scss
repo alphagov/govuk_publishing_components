@@ -62,12 +62,6 @@ $large-input-size: 50px;
   // Double the border by adding its width again. Use `box-shadow` for this // instead of changing `border-width`
   // Also, `outline` cannot be utilised here as it is already used for the yellow focus state.
   box-shadow: inset 0 0 0 $govuk-border-width-form-element;
-
-  @include govuk-if-ie8 {
-    // IE8 doesn't support `box-shadow` so double the border with
-    // `border-width`.
-    border-width: $govuk-border-width-form-element * 2;
-  }
 }
 
 .gem-c-search__input[type="search"] { // overly specific to prevent some overrides from outside
@@ -136,12 +130,6 @@ $large-input-size: 50px;
     // Also, `outline` cannot be utilised
     // here as it is already used for the yellow focus state.
     box-shadow: inset 0 0 0 $govuk-border-width-form-element * 2 govuk-colour("black");
-
-    @include govuk-if-ie8 {
-      // IE8 doesn't support `box-shadow` so double the border with
-      // `border-width`.
-      border-width: $govuk-border-width-form-element * 2;
-    }
   }
 
   &::-moz-focus-inner {
