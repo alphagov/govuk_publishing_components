@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Add auditing of application components to component auditing ([PR #3374](https://github.com/alphagov/govuk_publishing_components/pull/3374))
 * Fix GA4 index parameters on step nav show/hide all control ([PR #3397](https://github.com/alphagov/govuk_publishing_components/pull/3397))
 * Update to LUX 308 ([PR #3394](https://github.com/alphagov/govuk_publishing_components/pull/3394))
 
@@ -23,7 +24,7 @@
 ## 35.3.4
 
 * Update organisation logo ([PR #3381](https://github.com/alphagov/govuk_publishing_components/pull/3381))
-* Add missing background colour style for metadata block inverse option [(PR #3365)](https://github.com/alphagov/govuk_publishing_components/pull/3365)
+* Add missing background colour style for metadata block inverse option ([PR #3365](https://github.com/alphagov/govuk_publishing_components/pull/3365))
 * Fix some GA4 index bugs ([PR #3375](https://github.com/alphagov/govuk_publishing_components/pull/3375))
 * Rename type breadcrumbs to breadcrumb ([PR #3373](https://github.com/alphagov/govuk_publishing_components/pull/3373))
 * Update AssetHelper documentation ([PR #3378](https://github.com/alphagov/govuk_publishing_components/pull/3378))
