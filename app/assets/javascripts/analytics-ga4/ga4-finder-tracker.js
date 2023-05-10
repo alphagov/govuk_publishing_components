@@ -103,7 +103,7 @@
       return { elementValue: elementValue, wasFilterRemoved: wasFilterRemoved }
     },
 
-    // Takes the GTM schema, the event target value, the event target HTML type, wether the filter was removed, the type of filter change it was, and the parent section heading. Populates the GTM object based on these values.
+    // Takes the GTM schema, the event target value, the event target HTML type, whether the filter was removed, the type of filter change it was, and the parent section heading. Populates the GTM object based on these values.
     setSchemaBasedOnChangeType: function (schema, elementValue, elementType, wasFilterRemoved, changeType, section) {
       var PIIRemover = new window.GOVUK.analyticsGa4.PIIRemover()
 
