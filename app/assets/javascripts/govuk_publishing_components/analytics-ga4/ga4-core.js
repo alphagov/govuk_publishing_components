@@ -32,6 +32,10 @@ window.GOVUK.analyticsGa4 = window.GOVUK.analyticsGa4 || {};
 
     sendData: function (data) {
       data.govuk_gem_version = this.getGemVersion()
+      // set this in the console as a debugging aid
+      if (window.GOVUK.analyticsGa4.showDebug) {
+        console.info(JSON.stringify(data, null, ' '))
+      }
       window.dataLayer.push(data)
     },
 
