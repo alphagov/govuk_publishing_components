@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Add GA4 debugging assistance ([PR #3388](https://github.com/alphagov/govuk_publishing_components/pull/3388))
+* Remove custom brand colours for Department for Business And Trade ([PR #3391](https://github.com/alphagov/govuk_publishing_components/pull/3391))
 * Conditionally set GA4 type in related navigation ([PR #3390](https://github.com/alphagov/govuk_publishing_components/pull/3390))
 * Change type 'html attachment' to just 'attachment' ([PR #3382](https://github.com/alphagov/govuk_publishing_components/pull/3382))
 * Update popular on gov.uk links in search bar ([PR #3385](https://github.com/alphagov/govuk_publishing_components/pull/3385))
