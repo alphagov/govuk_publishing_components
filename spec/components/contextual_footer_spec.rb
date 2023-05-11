@@ -27,4 +27,28 @@ RSpec.describe "Contextual footer", type: :view do
       assert_no_selector ".gem-c-contextual-footer"
     end
   end
+
+  it "sets the GA4 type to \"contextual footer\"" do
+    content_item = {}
+    content_item["links"] = {
+      "topics" => [
+        {
+          "base_path" => "/skating",
+          "title" => "Skating",
+          "document_type" => "topic",
+        },
+        {
+          "base_path" => "/paragliding",
+          "title" => "Paragliding",
+          "document_type" => "topic",
+        },
+      ],
+    }
+
+    render_component(content_item: content_item, ga4_tracking: true)
+
+    assert_select ".gem-c-related-navigation[data-module='gem-track-click ga4-link-tracker']"
+    assert_select ".gem-c-related-navigation__section-link[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"contextual footer\",\"index\":{\"index_section\":\"1\",\"index_link\":\"1\",\"index_section_count\":\"1\"},\"index_total\":\"2\",\"section\":\"Explore the topic\"}']", text: "Skating"
+    assert_select ".gem-c-related-navigation__section-link[data-ga4-link='{\"event_name\":\"navigation\",\"type\":\"contextual footer\",\"index\":{\"index_section\":\"1\",\"index_link\":\"2\",\"index_section_count\":\"1\"},\"index_total\":\"2\",\"section\":\"Explore the topic\"}']", text: "Paragliding"
+  end
 end

@@ -34,7 +34,7 @@
         link_class = "govuk-link #{related_nav_helper.section_css_class("govuk-link gem-c-related-navigation__section-link", section_title, link: link, link_is_inline: (index >= section_link_limit))}"
         ga4_attributes = {
           event_name: "navigation",
-          type: "related content",
+          type: ga4_type,
           index: {
             index_section: "#{section_index}",
             index_link: "#{index}",
