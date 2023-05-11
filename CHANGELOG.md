@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 35.3.5
 
 * Add GA4 debugging assistance ([PR #3388](https://github.com/alphagov/govuk_publishing_components/pull/3388))
 * Remove custom brand colours for Department for Business And Trade ([PR #3391](https://github.com/alphagov/govuk_publishing_components/pull/3391))
