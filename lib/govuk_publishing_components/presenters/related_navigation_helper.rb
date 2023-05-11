@@ -12,9 +12,6 @@ module GovukPublishingComponents
         world_locations
         statistical_data_sets
       ].freeze
-      WORLD_LOCATION_SPECIAL_CASES = {
-        "UK Mission to the European Union" => "uk-mission-to-the-eu",
-      }.freeze
 
       attr_reader :related_navigation, :index_section_count
 
@@ -127,11 +124,14 @@ module GovukPublishingComponents
       end
 
       def related_world_locations
-        content_item_links_for("world_locations")
-          .map do |link|
-            slug = WORLD_LOCATION_SPECIAL_CASES[link[:text]] || link[:text].parameterize
-            link.merge(path: "/world/#{slug}/news")
-          end
+        content_item_links_for("world_locations").each do |link|
+          build_world_locations_path_for link
+        end
+      end
+
+      def build_world_locations_path_for(link)
+        slug = link[:text].parameterize
+        link[:path] ||= "/world/#{slug}/news"
       end
 
       def related_statistical_data_sets
