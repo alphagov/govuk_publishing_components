@@ -665,7 +665,7 @@
     function onInput(evt) {
       var bCancelable = false;
       try {
-            // Seeing "Permission denied" errors, so do a simple try-catch.
+        // Seeing "Permission denied" errors, so do a simple try-catch.
         bCancelable = evt.cancelable;
       }
       catch (e) {
@@ -1355,7 +1355,7 @@
           typeof startRender !== "undefined" ? "sr" + startRender : "",
           typeof fcp !== "undefined" ? "fc" + fcp : "",
           typeof lcp !== "undefined" ? "lc" + lcp : "",
-          ].join("");
+        ].join("");
       }
       else if (endMark) {
         // This is a "main" page view that does NOT support Navigation Timing - strange.
@@ -1753,10 +1753,10 @@
         !gbLuxSent // LUX has NOT been sent yet, so wait to include it there
       ) {
         return;
-    }
-    var sIx = ixValues(); // Interaction Metrics
-    var INP = getINP();
-    if (sIx) {
+      }
+      var sIx = ixValues(); // Interaction Metrics
+      var INP = getINP();
+      if (sIx) {
       var beaconUrl = _getBeaconUrl(getUpdatedCustomData()) +
         "&IX=" +
         sIx +
