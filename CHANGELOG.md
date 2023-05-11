@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Conditionally set GA4 type in related navigation ([PR #3390](https://github.com/alphagov/govuk_publishing_components/pull/3390))
+
 ## 35.3.4
 
 * Update organisation logo ([PR #3381](https://github.com/alphagov/govuk_publishing_components/pull/3381))
