@@ -11,7 +11,7 @@ var initFunction = function () {
     var attachmentLinkData = [
       { key: 'data-module', value: 'ga4-link-tracker' },
       { key: 'data-ga4-track-links-only', value: '' },
-      { key: 'data-ga4-link', value: JSON.stringify({ event_name: 'navigation', type: 'html attachment' }) }]
+      { key: 'data-ga4-link', value: JSON.stringify({ event_name: 'navigation', type: 'attachment' }) }]
     window.GOVUK.analyticsGa4.core.trackFunctions.addAttributesToElements('[data-ga4-attachment-link]', attachmentLinkData)
     window.GOVUK.analyticsGa4.core.load()
 
