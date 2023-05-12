@@ -936,7 +936,7 @@ describe('A stepnav module', function () {
       var stepNav = element.childNodes[0]
       var showAllButton = stepNav.querySelector('button.js-step-controls-button')
 
-      expect(showAllButton.getAttribute('data-ga4-event')).toEqual('{"event_name":"select_content","type":"step by step","index":0,"index_section_count":3}')
+      expect(showAllButton.getAttribute('data-ga4-event')).toEqual('{"event_name":"select_content","type":"step by step","index":{"index_section":0,"index_section_count":3}}')
     })
 
     it('adds the data-ga4-event attribute to the JS generated step button', function () {
