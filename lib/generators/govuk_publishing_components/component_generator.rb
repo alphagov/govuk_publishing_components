@@ -18,8 +18,8 @@ module GovukPublishingComponents
       create_directory_if_not_exists(docs_dir)
       create_directory_if_not_exists(scss_dir)
 
-      template "_component.html.erb", "#{template_dir}_#{@public_name}.html.erb"
-      template "component.yml.erb", "#{docs_dir}#{@public_name}.yml"
+      template "_component.html.erb", "#{template_dir}_#{@public_name.gsub('-', '_')}.html.erb"
+      template "component.yml.erb", "#{docs_dir}#{@public_name.gsub('-', '_')}.yml"
       template "_component.scss", "#{scss_dir}_#{@public_name}.scss"
     end
 

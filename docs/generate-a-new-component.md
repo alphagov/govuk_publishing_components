@@ -10,6 +10,8 @@ The gem includes a component generator to stub the minimal files required for a 
 rails generate govuk_publishing_components:component [component_name]
 ```
 
+`component_name` should use underscores and not hyphens. Read our [component conventions](https://github.com/alphagov/govuk_publishing_components/blob/main/docs/component_conventions.md#structure) for further details.
+
 This will create a template, scss file and yml documentation file for a new component. It will not create a test file as this cannot be reliably done automatically across applications, but a test file will be necessary.
 
 ## Option 2: create a component in the gem
