@@ -1,0 +1,76 @@
+<div class="filter-form">
+  <% if !content_item.all_content_finder? %>
+    <div id="keywords" role="search" aria-label="<%= content_item.title %>" data-ga4-change-category="update-keyword text">
+      <% label_text = capture do %>
+        Search <span class="govuk-visually-hidden"><%= content_item.title %></span>
+      <% end %>
+      <%= render "govuk_publishing_components/components/search", {
+        aria_controls: "js-search-results-info",
+        id: "finder-keyword-search",
+        name: "keywords",
+        type: 'search',
+        value: result_set_presenter.user_supplied_keywords,
+        inline_label: false,
+        label_text: label_text
+      } %>
+    </div>
+  <% end %>
+  <% if content_item.all_content_finder? %>
+    <%= render partial: 'filter_button'%>
+  <% elsif !content_item.all_content_finder? %>
+    <% if facets.select(&:filterable?).any? %>
+      <%= render partial: 'filter_button'%>
+    <% end %>
+  <% end %>
+
+  <% if facets.select(&:filterable?).any? %>
+    <div data-module="gem-track-click" data-track-category="filterClicked"
+        data-track-action="skip-Link" data-track-label="">
+      <%= render "govuk_publishing_components/components/skip_link", {
+        text: 'Skip to results',
+        href: '#js-results'}
+      %>
+    </div>
+
+    <div id="facet-wrapper" data-module="mobile-filters-modal" class="facets" role="search" aria-label="Search filters">
+      <div class="facets__box">
+        <h2 class='govuk-visually-hidden'>Filter</h2>
+        <div class="facets__header">
+          <div>
+            <%= render "govuk_publishing_components/components/heading", {
+              text: sanitize("<span class=\"js-result-count govuk-!-font-weight-regular\">#{result_set_presenter.displayed_total}</span>"),
+              heading_level: 3,
+              font_size: "s",
+              margin_bottom: 0
+            } %>
+          </div>
+        </div>
+        <div class="facets__content" data-module="ga4-event-tracker" data-ga4-filter-container>
+          <%= render facets.select(&:filterable?) %>
+          <div class="facets__tags-block js-mobile-facet-tag-block"  data-module="remove-filter">
+            <%= render "facet_tags", facet_tags.present %>
+          </div>
+          <button class="app-c-button-as-link facets__clear-link js-clear-selected-filters" type="button">
+            Clear all filters
+          </button>
+        </div>
+        <div class="facets__footer">
+        <%= render "govuk_publishing_components/components/button", {
+            text: "Go to search results",
+            href: "#js-results",
+            data_attributes: {
+              module: "govuk-skip-link",
+            }
+          } %>
+      </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="js-live-search-fallback button__wrapper">
+    <%= render "govuk_publishing_components/components/button", {
+      text: "Filter results",
+      margin_bottom: true
+    } %>
+  </div>
+</div>

@@ -5,9 +5,15 @@ describe('An option select component', function () {
   'use strict'
 
   function optionSelectWithAttrs (attrs) {
+<<<<<<< HEAD
     return '<div class="gem-c-option-select" ' + attrs + '>' +
       '<h2 class="gem-c-option-select__heading js-container-heading">' +
         '<span class="gem-c-option-select__title js-container-button">Hello World</span>' +
+=======
+    return '<div class="app-c-option-select" ' + attrs + '>' +
+      '<h2 class="app-c-option-select__heading js-container-heading">' +
+        '<span class="app-c-option-select__title js-container-button">Hello World</span>' +
+>>>>>>> f5da6cfdd (Add GA4 tracking to finder filters expanding/collapsing)
       '</h2>' +
       '<div class="gem-c-option-select__container js-options-container">' +
         '<div class="gem-c-option-select__container-inner js-auto-height-inner">' +
@@ -153,6 +159,7 @@ describe('An option select component', function () {
       expect($($element).find('button')).toBeDefined()
     })
 
+<<<<<<< HEAD
     it('accepts data attributes to be applied to the button element', function () {
       $element = document.createElement('div')
       $element.innerHTML = html
@@ -177,6 +184,26 @@ describe('An option select component', function () {
 
       new GOVUK.Modules.OptionSelect($element.querySelector('.gem-c-option-select')).init()
       expect($($element).find('.gem-c-option-select__button').attr('data-test-attribute-with-many-underscores')).toBe(undefined)
+=======
+    it('adds GA4 event tracking to the button', function () {
+      var $ga4Fixture = $(optionSelectWithAttrs('data-ga4-index=\'{"index_section":1, "index_section_count": 3}\''))
+      $('body').append($ga4Fixture)
+
+      new GOVUK.Modules.OptionSelect($ga4Fixture[0]).init()
+      window.GOVUK.triggerEvent(window, 'ga4-filter-indexes-added')
+
+      var expected = JSON.stringify({
+        event_name: 'select_content',
+        type: 'finder',
+        section: 'Hello World',
+        index: {
+          index_section: 1,
+          index_section_count: 3
+        }
+      })
+
+      expect($ga4Fixture.find('button').attr('data-ga4-event')).toEqual(expected)
+>>>>>>> f5da6cfdd (Add GA4 tracking to finder filters expanding/collapsing)
     })
   })
 

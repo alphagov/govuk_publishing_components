@@ -184,6 +184,15 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
     button.innerHTML = jsContainerHeadHTML
     containerHead.parentNode.replaceChild(button, containerHead)
+
+    // GA4 Accordion tracking. Relies on the ga4-finder-tracker setting the index first, so we wrap this in a custom event.
+    window.addEventListener('ga4-filter-indexes-added', function () {
+      if (window.GOVUK.analyticsGa4) {
+        if (window.GOVUK.analyticsGa4.Ga4FinderTracker) {
+          window.GOVUK.analyticsGa4.Ga4FinderTracker.addFilterButtonTracking(button, button.innerHTML)
+        }
+      }
+    })
   }
 
   OptionSelect.prototype.attachCheckedCounter = function attachCheckedCounter (checkedString) {
