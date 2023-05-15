@@ -244,6 +244,7 @@ describe "Comparing data from an application with the components" do
         component_locations: {},
         helper_references: nil,
         uses_individual_asset_model: nil,
+        application_components: nil,
       },
     ]
 
@@ -322,6 +323,7 @@ describe "Comparing data from an application with the components" do
         component_locations: {},
         helper_references: nil,
         uses_individual_asset_model: nil,
+        application_components: nil,
       },
     ]
 
@@ -441,6 +443,7 @@ describe "Comparing data from an application with the components" do
         component_locations: {},
         helper_references: nil,
         uses_individual_asset_model: nil,
+        application_components: nil,
       },
       {
         name: "static",
@@ -471,6 +474,7 @@ describe "Comparing data from an application with the components" do
         component_locations: {},
         helper_references: nil,
         uses_individual_asset_model: nil,
+        application_components: nil,
       },
     ]
 
@@ -547,6 +551,7 @@ describe "Comparing data from an application with the components" do
         component_locations: {},
         helper_references: nil,
         uses_individual_asset_model: nil,
+        application_components: nil,
       },
     ]
 
@@ -654,6 +659,7 @@ describe "Comparing data from an application with the components" do
         helper_references: nil,
         component_locations: {},
         uses_individual_asset_model: nil,
+        application_components: nil,
       },
     ]
 
@@ -784,7 +790,7 @@ describe "Comparing data from an application with the components" do
       ],
       component_file_details: [
         {
-          name: "component one",
+          name: "component four",
           link: "",
           template_exists: true,
           template_lines: 1,
@@ -805,7 +811,7 @@ describe "Comparing data from an application with the components" do
           helper_exists: true,
         },
         {
-          name: "component two",
+          name: "component one",
           link: "",
           template_exists: true,
           template_lines: 1,
@@ -813,8 +819,8 @@ describe "Comparing data from an application with the components" do
           stylesheet_exists: true,
           stylesheet_lines: 1,
           stylesheet_link: "",
-          print_stylesheet_exists: true,
-          javascript_exists: false,
+          print_stylesheet_exists: false,
+          javascript_exists: true,
           javascript_lines: 1,
           javascript_link: "",
           test_exists: true,
@@ -847,7 +853,7 @@ describe "Comparing data from an application with the components" do
           helper_exists: true,
         },
         {
-          name: "component four",
+          name: "component two",
           link: "",
           template_exists: true,
           template_lines: 1,
@@ -855,8 +861,8 @@ describe "Comparing data from an application with the components" do
           stylesheet_exists: true,
           stylesheet_lines: 1,
           stylesheet_link: "",
-          print_stylesheet_exists: false,
-          javascript_exists: true,
+          print_stylesheet_exists: true,
+          javascript_exists: false,
           javascript_lines: 1,
           javascript_link: "",
           test_exists: true,

@@ -4,10 +4,10 @@ require_relative "../../app/models/govuk_publishing_components/audit_application
 describe "Auditing the components in applications" do
   it "returns correct information" do
     path = File.join(Dir.pwd, "/spec/dummy")
-    application = GovukPublishingComponents::AuditApplications.new(path, "govuk_publishing_components")
+    application = GovukPublishingComponents::AuditApplications.new(path, "an_application")
 
     expected = {
-      name: "govuk_publishing_components",
+      name: "an_application",
       application_found: true,
       components_found: [
         {
@@ -72,11 +72,133 @@ describe "Auditing the components in applications" do
       helper_references: {
         BrandHelper: ["lib/test_file_3.rb"],
         ButtonHelper: ["lib/test_file_3.rb"],
-        ComponentWrapperHelper: ["app/views/components/_test-component-using-wrapper.html.erb"],
+        ComponentWrapperHelper: ["app/views/components/_test_component_using_wrapper.html.erb"],
         SharedHelper: ["lib/test_file_3.rb"],
         TableHelper: ["app/views/welcome/table.html.erb"],
       },
       uses_individual_asset_model: true,
+      application_components: {
+        component_file_details: [
+          {
+            name: "app component",
+            application: "an_application",
+            print_stylesheet_exists: false,
+            stylesheet_exists: true,
+            stylesheet_lines: 3,
+            stylesheet_link: "https://github.com/alphagov/an_application/blob/main/app/assets/stylesheets/components/_app-component.scss",
+            template_exists: true,
+            template_lines: 3,
+            template_link: "https://github.com/alphagov/an_application/blob/main/app/views/components/_app_component.html.erb",
+          },
+          {
+            name: "test component",
+            application: "an_application",
+            template_exists: true,
+            template_lines: 3,
+            template_link: "https://github.com/alphagov/an_application/blob/main/app/views/components/_test_component.html.erb",
+          },
+          {
+            name: "test component using wrapper",
+            application: "an_application",
+            template_exists: true,
+            template_lines: 5,
+            template_link: "https://github.com/alphagov/an_application/blob/main/app/views/components/_test_component_using_wrapper.html.erb",
+          },
+          {
+            name: "test component with a11y incomplete warning",
+            application: "an_application",
+            template_exists: true,
+            template_lines: 3,
+            template_link: "https://github.com/alphagov/an_application/blob/main/app/views/components/_test_component_with_a11y_incomplete_warning.html.erb",
+          },
+          {
+            name: "test component with a11y issue",
+            application: "an_application",
+            template_exists: true,
+            template_lines: 3,
+            template_link: "https://github.com/alphagov/an_application/blob/main/app/views/components/_test_component_with_a11y_issue.html.erb",
+          },
+          {
+            name: "test component with block",
+            application: "an_application",
+            template_exists: true,
+            template_lines: 3,
+            template_link: "https://github.com/alphagov/an_application/blob/main/app/views/components/_test_component_with_block.html.erb",
+          },
+          {
+            name: "test component with duplicate ids",
+            application: "an_application",
+            template_exists: true,
+            template_lines: 5,
+            template_link: "https://github.com/alphagov/an_application/blob/main/app/views/components/_test_component_with_duplicate_ids.html.erb",
+          },
+          {
+            name: "test component with embed",
+            application: "an_application",
+            template_exists: true,
+            template_lines: 1,
+            template_link: "https://github.com/alphagov/an_application/blob/main/app/views/components/_test_component_with_embed.html.erb",
+          },
+          {
+            name: "test component with example description",
+            application: "an_application",
+            template_exists: true,
+            template_lines: 6,
+            template_link: "https://github.com/alphagov/an_application/blob/main/app/views/components/_test_component_with_example_description.html.erb",
+          },
+          {
+            name: "test component with helper",
+            application: "an_application",
+            template_exists: true,
+            template_lines: 3,
+            template_link: "https://github.com/alphagov/an_application/blob/main/app/views/components/_test_component_with_helper.html.erb",
+          },
+          {
+            name: "test component with html params",
+            application: "an_application",
+            template_exists: true,
+            template_lines: 14,
+            template_link: "https://github.com/alphagov/an_application/blob/main/app/views/components/_test_component_with_html_params.html.erb",
+          },
+          {
+            name: "test component with no accessibility criteria",
+            application: "an_application",
+            template_exists: true,
+            template_lines: 3,
+            template_link: "https://github.com/alphagov/an_application/blob/main/app/views/components/_test_component_with_no_accessibility_criteria.html.erb",
+          },
+          {
+            name: "test component with params",
+            application: "an_application",
+            template_exists: true,
+            template_lines: 6,
+            template_link: "https://github.com/alphagov/an_application/blob/main/app/views/components/_test_component_with_params.html.erb",
+          },
+          {
+            name: "test component with shared accessibility criteria",
+            application: "an_application",
+            template_exists: true,
+            template_lines: 3,
+            template_link: "https://github.com/alphagov/an_application/blob/main/app/views/components/_test_component_with_shared_accessibility_criteria.html.erb",
+          },
+          {
+            name: "test component with shared accessibility criteria only",
+            application: "an_application",
+            template_exists: true,
+            template_lines: 3,
+            template_link: "https://github.com/alphagov/an_application/blob/main/app/views/components/_test_component_with_shared_accessibility_criteria_only.html.erb",
+          },
+        ],
+        component_numbers: {
+          helper: 0,
+          javascript: 0,
+          javascript_test: 0,
+          print_stylesheet: 0,
+          stylesheet: 1,
+          template: 15,
+          test: 0,
+        },
+      },
     }
 
     expect(application.data).to match(expected)

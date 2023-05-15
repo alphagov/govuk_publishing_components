@@ -2,16 +2,17 @@ module GovukPublishingComponents
   class AuditComponents
     attr_reader :data
 
-    def initialize(path)
+    def initialize(path, options = {})
       # paths to key file locations
-      @templates_path = "app/views/govuk_publishing_components/components"
-      @stylesheets_path = "app/assets/stylesheets/govuk_publishing_components/components"
-      @print_stylesheets_path = "app/assets/stylesheets/govuk_publishing_components/components/print"
-      @javascripts_path = "app/assets/javascripts/govuk_publishing_components/components"
-      @tests_path = "spec/components"
-      @javascript_tests_path = "spec/javascripts/components"
-      @helpers_path = "lib/govuk_publishing_components/presenters"
+      @templates_path = options[:templates_path] || "app/views/govuk_publishing_components/components"
+      @stylesheets_path = options[:stylesheets_path] || "app/assets/stylesheets/govuk_publishing_components/components"
+      @print_stylesheets_path = options[:print_stylesheets_path] || "app/assets/stylesheets/govuk_publishing_components/components/print"
+      @javascripts_path = options[:javascripts_path] || "app/assets/javascripts/govuk_publishing_components/components"
+      @tests_path = options[:tests_path] || "spec/components"
+      @javascript_tests_path = options[:javascript_tests_path] || "spec/javascripts/components"
+      @helpers_path = options[:helpers_path] || "lib/govuk_publishing_components/presenters"
 
+      @application_name = options[:application_name] || "govuk_publishing_components"
       @all_templates = Dir["#{path}/#{@templates_path}/*.erb"].sort
       @templates_full_path = "#{path}/#{@templates_path}/"
 
@@ -28,36 +29,36 @@ module GovukPublishingComponents
       @data = {
         gem_found: false,
       }
+      @auditing_an_application = true unless @application_name == "govuk_publishing_components"
       @data = compile_data(path) if Dir.exist?(path)
     end
 
   private
 
     def compile_data(path)
+      data = {}
+      data[:gem_found] = true unless @auditing_an_application
       component_file_details = get_component_file_details(path)
-      helper_usage = get_helper_usage(component_file_details)
+      data[:helper_usage] = get_helper_usage(component_file_details) unless @auditing_an_application
 
       # remove the template file reference as not needed
       component_file_details.map { |detail| detail.delete(:template_file) }
 
-      {
-        gem_found: true,
-        component_code: clean_files(@all_templates, @templates_full_path).sort,
-        components_containing_components: find_all_partials_in(@all_templates),
-        component_file_details: component_file_details,
-        component_numbers: @component_numbers,
-        helper_usage: helper_usage,
-      }
+      data[:component_code] = clean_files(@all_templates, @templates_full_path).sort unless @auditing_an_application
+      data[:component_file_details] = component_file_details
+      data[:component_numbers] = @component_numbers
+      data[:components_containing_components] = find_all_partials_in(@all_templates) unless @auditing_an_application
+      data
     end
 
     def get_component_file_details(path)
       component_templates = clean_files(@all_templates, @templates_full_path).sort
       details = []
       component_templates.each do |component|
-        component_detail = {
-          name: component,
-          link: get_component_link(component),
-        }
+        component_detail = {}
+        component_detail[:name] = component
+        component_detail[:application] = @application_name
+        component_detail[:link] = get_component_link(component) unless @auditing_an_application
         file_details = [
           {
             type: "template",
@@ -102,10 +103,10 @@ module GovukPublishingComponents
       details = {}
       type = detail[:type]
       file = detail[:file]
-      details["#{type}_exists".to_sym] = false
-      # save the location of the template to later grep for helper use
-      details["#{type}_file".to_sym] = file if type == "template"
       if File.file?(file)
+        details["#{type}_exists".to_sym] = false
+        # save the location of the template to later grep for helper use
+        details["#{type}_file".to_sym] = file if type == "template"
         # we don't have separate print stylesheets anymore
         # so check the main stylesheet for print styles
         if type == "print_stylesheet"
@@ -139,8 +140,8 @@ module GovukPublishingComponents
         .gsub(".scss", "")
         .gsub(".js", "")
         .gsub("spec", "")
+        .gsub("helper.rb", "")
         .gsub(".rb", "")
-        .gsub("helper", "")
         .strip
     end
 
@@ -202,21 +203,22 @@ module GovukPublishingComponents
     def components_within_component(file)
       file = get_component_name_from_full_path(file)
       file = "#{@templates_full_path}#{file}.html.erb".sub(/.*\K\//, "/_")
-      data = File.read(file)
-      match = data.scan(/["']{1}(govuk_publishing_components\/components\/[\/a-z_-]+["']{1})/)
-      match.flatten.uniq.map(&:to_s).sort.map do |m|
-        m.gsub("govuk_publishing_components/components/", "").tr('\"\'', "")
+      if File.exist?(file)
+        data = File.read(file)
+        match = data.scan(/["']{1}(govuk_publishing_components\/components\/[\/a-z_-]+["']{1})/)
+        match.flatten.uniq.map(&:to_s).sort.map do |m|
+          m.gsub("govuk_publishing_components/components/", "").tr('\"\'', "")
+        end
       end
     end
 
     def get_asset_link(a_thing, component)
       url = "https://github.com/alphagov"
-      repo = "govuk_publishing_components"
+      repo = @application_name
       blob = "blob/main"
       link = nil
       link = "#{url}/#{repo}/#{blob}/#{@templates_path}/_#{component.gsub(' ', '_')}.html.erb" if a_thing == "template"
       link = "#{url}/#{repo}/#{blob}/#{@stylesheets_path}/_#{component.gsub(' ', '-')}.scss" if a_thing == "stylesheet"
-      link = "#{url}/#{repo}/#{blob}/#{@print_stylesheets_path}/_#{component.gsub(' ', '-')}.scss" if a_thing == "print_stylesheet"
       link = "#{url}/#{repo}/#{blob}/#{@javascripts_path}/#{component.gsub(' ', '-')}.js" if a_thing == "javascript"
       link = "#{url}/#{repo}/#{blob}/#{@tests_path}/#{component.gsub(' ', '_')}_spec.rb" if a_thing == "test"
       link = "#{url}/#{repo}/#{blob}/#{@javascript_tests_path}/#{component.gsub(' ', '-')}-spec.js" if a_thing == "javascript_test"

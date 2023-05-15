@@ -55,6 +55,19 @@ module GovukPublishingComponents
             components: components_in_ruby,
           },
         ]
+
+        # applications might not have all of these things for all components
+        options = {
+          application_name: name,
+          templates_path: "app/views/components",
+          stylesheets_path: "app/assets/stylesheets/components",
+          javascripts_path: "app/assets/javascripts/components/",
+          tests_path: "spec/components/",
+          javascript_tests_path: "spec/javascripts/components/",
+          helpers_path: "app/helpers/",
+        }
+        application_components = AuditComponents.new(path, options)
+        application_components = application_components.data if application_components
       end
 
       @data = {
@@ -66,6 +79,7 @@ module GovukPublishingComponents
         component_locations: @component_locations,
         helper_references: @helper_references,
         uses_individual_asset_model: @uses_individual_asset_model,
+        application_components: application_components || [],
       }
     end
 

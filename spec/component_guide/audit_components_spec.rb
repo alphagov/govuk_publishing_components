@@ -35,6 +35,7 @@ describe "Auditing the components in the gem" do
       component_file_details: [
         {
           name: "test component",
+          application: "govuk_publishing_components",
           link: "/component-guide/test_component",
           template_exists: true,
           template_lines: 7,
@@ -58,16 +59,11 @@ describe "Auditing the components in the gem" do
         },
         {
           name: "test component containing other component",
+          application: "govuk_publishing_components",
           link: "/component-guide/test_component_containing_other_component",
           template_exists: true,
           template_lines: 3,
           template_link: "https://github.com/alphagov/govuk_publishing_components/blob/main/app/views/govuk_publishing_components/components/_test_component_containing_other_component.html.erb",
-          stylesheet_exists: false,
-          print_stylesheet_exists: false,
-          javascript_exists: false,
-          test_exists: false,
-          javascript_test_exists: false,
-          helper_exists: false,
         },
       ],
       component_numbers: {

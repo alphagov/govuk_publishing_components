@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe "Component preview" do
   it "shows all component examples on a page without header or footer" do
-    visit "/component-guide/test-component-with-params/preview"
+    visit "/component-guide/test_component_with_params/preview"
     expect(page).to have_selector(".hide-header-and-footer")
     expect(page).not_to have_selector("#global-header")
     expect(page).not_to have_selector("#footer")
@@ -15,7 +15,7 @@ describe "Component preview" do
   end
 
   it "shows a specific example on a page without header or footer" do
-    visit "/component-guide/test-component-with-params/another_example/preview"
+    visit "/component-guide/test_component_with_params/another_example/preview"
     expect(page).to have_selector(".hide-header-and-footer")
     expect(page).not_to have_selector("#global-header")
     expect(page).not_to have_selector("#footer")

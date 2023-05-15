@@ -8,7 +8,8 @@
     "govuk_publishing_components/load-analytics-*.js",
     "govuk_publishing_components/vendor/lux/lux-measurer-*.js",
     "component_guide/accessibility-test-*.js",
-    "component_guide/filter-components-*.js"
+    "component_guide/filter-components-*.js",
+    "component_guide/audit-filter-*.js"
   ],
   "cssFiles": [
     "component_guide/application-*.css"

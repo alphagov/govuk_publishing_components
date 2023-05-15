@@ -23,6 +23,7 @@ module GovukPublishingComponents
         @applications_data = sort_results(results)
         @gem_data[:components_by_application] = get_components_by_application || []
         @gem_data[:helpers_used_by_applications] = get_helpers_used_by_applications || []
+        @gem_data[:component_file_details] = combine_all_component_file_details(@gem_data[:component_file_details], @applications_data)
       end
     end
 
@@ -102,6 +103,7 @@ module GovukPublishingComponents
             component_locations: result[:component_locations],
             helper_references: result[:helper_references],
             uses_individual_asset_model: result[:uses_individual_asset_model],
+            application_components: result[:application_components],
           }
         else
           data << {
@@ -313,6 +315,18 @@ module GovukPublishingComponents
       end
 
       results
+    end
+
+    def combine_all_component_file_details(gem_components, applications)
+      applications.each do |application|
+        next unless application[:application_components]
+
+        application[:application_components][:component_file_details].each do |component|
+          gem_components << component
+        end
+      end
+
+      gem_components.sort_by { |c| c[:name] }
     end
   end
 end
