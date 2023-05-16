@@ -81,8 +81,9 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
       var text = data.text || event.target.textContent
       data.text = window.GOVUK.analyticsGa4.core.trackFunctions.removeLinesAndExtraSpaces(text)
+      data.text = PIIRemover.stripPIIWithOverride(data.text, true, true)
       var url = data.url || this.findLink(event.target).getAttribute('href')
-      data.url = window.GOVUK.analyticsGa4.core.trackFunctions.removeCrossDomainParams(PIIRemover.stripPII(url))
+      data.url = window.GOVUK.analyticsGa4.core.trackFunctions.removeCrossDomainParams(PIIRemover.stripPIIWithOverride(url, true, true))
       data.link_domain = window.GOVUK.analyticsGa4.core.trackFunctions.populateLinkDomain(data.url)
       data.link_path_parts = window.GOVUK.analyticsGa4.core.trackFunctions.populateLinkPathParts(data.url)
       data.method = window.GOVUK.analyticsGa4.core.trackFunctions.getClickType(event)
