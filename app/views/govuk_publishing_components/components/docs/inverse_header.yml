@@ -16,49 +16,59 @@ examples:
   default:
     data:
       block: |
-        <div class="gem-c-title gem-c-title--inverse">
-          <h1 class="gem-c-title__text govuk-heading-l">
-            Education, Training and Skills
-          </h1>
-        </div>
+        <!-- example content -->
+          <%= render "govuk_publishing_components/components/title", {
+            title: "Education, Training and Skills",
+            inverse: true
+          } %>
+          <!-- end of example content -->
   for_full_page_width:
     description: "Used when the header covers the full width of the page, but it's content is in the grid layout. The left-right padding is removed to make the contents line up with the other items on the page."
     data:
-      full_width: true
-      block: |
-        <div class="gem-c-title gem-c-title--inverse">
-          <h1 class="gem-c-title__text govuk-heading-l">
-            Education, Training and Skills
-          </h1>
-        </div>
+        full_width: true
+        block: |
+          <!-- example content -->
+            <%= render "govuk_publishing_components/components/title", {
+              title: "Education, Training and Skills",
+              inverse: true
+            } %>
+            <!-- end of example content -->
   html_publication_header:
     description: "The inverse header component is used on HTML publications. [See example on GOV.UK here](https://www.gov.uk/government/publications/ln5-0at-jackson-homes-scopwick-ltd-environmental-permit-application-advertisement/ln5-0at-jackson-homes-scopwick-ltd-environmental-permit-application)"
     data:
       block: |
-        <div class="gem-c-title gem-c-title--inverse gem-c-title--bottom-margin">
-          <p class="gem-c-title__context govuk-caption-m">Notice</p>
-          <h1 class="gem-c-title__text govuk-heading-l">
-            LN5 0AT, Jackson Homes (Scopwick) Ltd: environmental permit application
-          </h1>
-        </div>
-        <p class="publication-header__last-changed">Published 22 April 2016</p>
+        <!-- example content -->
+          <%= render "govuk_publishing_components/components/title", {
+            title: "LN5 0AT, Jackson Homes (Scopwick) Ltd: environmental permit application",
+            inverse: true,
+            context: "Notice",
+          } %>
+          <p class="publication-header__last-changed">Published 22 April 2016</p>
+          <!-- end of example content -->
   with_breadcrumbs_and_paragraph:
     data:
       padding_top: false
       block: |
-        <div class="gem-c-breadcrumbs govuk-breadcrumbs govuk-breadcrumbs--collapse-on-mobile gem-c-breadcrumbs--inverse">
-          <ol class="govuk-breadcrumbs__list">
-            <li class="govuk-breadcrumbs__list-item">
-              <a href="/section" class="govuk-breadcrumbs__link">Section</a>
-            </li>
-            <li class="govuk-breadcrumbs__list-item">
-              <a href="/section/sub-section" class="govuk-breadcrumbs__link">Education of disadvantaged children</a>
-            </li>
-          </ol>
-        </div>
-        <p class="gem-c-lead-paragraph gem-c-lead-paragraph--inverse">
-          Schools and academies, further and higher education, apprenticeships and other skills training, student funding, early years.
-        </p>
+        <!-- example content -->
+          <%= render "govuk_publishing_components/components/breadcrumbs", {
+            collapse_on_mobile: true,
+            breadcrumbs: [
+              {
+                title: "Section",
+                url: "/section"
+              },
+              {
+                title: "Education of disadvantaged children",
+                url: "/section/sub-section"
+              }
+            ],
+            inverse: true
+          } %>
+          <%= render "govuk_publishing_components/components/lead_paragraph", {
+            text: "Schools and academies, further and higher education, apprenticeships and other skills training, student funding, early years.",
+            inverse: true
+          } %>
+          <!-- end of example content -->
   with_link:
     data:
       block: |
