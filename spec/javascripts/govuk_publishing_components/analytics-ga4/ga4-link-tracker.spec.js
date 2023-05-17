@@ -427,4 +427,22 @@ describe('GA4 click tracker', function () {
       expect(window.dataLayer[0].event_data.index).toEqual(undefined)
     })
   })
+
+  describe('PII removal', function () {
+    it('redacts dates, postcodes and emails', function () {
+      element = document.createElement('div')
+      element.setAttribute('data-ga4-track-links-only', '')
+      element.setAttribute('data-ga4-link', '{"someData": "blah"}')
+      element.innerHTML = '<a class="link" href="#/2022-02-02/SW10AA/email@example.com">2022-02-02 SW1 0AA email@example.com</a>'
+
+      var link = element.querySelector('.link')
+
+      initModule(element, false)
+      link.click()
+
+      expect(window.dataLayer[0].event_data.url).toEqual('#/[date]/[postcode]/[email]')
+      expect(window.dataLayer[0].event_data.link_path_parts[1]).toEqual('#/[date]/[postcode]/[email]')
+      expect(window.dataLayer[0].event_data.text).toEqual('[date] [postcode] [email]')
+    })
+  })
 })

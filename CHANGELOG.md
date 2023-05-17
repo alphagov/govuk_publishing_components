@@ -12,6 +12,7 @@
 * Add auditing of application components to component auditing ([PR #3374](https://github.com/alphagov/govuk_publishing_components/pull/3374))
 * Fix GA4 index parameters on step nav show/hide all control ([PR #3397](https://github.com/alphagov/govuk_publishing_components/pull/3397))
 * Update to LUX 308 ([PR #3394](https://github.com/alphagov/govuk_publishing_components/pull/3394))
+* Ensure PIIRemover is running on GA4 link clicks ([PR #3402](https://github.com/alphagov/govuk_publishing_components/pull/3402))
 
 ## 35.3.5
 

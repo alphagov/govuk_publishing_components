@@ -712,4 +712,47 @@ describe('A specialist link tracker', function () {
       }
     })
   })
+
+  describe('PII removal', function () {
+    beforeEach(function () {
+      window.dataLayer = []
+
+      links = document.createElement('div')
+
+      body.appendChild(links)
+      body.addEventListener('click', preventDefault)
+
+      linkTracker = GOVUK.analyticsGa4.analyticsModules.Ga4SpecialistLinkTracker
+      linkTracker.init()
+    })
+
+    afterEach(function () {
+      body.removeEventListener('click', preventDefault)
+      links.remove()
+      linkTracker.stopTracking()
+    })
+
+    it('redacts postcodes and dates from the URL and link_path_parts', function () {
+      links.innerHTML = '<div>' +
+        '<a href="https://example.com/SW1A0AA/2022-02-22" class="link">SW1A0AA 2022-02-22</a>' +
+      '</div>'
+
+      var linkToTest = document.querySelector('.link')
+      GOVUK.triggerEvent(linkToTest, 'click')
+      expect(window.dataLayer[0].event_data.text).toEqual('[postcode] [date]')
+      expect(window.dataLayer[0].event_data.link_path_parts[1]).toEqual('/[postcode]/[date]')
+      expect(window.dataLayer[0].event_data.url).toEqual('https://example.com/[postcode]/[date]')
+    })
+
+    it('doesnt redact email addresses from the URL and link_path_parts', function () {
+      links.innerHTML = '<div>' +
+        '<a href="mailto:email@example.com" class="email">mailto:email@example.com</a>' +
+      '</div>'
+
+      var linkToTest = document.querySelector('.email')
+      GOVUK.triggerEvent(linkToTest, 'click')
+      expect(window.dataLayer[0].event_data.link_path_parts[1]).toEqual('mailto:email@example.com')
+      expect(window.dataLayer[0].event_data.url).toEqual('mailto:email@example.com')
+    })
+  })
 })

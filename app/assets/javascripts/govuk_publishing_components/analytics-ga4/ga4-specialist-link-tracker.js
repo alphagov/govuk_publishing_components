@@ -15,6 +15,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
         window.GOVUK.analyticsGa4.core.trackFunctions.appendDomainsWithoutWWW(this.dedicatedDownloadDomains)
         this.handleClick = this.handleClick.bind(this)
         this.handleMousedown = this.handleMousedown.bind(this)
+        this.PIIRemover = new window.GOVUK.analyticsGa4.PIIRemover()
 
         document.querySelector('body').addEventListener('click', this.handleClick)
         document.querySelector('body').addEventListener('contextmenu', this.handleClick)
@@ -50,10 +51,12 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
         return
       }
       var data = {}
+      var mailToLink = false
       if (window.GOVUK.analyticsGa4.core.trackFunctions.isMailToLink(href)) {
         data.event_name = 'navigation'
         data.type = 'email'
         data.external = 'true'
+        mailToLink = true
       } else if (this.isDownloadLink(href)) {
         data.event_name = 'file_download'
         data.type = this.isPreviewLink(href) ? 'preview' : 'generic download'
@@ -65,7 +68,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
       }
 
       if (Object.keys(data).length > 0) {
-        data.url = href
+        data.url = mailToLink ? href : this.PIIRemover.stripPIIWithOverride(href, true, true)
         if (data.url) {
           data.url = window.GOVUK.analyticsGa4.core.trackFunctions.removeCrossDomainParams(data.url)
           data.link_domain = window.GOVUK.analyticsGa4.core.trackFunctions.populateLinkDomain(data.url)
@@ -73,6 +76,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
         }
 
         data.text = window.GOVUK.analyticsGa4.core.trackFunctions.removeLinesAndExtraSpaces(element.textContent)
+        data.text = mailToLink ? data.text : this.PIIRemover.stripPIIWithOverride(data.text, true, true)
         data.method = window.GOVUK.analyticsGa4.core.trackFunctions.getClickType(event)
 
         var schemas = new window.GOVUK.analyticsGa4.Schemas()
