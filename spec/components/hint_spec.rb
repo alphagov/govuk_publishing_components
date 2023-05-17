@@ -8,7 +8,7 @@ describe "Hint", type: :view do
   it "renders hint" do
     render_component(text: "For example, ‘QQ 12 34 56 C’.")
 
-    assert_select '.govuk-hint.govuk-\!-margin-bottom-3', text: "For example, ‘QQ 12 34 56 C’."
+    assert_select ".govuk-hint", text: "For example, ‘QQ 12 34 56 C’."
   end
 
   it "applies a specified bottom margin" do
@@ -23,10 +23,10 @@ describe "Hint", type: :view do
     assert_select '.govuk-hint.govuk-\!-margin-bottom-0'
   end
 
-  it "defaults to the initial bottom margin if an incorrect value is passed" do
+  it "does not default to the initial bottom margin if an incorrect value is passed" do
     render_component(text: "For example, ‘QQ 12 34 56 C’.", margin_bottom: 12)
 
-    assert_select '.govuk-hint.govuk-\!-margin-bottom-3'
+    assert_select '.govuk-hint.govuk-\!-margin-bottom-3', false
   end
 
   it "renders the component with the correct `dir` attribute" do
