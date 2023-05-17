@@ -160,7 +160,7 @@ describe('A specialist link tracker', function () {
 
       expected.event_data.link_domain = 'http://www.nationalarchives.gov.uk'
       expected.event_data.url = parentLink.getAttribute('href')
-      expected.event_data.text = parentLink.innerText.trim()
+      expected.event_data.text = 'image'
 
       expect(window.dataLayer[0]).toEqual(expected)
     })
@@ -386,7 +386,7 @@ describe('A specialist link tracker', function () {
         GOVUK.triggerEvent(link, 'click')
         expected.event_data.link_domain = link.closest('a').getAttribute('link_domain')
         expected.event_data.url = link.closest('a').getAttribute('href')
-        expected.event_data.text = link.closest('a').innerText.trim()
+        expected.event_data.text = 'image'
         expected.event_data.type = 'generic download'
         expected.event_data.external = link.closest('a').getAttribute('external')
         var linkPath = link.closest('a').getAttribute('path')
@@ -754,6 +754,32 @@ describe('A specialist link tracker', function () {
       GOVUK.triggerEvent(linkToTest, 'click')
       expect(window.dataLayer[0].event_data.link_path_parts[1]).toEqual('mailto:email@example.com')
       expect(window.dataLayer[0].event_data.url).toEqual('mailto:email@example.com')
+    })
+  })
+
+  describe('if the link contains an image and no inner text', function () {
+    beforeEach(function () {
+      window.dataLayer = []
+      links = document.createElement('div')
+      links.innerHTML = '<a class="link" href="https://example.com"><img src=""></></a>'
+
+      body.appendChild(links)
+      body.addEventListener('click', preventDefault)
+
+      linkTracker = GOVUK.analyticsGa4.analyticsModules.Ga4SpecialistLinkTracker
+      linkTracker.init()
+    })
+
+    afterEach(function () {
+      body.removeEventListener('click', preventDefault)
+      links.remove()
+      linkTracker.stopTracking()
+    })
+
+    it('sets the text property to image', function () {
+      var link = document.querySelector('.link')
+      GOVUK.triggerEvent(link, 'click')
+      expect(window.dataLayer[0].event_data.text).toEqual('image')
     })
   })
 })
