@@ -15,9 +15,6 @@
   css_classes << "govuk-label--s" if bold
   css_classes << "govuk-radios__label" if is_radio_label
   css_classes << "govuk-label--#{heading_size}" if heading_size
-
-  hint_text_css_classes = %w[govuk-hint]
-  hint_text_css_classes << "govuk-radios__hint" if is_radio_label
 %>
 
 <% if is_page_heading %>
@@ -29,7 +26,10 @@
 <% end %>
 
 <% if hint_text.present? %>
-  <%= tag.div id: hint_id, class: hint_text_css_classes, dir: right_to_left ? "rtl" : nil do %>
-    <%= hint_text %>
-  <% end %>
+  <%= render "govuk_publishing_components/components/hint", {
+    id: hint_id,
+    text: hint_text,
+    right_to_left: right_to_left ? "rtl" : nil,
+    is_radio_label_hint: is_radio_label
+  } %>
 <% end %>
