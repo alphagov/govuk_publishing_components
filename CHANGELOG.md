@@ -7,7 +7,7 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
-## Unreleased
+## 35.4.0
 
 * Add auditing of application components to component auditing ([PR #3374](https://github.com/alphagov/govuk_publishing_components/pull/3374))
 * Fix GA4 index parameters on step nav show/hide all control ([PR #3397](https://github.com/alphagov/govuk_publishing_components/pull/3397))
@@ -15,6 +15,7 @@
 * Ensure PIIRemover is running on GA4 link clicks ([PR #3402](https://github.com/alphagov/govuk_publishing_components/pull/3402))
 * Update hint component ([PR #3405](https://github.com/alphagov/govuk_publishing_components/pull/3405))
 * [Fixes] World Locations Links From Base Path ([PR #3396](https://github.com/alphagov/govuk_publishing_components/pull/3396))
+* Remove the blue background from search button ([PR #3393](https://github.com/alphagov/govuk_publishing_components/pull/3393))
 
 ## 35.3.5
 
@@ -23,7 +24,6 @@
 * Conditionally set GA4 type in related navigation ([PR #3390](https://github.com/alphagov/govuk_publishing_components/pull/3390))
 * Change type 'html attachment' to just 'attachment' ([PR #3382](https://github.com/alphagov/govuk_publishing_components/pull/3382))
 * Update popular on gov.uk links in search bar ([PR #3385](https://github.com/alphagov/govuk_publishing_components/pull/3385))
-* Remove the blue background from search button ([PR #3393](https://github.com/alphagov/govuk_publishing_components/pull/3393))
 
 ## 35.3.4
 
