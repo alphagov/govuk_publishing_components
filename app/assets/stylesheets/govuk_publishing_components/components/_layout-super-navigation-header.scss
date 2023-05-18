@@ -532,10 +532,6 @@ $after-button-padding-left: govuk-spacing(4);
   margin: 0;
   padding: govuk-spacing(1) govuk-spacing(4);
 
-  @include govuk-media-query($from: "desktop") {
-    border-right: 0;
-  }
-
   @include govuk-media-query($from: 360px) {
     &:before {
       @include chevron(govuk-colour("white"));
@@ -575,7 +571,6 @@ $after-button-padding-left: govuk-spacing(4);
     right: 0;
 
     @include focus-not-focus-visible {
-      background: $govuk-brand-colour;
       border-bottom: 1px solid govuk-colour("dark-blue");
       border-left: none;
       position: relative;
