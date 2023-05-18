@@ -5,7 +5,6 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
     example = GovukSchemas::RandomExample.for_schema(frontend_schema: schema) do |payload|
       payload.merge(content_item)
     end
-
     described_class.new(content_item: example, context: context).related_navigation
   end
 
@@ -347,6 +346,80 @@ RSpec.describe GovukPublishingComponents::Presenters::RelatedNavigationHelper do
           "related_guides",
           "related_items",
         )
+      end
+    end
+
+    context "for world link navigation" do
+      let(:world_location) do
+        {
+          "content_id" => "32c1b93d-2553-47c9-bc3c-fc5b513ecc32",
+          "title" => world_location_title,
+          "locale" => "en",
+          "base_path" => base_path,
+        }
+      end
+      let(:content_item) do
+        {
+          "details" => {
+            "body" => "body",
+            "government" => {
+              "title" => "government",
+              "slug" => "government",
+              "current" => true,
+            },
+            "political" => true,
+            "delivered_on" => "2017-09-22T14:30:00+01:00",
+          },
+          "links" => {
+            "world_locations" => [world_location],
+          },
+        }
+      end
+
+      context "with no base path" do
+        let(:world_location_title) { "World !@' ~Location~" }
+        let(:world_location) do
+          {
+            "content_id" => "32c1b93d-2553-47c9-bc3c-fc5b513ecc32",
+            "title" => world_location_title,
+            "locale" => "en",
+          }
+        end
+        it "generates world news links based on title without special characters" do
+          payload = payload_for("speech", content_item)
+          expected = {
+            "world_locations" => [{ locale: "en", path: "/world/world-location/news", text: world_location_title }],
+          }
+          expect(payload).to include(expected)
+        end
+      end
+
+      context "with empty base path" do
+        let(:base_path) { "" }
+        let(:world_location_title) { "World !@' ~Location~" }
+        it "errors due to schema violation" do
+          expect { payload_for("speech", content_item) }.to raise_error(GovukSchemas::InvalidContentGenerated)
+        end
+      end
+
+      context "with nil base path" do
+        let(:base_path) { nil }
+        let(:world_location_title) { "World !@' ~Location~" }
+        it "errors due to schema violation" do
+          expect { payload_for("speech", content_item) }.to raise_error(GovukSchemas::InvalidContentGenerated)
+        end
+      end
+
+      context "with base path provided" do
+        let(:base_path) { "/unique-base-path" }
+        let(:world_location_title) { "World !@' ~Location~" }
+        it "generates world news links based on base path" do
+          payload = payload_for("speech", content_item)
+          expected = {
+            "world_locations" => [{ locale: "en", path: "/unique-base-path", text: world_location_title }],
+          }
+          expect(payload).to include(expected)
+        end
       end
     end
   end

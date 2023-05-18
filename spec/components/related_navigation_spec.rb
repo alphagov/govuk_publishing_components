@@ -69,22 +69,22 @@ describe "Related navigation", type: :view do
     assert_select ".gem-c-related-navigation__section-link[href=\"/air-quality-statistics\"]", text: "Air quality statistics"
   end
 
-  it "renders world locations section when passed world location items" do
+  it "renders world locations section when passed world location items with base path" do
     content_item = {}
-    content_item["links"] = construct_links("world_locations", "/world/usa/news", "USA")
+    content_item["links"] = construct_links("world_locations", "/uk-mission-to-the-eu", "UK Mission to the European Union")
+    render_component(content_item: content_item)
+
+    assert_select ".gem-c-related-navigation__sub-heading", text: "World locations"
+    assert_select ".gem-c-related-navigation__section-link[href=\"/uk-mission-to-the-eu\"]", text: "UK Mission to the European Union"
+  end
+
+  it "renders world locations section when passed world location items without base path" do
+    content_item = {}
+    content_item["links"] = construct_links("world_locations", nil, "USA")
     render_component(content_item: content_item)
 
     assert_select ".gem-c-related-navigation__sub-heading", text: "World locations"
     assert_select ".gem-c-related-navigation__section-link[href=\"/world/usa/news\"]", text: "USA"
-  end
-
-  it "renders world locations section when passed special case world location items" do
-    content_item = {}
-    content_item["links"] = construct_links("world_locations", nil, "UK Mission to the European Union")
-    render_component(content_item: content_item)
-
-    assert_select ".gem-c-related-navigation__sub-heading", text: "World locations"
-    assert_select ".gem-c-related-navigation__section-link[href=\"/world/uk-mission-to-the-eu/news\"]", text: "UK Mission to the European Union"
   end
 
   it "renders collection section when passed collection items" do
