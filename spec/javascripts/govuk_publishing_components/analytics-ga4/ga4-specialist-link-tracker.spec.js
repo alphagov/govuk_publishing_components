@@ -22,6 +22,7 @@ describe('A specialist link tracker', function () {
 
   afterAll(function () {
     window.dataLayer = []
+    window.history.replaceState(null, null, '#')
   })
 
   beforeEach(function () {
