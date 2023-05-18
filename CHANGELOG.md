@@ -10,6 +10,7 @@
 ## Unreleased
 
 * Allow ga4-form-tracker text to be overridden ([PR #3409](https://github.com/alphagov/govuk_publishing_components/pull/3409))
+* Change GA4 share values ([PR #3407](https://github.com/alphagov/govuk_publishing_components/pull/3407))
 
 ## 35.4.0
 
