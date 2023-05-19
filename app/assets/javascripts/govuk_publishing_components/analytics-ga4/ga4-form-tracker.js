@@ -43,7 +43,7 @@ window.GOVUK.Modules = window.GOVUK.Modules || {};
 
       var formInputs = this.getFormInputs()
       var formData = this.getInputValues(formInputs)
-      data.text = this.combineGivenAnswers(formData) || 'No answer given'
+      data.text = data.text || (this.combineGivenAnswers(formData) || 'No answer given')
 
       var schemas = new window.GOVUK.analyticsGa4.Schemas()
       var schema = schemas.mergeProperties(data, 'event_data')

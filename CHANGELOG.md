@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Allow ga4-form-tracker text to be overridden ([PR #3409](https://github.com/alphagov/govuk_publishing_components/pull/3409))
+
 ## 35.4.0
 
 * Add auditing of application components to component auditing ([PR #3374](https://github.com/alphagov/govuk_publishing_components/pull/3374))
