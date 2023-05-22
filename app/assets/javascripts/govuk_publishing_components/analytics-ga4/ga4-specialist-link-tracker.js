@@ -77,7 +77,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
 
         data.text = window.GOVUK.analyticsGa4.core.trackFunctions.removeLinesAndExtraSpaces(element.textContent)
         data.text = mailToLink ? data.text : this.PIIRemover.stripPIIWithOverride(data.text, true, true)
-        if (!data.text && element.querySelector('img')) {
+        if (!data.text && (element.querySelector('img') || element.querySelector('svg'))) {
           data.text = 'image'
         }
         data.method = window.GOVUK.analyticsGa4.core.trackFunctions.getClickType(event)

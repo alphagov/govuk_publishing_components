@@ -761,7 +761,8 @@ describe('A specialist link tracker', function () {
     beforeEach(function () {
       window.dataLayer = []
       links = document.createElement('div')
-      links.innerHTML = '<a class="link" href="https://example.com"><img src=""></></a>'
+      links.innerHTML = '<a class="link" href="https://example.com"><img src=""/></a>' +
+      '<a class="link" href="https://example.com"><svg></svg></a>'
 
       body.appendChild(links)
       body.addEventListener('click', preventDefault)
@@ -777,9 +778,13 @@ describe('A specialist link tracker', function () {
     })
 
     it('sets the text property to image', function () {
-      var link = document.querySelector('.link')
-      GOVUK.triggerEvent(link, 'click')
-      expect(window.dataLayer[0].event_data.text).toEqual('image')
+      var links = document.querySelectorAll('.link')
+
+      for (var i = 0; i < links.length; i++) {
+        window.dataLayer = []
+        GOVUK.triggerEvent(links[i], 'click')
+        expect(window.dataLayer[0].event_data.text).toEqual('image')
+      }
     })
   })
 })
