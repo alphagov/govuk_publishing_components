@@ -27,6 +27,10 @@ describe('GA4 click tracker', function () {
     spyOn(GOVUK.analyticsGa4.core.trackFunctions, 'getProtocol').and.returnValue('https:')
   })
 
+  afterAll(function () {
+    window.history.replaceState(null, null, '#')
+  })
+
   beforeEach(function () {
     window.dataLayer = []
     expected = new GOVUK.analyticsGa4.Schemas().eventSchema()
