@@ -296,7 +296,7 @@ describe "step nav", type: :view do
     expected = {
       "event_name": "navigation",
       "type": "step by step",
-      "index": { "index_section": 1 },
+      "index": { "index_section": 1, "index_section_count": 2 },
       "section": "Step 1",
     }.to_json
 
@@ -309,7 +309,7 @@ describe "step nav", type: :view do
     expected = {
       "event_name": "navigation",
       "type": "step by step",
-      "index": { "index_section": 2 },
+      "index": { "index_section": 2, "index_section_count": 2 },
       "section": "Step 2",
     }.to_json
 
@@ -326,7 +326,7 @@ describe "step nav", type: :view do
     expected = {
       "event_name": "navigation",
       "type": "step by step",
-      "index": { "index_section": 1 },
+      "index": { "index_section": 1, "index_section_count": 5 },
       "section": "Step 1",
     }.to_json
 
@@ -339,7 +339,7 @@ describe "step nav", type: :view do
     expected = {
       "event_name": "navigation",
       "type": "step by step",
-      "index": { "index_section": 2 },
+      "index": { "index_section": 2, "index_section_count": 5 },
       "section": "Step 1 and",
     }.to_json
 
@@ -352,7 +352,7 @@ describe "step nav", type: :view do
     expected = {
       "event_name": "navigation",
       "type": "step by step",
-      "index": { "index_section": 3 },
+      "index": { "index_section": 3, "index_section_count": 5 },
       "section": "Step 2",
     }.to_json
 
