@@ -11,6 +11,7 @@
 
 * Allow ga4-form-tracker text to be overridden ([PR #3409](https://github.com/alphagov/govuk_publishing_components/pull/3409))
 * Change GA4 share values ([PR #3407](https://github.com/alphagov/govuk_publishing_components/pull/3407))
+* Add GA4 index_section_count to step by step links ([PR #3410](https://github.com/alphagov/govuk_publishing_components/pull/3410))
 
 ## 35.4.0
 
