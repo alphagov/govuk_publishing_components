@@ -100,6 +100,21 @@ describe('Google Analytics form tracking', function () {
       expect(window.dataLayer[0]).toEqual(expected)
     })
 
+    it('allows the text value to be overridden', function () {
+      var attributes = {
+        event_name: 'form_response',
+        type: 'smart answer',
+        section: 'What is the title of this question?',
+        action: 'Continue',
+        tool_name: 'What is the title of this smart answer?',
+        text: 'Hello World'
+      }
+      element.setAttribute('data-ga4-form', JSON.stringify(attributes))
+      window.GOVUK.triggerEvent(element, 'submit')
+      expected.event_data.text = 'Hello World'
+      expect(window.dataLayer[0]).toEqual(expected)
+    })
+
     it('redacts data from text inputs', function () {
       element.innerHTML =
         '<label for="textid">Label</label>' +
