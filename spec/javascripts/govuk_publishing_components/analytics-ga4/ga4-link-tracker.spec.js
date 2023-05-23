@@ -449,4 +449,23 @@ describe('GA4 click tracker', function () {
       expect(window.dataLayer[0].event_data.text).toEqual('[date] [postcode] [email]')
     })
   })
+
+  describe('if the link is an on an image with no inner text', function () {
+    it('sets the text property to image', function () {
+      element = document.createElement('div')
+      element.setAttribute('data-ga4-track-links-only', '')
+      element.setAttribute('data-ga4-link', '{"someData": "blah"}')
+      element.innerHTML = '<a class="link" href="#link1"><img src=""/></a>' +
+      '<a class="link" href="#link1"><svg></svg></a>'
+
+      var links = element.querySelectorAll('.link')
+
+      for (var i = 0; i < links.length; i++) {
+        window.dataLayer = []
+        initModule(element, false)
+        links[i].click()
+        expect(window.dataLayer[0].event_data.text).toEqual('image')
+      }
+    })
+  })
 })
