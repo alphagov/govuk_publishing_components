@@ -87,7 +87,9 @@
 
   ol,
   ul {
-    list-style: decimal;
+    // we intentionally don't set list-style for ol elements, so that they can
+    // utilise the type attribute for the formatting. Browsers default to a
+    // style of decimal.
     list-style-position: outside;
     margin-left: $gutter-two-thirds;
     padding: 0;
