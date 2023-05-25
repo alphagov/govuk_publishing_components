@@ -64,3 +64,15 @@ examples:
         url: next-page
         title: Next
         label: 'Driver CPC part 1 test: theory'
+  with_ga4_tracking:
+    description: Enables the GA4 link tracker on the links.
+    data:
+      ga4_tracking: true
+      previous_page:
+        url: previous-page
+        title: Previous
+        label: Applying for a provisional lorry or bus licence
+      next_page:
+        url: next-page
+        title: Next
+        label: 'Driver CPC part 1 test: theory'
