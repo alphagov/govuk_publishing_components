@@ -12,10 +12,21 @@
   link_classes << brand_helper.color_class
   link_classes << "govuk-link--no-underline" unless underline_links
 
+  ga4_tracking ||= false
+  ga4_data = nil
+  if ga4_tracking
+    ga4_data = {
+      event_name: "navigation",
+      type: "content",
+      section: t("components.contents_list.contents", locale: :en) || ""
+    }.to_json
+  end
   local_assigns[:aria] ||= {}
   component_helper = GovukPublishingComponents::Presenters::ComponentWrapperHelper.new(local_assigns)
   component_helper.add_class("gem-c-contents-list #{brand_helper.brand_class}")
   component_helper.add_data_attribute({ module: "gem-track-click" })
+  component_helper.add_data_attribute({ module: "ga4-link-tracker" }) if ga4_tracking
+  component_helper.add_data_attribute({ ga4_link: ga4_data, ga4_track_links_only: "" }) if ga4_tracking
   component_helper.add_aria_attribute({ label: t("components.contents_list.contents") }) unless local_assigns[:aria][:label]
   component_helper.add_role("navigation")
 -%>
@@ -32,7 +43,10 @@
     <ol class="gem-c-contents-list__list">
       <% contents.each.with_index(1) do |contents_item, position| %>
         <li class="<%= cl_helper.list_item_classes(contents_item, false) %>" <%= "aria-current=true" if contents_item[:active] %>>
-          <% link_text = format_numbers ? cl_helper.wrap_numbers_with_spans(contents_item[:text]) : contents_item[:text] %>
+          <% link_text = format_numbers ? cl_helper.wrap_numbers_with_spans(contents_item[:text]) : contents_item[:text]
+             ga4_link_data = nil
+             ga4_link_data = { "index": { "index_link": position }, "index_total": contents.length }.to_json if ga4_tracking
+          %>
           <%= link_to_if !contents_item[:active], link_text, contents_item[:href],
             class:  link_classes,
             data: {
@@ -41,7 +55,8 @@
               track_label: contents_item[:href],
               track_options: {
                 dimension29: contents_item[:text]
-              }
+              },
+              ga4_link: ga4_link_data
             }
           %>
 

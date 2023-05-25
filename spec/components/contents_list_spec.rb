@@ -125,6 +125,40 @@ describe "Contents list", type: :view do
     assert_select ".gem-c-contents-list[aria-label=\"All pages in this guide\"]"
   end
 
+  it "ga4 tracking is added when ga4_tracking is true" do
+    render_component(contents: contents_list_with_active_item, ga4_tracking: true)
+
+    # Test component attributes
+
+    expected_ga4_json = {
+      event_name: "navigation",
+      type: "content",
+      section: "Contents",
+    }.to_json
+
+    assert_select ".gem-c-contents-list" do |contents_list|
+      expect(contents_list.attr("data-ga4-link").to_s).to eq expected_ga4_json
+      expect(contents_list.attr("data-ga4-track-links-only").to_s).to eq ""
+      expect(contents_list.attr("data-ga4-set-indexes").to_s).to eq ""
+    end
+
+    # Test child link indexes
+
+    expected_ga4_json = { index: { index_link: 1 }, index_total: 3 }.to_json
+
+    assert_select ".gem-c-contents-list__list-item:first-of-type a" do |contents_list|
+      expect(contents_list.attr("data-ga4-link").to_s).to eq expected_ga4_json
+    end
+
+    expected_ga4_json = { index: { index_link: 3 }, index_total: 3 }.to_json
+
+    # Test the third link in the list. The 2nd list item is the active item, so it's just text. But the index position of that item should still be respected.
+    # Therefore the third link should still have an index of 3 even though there's only two <a> tags.
+    assert_select ".gem-c-contents-list__list-item:last-of-type a" do |contents_list|
+      expect(contents_list.attr("data-ga4-link").to_s).to eq expected_ga4_json
+    end
+  end
+
   it "applies branding correctly" do
     render_component(contents: nested_contents_list, format_numbers: true, brand: "attorney-generals-office")
     assert_select ".gem-c-contents-list.brand--attorney-generals-office"
