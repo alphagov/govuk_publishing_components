@@ -362,3 +362,10 @@ examples:
       first_published: 14 June 2014
       last_updated: 10 September 2015
       margin_bottom: 2
+  with_ga4_tracking:
+    description: |
+      Enables the GA4 link tracker on the 'See all updates' link.
+    data:
+      last_updated: 10 September 2015
+      see_updates_link: true
+      ga4_tracking: true

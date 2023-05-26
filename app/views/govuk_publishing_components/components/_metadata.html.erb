@@ -18,6 +18,8 @@
   classes << "direction-#{direction}" if local_assigns.include?(:direction)
   classes << "gem-c-metadata--inverse" if inverse
   classes << shared_helper.get_margin_bottom if local_assigns[:margin_bottom]
+
+  ga4_tracking ||= false
 %>
 <%= content_tag :div, class: classes, data: { module: "gem-toggle metadata" } do %>
   <dl class="gem-c-metadata__list" data-module="gem-track-click">
@@ -49,7 +51,16 @@
           &#8212; <a href="#full-publication-update-history" class="gem-c-metadata__definition-link govuk-!-display-none-print js-see-all-updates-link"
                              data-track-category="content-history"
                              data-track-action="see-all-updates-link-clicked"
-                             data-track-label="history">
+                             data-track-label="history"
+                             <% if ga4_tracking %>
+                              data-module="ga4-link-tracker"
+                              data-ga4-link="<%= {
+                                event_name: "navigation",
+                                type: "content",
+                                section: "Top"
+                              }.to_json %>"
+                             <% end%>
+                             >
             <%= t("components.metadata.see_all_updates") %>
           </a>
         <% end %>
