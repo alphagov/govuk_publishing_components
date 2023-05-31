@@ -1,7 +1,7 @@
-<table class="govuk-table" <% if show_application_name %>data-audit-list<% end %>>
+<table class="govuk-table">
   <thead class="govuk-table__head">
-    <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header sticky-table-header">Component</th>
+    <tr class="govuk-table__row" <% if show_application_name %>data-audit-headings<% end %>>
+      <th scope="col" class="govuk-table__header sticky-table-header" data-component-type="total">Component</th>
       <th scope="col" class="govuk-table__header sticky-table-header" data-component-type="template">
         Template
         <% unless show_application_name %>
@@ -46,10 +46,10 @@
       </th>
     </tr>
   </thead>
-  <tbody class="govuk-table__body">
+  <tbody class="govuk-table__body" <% if show_application_name %>data-audit-list<% end %>>
     <% passed_components[:component_file_details].each do |component| %>
       <tr class="govuk-table__row" data-application="<%= component[:application] %>">
-        <th scope="row" class="govuk-table__header">
+        <th scope="row" class="govuk-table__header" data-component-type="total">
           <% if component[:link] %>
             <a href="<%= component[:link] %>" class="govuk-link">
               <%= component[:name] %>
@@ -63,7 +63,7 @@
             </span>
           <% end %>
         </th>
-        <td class="govuk-table__cell">
+        <td class="govuk-table__cell" data-component-type="template">
           <% if component[:template_exists] %>
             <a href="<%= component[:template_link] %>" class="govuk-link">
               <%= component[:template_lines] %>
@@ -71,7 +71,7 @@
             </a>
           <% end %>
         </td>
-        <td class="govuk-table__cell">
+        <td class="govuk-table__cell" data-component-type="stylesheet">
           <% if component[:stylesheet_exists] %>
             <a href="<%= component[:stylesheet_link] %>" class="govuk-link">
               <%= component[:stylesheet_lines] %>
@@ -79,12 +79,12 @@
             </a>
           <% end %>
         </td>
-        <td class="govuk-table__cell">
+        <td class="govuk-table__cell" data-component-type="print_stylesheet">
           <% if component[:print_stylesheet_exists] %>
             Yes
           <% end %>
         </td>
-        <td class="govuk-table__cell">
+        <td class="govuk-table__cell" data-component-type="javascript">
           <% if component[:javascript_exists] %>
             <a href="<%= component[:javascript_link] %>" class="govuk-link">
               <%= component[:javascript_lines] %>
@@ -92,7 +92,7 @@
             </a>
           <% end %>
         </td>
-        <td class="govuk-table__cell">
+        <td class="govuk-table__cell" data-component-type="test">
           <% if component[:test_exists] %>
             <a href="<%= component[:test_link] %>" class="govuk-link">
               <%= component[:test_lines] %>
@@ -100,7 +100,7 @@
             </a>
           <% end %>
         </td>
-        <td class="govuk-table__cell">
+        <td class="govuk-table__cell" data-component-type="javascript_test">
           <% if component[:javascript_test_exists] %>
             <a href="<%= component[:javascript_test_link] %>" class="govuk-link">
               <%= component[:javascript_test_lines] %>
@@ -108,7 +108,7 @@
             </a>
           <% end %>
         </td>
-        <td class="govuk-table__cell">
+        <td class="govuk-table__cell" data-component-type="helper">
           <% if component[:helper_exists] %>
             <a href="<%= component[:helper_link] %>" class="govuk-link">
               <%= component[:helper_lines] %>
