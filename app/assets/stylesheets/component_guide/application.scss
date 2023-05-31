@@ -31,10 +31,6 @@ $govuk-new-link-styles: true;
 @import "govuk_publishing_components/components/layout-header";
 @import "govuk_publishing_components/components/layout-super-navigation-header";
 
-// Imported to ensure inverse-header component examples render correctly
-// this helps avoid any issues with visual regressions tests
-@import "govuk_publishing_components/components/lead-paragraph";
-
 // Include required helpers
 @import "../../stylesheets/govuk_publishing_components/components/helpers/markdown-typography";
 

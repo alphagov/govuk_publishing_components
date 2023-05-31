@@ -7,6 +7,10 @@
   useful summary for people upgrading their application, not a replication
   of the commit log.
 
+## Unreleased
+
+* Remove hardcoded examples in the component guide ([3418](https://github.com/alphagov/govuk_publishing_components/pull/3418))
+
 ## 35.5.0
 
 * Allow ga4-form-tracker text to be overridden ([PR #3409](https://github.com/alphagov/govuk_publishing_components/pull/3409))

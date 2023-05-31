@@ -11,23 +11,41 @@ examples:
     data:
       legend_text: 'Do you have a passport?'
       block: |
-        <!-- Use the radio component, this is hardcoded only for this example -->
-          <input type="radio" id="default-yes" name="default">
-          <label for="default-yes">Yes</label>
-
-          <input type="radio" id="default-no" name="default">
-          <label for="default-no">No</label>
+        <!-- example content -->
+          <%= render "govuk_publishing_components/components/radio", {
+            name: "default",
+            items: [
+              {
+                value: "default-yes",
+                text: "Yes"
+              },
+              {
+                value: "default-no",
+                text: "No"
+              }
+            ]
+          } %>
+          <!-- end of example content -->
   with_id_attribute:
     data:
       legend_text: 'Do you have a passport?'
       id: passports
       block: |
-        <!-- Use the radio component, this is hardcoded only for this example -->
-          <input type="radio" id="passport-yes" name="default">
-          <label for="passport-yes">Yes</label>
-
-          <input type="radio" id="passport-no" name="default">
-          <label for="passport-no">No</label>
+        <!-- example content -->
+          <%= render "govuk_publishing_components/components/radio", {
+            name: "passport",
+            items: [
+              {
+                value: "passport-yes",
+                text: "Yes"
+              },
+              {
+                value: "passport-no",
+                text: "No"
+              }
+            ]
+          } %>
+          <!-- end of example content -->
   with_heading:
     description: Make the legend different sizes. Valid options are `s`, `m`, `l` and `xl`.
     data:
@@ -35,33 +53,60 @@ examples:
       heading_level: 2
       heading_size: 'm'
       block: |
-        <!-- Use the radio component, this is hardcoded only for this example -->
-          <input type="radio" id="level-yes" name="default">
-          <label for="level-yes">Yes</label>
-
-          <input type="radio" id="level-no" name="default">
-          <label for="level-no">No</label>
+        <!-- example content -->
+          <%= render "govuk_publishing_components/components/radio", {
+            name: "level",
+            items: [
+              {
+                value: "level-yes",
+                text: "Yes"
+              },
+              {
+                value: "level-no",
+                text: "No"
+              }
+            ]
+          } %>
+          <!-- end of example content -->
   with_custom_legend_size:
     description: Make the legend different sizes. Valid options are `s`, `m`, `l` and `xl`.
     data:
       legend_text: 'Do you have a driving license?'
       heading_size: 'l'
       block: |
-        <!-- Use the radio component, this is hardcoded only for this example -->
-          <input type="radio" id="size-yes" name="default">
-          <label for="size-yes">Yes</label>
-
-          <input type="radio" id="size-no" name="default">
-          <label for="size-no">No</label>
+        <!-- example content -->
+          <%= render "govuk_publishing_components/components/radio", {
+            name: "size",
+            items: [
+              {
+                value: "size-yes",
+                text: "Yes"
+              },
+              {
+                value: "size-no",
+                text: "No"
+              }
+            ]
+          } %>
+          <!-- end of example content -->
   with_error_message:
     description: The component also accepts an `error_id`, or generates one automatically.
     data:
       legend_text: 'Do you have a passport?'
       error_message: 'Please choose an option'
       block: |
-        <!-- Use the radio component, this is hardcoded only for this example -->
-          <input type="radio" id="default2-yes" name="default2">
-          <label for="default2-yes">Yes</label>
-
-          <input type="radio" id="default2-no" name="default2">
-          <label for="default2-no">No</label>
+        <!-- example content -->
+          <%= render "govuk_publishing_components/components/radio", {
+            name: "default2",
+            items: [
+              {
+                value: "default2-yes",
+                text: "Yes"
+              },
+              {
+                value: "default2-no",
+                text: "No"
+              }
+            ]
+          } %>
+          <!-- end of example content -->

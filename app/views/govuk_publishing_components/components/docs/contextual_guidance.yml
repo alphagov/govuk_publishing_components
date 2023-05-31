@@ -23,7 +23,14 @@ examples:
       content: |
         <p>The title must make clear what the content offers users. Use the words your users do to help them find this. Avoid wordplay or teases.</p>
       block: |
-        <div class="govuk-form-group">
-          <label class="gem-c-label govuk-label" for="news-title">News title</label>
-          <input id="news-title" type="text" class="gem-c-input govuk-input" aria-describedby="news-title-guidance">
-        </div>
+        <!-- example content -->
+          <%= render "govuk_publishing_components/components/input", { 
+              label: {
+                text: "News title"
+              },
+              name: "news-title",
+              id: "news-title",
+              describedby: "news-title-guidance"
+            } 
+          %>
+          <!-- end of example content -->
