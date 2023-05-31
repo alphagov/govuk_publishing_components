@@ -65,67 +65,55 @@
         </th>
         <td class="govuk-table__cell">
           <% if component[:template_exists] %>
-            <strong class="govuk-tag govuk-tag--green">
-              <a href="<%= component[:template_link] %>" class="govuk-link">
-                <%= component[:template_lines] %>
-                <span class="govuk-visually-hidden">lines of code in <%= component[:name] %> template</span>
-              </a>
-            </strong>
+            <a href="<%= component[:template_link] %>" class="govuk-link">
+              <%= component[:template_lines] %>
+              <span class="govuk-visually-hidden">lines of code in <%= component[:name] %> template</span>
+            </a>
           <% end %>
         </td>
         <td class="govuk-table__cell">
           <% if component[:stylesheet_exists] %>
-            <strong class="govuk-tag govuk-tag--green">
-              <a href="<%= component[:stylesheet_link] %>" class="govuk-link">
-                <%= component[:stylesheet_lines] %>
-                <span class="govuk-visually-hidden">lines of code in <%= component[:name] %> stylesheet</span>
-              </a>
-            </strong>
+            <a href="<%= component[:stylesheet_link] %>" class="govuk-link">
+              <%= component[:stylesheet_lines] %>
+              <span class="govuk-visually-hidden">lines of code in <%= component[:name] %> stylesheet</span>
+            </a>
           <% end %>
         </td>
         <td class="govuk-table__cell">
           <% if component[:print_stylesheet_exists] %>
-            <strong class="govuk-tag govuk-tag--green">Yes</strong>
+            Yes
           <% end %>
         </td>
         <td class="govuk-table__cell">
           <% if component[:javascript_exists] %>
-            <strong class="govuk-tag govuk-tag--green">
-              <a href="<%= component[:javascript_link] %>" class="govuk-link">
-                <%= component[:javascript_lines] %>
-                <span class="govuk-visually-hidden">lines of code in <%= component[:name] %> javascript</span>
-              </a>
-            </strong>
+            <a href="<%= component[:javascript_link] %>" class="govuk-link">
+              <%= component[:javascript_lines] %>
+              <span class="govuk-visually-hidden">lines of code in <%= component[:name] %> javascript</span>
+            </a>
           <% end %>
         </td>
         <td class="govuk-table__cell">
           <% if component[:test_exists] %>
-            <strong class="govuk-tag govuk-tag--green">
-              <a href="<%= component[:test_link] %>" class="govuk-link">
-                <%= component[:test_lines] %>
-                <span class="govuk-visually-hidden">lines of code in <%= component[:name] %> test</span>
-              </a>
-            </strong>
+            <a href="<%= component[:test_link] %>" class="govuk-link">
+              <%= component[:test_lines] %>
+              <span class="govuk-visually-hidden">lines of code in <%= component[:name] %> test</span>
+            </a>
           <% end %>
         </td>
         <td class="govuk-table__cell">
           <% if component[:javascript_test_exists] %>
-            <strong class="govuk-tag govuk-tag--green">
-              <a href="<%= component[:javascript_test_link] %>" class="govuk-link">
-                <%= component[:javascript_test_lines] %>
-                <span class="govuk-visually-hidden">lines of code in <%= component[:name] %> javascript test</span>
-              </a>
-            </strong>
+            <a href="<%= component[:javascript_test_link] %>" class="govuk-link">
+              <%= component[:javascript_test_lines] %>
+              <span class="govuk-visually-hidden">lines of code in <%= component[:name] %> javascript test</span>
+            </a>
           <% end %>
         </td>
         <td class="govuk-table__cell">
           <% if component[:helper_exists] %>
-            <strong class="govuk-tag govuk-tag--green">
-              <a href="<%= component[:helper_link] %>" class="govuk-link">
-                <%= component[:helper_lines] %>
-                <span class="govuk-visually-hidden">lines of code in <%= component[:name] %> helper</span>
-              </a>
-            </strong>
+            <a href="<%= component[:helper_link] %>" class="govuk-link">
+              <%= component[:helper_lines] %>
+              <span class="govuk-visually-hidden">lines of code in <%= component[:name] %> helper</span>
+            </a>
           <% end %>
         </td>
       </tr>
