@@ -4,6 +4,10 @@ RSpec.describe GovukPublishingComponents::AppHelpers::AssetHelper do
   describe "Asset helper" do
     include GovukPublishingComponents::AppHelpers::AssetHelper
 
+    def request
+      double(ActionDispatch::Request, { path: "/" })
+    end
+
     it "detect the total number of stylesheet paths" do
       expect(get_component_css_paths.count).to eql(73)
     end
@@ -19,6 +23,10 @@ RSpec.describe GovukPublishingComponents::AppHelpers::AssetHelper do
     end
 
     it "initialize asset helper then add multiple stylesheets but exclude 'button' stylesheet since it's already in static" do
+      GovukPublishingComponents.configure do |config|
+        config.exclude_css_from_static = true
+      end
+
       add_gem_component_stylesheet("accordion")
       add_gem_component_stylesheet("back-link")
       add_gem_component_stylesheet("button")
