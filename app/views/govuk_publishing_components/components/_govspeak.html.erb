@@ -11,6 +11,29 @@
   classes << "gem-c-govspeak--inverse" if inverse
 %>
 
+<!--
+  uuhh what if as a parameter, the govspeak component took a list of fingerprints for the javascripts of the components that it would use
+
+  there would be an attribute like
+
+  data-components-print = {
+    "button": "path/to/asset/button-2390128394edsjfsddsf821.js",
+  }
+
+  then in the script for generating the component you would have new thing for 
+  (could use template string now because if we arent supporting ie11)
+
+  getTheListOfComponentsUsed
+
+  listOfComponents.forEach(x => {
+    `<script type="text/javascript">
+      import Component from $
+
+      ???
+    </script>`
+  })
+-->
+
 <div id="<%= id %>" class="gem-c-govspeak govuk-govspeak <%= classes.join(" ") %>" data-module="govspeak">
   <% if local_assigns.include?(:content) %>
     <% if content.html_safe? %>
