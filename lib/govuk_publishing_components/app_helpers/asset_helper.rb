@@ -79,11 +79,15 @@ module GovukPublishingComponents
     private
 
       def is_already_used?(component)
-        if GovukPublishingComponents::Config.exclude_css_from_static
+        if GovukPublishingComponents::Config.exclude_css_from_static && !viewing_component_guide?
           all_component_stylesheets_being_used.include?(component) || STATIC_STYLESHEET_LIST.include?(component)
         else
           all_component_stylesheets_being_used.include?(component)
         end
+      end
+
+      def viewing_component_guide?
+        request.path.include?("/component-guide")
       end
     end
   end
