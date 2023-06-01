@@ -4,11 +4,3 @@
 .gem-c-select__select--full-width {
   width: 100%;
 }
-
-// Solution to text inside selects becoming unreadable if font size in
-// the browser is increased. This is currently a problem in govuk-frontend
-.gem-c-select {
-  .govuk-select {
-    height: 2.14em;
-  }
-}
