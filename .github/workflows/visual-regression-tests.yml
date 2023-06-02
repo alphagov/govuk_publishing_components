@@ -49,6 +49,6 @@ jobs:
           node-version: lts/* # use the latest LTS release
           cache: yarn
       - run: yarn install --frozen-lockfile
-      - run: npx percy exec -- bundle exec rspec --tag visual_regression
+      - run: yarn run percy exec -- bundle exec rspec --tag visual_regression
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
