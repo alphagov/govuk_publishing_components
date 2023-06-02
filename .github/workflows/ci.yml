@@ -39,7 +39,7 @@ jobs:
       with:
         node-version: lts/* # use the latest LTS release
         cache: yarn
-    - run: yarn install
+    - run: yarn install --frozen-lockfile
     - run: bundle exec rake
       env:
         GOVUK_CONTENT_SCHEMAS_PATH: tmp/publishing-api/content_schemas
