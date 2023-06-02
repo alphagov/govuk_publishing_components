@@ -80,6 +80,49 @@ examples:
           </li>
           <li>three</li>
         </ul>
+  ordered_lists_types:
+    description: |
+      Govspeak/markdown does not generate HTML with type and start attributes,
+      however we still provide support for them as some advanced users write
+      HTML directly to achieve the list formatting.
+    data:
+      block: |
+        <h2>Lowercase alphabetical list</h2>
+        <ol type="a">
+          <li>one</li>
+          <li>two</li>
+        </ol>
+
+        <h2>Uppercase alphabetical list</h2>
+        <ol type="A">
+          <li>one</li>
+          <li>two</li>
+        </ol>
+
+        <h2>Lowercase Roman numeral list</h2>
+        <ol type="i">
+          <li>one</li>
+          <li>two</li>
+        </ol>
+
+        <h2>Uppercase Roman numberal list</h2>
+        <ol type="I">
+          <li>one</li>
+          <li>two</li>
+        </ol>
+
+        <h2>Numerical list starting at 3</h2>
+        <ol start="3">
+          <li>three</li>
+          <li>four</li>
+        </ol>
+
+        <h2>Lowercase alphabetical list, starting at 3</h2>
+        <ol type="a" start="3">
+          <li>three</li>
+          <li>four</li>
+        </ol>
+
   legislative_lists:
     data:
       block: |
