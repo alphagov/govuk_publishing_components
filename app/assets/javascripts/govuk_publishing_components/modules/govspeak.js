@@ -1,6 +1,7 @@
 class Govspeak {
-  constructor($module) {
+  constructor($module, YoutubeLinkEnhancement) {
     this.$module = $module
+    this.youtubeLinkEnhancement = YoutubeLinkEnhancement
   }
 
   init() {
@@ -8,18 +9,18 @@ class Govspeak {
       this.embedYoutube()
     }
 
-    this.createBarcharts()    
+    // this.createBarcharts()    
   }
 
   embedYoutube() {
-    var enhancement = new window.GOVUK.GovspeakYoutubeLinkEnhancement(this.$module)
+    var enhancement = new this.youtubeLinkEnhancement(this.$module)
     enhancement.init()
   }
 
-  createBarcharts() {
-    var enhancement = new window.GOVUK.GovspeakBarchartEnhancement(this.$module)
-    enhancement.init()
-  }
+  // createBarcharts() {
+  //   var enhancement = new window.GOVUK.GovspeakBarchartEnhancement(this.$module)
+  //   enhancement.init()
+  // }
 }
 
 export default Govspeak;
