@@ -1,14 +1,21 @@
-(function () {
-  'use strict'
-  window.GOVUK = window.GOVUK || {}
-  var GOVUK = window.GOVUK || {}
-
-  var YoutubeLinkEnhancement = function ($element, $classOverride) {
+class YoutubeLinkEnhancement {
+  constructor($element, $classOverride) {
     this.$element = $element
     this.$classOverride = typeof $classOverride !== 'undefined' ? $classOverride : 'gem-c-govspeak__youtube-video'
+    window.apiScriptInserted = window.apiScriptInserted !== undefined ? window.apiScriptInserted : false
+    window.playerApiReady = window.playerApiReady !== undefined ? window.playerApiReady : false
+
+    // way to do the queued inserts from before but w/ window instead...
+    window.YoutubeQueuedInserts = (window.YoutubeQueuedInserts && window.YoutubeQueuedInserts.length) ? window.YoutubeQueuedInserts : [];
+    window.onYouTubePlayerAPIReady = window.onYouTubePlayerAPIReady || function () {
+      window.playerApiReady = true
+      for (var i = 0; i < window.YoutubeQueuedInserts.length; i++) {
+        window.YoutubeQueuedInserts[i].call()
+      }
+    }    
   }
 
-  YoutubeLinkEnhancement.prototype.init = function () {
+  init() {
     if (!this.campaignCookiesAllowed()) {
       this.startModule = this.startModule.bind(this)
       window.addEventListener('cookie-consent', this.startModule)
@@ -17,12 +24,12 @@
     this.startModule()
   }
 
-  YoutubeLinkEnhancement.prototype.startModule = function () {
+  startModule() {
     window.removeEventListener('cookie-consent', this.startModule)
     var $youtubeLinks = this.$element.querySelectorAll('a[href*="youtube.com"], a[href*="youtu.be"]')
 
     if ($youtubeLinks.length > 0) {
-      YoutubeLinkEnhancement.insertApiScript()
+      this.insertApiScript()
     }
 
     for (var i = 0; i < $youtubeLinks.length; ++i) {
@@ -41,14 +48,14 @@
       }
 
       if (href.indexOf('/live_stream') >= 0) {
-        var channelId = YoutubeLinkEnhancement.parseLivestream(href)
+        var channelId = this.parseLivestream(href)
 
         if (!this.hasDisabledEmbed($link) && channelId) {
           options.channel = channelId
           this.setupVideo(options)
         }
       } else {
-        var videoId = YoutubeLinkEnhancement.parseVideoId(href)
+        var videoId = this.parseVideoId(href)
         if (!this.hasDisabledEmbed($link) && videoId) {
           options.videoId = videoId
           this.setupVideo(options)
@@ -57,12 +64,12 @@
     }
   }
 
-  YoutubeLinkEnhancement.prototype.hasDisabledEmbed = function ($link) {
+  hasDisabledEmbed($link) {
     return $link.getAttribute('data-youtube-player') === 'off'
   }
 
-  YoutubeLinkEnhancement.prototype.setupVideo = function (options) {
-    var elementId = YoutubeLinkEnhancement.nextId()
+  setupVideo(options) {
+    var elementId = this.nextId()
     var $link = options.link
 
     var id = options.videoId ? options.videoId : options.channel
@@ -80,7 +87,7 @@
     this.insertVideo(elementId, options)
   }
 
-  YoutubeLinkEnhancement.prototype.insertVideo = function (elementId, options) {
+  insertVideo(elementId, options) {
     var channelId = ''
     var videoId = ''
 
@@ -147,26 +154,26 @@
 
     videoInsert = videoInsert.bind(this)
 
-    if (YoutubeLinkEnhancement.playerApiReady) {
+    if (window.playerApiReady) {
       videoInsert.call()
     } else {
-      YoutubeLinkEnhancement.queuedInserts.push(videoInsert)
+      window.YoutubeQueuedInserts.push(videoInsert)
     }
   }
 
-  YoutubeLinkEnhancement.prototype.campaignCookiesAllowed = function () {
+  campaignCookiesAllowed() {
     var cookiePolicy = window.GOVUK.getConsentCookie()
     return cookiePolicy !== null ? cookiePolicy.campaigns : true
   }
 
-  YoutubeLinkEnhancement.nextId = function () {
+  nextId() {
     this.embedCount = this.embedCount || 0
     this.embedCount += 1
     return 'youtube-' + this.embedCount
   }
 
-  YoutubeLinkEnhancement.insertApiScript = function () {
-    if (this.apiScriptInserted) {
+  insertApiScript() {
+    if (window.apiScriptInserted) {
       return
     }
 
@@ -174,10 +181,10 @@
     tag.src = 'https://www.youtube.com/player_api'
     var firstScriptTag = document.getElementsByTagName('script')[0]
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
-    this.apiScriptInserted = true
+    window.apiScriptInserted = true
   }
 
-  YoutubeLinkEnhancement.parseLivestream = function (url) {
+  parseLivestream(url) {
     var matches = url.match(/channel=([^&]*)/)
 
     if (matches) {
@@ -187,7 +194,7 @@
 
   // This is a public class method so it can be used outside of this embed to
   // check that user input for videos will be supported in govspeak
-  YoutubeLinkEnhancement.parseVideoId = function (url) {
+  parseVideoId(url) {
     var parts
 
     if (url.indexOf('youtube.com') > -1) {
@@ -207,18 +214,6 @@
       return parts.pop()
     }
   }
+}
 
-  YoutubeLinkEnhancement.apiScriptInserted = false
-  YoutubeLinkEnhancement.playerApiReady = false
-  // an array of functions to be called once the Youtube Player API is ready
-  YoutubeLinkEnhancement.queuedInserts = []
-
-  window.onYouTubePlayerAPIReady = function () {
-    YoutubeLinkEnhancement.playerApiReady = true
-    for (var i = 0; i < YoutubeLinkEnhancement.queuedInserts.length; i++) {
-      YoutubeLinkEnhancement.queuedInserts[i].call()
-    }
-  }
-
-  GOVUK.GovspeakYoutubeLinkEnhancement = YoutubeLinkEnhancement
-})()
+export default YoutubeLinkEnhancement;

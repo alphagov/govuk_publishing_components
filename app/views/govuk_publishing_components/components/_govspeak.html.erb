@@ -12,6 +12,8 @@
 %>
 
 <!--
+  well this is hypothetical (in the future we want to use embedded components within govspeak i think this would still work) because currently we don't use any components that are embedded in js...
+
   uuhh what if as a parameter, the govspeak component took a list of fingerprints for the javascripts of the components that it would use
 
   there would be an attribute like
@@ -32,9 +34,14 @@
       ???
     </script>`
   })
+
+  so we have HTML as an input, we could regex search for data-module="component-name" and then
+  conditionally add the script for that component...
+
+  the analytics we are using will still execute the same way (imo)
 -->
 
-<div id="<%= id %>" class="gem-c-govspeak govuk-govspeak <%= classes.join(" ") %>" data-module="govspeak">
+<div id="<%= id %>" class="gem-c-govspeak govuk-govspeak <%= classes.join(" ") %>" data-module="govspeak" data->
   <% if local_assigns.include?(:content) %>
     <% if content.html_safe? %>
       <%= content %>
@@ -58,11 +65,17 @@
 </div>
 
 <%= javascript_tag nonce: true, type: "module" do -%>
+    import YoutubeLinkEnhancement from "<%= asset_path('govuk_publishing_components/modules/youtube-link-enhancement.js') %>";
     import Govspeak from "<%= asset_path('govuk_publishing_components/modules/govspeak.js') %>";
 
+    window.GOVUK.YoutubeLinkEnhancement = window.GOVUK.YoutubeLinkEnhancement || YoutubeLinkEnhancement;
+    window.GOVUK.Govspeak = window.GOVUK.Govspeak || Govspeak;
+<% end -%>
+
+<%= javascript_tag nonce: true, type: "module" do -%>
     const el = document.querySelector("#<%= id %>");
 
-    const govspeak = new Govspeak(el);
+    const govspeak = new window.GOVUK.Govspeak(el, window.GOVUK.YoutubeLinkEnhancement);
 
     govspeak.init();
 <% end -%>
