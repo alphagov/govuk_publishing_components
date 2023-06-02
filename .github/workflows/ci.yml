@@ -27,7 +27,7 @@ jobs:
 
     # Clone the publishing-api repo, a dependency of the govuk_schemas gem, for content schemas
     # Make it available at ../govuk-content-schemas, which is where govuk_schemas expects it to be
-    - run: git clone -b deployed-to-production --single-branch https://github.com/alphagov/publishing-api ../publishing-api
+    - run: git clone -b main --single-branch https://github.com/alphagov/publishing-api ../publishing-api
 
     - uses: ruby/setup-ruby@v1
       with:
