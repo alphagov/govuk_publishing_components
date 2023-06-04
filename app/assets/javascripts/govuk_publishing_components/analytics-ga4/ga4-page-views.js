@@ -17,7 +17,7 @@ window.GOVUK.analyticsGa4.analyticsModules = window.GOVUK.analyticsGa4.analytics
             location: this.getLocation(),
             /* If the init() function receives a referrer parameter, this indicates that it has been called as a part of an AJAX request and
             this.getReferrer() will not return the correct value. Therefore we need to rely on the referrer parameter. */
-            referrer: referrer || this.getReferrer(),
+            referrer: referrer ? this.PIIRemover.stripPIIWithOverride(referrer, true, true) : this.getReferrer(),
             title: this.getTitle(),
             status_code: this.getStatusCode(),
 
