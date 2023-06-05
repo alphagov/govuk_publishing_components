@@ -18,6 +18,7 @@
 * Change GA4 share values ([PR #3407](https://github.com/alphagov/govuk_publishing_components/pull/3407))
 * Add GA4 index_section_count to step by step links ([PR #3410](https://github.com/alphagov/govuk_publishing_components/pull/3410))
 * Set GA4 link text to 'image' if there's only an image and no link text ([PR #3404](https://github.com/alphagov/govuk_publishing_components/pull/3404))
+* Fix PII on referrer parameter ([PR #3430](https://github.com/alphagov/govuk_publishing_components/pull/3430))
 
 ## 35.4.0
 
