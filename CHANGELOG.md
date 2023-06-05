@@ -9,6 +9,7 @@
 
 ## Unreleased
 
+* Component auditing improvements ([PR #3423](https://github.com/alphagov/govuk_publishing_components/pull/3423))
 * Fully implement loading of individual stylesheets in component guide ([PR #3379](https://github.com/alphagov/govuk_publishing_components/pull/3379))
 
 ## 35.6.0
@@ -68,7 +69,7 @@
 
 ## 35.3.1
 
-* Add organisation brand colour for Department for Business & Trade ([#3361](https://github.com/alphagov/govuk_publishing_components/pull/3361))
+* Add organisation brand colour for Department for Business & Trade ([PR #3361](https://github.com/alphagov/govuk_publishing_components/pull/3361))
 * Add brand colour for DSIT ([PR #3349](https://github.com/alphagov/govuk_publishing_components/pull/3349))
 * Update GA4 index parameter on related navigation ([PR #3346](https://github.com/alphagov/govuk_publishing_components/pull/3346))
 * Update the Attachment component to accept a thumbnail parameter ([PR #3332](https://github.com/alphagov/govuk_publishing_components/pull/3332))
