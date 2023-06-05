@@ -116,7 +116,7 @@ GEM
     faker (3.2.0)
       i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
-    gds-api-adapters (88.0.0)
+    gds-api-adapters (88.1.0)
       addressable
       link_header
       null_logger
